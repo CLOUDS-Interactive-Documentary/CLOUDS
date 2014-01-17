@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>TWO_DIMENSIONAL</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>556.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>5141.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -42,6 +42,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>2d</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>InFromBelow</Name>
     <Value>0</Value>
 </Widget>
@@ -68,5 +73,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>default</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>inAboveOutBelow</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>inBelowOutAbove</Name>
     <Value>0</Value>
 </Widget>

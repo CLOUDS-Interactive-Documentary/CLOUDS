@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>FLY_THROUGH</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>510.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>4717.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -53,5 +53,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>default</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>shoulders</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>shouldersLong</Name>
     <Value>0</Value>
 </Widget>

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Points 2</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>291.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>974.000000000</XPosition>
+    <YPosition>288.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Alpha</Name>
-    <Value>0.285714298</Value>
+    <Value>0.714285731</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,12 +38,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point X Simplify</Name>
-    <Value>1.586206913</Value>
+    <Value>1.689655066</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Y Simplify</Name>
-    <Value>2.275862217</Value>
+    <Value>1.586206913</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>

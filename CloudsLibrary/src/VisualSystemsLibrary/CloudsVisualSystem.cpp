@@ -151,18 +151,15 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	updateCyclced = false;
     bDoBloom = false;
     bloomAmount = 0.;
-#ifdef CLOUDS_APP
-    bShowPortals = true;
-#endif
+//#ifdef CLOUDS_APP
+//    bShowPortals = true;
+//#endif
     
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 #else
 	bUseOculusRift = false;
 #endif 
-    
-    lastMouseMoveMillis = 0;
-	
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -216,40 +213,40 @@ string CloudsVisualSystem::getVisualSystemDataPath(bool ignoredFolder){
 ofxTimeline* CloudsVisualSystem::getTimeline(){
 	return timeline;
 }
-#ifdef CLOUDS_APP
-void CloudsVisualSystem::setupPortals(){
-    
- 
-    
-    CloudsPortal rp;
-    rp.hoverPosition = ofVec3f(75.f, getCanvasHeight()/4*3, 0);
-    rp.scale = .3;
-    rp.cam = &getCameraRef();
-    rp.question = "Return";
-    rp.setup();
-    portals.push_back(rp);
-    
-    CloudsPortal cp;
-    cp.hoverPosition = ofVec3f(getCanvasWidth()-75.f, getCanvasHeight()/4*3, 0);
-    cp.scale = .3;
-    cp.cam = &getCameraRef();
-    cp.question = "Continue";
-    cp.setup();
-    portals.push_back(cp);
-    
-    SetInterludePortalsRef(portals);
-    
-}
-#endif
+//#ifdef CLOUDS_APP
+//void CloudsVisualSystem::setupPortals(){
+//    
+// 
+//    
+//    CloudsPortal rp;
+//    rp.hoverPosition = ofVec3f(75.f, getCanvasHeight()/4*3, 0);
+//    rp.scale = .3;
+//    rp.cam = &getCameraRef();
+//    rp.question = "Return";
+//    rp.setup();
+//    portals.push_back(rp);
+//    
+//    CloudsPortal cp;
+//    cp.hoverPosition = ofVec3f(getCanvasWidth()-75.f, getCanvasHeight()/4*3, 0);
+//    cp.scale = .3;
+//    cp.cam = &getCameraRef();
+//    cp.question = "Continue";
+//    cp.setup();
+//    portals.push_back(cp);
+//    
+//    SetInterludePortalsRef(portals);
+//    
+//}
+//#endif
 
 void CloudsVisualSystem::setup(){
 	
     if(bIsSetup){
 		return;
 	}
-#ifdef CLOUDS_APP
-    setupPortals();
-#endif
+//#ifdef CLOUDS_APP
+//    setupPortals();
+//#endif
     
     backgroundGradientExponent = 1.0;
     bWashGradient = false;
@@ -267,7 +264,7 @@ void CloudsVisualSystem::setup(){
 
 //	currentCamera = &cam;
     
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
     hud = NULL;
     hudGui = NULL;
 #endif
@@ -407,34 +404,34 @@ void CloudsVisualSystem::speakerEnded()
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
     
-#ifdef CLOUDS_APP
-    
-    bShowPortals = CanShowInterludePortals();
-
-    if(bShowPortals){
-        ofVec2f mouseNode(GetCloudsInputX(),getCanvasHeight()-GetCloudsInputY());
-        for(int i=0;i<portals.size();i++){
-            portals[i].hoverPosition.y += .2*sin(ofGetElapsedTimef());
-            portals[i].update();
-            float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
-            if(distanceToPortal<100.f){
-                portals[i].startHovering();
-            }
-            else{
-                portals[i].stopHovering();
-            }
-        }
-        //cout<<GetSelectedInterludePortalContinue()<<endl;
-        SetInterludePortalsRef(portals);
-    }
-//    else{
+//#ifdef CLOUDS_APP
+//    
+//    bShowPortals = CanShowInterludePortals();
+//
+//    if(bShowPortals){
+//        ofVec2f mouseNode(GetCloudsInputX(),getCanvasHeight()-GetCloudsInputY());
 //        for(int i=0;i<portals.size();i++){
-//            portals[i].clearSelection();
-//            portals[i].stopHovering();
+//            portals[i].hoverPosition.y += .2*sin(ofGetElapsedTimef());
+//            portals[i].update();
+//            float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
+//            if(distanceToPortal<100.f){
+//                portals[i].startHovering();
+//            }
+//            else{
+//                portals[i].stopHovering();
+//            }
 //        }
+//        //cout<<GetSelectedInterludePortalContinue()<<endl;
+//        SetInterludePortalsRef(portals);
 //    }
-    
-#endif
+////    else{
+////        for(int i=0;i<portals.size();i++){
+////            portals[i].clearSelection();
+////            portals[i].stopHovering();
+////        }
+////    }
+//    
+//#endif
 
 #ifdef CLOUDS_RELEASE
     // show/hide the mouse cursor
@@ -447,6 +444,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
         ofHideCursor();
     }
     lastMousePos = currMousePos;
+
 #endif
     
     if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
@@ -567,24 +565,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			getCameraRef().end();
             
-#ifdef CLOUDS_APP
-            
-            if(bShowPortals){
-                ofPushStyle();
-                ofEnableAlphaBlending();
-                    
-                ofSetColor(255);
-                for(int i = 0; i < portals.size(); i++){
-                    glDisable(GL_DEPTH_TEST);
-                    CloudsPortal::shader.begin();
-                    CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-                    portals[i].draw();
-                    CloudsPortal::shader.end();
-                }
-                ofDisableAlphaBlending();
-                ofPopStyle();
-            }
-#endif
+
 			ofPushStyle();
 			ofPushMatrix();
 			ofTranslate(0, getCanvasHeight() );
@@ -608,7 +589,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 #ifndef OCULUS_RIFT
         drawCursor();
 #endif
+#ifdef KINECT_INPUT
         drawKinectDebug();
+#endif
 
 	}
     
@@ -623,9 +606,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
     ofPopStyle();
 }
 
-
-void CloudsVisualSystem::drawKinectDebug(){
 #ifdef KINECT_INPUT
+void CloudsVisualSystem::drawKinectDebug(){
     if (timeline->getIsShowing()) {
         ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
         if (kinectInput->bDoDebug) {
@@ -637,8 +619,8 @@ void CloudsVisualSystem::drawKinectDebug(){
                                kDebugWidth, kDebugHeight);
         }
     }
-#endif
 }
+#endif
 
 void CloudsVisualSystem::draw2dSystemPlane(){
     // create a plane and map our 2d systems to it
@@ -1688,7 +1670,7 @@ void CloudsVisualSystem::setupCameraGui()
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
 {
     if(transitionRadio == NULL){
-        return;
+        return WHIP_PAN;
     }
     
 	if(transitionRadio->getActive() == NULL)
@@ -2960,6 +2942,7 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
     
     kinectGui->addSpacer();
+    kinectGui->addToggle("CLAMP TO BOUNDS", &kinectInput->bClampToBounds);
     kinectGui->addSlider("ACTIVE THRESHOLD Y", 0.0f, 1.0f, &kinectInput->activeThresholdY);
     kinectGui->addSlider("ACTIVE THRESHOLD Z", 0.0f, 1.0f, &kinectInput->activeThresholdZ);
     
@@ -3012,6 +2995,7 @@ void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
     }
 }
 
+#ifdef CLOUDS_APP
 void CloudsVisualSystem::setupHUDGui()
 {
     if (hud == NULL || hudGui != NULL) return;
@@ -3132,7 +3116,8 @@ void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
         hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_OCULUS;
     }
 }
-#endif
+#endif  // CLOUDS_APP
+#endif  // OCULUS_RIFT
 
 void CloudsVisualSystem::lightsBegin()
 {
@@ -3288,6 +3273,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 		
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
+    if(cameraTrack->lockCameraToTrack){
+        ofxTLCameraFrame* firstCamFrame = (ofxTLCameraFrame*) cameraTrack->getKeyframes()[0];
+        cam.setPosition(firstCamFrame->position);
+        cam.setOrientation(firstCamFrame->orientation);
+    }
+    
 	timeline->setCurrentTimeMillis(0);
 	timeline->play();
 	
@@ -3366,9 +3357,11 @@ void CloudsVisualSystem::deleteGUIS()
 #endif
 #ifdef OCULUS_RIFT
     ofRemoveListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+#ifdef CLOUDS_APP
     if (hudGui != NULL) {
         ofRemoveListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
     }
+#endif
 #endif
 	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
@@ -3716,6 +3709,27 @@ void CloudsVisualSystem::selfPostDraw(){
     }
     //end
 #endif
+    
+//#ifdef CLOUDS_APP
+//    
+//    if(bShowPortals){
+//        ofPushStyle();
+//        ofEnableAlphaBlending();
+//        
+//        ofSetColor(255);
+//        for(int i = 0; i < portals.size(); i++){
+//            glDisable(GL_DEPTH_TEST);
+//            CloudsPortal::shader.begin();
+//            CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+//            portals[i].draw();
+//            CloudsPortal::shader.end();
+//        }
+//        ofDisableAlphaBlending();
+//        ofPopStyle();
+//    }
+//#endif
+    
+    
 }
 
 void CloudsVisualSystem::drawCursor()
@@ -3748,16 +3762,17 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
         ofCircle(pos, 1);
 #else
         ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, 3, 6, true));
+                 ofMap(pos.z, 2, -2, 3, 10, true));
 #endif
     }
     else {
-        ofSetColor(255, 255, 255, 64);
 #ifdef OCULUS_RIFT
+        ofSetColor(255, 255, 255, 64);
         ofCircle(pos, 1);
 #else
+        ofSetColor(255, 255, 255, 128);
         ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, 3, 10, true));
+                 ofMap(pos.z, 2, -2, 3, 14, true));
 #endif
     }
     ofPopStyle();
@@ -3881,32 +3896,32 @@ void CloudsVisualSystem::checkOpenGLError(string function){
     }
 }
 
-#ifdef CLOUDS_APP
-
-void SetInterludePortalsRef(vector<CloudsPortal>& ref){
-    gPortals = ref;
-}
-
-vector<CloudsPortal>& InterludePortalsRef(){
-    return gPortals;
-}
-
-void ResetInterludePortals(){
-    for(int i=0;i<InterludePortalsRef().size();i++){
-        InterludePortalsRef()[i].clearSelection();
-    }
-}
-bool GetSelectedInterludePortalContinue(){
-    return InterludePortalsRef()[1].isSelected();
-}
-bool GetSelectedInterludePortalResetClouds(){
-    return InterludePortalsRef()[0].isSelected();
-}
-
-bool CanShowInterludePortals(){
-    return gShowInterludePortals;
-}
-void ShowInterludePortals( bool show ){
-    gShowInterludePortals = show;
-}
-#endif
+//#ifdef CLOUDS_APP
+//
+//void SetInterludePortalsRef(vector<CloudsPortal>& ref){
+//    gPortals = ref;
+//}
+//
+//vector<CloudsPortal>& InterludePortalsRef(){
+//    return gPortals;
+//}
+//
+//void ResetInterludePortals(){
+//    for(int i=0;i<InterludePortalsRef().size();i++){
+//        InterludePortalsRef()[i].clearSelection();
+//    }
+//}
+//bool GetSelectedInterludePortalContinue(){
+//    return InterludePortalsRef()[1].isSelected();
+//}
+//bool GetSelectedInterludePortalResetClouds(){
+//    return InterludePortalsRef()[0].isSelected();
+//}
+//
+//bool CanShowInterludePortals(){
+//    return gShowInterludePortals;
+//}
+//void ShowInterludePortals( bool show ){
+//    gShowInterludePortals = show;
+//}
+//#endif

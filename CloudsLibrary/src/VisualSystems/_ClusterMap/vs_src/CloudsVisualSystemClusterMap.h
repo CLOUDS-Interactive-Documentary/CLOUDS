@@ -15,6 +15,8 @@ typedef struct{
 } TraversalSegment;
 
 typedef struct{
+    int numSubTopics;
+    vector<ofVec3f> subTopicPositions;
 	string keyword;
 	ofVec3f position;
 	ofVec2f screenPosition;
@@ -34,6 +36,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	void setQuestions(vector<CloudsClip>& questions);
 	CloudsQuestion* getSelectedQuestion();
 
+    void setCurrentTopic(string topic);
+    
 	//will add the latest state of the run to the traversal
 	void traverse();
 	
@@ -122,8 +126,9 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	}
 
 	void reloadShaders();
-	
 
+    void parseAssociations();
+    
   protected:
 
 	ofxUISuperCanvas* nodesGui;
@@ -253,9 +258,18 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofIntRange typeSizeRange;
 	ofIntRange currentTypeSizeRange;
 	
-	
+    void populateAssociations();
+    map<string,string> associations;
+    bool drawAssociation;
+    int associationFontSize;
+    int currentAssociationFont;
+    string currentTopic;
+    ofVec2f trailheadScreenPos;
+    ofxFTGLFont associationFont;
+    
 	ofVec3f randomDirection();
-	
+    int numTraversed;
+    
 	vector<CloudsQuestion> questions;
 	CloudsQuestion* selectedQuestion;
 

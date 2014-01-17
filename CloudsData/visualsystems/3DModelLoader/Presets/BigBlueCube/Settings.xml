@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>643.000000000</XPosition>
-    <YPosition>688.000000000</YPosition>
+    <XPosition>311.000000000</XPosition>
+    <YPosition>136.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,12 +18,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>NO CURSOR</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>PRIMARY CURSOR</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

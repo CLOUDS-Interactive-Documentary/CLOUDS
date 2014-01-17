@@ -22,6 +22,9 @@
 
 #include "CloudsTransitionController.h"
 
+#include "CloudsPortal.h"
+
+
 /**
  * This class controls playback of RGBD sequences
  * and decides when to show Visual Systems
@@ -85,10 +88,14 @@ class CloudsPlaybackController {
 	int numClipsPlayed;
 	string currentTopic;
 	bool shouldPlayAct;
+    bool shouldClearAct;
 
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
     int numActsCreated;
+    
+    bool cachedTransition;
+    CloudsVisualSystem::RGBDTransitionType cachedTransitionType;
     
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;
@@ -112,7 +119,8 @@ class CloudsPlaybackController {
 	
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
-	
+	bool returnToIntro;
+    
 	string prerolledClipID;
 	void prerollClip(CloudsClip& clip, float toTime);
 	void playClip(CloudsClip clip);
@@ -129,8 +137,8 @@ class CloudsPlaybackController {
     bool exitedInterlude;
 	bool bQuestionAsked;
 	
-	void clearAct(bool destroy = true);
-			
+	void clearAct();
+    
 	//remove the current visual system
 	void hideVisualSystem();
 	void showRGBDVisualSystem();
@@ -138,9 +146,31 @@ class CloudsPlaybackController {
     void showClusterMap();
     void showInterlude();
     void cleanupInterlude();
-    
-    float prevCrossFadeValue;
+
+    //INTERLUDE PORTAL
+    bool bShowPortals;
+    CloudsPortal continuePortal;
+    void setupPortals();
+    ofRectangle resetRect;
+    ofRectangle resetSelectionRect;
+    bool bResetSelected;
+    bool bResetTransitionComplete;
+    ofxFTGLFont resetFont;
+    float resetSelectedPercentComplete;
+    float maxResetHoverTime;
+    float startResetHoverTime;
+    float endResetHoverValue;
+    bool prevResetValue;
+
+    void clearRestButtonParams();
+    // OS cursor display
+    ofVec2f lastMousePos, currMousePos;
+    unsigned long long lastMouseMoveMillis;
+
+
 };
+
+
 
 
 

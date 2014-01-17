@@ -894,7 +894,7 @@ CloudsVisualSystemPreset CloudsStoryEngine::selectVisualSystem(CloudsStoryState&
     vector<CloudsVisualSystemPreset> presets = visualSystems->getPresetsForKeywords(state.clip.getKeywords(),
 																					state.clip.getLinkName());
     //JG RIG!!
-//    return presets[3];
+    //return presets[0];
     
     CloudsVisualSystemPreset preset;
     float topScore = 0;

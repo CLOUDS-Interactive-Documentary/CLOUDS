@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>195.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,8 +12,8 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Blackhole</Name>
-    <Value>0</Value>
+    <Name>EG_CosmicCornea</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -22,11 +22,26 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>nBody</Name>
+    <Name>JM_biological2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>EG_CosmicCornea</Name>
+    <Name>jm_galaxy</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jm_swells</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jm_swells2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>nBody</Name>
+    <Value>0</Value>
 </Widget>

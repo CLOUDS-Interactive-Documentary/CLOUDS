@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SPH0Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>94.000000000</XPosition>
-    <YPosition>654.000000000</YPosition>
+    <XPosition>849.000061035</XPosition>
+    <YPosition>211.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SPH0 RADIUS</Name>
-    <Value>54.400001526</Value>
+    <Value>53.711341858</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

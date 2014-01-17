@@ -1,0 +1,1020 @@
+487	#hard
+270	#tech
+251	#inspiring
+218	#logical
+214	#sincere
+212	#easy
+203	#mindblowing
+177	#emotional
+158	#obstacle
+151	#rational
+133	#serious
+125	#example
+114	#art
+105	#fun
+102	#gold
+100	#breakthrough
+83	#discouraging
+70	community
+70	open source
+68	sharing
+68	data visualization
+66	simulation
+64	technological progress
+63	storytelling
+61	#ironic
+61	collaboration
+61	complexity
+58	data
+57	#mundane
+57	learning
+56	programming
+56	#conclusion
+49	code
+49	nature
+47	future
+46	language
+45	social media
+45	coding
+45	artificial intelligence
+45	communication
+43	internet
+43	systems
+43	process
+42	archiving
+42	beginnings
+41	interactivity
+41	history
+41	future of cinema
+41	tools
+37	man vs machine
+36	personal data
+36	math
+35	virtual
+35	digital meets physical
+35	collective intelligence
+35	network
+35	new media
+35	creativity
+34	camera
+34	algorithm
+33	beauty
+33	society
+32	art
+32	videogames
+31	new aesthetic
+31	reality
+31	#surreal
+31	emotion
+31	#vo
+31	newness
+31	tribe
+30	education
+30	people
+29	drawing
+29	#dud
+29	social
+29	biology
+29	cognition
+29	computation
+29	computer
+28	career
+28	old media
+28	play
+28	thinking with code
+28	identity
+28	design
+28	perception
+28	science fiction
+27	memory
+27	emergence
+26	art vs engineering
+26	criticality
+26	power
+26	limitations
+26	hackers
+25	time
+25	machine vision
+25	processing
+24	hybridity
+24	scale
+24	weird
+24	progress
+24	devices
+24	control
+23	users
+22	dysfunction
+22	surprise
+22	generative art
+22	#start
+22	critical engineering
+21	aesthetics
+21	program or be programmed
+21	error
+21	solutions
+21	experience
+20	pattern
+20	originality
+20	big data
+20	clouds
+20	ideas
+20	toolkit
+19	culture
+19	problem solving
+19	3d printing
+19	critique
+19	discovery
+19	cosmogeny
+19	evolution
+19	real and virtual
+19	sketching
+19	games
+19	open frameworks
+19	interfaces
+19	imagination
+19	commercialism
+18	creative coding
+18	post-digital
+18	physicality
+18	data ownership
+18	technology
+18	algorithms
+18	dystopia
+18	elegance
+18	magic
+18	art and code
+18	improvization
+17	twitter
+17	visual culture
+17	physics
+17	narrative
+17	music
+17	teaching
+17	humanity
+16	artificial life
+16	art and tech
+16	aesthetics and computation
+16	nerd
+16	engineering
+16	immersion
+16	zen
+16	transparency
+15	abstraction
+15	facebook
+15	dreams
+15	information
+15	style
+15	logic
+15	futurism
+15	attention
+15	exploration
+15	gesture
+14	invention
+14	representation
+14	liveness
+14	audiovisualization
+14	randomness
+14	memes
+14	media lab
+14	privacy
+14	thinking by doing
+14	simplicity
+14	economics
+14	software
+14	world building
+14	#transcript
+14	serendipity
+14	opacity
+14	cyborg
+14	surveillance
+14	kinect
+13	universe
+13	children
+13	utopia
+13	dna
+13	mentors
+13	hackathon
+13	social engagment
+13	truth
+13	creative misuse
+13	visualization
+12	art world
+12	money
+12	rules
+12	datatelling
+12	frustration
+12	biology and code
+11	sex
+11	interconnectedness
+11	science
+11	creative coders
+11	commercial art
+11	gps
+11	relationships
+11	fantasy technology
+11	chance
+11	embodiment
+11	experience design
+11	social dynamics
+11	bots
+11	preservation
+10	consciousness
+10	fantasy
+10	toolmakers
+10	security
+10	self expression
+10	poetry
+10	story
+10	staring at screens
+10	crowdsourcing
+10	journey
+10	challenges
+10	generations
+10	distraction
+10	love
+10	collaboration with machines
+10	installation
+10	maps
+10	augmented reality
+9	struggle with technology
+9	failure
+9	gestalt
+9	globalization
+9	symbiosis
+9	stock market
+9	singularity
+9	empathy
+9	useful
+9	chaos
+9	virality
+9	intuition
+9	interdisciplinary
+9	#pe?Aesthetics and Computation Group
+9	infinity
+9	thinking
+9	net.art
+9	performance art
+8	phenomena
+8	artificiality
+8	architecture
+8	assistive technology
+8	mobile
+8	feedback
+8	obsolescence
+8	perspective
+8	bugs
+8	legibility
+8	cultural value
+8	the cloud
+8	god mode
+8	gardening
+8	hacking
+8	sensor
+8	gift
+7	zoom
+7	art history
+7	arabic
+7	#oculus
+7	apocalypse
+7	ubiquity
+7	understanding
+7	cities
+7	vision
+7	cinema
+7	accessibility
+7	useless
+7	painting
+7	nature of code
+7	mind and hand
+7	mind
+7	probability
+7	knowledge
+7	revelation
+7	inexactitude
+7	robots
+7	humanism
+7	github
+7	gender
+7	focus
+7	form
+7	expression
+7	english
+6	thinking through code
+6	toolkits
+6	network security
+6	face tracking
+6	possibility
+6	trendspotting
+6	uncanny
+6	coding for humanity
+6	museums
+6	research
+6	iteration
+6	realness
+6	cellular automata
+6	questions
+6	#pe?Cell Cycle
+6	quantified self
+6	behavior
+6	addiction
+6	aesthetic experience
+6	death
+6	technoptimism
+6	subjectivity
+6	google
+6	cyberpunk
+6	wikipedia
+6	design and art
+6	survival
+5	microscope
+5	machine aesthetics
+5	wearables
+5	military technology
+5	reading
+5	r&d
+5	boring
+5	light
+5	evaluation
+5	legos
+5	sound
+5	participation
+5	john maeda
+5	virtuosity
+5	homogeneity
+5	humor
+5	hacker
+5	seamlessness
+5	sculpture
+5	tradition
+5	hack
+5	apps
+5	philosophy
+5	#pe?Processing
+5	#pe?Open Paths
+5	information as weapon
+5	ubiquitous computing
+5	uncertainty
+5	system
+5	genetics
+4	noise
+4	philsophy
+4	why
+4	prediction
+4	nostalgia
+4	objects
+4	metaphor
+4	virus
+4	statistics
+4	funny
+4	gadget
+4	digital divide
+4	dialogue
+4	synesthesia
+4	debugging
+4	curation
+4	thanks
+4	growth
+4	improvement
+4	connections
+4	tree
+4	instrument
+4	existence
+4	code is messy
+4	struggle
+4	lifetracking
+4	cameras
+4	location
+4	branching
+4	mastery
+4	meaning
+4	efficiency
+4	#pe?Tiny Riot
+4	#pe?Syn_
+4	#pe?openFrameworks
+4	#pe?Energy Flow
+4	#fixed
+4	anonymous
+4	art and experience
+3	rgbd
+3	generosity
+3	organic
+3	sensation
+3	sensors
+3	open paths
+3	glitch
+3	god
+3	nytimes
+3	networks
+3	#pe?Funky Forest
+3	guru
+3	mysticism
+3	serious
+3	hallucination
+3	motion
+3	change
+3	text
+3	art and security
+3	art and science
+3	projection
+3	product
+3	fat
+3	feeling
+3	creation
+3	prosthetic
+3	eyewriter
+3	corporate
+3	politics
+3	constraints
+3	food
+3	connectivity
+3	formalism
+3	performance
+3	fun
+3	gadgets
+3	things
+3	influence
+3	#bug
+3	success
+3	work
+3	infrastructure
+3	acu
+3	advertising
+3	working with others
+3	beautiful exhuberance
+3	balance
+3	disaster
+3	avatar
+3	kill the master
+3	alone together
+3	journalism
+3	audience
+3	writing
+3	synthetic biology
+3	apple
+3	tech-demo
+3	interestingness
+3	#pe?Design by Numbers
+3	challenge
+3	visual cortex
+3	man versus machine
+3	luck
+3	business
+3	literacy
+3	life
+3	library
+3	why?
+3	digital culture
+2	rhetoric
+2	epiphany
+2	taste
+2	ego
+2	electronic music
+2	skill
+2	synergy
+2	space
+2	eyeo
+2	psychology
+2	responsibility
+2	sentiment analysis
+2	street art
+2	subversion
+2	public
+2	rendering
+2	internet of things
+2	inventor
+2	interesting
+2	intelligence
+2	innovation
+2	information overload
+2	laughter
+2	infinite conversation
+2	limits of the computer
+2	imaginary
+2	media
+2	messiness
+2	minecraft
+2	hope
+2	multiverse
+2	object recognition
+2	open software
+2	openness
+2	operating systems
+2	order
+2	geometry
+2	own the tool
+2	parameter space
+2	passing the baton
+2	playfulness
+2	policy
+2	fluxus
+2	flow
+2	present shock
+2	fiction
+2	project example
+2	computational power
+2	book
+2	brain
+2	#pe?قلب
+2	data mining
+2	data collection
+2	#pe?Cascade
+2	computers
+2	c++
+2	visual effects
+2	confusion
+2	carl sims
+2	#pe?Sheep Market
+2	#pe?Drawn
+2	#pe?Transparency Grenade
+2	#pe?ToxicLibs
+2	video art
+2	creative exploration
+2	creative control
+2	#pe?Eyewriter
+2	youtube
+2	design by numbers
+2	#pe?Lumarca
+2	zach lieberman
+2	design process
+2	atmosphere
+2	#pe?Meshu
+2	ambiguity
+2	demo scene
+2	authorship
+2	teachers
+2	wonder
+1	operating system
+1	#pe?Messa Di Voce
+1	veterans
+1	#pe?Nature
+1	multimedia
+1	mutlisensory
+1	uture
+1	nano
+1	motivational
+1	nature?: What inspires your work?
+1	#pe?Face OSC
+1	#pe?Galapagos
+1	#pe?Manual Input Sessions
+1	noninteractivity
+1	#pe?Lit Tree
+1	noosphere
+1	novelty
+1	old history
+1	number
+1	#pe?Laser Tag
+1	#pe?Listening Post
+1	ocd
+1	unknown
+1	
+1	intimacy
+1	 3d printing
+1	inversion
+1	invisibility
+1	iphone
+1	jewelry
+1	julian oliver
+1	 how did people learn to code?
+1	work and life
+1	wizardry
+1	leadership
+1	#pe
+1	#pe?Calendars
+1	line
+1	visual thinking
+1	live
+1	maker
+1	making things
+1	malevich
+1	#pe?Communion
+1	manufacturing
+1	mentorship
+1	#pe?Coronal Mass Ejection
+1	meta
+1	microsoft
+1	mirror
+1	mortality
+1	#pe?Evolved Virtual Creatures
+1	motivation
+1	texting
+1	shifts
+1	sex and tech
+1	the digital divide
+1	self reflection
+1	self
+1	the future
+1	sadness
+1	robert hodgin
+1	the gift
+1	the present
+1	things breaking
+1	think different
+1	recursion
+1	realworld
+1	real world
+1	real
+1	teams
+1	tangibility
+1	techno
+1	syntax
+1	000 people collaborate on one project?
+1	(Alb)
+1	sublime
+1	stress
+1	techpositive
+1	stories
+1	storage
+1	spiritual
+1	social engineering
+1	snarky
+1	slow
+1	telepathy
+1	signals
+1	teleportation
+1	pleasure
+1	#pe?Reactive Square
+1	paul rand
+1	travel
+1	paul burke
+1	passion
+1	partnership
+1	particles
+1	#pe?Reactive Book
+1	parameters
+1	#pe?Portal
+1	paola antonelli
+1	#pe?People Staring at Computers
+1	overview
+1	organizations
+1	tron
+1	#pe?Particle Dreams
+1	tweaking
+1	public/private
+1	thinkerer
+1	#pe?Very Nervous System
+1	#pe?Tron (1982)
+1	#pe?Transfinite
+1	project examples
+1	#pe?Social Turkers
+1	problem of newness
+1	presentation
+1	#pe?Sniff
+1	touch
+1	toxi
+1	prank
+1	toys
+1	popular culture
+1	trace of your life
+1	tragedy
+1	transience
+1	digital natives
+1	diy
+1	documentation
+1	doing with others
+1	drones
+1	drugs
+1	energy
+1	equilibrium
+1	esoteric
+1	everyday
+1	evolution: How do computer programs simulate evolution?
+1	eyebeam
+1	fate
+1	flash
+1	flocking
+1	fluency
+1	foraging
+1	forums
+1	frontier
+1	generative
+1	gesture recognition
+1	give everything away
+1	golan levin
+1	graphic design
+1	gratitude
+1	gui
+1	heroes
+1	how did you get into working with code?
+1	how does the work feed into itself?
+1	human life
+1	ars electronica
+1	apporopriation
+1	antihuman
+1	anthropology
+1	animation
+1	awkward
+1	afterlife
+1	being
+1	RGBD
+1	DNA
+1	Clouds
+1	birth
+1	bravado
+1	brogrammers
+1	choices
+1	chrome
+1	clock
+1	coevolution
+1	completion
+1	concept
+1	consumer
+1	conviction
+1	counterculture
+1	curiosity
+1	darpa
+1	debug screen
+1	demo
+1	design fiction
+1	dichotomy
+1	digital
+1	digital art
+1	illusion
+1	image
+1	images
+1	ignorance
+1	insight
+1	in a sense are you running through an evolutionary process?
+1	infinite game
+1	internet culture
+0	?art: Why does society need art?
+0	?art: Are you still an artist if you stop making things?
+0	?art world: Will media art ever go mainstream?
+0	?simplicity: Why keep it simple?
+0	?identity: How does data encapsulate identity?
+0	?simulation: How can math simulate natural phenomena?
+0	?art world: What's wrong with contemporary art?
+0	?art vs engineering: What's the difference between art and engineering?
+0	?art and tech: What is media art?
+0	?archiving: What is the lifespan of code?
+0	?simulation: How does software simulate nature?
+0	?social: How social media reflect human nature?
+0	?archiving: How is digital history preserved?
+0	?identity: How does your avatar differ from your real world self?
+0	?simulation: Is it possible to truly simulate reality?
+0	?archiving: How does software stand the test of time?
+0	?social: How do social scientists use Facebook?
+0	?algorithm: What's the algorithmic equivalent of haiku?
+0	?immersion: What is immersive?
+0	?singularity: What happens when the Singularity arrives?
+0	?memory: What's the difference between data and biological memory?
+0	?social media: How do people communicate now?
+0	?memes: What's with Lolz?
+0	?aesthetics: How do you know whether something is good?
+0	?immersion: How can technology create an immersive experience?
+0	?sketching: How do you "sketch" with code?
+0	?sketching: How do you sketch with code?
+0	?3D printing: How does code become tangible?
+0	?meaning: Does meaning transcend medium?
+0	?sketching: what can you make with a computer that you can't accomplish by hand?
+0	?sketching: what can you make with a computer that's impossible by hand?
+0	?career: What is a new media artist?
+0	?career: Where does ambition come from?
+0	?career: Why major in art?
+0	?sharing: How does open source apply to non-digital culture ?
+0	?sex: How does data reflect desire?
+0	?serendipity: Does result need to follow intention?
+0	?chance: Does gambling take skill?
+0	?children: What's the long term impact?
+0	?clouds: What does it feel like to be a pointcloud?
+0	?clouds: What is Clouds?
+0	?self expression: When does code become poetry?
+0	?science: Why isn't science more concerned with aesthetics?
+0	?clouds: What is the story of Clouds?
+0	?science: How does the scientific method apply to creativity?
+0	?code: How is code beautiful?
+0	?science: Does beauty deceive?
+0	?code: What is code?
+0	?real and virtual: Where's the line between real and virtual?
+0	?artificial intelligence: What happens when machines become smarter than humans?
+0	?ideas: Can one person claim ownership of an idea?
+0	?hybridity: What does it mean to be hybrid?
+0	?artificial intelligence: What's the current state of artificial intelligence?
+0	?artificial intelligence: When will machines become smarter than humans?
+0	?sharing: Who were the pioneers of sharing code?
+0	?sharing: When did sharing code become popular?
+0	?artificial life: How does art imitate life?
+0	?attenion: How are we shaped by technology?
+0	?audiovisualization: How does music influence visual expression?
+0	?mentors: How did you become a media artist?
+0	?hybridity: Has technology made traditional disciplines irrelevant?
+0	?audiovisualization: What does music look like?
+0	?audiovisualization:What does music look like?
+0	?big data: What is powerful about Big Data?
+0	?biology and code: What is the code of life?
+0	?career: How do tech-artists approach engineering?
+0	?sharing: What is open source all about?
+0	?wearables: Where do fashion and technology meet?
+0	?vision: How does the world appear in the eyes of a computer?
+0	?virtual: Why don't we surf the web in 3D?
+0	?virtual reality: What does it feel like to be made of voxels
+0	?virtua: Is virtual reality a place we want to inhabit?
+0	?viral: How do memes spread?
+0	?interconnectedness: What's the highest aim of software?
+0	?interactivity: What makes a satisfying interaction?
+0	?videogames: How have multiplayer games shaped the next generation of artists?
+0	?videogames: How do videogames change the way we see?
+0	?information: What's the speed of information?
+0	?useless: What's the value of art?
+0	?useful: Does technology need to be useful?
+0	?twitter: Is the net becoming a global brain?
+0	?truth: What does truth look like?
+0	?truth: How does one find truth?
+0	?man vs machine: Do machines have a 'existence'?
+0	?truth: Does data lie?
+0	?internet: What will the internet become?
+0	?internet: What does the internet look like?
+0	?invention: What's addictive about the process?
+0	?journey: Where are we going?
+0	?kinect: How does a depth camera work?
+0	?machine vision: How will the camera of the future work?
+0	?interfaces:What's the ultimate interface?
+0	?machine vision: What's the camera of the future?
+0	?interface: What's the ultimate interface?
+0	?machine vision: When did machine vision become cool?
+0	?interface: What makes an effective interface?
+0	?zen: How do you know when it's working?
+0	?writing: How do we use data to tell stories?
+0	?world building: Why recreate the world inside a computer?
+0	?machine vision: Where is there still room for innovation?
+0	?working with others: Why collaborate?
+0	?why?:What questions are you asking?
+0	?weird: Why the obsession with cats?
+0	?maps: How do we make maps of memory?
+0	?surprise: What is surprising?
+0	?struggle with technology: What barriers stand in the way of learning to code?
+0	?stress: What's most frustrating in the process?
+0	?storytelling: Why do humans create stories?
+0	?storytelling: What's the future of storytelling?
+0	?storytelling: What is the future of storytelling?
+0	?storytelling: What hasn't been done yet?
+0	?storytelling: What can data tell us about ourselves?
+0	?storytelling: How do let audiences enter the work?
+0	?staring at screens: If you stare at the screen will you go blind?
+0	?staring at screens: How much time do you spend in front of a computer?
+0	?solutions: What societal issues can designers address?
+0	?software: Why use code as a design tool?
+0	?immersion: Where do you find immersion?
+0	?software: Why should software be free?
+0	?software: Why is commercial software so expensive?
+0	?society: How does your artwork respond to current events?
+0	?toolmakers: what's the link between invention and art?
+0	?toolkit: How does experimentation lead to innovation?
+0	?time: How do you think about time?
+0	?thinking: How does programming change the way you think?
+0	?thinking: Do computers make us smarter?
+0	?thinking with code: How does the computer enhance creativity?
+0	?thinking with code: How does programming change the way you think?
+0	?man vs machine: When will computers become collaborators?
+0	?thinking by doing: How does a design emerge?
+0	?technology: What is 'new' in new media?
+0	?technological progress: What's drives technological progress?
+0	?infinity: How long does it take a monkey to rewrite shakespeare?
+0	?technological progress: How do artists influence the future?
+0	?tech-demo: When does code become poetry?
+0	?infinity: How does the computer help us grasp infinity?
+0	?tech-demo: When does an experiment become more than just a techo demo?
+0	?improvization: How do you make creative decisions?
+0	?teaching: How do open source coders earn a living?
+0	?open source: What are the limits of open source?
+0	?open source: Before the internet existed
+0	?open frameworks: What's the origin of openFrameworks?
+0	?opacity: What are the side effects of seamlessness?
+0	?gestalt: What is gestalt?
+0	?old meda:What's the history of creative coding?
+0	?death: When you die what happens to your online identity?
+0	?obsolescence: What's the lifespan of code?
+0	?genetics: How do genetic algorithms work?
+0	?demo scene: How did 8-bit games influence this generation?
+0	?design: Where's the line between design and art?
+0	?digital meets physical: How do algorithms alter reality?
+0	?novelty: Do new and shiny things ever get old?
+0	?newness: Do we fetishize newness?
+0	?digital meets physical: How do people communicate now?
+0	?digital meets physical: How does digital art relate to the analog world?
+0	?generative art: When is an artwork done?
+0	?military technology: How can military technology benefit humanity?
+0	?data visualization: What can data visualization teach us?
+0	?data: How can data be emotionally evokative?
+0	?personal data: Should we be concerned about privacy of information?
+0	?perception: What is the ultimate artform?
+0	?data: How can data become more accessible?
+0	?perception: How have algorithms tranformed the experience of art?
+0	?pattern: How does data reveal about the big picture?
+0	?originality: Where's the line between creative appropriation and theft?
+0	?originality: When ideas develop in communities does everyone get credit?
+0	?data: How do we manage the flood of data?
+0	?organic: What's the missing ingredient?
+0	?open source: Why should software be free?
+0	?open source: What's the limit of open source?
+0	?data: How does data reflect desire?
+0	?open source: What is open source all about?
+0	?gesture: How does music influence the image?
+0	?data: What is data?
+0	?face tracking: How do computers see the world?
+0	?new aesthetic: Why do we find smart sensors spooky?
+0	?new aesthetic: What is the new aesthetic?
+0	?new aesthetic: What is the New Aesthetic?
+0	?fantasy technology: What's the future of art and technology?
+0	?feedback: How does programming become addictive?
+0	?network: What's the size of the internet?
+0	?generative art: Is an artwork ever done?
+0	?network: Has the internet made us more creative?
+0	?net.art: Is internet art exhibited in galleries?
+0	?gender: Does the field of technology remain male dominated?
+0	?nature: What is your wellspring?
+0	?future of cinema: What happens when games and cinema converge?
+0	?future of cinema: What's the future of cinema?
+0	?gardening: Is a generative artwork ever truly done?
+0	?net.art: How does content go viral?
+0	?future: How will future archaeologists learn about our civilization?
+0	?future: What's the secret to predicting the future?
+0	?new media: What's the shelf life of new media?
+0	?new media: What's the medium of our time?
+0	?narrative: How is meaning extracted from big data sets?
+0	?distraction: How can design address problems of distraction?
+0	?nature: What inspires you?
+0	?new media: What's new in new media?
+0	?dna: How do computer systems imitate biological systems?
+0	?drawing: How does drawing change the way you see?
+0	?dystopia: Does technology lead to a brighter future?
+0	?economics: Why should software be free?
+0	?nature: What is creativity?
+0	?emergence: How do lifelike behaviors emerge from code?
+0	?emergence: How does complexity emerge from simple rules?
+0	?empathy: How can technology promote a genuine sense of interconnectedness?
+0	?empathy: How can technology promote empathy?
+0	?new media: Does new media have a place in contemporary art?
+0	?evolution: How do computer programs simulate evolution?
+0	?experience design: How can software enhance real world experiences?
+0	?collective intelligence: Who has the answer?
+0	?commercial art: What's challenging about commercial work?
+0	?communication: How do people communicate now?
+0	?programming: What's the value of programming as an art practice?
+0	?community: How did the Processing community take shape?
+0	?programming: What's enjoyable about programmming?
+0	?community: How did this community originate?
+0	?community: How does the network accelerate creativity?
+0	?programming: What was the gateway drug to creative coding?
+0	?community: What binds you to this community?
+0	?programming: What motivated you to learn programming?
+0	?community: What's holds the community together?
+0	?community: Who were the first serious users of Processing?
+0	?communty: What defines this community?
+0	?complexity: Why do data visualization always look so complex?
+0	?computation: Does nature compute?
+0	?programming: What does it feel like to program?
+0	?programming: Is programming a waste of time?
+0	?real and virtual: Have we hacked reality?
+0	?coding: How can the logic of coding be creative?
+0	?humor: What's the function of humor?
+0	?randomness: What generates randomness?
+0	?coding: How do you become a hacker?
+0	?randomness: How is randomness useful as a tool?
+0	?coding: How do you sketch with code?
+0	?collaboration: Are collectives more creative than individuals working alone?
+0	?collaboration: Who is the Anonymous genius?
+0	?collective intelligence: Are we getting smarter?
+0	?collective intelligence: How do groups of people think together?
+0	?collective intelligence: How do networks promote cooperation?
+0	?history: What's the history of generative art?
+0	?collective intelligence: Is the net becoming a global brain?
+0	?collective intelligence: What does the ideal creative network look like?
+0	?randomness: How is randomness a useful tool?
+0	?mentors: How does one pay homage to mentors?
+0	?questions: What's the starting point for a project?
+0	?creative coders: How would an anthropologist identify this tribe?
+0	?creativity: What nourishes creativity?
+0	?creativity: What sustains our creativity?
+0	?hackers: Do hackers pose a real threat?
+0	?play: How is play essential to the process?
+0	?hackers: Do hackers pose a real threat to society?
+0	?creativity: Where does abstraction originate?
+0	?personal data: What does data tell us about ourselves?
+0	?gps:Can the NSA track your location?
+0	?critical engineering: How does academic research inform creative technology ?
+0	?critical engineering: What's the idea behind critical engineering?
+0	?crowdsourcing: How 10
+0	?crowdsourcing: How does the crowd become a collaborator?
+0	?cyberpunk: Do we live in the future that Cyberpunk predicted?
+0	?data ownership: How can data become more accessible?
+0	?data visualization: How can visualization help us understand complexity?
+0	?data visualization: How does the eye process information?
+0	?data visualization: What are the most common tropes of data visualization?
+0	?processing: How did processing get started?
+0	?process: How do computers speed up the creative process?
+0	?privacy: Should we take better care to secure personal data?
+0	?post-digital: What comes after digital?
+0	?computation: What is computation?
+0	?computer: What is a computer?
+0	?computer: What's the future of computing?
+0	?post-digital: Are we alone together?
+0	?connectivity: Are we alone together?
+0	?connectivity: Do we suffer from being constantly connected?
+0	?consciousness: What will happen when the Singularity arrives?
+0	?hackers: What's the hacker ethos?
+0	?consciousness: When will computers attain self-awareness?
+0	?cosmogeny: How do you build a universe?
+0	?cosmogeny: How do you create a digital universe?
+0	?play: Why does most art take itself seriously?
+0	?cosmogeny:How do you build a universe?
+0	?hackers: What is anonymous?

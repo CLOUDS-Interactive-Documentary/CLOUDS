@@ -200,7 +200,7 @@ void CloudsVisualSystemOcean::selfDraw(){
 	glPointSize(pointSize);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
-	
+	glDisable(GL_LINE_SMOOTH);
 //	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
 	glEnable(GL_FOG);

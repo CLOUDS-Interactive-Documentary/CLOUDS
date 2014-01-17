@@ -260,6 +260,8 @@ void CloudsSecondaryDisplayController::update(){
             }
 			currentClip = parser.getClipWithID(m.getArgAsString(1));
             respondToClip(currentClip);
+            clusterMap.setCurrentTopic(currentTopic);
+            
          //   animateIn();
 		}
 		else if(m.getAddress() == "/actBegan"){
@@ -317,7 +319,7 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 //	}
 	///JG END TEMP HACK
 
-	//	string exampleId = m.getArgAsString(4);
+	//string exampleId = m.getArgAsString(4);
 	if(currentClip.hasProjectExample){
         
 		if(currentClip.projectExample.exampleVideos.size() > 0){

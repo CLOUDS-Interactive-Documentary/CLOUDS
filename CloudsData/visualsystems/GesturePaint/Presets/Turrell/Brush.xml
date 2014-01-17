@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Brush</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>148.000000000</YPosition>
+    <XPosition>326.000000000</XPosition>
+    <YPosition>298.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -83,5 +83,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Show Palette</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>

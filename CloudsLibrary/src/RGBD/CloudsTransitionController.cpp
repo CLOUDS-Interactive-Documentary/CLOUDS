@@ -59,7 +59,15 @@ void CloudsTransitionController::transitionFromIntro(float outDuration){
 void CloudsTransitionController::transitionToIntro(float inDuration){
 	confirmEmpty();
 
-    queueState(TRANSITION_INTERLUDE_OUT, inDuration);
+    if(previousState == TRANSITION_INTERLUDE_IN){
+        queueState(TRANSITION_INTERLUDE_OUT, inDuration);
+    }
+    else if(previousState == TRANSITION_INTERVIEW_IN){
+        queueState(TRANSITION_INTERVIEW_OUT, inDuration);
+    }
+    else if(previousState == TRANSITION_VISUALSYSTEM_IN){
+        queueState(TRANSITION_VISUALSYSTEM_OUT, inDuration);
+    }
     
 	queueState(TRANSITION_INTRO_IN, inDuration);
 	
@@ -149,7 +157,7 @@ void CloudsTransitionController::transitionWithQuestion(float outDuration, float
 	
 	queueState(TRANSITION_INTERVIEW_OUT, outDuration);
 	
-	queueState(TRANSITION_QUESTION_IN, portalDuration);
+	//queueState(TRANSITION_QUESTION_IN, portalDuration);
 	
 	startTransition();
 }
@@ -224,6 +232,14 @@ CloudsTransitionState CloudsTransitionController::getPreviousState(){
 	return previousState;
 }
 
+CloudsTransitionState CloudsTransitionController::getPendingState(){
+	return pendingState;
+}
+
+string CloudsTransitionController::getPendingStateDescription(){
+    return getStateDescription(pendingState);
+}
+
 string CloudsTransitionController::getCurrentStateDescription(){
 	return getStateDescription(currentState);
 }
@@ -257,11 +273,13 @@ CloudsTransitionState CloudsTransitionController::getNextState(){
 	if(stateQueue.empty()){
 		currentQueue.state = TRANSITION_IDLE;
 		currentState = TRANSITION_IDLE;
+        pendingState = TRANSITION_IDLE;
 		transitioning = false;
 	}
 	else{
 		currentQueue = stateQueue.front();
 		currentState = stateQueue.front().state;
+        pendingState = stateQueue.back().state;
 		stateQueue.pop_front();
 	}
 

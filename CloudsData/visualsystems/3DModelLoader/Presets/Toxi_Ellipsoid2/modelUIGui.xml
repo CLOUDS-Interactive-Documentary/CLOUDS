@@ -63,7 +63,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>ellipsoid1.obj</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -118,7 +118,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Hypersphere1.obj</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -128,6 +128,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Kelp2.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Laplacian1.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Laplacian2.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -173,6 +183,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Toxi_Ellipsoid.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ToxiAllInOne.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Trachia.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

@@ -27,11 +27,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>smooth model</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>wireframe</Name>
     <Value>0</Value>
 </Widget>

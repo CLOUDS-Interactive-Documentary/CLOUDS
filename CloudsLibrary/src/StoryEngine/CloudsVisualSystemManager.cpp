@@ -199,16 +199,12 @@ struct Mapping {
 
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 
-//--------------------------------------------------------------------
-//ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::InstantiateSystem(string systemName){
-//	if(constructors.find(systemName) != constructors.end()){
-//		return ofPtr<CloudsVisualSystem>( constructors[systemName]() );
-//	}
-//    cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << endl;
-//	return ofPtr<CloudsVisualSystem>();
-//}
-
 CloudsVisualSystem* CloudsVisualSystemManager::InstantiateSystem(string systemName){
+    //RIG EMPTY ONLY
+//    CloudsVisualSystem* system = new CloudsVisualSystemEmpty();
+//    systems.push_back( system );
+//    return system;
+
 	if(constructors.find(systemName) != constructors.end()){
         CloudsVisualSystem* system = constructors[systemName]();
         systems.push_back( system );
@@ -700,6 +696,7 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
     vector<string> presetIds;
     
     //JG RIG
+    
 //	for(int i = 0; i < presets.size(); i++){
 //        if(presets[i].systemName == "Twitter"){
 //            presetsWithKeywords.push_back(presets[i]);

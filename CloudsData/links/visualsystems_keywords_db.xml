@@ -3376,7 +3376,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -3446,7 +3446,7 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -3472,7 +3472,7 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -4059,7 +4059,7 @@
     </suppressions>
     <comments></comments>
     <grade>C</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -4073,7 +4073,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -4088,7 +4088,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -5288,6 +5288,52 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="CirclePacking_Circles_NewFrontier">
+    <keywords>interactivity|play|surprise</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Golan - instruments</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - playable image</clip>
+        <clip>Golan - project example</clip>
+        <clip>Golan - twitching in a room</clip>
+        <clip>Golan - what&apos;s an instrument?</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Intro - interactivity1</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - deep interaction</clip>
+        <clip>Joel - Interactivity</clip>
+        <clip>Theo - 3D sensing</clip>
+        <clip>Theo - Kids interacting</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Theo - hide the technology,</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Kyle_CH - don&apos;t underestimate traditional art</clip>
+        <clip>Kyle_MC - kinect 2</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - MalleableMath</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Patricio - InteractiveTable 1</clip>
+        <clip>Patricio - InteractiveTable 2</clip>
+        <clip>Vera - commisions,</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Golan - observation of users</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -7427,7 +7473,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>1</sound_allow_vo>
+    <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="Colony_SyntheticBlack">
@@ -7476,7 +7522,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>1</sound_allow_vo>
+    <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="Colony_SyntheticGreen">
@@ -7528,7 +7574,7 @@
     <interlude>0</interlude>
 </system>
 <system name="Connectors_Fast_connections">
-    <keywords></keywords>
+    <keywords>dreams|imagination</keywords>
     <links></links>
     <suppressions>
         <clip>Andres - fuzzy systems</clip>
@@ -7561,10 +7607,11 @@
         <clip>Nervous_Jesse - we like things tidy</clip>
         <clip>Philip - in touch all the time</clip>
         <clip>Ramsey - elegant system</clip>
+        <clip>Aaron - lego creatures</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -8492,16 +8539,31 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="CubeCraft_MC_shadows_1">
-    <keywords></keywords>
+    <keywords>minecraft|videogames</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - experience design</clip>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Aaron - the best games are great stories</clip>
+        <clip>JTNimoy - Cortex</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Kevin - Area code 2</clip>
+        <clip>Kevin - Big games 1</clip>
+        <clip>Kevin - No consequences 1</clip>
+        <clip>Kevin - area code 1</clip>
+        <clip>Kevin - immersive games</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+        <clip>Ramsey - games for access</clip>
+        <clip>Regine - virtual</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -10347,7 +10409,7 @@
     <interlude>0</interlude>
 </system>
 <system name="ExampleMPMFluid_gal1">
-    <keywords>physics|phenomena</keywords>
+    <keywords>physics|phenomena|interactivity</keywords>
     <links></links>
     <suppressions>
         <clip>Shiffman - how far could we get?</clip>
@@ -10366,6 +10428,9 @@
         <clip>Philip - programming the river</clip>
         <clip>Ramsey - emergence from simple rules</clip>
         <clip>Shiffman - Magnets</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Shantell - Kids</clip>
+        <clip>Regine - ambiguous categories</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -11677,6 +11742,18 @@
     <interlude>0</interlude>
 </system>
 <system name="Fireworks_g_work_02b">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Fireworks_laserworks">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -16909,6 +16986,56 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="Neurons_Brain_wide">
+    <keywords>network|artificial intelligence</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Sophy - city</clip>
+        <clip>Sophy - the Cloud</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Philip - in touch all the time</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Lauren - sentiment anaylsis</clip>
+        <clip>Kyle_MC - uncanny</clip>
+        <clip>Kyle_MC - new aesthetic 2</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_CH - Cloud atlas</clip>
+        <clip>Kyle_CH - Sentience of digital art</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kevin - algo chess 3</clip>
+        <clip>Kevin - algo chess 2</clip>
+        <clip>Kevin - algo chess 1</clip>
+        <clip>Kevin - autonomous machines crash</clip>
+        <clip>Kevin - machines crash</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Karsten - DarkNet</clip>
+        <clip>Julian - I love networks</clip>
+        <clip>Julia - net friends</clip>
+        <clip>Julia - strength of weak ties</clip>
+        <clip>Julia - Who owns the internet?</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Bruce - Everted Cyberspace</clip>
+        <clip>Andres - Computational lens</clip>
+        <clip>Aaron - collaboration</clip>
+        <clip>Aaron - digital trace</clip>
+        <clip>Aaron - Tailored Stories</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="Neurons_Cosmic">
     <keywords></keywords>
     <links></links>
@@ -16994,7 +17121,7 @@
     <interlude>0</interlude>
 </system>
 <system name="Neurons_MezzyNeurons">
-    <keywords>collective intelligence|collaboration</keywords>
+    <keywords>collective intelligence|collaboration|interconnectedness|networks</keywords>
     <links></links>
     <suppressions>
         <clip>Aaron - Crowdsourcing</clip>
@@ -23772,12 +23899,12 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_AIC_Kids">
-    <keywords></keywords>
+    <keywords>rgbd|kinect|camera</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -23796,37 +23923,31 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_Eyebeam_spinningDude">
-    <keywords></keywords>
+    <keywords>rgbd|kinect</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_Hangar">
-    <keywords>open source|rgbd|kinect</keywords>
+    <keywords>open source|rgbd|kinect|learning|cameras</keywords>
     <links></links>
     <suppressions>
         <clip>Aaron - exquisite forest</clip>
-        <clip>Aaron - sharing</clip>
         <clip>Bruce - 2060s (Lashup 5)</clip>
         <clip>Bruce - Github Tarball</clip>
         <clip>Bruce - kinect hacking</clip>
         <clip>Casey - Processing addons</clip>
         <clip>Casey - Processing open</clip>
-        <clip>Chris - EthicOfSharing</clip>
-        <clip>Diederick - openFrameworks</clip>
-        <clip>Diederick - worldwillbecomebetter</clip>
         <clip>Elliot - Kinect</clip>
         <clip>Elliot_UK - limitations 2</clip>
         <clip>Golan - STUDIO art and code</clip>
         <clip>Golan - closed source mistake</clip>
-        <clip>Golan - hackathons2</clip>
-        <clip>Golan - limits to sharing</clip>
         <clip>Higa -</clip>
         <clip>Higa - language barriers</clip>
         <clip>Higa - not sharing its a backup</clip>
@@ -23837,11 +23958,6 @@
         <clip>JTNimoy - Describe the Kinect</clip>
         <clip>JTNimoy - increased the bandwidth</clip>
         <clip>JTNimoy - open source mensch</clip>
-        <clip>Jer - Desire to get together</clip>
-        <clip>Jer - Making a tool</clip>
-        <clip>Jer - Post-capitalism</clip>
-        <clip>Jer - Software1</clip>
-        <clip>Jer - Software2</clip>
         <clip>Jer - post-capitalism2</clip>
         <clip>Joel - CocaCola</clip>
         <clip>Joel - CocoCola</clip>
@@ -23850,13 +23966,11 @@
         <clip>Joel - advertising</clip>
         <clip>Joel - microsoft research</clip>
         <clip>Julia - can&apos;t be solitary</clip>
-        <clip>Julia - open source and ego</clip>
         <clip>Julian - mixing code</clip>
         <clip>Julian - open source</clip>
         <clip>Karsten - becoming insular</clip>
         <clip>Karsten - processing</clip>
         <clip>Karsten - toxiclibs</clip>
-        <clip>Kevin - Networked intelligence</clip>
         <clip>Kevin - immersive games</clip>
         <clip>Kyle_CH - RGBD</clip>
         <clip>Kyle_CH - open source</clip>
@@ -23869,15 +23983,11 @@
         <clip>LIA - SkepticismAboutOpenSource</clip>
         <clip>Maeda - ACU p 2</clip>
         <clip>Maeda - ACU part 1</clip>
-        <clip>Maeda - Processing community</clip>
         <clip>Maeda - Processing toolkit</clip>
         <clip>Marcus - economics question</clip>
         <clip>Nervous_Jesse - Getting Ripped off</clip>
-        <clip>Nervous_Jesse - Open source education</clip>
         <clip>Nervous_Jesse - limiting open source</clip>
         <clip>Paola - code ant farm</clip>
-        <clip>Paola - generosity</clip>
-        <clip>Patricio - Rethinking education systems</clip>
         <clip>Patricio - Zeitgeist of open source</clip>
         <clip>Philip - all the points can flush</clip>
         <clip>Philip - if I had Processing in school</clip>
@@ -23889,15 +23999,8 @@
         <clip>Ramsey - legos 1</clip>
         <clip>Ramsey - legos 2</clip>
         <clip>Ramsey - minecraft 1</clip>
-        <clip>Shiffman - Open Source Contract</clip>
-        <clip>Shiffman - problem solving</clip>
-        <clip>Shiffman - sharing</clip>
-        <clip>Theo - development feedback,</clip>
-        <clip>Theo - open frameworks</clip>
-        <clip>Zach - Open Frameworks 1</clip>
         <clip>Zach - debugging</clip>
         <clip>Zach - decompiling</clip>
-        <clip>Zach - open source challenge</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -24002,7 +24105,9 @@
 </system>
 <system name="RGBDVideo_ITP_2_omer">
     <keywords>hackers|hacker|art vs engineering</keywords>
-    <links></links>
+    <links>
+        <clip>Intro - Toolmaker</clip>
+    </links>
     <suppressions>
         <clip>Aaron - Google Data arts</clip>
         <clip>Binx - art for money</clip>
@@ -24082,8 +24187,8 @@
         <clip>Ramsey - legos 3</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -24154,12 +24259,12 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_ITP_5">
-    <keywords></keywords>
+    <keywords>learning|education|beginnings</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -31080,7 +31185,7 @@
     <interlude>0</interlude>
 </system>
 <system name="World_DataWorld1">
-    <keywords>social media|network|communication|facebook</keywords>
+    <keywords>social media|network|communication|facebook|big data</keywords>
     <links></links>
     <suppressions>
         <clip>Greg - the &quot;Like&quot; button cascade</clip>
@@ -31135,7 +31240,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -31153,7 +31258,7 @@
     <interlude>0</interlude>
 </system>
 <system name="World_Data_globe2">
-    <keywords>social media|network|communication|facebook</keywords>
+    <keywords>social media|network|communication|facebook|big data</keywords>
     <links></links>
     <suppressions>
         <clip>Greg - the &quot;Like&quot; button cascade</clip>
@@ -31712,9 +31817,12 @@
     <interlude>0</interlude>
 </system>
 <system name="World_jm_data1">
-    <keywords></keywords>
+    <keywords>solutions|globalization|apocalypse|internet|big data</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - dreaming together</clip>
+        <clip>Fernanda - had to explain that the web was social</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>

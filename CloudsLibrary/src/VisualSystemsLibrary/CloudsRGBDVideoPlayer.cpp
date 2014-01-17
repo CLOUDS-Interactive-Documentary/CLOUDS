@@ -289,6 +289,11 @@ ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 	return *currentPlayer;
 }
 
+void CloudsRGBDVideoPlayer::stop(){
+    getPlayer().stop();
+    currentVoiceoverPlayer->stop();
+}
+    
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	

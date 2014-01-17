@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>CamSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>213.000045776</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>197.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -38,27 +38,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>damping</Name>
-    <Value>0.034482535</Value>
+    <Value>0.044482537</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>11.083702087</Value>
+    <Value>-23.497589111</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>13.743797302</Value>
+    <Value>16.403884888</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minY</Name>
-    <Value>5.763511658</Value>
+    <Value>-19.064094543</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxY</Name>
-    <Value>14.630508423</Value>
+    <Value>15.517189026</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

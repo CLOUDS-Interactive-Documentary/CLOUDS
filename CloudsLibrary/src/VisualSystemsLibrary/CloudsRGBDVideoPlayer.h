@@ -38,7 +38,8 @@ public:
     
 	//  CYCLE
 	//
-	
+	void stop();
+    
 	bool isPlaying();
 	bool isDone();
 	bool forceStop; //default to true when playin in clouds

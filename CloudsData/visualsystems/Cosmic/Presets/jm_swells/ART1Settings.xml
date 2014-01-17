@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>ART1Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
+    <XPosition>1061.000000000</XPosition>
     <YPosition>208.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>ART1 POS-Z</Name>
-    <Value>6.399993896</Value>
+    <Value>2.223220825</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

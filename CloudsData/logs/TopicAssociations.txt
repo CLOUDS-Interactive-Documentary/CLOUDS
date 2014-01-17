@@ -1,0 +1,668 @@
+70	community : community 
+70	open source : open source
+68	sharing : sharing 
+68	data visualization : data visualization 
+66	simulation : simulation
+64	technological progress : progress
+63	storytelling : storytelling
+61	collaboration : collaboration
+61	complexity : complexity
+58	data : data
+57	learning : learning
+56	programming : programming
+49	code : code
+49	nature : nature
+47	future : future 
+46	language : language
+45	social media : social media
+45	coding : code
+45	artificial intelligence : artificial intelligence
+45	communication : communication
+43	internet : internet
+43	systems : systems
+43	process : processes
+42	archiving : archiving
+42	beginnings : learning
+41	interactivity : interactivity 
+41	history : history 
+41	future of cinema : future of cinema 
+41	tools : tools
+37	man vs machine : machines
+36	personal data : personal data
+36	math : math
+35	virtual : virtual reality 
+35	digital meets physical : objects  
+35	collective intelligence : collective intelligence 
+35	network : networks 
+35	new media : new media 
+35	creativity : creativity 
+34	camera : cameras
+34	algorithm : algorithms
+33	beauty : beauty
+33	society : society 
+32	art : art
+32	videogames : videogames
+31	new aesthetic : new aesthetic 
+31	reality : reality 
+31	emotion : emotion
+31	newness : newness
+31	tribe : subculture 
+30	education : education
+30	people : people 
+29	drawing : drawing
+29	social : social 
+29	biology : biology 
+29	cognition : thinking 
+29	computation : computation
+29	computer : computers
+28	career : careers
+28	old media : old media
+28	play : play
+28	thinking with code : thinking
+28	identity : identity 
+28	design : design 
+28	perception : perception 
+28	science fiction : science fiction 
+27	memory : memory 
+27	emergence : emergence 
+26	art vs engineering : engineering 
+26	criticality : theory 
+26	power : power
+26	limitations : limitations
+26	hackers : hackers
+25	time : time
+25	machine vision : machine vision
+25	processing : processing
+24	hybridity : hybridity 
+24	scale : scale
+24	weird : weirdness
+24	progress : progress
+24	devices : devices
+24	control : control
+23	users : users
+22	dysfunction : dysfunction
+22	surprise : serendipity 
+22	generative art : generative art
+22	critical engineering : critical engineering
+21	aesthetics : aesthetics
+21	program or be programmed : programming
+21	error : error
+21	solutions : problem solving
+21	experience : experience
+20	pattern : patterns
+20	originality : originality
+20	big data : big data
+20	clouds : clouds
+20	ideas : ideas
+20	toolkit : tools
+19	culture : culture
+19	problem solving : problem solving
+19	3d printing : replication  
+19	critique : critique
+19	discovery : discovery
+19	cosmogeny : world building
+19	evolution : evolution
+19	real and virtual : virtual reality 
+19	sketching : sketching
+19	games : games
+19	open frameworks : openframeworks
+19	interfaces : interfaces
+19	imagination : imagination
+19	commercialism : commercialism
+18	creative coding : creative coding
+18	post-digital : post-digital 
+18	physicality : physicality
+18	data ownership : data ownership
+18	technology : technology
+18	algorithms : algorithms
+18	dystopia : dystopia
+18	elegance : elegance
+18	magic : magic
+18	art and code : art and code
+18	improvization : improvization
+17	twitter : twitter
+17	visual culture : visual culture
+17	physics : physics
+17	narrative : narrative
+17	music : music
+17	teaching : education
+17	humanity : humanity
+16	artificial life : artificial life
+16	art and tech : new media
+16	aesthetics and computation : media lab
+16	nerd : nerds
+16	engineering : engineering
+16	immersion : immersion
+16	zen : zen
+16	transparency : transparency
+15	abstraction : abstraction
+15	facebook : facebook
+15	dreams : dreams
+15	information : information
+15	style : style
+15	logic : logic
+15	futurism : futurism
+15	attention : attention
+15	exploration : exploration
+15	gesture : gesture
+14	invention : invention 
+14	representation : representation 
+14	liveness : liveness
+14	audiovisualization : audiovisualization 
+14	randomness : randomness
+14	memes : memes
+14	media lab : media lab
+14	privacy : privacy 
+14	thinking by doing : thought process
+14	simplicity : simplicity 
+14	economics : economics
+14	software : software
+14	world building : world building
+14	serendipity : serendipity 
+14	opacity : opacity
+14	cyborg : cyborg
+14	surveillance : surveillance
+14	kinect : kinect
+13	universe : universe
+13	children : kids
+13	utopia : utopia
+13	dna : genetics
+13	mentors : gurus
+13	hackathon : hackathon
+13	social engagment : social engagement 
+13	truth : truth
+13	creative misuse : creative misuse
+13	visualization : visualization
+12	art world : art world
+12	money : money
+12	rules : rules
+12	datatelling : data visualization
+12	frustration : challenges
+12	biology and code : biology
+11	sex : sex
+11	interconnectedness : interconnectedness
+11	science : science
+11	creative coders : creative coding
+11	commercial art : commercial art
+11	gps : gps
+11	relationships : relationships
+11	fantasy technology : fantasy technology
+11	chance :  chance
+11	embodiment : embodiment
+11	experience design : experience design
+11	social dynamics : social dynamics
+11	bots : bots
+11	preservation : archiving
+10	consciousness : consciousness
+10	fantasy : fantasy
+10	toolmakers : toolmakers
+10	security : security 
+10	self expression : self-expression
+10	poetry : poetry
+10	story : storytelling
+10	staring at screens : attention
+10	crowdsourcing : crowdsourcing
+10	journey : journeys
+10	challenges : challenges
+10	generations : generations
+10	distraction : distraction
+10	love : love
+10	collaboration with machines : cybernetics
+10	installation : media art
+10	maps : maps
+10	augmented reality : augmented reality
+9	struggle with technology : friction 
+9	failure : failure
+9	gestalt : gestalt
+9	globalization : globalization
+9	symbiosis : symbiosis
+9	stock market : stock market
+9	singularity : singularity 
+9	empathy : empathy
+9	useful : usefulness
+9	chaos : chaos
+9	virality : virality
+9	intuition : intuition
+9	interdisciplinary : hybridity
+9	infinity : infinity
+9	thinking : thinking
+9	net.art : net art
+9	performance art : performance
+8	phenomena : phenomena
+8	artificiality : artificiality
+8	architecture : architecture
+8	assistive technology : assitive technology 
+8	mobile : mobile technology
+8	feedback : feedback
+8	obsolescence : obsolescence 
+8	perspective : perspective
+8	bugs : bugs
+8	legibility : legibility
+8	cultural value : value
+8	the cloud : the clouds
+8	god mode : creation
+8	gardening : gardening 
+8	hacking : hacking
+8	sensor : sensors
+8	gift : gifts
+7	zoom : zoom
+7	art history : art history
+7	arabic : language 
+7	apocalypse : future
+7	ubiquity : ubiquity
+7	understanding : knowledge
+7	cities : cities
+7	vision : vision 
+7	cinema : cinema
+7	accessibility : access
+7	useless : uselessness
+7	painting : painting
+7	nature of code : simulation 
+7	mind and hand : creativity 
+7	mind : mind
+7	probability : probability
+7	knowledge : knowledge 
+7	revelation : revelation 
+7	inexactitude : details
+7	robots : robots
+7	humanism : humanism
+7	github : gt hub
+7	gender : gender
+7	focus : focus
+7	form : form
+7	expression : expression
+7	english : language
+6	thinking through code : thinking
+6	toolkits : tools
+6	network security : network security
+6	face tracking : facetracking 
+6	possibility : possibility 
+6	trendspotting : trends
+6	uncanny : uncanny 
+6	coding for humanity : coding 
+6	museums : museums 
+6	research : research 
+6	iteration : iteration 
+6	realness : realness
+6	cellular automata : cellular automata 
+6	questions : research
+6	quantified self : quantified self
+6	behavior : behavior
+6	addiction : addiction 
+6	aesthetic experience : experience
+6	death : death
+6	technoptimism : optimism 
+6	subjectivity
+6	google : google
+6	cyberpunk : cyberpunk
+6	wikipedia : wikipedia
+6	design and art : design
+6	survival 
+5	microscope : scale
+5	machine aesthetics : machines
+5	wearables : wearables
+5	military technology : military technology
+5	reading 
+5	r&d : research and development 
+5	boring 
+5	light 
+5	evaluation
+5	legos : legos
+5	sound : sound
+5	participation 
+5	john maeda
+5	virtuosity : mastery 
+5	homogeneity
+5	humor
+5	hacker : hackers
+5	seamlessness : seamlessness
+5	sculpture 
+5	tradition
+5	hack : hacking 
+5	apps : apps
+5	philosophy
+5	information as weapon 
+5	ubiquitous computing : ubiquitous computing
+5	uncertainty 
+5	system : systems
+5	genetics : genetics
+4	noise
+4	philsophy
+4	why
+4	prediction
+4	nostalgia
+4	objects
+4	metaphor : metaphors
+4	virus : viruses
+4	statistics : statistics
+4	funny
+4	gadget
+4	digital divide : digital divide 
+4	dialogue
+4	synesthesia : synesthesia 
+4	debugging
+4	curation
+4	thanks
+4	growth : growth 
+4	improvement
+4	connections : connections 
+4	tree
+4	instrument
+4	existence
+4	code is messy
+4	struggle
+4	lifetracking
+4	cameras : cameras
+4	location
+4	branching
+4	mastery
+4	meaning : poetics 
+4	efficiency
+4	anonymous
+4	art and experience
+3	rgbd : cameras
+3	generosity
+3	organic
+3	sensation : perception
+3	sensors : sensors
+3	open paths
+3	glitch
+3	god : creation 
+3	nytimes
+3	networks : networks
+3	guru : gurus
+3	mysticism
+3	serious
+3	hallucination : visions
+3	motion
+3	change
+3	text
+3	art and security
+3	art and science
+3	projection
+3	product
+3	fat
+3	feeling
+3	creation : creation
+3	prosthetic : prosthetic 
+3	eyewriter
+3	corporate
+3	politics
+3	constraints
+3	food
+3	connectivity : connectivity 
+3	formalism
+3	performance : performance
+3	fun : fun 
+3	gadgets : gadgets
+3	things
+3	influence
+3	success
+3	work
+3	infrastructure
+3	acu
+3	advertising
+3	working with others : collaboration 
+3	beautiful exhuberance : beauty
+3	balance
+3	disaster
+3	avatar
+3	kill the master
+3	alone together : anti-social 
+3	journalism
+3	audience
+3	writing
+3	synthetic biology : synthetic biology
+3	apple
+3	tech-demo
+3	interestingness
+3	challenge
+3	visual cortex : perception
+3	man versus machine : machines
+3	luck
+3	business
+3	literacy
+3	life
+3	library
+3	why?
+3	digital culture : digital culture 
+2	rhetoric
+2	epiphany
+2	taste
+2	ego
+2	electronic music : electronic music 
+2	skill
+2	synergy : syergy 
+2	space
+2	eyeo
+2	psychology
+2	responsibility
+2	sentiment analysis
+2	street art
+2	subversion
+2	public
+2	rendering
+2	internet of things : internet of things
+2	inventor : invention 
+2	interesting
+2	intelligence : intelligence 
+2	innovation : innovaation 
+2	information overload : information overload 
+2	laughter
+2	infinite conversation 
+2	limits of the computer
+2	imaginary
+2	media : media 
+2	messiness : messiness
+2	minecraft : videogames 
+2	hope
+2	multiverse
+2	object recognition
+2	open software
+2	openness
+2	operating systems 
+2	order
+2	geometry
+2	own the tool
+2	parameter space
+2	passing the baton
+2	playfulness
+2	policy
+2	fluxus
+2	flow
+2	present shock : present shock
+2	fiction : fiction 
+2	computational power : computational power
+2	book
+2	brain : mind
+2	data mining : data
+2	data collection : data
+2	#pe?Cascade
+2	computers : computers
+2	c++ : C++
+2	visual effects 
+2	confusion
+2	carl sims
+2	video art
+2	creative exploration
+2	creative control
+2	youtube
+2	design by numbers
+2	zach lieberman
+2	design process : design process
+2	atmosphere
+2	#pe?Meshu
+2	ambiguity
+2	demo scene : demo scene 
+2	authorship
+2	teachers : education
+2	wonder
+1	operating system
+1	veterans
+1	multimedia : multimedia
+1	mutlisensory : multisensory experience
+1	uture
+1	nano : nano 
+1	noninteractivity : interactivity 
+1	noosphere
+1	novelty
+1	old history : history 
+1	number : math 
+1	#pe?Laser Tag
+1	#pe?Listening Post
+1	ocd 
+1	unknown
+1	intimacy
+1	 3d printing
+1	inversion
+1	invisibility
+1	iphone
+1	jewelry
+1	julian oliver
+1	 how did people learn to code?
+1	work and life
+1	wizardry
+1	leadership
+1	#pe
+1	#pe?Calendars
+1	line
+1	visual thinking : thinking 
+1	live
+1	maker : makers 
+1	making things : makers 
+1	malevich
+1	manufacturing
+1	mentorship
+1	meta
+1	microsoft : microsoft
+1	mirror
+1	mortality
+1	motivation
+1	texting
+1	shifts
+1	sex and tech
+1	the digital divide : digital divide
+1	self reflection : knowledge 
+1	self : self expression 
+1	the future : futures
+1	sadness
+1	robert hodgin
+1	the gift
+1	the present
+1	things breaking
+1	think different 
+1	recursion
+1	realworld : reality
+1	real world : reality 
+1	real : reality 
+1	teams
+1	tangibility : tangibility 
+1	techno
+1	syntax
+1	000 people collaborate on one project?
+1	(Alb)
+1	sublime
+1	stress
+1	techpositive
+1	stories
+1	storage : storage
+1	spiritual
+1	social engineering
+1	snarky
+1	slow
+1	telepathy
+1	signals
+1	teleportation
+1	pleasure
+1	paul rand
+1	travel
+1	paul burke
+1	passion
+1	partnership
+1	particles : particles
+1	parameters
+1	overview
+1	organizations
+1	tron
+1	tweaking
+1	public/private
+1	thinkerer : tinkering
+1	project examples
+1	problem of newness : newness 
+1	presentation
+1	touch
+1	toxi
+1	prank
+1	toys : play 
+1	popular culture
+1	trace of your life
+1	tragedy
+1	transience
+1	digital natives : digital natives
+1	diy : DIY 
+1	documentation
+1	doing with others : collaboration 
+1	drones
+1	drugs
+1	energy
+1	equilibrium
+1	esoteric
+1	everyday
+1	eyebeam : eyebeam 
+1	fate
+1	flash
+1	flocking
+1	fluency
+1	foraging
+1	forums
+1	frontier : frontier 
+1	generative : generativity 
+1	gesture recognition
+1	give everything away
+1	golan levin
+1	graphic design
+1	gratitude
+1	gui
+1	heroes
+1	how did you get into working with code?
+1	how does the work feed into itself?
+1	human life
+1	ars electronica
+1	apporopriation
+1	antihuman
+1	anthropology
+1	animation : animation 
+1	awkward
+1	afterlife
+1	being
+1	RGBD : cameras
+1	DNA : genetics
+1	Clouds : clouds 
+1	birth 
+1	bravado
+1	brogrammers
+1	choices
+1	chrome
+1	clock : time 
+1	coevolution
+1	completion
+1	concept
+1	consumer
+1	conviction
+1	counterculture
+1	curiosity
+1	darpa
+1	debug screen
+1	demo
+1	design fiction
+1	dichotomy
+1	digital : digital 
+1	digital art : new media 
+1	illusion
+1	image : images
+1	images : images
+1	ignorance
+1	insight
+1	infinite game : infinite games
+1	internet culture
+
