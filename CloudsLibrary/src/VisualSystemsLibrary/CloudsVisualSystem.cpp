@@ -3259,6 +3259,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 		
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
+    if(cameraTrack->lockCameraToTrack){
+        ofxTLCameraFrame* firstCamFrame = (ofxTLCameraFrame*) cameraTrack->getKeyframes()[0];
+        cam.setPosition(firstCamFrame->position);
+        cam.setOrientation(firstCamFrame->orientation);
+    }
+    
 	timeline->setCurrentTimeMillis(0);
 	timeline->play();
 	

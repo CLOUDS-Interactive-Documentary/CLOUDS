@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Post Effects</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1054.000000000</XPosition>
-    <YPosition>45.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>402.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
