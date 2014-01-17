@@ -160,9 +160,6 @@ CloudsVisualSystem::CloudsVisualSystem(){
 #else
 	bUseOculusRift = false;
 #endif 
-    
-    lastMouseMoveMillis = 0;
-	
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -267,7 +264,7 @@ void CloudsVisualSystem::setup(){
 
 //	currentCamera = &cam;
     
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
     hud = NULL;
     hudGui = NULL;
 #endif
@@ -447,6 +444,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
         ofHideCursor();
     }
     lastMousePos = currMousePos;
+
 #endif
     
     if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
@@ -591,7 +589,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 #ifndef OCULUS_RIFT
         drawCursor();
 #endif
+#ifdef KINECT_INPUT
         drawKinectDebug();
+#endif
 
 	}
     
@@ -606,9 +606,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
     ofPopStyle();
 }
 
-
-void CloudsVisualSystem::drawKinectDebug(){
 #ifdef KINECT_INPUT
+void CloudsVisualSystem::drawKinectDebug(){
     if (timeline->getIsShowing()) {
         ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
         if (kinectInput->bDoDebug) {
@@ -620,8 +619,8 @@ void CloudsVisualSystem::drawKinectDebug(){
                                kDebugWidth, kDebugHeight);
         }
     }
-#endif
 }
+#endif
 
 void CloudsVisualSystem::draw2dSystemPlane(){
     // create a plane and map our 2d systems to it
@@ -2943,6 +2942,7 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
     
     kinectGui->addSpacer();
+    kinectGui->addToggle("CLAMP TO BOUNDS", &kinectInput->bClampToBounds);
     kinectGui->addSlider("ACTIVE THRESHOLD Y", 0.0f, 1.0f, &kinectInput->activeThresholdY);
     kinectGui->addSlider("ACTIVE THRESHOLD Z", 0.0f, 1.0f, &kinectInput->activeThresholdZ);
     
@@ -2995,6 +2995,7 @@ void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
     }
 }
 
+#ifdef CLOUDS_APP
 void CloudsVisualSystem::setupHUDGui()
 {
     if (hud == NULL || hudGui != NULL) return;
@@ -3115,7 +3116,8 @@ void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
         hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_OCULUS;
     }
 }
-#endif
+#endif  // CLOUDS_APP
+#endif  // OCULUS_RIFT
 
 void CloudsVisualSystem::lightsBegin()
 {
@@ -3271,6 +3273,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 		
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
+    if(cameraTrack->lockCameraToTrack){
+        ofxTLCameraFrame* firstCamFrame = (ofxTLCameraFrame*) cameraTrack->getKeyframes()[0];
+        cam.setPosition(firstCamFrame->position);
+        cam.setOrientation(firstCamFrame->orientation);
+    }
+    
 	timeline->setCurrentTimeMillis(0);
 	timeline->play();
 	
@@ -3349,9 +3357,11 @@ void CloudsVisualSystem::deleteGUIS()
 #endif
 #ifdef OCULUS_RIFT
     ofRemoveListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+#ifdef CLOUDS_APP
     if (hudGui != NULL) {
         ofRemoveListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
     }
+#endif
 #endif
 	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
@@ -3752,16 +3762,17 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
         ofCircle(pos, 1);
 #else
         ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, 3, 6, true));
+                 ofMap(pos.z, 2, -2, 3, 10, true));
 #endif
     }
     else {
-        ofSetColor(255, 255, 255, 64);
 #ifdef OCULUS_RIFT
+        ofSetColor(255, 255, 255, 64);
         ofCircle(pos, 1);
 #else
+        ofSetColor(255, 255, 255, 128);
         ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, 3, 10, true));
+                 ofMap(pos.z, 2, -2, 3, 14, true));
 #endif
     }
     ofPopStyle();

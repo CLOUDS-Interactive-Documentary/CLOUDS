@@ -16,7 +16,9 @@
 
 #ifdef OCULUS_RIFT
 #include "ofxOculusRift.h"
+#ifdef CLOUDS_APP
 #include "CloudsHUDController.h"
+#endif
 #endif
 
 /**
@@ -257,9 +259,11 @@ class CloudsVisualSystem {
     void setupOculusGui();
 	void guiOculusEvent(ofxUIEventArgs &e);
     
+#ifdef CLOUDS_APP
     CloudsHUDController* hud;
     void setupHUDGui();
 	void guiHUDEvent(ofxUIEventArgs &e);
+#endif
 #endif
     
     //Lighting Helpers
@@ -401,10 +405,6 @@ class CloudsVisualSystem {
 	bool bUseOculusRift;
     CloudsDrawCursorMode drawCursorMode;
     
-    //MOUSE DISPLAY
-    ofVec2f lastMousePos, currMousePos;
-    unsigned long long lastMouseMoveMillis;
-    
     //CAM
     float camDistance;
     float camFOV;
@@ -465,8 +465,9 @@ class CloudsVisualSystem {
 	string mainKeyword;
 	vector<string> keywords;
 	
+#ifdef KINECT_INPUT
     void drawKinectDebug();
-
+#endif
 	
 	static void checkOpenGLError(string function);
 	
