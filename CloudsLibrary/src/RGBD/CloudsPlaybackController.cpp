@@ -15,8 +15,9 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	interludeStartTime = 0;
     numActsCreated = 0;
     crossfadeValue = 0;
-    prevCrossFadeValue = 0;
+
     cachedTransition = false;
+
 }
 
 //--------------------------------------------------------------------
@@ -463,8 +464,7 @@ void CloudsPlaybackController::updateTransition(){
 //if(transitionController.getCurrentState() != TRANSITION_IDLE){
 //    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
 //	}
-//    cout<<"Change in cross fade value : "<<abs(prevCrossFadeValue - crossfadeValue)<<endl;
-	prevCrossFadeValue = crossfadeValue;
+
     
 	CloudsPortal* q;
 	CloudsClip clip;

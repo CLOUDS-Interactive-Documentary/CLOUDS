@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Points 1</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>266.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>221.000000000</XPosition>
+    <YPosition>233.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Alpha</Name>
-    <Value>0.798029542</Value>
+    <Value>0.812807858</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

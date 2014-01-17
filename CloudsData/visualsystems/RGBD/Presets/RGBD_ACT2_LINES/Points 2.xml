@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Alpha</Name>
-    <Value>0.285714298</Value>
+    <Value>0.325123161</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>6</Kind>
     <Name>Point Size</Name>
-    <HighValue>0.931034446</HighValue>
+    <HighValue>0.975369453</HighValue>
     <LowValue>0.157635555</LowValue>
 </Widget>
 <Widget>
@@ -69,7 +69,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Speed</Name>
-    <Value>2.463054180</Value>
+    <Value>3.645320177</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -84,7 +84,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Max Affect</Name>
-    <Value>1.000000000</Value>
+    <Value>0.236453205</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

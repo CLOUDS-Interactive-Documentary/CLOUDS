@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>341.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>398.000000000</XPosition>
+    <YPosition>402.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Face Min Radius</Name>
-    <Value>313.300506592</Value>
+    <Value>466.995086670</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
