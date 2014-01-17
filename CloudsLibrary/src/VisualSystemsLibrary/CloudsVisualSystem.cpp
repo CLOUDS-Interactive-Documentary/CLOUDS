@@ -264,7 +264,7 @@ void CloudsVisualSystem::setup(){
 
 //	currentCamera = &cam;
     
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
     hud = NULL;
     hudGui = NULL;
 #endif
@@ -2981,6 +2981,7 @@ void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
     }
 }
 
+#ifdef CLOUDS_APP
 void CloudsVisualSystem::setupHUDGui()
 {
     if (hud == NULL || hudGui != NULL) return;
@@ -3101,7 +3102,8 @@ void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
         hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_OCULUS;
     }
 }
-#endif
+#endif  // CLOUDS_APP
+#endif  // OCULUS_RIFT
 
 void CloudsVisualSystem::lightsBegin()
 {
@@ -3341,9 +3343,11 @@ void CloudsVisualSystem::deleteGUIS()
 #endif
 #ifdef OCULUS_RIFT
     ofRemoveListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+#ifdef CLOUDS_APP
     if (hudGui != NULL) {
         ofRemoveListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
     }
+#endif
 #endif
 	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
