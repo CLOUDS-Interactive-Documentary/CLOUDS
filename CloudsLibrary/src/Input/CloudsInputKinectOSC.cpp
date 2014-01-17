@@ -533,6 +533,10 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             ofNoFill();
             ofSetColor(ofColor::white);
             ofRect(hand->trackingBounds);
+            ofLine(hand->trackingBounds.x,
+                   hand->trackingBounds.y + hand->trackingBounds.height * (1.0f - activeThresholdY),
+                   hand->trackingBounds.x + hand->trackingBounds.width,
+                   hand->trackingBounds.y + hand->trackingBounds.height * (1.0f - activeThresholdY));
         }
         
         // draw bounds
