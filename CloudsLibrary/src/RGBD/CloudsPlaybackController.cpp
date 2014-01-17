@@ -402,15 +402,15 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 #ifdef CLOUDS_RELEASE
     ofHideCursor();
 #else
-    currMousePos.set(ofGetMouseX(), ofGetMouseY());
-    if (currMousePos != lastMousePos) {
-        lastMouseMoveMillis = ofGetElapsedTimeMillis();
-        ofShowCursor();
-    }
-    else if ((ofGetElapsedTimeMillis() - lastMouseMoveMillis) > 1000) {
-        ofHideCursor();
-    }
-    lastMousePos = currMousePos;
+//    currMousePos.set(ofGetMouseX(), ofGetMouseY());
+//    if (currMousePos != lastMousePos) {
+//        lastMouseMoveMillis = ofGetElapsedTimeMillis();
+//        ofShowCursor();
+//    }
+//    else if ((ofGetElapsedTimeMillis() - lastMouseMoveMillis) > 1000) {
+//        ofHideCursor();
+//    }
+//    lastMousePos = currMousePos;
 #endif
     
 	////////////////////
