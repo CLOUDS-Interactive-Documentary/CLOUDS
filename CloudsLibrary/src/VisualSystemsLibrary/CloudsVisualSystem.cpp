@@ -160,9 +160,6 @@ CloudsVisualSystem::CloudsVisualSystem(){
 #else
 	bUseOculusRift = false;
 #endif 
-    
-    lastMouseMoveMillis = 0;
-	
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -434,19 +431,6 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 //        }
 //    }
     
-#endif
-
-#ifdef CLOUDS_RELEASE
-    // show/hide the mouse cursor
-    currMousePos.set(ofGetMouseX(), ofGetMouseY());
-    if (currMousePos != lastMousePos) {
-        lastMouseMoveMillis = ofGetElapsedTimeMillis();
-        ofShowCursor();
-    }
-    else if ((ofGetElapsedTimeMillis() - lastMouseMoveMillis) > 1000) {
-        ofHideCursor();
-    }
-    lastMousePos = currMousePos;
 #endif
     
     if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)

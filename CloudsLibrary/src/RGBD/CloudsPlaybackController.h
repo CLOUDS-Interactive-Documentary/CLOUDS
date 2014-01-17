@@ -143,7 +143,9 @@ class CloudsPlaybackController {
     void showInterlude();
     void cleanupInterlude();
     
-
+    // OS cursor display
+    ofVec2f lastMousePos, currMousePos;
+    unsigned long long lastMouseMoveMillis;
 };
 
 
