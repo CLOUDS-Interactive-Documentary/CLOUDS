@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>cameraViewsGui</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>643.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>522.000000000</XPosition>
+    <YPosition>61.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -43,17 +43,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>mouseScl</Name>
-    <Value>0.300492615</Value>
+    <Value>0.763546824</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>deadZone</Name>
-    <Value>0.050000001</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cameraSpeed</Name>
-    <Value>6.674876690</Value>
+    <Value>8.980295181</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>maxTilt</Name>
-    <Value>20</Value>
+    <Value>20.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

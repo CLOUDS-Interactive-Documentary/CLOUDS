@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>transform</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>559.000000000</YPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>

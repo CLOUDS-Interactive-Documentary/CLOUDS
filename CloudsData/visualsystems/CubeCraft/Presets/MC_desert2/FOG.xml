@@ -1,14 +1,29 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>FOG</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>47.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>bUseFog</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>fogHue</Name>
+    <Value>135</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>fogSaturation</Name>
+    <Value>91</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>fogBrightness</Name>
+    <Value>255</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -19,19 +34,4 @@
     <Kind>4</Kind>
     <Name>fogExpo</Name>
     <Value>1.096549988</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>fogHue</Name>
-    <Value>135.665023804</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>fogSaturation</Name>
-    <Value>91.699508667</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>fogBrightness</Name>
-    <Value>255.000000000</Value>
 </Widget>
