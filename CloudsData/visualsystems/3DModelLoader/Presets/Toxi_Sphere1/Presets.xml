@@ -52,6 +52,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Laplacian</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>LovelyTangle</Name>
     <Value>0</Value>
 </Widget>
@@ -134,6 +139,11 @@
     <Kind>2</Kind>
     <Name>Toxi_Sphere1</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Trachia</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

@@ -45,3 +45,8 @@
     <Name>JM_GravityCircles</Name>
     <Value>1</Value>
 </Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_Squares</Name>
+    <Value>1</Value>
+</Widget>

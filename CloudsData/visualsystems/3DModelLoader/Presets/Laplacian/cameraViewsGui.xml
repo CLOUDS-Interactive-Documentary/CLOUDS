@@ -58,7 +58,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>pitchScale</Name>
-    <Value>0.010655173</Value>
+    <Value>0.011137932</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -68,22 +68,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>maxTilt</Name>
-    <Value>5.024627686</Value>
+    <Value>2.068962097</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>orbitVelAttenuation</Name>
-    <Value>0.862065852</Value>
+    <Value>0.864036202</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>minOrbitDistance</Name>
-    <Value>127.044334412</Value>
+    <Value>112.413795471</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>maxOrbitDistance</Name>
-    <Value>395.270935059</Value>
+    <Value>444.039398193</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

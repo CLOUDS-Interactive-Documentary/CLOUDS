@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -18,20 +18,20 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Min Connection Distance</Name>
-    <Value>59.986907959</Value>
+    <Value>79.778564453</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Boundary Size</Name>
-    <Value>356.651977539</Value>
+    <Value>386.471740723</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Max Connections</Name>
-    <Value>7.285774708</Value>
+    <Value>7.721083641</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Particle speed</Name>
-    <Value>2.413793087</Value>
+    <Value>1.674876809</Value>
 </Widget>

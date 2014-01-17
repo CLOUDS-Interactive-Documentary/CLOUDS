@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>159.000000000</XPosition>
+    <YPosition>398.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -27,23 +27,18 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>smooth model</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>wireframe</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>wireframeLinewidth</Name>
-    <Value>0.500000000</Value>
+    <Value>0.593596041</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>modelScale</Name>
-    <Value>1.709359646</Value>
+    <Value>1.319211841</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>

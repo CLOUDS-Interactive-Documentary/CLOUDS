@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>modelUIGui</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>849.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>93.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -63,7 +63,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>ellipsoid1.obj</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -118,7 +118,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Hypersphere1.obj</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -128,6 +128,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Kelp2.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Laplacian1.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Laplacian2.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -178,7 +188,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>ToxiAllInOne.obj</Name>
-    <Value>1</Value>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Trachia.obj</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

@@ -3,7 +3,7 @@
     <Name>ART2Settings</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1061.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>415.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,12 +23,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>ART2 POS-Z</Name>
-    <Value>0.501663208</Value>
+    <Value>0.501953125</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ART2 POWER</Name>
-    <Value>0.500000000</Value>
+    <Value>0.750000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,5 +38,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ART2 LIMIT</Name>
-    <Value>0.062500000</Value>
+    <Value>0.006250000</Value>
 </Widget>
