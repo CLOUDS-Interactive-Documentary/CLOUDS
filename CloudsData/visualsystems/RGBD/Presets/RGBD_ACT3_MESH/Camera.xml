@@ -50,3 +50,8 @@
     <Name>DRIFT SPEED</Name>
     <Value>0.002068965</Value>
 </Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DAMPING</Name>
+    <Value>0.100000001</Value>
+</Widget>

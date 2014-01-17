@@ -467,11 +467,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		hud.update();
 	}
 	
-//    if(shouldClearAct){
-////        clearAct();
-////        shouldClearAct = false;
-//    }
-    
 	if(shouldPlayAct){
 		playAct(currentAct);
 		shouldPlayAct = false;
@@ -488,7 +483,6 @@ void CloudsPlaybackController::updateTransition(){
 //if(transitionController.getCurrentState() != TRANSITION_IDLE){
 //    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
 //	}
-
     
 	CloudsPortal* q;
 	CloudsClip clip;
@@ -583,8 +577,7 @@ void CloudsPlaybackController::updateTransition(){
                 break;
 
             case TRANSITION_INTERLUDE_IN:
-                    
-//                sound.enterClusterMap();
+                
 				interludeStartTime = ofGetElapsedTimef();
 				
                 CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().stop();
@@ -979,7 +972,6 @@ void CloudsPlaybackController::cleanupInterlude(){
     if(currentVisualSystem == clusterMap) {
         clusterMap->stopSystem();
 
-//        sound.exitClusterMap();
     }
     else if(currentVisualSystem == interludeSystem){
         interludeSystem->stopSystem();
