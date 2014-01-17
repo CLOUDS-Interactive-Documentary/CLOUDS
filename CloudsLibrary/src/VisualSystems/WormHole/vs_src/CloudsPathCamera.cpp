@@ -115,7 +115,12 @@ void CloudsPathCamera::setUpControlVertices( vector<ofVec3f>& v )
 
 void CloudsPathCamera::	update()
 {
-	u = ofMap( ofGetElapsedTimef(), startTime, startTime + duration,0 ,1);
+    if(duration == 0){
+        u = startTime;
+    }
+    else{
+        u = ofMap( ofGetElapsedTimef(), startTime, startTime + duration,0 ,1);
+    }
 	update( u );
 }
 

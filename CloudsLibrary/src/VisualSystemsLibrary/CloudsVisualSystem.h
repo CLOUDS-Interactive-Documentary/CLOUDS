@@ -401,10 +401,6 @@ class CloudsVisualSystem {
 	bool bUseOculusRift;
     CloudsDrawCursorMode drawCursorMode;
     
-    //MOUSE DISPLAY
-    ofVec2f lastMousePos, currMousePos;
-    unsigned long long lastMouseMoveMillis;
-    
     //CAM
     float camDistance;
     float camFOV;
@@ -465,8 +461,9 @@ class CloudsVisualSystem {
 	string mainKeyword;
 	vector<string> keywords;
 	
+#ifdef KINECT_INPUT
     void drawKinectDebug();
-
+#endif
 	
 	static void checkOpenGLError(string function);
 	
