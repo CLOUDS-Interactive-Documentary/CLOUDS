@@ -85,7 +85,7 @@ class CloudsPlaybackController {
 	int numClipsPlayed;
 	string currentTopic;
 	bool shouldPlayAct;
-    
+    bool shouldClearAct;
 
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
@@ -116,7 +116,8 @@ class CloudsPlaybackController {
 	
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
-	
+	bool returnToIntro;
+    
 	string prerolledClipID;
 	void prerollClip(CloudsClip& clip, float toTime);
 	void playClip(CloudsClip clip);
@@ -133,8 +134,8 @@ class CloudsPlaybackController {
     bool exitedInterlude;
 	bool bQuestionAsked;
 	
-	void clearAct(bool destroy = true);
-			
+	void clearAct();
+    
 	//remove the current visual system
 	void hideVisualSystem();
 	void showRGBDVisualSystem();
