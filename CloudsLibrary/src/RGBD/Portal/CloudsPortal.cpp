@@ -98,26 +98,31 @@ bool CloudsPortal::isSelected(){
 
 void CloudsPortal::update(){
     if(ofGetFrameNum() % 1000 == 0) cout << "question node " << question << " is selected? " << selected << " hovering? " << hovering << endl;
+    
     if(cam != NULL){
         float dot = ( hoverPosition - cam->getPosition()).dot(cam->getLookAtDir());
         onScreen = dot > 0;
-
+        
 		screenPosition = cam->worldToScreen(hoverPosition);
-        if(hovering){
-            hoverPercentComplete = ofClamp((ofGetElapsedTimef() - hoverStartTime) / maxHoverTime, 0,1.0);
-            
-            if(!selected && hoverPercentComplete == 1.0){
-                selected = true;
-                selectedTime = ofGetElapsedTimef();
-            }
+    }
+    else{
+        screenPosition = hoverPosition;
+    }   
 
+    if(hovering){
+        hoverPercentComplete = ofClamp((ofGetElapsedTimef() - hoverStartTime) / maxHoverTime, 0,1.0);
+        
+        if(!selected && hoverPercentComplete == 1.0){
+            selected = true;
+            selectedTime = ofGetElapsedTimef();
         }
-        else if(selected){
-            selected = false;
-            selectedPercentComplete = 0.0;
-        }
-	}
-	
+
+    }
+    else if(selected){
+        selected = false;
+        selectedPercentComplete = 0.0;
+    }
+
 	if(selected){
 		selectedPercentComplete = ofClamp((ofGetElapsedTimef() - selectedTime) / selectAnimationDuration, 0,1.0);
 	}
@@ -141,8 +146,10 @@ void CloudsPortal::toggleFakeSelection(){
 void CloudsPortal::draw(){
 	ofPushStyle();
 	ofPushMatrix();
+
     ofTranslate(hoverPosition);
 	if(bLookAtCamera && cam != NULL){
+
 		ofNode n;
 		n.setPosition(hoverPosition);
 		n.lookAt(cam->getPosition());
@@ -166,7 +173,6 @@ void CloudsPortal::draw(){
 	portalGeo.draw();
 	shader.setUniform1i("drawingTimer", 1);
 	timerGeo.draw();
-				
 	ofPopMatrix();
 	ofPopStyle();
 }
