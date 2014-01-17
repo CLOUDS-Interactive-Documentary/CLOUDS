@@ -59,7 +59,15 @@ void CloudsTransitionController::transitionFromIntro(float outDuration){
 void CloudsTransitionController::transitionToIntro(float inDuration){
 	confirmEmpty();
 
-    queueState(TRANSITION_INTERLUDE_OUT, inDuration);
+    if(previousState == TRANSITION_INTERLUDE_IN){
+        queueState(TRANSITION_INTERLUDE_OUT, inDuration);
+    }
+    else if(previousState == TRANSITION_INTERVIEW_IN){
+        queueState(TRANSITION_INTERVIEW_OUT, inDuration);
+    }
+    else if(previousState == TRANSITION_VISUALSYSTEM_IN){
+        queueState(TRANSITION_VISUALSYSTEM_OUT, inDuration);
+    }
     
 	queueState(TRANSITION_INTRO_IN, inDuration);
 	
