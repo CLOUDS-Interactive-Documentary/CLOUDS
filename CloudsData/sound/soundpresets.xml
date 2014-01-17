@@ -1703,7 +1703,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "&quot;interactivity:What makes a satisfying interaction?&quot;" />
-		<pattr name = "amp1" value = "0.153846" />
+		<pattr name = "amp1" value = "0.076923" />
 		<pattr name = "amp2" value = "0.153846" />
 		<pattr name = "amp3" value = "0.923077" />
 		<pattr name = "amp4" value = "1." />
@@ -3565,7 +3565,7 @@
 		<pattr name = "harmony" value = "4" />
 		<pattr name = "rhythm" value = "0" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "&lt;empty&gt;" />
+		<pattr name = "pname" value = "Ambient_75" />
 		<pattr name = "orch1" value = "granular_swish" />
 		<pattr name = "orch2" value = "off" />
 		<pattr name = "orch3" value = "off" />
@@ -3613,7 +3613,7 @@
 		<pattr name = "harmony" value = "2" />
 		<pattr name = "rhythm" value = "0" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "&lt;empty&gt;" />
+		<pattr name = "pname" value = "Ambient_76" />
 		<pattr name = "orch1" value = "granular_swish" />
 		<pattr name = "orch2" value = "off" />
 		<pattr name = "orch3" value = "off" />
@@ -3709,7 +3709,7 @@
 		<pattr name = "harmony" value = "2" />
 		<pattr name = "rhythm" value = "0" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "&lt;empty&gt;" />
+		<pattr name = "pname" value = "Ambient_78" />
 		<pattr name = "orch1" value = "granular_pad" />
 		<pattr name = "orch2" value = "off" />
 		<pattr name = "orch3" value = "off" />
