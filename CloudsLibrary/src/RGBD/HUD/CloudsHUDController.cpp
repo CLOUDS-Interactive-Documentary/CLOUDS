@@ -560,20 +560,17 @@ void CloudsHUDController::draw(){
     }
     
 	drawLayer(CLOUDS_HUD_QUESTION);
-	
-//	cout << "drawing question: " << hudLabelMap["QuestionTextBox"]->getText() << endl;
-	
-//	drawLayer(CLOUDS_HUD_LOWER_THIRD);
+    drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
 	drawLayer(CLOUDS_HUD_MAP);
     
-    for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
+    for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->draw();
     }
     
-	if(bDrawHome)
+	if (bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]){
 		home.draw();
-	
+    }
 	
 	ofPopMatrix();
 	ofPopStyle();
@@ -686,7 +683,7 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, of
     drawLayer(layer);
     
     // Draw the home button if we're on the right layer.
-    if (layer == CLOUDS_HUD_LOWER_THIRD && bDrawHome) {
+    if (layer == CLOUDS_HUD_LOWER_THIRD && bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) {
         home.draw();
     }
     

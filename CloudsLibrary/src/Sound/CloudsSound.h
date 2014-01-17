@@ -63,6 +63,7 @@ class CloudsSound {
     void doPrinting();
     int ACTBUS; // needs to be public for UDP shit in the scoredesigner
     bool dopull;
+    bool in_tunnel;
     
     // public data structures
     vector<lukePreset> presets;

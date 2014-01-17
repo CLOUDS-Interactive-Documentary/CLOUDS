@@ -38,12 +38,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c1_brightness</Name>
-    <Value>135</Value>
+    <Value>255</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c1_saturation</Name>
-    <Value>52</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -58,12 +58,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c2_brightness</Name>
-    <Value>155</Value>
+    <Value>255</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c2_saturation</Name>
-    <Value>36</Value>
+    <Value>70</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
