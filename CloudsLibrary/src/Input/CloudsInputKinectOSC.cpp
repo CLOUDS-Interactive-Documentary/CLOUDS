@@ -517,10 +517,10 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             ofLine(hand->handJoint.inputPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->shoulderLeftJoint.inputPosition : bodies[hand->bodyIdx]->shoulderRightJoint.inputPosition);
             
             bool bActive = (hand->activeFrames > 0);
-            bool bInBounds = (hand->handJoint.inputPosition.x < hand->trackingBounds.getMinX() ||
-                              hand->handJoint.inputPosition.x > hand->trackingBounds.getMaxX() ||
-                              hand->handJoint.inputPosition.y < hand->trackingBounds.getMinY() ||
-                              hand->handJoint.inputPosition.y > hand->trackingBounds.getMaxY());
+            bool bInBounds = (hand->handJoint.inputPosition.x >= hand->trackingBounds.getMinX() &&
+                              hand->handJoint.inputPosition.x <= hand->trackingBounds.getMaxX() &&
+                              hand->handJoint.inputPosition.y >= hand->trackingBounds.getMinY() &&
+                              hand->handJoint.inputPosition.y <= hand->trackingBounds.getMaxY());
             
             if (hand->handJoint.trackingState == k4w::TrackingState_Tracked) {
                 if (bActive) {
