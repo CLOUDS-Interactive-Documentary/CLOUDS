@@ -393,7 +393,7 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 }
 
 void CloudsIntroSequence::selfDraw(){
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
     if (hud != NULL) {
         if(selectedQuestion != NULL){
             hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -selectedQuestion->screenPosition.y/2));
