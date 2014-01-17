@@ -472,7 +472,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(!bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
-            //currently QUESTION_IN is very short, placeholder for wormhole
+
             transitionController.transitionWithQuestion(2.0, 0.1);
             sound.questionSelected(2.0);
         }
@@ -515,6 +515,7 @@ void CloudsPlaybackController::updateTransition(){
                 
             case TRANSITION_INTERVIEW_OUT:
                 if(bQuestionAsked){
+                    currentAct->getTimeline().stop();
 					rgbdVisualSystem->startTransitionOut( CloudsVisualSystem::QUESTION );
 				}
 				else{
@@ -609,7 +610,6 @@ void CloudsPlaybackController::updateTransition(){
 				
 				hud.setHomeEnabled(false);
                 
-//                clearAct();
                 
 #ifdef OCULUS_RIFT
                 showInterlude();
@@ -625,17 +625,19 @@ void CloudsPlaybackController::updateTransition(){
 
                 break;
                 
-			case TRANSITION_QUESTION_IN:
-				
-                currentAct->getTimeline().stop();
+//			case TRANSITION_QUESTION_IN:
+//				
+//                currentAct->getTimeline().stop();
+//                
+//				// show question transition over this period
+//				rgbdVisualSystem->transtionFinished();
+//				rgbdVisualSystem->stopSystem();
+//                
+//                break;
                 
-//                clearAct();
-                
-				// show question transition over this period
-				rgbdVisualSystem->transtionFinished();
-				rgbdVisualSystem->stopSystem();
-                break;
-				
+    //////////////////
+    ////////IDLE CASES
+    ///////////////////
             case TRANSITION_IDLE:
                 
                 if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
@@ -657,7 +659,7 @@ void CloudsPlaybackController::updateTransition(){
 
                     cachedTransition = true;
                     cachedTransitionType = interludeSystem->getTransitionType();
-                    
+
                     cleanupInterlude();
 
                     //build the next clip based on the history
@@ -665,17 +667,26 @@ void CloudsPlaybackController::updateTransition(){
 					
                     cout<<"IDLE POST TRANSITION INTERLUDE OUT"<<endl;
                 }
-				else if(transitionController.getPreviousState() == TRANSITION_QUESTION_IN){
-					
-					q = rgbdVisualSystem->getSelectedQuestion();
-					clip = q->clip;
-					topic = q->topic;
-					
-                    rgbdVisualSystem->clearQuestions();
-                    
-					bQuestionAsked = false;
-					
-					storyEngine.buildAct(run, clip, topic);
+				else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
+					if(bQuestionAsked){
+                        
+                        q = rgbdVisualSystem->getSelectedQuestion();
+                        clip = q->clip;
+                        topic = q->topic;
+                        
+                        rgbdVisualSystem->transtionFinished();
+                        rgbdVisualSystem->clearQuestions();
+                        rgbdVisualSystem->stopSystem();
+                        
+                        CloudsVisualSystem::getRGBDVideoPlayer().stop();
+                        CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = 1.0;
+                        
+                        crossfadeValue = 0;
+                        
+                        storyEngine.buildAct(run, clip, topic);
+                        
+                        bQuestionAsked = false;
+                    }
 					
 				}
 
@@ -691,12 +702,19 @@ void CloudsPlaybackController::updateTransition(){
         }
 	}
     
-    if(abs(crossfadeValue - transitionController.getFadeValue()) > .5){
-        ofLogError("TRANSITION JUMP");
-    }
+//    if(abs(crossfadeValue - transitionController.getFadeValue()) > .5){
+//        ofLogError("TRANSITION JUMP");
+//    }
     
     crossfadeValue = transitionController.getFadeValue();
+
+    if(bQuestionAsked){
+        CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = crossfadeValue;
+        //don't start fading out right away
+        crossfadeValue = ofMap(crossfadeValue, .05, 0.0, 1.0, 0.0, true);
+    }
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
+    
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
 	}

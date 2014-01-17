@@ -198,13 +198,15 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
 		transitionInStart.setOrientation( q );
 		
-		ofVec3f leftExtraFlying = (leftPortal.hoverPosition - transitionInStart.getPosition()).normalized() * 100;
-		ofVec3f rightExtraFlying = (rightPortal.hoverPosition - transitionInStart.getPosition()).normalized() * 100;
+//		ofVec3f leftExtraFlying = (leftPortal.hoverPosition - transitionInStart.getPosition() ).normalized() * 100;
+//		ofVec3f rightExtraFlying = (rightPortal.hoverPosition - transitionInStart.getPosition() ).normalized() * 100;
+		ofVec3f leftExtraFlying;
+		ofVec3f rightExtraFlying;
 		
-		transitionOutLeft.setPosition(rightPortal.hoverPosition + rightExtraFlying);
+		transitionOutLeft.setPosition(rightPortal.hoverPosition + leftExtraFlying);
 		transitionOutLeft.setOrientation( q );
 		
-		transitionOutRight.setPosition(leftPortal.hoverPosition + leftExtraFlying);
+		transitionOutRight.setPosition(leftPortal.hoverPosition + rightExtraFlying);
 		transitionOutRight.setOrientation( q );
 	}
 	else if(transitionMap.find(type) != transitionMap.end())
@@ -1708,7 +1710,7 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
 void CloudsVisualSystemRGBD::drawQuestions(){
 
 
-	glDisable(GL_DEPTH_TEST);
+//	glDisable(GL_DEPTH_TEST);
 	CloudsPortal::shader.begin();
 	CloudsPortal::shader.setUniform1i("doAttenuate", 0);
 	if(leftPortal.question != "" || bPortalDebugOn){
@@ -1718,7 +1720,7 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 		rightPortal.draw();
 	}
 	CloudsPortal::shader.end();
-	glEnable(GL_DEPTH_TEST);
+//	glEnable(GL_DEPTH_TEST);
 
 }
 

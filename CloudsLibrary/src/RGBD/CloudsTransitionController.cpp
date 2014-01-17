@@ -157,7 +157,7 @@ void CloudsTransitionController::transitionWithQuestion(float outDuration, float
 	
 	queueState(TRANSITION_INTERVIEW_OUT, outDuration);
 	
-	queueState(TRANSITION_QUESTION_IN, portalDuration);
+	//queueState(TRANSITION_QUESTION_IN, portalDuration);
 	
 	startTransition();
 }

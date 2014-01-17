@@ -44,7 +44,12 @@ void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
 void CloudsHUDLabel::draw(){
     
     if( bIsAnimatingIn ){
-        pct = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 0., 1., true );
+        if(animationSpeed != 0){
+            pct = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 0., 1., true );
+        }
+        else{
+            pct = beginTime;
+        }
         playhead = floor(text.length() * pct);
         if( pct >= 1.0 ){
             bIsAnimatingIn = false;
