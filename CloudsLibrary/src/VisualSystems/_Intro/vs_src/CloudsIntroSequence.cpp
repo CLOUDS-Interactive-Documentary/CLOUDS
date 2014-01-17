@@ -215,6 +215,13 @@ void CloudsIntroSequence::selfUpdate(){
 	
 	currentTitleOpacity += (hoverTitleOpacity-currentTitleOpacity)*.05;
 	//currentTitleOpacity = hoverTitleOpacity;
+    
+    //always move the questions in the direction of the camera
+    for(int i = 0; i < startQuestions.size(); i++){
+        if(&startQuestions[i] != caughtQuestion){
+            startQuestions[i].hoverPosition.z += cameraForwardSpeed*.75;
+        }
+    }
 }
 
 void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQuestions){

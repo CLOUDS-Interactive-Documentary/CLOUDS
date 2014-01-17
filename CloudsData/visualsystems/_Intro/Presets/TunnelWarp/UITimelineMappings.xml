@@ -4,7 +4,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>hold camera</WidgetName>
-                <WidgetID>54</WidgetID>
+                <WidgetID>68</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -13,24 +13,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Max Distance</WidgetName>
-                <WidgetID>7</WidgetID>
-                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>Wireframe Alpha</WidgetName>
-                <WidgetID>17</WidgetID>
-                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>Max Point Size</WidgetName>
                 <WidgetID>3</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Max Distance</WidgetName>
+                <WidgetID>7</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -45,8 +37,16 @@
         </Mapping>
         <Mapping>
             <Widget>
+                <WidgetName>Wireframe Alpha</WidgetName>
+                <WidgetID>17</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
                 <WidgetName>camera fwd force</WidgetName>
-                <WidgetID>48</WidgetID>
+                <WidgetID>62</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
