@@ -711,7 +711,7 @@ void CloudsPlaybackController::updateTransition(){
     if(bQuestionAsked){
         CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = crossfadeValue;
         //don't start fading out right away
-        crossfadeValue = ofMap(crossfadeValue, .05, 0.0, 1.0, 0.0, true);
+        crossfadeValue = ofMap(crossfadeValue, .2, 0.0, 1.0, 0.0, true);
     }
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
     
