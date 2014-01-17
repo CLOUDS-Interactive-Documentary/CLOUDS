@@ -143,11 +143,11 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             
             // map the spine points
             // these are commented out because we now have two origins (left and right hand), so the x-map would not make sense
-            //mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, mappingLength, bodies[idx]->headJoint);
-            //mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, mappingLength, bodies[idx]->neckJoint);
-            //mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, mappingLength, bodies[idx]->spineShoulderJoint);
-            //mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, mappingLength, bodies[idx]->spineMidJoint);
-            mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, zRef, mappingWidth, mappingHeight, bodies[idx]->spineBaseJoint);
+            //mapCoords(bodies[idx]->headJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
+            //mapCoords(bodies[idx]->neckJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
+            //mapCoords(bodies[idx]->spineShoulderJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
+            //mapCoords(bodies[idx]->spineMidJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
+            mapCoords(bodies[idx]->spineBaseJoint, bodies[idx]->spineShoulderJoint.inputPosition, zRef, mappingWidth, mappingHeight);
             
             // check if the body is within the tracked bounds
             bool bBodyOutOfBounds = (bodies[idx]->spineBaseJoint.inputPosition.x < boundsMin.x ||
@@ -179,7 +179,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                                                                             m.getArgAsFloat(i++), 
                                                                             m.getArgAsFloat(i++)), jointLerpPct);
                 
-                // set the custom origin and map the hand coords
+                // set the custom origin and bounds
                 ofVec3f origin = bodies[idx]->neckJoint.inputPosition;
                 if (hands[handIdx]->handJoint.type == k4w::JointType_HandLeft) {
                     origin.x -= mappingWidth - neckOverlapWidth;
@@ -188,14 +188,20 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                     origin.x += mappingWidth - neckOverlapWidth;
                 }
                 origin.y -= mappingHeight;
-                mapCoords(origin, zRef, mappingWidth, mappingHeight, hands[handIdx]->handJoint);
-                
                 hands[handIdx]->trackingBounds.setFromCenter(origin, mappingWidth * 2, mappingHeight * 2);
+                
+                // map the input to local and screen coordinates
+                mapCoords(hands[handIdx]->handJoint, origin, zRef, mappingWidth, mappingHeight);
+                
+                bool bHandOutOfBounds = (hands[handIdx]->handJoint.inputPosition.x < hands[handIdx]->trackingBounds.getMinX() ||
+                                         hands[handIdx]->handJoint.inputPosition.x > hands[handIdx]->trackingBounds.getMaxX() ||
+                                         hands[handIdx]->handJoint.inputPosition.y < hands[handIdx]->trackingBounds.getMinY() ||
+                                         hands[handIdx]->handJoint.inputPosition.y > hands[handIdx]->trackingBounds.getMaxY());
                 
                 // set the new hand state, and calculate active frames while we're at it
                 if (bBodyOutOfBounds ||
-                    hands[handIdx]->handJoint.trackingState != k4w::TrackingState_Tracked ||
-                    !hands[handIdx]->trackingBounds.inside(hands[handIdx]->handJoint.inputPosition)) {
+                    bHandOutOfBounds ||
+                    hands[handIdx]->handJoint.trackingState != k4w::TrackingState_Tracked) {
                     
                     // out of bounds or inactive, discard
                     hands[handIdx]->activeFrames = MAX(0, MIN(kPollThreshold, hands[handIdx]->activeFrames - 1));
@@ -377,7 +383,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
 }
 
 //--------------------------------------------------------------
-void CloudsInputKinectOSC::mapCoords(ofVec3f& origin, float zRef, float width, float height, k4w::Joint& joint)
+void CloudsInputKinectOSC::mapCoords(k4w::Joint& joint, ofVec3f& origin, float zRef, float width, float height)
 {
     // switch to a local coord system, centered at origin
     joint.localPosition = joint.inputPosition;
@@ -504,7 +510,10 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             ofLine(hand->handJoint.inputPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->shoulderLeftJoint.inputPosition : bodies[hand->bodyIdx]->shoulderRightJoint.inputPosition);
             
             bool bActive = (hand->activeFrames > 0);
-            bool bInBounds = hand->trackingBounds.inside(hand->handJoint.inputPosition);
+            bool bInBounds = (hand->handJoint.inputPosition.x < hand->trackingBounds.getMinX() ||
+                              hand->handJoint.inputPosition.x > hand->trackingBounds.getMaxX() ||
+                              hand->handJoint.inputPosition.y < hand->trackingBounds.getMinY() ||
+                              hand->handJoint.inputPosition.y > hand->trackingBounds.getMaxY());
             
             if (hand->handJoint.trackingState == k4w::TrackingState_Tracked) {
                 if (bActive) {
