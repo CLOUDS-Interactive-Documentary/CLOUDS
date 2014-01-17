@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1187.000000000</XPosition>
-    <YPosition>356.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -18,17 +18,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Min Connection Distance</Name>
-    <Value>59.047225952</Value>
+    <Value>46.413837433</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Boundary Size</Name>
-    <Value>340.771759033</Value>
+    <Value>265.818786621</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Max Connections</Name>
-    <Value>7.028441906</Value>
+    <Value>5.441146851</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

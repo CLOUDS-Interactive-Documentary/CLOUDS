@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>153.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -68,12 +68,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Satelites_links_distance</Name>
-    <Value>107.438430786</Value>
+    <Value>100.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Satelites_links_alpha</Name>
-    <Value>0.195503831</Value>
+    <Value>0.184286207</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

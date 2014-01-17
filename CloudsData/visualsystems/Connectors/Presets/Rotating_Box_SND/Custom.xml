@@ -18,15 +18,20 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Min Connection Distance</Name>
-    <Value>58.987312317</Value>
+    <Value>59.986907959</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Boundary Size</Name>
-    <Value>339.759277344</Value>
+    <Value>356.651977539</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Max Connections</Name>
-    <Value>7.012034416</Value>
+    <Value>7.285774708</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Particle speed</Name>
+    <Value>2.413793087</Value>
 </Widget>

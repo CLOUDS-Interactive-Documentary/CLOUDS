@@ -5305,6 +5305,52 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="CirclePacking_Circles_NewFrontier">
+    <keywords>interactivity|play|surprise</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Golan - instruments</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - playable image</clip>
+        <clip>Golan - project example</clip>
+        <clip>Golan - twitching in a room</clip>
+        <clip>Golan - what&apos;s an instrument?</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Intro - interactivity1</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - deep interaction</clip>
+        <clip>Joel - Interactivity</clip>
+        <clip>Theo - 3D sensing</clip>
+        <clip>Theo - Kids interacting</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Theo - hide the technology,</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Kyle_CH - don&apos;t underestimate traditional art</clip>
+        <clip>Kyle_MC - kinect 2</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - MalleableMath</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Patricio - InteractiveTable 1</clip>
+        <clip>Patricio - InteractiveTable 2</clip>
+        <clip>Vera - commisions,</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Golan - observation of users</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="CirclePacking_Circles_Social">
     <keywords>social dynamics|social</keywords>
     <links></links>
@@ -7439,7 +7485,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>1</sound_allow_vo>
+    <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="Colony_SyntheticBlack">
@@ -7488,7 +7534,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>1</sound_allow_vo>
+    <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="Colony_SyntheticGreen">
@@ -16921,6 +16967,56 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="Neurons_Brain_wide">
+    <keywords>network|artificial intelligence</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Sophy - city</clip>
+        <clip>Sophy - the Cloud</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Philip - in touch all the time</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Lauren - sentiment anaylsis</clip>
+        <clip>Kyle_MC - uncanny</clip>
+        <clip>Kyle_MC - new aesthetic 2</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_CH - Cloud atlas</clip>
+        <clip>Kyle_CH - Sentience of digital art</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kevin - algo chess 3</clip>
+        <clip>Kevin - algo chess 2</clip>
+        <clip>Kevin - algo chess 1</clip>
+        <clip>Kevin - autonomous machines crash</clip>
+        <clip>Kevin - machines crash</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Karsten - DarkNet</clip>
+        <clip>Julian - I love networks</clip>
+        <clip>Julia - net friends</clip>
+        <clip>Julia - strength of weak ties</clip>
+        <clip>Julia - Who owns the internet?</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Bruce - Everted Cyberspace</clip>
+        <clip>Andres - Computational lens</clip>
+        <clip>Aaron - collaboration</clip>
+        <clip>Aaron - digital trace</clip>
+        <clip>Aaron - Tailored Stories</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="Neurons_Cosmic">
     <keywords></keywords>
     <links></links>
@@ -17006,7 +17102,7 @@
     <interlude>0</interlude>
 </system>
 <system name="Neurons_MezzyNeurons">
-    <keywords>collective intelligence|collaboration</keywords>
+    <keywords>collective intelligence|collaboration|interconnectedness|networks</keywords>
     <links></links>
     <suppressions>
         <clip>Aaron - Crowdsourcing</clip>
@@ -31092,7 +31188,7 @@
     <interlude>0</interlude>
 </system>
 <system name="World_DataWorld1">
-    <keywords>social media|network|communication|facebook</keywords>
+    <keywords>social media|network|communication|facebook|big data</keywords>
     <links></links>
     <suppressions>
         <clip>Greg - the &quot;Like&quot; button cascade</clip>
@@ -31147,7 +31243,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -31165,7 +31261,7 @@
     <interlude>0</interlude>
 </system>
 <system name="World_Data_globe2">
-    <keywords>social media|network|communication|facebook</keywords>
+    <keywords>social media|network|communication|facebook|big data</keywords>
     <links></links>
     <suppressions>
         <clip>Greg - the &quot;Like&quot; button cascade</clip>
@@ -31724,9 +31820,12 @@
     <interlude>0</interlude>
 </system>
 <system name="World_jm_data1">
-    <keywords></keywords>
+    <keywords>solutions|globalization|apocalypse|internet|big data</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - dreaming together</clip>
+        <clip>Fernanda - had to explain that the web was social</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
