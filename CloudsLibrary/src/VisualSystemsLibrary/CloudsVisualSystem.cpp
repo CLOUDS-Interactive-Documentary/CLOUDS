@@ -160,9 +160,6 @@ CloudsVisualSystem::CloudsVisualSystem(){
 #else
 	bUseOculusRift = false;
 #endif 
-    
-    lastMouseMoveMillis = 0;
-	
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -435,19 +432,6 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 //    }
     
 #endif
-
-#ifdef CLOUDS_RELEASE
-    // show/hide the mouse cursor
-    currMousePos.set(ofGetMouseX(), ofGetMouseY());
-    if (currMousePos != lastMousePos) {
-        lastMouseMoveMillis = ofGetElapsedTimeMillis();
-        ofShowCursor();
-    }
-    else if ((ofGetElapsedTimeMillis() - lastMouseMoveMillis) > 1000) {
-        ofHideCursor();
-    }
-    lastMousePos = currMousePos;
-#endif
     
     if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
     {
@@ -591,7 +575,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 #ifndef OCULUS_RIFT
         drawCursor();
 #endif
+#ifdef KINECT_INPUT
         drawKinectDebug();
+#endif
 
 	}
     
@@ -606,9 +592,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
     ofPopStyle();
 }
 
-
-void CloudsVisualSystem::drawKinectDebug(){
 #ifdef KINECT_INPUT
+void CloudsVisualSystem::drawKinectDebug(){
     if (timeline->getIsShowing()) {
         ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
         if (kinectInput->bDoDebug) {
@@ -620,8 +605,8 @@ void CloudsVisualSystem::drawKinectDebug(){
                                kDebugWidth, kDebugHeight);
         }
     }
-#endif
 }
+#endif
 
 void CloudsVisualSystem::draw2dSystemPlane(){
     // create a plane and map our 2d systems to it
@@ -2943,6 +2928,7 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
     
     kinectGui->addSpacer();
+    kinectGui->addToggle("CLAMP TO BOUNDS", &kinectInput->bClampToBounds);
     kinectGui->addSlider("ACTIVE THRESHOLD Y", 0.0f, 1.0f, &kinectInput->activeThresholdY);
     kinectGui->addSlider("ACTIVE THRESHOLD Z", 0.0f, 1.0f, &kinectInput->activeThresholdZ);
     
@@ -3758,16 +3744,17 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
         ofCircle(pos, 1);
 #else
         ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, 3, 6, true));
+                 ofMap(pos.z, 2, -2, 3, 10, true));
 #endif
     }
     else {
-        ofSetColor(255, 255, 255, 64);
 #ifdef OCULUS_RIFT
+        ofSetColor(255, 255, 255, 64);
         ofCircle(pos, 1);
 #else
+        ofSetColor(255, 255, 255, 128);
         ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, 3, 10, true));
+                 ofMap(pos.z, 2, -2, 3, 14, true));
 #endif
     }
     ofPopStyle();
