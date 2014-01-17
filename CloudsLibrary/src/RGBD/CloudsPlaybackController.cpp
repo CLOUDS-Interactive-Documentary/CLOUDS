@@ -31,7 +31,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     maxResetHoverTime = 3.0;
     startResetHoverTime = 0.0;
     resetSelectedPercentComplete = 0;
-    resetFont.loadFont(GetCloudsDataPath()+"/font/Blender-BOLD.ttf", 12);
+    resetFont.loadFont(GetCloudsDataPath()+"/font/Blender-THIN.ttf", 12);
     
 //    ofRectangle resetText = resetFont.getStringBoundingBox("RESET", 75,CloudsVisualSystem::getStaticRenderTarget().getHeight()-100);
 //    resetRect = ofRectangle(75,CloudsVisualSystem::getStaticRenderTarget().getHeight()-100,resetText.height,resetText.height);
@@ -866,7 +866,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
         ofRect(resetRect);
 
         ofSetColor(ofFloatColor(1.0,1.0,1.0,resetSelectedPercentComplete ) );
-        resetFont.drawString("RESET", resetRect.x + resetRect.width +5, resetRect.y + resetRect.height);
+        resetFont.drawString("RESET", resetRect.x + resetRect.width + 7, resetRect.y + resetRect.height);
 
         ofDisableAlphaBlending();
         ofPopStyle();

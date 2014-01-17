@@ -23899,12 +23899,12 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_AIC_Kids">
-    <keywords></keywords>
+    <keywords>rgbd|kinect|camera</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -23923,37 +23923,31 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_Eyebeam_spinningDude">
-    <keywords></keywords>
+    <keywords>rgbd|kinect</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_Hangar">
-    <keywords>open source|rgbd|kinect</keywords>
+    <keywords>open source|rgbd|kinect|learning|cameras</keywords>
     <links></links>
     <suppressions>
         <clip>Aaron - exquisite forest</clip>
-        <clip>Aaron - sharing</clip>
         <clip>Bruce - 2060s (Lashup 5)</clip>
         <clip>Bruce - Github Tarball</clip>
         <clip>Bruce - kinect hacking</clip>
         <clip>Casey - Processing addons</clip>
         <clip>Casey - Processing open</clip>
-        <clip>Chris - EthicOfSharing</clip>
-        <clip>Diederick - openFrameworks</clip>
-        <clip>Diederick - worldwillbecomebetter</clip>
         <clip>Elliot - Kinect</clip>
         <clip>Elliot_UK - limitations 2</clip>
         <clip>Golan - STUDIO art and code</clip>
         <clip>Golan - closed source mistake</clip>
-        <clip>Golan - hackathons2</clip>
-        <clip>Golan - limits to sharing</clip>
         <clip>Higa -</clip>
         <clip>Higa - language barriers</clip>
         <clip>Higa - not sharing its a backup</clip>
@@ -23964,11 +23958,6 @@
         <clip>JTNimoy - Describe the Kinect</clip>
         <clip>JTNimoy - increased the bandwidth</clip>
         <clip>JTNimoy - open source mensch</clip>
-        <clip>Jer - Desire to get together</clip>
-        <clip>Jer - Making a tool</clip>
-        <clip>Jer - Post-capitalism</clip>
-        <clip>Jer - Software1</clip>
-        <clip>Jer - Software2</clip>
         <clip>Jer - post-capitalism2</clip>
         <clip>Joel - CocaCola</clip>
         <clip>Joel - CocoCola</clip>
@@ -23977,13 +23966,11 @@
         <clip>Joel - advertising</clip>
         <clip>Joel - microsoft research</clip>
         <clip>Julia - can&apos;t be solitary</clip>
-        <clip>Julia - open source and ego</clip>
         <clip>Julian - mixing code</clip>
         <clip>Julian - open source</clip>
         <clip>Karsten - becoming insular</clip>
         <clip>Karsten - processing</clip>
         <clip>Karsten - toxiclibs</clip>
-        <clip>Kevin - Networked intelligence</clip>
         <clip>Kevin - immersive games</clip>
         <clip>Kyle_CH - RGBD</clip>
         <clip>Kyle_CH - open source</clip>
@@ -23996,15 +23983,11 @@
         <clip>LIA - SkepticismAboutOpenSource</clip>
         <clip>Maeda - ACU p 2</clip>
         <clip>Maeda - ACU part 1</clip>
-        <clip>Maeda - Processing community</clip>
         <clip>Maeda - Processing toolkit</clip>
         <clip>Marcus - economics question</clip>
         <clip>Nervous_Jesse - Getting Ripped off</clip>
-        <clip>Nervous_Jesse - Open source education</clip>
         <clip>Nervous_Jesse - limiting open source</clip>
         <clip>Paola - code ant farm</clip>
-        <clip>Paola - generosity</clip>
-        <clip>Patricio - Rethinking education systems</clip>
         <clip>Patricio - Zeitgeist of open source</clip>
         <clip>Philip - all the points can flush</clip>
         <clip>Philip - if I had Processing in school</clip>
@@ -24016,15 +23999,8 @@
         <clip>Ramsey - legos 1</clip>
         <clip>Ramsey - legos 2</clip>
         <clip>Ramsey - minecraft 1</clip>
-        <clip>Shiffman - Open Source Contract</clip>
-        <clip>Shiffman - problem solving</clip>
-        <clip>Shiffman - sharing</clip>
-        <clip>Theo - development feedback,</clip>
-        <clip>Theo - open frameworks</clip>
-        <clip>Zach - Open Frameworks 1</clip>
         <clip>Zach - debugging</clip>
         <clip>Zach - decompiling</clip>
-        <clip>Zach - open source challenge</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -24129,7 +24105,9 @@
 </system>
 <system name="RGBDVideo_ITP_2_omer">
     <keywords>hackers|hacker|art vs engineering</keywords>
-    <links></links>
+    <links>
+        <clip>Intro - Toolmaker</clip>
+    </links>
     <suppressions>
         <clip>Aaron - Google Data arts</clip>
         <clip>Binx - art for money</clip>
@@ -24209,8 +24187,8 @@
         <clip>Ramsey - legos 3</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -24281,12 +24259,12 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_ITP_5">
-    <keywords></keywords>
+    <keywords>learning|education|beginnings</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
