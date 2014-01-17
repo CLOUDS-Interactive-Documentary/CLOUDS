@@ -4059,7 +4059,7 @@
     </suppressions>
     <comments></comments>
     <grade>C</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -4073,7 +4073,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -4596,18 +4596,6 @@
     <interlude>0</interlude>
 </system>
 <system name="Astrolabe_SolarSystem_ZoomOut">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Astrolabe_debug">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -7586,7 +7574,7 @@
     <interlude>0</interlude>
 </system>
 <system name="Connectors_Fast_connections">
-    <keywords></keywords>
+    <keywords>dreams|imagination</keywords>
     <links></links>
     <suppressions>
         <clip>Andres - fuzzy systems</clip>
@@ -7619,10 +7607,11 @@
         <clip>Nervous_Jesse - we like things tidy</clip>
         <clip>Philip - in touch all the time</clip>
         <clip>Ramsey - elegant system</clip>
+        <clip>Aaron - lego creatures</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -8550,16 +8539,31 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="CubeCraft_MC_shadows_1">
-    <keywords></keywords>
+    <keywords>minecraft|videogames</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - experience design</clip>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Aaron - the best games are great stories</clip>
+        <clip>JTNimoy - Cortex</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Kevin - Area code 2</clip>
+        <clip>Kevin - Big games 1</clip>
+        <clip>Kevin - No consequences 1</clip>
+        <clip>Kevin - area code 1</clip>
+        <clip>Kevin - immersive games</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+        <clip>Ramsey - games for access</clip>
+        <clip>Regine - virtual</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -10405,7 +10409,7 @@
     <interlude>0</interlude>
 </system>
 <system name="ExampleMPMFluid_gal1">
-    <keywords>physics|phenomena</keywords>
+    <keywords>physics|phenomena|interactivity</keywords>
     <links></links>
     <suppressions>
         <clip>Shiffman - how far could we get?</clip>
@@ -10424,6 +10428,9 @@
         <clip>Philip - programming the river</clip>
         <clip>Ramsey - emergence from simple rules</clip>
         <clip>Shiffman - Magnets</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Shantell - Kids</clip>
+        <clip>Regine - ambiguous categories</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -11735,6 +11742,18 @@
     <interlude>0</interlude>
 </system>
 <system name="Fireworks_g_work_02b">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Fireworks_laserworks">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
