@@ -152,11 +152,18 @@ class CloudsPlaybackController {
     CloudsPortal continuePortal;
     void setupPortals();
     ofRectangle resetRect;
-
+    bool bResetSelected;
+    bool bResetTransitionComplete;
+    ofxFTGLFont resetFont;
+    float resetSelectedPercentComplete;
+    float maxResetHoverTime;
+    float startResetHoverTime;
+    
     
     // OS cursor display
     ofVec2f lastMousePos, currMousePos;
     unsigned long long lastMouseMoveMillis;
+
 
 };
 

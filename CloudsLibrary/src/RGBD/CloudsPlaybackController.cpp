@@ -25,6 +25,11 @@ CloudsPlaybackController::CloudsPlaybackController(){
     cachedTransition = false;
 
     lastMouseMoveMillis = 0;
+    bResetSelected = false;
+    bResetTransitionComplete = false;
+    maxResetHoverTime = 5.0;
+    startResetHoverTime = 0.0;
+    resetSelectedPercentComplete = 0;
 }
 
 void CloudsPlaybackController::setupPortals(){
@@ -35,6 +40,11 @@ void CloudsPlaybackController::setupPortals(){
     continuePortal.question = "Continue";
     continuePortal.setup();
     
+    resetRect = ofRectangle(75,CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.85,20,20);
+    if(! resetFont.loadFont(GetCloudsDataPath()+"/font/Blender-MEDIUM.ttf", 10)){
+        ofLogError()<<"Font not loaded in playback controller"<<endl;
+    }
+
 }
 
 //--------------------------------------------------------------------
@@ -452,10 +462,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             stopInterlude = true;
             goToNextAct = true;
         }
-//        else if(GetSelectedInterludePortalResetClouds()){
-//            stopInterlude = true;
-//            goToNextAct = false;
-//        }
+        else if(bResetTransitionComplete){
+            stopInterlude = true;
+            goToNextAct = false;
+            bResetSelected = false;
+            resetSelectedPercentComplete = 0;
+            bResetTransitionComplete = false;
+        }
 		else if(ofGetElapsedTimef() - interludeStartTime > 2*60){
             stopInterlude = true;
             goToNextAct = false;
@@ -463,9 +476,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         
         //check mouse distance from portals
         ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
-//        continuePortal.hoverPosition.y += .2*sin(ofGetElapsedTimef());
-//        continuePortal.hoverPosition.x = ofGetMouseX();
-//        continuePortal.hoverPosition.y = ofGetMouseY();
         continuePortal.update();
         float distanceToPortal = continuePortal.hoverPosition.distance(mouseNode);
         if(distanceToPortal<100.f){
@@ -473,6 +483,24 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         }
         else{
             continuePortal.stopHovering();
+        }
+        
+        if(resetRect.inside(GetCloudsInputX(), GetCloudsInputY())){
+            bResetSelected = true;
+            startResetHoverTime = ofGetElapsedTimef();
+
+        }
+        else{
+            bResetSelected = false;
+            resetSelectedPercentComplete = 0;
+        }
+        
+        if (bResetSelected) {
+            resetSelectedPercentComplete = ofClamp((ofGetElapsedTimef() - startResetHoverTime)/maxResetHoverTime  , 0, 1);
+            
+            if (resetSelectedPercentComplete == 1.0) {
+                bResetTransitionComplete = true;
+            }
         }
 
 #ifdef OCULUS_RIFT
@@ -780,6 +808,14 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
         
         ofDisableAlphaBlending();
         ofPopStyle();
+        
+        ofNoFill();
+        ofSetColor(ofColor::white);
+        if (showingInterlude) {
+            ofRect(resetRect);
+            resetFont.drawString("RESET", resetRect.x, resetRect.y + resetRect.height +2);
+        }
+
     }
     
 
