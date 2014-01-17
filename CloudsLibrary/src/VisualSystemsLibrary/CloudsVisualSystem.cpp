@@ -567,24 +567,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			getCameraRef().end();
             
-#ifdef CLOUDS_APP
-            
-            if(bShowPortals){
-                ofPushStyle();
-                ofEnableAlphaBlending();
-                    
-                ofSetColor(255);
-                for(int i = 0; i < portals.size(); i++){
-                    glDisable(GL_DEPTH_TEST);
-                    CloudsPortal::shader.begin();
-                    CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-                    portals[i].draw();
-                    CloudsPortal::shader.end();
-                }
-                ofDisableAlphaBlending();
-                ofPopStyle();
-            }
-#endif
+
 			ofPushStyle();
 			ofPushMatrix();
 			ofTranslate(0, getCanvasHeight() );
@@ -3716,6 +3699,27 @@ void CloudsVisualSystem::selfPostDraw(){
     }
     //end
 #endif
+    
+#ifdef CLOUDS_APP
+    
+    if(bShowPortals){
+        ofPushStyle();
+        ofEnableAlphaBlending();
+        
+        ofSetColor(255);
+        for(int i = 0; i < portals.size(); i++){
+            glDisable(GL_DEPTH_TEST);
+            CloudsPortal::shader.begin();
+            CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+            portals[i].draw();
+            CloudsPortal::shader.end();
+        }
+        ofDisableAlphaBlending();
+        ofPopStyle();
+    }
+#endif
+    
+    
 }
 
 void CloudsVisualSystem::drawCursor()

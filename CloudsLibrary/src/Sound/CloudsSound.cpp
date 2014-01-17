@@ -54,6 +54,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         
         whichdream = 0;
 		instGain = 7.5;
+        in_tunnel = false;
 		
         MASTERTEMPO = 120;
         AUTORUN = 0;
@@ -256,6 +257,8 @@ void CloudsSound::enterTunnel()
     dopull = true;
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_TUNNEL_BUS);
+    SCHEDULEBANG(477.); // length of sound
+    in_tunnel = true;
 }
 
 void CloudsSound::exitTunnel()
@@ -266,6 +269,7 @@ void CloudsSound::exitTunnel()
 
     PFIELD_SCHED(0., fd, PF_TUNNEL_BUS, "ramp_10");
     dopull = false;
+    in_tunnel = false;
 }
 
 void CloudsSound::enterClusterMap()
@@ -399,6 +403,7 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
         // not using right now
         if (check_bang() == 1) {
             if(LUKEDEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
+            if(in_tunnel) enterTunnel();
         }
 
         if(LUKEDEBUG)

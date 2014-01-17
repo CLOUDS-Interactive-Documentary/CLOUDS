@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>cameraViewsGui</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>643.000000000</XPosition>
+    <XPosition>1067.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>deadZone</Name>
-    <Value>0.050000001</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -63,12 +63,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>minTilt</Name>
-    <Value>0.886703491</Value>
+    <Value>-23.940887451</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>maxTilt</Name>
-    <Value>38.719207764</Value>
+    <Value>50.541870117</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -78,7 +78,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>minOrbitDistance</Name>
-    <Value>400.147766113</Value>
+    <Value>239.211822510</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

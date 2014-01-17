@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SPH0Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000061035</XPosition>
-    <YPosition>143.000000000</YPosition>
+    <XPosition>2121.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,20 +18,20 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SPH0 POS-Y</Name>
-    <Value>19.199996948</Value>
+    <Value>4.601455688</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SPH0 POS-Z</Name>
-    <Value>123.129882812</Value>
+    <Value>-39.935745239</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SPH0 RADIUS</Name>
-    <Value>126.886825562</Value>
+    <Value>89.614685059</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SPH0 LIMIT</Name>
-    <Value>2.500000000</Value>
+    <Value>4.319741726</Value>
 </Widget>

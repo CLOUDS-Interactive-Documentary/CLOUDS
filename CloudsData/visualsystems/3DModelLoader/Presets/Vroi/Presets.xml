@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1279.000000000</XPosition>
+    <XPosition>2763.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -48,6 +48,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Kelp_Xray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Laplacian</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -134,6 +139,11 @@
     <Kind>2</Kind>
     <Name>Toxi_Sphere1</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Trachia</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
