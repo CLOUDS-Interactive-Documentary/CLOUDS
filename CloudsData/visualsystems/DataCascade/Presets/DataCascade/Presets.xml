@@ -22,23 +22,13 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>DataCascadeCloseOC</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>DataCascadeOC</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>DoubleTunnel</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>DoubleTunnelOC</Name>
-    <Value>0</Value>
+    <Name>DoubleTunnel2</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

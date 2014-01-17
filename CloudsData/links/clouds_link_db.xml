@@ -14361,6 +14361,7 @@
 </clip>
 <clip>
     <name>Higa - beginnings</name>
+    <revokedKeywords>code,programming,software,open frameworks,beginnings,toolkits</revokedKeywords>
     <additionalKeywords>#dud</additionalKeywords>
 </clip>
 <clip>
@@ -14411,7 +14412,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <revokedKeywords>nerd,weird,funny,tribe</revokedKeywords>
+    <revokedKeywords>nerd,weird,funny,tribe,#easy</revokedKeywords>
+    <additionalKeywords>#dud</additionalKeywords>
 </clip>
 <clip>
     <name>Higa - only meets pure geeks</name>
@@ -14502,6 +14504,11 @@
         <endFrame>-1</endFrame>
     </link>
     <additionalKeywords>toolmakers</additionalKeywords>
+</clip>
+<clip>
+    <name>Higa - understanding pointers</name>
+    <revokedKeywords>programming,#obstacle,understanding,language,challenge,c++,#discouraging</revokedKeywords>
+    <additionalKeywords>#dud</additionalKeywords>
 </clip>
 <clip>
     <name>Higa - sharpness of decisions</name>

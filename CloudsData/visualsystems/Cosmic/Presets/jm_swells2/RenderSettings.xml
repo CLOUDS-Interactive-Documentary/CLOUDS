@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>453.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>23.999998093</Value>
+    <Value>13.264337540</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

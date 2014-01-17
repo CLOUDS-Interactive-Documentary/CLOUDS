@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>transform</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>24.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>267.000000000</XPosition>
+    <YPosition>19.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>positionOffset.y</Name>
-    <Value>-34.482788086</Value>
+    <Value>54.187133789</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,22 +23,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>globalRotation.x</Name>
-    <Value>0.000000000</Value>
+    <Value>-180.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>globalRotation.y</Name>
-    <Value>0.000000000</Value>
+    <Value>0.886688232</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>globalRotation.z</Name>
-    <Value>0.000000000</Value>
+    <Value>74.630615234</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>globalRotationVel.x</Name>
-    <Value>0.000000000</Value>
+    <Value>0.197044373</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

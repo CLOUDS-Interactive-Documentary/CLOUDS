@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>ART2Settings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>391.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1061.000000000</XPosition>
+    <YPosition>415.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>

@@ -2,16 +2,16 @@
     <Bangs>
         <Mapping>
             <Widget>
-                <WidgetName>RANDOMIZE</WidgetName>
-                <WidgetID>7</WidgetID>
+                <WidgetName>RESET</WidgetName>
+                <WidgetID>5</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>RESET</WidgetName>
-                <WidgetID>5</WidgetID>
+                <WidgetName>RANDOMIZE</WidgetName>
+                <WidgetID>7</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -21,17 +21,9 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>SPH0 LIMIT</WidgetName>
+                <WidgetName>SPH1 LIMIT</WidgetName>
                 <WidgetID>14</WidgetID>
-                <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SPH0 RADIUS</WidgetName>
-                <WidgetID>12</WidgetID>
-                <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
+                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -45,9 +37,17 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SPH1 LIMIT</WidgetName>
+                <WidgetName>SPH0 RADIUS</WidgetName>
+                <WidgetID>12</WidgetID>
+                <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH0 LIMIT</WidgetName>
                 <WidgetID>14</WidgetID>
-                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
+                <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
