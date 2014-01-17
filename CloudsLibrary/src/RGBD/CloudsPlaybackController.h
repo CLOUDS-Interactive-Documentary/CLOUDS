@@ -85,10 +85,14 @@ class CloudsPlaybackController {
 	int numClipsPlayed;
 	string currentTopic;
 	bool shouldPlayAct;
+    
 
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
     int numActsCreated;
+    
+    bool cachedTransition;
+    CloudsVisualSystem::RGBDTransitionType cachedTransitionType;
     
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;

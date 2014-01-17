@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>ELESettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000061035</XPosition>
-    <YPosition>555.000000000</YPosition>
+    <XPosition>2333.000000000</XPosition>
+    <YPosition>240.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,5 +13,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ELE LIMIT</Name>
-    <Value>6.750000000</Value>
+    <Value>4.355591297</Value>
 </Widget>

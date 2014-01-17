@@ -70,6 +70,7 @@ class CloudsTransitionController {
 	CloudsTransitionState getPendingState();
 	CloudsTransitionState getCurrentState();
 	CloudsTransitionState getPreviousState();
+	string getPendingStateDescription();
 	string getCurrentStateDescription();
     string getPreviousStateDescription();
 	string getStateDescription(CloudsTransitionState state);
@@ -88,6 +89,7 @@ class CloudsTransitionController {
 	
 	CloudsTransitionState currentState;
 	CloudsTransitionState previousState;
+	CloudsTransitionState pendingState;
 	float transitionStartTime;
 	
 	float transitionInCompleteTime;

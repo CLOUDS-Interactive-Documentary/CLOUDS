@@ -3,7 +3,7 @@
     <Name>ELESettings</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>293.000000000</YPosition>
+    <YPosition>316.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,5 +13,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ELE LIMIT</Name>
-    <Value>8.500000000</Value>
+    <Value>5.500000000</Value>
 </Widget>
