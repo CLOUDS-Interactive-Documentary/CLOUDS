@@ -367,7 +367,7 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 	
 	lukePreset& interludePreset = sound.presets[ validInterludePresetIndices[ ofRandom(validInterludePresetIndices.size()) ] ];
 	cue.startTime = 0;
-	cue.duration = 60*2;
+	cue.duration = 30;
 	cue.mixLevel = 2;
 	sound.startMusicFX(0, cue.duration);
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
@@ -472,13 +472,14 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             stopInterlude = true;
             goToNextAct = false;
         }
-		else if(ofGetElapsedTimef() - interludeStartTime > 2*60){
+		else if(ofGetElapsedTimef() - interludeStartTime > 30){
             stopInterlude = true;
             goToNextAct = false;
 		}
         
         //check mouse distance from portals
-        ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+        ofVec2f mouseNode(GetCloudsInputX(),
+                          GetCloudsInputY());
         continuePortal.update();
         float distanceToPortal = continuePortal.hoverPosition.distance(mouseNode);
         if(distanceToPortal<100.f){
@@ -1106,6 +1107,7 @@ void CloudsPlaybackController::showInterlude(){
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
         interludeSystem->playSystem();
+        interludeSystem->drawCursorMode = DRAW_CURSOR_PRIMARY;
         
         currentVisualSystem = interludeSystem;
         

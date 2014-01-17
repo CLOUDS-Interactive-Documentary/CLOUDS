@@ -317,6 +317,7 @@ class CloudsVisualSystem {
     vector<CloudsPortal> portals;
 #endif
 	
+    CloudsDrawCursorMode drawCursorMode;
   protected:
 		
 	//UI
@@ -403,7 +404,7 @@ class CloudsVisualSystem {
 	bool bClearBackground;
 	bool bDrawToScreen;
 	bool bUseOculusRift;
-    CloudsDrawCursorMode drawCursorMode;
+
     
     //CAM
     float camDistance;

@@ -40,8 +40,8 @@
     rgbd.setup();
 
 #ifdef OCULUS_RIFT
-    rgbdVisualSystem.hud = &hud;
-    rgbdVisualSystem.setupHUDGui();
+//    rgbdVisualSystem.hud = &hud;
+//    rgbdVisualSystem.setupHUDGui();
 //	rgbdVisualSystem.loadPresetGUISFromName("RGBD_OC_POINTS");
 #else
 //	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
