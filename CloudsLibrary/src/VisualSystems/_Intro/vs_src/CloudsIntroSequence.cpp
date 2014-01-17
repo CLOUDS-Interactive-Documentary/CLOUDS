@@ -118,7 +118,7 @@ void CloudsIntroSequence::selfUpdate(){
 
     // Trigger start manually
     if (!startedOnclick) {
-        bool cursorNearCenter = cursor.distance(ofVec3f(viewport.getCenter().x, viewport.getCenter().y, cursor.z)) < 30;
+        bool cursorNearCenter = cursor.distance(ofVec3f(viewport.getCenter().x, viewport.getCenter().y, cursor.z)) < 20;
         if (cursorNearCenter) {
             if (bCursorInCenter) {
                 // already started, let's see if we've been there long enough
@@ -393,7 +393,7 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 }
 
 void CloudsIntroSequence::selfDraw(){
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
     if (hud != NULL) {
         if(selectedQuestion != NULL){
             hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -selectedQuestion->screenPosition.y/2));
