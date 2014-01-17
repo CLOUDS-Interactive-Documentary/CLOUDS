@@ -181,6 +181,7 @@ public:
     ofVec3f boundsMin;
     ofVec3f boundsMax;
     float jointLerpPct;
+    bool bClampToBounds;
     
     bool bDoDebug;
     

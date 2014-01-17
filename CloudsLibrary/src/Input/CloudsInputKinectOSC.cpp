@@ -19,6 +19,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
 , jointLerpPct(0.3f)
+, bClampToBounds(true)
 , bDoDebug(false)
 , boundsMin(-0.5f, -0.7f, 1.0f)
 , boundsMax( 0.5f, -0.2f, 2.0f)
@@ -189,6 +190,12 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 }
                 origin.y -= mappingHeight;
                 hands[handIdx]->trackingBounds.setFromCenter(origin, mappingWidth * 2, mappingHeight * 2);
+                
+                if (bClampToBounds) {
+                    // clamp to left, right, and top edges
+                    hands[handIdx]->handJoint.inputPosition.x = ofClamp(hands[handIdx]->handJoint.inputPosition.x, origin.x - mappingWidth, origin.x + mappingWidth);
+                    hands[handIdx]->handJoint.inputPosition.y = MIN(hands[handIdx]->handJoint.inputPosition.y, origin.y + mappingHeight);
+                }
                 
                 // map the input to local and screen coordinates
                 mapCoords(hands[handIdx]->handJoint, origin, zRef, mappingWidth, mappingHeight);

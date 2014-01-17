@@ -2928,6 +2928,7 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
     
     kinectGui->addSpacer();
+    kinectGui->addToggle("CLAMP TO BOUNDS", &kinectInput->bClampToBounds);
     kinectGui->addSlider("ACTIVE THRESHOLD Y", 0.0f, 1.0f, &kinectInput->activeThresholdY);
     kinectGui->addSlider("ACTIVE THRESHOLD Z", 0.0f, 1.0f, &kinectInput->activeThresholdZ);
     
