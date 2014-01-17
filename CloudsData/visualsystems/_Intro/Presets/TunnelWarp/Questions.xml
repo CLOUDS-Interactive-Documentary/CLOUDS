@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Questions</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>241.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>868.000000000</XPosition>
+    <YPosition>258.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Question Min Z</Name>
-    <Value>50.000000000</Value>
+    <Value>65.418716431</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
