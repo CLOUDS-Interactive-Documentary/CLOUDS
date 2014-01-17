@@ -561,11 +561,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		
         ///////////////// QUESTIONS
         //adding all option clips with questions
-//		if(state.topicNum > 1){
+		if(state.topicNum > 1){
 #ifndef OCULUS_RIFT
 			addQuestions(state, questionClips);
 #endif
-//        }
+        }
         /////////////////
 		
 		///////////////// DIOCHOTOMIES
