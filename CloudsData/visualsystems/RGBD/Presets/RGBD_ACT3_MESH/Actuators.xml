@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Actuators</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>850.000000000</XPosition>
-    <YPosition>515.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>416.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>SPIN SPEED</Name>
-    <Value>2.216748714</Value>
+    <Value>1.009852171</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
