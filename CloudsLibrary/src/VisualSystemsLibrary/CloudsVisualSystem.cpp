@@ -575,7 +575,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 #ifndef OCULUS_RIFT
         drawCursor();
 #endif
+#ifdef KINECT_INPUT
         drawKinectDebug();
+#endif
 
 	}
     
@@ -590,9 +592,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
     ofPopStyle();
 }
 
-
-void CloudsVisualSystem::drawKinectDebug(){
 #ifdef KINECT_INPUT
+void CloudsVisualSystem::drawKinectDebug(){
     if (timeline->getIsShowing()) {
         ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
         if (kinectInput->bDoDebug) {
@@ -604,8 +605,8 @@ void CloudsVisualSystem::drawKinectDebug(){
                                kDebugWidth, kDebugHeight);
         }
     }
-#endif
 }
+#endif
 
 void CloudsVisualSystem::draw2dSystemPlane(){
     // create a plane and map our 2d systems to it
