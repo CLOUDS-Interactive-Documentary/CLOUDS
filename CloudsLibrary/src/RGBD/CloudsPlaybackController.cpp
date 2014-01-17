@@ -16,6 +16,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     numActsCreated = 0;
     crossfadeValue = 0;
     prevCrossFadeValue = 0;
+    cachedTransition = false;
 }
 
 //--------------------------------------------------------------------
@@ -292,9 +293,9 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
         }
 	}
     
-    if(args.key == 'm'){
-        transitionController.transitionToIntro(1.0);
-    }
+//    if(args.key == 'm'){
+//        transitionController.transitionToIntro(1.0);
+//    }
 }
 //--------------------------------------------------------------------
 void CloudsPlaybackController::createInterludeSoundQueue(){
@@ -461,7 +462,7 @@ void CloudsPlaybackController::updateTransition(){
 //if(transitionController.getCurrentState() != TRANSITION_IDLE){
 //    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
 //	}
-    cout<<"Change in cross fade value : "<<abs(prevCrossFadeValue - crossfadeValue)<<endl;
+//    cout<<"Change in cross fade value : "<<abs(prevCrossFadeValue - crossfadeValue)<<endl;
 	prevCrossFadeValue = crossfadeValue;
     
 	CloudsPortal* q;
@@ -477,9 +478,9 @@ void CloudsPlaybackController::updateTransition(){
 					rgbdVisualSystem->startTransitionOut( CloudsVisualSystem::QUESTION );
 				}
 				else{
-					rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
+                    rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
 				}
-                
+
                 hud.animateOff(CLOUDS_HUD_FULL);
                 
                 break;
@@ -532,9 +533,11 @@ void CloudsPlaybackController::updateTransition(){
                 
             case TRANSITION_INTERVIEW_IN:
                 
+
+                
                 hideVisualSystem();
                 showRGBDVisualSystem();
-                
+
                 if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
                     hud.playCued();
                 }
@@ -550,7 +553,7 @@ void CloudsPlaybackController::updateTransition(){
                 break;
 
             case TRANSITION_INTERLUDE_IN:
-                
+                    
 //                sound.enterClusterMap();
 				interludeStartTime = ofGetElapsedTimef();
 				
@@ -612,7 +615,12 @@ void CloudsPlaybackController::updateTransition(){
                 }
                 else if(transitionController.getPreviousState() == TRANSITION_INTERLUDE_OUT){
                     
+
+                    cachedTransition = true;
+                    cachedTransitionType = interludeSystem->getTransitionType();
+                    
                     cleanupInterlude();
+
                     
                     //build the next clip based on the history
 					storyEngine.buildAct(run);
@@ -944,7 +952,7 @@ void CloudsPlaybackController::cleanupInterlude(){
     else {
         ofLogError("CloudsPlaybackController::updateTransition") << " Ended interulde while not showing ClusterMap or Interlude System";
     }
-    currentVisualSystem = NULL;
+//    currentVisualSystem = NULL;
 }
 
 //--------------------------------------------------------------------
@@ -980,7 +988,14 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
         rgbdVisualSystem->startTransitionIn( CloudsVisualSystemRGBD::FLY_THROUGH );
     }
     else{
-        rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
+        if(cachedTransition){
+            rgbdVisualSystem->startTransitionIn( cachedTransitionType );
+            cachedTransition = false;
+        }
+        else {
+            rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
+        }
+        
     }
 	
 	rgbdVisualSystem->playSystem();
@@ -1005,6 +1020,8 @@ void CloudsPlaybackController::playNextVisualSystem()
 		currentVisualSystemPreset = nextVisualSystemPreset;
 		currentVisualSystem = nextVisualSystemPreset.system;
 		
+        cachedTransition = false;
+        
 		showingVisualSystem = true;
 	}
 	else{
