@@ -1710,7 +1710,7 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
 void CloudsVisualSystemRGBD::drawQuestions(){
 
 
-//	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_DEPTH_TEST);
 	CloudsPortal::shader.begin();
 	CloudsPortal::shader.setUniform1i("doAttenuate", 0);
 	if(leftPortal.question != "" || bPortalDebugOn){
@@ -1720,7 +1720,7 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 		rightPortal.draw();
 	}
 	CloudsPortal::shader.end();
-//	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);
 
 }
 
