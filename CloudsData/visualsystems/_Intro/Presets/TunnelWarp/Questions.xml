@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Questions</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>241.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>310.000000000</XPosition>
+    <YPosition>212.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,17 +13,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Scale</Name>
-    <Value>0.014778325</Value>
+    <Value>0.034482758</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Wrap Distance</Name>
-    <Value>1000.000000000</Value>
+    <Value>2309.359619141</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Question Min Z</Name>
-    <Value>50.000000000</Value>
+    <Value>156.945816040</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,12 +33,12 @@
 <Widget>
     <Kind>6</Kind>
     <Name>Tug Distance</Name>
-    <HighValue>134.285705566</HighValue>
-    <LowValue>74.285713196</LowValue>
+    <HighValue>182.857131958</HighValue>
+    <LowValue>87.142852783</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Attenuate Distance</Name>
-    <HighValue>87.142852783</HighValue>
-    <LowValue>21.428558350</LowValue>
+    <HighValue>300.000000000</HighValue>
+    <LowValue>38.571426392</LowValue>
 </Widget>

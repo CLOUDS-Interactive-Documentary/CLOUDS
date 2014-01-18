@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>666.000000000</XPosition>
-    <YPosition>334.000000000</YPosition>
+    <XPosition>574.000000000</XPosition>
+    <YPosition>85.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>UPDATE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -23,10 +23,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>PRIMARY CURSOR</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>ALL CURSORS</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>

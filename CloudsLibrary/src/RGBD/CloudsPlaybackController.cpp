@@ -367,7 +367,7 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 	
 	lukePreset& interludePreset = sound.presets[ validInterludePresetIndices[ ofRandom(validInterludePresetIndices.size()) ] ];
 	cue.startTime = 0;
-	cue.duration = 60*2;
+	cue.duration = 30;
 	cue.mixLevel = 2;
 	sound.startMusicFX(0, cue.duration);
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
@@ -472,13 +472,14 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             stopInterlude = true;
             goToNextAct = false;
         }
-		else if(ofGetElapsedTimef() - interludeStartTime > 2*60){
+		else if(ofGetElapsedTimef() - interludeStartTime > 30){
             stopInterlude = true;
             goToNextAct = false;
 		}
         
         //check mouse distance from portals
-        ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+        ofVec2f mouseNode(GetCloudsInputX(),
+                          GetCloudsInputY());
         continuePortal.update();
         float distanceToPortal = continuePortal.hoverPosition.distance(mouseNode);
         if(distanceToPortal<100.f){
@@ -864,6 +865,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
         
         }
         ofRect(resetRect);
+//        ofRect(resetSelectionRect);
 
         ofSetColor(ofFloatColor(1.0,1.0,1.0,resetSelectedPercentComplete ) );
         resetFont.drawString("RESET", resetRect.x + resetRect.width + 7, resetRect.y + resetRect.height);
@@ -1106,6 +1108,7 @@ void CloudsPlaybackController::showInterlude(){
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
         interludeSystem->playSystem();
+        interludeSystem->drawCursorMode = DRAW_CURSOR_PRIMARY;
         
         currentVisualSystem = interludeSystem;
         
@@ -1116,7 +1119,7 @@ void CloudsPlaybackController::showInterlude(){
         
         ofRectangle resetText = resetFont.getStringBoundingBox("RESET",x,y);
         resetRect = ofRectangle(x,y,resetText.height + 1,resetText.height + 1);
-        resetSelectionRect = ofRectangle(x,y, 200,100);
+        resetSelectionRect = ofRectangle(0,CloudsVisualSystem::getStaticRenderTarget().getHeight() - CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2,CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.2,CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2);
         
     }
     else{

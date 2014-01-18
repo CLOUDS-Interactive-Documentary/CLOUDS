@@ -32,6 +32,36 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>InteractiveCamera</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>damping</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minX</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxX</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minY</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxY</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>2D</Name>
     <Value>0</Value>
 </Widget>
@@ -98,7 +128,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>camera fwd force</Name>
-    <Value>0.935999990</Value>
+    <Value>0.655999839</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

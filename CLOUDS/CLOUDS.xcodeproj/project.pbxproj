@@ -1865,6 +1865,8 @@
 		A620E87718837DB300A02F5B /* lineMatchUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lineMatchUtils.cpp; sourceTree = "<group>"; };
 		A620E87818837DB300A02F5B /* lineMatchUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lineMatchUtils.h; sourceTree = "<group>"; };
 		A620E87918837DB300A02F5B /* statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statistics.h; sourceTree = "<group>"; };
+		A6336B7018897894003FA277 /* portal.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = portal.frag; path = ../visualsystems/RGBD/shaders/portal.frag; sourceTree = "<group>"; };
+		A6336B7118897894003FA277 /* portal.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = portal.vert; path = ../visualsystems/RGBD/shaders/portal.vert; sourceTree = "<group>"; };
 		A633AB9118867E0A0088E767 /* CloudsPortalEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsPortalEvents.h; sourceTree = "<group>"; };
 		A633ABA4188786050088E767 /* CloudsRGBDPointLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDPointLayer.cpp; sourceTree = "<group>"; };
 		A633ABA5188786050088E767 /* CloudsRGBDPointLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDPointLayer.h; sourceTree = "<group>"; };
@@ -5599,6 +5601,8 @@
 		E7134EB4174FF8AF00E013AA /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				A6336B7018897894003FA277 /* portal.frag */,
+				A6336B7118897894003FA277 /* portal.vert */,
 			);
 			name = shaders;
 			path = ../../CloudsData/shaders;
