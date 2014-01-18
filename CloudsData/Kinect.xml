@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Kinect</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>360.000000000</XPosition>
-    <YPosition>305.000000000</YPosition>
+    <XPosition>555.000000000</XPosition>
+    <YPosition>302.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -25,20 +25,20 @@
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE X</Name>
-    <HighValue>-0.083743870</HighValue>
-    <LowValue>-0.418719232</LowValue>
+    <HighValue>-0.201970458</HighValue>
+    <LowValue>-0.596059084</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE Y</Name>
     <HighValue>-0.103448272</HighValue>
-    <LowValue>-0.399014771</LowValue>
+    <LowValue>-0.448275864</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE Z</Name>
     <HighValue>2.785714388</HighValue>
-    <LowValue>1.997536898</LowValue>
+    <LowValue>2.096059084</LowValue>
 </Widget>
 <Widget>
     <Kind>2</Kind>
