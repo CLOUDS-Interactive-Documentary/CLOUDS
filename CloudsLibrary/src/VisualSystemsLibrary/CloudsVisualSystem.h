@@ -316,6 +316,10 @@ class CloudsVisualSystem {
     bool bShowPortals;
     vector<CloudsPortal> portals;
 #endif
+
+#ifdef KINECT_INPUT
+    void drawKinectDebug();
+#endif
 	
   protected:
 		
@@ -465,12 +469,7 @@ class CloudsVisualSystem {
 	string mainKeyword;
 	vector<string> keywords;
 	
-#ifdef KINECT_INPUT
-    void drawKinectDebug();
-#endif
-	
 	static void checkOpenGLError(string function);
-	
 	
 	//TRANSITION OPTIONS
 	void loadTransitionOptions();
@@ -494,7 +493,14 @@ class CloudsVisualSystem {
     float bloomAmount;
     int bloomSamples;
     
-
+#ifdef OCULUS_RIFT
+    static float cursorSize;
+#elif KINECT_INPUT
+    static float cursorDownSizeMin, cursorDownSizeMax;
+    static float cursorUpSizeMin, cursorUpSizeMax;
+#else
+    static float cursorDownSize, cursorUpSize;
+#endif
     
 };
 

@@ -16,6 +16,18 @@
 #include "ofxAVFVideoPlayer.h"
 #endif
 
+#ifdef OCULUS_RIFT
+float CloudsVisualSystem::cursorSize = 1;
+#elif KINECT_INPUT
+float CloudsVisualSystem::cursorDownSizeMin = 8;
+float CloudsVisualSystem::cursorDownSizeMax = 16;
+float CloudsVisualSystem::cursorUpSizeMin   = 5;
+float CloudsVisualSystem::cursorUpSizeMax   = 10;
+#else
+float CloudsVisualSystem::cursorDownSize = 12;
+float CloudsVisualSystem::cursorUpSize   = 7;
+#endif
+
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static ofImage cloudsPostDistortionMap;
@@ -2937,6 +2949,11 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addToggle("DEBUG", &kinectInput->bDoDebug);
     
     kinectGui->addSpacer();
+    kinectGui->addLabel("CURSOR");
+    kinectGui->addRangeSlider("CURSOR DOWN", 1, 20, &cursorDownSizeMin, &cursorDownSizeMax);
+    kinectGui->addRangeSlider("CURSOR UP", 1, 20, &cursorUpSizeMin, &cursorUpSizeMax);
+    
+    kinectGui->addSpacer();
     kinectGui->addRangeSlider("BODY RANGE X", -1.0f, 1.0f, &kinectInput->boundsMin.x, &kinectInput->boundsMax.x);
     kinectGui->addRangeSlider("BODY RANGE Y", -1.0f, 1.0f, &kinectInput->boundsMin.y, &kinectInput->boundsMax.y);
     kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
@@ -2981,6 +2998,10 @@ void CloudsVisualSystem::setupOculusGui()
     oculusGui->resetPlacer();
     oculusGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
     oculusGui->addWidgetToHeader(button);
+    
+    oculusGui->addSpacer();
+    oculusGui->addLabel("CURSOR");
+    oculusGui->addSlider("CURSOR", 0, 5, &cursorSize);
     
     oculusGui->autoSizeToFitWidgets();
     ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
@@ -3759,20 +3780,25 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
     if (bDragged) {
         ofSetColor(213, 69, 62, 255);
 #ifdef OCULUS_RIFT
-        ofCircle(pos, 1);
-#else
+        ofCircle(pos, cursorSize);
+#elif KINECT_INPUT
         ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, 3, 10, true));
+                 ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true));
+#else
+        ofCircle(pos, cursorDownSize);
 #endif
     }
     else {
 #ifdef OCULUS_RIFT
         ofSetColor(255, 255, 255, 64);
-        ofCircle(pos, 1);
-#else
+        ofCircle(pos, cursorSize);
+#elif KINECT_INPUT
         ofSetColor(255, 255, 255, 128);
         ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, 3, 14, true));
+                 ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true));
+#else
+        ofSetColor(255, 255, 255, 128);
+        ofCircle(pos, cursorUpSize);
 #endif
     }
     ofPopStyle();
