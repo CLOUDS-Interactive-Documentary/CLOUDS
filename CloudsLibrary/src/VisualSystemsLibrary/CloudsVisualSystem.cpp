@@ -3759,7 +3759,7 @@ void CloudsVisualSystem::drawCursor()
 //    if (drawCursorMode > DRAW_CURSOR_NONE) {
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
         for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
-            if (drawCursorMode <= DRAW_CURSOR_PRIMARY && !it->second.primary) {
+            if (drawCursorMode != DRAW_CURSOR_ALL && !it->second.primary) {
                 continue;
             }
             
