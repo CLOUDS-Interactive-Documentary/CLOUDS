@@ -19,13 +19,13 @@
 #ifdef OCULUS_RIFT
 float CloudsVisualSystem::cursorSize = 1;
 #elif KINECT_INPUT
-float CloudsVisualSystem::cursorDownSizeMin = 8;
-float CloudsVisualSystem::cursorDownSizeMax = 16;
-float CloudsVisualSystem::cursorUpSizeMin   = 5;
-float CloudsVisualSystem::cursorUpSizeMax   = 10;
+float CloudsVisualSystem::cursorDownSizeMin = 5;
+float CloudsVisualSystem::cursorDownSizeMax = 10;
+float CloudsVisualSystem::cursorUpSizeMin   = 8;
+float CloudsVisualSystem::cursorUpSizeMax   = 16;
 #else
-float CloudsVisualSystem::cursorDownSize = 12;
-float CloudsVisualSystem::cursorUpSize   = 7;
+float CloudsVisualSystem::cursorDownSize = 7;
+float CloudsVisualSystem::cursorUpSize   = 12;
 #endif
 
 static ofFbo staticRenderTarget;
