@@ -865,6 +865,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
         
         }
         ofRect(resetRect);
+//        ofRect(resetSelectionRect);
 
         ofSetColor(ofFloatColor(1.0,1.0,1.0,resetSelectedPercentComplete ) );
         resetFont.drawString("RESET", resetRect.x + resetRect.width + 7, resetRect.y + resetRect.height);
@@ -1118,7 +1119,7 @@ void CloudsPlaybackController::showInterlude(){
         
         ofRectangle resetText = resetFont.getStringBoundingBox("RESET",x,y);
         resetRect = ofRectangle(x,y,resetText.height + 1,resetText.height + 1);
-        resetSelectionRect = ofRectangle(x,y, 200,100);
+        resetSelectionRect = ofRectangle(0,CloudsVisualSystem::getStaticRenderTarget().getHeight() - CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2,CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.2,CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2);
         
     }
     else{
