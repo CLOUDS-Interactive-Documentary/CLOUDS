@@ -3755,10 +3755,10 @@ void CloudsVisualSystem::selfPostDraw(){
 
 void CloudsVisualSystem::drawCursor()
 {
-    if (drawCursorMode > DRAW_CURSOR_NONE) {
+//    if (drawCursorMode > DRAW_CURSOR_NONE) {
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
         for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
-            if (drawCursorMode == DRAW_CURSOR_PRIMARY && !it->second.primary) {
+            if (drawCursorMode <= DRAW_CURSOR_PRIMARY && !it->second.primary) {
                 continue;
             }
             
@@ -3769,7 +3769,7 @@ void CloudsVisualSystem::drawCursor()
             selfDrawCursor(it->second.position, ofGetMousePressed());
 #endif
         }
-    }
+//    }
 }
 
 void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
@@ -3777,29 +3777,35 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
     ofPushStyle();
     ofNoFill();
     ofSetLineWidth(2);
-    if (bDragged) {
-        ofSetColor(213, 69, 62, 255);
-#ifdef OCULUS_RIFT
-        ofCircle(pos, cursorSize);
-#elif KINECT_INPUT
-        ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true));
-#else
-        ofCircle(pos, cursorDownSize);
-#endif
+    if (drawCursorMode == DRAW_CURSOR_NONE) {
+        ofSetColor(255, 255, 255, 64);
+        ofCircle(pos, 5);
     }
     else {
+        if (bDragged) {
+            ofSetColor(213, 69, 62, 255);
 #ifdef OCULUS_RIFT
-        ofSetColor(255, 255, 255, 64);
-        ofCircle(pos, cursorSize);
+            ofCircle(pos, cursorSize);
 #elif KINECT_INPUT
-        ofSetColor(255, 255, 255, 128);
-        ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true));
+            ofCircle(pos.x, pos.y,
+                     ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true));
 #else
-        ofSetColor(255, 255, 255, 128);
-        ofCircle(pos, cursorUpSize);
+            ofCircle(pos, cursorDownSize);
 #endif
+        }
+        else {
+#ifdef OCULUS_RIFT
+            ofSetColor(255, 255, 255, 64);
+            ofCircle(pos, cursorSize);
+#elif KINECT_INPUT
+            ofSetColor(255, 255, 255, 192);
+            ofCircle(pos.x, pos.y,
+                     ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true));
+#else
+            ofSetColor(255, 255, 255, 192);
+            ofCircle(pos, cursorUpSize);
+#endif
+        }
     }
     ofPopStyle();
 }
