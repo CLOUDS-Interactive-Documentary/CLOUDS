@@ -2,31 +2,53 @@
     <Kind>42</Kind>
     <Name>Kinect</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1909.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>555.000000000</XPosition>
+    <YPosition>302.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>CURSOR DOWN</Name>
+    <HighValue>10.000000000</HighValue>
+    <LowValue>5.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>CURSOR UP</Name>
+    <HighValue>16.000000000</HighValue>
+    <LowValue>8.000000000</LowValue>
+</Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE X</Name>
-    <HighValue>0.756157637</HighValue>
-    <LowValue>-0.243842363</LowValue>
+    <HighValue>-0.201970458</HighValue>
+    <LowValue>-0.596059084</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE Y</Name>
-    <HighValue>-0.199999988</HighValue>
-    <LowValue>-0.699999988</LowValue>
+    <HighValue>-0.103448272</HighValue>
+    <LowValue>-0.448275864</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE Z</Name>
-    <HighValue>2.000000000</HighValue>
-    <LowValue>1.000000000</LowValue>
+    <HighValue>2.785714388</HighValue>
+    <LowValue>2.096059084</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLAMP TO BOUNDS</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ACTIVE THRESHOLD Y</Name>
-    <Value>0.800000012</Value>
+    <Value>0.852216721</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
