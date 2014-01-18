@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Points 1</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>221.000000000</XPosition>
-    <YPosition>233.000000000</YPosition>
+    <XPosition>304.000000000</XPosition>
+    <YPosition>93.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Alpha</Name>
-    <Value>0.812807858</Value>
+    <Value>0.980295539</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -69,7 +69,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Speed</Name>
-    <Value>2.857142925</Value>
+    <Value>2.364531994</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

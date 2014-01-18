@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Particle</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>462.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>112.000000000</XPosition>
+    <YPosition>743.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,12 +18,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BIRTH SPREAD</Name>
-    <Value>500.000000000</Value>
+    <Value>1141.871948242</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>POINT SIZE THRESHOLD</Name>
-    <Value>0.001000000</Value>
+    <Value>0.000295567</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
