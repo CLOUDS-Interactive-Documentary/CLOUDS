@@ -219,7 +219,7 @@ void CloudsIntroSequence::selfUpdate(){
     //always move the questions in the direction of the camera
     for(int i = 0; i < startQuestions.size(); i++){
         if(&startQuestions[i] != caughtQuestion){
-            startQuestions[i].hoverPosition.z += cameraForwardSpeed*.75;
+//            startQuestions[i].hoverPosition.z += cameraForwardSpeed*.5;
         }
     }
 }
@@ -316,7 +316,7 @@ void CloudsIntroSequence::positionStartQuestions(){
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].hoverPosition = ofVec3f(0, ofRandom(questionTunnelInnerRadius, tunnelMax.y), 0);
 		startQuestions[i].hoverPosition.rotate(ofRandom(360), ofVec3f(0,0,1));
-		startQuestions[i].hoverPosition.z = tunnelMax.z*.5 + ofRandom(questionWrapDistance);
+		startQuestions[i].hoverPosition.z = 400 + tunnelMax.z*.5 + ofRandom(questionWrapDistance);
         // TODO: Figure out if orientToCenter() is still necessary
 //		startQuestions[i].orientToCenter();
 	}
@@ -680,7 +680,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->addToggle("Debug Tug", &bQuestionDebug);
 	questionGui->addSlider("Scale", 0, 1, &questionScale);
 	questionGui->addSlider("Wrap Distance", 100, 4000, &questionWrapDistance);
-	questionGui->addSlider("Question Min Z", 10, 100, &questionMinZDistance);
+	questionGui->addSlider("Question Min Z", 10, 200, &questionMinZDistance);
 	questionGui->addSlider("Inner Radius", 2, 20, &questionTunnelInnerRadius);
 	questionGui->addRangeSlider("Tug Distance", 10, 300, &questionTugDistance.min, &questionTugDistance.max);
 	questionGui->addRangeSlider("Attenuate Distance", 10, 300,&questionAttenuateDistance.min,&questionAttenuateDistance.max);
