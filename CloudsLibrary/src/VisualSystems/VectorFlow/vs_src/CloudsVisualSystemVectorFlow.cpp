@@ -290,7 +290,7 @@ void CloudsVisualSystemVectorFlow::selfDrawBackground(){
     
     // BLUR fboInitial
     fboBlurX.begin();
-    ofClear(0,0,0);
+//    ofClear(0,0,0);
     shaderBlurX.begin();
     shaderBlurX.setUniform1f("blurAmnt", blurAmount);
 
@@ -301,7 +301,7 @@ void CloudsVisualSystemVectorFlow::selfDrawBackground(){
     fboBlurX.end();
     
     fboFinal.begin();
-    ofClear(0,0,0);
+//    ofClear(0,0,0);
     shaderBlurY.begin();
     shaderBlurY.setUniform1f("blurAmnt", blurAmount);
     fboBlurX.draw(0, 0);
