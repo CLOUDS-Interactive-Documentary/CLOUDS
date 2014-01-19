@@ -16,6 +16,18 @@
 #include "ofxAVFVideoPlayer.h"
 #endif
 
+#ifdef OCULUS_RIFT
+float CloudsVisualSystem::cursorSize = 1;
+#elif KINECT_INPUT
+float CloudsVisualSystem::cursorDownSizeMin = 5;
+float CloudsVisualSystem::cursorDownSizeMax = 10;
+float CloudsVisualSystem::cursorUpSizeMin   = 8;
+float CloudsVisualSystem::cursorUpSizeMax   = 16;
+#else
+float CloudsVisualSystem::cursorDownSize = 7;
+float CloudsVisualSystem::cursorUpSize   = 12;
+#endif
+
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static ofImage cloudsPostDistortionMap;
@@ -2938,6 +2950,11 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addToggle("DEBUG", &kinectInput->bDoDebug);
     
     kinectGui->addSpacer();
+    kinectGui->addLabel("CURSOR");
+    kinectGui->addRangeSlider("CURSOR DOWN", 1, 20, &cursorDownSizeMin, &cursorDownSizeMax);
+    kinectGui->addRangeSlider("CURSOR UP", 1, 20, &cursorUpSizeMin, &cursorUpSizeMax);
+    
+    kinectGui->addSpacer();
     kinectGui->addRangeSlider("BODY RANGE X", -1.0f, 1.0f, &kinectInput->boundsMin.x, &kinectInput->boundsMax.x);
     kinectGui->addRangeSlider("BODY RANGE Y", -1.0f, 1.0f, &kinectInput->boundsMin.y, &kinectInput->boundsMax.y);
     kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
@@ -2982,6 +2999,10 @@ void CloudsVisualSystem::setupOculusGui()
     oculusGui->resetPlacer();
     oculusGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
     oculusGui->addWidgetToHeader(button);
+    
+    oculusGui->addSpacer();
+    oculusGui->addLabel("CURSOR");
+    oculusGui->addSlider("CURSOR", 0, 5, &cursorSize);
     
     oculusGui->autoSizeToFitWidgets();
     ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
@@ -3735,10 +3756,10 @@ void CloudsVisualSystem::selfPostDraw(){
 
 void CloudsVisualSystem::drawCursor()
 {
-    if (drawCursorMode > DRAW_CURSOR_NONE) {
+//    if (drawCursorMode > DRAW_CURSOR_NONE) {
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
         for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
-            if (drawCursorMode == DRAW_CURSOR_PRIMARY && !it->second.primary) {
+            if (drawCursorMode != DRAW_CURSOR_ALL && !it->second.primary) {
                 continue;
             }
             
@@ -3749,7 +3770,7 @@ void CloudsVisualSystem::drawCursor()
             selfDrawCursor(it->second.position, ofGetMousePressed());
 #endif
         }
-    }
+//    }
 }
 
 void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
@@ -3757,24 +3778,35 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
     ofPushStyle();
     ofNoFill();
     ofSetLineWidth(2);
-    if (bDragged) {
-        ofSetColor(213, 69, 62, 255);
-#ifdef OCULUS_RIFT
-        ofCircle(pos, 1);
-#else
-        ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, 3, 10, true));
-#endif
+    if (drawCursorMode == DRAW_CURSOR_NONE) {
+        ofSetColor(255, 255, 255, 64);
+        ofCircle(pos, 5);
     }
     else {
+        if (bDragged) {
+            ofSetColor(213, 69, 62, 255);
 #ifdef OCULUS_RIFT
-        ofSetColor(255, 255, 255, 64);
-        ofCircle(pos, 1);
+            ofCircle(pos, cursorSize);
+#elif KINECT_INPUT
+            ofCircle(pos.x, pos.y,
+                     ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true));
 #else
-        ofSetColor(255, 255, 255, 128);
-        ofCircle(pos.x, pos.y,
-                 ofMap(pos.z, 2, -2, 3, 14, true));
+            ofCircle(pos, cursorDownSize);
 #endif
+        }
+        else {
+#ifdef OCULUS_RIFT
+            ofSetColor(255, 255, 255, 64);
+            ofCircle(pos, cursorSize);
+#elif KINECT_INPUT
+            ofSetColor(255, 255, 255, 192);
+            ofCircle(pos.x, pos.y,
+                     ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true));
+#else
+            ofSetColor(255, 255, 255, 192);
+            ofCircle(pos, cursorUpSize);
+#endif
+        }
     }
     ofPopStyle();
 }
