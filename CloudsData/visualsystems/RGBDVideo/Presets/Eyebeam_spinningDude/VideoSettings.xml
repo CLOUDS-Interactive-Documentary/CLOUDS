@@ -2,16 +2,36 @@
     <Kind>42</Kind>
     <Name>VideoSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>739.000000000</YPosition>
+    <XPosition>330.000000000</XPosition>
+    <YPosition>181.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>12</Kind>
     <Name>VideoPath</Name>
     <Value>EyebeamSpinning1.mov</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>Add Blend</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset X</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset Y</Name>
+    <Value>372.413757324</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Point Offset</Name>
-    <Value>-2000.000000000</Value>
+    <Value>-2896.551757812</Value>
 </Widget>

@@ -23154,26 +23154,10 @@
 <system name="Oscillations_laser_blast_rotation">
     <keywords></keywords>
     <links></links>
-    <suppressions>
-        <clip>Binx - Background</clip>
-        <clip>Bruce - lashup 3</clip>
-        <clip>Bruce - Infinity in a grain of sand</clip>
-        <clip>Bruce - Fractal graphics</clip>
-        <clip>Golan - keeping you stuff working</clip>
-        <clip>Golan - raytraced spheres</clip>
-        <clip>Higa - not sharing its a backup</clip>
-        <clip>JTNimoy - Comes from the human mind</clip>
-        <clip>JTNimoy - based on human mind</clip>
-        <clip>Karsten - atari emulation</clip>
-        <clip>Kyle_CH - Cory Arcangel</clip>
-        <clip>Kyle_CH - erase distinctions</clip>
-        <clip>LIA - Circle1</clip>
-        <clip>LIA - Circle2</clip>
-        <clip>LIA - CircleFormula1</clip>
-    </suppressions>
+    <suppressions></suppressions>
     <comments></comments>
-    <grade>B</grade>
-    <enabled>1</enabled>
+    <grade></grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -24247,7 +24231,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -24309,9 +24293,53 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_ITP_2_omerOC">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>hackers|hacker|art vs engineering</keywords>
+    <links>
+        <clip>Intro - Toolmaker</clip>
+    </links>
+    <suppressions>
+        <clip>Aaron - Google Data arts</clip>
+        <clip>Binx - art for money</clip>
+        <clip>Bruce - kinect hacking</clip>
+        <clip>Casey - sketching with code</clip>
+        <clip>Golan - Marker 2</clip>
+        <clip>Golan - useless, whimsical</clip>
+        <clip>Golan - why major in art</clip>
+        <clip>Greg - Creative Coder</clip>
+        <clip>JTNimoy - I addicted myself</clip>
+        <clip>JTNimoy - Pickle</clip>
+        <clip>JTNimoy - thinking by doing</clip>
+        <clip>Jen - to program or not to program</clip>
+        <clip>Joel - myth of art and technology</clip>
+        <clip>Julian - ideology of seamlessness</clip>
+        <clip>Julian - lulzSec</clip>
+        <clip>Karsten - 256 bytes part 1</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - malware</clip>
+        <clip>Karsten - users</clip>
+        <clip>Karsten - virus</clip>
+        <clip>Kevin - algo trading 1</clip>
+        <clip>Kyle_MC - Anonymous</clip>
+        <clip>Kyle_MC - Dangerous to conflate</clip>
+        <clip>Kyle_MC - artist is never done</clip>
+        <clip>Kyle_MC - code as a theme 1</clip>
+        <clip>Kyle_MC - programmers vs artists</clip>
+        <clip>Lauren - Hack my way out</clip>
+        <clip>Lindsay - hackers</clip>
+        <clip>Marius - I hate the word nerd</clip>
+        <clip>Nervous_Jesse - theoretical</clip>
+        <clip>Paola - the tribe</clip>
+        <clip>Philip - get an idea</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - google&apos;s business model 2</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Shiffman - inexactitude</clip>
+        <clip>Shiffman - reality will only get you so far</clip>
+        <clip>Zach - decompiling</clip>
+        <clip>Zach - less demo</clip>
+        <clip>Zach - more poetry, less demo</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
@@ -24655,9 +24683,20 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_Subway_1">
-    <keywords>cities</keywords>
+    <keywords>cities|surveillance|cameras|camera</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Kyle_MC - People staring at screens 1</clip>
+        <clip>Kyle_MC - People staring at screens 3</clip>
+        <clip>Kyle_MC - People staring at screens 4</clip>
+        <clip>Martin - birds eye view</clip>
+        <clip>Javier - Drones can help</clip>
+        <clip>Javier - Hummingbird drone</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Hand dryer</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Andres - seeing molecules</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>

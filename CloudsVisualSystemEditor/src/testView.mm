@@ -99,7 +99,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			
 			if(currentVisualSystem != NULL){
 				cout << "5) (" << currentTestPresetIndex << "/" << testPresetIndeces.size() << ") STOPPING SYSTEM " << currentVisualSystem->getSystemName() << endl;
-//				currentVisualSystem->stopSystem();
+				currentVisualSystem->stopSystem();
 			}
 
 			if(testBatchIndex == testBatch.size() || testBatch.size() == 0){
@@ -145,7 +145,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			if(testBatchIndex < testBatch.size()){
 				currentVisualSystem = testBatch[testBatchIndex];
 				cout << "4) PLAYING SYSTEM " << currentVisualSystem->getSystemName() << endl;
-				//currentVisualSystem->playSystem();
+				currentVisualSystem->playSystem();
 				lastSystemStartTime = ofGetElapsedTimef();
 				
 				testBatchIndex++;
@@ -165,7 +165,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
             currentVisualSystem->stopSystem();
 			currentVisualSystem->exit();
             currentVisualSystem = NULL;
-
         }
 
 		cout << "loading system " << visualSystems.getPresets()[ self.selectedPresetIndex ].systemName << " preset " << visualSystems.getPresets()[self.selectedPresetIndex].presetName << endl;
@@ -338,7 +337,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
         if(ofFile::doesFileExist(refreshFlagPath)){
             ofFile::removeFile(refreshFlagPath);
         }
-        visualSystems.DeallocateSystems();
+//        visualSystems.DeallocateSystems();
     }
     
     [clipTable reloadData];

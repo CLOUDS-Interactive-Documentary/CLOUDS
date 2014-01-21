@@ -2,16 +2,36 @@
     <Kind>42</Kind>
     <Name>VideoSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>572.000061035</XPosition>
-    <YPosition>445.000000000</YPosition>
+    <XPosition>606.000000000</XPosition>
+    <YPosition>221.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>12</Kind>
     <Name>VideoPath</Name>
     <Value>hangar2.mov</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>Add Blend</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset X</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset Y</Name>
+    <Value>206.896545410</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Point Offset</Name>
-    <Value>-950.000000000</Value>
+    <Value>-575.870849609</Value>
 </Widget>

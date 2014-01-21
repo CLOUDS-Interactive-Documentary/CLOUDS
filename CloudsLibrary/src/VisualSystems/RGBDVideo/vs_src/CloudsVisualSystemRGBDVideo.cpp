@@ -84,7 +84,7 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
     
    	g->addSlider("Point Offset X", -400, 400, &pointShift.x);
    	g->addSlider("Point Offset Y", -400, 400, &pointShift.y);
-	g->addSlider("Point Offset", -2000, 0, &pointShift.z);
+	g->addSlider("Point Offset", -4000, 0, &pointShift.z);
 
     
     g->autoSizeToFitWidgets();
@@ -425,6 +425,21 @@ void CloudsVisualSystemRGBDVideo::selfEnd(){
 void CloudsVisualSystemRGBDVideo::selfKeyPressed(ofKeyEventArgs & args){
     if(args.key == 'R'){
         reloadShader();
+    }
+    
+    if(args.key == 'G'){
+        timeline->stop();
+        timeline->setCurrentFrame(0);
+
+        player.stop();
+        player.setTime(0);
+        
+        player.play();
+        timeline->play();
+    }
+    
+    if(args.key == 'D'){
+        timeline->setOutPointAtSeconds( player.getDuration() );
     }
 }
 
