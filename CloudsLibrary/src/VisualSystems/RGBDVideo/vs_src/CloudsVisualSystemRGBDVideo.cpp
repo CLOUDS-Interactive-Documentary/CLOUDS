@@ -18,7 +18,8 @@ string CloudsVisualSystemRGBDVideo::getSystemName(){
 void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     pointscale = .25;
     pointShift = ofVec3f(0,0,0);
-
+    pointSize = 1.0;
+    
     bEnablePoints = true;
     
     pointsSimplifyX = 2.0;
@@ -35,6 +36,8 @@ void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     refreshLines = false;
     refreshOcclusion = false;
     refreshPoints = false;
+    
+    blendModeAdd = false;
 }
 
 //--------------------------------------------------------------
@@ -45,10 +48,13 @@ void CloudsVisualSystemRGBDVideo::selfSetup(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::reloadShader(){
+    
     cout << "loading points shader" << endl;
 	pointsShader.load(getVisualSystemDataPath() + "shaders/rgbd_simple_points");
     cout << "loading lines shader" << endl;
 	linesShader.load(getVisualSystemDataPath() + "shaders/rgbd_simple_lines");
+    cout << "loading occlusion shader" << endl;
+	occlusionShader.load(getVisualSystemDataPath() + "shaders/rgbd_simple_occlude");
     
 }
 
@@ -71,6 +77,7 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
     
     videoPathField = g->addTextInput("VideoPath", "");
 	g->addButton("Load Video", false);
+    g->addToggle("Add Blend", &blendModeAdd);
     
    	g->addSlider("Point Offset X", -400, 400, &pointShift.x);
    	g->addSlider("Point Offset Y", -400, 400, &pointShift.y);
@@ -119,7 +126,6 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
 	pointsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
 	pointsGui->addWidgetToHeader(toggle);
 
-
     pointsGui->addSlider("Points Alpha", 0.0, 1.0, &pointAlpha);
     pointsGui->addSlider("Point X Simplify", 1.0, 8, &pointsSimplifyX);
     pointsGui->addSlider("Point Y Simplify", 1.0, 8, &pointsSimplifyY);
@@ -128,7 +134,8 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
  	ofAddListener(pointsGui->newGUIEvent, this, &CloudsVisualSystemRGBDVideo::selfGuiEvent);
 	guis.push_back(pointsGui);
 	guimap[pointsGui->getName()] = pointsGui;
-
+    ////////////////// POINTS
+    
 }
 
 //--------------------------------------------------------------
@@ -179,7 +186,83 @@ void CloudsVisualSystemRGBDVideo::generateLines(){
 }
 
 void CloudsVisualSystemRGBDVideo::generateOcclusion(){
+	
+    occlusionMesh.clear();
     
+    if(occlusionSimplifyX <= 0) occlusionSimplifyX = 1.0;
+	if(occlusionSimplifyY <= 0) occlusionSimplifyY = 1.0;
+    
+	int x = 0;
+	int y = 0;
+    
+	int gw = ceil(640. / occlusionSimplifyX);
+	int w = gw*occlusionSimplifyX;
+	int h = 480.;
+	ofMesh m;
+    
+	for (float y = 0; y < 480; y += occlusionSimplifyY){
+		for (float x = 0; x < 640; x += occlusionSimplifyX){
+			m.addVertex( ofVec3f(x,y,0) );
+		}
+	}
+	
+	for (float ystep = 0; ystep < h-occlusionSimplifyY; ystep += occlusionSimplifyY){
+		for (float xstep = 0; xstep < w-occlusionSimplifyX; xstep += occlusionSimplifyX){
+			ofIndexType a,b,c;
+			
+			a = x+y*gw;
+			b = (x+1)+y*gw;
+			c = x+(y+1)*gw;
+			m.addIndex(a);
+			m.addIndex(b);
+			m.addIndex(c);
+			
+			a = (x+1)+(y+1)*gw;
+			b = x+(y+1)*gw;
+			c = (x+1)+(y)*gw;
+			m.addIndex(a);
+			m.addIndex(b);
+			m.addIndex(c);
+			
+			x++;
+		}
+		
+		y++;
+		x = 0;
+	}
+	
+/*
+	for(int i = 0; i < indeces.size(); i+=3){
+		
+		ofVec3f& a = vertices[ indeces[i+0] ];
+		ofVec3f& b = vertices[ indeces[i+1] ];
+		ofVec3f& c = vertices[ indeces[i+2] ];
+		ofVec3f mid = (a+b+c)/3.;
+		
+		ofVec3f toA = a-mid;
+		ofVec3f toB = b-mid;
+		ofVec3f toC = c-mid;
+		
+		m.addNormal(toA);
+		m.addColor(ofFloatColor(toB.x/640.,toB.y/480.,toC.x/640.,toC.y/480.));
+		m.addVertex(mid);
+        
+		m.addNormal(toB);
+		m.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toC.x/640.,toC.y/480.));
+		m.addVertex(mid);
+		
+		m.addNormal(toC);
+		m.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toB.x/640.,toB.y/480.));
+		m.addVertex(mid);
+	}
+    */
+    
+    occlusionVertexCount = m.getNumVertices();
+    occlusionIndexCount = m.getNumIndices();
+    
+    occlusionMesh.setMesh(m, GL_STATIC_DRAW);
+    refreshOcclusion = false;
+//    cout << "generated " << occlusionVertexCount << " vertices" << endl;
 }
 
 void CloudsVisualSystemRGBDVideo::selfDrawBackground(){
@@ -197,28 +280,34 @@ void CloudsVisualSystemRGBDVideo::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemRGBDVideo::selfDraw(){
+    
 	if(!movieLoaded || !player.isLoaded()){
         return;
     }
 
-	if(bEnableOcclusion){
-//        ofPushMatrix();
-//        setupRGBDTransforms();
-//        
-//        //DRAW OCCLUSION
-//        ofPopMatrix();
-    }
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
     
     if(bEnablePoints){
+        if(bEnableOcclusion){
+            drawOcclusionLayer();
+        }
+        
         ofPushMatrix();
+        glPointSize(pointSize);
+        glEnable(GL_POINT_SMOOTH);
+        glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+        
         setupRGBDTransforms();
         pointsShader.begin();
         pointsShader.setUniform1f("alpha", pointAlpha);
         setupGeneralUniforms(pointsShader);
         points.drawVertices();
         pointsShader.end();
+        
         ofPopMatrix();
     }
+    
+    glPopAttrib();
 }
 
 void CloudsVisualSystemRGBDVideo::setupGeneralUniforms(ofShader& shader){
@@ -230,6 +319,37 @@ void CloudsVisualSystemRGBDVideo::setupGeneralUniforms(ofShader& shader){
     shader.setUniform1f("pointoffset", pointShift.z);
     shader.setUniform1f("scale", 1.0);
     shader.setUniform1f("offset", 0.0);
+}
+
+void CloudsVisualSystemRGBDVideo::drawOcclusionLayer(){
+    
+    glPushMatrix();
+    if(!bEnableOcclusionDebug){
+        
+        ofTranslate(0, 0, 5.44);
+        glEnable(GL_DEPTH_TEST);  // We want depth test !
+        glDepthFunc(GL_LESS);     // We want to get the nearest pixels
+        glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
+        glDepthMask(GL_TRUE);     // Ask z writing
+    }
+    
+    setupRGBDTransforms();
+    
+    occlusionShader.begin();
+    occlusionShader.setUniform1f("edgeClip", 200);
+    occlusionShader.setUniform2f("simplify", occlusionSimplifyX,occlusionSimplifyY);
+    setupGeneralUniforms(occlusionShader);
+    occlusionMesh.drawElements(GL_TRIANGLES, occlusionIndexCount);
+    occlusionShader.end();
+    
+    if(!bEnableOcclusionDebug){
+        glEnable(GL_DEPTH_TEST);  // We still want depth test
+        glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
+        glColorMask(1,1,1,1);     // We want color this time
+        glDepthMask(GL_FALSE);
+    }
+    
+    glPopMatrix();
 }
 
 void CloudsVisualSystemRGBDVideo::selfExit(){
@@ -291,7 +411,9 @@ void CloudsVisualSystemRGBDVideo::selfEnd(){
 }
 
 void CloudsVisualSystemRGBDVideo::selfKeyPressed(ofKeyEventArgs & args){
-
+    if(args.key == 'R'){
+        reloadShader();
+    }
 }
 
 void CloudsVisualSystemRGBDVideo::selfKeyReleased(ofKeyEventArgs & args){
@@ -356,18 +478,14 @@ void CloudsVisualSystemRGBDVideo::selfGuiEvent(ofxUIEventArgs &e){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::selfSetupSystemGui(){
-	
 }
-
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::guiSystemEvent(ofxUIEventArgs &e){
 }
-
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::selfSetupRenderGui(){
 }
-
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::guiRenderEvent(ofxUIEventArgs &e){
-
 }
 

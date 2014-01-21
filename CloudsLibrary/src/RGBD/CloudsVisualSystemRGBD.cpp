@@ -1486,7 +1486,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
             }
             
 			glEnable(GL_CULL_FACE);
-//            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
             glCullFace(GL_FRONT);
             
 			meshShader.begin();
@@ -1568,7 +1567,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		if(pointLayer1.drawPoints || pointLayer2.drawPoints){
             
             if(bDrawOcclusion){
-//                glClearDepth(0);
                 glClear(GL_DEPTH_BUFFER_BIT);
                 drawOcclusionLayer();
             }
@@ -1642,7 +1640,6 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
 //        cout << ofGetMouseX()/100. << endl;
 //        ofTranslate(0, 0, ofGetMouseX()/100.);
         ofTranslate(0, 0, 5.44);
-        
         
         glEnable(GL_DEPTH_TEST);  // We want depth test !
         glDepthFunc(GL_LESS);     // We want to get the nearest pixels

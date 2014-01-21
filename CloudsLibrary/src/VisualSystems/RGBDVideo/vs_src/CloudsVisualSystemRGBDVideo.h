@@ -59,6 +59,8 @@ public:
 	ofxAVFVideoPlayer player;
 	Intrinsics videoIntrinsics;
     
+    bool blendModeAdd; //vs screen
+    
     ofxUISuperCanvas* occlusionGui;
 	ofShader occlusionShader;
     ofVbo occlusionMesh;
@@ -68,6 +70,9 @@ public:
 	float occlusionSimplifyY;
     bool refreshOcclusion;
     void generateOcclusion();
+    int occlusionVertexCount;
+    int occlusionIndexCount;
+    void drawOcclusionLayer();
     
 	ofxUISuperCanvas* linesGui;
     ofShader linesShader;
