@@ -6,6 +6,7 @@ varying float positionValid;
 varying vec2 texSample;
 const float epsilon = 1e-6;
 uniform float colorFade;
+uniform float alpha;
 
 void main(){
 	
@@ -14,7 +15,9 @@ void main(){
 	}
     
     vec4 col = texture2DRect(texture, texSample);
-    gl_FragColor.rgb = mix(col,gl_Color,colorFade).rgb;
+    
+    gl_FragColor.rgb = mix(col,gl_Color,colorFade).rgb * alpha;
+    
     gl_FragColor.a = 1.0;
 }
 

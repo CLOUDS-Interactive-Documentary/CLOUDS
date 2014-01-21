@@ -105,7 +105,7 @@ public:
 	bool playMovie(string path);
 	string loadMoviePath;
 	
-
+    float yLift;
 	bool movieLoaded;
 	
 	ofxUITextInput* videoPathField;

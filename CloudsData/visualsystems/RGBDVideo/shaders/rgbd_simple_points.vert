@@ -18,7 +18,7 @@ uniform float maxDepth;
 uniform float scale;
 uniform float offset;
 
-uniform float pointoffset;
+uniform vec3 pointoffset;
 
 const float epsilon = 1e-6;
 
@@ -84,8 +84,7 @@ void main(void){
                     (gl_Vertex.y - depthPP.y*scale) * depth / (depthFOV.y*scale),
                     depth, 1.0);
 	
-	pos.z += pointoffset;
+	pos.xyz += pointoffset;
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
-    gl_FrontColor = gl_Color;
 }

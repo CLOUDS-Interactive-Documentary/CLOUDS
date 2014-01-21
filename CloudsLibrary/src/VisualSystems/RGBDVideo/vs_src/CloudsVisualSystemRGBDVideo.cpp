@@ -19,7 +19,8 @@ void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     pointscale = .25;
     pointShift = ofVec3f(0,0,0);
     pointSize = 1.0;
-    
+    pointAlpha = 1.0;
+
     bEnablePoints = true;
     
     pointsSimplifyX = 2.0;
@@ -30,7 +31,9 @@ void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     lineGranularity = 2.0;
 	lineSpacing = 2.0;
 	lineThickness = 1.0;
-
+    
+    yLift = 0;
+    
     bDrawVideoDebug = false;
     
     refreshLines = false;
@@ -82,6 +85,7 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
    	g->addSlider("Point Offset X", -400, 400, &pointShift.x);
    	g->addSlider("Point Offset Y", -400, 400, &pointShift.y);
 	g->addSlider("Point Offset", -2000, 0, &pointShift.z);
+
     
     g->autoSizeToFitWidgets();
 
@@ -288,6 +292,7 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     
     if(bEnablePoints){
+        
         if(bEnableOcclusion){
             drawOcclusionLayer();
         }
@@ -297,7 +302,11 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
         glEnable(GL_POINT_SMOOTH);
         glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
         
+        ofEnableBlendMode(blendModeAdd ? OF_BLENDMODE_ADD : OF_BLENDMODE_SCREEN);
+        
         setupRGBDTransforms();
+        ofTranslate(0, yLift, 0);
+        
         pointsShader.begin();
         pointsShader.setUniform1f("alpha", pointAlpha);
         setupGeneralUniforms(pointsShader);
@@ -316,7 +325,10 @@ void CloudsVisualSystemRGBDVideo::setupGeneralUniforms(ofShader& shader){
     shader.setUniform2f("depthFOV", videoIntrinsics.depthFOV.x,videoIntrinsics.depthFOV.y );
     shader.setUniform1f("minDepth", videoIntrinsics.depthRange.min);
     shader.setUniform1f("maxDepth", videoIntrinsics.depthRange.max);
-    shader.setUniform1f("pointoffset", pointShift.z);
+    shader.setUniform3f("pointoffset",
+                        pointShift.x,
+                        pointShift.y,
+                        pointShift.z);
     shader.setUniform1f("scale", 1.0);
     shader.setUniform1f("offset", 0.0);
 }
