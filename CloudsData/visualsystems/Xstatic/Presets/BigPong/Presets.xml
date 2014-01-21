@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>445.000000000</XPosition>
-    <YPosition>100.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>218.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -27,12 +27,37 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>BigPong2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigPong3</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigPong3_lavendar</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigPong3_yellow</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigPong4</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>BouncingBalls</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Circle</Name>
+    <Name>BouncingBalls_TumblingBox</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -42,12 +67,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>fireflies</Name>
-    <Value>0</Value>
+    <Name>FallingSnow</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Galaxy</Name>
+    <Name>FallingSnow2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>fireflies</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

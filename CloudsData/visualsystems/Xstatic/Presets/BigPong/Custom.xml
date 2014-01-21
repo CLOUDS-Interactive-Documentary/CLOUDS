@@ -1,8 +1,8 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1212.000000000</XPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -91,19 +91,19 @@
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>ROTATE ANGLE</Name>
     <Value>92.368423462</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>ROTATE SPEED</Name>
     <Value>4.390244007</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>PULL SPEED</Name>
-    <Value>9.500000000</Value>
+    <Value>28.500000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
