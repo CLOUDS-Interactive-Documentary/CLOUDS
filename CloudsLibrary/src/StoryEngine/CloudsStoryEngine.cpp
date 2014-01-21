@@ -389,6 +389,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	
     bLogClipDetails = true;
     
+//    seedTopic = "open frameworks";
+    
     vector<string> hardIntros;
     hardIntros.push_back("new aesthetic");
     hardIntros.push_back("real and virtual");
