@@ -475,7 +475,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
                 if(state.preset.duration < state.clip.getDuration()){
                     state.log << "ERROR: Definite Preset " << state.preset.getID() << " too short for clip " << state.clip.getID() << endl;
                 }
-                state.visualSystemEndTime = state.preset.duration;
+                state.visualSystemEndTime = MIN(state.preset.duration,maxVisualSystemRunTime);
             }
             else{
                 state.visualSystemEndTime = maxVisualSystemRunTime;
@@ -660,7 +660,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
                         //Also the first clip of an act should be covered
                         float midAlignedEnd    = state.duration - state.clip.getDuration() / 2. + clipFadePad;
                         float startAlignedEnd  = state.duration - state.clip.getDuration() - clipFadePad;
-                        if( abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd -  state.visualSystemEndTime) ){
+                        if(state.visualSystemStartTime > 0 &&
+                           abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd -  state.visualSystemEndTime) )
+                        {
                             state.visualSystemEndTime = midAlignedEnd;
                         }
                         else {
