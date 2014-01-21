@@ -1121,6 +1121,7 @@ void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType
 	cloudsCamera.setTransitionTargetNode( &cloudsCamera.mouseBasedNode );
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 {
 	if(transitioning) {
@@ -1135,6 +1136,7 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 	}
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::transtionFinished()
 {
 	cout << "transtionFinished()" <<endl;
@@ -1144,6 +1146,7 @@ void CloudsVisualSystemRGBD::transtionFinished()
 	transitioning = false;
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::setOutOption( OutOption outOption )
 {
 	switch (outOption) {
@@ -1162,6 +1165,7 @@ void CloudsVisualSystemRGBD::setOutOption( OutOption outOption )
 	}
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 	
 	transitionCamTargetNode = &transitionInStart;
@@ -1176,6 +1180,7 @@ void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 //	transitionCam.update(args);
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::lookThroughTransitionOutLeft(){
 	
 	transitionCamTargetNode = &transitionOutLeft;
@@ -1185,6 +1190,7 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOutLeft(){
 	transitionCam.movedManually();
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::lookThroughTransitionOutRight()
 {
 	transitionCamTargetNode = &transitionOutRight;
@@ -1193,44 +1199,6 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOutRight()
 	transitionCam.setOrientation( transitionOutRight.getOrientationQuat() );
 	transitionCam.movedManually();
 }
-
-//--------------------------------------------------------------
-//void CloudsVisualSystemRGBD::generatePoints(){
-//    
-//    pointLayer1.generatePoints();
-//    pointLayer2.generatePoints();
-//
-//	points.setUsage( GL_STATIC_DRAW );
-//	
-//    /*
-//	if(numRandomPoints == 0){
-//		points.clear();
-//	}
-//	else if(numRandomPoints < points.getNumVertices() ){
-//		points.getVertices().erase(points.getVertices().begin(),
-//								   points.getVertices().begin() + (points.getNumVertices() - numRandomPoints) );
-//	}
-//	
-//	while(numRandomPoints > points.getNumVertices()){
-//		points.addVertex( ofVec3f(ofRandom(640),ofRandom(480),0) );
-//	}
-//	*/
-//    if(pointXSimplify <= 0.0) pointXSimplify = 1.0;
-//    if(pointYSimplify <= 0.0) pointYSimplify = 1.0;
-//    
-//
-////    pointsGui->addSlider("X Simplify", 1.0, 8, &pointXSimplify);
-////    pointsGui->addSlider("Y Simplify", 1.0, 8, &pointYSimplify);
-//    points.clear();
-//    for (float y = 0; y < 480; y += pointYSimplify){
-//        for (float x = 0; x < 640; x += pointXSimplify){
-//            points.addVertex( ofVec3f(x,y,0) );
-//        }
-//    }
-//
-//	points.setMode(OF_PRIMITIVE_POINTS);
-//    refreshPointcloud = false;
-//}
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::generateLines(){
@@ -1266,7 +1234,7 @@ void CloudsVisualSystemRGBD::generateLines(){
 	refreshLines = false;
 }
 
-
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::generateMesh(){
 		
 	if(xSimplify <= 0) xSimplify = 1.0;
@@ -1425,8 +1393,9 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
 }
 
 void CloudsVisualSystemRGBD::speakerChanged(){
-//    clearQuestions();
-   if(timeline!=NULL) timeline->hide();
+
+   if(timeline!=NULL)
+       timeline->hide();
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){

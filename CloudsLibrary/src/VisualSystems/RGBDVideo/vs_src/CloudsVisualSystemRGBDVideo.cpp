@@ -18,22 +18,38 @@ string CloudsVisualSystemRGBDVideo::getSystemName(){
 void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     pointscale = .25;
     pointShift = ofVec3f(0,0,0);
+
+    bEnablePoints = true;
+    
+    pointsSimplifyX = 2.0;
+	pointsSimplifyY = 2.0;
+	pointSize = 1.0;
+
+    bEnableLines = false;
+    lineGranularity = 2.0;
+	lineSpacing = 2.0;
+	lineThickness = 1.0;
+
+    bDrawVideoDebug = false;
+    
+    refreshLines = false;
+    refreshOcclusion = false;
+    refreshPoints = false;
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::selfSetup(){
-	for(int y = 0; y < 480; y++){
-		for(int x = 0; x < 640; x++){
-			points.addVertex(ofVec3f(x,y,0));
-		}
-	}
-	
+    
 	reloadShader();
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::reloadShader(){
-	rgbdPixelToPixelShader.load(getVisualSystemDataPath() + "shaders/rgbdpixeltopixel");
+    cout << "loading points shader" << endl;
+	pointsShader.load(getVisualSystemDataPath() + "shaders/rgbd_simple_points");
+    cout << "loading lines shader" << endl;
+	linesShader.load(getVisualSystemDataPath() + "shaders/rgbd_simple_lines");
+    
 }
 
 //--------------------------------------------------------------
@@ -51,7 +67,8 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
 	
     g->setName("VideoSettings");
     g->setWidgetFontSize(OFX_UI_FONT_SMALL);
-
+    g->addToggle("DEBUG", &bDrawVideoDebug);
+    
     videoPathField = g->addTextInput("VideoPath", "");
 	g->addButton("Load Video", false);
     
@@ -59,14 +76,59 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
    	g->addSlider("Point Offset Y", -400, 400, &pointShift.y);
 	g->addSlider("Point Offset", -2000, 0, &pointShift.z);
     
-//	g->addSlider("Point Scale", .1, 3.0, &pointscale);
-
     g->autoSizeToFitWidgets();
 
 	ofAddListener(g->newGUIEvent, this, &CloudsVisualSystemRGBDVideo::selfGuiEvent);
-	
     guis.push_back(g);
     guimap[g->getName()] = g;
+    
+    ofxUIToggle* toggle;
+    
+    ////////////////// OCCLUSION
+    occlusionGui = new ofxUISuperCanvas("OCCLUSION", gui);
+	occlusionGui->copyCanvasStyle(gui);
+	occlusionGui->copyCanvasProperties(gui);
+	occlusionGui->setName("Occlusion");
+	occlusionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	toggle = occlusionGui->addToggle("ENABLE", &bEnableOcclusion);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	occlusionGui->resetPlacer();
+	occlusionGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	occlusionGui->addWidgetToHeader(toggle);
+    
+    occlusionGui->addToggle("OcclusionDebug", &bEnableOcclusionDebug);
+	occlusionGui->addSlider("Occl X Simplify", 1., 8., &occlusionSimplifyX);
+	occlusionGui->addSlider("Occl Y Simplify", 1., 8., &occlusionSimplifyY);
+
+ 	ofAddListener(occlusionGui->newGUIEvent, this, &CloudsVisualSystemRGBDVideo::selfGuiEvent);
+	guis.push_back(occlusionGui);
+	guimap[occlusionGui->getName()] = occlusionGui;
+    ////////////////// OCCLUSION
+
+    ////////////////// POINTS
+    pointsGui = new ofxUISuperCanvas("POINTS", gui);
+	pointsGui->copyCanvasStyle(gui);
+	pointsGui->copyCanvasProperties(gui);
+	pointsGui->setName("Points");
+	pointsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	toggle = pointsGui->addToggle("ENABLE", &bEnablePoints);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	pointsGui->resetPlacer();
+	pointsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	pointsGui->addWidgetToHeader(toggle);
+
+
+    pointsGui->addSlider("Points Alpha", 0.0, 1.0, &pointAlpha);
+    pointsGui->addSlider("Point X Simplify", 1.0, 8, &pointsSimplifyX);
+    pointsGui->addSlider("Point Y Simplify", 1.0, 8, &pointsSimplifyY);
+	pointsGui->addSlider("Point Size", 0.0, 3.0, &pointSize);
+    
+ 	ofAddListener(pointsGui->newGUIEvent, this, &CloudsVisualSystemRGBDVideo::selfGuiEvent);
+	guis.push_back(pointsGui);
+	guimap[pointsGui->getName()] = pointsGui;
+
 }
 
 //--------------------------------------------------------------
@@ -85,9 +147,45 @@ void CloudsVisualSystemRGBDVideo::selfUpdate(){
 	if(movieLoaded){
 		player.update();
 	}
+    
+    if(refreshOcclusion){
+        generateOcclusion();
+    }
+    
+    if(refreshLines){
+        generateLines();
+    }
+    
+    if(refreshPoints) {
+        generatePoints();
+    }
+}
+
+void CloudsVisualSystemRGBDVideo::generatePoints(){
+    
+    points.clear();
+    
+    for(int y = 0; y < 480; y += pointsSimplifyY){
+		for(int x = 0; x < 640; x += pointsSimplifyX){
+			points.addVertex( ofVec3f( x, y, 0) );
+		}
+	}
+	
+    refreshPoints = false;
+}
+
+void CloudsVisualSystemRGBDVideo::generateLines(){
+    
+}
+
+void CloudsVisualSystemRGBDVideo::generateOcclusion(){
+    
 }
 
 void CloudsVisualSystemRGBDVideo::selfDrawBackground(){
+    if(bDrawVideoDebug){
+        player.draw(0, 0);
+    }
 }
 
 void CloudsVisualSystemRGBDVideo::selfDrawDebug(){
@@ -99,30 +197,39 @@ void CloudsVisualSystemRGBDVideo::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemRGBDVideo::selfDraw(){
-	if(movieLoaded && player.isLoaded()){
-				
-		ofPushMatrix();
+	if(!movieLoaded || !player.isLoaded()){
+        return;
+    }
 
+	if(bEnableOcclusion){
+//        ofPushMatrix();
+//        setupRGBDTransforms();
+//        
+//        //DRAW OCCLUSION
+//        ofPopMatrix();
+    }
+    
+    if(bEnablePoints){
+        ofPushMatrix();
         setupRGBDTransforms();
-		
-		rgbdPixelToPixelShader.begin();
-		rgbdPixelToPixelShader.setUniformTexture("texture", player.getTextureReference(), 1);
-		rgbdPixelToPixelShader.setUniform2f("depthPP", videoIntrinsics.depthPP.x,videoIntrinsics.depthPP.y );
-		rgbdPixelToPixelShader.setUniform2f("depthFOV", videoIntrinsics.depthFOV.x,videoIntrinsics.depthFOV.y );
-		rgbdPixelToPixelShader.setUniform1f("minDepth", videoIntrinsics.depthRange.min);
-		rgbdPixelToPixelShader.setUniform1f("maxDepth", videoIntrinsics.depthRange.max);
-		
-		rgbdPixelToPixelShader.setUniform1f("pointoffset", pointShift.z);
-		
-		rgbdPixelToPixelShader.setUniform1f("scale", 1.0);
-		rgbdPixelToPixelShader.setUniform1f("offset", 0.0);
-		
-		points.drawVertices();
-		
-		rgbdPixelToPixelShader.end();
-		
-		ofPopMatrix();
-	}
+        pointsShader.begin();
+        pointsShader.setUniform1f("alpha", pointAlpha);
+        setupGeneralUniforms(pointsShader);
+        points.drawVertices();
+        pointsShader.end();
+        ofPopMatrix();
+    }
+}
+
+void CloudsVisualSystemRGBDVideo::setupGeneralUniforms(ofShader& shader){
+    shader.setUniformTexture("texture", player.getTextureReference(), 1);
+    shader.setUniform2f("depthPP", videoIntrinsics.depthPP.x,videoIntrinsics.depthPP.y );
+    shader.setUniform2f("depthFOV", videoIntrinsics.depthFOV.x,videoIntrinsics.depthFOV.y );
+    shader.setUniform1f("minDepth", videoIntrinsics.depthRange.min);
+    shader.setUniform1f("maxDepth", videoIntrinsics.depthRange.max);
+    shader.setUniform1f("pointoffset", pointShift.z);
+    shader.setUniform1f("scale", 1.0);
+    shader.setUniform1f("offset", 0.0);
 }
 
 void CloudsVisualSystemRGBDVideo::selfExit(){
@@ -131,6 +238,10 @@ void CloudsVisualSystemRGBDVideo::selfExit(){
 
 void CloudsVisualSystemRGBDVideo::selfPresetLoaded(string presetPath){
 	loadMoviePath = videoPathField->getTextString();
+    
+    refreshLines = true;
+    refreshOcclusion = true;
+    refreshPoints = true;
 }
 
 bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
@@ -143,7 +254,7 @@ bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 	
 	filePath = getVisualSystemDataPath(true) + "videos/" + filePath;
 	
-	if(! ofFile(filePath).exists() ) {
+	if(!ofFile(filePath).exists() ) {
 		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "File does not exist" << endl;
 		return false;
 	}
@@ -164,15 +275,19 @@ bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 	videoIntrinsics.depthFOV.y = intrinsicsXml.getValue("depth:fovy", 0.);
 	videoIntrinsics.depthRange.min = intrinsicsXml.getValue("depth:minDepth", 0.);
 	videoIntrinsics.depthRange.max = intrinsicsXml.getValue("depth:maxDepth", 0.);
-	//TODO: read from xml
+    //TODO: read from xml
 	videoIntrinsics.depthPP.x = 320;
 	videoIntrinsics.depthPP.y = 240;
-	player.play();
+	
+    player.setLoopState(OF_LOOP_NORMAL);
+    player.play();
+    
 	movieLoaded = true;
 	return true;
 }
 
 void CloudsVisualSystemRGBDVideo::selfEnd(){
+    player.stop();
 }
 
 void CloudsVisualSystemRGBDVideo::selfKeyPressed(ofKeyEventArgs & args){
@@ -220,6 +335,23 @@ void CloudsVisualSystemRGBDVideo::selfGuiEvent(ofxUIEventArgs &e){
 			}
 		}
 	}
+    
+	if(e.widget->getName() == "Line Spacing" ||
+       e.widget->getName() == "Line Granularity" ||
+       e.widget->getName() == "Line Random Offset")
+    {
+		refreshLines = true;
+	}
+    else if(e.widget->getName() == "Occl X Simplify" ||
+            e.widget->getName() == "Occl Y Simplify")
+    {
+        refreshOcclusion = true;
+    }
+    else if(e.widget->getName() == "Point X Simplify" ||
+            e.widget->getName() == "Point Y Simplify" )
+    {
+        refreshPoints = true;
+    }
 }
 
 //--------------------------------------------------------------
@@ -232,9 +364,6 @@ void CloudsVisualSystemRGBDVideo::guiSystemEvent(ofxUIEventArgs &e){
 }
 
 void CloudsVisualSystemRGBDVideo::selfSetupRenderGui(){
-//	rdrGui->addButton("regenerate", false);
-//	rdrGui->addSlider("speed", 1, 20, &speed);
-	
 }
 
 //--------------------------------------------------------------

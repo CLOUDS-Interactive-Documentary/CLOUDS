@@ -513,6 +513,10 @@
 		858502E3185583F00088352E /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputEvents.h; path = ../../CloudsLibrary/src/Input/CloudsInputEvents.h; sourceTree = "<group>"; };
 		858502E4185583F00088352E /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInputMouse.cpp; path = ../../CloudsLibrary/src/Input/CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		858502E5185583F00088352E /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputMouse.h; path = ../../CloudsLibrary/src/Input/CloudsInputMouse.h; sourceTree = "<group>"; };
+		A6336B78188F0930003FA277 /* rgbd_simple_points.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_points.frag; sourceTree = "<group>"; };
+		A6336B79188F0930003FA277 /* rgbd_simple_points.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_points.vert; sourceTree = "<group>"; };
+		A6336B7A188F0A1E003FA277 /* rgbd_simple_lines.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_lines.frag; sourceTree = "<group>"; };
+		A6336B7B188F0A1E003FA277 /* rgbd_simple_lines.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_lines.vert; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1158,6 +1162,7 @@
 		8585027418557B500088352E /* RGBDVideo */ = {
 			isa = PBXGroup;
 			children = (
+				A6336B77188F0930003FA277 /* shaders */,
 				8585029318557B500088352E /* vs_src */,
 			);
 			name = RGBDVideo;
@@ -1191,6 +1196,18 @@
 				858502C318557C7A0088352E /* ofxAVFVideoRenderer.m */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		A6336B77188F0930003FA277 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				A6336B7A188F0A1E003FA277 /* rgbd_simple_lines.frag */,
+				A6336B7B188F0A1E003FA277 /* rgbd_simple_lines.vert */,
+				A6336B78188F0930003FA277 /* rgbd_simple_points.frag */,
+				A6336B79188F0930003FA277 /* rgbd_simple_points.vert */,
+			);
+			name = shaders;
+			path = ../../../../CloudsData/visualsystems/RGBDVideo/shaders;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {

@@ -55,24 +55,43 @@ public:
 	}
 	
   protected:
+    bool bDrawVideoDebug;
 	ofxAVFVideoPlayer player;
-	ofShader rgbdPixelToPixelShader;
 	Intrinsics videoIntrinsics;
-	
-	ofxUISuperCanvas* pointsGui;
-	ofVboMesh points;
-	float pointsSimplifyX;
-	float pointsSimplifyY;
-	float pointSize;
-	
+    
+    ofxUISuperCanvas* occlusionGui;
+	ofShader occlusionShader;
+    ofVbo occlusionMesh;
+    bool bEnableOcclusion;
+    bool bEnableOcclusionDebug;
+	float occlusionSimplifyX;
+	float occlusionSimplifyY;
+    bool refreshOcclusion;
+    void generateOcclusion();
+    
 	ofxUISuperCanvas* linesGui;
+    ofShader linesShader;
 	ofVbo lines;
+    bool bEnableLines;
 	float lineGranularity;
 	float lineSpacing;
 	float lineThickness;
-	
-	
-	
+    bool refreshLines;
+	void generateLines();
+
+    ofxUISuperCanvas* pointsGui;
+    ofShader pointsShader;
+	ofVboMesh points;
+    bool bEnablePoints;
+    float pointAlpha;
+	float pointsSimplifyX;
+	float pointsSimplifyY;
+	float pointSize;
+    bool refreshPoints;
+    void generatePoints();
+
+	void setupGeneralUniforms(ofShader& shader);
+    
 	float pointscale;
     ofVec3f pointShift;
     

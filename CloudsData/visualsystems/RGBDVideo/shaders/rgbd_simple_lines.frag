@@ -8,11 +8,13 @@ const float epsilon = 1e-6;
 uniform float colorFade;
 
 void main(){
-	if(positionValid < epsilon){
+	
+    if(positionValid < epsilon){
 		discard;
 	}
+    
     vec4 col = texture2DRect(texture, texSample);
-    gl_FragColor = mix(col,gl_Color,colorFade);
-//	gl_FragColor = vec4(1.0);
+    gl_FragColor.rgb = mix(col,gl_Color,colorFade).rgb;
+    gl_FragColor.a = 1.0;
 }
 
