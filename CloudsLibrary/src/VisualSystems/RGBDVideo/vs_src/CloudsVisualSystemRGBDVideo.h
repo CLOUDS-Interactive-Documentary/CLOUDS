@@ -58,7 +58,20 @@ public:
 	ofxAVFVideoPlayer player;
 	ofShader rgbdPixelToPixelShader;
 	Intrinsics videoIntrinsics;
-	ofVboMesh pointCloud;
+	
+	ofxUISuperCanvas* pointsGui;
+	ofVboMesh points;
+	float pointsSimplifyX;
+	float pointsSimplifyY;
+	float pointSize;
+	
+	ofxUISuperCanvas* linesGui;
+	ofVbo lines;
+	float lineGranularity;
+	float lineSpacing;
+	float lineThickness;
+	
+	
 	
 	float pointscale;
     ofVec3f pointShift;

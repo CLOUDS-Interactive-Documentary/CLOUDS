@@ -24,7 +24,7 @@ void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
 void CloudsVisualSystemRGBDVideo::selfSetup(){
 	for(int y = 0; y < 480; y++){
 		for(int x = 0; x < 640; x++){
-			pointCloud.addVertex(ofVec3f(x,y,0));
+			points.addVertex(ofVec3f(x,y,0));
 		}
 	}
 	
@@ -117,7 +117,7 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 		rgbdPixelToPixelShader.setUniform1f("scale", 1.0);
 		rgbdPixelToPixelShader.setUniform1f("offset", 0.0);
 		
-		pointCloud.drawVertices();
+		points.drawVertices();
 		
 		rgbdPixelToPixelShader.end();
 		
