@@ -4,16 +4,24 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>gravity</WidgetName>
-                <WidgetID>17</WidgetID>
+                <WidgetName>max_number</WidgetName>
+                <WidgetID>11</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>max_number</WidgetName>
-                <WidgetID>11</WidgetID>
+                <WidgetName>density</WidgetName>
+                <WidgetID>15</WidgetID>
+                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>gravity</WidgetName>
+                <WidgetID>17</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -30,14 +38,6 @@
             <Widget>
                 <WidgetName>neigbordhood</WidgetName>
                 <WidgetID>23</WidgetID>
-                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>density</WidgetName>
-                <WidgetID>15</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

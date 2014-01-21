@@ -93,17 +93,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>ROTATE ANGLE</Name>
-    <Value>78.917999268</Value>
+    <Value>92.403999329</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ROTATE SPEED</Name>
-    <Value>7.049100876</Value>
+    <Value>4.390244007</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>PULL SPEED</Name>
-    <Value>15.359988213</Value>
+    <Value>28.500000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -113,7 +113,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>DRAG</Name>
-    <Value>0.540360510</Value>
+    <Value>0.593750000</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
