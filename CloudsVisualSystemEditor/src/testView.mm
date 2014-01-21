@@ -95,11 +95,11 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	if(runningTest){
 		
-		if(ofGetElapsedTimef() - lastSystemStartTime > 5){
+		if(ofGetElapsedTimef() - lastSystemStartTime > 1){
 			
 			if(currentVisualSystem != NULL){
 				cout << "5) (" << currentTestPresetIndex << "/" << testPresetIndeces.size() << ") STOPPING SYSTEM " << currentVisualSystem->getSystemName() << endl;
-				currentVisualSystem->stopSystem();
+//				currentVisualSystem->stopSystem();
 			}
 
 			if(testBatchIndex == testBatch.size() || testBatch.size() == 0){
@@ -115,7 +115,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
                 visualSystems.DeallocateSystems();//freeSystemPointers();
 
                 currentVisualSystem = NULL;
-//				currentVisualSystem = ofPtr<CloudsVisualSystem>( (CloudsVisualSystem*)(NULL) );
 				
 				int i = 0;
 				for(i = currentTestPresetIndex; i < MIN(testPresetIndeces.size(),currentTestPresetIndex+2); i++){
@@ -146,7 +145,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			if(testBatchIndex < testBatch.size()){
 				currentVisualSystem = testBatch[testBatchIndex];
 				cout << "4) PLAYING SYSTEM " << currentVisualSystem->getSystemName() << endl;
-				currentVisualSystem->playSystem();
+				//currentVisualSystem->playSystem();
 				lastSystemStartTime = ofGetElapsedTimef();
 				
 				testBatchIndex++;

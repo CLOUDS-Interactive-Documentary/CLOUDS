@@ -89,7 +89,10 @@ class CloudsPlaybackController {
 	string currentTopic;
 	bool shouldPlayAct;
     bool shouldClearAct;
-
+    
+    void drawRenderTarget();
+    void drawInterludeInterface();
+    
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
     int numActsCreated;

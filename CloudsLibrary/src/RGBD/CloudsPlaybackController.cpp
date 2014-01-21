@@ -706,17 +706,6 @@ void CloudsPlaybackController::updateTransition(){
                 
                 break;
                 
-
-//			case TRANSITION_QUESTION_IN:
-//				
-//                currentAct->getTimeline().stop();
-//                
-//				// show question transition over this period
-//				rgbdVisualSystem->transtionFinished();
-//				rgbdVisualSystem->stopSystem();
-//                
-//                break;
-                
     //////////////////
     ////////IDLE CASES
     ///////////////////
@@ -814,10 +803,22 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     
     ofBackground(0);
     glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glDisable( GL_DEPTH_TEST );
+    glDisable(GL_DEPTH_TEST);
 	
+    drawRenderTarget();
+    
+    drawInterludeInterface();
+    
+	drawDebugOverlay();
+	
+	glPopAttrib();
+}
+
+void CloudsPlaybackController::drawRenderTarget(){
 	if(currentVisualSystem != NULL){
-		ofPushStyle();
+		
+        ofPushStyle();
+        ofEnableAlphaBlending();
         
 		//cout << "crosffade value is " << crossfadeValue << " showing intro? " << showingIntro << endl;
 		ofSetColor(255, crossfadeValue*255 );
@@ -826,8 +827,8 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
         
         
 #ifdef SHOW_SUBTITLES
-        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(CloudsVisualSystem::getStaticRenderTarget().getWidth()/2,
-                                                               (float)CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
+        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0,
+                                                               CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
 #endif
         
 #ifndef OCULUS_RIFT
@@ -839,46 +840,44 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     else{
         ofBackground(0, 0, 255);
     }
-	
+}
+
+void CloudsPlaybackController::drawInterludeInterface(){
     
-    if(showingInterlude){
-        ofPushStyle();
-        ofEnableAlphaBlending();
-        
-        ofSetColor(255);
-        glDisable(GL_DEPTH_TEST);
-        CloudsPortal::shader.begin();
-        CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-        continuePortal.draw();
-        CloudsPortal::shader.end();
-
-        ofSetLineWidth(1);
-        ofSetColor(ofFloatColor(0.0,0.0,0.0,0.1));
-        ofRect(resetRect.x, resetRect.y, resetRect.width, resetRect.height);
-        
-        if(! bResetSelected && resetSelectedPercentComplete <=0){
-            ofNoFill();
-            ofSetColor(ofFloatColor(1.0,1.0,1.0,0.3));
-        }
-        else if( resetSelectedPercentComplete>0){
-            ofSetColor(ofFloatColor(1.0,1.0,1.0,resetSelectedPercentComplete + 0.3 ) );
-        
-        }
-        ofRect(resetRect);
-//        ofRect(resetSelectionRect);
-
-        ofSetColor(ofFloatColor(1.0,1.0,1.0,resetSelectedPercentComplete ) );
-        resetFont.drawString("RESET", resetRect.x + resetRect.width + 7, resetRect.y + resetRect.height);
-
-        ofDisableAlphaBlending();
-        ofPopStyle();
-        
+    if(!showingInterlude){
+        return;
     }
     
+    ofPushStyle();
+    ofEnableAlphaBlending();
     
-	drawDebugOverlay();
-	
-	glPopAttrib();
+    ofSetColor(255);
+    glDisable(GL_DEPTH_TEST);
+    CloudsPortal::shader.begin();
+    CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+    continuePortal.draw();
+    CloudsPortal::shader.end();
+    
+    ofSetLineWidth(1);
+    ofSetColor(ofFloatColor(0.0,0.0,0.0,0.1));
+    ofRect(resetRect.x, resetRect.y, resetRect.width, resetRect.height);
+    
+    if(! bResetSelected && resetSelectedPercentComplete <=0){
+        ofNoFill();
+        ofSetColor(ofFloatColor(1.0,1.0,1.0,0.3));
+    }
+    else if( resetSelectedPercentComplete>0){
+        ofSetColor(ofFloatColor(1.0,1.0,1.0,resetSelectedPercentComplete + 0.3 ) );
+        
+    }
+    ofRect(resetRect);
+    
+    ofSetColor(ofFloatColor(1.0,1.0,1.0,resetSelectedPercentComplete ) );
+    resetFont.drawString("RESET", resetRect.x + resetRect.width + 7, resetRect.y + resetRect.height);
+    
+    ofDisableAlphaBlending();
+    ofPopStyle();
+    
 }
 
 //--------------------------------------------------------------------
