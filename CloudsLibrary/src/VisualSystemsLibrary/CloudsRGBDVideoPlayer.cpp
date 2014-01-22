@@ -8,6 +8,10 @@
 
 #include "CloudsRGBDVideoPlayer.h"
 
+#ifdef SHOW_SUBTITLES
+  #include "CloudsVisualSystem.h"
+#endif
+
 //---------------------------------------------------------------
 CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
     
@@ -377,7 +381,7 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     }
     
     int fontSize = 36;
-    if(!nextSubtitles.setup(path, GetCloudsDataPath() + "/font/Blender-BOOK.ttf", fontSize/2, fps, TEXT_JUSTIFICATION_CENTER)) {
+    if(!nextSubtitles.setup(path, GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize/2, fps, TEXT_JUSTIFICATION_CENTER)) {
         return false;
     }
     
@@ -385,12 +389,13 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
     string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
     ofRectangle bounds = nextSubtitles.font.getStringBoundingBox(maxStr, 0, 0);
+    
     // loop here until you find the right font size
     while (bounds.width > requiredWidth) {
         nextSubtitles.font.setSize(--fontSize);
         bounds = nextSubtitles.font.getStringBoundingBox(maxStr, 0, 0);
     }
-    
+//    cout << "font size is " << fontSize << endl;
     return true;
 }
 #else
@@ -408,6 +413,9 @@ void CloudsRGBDVideoPlayer::drawSubtitles(float x, float y)
         currentSubtitles.draw(x+3, y-2);
         ofSetColor(255);
         currentSubtitles.draw(x, y);
+        
+//        cout << "line one is " << currentSubtitles.getCurrentLine1() << endl;
+        
         ofPopStyle();
     }
 #endif
