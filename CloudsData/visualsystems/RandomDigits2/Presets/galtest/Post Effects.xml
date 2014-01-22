@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>Post Effects</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000122070</XPosition>
+    <XPosition>637.000061035</XPosition>
     <YPosition>421.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>Enable</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
