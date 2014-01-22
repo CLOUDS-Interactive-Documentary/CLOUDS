@@ -72,8 +72,8 @@ void CloudsVisualSystemRandomDigits2::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemRandomDigits2::selfSetup()
 {
     // load texture
-    numbersImg.loadImage(getVisualSystemDataPath() + "/numbers.png");
-    
+    numbersImg.loadImage(getVisualSystemDataPath() + "numbers.png");
+
     // init defaults
     xCount = 30;
     xSpacing = 50;

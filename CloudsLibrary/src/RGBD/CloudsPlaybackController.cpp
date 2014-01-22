@@ -197,38 +197,12 @@ void CloudsPlaybackController::setup(){
 	
     
 	//////////////SHOW INTRO
-    startingNodes = parser.getClipsWithKeyword("#start");
-	//safe guard delete any starters that don't have questions
-	for(int i = startingNodes.size()-1; i >= 0; i--){
-		if(!startingNodes[i].hasQuestion() ) {
-			ofLogError() << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
-			startingNodes.erase(startingNodes.begin() + i);
-		}
-		else if(!startingNodes[i].hasMediaAsset){
-			ofLogError() << "Clip " << startingNodes[i].getID() << " has no media asset, removing.";
-			startingNodes.erase(startingNodes.begin() + i);
-		}
-#ifdef OCULUS_RIFT
-        else if(!startingNodes[i].hasSpecialKeyword("#oculus")){
-			ofLogError() << "Clip " << startingNodes[i].getID() << " is not tagged for the oculus.";
-			startingNodes.erase(startingNodes.begin() + i);
-        }
-#endif
-        //        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
-        //			startingNodes.erase(startingNodes.begin() + i);
-        //        }
-		else{
-            //			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
-		}
-	}
-    
-    
+    startingNodes = storyEngine.getStartingQuestions();
     
 	//////////////SHOW INTRO
 	cout << "Found " << startingNodes.size() << " questions" << endl;
 	showIntro( startingNodes );
     
-
     sound.enterTunnel();
 
     setupPortals();
@@ -329,9 +303,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
             }
             CloudsVisualSystem::getRGBDVideoPlayer().stop();
             currentAct->getTimeline().stop();
-            
-            //cancel the act
-            //currentAct->getTimeline().setCurrentTimeSeconds( currentAct->getTimeline().getDurationInSeconds()-3 );
         }
 	}
     
@@ -367,7 +338,8 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 	
 	lukePreset& interludePreset = sound.presets[ validInterludePresetIndices[ ofRandom(validInterludePresetIndices.size()) ] ];
 	cue.startTime = 0;
-	cue.duration = 30;
+//	cue.duration = 30;
+	cue.duration = 60*2;
 	cue.mixLevel = 2;
 	sound.startMusicFX(0, cue.duration);
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
@@ -388,13 +360,7 @@ void CloudsPlaybackController::mouseMoved(ofMouseEventArgs & args){
 }
 
 void CloudsPlaybackController::mousePressed(ofMouseEventArgs & args){
-    //#ifdef OCULUS_RIFT
-    // EZ: Override CloudsInputSystem just to get the thing started
-    // since we can't click with Oculus input.
-    //    if (introSequence) {
-    //        introSequence->selfMousePressed(args);
-    //    }
-    //#endif
+
 }
 
 void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
@@ -407,16 +373,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	//OS CURSOR
 #ifdef CLOUDS_RELEASE
     ofHideCursor();
-#else
-    //    currMousePos.set(ofGetMouseX(), ofGetMouseY());
-    //    if (currMousePos != lastMousePos) {
-    //        lastMouseMoveMillis = ofGetElapsedTimeMillis();
-    //        ofShowCursor();
-    //    }
-    //    else if ((ofGetElapsedTimeMillis() - lastMouseMoveMillis) > 1000) {
-    //        ofHideCursor();
-    //    }
-    //    lastMousePos = currMousePos;
 #endif
     
 	////////////////////
@@ -472,10 +428,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             stopInterlude = true;
             goToNextAct = false;
         }
-		else if(ofGetElapsedTimef() - interludeStartTime > 30){
-            stopInterlude = true;
-            goToNextAct = false;
-		}
+        //JG DISABLE TIME OUT
+//		else if(ofGetElapsedTimef() - interludeStartTime > 30){
+//            stopInterlude = true;
+//            goToNextAct = false;
+//		}
         
         //check mouse distance from portals
         ofVec2f mouseNode(GetCloudsInputX(),
@@ -1016,8 +973,12 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 //--------------------------------------------------------------------
 void CloudsPlaybackController::questionProposed(CloudsQuestionEventArgs& args){
 	//don't ask a topic that we've already seen
-	if(!ofContains(run.topicHistory, args.topic)) {
-		rgbdVisualSystem->addQuestion(args.questionClip, args.topic, args.question);
+	if(!ofContains(run.topicHistory, args.topic) &&
+       !run.historyContainsClip(args.questionClip))
+    {
+		rgbdVisualSystem->addQuestion(args.questionClip,
+                                      args.topic,
+                                      args.question);
 	}
 }
 
@@ -1131,8 +1092,6 @@ void CloudsPlaybackController::showInterlude(){
 void CloudsPlaybackController::cleanupInterlude(){
     showingVisualSystem = false;
     
-    //    ResetInterludePortals();
-    
     if(currentVisualSystem == clusterMap) {
         clusterMap->stopSystem();
         
@@ -1145,7 +1104,6 @@ void CloudsPlaybackController::cleanupInterlude(){
     else {
         ofLogError("CloudsPlaybackController::updateTransition") << " Ended interulde while not showing ClusterMap or Interlude System";
     }
-    //    currentVisualSystem = NULL;
 }
 
 //--------------------------------------------------------------------

@@ -52,11 +52,13 @@ class CloudsStoryEngine {
 	
 	CloudsFCPParser* parser;
 	CloudsVisualSystemManager* visualSystems;
-	
+
 	void setup();
 	
 	//will send this act instead of generating one when buildAct is called
 	void setCustomAct(CloudsAct* customAct);
+
+    vector<CloudsClip> getStartingQuestions();
     
 	CloudsAct* buildAct(CloudsRun& run);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed);
@@ -66,7 +68,6 @@ class CloudsStoryEngine {
     void saveGuiSettings();
     void toggleGuis(bool actOnly = false);
 	void positionGuis();
-//    void updateRunData();
 	
     //after this many clips the topic opens up again
 	bool printDecisions;
@@ -95,8 +96,6 @@ class CloudsStoryEngine {
 	
     void guiEvent(ofxUIEventArgs &e);
 
-    
-    
 	CloudsStoryEvents events;
 	bool isSetup;
 	CloudsAct* customAct;
@@ -106,6 +105,9 @@ class CloudsStoryEngine {
 	bool bLogClipDetails;
 	bool bLogVisualSystemDetails;
 	
+    bool showOnlyStartQuestions;
+    vector<CloudsClip> startingQuesitons;
+    
 	string log;
     vector<string> runTopicCount;
     int dichotomyThreshold;
@@ -126,9 +128,7 @@ class CloudsStoryEngine {
 	void addQuestions(CloudsStoryState& currentState, vector<CloudsClip>& questionClips);
     void updateDichotomies(CloudsClip& clip);
 	void clearDichotomiesBalance();
-
 	vector<CloudsDichotomy> dichotomies;
-	
 	
     //Act Builder Parameters
     float actLength;
@@ -143,7 +143,6 @@ class CloudsStoryEngine {
 	
     float longClipThreshold;
     float longClipFadeInPercent;
-//	float getHandleForClip(CloudsClip& clip);
     float cadenceForTopicChangeMultiplier;
 	float clipGapTime;
     float voClipGapTime;
@@ -171,13 +170,10 @@ class CloudsStoryEngine {
 	float genderBalanceFactor;
     float goldClipFactor;
     float easyClipScoreFactor;
-	float offTopicFactor;//deprecated
-	int digressionDenialCount;
-	int numTopicHistoryOccurrences;
+//	int digressionDenialCount;
+//	int numTopicHistoryOccurrences;
 
-	float distantClipSuppressionFactor;
-
-    
+	float distantClipSuppressionFactor; // no longer using
     
 	//Topic selection parameters
 	float topicRelevancyMultiplier;

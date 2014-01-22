@@ -80,6 +80,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     ////////QUESTIONS
 
 	float visualSystemFadeValue;
+    int questionToReplace;
     
 	ofCamera& getCameraRef(){
 		if(placingTransitionNodes){

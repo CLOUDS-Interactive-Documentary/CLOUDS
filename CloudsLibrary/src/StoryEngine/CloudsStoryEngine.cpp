@@ -23,6 +23,8 @@ CloudsStoryEngine::CloudsStoryEngine(){
     visualSystems = NULL;
     customAct = NULL;
 	
+    showOnlyStartQuestions = false;
+    
     isSetup = false;
     printDecisions = true;
     combinedClipsOnly = false;
@@ -262,6 +264,33 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 	customAct = act;
 }
 
+vector<CloudsClip> CloudsStoryEngine::getStartingQuestions(){
+    vector<CloudsClip> startingNodes = parser->getClipsWithKeyword("#start");
+    //safe guard delete any starters that don't have questions
+    for(int i = startingNodes.size()-1; i >= 0; i--){
+        if(!startingNodes[i].hasQuestion() ) {
+            ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
+            startingNodes.erase(startingNodes.begin() + i);
+        }
+        else if(!startingNodes[i].hasMediaAsset){
+            ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i].getID() << " has no media asset, removing.";
+            startingNodes.erase(startingNodes.begin() + i);
+        }
+        #ifdef OCULUS_RIFT
+        else if(!startingNodes[i].hasSpecialKeyword("#oculus")){
+            ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i].getID() << " is not tagged for the oculus.";
+            startingNodes.erase(startingNodes.begin() + i);
+        }
+        #endif
+        //JG rig question
+//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
+//			startingNodes.erase(startingNodes.begin() + i);
+//        }
+    }
+    cout << "returning " << startingNodes.size() << " nodes!" << endl;
+    return startingNodes;
+}
+
 bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset){
     
     if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
@@ -403,15 +432,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     if(run.actCount == 0 && ofContains(hardIntros, seedTopic)){
         run.actCount = 1; //force
     }
-//    bLogClipDetails = false;
-	//MIN VS WAIT TIME
-	//MIN/MAX VS TIME
-	//MIN/MAX INTERSTITCHAL TIME
-	//first sequence a VS & sound preset for the intro
-	//MIN MAX CLIPS PER TOPIC
-	
-	//# TOPICS PER ACT
-    
+
+	   
 	//begin laying down clips based on seed topic
 	
 	//when we encounter MIN VS WAIT TIME
@@ -423,6 +445,15 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	//	allow VO to follow interstichal VS
 	//  if topic is last topic, revert to original topic -- promote conclusions + gold (last clip?)
 
+    //we keep a local copy of these for seeding with start level questions.
+    if(startingQuesitons.size() < 2){
+        startingQuesitons = getStartingQuestions();
+    }
+    
+    //rigs
+    showOnlyStartQuestions = true;
+    //    bLogClipDetails = false;
+    
     run.accumuluatedTopics.clear();
     
 	//clear variables
@@ -563,25 +594,36 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		
         ///////////////// QUESTIONS
         //adding all option clips with questions
-		if(state.topicNum > 1){
 #ifndef OCULUS_RIFT
-			addQuestions(state, questionClips);
-#endif
+		if(state.topicNum > 1 || run.actCount > 1){
+            if(showOnlyStartQuestions && startingQuesitons.size() >= 2){
+                random_shuffle(startingQuesitons.begin(), startingQuesitons.end());
+                vector<CloudsClip> randStartQuestions;
+                randStartQuestions.push_back(startingQuesitons.back());
+                startingQuesitons.pop_back();
+                randStartQuestions.push_back(startingQuesitons.back());
+                startingQuesitons.pop_back();
+                
+                addQuestions(state, randStartQuestions);
+            }
+            else {
+                addQuestions(state, questionClips);
+            }
         }
+#endif
         /////////////////
 		
 		///////////////// DIOCHOTOMIES
         updateDichotomies(state.clip);
 		/////////////////
 		
-		///////////////// update balances
+		///////////////// UPDATE
 		if(state.clip.getSpeakerGender() == "male"){
 			state.moreMenThanWomen++;
 		}
 		else{
 			state.moreMenThanWomen--;
 		}
-		
 		state.timesOnCurrentTopic++;
 		
 		state.log << state.duration << "\t\tChose Clip \"" << nextClip.getLinkName() << "\" for topic \"" << state.topic << "\" ("<< state.timesOnCurrentTopic << "/" << maxTimesOnTopic << ")" << endl;
@@ -607,8 +649,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
                                             clipStartTime,
 											dichotomies);
 		state.clipHistory.push_back(state.clip);
-		
-        
+		      
 		// BASED ON CURRENT CLIP, DECIDE VS
 		// consider if we are at the end of topic
 		float clipFadePad = 2.0;
@@ -1000,7 +1041,7 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
     }
 	
     float totalScore = mainTopicScore + secondaryTopicScore + linkedClipScore;
-    log += ofToString(totalScore,1) +","+ ofToString(mainTopicScore,1) +","+ ofToString(secondaryTopicScore,1) +","+ ofJoinString(keywordsMatched, "; ");
+    //log += ofToString(totalScore,1) +","+ ofToString(mainTopicScore,1) +","+ ofToString(secondaryTopicScore,1) +","+ ofJoinString(keywordsMatched, "; ");
     return totalScore;
 }
 

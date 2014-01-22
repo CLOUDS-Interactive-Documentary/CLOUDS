@@ -42,6 +42,15 @@ void CloudsRun::topicChanged(CloudsTopicEventArgs& args){
     }
 }
 
+bool CloudsRun::historyContainsClip(CloudsClip& clip){
+    for(int i = 0; i < clipHistory.size(); i++){
+        if(clip.getID() == clipHistory[i].getID()){
+            return true;
+        }
+    }
+    return false;
+}
+
 void CloudsRun::clear(){
     actCount = 0;
     clipHistory.clear();

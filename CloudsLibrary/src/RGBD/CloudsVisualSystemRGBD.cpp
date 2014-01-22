@@ -66,6 +66,8 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	meshForceGeoRetraction = .0;
 	meshMaxActuatorRetract = 0.0;
     
+    questionToReplace = 0;
+    
     bEnableFill = false;
 	fillFaceFalloff = 0.0;
 	fillRetractionFalloff = 0.0;
@@ -928,10 +930,6 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	t->addSlider("scrubIn", 0, 1, &transitionScrubIn);
 	t->addSlider("scrubOut", 0, 1, &transitionScrubOut);
 	
-//	//Left/Right toggles
-//	t->addSpacer();
-//	t->addToggle("LEFT", true);
-//	t->addToggle("RIGHT", false);
 
 	//ADD OUR OPTION TOGGLES
 	t->addSpacer();
@@ -953,17 +951,17 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic, string question){
 
-	CloudsPortal* rportal = ofRandomuf() ? &leftPortal : &rightPortal;
+	CloudsPortal* testportal = (questionToReplace++ % 2 == 0) ? &leftPortal : &rightPortal;
 	
-	if(rportal->question != "" || rportal == caughtPortal){
+	if(testportal->question != "" || testportal == caughtPortal){
 		//swap and override for certain so we keep the newest!
-		rportal = rportal == &leftPortal ? &rightPortal : &leftPortal;
+		testportal = (testportal == &leftPortal) ? &rightPortal : &leftPortal;
 	}
     
-	if(rportal != caughtPortal){
-        rportal->question = question;
-        rportal->topic = topic;
-        rportal->clip = questionClip;
+	if(testportal != caughtPortal){
+        testportal->question = question;
+        testportal->topic = topic;
+        testportal->clip = questionClip;
     }
 }
 
@@ -1713,10 +1711,11 @@ void CloudsVisualSystemRGBD::selfExit(){
 }
 
 void CloudsVisualSystemRGBD::selfBegin(){
+    
     bPortalDebugOn = false;
 	cloudsCamera.jumpToPosition();
-	if(timeline!=NULL)
-	{
+    
+	if(timeline != NULL){
 		timeline->hide();
 	}
     
