@@ -18,9 +18,11 @@
 
 
 #ifdef SHOW_SUBTITLES
-  #include "ofxSubtitles.h"
-  #include "CloudsVisualSystem.h"
+    #include "ofxSubtitles.h"
 #endif
+
+
+
 
 class CloudsRGBDVideoPlayer {
 public:

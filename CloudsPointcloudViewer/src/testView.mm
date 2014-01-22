@@ -33,11 +33,10 @@
 	[speakerVolTextBox setTarget:self];
     
 //    rgbdVisualSystem.setNumSamples(4);
-	rgbdVisualSystem.setup();
 	rgbdVisualSystem.setDrawToScreen(false);
+	rgbdVisualSystem.setup();
+    
 	hud.setup();
-
-    rgbd.setup();
 
 #ifdef OCULUS_RIFT
 //    rgbdVisualSystem.hud = &hud;
@@ -51,8 +50,8 @@
 	
 	[self loadClip: parser.getRandomClip(true, false)];
 	
-	rgbd.playSystem();
-	
+
+	rgbdVisualSystem.playSystem();
 	
 	type = CloudsVisualSystem::FLY_THROUGH;
 }
@@ -71,15 +70,18 @@
 
 - (void)draw
 {
+    ofBackground(0);
+    
 	rgbdVisualSystem.selfPostDraw();
 
 #ifndef OCULUS_RIFT
 	//hud.draw();
 #endif
     
-    rgbdVisualSystem.getRGBDVideoPlayer().drawSubtitles(
-        CloudsVisualSystem::getStaticRenderTarget().getWidth()/2,
-        (float)CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
+    CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(
+        CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.,
+        CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
+
 }
 
 - (void) loadClipFromTable:(id)sender
@@ -169,11 +171,11 @@
 	}
 	
 	if(key == 'O'){
-		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
+		rgbdVisualSystem.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToVisualSystem(1.0, 1.0);
 	}
 	if(key == 'I'){
-		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
+		rgbdVisualSystem.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToInterview(1.0, 1.0);
 	}
 }
@@ -207,7 +209,7 @@
 	transitionController.update();
 	
 	float crossfadeValue = transitionController.getFadeValue();
-	rgbd.visualSystemFadeValue = crossfadeValue;
+	rgbdVisualSystem.visualSystemFadeValue = crossfadeValue;
 	
 	//cout << "visual system fade value is " << rgbd.visualSystemFadeValue << endl;
 	
@@ -215,7 +217,7 @@
 		ofLogNotice("testApp::updateTransitions") << transitionController.getCurrentStateDescription() << " TRANSITIONING: " << transitionController.getInterviewTransitionPoint();
 	}
 	
-	rgbd.updateTransition( transitionController.getInterviewTransitionPoint() );
+	rgbdVisualSystem.updateTransition( transitionController.getInterviewTransitionPoint() );
 	
 	if(transitionController.isStateNew()){
 		
@@ -224,14 +226,14 @@
 			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW OUT";
 			
 			//rgbd.startTransitionOut( type );
-			rgbd.startCurrentTransitionOut();
+			rgbdVisualSystem.startCurrentTransitionOut();
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_VISUALSYSTEM_IN){
 			
 			//ofLogNotice("testApp::updateTransitions") << "Going to VISUAL SYSTEM IN";
 			
-			rgbd.transtionFinished();
-			rgbd.stopSystem();
+			rgbdVisualSystem.transtionFinished();
+			rgbdVisualSystem.stopSystem();
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_VISUALSYSTEM_OUT){
 			// no need to do anything special, the crossfade value will take care of this
@@ -241,15 +243,15 @@
 			
 			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW IN";
 			
-			rgbd.playSystem();
+			rgbdVisualSystem.playSystem();
 			//rgbd.startTransitionIn( type );
-			rgbd.startCurrentTransitionIn();
+			rgbdVisualSystem.startCurrentTransitionIn();
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_IDLE){
 			
 			ofLogNotice("testApp::updateTransitions") << "Going to IDLE";
 			
-			rgbd.transtionFinished();
+			rgbdVisualSystem.transtionFinished();
 		}
 	}
 }

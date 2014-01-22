@@ -20,7 +20,6 @@
 	CloudsClip currentClip;
 	int currentClipIndex;
 	
-	CloudsVisualSystemRGBD rgbd;
 	CloudsVisualSystem::RGBDTransitionType type;
 	CloudsTransitionController transitionController;
 

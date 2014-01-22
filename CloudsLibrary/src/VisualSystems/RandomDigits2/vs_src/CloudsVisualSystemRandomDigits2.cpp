@@ -164,6 +164,8 @@ void CloudsVisualSystemRandomDigits2::selfDraw(){
 //    cam.end();
     ofPopStyle();
     
+    glPopAttrib();
+    
 }
 
 

@@ -1610,7 +1610,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		
 		ofPopMatrix();
 		
-		
 		ofSetColor( 255, 0, 255 );
 		ofPushMatrix();
 		
@@ -1628,17 +1627,10 @@ void CloudsVisualSystemRGBD::selfDraw(){
 }
 
 void CloudsVisualSystemRGBD::drawOcclusionLayer(){
-    // z-prepass
-    //BAIL FOR NOW
-    /////////////
-//    return;
-    /////////////
     
     glPushMatrix();
     if(!drawOcclusionDebug){
         
-//        cout << ofGetMouseX()/100. << endl;
-//        ofTranslate(0, 0, ofGetMouseX()/100.);
         ofTranslate(0, 0, 5.44);
         
         glEnable(GL_DEPTH_TEST);  // We want depth test !
@@ -1692,8 +1684,10 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 
 void CloudsVisualSystemRGBD::selfDrawOverlay() {
     if(bPortalDebugOn){
+        ofPushStyle();
+        
         for(int i = 0; i < portals.size(); i++){
-            ofPushStyle();
+
             if(!portals[i]->onScreen){
                 continue;
             }
@@ -1712,8 +1706,6 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
         
         ofPopStyle();
     }
-    
-    
 }
 
 void CloudsVisualSystemRGBD::selfExit(){
@@ -2033,15 +2025,9 @@ void CloudsVisualSystemRGBD::guiSystemEvent(ofxUIEventArgs &e){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetupRenderGui(){
-	
-
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::guiRenderEvent(ofxUIEventArgs &e){
-	
-//	cout << "GUI EVENT WITH WIDGET " << e.widget->getName();
-	
-
 }
 
