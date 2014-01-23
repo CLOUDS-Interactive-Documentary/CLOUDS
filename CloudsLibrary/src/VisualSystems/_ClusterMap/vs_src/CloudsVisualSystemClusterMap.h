@@ -40,9 +40,11 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     
 	//will add the latest state of the run to the traversal
 	void traverse();
-	
+
 	void traverseToClip(CloudsClip clip);
-	
+
+	void clearTraversal();
+    
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){

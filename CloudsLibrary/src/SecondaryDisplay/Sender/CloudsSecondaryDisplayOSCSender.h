@@ -21,6 +21,8 @@ class CloudsSecondaryDisplayOSCSender
 	
 	void setup();
 	
+    void reset();
+    
 	void actCreated(CloudsActEventArgs& args);
 	void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);

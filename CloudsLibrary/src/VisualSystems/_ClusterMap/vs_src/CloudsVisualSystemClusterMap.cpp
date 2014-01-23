@@ -498,9 +498,7 @@ void CloudsVisualSystemClusterMap::traverse(){
 		ofLogError("CloudsVisualSystemClusterMap::traverse") << "Traversed without RUN" << endl;
 		return;
 	}
-	
-    
-    
+
 	if(currentTraversalIndex < run->clipHistory.size()){
 		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
 		traverseToClip( clip );
@@ -727,6 +725,13 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
 	traverseStartTime = ofGetElapsedTimef();
 
 	firstClip = false;
+}
+
+void CloudsVisualSystemClusterMap::clearTraversal(){
+    
+    firstClip = true;
+    traversalMesh.clear();
+    currentTraversalIndex = 0;
 }
 
 void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClips){

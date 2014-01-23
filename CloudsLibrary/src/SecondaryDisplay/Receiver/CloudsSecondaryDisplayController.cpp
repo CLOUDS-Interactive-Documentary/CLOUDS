@@ -272,6 +272,9 @@ void CloudsSecondaryDisplayController::update(){
 			onActEnded();
            // animateOut();
 		}
+        else if(m.getAddress() == "/reset"){
+			onActEnded();
+        }
 	}
 	
 	
@@ -372,6 +375,9 @@ void CloudsSecondaryDisplayController::onActBegan(){
 void CloudsSecondaryDisplayController::onActEnded(){
     //hide the secondary display hud
     animateOut();
+    clusterMap.setCurrentTopic("");
+    clusterMap.clearTraversal();
+    
     firstTopic = false;
 }
 
@@ -402,16 +408,11 @@ void CloudsSecondaryDisplayController::animateOut(){
 }
 
 void CloudsSecondaryDisplayController::draw(){
-
-    //return;
 	
 	displayTarget.begin();
     ofEnableAlphaBlending();
 	clusterMap.selfPostDraw();
     
-//
-//don't set uniforms if 
-//    shader.setUniform1f("alphaAmt", playhead);
     float margin = 60;
     
     if(displayMode == "BIO"){

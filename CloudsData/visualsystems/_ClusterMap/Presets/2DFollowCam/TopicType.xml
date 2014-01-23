@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>TopicType</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>670.000000000</XPosition>
-    <YPosition>179.000000000</YPosition>
+    <XPosition>338.000000000</XPosition>
+    <YPosition>131.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -38,5 +38,5 @@
 <Widget>
     <Kind>44</Kind>
     <Name>ASSOCATION SIZE</Name>
-    <Value>20</Value>
+    <Value>29</Value>
 </Widget>
