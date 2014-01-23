@@ -332,8 +332,6 @@ CloudsMovieDirectory_remote.txt
 /CloudsData/visualsystems/WormHole/Presets/_debug/Timeline/IntroOutro.xml
 /CloudsData/visualsystems/WormHole/Presets/_debug/UITimelineMappings.xml
 
-/CloudsData/CloudsMovieDirectory_whitedwarf.txt
-
 /CloudsLibrary/src/VisualSystemsPrivate/
 
 /CloudsData/logs/acts/ACT_1_9_14_19.txt
@@ -355,6 +353,5 @@ CloudsData/visualsystems/WormHole/models/PolyFlower_02_Tunnel_02.obj
 /CloudsData/logs/acts
 
 CloudsData/visualsystems/3DModelLoader/models*
-
 
 /CloudsData/visualsystems_ignored_old

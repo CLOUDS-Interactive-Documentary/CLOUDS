@@ -420,6 +420,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	else if(showingInterlude){
         bool stopInterlude = false;
         bool goToNextAct = false;
+        
         if(continuePortal.isSelected() || !interludeSystem->getTimeline()->getIsPlaying()){
             stopInterlude = true;
             goToNextAct = true;
@@ -428,6 +429,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             stopInterlude = true;
             goToNextAct = false;
         }
+        
         //JG DISABLE TIME OUT
 //		else if(ofGetElapsedTimef() - interludeStartTime > 30){
 //            stopInterlude = true;
@@ -461,7 +463,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
                 cout<<resetSelectedPercentComplete<<endl;
             }
             bResetSelected = false;
-
         }
         
         if (bResetSelected) {
@@ -486,6 +487,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(stopInterlude){
             
             sound.stopMusic();
+            
             if(goToNextAct){
                 transitionController.transitionFromInterlude(1.0);
             }
@@ -505,12 +507,15 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	// RGBD SYSTEM
     //	if(rgbdVisualSystem->isQuestionSelectedAndClipDone()){
     if(currentVisualSystem == rgbdVisualSystem){
-        if(!bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
+        if(!transitionController.isTransitioning() && !bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
-
+            
+//            sound.stopMusic();
+            
             transitionController.transitionWithQuestion(2.0, 0.1);
-            sound.questionSelected(2.0);
+            //sound.questionSelected(2.0);
+
         }
     }
     
@@ -702,6 +707,7 @@ void CloudsPlaybackController::updateTransition(){
                 }
 				else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
 					if(bQuestionAsked){
+                        
                         
                         q = rgbdVisualSystem->getSelectedQuestion();
                         clip = q->clip;
@@ -1094,7 +1100,6 @@ void CloudsPlaybackController::cleanupInterlude(){
     
     if(currentVisualSystem == clusterMap) {
         clusterMap->stopSystem();
-        
     }
     else if(currentVisualSystem != NULL && currentVisualSystem == interludeSystem){
         interludeSystem->stopSystem();

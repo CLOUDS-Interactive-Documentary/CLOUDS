@@ -210,6 +210,10 @@ void CloudsTransitionController::update() {
 	}
 }
 
+bool CloudsTransitionController::isTransitioning(){
+    return transitioning;
+}
+
 void CloudsTransitionController::queueState(CloudsTransitionState state, float transitionDuration){
 	CloudsTransitionQueueEntry cue;
 	if(stateQueue.empty()){

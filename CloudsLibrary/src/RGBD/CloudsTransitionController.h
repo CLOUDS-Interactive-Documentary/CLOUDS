@@ -53,6 +53,8 @@ class CloudsTransitionController {
 	
 	void update();
 	
+    bool isTransitioning();
+    
 	float transitionPercent;
 
 	float getInterviewTransitionPoint();

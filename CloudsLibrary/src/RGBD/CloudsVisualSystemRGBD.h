@@ -25,6 +25,11 @@ struct TransitionInfo{
 	string transitionName;
 };
 
+typedef struct {
+    CloudsClip clip;
+    string question;
+    string topic;
+}QuestionQueue;
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
@@ -162,7 +167,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float skinBrightness;
 	
 	//POINTS
-    
+
 	//ofxUISuperCanvas *pointsGui;
     CloudsRGBDPointLayer pointLayer1;
     CloudsRGBDPointLayer pointLayer2;
@@ -270,15 +275,17 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	CloudsPortal leftPortal;
 	CloudsPortal rightPortal;
 	vector<CloudsPortal*> portals;
+    vector<QuestionQueue> questions;
 	CloudsPortal* caughtPortal;
     CloudsPortal* selectedPortal;
 	void updateQuestions();
 	void drawQuestions();
 	
-	bool placingTransitionNodes;
-	bool drawTransitionNodes;
+    
 	
 	//transition
+	bool placingTransitionNodes;
+	bool drawTransitionNodes;
 	bool transitioning, transitioningIn, transitioningOut, bResetLookThoughs, bResetRight,bResetLeft,bResetIn;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
 	string activeTransition;

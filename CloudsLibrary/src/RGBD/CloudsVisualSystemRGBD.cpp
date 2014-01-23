@@ -950,7 +950,33 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic, string question){
+    
 
+    //////////////QUEUE WAY
+    CloudsPortal* testportal = NULL;
+    if(leftPortal.question == ""){
+        testportal = &leftPortal;
+    }
+    else if(rightPortal.question == ""){
+        testportal = &rightPortal;
+    }
+    
+	if(testportal != NULL){
+        testportal->question = question;
+        testportal->topic = topic;
+        testportal->clip = questionClip;
+    }
+    else{
+        QuestionQueue q;
+        q.clip  = questionClip;
+        q.topic = topic;
+        q.question = question;
+        questions.push_back(q);
+    }
+    //////////////QUEUE WAY
+    
+    /////////////////////OLD WAY
+    /*
 	CloudsPortal* testportal = (questionToReplace++ % 2 == 0) ? &leftPortal : &rightPortal;
 	
 	if(testportal->question != "" || testportal == caughtPortal){
@@ -963,6 +989,7 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic,
         testportal->topic = topic;
         testportal->clip = questionClip;
     }
+    */
 }
 
 //--------------------------------------------------------------
@@ -996,6 +1023,14 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 	for(int i = 0; i < portals.size(); i++){
 		
 		portals[i]->update();
+        /////NEW QUESTION WAY
+        if(portals[i]->question == "" && questions.size() > 0){
+            portals[i]->clip = questions.back().clip;
+            portals[i]->topic = questions.back().topic;
+            portals[i]->question = questions.back().question;
+            questions.pop_back();
+        }
+        /////NEW QUESTION WAY
         
         if(!portals[i]->onScreen || portals[i]->question == ""){
             continue;
@@ -1015,6 +1050,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			if( distanceToQuestion < portalTugDistance.max) {
 				if(distanceToQuestion < portalTugDistance.min) {
 					caughtPortal = portals[i];
+                    /////NEW QUESTION WAY
+
 					if (caughtPortal->startHovering()) {
                         CloudsPortalEventArgs args(*portals[i], getQuestionText());
                         ofNotifyEvent(events.portalHoverBegan, args);
@@ -1031,7 +1068,11 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			//let it go
 			else if(distanceToQuestion > portalTugDistance.max){
 				caughtPortal->stopHovering();
+                /////NEW QUESTION WAY
+                caughtPortal->question = "";
+                /////NEW QUESTION WAY
 				caughtPortal = NULL;
+                
                 CloudsPortalEventArgs args(*portals[i], getQuestionText());
                 ofNotifyEvent(events.portalHoverEnded, args);
 			}
@@ -1044,6 +1085,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 void CloudsVisualSystemRGBD::clearQuestions(){
 	rightPortal.question = "";
 	leftPortal.question = "";
+    
+    questions.clear();
     
     leftPortal.clearSelection();
     rightPortal.clearSelection();
