@@ -25,6 +25,11 @@ void CloudsSecondaryDisplayOSCSender::setup(){
     string hostname;
     int port;
     hostname = linksXML.getValue("hostname", "");
+    
+    //////////////////////////////
+    hostname = "localhost";
+    //////////////////////////////
+    
     if (hostname == "") {
         ofLogError()<<"Check OSCSettings.xml in CloudsData/SecondaryDisplay/OSC"<<endl;
         return;
@@ -109,4 +114,14 @@ void CloudsSecondaryDisplayOSCSender::sendClip(CloudsClip& clip){
 		m.addStringArg(lastQuestionAsked); //question
 	}   
 	sender.sendMessage(m);
+}
+
+void CloudsSecondaryDisplayOSCSender::reset(){
+    
+    if(!bSetup) return;
+    
+ 	ofxOscMessage m;
+    m.setAddress("/reset");
+   
+ 	sender.sendMessage(m);
 }
