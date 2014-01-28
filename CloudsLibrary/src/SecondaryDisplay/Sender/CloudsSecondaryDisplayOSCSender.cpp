@@ -27,7 +27,7 @@ void CloudsSecondaryDisplayOSCSender::setup(){
     hostname = linksXML.getValue("hostname", "");
     
     //////////////////////////////
-    hostname = "localhost";
+//    hostname = "localhost";
     //////////////////////////////
     
     if (hostname == "") {
