@@ -274,6 +274,8 @@ void CloudsSecondaryDisplayController::update(){
 		}
         else if(m.getAddress() == "/reset"){
 			onActEnded();
+            clusterMap.setCurrentTopic("");
+            clusterMap.clearTraversal();
         }
 	}
 	
@@ -375,8 +377,8 @@ void CloudsSecondaryDisplayController::onActBegan(){
 void CloudsSecondaryDisplayController::onActEnded(){
     //hide the secondary display hud
     animateOut();
-    clusterMap.setCurrentTopic("");
-    clusterMap.clearTraversal();
+//    clusterMap.setCurrentTopic("");
+//    clusterMap.clearTraversal();
     
     firstTopic = false;
 }
