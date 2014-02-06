@@ -172,6 +172,12 @@ bool clipsort(CloudsClip a, CloudsClip b){
         visualSystems.DeallocateSystems();
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[ self.selectedPresetIndex ].systemName );
 		
+		///SCREENCAPTURE MODE
+		currentVisualSystem->setNumSamples(4);
+		currentVisualSystem->forceScreenResolution(1920*2, 1080*2);
+		currentVisualSystem->setDrawToScreen(false);
+		/////
+		
 		if(currentVisualSystem != NULL){
 			currentVisualSystem->setup();
 			string presetName = visualSystems.getPresets()[ self.selectedPresetIndex ].presetName;
@@ -269,7 +275,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)draw
 {
-
+	if(currentVisualSystem != NULL){
+		currentVisualSystem->getSharedRenderTarget().draw(0, 0, ofGetWidth(),ofGetHeight());
+	}
 }
 
 - (void)exit
@@ -283,6 +291,16 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)keyPressed:(int)key
 {
+	if(key == ' ' && currentVisualSystem != NULL){
+		ofPixels p;
+		currentVisualSystem->getSharedRenderTarget().readToPixels(p);
+		
+		char screenshot[1024];
+		
+		sprintf(screenshot, "screencapture_%s_%d_%d_%d_%d.png",
+				currentVisualSystem->getSystemName().c_str(), ofGetDay(), ofGetHours(), ofGetMinutes(), ofGetSeconds());
+		ofSaveImage(p, screenshot);
+	}
 
 }
 

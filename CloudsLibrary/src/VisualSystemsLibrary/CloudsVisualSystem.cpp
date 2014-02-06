@@ -163,12 +163,14 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	updateCyclced = false;
     bDoBloom = false;
     bloomAmount = 0.;
+
 //#ifdef CLOUDS_APP
 //    bShowPortals = true;
 //#endif
     
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
+	hudGui = NULL;	
 #else
 	bUseOculusRift = false;
 #endif 
