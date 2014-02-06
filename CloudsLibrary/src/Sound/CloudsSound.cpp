@@ -335,7 +335,8 @@ void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 }
 //--------------------------------------------------------------------
 void CloudsSound::questionSelected(float fadeTime){
-    fadeMusic(fadeTime);
+//    fadeMusic(fadeTime);
+//    stopMusic();
 }
 //--------------------------------------------------------------------
 void CloudsSound::questionSelected(CloudsQuestionEventArgs& args){

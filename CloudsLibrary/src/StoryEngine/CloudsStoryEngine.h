@@ -106,7 +106,7 @@ class CloudsStoryEngine {
 	bool bLogVisualSystemDetails;
 	
     bool showOnlyStartQuestions;
-    vector<CloudsClip> startingQuesitons;
+    vector<CloudsClip> startingQuestions;
     
 	string log;
     vector<string> runTopicCount;

@@ -62,7 +62,7 @@ void CloudsHUDController::setup(){
 }
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
-//	bDrawHud = true;
+	bDrawHud = true;
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){

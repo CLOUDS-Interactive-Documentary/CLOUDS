@@ -446,14 +446,12 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	//  if topic is last topic, revert to original topic -- promote conclusions + gold (last clip?)
 
     //we keep a local copy of these for seeding with start level questions.
-    if(startingQuesitons.size() < 2){
-        startingQuesitons = getStartingQuestions();
-    }
     
     //rigs
     showOnlyStartQuestions = true;
     //    bLogClipDetails = false;
-    
+    startingQuestions = getStartingQuestions();
+
     run.accumuluatedTopics.clear();
     
 	//clear variables
@@ -595,16 +593,28 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         ///////////////// QUESTIONS
         //adding all option clips with questions
 #ifndef OCULUS_RIFT
-		if(state.topicNum > 1 || run.actCount > 1){
-            if(showOnlyStartQuestions && startingQuesitons.size() >= 2){
-                random_shuffle(startingQuesitons.begin(), startingQuesitons.end());
-                vector<CloudsClip> randStartQuestions;
-                randStartQuestions.push_back(startingQuesitons.back());
-                startingQuesitons.pop_back();
-                randStartQuestions.push_back(startingQuesitons.back());
-                startingQuesitons.pop_back();
-                
-                addQuestions(state, randStartQuestions);
+		if(state.topicNum > 1 || run.actCount > 0){
+            if(showOnlyStartQuestions){
+                if(startingQuestions.size() > 0){
+                    addQuestions(state, startingQuestions);
+                    startingQuestions.clear();
+                }
+//                //refresh questionws
+//                if(startingQuesitons.size() < 2){
+//                    startingQuesitons = getStartingQuestions();
+//                }
+//                
+//                //ask away
+//                if(startingQuesitons.size() >= 2){
+//                    random_shuffle(startingQuesitons.begin(), startingQuesitons.end());
+//                    vector<CloudsClip> randStartQuestions;
+//                    randStartQuestions.push_back(startingQuesitons.back());
+//                    startingQuesitons.pop_back();
+//                    randStartQuestions.push_back(startingQuesitons.back());
+//                    startingQuesitons.pop_back();
+//                    
+//                    addQuestions(state, randStartQuestions);
+//                }
             }
             else {
                 addQuestions(state, questionClips);

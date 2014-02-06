@@ -69,9 +69,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
     [presetTable setTarget:self];
 	[presetTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[presetTable reloadData];
-    
-    
-    
+
 	
 	[self updateCounts];
 
