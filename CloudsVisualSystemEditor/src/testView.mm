@@ -274,7 +274,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 - (void)draw
 {
 	if(currentVisualSystem != NULL){
-		currentVisualSystem->getSharedRenderTarget().draw(0, 0, ofGetWidth(),ofGetHeight());
+		currentVisualSystem->getSharedRenderTarget().draw(0, ofGetHeight(), ofGetWidth(),-ofGetHeight());
 	}
 }
 
