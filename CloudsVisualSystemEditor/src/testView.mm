@@ -288,7 +288,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		currentVisualSystem->selfPostDraw();
 		saveFbo.end();
 		
-		saveFbo.draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
+		saveFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
 		
 //		currentVisualSystem->getSharedRenderTarget().draw();
 	}
