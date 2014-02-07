@@ -274,7 +274,23 @@ bool clipsort(CloudsClip a, CloudsClip b){
 - (void)draw
 {
 	if(currentVisualSystem != NULL){
-		currentVisualSystem->getSharedRenderTarget().draw(0, ofGetHeight(), ofGetWidth(),-ofGetHeight());
+		
+		if(saveFbo.getWidth()  != currentVisualSystem->getSharedRenderTarget().getWidth() ||
+		   saveFbo.getHeight() != currentVisualSystem->getSharedRenderTarget().getHeight() )
+		{
+			saveFbo.allocate(currentVisualSystem->getSharedRenderTarget().getWidth(),
+							 currentVisualSystem->getSharedRenderTarget().getHeight(),
+							 GL_RGB);
+		}
+		
+		saveFbo.begin();
+		ofClear(0,0,0);
+		currentVisualSystem->selfPostDraw();
+		saveFbo.end();
+		
+		saveFbo.draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
+		
+//		currentVisualSystem->getSharedRenderTarget().draw();
 	}
 }
 
@@ -291,7 +307,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 {
 	if(key == ' ' && currentVisualSystem != NULL){
 		ofPixels p;
-		currentVisualSystem->getSharedRenderTarget().readToPixels(p);
+		saveFbo.readToPixels(p);
 		
 		char screenshot[1024];
 		
