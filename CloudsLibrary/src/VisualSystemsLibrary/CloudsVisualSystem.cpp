@@ -3758,6 +3758,9 @@ void CloudsVisualSystem::selfPostDraw(){
 
 void CloudsVisualSystem::drawCursor()
 {
+	
+	return;
+	
 //    if (drawCursorMode > DRAW_CURSOR_NONE) {
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
         for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {

@@ -172,7 +172,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		///SCREENCAPTURE MODE
 		currentVisualSystem->setNumSamples(4);
-		currentVisualSystem->forceScreenResolution(1920*2, 1080*2);
+		currentVisualSystem->forceScreenResolution(1920, 1080);
 		currentVisualSystem->setDrawToScreen(false);
 		/////
 		
@@ -274,7 +274,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 - (void)draw
 {
 	if(currentVisualSystem != NULL){
-		currentVisualSystem->getSharedRenderTarget().draw(0, 0, ofGetWidth(),ofGetHeight());
+		currentVisualSystem->getSharedRenderTarget().draw(0, ofGetHeight(), ofGetWidth(),-ofGetHeight());
 	}
 }
 
