@@ -172,7 +172,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		///SCREENCAPTURE MODE
 		currentVisualSystem->setNumSamples(4);
-		currentVisualSystem->forceScreenResolution(1920*2, 1080*2);
+		currentVisualSystem->forceScreenResolution(1920, 1080);
 		currentVisualSystem->setDrawToScreen(false);
 		/////
 		
