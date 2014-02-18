@@ -345,9 +345,22 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 //	cue.duration = 30;
 	cue.duration = 60*2;
 	cue.mixLevel = 2;
-	sound.startMusicFX(0, cue.duration);
+    if(LUKEDEBUG) cout << "===============" << endl;
+    if(LUKEDEBUG) cout << "INTERLUDE MUSIC!!!" << endl;
+    if(LUKEDEBUG) cout << "===============" << endl;
+
+    if(LUKEDEBUG) cout << "TOTAL DURATION: " << cue.duration+5.0 << endl;
+    else cout << "SOUND: MUSIC STARTED." << endl;
+
+	sound.startMusicFX(0, cue.duration+5.0);
+
+    if(LUKEDEBUG) cout << "   preset: " << interludePreset.slotnumber << endl;
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
-    
+
+    if(LUKEDEBUG) cout << "====================" << endl;
+    if(LUKEDEBUG) cout << "DONE INTERLUDE MUSIC!!!" << endl;
+    if(LUKEDEBUG) cout << "====================" << endl;
+
 }
 
 //--------------------------------------------------------------------
