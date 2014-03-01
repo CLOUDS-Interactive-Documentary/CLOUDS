@@ -138,8 +138,7 @@ protected:
     int minObjectCount;
     float maxCircles;
     float maxRects;
-    
-    
+    	
     bool bFill;
     bool bRandomPlatforms;
     bool bStaticPlatforms;

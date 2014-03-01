@@ -5,10 +5,8 @@
 #include "CloudsVisualSystemExampleBox2D.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
+static int id0 = 0;
+static int id1 = 1;
 
 //These methods let us add custom GUI parameters and respond to their events
 
@@ -488,7 +486,7 @@ void CloudsVisualSystemExampleBox2D::addCircle(ofVec2f pos, ofVec2f vel, float r
     circle.setup(box2d.getWorld(), pos.x, pos.y, rad);
     circle.setVelocity(vel);
     circle.setRotation(ofRandom(180));
-    circle.body->SetUserData((void*)0);
+    circle.body->SetUserData(&id0);
 //    circle.setData((void*)1234);
     circles.push_back(circle);
 }
@@ -501,7 +499,7 @@ void CloudsVisualSystemExampleBox2D::addRect(ofVec2f pos, ofVec2f vel, ofVec2f s
     rect.setup(box2d.getWorld(), pos.x, pos.y, size.x, size.y);
     rect.setVelocity(vel);
     rect.setRotation(ofRandom(180));
-    rect.body->SetUserData((void*)1);
+    rect.body->SetUserData(&id1);
     rects.push_back(rect);
 }
 
@@ -603,13 +601,14 @@ void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
     float aVel = e.a->GetBody()->GetLinearVelocity().Length();
     float bVel = e.b->GetBody()->GetLinearVelocity().Length();
     
-    int type;
-    if (aVel > bVel) {
-        type = (int)e.a->GetBody()->GetUserData();
-    }
-    else {
-        type = (int)e.b->GetBody()->GetUserData();
-    }
+    int type = *(static_cast<int*>(e.a->GetBody()->GetUserData()));
+//    if (aVel > bVel) {
+//        
+//    }
+//    else {
+////        type = (int)e.b->GetBody()->GetUserData();
+//		type = static_cast<int>( *e.b->GetBody()->GetUserData() );
+//    }
     
     int sIndex = type;
     

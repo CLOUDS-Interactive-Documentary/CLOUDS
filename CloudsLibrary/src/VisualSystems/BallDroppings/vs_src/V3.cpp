@@ -1,6 +1,7 @@
 /**
 @author jtnimoy
 */
+#include <math.h>
 #include "V3.h"
 
 V3::V3(){

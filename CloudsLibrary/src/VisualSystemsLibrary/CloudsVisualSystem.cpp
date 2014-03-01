@@ -1244,9 +1244,10 @@ vector<string> CloudsVisualSystem::getPresets()
 	if(presetsFolder.exists()){
 		presetsFolder.listDir();
 		for(int i = 0; i < presetsFolder.size(); i++){
-			if(presetsFolder.getFile(i).isDirectory() &&
-               ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working" &&
-			   presetsFolder.getName(i).at(0) != '_') //use leading _ to hide folders
+			//if(presetsFolder.getFile(i).isDirectory() &&
+			if( ofFile( presetsFolder.getPath(i) ).isDirectory() &&
+                ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working" &&
+				presetsFolder.getName(i).at(0) != '_') //use leading _ to hide folders
             {
 				presets.push_back(presetsFolder.getName(i));
 			}
@@ -3180,8 +3181,6 @@ void CloudsVisualSystem::loadGUIS()
 #endif
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
 		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
-//        setColors();
-//        guis[i]->setTheme(OFX_UI_THEME_ZOOLANDER);
     }
 
 #ifdef KINECT_INPUT
@@ -3195,7 +3194,7 @@ void CloudsVisualSystem::loadGUIS()
 #endif
     
     cam.reset();
-    ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
+    ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/ofEasyCamSettings");
     resetTimeline();
     
     loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
@@ -3723,9 +3722,13 @@ void CloudsVisualSystem::selfPostDraw(){
     }else{
         offset = 0;
     }
+#if OF_VERSION_MINOR < 8
     CloudsVisualSystem::getSharedRenderTarget().draw(-offset,CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+#else
+    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,-offset);
+#endif
     if(bEnablePostFX){
         cloudsPostShader.end();
     }
