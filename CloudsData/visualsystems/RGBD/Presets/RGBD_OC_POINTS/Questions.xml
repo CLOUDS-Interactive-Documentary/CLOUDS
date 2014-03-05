@@ -31,6 +31,16 @@
     <Value>-22.660095215</Value>
 </Widget>
 <Widget>
+    <Kind>4</Kind>
+    <Name>RESET Y</Name>
+    <Value>-140.394104004</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RESET Z</Name>
+    <Value>2.463043213</Value>
+</Widget>
+<Widget>
     <Kind>6</Kind>
     <Name>PORTAL SELECT DISTANCE</Name>
     <HighValue>137.044342041</HighValue>
