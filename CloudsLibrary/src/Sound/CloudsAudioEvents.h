@@ -20,6 +20,10 @@ public:
     ofEvent<ofAudioEventArgs>   diageticAudioRequested;
     ofEvent<float>   fadeAudioDown;
     ofEvent<float>   fadeAudioUp;
+    bool dopull;
+    bool setupflush;
+    bool doflush;
+    bool dodelay;
 };
 
 ofPtr<CloudsAudioEvents> GetCloudsAudioEvents();

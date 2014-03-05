@@ -142,7 +142,6 @@ void testApp::update(){
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
 		if(m.getAddress() == "/setupMusic"){
-            //sound.stopMusic();
 			oharmony = m.getArgAsInt32(0);
 			orhythm = m.getArgAsInt32(1);
 			otempo = m.getArgAsInt32(2);
@@ -174,7 +173,6 @@ void testApp::update(){
 		else if(m.getAddress() == "/stopMusic"){
             cout << "STOPPING MUSIC" << endl;
             sound.stopMusic();
-            //flush_sched();
 		}
         else if(m.getAddress() == "/reloadPresets") {
             sound.reloadPresets();
@@ -264,10 +262,12 @@ void testApp::keyPressed(int key){
         sound.exitClusterMap();
     }
     if(key == 'u') {
-        mixer.fadeMusicUp();
+        float t = 2.;
+        mixer.fadeUp(t);
     }
     if(key == 'j') {
-        mixer.fadeMusicDown();
+        float t = 0.5;
+        mixer.fadeDown(t);
     }
 }
 

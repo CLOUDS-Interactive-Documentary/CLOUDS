@@ -58,11 +58,9 @@ class CloudsSound {
     void startMusicFX(float outskip, float musicdur);
     void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope);
     void stopMusic();
-    void fadeMusic(float fadeTime);
     void reloadPresets();
     void doPrinting();
     int ACTBUS; // needs to be public for UDP shit in the scoredesigner
-    bool dopull;
     bool in_tunnel;
     
     // public data structures
