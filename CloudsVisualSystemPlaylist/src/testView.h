@@ -18,6 +18,7 @@
 	bool isPlayingPlaylist;
 	bool shouldPlayPlaylist;
 	int playlistIndex;
+	vector<int> riftIndeces;
 	
 	float maxSystemDuration;
 	float systemStartTime;
