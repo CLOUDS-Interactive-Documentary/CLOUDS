@@ -345,9 +345,22 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 //	cue.duration = 30;
 	cue.duration = 60*2;
 	cue.mixLevel = 2;
-	sound.startMusicFX(0, cue.duration);
+    if(LUKEDEBUG) cout << "===============" << endl;
+    if(LUKEDEBUG) cout << "INTERLUDE MUSIC!!!" << endl;
+    if(LUKEDEBUG) cout << "===============" << endl;
+
+    if(LUKEDEBUG) cout << "TOTAL DURATION: " << cue.duration+5.0 << endl;
+    else cout << "SOUND: MUSIC STARTED." << endl;
+
+	sound.startMusicFX(0, cue.duration+5.0);
+
+    if(LUKEDEBUG) cout << "   preset: " << interludePreset.slotnumber << endl;
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
-    
+
+    if(LUKEDEBUG) cout << "====================" << endl;
+    if(LUKEDEBUG) cout << "DONE INTERLUDE MUSIC!!!" << endl;
+    if(LUKEDEBUG) cout << "====================" << endl;
+
 }
 
 //--------------------------------------------------------------------
@@ -521,6 +534,12 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             //sound.questionSelected(2.0);
 
         }
+		
+		if(returnToIntro){
+			returnToIntro = false;
+			transitionController.transitionToIntro(1.0);
+		}
+		
     }
     
     
@@ -582,7 +601,10 @@ void CloudsPlaybackController::updateTransition(){
                 if(currentVisualSystem == interludeSystem){
                     cleanupInterlude();
                 }
-                
+                else if(currentVisualSystem == rgbdVisualSystem){
+					rgbdVisualSystem->transtionFinished();
+                    rgbdVisualSystem->stopSystem();
+				}
                 if(introSequence != NULL){
                     delete introSequence;
                 }
@@ -911,21 +933,15 @@ void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	
-    //make sure its' stopped
-    //    CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().stop();
-    shouldClearAct = true;
-    
-    if(returnToIntro){
-        returnToIntro = false;
-        transitionController.transitionToIntro(1.0);
-    }
-    else{
-        cout << "ACT ENDED TRIGGERED" << endl;
-        if(!bQuestionAsked){
-            cout << "Transitioning to interlude/clustermap" << endl;
-            transitionController.transitionToInterlude(1.0,1.0);
-        }
-    }
+	if(!returnToIntro){
+		shouldClearAct = true;
+		
+		cout << "ACT ENDED TRIGGERED" << endl;
+		if(!bQuestionAsked){
+			cout << "Transitioning to interlude/clustermap" << endl;
+			transitionController.transitionToInterlude(1.0,1.0);
+		}
+	}
 }
 
 //--------------------------------------------------------------------
@@ -1199,6 +1215,11 @@ void CloudsPlaybackController::portalHoverBegan(CloudsPortalEventArgs &args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::portalHoverEnded(CloudsPortalEventArgs &args){
 	hud.questionHoverOff();
+	if(args.question == "RESET"){
+		returnToIntro = true;
+		CloudsVisualSystem::getRGBDVideoPlayer().stop();
+		currentAct->getTimeline().stop();		
+	}
 }
 
 void CloudsPlaybackController::clearRestButtonParams(){
