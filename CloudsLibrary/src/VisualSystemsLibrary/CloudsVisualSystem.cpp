@@ -2322,7 +2322,7 @@ void CloudsVisualSystem::setupTimelineGui()
     
     durationLabel = tlGui->addLabel("");
     
-    tlGui->addNumberDialer("DURATION", 0.0, 60*5, &timelineDuration, 0.0)->setDisplayLabel(true);
+	tlGui->addNumberDialer("DURATION", 0.0, 60*5, &timelineDuration, 0.0)->setLabelVisible(true);
     tlGui->addToggle("INDEFINITE", &bTimelineIsIndefinite);
     
     tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
@@ -2522,8 +2522,8 @@ void CloudsVisualSystem::bindWidgetToTimeline(ofxUIWidget* widget)
             
         case OFX_UI_WIDGET_BILABELSLIDER:
         case OFX_UI_WIDGET_CIRCLESLIDER:
-        case OFX_UI_WIDGET_MULTIIMAGESLIDER_H:
-        case OFX_UI_WIDGET_MULTIIMAGESLIDER_V:
+//        case OFX_UI_WIDGET_MULTIIMAGESLIDER_H:
+//        case OFX_UI_WIDGET_MULTIIMAGESLIDER_V:
         case OFX_UI_WIDGET_IMAGESLIDER_H:
         case OFX_UI_WIDGET_IMAGESLIDER_V:
         case OFX_UI_WIDGET_ROTARYSLIDER:
@@ -2603,8 +2603,8 @@ void CloudsVisualSystem::unBindWidgetFromTimeline(ofxUIWidget* widget)
             
         case OFX_UI_WIDGET_BILABELSLIDER:
         case OFX_UI_WIDGET_CIRCLESLIDER:
-        case OFX_UI_WIDGET_MULTIIMAGESLIDER_H:
-        case OFX_UI_WIDGET_MULTIIMAGESLIDER_V:
+//        case OFX_UI_WIDGET_MULTIIMAGESLIDER_H:
+//        case OFX_UI_WIDGET_MULTIIMAGESLIDER_V:
         case OFX_UI_WIDGET_IMAGESLIDER_H:
         case OFX_UI_WIDGET_IMAGESLIDER_V:
         case OFX_UI_WIDGET_ROTARYSLIDER:
