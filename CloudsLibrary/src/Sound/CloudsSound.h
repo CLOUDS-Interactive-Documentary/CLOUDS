@@ -81,6 +81,7 @@ class CloudsSound {
     void registerOrchs();
     void audioRequested(float * output, int bufferSize, int nChannels);
 	short *s_audio_outbuf; // this is the buf filled by rtcmix (it uses short samples)
+	short *s_audio_compbuf; // this is the buf for comparison (it uses short samples)
     int sr; // sampling rate
     int nbufs; // number of buffers
     int nchans; // 2 = stereo

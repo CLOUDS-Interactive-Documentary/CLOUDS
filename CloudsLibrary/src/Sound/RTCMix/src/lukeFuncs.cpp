@@ -44,7 +44,8 @@ void INITMIX()
 {
     flush_sched();
     sleep(1);
-    RTcmixParseScoreFile("cmixclear.sco");
+    //RTcmixParseScoreFile("cmixclear.sco");
+    //sleep(1);
 }
 
 // use the SPLITTER() instrument to configure effects path
@@ -122,7 +123,11 @@ void STREAMSOUND(double outskip, string file, double dur, double amp)
     ofDirectory sdir(p);
     
     string f = sdir.getAbsolutePath()+"/"+file;
-    
+
+    // load file
+    bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)f.c_str());
+    parse_score(thebuf, bx);
+
     if(dur<0)
     {
         bx = snprintf(thebuf, 256, "STEREO(%f, 0., DUR(), %f*amp_declick, 0, 1)", outskip, amp);

@@ -30,6 +30,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         nchans = 2; // stereo
         framesize = 512; // sigvs
         s_audio_outbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
+        s_audio_compbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
         
         // initialize RTcmix
         rtcmixmain();
@@ -40,6 +41,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         GetCloudsAudioEvents()->dodelay = false;
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
+
         first_vec = true; // we haven't had audio yet
         
         // load samples
@@ -387,13 +389,21 @@ void CloudsSound::doPrinting() {
 // =========================
 void CloudsSound::audioRequested(ofAudioEventArgs& args){
 
-        pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
+    int cdif = 0;
+    int csum = 0;
 
+        pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
         // fill up the audio buffer
         for (int i = 0; i < args.bufferSize * args.nChannels; i++)
         {
             args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
+            
+            csum+=abs(s_audio_outbuf[i]);
+            cdif+=(s_audio_outbuf[i]-s_audio_compbuf[i]);
+            s_audio_compbuf[i] = s_audio_outbuf[i];
         }
+    
+    if(csum>0 && cdif==0) cout << "BUZZZZZZZZZZZZZZ!!!" << endl;
 
         
         // not using right now

@@ -1314,4 +1314,5 @@ void CloudsSound::stopMusic()
     GetCloudsAudioEvents()->dodelay = true;
     GetCloudsAudioEvents()->setupflush = true;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioDown, ftime);
+    //RTcmixParseScoreFile("cmixclear.sco");
 }
