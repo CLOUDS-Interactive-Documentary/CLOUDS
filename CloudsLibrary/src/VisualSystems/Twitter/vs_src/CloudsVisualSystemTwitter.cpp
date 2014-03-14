@@ -108,6 +108,10 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     tweetDeckColorHSV  = ofFloatColor(128,128,128);
     bOldData = false;
     bRenderFeed = false;
+
+	theme = 0;
+	currentTweetFeedIndex = 0;
+
 //    ofEnableSmoothing();
 //    ofEnableAlphaBlending();
     animationLerpRate = 0.02;

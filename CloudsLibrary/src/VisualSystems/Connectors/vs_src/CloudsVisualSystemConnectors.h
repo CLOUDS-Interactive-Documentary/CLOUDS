@@ -29,6 +29,8 @@ class CloudsVisualSystemConnectors : public CloudsVisualSystem {
 		return "Connectors";
 	}
 
+	void selfSetDefaults();
+
 	//These methods let us add custom GUI parameters and respond to their events
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
@@ -59,6 +61,7 @@ class CloudsVisualSystemConnectors : public CloudsVisualSystem {
 	//do things like ofRotate/ofTranslate here
 	//any type of transformation that doesn't have to do with the camera
     void selfSceneTransformation();
+	
 	
 	//normal update call
 	void selfUpdate();
@@ -98,13 +101,6 @@ class CloudsVisualSystemConnectors : public CloudsVisualSystem {
 //	}
 
 
-	ofCamera& getCameraRef(){
-		if(videoLoaded){
-			return cloudsCamera;
-		}
-		return CloudsVisualSystem::getCameraRef();
-	}
-
 protected:
     
     //  Your Stuff
@@ -112,17 +108,12 @@ protected:
 	
 	ofxUISuperCanvas* connectorGui;
 	
-	bool videoLoaded;
-	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
-	
-	
 	ParticleConnectionGenerator generator;
 	ofMesh connectionLines;
 	
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[1] = {"WindChimes1.aif"};
+    string soundFiles[1];
     bool playSample[1];
     ControlTrigger soundTriggers[1];
     ofxTonicSynth synth;

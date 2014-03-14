@@ -10,6 +10,10 @@
 //#include "ofxAVFVideoPlayer.h"
 //#endif
 
+void CloudsVisualSystemConnectors::selfSetDefaults(){
+	soundFiles[0] = "WindChimes1.aif";
+}
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemConnectors::selfSetupGui(){
 
@@ -90,24 +94,7 @@ void CloudsVisualSystemConnectors::selfSetup(){
     
     gain = 0;
     
-	videoLoaded = false;
-	
-	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
-		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov",
-								   getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.xml" );
-		
-		getRGBDVideoPlayer().swapAndPlay();
-		
-		for(int i = 0; i < 640; i += 2){
-			for(int j = 0; j < 480; j+=2){
-				simplePointcloud.addVertex(ofVec3f(i,j,0));
-			}
-		}
-		
-		pointcloudShader.load(getVisualSystemDataPath() + "shaders/rgbdcombined");
-		videoLoaded = true;
-	}
-	
+
 	generator.setup();
 
 //	generator.setBounds(ofVec3f(-500,-500,-500), ofVec3f(500,500,500), 5);
@@ -186,7 +173,6 @@ void CloudsVisualSystemConnectors::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemConnectors::selfEnd(){
 	
-	simplePointcloud.clear();
 	
     volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemConnectors::audioRequested);

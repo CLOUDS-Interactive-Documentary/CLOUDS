@@ -87,7 +87,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //twitter feed params
     int numberOfTweets;
-    int currentTweetFeedIndex =0;
+    int currentTweetFeedIndex;
     float heightOffset;
     float avatarTweetGap;
     float textHeightOffset;
@@ -249,7 +249,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     string currentMeshFilePath;
     string currentMeshFileName;
-    int theme = 0;
+    int theme;
     float xScale,yScale, zScale;
     int currentRefreshRate;
     int rotationRate;

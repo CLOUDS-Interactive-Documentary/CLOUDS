@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>emptyExample</RootNamespace>
+    <ProjectName>VSOcean</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>libovrd.lib;ftgl_static_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\Win32;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
+xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxAnimagick\scripts\vs\Animagick.bat" "$(ProjectDir)bin"
+xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "$(ProjectDir)bin"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxOcean\libs\kiss\tools;..\..\..\addons\ofxOcean\libs\kiss\src;..\..\..\addons\ofxOcean\libs\kiss\include;..\..\..\addons\ofxOcean\src;..\..\..\addons\ofxTonic\src\Tonic;..\..\..\addons\ofxTonic\src;..\..\..\addons\ofxMSATimer\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ocean\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <PrecompiledHeader />
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>libovr64d.lib;ftgl_static_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\x64;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>libovr.lib;ftgl_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\Win32;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
+xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxAnimagick\scripts\vs\Animagick.bat" "$(ProjectDir)bin"
+xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "$(ProjectDir)bin"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxOcean\libs\kiss\tools;..\..\..\addons\ofxOcean\libs\kiss\src;..\..\..\addons\ofxOcean\libs\kiss\include;..\..\..\addons\ofxOcean\src;..\..\..\addons\ofxTonic\src\Tonic;..\..\..\addons\ofxTonic\src;..\..\..\addons\ofxMSATimer\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ocean\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>libovr64.lib;ftgl_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\x64;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBufferEffectorBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxDamperBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxDistorterBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxElectroStaticBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxField2D.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxHomingBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxLorentzBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxPerlinBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleGlowieRenderer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleRenderer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleSystem.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSolver.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSphericalAttractionBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMSATimer\src\ofxMSATimer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm.c" />
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fft.c" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fftr.c" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\tools\kiss_fftnd.c" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOcean.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanCamera.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanRenderer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanTile.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTextInputField\src\ofxTextInputField.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimecode\src\ofxTimecode.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxHotKeys_impl_win.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTimeline.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLBangs.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLCameraTrack.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLColors.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLColorTrack.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLCurves.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLEmptyKeyframes.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLEmptyTrack.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLFlags.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLImageSequence.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLImageSequenceFrame.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLImageTrack.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLInOut.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLKeyframes.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLLFO.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLPage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLPageTabs.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLSwitches.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLTicker.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLTrack.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLTrackHeader.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoThumb.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLZoomer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\ofxTonicSynth.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ADSR.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Arithmetic.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\AudioFileUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\BasicDelay.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\BLEPOscillator.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\BufferFiller.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\BufferPlayer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\CombFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\CompressorLimiter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlArithmetic.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlCallback.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlChangeNotifier.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlComparison.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlConditioner.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlCounter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlDbToLinear.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlDelay.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlFloor.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlGenerator.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMetro.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMetroDivider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMidiToFreq.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlParameter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlPrinter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlPulse.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlRandom.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlRecorder.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlSnapToScale.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlStepper.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlSwitcher.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlTrigger.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlTriggerFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlValue.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlXYSpeed.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\DelayUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\DSPUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Effect.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Filters.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\FilterUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\FixedValue.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Generator.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\LFNoise.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Mixer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\MonoToStereoPanner.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Noise.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\RampedValue.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\RectWave.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Reverb.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\RingBuffer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\SampleTable.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\SawtoothWave.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\SineWave.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\StereoDelay.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Synth.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\TableLookupOsc.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\TonicFrames.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasing.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBack.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBounce.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCirc.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCubic.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingElastic.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingExpo.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingLinear.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuad.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuart.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuint.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingSine.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTween\src\ofxTween.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUI2DGraph.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUI2DPad.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIBaseDraws.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIBiLabelSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUICanvas.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUICircleSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIDragableLabelButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIDropDownList.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIEventArgs.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIFPS.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIFPSSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIImage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIImageButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIImageSampler.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIImageSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIImageToggle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUILabel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUILabelButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUILabelToggle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIMinimalSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIMovingGraph.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageToggle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUINumberDialer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIRadio.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIRangeSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIRectangle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIRotarySlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIScrollableCanvas.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUISlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUISortableList.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUISpacer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUISpectrum.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUISuperCanvas.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUITabBar.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUITextArea.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUITextInput.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIToggle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIToggleMatrix.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIValuePlotter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIWaveform.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIWidget.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Ocean\vs_src\CloudsVisualSystemOcean.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\testApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofx1DExtruder.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidParticle.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidSystem.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBufferEffectorBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxCircle.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxDamperBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxDistorterBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxElectroStaticBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxField2D.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxFieldAgitator.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxGenerative.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxGenericShape.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHOCParticle.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHOCParticleSystem.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHomingBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxLorentzBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticle.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticleSystem.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticleTouch.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxPerlinBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRezaParticle.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRezaParticleSystem.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticle.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleData.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleGlowieRenderer.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleRenderer.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleSystem.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSmartParticle.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSmartParticleSystem.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSolver.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSphericalAttractionBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSpring.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSpringSystem.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSuperShape.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxTrailParticle.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h" />
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSATimer\src\ofxMSATimer.h" />
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm.h" />
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\include\kiss_fft.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\include\kiss_fftr.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\src\_kiss_fft_guts.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\tools\kiss_fftnd.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOcean.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanCamera.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanRenderer.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanTile.h" />
+    <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h" />
+    <ClInclude Include="..\..\..\addons\ofxRange\src\ofRange.h" />
+    <ClInclude Include="..\..\..\addons\ofxTextInputField\src\ofxTextInputField.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimecode\src\ofxTimecode.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxHotKeys.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTimeline.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLBangs.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLCameraTrack.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLColors.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLColorTrack.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLCurves.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLEmptyKeyframes.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLEmptyTrack.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLEvents.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLFlags.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLImageSequence.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLImageSequenceFrame.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLImageTrack.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLInOut.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLKeyframes.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLLFO.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLPage.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLPageTabs.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLSwitches.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLTicker.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLTrack.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLTrackHeader.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoThumb.h" />
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLZoomer.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\ofxTonic.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\ofxTonicSynth.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ADSR.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Arithmetic.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\AudioFileUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\BasicDelay.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\BLEPOscillator.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\BufferFiller.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\BufferPlayer.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\CombFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\CompressorLimiter.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlArithmetic.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlCallback.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlChangeNotifier.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlComparison.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlConditioner.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlCounter.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlDbToLinear.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlDelay.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlFloor.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlGenerator.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMetro.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMetroDivider.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMidiToFreq.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlParameter.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlPrinter.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlPulse.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlRandom.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlRecorder.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlSnapToScale.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlStepper.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlSwitcher.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlTrigger.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlTriggerFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlValue.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlXYSpeed.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\DelayUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\DSPUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Effect.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Filters.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\FilterUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\FixedValue.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Generator.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\LFNoise.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Mixer.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\MonoToStereoPanner.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Noise.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\RampedValue.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\RectWave.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Reverb.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\RingBuffer.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\SampleTable.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\SawtoothWave.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\SineWave.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\SquareWave.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\StereoDelay.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Synth.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\TableLookupOsc.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\TonicCore.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\TonicFrames.h" />
+    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\TriangleWave.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasing.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBack.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBounce.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCirc.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCubic.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingElastic.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingExpo.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingLinear.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuad.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuart.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuint.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingSine.h" />
+    <ClInclude Include="..\..\..\addons\ofxTween\src\ofxTween.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI2DGraph.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI2DPad.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIBaseDraws.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIBiLabelSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUICanvas.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUICircleSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIDefines.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIDragableLabelButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIDropDownList.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIEventArgs.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIFPS.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIFPSSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImage.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageSampler.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageToggle.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUILabel.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUILabelButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUILabelToggle.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMinimalSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMovingGraph.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageToggle.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUINumberDialer.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIOFWrapper.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRadio.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRangeSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRectangle.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRotarySlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIScrollableCanvas.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISortableList.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISpacer.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISpectrum.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISuperCanvas.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUITabBar.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUITextArea.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUITextInput.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIToggle.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIToggleMatrix.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIValuePlotter.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWaveform.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidget.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgets.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.h" />
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWrapper.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
+    <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Ocean\vs_src\CloudsVisualSystemOcean.h" />
+    <ClInclude Include="src\testApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
