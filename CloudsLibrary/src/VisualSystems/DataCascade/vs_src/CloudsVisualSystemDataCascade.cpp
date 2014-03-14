@@ -34,14 +34,15 @@ void CloudsVisualSystemDataCascade::selfSetup(){
 	reloadShaders();
 		
 	regenerate = true;
-	
+#ifdef TARGET_OSX	
 	if(ofFile::doesFileExist("TestVideo/Binx_field_of_data_vis.mov")){
 		getRGBDVideoPlayer().setup("TestVideo/Binx_field_of_data_vis.mov",
 								   "TestVideo/Binx_field_of_data_vis.xml" );
 		
 		getRGBDVideoPlayer().swapAndPlay();
-		
 	}
+#endif
+
 }
 
 //--------------------------------------------------------------
@@ -158,8 +159,14 @@ void CloudsVisualSystemDataCascade::selfDraw(){
 	drawShader.begin();
 	
 	if(doRGBD){
+
+//JG VIDEO HACK
+#ifdef TARGET_OSX
 		getRGBDVideoPlayer().setupProjectionUniforms(drawShader);
+#endif	
+
 	}
+
 	
 	drawShader.setUniformTexture("image", targetOffset.getTextureReference(), 2);
 	drawShader.setUniformTexture("shift", shiftTexture.getTextureReference(), 3);

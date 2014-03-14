@@ -208,9 +208,6 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
@@ -284,9 +281,6 @@
       <Filter>addons\ofxTimeline\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoThumb.cpp">
-      <Filter>addons\ofxTimeline\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoTrack.cpp">
       <Filter>addons\ofxTimeline\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLZoomer.cpp">
@@ -689,9 +683,6 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
@@ -774,9 +765,6 @@
       <Filter>addons\ofxTimeline\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoThumb.h">
-      <Filter>addons\ofxTimeline\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoTrack.h">
       <Filter>addons\ofxTimeline\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxTimecode\src\ofxTimecode.h">

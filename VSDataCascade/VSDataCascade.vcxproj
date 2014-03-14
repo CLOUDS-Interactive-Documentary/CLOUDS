@@ -234,7 +234,6 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLTrack.cpp" />
     <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLTrackHeader.cpp" />
     <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoThumb.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoTrack.cpp" />
     <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLZoomer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasing.cpp" />
     <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBack.cpp" />
@@ -300,7 +299,6 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -381,7 +379,6 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLTrack.h" />
     <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLTrackHeader.h" />
     <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoThumb.h" />
-    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoTrack.h" />
     <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLZoomer.h" />
     <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasing.h" />
     <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBack.h" />
@@ -453,7 +450,6 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.h" />
