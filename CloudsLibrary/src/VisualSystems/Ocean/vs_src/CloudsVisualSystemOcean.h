@@ -19,6 +19,8 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
 
 	string getSystemName();
 
+	void selfSetDefaults();
+
 	void selfSetup();
 	void selfSetupGuis();
 	void selfPresetLoaded(string presetPath);
@@ -100,9 +102,7 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
 	
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[2] = {
-        "Vocal_harmonic_high_shorter.aif",
-        "vocal_harmony_bass.aif"};
+    string soundFiles[2];
     bool playSample[2];
     ControlTrigger soundTriggers[2];
     ofxTonicSynth synth;

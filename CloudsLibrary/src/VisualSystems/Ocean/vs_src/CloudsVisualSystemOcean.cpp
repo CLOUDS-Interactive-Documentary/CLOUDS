@@ -27,6 +27,13 @@ string CloudsVisualSystemOcean::getSystemName(){
 	return "Ocean";
 }
 
+void CloudsVisualSystemOcean::selfSetDefaults(){
+	
+	soundFiles[0] = "Vocal_harmonic_high_shorter.aif";
+	soundFiles[1] = "vocal_harmony_bass.aif";
+
+}
+
 void CloudsVisualSystemOcean::selfSetup(){
 	needsRegenerate = true;
     
