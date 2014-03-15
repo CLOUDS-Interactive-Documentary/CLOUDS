@@ -183,31 +183,38 @@ CloudsVisualSystem::~CloudsVisualSystem(){
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
-	ofFbo& renderTarget = getStaticRenderTarget();
+	ofFbo& renderTarget = getStaticRenderTarget();  
+//	int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
+//	int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
+	int targetWidth  = ofGetWidth();
+	int targetHeight = ofGetHeight();
     
-   int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
-    int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
-    
-bool reallocateTarget = !renderTarget.isAllocated();
-	reallocateTarget |= !screenResolutionForced &&
-						(renderTarget.getWidth() != targetWidth ||
-						 renderTarget.getHeight() != targetHeight );
-	reallocateTarget |= screenResolutionForced &&
-						(renderTarget.getWidth() != forcedScreenWidth ||
-						 renderTarget.getHeight() != forcedScreenHeight);
+	float computedWidth, computedHeight; 
+	if(screenResolutionForced){
+		computedWidth = forcedScreenWidth;
+		computedHeight = forcedScreenHeight;
+	}
+	else{
+		computedWidth = targetWidth;
+		computedHeight = targetHeight;
+	}
+		
+	if(bEnablePostFX){
+		computedWidth  += bleed;
+		computedHeight += bleed;
+	}
+
+	bool reallocateTarget = !renderTarget.isAllocated() ||
+							renderTarget.getWidth() != computedWidth ||
+							renderTarget.getHeight() != computedHeight;
 
 	if(reallocateTarget){
-		if(screenResolutionForced){
-			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
-		}
-		else{
-//			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
-			renderTarget.allocate(targetWidth, targetHeight, GL_RGB, numSamples);
-		}
+		renderTarget.allocate(computedWidth, computedHeight, GL_RGB, numSamples);
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
 		renderTarget.end();
-    }
+	}
+
     return renderTarget;
 }
 
@@ -3580,40 +3587,6 @@ void CloudsVisualSystem::drawBackgroundGradient(){
                 ofSetSmoothLighting(true);
                 ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_BAR);
             }
-//            if(bBarGradient){
-//				if(backgroundGradientBar.isAllocated()){
-//					backgroundShader.begin();
-//					backgroundShader.setUniformTexture("image", backgroundGradientBar, 1);
-//					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
-//					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
-//					ofMesh mesh;
-//                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
-//					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
-//					mesh.draw();
-//					backgroundShader.end();
-//				}
-//				else{
-//					ofSetSmoothLighting(true);
-//					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_BAR);
-//				}
-//			}
-//			else{
-//				if(backgroundGradientCircle.isAllocated()){
-//					backgroundShader.begin();
-//					backgroundShader.setUniformTexture("image", backgroundGradientCircle, 1);
-//					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
-//					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
-//					ofMesh mesh;
-//                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
-//					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
-//					mesh.draw();
-//					backgroundShader.end();
-//				}
-//				else{
-//					ofSetSmoothLighting(true);
-//					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_CIRCULAR);
-//				}
-//			}
 		}
 		else{
 			ofSetSmoothLighting(false);
@@ -3776,7 +3749,8 @@ void CloudsVisualSystem::drawCursor()
             selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle);
 #else
             // EZ: This ofGetMousePressed() call is ghetto but will do for now
-            selfDrawCursor(it->second.position, ofGetMousePressed());
+			// JG COMMENTED HIDE CURSOR
+			//            selfDrawCursor(it->second.position, ofGetMousePressed());
 #endif
         }
 //    }

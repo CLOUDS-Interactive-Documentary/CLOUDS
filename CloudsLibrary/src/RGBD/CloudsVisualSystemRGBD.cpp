@@ -162,8 +162,17 @@ void CloudsVisualSystemRGBD::selfSetup(){
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){
-	string filePathMov = "E:\\CLOUDS_MEDIA\\Aaron_exciting_time.mov";
-	string filePathXml = "E:\\CLOUDS_MEDIA\\Aaron_exciting_time.xml";
+
+	//string sourceFile = "E:\\CLOUDS_MEDIA\\Shiffman_programming_the_universe";
+	//string sourceFile = "E:\\CLOUDS_MEDIA\\Shantell_Coding_gesturally";
+	//string sourceFile = "E:\\CLOUDS_MEDIA\\Golan_yellow_tail";
+	//string sourceFile = "E:\\CLOUDS_MEDIA\\Casey_emergence";
+	//string sourceFile = "E:\\CLOUDS_MEDIA\\Kevin_Getting_smarter_together";
+	//string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_networked_creativity";
+	string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_dreaming_together";
+
+	string filePathMov = sourceFile+".mov";
+	string filePathXml = sourceFile+".xml";
 	if(ofFile::doesFileExist(filePathMov)){
         getRGBDVideoPlayer().setup(filePathMov, filePathXml);
 		getRGBDVideoPlayer().swapAndPlay();

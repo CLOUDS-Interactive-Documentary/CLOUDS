@@ -23,11 +23,13 @@ void testApp::setup(){
 #endif
 	
 	rgbd.setup();
+	rgbd.forceScreenResolution(1920,1080);
 //	rgbd.setDrawToScreen(false);
 	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
 	
-	
+	ofHideCursor();
+
 	type = CloudsVisualSystem::FLY_THROUGH;
 }
 
@@ -43,7 +45,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	CloudsVisualSystem::getRGBDVideoPlayer().getTextureReference().draw(0,0);
+	//CloudsVisualSystem::getRGBDVideoPlayer().getTextureReference().draw(0,0);
 }
 
 //--------------------------------------------------------------
@@ -74,7 +76,12 @@ void testApp::keyReleased(int key){
 //			testpaths.push_back(qtestnodes.getPath(i));
 ////		rgbd.addFakeQuestion(testpaths);
 	}
-	
+	if(key == 'm'){
+		ofHideCursor();
+	}
+	if(key == 'M'){
+		ofShowCursor();
+	}
 }
 //--------------------------------------------------------------
 void testApp::exit(){
