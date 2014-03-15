@@ -32,12 +32,12 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	bEventRegistered = false;
 	clipPrerolled = false;
 	
-#ifdef AVF_PLAYER
+#ifdef TARGET_OSX
 	nextPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
 	currentPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
 #else
-	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
-	nextPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
+	currentPlayer = ofPtr<ofDirectShowPlayer>( new ofDirectShowPlayer() );
+	nextPlayer = ofPtr<ofDirectShowPlayer>( new ofDirectShowPlayer() );
 #endif
 
 	currentVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
@@ -51,7 +51,6 @@ CloudsRGBDVideoPlayer::~CloudsRGBDVideoPlayer(){
 }
 
 //---------------------------------------------------------------
-//SURYA TODO: Add new end time
 bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume ){
 	
 	if(!bEventRegistered){
@@ -63,7 +62,7 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 		ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
 		return false;
 	}
-	
+
 	nextPlayer->setPosition( offsetTime / nextPlayer->getDuration() );
 
 	nextCalibrationXML = calibrationXMLPath;
@@ -233,7 +232,7 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
     
-	if(!getPlayer().isLoaded() || !getPlayer().getTextureReference().isAllocated()){
+	if(!getPlayer().isLoaded() || !getTextureReference().isAllocated()){
 		//ofLogWarning() << " CloudsRGBDVideoPlayer::setupProjectionUniforms -- player is not ready";
 		return;
 	}
@@ -242,7 +241,7 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 		return;
 	}
 
-    shader.setUniformTexture("rgbdTexture", getPlayer().getTextureReference(), 1);
+    shader.setUniformTexture("rgbdTexture", getTextureReference(), 1);
     shader.setUniform2f("textureSize",  getPlayer().getWidth(), getPlayer().getHeight());
     
     shader.setUniform4f("colorRect", colorRect.x, colorRect.y, colorRect.width, colorRect.height);
@@ -285,12 +284,20 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 }
 
 //--------------------------------------------------------------- ACTIONS
-#ifdef AVF_PLAYER
+#ifdef TARGET_OSX
 ofxAVFVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 #else
-ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
+ofDirectShowPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 #endif
 	return *currentPlayer;
+}
+
+ofTexture& CloudsRGBDVideoPlayer::getTextureReference(){
+#ifdef TARGET_OSX
+	return getPlayer().getTextureReference();
+#else
+	return videoTexture;
+#endif
 }
 
 void CloudsRGBDVideoPlayer::stop(){
@@ -304,6 +311,16 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	//TODO: Optimize these!
 	if(!playingVO){
 		currentPlayer->update();
+#ifdef TARGET_WIN32
+		if(currentPlayer->isFrameNew()){
+			if(!videoTexture.isAllocated()){
+				videoTexture.allocate(currentPlayer->getPixelsRef());
+			}
+			else{
+				videoTexture.loadData(currentPlayer->getPixelsRef());
+			}
+		}
+#endif
 	}
 	
 	if(clipPrerolled && !nextClipIsVO){

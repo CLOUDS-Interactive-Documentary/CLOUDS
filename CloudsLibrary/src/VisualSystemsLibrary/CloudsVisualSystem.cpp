@@ -770,6 +770,7 @@ void CloudsVisualSystem::exit()
 	
 	if(cameraTrack != NULL){
 		cameraTrack->disable();
+		if(timeline != NULL) timeline->removeTrack(cameraTrack);
 		delete cameraTrack;
 		cameraTrack = NULL;
 	}
@@ -779,6 +780,8 @@ void CloudsVisualSystem::exit()
 		delete timeline;
 		timeline = NULL;
 	}
+
+
 	bIsSetup = false;
     
 }
@@ -2241,9 +2244,11 @@ void CloudsVisualSystem::setupTimeline()
 	
 	if(cameraTrack != NULL){
 		cameraTrack->disable();
+		cameraTrack->setCreatedByTimeline(false);
 		delete cameraTrack;
 	}
 	cameraTrack = new ofxTLCameraTrack();
+
 	cameraTrack->setCamera(getCameraRef());
 	cameraTrack->setXMLFileName(getVisualSystemDataPath()+"Presets/Working/Timeline/cameraTrack.xml");
     timeline->addTrack("Camera", cameraTrack);
@@ -2273,6 +2278,7 @@ void CloudsVisualSystem::resetTimeline()
 	}
 	if(cameraTrack != NULL){
 		cameraTrack->disable();
+		cameraTrack->setCreatedByTimeline(false);
 		cameraTrack->lockCameraToTrack = false;
 		delete cameraTrack;
 		cameraTrack = NULL;

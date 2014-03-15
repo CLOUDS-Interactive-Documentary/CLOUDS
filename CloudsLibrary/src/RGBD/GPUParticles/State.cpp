@@ -4,6 +4,14 @@
 
 #include "State.h"
 
+#ifdef TARGET_WIN32
+float log2( float n )  
+{  
+    // log(n)/log(2) is log2.  
+    return log( n ) / log( 2 );  
+}
+#endif
+
 namespace GPUParticles {
 	//--------
 	void allocate(ofFbo & fbo, int resolution) {

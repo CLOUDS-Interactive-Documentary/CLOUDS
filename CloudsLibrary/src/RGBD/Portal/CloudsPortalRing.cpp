@@ -41,7 +41,7 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int ind
 	
 	//how much of the ring does each shard represent
 	//fill a vector with random variables and normalize it to see
-	float shardPercents[numShards];
+	float* shardPercents = new float[numShards];
 	float totalWeight = 0;
 	for(int i = 0; i < numShards; i++){
 		shardPercents[i] = ofRandom(.25, 1.0);
@@ -117,6 +117,7 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int ind
 		shard.endIndex = portalGeo.getNumVertices()-1;
 	}
 
+	delete shardPercents;
 }
 
 void CloudsPortalRing::addVertsAtAngle(PortalShard& shard, float angle, int numSegments, bool endCap){

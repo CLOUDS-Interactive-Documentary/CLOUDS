@@ -291,6 +291,7 @@ CloudsTransitionState CloudsTransitionController::getNextState(){
 	currentQueue.timeRange.min = ofGetElapsedTimef();
 
 	newState = true;
+	return currentState;
 }
 
 string CloudsTransitionController::getStateDescription(CloudsTransitionState state){
@@ -317,7 +318,7 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
 			return "TransitionInterludeIn";
         case TRANSITION_INTERLUDE_OUT:
 			return "TransitionInterludeOut";
-		default:
-			return "UNKNOWN STATE " + ofToString(int(currentState));
 	}
+	return "UNKNOWN STATE " + ofToString(int(currentState));
+
 }

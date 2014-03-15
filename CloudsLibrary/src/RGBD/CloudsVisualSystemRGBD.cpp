@@ -18,7 +18,11 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	visualSystemFadeValue = 1.0;
 
 	drawRGBD = true;
-	
+#ifdef TARGET_OSX
+	cullFace = GL_FRONT;
+#else
+	cullFace = GL_BACK;
+#endif
 	transitionOutOption = OutLeft;
 	
 //	questionLifeSpan = 3;
@@ -37,6 +41,10 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	transitionTarget = &transitionOutLeft;
 	drawTransitionNodes = false;
 	
+	bTransitionIn = bTransitionOut = false;
+	
+	bTransitionsAddedToGui = false;
+
     meshColorBoost = .0;
     meshSkinBoost  = .0;
     lineColorBoost = .0;
@@ -149,20 +157,15 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 //    rebuildCaptionFont();
 	
-	bTransitionIn = bTransitionOut = false;
-	
-	bTransitionsAddedToGui = false;
-	
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){
-
-	if(ofFile::doesFileExist("TestVideo/Lindsay_memes_2.mov")){
-        CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().loadMovie("TestVideo/Lindsay_memes_2.mov");
-//        CloudsVisualSystem::getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
-//								   "TestVideo/Lindsay_memes_2.xml", 0, 0);
+	string filePathMov = "E:\\CLOUDS_MEDIA\\Aaron_exciting_time.mov";
+	string filePathXml = "E:\\CLOUDS_MEDIA\\Aaron_exciting_time.xml";
+	if(ofFile::doesFileExist(filePathMov)){
+        getRGBDVideoPlayer().setup(filePathMov, filePathXml);
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 }
@@ -896,6 +899,8 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 {
 	cout << "addTransitionGui: " << guiName<< endl;
 	
+//	return;
+
 	//get out transition info
 	map<string, TransitionInfo>* ti = &transitionMap[guiName];
 	
@@ -1484,7 +1489,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			
 			glEnable(GL_CULL_FACE);
 //            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
-            glCullFace(GL_FRONT);
+            glCullFace(cullFace);
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
             
@@ -1527,7 +1532,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
             }
             
 			glEnable(GL_CULL_FACE);
-            glCullFace(GL_FRONT);
+            glCullFace(cullFace);
             
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);

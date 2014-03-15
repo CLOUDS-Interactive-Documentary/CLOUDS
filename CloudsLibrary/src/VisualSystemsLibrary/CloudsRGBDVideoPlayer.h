@@ -10,9 +10,13 @@
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
-#ifdef AVF_PLAYER
+
+#ifdef TARGET_OSX
 #include "ofxAVFVideoPlayer.h"
+#else
+#include "ofDirectShowPlayer.h"
 #endif
+
 #include "ofRange.h"
 #include "CloudsGlobal.h"
 
@@ -20,8 +24,6 @@
 #ifdef SHOW_SUBTITLES
     #include "ofxSubtitles.h"
 #endif
-
-
 
 
 class CloudsRGBDVideoPlayer {
@@ -53,12 +55,13 @@ public:
 		return fadeOutValue;
 	};
 
-#ifdef AVF_PLAYER
+#ifdef TARGET_OSX
 	ofxAVFVideoPlayer& getPlayer();
 #else
-	ofVideoPlayer& getPlayer();
+	ofDirectShowPlayer& getPlayer();
 #endif
-	
+	ofTexture& getTextureReference();
+
 	// Fix extrinsics
 	ofVec3f adjustTranslate;
 	ofVec3f adjustRotate;
@@ -88,12 +91,13 @@ public:
 	bool bEventRegistered;
     void update(ofEventArgs& args);
 	
-#ifdef AVF_PLAYER
+#ifdef TARGET_OSX
 	ofPtr<ofxAVFVideoPlayer> currentPlayer;
 	ofPtr<ofxAVFVideoPlayer> nextPlayer;
 #else
-	ofPtr<ofVideoPlayer> currentPlayer;
-	ofPtr<ofVideoPlayer> nextPlayer;
+	ofPtr<ofDirectShowPlayer> currentPlayer;
+	ofPtr<ofDirectShowPlayer> nextPlayer;
+	ofTexture videoTexture;
 #endif
 	ofPtr<ofSoundPlayer> currentVoiceoverPlayer;
 	ofPtr<ofSoundPlayer> nextVoiceoverPlayer;

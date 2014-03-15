@@ -281,7 +281,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void updateQuestions();
 	void drawQuestions();
 	
-    
+    GLuint cullFace;
 	
 	//transition
 	bool placingTransitionNodes;

@@ -13,7 +13,7 @@
 void testApp::setup(){
 	
 	ofSetVerticalSync(true);
-  
+	shouldPlayTestVideo = false;
 	ofSetLogLevel(OF_LOG_NOTICE);
     
 #if defined(KINECT_INPUT)
@@ -23,6 +23,7 @@ void testApp::setup(){
 #endif
 	
 	rgbd.setup();
+//	rgbd.setDrawToScreen(false);
 	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
 	
@@ -32,13 +33,17 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-	updateTransitions();
+	//updateTransitions();
+	if(shouldPlayTestVideo){
+		shouldPlayTestVideo = false;
+		rgbd.playTestVideo();
+	}
 }
 
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	
+	CloudsVisualSystem::getRGBDVideoPlayer().getTextureReference().draw(0,0);
 }
 
 //--------------------------------------------------------------
@@ -57,7 +62,7 @@ void testApp::keyPressed(int key){
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
 	if(key == ' '){
-		rgbd.playTestVideo();
+		shouldPlayTestVideo = true;
 	}
 	
 	if(key == 'Q'){
@@ -82,11 +87,12 @@ void testApp::updateTransitions(){
 	
 	float crossfadeValue = transitionController.getFadeValue();
 	rgbd.visualSystemFadeValue = crossfadeValue;
-	
+	/*
 	cout << "\tCUR STATE:" << transitionController.getCurrentStateDescription() << endl
          << "\tPREVIOUS STATE: " << transitionController.getPreviousStateDescription() << endl
          << "\tFADE VALUE " << rgbd.visualSystemFadeValue << endl;
-	
+	*/
+
 	if(transitionController.transitioning){
 		ofLogNotice("testApp::updateTransitions") << transitionController.getCurrentStateDescription() << " TRANSITIONING: " << transitionController.getInterviewTransitionPoint();
 	}

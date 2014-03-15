@@ -22,7 +22,8 @@ class testApp : public ofBaseApp{
 	void exit();
 	
 	void updateTransitions();
-	
+
+	bool shouldPlayTestVideo;
 	CloudsVisualSystemRGBD rgbd;
 	CloudsVisualSystem::RGBDTransitionType type;
 	CloudsTransitionController transitionController;
