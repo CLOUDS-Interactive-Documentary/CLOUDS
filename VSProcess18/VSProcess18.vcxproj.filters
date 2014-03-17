@@ -355,17 +355,17 @@
     <ClCompile Include="..\..\..\addons\ofxMSATimer\src\ofxMSATimer.cpp">
       <Filter>addons\ofxMSATimer\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.cpp">
       <Filter>addons\ofxAutoreloadShader\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp">
       <Filter>addons\ofDirectShowPlayer\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\CloudsVisualSystemProcess18.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\E5.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -935,9 +935,6 @@
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxColorPalettes\src\ofxColorPalette.h">
       <Filter>addons\ofxColorPalettes\src</Filter>
     </ClInclude>
@@ -950,8 +947,11 @@
     <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h">
       <Filter>addons\ofDirectShowPlayer\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\CloudsVisualSystemProcess18.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\E5.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
