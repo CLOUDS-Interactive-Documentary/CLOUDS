@@ -6,9 +6,9 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
     
     //SetCloudsInputKinect();
-    verlet.setNumSamples(4);
-	verlet.forceScreenResolution(1920*2, 1080*2);
-	verlet.setDrawToScreen(false);
+ //   verlet.setNumSamples(4);
+	//verlet.forceScreenResolution(1920*2, 1080*2);
+	//verlet.setDrawToScreen(false);
 	verlet.setup();
 	verlet.playSystem();
 }
@@ -20,11 +20,11 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	ofRectangle screenRect(0,0,ofGetWidth(), ofGetHeight());
-	ofRectangle videoRect(0,0,1920*2,1080*2);
-	
-	videoRect.scaleTo(screenRect);
-	verlet.getSharedRenderTarget().getTextureReference().draw(videoRect);
+	//ofRectangle screenRect(0,0,ofGetWidth(), ofGetHeight());
+	//ofRectangle videoRect(0,0,1920*2,1080*2);
+	//
+	//videoRect.scaleTo(screenRect);
+	//verlet.getSharedRenderTarget().getTextureReference().draw(videoRect);
 	
 	
 }

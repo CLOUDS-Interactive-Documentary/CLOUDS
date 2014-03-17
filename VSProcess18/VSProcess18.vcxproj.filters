@@ -367,6 +367,9 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\E5.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -952,6 +955,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\E5.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
