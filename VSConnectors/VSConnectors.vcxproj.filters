@@ -547,6 +547,12 @@
     <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\TonicFrames.cpp">
       <Filter>addons\ofxTonic\Tonic</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp">
+      <Filter>addons\ofDirectShowPlayer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -662,6 +668,12 @@
     </Filter>
     <Filter Include="addons\ofxTonic\Tonic">
       <UniqueIdentifier>{23d8b635-a54c-44b6-9d2c-5741d656d88b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofDirectShowPlayer">
+      <UniqueIdentifier>{dfc6731c-889b-4eb4-b09f-d2003e6d58e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofDirectShowPlayer\src">
+      <UniqueIdentifier>{b8c296f2-607e-44b0-bf6d-1c203326f5cd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1315,6 +1327,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\TonicFrames.h">
       <Filter>addons\ofxTonic\Tonic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h">
+      <Filter>addons\ofDirectShowPlayer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
