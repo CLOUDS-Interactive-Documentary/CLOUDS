@@ -131,6 +131,7 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll" "$(ProjectDir)bin"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -180,6 +181,7 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll" "$(ProjectDir)bin"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
