@@ -44,7 +44,7 @@ void INITMIX()
 {
     flush_sched();
     sleep(1);
-    //RTcmixParseScoreFile("cmixclear.sco");
+    RTcmixParseScoreFile("cmixclear.sco");
     //sleep(1);
 }
 
@@ -59,6 +59,8 @@ void SETUPMIX(double outskip, double time, double amp, double dry, double verb, 
     int abr = auxbus*2 + 21;
     string output = "aux " + ofToString(abl) + "-" + ofToString(abr) + " out";
     string input = "aux " + ofToString(abl) + "-" + ofToString(abr) + " in";
+    
+    /*
     // do the bus_config() calls
     
     // do the instrument bus_config()
@@ -86,7 +88,7 @@ void SETUPMIX(double outskip, double time, double amp, double dry, double verb, 
     
     bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK, 1, 0., %f, %f, 0., 0., %f)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
     parse_score(thebuf, bx);
-    
+    */
 }
 
 // uses the SPLITTER() and MIX() and GVERB() instruments
@@ -95,6 +97,14 @@ void REVERB(double outskip, double time)
     char thebuf [256];
     int bx;
     
+    // TEMP - do the SPLITTER notes
+    
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*e_DECLICK, 0, %f, 0., %f, 0., %f, 0.)", outskip, time, 1., 0.5, 0.5, 0.);
+    parse_score(thebuf, bx);
+    
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*e_DECLICK, 1, 0., %f, %f, 0., 0., %f)", outskip, time, 1., 0.5, 0.5, 0.);
+    parse_score(thebuf, bx);
+
     // DRY MIX
     bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
     parse_score(thebuf, bx);

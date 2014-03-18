@@ -74,6 +74,10 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // MELODIC INSTRUMENTS
     //
     
+    // TEMP - no independent mixing
+    float t_instGain = instGain;
+    instGain *= m_amp;
+    
     // META
     if(arg_a=="simple")
     {
@@ -1305,6 +1309,9 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // END ORCHESTRATION BLOCK
     // =======================
     //
+    
+    // TEMP - reset
+    instGain = t_instGain;
     
 }
 
