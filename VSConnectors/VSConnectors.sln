@@ -1,5 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openframeworksLib", "..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj", "{5837595D-ACA9-485C-8E76-729040CE4B0B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSConnectors", "VSConnectors.vcxproj", "{7FD42DF7-442E-479A-BA76-D0022F99702A}"
@@ -7,6 +7,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTimelineLib", "..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj", "{A72C4F16-CB16-4143-BA5C-5E4FA802D636}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxUILib", "..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj", "{641DB976-E775-4D72-86EB-897E2C4A0EEE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTonicLib", "..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonicLib.vcxproj", "{E93BD96C-A459-499F-840D-29B0166CBFF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,14 @@ Global
 		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|Win32.Build.0 = Release|Win32
 		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|x64.ActiveCfg = Release|x64
 		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|x64.Build.0 = Release|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|Win32.Build.0 = Debug|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|x64.ActiveCfg = Debug|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|x64.Build.0 = Debug|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|Win32.ActiveCfg = Release|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|Win32.Build.0 = Release|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|x64.ActiveCfg = Release|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
