@@ -85,62 +85,29 @@
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp">
       <Filter>addons\ofxGenerative\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.cpp">
+      <Filter>addons\ofxAutoreloadShader\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp">
       <Filter>addons\ofDirectShowPlayer\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\CLD\src\fdog.cpp">
+      <Filter>addons\ofxCv\CLD\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp">
-      <Filter>CloudsLibrary\src\Input\Portal</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp">
-      <Filter>CloudsLibrary\src\Input\Portal</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.cpp">
-      <Filter>addons\ofxGameCamera\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\CLD\src\ETF.cpp">
+      <Filter>addons\ofxCv\CLD\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -195,29 +162,41 @@
     <Filter Include="CloudsLibrary\src\Input">
       <UniqueIdentifier>{311161e7-1ae0-42e6-9c73-a0fc0372abf4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="addons\ofxColorPalettes">
+      <UniqueIdentifier>{2fe82b45-a394-47e7-b654-34de225b4c39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxColorPalettes\src">
+      <UniqueIdentifier>{9f72cdd7-bcf2-46d3-a493-6812f0fb6f97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAutoreloadShader">
+      <UniqueIdentifier>{e02eb43c-6992-4c9d-87ab-bd603ce11ff2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAutoreloadShader\src">
+      <UniqueIdentifier>{683505b1-6cb3-41e3-9e5b-77abc0dc0d9d}</UniqueIdentifier>
+    </Filter>
     <Filter Include="addons\ofDirectShowPlayer">
-      <UniqueIdentifier>{07a8412c-c319-44cb-83f2-df0a8afa4881}</UniqueIdentifier>
+      <UniqueIdentifier>{708b066a-2379-437c-af4d-ca9ef2418060}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofDirectShowPlayer\src">
-      <UniqueIdentifier>{d5b5dc0f-2585-4790-bb49-de47fcddb044}</UniqueIdentifier>
+      <UniqueIdentifier>{f35c3dbb-8223-42e4-8fb8-7b0218ffceed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\RGBD">
-      <UniqueIdentifier>{964fad5f-d266-4540-b91f-1b2c529c20fd}</UniqueIdentifier>
+    <Filter Include="addons\ofxCv">
+      <UniqueIdentifier>{b64cff4a-e0a3-4236-955a-b566fb31cf11}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\Input\Portal">
-      <UniqueIdentifier>{3e6215af-3eff-4b98-aeda-d7a97a17e5c6}</UniqueIdentifier>
+    <Filter Include="addons\ofxCv\src">
+      <UniqueIdentifier>{dccac13d-42f6-4768-af22-f29d31b14bb0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxGameCamera">
-      <UniqueIdentifier>{d6c4f7de-310d-4d24-bb61-c5ac6d3a67cf}</UniqueIdentifier>
+    <Filter Include="addons\ofxCv\libs">
+      <UniqueIdentifier>{3b946801-c153-4f1a-9fbb-eb58b4210994}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxGameCamera\src">
-      <UniqueIdentifier>{b1465e9a-136a-430e-894f-ba7dd3f8bc3a}</UniqueIdentifier>
+    <Filter Include="addons\ofxCv\CLD">
+      <UniqueIdentifier>{280123d4-37de-4f5b-b211-8c0059bebf5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\Input\GPUParticles">
-      <UniqueIdentifier>{aa225aa5-2444-41d0-ace9-a373f4218101}</UniqueIdentifier>
+    <Filter Include="addons\ofxCv\CLD\include">
+      <UniqueIdentifier>{561542b4-8b7c-4629-869b-c9a8da669bb6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\StoryEngine">
-      <UniqueIdentifier>{62e09112-7656-4382-be59-1912db5b54cf}</UniqueIdentifier>
+    <Filter Include="addons\ofxCv\CLD\src">
+      <UniqueIdentifier>{79e00c7e-6821-4c21-918b-ac82b293546b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -371,9 +350,6 @@
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h">
       <Filter>addons\ofxGenerative\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClInclude>
@@ -386,59 +362,38 @@
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxColorPalettes\src\ofxColorPalette.h">
+      <Filter>addons\ofxColorPalettes\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxColorPalettes\src\ofxColorPalettes.h">
+      <Filter>addons\ofxColorPalettes\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.h">
+      <Filter>addons\ofxAutoreloadShader\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h">
       <Filter>addons\ofDirectShowPlayer\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
+    <ClInclude Include="..\..\..\addons\ofxCv\src\ofxCv.h">
+      <Filter>addons\ofxCv\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\ETF.h">
+      <Filter>addons\ofxCv\CLD\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h">
-      <Filter>CloudsLibrary\src\Input\Portal</Filter>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\fdog.h">
+      <Filter>addons\ofxCv\CLD\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h">
-      <Filter>CloudsLibrary\src\Input\Portal</Filter>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\imatrix.h">
+      <Filter>addons\ofxCv\CLD\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h">
-      <Filter>CloudsLibrary\src\Input\Portal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.h">
-      <Filter>addons\ofxGameCamera\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\myvec.h">
+      <Filter>addons\ofxCv\CLD\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

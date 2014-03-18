@@ -22,6 +22,9 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 	
+	void portalHoverBegan(CloudsPortalEventArgs &args);
+	void portalHoverEnded(CloudsPortalEventArgs &args);
+	
 	CloudsFCPParser parser;
 	CloudsIntroSequence intro;
 	CloudsHUDController hud;

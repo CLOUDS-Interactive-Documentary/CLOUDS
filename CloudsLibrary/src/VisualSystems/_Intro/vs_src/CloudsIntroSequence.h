@@ -10,11 +10,9 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
-//#include "ofxGameCamera.h"
 #include "CloudsClip.h"
 #include "CloudsEvents.h"
 #include "CloudsPortal.h"
-//#include "CloudsRun.h"
 #include "ofxFTGL.h"
 #include "CloudsPortalEvents.h"
 

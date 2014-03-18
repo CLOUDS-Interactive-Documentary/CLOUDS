@@ -22,7 +22,7 @@
     <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>emptyExample</RootNamespace>
-    <ProjectName>VSPointCloudPeople</ProjectName>
+    <ProjectName>VSCircuit</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -126,7 +126,7 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofDirectShowVideoPlayer\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxColorPalettes\src;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxAutoReloadedShader\src;..\..\..\addons\ofDirectShowVideoPlayer\src;..\..\..\addons\ofxMSATimer\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Circuit\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>Default</CompileAs>
       <PrecompiledHeader />
     </ClCompile>
@@ -173,7 +173,7 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofDirectShowVideoPlayer\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxColorPalettes\src;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxAutoReloadedShader\src;..\..\..\addons\ofDirectShowVideoPlayer\src;..\..\..\addons\ofxMSATimer\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Circuit\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -193,10 +193,12 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\CLD\src\ETF.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\CLD\src\fdog.cpp" />
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp" />
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBufferEffectorBehavior.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxDamperBehavior.cpp" />
@@ -220,33 +222,27 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h" />
+    <ClInclude Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.h" />
     <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h" />
+    <ClInclude Include="..\..\..\addons\ofxColorPalettes\src\ofxColorPalette.h" />
+    <ClInclude Include="..\..\..\addons\ofxColorPalettes\src\ofxColorPalettes.h" />
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\ETF.h" />
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\fdog.h" />
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\imatrix.h" />
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\myvec.h" />
+    <ClInclude Include="..\..\..\addons\ofxCv\src\ofxCv.h" />
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h" />
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h" />
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h" />
-    <ClInclude Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofx1DExtruder.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidParticle.h" />
@@ -293,26 +289,11 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>

@@ -29,10 +29,14 @@ void testApp::setup(){
 	
 
 	hud.setup();
-    
+
+#ifdef OCULUS_RIFT
     intro.hud = &hud;
     intro.setupHUDGui();
+#endif
 	intro.setStartQuestions(startingNodes);
+	ofAddListener(intro.events.portalHoverBegan, this, &testApp::portalHoverBegan);
+	ofAddListener(intro.events.portalHoverEnded, this, &testApp::portalHoverEnded);
 
 	intro.setup();
 #ifdef OCULUS_RIFT
@@ -42,9 +46,19 @@ void testApp::setup(){
 #endif
 //	intro.loadPresetGUISFromName("Working");
 	intro.setNumSamples(4);
+	intro.setDrawToScreen(false);
 	intro.playSystem();
 	//////////////SHOW INTRO
+}
 
+//--------------------------------------------------------------------
+void testApp::portalHoverBegan(CloudsPortalEventArgs &args){
+    hud.questionHoverOn(args.question);
+}
+
+//--------------------------------------------------------------------
+void testApp::portalHoverEnded(CloudsPortalEventArgs &args){
+	hud.questionHoverOff();
 }
 
 
@@ -56,7 +70,8 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	
+	intro.selfPostDraw();
+	hud.draw();
 }
 
 //--------------------------------------------------------------

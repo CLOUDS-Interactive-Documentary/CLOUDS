@@ -169,7 +169,9 @@ void CloudsVisualSystemRGBD::playTestVideo(){
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Casey_emergence";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Kevin_Getting_smarter_together";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_networked_creativity";
-	string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_dreaming_together";
+	//string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_dreaming_together";
+	string sourceFile = "E:\\CLOUDS_MEDIA\\Fernanda_Social_dynamics";
+	//string sourceFile = "E:\\CLOUDS_MEDIA\\Fernanda_What_people_are_thinking";
 
 	string filePathMov = sourceFile+".mov";
 	string filePathXml = sourceFile+".xml";
