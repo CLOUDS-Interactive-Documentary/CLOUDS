@@ -72,8 +72,7 @@ bool CloudsSVGMesh::load(string file){
 //		cout << "Bounds for SVG " << file << " is " << bounds.getMin() << " - " << bounds.getMax() << endl;
 //		cout << "Found " << meshes.size() << " meshes with " << totalVerts << " vertices" << endl;
 	}
-	
-	
+	return true;
 }
 
 void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId, float parentOpacity){

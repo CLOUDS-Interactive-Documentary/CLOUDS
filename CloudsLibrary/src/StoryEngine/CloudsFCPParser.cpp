@@ -135,11 +135,13 @@ void CloudsFCPParser::parseVOClips(){
 				}
 			}
 			else{
-				ofVideoPlayer p;
-				p.setUseTexture(false);
-				p.loadMovie(clip.voiceOverAudioPath);
-				clip.endFrame = p.getDuration()*24.;
-				voiceoverDuration[ ofFilePath::getBaseName(clip.voiceOverAudioPath) ] = p.getDuration();
+				//32 bit ONLY!!
+				//ofVideoPlayer p;
+				//p.setUseTexture(false);
+				//p.loadMovie(clip.voiceOverAudioPath);
+				//clip.endFrame = p.getDuration()*24.;
+				//voiceoverDuration[ ofFilePath::getBaseName(clip.voiceOverAudioPath) ] = p.getDuration();
+
 			}
 			
 //			cout << "Voiceoer Clip " << fileName << " duration is " <<  clip.endFrame/24. << endl;

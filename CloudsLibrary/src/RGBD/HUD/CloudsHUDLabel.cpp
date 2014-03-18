@@ -106,10 +106,13 @@ void CloudsHUDLabel::setText(string newText, bool forceOn){
 }
 
 int CloudsHUDLabel::getRightEdge(){
-    if(type == "LAYOUT")
+    if(type == "LAYOUT"){
         return layout->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
-    else if (type == "FONT")
+	}
+    else if (type == "FONT"){
         return font->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
+	}
+	return 0;
 }
 
 string CloudsHUDLabel::getText(){

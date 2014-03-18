@@ -27,16 +27,21 @@ void testApp::setup(){
 	
 	cout << "Starting with " << startingNodes.size() << endl;
 	
+
+	hud.setup();
+    
+    intro.hud = &hud;
+    intro.setupHUDGui();
 	intro.setStartQuestions(startingNodes);
 
 	intro.setup();
 #ifdef OCULUS_RIFT
 //	intro.loadPresetGUISFromName("Oculus");
 #else
-//	intro.loadPresetGUISFromName("TunnelWarp");
+	intro.loadPresetGUISFromName("TunnelWarp");
 #endif
-	//temp
-	intro.loadPresetGUISFromName("Working");
+//	intro.loadPresetGUISFromName("Working");
+	intro.setNumSamples(4);
 	intro.playSystem();
 	//////////////SHOW INTRO
 

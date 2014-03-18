@@ -291,10 +291,10 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>&
         vector<ofFile>files= dir.getFiles();
 
         for(int i = 0; i< files.size(); i++){
-            string filePath =GetCloudsVisualSystemDataPath("Twitter",true)+folderName+"/"+files[i].getFileName();
+            string filePath = GetCloudsVisualSystemDataPath("Twitter",true)+folderName+"/"+files[i].getFileName();
             bool parsingSuccessful = result.openLocal(filePath);
             if (parsingSuccessful) {
-                
+                ofLogNotice("CloudsVisualSystemTwitter::loadJSONData") << filePath;
                 if(result.isMember("errors")) {
                     ofDrawBitmapString(result.getRawString(), 10, 14);
                 }
@@ -304,12 +304,13 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>&
                     vector<Tweet> userTweets;
                     ofxJSONElement tweets = result["Tweets"];
                     
-                    vector<string> names = ofSplitString(result["name"].asString(), ".")    ;
+                    vector<string> names = ofSplitString(result["name"].asString(), ".");
                     cur.name = "@" + names[0];
                     cur.ID = i;
                     userNameIdMap[cur.name] = i;
                     
                     for(int j =0; j<tweets.size(); j ++){
+//						cout << "		Tweet " << j << "/" << tweets.size()<<endl;
                         Tweet t;
                         t.tweet = tweets[j]["Tweet"].asString();
                         

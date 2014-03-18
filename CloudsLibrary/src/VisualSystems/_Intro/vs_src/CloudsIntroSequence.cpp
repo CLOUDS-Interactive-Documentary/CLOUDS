@@ -324,7 +324,7 @@ void CloudsIntroSequence::positionStartQuestions(){
 }
 
 bool CloudsIntroSequence::istStartQuestionHovering(){
-	caughtQuestion != NULL;
+	return caughtQuestion != NULL;
 }
 
 string CloudsIntroSequence::getQuestionText(){

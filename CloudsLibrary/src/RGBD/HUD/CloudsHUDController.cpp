@@ -554,7 +554,8 @@ void CloudsHUDController::draw(){
     if( videoPlayer.isPlaying() ){
         ofSetColor(255, 255, 255, 255*0.7);
         if( !bSkipAVideoFrame ){
-            videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
+			//JG BRING BACK
+            //videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
         }
         ofSetColor(255, 255, 255, 255);
     }

@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "CloudsIntroSequence.h"
 #include "CloudsFCPParser.h"
+#include "CloudsHUDController.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -23,4 +24,5 @@ class testApp : public ofBaseApp{
 	
 	CloudsFCPParser parser;
 	CloudsIntroSequence intro;
+	CloudsHUDController hud;
 };
