@@ -9,7 +9,7 @@
 
 #include "CloudsSound.h"
 
-void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel)
+void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel, int orchstep)
 {
     float a;
     if(mixlevel==0) a = 0;
@@ -18,7 +18,7 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
     
     for(int j = 0;j<p.instruments.size();j++)
     {
-        startMusic(outskip, p.instruments[j], p.arg_a[j], p.arg_b[j], p.harmony, p.rhythm, dur, p.tempo, p.m_amp[j]*a, p.m_rev[j], j, p.env[j]);
+        startMusic(outskip, p.instruments[j], p.arg_a[j], p.arg_b[j], p.harmony, p.rhythm, dur, p.tempo, p.m_amp[j]*a, p.m_rev[j], j+(orchstep*5), p.env[j]);
     }
 }
 
@@ -29,6 +29,8 @@ void CloudsSound::startMusicFX(float outskip, float musicdur)
 
     // blow out routing table
     INITMIX();
+    // zero output buffer (AHA!)
+    bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
 
     // REVERB
     REVERB(outskip, musicdur+7.0); // gimme some reverb
@@ -39,7 +41,7 @@ void CloudsSound::startMusicFX(float outskip, float musicdur)
 
 void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope)
 {
-    
+    if(LUKEDEBUG) cout << "FUCKSOUND: " << mo << ": " << instnum << endl;
     float t, beatoffset;
     float i, j;
     lukeSimpleMelody mel;
@@ -75,8 +77,8 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     //
     
     // TEMP - no independent mixing
-    float t_instGain = instGain;
-    instGain *= m_amp;
+    //float t_instGain = instGain;
+    //instGain *= m_amp;
     
     // META
     if(arg_a=="simple")
@@ -374,7 +376,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         else
         {
-            SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
             melodySolver m(arg_a, pitches[mh], mel);
             int curpitch;
             float freq;
@@ -422,7 +423,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         else
         {
-            SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
             melodySolver m(arg_a, pitches[mh], mel);
             int curpitch;
             float freq;
@@ -1311,7 +1311,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     //
     
     // TEMP - reset
-    instGain = t_instGain;
+    //instGain = t_instGain;
     
 }
 

@@ -105,6 +105,9 @@ void CloudsSound::update(){
         if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
         else cout << "SOUND: MUSIC STOPPED." << endl;
         flush_sched();
+        sleep(1);
+        // zero output buffer (AHA!)
+        bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
         GetCloudsAudioEvents()->setupflush = false;
         GetCloudsAudioEvents()->doflush = false;
     }
@@ -241,7 +244,8 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             int GOPRESET = valid_presets[ ofRandom(valid_presets.size()) ];
             presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), thecues[i].startTime *1000 );
             if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
-            schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel);
+            if(LUKEDEBUG) cout << "FUCKSOUND: schedule: " << i << endl;
+            schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel, i+1);
 
         }
     }

@@ -55,12 +55,12 @@ void SETUPMIX(double outskip, double time, double amp, double dry, double verb, 
     int bx;
     
     // string format the auxiliary bus numbers
-    int abl = auxbus*2 + 20;
-    int abr = auxbus*2 + 21;
+    int abl = auxbus*2 + 10;
+    int abr = auxbus*2 + 11;
     string output = "aux " + ofToString(abl) + "-" + ofToString(abr) + " out";
     string input = "aux " + ofToString(abl) + "-" + ofToString(abr) + " in";
+    if(LUKEDEBUG) cout << "FUCKSOUND: st: " << outskip << " dur: " << time << " abl: " << abl << " abr: " << abr << endl;
     
-    /*
     // do the bus_config() calls
     
     // do the instrument bus_config()
@@ -88,7 +88,7 @@ void SETUPMIX(double outskip, double time, double amp, double dry, double verb, 
     
     bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK, 1, 0., %f, %f, 0., 0., %f)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
     parse_score(thebuf, bx);
-    */
+    
 }
 
 // uses the SPLITTER() and MIX() and GVERB() instruments
@@ -98,13 +98,13 @@ void REVERB(double outskip, double time)
     int bx;
     
     // TEMP - do the SPLITTER notes
-    
+    /*
     bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*e_DECLICK, 0, %f, 0., %f, 0., %f, 0.)", outskip, time, 1., 0.5, 0.5, 0.);
     parse_score(thebuf, bx);
     
     bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*e_DECLICK, 1, 0., %f, %f, 0., 0., %f)", outskip, time, 1., 0.5, 0.5, 0.);
     parse_score(thebuf, bx);
-
+     */
     // DRY MIX
     bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
     parse_score(thebuf, bx);
