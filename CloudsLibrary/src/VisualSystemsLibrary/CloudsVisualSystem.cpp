@@ -3751,7 +3751,6 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 void CloudsVisualSystem::drawCursor()
 {
 	
-	return;
 	
 //    if (drawCursorMode > DRAW_CURSOR_NONE) {
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
@@ -3764,7 +3763,6 @@ void CloudsVisualSystem::drawCursor()
             selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle);
 #else
             // EZ: This ofGetMousePressed() call is ghetto but will do for now
-//JG HACK CURSOR OUT PLEASE PUT BACK
             selfDrawCursor(it->second.position, ofGetMousePressed());
 #endif
         }
