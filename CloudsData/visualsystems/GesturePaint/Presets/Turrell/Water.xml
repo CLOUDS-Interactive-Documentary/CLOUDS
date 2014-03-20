@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Water</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>417.000000000</XPosition>
-    <YPosition>128.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Deposite Scale</Name>
-    <Value>64.000000000</Value>
+    <Value>141.689651489</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
