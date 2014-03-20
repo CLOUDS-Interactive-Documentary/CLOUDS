@@ -320,6 +320,10 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
         }
     }
     
+    if(args.key == 'R'){
+        oscSender.reset();
+    }
+    
 }
 //--------------------------------------------------------------------
 void CloudsPlaybackController::createInterludeSoundQueue(){

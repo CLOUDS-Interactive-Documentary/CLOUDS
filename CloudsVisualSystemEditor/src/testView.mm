@@ -20,6 +20,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)setup
 {
+    ofBackground(0);
+    ofSetVerticalSync(true);
+    
 	currentVisualSystem = NULL;
 	selectedPreset = NULL;
 	
@@ -281,7 +284,12 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)keyPressed:(int)key
 {
-
+    if(key == 'm'){
+        ofHideCursor();
+    }
+    else if(key == 'M'){
+        ofShowCursor();
+    }
 }
 
 - (void)keyReleased:(int)key
