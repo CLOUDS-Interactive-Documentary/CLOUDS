@@ -54,15 +54,13 @@ class CloudsSound {
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
     // Luke's public stuff
-    void schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel);
+    void schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel, int orchstep);
     void startMusicFX(float outskip, float musicdur);
     void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope);
     void stopMusic();
-    void fadeMusic(float fadeTime);
     void reloadPresets();
     void doPrinting();
     int ACTBUS; // needs to be public for UDP shit in the scoredesigner
-    bool dopull;
     bool in_tunnel;
     
     // public data structures
@@ -83,6 +81,7 @@ class CloudsSound {
     void registerOrchs();
     void audioRequested(float * output, int bufferSize, int nChannels);
 	short *s_audio_outbuf; // this is the buf filled by rtcmix (it uses short samples)
+	short *s_audio_compbuf; // this is the buf for comparison (it uses short samples)
     int sr; // sampling rate
     int nbufs; // number of buffers
     int nchans; // 2 = stereo

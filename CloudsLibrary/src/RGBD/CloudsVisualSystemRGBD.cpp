@@ -116,13 +116,16 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	leftPortal.setup();
 	rightPortal.setup();
+	resetPortal.setup();
 	
 	leftPortal.cam = &cloudsCamera;
 	rightPortal.cam = &cloudsCamera;
+	resetPortal.cam = &cloudsCamera;
 	
 	leftPortal.bLookAtCamera = true;
 	rightPortal.bLookAtCamera = true;
-
+	resetPortal.bLookAtCamera = true;
+	
 	loadShader();
 	
     pointLayer1.pointShader = &pointShader;
@@ -481,6 +484,12 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	questionGui->addSlider("HOVER X",    0, 500, &portalBaseHover.x);
 	questionGui->addSlider("HOVER Y", -500, 500, &portalBaseHover.y);
 	questionGui->addSlider("HOVER Z", -200, 200, &portalBaseHover.z);
+	
+#ifdef OCULUS_RIFT
+	questionGui->addSlider("RESET Y", -300, 300, &resetHoverPosition.y);
+	questionGui->addSlider("RESET Z", -500, 500, &resetHoverPosition.z);
+#endif
+	
 	//in pixels
 	questionGui->addRangeSlider("PORTAL SELECT DISTANCE", 20, 200,
 								&portalTugDistance.min, &portalTugDistance.max);
@@ -547,7 +556,9 @@ void CloudsVisualSystemRGBD::selfUpdate(){
     
 	updateActuators();
 	updateQuestions();
-	
+#ifdef OCULUS_RIFT
+	updateResetPortal();
+#endif
 	if( placingTransitionNodes )
 	{
 		transitionCam.applyTranslation = transitionCam.applyRotation = !cursorIsOverGUI();
@@ -1079,7 +1090,38 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		}
         minDistanceToQuestion = MIN(distanceToQuestion, minDistanceToQuestion);
 	}
+}
 
+void CloudsVisualSystemRGBD::updateResetPortal(){
+#ifdef OCULUS_RIFT
+	resetHoverPosition.x = 0;
+	resetPortal.hoverPosition  = resetHoverPosition + cloudsCamera.getPosition();
+	resetPortal.scale = portalScale;
+	resetPortal.lookTarget = cloudsCamera.getPosition();
+	
+	ofVec3f screenPos = getOculusRift().worldToScreen(resetPortal.hoverPosition, true);
+	ofRectangle viewport = getOculusRift().getOculusViewport();
+	float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
+									  viewport.getCenter().x, viewport.getCenter().y);
+	
+	resetPortal.update();
+	
+	if(resetPortal.hovering){
+		if(distanceToQuestion > portalTugDistance.max){
+			resetPortal.stopHovering();
+		}
+		else if(resetPortal.isSelected()){
+			
+			resetPortal.stopHovering();
+			CloudsPortalEventArgs args(resetPortal, "RESET");
+			ofNotifyEvent(events.portalHoverEnded, args);
+
+		}
+	}
+	else if(distanceToQuestion < portalTugDistance.min){
+		resetPortal.startHovering();
+	}
+#endif
 }
 
 void CloudsVisualSystemRGBD::clearQuestions(){
@@ -1453,12 +1495,14 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
-    #ifdef OCULUS_RIFT
+    #ifdef OCULUS_RIFT 
+	#ifdef CLOUDS_APP
     if (hud != NULL) {
         hud->draw3D(getOculusRift().baseCamera);
     }
     #endif
-    
+    #endif
+	
 	ofPushStyle();
 	ofPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -1718,6 +1762,9 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 	if(rightPortal.question != "" || bPortalDebugOn){
 		rightPortal.draw();
 	}
+#ifdef OCULUS_RIFT
+	resetPortal.draw();
+#endif
 	CloudsPortal::shader.end();
 	glEnable(GL_DEPTH_TEST);
 

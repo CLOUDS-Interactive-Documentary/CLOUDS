@@ -30,14 +30,18 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         nchans = 2; // stereo
         framesize = 512; // sigvs
         s_audio_outbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
+        s_audio_compbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
         
         // initialize RTcmix
         rtcmixmain();
         maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
         
-        dopull = false;
+        GetCloudsAudioEvents()->doflush = false;
+        GetCloudsAudioEvents()->setupflush = false;
+        GetCloudsAudioEvents()->dodelay = false;
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
+
         first_vec = true; // we haven't had audio yet
         
         // load samples
@@ -96,6 +100,17 @@ void CloudsSound::exit(ofEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsSound::update(){
+    if(GetCloudsAudioEvents()->doflush)
+    {
+        if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
+        else cout << "SOUND: MUSIC STOPPED." << endl;
+        flush_sched();
+        sleep(1);
+        // zero output buffer (AHA!)
+        bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
+        GetCloudsAudioEvents()->setupflush = false;
+        GetCloudsAudioEvents()->doflush = false;
+    }
 }
 
 //--------------------------------------------------------------------
@@ -229,7 +244,8 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             int GOPRESET = valid_presets[ ofRandom(valid_presets.size()) ];
             presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), thecues[i].startTime *1000 );
             if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
-            schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel);
+            if(LUKEDEBUG) cout << "FUCKSOUND: schedule: " << i << endl;
+            schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel, i+1);
 
         }
     }
@@ -244,21 +260,16 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 void CloudsSound::enterTunnel()
 {
     string soundfile = "CLOUDS_introTunnel_light.wav"; // change to something in trax
-    string ampsym = "tunnelamp"; // needs to be unique per RT instance
     float volume = 1.0; // how load does this sound play?
 
     if(LUKEDEBUG) cout << "sound: enterTunnel()" << endl;
-    if(dopull){
-        ofLogError("CloudsSound::enterTunnel") << "Do pull already enabled";
-    }
 
-//    stopMusic(); //prophyl
-    
-    dopull = true;
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
-    STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_TUNNEL_BUS);
+    STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
     SCHEDULEBANG(477.); // length of sound
     in_tunnel = true;
+    float ftime = 0.1;
+    ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 }
 
 void CloudsSound::exitTunnel()
@@ -267,8 +278,8 @@ void CloudsSound::exitTunnel()
 
     if(LUKEDEBUG) cout << "sound: exitTunnel()" << endl;
 
-    PFIELD_SCHED(0., fd, PF_TUNNEL_BUS, "ramp_10");
-    dopull = false;
+    stopMusic();
+    // PFIELD_SCHED(0., fd, PF_TUNNEL_BUS, "ramp_10");
     in_tunnel = false;
 }
 
@@ -283,27 +294,19 @@ void CloudsSound::enterClusterMap()
     
     if(LUKEDEBUG) cout << "sound: enterClusterMap()" << endl;
     
-    if(dopull){
-        ofLogError("CloudsSound::enterTunnel") << "Do pull already enabled";
-    }
-    
-    //stopMusic(); // prophylactic
-
-    dopull = true;
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
-    STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_CLUSTERMAP_BUS);
-    
+    STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
+    float ftime = 0.1;
+    ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 }
 
 void CloudsSound::exitClusterMap()
 {
-    float fd = 5.0; // change to adjust fade time
-    
     if(LUKEDEBUG) cout << "sound: exitClusterMap()" << endl;
     
-    PFIELD_SCHED(0., fd, PF_CLUSTERMAP_BUS, "ramp_10");
+    stopMusic();
+    // PFIELD_SCHED(0., fd, PF_CLUSTERMAP_BUS, "ramp_10");
     whichdream = (whichdream+1)%3;
-    dopull = false;
 }
 
 
@@ -335,8 +338,7 @@ void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 }
 //--------------------------------------------------------------------
 void CloudsSound::questionSelected(float fadeTime){
-//    fadeMusic(fadeTime);
-//    stopMusic();
+
 }
 //--------------------------------------------------------------------
 void CloudsSound::questionSelected(CloudsQuestionEventArgs& args){
@@ -391,14 +393,21 @@ void CloudsSound::doPrinting() {
 // =========================
 void CloudsSound::audioRequested(ofAudioEventArgs& args){
 
-    if(dopull) {
-        pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
+    int cdif = 0;
+    int csum = 0;
 
+        pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
         // fill up the audio buffer
         for (int i = 0; i < args.bufferSize * args.nChannels; i++)
         {
             args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
+            
+            csum+=abs(s_audio_outbuf[i]);
+            cdif+=(s_audio_outbuf[i]-s_audio_compbuf[i]);
+            s_audio_compbuf[i] = s_audio_outbuf[i];
         }
+    
+    if(csum>0 && cdif==0) cout << "BUZZZZZZZZZZZZZZ!!!" << endl;
 
         
         // not using right now
@@ -418,8 +427,7 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
             
             reset_print();
         }
-
-    }
+    
 }
 
 void CloudsSound::mouseReleased(ofMouseEventArgs & args){

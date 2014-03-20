@@ -163,12 +163,14 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	updateCyclced = false;
     bDoBloom = false;
     bloomAmount = 0.;
+
 //#ifdef CLOUDS_APP
 //    bShowPortals = true;
 //#endif
     
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
+	hudGui = NULL;	
 #else
 	bUseOculusRift = false;
 #endif 
@@ -3703,14 +3705,17 @@ void CloudsVisualSystem::selfDrawOverlay(){
 }
 
 void CloudsVisualSystem::selfPostDraw(){
+	selfPostDraw(getCanvasWidth(),getCanvasHeight());
+}
+
+void CloudsVisualSystem::selfPostDraw(int width, int height){
 	
 	glDisable(GL_LIGHTING);
 	
 #ifdef OCULUS_RIFT
     oculusRift.draw();
 #else
-    //draws to viewport
-    //use blabalh
+
     int offset;
     if(bEnablePostFX){
         cloudsPostShader.begin();
@@ -3723,42 +3728,31 @@ void CloudsVisualSystem::selfPostDraw(){
         cloudsPostShader.setUniform1f("bloomAmount", bloomAmount);
         cloudsPostShader.setUniform1i("bloomSize", bloomSamples);
         offset = bleed;
-    }else{
+    }
+	else{
         offset = 0;
     }
-    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
-                                                       CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-                                                      -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+	
+//    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,
+//													 CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
+//                                                     CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+//                                                     -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+    CloudsVisualSystem::getSharedRenderTarget().draw(-offset, height - offset, width, -height);
+	
     if(bEnablePostFX){
         cloudsPostShader.end();
     }
     //end
+	
 #endif
-    
-//#ifdef CLOUDS_APP
-//    
-//    if(bShowPortals){
-//        ofPushStyle();
-//        ofEnableAlphaBlending();
-//        
-//        ofSetColor(255);
-//        for(int i = 0; i < portals.size(); i++){
-//            glDisable(GL_DEPTH_TEST);
-//            CloudsPortal::shader.begin();
-//            CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-//            portals[i].draw();
-//            CloudsPortal::shader.end();
-//        }
-//        ofDisableAlphaBlending();
-//        ofPopStyle();
-//    }
-//#endif
-    
     
 }
 
 void CloudsVisualSystem::drawCursor()
 {
+	
+	return;
+	
 //    if (drawCursorMode > DRAW_CURSOR_NONE) {
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
         for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
