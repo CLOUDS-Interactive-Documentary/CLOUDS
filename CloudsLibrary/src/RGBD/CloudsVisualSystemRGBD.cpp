@@ -513,7 +513,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 
-    drawCursorMode =  DRAW_CURSOR_PRIMARY;
+    // TODO: Fix this cursor hack.
+//    drawCursorMode =  DRAW_CURSOR_PRIMARY;
 //    if(getQuestionText() != ""){
 //        drawCursorMode =  DRAW_CURSOR_PRIMARY;
 //    }
