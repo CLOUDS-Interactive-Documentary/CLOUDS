@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Questions</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>310.000000000</XPosition>
-    <YPosition>212.000000000</YPosition>
+    <XPosition>98.000000000</XPosition>
+    <YPosition>254.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,8 +33,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>Tug Distance</Name>
-    <HighValue>182.857131958</HighValue>
-    <LowValue>87.142852783</LowValue>
+    <HighValue>111.428573608</HighValue>
+    <LowValue>70.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>

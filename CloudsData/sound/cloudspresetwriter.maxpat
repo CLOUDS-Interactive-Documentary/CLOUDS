@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
@@ -95,7 +95,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1478.468262, 1107.0, 91.0, 27.0 ],
-					"restore" : [ "e_FADEINBY25" ],
+					"restore" : [ "e_CONSTANT" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -229,7 +229,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1478.468262, 852.0, 91.0, 27.0 ],
-					"restore" : [ "e_CONSTANT" ],
+					"restore" : [ "e_FADEOUTFAST" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -484,7 +484,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -867,7 +867,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1234.5, 493.0, 87.0, 27.0 ],
-					"restore" : [ 0.269231 ],
+					"restore" : [ 0.5 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -1187,7 +1187,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1124.0, 248.394226, 97.0, 27.0 ],
-					"restore" : [ 1.0 ],
+					"restore" : [ 0.384615 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -1291,7 +1291,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-133",
-					"items" : [ "none", ",", "coding:How", "can", "the", "logic", "of", "coding", "be", "creative?", ",", "community:How", "does", "the", "network", "accelerate", "creativity?", ",", "cosmogeny:How", "do", "you", "create", "a", "digital", "universe?", ",", "interactivity:What", "makes", "a", "satisfying", "interaction?", ",", "interface:What's", "the", "ultimate", "interface?", ",", "open", "source:What", "is", "open", "source", "all", "about?", ",", "programming:Is", "programming", "a", "waste", "of", "time?", ",", "programming:What", "does", "it", "feel", "like", "to", "program?", ",", "real", "and", "virtual:Have", "we", "hacked", "reality?", ",", "simulation:Is", "it", "possible", "to", "truly", "simulate", "reality?", ",", "sketching:How", "do", "you", "sketch", "with", "code?", ",", "thinking:Do", "computers", "make", "us", "smarter?", ",", "toolmakers:what's", "the", "link", "between", "invention", "and", "art?" ],
+					"items" : [ "none", ",", "audiovisualization:What", "does", "music", "look", "like?", ",", "big", "data:What", "is", "powerful", "about", "Big", "Data?", ",", "biology", "and", "code:What", "is", "the", "code", "of", "life?", ",", "coding:How", "can", "the", "logic", "of", "coding", "be", "creative?", ",", "community:How", "does", "the", "network", "accelerate", "creativity?", ",", "cosmogeny:How", "do", "you", "create", "a", "digital", "universe?", ",", "data:What", "is", "data?", ",", "emergence:How", "does", "complexity", "emerge", "from", "simple", "rules?", ",", "generative", "art:When", "is", "an", "artwork", "done?", ",", "interactivity:What", "makes", "a", "satisfying", "interaction?", ",", "interfaces:What's", "the", "ultimate", "interface?", ",", "new", "aesthetic:What", "is", "the", "new", "aesthetic?", ",", "open", "source:What", "is", "open", "source", "all", "about?", ",", "programming:Is", "programming", "a", "waste", "of", "time?", ",", "programming:What", "does", "it", "feel", "like", "to", "program?", ",", "real", "and", "virtual:Have", "we", "hacked", "reality?", ",", "simulation:Is", "it", "possible", "to", "truly", "simulate", "reality?", ",", "sketching:How", "do", "you", "sketch", "with", "code?", ",", "thinking:Do", "computers", "make", "us", "smarter?", ",", "toolmakers:what's", "the", "link", "between", "invention", "and", "art?", ",", "videogames:How", "do", "videogames", "change", "the", "way", "we", "see?" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -1331,7 +1331,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 398.0, 409.0, 164.0, 27.0 ],
-					"restore" : [ "<empty>" ],
+					"restore" : [ "artificial life, biology" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -1358,6 +1358,7 @@
 					"patching_rect" : [ 425.0, 448.105774, 263.0, 38.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 674.192932, 522.0, 263.0, 38.0 ],
+					"text" : "\"artificial life, biology\"",
 					"varname" : "textedit[1]"
 				}
 
@@ -1372,7 +1373,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 585.0, 328.0, 119.0, 27.0 ],
-					"restore" : [ 0 ],
+					"restore" : [ 1 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -1485,7 +1486,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -1901,7 +1902,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -1938,7 +1939,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 5,
+											"revision" : 6,
 											"architecture" : "x86"
 										}
 ,
@@ -2862,7 +2863,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 5,
+											"revision" : 6,
 											"architecture" : "x86"
 										}
 ,
@@ -3786,7 +3787,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 5,
+											"revision" : 6,
 											"architecture" : "x86"
 										}
 ,
@@ -4710,7 +4711,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 5,
+											"revision" : 6,
 											"architecture" : "x86"
 										}
 ,
@@ -5634,7 +5635,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 5,
+											"revision" : 6,
 											"architecture" : "x86"
 										}
 ,
@@ -7300,7 +7301,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 780.0, 731.589905, 98.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 137.821838, 440.110291, 98.0, 23.0 ],
+					"presentation_rect" : [ 156.821838, 440.110291, 98.0, 23.0 ],
 					"text" : "< recall a slot"
 				}
 
@@ -7316,7 +7317,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 783.0, 545.898743, 95.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 137.821838, 403.625488, 95.0, 23.0 ],
+					"presentation_rect" : [ 156.821838, 403.625488, 95.0, 23.0 ],
 					"text" : "< store a slot"
 				}
 
@@ -7326,16 +7327,16 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-193",
-					"linecount" : 17,
+					"linecount" : 37,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 658.0, 937.0, 133.0, 270.0 ],
+					"patching_rect" : [ 658.0, 937.0, 133.0, 583.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 4,
-					"presentation_rect" : [ 73.0, 495.0, 586.0, 67.0 ],
-					"text" : "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 299 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326 327 328 329 330"
+					"presentation_linecount" : 8,
+					"presentation_rect" : [ 73.0, 495.0, 586.0, 130.0 ],
+					"text" : "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 122 123 124 131 135 150 299 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326 327 328 329 330 331 1135 1299 1300 1301 1302 1303 1304 1305 1306 1307 1308 1309 1311 1312 1313 1314 1315 1316 1317 1318 1319 1320 1321 1322 1323 1324 1325 1326 1327 1328 1329 1330"
 				}
 
 			}
@@ -7464,7 +7465,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -7709,7 +7710,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -7740,8 +7741,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1048.112549, 40.0, 25.0, 25.0 ],
-									"presentation_rect" : [ 1048.112549, 40.0, 0.0, 0.0 ]
+									"patching_rect" : [ 1048.112549, 40.0, 25.0, 25.0 ]
 								}
 
 							}
@@ -7753,8 +7753,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1078.112549, 40.0, 25.0, 25.0 ],
-									"presentation_rect" : [ 1078.112549, 40.0, 0.0, 0.0 ]
+									"patching_rect" : [ 1078.112549, 40.0, 25.0, 25.0 ]
 								}
 
 							}
@@ -7766,8 +7765,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1108.112549, 40.0, 25.0, 25.0 ],
-									"presentation_rect" : [ 1108.112549, 40.0, 0.0, 0.0 ]
+									"patching_rect" : [ 1108.112549, 40.0, 25.0, 25.0 ]
 								}
 
 							}
@@ -7779,8 +7777,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1138.112549, 40.0, 25.0, 25.0 ],
-									"presentation_rect" : [ 1138.112549, 40.0, 0.0, 0.0 ]
+									"patching_rect" : [ 1138.112549, 40.0, 25.0, 25.0 ]
 								}
 
 							}
@@ -7792,8 +7789,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1168.112549, 40.0, 25.0, 25.0 ],
-									"presentation_rect" : [ 1168.112549, 40.0, 0.0, 0.0 ]
+									"patching_rect" : [ 1168.112549, 40.0, 25.0, 25.0 ]
 								}
 
 							}
@@ -8826,7 +8822,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 721.0, 731.589905, 50.0, 27.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 78.821838, 440.110291, 50.0, 27.0 ]
+					"presentation_rect" : [ 78.821838, 440.110291, 71.178162, 27.0 ]
 				}
 
 			}
@@ -8857,7 +8853,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 721.0, 576.620972, 50.0, 27.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 78.821838, 403.625488, 50.0, 27.0 ]
+					"presentation_rect" : [ 78.821838, 403.625488, 71.178162, 27.0 ]
 				}
 
 			}
@@ -8913,7 +8909,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 866.0, -11.389191, 264.0, 27.0 ],
-					"restore" : [ "none" ],
+					"restore" : [ "soundfile" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8953,7 +8949,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 866.0, 138.237549, 264.0, 27.0 ],
-					"restore" : [ "markov" ],
+					"restore" : [ "none" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8993,7 +8989,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 866.0, 38.486389, 264.0, 27.0 ],
-					"restore" : [ "bucket" ],
+					"restore" : [ "none" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9073,7 +9069,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 769.0, 138.237549, 97.0, 27.0 ],
-					"restore" : [ "lowwavepulse" ],
+					"restore" : [ "off" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9153,7 +9149,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 769.0, 38.486389, 97.0, 27.0 ],
-					"restore" : [ "slowwaveshi" ],
+					"restore" : [ "off" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9173,7 +9169,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 974.0, -11.389191, 274.0, 27.0 ],
-					"restore" : [ "none" ],
+					"restore" : [ "thingsthatgo.wav" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9193,7 +9189,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 769.0, -11.389191, 97.0, 27.0 ],
-					"restore" : [ "off" ],
+					"restore" : [ "simplesound" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9248,7 +9244,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 76.971786, 700.733032, 107.0, 27.0 ],
-					"restore" : [ "low", "pulse", "and", "high", "waves" ],
+					"restore" : [ "ThingsThatGo" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9288,7 +9284,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 283.757416, 576.947388, 107.0, 27.0 ],
-					"restore" : [ 5 ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9308,7 +9304,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 283.757416, 543.815063, 122.0, 27.0 ],
-					"restore" : [ 6 ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9348,7 +9344,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1878.0, 633.104614, 72.0, 27.0 ],
-					"restore" : [ 5, 10 ],
+					"restore" : [ 0, 10 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9448,7 +9444,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1878.0, 240.613647, 72.0, 27.0 ],
-					"restore" : [ 5, 10 ],
+					"restore" : [ 0, 10 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9717,7 +9713,7 @@
 					"patching_rect" : [ 224.323578, 732.020325, 250.616516, 25.486425 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 190.323578, 250.020325, 250.616516, 25.486425 ],
-					"text" : "low pulse and high waves",
+					"text" : "ThingsThatGo",
 					"varname" : "textedit"
 				}
 
@@ -9829,7 +9825,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-77",
-					"items" : [ "none", ",", "bucket", ",", "melody", ",", "markov", ",", "simple" ],
+					"items" : "none",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9955,7 +9951,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-59",
-					"items" : [ "none", ",", "bucket", ",", "melody", ",", "markov", ",", "simple" ],
+					"items" : "none",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9997,7 +9993,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-57",
-					"items" : "none",
+					"items" : [ "none", ",", "clouds08_100.wav", ",", "clouds11_125.wav", ",", "clouds13.wav", ",", "clouds16_100.wav", ",", "clouds17_100.wav", ",", "clouds18_125.wav", ",", "clouds20_100.wav", ",", "clouds20_75.wav", ",", "clouds21_100.wav", ",", "clouds26_100.wav", ",", "clouds27_125.wav", ",", "clouds29_125.wav", ",", "clouds30_125.wav", ",", "clouds32_100.wav", ",", "clouds34_125.wav", ",", "clouds35_100.wav", ",", "clouds35_75.wav", ",", "clouds38_100.wav", ",", "CLOUDS_IntelligentGroove.wav", ",", "CLOUDS_IntelligentGroove_EQ.wav", ",", "CLOUDS_introTunnel_full.wav", ",", "CLOUDS_introTunnel_light.wav", ",", "cloudsintro1.mp3", ",", "cloudsintro1_low.mp3", ",", "cloudsintro2.mp3", ",", "DuBoisAmbient0.wav", ",", "DuboisAmbient01.wav", ",", "Jungle_Master.aif", ",", "Lament_piano_288.aif", ",", "LimAmbient00.wav", ",", "LimAmbient01.wav", ",", "ParallelStripes.wav", ",", "thingsthatgo.wav", ",", "Vocal_harmonic_high_shorter_1-2.wav", ",", "vocal_harmony_bass_1-2_noise_reduced.wav" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -10018,7 +10014,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-56",
-					"items" : "none",
+					"items" : [ "none", ",", "soundfile" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,

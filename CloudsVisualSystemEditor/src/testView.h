@@ -65,6 +65,7 @@
 	vector< CloudsVisualSystem* > testBatch;
 	int testBatchIndex;
     
+	ofFbo saveFbo;
     bool hasPasteboardPreset;
     CloudsVisualSystemPreset pasteboardPreset;
 }

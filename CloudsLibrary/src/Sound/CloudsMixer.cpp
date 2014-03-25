@@ -25,6 +25,8 @@ CloudsMixer::CloudsMixer()
     
     fsig = 0; // no fade
     fval = 1.0; // normal gain
+    dval = 0.; // delay gain
+    famt = 0.025; // fade amount
 }
 
 CloudsMixer::~CloudsMixer()
@@ -34,6 +36,9 @@ CloudsMixer::~CloudsMixer()
     }
     if (diageticArgs.buffer) {
         free(diageticArgs.buffer);
+    }
+    if (delayLine.buffer) {
+        free(delayLine.buffer);
     }
 }
 
@@ -48,20 +53,18 @@ void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuff
     diageticArgs.bufferSize = bufferSize;
     diageticArgs.nChannels = nChannels;
     
+    size = nChannels*44100*sizeof(float); // 1 second delay line
+    delayLine.buffer = (float*)malloc(size);
+    delayLine.bufferSize = 44100;
+    delayLine.nChannels = nChannels;
+    delptr = 0;
+
     // initialize OF audio streaming
     ofSoundStreamSetup(nChannels, 0, this, sampleRate, bufferSize, nBuffers);
     ofSoundStreamStart();
     
     ofAddListener(GetCloudsAudioEvents()->fadeAudioDown, this, &CloudsMixer::fadeDown);
     ofAddListener(GetCloudsAudioEvents()->fadeAudioUp, this, &CloudsMixer::fadeUp);
-}
-
-void CloudsMixer::fadeMusicDown()
-{
-}
-
-void CloudsMixer::fadeMusicUp()
-{
 }
 
 void CloudsMixer::setMusicVolume(float vol)
@@ -76,21 +79,23 @@ void CloudsMixer::setDiageticVolume(float vol)
 
 ///LUKE STUBBS
 void CloudsMixer::fadeDown(float& time){
-    cout << "fading down" << endl;
+    cout << "SOUND: fading down" << endl;
     fsig = -1;
+    famt = 1.0/((44100./512.)*time);
     
 }
 
 void CloudsMixer::fadeUp(float& time){
-    cout << "fading up" << endl;
+    cout << "SOUND: fading up" << endl;
     fsig = 1;
-    
+    famt = 1.0/((44100./512.)*time);
 }
 //LUKE STUBBS
 
 //void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
 void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
 {
+    GetCloudsAudioEvents()->dopull = fval>0;
     // check for buffer size mismatch
     if (bufferSize != musicArgs.bufferSize ||
         bufferSize != diageticArgs.bufferSize) {
@@ -118,6 +123,18 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
     {
         output[i] = (musicArgs.buffer[i]*musicVol*fval) + diageticArgs.buffer[i]*diageticVol;
         
+        if(GetCloudsAudioEvents()->dodelay) // read from delay
+        {
+            output[i]+=delayLine.buffer[(delptr-44099+44100)%44100]*dval;
+            delayLine.buffer[delptr%44100] = delayLine.buffer[delptr%44100]*0.8;
+        }
+        else // write into delay
+        {
+            delayLine.buffer[delptr%44100] = musicArgs.buffer[i]*musicVol + diageticArgs.buffer[i]*diageticVol;
+        }
+        delptr++;
+        
+        
         // Luke's Compressor
         float current = abs(output[i]);
         if(current>followgain) {
@@ -140,23 +157,43 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
         }
     }
     
+    // figure out when delay turns off
+    if(GetCloudsAudioEvents()->dodelay)
+    {
+        float delsum = 0.;
+        for(int i = 0;i<44100;i++)
+        {
+            delsum += fabs(delayLine.buffer[i]);
+        }
+        if(delsum<20.) {
+            GetCloudsAudioEvents()->dodelay = false;
+            dval = 0.;
+        }
+    }
+    
     // adjust fade
     if(fsig==1) // fading up
     {
-        fval+=0.0025;
+        fval+=famt;
         if(fval>0.999)
         {
             fval = 1.0;
             fsig = 0;
+            delptr = 0; // reset delay line
         }
     }
     else if(fsig==-1) // fading down
     {
-        fval-=0.0025;
+        fval-=famt;
+        dval+=famt; // fade in delay while fading out audio
+        if(dval>1.0) dval = 1.0;
         if(fval<0.001)
         {
             fval = 0.;
             fsig = 0;
+            if(GetCloudsAudioEvents()->setupflush) {
+                GetCloudsAudioEvents()->doflush = true;   
+            }
         }
     }
 
@@ -175,6 +212,7 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
         cout << endl;
     }
      */
+     
     
     //cout << followgain << " : " << gain << endl;
     

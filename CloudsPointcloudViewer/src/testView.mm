@@ -63,7 +63,7 @@
     
     rgbdVisualSystem.getRGBDVideoPlayer().forceStop = false;
     rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setLoopState(OF_LOOP_NORMAL);
-    rgbdVisualSystem.getRGBDVideoPlayer().maxVolume = 0.;
+    rgbdVisualSystem.getRGBDVideoPlayer().maxVolume = 1.;
 	hud.update();
 	
 }

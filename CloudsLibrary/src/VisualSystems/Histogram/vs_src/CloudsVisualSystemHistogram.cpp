@@ -349,7 +349,7 @@ void CloudsVisualSystemHistogram::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemHistogram::selfEnd(){
 	
-	
+	soundPlayer.stop();
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup

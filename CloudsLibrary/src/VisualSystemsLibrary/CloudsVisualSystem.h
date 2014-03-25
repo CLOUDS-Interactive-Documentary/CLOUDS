@@ -94,6 +94,8 @@ class CloudsVisualSystem {
     virtual void selfDraw();
 	virtual void selfDrawOverlay();
 	virtual void selfPostDraw();
+	virtual void selfPostDraw(int width, int height);
+	
     virtual void selfDrawCursor(ofVec3f& pos, bool bDragged);
 	virtual void selfPresetLoaded(string presetPath);
 	

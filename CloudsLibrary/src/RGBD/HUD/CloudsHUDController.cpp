@@ -62,7 +62,7 @@ void CloudsHUDController::setup(){
 }
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
-//	bDrawHud = true;
+	bDrawHud = true;
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
@@ -177,6 +177,14 @@ void CloudsHUDController::populateQuestion( string question, bool forceOn ){
 		animateOff( CLOUDS_HUD_QUESTION );
 	}
 	else{
+        //JG HACK specific question
+        //Is it possible to truly simulate reality?
+        //What makes a satisfying interaction
+        //How does the network accelerate creativity?
+        
+        //question = "Is it possible to truly simulate reality?";
+        //JG END HACK
+        
 		hudLabelMap["QuestionTextBox"]->setText( question, forceOn );
 		
 		if( forceOn ){
@@ -558,18 +566,21 @@ void CloudsHUDController::draw(){
         }
         ofSetColor(255, 255, 255, 255);
     }
-    
-	drawLayer(CLOUDS_HUD_QUESTION);
-    drawLayer(CLOUDS_HUD_LOWER_THIRD);
-	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
-	drawLayer(CLOUDS_HUD_MAP);
-    
+
+	////JG TEMP COMMENT OUT
+//	drawLayer(CLOUDS_HUD_QUESTION);
+//  drawLayer(CLOUDS_HUD_LOWER_THIRD);
+//	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
+//	drawLayer(CLOUDS_HUD_MAP);
+	////JG TEMP COMMENT OUT
+	
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->draw();
     }
     
 	if (bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]){
-		home.draw();
+	////JG TEMP COMMENT OUT
+//		home.draw();
     }
 	
 	ofPopMatrix();
@@ -728,12 +739,16 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
         hudLabelMap["BylineLastNameTextBox"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxTop"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxBottom"]->animateIn( true );
-        hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
+		//JG TEMP
+//        hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
+//JG TEMP
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
-        hudLabelMap["ProjectExampleTextboxLeft"]->animateIn( true );
-        hudLabelMap["ProjectExampleTextboxRight"]->animateIn( true );
-        hudLabelMap["ProjectExampleTextBoxTop"]->animateIn( true );
+//JG TEMP
+//        hudLabelMap["ProjectExampleTextboxLeft"]->animateIn( true );
+//        hudLabelMap["ProjectExampleTextboxRight"]->animateIn( true );
+//        hudLabelMap["ProjectExampleTextBoxTop"]->animateIn( true );
+//JG TEMP		
     }
     else if( (layer & CLOUDS_HUD_MAP) != 0 ){
         
