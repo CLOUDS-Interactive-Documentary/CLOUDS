@@ -32,13 +32,15 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	bEventRegistered = false;
 	clipPrerolled = false;
 	
-#ifdef TARGET_OSX
-	nextPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
-	currentPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
-#else
-	currentPlayer = ofPtr<ofDirectShowPlayer>( new ofDirectShowPlayer() );
-	nextPlayer = ofPtr<ofDirectShowPlayer>( new ofDirectShowPlayer() );
-#endif
+//#ifdef TARGET_OSX
+//	nextPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
+//	currentPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
+//#else
+//	currentPlayer = ofPtr<ofDirectShowPlayer>( new ofDirectShowPlayer() );
+//	nextPlayer = ofPtr<ofDirectShowPlayer>( new ofDirectShowPlayer() );
+//#endif
+	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
+	nextPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 
 	currentVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 	nextVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
@@ -284,20 +286,22 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 }
 
 //--------------------------------------------------------------- ACTIONS
-#ifdef TARGET_OSX
-ofxAVFVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
-#else
-ofDirectShowPlayer& CloudsRGBDVideoPlayer::getPlayer(){
-#endif
+//#ifdef TARGET_OSX
+//ofxAVFVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
+//#else
+//ofDirectShowPlayer& CloudsRGBDVideoPlayer::getPlayer(){
+//#endif
+ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 	return *currentPlayer;
 }
 
 ofTexture& CloudsRGBDVideoPlayer::getTextureReference(){
-#ifdef TARGET_OSX
+//#ifdef TARGET_OSX
+//	return getPlayer().getTextureReference();
+//#else
+//	return videoTexture;
+//#endif
 	return getPlayer().getTextureReference();
-#else
-	return videoTexture;
-#endif
 }
 
 void CloudsRGBDVideoPlayer::stop(){
@@ -311,16 +315,16 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	//TODO: Optimize these!
 	if(!playingVO){
 		currentPlayer->update();
-#ifdef TARGET_WIN32
-		if(currentPlayer->isFrameNew()){
-			if(!videoTexture.isAllocated()){
-				videoTexture.allocate(currentPlayer->getPixelsRef());
-			}
-			else{
-				videoTexture.loadData(currentPlayer->getPixelsRef());
-			}
-		}
-#endif
+//#ifdef TARGET_WIN32
+//		if(currentPlayer->isFrameNew()){
+//			if(!videoTexture.isAllocated()){
+//				videoTexture.allocate(currentPlayer->getPixelsRef());
+//			}
+//			else{
+//				videoTexture.loadData(currentPlayer->getPixelsRef());
+//			}
+//		}
+//#endif
 	}
 	
 	if(clipPrerolled && !nextClipIsVO){

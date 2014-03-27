@@ -97,6 +97,9 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp">
+      <Filter>addons\ofDirectShowPlayer\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClCompile>
@@ -191,6 +194,12 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\Input">
       <UniqueIdentifier>{311161e7-1ae0-42e6-9c73-a0fc0372abf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofDirectShowPlayer">
+      <UniqueIdentifier>{07a8412c-c319-44cb-83f2-df0a8afa4881}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofDirectShowPlayer\src">
+      <UniqueIdentifier>{d5b5dc0f-2585-4790-bb49-de47fcddb044}</UniqueIdentifier>
     </Filter>
     <Filter Include="CloudsLibrary\src\RGBD">
       <UniqueIdentifier>{964fad5f-d266-4540-b91f-1b2c529c20fd}</UniqueIdentifier>
@@ -379,6 +388,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h">
+      <Filter>addons\ofDirectShowPlayer\src</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>

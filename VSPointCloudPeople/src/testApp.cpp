@@ -23,8 +23,8 @@ void testApp::setup(){
 #endif
 	
 	rgbd.setup();
-	rgbd.forceScreenResolution(1920,1080);
-//	rgbd.setDrawToScreen(false);
+	rgbd.forceScreenResolution(1920*2,1080*2);
+	rgbd.setDrawToScreen(false);
 	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
 	
@@ -46,6 +46,8 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	//CloudsVisualSystem::getRGBDVideoPlayer().getTextureReference().draw(0,0);
+	//rgbd.selfPostDraw(0,0,1920,1080);
+	rgbd.getSharedRenderTarget().getTextureReference().draw(0,0,1920,1080);
 }
 
 //--------------------------------------------------------------
@@ -67,6 +69,21 @@ void testApp::keyReleased(int key){
 		shouldPlayTestVideo = true;
 	}
 	
+	if(key == 'S'){
+		ofFbo fbo;
+		fbo.allocate(1920*2,1080*2,GL_RGB);
+		fbo.begin();
+		rgbd.selfPostDraw();
+		fbo.end();
+		ofPixels p;
+		fbo.readToPixels(p);
+		char filename[1024];
+		sprintf(filename, "Screenshot_%02d_%02d_%02d_%02d_%02d.png", ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes(), ofGetSeconds());
+		ofSaveImage(p,filename);
+		cout << "Saving to " << filename << endl;
+		//ofSaveScreen("TestFrame.png");
+	}
+
 	if(key == 'Q'){
 //		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set05");
 //		qtestnodes.allowExt("png");

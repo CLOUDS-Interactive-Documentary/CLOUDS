@@ -88,9 +88,6 @@ CloudsMovieDirectory_remote.txt
 
 
 /MakeNewProjectFile.mp4
-
-/CloudsLibrary/src/Visua
-
 /CloudsData/DichotomyRatios.txt
 
 /CloudsLibrary/src/VisualSystems/Vision/bin/data/GreenPoint_bike.m4v
@@ -235,7 +232,7 @@ CloudsMovieDirectory_remote.txt
 /CloudsData/visualsystems/Twitter/graphs/BigSphere1_TwitterOneUser.net
 
 /VSDataCascade/bin/data/TestVideo/
-
+/VSPointCloudPeople/bin/data/*.png
 
 /CloudsData/secondaryDisplay/web/videos/*
 /CloudsData/VO/*.aif

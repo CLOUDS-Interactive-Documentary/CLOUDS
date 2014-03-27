@@ -11,11 +11,11 @@
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 
-#ifdef TARGET_OSX
-#include "ofxAVFVideoPlayer.h"
-#else
-#include "ofDirectShowPlayer.h"
-#endif
+//#ifdef TARGET_OSX
+//#include "ofxAVFVideoPlayer.h"
+//#else
+//#include "ofDirectShowPlayer.h"
+//#endif
 
 #include "ofRange.h"
 #include "CloudsGlobal.h"
@@ -55,11 +55,12 @@ public:
 		return fadeOutValue;
 	};
 
-#ifdef TARGET_OSX
-	ofxAVFVideoPlayer& getPlayer();
-#else
-	ofDirectShowPlayer& getPlayer();
-#endif
+//#ifdef TARGET_OSX
+//	ofxAVFVideoPlayer& getPlayer();
+//#else
+//	ofDirectShowPlayer& getPlayer();
+//#endif
+	ofVideoPlayer& getPlayer();
 	ofTexture& getTextureReference();
 
 	// Fix extrinsics
@@ -91,14 +92,17 @@ public:
 	bool bEventRegistered;
     void update(ofEventArgs& args);
 	
-#ifdef TARGET_OSX
-	ofPtr<ofxAVFVideoPlayer> currentPlayer;
-	ofPtr<ofxAVFVideoPlayer> nextPlayer;
-#else
-	ofPtr<ofDirectShowPlayer> currentPlayer;
-	ofPtr<ofDirectShowPlayer> nextPlayer;
-	ofTexture videoTexture;
-#endif
+//#ifdef TARGET_OSX
+//	ofPtr<ofxAVFVideoPlayer> currentPlayer;
+//	ofPtr<ofxAVFVideoPlayer> nextPlayer;
+//#else
+//	ofPtr<ofDirectShowPlayer> currentPlayer;
+//	ofPtr<ofDirectShowPlayer> nextPlayer;
+//	ofTexture videoTexture;
+//#endif
+	ofPtr<ofVideoPlayer> currentPlayer;
+	ofPtr<ofVideoPlayer> nextPlayer;
+
 	ofPtr<ofSoundPlayer> currentVoiceoverPlayer;
 	ofPtr<ofSoundPlayer> nextVoiceoverPlayer;
 	bool nextClipIsVO;
