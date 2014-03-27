@@ -3,10 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openframeworksLib", "..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj", "{5837595D-ACA9-485C-8E76-729040CE4B0B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSPointCloudPeople", "VSPointCloudPeople.vcxproj", "{7FD42DF7-442E-479A-BA76-D0022F99702A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE} = {641DB976-E775-4D72-86EB-897E2C4A0EEE}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTimelineLib", "..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj", "{E81216F3-8B91-4156-BACC-731F6E38A05C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxUILib", "..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj", "{A72C4F16-CB16-4143-BA5C-5E4FA802D636}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxUILib", "..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj", "{641DB976-E775-4D72-86EB-897E2C4A0EEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,14 +43,14 @@ Global
 		{E81216F3-8B91-4156-BACC-731F6E38A05C}.Release|Win32.Build.0 = Release|Win32
 		{E81216F3-8B91-4156-BACC-731F6E38A05C}.Release|x64.ActiveCfg = Release|x64
 		{E81216F3-8B91-4156-BACC-731F6E38A05C}.Release|x64.Build.0 = Release|x64
-		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug|Win32.ActiveCfg = Debug|Win32
-		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug|Win32.Build.0 = Debug|Win32
-		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug|x64.ActiveCfg = Debug|x64
-		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug|x64.Build.0 = Debug|x64
-		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release|Win32.ActiveCfg = Release|Win32
-		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release|Win32.Build.0 = Release|Win32
-		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release|x64.ActiveCfg = Release|x64
-		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release|x64.Build.0 = Release|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug|Win32.Build.0 = Debug|Win32
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug|x64.ActiveCfg = Debug|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug|x64.Build.0 = Debug|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|Win32.ActiveCfg = Release|Win32
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|Win32.Build.0 = Release|Win32
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|x64.ActiveCfg = Release|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
