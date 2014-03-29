@@ -4,16 +4,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Dry Rate</WidgetName>
-                <WidgetID>4</WidgetID>
+                <WidgetName>Blur Radius</WidgetName>
+                <WidgetID>2</WidgetID>
                 <WidgetCanvasParent>Water</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Blur Radius</WidgetName>
-                <WidgetID>2</WidgetID>
+                <WidgetName>Dry Rate</WidgetName>
+                <WidgetID>4</WidgetID>
                 <WidgetCanvasParent>Water</WidgetCanvasParent>
             </Widget>
             <Track></Track>

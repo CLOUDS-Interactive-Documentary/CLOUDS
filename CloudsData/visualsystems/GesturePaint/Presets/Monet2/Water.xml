@@ -1,19 +1,19 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Water</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Blur Radius</Name>
-    <Value>0.999999940</Value>
+    <Value>1.276638269</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Dry Rate</Name>
-    <Value>0.000000000</Value>
+    <Value>0.040034875</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Points 1</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>304.000000000</XPosition>
-    <YPosition>93.000000000</YPosition>
+    <XPosition>303.000000000</XPosition>
+    <YPosition>212.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>6</Kind>
     <Name>Point Size</Name>
-    <HighValue>1.034482718</HighValue>
+    <HighValue>0.916256189</HighValue>
     <LowValue>0.339901477</LowValue>
 </Widget>
 <Widget>

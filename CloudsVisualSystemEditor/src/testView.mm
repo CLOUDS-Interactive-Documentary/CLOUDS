@@ -20,6 +20,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)setup
 {
+    ofBackground(0);
+    ofSetVerticalSync(true);
+    
 	currentVisualSystem = NULL;
 	selectedPreset = NULL;
 	
@@ -308,6 +311,14 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)keyPressed:(int)key
 {
+
+    if(key == 'm'){
+        ofHideCursor();
+    }
+    else if(key == 'M'){
+        ofShowCursor();
+    }
+
 	if(key == ' ' && currentVisualSystem != NULL){
 		ofPixels p;
 		saveFbo.readToPixels(p);
@@ -318,7 +329,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
 				currentVisualSystem->getSystemName().c_str(), ofGetDay(), ofGetHours(), ofGetMinutes(), ofGetSeconds());
 		ofSaveImage(p, screenshot);
 	}
-
 }
 
 - (void)keyReleased:(int)key

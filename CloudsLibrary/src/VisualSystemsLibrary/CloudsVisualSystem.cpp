@@ -42,7 +42,7 @@ static ofImage backgroundGradientWash;
 static bool screenResolutionForced = false;
 static int forcedScreenWidth;
 static int forcedScreenHeight;
-static int numSamples = 0;
+static int numSamples = 4;
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
@@ -3189,11 +3189,14 @@ void CloudsVisualSystem::loadGUIS()
 #ifdef KINECT_INPUT
     kinectGui->loadSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
 #endif
+    
 #ifdef OCULUS_RIFT
     oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
-    if (hudGui) {
+#ifdef CLOUDS_APP
+    if (hudGui != NULL) {
         hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
     }
+#endif
 #endif
     
     cam.reset();
@@ -3748,7 +3751,6 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 void CloudsVisualSystem::drawCursor()
 {
 	
-	return;
 	
 //    if (drawCursorMode > DRAW_CURSOR_NONE) {
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();

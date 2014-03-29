@@ -16,7 +16,7 @@
 #include <set>
 
 
-#define MAX_GESTURES    5
+#define MAX_GESTURES    7
 #define MAX_TOUCHES     11
 
 class CloudsVisualSystemYellowTail : public CloudsVisualSystem {

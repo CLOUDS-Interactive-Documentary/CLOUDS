@@ -30,6 +30,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         nchans = 2; // stereo
         framesize = 512; // sigvs
         s_audio_outbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
+        s_audio_compbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
         
         // initialize RTcmix
         rtcmixmain();
@@ -40,6 +41,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         GetCloudsAudioEvents()->dodelay = false;
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
+
         first_vec = true; // we haven't had audio yet
         
         // load samples
@@ -103,6 +105,9 @@ void CloudsSound::update(){
         if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
         else cout << "SOUND: MUSIC STOPPED." << endl;
         flush_sched();
+        sleep(1);
+        // zero output buffer (AHA!)
+        bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
         GetCloudsAudioEvents()->setupflush = false;
         GetCloudsAudioEvents()->doflush = false;
     }
@@ -239,7 +244,8 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             int GOPRESET = valid_presets[ ofRandom(valid_presets.size()) ];
             presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), thecues[i].startTime *1000 );
             if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
-            schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel);
+            if(LUKEDEBUG) cout << "FUCKSOUND: schedule: " << i << endl;
+            schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel, i+1);
 
         }
     }
@@ -387,13 +393,21 @@ void CloudsSound::doPrinting() {
 // =========================
 void CloudsSound::audioRequested(ofAudioEventArgs& args){
 
-        pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
+    int cdif = 0;
+    int csum = 0;
 
+        pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
         // fill up the audio buffer
         for (int i = 0; i < args.bufferSize * args.nChannels; i++)
         {
             args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
+            
+            csum+=abs(s_audio_outbuf[i]);
+            cdif+=(s_audio_outbuf[i]-s_audio_compbuf[i]);
+            s_audio_compbuf[i] = s_audio_outbuf[i];
         }
+    
+    if(csum>0 && cdif==0) cout << "BUZZZZZZZZZZZZZZ!!!" << endl;
 
         
         // not using right now

@@ -5832,10 +5832,10 @@
 			children = (
 				E7302C00187DF4270079C5B8 /* CloudsHUDController.h */,
 				E7302BFF187DF4270079C5B8 /* CloudsHUDController.cpp */,
-				E7302C01187DF4270079C5B8 /* CloudsHUDHomeButton.cpp */,
 				E7302C02187DF4270079C5B8 /* CloudsHUDHomeButton.h */,
-				E7302C03187DF4270079C5B8 /* CloudsHUDLabel.cpp */,
+				E7302C01187DF4270079C5B8 /* CloudsHUDHomeButton.cpp */,
 				E7302C04187DF4270079C5B8 /* CloudsHUDLabel.h */,
+				E7302C03187DF4270079C5B8 /* CloudsHUDLabel.cpp */,
 				E7302C05187DF4270079C5B8 /* CloudsHUDLayer.cpp */,
 				E7302C06187DF4270079C5B8 /* CloudsHUDLayer.h */,
 				E7302C07187DF4270079C5B8 /* CloudsSVGMesh.cpp */,
