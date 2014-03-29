@@ -323,6 +323,10 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
     if(args.key == 'R'){
         oscSender.reset();
     }
+	
+	if(args.key == 'B'){
+		GetCloudsAudioEvents()->respawn = true;
+	}
     
 }
 //--------------------------------------------------------------------
