@@ -37,6 +37,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
         
         GetCloudsAudioEvents()->doflush = false;
+        GetCloudsAudioEvents()->respawn = false;
         GetCloudsAudioEvents()->setupflush = false;
         GetCloudsAudioEvents()->dodelay = false;
         // launch initial setup score
@@ -111,6 +112,17 @@ void CloudsSound::update(){
         bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
         GetCloudsAudioEvents()->setupflush = false;
         GetCloudsAudioEvents()->doflush = false;
+    }
+    if(GetCloudsAudioEvents()->respawn)
+    {
+        if(LUKEDEBUG) cout << "REDOING MUSIC." << endl;
+        else cout << "SOUND: MUSIC RESPAWNED." << endl;
+        flush_sched();
+        sleep(1);
+        // zero output buffer (AHA!)
+        bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
+        GetCloudsAudioEvents()->respawn = false;
+        playCurrentCues();
     }
 }
 
@@ -420,8 +432,10 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     }
     else buzzreps = 0;
     
-    if(buzzreps>20) playCurrentCues();
-
+    if(buzzreps>20) {
+        GetCloudsAudioEvents()->respawn = true;
+        buzzreps = 0;
+    }
         
         // not using right now
         if (check_bang() == 1) {

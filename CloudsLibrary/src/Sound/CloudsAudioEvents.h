@@ -24,6 +24,7 @@ public:
     bool dopull;
     bool setupflush;
     bool doflush;
+    bool respawn;
     bool dodelay;
 };
 
