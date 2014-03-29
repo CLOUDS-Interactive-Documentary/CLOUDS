@@ -12,7 +12,9 @@ void main() {
 
     gl_FrontColor = gl_Color;
 //	gl_PointSize = gl_Normal.z < sizeThreshold ? 2.0 : 1.0;
-	gl_PointSize = pow(gl_Normal.z,4.0) * 1.8 + .25;
+//	gl_PointSize = pow(gl_Normal.z,4.0) * 1.8 + .25;
 	
+	//JG REWORK SIZE
+	gl_PointSize = pow(gl_Normal.z,4.0) * 1.8 + 1.		;
 
 }

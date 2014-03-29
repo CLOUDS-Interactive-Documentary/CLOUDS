@@ -18,6 +18,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 	
 	if(!eventsRegistered){
 		ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsSound::actCreated);
+		ofAddListener(ofEvents().update, this, &CloudsSound::update);
 		ofAddListener(ofEvents().exit, this, &CloudsSound::exit);
 		
 		ofRegisterKeyEvents(this);
@@ -71,8 +72,8 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         abn.clear();
         for(int i = 0;i<PF_NUMBUSES;i++)
         {
-        ab.push_back("ACTBUS"+ofToString(i));
-        abn.push_back(PF_MAINACT_BUS_START+i);
+			ab.push_back("ACTBUS"+ofToString(i));
+			abn.push_back(PF_MAINACT_BUS_START+i);
         }
         
 		ofAddListener(GetCloudsAudioEvents()->musicAudioRequested, this, &CloudsSound::audioRequested);
@@ -94,14 +95,15 @@ void CloudsSound::exit(ofEventArgs & args){
 			currentAct->unregisterEvents( this );
 		}
 		
-		ofRemoveListener(ofEvents().exit, this, &CloudsSound::exit);		
+		ofRemoveListener(ofEvents().update, this, &CloudsSound::update);
+		ofRemoveListener(ofEvents().exit, this, &CloudsSound::exit);
 		ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);		
 	}
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::update(){
+void CloudsSound::update(ofEventArgs & args){
     if(GetCloudsAudioEvents()->doflush)
     {
         if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;

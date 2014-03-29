@@ -22,7 +22,7 @@ class CloudsSound {
 	void setup(CloudsStoryEngine& storyEngine);
 	void exit(ofEventArgs & args);
 	
-	void update();
+	void update(ofEventArgs & args);
 	void drawDebug();
 	
 	void keyPressed(ofKeyEventArgs & args);
