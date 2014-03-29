@@ -13,7 +13,7 @@
 #include "ofxXmlSettings.h"
 
 #define MAXAMP 32768.0 // maximum amp for oscillators (-1., 1) = 2^15
-#define LUKEDEBUG true
+#define LUKEDEBUG false
 
 // BGG rtcmix stuff
 extern "C" {
