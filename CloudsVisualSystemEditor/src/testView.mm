@@ -283,14 +283,17 @@ bool clipsort(CloudsClip a, CloudsClip b){
 							 GL_RGB);
 		}
 		
-		saveFbo.begin();
-		ofClear(0,0,0);
-		currentVisualSystem->selfPostDraw();
-		saveFbo.end();
-		
-		saveFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+		//SAVE SYSTEM
+//		saveFbo.begin();
+//		ofClear(0,0,0);
+//		currentVisualSystem->selfPostDraw();
+//		saveFbo.end();
+//		saveFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+		///
 		
 //		currentVisualSystem->getSharedRenderTarget().draw();
+		currentVisualSystem->selfPostDraw();
+		
 	}
 }
 
