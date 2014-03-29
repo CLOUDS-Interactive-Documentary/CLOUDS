@@ -134,19 +134,31 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     ofxTimeline& actTimeLine = currentAct->getTimeline();
     
     actTimeLine.addPage("sound",true);
-    ofxTLFlags * presetFlags = actTimeLine.addFlags("Presets");
+    presetFlags = actTimeLine.addFlags("Presets");
 
-    int rigged = 0; // set to '1' for slowwaves all the time
-    float totalduration = args.act->getTimeline().getDurationInSeconds(); // how long
-    bool isHighEnergy = false;
+	//    vector<CloudsSoundCue>& thecues = args.act->getSoundCues(); // copy the cues
 	
-    vector<CloudsSoundCue>&thecues = args.act->getSoundCues(); // copy the cues
+    currentCuesTotalDuration = args.act->getTimeline().getDurationInSeconds(); // how long
+	currentCues = args.act->getSoundCues();
+	cueFlagsAdded = false;
+	
+	playCurrentCues();
+	
+    actTimeLine.setCurrentPage(0);
+    if(LUKEDEBUG) cout << "====================" << endl;
+    if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
+    if(LUKEDEBUG) cout << "====================" << endl;
+
+}
+
+void CloudsSound::playCurrentCues(){
+	
     vector<int> valid_presets; // make a vector of presets that match the dichotomy setting
     vector<int> cuedichos; // place to stash cue dichotomies
-
-    int numcues = thecues.size(); // how many cues in this act?
-    
-    float pad = 5.0; // padding for FX chain
+	
+    int rigged = 0; // set to '1' for slowwaves all the time
+    bool isHighEnergy = false;
+    int numcues = currentCues.size(); // how many cues in this act?
     
     //
     // GOGOGO
@@ -155,61 +167,58 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     if(LUKEDEBUG) cout << "===============" << endl;
     if(LUKEDEBUG) cout << "MAKING MUSIC!!!" << endl;
     if(LUKEDEBUG) cout << "===============" << endl;
-
-    totalduration+=pad; // pad the total
+	
+    float pad = 5.0; // padding for FX chain
+    currentCuesTotalDuration += pad; // pad the total
     
-    if(LUKEDEBUG) cout << "TOTAL DURATION: " << totalduration << endl;
+    if(LUKEDEBUG) cout << "TOTAL DURATION: " << currentCuesTotalDuration << endl;
     else cout << "SOUND: MUSIC STARTED." << endl;
-
+	
     // launch music FX chain
-    startMusicFX(0, totalduration);
+    startMusicFX(0, currentCuesTotalDuration);
     
     // iterate through clips
     if(rigged) // fallback
     {
-        startMusic(0, "slowwaves", "markov", "NULL", 0, 0, totalduration, 120, 0.5, 0.5, 0, "e_FADEINOUTFASTEST");
+        startMusic(0, "slowwaves", "markov", "NULL", 0, 0, currentCuesTotalDuration, 120, 0.5, 0.5, 0, "e_FADEINOUTFASTEST");
     }
     else
     {
         for(int i = 0;i<numcues;i++)
         {
             // TEST 1: CHECK FOR RIGGED PRESET NAME -- THESE CUES CAN BE "DISABLED"
-            if(thecues[i].riggedPresetName!="")
+            if(currentCues[i].riggedPresetName!="")
             {
                 for(int j = 0; j<presets.size();j++)
                 {
-                    if(presets[j].name==thecues[i].riggedPresetName) // match
+                    if(presets[j].name==currentCues[i].riggedPresetName) // match
                     {
-                        
-
                         valid_presets.push_back(j);
-                        
-                        
                     }
                 }
             }
             // TEST 2: CHECK FOR OPENING QUESTION MATCH
-            if(thecues[i].soundQuestionKey!="")
+            if(currentCues[i].soundQuestionKey!="")
             {
                 for(int j = 0; j<presets.size();j++)
                 {
-                    if(presets[j].start_question==thecues[i].soundQuestionKey&&presets[j].disabled==0) // match
+                    if(presets[j].start_question == currentCues[i].soundQuestionKey && presets[j].disabled==0) // match
                     {
                         
                         valid_presets.push_back(j);
                     }
-                }                
+                }
             }
             // USE DICHOTOMIES
             else
             {
                 // add up dichos for cue
                 cuedichos.clear();
-                for(int j = 0;j<thecues[i].dichotomies.size();j++)
+                for(int j = 0; j < currentCues[i].dichotomies.size(); j++)
                 {
-                    cuedichos.push_back(thecues[i].dichotomies[j].balance);
+                    cuedichos.push_back(currentCues[i].dichotomies[j].balance);
                 }
-
+				
                 //Populate valid presets
                 valid_presets.clear();
                 for(int j = 0;j<presets.size();j++)
@@ -217,7 +226,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                     int pscore = 0;
                     for(int k=0;k<8;k++)
                     {
-                        if(cuedichos[k]<=presets[j].dichomax[k]&&cuedichos[k]>=presets[j].dichomin[k])
+                        if(cuedichos[k] <= presets[j].dichomax[k]&&cuedichos[k]>=presets[j].dichomin[k])
                         {
                             pscore++;
                         }
@@ -225,37 +234,34 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                     //if all 8 dichos matched
                     if(pscore==8&&presets[j].highEnergy==isHighEnergy&&presets[j].disabled==0){
                         //if(presets[j].slotnumber<250) { // temporary
-
-                        
                         valid_presets.push_back(j);
                         //}
                     }
                 }
-            
+				
                 isHighEnergy = !isHighEnergy; // flip energy state at each dicho check
             }
             
             // emergency check
             if(valid_presets.size()==0)
-            {       
+            {
                 valid_presets.push_back(0);
             }
             
             // MAKE THE MUSIC
             int GOPRESET = valid_presets[ ofRandom(valid_presets.size()) ];
-            presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), thecues[i].startTime *1000 );
-            if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
+			if(!cueFlagsAdded){
+				presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), currentCues[i].startTime *1000 );
+			}
+            
+			if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
             if(LUKEDEBUG) cout << "FUCKSOUND: schedule: " << i << endl;
-            schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel, i+1);
-
+			
+            schedulePreset(presets[GOPRESET], currentCues[i].startTime, currentCues[i].duration, currentCues[i].mixLevel, i+1);
+			
         }
     }
-    actTimeLine.setCurrentPage(0);
-    if(LUKEDEBUG) cout << "====================" << endl;
-    if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
-    if(LUKEDEBUG) cout << "====================" << endl;
-
-    
+	cueFlagsAdded = true;
 }
 
 void CloudsSound::enterTunnel()
