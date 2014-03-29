@@ -104,5 +104,11 @@ class CloudsSound {
     vector<lukeSimpleMelody> simplemelodies;
 
     vector<lukeSample> looperSamples;
+	
+	vector<CloudsSoundCue> currentCues;
+	ofxTLFlags* presetFlags;
+	bool cueFlagsAdded;
+	float currentCuesTotalDuration;
+	void playCurrentCues();
 
 };
