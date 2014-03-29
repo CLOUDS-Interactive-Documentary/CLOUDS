@@ -12,7 +12,8 @@
 #include "ofMain.h"
 #include "ofEvents.h"
 
-#define MASTER_GAIN 0.45
+//#define MASTER_GAIN 0.45
+#define MASTER_GAIN 1.
 
 class CloudsAudioEvents {
 public:

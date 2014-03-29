@@ -43,6 +43,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         RTcmixParseScoreFile("cmixinit.sco");
 
         first_vec = true; // we haven't had audio yet
+        buzzreps = 0; // no buzzing yet
         
         // load samples
         loadRTcmixSamples();
@@ -407,7 +408,13 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
             s_audio_compbuf[i] = s_audio_outbuf[i];
         }
     
-    if(csum>0 && cdif==0) cout << "BUZZZZZZZZZZZZZZ!!!" << endl;
+    if(csum>0 && cdif==0) {
+        cout << "BUZZZZZZZZZZZZZZ!!!" << endl;
+        buzzreps++;
+    }
+    else buzzreps = 0;
+    
+    if(buzzreps>20) playCurrentCues();
 
         
         // not using right now

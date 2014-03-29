@@ -89,6 +89,7 @@ class CloudsSound {
 
     bool first_vec;
     int whichdream;
+    int buzzreps;
 
     float MASTERTEMPO;
     int AUTORUN;
