@@ -145,6 +145,7 @@ void CloudsVisualSystemRipples::selfSetup()
     bRestart = true;
 
     // sound
+	for (int i=0; i<2; i++) volume[i] = 0;
     bEnableSounds = true;
     noteIndex = 0;
     baseNote = 0;

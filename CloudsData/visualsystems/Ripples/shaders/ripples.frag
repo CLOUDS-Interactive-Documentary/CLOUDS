@@ -1,3 +1,5 @@
+#extension GL_ARB_texture_rectangle : enable
+
 uniform sampler2DRect backbuffer;   // previous buffer
 uniform sampler2DRect tex0;         // actual buffer
 

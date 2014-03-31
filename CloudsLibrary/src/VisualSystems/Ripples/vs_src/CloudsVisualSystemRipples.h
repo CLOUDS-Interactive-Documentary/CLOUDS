@@ -129,7 +129,7 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
 	// Sound
     int dontTriggerSoundCounter;
     ofxUISuperCanvas* soundGui;
-    float volume[2] = {0};
+    float volume[2];
     ControlParameter volumeControl[2];
     bool bEnableSounds;
     ofMutex mutex;
