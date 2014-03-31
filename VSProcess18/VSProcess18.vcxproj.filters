@@ -19,9 +19,6 @@
     <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp">
       <Filter>addons\ofxObjLoader\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm.c">
-      <Filter>addons\ofxObjLoader\libs</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
@@ -94,9 +91,6 @@
     <ClCompile Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.cpp">
       <Filter>addons\ofxAutoreloadShader\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp">
-      <Filter>addons\ofDirectShowPlayer\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\CloudsVisualSystemProcess18.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
@@ -105,6 +99,9 @@
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -171,11 +168,8 @@
     <Filter Include="addons\ofxAutoreloadShader\src">
       <UniqueIdentifier>{683505b1-6cb3-41e3-9e5b-77abc0dc0d9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofDirectShowPlayer">
-      <UniqueIdentifier>{708b066a-2379-437c-af4d-ca9ef2418060}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofDirectShowPlayer\src">
-      <UniqueIdentifier>{f35c3dbb-8223-42e4-8fb8-7b0218ffceed}</UniqueIdentifier>
+    <Filter Include="addons\ofxObjLoader\libs\glm">
+      <UniqueIdentifier>{b19536c7-bf8d-476a-b339-3fd6b9233cd3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -196,9 +190,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h">
       <Filter>addons\ofxObjLoader\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm.h">
-      <Filter>addons\ofxObjLoader\libs</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
@@ -350,9 +341,6 @@
     <ClInclude Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.h">
       <Filter>addons\ofxAutoreloadShader\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h">
-      <Filter>addons\ofDirectShowPlayer\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\CloudsVisualSystemProcess18.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
@@ -361,6 +349,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

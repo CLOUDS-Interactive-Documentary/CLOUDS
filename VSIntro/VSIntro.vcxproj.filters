@@ -19,9 +19,6 @@
     <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp">
       <Filter>addons\ofxObjLoader\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm.c">
-      <Filter>addons\ofxObjLoader\libs</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
@@ -121,9 +118,6 @@
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp">
-      <Filter>addons\ofDirectShowPlayer\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDController.cpp">
       <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
     </ClCompile>
@@ -138,6 +132,9 @@
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp">
       <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -204,17 +201,14 @@
     <Filter Include="CloudsLibrary\src\RGBD\Portal">
       <UniqueIdentifier>{c914f940-6594-43e2-b12e-a30265fe63f0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofDirectShowPlayer">
-      <UniqueIdentifier>{e0d9d343-eed1-496b-bb39-b4350d4caa2a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofDirectShowPlayer\src">
-      <UniqueIdentifier>{831ae2da-ca7c-4a80-ba6f-a2554c885971}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CloudsLibrary\src\StoryEngine">
       <UniqueIdentifier>{8d0d5dc2-f12d-4903-9a62-0319f71b643b}</UniqueIdentifier>
     </Filter>
     <Filter Include="CloudsLibrary\src\RGBD\HUD">
       <UniqueIdentifier>{777e0529-e9a6-4e3f-9b97-6d32dce59517}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxObjLoader\libs\glm">
+      <UniqueIdentifier>{c91f0296-1b60-46fb-9702-1e198956817a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -235,9 +229,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h">
       <Filter>addons\ofxObjLoader\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm.h">
-      <Filter>addons\ofxObjLoader\libs</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
@@ -416,9 +407,6 @@
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h">
-      <Filter>addons\ofDirectShowPlayer\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDController.h">
       <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
     </ClInclude>
@@ -433,6 +421,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h">
       <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
