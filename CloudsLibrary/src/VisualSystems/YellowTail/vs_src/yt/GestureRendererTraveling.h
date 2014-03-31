@@ -9,7 +9,7 @@
 #ifndef GESTURE_RENDERER_TRAVELING
 #define GESTURE_RENDERER_TRAVELING
 
-#import "GestureRenderer.h"
+#include "GestureRenderer.h"
 #include "Gesture.h"
 #include "YtPolygon.h"
 
