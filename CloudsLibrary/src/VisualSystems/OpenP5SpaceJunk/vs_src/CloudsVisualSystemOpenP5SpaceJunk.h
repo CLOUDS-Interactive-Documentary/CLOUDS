@@ -159,7 +159,7 @@ protected:
 	int limit;
 	int spread;
     float ang;
-    float speed_ = 10; //a number that increments ang
+    float speed_; //a number that increments ang
     
 	vector<Cube> list;
     

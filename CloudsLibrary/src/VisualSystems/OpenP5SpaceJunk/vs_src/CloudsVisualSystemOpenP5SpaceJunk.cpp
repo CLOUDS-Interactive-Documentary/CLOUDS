@@ -70,7 +70,8 @@ void CloudsVisualSystemOpenP5SpaceJunk::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
 	
-    ang = 0;
+    speed_ = 10;
+	ang = 0;
     shouldRegenerate = true;
 	ofxObjLoader::load(getVisualSystemDataPath() + "geometry/box.obj", baseBox);
 
