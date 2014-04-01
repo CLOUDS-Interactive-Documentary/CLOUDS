@@ -72,7 +72,7 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
-//void testApp::audioRequested(float *output, int bufferSize, int nChannels)
-//{
-//    mixer.fillBuffer(output, bufferSize, nChannels);
-//}
+void testApp::audioRequested(float *output, int bufferSize, int nChannels)
+{
+    mixer.fillBuffer(output, bufferSize, nChannels);
+}

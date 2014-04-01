@@ -242,8 +242,8 @@ void CloudsVisualSystemRipples::selfUpdate()
         // I don't know why everything is flipped, but it is.
         ofCircle(getCanvasHeight() - GetCloudsInputY(), getCanvasWidth() - GetCloudsInputX(), radius);
 #else
-        map<int, CloudsInteractionEventArgs> inputPoints = GetCloudsInputPoints();
-        for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+        std::map<int, CloudsInteractionEventArgs> inputPoints = GetCloudsInputPoints();
+        for (std::map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
             if ((bDropOnPress && it->second.actionType > 0) || (!bDropOnPress && ofGetFrameNum() % dropRate == 0)) {
                 ofCircle(it->second.position.x, it->second.position.y, radius);
                 
