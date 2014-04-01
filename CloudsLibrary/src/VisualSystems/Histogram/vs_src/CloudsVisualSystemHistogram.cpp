@@ -136,6 +136,10 @@ void CloudsVisualSystemHistogram::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemHistogram::selfSetup()
 {
     seed = int(ofRandom(20));
+	stepSize = 2;
+	noiseValue = 100;
+
+	n = 0;
     
     bDoAlphaBlending = true;
     bDoDepthTesting  = false;

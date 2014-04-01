@@ -120,11 +120,11 @@ protected:
     int maxNumDataPoints;
     
     int seed;
-    int stepSize = 2;
-    int noiseValue = 100;
+    int stepSize;
+    int noiseValue;
     
     float t;
-    int n = 0;
+    int n;
     
     ofDirectory soundsDir;
     int selectedSoundsIdx;
