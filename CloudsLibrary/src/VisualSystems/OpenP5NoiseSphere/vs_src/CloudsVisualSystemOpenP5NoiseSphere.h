@@ -12,7 +12,9 @@
 
 #include "CloudsVisualSystem.h"
 
+#ifdef TARGET_OSX
 #include "ofxAVFVideoPlayer.h"
+#endif
 
 #include "fft.h"
 #include "fftOctaveAnalyzer.h"
@@ -77,6 +79,13 @@ class Hair {
 		mesh.addColor(tipColor);
 		mesh.addVertex(ofVec3f(xb,yb,zb));
 	}
+	
+#ifdef TARGET_WIN32
+	// wtf windows come on http://stackoverflow.com/a/19884605
+	float roundf(float x) {
+		return x >= 0.0f ? floorf(x + 0.5f) : ceilf(x - 0.5f);
+	}
+#endif
 };
 
 //TODO: rename this to your own visual system
@@ -176,8 +185,8 @@ protected:
     int count;
 	vector<Hair> list;
 	float radius;
-	float rx = 0;
-	float ry = 0;
+	float rx;
+	float ry;
 
 	void generateNoiseSphere();
     float noisePosition;
@@ -211,13 +220,16 @@ protected:
     
     ofDirectory soundsDir;
     int selectedSoundsIdx;
-    bool bModeVideo;
     
-	bool soundPlayerReady;
-	bool videoPlayerReady;
 	ofShader shader;
-    ofxAVFVideoPlayer videoPlayer;
-    ofSoundPlayer soundPlayer;
+
+#ifdef TARGET_OSX
+	bool bModeVideo;
+	bool videoPlayerReady;
+	ofxAVFVideoPlayer videoPlayer;
+#endif
+    bool soundPlayerReady;
+	ofSoundPlayer soundPlayer;
     
     float scrollY;
     float scrollSpeed;

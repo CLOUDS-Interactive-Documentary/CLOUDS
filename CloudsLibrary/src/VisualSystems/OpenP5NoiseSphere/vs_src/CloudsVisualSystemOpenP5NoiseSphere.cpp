@@ -148,8 +148,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-void CloudsVisualSystemOpenP5NoiseSphere::selfSetDefaults(){
-	
+void CloudsVisualSystemOpenP5NoiseSphere::selfSetDefaults()
+{	
 	drawLines = true;
 	drawPoints = false;
 	pointSize = 2.0;
@@ -191,7 +191,9 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetDefaults(){
     scrollSpeed = 0.1f;
 
 	soundPlayerReady = false;
+#ifdef TARGET_OSX
 	videoPlayerReady = false;
+#endif
 
     fMainGain = 1;
 }
@@ -201,11 +203,19 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetDefaults(){
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
 {
+	rx = 0;
+	ry = 0;
 
 	leftBuffer  = NULL;
     rightBuffer = NULL;
     bAudioBuffered = false;
-    
+
+	soundsDir.allowExt("aif");
+	soundsDir.allowExt("wav");
+#ifdef TARGET_OSX
+	soundsDir.allowExt("mp4");
+	soundsDir.allowExt("mov");
+#endif
     soundsDir.listDir(getVisualSystemDataPath() + "sounds" );
     soundsDir.sort();
     selectedSoundsIdx = 0;
@@ -221,13 +231,12 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     reloadShader();
 }
 
-void CloudsVisualSystemOpenP5NoiseSphere::generateNoiseSphere(){
-
+void CloudsVisualSystemOpenP5NoiseSphere::generateNoiseSphere()
+{
 	list.clear();
 	for (int i=0; i<count; i++) {
 		list.push_back( Hair(radius) );
 	}
-	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -241,16 +250,19 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemOpenP5NoiseSphere::selfBegin(){
+#ifdef TARGET_OSX
 	if(bModeVideo){
 		videoPlayer.play();
 		videoPlayer.setLoopState(OF_LOOP_NORMAL);
 	}
 	else {
+#endif
 		soundPlayer.play();
 		soundPlayer.setLoop(true);
         soundPlayer.setVolume(fMainGain);
+#ifdef TARGET_OSX
 	}
-	
+#endif
 }
 
 //do things like ofRotate/ofTranslate here
@@ -266,7 +278,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
 	if(list.size() != count){
 		generateNoiseSphere();
 	}
-	
+
+#ifdef TARGET_OSX
     if (bModeVideo) {
         videoPlayer.update();
         if (videoPlayer.isAudioLoaded()) {
@@ -288,13 +301,16 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
         }
     }
     else {
+#endif
         ofSoundUpdate();
         bAudioBuffered = true;
 
         soundPlayer.setVolume(fMainGain);
         
         currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust * (1/fMainGain);
-    }
+#ifdef TARGET_OSX
+	}
+#endif
     
     if (bAudioBuffered) {
         ((ofxUISlider *)audioGui->getWidget("LEVEL"))->setValue(currLevel);
@@ -370,7 +386,6 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 	}
 	
 	if(drawPoints){
-
 		shader.begin();
 		glPushAttrib(GL_POINT_BIT);
 		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -403,14 +418,18 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDrawBackground(){
 }
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
-void CloudsVisualSystemOpenP5NoiseSphere::selfEnd(){
-
+void CloudsVisualSystemOpenP5NoiseSphere::selfEnd()
+{
+#ifdef TARGET_OSX
 	if(bModeVideo){
 		videoPlayer.stop();
 	}
 	else {
+#endif
 		soundPlayer.stop();
+#ifdef TARGET_OSX
 	}
+#endif
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -458,28 +477,28 @@ void CloudsVisualSystemOpenP5NoiseSphere::reloadSound()
     // close whatever sound was previously open
     soundPlayer.stop();
     soundPlayer.unloadSound();
+#ifdef TARGET_OSX
     videoPlayer.stop();
     videoPlayer.close();
-    
+#endif
+
+	// Load but don't play until begin()
     ofFile file = soundsDir.getFile(selectedSoundsIdx);
+#ifdef TARGET_OSX
     if (file.getExtension() == "mp4" || file.getExtension() == "mov") {
         bModeVideo = true;
         
         videoPlayer.loadMovie(file.getAbsolutePath());
-		//JG don't play until begin()
-//        videoPlayer.play();
-//        videoPlayer.setLoopState(OF_LOOP_NORMAL);
 		videoPlayerReady = true;
     }
     else {
         bModeVideo = false;
+#endif
         soundPlayer.loadSound(file.getAbsolutePath());
-		//JG dont play until begin()
-//        soundPlayer.play();
-//        soundPlayer.setLoop(true);
-		
 		soundPlayerReady = true;
+#ifdef TARGET_OSX
     }
+#endif
 }
 
 void CloudsVisualSystemOpenP5NoiseSphere::reloadShader(){
