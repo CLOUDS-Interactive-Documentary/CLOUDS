@@ -330,7 +330,6 @@ void CloudsVisualSystemCubeCraft::selfSetup()
 	
 	//cout << "Number of boxes == " << (dimX * dimY * dimZ) << endl;
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/box.obj", cubeMesh );
-	cout << getVisualSystemDataPath() << "models/box.obj" << endl;
 	
 	loadShaders();
 	
