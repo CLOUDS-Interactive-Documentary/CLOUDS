@@ -23,8 +23,8 @@ varying vec2 uv;
 varying float camDelta;
 varying float fogAmount;
 
-varying float doDiscard = .0;
-varying float isCloud = 0.;
+varying float doDiscard;
+varying float isCloud;
 
 
 vec3 mod289(vec3 x) {
@@ -106,6 +106,7 @@ float sampleSkyNoise( vec2 p )
 void main()
 {
 	doDiscard = 0.;
+	isCloud = 0.;
 	
 	//important variables
 	vertex = gl_Vertex.xyz;

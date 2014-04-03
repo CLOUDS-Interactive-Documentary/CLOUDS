@@ -22,9 +22,9 @@ varying vec3 ePos;
 varying vec2 uv;
 varying float camDelta;
 
-varying float doDiscard = .0;
-varying float isGround = .0;
-varying float isCloud = 0.;
+varying float doDiscard;
+varying float isGround;
+varying float isCloud;
 
 varying vec4 groundSample;
 uniform float groundDrama = .75;
@@ -122,6 +122,8 @@ float sampleSkyNoise( vec2 p )
 void main()
 {
 	doDiscard = 0.;
+	isGround = 0.;
+	isCloud = 0.;
 	
 	//important variables
 	vertex = gl_Vertex.xyz;

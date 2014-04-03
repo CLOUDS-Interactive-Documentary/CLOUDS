@@ -31,7 +31,7 @@ varying vec2 uv;
 varying float camDelta;
 varying float fogAmount;
 
-varying float doDiscard = .0;
+varying float doDiscard;
 varying vec4 groundSample;
 varying float underSky;
 varying float lowerBoundY;
