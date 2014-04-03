@@ -28,8 +28,8 @@ fi
 # git clone https://github.com/rezaali/ofxUI
 ${NEWPREFIX}ofxUI
 cd ofxUI
-git checkout -b 'clouds-develop' --track 'origin/clouds-develop'
-git pull origin 'clouds-develop'
+git checkout -b 'clouds-64' --track 'origin/clouds-64'
+git pull origin 'clouds-64'
 cd ..
 
 ${NEWPREFIX}ofxCocoaGLView

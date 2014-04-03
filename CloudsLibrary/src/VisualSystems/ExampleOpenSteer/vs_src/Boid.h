@@ -102,10 +102,13 @@ public:
 	};
     
     void update(float curTime, float elapsedTime){
+//		cout << "position before update: " << position() << endl;
         ofxOpenSteerVehicle::update(curTime, elapsedTime);
+//		cout << "position after update: " << position() << endl;
+
         if(pt) pt->updateForNewPosition (position());
         
-        history.push_back(getPosition());
+//        history.push_back(getPosition());
         while (history.size() > trailVertexCount) {
             history.pop_front();
         }

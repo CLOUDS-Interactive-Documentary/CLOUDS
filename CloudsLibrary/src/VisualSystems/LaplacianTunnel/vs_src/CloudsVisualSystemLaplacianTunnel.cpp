@@ -238,10 +238,10 @@ void CloudsVisualSystemLaplacianTunnel::reloadShader(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 	
-	glEnable(GL_CULL_FACE);
+	//glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_LIGHTING);
-	glFrontFace(GL_CCW);
+	//glFrontFace(GL_CCW);
 	
 	glPointSize(2);
 	if(vbos.size() > 0){
@@ -304,7 +304,7 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 		shader.end();
 	}
 	
-	glDisable(GL_CULL_FACE);
+//	glDisable(GL_CULL_FACE);
 
 }
 
