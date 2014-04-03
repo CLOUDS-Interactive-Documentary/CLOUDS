@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp">
+      <Filter>addons\ofxOculusRift\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp">
+      <Filter>addons\ofxObjLoader\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp">
+      <Filter>addons\ofxCameraSaveLoad</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBufferEffectorBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxDamperBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxDistorterBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxElectroStaticBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxField2D.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxHomingBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxLorentzBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxPerlinBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticle.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleGlowieRenderer.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleRenderer.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleSystem.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSolver.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSphericalAttractionBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Boid.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\CloudsVisualSystemExampleOpenSteer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\SegmentedPath.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\SegmentedPathway.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\SimpleVehicle.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\TerrainRayTest.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Vec3.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Vec3Utilities.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Camera.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Clock.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Color.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\lq.c">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Obstacle.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\OldPathway.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Path.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Pathway.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PlugIn.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PolylineSegmentedPath.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PolylineSegmentedPathwaySegmentRadii.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PolylineSegmentedPathwaySingleRadius.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerVehicle.cpp">
+      <Filter>addons\ofxOpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerPlugin.cpp">
+      <Filter>addons\ofxOpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Draw.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\OpenSteerDemo.cpp">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{014ab87c-b1ee-4040-b3e5-4168bea9bf0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOculusRift">
+      <UniqueIdentifier>{599ff151-b55e-4f90-811c-ddc762158741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOculusRift\src">
+      <UniqueIdentifier>{63afbfed-3fa9-423b-a6a5-72803b5300b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL">
+      <UniqueIdentifier>{f6f83f01-142d-486b-945e-d50972bd9aab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL\src">
+      <UniqueIdentifier>{0edaa6ac-2a39-450b-a158-af0ad414ec05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxObjLoader">
+      <UniqueIdentifier>{5a499287-c163-4448-bf25-f2bc2246199f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxObjLoader\src">
+      <UniqueIdentifier>{9cd579b6-7f5c-4c5e-bac2-8db6c7e143db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxObjLoader\libs">
+      <UniqueIdentifier>{e0b4b5ae-87c5-435f-8993-6fc5ed2ac486}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary">
+      <UniqueIdentifier>{3f91ef80-5457-40be-b909-0e1182dd2195}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src">
+      <UniqueIdentifier>{ba3cc539-df88-4086-8928-aabd55c76719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystemsLibrary">
+      <UniqueIdentifier>{0fc571d4-f93f-4708-aa1b-f8ad1f57e42e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCameraSaveLoad">
+      <UniqueIdentifier>{b198977d-637f-4503-a5c1-33e0d734b23d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGenerative">
+      <UniqueIdentifier>{4b606eb2-996a-440d-905e-07ade19c4484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGenerative\src">
+      <UniqueIdentifier>{79f0fa72-1b4c-4a8d-8a6c-07b72e084eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems">
+      <UniqueIdentifier>{4046dd83-344a-485d-8d98-a59dddbe4541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Input">
+      <UniqueIdentifier>{311161e7-1ae0-42e6-9c73-a0fc0372abf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxObjLoader\libs\glm">
+      <UniqueIdentifier>{3c3a084f-1f94-410a-beea-5864fde43503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\ExampleOpenSteer">
+      <UniqueIdentifier>{c6d6e5a1-f831-4f07-9442-226bbd386435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src">
+      <UniqueIdentifier>{a5bd867b-a290-4d82-b6a2-d558ce1ca61f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOpenSteer">
+      <UniqueIdentifier>{1f2b5265-8029-43b8-b010-19a25ee16160}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOpenSteer\src">
+      <UniqueIdentifier>{58632a65-2e07-436f-b9c5-6951929622e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOpenSteer\libs">
+      <UniqueIdentifier>{7e279fd7-fc3c-4ed4-a6af-09d9abf2feb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOpenSteer\libs\opensteer">
+      <UniqueIdentifier>{8c3b89df-bb55-4333-95ad-8cb4adbff4a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOpenSteer\libs\opensteer\include">
+      <UniqueIdentifier>{2ee3614b-c517-4208-ae97-7afb8df93bd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOpenSteer\libs\opensteer\include\OpenSteer">
+      <UniqueIdentifier>{647e5afa-3698-455a-b91c-d693e18e14c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOpenSteer\libs\opensteer\src">
+      <UniqueIdentifier>{fc1ecf24-b1f4-4435-82d9-6593b85cdfae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h">
+      <Filter>addons\ofxOculusRift\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h">
+      <Filter>addons\ofxObjLoader\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h">
+      <Filter>addons\ofxCameraSaveLoad</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofx1DExtruder.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBufferEffectorBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxCircle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxDamperBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxDistorterBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxElectroStaticBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxField2D.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxFieldAgitator.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxGenerative.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxGenericShape.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHOCParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHOCParticleSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHomingBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxLorentzBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticleSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticleTouch.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxPerlinBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRezaParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRezaParticleSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleData.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleGlowieRenderer.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleRenderer.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSmartParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSmartParticleSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSolver.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSphericalAttractionBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSpring.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSpringSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSuperShape.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxTrailParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Boid.h">
+      <Filter>CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\CloudsVisualSystemExampleOpenSteer.h">
+      <Filter>CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Flocking.h">
+      <Filter>CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\ObstacleAvoidance.h">
+      <Filter>CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\PathFollowing.h">
+      <Filter>CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\PursuitAndEvade.h">
+      <Filter>CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\TerrainRayTest.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SegmentedPathway.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SharedPointer.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SimpleVehicle.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\StandardTypes.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SteerLibrary.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\UnusedParameter.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Utilities.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Vec3.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Vec3Utilities.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\AbstractVehicle.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Annotation.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Camera.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Clock.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Color.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\LocalSpace.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\lq.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Obstacle.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\OldPathway.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Path.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Pathway.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PlugIn.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PolylineSegmentedPath.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PolylineSegmentedPathwaySegmentRadii.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PolylineSegmentedPathwaySingleRadius.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Proximity.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlike.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlikeBaseDataExtractionPolicies.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlikeMappings.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlikeUtilities.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SegmentedPath.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SegmentedPathAlikeUtilities.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerPlugin.h">
+      <Filter>addons\ofxOpenSteer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerTypes.h">
+      <Filter>addons\ofxOpenSteer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerUtils.h">
+      <Filter>addons\ofxOpenSteer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerVehicle.h">
+      <Filter>addons\ofxOpenSteer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteer.h">
+      <Filter>addons\ofxOpenSteer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Draw.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\OpenSteerDemo.h">
+      <Filter>addons\ofxOpenSteer\libs\opensteer\include\OpenSteer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
