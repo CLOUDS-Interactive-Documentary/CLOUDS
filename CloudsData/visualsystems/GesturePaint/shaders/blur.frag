@@ -1,5 +1,6 @@
 /* BlurFragmentShader.glsl */
 //precision mediump float;
+#extension GL_ARB_texture_rectangle : enable
 
 uniform sampler2DRect s_texture;
 

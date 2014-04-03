@@ -1,4 +1,5 @@
 /* HBlurVertexShader.glsl */
+#extension GL_ARB_texture_rectangle : enable
 
 uniform vec2 dimensions;
 uniform sampler2DRect s_texture;

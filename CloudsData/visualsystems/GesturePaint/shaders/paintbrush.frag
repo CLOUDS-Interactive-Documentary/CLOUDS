@@ -1,3 +1,4 @@
+#extension GL_ARB_texture_rectangle : enable
 
 uniform vec2 brushDimensions;
 uniform vec2 paletteDimensions;

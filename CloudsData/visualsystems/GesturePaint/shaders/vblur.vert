@@ -1,4 +1,3 @@
-
 /* VBlurVertexShader.glsl */
 
 uniform vec2 dimensions;

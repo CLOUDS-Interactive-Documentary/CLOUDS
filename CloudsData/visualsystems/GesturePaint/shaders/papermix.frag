@@ -1,5 +1,5 @@
-
 /* VBlurVertexShader.glsl */
+#extension GL_ARB_texture_rectangle : enable
 
 uniform vec2 dimensions;
 
