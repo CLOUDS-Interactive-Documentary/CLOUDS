@@ -85,9 +85,6 @@
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp">
       <Filter>addons\ofxGenerative\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
@@ -96,9 +93,6 @@
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp">
-      <Filter>addons\ofDirectShowPlayer\src</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp">
       <Filter>CloudsLibrary\src\RGBD</Filter>
@@ -141,6 +135,588 @@
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Bubbles.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\CloudsVisualSystemSwim.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creature.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creatures.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\JellyCreature.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\MarineSnow.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\ModelCreature.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\PointCreature.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\CircularFormula.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\MeshUtils.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\ofxCubeMap.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SphericalGenerator.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SuperFormula.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Terrain\vs_src\CloudsVisualSystemTerrain.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ThingsInTheDark\vs_src\CloudsVisualSystemThingsInTheDark.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src\CloudsVisualSystemTunnelDrawing.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\CloudsVisualSystemTwitter.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\Tweeter.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Uextrude\vs_src\CloudsVisualSystemUextrude.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\VectorFlow\vs_src\CloudsVisualSystemVectorFlow.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\CloudsVisualSystemVerletForm.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Vision\vs_src\CloudsVisualSystemVision.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Vision\vs_src\MyTracker.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\CloudsVisualSystemVoro.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\cell.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\common.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\container.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\container_prd.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\c_loops.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\pre_container.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\unitcell.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\v_base.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\v_compute.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\wall.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\Voro.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\VoroParticle.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\vParticle.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WebHistory\vs_src\CloudsVisualSystemWebHistory.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WebHistory\vs_src\HistoryNode.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\CloudsVisualSystemWorld.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wArc.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wCity.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wParticle.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wSatellite.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wStar.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsPathCamera.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsVisualSystemWormHole.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Xstatic\vs_src\CloudsVisualSystemXstatic.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Xstatic\vs_src\XParticle.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\CloudsVisualSystemYellowTail.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\Gesture.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRenderer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRendererInPlace.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRendererTraveling.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_Intro\vs_src\CloudsIntroSequence.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\2DVideo\vs_src\CloudsVisualSystem2DVideo.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\3DModelLoader\vs_src\CloudsOrthoCamera.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\3DModelLoader\vs_src\CloudsVisualSystem3DModelLoader.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src\Astrolabe.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src\CloudsVisualSystemAstrolabe.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Automata\vs_src\CloudsVisualSystemAutomata.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\Ball.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\CloudsVisualSystemBallDroppings.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\EditLine.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\FileUtils.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\LinkedList.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\LinkedListItem.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\ParamManager.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\V3.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Chromogram\vs_src\CloudsVisualSystemChromogram.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\Circle.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\CirclePacker.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\CloudsVisualSystemCirclePacking.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Circuit\vs_src\CloudsVisualSystemCircuit.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Cities\vs_src\CloudsVisualSystemCities.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\CloudsVisualSystemCode.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\Panel.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelCode.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelConsole.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelGraph.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelTenPrint.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Colony\vs_src\CloudsVisualSystemColony.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Colony\vs_src\gCell.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\CloudsVisualSystemConnectors.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnection.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectionGenerator.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnector.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectorBin.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\CubeCraft\vs_src\CloudsVisualSystemCubeCraft.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\brushedLine.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\CloudsVisualSystemDrawnLine.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\curvedLine.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\drawnLineApp.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\lineMatchUtils.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Empty\vs_src\CloudsVisualSystemEmpty.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleBox2D\vs_src\CloudsVisualSystemExampleBox2D.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src\CloudsVisualSystemExampleMPMFluid.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Boid.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\CloudsVisualSystemExampleOpenSteer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleVectorMath\vs_src\CloudsVisualSystemExampleVectorMath.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Fireworks\vs_src\CloudsVisualSystemFireworks.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Flocking\vs_src\CloudsVisualSystemFlocking.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Flying\vs_src\CloudsVisualSystemFlying.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ForkingPaths\vs_src\CloudsVisualSystemForkingPaths.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\GesturePaint\vs_src\CloudsVisualSystemGesturePaint.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\GPUParticles\vs_src\CloudsVisualSystemGPUParticles.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\ofVboByteColor.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\CloudsVisualSystemLinePoem.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\linePoemApp.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\CloudsVisualSystemLSystem.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\LNode.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\LSystem.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\CloudsVisualSystemMandala.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\MandalaComponent.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\SurfacePoint.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MarchingCubes\vs_src\CloudsVisualSystemMarchingCubes.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\CloudsVisualSystemMazeGenerator.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\Maze.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCamera.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCell.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeSettings.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MovingBall.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\CloudsVisualSystemMazeGenerator2.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\Maze2.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\MazeCamera2.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\MazeCell2.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\ParamManager2.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Memory\vs_src\CloudsVisualSystemMemory.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Metaballs\vs_src\CloudsVisualSystemMetaballs.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Nbody\vs_src\CloudsVisualSystemNbody.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Neurons\vs_src\CloudsVisualSystemNeurons.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Ocean\vs_src\CloudsVisualSystemOcean.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Caustics\vs_src\Caster.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Caustics\vs_src\CastManager.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Hackpact\vs_src\CloudsVisualSystemOpenP5Hackpact.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Machine\vs_src\CloudsVisualSystemOpenP5Machine.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\CloudsVisualSystemOpenP5NoiseSphere.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\fft.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\fftOctaveAnalyzer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5SeaOfLines\vs_src\CloudsVisualSystemOpenP5SeaOfLines.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Sixteen\vs_src\CloudsVisualSystemOpenP5Sixteen.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5SpaceJunk\vs_src\CloudsVisualSystemOpenP5SpaceJunk.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Spaghetti\vs_src\CloudsVisualSystemOpenP5Spaghetti.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Spaghetti\vs_src\Walker.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5SpinningSolids\vs_src\Tetra.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\CloudsVisualSystemOpenP5TextUniverse.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\TUOrbital.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP53DIntro\vs_src\CloudsVisualSystemAutomata.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\CloudsVisualSystemOrbit.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\Path.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\PathPoint.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Oscillations\vs_src\CloudsVisualSystemOscillations.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Pages\vs_src\CloudsVisualSystemPages.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Pages\vs_src\Page.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Brush.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\CloudsVisualSystemPaintBrush.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Particle.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Spring.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PhotoGlitch\vs_src\CloudsVisualSystemPhotoGlitch.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits\vs_src\CloudsVisualSystemRandomDigits.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits\vs_src\Rand.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\CloudsVisualSystemRandomDigits2.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\Rand.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\RandomNumber.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Replicator\vs_src\CloudsVisualSystemReplicator.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RGBDVideo\vs_src\CloudsVisualSystemRGBDVideo.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Ripples\vs_src\CloudsVisualSystemRipples.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\CloudsVisualSystemRulez.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\Action.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\ConeAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\CubeAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\IcosphereAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\LineAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PlaneAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PointAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\SphereAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\StopAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TransformAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TubeAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Branch.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rule.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rules.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\RuleSet.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Satoruhiga\vs_src\CloudsVisualSystemSatoruhiga.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Schlabberbox\vs_src\CloudsVisualSystemSchlabberbox.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Schlabberbox\vs_src\GridFluid.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Scrape\vs_src\CloudsVisualSystemScrape.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Scrape\vs_src\ofxMtlBoxFitting.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,12 +770,6 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\Input">
       <UniqueIdentifier>{311161e7-1ae0-42e6-9c73-a0fc0372abf4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofDirectShowPlayer">
-      <UniqueIdentifier>{07a8412c-c319-44cb-83f2-df0a8afa4881}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofDirectShowPlayer\src">
-      <UniqueIdentifier>{d5b5dc0f-2585-4790-bb49-de47fcddb044}</UniqueIdentifier>
     </Filter>
     <Filter Include="CloudsLibrary\src\RGBD">
       <UniqueIdentifier>{964fad5f-d266-4540-b91f-1b2c529c20fd}</UniqueIdentifier>
@@ -371,9 +941,6 @@
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h">
       <Filter>addons\ofxGenerative\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClInclude>
@@ -388,9 +955,6 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h">
-      <Filter>addons\ofDirectShowPlayer\src</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>
@@ -439,6 +1003,654 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Bubbles.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\CloudsVisualSystemSwim.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creature.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creatures.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\JellyCreature.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\MarineSnow.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\ModelCreature.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\PointCreature.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\CircularFormula.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\MeshUtils.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\ofxCubeMap.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\Singleton.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SphericalGenerator.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SuperFormula.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Terrain\vs_src\CloudsVisualSystemTerrain.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ThingsInTheDark\vs_src\CloudsVisualSystemThingsInTheDark.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src\CloudsVisualSystemTunnelDrawing.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\CloudsVisualSystemTwitter.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\Tweeter.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Uextrude\vs_src\CloudsVisualSystemUextrude.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\VectorFlow\vs_src\CloudsVisualSystemVectorFlow.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\CloudsVisualSystemVerletForm.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Vision\vs_src\CloudsVisualSystemVision.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Vision\vs_src\MyTracker.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\CloudsVisualSystemVoro.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\cell.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\common.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\config.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\container.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\container_prd.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\c_loops.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\pre_container.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\rad_option.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\unitcell.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\voro++.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\v_base.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\v_compute.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\wall.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\worklist.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\Voro.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\VoroParticle.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\vParticle.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WebHistory\vs_src\CloudsVisualSystemWebHistory.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WebHistory\vs_src\HistoryNode.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\CloudsVisualSystemWorld.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wArc.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wCity.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wParticle.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wSatellite.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wStar.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsPathCamera.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsVisualSystemWormHole.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Xstatic\vs_src\CloudsVisualSystemXstatic.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Xstatic\vs_src\XParticle.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\CloudsVisualSystemYellowTail.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\Gesture.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRenderer.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRendererInPlace.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRendererTraveling.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\Vec3f.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\YellowTail.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\YellowTailColor.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\YtPolygon.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_Intro\vs_src\CloudsIntroSequence.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\2DVideo\vs_src\CloudsVisualSystem2DVideo.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\3DModelLoader\vs_src\CloudsOrthoCamera.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\3DModelLoader\vs_src\CloudsVisualSystem3DModelLoader.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src\Astrolabe.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src\CloudsVisualSystemAstrolabe.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Automata\vs_src\CloudsVisualSystemAutomata.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\Ball.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\CloudsVisualSystemBallDroppings.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\EditLine.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\FileUtils.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\LinkedList.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\LinkedListItem.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\ParamManager.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\V3.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Chromogram\vs_src\CloudsVisualSystemChromogram.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\Circle.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\CirclePacker.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\CloudsVisualSystemCirclePacking.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Circuit\vs_src\CloudsVisualSystemCircuit.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cities\vs_src\CloudsVisualSystemCities.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\CloudsVisualSystemCode.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\Panel.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelCode.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelConsole.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelGraph.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelTenPrint.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Colony\vs_src\CloudsVisualSystemColony.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Colony\vs_src\gCell.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\CloudsVisualSystemConnectors.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnection.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectionGenerator.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnector.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectorBin.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\CubeCraft\vs_src\CloudsVisualSystemCubeCraft.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\brushedLine.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\CloudsVisualSystemDrawnLine.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\curvedLine.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\drawnLineApp.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\lineMatchUtils.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\statistics.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Empty\vs_src\CloudsVisualSystemEmpty.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleBox2D\vs_src\CloudsVisualSystemExampleBox2D.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src\CloudsVisualSystemExampleMPMFluid.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Boid.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\CloudsVisualSystemExampleOpenSteer.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Flocking.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\ObstacleAvoidance.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\PathFollowing.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\PursuitAndEvade.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleVectorMath\vs_src\CloudsVisualSystemExampleVectorMath.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Fireworks\vs_src\CloudsVisualSystemFireworks.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Flocking\vs_src\CloudsVisualSystemFlocking.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Flying\vs_src\CloudsVisualSystemFlying.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ForkingPaths\vs_src\CloudsVisualSystemForkingPaths.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\GesturePaint\vs_src\CloudsVisualSystemGesturePaint.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\GPUParticles\vs_src\CloudsVisualSystemGPUParticles.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\ofVboByteColor.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\angleLengthLine.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\angleLengthLineMorpher.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\anglePoint.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\CloudsVisualSystemLinePoem.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\linePoemApp.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\CloudsVisualSystemLSystem.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\LNode.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\LSystem.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\CloudsVisualSystemMandala.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\MandalaComponent.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\MandalaTicker.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\SurfacePoint.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MarchingCubes\vs_src\CloudsVisualSystemMarchingCubes.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\CloudsVisualSystemMazeGenerator.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\Maze.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCamera.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCell.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeSettings.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MovingBall.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\CloudsVisualSystemMazeGenerator2.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\Maze2.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\MazeCamera2.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\MazeCell2.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\ParamManager2.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Memory\vs_src\CloudsVisualSystemMemory.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Metaballs\vs_src\CloudsVisualSystemMetaballs.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Nbody\vs_src\CloudsVisualSystemNbody.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Neurons\vs_src\CloudsVisualSystemNeurons.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Ocean\vs_src\CloudsVisualSystemOcean.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Caustics\vs_src\Caster.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Caustics\vs_src\CastManager.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Hackpact\vs_src\CloudsVisualSystemOpenP5Hackpact.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Machine\vs_src\CloudsVisualSystemOpenP5Machine.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\CloudsVisualSystemOpenP5NoiseSphere.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\fft.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\fftOctaveAnalyzer.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5SeaOfLines\vs_src\CloudsVisualSystemOpenP5SeaOfLines.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Sixteen\vs_src\CloudsVisualSystemOpenP5Sixteen.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5SpaceJunk\vs_src\CloudsVisualSystemOpenP5SpaceJunk.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Spaghetti\vs_src\CloudsVisualSystemOpenP5Spaghetti.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Spaghetti\vs_src\Walker.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5SpinningSolids\vs_src\Tetra.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\CloudsVisualSystemOpenP5TextUniverse.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\TUOrbital.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\TUText.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP53DIntro\vs_src\CloudsVisualSystemOpenP53DIntro.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\CloudsVisualSystemOrbit.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\Path.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\PathPoint.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Oscillations\vs_src\CloudsVisualSystemOscillations.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Pages\vs_src\CloudsVisualSystemPages.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Pages\vs_src\Page.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Brush.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\CloudsVisualSystemPaintBrush.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Particle.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Spring.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PhotoGlitch\vs_src\CloudsVisualSystemPhotoGlitch.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\QuineVisualSystem\vs_src\QuineVisualSystem.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits\vs_src\CloudsVisualSystemRandomDigits.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits\vs_src\Rand.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\CloudsVisualSystemRandomDigits2.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\Rand.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\RandomNumber.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Replicator\vs_src\CloudsVisualSystemReplicator.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RGBDVideo\vs_src\CloudsVisualSystemRGBDVideo.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Ripples\vs_src\CloudsVisualSystemRipples.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\CloudsVisualSystemRulez.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\Action.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\ConeAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\CubeAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\IcosphereAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\LineAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PlaneAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PointAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\SphereAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\StopAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TransformAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TubeAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Branch.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\ofxRules.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rule.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rules.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\RuleSet.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Satoruhiga\vs_src\CloudsVisualSystemSatoruhiga.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Satoruhiga\vs_src\Replecator.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Schlabberbox\vs_src\CloudsVisualSystemSchlabberbox.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Schlabberbox\vs_src\GridFluid.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Scrape\vs_src\CloudsVisualSystemScrape.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Scrape\vs_src\ofxMtlBoxFitting.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
