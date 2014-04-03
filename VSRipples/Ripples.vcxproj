@@ -131,6 +131,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.d
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ripples\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -177,6 +178,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.d
       <WarningLevel>Level3</WarningLevel>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ripples\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>

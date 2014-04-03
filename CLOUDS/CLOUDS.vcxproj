@@ -21,8 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>emptyExample</RootNamespace>
-    <ProjectName>CLOUDS</ProjectName>
+    <RootNamespace>audioOutputExample</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -51,26 +50,30 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
-    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
+    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
-    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
+    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
-    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
+    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
-    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
+    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -102,20 +105,20 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ripples\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>libovrd.lib;ftgl_static_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\Win32;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
-xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxAnimagick\scripts\vs\Animagick.bat" "$(ProjectDir)bin"
-xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "$(ProjectDir)bin"</Command>
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.dll" "$(ProjectDir)bin"</Command>
+      <Message>adding DLLs and creating data folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -126,20 +129,20 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofDirectShowVideoPlayer\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src;..\CloudsLibrary\src\VisualSystems\_Intro\vs_src;..\CloudsLibrary\src\VisualSystems\2DVideo\vs_src;..\CloudsLibrary\src\VisualSystems\3DModelLoader\vs_src;..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src;..\CloudsLibrary\src\VisualSystems\Automata\vs_src;..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src;..\CloudsLibrary\src\VisualSystems\Chromogram\vs_src;..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src;..\CloudsLibrary\src\VisualSystems\Circuit\vs_src;..\CloudsLibrary\src\VisualSystems\Cities\vs_src;..\CloudsLibrary\src\VisualSystems\Code\vs_src;..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels;..\CloudsLibrary\src\VisualSystems\Colony\vs_src;..\CloudsLibrary\src\VisualSystems\Connectors\vs_src;..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src;..\CloudsLibrary\src\VisualSystems\CubeCraft\vs_src;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src;..\CloudsLibrary\src\VisualSystems\ExampleBox2D\vs_src;..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src;..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src;..\CloudsLibrary\src\VisualSystems\ExampleVectorMath\vs_src;..\CloudsLibrary\src\VisualSystems\Fireworks\vs_src;..\CloudsLibrary\src\VisualSystems\Flocking\vs_src;..\CloudsLibrary\src\VisualSystems\Flying\vs_src;..\CloudsLibrary\src\VisualSystems\ForkingPaths\vs_src;..\CloudsLibrary\src\VisualSystems\GesturePaint\vs_src;..\CloudsLibrary\src\VisualSystems\Histogram\vs_src;..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src;..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src;..\CloudsLibrary\src\VisualSystems\LSystem\vs_src;..\CloudsLibrary\src\VisualSystems\Mandala\vs_src;..\CloudsLibrary\src\VisualSystems\MarchingCubes\vs_src;..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src;..\CloudsLibrary\src\VisualSystems\Memory\vs_src;..\CloudsLibrary\src\VisualSystems\Metaballs\vs_src;..\CloudsLibrary\src\VisualSystems\Neurons\vs_src;..\CloudsLibrary\src\VisualSystems\Ocean\vs_src;..\CloudsLibrary\src\VisualSystems\OpenP5Fifteen\vs_src;..\CloudsLibrary\src\VisualSystems\OpenP5Hackpact\vs_src;..\CloudsLibrary\src\VisualSystems\OpenP5Machine\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
-      <CompileAs>Default</CompileAs>
-      <PrecompiledHeader />
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ripples\vs_src;src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>libovr64d.lib;ftgl_static_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\x64;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
-</Command>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -148,7 +151,7 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ripples\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -158,13 +161,13 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>libovr.lib;ftgl_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\Win32;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
-xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxAnimagick\scripts\vs\Animagick.bat" "$(ProjectDir)bin"
-xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "$(ProjectDir)bin"</Command>
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.dll" "$(ProjectDir)bin"</Command>
+      <Message>adding DLLs and creating data folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -173,8 +176,9 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofDirectShowVideoPlayer\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src;..\CloudsLibrary\src\VisualSystems\_Intro\vs_src;..\CloudsLibrary\src\VisualSystems\2DVideo\vs_src;..\CloudsLibrary\src\VisualSystems\3DModelLoader\vs_src;..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src;..\CloudsLibrary\src\VisualSystems\Automata\vs_src;..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src;..\CloudsLibrary\src\VisualSystems\Chromogram\vs_src;..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src;..\CloudsLibrary\src\VisualSystems\Circuit\vs_src;..\CloudsLibrary\src\VisualSystems\Cities\vs_src;..\CloudsLibrary\src\VisualSystems\Code\vs_src;..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels;..\CloudsLibrary\src\VisualSystems\Colony\vs_src;..\CloudsLibrary\src\VisualSystems\Connectors\vs_src;..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src;..\CloudsLibrary\src\VisualSystems\CubeCraft\vs_src;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src;..\CloudsLibrary\src\VisualSystems\ExampleBox2D\vs_src;..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src;..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src;..\CloudsLibrary\src\VisualSystems\ExampleVectorMath\vs_src;..\CloudsLibrary\src\VisualSystems\Fireworks\vs_src;..\CloudsLibrary\src\VisualSystems\Flocking\vs_src;..\CloudsLibrary\src\VisualSystems\Flying\vs_src;..\CloudsLibrary\src\VisualSystems\ForkingPaths\vs_src;..\CloudsLibrary\src\VisualSystems\GesturePaint\vs_src;..\CloudsLibrary\src\VisualSystems\Histogram\vs_src;..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src;..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src;..\CloudsLibrary\src\VisualSystems\LSystem\vs_src;..\CloudsLibrary\src\VisualSystems\Mandala\vs_src;..\CloudsLibrary\src\VisualSystems\MarchingCubes\vs_src;..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src;..\CloudsLibrary\src\VisualSystems\Memory\vs_src;..\CloudsLibrary\src\VisualSystems\Metaballs\vs_src;..\CloudsLibrary\src\VisualSystems\Neurons\vs_src;..\CloudsLibrary\src\VisualSystems\Ocean\vs_src;..\CloudsLibrary\src\VisualSystems\OpenP5Fifteen\vs_src;..\CloudsLibrary\src\VisualSystems\OpenP5Hackpact\vs_src;..\CloudsLibrary\src\VisualSystems\OpenP5Machine\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ripples\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -183,550 +187,53 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>libovr64.lib;ftgl_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\x64;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
-</Command>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBufferEffectorBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxDamperBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxDistorterBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxElectroStaticBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxField2D.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxHomingBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxLorentzBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxPerlinBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticle.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleGlowieRenderer.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleRenderer.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleSystem.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSolver.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSphericalAttractionBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm.c" />
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\2DVideo\vs_src\CloudsVisualSystem2DVideo.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\3DModelLoader\vs_src\CloudsOrthoCamera.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\3DModelLoader\vs_src\CloudsVisualSystem3DModelLoader.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src\Astrolabe.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src\CloudsVisualSystemAstrolabe.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Automata\vs_src\CloudsVisualSystemAutomata.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\Ball.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\CloudsVisualSystemBallDroppings.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\EditLine.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\FileUtils.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\LinkedList.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\LinkedListItem.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\ParamManager.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\V3.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Chromogram\vs_src\CloudsVisualSystemChromogram.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\Circle.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\CirclePacker.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\CloudsVisualSystemCirclePacking.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Circuit\vs_src\CloudsVisualSystemCircuit.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Cities\vs_src\CloudsVisualSystemCities.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\CloudsVisualSystemCode.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\Panel.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelCode.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelConsole.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelGraph.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelTenPrint.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Colony\vs_src\CloudsVisualSystemColony.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Colony\vs_src\gCell.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\CloudsVisualSystemConnectors.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnection.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectionGenerator.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnector.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectorBin.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\CubeCraft\vs_src\CloudsVisualSystemCubeCraft.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\brushedLine.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\CloudsVisualSystemDrawnLine.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\curvedLine.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\drawnLineApp.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\lineMatchUtils.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Empty\vs_src\CloudsVisualSystemEmpty.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleBox2D\vs_src\CloudsVisualSystemExampleBox2D.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src\CloudsVisualSystemExampleMPMFluid.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Boid.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\CloudsVisualSystemExampleOpenSteer.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleVectorMath\vs_src\CloudsVisualSystemExampleVectorMath.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Fireworks\vs_src\CloudsVisualSystemFireworks.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Flocking\vs_src\CloudsVisualSystemFlocking.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Flying\vs_src\CloudsVisualSystemFlying.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ForkingPaths\vs_src\CloudsVisualSystemForkingPaths.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\GesturePaint\vs_src\CloudsVisualSystemGesturePaint.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\GPUParticles\vs_src\CloudsVisualSystemGPUParticles.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\ofVboByteColor.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\CloudsVisualSystemLinePoem.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\linePoemApp.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\CloudsVisualSystemLSystem.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\LNode.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\LSystem.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\CloudsVisualSystemMandala.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\MandalaComponent.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\SurfacePoint.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MarchingCubes\vs_src\CloudsVisualSystemMarchingCubes.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\CloudsVisualSystemMazeGenerator2.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\Maze2.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\MazeCamera2.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\MazeCell2.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\ParamManager2.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\CloudsVisualSystemMazeGenerator.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\Maze.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCamera.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCell.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeSettings.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MovingBall.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Memory\vs_src\CloudsVisualSystemMemory.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Metaballs\vs_src\CloudsVisualSystemMetaballs.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Nbody\vs_src\CloudsVisualSystemNbody.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Neurons\vs_src\CloudsVisualSystemNeurons.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Ocean\vs_src\CloudsVisualSystemOcean.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP53DIntro\vs_src\CloudsVisualSystemAutomata.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Caustics\vs_src\Caster.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Caustics\vs_src\CastManager.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Hackpact\vs_src\CloudsVisualSystemOpenP5Hackpact.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Machine\vs_src\CloudsVisualSystemOpenP5Machine.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\CloudsVisualSystemOpenP5NoiseSphere.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\fft.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\fftOctaveAnalyzer.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5SeaOfLines\vs_src\CloudsVisualSystemOpenP5SeaOfLines.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Sixteen\vs_src\CloudsVisualSystemOpenP5Sixteen.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5SpaceJunk\vs_src\CloudsVisualSystemOpenP5SpaceJunk.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Spaghetti\vs_src\CloudsVisualSystemOpenP5Spaghetti.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Spaghetti\vs_src\Walker.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5SpinningSolids\vs_src\Tetra.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\CloudsVisualSystemOpenP5TextUniverse.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\TUOrbital.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\CloudsVisualSystemOrbit.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\Path.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\PathPoint.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Oscillations\vs_src\CloudsVisualSystemOscillations.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Pages\vs_src\CloudsVisualSystemPages.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Pages\vs_src\Page.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Brush.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\CloudsVisualSystemPaintBrush.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Particle.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Spring.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PhotoGlitch\vs_src\CloudsVisualSystemPhotoGlitch.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\CloudsVisualSystemRandomDigits2.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\Rand.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\RandomNumber.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits\vs_src\CloudsVisualSystemRandomDigits.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits\vs_src\Rand.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Replicator\vs_src\CloudsVisualSystemReplicator.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RGBDVideo\vs_src\CloudsVisualSystemRGBDVideo.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Ripples\vs_src\CloudsVisualSystemRipples.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\CloudsVisualSystemRulez.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\Action.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\ConeAction.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\CubeAction.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\IcosphereAction.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\LineAction.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PlaneAction.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PointAction.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\SphereAction.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\StopAction.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TransformAction.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TubeAction.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Branch.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rule.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rules.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\RuleSet.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Satoruhiga\vs_src\CloudsVisualSystemSatoruhiga.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Schlabberbox\vs_src\CloudsVisualSystemSchlabberbox.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Schlabberbox\vs_src\GridFluid.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Scrape\vs_src\CloudsVisualSystemScrape.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Scrape\vs_src\ofxMtlBoxFitting.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Bubbles.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\CloudsVisualSystemSwim.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creature.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creatures.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\JellyCreature.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\MarineSnow.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\ModelCreature.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\PointCreature.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\CircularFormula.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\MeshUtils.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\ofxCubeMap.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SphericalGenerator.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SuperFormula.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Terrain\vs_src\CloudsVisualSystemTerrain.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ThingsInTheDark\vs_src\CloudsVisualSystemThingsInTheDark.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src\CloudsVisualSystemTunnelDrawing.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\CloudsVisualSystemTwitter.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\Tweeter.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Uextrude\vs_src\CloudsVisualSystemUextrude.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\VectorFlow\vs_src\CloudsVisualSystemVectorFlow.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\CloudsVisualSystemVerletForm.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Vision\vs_src\CloudsVisualSystemVision.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Vision\vs_src\MyTracker.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\CloudsVisualSystemVoro.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\cell.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\common.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\container.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\container_prd.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\c_loops.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\pre_container.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\unitcell.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\v_base.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\v_compute.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\wall.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\Voro.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\VoroParticle.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\vParticle.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WebHistory\vs_src\CloudsVisualSystemWebHistory.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WebHistory\vs_src\HistoryNode.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\CloudsVisualSystemWorld.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wArc.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wCity.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wParticle.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wSatellite.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wStar.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsPathCamera.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsVisualSystemWormHole.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Xstatic\vs_src\CloudsVisualSystemXstatic.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Xstatic\vs_src\XParticle.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\CloudsVisualSystemYellowTail.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\Gesture.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRenderer.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRendererInPlace.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRendererTraveling.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_Intro\vs_src\CloudsIntroSequence.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h" />
-    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h" />
-    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h" />
-    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h" />
-    <ClInclude Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofx1DExtruder.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidParticle.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidSystem.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBufferEffectorBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxCircle.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxDamperBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxDistorterBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxElectroStaticBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxField2D.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxFieldAgitator.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxGenerative.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxGenericShape.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHOCParticle.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHOCParticleSystem.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHomingBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxLorentzBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticle.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticleSystem.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticleTouch.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxPerlinBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRezaParticle.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRezaParticleSystem.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticle.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleData.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleGlowieRenderer.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleRenderer.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleSystem.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSmartParticle.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSmartParticleSystem.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSolver.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSphericalAttractionBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSpring.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSpringSystem.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSuperShape.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxTrailParticle.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h" />
-    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm.h" />
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h" />
-    <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h" />
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\2DVideo\vs_src\CloudsVisualSystem2DVideo.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\3DModelLoader\vs_src\CloudsOrthoCamera.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\3DModelLoader\vs_src\CloudsVisualSystem3DModelLoader.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src\Astrolabe.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src\CloudsVisualSystemAstrolabe.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Automata\vs_src\CloudsVisualSystemAutomata.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\Ball.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\CloudsVisualSystemBallDroppings.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\EditLine.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\FileUtils.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\LinkedList.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\LinkedListItem.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\ParamManager.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\V3.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Chromogram\vs_src\CloudsVisualSystemChromogram.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\Circle.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\CirclePacker.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\CirclePacking\vs_src\CloudsVisualSystemCirclePacking.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Circuit\vs_src\CloudsVisualSystemCircuit.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cities\vs_src\CloudsVisualSystemCities.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\CloudsVisualSystemCode.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\Panel.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelCode.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelConsole.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelGraph.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Code\vs_src\Panels\PanelTenPrint.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Colony\vs_src\CloudsVisualSystemColony.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Colony\vs_src\gCell.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\CloudsVisualSystemConnectors.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnection.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectionGenerator.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnector.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectorBin.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\CubeCraft\vs_src\CloudsVisualSystemCubeCraft.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\brushedLine.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\CloudsVisualSystemDrawnLine.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\curvedLine.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\drawnLineApp.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\lineMatchUtils.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DrawnLine\vs_src\statistics.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Empty\vs_src\CloudsVisualSystemEmpty.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleBox2D\vs_src\CloudsVisualSystemExampleBox2D.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src\CloudsVisualSystemExampleMPMFluid.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Boid.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\CloudsVisualSystemExampleOpenSteer.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Flocking.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\ObstacleAvoidance.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\PathFollowing.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\PursuitAndEvade.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleVectorMath\vs_src\CloudsVisualSystemExampleVectorMath.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Fireworks\vs_src\CloudsVisualSystemFireworks.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Flocking\vs_src\CloudsVisualSystemFlocking.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Flying\vs_src\CloudsVisualSystemFlying.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ForkingPaths\vs_src\CloudsVisualSystemForkingPaths.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\GesturePaint\vs_src\CloudsVisualSystemGesturePaint.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\GPUParticles\vs_src\CloudsVisualSystemGPUParticles.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\ofVboByteColor.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\angleLengthLine.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\angleLengthLineMorpher.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\anglePoint.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\CloudsVisualSystemLinePoem.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\linePoemApp.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\CloudsVisualSystemLSystem.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\LNode.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\LSystem.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\CloudsVisualSystemMandala.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\MandalaComponent.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\MandalaTicker.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\SurfacePoint.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MarchingCubes\vs_src\CloudsVisualSystemMarchingCubes.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\CloudsVisualSystemMazeGenerator2.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\Maze2.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\MazeCamera2.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\MazeCell2.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator2\vs_src\ParamManager2.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\CloudsVisualSystemMazeGenerator.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\Maze.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCamera.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCell.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeSettings.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MovingBall.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Memory\vs_src\CloudsVisualSystemMemory.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Metaballs\vs_src\CloudsVisualSystemMetaballs.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Nbody\vs_src\CloudsVisualSystemNbody.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Neurons\vs_src\CloudsVisualSystemNeurons.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Ocean\vs_src\CloudsVisualSystemOcean.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP53DIntro\vs_src\CloudsVisualSystemOpenP53DIntro.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Caustics\vs_src\Caster.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Caustics\vs_src\CastManager.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Hackpact\vs_src\CloudsVisualSystemOpenP5Hackpact.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Machine\vs_src\CloudsVisualSystemOpenP5Machine.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\CloudsVisualSystemOpenP5NoiseSphere.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\fft.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5NoiseSphere\vs_src\fftOctaveAnalyzer.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5SeaOfLines\vs_src\CloudsVisualSystemOpenP5SeaOfLines.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Sixteen\vs_src\CloudsVisualSystemOpenP5Sixteen.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5SpaceJunk\vs_src\CloudsVisualSystemOpenP5SpaceJunk.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Spaghetti\vs_src\CloudsVisualSystemOpenP5Spaghetti.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Spaghetti\vs_src\Walker.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5SpinningSolids\vs_src\Tetra.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\CloudsVisualSystemOpenP5TextUniverse.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\TUOrbital.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\TUText.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\CloudsVisualSystemOrbit.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\Path.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\PathPoint.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Oscillations\vs_src\CloudsVisualSystemOscillations.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Pages\vs_src\CloudsVisualSystemPages.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Pages\vs_src\Page.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Brush.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\CloudsVisualSystemPaintBrush.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Particle.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Spring.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PhotoGlitch\vs_src\CloudsVisualSystemPhotoGlitch.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\QuineVisualSystem\vs_src\QuineVisualSystem.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\CloudsVisualSystemRandomDigits2.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\Rand.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\RandomNumber.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits\vs_src\CloudsVisualSystemRandomDigits.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits\vs_src\Rand.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Replicator\vs_src\CloudsVisualSystemReplicator.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RGBDVideo\vs_src\CloudsVisualSystemRGBDVideo.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Ripples\vs_src\CloudsVisualSystemRipples.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\CloudsVisualSystemRulez.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\Action.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\ConeAction.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\CubeAction.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\IcosphereAction.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\LineAction.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PlaneAction.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PointAction.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\SphereAction.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\StopAction.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TransformAction.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TubeAction.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Branch.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\ofxRules.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rule.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rules.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\RuleSet.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Satoruhiga\vs_src\CloudsVisualSystemSatoruhiga.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Satoruhiga\vs_src\Replecator.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Schlabberbox\vs_src\CloudsVisualSystemSchlabberbox.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Schlabberbox\vs_src\GridFluid.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Scrape\vs_src\CloudsVisualSystemScrape.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Scrape\vs_src\ofxMtlBoxFitting.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Bubbles.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\CloudsVisualSystemSwim.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creature.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creatures.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\JellyCreature.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\MarineSnow.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\ModelCreature.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\PointCreature.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\CircularFormula.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\MeshUtils.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\ofxCubeMap.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\Singleton.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SphericalGenerator.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SuperFormula.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Terrain\vs_src\CloudsVisualSystemTerrain.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ThingsInTheDark\vs_src\CloudsVisualSystemThingsInTheDark.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src\CloudsVisualSystemTunnelDrawing.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\CloudsVisualSystemTwitter.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\Tweeter.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Uextrude\vs_src\CloudsVisualSystemUextrude.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\VectorFlow\vs_src\CloudsVisualSystemVectorFlow.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\CloudsVisualSystemVerletForm.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Vision\vs_src\CloudsVisualSystemVision.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Vision\vs_src\MyTracker.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\CloudsVisualSystemVoro.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\cell.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\common.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\config.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\container.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\container_prd.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\c_loops.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\pre_container.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\rad_option.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\unitcell.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\voro++.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\v_base.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\v_compute.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\wall.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\voro++\worklist.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\Voro.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\VoroParticle.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Voro\vs_src\vParticle.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WebHistory\vs_src\CloudsVisualSystemWebHistory.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WebHistory\vs_src\HistoryNode.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\CloudsVisualSystemWorld.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wArc.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wCity.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wParticle.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wSatellite.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wStar.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsPathCamera.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsVisualSystemWormHole.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Xstatic\vs_src\CloudsVisualSystemXstatic.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Xstatic\vs_src\XParticle.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\CloudsVisualSystemYellowTail.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\Gesture.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRenderer.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRendererInPlace.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\GestureRendererTraveling.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\Vec3f.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\YellowTail.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\YellowTailColor.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\YellowTail\vs_src\yt\YtPolygon.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_Intro\vs_src\CloudsIntroSequence.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj">
-      <Project>{e81216f3-8b91-4156-bacc-731f6e38a05c}</Project>
+      <Project>{a72c4f16-cb16-4143-ba5c-5e4fa802d636}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonicLib.vcxproj">
+      <Project>{e93bd96c-a459-499f-840d-29b0166cbff7}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj">
-      <Project>{a72c4f16-cb16-4143-ba5c-5e4fa802d636}</Project>
+      <Project>{641db976-e775-4d72-86eb-897e2c4a0eee}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
       <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>

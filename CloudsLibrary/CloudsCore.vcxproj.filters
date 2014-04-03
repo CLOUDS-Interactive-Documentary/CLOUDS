@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="VisualSystemsLibrary">
+      <UniqueIdentifier>{c194561c-5ccc-44bf-87e2-70190b0e9387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VisualSystems">
+      <UniqueIdentifier>{8e1f64b9-e2b9-445b-bbb1-76c5062ec32e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VisualSystems\ClusterMap">
+      <UniqueIdentifier>{2e651198-6ddf-4390-b1d8-a750b855ffa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{bfb1d043-d413-44f2-9936-f46d51c522ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL">
+      <UniqueIdentifier>{6034c3a5-fdde-47bb-b66b-763ba760f2be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL\src">
+      <UniqueIdentifier>{5ed1afaf-b22d-4b1a-afe9-94032859037e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL\libs">
+      <UniqueIdentifier>{9f2e108e-8651-463f-ba4b-c5e072427067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL\libs\lib">
+      <UniqueIdentifier>{dc5f5009-262d-413a-b30a-de35d24af5b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL\libs\include">
+      <UniqueIdentifier>{f5e2707d-e88b-4ac4-9e9f-49c5ded4bc16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCameraSaveLoad">
+      <UniqueIdentifier>{2fc778a6-dab1-47ea-97f0-9091dc162bfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCameraSaveLoad\src">
+      <UniqueIdentifier>{710e088a-7910-4cfc-ae75-2f2909c7cfe3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
+      <Filter>VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VisualSystemsLibrary\CloudsVisualSystem.cpp">
+      <Filter>VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.cpp">
+      <Filter>VisualSystems\ClusterMap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.cpp">
+      <Filter>VisualSystems\ClusterMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp">
+      <Filter>addons\ofxCameraSaveLoad\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\VisualSystemsLibrary\CloudsRGBDCamera.h">
+      <Filter>VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
+      <Filter>VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VisualSystemsLibrary\CloudsVisualSystem.h">
+      <Filter>VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VisualSystemsLibrary\ofxLight.h">
+      <Filter>VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.h">
+      <Filter>VisualSystems\ClusterMap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.h">
+      <Filter>VisualSystems\ClusterMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBBox.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBitmapGlyph.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBuffer.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBufferFont.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBufferGlyph.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTExtrdGlyph.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTFont.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\ftgl.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLBitmapFont.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLExtrdFont.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLOutlineFont.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLPixmapFont.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLPolygonFont.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLTextureFont.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGlyph.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTLayout.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTOutlineGlyph.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTPixmapGlyph.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTPoint.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTPolyGlyph.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTSimpleLayout.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTTextureGlyph.h">
+      <Filter>addons\ofxFTGL\libs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h">
+      <Filter>addons\ofxCameraSaveLoad\src</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

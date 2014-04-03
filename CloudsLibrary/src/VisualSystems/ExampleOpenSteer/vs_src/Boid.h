@@ -108,7 +108,7 @@ public:
 
         if(pt) pt->updateForNewPosition (position());
         
-//        history.push_back(getPosition());
+        history.push_back(getPosition());
         while (history.size() > trailVertexCount) {
             history.pop_front();
         }
