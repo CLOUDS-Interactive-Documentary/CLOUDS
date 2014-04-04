@@ -40,12 +40,12 @@ float Circle::getOffset(float _x, float _y)
     return ofDist(this->x, this->y, _x, _y); // ofDist
 }
 
-Boolean Circle::contains(float _x, float _y)
+bool Circle::contains(float _x, float _y)
 {
     return ofDist(this->x, this->y, _x, _y) <= this->r;
 }
 
-Boolean Circle::intersect(Circle _circle)
+bool Circle::intersect(Circle _circle)
 {
     float d = ofDist(this->x, this->y, _circle.x, _circle.y);
     return d <= (this->r + _circle.r);
