@@ -217,8 +217,6 @@ void CloudsVisualSystemCirclePacking::selfDrawBackground(){
 //		cout << "circle radius : " << pack.circles[i].r << endl;
 //	}
     
-	cout << "begin fucker" << endl;
-
 	ofPushStyle();
     ofEnableAlphaBlending();
     if(!filled){
@@ -227,8 +225,6 @@ void CloudsVisualSystemCirclePacking::selfDrawBackground(){
     pack.draw(NASDAQ, BLANKS, HASHTAGS);
     ofDisableAlphaBlending();
 	ofPopStyle();
-
-	cout << "done fucker" << endl;
 	
 	//turn the background refresh off
 	//bClearBackground = false;
