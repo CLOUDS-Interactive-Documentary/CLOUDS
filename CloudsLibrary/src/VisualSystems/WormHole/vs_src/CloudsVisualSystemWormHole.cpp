@@ -4,6 +4,7 @@
 
 #include "CloudsVisualSystemWormHole.h"
 #include "CloudsRGBDVideoPlayer.h"
+#include <map>
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemWormHole::selfSetupGui(){
@@ -68,7 +69,7 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	shaderGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	vector<string> blendNames;
-	for (map<string, ofBlendMode>::iterator it=blendModes.begin(); it!=blendModes.end(); it++)
+	for (std::map<string, ofBlendMode>::iterator it = blendModes.begin(); it != blendModes.end(); it++)
 	{
 		blendNames.push_back( it->first );
 	}
@@ -82,7 +83,7 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	shaderGui->addSpacer();
 	
 	vector<string> shaderNames;
-	for (map<string, ofShader*>::iterator it=shaderMap.begin(); it!=shaderMap.end(); it++){
+	for (std::map<string, ofShader*>::iterator it=shaderMap.begin(); it!=shaderMap.end(); it++){
 		shaderNames.push_back(it->first);
 	}
 	
@@ -222,7 +223,7 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		
 		else if(parentName == "shaders")
 		{
-			for (map<string, ofShader*>::iterator it=shaderMap.begin(); it!=shaderMap.end(); it++)
+			for (std::map<string, ofShader*>::iterator it=shaderMap.begin(); it!=shaderMap.end(); it++)
 			{
 				if(name == it->first)
 				{
@@ -245,7 +246,7 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		
 		else if(parentName == "blendModes")
 		{
-			for (map<string, ofBlendMode>::iterator it=blendModes.begin(); it!=blendModes.end(); it++)
+			for (std::map<string, ofBlendMode>::iterator it=blendModes.begin(); it!=blendModes.end(); it++)
 			{
 				if(name == it->first)
 				{
