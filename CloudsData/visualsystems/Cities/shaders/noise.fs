@@ -1,5 +1,3 @@
-#version 120
-
 uniform vec2 resolution;
 uniform float time;
 uniform float zoom;
