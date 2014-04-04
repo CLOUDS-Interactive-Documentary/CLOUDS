@@ -6,10 +6,8 @@
 //
 //
 
-#ifndef __CirclePacking__Circle__
-#define __CirclePacking__Circle__
+#pragma once
 
-#include <iostream>
 #include "ofMain.h"
 #include "ofxFTGL.h"
 
@@ -17,7 +15,7 @@ class Circle {
 public:
     
     string typeStr;
-    ofxFTGLSimpleLayout  franklinBook14;
+    ofxFTGLSimpleLayout franklinBook14;
     ofxFTGLSimpleLayout	verdana14;
     static ofxFTGLSimpleLayout  Font;
     
@@ -31,8 +29,8 @@ public:
     
     float distance(float _x1, float _y1, float _x2, float _y2);
     float getOffset(float _x, float _y);
-    Boolean contains(float _x, float _y);
-    Boolean intersect(Circle _circle);
+    bool contains(float _x, float _y);
+    bool intersect(Circle _circle);
     
     float growth;
     ofFloatColor color1;
@@ -48,5 +46,3 @@ public:
     float alpha;
     
 };
-
-#endif /* defined(__CirclePacking__Circle__) */

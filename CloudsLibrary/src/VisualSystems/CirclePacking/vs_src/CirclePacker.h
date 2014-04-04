@@ -6,10 +6,8 @@
 //
 //
 
-#ifndef __CirclePacking__CirclePacker__
-#define __CirclePacking__CirclePacker__
+#pragma once
 
-#include <iostream>
 #include "ofMain.h"
 #include "Circle.h"
 
@@ -33,6 +31,3 @@ protected:
     float damping, iterations;
     
 };
-
-
-#endif /* defined(__CirclePacking__CirclePacker__) */
