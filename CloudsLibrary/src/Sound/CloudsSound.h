@@ -5,7 +5,10 @@
 #include "CloudsAudioEvents.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsAct.h"
+
+#ifdef RTC_MIX
 #include "lukeFuncs.h"
+#endif
 
 #define PF_INTRO_BUS 1
 #define PF_TUNNEL_BUS 2
@@ -54,8 +57,11 @@ class CloudsSound {
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
     // Luke's public stuff
+	#ifdef RTC_MIX
     void schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel);
-    void startMusicFX(float outskip, float musicdur);
+	#endif
+    
+	void startMusicFX(float outskip, float musicdur);
     void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope);
     void stopMusic();
     void fadeMusic(float fadeTime);
@@ -65,8 +71,10 @@ class CloudsSound {
     bool dopull;
     bool in_tunnel;
     
+	#ifdef RTC_MIX
     // public data structures
     vector<lukePreset> presets;
+	#endif
 
   protected:
 
@@ -99,11 +107,13 @@ class CloudsSound {
     bool DOCMIXPRINT;
     vector<string> ab; // act bus strings for RTCMIX
     vector<int> abn; // act bus numbers for RTCMIX
-	
+
+	#ifdef RTC_MIX
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;
     vector<lukeSimpleMelody> simplemelodies;
 
     vector<lukeSample> looperSamples;
+	#endif
 
 };
