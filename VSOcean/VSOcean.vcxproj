@@ -53,24 +53,28 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -102,20 +106,21 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxOcean\libs\kiss\tools;..\..\..\addons\ofxOcean\libs\kiss\src;..\..\..\addons\ofxOcean\libs\kiss\include;..\..\..\addons\ofxOcean\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ocean\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>libovrd.lib;ftgl_static_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libovrd.lib;ftgl_static_D.lib;libsndfile-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\Win32;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
-xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxAnimagick\scripts\vs\Animagick.bat" "$(ProjectDir)bin"
-xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "$(ProjectDir)bin"</Command>
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.dll" "$(ProjectDir)bin"</Command>
+      <Message>adding DLLs and creating data folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -126,20 +131,21 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxOcean\libs\kiss\tools;..\..\..\addons\ofxOcean\libs\kiss\src;..\..\..\addons\ofxOcean\libs\kiss\include;..\..\..\addons\ofxOcean\src;..\..\..\addons\ofxTonic\libs\libsndfile\include;..\..\..\addons\ofxTonic\src\Tonic;..\..\..\addons\ofxTonic\src;..\..\..\addons\ofDirectShowVideoPlayer\src;..\..\..\addons\ofxMSATimer\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ocean\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxOcean\libs\kiss\tools;..\..\..\addons\ofxOcean\libs\kiss\src;..\..\..\addons\ofxOcean\libs\kiss\include;..\..\..\addons\ofxOcean\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ocean\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>Default</CompileAs>
       <PrecompiledHeader />
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>libovr64.lib;ftgl_static.lib;libsndfile-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libovr64.lib;ftgl_static_D.lib;libsndfile-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\x64;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll" "$(ProjectDir)bin"</Command>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -148,8 +154,9 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll"
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxOcean\libs\kiss\tools;..\..\..\addons\ofxOcean\libs\kiss\src;..\..\..\addons\ofxOcean\libs\kiss\include;..\..\..\addons\ofxOcean\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ocean\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -163,8 +170,8 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll"
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
-xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxAnimagick\scripts\vs\Animagick.bat" "$(ProjectDir)bin"
-xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "$(ProjectDir)bin"</Command>
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.dll" "$(ProjectDir)bin"</Command>
+      <Message>adding DLLs and creating data folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -173,8 +180,9 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxOcean\libs\kiss\tools;..\..\..\addons\ofxOcean\libs\kiss\src;..\..\..\addons\ofxOcean\libs\kiss\include;..\..\..\addons\ofxOcean\src;..\..\..\addons\ofxTonic\libs\libsndfile\include;..\..\..\addons\ofxTonic\src\Tonic;..\..\..\addons\ofxTonic\src;..\..\..\addons\ofDirectShowVideoPlayer\src;..\..\..\addons\ofxMSATimer\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ocean\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxOcean\libs\kiss\tools;..\..\..\addons\ofxOcean\libs\kiss\src;..\..\..\addons\ofxOcean\libs\kiss\include;..\..\..\addons\ofxOcean\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ocean\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -187,12 +195,11 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\x64;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll" "$(ProjectDir)bin"</Command>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp" />
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp" />
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp" />
@@ -214,7 +221,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll"
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm.c" />
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c" />
     <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fft.c" />
     <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fftr.c" />
@@ -224,63 +231,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll"
     <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanRenderer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanTile.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\ofxTonicSynth.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ADSR.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Arithmetic.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\AudioFileUtils.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\BasicDelay.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\BLEPOscillator.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\BufferFiller.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\BufferPlayer.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\CombFilter.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\CompressorLimiter.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlArithmetic.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlCallback.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlChangeNotifier.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlComparison.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlConditioner.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlCounter.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlDbToLinear.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlDelay.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlFloor.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlGenerator.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMetro.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMetroDivider.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMidiToFreq.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlParameter.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlPrinter.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlPulse.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlRandom.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlRecorder.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlSnapToScale.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlStepper.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlSwitcher.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlTrigger.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlTriggerFilter.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlValue.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\ControlXYSpeed.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\DelayUtils.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\DSPUtils.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Effect.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Filters.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\FilterUtils.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\FixedValue.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Generator.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\LFNoise.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Mixer.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\MonoToStereoPanner.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Noise.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\RampedValue.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\RectWave.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Reverb.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\RingBuffer.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\SampleTable.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\SawtoothWave.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\SineWave.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\StereoDelay.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\Synth.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\TableLookupOsc.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxTonic\src\Tonic\TonicFrames.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp" />
@@ -293,7 +243,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll"
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h" />
     <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h" />
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h" />
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h" />
@@ -337,7 +286,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll"
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxTrailParticle.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm.h" />
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h" />
     <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h" />
     <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\include\kiss_fft.h" />
     <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\include\kiss_fftr.h" />
@@ -348,69 +297,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll"
     <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanRenderer.h" />
     <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanTile.h" />
     <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h" />
-    <ClInclude Include="..\..\..\addons\ofxRange\src\ofRange.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\ofxTonic.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\ofxTonicSynth.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ADSR.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Arithmetic.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\AudioFileUtils.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\BasicDelay.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\BLEPOscillator.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\BufferFiller.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\BufferPlayer.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\CombFilter.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\CompressorLimiter.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlArithmetic.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlCallback.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlChangeNotifier.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlComparison.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlConditioner.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlCounter.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlDbToLinear.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlDelay.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlFloor.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlGenerator.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMetro.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMetroDivider.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlMidiToFreq.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlParameter.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlPrinter.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlPulse.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlRandom.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlRecorder.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlSnapToScale.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlStepper.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlSwitcher.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlTrigger.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlTriggerFilter.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlValue.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\ControlXYSpeed.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\DelayUtils.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\DSPUtils.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Effect.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Filters.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\FilterUtils.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\FixedValue.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Generator.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\LFNoise.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Mixer.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\MonoToStereoPanner.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Noise.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\RampedValue.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\RectWave.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Reverb.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\RingBuffer.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\SampleTable.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\SawtoothWave.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\SineWave.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\SquareWave.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\StereoDelay.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\Synth.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\TableLookupOsc.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\TonicCore.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\TonicFrames.h" />
-    <ClInclude Include="..\..\..\addons\ofxTonic\src\Tonic\TriangleWave.h" />
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
@@ -427,6 +313,9 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\libsndfile\bin\*.dll"
   <ItemGroup>
     <ProjectReference Include="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj">
       <Project>{a72c4f16-cb16-4143-ba5c-5e4fa802d636}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonicLib.vcxproj">
+      <Project>{e93bd96c-a459-499f-840d-29b0166cbff7}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj">
       <Project>{641db976-e775-4d72-86eb-897e2c4a0eee}</Project>

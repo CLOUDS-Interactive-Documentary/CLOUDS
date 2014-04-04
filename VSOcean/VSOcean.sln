@@ -8,6 +8,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTimelineLib", "..\..\..\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxUILib", "..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj", "{641DB976-E775-4D72-86EB-897E2C4A0EEE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTonicLib", "..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonicLib.vcxproj", "{E93BD96C-A459-499F-840D-29B0166CBFF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -48,6 +50,14 @@ Global
 		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|Win32.Build.0 = Release|Win32
 		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|x64.ActiveCfg = Release|x64
 		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|x64.Build.0 = Release|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|Win32.Build.0 = Debug|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|x64.ActiveCfg = Debug|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|x64.Build.0 = Debug|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|Win32.ActiveCfg = Release|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|Win32.Build.0 = Release|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|x64.ActiveCfg = Release|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
