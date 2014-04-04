@@ -246,7 +246,7 @@ void Astrolabe::setTweenReverse( string axis, bool reverse )
 
 void Astrolabe::getTweenReverse( string axis )
 {
-	return 	rot.find(axis) != rot.end() ? tweenInfo[axis].reverse : false;
+	rot.find(axis) != rot.end() ? tweenInfo[axis].reverse : false;
 }
 
 

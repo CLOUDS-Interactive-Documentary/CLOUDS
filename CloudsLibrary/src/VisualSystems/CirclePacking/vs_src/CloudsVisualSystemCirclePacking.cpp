@@ -147,7 +147,6 @@ void CloudsVisualSystemCirclePacking::selfSetup(){
     Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14);
     
     //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
-	cout << "SIZE = " << getCanvasWidth() << " " << getCanvasHeight() << endl;
 	pack = CirclePacker(1.0f*getCanvasWidth(),1.0f*getCanvasHeight(), 15);
     
     if (NASDAQ){

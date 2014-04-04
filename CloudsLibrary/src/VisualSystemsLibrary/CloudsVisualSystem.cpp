@@ -269,18 +269,6 @@ void CloudsVisualSystem::setup(){
     
     backgroundGradientExponent = 1.0;
     bWashGradient = false;
-
-	bEnablePostFX = false;
-	bUseInteractiveCamera = false;
-	interactiveCameraDamping = 0;
-	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
-	interactiveCameraRot = ofVec2f(0,0);
-	interactiveCameraDamping = 0;
-	interactiveCameraRot.set(0,0);
-    postChromaDist = 0.f;
-    postGrainDist = 0.f;
-    //POST PROCESSING BLEED AMNT
-    bleed  = 20;
     
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
@@ -329,11 +317,22 @@ void CloudsVisualSystem::setup(){
     
 	loadGUIS();
 	hideGUIS();
-    
-    if(bEnablePostFX) SetBleedPixels(bleed);
-    else SetBleedPixels(0);
 
 	bIsSetup = true;
+	
+    bEnablePostFX = false;
+	bUseInteractiveCamera = false;
+	interactiveCameraDamping = 0;
+	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
+	interactiveCameraRot = ofVec2f(0,0);
+	interactiveCameraDamping = 0;
+	interactiveCameraRot.set(0,0);
+    postChromaDist = 0.f;
+    postGrainDist = 0.f;
+    //POST PROCESSING BLEED AMNT
+    bleed  = 20;
+    if(bEnablePostFX) SetBleedPixels(bleed);
+    else SetBleedPixels(0);
 }
 
 bool CloudsVisualSystem::isSetup(){

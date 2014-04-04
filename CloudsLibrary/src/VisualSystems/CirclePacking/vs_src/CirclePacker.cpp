@@ -98,25 +98,31 @@ void CirclePacker::update() {
 void CirclePacker::draw(bool _nasdaq, bool _blanks, bool _hashtags)
 {
     if (_blanks && !circles.empty()){
-        for (list<Circle>::iterator i = circles.begin();i != circles.end();){
-			Circle& c = *i;
-			if (c.r < 4){
-				i = circles.erase(i);
-			}
-			else{
-				c.draw();
-				i++;
-			}
+        for (list<Circle>::iterator i = circles.begin();i != circles.end();)
+    {
+        Circle& c = *i;
+        if (c.r < 4)
+        {
+          i = circles.erase(i);
+        }
+        else
+        {
+            c.draw();
+            i++;
+        }
         }
     }
     
-    if (_nasdaq){
-        for (list<Circle>::iterator i = circles.begin();i != circles.end();){
+    if (_nasdaq ){
+        for (list<Circle>::iterator i = circles.begin();i != circles.end();)
+        {
             Circle& c = *i;
-            if (c.r < 1){
+            if (c.r < 1)
+            {
                 i = circles.erase(i);
             }
-            else{
+            else
+            {
                 c.drawCompanies();
                 i++;
             }
@@ -124,21 +130,26 @@ void CirclePacker::draw(bool _nasdaq, bool _blanks, bool _hashtags)
     }
     
     
-    if (_hashtags){
-        for (list<Circle>::iterator i = circles.begin(); i != circles.end();){
+    if (_hashtags ){
+        
+        for (list<Circle>::iterator i = circles.begin(); i != circles.end();)
+        {
             Circle& c = *i;
-            if (circles.size() > 25){
+            if (circles.size() > 25 )
+            {
                 Circle& b = *(circles.begin());
                 b.r -= .5;
             }
-            if (c.r < 1){
+            if (c.r < 1)
+            {
                 i = circles.erase(i);
             }
-            else{
+            else
+            {
                 c.drawHashtags();
-				i++;
             }
         }
+    
     }
 }
 
