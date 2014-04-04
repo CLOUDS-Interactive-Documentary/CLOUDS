@@ -81,12 +81,13 @@ void CloudsVisualSystemCandyMountains::selfSetup(){
     
     tm.setup(&aa, &cs);
     cm.setup(&tm);
+    cm.cam = &getCameraRef();
     lm.setup(&cs);
     pm.setup();
     
     useLights = true;
     
-    cm.cam.setupPerspective(false);
+    cm.cam->setupPerspective(false);
     updateCam = false;
 }
 
@@ -128,55 +129,33 @@ void CloudsVisualSystemCandyMountains::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemCandyMountains::selfDraw(){
     ofEnableAlphaBlending();
+        
+    ofFloatColor gradientStart = cs.colorScheme[0][0];
+    float complementHue = gradientStart.getHue() + 0.5;
+    if (complementHue > 1.0) complementHue-=1.0;
+    ofFloatColor gradientEnd;
+    gradientEnd.setHue(complementHue);
+    gradientEnd.setSaturation(gradientStart.getSaturation() - 0.2);
     
-    if (state == 0) {
-        pm.post.begin(cm.cam);
-        if (useLights) lm.begin();
-        
-        ofFloatColor bgColor = cs.colorScheme[0][0];
-        float complementHue = bgColor.getHue() + 0.5;
-        if (complementHue > 1.0) complementHue-=1.0;
-        bgColor.setHue(complementHue);
-        bgColor.setSaturation(bgColor.getSaturation() - 0.2);
-        
-        ofBackground(bgColor);
-        tm.draw();
-        
-        if (useLights) lm.end();
-        pm.post.end();
-    }
-    else if (state == 1) {
+    ofBackgroundGradient(gradientEnd, gradientStart);
+    
+    cm.begin();
+    lm.begin();
+    tm.draw();
+    lm.end();
+    cm.end();
+    
+    ofDisableAlphaBlending();
+}
+
+// draw any debug stuff here
+void CloudsVisualSystemCandyMountains::selfDrawDebug(){
+    if (state == 1) {
         cs.draw();
     }
     else if (state == 2) {
         aa.drawAnalytics();
     }
-    else if (state == 3) {
-        
-        ofFloatColor gradientStart = cs.colorScheme[0][0];
-        float complementHue = gradientStart.getHue() + 0.5;
-        if (complementHue > 1.0) complementHue-=1.0;
-        ofFloatColor gradientEnd;
-        gradientEnd.setHue(complementHue);
-        gradientEnd.setSaturation(gradientStart.getSaturation() - 0.2);
-        
-        ofBackgroundGradient(gradientEnd, gradientStart);
-        
-        cm.cam.begin();
-        lm.begin();
-        tm.draw();
-        lm.end();
-        cm.cam.end();
-        
-    }
-    
-    ofDisableAlphaBlending();
-	
-}
-
-// draw any debug stuff here
-void CloudsVisualSystemCandyMountains::selfDrawDebug(){
-	
 }
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemCandyMountains::selfDrawBackground(){

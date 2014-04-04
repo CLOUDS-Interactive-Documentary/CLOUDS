@@ -72,6 +72,7 @@ void cameraManager::update() {
     lookatX = camX - lastCamX;
     lookatY = camY - lastCamY;
     
-    cam.setPosition(camX, camY, camZ);
-    cam.lookAt(ofVec3f(lookatX, lookatY, lookatZ));
+    cam->setPosition(camX, camY, camZ);
+    cam->lookAt(ofVec3f(lookatX, lookatY, lookatZ));
+    
 }
