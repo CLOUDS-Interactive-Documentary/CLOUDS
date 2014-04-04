@@ -129,7 +129,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.d
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ripples\vs_src;src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxBillboard\src;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxFTGL\libs\FTGL\lib;..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofxGpuParticles\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxMarchingCubes\src;..\..\..\addons\ofxMPMFluid\src;..\..\..\addons\ofxMSACore\src;..\..\..\addons\ofxMSAObjCPointer\src;..\..\..\addons\ofxMSAPhysics\src;..\..\..\addons\ofxNearestNeighbour\libs\nanoflann\include;..\..\..\addons\ofxNearestNeighbour\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxOcean\libs\kiss\tools;..\..\..\addons\ofxOcean\libs\kiss\src;..\..\..\addons\ofxOcean\libs\kiss\include;..\..\..\addons\ofxOcean\src;..\..\..\addons\ofxOpenSteer\libs\opensteer\include;..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer;..\..\..\addons\ofxOpenSteer\libs\opensteer\src;..\..\..\addons\ofxOpenSteer\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxOculusRift\libs\LibOVR\Src;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxOculusRift\libs\3rdParty;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxPostProcessing\src;..\..\..\addons\ofxPtf\src;..\..\..\addons\ofxRegex;..\..\..\addons\ofxSimpleSpline\src;..\..\..\addons\ofxSimpleSurface\src;..\..\..\addons\ofxSubtitles\src;..\..\..\addons\ofxTextWriter\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\HUD;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ripples\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -176,7 +176,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.d
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ripples\vs_src;src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxBillboard\src;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxFTGL\libs\FTGL\lib;..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofxGpuParticles\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxMarchingCubes\src;..\..\..\addons\ofxMPMFluid\src;..\..\..\addons\ofxMSACore\src;..\..\..\addons\ofxMSAObjCPointer\src;..\..\..\addons\ofxMSAPhysics\src;..\..\..\addons\ofxNearestNeighbour\libs\nanoflann\include;..\..\..\addons\ofxNearestNeighbour\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxOcean\libs\kiss\tools;..\..\..\addons\ofxOcean\libs\kiss\src;..\..\..\addons\ofxOcean\libs\kiss\include;..\..\..\addons\ofxOcean\src;..\..\..\addons\ofxOpenSteer\libs\opensteer\include;..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer;..\..\..\addons\ofxOpenSteer\libs\opensteer\src;..\..\..\addons\ofxOpenSteer\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxOculusRift\libs\LibOVR\Src;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxOculusRift\libs\3rdParty;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxPostProcessing\src;..\..\..\addons\ofxPtf\src;..\..\..\addons\ofxRegex;..\..\..\addons\ofxSimpleSpline\src;..\..\..\addons\ofxSimpleSurface\src;..\..\..\addons\ofxSubtitles\src;..\..\..\addons\ofxTextWriter\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\HUD;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Ripples\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -196,11 +196,120 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxBillboard\src\ofxBillboard.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGpuParticles\src\GpuParticles.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_reader.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_value.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_writer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMarchingCubes\src\ofxMarchingCubes.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMFluid.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMNode.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMObstacle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMParticle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMSACore\src\MSACoreGL.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMSAObjCPointer\src\MSAObjCPointer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c" />
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fft.c" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fftr.c" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\tools\kiss_fftnd.c" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOcean.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanCamera.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanRenderer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanTile.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Camera.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Clock.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Color.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Draw.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\lq.c" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Obstacle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\OldPathway.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\OpenSteerDemo.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Path.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Pathway.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PlugIn.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PolylineSegmentedPath.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PolylineSegmentedPathwaySegmentRadii.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PolylineSegmentedPathwaySingleRadius.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\SegmentedPath.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\SegmentedPathway.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\SimpleVehicle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\TerrainRayTest.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Vec3.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Vec3Utilities.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerPlugin.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerVehicle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtilsWin.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocketWin.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\BleachBypassPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\BloomPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ContrastPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ConvolutionPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\DofAltPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\DofPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\EdgePass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\FakeSSSPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\FxaaPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\GodRaysPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\HorizontalTiltShifPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\KaleidoscopePass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\LimbDarkeningPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\LUTPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\NoiseWarpPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\PixelatePass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\PostProcessing.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\RenderPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\RGBShiftPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\RimHighlightingPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\SSAOPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPtf\src\ParallelTransportFrames.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxRegex\ofxRegex.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSimpleSpline\src\ofxSimpleSpline.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSimpleSurface\src\ofxSimpleSurface.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTextWriter\src\ofxTextWriter.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsCaption.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDCombinedExporter.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDController.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDHomeButton.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
@@ -209,14 +318,206 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxBillboard\src\ofxBillboard.h" />
     <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBBox.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBitmapGlyph.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBuffer.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBufferFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBufferGlyph.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTExtrdGlyph.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\ftgl.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLBitmapFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLExtrdFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLOutlineFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLPixmapFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLPolygonFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLTextureFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGlyph.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTLayout.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTOutlineGlyph.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTPixmapGlyph.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTPoint.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTPolyGlyph.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTSimpleLayout.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTTextureGlyph.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h" />
+    <ClInclude Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofx1DExtruder.h" />
+    <ClInclude Include="..\..\..\addons\ofxGpuParticles\src\GpuParticles.h" />
+    <ClInclude Include="..\..\..\addons\ofxGpuParticles\src\ofxGpuParticles.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\autolink.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\config.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\features.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\forwards.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\reader.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\value.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\writer.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_batchallocator.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_tool.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
+    <ClInclude Include="..\..\..\addons\ofxMarchingCubes\src\mcTables.h" />
+    <ClInclude Include="..\..\..\addons\ofxMarchingCubes\src\ofxMarchingCubes.h" />
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMFluid.h" />
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMNode.h" />
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMObstacle.h" />
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMParticle.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACore-OF.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACore.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACoreCommon.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACoreGL.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACoreMath.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAObjCPointer\src\MSAObjCPointer.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysics.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysics2D.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysics3D.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsAttraction.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsCallbacks.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsConstraint.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsDataRecorder.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsParams.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsParticle.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsParticleDrawer.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsParticleUpdater.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsSector.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsSpring.h" />
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsWorld.h" />
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\libs\nanoflann\include\nanoflann.hpp" />
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\NearestNeighbour.h" />
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\ofxNearestNeighbour.h" />
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\PointCloud.h" />
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h" />
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\include\kiss_fft.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\include\kiss_fftr.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\src\_kiss_fft_guts.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\tools\kiss_fftnd.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOcean.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanCamera.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanRenderer.h" />
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanTile.h" />
+    <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\AbstractVehicle.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Annotation.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Camera.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Clock.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Color.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Draw.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\LocalSpace.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\lq.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Obstacle.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\OldPathway.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\OpenSteerDemo.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Path.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Pathway.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PlugIn.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PolylineSegmentedPath.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PolylineSegmentedPathwaySegmentRadii.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PolylineSegmentedPathwaySingleRadius.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Proximity.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlike.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlikeBaseDataExtractionPolicies.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlikeMappings.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlikeUtilities.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SegmentedPath.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SegmentedPathAlikeUtilities.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SegmentedPathway.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SharedPointer.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SimpleVehicle.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\StandardTypes.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SteerLibrary.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\UnusedParameter.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Utilities.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Vec3.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Vec3Utilities.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\TerrainRayTest.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteer.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerPlugin.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerTypes.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerVehicle.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\BleachBypassPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\BloomPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ContrastPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ConvolutionPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\DofAltPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\DofPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\EdgePass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\FakeSSSPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\FxaaPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\GodRaysPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\HorizontalTiltShifPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\KaleidoscopePass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\LimbDarkeningPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\LUTPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\NoiseWarpPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ofxPostProcessing.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\PixelatePass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\PostProcessing.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\RenderPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\RGBShiftPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\RimHighlightingPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\SSAOPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.h" />
+    <ClInclude Include="..\..\..\addons\ofxPtf\src\ofxPtf.h" />
+    <ClInclude Include="..\..\..\addons\ofxPtf\src\ParallelTransportFrames.h" />
+    <ClInclude Include="..\..\..\addons\ofxRegex\ofxRegex.h" />
+    <ClInclude Include="..\..\..\addons\ofxSimpleSpline\src\ofxSimpleSpline.h" />
+    <ClInclude Include="..\..\..\addons\ofxSimpleSurface\src\ofxSimpleSurface.h" />
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.h" />
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h" />
+    <ClInclude Include="..\..\..\addons\ofxTextWriter\src\ofxTextWriter.h" />
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
-    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h" />
-    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCaption.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDCombinedExporter.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDController.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDHomeButton.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
@@ -226,6 +527,9 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\addons\ofxCv\ofxCvLib\ofxCvLib.vcxproj">
+      <Project>{faa73572-fd12-41fa-8fbe-cb47482d2d87}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj">
       <Project>{a72c4f16-cb16-4143-ba5c-5e4fa802d636}</Project>
     </ProjectReference>
@@ -240,10 +544,13 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="icon.rc">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
-    </ResourceCompile>
+    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_internalarray.inl" />
+    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_internalmap.inl" />
+    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_valueiterator.inl" />
+    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\sconscript" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\addons\ofxRegex\readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

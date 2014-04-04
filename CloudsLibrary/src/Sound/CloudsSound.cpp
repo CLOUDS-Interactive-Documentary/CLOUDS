@@ -22,6 +22,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
+#ifdef RTC_MIX
 	
         // TODO: use CloudsMixer parameters
         // RTcmix audio stuff
@@ -65,10 +66,10 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         abn.clear();
         for(int i = 0;i<PF_NUMBUSES;i++)
         {
-        ab.push_back("ACTBUS"+ofToString(i));
-        abn.push_back(PF_MAINACT_BUS_START+i);
+			ab.push_back("ACTBUS"+ofToString(i));
+			abn.push_back(PF_MAINACT_BUS_START+i);
         }
-        
+		#endif
 		ofAddListener(GetCloudsAudioEvents()->musicAudioRequested, this, &CloudsSound::audioRequested);
 
 		eventsRegistered = true;
@@ -135,7 +136,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     //
     // GOGOGO
     //
-    
+	#ifdef RTC_MIX
     if(LUKEDEBUG) cout << "===============" << endl;
     if(LUKEDEBUG) cout << "MAKING MUSIC!!!" << endl;
     if(LUKEDEBUG) cout << "===============" << endl;
@@ -233,11 +234,12 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 
         }
     }
-    actTimeLine.setCurrentPage(0);
     if(LUKEDEBUG) cout << "====================" << endl;
     if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
     if(LUKEDEBUG) cout << "====================" << endl;
+	#endif
 
+    actTimeLine.setCurrentPage(0);
     
 }
 
@@ -246,7 +248,8 @@ void CloudsSound::enterTunnel()
     string soundfile = "CLOUDS_introTunnel_light.wav"; // change to something in trax
     string ampsym = "tunnelamp"; // needs to be unique per RT instance
     float volume = 1.0; // how load does this sound play?
-
+	
+	#ifdef RTC_MIX
     if(LUKEDEBUG) cout << "sound: enterTunnel()" << endl;
     if(dopull){
         ofLogError("CloudsSound::enterTunnel") << "Do pull already enabled";
@@ -258,22 +261,29 @@ void CloudsSound::enterTunnel()
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_TUNNEL_BUS);
     SCHEDULEBANG(477.); // length of sound
+	
+	#endif
     in_tunnel = true;
 }
 
 void CloudsSound::exitTunnel()
 {
     float fd = 5.0; // change to adjust fade time
+	#ifdef RTC_MIX
 
     if(LUKEDEBUG) cout << "sound: exitTunnel()" << endl;
 
     PFIELD_SCHED(0., fd, PF_TUNNEL_BUS, "ramp_10");
-    dopull = false;
+	#endif
+    
+	dopull = false;
     in_tunnel = false;
 }
 
 void CloudsSound::enterClusterMap()
 {
+
+	#ifdef RTC_MIX
     string soundfile;
     if(whichdream==0) soundfile = "cloudsdream_mix1.aif";
     if(whichdream==1) soundfile = "cloudsdream_mix2.aif";
@@ -292,17 +302,18 @@ void CloudsSound::enterClusterMap()
     dopull = true;
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_CLUSTERMAP_BUS);
-    
+	#endif  
 }
 
 void CloudsSound::exitClusterMap()
 {
     float fd = 5.0; // change to adjust fade time
-    
+	#ifdef RTC_MIX
     if(LUKEDEBUG) cout << "sound: exitClusterMap()" << endl;
     
     PFIELD_SCHED(0., fd, PF_CLUSTERMAP_BUS, "ramp_10");
     whichdream = (whichdream+1)%3;
+	#endif
     dopull = false;
 }
 
@@ -379,9 +390,11 @@ void CloudsSound::mousePressed(ofMouseEventArgs & args){
 }
 
 void CloudsSound::doPrinting() {
+#ifdef RTC_MIX
     DOCMIXPRINT = !DOCMIXPRINT;
     if(DOCMIXPRINT) RTcmixParseScoreFile("print_on.sco");
     else RTcmixParseScoreFile("print_off.sco");
+#endif
 }
 
 // =========================
@@ -391,7 +404,9 @@ void CloudsSound::doPrinting() {
 // =========================
 void CloudsSound::audioRequested(ofAudioEventArgs& args){
 
+	#ifdef RTC_MIX
     if(dopull) {
+
         pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
 
         // fill up the audio buffer
@@ -418,8 +433,9 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
             
             reset_print();
         }
-
     }
+	#endif
+
 }
 
 void CloudsSound::mouseReleased(ofMouseEventArgs & args){
