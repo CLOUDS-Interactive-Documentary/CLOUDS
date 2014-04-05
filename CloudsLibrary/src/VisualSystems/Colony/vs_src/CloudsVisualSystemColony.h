@@ -111,9 +111,10 @@ private:
     
     /* SOUND LVL=100 */
     ofxUISuperCanvas* soundGui;
-    string soundFiles[3] = {"granular_water2.aif",
-        "granular_water2_slow.aif",
-        "Grains1_slow_low.aif"};
+	vector<string> soundFiles;
+    //string soundFiles[3] = {"granular_water2.aif",
+    //    "granular_water2_slow.aif",
+    //    "Grains1_slow_low.aif"};
     bool playSample[3];
     ControlTrigger soundTriggers[3];
     ofxTonicSynth synth;

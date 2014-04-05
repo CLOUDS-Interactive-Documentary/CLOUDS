@@ -9,7 +9,7 @@
 #include "CloudsInputEvents.h"
 #include "ofxLight.h"
 #include "ofxGenerative.h"
-//#include "ofxMaterial.h"
+
 #ifdef CLOUDS_APP
 #include "CloudsPortal.h"
 #endif
@@ -347,7 +347,7 @@ class CloudsVisualSystem {
 	void drawScene();
 	
     vector<ofxUISuperCanvas *> guis;
-    map<string, ofxUICanvas *> guimap;
+    std::map<string, ofxUICanvas *> guimap;
 	
     //Background Props
     float bgAspectRatio;
@@ -379,8 +379,8 @@ class CloudsVisualSystem {
 	
     //MATERIAL
     ofxMaterial *mat;
-    map<string, ofxMaterial *> materials;
-    map<string, ofxUISuperCanvas *> materialGuis;
+    std::map<string, ofxMaterial *> materials;
+    std::map<string, ofxUISuperCanvas *> materialGuis;
 
 	bool bIsPlaying;
 	bool bIsSetup;
@@ -397,8 +397,8 @@ class CloudsVisualSystem {
 	
     //LIGHTS
 	ofxLight* light;
-    map<string, ofxLight *> lights;
-    map<string, ofxUISuperCanvas *> lightGuis;
+    std::map<string, ofxLight *> lights;
+    std::map<string, ofxUISuperCanvas *> lightGuis;
 	
     //APP
     bool bRenderSystem;
@@ -427,10 +427,10 @@ class CloudsVisualSystem {
     ofxTLCameraTrack* cameraTrack;
 	ofxTLFlags* introOutroTrack;
 	
-    map<ofxTLBangs*, ofxUIButton*>	tlButtonMap;
-    map<ofxUIToggle*, ofxTLSwitches*>	tlToggleMap;
-    map<ofxUISlider*, ofxTLCurves*>	tlSliderMap;
-    map<ofxUINumberDialer*, ofxTLCurves*> tlDialerMap;
+    std::map<ofxTLBangs*, ofxUIButton*>	tlButtonMap;
+    std::map<ofxUIToggle*, ofxTLSwitches*>	tlToggleMap;
+    std::map<ofxUISlider*, ofxTLCurves*>	tlSliderMap;
+    std::map<ofxUINumberDialer*, ofxTLCurves*> tlDialerMap;
 
     ofxUILabel* durationLabel;
     
@@ -504,15 +504,3 @@ class CloudsVisualSystem {
 #endif
     
 };
-
-//#ifdef CLOUDS_APP
-//static  vector<CloudsPortal> gPortals;
-//static bool gShowInterludePortals;
-//vector<CloudsPortal>& InterludePortalsRef();
-//void SetInterludePortalsRef(vector<CloudsPortal>& ref);
-//void ResetInterludePortals();
-//bool GetSelectedInterludePortalContinue();
-//bool GetSelectedInterludePortalResetClouds();
-//void ShowInterludePortals(bool show);
-//bool CanShowInterludePortals();
-//#endif

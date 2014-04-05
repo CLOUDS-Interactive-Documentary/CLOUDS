@@ -243,11 +243,11 @@ void Astrolabe::setTweenReverse( string axis, bool reverse )
 		tweenInfo[axis].reverse = reverse;
 	}
 }
-
-void Astrolabe::getTweenReverse( string axis )
-{
-	rot.find(axis) != rot.end() ? tweenInfo[axis].reverse : false;
-}
+//JG WINDOWS DOESNT COMPILE, also not used
+//void Astrolabe::getTweenReverse( string axis )
+//{
+//	rot.find(axis) != rot.end() ? tweenInfo[axis].reverse : false;
+//}
 
 
 void Astrolabe::setEase( ofxEasing& e )

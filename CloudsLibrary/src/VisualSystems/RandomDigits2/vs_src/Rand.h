@@ -14,6 +14,18 @@ class Rand {
     
 public:
     
+	Rand(){
+		index = 0;
+		speed = .02;
+		rotNoise = 0; 
+		period = 120; //period of oscillation
+		previousMouseX = 0;
+		previousMouseY = 0;
+		tweenRandom = 0;
+    
+	    i = 0;
+	};
+
     int ID; 
     float posX;
     float posY;
@@ -27,15 +39,15 @@ public:
          int& minBri, int& maxBri);
     void setup(); 
     void noiseRotate(float _x, float _y);
-    void generateNoisyNumber();
+    //void generateNoisyNumber();
     void generateRandomNumber();
     void changeRandomNumber();
-    void counter();
+    //void counter();
     void increaseRandomNumber();
     void drawNumbers();
     void update();
 
-    int index =0;
+    int index;
     float previousRandomNumber;
     float nextRandomNumber;
     float currentTime;
@@ -56,17 +68,17 @@ protected:
     
     float rx;
     float ry;
-    float speed = .02;
+    float speed;
     float rotNoise; 
     
-    float period = 120; //period of oscillation
+    float period; //period of oscillation
     
-    float previousMouseX = 0;
-    float previousMouseY = 0;
+    float previousMouseX;
+    float previousMouseY;
     
     int tweenRandom;
     
-    int i = 0;
+    int i;
 
     
 };

@@ -193,7 +193,7 @@ ofColor CloudsVisualSystemOpenP5Sixteen::getColor(int x, int y)
 }
 
 //--------------------------------------------------------------
-int CloudsVisualSystemOpenP5Sixteen::setColor(int x, int y, ofColor col)
+void CloudsVisualSystemOpenP5Sixteen::setColor(int x, int y, ofColor col)
 {
     if ((x < 0) || (y < 0) || (x >= width) || (y >= height)) return;
     

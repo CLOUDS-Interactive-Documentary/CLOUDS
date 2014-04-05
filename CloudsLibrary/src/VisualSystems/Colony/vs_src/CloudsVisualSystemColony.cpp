@@ -68,6 +68,10 @@ void CloudsVisualSystemColony::selfSetDefaults(){
     } else {
         ofLog(OF_LOG_ERROR, "[Colony] no textures in texture directory");
     }
+
+	soundFiles.push_back("granular_water2.aif");
+    soundFiles.push_back("granular_water2_slow.aif");
+    soundFiles.push_back("Grains1_slow_low.aif");
 }
 
 void CloudsVisualSystemColony::loadShaders(){
@@ -482,7 +486,8 @@ Generator CloudsVisualSystemColony::buildSynth()
     
     SampleTable samples[3];
     
-    int nSounds = sizeof(soundFiles) / sizeof(string);
+    //int nSounds = sizeof(strin) / sizeof(string);
+	int nSounds = soundFiles.size();
     for (int i=0; i<nSounds; i++)
     {
         string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];

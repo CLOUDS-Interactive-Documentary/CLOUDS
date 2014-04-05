@@ -1,5 +1,4 @@
 #include "CloudsVisualSystemNeurons.h"
-#include <GLUT/GLUT.h>
 
 #define DEFAULT_BLUE 0xC4 / 255.0
 #define DEFAULT_GREEN 0x9A / 255.0
@@ -491,7 +490,7 @@ void _C::selfDraw(){
             ofSetColor( ofFloatColor( (*it)->r,(*it)->g,(*it)->b,_C::alpha) );
 			
 			//TODO: use ofSphere as GLUT will leave with of 0.8
-            glutSolidSphere(nucleusSize->getScaledValue(),8,8);
+			ofDrawSphere(nucleusSize->getScaledValue(),8,8);
             ofPopMatrix();
             
             //tell the thing to draw a line for itself.

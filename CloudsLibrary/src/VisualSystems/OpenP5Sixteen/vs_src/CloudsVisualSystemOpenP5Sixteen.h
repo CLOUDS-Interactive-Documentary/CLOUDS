@@ -91,7 +91,7 @@ class CloudsVisualSystemOpenP5Sixteen : public CloudsVisualSystem
         int noise(int i);
         int toHex(ofColor col);
         ofColor getColor(int x, int y);
-        int setColor(int x, int y, ofColor col);
+        void setColor(int x, int y, ofColor col);
     
         ofxUISuperCanvas * customGui;
         ofx1DExtruder * textHue, * textSat, * textBri, * textAlpha;

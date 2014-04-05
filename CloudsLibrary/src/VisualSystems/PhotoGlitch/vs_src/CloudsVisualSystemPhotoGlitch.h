@@ -33,14 +33,26 @@ struct compareObj {
     int index;
 } ;
 
-struct glitchParams{
-    bool enable = false;
-    bool sortByBrightness = false;
-    bool sortByHue = false;
-    bool randomSort = true;
-    bool reorder = false;
-    bool shuffle = false;
-    bool startAt  = false;
+class glitchParams{
+public:
+	glitchParams(){
+		enable = false;
+		sortByBrightness = false;
+		sortByHue = false;
+		randomSort = true;
+		reorder = false;
+		shuffle = false;
+		startAt  = false;	
+	}
+
+    bool enable;
+    bool sortByBrightness;
+    bool sortByHue;
+    bool randomSort;
+    bool reorder;
+    bool shuffle;
+    bool startAt;
+
     vector<string> targetImageNames;
     sortMode mode;
 };

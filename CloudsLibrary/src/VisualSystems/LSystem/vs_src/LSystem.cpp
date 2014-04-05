@@ -70,7 +70,7 @@ void LSystem::addRule(string _rule){
         char letter = _rule[0];
         if(letter < 'a' || letter > 'z' || _rule[1] != '='){
             ofLog(OF_LOG_ERROR, "L-System Rule: [" + _rule + "] Doesn't seams like a rule");
-            return 0;
+            return;
         }
         
         //  Set the rule table entry to everything after the "=" character.

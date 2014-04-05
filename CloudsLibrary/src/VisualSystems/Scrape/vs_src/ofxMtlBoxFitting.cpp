@@ -8,6 +8,10 @@
 
 #include "ofxMtlBoxFitting.h"
 
+#ifdef TARGET_WIN32
+#define	round(x) ((x-floor(x))>0.5 ? ceil(x) : floor(x))
+#endif
+
 //--------------------------------------------------------------
 ofxMtlBoxFitting::ofxMtlBoxFitting()
 {

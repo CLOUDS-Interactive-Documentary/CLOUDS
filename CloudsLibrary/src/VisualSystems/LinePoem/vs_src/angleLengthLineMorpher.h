@@ -1,4 +1,6 @@
 #pragma once
+
+#define _USE_MATH_DEFINES
 #include "ofMain.h"
 #include "anglePoint.h"
 #include "angleLengthLine.h"
@@ -38,11 +40,11 @@ public:
 
   // for timing:
 
-  int             startTimeMillis;  
-  int             totalTimeMillis;    
-  bool         bAmAnimating;
-  float           pctAnimating;
-    bool          bSetNewTarget;
+	int             startTimeMillis;  
+	int             totalTimeMillis;    
+	bool         bAmAnimating;
+	float           pctAnimating;
+	bool          bSetNewTarget;
     
 
 
@@ -134,12 +136,12 @@ public:
 
 
 
-  void draw(float pct){
+void draw(float pct){
       
-      if (bSetNewTarget){
-          startTimeMillis = ofGetElapsedTimeMillis();
-          bSetNewTarget = false;
-      }
+	if (bSetNewTarget){
+		startTimeMillis = ofGetElapsedTimeMillis();
+		bSetNewTarget = false;
+	}
       
    if (bAmAnimating){
       if ((ofGetElapsedTimeMillis() - startTimeMillis) < (int)(totalTimeMillis)){
@@ -161,7 +163,7 @@ public:
       calcForward(pctShapedByCos);
       calcBackward(pctShapedByCos);
       calcCentroid();
-        }
+    }
       
       
       drawPoints();

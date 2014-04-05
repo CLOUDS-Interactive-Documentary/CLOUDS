@@ -77,7 +77,7 @@ TUOrbital::~TUOrbital()
 //--------------------------------------------------------------
 unsigned int TUOrbital::restart(unsigned int delay)
 {
-    if (revealMode == REVEAL_INSTANT) return;
+    if (revealMode == REVEAL_INSTANT) return 0;
     
     if (revealMode == REVEAL_RANDOM) {
         delay = ofRandom(MIN(maxFadeTime, maxLineTime) * numOrbitals);

@@ -1,3 +1,4 @@
+
 //
 //  CloudsVisualSystemChromogram.cpp
 //
@@ -64,6 +65,28 @@ void CloudsVisualSystemChromogram::selfSetupGui(){
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemChromogram::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+}
+
+void CloudsVisualSystemChromogram::selfSetDefaults(){
+    
+	n = 0;
+    
+    filled = false;
+    drawn = false;
+    
+    numRandomColors = 100;
+    
+	sporadicColorChanger = 0 ;
+    sporadicSaturationChanger = 0 ;
+    sporadicBrightnessChanger = 0;
+    
+	xpos = 10;
+    ypos = 10;
+    yoffset = 0;
+
+	oscillateColor = false;
+    stochasticity = false; 
+    oscillationPeriod = 1000;
 }
 
 void CloudsVisualSystemChromogram::selfGuiEvent(ofxUIEventArgs &e){

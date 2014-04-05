@@ -330,6 +330,7 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
     CloudsSoundCue cue;
 	vector<int> validInterludePresetIndices;
 	ofRange validRange(56,65);
+#ifdef RTC_MIX
 	for(int i = 0; i < sound.presets.size(); i++){
 		if(validRange.contains( sound.presets[i].slotnumber) ){
 			validInterludePresetIndices.push_back(i);
@@ -347,7 +348,8 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 	cue.mixLevel = 2;
 	sound.startMusicFX(0, cue.duration);
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
-    
+#endif
+
 }
 
 //--------------------------------------------------------------------

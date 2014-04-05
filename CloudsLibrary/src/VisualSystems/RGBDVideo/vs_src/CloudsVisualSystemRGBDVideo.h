@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 
-#include "ofxAVFVideoPlayer.h"
+//#include "ofxAVFVideoPlayer.h"
 typedef struct{
 	ofRange depthRange;
 	ofVec2f depthFOV;
@@ -56,7 +56,7 @@ public:
 	
   protected:
     bool bDrawVideoDebug;
-	ofxAVFVideoPlayer player;
+	ofVideoPlayer player;
 	Intrinsics videoIntrinsics;
     
     bool blendModeAdd; //vs screen

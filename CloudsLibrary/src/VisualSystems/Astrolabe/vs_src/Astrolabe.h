@@ -73,7 +73,7 @@ public:
 	
 	void setTweenReverse( string axis, bool reverse );
 	
-	void getTweenReverse( string axis );
+//	void getTweenReverse( string axis );
 	
 	void setEase( ofxEasing& e );
 	void setEase( ofxEasing* e );

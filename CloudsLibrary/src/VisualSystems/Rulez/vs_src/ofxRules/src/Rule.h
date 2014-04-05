@@ -32,7 +32,9 @@
 #pragma once
 
 #include "ofMain.h"
+#ifdef TARGET_OSX
 #include <tr1/memory>
+#endif
 #include "Action.h"
 #include "Branch.h"
 

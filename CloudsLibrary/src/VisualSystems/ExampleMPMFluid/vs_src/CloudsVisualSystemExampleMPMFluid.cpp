@@ -5,12 +5,11 @@
 #include "CloudsVisualSystemExampleMPMFluid.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //These methods let us add custom GUI parameters and respond to their events
+
+void CloudsVisualSystemExampleMPMFluid::selfSetDefaults(){
+    memset(volume,0, sizeof(float)*4);
+}
 
 void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
     customGui = new ofxUISuperCanvas("EXAMPLE MPM FLUID", gui);
@@ -147,7 +146,6 @@ void CloudsVisualSystemExampleMPMFluid::selfPresetLoaded(string presetPath)
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemExampleMPMFluid::selfBegin()
 {
-
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemExampleMPMFluid::audioRequested);
 }
 
@@ -361,23 +359,23 @@ void CloudsVisualSystemExampleMPMFluid::selfMouseReleased(ofMouseEventArgs& data
 	
 }
 
-Generator CloudsVisualSystemExampleMPMFluid::buildSynth()
+Tonic::Generator CloudsVisualSystemExampleMPMFluid::buildSynth()
 {
     string strDir = GetCloudsDataPath()+"sound/textures/";
     ofDirectory sdir(strDir);
     string strAbsPath = sdir.getAbsolutePath() + "/slowchimes.aif";
-    SampleTable sample = loadAudioFile(strAbsPath);
+    Tonic::SampleTable sample = Tonic::loadAudioFile(strAbsPath);
     
-    Generator low = SineWave().freq(70) * 0.2;
-    Generator sampPlayer = BufferPlayer().setBuffer(sample).loop(1).trigger(1);
-    Generator highElec = SawtoothWave().freq(mouseSpeed*200) * totalSpeed;
+    Tonic::Generator low = Tonic::SineWave().freq(70) * 0.2;
+    Tonic::Generator sampPlayer = Tonic::BufferPlayer().setBuffer(sample).loop(1).trigger(1);
+    Tonic::Generator highElec = Tonic::SawtoothWave().freq(mouseSpeed*200) * totalSpeed;
     
-    Generator highElec1 = SineWave().freq(0.2+mouseSpeed*10) * Noise() * totalSpeed / 2;
+    Tonic::Generator highElec1 = Tonic::SineWave().freq(0.2+mouseSpeed*10) * Tonic::Noise() * totalSpeed / 2;
     
-    Generator highElec2 = LFNoise().setFreq(800+mouseX*500) * totalSpeed;
+    Tonic::Generator highElec2 = Tonic::LFNoise().setFreq(800+mouseX*500) * totalSpeed;
     
     
-    Generator highElec3 = SineWave().freq(100) * SineWave().freq(1) *totalSpeed;
+    Tonic::Generator highElec3 = Tonic::SineWave().freq(100) * Tonic::SineWave().freq(1) *totalSpeed;
     
     return (sampPlayer * highElec) * volumeControl[0] +
             highElec2 * volumeControl[1] +

@@ -18,6 +18,13 @@
 class CloudsVisualSystemOpenP5SpinningSolids : public CloudsVisualSystem {
   public:
     
+	CloudsVisualSystemOpenP5SpinningSolids(){
+		num = 40;
+		IDnumber = 0;
+		xoffset = 30;
+		yoffset = 30;
+	};
+	
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
@@ -92,17 +99,10 @@ class CloudsVisualSystemOpenP5SpinningSolids : public CloudsVisualSystem {
 	
 	vector<Tetra> grid;
 
-    int num = 40;
+    int num;
     int IDnumber;
-    float xoffset = 30;
-    float yoffset = 30;
-
-
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
+    float xoffset;
+    float yoffset;
 
 
 protected:

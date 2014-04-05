@@ -28,8 +28,7 @@ Rand::Rand(float _posX, float _posY, float _randomNumber,
 }
 
 void Rand::setup(){
-    
-	
+  
 	//old OF default is 96 - but this results in fonts looking larger than in other programs.
 	ofTrueTypeFont::setGlobalDpi(72);
     
@@ -39,7 +38,6 @@ void Rand::setup(){
     //nextRandomNumber = ofRandom(10000, 99999);
 
 }
-
 
 /*
 void Rand::generateNoisyNumber(){
@@ -59,7 +57,7 @@ void Rand::generateNoisyNumber(){
 
 
 void Rand::drawNumbers(){
-        ofxEasingQuad eq;
+    ofxEasingQuad eq;
  
     currentTime = ofGetElapsedTimeMillis() - previousTime;
 //    cout<<currentTime<<","<<previousTime<<endl;
@@ -101,31 +99,24 @@ void Rand::changeRandomNumber(){
     previousRandomNumber = randomNumber;
     nextRandomNumber = ofRandom(10000, 99999);    
 
-    
-
-
-
 //    randomNumber = int(newRandomNumber);
-
-    
    // cout << "Button pressed!" << endl;
    
 }
 
-void Rand::counter(){
-    for (float i = 0; i<1000.0; i+=1.0){
-        return i; 
-    }
-}
+//void Rand::counter(){
+//    for (float i = 0; i<1000.0; i+=1.0){
+//        return i; 
+//    }
+//}
 
 void Rand::increaseRandomNumber(){
     
     this->randomNumber =  this->randomNumber + int(ofRandom(0, 200))-100;
 }
 
-void Rand::noiseRotate(float posX, float posY){
-        
-        float rotNoise = ofNoise(posX + ofGetFrameNum()*speed, posY + ofGetFrameNum()*speed);  //y/chaossqr + ofGetFrameNum()*speed
-        return rotNoise;
-    
-    }
+//float Rand::noiseRotate(float posX, float posY){
+//        
+//	float rotNoise = ofNoise(posX + ofGetFrameNum()*speed, posY + ofGetFrameNum()*speed);  //y/chaossqr + ofGetFrameNum()*speed
+//    return rotNoise;
+//}

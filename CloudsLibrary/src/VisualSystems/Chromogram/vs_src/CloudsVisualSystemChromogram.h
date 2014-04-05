@@ -35,6 +35,8 @@ class CloudsVisualSystemChromogram : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	void selfSetDefaults();
+
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -112,10 +114,10 @@ protected:
     int noiseSaturation;
     int noiseBrightness;
     
-    int n = 0;
+    int n;
     
-    bool filled = false;
-    bool drawn = false;
+    bool filled;
+    bool drawn;
     
 	vector <ofColor> randomColors;
     ofMesh chromogram;
@@ -124,14 +126,13 @@ protected:
     ofColor color2;
     ofColor color3;
     float newHue;
-    int sporadicColorChanger = 0 ;
-    int sporadicSaturationChanger = 0 ;
-    int sporadicBrightnessChanger = 0;
+    int sporadicColorChanger;
+    int sporadicSaturationChanger;
+    int sporadicBrightnessChanger;
     
-    
-    float xpos = 10;
-    float ypos = 10;
-    float yoffset = 0;
+    float xpos;
+    float ypos;
+    float yoffset;
     
     float t; //time
     
@@ -170,9 +171,9 @@ protected:
     float BrightnessStochasticity;
     
     //
-    bool oscillateColor = false;
-    bool stochasticity = false; 
-    int oscillationPeriod = 1000;
+    bool oscillateColor;
+    bool stochasticity; 
+    int oscillationPeriod;
     
     
 };

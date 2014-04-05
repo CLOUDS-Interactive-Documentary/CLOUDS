@@ -25,7 +25,7 @@ public:
     Tetra(float posX, float posY, float posZ, float edgeLength);
     void drawShape();
     void makeShape();
-    void noiseRotate(float _x, float _y);
+    float noiseRotate(float _x, float _y);
     float lerp(float _a, float _b, float _f); 
     
 protected:

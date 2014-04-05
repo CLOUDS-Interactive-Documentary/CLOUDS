@@ -65,7 +65,7 @@ public:
 	float getMaxOrbitDistance( float dist ){
 		return maxOrbitDistance;
 	}
-	void getMinOrbitDistance( float dist ){
+	float getMinOrbitDistance( float dist ){
 		return minOrbitDistance;
 	}
 	

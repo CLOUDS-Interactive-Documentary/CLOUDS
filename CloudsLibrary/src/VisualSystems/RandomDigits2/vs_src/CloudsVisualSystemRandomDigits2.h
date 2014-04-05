@@ -22,7 +22,9 @@ using namespace Tonic;
 //TODO: rename this to your own visual system
 class CloudsVisualSystemRandomDigits2 : public CloudsVisualSystem {
   public:
-    
+
+    CloudsVisualSystemRandomDigits2();
+
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
@@ -108,7 +110,7 @@ protected:
     void addColorToGui(ofxUISuperCanvas* gui,string prefix,ofFloatColor& col, bool doAlpha = false, float min=0.0f, float max = 1.0f);
     
     ofxUISuperCanvas* customGui;
-    map< ofFloatColor*, ofxUILabel*> labelColors;
+    std::map< ofFloatColor*, ofxUILabel*> labelColors;
 
     vector<RandomNumber> numbers;
     ofVbo vbo;
@@ -122,11 +124,12 @@ protected:
 
     // Sound
     ofxUISuperCanvas* soundGui;
-    int nSamples = 4;
-    string soundFiles[4] = {"EchoVortex.aif",
-        "wormholeZoom.aif",
-        "wormholeZoom2.aif",
-        "slowgrains_short.aif"};
+	vector<string> soundFiles;
+    //int nSamples = 4;
+    //string soundFiles[4] = {"EchoVortex.aif",
+    //    "wormholeZoom.aif",
+    //    "wormholeZoom2.aif",
+    //    "slowgrains_short.aif"};
     bool playSample[4];
     ControlTrigger soundTriggers[4];
     ofxTonicSynth synth;

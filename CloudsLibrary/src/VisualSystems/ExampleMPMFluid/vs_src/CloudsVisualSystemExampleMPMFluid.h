@@ -17,7 +17,7 @@
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemExampleMPMFluid : public CloudsVisualSystem {
@@ -25,12 +25,13 @@ class CloudsVisualSystemExampleMPMFluid : public CloudsVisualSystem {
     
     CloudsVisualSystemExampleMPMFluid() {}
     
-	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
 		return "ExampleMPMFluid";
 	}
+
+	void selfSetDefaults();
 
 	//These methods let us add custom GUI parameters and respond to their events
     void selfSetupGui();
@@ -130,14 +131,14 @@ protected:
 
 	// Sound
     ofxUISuperCanvas* soundGui;
-    float volume[4] = {0};
+    float volume[4];
     float fMainGain;
-    ControlParameter mainGain;
-    ControlParameter volumeControl[4];
-    ControlTrigger soundTriggers[3];
-    ControlParameter mouseX, mouseY, mouseSpeed, totalSpeed;
+    Tonic::ControlParameter mainGain;
+    Tonic::ControlParameter volumeControl[4];
+    Tonic::ControlTrigger soundTriggers[3];
+    Tonic::ControlParameter mouseX, mouseY, mouseSpeed, totalSpeed;
     int prevMouseX, prevMouseY;
-    ofxTonicSynth synth;
-    Generator buildSynth();
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
 };

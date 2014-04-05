@@ -195,9 +195,8 @@ float Tetra::lerp(float a, float b, float f)
     return a + f * (b - a);
 }
 
-void Tetra::noiseRotate(float posX, float posY){
-        
+float Tetra::noiseRotate(float posX, float posY){
+  
         float rotNoise = ofNoise(posX + ofGetFrameNum()*speed, posY + ofGetFrameNum()*speed);  //y/chaossqr + ofGetFrameNum()*speed
-        return rotNoise;
-    
-    }
+        return rotNoise;  
+}

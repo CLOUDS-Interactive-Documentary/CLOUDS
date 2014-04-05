@@ -8,6 +8,7 @@
 
 #pragma once
 
+#define _USE_MATH_DEFINES
 #include "ofMain.h"
 
 extern float fillAlpha;

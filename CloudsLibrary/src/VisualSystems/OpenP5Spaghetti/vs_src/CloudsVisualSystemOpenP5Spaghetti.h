@@ -22,8 +22,20 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
-    
-    
+    CloudsVisualSystemOpenP5Spaghetti(){
+		justStartingOut = true;
+		amplitude = 100;
+		period = 120;
+		numPreloads = 1000;
+		saturation = 100;
+		brightness = 200;
+		saturation1 = 0;
+		brightness1 = 0;
+		saturation2 = 0;
+		brightness2 = 0;
+		hue1 = 50;
+		hue2 = 10;
+	};
     
     string getSystemName(){
 		return "OpenP5Spaghetti";
@@ -97,8 +109,7 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     
     void regenerate(); 
    
-   
-    bool justStartingOut = true;
+    bool justStartingOut;
     
 	vector<Walker> walkers;
     
@@ -115,15 +126,15 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     ofColor color2;
     ofColor randomColor;
     ofColor newColor;
-    int numPreloads = 1000;
-    float saturation = 100;
-    float brightness = 200;
+    int numPreloads;
+    float saturation;
+    float brightness;
     float saturation1;
     float brightness1;
     float saturation2;
     float brightness2;
-    float hue1 = 50;
-    float hue2 = 100;
+    float hue1;
+    float hue2;
     
     //spin speed
     float currSpin;
@@ -147,14 +158,11 @@ protected:
     //oscillator
     
     float osc;
-    float amplitude = 100;
-    float period = 120;
+    float amplitude;
+    float period;
     float frameCount;
     
     //float osc = amplitude * cos(TWO_PI * frameCount / period);
 
-    
-   
-	
 
 };
