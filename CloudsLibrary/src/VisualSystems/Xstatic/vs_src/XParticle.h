@@ -63,6 +63,6 @@ protected:
     bool bTriggered;
     int luckyNumber;
     int newRandomNumber;
-    int previousTime = 0;
+    int previousTime;
     int currentTime;
 };
