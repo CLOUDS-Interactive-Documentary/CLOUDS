@@ -954,16 +954,16 @@ void CloudsVisualSystemPhotoGlitch::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
 {
-    ofPushMatrix();
-    ofTranslate(getCanvasWidth()/2, getCanvasHeight()/2);
-    ofPushMatrix();
-    ofScale(mScale, mScale);
-    ofTranslate(-getCanvasWidth()/2, -getCanvasHeight()/2);
-    
     if(! bSourceFolderExists || !bTargetFolderExists || !bSourceImageExists || !bTargetImageExists){
 //        ofLogError("[ CloudsVisualSystemPhotoGlitch::selfDrawBackground ]")<<" Image folders not found"<<endl;
         return;
     }
+	
+	ofPushMatrix();
+    ofTranslate(getCanvasWidth()/2, getCanvasHeight()/2);
+    ofPushMatrix();
+    ofScale(mScale, mScale);
+    ofTranslate(-getCanvasWidth()/2, -getCanvasHeight()/2);
     
     if (bUseColors) {
         sourcePhoto.vbo.enableColors();

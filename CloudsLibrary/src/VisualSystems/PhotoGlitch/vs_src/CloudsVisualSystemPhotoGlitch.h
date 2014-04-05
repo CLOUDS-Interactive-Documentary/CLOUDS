@@ -72,6 +72,14 @@ public:
     ofVbo vbo;
     
     PGCell* cells;
+
+	PhotoGlitch(){
+		verts = NULL;
+		texCoords = NULL;
+		colors = NULL;
+		indices = NULL;
+		cells = NULL;
+	}
     
     void clear(){
             tex.clear();
