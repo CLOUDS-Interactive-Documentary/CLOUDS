@@ -29,7 +29,7 @@ CloudsVisualSystemSwim::CloudsVisualSystemSwim() :
 void CloudsVisualSystemSwim::selfSetup()
 {
     snow.init(getVisualSystemDataPath());
-    bubbles.init(getVisualSystemDataPath());
+    //bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()

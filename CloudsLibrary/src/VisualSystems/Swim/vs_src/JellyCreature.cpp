@@ -35,8 +35,8 @@
 #include "MeshUtils.h"
 #include "CircularFormula.h"
 
-#ifndef round
-#define	round(x)	((x-floor(x))>0.5 ? ceil(x) : floor(x))
+#ifdef TARGET_WIN32
+#define round(x) ((x-floor(x))>0.5 ? ceil(x) : floor(x))
 #endif
 
 namespace itg
@@ -198,7 +198,7 @@ namespace itg
         shader.setUniform1f("texRepeatS", texRepeatS);
         shader.setUniform1f("fogStart", fogStart);
         shader.setUniform1f("fogEnd", fogEnd);
-//#warning take light pos from visual system
+// TODO: take light pos from visual system
         shader.setUniform3f("lightPos", 1000, 0, 1000);
     }
 

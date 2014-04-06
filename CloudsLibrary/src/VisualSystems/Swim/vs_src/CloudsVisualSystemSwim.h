@@ -12,7 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 #include "Creatures.h"
-#include "Bubbles.h"
+//#include "Bubbles.h"
 #include "MarineSnow.h"
 #include "ofxPostProcessing.h"
 #include "ofxTonic.h"
@@ -130,7 +130,7 @@ protected:
     bool loadSeed, saveSeed;
     
     // misc
-    itg::Bubbles bubbles;
+    //itg::Bubbles bubbles;
     ofxPostProcessing post;
     bool regenerate;
 	itg::MarineSnow snow;
