@@ -106,7 +106,7 @@ void getCellsFromContainer(voro::container &_con, float _wallsThikness, vector<o
         do {
             voro::voronoicell c;
             if( !_con.compute_cell(c, vl) ) {
-                return cells;
+                return;
             } else {
                 double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
 				ofMesh cellMesh;
@@ -118,7 +118,7 @@ void getCellsFromContainer(voro::container &_con, float _wallsThikness, vector<o
         } while( vl.inc() );
     }
     
-    return cells;
+    return;
 }
 
 vector<float> getCellsRadius(voro::container &_con){

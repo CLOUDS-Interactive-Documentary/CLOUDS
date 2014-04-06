@@ -5,11 +5,6 @@
 #include "CloudsVisualSystemConnectors.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 void CloudsVisualSystemConnectors::selfSetDefaults(){
 	soundFiles[0] = "WindChimes1.aif";
 }

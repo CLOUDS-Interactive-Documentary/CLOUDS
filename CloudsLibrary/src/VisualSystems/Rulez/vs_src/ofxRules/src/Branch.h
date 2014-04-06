@@ -32,7 +32,11 @@
 #pragma once
 
 #include "ofMain.h"
+#ifdef TARGET_WIN32
+#include <memory.h>
+#else
 #include <tr1/memory>
+#endif
 
 namespace itg
 {

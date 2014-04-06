@@ -1,6 +1,12 @@
 #include "CloudsVisualSystemReplicator.h"
 
+using namespace Tonic;
+
 CloudsVisualSystemReplicator::CloudsVisualSystemReplicator(){
+	soundFiles.push_back("organ_slower.aif");
+	soundFiles.push_back("EchoVortex.aif");
+    playSample[0] = false;
+    playSample[1] = false;
 
 }
 

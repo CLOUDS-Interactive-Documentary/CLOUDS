@@ -138,7 +138,8 @@ protected:
     
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[2];
+	vector<string> soundFiles;
+//    string soundFiles[2];
     bool playSample[2];
     ControlTrigger soundTriggers[2];
     ofxTonicSynth synth;

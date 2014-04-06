@@ -91,7 +91,7 @@ void CloudsVisualSystemRulez::selfDraw()
     if (structure)
     {
         shader.begin();
-    #warning take light pos from clouds
+//    #warning take light pos from clouds
         shader.setUniform3f("lightPos", 1000, 1000, 1000);
         //MA: replaced ofGetMouseX() with GetCloudsInputX()
         //MA: changed ofGetWidth() to getCanvasWidth()

@@ -11,7 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxAVFVideoPlayer.h"
+//#include "ofxAVFVideoPlayer.h"
 //--------------------------------------------------------------
 //--------------------------------------------------------------
 class CloudsVisualSystem2DVideo : public CloudsVisualSystem
@@ -54,7 +54,7 @@ protected:
 	void loadMovieFromRadio();
 	bool receivedFrame;
 //    ofxAVFVideoPlayer player;
-    ofPtr<ofxAVFVideoPlayer> player;
+    ofPtr<ofVideoPlayer> player;
     vector<string> movieStrings;
     int movieIndex;
 	string loadedMoviePath;

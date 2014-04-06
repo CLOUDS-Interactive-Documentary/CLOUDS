@@ -6,6 +6,18 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include <map>
 
+using namespace Tonic;
+
+CloudsVisualSystemWormHole::CloudsVisualSystemWormHole(){
+    soundFiles.push_back("EchoVortex.aif");
+    soundFiles.push_back("wormholeZoom.aif");
+    soundFiles.push_back("wormholeZoom2.aif");
+    soundFiles.push_back("slowgrains_short.aif");
+
+	memset(playSample, 4, sizeof(bool));
+
+
+}
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemWormHole::selfSetupGui(){
 	
@@ -189,7 +201,7 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	soundGui->setName("WORMHOLE Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
-    for (int i=0; i<nSamples; i++)
+	for (int i=0; i<soundFiles.size(); i++)
     {
         soundGui->addToggle(soundFiles[i], &playSample[i]);
     }
@@ -313,7 +325,7 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		wormholeLightGui->getWidget("lightBrightness")->setColorFill(lightColor);
 	}
 
-    for (int i=0; i<nSamples; i++)
+	for (int i=0; i<soundFiles.size(); i++)
     {
         if (e.widget->getName() == soundFiles[i]) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
@@ -466,7 +478,7 @@ void CloudsVisualSystemWormHole::selfBegin(){
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
     
-    for (int i=0; i<nSamples; i++)
+    for (int i = 0; i < soundFiles.size(); i++)
     {
         if (playSample[i]) {
             soundTriggers[i].trigger();
@@ -629,7 +641,7 @@ void CloudsVisualSystemWormHole::selfExit()
 	mesh.clear();
 	
 	//unload the shaders
-	for (map<string, ofShader*>::iterator it = shaderMap.begin(); it!= shaderMap.end(); it++)
+	for (std::map<string, ofShader*>::iterator it = shaderMap.begin(); it!= shaderMap.end(); it++)
 	{
 		//JG: fixed memory leak
 		ofShader* shader = it->second;
@@ -701,7 +713,7 @@ void CloudsVisualSystemWormHole::smoothMesh( ofMesh& facetedMesh, ofMesh& target
 	bool hasTC = facetedMesh.getNumTexCoords();
 	
 	//use these to store our new mesh info
-	map<string, unsigned int> mergeMap;
+	std::map<string, unsigned int> mergeMap;
 	vector<ofVec3f> smoothVertices;
 	vector<ofVec3f> smoothNormals;
 	vector<ofVec2f> smoothTexCoords;
@@ -717,7 +729,7 @@ void CloudsVisualSystemWormHole::smoothMesh( ofMesh& facetedMesh, ofMesh& target
 	smoothVertices.resize( mergeMap.size() );
 	if(hasTC)	smoothTexCoords.resize( mergeMap.size() );
 	int smoothVertexCount = 0;
-	for (map<string, unsigned int>::iterator it = mergeMap.begin(); it != mergeMap.end(); it++)
+	for (std::map<string, unsigned int>::iterator it = mergeMap.begin(); it != mergeMap.end(); it++)
 	{
 		smoothVertices[smoothVertexCount] = v[it->second];
 		if(hasTC)	smoothTexCoords[smoothVertexCount] = uv[it->second];
@@ -812,14 +824,14 @@ Generator CloudsVisualSystemWormHole::buildSynth()
     
     SampleTable samples[4];
     
-    for (int i=0; i<nSamples; i++)
+	for (int i=0; i<soundFiles.size(); i++)
     {
         string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
         samples[i] = loadAudioFile(strAbsPath);
     }
     
     Generator sampleGen[4];
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<soundFiles.size(); i++)
     {
         sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(soundTriggers[i]);
     }

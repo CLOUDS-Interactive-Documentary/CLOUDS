@@ -5,13 +5,8 @@
 #include "CloudsVisualSystemFlocking.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
 
 //These methods let us add custom GUI parameters and respond to their events
-
 
 void CloudsVisualSystemFlocking::selfSetupGui(){
 //	guis.push_back(customGui);

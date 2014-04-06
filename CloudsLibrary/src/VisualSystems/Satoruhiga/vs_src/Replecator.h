@@ -2,8 +2,11 @@
 
 #include "ofMain.h"
 
+#ifdef _MSC_VER
+#include <memory.h>
+#else
 #include <tr1/functional>
-
+#endif
 namespace std
 {
         using tr1::function;

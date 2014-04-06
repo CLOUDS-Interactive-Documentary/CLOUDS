@@ -12,8 +12,14 @@
 
 const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
 
-CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camSpeed(-600.f), regenerate(false), loadSeed(false), saveSeed(false)
+CloudsVisualSystemSwim::CloudsVisualSystemSwim() : 
+	camSpeed(-600.f), regenerate(false), loadSeed(false), saveSeed(false)
 {
+	soundFiles.push_back("underwater_stretch.aif");
+	soundFiles.push_back("Underwater.aif");
+	playSample[0] = false;
+	playSample[1] = false;
+
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -31,9 +37,6 @@ void CloudsVisualSystemSwim::selfSetup()
     post.createPass<BloomPass>();
     
     // sound
-	soundFiles[0] = "underwater_stretch.aif";
-	soundFiles[1] = "Underwater.aif";
-	playSample[0] = playSample[1] = false;
     volumeControl.value(0);
     synth.setOutputGen(buildSynth());
 }

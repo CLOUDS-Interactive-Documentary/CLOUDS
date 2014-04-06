@@ -9,7 +9,7 @@
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 
 class CloudsVisualSystemReplicator : public CloudsVisualSystem {
@@ -61,13 +61,15 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
 
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[2] = {"organ_slower.aif",
-        "EchoVortex.aif"};
-    bool playSample[2] = {false};
-    ControlTrigger soundTriggers[2];
-    ofxTonicSynth synth;
-    Generator buildSynth();
-    ControlParameter volumeControl;
+	vector<string> soundFiles;
+    //string soundFiles[2] = {"organ_slower.aif",
+    //    "EchoVortex.aif"};
+    bool playSample[2];
+    Tonic::ControlTrigger soundTriggers[2];
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
+    Tonic::ControlParameter volumeControl;
+
     float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };
