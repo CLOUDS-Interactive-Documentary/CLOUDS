@@ -12,7 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 #include "Creatures.h"
-#include "Bubbles.h"
+//#include "Bubbles.h"
 #include "MarineSnow.h"
 #include "ofxPostProcessing.h"
 #include "ofxTonic.h"
@@ -130,7 +130,7 @@ protected:
     bool loadSeed, saveSeed;
     
     // misc
-    itg::Bubbles bubbles;
+    //itg::Bubbles bubbles;
     ofxPostProcessing post;
     bool regenerate;
 	itg::MarineSnow snow;
@@ -138,9 +138,8 @@ protected:
     
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[2] = {"underwater_stretch.aif",
-        "Underwater.aif"};
-    bool playSample[2] = {false};
+    string soundFiles[2];
+    bool playSample[2];
     ControlTrigger soundTriggers[2];
     ofxTonicSynth synth;
     Generator buildSynth();

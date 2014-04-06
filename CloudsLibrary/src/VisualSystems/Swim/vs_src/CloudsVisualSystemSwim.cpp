@@ -22,7 +22,7 @@ CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camSpeed(-600.f), regenerate(
 void CloudsVisualSystemSwim::selfSetup()
 {
     snow.init(getVisualSystemDataPath());
-    bubbles.init(getVisualSystemDataPath());
+    //bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
@@ -31,6 +31,9 @@ void CloudsVisualSystemSwim::selfSetup()
     post.createPass<BloomPass>();
     
     // sound
+	soundFiles[0] = "underwater_stretch.aif";
+	soundFiles[1] = "Underwater.aif";
+	playSample[0] = playSample[1] = false;
     volumeControl.value(0);
     synth.setOutputGen(buildSynth());
 }
