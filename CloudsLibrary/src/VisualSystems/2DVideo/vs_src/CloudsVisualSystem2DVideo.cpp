@@ -48,10 +48,10 @@ void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
     if (e.getKind() == OFX_UI_WIDGET_BUTTON){
         
         if(e.getName() == "SET IN TIME"){
-            inTime = player->getCurrentTime();
+			inTime = player->getPosition()*player->getDuration();
         }
         else if (e.getName() == "SET OUT TIME"){
-            outTime = player->getCurrentTime();
+            outTime = player->getPosition()*player->getDuration();
         }
     }
     
@@ -80,7 +80,7 @@ void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index, bool reset){
     if( player != NULL && player->isPlaying()  ){
         player->stop();
     }
-    player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
+    player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
 	loadedMoviePath = movieStrings[index];
     if(player->loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
         
@@ -238,7 +238,7 @@ void CloudsVisualSystem2DVideo::selfUpdate()
         if(player->getWidth() >0){
             //this is to set the intime once the video has loaded
             cout<<"setting player time to : "<<inTime<<endl;
-            player->setTime(inTime);
+			player->setPosition(inTime / player->getDuration());
             bFileLoaded = true;
         }
         
@@ -306,12 +306,12 @@ void CloudsVisualSystem2DVideo::selfExit(){
 void CloudsVisualSystem2DVideo::selfKeyPressed(ofKeyEventArgs & args){
 	
     if(args.key == 'i' ){
-        cout<<"in time :"<<player->getCurrentTime()<<endl;
-        inTime = player->getCurrentTime();
-    }
+		cout<<"in time :"<<player->getPosition()*player->getDuration()<<endl;
+        inTime = player->getPosition()*player->getDuration();
+	}
     else if (args.key == 'o'){
-        cout<< "out time :"<<player->getCurrentTime()<<endl;
-        outTime = player->getCurrentTime();
+        cout<< "out time :"<<player->getPosition()*player->getDuration()<<endl;
+        outTime = player->getPosition()*player->getDuration();
     }
     else if (args.key == 'a'){
         cout<<timeline->getDurationInSeconds()<<endl;

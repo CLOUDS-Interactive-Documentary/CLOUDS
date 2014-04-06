@@ -30,10 +30,13 @@
  *
  */
 #pragma once
-
-#include <tr1/memory>
 #include "ofxXmlSettings.h"
 #include "Branch.h"
+#ifdef TARGET_WIN32
+#include <memory.h>
+#else
+#include <tr1/memory>
+#endif
 
 namespace itg
 {

@@ -21,12 +21,12 @@
 #include "CloudsAudioEvents.h"
 #include "ofxTonic.h"
 
-using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemWormHole : public CloudsVisualSystem {
   public:
     
+	CloudsVisualSystemWormHole();
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
@@ -179,16 +179,18 @@ protected:
 
     // Sound
     float fMainGain;
-    ControlParameter mainGain;
+    Tonic::ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
-    int nSamples = 4;
-    string soundFiles[4] = {"EchoVortex.aif",
-        "wormholeZoom.aif",
-        "wormholeZoom2.aif",
-        "slowgrains_short.aif"};
+	vector<string> soundFiles;
+    //int nSamples = 4;
+    //string soundFiles[4] = {"EchoVortex.aif",
+    //    "wormholeZoom.aif",
+    //    "wormholeZoom2.aif",
+    //    "slowgrains_short.aif"};
     bool playSample[4];
-    ControlTrigger soundTriggers[4];
-    ofxTonicSynth synth;
-    Generator buildSynth();
+    Tonic::ControlTrigger soundTriggers[4];
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
+
 	void audioRequested(ofAudioEventArgs& args);
 };

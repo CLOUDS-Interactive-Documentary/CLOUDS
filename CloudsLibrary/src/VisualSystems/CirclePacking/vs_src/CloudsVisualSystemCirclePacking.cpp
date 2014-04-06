@@ -6,11 +6,6 @@
 
 #include "CloudsVisualSystemCirclePacking.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //float CloudsVisualSystemCirclePacking::NCircles = 50;
 
 //These methods let us add custom GUI parameters and respond to their events

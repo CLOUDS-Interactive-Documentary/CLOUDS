@@ -8,18 +8,18 @@ static vector<CloudsVisualSystemPreset> presets;
 static vector<CloudsVisualSystem*> systems;
 
 #ifndef CLOUDS_NO_VS
-#include "CloudsVisualSystem2DVideo.h"
+
+///////64 bit
+//#include "CloudsVisualSystem2DVideo.h"
+///////64 bit
+
 #include "CloudsVisualSystem3DModelLoader.h"
 #include "CloudsVisualSystemAstrolabe.h"
 #include "CloudsVisualSystemAutomata.h"
 #include "CloudsVisualSystemBallDroppings.h"
 #include "CloudsVisualSystemChromogram.h"
 #include "CloudsVisualSystemCirclePacking.h"
-
-///////64 bit
-//#include "CloudsVisualSystemCircuit.h"
-///////
-
+#include "CloudsVisualSystemCircuit.h"
 #include "CloudsVisualSystemCities.h"
 #include "CloudsVisualSystemCode.h"
 #include "CloudsVisualSystemColony.h"
@@ -56,22 +56,25 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemMazeGenerator2.h"
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemMetaballs.h"
-#include "CloudsVisualSystemNbody.h"
+
+//NOT USED
+//#include "CloudsVisualSystemNbody.h"
 
 ///////64 bit
 //#include "CloudsVisualSystemNeurons.h"
 //////
 
 #include "CloudsVisualSystemOcean.h"
-#include "CloudsVisualSystemOpenP53DIntro.h"
-#include "CloudsVisualSystemOpenP5Caustics.h"
-#include "CloudsVisualSystemOpenP5DrawingMachine10.h"
+//NOT USED
+//#include "CloudsVisualSystemOpenP53DIntro.h"
+//#include "CloudsVisualSystemOpenP5Caustics.h"
+//#include "CloudsVisualSystemOpenP5DrawingMachine10.h"
 #include "CloudsVisualSystemOpenP5Fifteen.h"
 #include "CloudsVisualSystemOpenP5Hackpact.h"
 #include "CloudsVisualSystemOpenP5Machine.h"
 #include "CloudsVisualSystemOpenP5NoiseSphere.h"
 #include "CloudsVisualSystemOpenP5SeaOfLines.h"
-#include "CloudsVisualSystemOpenP5Sixteen.h"
+//#include "CloudsVisualSystemOpenP5Sixteen.h"
 #include "CloudsVisualSystemOpenP5SpaceJunk.h"
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 #include "CloudsVisualSystemOpenP5SpinningSolids.h"
@@ -79,19 +82,15 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemOrbit.h"
 #include "CloudsVisualSystemOscillations.h"
 #include "CloudsVisualSystemPages.h"
-#include "CloudsVisualSystemPaintBrush.h"
+//#include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemPhotoGlitch.h"
 #include "CloudsVisualSystemProcess11.h"
 #include "CloudsVisualSystemProcess18.h"
 #include "CloudsVisualSystemRGBDVideo.h"
 
-///////64 bit
-////#include "CloudsVisualSystemRandomDigits2.h"
-///////64 bit
+#include "CloudsVisualSystemRandomDigits2.h"
 
-//////64 bit comment out
-//#include "CloudsVisualSystemReplicator.h"
-/////
+#include "CloudsVisualSystemReplicator.h"
 
 #include "CloudsVisualSystemRipples.h"
 #include "CloudsVisualSystemRulez.h"
@@ -103,10 +102,10 @@ static vector<CloudsVisualSystem*> systems;
 ///////
 
 #include "CloudsVisualSystemTerrain.h"
-#include "CloudsVisualSystemThingsInTheDark.h"
-#include "CloudsVisualSystemTunnelDrawing.h"
+//#include "CloudsVisualSystemThingsInTheDark.h"
+//#include "CloudsVisualSystemTunnelDrawing.h"
 #include "CloudsVisualSystemTwitter.h"
-#include "CloudsVisualSystemUextrude.h"
+//#include "CloudsVisualSystemUextrude.h"
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemVerletForm.h"
 
@@ -115,7 +114,11 @@ static vector<CloudsVisualSystem*> systems;
 ///////64 bit
 
 #include "CloudsVisualSystemVoro.h"
-#include "CloudsVisualSystemWebHistory.h"
+
+//////////////64 Bit
+//#include "CloudsVisualSystemWebHistory.h"
+//////////////64 Bit
+
 #include "CloudsVisualSystemWorld.h"
 #include "CloudsVisualSystemWormHole.h"
 #include "CloudsVisualSystemXstatic.h"
@@ -196,13 +199,19 @@ struct Mapping {
 	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
 //	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
 	{ "OpenP5Caustics", &fCreate<CloudsVisualSystemOpenP5Caustics> },
-	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
+///////64 bit
+//	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
+//////
 	{ "OpenP5Fifteen", &fCreate<CloudsVisualSystemOpenP5Fifteen> },
 	{ "OpenP5Hackpact", &fCreate<CloudsVisualSystemOpenP5Hackpact> },
 	{ "OpenP5Machine", &fCreate<CloudsVisualSystemOpenP5Machine> },
 	{ "OpenP5NoiseSphere", &fCreate<CloudsVisualSystemOpenP5NoiseSphere> },
 	{ "OpenP5SeaOfLines", &fCreate<CloudsVisualSystemOpenP5SeaOfLines> },
-	{ "OpenP5Sixteen", &fCreate<CloudsVisualSystemOpenP5Sixteen> },
+
+///////64 bit
+//	{ "OpenP5Sixteen", &fCreate<CloudsVisualSystemOpenP5Sixteen> },
+////////
+
 	{ "OpenP5SpaceJunk", &fCreate<CloudsVisualSystemOpenP5SpaceJunk> },
 	{ "OpenP5Spaghetti", &fCreate<CloudsVisualSystemOpenP5Spaghetti> },
 	{ "OpenP5SpinningSolids", &fCreate<CloudsVisualSystemOpenP5SpinningSolids> },
@@ -210,7 +219,9 @@ struct Mapping {
 	{ "Orbit", &fCreate<CloudsVisualSystemOrbit> },
 	{ "Oscillations", &fCreate<CloudsVisualSystemOscillations> },
 	{ "Pages", &fCreate<CloudsVisualSystemPages> },
-	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
+///////64 bit
+//	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
+///////
 	{ "PhotoGlitch", &fCreate<CloudsVisualSystemPhotoGlitch> },
 	{ "Process11", &fCreate<CloudsVisualSystemProcess11> },
 	{ "Process18", &fCreate<CloudsVisualSystemProcess18> },
@@ -235,8 +246,11 @@ struct Mapping {
 ///////
 	
 	{ "Terrain", &fCreate<CloudsVisualSystemTerrain> },
-	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
-	{ "TunnelDrawing", &fCreate<CloudsVisualSystemTunnelDrawing> },
+///////64 bit
+//	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
+////////
+//	{ "TunnelDrawing", &fCreate<CloudsVisualSystemTunnelDrawing> },
+////////
 	{ "Twitter", &fCreate<CloudsVisualSystemTwitter> },
 	{ "Uextrude", &fCreate<CloudsVisualSystemUextrude> },
 	{ "VectorFlow", &fCreate<CloudsVisualSystemVectorFlow> },
@@ -247,7 +261,9 @@ struct Mapping {
 ///////64 bit
 	
 	{ "Voro", &fCreate<CloudsVisualSystemVoro> },
-	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
+///////64 bit
+//	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
+///////64 bit
 	{ "World", &fCreate<CloudsVisualSystemWorld> },
 	{ "WormHole", &fCreate<CloudsVisualSystemWormHole> },
 	{ "Xstatic", &fCreate<CloudsVisualSystemXstatic> },

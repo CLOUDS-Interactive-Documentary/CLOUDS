@@ -432,7 +432,7 @@ void CloudsVisualSystemRGBDVideo::selfKeyPressed(ofKeyEventArgs & args){
         timeline->setCurrentFrame(0);
 
         player.stop();
-        player.setTime(0);
+        player.setPosition(0);
         
         player.play();
         timeline->play();
