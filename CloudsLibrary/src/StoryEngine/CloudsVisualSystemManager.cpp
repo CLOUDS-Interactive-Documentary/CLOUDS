@@ -173,6 +173,7 @@ struct Mapping {
 ///////
 
 	{ "ForkingPaths", &fCreate<CloudsVisualSystemForkingPaths> },
+///NOT USED
 //	{ "GPUParticles", &fCreate<CloudsVisualSystemGPUParticles> },
 	{ "GesturePaint", &fCreate<CloudsVisualSystemGesturePaint> },
 ///////64 bit
@@ -186,6 +187,9 @@ struct Mapping {
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
     { "MazeGenerator2", &fCreate<CloudsVisualSystemMazeGenerator2> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
+
+
+///NOT USED
 //	{ "Metaballs", &fCreate<CloudsVisualSystemMetaballs> },
 //	{ "Nbody", &fCreate<CloudsVisualSystemNbody> },
 	

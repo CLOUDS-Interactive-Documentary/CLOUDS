@@ -11,8 +11,8 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "Path.h"
-#include "Path.h"
+#include "itgPath.h"
+//#include "Path.h"
 #include "ofxPostProcessing.h"
 
 //TODO: rename this to your own visual system
@@ -116,7 +116,7 @@ protected:
     //  Your Stuff
     //
     //deque<itg::Path> paths;
-    itg::Path path;
+    itg::itgPath path;
     ofxPostProcessing post;
     ofShader shader;
     unsigned lastPathTime;

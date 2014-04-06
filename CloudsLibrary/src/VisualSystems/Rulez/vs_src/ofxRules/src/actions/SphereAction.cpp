@@ -38,6 +38,6 @@ namespace itg
     void SphereAction::load(ofxXmlSettings& xml, const string& tagName, unsigned tagIdx)
     {
         TransformAction::load(xml, tagName, tagIdx);
-        setSize(xml.getAttribute(tagName, "size", 0.1, tagIdx));
+        //setSize(xml.getAttribute(tagName, "size", 0.1, tagIdx));
     }
 }

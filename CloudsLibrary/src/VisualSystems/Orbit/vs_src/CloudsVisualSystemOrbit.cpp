@@ -28,9 +28,9 @@ void CloudsVisualSystemOrbit::selfSetup()
     fogEnd = 500.f;
     speed = 1.f;
     
-    Path::maxLineLength = 10;
-    Path::maxMeshLength = 10;
-    Path::lineWidth = 1.f;
+    itgPath::maxLineLength = 10;
+    itgPath::maxMeshLength = 10;
+    itgPath::lineWidth = 1.f;
     
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     post.init(getCanvasWidth(), getCanvasHeight(), true);
@@ -169,14 +169,14 @@ void CloudsVisualSystemOrbit::selfSetupRenderGui()
     
     rdrGui->addLabel("Line");
     rdrGui->addToggle("drawLine", &drawLine);
-    rdrGui->addIntSlider("maxLineLength", 10, 5000, &Path::maxLineLength);
-    rdrGui->addSlider("lineFadeLength", 0, 1, &Path::lineFadeLength);
-    rdrGui->addSlider("lineWidth", .1f, 5.f, &Path::lineWidth);
-    rdrGui->addRangeSlider("hueRange", 0.f, 1.f, &Path::hueMin, &Path::hueMax);
+    rdrGui->addIntSlider("maxLineLength", 10, 5000, &itgPath::maxLineLength);
+    rdrGui->addSlider("lineFadeLength", 0, 1, &itgPath::lineFadeLength);
+    rdrGui->addSlider("lineWidth", .1f, 5.f, &itgPath::lineWidth);
+    rdrGui->addRangeSlider("hueRange", 0.f, 1.f, &itgPath::hueMin, &itgPath::hueMax);
     
     rdrGui->addLabel("Mesh");
     rdrGui->addToggle("drawMesh", &drawMesh);
-    rdrGui->addIntSlider("maxMeshLength", 10, 5000, &Path::maxMeshLength);
+    rdrGui->addIntSlider("maxMeshLength", 10, 5000, &itgPath::maxMeshLength);
     rdrGui->addSlider("meshRadius", 0.1f, 4.f, &meshRadius);
     
     //rdrGui->addLabel("Ellipses");

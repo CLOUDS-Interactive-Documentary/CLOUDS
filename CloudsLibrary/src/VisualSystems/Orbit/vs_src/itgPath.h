@@ -34,12 +34,12 @@
 #include "ofMain.h"
 #include "ofxPtf.h"
 #include "PathPoint.h"
-#include "Path.h"
+//#include "Path.h"
 #include "ofxGpuParticles.h"
 
 namespace itg
 {
-    class Path
+    class itgPath
     {
     public:
         // floats only so can add them to gui

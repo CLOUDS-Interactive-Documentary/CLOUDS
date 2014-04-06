@@ -29,18 +29,18 @@
  *  POSSIBILITY OF SUCH DAMAGE. 
  *
  */
-#include "Path.h"
+#include "itgPath.h"
 
 namespace itg
 {
-    int Path::maxLineLength = 100;
-    int Path::maxMeshLength = 100;
-    float Path::lineFadeLength = 1.f;
-    float Path::lineWidth = 1.f;
-    float Path::hueMin = 0.f;
-    float Path::hueMax = 1.f;
+    int itgPath::maxLineLength = 100;
+    int itgPath::maxMeshLength = 100;
+    float itgPath::lineFadeLength = 1.f;
+    float itgPath::lineWidth = 1.f;
+    float itgPath::hueMin = 0.f;
+    float itgPath::hueMax = 1.f;
     
-    void Path::init(float meshRadius, const string& dataPath)// : resolution(10), meshRadius(meshRadius)
+    void itgPath::init(float meshRadius, const string& dataPath)// : resolution(10), meshRadius(meshRadius)
     {
         this->resolution = 10;
         this->meshRadius = meshRadius;
@@ -65,7 +65,7 @@ namespace itg
         initMesh();
     }
     
-    void Path::initMesh()
+    void itgPath::initMesh()
     {
         meshParticles.init(resolution, maxMeshLength, OF_PRIMITIVE_TRIANGLES, false, 2);
         for (unsigned k = 1; k < maxMeshLength; ++k)
@@ -97,19 +97,19 @@ namespace itg
         }
     }
     
-    void Path::setMeshRadius(float meshRadius)
+    void itgPath::setMeshRadius(float meshRadius)
     {
         this->meshRadius = meshRadius;
         updateSlice();
     }
     
-    void Path::setResolution(unsigned resolution)
+    void itgPath::setResolution(unsigned resolution)
     {
         this->resolution = resolution;
         updateSlice();
     }
     
-    void Path::updateSlice()
+    void itgPath::updateSlice()
     {
         sliceVertices.clear();
         sliceNormals.clear();
@@ -123,12 +123,12 @@ namespace itg
         }
     }
     
-    void Path::addVertex(float x, float y, float z)
+    void itgPath::addVertex(float x, float y, float z)
     {
         addVertex(ofVec3f(x, y, z));
     }
     
-    void Path::addVertex(const ofVec3f& vertex)
+    void itgPath::addVertex(const ofVec3f& vertex)
     {
         points.push_back(vertex);
         while (points.size() > maxLineLength) points.pop_front();
@@ -194,7 +194,7 @@ namespace itg
     }
      */
     
-    void Path::drawMesh(float fogStart, float fogEnd, float litAmount)
+    void itgPath::drawMesh(float fogStart, float fogEnd, float litAmount)
     {
         meshParticles.getDrawShaderRef().begin();
         meshParticles.getDrawShaderRef().setUniform1f("fogStart", fogStart);
@@ -205,7 +205,7 @@ namespace itg
         meshParticles.draw();
     }
     
-    void Path::drawLine(float fogStart, float fogEnd)
+    void itgPath::drawLine(float fogStart, float fogEnd)
     {
         ofPushStyle();
         ofEnableAlphaBlending();
@@ -220,7 +220,7 @@ namespace itg
         ofPopStyle();
     }
     
-    void Path::drawInflections()
+    void itgPath::drawInflections()
     {
         ofPushStyle();
         ofSetColor(255, 255, 0);
@@ -231,7 +231,7 @@ namespace itg
         ofPopStyle();
     }
     
-    void Path::drawAcc()
+    void itgPath::drawAcc()
     {
         ofPushStyle();
         for (unsigned i = 0; i < points.size(); ++i)
@@ -243,7 +243,7 @@ namespace itg
         ofPopStyle();
     }
     
-    void Path::clear()
+    void itgPath::clear()
     {
         initMesh();
         ptf.clear();

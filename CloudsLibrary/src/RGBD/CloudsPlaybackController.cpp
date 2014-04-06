@@ -410,7 +410,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         //if(HUD->continue: go to next act
         //else if hud reset: go to next intro
 		if(!clusterMap->getTimeline()->getIsPlaying()){
+#ifdef RTC_MIX
             sound.stopMusic();
+#endif
 #ifdef OCULUS_RIFT
             transitionController.transitionToIntro(1.0);
 #else
@@ -491,9 +493,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         goToNextAct = false;
 #endif
         if(stopInterlude){
-            
+#ifdef RTC_MIX
             sound.stopMusic();
-            
+#endif
             if(goToNextAct){
                 transitionController.transitionFromInterlude(1.0);
             }

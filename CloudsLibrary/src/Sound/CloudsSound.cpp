@@ -363,7 +363,9 @@ void CloudsSound::actEnded(CloudsActEventArgs& args){
 	currentAct = NULL;
 
 	//JG added in stop music here in case we jumped ahead.
+#ifdef RTC_MIX
     stopMusic();
+#endif
 }
 
 //--------------------------------------------------------------------

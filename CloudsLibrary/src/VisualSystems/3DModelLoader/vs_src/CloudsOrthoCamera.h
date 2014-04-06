@@ -91,7 +91,9 @@ private:
 	
 	ofNode target;
 	
-	
+	float minDifference;
+	unsigned long doubleclickTime;
+
 	bool bEnableMouseMiddleButton;
 	bool bApplyInertia;
 	bool bDoTranslate;

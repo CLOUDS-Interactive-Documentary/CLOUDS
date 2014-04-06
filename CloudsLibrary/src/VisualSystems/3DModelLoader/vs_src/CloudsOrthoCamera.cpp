@@ -15,10 +15,8 @@
 
 // when an ofEasyCam is moving due to momentum, this keeps it
 // from moving forever by assuming small values are zero.
-float minDifference = 0.1e-5;
 
 // this is the default on windows os
-unsigned long doubleclickTime = 200;
 
 //----------------------------------------
 CloudsOrthoCamera::CloudsOrthoCamera(){
@@ -53,7 +51,8 @@ CloudsOrthoCamera::CloudsOrthoCamera(){
 	maxOrbitDistance = 300;
 	minOrbitDistance = 100;
 	orbitZoomFrequency = 2.;
-	
+	minDifference = 0.1e-5;
+
 	mouseScl = .5;
 	deadZone = .05;
 	cameraSpeed = 4.;
@@ -61,6 +60,7 @@ CloudsOrthoCamera::CloudsOrthoCamera(){
 	minTilt = -20;
 	maxTilt = 50;
 	orbitVelAttenuation = .97;
+	doubleclickTime = 200;
 }
 
 //----------------------------------------

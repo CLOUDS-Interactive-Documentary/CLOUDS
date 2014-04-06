@@ -44,7 +44,7 @@ namespace itg
         
         Branch::Ptr step(Branch::Ptr branch, ofMesh& mesh);
         
-        void setSize(float size);
+        //void setSize(float size);
     
     private:
     };

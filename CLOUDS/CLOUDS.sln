@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CLOUDS", "CLOUDS.vcxproj", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxCvLib", "..\..\..\addons\ofxCv\ofxCvLib\ofxCvLib.vcxproj", "{FAA73572-FD12-41FA-8FBE-CB47482D2D87}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxOculusRiftLib", "..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRiftLib.vcxproj", "{06DF4A39-7102-462B-8F20-FC26E9A93826}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -66,7 +68,16 @@ Global
 		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Debug|x64.Build.0 = Debug|x64
 		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Release|Win32.ActiveCfg = Release|Win32
 		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Release|Win32.Build.0 = Release|Win32
-		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Release|x64.ActiveCfg = Release|Win32
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Release|x64.ActiveCfg = Release|x64
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Release|x64.Build.0 = Release|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|Win32.ActiveCfg = Debug|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|Win32.Build.0 = Debug|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|x64.ActiveCfg = Debug|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|x64.Build.0 = Debug|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|Win32.ActiveCfg = Release|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|Win32.Build.0 = Release|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|x64.ActiveCfg = Release|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

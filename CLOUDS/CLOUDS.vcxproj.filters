@@ -106,9 +106,6 @@
     <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fftr.c">
       <Filter>addons\ofxOcean\kiss</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp">
-      <Filter>addons\ofxOculusRift</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerVehicle.cpp">
       <Filter>addons\ofxOpenSteer\src</Filter>
     </ClCompile>
@@ -388,9 +385,6 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src\CloudsVisualSystemAstrolabe.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Automata\vs_src\CloudsVisualSystemAutomata.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\Ball.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
@@ -526,9 +520,6 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\GesturePaint\vs_src\CloudsVisualSystemGesturePaint.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
@@ -625,13 +616,7 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5TextUniverse\vs_src\TUOrbital.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP53DIntro\vs_src\CloudsVisualSystemAutomata.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\CloudsVisualSystemOrbit.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\Path.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\PathPoint.cpp">
@@ -1099,6 +1084,42 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MovingBall.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\LIA\vs_src\CloudsVisualSystemLia.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\LIA\vs_src\ColorPalette.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\LIA\vs_src\Globals.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\LIA\vs_src\Module.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\LIA\vs_src\RandomMover.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process11\vs_src\CloudsVisualSystemProcess11.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process11\vs_src\E2.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\CloudsVisualSystemProcess18.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\E5.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\OpenP5Fifteen\vs_src\CloudsVisualSystemOpenP5Fifteen.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Automata\vs_src\CloudsVisualSystemAutomata.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\itgPath.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1199,9 +1220,6 @@
     </Filter>
     <Filter Include="addons\ofxOcean\kiss">
       <UniqueIdentifier>{1445e3e5-dc5a-4cfa-aae8-16720f86bf4b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOculusRift">
-      <UniqueIdentifier>{56d32024-a4bf-46aa-9137-11d714ac26bc}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxOpenSteer">
       <UniqueIdentifier>{379aec91-054c-463f-9a3d-d3a7e0599119}</UniqueIdentifier>
@@ -1589,9 +1607,6 @@
     <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\src\_kiss_fft_guts.h">
       <Filter>addons\ofxOcean\kiss</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h">
-      <Filter>addons\ofxOculusRift</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerTypes.h">
       <Filter>addons\ofxOpenSteer\src</Filter>
     </ClInclude>
@@ -1955,9 +1970,6 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Astrolabe\vs_src\CloudsVisualSystemAstrolabe.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Automata\vs_src\CloudsVisualSystemAutomata.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\BallDroppings\vs_src\Ball.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
@@ -2108,9 +2120,6 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\GesturePaint\vs_src\CloudsVisualSystemGesturePaint.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
@@ -2223,9 +2232,6 @@
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\CloudsVisualSystemOrbit.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\Path.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\PathPoint.h">
@@ -2883,6 +2889,42 @@
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MovingBall.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\LIA\vs_src\CloudsVisualSystemLia.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\LIA\vs_src\ColorPalette.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\LIA\vs_src\Globals.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\LIA\vs_src\Module.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\LIA\vs_src\RandomMover.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process11\vs_src\CloudsVisualSystemProcess11.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process11\vs_src\E2.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\CloudsVisualSystemProcess18.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsPrivate\Process18\vs_src\E5.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\OpenP5Fifteen\vs_src\CloudsVisualSystemOpenP5Fifteen.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Automata\vs_src\CloudsVisualSystemAutomata.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\itgPath.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
   </ItemGroup>
