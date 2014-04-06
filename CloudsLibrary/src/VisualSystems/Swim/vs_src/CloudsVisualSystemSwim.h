@@ -19,7 +19,7 @@
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemSwim : public CloudsVisualSystem {
@@ -141,10 +141,10 @@ protected:
 	vector<string> soundFiles;
 //    string soundFiles[2];
     bool playSample[2];
-    ControlTrigger soundTriggers[2];
-    ofxTonicSynth synth;
-    Generator buildSynth();
-    ControlParameter volumeControl;
+    Tonic::ControlTrigger soundTriggers[2];
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
+    Tonic::ControlParameter volumeControl;
     float gain;
 	void audioRequested(ofAudioEventArgs& args);
     

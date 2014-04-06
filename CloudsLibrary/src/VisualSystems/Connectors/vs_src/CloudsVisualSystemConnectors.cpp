@@ -5,6 +5,8 @@
 #include "CloudsVisualSystemConnectors.h"
 #include "CloudsRGBDVideoPlayer.h"
 
+using namespace Tonic;
+
 void CloudsVisualSystemConnectors::selfSetDefaults(){
 	soundFiles[0] = "WindChimes1.aif";
 }

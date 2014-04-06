@@ -12,7 +12,7 @@
 #include "ofxTonic.h"
 #include "CloudsAudioEvents.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 class Block : public ofRectangle {
   public:
@@ -193,9 +193,9 @@ private:
     
     // Sound
     float fMainGain;
-    ControlParameter mainGain;
-    ofxTonicSynth synth;
-    Generator buildSynth();
+    Tonic::ControlParameter mainGain;
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
     
 };

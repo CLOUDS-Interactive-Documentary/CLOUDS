@@ -1081,6 +1081,24 @@
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\CloudsVisualSystemMazeGenerator.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\Maze.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCamera.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCell.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeSettings.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MovingBall.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2848,6 +2866,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\Compiler\poppack1.h">
       <Filter>addons\ofxAssimpModelLoader\libs\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\CloudsVisualSystemMazeGenerator.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\Maze.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCamera.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeCell.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MazeSettings.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\MazeGenerator\vs_src\MovingBall.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,19 @@
 #include "CloudsVisualSystemVision.h"
 using namespace ofxCv;
 using namespace cv; 
+using namespace Tonic;
+
+CloudsVisualSystemVision::CloudsVisualSystemVision(){
+	soundFiles.push_back("distorted_drones.aif");
+	soundFiles.push_back("slowgrains_short.aif");
+	playSample[0] = playSample[1] = false;
+
+    //int nSamples = 2;
+    //string soundFiles[2] = {"distorted_drones.aif",
+//        "slowgrains_short.aif"};
+//    bool playSample[2];
+
+}
 
 string CloudsVisualSystemVision::getSystemName()
 {
@@ -214,7 +227,7 @@ void CloudsVisualSystemVision::selfSetupGui()
     
     soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
     
-    for (int i=0; i<nSamples; i++)
+    for (int i = 0; i < soundFiles.size(); i++)
     {
         soundGui->addToggle(soundFiles[i], &playSample[i]);
     }
@@ -371,7 +384,7 @@ void CloudsVisualSystemVision::selfBegin()
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVision::audioRequested);
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<soundFiles.size(); i++)
     {
         if (playSample[i]) {
             soundTriggers[i].trigger();
@@ -770,7 +783,7 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         if(t->getValue())loadMovieWithName( t->getName() );
     }
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<soundFiles.size(); i++)
     {
         if (e.widget->getName() == soundFiles[i]) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
@@ -806,7 +819,7 @@ void CloudsVisualSystemVision::loadMovieAtIndex(int index){
 
     movieIndex = index;
 
-    player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
+    player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
 //	player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
     if(player->loadMovie(getVisualSystemDataPath(true)+"videos/" + movieStrings[ movieIndex ])){
         player->play();
@@ -838,14 +851,14 @@ Generator CloudsVisualSystemVision::buildSynth()
     
     SampleTable samples[2];
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<soundFiles.size(); i++)
     {
         string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
         samples[i] = loadAudioFile(strAbsPath);
     }
     
     Generator sampleGen[2];
-    for (int i=0; i<nSamples; i++)
+	for (int i=0; i<soundFiles.size(); i++)
     {
         sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(soundTriggers[i]);
     }

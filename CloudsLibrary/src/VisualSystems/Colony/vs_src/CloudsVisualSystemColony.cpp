@@ -1,5 +1,7 @@
 #include "CloudsVisualSystemColony.h"
 
+using namespace Tonic;
+
 string CloudsVisualSystemColony::getSystemName()
 {
 	return "Colony";

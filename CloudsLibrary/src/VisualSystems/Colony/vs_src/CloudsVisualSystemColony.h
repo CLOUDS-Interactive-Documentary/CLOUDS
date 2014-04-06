@@ -14,7 +14,7 @@
 #include "CloudsAudioEvents.h"
 #include "ofxTonic.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 class CloudsVisualSystemColony : public CloudsVisualSystem {
 public:
@@ -116,10 +116,10 @@ private:
     //    "granular_water2_slow.aif",
     //    "Grains1_slow_low.aif"};
     bool playSample[3];
-    ControlTrigger soundTriggers[3];
-    ofxTonicSynth synth;
-    Generator buildSynth();
-    ControlParameter volumeControl;
+    Tonic::ControlTrigger soundTriggers[3];
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
+    Tonic::ControlParameter volumeControl;
     float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };

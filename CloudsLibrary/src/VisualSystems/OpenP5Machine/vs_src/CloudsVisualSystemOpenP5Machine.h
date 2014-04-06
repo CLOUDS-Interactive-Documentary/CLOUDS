@@ -15,7 +15,7 @@
 #include "ofxTonic.h"
 #include "CloudsAudioEvents.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemOpenP5Machine : public CloudsVisualSystem {
@@ -127,9 +127,9 @@ protected:
     float shiftZ;
 
 	// Sound
-    ofxTonicSynth synth;
-    Generator buildSynth();
-    ControlParameter volumeControl;
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
+    Tonic::ControlParameter volumeControl;
     float gain;
 	void audioRequested(ofAudioEventArgs& args);
     

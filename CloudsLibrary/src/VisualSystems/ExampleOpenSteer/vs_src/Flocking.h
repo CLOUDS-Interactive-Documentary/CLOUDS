@@ -4,7 +4,7 @@
 #include "Boid.h"
 
 
-using namespace OpenSteer;
+//using namespace OpenSteer;
 using namespace ofxOpenSteer;
 
 

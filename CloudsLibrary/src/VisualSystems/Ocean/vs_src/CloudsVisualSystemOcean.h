@@ -10,7 +10,7 @@
 #include "CloudsAudioEvents.h"
 #include "ofxTonic.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 
 class CloudsVisualSystemOcean : public CloudsVisualSystem {
@@ -104,10 +104,10 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
     ofxUISuperCanvas* soundGui;
     string soundFiles[2];
     bool playSample[2];
-    ControlTrigger soundTriggers[2];
-    ofxTonicSynth synth;
-    Generator buildSynth();
-    ControlParameter volumeControl;
+    Tonic::ControlTrigger soundTriggers[2];
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
+    Tonic::ControlParameter volumeControl;
     float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };

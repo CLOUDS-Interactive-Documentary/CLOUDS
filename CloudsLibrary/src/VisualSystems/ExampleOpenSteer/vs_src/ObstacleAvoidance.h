@@ -3,7 +3,7 @@
 #include "ofxOpenSteer.h"
 #include "Boid.h"
 
-using namespace OpenSteer;
+//using namespace OpenSteer;
 using namespace ofxOpenSteer;
 
 // Extend the flocking boid adding obstacle avoidance behaviour
@@ -11,38 +11,38 @@ class ObstacleBoid: public Boid {
     public:
     
         // Origin and target will be set by the ObstacleAvoidance plugin
-        Vec3* origin;
-        Vec3* target;
+        OpenSteer::Vec3* origin;
+        OpenSteer::Vec3* target;
     
-        ObstacleGroup* obstacles;
+        OpenSteer::ObstacleGroup* obstacles;
         
         void reset(){
             // reset the vehicle
             Boid::reset ();
                     
             // Set to origin, and randomize slightly
-            setPosition (*origin - RandomVectorInUnitRadiusSphere());
+            setPosition (*origin - OpenSteer::RandomVectorInUnitRadiusSphere());
             
             // notify proximity database that our position has changed
             if(pt) pt->updateForNewPosition (position());
         };
         
-        Vec3 getSteeringForce(const float elapsedTime){
+        OpenSteer::Vec3 getSteeringForce(const float elapsedTime){
             // reset if close enought to target
-            if( Vec3::distance(position(), *target) < 2 ){
+            if( OpenSteer::Vec3::distance(position(), *target) < 2 ){
                 reset();
-                return Vec3();
+                return OpenSteer::Vec3();
             }
             
             // Inherit the flocking force
-            Vec3 flock = Boid::getSteeringForce(elapsedTime);
+            OpenSteer::Vec3 flock = Boid::getSteeringForce(elapsedTime);
             
             // Avoid the obstacle (if any)
-            Vec3 avoidObstacle;
+            OpenSteer::Vec3 avoidObstacle;
             if(obstacles) avoidObstacle = steerToAvoidObstacles (1.f, *obstacles);
             
             // seek for the target
-            Vec3 seek = steerForSeek(*target);
+            OpenSteer::Vec3 seek = steerForSeek(*target);
             
             return seek + avoidObstacle + flock * 0.2; // reduce flocking force 
         }
@@ -52,9 +52,9 @@ class ObstacleBoid: public Boid {
 class ObstacleAvoidance: public ofxOpenSteerPlugin {
 	
 public:
-    Vec3 origin;
-    Vec3 target;
-    ObstacleGroup* obstacles;
+    OpenSteer::Vec3 origin;
+    OpenSteer::Vec3 target;
+    OpenSteer::ObstacleGroup* obstacles;
 	
 	float radius;
     
@@ -73,13 +73,13 @@ public:
 //		ofBackground(255, 0, 255);
         
         // Origin and target points
-        origin = Vec3(0,20,0);
-        target = Vec3(0,-20,0);
+        origin = OpenSteer::Vec3(0,20,0);
+        target = OpenSteer::Vec3(0,-20,0);
 		
 		// Create the obstacle
-        obstacles = new ObstacleGroup();
+        obstacles = new OpenSteer::ObstacleGroup();
 		radius = 10;		
-		SphereObstacle* obstacle = new SphereObstacle(radius, Vec3::zero);
+		OpenSteer::SphereObstacle* obstacle = new OpenSteer::SphereObstacle(radius, OpenSteer::Vec3::zero);
         obstacles->push_back(obstacle);
         
         // Create a proximity database with default settings
@@ -112,7 +112,7 @@ public:
         // clear the obstacles
         if(obstacles){
             while (obstacles->size() > 0){
-                const AbstractObstacle* o = obstacles->back();
+                const OpenSteer::AbstractObstacle* o = obstacles->back();
                 obstacles->pop_back();
                 delete o;
             }

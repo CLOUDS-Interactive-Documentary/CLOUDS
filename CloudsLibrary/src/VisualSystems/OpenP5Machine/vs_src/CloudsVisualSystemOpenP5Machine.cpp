@@ -4,11 +4,7 @@
 
 #include "CloudsVisualSystemOpenP5Machine.h"
 
-
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
+using namespace Tonic;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5Machine::selfSetupGui(){

@@ -17,7 +17,7 @@
 #include "CloudsAudioEvents.h"
 #include "ofxTonic.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemRandomDigits2 : public CloudsVisualSystem {
@@ -131,8 +131,8 @@ protected:
     //    "wormholeZoom2.aif",
     //    "slowgrains_short.aif"};
     bool playSample[4];
-    ControlTrigger soundTriggers[4];
-    ofxTonicSynth synth;
-    Generator buildSynth();
+    Tonic::ControlTrigger soundTriggers[4];
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
 };

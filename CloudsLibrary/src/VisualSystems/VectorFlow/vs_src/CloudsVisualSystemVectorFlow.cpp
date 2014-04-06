@@ -2,6 +2,8 @@
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsGlobal.h"
 
+using namespace Tonic;
+
 //--------------------------------------------------------------
 CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
 	step = 50;

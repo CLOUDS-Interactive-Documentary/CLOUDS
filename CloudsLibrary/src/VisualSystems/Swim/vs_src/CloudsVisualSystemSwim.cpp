@@ -11,6 +11,7 @@
 //#endif
 
 const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
+using namespace Tonic;
 
 CloudsVisualSystemSwim::CloudsVisualSystemSwim() : 
 	camSpeed(-600.f), regenerate(false), loadSeed(false), saveSeed(false)

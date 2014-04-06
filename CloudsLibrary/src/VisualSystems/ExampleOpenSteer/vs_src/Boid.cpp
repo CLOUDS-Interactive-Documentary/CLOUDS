@@ -13,10 +13,10 @@ float Boid::trailRibbonSize = 10;
 float Boid::trailColorMix = 0.5f;
 bool Boid::bDrawAnnotations = true;
 
-Color Boid::bodyColor;
-Color Boid::trailColor;
-Color Boid::trailColor2;
-Color Boid::tickColor;
+OpenSteer::Color Boid::bodyColor;
+OpenSteer::Color Boid::trailColor;
+OpenSteer::Color Boid::trailColor2;
+OpenSteer::Color Boid::tickColor;
 
 float Boid::fMaxSpeed = 9;
 float Boid::fMaxForce = 27;

@@ -16,7 +16,7 @@
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemRipples : public CloudsVisualSystem {
@@ -130,18 +130,18 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     int dontTriggerSoundCounter;
     ofxUISuperCanvas* soundGui;
     float volume[2];
-    ControlParameter volumeControl[2];
+    Tonic::ControlParameter volumeControl[2];
     bool bEnableSounds;
     ofMutex mutex;
-    ControlParameter mainGain;
+    Tonic::ControlParameter mainGain;
     float fMainGain;
-    ofxTonicSynth mainSynth;
-    ofxTonicSynth notes[5];
+    Tonic::ofxTonicSynth mainSynth;
+    Tonic::ofxTonicSynth notes[5];
     int noteIndex;
     int baseNote;
     vector<float> scale;
     void setScaleByName(string name);
-    Generator buildSynth();
+    Tonic::Generator buildSynth();
     Tonic::Mixer mixer;
     void playNote(int note);
 	void audioRequested(ofAudioEventArgs& args);

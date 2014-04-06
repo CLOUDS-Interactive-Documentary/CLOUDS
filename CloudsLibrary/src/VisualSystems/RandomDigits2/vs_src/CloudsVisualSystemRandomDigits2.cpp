@@ -4,10 +4,7 @@
 
 #include "CloudsVisualSystemRandomDigits2.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
+using namespace Tonic;
 
 CloudsVisualSystemRandomDigits2::CloudsVisualSystemRandomDigits2(){
     int nSamples = 4;

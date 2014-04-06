@@ -16,7 +16,7 @@
 #include "CloudsAudioEvents.h"
 #include "ofxTonic.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemConnectors : public CloudsVisualSystem {
@@ -115,10 +115,10 @@ protected:
     ofxUISuperCanvas* soundGui;
     string soundFiles[1];
     bool playSample[1];
-    ControlTrigger soundTriggers[1];
-    ofxTonicSynth synth;
-    Generator buildSynth();
+    Tonic::ControlTrigger soundTriggers[1];
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
-    ControlParameter volumeControl;
+    Tonic::ControlParameter volumeControl;
     float gain;
 };

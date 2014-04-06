@@ -24,7 +24,7 @@ public:
 
     MazeCell(int x, int y, float s, float thickness, float height);
     
-    size_t addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals, vector<ofVec2f> &uvs);
+    unsigned long long addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals, vector<ofVec2f> &uvs);
     
     int getX() { return x; }
     int getY() { return y; }

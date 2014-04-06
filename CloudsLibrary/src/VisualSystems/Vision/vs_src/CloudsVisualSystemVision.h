@@ -10,18 +10,19 @@
 #include "CloudsVisualSystem.h"
 #include "ofxCv.h"
 #include "MyTracker.h"
-#include "ofxAVFVideoPlayer.h"
+//#include "ofxAVFVideoPlayer.h"
 
 
 #include "CloudsGlobal.h"
 #include "CloudsAudioEvents.h"
 #include "ofxTonic.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 class CloudsVisualSystemVision : public CloudsVisualSystem {
 public:
-    
+
+    CloudsVisualSystemVision();
     string getSystemName();
     
     void selfSetup();
@@ -69,7 +70,7 @@ protected:
 
     ofPixels opticalFlowPixels;
     int skipFrames;
-	ofPtr<ofxAVFVideoPlayer> player;
+	ofPtr<ofVideoPlayer> player;
 	ofPixels lastPixels;
 
     int playerIndex;
@@ -187,14 +188,17 @@ protected:
     
     // Sound
     float fMainGain;
-    ControlParameter mainGain;
+    Tonic::ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
-    int nSamples = 2;
-    string soundFiles[2] = {"distorted_drones.aif",
-        "slowgrains_short.aif"};
+
+	vector<string> soundFiles;
+    //int nSamples = 2;
+    //string soundFiles[2] = {"distorted_drones.aif",
+//        "slowgrains_short.aif"};
     bool playSample[2];
-    ControlTrigger soundTriggers[2];
-    ofxTonicSynth synth;
-    Generator buildSynth();
+
+    Tonic::ControlTrigger soundTriggers[2];
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
 };

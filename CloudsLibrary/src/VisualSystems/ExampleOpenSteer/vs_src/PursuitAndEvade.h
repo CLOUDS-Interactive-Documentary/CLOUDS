@@ -3,7 +3,7 @@
 #include "ofxOpenSteer.h"
 #include "Boid.h"
 
-using namespace OpenSteer;
+//using namespace OpenSteer;
 using namespace ofxOpenSteer;
 
 // Extend the boid adding pursuit behaviour
@@ -13,7 +13,7 @@ public:
     VehicleGroup* victims;
     
     Predator(){
-        color = gRed;
+        color = OpenSteer::gRed;
         victims = NULL;
     };
     
@@ -26,7 +26,7 @@ public:
         Boid::reset ();
         
         // Preadators on the left and right
-        setPosition (Vec3( (ofRandom(1.f) < 0.5) ? -10:10,0,0) + RandomVectorInUnitRadiusSphere());
+        setPosition (OpenSteer::Vec3( (ofRandom(1.f) < 0.5) ? -10:10,0,0) + OpenSteer::RandomVectorInUnitRadiusSphere());
         
         // notify proximity database that our position has changed
         if(pt) pt->updateForNewPosition (position());
@@ -39,10 +39,10 @@ public:
 //        if(bDrawTrail) drawTrail();
 //    }
     
-    Vec3 getSteeringForce(const float elapsedTime){
+    OpenSteer::Vec3 getSteeringForce(const float elapsedTime){
         
         // Inherit the flocking force
-        Vec3 flock = Boid::getSteeringForce(elapsedTime);
+        OpenSteer::Vec3 flock = Boid::getSteeringForce(elapsedTime);
         
         // If there are no victims, just flock normally
         if(!victims){
@@ -54,7 +54,7 @@ public:
         AbstractVehicle* victim;
         
         for (VehicleIterator i = (*victims).begin(); i != (*victims).end(); i++) {
-            float d = Vec3::distance(position(), (*i)->position());
+            float d = OpenSteer::Vec3::distance(position(), (*i)->position());
             if(d < distance){
                 distance = d;
                 victim = (*i);
@@ -62,7 +62,7 @@ public:
         }
         
         // Pursuit force
-        Vec3 pursuit = steerForPursuit(*victim, 1.f); // victim, prediction time
+        OpenSteer::Vec3 pursuit = steerForPursuit(*victim, 1.f); // victim, prediction time
         
         return pursuit + flock * 0.2; // getting the victim is more important than flocking
     }
@@ -76,7 +76,7 @@ public:
     VehicleGroup* predators;
     
     Victim(){
-        color = gGreen;
+        color = OpenSteer::gGreen;
         predators = NULL;
     };
     
@@ -96,16 +96,16 @@ public:
         Boid::reset();
         
         // Victims on the middle
-        setPosition (RandomVectorInUnitRadiusSphere());
+        setPosition (OpenSteer::RandomVectorInUnitRadiusSphere());
         
         // notify proximity database that our position has changed
         if(pt) pt->updateForNewPosition (position());
     };
     
-    Vec3 getSteeringForce(const float elapsedTime){
+    OpenSteer::Vec3 getSteeringForce(const float elapsedTime){
         
         // Inherit the flocking force
-        Vec3 flock = Boid::getSteeringForce(elapsedTime);
+        OpenSteer::Vec3 flock = Boid::getSteeringForce(elapsedTime);
         
         // If there are no predators, just flock normally
         if(!predators){
@@ -117,7 +117,7 @@ public:
         AbstractVehicle* predator;
         
         for(VehicleIterator i = (*predators).begin(); i != (*predators).end(); i++) {
-            float d = Vec3::distance(position(), (*i)->position());
+            float d = OpenSteer::Vec3::distance(position(), (*i)->position());
             if(d < distance){
                 distance = d;
                 predator = (*i);
@@ -125,14 +125,14 @@ public:
         }
         
         // Evade force
-        Vec3 evade = steerForEvasion(*predator, 1.f); // victim, prediction time
-        Vec3 force = evade + flock * 0.1; // scaping victim is more important than flocking
+        OpenSteer::Vec3 evade = steerForEvasion(*predator, 1.f); // victim, prediction time
+        OpenSteer::Vec3 force = evade + flock * 0.1; // scaping victim is more important than flocking
         
 
         const ofVec3f position = getPosition();
         
         if(position.distance(ofVec3f(0,0,0)) > Boid::fMaximumRadius) {
-            force += steerForSeek(Vec3(0,0,0));
+            force += steerForSeek(OpenSteer::Vec3(0,0,0));
         }
 
         return force;

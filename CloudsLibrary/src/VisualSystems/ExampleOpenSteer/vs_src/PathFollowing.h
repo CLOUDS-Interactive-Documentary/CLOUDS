@@ -3,7 +3,7 @@
 #include "ofxOpenSteer.h"
 #include "Boid.h"
 
-using namespace OpenSteer;
+//using namespace OpenSteer;
 using namespace ofxOpenSteer;
 
 // Extend the flocking boid adding path following behaviour
@@ -25,22 +25,22 @@ public:
 		Boid::reset ();
 				
 		// randomize initial position
-		setPosition (RandomVectorInUnitRadiusSphere() * 100);
+		setPosition (OpenSteer::RandomVectorInUnitRadiusSphere() * 100);
 		
 		// notify proximity database that our position has changed
 		if(pt) pt->updateForNewPosition (position());
 	};
 	
-	Vec3 getSteeringForce(const float elapsedTime){
+	OpenSteer::Vec3 getSteeringForce(const float elapsedTime){
 		// Inherit the flocking force
-		Vec3 flock = Boid::getSteeringForce(elapsedTime);
+		OpenSteer::Vec3 flock = Boid::getSteeringForce(elapsedTime);
         
         // If there is no path, just flock
         if(!path) return flock;
 		
 		// Get path following forces
-		Vec3 followPath = steerToFollowPath (1, 1.f, *path);		
-		Vec3 stayOnPath = steerToStayOnPath(1.f, *path);
+		OpenSteer::Vec3 followPath = steerToFollowPath (1, 1.f, *path);		
+		OpenSteer::Vec3 stayOnPath = steerToStayOnPath(1.f, *path);
 		
 		return followPath + stayOnPath + flock * 0.3; // reduce flocking force 
 	}

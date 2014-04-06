@@ -9,7 +9,7 @@
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsGlobal.h"
 
-
+using namespace Tonic;
 
 string CloudsVisualSystemMemory::getSystemName()
 {

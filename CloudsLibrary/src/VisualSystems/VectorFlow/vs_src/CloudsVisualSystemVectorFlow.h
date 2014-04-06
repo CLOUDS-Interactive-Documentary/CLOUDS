@@ -6,7 +6,6 @@
 #include "ofxTonic.h"
 #include "CloudsAudioEvents.h"
 
-using namespace Tonic;
 
 class FlowParticle {
   public:
@@ -107,12 +106,12 @@ protected:
     
     // Sound
     float fMainGain;
-    ControlParameter mainGain;
+    Tonic::ControlParameter mainGain;
     int prevInputX, prevInputY;
-    ofxTonicSynth synth;
-    ControlParameter lpfCutoff;
-    ControlParameter volume;
-    ControlTrigger soundTrigger1, soundTrigger2;
-    Generator buildSynth();
+    Tonic::ofxTonicSynth synth;
+    Tonic::ControlParameter lpfCutoff;
+    Tonic::ControlParameter volume;
+    Tonic::ControlTrigger soundTrigger1, soundTrigger2;
+    Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
 };

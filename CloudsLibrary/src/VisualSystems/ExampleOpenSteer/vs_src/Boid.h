@@ -11,7 +11,7 @@
 
 #include "ofxOpenSteer.h"
 
-using namespace OpenSteer;
+//using namespace OpenSteer;
 using namespace ofxOpenSteer;
 
 enum BoidTrailType
@@ -88,10 +88,10 @@ public:
 		setSpeed (maxSpeed() * 0.3f);
 		
 		// randomize initial orientation
-		regenerateOrthonormalBasisUF (RandomUnitVector ());
+		regenerateOrthonormalBasisUF (OpenSteer::RandomUnitVector ());
 		
 		// randomize initial position
-		setPosition (RandomVectorInUnitRadiusSphere() * Boid::fInitialPositionRadius);
+		setPosition (OpenSteer::RandomVectorInUnitRadiusSphere() * Boid::fInitialPositionRadius);
 		
 		// notify proximity database that our position has changed
 		if(pt) pt->updateForNewPosition (position());
@@ -193,14 +193,14 @@ public:
     }
 
 
-    Vec3 getSteeringForce(const float elapsedTime){
+    OpenSteer::Vec3 getSteeringForce(const float elapsedTime){
         // if there is no proximity database, just wander
         if(!pt) return steerForWander(elapsedTime);
         
 
 		
-		const float maxRadius = maxXXX (separationRadius,
-										maxXXX (alignmentRadius,
+		const float maxRadius = OpenSteer::maxXXX (separationRadius,
+										OpenSteer::maxXXX (alignmentRadius,
 												cohesionRadius));
 		
 		// find all flockmates within maxRadius using proximity database
@@ -209,27 +209,27 @@ public:
 		
 		
 		// determine each of the three component behaviors of flocking
-		const Vec3 separation = steerForSeparation (separationRadius,
+		const OpenSteer::Vec3 separation = steerForSeparation (separationRadius,
 													separationAngle,
 													neighbors);
-		const Vec3 alignment  = steerForAlignment  (    alignmentRadius,
+		const OpenSteer::Vec3 alignment  = steerForAlignment  (    alignmentRadius,
 													alignmentAngle,
 													neighbors);
-		const Vec3 cohesion   = steerForCohesion   (cohesionRadius,
+		const OpenSteer::Vec3 cohesion   = steerForCohesion   (cohesionRadius,
 													cohesionAngle,
 													neighbors);
 		
 		// apply weights to components (save in variables for annotation)
-		const Vec3 separationW = separation * separationWeight;
-		const Vec3 alignmentW = alignment * alignmentWeight;
-		const Vec3 cohesionW = cohesion * cohesionWeight;
+		const OpenSteer::Vec3 separationW = separation * separationWeight;
+		const OpenSteer::Vec3 alignmentW = alignment * alignmentWeight;
+		const OpenSteer::Vec3 cohesionW = cohesion * cohesionWeight;
 		
 		const ofVec3f position = getPosition();
 
-        Vec3 force = separationW + alignmentW + cohesionW;
+        OpenSteer::Vec3 force = separationW + alignmentW + cohesionW;
         
         if(position.distance(ofVec3f(0,0,0)) > Boid::fMaximumRadius) {
-            force += steerForSeek(Vec3(0,0,0));
+            force += steerForSeek(OpenSteer::Vec3(0,0,0));
 		}
 		return force;
 	};

@@ -9,10 +9,7 @@ static vector<CloudsVisualSystem*> systems;
 
 #ifndef CLOUDS_NO_VS
 
-///////64 bit
-//#include "CloudsVisualSystem2DVideo.h"
-///////64 bit
-
+#include "CloudsVisualSystem2DVideo.h"
 #include "CloudsVisualSystem3DModelLoader.h"
 #include "CloudsVisualSystemAstrolabe.h"
 #include "CloudsVisualSystemAutomata.h"
@@ -198,7 +195,7 @@ struct Mapping {
 	
 	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
 //	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
-	{ "OpenP5Caustics", &fCreate<CloudsVisualSystemOpenP5Caustics> },
+//	{ "OpenP5Caustics", &fCreate<CloudsVisualSystemOpenP5Caustics> },
 ///////64 bit
 //	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
 //////
@@ -252,7 +249,7 @@ struct Mapping {
 //	{ "TunnelDrawing", &fCreate<CloudsVisualSystemTunnelDrawing> },
 ////////
 	{ "Twitter", &fCreate<CloudsVisualSystemTwitter> },
-	{ "Uextrude", &fCreate<CloudsVisualSystemUextrude> },
+//	{ "Uextrude", &fCreate<CloudsVisualSystemUextrude> },
 	{ "VectorFlow", &fCreate<CloudsVisualSystemVectorFlow> },
 	{ "VerletForm", &fCreate<CloudsVisualSystemVerletForm> },
 	
