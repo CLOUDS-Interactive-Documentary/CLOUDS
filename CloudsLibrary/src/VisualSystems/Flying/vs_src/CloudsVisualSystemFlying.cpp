@@ -10,6 +10,8 @@
 //const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying2.xml" };
 const float CloudsVisualSystemFlying::CAM_DAMPING = .08f;
 
+using namespace Tonic;
+
 CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     numPlantMeshes(100), floorW(2000), floorD(2000), floorHalfW(.5f * floorW), floorHalfD(.5f * floorD),
     noiseAmp(20.f), noiseFreq(5.f), xResolution(100), zResolution(100), xStep(floorW / (float)xResolution), zStep(floorD / (float)zResolution),
@@ -25,6 +27,16 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
         rules.back().load(dir.getPath(i));
         rulesWeights.push_back(1.f);
     }
+
+	soundFiles.push_back("SriLankaForest.aif");
+	soundFiles.push_back("FOREST.aif");
+	soundFiles.push_back("organ_slower.aif");
+
+	for(int i = 0; i < soundFiles.size(); i++){ 
+		playSample[i]	= 0;
+		sampleVolume[i] = 0;
+	}
+
 }
 
 // selfSetup is called when the visual system is first instantiated

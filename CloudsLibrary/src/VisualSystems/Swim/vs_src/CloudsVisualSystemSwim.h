@@ -138,9 +138,9 @@ protected:
     
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[2] = {"underwater_stretch.aif",
-        "Underwater.aif"};
-    bool playSample[2] = {false};
+	vector<string> soundFiles;
+//    string soundFiles[2];
+    bool playSample[2];
     ControlTrigger soundTriggers[2];
     ofxTonicSynth synth;
     Generator buildSynth();

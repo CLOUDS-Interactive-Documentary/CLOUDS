@@ -17,7 +17,7 @@
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
 
-using namespace Tonic;
+//using namespace Tonic;
 
 struct Plant
 {
@@ -163,15 +163,17 @@ protected:
 	ofVboMesh simplePointcloud;*/
     
 	// Sound
-    string soundFiles[3] = {"SriLankaForest.aif",
-        "FOREST.aif",
-        "organ_slower.aif"};
-    float sampleVolume[3] = {0};
-    bool playSample[3] = {false};
-    ControlTrigger soundTriggers[3];
-    ofxTonicSynth synth;
-    Generator buildSynth();
+	vector<string> soundFiles;
+    //string soundFiles[3] = {"SriLankaForest.aif",
+    //    "FOREST.aif",
+    //    "organ_slower.aif"};
+    float sampleVolume[3];
+    bool playSample[3];
+    Tonic::ControlTrigger soundTriggers[3];
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
+    Tonic::ControlParameter volumeControl;
+
 	void audioRequested(ofAudioEventArgs& args);
-    ControlParameter volumeControl;
     float gain;
 };

@@ -40,7 +40,7 @@ XParticle::XParticle()
     brightness = minBri;
     
     oscPos = ofRandom(100);
-    
+    previousTime = 0;
     colorPicker = ofRandomuf();
 }
 
