@@ -32,6 +32,8 @@ XParticle::XParticle()
     velocity.set(0, 0, 0);
     acceleration.set(0, 0, 0);
     lumocity.set(1,1); 
+
+	previousTime = 0;
     
     bTriggered = false;
     luckyNumber = int(ofRandom(10));
