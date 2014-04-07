@@ -19,9 +19,6 @@
     <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp">
       <Filter>addons\ofxObjLoader\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm.c">
-      <Filter>addons\ofxObjLoader\libs</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
@@ -91,17 +88,44 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fft.c">
+      <Filter>addons\ofxOcean\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fftr.c">
+      <Filter>addons\ofxOcean\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOcean.cpp">
+      <Filter>addons\ofxOcean\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanCamera.cpp">
+      <Filter>addons\ofxOcean\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanRenderer.cpp">
+      <Filter>addons\ofxOcean\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanTile.cpp">
+      <Filter>addons\ofxOcean\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\tools\kiss_fftnd.c">
+      <Filter>addons\ofxOcean\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.cpp">
-      <Filter>addons\ofxAutoreloadShader\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp">
-      <Filter>addons\ofDirectShowPlayer\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+      <Filter>addons\ofxAutoReloadedShader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,23 +180,23 @@
     <Filter Include="CloudsLibrary\src\Input">
       <UniqueIdentifier>{311161e7-1ae0-42e6-9c73-a0fc0372abf4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxColorPalettes">
-      <UniqueIdentifier>{2fe82b45-a394-47e7-b654-34de225b4c39}</UniqueIdentifier>
+    <Filter Include="addons\ofxOcean">
+      <UniqueIdentifier>{2ac6fc0a-18ff-4c2f-be1c-98622b9a8f8d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxColorPalettes\src">
-      <UniqueIdentifier>{9f72cdd7-bcf2-46d3-a493-6812f0fb6f97}</UniqueIdentifier>
+    <Filter Include="addons\ofxOcean\src">
+      <UniqueIdentifier>{c79d60d2-4f47-4034-ac85-b1c3e367c554}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxAutoreloadShader">
-      <UniqueIdentifier>{e02eb43c-6992-4c9d-87ab-bd603ce11ff2}</UniqueIdentifier>
+    <Filter Include="addons\ofxOcean\libs">
+      <UniqueIdentifier>{6ccac526-f3c5-4786-abac-401e7996a598}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxAutoreloadShader\src">
-      <UniqueIdentifier>{683505b1-6cb3-41e3-9e5b-77abc0dc0d9d}</UniqueIdentifier>
+    <Filter Include="CloudsLibrary\src\Sound">
+      <UniqueIdentifier>{9b924f73-c6e9-4797-bf3d-68422c59a3be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofDirectShowPlayer">
-      <UniqueIdentifier>{708b066a-2379-437c-af4d-ca9ef2418060}</UniqueIdentifier>
+    <Filter Include="addons\ofxObjLoader\libs\glm">
+      <UniqueIdentifier>{ed0f23f1-a5ef-49b2-b904-dedf1e3d9e2c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofDirectShowPlayer\src">
-      <UniqueIdentifier>{f35c3dbb-8223-42e4-8fb8-7b0218ffceed}</UniqueIdentifier>
+    <Filter Include="addons\ofxAutoReloadedShader">
+      <UniqueIdentifier>{8c26dbe0-9918-4512-955a-d27f637a8184}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -193,9 +217,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h">
       <Filter>addons\ofxObjLoader\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm.h">
-      <Filter>addons\ofxObjLoader\libs</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
@@ -338,23 +359,47 @@
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\include\kiss_fft.h">
+      <Filter>addons\ofxOcean\libs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxColorPalettes\src\ofxColorPalette.h">
-      <Filter>addons\ofxColorPalettes\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\include\kiss_fftr.h">
+      <Filter>addons\ofxOcean\libs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxColorPalettes\src\ofxColorPalettes.h">
-      <Filter>addons\ofxColorPalettes\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\src\_kiss_fft_guts.h">
+      <Filter>addons\ofxOcean\libs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.h">
-      <Filter>addons\ofxAutoreloadShader\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOcean.h">
+      <Filter>addons\ofxOcean\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h">
-      <Filter>addons\ofDirectShowPlayer\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanCamera.h">
+      <Filter>addons\ofxOcean\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanRenderer.h">
+      <Filter>addons\ofxOcean\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanTile.h">
+      <Filter>addons\ofxOcean\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\tools\kiss_fftnd.h">
+      <Filter>addons\ofxOcean\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h">
+      <Filter>CloudsLibrary\src\Sound</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.h">
+      <Filter>addons\ofxAutoReloadedShader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
