@@ -8,6 +8,24 @@
 
 //#include <Poco/URI.h>
 
+// trim from start
+//static inline std::string &ltrim(std::string &s) {
+//    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+//    return s;
+//}
+//
+//// trim from end
+//static inline std::string &rtrim(std::string &s) {
+//    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
+//    return s;
+//}
+//
+//// trim from both ends
+//static inline std::string &trim(std::string &s) {
+//    return ltrim(rtrim(s));
+//}
+
+
 static vector<Tweeter> oldTweeterData;
 static vector<Tweeter> newTweeterData;
 static map<string,int> userNameIdMap;
@@ -25,6 +43,7 @@ vector<Tweeter>& CloudsVisualSystemTwitter::getOldTweeterData(){
     if(oldTweeterData.size() == 0){
         cout<<"Loading JSON OLD FOR THE FIRST TIME IN TWITTER"<<endl;
         loadJSONData("tweetsOld",oldTweeterData);
+        
         return oldTweeterData;
     }
     else{
@@ -132,7 +151,9 @@ void CloudsVisualSystemTwitter::selfSetup()
         meshStrings.push_back(meshDir.getName(i));
     }
     currentMeshIndex = 8;
-    initSystem(getVisualSystemDataPath() +"graphs/"+meshStrings[currentMeshIndex]);
+    ofLogNotice("CloudsVisualSystemTwitter::selfSetup");
+//    initSystem(getVisualSystemDataPath(true) +"twitterVSNewData/twitterNewData2Men.net");
+        initSystem(getVisualSystemDataPath() +"graphs/"+meshStrings[currentMeshIndex]);
 //    initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
     reloadShaders();
 }
@@ -268,6 +289,196 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
 	guimap[textGui->getName()] = twitterFeedGui;
+}
+
+void CloudsVisualSystemTwitter::loadCSVData(vector<Tweeter>& curTweeters){
+
+    int tweeterID = 0;
+    string filePath =GetCloudsVisualSystemDataPath("Twitter",true)+"twitter.csv";
+    cout<<"File Path : "<<filePath<<endl;
+    ofBuffer buffer = ofBufferFromFile(filePath);
+    cout<<buffer.size()<<endl;
+
+    //CSV FORMAT
+    //name~,dateString~,tweet~,userStart~,<users>~,userEnd~,htStart~,<hashtags>,~,htEnd~,
+    
+    ofVec2f curActivityMapCoord(0,0);
+	int activityMapCoordWidth = 100;
+    
+    string firstLine = buffer.getFirstLine();
+    vector<string> l = ofSplitString(firstLine, "~,");
+
+    if(l.size() > 1){
+    Tweeter twtr;
+        twtr.name = "@" + trim(l[0]);
+        Tweet t = csvParseTweet (l, twtr);
+        twtr.tweets.push_back(t);
+        twtr.addTweetsToDate(t);
+        twtr.ID = tweeterID++;
+        userNameIdMap[twtr.name] = twtr.ID;
+        twtr.activityMapCoord = curActivityMapCoord;
+        curActivityMapCoord.x++;
+        if(curActivityMapCoord.x >= activityMapCoordWidth){
+            curActivityMapCoord.x = 0;
+            curActivityMapCoord.y++;
+        }
+        
+        curTweeters.push_back(twtr);
+    }
+
+    
+    int lineNumber = 1;
+    
+    while(! buffer.isLastLine()){
+
+        string nextLine =  buffer.getNextLine();
+        lineNumber++;
+        vector<string> line = ofSplitString(nextLine, "~,");
+//        cout<<nextLine<<endl;
+        if(line.size() < 2){
+            continue;
+        }
+
+        bool alreadyExists = false;
+        for (int i =0 ; i<tweeters.size(); i++) {
+            if(curTweeters[i].name == "@" + trim(line[0])){
+                Tweet t = csvParseTweet(line,curTweeters[i]);
+                curTweeters[i].tweets.push_back(t);
+                curTweeters[i].addTweetsToDate(t);
+                
+                alreadyExists = true;
+//                cout<<"already exists "<<tweeters[i].name<<endl;
+                break;
+            }
+        }
+        
+        if(! alreadyExists){
+            Tweeter twtr;
+            twtr.name ="@" + trim(line[0]);
+            Tweet t = csvParseTweet (line, twtr);
+            twtr.tweets.push_back(t);
+            twtr.addTweetsToDate(t);
+            twtr.ID = tweeterID++;
+            userNameIdMap[twtr.name] = twtr.ID;
+            
+            twtr.activityMapCoord = curActivityMapCoord;
+            curActivityMapCoord.x++;
+            if(curActivityMapCoord.x >= activityMapCoordWidth){
+                curActivityMapCoord.x = 0;
+                curActivityMapCoord.y++;
+            }
+            curTweeters.push_back(twtr);
+        }
+        
+    }
+    
+    map<string,int> numberOfMentions;
+    vector<string> names;
+    
+    for (int i= 0; i < curTweeters.size(); i++) {
+        names.push_back(curTweeters[i].name);
+    }
+    
+    for (int i= 0; i < curTweeters.size(); i++) {
+        for(int j=0; j<curTweeters[i].userLinks.size(); j++){
+            
+            if(! ofContains(names, curTweeters[i].userLinks[j])){
+                numberOfMentions[curTweeters[i].userLinks[j]]++;
+            }
+        }
+    }
+    
+    map<string,int>::iterator it;
+    for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
+        Tweeter cur = Tweeter(it->first, curTweeters.size());
+        cur.activityMapCoord = curActivityMapCoord;
+        curActivityMapCoord.x++;
+        if(curActivityMapCoord.x >= activityMapCoordWidth){
+            curActivityMapCoord.x = 0;
+            curActivityMapCoord.y++;
+        }
+        curTweeters.push_back(cur);
+    }
+
+    
+}
+
+Tweet CloudsVisualSystemTwitter::csvParseTweet(vector<string>& line,Tweeter& curTweeter){
+    Tweet t;
+    int index = 1;
+    
+    //1
+    t.dateString = line[index];
+    t.tweetDate = getDateFromString(line[index++]);
+//    cout<<t.dateString<<endl;
+    bool alreadyExists = false;
+    for(int i=0; i<dateIndex.size(); i++){
+        
+        if(dateIndex[i].year == t.tweetDate.year && dateIndex[i].month == t.tweetDate.month && dateIndex[i].day == t.tweetDate.day){
+            alreadyExists = true;
+            break;
+        }
+    }
+    if(! alreadyExists){
+        dateIndex.push_back(t.tweetDate);
+    }
+    
+    //2
+    t.tweet = line[index++];
+    
+    //3
+    if(line[index] == "userStart"){
+        index++;
+    }
+    
+    //4 ..users
+    if(line[index] != "userEnd"){
+        while (line[index] != "userEnd") {
+
+            if (line[index].length() >2) {
+//                cout<<"Adding user : "<<line[index]<<endl;
+                vector<string> users = ofSplitString(line[index], " ");
+                for(int i =0; i< users.size();i++){
+                    curTweeter.userLinks.push_back(users[i]);
+                }
+            }
+            index++;
+        }
+    }
+    else{
+        cout<<"no users "<<endl;
+        index++;
+    }
+    
+    //.. htStart
+    if(line[index] == "htStart"){
+        index++;
+    }
+    
+    // ..hashtags
+    if(line[index] != "htEnd"){
+        while (line[index] != "htEnd") {
+            t.hashtags.push_back(line[index]);
+            index++;
+        }
+    }
+    else{
+        cout<<"no hashtags "<<endl;
+        index++;
+    }
+    
+    return t;
+}
+
+Date CloudsVisualSystemTwitter::getDateFromString(string dString){
+//    vector<string> ds = ofSplitString(dString, " - ");
+    vector<string> ds = ofSplitString(dString, " - ");
+    Date d;
+    d.day = ofToInt(ds[0]);
+    d.month = ofToInt(ds[1]);
+    d.year = ofToInt(ds[2]);
+    return d;
+    
 }
 
 void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>& curTweeters){
@@ -424,7 +635,6 @@ void CloudsVisualSystemTwitter::loadAvatars(){
                 
                 if ( img.loadImage(filePath) ){}
                 else { cout<<filePath<<" not loaded "<<endl; }
-                
                 avatars["default"] =img;
                 cout<<"Adding default avatar "<< handle[0]<<endl;
             }
@@ -433,8 +643,7 @@ void CloudsVisualSystemTwitter::loadAvatars(){
                 
                 if(tweeters[j].name == "@" +handle[0]){
                     ofImage img;
-                    if( img.loadImage(filePath) ){
-                    }
+                    if( img.loadImage(filePath) ){}
                     else{
                         cout<<filePath<<" not loaded "<<endl;
                     }
@@ -819,6 +1028,7 @@ void CloudsVisualSystemTwitter::drawTweetsForDate(int index){
 
 string CloudsVisualSystemTwitter::getDateAsString(Date d){
     string dateString;
+//    cout<<d.month<<endl;
     dateString += ofToString(d.day) + " - ";
     dateString += ofToString(d.month) + " - ";
     dateString += ofToString(d.year);
@@ -848,12 +1058,12 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
        ofxUIButton* t  = (ofxUIButton*) e.widget;
        if (t->getValue()) {
            string presetMeshPath = getVisualSystemDataPath() + "graphs/" + t->getName();
-           if (presetMeshPath != currentMeshFilePath) {
-               initSystem(presetMeshPath);
-           }
-           else{
-               cout<<"Mesh : "<<presetMeshPath<<" already loaded"<<endl;
-           }
+//           if (presetMeshPath != currentMeshFilePath) {
+//               initSystem(presetMeshPath);
+//           }
+//           else{
+//               cout<<"Mesh : "<<presetMeshPath<<" already loaded"<<endl;
+//           }
        }
     }
 	else if(e.getName() == "ROTATE"){
@@ -899,23 +1109,32 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
 
     clearData();
     
-    if(strs[strs.size()-1] =="old.net"){
-        cout<<"old data, using tweetsOld folder"<<endl;
-        tweeters = getOldTweeterData();
-        bOldData = true;
-    }
-    else if (strs[strs.size()-1] =="new.net"){
-        cout<<"New data, using tweets clean folder"<<endl;
-        tweeters = getNewTweeterData();
-        bOldData = false;
-    }
-    else{
-        cout<<"poopzz : "<<strs[strs.size()-1]<<endl;
-    }
+    //TODO: make the old data csv too
     
+//    if(strs[strs.size()-1] =="old.net"){
+//        cout<<"old data, using tweetsOld folder"<<endl;
+//        tweeters = getOldTweeterData();
+//        bOldData = true;
+//    }
+//    else if (strs[strs.size()-1] =="new.net"){
+//        cout<<"New data, using tweets clean folder"<<endl;
+//        tweeters = getNewTweeterData();
+//        bOldData = false;
+//    }
+//    else{
+//        cout<<"poopzz : "<<strs[strs.size()-1]<<endl;
+//    }
+    
+//    loadCSVData( tweeters);
+    
+//    for(int i =0 ; i<tweeters.size(); i++){
+//        cout<<tweeters[i].name<< " : "<<tweeters[i].ID<<endl;
+//    }
+    cout<<"Time taken to parse JSON : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+    cout<<" Tweeters size "<<tweeters.size()<<endl;
     allocateActivityMap();
     
-    cout<<"Time taken to parse JSON : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+
     startTime = ofGetElapsedTimeMillis();
     xScale = 100;
     yScale = 100;
@@ -953,6 +1172,7 @@ void CloudsVisualSystemTwitter::loadGraphFromPath(string filePath){
     cout<<filePath<<endl;
     
     if(ofFile::doesFileExist(filePath)){
+        ofLogNotice("CloudsVisualSystemTwitter::loadGraphFromPath");
         initSystem(filePath);
     }
     else{
@@ -994,6 +1214,7 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
             cout<<"LOADING MESH : "<<t[i]->getName()<<endl;
             string presetMeshPath = getVisualSystemDataPath() + "graphs/" + t[i]->getName();
             if (presetMeshPath != currentMeshFilePath) {
+                        ofLogNotice("CloudsVisualSystemTwitter::selfPresetLoaded");
                 initSystem(presetMeshPath);
             }
             else{
@@ -1198,7 +1419,7 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
             for(int i=0; i< numberOfTweets; i++){
                 bool alreadySelected = false;
                 string currentDate = getDateAsString(dateIndex[index]);
-                
+                cout<<currentDate<<endl;
                 vector<pair<string*, string*> > :: iterator it;
                 for(int i = 0; i < tweeters.size(); i++){
                     
@@ -1238,7 +1459,7 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
             else{
                 index--;
             }
-            cout<<"current size : "<<currentSelection.size()<<" required size : "<<numberOfTweets<<endl;
+//            cout<<"current size : "<<currentSelection.size()<<" required size : "<<numberOfTweets<<endl;
         }
     }
     else{

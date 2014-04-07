@@ -126,6 +126,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void loadMesh();
     void updateActiveTweeters(int index);
     void setActiveTweeters(int index );
+    Tweet csvParseTweet(vector<string>& line, Tweeter& curTweeter);
     void updateMesh();
     void drawText(string text, ofVec3f pos, float alpha);
     void drawText2D(string text, ofVec2f pos);
@@ -135,7 +136,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     set<pair<int,int> > links;
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
 
-
+    Date getDateFromString(string dString);
 
     int currentDateIndex;
     float dateIndexMin, dateIndexMax;
@@ -220,6 +221,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<string, ofImage> avatars;
 
     void loadAvatars();
+    void loadCSVData( vector<Tweeter>& curTweeters);
     void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
     map< ofFloatColor*, ofxUILabel*> labelColors;
 

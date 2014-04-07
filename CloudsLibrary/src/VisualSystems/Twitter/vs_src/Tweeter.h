@@ -45,6 +45,7 @@ public:
     vector<Tweet> sortTweetsByDate(Date d);
     void indexTweetsByDate(vector<Date> dates);
     string getDateAsString(Date d);
+    Date getDateFromString(string dString);
     string tweetDate;
     void addTweetsToDate(Tweet t);
 
