@@ -88,44 +88,32 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fft.c">
-      <Filter>addons\ofxOcean\libs</Filter>
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\src\kiss_fftr.c">
-      <Filter>addons\ofxOcean\libs</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOcean.cpp">
-      <Filter>addons\ofxOcean\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMFluid.cpp">
+      <Filter>addons\ofxMPMFluid\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanCamera.cpp">
-      <Filter>addons\ofxOcean\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMNode.cpp">
+      <Filter>addons\ofxMPMFluid\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanRenderer.cpp">
-      <Filter>addons\ofxOcean\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMObstacle.cpp">
+      <Filter>addons\ofxMPMFluid\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOcean\src\ofxOceanTile.cpp">
-      <Filter>addons\ofxOcean\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMParticle.cpp">
+      <Filter>addons\ofxMPMFluid\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOcean\libs\kiss\tools\kiss_fftnd.c">
-      <Filter>addons\ofxOcean\libs</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src\CloudsVisualSystemExampleMPMFluid.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp">
       <Filter>CloudsLibrary\src\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
-      <Filter>addons\ofxObjLoader\libs\glm</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.cpp">
-      <Filter>addons\ofxAutoReloadedShader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -180,23 +168,23 @@
     <Filter Include="CloudsLibrary\src\Input">
       <UniqueIdentifier>{311161e7-1ae0-42e6-9c73-a0fc0372abf4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxOcean">
-      <UniqueIdentifier>{2ac6fc0a-18ff-4c2f-be1c-98622b9a8f8d}</UniqueIdentifier>
+    <Filter Include="addons\ofxObjLoader\libs\glm">
+      <UniqueIdentifier>{3c3a084f-1f94-410a-beea-5864fde43503}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxOcean\src">
-      <UniqueIdentifier>{c79d60d2-4f47-4034-ac85-b1c3e367c554}</UniqueIdentifier>
+    <Filter Include="addons\ofxMPMFluid">
+      <UniqueIdentifier>{6208f62f-988b-4787-b2a0-eb48ba75096a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxOcean\libs">
-      <UniqueIdentifier>{6ccac526-f3c5-4786-abac-401e7996a598}</UniqueIdentifier>
+    <Filter Include="addons\ofxMPMFluid\src">
+      <UniqueIdentifier>{cbc991e3-b6ba-4837-bddd-e555f93dfb17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\ExampleMPMFluid">
+      <UniqueIdentifier>{c6d6e5a1-f831-4f07-9442-226bbd386435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src">
+      <UniqueIdentifier>{a5bd867b-a290-4d82-b6a2-d558ce1ca61f}</UniqueIdentifier>
     </Filter>
     <Filter Include="CloudsLibrary\src\Sound">
-      <UniqueIdentifier>{9b924f73-c6e9-4797-bf3d-68422c59a3be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader\libs\glm">
-      <UniqueIdentifier>{ed0f23f1-a5ef-49b2-b904-dedf1e3d9e2c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxAutoReloadedShader">
-      <UniqueIdentifier>{8c26dbe0-9918-4512-955a-d27f637a8184}</UniqueIdentifier>
+      <UniqueIdentifier>{64d8298c-68ed-4d9b-bf0c-7670876eab75}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -359,47 +347,32 @@
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\include\kiss_fft.h">
-      <Filter>addons\ofxOcean\libs</Filter>
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\include\kiss_fftr.h">
-      <Filter>addons\ofxOcean\libs</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\src\_kiss_fft_guts.h">
-      <Filter>addons\ofxOcean\libs</Filter>
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMFluid.h">
+      <Filter>addons\ofxMPMFluid\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOcean.h">
-      <Filter>addons\ofxOcean\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMNode.h">
+      <Filter>addons\ofxMPMFluid\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanCamera.h">
-      <Filter>addons\ofxOcean\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMObstacle.h">
+      <Filter>addons\ofxMPMFluid\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanRenderer.h">
-      <Filter>addons\ofxOcean\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMParticle.h">
+      <Filter>addons\ofxMPMFluid\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOcean\src\ofxOceanTile.h">
-      <Filter>addons\ofxOcean\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOcean\libs\kiss\tools\kiss_fftnd.h">
-      <Filter>addons\ofxOcean\libs</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src\CloudsVisualSystemExampleMPMFluid.h">
+      <Filter>CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h">
       <Filter>CloudsLibrary\src\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
-      <Filter>addons\ofxObjLoader\libs\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.h">
-      <Filter>addons\ofxAutoReloadedShader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

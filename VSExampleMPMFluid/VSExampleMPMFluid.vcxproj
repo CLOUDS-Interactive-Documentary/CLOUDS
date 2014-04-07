@@ -22,7 +22,7 @@
     <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>emptyExample</RootNamespace>
-    <ProjectName>VSExampleOpenSteer</ProjectName>
+    <ProjectName>VSExampleMPMFluid</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -53,24 +53,28 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
+    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -102,7 +106,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxOpenSteer\libs\opensteer\include;..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer;..\..\..\addons\ofxOpenSteer\libs\opensteer\src;..\..\..\addons\ofxOpenSteer\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxMPMFluid\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -114,7 +118,8 @@
       <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\Win32;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"</Command>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.dll" "$(ProjectDir)bin"</Command>
       <Message>adding DLLs and creating data folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -126,7 +131,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxOpenSteer\libs\opensteer\include;..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer;..\..\..\addons\ofxOpenSteer\libs\opensteer\src;..\..\..\addons\ofxOpenSteer\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxMPMFluid\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>Default</CompileAs>
       <PrecompiledHeader />
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -139,7 +144,8 @@
       <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\x64;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -148,7 +154,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxOpenSteer\libs\opensteer\include;..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer;..\..\..\addons\ofxOpenSteer\libs\opensteer\src;..\..\..\addons\ofxOpenSteer\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxMPMFluid\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -163,7 +169,8 @@
       <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\Win32;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"</Command>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.dll" "$(ProjectDir)bin"</Command>
       <Message>adding DLLs and creating data folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -173,7 +180,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxOpenSteer\libs\opensteer\include;..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer;..\..\..\addons\ofxOpenSteer\libs\opensteer\src;..\..\..\addons\ofxOpenSteer\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxMPMFluid\src;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -188,7 +195,8 @@
       <AdditionalLibraryDirectories>..\..\..\addons\ofxOculusRift\libs\LibOVR\Lib\x64;..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -213,38 +221,21 @@
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMFluid.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMNode.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMObstacle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMParticle.cpp" />
     <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c" />
     <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Camera.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Clock.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Color.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Draw.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\lq.c" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Obstacle.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\OldPathway.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\OpenSteerDemo.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Path.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Pathway.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PlugIn.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PolylineSegmentedPath.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PolylineSegmentedPathwaySegmentRadii.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\PolylineSegmentedPathwaySingleRadius.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\SegmentedPath.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\SegmentedPathway.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\SimpleVehicle.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\TerrainRayTest.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Vec3.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\Vec3Utilities.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerPlugin.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerVehicle.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Boid.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\CloudsVisualSystemExampleOpenSteer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src\CloudsVisualSystemExampleMPMFluid.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
@@ -292,67 +283,32 @@
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxTrailParticle.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMFluid.h" />
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMNode.h" />
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMObstacle.h" />
+    <ClInclude Include="..\..\..\addons\ofxMPMFluid\src\ofxMPMParticle.h" />
     <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h" />
     <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h" />
     <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\AbstractVehicle.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Annotation.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Camera.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Clock.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Color.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Draw.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\LocalSpace.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\lq.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Obstacle.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\OldPathway.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\OpenSteerDemo.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Path.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Pathway.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PlugIn.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PolylineSegmentedPath.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PolylineSegmentedPathwaySegmentRadii.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\PolylineSegmentedPathwaySingleRadius.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Proximity.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlike.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlikeBaseDataExtractionPolicies.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlikeMappings.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\QueryPathAlikeUtilities.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SegmentedPath.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SegmentedPathAlikeUtilities.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SegmentedPathway.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SharedPointer.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SimpleVehicle.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\StandardTypes.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\SteerLibrary.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\UnusedParameter.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Utilities.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Vec3.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\include\OpenSteer\Vec3Utilities.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\libs\opensteer\src\TerrainRayTest.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteer.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerPlugin.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerTypes.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerUtils.h" />
-    <ClInclude Include="..\..\..\addons\ofxOpenSteer\src\ofxOpenSteerVehicle.h" />
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Boid.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\CloudsVisualSystemExampleOpenSteer.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\Flocking.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\ObstacleAvoidance.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\PathFollowing.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleOpenSteer\vs_src\PursuitAndEvade.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ExampleMPMFluid\vs_src\CloudsVisualSystemExampleMPMFluid.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj">
       <Project>{a72c4f16-cb16-4143-ba5c-5e4fa802d636}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonicLib.vcxproj">
+      <Project>{e93bd96c-a459-499f-840d-29b0166cbff7}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj">
       <Project>{641db976-e775-4d72-86eb-897e2c4a0eee}</Project>
