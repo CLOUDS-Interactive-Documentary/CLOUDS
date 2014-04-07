@@ -1,3 +1,5 @@
+#version 120
+
 uniform float lifespan;
 uniform float nearClip;
 uniform float farClip;
