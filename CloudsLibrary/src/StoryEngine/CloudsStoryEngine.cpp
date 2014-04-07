@@ -980,7 +980,7 @@ CloudsVisualSystemPreset CloudsStoryEngine::selectVisualSystem(CloudsStoryState&
 		preset.presetName = state.topic;
         preset.randomlySelected = true;
 		preset.missingContent = true;
-        if(bLogVisualSystemDetails) state.log << state.duration << "\t\t\ERROR no presets found! " << state.topic << endl;
+        if(bLogVisualSystemDetails) state.log << state.duration << "\t\t\tERROR no presets found! " << state.topic << endl;
     }
 	return preset;
 }

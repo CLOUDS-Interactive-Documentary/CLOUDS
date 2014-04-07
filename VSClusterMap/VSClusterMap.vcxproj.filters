@@ -136,6 +136,9 @@
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -429,6 +432,9 @@
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
   </ItemGroup>

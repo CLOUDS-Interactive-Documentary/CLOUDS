@@ -164,12 +164,14 @@ void CloudsPlaybackController::setup(){
 	rgbdVisualSystem->setDrawToScreen(false);
 	
 	cout << "*****LOAD STEP CLUSTER MAP" << endl;
+	/*
 	clusterMap = new CloudsVisualSystemClusterMap();
 	clusterMap->setRun(run);
 	clusterMap->setup();
 	clusterMap->buildEntireCluster(parser);
 	clusterMap->setDrawToScreen(false);
-	
+	*/
+
 	cout << "*****LOAD STEP INTRO" << endl;
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
@@ -177,7 +179,7 @@ void CloudsPlaybackController::setup(){
 	
 	
 	cout << "*****LOAD STEP HUD" << endl;
-	hud.setup();
+	//hud.setup();
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
     rgbdVisualSystem->setupHUDGui();

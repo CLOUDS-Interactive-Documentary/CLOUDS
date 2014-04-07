@@ -285,7 +285,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 
 		CloudsClusterNode n;
 		CloudsClip& clip = parser->getAllClips()[i];
-		cout << "**** GETTING CLIP " << i << " " << clip.getLinkName() << endl;
+		cout << "****POSITIONER GETTING CLIP " << i << " " << clip.getLinkName() << endl;
 		n.clipId = clip.getID();
 		n.mesh = &nodeMesh;
 		n.vertexIndex = nodeMesh.getNumVertices();
@@ -326,21 +326,28 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	
 	//add all connections to connection mesh
 	set< pair<string,string> > connections;
-	
+	unsigned long start;
 	for(int i = 0; i < parser->getAllClips().size(); i++){
+
 		CloudsClip& clip = parser->getAllClips()[i];
+
+		cout << "****CONNECTOR GETTING CLIP " << i << "" << parser->getAllClips().size() << " " << clip.getLinkName() << endl;
+
 		vector<CloudsClip> meta = parser->getClipsWithKeyword(clip.getKeywords());
 		vector<CloudsLink> links = parser->getLinksForClip(clip);
 		string nameA = clip.getID();
 		CloudsClusterNode& n1 = nodes[ clipIdToNodeIndex[nameA] ];
 		
+		start = ofGetElapsedTimeMillis(); 
 		for(int l = 0; l < links.size(); l++){
 			meta.push_back(parser->getClipWithLinkName(links[l].targetName));
 		}
 		
 		ofVec3f randDir = randomDirection();
 		for(int j = 0; j < meta.size(); j++){
+			
 			string nameB = meta[j].getID();
+//			cout << "****	CONNECTING CLIP " << j << "" << meta.size() << " " << nameB << endl;
 			bool valid = true;
 			valid &= (nameA != nameB);
 			valid &= (clip.person != meta[j].person || parser->clipLinksTo(nameA, nameB));

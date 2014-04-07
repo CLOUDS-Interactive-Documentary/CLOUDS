@@ -227,6 +227,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsAct.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.cpp" />
@@ -302,6 +303,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsAct.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h" />
