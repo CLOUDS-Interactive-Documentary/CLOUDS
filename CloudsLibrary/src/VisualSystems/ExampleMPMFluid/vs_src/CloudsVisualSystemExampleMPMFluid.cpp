@@ -323,13 +323,15 @@ void CloudsVisualSystemExampleMPMFluid:: selfInteractionDragged(CloudsInteractio
 void CloudsVisualSystemExampleMPMFluid:: selfInteractionEnded(CloudsInteractionEventArgs& args){
 
     map<int, int >::iterator it;
-    for(it = currentPlayers.begin(); it != currentPlayers.end(); it++){
+    for(it = currentPlayers.begin(); it != currentPlayers.end(); ){
         
         if (it->first == args.playerId) {
-            currentPlayers.erase(it);
+            it = currentPlayers.erase(it);
 //            cout<<"removing from map "<<it->first<<endl;
-         
         }
+		else {
+			++it;
+		}
     }
     fluid.removeTouch(args.playerId);
 }
