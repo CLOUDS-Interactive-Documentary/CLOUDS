@@ -4,7 +4,7 @@
 #include "CloudsVisualSystem.h"
 #include "ofxGameCamera.h"
 #include "CloudsClusterNode.h"
-#include "CloudsQuestion.h"
+//#include "CloudsQuestion.h"
 #include "CloudsRun.h"
 #include "ofxFTGLFont.h"
 #include "ofxNearestNeighbour.h"
@@ -34,7 +34,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 
 	void setRun(CloudsRun& run);
 	void setQuestions(vector<CloudsClip>& questions);
-	CloudsQuestion* getSelectedQuestion();
+	//CloudsQuestion* getSelectedQuestion();
 
     void setCurrentTopic(string topic);
     
@@ -272,7 +272,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofVec3f randomDirection();
     int numTraversed;
     
-	vector<CloudsQuestion> questions;
-	CloudsQuestion* selectedQuestion;
+	//vector<CloudsQuestion> questions;
+	//CloudsQuestion* selectedQuestion;
 
 };

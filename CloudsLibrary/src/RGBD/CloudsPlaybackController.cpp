@@ -107,6 +107,8 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(){
 	
+	cout << "*****LOAD STEP PARSER " << endl;
+
 	///START THREADED
     parser.loadFromFiles();
 	
@@ -115,58 +117,66 @@ void CloudsPlaybackController::setup(){
 							Create a file called CloudsMovieDirectory.txt \
 							that contains one line, the path to your movies folder");
 	}
-	
+
+	cout << "*****LOAD STEP MEDIA" << endl;
 	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-	
+
+	cout << "*****LOAD STEP PRESETS" << endl;
 	visualSystems.loadPresets();
     visualSystems.loadCachedDataForSystems();
     
+	cout << "*****LOAD STEP STORY ENGINE" << endl;
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	storyEngine.printDecisions = false;
 	storyEngine.combinedClipsOnly = true;
 	storyEngine.setup();
 	
-    //    vector< pair<int,string> > topicCountPairs;
-    //    for(int i = 0; i < parser.getAllKeywords().size(); i++){
-    //        topicCountPairs.push_back(make_pair(parser.getClipsWithKeyword( parser.getAllKeywords()[i]).size(),
-    //                                            parser.getAllKeywords()[i] ) );
-    //    }
-    //
-    //    sort(topicCountPairs.begin(), topicCountPairs.end(), listsort);
-    //    ofBuffer b;
-    //
-    //    for(int i = 0; i < topicCountPairs.size(); i++){
-    //        b.append( ofToString(topicCountPairs[i].first) + "\t" + topicCountPairs[i].second + "\n" );
-    //    }
-    //    ofBufferToFile(GetCloudsDataPath() + "logs/topics.txt", b);
+//    vector< pair<int,string> > topicCountPairs;
+//    for(int i = 0; i < parser.getAllKeywords().size(); i++){
+//        topicCountPairs.push_back(make_pair(parser.getClipsWithKeyword( parser.getAllKeywords()[i]).size(),
+//                                            parser.getAllKeywords()[i] ) );
+//    }
+//
+//    sort(topicCountPairs.begin(), topicCountPairs.end(), listsort);
+//    ofBuffer b;
+//
+//    for(int i = 0; i < topicCountPairs.size(); i++){
+//        b.append( ofToString(topicCountPairs[i].first) + "\t" + topicCountPairs[i].second + "\n" );
+//    }
+//    ofBufferToFile(GetCloudsDataPath() + "logs/topics.txt", b);
     
 	///SOUND
+	cout << "*****LOAD STEP SOUND" << endl;
 	mixer.setup();
 	sound.setup(storyEngine);
     
     
-#ifndef  OCULUS_RIFT
+#ifndef OCULUS_RIFT
 	////COMMUNICATION
 	oscSender.setup();
 #endif
     
 	//END THREADED
-	
+	cout << "*****LOAD STEP RGBD SYSTEM" << endl;
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
 	rgbdVisualSystem->setDrawToScreen(false);
 	
+	cout << "*****LOAD STEP CLUSTER MAP" << endl;
 	clusterMap = new CloudsVisualSystemClusterMap();
 	clusterMap->setRun(run);
 	clusterMap->setup();
 	clusterMap->buildEntireCluster(parser);
 	clusterMap->setDrawToScreen(false);
 	
+	cout << "*****LOAD STEP INTRO" << endl;
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
 	
+	
+	cout << "*****LOAD STEP HUD" << endl;
 	hud.setup();
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
@@ -176,6 +186,7 @@ void CloudsPlaybackController::setup(){
     introSequence->setupHUDGui();
 #endif
     
+	cout << "*****LOAD STEP EVENTS" << endl;
     if(!eventsRegistered){
 		
 		eventsRegistered = true;
@@ -195,8 +206,6 @@ void CloudsPlaybackController::setup(){
 		ofRegisterMouseEvents(this);
 	}
 	
-    
-	//////////////SHOW INTRO
     startingNodes = storyEngine.getStartingQuestions();
     
 	//////////////SHOW INTRO
@@ -204,9 +213,12 @@ void CloudsPlaybackController::setup(){
 	showIntro( startingNodes );
     
     sound.enterTunnel();
-
+	
+	cout << "*****LOAD STEP PORTALS" << endl;
     setupPortals();
-    
+
+	cout << "*****LOAD SETUP COMPLETE" << endl;
+
 }
 
 //--------------------------------------------------------------------

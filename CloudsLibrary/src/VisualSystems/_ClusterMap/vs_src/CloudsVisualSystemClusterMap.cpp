@@ -259,6 +259,8 @@ void CloudsVisualSystemClusterMap::setRun(CloudsRun& newRun){
 
 void CloudsVisualSystemClusterMap::resetGeometry(){
 	
+	cout << "**** RESETING GEOMETRY" << endl;
+
 	firstClip = true;
 //	lastTraverseStartedIndex = -1;
 
@@ -280,8 +282,10 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	ofVec2f flickerCoord = ofVec2f(0,0);
 	int flickerWidth = 100;
 	for(int i = 0; i < parser->getAllClips().size(); i++){
+
 		CloudsClusterNode n;
 		CloudsClip& clip = parser->getAllClips()[i];
+		cout << "**** GETTING CLIP " << i << " " << clip.getLinkName() << endl;
 		n.clipId = clip.getID();
 		n.mesh = &nodeMesh;
 		n.vertexIndex = nodeMesh.getNumVertices();
@@ -734,6 +738,7 @@ void CloudsVisualSystemClusterMap::clearTraversal(){
     currentTraversalIndex = 0;
 }
 
+/*
 void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClips){
 	selectedQuestion = NULL;
 	questions.clear();
@@ -749,17 +754,20 @@ void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClip
 		questions.push_back(q);
 	}
 }
+*/
 
 void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     currentTopic = topic;
 }
 
+/*
 CloudsQuestion* CloudsVisualSystemClusterMap::getSelectedQuestion(){
 	//TODO: interaction for selecting a question
 	
 	//Temporary to just return the first one
 	return &questions[0];
 }
+*/
 
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemClusterMap::selfSetupSystemGui(){

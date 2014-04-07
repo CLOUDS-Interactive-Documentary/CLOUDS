@@ -11,12 +11,6 @@
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 
-//#ifdef TARGET_OSX
-//#include "ofxAVFVideoPlayer.h"
-//#else
-//#include "ofDirectShowPlayer.h"
-//#endif
-
 #include "ofRange.h"
 #include "CloudsGlobal.h"
 
