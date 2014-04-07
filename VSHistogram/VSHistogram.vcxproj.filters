@@ -100,6 +100,15 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\libs\ofOpenALSoundPlayer_TimelineAdditions\src\ofOpenALSoundPlayer_TimelineAdditions.cpp">
+      <Filter>addons\ofxTimeline\libs\ofOpenALSoundPlayer_TimelineAdditions\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\libs\kiss\src\kiss_fft.c">
+      <Filter>addons\ofxTimeline\libs\kiss\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\libs\kiss\src\kiss_fftr.c">
+      <Filter>addons\ofxTimeline\libs\kiss\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -173,6 +182,27 @@
     </Filter>
     <Filter Include="addons\ofxObjLoader\libs\glm">
       <UniqueIdentifier>{5b9028d1-1716-436c-b6b1-470f330011a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimeline">
+      <UniqueIdentifier>{227c3fd5-78ca-44ca-9134-5810effe003a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimeline\libs">
+      <UniqueIdentifier>{c46661bf-27db-43cb-8ac1-308a2d271e5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimeline\libs\ofOpenALSoundPlayer_TimelineAdditions">
+      <UniqueIdentifier>{efc76094-4962-4e41-80b6-9d782c69f815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimeline\libs\ofOpenALSoundPlayer_TimelineAdditions\src">
+      <UniqueIdentifier>{101d50c6-8791-45ad-9fee-e04383fc55b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimeline\libs\kiss">
+      <UniqueIdentifier>{2bcf86ea-06c1-44d9-8b17-7e76dd0d7b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimeline\libs\kiss\include">
+      <UniqueIdentifier>{a25d44df-414d-42ca-bb27-fe0a6367280e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimeline\libs\kiss\src">
+      <UniqueIdentifier>{d3fedcb2-59f7-4616-b36d-7751d850c930}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -352,6 +382,18 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\libs\ofOpenALSoundPlayer_TimelineAdditions\src\ofOpenALSoundPlayer_TimelineAdditions.h">
+      <Filter>addons\ofxTimeline\libs\ofOpenALSoundPlayer_TimelineAdditions\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\libs\kiss\include\kiss_fft.h">
+      <Filter>addons\ofxTimeline\libs\kiss\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\libs\kiss\include\kiss_fftr.h">
+      <Filter>addons\ofxTimeline\libs\kiss\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\libs\kiss\src\_kiss_fft_guts.h">
+      <Filter>addons\ofxTimeline\libs\kiss\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
