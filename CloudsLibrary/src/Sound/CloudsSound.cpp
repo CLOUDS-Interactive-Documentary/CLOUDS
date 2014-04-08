@@ -24,9 +24,11 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 	
-        // TODO: use CloudsMixer parameters
-        // RTcmix audio stuff
+		frontPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
+		backPlayer  = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
+
 #ifdef RTCMIX
+        // RTcmix audio stuff
         sr = 44100;
         nbufs = 2; // you can use more for more processing but latency will suffer
         nchans = 2; // stereo
@@ -304,6 +306,8 @@ void CloudsSound::enterTunnel()
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
     SCHEDULEBANG(477.); // length of sound
 #else
+	//TODO: enter tunnel
+	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/tunnel.mp3");
 #endif
     in_tunnel = true;
     float ftime = 0.1;
@@ -335,6 +339,7 @@ void CloudsSound::enterClusterMap()
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
 #else
+	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/cloudsdream_mix1.mp3");
 #endif
 	
     float ftime = 0.1;

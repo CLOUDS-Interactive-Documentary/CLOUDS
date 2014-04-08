@@ -17,12 +17,12 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
     else if(mixlevel==2) a = 1.5;
     
 #ifdef RTCMIX
-    for(int j = 0;j<p.instruments.size();j++)
-    {
+    for(int j = 0;j<p.instruments.size();j++){
         startMusic(outskip, p.instruments[j], p.arg_a[j], p.arg_b[j], p.harmony, p.rhythm, dur, p.tempo, p.m_amp[j]*a, p.m_rev[j], j+(orchstep*5), p.env[j]);
     }
 #else
-	//TODO: playback!
+	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/" + ofToString(p.slotnumber) + ".mp3");
+	frontPlayer->play();
 #endif
 }
 
@@ -1328,4 +1328,7 @@ void CloudsSound::stopMusic()
     GetCloudsAudioEvents()->setupflush = true;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioDown, ftime);
     //RTcmixParseScoreFile("cmixclear.sco");
+	
+	//TEMP: should fade obvioz
+	frontPlayer->stop();
 }

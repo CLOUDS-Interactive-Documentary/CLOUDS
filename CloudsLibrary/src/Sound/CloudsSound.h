@@ -72,6 +72,10 @@ class CloudsSound {
 
 	CloudsStoryEngine* storyEngine;
 	CloudsAct* currentAct;
+
+	//only used in non RTCMIX context
+	ofPtr<ofSoundPlayer> frontPlayer;
+	ofPtr<ofSoundPlayer> backPlayer;
 	
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
