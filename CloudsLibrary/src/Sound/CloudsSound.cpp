@@ -28,6 +28,9 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 		frontPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 		backPlayer  = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 
+        // load data files
+        loadRTcmixFiles();
+
 #ifdef RTCMIX
         // RTcmix audio stuff
         sr = 44100;
@@ -48,8 +51,6 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         // load samples
         loadRTcmixSamples();
 
-        // load data files
-        loadRTcmixFiles();
         
         // precompute music data
         for(int i = 0;i<pitches.size();i++)
@@ -124,7 +125,8 @@ void CloudsSound::update(){
 #endif
         sleep(1);
         // zero output buffer (AHA!)
-        bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
+        //bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
+        memset(s_audio_outbuf, 0, nchans*framesize*sizeof(short));
         GetCloudsAudioEvents()->setupflush = false;
         GetCloudsAudioEvents()->doflush = false;
     }
