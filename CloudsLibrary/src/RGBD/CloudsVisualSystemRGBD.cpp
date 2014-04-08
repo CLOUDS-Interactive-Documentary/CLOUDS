@@ -105,6 +105,8 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
     pointLayer1.setDefaults();
     pointLayer2.setDefaults();
     
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 //--------------------------------------------------------------
