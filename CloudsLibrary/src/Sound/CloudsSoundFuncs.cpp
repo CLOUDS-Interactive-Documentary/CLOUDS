@@ -16,12 +16,17 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
     else if(mixlevel==1) a = 1.0;
     else if(mixlevel==2) a = 1.5;
     
+#ifdef RTCMIX
     for(int j = 0;j<p.instruments.size();j++)
     {
         startMusic(outskip, p.instruments[j], p.arg_a[j], p.arg_b[j], p.harmony, p.rhythm, dur, p.tempo, p.m_amp[j]*a, p.m_rev[j], j+(orchstep*5), p.env[j]);
     }
+#else
+	//TODO: playback!
+#endif
 }
 
+#ifdef RTCMIX
 void CloudsSound::startMusicFX(float outskip, float musicdur)
 {
     float ftime = 0.1;
@@ -325,27 +330,27 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         else
         {
-                melodySolver m(arg_a, pitches[mh], mel);
-                int curpitch;
-                float freq;
-                
-                for(i = 0;i<musicdur;i+=tempo*2.)
-                {
-                    if(rhythms[mr].beats[bcount]>0.) {
-                        
-                        curpitch = m.tick();
-                        if(curpitch>-1) {
-                            freq = mtof(curpitch);
-                            
-                            float t_amp = rhythms[mr].beats[bcount]*0.025*instGain;
-                            float d = tempo*floor(ofRandom(2., 5.));
-                            float p = ofRandom(0., 1.);
-                            WAVETABLE(outskip+i, d, t_amp, freq, p, "wf_saw", "amp_sharpadsr");
-                            WAVETABLE(outskip+i, d*ofRandom(0.9,1.1), t_amp, freq*0.99, 1.-p, "wf_square", "amp_sharpadsr");
-                        }
-                    }
-                    bcount = (bcount+1)%rhythms[mr].beats.size();
-                }
+			melodySolver m(arg_a, pitches[mh], mel);
+			int curpitch;
+			float freq;
+			
+			for(i = 0;i<musicdur;i+=tempo*2.)
+			{
+				if(rhythms[mr].beats[bcount]>0.) {
+					
+					curpitch = m.tick();
+					if(curpitch>-1) {
+						freq = mtof(curpitch);
+						
+						float t_amp = rhythms[mr].beats[bcount]*0.025*instGain;
+						float d = tempo*floor(ofRandom(2., 5.));
+						float p = ofRandom(0., 1.);
+						WAVETABLE(outskip+i, d, t_amp, freq, p, "wf_saw", "amp_sharpadsr");
+						WAVETABLE(outskip+i, d*ofRandom(0.9,1.1), t_amp, freq*0.99, 1.-p, "wf_square", "amp_sharpadsr");
+					}
+				}
+				bcount = (bcount+1)%rhythms[mr].beats.size();
+			}
         }
         
     }
@@ -1314,6 +1319,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     //instGain = t_instGain;
     
 }
+#endif
 
 void CloudsSound::stopMusic()
 {
