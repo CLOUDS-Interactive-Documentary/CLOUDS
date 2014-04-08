@@ -1318,7 +1318,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
 void CloudsSound::stopMusic()
 {
     float ftime = 0.5;
-    GetCloudsAudioEvents()->dodelay = true;
+    if(!isScoreDesigner) GetCloudsAudioEvents()->dodelay = true;
     GetCloudsAudioEvents()->setupflush = true;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioDown, ftime);
     //RTcmixParseScoreFile("cmixclear.sco");

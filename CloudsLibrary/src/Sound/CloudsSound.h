@@ -23,6 +23,7 @@ class CloudsSound {
 	void exit(ofEventArgs & args);
 	
 	void update(ofEventArgs & args);
+	void update();
 	void drawDebug();
 	
 	void keyPressed(ofKeyEventArgs & args);
@@ -62,6 +63,7 @@ class CloudsSound {
     void doPrinting();
     int ACTBUS; // needs to be public for UDP shit in the scoredesigner
     bool in_tunnel;
+    bool isScoreDesigner;
     
     // public data structures
     vector<lukePreset> presets;

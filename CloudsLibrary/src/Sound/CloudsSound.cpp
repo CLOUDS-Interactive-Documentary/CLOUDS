@@ -104,6 +104,10 @@ void CloudsSound::exit(ofEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsSound::update(ofEventArgs & args){
+    update();
+}
+
+void CloudsSound::update(){
     if(GetCloudsAudioEvents()->doflush)
     {
         if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
