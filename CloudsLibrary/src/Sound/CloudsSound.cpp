@@ -5,6 +5,7 @@ CloudsSound::CloudsSound(){
 	
 	currentAct = NULL;
 	storyEngine = NULL;
+	presetFlags = NULL;
 	eventsRegistered = false;
 	maxSpeakerVolume = 1;
 	
@@ -281,8 +282,9 @@ void CloudsSound::playCurrentCues(){
             
             // MAKE THE MUSIC
             int GOPRESET = valid_presets[ ofRandom(valid_presets.size()) ];
-			if(!cueFlagsAdded){
+			if(!cueFlagsAdded && presetFlags != NULL){
 				presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), currentCues[i].startTime *1000 );
+
 			}
             
 			if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
@@ -340,6 +342,7 @@ void CloudsSound::enterClusterMap()
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
 #else
 	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/cloudsdream_mix1.mp3");
+	frontPlayer->play();
 #endif
 	
     float ftime = 0.1;

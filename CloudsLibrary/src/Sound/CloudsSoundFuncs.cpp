@@ -21,8 +21,16 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
         startMusic(outskip, p.instruments[j], p.arg_a[j], p.arg_b[j], p.harmony, p.rhythm, dur, p.tempo, p.m_amp[j]*a, p.m_rev[j], j+(orchstep*5), p.env[j]);
     }
 #else
-	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/" + ofToString(p.slotnumber) + ".mp3");
+	string filename = GetCloudsDataPath() + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
+	if(ofFile(filename).exists()){
+		frontPlayer->loadSound(filename);
+	}
+	else{
+		frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/1.mp3");
+		ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << filename;
+	}	
 	frontPlayer->play();
+	
 #endif
 }
 
