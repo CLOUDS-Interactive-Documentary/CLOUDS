@@ -308,6 +308,7 @@ void CloudsSound::enterTunnel()
 #else
 	//TODO: enter tunnel
 	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/tunnel.mp3");
+    frontPlayer->play();
 #endif
     in_tunnel = true;
     float ftime = 0.1;
