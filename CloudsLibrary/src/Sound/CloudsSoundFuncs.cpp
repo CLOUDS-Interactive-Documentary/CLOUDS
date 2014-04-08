@@ -28,7 +28,7 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
 	else{
 		frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/1.mp3");
 		ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << filename;
-	}	
+	}
 	frontPlayer->play();
 	
 #endif
