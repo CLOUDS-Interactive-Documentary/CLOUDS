@@ -11,6 +11,7 @@
 #include "CloudsGlobal.h"
 
 // LUKE FUNCTIONS
+#ifdef RTCMIX
 
 // load an RTcmix text score (.sco) and parse
 void RTcmixParseScoreFile(string f)
@@ -392,3 +393,4 @@ void PFIELD_SCHED(float outskip, float duration, int abn, string action)
     parse_score(thebuf, bx);
 }
 
+#endif

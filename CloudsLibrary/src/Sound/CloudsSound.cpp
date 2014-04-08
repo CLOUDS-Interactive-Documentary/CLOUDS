@@ -26,27 +26,22 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 	
         // TODO: use CloudsMixer parameters
         // RTcmix audio stuff
+#ifdef RTCMIX
         sr = 44100;
         nbufs = 2; // you can use more for more processing but latency will suffer
         nchans = 2; // stereo
         framesize = 512; // sigvs
         s_audio_outbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
         s_audio_compbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
-        
+		
         // initialize RTcmix
         rtcmixmain();
         maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
         
-        GetCloudsAudioEvents()->doflush = false;
-        GetCloudsAudioEvents()->respawn = false;
-        GetCloudsAudioEvents()->setupflush = false;
-        GetCloudsAudioEvents()->dodelay = false;
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
 
-        first_vec = true; // we haven't had audio yet
-        buzzreps = 0; // no buzzing yet
-        
+
         // load samples
         loadRTcmixSamples();
 
@@ -58,7 +53,11 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         {
             precomputemarkov(pitches[i]);
         }
-        
+#endif
+		
+		first_vec = true; // we haven't had audio yet
+        buzzreps = 0; // no buzzing yet
+
         whichdream = 0;
 		instGain = 7.5;
         in_tunnel = false;
@@ -78,6 +77,11 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         
 		ofAddListener(GetCloudsAudioEvents()->musicAudioRequested, this, &CloudsSound::audioRequested);
 
+		GetCloudsAudioEvents()->doflush = false;
+        GetCloudsAudioEvents()->respawn = false;
+        GetCloudsAudioEvents()->setupflush = false;
+        GetCloudsAudioEvents()->dodelay = false;
+		
 		eventsRegistered = true;
 	}
 }
@@ -112,7 +116,9 @@ void CloudsSound::update(){
     {
         if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
         else cout << "SOUND: MUSIC STOPPED." << endl;
+#ifdef RTCMIX
         flush_sched();
+#endif
         sleep(1);
         // zero output buffer (AHA!)
         bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
@@ -123,7 +129,9 @@ void CloudsSound::update(){
     {
         if(LUKEDEBUG) cout << "REDOING MUSIC." << endl;
         else cout << "SOUND: MUSIC RESPAWNED." << endl;
+#ifdef RTCMIX
         flush_sched();
+#endif
         sleep(1);
         // zero output buffer (AHA!)
         bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
@@ -191,14 +199,17 @@ void CloudsSound::playCurrentCues(){
     
     if(LUKEDEBUG) cout << "TOTAL DURATION: " << currentCuesTotalDuration << endl;
     else cout << "SOUND: MUSIC STARTED." << endl;
-	
+#ifdef RTCMIX
     // launch music FX chain
     startMusicFX(0, currentCuesTotalDuration);
-    
+#endif
+	
     // iterate through clips
     if(rigged) // fallback
     {
+#ifdef RTCMIX
         startMusic(0, "slowwaves", "markov", "NULL", 0, 0, currentCuesTotalDuration, 120, 0.5, 0.5, 0, "e_FADEINOUTFASTEST");
+#endif
     }
     else
     {
@@ -274,8 +285,8 @@ void CloudsSound::playCurrentCues(){
             
 			if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
             if(LUKEDEBUG) cout << "FUCKSOUND: schedule: " << i << endl;
-			
-            schedulePreset(presets[GOPRESET], currentCues[i].startTime, currentCues[i].duration, currentCues[i].mixLevel, i+1);
+
+			schedulePreset(presets[GOPRESET], currentCues[i].startTime, currentCues[i].duration, currentCues[i].mixLevel, i+1);
 			
         }
     }
@@ -286,12 +297,14 @@ void CloudsSound::enterTunnel()
 {
     string soundfile = "CLOUDS_introTunnel_light.wav"; // change to something in trax
     float volume = 1.0; // how load does this sound play?
-
+#ifdef RTCMIX
     if(LUKEDEBUG) cout << "sound: enterTunnel()" << endl;
 
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
     SCHEDULEBANG(477.); // length of sound
+#else
+#endif
     in_tunnel = true;
     float ftime = 0.1;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
@@ -318,9 +331,12 @@ void CloudsSound::enterClusterMap()
     float volume = 1.0; // how load does this sound play?
     
     if(LUKEDEBUG) cout << "sound: enterClusterMap()" << endl;
-    
+#ifdef RTCMIX
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
+#else
+#endif
+	
     float ftime = 0.1;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 }
@@ -418,6 +434,7 @@ void CloudsSound::doPrinting() {
 // =========================
 void CloudsSound::audioRequested(ofAudioEventArgs& args){
 
+#ifdef RTCMIX
     int cdif = 0;
     int csum = 0;
 
@@ -460,7 +477,8 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
             
             reset_print();
         }
-    
+#endif
+	
 }
 
 void CloudsSound::mouseReleased(ofMouseEventArgs & args){

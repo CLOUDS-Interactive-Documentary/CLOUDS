@@ -487,7 +487,6 @@ void CloudsVisualSystemClusterMap::populateAssociations(){
         associations[subtopic] = associatedKeyword;
         cout << "associated " << subtopic << " with " << associatedKeyword << endl;
     }
-    bool b = false;
 }
 
 void CloudsVisualSystemClusterMap::traverse(){
