@@ -94,7 +94,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 850.0, 1214.0, 210.0, 27.0 ],
-					"text" : "sprintf symout %s%i.wav"
+					"text" : "sprintf symout %s%i.aif"
 				}
 
 			}
@@ -533,7 +533,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1478.468262, 1192.0, 91.0, 27.0 ],
-					"restore" : [ "e_FADEINBY25" ],
+					"restore" : [ "e_CONSTANT" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -653,7 +653,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1478.468262, 937.0, 91.0, 27.0 ],
-					"restore" : [ "e_FADEOUTBY75" ],
+					"restore" : [ "e_CONSTANT" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -707,7 +707,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1478.468262, 852.0, 91.0, 27.0 ],
-					"restore" : [ "e_FADEOUTBY75" ],
+					"restore" : [ "e_CONSTANT" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -1625,7 +1625,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1124.0, 329.0, 97.0, 27.0 ],
-					"restore" : [ 0.307692 ],
+					"restore" : [ 1.0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -1665,7 +1665,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1124.0, 248.394226, 97.0, 27.0 ],
-					"restore" : [ 0.230769 ],
+					"restore" : [ 1.0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9386,7 +9386,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 866.0, -11.389191, 264.0, 27.0 ],
-					"restore" : [ "markov" ],
+					"restore" : [ "bucket" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9406,7 +9406,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 866.0, 188.113129, 264.0, 27.0 ],
-					"restore" : [ "bucket" ],
+					"restore" : [ "none" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9466,7 +9466,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 866.0, 38.486389, 264.0, 27.0 ],
-					"restore" : [ "bucket" ],
+					"restore" : [ "none" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9506,7 +9506,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 769.0, 188.113129, 97.0, 27.0 ],
-					"restore" : [ "slowwaves" ],
+					"restore" : [ "off" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9626,7 +9626,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 769.0, 38.486389, 97.0, 27.0 ],
-					"restore" : [ "waveguide3" ],
+					"restore" : [ "off" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9666,7 +9666,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 769.0, -11.389191, 97.0, 27.0 ],
-					"restore" : [ "waveguide" ],
+					"restore" : [ "off" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9721,7 +9721,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 76.971786, 700.733032, 107.0, 27.0 ],
-					"restore" : [ "waveguide+slowwaves" ],
+					"restore" : [ "general", "issue", "pad" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9761,7 +9761,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 283.757416, 576.947388, 107.0, 27.0 ],
-					"restore" : [ 4 ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9781,7 +9781,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 283.757416, 543.815063, 122.0, 27.0 ],
-					"restore" : [ 12 ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9801,7 +9801,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1878.0, 714.661194, 72.0, 27.0 ],
-					"restore" : [ 5, 10 ],
+					"restore" : [ 0, 10 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9821,7 +9821,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1878.0, 633.104614, 72.0, 27.0 ],
-					"restore" : [ 0, 10 ],
+					"restore" : [ 6, 10 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9861,7 +9861,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1878.0, 476.455841, 72.0, 27.0 ],
-					"restore" : [ 0, 10 ],
+					"restore" : [ 5, 10 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9901,7 +9901,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1878.0, 313.342743, 72.0, 27.0 ],
-					"restore" : [ 0, 6 ],
+					"restore" : [ 0, 10 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -10190,7 +10190,7 @@
 					"patching_rect" : [ 224.323578, 732.020325, 250.616516, 25.486425 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 190.323578, 250.020325, 250.616516, 25.486425 ],
-					"text" : "waveguide+slowwaves",
+					"text" : "general issue pad",
 					"varname" : "textedit"
 				}
 
@@ -10239,7 +10239,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-71",
-					"items" : [ "none", ",", "bucket", ",", "melody", ",", "markov", ",", "simple", ",", "sequencer" ],
+					"items" : "none",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -10428,7 +10428,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-59",
-					"items" : [ "none", ",", "bucket", ",", "melody", ",", "markov", ",", "simple" ],
+					"items" : "none",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
