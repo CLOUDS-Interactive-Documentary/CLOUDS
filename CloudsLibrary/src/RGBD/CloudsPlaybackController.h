@@ -37,7 +37,10 @@ class CloudsPlaybackController {
 
 	//set it up with an existing story engine that will register the events
 	void setup();	
-	void playAct(CloudsAct* act);
+	void loadCurrentAct(); //starts loading screen
+	void updateLoadingAct(); //loads one system everytime it's called
+	void playCurrentAct();//when done loading
+	
 	CloudsRGBDVideoPlayer& getSharedVideoPlayer();
 	
 	//update and draw to the screen, this will always
@@ -87,6 +90,8 @@ class CloudsPlaybackController {
 	CloudsClip currentClip;
 	int numClipsPlayed;
 	string currentTopic;
+	
+	bool shouldLoadAct;
 	bool shouldPlayAct;
     bool shouldClearAct;
     
@@ -114,6 +119,12 @@ class CloudsPlaybackController {
 	CloudsTransitionController transitionController;
 	void updateTransition();
 
+	//loader screen
+	bool loadingAct;
+	int currentPresetIndex;
+//	vector<CloudsVisualSystemPreset> presetsToLoad;
+	
+	
     string currentClipName;
     float actCreatedTime;
 	float crossfadeValue;
@@ -159,6 +170,7 @@ class CloudsPlaybackController {
     bool bResetSelected;
     bool bResetTransitionComplete;
     ofxFTGLFont resetFont;
+	ofxFTGLFont loadingFont;
     float resetSelectedPercentComplete;
     float maxResetHoverTime;
     float startResetHoverTime;

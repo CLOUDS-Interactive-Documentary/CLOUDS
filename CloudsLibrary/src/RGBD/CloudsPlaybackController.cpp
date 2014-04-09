@@ -6,6 +6,7 @@ bool listsort(pair<int,string> a, pair<int,string> b){
 
 //--------------------------------------------------------------------
 CloudsPlaybackController::CloudsPlaybackController(){
+	
 	eventsRegistered = false;
 	showingVisualSystem = false;
 	currentAct = NULL;
@@ -19,9 +20,10 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	interludeStartTime = 0;
     numActsCreated = 0;
     crossfadeValue = 0;
-    
+    loadingAct = false;
+	shouldLoadAct = false;
+	
     returnToIntro = false;
-    
     cachedTransition = false;
     
     lastMouseMoveMillis = 0;
@@ -32,11 +34,11 @@ CloudsPlaybackController::CloudsPlaybackController(){
     startResetHoverTime = 0.0;
     resetSelectedPercentComplete = 0;
     resetFont.loadFont(GetCloudsDataPath()+"/font/Blender-THIN.ttf", 12);
-    
+    loadingFont.loadFont(GetCloudsDataPath()+"/font/Blender-THIN.ttf", 12);
+	
 //    ofRectangle resetText = resetFont.getStringBoundingBox("RESET", 75,CloudsVisualSystem::getStaticRenderTarget().getHeight()-100);
 //    resetRect = ofRectangle(75,CloudsVisualSystem::getStaticRenderTarget().getHeight()-100,resetText.height,resetText.height);
     
-
 }
 
 void CloudsPlaybackController::setupPortals(){
@@ -145,7 +147,6 @@ void CloudsPlaybackController::setup(){
 	mixer.setup();
 	sound.setup(storyEngine);
     
-    
 #ifndef  OCULUS_RIFT
 	////COMMUNICATION
 	oscSender.setup();
@@ -195,12 +196,10 @@ void CloudsPlaybackController::setup(){
 		ofRegisterMouseEvents(this);
 	}
 	
-    
 	//////////////SHOW INTRO
     startingNodes = storyEngine.getStartingQuestions();
     
 	//////////////SHOW INTRO
-	cout << "Found " << startingNodes.size() << " questions" << endl;
 	showIntro( startingNodes );
     
     sound.enterTunnel();
@@ -239,22 +238,59 @@ void CloudsPlaybackController::showIntro(){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::playAct(CloudsAct* act){
+void CloudsPlaybackController::loadCurrentAct(){
     
-    //	currentAct = act;
-    
-	//TODO: show loading screen while we initialize all the visual systems
-	vector<CloudsVisualSystemPreset>& presets = currentAct->getAllVisualSystemPresets();
-	vector< CloudsVisualSystem* > systems = CloudsVisualSystemManager::InstantiateSystems(presets);
-	for(int i = 0; i < presets.size(); i++){
-		if(presets[i].system != NULL){
-            //			cout << "CloudsPlaybackController::playAct -- Setting up:: " << presets[i].systemName << endl;
-			presets[i].system->setup();
-		}
-		else{
-			ofLogError("CloudsPlaybackController::playAct") << presets[i].systemName << " NULL right after instantiaton. correlating system null? " << (systems[i] == NULL ? "YES" : "NO");
-		}
+	//presetsToLoad = currentAct->getAllVisualSystemPresets();
+	
+	//CloudsVisualSystemManager::InstantiateSystems(presetsToLoad);
+	
+//	for(int i = 0; i < presets.size(); i++){
+//		if(presetsToLoad[i].system != NULL){
+//            //			cout << "CloudsPlaybackController::playAct -- Setting up:: " << presets[i].systemName << endl;
+//			presetsToLoad[i].system->setup();
+//		}
+//		else{
+//			ofLogError("CloudsPlaybackController::playAct") << presetsToLoad[i].systemName << " NULL right after instantiaton.");
+//		}
+//	}
+	
+	currentPresetIndex = 0;
+	loadingAct = true;
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::updateLoadingAct(){
+
+	CloudsVisualSystemPreset& preset = currentAct->getAllVisualSystemPresets()[currentPresetIndex];
+	
+	preset.system = CloudsVisualSystemManager::InstantiateSystem(preset.systemName);
+	if(preset.system != NULL){
+		preset.system->setup();
 	}
+	else{
+		ofLogError("CloudsPlaybackController::updateLoadingAct") << preset.systemName << " NULL right after instantiaton.";
+	}
+	
+	currentPresetIndex++;
+	if(currentPresetIndex == currentAct->getAllVisualSystemPresets().size()){
+		loadingAct = false;
+		shouldPlayAct = true;
+	}
+	
+//	for(int i = 0; i < presets.size(); i++){
+//		if(presetsToLoad[i].system != NULL){
+//            //			cout << "CloudsPlaybackController::playAct -- Setting up:: " << presets[i].systemName << endl;
+//			presetsToLoad[i].system->setup();
+//		}
+//		else{
+//			ofLogError("CloudsPlaybackController::playAct") << presetsToLoad[i].systemName << " NULL right after instantiaton.");
+//		}
+//	}
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::playCurrentAct(){
 	
 	currentAct->registerEvents(this);
     currentAct->registerEvents(&run);
@@ -552,8 +588,15 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		hud.update();
 	}
 	
+	if(shouldLoadAct){
+		loadCurrentAct();
+		shouldLoadAct = false;
+	}
+	if(loadingAct){
+		updateLoadingAct();
+	}
 	if(shouldPlayAct){
-		playAct(currentAct);
+		playCurrentAct();
 		shouldPlayAct = false;
 	}
 	updateTransition();
@@ -564,7 +607,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 void CloudsPlaybackController::updateTransition(){
 	
 	transitionController.update();
-    
     
     //if(transitionController.getCurrentState() != TRANSITION_IDLE){
     //    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
@@ -721,7 +763,7 @@ void CloudsPlaybackController::updateTransition(){
                     
                     storyEngine.buildAct(run, clip, q->topic, true);
                     
-					sound.exitTunnel();
+//					sound.exitTunnel();
                 }
                 else if(transitionController.getPreviousState() == TRANSITION_INTERLUDE_OUT){
                     
@@ -805,6 +847,11 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     
 	drawDebugOverlay();
 	
+	if(loadingAct){
+		float progressWidth = ofGetWidth() * .66;
+		loadingFont.drawString("Generating a response to your query.", ofGetWidth()*.33, ofGetHeight()*.5 - 5);
+		ofRect(ofGetWidth()*.33 / 2, ofGetHeight()*.5, progressWidth * currentPresetIndex / currentAct->getAllVisualSystemPresets().size(), 50. );
+	}
 	glPopAttrib();
 }
 
@@ -889,29 +936,6 @@ void CloudsPlaybackController::drawDebugOverlay(){
 		currentAct->getTimeline().disableEvents();
 	}
 	
-    //	if(showingVisualSystem && ofGetKeyPressed('k')){
-    //		ofPushMatrix();
-    //		ofPushStyle();
-    //		ofEnableAlphaBlending();
-    //		ofTranslate(ofGetWidth()*.5, ofGetHeight()*.5);
-    //		ofScale(7,7);
-    //		ofSetColor(255);
-    //		string debugString = "";
-    //		currentVisualSystemPreset.presetName + " was associated with keyword " + currentVisualSystemPreset.conjureKeyword + "\n" +
-    //        "Preset's keywords " + ofJoinString(currentVisualSystemPreset.allKeywords, ", ") + "\n" +
-    //        "current clip's keywords " + ofJoinString(currentClip.getKeywords(), ", ") + "\n" +
-    //        "Had to default to keyword family? " + (currentVisualSystemPreset.defaultedToFamily ? "YES" : "NO") + "\n" +
-    //        "Had to pick a random preset? " + (currentVisualSystemPreset.randomlySelected ? "YES" : "NO") + "\n" +
-    //        "Act #? " + ofToString(run.actCount);
-    //
-    //		ofDrawBitmapString(debugString, 0,0);
-    //
-    //		ofSetColor(0,0,0,255);
-    //		ofRect(-5,-5,300, 50);
-    //
-    //		ofPopStyle();
-    //		ofPopMatrix();
-    //	}
 }
 
 #pragma story engine events
@@ -923,13 +947,18 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
     }
     
 	numClipsPlayed = 0;
-	shouldPlayAct = true;
+	shouldLoadAct = true;
+	shouldPlayAct = false;
 	currentAct = args.act;
+	
+	cout << "***** ORDER OF OPERATIONS: ACT CRATED CONTROLLER " << args.act << endl;
+
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
-    
+    cout << "***** ORDER OF OPERATIONS: ACT BEGAN CONTROLLER " << args.act << endl;
+	
     if(!args.act->startsWithVisualSystem()){
         transitionController.transitionToFirstInterview(1.0);
     }
@@ -1099,7 +1128,7 @@ void CloudsPlaybackController::showInterlude(){
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
         interludeSystem->playSystem();
-        interludeSystem->drawCursorMode = DRAW_CURSOR_PRIMARY;
+//        interludeSystem->drawCursorMode = DRAW_CURSOR_PRIMARY;
         
         currentVisualSystem = interludeSystem;
         
