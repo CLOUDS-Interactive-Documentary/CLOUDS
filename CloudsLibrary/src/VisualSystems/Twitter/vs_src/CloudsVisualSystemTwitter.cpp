@@ -278,10 +278,10 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>&
     
     ofFile f = ofFile();
     curTweeters.clear();
-
+	
     ofDirectory dir(GetCloudsVisualSystemDataPath("Twitter",true)+folderName+"/");
     dir.listDir();
-	float loadTime = ofGetElapsedTimeMillis();
+	
 	ofVec2f curActivityMapCoord(0,0);
 	int activityMapCoordWidth = 100;
     ofxJSONElement result;
@@ -289,31 +289,39 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>&
     if(dir.exists()){
         int size = dir.size();
         vector<ofFile>files= dir.getFiles();
-
+		curTweeters.resize(files.size());
         for(int i = 0; i< files.size(); i++){
+
+			float loadTime = ofGetElapsedTimeMillis();
             string filePath = GetCloudsVisualSystemDataPath("Twitter",true)+folderName+"/"+files[i].getFileName();
-            bool parsingSuccessful = result.openLocal(filePath);
+			
+			//cout<<"OPEN JSON FILE PATH: "<<filePath<<" : "<<loadTime<<endl;
+            
+			bool parsingSuccessful = result.openLocal(filePath);
+			cout<<"PARSED FILE IN "<<(ofGetElapsedTimeMillis()- loadTime)<<endl;
             if (parsingSuccessful) {
-                ofLogNotice("CloudsVisualSystemTwitter::loadJSONData") << filePath;
+              //  ofLogNotice("CloudsVisualSystemTwitter::loadJSONData") << filePath;
                 if(result.isMember("errors")) {
                     ofDrawBitmapString(result.getRawString(), 10, 14);
                 }
                 else if(result.isMember("Tweets")){
                     
                     Tweeter cur;
-                    vector<Tweet> userTweets;
                     ofxJSONElement tweets = result["Tweets"];
+					vector<Tweet> userTweets;
+					userTweets.resize(tweets.size());
                     
+					float tweetsLoadTime = ofGetElapsedTimeMillis();                    
                     vector<string> names = ofSplitString(result["name"].asString(), ".");
                     cur.name = "@" + names[0];
                     cur.ID = i;
                     userNameIdMap[cur.name] = i;
-                    
+                   
                     for(int j =0; j<tweets.size(); j ++){
-//						cout << "		Tweet " << j << "/" << tweets.size()<<endl;
-                        Tweet t;
+						float dataLoadTime = ofGetElapsedTimeMillis();   
+
+                        Tweet& t  = userTweets[j];
                         t.tweet = tweets[j]["Tweet"].asString();
-                        
                         
                         if(tweets[j]["Hashtag"].isValidIndex(0)){
                             ofxJSONElement hashTags = tweets[j]["Hashtag"];
@@ -321,6 +329,8 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>&
                             for(int k=0; k<hashTags.size(); k++){
                                 t.hashtags.push_back(hashTags[k ].asString());
                             }
+
+							//cout<<"Added hash tags in "<<(ofGetElapsedTimeMillis() - dataLoadTime)<<endl; 
                         }
                         
                         if(tweets[j]["Users"].isValidIndex(0)){
@@ -337,7 +347,7 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>&
                         if(tweets[j].isMember("Date")){
                             bool alreadyExists = false;
                             ofxJSONElement date = tweets[j]["Date"];
-                            t.tweetDate.day = date["Day"].asInt()   ;
+                            t.tweetDate.day = date["Day"].asInt();
                             t.tweetDate.month =date["Month"].asInt();
                             t.tweetDate.year =date["Year"].asInt();
                             t.dateString = getDateAsString(t.tweetDate);
@@ -353,8 +363,9 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>&
                                 dateIndex.push_back(t.tweetDate);    
                             }
                         }
-                        userTweets.push_back(t);
+                        //userTweets.push_back(t);
                     }
+					 cout<<"ADDING TWEETS: "<<cur.name<<" in "<<(ofGetElapsedTimeMillis()- loadTime)<<endl;
                     cur.tweets= userTweets;
                     cur.activityMapCoord = curActivityMapCoord;
 					curActivityMapCoord.x++;
@@ -363,7 +374,9 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>&
 						curActivityMapCoord.y++;
 					}
 //                    maxUserLinks = MAX(maxUserLinks,cur.userLinks.size());
-                    curTweeters.push_back(cur);
+					cout<<"ADDED TWEETER: "<<cur.name<<" in "<<(ofGetElapsedTimeMillis()- tweetsLoadTime)<<endl;
+                    //curTweeters.push_back(cur);
+					curTweeters[i] = cur;
                 } else {
                     cout  << "Failed to parse JSON" << endl;
                 }
@@ -371,8 +384,8 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>&
         }
     }
     
-    cout<<"JSON LOADED : "<<ofGetElapsedTimeMillis()-loadTime<<endl;
-    loadTime =  ofGetElapsedTimeMillis();
+    //cout<<"JSON LOADED : "<<ofGetElapsedTimeMillis()-loadTime<<endl;
+    //loadTime =  ofGetElapsedTimeMillis();
 
     map<string,int> numberOfMentions; 
     vector<string> names;
