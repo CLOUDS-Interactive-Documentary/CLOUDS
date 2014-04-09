@@ -569,7 +569,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             
             bQuestionAsked = true;
             
-//            sound.stopMusic();
             
             transitionController.transitionWithQuestion(2.0, 0.1);
             //sound.questionSelected(2.0);
@@ -717,7 +716,6 @@ void CloudsPlaybackController::updateTransition(){
                 if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
                     rgbdVisualSystem->transtionFinished();
                     rgbdVisualSystem->stopSystem();
-                    //Call stop on the clip?
                 }
                 else if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
                     hideVisualSystem();
@@ -779,8 +777,8 @@ void CloudsPlaybackController::updateTransition(){
                     cout<<"IDLE POST TRANSITION INTERLUDE OUT"<<endl;
                 }
 				else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
+
 					if(bQuestionAsked){
-                        
                         
                         q = rgbdVisualSystem->getSelectedQuestion();
                         clip = q->clip;
@@ -820,7 +818,7 @@ void CloudsPlaybackController::updateTransition(){
     
     crossfadeValue = transitionController.getFadeValue();
 
-    if(bQuestionAsked){
+    if(bQuestionAsked || shouldLoadAct || loadingAct){
         CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = crossfadeValue;
         //don't start fading out right away
         crossfadeValue = ofMap(crossfadeValue, .2, 0.0, 1.0, 0.0, true);
