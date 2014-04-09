@@ -204,6 +204,8 @@ void CloudsVisualSystemXstatic::selfSetDefaults()
     bBounceOffWalls = true;
     bWrapEdges = false;
     
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemXstatic::regenerate(bool bBigBang)
