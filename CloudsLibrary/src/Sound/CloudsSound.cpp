@@ -5,6 +5,7 @@ CloudsSound::CloudsSound(){
 	
 	currentAct = NULL;
 	storyEngine = NULL;
+	presetFlags = NULL;
 	eventsRegistered = false;
 	maxSpeakerVolume = 1;
 	
@@ -18,42 +19,49 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 	
 	if(!eventsRegistered){
 		ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsSound::actCreated);
+		ofAddListener(ofEvents().update, this, &CloudsSound::update);
 		ofAddListener(ofEvents().exit, this, &CloudsSound::exit);
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 	
-        // TODO: use CloudsMixer parameters
+		frontPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
+		backPlayer  = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
+
+        // load data files
+        loadRTcmixFiles();
+
+#ifdef RTCMIX
         // RTcmix audio stuff
         sr = 44100;
         nbufs = 2; // you can use more for more processing but latency will suffer
         nchans = 2; // stereo
         framesize = 512; // sigvs
         s_audio_outbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
-        
+        s_audio_compbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
+		
         // initialize RTcmix
         rtcmixmain();
         maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
         
-        GetCloudsAudioEvents()->doflush = false;
-        GetCloudsAudioEvents()->setupflush = false;
-        GetCloudsAudioEvents()->dodelay = false;
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
-        first_vec = true; // we haven't had audio yet
-        
+
+
         // load samples
         loadRTcmixSamples();
 
-        // load data files
-        loadRTcmixFiles();
         
         // precompute music data
         for(int i = 0;i<pitches.size();i++)
         {
             precomputemarkov(pitches[i]);
         }
-        
+#endif
+		
+		first_vec = true; // we haven't had audio yet
+        buzzreps = 0; // no buzzing yet
+
         whichdream = 0;
 		instGain = 7.5;
         in_tunnel = false;
@@ -67,12 +75,17 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         abn.clear();
         for(int i = 0;i<PF_NUMBUSES;i++)
         {
-        ab.push_back("ACTBUS"+ofToString(i));
-        abn.push_back(PF_MAINACT_BUS_START+i);
+			ab.push_back("ACTBUS"+ofToString(i));
+			abn.push_back(PF_MAINACT_BUS_START+i);
         }
         
 		ofAddListener(GetCloudsAudioEvents()->musicAudioRequested, this, &CloudsSound::audioRequested);
 
+		GetCloudsAudioEvents()->doflush = false;
+        GetCloudsAudioEvents()->respawn = false;
+        GetCloudsAudioEvents()->setupflush = false;
+        GetCloudsAudioEvents()->dodelay = false;
+		
 		eventsRegistered = true;
 	}
 }
@@ -90,21 +103,45 @@ void CloudsSound::exit(ofEventArgs & args){
 			currentAct->unregisterEvents( this );
 		}
 		
-		ofRemoveListener(ofEvents().exit, this, &CloudsSound::exit);		
+		ofRemoveListener(ofEvents().update, this, &CloudsSound::update);
+		ofRemoveListener(ofEvents().exit, this, &CloudsSound::exit);
 		ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);		
 	}
 }
 
 //--------------------------------------------------------------------
+void CloudsSound::update(ofEventArgs & args){
+    update();
+}
+
 void CloudsSound::update(){
     if(GetCloudsAudioEvents()->doflush)
     {
         if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
         else cout << "SOUND: MUSIC STOPPED." << endl;
+#ifdef RTCMIX
         flush_sched();
+#endif
+        sleep(1);
+        // zero output buffer (AHA!)
+        //bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
+        memset(s_audio_outbuf, 0, nchans*framesize*sizeof(short));
         GetCloudsAudioEvents()->setupflush = false;
         GetCloudsAudioEvents()->doflush = false;
+    }
+    if(GetCloudsAudioEvents()->respawn)
+    {
+        if(LUKEDEBUG) cout << "REDOING MUSIC." << endl;
+        else cout << "SOUND: MUSIC RESPAWNED." << endl;
+#ifdef RTCMIX
+        flush_sched();
+#endif
+        sleep(1);
+        // zero output buffer (AHA!)
+        bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
+        GetCloudsAudioEvents()->respawn = false;
+        playCurrentCues();
     }
 }
 
@@ -128,19 +165,31 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     ofxTimeline& actTimeLine = currentAct->getTimeline();
     
     actTimeLine.addPage("sound",true);
-    ofxTLFlags * presetFlags = actTimeLine.addFlags("Presets");
+    presetFlags = actTimeLine.addFlags("Presets");
 
-    int rigged = 0; // set to '1' for slowwaves all the time
-    float totalduration = args.act->getTimeline().getDurationInSeconds(); // how long
-    bool isHighEnergy = false;
+	//    vector<CloudsSoundCue>& thecues = args.act->getSoundCues(); // copy the cues
 	
-    vector<CloudsSoundCue>&thecues = args.act->getSoundCues(); // copy the cues
+    currentCuesTotalDuration = args.act->getTimeline().getDurationInSeconds(); // how long
+	currentCues = args.act->getSoundCues();
+	cueFlagsAdded = false;
+	
+	playCurrentCues();
+	
+    actTimeLine.setCurrentPage(0);
+    if(LUKEDEBUG) cout << "====================" << endl;
+    if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
+    if(LUKEDEBUG) cout << "====================" << endl;
+
+}
+
+void CloudsSound::playCurrentCues(){
+	
     vector<int> valid_presets; // make a vector of presets that match the dichotomy setting
     vector<int> cuedichos; // place to stash cue dichotomies
-
-    int numcues = thecues.size(); // how many cues in this act?
-    
-    float pad = 5.0; // padding for FX chain
+	
+    int rigged = 0; // set to '1' for slowwaves all the time
+    bool isHighEnergy = false;
+    int numcues = currentCues.size(); // how many cues in this act?
     
     //
     // GOGOGO
@@ -149,61 +198,61 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     if(LUKEDEBUG) cout << "===============" << endl;
     if(LUKEDEBUG) cout << "MAKING MUSIC!!!" << endl;
     if(LUKEDEBUG) cout << "===============" << endl;
-
-    totalduration+=pad; // pad the total
+	
+    float pad = 5.0; // padding for FX chain
+    currentCuesTotalDuration += pad; // pad the total
     
-    if(LUKEDEBUG) cout << "TOTAL DURATION: " << totalduration << endl;
+    if(LUKEDEBUG) cout << "TOTAL DURATION: " << currentCuesTotalDuration << endl;
     else cout << "SOUND: MUSIC STARTED." << endl;
-
+#ifdef RTCMIX
     // launch music FX chain
-    startMusicFX(0, totalduration);
-    
+    startMusicFX(0, currentCuesTotalDuration);
+#endif
+	
     // iterate through clips
     if(rigged) // fallback
     {
-        startMusic(0, "slowwaves", "markov", "NULL", 0, 0, totalduration, 120, 0.5, 0.5, 0, "e_FADEINOUTFASTEST");
+#ifdef RTCMIX
+        startMusic(0, "slowwaves", "markov", "NULL", 0, 0, currentCuesTotalDuration, 120, 0.5, 0.5, 0, "e_FADEINOUTFASTEST");
+#endif
     }
     else
     {
         for(int i = 0;i<numcues;i++)
         {
             // TEST 1: CHECK FOR RIGGED PRESET NAME -- THESE CUES CAN BE "DISABLED"
-            if(thecues[i].riggedPresetName!="")
+            if(currentCues[i].riggedPresetName!="")
             {
                 for(int j = 0; j<presets.size();j++)
                 {
-                    if(presets[j].name==thecues[i].riggedPresetName) // match
+                    if(presets[j].name==currentCues[i].riggedPresetName) // match
                     {
-                        
-
                         valid_presets.push_back(j);
-                        
-                        
                     }
                 }
             }
             // TEST 2: CHECK FOR OPENING QUESTION MATCH
-            if(thecues[i].soundQuestionKey!="")
+            if(currentCues[i].soundQuestionKey!="")
             {
                 for(int j = 0; j<presets.size();j++)
                 {
-                    if(presets[j].start_question==thecues[i].soundQuestionKey&&presets[j].disabled==0) // match
+                    if(presets[j].start_question == currentCues[i].soundQuestionKey && presets[j].disabled==0) // match
                     {
                         
                         valid_presets.push_back(j);
                     }
-                }                
+                }
             }
             // USE DICHOTOMIES
             else
             {
                 // add up dichos for cue
                 cuedichos.clear();
-                for(int j = 0;j<thecues[i].dichotomies.size();j++)
+                for(int j = 0; j < currentCues[i].dichotomies.size(); j++)
                 {
-                    cuedichos.push_back(thecues[i].dichotomies[j].balance);
+                    cuedichos.push_back(currentCues[i].dichotomies[j].balance);
                 }
-
+				
                 //Populate valid presets
                 valid_presets.clear();
                 for(int j = 0;j<presets.size();j++)
@@ -211,7 +260,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                     int pscore = 0;
                     for(int k=0;k<8;k++)
                     {
-                        if(cuedichos[k]<=presets[j].dichomax[k]&&cuedichos[k]>=presets[j].dichomin[k])
+                        if(cuedichos[k] <= presets[j].dichomax[k]&&cuedichos[k]>=presets[j].dichomin[k])
                         {
                             pscore++;
                         }
@@ -219,48 +268,52 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                     //if all 8 dichos matched
                     if(pscore==8&&presets[j].highEnergy==isHighEnergy&&presets[j].disabled==0){
                         //if(presets[j].slotnumber<250) { // temporary
-
-                        
                         valid_presets.push_back(j);
                         //}
                     }
                 }
-            
+				
                 isHighEnergy = !isHighEnergy; // flip energy state at each dicho check
             }
             
             // emergency check
             if(valid_presets.size()==0)
-            {       
+            {
                 valid_presets.push_back(0);
             }
             
             // MAKE THE MUSIC
             int GOPRESET = valid_presets[ ofRandom(valid_presets.size()) ];
-            presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), thecues[i].startTime *1000 );
-            if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
-            schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel);
+			if(!cueFlagsAdded && presetFlags != NULL){
+				presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), currentCues[i].startTime *1000 );
 
+			}
+            
+			if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
+            if(LUKEDEBUG) cout << "FUCKSOUND: schedule: " << i << endl;
+
+			schedulePreset(presets[GOPRESET], currentCues[i].startTime, currentCues[i].duration, currentCues[i].mixLevel, i+1);
+			
         }
     }
-    actTimeLine.setCurrentPage(0);
-    if(LUKEDEBUG) cout << "====================" << endl;
-    if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
-    if(LUKEDEBUG) cout << "====================" << endl;
-
-    
+	cueFlagsAdded = true;
 }
 
 void CloudsSound::enterTunnel()
 {
     string soundfile = "CLOUDS_introTunnel_light.wav"; // change to something in trax
     float volume = 1.0; // how load does this sound play?
-
+#ifdef RTCMIX
     if(LUKEDEBUG) cout << "sound: enterTunnel()" << endl;
 
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
     SCHEDULEBANG(477.); // length of sound
+#else
+	//TODO: enter tunnel
+	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/tunnel.mp3");
+    frontPlayer->play();
+#endif
     in_tunnel = true;
     float ftime = 0.1;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
@@ -287,9 +340,14 @@ void CloudsSound::enterClusterMap()
     float volume = 1.0; // how load does this sound play?
     
     if(LUKEDEBUG) cout << "sound: enterClusterMap()" << endl;
-    
+#ifdef RTCMIX
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
+#else
+	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/cloudsdream_mix1.mp3");
+	frontPlayer->play();
+#endif
+	
     float ftime = 0.1;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 }
@@ -387,14 +445,31 @@ void CloudsSound::doPrinting() {
 // =========================
 void CloudsSound::audioRequested(ofAudioEventArgs& args){
 
-        pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
+#ifdef RTCMIX
+    int cdif = 0;
+    int csum = 0;
 
+        pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
         // fill up the audio buffer
         for (int i = 0; i < args.bufferSize * args.nChannels; i++)
         {
             args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
+            
+            csum+=abs(s_audio_outbuf[i]);
+            cdif+=(s_audio_outbuf[i]-s_audio_compbuf[i]);
+            s_audio_compbuf[i] = s_audio_outbuf[i];
         }
-
+    
+    if(csum>0 && cdif==0) {
+        cout << "BUZZZZZZZZZZZZZZ!!!" << endl;
+        buzzreps++;
+    }
+    else buzzreps = 0;
+    
+    if(buzzreps>20) {
+        GetCloudsAudioEvents()->respawn = true;
+        buzzreps = 0;
+    }
         
         // not using right now
         if (check_bang() == 1) {
@@ -413,7 +488,8 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
             
             reset_print();
         }
-    
+#endif
+	
 }
 
 void CloudsSound::mouseReleased(ofMouseEventArgs & args){

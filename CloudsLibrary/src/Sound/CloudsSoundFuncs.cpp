@@ -9,19 +9,32 @@
 
 #include "CloudsSound.h"
 
-void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel)
+void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel, int orchstep)
 {
     float a;
     if(mixlevel==0) a = 0;
     else if(mixlevel==1) a = 1.0;
     else if(mixlevel==2) a = 1.5;
     
-    for(int j = 0;j<p.instruments.size();j++)
-    {
-        startMusic(outskip, p.instruments[j], p.arg_a[j], p.arg_b[j], p.harmony, p.rhythm, dur, p.tempo, p.m_amp[j]*a, p.m_rev[j], j, p.env[j]);
+#ifdef RTCMIX
+    for(int j = 0;j<p.instruments.size();j++){
+        startMusic(outskip, p.instruments[j], p.arg_a[j], p.arg_b[j], p.harmony, p.rhythm, dur, p.tempo, p.m_amp[j]*a, p.m_rev[j], j+(orchstep*5), p.env[j]);
     }
+#else
+	string filename = GetCloudsDataPath() + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
+	if(ofFile(filename).exists()){
+		frontPlayer->loadSound(filename);
+	}
+	else{
+		frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/1.mp3");
+		ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << filename;
+	}
+	frontPlayer->play();
+	
+#endif
 }
 
+#ifdef RTCMIX
 void CloudsSound::startMusicFX(float outskip, float musicdur)
 {
     float ftime = 0.1;
@@ -29,6 +42,8 @@ void CloudsSound::startMusicFX(float outskip, float musicdur)
 
     // blow out routing table
     INITMIX();
+    // zero output buffer (AHA!)
+    bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
 
     // REVERB
     REVERB(outskip, musicdur+7.0); // gimme some reverb
@@ -39,7 +54,7 @@ void CloudsSound::startMusicFX(float outskip, float musicdur)
 
 void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope)
 {
-    
+    if(LUKEDEBUG) cout << "FUCKSOUND: " << mo << ": " << instnum << endl;
     float t, beatoffset;
     float i, j;
     lukeSimpleMelody mel;
@@ -73,6 +88,10 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     //
     // MELODIC INSTRUMENTS
     //
+    
+    // TEMP - no independent mixing
+    //float t_instGain = instGain;
+    //instGain *= m_amp;
     
     // META
     if(arg_a=="simple")
@@ -319,27 +338,27 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         else
         {
-                melodySolver m(arg_a, pitches[mh], mel);
-                int curpitch;
-                float freq;
-                
-                for(i = 0;i<musicdur;i+=tempo*2.)
-                {
-                    if(rhythms[mr].beats[bcount]>0.) {
-                        
-                        curpitch = m.tick();
-                        if(curpitch>-1) {
-                            freq = mtof(curpitch);
-                            
-                            float t_amp = rhythms[mr].beats[bcount]*0.025*instGain;
-                            float d = tempo*floor(ofRandom(2., 5.));
-                            float p = ofRandom(0., 1.);
-                            WAVETABLE(outskip+i, d, t_amp, freq, p, "wf_saw", "amp_sharpadsr");
-                            WAVETABLE(outskip+i, d*ofRandom(0.9,1.1), t_amp, freq*0.99, 1.-p, "wf_square", "amp_sharpadsr");
-                        }
-                    }
-                    bcount = (bcount+1)%rhythms[mr].beats.size();
-                }
+			melodySolver m(arg_a, pitches[mh], mel);
+			int curpitch;
+			float freq;
+			
+			for(i = 0;i<musicdur;i+=tempo*2.)
+			{
+				if(rhythms[mr].beats[bcount]>0.) {
+					
+					curpitch = m.tick();
+					if(curpitch>-1) {
+						freq = mtof(curpitch);
+						
+						float t_amp = rhythms[mr].beats[bcount]*0.025*instGain;
+						float d = tempo*floor(ofRandom(2., 5.));
+						float p = ofRandom(0., 1.);
+						WAVETABLE(outskip+i, d, t_amp, freq, p, "wf_saw", "amp_sharpadsr");
+						WAVETABLE(outskip+i, d*ofRandom(0.9,1.1), t_amp, freq*0.99, 1.-p, "wf_square", "amp_sharpadsr");
+					}
+				}
+				bcount = (bcount+1)%rhythms[mr].beats.size();
+			}
         }
         
     }
@@ -370,7 +389,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         else
         {
-            SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
             melodySolver m(arg_a, pitches[mh], mel);
             int curpitch;
             float freq;
@@ -418,7 +436,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         else
         {
-            SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
             melodySolver m(arg_a, pitches[mh], mel);
             int curpitch;
             float freq;
@@ -1306,12 +1323,20 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // =======================
     //
     
+    // TEMP - reset
+    //instGain = t_instGain;
+    
 }
+#endif
 
 void CloudsSound::stopMusic()
 {
     float ftime = 0.5;
-    GetCloudsAudioEvents()->dodelay = true;
+    if(!isScoreDesigner) GetCloudsAudioEvents()->dodelay = true;
     GetCloudsAudioEvents()->setupflush = true;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioDown, ftime);
+    //RTcmixParseScoreFile("cmixclear.sco");
+	
+	//TEMP: should fade obvioz
+	frontPlayer->stop();
 }

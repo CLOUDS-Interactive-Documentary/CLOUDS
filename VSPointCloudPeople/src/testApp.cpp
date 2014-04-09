@@ -16,11 +16,6 @@ void testApp::setup(){
   
 	ofSetLogLevel(OF_LOG_NOTICE);
     
-#if defined(KINECT_INPUT)
-    SetCloudsInputKinect();
-#elif defined(OCULUS_RIFT)
-    SetCloudsInputOculus();
-#endif
 	
 	rgbd.setup();
 	//rgbd.addTransionEditorsToGui();

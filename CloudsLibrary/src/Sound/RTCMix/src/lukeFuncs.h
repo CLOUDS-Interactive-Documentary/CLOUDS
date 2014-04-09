@@ -15,6 +15,7 @@
 #define MAXAMP 32768.0 // maximum amp for oscillators (-1., 1) = 2^15
 #define LUKEDEBUG false
 
+#ifdef RTCMIX
 // BGG rtcmix stuff
 extern "C" {
     int rtcmixmain();
@@ -33,6 +34,7 @@ extern "C" {
     void pfield_set(int inlet, float pval);
     int check_vals(float *thevals);
 }
+#endif
 
 // luke's comp structures
 struct lukeRhythm {

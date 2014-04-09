@@ -22,6 +22,7 @@ class CloudsSound {
 	void setup(CloudsStoryEngine& storyEngine);
 	void exit(ofEventArgs & args);
 	
+	void update(ofEventArgs & args);
 	void update();
 	void drawDebug();
 	
@@ -54,7 +55,7 @@ class CloudsSound {
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
     // Luke's public stuff
-    void schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel);
+    void schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel, int orchstep);
     void startMusicFX(float outskip, float musicdur);
     void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope);
     void stopMusic();
@@ -62,6 +63,7 @@ class CloudsSound {
     void doPrinting();
     int ACTBUS; // needs to be public for UDP shit in the scoredesigner
     bool in_tunnel;
+    bool isScoreDesigner;
     
     // public data structures
     vector<lukePreset> presets;
@@ -70,6 +72,10 @@ class CloudsSound {
 
 	CloudsStoryEngine* storyEngine;
 	CloudsAct* currentAct;
+
+	//only used in non RTCMIX context
+	ofPtr<ofSoundPlayer> frontPlayer;
+	ofPtr<ofSoundPlayer> backPlayer;
 	
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
@@ -81,6 +87,7 @@ class CloudsSound {
     void registerOrchs();
     void audioRequested(float * output, int bufferSize, int nChannels);
 	short *s_audio_outbuf; // this is the buf filled by rtcmix (it uses short samples)
+	short *s_audio_compbuf; // this is the buf for comparison (it uses short samples)
     int sr; // sampling rate
     int nbufs; // number of buffers
     int nchans; // 2 = stereo
@@ -88,6 +95,7 @@ class CloudsSound {
 
     bool first_vec;
     int whichdream;
+    int buzzreps;
 
     float MASTERTEMPO;
     int AUTORUN;
@@ -103,5 +111,11 @@ class CloudsSound {
     vector<lukeSimpleMelody> simplemelodies;
 
     vector<lukeSample> looperSamples;
+	
+	vector<CloudsSoundCue> currentCues;
+	ofxTLFlags* presetFlags;
+	bool cueFlagsAdded;
+	float currentCuesTotalDuration;
+	void playCurrentCues();
 
 };

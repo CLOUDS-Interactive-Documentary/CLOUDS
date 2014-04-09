@@ -79,18 +79,16 @@ void CloudsMixer::setDiageticVolume(float vol)
 
 ///LUKE STUBBS
 void CloudsMixer::fadeDown(float& time){
-    cout << "fading down" << endl;
+    cout << "SOUND: fading down" << endl;
     fsig = -1;
     famt = 1.0/((44100./512.)*time);
-    cout << "amt: " << famt << endl;
     
 }
 
 void CloudsMixer::fadeUp(float& time){
-    cout << "fading up" << endl;
+    cout << "SOUND: fading up" << endl;
     fsig = 1;
     famt = 1.0/((44100./512.)*time);
-    cout << "amt: " << famt << endl;
 }
 //LUKE STUBBS
 

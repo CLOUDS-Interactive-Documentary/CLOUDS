@@ -323,6 +323,10 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
     if(args.key == 'R'){
         oscSender.reset();
     }
+	
+	if(args.key == 'B'){
+		GetCloudsAudioEvents()->respawn = true;
+	}
     
 }
 //--------------------------------------------------------------------
@@ -342,7 +346,6 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 	
 	lukePreset& interludePreset = sound.presets[ validInterludePresetIndices[ ofRandom(validInterludePresetIndices.size()) ] ];
 	cue.startTime = 0;
-//	cue.duration = 30;
 	cue.duration = 60*2;
 	cue.mixLevel = 2;
     if(LUKEDEBUG) cout << "===============" << endl;
@@ -351,11 +354,13 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 
     if(LUKEDEBUG) cout << "TOTAL DURATION: " << cue.duration+5.0 << endl;
     else cout << "SOUND: MUSIC STARTED." << endl;
-
+	
+#ifdef RTCMIX
 	sound.startMusicFX(0, cue.duration+5.0);
-
+#endif
+	
     if(LUKEDEBUG) cout << "   preset: " << interludePreset.slotnumber << endl;
-	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
+	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel, 0);
 
     if(LUKEDEBUG) cout << "====================" << endl;
     if(LUKEDEBUG) cout << "DONE INTERLUDE MUSIC!!!" << endl;

@@ -105,6 +105,8 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
     pointLayer1.setDefaults();
     pointLayer2.setDefaults();
     
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 //--------------------------------------------------------------
@@ -163,9 +165,10 @@ void CloudsVisualSystemRGBD::selfSetup(){
 void CloudsVisualSystemRGBD::playTestVideo(){
 
 	if(ofFile::doesFileExist("TestVideo/Lindsay_memes_2.mov")){
-        CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().loadMovie("TestVideo/Lindsay_memes_2.mov");
-//        CloudsVisualSystem::getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
-//								   "TestVideo/Lindsay_memes_2.xml", 0, 0);
+//        CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().loadMovie("TestVideo/Lindsay_memes_2.mov");
+        CloudsVisualSystem::getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
+                                                       "TestVideo/Lindsay_memes_2.xml",
+                                                       "", 0, 1);
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 }
@@ -506,7 +509,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 
-    drawCursorMode =  DRAW_CURSOR_PRIMARY;
+    // TODO: Fix this cursor hack.
+//    drawCursorMode =  DRAW_CURSOR_PRIMARY;
 //    if(getQuestionText() != ""){
 //        drawCursorMode =  DRAW_CURSOR_PRIMARY;
 //    }

@@ -29,6 +29,7 @@ void testApp::setup(){
 	storyEngine.toggleGuis(true);
     
     sound.setup(storyEngine);
+    sound.isScoreDesigner = true;
     
 	parser.printDichotomyRatios();
 	

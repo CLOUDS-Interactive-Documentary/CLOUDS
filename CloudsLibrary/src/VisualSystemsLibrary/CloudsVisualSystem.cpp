@@ -42,7 +42,7 @@ static ofImage backgroundGradientWash;
 static bool screenResolutionForced = false;
 static int forcedScreenWidth;
 static int forcedScreenHeight;
-static int numSamples = 0;
+static int numSamples = 4;
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
@@ -159,7 +159,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
-	drawCursorMode = DRAW_CURSOR_NONE;
+	primaryCursorMode = CURSOR_MODE_NONE;
+    secondaryCursorMode = CURSOR_MODE_NONE;
 	updateCyclced = false;
     bDoBloom = false;
     bloomAmount = 0.;
@@ -325,7 +326,7 @@ void CloudsVisualSystem::setup(){
     postChromaDist = 0.f;
     postGrainDist = 0.f;
     //POST PROCESSING BLEED AMNT
-    bleed  = 20;
+    bleed = 20;
     if(bEnablePostFX) SetBleedPixels(bleed);
     else SetBleedPixels(0);
 }
@@ -600,7 +601,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		}
 		
 #ifndef OCULUS_RIFT
-        drawCursor();
+        drawCursors();
 #endif
 #ifdef KINECT_INPUT
         drawKinectDebug();
@@ -721,7 +722,7 @@ void CloudsVisualSystem::drawScene(){
         ofEnableAlphaBlending();
         
         ofVec3f cursorPt = ofVec3f(0, 0, -150);
-        selfDrawCursor(cursorPt, 0);
+        selfDrawCursor(cursorPt, false, primaryCursorMode);
         
         glPopAttrib();
         ofPopMatrix();
@@ -1221,16 +1222,24 @@ void CloudsVisualSystem::setupGui()
     gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     gui->addWidgetNorthOf(loadbtn, "RENDER", true);
     gui->setPlacer(updatebtn);
+
     gui->addSpacer();
-    vector<string> cursorModeNames;
-    cursorModeNames.push_back("NO CURSOR");
-    cursorModeNames.push_back("PRIMARY CURSOR");
-    cursorModeNames.push_back("ALL CURSORS");
-    gui->addRadio("CURSOR MODES", cursorModeNames)->activateToggle(cursorModeNames[DRAW_CURSOR_NONE]);
+    vector<string> primaryCursorModes;
+    primaryCursorModes.push_back("PRIMARY CURSOR NONE");
+    primaryCursorModes.push_back("PRIMARY CURSOR INACTIVE");
+    primaryCursorModes.push_back("PRIMARY CURSOR CAMERA");
+    primaryCursorModes.push_back("PRIMARY CURSOR DRAW");
+    gui->addRadio("PRIMARY CURSOR MODE", primaryCursorModes);
     gui->addSpacer();
+    vector<string> secondaryCursorModes;
+    secondaryCursorModes.push_back("SEC. CURSORS NONE");
+    secondaryCursorModes.push_back("SEC. CURSORS INACTIVE");
+    secondaryCursorModes.push_back("SEC. CURSORS CAMERA");
+    secondaryCursorModes.push_back("SEC. CURSORS DRAW");
+    gui->addRadio("SECONDARY CURSOR MODE", secondaryCursorModes);
+    
     selfSetupGui();
     gui->autoSizeToFitWidgets();
-
     
     ofAddListener(gui->newGUIEvent,this,&CloudsVisualSystem::guiEvent);
     guis.push_back(gui);
@@ -1323,28 +1332,45 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
         }
     }
 
-    else if(name == "NO CURSOR")
-    {
-        ofxUIButton *b = (ofxUIButton *) e.widget;
-        if(b->getValue())
-        {
-            drawCursorMode = DRAW_CURSOR_NONE;
+    else if (name == "PRIMARY CURSOR NONE") {
+        if (e.getButton()->getValue()) {
+            primaryCursorMode = CURSOR_MODE_NONE;
         }
     }
-    else if(name == "PRIMARY CURSOR")
-    {
-        ofxUIButton *b = (ofxUIButton *) e.widget;
-        if(b->getValue())
-        {
-            drawCursorMode = DRAW_CURSOR_PRIMARY;
+    else if(name == "PRIMARY CURSOR INACTIVE") {
+        if (e.getButton()->getValue()) {
+            primaryCursorMode = CURSOR_MODE_INACTIVE;
         }
     }
-    else if(name == "ALL CURSORS")
-    {
-        ofxUIButton *b = (ofxUIButton *) e.widget;
-        if(b->getValue())
-        {
-            drawCursorMode = DRAW_CURSOR_ALL;
+    else if(name == "PRIMARY CURSOR CAMERA") {
+        if (e.getButton()->getValue()) {
+            primaryCursorMode = CURSOR_MODE_CAMERA;
+        }
+    }
+    else if(name == "PRIMARY CURSOR DRAW") {
+        if (e.getButton()->getValue()) {
+            primaryCursorMode = CURSOR_MODE_DRAW;
+        }
+    }
+    
+    else if (name == "SEC. CURSORS NONE") {
+        if (e.getButton()->getValue()) {
+            secondaryCursorMode = CURSOR_MODE_NONE;
+        }
+    }
+    else if(name == "SEC. CURSORS INACTIVE") {
+        if (e.getButton()->getValue()) {
+            secondaryCursorMode = CURSOR_MODE_INACTIVE;
+        }
+    }
+    else if(name == "SEC. CURSORS CAMERA") {
+        if (e.getButton()->getValue()) {
+            secondaryCursorMode = CURSOR_MODE_CAMERA;
+        }
+    }
+    else if(name == "SEC. CURSORS DRAW") {
+        if (e.getButton()->getValue()) {
+            secondaryCursorMode = CURSOR_MODE_DRAW;
         }
     }
 	
@@ -3189,11 +3215,14 @@ void CloudsVisualSystem::loadGUIS()
 #ifdef KINECT_INPUT
     kinectGui->loadSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
 #endif
+    
 #ifdef OCULUS_RIFT
     oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
-    if (hudGui) {
+#ifdef CLOUDS_APP
+    if (hudGui != NULL) {
         hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
     }
+#endif
 #endif
     
     cam.reset();
@@ -3745,40 +3774,41 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
     
 }
 
-void CloudsVisualSystem::drawCursor()
+void CloudsVisualSystem::drawCursors()
 {
-	
-	return;
-	
-//    if (drawCursorMode > DRAW_CURSOR_NONE) {
-        map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
-        for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
-            if (drawCursorMode != DRAW_CURSOR_ALL && !it->second.primary) {
-                continue;
-            }
-            
+    map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
+    for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
 #ifdef KINECT_INPUT
-            selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle);
+        selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle, it->second.primary? primaryCursorMode : secondaryCursorMode);
+#elif TOUCH_INPUT
+        selfDrawCursor(it->second.position, false, it->second.primary? primaryCursorMode : secondaryCursorMode);
+        // EZ: Replace the line above by the line below to test dragging by pressing a mouse button.
+//        selfDrawCursor(it->second.position, ofGetMousePressed(), it->second.primary? primaryCursorMode : secondaryCursorMode);
 #else
-            // EZ: This ofGetMousePressed() call is ghetto but will do for now
-            selfDrawCursor(it->second.position, ofGetMousePressed());
+        // EZ: This ofGetMousePressed() call is ghetto but will do for now
+        selfDrawCursor(it->second.position, ofGetMousePressed(), primaryCursorMode);
 #endif
-        }
-//    }
+    }
 }
 
-void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
+void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode)
 {
+    if (mode == CURSOR_MODE_NONE) return;
+    
     ofPushStyle();
-    ofNoFill();
-    ofSetLineWidth(2);
-    if (drawCursorMode == DRAW_CURSOR_NONE) {
-        ofSetColor(255, 255, 255, 64);
-        ofCircle(pos, 5);
+
+    if (mode == CURSOR_MODE_INACTIVE) {
+        ofSetLineWidth(2);
+        ofSetColor(213, 69, 62, 192);
+        float totalRadius = cursorUpSize * 0.5;
+        ofLine(pos.x - totalRadius, pos.y - totalRadius, pos.x + totalRadius, pos.y + totalRadius);
+        ofLine(pos.x - totalRadius, pos.y + totalRadius, pos.x + totalRadius, pos.y - totalRadius);
     }
-    else {
+    else if (mode == CURSOR_MODE_DRAW) {
+        ofSetLineWidth(2);
+        ofNoFill();
         if (bDragged) {
-            ofSetColor(213, 69, 62, 255);
+            ofSetColor(62, 213, 69, 192);
 #ifdef OCULUS_RIFT
             ofCircle(pos, cursorSize);
 #elif KINECT_INPUT
@@ -3802,6 +3832,49 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
 #endif
         }
     }
+    else {  // mode == CURSOR_MODE_CAMERA
+        ofSetLineWidth(2);
+        static float coreRadius = 0.2f;
+        if (bDragged) {
+            ofSetColor(62, 213, 69, 192);
+            float totalRadius;
+#ifdef OCULUS_RIFT
+            totalRadius = cursorSize;
+#elif KINECT_INPUT
+            totalRadius = ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true);
+#else
+            totalRadius = cursorDownSize;
+#endif
+            ofLine(pos.x - totalRadius, pos.y, pos.x - totalRadius * coreRadius, pos.y);
+            ofLine(pos.x + totalRadius, pos.y, pos.x + totalRadius * coreRadius, pos.y);
+            ofLine(pos.x, pos.y - totalRadius, pos.x, pos.y - totalRadius * coreRadius);
+            ofLine(pos.x, pos.y + totalRadius, pos.x, pos.y + totalRadius * coreRadius);
+            ofNoFill();
+            ofCircle(pos, coreRadius);
+        }
+        else {
+            static float midRadius = 0.5f;
+            float totalRadius;
+#ifdef OCULUS_RIFT
+            ofSetColor(255, 255, 255, 64);
+            totalRadius = cursorSize;
+#elif KINECT_INPUT
+            ofSetColor(255, 255, 255, 192);
+            totalRadius = ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true));
+#else
+            ofSetColor(255, 255, 255, 192);
+            totalRadius = cursorUpSize;
+#endif
+            ofLine(pos.x - totalRadius, pos.y, pos.x - totalRadius * coreRadius, pos.y);
+            ofLine(pos.x + totalRadius, pos.y, pos.x + totalRadius * coreRadius, pos.y);
+            ofLine(pos.x, pos.y - totalRadius, pos.x, pos.y - totalRadius * coreRadius);
+            ofLine(pos.x, pos.y + totalRadius, pos.x, pos.y + totalRadius * coreRadius);
+            ofSetColor(255, 255, 255, 64);
+            ofFill();
+            ofCircle(pos, midRadius);
+        }
+    }
+    
     ofPopStyle();
 }
 

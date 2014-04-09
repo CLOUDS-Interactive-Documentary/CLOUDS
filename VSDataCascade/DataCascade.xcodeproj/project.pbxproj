@@ -220,6 +220,8 @@
 		E72FF13B17E6A2E70007780D /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF13417E6A2E70007780D /* CloudsRGBDVideoPlayer.cpp */; };
 		E72FF13C17E6A2E70007780D /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF13617E6A2E70007780D /* CloudsVisualSystem.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
+		E7D4126518AD95BF00B6ACFB /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7D4126418AD95BF00B6ACFB /* ofxSystemTextbox.mm */; };
+		E7D4126618AD95BF00B6ACFB /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7D4126418AD95BF00B6ACFB /* ofxSystemTextbox.mm */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 /* End PBXBuildFile section */
@@ -272,10 +274,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
-		3D5B91B41751CF3E00F558AC /* ofxColorPalettes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalettes.h; sourceTree = "<group>"; };
 		3D5B92ED1753046A00F558AC /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
 		3D5B92EE1753046A00F558AC /* kiss_fftr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
 		3D5B92F01753046A00F558AC /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
@@ -557,6 +555,8 @@
 		E72FF13717E6A2E70007780D /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E72FF13817E6A2E70007780D /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		E7D4126318AD95BF00B6ACFB /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		E7D4126418AD95BF00B6ACFB /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -623,26 +623,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D5B91AF1751CF3E00F558AC /* ofxColorPalettes */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B91B01751CF3E00F558AC /* .gitignore */,
-				3D5B91B11751CF3E00F558AC /* README.md */,
-				3D5B91B21751CF3E00F558AC /* src */,
-			);
-			name = ofxColorPalettes;
-			path = ../../../addons/ofxColorPalettes;
-			sourceTree = "<group>";
-		};
-		3D5B91B21751CF3E00F558AC /* src */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */,
-				3D5B91B41751CF3E00F558AC /* ofxColorPalettes.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		3D5B91DE1753046900F558AC /* ofxTimeline */ = {
 			isa = PBXGroup;
 			children = (
@@ -1147,7 +1127,6 @@
 				3D5B93B61753048200F558AC /* ofxTween */,
 				3D5B939F1753047C00F558AC /* ofxTimecode */,
 				3D5B91DE1753046900F558AC /* ofxTimeline */,
-				3D5B91AF1751CF3E00F558AC /* ofxColorPalettes */,
 				4695E2C717513D99003001E2 /* ofxCameraSaveLoad */,
 				4695E27917512E45003001E2 /* ofxGenerative */,
 			);
@@ -1344,6 +1323,8 @@
 		E72FF13017E6A2E70007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E7D4126318AD95BF00B6ACFB /* ofxSystemTextbox.h */,
+				E7D4126418AD95BF00B6ACFB /* ofxSystemTextbox.mm */,
 				E703D065185E302600547738 /* CloudsGlobal.h */,
 				E703D057185E2FC700547738 /* Input */,
 				E72FF13317E6A2E70007780D /* CloudsRGBDCamera.h */,
@@ -1404,6 +1385,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "DataCascade" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1492,6 +1475,7 @@
 				85732D9918307DC8002B53D9 /* ofxSolver.cpp in Sources */,
 				85732D9A18307DC8002B53D9 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				85732D9B18307DC8002B53D9 /* ofxSwarmBehavior.cpp in Sources */,
+				E7D4126618AD95BF00B6ACFB /* ofxSystemTextbox.mm in Sources */,
 				85732D9C18307DC8002B53D9 /* ofxVerletSolver.cpp in Sources */,
 				85732D9D18307DC8002B53D9 /* ofxCameraSaveLoad.cpp in Sources */,
 				85732D9E18307DC8002B53D9 /* kiss_fft.c in Sources */,
@@ -1610,6 +1594,7 @@
 				3D5B937F1753046B00F558AC /* ofxTLKeyframes.cpp in Sources */,
 				3D5B93801753046B00F558AC /* ofxTLLFO.cpp in Sources */,
 				3D5B93811753046B00F558AC /* ofxTLPage.cpp in Sources */,
+				E7D4126518AD95BF00B6ACFB /* ofxSystemTextbox.mm in Sources */,
 				3D5B93821753046B00F558AC /* ofxTLPageTabs.cpp in Sources */,
 				3D5B93831753046B00F558AC /* ofxTLSwitches.cpp in Sources */,
 				3D5B93841753046B00F558AC /* ofxTLTicker.cpp in Sources */,

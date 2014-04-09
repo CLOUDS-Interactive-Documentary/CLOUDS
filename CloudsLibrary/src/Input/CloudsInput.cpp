@@ -15,6 +15,9 @@
 #ifdef OCULUS_RIFT
 #include "CloudsInputOculus.h"
 #endif
+#ifdef TOUCH_INPUT
+#include "CloudsInputTouchOSC.h"
+#endif
 
 CloudsInput::CloudsInput(){
 	enabled = false;
@@ -101,6 +104,8 @@ ofPtr<CloudsInput> GetCloudsInput(){
 #elif defined(OCULUS_RIFT)
         SetCloudsInputOculus();
 //        SetCloudsInputMouse();
+#elif defined(TOUCH_INPUT)
+        SetCloudsInputTouchOSC();
 #else
         SetCloudsInputMouse();
 #endif
