@@ -3798,7 +3798,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
     ofPushStyle();
 
     if (mode == CURSOR_MODE_INACTIVE) {
-        ofSetLineWidth(5);
+        ofSetLineWidth(2);
         ofSetColor(213, 69, 62, 192);
         float totalRadius = cursorUpSize * 0.5;
         ofLine(pos.x - totalRadius, pos.y - totalRadius, pos.x + totalRadius, pos.y + totalRadius);
