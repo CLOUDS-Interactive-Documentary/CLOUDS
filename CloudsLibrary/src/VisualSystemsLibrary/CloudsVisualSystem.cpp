@@ -326,7 +326,7 @@ void CloudsVisualSystem::setup(){
     postChromaDist = 0.f;
     postGrainDist = 0.f;
     //POST PROCESSING BLEED AMNT
-    bleed  = 20;
+    bleed = 20;
     if(bEnablePostFX) SetBleedPixels(bleed);
     else SetBleedPixels(0);
 }
@@ -1229,14 +1229,14 @@ void CloudsVisualSystem::setupGui()
     primaryCursorModes.push_back("PRIMARY CURSOR INACTIVE");
     primaryCursorModes.push_back("PRIMARY CURSOR CAMERA");
     primaryCursorModes.push_back("PRIMARY CURSOR DRAW");
-    gui->addRadio("PRIMARY CURSOR MODE", primaryCursorModes)->activateToggle(primaryCursorModes[CURSOR_MODE_NONE]);
+    gui->addRadio("PRIMARY CURSOR MODE", primaryCursorModes);
     gui->addSpacer();
     vector<string> secondaryCursorModes;
     secondaryCursorModes.push_back("SEC. CURSORS NONE");
     secondaryCursorModes.push_back("SEC. CURSORS INACTIVE");
     secondaryCursorModes.push_back("SEC. CURSORS CAMERA");
     secondaryCursorModes.push_back("SEC. CURSORS DRAW");
-    gui->addRadio("SECONDARY CURSOR MODE", secondaryCursorModes)->activateToggle(secondaryCursorModes[CURSOR_MODE_NONE]);
+    gui->addRadio("SECONDARY CURSOR MODE", secondaryCursorModes);
     
     selfSetupGui();
     gui->autoSizeToFitWidgets();
