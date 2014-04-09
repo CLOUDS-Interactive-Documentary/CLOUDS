@@ -88,7 +88,7 @@ void CloudsHUDLabel::draw(){
     }
 }
 
-void CloudsHUDLabel::setText(string newText, bool forceOn){
+void CloudsHUDLabel::setText(const string& newText, bool forceOn){
     cout << "CloudsHUDLabel::setText: " << newText;
     text = newText;
     
@@ -147,7 +147,8 @@ void CloudsHUDLabel::instantIn() {
 }
 
 void CloudsHUDLabel::instantOut() {
-    bIsVisible = false;
+
+	bIsVisible = false;
     
     pct = 0.0;
     textAlpha = floor( 255. * pct );

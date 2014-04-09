@@ -6,7 +6,7 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofBackground(0);
-	ofToggleFullscreen();
+	//ofToggleFullscreen();
     ofEnableSmoothing();
 	
 	currentAct = NULL;
@@ -26,8 +26,9 @@ void testApp::setup(){
 	parser.printDichotomyRatios();
 	
 	//websockets.setup();
+#ifndef CLOUDS_NO_OSC
 	oscSender.setup();
-	
+#endif
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
 }
 
@@ -36,14 +37,17 @@ void testApp::actCreated(CloudsActEventArgs& args){
 	
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
+		#ifndef CLOUDS_NO_OSC
 		currentAct->unregisterEvents(&oscSender);
+		#endif
 		delete currentAct;
 	}
 
 	currentAct = args.act;
 	currentAct->registerEvents(this);
+	#ifndef CLOUDS_NO_OSC
 	currentAct->registerEvents(&oscSender);
-	
+	#endif
 	currentAct->play();
     currentAct->getTimeline().enableEvents();
 }
@@ -132,7 +136,8 @@ void testApp::keyPressed(int key){
 	if(key == 'S'){
 		storyEngine.saveGuiSettings();
 	}
-	
+
+#ifndef CLOUDS_NO_OSC
 	if(key == 'E'){
 		vector<int> projectExampleIndecs;
 		for(int i = 0; i < parser.getAllClips().size(); i++){
@@ -151,7 +156,8 @@ void testApp::keyPressed(int key){
 	if(key == 'C'){
 		oscSender.sendClip( parser.getAllClips()[ ofRandom(parser.getAllClips().size()) ] );
 	}
-	
+#endif
+
 }
 
 //--------------------------------------------------------------

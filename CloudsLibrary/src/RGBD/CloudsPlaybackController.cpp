@@ -179,7 +179,7 @@ void CloudsPlaybackController::setup(){
 	
 	
 	cout << "*****LOAD STEP HUD" << endl;
-	//hud.setup();
+	hud.setup();
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
     rgbdVisualSystem->setupHUDGui();

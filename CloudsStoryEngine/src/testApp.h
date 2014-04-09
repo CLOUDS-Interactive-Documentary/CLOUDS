@@ -5,8 +5,9 @@
 #include "CloudsFCPParser.h"
 #include "ofxUI.h"
 #include "CloudsAct.h"
-#include "CloudsWebSocketConnection.h"
+#ifndef CLOUDS_NO_OSC
 #include "CloudsSecondaryDisplayOSCSender.h"
+#endif
 
 class testApp : public ofBaseApp{
   public:
@@ -31,8 +32,9 @@ class testApp : public ofBaseApp{
 	CloudsAct* currentAct;
 	CloudsRun run;
 	
-	//CloudsWebSocketConnection websockets;
+#ifndef CLOUDS_NO_OSC
 	CloudsSecondaryDisplayOSCSender oscSender;
+#endif
 	//clip events
 	void actCreated(CloudsActEventArgs& args);
 	void actBegan(CloudsActEventArgs& args);

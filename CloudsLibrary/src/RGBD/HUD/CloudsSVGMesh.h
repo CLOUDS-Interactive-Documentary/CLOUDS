@@ -36,12 +36,12 @@ class CloudsSVGMesh
 	vector<SVGMesh>& getMeshes();
 	
 	//will be null if ID isnt present
-	SVGMesh* getMeshByID(string meshId);
+	SVGMesh* getMeshByID(const string& meshId);
     
     float alpha;
 	
   protected:
-	void recurseSVGTag(ofxXmlSettings& xml, string parentId, float parentOpacity);
+	void recurseSVGTag(ofxXmlSettings& xml, const string& parentId, float parentOpacity);
 	vector<SVGMesh> meshes;
 	map<string,int> meshIdIndex;
 	

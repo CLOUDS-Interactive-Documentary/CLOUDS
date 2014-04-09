@@ -7,7 +7,7 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofBackground(0);
-	ofToggleFullscreen();
+	//ofToggleFullscreen();
 	
 	player.setup();
 }

@@ -19,7 +19,7 @@ class CloudsHUDLabel {
 
     void draw();
     
-    void setText(string newText, bool forceOn = true);
+    void setText(const string& newText, bool forceOn = true);
     string getText();
     
     int getRightEdge();

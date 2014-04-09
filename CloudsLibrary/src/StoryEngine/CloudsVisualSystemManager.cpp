@@ -273,7 +273,7 @@ struct Mapping {
 
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 
-CloudsVisualSystem* CloudsVisualSystemManager::InstantiateSystem(string systemName){
+CloudsVisualSystem* CloudsVisualSystemManager::InstantiateSystem(const string& systemName){
     //RIG EMPTY ONLY
 //    CloudsVisualSystem* system = new CloudsVisualSystemEmpty();
 //    systems.push_back( system );
@@ -444,13 +444,13 @@ void CloudsVisualSystemManager::updatePresetsForSystem(CloudsVisualSystem* syste
 }
 
 //--------------------------------------------------------------------
-bool CloudsVisualSystemManager::hasPresetWithID(string presetID){
+bool CloudsVisualSystemManager::hasPresetWithID(const string& presetID){
     int dummy;
     return hasPresetWithID(presetID, dummy);
 }
 
 //--------------------------------------------------------------------
-bool CloudsVisualSystemManager::hasPresetWithID(string presetID, int& index){
+bool CloudsVisualSystemManager::hasPresetWithID(const string& presetID, int& index){
     for(int i = 0; i < presets.size(); i++){
         if(presets[i].getID() == presetID){
             return true;
@@ -461,14 +461,14 @@ bool CloudsVisualSystemManager::hasPresetWithID(string presetID, int& index){
 }
 
 //--------------------------------------------------------------------
-int CloudsVisualSystemManager::indexForPreset(string presetID){
+int CloudsVisualSystemManager::indexForPreset(const string& presetID){
     int index;
     hasPresetWithID(presetID, index);
     return index;
 }
 
 //--------------------------------------------------------------------
-CloudsVisualSystem* CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
+CloudsVisualSystem* CloudsVisualSystemManager::getEmptySystem(const string& mainKeyword, vector<string> keywords){
 	#ifdef CLOUDS_NO_VS
 	return NULL;
 	#else
@@ -626,7 +626,7 @@ void CloudsVisualSystemManager::loadPresets(){
     cout << "** LOADED PRESETS " << presets.size() << endl;
 }
 
-void CloudsVisualSystemManager::addDefaultPresetForSystem(string systemName){
+void CloudsVisualSystemManager::addDefaultPresetForSystem(const string& systemName){
 	
 	CloudsVisualSystemPreset newPreset;
 	newPreset.systemName = systemName;
@@ -758,14 +758,14 @@ CloudsVisualSystemPreset CloudsVisualSystemManager::getRandomVisualSystem(){
 }
 
 //--------------------------------------------------------------------
-vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword(string keyword){
+vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword(const string& keyword){
 	vector<string> keys;
 	keys.push_back(keyword);
     return getPresetsForKeywords(keys);
 }
 
 //--------------------------------------------------------------------
-vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keys, string clipName,bool isInterlude){
+vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keys, string clipName, bool isInterlude){
 	vector<CloudsVisualSystemPreset> presetsWithKeywords;
     vector<string> presetIds;
     
@@ -808,7 +808,7 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 	return presetsWithKeywords;
 }
 
-vector<int> CloudsVisualSystemManager::getPresetIndicesForSystem(string systemName){
+vector<int> CloudsVisualSystemManager::getPresetIndicesForSystem(const string& systemName){
     vector<int> indices;
     for(int i = 0; i < presets.size(); i++){
         if(presets[i].systemName == systemName){
@@ -827,22 +827,9 @@ void CloudsVisualSystemManager::loadCachedDataForSystems(){
 #endif
     
 }
-//--------------------------------------------------------------------
-//vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForSystem(string systemName){
-//    vector<CloudsVisualSystemPreset> systemPresets;
-//    for(int i = 0; i < presets.size(); i++){
-//        if(presets[i].systemName == systemName){
-//            systemPresets.push_back(presets[i]
-//        }
-//    }
-//    for(int i = 0; i = nameToPresetsIndex[systemName].size(); i++){
-//        presets.push_back( presets[ ] )
-//    }
-//	return nameToPresets[systemName];
-//}
 
 //--------------------------------------------------------------------
-bool CloudsVisualSystemManager::systemHasPreset(string systemName, string presetName){
+bool CloudsVisualSystemManager::systemHasPreset(const string& systemName, const string& presetName){
     
 //	vector<CloudsVisualSystemPreset>& presets = getPresetsForSystem(systemName);
 	for(int i = 0; i < presets.size(); i++){
@@ -856,7 +843,7 @@ bool CloudsVisualSystemManager::systemHasPreset(string systemName, string preset
 }
 
 //--------------------------------------------------------------------
-CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetForSystem(string systemName, string presetName){
+CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetForSystem(const string& systemName, const string& presetName){
 //	vector<CloudsVisualSystemPreset>& presets = getPresetsForSystem(systemName);
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].presetName == presetName &&
@@ -872,7 +859,7 @@ CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetForSystem(string s
 }
 
 //--------------------------------------------------------------------
-CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetWithID(string presetID){
+CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetWithID(const string& presetID){
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].getID() == presetID){
 			return presets[i];
@@ -910,26 +897,6 @@ vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabledScre
 	return filtered;
 }
 
-//vector<int> CloudsVisualSystemManager::getFilteredPresetIndecesForSystem(string systemName, bool enabled, bool oculus, bool gradeA){
-//
-////	vector<CloudsVisualSystemPreset>& currentPresets = getPresetsForSystem(systemName);
-//	vector<int> filtered;
-//	for(int i = 0; i < presets.size(); i++){
-//        for(int j = 0; j< currentPresets.size(); j++){
-//            
-//            if((presets[i].presetName == currentPresets[j].presetName) &&
-//               (!enabled || (enabled && presets[i].enabled)) &&
-//               (!oculus  || (oculus  && presets[i].oculusCompatible)) &&
-//               (!gradeA  || (gradeA  && presets[i].grade == "A")))
-//            {
-//                filtered.push_back( i );
-//            }
-//        }
-//	}
-//	return filtered;
-//    
-//}
-
 //--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 	return presets;
@@ -960,7 +927,7 @@ vector<string> CloudsVisualSystemManager::keywordsForPreset(CloudsVisualSystemPr
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::linkClip(string presetID, string clipName){
+void CloudsVisualSystemManager::linkClip(const string& presetID, const string& clipName){
 	if(!isClipLinked(presetID, clipName)){
 		if(isClipSuppressed(presetID, clipName)){
 			unsuppressClip(presetID, clipName);
@@ -971,18 +938,18 @@ void CloudsVisualSystemManager::linkClip(string presetID, string clipName){
 }
 
 //--------------------------------------------------------------------
-vector<string>& CloudsVisualSystemManager::getLinksForPreset(string presetID){
+vector<string>& CloudsVisualSystemManager::getLinksForPreset(const string& presetID){
 	return linkedClips[presetID];
 }
 
 //--------------------------------------------------------------------
-bool CloudsVisualSystemManager::isClipLinked(string presetID,string clip){
+bool CloudsVisualSystemManager::isClipLinked(const string& presetID,const string& clip){
 	int deadIndex;
 	return isClipLinked(presetID, clip, deadIndex);
 }
 
 //--------------------------------------------------------------------
-bool CloudsVisualSystemManager::isClipLinked(string presetID,string clip, int& index){
+bool CloudsVisualSystemManager::isClipLinked(const string& presetID,const string& clip, int& index){
 	
 	vector<string>& clips = linkedClips[presetID];
     for(int i = 0; i < clips.size(); i++){
@@ -995,7 +962,7 @@ bool CloudsVisualSystemManager::isClipLinked(string presetID,string clip, int& i
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::unlinkClip(string presetID, string clip){
+void CloudsVisualSystemManager::unlinkClip(const string& presetID, string clip){
 	int index;
 	if(isClipLinked(presetID, clip, index)){
 		unlinkClip(presetID, index);
@@ -1003,7 +970,7 @@ void CloudsVisualSystemManager::unlinkClip(string presetID, string clip){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::unlinkClip(string presetID, int presetIndex){
+void CloudsVisualSystemManager::unlinkClip(const string& presetID, int presetIndex){
 	if(linkedClips.find(presetID) != linkedClips.end() && presetIndex < linkedClips[presetID].size())
 	{
 		linkedClips[presetID].erase( linkedClips[presetID].begin() + presetIndex );
@@ -1023,7 +990,7 @@ void CloudsVisualSystemManager::updateClipPresetLinks(){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::suppressClip(string presetID, string clipName){
+void CloudsVisualSystemManager::suppressClip(const string& presetID, const string& clipName){
     if(!isClipSuppressed(presetID,clipName)){
 		if(isClipLinked(presetID, clipName)){
 			unlinkClip(presetID, clipName);
@@ -1034,7 +1001,7 @@ void CloudsVisualSystemManager::suppressClip(string presetID, string clipName){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::unsuppressClip(string presetID, string clip){
+void CloudsVisualSystemManager::unsuppressClip(const string& presetID, const string& clip){
     int suppressionIndex;
     if(isClipSuppressed( presetID, clip, suppressionIndex)){
         unsuppressClip(presetID, suppressionIndex);
@@ -1042,13 +1009,13 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, string clip){
 }
 
 //--------------------------------------------------------------------
-bool CloudsVisualSystemManager::isClipSuppressed(string presetID, string clip){
+bool CloudsVisualSystemManager::isClipSuppressed(const string& presetID, const string& clip){
     int deadIndex;
     return isClipSuppressed(presetID, clip, deadIndex);
 }
 
 //--------------------------------------------------------------------
-bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip, int& index){
+bool CloudsVisualSystemManager::isClipSuppressed(const string& presetID,const string& clip, int& index){
     vector<string>& clips = suppressedClips[presetID];
     for(int i=0;i<clips.size();i++){
         if(clips[i]==clip){
@@ -1060,7 +1027,7 @@ bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip, in
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex){
+void CloudsVisualSystemManager::unsuppressClip(const string& presetID, int presetIndex){
     if(suppressedClips.find(presetID) != suppressedClips.end() ){
 		suppressedClips[presetID].erase(suppressedClips[presetID].begin() +presetIndex);
     }
@@ -1076,7 +1043,7 @@ CloudsVisualSystemPreset CloudsVisualSystemManager::getRandomEnabledPreset(){
 
 
 //--------------------------------------------------------------------
-vector<string>& CloudsVisualSystemManager::getSuppressionsForPreset(string presetID){
+vector<string>& CloudsVisualSystemManager::getSuppressionsForPreset(const string& presetID){
     return suppressedClips[presetID];
 }
 

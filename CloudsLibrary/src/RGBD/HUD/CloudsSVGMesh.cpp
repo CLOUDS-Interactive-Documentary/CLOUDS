@@ -8,7 +8,7 @@
 
 #include "CloudsSVGMesh.h"
 
-string strrephack(string input, string searchStr, string replaceStr){
+string strrephack(string& input, const string& searchStr, const string& replaceStr){
 	ofStringReplace(input, searchStr, replaceStr);
 	return input;
 }
@@ -75,7 +75,7 @@ bool CloudsSVGMesh::load(string file){
 	return true;
 }
 
-void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId, float parentOpacity){
+void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, const string& parentId, float parentOpacity){
 
 	ofMesh strokeMesh;
 	ofMesh fillMesh;
@@ -200,15 +200,16 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId, float pa
 			//skipit
 			continue;
 		}
+		string nextParentId;
 		//does g tag have id;
 		if(xml.attributeExists("g", "id", i)){
-			parentId = xml.getAttribute("g", "id", "",i);
+			nextParentId = xml.getAttribute("g", "id", "",i);
 		}
 		if(xml.attributeExists("g", "opacity", i)){
 			parentOpacity *= xml.getAttribute("g", "opacity", 1.0, i);;
 		}
 		xml.pushTag("g",i);
-		recurseSVGTag(xml, parentId, parentOpacity);
+		recurseSVGTag(xml, nextParentId, parentOpacity);
 		xml.popTag();
 	}
 }
@@ -229,7 +230,7 @@ vector<SVGMesh>& CloudsSVGMesh::getMeshes(){
 }
 
 //return a pointer to the mesh with the matching ID
-SVGMesh* CloudsSVGMesh::getMeshByID(string meshId){
+SVGMesh* CloudsSVGMesh::getMeshByID(const string& meshId){
 	if(meshIdIndex.find(meshId) == meshIdIndex.end()){
 //		ofLogError("CloudsSVGMesh::getMeshByID") << "Couldn't find mesh: " << meshId;
 		return NULL;

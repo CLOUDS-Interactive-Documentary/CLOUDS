@@ -1,22 +1,22 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>616.000000000</XPosition>
+    <XPosition>656.000000000</XPosition>
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>MAX TOPICS PER ACT</Name>
     <Value>2</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>MIN TIMES ON TOPIC</Name>
     <Value>2</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>MAX TIMES ON TOPIC</Name>
     <Value>4</Value>
 </Widget>

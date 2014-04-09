@@ -138,7 +138,7 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
     }
 }
 
-void CloudsHUDController::questionHoverOn(string question){
+void CloudsHUDController::questionHoverOn(const string& question){
 	populateQuestion(question,true);
 }
 
@@ -238,7 +238,7 @@ void CloudsHUDController::populateLowerThird( string firstName, string lastName,
     }
 }
 
-void CloudsHUDController::populateProjectExample(string videoPath, string textLeft, string textRight, string textTop, bool forceOn) {
+void CloudsHUDController::populateProjectExample(const string& videoPath, const string& textLeft, const string& textRight, const string& textTop, bool forceOn) {
     if( videoPlayer.isPlaying() ){
         videoPlayer.stop();
     }

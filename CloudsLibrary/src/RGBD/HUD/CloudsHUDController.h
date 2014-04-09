@@ -76,7 +76,7 @@ class CloudsHUDController {
 	void saveGuiSettings();
 	void toggleGuis();
 	
-	void questionHoverOn(string question);
+	void questionHoverOn(const string& question);
 	void questionHoverOff();
 	
 	ofxUISuperCanvas *hudGui;
@@ -105,7 +105,7 @@ class CloudsHUDController {
   protected:
 	
     void populateLowerThird( string firstName="", string lastName="", string title="", string location="", string textbox="", bool forceOn=false );
-    void populateProjectExample(string videoPath="", string textLeft="", string textRight="", string textTop="", bool forceOn=false);
+    void populateProjectExample(const string& videoPath, const string& textLeft, const string& textRight, const string& textTop, bool forceOn=false);
     void populateQuestion( string question="", bool forceOn=false);
     void populateMap( string leftBox="", string rightBox="", bool forceOn=false);
     

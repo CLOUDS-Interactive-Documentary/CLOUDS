@@ -71,32 +71,35 @@ void CloudsAct::populateTime(){
     float currentTopicStartTime = 0;
     for(int i=0; i < actItems.size(); i++){
         ActTimeItem& item = actItems[i];
+        float itemStartTime = MAX(0, item.startTime); //make sure it's positive for this part
+		float itemEndTime = MAX(0, item.endTime); //make sure it's positive for this part
         
-        if(item.type == Clip){
+		if(item.type == Clip){
             currentTopic = topicMap[item.key];
             
-            clipsTrack->addFlagAtTime(item.key, item.startTime * 1000);
+			cout << "***ADDING CLIP WITH TIME " << itemStartTime << endl;
+            clipsTrack->addFlagAtTime(item.key, itemStartTime * 1000);
             clipsTrack->addFlagAtTime(" ", item.endTime * 1000);
             
-            difficultyTrack->addFlagAtTime(clipDifficultyMap[item.key], item.startTime * 1000);
+            difficultyTrack->addFlagAtTime(clipDifficultyMap[item.key], itemStartTime * 1000);
             if(currentTopic != previousTopic){
-                topicsTrack->addFlagAtTime(currentTopic, item.startTime * 1000);
+                topicsTrack->addFlagAtTime(currentTopic, itemStartTime * 1000);
 				if(previousTopic != ""){
-					topicDurationMap[previousTopic] =  item.startTime - currentTopicStartTime;
+					topicDurationMap[previousTopic] =  itemStartTime - currentTopicStartTime;
 				}
 				topicHistory.push_back(previousTopic);
-				currentTopicStartTime = item.startTime;
+				currentTopicStartTime = itemStartTime;
             }
             
             previousTopic = currentTopic;
         }
         else if(item.type == VS){
             if(item.startTime != item.introEndTime){
-                visualSystemsTrack->addFlagAtTime("start :" + item.key, item.startTime * 1000);
+                visualSystemsTrack->addFlagAtTime("start :" + item.key, itemStartTime * 1000);
                 visualSystemsTrack->addFlagAtTime("intro :" + item.key, item.introEndTime * 1000);
             }
             else{
-                visualSystemsTrack->addFlagAtTime("start :" + item.key, item.startTime * 1000);
+                visualSystemsTrack->addFlagAtTime("start :" + item.key, itemStartTime * 1000);
             }
             
             if(item.endTime != duration && item.endTime != item.outroStartTime){
@@ -105,10 +108,10 @@ void CloudsAct::populateTime(){
             }
         }
         else if(item.type == PreRoll){
-            clipPreRollTrack->addFlagAtTime(item.key, item.startTime * 1000);
+            clipPreRollTrack->addFlagAtTime(item.key, itemStartTime * 1000);
         }
         else if(item.type == Question){
-            questionsTrack->addFlagAtTime(item.key, item.startTime*1000);
+            questionsTrack->addFlagAtTime(item.key, itemStartTime*1000);
         }
     }
 	

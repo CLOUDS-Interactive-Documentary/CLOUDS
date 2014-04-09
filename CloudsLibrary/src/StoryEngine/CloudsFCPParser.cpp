@@ -36,7 +36,7 @@ void CloudsFCPParser::loadFromFiles(){
 	
 }
 
-void CloudsFCPParser::setup(string directory){
+void CloudsFCPParser::setup(const string& directory){
     xmlDirectory = directory;
     refreshXML();
 }
@@ -189,7 +189,7 @@ void CloudsFCPParser::parseVOClips(){
 	}
 }
 
-void CloudsFCPParser::parseLinks(string linkFile){
+void CloudsFCPParser::parseLinks(const string& linkFile){
     
     linkedConnections.clear();
 	suppressedConnections.clear();
@@ -303,7 +303,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
 }
 
 #pragma mark KEYWORD + CLUSTER DATA
-void CloudsFCPParser::parseClusterNetwork(string fileName){
+void CloudsFCPParser::parseClusterNetwork(const string& fileName){
 	ofBuffer pajekFile = ofBufferFromFile(fileName);
 	bool findingNodes = false;
 	while(!pajekFile.isLastLine()){
@@ -345,7 +345,7 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 	calculateKeywordFamilies();
 }
 
-void CloudsFCPParser::parseProjectExamples(string filename){
+void CloudsFCPParser::parseProjectExamples(const string& filename){
 	
 	clipIdToProjectExample.clear();
 	projectExamples.clear();
@@ -421,7 +421,7 @@ vector<CloudsProjectExample>& CloudsFCPParser::getProjectExamples(){
 	return projectExamples;
 }
 
-CloudsProjectExample& CloudsFCPParser::getProjectExampleWithTitle(string title){
+CloudsProjectExample& CloudsFCPParser::getProjectExampleWithTitle(const string& title){
 	if(clipIdToProjectExample.find(title) == clipIdToProjectExample.end()){
 		ofLogError("CloudsFCPParser::getProjectExampleWithTitle") << "Couldn't find project example with title " << title;
 		return dummyProjectExample;
@@ -498,7 +498,7 @@ void CloudsFCPParser::calculateKeywordAdjascency(){
 }
 
 //returns keywords that are close to the given keyword on the cluster map
-vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int numOfDesiredKeywords){
+vector<string> CloudsFCPParser::getAdjacentKeywords( const string& currentKeyword , int numOfDesiredKeywords){
     string keyword = "";
     ofVec2f centroid;
     vector<pair<string, float> > distancePair;
@@ -590,15 +590,15 @@ void CloudsFCPParser::calculateKeywordFamilies(){
 
 }
 
-vector<string>& CloudsFCPParser::getKeywordFamily(string keyword){
+vector<string>& CloudsFCPParser::getKeywordFamily(const string& keyword){
 	return keywordFamilies[keyword];
 }
 
-float CloudsFCPParser::getDistanceFromAdjacentKeywords(string keyword1, string keyword2){    
+float CloudsFCPParser::getDistanceFromAdjacentKeywords(const string& keyword1, const string& keyword2){    
     return getKeywordCentroid(keyword1).distance(getKeywordCentroid(keyword2));
 }
 
-float CloudsFCPParser::getCohesionIndexForKeyword(string keyword){
+float CloudsFCPParser::getCohesionIndexForKeyword(const string& keyword){
     if(keywordCohesionMap.find(keyword) != keywordCohesionMap.end()){
         return keywordCohesionMap[keyword];
     }
@@ -652,7 +652,7 @@ void CloudsFCPParser::calculateCohesionMedianForKeywords(){
 
 }
 
-ofVec2f CloudsFCPParser::getKeywordCentroid(string keyword){
+ofVec2f CloudsFCPParser::getKeywordCentroid(const string& keyword){
     int index = getCentroidMapIndex(keyword);
     if(index == -1){
 		ofLogError("CloudsFCPParser::getKeywordCentroid") << "No centroid found for keyword: " << keyword << endl;
@@ -661,7 +661,7 @@ ofVec2f CloudsFCPParser::getKeywordCentroid(string keyword){
 	return keywordCentroids[index].second;
 }
 
-int CloudsFCPParser::getCentroidMapIndex(string keyword){
+int CloudsFCPParser::getCentroidMapIndex(const string& keyword){
     if(keywordCentroidIndex.find(keyword) != keywordCentroidIndex.end()){
         return keywordCentroidIndex[keyword];
     }
@@ -669,7 +669,7 @@ int CloudsFCPParser::getCentroidMapIndex(string keyword){
 	return -1;
 }
 
-void CloudsFCPParser::saveLinks(string linkFile){
+void CloudsFCPParser::saveLinks(const string& linkFile){
 	
     int numClips = 0;
 	if( (ofGetElapsedTimef() - lastBackupTime) >= backupTimeInterval){
@@ -754,7 +754,7 @@ void CloudsFCPParser::saveLinks(string linkFile){
 	}
 }
 
-void CloudsFCPParser::removeLink(string linkName, int linkIndex){
+void CloudsFCPParser::removeLink(const string& linkName, int linkIndex){
     if(linkedConnections.find(linkName) != linkedConnections.end() && linkIndex < linkedConnections[linkName].size()){
 		cout << "removed link " << linkIndex << " from " << linkName << endl;
         linkedConnections[linkName].erase(linkedConnections[linkName].begin() + linkIndex);
@@ -764,7 +764,7 @@ void CloudsFCPParser::removeLink(string linkName, int linkIndex){
     }
 }
 
-void CloudsFCPParser::removeLink(string linkName, string targetName){
+void CloudsFCPParser::removeLink(const string& linkName, const string& targetName){
 	int linkIndex;
 	if(clipLinksTo(linkName, targetName, linkIndex)){
 		cout << "removed link " << targetName << " from " << linkName << endl;
@@ -775,7 +775,7 @@ void CloudsFCPParser::removeLink(string linkName, string targetName){
     }
 }
 
-void CloudsFCPParser::suppressConnection(string sourceName, string targetName){
+void CloudsFCPParser::suppressConnection(const string& sourceName, const string& targetName){
 	CloudsLink l;
 	l.sourceName = sourceName;
 	l.targetName = targetName;
@@ -825,7 +825,7 @@ void CloudsFCPParser::suppressConnection(CloudsLink& link){
     }
 }
 
-void CloudsFCPParser::unsuppressConnection(string linkName, string targetName){
+void CloudsFCPParser::unsuppressConnection(const string& linkName, const string& targetName){
 	
 	if(clipHasSuppressions(linkName)){
 		int linkIndex;
@@ -839,7 +839,7 @@ void CloudsFCPParser::unsuppressConnection(string linkName, string targetName){
 	}
 }
 
-void CloudsFCPParser::unsuppressConnection(string linkName, int linkIndex){
+void CloudsFCPParser::unsuppressConnection(const string& linkName, int linkIndex){
 	
 	if(suppressedConnections.find(linkName) != suppressedConnections.end()){
 		
@@ -865,20 +865,20 @@ void CloudsFCPParser::unsuppressConnection(CloudsLink& link){
 bool CloudsFCPParser::clipHasLink(CloudsClip& clip){
 	return clipHasLink(clip.getLinkName());
 }
-bool CloudsFCPParser::clipHasLink(string clipName){
+bool CloudsFCPParser::clipHasLink(const string& clipName){
 	return linkedConnections.find(clipName) != linkedConnections.end() && linkedConnections[clipName].size() > 0;
 }
 
-bool CloudsFCPParser::clipsShareLink(string clipNameA, string clipNameB){
+bool CloudsFCPParser::clipsShareLink(const string& clipNameA, const string& clipNameB){
 	return clipLinksTo(clipNameA, clipNameB) || clipLinksTo(clipNameB, clipNameA);
 }
 
-bool CloudsFCPParser::clipLinksTo(string clipNameA, string clipNameB) {
+bool CloudsFCPParser::clipLinksTo(const string& clipNameA, const string& clipNameB) {
 	int deadIndex;
 	return clipLinksTo(clipNameA, clipNameB, deadIndex);
 }
 
-bool CloudsFCPParser::clipLinksTo(string clipNameA, string clipNameB, int& index){
+bool CloudsFCPParser::clipLinksTo(const string& clipNameA, const string& clipNameB, int& index){
 	if(clipHasLink(clipNameA)) {
 		vector<CloudsLink>& links = linkedConnections[ clipNameA ];
 		for(int i = 0; i < links.size(); i++){
@@ -907,7 +907,7 @@ bool CloudsFCPParser::clipHasAdditionalKeywords(CloudsClip& clip){
     return clip.hasAdditionalKeywords();
 }
 
-bool CloudsFCPParser::clipHasStartingQuestions(string clipName){
+bool CloudsFCPParser::clipHasStartingQuestions(const string& clipName){
     CloudsClip& c = getClipWithLinkName(clipName);
     return clipHasStartingQuestions(c);
 }
@@ -915,12 +915,12 @@ bool CloudsFCPParser::clipHasStartingQuestions(CloudsClip& clip){
     return clip.hasStartingQuestion();
 }
 
-bool CloudsFCPParser::linkIsSuppressed(string clipNameA, string clipNameB){
+bool CloudsFCPParser::linkIsSuppressed(const string& clipNameA, const string& clipNameB){
 	int deadIndex;
 	return linkIsSuppressed(clipNameA, clipNameB, deadIndex);
 }
 
-bool CloudsFCPParser::linkIsSuppressed(string clipNameA, string clipNameB, int& index){
+bool CloudsFCPParser::linkIsSuppressed(const string& clipNameA, const string& clipNameB, int& index){
 	if(clipHasSuppressions(clipNameA)){
 		vector<CloudsLink>& suppressions = suppressedConnections[clipNameA];
 		for(int i = 0; i < suppressions.size(); i++){
@@ -933,7 +933,7 @@ bool CloudsFCPParser::linkIsSuppressed(string clipNameA, string clipNameB, int& 
 	return false;
 }
 
-bool CloudsFCPParser::keywordsShareLink(string keyA, string keyB){
+bool CloudsFCPParser::keywordsShareLink(const string& keyA, const string& keyB){
 	vector<string> keywordFilter;
 	keywordFilter.push_back(keyA);
 	keywordFilter.push_back(keyB);
@@ -951,7 +951,7 @@ bool CloudsFCPParser::keywordsShareLink(string keyA, string keyB){
 
 
 
-void CloudsFCPParser::addXMLFile(string xmlFile){
+void CloudsFCPParser::addXMLFile(const string& xmlFile){
     ofxXmlSettings fcpXML;
     if(fcpXML.loadFile(xmlFile)){
         fcpXML.pushTag("xmeml");
@@ -991,7 +991,7 @@ void CloudsFCPParser::addXMLFile(string xmlFile){
 	
 }
 
-void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
+void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, const string& currentName){
     string fileID = fcpXML.getAttribute("file", "id", "");
     string clipFileName = fcpXML.getValue("file:name", "");
     string clipFilePath = fcpXML.getValue("file:pathurl", "");
@@ -1194,7 +1194,7 @@ void CloudsFCPParser::refreshAllKeywords(){
     }
 }
 
-void CloudsFCPParser::setCombinedVideoDirectory(string directory){
+void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
 	hasMediaAssetIndeces.clear();
 	hasMediaAssetAndQuestionIndeces.clear();
     hasCombinedAndIsStartingClipIndeces.clear();
@@ -1278,20 +1278,20 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool hasMediaAsset,
 	}
 }
 
-bool CloudsFCPParser::hasClipWithLinkName(string linkname){
+bool CloudsFCPParser::hasClipWithLinkName(const string& linkname){
 	return clipLinkNameToIndex.find(linkname) != clipLinkNameToIndex.end();
 }
 
-bool CloudsFCPParser::hasClipWithID(string ID){
+bool CloudsFCPParser::hasClipWithID(const string&  ID){
 	return clipIDToIndex.find(ID) != clipIDToIndex.end();
 }
 
-CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname ){
+CloudsClip& CloudsFCPParser::getClipWithLinkName( const string&  linkname ){
     bool dumb;
     return getClipWithLinkName(linkname, dumb);
 }
 
-CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname, bool& found ){
+CloudsClip& CloudsFCPParser::getClipWithLinkName( const string&  linkname, bool& found ){
     found = clipLinkNameToIndex.find(linkname) != clipLinkNameToIndex.end();
 	if(found){
 		return allClips[ clipLinkNameToIndex[linkname] ];
@@ -1300,12 +1300,12 @@ CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname, bool& found )
 	return dummyClip;
 }
 
-CloudsClip& CloudsFCPParser::getClipWithID( string ID ){
+CloudsClip& CloudsFCPParser::getClipWithID( const string&  ID ){
     bool dumb;
     return getClipWithID(ID, dumb);
 }
 
-CloudsClip& CloudsFCPParser::getClipWithID( string ID, bool& foundClip ){
+CloudsClip& CloudsFCPParser::getClipWithID( const string&  ID, bool& foundClip ){
     foundClip = clipIDToIndex.find(ID) != clipIDToIndex.end();
 	if(foundClip){
 		return allClips[ clipIDToIndex[ID] ];
@@ -1340,7 +1340,7 @@ vector<string>& CloudsFCPParser::getContentKeywords(){
     return contentKeywordVector;
 }
 
-int CloudsFCPParser::occurrencesOfKeyword(string keyword){
+int CloudsFCPParser::occurrencesOfKeyword(const string& keyword){
     return allKeywords[keyword];
 }
 
@@ -1352,11 +1352,11 @@ vector<CloudsLink>& CloudsFCPParser::getLinksForClip(CloudsClip& clip){
     return linkedConnections[clip.getLinkName()];
 }
 
-vector<CloudsLink>& CloudsFCPParser::getLinksForClip(string clipName){
+vector<CloudsLink>& CloudsFCPParser::getLinksForClip(const string&  clipName){
     return linkedConnections[clipName];
 }
 
-void CloudsFCPParser::addLink(string sourceName, string targetName){
+void CloudsFCPParser::addLink(const string&  sourceName, const string&  targetName){
 	CloudsLink l;
 	l.sourceName = sourceName;
 	l.targetName = targetName;
@@ -1389,11 +1389,11 @@ vector<CloudsLink>& CloudsFCPParser::getSuppressionsForClip(CloudsClip& clip){
     return suppressedConnections[clip.getLinkName()];
 }
 
-vector<CloudsLink>& CloudsFCPParser::getSuppressionsForClip(string clipName){
+vector<CloudsLink>& CloudsFCPParser::getSuppressionsForClip(const string&  clipName){
     return suppressedConnections[clipName];
 }
 
-int CloudsFCPParser::getNumberOfClipsWithKeyword(string filterWord){
+int CloudsFCPParser::getNumberOfClipsWithKeyword(const string&  filterWord){
 	int keywordsFound = 0;
     for(int c = 0; c < allClips.size(); c++){
 		if( ofContains(allClips[c].getKeywords(), filterWord) ){
@@ -1403,11 +1403,11 @@ int CloudsFCPParser::getNumberOfClipsWithKeyword(string filterWord){
 	return keywordsFound;
 }
 
-vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(string filterWord){
+vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const string&  filterWord){
 	return getClipsWithKeyword(filterWord, getAllClips());
 }
 
-vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(string filterWord, vector<CloudsClip>& searchClips){
+vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const string&  filterWord, vector<CloudsClip>& searchClips){
 	vector<string> filter;
 	filter.push_back(filterWord);
 	return getClipsWithKeyword(filter, searchClips);
@@ -1439,7 +1439,7 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& fi
     return filteredMarkers;
 }
 
-vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(string topic){
+vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(const string&  topic){
     vector<CloudsClip> clips;
     
     if(questionTopicstoClipIndex.find(topic) != questionTopicstoClipIndex.end())
@@ -1455,7 +1455,7 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(string topic){
     return clips;
 }
 
-set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
+set<string> CloudsFCPParser::getRelatedKeywords(const string&  filterWord){
 	set<string> relatedKeywords;
     
 	vector<CloudsClip> relatedClips = getClipsWithKeyword(filterWord);
@@ -1470,7 +1470,7 @@ set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 	return relatedKeywords;
 }
 
-vector<CloudsClip> CloudsFCPParser::getSharedClips(string keywordA, string keywordB){
+vector<CloudsClip> CloudsFCPParser::getSharedClips(const string&  keywordA, const string&  keywordB){
 	vector<CloudsClip> sharedClips;
     //	cout << "Computing shared clips for " << keywordA << " " << keywordB << endl;
 	for(int i = 0; i < allClips.size(); i++){
@@ -1484,7 +1484,7 @@ vector<CloudsClip> CloudsFCPParser::getSharedClips(string keywordA, string keywo
 	return sharedClips;
 }
 
-int CloudsFCPParser::getNumberOfSharedClips(string keywordA, string keywordB){
+int CloudsFCPParser::getNumberOfSharedClips(const string&  keywordA, const string&  keywordB){
 	int clipsInCommon = 0;
 	for(int i = 0; i < allClips.size(); i++){
 		if(ofContains(allClips[i].getKeywords(), keywordA) &&
@@ -1592,11 +1592,11 @@ void CloudsFCPParser::reciprocateSuppressions(CloudsClip& sourceClip){
 }
 
 
-void CloudsFCPParser:: addIntervention(string clipName, string interventionName){
+void CloudsFCPParser:: addIntervention(const string&  clipName, const string&  interventionName){
     clipInterventions[clipName] = interventionName;
 }
 
-bool CloudsFCPParser::clipHasIntervention(string clipName){
+bool CloudsFCPParser::clipHasIntervention(const string&  clipName){
 	return clipInterventions.find(clipName) != clipInterventions.end();
 }
 
@@ -1641,7 +1641,7 @@ void CloudsFCPParser::parseSpeakersVolume(){
     }
 
 }
-void CloudsFCPParser::setSpeakerVolume(string speaker, float vol){
+void CloudsFCPParser::setSpeakerVolume(const string&  speaker, float vol){
     speakerVolumes[speaker] = vol;
     for(int i =0; i<allClips.size(); i++){
         if(allClips[i].person == speaker){
@@ -1651,7 +1651,7 @@ void CloudsFCPParser::setSpeakerVolume(string speaker, float vol){
     }
 }
 
-float CloudsFCPParser::getSpeakerVolume(string speakerFullName){
+float CloudsFCPParser::getSpeakerVolume(const string&  speakerFullName){
     
     if ( speakerVolumes.find(speakerFullName) == speakerVolumes.end() ) {
         return -1;
@@ -1660,7 +1660,7 @@ float CloudsFCPParser::getSpeakerVolume(string speakerFullName){
     return speakerVolumes[speakerFullName];
 }
 
-void CloudsFCPParser::saveSpeakersVolume(string speakerVolFile){
+void CloudsFCPParser::saveSpeakersVolume(const string&  speakerVolFile){
     int numClips = 0;
     stringstream ss;
 
@@ -1681,7 +1681,7 @@ void CloudsFCPParser::saveSpeakersVolume(string speakerVolFile){
     
 }
 
-void CloudsFCPParser::saveInterventions(string interventionsFile){
+void CloudsFCPParser::saveInterventions(const string&  interventionsFile){
     int numClips = 0;
     ofxXmlSettings linksXML;
     map<string, vector<CloudsLink> >::iterator it;
