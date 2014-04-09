@@ -105,6 +105,8 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
     pointLayer1.setDefaults();
     pointLayer2.setDefaults();
     
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 //--------------------------------------------------------------
@@ -507,7 +509,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 
-    drawCursorMode =  DRAW_CURSOR_PRIMARY;
+    // TODO: Fix this cursor hack.
+//    drawCursorMode =  DRAW_CURSOR_PRIMARY;
 //    if(getQuestionText() != ""){
 //        drawCursorMode =  DRAW_CURSOR_PRIMARY;
 //    }

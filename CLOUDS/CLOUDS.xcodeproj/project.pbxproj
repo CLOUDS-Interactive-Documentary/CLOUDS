@@ -541,7 +541,6 @@
 		AE6F01E61880716900677B60 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E779BD40173D4EFD006357EF /* libsndfile.a */; };
 		AE6F01E71880716900677B60 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D9F7C7182B061B00AD56C1 /* libftgl.a */; };
 		AE6F01E81880716900677B60 /* assimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E780D13C1852CA140096AE8D /* assimp.a */; };
-		AE6F01E91880716900677B60 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E703CCA7185C1D5800547738 /* librtcmix.a */; };
 		AE6F01EA1880716900677B60 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1892A2A51878B5F000B4B474 /* opencv.a */; };
 		AE6F01ED1880716900677B60 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		AE6FFFC81880716900677B60 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -637,8 +636,6 @@
 		E703CCB0185C1D5800547738 /* CloudsSoundFilesSamplesDatabases.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCA0185C1D5800547738 /* CloudsSoundFilesSamplesDatabases.cpp */; };
 		E703CCB1185C1D5800547738 /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCA1185C1D5800547738 /* CloudsSoundFuncs.cpp */; };
 		E703CCB2185C1D5800547738 /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCA1185C1D5800547738 /* CloudsSoundFuncs.cpp */; };
-		E703CCB3185C1D5800547738 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E703CCA7185C1D5800547738 /* librtcmix.a */; };
-		E703CCB4185C1D5800547738 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E703CCA7185C1D5800547738 /* librtcmix.a */; };
 		E703CCB5185C1D5800547738 /* lukeFileFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCA9185C1D5800547738 /* lukeFileFuncs.cpp */; };
 		E703CCB6185C1D5800547738 /* lukeFileFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCA9185C1D5800547738 /* lukeFileFuncs.cpp */; };
 		E703CCB7185C1D5800547738 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCAA185C1D5800547738 /* lukeFuncs.cpp */; };
@@ -1934,7 +1931,6 @@
 		E703CC9F185C1D5800547738 /* CloudsSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSound.h; sourceTree = "<group>"; };
 		E703CCA0185C1D5800547738 /* CloudsSoundFilesSamplesDatabases.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSoundFilesSamplesDatabases.cpp; sourceTree = "<group>"; };
 		E703CCA1185C1D5800547738 /* CloudsSoundFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSoundFuncs.cpp; sourceTree = "<group>"; };
-		E703CCA7185C1D5800547738 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
 		E703CCA9185C1D5800547738 /* lukeFileFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFileFuncs.cpp; sourceTree = "<group>"; };
 		E703CCAA185C1D5800547738 /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
 		E703CCAB185C1D5800547738 /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lukeFuncs.h; sourceTree = "<group>"; };
@@ -3222,7 +3218,6 @@
 				AE6F01E61880716900677B60 /* libsndfile.a in Frameworks */,
 				AE6F01E71880716900677B60 /* libftgl.a in Frameworks */,
 				AE6F01E81880716900677B60 /* assimp.a in Frameworks */,
-				AE6F01E91880716900677B60 /* librtcmix.a in Frameworks */,
 				AE6F01EA1880716900677B60 /* opencv.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3255,7 +3250,6 @@
 				E779BD9E173D4EFE006357EF /* libsndfile.a in Frameworks */,
 				E7D9F7DF182B061B00AD56C1 /* libftgl.a in Frameworks */,
 				E780D1531852CA150096AE8D /* assimp.a in Frameworks */,
-				E703CCB3185C1D5800547738 /* librtcmix.a in Frameworks */,
 				1892A3561878B5F100B4B474 /* opencv.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3288,7 +3282,6 @@
 				E7FB26201830D4C0009EBD0E /* libsndfile.a in Frameworks */,
 				E7FB26221830D4C0009EBD0E /* libftgl.a in Frameworks */,
 				E780D1541852CA150096AE8D /* assimp.a in Frameworks */,
-				E703CCB4185C1D5800547738 /* librtcmix.a in Frameworks */,
 				1892A3571878B5F100B4B474 /* opencv.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3867,42 +3860,9 @@
 		E703CCA2185C1D5800547738 /* RTCMix */ = {
 			isa = PBXGroup;
 			children = (
-				E703CCA3185C1D5800547738 /* libs */,
 				E703CCA8185C1D5800547738 /* src */,
 			);
 			path = RTCMix;
-			sourceTree = "<group>";
-		};
-		E703CCA3185C1D5800547738 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				E703CCA4185C1D5800547738 /* include */,
-				E703CCA5185C1D5800547738 /* lib */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		E703CCA4185C1D5800547738 /* include */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		E703CCA5185C1D5800547738 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				E703CCA6185C1D5800547738 /* osx */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		E703CCA6185C1D5800547738 /* osx */ = {
-			isa = PBXGroup;
-			children = (
-				E703CCA7185C1D5800547738 /* librtcmix.a */,
-			);
-			path = osx;
 			sourceTree = "<group>";
 		};
 		E703CCA8185C1D5800547738 /* src */ = {

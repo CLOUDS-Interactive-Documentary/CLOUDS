@@ -42,11 +42,12 @@ enum ofxViewType
     OFX_VIEW_3D
 };
 
-enum CloudsDrawCursorMode
+enum CloudsCursorMode
 {
-    DRAW_CURSOR_NONE = 0,
-    DRAW_CURSOR_PRIMARY,
-    DRAW_CURSOR_ALL
+    CURSOR_MODE_NONE = 0,
+    CURSOR_MODE_INACTIVE,
+    CURSOR_MODE_CAMERA,
+    CURSOR_MODE_DRAW
 };
 
 class CloudsVisualSystem {
@@ -96,7 +97,7 @@ class CloudsVisualSystem {
 	virtual void selfPostDraw();
 	virtual void selfPostDraw(int width, int height);
 	
-    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged);
+    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode);
 	virtual void selfPresetLoaded(string presetPath);
 	
     virtual void selfExit();
@@ -199,7 +200,7 @@ class CloudsVisualSystem {
     void draw2dSystemPlane();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
     
-    void drawCursor();
+    void drawCursors();
 	
     //Core Param Setup
     void setupAppParams();
@@ -323,7 +324,9 @@ class CloudsVisualSystem {
     void drawKinectDebug();
 #endif
 	
-    CloudsDrawCursorMode drawCursorMode;
+    CloudsCursorMode primaryCursorMode;
+    CloudsCursorMode secondaryCursorMode;
+    
   protected:
 		
 	//UI

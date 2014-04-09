@@ -23,7 +23,7 @@ class CloudsClip {
     string sourceVideoFilePath;
 	
 	ofVec3f networkPosition;
-	
+	ofVec2f networkPosition2d; //populated by gephi graph
 
     float speakerVolume;
 	bool voiceOverAudio;

@@ -23,6 +23,7 @@ class CloudsSound {
 	void exit(ofEventArgs & args);
 	
 	void update(ofEventArgs & args);
+	void update();
 	void drawDebug();
 	
 	void keyPressed(ofKeyEventArgs & args);
@@ -62,6 +63,7 @@ class CloudsSound {
     void doPrinting();
     int ACTBUS; // needs to be public for UDP shit in the scoredesigner
     bool in_tunnel;
+    bool isScoreDesigner;
     
     // public data structures
     vector<lukePreset> presets;
@@ -70,6 +72,10 @@ class CloudsSound {
 
 	CloudsStoryEngine* storyEngine;
 	CloudsAct* currentAct;
+
+	//only used in non RTCMIX context
+	ofPtr<ofSoundPlayer> frontPlayer;
+	ofPtr<ofSoundPlayer> backPlayer;
 	
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);

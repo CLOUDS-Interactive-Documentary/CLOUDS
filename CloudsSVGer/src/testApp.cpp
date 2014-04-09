@@ -2,11 +2,12 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    ofSetFrameRate(60);
-    ofSetVerticalSync(true);
+
+	ofBackground(0);
+	ofSetVerticalSync(true);
     
-	vs.setup();
-	vs.playSystem();
+	parser.loadFromFiles();
+	svgReader.parser = &parser;
 }
 
 //--------------------------------------------------------------
@@ -16,11 +17,16 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+	svgReader.draw();
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 
+	if(key == 'E'){
+		svgReader.exportFile("textlayer.svg");
+	}
+	
 }
 
 //--------------------------------------------------------------
@@ -64,5 +70,5 @@ void testApp::gotMessage(ofMessage msg){
 
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){ 
-
+	svgReader.loadFile( dragInfo.files[0] );
 }

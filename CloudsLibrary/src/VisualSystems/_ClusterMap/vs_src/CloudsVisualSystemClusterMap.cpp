@@ -466,28 +466,27 @@ void CloudsVisualSystemClusterMap::populateAssociations(){
         
         string line = topicAssociations.getNextLine();
         if(line.find(":") == string::npos){
-            cout << "Skipping line " << line << endl;
+//            cout << "Skipping line " << line << endl;
             continue;
         }
         
         vector<string> association = ofSplitString(line, ":", true, true);
         if(association.size() != 2){
-            cout << "line " << line << " has more than one :"<<endl;
+//            cout << "line " << line << " has more than one :"<<endl;
             continue;
         }
         
         vector<string> clipcount = ofSplitString(line, "\t",true,true);
         if(clipcount.size() != 2){
-            cout << "line " << line << " has more than one tab"<<endl;
+//            cout << "line " << line << " has more than one tab"<<endl;
             continue;
         }
         
         string associatedKeyword = association[1];
         string subtopic = ofSplitString(association[0],"\t",true,true)[1];
         associations[subtopic] = associatedKeyword;
-        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
+//        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
     }
-    bool b = false;
 }
 
 void CloudsVisualSystemClusterMap::traverse(){
