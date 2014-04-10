@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "VoxelMesh.h"
 
+#include "ofxUI.h"
+
 class testApp : public ofBaseApp{
   public:
 	void setup();
@@ -18,7 +20,11 @@ class testApp : public ofBaseApp{
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
+	void exit();
 	
 	VoxelMesh vm;
 	ofEasyCam cam;
+
+
+	ofxUISuperCanvas* gui;
 };

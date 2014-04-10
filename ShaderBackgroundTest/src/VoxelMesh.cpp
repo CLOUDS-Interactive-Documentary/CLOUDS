@@ -11,7 +11,7 @@
 VoxelMesh::VoxelMesh(){
 	numVoxels = 10;
 	voxelWidth = 100;
-	
+	noisePosition = 0;
 }
 
 void VoxelMesh::setup(){
@@ -21,18 +21,47 @@ void VoxelMesh::setup(){
 }
 
 void VoxelMesh::update(){
-	
+	if(currentNumVoxels != numVoxels ||
+	   currentVoxelWidth != voxelWidth)
+	{
+		regenerateGeometry();
+	}
+	noisePosition += noiseSpeed;
 }
 
 void VoxelMesh::draw(){
 
-	//pointVbo.draw(GL_POINTS, 0, nPointIndices);
+	glDisable(GL_DEPTH_TEST);
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
+	
+	lineShader.begin();
+	lineShader.setUniform1f("sphereRadius", sphereRadius);
+	lineShader.setUniform1f("spherePercent", spherePercent);
+	
+	lineShader.setUniform1f("minDistance", minDistance*voxelWidth);
+	lineShader.setUniform1f("maxDistance", maxDistance*voxelWidth);
+	
+	lineShader.setUniform1f("twistFactor", twistFactor+noisePosition*.001);
+
+	lineShader.setUniform1f("noiseDistort", powf(noiseDistort, 2.0f));
+	lineShader.setUniform1f("noiseDensity", powf(noiseDensity, 2.0f));
+	lineShader.setUniform1f("noisePosition", noisePosition);
+
 	lineVbo.draw(GL_LINES, 0, nLineIndices);
+	lineShader.end();
+	
+	//pointVbo.draw(GL_POINTS, 0, nPointIndices);
+	
+//	ofPushStyle();
+//	ofNoFill();
+//	ofSetColor(0,0,255,100);
+//	ofSphere(0,0,0,300);
+//	ofPopStyle();
 }
 
 void VoxelMesh::reloadShaders(){
-	pointShader.load("shaders/pointShader");
-	lineShader.load("shaders/lineShader");
+//	pointShader.load("shaders/pointShader");
+	lineShader.load("shaders/voxel_lines");
 }
 
 void VoxelMesh::regenerateGeometry(){
@@ -98,4 +127,8 @@ void VoxelMesh::regenerateGeometry(){
 	lineVbo.clear();
 	lineVbo.setMesh(lineMesh, GL_STATIC_DRAW);
 	nLineIndices = lineMesh.getNumVertices();
+	
+	currentNumVoxels = numVoxels;
+	currentVoxelWidth = voxelWidth;
+
 }

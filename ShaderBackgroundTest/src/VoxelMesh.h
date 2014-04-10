@@ -21,17 +21,35 @@ class VoxelMesh {
 
 	void reloadShaders();	
 	void regenerateGeometry();
+	bool shouldRegenerate;
 
 	int numVoxels;
-	int voxelWidth;
+	float voxelWidth;
+		
+	float sphereRadius;
+	float spherePercent;
+	
+	float minDistance;
+	float maxDistance;
+	
+	float twistFactor;
+	float spiralFactor;
+	
+	float noiseDistort;
+	float noiseDensity;
+	float noiseSpeed;
 
   protected:
-
+	float noisePosition;
+	
 	ofVbo pointVbo;
 	ofVbo lineVbo;
 	int nPointIndices;
 	int nLineIndices;
-
+	
+	int currentNumVoxels;
+	float currentVoxelWidth;
+	
 	ofShader pointShader;
 	ofShader lineShader;
 };

@@ -1,0 +1,53 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OFX_UI_WIDGET_CANVAS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>0.000000000</XPosition>
+    <YPosition>0.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>num voxels</Name>
+    <Value>34</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>voxel spacing</Name>
+    <Value>23.300491333</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sphere radius</Name>
+    <Value>593.103454590</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sphere percent</Name>
+    <Value>2.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>distance range</Name>
+    <HighValue>1.517241359</HighValue>
+    <LowValue>0.206896544</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>twist factor</Name>
+    <Value>0.003078818</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise distort</Name>
+    <Value>0.965517223</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise density</Name>
+    <Value>0.113300495</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise speed</Name>
+    <Value>0.049261082</Value>
+</Widget>
