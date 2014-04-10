@@ -1125,7 +1125,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
 //        cout<<"poopzz : "<<strs[strs.size()-1]<<endl;
 //    }
     
-//    loadCSVData( tweeters);
+    loadCSVData( tweeters);
     
 //    for(int i =0 ; i<tweeters.size(); i++){
 //        cout<<tweeters[i].name<< " : "<<tweeters[i].ID<<endl;
