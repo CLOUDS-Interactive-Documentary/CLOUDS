@@ -66,6 +66,9 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 		instGain = 7.5;
         in_tunnel = false;
 		
+		playerSwapTime = 0;
+		playerFadeDuration = 5.0; //seconds overlap between tracks
+		
         MASTERTEMPO = 120;
         AUTORUN = 0;
         DOCLEAR = true;
@@ -143,6 +146,41 @@ void CloudsSound::update(){
         GetCloudsAudioEvents()->respawn = false;
         playCurrentCues();
     }
+	
+
+#ifndef RTCMIX
+	//
+	if(queuedTracks.size() > 0 && ofGetElapsedTimef() > queuedTracks.front().startTime){
+		if(frontPlayer->isLoaded()){
+			playerSwapTime = ofGetElapsedTimef();
+			swap(frontPlayer,backPlayer);
+		}
+		
+//		string filename = GetCloudsDataPath() + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
+		if(ofFile(queuedTracks.front().trackPath).exists()){
+			frontPlayer->loadSound(queuedTracks.front().trackPath);
+		}
+		else{
+			frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/1.mp3");
+			ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << queuedTracks.front().trackPath;
+		}
+		
+		frontPlayer->play();
+		frontPlayer->setVolume(1.0);
+		queuedTracks.erase(queuedTracks.begin());
+	}
+	
+
+	if(backPlayer != NULL && backPlayer->isLoaded()){
+		float newVolume = ofMap(ofGetElapsedTimef(), playerSwapTime, playerSwapTime+playerFadeDuration, 1.0, 0.0, true);
+//		cout << "FADE AMOUNT " << newVolume << endl;
+		backPlayer->setVolume(newVolume);
+		if(newVolume == 0){
+			backPlayer->stop();
+		}
+	}
+#endif
+	
 }
 
 //--------------------------------------------------------------------
@@ -173,6 +211,8 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 	currentCues = args.act->getSoundCues();
 	cueFlagsAdded = false;
 	
+	cout << "***** ORDER OF OPERATIONS: ACT BEGAN SOUND " << args.act << endl;
+	
 	playCurrentCues();
 	
     actTimeLine.setCurrentPage(0);
@@ -202,6 +242,8 @@ void CloudsSound::playCurrentCues(){
     float pad = 5.0; // padding for FX chain
     currentCuesTotalDuration += pad; // pad the total
     
+	queuedTracks.clear();
+	
     if(LUKEDEBUG) cout << "TOTAL DURATION: " << currentCuesTotalDuration << endl;
     else cout << "SOUND: MUSIC STARTED." << endl;
 #ifdef RTCMIX
@@ -285,8 +327,7 @@ void CloudsSound::playCurrentCues(){
             // MAKE THE MUSIC
             int GOPRESET = valid_presets[ ofRandom(valid_presets.size()) ];
 			if(!cueFlagsAdded && presetFlags != NULL){
-				presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), currentCues[i].startTime *1000 );
-
+				presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), currentCues[i].startTime * 1000 );
 			}
             
 			if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
@@ -310,7 +351,7 @@ void CloudsSound::enterTunnel()
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
     SCHEDULEBANG(477.); // length of sound
 #else
-	//TODO: enter tunnel
+	//TODO: enter tunnel on main system
 	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/tunnel.mp3");
     frontPlayer->play();
 #endif

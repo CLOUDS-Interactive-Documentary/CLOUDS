@@ -15,6 +15,11 @@
 #define PF_MAINACT_BUS_START 6
 #define PF_NUMBUSES 100
 
+typedef struct{
+	string trackPath;
+	float startTime;
+} QueuedTrack;
+
 class CloudsSound {
   public:
 	CloudsSound();
@@ -117,5 +122,10 @@ class CloudsSound {
 	bool cueFlagsAdded;
 	float currentCuesTotalDuration;
 	void playCurrentCues();
-
+	
+	//new audio fade system;
+	float playerSwapTime;
+	float playerFadeDuration;
+	
+	vector<QueuedTrack> queuedTracks;
 };

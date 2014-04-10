@@ -3,10 +3,11 @@
 #include "ofMain.h"
 #include "CloudsPortal.h"
 
-class CloudsPortalEventArgs : public ofEventArgs{
-public:
+class CloudsPortalEventArgs : public ofEventArgs
+{
+  public:
     CloudsPortalEventArgs(CloudsPortal& portal, string question)
-    : portal(portal), question(question){}
+		: portal(portal), question(question){}
 	
     CloudsPortal& portal;
 	string question;
