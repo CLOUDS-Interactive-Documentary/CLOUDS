@@ -9,7 +9,6 @@ uniform vec4 noiseDistort;
 uniform float noiseDensity;
 uniform float noisePosition;
 
-
 uniform float minDistance;
 uniform float maxDistance;
 
@@ -168,29 +167,30 @@ float snoise(vec4 v)
 
 
 vec3 vertPos(vec3 basePos){
-	basePos += vec3( (noiseDistort.x == 0.0) ? 0.0 : snoise(vec4(basePos.xyz*noiseDensity, noisePosition)) * noiseDistort.x,
-					 (noiseDistort.y == 0.0) ? 0.0 : snoise(vec4(basePos.yxz*noiseDensity, noisePosition)) * noiseDistort.y,
-					 (noiseDistort.z == 0.0) ? 0.0 : snoise(vec4(basePos.zxy*noiseDensity, noisePosition)) * noiseDistort.z) * 100.0;
+	basePos += vec3((noiseDistort.x == 0.0) ? 0.0 : snoise(vec4(basePos.xyz*noiseDensity, noisePosition)) * noiseDistort.x,
+					(noiseDistort.y == 0.0) ? 0.0 : snoise(vec4(basePos.yxz*noiseDensity, noisePosition)) * noiseDistort.y,
+					(noiseDistort.z == 0.0) ? 0.0 : snoise(vec4(basePos.zxy*noiseDensity, noisePosition)) * noiseDistort.z) * 100.0;
+	return basePos;
 	
-	vec3 fromCenterDir = normalize(basePos.xyz);
-	vec3 spherePosition = fromCenterDir * sphereRadius;
-	
-	float noiseEffect = snoise( vec4(basePos*noiseDensity,noisePosition) ) * noiseDistort.w;
-	vec3 towardsSphere = mix(basePos.xyz, spherePosition, spherePercent+noiseEffect);
-	
-	mat4 twist =  rotationMatrix( vec3(0.0,1.0,0.0), basePos.y*twistFactorY );
-	mat4 twist2 = rotationMatrix( vec3(1.0,0.0,0.0), basePos.x*twistFactorX );
-	
-	return (twist2 * twist * vec4(towardsSphere,1.0)).xyz;
+//	vec3 fromCenterDir = normalize(basePos.xyz);
+//	vec3 spherePosition = fromCenterDir * sphereRadius;
+//	
+//	float noiseEffect = snoise( vec4(basePos*noiseDensity,noisePosition) ) * noiseDistort.w;
+//	vec3 towardsSphere = mix(basePos.xyz, spherePosition, spherePercent+noiseEffect);
+//	
+//	mat4 twist =  rotationMatrix( vec3(0.0,1.0,0.0), basePos.y*twistFactorY );
+//	mat4 twist2 = rotationMatrix( vec3(1.0,0.0,0.0), basePos.x*twistFactorX );
+//	
+//	return (twist2 * twist * vec4(towardsSphere,1.0)).xyz;
 }
 
 void main(void) {
 	
 	vec4 basePos = gl_Vertex;
-	basePos.xyz = vertPos(basePos.xyz);
-	normPos = vertPos(gl_Normal);
 	
-	vertDistance = length(basePos.xyz - normPos);
+	basePos.xyz = vertPos(basePos.xyz);
+
+	vertDistance = length(gl_Vertex.xyz - basePos.xyz);
 	
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * basePos;
 
