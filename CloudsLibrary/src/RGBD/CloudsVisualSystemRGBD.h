@@ -6,7 +6,11 @@
 #include "CloudsQuestion.h"
 #include "CloudsEvents.h"
 #include "GPUParticles/Controller.h"
+
+#ifdef HAS_GAMECAM
 #include "ofxGameCamera.h"
+#endif
+
 #include "ofxFTGL.h"
 #include "CloudsPortalEvents.h"
 #include "CloudsRGBDPointLayer.h"
@@ -89,9 +93,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     int questionToReplace;
     
 	ofCamera& getCameraRef(){
+#ifdef HAS_GAMECAM
 		if(placingTransitionNodes){
 			return transitionCam;
 		}
+#endif
 		return cloudsCamera;
 	}
 	
@@ -118,7 +124,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void lookThroughTransitionOutLeft();
 	void lookThroughTransitionOutRight();
 
-	ofxGameCamera transitionCam;
+//	ofxGameCamera transitionCam;
 	ofNode* transitionCamTargetNode;
 	
 	void setTransitionNodes( RGBDTransitionType transitionType, string option="default" );
