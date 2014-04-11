@@ -668,8 +668,8 @@ void CloudsIntroSequence::drawIntroNodes(){
 		introNodeOne.hover = true;
 		introNodeOne.hoverStartTime = ofGetElapsedTimef();
 		
-//		CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
-//		ofNotifyEvent(events.portalHoverBegan, args);
+		CloudsPortalEventArgs args(NULL, getQuestionText());
+		ofNotifyEvent(events.portalHoverBegan, args);
 	}
 	ofTranslate( introNodeOne.worldPosition );
 	ofCircle(0,0,0, introNodeSize);

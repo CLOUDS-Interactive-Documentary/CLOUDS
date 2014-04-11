@@ -142,6 +142,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	particulateController.setParticleCount(2000);
 	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
 	particulateController.setup();
+	voxelMesh.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
@@ -474,6 +475,37 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guimap[particleGui->getName()] = particleGui;
     //////////////////
 	
+	////////////////// BACKGROUND PARTICLES
+	backgroundMeshGui = new ofxUISuperCanvas("BACKGROUNDMESH", gui);
+	backgroundMeshGui->copyCanvasStyle(gui);
+	backgroundMeshGui->copyCanvasProperties(gui);
+	backgroundMeshGui->setName("Backgroundmesh");
+	backgroundMeshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+	backgroundMeshGui->addIntSlider("num voxels", 10, 100, &voxelMesh.numVoxels);
+	backgroundMeshGui->addSlider("voxel spacing", 10, 100, &voxelMesh.voxelWidth);
+	
+	backgroundMeshGui->addSlider("sphere radius",  100, 800, &voxelMesh.sphereRadius);
+	backgroundMeshGui->addSlider("sphere percent", -2.0, 2.0, &voxelMesh.spherePercent);
+	
+	backgroundMeshGui->addRangeSlider("distance range", 0.0, 2.0, &voxelMesh.minDistance, &voxelMesh.maxDistance);
+	
+	backgroundMeshGui->addSlider("twist speed x",  0, .001, &voxelMesh.twistSpeedX);
+	backgroundMeshGui->addSlider("twist factor x", 0, 1.0, &voxelMesh.twistFactorX);
+	backgroundMeshGui->addSlider("twist speed y",  0, .001, &voxelMesh.twistSpeedY);
+	backgroundMeshGui->addSlider("twist factor y", 0, 1.0, &voxelMesh.twistFactorY);
+	
+	backgroundMeshGui->addSlider("noise distort x", 0, 1.0, &voxelMesh.noiseDistort.x);
+	backgroundMeshGui->addSlider("noise distort y", 0, 1.0, &voxelMesh.noiseDistort.y);
+	backgroundMeshGui->addSlider("noise distort z", 0, 1.0, &voxelMesh.noiseDistort.z);
+	backgroundMeshGui->addSlider("noise distort radial", 0, 1.0, &voxelMesh.noiseDistort.w);
+	backgroundMeshGui->addSlider("noise density", 0, 0.2, &voxelMesh.noiseDensity);
+	
+	backgroundMeshGui->addSlider("noise speed", 0, 0.1, &voxelMesh.noiseSpeed);
+	
+	guis.push_back(backgroundMeshGui);
+	guimap[backgroundMeshGui->getName()] = backgroundMeshGui;
+
     ////////////////// QUESTIONS
 	questionGui = new ofxUISuperCanvas("QUESTIONS", gui);
 	questionGui->copyCanvasStyle(gui);
@@ -556,8 +588,12 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
 		particulateController.getPoints().color.a = pointColor.w;
 		particulateController.update();
+	
 	}
-    
+
+	voxelMesh.center = cloudsCamera.lookTarget;
+	voxelMesh.update();
+
 	updateActuators();
 	updateQuestions();
 #ifdef OCULUS_RIFT
@@ -1516,6 +1552,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		
         ofEnableAlphaBlending();
         
+		voxelMesh.draw();
+		
 		//Enable smooth lines and screen blending
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -1668,13 +1706,17 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
-		particulateController.draw();
+//		particulateController.draw();
+		
 	}
+	
+	
 	
 	glPopAttrib();
 	ofPopMatrix();
 	ofPopStyle();
 	
+
 
 	//LARS TODO: add drawTransitionNodes to GUI
 	if(drawTransitionNodes){
@@ -1856,6 +1898,7 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		
 		loadShader();
+		voxelMesh.reloadShaders();
 		
 //		particulateController.reloadShaders();
 //		CloudsQuestion::reloadShader();

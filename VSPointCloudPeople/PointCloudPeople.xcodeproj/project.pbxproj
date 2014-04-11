@@ -470,6 +470,10 @@
 		E703D21A185E81ED00547738 /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703D20F185E81ED00547738 /* Delaunay.cpp */; };
 		E703D21B185E81ED00547738 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703D213185E81ED00547738 /* ofxDelaunay.cpp */; };
 		E703D21C185E81ED00547738 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703D213185E81ED00547738 /* ofxDelaunay.cpp */; };
+		E7131FE318F762FD00F1277E /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7131FE118F762FD00F1277E /* VoxelMesh.cpp */; };
+		E7131FE418F762FD00F1277E /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7131FE118F762FD00F1277E /* VoxelMesh.cpp */; };
+		E7131FE518F762FD00F1277E /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7131FE118F762FD00F1277E /* VoxelMesh.cpp */; };
+		E7131FE618F762FD00F1277E /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7131FE118F762FD00F1277E /* VoxelMesh.cpp */; };
 		E7302C7E187F2C470079C5B8 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */; };
 		E7302C7F187F2C470079C5B8 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */; };
 		E7302C80187F2C470079C5B8 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */; };
@@ -1052,6 +1056,8 @@
 		E703D211185E81ED00547738 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E703D213185E81ED00547738 /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
 		E703D214185E81ED00547738 /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
+		E7131FE118F762FD00F1277E /* VoxelMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelMesh.cpp; sourceTree = "<group>"; };
+		E7131FE218F762FD00F1277E /* VoxelMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelMesh.h; sourceTree = "<group>"; };
 		E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortal.cpp; sourceTree = "<group>"; };
 		E7302C7B187F2C470079C5B8 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
 		E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
@@ -1989,6 +1995,7 @@
 		E703D06B185E7EA800547738 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				E7131FE018F762FD00F1277E /* BackgroundParticles */,
 				E7302C79187F2C460079C5B8 /* Portal */,
 				E700BC401876A818003A8167 /* CloudsTransitionController.h */,
 				E700BC3F1876A818003A8167 /* CloudsTransitionController.cpp */,
@@ -2242,6 +2249,15 @@
 				E703D214185E81ED00547738 /* ofxDelaunay.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		E7131FE018F762FD00F1277E /* BackgroundParticles */ = {
+			isa = PBXGroup;
+			children = (
+				E7131FE118F762FD00F1277E /* VoxelMesh.cpp */,
+				E7131FE218F762FD00F1277E /* VoxelMesh.h */,
+			);
+			path = BackgroundParticles;
 			sourceTree = "<group>";
 		};
 		E7302C79187F2C460079C5B8 /* Portal */ = {
@@ -2608,6 +2624,7 @@
 				64A8184E18E12695006C8AF9 /* ofxTLTrackHeader.cpp in Sources */,
 				64A8184F18E12695006C8AF9 /* NetworkingUtils.cpp in Sources */,
 				64A8185018E12695006C8AF9 /* ofxTLVideoThumb.cpp in Sources */,
+				E7131FE618F762FD00F1277E /* VoxelMesh.cpp in Sources */,
 				64A8185118E12695006C8AF9 /* ofxTLVideoTrack.cpp in Sources */,
 				64A8185218E12695006C8AF9 /* ofxTLZoomer.cpp in Sources */,
 				64A8185318E12695006C8AF9 /* ofxMSATimer.cpp in Sources */,
@@ -2709,6 +2726,7 @@
 				A6CB16791887A4C700C55907 /* CloudsRGBDPointLayer.cpp in Sources */,
 				AE6FFE90187F403600677B60 /* ofxHotKeys_impl_win.cpp in Sources */,
 				AE6FFE91187F403600677B60 /* ofxRemoveCocoaMenu.mm in Sources */,
+				E7131FE518F762FD00F1277E /* VoxelMesh.cpp in Sources */,
 				AE6FFE92187F403600677B60 /* CloudsInputKinectOSC.cpp in Sources */,
 				AE6FFE93187F403600677B60 /* ofxTimeline.cpp in Sources */,
 				AE6FFE94187F403600677B60 /* ofxTLAudioTrack.cpp in Sources */,
@@ -2869,6 +2887,7 @@
 				3D5B9684175308D000F558AC /* ofxEasingExpo.cpp in Sources */,
 				3D5B9685175308D000F558AC /* ofxEasingLinear.cpp in Sources */,
 				3D5B9686175308D000F558AC /* ofxEasingQuad.cpp in Sources */,
+				E7131FE318F762FD00F1277E /* VoxelMesh.cpp in Sources */,
 				3D5B9687175308D000F558AC /* ofxEasingQuart.cpp in Sources */,
 				3D5B9688175308D000F558AC /* ofxEasingQuint.cpp in Sources */,
 				3D5B9689175308D000F558AC /* ofxEasingSine.cpp in Sources */,
@@ -2978,6 +2997,7 @@
 				E738FFAE183C86F50018AB96 /* ofxTLVideoThumb.cpp in Sources */,
 				E738FFAF183C86F50018AB96 /* ofxTLVideoTrack.cpp in Sources */,
 				E738FFB0183C86F50018AB96 /* ofxTLZoomer.cpp in Sources */,
+				E7131FE418F762FD00F1277E /* VoxelMesh.cpp in Sources */,
 				E738FFB1183C86F50018AB96 /* ofxMSATimer.cpp in Sources */,
 				E738FFB2183C86F50018AB96 /* ofxTextInputField.cpp in Sources */,
 				E738FFB3183C86F50018AB96 /* ofxEasing.cpp in Sources */,

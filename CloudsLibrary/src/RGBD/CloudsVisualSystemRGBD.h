@@ -10,6 +10,7 @@
 #include "ofxFTGL.h"
 #include "CloudsPortalEvents.h"
 #include "CloudsRGBDPointLayer.h"
+#include "VoxelMesh.h"
 
 struct TransitionInfo{
 	ofVec3f inStartPos;
@@ -257,11 +258,13 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	ofxUISuperCanvas *cameraGui;
 	ofxUISuperCanvas *particleGui;
+	ofxUISuperCanvas *backgroundMeshGui;
 	ofxUISuperCanvas *questionGui;
     ofxUISuperCanvas *actuatorGui;
     
 	bool drawParticulate;
 	float attenuatedCameraDrift;
+	VoxelMesh voxelMesh;
 	GPUParticles::Controller particulateController;
     float particleCount;
     ofVec4f pointColor;
