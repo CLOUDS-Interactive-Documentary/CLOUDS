@@ -22,9 +22,15 @@ void CloudsVisualSystem2DVideo::selfSetupGui()
     playerGui->addSlider("INTIME", 0, 1000, &inTime);
     playerGui->addSlider("OUTTIME", 0, 1000, &outTime);
     
+    selfSetDefaults();
 	ofAddListener(playerGui->newGUIEvent, this, &CloudsVisualSystem2DVideo::selfGuiEvent);
 	guis.push_back(playerGui);
 	guimap[playerGui->getName()] = playerGui;
+}
+
+void CloudsVisualSystem2DVideo:: selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode =  CURSOR_MODE_INACTIVE;
 }
 
 //--------------------------------------------------------------
