@@ -149,41 +149,61 @@ public:
 };
 
 
-
-
 /**
  * Data structure for keeping track of the map
  */
 
 class colonyPartitionMap {
 private:
-    vector<cellPtr>* partitions[MAP_SUBDIV * MAP_SUBDIV];
+    vector<cellPtr>*  partitions[MAP_SUBDIV * MAP_SUBDIV];
     neighbor_iterator* neighbors[MAP_SUBDIV * MAP_SUBDIV];
     
 public:
     colonyPartitionMap(){
         //Populating this in advance. Cost is very little for any reasonably sized partition.
-        for (int i = 0 ; i < MAP_SUBDIV ; ++i){
+        for (int i = 0 ; i < MAP_SUBDIV ; ++i) {
             for (int j = 0; j < MAP_SUBDIV; ++j) {
                 coord2i c = coord2i(i, j);
                 partitions[c.ordered()] = new vector<cellPtr>();
-            }}}
+            }
+		}
+
+		for(int i = 0; i < MAP_SUBDIV * MAP_SUBDIV; i++){
+			neighbors[i] = NULL;
+		}
+
+	}
+
     ~colonyPartitionMap(){
         clear();
         for ( int i = 0 ; i < MAP_SUBDIV * MAP_SUBDIV ; i++ ){
-            delete partitions[i];
+			if(partitions[i] != NULL){
+	            delete partitions[i];
+			}
             partitions[i] = NULL; //UGH C++
         }
     }
+
     void clear(){
         for (int i = 0 ; i < MAP_SUBDIV * MAP_SUBDIV ; i++) {
             partitions[i]->clear();
-            delete neighbors[i];
+			if(neighbors != NULL){
+	            delete neighbors[i];
+			}
             neighbors[i] = NULL; //YOU ARE A BAD MAN, BJARNE
         }
     }
-    void put(const cellPtr& cp){partitions[coord2i(cp->getPosition()).ordered()]->push_back(cp);}
-    void put(const vector<cellPtr>& vec){ for (int i = 0 ; i < vec.size() ; i++){ put(vec[i]); }}
+
+    void put(const cellPtr& cp){
+		partitions[coord2i(cp->getPosition()).ordered()]->push_back(cp);
+	}
+
+    void put(const vector<cellPtr>& vec){ 
+		for (int i = 0 ; i < vec.size() ; i++){
+			put(vec[i]);
+		}
+	}
+
     neighbor_iterator getNeighbours(const coord2i& c)
     {
         neighbor_iterator* k = neighbors[c.ordered()];
@@ -194,11 +214,13 @@ public:
             for (int i = MAX((c.x - 1),0) ; i <= MIN((c.x +1), (MAP_SUBDIV - 1)); i++){
                 for (int j = MAX((c.y - 1),0) ; j <= MIN((c.y +1), (MAP_SUBDIV - 1)); j++){
                     iter->add(*partitions[coord2i(i,j).ordered()]);
-                    }}
+				}
+			}
             iter->initialize();
             neighbors[c.ordered()] = iter;
             return *iter; //return a copy
-        }}
+        }
+	}
     
 private:
     colonyPartitionMap(colonyPartitionMap const& c);//singleton

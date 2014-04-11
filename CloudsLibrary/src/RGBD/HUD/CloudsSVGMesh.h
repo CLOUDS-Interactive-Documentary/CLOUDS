@@ -41,7 +41,9 @@ class CloudsSVGMesh
     float alpha;
 	
   protected:
+	//void recurseSVGTag(ofxXmlSettings& xml, const string& parentId, float parentOpacity);
 	void recurseSVGTag(ofxXmlSettings& xml, const string& parentId, float parentOpacity);
+	
 	vector<SVGMesh> meshes;
 	map<string,int> meshIdIndex;
 	

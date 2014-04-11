@@ -266,7 +266,7 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 			presets[i].system->setup();
 		}
 		else{
-			ofLogError("CloudsPlaybackController::playAct") << presets[i].systemName << " NULL right after instantiaton. correlating system null? " << (systems[i] == NULL ? "YES" : "NO");
+			ofLogError("CloudsPlaybackController::playAct") << presets[i].systemName << " NULL right after instantiaton.";
 		}
 	}
 	
