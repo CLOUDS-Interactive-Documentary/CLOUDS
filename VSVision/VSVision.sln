@@ -1,0 +1,100 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openframeworksLib", "..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj", "{5837595D-ACA9-485C-8E76-729040CE4B0B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxUILib", "..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj", "{641DB976-E775-4D72-86EB-897E2C4A0EEE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTimelineLib", "..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj", "{A72C4F16-CB16-4143-BA5C-5E4FA802D636}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxCvLib", "..\..\..\addons\ofxCv\ofxCvLib\ofxCvLib.vcxproj", "{FAA73572-FD12-41FA-8FBE-CB47482D2D87}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSVision", "VSVision.vcxproj", "{7FD42DF7-442E-479A-BA76-D0022F99702A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTonicLib", "..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonicLib.vcxproj", "{E93BD96C-A459-499F-840D-29B0166CBFF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug KinectOSC|Win32 = Debug KinectOSC|Win32
+		Debug KinectOSC|x64 = Debug KinectOSC|x64
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug KinectOSC|Win32.ActiveCfg = Release|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug KinectOSC|Win32.Build.0 = Release|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug KinectOSC|x64.ActiveCfg = Debug|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug KinectOSC|x64.Build.0 = Debug|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug|Win32.ActiveCfg = Release|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug|Win32.Build.0 = Release|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug|x64.ActiveCfg = Debug|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug|x64.Build.0 = Debug|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Release|Win32.ActiveCfg = Release|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Release|Win32.Build.0 = Release|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Release|x64.ActiveCfg = Release|x64
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Release|x64.Build.0 = Release|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug KinectOSC|Win32.ActiveCfg = Release|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug KinectOSC|Win32.Build.0 = Release|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug KinectOSC|x64.ActiveCfg = Debug|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug KinectOSC|x64.Build.0 = Debug|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug|Win32.ActiveCfg = Release|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug|Win32.Build.0 = Release|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug|x64.ActiveCfg = Debug|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Debug|x64.Build.0 = Debug|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|Win32.ActiveCfg = Release|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|Win32.Build.0 = Release|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|x64.ActiveCfg = Release|x64
+		{641DB976-E775-4D72-86EB-897E2C4A0EEE}.Release|x64.Build.0 = Release|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug KinectOSC|Win32.ActiveCfg = Release|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug KinectOSC|Win32.Build.0 = Release|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug KinectOSC|x64.ActiveCfg = Debug|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug KinectOSC|x64.Build.0 = Debug|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug|Win32.ActiveCfg = Release|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug|Win32.Build.0 = Release|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug|x64.ActiveCfg = Debug|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Debug|x64.Build.0 = Debug|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release|Win32.ActiveCfg = Release|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release|Win32.Build.0 = Release|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release|x64.ActiveCfg = Release|x64
+		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release|x64.Build.0 = Release|x64
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Debug KinectOSC|Win32.ActiveCfg = Debug|Win32
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Debug KinectOSC|Win32.Build.0 = Debug|Win32
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Debug KinectOSC|x64.ActiveCfg = Debug|Win32
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Debug|Win32.Build.0 = Debug|Win32
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Debug|x64.ActiveCfg = Debug|x64
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Debug|x64.Build.0 = Debug|x64
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Release|Win32.ActiveCfg = Release|Win32
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Release|Win32.Build.0 = Release|Win32
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Release|x64.ActiveCfg = Release|x64
+		{FAA73572-FD12-41FA-8FBE-CB47482D2D87}.Release|x64.Build.0 = Release|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug KinectOSC|Win32.ActiveCfg = Debug KinectOSC|Win32
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug KinectOSC|Win32.Build.0 = Debug KinectOSC|Win32
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug KinectOSC|x64.ActiveCfg = Debug KinectOSC|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug KinectOSC|x64.Build.0 = Debug KinectOSC|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|Win32.Build.0 = Debug|Win32
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|x64.ActiveCfg = Debug|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|x64.Build.0 = Debug|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|Win32.ActiveCfg = Release|Win32
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|Win32.Build.0 = Release|Win32
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|x64.ActiveCfg = Release|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|x64.Build.0 = Release|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug KinectOSC|Win32.ActiveCfg = Debug|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug KinectOSC|Win32.Build.0 = Debug|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug KinectOSC|x64.ActiveCfg = Debug|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug KinectOSC|x64.Build.0 = Debug|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|Win32.Build.0 = Debug|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|x64.ActiveCfg = Debug|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|x64.Build.0 = Debug|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|Win32.ActiveCfg = Release|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|Win32.Build.0 = Release|Win32
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|x64.ActiveCfg = Release|x64
+		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

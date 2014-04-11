@@ -1683,11 +1683,15 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
 //    ofxBillboardEnd();
 //    ofPopMatrix();
     
-    
+	cam.setVFlip(false);
+
     if(bRenderFeed && ! bOldData){
         ofPushStyle();
+		//ofPushMatrix();
+		//ofTranslate(ofPoint(-ofGetWidth(),-ofGetHeight()));
         ofNoFill();
         drawFeed();
+		///ofPopMatrix();
         ofPopStyle();
     }
 }
