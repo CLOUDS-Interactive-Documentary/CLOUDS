@@ -2,6 +2,6 @@
 
 //--------------------------------------------------------------
 int main(){
-	ofSetupOpenGL(1224, 768, OF_FULLSCREEN);
+	ofSetupOpenGL(1224, 768, OF_WINDOW);
 	ofRunApp(new testApp());
 }
