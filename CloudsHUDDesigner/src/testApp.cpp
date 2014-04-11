@@ -9,118 +9,33 @@ void testApp::setup(){
 	ofToggleFullscreen();
     ofEnableSmoothing();
 	ofBackground(0,0,0);
-//	currentAct = NULL;
-//	rebuildAct = false;
 
 	parser.loadFromFiles();
 	
-//	visualSystems.loadPresets();
-//	
-//	storyEngine.parser = &parser;
-//	storyEngine.visualSystems = &visualSystems;
-//	
-//	storyEngine.setup();
-//	storyEngine.printDecisions = false;
-//	storyEngine.toggleGuis();
-//	
-//	parser.printDichotomyRatios();
-//	
-//	websockets.setup();
-	
-//	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
+
 	
 	hud.setup();
 }
 
 //--------------------------------------------------------------
-//void testApp::actCreated(CloudsActEventArgs& args){
-//	
-//	if(currentAct != NULL){
-//		currentAct->unregisterEvents(this);
-//		currentAct->unregisterEvents(&websockets);
-//		delete currentAct;
-//	}
-//
-//	
-//	currentAct = args.act;
-//	currentAct->registerEvents(this);
-//	currentAct->registerEvents(&websockets);
-//	
-//	currentAct->play();
-//    currentAct->getTimeline().enableEvents();
-//}
-
-////--------------------------------------------------------------
-//void testApp::actBegan(CloudsActEventArgs& args){
-////	cout << "act began" << endl;
-//}
-//
-////--------------------------------------------------------------
-//void testApp::actEnded(CloudsActEventArgs& args){
-//	
-//}
-//
-////--------------------------------------------------------------
-//void testApp::clipBegan(CloudsClipEventArgs& args){
-//	
-//}
-//
-////--------------------------------------------------------------
-//void testApp::visualSystemBegan(CloudsVisualSystemEventArgs& args){
-//	
-//}
-//
-////--------------------------------------------------------------
-//void testApp::visualSystemEnded(CloudsVisualSystemEventArgs& args){
-//	
-//}
-//
-////--------------------------------------------------------------
-//void testApp::topicChanged(CloudsTopicEventArgs& newTopic){
-//	
-//}
-//
-//void testApp::questionAsked(CloudsQuestionEventArgs& args){
-//    
-//}
-//
-//void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
-//    
-//}
-
-//--------------------------------------------------------------
 void testApp::update(){
 	hud.update();
-//	ofShowCursor();
-	//keepin it real
-//	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-//	ofBackground(mouseX);
+
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 20,20);
 	hud.draw();
-//    if(currentAct != NULL){
-//		currentAct->drawDebug();
-//	}
 }
 
 //--------------------------------------------------------------
 void testApp::exit(){
-//    storyEngine.saveGuiSettings();
 	hud.saveGuiSettings();
 }
 
 //--------------------------------------------------------------
-void testApp::guiEvent(ofxUIEventArgs &e)
-{
-//    string name = e.widget->getName();
-//    ofxUIButton* b = (ofxUIButton*) e.widget;
-//    if(name == "BUILD ACT" &&  b->getValue() ){
-//        rebuildAct = true;
-//    }
-
+void testApp::guiEvent(ofxUIEventArgs &e){
 }
 
 //--------------------------------------------------------------
