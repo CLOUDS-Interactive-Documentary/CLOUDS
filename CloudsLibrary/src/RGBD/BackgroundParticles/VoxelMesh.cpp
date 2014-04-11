@@ -15,6 +15,8 @@ VoxelMesh::VoxelMesh(){
 	noisePosition = 0;
 	twistPositionX = 0;
 	twistPositionY = 0;
+	drawPoints = false;
+	drawLines = false;
 
 }
 
@@ -45,54 +47,60 @@ void VoxelMesh::draw(){
 	glDisable(GL_DEPTH_TEST);
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
-	lineShader.begin();
-	lineShader.setUniform1f("sphereRadius", sphereRadius);
-	lineShader.setUniform1f("spherePercent", spherePercent);
-	
-	lineShader.setUniform1f("minDistance", minDistance*voxelWidth);
-	lineShader.setUniform1f("maxDistance", maxDistance*voxelWidth);
-	
-	lineShader.setUniform1f("twistFactorX", twistPositionX*twistFactorX);
-	lineShader.setUniform1f("twistFactorY", twistPositionY*twistFactorY);
+	if(drawLines){
+		lineShader.begin();
+		lineShader.setUniform1f("sphereRadius", sphereRadius);
+		lineShader.setUniform1f("spherePercent", spherePercent);
+		
+		lineShader.setUniform1f("minDistance", minDistance*voxelWidth);
+		lineShader.setUniform1f("maxDistance", maxDistance*voxelWidth);
+		
+		lineShader.setUniform1f("twistFactorX", twistPositionX*twistFactorX);
+		lineShader.setUniform1f("twistFactorY", twistPositionY*twistFactorY);
 
-	lineShader.setUniform4f("noiseDistort",
-							powf(noiseDistort.x, 2.0f),
-							powf(noiseDistort.y, 2.0f),
-							powf(noiseDistort.z, 2.0f),
-							powf(noiseDistort.w, 2.0f));
-	
-	lineShader.setUniform1f("noiseDensity", powf(noiseDensity, 2.0f));
-	lineShader.setUniform1f("noisePosition", noisePosition);
+		lineShader.setUniform4f("noiseDistort",
+								powf(noiseDistort.x, 2.0f),
+								powf(noiseDistort.y, 2.0f),
+								powf(noiseDistort.z, 2.0f),
+								powf(noiseDistort.w, 2.0f));
+		
+		lineShader.setUniform1f("noiseDensity", powf(noiseDensity, 2.0f));
+		lineShader.setUniform1f("noisePosition", noisePosition);
 
-	lineShader.setUniform1f("centerDecayMinRadius", centerDecayMinRadius);
-	lineShader.setUniform1f("centerDecayMaxRadius", centerDecayMaxRadius);
+		lineShader.setUniform1f("centerDecayMinRadius", centerDecayMinRadius*currentVoxelWidth*numVoxels*.5);
+		lineShader.setUniform1f("centerDecayMaxRadius", centerDecayMaxRadius*currentVoxelWidth*numVoxels*.5);
 
-	lineVbo.draw(GL_LINES, 0, nLineIndices);
-	lineShader.end();
+		lineVbo.draw(GL_LINES, 0, nLineIndices);
+		lineShader.end();
+	}
 	
-	pointShader.begin();
-	pointShader.setUniform1f("sphereRadius",  sphereRadius);
-	pointShader.setUniform1f("spherePercent", spherePercent);
-	
-	pointShader.setUniform1f("minDistance", minDistance*voxelWidth);
-	pointShader.setUniform1f("maxDistance", maxDistance*voxelWidth);
-	
-	pointShader.setUniform1f("twistFactorX", twistPositionX*twistFactorX);
-	pointShader.setUniform1f("twistFactorY", twistPositionY*twistFactorY);
-	
-	pointShader.setUniform4f("noiseDistort",
-							powf(noiseDistort.x, 2.0f),
-							powf(noiseDistort.y, 2.0f),
-							powf(noiseDistort.z, 2.0f),
-							powf(noiseDistort.w, 2.0f));
-	pointShader.setUniform1f("noiseDensity", powf(noiseDensity, 2.0f));
-	
-	pointShader.setUniform1f("noisePosition", noisePosition);
-	
-	//pointVbo.draw(GL_POINTS, 0, nPointIndices);
-	
-	pointShader.end();
+	if(drawPoints){
+		pointShader.begin();
+		pointShader.setUniform1f("sphereRadius",  sphereRadius);
+		pointShader.setUniform1f("spherePercent", spherePercent);
+		
+		pointShader.setUniform1f("minDistance", minDistance*voxelWidth);
+		pointShader.setUniform1f("maxDistance", maxDistance*voxelWidth);
+		
+		pointShader.setUniform1f("twistFactorX", twistPositionX*twistFactorX);
+		pointShader.setUniform1f("twistFactorY", twistPositionY*twistFactorY);
+		
+		pointShader.setUniform4f("noiseDistort",
+								powf(noiseDistort.x, 2.0f),
+								powf(noiseDistort.y, 2.0f),
+								powf(noiseDistort.z, 2.0f),
+								powf(noiseDistort.w, 2.0f));
+		pointShader.setUniform1f("noiseDensity", powf(noiseDensity, 2.0f));
+		
+		pointShader.setUniform1f("noisePosition", noisePosition);
+		
+		lineShader.setUniform1f("centerDecayMinRadius", centerDecayMinRadius*currentVoxelWidth*numVoxels*.5);
+		lineShader.setUniform1f("centerDecayMaxRadius", centerDecayMaxRadius*currentVoxelWidth*numVoxels*.5);
 
+		pointVbo.draw(GL_POINTS, 0, nPointIndices);
+		
+		pointShader.end();
+	}
 	ofDisableAlphaBlending();
 	ofPopStyle();
 	ofPopMatrix();

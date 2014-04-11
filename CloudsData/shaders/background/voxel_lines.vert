@@ -9,13 +9,15 @@ uniform vec4 noiseDistort;
 uniform float noiseDensity;
 uniform float noisePosition;
 
+uniform float centerDecayMaxRadius;
+uniform float centerDecayMinRadius;
 
 uniform float minDistance;
 uniform float maxDistance;
 
 varying vec3 normPos;
 varying float vertDistance;
-
+varying float decayFactor;
 
 //-----------------------------
 mat4 rotationMatrix(vec3 axis, float angle)
@@ -189,9 +191,9 @@ void main(void) {
 	vec4 basePos = gl_Vertex;
 	basePos.xyz = vertPos(basePos.xyz);
 	normPos = vertPos(gl_Normal);
-	
+
 	vertDistance = length(basePos.xyz - normPos);
-	
+	decayFactor = smoothstep(centerDecayMinRadius, centerDecayMaxRadius, length(basePos) );
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * basePos;
 
 	gl_FrontColor = gl_Color;

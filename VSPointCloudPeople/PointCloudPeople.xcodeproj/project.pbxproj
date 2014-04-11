@@ -1058,6 +1058,10 @@
 		E703D214185E81ED00547738 /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
 		E7131FE118F762FD00F1277E /* VoxelMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelMesh.cpp; sourceTree = "<group>"; };
 		E7131FE218F762FD00F1277E /* VoxelMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelMesh.h; sourceTree = "<group>"; };
+		E7131FE818F7832100F1277E /* voxel_lines.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = voxel_lines.frag; sourceTree = "<group>"; };
+		E7131FE918F7832100F1277E /* voxel_lines.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = voxel_lines.vert; sourceTree = "<group>"; };
+		E7131FEA18F7832100F1277E /* voxel_points.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = voxel_points.frag; sourceTree = "<group>"; };
+		E7131FEB18F7832100F1277E /* voxel_points.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = voxel_points.vert; sourceTree = "<group>"; };
 		E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortal.cpp; sourceTree = "<group>"; };
 		E7302C7B187F2C470079C5B8 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
 		E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
@@ -2254,10 +2258,23 @@
 		E7131FE018F762FD00F1277E /* BackgroundParticles */ = {
 			isa = PBXGroup;
 			children = (
+				E7131FE718F7832100F1277E /* background */,
 				E7131FE118F762FD00F1277E /* VoxelMesh.cpp */,
 				E7131FE218F762FD00F1277E /* VoxelMesh.h */,
 			);
 			path = BackgroundParticles;
+			sourceTree = "<group>";
+		};
+		E7131FE718F7832100F1277E /* background */ = {
+			isa = PBXGroup;
+			children = (
+				E7131FE818F7832100F1277E /* voxel_lines.frag */,
+				E7131FE918F7832100F1277E /* voxel_lines.vert */,
+				E7131FEA18F7832100F1277E /* voxel_points.frag */,
+				E7131FEB18F7832100F1277E /* voxel_points.vert */,
+			);
+			name = background;
+			path = ../../../../CloudsData/shaders/background;
 			sourceTree = "<group>";
 		};
 		E7302C79187F2C460079C5B8 /* Portal */ = {

@@ -481,7 +481,10 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	backgroundMeshGui->copyCanvasProperties(gui);
 	backgroundMeshGui->setName("Backgroundmesh");
 	backgroundMeshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-
+	
+	backgroundMeshGui->addToggle("draw points", &voxelMesh.drawPoints);
+	backgroundMeshGui->addToggle("draw lines", &voxelMesh.drawLines);
+	
 	backgroundMeshGui->addIntSlider("num voxels", 10, 100, &voxelMesh.numVoxels);
 	backgroundMeshGui->addSlider("voxel spacing", 10, 100, &voxelMesh.voxelWidth);
 	
@@ -500,6 +503,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	backgroundMeshGui->addSlider("noise distort z", 0, 1.0, &voxelMesh.noiseDistort.z);
 	backgroundMeshGui->addSlider("noise distort radial", 0, 1.0, &voxelMesh.noiseDistort.w);
 	backgroundMeshGui->addSlider("noise density", 0, 0.2, &voxelMesh.noiseDensity);
+	backgroundMeshGui->addRangeSlider("center decay", 0, 1.0, &voxelMesh.centerDecayMinRadius, &voxelMesh.centerDecayMaxRadius);
 	
 	backgroundMeshGui->addSlider("noise speed", 0, 0.1, &voxelMesh.noiseSpeed);
 	

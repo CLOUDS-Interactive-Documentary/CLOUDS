@@ -14,7 +14,6 @@ class VoxelMesh {
   public:
 	VoxelMesh();
 		
-	
 	void setup();
 	void update();
 	void draw();
@@ -47,6 +46,9 @@ class VoxelMesh {
 	float centerDecayMinRadius;
 	float centerDecayMaxRadius;
 	ofVec3f center;
+	
+	bool drawPoints;
+	bool drawLines;
 	
   protected:
 	float noisePosition;

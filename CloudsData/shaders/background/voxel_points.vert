@@ -12,9 +12,12 @@ uniform float noisePosition;
 uniform float minDistance;
 uniform float maxDistance;
 
-varying vec3 normPos;
-varying float vertDistance;
+uniform float centerDecayMaxRadius;
+uniform float centerDecayMinRadius;
 
+varying vec3 normPos;
+varying float noiseActivateDecay;
+varying float centerDecayFactor;
 
 //-----------------------------
 mat4 rotationMatrix(vec3 axis, float angle)
@@ -170,18 +173,21 @@ vec3 vertPos(vec3 basePos){
 	basePos += vec3((noiseDistort.x == 0.0) ? 0.0 : snoise(vec4(basePos.xyz*noiseDensity, noisePosition)) * noiseDistort.x,
 					(noiseDistort.y == 0.0) ? 0.0 : snoise(vec4(basePos.yxz*noiseDensity, noisePosition)) * noiseDistort.y,
 					(noiseDistort.z == 0.0) ? 0.0 : snoise(vec4(basePos.zxy*noiseDensity, noisePosition)) * noiseDistort.z) * 100.0;
-	return basePos;
 	
-//	vec3 fromCenterDir = normalize(basePos.xyz);
-//	vec3 spherePosition = fromCenterDir * sphereRadius;
-//	
-//	float noiseEffect = snoise( vec4(basePos*noiseDensity,noisePosition) ) * noiseDistort.w;
-//	vec3 towardsSphere = mix(basePos.xyz, spherePosition, spherePercent+noiseEffect);
-//	
-//	mat4 twist =  rotationMatrix( vec3(0.0,1.0,0.0), basePos.y*twistFactorY );
-//	mat4 twist2 = rotationMatrix( vec3(1.0,0.0,0.0), basePos.x*twistFactorX );
-//	
-//	return (twist2 * twist * vec4(towardsSphere,1.0)).xyz;
+	noiseActivateDecay = length(gl_Vertex.xyz - basePos.xyz);
+	
+	basePos.xyz = gl_Vertex.xyz;
+	
+	vec3 fromCenterDir = normalize(basePos.xyz);
+	vec3 spherePosition = fromCenterDir * sphereRadius;
+	
+	float noiseEffect = snoise( vec4(basePos*noiseDensity,noisePosition) ) * noiseDistort.w;
+	vec3 towardsSphere = mix(basePos.xyz, spherePosition, spherePercent+noiseEffect);
+	
+	mat4 twist =  rotationMatrix( vec3(0.0,1.0,0.0), basePos.y*twistFactorY );
+	mat4 twist2 = rotationMatrix( vec3(1.0,0.0,0.0), basePos.x*twistFactorX );
+	
+	return (twist2 * twist * vec4(towardsSphere,1.0)).xyz;
 }
 
 void main(void) {
@@ -189,8 +195,8 @@ void main(void) {
 	vec4 basePos = gl_Vertex;
 	
 	basePos.xyz = vertPos(basePos.xyz);
-
-	vertDistance = length(gl_Vertex.xyz - basePos.xyz);
+	
+	centerDecayFactor = smoothstep(centerDecayMinRadius, centerDecayMaxRadius, length(basePos) );
 	
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * basePos;
 
