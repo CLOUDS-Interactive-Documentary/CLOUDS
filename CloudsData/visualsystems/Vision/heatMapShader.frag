@@ -1,3 +1,5 @@
+#version 120
+#extension GL_ARB_texture_rectangle : enable
 
 //here are some example uniforms
 //sampler 2d rect is a texture
