@@ -213,7 +213,9 @@ void CloudsVisualSystemExampleOpenSteer::selfSetup(){
 	simulations.push_back(&pathFollowing);
 	simulations.push_back(&obstacleAvoidance);
     simulations.push_back(&pursuitAndEvade);
-		
+
+	currentSimulation = NULL;
+
 //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
 }
@@ -239,8 +241,8 @@ void CloudsVisualSystemExampleOpenSteer::selfBegin(){
 	// we wanna make sure our camera is close enough
 	//getCameraRef()->setDistance(50);
     
-    currentSimulation = NULL;
-	setSimulation(0);
+//    currentSimulation = NULL;
+//	setSimulation(0);
 }
 
 void CloudsVisualSystemExampleOpenSteer::setSimulation( int simulationIndex ){

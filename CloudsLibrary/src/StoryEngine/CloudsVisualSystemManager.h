@@ -32,7 +32,7 @@ class CloudsVisualSystemManager {
     bool hasPresetWithID(const string& ID, int& index);
 	CloudsVisualSystemPreset& getPresetForSystem(const string& systemName, const string& presetName);
 	
-	vector<int> getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA, string systemName = "");
+	vector<int> getFilteredPresetIndeces(bool enabled = false, bool oculus = false, bool gradeA = false, string systemName = "");
 //	vector<int> getFilteredPresetIndecesForSystem(,bool enabled, bool oculus, bool gradeA);
 		
 	vector<CloudsVisualSystemPreset>& getPresets();

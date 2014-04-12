@@ -56,7 +56,13 @@ namespace itg
         {
             //lineMesh.addVertex(ofVec3f());
             float alpha = ofMap(i, 0, fadeIdx, 0.f, 1.f, true);
-            lineParticles.getMeshRef().addColor(ofFloatColor::fromHsb(ofMap(abs(points[i].getPos().x) + abs(points[i].getPos().y), 0, 50, hueMin, hueMax, true), 0.5, 1.0, alpha));
+			//JG points was size zero which created a crash, safe fix here.
+			if(i < points.size()){
+				lineParticles.getMeshRef().addColor(ofFloatColor::fromHsb(ofMap(abs(points[i].getPos().x) + abs(points[i].getPos().y), 0, 50, hueMin, hueMax, true), 0.5, 1.0, alpha));
+			}
+			else{
+				lineParticles.getMeshRef().addColor(ofFloatColor::black);
+			}
         }
         
         updateSlice();

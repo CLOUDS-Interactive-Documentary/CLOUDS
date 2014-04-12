@@ -274,18 +274,16 @@ struct Mapping {
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 
 CloudsVisualSystem* CloudsVisualSystemManager::InstantiateSystem(const string& systemName){
-    //RIG EMPTY ONLY
-//    CloudsVisualSystem* system = new CloudsVisualSystemEmpty();
-//    systems.push_back( system );
-//    return system;
-
+	CloudsVisualSystem* system;
 	if(constructors.find(systemName) != constructors.end()){
-        CloudsVisualSystem* system = constructors[systemName]();
-        systems.push_back( system );
-		return system;
+        system = constructors[systemName]();
 	}
-    cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << endl;
-	return NULL;
+	else{
+		system = new CloudsVisualSystemEmpty();
+	    ofLogError("CloudsVisualSystemManager::InstantiateSystem") << systemName << " Doesn't Exist. Returning empty system." << endl;
+	}
+	systems.push_back( system );
+	return system;
 }
 
 //--------------------------------------------------------------------
