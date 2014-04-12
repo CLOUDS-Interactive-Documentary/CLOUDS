@@ -26,7 +26,10 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfSetupGui(){
 	guimap[customGui->getName()] = customGui;
      */
 }
-
+void CloudsVisualSystemOpenP5SpinningSolids::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemOpenP5SpinningSolids::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;

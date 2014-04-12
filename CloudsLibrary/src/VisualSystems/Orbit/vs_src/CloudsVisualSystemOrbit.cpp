@@ -46,7 +46,10 @@ void CloudsVisualSystemOrbit::selfSetup()
     
     shader.load(getVisualSystemDataPath() + "shaders/orbit");
 }
-
+void CloudsVisualSystemOrbit::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode =CURSOR_MODE_INACTIVE;
+}
 //normal update call
 void CloudsVisualSystemOrbit::selfUpdate()
 {

@@ -51,6 +51,10 @@ void CloudsVisualSystemOpenP5Fifteen::selfSetupGui()
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemOpenP5Fifteen::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5Fifteen::selfGuiEvent(ofxUIEventArgs &e)
 {

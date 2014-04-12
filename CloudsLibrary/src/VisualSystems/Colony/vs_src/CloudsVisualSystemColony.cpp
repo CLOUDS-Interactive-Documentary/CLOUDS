@@ -68,6 +68,8 @@ void CloudsVisualSystemColony::selfSetDefaults(){
     } else {
         ofLog(OF_LOG_ERROR, "[Colony] no textures in texture directory");
     }
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemColony::loadShaders(){

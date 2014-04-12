@@ -159,8 +159,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
-	primaryCursorMode = CURSOR_MODE_NONE;
-    secondaryCursorMode = CURSOR_MODE_NONE;
+	primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 	updateCyclced = false;
     bDoBloom = false;
     bloomAmount = 0.;

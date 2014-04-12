@@ -77,7 +77,10 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfGuiEvent(ofxUIEventArgs &e)
         fgAlpha->setPosAndHome(fgAlpha->getPos());
     }
 }
-
+void CloudsVisualSystemOpenP5DrawingMachine10::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemOpenP5DrawingMachine10::selfSetupSystemGui(){
 	

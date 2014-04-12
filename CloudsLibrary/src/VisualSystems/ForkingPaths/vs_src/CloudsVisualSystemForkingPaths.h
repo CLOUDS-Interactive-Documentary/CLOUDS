@@ -71,6 +71,8 @@ public:
     
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
+    
+    void selfSetDefaults();
 	
   protected:	
 	void addPath();

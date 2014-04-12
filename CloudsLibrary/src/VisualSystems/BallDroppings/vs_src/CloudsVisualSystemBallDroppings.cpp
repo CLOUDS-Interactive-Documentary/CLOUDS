@@ -39,6 +39,10 @@ void CloudsVisualSystemBallDroppings::selfSetupGui()
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemBallDroppings::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode =  CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemBallDroppings::selfGuiEvent(ofxUIEventArgs &e)
 {
 

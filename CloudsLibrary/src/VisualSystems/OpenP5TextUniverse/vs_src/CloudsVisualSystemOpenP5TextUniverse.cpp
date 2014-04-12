@@ -161,7 +161,10 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
 	guis.push_back(textGui);
 	guimap[customGui->getName()] = textGui;
 }
-
+void CloudsVisualSystemOpenP5TextUniverse::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
 {

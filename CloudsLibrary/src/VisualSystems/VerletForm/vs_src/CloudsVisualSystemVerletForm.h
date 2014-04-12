@@ -96,6 +96,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	ofCamera& getCameraRef(){
 			return cam;
 	}
+    void selfSetDefaults();
 
   protected:
 

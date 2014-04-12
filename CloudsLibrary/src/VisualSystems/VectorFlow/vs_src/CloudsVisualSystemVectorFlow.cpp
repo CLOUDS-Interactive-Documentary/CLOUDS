@@ -20,7 +20,10 @@ CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
 string CloudsVisualSystemVectorFlow::getSystemName(){
 	return "VectorFlow";
 }
-
+void CloudsVisualSystemVectorFlow::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //--------------------------------------------------------------
 void CloudsVisualSystemVectorFlow::initFlowField(){
 	maxVertices = generateMaxVerts;

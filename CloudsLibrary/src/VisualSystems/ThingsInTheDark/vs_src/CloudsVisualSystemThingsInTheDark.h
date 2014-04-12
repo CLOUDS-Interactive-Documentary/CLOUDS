@@ -42,6 +42,7 @@ class CloudsVisualSystemThingsInTheDark : public CloudsVisualSystem {
 	void guiRenderEvent(ofxUIEventArgs &e);
 	
 	void selfSetupTimeline();
+    void selfSetDefaults();
 	
 	void loadMovieForComposition(string videoPath);
 

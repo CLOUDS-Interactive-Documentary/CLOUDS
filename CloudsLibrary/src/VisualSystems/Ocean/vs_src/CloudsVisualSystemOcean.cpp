@@ -35,7 +35,10 @@ void CloudsVisualSystemOcean::selfSetup(){
     gain = 0;
     synth.setOutputGen(buildSynth());
 }
-
+void CloudsVisualSystemOcean::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemOcean::selfPresetLoaded(string presetPath){
 	generateOcean();
 }

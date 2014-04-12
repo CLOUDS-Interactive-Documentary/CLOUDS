@@ -41,7 +41,10 @@ void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
-
+void CloudsVisualSystemOpenP5Machine::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemOpenP5Machine::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;
