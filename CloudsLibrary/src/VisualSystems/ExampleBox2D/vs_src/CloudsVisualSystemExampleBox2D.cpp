@@ -595,7 +595,6 @@ void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
     
     if(!soundsLoaded){
         return;
-
     }
     
     float aVel = e.a->GetBody()->GetLinearVelocity().Length();

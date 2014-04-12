@@ -22,6 +22,8 @@ void testApp::setup(){
 		cout << systemManager.getPresets()[ presetIndices[i] ].systemName << " " << systemManager.getPresets()[ presetIndices[i] ].presetName << endl;
 	}
 
+	random_shuffle( presetIndices.begin(), presetIndices.end() );
+	//random_shuffle(presetIndices.begin(), presetIndices.end());
 
 }
 
