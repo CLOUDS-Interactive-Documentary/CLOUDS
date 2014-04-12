@@ -3794,13 +3794,26 @@ void CloudsVisualSystem::drawCursors()
 void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode)
 {
     if (mode == CURSOR_MODE_NONE) return;
+
+#ifdef KINECT_INPUT
+	// Fade out if we reach in too far.
+	float alphaScalar = ofMap(pos.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
+#else
+    float alphaScalar = 1.0f;
+#endif
     
     ofPushStyle();
 
     if (mode == CURSOR_MODE_INACTIVE) {
-        ofSetLineWidth(2);
-        ofSetColor(213, 69, 62, 192);
-        float totalRadius = cursorUpSize * 0.5;
+        ofSetLineWidth(3);
+        ofSetColor(213, 69, 62, 192 * alphaScalar);
+#ifdef OCULUS_RIFT
+        float totalRadius = cursorSize * 0.5;
+#elif KINECT_INPUT
+		float totalRadius = cursorUpSizeMax * 0.5;
+#else
+		float totalRadius = cursorUpSize * 0.5;
+#endif
         ofLine(pos.x - totalRadius, pos.y - totalRadius, pos.x + totalRadius, pos.y + totalRadius);
         ofLine(pos.x - totalRadius, pos.y + totalRadius, pos.x + totalRadius, pos.y - totalRadius);
     }
@@ -3808,7 +3821,8 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
         ofSetLineWidth(2);
         ofNoFill();
         if (bDragged) {
-            ofSetColor(62, 213, 69, 192);
+			ofSetColor(62, 69, 213, 192 * alphaScalar);
+
 #ifdef OCULUS_RIFT
             ofCircle(pos, cursorSize);
 #elif KINECT_INPUT
@@ -3818,7 +3832,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
             ofCircle(pos, cursorDownSize);
 #endif
         }
-        else {
+        else {  // !bDragged
 #ifdef OCULUS_RIFT
             ofSetColor(255, 255, 255, 64);
             ofCircle(pos, cursorSize);
@@ -3836,7 +3850,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
         ofSetLineWidth(2);
         static float coreRadius = 0.2f;
         if (bDragged) {
-            ofSetColor(62, 213, 69, 192);
+            ofSetColor(62, 69, 213, 192 * alphaScalar);
             float totalRadius;
 #ifdef OCULUS_RIFT
             totalRadius = cursorSize;
@@ -3852,7 +3866,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
             ofNoFill();
             ofCircle(pos, coreRadius);
         }
-        else {
+        else {  // !bDragged
             static float midRadius = 0.5f;
             float totalRadius;
 #ifdef OCULUS_RIFT
