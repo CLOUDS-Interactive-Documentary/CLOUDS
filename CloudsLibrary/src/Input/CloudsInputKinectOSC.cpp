@@ -21,6 +21,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , jointLerpPct(0.3f)
 , bClampToBounds(true)
 , bDoDebug(false)
+, viewerState(k4w::ViewerState_None)
 , boundsMin(-0.5f, -0.7f, 1.0f)
 , boundsMax( 0.5f, -0.2f, 2.0f)
 , posResetLerpPct(0.1f)
@@ -387,6 +388,17 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             currentPosition.interpolate(hands[primaryIdx]->handJoint.screenPosition, posSetLerpPct);
         }
     }
+
+	// update the viewer state
+	if (primaryIdx != -1) {
+		viewerState = k4w::ViewerState_Present;
+	}
+	else if (bodies.size()) {
+		viewerState = k4w::ViewerState_OutOfRange;
+	}
+	else {
+		viewerState = k4w::ViewerState_None;
+	}
 }
 
 //--------------------------------------------------------------

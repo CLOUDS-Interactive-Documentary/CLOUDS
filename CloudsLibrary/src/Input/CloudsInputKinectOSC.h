@@ -75,6 +75,14 @@ namespace k4w
         ActionState_Lasso       =  1,
         ActionState_Closed      =  2
     };
+
+	// defined by us
+    enum ViewerState 
+    {
+        ViewerState_None       = 0,
+        ViewerState_OutOfRange = 1,
+        ViewerState_Present    = 2
+    };
     
     struct Joint 
     {
@@ -184,6 +192,8 @@ public:
     bool bClampToBounds;
     
     bool bDoDebug;
+
+	k4w::ViewerState viewerState;
     
     // current position attributes
     float posResetLerpPct;
