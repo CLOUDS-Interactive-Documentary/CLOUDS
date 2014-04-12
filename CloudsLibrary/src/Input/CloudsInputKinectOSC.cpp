@@ -90,52 +90,59 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             // update the head joint
             bodies[idx]->headJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->headJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->headJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                     m.getArgAsFloat(i++), 
-                                                                     m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->headJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                     m.getArgAsFloat(i+1), 
+                                                                     m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // update the neck joint
             bodies[idx]->neckJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->neckJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->neckJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                     m.getArgAsFloat(i++),
-                                                                     m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->neckJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                     m.getArgAsFloat(i+1),
+                                                                     m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // update the spine shoulder joint
             bodies[idx]->spineShoulderJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineShoulderJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->spineShoulderJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                              m.getArgAsFloat(i++),
-                                                                              m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->spineShoulderJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                              m.getArgAsFloat(i+1),
+                                                                              m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // update the spine mid joint
             bodies[idx]->spineMidJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineMidJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->spineMidJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                         m.getArgAsFloat(i++),
-                                                                         m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->spineMidJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                         m.getArgAsFloat(i+1),
+                                                                         m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // update the spine base joint
             bodies[idx]->spineBaseJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineBaseJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->spineBaseJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                          m.getArgAsFloat(i++),
-                                                                          m.getArgAsFloat(i++)), jointLerpPct);
-            
-            // update the left shoulder joint
+            bodies[idx]->spineBaseJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                          m.getArgAsFloat(i+1),
+                                                                          m.getArgAsFloat(i+2)), jointLerpPct);
+			i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
+			// update the left shoulder joint
             bodies[idx]->shoulderLeftJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->shoulderLeftJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->shoulderLeftJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                             m.getArgAsFloat(i++),
-                                                                             m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->shoulderLeftJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                             m.getArgAsFloat(i+1),
+                                                                             m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // update the right shoulder joint
             bodies[idx]->shoulderRightJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->shoulderRightJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->shoulderRightJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                              m.getArgAsFloat(i++),
-                                                                              m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->shoulderRightJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                              m.getArgAsFloat(i+1),
+                                                                              m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // calculate the head to spine base length for mapping height
             float mappingWidth = MAX(bodies[idx]->spineShoulderJoint.inputPosition.distance(bodies[idx]->shoulderLeftJoint.inputPosition), 
                                      bodies[idx]->spineShoulderJoint.inputPosition.distance(bodies[idx]->shoulderRightJoint.inputPosition));
@@ -177,10 +184,11 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 // update the hand joint
                 hands[handIdx]->handJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
                 hands[handIdx]->handJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-                hands[handIdx]->handJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                            m.getArgAsFloat(i++), 
-                                                                            m.getArgAsFloat(i++)), jointLerpPct);
-                
+                hands[handIdx]->handJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                            m.getArgAsFloat(i+1), 
+                                                                            m.getArgAsFloat(i+2)), jointLerpPct);
+                i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
                 // set the custom origin and bounds
                 ofVec3f origin = bodies[idx]->headJoint.inputPosition;
                 if (hands[handIdx]->handJoint.type == k4w::JointType_HandLeft) {
