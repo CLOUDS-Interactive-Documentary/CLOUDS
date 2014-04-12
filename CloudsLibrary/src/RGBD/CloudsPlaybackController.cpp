@@ -1091,7 +1091,10 @@ void CloudsPlaybackController::showInterlude(){
     if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
         
         interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
-        
+        if(interludeSystem == NULL){
+			ofLogError("CloudsPlaybackController::showInterlude") << "System is null. should not happen!";
+			return;
+		}
         interludeSystem->setDrawToScreen( false );
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
@@ -1102,7 +1105,7 @@ void CloudsPlaybackController::showInterlude(){
         
         showingInterlude = true;
         continuePortal.hoverPosition =  ofVec3f(CloudsVisualSystem::getStaticRenderTarget().getWidth() *0.95 , CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.1, 0);
-        int x =CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.01;
+        int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.01;
         int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.95;
         
         ofRectangle resetText = resetFont.getStringBoundingBox("RESET",x,y);

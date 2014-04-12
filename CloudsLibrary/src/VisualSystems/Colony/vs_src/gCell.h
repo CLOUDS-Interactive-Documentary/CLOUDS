@@ -134,7 +134,9 @@ public:
         if (++position >= v[meta]->size()){ //Can be optimized with caching of v[meta]
             if (++meta < v.size()){
                 position = 0;
-            }}}
+            }
+		}
+	}
     neighbor_iterator& operator=(const neighbor_iterator& other){
         v = vector<vecPtr>(other.v);
         initialize();
@@ -171,7 +173,6 @@ public:
 		for(int i = 0; i < MAP_SUBDIV * MAP_SUBDIV; i++){
 			neighbors[i] = NULL;
 		}
-
 	}
 
     ~colonyPartitionMap(){
