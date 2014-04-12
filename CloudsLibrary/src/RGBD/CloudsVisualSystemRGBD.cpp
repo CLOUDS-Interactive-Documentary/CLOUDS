@@ -33,7 +33,9 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	transitionOutRight.setPosition( 0, 0, -1001 );
 	transitionOutRight.rotate( 180, ofVec3f(0, 1, 0 ) );
 	
+#ifdef HAS_GAMECAM
 	transitionCam.useArrowKeys = true;
+#endif
 	transitionTarget = &transitionOutLeft;
 	drawTransitionNodes = false;
 	
@@ -148,10 +150,11 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
 			
 //	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
-	
+#ifdef HAS_GAMECAM
 	transitionCam.setup();
 	transitionCam.applyTranslation = true;
 	transitionCam.applyRotation = true;
+#endif
 	
 //    rebuildCaptionFont();
 	
@@ -605,7 +608,9 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 #endif
 	if( placingTransitionNodes )
 	{
+		#ifdef HAS_GAMECAM
 		transitionCam.applyTranslation = transitionCam.applyRotation = !cursorIsOverGUI();
+		#endif
 		
 		if(bLookThroughIn)
 		{
@@ -647,7 +652,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 			transitionCamTargetNode = NULL;
 			resetRightTransitionNode();
 		}
-		
+		#ifdef HAS_GAMECAM
 		if(bMoveTransitionCameraUp)
 		{
 			bMoveTransitionCameraUp = false;
@@ -658,12 +663,12 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 			bMoveTransitionCameraDown = false;
 			transitionCam.move(0, -5, 0);
 		}
-		
 		if(transitionCamTargetNode)
 		{
 			transitionCamTargetNode->setPosition( transitionCam.getPosition() );
 			transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
 		}
+		#endif
 
 	}
 	else {
@@ -1108,7 +1113,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
                     /////NEW QUESTION WAY
 
 					if (caughtPortal->startHovering()) {
-                        CloudsPortalEventArgs args(*portals[i], getQuestionText());
+//                        CloudsPortalEventArgs args(*portals[i], getQuestionText());
+                        CloudsPortalEventArgs args(getQuestionText());
                         ofNotifyEvent(events.portalHoverBegan, args);
                     }
 				}
@@ -1128,7 +1134,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
                 /////NEW QUESTION WAY
 				caughtPortal = NULL;
                 
-                CloudsPortalEventArgs args(*portals[i], getQuestionText());
+//                CloudsPortalEventArgs args(*portals[i], getQuestionText());
+                CloudsPortalEventArgs args(getQuestionText());
                 ofNotifyEvent(events.portalHoverEnded, args);
 			}
 		}
@@ -1157,7 +1164,8 @@ void CloudsVisualSystemRGBD::updateResetPortal(){
 		else if(resetPortal.isSelected()){
 			
 			resetPortal.stopHovering();
-			CloudsPortalEventArgs args(resetPortal, "RESET");
+//			CloudsPortalEventArgs args(resetPortal, "RESET");
+			CloudsPortalEventArgs args("RESET");
 			ofNotifyEvent(events.portalHoverEnded, args);
 
 		}
@@ -1297,9 +1305,11 @@ void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 	
 	transitionCamTargetNode = &transitionInStart;
 	
+#ifdef HAS_GAMECAM
 	transitionCam.setPosition( transitionInStart.getPosition() );
 	transitionCam.setOrientation( transitionInStart.getOrientationQuat() );
 	transitionCam.movedManually();
+#endif
 	
 	//transitionCam.positionChanged = transitionCam.rotationChanged = true;
 //	transitionCam.positionChanged = transitionCam.rotationChanged = true;
@@ -1312,9 +1322,12 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOutLeft(){
 	
 	transitionCamTargetNode = &transitionOutLeft;
 	
+#ifdef HAS_GAMECAM
 	transitionCam.setPosition( transitionOutLeft.getPosition() );
 	transitionCam.setOrientation( transitionOutLeft.getOrientationQuat() );
 	transitionCam.movedManually();
+#endif
+	
 }
 
 //--------------------------------------------------------------
@@ -1322,9 +1335,12 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOutRight()
 {
 	transitionCamTargetNode = &transitionOutRight;
 	
+#ifdef HAS_GAMECAM
 	transitionCam.setPosition( transitionOutRight.getPosition() );
 	transitionCam.setOrientation( transitionOutRight.getOrientationQuat() );
 	transitionCam.movedManually();
+#endif
+	
 }
 
 //--------------------------------------------------------------

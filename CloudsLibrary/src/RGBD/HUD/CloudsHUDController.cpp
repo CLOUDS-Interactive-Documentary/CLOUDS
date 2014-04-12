@@ -569,10 +569,10 @@ void CloudsHUDController::draw(){
     }
 
 	////JG TEMP COMMENT OUT
-	drawLayer(CLOUDS_HUD_QUESTION);
-	drawLayer(CLOUDS_HUD_LOWER_THIRD);
-	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
-	drawLayer(CLOUDS_HUD_MAP);
+//	drawLayer(CLOUDS_HUD_QUESTION);
+//	drawLayer(CLOUDS_HUD_LOWER_THIRD);
+//	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
+//	drawLayer(CLOUDS_HUD_MAP);
 	////JG TEMP COMMENT OUT
 	
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
@@ -581,7 +581,7 @@ void CloudsHUDController::draw(){
     
 	if (bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]){
 		////JG TEMP COMMENT OUT
-		home.draw();
+//		home.draw();
     }
 	
 	ofPopMatrix();
@@ -741,14 +741,14 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
         hudLabelMap["BylineTopicTextBoxTop"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxBottom"]->animateIn( true );
 		//JG TEMP
-        hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
+//        hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
 //JG TEMP
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
 //JG TEMP
-        hudLabelMap["ProjectExampleTextboxLeft"]->animateIn( true );
-        hudLabelMap["ProjectExampleTextboxRight"]->animateIn( true );
-        hudLabelMap["ProjectExampleTextBoxTop"]->animateIn( true );
+//        hudLabelMap["ProjectExampleTextboxLeft"]->animateIn( true );
+//        hudLabelMap["ProjectExampleTextboxRight"]->animateIn( true );
+//        hudLabelMap["ProjectExampleTextBoxTop"]->animateIn( true );
 //JG TEMP
     }
     else if( (layer & CLOUDS_HUD_MAP) != 0 ){

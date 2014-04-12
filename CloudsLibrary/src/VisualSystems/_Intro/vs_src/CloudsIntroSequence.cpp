@@ -302,7 +302,8 @@ void CloudsIntroSequence::selfUpdate(){
 					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &startQuestions[i];
 						if (caughtQuestion->startHovering()) {
-                            CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+//                            CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+                            CloudsPortalEventArgs args(getQuestionText());							
                             ofNotifyEvent(events.portalHoverBegan, args);
                         }
 					}
@@ -318,7 +319,8 @@ void CloudsIntroSequence::selfUpdate(){
 				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
-                    CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+//                    CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+                    CloudsPortalEventArgs args(getQuestionText());
                     ofNotifyEvent(events.portalHoverEnded, args);
 				}
 			}
@@ -377,6 +379,8 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 		
 		startQuestions.push_back(q);
 	}
+	
+	positionStartQuestions();
 }
 
 void CloudsIntroSequence::generateTunnel(){
@@ -667,8 +671,8 @@ void CloudsIntroSequence::drawIntroNodes(){
 	if(!introNodeOne.hover && introNodeOne.cursorDistance < introNodeMinDistance){
 		introNodeOne.hover = true;
 		introNodeOne.hoverStartTime = ofGetElapsedTimef();
-		
-		CloudsPortalEventArgs args(NULL, getQuestionText());
+
+		CloudsPortalEventArgs args("TEST TEXT");
 		ofNotifyEvent(events.portalHoverBegan, args);
 	}
 	ofTranslate( introNodeOne.worldPosition );

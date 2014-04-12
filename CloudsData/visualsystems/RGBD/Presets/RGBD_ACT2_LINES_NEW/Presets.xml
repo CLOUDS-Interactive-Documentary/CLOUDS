@@ -62,6 +62,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>RGBD_ACT3_MESH_NEW</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>RGBD_BackgroundTestA</Name>
     <Value>0</Value>
 </Widget>
@@ -143,10 +148,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>TriLines</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>RGBD_ACT3_MESH_NEW</Name>
     <Value>0</Value>
 </Widget>
