@@ -34,6 +34,10 @@ void CloudsVisualSystemSwim::selfSetup()
     volumeControl.value(0);
     synth.setOutputGen(buildSynth());
 }
+void CloudsVisualSystemSwim::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 
 // selfBegin is called when the system is ready to be shown
 // this is a good time to prepare for transitions

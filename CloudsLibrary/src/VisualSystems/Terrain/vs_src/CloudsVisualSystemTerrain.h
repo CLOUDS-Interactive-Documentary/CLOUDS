@@ -51,6 +51,7 @@ public:
     void billBoard();
     
     void resizeBrush();
+    void selfSetDefaults();
 	
 	ofVec2f hermiteInterpolate(ofVec2f y0, ofVec2f y1,
 							   ofVec2f y2, ofVec2f y3,

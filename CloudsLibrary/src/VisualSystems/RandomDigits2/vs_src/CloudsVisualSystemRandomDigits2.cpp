@@ -42,6 +42,12 @@ void CloudsVisualSystemRandomDigits2::selfSetupGui(){
  
 }
 
+void CloudsVisualSystemRandomDigits2::selfSetDefaults(){
+    
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
+
 void CloudsVisualSystemRandomDigits2::selfGuiEvent(ofxUIEventArgs &e)
 {
     if(e.widget->getName() == "Update Number Placing") {
