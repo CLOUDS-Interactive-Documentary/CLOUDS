@@ -28,10 +28,12 @@ void CloudsVisualSystemYellowTail::selfSetup(){
 	clearGestures();
     	
 }
+
 void CloudsVisualSystemYellowTail::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_DRAW;
-    secondaryCursorMode  = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
 }
+
 void CloudsVisualSystemYellowTail::selfSetupGuis(){
 	
     customGui = new ofxUISuperCanvas("CUSTOM", gui);
