@@ -600,16 +600,11 @@ void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
     
     float aVel = e.a->GetBody()->GetLinearVelocity().Length();
     float bVel = e.b->GetBody()->GetLinearVelocity().Length();
-    
-    int type = *(static_cast<int*>(e.a->GetBody()->GetUserData()));
-//    if (aVel > bVel) {
-//        
-//    }
-//    else {
-////        type = (int)e.b->GetBody()->GetUserData();
-//		type = static_cast<int>( *e.b->GetBody()->GetUserData() );
-//    }
-    
+	if(e.a->GetBody()->GetUserData() == NULL){
+		return;
+	}
+
+	int type = *(static_cast<int*>(e.a->GetBody()->GetUserData()));
     int sIndex = type;
     
     float maxVel = max(aVel, bVel);

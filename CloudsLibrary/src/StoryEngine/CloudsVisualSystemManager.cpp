@@ -274,8 +274,6 @@ struct Mapping {
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 
 CloudsVisualSystem* CloudsVisualSystemManager::InstantiateSystem(const string& systemName){
-    //RIG EMPTY ONLY
-
 	CloudsVisualSystem* system;
 	if(constructors.find(systemName) != constructors.end()){
         system = constructors[systemName]();
