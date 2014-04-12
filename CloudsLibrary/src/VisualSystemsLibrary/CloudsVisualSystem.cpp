@@ -3855,7 +3855,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
             totalRadius = cursorSize;
 #elif KINECT_INPUT
             ofSetColor(255, 255, 255, 192);
-            totalRadius = ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true));
+            totalRadius = ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true);
 #else
             ofSetColor(255, 255, 255, 192);
             totalRadius = cursorUpSize;
