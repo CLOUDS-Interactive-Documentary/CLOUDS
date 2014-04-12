@@ -29,13 +29,12 @@
  * and decides when to show Visual Systems
  *
  */
-class CloudsPlaybackController {
+class CloudsPlaybackController : public ofThread {
   public:
 	CloudsPlaybackController();
-	~CloudsPlaybackController();
 
 	//set it up with an existing story engine that will register the events
-	void setup();	
+	void setup();
 	void loadCurrentAct(); //starts loading screen
 	void updateLoadingAct(); //loads one system everytime it's called
 	void playCurrentAct();//when done loading
@@ -72,6 +71,14 @@ class CloudsPlaybackController {
 	
 	vector<CloudsClip> fakeQuestions;
 
+	bool loading;
+	float loadPercent;
+	bool loadFinished;
+	
+	void threadedFunction();
+	
+	void finishSetup(); //called at the end of the threaded function
+	
   protected:
 	vector<CloudsClip> startingNodes;
 	//*** CORE CLOUDS STUFF
@@ -141,7 +148,7 @@ class CloudsPlaybackController {
 	//VISUAL SYSTEMS
 	//
 	void showIntro();
-	void showIntro(vector<CloudsClip>& possibleStartQuestions);
+//	void showIntro(vector<CloudsClip>& possibleStartQuestions);
 
 	bool showingIntro;
 	bool showingVisualSystem;

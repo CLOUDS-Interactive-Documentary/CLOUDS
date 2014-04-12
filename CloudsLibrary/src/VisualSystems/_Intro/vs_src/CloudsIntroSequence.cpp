@@ -379,6 +379,8 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 		
 		startQuestions.push_back(q);
 	}
+	
+	positionStartQuestions();
 }
 
 void CloudsIntroSequence::generateTunnel(){

@@ -23,6 +23,9 @@ CloudsPlaybackController::CloudsPlaybackController(){
     loadingAct = false;
 	shouldLoadAct = false;
 	
+	loading = false;
+	loadPercent = 0.0;
+	
     returnToIntro = false;
     cachedTransition = false;
     
@@ -50,10 +53,6 @@ void CloudsPlaybackController::setupPortals(){
     continuePortal.setup();
     
     
-}
-
-//--------------------------------------------------------------------
-CloudsPlaybackController::~CloudsPlaybackController(){
 }
 
 //--------------------------------------------------------------------
@@ -85,6 +84,9 @@ void CloudsPlaybackController::clearAct(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::exit(ofEventArgs & args){
+	
+	waitForThread(true);
+	
 	if(eventsRegistered){
 		eventsRegistered = false;
 		
@@ -109,74 +111,8 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(){
 	
-	///START THREADED
-    parser.loadFromFiles();
+	loading = true;
 	
-	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-		ofSystemAlertDialog("Could not find movie file path. \
-							Create a file called CloudsMovieDirectory.txt \
-							that contains one line, the path to your movies folder");
-	}
-	
-	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-	
-	visualSystems.loadPresets();
-    visualSystems.loadCachedDataForSystems();
-    
-	storyEngine.parser = &parser;
-	storyEngine.visualSystems = &visualSystems;
-	storyEngine.printDecisions = false;
-	storyEngine.combinedClipsOnly = true;
-	storyEngine.setup();
-	
-    //    vector< pair<int,string> > topicCountPairs;
-    //    for(int i = 0; i < parser.getAllKeywords().size(); i++){
-    //        topicCountPairs.push_back(make_pair(parser.getClipsWithKeyword( parser.getAllKeywords()[i]).size(),
-    //                                            parser.getAllKeywords()[i] ) );
-    //    }
-    //
-    //    sort(topicCountPairs.begin(), topicCountPairs.end(), listsort);
-    //    ofBuffer b;
-    //
-    //    for(int i = 0; i < topicCountPairs.size(); i++){
-    //        b.append( ofToString(topicCountPairs[i].first) + "\t" + topicCountPairs[i].second + "\n" );
-    //    }
-    //    ofBufferToFile(GetCloudsDataPath() + "logs/topics.txt", b);
-    
-	///SOUND
-	mixer.setup();
-	sound.setup(storyEngine);
-    
-#ifndef  OCULUS_RIFT
-	////COMMUNICATION
-	oscSender.setup();
-#endif
-    
-	//END THREADED
-	
-	rgbdVisualSystem = new CloudsVisualSystemRGBD();
-	rgbdVisualSystem->setup();
-	rgbdVisualSystem->setDrawToScreen(false);
-	
-	clusterMap = new CloudsVisualSystemClusterMap();
-	clusterMap->setRun(run);
-	clusterMap->setup();
-	clusterMap->buildEntireCluster(parser);
-	clusterMap->setDrawToScreen(false);
-	
-	introSequence = new CloudsIntroSequence();
-	introSequence->setup();
-	introSequence->setDrawToScreen(false);
-	
-	hud.setup();
-#ifdef OCULUS_RIFT
-    rgbdVisualSystem->hud = &hud;
-    rgbdVisualSystem->setupHUDGui();
-    
-    introSequence->hud = &hud;
-    introSequence->setupHUDGui();
-#endif
-    
     if(!eventsRegistered){
 		
 		eventsRegistered = true;
@@ -195,17 +131,89 @@ void CloudsPlaybackController::setup(){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 	}
-	
-	//////////////SHOW INTRO
-    startingNodes = storyEngine.getStartingQuestions();
-    
-	//////////////SHOW INTRO
-	showIntro( startingNodes );
-    
-    sound.enterTunnel();
+		
+	introSequence = new CloudsIntroSequence();
+	introSequence->setup();
+	introSequence->setDrawToScreen(false);
+	showIntro();
 
-    setupPortals();
+	startThread();
+}
+
+void CloudsPlaybackController::finishSetup(){
+	
+	hud.setup();
+
+	storyEngine.parser = &parser;
+	storyEngine.visualSystems = &visualSystems;
+	storyEngine.printDecisions = false;
+	storyEngine.combinedClipsOnly = true;
+	storyEngine.setup();
+	
+	startingNodes = storyEngine.getStartingQuestions();
+	introSequence->setStartQuestions(startingNodes);
+
+	rgbdVisualSystem = new CloudsVisualSystemRGBD();
+	rgbdVisualSystem->setup();
+	rgbdVisualSystem->setDrawToScreen(false);
+	
+	clusterMap = new CloudsVisualSystemClusterMap();
+	clusterMap->setRun(run);
+	clusterMap->setup();
+	clusterMap->buildEntireCluster(parser);
+	clusterMap->setDrawToScreen(false);
+	
+#ifdef OCULUS_RIFT
+    rgbdVisualSystem->hud = &hud;
+    rgbdVisualSystem->setupHUDGui();
     
+    introSequence->hud = &hud;
+    introSequence->setupHUDGui();
+#endif
+    
+    setupPortals();
+	
+}
+
+void CloudsPlaybackController::threadedFunction(){
+
+
+	loadPercent = 0.0;
+	
+	///START THREADED
+	parser.loadFromFiles();
+	if(!isThreadRunning()) return;
+	
+	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
+		ofSystemAlertDialog("Could not find movie file path. \
+							Create a file called CloudsMovieDirectory.txt \
+							that contains one line, the path to your movies folder");
+	}
+	
+	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+	
+	if(!isThreadRunning()) return;
+	
+	visualSystems.loadPresets();
+	visualSystems.loadCachedDataForSystems();
+	
+	if(!isThreadRunning()) return;
+	
+	///SOUND
+	mixer.setup();
+	sound.setup(storyEngine);
+	sound.enterTunnel();
+
+	if(!isThreadRunning()) return;
+		
+#ifndef  OCULUS_RIFT
+	////COMMUNICATION
+	oscSender.setup();
+#endif
+	
+	//END THREADED
+	loading = false;
+	loadFinished = true;
 }
 
 //--------------------------------------------------------------------
@@ -214,10 +222,9 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
-	introSequence->setStartQuestions(possibleStartQuestions);
-	showIntro();
-}
+//void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
+//	showIntro();
+//}
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showIntro(){
@@ -427,6 +434,16 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(ofEventArgs & args){
+
+	if(loading){
+		return;
+	}
+	
+	if(loadFinished){
+		finishSetup();
+		loadFinished = false;
+	}
+	
     ////////////////////
 	//OS CURSOR
 #ifdef CLOUDS_RELEASE
@@ -651,6 +668,7 @@ void CloudsPlaybackController::updateTransition(){
 					rgbdVisualSystem->transtionFinished();
                     rgbdVisualSystem->stopSystem();
 				}
+				
                 if(introSequence != NULL){
                     delete introSequence;
                 }
@@ -659,6 +677,7 @@ void CloudsPlaybackController::updateTransition(){
                 
                 introSequence = new CloudsIntroSequence();
                 introSequence->setup();
+				introSequence->setStartQuestions(startingNodes);
 #ifdef OCULUS_RIFT
                 introSequence->hud = &hud;
                 introSequence->setupHUDGui();
@@ -668,7 +687,7 @@ void CloudsPlaybackController::updateTransition(){
                 // TODO: Look into using Intro events for setting bDrawHud, so it works like everything else.
                 hud.setHudEnabled(true);
                 
-                showIntro(startingNodes);
+                showIntro();
                 break;
                 
             case TRANSITION_VISUALSYSTEM_IN:
@@ -861,8 +880,10 @@ void CloudsPlaybackController::drawRenderTarget(){
         ofEnableAlphaBlending();
         
 		//cout << "crosffade value is " << crossfadeValue << " showing intro? " << showingIntro << endl;
+		if(loading){
+			crossfadeValue = 1.0;
+		}
 		ofSetColor(255, crossfadeValue*255 );
-		
 		currentVisualSystem->selfPostDraw();
         
         
