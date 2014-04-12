@@ -96,6 +96,8 @@ void CloudsVisualSystemGesturePaint::selfSetDefaults(){
 	
 	brushSize = 128.;
 	currentBrushSize = 0;
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
 }
 
 // selfSetup is called when the visual system is first instantiated

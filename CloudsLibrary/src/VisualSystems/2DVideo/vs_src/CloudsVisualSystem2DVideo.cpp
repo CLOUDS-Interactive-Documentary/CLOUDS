@@ -27,6 +27,11 @@ void CloudsVisualSystem2DVideo::selfSetupGui()
 	guimap[playerGui->getName()] = playerGui;
 }
 
+void CloudsVisualSystem2DVideo:: selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode =  CURSOR_MODE_INACTIVE;
+}
+
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
 {

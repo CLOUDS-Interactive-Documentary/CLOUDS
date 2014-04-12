@@ -26,6 +26,10 @@ void CloudsVisualSystemThingsInTheDark::loadMovieForComposition(string videoPath
 //		renderer.getPlayer().play();
 	}
 }
+void CloudsVisualSystemThingsInTheDark::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 
 void CloudsVisualSystemThingsInTheDark::selfSetupGuis(){
 	

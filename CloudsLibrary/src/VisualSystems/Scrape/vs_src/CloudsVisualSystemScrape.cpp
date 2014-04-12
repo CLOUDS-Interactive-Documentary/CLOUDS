@@ -69,6 +69,11 @@ void CloudsVisualSystemScrape::selfSetupGui()
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemScrape::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
+
 //--------------------------------------------------------------
 void CloudsVisualSystemScrape::selfGuiEvent(ofxUIEventArgs &e)
 {

@@ -204,7 +204,7 @@ void CloudsVisualSystemXstatic::selfSetDefaults()
     bBounceOffWalls = true;
     bWrapEdges = false;
     
-    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 

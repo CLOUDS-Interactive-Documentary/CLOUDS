@@ -132,6 +132,8 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     animationLerpRate = 0.02;
     currentMeshFilePath = "";
 //    currentDateIndex = 0;
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemTwitter::selfSetup()

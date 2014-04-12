@@ -44,6 +44,10 @@ void CloudsVisualSystemDataCascade::selfSetup(){
 	}
 }
 
+void CloudsVisualSystemDataCascade::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //--------------------------------------------------------------
 void CloudsVisualSystemDataCascade::selfPresetLoaded(string presetPath){
 	regenerate = true;
