@@ -411,6 +411,8 @@ void CloudsVisualSystemWormHole::selfSetDefaults()
 	lightQuadraticAttenuation = .01;
 	
 	bCullBackface = true;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemWormHole::selfSetup()

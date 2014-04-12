@@ -79,6 +79,8 @@ void CloudsVisualSystemVision::selfSetDefaults(){
     
     fMainGain = 0;
     mainGain.value(0);
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemVision::selfSetup()
