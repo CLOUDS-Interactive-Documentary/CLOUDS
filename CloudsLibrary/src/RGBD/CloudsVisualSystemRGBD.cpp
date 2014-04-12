@@ -1113,7 +1113,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
                     /////NEW QUESTION WAY
 
 					if (caughtPortal->startHovering()) {
-                        CloudsPortalEventArgs args(*portals[i], getQuestionText());
+//                        CloudsPortalEventArgs args(*portals[i], getQuestionText());
+                        CloudsPortalEventArgs args(getQuestionText());
                         ofNotifyEvent(events.portalHoverBegan, args);
                     }
 				}
@@ -1133,7 +1134,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
                 /////NEW QUESTION WAY
 				caughtPortal = NULL;
                 
-                CloudsPortalEventArgs args(*portals[i], getQuestionText());
+//                CloudsPortalEventArgs args(*portals[i], getQuestionText());
+                CloudsPortalEventArgs args(getQuestionText());
                 ofNotifyEvent(events.portalHoverEnded, args);
 			}
 		}
@@ -1162,7 +1164,8 @@ void CloudsVisualSystemRGBD::updateResetPortal(){
 		else if(resetPortal.isSelected()){
 			
 			resetPortal.stopHovering();
-			CloudsPortalEventArgs args(resetPortal, "RESET");
+//			CloudsPortalEventArgs args(resetPortal, "RESET");
+			CloudsPortalEventArgs args("RESET");
 			ofNotifyEvent(events.portalHoverEnded, args);
 
 		}
