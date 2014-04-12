@@ -38,7 +38,7 @@ class CloudsVisualSystemYellowTail : public CloudsVisualSystem {
     void selfExit();
     void selfBegin();
 	void selfEnd();
-	
+	void selfSetDefaults();
 	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);

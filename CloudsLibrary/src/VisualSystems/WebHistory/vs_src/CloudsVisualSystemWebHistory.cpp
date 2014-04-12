@@ -123,7 +123,10 @@ void CloudsVisualSystemWebHistory::selfSetupGui()
 	guis.push_back(treeGui);
 	guimap[treeGui->getName()] = treeGui;
 }
-
+void CloudsVisualSystemWebHistory::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //--------------------------------------------------------------
 void CloudsVisualSystemWebHistory::selfGuiEvent(ofxUIEventArgs &e)
 {
