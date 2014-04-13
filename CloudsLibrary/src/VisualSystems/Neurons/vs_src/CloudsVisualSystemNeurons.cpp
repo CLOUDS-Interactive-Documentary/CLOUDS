@@ -40,6 +40,8 @@ void _C::selfSetDefaults(){
     bounce = false;
     flythrough = false;
     camDuration = 0.f;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void _C::selfSetupGuis(){

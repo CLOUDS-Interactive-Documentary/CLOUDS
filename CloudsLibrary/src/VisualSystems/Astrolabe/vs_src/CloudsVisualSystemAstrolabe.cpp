@@ -394,6 +394,9 @@ void CloudsVisualSystemAstrolabe::selfSetDefaults()
 	
 	circleLinewidth = .1;
 	circleOpacity = 30;
+    
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode =  CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemAstrolabe::setupRings(int count,

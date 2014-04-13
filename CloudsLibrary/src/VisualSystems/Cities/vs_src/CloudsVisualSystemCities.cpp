@@ -109,6 +109,10 @@ void CloudsVisualSystemCities::selfSetup()
     postShader.load("",getVisualSystemDataPath()+"shaders/postprocess.fs");
     ofLoadImage(postTexture, getVisualSystemDataPath()+"images/6.jpg");
 }
+void CloudsVisualSystemCities::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 
 void CloudsVisualSystemCities::selfBegin()
 {

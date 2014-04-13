@@ -36,6 +36,8 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetupGui(){
 void CloudsVisualSystemOpenP5SpaceJunk::selfSetDefaults(){
 	limit = 500;
 	spread = 140;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent(ofxUIEventArgs &e){

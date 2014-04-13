@@ -42,6 +42,9 @@ void CloudsVisualSystemMemory::selfSetDefaults(){
     bDeFrag = false;
     bBiDirectionalSort = false;
     bIs2D = true;
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+    
 }
 
 void CloudsVisualSystemMemory::selfSetupSystemGui()

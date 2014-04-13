@@ -65,6 +65,10 @@ void CloudsVisualSystemCosmic::selfSetupCameraGui(){
 	camGui->addSlider("far plane" , 1000, 100000, &clipPlanes.max);
 }
 
+void CloudsVisualSystemCosmic::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemCosmic::selfSetupTimeline()
 {
     timeline->setBPM(120);

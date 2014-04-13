@@ -154,6 +154,21 @@ void CloudsVisualSystemXstatic::selfSetup()
     clipPlanes.min = 1.f;
     clipPlanes.max = 100000.f;
     
+    nParticles = 500;
+    data = new GLfloat[kMaxParticles * kStrideData];
+    regenerate(bBigBang);
+    bShouldRegenerate = true;
+    
+    spriteDir.listDir(getVisualSystemDataPath() + "spriteImages");
+    spriteDir.sort();
+    
+    ofDisableArbTex();
+    shader.load(getVisualSystemDataPath() + "shaders/particles");
+    ofEnableArbTex();
+}
+
+void CloudsVisualSystemXstatic::selfSetDefaults()
+{
     gravity.set(0);
     drag = 0.0;
     
@@ -173,7 +188,7 @@ void CloudsVisualSystemXstatic::selfSetup()
     
     explodeSpeed  = 1.0;
     riseFallSpeed = 1.0;
-
+    
     bShouldExplode = true;
     bShouldFreeze  = false;
     bShouldFall    = false;
@@ -189,17 +204,8 @@ void CloudsVisualSystemXstatic::selfSetup()
     bBounceOffWalls = true;
     bWrapEdges = false;
     
-    nParticles = 500;
-    data = new GLfloat[kMaxParticles * kStrideData];
-    regenerate(bBigBang);
-    bShouldRegenerate = true;
-    
-    spriteDir.listDir(getVisualSystemDataPath() + "spriteImages");
-    spriteDir.sort();
-    
-    ofDisableArbTex();
-    shader.load(getVisualSystemDataPath() + "shaders/particles");
-    ofEnableArbTex();
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemXstatic::regenerate(bool bBigBang)

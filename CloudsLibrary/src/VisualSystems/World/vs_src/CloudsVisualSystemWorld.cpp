@@ -36,6 +36,8 @@ void CloudsVisualSystemWorld::selfSetDefaults()
     nMaxSatellites = 10;
     satLinksDist = 0;
     satLinksAlpha = 1.0;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 string CloudsVisualSystemWorld::getSystemName()

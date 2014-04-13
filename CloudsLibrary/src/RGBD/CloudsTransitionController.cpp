@@ -117,8 +117,6 @@ void CloudsTransitionController::transitionToInterview(float outDuration, float 
 	startTransition();
 	
 }
-void transitionToInterlude(float inDuration, float outDuration);
-void transitionFromInterlude(float outDuration);
 
 void CloudsTransitionController::transitionToInterlude(float inDuration,float outDuration){
 	

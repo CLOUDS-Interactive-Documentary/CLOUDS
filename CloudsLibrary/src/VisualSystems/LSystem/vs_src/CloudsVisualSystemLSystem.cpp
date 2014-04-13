@@ -45,6 +45,11 @@ void CloudsVisualSystemLSystem::selfEnd(){
     
 }
 
+void CloudsVisualSystemLSystem::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
+
 void CloudsVisualSystemLSystem::selfSetupSystemGui(){
     sysGui->addLabel("Structure");
     ofxUITextInput *uiAxiom = sysGui->addTextInput("Axiom", "B", OFX_UI_FONT_SMALL);

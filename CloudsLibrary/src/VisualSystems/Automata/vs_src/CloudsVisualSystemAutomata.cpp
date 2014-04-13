@@ -78,9 +78,11 @@ void CloudsVisualSystemAutomata::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-//--------------------------------------------------------------
+//----------------------------------------------------------
 void CloudsVisualSystemAutomata::selfSetDefaults()
 {
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode =  CURSOR_MODE_DRAW;
     radius = 5.0f;
     bFill = true;
     bDoInput = true;

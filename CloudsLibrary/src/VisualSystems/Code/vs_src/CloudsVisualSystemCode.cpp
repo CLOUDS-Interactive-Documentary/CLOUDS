@@ -278,6 +278,9 @@ void CloudsVisualSystemCode::selfSetDefaults(){
 	speedRange.max  =  .9;
 	
 	bCascadeMode = false;
+    
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 	
 }
 // selfSetup is called when the visual system is first instantiated

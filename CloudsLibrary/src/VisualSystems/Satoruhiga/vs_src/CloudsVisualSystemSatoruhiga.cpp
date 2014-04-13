@@ -141,6 +141,11 @@ void CloudsVisualSystemSatoruhiga::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
+void CloudsVisualSystemSatoruhiga::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
+
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here

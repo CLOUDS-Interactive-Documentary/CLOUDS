@@ -694,6 +694,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					state.duration = state.act->addVisualSystem(state.preset,
                                                                 state.visualSystemStartTime,
                                                                 state.visualSystemEndTime);
+					
                     cout << "extended vs brought our duration to " << state.duration << endl;
 					state.presetHistory.push_back(state.preset.getID());
 					
@@ -712,15 +713,16 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					else{
                         //Also the first clip of an act should be covered
                         float midAlignedEnd    = state.duration - state.clip.getDuration() / 2. + clipFadePad;
-                        float startAlignedEnd  = state.duration - state.clip.getDuration() - clipFadePad;
-                        if(state.visualSystemStartTime > 0 &&
-                           abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd -  state.visualSystemEndTime) )
-                        {
-                            state.visualSystemEndTime = midAlignedEnd;
-                        }
-                        else {
-                            state.visualSystemEndTime = startAlignedEnd;
-                        }
+                        float startAlignedEnd  = state.duration - state.clip.getDuration()      - clipFadePad;
+						//JG right before Tribeca I'm removing the mid aligned ends because they cause vs to be way too long
+//                        if(state.visualSystemStartTime > 0 &&
+//                           abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd - state.visualSystemEndTime) )
+//                        {
+//                            state.visualSystemEndTime = midAlignedEnd;
+//                        }
+//                        else {
+							state.visualSystemEndTime = startAlignedEnd;
+//                        }
                         
                         
 						if(bLogVisualSystemDetails)

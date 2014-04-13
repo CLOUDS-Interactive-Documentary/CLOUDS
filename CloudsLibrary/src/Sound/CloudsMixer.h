@@ -39,7 +39,7 @@ public:
     
     bool showCompressor;
     float followgain;
-    float gain;
+//    float gain;
     
 protected:
     ofAudioEventArgs musicArgs;
@@ -56,7 +56,7 @@ protected:
     float thresh;
     float ratio;
     int fsig;
-    float fval;
+//    float fval; replaced by GetCloudsAudioEvents()->fadeValue
     float dval;
     float famt;
     

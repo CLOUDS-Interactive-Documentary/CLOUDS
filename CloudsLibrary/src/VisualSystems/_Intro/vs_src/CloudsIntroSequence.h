@@ -10,24 +10,30 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
-//#include "ofxGameCamera.h"
 #include "CloudsClip.h"
 #include "CloudsEvents.h"
 #include "CloudsPortal.h"
-//#include "CloudsRun.h"
 #include "ofxFTGL.h"
 #include "CloudsPortalEvents.h"
 
+//basic little struct for intro node
+
+typedef struct{
+	ofVec3f worldPosition;
+	ofVec2f screenPosition;
+	float cursorDistance;
+	bool hover;
+	float hoverStartTime;
+} IntroNode;
+
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
-	CloudsIntroSequence();
-	~CloudsIntroSequence();
-	
 	string getSystemName();
 	
     void selfSetup();
     void selfSetupGuis();
-    
+    void selfSetDefaults();
+	
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -46,13 +52,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
-	void selfDrawOverlay();
-	void selfPostDraw();
 
 	void selfGuiEvent(ofxUIEventArgs &e);
 	
-    void selfSetupSystemGui();
     void guiSystemEvent(ofxUIEventArgs &e);
     
     void selfSetupRenderGui();
@@ -60,9 +62,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
 	void selfSetupCameraGui();
 	
-	ofCamera& getCameraRef(){
-		return warpCamera;
-	}
 	
 	void selfPresetLoaded(string presetPath);
 	
@@ -78,18 +77,20 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     
     static CloudsVisualSystemEvents events;
     
+	ofCamera& getCameraRef(){
+		return warpCamera;
+	}
+
   protected:
 		
 	ofxUISuperCanvas* questionGui;
 	ofxUISuperCanvas* tunnelGui;
 	ofxUISuperCanvas* typeGui;
+	ofxUISuperCanvas* introGui;
 	
 	bool showingQuestions;
 	float questionWrapDistance;
 	float cameraForwardSpeed;
-	
-	
-	bool startedOnclick;
 	
 	ofxFTGLFont extrudedTitleText; //for the title
 	float currentTitleOpacity;
@@ -143,23 +144,41 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofMesh tunnelMeshTight;
 	ofMesh tunnelMeshLoose;
 	
-	bool useDebugCamera;
 	ofCamera warpCamera;
 	
 	float camWobbleRange;
 	float camWobbleSpeed;
 
 	ofShader tunnelShader;
-	ofShader questionShader;
-	ofShader chroma;
 	ofShader typeShader;
 	
 	ofRange pointSize;	
 	ofRange distanceRange;
 	
 	void drawCloudsType();
+    void drawIntroNodes();
+	
+	//intro sequence
+	float introNodeSize;
+	float introNodeMinDistance;
+	float introNodeHoldTime;
+	ofVec3f introNodeOffset; //mirrored along the axis
+	IntroNode introNodeOne;
+	IntroNode introNodeTwo;
 
-	float maxChromaDistort;
+	float timeSinceLastPrompt;
+	float promptTime;
+	bool promptShown;
+	
+	void updateWaiting();
+	void updateTitle();
+	void updateQuestions();
+	
+	//intro state machien stuff
+	bool startedOnclick;
+	bool introNodeHoverOne;
+	bool introNodeHoverTwo;
+	
 	float perlinAmplitude;
 	float perlinDensity;
 	float perlinSpeed;
@@ -170,16 +189,15 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float tunnelDistance;
 	float tunnelStartZ;
 	
-    
     //hack with get input not working
     ofVec2f inputPosition;
-    
     
 	bool regenerateTunnel;
 	void generateTunnel();
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;
 	
+
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;
 	
@@ -193,3 +211,4 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 #endif
     
 };
+

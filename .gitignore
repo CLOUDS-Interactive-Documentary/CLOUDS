@@ -361,3 +361,5 @@ screencapture_*
 /CloudsVisualSystemPlaylist/bin/data/index_save.txt
 
 /CloudsVisualSystemEditor/bin/data/_VisualSystemsSkipped.txt
+
+/CloudsData/sound/renders/

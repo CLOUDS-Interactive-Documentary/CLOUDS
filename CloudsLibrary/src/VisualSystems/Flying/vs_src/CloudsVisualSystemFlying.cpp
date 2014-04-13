@@ -58,7 +58,10 @@ void CloudsVisualSystemFlying::selfSetup()
     // sound
     synth.setOutputGen(buildSynth());
 }
-
+void CloudsVisualSystemFlying::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemFlying::generate()
 {
     plantMeshes.clear();

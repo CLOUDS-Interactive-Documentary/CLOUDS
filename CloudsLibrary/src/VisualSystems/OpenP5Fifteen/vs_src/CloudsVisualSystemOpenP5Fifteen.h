@@ -72,6 +72,7 @@ class CloudsVisualSystemOpenP5Fifteen : public CloudsVisualSystem
 
         // this is called when you should clear all the memory and delet anything you made in setup
         void selfExit();
+        void selfSetDefaults();
 
         //events are called when the system is active
         //Feel free to make things interactive for you, and for the user!

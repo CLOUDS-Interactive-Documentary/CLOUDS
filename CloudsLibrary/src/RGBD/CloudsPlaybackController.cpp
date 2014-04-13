@@ -6,6 +6,7 @@ bool listsort(pair<int,string> a, pair<int,string> b){
 
 //--------------------------------------------------------------------
 CloudsPlaybackController::CloudsPlaybackController(){
+	
 	eventsRegistered = false;
 	showingVisualSystem = false;
 	currentAct = NULL;
@@ -19,9 +20,13 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	interludeStartTime = 0;
     numActsCreated = 0;
     crossfadeValue = 0;
-    
+    loadingAct = false;
+	shouldLoadAct = false;
+	
+	loading = false;
+	loadPercent = 0.0;
+	
     returnToIntro = false;
-    
     cachedTransition = false;
     
     lastMouseMoveMillis = 0;
@@ -32,11 +37,11 @@ CloudsPlaybackController::CloudsPlaybackController(){
     startResetHoverTime = 0.0;
     resetSelectedPercentComplete = 0;
     resetFont.loadFont(GetCloudsDataPath()+"/font/Blender-THIN.ttf", 12);
-    
+    loadingFont.loadFont(GetCloudsDataPath()+"/font/Blender-THIN.ttf", 12);
+	
 //    ofRectangle resetText = resetFont.getStringBoundingBox("RESET", 75,CloudsVisualSystem::getStaticRenderTarget().getHeight()-100);
 //    resetRect = ofRectangle(75,CloudsVisualSystem::getStaticRenderTarget().getHeight()-100,resetText.height,resetText.height);
     
-
 }
 
 void CloudsPlaybackController::setupPortals(){
@@ -48,10 +53,6 @@ void CloudsPlaybackController::setupPortals(){
     continuePortal.setup();
     
     
-}
-
-//--------------------------------------------------------------------
-CloudsPlaybackController::~CloudsPlaybackController(){
 }
 
 //--------------------------------------------------------------------
@@ -83,6 +84,9 @@ void CloudsPlaybackController::clearAct(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::exit(ofEventArgs & args){
+	
+	waitForThread(true);
+	
 	if(eventsRegistered){
 		eventsRegistered = false;
 		
@@ -107,75 +111,8 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(){
 	
-	///START THREADED
-    parser.loadFromFiles();
+	loading = true;
 	
-	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-		ofSystemAlertDialog("Could not find movie file path. \
-							Create a file called CloudsMovieDirectory.txt \
-							that contains one line, the path to your movies folder");
-	}
-	
-	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-	
-	visualSystems.loadPresets();
-    visualSystems.loadCachedDataForSystems();
-    
-	storyEngine.parser = &parser;
-	storyEngine.visualSystems = &visualSystems;
-	storyEngine.printDecisions = false;
-	storyEngine.combinedClipsOnly = true;
-	storyEngine.setup();
-	
-    //    vector< pair<int,string> > topicCountPairs;
-    //    for(int i = 0; i < parser.getAllKeywords().size(); i++){
-    //        topicCountPairs.push_back(make_pair(parser.getClipsWithKeyword( parser.getAllKeywords()[i]).size(),
-    //                                            parser.getAllKeywords()[i] ) );
-    //    }
-    //
-    //    sort(topicCountPairs.begin(), topicCountPairs.end(), listsort);
-    //    ofBuffer b;
-    //
-    //    for(int i = 0; i < topicCountPairs.size(); i++){
-    //        b.append( ofToString(topicCountPairs[i].first) + "\t" + topicCountPairs[i].second + "\n" );
-    //    }
-    //    ofBufferToFile(GetCloudsDataPath() + "logs/topics.txt", b);
-    
-	///SOUND
-	mixer.setup();
-	sound.setup(storyEngine);
-    
-    
-#ifndef  OCULUS_RIFT
-	////COMMUNICATION
-	oscSender.setup();
-#endif
-    
-	//END THREADED
-	
-	rgbdVisualSystem = new CloudsVisualSystemRGBD();
-	rgbdVisualSystem->setup();
-	rgbdVisualSystem->setDrawToScreen(false);
-	
-	clusterMap = new CloudsVisualSystemClusterMap();
-	clusterMap->setRun(run);
-	clusterMap->setup();
-	clusterMap->buildEntireCluster(parser);
-	clusterMap->setDrawToScreen(false);
-	
-	introSequence = new CloudsIntroSequence();
-	introSequence->setup();
-	introSequence->setDrawToScreen(false);
-	
-	hud.setup();
-#ifdef OCULUS_RIFT
-    rgbdVisualSystem->hud = &hud;
-    rgbdVisualSystem->setupHUDGui();
-    
-    introSequence->hud = &hud;
-    introSequence->setupHUDGui();
-#endif
-    
     if(!eventsRegistered){
 		
 		eventsRegistered = true;
@@ -194,19 +131,89 @@ void CloudsPlaybackController::setup(){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 	}
-	
-    
-	//////////////SHOW INTRO
-    startingNodes = storyEngine.getStartingQuestions();
-    
-	//////////////SHOW INTRO
-	cout << "Found " << startingNodes.size() << " questions" << endl;
-	showIntro( startingNodes );
-    
-    sound.enterTunnel();
+		
+	introSequence = new CloudsIntroSequence();
+	introSequence->setup();
+	introSequence->setDrawToScreen(false);
+	showIntro();
 
-    setupPortals();
+	startThread();
+}
+
+void CloudsPlaybackController::finishSetup(){
+	
+	hud.setup();
+
+	storyEngine.parser = &parser;
+	storyEngine.visualSystems = &visualSystems;
+	storyEngine.printDecisions = false;
+	storyEngine.combinedClipsOnly = true;
+	storyEngine.setup();
+	
+	startingNodes = storyEngine.getStartingQuestions();
+	introSequence->setStartQuestions(startingNodes);
+
+	rgbdVisualSystem = new CloudsVisualSystemRGBD();
+	rgbdVisualSystem->setup();
+	rgbdVisualSystem->setDrawToScreen(false);
+	
+	clusterMap = new CloudsVisualSystemClusterMap();
+	clusterMap->setRun(run);
+	clusterMap->setup();
+	clusterMap->buildEntireCluster(parser);
+	clusterMap->setDrawToScreen(false);
+	
+#ifdef OCULUS_RIFT
+    rgbdVisualSystem->hud = &hud;
+    rgbdVisualSystem->setupHUDGui();
     
+    introSequence->hud = &hud;
+    introSequence->setupHUDGui();
+#endif
+    
+    setupPortals();
+	
+}
+
+void CloudsPlaybackController::threadedFunction(){
+
+
+	loadPercent = 0.0;
+	
+	///START THREADED
+	parser.loadFromFiles();
+	if(!isThreadRunning()) return;
+	
+	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
+		ofSystemAlertDialog("Could not find movie file path. \
+							Create a file called CloudsMovieDirectory.txt \
+							that contains one line, the path to your movies folder");
+	}
+	
+	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+	
+	if(!isThreadRunning()) return;
+	
+	visualSystems.loadPresets();
+	visualSystems.loadCachedDataForSystems();
+	
+	if(!isThreadRunning()) return;
+	
+	///SOUND
+	mixer.setup();
+	sound.setup(storyEngine);
+	sound.enterTunnel();
+
+	if(!isThreadRunning()) return;
+		
+#ifndef  OCULUS_RIFT
+	////COMMUNICATION
+	oscSender.setup();
+#endif
+	
+	//END THREADED
+	loading = false;
+	loadFinished = true;
 }
 
 //--------------------------------------------------------------------
@@ -215,10 +222,9 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
-	introSequence->setStartQuestions(possibleStartQuestions);
-	showIntro();
-}
+//void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
+//	showIntro();
+//}
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showIntro(){
@@ -239,22 +245,59 @@ void CloudsPlaybackController::showIntro(){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::playAct(CloudsAct* act){
+void CloudsPlaybackController::loadCurrentAct(){
     
-    //	currentAct = act;
-    
-	//TODO: show loading screen while we initialize all the visual systems
-	vector<CloudsVisualSystemPreset>& presets = currentAct->getAllVisualSystemPresets();
-	vector< CloudsVisualSystem* > systems = CloudsVisualSystemManager::InstantiateSystems(presets);
-	for(int i = 0; i < presets.size(); i++){
-		if(presets[i].system != NULL){
-            //			cout << "CloudsPlaybackController::playAct -- Setting up:: " << presets[i].systemName << endl;
-			presets[i].system->setup();
-		}
-		else{
-			ofLogError("CloudsPlaybackController::playAct") << presets[i].systemName << " NULL right after instantiaton. correlating system null? " << (systems[i] == NULL ? "YES" : "NO");
-		}
+	//presetsToLoad = currentAct->getAllVisualSystemPresets();
+	
+	//CloudsVisualSystemManager::InstantiateSystems(presetsToLoad);
+	
+//	for(int i = 0; i < presets.size(); i++){
+//		if(presetsToLoad[i].system != NULL){
+//            //			cout << "CloudsPlaybackController::playAct -- Setting up:: " << presets[i].systemName << endl;
+//			presetsToLoad[i].system->setup();
+//		}
+//		else{
+//			ofLogError("CloudsPlaybackController::playAct") << presetsToLoad[i].systemName << " NULL right after instantiaton.");
+//		}
+//	}
+	
+	currentPresetIndex = 0;
+	loadingAct = true;
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::updateLoadingAct(){
+
+	CloudsVisualSystemPreset& preset = currentAct->getAllVisualSystemPresets()[currentPresetIndex];
+	
+	preset.system = CloudsVisualSystemManager::InstantiateSystem(preset.systemName);
+	if(preset.system != NULL){
+		preset.system->setup();
 	}
+	else{
+		ofLogError("CloudsPlaybackController::updateLoadingAct") << preset.systemName << " NULL right after instantiaton.";
+	}
+	
+	currentPresetIndex++;
+	if(currentPresetIndex == currentAct->getAllVisualSystemPresets().size()){
+		loadingAct = false;
+		shouldPlayAct = true;
+	}
+	
+//	for(int i = 0; i < presets.size(); i++){
+//		if(presetsToLoad[i].system != NULL){
+//            //			cout << "CloudsPlaybackController::playAct -- Setting up:: " << presets[i].systemName << endl;
+//			presetsToLoad[i].system->setup();
+//		}
+//		else{
+//			ofLogError("CloudsPlaybackController::playAct") << presetsToLoad[i].systemName << " NULL right after instantiaton.");
+//		}
+//	}
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::playCurrentAct(){
 	
 	currentAct->registerEvents(this);
     currentAct->registerEvents(&run);
@@ -391,6 +434,16 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(ofEventArgs & args){
+
+	if(loading){
+		return;
+	}
+	
+	if(loadFinished){
+		finishSetup();
+		loadFinished = false;
+	}
+	
     ////////////////////
 	//OS CURSOR
 #ifdef CLOUDS_RELEASE
@@ -533,7 +586,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             
             bQuestionAsked = true;
             
-//            sound.stopMusic();
             
             transitionController.transitionWithQuestion(2.0, 0.1);
             //sound.questionSelected(2.0);
@@ -552,8 +604,15 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		hud.update();
 	}
 	
+	if(shouldLoadAct){
+		loadCurrentAct();
+		shouldLoadAct = false;
+	}
+	if(loadingAct){
+		updateLoadingAct();
+	}
 	if(shouldPlayAct){
-		playAct(currentAct);
+		playCurrentAct();
 		shouldPlayAct = false;
 	}
 	updateTransition();
@@ -564,7 +623,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 void CloudsPlaybackController::updateTransition(){
 	
 	transitionController.update();
-    
     
     //if(transitionController.getCurrentState() != TRANSITION_IDLE){
     //    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
@@ -610,6 +668,7 @@ void CloudsPlaybackController::updateTransition(){
 					rgbdVisualSystem->transtionFinished();
                     rgbdVisualSystem->stopSystem();
 				}
+				
                 if(introSequence != NULL){
                     delete introSequence;
                 }
@@ -618,6 +677,7 @@ void CloudsPlaybackController::updateTransition(){
                 
                 introSequence = new CloudsIntroSequence();
                 introSequence->setup();
+				introSequence->setStartQuestions(startingNodes);
 #ifdef OCULUS_RIFT
                 introSequence->hud = &hud;
                 introSequence->setupHUDGui();
@@ -627,7 +687,7 @@ void CloudsPlaybackController::updateTransition(){
                 // TODO: Look into using Intro events for setting bDrawHud, so it works like everything else.
                 hud.setHudEnabled(true);
                 
-                showIntro(startingNodes);
+                showIntro();
                 break;
                 
             case TRANSITION_VISUALSYSTEM_IN:
@@ -675,7 +735,6 @@ void CloudsPlaybackController::updateTransition(){
                 if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
                     rgbdVisualSystem->transtionFinished();
                     rgbdVisualSystem->stopSystem();
-                    //Call stop on the clip?
                 }
                 else if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
                     hideVisualSystem();
@@ -721,7 +780,7 @@ void CloudsPlaybackController::updateTransition(){
                     
                     storyEngine.buildAct(run, clip, q->topic, true);
                     
-					sound.exitTunnel();
+//					sound.exitTunnel();
                 }
                 else if(transitionController.getPreviousState() == TRANSITION_INTERLUDE_OUT){
                     
@@ -737,8 +796,8 @@ void CloudsPlaybackController::updateTransition(){
                     cout<<"IDLE POST TRANSITION INTERLUDE OUT"<<endl;
                 }
 				else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
+
 					if(bQuestionAsked){
-                        
                         
                         q = rgbdVisualSystem->getSelectedQuestion();
                         clip = q->clip;
@@ -778,7 +837,8 @@ void CloudsPlaybackController::updateTransition(){
     
     crossfadeValue = transitionController.getFadeValue();
 
-    if(bQuestionAsked){
+    //if(bQuestionAsked || shouldLoadAct || loadingAct){
+	if(bQuestionAsked){	
         CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = crossfadeValue;
         //don't start fading out right away
         crossfadeValue = ofMap(crossfadeValue, .2, 0.0, 1.0, 0.0, true);
@@ -805,6 +865,11 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     
 	drawDebugOverlay();
 	
+	if(loadingAct){
+		float progressWidth = ofGetWidth() * .66;
+		loadingFont.drawString("Generating a response to your query.", ofGetWidth()*.33, ofGetHeight()*.5 - 5);
+		ofRect(ofGetWidth()*.33 / 2, ofGetHeight()*.5, progressWidth * currentPresetIndex / currentAct->getAllVisualSystemPresets().size(), 50. );
+	}
 	glPopAttrib();
 }
 
@@ -815,8 +880,10 @@ void CloudsPlaybackController::drawRenderTarget(){
         ofEnableAlphaBlending();
         
 		//cout << "crosffade value is " << crossfadeValue << " showing intro? " << showingIntro << endl;
+		if(loading){
+			crossfadeValue = 1.0;
+		}
 		ofSetColor(255, crossfadeValue*255 );
-		
 		currentVisualSystem->selfPostDraw();
         
         
@@ -889,29 +956,6 @@ void CloudsPlaybackController::drawDebugOverlay(){
 		currentAct->getTimeline().disableEvents();
 	}
 	
-    //	if(showingVisualSystem && ofGetKeyPressed('k')){
-    //		ofPushMatrix();
-    //		ofPushStyle();
-    //		ofEnableAlphaBlending();
-    //		ofTranslate(ofGetWidth()*.5, ofGetHeight()*.5);
-    //		ofScale(7,7);
-    //		ofSetColor(255);
-    //		string debugString = "";
-    //		currentVisualSystemPreset.presetName + " was associated with keyword " + currentVisualSystemPreset.conjureKeyword + "\n" +
-    //        "Preset's keywords " + ofJoinString(currentVisualSystemPreset.allKeywords, ", ") + "\n" +
-    //        "current clip's keywords " + ofJoinString(currentClip.getKeywords(), ", ") + "\n" +
-    //        "Had to default to keyword family? " + (currentVisualSystemPreset.defaultedToFamily ? "YES" : "NO") + "\n" +
-    //        "Had to pick a random preset? " + (currentVisualSystemPreset.randomlySelected ? "YES" : "NO") + "\n" +
-    //        "Act #? " + ofToString(run.actCount);
-    //
-    //		ofDrawBitmapString(debugString, 0,0);
-    //
-    //		ofSetColor(0,0,0,255);
-    //		ofRect(-5,-5,300, 50);
-    //
-    //		ofPopStyle();
-    //		ofPopMatrix();
-    //	}
 }
 
 #pragma story engine events
@@ -923,13 +967,18 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
     }
     
 	numClipsPlayed = 0;
-	shouldPlayAct = true;
+	shouldLoadAct = true;
+	shouldPlayAct = false;
 	currentAct = args.act;
+	
+	cout << "***** ORDER OF OPERATIONS: ACT CRATED CONTROLLER " << args.act << endl;
+
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
-    
+    cout << "***** ORDER OF OPERATIONS: ACT BEGAN CONTROLLER " << args.act << endl;
+	
     if(!args.act->startsWithVisualSystem()){
         transitionController.transitionToFirstInterview(1.0);
     }
@@ -1099,7 +1148,7 @@ void CloudsPlaybackController::showInterlude(){
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
         interludeSystem->playSystem();
-        interludeSystem->drawCursorMode = DRAW_CURSOR_PRIMARY;
+//        interludeSystem->drawCursorMode = DRAW_CURSOR_PRIMARY;
         
         currentVisualSystem = interludeSystem;
         

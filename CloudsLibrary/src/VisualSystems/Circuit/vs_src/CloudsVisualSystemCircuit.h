@@ -12,7 +12,6 @@
 
 #include "CloudsVisualSystem.h"
 #include "ofxCv.h"
-#include "ofxGameCamera.h"
 
 typedef struct {
     int lineIndex;
@@ -107,7 +106,9 @@ class CloudsVisualSystemCircuit : public CloudsVisualSystem {
 	void selfSetupCameraGui();
 	
 	ofCamera& getCameraRef();
+	#ifdef HAS_GAMECAM
 	ofxGameCamera cam;
+	#endif
 	
 protected:
     
@@ -140,7 +141,6 @@ protected:
 	void generateCircuit();
 	
 	
-	ofxGameCamera gameCam;
 	
 	ofxCv::ContourFinder contourFinder;
     vector<Blip> blips;

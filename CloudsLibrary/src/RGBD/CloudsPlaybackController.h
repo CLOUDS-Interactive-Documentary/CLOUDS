@@ -7,7 +7,6 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsAct.h"
-#include "ofxGameCamera.h"
 #include "ofxUI.h"
 
 #include "CloudsIntroSequence.h"
@@ -30,14 +29,16 @@
  * and decides when to show Visual Systems
  *
  */
-class CloudsPlaybackController {
+class CloudsPlaybackController : public ofThread {
   public:
 	CloudsPlaybackController();
-	~CloudsPlaybackController();
 
 	//set it up with an existing story engine that will register the events
-	void setup();	
-	void playAct(CloudsAct* act);
+	void setup();
+	void loadCurrentAct(); //starts loading screen
+	void updateLoadingAct(); //loads one system everytime it's called
+	void playCurrentAct();//when done loading
+	
 	CloudsRGBDVideoPlayer& getSharedVideoPlayer();
 	
 	//update and draw to the screen, this will always
@@ -70,6 +71,14 @@ class CloudsPlaybackController {
 	
 	vector<CloudsClip> fakeQuestions;
 
+	bool loading;
+	float loadPercent;
+	bool loadFinished;
+	
+	void threadedFunction();
+	
+	void finishSetup(); //called at the end of the threaded function
+	
   protected:
 	vector<CloudsClip> startingNodes;
 	//*** CORE CLOUDS STUFF
@@ -87,6 +96,8 @@ class CloudsPlaybackController {
 	CloudsClip currentClip;
 	int numClipsPlayed;
 	string currentTopic;
+	
+	bool shouldLoadAct;
 	bool shouldPlayAct;
     bool shouldClearAct;
     
@@ -114,6 +125,12 @@ class CloudsPlaybackController {
 	CloudsTransitionController transitionController;
 	void updateTransition();
 
+	//loader screen
+	bool loadingAct;
+	int currentPresetIndex;
+//	vector<CloudsVisualSystemPreset> presetsToLoad;
+	
+	
     string currentClipName;
     float actCreatedTime;
 	float crossfadeValue;
@@ -131,7 +148,7 @@ class CloudsPlaybackController {
 	//VISUAL SYSTEMS
 	//
 	void showIntro();
-	void showIntro(vector<CloudsClip>& possibleStartQuestions);
+//	void showIntro(vector<CloudsClip>& possibleStartQuestions);
 
 	bool showingIntro;
 	bool showingVisualSystem;
@@ -159,6 +176,7 @@ class CloudsPlaybackController {
     bool bResetSelected;
     bool bResetTransitionComplete;
     ofxFTGLFont resetFont;
+	ofxFTGLFont loadingFont;
     float resetSelectedPercentComplete;
     float maxResetHoverTime;
     float startResetHoverTime;

@@ -195,7 +195,10 @@ ofVec3f CloudsVisualSystemVerletForm::mwNewMove(MWParticle& pt) {
 }
 
 
-
+void CloudsVisualSystemVerletForm::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode  = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemVerletForm::mwLights() {
 	ofSetGlobalAmbientColor(ofColor(0,0,0));
 	ofSetSmoothLighting(true);

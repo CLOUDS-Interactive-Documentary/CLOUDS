@@ -786,9 +786,9 @@ void CloudsVisualSystemClusterMap::selfSetupTimeline(){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemClusterMap::selfSetup(){
-	gameCamera.setup();
-	gameCamera.autosavePosition = true;
-	gameCamera.loadCameraPosition();
+//	gameCamera.setup();
+//	gameCamera.autosavePosition = true;
+//	gameCamera.loadCameraPosition();
 	
 	firstClip = true;
 	
@@ -849,7 +849,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	}
 	
 	//UPDATE CAMERA
-	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
+//	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
 	if(cursorIsOverGUI()){
 		easyCamera.disableMouseInput();
 	}
@@ -1204,7 +1204,7 @@ void CloudsVisualSystemClusterMap::selfKeyPressed(ofKeyEventArgs & args){
 	
 	int key = args.key;
 	if(key == 'C'){
-		gameCamera.reset();
+//		gameCamera.reset();
 	}
 	if(key == 'G'){
 		traverse();

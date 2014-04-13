@@ -41,6 +41,7 @@ class CloudsVisualSystemCosmic : public CloudsVisualSystem {
 	void selfDrawBackground();
 	void selfEnd();
     void selfExit();
+    void selfSetDefaults();
     
     void selfKeyPressed(ofKeyEventArgs & args);
 //

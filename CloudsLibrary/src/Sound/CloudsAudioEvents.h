@@ -26,6 +26,8 @@ public:
     bool doflush;
     bool respawn;
     bool dodelay;
+	float gain;
+	float fadeValue;
 };
 
 ofPtr<CloudsAudioEvents> GetCloudsAudioEvents();

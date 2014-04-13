@@ -71,7 +71,9 @@ void CloudsVisualSystemChromogram::selfGuiEvent(ofxUIEventArgs &e){
 		cout << "Button pressed!" << endl;
 	}
 }
-
+void CloudsVisualSystemChromogram::selfSetDefaults(){
+    
+}
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemChromogram::selfSetupSystemGui(){
 	

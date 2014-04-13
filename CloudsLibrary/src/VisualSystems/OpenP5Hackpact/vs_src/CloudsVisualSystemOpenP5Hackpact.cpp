@@ -37,6 +37,10 @@ void CloudsVisualSystemOpenP5Hackpact::selfSetupGui(){
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemOpenP5Hackpact::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemOpenP5Hackpact::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;

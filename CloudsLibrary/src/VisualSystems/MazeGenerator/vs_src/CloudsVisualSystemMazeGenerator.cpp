@@ -83,7 +83,10 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
-
+void CloudsVisualSystemMazeGenerator::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemMazeGenerator::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.getName() == "GROUND CAM") {

@@ -85,8 +85,8 @@ void CloudsVisualSystemCircuit::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 ofCamera& CloudsVisualSystemCircuit::getCameraRef(){
-	return cam;
-//	return CloudsVisualSystem::getCameraRef();
+//	return cam;
+	return CloudsVisualSystem::getCameraRef();
 }
 
 void CloudsVisualSystemCircuit::generateCircuit(){
@@ -250,18 +250,22 @@ void CloudsVisualSystemCircuit::selfSetDefaults(){
 	bDrawMesh = false;
 	bDrawLine = true;
 	bDrawBlips = true;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemCircuit::selfSetup(){
-	
+
+#ifdef HAS_GAMECAM
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
 	
 	cam.speed = .5;
 	cam.setup();
+#endif
 	
 	generateCircuit();
 	reloadShaders();
@@ -289,8 +293,9 @@ void CloudsVisualSystemCircuit::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemCircuit::selfUpdate(){
-	
+#ifdef HAS_GAMECAM
 	cam.applyRotation = cam.applyTranslation = !cursorIsOverGUI();
+#endif
 	
 	getCameraRef().setNearClip( nearClippingPlane );
 	

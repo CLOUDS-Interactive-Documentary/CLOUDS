@@ -97,7 +97,7 @@ bool CloudsPortal::isSelected(){
 }
 
 void CloudsPortal::update(){
-    if(ofGetFrameNum() % 1000 == 0) cout << "question node " << question << " is selected? " << selected << " hovering? " << hovering << endl;
+//    if(ofGetFrameNum() % 1000 == 0) cout << "question node " << question << " is selected? " << selected << " hovering? " << hovering << endl;
     
     if(cam != NULL){
         float dot = ( hoverPosition - cam->getPosition()).dot(cam->getLookAtDir());
