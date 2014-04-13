@@ -160,13 +160,12 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                                    + bodies[idx]->spineMidJoint.inputPosition.distance(bodies[idx]->spineBaseJoint.inputPosition) * 0.5f) * 0.5f;
             float neckOverlapWidth = mappingWidth * 0.2f;
             
-            // map the spine points
             // these are commented out because we now have two origins (left and right hand), so the x-map would not make sense
             //mapCoords(bodies[idx]->headJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
             //mapCoords(bodies[idx]->neckJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
             //mapCoords(bodies[idx]->spineShoulderJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
             //mapCoords(bodies[idx]->spineMidJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
-            mapCoords(bodies[idx]->spineBaseJoint, bodies[idx]->spineShoulderJoint.inputPosition, zRef, mappingWidth, mappingHeight);
+            //mapCoords(bodies[idx]->spineBaseJoint, bodies[idx]->spineShoulderJoint.inputPosition, zRef, mappingWidth, mappingHeight);
             
             // check if the body is within the tracked bounds
             bool bBodyOutOfBounds = (bodies[idx]->spineBaseJoint.inputPosition.x < boundsMin.x ||
@@ -211,17 +210,22 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 
                 if (bClampToBounds) {
                     // clamp to left, right, and top edges
-                    hands[handIdx]->handJoint.inputPosition.x = ofClamp(hands[handIdx]->handJoint.inputPosition.x, origin.x - mappingWidth, origin.x + mappingWidth);
-                    hands[handIdx]->handJoint.inputPosition.y = MIN(hands[handIdx]->handJoint.inputPosition.y, origin.y + mappingHeight);
+                    hands[handIdx]->handJoint.clampedPosition.x = ofClamp(hands[handIdx]->handJoint.inputPosition.x, origin.x - mappingWidth, origin.x + mappingWidth);
+                    hands[handIdx]->handJoint.clampedPosition.y = MIN(hands[handIdx]->handJoint.inputPosition.y, origin.y + mappingHeight);
                 }
+				else {
+					hands[handIdx]->handJoint.clampedPosition.x = hands[handIdx]->handJoint.inputPosition.x;
+					hands[handIdx]->handJoint.clampedPosition.y = hands[handIdx]->handJoint.inputPosition.y;
+				}
+				hands[handIdx]->handJoint.clampedPosition.z = hands[handIdx]->handJoint.inputPosition.z;
                 
                 // map the input to local and screen coordinates
-                mapCoords(hands[handIdx]->handJoint, origin, zRef, mappingWidth, mappingHeight);
+                mapHandCoords(hands[handIdx]->handJoint, origin, zRef, mappingWidth, mappingHeight);
                 
-                bool bHandOutOfBounds = (hands[handIdx]->handJoint.inputPosition.x < hands[handIdx]->trackingBounds.getMinX() ||
-                                         hands[handIdx]->handJoint.inputPosition.x > hands[handIdx]->trackingBounds.getMaxX() ||
-                                         hands[handIdx]->handJoint.inputPosition.y < hands[handIdx]->trackingBounds.getMinY() ||
-                                         hands[handIdx]->handJoint.inputPosition.y > hands[handIdx]->trackingBounds.getMaxY());
+                bool bHandOutOfBounds = (hands[handIdx]->handJoint.clampedPosition.x < hands[handIdx]->trackingBounds.getMinX() ||
+                                         hands[handIdx]->handJoint.clampedPosition.x > hands[handIdx]->trackingBounds.getMaxX() ||
+                                         hands[handIdx]->handJoint.clampedPosition.y < hands[handIdx]->trackingBounds.getMinY() ||
+                                         hands[handIdx]->handJoint.clampedPosition.y > hands[handIdx]->trackingBounds.getMaxY());
                 
                 // set the new hand state, and calculate active frames while we're at it
                 if (bBodyOutOfBounds ||
@@ -375,10 +379,10 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                     ((candidateIdx == -1) || 
                      (candidateActiveFrames < it->second->activeFrames) || 
                      (candidateActiveFrames == it->second->activeFrames && 
-                         candidateY < it->second->handJoint.inputPosition.y))) {
+                         candidateY < it->second->handJoint.clampedPosition.y))) {
                 candidateIdx = it->first;
                 candidateActiveFrames = it->second->activeFrames;
-                candidateY = it->second->handJoint.inputPosition.y;
+                candidateY = it->second->handJoint.clampedPosition.y;
             }
         }
         primaryIdx = candidateIdx;
@@ -419,10 +423,10 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
 }
 
 //--------------------------------------------------------------
-void CloudsInputKinectOSC::mapCoords(k4w::Joint& joint, ofVec3f& origin, float zRef, float width, float height)
+void CloudsInputKinectOSC::mapHandCoords(k4w::HandJoint& joint, ofVec3f& origin, float zRef, float width, float height)
 {
     // switch to a local coord system, centered at origin
-    joint.localPosition = joint.inputPosition;
+    joint.localPosition = joint.clampedPosition;
     joint.localPosition -= origin;
     
     // map the local position to the 2D viewport coord system
