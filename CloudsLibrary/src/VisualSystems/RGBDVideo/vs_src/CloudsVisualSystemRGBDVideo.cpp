@@ -41,6 +41,8 @@ void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     refreshPoints = false;
     
     blendModeAdd = false;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 //--------------------------------------------------------------

@@ -79,6 +79,11 @@ void CloudsVisualSystemMazeGenerator2::selfGuiEvent(ofxUIEventArgs &e)
 
 }
 
+void CloudsVisualSystemMazeGenerator2::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
+
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemMazeGenerator2::selfSetupSystemGui(){
 	
