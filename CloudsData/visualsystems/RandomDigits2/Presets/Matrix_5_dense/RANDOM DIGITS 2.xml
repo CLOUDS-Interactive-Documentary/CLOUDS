@@ -53,15 +53,20 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Dark Color</Name>
-    <Value>0.345003456</Value>
+    <Value>0.316982031</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Light Color</Name>
-    <Value>1.092014194</Value>
+    <Value>1.089162230</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOG DENSITY</Name>
     <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ROTATION FIX HACK</Name>
+    <Value>1</Value>
 </Widget>
