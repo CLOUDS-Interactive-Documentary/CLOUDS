@@ -123,6 +123,12 @@ namespace k4w
             
             shoulderRightJoint.type = JointType_ShoulderRight;
             shoulderRightJoint.trackingState = TrackingState_NotTracked;
+
+			elbowLeftJoint.type = JointType_ElbowLeft;
+            elbowLeftJoint.trackingState = TrackingState_NotTracked;
+            
+            elbowRightJoint.type = JointType_ElbowRight;
+            elbowRightJoint.trackingState = TrackingState_NotTracked;
             
             age = 0;
         }
@@ -137,6 +143,8 @@ namespace k4w
         Joint spineBaseJoint;
         Joint shoulderLeftJoint;
         Joint shoulderRightJoint;
+		Joint elbowLeftJoint;
+		Joint elbowRightJoint;
     };
     
     class Hand
