@@ -3779,7 +3779,18 @@ void CloudsVisualSystem::drawCursors()
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
 #ifdef KINECT_INPUT
-        selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle, it->second.primary? primaryCursorMode : secondaryCursorMode);
+		// Fade out as we reach out to the sides too far.
+		float alphaScalarXY = 1.0f;
+		if (((CloudsInputKinectOSC *)GetCloudsInput().get())->hands.count(it->first)) {
+			k4w::Hand * hand = ((CloudsInputKinectOSC *)GetCloudsInput().get())->hands[it->first];
+			alphaScalarXY = ofMap(hand->handJoint.inputPosition.distance(hand->handJoint.clampedPosition), 0.0f, 0.5f, 1.0f, 0.0f, true);
+		}
+
+		// Fade out as we reach in towards the screen too far.
+		float alphaScalarZ = ofMap(it->second.position.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
+		
+		float alphaScalar = powf(MIN(alphaScalarXY, alphaScalarZ), 2.0f);
+        selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle, it->second.primary? primaryCursorMode : secondaryCursorMode, alphaScalar);
 #elif TOUCH_INPUT
         selfDrawCursor(it->second.position, false, it->second.primary? primaryCursorMode : secondaryCursorMode);
         // EZ: Replace the line above by the line below to test dragging by pressing a mouse button.
@@ -3791,17 +3802,10 @@ void CloudsVisualSystem::drawCursors()
     }
 }
 
-void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode)
+void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float alphaScalar)
 {
     if (mode == CURSOR_MODE_NONE) return;
 
-#ifdef KINECT_INPUT
-	// Fade out if we reach in too far.
-	float alphaScalar = ofMap(pos.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
-#else
-    float alphaScalar = 1.0f;
-#endif
-    
     ofPushStyle();
 
     if (mode == CURSOR_MODE_INACTIVE) {
@@ -3834,10 +3838,10 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
         }
         else {  // !bDragged
 #ifdef OCULUS_RIFT
-            ofSetColor(255, 255, 255, 64);
+            ofSetColor(255, 255, 255, 64 * alphaScalar);
             ofCircle(pos, cursorSize);
 #elif KINECT_INPUT
-            ofSetColor(255, 255, 255, 192);
+            ofSetColor(255, 255, 255, 192 * alphaScalar);
             ofCircle(pos.x, pos.y,
                      ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true));
 #else
@@ -3870,13 +3874,13 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
             static float midRadius = 0.5f;
             float totalRadius;
 #ifdef OCULUS_RIFT
-            ofSetColor(255, 255, 255, 64);
+            ofSetColor(255, 255, 255, 64 * alphaScalar);
             totalRadius = cursorSize;
 #elif KINECT_INPUT
-            ofSetColor(255, 255, 255, 192);
+            ofSetColor(255, 255, 255, 192 * alphaScalar);
             totalRadius = ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true);
 #else
-            ofSetColor(255, 255, 255, 192);
+            ofSetColor(255, 255, 255, 192 * alphaScalar);
             totalRadius = cursorUpSize;
 #endif
             ofLine(pos.x - totalRadius, pos.y, pos.x - totalRadius * coreRadius, pos.y);
