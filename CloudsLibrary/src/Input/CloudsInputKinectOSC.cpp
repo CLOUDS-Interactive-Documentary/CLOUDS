@@ -596,6 +596,80 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
 }
 
 //--------------------------------------------------------------
+void CloudsInputKinectOSC::draw(float x, float y, float width, float height, float alpha)
+{
+    // Adjust the dimensions to fit in a 4:3 window cause stretching is gross.
+	if (width/height != 4.0f/3.0f) {
+		float newWidth = 4.0f * height / 3.0f;
+		x += (width - newWidth) / 2.0f;
+		width = newWidth;
+	}
+	
+	ofPushStyle();
+    ofPushMatrix();
+    {
+        // scale up from our -1, 1 viewport
+        ofTranslate(x, y);
+        ofScale(width / 2.0f, height / 2.0f);
+        ofTranslate(1, 1);
+        ofScale(1, -1);
+        
+		ofSetColor(ofColor::white, alpha);
+
+        ofNoFill();
+		ofRect(-1, -1, 2, 2);
+
+        // draw bodies
+        for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
+            k4w::Body * body = it->second;
+            
+            ofNoFill();
+            
+            // draw the spine
+            ofBeginShape();
+            {
+                ofVertex(body->headJoint.inputPosition);
+                ofVertex(body->neckJoint.inputPosition);
+                ofVertex(body->spineShoulderJoint.inputPosition);
+                ofVertex(body->spineMidJoint.inputPosition);
+                ofVertex(body->spineBaseJoint.inputPosition);
+            }
+            ofEndShape();
+            
+            // draw the arm span
+            ofBeginShape();
+            {
+                ofVertex(body->elbowLeftJoint.inputPosition);
+                ofVertex(body->shoulderLeftJoint.inputPosition);
+				ofVertex(body->spineShoulderJoint.inputPosition);
+				ofVertex(body->shoulderRightJoint.inputPosition);
+				ofVertex(body->elbowRightJoint.inputPosition);
+            }
+            ofEndShape();
+        }
+        
+        // draw hands
+        for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
+            k4w::Hand * hand = it->second;
+            
+            // draw the arm
+            ofLine(hand->handJoint.inputPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->elbowLeftJoint.inputPosition : bodies[hand->bodyIdx]->elbowRightJoint.inputPosition);
+            
+            bool bActive = (hand->activeFrames > 0);
+            bool bInBounds = (hand->handJoint.inputPosition.x >= hand->trackingBounds.getMinX() &&
+                              hand->handJoint.inputPosition.x <= hand->trackingBounds.getMaxX() &&
+                              hand->handJoint.inputPosition.y >= hand->trackingBounds.getMinY() &&
+                              hand->handJoint.inputPosition.y <= hand->trackingBounds.getMaxY());
+            
+			// draw the hand
+            ofCircle(hand->handJoint.inputPosition, 0.02f);
+        }
+    }
+    ofPopMatrix();
+    ofPopStyle();
+}
+
+//--------------------------------------------------------------
 void SetCloudsInputKinect(float activeThresholdY, float activeThresholdZ)
 {
     SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC(activeThresholdY, activeThresholdZ)));

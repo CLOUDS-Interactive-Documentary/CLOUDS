@@ -188,6 +188,7 @@ public:
 	void processHandEvent(int handIdx, k4w::Hand * hand, k4w::HandState newState);
     
     void debug(float x, float y, float width, float height);
+	void draw(float x, float y, float width, float height, float alpha = 255);
     
     ofxOscReceiver receiver;
     int lastOscFrame;
