@@ -534,11 +534,9 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             // draw the arm span
             ofBeginShape();
             {
-                ofVertex(body->elbowLeftJoint.inputPosition);
                 ofVertex(body->shoulderLeftJoint.inputPosition);
 				ofVertex(body->spineShoulderJoint.inputPosition);
 				ofVertex(body->shoulderRightJoint.inputPosition);
-				ofVertex(body->elbowRightJoint.inputPosition);
             }
             ofEndShape();
         }
@@ -549,13 +547,13 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             
             // draw the arm
             ofSetColor(ofColor::gray);
-            ofLine(hand->handJoint.inputPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->elbowLeftJoint.inputPosition : bodies[hand->bodyIdx]->elbowRightJoint.inputPosition);
+            //ofLine(hand->handJoint.clampedPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->elbowLeftJoint.inputPosition : bodies[hand->bodyIdx]->elbowRightJoint.inputPosition);
             
             bool bActive = (hand->activeFrames > 0);
-            bool bInBounds = (hand->handJoint.inputPosition.x >= hand->trackingBounds.getMinX() &&
-                              hand->handJoint.inputPosition.x <= hand->trackingBounds.getMaxX() &&
-                              hand->handJoint.inputPosition.y >= hand->trackingBounds.getMinY() &&
-                              hand->handJoint.inputPosition.y <= hand->trackingBounds.getMaxY());
+            bool bInBounds = (hand->handJoint.clampedPosition.x >= hand->trackingBounds.getMinX() &&
+                              hand->handJoint.clampedPosition.x <= hand->trackingBounds.getMaxX() &&
+                              hand->handJoint.clampedPosition.y >= hand->trackingBounds.getMinY() &&
+                              hand->handJoint.clampedPosition.y <= hand->trackingBounds.getMaxY());
             
             if (hand->handJoint.trackingState == k4w::TrackingState_Tracked) {
                 if (bActive) {
@@ -579,7 +577,7 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             else {
                 ofNoFill();
             }
-            ofCircle(hand->handJoint.inputPosition, 0.02f);
+            ofCircle(hand->handJoint.clampedPosition, 0.02f);
             
             ofNoFill();
             ofSetColor(ofColor::white);
