@@ -251,7 +251,6 @@ void CloudsIntroSequence::selfUpdate(){
 
 	updateTitle();
 
-
 }
 
 void CloudsIntroSequence::updateWaiting(){

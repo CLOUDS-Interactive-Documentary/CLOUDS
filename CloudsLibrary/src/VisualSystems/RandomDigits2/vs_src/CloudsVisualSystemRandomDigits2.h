@@ -93,9 +93,6 @@ class CloudsVisualSystemRandomDigits2 : public CloudsVisualSystem {
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
 
 
 protected:
@@ -110,6 +107,7 @@ protected:
     ofxUISuperCanvas* customGui;
     map< ofFloatColor*, ofxUILabel*> labelColors;
 
+	bool rotationFix;
     vector<RandomNumber> numbers;
     ofVbo vbo;
     ofImage numbersImg;

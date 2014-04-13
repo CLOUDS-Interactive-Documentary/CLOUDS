@@ -35,10 +35,11 @@ void CloudsVisualSystemRandomDigits2::selfSetupGui(){
     customGui->addSlider("Dark Color", 0, 2, &dark);
     customGui->addSlider("Light Color", 0, 2, &light);
     customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
-    
-     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemRandomDigits2::selfGuiEvent);
-     guis.push_back(customGui);
-     guimap[customGui->getName()] = customGui;
+    customGui->addToggle("ROTATION FIX HACK", &rotationFix);
+	
+	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemRandomDigits2::selfGuiEvent);
+	guis.push_back(customGui);
+	guimap[customGui->getName()] = customGui;
  
 }
 
@@ -87,6 +88,8 @@ void CloudsVisualSystemRandomDigits2::selfSetup()
     dark = 0.6;
     light = 2;
     fogDensity = 0.025f;
+	
+	rotationFix = false;
 }
 
 
@@ -139,6 +142,7 @@ void CloudsVisualSystemRandomDigits2::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemRandomDigits2::selfDraw(){
     
+	ofPushMatrix();
     glPushAttrib(GL_FOG_BIT);
     
     glEnable(GL_FOG);
@@ -151,7 +155,9 @@ void CloudsVisualSystemRandomDigits2::selfDraw(){
     ofEnableAlphaBlending();
     
     ofPushStyle();
-//    cam.begin();
+	if(rotationFix){
+		ofRotate(90, 1, 0, 0);
+	}
     
     numbersImg.bind();
     ofSetColor(255, 255, 255);
@@ -161,10 +167,10 @@ void CloudsVisualSystemRandomDigits2::selfDraw(){
 
     numbersImg.unbind();
     
-//    cam.end();
     ofPopStyle();
     
     glPopAttrib();
+	ofPopMatrix();
     
 }
 
