@@ -96,6 +96,7 @@ namespace k4w
     struct HandJoint : public Joint
     {
         HandState handState;
+		ofVec3f clampedPosition;  // input position, clamped to bounds if (bClampToBounds == true)
     };
     
     class Body 
@@ -184,7 +185,7 @@ public:
     
     void update(ofEventArgs& args);
     
-    void mapCoords(k4w::Joint& joint, ofVec3f& origin, float zRef, float width, float height);
+    void mapHandCoords(k4w::HandJoint& joint, ofVec3f& origin, float zRef, float width, float height);
 	void processHandEvent(int handIdx, k4w::Hand * hand, k4w::HandState newState);
     
     void debug(float x, float y, float width, float height);
