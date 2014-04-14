@@ -21,10 +21,14 @@
 typedef struct{
 	ofVec3f worldPosition;
 	ofVec2f screenPosition;
+	ofVec2f cursorDirection;
 	float cursorDistance;
 	bool hover;
 	bool finished;
+	float percentComplete;
 	float hoverStartTime;
+	float gazePercent;
+	int multiplier;
 } IntroNode;
 
 class CloudsIntroSequence : public CloudsVisualSystem {
@@ -45,9 +49,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     void selfExit();
     void selfBegin();
 	void selfEnd();
-	
+
+	void selfDrawOverlay();
 	void selfPostDraw();
-	
+
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
@@ -64,7 +69,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     void guiRenderEvent(ofxUIEventArgs &e);
 
 	void selfSetupCameraGui();
-	
 	
 	void selfPresetLoaded(string presetPath);
 	
@@ -84,6 +88,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 		return warpCamera;
 	}
 
+
+	
   protected:
 		
 	ofxUISuperCanvas* questionGui;
@@ -114,10 +120,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofRectangle titleRect;
 	bool hoveringTitle;
 	
-	ofxFTGLSimpleLayout questionFont;
+	ofxFTGLFont questionFont;
     void rebuildQuestionFont();
     int questionFontSize;
-	
+
 	float questionScale;
 	ofRange questionTugDistance;
 	ofRange questionAttenuateDistance;
@@ -167,10 +173,18 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float introNodeSize;
 	float introNodeMinDistance;
 	float introNodeHoldTime;
+	
 	ofVec3f introNodeOffset; //mirrored along the axis
+	string helpHoverText;
+
 	IntroNode introNodeOne;
 	IntroNode introNodeTwo;
+	IntroNode introNodeThree;
+	vector<IntroNode*> introNodes;
+	float nodeAlphaAttenuate;
+	ofVec2f hintCursorEndPoint;
 
+	
 	float timeSinceLastPrompt;
 	float promptTime;
 	bool promptShown;
@@ -184,9 +198,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	//intro state machien stuff
 	bool startedOnclick;
-	bool introNodeHoverOne;
-	bool introNodeHoverTwo;
-	
 	float perlinAmplitude;
 	float perlinDensity;
 	float perlinSpeed;
@@ -197,9 +208,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float tunnelDistance;
 	float tunnelStartZ;
 	
-    //hack with get input not working
-    ofVec2f inputPosition;
-    
 	bool regenerateTunnel;
 	void generateTunnel();
 	float looseTunnelResolutionX;

@@ -135,49 +135,26 @@ void CloudsPlaybackController::setup(){
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
+	
+	rgbdVisualSystem = new CloudsVisualSystemRGBD();
+	rgbdVisualSystem->setup();
+	rgbdVisualSystem->setDrawToScreen(false);
+
+	clusterMap = new CloudsVisualSystemClusterMap();
+	clusterMap->setup();
+	clusterMap->setDrawToScreen(false);
+	
+	hud.setup();
+	
 	showIntro();
 
 	startThread();
 }
 
-void CloudsPlaybackController::finishSetup(){
-	
-	hud.setup();
-
-	storyEngine.parser = &parser;
-	storyEngine.visualSystems = &visualSystems;
-	storyEngine.printDecisions = false;
-	storyEngine.combinedClipsOnly = true;
-	storyEngine.setup();
-	
-	startingNodes = storyEngine.getStartingQuestions();
-	introSequence->setStartQuestions(startingNodes);
-
-	rgbdVisualSystem = new CloudsVisualSystemRGBD();
-	rgbdVisualSystem->setup();
-	rgbdVisualSystem->setDrawToScreen(false);
-	
-	clusterMap = new CloudsVisualSystemClusterMap();
-	clusterMap->setRun(run);
-	clusterMap->setup();
-	clusterMap->buildEntireCluster(parser);
-	clusterMap->setDrawToScreen(false);
-	
-#ifdef OCULUS_RIFT
-    rgbdVisualSystem->hud = &hud;
-    rgbdVisualSystem->setupHUDGui();
-    
-    introSequence->hud = &hud;
-    introSequence->setupHUDGui();
-#endif
-    
-    setupPortals();
-	
-}
-
+//--------------------------------------------------------------------
 void CloudsPlaybackController::threadedFunction(){
-
-
+	
+	
 	loadPercent = 0.0;
 	
 	///START THREADED
@@ -203,17 +180,45 @@ void CloudsPlaybackController::threadedFunction(){
 	mixer.setup();
 	sound.setup(storyEngine);
 	sound.enterTunnel();
-
+	
 	if(!isThreadRunning()) return;
-		
+	
 #ifndef  OCULUS_RIFT
 	////COMMUNICATION
 	oscSender.setup();
 #endif
 	
+	clusterMap->setRun(run);
+	clusterMap->buildEntireCluster(parser);
+	
 	//END THREADED
 	loading = false;
 	loadFinished = true;
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::finishSetup(){
+	
+
+	storyEngine.parser = &parser;
+	storyEngine.visualSystems = &visualSystems;
+	storyEngine.printDecisions = false;
+	storyEngine.combinedClipsOnly = true;
+	storyEngine.setup();
+	
+	startingNodes = storyEngine.getStartingQuestions();
+	introSequence->setStartQuestions(startingNodes);
+
+		
+#ifdef OCULUS_RIFT
+    rgbdVisualSystem->hud = &hud;
+    rgbdVisualSystem->setupHUDGui();
+    
+    introSequence->hud = &hud;
+    introSequence->setupHUDGui();
+#endif
+    
+    setupPortals();
 }
 
 //--------------------------------------------------------------------
@@ -1283,33 +1288,4 @@ void CloudsPlaybackController::clearRestButtonParams(){
     bResetTransitionComplete = false;
 }
 
-//
-//void CloudsPlaybackController::SetInterludePortalsRef(vector<CloudsPortal>& ref){
-//    gPortals = ref;
-//}
-//
-//vector<CloudsPortal>& CloudsPlaybackController::InterludePortalsRef(){
-//    return gPortals;
-//}
-//
-//void CloudsPlaybackController::ResetInterludePortals(){
-//    cout<<"RESETTING PORTALS"<<endl;
-//    for(int i=0;i<InterludePortalsRef().size();i++){
-//        InterludePortalsRef()[i].clearSelection();
-//    }
-//}
-//bool CloudsPlaybackController::GetSelectedInterludePortalContinue(){
-//    return InterludePortalsRef()[1].isSelected();
-//}
-//bool CloudsPlaybackController::GetSelectedInterludePortalResetClouds(){
-//    return InterludePortalsRef()[0].isSelected();
-//}
-//
-//bool CloudsPlaybackController::CanShowInterludePortals(){
-//    return gShowInterludePortals;
-//}
-//void CloudsPlaybackController::ShowInterludePortals( bool show ){
-//    cout<<"Show interlude portals? "<<show<<endl;
-//    gShowInterludePortals = show;
-//}
 

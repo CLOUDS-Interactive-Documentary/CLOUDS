@@ -277,8 +277,6 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	ofVec3f maxBounds(0,0,0);
 	ofVec3f minBounds(0,0,0);
 	
-	ofVec2f flickerCoord = ofVec2f(0,0);
-	int flickerWidth = 100;
 	for(int i = 0; i < parser->getAllClips().size(); i++){
 		CloudsClusterNode n;
 		CloudsClip& clip = parser->getAllClips()[i];
@@ -309,10 +307,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	}
 
 	
-	flickerNoise.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
-	flickerNoiseTarget.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
-	flickerNoise.getPixelsRef().set(0);
-	flickerNoiseTarget.set(0);
+
 	
 	networkCentroid /= nodes.size();
 	float maxDistance = 0;
@@ -791,6 +786,13 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 //	gameCamera.loadCameraPosition();
 	
 	firstClip = true;
+	
+	flickerCoord = ofVec2f(0,0);
+	flickerWidth = 100;
+	flickerNoise.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
+	flickerNoiseTarget.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
+	flickerNoise.getPixelsRef().set(0);
+	flickerNoiseTarget.set(0);
 	
 	reloadShaders();
 }

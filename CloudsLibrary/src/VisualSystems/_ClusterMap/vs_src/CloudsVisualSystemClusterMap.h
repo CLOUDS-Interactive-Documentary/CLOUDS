@@ -144,6 +144,9 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofCamera axisCamera;
 //	ofxGameCamera gameCamera;
 	
+	ofVec2f flickerCoord;
+	int flickerWidth;
+
 	CloudsFCPParser* parser;
 	CloudsRun* run;
 	void resetGeometry();
