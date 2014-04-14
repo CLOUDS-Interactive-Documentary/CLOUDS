@@ -11,7 +11,9 @@
 #include "CloudsInput.h"
 #include "CloudsClip.h"
 #include "CloudsSpeaker.h"
-//#include "CloudsVisualSystem.h"
+#ifdef OCULUS_RIFT
+#include "CloudsVisualSystem.h"
+#endif
 
 CloudsHUDController::CloudsHUDController(){
 	hudGui = NULL;

@@ -96,6 +96,7 @@ namespace k4w
     struct HandJoint : public Joint
     {
         HandState handState;
+		ofVec3f clampedPosition;  // input position, clamped to bounds if (bClampToBounds == true)
     };
     
     class Body 
@@ -123,6 +124,12 @@ namespace k4w
             
             shoulderRightJoint.type = JointType_ShoulderRight;
             shoulderRightJoint.trackingState = TrackingState_NotTracked;
+
+			elbowLeftJoint.type = JointType_ElbowLeft;
+            elbowLeftJoint.trackingState = TrackingState_NotTracked;
+            
+            elbowRightJoint.type = JointType_ElbowRight;
+            elbowRightJoint.trackingState = TrackingState_NotTracked;
             
             age = 0;
         }
@@ -137,6 +144,8 @@ namespace k4w
         Joint spineBaseJoint;
         Joint shoulderLeftJoint;
         Joint shoulderRightJoint;
+		Joint elbowLeftJoint;
+		Joint elbowRightJoint;
     };
     
     class Hand
@@ -176,10 +185,11 @@ public:
     
     void update(ofEventArgs& args);
     
-    void mapCoords(k4w::Joint& joint, ofVec3f& origin, float zRef, float width, float height);
+    void mapHandCoords(k4w::HandJoint& joint, ofVec3f& origin, float zRef, float width, float height);
 	void processHandEvent(int handIdx, k4w::Hand * hand, k4w::HandState newState);
     
     void debug(float x, float y, float width, float height);
+	void draw(float x, float y, float width, float height, float alpha = 255);
     
     ofxOscReceiver receiver;
     int lastOscFrame;
