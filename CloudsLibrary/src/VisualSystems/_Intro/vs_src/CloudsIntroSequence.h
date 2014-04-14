@@ -23,6 +23,7 @@ typedef struct{
 	ofVec2f screenPosition;
 	float cursorDistance;
 	bool hover;
+	bool finished;
 	float hoverStartTime;
 } IntroNode;
 
@@ -44,6 +45,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     void selfExit();
     void selfBegin();
 	void selfEnd();
+	
+	void selfPostDraw();
 	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
@@ -156,7 +159,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofRange distanceRange;
 	
 	void drawCloudsType();
-    void drawIntroNodes();
+	
+    void drawIntroNodes();//rift only
+	void updateIntroNode(IntroNode& node);//rift only
 	
 	//intro sequence
 	float introNodeSize;
@@ -169,7 +174,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float timeSinceLastPrompt;
 	float promptTime;
 	bool promptShown;
+	float kinectHelperAlpha;
+	float kinectHelperTargetAlpha;
 	
+	void updateCamera();
 	void updateWaiting();
 	void updateTitle();
 	void updateQuestions();
@@ -197,7 +205,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;
 	
-
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;
 	

@@ -702,7 +702,7 @@ void CloudsVisualSystem::drawScene(){
 
 #ifdef OCULUS_RIFT
     // EZ: Only draw cursor on _Intro for now
-    if(drawCursorMode > DRAW_CURSOR_NONE && getSystemName() == "_Intro"){
+    if(primaryCursorMode > CURSOR_MODE_NONE && getSystemName() == "_Intro"){
         ofPushStyle();
         ofPushMatrix();
         glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -3800,7 +3800,13 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
     if (mode == CURSOR_MODE_INACTIVE) {
         ofSetLineWidth(2);
         ofSetColor(213, 69, 62, 192);
-        float totalRadius = cursorUpSize * 0.5;
+#if defined(KINECT_INPUT)
+		float totalRadius = cursorUpSizeMin * 0.5;
+#elif defined(OCULUS_RIFT)
+		float totalRadius = cursorSize * 0.5;
+#else
+		float totalRadius = cursorUpSize * 0.5;
+#endif
         ofLine(pos.x - totalRadius, pos.y - totalRadius, pos.x + totalRadius, pos.y + totalRadius);
         ofLine(pos.x - totalRadius, pos.y + totalRadius, pos.x + totalRadius, pos.y - totalRadius);
     }
@@ -3812,8 +3818,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
 #ifdef OCULUS_RIFT
             ofCircle(pos, cursorSize);
 #elif KINECT_INPUT
-            ofCircle(pos.x, pos.y,
-                     ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true));
+            ofCircle(pos.x, pos.y, ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true));
 #else
             ofCircle(pos, cursorDownSize);
 #endif

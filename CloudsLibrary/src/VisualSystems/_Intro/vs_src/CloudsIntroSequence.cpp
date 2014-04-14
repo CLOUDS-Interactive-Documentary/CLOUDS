@@ -10,6 +10,9 @@
 #include "CloudsGlobal.h"
 #include "CloudsEvents.h"
 #include "CloudsPortalEvents.h"
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#endif
 
 //JG REMOVING THIS
 CloudsVisualSystemEvents CloudsIntroSequence::events;
@@ -32,6 +35,8 @@ void CloudsIntroSequence::selfSetDefaults(){
 	hoveringTitle = false;
 	currentTitleOpacity = 0;
 	bQuestionDebug = false;
+	
+	kinectHelperAlpha = 0.0;
 	
 	introNodeOne.hover = false;
 	introNodeTwo.hover = false;
@@ -204,7 +209,6 @@ void CloudsIntroSequence::selfSetupGuis(){
 }
 
 void CloudsIntroSequence::selfPresetLoaded(string presetPath){
-
 	generateTunnel();
 	warpCamera.setPosition(0, 0, 0);
 	warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
@@ -234,6 +238,18 @@ void CloudsIntroSequence::selfUpdate(){
 		timeline->stop();
 	}
 	
+	updateCamera();
+	
+	updateWaiting();
+
+	updateQuestions();
+
+	updateTitle();
+
+}
+
+void CloudsIntroSequence::updateCamera(){
+	
 	ofVec2f wobble = ofVec2f(ofSignedNoise(100 + ofGetElapsedTimef()*camWobbleSpeed),
 							 ofSignedNoise(200 + ofGetElapsedTimef()*camWobbleSpeed)) * camWobbleRange;
 	if(!paused){
@@ -244,13 +260,7 @@ void CloudsIntroSequence::selfUpdate(){
 		warpCamera.setPosition(wobble.x, wobble.y, 0);
 	}
 	warpCamera.lookAt( ofVec3f(0, 0, warpCamera.getPosition().z + 50) );
-    
-	updateWaiting();
-
-	updateQuestions();
-
-	updateTitle();
-
+	
 }
 
 void CloudsIntroSequence::updateWaiting(){
@@ -262,7 +272,14 @@ void CloudsIntroSequence::updateWaiting(){
 	}
 	
 	#ifdef OCULUS_RIFT
+	updateIntroNode(introNodeOne);
+	updateIntroNode(introNodeTwo);
+
+	if(!introNodeOne.finished){
+		
+	}
 	//TODO: REPLACE WITH ACTIVATION NODES
+	/*
 	ofRectangle viewport = getOculusRift().getOculusViewport();
 	bool cursorNearCenter = cursor.distance(ofVec3f(viewport.getCenter().x, viewport.getCenter().y, cursor.z)) < 20;
 	if (cursorNearCenter) {
@@ -282,11 +299,32 @@ void CloudsIntroSequence::updateWaiting(){
 		bCursorInCenter = false;
 		startTimeCursorInCenter = 0;
 	}
-	#elseif KINECT_INPUT
-	if(startQuestions.size() > 0){
-		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 10){
+	*/
+	#elif defined(KINECT_INPUT)
+	k4W::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
+	if(startQuestions.size() > 0 && viewerState != ViewerState_None){
+		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 8){
+			if(viewerState == ViewerState_OutOfRange){
+				CloudsPortalEventArgs args("MOVE CLOSER TO THE DISPLAY");
+				ofNotifyEvent(events.portalHoverBegan, args);
+			}
+			else{
+				CloudsPortalEventArgs args("EXTEND YOUR HAND TO BEGIN");
+				ofNotifyEvent(events.portalHoverBegan, args);
+			}
+			timeSinceLastPrompt = ofGetElapsedTimef();
+			promptShown = true;
+			kinectHelperTargetAlpha = 1.0;
+		}
+		else if(promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 4){
+			CloudsPortalEventArgs args("");
+			ofNotifyEvent(events.portalHoverEnded, args);
+			timeSinceLastPrompt = ofGetElapsedTimef();
+			promptShown = false;
+			kinectHelperTargetAlpha = 0.0;
 		}
 	}
+	 
 	#else
 	if(startQuestions.size() > 0){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 10){
@@ -296,7 +334,7 @@ void CloudsIntroSequence::updateWaiting(){
 			promptShown = true;
 
 		}
-		else if(promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 3){
+		else if(promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 4){
 			CloudsPortalEventArgs args("");
 			ofNotifyEvent(events.portalHoverEnded, args);
 			timeSinceLastPrompt = ofGetElapsedTimef();
@@ -304,6 +342,27 @@ void CloudsIntroSequence::updateWaiting(){
 		}
 	}
 	#endif
+}
+
+void CloudsIntroSequence::updateIntroNode(IntroNode& node){
+	
+	node.worldPosition = ofVec3f( introNodeOffset.x, introNodeOffset.y, introNodeOffset.z + titleTypeOffset);
+	node.screenPosition = getOculusRift().worldToScreen(introNodeOne.worldPosition, true);
+	ofRectangle viewport = getOculusRift().getOculusViewport();
+	node.cursorDistance = viewport.getCenter().distance(introNodeOne.screenPosition);
+	
+	if(!node.hover && node.cursorDistance < questionTugDistance.min){
+		node.hover = true;
+		node.hoverStartTime = ofGetElapsedTimef();
+	}
+	else if(node.hover){
+		if(node.cursorDistance > questionTugDistance.max){
+			node.hover = false;
+		}
+		else if(ofGetElapsedTimef() - node.hoverStartTime > 2){
+			node.finished = true;
+		}
+	}
 }
 
 void CloudsIntroSequence::updateTitle(){
@@ -349,8 +408,8 @@ void CloudsIntroSequence::updateQuestions(){
 		if(startQuestions[i].hoverPosition.z - warpCamera.getPosition().z < questionMinZDistance){
 #ifdef OCULUS_RIFT
             ofVec3f screenPos = getOculusRift().worldToScreen(startQuestions[i].hoverPosition, true);
-            float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
-                                              viewport.getCenter().x, viewport.getCenter().y);
+			ofRectangle viewport = getOculusRift().getOculusViewport();
+            float distanceToQuestion = ofDist(screenPos.x, screenPos.y,viewport.getCenter().x, viewport.getCenter().y);
 #else
 			//			ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
             ofVec2f mouseNode = cursor;
@@ -694,15 +753,6 @@ void CloudsIntroSequence::drawCloudsType(){
 void CloudsIntroSequence::drawIntroNodes(){
 
 #ifdef OCULUS_RIFT
-	introNodeOne.worldPosition = ofVec3f( introNodeOffset.x, introNodeOffset.y, introNodeOffset.z + titleTypeOffset);
-	introNodeTwo.worldPosition = ofVec3f(-introNodeOffset.x,-introNodeOffset.y, introNodeOffset.z + titleTypeOffset);
-
-	introNodeOne.screenPosition = warpCamera.worldToScreen(introNodeOne.worldPosition);
-	introNodeTwo.screenPosition = warpCamera.worldToScreen(introNodeTwo.worldPosition);
-	
-	introNodeOne.cursorDistance = cursor.distance(introNodeOne.screenPosition);
-	introNodeTwo.cursorDistance = cursor.distance(introNodeTwo.screenPosition);
-	
 	ofPushStyle();
 	ofNoFill();
 	
@@ -734,6 +784,20 @@ void CloudsIntroSequence::drawIntroNodes(){
 	
 }
 
+void CloudsIntroSequence::selfPostDraw(){
+	
+
+	CloudsVisualSystem::selfPostDraw();
+#ifdef KINECT_INPUT
+	if(kinectHelperAlpha > 0.0){
+		kinectHelperAlpha += (kinectHelperTargetAlpha-kinectHelperAlpha)*.05;
+		ofPushStyle();
+		ofSetColor(255,kinectHelperAlpha);
+		((CloudsInputKinectOSC*) GetCloudsInput().get() )->debug(0,0, 200, 100);
+	}
+#endif
+
+}
 
 void CloudsIntroSequence::selfBegin(){
 	timeline->stop();

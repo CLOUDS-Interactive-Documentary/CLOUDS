@@ -8,7 +8,7 @@ class CloudsPortalEventArgs : public ofEventArgs
   public:
 //    CloudsPortalEventArgs(CloudsPortal& portal, string question)
 //		: portal(portal), question(question){}
-	CloudsPortalEventArgs(string question)
+	CloudsPortalEventArgs(string question="")
 		: question(question){}
 	
 //    CloudsPortal& portal;
