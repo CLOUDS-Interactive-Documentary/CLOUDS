@@ -298,10 +298,10 @@ void CloudsIntroSequence::updateWaiting(){
 		timeline->play();
 	}
 	#elif defined(KINECT_INPUT)
-	k4W::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
-	if(startQuestions.size() > 0 && viewerState != ViewerState_None){
+	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
+	if(startQuestions.size() > 0 && viewerState != k4w::ViewerState_None){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 8){
-			if(viewerState == ViewerState_OutOfRange){
+			if(viewerState == k4w::ViewerState_OutOfRange){
 				CloudsPortalEventArgs args("MOVE CLOSER TO THE DISPLAY");
 				ofNotifyEvent(events.portalHoverBegan, args);
 			}
@@ -342,7 +342,7 @@ void CloudsIntroSequence::updateWaiting(){
 }
 
 void CloudsIntroSequence::updateIntroNode(IntroNode& node){
-	
+	#ifdef OCULUS_RIFT
 	node.worldPosition = ofVec3f( introNodeOffset.x, -introNodeOffset.y, introNodeOffset.z + titleTypeOffset);
 	node.worldPosition.x *= node.multiplier;
 	node.worldPosition.y *= node.multiplier;
@@ -383,6 +383,7 @@ void CloudsIntroSequence::updateIntroNode(IntroNode& node){
 			node.percentComplete = ofMap(ofGetElapsedTimef(), node.hoverStartTime, node.hoverStartTime+introNodeHoldTime, 0.0, 1.0,true);
 		}
 	}
+#endif
 }
 
 void CloudsIntroSequence::updateTitle(){
