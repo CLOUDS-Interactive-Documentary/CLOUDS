@@ -81,7 +81,8 @@ public:
 	// cells store the box fit pattern, contents are byte encoded as:
 	// (cell >> 16) & 0xff == work to do
 	// (cell) & 0xffff == size of allocated area
-	int** cells;
+//	int** cells;
+	vector< vector<int> > cells;
 	//int cells[][];
 	// the types of work that may occur in a cell
 	static const int WORK_NONE = 0;

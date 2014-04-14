@@ -14,14 +14,6 @@
 //JG REMOVING THIS
 CloudsVisualSystemEvents CloudsIntroSequence::events;
 
-CloudsIntroSequence::CloudsIntroSequence(){
-
-}
-
-CloudsIntroSequence::~CloudsIntroSequence(){
-	
-}
-
 string CloudsIntroSequence::getSystemName(){
 	return "_Intro";
 }
@@ -44,7 +36,10 @@ void CloudsIntroSequence::selfSetDefaults(){
 	introNodeOne.hover = false;
 	introNodeTwo.hover = false;
 	
-	    // Set question defaults.
+	promptTime = 0.0;
+	promptShown = false;
+
+	// Set question defaults.
 	questionScale = 0.1f;
     questionFontSize = 12;
     questionLineLength = 300.0f;
@@ -54,7 +49,9 @@ void CloudsIntroSequence::selfSetDefaults(){
 	perlinOffset = 0;
 	
     warpCamera.setNearClip(.01);
-
+	
+	timeSinceLastPrompt = 0;
+	
 #ifdef OCULUS_RIFT
     bCursorInCenter = false;
     startTimeCursorInCenter = 0;
@@ -233,11 +230,10 @@ void CloudsIntroSequence::rebuildQuestionFont(){
 
 void CloudsIntroSequence::selfUpdate(){
 	
-//	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
-	
 	if(!startedOnclick && timeline->getIsPlaying()){
 		timeline->stop();
 	}
+	
 	ofVec2f wobble = ofVec2f(ofSignedNoise(100 + ofGetElapsedTimef()*camWobbleSpeed),
 							 ofSignedNoise(200 + ofGetElapsedTimef()*camWobbleSpeed)) * camWobbleRange;
 	if(!paused){
@@ -249,31 +245,97 @@ void CloudsIntroSequence::selfUpdate(){
 	}
 	warpCamera.lookAt( ofVec3f(0, 0, warpCamera.getPosition().z + 50) );
     
-#ifdef OCULUS_RIFT
-    ofRectangle viewport = getOculusRift().getOculusViewport();
+	updateWaiting();
 
+	updateQuestions();
+
+	updateTitle();
+
+}
+
+void CloudsIntroSequence::updateWaiting(){
+	
+	
     // Trigger start manually
-    if (!startedOnclick) {
-        bool cursorNearCenter = cursor.distance(ofVec3f(viewport.getCenter().x, viewport.getCenter().y, cursor.z)) < 20;
-        if (cursorNearCenter) {
-            if (bCursorInCenter) {
-                // already started, let's see if we've been there long enough
-                if (ofGetElapsedTimef() - startTimeCursorInCenter > 1.25) {
-                    ofMouseEventArgs args;
-                    selfMousePressed(args);
-                }
-            }
-            else {
-                bCursorInCenter = true;
-                startTimeCursorInCenter = ofGetElapsedTimef();
-            }
-        }
-        else {
-            bCursorInCenter = false;
-            startTimeCursorInCenter = 0;
-        }
-    }
-#endif
+    if (startedOnclick) {
+		return;
+	}
+	
+	#ifdef OCULUS_RIFT
+	//TODO: REPLACE WITH ACTIVATION NODES
+	ofRectangle viewport = getOculusRift().getOculusViewport();
+	bool cursorNearCenter = cursor.distance(ofVec3f(viewport.getCenter().x, viewport.getCenter().y, cursor.z)) < 20;
+	if (cursorNearCenter) {
+		if (bCursorInCenter) {
+			// already started, let's see if we've been there long enough
+			if (ofGetElapsedTimef() - startTimeCursorInCenter > 1.25) {
+				ofMouseEventArgs args;
+				selfMousePressed(args);
+			}
+		}
+		else {
+			bCursorInCenter = true;
+			startTimeCursorInCenter = ofGetElapsedTimef();
+		}
+	}
+	else {
+		bCursorInCenter = false;
+		startTimeCursorInCenter = 0;
+	}
+	#elseif KINECT_INPUT
+	if(startQuestions.size() > 0){
+		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 10){
+		}
+	}
+	#else
+	if(startQuestions.size() > 0){
+		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 10){
+			CloudsPortalEventArgs args("CLICK TO BEGIN");
+			ofNotifyEvent(events.portalHoverBegan, args);
+			timeSinceLastPrompt = ofGetElapsedTimef();
+			promptShown = true;
+
+		}
+		else if(promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 3){
+			CloudsPortalEventArgs args("");
+			ofNotifyEvent(events.portalHoverEnded, args);
+			timeSinceLastPrompt = ofGetElapsedTimef();
+			promptShown = false;
+		}
+	}
+	#endif
+}
+
+void CloudsIntroSequence::updateTitle(){
+	
+	if(currentFontSize != titleFontSize ||
+	   currentFontExtrusion != titleFontExtrude)
+	{
+		currentFontSize = titleFontExtrude;
+		currentFontExtrusion = titleFontExtrude;
+		extrudedTitleText.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
+	}
+	
+	titleRect = ofRectangle(0,0,titleRectWidth*ofGetWidth(),titleRectHeight*ofGetHeight());
+	titleRect.alignTo( ofPoint(getCanvasWidth()/2, getCanvasHeight()/2) );
+	hoveringTitle = titleRect.inside(GetCloudsInputX(), GetCloudsInputY());
+	
+	//	cout << "title rect is " << titleRect.getTopLeft() << " " << titleRect.getBottomLeft() << endl;
+	//	cout << "hovering? " << (hoveringTitle ? "YES" : "NO" ) << endl;
+	
+	titleNoisePosition += titleNoiseSpeed;
+	float hoverTitleOpacity;
+	if(hoveringTitle || (startedOnclick && timeline->getIsPlaying()) ){
+		hoverTitleOpacity = .9;
+	}
+	else{
+		hoverTitleOpacity = titleTypeOpacity;
+	}
+	
+	currentTitleOpacity += (hoverTitleOpacity-currentTitleOpacity)*.05;
+	
+}
+void CloudsIntroSequence::updateQuestions(){
 	
 	for(int i = 0; i < startQuestions.size(); i++){
 		
@@ -290,7 +352,7 @@ void CloudsIntroSequence::selfUpdate(){
             float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
                                               viewport.getCenter().x, viewport.getCenter().y);
 #else
-//			ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+			//			ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
             ofVec2f mouseNode = cursor;
 			float distanceToQuestion = startQuestions[i].screenPosition.distance(mouseNode);
 #endif
@@ -302,7 +364,8 @@ void CloudsIntroSequence::selfUpdate(){
 					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &startQuestions[i];
 						if (caughtQuestion->startHovering()) {
-                            CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+							//                            CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+                            CloudsPortalEventArgs args(getQuestionText());
                             ofNotifyEvent(events.portalHoverBegan, args);
                         }
 					}
@@ -318,46 +381,22 @@ void CloudsIntroSequence::selfUpdate(){
 				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
-                    CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+					//                    CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+                    CloudsPortalEventArgs args(getQuestionText());
                     ofNotifyEvent(events.portalHoverEnded, args);
 				}
 			}
 		}
 	}
 	
-	if(currentFontSize != titleFontSize ||
-	   currentFontExtrusion != titleFontExtrude)
-	{
-		currentFontSize = titleFontExtrude;
-		currentFontExtrusion = titleFontExtrude;
-		extrudedTitleText.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
-	}
-	
-	titleRect = ofRectangle(0,0,titleRectWidth*ofGetWidth(),titleRectHeight*ofGetHeight());
-	titleRect.alignTo( ofPoint(getCanvasWidth()/2, getCanvasHeight()/2) );
-	hoveringTitle = titleRect.inside(GetCloudsInputX(), GetCloudsInputY());
-	
-//	cout << "title rect is " << titleRect.getTopLeft() << " " << titleRect.getBottomLeft() << endl;
-//	cout << "hovering? " << (hoveringTitle ? "YES" : "NO" ) << endl;
-	
-	titleNoisePosition += titleNoiseSpeed;
-	float hoverTitleOpacity;
-	if(hoveringTitle || (startedOnclick && timeline->getIsPlaying()) ){
-		hoverTitleOpacity = .9;
-	}
-	else{
-		hoverTitleOpacity = titleTypeOpacity;
-	}
-	
-	currentTitleOpacity += (hoverTitleOpacity-currentTitleOpacity)*.05;
-    
-    //always move the questions in the direction of the camera
-    for(int i = 0; i < startQuestions.size(); i++){
-        if(&startQuestions[i] != caughtQuestion){
-//            startQuestions[i].hoverPosition.z += cameraForwardSpeed*.5;
-        }
-    }
+	//always move the questions in the direction of the camera
+//    for(int i = 0; i < startQuestions.size(); i++){
+//        if(&startQuestions[i] != caughtQuestion){
+//			startQuestions[i].hoverPosition.z += cameraForwardSpeed*.5;
+//        }
+//    }
 }
+
 
 void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQuestions){
 
@@ -377,6 +416,8 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 		
 		startQuestions.push_back(q);
 	}
+	timeSinceLastPrompt = ofGetElapsedTimef();
+	positionStartQuestions();
 }
 
 void CloudsIntroSequence::generateTunnel(){
@@ -530,6 +571,11 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 		
 		showingQuestions = true;
 	}
+	
+	if(args.flag == "PROMPT"){
+		CloudsPortalEventArgs args("SELECT A QUESTION TO BEGIN");
+		ofNotifyEvent(events.portalHoverBegan, args);
+	}
 }
 
 void CloudsIntroSequence::selfDraw(){
@@ -646,7 +692,8 @@ void CloudsIntroSequence::drawCloudsType(){
 }
 
 void CloudsIntroSequence::drawIntroNodes(){
-	
+
+#ifdef OCULUS_RIFT
 	introNodeOne.worldPosition = ofVec3f( introNodeOffset.x, introNodeOffset.y, introNodeOffset.z + titleTypeOffset);
 	introNodeTwo.worldPosition = ofVec3f(-introNodeOffset.x,-introNodeOffset.y, introNodeOffset.z + titleTypeOffset);
 
@@ -667,9 +714,9 @@ void CloudsIntroSequence::drawIntroNodes(){
 	if(!introNodeOne.hover && introNodeOne.cursorDistance < introNodeMinDistance){
 		introNodeOne.hover = true;
 		introNodeOne.hoverStartTime = ofGetElapsedTimef();
-		
-//		CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
-//		ofNotifyEvent(events.portalHoverBegan, args);
+
+		CloudsPortalEventArgs args("TEST TEXT");
+		ofNotifyEvent(events.portalHoverBegan, args);
 	}
 	ofTranslate( introNodeOne.worldPosition );
 	ofCircle(0,0,0, introNodeSize);
@@ -683,6 +730,8 @@ void CloudsIntroSequence::drawIntroNodes(){
 	ofPopMatrix();
 
 	ofPopStyle();
+#endif
+	
 }
 
 
@@ -731,9 +780,15 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data)
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
-	if(!startedOnclick){
+	if(!startedOnclick && startQuestions.size() > 0){
 		startedOnclick  = true;
 		timeline->play();
+		
+		CloudsPortalEventArgs args("");
+		ofNotifyEvent(events.portalHoverEnded, args);
+		timeSinceLastPrompt = ofGetElapsedTimef();
+		promptShown = false;
+
 	}
 }
 
@@ -745,4 +800,3 @@ void CloudsIntroSequence::selfMouseReleased(ofMouseEventArgs& data){
 void CloudsIntroSequence::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
-

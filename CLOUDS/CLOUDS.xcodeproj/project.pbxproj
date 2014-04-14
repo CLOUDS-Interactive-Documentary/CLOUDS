@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1892A3561878B5F100B4B474 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1892A2A51878B5F000B4B474 /* opencv.a */; };
 		1892A3571878B5F100B4B474 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1892A2A51878B5F000B4B474 /* opencv.a */; };
-		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
 		64323E88187A4DAE00316058 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64323E84187A4DAE00316058 /* CloudsPortal.cpp */; };
 		64323E89187A4DAE00316058 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64323E84187A4DAE00316058 /* CloudsPortal.cpp */; };
 		64323E8A187A4DAE00316058 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */; };
@@ -56,7 +55,6 @@
 		A646DABD1883D99200DBBF37 /* ParamManager2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86A18837B9C00A02F5B /* ParamManager2.cpp */; };
 		AE6F00001880716900677B60 /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		AE6F00011880716900677B60 /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
-		AE6F00021880716900677B60 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
 		AE6F00031880716900677B60 /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330371751D446006706ED /* ofxBehavior.cpp */; };
 		AE6F00041880716900677B60 /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3303B1751D446006706ED /* ofxBufferEffectorBehavior.cpp */; };
 		AE6F00051880716900677B60 /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3303E1751D446006706ED /* ofxDamperBehavior.cpp */; };
@@ -1171,6 +1169,9 @@
 		E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
 		E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
+		E77BA16318F8AC71007C1937 /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BA16118F8AC71007C1937 /* VoxelMesh.cpp */; };
+		E77BA16418F8AC71007C1937 /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BA16118F8AC71007C1937 /* VoxelMesh.cpp */; };
+		E77BA16518F8AC71007C1937 /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BA16118F8AC71007C1937 /* VoxelMesh.cpp */; };
 		E780CE681852C7B50096AE8D /* BleachBypassPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E780CE331852C7B50096AE8D /* BleachBypassPass.cpp */; };
 		E780CE691852C7B50096AE8D /* BleachBypassPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E780CE331852C7B50096AE8D /* BleachBypassPass.cpp */; };
 		E780CE6A1852C7B50096AE8D /* BloomPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E780CE351852C7B50096AE8D /* BloomPass.cpp */; };
@@ -1509,7 +1510,6 @@
 		E7FB25081830D4C0009EBD0E /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
 		E7FB25091830D4C0009EBD0E /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		E7FB250A1830D4C0009EBD0E /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
-		E7FB250B1830D4C0009EBD0E /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
 		E7FB250C1830D4C0009EBD0E /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330371751D446006706ED /* ofxBehavior.cpp */; };
 		E7FB250D1830D4C0009EBD0E /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3303B1751D446006706ED /* ofxBufferEffectorBehavior.cpp */; };
 		E7FB250E1830D4C0009EBD0E /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3303E1751D446006706ED /* ofxDamperBehavior.cpp */; };
@@ -1830,8 +1830,6 @@
 		1892A2561878B5F000B4B474 /* tracking.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tracking.hpp; sourceTree = "<group>"; };
 		1892A2571878B5F000B4B474 /* video.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = video.hpp; sourceTree = "<group>"; };
 		1892A2A51878B5F000B4B474 /* opencv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = opencv.a; sourceTree = "<group>"; };
-		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
-		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		64323E84187A4DAE00316058 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortal.cpp; sourceTree = "<group>"; };
 		64323E85187A4DAE00316058 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
 		64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
@@ -2688,6 +2686,8 @@
 		E779BE53173D6082006357EF /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E779BE69173D60A2006357EF /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E779BE6A173D60A2006357EF /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
+		E77BA16118F8AC71007C1937 /* VoxelMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelMesh.cpp; sourceTree = "<group>"; };
+		E77BA16218F8AC71007C1937 /* VoxelMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelMesh.h; sourceTree = "<group>"; };
 		E780CE331852C7B50096AE8D /* BleachBypassPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BleachBypassPass.cpp; sourceTree = "<group>"; };
 		E780CE341852C7B50096AE8D /* BleachBypassPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleachBypassPass.h; sourceTree = "<group>"; };
 		E780CE351852C7B50096AE8D /* BloomPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BloomPass.cpp; sourceTree = "<group>"; };
@@ -3524,24 +3524,6 @@
 			path = osx;
 			sourceTree = "<group>";
 		};
-		3D2E9FF0174C16EC002D9E02 /* ofxGameCamera */ = {
-			isa = PBXGroup;
-			children = (
-				3D2EA005174C16EC002D9E02 /* src */,
-			);
-			name = ofxGameCamera;
-			path = ../../../addons/ofxGameCamera;
-			sourceTree = "<group>";
-		};
-		3D2EA005174C16EC002D9E02 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */,
-				3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		64323E83187A4DAE00316058 /* Portal */ = {
 			isa = PBXGroup;
 			children = (
@@ -3636,7 +3618,6 @@
 				E7D330A21751D4C1006706ED /* ofxCameraSaveLoad */,
 				E7D330961751D493006706ED /* ofxColorPalettes */,
 				E7D330321751D446006706ED /* ofxGenerative */,
-				3D2E9FF0174C16EC002D9E02 /* ofxGameCamera */,
 				E779BE5A173D60A2006357EF /* ofxTextInputField */,
 				E779BE43173D6082006357EF /* ofxTimecode */,
 				E779BE3F173D6074006357EF /* ofxRange */,
@@ -6318,6 +6299,7 @@
 		E7637D5E1734DE8A008ADC62 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				E77BA16018F8AC71007C1937 /* BackgroundParticles */,
 				E7302C13187DF4C20079C5B8 /* GPUParticles */,
 				E7302BFE187DF4270079C5B8 /* HUD */,
 				64323E83187A4DAE00316058 /* Portal */,
@@ -6677,6 +6659,15 @@
 				E779BE6A173D60A2006357EF /* ofxTextInputField.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		E77BA16018F8AC71007C1937 /* BackgroundParticles */ = {
+			isa = PBXGroup;
+			children = (
+				E77BA16118F8AC71007C1937 /* VoxelMesh.cpp */,
+				E77BA16218F8AC71007C1937 /* VoxelMesh.h */,
+			);
+			path = BackgroundParticles;
 			sourceTree = "<group>";
 		};
 		E780CE1F1852C7B40096AE8D /* ofxPostProcessing */ = {
@@ -8018,7 +8009,6 @@
 				AE6FFFFF1880716900677B60 /* ofxTween.cpp in Sources */,
 				AE6F00001880716900677B60 /* ofxTimecode.cpp in Sources */,
 				AE6F00011880716900677B60 /* ofxTextInputField.cpp in Sources */,
-				AE6F00021880716900677B60 /* ofxGameCamera.cpp in Sources */,
 				AE6F00031880716900677B60 /* ofxBehavior.cpp in Sources */,
 				AE6F00041880716900677B60 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				AE6F00051880716900677B60 /* ofxDamperBehavior.cpp in Sources */,
@@ -8303,6 +8293,7 @@
 				AE6F01191880716900677B60 /* Path.cpp in Sources */,
 				AE6F011A1880716900677B60 /* PathPoint.cpp in Sources */,
 				AE6F011B1880716900677B60 /* CloudsVisualSystemOscillations.cpp in Sources */,
+				E77BA16518F8AC71007C1937 /* VoxelMesh.cpp in Sources */,
 				AE6F011C1880716900677B60 /* CloudsVisualSystemPages.cpp in Sources */,
 				AE6F011D1880716900677B60 /* Page.cpp in Sources */,
 				AE6F011E1880716900677B60 /* Brush.cpp in Sources */,
@@ -8559,7 +8550,6 @@
 				E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */,
 				E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */,
 				E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */,
-				3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */,
 				E7D3306B1751D446006706ED /* ofxBehavior.cpp in Sources */,
 				E7D3306C1751D446006706ED /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7D3306D1751D446006706ED /* ofxDamperBehavior.cpp in Sources */,
@@ -8841,6 +8831,7 @@
 				E70CE2E918695CCC00955691 /* CloudsVisualSystemOrbit.cpp in Sources */,
 				E70CE2EB18695CCC00955691 /* Path.cpp in Sources */,
 				E70CE2ED18695CCC00955691 /* PathPoint.cpp in Sources */,
+				E77BA16318F8AC71007C1937 /* VoxelMesh.cpp in Sources */,
 				E70CE2EF18695CCC00955691 /* CloudsVisualSystemOscillations.cpp in Sources */,
 				E70CE2F118695CCC00955691 /* CloudsVisualSystemPages.cpp in Sources */,
 				E70CE2F318695CCC00955691 /* Page.cpp in Sources */,
@@ -9092,7 +9083,6 @@
 				E7FB25081830D4C0009EBD0E /* ofxTween.cpp in Sources */,
 				E7FB25091830D4C0009EBD0E /* ofxTimecode.cpp in Sources */,
 				E7FB250A1830D4C0009EBD0E /* ofxTextInputField.cpp in Sources */,
-				E7FB250B1830D4C0009EBD0E /* ofxGameCamera.cpp in Sources */,
 				A646DAB61883D99200DBBF37 /* Maze2.cpp in Sources */,
 				E7FB250C1830D4C0009EBD0E /* ofxBehavior.cpp in Sources */,
 				E7FB250D1830D4C0009EBD0E /* ofxBufferEffectorBehavior.cpp in Sources */,
@@ -9389,6 +9379,7 @@
 				E70CE2FE18695CCC00955691 /* CloudsVisualSystemPhotoGlitch.cpp in Sources */,
 				E70CE30418695CCC00955691 /* CloudsVisualSystemReplicator.cpp in Sources */,
 				E70CE30618695CCC00955691 /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
+				E77BA16418F8AC71007C1937 /* VoxelMesh.cpp in Sources */,
 				E70CE30818695CCC00955691 /* CloudsVisualSystemRipples.cpp in Sources */,
 				E70CE30A18695CCC00955691 /* CloudsVisualSystemRulez.cpp in Sources */,
 				E70CE30C18695CCC00955691 /* Action.cpp in Sources */,

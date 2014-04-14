@@ -16,11 +16,18 @@ void testApp::setup(){
 	
 	gui->addRangeSlider("distance range", 0.0, 2.0, &vm.minDistance, &vm.maxDistance);
 
-	gui->addSlider("twist factor",  0, .005, &vm.twistFactor);
-	gui->addSlider("noise distort", 0, 1.0, &vm.noiseDistort);
-	gui->addSlider("noise density", 0, 0.2, &vm.noiseDensity);
-	gui->addSlider("noise speed",   0, 0.1, &vm.noiseSpeed);
+	gui->addSlider("twist speed x",  0, .001, &vm.twistSpeedX);
+	gui->addSlider("twist factor x", 0, 1.0, &vm.twistFactorX);
+	gui->addSlider("twist speed y",  0, .001, &vm.twistSpeedY);
+	gui->addSlider("twist factor y", 0, 1.0, &vm.twistFactorY);
 
+	gui->addSlider("noise distort x", 0, 1.0, &vm.noiseDistort.x);
+	gui->addSlider("noise distort y", 0, 1.0, &vm.noiseDistort.y);
+	gui->addSlider("noise distort z", 0, 1.0, &vm.noiseDistort.z);
+	gui->addSlider("noise distort radial", 0, 1.0, &vm.noiseDistort.w);
+	gui->addSlider("noise density", 0, 0.2, &vm.noiseDensity);
+	
+	gui->addSlider("noise speed",   0, 0.1, &vm.noiseSpeed);
 
 	gui->loadSettings("settings.xml");
 	

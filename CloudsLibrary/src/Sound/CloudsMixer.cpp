@@ -10,7 +10,7 @@
 
 CloudsMixer::CloudsMixer()
 {
-	musicVol = 1.0; // RTcmix main volume
+	musicVol = 1.0;  // RTcmix main volume
 	diageticVol = 1.0; // Tonic main volume
     
     // envelope follower
@@ -24,9 +24,10 @@ CloudsMixer::CloudsMixer()
     showCompressor = false;
     
     fsig = 0; // no fade
-    fval = 1.0; // normal gain
+    GetCloudsAudioEvents()->fadeValue = 1.0; // normal gain
     dval = 0.; // delay gain
     famt = 0.025; // fade amount
+	GetCloudsAudioEvents()->gain = 0;
 }
 
 CloudsMixer::~CloudsMixer()
@@ -69,7 +70,7 @@ void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuff
 
 void CloudsMixer::setMusicVolume(float vol)
 {
-    musicVol = vol;
+	musicVol = vol;
 }
 
 void CloudsMixer::setDiageticVolume(float vol)
@@ -95,7 +96,7 @@ void CloudsMixer::fadeUp(float& time){
 //void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
 void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
 {
-    GetCloudsAudioEvents()->dopull = fval>0;
+    GetCloudsAudioEvents()->dopull = GetCloudsAudioEvents()->fadeValue > 0;
     // check for buffer size mismatch
     if (bufferSize != musicArgs.bufferSize ||
         bufferSize != diageticArgs.bufferSize) {
@@ -121,15 +122,15 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
     // mix
     for (int i=0; i<bufferSize*nChannels; i++)
     {
-        output[i] = (musicArgs.buffer[i]*musicVol*fval) + diageticArgs.buffer[i]*diageticVol;
+        output[i] = (musicArgs.buffer[i]*musicVol*GetCloudsAudioEvents()->fadeValue) + diageticArgs.buffer[i]*diageticVol;
         
-        if(GetCloudsAudioEvents()->dodelay) // read from delay
-        {
+		 // read from delay
+        if(GetCloudsAudioEvents()->dodelay) {
             output[i]+=delayLine.buffer[(delptr-44099+44100)%44100]*dval;
             delayLine.buffer[delptr%44100] = delayLine.buffer[delptr%44100]*0.8;
         }
-        else // write into delay
-        {
+		// write into delay
+        else {
             delayLine.buffer[delptr%44100] = musicArgs.buffer[i]*musicVol + diageticArgs.buffer[i]*diageticVol;
         }
         delptr++;
@@ -140,13 +141,12 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
         if(current>followgain) {
             followgain = followgain + ((current-followgain)/attack);
         }
-        else
-        {
+        else{
             followgain = followgain + ((current-followgain)/decay);
         }
-        if(followgain>thresh) gain = 1.0-((followgain-thresh)*ratio); else gain = 1.0;
+        if(followgain>thresh) GetCloudsAudioEvents()->gain = 1.0-((followgain-thresh)*ratio); else GetCloudsAudioEvents()->gain = 1.0;
         
-        output[i]=output[i]*gain*MASTER_GAIN;
+        output[i] = output[i]*GetCloudsAudioEvents()->gain*MASTER_GAIN;
         
         // clip
         if (output[i] > 1) {
@@ -174,22 +174,22 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
     // adjust fade
     if(fsig==1) // fading up
     {
-        fval+=famt;
-        if(fval>0.999)
+        GetCloudsAudioEvents()->fadeValue+=famt;
+        if(GetCloudsAudioEvents()->fadeValue>0.999)
         {
-            fval = 1.0;
+            GetCloudsAudioEvents()->fadeValue = 1.0;
             fsig = 0;
             delptr = 0; // reset delay line
         }
     }
     else if(fsig==-1) // fading down
     {
-        fval-=famt;
+        GetCloudsAudioEvents()->fadeValue-=famt;
         dval+=famt; // fade in delay while fading out audio
         if(dval>1.0) dval = 1.0;
-        if(fval<0.001)
+        if(GetCloudsAudioEvents()->fadeValue<0.001)
         {
-            fval = 0.;
+            GetCloudsAudioEvents()->fadeValue = 0.;
             fsig = 0;
             if(GetCloudsAudioEvents()->setupflush) {
                 GetCloudsAudioEvents()->doflush = true;   

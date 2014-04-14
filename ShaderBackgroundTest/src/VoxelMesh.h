@@ -32,15 +32,22 @@ class VoxelMesh {
 	float minDistance;
 	float maxDistance;
 	
-	float twistFactor;
+	float twistFactorY;
+	float twistSpeedY;
+	
+	float twistFactorX;
+	float twistSpeedX;
+	
 	float spiralFactor;
 	
-	float noiseDistort;
+	ofVec4f noiseDistort;
 	float noiseDensity;
 	float noiseSpeed;
 
   protected:
 	float noisePosition;
+	float twistPositionX;
+	float twistPositionY;
 	
 	ofVbo pointVbo;
 	ofVbo lineVbo;

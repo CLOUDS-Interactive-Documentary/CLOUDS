@@ -32,6 +32,10 @@ void CloudsVisualSystemForkingPaths::selfSetupGuis(){
 	
 }
 
+void CloudsVisualSystemForkingPaths::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //--------------------------------------------------------------
 void CloudsVisualSystemForkingPaths::generateTracks(){
 	

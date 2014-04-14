@@ -59,7 +59,8 @@ void CloudsVisualSystemDrawnLine::guiRenderEvent(ofxUIEventArgs &e){
 //use it to ensure all your simple variables are initialized to an
 //acceptable default state
 void CloudsVisualSystemDrawnLine::selfSetDefaults(){
-
+    primaryCursorMode  = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 // selfSetup is called when the visual system is first instantiated

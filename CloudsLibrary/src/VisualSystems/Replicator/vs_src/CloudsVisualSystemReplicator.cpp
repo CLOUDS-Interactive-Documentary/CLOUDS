@@ -72,7 +72,10 @@ void CloudsVisualSystemReplicator::selfUpdate(){
 	
 	local_time += ofGetLastFrameTime();
 }
-
+void CloudsVisualSystemReplicator::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemReplicator::selfDrawBackground(){
 
 }

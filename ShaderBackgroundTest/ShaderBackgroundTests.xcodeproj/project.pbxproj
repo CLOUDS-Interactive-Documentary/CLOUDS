@@ -147,6 +147,8 @@
 		E7131FCE18F7254C00F1277E /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		E7131FD018F7254C00F1277E /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		E7131FD118F7254C00F1277E /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		E7131FD618F746BE00F1277E /* voxel_points.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = voxel_points.frag; sourceTree = "<group>"; };
+		E7131FD718F746BE00F1277E /* voxel_points.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = voxel_points.vert; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
@@ -274,6 +276,8 @@
 		E70CD8EA186650E200955691 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				E7131FD618F746BE00F1277E /* voxel_points.frag */,
+				E7131FD718F746BE00F1277E /* voxel_points.vert */,
 				E70CD8EB186650E200955691 /* voxel_lines.frag */,
 				E70CD8EC186650E200955691 /* voxel_lines.vert */,
 			);

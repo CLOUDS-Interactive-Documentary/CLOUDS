@@ -12,6 +12,9 @@ VoxelMesh::VoxelMesh(){
 	numVoxels = 10;
 	voxelWidth = 100;
 	noisePosition = 0;
+	twistPositionX = 0;
+	twistPositionY = 0;
+
 }
 
 void VoxelMesh::setup(){
@@ -26,7 +29,10 @@ void VoxelMesh::update(){
 	{
 		regenerateGeometry();
 	}
-	noisePosition += noiseSpeed;
+	
+	noisePosition  += noiseSpeed;
+	twistPositionX += twistSpeedX;
+	twistPositionY += twistSpeedY;
 }
 
 void VoxelMesh::draw(){
@@ -41,26 +47,48 @@ void VoxelMesh::draw(){
 	lineShader.setUniform1f("minDistance", minDistance*voxelWidth);
 	lineShader.setUniform1f("maxDistance", maxDistance*voxelWidth);
 	
-	lineShader.setUniform1f("twistFactor", twistFactor+noisePosition*.001);
+	lineShader.setUniform1f("twistFactorX", twistPositionX*twistFactorX);
+	lineShader.setUniform1f("twistFactorY", twistPositionY*twistFactorY);
 
-	lineShader.setUniform1f("noiseDistort", powf(noiseDistort, 2.0f));
+	lineShader.setUniform4f("noiseDistort",
+							powf(noiseDistort.x, 2.0f),
+							powf(noiseDistort.y, 2.0f),
+							powf(noiseDistort.z, 2.0f),
+							powf(noiseDistort.w, 2.0f));
+	
 	lineShader.setUniform1f("noiseDensity", powf(noiseDensity, 2.0f));
 	lineShader.setUniform1f("noisePosition", noisePosition);
 
 	lineVbo.draw(GL_LINES, 0, nLineIndices);
 	lineShader.end();
 	
+	pointShader.begin();
+	pointShader.setUniform1f("sphereRadius",  sphereRadius);
+	pointShader.setUniform1f("spherePercent", spherePercent);
+	
+	pointShader.setUniform1f("minDistance", minDistance*voxelWidth);
+	pointShader.setUniform1f("maxDistance", maxDistance*voxelWidth);
+	
+	pointShader.setUniform1f("twistFactorX", twistPositionX*twistFactorX);
+	pointShader.setUniform1f("twistFactorY", twistPositionY*twistFactorY);
+	
+	pointShader.setUniform4f("noiseDistort",
+							powf(noiseDistort.x, 2.0f),
+							powf(noiseDistort.y, 2.0f),
+							powf(noiseDistort.z, 2.0f),
+							powf(noiseDistort.w, 2.0f));
+	pointShader.setUniform1f("noiseDensity", powf(noiseDensity, 2.0f));
+	
+	pointShader.setUniform1f("noisePosition", noisePosition);
+	
 	//pointVbo.draw(GL_POINTS, 0, nPointIndices);
 	
-//	ofPushStyle();
-//	ofNoFill();
-//	ofSetColor(0,0,255,100);
-//	ofSphere(0,0,0,300);
-//	ofPopStyle();
+	pointShader.end();
+	
 }
 
 void VoxelMesh::reloadShaders(){
-//	pointShader.load("shaders/pointShader");
+	pointShader.load("shaders/voxel_points");
 	lineShader.load("shaders/voxel_lines");
 }
 

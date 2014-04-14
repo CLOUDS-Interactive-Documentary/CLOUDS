@@ -76,6 +76,8 @@ class CloudsVisualSystemOpenP5SpinningSolids : public CloudsVisualSystem {
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
     
+    void selfSetDefaults();
+    
     float noiseWave(float _x, float _y);
     
     void drawTetra(int _edgeLength); 

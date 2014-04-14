@@ -56,6 +56,7 @@ class CloudsVisualSystemSwim : public CloudsVisualSystem {
 	// this is a good time to prepare for transitions
 	// but try to keep it light weight as to not cause stuttering
     void selfBegin();
+    void selfSetDefaults();
 
 	// selfPresetLoaded is called whenever a new preset is triggered
 	// it'll be called right before selfBegin() and you may wish to

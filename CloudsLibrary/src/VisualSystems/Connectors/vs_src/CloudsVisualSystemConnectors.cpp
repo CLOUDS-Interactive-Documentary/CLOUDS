@@ -64,7 +64,10 @@ void CloudsVisualSystemConnectors::selfGuiEvent(ofxUIEventArgs &e){
     }
 
 }
-
+void CloudsVisualSystemConnectors::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemConnectors::selfSetupSystemGui(){
 	

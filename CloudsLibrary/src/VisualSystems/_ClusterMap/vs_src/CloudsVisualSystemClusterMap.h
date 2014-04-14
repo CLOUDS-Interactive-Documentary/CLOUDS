@@ -2,7 +2,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxGameCamera.h"
+
 #include "CloudsClusterNode.h"
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
@@ -142,7 +142,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	ofEasyCam easyCamera;
 	ofCamera axisCamera;
-	ofxGameCamera gameCamera;
+//	ofxGameCamera gameCamera;
 	
 	CloudsFCPParser* parser;
 	CloudsRun* run;

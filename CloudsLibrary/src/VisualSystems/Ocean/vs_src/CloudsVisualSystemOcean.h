@@ -48,6 +48,7 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
 
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
+    void selfSetDefaults();
 	
 	ofCamera& getCameraRef(){
 		return useOceanCam ? oceanCamera : CloudsVisualSystem::getCameraRef();

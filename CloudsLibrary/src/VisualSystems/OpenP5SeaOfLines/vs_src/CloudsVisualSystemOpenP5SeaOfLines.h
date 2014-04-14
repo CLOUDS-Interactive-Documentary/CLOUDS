@@ -91,7 +91,7 @@ class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
         void selfMouseMoved(ofMouseEventArgs& data);
         void selfMousePressed(ofMouseEventArgs& data);
         void selfMouseReleased(ofMouseEventArgs& data);
-        
+        void selfSetDefaults();
 
         // if you use a custom camera to fly through the scene
         // you must implement this method for the transitions to work properly

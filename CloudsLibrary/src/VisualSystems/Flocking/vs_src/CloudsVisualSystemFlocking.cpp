@@ -372,7 +372,10 @@ void CloudsVisualSystemFlocking::selfDraw(){
     glDepthMask(true);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 }
-
+void CloudsVisualSystemFlocking::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 // draw any debug stuff here
 void CloudsVisualSystemFlocking::selfDrawDebug(){
     float size2 = debugGridSize*2.;

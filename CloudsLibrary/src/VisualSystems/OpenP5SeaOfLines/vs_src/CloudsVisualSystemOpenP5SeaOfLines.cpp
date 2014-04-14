@@ -43,6 +43,11 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemOpenP5SeaOfLines::selfSetDefaults(){
+    primaryCursorMode   = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+    
+}
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfGuiEvent(ofxUIEventArgs &e)
 {

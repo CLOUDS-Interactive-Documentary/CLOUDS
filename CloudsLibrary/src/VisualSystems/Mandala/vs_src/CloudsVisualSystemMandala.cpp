@@ -112,6 +112,10 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	guimap[offsetMeshGui->getName()] = offsetMeshGui;
 	
 }
+void CloudsVisualSystemMandala::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 
 void CloudsVisualSystemMandala::selfGuiEvent(ofxUIEventArgs &e)
 {

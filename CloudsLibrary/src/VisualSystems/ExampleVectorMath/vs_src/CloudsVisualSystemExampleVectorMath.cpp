@@ -75,6 +75,10 @@ void CloudsVisualSystemExampleVectorMath::selfSetupRenderGui(){
 void CloudsVisualSystemExampleVectorMath::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
+void CloudsVisualSystemExampleVectorMath::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
 
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or

@@ -170,9 +170,12 @@ void CloudsSound::update(){
 		queuedTracks.erase(queuedTracks.begin());
 	}
 	
-
+	if(frontPlayer != NULL && frontPlayer->isLoaded()){
+		frontPlayer->setVolume(GetCloudsAudioEvents()->fadeValue);
+//		cout << "face value is " << GetCloudsAudioEvents()->fadeValue << endl;
+	}
 	if(backPlayer != NULL && backPlayer->isLoaded()){
-		float newVolume = ofMap(ofGetElapsedTimef(), playerSwapTime, playerSwapTime+playerFadeDuration, 1.0, 0.0, true);
+		float newVolume = ofMap(ofGetElapsedTimef(), playerSwapTime, playerSwapTime+playerFadeDuration, GetCloudsAudioEvents()->fadeValue, 0.0, true);
 //		cout << "FADE AMOUNT " << newVolume << endl;
 		backPlayer->setVolume(newVolume);
 		if(newVolume == 0){
@@ -180,7 +183,6 @@ void CloudsSound::update(){
 		}
 	}
 #endif
-	
 }
 
 //--------------------------------------------------------------------

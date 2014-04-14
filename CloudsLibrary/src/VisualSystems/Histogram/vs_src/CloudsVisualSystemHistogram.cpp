@@ -113,6 +113,11 @@ void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
     }
 }
 
+void CloudsVisualSystemHistogram::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
+
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemHistogram::selfSetupSystemGui(){
 	

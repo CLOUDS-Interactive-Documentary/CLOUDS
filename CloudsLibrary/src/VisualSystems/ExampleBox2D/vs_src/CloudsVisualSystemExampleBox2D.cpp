@@ -73,6 +73,11 @@ void CloudsVisualSystemExampleBox2D::selfSetupGui(){
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemExampleBox2D::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
+
 void CloudsVisualSystemExampleBox2D::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "GAVITY CONTROL MODE") {

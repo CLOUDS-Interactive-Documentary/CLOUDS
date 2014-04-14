@@ -33,7 +33,9 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	transitionOutRight.setPosition( 0, 0, -1001 );
 	transitionOutRight.rotate( 180, ofVec3f(0, 1, 0 ) );
 	
+#ifdef HAS_GAMECAM
 	transitionCam.useArrowKeys = true;
+#endif
 	transitionTarget = &transitionOutLeft;
 	drawTransitionNodes = false;
 	
@@ -142,15 +144,17 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	particulateController.setParticleCount(2000);
 	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
 	particulateController.setup();
+	voxelMesh.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
 			
 //	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
-	
+#ifdef HAS_GAMECAM
 	transitionCam.setup();
 	transitionCam.applyTranslation = true;
 	transitionCam.applyRotation = true;
+#endif
 	
 //    rebuildCaptionFont();
 	
@@ -474,6 +478,41 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guimap[particleGui->getName()] = particleGui;
     //////////////////
 	
+	////////////////// BACKGROUND PARTICLES
+	backgroundMeshGui = new ofxUISuperCanvas("BACKGROUNDMESH", gui);
+	backgroundMeshGui->copyCanvasStyle(gui);
+	backgroundMeshGui->copyCanvasProperties(gui);
+	backgroundMeshGui->setName("Backgroundmesh");
+	backgroundMeshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	backgroundMeshGui->addToggle("draw points", &voxelMesh.drawPoints);
+	backgroundMeshGui->addToggle("draw lines", &voxelMesh.drawLines);
+	
+	backgroundMeshGui->addIntSlider("num voxels", 10, 100, &voxelMesh.numVoxels);
+	backgroundMeshGui->addSlider("voxel spacing", 10, 100, &voxelMesh.voxelWidth);
+	
+	backgroundMeshGui->addSlider("sphere radius",  100, 800, &voxelMesh.sphereRadius);
+	backgroundMeshGui->addSlider("sphere percent", -2.0, 2.0, &voxelMesh.spherePercent);
+	
+	backgroundMeshGui->addRangeSlider("distance range", 0.0, 2.0, &voxelMesh.minDistance, &voxelMesh.maxDistance);
+	
+	backgroundMeshGui->addSlider("twist speed x",  0, .001, &voxelMesh.twistSpeedX);
+	backgroundMeshGui->addSlider("twist factor x", 0, 1.0, &voxelMesh.twistFactorX);
+	backgroundMeshGui->addSlider("twist speed y",  0, .001, &voxelMesh.twistSpeedY);
+	backgroundMeshGui->addSlider("twist factor y", 0, 1.0, &voxelMesh.twistFactorY);
+	
+	backgroundMeshGui->addSlider("noise distort x", 0, 1.0, &voxelMesh.noiseDistort.x);
+	backgroundMeshGui->addSlider("noise distort y", 0, 1.0, &voxelMesh.noiseDistort.y);
+	backgroundMeshGui->addSlider("noise distort z", 0, 1.0, &voxelMesh.noiseDistort.z);
+	backgroundMeshGui->addSlider("noise distort radial", 0, 1.0, &voxelMesh.noiseDistort.w);
+	backgroundMeshGui->addSlider("noise density", 0, 0.2, &voxelMesh.noiseDensity);
+	backgroundMeshGui->addRangeSlider("center decay", 0, 1.0, &voxelMesh.centerDecayMinRadius, &voxelMesh.centerDecayMaxRadius);
+	
+	backgroundMeshGui->addSlider("noise speed", 0, 0.1, &voxelMesh.noiseSpeed);
+	
+	guis.push_back(backgroundMeshGui);
+	guimap[backgroundMeshGui->getName()] = backgroundMeshGui;
+
     ////////////////// QUESTIONS
 	questionGui = new ofxUISuperCanvas("QUESTIONS", gui);
 	questionGui->copyCanvasStyle(gui);
@@ -556,8 +595,12 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
 		particulateController.getPoints().color.a = pointColor.w;
 		particulateController.update();
+	
 	}
-    
+
+	voxelMesh.center = cloudsCamera.lookTarget;
+	voxelMesh.update();
+
 	updateActuators();
 	updateQuestions();
 #ifdef OCULUS_RIFT
@@ -565,7 +608,9 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 #endif
 	if( placingTransitionNodes )
 	{
+		#ifdef HAS_GAMECAM
 		transitionCam.applyTranslation = transitionCam.applyRotation = !cursorIsOverGUI();
+		#endif
 		
 		if(bLookThroughIn)
 		{
@@ -607,7 +652,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 			transitionCamTargetNode = NULL;
 			resetRightTransitionNode();
 		}
-		
+		#ifdef HAS_GAMECAM
 		if(bMoveTransitionCameraUp)
 		{
 			bMoveTransitionCameraUp = false;
@@ -618,12 +663,12 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 			bMoveTransitionCameraDown = false;
 			transitionCam.move(0, -5, 0);
 		}
-		
 		if(transitionCamTargetNode)
 		{
 			transitionCamTargetNode->setPosition( transitionCam.getPosition() );
 			transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
 		}
+		#endif
 
 	}
 	else {
@@ -1068,7 +1113,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
                     /////NEW QUESTION WAY
 
 					if (caughtPortal->startHovering()) {
-                        CloudsPortalEventArgs args(*portals[i], getQuestionText());
+//                        CloudsPortalEventArgs args(*portals[i], getQuestionText());
+                        CloudsPortalEventArgs args(getQuestionText());
                         ofNotifyEvent(events.portalHoverBegan, args);
                     }
 				}
@@ -1088,7 +1134,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
                 /////NEW QUESTION WAY
 				caughtPortal = NULL;
                 
-                CloudsPortalEventArgs args(*portals[i], getQuestionText());
+//                CloudsPortalEventArgs args(*portals[i], getQuestionText());
+                CloudsPortalEventArgs args(getQuestionText());
                 ofNotifyEvent(events.portalHoverEnded, args);
 			}
 		}
@@ -1117,7 +1164,8 @@ void CloudsVisualSystemRGBD::updateResetPortal(){
 		else if(resetPortal.isSelected()){
 			
 			resetPortal.stopHovering();
-			CloudsPortalEventArgs args(resetPortal, "RESET");
+//			CloudsPortalEventArgs args(resetPortal, "RESET");
+			CloudsPortalEventArgs args("RESET");
 			ofNotifyEvent(events.portalHoverEnded, args);
 
 		}
@@ -1257,9 +1305,11 @@ void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 	
 	transitionCamTargetNode = &transitionInStart;
 	
+#ifdef HAS_GAMECAM
 	transitionCam.setPosition( transitionInStart.getPosition() );
 	transitionCam.setOrientation( transitionInStart.getOrientationQuat() );
 	transitionCam.movedManually();
+#endif
 	
 	//transitionCam.positionChanged = transitionCam.rotationChanged = true;
 //	transitionCam.positionChanged = transitionCam.rotationChanged = true;
@@ -1272,9 +1322,12 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOutLeft(){
 	
 	transitionCamTargetNode = &transitionOutLeft;
 	
+#ifdef HAS_GAMECAM
 	transitionCam.setPosition( transitionOutLeft.getPosition() );
 	transitionCam.setOrientation( transitionOutLeft.getOrientationQuat() );
 	transitionCam.movedManually();
+#endif
+	
 }
 
 //--------------------------------------------------------------
@@ -1282,9 +1335,12 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOutRight()
 {
 	transitionCamTargetNode = &transitionOutRight;
 	
+#ifdef HAS_GAMECAM
 	transitionCam.setPosition( transitionOutRight.getPosition() );
 	transitionCam.setOrientation( transitionOutRight.getOrientationQuat() );
 	transitionCam.movedManually();
+#endif
+	
 }
 
 //--------------------------------------------------------------
@@ -1516,6 +1572,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		
         ofEnableAlphaBlending();
         
+		voxelMesh.draw();
+		
 		//Enable smooth lines and screen blending
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -1668,13 +1726,17 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
-		particulateController.draw();
+//		particulateController.draw();
+		
 	}
+	
+	
 	
 	glPopAttrib();
 	ofPopMatrix();
 	ofPopStyle();
 	
+
 
 	//LARS TODO: add drawTransitionNodes to GUI
 	if(drawTransitionNodes){
@@ -1856,6 +1918,7 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		
 		loadShader();
+		voxelMesh.reloadShaders();
 		
 //		particulateController.reloadShaders();
 //		CloudsQuestion::reloadShader();

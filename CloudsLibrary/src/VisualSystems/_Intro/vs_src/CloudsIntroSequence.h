@@ -28,9 +28,6 @@ typedef struct{
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
-	CloudsIntroSequence();
-	~CloudsIntroSequence();
-	
 	string getSystemName();
 	
     void selfSetup();
@@ -55,13 +52,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
-//	void selfDrawOverlay();
-//	void selfPostDraw();
 
 	void selfGuiEvent(ofxUIEventArgs &e);
 	
-//    void selfSetupSystemGui();
     void guiSystemEvent(ofxUIEventArgs &e);
     
     void selfSetupRenderGui();
@@ -69,9 +62,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
 	void selfSetupCameraGui();
 	
-	ofCamera& getCameraRef(){
-		return warpCamera;
-	}
 	
 	void selfPresetLoaded(string presetPath);
 	
@@ -87,6 +77,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     
     static CloudsVisualSystemEvents events;
     
+	ofCamera& getCameraRef(){
+		return warpCamera;
+	}
+
   protected:
 		
 	ofxUISuperCanvas* questionGui;
@@ -169,10 +163,17 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float introNodeMinDistance;
 	float introNodeHoldTime;
 	ofVec3f introNodeOffset; //mirrored along the axis
-
 	IntroNode introNodeOne;
 	IntroNode introNodeTwo;
-		
+
+	float timeSinceLastPrompt;
+	float promptTime;
+	bool promptShown;
+	
+	void updateWaiting();
+	void updateTitle();
+	void updateQuestions();
+	
 	//intro state machien stuff
 	bool startedOnclick;
 	bool introNodeHoverOne;
@@ -196,6 +197,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;
 	
+
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;
 	
@@ -209,3 +211,4 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 #endif
     
 };
+

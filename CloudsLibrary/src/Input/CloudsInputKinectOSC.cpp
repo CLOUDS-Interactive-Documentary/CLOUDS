@@ -21,6 +21,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , jointLerpPct(0.3f)
 , bClampToBounds(true)
 , bDoDebug(false)
+, viewerState(k4w::ViewerState_None)
 , boundsMin(-0.5f, -0.7f, 1.0f)
 , boundsMax( 0.5f, -0.2f, 2.0f)
 , posResetLerpPct(0.1f)
@@ -89,52 +90,75 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             // update the head joint
             bodies[idx]->headJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->headJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->headJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                     m.getArgAsFloat(i++), 
-                                                                     m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->headJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                     m.getArgAsFloat(i+1), 
+                                                                     m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // update the neck joint
             bodies[idx]->neckJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->neckJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->neckJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                     m.getArgAsFloat(i++),
-                                                                     m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->neckJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                     m.getArgAsFloat(i+1),
+                                                                     m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // update the spine shoulder joint
             bodies[idx]->spineShoulderJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineShoulderJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->spineShoulderJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                              m.getArgAsFloat(i++),
-                                                                              m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->spineShoulderJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                              m.getArgAsFloat(i+1),
+                                                                              m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // update the spine mid joint
             bodies[idx]->spineMidJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineMidJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->spineMidJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                         m.getArgAsFloat(i++),
-                                                                         m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->spineMidJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                         m.getArgAsFloat(i+1),
+                                                                         m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // update the spine base joint
             bodies[idx]->spineBaseJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineBaseJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->spineBaseJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                          m.getArgAsFloat(i++),
-                                                                          m.getArgAsFloat(i++)), jointLerpPct);
-            
-            // update the left shoulder joint
+            bodies[idx]->spineBaseJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                          m.getArgAsFloat(i+1),
+                                                                          m.getArgAsFloat(i+2)), jointLerpPct);
+			i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
+			// update the left shoulder joint
             bodies[idx]->shoulderLeftJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->shoulderLeftJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->shoulderLeftJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                             m.getArgAsFloat(i++),
-                                                                             m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->shoulderLeftJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                             m.getArgAsFloat(i+1),
+                                                                             m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // update the right shoulder joint
             bodies[idx]->shoulderRightJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->shoulderRightJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-            bodies[idx]->shoulderRightJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                              m.getArgAsFloat(i++),
-                                                                              m.getArgAsFloat(i++)), jointLerpPct);
-            
+            bodies[idx]->shoulderRightJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                              m.getArgAsFloat(i+1),
+                                                                              m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
+			// update the left elbow joint
+            bodies[idx]->elbowLeftJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
+            bodies[idx]->elbowLeftJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
+            bodies[idx]->elbowLeftJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                          m.getArgAsFloat(i+1),
+                                                                          m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
+            // update the right elbow joint
+            bodies[idx]->elbowRightJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
+            bodies[idx]->elbowRightJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
+            bodies[idx]->elbowRightJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                           m.getArgAsFloat(i+1),
+                                                                           m.getArgAsFloat(i+2)), jointLerpPct);
+            i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
             // calculate the head to spine base length for mapping height
             float mappingWidth = MAX(bodies[idx]->spineShoulderJoint.inputPosition.distance(bodies[idx]->shoulderLeftJoint.inputPosition), 
                                      bodies[idx]->spineShoulderJoint.inputPosition.distance(bodies[idx]->shoulderRightJoint.inputPosition));
@@ -142,13 +166,12 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                                    + bodies[idx]->spineMidJoint.inputPosition.distance(bodies[idx]->spineBaseJoint.inputPosition) * 0.5f) * 0.5f;
             float neckOverlapWidth = mappingWidth * 0.2f;
             
-            // map the spine points
             // these are commented out because we now have two origins (left and right hand), so the x-map would not make sense
             //mapCoords(bodies[idx]->headJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
             //mapCoords(bodies[idx]->neckJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
             //mapCoords(bodies[idx]->spineShoulderJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
             //mapCoords(bodies[idx]->spineMidJoint, bodies[idx]->spineShoulderJoint.inputPosition, mappingLength);
-            mapCoords(bodies[idx]->spineBaseJoint, bodies[idx]->spineShoulderJoint.inputPosition, zRef, mappingWidth, mappingHeight);
+            //mapCoords(bodies[idx]->spineBaseJoint, bodies[idx]->spineShoulderJoint.inputPosition, zRef, mappingWidth, mappingHeight);
             
             // check if the body is within the tracked bounds
             bool bBodyOutOfBounds = (bodies[idx]->spineBaseJoint.inputPosition.x < boundsMin.x ||
@@ -176,10 +199,11 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 // update the hand joint
                 hands[handIdx]->handJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
                 hands[handIdx]->handJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-                hands[handIdx]->handJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                                            m.getArgAsFloat(i++), 
-                                                                            m.getArgAsFloat(i++)), jointLerpPct);
-                
+                hands[handIdx]->handJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i+0), 
+                                                                            m.getArgAsFloat(i+1), 
+                                                                            m.getArgAsFloat(i+2)), jointLerpPct);
+                i += 3;  // can't i++ in method with multiple parameters because VS is stupid and processes them backwards
+
                 // set the custom origin and bounds
                 ofVec3f origin = bodies[idx]->headJoint.inputPosition;
                 if (hands[handIdx]->handJoint.type == k4w::JointType_HandLeft) {
@@ -193,17 +217,22 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 
                 if (bClampToBounds) {
                     // clamp to left, right, and top edges
-                    hands[handIdx]->handJoint.inputPosition.x = ofClamp(hands[handIdx]->handJoint.inputPosition.x, origin.x - mappingWidth, origin.x + mappingWidth);
-                    hands[handIdx]->handJoint.inputPosition.y = MIN(hands[handIdx]->handJoint.inputPosition.y, origin.y + mappingHeight);
+                    hands[handIdx]->handJoint.clampedPosition.x = ofClamp(hands[handIdx]->handJoint.inputPosition.x, origin.x - mappingWidth, origin.x + mappingWidth);
+                    hands[handIdx]->handJoint.clampedPosition.y = MIN(hands[handIdx]->handJoint.inputPosition.y, origin.y + mappingHeight);
                 }
+				else {
+					hands[handIdx]->handJoint.clampedPosition.x = hands[handIdx]->handJoint.inputPosition.x;
+					hands[handIdx]->handJoint.clampedPosition.y = hands[handIdx]->handJoint.inputPosition.y;
+				}
+				hands[handIdx]->handJoint.clampedPosition.z = hands[handIdx]->handJoint.inputPosition.z;
                 
                 // map the input to local and screen coordinates
-                mapCoords(hands[handIdx]->handJoint, origin, zRef, mappingWidth, mappingHeight);
+                mapHandCoords(hands[handIdx]->handJoint, origin, zRef, mappingWidth, mappingHeight);
                 
-                bool bHandOutOfBounds = (hands[handIdx]->handJoint.inputPosition.x < hands[handIdx]->trackingBounds.getMinX() ||
-                                         hands[handIdx]->handJoint.inputPosition.x > hands[handIdx]->trackingBounds.getMaxX() ||
-                                         hands[handIdx]->handJoint.inputPosition.y < hands[handIdx]->trackingBounds.getMinY() ||
-                                         hands[handIdx]->handJoint.inputPosition.y > hands[handIdx]->trackingBounds.getMaxY());
+                bool bHandOutOfBounds = (hands[handIdx]->handJoint.clampedPosition.x < hands[handIdx]->trackingBounds.getMinX() ||
+                                         hands[handIdx]->handJoint.clampedPosition.x > hands[handIdx]->trackingBounds.getMaxX() ||
+                                         hands[handIdx]->handJoint.clampedPosition.y < hands[handIdx]->trackingBounds.getMinY() ||
+                                         hands[handIdx]->handJoint.clampedPosition.y > hands[handIdx]->trackingBounds.getMaxY());
                 
                 // set the new hand state, and calculate active frames while we're at it
                 if (bBodyOutOfBounds ||
@@ -357,10 +386,10 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                     ((candidateIdx == -1) || 
                      (candidateActiveFrames < it->second->activeFrames) || 
                      (candidateActiveFrames == it->second->activeFrames && 
-                         candidateY < it->second->handJoint.inputPosition.y))) {
+                         candidateY < it->second->handJoint.clampedPosition.y))) {
                 candidateIdx = it->first;
                 candidateActiveFrames = it->second->activeFrames;
-                candidateY = it->second->handJoint.inputPosition.y;
+                candidateY = it->second->handJoint.clampedPosition.y;
             }
         }
         primaryIdx = candidateIdx;
@@ -387,13 +416,24 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             currentPosition.interpolate(hands[primaryIdx]->handJoint.screenPosition, posSetLerpPct);
         }
     }
+
+	// update the viewer state
+	if (primaryIdx != -1) {
+		viewerState = k4w::ViewerState_Present;
+	}
+	else if (bodies.size()) {
+		viewerState = k4w::ViewerState_OutOfRange;
+	}
+	else {
+		viewerState = k4w::ViewerState_None;
+	}
 }
 
 //--------------------------------------------------------------
-void CloudsInputKinectOSC::mapCoords(k4w::Joint& joint, ofVec3f& origin, float zRef, float width, float height)
+void CloudsInputKinectOSC::mapHandCoords(k4w::HandJoint& joint, ofVec3f& origin, float zRef, float width, float height)
 {
     // switch to a local coord system, centered at origin
-    joint.localPosition = joint.inputPosition;
+    joint.localPosition = joint.clampedPosition;
     joint.localPosition -= origin;
     
     // map the local position to the 2D viewport coord system
@@ -502,8 +542,8 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             ofBeginShape();
             {
                 ofVertex(body->shoulderLeftJoint.inputPosition);
-                ofVertex(body->spineShoulderJoint.inputPosition);
-                ofVertex(body->shoulderRightJoint.inputPosition);
+				ofVertex(body->spineShoulderJoint.inputPosition);
+				ofVertex(body->shoulderRightJoint.inputPosition);
             }
             ofEndShape();
         }
@@ -514,13 +554,13 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             
             // draw the arm
             ofSetColor(ofColor::gray);
-            ofLine(hand->handJoint.inputPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->shoulderLeftJoint.inputPosition : bodies[hand->bodyIdx]->shoulderRightJoint.inputPosition);
+            //ofLine(hand->handJoint.clampedPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->elbowLeftJoint.inputPosition : bodies[hand->bodyIdx]->elbowRightJoint.inputPosition);
             
             bool bActive = (hand->activeFrames > 0);
-            bool bInBounds = (hand->handJoint.inputPosition.x >= hand->trackingBounds.getMinX() &&
-                              hand->handJoint.inputPosition.x <= hand->trackingBounds.getMaxX() &&
-                              hand->handJoint.inputPosition.y >= hand->trackingBounds.getMinY() &&
-                              hand->handJoint.inputPosition.y <= hand->trackingBounds.getMaxY());
+            bool bInBounds = (hand->handJoint.clampedPosition.x >= hand->trackingBounds.getMinX() &&
+                              hand->handJoint.clampedPosition.x <= hand->trackingBounds.getMaxX() &&
+                              hand->handJoint.clampedPosition.y >= hand->trackingBounds.getMinY() &&
+                              hand->handJoint.clampedPosition.y <= hand->trackingBounds.getMaxY());
             
             if (hand->handJoint.trackingState == k4w::TrackingState_Tracked) {
                 if (bActive) {
@@ -544,7 +584,7 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             else {
                 ofNoFill();
             }
-            ofCircle(hand->handJoint.inputPosition, 0.02f);
+            ofCircle(hand->handJoint.clampedPosition, 0.02f);
             
             ofNoFill();
             ofSetColor(ofColor::white);
@@ -559,6 +599,80 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
         ofNoFill();
         ofSetColor(ofColor::cyan);
         ofRect(boundsMin.x, boundsMin.y, boundsMax.x - boundsMin.x, boundsMax.y - boundsMin.y);
+    }
+    ofPopMatrix();
+    ofPopStyle();
+}
+
+//--------------------------------------------------------------
+void CloudsInputKinectOSC::draw(float x, float y, float width, float height, float alpha)
+{
+    // Adjust the dimensions to fit in a 4:3 window cause stretching is gross.
+	if (width/height != 4.0f/3.0f) {
+		float newWidth = 4.0f * height / 3.0f;
+		x += (width - newWidth) / 2.0f;
+		width = newWidth;
+	}
+	
+	ofPushStyle();
+    ofPushMatrix();
+    {
+        // scale up from our -1, 1 viewport
+        ofTranslate(x, y);
+        ofScale(width / 2.0f, height / 2.0f);
+        ofTranslate(1, 1);
+        ofScale(1, -1);
+        
+		ofSetColor(ofColor::white, alpha);
+
+        ofNoFill();
+		ofRect(-1, -1, 2, 2);
+
+        // draw bodies
+        for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
+            k4w::Body * body = it->second;
+            
+            ofNoFill();
+            
+            // draw the spine
+            ofBeginShape();
+            {
+                ofVertex(body->headJoint.inputPosition);
+                ofVertex(body->neckJoint.inputPosition);
+                ofVertex(body->spineShoulderJoint.inputPosition);
+                ofVertex(body->spineMidJoint.inputPosition);
+                ofVertex(body->spineBaseJoint.inputPosition);
+            }
+            ofEndShape();
+            
+            // draw the arm span
+            ofBeginShape();
+            {
+                ofVertex(body->elbowLeftJoint.inputPosition);
+                ofVertex(body->shoulderLeftJoint.inputPosition);
+				ofVertex(body->spineShoulderJoint.inputPosition);
+				ofVertex(body->shoulderRightJoint.inputPosition);
+				ofVertex(body->elbowRightJoint.inputPosition);
+            }
+            ofEndShape();
+        }
+        
+        // draw hands
+        for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
+            k4w::Hand * hand = it->second;
+            
+            // draw the arm
+            ofLine(hand->handJoint.inputPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->elbowLeftJoint.inputPosition : bodies[hand->bodyIdx]->elbowRightJoint.inputPosition);
+            
+            bool bActive = (hand->activeFrames > 0);
+            bool bInBounds = (hand->handJoint.inputPosition.x >= hand->trackingBounds.getMinX() &&
+                              hand->handJoint.inputPosition.x <= hand->trackingBounds.getMaxX() &&
+                              hand->handJoint.inputPosition.y >= hand->trackingBounds.getMinY() &&
+                              hand->handJoint.inputPosition.y <= hand->trackingBounds.getMaxY());
+            
+			// draw the hand
+            ofCircle(hand->handJoint.inputPosition, 0.02f);
+        }
     }
     ofPopMatrix();
     ofPopStyle();

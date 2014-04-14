@@ -6,10 +6,12 @@
 class CloudsPortalEventArgs : public ofEventArgs
 {
   public:
-    CloudsPortalEventArgs(CloudsPortal& portal, string question)
-		: portal(portal), question(question){}
+//    CloudsPortalEventArgs(CloudsPortal& portal, string question)
+//		: portal(portal), question(question){}
+	CloudsPortalEventArgs(string question)
+		: question(question){}
 	
-    CloudsPortal& portal;
+//    CloudsPortal& portal;
 	string question;
 };
 

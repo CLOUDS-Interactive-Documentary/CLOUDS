@@ -103,7 +103,10 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
 	guis.push_back(fogGui);
 	guimap[fogGui->getName()] = fogGui;
 }
-
+void CloudsVisualSystemTerrain::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
 void CloudsVisualSystemTerrain::selfSetup()
 {
     grayscottLoops = 1;
