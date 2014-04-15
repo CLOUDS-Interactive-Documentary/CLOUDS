@@ -2,18 +2,18 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>453.000000000</YPosition>
+    <XPosition>637.000000000</XPosition>
+    <YPosition>73.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>30.241935730</Value>
+    <Value>8.275861740</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>COLOR PALETTE</Name>
-    <Value>141.000000000</Value>
+    <Name>PARTICLE ALPHA</Name>
+    <Value>0.571428597</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -22,6 +22,6 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>SHADOW OPACITY</Name>
-    <Value>0.318548381</Value>
+    <Name>SHADOW ALPHA</Name>
+    <Value>1.000000000</Value>
 </Widget>
