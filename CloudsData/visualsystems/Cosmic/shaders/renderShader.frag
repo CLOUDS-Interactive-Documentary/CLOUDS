@@ -1,15 +1,20 @@
 #version 110
 #extension GL_ARB_texture_rectangle : enable
 
-//uniform sampler2DRect glow;
-uniform sampler2D glow;
-uniform float spriteSize;
+uniform float size; 
+uniform float particleAlpha; 
+
 varying vec2 texcoord;
+varying float posZ; 
 
 void main()
-{
-//	vec4 color = texture2DRect( glow, texcoord.st*spriteSize);
-//	vec4 color = texture2DRect( glow, texcoord.st);
-	vec4 color = texture2D( glow, texcoord.st );
-    gl_FragColor =  color * gl_Color;        
+{	
+	vec2 pos = vec2(texcoord/size); 
+
+	float dist = distance(pos, vec2(.5, .5)); 
+	dist = 1.0 - pow(exp(-dist*dist), 32.0); 
+	vec4 newColor = vec4(dist, dist, dist, (1.0 - dist));     	
+	newColor.a *= particleAlpha; 
+    gl_FragColor = newColor;     
 }
+

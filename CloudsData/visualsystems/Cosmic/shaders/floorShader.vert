@@ -3,7 +3,6 @@
 
 uniform sampler2DRect posData;
 uniform sampler2DRect radiData;
-uniform float radiusMultiplier;      
 uniform float size; 
 uniform float shadowScale; 
 
