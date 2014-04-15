@@ -236,7 +236,7 @@ void CloudsVisualSystemThingsInTheDark::selfSetupRenderGui(){
 }
 
 void CloudsVisualSystemThingsInTheDark::selfSetupTimeline(){
-	timeline->addVideoTrack("Video");
+//	timeline->addVideoTrack("Video");
 }
 
 void CloudsVisualSystemThingsInTheDark::guiRenderEvent(ofxUIEventArgs &e){

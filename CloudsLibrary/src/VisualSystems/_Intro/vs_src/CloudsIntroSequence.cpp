@@ -767,6 +767,7 @@ void CloudsIntroSequence::drawCloudsType(){
 	
 	typeShader.end();
 	if(!startedOnclick && helpHoverText != ""){
+#ifdef OCULUS_RIFT
 //		cout << ofGetMouseX()*.25 << endl;
 		questionFont.setTracking(14);
 
@@ -774,6 +775,7 @@ void CloudsIntroSequence::drawCloudsType(){
 		float hoverTextHeight = questionFont.stringHeight(helpHoverText);
 		ofTranslate(0, 0, 600);
 		questionFont.drawString(helpHoverText, -hoverTextWidth/2, hoverTextHeight*8);
+#endif
 	}
 
 	ofPopStyle();

@@ -3807,7 +3807,9 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
     if (mode == CURSOR_MODE_NONE) return;
 
     ofPushStyle();
-
+    cout << alphaScalar << endl;
+//    alphaScalar = 1.0;
+    
     if (mode == CURSOR_MODE_INACTIVE) {
 //<<<<<<< HEAD
 //        ofSetLineWidth(2);
@@ -3875,6 +3877,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
             ofLine(pos.x + totalRadius, pos.y, pos.x + totalRadius * coreRadius, pos.y);
             ofLine(pos.x, pos.y - totalRadius, pos.x, pos.y - totalRadius * coreRadius);
             ofLine(pos.x, pos.y + totalRadius, pos.x, pos.y + totalRadius * coreRadius);
+            
             ofNoFill();
             ofCircle(pos, coreRadius);
         }
