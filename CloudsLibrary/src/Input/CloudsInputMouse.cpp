@@ -9,6 +9,11 @@
 #include "CloudsInputMouse.h"
 #include "CloudsInputEvents.h"
 
+CloudsInputMouse::CloudsInputMouse()
+: cursorDownSize(7)
+, cursorUpSize(12)
+{}
+
 void CloudsInputMouse::enable(){
 	if(!enabled){
 		ofRegisterMouseEvents(this);
@@ -44,6 +49,10 @@ void CloudsInputMouse::mouseReleased(ofMouseEventArgs& data){
     dragging = false;
     currentPosition = ofVec3f(data.x, data.y, 0);
 	interactionEnded(currentPosition, true, data.button);
+}
+
+void CloudsInputMouse::drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
+    selfDrawCursor(mode, pos, bDragged, focus, bDragged? cursorDownSize:cursorUpSize);
 }
 
 void SetCloudsInputMouse()

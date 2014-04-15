@@ -42,14 +42,6 @@ enum ofxViewType
     OFX_VIEW_3D
 };
 
-enum CloudsCursorMode
-{
-    CURSOR_MODE_NONE = 0,
-    CURSOR_MODE_INACTIVE,
-    CURSOR_MODE_CAMERA,
-    CURSOR_MODE_DRAW
-};
-
 class CloudsVisualSystem {
   public:
 	   
@@ -503,8 +495,6 @@ class CloudsVisualSystem {
 #elif KINECT_INPUT
     static float cursorDownSizeMin, cursorDownSizeMax;
     static float cursorUpSizeMin, cursorUpSizeMax;
-#else
-    static float cursorDownSize, cursorUpSize;
 #endif
     
 };
