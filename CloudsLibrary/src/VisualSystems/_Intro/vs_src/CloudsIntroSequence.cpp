@@ -54,11 +54,11 @@ void CloudsIntroSequence::selfSetDefaults(){
 
 	// Set question defaults.
 	questionScale = 0.1f;
-    questionFontSize = 14;
-    questionLineLength = 300.0f;
-    questionLineSpacing = 1.0f;
+	helperFontSize = 14; //TODO make dynamic per preset
+//    questionFontSize = 14;
+//    questionLineLength = 300.0f;
+//    questionLineSpacing = 1.0f;
 	questionMinZDistance = 50;
-    rebuildQuestionFont();
 	perlinOffset = 0;
 	
     warpCamera.setNearClip(.01);
@@ -95,14 +95,7 @@ void CloudsIntroSequence::selfGuiEvent(ofxUIEventArgs &e){
 	else if(e.widget->getName() == "generate tunnel" && ((ofxUIButton*)e.widget)->getValue()){
 		generateTunnel();
 	}
-    
-    else if (e.widget->getName() == "Question Font Size" ||
-             e.widget->getName() == "Question Line Length" ||
-             e.widget->getName() == "Question Line Spacing") {
-        rebuildQuestionFont();
-    }
 }
-
 
 void CloudsIntroSequence::selfSetupCameraGui(){
 	camGui->addSlider("camera fwd force", 0, 2, &cameraForwardSpeed);
@@ -203,6 +196,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	guis.push_back(typeGui);
 	guimap[typeGui->getName()] = typeGui;
 	
+	
 	introGui = new ofxUISuperCanvas("INTRO", gui);
 	introGui->copyCanvasStyle(gui);
 	introGui->copyCanvasProperties(gui);
@@ -217,6 +211,22 @@ void CloudsIntroSequence::selfSetupGuis(){
 	
 	guis.push_back(introGui);
 	guimap[introGui->getName()] = introGui;
+	
+	
+	helperTextGui = new ofxUISuperCanvas("HELPERTEXT", gui);
+	helperTextGui->copyCanvasStyle(gui);
+	helperTextGui->copyCanvasProperties(gui);
+	helperTextGui->setName("Helpertext");
+	helperTextGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	helperTextGui->addIntSlider("FONT SIZE", 4, 100, &helperFontSize);
+	helperTextGui->addSlider("FONT SCALE", 0, 1.0, &helperFontScale);
+	helperTextGui->addSlider("TRACKING", 0, 30, &helperFontTracking);
+	helperTextGui->addSlider("Y POSITION", -200, 200, &helperFontY);
+	
+	guis.push_back(helperTextGui);
+	guimap[helperTextGui->getName()] = helperTextGui;
+
 }
 
 void CloudsIntroSequence::selfPresetLoaded(string presetPath){
@@ -232,19 +242,6 @@ void CloudsIntroSequence::reloadShaders(){
 	CloudsPortal::reloadShader();
 }
 
-void CloudsIntroSequence::rebuildQuestionFont(){
-    if(bUseOculusRift){
-        questionFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", questionFontSize);
-    }
-    else{
-        questionFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", questionFontSize);
-    }
-//    questionFont.setLineLength(questionLineLength);
-//    questionFont.setLineSpacing(questionLineSpacing);
-
-	
-}
-
 void CloudsIntroSequence::selfUpdate(){
 	
 	if(!startedOnclick && timeline->getIsPlaying()){
@@ -252,13 +249,9 @@ void CloudsIntroSequence::selfUpdate(){
 	}
 	
 	updateCamera();
-	
 	updateWaiting();
-
 	updateQuestions();
-
 	updateTitle();
-
 }
 
 void CloudsIntroSequence::updateCamera(){
@@ -278,7 +271,6 @@ void CloudsIntroSequence::updateCamera(){
 
 void CloudsIntroSequence::updateWaiting(){
 	
-	
     // Trigger start manually
     if (startedOnclick) {
 		nodeAlphaAttenuate = MAX(0,nodeAlphaAttenuate-0.02);
@@ -287,7 +279,12 @@ void CloudsIntroSequence::updateWaiting(){
 	
 	#ifdef OCULUS_RIFT
 	for(int i = 0; i < introNodes.size(); i++){
-		updateIntroNode(*introNodes[i]);
+		updateIntroNodePosition(*introNodes[i]);
+	}
+	
+	for(int i = 0; i < introNodes.size(); i++){
+		updateIntroNodeInteraction(*introNodes[i]);
+		//bail if we haven't completed this part of the sequence
 		if(!introNodes[i]->finished){
 			break;
 		}
@@ -297,6 +294,7 @@ void CloudsIntroSequence::updateWaiting(){
 		startedOnclick = true;
 		timeline->play();
 	}
+	
 	#elif defined(KINECT_INPUT)
 	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
 	if(startQuestions.size() > 0 && viewerState != k4w::ViewerState_None){
@@ -341,13 +339,17 @@ void CloudsIntroSequence::updateWaiting(){
 	#endif
 }
 
-void CloudsIntroSequence::updateIntroNode(IntroNode& node){
-	#ifdef OCULUS_RIFT
+
+void CloudsIntroSequence::updateIntroNodePosition(IntroNode& node){
+#ifdef OCULUS_RIFT
 	node.worldPosition = ofVec3f( introNodeOffset.x, -introNodeOffset.y, introNodeOffset.z + titleTypeOffset);
 	node.worldPosition.x *= node.multiplier;
 	node.worldPosition.y *= node.multiplier;
 	if(node.multiplier == 0){
 		node.worldPosition.y -= 10; //plus 20 just to move everything down a little bit
+	}
+	else{
+		node.worldPosition.z *= .5; //bring the side nodes closer in Z
 	}
 	
 	ofRectangle viewport = getOculusRift().getOculusViewport();
@@ -362,7 +364,13 @@ void CloudsIntroSequence::updateIntroNode(IntroNode& node){
 	node.cursorDirection = node.screenPosition - viewport.getCenter();
 	node.cursorDistance  = node.cursorDirection.length();
 	node.cursorDirection.normalize();
+
+#endif
+}
+
+void CloudsIntroSequence::updateIntroNodeInteraction(IntroNode& node){
 	
+	#ifdef OCULUS_RIFT
 	if(node.finished){
 		return;
 	}
@@ -378,12 +386,13 @@ void CloudsIntroSequence::updateIntroNode(IntroNode& node){
 		}
 		else if(node.percentComplete >= 1.0){
 			node.finished = true;
+			nodeActivatedTime = ofGetElapsedTimef(); //used for alpha on helper text
 		}
 		else{
 			node.percentComplete = ofMap(ofGetElapsedTimef(), node.hoverStartTime, node.hoverStartTime+introNodeHoldTime, 0.0, 1.0,true);
 		}
 	}
-#endif
+	#endif
 }
 
 void CloudsIntroSequence::updateTitle(){
@@ -413,8 +422,8 @@ void CloudsIntroSequence::updateTitle(){
 	}
 	
 	currentTitleOpacity += (hoverTitleOpacity-currentTitleOpacity)*.05;
-	
 }
+
 void CloudsIntroSequence::updateQuestions(){
 	
 	for(int i = 0; i < startQuestions.size(); i++){
@@ -461,20 +470,12 @@ void CloudsIntroSequence::updateQuestions(){
 				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
-					//                    CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
                     CloudsPortalEventArgs args(getQuestionText());
                     ofNotifyEvent(events.portalHoverEnded, args);
 				}
 			}
 		}
 	}
-	
-	//always move the questions in the direction of the camera
-//    for(int i = 0; i < startQuestions.size(); i++){
-//        if(&startQuestions[i] != caughtQuestion){
-//			startQuestions[i].hoverPosition.z += cameraForwardSpeed*.5;
-//        }
-//    }
 }
 
 
@@ -573,8 +574,6 @@ void CloudsIntroSequence::positionStartQuestions(){
 		startQuestions[i].hoverPosition = ofVec3f(0, ofRandom(questionTunnelInnerRadius, tunnelMax.y), 0);
 		startQuestions[i].hoverPosition.rotate(ofRandom(360), ofVec3f(0,0,1));
 		startQuestions[i].hoverPosition.z = 400 + tunnelMax.z*.5 + ofRandom(questionWrapDistance);
-        // TODO: Figure out if orientToCenter() is still necessary
-//		startQuestions[i].orientToCenter();
 	}
 	
 }
@@ -684,14 +683,19 @@ void CloudsIntroSequence::selfDraw(){
 	
 	drawCloudsType();
 	drawIntroNodes();
-	
+	drawHelperType();
+	drawTunnel();
+	drawPortals();
+}
+
+void CloudsIntroSequence::drawTunnel(){
 	ofPushStyle();
 	
 	tunnelShader.begin();
 	tunnelShader.setUniform1f("minPointSize", pointSize.min);
 	tunnelShader.setUniform1f("maxPointSize", pointSize.max);
 	tunnelShader.setUniform1f("minDistance", distanceRange.min);
-
+	
 	if(bUseOculusRift){
 		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 120.);
 	}
@@ -720,14 +724,16 @@ void CloudsIntroSequence::selfDraw(){
 	tunnelShader.setUniform1f("colorAttenuate", wireframeAlpha);
 	tunnelShader.setUniform1f("useSprite", 0);
 	tunnelMeshLoose.draw();
-
-	tunnelShader.end();
-		
-	ofPopStyle();
 	
+	tunnelShader.end();
+	
+	ofPopStyle();
+}
+
+void CloudsIntroSequence::drawPortals(){
 	ofPushStyle();
     ofEnableAlphaBlending();
-
+	
 	CloudsPortal::shader.begin();
 	
 	CloudsPortal::shader.setUniform1i("doAttenuate", 1);
@@ -738,7 +744,7 @@ void CloudsIntroSequence::selfDraw(){
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].draw();
 	}
-		
+	
 	CloudsPortal::shader.end();
 	
 	ofPopStyle();
@@ -766,23 +772,66 @@ void CloudsIntroSequence::drawCloudsType(){
 	extrudedTitleText.drawString("CLOUDS", -width/2, height/2);
 	
 	typeShader.end();
-	if(!startedOnclick && helpHoverText != ""){
-#ifdef OCULUS_RIFT
-//		cout << ofGetMouseX()*.25 << endl;
-		questionFont.setTracking(14);
-
-		float hoverTextWidth  = questionFont.stringWidth(helpHoverText);
-		float hoverTextHeight = questionFont.stringHeight(helpHoverText);
-		ofTranslate(0, 0, 600);
-		questionFont.drawString(helpHoverText, -hoverTextWidth/2, hoverTextHeight*8);
-#endif
-	}
 
 	ofPopStyle();
 	ofPopMatrix();
-	
-		
+}
 
+void CloudsIntroSequence::drawHelperType(){
+	ofPushMatrix();
+	ofPushStyle();
+
+	if(currentHelperFontSize != helperFontSize){
+		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", helperFontSize);
+		currentHelperFontSize = helperFontSize;
+	}
+	
+#ifdef OCULUS_RIFT
+	if(!startedOnclick){
+		
+		ofRotate(180, 0, 0, 1);//flip around
+		ofMatrix4x4 compensate;
+		compensate.rotate(180, 0, 0, 1);
+		
+		string helpHoverText;
+		ofVec3f basePosition(0,0,0);
+//		ofVec3f basePosition = ofVec3f(0,0,0);
+		float helperTextOpacity = 0.0;
+		if(introNodeThree.hover || introNodeTwo.finished){
+			helpHoverText = "TURN TO CENTER";
+			basePosition = introNodeTwo.worldPosition;
+			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(), nodeActivatedTime+.3, nodeActivatedTime+1,0.0,.8,true), 2.) * (1.0-introNodeThree.percentComplete);
+		}
+		else if(introNodeTwo.hover || introNodeOne.finished){
+			helpHoverText = "TURN TO RIGHT";
+			basePosition = introNodeOne.worldPosition;
+			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(), nodeActivatedTime+.3, nodeActivatedTime+1,0.0,.8,true), 2.);
+		}
+		else {
+			helpHoverText = "TURN TO LEFT";
+			basePosition = introNodeThree.worldPosition;
+			helperTextOpacity = (currentTitleOpacity - titleTypeOpacity)*(1.0-introNodeOne.percentComplete);
+		}
+		
+		if(helpHoverText != ""){
+			helperFont.setTracking(helperFontTracking);
+			float hoverTextWidth  = helperFont.stringWidth(helpHoverText);
+			float hoverTextHeight = helperFont.stringHeight(helpHoverText);
+			
+			getOculusRift().multBillboardMatrix( compensate.preMult( basePosition ) );
+			ofScale(helperFontScale,helperFontScale,helperFontScale);
+
+			ofSetColor(255,255*helperTextOpacity);
+			helperFont.drawString(helpHoverText, -hoverTextWidth/2, helperFontY-hoverTextHeight/2);
+		}
+	}
+	
+#endif
+	
+	ofPopStyle();
+	ofPopMatrix();
+	
+	
 }
 
 void CloudsIntroSequence::drawIntroNodes(){
@@ -803,7 +852,10 @@ void CloudsIntroSequence::drawIntroNodes(){
 		else{
 			ofSetColor(255,200);
 		}
-		ofTranslate( introNodes[i]->worldPosition );
+		
+		getOculusRift().multBillboardMatrix(introNodes[i]->worldPosition);
+		
+		//ofTranslate( introNodes[i]->worldPosition );
 		
 		ofNoFill();
 		ofCircle(0,0,0, introNodeSize);
@@ -824,48 +876,50 @@ void CloudsIntroSequence::drawIntroNodes(){
 
 void CloudsIntroSequence::selfDrawOverlay(){
 
-	bool drawDirection = false;
-	float cursorScalar;
-	int maxCursorDistance = 400;
-	ofVec2f cursorDirection;
-	ofVec2f direction;
-	
-	helpHoverText = "";
-	if(introNodeThree.hover){
-		///no text
-	}
-	else if(introNodeTwo.finished){
-		drawDirection = true;
-		cursorScalar = ofMap(introNodeThree.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
-		cursorDirection = introNodeThree.cursorDirection;
-		helpHoverText = "";
-	}
-	else if(introNodeTwo.hover || introNodeOne.finished){
-		drawDirection = true;
-		cursorScalar = ofMap(introNodeTwo.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
-		cursorDirection = introNodeTwo.cursorDirection;
-		helpHoverText = "LOOK RIGHT";
-	}
-	else {
-		drawDirection = true;
-		cursorScalar = ofMap(introNodeOne.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
-		cursorDirection = introNodeOne.cursorDirection;
-		helpHoverText = "LOOK LEFT";
-	}
-	
-	if(false && drawDirection){
-		ofPushStyle();
-		ofSetColor(255, 200);
-		ofVec2f start(320,240);
-		hintCursorEndPoint += (start + cursorDirection*(1.0-powf(1.0-cursorScalar,3.0f))*40 - hintCursorEndPoint) * .1;
-		ofLine(start,hintCursorEndPoint);
-		ofPushMatrix();
-		ofTranslate(hintCursorEndPoint);
-		ofRotate( -(hintCursorEndPoint - start).normalized().angle(ofVec2f(0,1)) );
-		ofTriangle(ofVec2f(0,0), ofVec2f(-3,-6), ofVec2f(3,-6));
-		ofPopMatrix();
-		ofPopStyle();
-	}
+	//old oculus arrow draing code
+//	
+//	bool drawDirection = false;
+//	float cursorScalar;
+//	int maxCursorDistance = 400;
+//	ofVec2f cursorDirection;
+//	ofVec2f direction;
+//	
+//	helpHoverText = "";
+//	if(introNodeThree.hover){
+//		///no text
+//	}
+//	else if(introNodeTwo.finished){
+//		drawDirection = true;
+//		cursorScalar = ofMap(introNodeThree.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
+//		cursorDirection = introNodeThree.cursorDirection;
+//		helpHoverText = "";
+//	}
+//	else if(introNodeTwo.hover || introNodeOne.finished){
+//		drawDirection = true;
+//		cursorScalar = ofMap(introNodeTwo.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
+//		cursorDirection = introNodeTwo.cursorDirection;
+//		helpHoverText = "LOOK RIGHT";
+//	}
+//	else {
+//		drawDirection = true;
+//		cursorScalar = ofMap(introNodeOne.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
+//		cursorDirection = introNodeOne.cursorDirection;
+//		helpHoverText = "LOOK LEFT";
+//	}
+//	
+//	if(false && drawDirection){
+//		ofPushStyle();
+//		ofSetColor(255, 200);
+//		ofVec2f start(320,240);
+//		hintCursorEndPoint += (start + cursorDirection*(1.0-powf(1.0-cursorScalar,3.0f))*40 - hintCursorEndPoint) * .1;
+//		ofLine(start,hintCursorEndPoint);
+//		ofPushMatrix();
+//		ofTranslate(hintCursorEndPoint);
+//		ofRotate( -(hintCursorEndPoint - start).normalized().angle(ofVec2f(0,1)) );
+//		ofTriangle(ofVec2f(0,0), ofVec2f(-3,-6), ofVec2f(3,-6));
+//		ofPopMatrix();
+//		ofPopStyle();
+//	}
 	
 //	if(helpHoverText != ""){
 //		float hoverTextWidth  = questionFont.stringWidth(hoverText);
@@ -879,6 +933,7 @@ void CloudsIntroSequence::selfPostDraw(){
 	
 	CloudsVisualSystem::selfPostDraw();
 #ifdef KINECT_INPUT
+	//TODO: Move this to the general system drawing
 	if(kinectHelperAlpha > 0.0){
 		kinectHelperAlpha += (kinectHelperTargetAlpha-kinectHelperAlpha)*.05;
 		ofPushStyle();

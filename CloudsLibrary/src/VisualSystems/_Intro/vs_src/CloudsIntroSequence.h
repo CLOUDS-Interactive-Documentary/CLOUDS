@@ -96,6 +96,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofxUISuperCanvas* tunnelGui;
 	ofxUISuperCanvas* typeGui;
 	ofxUISuperCanvas* introGui;
+	ofxUISuperCanvas* helperTextGui;
 	
 	bool showingQuestions;
 	float questionWrapDistance;
@@ -120,10 +121,13 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofRectangle titleRect;
 	bool hoveringTitle;
 	
-	ofxFTGLFont questionFont;
-    void rebuildQuestionFont();
-    int questionFontSize;
-
+	ofxFTGLFont helperFont;
+    int helperFontSize;
+	int currentHelperFontSize;
+	float helperFontTracking;
+	float helperFontY;
+	float helperFontScale;
+	
 	float questionScale;
 	ofRange questionTugDistance;
 	ofRange questionAttenuateDistance;
@@ -165,9 +169,13 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofRange distanceRange;
 	
 	void drawCloudsType();
-	
     void drawIntroNodes();//rift only
-	void updateIntroNode(IntroNode& node);//rift only
+	void drawHelperType();
+	void drawTunnel();
+	void drawPortals();
+	
+	void updateIntroNodePosition(IntroNode& node);
+	void updateIntroNodeInteraction(IntroNode& node);
 	
 	//intro sequence
 	float introNodeSize;
@@ -175,13 +183,13 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float introNodeHoldTime;
 	
 	ofVec3f introNodeOffset; //mirrored along the axis
-	string helpHoverText;
 
 	IntroNode introNodeOne;
 	IntroNode introNodeTwo;
 	IntroNode introNodeThree;
 	vector<IntroNode*> introNodes;
 	float nodeAlphaAttenuate;
+	float nodeActivatedTime;
 	ofVec2f hintCursorEndPoint;
 
 	

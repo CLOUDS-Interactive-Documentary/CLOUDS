@@ -2893,7 +2893,7 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
                         int widgetID = XML->getValue("WidgetID", -1, 0);
                         string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
 
-                        cout << "Widget canvas parent is " << widgetCanvasParent << endl;
+//                        cout << "Widget canvas parent is " << widgetCanvasParent << endl;
                         
                         map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
                         if(it != guimap.end())
@@ -3807,7 +3807,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
     if (mode == CURSOR_MODE_NONE) return;
 
     ofPushStyle();
-    cout << alphaScalar << endl;
+//    cout << alphaScalar << endl;
 //    alphaScalar = 1.0;
     
     if (mode == CURSOR_MODE_INACTIVE) {
