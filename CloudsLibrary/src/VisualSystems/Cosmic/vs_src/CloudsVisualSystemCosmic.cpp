@@ -3,7 +3,7 @@
 void CloudsVisualSystemCosmic::setupFloorVbo()
 {
     int floorSize = debugGridSize*debugGridSize*4;
-    floorIndexSize = debugGridSize*debugGridSize*6;     
+    floorIndexSize = debugGridSize*debugGridSize*6;
     
     ofFloatColor *floorColors = new ofFloatColor[floorSize];
     ofVec2f *floorTexCoords = new ofVec2f[floorSize];
@@ -19,7 +19,6 @@ void CloudsVisualSystemCosmic::setupFloorVbo()
         floorColors[i+1].set(1.0, 1.0, 1.0, 1.0);
         floorColors[i+2].set(1.0, 1.0, 1.0, 1.0);
         floorColors[i+3].set(1.0, 1.0, 1.0, 1.0);
-        
         
         floor[i].set(x, y, 0.0);
         floor[i+1].set(x, y, 0.0);
@@ -46,7 +45,7 @@ void CloudsVisualSystemCosmic::setupFloorVbo()
             y++;
         }
     }
-            
+    
     vboFloor.setVertexData(floor, floorSize, GL_STATIC_DRAW);
     vboFloor.setColorData(floorColors, floorSize, GL_STATIC_DRAW);
     vboFloor.setTexCoordData(floorTexCoords, floorSize, GL_STATIC_DRAW);
@@ -89,12 +88,8 @@ void CloudsVisualSystemCosmic::selfSetupTimeline()
 
 void CloudsVisualSystemCosmic::selfSetup()
 {
-	
 	vbosAllocated = true;
 	
-    colorPalettes = new ofxColorPalettes();
-    colorPalettes->loadFromDirectory(getVisualSystemDataPath()+"colors/");
-    
     debugGridSize = 64;
     float interval = 1;
     
@@ -105,23 +100,7 @@ void CloudsVisualSystemCosmic::selfSetup()
     numTris = (rows-1)*(cols-1)*2;
     numIndi = numTris*3;
     
-    cout << "Rows: " << rows << endl;
-    cout << "Cols: " << cols << endl;
-    cout << "Verts: " << size << endl;
-    cout << "Tris: " << numTris << endl;
-    cout << "Indi: " << numIndi << endl;
-    
-    verts = new ofVec3f[size];
-    colors = new ofFloatColor[size];
-    normals = new ofVec3f[size];
-    texCoords = new ofVec2f[size];
-    indices = new ofIndexType[numIndi];
-    
-    float offSetX = (debugGridSize-interval)*-.5;
-    float offSetY = (debugGridSize-interval)*-.5;
-    
     colorIndex = 0;
-    ofxColorPalette *p = colorPalettes->getPalletePointer(colorIndex);
     
     int numfloat = rows*cols*3;
     pos = new float[numfloat];
@@ -138,8 +117,6 @@ void CloudsVisualSystemCosmic::selfSetup()
         vel[i + 2] = ofRandomf();
     }
     
-    homeFbo.allocate(cols, rows, GL_RGB32F);
-    homeFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     
     float *rad = new float[numfloat];
     for(int i = 0; i < numfloat-3; i++)
@@ -149,6 +126,9 @@ void CloudsVisualSystemCosmic::selfSetup()
         rad[i + 2] = ofRandom(0.5, 1.0);
     }
     
+    homeFbo.allocate(cols, rows, GL_RGB32F);
+    homeFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+    
     electroFbo.allocate(cols, rows, GL_RGB32F);
     electroFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     
@@ -157,19 +137,16 @@ void CloudsVisualSystemCosmic::selfSetup()
     
     posFboSrc.allocate(cols, rows, GL_RGB32F);
     posFboSrc.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
-
     posFboDst.allocate(cols, rows, GL_RGB32F);
     posFboDst.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     
     velFboSrc.allocate(cols, rows, GL_RGB32F);
     velFboSrc.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
-    
     velFboDst.allocate(cols, rows, GL_RGB32F);
     velFboDst.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     
     accFboSrc.allocate(cols, rows, GL_RGB32F);
     accFboSrc.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
-    
     accFboDst.allocate(cols, rows, GL_RGB32F);
     accFboDst.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     
@@ -178,80 +155,29 @@ void CloudsVisualSystemCosmic::selfSetup()
     posFboSrc.getTextureReference().loadData(pos, cols, rows, GL_RGB);
     posFboDst.getTextureReference().loadData(pos, cols, rows, GL_RGB);
     velFboSrc.getTextureReference().loadData(vel, cols, rows, GL_RGB);
-
-    for(float y = 0; y < rows; y++)
-    {
-        for(float x = 0; x < cols; x++)
-        {
-            verts[ID(x,y)].set(offSetX+x*interval, offSetY+y*interval, 0);
-            colors[ID(x,y)] = p->getColor(x+y);                                   //get color palettes
-            normals[ID(x,y)].set(0, 1, 0);
-            texCoords[ID(x,y)].set(x, y);
-        }
-    }
     
-    int vIndex = 0;
-    for(int i = 0; i < numIndi; i+=6)
-    {
-        if((vIndex+1) % cols == 0)
-        {
-            i-=6;
-            vIndex++;
-            continue;
-        }
-        
-        int i0 = vIndex;            int i1 = vIndex+1;
-        int i3 = vIndex+(cols);     int i4 = i1+(cols);
-        
-        indices[i] = i0;
-        indices[i+1] = i3;
-        indices[i+2] = i1;
-        
-        indices[i+3] = i1;
-        indices[i+4] = i3;
-        indices[i+5] = i4;
-        
-        vIndex++;
-    }
-    
-    vbo.setVertexData(verts, size, GL_STATIC_DRAW);
-    vbo.setNormalData(normals, size, GL_STATIC_DRAW);
-    vbo.setColorData(colors, size, GL_STATIC_DRAW);
-    vbo.setTexCoordData(texCoords, size, GL_STATIC_DRAW);
-    vbo.setIndexData(indices, numIndi, GL_STATIC_DRAW);
     accShader.load(getVisualSystemDataPath()+"shaders/accShader");
     velShader.load(getVisualSystemDataPath()+"shaders/velShader");
     posShader.load(getVisualSystemDataPath()+"shaders/posShader");
     rdrShader.load(getVisualSystemDataPath()+"shaders/renderShader");
     sphereShader.load(getVisualSystemDataPath()+"shaders/sphereShader");
     
-    ofDisableArbTex();
-    ofLoadImage(glow, getVisualSystemDataPath()+"images/glow.png");
-    spriteSize = glow.getWidth();
-    cout << spriteSize << endl;
-    ofEnableArbTex();
-    
     timeStep = 0.001;
     radiusMultiplier = 1.0;
     damping = 0.0;
-    
-
-    homeShader.load(getVisualSystemDataPath()+"shaders/homeShader");
     bHomingActive = true;
     homeForceLimit = 1.0;
-    
-    electroShader.load(getVisualSystemDataPath()+"shaders/electroShader");
     bElectroActive = true;
     electroForceLimit = 1.0;
     
+    cout << getVisualSystemDataPath() << endl; 
+    homeShader.load(getVisualSystemDataPath()+"shaders/homeShader");
+    electroShader.load(getVisualSystemDataPath()+"shaders/electroShader");
     attractorShader.load(getVisualSystemDataPath()+"shaders/attractorShader");
-    
     radShader.load(getVisualSystemDataPath()+"shaders/radShader");
-
     floorShader.load(getVisualSystemDataPath()+"shaders/floorShader");
-    
-    
     noiseShader.load(getVisualSystemDataPath()+"shaders/noiseShader");
+    
     delete[] rad;
     
     setupFloorVbo();
@@ -278,6 +204,7 @@ void CloudsVisualSystemCosmic::selfSetupGuis()
     addAttractorShaderGui("ART1");
     addAttractorShaderGui("ART2");
 }
+
 
 void CloudsVisualSystemCosmic::selfSetupSystemGui()
 {
@@ -334,26 +261,14 @@ void CloudsVisualSystemCosmic::guiSystemEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemCosmic::selfSetupRenderGui()
 {
     rdrGui->addSlider("RADIUS", 0.0, 60.0, &radiusMultiplier)->setIncrement(1.0);
-    rdrGui->addSlider("COLOR PALETTE", 0, colorPalettes->getCount(), &colorIndex)->setIncrement(1.0);
+    rdrGui->addSlider("PARTICLE ALPHA", 0.0, 1.0, &particleAlpha);
     rdrGui->addSlider("SHADOW SCALE", 0.0, 32.0, &shadowScale);
-    rdrGui->addSlider("SHADOW OPACITY", 0.0, 1.0, &shadowOpacity);
+    rdrGui->addSlider("SHADOW ALPHA", 0.0, 1.0, &shadowOpacity);
 }
 
 void CloudsVisualSystemCosmic::guiRenderEvent(ofxUIEventArgs &e)
 {
-    string name = e.getName();
-    if(name == "COLOR PALETTE")
-    {
-        ofxColorPalette *p = colorPalettes->getPalletePointer(colorIndex);
-        for(float x = 0; x < cols; x++)
-        {
-            for(float y = 0; y < rows; y++)
-            {
-                colors[ID(x,y)] = p->getColor(x+y);
-            }
-        }
-        vbo.setColorData(colors, size, GL_STATIC_DRAW);
-    }
+
 }
 
 void CloudsVisualSystemCosmic::selfPresetLoaded(string presetPath)
@@ -388,38 +303,48 @@ void CloudsVisualSystemCosmic::selfUpdate()
 
     time = ofGetElapsedTimef();
     
+	checkOpenGLError("TEST::START UPDDATE");
+
     if(bUpdateRadius)
     {
         updateRadiusShader();
     }
 	
+	checkOpenGLError("TEST::POST RADIUS");
     if(bUpdateAcceleration)
     {
-		clearFbo(accFboSrc);
-		if(bHomingActive) applyHomeShader();
-		if(bElectroActive) applyElectroShader();
-		applyAttractorShader();
-		applySphereShader();
-		updateAcceleration();
+        clearFbo(accFboSrc);
+        if(bHomingActive) applyHomeShader();
+		checkOpenGLError("TEST::POST HOME");
+        if(bElectroActive) applyElectroShader();
+		checkOpenGLError("TEST::POST ElECTRO");
+        applyAttractorShader();
+		checkOpenGLError("TEST::POST ATTRACT");
+        applySphereShader();
+		checkOpenGLError("TEST::POST SPHERE");
+        updateAcceleration();
+		checkOpenGLError("TEST::POST ACCEL");
     }
     if(bUpdateVelocity)
     {
         updateVelocity();
         if(bNoiseActive) applyCurlNoiseShader();
+		checkOpenGLError("TEST::POST CURL");
     }
     if(bUpdatePosition)
     {
         updatePosition();
+		checkOpenGLError("TEST::POST UPDATE");
     }
 }
 
 void CloudsVisualSystemCosmic::selfDraw()
 {
-	
-//	return;
-	
+	checkOpenGLError("TEST::START DRAW?");
     drawFloor();
-	drawParticles();
+	checkOpenGLError("TEST::FLOOR FINISHED");
+    drawParticles();
+	checkOpenGLError("TEST::PARTICLES FINISHED");
 }
 
 void CloudsVisualSystemCosmic::selfDrawDebug()
@@ -427,7 +352,6 @@ void CloudsVisualSystemCosmic::selfDrawDebug()
     drawSphereDebug();
     drawAttractorDebug();
 }
-
 
 void CloudsVisualSystemCosmic::selfDrawBackground()
 {
@@ -449,16 +373,9 @@ void CloudsVisualSystemCosmic::clear(){
 	}
 	
     vboFloor.clear();
-	vbo.clear();
     
     delete[] pos;
     delete[] vel;
-    
-    delete[] verts;
-    delete[] colors;
-    delete[] normals;
-    delete[] texCoords;
-    delete[] indices;
     
     for(int i = 0; i < sphereActive.size(); i++)
     {
@@ -497,10 +414,7 @@ void CloudsVisualSystemCosmic::clear(){
     attractorExpPower.clear();
     attractorAccLimit.clear();
     attractorPosition.clear();
-    
-    delete colorPalettes;
 	vbosAllocated = false;
-    
 }
 
 void CloudsVisualSystemCosmic::selfKeyPressed(ofKeyEventArgs & args)
@@ -584,27 +498,13 @@ void CloudsVisualSystemCosmic::drawAttractorDebug()
 
 void CloudsVisualSystemCosmic::updateRadiusShader()
 {
-	ofMesh m;
-	m.addVertex(ofVec3f(0,0,0));
-	m.addVertex(ofVec3f(radiFbo.getWidth(),0,0));
-	m.addVertex(ofVec3f(0,radiFbo.getHeight(),0));
-	m.addVertex(ofVec3f(radiFbo.getWidth(),radiFbo.getHeight(),0));
-	
-	m.addTexCoord(ofVec2f(0,0));
-	m.addTexCoord(ofVec2f(radiFbo.getWidth(),0));
-	m.addTexCoord(ofVec2f(0,radiFbo.getHeight()));
-	m.addTexCoord(ofVec2f(radiFbo.getWidth(),radiFbo.getHeight()));
-	
-	m.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-	
-    radiFbo.begin();
+	radiFbo.begin();
     ofClear(0, 255);
     radShader.begin();
     
     radShader.setUniform1f("time", time);
     radShader.setUniform1f("size", debugGridSize);
-//    radiFbo.draw(0, 0);
-    m.draw();
+    radiFbo.draw(0, 0);
 	
     radShader.end();
     radiFbo.end();
@@ -616,10 +516,6 @@ void CloudsVisualSystemCosmic::applyElectroShader()
     ofClear(0, 255);
     electroShader.begin();
     
-//	cout << "electro texture id " << posFboSrc.getTextureReference().getTextureData().textureID << endl;
-//	cout << "electro texture id " << radiFbo.getTextureReference().getTextureData().textureID << endl;
-//	cout << "electro texture id " << accFboSrc.getTextureReference().getTextureData().textureID << endl;
-	
     electroShader.setUniformTexture("posData",
                                     posFboSrc.getTextureReference(),
                                     1);
@@ -631,11 +527,11 @@ void CloudsVisualSystemCosmic::applyElectroShader()
     electroShader.setUniformTexture("accData",
                                     accFboSrc.getTextureReference(),
                                     3);
-    
+
     electroShader.setUniform1f("resolution", debugGridSize);
     electroShader.setUniform1f("limit", electroForceLimit);
     
-    accFboSrc.draw(0, 0); 
+    accFboSrc.draw(0, 0);
     
     electroShader.end();
     accFboDst.end();
@@ -649,18 +545,21 @@ void CloudsVisualSystemCosmic::applyHomeShader()
     homeShader.begin();
     
     homeShader.setUniformTexture("posData",
-                                 posFboSrc.getTextureReference(),1);
+                                 posFboSrc.getTextureReference(),
+                                 1);
     
     homeShader.setUniformTexture("homeData",
-                                 homeFbo.getTextureReference(),2);
+                                 homeFbo.getTextureReference(),
+                                 2);
     
     homeShader.setUniformTexture("accData",
-                                 accFboSrc.getTextureReference(),3);
+                                 accFboSrc.getTextureReference(),
+                                 3);
     
     
     homeShader.setUniform1f("limit", homeForceLimit);
     
-    accFboSrc.draw(0, 0); 
+    accFboSrc.draw(0, 0);
     
     homeShader.end();
     accFboDst.end();
@@ -737,7 +636,7 @@ void CloudsVisualSystemCosmic::applyAttractorShader()
             attractorShader.setUniform1f("expFactor", *(*epit));
             attractorShader.setUniform1f("limit", *(*lit));
             
-            accFboSrc.draw(0, 0); 
+            accFboSrc.draw(0, 0);
             
             attractorShader.end();
             accFboDst.end();
@@ -771,7 +670,7 @@ void CloudsVisualSystemCosmic::updateAcceleration()
     accShader.setUniform1f("accLimit", accLimit);
     accShader.setUniform1f("damping", damping);
     
-    accFboSrc.draw(0, 0); 
+    accFboSrc.draw(0, 0);
     
     accShader.end();
     accFboDst.end();
@@ -819,7 +718,7 @@ void CloudsVisualSystemCosmic::updatePosition()
                                 velFboSrc.getTextureReference(),
                                 2);
     
-
+    
     posShader.setUniform1f("size", debugGridSize);
     posShader.setUniform1f("timestep", timeStep);
     
@@ -832,72 +731,39 @@ void CloudsVisualSystemCosmic::updatePosition()
 
 void CloudsVisualSystemCosmic::drawParticles()
 {
-	ofPushStyle();
-	
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDepthMask(false);
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofEnablePointSprites();
-    
+    glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
     rdrShader.begin();
-    rdrShader.setUniformTexture("glow", glow, 1);
-    rdrShader.setUniformTexture("radiData", radiFbo.getTextureReference(), 2);
-    rdrShader.setUniformTexture("posData", posFboSrc.getTextureReference(), 3);
-    rdrShader.setUniform1f("radiusMultiplier", radiusMultiplier);
-    rdrShader.setUniform1f("spriteSize", spriteSize);
-
-    
-    glow.bind();
-    vbo.draw(GL_POINTS, 0, size);
-    glow.unbind();
-    
+    rdrShader.setUniformTexture("radiData", radiFbo.getTextureReference(), 1);
+    rdrShader.setUniformTexture("posData", posFboSrc.getTextureReference(), 2);
+    rdrShader.setUniform1f("radiusMultiplier", radiusMultiplier/3.0);
+    rdrShader.setUniform1f("size", debugGridSize);
+    rdrShader.setUniform1f("particleAlpha", particleAlpha);
+    vboFloor.drawElements(GL_TRIANGLES, floorIndexSize);
     rdrShader.end();
-    ofDisablePointSprites();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     glDepthMask(true);
-	
-	ofPopStyle();
+	glPopAttrib();
 }
 
 void CloudsVisualSystemCosmic::drawFloor()
 {
-	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable(GL_DEPTH_TEST);
     glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
-    
     floorShader.begin();
-    
     floorShader.setUniformTexture("radiData", radiFbo.getTextureReference(), 1);
     floorShader.setUniformTexture("posData", posFboSrc.getTextureReference(), 2);
-    floorShader.setUniform1f("radiusMultiplier", radiusMultiplier);
     floorShader.setUniform1f("size", debugGridSize);
     floorShader.setUniform1f("shadowScale", shadowScale);
     floorShader.setUniform1f("shadowOpacity", shadowOpacity);
-    
+    ofSetColor(255, 0, 0);
     vboFloor.drawElements(GL_TRIANGLES, floorIndexSize);
-
     floorShader.end();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	glPopAttrib();
 }
-
-//void CloudsVisualSystemCosmic::drawTexturedQuad(float x, float y, float w, float h, float texWidth, float texHeight)
-//{
-//    glBegin (GL_QUADS);
-//    
-//    glTexCoord2f (0.0, 0.0);
-//    glVertex3f (x, y, 0.0);
-//    
-//    glTexCoord2f (texWidth, 0.0);
-//    glVertex3f (x+w, y, 0.0);
-//    
-//    
-//    glTexCoord2f (texWidth, texHeight);
-//    glVertex3f (x+w, y+h, 0.0);
-//    
-//    glTexCoord2f (0.0, texHeight);
-//    glVertex3f (x, y+h, 0.0);
-//    
-//    glEnd ();
-//}
 
 void CloudsVisualSystemCosmic::setupFboViewerGui(string name, ofFbo *fbo)
 {

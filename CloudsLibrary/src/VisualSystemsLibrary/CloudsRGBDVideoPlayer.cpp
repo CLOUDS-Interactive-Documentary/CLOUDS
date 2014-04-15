@@ -330,14 +330,20 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		
 		fadeInValue = MIN(position, 1.0);
 		fadeOutValue = ofMap(position, duration - 1.0, duration, 1.0, 0.0, true);
-        //remap to make it tigheter
+        
+		//remap to make it tigheter
         fadeInValue  = powf(ofMap(fadeInValue,  .5, 1.0, 0.0, 1.0, true), 2.0);
         fadeOutValue = powf(ofMap(fadeOutValue, .5, 1.0, 0.0, 1.0, true), 2.0);
+		
+		float fadeInStartTime = 1.0;
+		float fadeInEndTime = 1.0;
+		float fadeOutStartTime = duration - 1.1;
+		float fadeOutEndTime = duration - 1.0;
 		if(position < 1.0){
-			audioVolume = ofMap(position, 1.0, 1.1, 0., maxVolume, true);
+			audioVolume = ofMap(position, fadeInStartTime, fadeInEndTime, 0., maxVolume, true);
 		}
-		else if(position > duration - 1.0){
-			audioVolume = ofMap(position, duration - 1.1, duration - 1.0, maxVolume, 0.0, true);
+		else if(position > fadeOutStartTime){
+			audioVolume = ofMap(position, fadeOutStartTime, fadeOutEndTime, maxVolume, 0.0, true);
 		}
 		
 		getPlayer().setVolume(audioVolume);
