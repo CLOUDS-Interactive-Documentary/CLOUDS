@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000045776</XPosition>
+    <XPosition>425.000061035</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -43,22 +43,22 @@
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>-4.876892090</Value>
+    <Value>-19.064094543</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>14.630508423</Value>
+    <Value>33.251174927</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minY</Name>
-    <Value>-4.876892090</Value>
+    <Value>-14.630599976</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxY</Name>
-    <Value>10.197006226</Value>
+    <Value>25.270881653</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

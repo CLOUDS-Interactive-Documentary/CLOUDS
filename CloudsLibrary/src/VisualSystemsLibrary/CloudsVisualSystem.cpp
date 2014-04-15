@@ -3807,7 +3807,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
     if (mode == CURSOR_MODE_NONE) return;
 
     ofPushStyle();
-    cout << alphaScalar << endl;
+//    cout << alphaScalar << endl;
 //    alphaScalar = 1.0;
     
     if (mode == CURSOR_MODE_INACTIVE) {
