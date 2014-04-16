@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Questions</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>241.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>328.000000000</XPosition>
+    <YPosition>45.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Inner Radius</Name>
-    <Value>7.054187298</Value>
+    <Value>11.487684250</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -41,4 +41,9 @@
     <Name>Attenuate Distance</Name>
     <HighValue>300.000000000</HighValue>
     <LowValue>38.571426392</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Question Pause Dur</Name>
+    <Value>14.517241478</Value>
 </Widget>

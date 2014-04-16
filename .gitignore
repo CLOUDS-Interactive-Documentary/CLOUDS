@@ -363,3 +363,5 @@ screencapture_*
 /CloudsVisualSystemEditor/bin/data/_VisualSystemsSkipped.txt
 
 /CloudsData/sound/renders/
+
+/CloudsVisualSystemEditor/bin/data/Selects/

@@ -164,6 +164,9 @@
 		6437092C188904FC0076237F /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6437091D188904FC0076237F /* ofxOscSender.cpp */; };
 		6437092F188905370076237F /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6437092D188905370076237F /* CloudsInputKinectOSC.cpp */; };
 		64CE99CB188103FE00491913 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CE99C9188103FE00491913 /* CloudsInputOculus.cpp */; };
+		850B5A5618FDF14700D61CCF /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 850B5A5518FDF14700D61CCF /* VoxelMesh.cpp */; };
+		850B5A5718FDF14700D61CCF /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 850B5A5518FDF14700D61CCF /* VoxelMesh.cpp */; };
+		850B5A5818FDF14700D61CCF /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 850B5A5518FDF14700D61CCF /* VoxelMesh.cpp */; };
 		85891D2E187FEDD000325DD8 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85891D2D187FEDD000325DD8 /* ofxSystemTextbox.mm */; };
 		85891D2F187FEDD000325DD8 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85891D2D187FEDD000325DD8 /* ofxSystemTextbox.mm */; };
 		85891D35187FEDFF00325DD8 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891D31187FEDFF00325DD8 /* CloudsPortal.cpp */; };
@@ -544,6 +547,8 @@
 		6437092E188905370076237F /* CloudsInputKinectOSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputKinectOSC.h; sourceTree = "<group>"; };
 		64CE99C9188103FE00491913 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
 		64CE99CA188103FE00491913 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
+		850B5A5418FDF11A00D61CCF /* VoxelMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoxelMesh.h; path = BackgroundParticles/VoxelMesh.h; sourceTree = "<group>"; };
+		850B5A5518FDF14700D61CCF /* VoxelMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VoxelMesh.cpp; path = BackgroundParticles/VoxelMesh.cpp; sourceTree = "<group>"; };
 		85891D2C187FEDD000325DD8 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		85891D2D187FEDD000325DD8 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		85891D31187FEDFF00325DD8 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortal.cpp; sourceTree = "<group>"; };
@@ -1327,6 +1332,8 @@
 		E731D65117401845006B9650 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				850B5A5518FDF14700D61CCF /* VoxelMesh.cpp */,
+				850B5A5418FDF11A00D61CCF /* VoxelMesh.h */,
 				E73995D217863E6000EA5F4D /* GPUParticles */,
 				E703CCCD185CE66100547738 /* HUD */,
 				A633AB9C188735E10088E767 /* CloudsRGBDPointLayer.h */,
@@ -2044,8 +2051,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsPointcloudViewer" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2293,6 +2298,7 @@
 				64370928188904FC0076237F /* OscTypes.cpp in Sources */,
 				643708CD188904990076237F /* CloudsPortalRing.cpp in Sources */,
 				643708CE188904990076237F /* CloudsTransitionController.cpp in Sources */,
+				850B5A5818FDF14700D61CCF /* VoxelMesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2406,6 +2412,7 @@
 				85891D35187FEDFF00325DD8 /* CloudsPortal.cpp in Sources */,
 				85891D37187FEDFF00325DD8 /* CloudsPortalRing.cpp in Sources */,
 				507E85DA1887AF9F00244675 /* CloudsTransitionController.cpp in Sources */,
+				850B5A5618FDF14700D61CCF /* VoxelMesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2520,6 +2527,7 @@
 				85891D2F187FEDD000325DD8 /* ofxSystemTextbox.mm in Sources */,
 				85891D36187FEDFF00325DD8 /* CloudsPortal.cpp in Sources */,
 				85891D38187FEDFF00325DD8 /* CloudsPortalRing.cpp in Sources */,
+				850B5A5718FDF14700D61CCF /* VoxelMesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -336,8 +336,8 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         fadeOutValue = powf(ofMap(fadeOutValue, .5, 1.0, 0.0, 1.0, true), 2.0);
 		
 		float fadeInStartTime = 1.0;
-		float fadeInEndTime = 1.0;
-		float fadeOutStartTime = duration - 1.1;
+		float fadeInEndTime = 1.4;
+		float fadeOutStartTime = duration - 1.3 ;
 		float fadeOutEndTime = duration - 1.0;
 		if(position < 1.0){
 			audioVolume = ofMap(position, fadeInStartTime, fadeInEndTime, 0., maxVolume, true);
