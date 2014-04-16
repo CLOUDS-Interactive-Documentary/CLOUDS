@@ -3787,7 +3787,7 @@ void CloudsVisualSystem::drawCursors()
 void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus)
 {
     // Use the default cursor rendering from CloudsInput.
-    GetCloudsInput()->drawCursor(mode, pos, bDragged, focus);
+    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
 }
 
 void CloudsVisualSystem::selfExit()

@@ -84,7 +84,7 @@ void CloudsInput::setBleedPixels(int b){
     bleed = b;
 }
 
-void CloudsInput::selfDrawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size)
+void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size)
 {
     if (mode == CURSOR_MODE_NONE) return;
     

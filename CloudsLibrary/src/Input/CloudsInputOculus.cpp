@@ -35,8 +35,8 @@ void CloudsInputOculus::update(ofEventArgs& data){
     }
 }
 
-void CloudsInputOculus::drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
-    selfDrawCursor(mode, pos, bDragged, focus * (bDragged? 1.0f:0.35f), cursorSize);
+void CloudsInputOculus::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
+    selfDrawCursorDefault(mode, pos, bDragged, focus * (bDragged? 1.0f:0.35f), cursorSize);
 }
 
 void SetCloudsInputOculus()

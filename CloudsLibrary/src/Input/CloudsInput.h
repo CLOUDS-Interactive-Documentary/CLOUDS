@@ -45,8 +45,8 @@ class CloudsInput
 	CloudsInputEvents& getEvents();
 	void setBleedPixels(int bleed);
     
-    virtual void drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus) = 0;
-    void selfDrawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size);
+    virtual void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus) = 0;
+    void selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size);
     
   protected:
 

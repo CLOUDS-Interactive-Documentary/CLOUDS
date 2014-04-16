@@ -51,8 +51,8 @@ void CloudsInputMouse::mouseReleased(ofMouseEventArgs& data){
 	interactionEnded(currentPosition, true, data.button);
 }
 
-void CloudsInputMouse::drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
-    selfDrawCursor(mode, pos, bDragged, focus, bDragged? cursorDownSize:cursorUpSize);
+void CloudsInputMouse::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
+    selfDrawCursorDefault(mode, pos, bDragged, focus, bDragged? cursorDownSize:cursorUpSize);
 }
 
 void SetCloudsInputMouse()
