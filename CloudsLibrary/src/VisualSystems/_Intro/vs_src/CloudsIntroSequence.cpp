@@ -269,17 +269,22 @@ void CloudsIntroSequence::selfUpdate(){
 
 void CloudsIntroSequence::updateCamera(){
 	
-	ofVec2f wobble = ofVec2f(ofSignedNoise(100 + ofGetElapsedTimef()*camWobbleSpeed),
-							 ofSignedNoise(200 + ofGetElapsedTimef()*camWobbleSpeed)) * camWobbleRange;
-	if(!paused){
-		warpCamera.dolly(-cameraForwardSpeed);
-		warpCamera.setPosition(wobble.x, wobble.y, warpCamera.getPosition().z);
+	if(selectedQuestion == NULL){
+		ofVec2f wobble = ofVec2f(ofSignedNoise(100 + ofGetElapsedTimef()*camWobbleSpeed),
+								 ofSignedNoise(200 + ofGetElapsedTimef()*camWobbleSpeed)) * camWobbleRange;
+		if(!paused){
+			warpCamera.dolly(-cameraForwardSpeed);
+			warpCamera.setPosition(wobble.x, wobble.y, warpCamera.getPosition().z);
+		}
+		else{
+			warpCamera.setPosition(wobble.x, wobble.y, 0);
+		}
+		warpCamera.lookAt( ofVec3f(0, 0, warpCamera.getPosition().z + 50) );
 	}
-	else{
-		warpCamera.setPosition(wobble.x, wobble.y, 0);
+	else {
+		float percentZoomed = powf(ofMap(ofGetElapsedTimef(), selectedQuestionTime, selectedQuestionTime + 2.0, 0.0, 1.0, true),2.);
+		warpCamera.setPosition(selectQuestionStartPos.interpolate(selectedQuestion->hoverPosition, percentZoomed));
 	}
-	warpCamera.lookAt( ofVec3f(0, 0, warpCamera.getPosition().z + 50) );
-	
 }
 
 void CloudsIntroSequence::updateWaiting(){
@@ -483,11 +488,11 @@ void CloudsIntroSequence::updateQuestions(){
 			}
 		}
 
+		//old slow down method
 //		startQuestions[i].hoverPosition.z += ofMap(distanceToQuestion,
 //												   questionTugDistance.max, questionTugDistance.min,
 //												   0, cameraForwardSpeed);
-		
-		
+				
 		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionMinZDistance){
 #ifdef OCULUS_RIFT
             ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
@@ -506,7 +511,7 @@ void CloudsIntroSequence::updateQuestions(){
 							click.play();
 
                             CloudsPortalEventArgs args(getQuestionText());
-                            ofNotifyEvent(events.portalHoverBegan, args);
+//                            ofNotifyEvent(events.portalHoverBegan, args);
                         }
 					}
 				}
@@ -515,17 +520,19 @@ void CloudsIntroSequence::updateQuestions(){
 			//we have a caught question make sure it's still close
 			else if(caughtQuestion == &curQuestion){
 //				curQuestion.hoverPosition.z += cameraForwardSpeed;
-				if( caughtQuestion->isSelected() && !bQuestionDebug){
-					selectedQuestion = caughtQuestion;
+				if( caughtQuestion->isSelected() && !bQuestionDebug && selectedQuestion == NULL){
 					selectLow.setPosition(0);
 					selectLow.play();
-
+					selectedQuestion = caughtQuestion;
+					selectedQuestionTime = ofGetElapsedTimef();
+					selectQuestionStartPos = warpCamera.getPosition();
+					selectQuestionStartRot = warpCamera.getOrientationQuat();
 				}
 				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
                     CloudsPortalEventArgs args(getQuestionText());
-                    ofNotifyEvent(events.portalHoverEnded, args);
+//                    ofNotifyEvent(events.portalHoverEnded, args);
 				}
 			}
 		}
@@ -715,7 +722,7 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 	
 	if(args.flag == "PROMPT"){
 		CloudsPortalEventArgs args("SELECT A QUESTION TO BEGIN");
-		ofNotifyEvent(events.portalHoverBegan, args);
+//		ofNotifyEvent(events.portalHoverBegan, args);
 	}
 }
 
@@ -848,16 +855,19 @@ void CloudsIntroSequence::drawHelperType(){
 		currentHelperFontSize = helperFontSize;
 	}
 	
+
 #ifdef OCULUS_RIFT
+
+	ofRotate(180, 0, 0, 1);//flip around
+	ofMatrix4x4 compensate;
+	compensate.rotate(180, 0, 0, 1);
+
+	string helpHoverText;
+	ofVec3f basePosition(0,0,0);
+	float helperTextOpacity = 0.0;
+	float scaleModifier = 1.0;// * ofGetMouseX() / ofGetWidth();
+
 	if(!startedOnclick){
-		
-		ofRotate(180, 0, 0, 1);//flip around
-		ofMatrix4x4 compensate;
-		compensate.rotate(180, 0, 0, 1);
-		
-		string helpHoverText;
-		ofVec3f basePosition(0,0,0);
-		float helperTextOpacity = 0.0;
 		if(introNodeThree.hover || introNodeTwo.finished){
 			helpHoverText = "LOOK CENTER";
 			basePosition = introNodeTwo.worldPosition;
@@ -871,23 +881,36 @@ void CloudsIntroSequence::drawHelperType(){
 		else {
 			helpHoverText = "LOOK LEFT";
 			basePosition = introNodeThree.worldPosition;
-			helperTextOpacity = (currentTitleOpacity - titleTypeOpacity)*(1.0-introNodeOne.percentComplete);
+			helperTextOpacity = (currentTitleOpacity - titleTypeOpacity) * (1.0 - introNodeOne.percentComplete);
 		}
-		
-		if(helpHoverText != ""){
-			helperFont.setTracking(helperFontTracking);
-			float hoverTextWidth  = helperFont.stringWidth(helpHoverText);
-			float hoverTextHeight = helperFont.stringHeight(helpHoverText);
-			
-			getOculusRift().multBillboardMatrix( compensate.preMult( basePosition ) );
-			ofScale(helperFontScale,helperFontScale,helperFontScale);
+		helperFont.setTracking(helperFontTracking);
 
-			ofSetColor(255,255*helperTextOpacity);
-			helperFont.drawString(helpHoverText, -hoverTextWidth/2, helperFontY-hoverTextHeight/2);
-		}
 	}
-	
+	else if(caughtQuestion != NULL){
+		basePosition = caughtQuestion->hoverPosition;
+		helpHoverText = caughtQuestion->question;
+		helperTextOpacity = 1.0;
+		scaleModifier = .5;
+		helperFont.setTracking(helperFontTracking*.1);
+	}
+
+	if(helpHoverText != ""){
+		float hoverTextWidth  = helperFont.stringWidth(helpHoverText);
+		float hoverTextHeight = helperFont.stringHeight(helpHoverText);
+		
+		
+		getOculusRift().multBillboardMatrix( compensate.preMult(basePosition) );
+		ofScale(scaleModifier*helperFontScale,
+				scaleModifier*helperFontScale,
+				scaleModifier*helperFontScale);
+		
+		
+		ofSetColor(255,255*helperTextOpacity);
+		helperFont.drawString(helpHoverText, -hoverTextWidth/2, helperFontY-hoverTextHeight/2);
+	}
+
 #endif
+	
 	
 	ofPopStyle();
 	ofPopMatrix();

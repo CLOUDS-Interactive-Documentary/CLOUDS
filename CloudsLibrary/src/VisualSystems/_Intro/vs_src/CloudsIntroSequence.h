@@ -91,8 +91,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 		return warpCamera;
 	}
 
-
-	
   protected:
 		
 	ofxUISuperCanvas* questionGui;
@@ -149,6 +147,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	vector<CloudsPortal> startQuestions;
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;
+	float selectedQuestionTime;
+	ofVec3f selectQuestionStartPos;
+	ofQuaternion selectQuestionStartRot;
 	
 	//sound effects
 	ofSoundPlayer click;
@@ -235,6 +236,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;
 	
+
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;
 	

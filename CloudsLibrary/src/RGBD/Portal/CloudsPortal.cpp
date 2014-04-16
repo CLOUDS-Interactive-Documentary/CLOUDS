@@ -30,7 +30,7 @@ CloudsPortal::CloudsPortal(){
 	ringCount = 10;
 	
 	selectedPercentComplete = 0.0;
-	selectAnimationDuration = 3.0;
+	selectAnimationDuration = 1.0;
 	
 	selected = false;
 	hovering = false;
@@ -102,7 +102,6 @@ void CloudsPortal::update(){
     if(cam != NULL){
         float dot = ( hoverPosition - cam->getPosition()).dot(cam->getLookAtDir());
         onScreen = dot > 0;
-        
 		screenPosition = cam->worldToScreen(hoverPosition);
     }
     else{
