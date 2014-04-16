@@ -5,7 +5,8 @@ void CloudsVisualSystemCosmic::setupFloorVbo()
     int floorSize = debugGridSize*debugGridSize*4;
     floorIndexSize = debugGridSize*debugGridSize*6;
     
-    ofFloatColor *floorColors = new ofFloatColor[floorSize];
+    ofxColorPalette *p = colorPalettes->getPalletePointer(floor(colorIndex));
+    floorColors = new ofFloatColor[floorSize];
     ofVec2f *floorTexCoords = new ofVec2f[floorSize];
     ofVec3f *floor = new ofVec3f[floorSize];
     ofIndexType* floorindex = new ofIndexType[floorIndexSize];
@@ -15,11 +16,6 @@ void CloudsVisualSystemCosmic::setupFloorVbo()
     
     for(int i = 0; i < floorSize; i+=4)
     {
-        floorColors[i].set(1.0, 1.0, 1.0, 1.0);
-        floorColors[i+1].set(1.0, 1.0, 1.0, 1.0);
-        floorColors[i+2].set(1.0, 1.0, 1.0, 1.0);
-        floorColors[i+3].set(1.0, 1.0, 1.0, 1.0);
-        
         floor[i].set(x, y, 0.0);
         floor[i+1].set(x, y, 0.0);
         floor[i+2].set(x, y, 0.0);
@@ -38,6 +34,11 @@ void CloudsVisualSystemCosmic::setupFloorVbo()
         floorTexCoords[i+2].set(debugGridSize,debugGridSize);
         floorTexCoords[i+3].set(0,debugGridSize);
         
+        floorColors[i].set(p->getColor(i));
+        floorColors[i+1].set(p->getColor(i));
+        floorColors[i+2].set(p->getColor(i));
+        floorColors[i+3].set(p->getColor(i));
+        
         x++;
         if(x%(int)debugGridSize == 0 && x != 0)
         {
@@ -52,7 +53,6 @@ void CloudsVisualSystemCosmic::setupFloorVbo()
     vboFloor.setIndexData(floorindex, floorIndexSize, GL_STATIC_DRAW);
     
     delete[] floorTexCoords;
-    delete[] floorColors;
     delete[] floorindex;
     delete[] floor;
     shadowScale = 4.0;
@@ -90,6 +90,9 @@ void CloudsVisualSystemCosmic::selfSetup()
 {
 	vbosAllocated = true;
 	
+    colorPalettes = new ofxColorPalettes();
+    colorPalettes->loadFromDirectory(getVisualSystemDataPath()+"colors/");
+    
     debugGridSize = 64;
     float interval = 1;
     
@@ -261,6 +264,7 @@ void CloudsVisualSystemCosmic::guiSystemEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemCosmic::selfSetupRenderGui()
 {
     rdrGui->addSlider("RADIUS", 0.0, 60.0, &radiusMultiplier)->setIncrement(1.0);
+    rdrGui->addSlider("COLOR PALETTE", 0, colorPalettes->getCount(), &colorIndex)->setIncrement(1.0);
     rdrGui->addSlider("PARTICLE ALPHA", 0.0, 1.0, &particleAlpha);
     rdrGui->addSlider("SHADOW SCALE", 0.0, 32.0, &shadowScale);
     rdrGui->addSlider("SHADOW ALPHA", 0.0, 1.0, &shadowOpacity);
@@ -268,7 +272,20 @@ void CloudsVisualSystemCosmic::selfSetupRenderGui()
 
 void CloudsVisualSystemCosmic::guiRenderEvent(ofxUIEventArgs &e)
 {
-
+    string name = e.getName();
+    if(name == "COLOR PALETTE")
+    {
+        int floorSize = debugGridSize*debugGridSize*4;
+        ofxColorPalette *p = colorPalettes->getPalletePointer(floor(colorIndex));
+        for(int i = 0; i < floorSize; i+=4)
+        {
+            floorColors[i].set(p->getColor(i));
+            floorColors[i+1].set(p->getColor(i));
+            floorColors[i+2].set(p->getColor(i));
+            floorColors[i+3].set(p->getColor(i));
+        }
+        vboFloor.setColorData(floorColors, floorSize, GL_STATIC_DRAW);
+    }
 }
 
 void CloudsVisualSystemCosmic::selfPresetLoaded(string presetPath)
@@ -371,9 +388,11 @@ void CloudsVisualSystemCosmic::clear(){
 	if(!vbosAllocated){
 		return;
 	}
-	
+
+    delete colorPalettes;
     vboFloor.clear();
     
+    delete[] floorColors;
     delete[] pos;
     delete[] vel;
     
@@ -733,8 +752,18 @@ void CloudsVisualSystemCosmic::drawParticles()
 {
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDepthMask(false);
-    glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
+//    glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
+//    glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     rdrShader.begin();
+    ofxColorPalette *p = colorPalettes->getPalletePointer(colorIndex);
+    
+    for(int i = 0; i < 4; i++)
+    {
+        ofFloatColor clr = p->getColor(i);        
+        rdrShader.setUniform3f(("color"+ofToString(i)).c_str(), clr.r, clr.g, clr.b);
+    }
+
     rdrShader.setUniformTexture("radiData", radiFbo.getTextureReference(), 1);
     rdrShader.setUniformTexture("posData", posFboSrc.getTextureReference(), 2);
     rdrShader.setUniform1f("radiusMultiplier", radiusMultiplier/3.0);
@@ -742,7 +771,6 @@ void CloudsVisualSystemCosmic::drawParticles()
     rdrShader.setUniform1f("particleAlpha", particleAlpha);
     vboFloor.drawElements(GL_TRIANGLES, floorIndexSize);
     rdrShader.end();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     glDepthMask(true);
 	glPopAttrib();
 }

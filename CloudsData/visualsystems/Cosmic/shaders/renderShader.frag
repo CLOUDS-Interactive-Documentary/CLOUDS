@@ -3,9 +3,9 @@
 
 uniform float size; 
 uniform float particleAlpha; 
-
+varying vec4 color;
 varying vec2 texcoord;
-varying float posZ; 
+varying float posZ;
 
 void main()
 {	
@@ -13,8 +13,8 @@ void main()
 
 	float dist = distance(pos, vec2(.5, .5)); 
 	dist = 1.0 - pow(exp(-dist*dist), 32.0); 
-	vec4 newColor = vec4(dist, dist, dist, (1.0 - dist));     	
-	newColor.a *= particleAlpha; 
+	vec4 newColor = vec4(color.rgb, (1.0 - dist));
+	newColor.a *= particleAlpha;
     gl_FragColor = newColor;     
 }
 
