@@ -39,7 +39,9 @@ void CloudsPlaybackController::resetInterludeVariabls(){
 	
 	interludeExitBarWidth = 200;
 	interludeBarHoverHoldTime = 3.0; //seconds
-	
+	interludeArcRadius = 40.;
+	interludeArcBaseAlpha = 1.0;
+
 	interludeHoveringContinue = false;
 	interludeHoveringReset = false;
 	interludeBarHoverStartTime = 0;
@@ -480,60 +482,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 
 		bool stopInterlude = updateInterludeInterface();
 		
-//        if(continuePortal.isSelected() || !interludeSystem->getTimeline()->getIsPlaying()){
-//            stopInterlude = true;
-//            goToNextAct = true;
-//        }
-//        else if(bResetTransitionComplete){
-//            stopInterlude = true;
-//            goToNextAct = false;
-//        }
-//
-//        //check mouse distance from portals
-//        ofVec2f mouseNode(GetCloudsInputX(),
-//                          GetCloudsInputY());
-//        continuePortal.update();
-//        float distanceToPortal = continuePortal.hoverPosition.distance(mouseNode);
-//        if(distanceToPortal<100.f){
-//            continuePortal.startHovering();
-//        }
-//        else{
-//            continuePortal.stopHovering();
-//        }
-//        
-//        if(resetSelectionRect.inside(GetCloudsInputX(), GetCloudsInputY())){
-//            bResetSelected = true;
-//            
-//            if(prevResetValue != bResetSelected){
-//                startResetHoverTime = ofGetElapsedTimef();
-//            }
-//            prevResetValue = bResetSelected;
-//            
-//        }
-//        else{
-//            if(prevResetValue != bResetSelected){
-//                startResetHoverTime = ofGetElapsedTimef();
-//                cout<<resetSelectedPercentComplete<<endl;
-//            }
-//            bResetSelected = false;
-//        }
-//        
-//        if (bResetSelected) {
-//            resetSelectedPercentComplete = ofClamp((ofGetElapsedTimef() - startResetHoverTime)/maxResetHoverTime  , 0, 1);
-//            if (resetSelectedPercentComplete == 1.0) {
-//                bResetTransitionComplete = true;
-//            }
-//        }
-//        else{
-//            if(resetSelectedPercentComplete > 0){
-//                resetSelectedPercentComplete -= 0.01;
-//            }
-//            else{
-//                resetSelectedPercentComplete = 0;
-//            }
-//        }
-        
-		
         if(stopInterlude){
 
             sound.stopMusic();
@@ -545,14 +493,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
                 transitionController.transitionToIntro(1.0);
             }
             
-//            continuePortal.clearSelection();
-//            continuePortal.stopHovering();
-//            clearRestButtonParams();
-			
             showingInterlude = false;
         }
     }
-    
     
 	////////////////////
 	// RGBD SYSTEM
@@ -692,10 +635,7 @@ void CloudsPlaybackController::updateTransition(){
                 
             case TRANSITION_INTERLUDE_OUT:
 				
-				/// wait for it to fade out...
-                //				showingClusterMap = false;
-                //                showingInterlude = false;
-                
+                updateCompletedInterlude();
                 break;
                 
             case TRANSITION_INTERLUDE_IN:
@@ -832,7 +772,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	//hack
 	
 #ifdef OCULUS_RIFT
-
+	//TODO:
 #else
 	
 	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth){
@@ -882,6 +822,21 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	
 }
 
+//--------------------------------------------------------------------
+void CloudsPlaybackController::updateCompletedInterlude(){
+	
+	return;
+	
+	interludeExitBarWidth *= .95;
+	interludeExitBarWidth -= 0.01;
+	interludeExitBarWidth = MAX(0,interludeExitBarWidth);
+	
+	interludeArcRadius *= 1.01;
+	interludeArcBaseAlpha *= .95;
+	
+}
+
+//--------------------------------------------------------------------
 void CloudsPlaybackController::drawInterludeInterface(){
     
 
@@ -910,23 +865,25 @@ void CloudsPlaybackController::drawInterludeInterface(){
 	ofFill();
 	float alpha      = ofxTween::map(interludeBarHoverPercentComplete, 0.0, .3, 0.2, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
 	hoverRect.width *= ofxTween::map(interludeBarHoverPercentComplete, 0.0, .2, 0.1, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
-	ofSetColor(255,alpha*40);
+	ofFloatColor arcColor = ofFloatColor(1.0, alpha*powf(crossfadeValue,2.0f) *  .3);
+	ofSetColor(arcColor);
 	ofRect(hoverRect);
 	
 	if(hovering){
-			
-		float arcSize = 40;
 		
 		ofNoFill();
-		ofSetColor(255, 100);
-		ofCircle(GetCloudsInputPosition(), arcSize);
+		ofSetColor(255, 100*crossfadeValue);
+		ofCircle(GetCloudsInputPosition(), interludeArcRadius*crossfadeValue);
 		
 		if(interludeBarHoverPercentComplete > 0.0){
 			float arcPercent = ofxTween::map(interludeBarHoverPercentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
 			ofPath arc;
 			arc.setFilled(false);
 			arc.setStrokeWidth(3);
-			arc.arc( GetCloudsInputPosition(), arcSize, arcSize, -90, 360*arcPercent-90, true);
+			arc.setStrokeColor(arcColor);
+			float expandedArcRadius = interludeArcRadius + powf(1.0-crossfadeValue,2.0f) * 40; //expand it beyond when it's finished
+			
+			arc.arc( GetCloudsInputPosition(), expandedArcRadius, expandedArcRadius, -90, 360*arcPercent-90, true);
 			arc.draw();
 		}
 		
@@ -934,8 +891,8 @@ void CloudsPlaybackController::drawInterludeInterface(){
 		float typeWidth  = interludeInterfaceFont.stringWidth(promptType);
 		float typeHeight = interludeInterfaceFont.stringHeight(promptType);
 		
-		ofSetColor(255*alpha);
-		interludeInterfaceFont.drawString(promptType, hoverRect.getCenter().x - typeWidth/2, GetCloudsInputY() + arcSize + typeHeight + 10);
+		ofSetColor(255*alpha*crossfadeValue);
+		interludeInterfaceFont.drawString(promptType, hoverRect.getCenter().x - typeWidth/2 - 10, GetCloudsInputY() + interludeArcRadius + typeHeight + 10);
 	}
 	ofPopStyle();
 	
@@ -1035,6 +992,8 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
     cout << "***** ORDER OF OPERATIONS: ACT BEGAN CONTROLLER " << args.act << endl;
+	
+	resetInterludeVariabls();
 	
     if(!args.act->startsWithVisualSystem()){
         transitionController.transitionToFirstInterview(1.0);

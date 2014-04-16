@@ -125,6 +125,7 @@ class CloudsPlaybackController : public ofThread {
 	CloudsTransitionController transitionController;
 	void updateTransition();
 	bool updateInterludeInterface(); //true if we should stop interlude
+	void updateCompletedInterlude(); //after one option has been selected;
 	
 	//loader screen
 	bool loadingAct;
@@ -176,7 +177,9 @@ class CloudsPlaybackController : public ofThread {
 	float interludeBarHoverPercentComplete;
 	bool interludeContinueSelected;
 	bool interludeResetSelected;
-	
+	float interludeArcRadius;
+	float interludeArcBaseAlpha;
+
 //    CloudsPortal continuePortal;
 //    void setupPortals();
 //    ofRectangle resetRect;
