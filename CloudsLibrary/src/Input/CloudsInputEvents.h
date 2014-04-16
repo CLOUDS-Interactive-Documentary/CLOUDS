@@ -18,12 +18,13 @@
 class CloudsInteractionEventArgs : public ofEventArgs {
 public:
     CloudsInteractionEventArgs()
-    	: position(ofVec3f()), primary(false), actionType(-1), playerId(-1), focus(1.0f){}
-	CloudsInteractionEventArgs(ofVec3f position, bool primary = false, int actionType = 0, int playerId = 0, float focus = 1.0f)
-		: position(position), primary(primary), actionType(actionType), playerId(playerId), focus(focus){}
+    	: position(ofVec3f()), primary(false), dragged(false), actionType(-1), playerId(-1), focus(1.0f){}
+	CloudsInteractionEventArgs(ofVec3f position, bool primary = false, bool dragged=false, int actionType = 0, int playerId = 0, float focus = 1.0f)
+		: position(position), primary(primary), dragged(dragged), actionType(actionType), playerId(playerId), focus(focus){}
 	
 	ofVec3f position;
     bool primary;
+    bool dragged;
 	int actionType; //will signal grip vs finger, or left click right click
 	int playerId; //0 for mouse, 0, 1, 2 or 3 for kinect based on the hand
     float focus;  //accuracy of the pointer, 0-1 for kinect, 1 for everything else

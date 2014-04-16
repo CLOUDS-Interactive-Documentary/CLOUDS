@@ -31,12 +31,12 @@ void CloudsInputOculus::update(ofEventArgs& data){
     lastPosition = currentPosition;
     currentPosition = (CloudsVisualSystem::getOculusRift().gazePosition2D());
     if (currentPosition.distance(lastPosition) > 0) {
-        interactionMoved(currentPosition, true, 0);
+        interactionMoved(currentPosition, true, false, 0);
     }
 }
 
-void CloudsInputOculus::drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
-    selfDrawCursor(mode, pos, bDragged, focus * (bDragged? 1.0f:0.35f), cursorSize);
+void CloudsInputOculus::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
+    selfDrawCursorDefault(mode, pos, bDragged, focus * (bDragged? 1.0f:0.35f), cursorSize);
 }
 
 void SetCloudsInputOculus()

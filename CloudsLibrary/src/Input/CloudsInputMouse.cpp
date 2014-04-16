@@ -31,28 +31,28 @@ void CloudsInputMouse::disable(){
 void CloudsInputMouse::mouseMoved(ofMouseEventArgs& data){
     lastPosition = currentPosition;
     currentPosition = ofVec3f(data.x, data.y, 0);
-	interactionMoved(currentPosition, true, data.button);
+	interactionMoved(currentPosition, true, dragging, data.button);
 }
 
 void CloudsInputMouse::mousePressed(ofMouseEventArgs& data){
     currentPosition = ofVec3f(data.x, data.y, 0);
     dragging = true;
-	interactionStarted(currentPosition, true, data.button);
+	interactionStarted(currentPosition, true, dragging, data.button);
 }
 
 void CloudsInputMouse::mouseDragged(ofMouseEventArgs& data){
     currentPosition = ofVec3f(data.x, data.y, 0);
-	interactionDragged(currentPosition, true, data.button);
+	interactionDragged(currentPosition, true, dragging, data.button);
 }
 
 void CloudsInputMouse::mouseReleased(ofMouseEventArgs& data){
     dragging = false;
     currentPosition = ofVec3f(data.x, data.y, 0);
-	interactionEnded(currentPosition, true, data.button);
+	interactionEnded(currentPosition, true, dragging, data.button);
 }
 
-void CloudsInputMouse::drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
-    selfDrawCursor(mode, pos, bDragged, focus, bDragged? cursorDownSize:cursorUpSize);
+void CloudsInputMouse::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
+    selfDrawCursorDefault(mode, pos, bDragged, focus, bDragged? cursorDownSize:cursorUpSize);
 }
 
 void SetCloudsInputMouse()

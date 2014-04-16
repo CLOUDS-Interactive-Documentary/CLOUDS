@@ -36,26 +36,26 @@ map<int, CloudsInteractionEventArgs>& CloudsInput::getInputPoints(){
     return inputPoints;
 }
 
-void CloudsInput::interactionMoved(ofVec3f pos, bool primary, int actionType, int playerId, float focus){
-	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId, focus);
+void CloudsInput::interactionMoved(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionMoved, args, this);	
 }
 
-void CloudsInput::interactionStarted(ofVec3f pos, bool primary, int actionType, int playerId, float focus){
-	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId, focus);
+void CloudsInput::interactionStarted(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionStarted, args, this);
 }
 
-void CloudsInput::interactionDragged(ofVec3f pos, bool primary, int actionType, int playerId, float focus){
-	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId, focus);
+void CloudsInput::interactionDragged(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionDragged, args, this);
 }
 
-void CloudsInput::interactionEnded(ofVec3f pos, bool primary, int actionType, int playerId, float focus){
-	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId, focus);
+void CloudsInput::interactionEnded(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionEnded, args, this);
 }
@@ -84,7 +84,7 @@ void CloudsInput::setBleedPixels(int b){
     bleed = b;
 }
 
-void CloudsInput::selfDrawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size)
+void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size)
 {
     if (mode == CURSOR_MODE_NONE) return;
     

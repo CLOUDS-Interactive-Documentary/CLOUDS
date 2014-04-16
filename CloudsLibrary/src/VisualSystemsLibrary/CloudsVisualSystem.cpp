@@ -3770,16 +3770,7 @@ void CloudsVisualSystem::drawCursors()
 {
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
-#ifdef KINECT_INPUT
-        selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle, it->second.primary? primaryCursorMode : secondaryCursorMode, it->second.focus);
-#elif TOUCH_INPUT
-        selfDrawCursor(it->second.position, false, it->second.primary? primaryCursorMode : secondaryCursorMode);
-        // EZ: Replace the line above by the line below to test dragging by pressing a mouse button.
-//        selfDrawCursor(it->second.position, ofGetMousePressed(), it->second.primary? primaryCursorMode : secondaryCursorMode);
-#else
-        // EZ: This ofGetMousePressed() call is ghetto but will do for now
-        selfDrawCursor(it->second.position, ofGetMousePressed(), primaryCursorMode);
-#endif
+        selfDrawCursor(it->second.position, it->second.dragged, it->second.primary? primaryCursorMode : secondaryCursorMode, it->second.focus);
     }
 }
 
@@ -3787,7 +3778,7 @@ void CloudsVisualSystem::drawCursors()
 void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus)
 {
     // Use the default cursor rendering from CloudsInput.
-    GetCloudsInput()->drawCursor(mode, pos, bDragged, focus);
+    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
 }
 
 void CloudsVisualSystem::selfExit()

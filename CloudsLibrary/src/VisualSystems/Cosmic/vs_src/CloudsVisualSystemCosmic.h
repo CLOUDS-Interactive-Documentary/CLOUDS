@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ofxColorPalettes.h"
 #include "ofxAutoReloadedShader.h"
 
 //TODO: rename this to your own visual system
@@ -88,7 +89,7 @@ class CloudsVisualSystemCosmic : public CloudsVisualSystem {
 protected:
 	void clear();
 	bool vbosAllocated;
-    float colorIndex;
+
     int numTris;
     int numIndi;
     int rows;
@@ -133,6 +134,10 @@ protected:
     
     float radiusMultiplier;
     float particleAlpha;
+
+    ofxColorPalettes *colorPalettes;
+    float colorIndex;
+    ofFloatColor *floorColors;    
     
     //Sphere Shader
     ofxAutoReloadedShader sphereShader;

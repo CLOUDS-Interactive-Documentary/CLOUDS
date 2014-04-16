@@ -448,7 +448,8 @@ void CloudsInputKinectOSC::mapHandCoords(k4w::HandJoint& joint, ofVec3f& origin,
     
     // calculate the focus
     float focusXY = ofMap(joint.inputPosition.distance(joint.clampedPosition), 0.0f, 0.5f, 1.0f, 0.0f, true);
-    float focusZ = ofMap(joint.screenPosition.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
+    //float focusZ = ofMap(joint.screenPosition.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
+    float focusZ = ofMap(ABS(joint.screenPosition.z - activeThresholdZ), 0.2f, 1.0f, 1.0f, 0.0f, true);
     joint.focus = powf(MIN(focusXY, focusZ), 2.0f);
 }
 
@@ -459,48 +460,48 @@ void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::
     if (newState == k4w::HandState_Lasso) {
         if (hand->actionState == k4w::ActionState_Lasso) {
             // matching state: continue
-            interactionDragged(hand->handJoint.screenPosition, primary, k4w::ActionState_Lasso, handIdx, hand->handJoint.focus);
+            interactionDragged(hand->handJoint.screenPosition, primary, true, k4w::ActionState_Lasso, handIdx, hand->handJoint.focus);
         }
         else if (hand->actionState == k4w::ActionState_Closed) {
             // state mismatch: end previous
             if (primary) dragging = false;
-            interactionEnded(hand->handJoint.screenPosition, primary, k4w::ActionState_Closed, handIdx, hand->handJoint.focus);
+            interactionEnded(hand->handJoint.screenPosition, primary, true, k4w::ActionState_Closed, handIdx, hand->handJoint.focus);
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
             // idle/inactive state: start
             if (primary) dragging = true;
-            interactionStarted(hand->handJoint.screenPosition, primary, k4w::ActionState_Lasso, handIdx, hand->handJoint.focus);
+            interactionStarted(hand->handJoint.screenPosition, primary, true, k4w::ActionState_Lasso, handIdx, hand->handJoint.focus);
             hand->actionState = k4w::ActionState_Lasso;
         }
     }  
     else if (newState == k4w::HandState_Closed) {
         if (hand->actionState == k4w::ActionState_Closed) {
             // matching state: continue
-            interactionDragged(hand->handJoint.screenPosition, primary, k4w::ActionState_Closed, handIdx, hand->handJoint.focus);
+            interactionDragged(hand->handJoint.screenPosition, primary, true, k4w::ActionState_Closed, handIdx, hand->handJoint.focus);
         }
         else if (hand->actionState == k4w::ActionState_Lasso) {
             // state mismatch: end previous
             if (primary) dragging = false;
-            interactionEnded(hand->handJoint.screenPosition, primary, k4w::ActionState_Lasso, handIdx, hand->handJoint.focus);
+            interactionEnded(hand->handJoint.screenPosition, primary, true, k4w::ActionState_Lasso, handIdx, hand->handJoint.focus);
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
             // idle/inactive state: start
             if (primary) dragging = true;
-            interactionStarted(hand->handJoint.screenPosition, primary, k4w::ActionState_Closed, handIdx, hand->handJoint.focus);
+            interactionStarted(hand->handJoint.screenPosition, primary, true, k4w::ActionState_Closed, handIdx, hand->handJoint.focus);
             hand->actionState = k4w::ActionState_Closed;
         }
     }
     else if (newState == k4w::HandState_Open) {
         if (hand->actionState == k4w::ActionState_Idle) {
             // matching state: continue
-            interactionMoved(hand->handJoint.screenPosition, primary, k4w::ActionState_Idle, handIdx, hand->handJoint.focus);
+            interactionMoved(hand->handJoint.screenPosition, primary, false, k4w::ActionState_Idle, handIdx, hand->handJoint.focus);
         }
         else {
             // state mismatch: end previous
             if (primary) dragging = false;
-            interactionEnded(hand->handJoint.screenPosition, primary, hand->actionState, handIdx, hand->handJoint.focus);
+            interactionEnded(hand->handJoint.screenPosition, primary, (hand->actionState > k4w::ActionState_Idle), hand->actionState, handIdx, hand->handJoint.focus);
             hand->actionState = k4w::ActionState_Idle;
         }
     }
@@ -508,7 +509,7 @@ void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::
         if (hand->actionState != k4w::ActionState_Inactive) {
             // state mismatch: end previous
             if (primary) dragging = false;
-            interactionEnded(hand->handJoint.screenPosition, primary, hand->actionState, handIdx, hand->handJoint.focus);
+            interactionEnded(hand->handJoint.screenPosition, primary, (hand->actionState > k4w::ActionState_Idle), hand->actionState, handIdx, hand->handJoint.focus);
             hand->actionState = k4w::ActionState_Inactive;
         }
     }
@@ -688,7 +689,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height, flo
 }
 
 //--------------------------------------------------------------
-void CloudsInputKinectOSC::drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
+void CloudsInputKinectOSC::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
     float cursorSize;
     if (mode == CURSOR_MODE_INACTIVE)
         cursorSize = cursorUpSizeMin;
@@ -696,7 +697,7 @@ void CloudsInputKinectOSC::drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool 
         cursorSize = ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true);
     else
         cursorSize = ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true);
-    selfDrawCursor(mode, pos, bDragged, focus, cursorSize);
+    selfDrawCursorDefault(mode, pos, bDragged, focus, cursorSize);
 }
 
 //--------------------------------------------------------------

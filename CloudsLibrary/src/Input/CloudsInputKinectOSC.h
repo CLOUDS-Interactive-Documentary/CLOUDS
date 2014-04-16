@@ -216,7 +216,7 @@ public:
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;
     
-    void drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus);
+    void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus);
     
     float cursorDownSizeMin, cursorDownSizeMax;
     float cursorUpSizeMin, cursorUpSizeMax;
