@@ -29,6 +29,10 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , posSetInstantThreshold(20)
 , posOutOfBoundsStart(0)
 , posOutOfBoundsDelay(2000)
+, cursorDownSizeMin(5)
+, cursorDownSizeMax(10)
+, cursorUpSizeMin(8)
+, cursorUpSizeMax(16)
 {
 
 }
@@ -676,6 +680,18 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height, flo
     }
     ofPopMatrix();
     ofPopStyle();
+}
+
+//--------------------------------------------------------------
+void CloudsInputKinectOSC::drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
+    float cursorSize;
+    if (mode == CURSOR_MODE_INACTIVE)
+        cursorSize = cursorUpSizeMin;
+    else if (bDragged)
+        cursorSize = ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true);
+    else
+        cursorSize = ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true);
+    selfDrawCursor(mode, pos, bDragged, focus, cursorSize);
 }
 
 //--------------------------------------------------------------

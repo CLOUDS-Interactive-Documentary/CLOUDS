@@ -490,13 +490,6 @@ class CloudsVisualSystem {
     float bloomAmount;
     int bloomSamples;
     
-#ifdef OCULUS_RIFT
-    static float cursorSize;
-#elif KINECT_INPUT
-    static float cursorDownSizeMin, cursorDownSizeMax;
-    static float cursorUpSizeMin, cursorUpSizeMax;
-#endif
-    
 };
 
 //#ifdef CLOUDS_APP
