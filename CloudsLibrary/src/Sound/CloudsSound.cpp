@@ -152,7 +152,10 @@ void CloudsSound::threadedFunction(){
 
 //--------------------------------------------------------------------
 void CloudsSound::exit(ofEventArgs & args){
+	waitForThread(true);
+
 	if(eventsRegistered){
+		
 		
 		eventsRegistered = false;
 		

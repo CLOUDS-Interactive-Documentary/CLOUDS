@@ -66,8 +66,9 @@ void CloudsIntroSequence::selfSetDefaults(){
 	
 	// Set question defaults.
 	questionScale = 0.1f;
-	helperFontSize = 14; //TODO make dynamic per preset
-	questionMinZDistance = 50;
+	helperFontSize = 14;
+	questionZStopRange.min = 50;
+	questionZStopRange.max = 300;
 	perlinOffset = 0;
 	
     warpCamera.setNearClip(.01);
@@ -150,7 +151,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->addToggle("Debug Tug", &bQuestionDebug);
 	questionGui->addSlider("Scale", 0, 1, &questionScale);
 	questionGui->addSlider("Wrap Distance", 100, 4000, &questionWrapDistance);
-	questionGui->addSlider("Question Min Z", 10, 200, &questionMinZDistance);
+	questionGui->addRangeSlider("Question Z Range", 10, 300, &questionZStopRange.min, &questionZStopRange.max);
 	questionGui->addSlider("Inner Radius", 2, 20, &questionTunnelInnerRadius);
 	questionGui->addRangeSlider("Tug Distance", 10, 300, &questionTugDistance.min, &questionTugDistance.max);
 	questionGui->addRangeSlider("Attenuate Distance", 10, 300,&questionAttenuateDistance.min,&questionAttenuateDistance.max);
@@ -464,36 +465,44 @@ void CloudsIntroSequence::updateQuestions(){
 			curQuestion.hoverPosition.z += questionWrapDistance;
 		}
 		
+		float slowDownFactor = 0.0;
 		//hold the questions
 		if(questionChannels[ curQuestion.tunnelQuadrantIndex ]){
-			float slowDownFactor = powf(ofMap(ofGetElapsedTimef(),
+			//let it go with time
+			slowDownFactor = powf(ofMap(ofGetElapsedTimef(),
 											  channelPauseTime[curQuestion.tunnelQuadrantIndex] + questionPauseDuration,
 											  channelPauseTime[curQuestion.tunnelQuadrantIndex] + questionPauseDuration+2, 1.0, 0.0, true), 2.0);
-			if(&curQuestion == caughtQuestion){
-				slowDownFactor = 1.0;
-			}
-			curQuestion.hoverPosition.z += cameraForwardSpeed * slowDownFactor;
 			if(slowDownFactor == 0.0){
 				questionChannels[ curQuestion.tunnelQuadrantIndex ] = false;
 			}
 			
 		}
 		else{
-			float distanceToStoppingPoint = (curQuestion.hoverPosition.z - warpCamera.getPosition().z) - questionMinZDistance*.25;
-			float slowDownFactor = powf(ofMap(distanceToStoppingPoint, 0.0, 300, 1.0, 0.0, true), 2.0);
-			curQuestion.hoverPosition.z += slowDownFactor * cameraForwardSpeed;
-			if(slowDownFactor > .9){
-				questionChannels[curQuestion.tunnelQuadrantIndex] = true;
-				channelPauseTime[curQuestion.tunnelQuadrantIndex] = ofGetElapsedTimef();
+			float distanceFromCamera = (curQuestion.hoverPosition.z - warpCamera.getPosition().z);
+			//if it's in front of the stop range
+			if(distanceFromCamera > questionZStopRange.min){
+				slowDownFactor = powf(ofMap(distanceFromCamera, questionZStopRange.min, questionZStopRange.max, 1.0, 0.0, true), 2.0);
+//				curQuestion.hoverPosition.z += slowDownFactor * cameraForwardSpeed;
+				if(slowDownFactor > .9){
+					//pause this node and all the ones behind it
+					questionChannels[curQuestion.tunnelQuadrantIndex] = true;
+					channelPauseTime[curQuestion.tunnelQuadrantIndex] = ofGetElapsedTimef();
+				}
 			}
 		}
+		
+		if(&curQuestion == caughtQuestion){
+			slowDownFactor = 1.0;
+		}
+		
+		curQuestion.hoverPosition.z += cameraForwardSpeed * slowDownFactor;
 
 		//old slow down method
 //		startQuestions[i].hoverPosition.z += ofMap(distanceToQuestion,
 //												   questionTugDistance.max, questionTugDistance.min,
 //												   0, cameraForwardSpeed);
 				
-		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionMinZDistance){
+		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.max){
 #ifdef OCULUS_RIFT
             ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
 			ofRectangle viewport = getOculusRift().getOculusViewport();
@@ -509,8 +518,7 @@ void CloudsIntroSequence::updateQuestions(){
 						if (caughtQuestion->startHovering()) {
 							click.setPosition(0);
 							click.play();
-
-                            CloudsPortalEventArgs args(getQuestionText());
+//                            CloudsPortalEventArgs args(getQuestionText());
 //                            ofNotifyEvent(events.portalHoverBegan, args);
                         }
 					}
@@ -531,7 +539,7 @@ void CloudsIntroSequence::updateQuestions(){
 				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
-                    CloudsPortalEventArgs args(getQuestionText());
+//                    CloudsPortalEventArgs args(getQuestionText());
 //                    ofNotifyEvent(events.portalHoverEnded, args);
 				}
 			}
@@ -687,7 +695,7 @@ void CloudsIntroSequence::selfDrawBackground(){
 		
 		for(int i = 0; i < startQuestions.size(); i++){
 			float alpha = .1;
-			if(startQuestions[i].hoverPosition.z - warpCamera.getPosition().z < questionMinZDistance){
+			if(startQuestions[i].hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.min){
 				alpha = .8;
 			}
 			
@@ -760,9 +768,9 @@ void CloudsIntroSequence::selfDraw(){
 	
 	drawCloudsType();
 	drawIntroNodes();
-	drawHelperType();
 	drawTunnel();
 	drawPortals();
+	drawHelperType();
 }
 
 void CloudsIntroSequence::drawTunnel(){
@@ -859,22 +867,21 @@ void CloudsIntroSequence::drawHelperType(){
 	ofPushStyle();
 
 	if(currentHelperFontSize != helperFontSize){
-		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", helperFontSize);
+//		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", helperFontSize);
+		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 		currentHelperFontSize = helperFontSize;
 	}
-	
-
-#ifdef OCULUS_RIFT
-
-	ofRotate(180, 0, 0, 1);//flip around
-	ofMatrix4x4 compensate;
-	compensate.rotate(180, 0, 0, 1);
 
 	string helpHoverText;
 	ofVec3f basePosition(0,0,0);
 	float helperTextOpacity = 0.0;
 	float scaleModifier = 1.0;// * ofGetMouseX() / ofGetWidth();
 
+	ofRotate(180, 0, 0, 1);//flip around
+	ofMatrix4x4 compensate;
+	compensate.rotate(180, 0, 0, 1);
+	
+	#ifdef OCULUS_RIFT
 	if(!startedOnclick){
 		if(introNodeThree.hover || introNodeTwo.finished){
 			helpHoverText = "LOOK CENTER";
@@ -894,7 +901,9 @@ void CloudsIntroSequence::drawHelperType(){
 		helperFont.setTracking(helperFontTracking);
 
 	}
-	else if(caughtQuestion != NULL){
+	#endif
+	
+	if(caughtQuestion != NULL){
 		basePosition = caughtQuestion->hoverPosition;
 		helpHoverText = caughtQuestion->question;
 		helperTextOpacity = 1.0;
@@ -906,20 +915,23 @@ void CloudsIntroSequence::drawHelperType(){
 		float hoverTextWidth  = helperFont.stringWidth(helpHoverText);
 		float hoverTextHeight = helperFont.stringHeight(helpHoverText);
 		
-		
+		#ifdef OCULUS_RIFT
 		getOculusRift().multBillboardMatrix( compensate.preMult(basePosition) );
+		#else
+		ofTranslate(compensate.preMult(basePosition) );
+		#endif
 		ofScale(scaleModifier*helperFontScale,
 				scaleModifier*helperFontScale,
 				scaleModifier*helperFontScale);
 		
+//		ofSetColor(255,255*helperTextOpacity);
+		ofDisableAlphaBlending();
+		ofSetColor(255);
 		
-		ofSetColor(255,255*helperTextOpacity);
-		helperFont.drawString(helpHoverText, -hoverTextWidth/2, helperFontY-hoverTextHeight/2);
+		int yOffsetMult = (!bUseOculusRift && caughtQuestion->tunnelQuadrantIndex == 2) ? -1 : 1;
+		helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY-hoverTextHeight/2) );
 	}
 
-#endif
-	
-	
 	ofPopStyle();
 	ofPopMatrix();
 	
