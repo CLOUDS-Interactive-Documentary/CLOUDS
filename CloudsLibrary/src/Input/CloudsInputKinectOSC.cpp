@@ -448,7 +448,8 @@ void CloudsInputKinectOSC::mapHandCoords(k4w::HandJoint& joint, ofVec3f& origin,
     
     // calculate the focus
     float focusXY = ofMap(joint.inputPosition.distance(joint.clampedPosition), 0.0f, 0.5f, 1.0f, 0.0f, true);
-    float focusZ = ofMap(joint.screenPosition.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
+    //float focusZ = ofMap(joint.screenPosition.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
+    float focusZ = ofMap(ABS(joint.screenPosition.z - activeThresholdZ), 0.2f, 1.0f, 1.0f, 0.0f, true);
     joint.focus = powf(MIN(focusXY, focusZ), 2.0f);
 }
 
