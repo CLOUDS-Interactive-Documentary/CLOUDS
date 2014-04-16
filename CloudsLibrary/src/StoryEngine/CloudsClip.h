@@ -60,6 +60,8 @@ class CloudsClip {
     bool hasStartingQuestion();
     void addQuestionTopicPair(string topic, string question);
 	bool hasQuestion();
+	bool isPartOfSeries();
+	
     map<string,string>& getAllQuestionTopicPairs();
     string getQuestionForTopic(string topic);
 	vector<string> getTopicsWithQuestions();

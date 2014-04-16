@@ -6966,8 +6966,8 @@
 		E79E6F3A18551DD100406535 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				64CE99CC1881061800491913 /* CloudsInputOculus.cpp */,
 				64CE99CD1881061800491913 /* CloudsInputOculus.h */,
+				64CE99CC1881061800491913 /* CloudsInputOculus.cpp */,
 				E79E6F3C18551DE300406535 /* CloudsInput.h */,
 				E79E6F3B18551DE300406535 /* CloudsInput.cpp */,
 				E734A0551855750F002E615C /* CloudsInputKinectOSC.h */,
