@@ -548,7 +548,7 @@ void CloudsIntroSequence::updateQuestions(){
     
     if (caughtQuestion) {
         // move the sticky cursor towards the caught question
-        stickyCursor.interpolate(caughtQuestion->screenPosition, 0.2f);
+        stickyCursor.interpolate(caughtQuestion->screenPosition - ofVec2f(bleed,bleed)*.5, 0.2f);
     }
     else {
         stickyCursor = cursor;
@@ -924,9 +924,7 @@ void CloudsIntroSequence::drawHelperType(){
 				scaleModifier*helperFontScale,
 				scaleModifier*helperFontScale);
 		
-//		ofSetColor(255,255*helperTextOpacity);
-		ofDisableAlphaBlending();
-		ofSetColor(255);
+		ofSetColor(255,255*helperTextOpacity);
 		
 		int yOffsetMult = (!bUseOculusRift && caughtQuestion->tunnelQuadrantIndex == 2) ? -1 : 1;
 		helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY-hoverTextHeight/2) );
@@ -934,8 +932,6 @@ void CloudsIntroSequence::drawHelperType(){
 
 	ofPopStyle();
 	ofPopMatrix();
-	
-	
 }
 
 void CloudsIntroSequence::drawIntroNodes(){
