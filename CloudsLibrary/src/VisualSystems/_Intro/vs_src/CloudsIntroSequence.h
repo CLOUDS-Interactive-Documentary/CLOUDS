@@ -25,6 +25,7 @@ typedef struct{
 	float cursorDistance;
 	bool hover;
 	bool finished;
+	float finishedTime;
 	float percentComplete;
 	float hoverStartTime;
 	float gazePercent;

@@ -390,7 +390,7 @@ void CloudsIntroSequence::updateIntroNodeInteraction(IntroNode& node){
 		}
 		else if(node.percentComplete >= 1.0){
 			node.finished = true;
-			nodeActivatedTime = ofGetElapsedTimef(); //used for alpha on helper text
+			node.finishedTime = nodeActivatedTime = ofGetElapsedTimef(); //used for alpha on helper text
 		}
 		else{
 			node.percentComplete = ofMap(ofGetElapsedTimef(), node.hoverStartTime, node.hoverStartTime+introNodeHoldTime, 0.0, 1.0,true);
@@ -836,12 +836,12 @@ void CloudsIntroSequence::drawHelperType(){
 		if(introNodeThree.hover || introNodeTwo.finished){
 			helpHoverText = "LOOK CENTER";
 			basePosition = introNodeTwo.worldPosition;
-			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(), nodeActivatedTime+.1, nodeActivatedTime+1,0.0,.8,true), 2.) * (1.0-introNodeThree.percentComplete);
+			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(), nodeActivatedTime, nodeActivatedTime+.8,0.0,.8,true), 2.) * (1.0-introNodeThree.percentComplete);
 		}
 		else if(introNodeTwo.hover || introNodeOne.finished){
 			helpHoverText = "LOOK RIGHT";
 			basePosition = introNodeOne.worldPosition;
-			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(), nodeActivatedTime+.1, nodeActivatedTime+1,0.0,.8,true), 2.);
+			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(), nodeActivatedTime, nodeActivatedTime+.8,0.0,.8,true), 2.);
 		}
 		else {
 			helpHoverText = "LOOK LEFT";
@@ -890,13 +890,29 @@ void CloudsIntroSequence::drawIntroNodes(){
 		}
 		
 		getOculusRift().multBillboardMatrix(introNodes[i]->worldPosition);
-		
-		//ofTranslate( introNodes[i]->worldPosition );
-		
+		float afterFinishScalar = 0.0;
 		ofNoFill();
-		ofCircle(0,0,0, introNodeSize);
-		ofFill();
-		ofCircle(0,0,0, introNodeSize*introNodes[i]->percentComplete);
+		if(introNodes[i]->percentComplete > 0.0){
+			float nodeSize = introNodeSize;
+			ofColor arcColor = ofGetStyle().color;
+			if(introNodes[i]->finished){
+				afterFinishScalar = powf(ofMap(ofGetElapsedTimef(), introNodes[i]->finishedTime, introNodes[i]->finishedTime+.2, 0.0, 1.0, true), 2.0f);
+				nodeSize = introNodeSize + ( afterFinishScalar * 10.0);
+				arcColor.a = 255*(1.0-afterFinishScalar);
+			}
+			ofPath arc;
+			arc.setFilled(false);
+			arc.setStrokeWidth(3);
+			arc.setStrokeColor(arcColor);
+			arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 0, 360*introNodes[i]->percentComplete, true);
+			arc.draw();
+		}
+		ofCircle(0,0,0, introNodeSize * (1.0-afterFinishScalar) );
+
+		if(introNodes[i]->finished){
+			ofFill();
+//			ofCircle(0,0,0, introNodeSize);
+		}
 		ofPopMatrix();
 		
 		if(!introNodes[i]->finished){
