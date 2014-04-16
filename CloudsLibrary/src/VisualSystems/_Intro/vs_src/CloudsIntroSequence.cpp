@@ -22,7 +22,7 @@ string CloudsIntroSequence::getSystemName(){
 }
 
 CloudsIntroSequence::CloudsIntroSequence(){
-	click.loadSound(GetCloudsDataPath() + "sound/interface/click.wav");
+	click.loadSound(GetCloudsDataPath() + "sound/interface/click.aif");
 	selectLow.loadSound(GetCloudsDataPath() + "sound/interface/select_low.aif");
 	selectMid.loadSound(GetCloudsDataPath() + "sound/interface/select_mid.aif");
 	selectHigh.loadSound(GetCloudsDataPath() + "sound/interface/select_high.wav");
