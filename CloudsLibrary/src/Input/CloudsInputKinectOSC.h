@@ -197,6 +197,7 @@ public:
     int primaryIdx;
     float activeThresholdY;
     float activeThresholdZ;
+    float focusRange;
     ofVec3f boundsMin;
     ofVec3f boundsMax;
     float jointLerpPct;
