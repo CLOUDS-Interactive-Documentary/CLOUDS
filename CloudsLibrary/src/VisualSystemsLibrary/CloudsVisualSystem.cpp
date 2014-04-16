@@ -2983,6 +2983,7 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addToggle("CLAMP TO BOUNDS", &kinectInput->bClampToBounds);
     kinectGui->addSlider("ACTIVE THRESHOLD Y", 0.0f, 1.0f, &kinectInput->activeThresholdY);
     kinectGui->addSlider("ACTIVE THRESHOLD Z", 0.0f, 1.0f, &kinectInput->activeThresholdZ);
+    kinectGui->addSlider("FOCUS RANGE", 0.0f, 1.0f, &kinectInput->focusRange);
     
     kinectGui->addSpacer();
     kinectGui->addSlider("RESET LERP", 0, 1, &kinectInput->posResetLerpPct);

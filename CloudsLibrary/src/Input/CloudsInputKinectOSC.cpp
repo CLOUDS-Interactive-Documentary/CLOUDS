@@ -19,6 +19,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
 , jointLerpPct(0.3f)
+, focusRange(0.2f)
 , bClampToBounds(true)
 , bDoDebug(false)
 , viewerState(k4w::ViewerState_None)
@@ -449,7 +450,7 @@ void CloudsInputKinectOSC::mapHandCoords(k4w::HandJoint& joint, ofVec3f& origin,
     // calculate the focus
     float focusXY = ofMap(joint.inputPosition.distance(joint.clampedPosition), 0.0f, 0.5f, 1.0f, 0.0f, true);
     //float focusZ = ofMap(joint.screenPosition.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
-    float focusZ = ofMap(ABS(joint.screenPosition.z - activeThresholdZ), 0.2f, 1.0f, 1.0f, 0.0f, true);
+    float focusZ = ofMap(ABS(joint.screenPosition.z - activeThresholdZ), focusRange, 1.0f, 1.0f, 0.0f, true);
     joint.focus = powf(MIN(focusXY, focusZ), 2.0f);
 }
 
