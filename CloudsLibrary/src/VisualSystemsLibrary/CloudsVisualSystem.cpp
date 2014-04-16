@@ -3771,18 +3771,7 @@ void CloudsVisualSystem::drawCursors()
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
 #ifdef KINECT_INPUT
-		// Fade out as we reach out to the sides too far.
-		float alphaScalarXY = 1.0f;
-		if (((CloudsInputKinectOSC *)GetCloudsInput().get())->hands.count(it->first)) {
-			k4w::Hand * hand = ((CloudsInputKinectOSC *)GetCloudsInput().get())->hands[it->first];
-			alphaScalarXY = ofMap(hand->handJoint.inputPosition.distance(hand->handJoint.clampedPosition), 0.0f, 0.5f, 1.0f, 0.0f, true);
-		}
-
-		// Fade out as we reach in towards the screen too far.
-		float alphaScalarZ = ofMap(it->second.position.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
-		
-		float alphaScalar = powf(MIN(alphaScalarXY, alphaScalarZ), 2.0f);
-        selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle, it->second.primary? primaryCursorMode : secondaryCursorMode, alphaScalar);
+        selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle, it->second.primary? primaryCursorMode : secondaryCursorMode, it->second.focus);
 #elif TOUCH_INPUT
         selfDrawCursor(it->second.position, false, it->second.primary? primaryCursorMode : secondaryCursorMode);
         // EZ: Replace the line above by the line below to test dragging by pressing a mouse button.
@@ -3795,10 +3784,10 @@ void CloudsVisualSystem::drawCursors()
 }
 
 // Override this method to customize the position or rendering of the cursors for a specific CloudsVisualSystem!
-void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float alphaScalar)
+void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus)
 {
     // Use the default cursor rendering from CloudsInput.
-    GetCloudsInput()->drawCursor(mode, pos, bDragged, alphaScalar);
+    GetCloudsInput()->drawCursor(mode, pos, bDragged, focus);
 }
 
 void CloudsVisualSystem::selfExit()

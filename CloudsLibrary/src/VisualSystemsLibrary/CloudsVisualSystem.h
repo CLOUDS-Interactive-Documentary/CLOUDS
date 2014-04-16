@@ -88,7 +88,7 @@ class CloudsVisualSystem {
 	virtual void selfDrawOverlay();
 	virtual void selfPostDraw();
 	virtual void selfPostDraw(int width, int height);
-    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float alphaScalar = 255);
+    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus = 1.0f);
 	virtual void selfPresetLoaded(string presetPath);
 	
     virtual void selfExit();

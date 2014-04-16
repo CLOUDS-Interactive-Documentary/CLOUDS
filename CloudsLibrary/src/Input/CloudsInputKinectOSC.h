@@ -97,6 +97,7 @@ namespace k4w
     {
         HandState handState;
 		ofVec3f clampedPosition;  // input position, clamped to bounds if (bClampToBounds == true)
+        float focus;
     };
     
     class Body 
