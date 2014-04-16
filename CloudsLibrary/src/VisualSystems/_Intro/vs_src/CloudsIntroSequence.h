@@ -186,6 +186,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void drawHelperType();
 	void drawTunnel();
 	void drawPortals();
+    void drawCursors();
 	
 	void updateIntroNodePosition(IntroNode& node);
 	void updateIntroNodeInteraction(IntroNode& node);
@@ -241,6 +242,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofImage sprite;
 
     ofVec3f cursor;
+    ofVec3f stickyCursor;
     
 #ifdef OCULUS_RIFT
     bool bCursorInCenter;

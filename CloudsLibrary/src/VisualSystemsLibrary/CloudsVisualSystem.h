@@ -191,7 +191,7 @@ class CloudsVisualSystem {
     void draw2dSystemPlane();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
     
-    void drawCursors();
+    virtual void drawCursors();
 	
     //Core Param Setup
     void setupAppParams();

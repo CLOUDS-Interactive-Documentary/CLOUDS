@@ -530,6 +530,14 @@ void CloudsIntroSequence::updateQuestions(){
 			}
 		}
 	}
+    
+    if (caughtQuestion) {
+        // move the sticky cursor towards the caught question
+        stickyCursor.interpolate(caughtQuestion->screenPosition, 0.2f);
+    }
+    else {
+        stickyCursor = cursor;
+    }
 }
 
 
@@ -949,6 +957,18 @@ void CloudsIntroSequence::drawIntroNodes(){
 	ofPopStyle();
 #endif
 	
+}
+
+void CloudsIntroSequence::drawCursors(){
+    map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
+    for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+        if (it->second.primary) {
+            selfDrawCursor(stickyCursor, it->second.dragged, primaryCursorMode, it->second.focus);
+        }
+        else {
+            selfDrawCursor(it->second.position, it->second.dragged, secondaryCursorMode, it->second.focus);
+        }
+    }
 }
 
 void CloudsIntroSequence::selfDrawOverlay(){
