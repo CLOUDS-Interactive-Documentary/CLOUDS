@@ -454,7 +454,7 @@ void CloudsIntroSequence::updateTitle(){
 }
 
 void CloudsIntroSequence::updateQuestions(){
-	
+
 
 	for(int i = 0; i < startQuestions.size(); i++){
 		CloudsPortal& curQuestion = startQuestions[i];
@@ -501,7 +501,7 @@ void CloudsIntroSequence::updateQuestions(){
 //		startQuestions[i].hoverPosition.z += ofMap(distanceToQuestion,
 //												   questionTugDistance.max, questionTugDistance.min,
 //												   0, cameraForwardSpeed);
-				
+		
 		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.max){
 #ifdef OCULUS_RIFT
             ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
@@ -511,7 +511,7 @@ void CloudsIntroSequence::updateQuestions(){
             ofVec2f mouseNode = cursor;
 			float distanceToQuestion = startQuestions[i].screenPosition.distance(mouseNode);
 #endif
-			if(caughtQuestion == NULL){
+			if(selectedQuestion == NULL && caughtQuestion == NULL){
 				if( distanceToQuestion < questionTugDistance.max ){
 					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &curQuestion;
@@ -531,22 +531,21 @@ void CloudsIntroSequence::updateQuestions(){
 				if( caughtQuestion->isSelected() && !bQuestionDebug && selectedQuestion == NULL){
 					selectLow.setPosition(0);
 					selectLow.play();
+//					caughtQuestion = NULL;
 					selectedQuestion = caughtQuestion;
 					selectedQuestionTime = ofGetElapsedTimef();
 					selectQuestionStartPos = warpCamera.getPosition();
 					selectQuestionStartRot = warpCamera.getOrientationQuat();
 				}
-				else if(distanceToQuestion > questionTugDistance.max){
+				else if(distanceToQuestion > questionTugDistance.max && selectedQuestion == NULL){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
-//                    CloudsPortalEventArgs args(getQuestionText());
-//                    ofNotifyEvent(events.portalHoverEnded, args);
 				}
 			}
 		}
 	}
     
-    if (caughtQuestion) {
+    if (caughtQuestion != NULL) {
         // move the sticky cursor towards the caught question
         stickyCursor.interpolate(caughtQuestion->screenPosition - ofVec2f(bleed,bleed)*.5, 0.2f);
     }

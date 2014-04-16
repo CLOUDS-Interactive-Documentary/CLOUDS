@@ -67,18 +67,18 @@ class CloudsPlaybackController : public ofThread {
     void portalHoverBegan(CloudsPortalEventArgs& args);
     void portalHoverEnded(CloudsPortalEventArgs& args);
 	
+	void drawContinueReset();
+	
 	void exit(ofEventArgs & args);
 	
 	vector<CloudsClip> fakeQuestions;
-
+	
+	void finishSetup(); //called at the end of the threaded function
 	bool loading;
 	float loadPercent;
 	bool loadFinished;
 	
 	void threadedFunction();
-	
-	void finishSetup(); //called at the end of the threaded function
-	
   protected:
 	vector<CloudsClip> startingNodes;
 	//*** CORE CLOUDS STUFF
@@ -124,12 +124,11 @@ class CloudsPlaybackController : public ofThread {
 		
 	CloudsTransitionController transitionController;
 	void updateTransition();
-
+	bool updateInterludeInterface(); //true if we should stop interlude
+	
 	//loader screen
 	bool loadingAct;
 	int currentPresetIndex;
-//	vector<CloudsVisualSystemPreset> presetsToLoad;
-	
 	
     string currentClipName;
     float actCreatedTime;
@@ -148,7 +147,6 @@ class CloudsPlaybackController : public ofThread {
 	//VISUAL SYSTEMS
 	//
 	void showIntro();
-//	void showIntro(vector<CloudsClip>& possibleStartQuestions);
 
 	bool showingIntro;
 	bool showingVisualSystem;
@@ -167,28 +165,36 @@ class CloudsPlaybackController : public ofThread {
     void showInterlude();
     void cleanupInterlude();
 
-    //INTERLUDE PORTAL
-    bool bShowPortals;
-    CloudsPortal continuePortal;
-    void setupPortals();
-    ofRectangle resetRect;
-    ofRectangle resetSelectionRect;
-    bool bResetSelected;
-    bool bResetTransitionComplete;
-    ofxFTGLFont resetFont;
-	ofxFTGLFont loadingFont;
-    float resetSelectedPercentComplete;
-    float maxResetHoverTime;
-    float startResetHoverTime;
-    float endResetHoverValue;
-    bool prevResetValue;
+    //INTERLUDE INTERFACE
+	void resetInterludeVariabls();
+	ofxFTGLFont interludeInterfaceFont;
+	float interludeExitBarWidth;
+	bool interludeHoveringContinue;
+	bool interludeHoveringReset;
+	float interludeBarHoverStartTime;
+	float interludeBarHoverHoldTime;
+	float interludeBarHoverPercentComplete;
+	bool interludeContinueSelected;
+	bool interludeResetSelected;
+	
+//    CloudsPortal continuePortal;
+//    void setupPortals();
+//    ofRectangle resetRect;
+//    ofRectangle resetSelectionRect;
+//    float resetSelectedPercentComplete;
+//    float maxResetHoverTime;
+//    float startResetHoverTime;
+//    float endResetHoverValue;
+//    bool prevResetValue;
+//	
+//    bool bResetSelected;
+//    bool bResetTransitionComplete;
 
-    void clearRestButtonParams();
-    // OS cursor display
-    ofVec2f lastMousePos, currMousePos;
-    unsigned long long lastMouseMoveMillis;
 
 
+//    void clearRestButtonParams();
+//    ofVec2f lastMousePos, currMousePos;
+//    unsigned long long lastMouseMoveMillis;
 };
 
 
