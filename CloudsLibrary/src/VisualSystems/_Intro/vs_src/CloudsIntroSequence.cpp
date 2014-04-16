@@ -66,7 +66,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	
 	// Set question defaults.
 	questionScale = 0.1f;
-	helperFontSize = 14; //TODO make dynamic per preset
+	helperFontSize = 14;
 	questionZStopRange.min = 50;
 	questionZStopRange.max = 300;
 	perlinOffset = 0;
@@ -483,7 +483,6 @@ void CloudsIntroSequence::updateQuestions(){
 			if(distanceFromCamera > questionZStopRange.min){
 				slowDownFactor = powf(ofMap(distanceFromCamera, questionZStopRange.min, questionZStopRange.max, 1.0, 0.0, true), 2.0);
 //				curQuestion.hoverPosition.z += slowDownFactor * cameraForwardSpeed;
-				cout << "slow down factor is " << slowDownFactor << endl;
 				if(slowDownFactor > .9){
 					//pause this node and all the ones behind it
 					questionChannels[curQuestion.tunnelQuadrantIndex] = true;
@@ -769,9 +768,9 @@ void CloudsIntroSequence::selfDraw(){
 	
 	drawCloudsType();
 	drawIntroNodes();
-	drawHelperType();
 	drawTunnel();
 	drawPortals();
+	drawHelperType();
 }
 
 void CloudsIntroSequence::drawTunnel(){
@@ -868,7 +867,8 @@ void CloudsIntroSequence::drawHelperType(){
 	ofPushStyle();
 
 	if(currentHelperFontSize != helperFontSize){
-		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", helperFontSize);
+//		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", helperFontSize);
+		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 		currentHelperFontSize = helperFontSize;
 	}
 
@@ -924,13 +924,14 @@ void CloudsIntroSequence::drawHelperType(){
 				scaleModifier*helperFontScale,
 				scaleModifier*helperFontScale);
 		
-		ofSetColor(255,255*helperTextOpacity);
-		helperFont.drawString(helpHoverText, -hoverTextWidth/2, helperFontY-hoverTextHeight/2);
+//		ofSetColor(255,255*helperTextOpacity);
+		ofDisableAlphaBlending();
+		ofSetColor(255);
+		
+		int yOffsetMult = (!bUseOculusRift && caughtQuestion->tunnelQuadrantIndex == 2) ? -1 : 1;
+		helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY-hoverTextHeight/2) );
 	}
 
-
-	
-	
 	ofPopStyle();
 	ofPopMatrix();
 	
