@@ -19,6 +19,6 @@ void main(void)
 	gl_FragColor = vec4( color.xyz + fr, 1.);
 	
 	float atten = zDist / dim;
-	gl_FragColor.xyz *= min(1., 1. - atten * atten);
+	gl_FragColor.xyz *= min(1., 1. - atten * atten * atten);
 }
 
