@@ -20,7 +20,7 @@ typedef struct{
 	float startTime;
 } QueuedTrack;
 
-class CloudsSound {
+class CloudsSound : public ofThread {
   public:
 	CloudsSound();
 	
@@ -70,6 +70,8 @@ class CloudsSound {
     bool in_tunnel;
     bool isScoreDesigner;
     
+	void threadedFunction();
+		
     // public data structures
     vector<lukePreset> presets;
 
