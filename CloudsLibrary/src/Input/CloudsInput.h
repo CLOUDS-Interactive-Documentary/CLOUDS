@@ -10,6 +10,14 @@
 
 #include "ofMain.h"
 
+enum CloudsCursorMode
+{
+    CURSOR_MODE_NONE = 0,
+    CURSOR_MODE_INACTIVE,
+    CURSOR_MODE_CAMERA,
+    CURSOR_MODE_DRAW
+};
+
 class CloudsInputEvents;
 class CloudsInteractionEventArgs;
 class CloudsInput
@@ -36,6 +44,9 @@ class CloudsInput
 	
 	CloudsInputEvents& getEvents();
 	void setBleedPixels(int bleed);
+    
+    virtual void drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus) = 0;
+    void selfDrawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size);
     
   protected:
 

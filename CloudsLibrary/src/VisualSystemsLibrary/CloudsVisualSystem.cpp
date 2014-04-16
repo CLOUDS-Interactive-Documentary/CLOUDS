@@ -6,6 +6,8 @@
 
 #ifdef KINECT_INPUT
 #include "CloudsInputKinectOSC.h"
+#elif OCULUS_RIFT
+#include "CloudsInputOculus.h"
 #endif
 
 #ifdef TARGET_OSX
@@ -14,18 +16,6 @@
 
 #ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
-#endif
-
-#ifdef OCULUS_RIFT
-float CloudsVisualSystem::cursorSize = 1;
-#elif KINECT_INPUT
-float CloudsVisualSystem::cursorDownSizeMin = 5;
-float CloudsVisualSystem::cursorDownSizeMax = 10;
-float CloudsVisualSystem::cursorUpSizeMin   = 8;
-float CloudsVisualSystem::cursorUpSizeMax   = 16;
-#else
-float CloudsVisualSystem::cursorDownSize = 7;
-float CloudsVisualSystem::cursorUpSize   = 12;
 #endif
 
 static ofFbo staticRenderTarget;
@@ -2979,8 +2969,10 @@ void CloudsVisualSystem::setupKinectGui()
     
     kinectGui->addSpacer();
     kinectGui->addLabel("CURSOR");
-    kinectGui->addRangeSlider("CURSOR DOWN", 1, 20, &cursorDownSizeMin, &cursorDownSizeMax);
-    kinectGui->addRangeSlider("CURSOR UP", 1, 20, &cursorUpSizeMin, &cursorUpSizeMax);
+    kinectGui->addRangeSlider("CURSOR DOWN", 1, 20,
+                              &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorDownSizeMin, &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorDownSizeMax);
+    kinectGui->addRangeSlider("CURSOR UP", 1, 20,
+                              &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorUpSizeMin, &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorUpSizeMax);
     
     kinectGui->addSpacer();
     kinectGui->addRangeSlider("BODY RANGE X", -1.0f, 1.0f, &kinectInput->boundsMin.x, &kinectInput->boundsMax.x);
@@ -3030,7 +3022,7 @@ void CloudsVisualSystem::setupOculusGui()
     
     oculusGui->addSpacer();
     oculusGui->addLabel("CURSOR");
-    oculusGui->addSlider("CURSOR", 0, 5, &cursorSize);
+    oculusGui->addSlider("CURSOR", 0, 5, &((CloudsInputOculus *)GetCloudsInput().get())->cursorSize);
     
     oculusGui->autoSizeToFitWidgets();
     ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
@@ -3802,109 +3794,11 @@ void CloudsVisualSystem::drawCursors()
     }
 }
 
+// Override this method to customize the position or rendering of the cursors for a specific CloudsVisualSystem!
 void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float alphaScalar)
 {
-    if (mode == CURSOR_MODE_NONE) return;
-
-    ofPushStyle();
-//    cout << alphaScalar << endl;
-//    alphaScalar = 1.0;
-    
-    if (mode == CURSOR_MODE_INACTIVE) {
-//<<<<<<< HEAD
-//        ofSetLineWidth(2);
-//        ofSetColor(213, 69, 62, 192);
-//#if defined(KINECT_INPUT)
-//		float totalRadius = cursorUpSizeMin * 0.5;
-//#elif defined(OCULUS_RIFT)
-//		float totalRadius = cursorSize * 0.5;
-//=======
-        ofSetLineWidth(3);
-        ofSetColor(213, 69, 62, 192 * alphaScalar);
-#ifdef OCULUS_RIFT
-        float totalRadius = cursorSize * 0.5;
-#elif KINECT_INPUT
-		float totalRadius = cursorUpSizeMax * 0.5;
-//>>>>>>> 948695c73bb0f181e6715435d052296ce8fa4390
-#else
-		float totalRadius = cursorUpSize * 0.5;
-#endif
-        ofLine(pos.x - totalRadius, pos.y - totalRadius, pos.x + totalRadius, pos.y + totalRadius);
-        ofLine(pos.x - totalRadius, pos.y + totalRadius, pos.x + totalRadius, pos.y - totalRadius);
-    }
-    else if (mode == CURSOR_MODE_DRAW) {
-        ofSetLineWidth(2);
-        ofNoFill();
-        if (bDragged) {
-			ofSetColor(62, 69, 213, 192 * alphaScalar);
-
-#ifdef OCULUS_RIFT
-            ofCircle(pos, cursorSize);
-#elif KINECT_INPUT
-            ofCircle(pos.x, pos.y, ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true));
-#else
-            ofCircle(pos, cursorDownSize);
-#endif
-        }
-        else {  // !bDragged
-#ifdef OCULUS_RIFT
-            ofSetColor(255, 255, 255, 64 * alphaScalar);
-            ofCircle(pos, cursorSize);
-#elif KINECT_INPUT
-            ofSetColor(255, 255, 255, 192 * alphaScalar);
-            ofCircle(pos.x, pos.y,
-                     ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true));
-#else
-            ofSetColor(255, 255, 255, 192);
-            ofCircle(pos, cursorUpSize);
-#endif
-        }
-    }
-    else {  // mode == CURSOR_MODE_CAMERA
-        ofSetLineWidth(2);
-        static float coreRadius = 0.2f;
-        if (bDragged) {
-            ofSetColor(62, 69, 213, 192 * alphaScalar);
-            float totalRadius;
-#ifdef OCULUS_RIFT
-            totalRadius = cursorSize;
-#elif KINECT_INPUT
-            totalRadius = ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true);
-#else
-            totalRadius = cursorDownSize;
-#endif
-            ofLine(pos.x - totalRadius, pos.y, pos.x - totalRadius * coreRadius, pos.y);
-            ofLine(pos.x + totalRadius, pos.y, pos.x + totalRadius * coreRadius, pos.y);
-            ofLine(pos.x, pos.y - totalRadius, pos.x, pos.y - totalRadius * coreRadius);
-            ofLine(pos.x, pos.y + totalRadius, pos.x, pos.y + totalRadius * coreRadius);
-            
-            ofNoFill();
-            ofCircle(pos, coreRadius);
-        }
-        else {  // !bDragged
-            static float midRadius = 0.5f;
-            float totalRadius;
-#ifdef OCULUS_RIFT
-            ofSetColor(255, 255, 255, 64 * alphaScalar);
-            totalRadius = cursorSize;
-#elif KINECT_INPUT
-            ofSetColor(255, 255, 255, 192 * alphaScalar);
-            totalRadius = ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true);
-#else
-            ofSetColor(255, 255, 255, 192 * alphaScalar);
-            totalRadius = cursorUpSize;
-#endif
-            ofLine(pos.x - totalRadius, pos.y, pos.x - totalRadius * coreRadius, pos.y);
-            ofLine(pos.x + totalRadius, pos.y, pos.x + totalRadius * coreRadius, pos.y);
-            ofLine(pos.x, pos.y - totalRadius, pos.x, pos.y - totalRadius * coreRadius);
-            ofLine(pos.x, pos.y + totalRadius, pos.x, pos.y + totalRadius * coreRadius);
-            ofSetColor(255, 255, 255, 64);
-            ofFill();
-            ofCircle(pos, midRadius);
-        }
-    }
-    
-    ofPopStyle();
+    // Use the default cursor rendering from CloudsInput.
+    GetCloudsInput()->drawCursor(mode, pos, bDragged, alphaScalar);
 }
 
 void CloudsVisualSystem::selfExit()

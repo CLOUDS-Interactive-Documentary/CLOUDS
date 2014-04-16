@@ -9,6 +9,10 @@
 #include "CloudsInputOculus.h"
 #include "CloudsVisualSystem.h"
 
+CloudsInputOculus::CloudsInputOculus()
+: cursorSize(1)
+{}
+
 void CloudsInputOculus::enable(){
 	if(!enabled){
         ofAddListener(ofEvents().update, this, &CloudsInputOculus::update);
@@ -29,6 +33,10 @@ void CloudsInputOculus::update(ofEventArgs& data){
     if (currentPosition.distance(lastPosition) > 0) {
         interactionMoved(currentPosition, true, 0);
     }
+}
+
+void CloudsInputOculus::drawCursor(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
+    selfDrawCursor(mode, pos, bDragged, focus * (bDragged? 1.0f:0.35f), cursorSize);
 }
 
 void SetCloudsInputOculus()
