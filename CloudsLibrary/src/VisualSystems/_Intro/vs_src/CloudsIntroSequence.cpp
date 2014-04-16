@@ -21,6 +21,18 @@ string CloudsIntroSequence::getSystemName(){
 	return "_Intro";
 }
 
+CloudsIntroSequence::CloudsIntroSequence(){
+	click.loadSound(GetCloudsDataPath() + "sound/interface/click.wav");
+	selectLow.loadSound(GetCloudsDataPath() + "sound/interface/select_low.aif");
+	selectMid.loadSound(GetCloudsDataPath() + "sound/interface/select_mid.aif");
+	selectHigh.loadSound(GetCloudsDataPath() + "sound/interface/select_high.wav");
+	click.setLoop(false);
+	selectLow.setLoop(false);
+	selectMid.setLoop(false);
+	selectHigh.setLoop(false);
+
+}
+
 void CloudsIntroSequence::selfSetDefaults(){
 
 	selectedQuestion = NULL;
@@ -51,13 +63,10 @@ void CloudsIntroSequence::selfSetDefaults(){
 
 	promptTime = 0.0;
 	promptShown = false;
-
+	
 	// Set question defaults.
 	questionScale = 0.1f;
 	helperFontSize = 14; //TODO make dynamic per preset
-//    questionFontSize = 14;
-//    questionLineLength = 300.0f;
-//    questionLineSpacing = 1.0f;
 	questionMinZDistance = 50;
 	perlinOffset = 0;
 	
@@ -382,6 +391,8 @@ void CloudsIntroSequence::updateIntroNodeInteraction(IntroNode& node){
 	if(!node.hover && node.cursorDistance < questionTugDistance.min){
 		node.hover = true;
 		node.hoverStartTime = ofGetElapsedTimef();
+		click.setPosition(0);
+		click.play();
 	}
 	else if(node.hover){
 		if(node.cursorDistance > questionTugDistance.max){
@@ -391,6 +402,14 @@ void CloudsIntroSequence::updateIntroNodeInteraction(IntroNode& node){
 		else if(node.percentComplete >= 1.0){
 			node.finished = true;
 			node.finishedTime = nodeActivatedTime = ofGetElapsedTimef(); //used for alpha on helper text
+			if(node.multiplier == 0){
+				selectMid.setPosition(0);
+				selectMid.play();
+			}
+			else{
+				selectHigh.setPosition(0);
+				selectHigh.play();
+			}
 		}
 		else{
 			node.percentComplete = ofMap(ofGetElapsedTimef(), node.hoverStartTime, node.hoverStartTime+introNodeHoldTime, 0.0, 1.0,true);
@@ -483,6 +502,9 @@ void CloudsIntroSequence::updateQuestions(){
 					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &curQuestion;
 						if (caughtQuestion->startHovering()) {
+							click.setPosition(0);
+							click.play();
+
                             CloudsPortalEventArgs args(getQuestionText());
                             ofNotifyEvent(events.portalHoverBegan, args);
                         }
@@ -495,6 +517,9 @@ void CloudsIntroSequence::updateQuestions(){
 //				curQuestion.hoverPosition.z += cameraForwardSpeed;
 				if( caughtQuestion->isSelected() && !bQuestionDebug){
 					selectedQuestion = caughtQuestion;
+					selectLow.setPosition(0);
+					selectLow.play();
+
 				}
 				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
@@ -897,7 +922,7 @@ void CloudsIntroSequence::drawIntroNodes(){
 			ofColor arcColor = ofGetStyle().color;
 			if(introNodes[i]->finished){
 				afterFinishScalar = powf(ofMap(ofGetElapsedTimef(), introNodes[i]->finishedTime, introNodes[i]->finishedTime+.2, 0.0, 1.0, true), 2.0f);
-				nodeSize = introNodeSize + ( afterFinishScalar * 10.0);
+				nodeSize = introNodeSize + ( afterFinishScalar * 8.0);
 				arcColor.a = 255*(1.0-afterFinishScalar);
 			}
 			ofPath arc;

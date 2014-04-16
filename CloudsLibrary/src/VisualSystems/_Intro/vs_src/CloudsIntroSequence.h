@@ -34,6 +34,8 @@ typedef struct{
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
+	CloudsIntroSequence();
+	
 	string getSystemName();
 	
     void selfSetup();
@@ -147,7 +149,13 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	vector<CloudsPortal> startQuestions;
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;
-
+	
+	//sound effects
+	ofSoundPlayer click;
+	ofSoundPlayer selectHigh;
+	ofSoundPlayer selectMid;
+	ofSoundPlayer selectLow;
+	
 	vector<bool> questionChannels; //0-3 for the four qeustion slots
 	vector<float> channelPauseTime;
 	
