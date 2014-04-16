@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Questions</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>241.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>337.000000000</XPosition>
+    <YPosition>458.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>6</Kind>
     <Name>Question Z Range</Name>
-    <HighValue>97.142860413</HighValue>
+    <HighValue>57.142856598</HighValue>
     <LowValue>34.285713196</LowValue>
 </Widget>
 <Widget>
