@@ -131,6 +131,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionScale;
 	ofRange questionTugDistance;
 	ofRange questionAttenuateDistance;
+	float questionPauseDuration;
 	
 	bool bQuestionDebug;
 	float questionLineLength;
@@ -146,6 +147,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;
 
+	vector<bool> questionChannels; //0-3 for the four qeustion slots
+	vector<float> channelPauseTime;
+	
 	vector<string> loadedQuestions;
 	float perlinOffset;
 	float wireframeAlpha;
@@ -191,6 +195,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float nodeAlphaAttenuate;
 	float nodeActivatedTime;
 	ofVec2f hintCursorEndPoint;
+
 
 	
 	float timeSinceLastPrompt;
