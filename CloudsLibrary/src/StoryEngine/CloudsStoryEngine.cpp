@@ -1326,9 +1326,10 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
         linkScore += linkFactor;
     }
     
-    //penalize for the person occurring
-    //TODO: make this a little smarter
-    samePersonOccuranceScore = -occurrences * samePersonOccurrenceSuppressionFactor;
+    //penalize for the person occurring again after they have gone away, unless they are on a run
+	if(state.clip.person != potentialNextClip.person){
+		samePersonOccuranceScore = -occurrences * samePersonOccurrenceSuppressionFactor;
+	}
     
     //history should contain #keywords dichotomies, and then augment score
     vector<string> specialKeywords = potentialNextClip.getSpecialKeywords();
@@ -1376,7 +1377,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
         easyClipScore  = easyClipScoreFactor;
     }
 	
-	if(potentialNextClip.isPartOfSeries() && link){
+	if(potentialNextClip.isPartOfSeries() && state.clip.isPartOfSeries() && link){
 		seriesBoostScore += MIN(state.run,4) * seriesBoostFactor;
 	}
 	
