@@ -31,7 +31,7 @@ void CloudsInputOculus::update(ofEventArgs& data){
     lastPosition = currentPosition;
     currentPosition = (CloudsVisualSystem::getOculusRift().gazePosition2D());
     if (currentPosition.distance(lastPosition) > 0) {
-        interactionMoved(currentPosition, true, 0);
+        interactionMoved(currentPosition, true, false, 0);
     }
 }
 
