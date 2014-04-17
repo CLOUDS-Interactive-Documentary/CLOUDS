@@ -45,12 +45,15 @@ class CloudsVisualSystem2DVideo : public CloudsVisualSystem
     void loadMovieAtIndex(int index, bool reset);
     void loadMovieWithName(string name);
     void selfSetDefaults();
+    ofCamera& getCameraRef();
+
 
     void restart();
     void render();
 
 protected:
     ofxUISuperCanvas * playerGui;
+    ofQuaternion curRot;
 
 	void loadMovieFromRadio();
 	bool receivedFrame;
@@ -61,6 +64,9 @@ protected:
 	string loadedMoviePath;
     ofRectangle screenRect;
     ofRectangle videoRect;
+    ofMesh videoMesh;
+    ofFbo videoFbo;
     bool bFileLoaded;
     float inTime, outTime;
+    ofCamera  vidCam;
 };

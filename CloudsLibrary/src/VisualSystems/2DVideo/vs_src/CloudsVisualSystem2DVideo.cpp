@@ -7,7 +7,7 @@
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfSetupGui()
 {
-    
+    vidCam = ofCamera();
 	playerGui = new ofxUISuperCanvas("VideoPlayer", gui);
 	playerGui->copyCanvasStyle(gui);
 	playerGui->copyCanvasProperties(gui);
@@ -81,15 +81,17 @@ void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
 
 void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index, bool reset){
 
-    
+
     if( player != NULL && player->isPlaying()  ){
         player->stop();
     }
     player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
 	loadedMoviePath = movieStrings[index];
     if(player->loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
-        
-		player->play();
+
+
+		
+        player->play();
         bFileLoaded = false;
 		
 		if(reset){
@@ -236,7 +238,8 @@ void CloudsVisualSystem2DVideo::selfUpdate()
         videoRect.y = 0;
         videoRect.width = player->getWidth();
         videoRect.height = player->getHeight();
-        videoRect.scaleTo(screenRect);
+        //DONT NEED FOR 3D Drawing
+        //        videoRect.scaleTo(screenRect);
     
     }
     if (! bFileLoaded) {
@@ -267,9 +270,72 @@ void CloudsVisualSystem2DVideo::selfUpdate()
     
 }
 
+ofCamera& CloudsVisualSystem2DVideo::getCameraRef(){
+    return vidCam;
+    
+}
+
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfDraw()
 {
+//    ofCamera& cam =getCameraRef();
+    if(player->isLoaded() && receivedFrame){
+
+        
+        ofVec3f topLeft = vidCam.screenToWorld(screenRect.getTopLeft());
+        ofVec3f bottomLeft = vidCam.screenToWorld(screenRect.getBottomLeft());
+        ofVec3f topRight =vidCam.screenToWorld(screenRect.getTopRight());
+        ofVec3f bottomRight =vidCam.screenToWorld(screenRect.getBottomRight());
+
+        
+        //create a mesh
+        ofMesh mesh;
+        
+        
+        //TOP LEFT
+        //texture coordinates are in the image space
+        mesh.addTexCoord(videoRect.getTopLeft());
+        //vertices are in the screen space
+        mesh.addVertex(topLeft);
+
+        //BOTTOM LEFT
+        mesh.addTexCoord(videoRect.getBottomLeft());
+        mesh.addVertex(bottomLeft);
+
+        
+        //TOP RIGHT
+        mesh.addTexCoord(videoRect.getTopRight());
+        mesh.addVertex(topRight);
+        
+        //BOTTOM RIGHT
+        mesh.addTexCoord(videoRect.getBottomRight());
+        mesh.addVertex(bottomRight);
+
+        
+        mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+    
+        
+        vidCam.begin();
+        
+        //translate so that 0,0 is the center of the screen
+        ofPushMatrix();
+        //Extract the rotation from the current rotation
+        ofVec3f axis;
+        float angle;
+        curRot.getRotate(angle, axis);
+        
+        //apply the quaternion's rotation to the viewport and draw the sphere
+        ofRotate(angle, axis.x, axis.y, axis.z);
+        player->getTextureReference().bind();
+        mesh.draw();
+        player->getTextureReference().unbind();
+        
+        ofPopMatrix();
+        
+
+        vidCam.end();
+	}
+    
     
 }
 
@@ -282,7 +348,7 @@ void CloudsVisualSystem2DVideo::selfDrawDebug(){
 void CloudsVisualSystem2DVideo::selfDrawBackground()
 {
 	if(player->isLoaded() && receivedFrame){
-		player->draw(videoRect.x, videoRect.y, videoRect.width, videoRect.height);
+//		player->draw(videoRect.x, videoRect.y, videoRect.width, videoRect.height);
 	}
 	else {
 		ofLogError("CloudsVisualSystem2DVideo::selfDrawBackground") << "Video not loaded: " << loadedMoviePath;
@@ -323,15 +389,31 @@ void CloudsVisualSystem2DVideo::selfKeyPressed(ofKeyEventArgs & args){
     }
 }
 void CloudsVisualSystem2DVideo::selfKeyReleased(ofKeyEventArgs & args){
-	
+
 }
 
 void CloudsVisualSystem2DVideo::selfMouseDragged(ofMouseEventArgs& data){
-	
+//    float x = GetCloudsInputX();
+//    float y = GetCloudsInputY();
+//    
+//    
+//    ofVec2f mouse(x,y);
+//    ofQuaternion yRot((x-getCanvasWidth()/2)*.001, ofVec3f(0,1,0));
+//    ofQuaternion xRot((y-getCanvasHeight()/2    )*.001, ofVec3f(-1,0,0));
+////    ofQuaternion yRot((x-getCanvasHeight()/2)*.01, ofVec3f(0,1,0));
+////    ofQuaternion xRot((y-getCanvasWidth()/2)*.01, ofVec3f(-1,0,0));
+//    curRot *= yRot*xRot;
 }
 
 void CloudsVisualSystem2DVideo::selfMouseMoved(ofMouseEventArgs& data){
-	
+    float x = GetCloudsInputX();
+    float y = GetCloudsInputY();
+
+    ofQuaternion yRot((x-getCanvasWidth()/2)*.01, ofVec3f(0,1,0));
+    ofQuaternion xRot((y-getCanvasHeight()/2)*0.01, ofVec3f(1,0,0));
+
+    curRot *= yRot*xRot;
+
 }
 
 void CloudsVisualSystem2DVideo::selfMousePressed(ofMouseEventArgs& data){

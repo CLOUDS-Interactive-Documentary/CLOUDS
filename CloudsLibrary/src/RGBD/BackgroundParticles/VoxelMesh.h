@@ -9,11 +9,14 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxUI.h"
 
 class VoxelMesh {
   public:
 	VoxelMesh();
 		
+	void addGui(ofxUISuperCanvas* gui);
+	
 	void setup();
 	void update();
 	void draw();
