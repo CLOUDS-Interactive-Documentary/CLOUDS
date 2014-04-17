@@ -92,6 +92,25 @@ class CloudsVisualSystemBalloons : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+	ofVec3f randomPointInSphere(float rad, ofVec3f center = ofVec3f(0,0,0))
+	{
+		ofVec3f p;
+		p.x = ofRandom(-rad, rad);
+		p.y = ofRandom(-rad, rad);
+		p.z = ofRandom(-rad, rad);
+		
+		while(p.lengthSquared() > rad*rad)
+		{
+			p.x = ofRandom(-rad, rad);
+			p.y = ofRandom(-rad, rad);
+			p.z = ofRandom(-rad, rad);
+		}
+		
+		return p + center;
+	}
+	
+	void setBalloonPositions();
+	
 protected:
     
     //  Your Stuff
@@ -111,6 +130,8 @@ protected:
 	ofShader posShader;
 	ofShader velShader;
 	ofShader quatShader;
+	float noiseScl, offset, noiseSampleScale, velAtten, radius, accScl, gravity, attractionToCenter, cameraBounce,cameraAttractionToCenter, cameraOffset;
+	float spawnRad, cameraTargetDist;
 	
 	int dimY, dimX;
 	ofFbo posFbo0;

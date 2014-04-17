@@ -1,0 +1,62 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Balloons</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1000.000000000</XPosition>
+    <YPosition>6.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseScl</Name>
+    <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseSampleScale</Name>
+    <Value>0.020000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>velocityAttenuation</Name>
+    <Value>0.978093565</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>accelScale</Name>
+    <Value>0.103743836</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gravity</Name>
+    <Value>0.007418720</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>attractionToCenter</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cameraBounce</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cameraAttractionToCenter</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cameraTargetDist</Name>
+    <Value>140.591125488</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>dim</Name>
+    <Value>250.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>spawnRad</Name>
+    <Value>75.000000000</Value>
+</Widget>
