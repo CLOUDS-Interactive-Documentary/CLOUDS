@@ -492,6 +492,8 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		5030C1BE19001788006DE73A /* quatShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = quatShader.frag; sourceTree = "<group>"; };
+		5030C1BF19001788006DE73A /* quatShader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = quatShader.vert; sourceTree = "<group>"; };
 		506D625118FEF1E000F8FE01 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		506D625218FEF1E000F8FE01 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		506D625318FEF1E000F8FE01 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -510,6 +512,10 @@
 		506D628D18FEF46000F8FE01 /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
 		506D62A518FF058400F8FE01 /* normalShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = normalShader.frag; sourceTree = "<group>"; };
 		506D62A618FF058400F8FE01 /* normalShader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = normalShader.vert; sourceTree = "<group>"; };
+		50F113E618FF85590065D7FC /* velShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = velShader.frag; sourceTree = "<group>"; };
+		50F113E718FF85590065D7FC /* velShader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = velShader.vert; sourceTree = "<group>"; };
+		50F113E818FF861F0065D7FC /* posShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = posShader.frag; sourceTree = "<group>"; };
+		50F113E918FF861F0065D7FC /* posShader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = posShader.vert; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1222,6 +1228,12 @@
 			children = (
 				506D62A518FF058400F8FE01 /* normalShader.frag */,
 				506D62A618FF058400F8FE01 /* normalShader.vert */,
+				5030C1BE19001788006DE73A /* quatShader.frag */,
+				5030C1BF19001788006DE73A /* quatShader.vert */,
+				50F113E618FF85590065D7FC /* velShader.frag */,
+				50F113E718FF85590065D7FC /* velShader.vert */,
+				50F113E818FF861F0065D7FC /* posShader.frag */,
+				50F113E918FF861F0065D7FC /* posShader.vert */,
 			);
 			name = shaders;
 			path = ../../CloudsData/visualsystems/Balloons/shaders;

@@ -59,33 +59,83 @@ void CloudsVisualSystemBalloons::selfSetDefaults(){
 // geometry should be loaded here
 void CloudsVisualSystemBalloons::selfSetup()
 {
+	//make our ballons
+	dim = 500;
+	
+	//make data
+	dimX = 64;
+	dimY = 128;
+	
+	vector<ofVec3f>pos(dimY*dimX);
+	vector<ofVec3f>vel(dimY*dimX);
+	vector<ofVec3f>col(pos.size());
+	
+	for (int i=0; i<dimY; i++)
+	{
+		for(int j=0; j<dimX; j++)
+		{
+			pos[i*dimX + j].set(ofRandom(-dim, dim) * .5, ofRandom(-dim*3, -dim), ofRandom(-dim, dim) * .5);
+		}
+	}
+	
+	for(int i=0; i<col.size(); i++)
+	{
+		col[i].set(ofRandom(0,1),ofRandom(0,1),ofRandom(0,1));
+		vel[i].set(0,ofRandom(0, 2),0);
+	}
+	
+	//store data
+	//posiiton
+	posFbo0.allocate(dimX, dimY, GL_RGB32F);
+	posFbo0.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+    posFbo0.getTextureReference().loadData( &pos[0][0], dimX, dimY, GL_RGB);
+	
+	posFbo1.allocate(dimX, dimY, GL_RGB32F);
+	posFbo1.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+    posFbo1.getTextureReference().loadData( &pos[0][0], dimX, dimY, GL_RGB);
+	
+	//velocity
+	velFbo0.allocate(dimX, dimY, GL_RGB32F);
+	velFbo0.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+    velFbo0.getTextureReference().loadData( &vel[0][0], dimX, dimY, GL_RGB);
+	
+	velFbo1.allocate(dimX, dimY, GL_RGB32F);
+	velFbo1.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+    velFbo1.getTextureReference().loadData( &vel[0][0], dimX, dimY, GL_RGB);
+	
+	//rotations
+	quatFbo.allocate(dimX, dimY, GL_RGBA32F);
+	quatFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+	
+	p0 = &posFbo0;
+	p1 = &posFbo1;
+	
+	v0 = &velFbo0;
+	v1 = &velFbo1;
+	
+	//color
+	colFbo.allocate(dimX, dimY, GL_RGB);
+	colFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+    colFbo.getTextureReference().loadData( &col[0][0], dimX, dimY, GL_RGB);
+
 	//load balloon mesh
 	ofMesh temp;
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
+//	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_low.obj", temp);
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
+//	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
 	
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
-//	vector<ofIndexType>& i = temp.getIndices();
 	
 	total = v.size();
 
 	vbo.setVertexData(&v[0], v.size(), GL_STATIC_DRAW);
 	vbo.setNormalData(&n[0], n.size(), GL_STATIC_DRAW);
-//	vbo.setIndexData(&i[0], i.size(), GL_STATIC_DRAW);
-	
-	//make our ballons
-	dim = 500;
-	balloons.resize(5000);
-	for(int i=0; i<balloons.size(); i++)
-	{
-		balloons[i].pos.set(ofRandom(-dim,dim),ofRandom(-dim,dim),ofRandom(-dim,dim));
-		
-		balloons[i].color.set(ofRandom(0,255),ofRandom(0,255),ofRandom(0,255));
-		
-		balloons[i].vel.set(0,ofRandom(0, 1),0);
-	}
 	
 	shader.load(getVisualSystemDataPath() + "shaders/normalShader");
+	posShader.load(getVisualSystemDataPath() + "shaders/posShader");
+	velShader.load(getVisualSystemDataPath() + "shaders/velShader");
+	quatShader.load(getVisualSystemDataPath() + "shaders/quatShader");
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -112,36 +162,6 @@ void CloudsVisualSystemBalloons::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemBalloons::selfUpdate()
 {
-	float nScl = .01;
-	float nWeight = .005;
-	ofQuaternion q;
-	for (int i=0; i<balloons.size(); i++)
-	{
-		balloons[i].vel.x *= .99;
-		balloons[i].vel.z *= .99;
-		
-		balloons[i].vel.x += ofSignedNoise(balloons[i].pos.y * nScl, balloons[i].pos.z * nScl) * nWeight;
-		balloons[i].vel.z += ofSignedNoise(balloons[i].pos.y * nScl, balloons[i].pos.x * nScl) * nWeight;
-		
-		balloons[i].pos += balloons[i].vel;
-		
-		for(int j=0; j<3; j++)
-		{
-			if(balloons[i].pos[j] < -dim)
-			{
-				balloons[i].pos[j] += dim * 2;
-			}
-			else if(balloons[i].pos[j] > dim)
-			{
-				balloons[i].pos[j] -= dim * 2;
-			}
-		}
-		
-		balloons[i].transform.setTranslation(balloons[i].pos);
-		q.makeRotate(ofVec3f(0,1,0), balloons[i].vel);
-		balloons[i].transform.setRotate(q);
-	}
-
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -151,26 +171,75 @@ void CloudsVisualSystemBalloons::selfDraw()
 	ofPushStyle();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
+	//update positions
+	p0->begin();
+    ofClear(0, 255);
+	posShader.begin();
+	posShader.setUniformTexture("posTexture", p1->getTextureReference(), 0);
+	posShader.setUniformTexture("velTexture", v1->getTextureReference(), 1);
+	posShader.setUniform1f("dimX", dimX);
+	posShader.setUniform1f("dimY", dimY);
+	posShader.setUniform1f("bound", dim);
+
+	ofRect(-1,-1,2,2);
+	
+	posShader.end();
+	
+	p0->end();
+	swap(p0, p1);
+	
+	//update velocities
+	v0->begin();
+    ofClear(0, 255);
+	velShader.begin();
+	velShader.setUniformTexture("posTexture", p1->getTextureReference(), 0);
+	velShader.setUniformTexture("velTexture", v1->getTextureReference(), 1);
+	velShader.setUniform1f("dimX", dimX);
+	velShader.setUniform1f("dimY", dimY);
+	velShader.setUniform1f("bound", dim);
+	
+	ofVec3f camPos = getCameraRef().getPosition();
+	velShader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
+	
+	ofRect(-1,-1,2,2);
+	
+	velShader.end();
+	v0->end();
+	swap(v0, v1);
+	
+	//update the rotations
+	quatFbo.begin();
+    ofClear(0, 255);
+	quatShader.begin();
+	quatShader.setUniformTexture("velTexture", v1->getTextureReference(), 0);
+	quatShader.setUniform1f("dimX", dimX);
+	quatShader.setUniform1f("dimY", dimY);
+	
+	ofRect(-1,-1,2,2);
+	
+	quatShader.end();
+	quatFbo.end();
+	
+	//draw the balloons
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	
 	shader.begin();
-	shader.setUniform1f("dim", dim * 2);
+	shader.setUniform1f("shininess", 128);
 	
-	//bind the balloon once and draw it each point
+	shader.setUniform1f("dim", dim + ofVec2f(camPos.x, camPos.z).length());
+	shader.setUniform1f("facingRatio", .75);
+	
+	shader.setUniform1f("dimX", dimX);
+	shader.setUniform1f("dimY", dimY);
+	shader.setUniformTexture("posTexture", p0->getTextureReference(), 0);
+	shader.setUniformTexture("velTexture", v0->getTextureReference(), 1);
+	shader.setUniformTexture("colTexture", colFbo.getTextureReference(), 2);
+	shader.setUniformTexture("quatTexture", quatFbo.getTextureReference(), 3);
+	
+	//vbo instancing
 	vbo.bind();
-	for(int i=0; i<balloons.size(); i++)
-	{
-		ofSetColor(balloons[i].color);
-		
-		ofPushMatrix();
-		ofMultMatrix(balloons[i].transform);
-		ofScale(15,15,15);
-
-		glDrawArrays(GL_TRIANGLES, 0, total);
-		
-		ofPopMatrix();
-	}
+	glDrawArraysInstanced(GL_TRIANGLES, 0, total, dimX*dimY);
 	vbo.unbind();
 	
 	shader.end();
@@ -203,8 +272,14 @@ void CloudsVisualSystemBalloons::selfEnd(){
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
-void CloudsVisualSystemBalloons::selfExit(){
-	
+void CloudsVisualSystemBalloons::selfExit()
+{
+	posFbo0.getTextureReference().clear();
+	posFbo1.getTextureReference().clear();
+	velFbo0.getTextureReference().clear();
+	velFbo1.getTextureReference().clear();
+	colFbo.getTextureReference().clear();
+	quatFbo.getTextureReference().clear();
 }
 
 //events are called when the system is active

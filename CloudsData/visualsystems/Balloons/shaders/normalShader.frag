@@ -1,8 +1,9 @@
-#version 120
-#extension GL_ARB_texture_rectangle : enable
+//#version 120
+//#extension GL_ARB_texture_rectangle : enable
 
-uniform float shininess = 64.;
-uniform float dim = 1000.;
+uniform float shininess;
+uniform float dim;
+uniform float facingRatio;
 
 varying vec4 color;
 varying vec3 norm;
@@ -14,11 +15,14 @@ varying float zDist;
 void main(void)
 {
 	vec3 normal = normalize(norm);
-	float fr = pow( abs(dot( ePos, normal )), shininess);
-//	gl_FragColor = vec4( normal * .5 + .5 + fr, 1.) * color;
-	gl_FragColor = vec4( color.xyz + fr, 1.);
+	float fr = abs(dot(ePos, normal));
+	float spec = pow(fr, shininess);
 	
-	float atten = zDist / dim;
+	fr  = mix(1., fr * 1.3, facingRatio);
+
+	gl_FragColor = vec4( color.xyz * fr + spec, 1.);
+	
+	float atten = .5 * zDist / dim;
 	gl_FragColor.xyz *= min(1., 1. - atten * atten * atten);
 }
 
