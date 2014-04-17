@@ -30,6 +30,7 @@ void CloudsVisualSystem2DVideo::selfSetupGui()
 void CloudsVisualSystem2DVideo:: selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_INACTIVE;
     secondaryCursorMode =  CURSOR_MODE_INACTIVE;
+	rotationRange = ofVec2f(5,5);
 }
 
 //--------------------------------------------------------------
@@ -40,15 +41,7 @@ void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
 		if( ((ofxUIToggle*)e.widget)->getValue()){
 			loadMovieWithName( e.widget->getName() );
 		}
-		
-//        ofxUIToggle* t = (ofxUIToggle*)e.widget;
-//        cout<<t->getName()<<endl;
-//        for(int i =0; i<movieStrings.size(); i++){
-//            if (movieStrings[i] == t->getName()) {
-//				cout << "Loading movie from GUI " << movieStrings[i] << endl;
-//                loadMovieAtIndex(i);
-//            }
-//        }
+
     }
     if (e.getKind() == OFX_UI_WIDGET_BUTTON){
         
@@ -61,23 +54,7 @@ void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
     }
     
 }
-//void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index){
-//    if(player->isPlaying()){
-//        player->stop();
-//    }
-//	
-//    cout << getVisualSystemDataPath(true) << " : " << movieStrings[index]<<endl;
-//	loadedMoviePath = movieStrings[index];
-//	
-//    if(player->loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
-//        player->play();
-//        bFileLoaded = false;
-//    }
-//    else{
-//        cout<<"couldn't load the movie"<<endl;
-//    }
-//}
-//
+
 
 void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index, bool reset){
 
@@ -132,8 +109,6 @@ void CloudsVisualSystem2DVideo::selfSetup()
     
     movieIndex = 0;
     
-//    movieStrings.push_back("traffic_1.mov");
-//    movieStrings.push_back("unionsq_1 - Wi-Fi_Crop.mov");
     movieStrings.push_back("Alice.mov");
     movieStrings.push_back("D3_AAPL.mov");
     movieStrings.push_back("D3_Dial.mov");
@@ -192,15 +167,6 @@ void CloudsVisualSystem2DVideo::selfPresetLoaded(string presetPath)
 
 
 void CloudsVisualSystem2DVideo::loadMovieWithName(string name){
-    //LOADING MOVIE
-//    ofxUIRadio* r = (ofxUIRadio*)playerGui->getWidget("MOVIE FILES");
-//    vector<ofxUIToggle*> t = r->getToggles();
-    
-//    string movieName;
-//    for(int j = 0; j < t.size(); j++){
-//        if(t[j]->getValue()) {
-//            movieName = t[j]->getName();
-//
 	
 	for(int i = 0; i < movieStrings.size(); i++){
 		if (movieStrings[i] == name) {
@@ -208,10 +174,6 @@ void CloudsVisualSystem2DVideo::loadMovieWithName(string name){
 			break;
 		}
 	}
-	
-//			break;
-//        }
-//    }
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -259,15 +221,7 @@ void CloudsVisualSystem2DVideo::selfUpdate()
         if(outTime-inTime > 0){
             timeline->setDurationInSeconds(outTime - inTime);
         }
-        else{
-     
-        }
-
-    }
-    else{
-     
-    }
-    
+	}
 }
 
 ofCamera& CloudsVisualSystem2DVideo::getCameraRef(){
@@ -278,7 +232,7 @@ ofCamera& CloudsVisualSystem2DVideo::getCameraRef(){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfDraw()
 {
-//    ofCamera& cam =getCameraRef();
+
     if(player->isLoaded() && receivedFrame){
 
         
@@ -291,7 +245,6 @@ void CloudsVisualSystem2DVideo::selfDraw()
         //create a mesh
         ofMesh mesh;
         
-        
         //TOP LEFT
         //texture coordinates are in the image space
         mesh.addTexCoord(videoRect.getTopLeft());
@@ -302,7 +255,6 @@ void CloudsVisualSystem2DVideo::selfDraw()
         mesh.addTexCoord(videoRect.getBottomLeft());
         mesh.addVertex(bottomLeft);
 
-        
         //TOP RIGHT
         mesh.addTexCoord(videoRect.getTopRight());
         mesh.addVertex(topRight);
@@ -310,12 +262,21 @@ void CloudsVisualSystem2DVideo::selfDraw()
         //BOTTOM RIGHT
         mesh.addTexCoord(videoRect.getBottomRight());
         mesh.addVertex(bottomRight);
-
         
         mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-    
-        
-        vidCam.begin();
+    		
+        float xRotationPercent = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), -rotationRange.x, rotationRange.x,true);
+		currentRotation.x += (xRotationPercent - currentRotation.x) * .05;
+		
+        float yRotationPercent = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -rotationRange.y, rotationRange.y,true);
+		currentRotation.y += (yRotationPercent - currentRotation.y) * .05;
+		
+		ofTranslate(mesh.getCentroid());
+		ofRotate(currentRotation.x, 0, 1, 0);
+		ofRotate(currentRotation.y, 1, 0, 0);
+		ofTranslate(-mesh.getCentroid());
+		
+        //vidCam.begin();
         
         //translate so that 0,0 is the center of the screen
         ofPushMatrix();
@@ -325,7 +286,7 @@ void CloudsVisualSystem2DVideo::selfDraw()
         curRot.getRotate(angle, axis);
         
         //apply the quaternion's rotation to the viewport and draw the sphere
-        ofRotate(angle, axis.x, axis.y, axis.z);
+        //ofRotate(angle, axis.x, axis.y, axis.z);
         player->getTextureReference().bind();
         mesh.draw();
         player->getTextureReference().unbind();
@@ -333,7 +294,7 @@ void CloudsVisualSystem2DVideo::selfDraw()
         ofPopMatrix();
         
 
-        vidCam.end();
+        //vidCam.end();
 	}
     
     
@@ -364,8 +325,7 @@ void CloudsVisualSystem2DVideo::render()
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystem2DVideo::selfEnd(){
-       player->stop();
-	
+	player->stop();
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystem2DVideo::selfExit(){
@@ -406,13 +366,7 @@ void CloudsVisualSystem2DVideo::selfMouseDragged(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystem2DVideo::selfMouseMoved(ofMouseEventArgs& data){
-    float x = GetCloudsInputX();
-    float y = GetCloudsInputY();
 
-    ofQuaternion yRot((x-getCanvasWidth()/2)*.01, ofVec3f(0,1,0));
-    ofQuaternion xRot((y-getCanvasHeight()/2)*0.01, ofVec3f(1,0,0));
-
-    curRot *= yRot*xRot;
 
 }
 
