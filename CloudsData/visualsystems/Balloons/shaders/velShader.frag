@@ -3,6 +3,9 @@
 
 uniform sampler2DRect posTexture;
 uniform sampler2DRect velTexture;
+
+uniform vec3 camPos;
+
 uniform float bound;
 uniform float dimX;
 uniform float dimY;
@@ -30,13 +33,13 @@ float noise( in float x, in float y, in float z)
 void main()
 {
 	//TODO: make these uniforms
-	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .98, radius = 30., accScl = .2, gravity = .02;
+	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .98, radius = 20., accScl = .2, gravity = .02, attractionToCenter = .01, cameraBounce = 10.;
 	
 	vec3 pos = texture2DRect( posTexture, uv).xyz;
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
 	vec3 p = pos * noiseSampleScale;
-	vec3 acc;
+	vec3 acc = vec3(0.,.1,0.);
 	
 	//noise influence
 	acc.x = noise(p.x+offset, p.y, p.z) - noise(p.x-offset, p.y, p.z);
@@ -44,33 +47,50 @@ void main()
 	acc.z = noise(p.x, p.y, p.z+offset) - noise(p.x, p.y, p.z-offset);
 	acc *= noiseScl;
 	
-	vel *= velAtten;
-	
 	//collision testing
-	vec3 delta;
+	vec3 delta, deltaMag;
 	float dist;
 	int collisionCount = 0;
 	for (int i=0; i<int(dimX); i++)
 	{
 		for (int j=0; j<int(dimY); j++)
 		{
-			if(collisionCount<4)
+			if(collisionCount<6 && j != i)
 			{
 				delta = texture2DRect( posTexture, vec2(float(i), float(j))).xyz - pos;
-				dist = abs(delta.x) + abs(delta.y) + abs(delta.z);
-				if(dist < radius)
+				deltaMag = abs(delta);
+				if( deltaMag.y < radius && deltaMag.x < radius && deltaMag.z < radius)
 				{
-					acc -= normalize(delta) * (1. - dist / radius);
-					collisionCount++;
+					dist = deltaMag.x + deltaMag.y + deltaMag.z;
+					if(dist < radius)
+					{
+						acc -= normalize(delta) * (1. - dist / radius);
+						collisionCount++;
+					}
 				}
 			}
 		}
 	}
 	
+	//repel from camera
+	delta = camPos - pos;
+	deltaMag = abs(delta);
+	float camRadius = radius * 5.;
+	if( deltaMag.y < radius && deltaMag.x < radius && deltaMag.z < radius)
+	{
+		dist = deltaMag.x + deltaMag.y + deltaMag.z;
+		if(dist < camRadius)
+		{
+			acc -= normalize(delta) * cameraBounce *  (1. - dist / camRadius);
+			collisionCount++;
+		}
+	}
+	
 	//attract them to the center axis
-	acc.xz -= normalize(pos.xz) * .01;
+	acc.xz -= normalize(pos.xz) * attractionToCenter;
 	
 	//acceleration & gravity
+	vel *= velAtten;
 	vel += acc * accScl;
 	vel.y += gravity;
 	

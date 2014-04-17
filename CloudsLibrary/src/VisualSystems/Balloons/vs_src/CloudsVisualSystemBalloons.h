@@ -130,6 +130,7 @@ protected:
 	ofShader shader;
 	ofShader posShader;
 	ofShader velShader;
+	ofShader quatShader;
 	
 	int dimY, dimX;
 	ofFbo posFbo0;
