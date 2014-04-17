@@ -43,6 +43,7 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	currentVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 	nextVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 
+	currentClipHasSubtitles = nextClipHasSubtitles = false;
 }
 
 //---------------------------------------------------------------
@@ -70,7 +71,7 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
 
     /* Subtitles */
-    nextHaveSubtitles = loadSubtitles(subtitlesPath);
+    nextClipHasSubtitles = loadSubtitles(subtitlesPath);
     
 	clipPrerolled = true;
 	nextClipIsVO = false;
@@ -213,8 +214,8 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
 #ifdef SHOW_SUBTITLES
     swap(currentSubtitles, nextSubtitles);
-	swap(currentHaveSubtitles, nextHaveSubtitles);
 #endif
+	currentClipHasSubtitles = nextClipHasSubtitles;
 	if(nextClipIsVO){
 		currentVoiceoverPlayer->play();
 		currentVoiceoverPlayer->setLoop(false);
@@ -352,12 +353,12 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 			getPlayer().stop();
 		}
         
-#ifdef SHOW_SUBTITLES
         /* Subtitles */
-        if (currentHaveSubtitles) {
+        if (currentClipHasSubtitles) {
+#ifdef SHOW_SUBTITLES
             currentSubtitles.setTimeInSeconds(getPlayer().getCurrentTime());
-        }
 #endif
+        }
 	}
 }
 
@@ -370,7 +371,6 @@ bool CloudsRGBDVideoPlayer::isDone(){
 }
 
 #ifdef SHOW_SUBTITLES
-
 bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     
     if (path == "") {
@@ -414,7 +414,7 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 void CloudsRGBDVideoPlayer::drawSubtitles(float x, float y)
 {
 #ifdef SHOW_SUBTITLES
-    if (haveSubtitles()) {
+    if (hasSubtitles()) {
         ofPushStyle();
         ofSetColor(0, 200);
         currentSubtitles.draw(x+3, y-2);
@@ -428,8 +428,8 @@ void CloudsRGBDVideoPlayer::drawSubtitles(float x, float y)
 #endif
 }
     
-bool CloudsRGBDVideoPlayer::haveSubtitles()
+bool CloudsRGBDVideoPlayer::hasSubtitles()
 {
-    return currentHaveSubtitles;
+    return currentClipHasSubtitles;
 }
     

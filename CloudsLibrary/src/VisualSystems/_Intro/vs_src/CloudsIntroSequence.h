@@ -138,7 +138,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionLineLength;
     float questionLineSpacing;
 	float questionTunnelInnerRadius;
-	float questionMinZDistance;
+	ofRange questionZStopRange;
 	float currentFontSize;
 	float currentFontExtrusion;
 
