@@ -8,9 +8,10 @@ uniform float facingRatio;
 varying vec4 color;
 varying vec3 norm;
 varying vec3 ePos;
+varying vec4 vPos;
 varying vec2 uv;
 
-varying float zDist;
+varying float fogMix;
 
 void main(void)
 {
@@ -22,7 +23,9 @@ void main(void)
 
 	gl_FragColor = vec4( color.xyz * fr + spec, 1.);
 	
-	float atten = zDist / dim;
-	gl_FragColor.xyz *= min(1., 1. - atten * atten * atten);
+//	float atten = zDist / dim;
+//	gl_FragColor.xyz *= min(1., 1. - atten * atten * atten);
+	
+	gl_FragColor.xyz *= fogMix;
 }
 

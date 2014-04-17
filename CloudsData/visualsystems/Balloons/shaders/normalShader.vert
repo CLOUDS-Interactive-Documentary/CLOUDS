@@ -103,16 +103,20 @@ uniform sampler2DRect velTexture;
 uniform sampler2DRect quatTexture;
 uniform sampler2DRect colTexture;
 
+uniform vec3 camPos;
+
+uniform float dim;
 uniform float dimX;
 uniform float dimY;
 
 varying vec4 color;
 
 varying vec3 norm;
+varying vec4 vPos;
 varying vec3 ePos;
 varying vec2 uv;
 
-varying float zDist;
+varying float fogMix;
 
 
 
@@ -140,13 +144,14 @@ void main()
 
 	v.xyz += pos;
 	
+	vPos = v;
+	
 	vec4 ecPosition = gl_ModelViewMatrix * v;
-	
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
-	
 	gl_Position = gl_ProjectionMatrix * ecPosition;
 	
-	zDist = gl_Position.z;
+	fogMix = 1. - pow(abs(vPos.y) / dim, 10.);
 	
+	fogMix *= clamp(1. - pow(distance(camPos, vPos.xyz) / 1000., 3.), 0., 1.);
 }
 

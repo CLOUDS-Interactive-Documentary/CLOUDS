@@ -149,7 +149,7 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	ofVec3f p = getCameraPosition() * .01;
 	float noiseScl = .4;
 	float offset = .1;
-	float attractionToCenter = .1;
+	float attractionToCenter = 1;
 	acc.x = ofSignedNoise(p.x+offset, p.y, p.z) - ofSignedNoise(p.x-offset, p.y, p.z);
 	acc.y = ofSignedNoise(p.x, p.y+offset, p.z) - ofSignedNoise(p.x, p.y-offset, p.z);
 	acc.z = ofSignedNoise(p.x, p.y, p.z+offset) - ofSignedNoise(p.x, p.y, p.z-offset);
@@ -158,9 +158,10 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	
 	//attract them to the center axis
 	float camDistToOrigin = getCameraPosition().length();
-	if(camDistToOrigin > .1 * dim)
+	float minDist = dim * .3;
+	if(camDistToOrigin > minDist)
 	{
-		acc -= getCameraPosition().normalized() * attractionToCenter * camDistToOrigin / dim;
+		acc -= getCameraPosition().normalized() * attractionToCenter * ofMap(camDistToOrigin, minDist, dim, 0, 1, true);
 	}
 	
 	getCameraRef().move( acc );
@@ -227,7 +228,8 @@ void CloudsVisualSystemBalloons::selfDraw()
 	shader.begin();
 	shader.setUniform1f("shininess", 128);
 	
-	shader.setUniform1f("dim", dim + ofVec2f(camPos.x, camPos.z).length());
+	shader.setUniform1f("dim", dim );
+	shader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
 	shader.setUniform1f("facingRatio", .75);
 	
 	shader.setUniform1f("dimX", dimX);
