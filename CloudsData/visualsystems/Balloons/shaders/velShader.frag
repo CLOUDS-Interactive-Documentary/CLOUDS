@@ -54,7 +54,7 @@ void main()
 	{
 		for (int j=0; j<int(dimY); j++)
 		{
-			if(collisionCount<4)
+			if(collisionCount<2 && j != i)
 			{
 				delta = texture2DRect( posTexture, vec2(float(i), float(j))).xyz - pos;
 				dist = abs(delta.x) + abs(delta.y) + abs(delta.z);

@@ -64,7 +64,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	
 	//make data
 	dimX = 64;
-	dimY = 128;
+	dimY = 64;
 	
 	vector<ofVec3f>pos(dimY*dimX);
 	vector<ofVec3f>vel(dimY*dimX);
@@ -118,7 +118,6 @@ void CloudsVisualSystemBalloons::selfSetup()
 	colFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     colFbo.getTextureReference().loadData( &col[0][0], dimX, dimY, GL_RGB);
 
-
 	//load balloon mesh
 	ofMesh temp;
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
@@ -134,6 +133,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	shader.load(getVisualSystemDataPath() + "shaders/normalShader");
 	posShader.load(getVisualSystemDataPath() + "shaders/posShader");
 	velShader.load(getVisualSystemDataPath() + "shaders/velShader");
+	quatShader.load(getVisualSystemDataPath() + "shaders/quatShader");
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -202,6 +202,18 @@ void CloudsVisualSystemBalloons::selfDraw()
 	v0->end();
 	swap(v0, v1);
 	
+	//update the rotations
+	quatFbo.begin();
+    ofClear(0, 255);
+	quatShader.begin();
+	quatShader.setUniformTexture("velTexture", v1->getTextureReference(), 0);
+	quatShader.setUniform1f("dimX", dimX);
+	quatShader.setUniform1f("dimY", dimY);
+	
+	ofRect(-1,-1,2,2);
+	
+	quatShader.end();
+	quatFbo.end();
 	
 	//draw the balloons
 	glEnable(GL_CULL_FACE);
@@ -217,10 +229,11 @@ void CloudsVisualSystemBalloons::selfDraw()
 	shader.setUniformTexture("posTexture", p0->getTextureReference(), 0);
 	shader.setUniformTexture("velTexture", v0->getTextureReference(), 1);
 	shader.setUniformTexture("colTexture", colFbo.getTextureReference(), 2);
+	shader.setUniformTexture("quatTexture", quatFbo.getTextureReference(), 3);
 	
 	//vbo instancing
 	vbo.bind();
-	glDrawArraysInstanced(GL_TRIANGLES, 0, total, 64*64);
+	glDrawArraysInstanced(GL_TRIANGLES, 0, total, dimX*dimY);
 	vbo.unbind();
 	
 	shader.end();

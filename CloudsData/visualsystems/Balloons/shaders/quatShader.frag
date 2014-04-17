@@ -1,7 +1,11 @@
+#version 110
 #extension GL_ARB_texture_rectangle : enable
-#extension GL_EXT_gpu_shader4 : require
-//#version 150
-//#extension GL_ARB_texture_rectangle : enable
+
+uniform sampler2DRect velTexture;
+uniform float dimX;
+uniform float dimY;
+
+varying vec2 uv;
 
 vec3 rotateVectorByQuaternion( vec3 v, vec4 q ) {
 	
@@ -35,7 +39,7 @@ float lengthSquared(vec3 v)
 vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 {
 	vec4 _v;
-
+	
 	float fromLen2 = lengthSquared(sourceVector);
 	float fromLen;
 	// normalize only when necessary, epsilon test
@@ -43,7 +47,7 @@ vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 		fromLen = sqrt(fromLen2);
 		sourceVector /= fromLen;
 	} else fromLen = 1.0;
-
+	
 	float toLen2 = lengthSquared(targetVector);
 	// normalize only when necessary, epsilon test
 	if ((toLen2 < 1.0 - 1e-7) || (toLen2 > 1.0 + 1e-7)) {
@@ -59,7 +63,7 @@ vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 	// Now let's get into the real stuff
 	// Use "dot product plus one" as test as it can be re-used later on
 	float dotProdPlus1 = 1.0 + dot(sourceVector, targetVector);
-
+	
 	if (dotProdPlus1 < 1e-7)
 	{
 		if (abs(sourceVector.x) < 0.6) {
@@ -97,53 +101,13 @@ vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 	return _v;
 }
 
-
-uniform sampler2DRect posTexture;
-uniform sampler2DRect velTexture;
-uniform sampler2DRect quatTexture;
-uniform sampler2DRect colTexture;
-
-uniform float dimX;
-uniform float dimY;
-
-varying vec4 color;
-
-varying vec3 norm;
-varying vec3 ePos;
-varying vec2 uv;
-
-varying float zDist;
-
-
-
 void main()
 {
-	uv = gl_MultiTexCoord0.xy;
-	
-//	float scl = 10.;
-	vec4 v = gl_Vertex;// * vec4(scl,scl,scl, 1.);
-	
-	float s = mod(float(gl_InstanceID), dimY);
-	float t = floor(float(gl_InstanceID) / dimY);
-	
-	vec3 pos = texture2DRect( posTexture, vec2(s,t) ).xyz;
-	
-	vec3 velDir = (texture2DRect( velTexture, vec2(s,t) ).xyz);
-	vec4 q = texture2DRect( quatTexture, vec2(s,t) );
-	
-	v.xyz = qtransform(q, v.xyz);
-	v.xyz += pos;
-	
-	norm = gl_NormalMatrix * qtransform(q, gl_Normal);
-	
-	vec4 ecPosition = gl_ModelViewMatrix * v;
-	
-	ePos = normalize(ecPosition.xyz/ecPosition.w);
-	
-	gl_Position = gl_ProjectionMatrix * ecPosition;
-	
-	zDist = gl_Position.z;
-	
-	color = texture2DRect( colTexture, vec2(s,t) );
-}
+	vec3 vel = texture2DRect( velTexture, uv).xyz;
 
+	vec4 q = makeRotate(vec3(0.,1.,0.), normalize(vel) );
+	
+	
+	//draw it
+   	gl_FragColor = q;
+}
