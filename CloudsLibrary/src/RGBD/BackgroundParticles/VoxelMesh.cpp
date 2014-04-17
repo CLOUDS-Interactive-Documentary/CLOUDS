@@ -20,6 +20,35 @@ VoxelMesh::VoxelMesh(){
 
 }
 
+void VoxelMesh::addGui(ofxUISuperCanvas* gui){
+	
+	gui->addToggle("draw points", &drawPoints);
+	gui->addToggle("draw lines", &drawLines);
+	
+	gui->addIntSlider("num voxels", 10, 100, &numVoxels);
+	gui->addSlider("voxel spacing", 10, 100, &voxelWidth);
+	
+	gui->addSlider("sphere radius",  100, 800, &sphereRadius);
+	gui->addSlider("sphere percent", -2.0, 2.0, &spherePercent);
+	
+	gui->addRangeSlider("distance range", 0.0, 2.0, &minDistance, &maxDistance);
+	
+	gui->addSlider("twist speed x",  0, .001, &twistSpeedX);
+	gui->addSlider("twist factor x", 0, 1.0, &twistFactorX);
+	gui->addSlider("twist speed y",  0, .001, &twistSpeedY);
+	gui->addSlider("twist factor y", 0, 1.0, &twistFactorY);
+	
+	gui->addSlider("noise distort x", 0, 1.0, &noiseDistort.x);
+	gui->addSlider("noise distort y", 0, 1.0, &noiseDistort.y);
+	gui->addSlider("noise distort z", 0, 1.0, &noiseDistort.z);
+	gui->addSlider("noise distort radial", 0, 1.0, &noiseDistort.w);
+	gui->addSlider("noise density", 0, 0.2, &noiseDensity);
+	gui->addRangeSlider("center decay", 0, 1.0, &centerDecayMinRadius, &centerDecayMaxRadius);
+	
+	gui->addSlider("noise speed", 0, 0.1, &noiseSpeed);
+	
+
+}
 void VoxelMesh::setup(){
 	
 	regenerateGeometry();
