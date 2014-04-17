@@ -5,7 +5,6 @@
 #include "CloudsVisualSystemBalloons.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemBalloons::selfSetupGui(){
 
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
@@ -30,7 +29,6 @@ void CloudsVisualSystemBalloons::selfGuiEvent(ofxUIEventArgs &e){
 	}
 }
 
-//Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemBalloons::selfSetupSystemGui(){
 	
 }
@@ -38,7 +36,7 @@ void CloudsVisualSystemBalloons::selfSetupSystemGui(){
 void CloudsVisualSystemBalloons::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
-//use render gui for display settings, like changing colors
+
 void CloudsVisualSystemBalloons::selfSetupRenderGui(){
 
 }
@@ -47,16 +45,10 @@ void CloudsVisualSystemBalloons::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-//This is called whenever a new preset is loaded, before selfSetup()
-//use it to ensure all your simple variables are initialized to an
-//acceptable default state
 void CloudsVisualSystemBalloons::selfSetDefaults(){
 
 }
 
-// selfSetup is called when the visual system is first instantiated
-// This will be called during a "loading" screen, so any big images or
-// geometry should be loaded here
 void CloudsVisualSystemBalloons::selfSetup()
 {
 	//make our ballons
@@ -138,34 +130,42 @@ void CloudsVisualSystemBalloons::selfSetup()
 	quatShader.load(getVisualSystemDataPath() + "shaders/quatShader");
 }
 
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){
 	
 }
 
-// selfBegin is called when the system is ready to be shown
-// this is a good time to prepare for transitions
-// but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemBalloons::selfBegin()
 {
 	
 }
 
-//do things like ofRotate/ofTranslate here
-//any type of transformation that doesn't have to do with the camera
 void CloudsVisualSystemBalloons::selfSceneTransformation(){
 	
 }
 
-//normal update call
 void CloudsVisualSystemBalloons::selfUpdate()
 {
+	ofVec3f acc;
+	ofVec3f p = getCameraPosition() * .01;
+	float noiseScl = .4;
+	float offset = .1;
+	float attractionToCenter = .1;
+	acc.x = ofSignedNoise(p.x+offset, p.y, p.z) - ofSignedNoise(p.x-offset, p.y, p.z);
+	acc.y = ofSignedNoise(p.x, p.y+offset, p.z) - ofSignedNoise(p.x, p.y-offset, p.z);
+	acc.z = ofSignedNoise(p.x, p.y, p.z+offset) - ofSignedNoise(p.x, p.y, p.z-offset);
+	acc *= noiseScl;
+	
+	
+	//attract them to the center axis
+	float camDistToOrigin = getCameraPosition().length();
+	if(camDistToOrigin > .1 * dim)
+	{
+		acc -= getCameraPosition().normalized() * attractionToCenter * camDistToOrigin / dim;
+	}
+	
+	getCameraRef().move( acc );
 }
 
-// selfDraw draws in 3D using the default ofEasyCamera
-// you can change the camera by returning getCameraRef()
 void CloudsVisualSystemBalloons::selfDraw()
 {
 	ofPushStyle();
@@ -248,11 +248,10 @@ void CloudsVisualSystemBalloons::selfDraw()
 	ofPopStyle();
 }
 
-// draw any debug stuff here
 void CloudsVisualSystemBalloons::selfDrawDebug(){
 	
 }
-// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
+
 void CloudsVisualSystemBalloons::selfDrawBackground(){
 
 	//we are using this to draw what keywords are missing content
@@ -266,12 +265,11 @@ void CloudsVisualSystemBalloons::selfDrawBackground(){
 	}
 	
 }
-// this is called when your system is no longer drawing.
-// Right after this selfUpdate() and selfDraw() won't be called any more
+
 void CloudsVisualSystemBalloons::selfEnd(){	
 	
 }
-// this is called when you should clear all the memory and delet anything you made in setup
+
 void CloudsVisualSystemBalloons::selfExit()
 {
 	posFbo0.getTextureReference().clear();
@@ -282,8 +280,6 @@ void CloudsVisualSystemBalloons::selfExit()
 	quatFbo.getTextureReference().clear();
 }
 
-//events are called when the system is active
-//Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemBalloons::selfKeyPressed(ofKeyEventArgs & args){
 	
 }

@@ -48,13 +48,13 @@ void bounce(inout vec3 acc, in vec3 pos, in vec3 p, inout int collisionCount, fl
 void main()
 {
 	//TODO: make these uniforms
-	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .98, radius = 20., accScl = .2, gravity = .02, attractionToCenter = .01, cameraBounce = 10.;
+	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .97, radius = 25., accScl = .2, gravity = .02, attractionToCenter = .01, cameraBounce = 10.;
 	
 	vec3 pos = texture2DRect( posTexture, uv).xyz;
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
 	vec3 p = pos * noiseSampleScale;
-	vec3 acc = vec3(0.,.1,0.);
+	vec3 acc = vec3(0.,.05,0.);
 	
 	//noise influence
 	acc.x = noise(p.x+offset, p.y, p.z) - noise(p.x-offset, p.y, p.z);
@@ -78,9 +78,8 @@ void main()
 	}
 	
 	//repel from camera
-	bounce(acc, pos, camPos, collisionCount, radius * 4.);
+	bounce(acc, pos, camPos, collisionCount, radius * 2.5);
 
-	
 	//attract them to the center axis
 	acc.xz -= normalize(pos.xz) * attractionToCenter;
 	
