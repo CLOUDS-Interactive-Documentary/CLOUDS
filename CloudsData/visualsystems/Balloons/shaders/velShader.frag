@@ -25,9 +25,24 @@ float noise( in vec3 x )
                    mix( hash(n+270.0), hash(n+271.0),f.x),f.y),f.z);
 }
 
-float noise( in float x, in float y, in float z)
+float noise( float x, float y, float z)
 {
 	return noise( vec3(x,y,z) );
+}
+
+void bounce(inout vec3 acc, in vec3 pos, in vec3 p, inout int collisionCount, float radius)
+{
+	vec3 delta = p - pos;//texture2DRect( posTexture, vec2(float(i), float(j))).xyz - pos;
+	vec3 deltaMag = abs(delta);
+	if( deltaMag.y < radius && deltaMag.x < radius && deltaMag.z < radius)
+	{
+		float dist = deltaMag.x + deltaMag.y + deltaMag.z;
+		if(dist < radius)
+		{
+			acc -= normalize(delta) * (1. - dist / radius);
+			collisionCount++;
+		}
+	}
 }
 
 void main()
@@ -57,34 +72,14 @@ void main()
 		{
 			if(collisionCount<6 && j != i)
 			{
-				delta = texture2DRect( posTexture, vec2(float(i), float(j))).xyz - pos;
-				deltaMag = abs(delta);
-				if( deltaMag.y < radius && deltaMag.x < radius && deltaMag.z < radius)
-				{
-					dist = deltaMag.x + deltaMag.y + deltaMag.z;
-					if(dist < radius)
-					{
-						acc -= normalize(delta) * (1. - dist / radius);
-						collisionCount++;
-					}
-				}
+				bounce(acc, pos, texture2DRect( posTexture, vec2(float(i), float(j))).xyz, collisionCount, radius);
 			}
 		}
 	}
 	
 	//repel from camera
-	delta = camPos - pos;
-	deltaMag = abs(delta);
-	float camRadius = radius * 5.;
-	if( deltaMag.y < radius && deltaMag.x < radius && deltaMag.z < radius)
-	{
-		dist = deltaMag.x + deltaMag.y + deltaMag.z;
-		if(dist < camRadius)
-		{
-			acc -= normalize(delta) * cameraBounce *  (1. - dist / camRadius);
-			collisionCount++;
-		}
-	}
+	bounce(acc, pos, camPos, collisionCount, radius * 4.);
+
 	
 	//attract them to the center axis
 	acc.xz -= normalize(pos.xz) * attractionToCenter;

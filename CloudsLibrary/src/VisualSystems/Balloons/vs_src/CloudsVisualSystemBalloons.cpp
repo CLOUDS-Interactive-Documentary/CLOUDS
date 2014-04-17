@@ -60,11 +60,11 @@ void CloudsVisualSystemBalloons::selfSetDefaults(){
 void CloudsVisualSystemBalloons::selfSetup()
 {
 	//make our ballons
-	dim = 500;
+	dim = 300;
 	
 	//make data
 	dimX = 64;
-	dimY = 128;
+	dimY = 64;
 	
 	vector<ofVec3f>pos(dimY*dimX);
 	vector<ofVec3f>vel(dimY*dimX);
@@ -121,8 +121,8 @@ void CloudsVisualSystemBalloons::selfSetup()
 	//load balloon mesh
 	ofMesh temp;
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_low.obj", temp);
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
-//	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
+//	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
 	
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
