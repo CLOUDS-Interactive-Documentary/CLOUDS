@@ -60,7 +60,7 @@ void CloudsVisualSystemBalloons::selfSetDefaults(){
 void CloudsVisualSystemBalloons::selfSetup()
 {
 	//make our ballons
-	dim = 400;
+	dim = 500;
 	
 	//make data
 	dimX = 64;
