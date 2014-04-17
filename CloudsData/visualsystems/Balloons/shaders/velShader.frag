@@ -9,6 +9,9 @@ uniform vec3 camPos;
 uniform float bound;
 uniform float dimX;
 uniform float dimY;
+
+uniform float netHeight;
+
 varying vec2 uv;
 
 float hash( float n ) { return fract(sin(n)*43758.5453123); }
@@ -87,6 +90,12 @@ void main()
 	vel *= velAtten;
 	vel += acc * accScl;
 	vel.y += gravity;
+	
+	float smoothZone = radius * 3.;
+	if (pos.y >= netHeight - smoothZone)
+	{
+		vel.y *= smoothstep(0., 1., (netHeight - pos.y)/smoothZone );
+	}
 	
 	//draw it
    	gl_FragColor = vec4(vel, 1.0);

@@ -167,6 +167,13 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	}
 	
 	getCameraRef().move( acc );
+	
+	
+	netHeight = ofGetElapsedTimef()*20. - dim;
+	if (netHeight > 0)
+	{
+		netHeight = 100000;
+	}
 }
 
 void CloudsVisualSystemBalloons::selfDraw()
@@ -197,6 +204,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.begin();
 	velShader.setUniformTexture("posTexture", p1->getTextureReference(), 0);
 	velShader.setUniformTexture("velTexture", v1->getTextureReference(), 1);
+	velShader.setUniform1f("netHeight", netHeight );
 	velShader.setUniform1f("dimX", dimX);
 	velShader.setUniform1f("dimY", dimY);
 	velShader.setUniform1f("bound", dim);

@@ -13,21 +13,6 @@
 #include "CloudsVisualSystem.h"
 #include "ofxObjLoader.h"
 
-class Balloon
-{
-public:
-	Balloon()
-	{
-	}
-	~Balloon()
-	{
-	}
-
-	float radius;
-	ofVec3f pos, vel;
-	ofColor color;
-	ofMatrix4x4 transform;
-};
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemBalloons : public CloudsVisualSystem {
@@ -107,11 +92,6 @@ class CloudsVisualSystemBalloons : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	static bool compareBalloonsY(Balloon a, Balloon b)
-	{
-		return a.pos.y < b.pos.y;
-	}
-
 protected:
     
     //  Your Stuff
@@ -125,7 +105,7 @@ protected:
 	ofVbo vbo;
 	int total;
 	float dim;
-	vector<Balloon> balloons;
+	float netHeight;
 	
 	ofShader shader;
 	ofShader posShader;
