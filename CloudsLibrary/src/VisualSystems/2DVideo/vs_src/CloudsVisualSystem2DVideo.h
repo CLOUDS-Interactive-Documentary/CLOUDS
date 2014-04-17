@@ -47,7 +47,9 @@ class CloudsVisualSystem2DVideo : public CloudsVisualSystem
     void selfSetDefaults();
     ofCamera& getCameraRef();
 
-
+	ofVec2f currentRotation;
+	ofVec2f rotationRange; //make a gui
+	
     void restart();
     void render();
 

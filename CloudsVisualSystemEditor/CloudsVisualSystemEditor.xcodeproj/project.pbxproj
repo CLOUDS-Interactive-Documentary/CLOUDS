@@ -739,6 +739,15 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7032AF919002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032AF719002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp */; };
+		E7032AFA19002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032AF719002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp */; };
+		E7032AFB19002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032AF719002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp */; };
+		E7032B0019002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032AFE19002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp */; };
+		E7032B0119002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032AFE19002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp */; };
+		E7032B0219002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032AFE19002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp */; };
+		E7032B071900324B00AFD9BA /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032B051900324B00AFD9BA /* VoxelMesh.cpp */; };
+		E7032B081900324B00AFD9BA /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032B051900324B00AFD9BA /* VoxelMesh.cpp */; };
+		E7032B091900324B00AFD9BA /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032B051900324B00AFD9BA /* VoxelMesh.cpp */; };
 		E70CE7B91869649100955691 /* CloudsVisualSystem2DVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE3A51869648900955691 /* CloudsVisualSystem2DVideo.cpp */; };
 		E70CE7BA1869649100955691 /* CloudsVisualSystem2DVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE3A51869648900955691 /* CloudsVisualSystem2DVideo.cpp */; };
 		E70CE7BF1869649100955691 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE3AC1869648900955691 /* CloudsOrthoCamera.cpp */; };
@@ -1929,6 +1938,12 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E7032AF719002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemParadox.cpp; sourceTree = "<group>"; };
+		E7032AF819002E2D00AFD9BA /* CloudsVisualSystemParadox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemParadox.h; sourceTree = "<group>"; };
+		E7032AFE19002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemBalloons.cpp; sourceTree = "<group>"; };
+		E7032AFF19002E3800AFD9BA /* CloudsVisualSystemBalloons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemBalloons.h; sourceTree = "<group>"; };
+		E7032B051900324B00AFD9BA /* VoxelMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VoxelMesh.cpp; path = ../../../RGBD/BackgroundParticles/VoxelMesh.cpp; sourceTree = "<group>"; };
+		E7032B061900324B00AFD9BA /* VoxelMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoxelMesh.h; path = ../../../RGBD/BackgroundParticles/VoxelMesh.h; sourceTree = "<group>"; };
 		E70CE3A51869648900955691 /* CloudsVisualSystem2DVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem2DVideo.cpp; sourceTree = "<group>"; };
 		E70CE3A61869648900955691 /* CloudsVisualSystem2DVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem2DVideo.h; sourceTree = "<group>"; };
 		E70CE3AC1869648900955691 /* CloudsOrthoCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsOrthoCamera.cpp; sourceTree = "<group>"; };
@@ -3805,9 +3820,47 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
+		E7032AF519002E2D00AFD9BA /* Paradox */ = {
+			isa = PBXGroup;
+			children = (
+				E7032AF619002E2D00AFD9BA /* vs_src */,
+			);
+			path = Paradox;
+			sourceTree = "<group>";
+		};
+		E7032AF619002E2D00AFD9BA /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E7032B051900324B00AFD9BA /* VoxelMesh.cpp */,
+				E7032B061900324B00AFD9BA /* VoxelMesh.h */,
+				E7032AF719002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp */,
+				E7032AF819002E2D00AFD9BA /* CloudsVisualSystemParadox.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E7032AFC19002E3800AFD9BA /* Balloons */ = {
+			isa = PBXGroup;
+			children = (
+				E7032AFD19002E3800AFD9BA /* vs_src */,
+			);
+			path = Balloons;
+			sourceTree = "<group>";
+		};
+		E7032AFD19002E3800AFD9BA /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E7032AFE19002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp */,
+				E7032AFF19002E3800AFD9BA /* CloudsVisualSystemBalloons.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		E70CE3A21869648900955691 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E7032AFC19002E3800AFD9BA /* Balloons */,
+				E7032AF519002E2D00AFD9BA /* Paradox */,
 				85384FAB18845B560076AF5A /* MazeGenerator2 */,
 				85384F661884565A0076AF5A /* DrawnLine */,
 				85891AB7187F5E1400325DD8 /* Swim */,
@@ -7900,6 +7953,7 @@
 				64CE97A01880DB8100491913 /* Filters.cpp in Sources */,
 				64CE97A11880DB8100491913 /* AppDelegate.m in Sources */,
 				64CE97A21880DB8100491913 /* main.m in Sources */,
+				E7032B091900324B00AFD9BA /* VoxelMesh.cpp in Sources */,
 				64CE97A31880DB8100491913 /* testView.mm in Sources */,
 				64CE97A41880DB8100491913 /* ofxCocoaGLView.mm in Sources */,
 				64CE97A51880DB8100491913 /* ofxOceanRenderer.cpp in Sources */,
@@ -8140,6 +8194,7 @@
 				64CE988C1880DB8100491913 /* SineWave.cpp in Sources */,
 				64CE988D1880DB8100491913 /* LUTPass.cpp in Sources */,
 				64CE988E1880DB8100491913 /* NoiseWarpPass.cpp in Sources */,
+				E7032AFB19002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp in Sources */,
 				64CE988F1880DB8100491913 /* PixelatePass.cpp in Sources */,
 				64CE98901880DB8100491913 /* PostProcessing.cpp in Sources */,
 				64CE98911880DB8100491913 /* RenderPass.cpp in Sources */,
@@ -8360,6 +8415,7 @@
 				64CE99671880DB8100491913 /* CloudsVisualSystemXstatic.cpp in Sources */,
 				64CE99681880DB8100491913 /* XParticle.cpp in Sources */,
 				64CE99691880DB8100491913 /* CloudsVisualSystemYellowTail.cpp in Sources */,
+				E7032B0219002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp in Sources */,
 				64CE996A1880DB8100491913 /* ControlRandom.cpp in Sources */,
 				64CE996B1880DB8100491913 /* Gesture.cpp in Sources */,
 				64CE996C1880DB8100491913 /* GestureRenderer.cpp in Sources */,
@@ -8421,6 +8477,7 @@
 				F37C7EA1186EB28C00FCDA79 /* Filters.cpp in Sources */,
 				6091337D1652C9C900B523AD /* AppDelegate.m in Sources */,
 				6091337E1652C9C900B523AD /* main.m in Sources */,
+				E7032B071900324B00AFD9BA /* VoxelMesh.cpp in Sources */,
 				609133871652CB3E00B523AD /* testView.mm in Sources */,
 				608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */,
 				28927CA718591B9F00640B50 /* ofxOceanRenderer.cpp in Sources */,
@@ -8661,6 +8718,7 @@
 				F37C7EBD186EB28C00FCDA79 /* SineWave.cpp in Sources */,
 				85D98AFD18381E6800D7065D /* LUTPass.cpp in Sources */,
 				85D98AFF18381E6800D7065D /* NoiseWarpPass.cpp in Sources */,
+				E7032AF919002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp in Sources */,
 				85D98B0118381E6800D7065D /* PixelatePass.cpp in Sources */,
 				85D98B0318381E6800D7065D /* PostProcessing.cpp in Sources */,
 				85D98B0518381E6800D7065D /* RenderPass.cpp in Sources */,
@@ -8881,6 +8939,7 @@
 				E70CEC5B1869649200955691 /* CloudsVisualSystemXstatic.cpp in Sources */,
 				E70CEC5D1869649200955691 /* XParticle.cpp in Sources */,
 				E70CEC5F1869649200955691 /* CloudsVisualSystemYellowTail.cpp in Sources */,
+				E7032B0019002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp in Sources */,
 				F37C7E89186EB28C00FCDA79 /* ControlRandom.cpp in Sources */,
 				E70CEC611869649200955691 /* Gesture.cpp in Sources */,
 				E70CEC631869649200955691 /* GestureRenderer.cpp in Sources */,
@@ -8975,6 +9034,7 @@
 				E7FB28701830D9E2009EBD0E /* ofxTLImageSequence.cpp in Sources */,
 				E7FB28711830D9E2009EBD0E /* ofxTLImageSequenceFrame.cpp in Sources */,
 				F37C7E5E186EB28C00FCDA79 /* BasicDelay.cpp in Sources */,
+				E7032B081900324B00AFD9BA /* VoxelMesh.cpp in Sources */,
 				E7FB28721830D9E2009EBD0E /* ofxTLImageTrack.cpp in Sources */,
 				F37C7E76186EB28C00FCDA79 /* ControlDbToLinear.cpp in Sources */,
 				F37C7EBA186EB28C00FCDA79 /* SampleTable.cpp in Sources */,
@@ -9027,6 +9087,7 @@
 				E7FB289D1830D9E2009EBD0E /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7FB289E1830D9E2009EBD0E /* ofxSwarmBehavior.cpp in Sources */,
 				E7FB289F1830D9E2009EBD0E /* ofxVerletSolver.cpp in Sources */,
+				E7032AFA19002E2D00AFD9BA /* CloudsVisualSystemParadox.cpp in Sources */,
 				E7FB28A01830D9E2009EBD0E /* ofxCameraSaveLoad.cpp in Sources */,
 				E7FB28A51830D9E2009EBD0E /* MSAObjCPointer.cpp in Sources */,
 				28927CAC18591B9F00640B50 /* ofxOcean.cpp in Sources */,
@@ -9136,6 +9197,7 @@
 				E7FB295C1830D9E2009EBD0E /* TerrainRayTest.cpp in Sources */,
 				E7FB295D1830D9E2009EBD0E /* Vec3.cpp in Sources */,
 				E7FB295E1830D9E2009EBD0E /* Vec3Utilities.cpp in Sources */,
+				E7032B0119002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp in Sources */,
 				E7FB295F1830D9E2009EBD0E /* ofxOpenSteerPlugin.cpp in Sources */,
 				E7FB29601830D9E2009EBD0E /* ofxOpenSteerVehicle.cpp in Sources */,
 				E7FB29611830D9E2009EBD0E /* ofxSimpleSurface.cpp in Sources */,
