@@ -10,6 +10,19 @@ uniform float bound;
 uniform float dimX;
 uniform float dimY;
 
+
+uniform float noiseScl;
+uniform float time;
+uniform float offset;
+uniform float noiseSampleScale;
+uniform float velAtten;
+uniform float radius;
+uniform float accScl;
+uniform float gravity;
+uniform float attractionToCenter;
+uniform float cameraBounce;
+
+
 uniform float netHeight;
 
 varying vec2 uv;
@@ -50,14 +63,15 @@ void bounce(inout vec3 acc, in vec3 pos, in vec3 p, inout int collisionCount, fl
 
 void main()
 {
-	//TODO: make these uniforms
-	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .97, radius = 25., accScl = .2, gravity = .02, attractionToCenter = .01, cameraBounce = 10.;
+//	//TODO: make these uniforms
+//	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .97, radius = 25., accScl = .2, gravity = .02, attractionToCenter = .01, cameraBounce = 10.;
 	
 	vec3 pos = texture2DRect( posTexture, uv).xyz;
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
 	vec3 p = pos * noiseSampleScale;
-	vec3 acc = vec3(0.,.05,0.);
+	p.y += time;
+	vec3 acc = vec3(0.,0.,0.);
 	
 	//noise influence
 	acc.x = noise(p.x+offset, p.y, p.z) - noise(p.x-offset, p.y, p.z);
@@ -90,12 +104,6 @@ void main()
 	vel *= velAtten;
 	vel += acc * accScl;
 	vel.y += gravity;
-	
-	float smoothZone = radius * 3.;
-	if (pos.y >= netHeight - smoothZone)
-	{
-		vel.y *= smoothstep(0., 1., (netHeight - pos.y)/smoothZone );
-	}
 	
 	//draw it
    	gl_FragColor = vec4(vel, 1.0);

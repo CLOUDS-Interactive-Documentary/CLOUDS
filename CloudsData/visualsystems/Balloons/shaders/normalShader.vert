@@ -124,6 +124,7 @@ void main()
 	uv = gl_MultiTexCoord0.xy;
 	vec2 st = vec2(mod(float(gl_InstanceID), dimY), floor(float(gl_InstanceID) / dimY));
 	vec4 v = gl_Vertex;
+	v.xyz *= .5;
 	
 	color = texture2DRect( colTexture, st );
 	vec4 q = texture2DRect( quatTexture, st );

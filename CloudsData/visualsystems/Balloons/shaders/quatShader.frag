@@ -105,7 +105,7 @@ void main()
 {
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 
-	vec4 q = makeRotate(vec3(0.,1.,0.), normalize(vel) );
+	vec4 q = makeRotate(vec3(0.,1.,0.), vel );
 	
 	
 	//draw it
