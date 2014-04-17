@@ -123,14 +123,8 @@ varying float fogMix;
 void main()
 {
 	uv = gl_MultiTexCoord0.xy;
-	
-//	float scl = 10.;
-	vec4 v = gl_Vertex;// * vec4(scl,scl,scl, 1.);
-	
-//	float s = mod(float(gl_InstanceID), dimY);
-//	float t = floor(float(gl_InstanceID) / dimY);
-	
 	vec2 st = vec2(mod(float(gl_InstanceID), dimY), floor(float(gl_InstanceID) / dimY));
+	vec4 v = gl_Vertex;
 	
 	color = texture2DRect( colTexture, st );
 	vec4 q = texture2DRect( quatTexture, st );
@@ -139,8 +133,6 @@ void main()
 	
 	norm = gl_NormalMatrix * qtransform(q, gl_Normal);
 	v.xyz = qtransform(q, v.xyz);
-	
-	norm = gl_NormalMatrix * gl_Normal;
 
 	v.xyz += pos;
 	
