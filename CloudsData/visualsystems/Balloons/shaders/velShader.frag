@@ -30,8 +30,7 @@ float noise( in float x, in float y, in float z)
 void main()
 {
 	//TODO: make these uniforms
-	float noiseScl = .25;
-	float offset = .1, noiseSampleScale = .02, velAtten = .98, radius = 30., accScl = .2, gravity = .02;
+	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .98, radius = 30., accScl = .2, gravity = .02;
 	
 	vec3 pos = texture2DRect( posTexture, uv).xyz;
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
@@ -55,7 +54,7 @@ void main()
 	{
 		for (int j=0; j<int(dimY); j++)
 		{
-			if(collisionCount<3)
+			if(collisionCount<4)
 			{
 				delta = texture2DRect( posTexture, vec2(float(i), float(j))).xyz - pos;
 				dist = abs(delta.x) + abs(delta.y) + abs(delta.z);

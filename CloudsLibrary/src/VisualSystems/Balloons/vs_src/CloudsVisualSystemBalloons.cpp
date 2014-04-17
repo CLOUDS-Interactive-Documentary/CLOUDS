@@ -103,6 +103,10 @@ void CloudsVisualSystemBalloons::selfSetup()
 	velFbo1.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     velFbo1.getTextureReference().loadData( &vel[0][0], dimX, dimY, GL_RGB);
 	
+	//rotations
+	quatFbo.allocate(dimX, dimY, GL_RGBA32F);
+	quatFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+	
 	p0 = &posFbo0;
 	p1 = &posFbo1;
 	
@@ -249,8 +253,14 @@ void CloudsVisualSystemBalloons::selfEnd(){
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
-void CloudsVisualSystemBalloons::selfExit(){
-	
+void CloudsVisualSystemBalloons::selfExit()
+{
+	posFbo0.getTextureReference().clear();
+	posFbo1.getTextureReference().clear();
+	velFbo0.getTextureReference().clear();
+	velFbo1.getTextureReference().clear();
+	colFbo.getTextureReference().clear();
+	quatFbo.getTextureReference().clear();
 }
 
 //events are called when the system is active

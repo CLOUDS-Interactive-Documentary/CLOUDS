@@ -137,6 +137,7 @@ protected:
 	ofFbo velFbo0;
 	ofFbo velFbo1;
 	ofFbo colFbo;
+	ofFbo quatFbo;
 	
 	ofFbo* p0;
 	ofFbo* p1;
