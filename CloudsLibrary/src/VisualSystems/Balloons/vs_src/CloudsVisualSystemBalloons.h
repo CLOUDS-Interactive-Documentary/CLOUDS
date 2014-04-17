@@ -107,7 +107,7 @@ class CloudsVisualSystemBalloons : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	static bool compareBalloonsY(Balloon& a, Balloon& b)
+	static bool compareBalloonsY(Balloon a, Balloon b)
 	{
 		return a.pos.y < b.pos.y;
 	}
@@ -128,4 +128,18 @@ protected:
 	vector<Balloon> balloons;
 	
 	ofShader shader;
+	ofShader posShader;
+	ofShader velShader;
+	
+	int dimY, dimX;
+	ofFbo posFbo0;
+	ofFbo posFbo1;
+	ofFbo velFbo0;
+	ofFbo velFbo1;
+	ofFbo colFbo;
+	
+	ofFbo* p0;
+	ofFbo* p1;
+	ofFbo* v0;
+	ofFbo* v1;
 };

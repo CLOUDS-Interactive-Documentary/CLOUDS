@@ -91,6 +91,8 @@
 		506D629718FEF46000F8FE01 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 506D628818FEF46000F8FE01 /* glm.c */; };
 		506D629818FEF46000F8FE01 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 506D628C18FEF46000F8FE01 /* ofxObjLoader.cpp */; };
 		506D629918FEF46000F8FE01 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 506D628C18FEF46000F8FE01 /* ofxObjLoader.cpp */; };
+		506D62C518FF18B000F8FE01 /* ofxVboMeshInstanced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 506D62BF18FF18B000F8FE01 /* ofxVboMeshInstanced.cpp */; };
+		506D62C618FF18B000F8FE01 /* ofxVboMeshInstanced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 506D62BF18FF18B000F8FE01 /* ofxVboMeshInstanced.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -510,6 +512,12 @@
 		506D628D18FEF46000F8FE01 /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
 		506D62A518FF058400F8FE01 /* normalShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = normalShader.frag; sourceTree = "<group>"; };
 		506D62A618FF058400F8FE01 /* normalShader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = normalShader.vert; sourceTree = "<group>"; };
+		506D62BF18FF18B000F8FE01 /* ofxVboMeshInstanced.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVboMeshInstanced.cpp; sourceTree = "<group>"; };
+		506D62C018FF18B000F8FE01 /* ofxVboMeshInstanced.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVboMeshInstanced.h; sourceTree = "<group>"; };
+		50F113E618FF85590065D7FC /* velShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = velShader.frag; sourceTree = "<group>"; };
+		50F113E718FF85590065D7FC /* velShader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = velShader.vert; sourceTree = "<group>"; };
+		50F113E818FF861F0065D7FC /* posShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = posShader.frag; sourceTree = "<group>"; };
+		50F113E918FF861F0065D7FC /* posShader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = posShader.vert; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1222,14 +1230,37 @@
 			children = (
 				506D62A518FF058400F8FE01 /* normalShader.frag */,
 				506D62A618FF058400F8FE01 /* normalShader.vert */,
+				50F113E618FF85590065D7FC /* velShader.frag */,
+				50F113E718FF85590065D7FC /* velShader.vert */,
+				50F113E818FF861F0065D7FC /* posShader.frag */,
+				50F113E918FF861F0065D7FC /* posShader.vert */,
 			);
 			name = shaders;
 			path = ../../CloudsData/visualsystems/Balloons/shaders;
 			sourceTree = "<group>";
 		};
+		506D62A718FF18B000F8FE01 /* ofxVboMeshInstanced */ = {
+			isa = PBXGroup;
+			children = (
+				506D62BE18FF18B000F8FE01 /* src */,
+			);
+			name = ofxVboMeshInstanced;
+			path = ../../../addons/ofxVboMeshInstanced;
+			sourceTree = "<group>";
+		};
+		506D62BE18FF18B000F8FE01 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				506D62BF18FF18B000F8FE01 /* ofxVboMeshInstanced.cpp */,
+				506D62C018FF18B000F8FE01 /* ofxVboMeshInstanced.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				506D62A718FF18B000F8FE01 /* ofxVboMeshInstanced */,
 				506D626A18FEF46000F8FE01 /* ofxObjLoader */,
 				E738FFE3183C87180018AB96 /* ofxOculusRift */,
 				3D5B9697175308FE00F558AC /* ofxTimecode */,
@@ -1585,6 +1616,7 @@
 				3D5B95E9175308AE00F558AC /* ofxTLSwitches.cpp in Sources */,
 				3D5B95EA175308AE00F558AC /* ofxTLTicker.cpp in Sources */,
 				506D625D18FEF1E000F8FE01 /* CloudsRGBDVideoPlayer.cpp in Sources */,
+				506D62C518FF18B000F8FE01 /* ofxVboMeshInstanced.cpp in Sources */,
 				3D5B95EB175308AE00F558AC /* ofxTLTrack.cpp in Sources */,
 				3D5B95EC175308AE00F558AC /* ofxTLTrackHeader.cpp in Sources */,
 				3D5B95ED175308AE00F558AC /* ofxTLVideoThumb.cpp in Sources */,
@@ -1685,6 +1717,7 @@
 				E738FFB4183C86F50018AB96 /* ofxEasingBack.cpp in Sources */,
 				E738FFB5183C86F50018AB96 /* ofxEasingBounce.cpp in Sources */,
 				E738FFB6183C86F50018AB96 /* ofxEasingCirc.cpp in Sources */,
+				506D62C618FF18B000F8FE01 /* ofxVboMeshInstanced.cpp in Sources */,
 				E738FFB7183C86F50018AB96 /* ofxEasingCubic.cpp in Sources */,
 				E738FFB8183C86F50018AB96 /* ofxEasingElastic.cpp in Sources */,
 				E738FFB9183C86F50018AB96 /* ofxEasingExpo.cpp in Sources */,
