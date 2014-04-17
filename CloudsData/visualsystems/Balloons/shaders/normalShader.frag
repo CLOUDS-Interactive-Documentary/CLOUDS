@@ -8,7 +8,6 @@ uniform float facingRatio;
 varying vec4 color;
 varying vec3 norm;
 varying vec3 ePos;
-varying vec4 vPos;
 varying vec2 uv;
 
 varying float fogMix;

@@ -147,12 +147,14 @@ void CloudsVisualSystemBalloons::selfUpdate()
 {
 	ofVec3f acc;
 	ofVec3f p = getCameraPosition() * .01;
-	float noiseScl = .4;
+	float noiseScl = 1;
 	float offset = .1;
 	float attractionToCenter = 1;
+	
 	acc.x = ofSignedNoise(p.x+offset, p.y, p.z) - ofSignedNoise(p.x-offset, p.y, p.z);
-	acc.y = ofSignedNoise(p.x, p.y+offset, p.z) - ofSignedNoise(p.x, p.y-offset, p.z);
+	//acc.y = ofSignedNoise(p.x, p.y+offset, p.z) - ofSignedNoise(p.x, p.y-offset, p.z);
 	acc.z = ofSignedNoise(p.x, p.y, p.z+offset) - ofSignedNoise(p.x, p.y, p.z-offset);
+	
 	acc *= noiseScl;
 	
 	

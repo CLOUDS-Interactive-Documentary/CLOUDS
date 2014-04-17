@@ -112,7 +112,6 @@ uniform float dimY;
 varying vec4 color;
 
 varying vec3 norm;
-varying vec4 vPos;
 varying vec3 ePos;
 varying vec2 uv;
 
@@ -133,17 +132,13 @@ void main()
 	
 	norm = gl_NormalMatrix * qtransform(q, gl_Normal);
 	v.xyz = qtransform(q, v.xyz);
-
 	v.xyz += pos;
 	
-	vPos = v;
+	fogMix = 1. - pow(abs(v.y) / dim, 10.);
+	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / 1000., 3.), 0., 1.);
 	
 	vec4 ecPosition = gl_ModelViewMatrix * v;
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	gl_Position = gl_ProjectionMatrix * ecPosition;
-	
-	fogMix = 1. - pow(abs(vPos.y) / dim, 10.);
-	
-	fogMix *= clamp(1. - pow(distance(camPos, vPos.xyz) / 1000., 3.), 0., 1.);
 }
 
