@@ -64,7 +64,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	
 	//make data
 	dimX = 64;
-	dimY = 64;
+	dimY = 128;
 	
 	vector<ofVec3f>pos(dimY*dimX);
 	vector<ofVec3f>vel(dimY*dimX);
@@ -74,7 +74,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	{
 		for(int j=0; j<dimX; j++)
 		{
-			pos[i*dimX + j].set(ofRandom(-dim, dim) * .5, ofRandom(-dim*2, -dim), ofRandom(-dim, dim) * .5);
+			pos[i*dimX + j].set(ofRandom(-dim, dim) * .5, ofRandom(-dim*3, -dim), ofRandom(-dim, dim) * .5);
 		}
 	}
 	
@@ -120,7 +120,9 @@ void CloudsVisualSystemBalloons::selfSetup()
 
 	//load balloon mesh
 	ofMesh temp;
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
+//	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_low.obj", temp);
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
+//	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
 	
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
@@ -196,6 +198,9 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1f("dimY", dimY);
 	velShader.setUniform1f("bound", dim);
 	
+	ofVec3f camPos = getCameraRef().getPosition();
+	velShader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
+	
 	ofRect(-1,-1,2,2);
 	
 	velShader.end();
@@ -221,7 +226,8 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	shader.begin();
 	shader.setUniform1f("shininess", 128);
-	shader.setUniform1f("dim", dim);
+	
+	shader.setUniform1f("dim", dim + ofVec2f(camPos.x, camPos.z).length());
 	shader.setUniform1f("facingRatio", .75);
 	
 	shader.setUniform1f("dimX", dimX);

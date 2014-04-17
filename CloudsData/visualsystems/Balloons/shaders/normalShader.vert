@@ -123,18 +123,22 @@ void main()
 //	float scl = 10.;
 	vec4 v = gl_Vertex;// * vec4(scl,scl,scl, 1.);
 	
-	float s = mod(float(gl_InstanceID), dimY);
-	float t = floor(float(gl_InstanceID) / dimY);
+//	float s = mod(float(gl_InstanceID), dimY);
+//	float t = floor(float(gl_InstanceID) / dimY);
 	
-	vec3 pos = texture2DRect( posTexture, vec2(s,t) ).xyz;
+	vec2 st = vec2(mod(float(gl_InstanceID), dimY), floor(float(gl_InstanceID) / dimY));
 	
-	vec3 velDir = (texture2DRect( velTexture, vec2(s,t) ).xyz);
-	vec4 q = texture2DRect( quatTexture, vec2(s,t) );
-	
-	v.xyz = qtransform(q, v.xyz);
-	v.xyz += pos;
+	color = texture2DRect( colTexture, st );
+	vec4 q = texture2DRect( quatTexture, st );
+	vec3 pos = texture2DRect( posTexture, st ).xyz;
+	vec3 velDir = (texture2DRect( velTexture, st ).xyz);
 	
 	norm = gl_NormalMatrix * qtransform(q, gl_Normal);
+	v.xyz = qtransform(q, v.xyz);
+	
+	norm = gl_NormalMatrix * gl_Normal;
+
+	v.xyz += pos;
 	
 	vec4 ecPosition = gl_ModelViewMatrix * v;
 	
@@ -144,6 +148,5 @@ void main()
 	
 	zDist = gl_Position.z;
 	
-	color = texture2DRect( colTexture, vec2(s,t) );
 }
 

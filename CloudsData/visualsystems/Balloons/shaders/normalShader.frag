@@ -19,10 +19,10 @@ void main(void)
 	float spec = pow(fr, shininess);
 	
 	fr  = mix(1., fr * 1.3, facingRatio);
-//	gl_FragColor = vec4( normal * .5 + .5 + fr, 1.) * color;
+
 	gl_FragColor = vec4( color.xyz * fr + spec, 1.);
 	
 	float atten = .5 * zDist / dim;
-	gl_FragColor.xyz *= min(1., 1. - atten * atten);
+	gl_FragColor.xyz *= min(1., 1. - atten * atten * atten);
 }
 
