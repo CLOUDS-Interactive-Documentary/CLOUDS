@@ -29,13 +29,13 @@ CloudsPlaybackController::CloudsPlaybackController(){
     returnToIntro = false;
     cachedTransition = false;
     
-	resetInterludeVariabls();
+	resetInterludeVariables();
 	
     interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
 
 }
 
-void CloudsPlaybackController::resetInterludeVariabls(){
+void CloudsPlaybackController::resetInterludeVariables(){
 	
 	interludeExitBarWidth = 200;
 	interludeBarHoverHoldTime = 3.0; //seconds
@@ -213,8 +213,7 @@ void CloudsPlaybackController::finishSetup(){
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
-    
-//    setupPortals();
+
 }
 
 //--------------------------------------------------------------------
@@ -224,6 +223,9 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showIntro(){
+	
+	resetInterludeVariables();
+	
 #ifdef OCULUS_RIFT
 	introSequence->loadPresetGUISFromName("Oculus");
 #else
@@ -232,6 +234,9 @@ void CloudsPlaybackController::showIntro(){
 	introSequence->playSystem();
 	
 	currentVisualSystem = introSequence;
+	
+	//HACCCK!
+	currentVisualSystem->isInterlude = true;
 	
 	numActsCreated = 0;
     
@@ -313,6 +318,10 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
             interludeSystem->getTimeline()->stop();
         }
         else{
+			if(currentAct == NULL){
+				return;
+			}
+			
             for(int i = 0; i < currentAct->getAllClips().size(); i++){
                 CloudsClip& clip = currentAct->getAllClips()[i];
                 for(int i = 0; i < clip.getKeywords().size(); i++){
@@ -499,14 +508,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
 	////////////////////
 	// RGBD SYSTEM
-    //	if(rgbdVisualSystem->isQuestionSelectedAndClipDone()){
     if(currentVisualSystem == rgbdVisualSystem){
         if(!transitionController.isTransitioning() && !bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
             
             transitionController.transitionWithQuestion(2.0, 0.1);
-            //sound.questionSelected(2.0);
+
         }
 		
 		if(returnToIntro){
@@ -772,7 +780,8 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	//hack
 	
 #ifdef OCULUS_RIFT
-	//TODO:
+	
+	
 #else
 	
 	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth){
@@ -993,7 +1002,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
     cout << "***** ORDER OF OPERATIONS: ACT BEGAN CONTROLLER " << args.act << endl;
 	
-	resetInterludeVariabls();
+	resetInterludeVariables();
 	
     if(!args.act->startsWithVisualSystem()){
         transitionController.transitionToFirstInterview(1.0);
@@ -1153,7 +1162,7 @@ void CloudsPlaybackController::showClusterMap(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showInterlude(){
     
-	resetInterludeVariabls();
+	resetInterludeVariables();
 	
     vector<string> topics;
     CloudsVisualSystemPreset interludePreset;
@@ -1165,22 +1174,11 @@ void CloudsPlaybackController::showInterlude(){
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
         interludeSystem->playSystem();
-//        interludeSystem->primaryCursorMode   = CURSOR_MODE_CAMERA;
-//        interludeSystem->secondaryCursorMode = CURSOR_MODE_NONE;
-        
+        interludeSystem->isInterlude = true;
+		
         currentVisualSystem = interludeSystem;
         
         showingInterlude = true;
-		/*
-        continuePortal.hoverPosition =  ofVec3f(CloudsVisualSystem::getStaticRenderTarget().getWidth() *0.95 , CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.1, 0);
-        int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.01;
-        int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.95;
-        
-        ofRectangle resetText = resetFont.getStringBoundingBox("RESET",x,y);
-        resetRect = ofRectangle(x,y,resetText.height + 1,resetText.height + 1);
-        resetSelectionRect = ofRectangle(0,CloudsVisualSystem::getStaticRenderTarget().getHeight() - CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2,CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.2,CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2);
-        */
-		
     }
     else{
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";

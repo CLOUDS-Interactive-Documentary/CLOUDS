@@ -228,6 +228,9 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7032B1C1900576B00AFD9BA /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032B1A1900576B00AFD9BA /* CloudsCalibrationNode.cpp */; };
+		E7032B1D1900576B00AFD9BA /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032B1A1900576B00AFD9BA /* CloudsCalibrationNode.cpp */; };
+		E7032B1E1900576B00AFD9BA /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7032B1A1900576B00AFD9BA /* CloudsCalibrationNode.cpp */; };
 		E70CD8F918667C1E00955691 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CD8F218667C1E00955691 /* CloudsInput.cpp */; };
 		E70CD8FA18667C1E00955691 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CD8F218667C1E00955691 /* CloudsInput.cpp */; };
 		E70CD8FD18667C1E00955691 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CD8F718667C1E00955691 /* CloudsInputMouse.cpp */; };
@@ -720,6 +723,8 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E7032B1A1900576B00AFD9BA /* CloudsCalibrationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsCalibrationNode.cpp; path = ../../RGBD/CloudsCalibrationNode.cpp; sourceTree = "<group>"; };
+		E7032B1B1900576B00AFD9BA /* CloudsCalibrationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsCalibrationNode.h; path = ../../RGBD/CloudsCalibrationNode.h; sourceTree = "<group>"; };
 		E70CD8F218667C1E00955691 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		E70CD8F318667C1E00955691 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		E70CD8F418667C1E00955691 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -1666,6 +1671,8 @@
 		E716702E187A4CAD0047B7DC /* _Intro */ = {
 			isa = PBXGroup;
 			children = (
+				E7032B1A1900576B00AFD9BA /* CloudsCalibrationNode.cpp */,
+				E7032B1B1900576B00AFD9BA /* CloudsCalibrationNode.h */,
 				E71670F1187A505E0047B7DC /* ofxSystemTextbox.h */,
 				E71670F2187A505E0047B7DC /* ofxSystemTextbox.mm */,
 				E7167046187A4E000047B7DC /* CloudsQuestion.cpp */,
@@ -2072,6 +2079,7 @@
 				64789B911881F41700EAFCC7 /* ofxSubtitleUnit.cpp in Sources */,
 				AE6FFFB81880648900677B60 /* UdpSocket.cpp in Sources */,
 				AE6FFFB61880648900677B60 /* IpEndpointName.cpp in Sources */,
+				E7032B1E1900576B00AFD9BA /* CloudsCalibrationNode.cpp in Sources */,
 				AE6FFF2D188063F100677B60 /* ofxHotKeys_impl_mac.mm in Sources */,
 				AE6FFF2E188063F100677B60 /* ofxHotKeys_impl_win.cpp in Sources */,
 				AE6FFF2F188063F100677B60 /* ofxRemoveCocoaMenu.mm in Sources */,
@@ -2216,6 +2224,7 @@
 				3D5B9685175308D000F558AC /* ofxEasingLinear.cpp in Sources */,
 				3D5B9686175308D000F558AC /* ofxEasingQuad.cpp in Sources */,
 				3D5B9687175308D000F558AC /* ofxEasingQuart.cpp in Sources */,
+				E7032B1C1900576B00AFD9BA /* CloudsCalibrationNode.cpp in Sources */,
 				3D5B9688175308D000F558AC /* ofxEasingQuint.cpp in Sources */,
 				3D5B9689175308D000F558AC /* ofxEasingSine.cpp in Sources */,
 				64789B8F1881F41700EAFCC7 /* ofxSubtitleUnit.cpp in Sources */,
@@ -2322,6 +2331,7 @@
 				E738FFC3183C86F50018AB96 /* CloudsVisualSystem.cpp in Sources */,
 				6488FCA7187FC56700286B77 /* CloudsInputOculus.cpp in Sources */,
 				E73801FA183C871B0018AB96 /* ofxOculusRift.cpp in Sources */,
+				E7032B1D1900576B00AFD9BA /* CloudsCalibrationNode.cpp in Sources */,
 				E70CD8FA18667C1E00955691 /* CloudsInput.cpp in Sources */,
 				E70CD8FE18667C1E00955691 /* CloudsInputMouse.cpp in Sources */,
 				E7167033187A4CAD0047B7DC /* CloudsIntroSequence.cpp in Sources */,
