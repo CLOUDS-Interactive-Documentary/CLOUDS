@@ -41,11 +41,41 @@ void CloudsVisualSystemCandyMountains::guiSystemEvent(ofxUIEventArgs &e){
 }
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemCandyMountains::selfSetupRenderGui(){
+    vector<string> names;
+    names.push_back("mono");
+    names.push_back("complement");
+    names.push_back("triad");
+    names.push_back("tetrad");
+    names.push_back("analogic");
+    names.push_back("accented");
+    rdrGui = new ofxUISuperCanvas("CUSTOM", gui);
     
+    rdrGui->addSlider("primary hue", 0.0, 1.0, &cs.hue);
+    rdrGui->addSlider("primary brightness", 0.0, 1.0, &cs.brightness);
+    rdrGui->addSlider("primary saturation", 0.0, 1.0, &cs.saturation);
+    rdrGui->addSlider("angle", 0.01, 0.25, &cs.angle);
+    rdrGui->addSlider("distance", 0.1, 0.5, &cs.distance);
+    rdrGui->addRadio("RADIO VERTICAL", names, OFX_UI_ORIENTATION_VERTICAL);
+
+    ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemCandyMountains::guiRenderEvent);
 }
 
 void CloudsVisualSystemCandyMountains::guiRenderEvent(ofxUIEventArgs &e){
-	
+    string name = e.widget->getName();
+	int kind = e.widget->getKind();
+    if(kind == OFX_UI_WIDGET_TOGGLE)
+    {
+        //        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        //        cout << name << "\t value: " << toggle->getValue() << endl;
+        if (name == "mono") cs.mode = 0;
+        else if (name == "complement") cs.mode = 1;
+        else if (name == "triad") cs.mode = 2;
+        else if (name == "tetrad") cs.mode = 3;
+        else if (name == "analogic") cs.mode = 4;
+        else if (name == "accented") cs.mode = 5;
+    }
+    
+    cs.updateColorScheme();
 }
 
 //This is called whenever a new preset is loaded, before selfSetup()
@@ -114,12 +144,11 @@ void CloudsVisualSystemCandyMountains::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemCandyMountains::selfUpdate(){
     aa.updateAnalytics();
-    
-    //    cs.setHue(ofMap(aa.kurtosisSmoothed.getMean(), 0, aa.maxKurtosis[0], 0.0, 1.0));
-    cs.setSaturation(ofMap(aa.centroidSmoothed.getMean(), 30, 55, 0.0, 1.0));
-    cs.setBrightness(aa.ampSmoothed.getMean());
-    cs.setDistance(ofMap(aa.pitchSmoothed.getMedian(), 50, 90, 0.0, 0.5));
-    
+
+//    cs.setHue(ofMap(aa.kurtosisSmoothed.getMean(), 0, aa.maxKurtosis[0], 0.0, 1.0));
+//    cs.setSaturation(ofMap(aa.centroidSmoothed.getMean(), 30, 55, 0.0, 1.0));
+//    cs.setBrightness(aa.ampSmoothed.getMean());
+//    cs.setDistance(ofMap(aa.pitchSmoothed.getMean(), 50, 90, 0.0, 0.5));
     tm.update();
     cm.update();
     lm.update();
@@ -129,15 +158,6 @@ void CloudsVisualSystemCandyMountains::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemCandyMountains::selfDraw(){
     ofEnableAlphaBlending();
-        
-    ofFloatColor gradientStart = cs.colorScheme[0][0];
-    float complementHue = gradientStart.getHue() + 0.5;
-    if (complementHue > 1.0) complementHue-=1.0;
-    ofFloatColor gradientEnd;
-    gradientEnd.setHue(complementHue);
-    gradientEnd.setSaturation(gradientStart.getSaturation() - 0.2);
-    
-    ofBackgroundGradient(gradientEnd, gradientStart);
     
     cm.begin();
     lm.begin();
@@ -150,6 +170,8 @@ void CloudsVisualSystemCandyMountains::selfDraw(){
 
 // draw any debug stuff here
 void CloudsVisualSystemCandyMountains::selfDrawDebug(){
+    //how do I access this???
+    
     if (state == 1) {
         cs.draw();
     }
@@ -160,15 +182,31 @@ void CloudsVisualSystemCandyMountains::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemCandyMountains::selfDrawBackground(){
     
-	//we are using this to draw what keywords are missing content
-	if(mainKeyword != ""){
-		string keystodraw = "PICKED RANDOM PRESET\n";
-		keystodraw += mainKeyword + "\n" + ofJoinString(keywords, ",");
-		ofPushMatrix();
-		ofScale(5,5);
-		ofDrawBitmapString(keystodraw, 20,20);
-		ofPopMatrix();
-	}
+    //this just give a red background regardles of the values of gradientStart and gradientEnd.  ofBackground(gradientEnd) does work.
+    /*
+    ofFloatColor gradientStart = cs.colorScheme[0][0];
+    float complementHue = gradientStart.getHue() + 0.5;
+    if (complementHue > 1.0) complementHue-=1.0;
+    ofFloatColor gradientEnd;
+    gradientEnd.setHue(complementHue);
+    gradientEnd.setSaturation(gradientStart.getSaturation() - 0.2);
+    
+    ofBackgroundGradient(gradientEnd, gradientStart);
+    ofBackgroundGradient(ofFloatColor(1.0,0.0,0.0), ofFloatColor(0.0,0.0,1.0));
+    ofBackground(ofFloatColor(1.0,0.0,0.0));
+*/
+    
+    
+    
+//	//we are using this to draw what keywords are missing content
+//	if(mainKeyword != ""){
+//		string keystodraw = "PICKED RANDOM PRESET\n";
+//		keystodraw += mainKeyword + "\n" + ofJoinString(keywords, ",");
+//		ofPushMatrix();
+//		ofScale(5,5);
+//		ofDrawBitmapString(keystodraw, 20,20);
+//		ofPopMatrix();
+//	}
 	
 }
 // this is called when your system is no longer drawing.
@@ -184,7 +222,7 @@ void CloudsVisualSystemCandyMountains::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemCandyMountains::selfKeyPressed(ofKeyEventArgs & args){
-	
+	if (args.key == ' ') cout << "SPACE!";
 }
 void CloudsVisualSystemCandyMountains::selfKeyReleased(ofKeyEventArgs & args){
 	
