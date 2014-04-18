@@ -295,6 +295,7 @@ void CloudsVisualSystemMemory::selfUpdate()
                 if ( index < blocks.size() ){
                     blocks[index].color = ofFloatColor( ofLerp( blocks[index].color.getBrightness(), ofNoise(x,y,ofGetElapsedTimef()*0.1), noiseLerp) );
                     blocks[index].value = blocks[index].color.getBrightness()*255;
+
                     index++;
                 } else {
                     break;
@@ -454,6 +455,7 @@ void CloudsVisualSystemMemory::applyDeFrag()
 void CloudsVisualSystemMemory::swapBlocks(int _indexA, int _indexB, bool _colored){
     swap(blocks[_indexA].value, blocks[_indexB].value);
     swap(blocks[_indexA].color, blocks[_indexB].color);
+	swap(blocks[_indexA].bActivated, blocks[_indexB].bActivated	);
     blocks[_indexA].bSelected = _colored;
     blocks[_indexB].bSelected = _colored;
 }
@@ -461,10 +463,6 @@ void CloudsVisualSystemMemory::swapBlocks(int _indexA, int _indexB, bool _colore
 void CloudsVisualSystemMemory::selfDrawBackground()
 {
     ofSetLineWidth(0.01);
-//    for (int i = 0; i < blocks.size(); i++) {
-//        blocks[i].draw();
-//  }
-	
 	fillMesh.draw();
 	outlineMesh.draw();
 }
@@ -514,22 +512,29 @@ void CloudsVisualSystemMemory::selfKeyReleased(ofKeyEventArgs & args)
 
 }
 
-void CloudsVisualSystemMemory::mouseDragged(ofMouseEventArgs& data)
+void CloudsVisualSystemMemory::selfMouseDragged(ofMouseEventArgs& data)
 {
 
 }
 
-void CloudsVisualSystemMemory::mouseMoved(ofMouseEventArgs &args)
+void CloudsVisualSystemMemory::selfMouseMoved(ofMouseEventArgs &args)
 {
-    
+	for(int i = 0; i < blocks.size(); i++){
+		ofRectangle r(blocks[i]);
+		r.scaleFromCenter(5.0);
+        if(r.inside( args.x, args.y )){
+			blocks[i].bActivated = true;
+//			break;
+		}
+    }
 }
 
-void CloudsVisualSystemMemory::mousePressed(ofMouseEventArgs &args)
+void CloudsVisualSystemMemory::selfMousePressed(ofMouseEventArgs &args)
 {
 
 }
 
-void CloudsVisualSystemMemory::mouseReleased(ofMouseEventArgs &args)
+void CloudsVisualSystemMemory::selfMouseReleased(ofMouseEventArgs &args)
 {
     
 }
