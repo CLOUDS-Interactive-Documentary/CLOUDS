@@ -94,17 +94,6 @@ class CloudsVisualSystemConnectors : public CloudsVisualSystem {
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
-
-	ofCamera& getCameraRef(){
-		if(videoLoaded){
-			return cloudsCamera;
-		}
-		return CloudsVisualSystem::getCameraRef();
-	}
 
 protected:
     
@@ -112,11 +101,6 @@ protected:
     //
 	
 	ofxUISuperCanvas* connectorGui;
-	
-	bool videoLoaded;
-	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
-	
 	
 	ParticleConnectionGenerator generator;
 	ofMesh connectionLines;

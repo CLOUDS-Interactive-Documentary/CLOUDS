@@ -104,24 +104,27 @@ uniform sampler2DRect quatTexture;
 uniform sampler2DRect colTexture;
 
 uniform vec3 camPos;
+uniform vec3 l0;
 
 uniform float dim;
 uniform float dimX;
 uniform float dimY;
+uniform float fogDist;
 
 varying vec4 color;
 
+varying vec4 lPos;
+varying vec4 lCol;
+
 varying vec3 norm;
 varying vec3 ePos;
-varying vec2 uv;
+varying vec4 ecPosition;
 
 varying float fogMix;
 
 
-
 void main()
 {
-	uv = gl_MultiTexCoord0.xy;
 	vec2 st = vec2(mod(float(gl_InstanceID), dimY), floor(float(gl_InstanceID) / dimY));
 	vec4 v = gl_Vertex;
 	v.xyz *= .5;
@@ -135,10 +138,14 @@ void main()
 	v.xyz = qtransform(q, v.xyz);
 	v.xyz += pos;
 	
-	fogMix = 1. - pow(abs(v.y) / dim, 10.);
-	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / 1000., 3.), 0., 1.);
+	fogMix = 1. - pow(abs(v.y) / dim, 6.);
+//	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / fogDist, 3.), 0., 1.);
 	
-	vec4 ecPosition = gl_ModelViewMatrix * v;
+	lPos = vec4(0.,0.,0.,1.);//texture2DRect( posTexture, vec2(10.) );
+	lCol = vec4(1.) - pow(abs(lPos.y) / dim, 4.);
+	lPos = gl_ModelViewMatrix * lPos;
+	
+	ecPosition = gl_ModelViewMatrix * v;
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	gl_Position = gl_ProjectionMatrix * ecPosition;
 }

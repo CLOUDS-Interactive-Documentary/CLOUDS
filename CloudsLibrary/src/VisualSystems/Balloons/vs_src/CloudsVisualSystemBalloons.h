@@ -110,6 +110,7 @@ class CloudsVisualSystemBalloons : public CloudsVisualSystem {
 	}
 	
 	void setBalloonPositions();
+	void setBalloonColors();
 	
 protected:
     
@@ -117,9 +118,8 @@ protected:
     //
 	
 	ofxUISuperCanvas* customGui;
-	bool customToggle;
-	float customFloat1;
-	float customFloat2;
+	ofxUISuperCanvas* colorGui;
+
 	
 	ofVbo vbo;
 	int total;
@@ -141,8 +141,20 @@ protected:
 	ofFbo colFbo;
 	ofFbo quatFbo;
 	
+	ofColor c0, c1, c2, c3;
+	float w0, w1, w2, w3;
+	
+	int c0Hue, c0Sat, c0Bri;
+	int c1Hue, c1Sat, c1Bri;
+	int c2Hue, c2Sat, c2Bri;
+	int c3Hue, c3Sat, c3Bri;
+	
 	ofFbo* p0;
 	ofFbo* p1;
 	ofFbo* v0;
 	ofFbo* v1;
+	
+	ofVec3f l0;
+	
+	ofVec3f camerVel;
 };

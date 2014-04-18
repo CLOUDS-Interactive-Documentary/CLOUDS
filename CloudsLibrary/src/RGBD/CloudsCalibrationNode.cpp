@@ -1,389 +1,140 @@
-//
-//  CloudsQuestion.cpp
-//  CLOUDS
-//
-//  Created by James George on 6/20/13.
-//
-//
 
-#include "CloudsQuestion.h"
-#include "CloudsGlobal.h"
-#include "ofxTween.h"
+#include "CloudsCalibrationNode.h"
+#include "CloudsVisualSystem.h"
 
-ofShader CloudsQuestion::shader = ofShader();
+float CalibrationNode::nodeActivatedTime = 0;
 
-CloudsQuestion::CloudsQuestion(){
+CalibrationNode::CalibrationNode(){
 	
-	currentTestFileIndex = 0;
-	
-	hovering = false;
-	isSetup = false;
-	radius = 10;
+	cursorDistance = .0;
+	hover = false;
+	finished = false;
+	finishedTime = .0;
+	percentComplete = 0.0;
+	hoverStartTime = 0.0;
+	gazePercent = 0.0;
+	multiplier = 0;
+	clickSound = NULL;
+	selectSound = NULL;
+	nodeActivatedTime = 0;
+	titleTypeOffset = 0;
+	introNode = false;
 	cam = NULL;
-	introQuestion = false;
-	charsPerSecond = 45;
-	hoveringEnabled = true;
-	isDestroyed = false;
-	lockHover = false;
 	
-	testImageSize = 24.;
+}
+
+void CalibrationNode::updatePosition(){
+	worldPosition = ofVec3f( baseOffset.x, -baseOffset.y, baseOffset.z + titleTypeOffset);
+	worldPosition.x *= multiplier;
+	worldPosition.y *= multiplier;
 	
-	secondsToConsiderSelected = 3;
-	font = NULL;
+	if(cam != NULL){
+//		worldPosition  = cam->getModelViewMatrix() * worldPosition;
+		worldPosition  = cam->getOrientationQuat() * worldPosition;
+		worldPosition += cam->getPosition();
+	}
 	
-	expandPercent = .1;
-	selectPercent = 0;
+	//hack for intro node
+	if(introNode){
+		if(multiplier == 0){
+			worldPosition.y -= 10; //plus 20 just to move everything down a little bit
+		}
+		else {
+			worldPosition.z *= .5; //bring the side nodes closer in Z
+		}
+	}
+
 #ifdef OCULUS_RIFT
-	enlarge = .2;
+	ofRectangle viewport = CloudsVisualSystem::getOculusRift().getOculusViewport();
+	ofVec3f screenPos = CloudsVisualSystem::getOculusRift().worldToScreen(worldPosition, true);
 #else
-	enlarge = 0;
+	//kinect version
 #endif
+	screenPosition = ofVec2f(screenPos.x,screenPos.y);
+	cursorDirection = screenPosition - viewport.getCenter();
+	cursorDistance  = cursorDirection.length();
+	cursorDirection.normalize();
+}
+
+void CalibrationNode::updateInteraction(){
 	
-}
-
-//TODO: universal Nodes
-void CloudsQuestion::addQuestionVariables(ofxUISuperCanvas* gui){
-
-}
-
-void CloudsQuestion::setup(){
-	if(!isSetup){
-		ofRegisterMouseEvents(this);
-		isSetup = true;
-		question = ofToUpper(question);
-
-		float clockInnerRadius = .9;
-		float clockThickness = .2;
-		float clockOuterRadius = clockInnerRadius + clockThickness;
-		
-		for(float i = 0; i <= 1.0; i += 1.0/36.0){
-			float angle = fmod(i * 360,360);
-			ofVec3f inner(0,1,0);
-			inner.rotate(angle, ofVec3f(0,0,1));
-			
-			if(i < 1.0){
-				dottedCircle.addColor(ofFloatColor(1.0, 0.0, 0));
-//				dottedCircle.addNormal(inner);
-//				dottedCircle.addVertex(inner * .5);
-				dottedCircle.addNormal(inner*clockInnerRadius);
-				dottedCircle.addVertex(inner*.25);
-								
-				dottedCircle.addColor(ofFloatColor(1.0, 0.0, 0));
-//				dottedCircle.addNormal(inner);
-//				dottedCircle.addVertex(inner * 1.5);
-				dottedCircle.addNormal(inner*clockOuterRadius);
-				dottedCircle.addVertex(inner*.25);
-			}
-			
-			//inner
-			progressRing.addColor(ofFloatColor(0, i, 0));
-			progressRing.addNormal(inner*clockInnerRadius);
-			progressRing.addVertex(inner*.25);
-			
-			//outer
-			progressRing.addColor(ofFloatColor(0, i, 0));
-			progressRing.addNormal(inner*clockOuterRadius);
-			progressRing.addVertex(inner*.25);
-		}
-			
-		//close the loop
-		progressRing.addColor(ofFloatColor(0, 1, 0));
-		progressRing.addNormal(ofVec3f(0,clockInnerRadius,0));
-		progressRing.addVertex(ofVec3f(0,.25,0));
-//
-		progressRing.addColor(ofFloatColor(0, 1, 0));
-		progressRing.addNormal(ofVec3f(0,clockOuterRadius,0));
-		progressRing.addVertex(ofVec3f(0,.25,0));
-		
-		progressRing.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-		dottedCircle.setMode(OF_PRIMITIVE_LINES);
-		
-
-		if(testFiles.size() != 0){
-			testImages.resize(testFiles.size());
-			for(int i = 0; i < testFiles.size(); i++){
-				cout << "Loaded: " << testFiles[i] << endl;
-				testImages[i].loadImage(testFiles[i]);
-			}
-		}
-	}
-}
-
-void CloudsQuestion::startShader(){
-	CloudsQuestion::shader.begin();
-}
-void CloudsQuestion::endShader(){
-	CloudsQuestion::shader.end();
-}
-
-void CloudsQuestion::reloadShader(){
-	CloudsQuestion::shader.load(GetCloudsDataPath() + "/shaders/question");
-}
-
-void CloudsQuestion::update(){
-	if(ofGetFrameNum() - lastQuestionSwitchedFrame > 30){
-		if(ofGetKeyPressed(OF_KEY_RIGHT) && testImages.size() > 0){
-			currentTestFileIndex =  (currentTestFileIndex + 1) % testImages.size();
-		}
-		else if(ofGetKeyPressed(OF_KEY_LEFT) && testImages.size() > 0){
-			currentTestFileIndex =  (testImages.size() + currentTestFileIndex - 1) % testImages.size();
-		}
-		lastQuestionSwitchedFrame = ofGetFrameNum();
-	}
-	
-	ofVec3f screenPoint = cam->worldToScreen(position);
-	currentScreenPoint = ofVec2f(screenPoint.x,screenPoint.y);
-	
-	ofVec3f screenPointTop = cam->worldToScreen(position + ofVec3f(0,radius+(radius*expandPercent),0));
-	screenRadius = abs( screenPointTop.y - currentScreenPoint.y );
-}
-
-void CloudsQuestion::draw(){
-	
-	if(testImages.size() != 0){
-		
-		CloudsQuestion::shader.end();
-		
-		ofPushStyle();
-		ofPushMatrix();
-		
-		ofSetRectMode(OF_RECTMODE_CENTER);
-		ofEnableAlphaBlending();
-		
-		ofTranslate(position);
-		ofNode n;
-		n.setPosition(position);
-		n.lookAt(cam->getPosition());
-		
-		currentRot.slerp(.1, currentRot, n.getOrientationQuat());
-		
-		ofVec3f axis;
-		float angle;
-		currentRot.getRotate(angle, axis);
-		ofVec3f dial = n.getLookAtDir();
-		ofRotate(-ofGetElapsedTimef()*100,dial.x,dial.y,dial.z);
-		ofRotate(angle,axis.x,axis.y,axis.z);
-
-		testImages[currentTestFileIndex].draw(0,0,testImageSize,testImageSize);
-		
-		ofPopStyle();
-		ofPopMatrix();
-		
+	if(finished){
 		return;
 	}
-	
-	
-	ofPushStyle();
 
-	if(hovering){
-		ofFill();
+	if(!hover && cursorDistance < activationDistance.min){
+		hover = true;
+		hoverStartTime = ofGetElapsedTimef();
+		if(clickSound!=NULL){
+			clickSound->setPosition(0);
+			clickSound->play();
+		}
 	}
-	else{
-		ofNoFill();
-	}
-
-	if(hovering){
-		ofxEasingCubic cub;
-		expandPercent = ofxTween::map(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected*.3, .2, 1.0, true, cub, ofxTween::easeOut);
-		selectPercent = ofxTween::map(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, 0, 1.0, true, cub, ofxTween::easeOut);
-	}
-	else{
-		expandPercent += (.1 - expandPercent) * .2;
-		selectPercent += ( 0 - selectPercent) * .4;
-	}
-	
-	//make it blow up and fade out really quickly.
-	if(isDestroyed){
-		ofxEasingCubic cub;
-		expandPercent = ofxTween::map(ofGetElapsedTimef(), destroyedStartFadeTime, destroyFadeoutTime, .0, 1.0, true, cub, ofxTween::easeOut);
-//		cout << "expand percent " << expandPercent << endl;
-	}
-	
-//	cout << "expand percent " << expandPercent << " radius " << radius << endl;
-	
-	CloudsQuestion::shader.setUniform1f("expandPercent", expandPercent+enlarge);
-	CloudsQuestion::shader.setUniform1f("maxExpand", radius);	
-	CloudsQuestion::shader.setUniform1f("selectPercent", selectPercent);
-	CloudsQuestion::shader.setUniform1f("destroyedAttenuate", isDestroyed ? 1.0 - expandPercent : 1.0);
-	
-	ofPushMatrix();
-	ofTranslate(position);
-	ofNode n;
-	n.setPosition(position);
-	n.lookAt(cam->getPosition());
-	
-	currentRot.slerp(.1, currentRot, n.getOrientationQuat());
-	
-	ofVec3f axis;
-	float angle;
-	currentRot.getRotate(angle, axis);
-	ofVec3f dial = n.getLookAtDir();
-	ofRotate(-ofGetElapsedTimef()*100,dial.x,dial.y,dial.z);
-	ofRotate(angle,axis.x,axis.y,axis.z);
-	
-//	ofScale(radius*expandPercent, radius*expandPercent, radius*expandPercent);
-	dottedCircle.draw();
-	if(!isDestroyed){
-		progressRing.draw();
-	}
-	
-	ofPopMatrix();
-
-	ofPopStyle();
-}
-
-void CloudsQuestion::orientToCenter(){
-	ofNode n;
-	n.setPosition(position);
-	ofVec3f centeredPos(0,0,position.z);
-	n.lookAt(centeredPos);
-	
-	currentRot = n.getOrientationQuat();
-}
-
-void CloudsQuestion::enableHover(){
-	hoveringEnabled = true;
-}
-
-void CloudsQuestion::disableHover(){
-	if(hovering) stopHovering();
-	hoveringEnabled = false;
-}
-
-void CloudsQuestion::startHovering(){
-	if(!hovering && hoveringEnabled && !isDestroyed){
-		hovering = true;
-		hoveringStartTime = ofGetElapsedTimef();
-	}
-}
-
-void CloudsQuestion::stopHovering(){
-	if(!lockHover){
-		hovering = false;
-	}
-}
-
-void CloudsQuestion::destroy(){
-	if(!isDestroyed){
-		isDestroyed = true;
-		destroyedStartFadeTime = ofGetElapsedTimef();
-		destroyFadeoutTime = destroyedStartFadeTime + 1.0;
-	}
-}
-
-bool CloudsQuestion::isSelected(){
-	return hovering && ofGetElapsedTimef() - hoveringStartTime > secondsToConsiderSelected;
-}
-
-void CloudsQuestion::drawOverlay(bool anchorToScreen){
-	if(hovering){
-		
-		glDisable(GL_DEPTH_TEST);
-
-		float width = font->stringWidth(question);
-		//ofVec2f screenPosition(ofGetWidth()/2 - width/2, ofGetHeight() * .66);
-		ofVec2f screenPosition;
-		if(anchorToScreen){
-			screenPosition = ofVec2f(20,20);
+	else if(hover){
+		if(cursorDistance > activationDistance.max){
+			hover = false;
+			percentComplete = 0.0;
+		}
+		else if(percentComplete >= 1.0){
+			finished = true;
+			finishedTime = nodeActivatedTime = ofGetElapsedTimef(); //used for alpha on helper text
+			if(selectSound != NULL){
+				selectSound->setPosition(0);
+				selectSound->play();
+			}
 		}
 		else{
-			if( currentScreenPoint.x > ofGetWidth()/2){
-				screenPosition = currentScreenPoint - ofVec2f(width + 40, -25);
-			}
-			else{
-				screenPosition = currentScreenPoint;
-			}
+			percentComplete = ofMap(ofGetElapsedTimef(), hoverStartTime, hoverStartTime+holdTime, 0.0, 1.0,true);
 		}
-		
-		//DRAW BACKBOX
-//		ofPushStyle();
-//		ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
-//		ofSetColor(255,20);
-//		ofRect(screenPosition.x, screenPosition.y-25, width+40, 50);
-//		ofPopStyle();
-		
-		float secondsToWriteQuestion = question.size() / charsPerSecond;
-		int charactersToType = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToWriteQuestion, 0, question.size(), true);
-		string substring = question.substr(0, charactersToType);
-//		if(font != NULL){
-//			ofPushStyle();
-//			ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
-//			ofSetColor(50);
-//			font->drawString(substring, screenPosition.x+12, screenPosition.y+2);
-//			ofSetColor(255);
-//			ofEnableBlendMode(OF_BLENDMODE_ADD);
-			font->drawString(substring, screenPosition.x+10, screenPosition.y);
-			font->drawString(substring, screenPosition.x+10, screenPosition.y);
-//			ofPopStyle();
-//		}
-//		else{
-//			ofDrawBitmapString(substring, screenPosition);
-//		}
-		
-		//DRAW PROGRESS BAR
-		ofPushStyle();
-		ofMesh progress;
-		progress.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-		
-		progress.addVertex(ofVec3f(screenPosition.x+10,screenPosition.y+5,0));
-		progress.addVertex(ofVec3f(screenPosition.x+10,screenPosition.y+10,0));
-		
-		float percentToSelection = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, 0, 1.0, true);
-		progress.addVertex(ofVec3f(screenPosition.x+10 + width*percentToSelection + 5, screenPosition.y+5,0));
-		progress.addVertex(ofVec3f(screenPosition.x+10 + width*percentToSelection, screenPosition.y+10,0));
-
-		progress.addColor(ofFloatColor::white * .7);
-		progress.addColor(ofFloatColor::white * .7);
-		
-		float oscatten = sin(ofGetElapsedTimef()*10)*.5+.5;
-		ofFloatColor flash = ofFloatColor::white.getLerped(ofFloatColor::crimson, percentToSelection*oscatten);
-		progress.addColor(flash);
-		progress.addColor(flash);
-		//progress.draw(); //disabling for now
-		
-		
-		ofPopStyle();
-		glEnable(GL_DEPTH_TEST);
 	}
+}
 
+void CalibrationNode::draw(){
+	ofPushMatrix();
 	ofPushStyle();
-	//debug
-//	ofSetColor(255, 0, 0, 100);
-//	ofCircle(currentScreenPoint, screenRadius);
+	ofFloatColor baseColor;
+	if(finished){
+		baseColor = tint;
+		tint.a = 200*nodeAlphaAttenuate;
+	}
+	else if(hover){
+		baseColor = ofFloatColor(1.0, 100/255.0,100/255.0,200/255.0);
+	}
+	else{
+		baseColor = ofFloatColor(1.0, 200.0/255.0);
+	}
+	ofSetColor(baseColor);
+	
+#ifdef OCULUS_RIFT
+	ofVec3f up = ofVec3f(0,1,0);
+	if(cam != NULL) up = cam->getUpDir();
+	CloudsVisualSystem::getOculusRift().multBillboardMatrix(worldPosition,up);
+#endif
+	
+	float afterFinishScalar = 0.0;
+	ofNoFill();
+	if(percentComplete > 0.0){
+		float nodeSize = nodeBaseSize;
+		ofColor arcColor = ofGetStyle().color;
+		if(finished){
+			afterFinishScalar = powf(ofMap(ofGetElapsedTimef(), finishedTime, finishedTime+.2, 0.0, 1.0, true), 2.0f);
+			nodeSize = nodeBaseSize + ( afterFinishScalar * 8.0);
+			arcColor.a = 255*(1.0-afterFinishScalar);
+		}
+		ofPath arc;
+		arc.setFilled(false);
+		arc.setStrokeWidth(3);
+		arc.setStrokeColor(arcColor);
+		arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 90, 360*percentComplete + 90, true);
+		arc.draw();
+	}
+	
+	ofCircle(0,0,0, nodeBaseSize * (1.0-afterFinishScalar) );
+	ofFill();
+	baseColor.a *= .1;
+	ofSetColor(baseColor);
+	ofCircle(0,0,0, nodeBaseSize * (1.0-afterFinishScalar) );
+	
 	ofPopStyle();
-}
-
-void CloudsQuestion::mousePressed(ofMouseEventArgs& args){
-    if(!introQuestion){
-		bool insideHover = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
-		if(hovering && insideHover) {
-            cout<<"Ive clicked on the button"<<endl;    
-		}
-	}
-}
-
-void CloudsQuestion::mouseMoved(ofMouseEventArgs& args){
-	if(cam == NULL){
-		return;
-	}
-	
-	if(!introQuestion){
-		bool insideHover = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
-		if(!hovering && insideHover) {
-			startHovering();
-//            cout<<"im hovering isinde the question"<<endl;
-		}
-		else if(hovering && !insideHover){
-			stopHovering();
-//            cout<<"stop hovering"<<endl;
-		}
-	}
-}
-
-void CloudsQuestion::mouseReleased(ofMouseEventArgs& args){
-	
-}
-
-void CloudsQuestion::mouseDragged(ofMouseEventArgs& args){
-	
+	ofPopMatrix();
 }

@@ -41,9 +41,19 @@ float noise( in vec3 x )
                    mix( hash(n+270.0), hash(n+271.0),f.x),f.y),f.z);
 }
 
+float _noise(vec3 p) //Thx to Las^Mercury
+{
+	vec3 i = floor(p);
+	vec4 a = dot(i, vec3(1., 57., 21.)) + vec4(0., 57., 21., 78.);
+	vec3 f = cos((p-i)*acos(-1.))*(-.5)+.5;
+	a = mix(sin(cos(a)*a),sin(cos(1.+a)*(1.+a)), f.x);
+	a.xy = mix(a.xz, a.yw, f.y);
+	return mix(a.x, a.y, f.z);
+}
+
 float noise( float x, float y, float z)
 {
-	return noise( vec3(x,y,z) );
+	return _noise( vec3(x,y,z) );
 }
 
 void bounce(inout vec3 acc, in vec3 pos, in vec3 p, inout int collisionCount, float radius)

@@ -10,6 +10,7 @@ Panel::Panel(){
 	maxCharsOnLine = 0;
 	animationStarted = false;
 	sharedFont = NULL;
+	selected = false;
 }
 
 void Panel::setup(){
@@ -51,8 +52,8 @@ void Panel::draw(float screenHeight){
 				    ofxTween::map(animationPercent, 0.5, 1.0, 0.2, 1.0, true, ofxEasingSine(), ofxTween::easeIn) );
 	
 	//TODO fill in background color 
-	ofNoFill();
 	ofEnableAlphaBlending();
+	ofNoFill();
 	ofSetColor(255, *outlineAlpha * 255);
 	ofRect(currRect);
 	
@@ -69,7 +70,12 @@ void Panel::draw(float screenHeight){
 	ofSetColor(255);
 	
 	selfDraw();
-	
+
+	if(selected){
+		ofFill();
+		ofSetColor(255, 100, 100, *outlineAlpha * 255);
+		ofRect(drawRect);
+	}
 	glDisable(GL_SCISSOR_TEST);
 }
 

@@ -23,7 +23,7 @@ typedef struct{
 class CloudsSound : public ofThread {
   public:
 	CloudsSound();
-	
+	void setup();
 	void setup(CloudsStoryEngine& storyEngine);
 	void exit(ofEventArgs & args);
 	
@@ -74,7 +74,14 @@ class CloudsSound : public ofThread {
 		
     // public data structures
     vector<lukePreset> presets;
+	
+	vector<string> renderedTracks;
+	float mixVolumeForTrack(string trackPath);
+	void setMixVolumeForTrack(string trackPath, float level);
+	void playImmediately(string trackPath);
 
+	void saveMixLevels();
+	
   protected:
 
 	CloudsStoryEngine* storyEngine;
@@ -118,8 +125,10 @@ class CloudsSound : public ofThread {
     vector<lukeSimpleMelody> simplemelodies;
 
     vector<lukeSample> looperSamples;
-	
+
 	vector<CloudsSoundCue> currentCues;
+
+	
 	ofxTLFlags* presetFlags;
 	bool cueFlagsAdded;
 	float currentCuesTotalDuration;
@@ -129,5 +138,8 @@ class CloudsSound : public ofThread {
 	float playerSwapTime;
 	float playerFadeDuration;
 	
+	map<string, float> perTrackMix;
+	float frontMixAttenuate;
+	float backMixAttenuate;
 	vector<QueuedTrack> queuedTracks;
 };

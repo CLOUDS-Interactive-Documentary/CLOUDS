@@ -8,17 +8,26 @@ CloudsSound::CloudsSound(){
 	presetFlags = NULL;
 	eventsRegistered = false;
 	maxSpeakerVolume = 1;
+	storyEngine = NULL;
 	
 }
 
 //--------------------------------------------------------------------
 // this setup gets the audio shit together for the entire playback engine
 //--------------------------------------------------------------------
+
 void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 	this->storyEngine = &storyEngine;
+	setup();
+}
+
+void CloudsSound::setup(){
 	
 	if(!eventsRegistered){
-		ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsSound::actCreated);
+		if(storyEngine != NULL){
+			ofAddListener(storyEngine->getEvents().actCreated, this, &CloudsSound::actCreated);
+		}
+		
 		ofAddListener(ofEvents().update, this, &CloudsSound::update);
 		ofAddListener(ofEvents().exit, this, &CloudsSound::exit);
 		
@@ -89,11 +98,45 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         GetCloudsAudioEvents()->respawn = false;
         GetCloudsAudioEvents()->setupflush = false;
         GetCloudsAudioEvents()->dodelay = false;
+		GetCloudsAudioEvents()->fadeValue = 1.0;
 		
 		eventsRegistered = true;
 		
+		//load sound volumes
+		ofBuffer perTrackMixBuf = ofBufferFromFile(GetCloudsDataPath() + "sound/mix.txt");
+		while(!perTrackMixBuf.isLastLine()){
+			string line = perTrackMixBuf.getNextLine();
+			vector<string> split = ofSplitString(line, " ",true,true);
+			if(split.size() != 2){
+				ofLogError("CloudsSound::setup") << "Mix level incorrectly formatted for line " << line;
+			}
+			else{
+				perTrackMix[ split[0] ] = ofToFloat( split[1] );
+			}
+		}
+		
+		//load all rendered tracks
+		ofDirectory dir(GetCloudsDataPath() + "sound/renders/");
+		dir.allowExt("wav");
+		dir.allowExt("aiff");
+		dir.allowExt("mp3");
+		dir.sort();
+		dir.listDir();
+		for(int i = 0; i < dir.numFiles(); i++){
+			renderedTracks.push_back(dir.getPath(i));
+		}
+		
 		startThread(true);
 	}
+}
+
+void CloudsSound::saveMixLevels(){
+	map<string, float>::iterator it;;
+	ofBuffer trackMix;
+	for(it = perTrackMix.begin(); it != perTrackMix.end(); it++){
+		trackMix.append(it->first + " " + ofToString(it->second) + "\n");
+	}
+	ofBufferToFile(GetCloudsDataPath() + "sound/mix.txt", trackMix);
 }
 
 void CloudsSound::threadedFunction(){
@@ -103,6 +146,7 @@ void CloudsSound::threadedFunction(){
 		//
 		bool trackToPlay = false;
 		QueuedTrack track;
+		
 		lock();
 		if(queuedTracks.size() > 0 && ofGetElapsedTimef() > queuedTracks.front().startTime){
 			trackToPlay = true;
@@ -115,28 +159,31 @@ void CloudsSound::threadedFunction(){
 			if(frontPlayer->isLoaded()){
 				playerSwapTime = ofGetElapsedTimef();
 				swap(frontPlayer,backPlayer);
+				backMixAttenuate = frontMixAttenuate;
 			}
 			
 			//		string filename = GetCloudsDataPath() + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
 			if(ofFile(track.trackPath).exists()){
 				frontPlayer->loadSound(track.trackPath);
+				frontMixAttenuate = mixVolumeForTrack(track.trackPath);
 			}
 			else{
 				frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/1.mp3");
+				frontMixAttenuate = 1.0;
 				ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << track.trackPath;
 			}
-			
+
 			frontPlayer->play();
-			frontPlayer->setVolume(1.0);
+			frontPlayer->setVolume(frontMixAttenuate);
 			
 		}
 		
 		if(frontPlayer != NULL && frontPlayer->isLoaded()){
-			frontPlayer->setVolume(GetCloudsAudioEvents()->fadeValue);
-			//		cout << "face value is " << GetCloudsAudioEvents()->fadeValue << endl;
+			frontPlayer->setVolume(GetCloudsAudioEvents()->fadeValue*frontMixAttenuate);
+//			cout << "Front player volume is " << GetCloudsAudioEvents()->fadeValue << " Mix " << frontMixAttenuate << " at pos " << frontPlayer->getPosition() << endl;
 		}
 		if(backPlayer != NULL && backPlayer->isLoaded()){
-			float newVolume = ofMap(ofGetElapsedTimef(), playerSwapTime, playerSwapTime+playerFadeDuration, GetCloudsAudioEvents()->fadeValue, 0.0, true);
+			float newVolume = ofMap(ofGetElapsedTimef(), playerSwapTime, playerSwapTime+playerFadeDuration, backMixAttenuate*GetCloudsAudioEvents()->fadeValue, 0.0, true);
 			//		cout << "FADE AMOUNT " << newVolume << endl;
 			backPlayer->setVolume(newVolume);
 			if(newVolume == 0){
@@ -151,15 +198,31 @@ void CloudsSound::threadedFunction(){
 }
 
 //--------------------------------------------------------------------
+void CloudsSound::setMixVolumeForTrack(string track, float level){
+	perTrackMix[ ofFilePath::getBaseName(track) ] = level;
+}
+
+//--------------------------------------------------------------------
+float CloudsSound::mixVolumeForTrack(string trackPath){
+	string pathKey = ofFilePath::getBaseName(trackPath);
+	if(perTrackMix.find(pathKey) != perTrackMix.end()){
+		return frontMixAttenuate = perTrackMix[pathKey];
+	}
+	return 1.0;
+}
+
+//--------------------------------------------------------------------
 void CloudsSound::exit(ofEventArgs & args){
+
 	waitForThread(true);
 
 	if(eventsRegistered){
 		
-		
 		eventsRegistered = false;
 		
-		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsSound::actCreated);
+		if(storyEngine != NULL){
+			ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsSound::actCreated);
+		}
 		ofRemoveListener(ofEvents().audioRequested, this, &CloudsSound::audioRequested);
 		
 		if(currentAct != NULL){
@@ -230,7 +293,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     actTimeLine.addPage("sound",true);
     presetFlags = actTimeLine.addFlags("Presets");
 
-	//    vector<CloudsSoundCue>& thecues = args.act->getSoundCues(); // copy the cues
+	//vector<CloudsSoundCue>& thecues = args.act->getSoundCues(); // copy the cues
 	
     currentCuesTotalDuration = args.act->getTimeline().getDurationInSeconds(); // how long
 	currentCues = args.act->getSoundCues();
@@ -379,8 +442,15 @@ void CloudsSound::enterTunnel()
     SCHEDULEBANG(477.); // length of sound
 #else
 	//TODO: enter tunnel on main system
-	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/tunnel.mp3");
-    frontPlayer->play();
+//	frontPlayer->loadSound();
+//    frontPlayer->play();
+	QueuedTrack t;
+	t.startTime = ofGetElapsedTimef();
+	t.trackPath = GetCloudsDataPath() + "sound/renders/tunnel.mp3";
+	lock();
+	queuedTracks.push_back(t);
+	unlock();
+
 #endif
     in_tunnel = true;
     float ftime = 0.1;
@@ -412,12 +482,29 @@ void CloudsSound::enterClusterMap()
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
 #else
-	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/cloudsdream_mix1.mp3");
-	frontPlayer->play();
+//	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/cloudsdream_mix1.mp3");
+//	frontPlayer->play();
+	QueuedTrack t;
+	t.startTime = ofGetElapsedTimef();
+	t.trackPath = GetCloudsDataPath() + "sound/renders/cloudsdream_mix1.mp3";
+	lock();
+	queuedTracks.push_back(t);
+	unlock();
+	
 #endif
 	
     float ftime = 0.1;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
+}
+
+void CloudsSound::playImmediately(string trackPath){
+	QueuedTrack t;
+	t.startTime = ofGetElapsedTimef();
+	t.trackPath = trackPath;
+	lock();
+	queuedTracks.push_back(t);
+	unlock();
+	
 }
 
 void CloudsSound::exitClusterMap()
