@@ -21,8 +21,14 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	customGui->addSlider("gravity", 0, .1, &gravity);
 	customGui->addSlider("attractionToCenter", 0, .1, &attractionToCenter);
 	
+	customGui->addSpacer();
+	customGui->addSlider("highSpeedPercent", 0, 1, &highSpeedPercent);
+	customGui->addSlider("highSpeedScale", 1, 3, &highSpeedScale);
+	customGui->addSlider("speedScaleLow", 0.1, 1, &speedLow);
+	customGui->addSlider("speedScaleHi", 1, 2, &speedHi);
+	
+	customGui->addSpacer();
 	customGui->addSlider("cameraBounce", 0, 20, &cameraBounce);
-	//customGui->addSlider("cameraAttractionToCenter", 0, 2, &cameraAttractionToCenter);
 	customGui->addSlider("cameraTargetDist", 20, 500, &cameraTargetDist);
 	customGui->addSlider("balloonFrameVal", 0, 1, &balloonFrameVal);
 	
@@ -193,6 +199,13 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	w3 = .2;
 	
 	l0.set(dim*.25, dim, 0);
+	
+	highSpeedScale= 1.4;
+	speedLow = .8;
+	speedHi = 1.5;
+	highSpeedPercent = .1;
+	
+	balloonFrameVal = 1.;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -317,7 +330,7 @@ void CloudsVisualSystemBalloons::selfSceneTransformation(){
 void CloudsVisualSystemBalloons::selfUpdate()
 {
 	p0->getTextureReference().readToPixels(pospix);
-	ofFloatColor poscol = pospix.getColor(0,0);
+	ofFloatColor poscol = pospix.getColor(1,1);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
@@ -350,11 +363,13 @@ void CloudsVisualSystemBalloons::selfDraw()
 	swap(p0, p1);
 	
 	//update velocities
+	ofVec3f camPos = getCameraPosition();
 	v0->begin();
     ofClear(0, 255);
 	velShader.begin();
 	velShader.setUniformTexture("posTexture", p1->getTextureReference(), 0);
 	velShader.setUniformTexture("velTexture", v1->getTextureReference(), 1);
+	velShader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);;
 	velShader.setUniform3f("camOffset", balloon00Pos.x,balloon00Pos.y,balloon00Pos.z);
 	velShader.setUniform1f("netHeight", netHeight );
 	velShader.setUniform1f("dimX", dimX);
@@ -371,10 +386,12 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1f("gravity", gravity);
 	velShader.setUniform1f("attractionToCenter", attractionToCenter);
 	velShader.setUniform1f("cameraBounce", cameraBounce);
-
 	
-	ofVec3f camPos = getCameraRef().getPosition();
-	velShader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
+	velShader.setUniform1f("highSpeedScale", highSpeedScale );
+	velShader.setUniform1f("speedLow", speedLow );
+	velShader.setUniform1f("speedHi", speedHi );
+	velShader.setUniform1f("highSpeedPercent", highSpeedPercent );
+
 	
 	ofRect(-1,-1,2,2);
 	

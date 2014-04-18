@@ -4,6 +4,14 @@
 uniform sampler2DRect posTexture;
 uniform sampler2DRect velTexture;
 
+
+
+uniform float highSpeedScale;
+uniform float speedLow;
+uniform float speedHi;
+uniform float highSpeedPercent;
+
+
 uniform vec3 camPos;
 
 uniform float bound;
@@ -119,9 +127,19 @@ void main()
 	//acceleration & gravity
 	vel *= velAtten;
 	vel += acc * accScl;
-	vel.y += gravity;
 	
-	if(uv.x * dimY + uv.y < dimX*dimY*.4)	vel.y += gravity * .4;
+	//gravity with varience based on index and other stuff...
+	float i = uv.x * dimY + uv.y;
+	float total = dimX * dimY;
+	
+	if( i < total*highSpeedPercent)
+	{
+		vel.y += gravity * highSpeedScale * mix(speedLow, speedHi, i / total*highSpeedPercent);
+	}
+	else
+	{
+		vel.y += gravity * mix(speedLow, speedHi, (i-total) / (total * (1.- highSpeedPercent)));
+	}
 	
 	//draw it
    	gl_FragColor = vec4(vel, 1.0);

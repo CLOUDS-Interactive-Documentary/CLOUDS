@@ -137,7 +137,8 @@ void main()
 	vec3 pos = texture2DRect( posTexture, st ).xyz;
 	vec3 velDir = (texture2DRect( velTexture, st ).xyz);
 	
-	norm = gl_NormalMatrix * qtransform(q, gl_Normal);
+	vec3 vNorm = qtransform(q, gl_Normal);
+	norm = gl_NormalMatrix * vNorm;
 	v.xyz = qtransform(q, v.xyz);
 	v.xyz += pos;
 	
@@ -153,7 +154,7 @@ void main()
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	gl_Position = gl_ProjectionMatrix * ecPosition;
 	
-	vec3 r = reflect( ePos, norm );
+	vec3 r = reflect( ePos, vNorm );
 	float m = 2. * sqrt(r.x*r.x + r.y*r.y + pow(r.z+1., 2.));
 	vN = (r.xy / m + .5);
 	vN.y = 1. - vN.y;

@@ -37,13 +37,33 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>highSpeedPercent</Name>
+    <Value>0.369458139</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>highSpeedScale</Name>
+    <Value>1.256157637</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>speedScaleLow</Name>
+    <Value>0.929064035</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>speedScaleHi</Name>
+    <Value>1.241379261</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>cameraBounce</Name>
     <Value>10.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cameraTargetDist</Name>
-    <Value>93.300491333</Value>
+    <Value>145.320190430</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -57,11 +57,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>tower</Name>
-    <Value>0</Value>
+    <Name>testing</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>testing</Name>
-    <Value>1</Value>
+    <Name>tower</Name>
+    <Value>0</Value>
 </Widget>
