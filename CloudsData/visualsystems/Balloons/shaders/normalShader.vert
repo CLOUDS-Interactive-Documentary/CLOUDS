@@ -35,7 +35,7 @@ float lengthSquared(vec3 v)
 vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 {
 	vec4 _v;
-
+	
 	float fromLen2 = lengthSquared(sourceVector);
 	float fromLen;
 	// normalize only when necessary, epsilon test
@@ -43,7 +43,7 @@ vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 		fromLen = sqrt(fromLen2);
 		sourceVector /= fromLen;
 	} else fromLen = 1.0;
-
+	
 	float toLen2 = lengthSquared(targetVector);
 	// normalize only when necessary, epsilon test
 	if ((toLen2 < 1.0 - 1e-7) || (toLen2 > 1.0 + 1e-7)) {
@@ -59,7 +59,7 @@ vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 	// Now let's get into the real stuff
 	// Use "dot product plus one" as test as it can be re-used later on
 	float dotProdPlus1 = 1.0 + dot(sourceVector, targetVector);
-
+	
 	if (dotProdPlus1 < 1e-7)
 	{
 		if (abs(sourceVector.x) < 0.6) {
@@ -103,6 +103,8 @@ uniform sampler2DRect velTexture;
 uniform sampler2DRect quatTexture;
 uniform sampler2DRect colTexture;
 
+uniform vec2 sphericalMapDim;
+
 uniform vec3 camPos;
 uniform vec3 l0;
 
@@ -122,6 +124,7 @@ varying vec4 ecPosition;
 
 varying float fogMix;
 
+varying vec2 vN;
 
 void main()
 {
@@ -139,7 +142,24 @@ void main()
 	v.xyz += pos;
 	
 	fogMix = 1. - pow(abs(v.y) / dim, 6.);
-//	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / fogDist, 3.), 0., 1.);
+	//	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / fogDist, 3.), 0., 1.);
+	
+	
+	
+	//		vec4 p = vec4( position, 1. );
+	//
+	//		vec3 e = normalize( vec3( modelViewMatrix * p ) );
+	//		vec3 n = normalize( normalMatrix * normal );
+	//
+	//		vec3 r = reflect( e, n );
+	//		float m = 2. * sqrt(
+	//							pow( r.x, 2. ) +
+	//							pow( r.y, 2. ) +
+	//							pow( r.z + 1., 2. )
+	//							);
+	//		vN = r.xy / m + .5;
+	
+	
 	
 	lPos = vec4(0.,0.,0.,1.);//texture2DRect( posTexture, vec2(10.) );
 	lCol = vec4(1.) - pow(abs(lPos.y) / dim, 4.);
@@ -148,5 +168,16 @@ void main()
 	ecPosition = gl_ModelViewMatrix * v;
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	gl_Position = gl_ProjectionMatrix * ecPosition;
+	
+	
+	//vec4 p = vec4( position, 1. );
+	//vec3 e = ePos;
+	//vec3 n = normalize( normalMatrix * normal );
+	
+	vec3 r = reflect( ePos, norm );
+	float m = 2. * sqrt(r.x*r.x + r.y*r.y + pow(r.z+1., 2.));
+	vN = (r.xy / m + .5);
+	vN.y = 1. - vN.y;
+	vN *= sphericalMapDim;
 }
 

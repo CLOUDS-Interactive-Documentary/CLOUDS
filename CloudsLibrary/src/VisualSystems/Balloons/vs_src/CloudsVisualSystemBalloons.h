@@ -160,4 +160,6 @@ protected:
 	
 	ofVec3f balloon00Pos;
 	ofFloatPixels pospix;
+	
+	ofImage sphericalMap;
 };

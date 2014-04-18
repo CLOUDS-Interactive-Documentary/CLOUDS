@@ -5,6 +5,8 @@ uniform float shininess;
 uniform float dim;
 uniform float facingRatio;
 
+uniform sampler2DRect sphericalMap;
+
 uniform float lightConstantAttenuation = 1.;
 uniform float lightLinearAttenuation = .0025;
 
@@ -21,6 +23,7 @@ varying vec3 ePos;
 varying vec4 ecPosition;
 
 varying float fogMix;
+varying vec2 vN;
 
 void PointLight(in vec3 lightPosition,
                 in vec3 eye,
@@ -54,9 +57,6 @@ void main(void)
 {
 	vec3 normal = normalize(norm);
 	float fr = abs(dot(ePos, normal));
-//	float spec = pow(fr, shininess);
-	
-//	fr  = mix(1., fr * 1.2, facingRatio);
 	
 	vec4 diffuse = color*mix(1., fr * 1.2, facingRatio);
 	vec4 specular = vec4(1.);
@@ -66,6 +66,7 @@ void main(void)
 	vec4 fogColor = mix( bg1, bg0, gl_FragCoord.y / screenHeight);
 	
 	gl_FragColor = mix( fogColor, diffuse, fogMix);
+	gl_FragColor += pow(texture2DRect( sphericalMap, vN ), vec4(4.));
 	gl_FragColor.w = 1. - fr * .025;
 }
 
