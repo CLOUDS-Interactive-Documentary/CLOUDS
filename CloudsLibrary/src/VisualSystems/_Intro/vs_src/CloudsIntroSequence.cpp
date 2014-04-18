@@ -321,7 +321,7 @@ void CloudsIntroSequence::updateWaiting(){
 				CloudsPortalEventArgs args("MOVE CLOSER TO THE DISPLAY");
 				ofNotifyEvent(events.portalHoverBegan, args);
 			}
-			else{
+			else if(viewerState == k4w::ViewerState_PresentIdle){
 				CloudsPortalEventArgs args("EXTEND YOUR HAND TO BEGIN");
 				ofNotifyEvent(events.portalHoverBegan, args);
 			}

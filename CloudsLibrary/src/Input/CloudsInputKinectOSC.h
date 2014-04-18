@@ -79,9 +79,10 @@ namespace k4w
 	// defined by us
     enum ViewerState 
     {
-        ViewerState_None       = 0,
-        ViewerState_OutOfRange = 1,
-        ViewerState_Present    = 2
+        ViewerState_None        = 0,
+        ViewerState_OutOfRange  = 1,
+        ViewerState_PresentIdle = 2,
+        ViewerState_Interacting = 3
     };
     
     struct Joint 
@@ -206,6 +207,7 @@ public:
     bool bDoDebug;
 
 	k4w::ViewerState viewerState;
+    unsigned long viewerIdleTime;
     
     // current position attributes
     float posResetLerpPct;

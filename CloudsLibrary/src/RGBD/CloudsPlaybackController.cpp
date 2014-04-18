@@ -1,5 +1,10 @@
 
 #include "CloudsPlaybackController.h"
+
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#endif
+
 bool listsort(pair<int,string> a, pair<int,string> b){
     return a.first > b.first;
 }
@@ -907,6 +912,23 @@ void CloudsPlaybackController::drawInterludeInterface(){
 	
 }
 
+#ifdef KINECT_INPUT
+//--------------------------------------------------------------------
+void CloudsPlaybackController::drawKinectFeedback(){
+    
+    ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+    if ((kinectInput->viewerState == k4w::ViewerState_OutOfRange) ||
+        (kinectInput->viewerState == k4w::ViewerState_PresentIdle && kinectInput->viewerIdleTime >= 5000)) {
+        kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 255, 0.3f);
+    }
+    else {
+        kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 0, 0.5f);
+    }
+    kinectInput->draw(0, 0, ofGetWidth(), ofGetHeight(), kinectFeedbackAlpha);
+    
+}
+#endif
+
 //This is where everything in clouds is drawn
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
@@ -918,6 +940,10 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     drawRenderTarget();
     
     drawInterludeInterface();
+    
+#ifdef KINECT_INPUT
+    drawKinectFeedback();
+#endif
     
 	drawDebugOverlay();
 	
