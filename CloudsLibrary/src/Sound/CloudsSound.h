@@ -91,6 +91,7 @@ class CloudsSound : public ofThread {
 	ofPtr<ofSoundPlayer> frontPlayer;
 	ofPtr<ofSoundPlayer> backPlayer;
 	
+	string currentTrackKey;
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
 

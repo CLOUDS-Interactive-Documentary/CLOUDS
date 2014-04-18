@@ -165,6 +165,7 @@ void CloudsSound::threadedFunction(){
 			//		string filename = GetCloudsDataPath() + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
 			if(ofFile(track.trackPath).exists()){
 				frontPlayer->loadSound(track.trackPath);
+				currentTrackKey = ofFilePath::getBaseName(track.trackPath);
 				frontMixAttenuate = mixVolumeForTrack(track.trackPath);
 			}
 			else{
@@ -199,14 +200,19 @@ void CloudsSound::threadedFunction(){
 
 //--------------------------------------------------------------------
 void CloudsSound::setMixVolumeForTrack(string track, float level){
-	perTrackMix[ ofFilePath::getBaseName(track) ] = level;
+	string trackKey = ofFilePath::getBaseName(track);
+	
+	perTrackMix[ currentTrackKey ] = level;
+	if(currentTrackKey == trackKey){
+		frontMixAttenuate = level;
+	}
 }
 
 //--------------------------------------------------------------------
 float CloudsSound::mixVolumeForTrack(string trackPath){
 	string pathKey = ofFilePath::getBaseName(trackPath);
 	if(perTrackMix.find(pathKey) != perTrackMix.end()){
-		return frontMixAttenuate = perTrackMix[pathKey];
+		return perTrackMix[pathKey];
 	}
 	return 1.0;
 }

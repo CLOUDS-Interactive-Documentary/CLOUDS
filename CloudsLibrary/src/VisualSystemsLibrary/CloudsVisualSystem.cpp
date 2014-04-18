@@ -691,8 +691,11 @@ void CloudsVisualSystem::drawInterludeInterface(){
 	resetNode.draw();
 	continueNode.draw();
 	
-//	ofMatrix4x4 compensate = getCameraRef().getLookAtDir();
-	
+	//////
+//	ofVec3f lookat = ofVec3f(0,0,1);
+//	ofRotate(180, lookat.x, lookat.y, lookat.z);//flip around
+//	ofMatrix4x4 compensate;
+//	compensate.rotate(180, lookat.x,lookat.y,lookat.z);
 	//////
 	ofVec3f lookat = getCameraRef().getLookAtDir();
 	ofRotate(180, lookat.x, lookat.y, lookat.z);//flip around
