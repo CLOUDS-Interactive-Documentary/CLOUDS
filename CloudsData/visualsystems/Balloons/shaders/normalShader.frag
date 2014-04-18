@@ -66,7 +66,7 @@ void main(void)
 
 	vec4 fogColor = mix( bg1, bg0, pow(gl_FragCoord.y/screenHeight, bgExpo) );
 	
-	diffuse += pow(texture2DRect( sphericalMap, vN ), vec4(2.)) * .25;
+	diffuse += pow(texture2DRect( sphericalMap, vN ), vec4(3.)) * .5;
 	gl_FragColor = mix( fogColor, diffuse, clamp(fogMix,0.,1.));
 	gl_FragColor.w = 1. - fr * .025;
 }
