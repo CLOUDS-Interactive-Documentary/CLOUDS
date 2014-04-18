@@ -9,6 +9,22 @@ uniform vec3 camPos;
 uniform float bound;
 uniform float dimX;
 uniform float dimY;
+
+uniform float noiseScl;
+uniform float time;
+uniform float offset;
+uniform float noiseSampleScale;
+uniform float velAtten;
+uniform float radius;
+uniform float accScl;
+uniform float gravity;
+uniform float attractionToCenter;
+uniform float cameraBounce;
+
+uniform vec3 camOffset;
+
+uniform float netHeight;
+
 varying vec2 uv;
 
 float hash( float n ) { return fract(sin(n)*43758.5453123); }
@@ -25,9 +41,19 @@ float noise( in vec3 x )
                    mix( hash(n+270.0), hash(n+271.0),f.x),f.y),f.z);
 }
 
+float _noise(vec3 p) //Thx to Las^Mercury
+{
+	vec3 i = floor(p);
+	vec4 a = dot(i, vec3(1., 57., 21.)) + vec4(0., 57., 21., 78.);
+	vec3 f = cos((p-i)*acos(-1.))*(-.5)+.5;
+	a = mix(sin(cos(a)*a),sin(cos(1.+a)*(1.+a)), f.x);
+	a.xy = mix(a.xz, a.yw, f.y);
+	return mix(a.x, a.y, f.z);
+}
+
 float noise( float x, float y, float z)
 {
-	return noise( vec3(x,y,z) );
+	return _noise( vec3(x,y,z) );
 }
 
 void bounce(inout vec3 acc, in vec3 pos, in vec3 p, inout int collisionCount, float radius)
@@ -47,14 +73,21 @@ void bounce(inout vec3 acc, in vec3 pos, in vec3 p, inout int collisionCount, fl
 
 void main()
 {
-	//TODO: make these uniforms
-	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .97, radius = 25., accScl = .2, gravity = .02, attractionToCenter = .01, cameraBounce = 10.;
+//	//TODO: make these uniforms
+//	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .97, radius = 25., accScl = .2, gravity = .02, attractionToCenter = .01, cameraBounce = 10.;
 	
 	vec3 pos = texture2DRect( posTexture, uv).xyz;
+	
+//	pos -= camOffset*.5;
+	
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
 	vec3 p = pos * noiseSampleScale;
-	vec3 acc = vec3(0.,.05,0.);
+//	p.y += time + camOffset.y;
+	
+	p.y += time;
+//	p += camOffset;
+	vec3 acc = vec3(0.,0.,0.);
 	
 	//noise influence
 	acc.x = noise(p.x+offset, p.y, p.z) - noise(p.x-offset, p.y, p.z);
@@ -87,6 +120,8 @@ void main()
 	vel *= velAtten;
 	vel += acc * accScl;
 	vel.y += gravity;
+	
+	if(uv.x * dimY + uv.y < dimX*dimY*.4)	vel.y += gravity * .4;
 	
 	//draw it
    	gl_FragColor = vec4(vel, 1.0);

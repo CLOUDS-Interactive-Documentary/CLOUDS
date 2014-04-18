@@ -425,7 +425,9 @@ void CloudsVisualSystemCode::selfMouseDragged(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemCode::selfMouseMoved(ofMouseEventArgs& data){
-	
+	for(int i = 0; i < panelsFront.size(); i++){
+		panelsFront[i]->selected = panelsFront[i]->drawRect.inside(data.x, data.y);
+	}
 }
 
 void CloudsVisualSystemCode::selfMousePressed(ofMouseEventArgs& data){

@@ -103,6 +103,12 @@ class CloudsPlaybackController : public ofThread {
     
     void drawRenderTarget();
     void drawInterludeInterface();
+
+#ifdef KINECT_INPUT
+    void drawKinectFeedback();
+    float kinectFeedbackAlpha;
+    ofTrueTypeFont kinectFeedbackFont;
+#endif
     
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
@@ -167,7 +173,7 @@ class CloudsPlaybackController : public ofThread {
     void cleanupInterlude();
 
     //INTERLUDE INTERFACE
-	void resetInterludeVariabls();
+	void resetInterludeVariables();
 	ofxFTGLFont interludeInterfaceFont;
 	float interludeExitBarWidth;
 	bool interludeHoveringContinue;

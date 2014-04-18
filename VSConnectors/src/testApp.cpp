@@ -4,10 +4,10 @@
 void testApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
-    
 	vs.setup();
+    vs.isInterlude = true;
 	vs.playSystem();
-    
+
     mixer.setup();
     mixer.setDiageticVolume(1);
 }

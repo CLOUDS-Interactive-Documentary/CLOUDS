@@ -13,21 +13,6 @@
 #include "CloudsVisualSystem.h"
 #include "ofxObjLoader.h"
 
-class Balloon
-{
-public:
-	Balloon()
-	{
-	}
-	~Balloon()
-	{
-	}
-
-	float radius;
-	ofVec3f pos, vel;
-	ofColor color;
-	ofMatrix4x4 transform;
-};
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemBalloons : public CloudsVisualSystem {
@@ -107,30 +92,58 @@ class CloudsVisualSystemBalloons : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	static bool compareBalloonsY(Balloon a, Balloon b)
+	ofVec3f randomPointInSphere(float rad, ofVec3f center = ofVec3f(0,0,0))
 	{
-		return a.pos.y < b.pos.y;
+		ofVec3f p;
+		p.x = ofRandom(-rad, rad);
+		p.y = ofRandom(-rad, rad);
+		p.z = ofRandom(-rad, rad);
+		
+		while(p.lengthSquared() > rad*rad)
+		{
+			p.x = ofRandom(-rad, rad);
+			p.y = ofRandom(-rad, rad);
+			p.z = ofRandom(-rad, rad);
+		}
+		
+		return p + center;
 	}
-
+	
+	void setBalloonPositions();
+	void setBalloonColors();
+	
+	
+	ofCamera& getCameraRef(){
+		//		return cloudsCamera;
+		return balloonCam;
+	}
+	
+	template<class T>
+	T mix( T x, T y, float u)
+	{
+		return x * (1.f - u) + y * u;
+	}
+	
 protected:
     
     //  Your Stuff
     //
 	
 	ofxUISuperCanvas* customGui;
-	bool customToggle;
-	float customFloat1;
-	float customFloat2;
+	ofxUISuperCanvas* colorGui;
+
 	
 	ofVbo vbo;
 	int total;
 	float dim;
-	vector<Balloon> balloons;
+	float netHeight;
 	
 	ofShader shader;
 	ofShader posShader;
 	ofShader velShader;
 	ofShader quatShader;
+	float noiseScl, offset, noiseSampleScale, velAtten, radius, accScl, gravity, attractionToCenter, cameraBounce,cameraAttractionToCenter, cameraOffset;
+	float spawnRad, cameraTargetDist;
 	
 	int dimY, dimX;
 	ofFbo posFbo0;
@@ -140,8 +153,28 @@ protected:
 	ofFbo colFbo;
 	ofFbo quatFbo;
 	
+	ofColor c0, c1, c2, c3;
+	float w0, w1, w2, w3;
+	
+	int c0Hue, c0Sat, c0Bri;
+	int c1Hue, c1Sat, c1Bri;
+	int c2Hue, c2Sat, c2Bri;
+	int c3Hue, c3Sat, c3Bri;
+	
 	ofFbo* p0;
 	ofFbo* p1;
 	ofFbo* v0;
 	ofFbo* v1;
+	
+	ofVec3f l0;
+	
+	ofVec3f camerVel;
+	
+	ofVec3f balloon00Pos;
+	ofFloatPixels pospix;
+	
+	ofImage sphericalMap;
+	
+	ofEasyCam balloonCam;
+	float balloonFrameVal;
 };

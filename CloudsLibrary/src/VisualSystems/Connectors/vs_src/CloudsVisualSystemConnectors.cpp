@@ -93,28 +93,9 @@ void CloudsVisualSystemConnectors::selfSetup(){
     
     gain = 0;
     
-	videoLoaded = false;
-	
-	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
-		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov",
-								   getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.xml" );
-		
-		getRGBDVideoPlayer().swapAndPlay();
-		
-		for(int i = 0; i < 640; i += 2){
-			for(int j = 0; j < 480; j+=2){
-				simplePointcloud.addVertex(ofVec3f(i,j,0));
-			}
-		}
-		
-		pointcloudShader.load(getVisualSystemDataPath() + "shaders/rgbdcombined");
-		videoLoaded = true;
-	}
-	
 	generator.setup();
 
 //	generator.setBounds(ofVec3f(-500,-500,-500), ofVec3f(500,500,500), 5);
-//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
     
     // sound
     synth.setOutputGen(buildSynth());
@@ -135,8 +116,7 @@ void CloudsVisualSystemConnectors::selfBegin(){
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemConnectors::audioRequested);
     
-    for (int i=0; i<1; i++)
-    {
+    for (int i = 0; i < 1; i++){
         if (playSample[i]) {
             soundTriggers[i].trigger();
         }
@@ -153,14 +133,12 @@ void CloudsVisualSystemConnectors::selfSceneTransformation(){
 void CloudsVisualSystemConnectors::selfUpdate(){
     volumeControl.value(gain);
 	generator.update();
-
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemConnectors::selfDraw(){
 
-	
 	//ofEnableAlphaBlending();
 //	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	glDisable(GL_DEPTH_TEST);
@@ -188,12 +166,9 @@ void CloudsVisualSystemConnectors::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemConnectors::selfEnd(){
-	
-	simplePointcloud.clear();
-	
+		
     volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemConnectors::audioRequested);
-    
     
 }
 // this is called when you should clear all the memory and delet anything you made in setup

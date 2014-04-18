@@ -3,6 +3,9 @@
 
 uniform sampler2DRect posTexture;
 uniform sampler2DRect velTexture;
+
+uniform vec3 camOffset;
+
 uniform float bound;
 varying vec2 uv;
 
@@ -11,8 +14,15 @@ void main()
 	vec3 pos = texture2DRect( posTexture, uv).xyz;
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
-	pos += vel;
+////	pos -= camOffset*.5;
+	pos.y -= camOffset.y*.5;
 	
+	pos += vel;
+//	if (length(uv) > 1.)
+//	{
+//		pos.y -= camOffset;
+//	}
+
 //	if (pos.x > bound) {
 //		pos.x = -bound;
 //	}
@@ -29,10 +39,10 @@ void main()
 //		pos.x = bound;
 //	}
 //	
-//	if (pos.y < -bound) {
-//		pos.y = bound;
-//	}
-//	
+	if (pos.y < -bound) {
+		pos.y = bound;
+	}
+//
 //	if (pos.z < -bound) {
 //		pos.z = bound;
 //	}

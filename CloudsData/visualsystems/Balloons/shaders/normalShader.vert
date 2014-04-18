@@ -35,7 +35,7 @@ float lengthSquared(vec3 v)
 vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 {
 	vec4 _v;
-
+	
 	float fromLen2 = lengthSquared(sourceVector);
 	float fromLen;
 	// normalize only when necessary, epsilon test
@@ -43,7 +43,7 @@ vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 		fromLen = sqrt(fromLen2);
 		sourceVector /= fromLen;
 	} else fromLen = 1.0;
-
+	
 	float toLen2 = lengthSquared(targetVector);
 	// normalize only when necessary, epsilon test
 	if ((toLen2 < 1.0 - 1e-7) || (toLen2 > 1.0 + 1e-7)) {
@@ -59,7 +59,7 @@ vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 	// Now let's get into the real stuff
 	// Use "dot product plus one" as test as it can be re-used later on
 	float dotProdPlus1 = 1.0 + dot(sourceVector, targetVector);
-
+	
 	if (dotProdPlus1 < 1e-7)
 	{
 		if (abs(sourceVector.x) < 0.6) {
@@ -103,30 +103,34 @@ uniform sampler2DRect velTexture;
 uniform sampler2DRect quatTexture;
 uniform sampler2DRect colTexture;
 
+uniform vec2 sphericalMapDim;
+
+uniform vec3 camPos;
+uniform vec3 l0;
+
+uniform float dim;
 uniform float dimX;
 uniform float dimY;
+uniform float fogDist;
 
 varying vec4 color;
 
+varying vec4 lPos;
+varying vec4 lCol;
+
 varying vec3 norm;
 varying vec3 ePos;
-varying vec2 uv;
+varying vec4 ecPosition;
 
-varying float zDist;
+varying float fogMix;
 
-
+varying vec2 vN;
 
 void main()
 {
-	uv = gl_MultiTexCoord0.xy;
-	
-//	float scl = 10.;
-	vec4 v = gl_Vertex;// * vec4(scl,scl,scl, 1.);
-	
-//	float s = mod(float(gl_InstanceID), dimY);
-//	float t = floor(float(gl_InstanceID) / dimY);
-	
 	vec2 st = vec2(mod(float(gl_InstanceID), dimY), floor(float(gl_InstanceID) / dimY));
+	vec4 v = gl_Vertex;
+	v.xyz *= .5;
 	
 	color = texture2DRect( colTexture, st );
 	vec4 q = texture2DRect( quatTexture, st );
@@ -135,18 +139,24 @@ void main()
 	
 	norm = gl_NormalMatrix * qtransform(q, gl_Normal);
 	v.xyz = qtransform(q, v.xyz);
-	
-	norm = gl_NormalMatrix * gl_Normal;
-
 	v.xyz += pos;
 	
-	vec4 ecPosition = gl_ModelViewMatrix * v;
+	fogMix = 1. - pow(abs(v.y) / dim, 2.);
+	//	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / fogDist, 3.), 0., 1.);
 	
+	
+	lPos = vec4(0.,0.,0.,1.);//texture2DRect( posTexture, vec2(10.) );
+	lCol = vec4(1.) - pow(abs(lPos.y) / dim, 4.);
+	lPos = gl_ModelViewMatrix * lPos;
+	
+	ecPosition = gl_ModelViewMatrix * v;
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
-	
 	gl_Position = gl_ProjectionMatrix * ecPosition;
 	
-	zDist = gl_Position.z;
-	
+	vec3 r = reflect( ePos, norm );
+	float m = 2. * sqrt(r.x*r.x + r.y*r.y + pow(r.z+1., 2.));
+	vN = (r.xy / m + .5);
+	vN.y = 1. - vN.y;
+	vN *= sphericalMapDim;
 }
 

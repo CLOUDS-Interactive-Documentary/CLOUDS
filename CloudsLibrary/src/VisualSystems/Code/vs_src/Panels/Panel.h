@@ -62,6 +62,8 @@ class Panel {
 	float* marginLeft;
 	int maxCharsOnLine;
 	
+	bool selected;
+	
 	ofFloatColor tint;
 	vector<ofFloatColor> matchColorTypes;
 	
