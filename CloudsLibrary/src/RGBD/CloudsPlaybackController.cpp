@@ -853,16 +853,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::updateCompletedInterlude(){
-	
-	return;
-	
-	interludeExitBarWidth *= .95;
-	interludeExitBarWidth -= 0.01;
-	interludeExitBarWidth = MAX(0,interludeExitBarWidth);
-	
-	interludeArcRadius *= 1.01;
-	interludeArcBaseAlpha *= .95;
-	
+
 }
 
 //--------------------------------------------------------------------

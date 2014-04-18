@@ -447,10 +447,8 @@ bool CloudsVisualSystem::updateInterludeInterface(){
 
 	}
 
-	resetNode.updatePosition();
-	resetNode.updateInteraction();
-	continueNode.updatePosition();
-	continueNode.updateInteraction();
+	resetNode.update();
+	continueNode.update();
 	
 //	cout << "Reset node position " << resetNode.worldPosition << " cam pos " << getCameraRef().getPosition() << endl;
 	

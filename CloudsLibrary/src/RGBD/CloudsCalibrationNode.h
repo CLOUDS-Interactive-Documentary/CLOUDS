@@ -29,6 +29,7 @@ class CalibrationNode{
 	//SET ON EACH UPDATE
 	ofVec3f baseOffset;
 	float titleTypeOffset;
+	float centerYAdjust;
 	ofRange activationDistance;
 	float holdTime;
 	static float nodeActivatedTime;
@@ -40,7 +41,10 @@ class CalibrationNode{
 	
 	bool introNode; //hakity hack for intro nodes
 	
-	void updatePosition();
+	void update();//runs all below, when there is no need for intervening
+
+	void updateWorldPosition();
+	void updateScreenPosition();
 	void updateInteraction();
 	void draw();
 	

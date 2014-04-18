@@ -181,6 +181,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float introNodeSize;
 	float introNodeMinDistance;
 	float introNodeHoldTime;
+	float introNodeYAdjust;
 	
 	ofVec3f introNodeOffset; //mirrored along the axis
 
