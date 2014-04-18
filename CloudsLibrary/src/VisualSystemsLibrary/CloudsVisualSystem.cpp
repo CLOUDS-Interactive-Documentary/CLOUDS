@@ -287,6 +287,9 @@ void CloudsVisualSystem::setup(){
     bleed = 20;
     if(bEnablePostFX) SetBleedPixels(bleed);
     else SetBleedPixels(0);
+	
+	//pushes variables through internally so upDirection, etc is right
+	getCameraRef().setOrientation(getCameraRef().getOrientationQuat());
 }
 
 bool CloudsVisualSystem::isSetup(){

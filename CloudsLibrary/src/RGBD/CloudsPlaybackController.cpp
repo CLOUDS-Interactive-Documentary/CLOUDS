@@ -790,8 +790,18 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	//hack
 	
 #ifdef OCULUS_RIFT
-	
-	
+	interludeContinueSelected = interludeHoveringContinue;
+	interludeResetSelected = interludeHoveringReset;
+
+	if(currentVisualSystem->resetNode.finished){
+		interludeResetSelected = true;
+		return true;
+	}
+	if(currentVisualSystem->continueNode.finished){
+		interludeContinueSelected = true;
+		return true;
+	}
+	return false;
 #else
 	
 	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth){
