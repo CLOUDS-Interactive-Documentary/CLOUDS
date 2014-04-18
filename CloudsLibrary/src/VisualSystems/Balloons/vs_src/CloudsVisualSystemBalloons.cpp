@@ -313,26 +313,14 @@ void CloudsVisualSystemBalloons::selfSceneTransformation(){
 
 void CloudsVisualSystemBalloons::selfUpdate()
 {
+	p0->getTextureReference().readToPixels(pospix);
+	ofFloatColor poscol = pospix.getColor(1,1);
+	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
-	camerVel *= velAtten;
-	ofVec3f acc;
 	ofVec3f camPos = getCameraPosition();
-	ofVec3f p = camPos * noiseSampleScale * .1;
-	p.y -= ofGetElapsedTimef();
-	
-	acc.x = ofSignedNoise(p.x+offset, p.y, p.z) - ofSignedNoise(p.x-offset, p.y, p.z);
-	acc.y = ofSignedNoise(p.x, p.y+offset, p.z) - ofSignedNoise(p.x, p.y-offset, p.z);
-	acc.z = ofSignedNoise(p.x, p.y, p.z+offset) - ofSignedNoise(p.x, p.y, p.z-offset);
-	
-	acc *= noiseScl;
-	
-	camerVel += acc;
-	
-	getCameraRef().setPosition( camPos + camerVel );
-	getCameraRef().lookAt(ofVec3f(0,0,0));
-	
-	ofVec3f targetPos = getCameraPosition().normalized() * cameraTargetDist;
-	getCameraRef().setPosition(camPos * .975 + targetPos * .025);
+	getCameraRef().setPosition(balloon00Pos);
+//	((ofEasyCam*)&getCameraRef())->setDistance(balloon00Pos.length());
+//	getCameraRef().lookAt(ofVec3f(0,0,0));
 }
 
 void CloudsVisualSystemBalloons::selfDraw()
@@ -428,6 +416,10 @@ void CloudsVisualSystemBalloons::selfDraw()
 	vbo.unbind();
 	
 	shader.end();
+	
+	ofSetColor(0, 255, 0);
+	ofNoFill();
+	ofSphere(balloon00Pos, 30);
 	
 	glPopAttrib();
 	ofPopStyle();

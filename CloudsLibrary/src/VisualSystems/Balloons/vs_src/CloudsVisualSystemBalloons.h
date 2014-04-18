@@ -157,4 +157,7 @@ protected:
 	ofVec3f l0;
 	
 	ofVec3f camerVel;
+	
+	ofVec3f balloon00Pos;
+	ofFloatPixels pospix;
 };
