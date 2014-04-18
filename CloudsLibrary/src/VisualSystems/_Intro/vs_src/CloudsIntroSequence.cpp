@@ -381,7 +381,7 @@ void CloudsIntroSequence::updateIntroNodePosition(CalibrationNode& node){
 	#ifdef OCULUS_RIFT
 	node.activationDistance = questionTugDistance;
 	#else
-	node.activationDistance = ofRange(introNodeSize, introNodeSize*1.5);
+	node.activationDistance = ofRange(introNodeSize*3, introNodeSize*5);
 	node.worldPosition.x += getCanvasWidth()/2;
 	node.worldPosition.y += getCanvasHeight()/2;
 	#endif
@@ -474,7 +474,7 @@ void CloudsIntroSequence::updateQuestions(){
 //												   questionTugDistance.max, questionTugDistance.min,
 //												   0, cameraForwardSpeed);
 		
-		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.max){
+		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.max || &curQuestion == caughtQuestion){
 #ifdef OCULUS_RIFT
             ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
 			ofRectangle viewport = getOculusRift().getOculusViewport();
