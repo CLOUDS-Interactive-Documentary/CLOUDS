@@ -4,16 +4,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Box Connect Distance</WidgetName>
-                <WidgetID>20</WidgetID>
+                <WidgetName>Particles Return</WidgetName>
+                <WidgetID>10</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Particles Return</WidgetName>
-                <WidgetID>10</WidgetID>
+                <WidgetName>Box Connect Distance</WidgetName>
+                <WidgetID>20</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -28,9 +28,9 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Force Amount</WidgetName>
-                <WidgetID>6</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+                <WidgetName>ROT-X</WidgetName>
+                <WidgetID>9</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -52,9 +52,9 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>ROT-X</WidgetName>
-                <WidgetID>9</WidgetID>
-                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+                <WidgetName>Force Amount</WidgetName>
+                <WidgetID>6</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
