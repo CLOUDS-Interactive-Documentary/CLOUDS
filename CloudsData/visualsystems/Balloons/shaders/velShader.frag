@@ -87,7 +87,7 @@ void main()
 	{
 		for (int j=0; j<int(dimY); j++)
 		{
-			if(collisionCount<6 && j != i)
+			if(collisionCount<5 && j != i)
 			{
 				bounce(acc, pos, texture2DRect( posTexture, vec2(float(i), float(j))).xyz, collisionCount, radius);
 			}
