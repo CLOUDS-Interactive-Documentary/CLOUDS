@@ -365,3 +365,5 @@ screencapture_*
 /CloudsData/sound/renders/
 
 /CloudsVisualSystemEditor/bin/data/Selects/
+
+/CloudsData/sound/_soundDiscard/
