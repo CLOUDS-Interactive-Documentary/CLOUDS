@@ -64,10 +64,10 @@ void main(void)
 	
 	PointLight( lPos.xyz, ePos, ecPosition.xyz, normal, diffuse, specular, lCol);
 
-	vec4 fogColor = mix( bg1, bg0, pow(clamp(gl_FragCoord.y / screenHeight, 0., 1.), bgExpo));
+	vec4 fogColor = mix( bg1, bg0, pow(gl_FragCoord.y/screenHeight, bgExpo) );
 	
-	diffuse += pow(texture2DRect( sphericalMap, vN ), vec4(2.)) * .5;
-	gl_FragColor = mix( fogColor, diffuse, fogMix);
+	diffuse += pow(texture2DRect( sphericalMap, vN ), vec4(2.)) * .25;
+	gl_FragColor = mix( fogColor, diffuse, clamp(fogMix,0.,1.));
 	gl_FragColor.w = 1. - fr * .025;
 }
 

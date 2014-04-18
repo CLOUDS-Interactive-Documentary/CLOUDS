@@ -14,7 +14,8 @@ void main()
 	vec3 pos = texture2DRect( posTexture, uv).xyz;
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
-	pos -= camOffset*.5;
+//	pos -= camOffset*.5;
+	pos.y -= camOffset.y*.5;
 	
 	pos += vel;
 //	if (length(uv) > 1.)

@@ -83,7 +83,7 @@ void main()
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
 	vec3 p = pos * noiseSampleScale;
-	p.y += time;
+	p.y += time + camOffset.y;
 	vec3 acc = vec3(0.,0.,0.);
 	
 	//noise influence
