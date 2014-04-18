@@ -107,6 +107,7 @@ class CloudsPlaybackController : public ofThread {
 #ifdef KINECT_INPUT
     void drawKinectFeedback();
     float kinectFeedbackAlpha;
+    ofTrueTypeFont kinectFeedbackFont;
 #endif
     
     CloudsVisualSystem* currentVisualSystem;

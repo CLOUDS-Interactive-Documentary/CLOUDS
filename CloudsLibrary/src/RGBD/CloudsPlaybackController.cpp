@@ -40,6 +40,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     
 #ifdef KINECT_INPUT
     kinectFeedbackAlpha = 0;
+    kinectFeedbackFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
 #endif
 
 }
@@ -911,15 +912,32 @@ void CloudsPlaybackController::drawInterludeInterface(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::drawKinectFeedback(){
     
+    ofPushStyle();
+    
+    string promptText = "";
     ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
     if ((kinectInput->viewerState == k4w::ViewerState_OutOfRange) ||
         (kinectInput->viewerState == k4w::ViewerState_PresentIdle && kinectInput->viewerIdleTime >= 5000)) {
         kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 255, 0.3f);
+        
+        if (kinectInput->viewerState == k4w::ViewerState_OutOfRange) {
+            promptText = "MOVE CLOSER TO THE DISPLAY";
+        }
+        else {
+            promptText = "EXTEND YOUR HAND TO BEGIN";
+        }
     }
     else {
         kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 0, 0.5f);
     }
     kinectInput->draw(60, ofGetHeight() - 285 - 60, 380, 285, kinectFeedbackAlpha);
+
+    ofSetColor(255, kinectFeedbackAlpha);
+    float textWidth  = kinectFeedbackFont.stringWidth(promptText);
+    float textHeight = kinectFeedbackFont.stringHeight(promptText);
+    kinectFeedbackFont.drawString(promptText, (ofGetWidth() - textWidth) / 2, (ofGetHeight() - textHeight) / 2);
+    
+    ofPopStyle();
     
 }
 #endif
