@@ -37,6 +37,10 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	resetInterludeVariabls();
 	
     interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
+    
+#ifdef KINECT_INPUT
+    kinectFeedbackAlpha = 0;
+#endif
 
 }
 
@@ -915,7 +919,7 @@ void CloudsPlaybackController::drawKinectFeedback(){
     else {
         kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 0, 0.5f);
     }
-    kinectInput->draw(0, 0, ofGetWidth(), ofGetHeight(), kinectFeedbackAlpha);
+    kinectInput->draw(60, ofGetHeight() - 285 - 60, 380, 285, kinectFeedbackAlpha);
     
 }
 #endif
