@@ -1,29 +1,29 @@
 <Canvas>
     <Kind>42</Kind>
-    <Name>Balloons</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>727.000000000</XPosition>
-    <YPosition>10.000000000</YPosition>
+    <Name>BalloonsColor</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>44</Kind>
     <Name>c0Hue</Name>
-    <Value>126</Value>
+    <Value>142</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c0Saturation</Name>
-    <Value>0</Value>
+    <Value>205</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c0Brightness</Name>
-    <Value>208</Value>
+    <Value>235</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>w0</Name>
-    <Value>0.330049247</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>w1</Name>
-    <Value>0.000000000</Value>
+    <Value>0.200000003</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c2Hue</Name>
-    <Value>131</Value>
+    <Value>17</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -58,17 +58,17 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c2Brightness</Name>
-    <Value>177</Value>
+    <Value>224</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>w2</Name>
-    <Value>0.428571433</Value>
+    <Value>0.200000003</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c3Hue</Name>
-    <Value>111</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -78,7 +78,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c3Brightness</Name>
-    <Value>162</Value>
+    <Value>205</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

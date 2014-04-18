@@ -112,6 +112,12 @@ class CloudsVisualSystemBalloons : public CloudsVisualSystem {
 	void setBalloonPositions();
 	void setBalloonColors();
 	
+	
+	ofCamera& getCameraRef(){
+		//		return cloudsCamera;
+		return balloonCam;
+	}
+	
 protected:
     
     //  Your Stuff
@@ -162,4 +168,6 @@ protected:
 	ofFloatPixels pospix;
 	
 	ofImage sphericalMap;
+	
+	ofEasyCam balloonCam;
 };

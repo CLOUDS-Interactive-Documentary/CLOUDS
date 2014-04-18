@@ -10,7 +10,6 @@ uniform float bound;
 uniform float dimX;
 uniform float dimY;
 
-
 uniform float noiseScl;
 uniform float time;
 uniform float offset;
@@ -22,6 +21,7 @@ uniform float gravity;
 uniform float attractionToCenter;
 uniform float cameraBounce;
 
+uniform vec3 camOffset;
 
 uniform float netHeight;
 
@@ -77,6 +77,9 @@ void main()
 //	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .97, radius = 25., accScl = .2, gravity = .02, attractionToCenter = .01, cameraBounce = 10.;
 	
 	vec3 pos = texture2DRect( posTexture, uv).xyz;
+	
+//	pos -= camOffset*.5;
+	
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
 	vec3 p = pos * noiseSampleScale;
