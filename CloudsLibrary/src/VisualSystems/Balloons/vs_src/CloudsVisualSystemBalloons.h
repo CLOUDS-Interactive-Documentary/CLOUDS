@@ -118,6 +118,12 @@ class CloudsVisualSystemBalloons : public CloudsVisualSystem {
 		return balloonCam;
 	}
 	
+	template<class T>
+	T mix( T x, T y, float u)
+	{
+		return x * (1.f - u) + y * u;
+	}
+	
 protected:
     
     //  Your Stuff
@@ -170,4 +176,5 @@ protected:
 	ofImage sphericalMap;
 	
 	ofEasyCam balloonCam;
+	float balloonFrameVal;
 };

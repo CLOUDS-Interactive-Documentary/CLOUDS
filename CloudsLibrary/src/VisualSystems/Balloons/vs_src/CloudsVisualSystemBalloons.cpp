@@ -23,7 +23,8 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	
 	customGui->addSlider("cameraBounce", 0, 20, &cameraBounce);
 	//customGui->addSlider("cameraAttractionToCenter", 0, 2, &cameraAttractionToCenter);
-	customGui->addSlider("cameraTargetDist", 20, 500, &cameraTargetDist);
+//	customGui->addSlider("cameraTargetDist", 20, 500, &cameraTargetDist);
+	customGui->addSlider("balloonFrameVal", 0, 1, &balloonFrameVal);
 	
 	customGui->addSlider("dim", 100, 500, &dim );
 	customGui->addSlider("spawnRad", 20, 200, &spawnRad );
@@ -284,7 +285,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
 	
-	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/bar.jpeg");
+	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/sky.jpg");
 	
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
@@ -319,7 +320,9 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	ofFloatColor poscol = pospix.getColor(0,0);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
-	balloonCam.setPosition(0, 0, 100);
+	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
+	
+//	balloonCam.setPosition(0, 0, 100);
 	//balloonCam.lookAt(ofVec3f(balloon00Pos));
 }
 
@@ -399,7 +402,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	shader.begin();
 	shader.setUniform1f("shininess", 2);
-	shader.setUniform1f("screenHeight", ofGetScreenHeight());
+	shader.setUniform1f("screenHeight", ofGetHeight());
 	
 	ofFloatColor bg0 = bgColor;
 	ofFloatColor bg1 = bgColor2;
