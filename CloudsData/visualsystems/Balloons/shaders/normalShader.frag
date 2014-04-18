@@ -8,6 +8,10 @@ uniform float facingRatio;
 uniform float lightConstantAttenuation = 1.;
 uniform float lightLinearAttenuation = .0025;
 
+uniform float screenHeight;
+uniform vec4 bg0;
+uniform vec4 bg1;
+
 varying vec4 lPos;
 varying vec4 lCol;
 
@@ -58,12 +62,10 @@ void main(void)
 	vec4 specular = vec4(1.);
 	
 	PointLight( lPos.xyz, ePos, ecPosition.xyz, normal, diffuse, specular, lCol);
+
+	vec4 fogColor = mix( bg1, bg0, gl_FragCoord.y / screenHeight);
 	
-//	float atten = zDist / dim;
-//	gl_FragColor.xyz *= min(1., 1. - atten * atten * atten);
-	
-	gl_FragColor = diffuse;// * specular;
-	gl_FragColor.xyz *= fogMix;
+	gl_FragColor = mix( fogColor, diffuse, fogMix);
 	gl_FragColor.w = 1. - fr * .025;
 }
 

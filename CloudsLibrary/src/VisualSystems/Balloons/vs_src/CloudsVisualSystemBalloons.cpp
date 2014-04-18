@@ -317,10 +317,11 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	ofFloatColor poscol = pospix.getColor(1,1);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
-	ofVec3f camPos = getCameraPosition();
-	getCameraRef().setPosition(balloon00Pos);
+//	ofVec3f camPos = getCameraPosition();
+//	getCameraRef().setPosition(balloon00Pos);
 //	((ofEasyCam*)&getCameraRef())->setDistance(balloon00Pos.length());
 //	getCameraRef().lookAt(ofVec3f(0,0,0));
+//	
 }
 
 void CloudsVisualSystemBalloons::selfDraw()
@@ -397,6 +398,12 @@ void CloudsVisualSystemBalloons::selfDraw()
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	shader.begin();
 	shader.setUniform1f("shininess", 2);
+	shader.setUniform1f("screenHeight", ofGetScreenHeight());
+	
+	ofFloatColor bg0 = bgColor;
+	ofFloatColor bg1 = bgColor2;
+	shader.setUniform4f("bg0", bg0.r, bg0.g, bg0.b, 1 );
+	shader.setUniform4f("bg1", bg1.r, bg1.g, bg1.b, 1 );
 	
 	shader.setUniform1f("dim", dim );
 	shader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
