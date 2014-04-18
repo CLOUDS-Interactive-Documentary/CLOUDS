@@ -7,22 +7,12 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>bloodCells</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>default</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>ski</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>sky</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -44,4 +34,14 @@
     <Kind>2</Kind>
     <Name>tower</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bloodCells</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>sky</Name>
+    <Value>1</Value>
 </Widget>

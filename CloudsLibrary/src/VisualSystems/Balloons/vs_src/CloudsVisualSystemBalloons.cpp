@@ -279,6 +279,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 
 	//load balloon mesh
 	ofMesh temp;
+//	ofxObjLoader::load( getVisualSystemDataPath() + "models/box.obj", temp);
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_low.obj", temp);
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);

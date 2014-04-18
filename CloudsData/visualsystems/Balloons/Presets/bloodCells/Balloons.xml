@@ -8,17 +8,17 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c0Hue</Name>
-    <Value>142</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c0Saturation</Name>
-    <Value>205</Value>
+    <Value>255</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c0Brightness</Name>
-    <Value>235</Value>
+    <Value>123</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c1Hue</Name>
-    <Value>31</Value>
+    <Value>119</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c1Saturation</Name>
-    <Value>196</Value>
+    <Value>22</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>w1</Name>
-    <Value>0.200000003</Value>
+    <Value>0.152709365</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -58,12 +58,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c2Brightness</Name>
-    <Value>224</Value>
+    <Value>255</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>w2</Name>
-    <Value>0.200000003</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
