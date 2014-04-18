@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Questions</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>98.000000000</XPosition>
-    <YPosition>254.000000000</YPosition>
+    <XPosition>337.000000000</XPosition>
+    <YPosition>458.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Scale</Name>
-    <Value>0.034482758</Value>
+    <Value>0.029556651</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -21,24 +21,30 @@
     <Value>2309.359619141</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Question Min Z</Name>
-    <Value>156.945816040</Value>
+    <Kind>6</Kind>
+    <Name>Question Z Range</Name>
+    <HighValue>57.142856598</HighValue>
+    <LowValue>34.285713196</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Inner Radius</Name>
-    <Value>7.054187298</Value>
+    <Value>13.615762711</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Tug Distance</Name>
-    <HighValue>111.428573608</HighValue>
-    <LowValue>70.000000000</LowValue>
+    <HighValue>134.285705566</HighValue>
+    <LowValue>91.428573608</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Attenuate Distance</Name>
-    <HighValue>300.000000000</HighValue>
+    <HighValue>255.714279175</HighValue>
     <LowValue>38.571426392</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Question Pause Dur</Name>
+    <Value>14.517241478</Value>
 </Widget>

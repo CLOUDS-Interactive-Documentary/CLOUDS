@@ -95,6 +95,7 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         void rebuildFont();
         void rebuildText();
 
+        void selfSetDefaults();
     protected:
         ofxUISuperCanvas * customGui, * textGui, * revealGui;
         ofxUIDropDownList *ddlFiles;

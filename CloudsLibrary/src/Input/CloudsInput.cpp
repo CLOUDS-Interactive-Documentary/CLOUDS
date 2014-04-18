@@ -36,26 +36,26 @@ map<int, CloudsInteractionEventArgs>& CloudsInput::getInputPoints(){
     return inputPoints;
 }
 
-void CloudsInput::interactionMoved(ofVec3f pos, bool primary, int actionType, int playerId){
-	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId);
+void CloudsInput::interactionMoved(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionMoved, args, this);	
 }
 
-void CloudsInput::interactionStarted(ofVec3f pos, bool primary, int actionType, int playerId){
-	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId);
+void CloudsInput::interactionStarted(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionStarted, args, this);
 }
 
-void CloudsInput::interactionDragged(ofVec3f pos, bool primary, int actionType, int playerId){
-	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId);
+void CloudsInput::interactionDragged(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionDragged, args, this);
 }
 
-void CloudsInput::interactionEnded(ofVec3f pos, bool primary, int actionType, int playerId){	
-	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId);
+void CloudsInput::interactionEnded(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionEnded, args, this);
 }
@@ -82,6 +82,51 @@ ofVec3f CloudsInput::getPreviousPosition(){
 void CloudsInput::setBleedPixels(int b){
     bleedOffset = ofVec3f(0,0,0);
     bleed = b;
+}
+
+void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size)
+{
+    if (mode == CURSOR_MODE_NONE) return;
+    // EZ: Don't draw INACTIVE cursors for now
+    if (mode == CURSOR_MODE_INACTIVE) return;
+    
+    ofPushStyle();
+    
+    if (mode == CURSOR_MODE_INACTIVE) {
+        size *= 0.5f;
+        ofSetLineWidth(3);
+        ofSetColor(213, 69, 62, 192 * focus);
+        ofLine(pos.x - size, pos.y - size, pos.x + size, pos.y + size);
+        ofLine(pos.x - size, pos.y + size, pos.x + size, pos.y - size);
+    }
+    else if (mode == CURSOR_MODE_DRAW) {
+        ofSetLineWidth(2);
+        ofNoFill();
+        ofSetColor(255, 255, 255, 192 * focus);
+        ofCircle(pos, size);
+    }
+    else {  // mode == CURSOR_MODE_CAMERA
+        ofSetLineWidth(2);
+        ofSetColor(255, 255, 255, 192 * focus);
+        static const float kCoreRadius = 0.2f;
+        ofLine(pos.x - size, pos.y, pos.x - size * kCoreRadius, pos.y);
+        ofLine(pos.x + size, pos.y, pos.x + size * kCoreRadius, pos.y);
+        ofLine(pos.x, pos.y - size, pos.x, pos.y - size * kCoreRadius);
+        ofLine(pos.x, pos.y + size, pos.x, pos.y + size * kCoreRadius);
+
+        if (bDragged) {
+            ofNoFill();
+            ofCircle(pos, kCoreRadius);
+        }
+        else {  // !bDragged
+            static const float kMidRadius = 0.5f;
+            ofSetColor(255, 255, 255, 64 * focus);
+            ofFill();
+            ofCircle(pos, kMidRadius);
+        }
+    }
+
+    ofPopStyle();
 }
 
 ///////////// //STATICS

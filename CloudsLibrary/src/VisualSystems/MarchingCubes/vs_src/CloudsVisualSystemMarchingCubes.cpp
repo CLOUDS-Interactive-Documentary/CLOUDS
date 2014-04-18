@@ -112,6 +112,10 @@ void CloudsVisualSystemMarchingCubes::selfGuiEvent(ofxUIEventArgs &e)
     }
 }
 
+void CloudsVisualSystemMarchingCubes::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode =  CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemMarchingCubes::selfSetupSystemGui(){
 	
 }

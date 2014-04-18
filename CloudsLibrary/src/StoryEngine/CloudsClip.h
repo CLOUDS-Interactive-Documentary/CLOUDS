@@ -23,7 +23,7 @@ class CloudsClip {
     string sourceVideoFilePath;
 	
 	ofVec3f networkPosition;
-	
+	ofVec2f networkPosition2d; //populated by gephi graph
 
     float speakerVolume;
 	bool voiceOverAudio;
@@ -60,6 +60,8 @@ class CloudsClip {
     bool hasStartingQuestion();
     void addQuestionTopicPair(string topic, string question);
 	bool hasQuestion();
+	bool isPartOfSeries();
+	
     map<string,string>& getAllQuestionTopicPairs();
     string getQuestionForTopic(string topic);
 	vector<string> getTopicsWithQuestions();

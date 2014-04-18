@@ -35,6 +35,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	clipGapTime = .4;
 	
 //    systemMaxRunTime = 60*2;
+	seriesBoostFactor = 10;
     maxVisualSystemGapTime = 60*3;
     longClipThreshold = 30;
     longClipFadeInPercent = .5;
@@ -131,7 +132,7 @@ void CloudsStoryEngine::initGui(){
     clipGui->addSlider("DISTANT CLIP SUPRRESSION", 0, 100, &distantClipSuppressionFactor);
     clipGui->addSlider("GOLD CLIP FACTOR", 10, 100, &goldClipFactor);
     clipGui->addSlider("EASY CLIP FACTOR", 10, 100, &easyClipScoreFactor);
-    
+    clipGui->addSlider("SERIES BOOST FACTOR", 0, 20, &seriesBoostFactor);
     clipGui->autoSizeToFitWidgets();
     
     topicGui = new ofxUISuperCanvas("TOPIC SCORE PARAMS", OFX_UI_FONT_SMALL);
@@ -306,36 +307,34 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
 
     vector< pair<string,int> > potentialPresets;
     vector<CloudsVisualSystemPreset> currentSelection = visualSystems->getPresetsForKeywords(topics,"",true);
-        
-        for (int i =0 ; i < currentSelection.size(); i++) {
-            if( ofContains(run.presetHistory, currentSelection[i].getID() )){
-                cout<<currentSelection[i].getID()<<" already in history so not selecting"<<endl;
-                continue;
-            }
+	
+	for (int i =0 ; i < currentSelection.size(); i++) {
+		if( ofContains(run.presetHistory, currentSelection[i].getID() )){
+			cout<<currentSelection[i].getID()<<" already in history so not selecting"<<endl;
+			continue;
+		}
 #ifdef OCULUS_RIFT
-            if(!currentSelection[i].enabledOculus){
-                continue;
-            }
+		if(!currentSelection[i].enabledOculus){
+			continue;
+		}
 #else
-            if(!currentSelection[i].enabledScreen){
-                continue;
-            }
+		if(!currentSelection[i].enabledScreen){
+			continue;
+		}
 #endif
-            
-            vector<string> presetTopics = visualSystems->keywordsForPreset(currentSelection[i]);
-            int presetScore = 0;
-            
-            for (int k =0 ; k< presetTopics.size(); k++) {
-                if (ofContains(run.topicHistory, presetTopics[k])) {
-                    presetScore++;
-                }
-            }
-            cout<<currentSelection[i].getID()<<" , "<<presetScore<<","<<presetTopics.size()<<endl;
-            potentialPresets.push_back(make_pair(currentSelection[i].getID(), presetScore));
-        }
+		
+		vector<string> presetTopics = visualSystems->keywordsForPreset(currentSelection[i]);
+		int presetScore = 0;
+		
+		for (int k =0 ; k< presetTopics.size(); k++) {
+			if (ofContains(run.topicHistory, presetTopics[k])) {
+				presetScore++;
+			}
+		}
+		cout<<currentSelection[i].getID()<<" , "<<presetScore<<","<<presetTopics.size()<<endl;
+		potentialPresets.push_back(make_pair(currentSelection[i].getID(), presetScore));
+	}
         
-
-    
     if (potentialPresets.size() > 0) {
         sort(potentialPresets.begin(), potentialPresets.end(),score_sort);
         cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
@@ -418,8 +417,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	
     bLogClipDetails = true;
     
-//    seedTopic = "open frameworks";
-    
     vector<string> hardIntros;
     hardIntros.push_back("new aesthetic");
     hardIntros.push_back("real and virtual");
@@ -432,7 +429,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     if(run.actCount == 0 && ofContains(hardIntros, seedTopic)){
         run.actCount = 1; //force
     }
-
 	   
 	//begin laying down clips based on seed topic
 	
@@ -694,6 +690,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					state.duration = state.act->addVisualSystem(state.preset,
                                                                 state.visualSystemStartTime,
                                                                 state.visualSystemEndTime);
+					
                     cout << "extended vs brought our duration to " << state.duration << endl;
 					state.presetHistory.push_back(state.preset.getID());
 					
@@ -712,15 +709,16 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					else{
                         //Also the first clip of an act should be covered
                         float midAlignedEnd    = state.duration - state.clip.getDuration() / 2. + clipFadePad;
-                        float startAlignedEnd  = state.duration - state.clip.getDuration() - clipFadePad;
-                        if(state.visualSystemStartTime > 0 &&
-                           abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd -  state.visualSystemEndTime) )
-                        {
-                            state.visualSystemEndTime = midAlignedEnd;
-                        }
-                        else {
-                            state.visualSystemEndTime = startAlignedEnd;
-                        }
+                        float startAlignedEnd  = state.duration - state.clip.getDuration()      - clipFadePad;
+						//JG right before Tribeca I'm removing the mid aligned ends because they cause vs to be way too long
+//                        if(state.visualSystemStartTime > 0 &&
+//                           abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd - state.visualSystemEndTime) )
+//                        {
+//                            state.visualSystemEndTime = midAlignedEnd;
+//                        }
+//                        else {
+						state.visualSystemEndTime = startAlignedEnd;
+//                        }
                         
                         
 						if(bLogVisualSystemDetails)
@@ -1215,7 +1213,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
     }
     
     //reject any nodes we've seen already
-    if(historyContainsClip(potentialNextClip, state.clipHistory)){ //TODO discourage...
+    if(historyContainsClip(potentialNextClip, state.clipHistory)){
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip.getLinkName() << ": already visited" << endl;
         return 0;
     }
@@ -1227,7 +1225,6 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
         return 0;
     }
     
-	//////TODO: RECONSIDER THIS BASED ON NEW IDEAS
     //If a VS is not running reject clips that do not have video footage
     if((potentialNextClip.hasSpecialKeyword("#vo") || potentialNextClip.voiceOverAudio) &&
 	   !state.visualSystemRunning)
@@ -1237,7 +1234,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
     }
     
     //If a VS is running and is of a definite duration do not use voice over clips
-	//TODO: Check the durations, mabye its OK
+	//TODO: Check the durations, maybe its OK
     if( (potentialNextClip.hasSpecialKeyword("#vo") || potentialNextClip.voiceOverAudio) &&
 	   state.visualSystemRunning &&
 	   !state.preset.indefinite)
@@ -1252,6 +1249,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
         return 0;
     }
     
+	
     //  can't get a #hard clip until the topic has been heard 2 times by any clip
 	//TODO: RE ADD RULE?
 //    if (numTopicHistoryOccurrences < 2 && potentialNextClip.hasSpecialKeyword("#hard")  ) {
@@ -1307,7 +1305,8 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
     float distantClipSuppressionScore = 0;
     float goldClipScore = 0;
     float easyClipScore = 0;
-    
+    float seriesBoostScore = 0;
+	
     //need to consider discouraging clips with a lot of topics
     float topicsInCommon = parser->getSharedKeywords(state.clip, potentialNextClip).size();
     topicsInCommonScore += topicsInCommon * topicsInCommonMultiplier;
@@ -1327,9 +1326,10 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
         linkScore += linkFactor;
     }
     
-    //penalize for the person occurring
-    //TODO: make this a little smarter
-    samePersonOccuranceScore = -occurrences * samePersonOccurrenceSuppressionFactor;
+    //penalize for the person occurring again after they have gone away, unless they are on a run
+	if(state.clip.person != potentialNextClip.person){
+		samePersonOccuranceScore = -occurrences * samePersonOccurrenceSuppressionFactor;
+	}
     
     //history should contain #keywords dichotomies, and then augment score
     vector<string> specialKeywords = potentialNextClip.getSpecialKeywords();
@@ -1377,21 +1377,26 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
         easyClipScore  = easyClipScoreFactor;
     }
 	
-	///TODO CONCLUSION
+	if(potentialNextClip.isPartOfSeries() && state.clip.isPartOfSeries() && link){
+		seriesBoostScore += MIN(state.run,4) * seriesBoostFactor;
+	}
+	
+	///TODO PROMOTE CONCLUSIONs
     
     //ADD IT UP
-    totalScore = linkScore +
-					topicsInCommonScore +
-					topicsInCommonWithPreviousScore +
-//					offTopicScore +
-					samePersonOccuranceScore +
-					dichotomiesScore +
-					genderBalanceScore +
-//					distantClipSuppressionScore +
-					voiceOverScore +
-					goldClipScore +
-					easyClipScore;
-					
+    totalScore =linkScore +
+				topicsInCommonScore +
+				topicsInCommonWithPreviousScore +
+//				offTopicScore +
+				samePersonOccuranceScore +
+				dichotomiesScore +
+				genderBalanceScore +
+//				distantClipSuppressionScore +
+				voiceOverScore +
+				goldClipScore +
+				easyClipScore +
+				seriesBoostScore;
+				
     stringstream ss;
     string linkName = potentialNextClip.getLinkName();
     ofStringReplace(linkName, ",", ":");
@@ -1405,6 +1410,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
 	cliplog << state.duration << "\t\t\t\t\tVoice Over Bump\t\t" << voiceOverScore << endl;
 	cliplog << state.duration << "\t\t\t\t\tGold Clip Bump\t\t" << goldClipScore << endl;
 	cliplog << state.duration << "\t\t\t\t\tEasy Clip Score\t\t" << easyClipScore << endl;
+	cliplog << state.duration << "\t\t\t\t\tSeries Boost\t\t" << seriesBoostScore << endl;
 	cliplog << state.duration << "\t\t\t\t" << potentialNextClip.getLinkName() <<  " TOTAL " << totalScore << endl;
 
     return totalScore;

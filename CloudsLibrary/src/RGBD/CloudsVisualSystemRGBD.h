@@ -6,10 +6,15 @@
 #include "CloudsQuestion.h"
 #include "CloudsEvents.h"
 #include "GPUParticles/Controller.h"
+
+#ifdef HAS_GAMECAM
 #include "ofxGameCamera.h"
+#endif
+
 #include "ofxFTGL.h"
 #include "CloudsPortalEvents.h"
 #include "CloudsRGBDPointLayer.h"
+#include "VoxelMesh.h"
 
 struct TransitionInfo{
 	ofVec3f inStartPos;
@@ -88,9 +93,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     int questionToReplace;
     
 	ofCamera& getCameraRef(){
+#ifdef HAS_GAMECAM
 		if(placingTransitionNodes){
 			return transitionCam;
 		}
+#endif
 		return cloudsCamera;
 	}
 	
@@ -117,7 +124,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void lookThroughTransitionOutLeft();
 	void lookThroughTransitionOutRight();
 
-	ofxGameCamera transitionCam;
+//	ofxGameCamera transitionCam;
 	ofNode* transitionCamTargetNode;
 	
 	void setTransitionNodes( RGBDTransitionType transitionType, string option="default" );
@@ -257,11 +264,13 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	ofxUISuperCanvas *cameraGui;
 	ofxUISuperCanvas *particleGui;
+	ofxUISuperCanvas *backgroundMeshGui;
 	ofxUISuperCanvas *questionGui;
     ofxUISuperCanvas *actuatorGui;
     
 	bool drawParticulate;
 	float attenuatedCameraDrift;
+	VoxelMesh voxelMesh;
 	GPUParticles::Controller particulateController;
     float particleCount;
     ofVec4f pointColor;

@@ -65,6 +65,8 @@ class CloudsPortal {
 	bool bLookAtCamera;
 	ofVec3f lookTarget; //billboards the tunnel
 	
+	int tunnelQuadrantIndex; //where in the tunnel does it land
+	
     float scale;
 	
 	ofCamera* cam;

@@ -30,7 +30,7 @@ CloudsPortal::CloudsPortal(){
 	ringCount = 10;
 	
 	selectedPercentComplete = 0.0;
-	selectAnimationDuration = 3.0;
+	selectAnimationDuration = 1.0;
 	
 	selected = false;
 	hovering = false;
@@ -97,12 +97,11 @@ bool CloudsPortal::isSelected(){
 }
 
 void CloudsPortal::update(){
-    if(ofGetFrameNum() % 1000 == 0) cout << "question node " << question << " is selected? " << selected << " hovering? " << hovering << endl;
+//    if(ofGetFrameNum() % 1000 == 0) cout << "question node " << question << " is selected? " << selected << " hovering? " << hovering << endl;
     
     if(cam != NULL){
         float dot = ( hoverPosition - cam->getPosition()).dot(cam->getLookAtDir());
         onScreen = dot > 0;
-        
 		screenPosition = cam->worldToScreen(hoverPosition);
     }
     else{

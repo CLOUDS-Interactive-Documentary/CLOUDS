@@ -1,0 +1,89 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Backgroundmesh</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>487.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>num voxels</Name>
+    <Value>15</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>voxel spacing</Name>
+    <Value>40.591133118</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sphere radius</Name>
+    <Value>703.448242188</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sphere percent</Name>
+    <Value>-0.226601005</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>distance range</Name>
+    <HighValue>0.926108360</HighValue>
+    <LowValue>0.088669948</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>twist speed x</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>twist factor x</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>twist speed y</Name>
+    <Value>0.000635468</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>twist factor y</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise distort x</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise distort y</Name>
+    <Value>0.620689631</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise distort z</Name>
+    <Value>0.443349749</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise distort radial</Name>
+    <Value>0.522167504</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise density</Name>
+    <Value>0.141871914</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>center decay</Name>
+    <HighValue>0.788177431</HighValue>
+    <LowValue>0.428571403</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise speed</Name>
+    <Value>0.004433497</Value>
+</Widget>

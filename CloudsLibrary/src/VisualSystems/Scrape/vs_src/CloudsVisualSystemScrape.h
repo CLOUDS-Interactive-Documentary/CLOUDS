@@ -115,6 +115,7 @@ public:
 	
     void doGrow();
     void doShrink();
+    void selfSetDefaults();
     
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly

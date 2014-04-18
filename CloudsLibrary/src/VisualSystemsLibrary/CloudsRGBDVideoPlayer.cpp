@@ -43,6 +43,7 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	currentVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 	nextVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 
+	currentClipHasSubtitles = nextClipHasSubtitles = false;
 }
 
 //---------------------------------------------------------------
@@ -70,7 +71,7 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
 
     /* Subtitles */
-    nextHaveSubtitles = loadSubtitles(subtitlesPath);
+    nextClipHasSubtitles = loadSubtitles(subtitlesPath);
     
 	clipPrerolled = true;
 	nextClipIsVO = false;
@@ -213,8 +214,8 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
 #ifdef SHOW_SUBTITLES
     swap(currentSubtitles, nextSubtitles);
-	swap(currentHaveSubtitles, nextHaveSubtitles);
 #endif
+	currentClipHasSubtitles = nextClipHasSubtitles;
 	if(nextClipIsVO){
 		currentVoiceoverPlayer->play();
 		currentVoiceoverPlayer->setLoop(false);
@@ -330,14 +331,20 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		
 		fadeInValue = MIN(position, 1.0);
 		fadeOutValue = ofMap(position, duration - 1.0, duration, 1.0, 0.0, true);
-        //remap to make it tigheter
+        
+		//remap to make it tigheter
         fadeInValue  = powf(ofMap(fadeInValue,  .5, 1.0, 0.0, 1.0, true), 2.0);
         fadeOutValue = powf(ofMap(fadeOutValue, .5, 1.0, 0.0, 1.0, true), 2.0);
+		
+		float fadeInStartTime = 1.0;
+		float fadeInEndTime = 1.4;
+		float fadeOutStartTime = duration - 1.3 ;
+		float fadeOutEndTime = duration - 1.0;
 		if(position < 1.0){
-			audioVolume = ofMap(position, 1.0, 1.1, 0., maxVolume, true);
+			audioVolume = ofMap(position, fadeInStartTime, fadeInEndTime, 0., maxVolume, true);
 		}
-		else if(position > duration - 1.0){
-			audioVolume = ofMap(position, duration - 1.1, duration - 1.0, maxVolume, 0.0, true);
+		else if(position > fadeOutStartTime){
+			audioVolume = ofMap(position, fadeOutStartTime, fadeOutEndTime, maxVolume, 0.0, true);
 		}
 		
 		getPlayer().setVolume(audioVolume);
@@ -346,12 +353,12 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 			getPlayer().stop();
 		}
         
-#ifdef SHOW_SUBTITLES
         /* Subtitles */
-        if (currentHaveSubtitles) {
+        if (currentClipHasSubtitles) {
+#ifdef SHOW_SUBTITLES
             currentSubtitles.setTimeInSeconds(getPlayer().getCurrentTime());
-        }
 #endif
+        }
 	}
 }
 
@@ -364,7 +371,6 @@ bool CloudsRGBDVideoPlayer::isDone(){
 }
 
 #ifdef SHOW_SUBTITLES
-
 bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     
     if (path == "") {
@@ -408,7 +414,7 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 void CloudsRGBDVideoPlayer::drawSubtitles(float x, float y)
 {
 #ifdef SHOW_SUBTITLES
-    if (haveSubtitles()) {
+    if (hasSubtitles()) {
         ofPushStyle();
         ofSetColor(0, 200);
         currentSubtitles.draw(x+3, y-2);
@@ -422,8 +428,8 @@ void CloudsRGBDVideoPlayer::drawSubtitles(float x, float y)
 #endif
 }
     
-bool CloudsRGBDVideoPlayer::haveSubtitles()
+bool CloudsRGBDVideoPlayer::hasSubtitles()
 {
-    return currentHaveSubtitles;
+    return currentClipHasSubtitles;
 }
     

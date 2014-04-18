@@ -15,14 +15,20 @@
 #define PF_MAINACT_BUS_START 6
 #define PF_NUMBUSES 100
 
-class CloudsSound {
+typedef struct{
+	string trackPath;
+	float startTime;
+} QueuedTrack;
+
+class CloudsSound : public ofThread {
   public:
 	CloudsSound();
-	
+	void setup();
 	void setup(CloudsStoryEngine& storyEngine);
 	void exit(ofEventArgs & args);
 	
 	void update(ofEventArgs & args);
+	void update();
 	void drawDebug();
 	
 	void keyPressed(ofKeyEventArgs & args);
@@ -62,14 +68,28 @@ class CloudsSound {
     void doPrinting();
     int ACTBUS; // needs to be public for UDP shit in the scoredesigner
     bool in_tunnel;
+    bool isScoreDesigner;
     
+	void threadedFunction();
+		
     // public data structures
     vector<lukePreset> presets;
+	
+	vector<string> renderedTracks;
+	float mixVolumeForTrack(string trackPath);
+	void setMixVolumeForTrack(string trackPath, float level);
+	void playImmediately(string trackPath);
 
+	void saveMixLevels();
+	
   protected:
 
 	CloudsStoryEngine* storyEngine;
 	CloudsAct* currentAct;
+
+	//only used in non RTCMIX context
+	ofPtr<ofSoundPlayer> frontPlayer;
+	ofPtr<ofSoundPlayer> backPlayer;
 	
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
@@ -105,11 +125,21 @@ class CloudsSound {
     vector<lukeSimpleMelody> simplemelodies;
 
     vector<lukeSample> looperSamples;
-	
+
 	vector<CloudsSoundCue> currentCues;
+
+	
 	ofxTLFlags* presetFlags;
 	bool cueFlagsAdded;
 	float currentCuesTotalDuration;
 	void playCurrentCues();
-
+	
+	//new audio fade system;
+	float playerSwapTime;
+	float playerFadeDuration;
+	
+	map<string, float> perTrackMix;
+	float frontMixAttenuate;
+	float backMixAttenuate;
+	vector<QueuedTrack> queuedTracks;
 };

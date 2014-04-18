@@ -78,6 +78,10 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
 
 }
 
+void CloudsVisualSystemExampleMPMFluid::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode  = CURSOR_MODE_DRAW;
+}
 void CloudsVisualSystemExampleMPMFluid::selfGuiEvent(ofxUIEventArgs &e)
 {
     

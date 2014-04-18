@@ -108,6 +108,7 @@
 		E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
 		E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
+		E77BA14D18F862F3007C1937 /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BA14B18F862F3007C1937 /* CloudsAudioEvents.cpp */; };
 		E7A4DC2B186A272A002F5371 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A4DC29186A272A002F5371 /* CloudsSVGMesh.cpp */; };
 		E7D3306B1751D446006706ED /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330371751D446006706ED /* ofxBehavior.cpp */; };
 		E7D3306C1751D446006706ED /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3303B1751D446006706ED /* ofxBufferEffectorBehavior.cpp */; };
@@ -509,6 +510,8 @@
 		E779BE53173D6082006357EF /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E779BE69173D60A2006357EF /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E779BE6A173D60A2006357EF /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
+		E77BA14B18F862F3007C1937 /* CloudsAudioEvents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsAudioEvents.cpp; path = Sound/CloudsAudioEvents.cpp; sourceTree = "<group>"; };
+		E77BA14C18F862F3007C1937 /* CloudsAudioEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsAudioEvents.h; path = Sound/CloudsAudioEvents.h; sourceTree = "<group>"; };
 		E7A4DC29186A272A002F5371 /* CloudsSVGMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSVGMesh.cpp; sourceTree = "<group>"; };
 		E7A4DC2A186A272A002F5371 /* CloudsSVGMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSVGMesh.h; sourceTree = "<group>"; };
 		E7D330361751D446006706ED /* ofx1DExtruder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofx1DExtruder.h; sourceTree = "<group>"; };
@@ -895,6 +898,8 @@
 		E745F6CA1720FE0E00B86D7E /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E77BA14B18F862F3007C1937 /* CloudsAudioEvents.cpp */,
+				E77BA14C18F862F3007C1937 /* CloudsAudioEvents.h */,
 				186B68AC17EA1E6C0020C952 /* CloudsRGBDVideoPlayer.h */,
 				1877A9F9178F417A006DAA37 /* CloudsGlobal.h */,
 				E703CD24185D6B9000547738 /* Input */,
@@ -1901,6 +1906,7 @@
 				E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */,
 				E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */,
 				E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */,
+				E77BA14D18F862F3007C1937 /* CloudsAudioEvents.cpp in Sources */,
 				3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */,
 				E7D3306B1751D446006706ED /* ofxBehavior.cpp in Sources */,
 				E7D3306C1751D446006706ED /* ofxBufferEffectorBehavior.cpp in Sources */,

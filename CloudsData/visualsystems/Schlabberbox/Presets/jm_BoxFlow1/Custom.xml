@@ -18,17 +18,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Force Amount</Name>
-    <Value>2.281193495</Value>
+    <Value>0.373691857</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Particle Speed</Name>
-    <Value>75.121360779</Value>
+    <Value>38.010673523</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Particles Return</Name>
-    <Value>0.001000000</Value>
+    <Value>0.300000012</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -53,5 +53,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Box Connect Distance</Name>
-    <Value>0.500000000</Value>
+    <Value>0.538811803</Value>
 </Widget>

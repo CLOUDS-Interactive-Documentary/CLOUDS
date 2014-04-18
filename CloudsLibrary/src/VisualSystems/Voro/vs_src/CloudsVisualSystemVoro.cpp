@@ -27,6 +27,8 @@ void CloudsVisualSystemVoro::selfSetDefaults()
 	cellsWireAlpha = 1.0;
 	cellsVertexAlpha = 1.0;
 	cellsVertexSize = 1.0;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemVoro::selfSetup()

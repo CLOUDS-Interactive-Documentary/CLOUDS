@@ -170,6 +170,7 @@ class CloudsStoryEngine {
 	float genderBalanceFactor;
     float goldClipFactor;
     float easyClipScoreFactor;
+	float seriesBoostFactor;
 //	int digressionDenialCount;
 //	int numTopicHistoryOccurrences;
 

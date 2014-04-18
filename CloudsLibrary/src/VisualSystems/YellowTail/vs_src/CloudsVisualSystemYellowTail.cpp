@@ -1,6 +1,12 @@
 
 #include "CloudsVisualSystemYellowTail.h"
 
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#else
+#include "CloudsInputMouse.h"
+#endif
+
 
 CloudsVisualSystemYellowTail::CloudsVisualSystemYellowTail(){
 
@@ -27,6 +33,11 @@ void CloudsVisualSystemYellowTail::selfSetup(){
     neverTouchedBefore = true;
 	clearGestures();
     	
+}
+
+void CloudsVisualSystemYellowTail::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
 }
 
 void CloudsVisualSystemYellowTail::selfSetupGuis(){
@@ -94,8 +105,10 @@ void CloudsVisualSystemYellowTail::selfDrawBackground(){
     }
 	
 	ofPopStyle();
-    
-//    ((CloudsInputKinectOSC *)GetCloudsInput().get())->debug(0, 0, ofGetWidth(), ofGetHeight());
+
+#ifdef KINECT_INPUT
+	((CloudsInputKinectOSC *)GetCloudsInput().get())->draw(0, 0, ofGetWidth(), ofGetHeight(), ofMap(ofGetMouseX(), 0, ofGetWidth(), 0, 255, true));
+#endif
 }
 
 void CloudsVisualSystemYellowTail::selfDrawDebug(){
@@ -125,6 +138,44 @@ void CloudsVisualSystemYellowTail::selfBegin(){
 void CloudsVisualSystemYellowTail::selfEnd(){
 	//CLEAR ALL MEMORY
 	clearGestures();
+}
+
+void CloudsVisualSystemYellowTail::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus){
+    
+#ifdef OCULUS_RIFT
+    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
+    return;
+    
+#else
+    ofPushStyle();
+    
+    float cursorSize;
+
+#ifdef KINECT_INPUT
+    ofPtr<CloudsInputKinectOSC> kinectOscInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+    if (bDragged)
+        cursorSize = ofMap(pos.z, 2, -2, kinectOscInput->cursorDownSizeMin, kinectOscInput->cursorDownSizeMax, true);
+    else
+        cursorSize = ofMap(pos.z, 2, -2, kinectOscInput->cursorUpSizeMin, kinectOscInput->cursorUpSizeMax, true);
+#else
+    ofPtr<CloudsInputMouse> mouseInput = dynamic_pointer_cast<CloudsInputMouse>(GetCloudsInput());
+    if (bDragged)
+        cursorSize = mouseInput->cursorDownSize;
+    else
+        cursorSize = mouseInput->cursorUpSize;
+#endif
+    
+    ofSetLineWidth(2);
+    ofNoFill();
+    if (bDragged)
+        ofSetColor(62, 69, 213, 192 * focus);
+    else  // !bDragged
+        ofSetColor(255, 255, 255, 192 * focus);
+    ofCircle(pos, cursorSize);
+    
+    ofPopStyle();
+    
+#endif
 }
 
 void CloudsVisualSystemYellowTail::selfKeyPressed(ofKeyEventArgs & args){

@@ -9,16 +9,22 @@
 #include "CloudsInputEvents.h"
 #include "ofxLight.h"
 #include "ofxGenerative.h"
-//#include "ofxMaterial.h"
+
+
 #ifdef CLOUDS_APP
 #include "CloudsPortal.h"
 #endif
 
+#ifdef CLOUDS_INTERLUDE_NAV
+#include "ofxFTGL.h"
+#include "CloudsCalibrationNode.h"
+#endif
+
 #ifdef OCULUS_RIFT
 #include "ofxOculusRift.h"
-#ifdef CLOUDS_APP
-#include "CloudsHUDController.h"
-#endif
+	#ifdef CLOUDS_APP
+		#include "CloudsHUDController.h"
+	#endif
 #endif
 
 /**
@@ -40,13 +46,6 @@ enum ofxViewType
     OFX_VIEW_RIGHT,
     OFX_VIEW_LEFT,
     OFX_VIEW_3D
-};
-
-enum CloudsDrawCursorMode
-{
-    DRAW_CURSOR_NONE = 0,
-    DRAW_CURSOR_PRIMARY,
-    DRAW_CURSOR_ALL
 };
 
 class CloudsVisualSystem {
@@ -95,8 +94,7 @@ class CloudsVisualSystem {
 	virtual void selfDrawOverlay();
 	virtual void selfPostDraw();
 	virtual void selfPostDraw(int width, int height);
-	
-    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged);
+    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus = 1.0f);
 	virtual void selfPresetLoaded(string presetPath);
 	
     virtual void selfExit();
@@ -176,7 +174,6 @@ class CloudsVisualSystem {
 	
 	bool isSetup();
 	bool isPlaying();
-	
 
 	void setupSpeaker(string speakerFirstName,
 					  string speakerLastName,
@@ -199,7 +196,7 @@ class CloudsVisualSystem {
     void draw2dSystemPlane();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
     
-    void drawCursor();
+    virtual void drawCursors();
 	
     //Core Param Setup
     void setupAppParams();
@@ -257,6 +254,7 @@ class CloudsVisualSystem {
     void setupKinectGui();
 	void guiKinectEvent(ofxUIEventArgs &e);
 #endif
+	
 #ifdef OCULUS_RIFT
     void setupOculusGui();
 	void guiOculusEvent(ofxUIEventArgs &e);
@@ -266,6 +264,7 @@ class CloudsVisualSystem {
     void setupHUDGui();
 	void guiHUDEvent(ofxUIEventArgs &e);
 #endif
+	
 #endif
     
     //Lighting Helpers
@@ -285,16 +284,7 @@ class CloudsVisualSystem {
     void toggleGUIS();
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
-    
-//#ifdef CLOUDS_APP
-//    void setupPortals();
-//#endif
-
-//	void setCurrentCamera( ofCamera& cam );
-//	void setCurrentCamera( ofCamera* swappedInCam );
-//	ofCamera* getCurrentCamera();
 	virtual ofCamera& getCameraRef();
-
 	
 	ofVec3f translatedHeadPosition;
 	float pointcloudScale;
@@ -323,7 +313,29 @@ class CloudsVisualSystem {
     void drawKinectDebug();
 #endif
 	
-    CloudsDrawCursorMode drawCursorMode;
+    CloudsCursorMode primaryCursorMode;
+    CloudsCursorMode secondaryCursorMode;
+    
+	bool isInterlude;
+	bool updateInterludeInterface();
+	void drawInterludeInterface();
+	
+#ifdef CLOUDS_INTERLUDE_NAV
+	CalibrationNode resetNode;
+	CalibrationNode continueNode;
+	ofxFTGLFont interludeFont;
+#endif
+	
+	float interludeNodeSize;
+	ofRange interludeActivationRange;
+	float interludeNodeHoldTime;
+	float interludeBasePosX;
+	float interludeBasePosZ;
+	int interludeFontSize;
+	int currentInterludeFontSize;
+	float interludeTypeScale;
+	float interludeTypeYOffset;
+	float interludeTypeTracking;
   protected:
 		
 	//UI
@@ -368,7 +380,6 @@ class CloudsVisualSystem {
 	float bgSat2;
 	float bgBri2;
 	
-	
     ofxUISlider *hueSlider;
     ofxUISlider *satSlider;
     ofxUISlider *briSlider;
@@ -411,7 +422,6 @@ class CloudsVisualSystem {
 	bool bDrawToScreen;
 	bool bUseOculusRift;
 
-    
     //CAM
     float camDistance;
     float camFOV;
@@ -450,11 +460,7 @@ class CloudsVisualSystem {
 
 	//background stuff
 	bool bMatchBackgrounds;
-		
-	//these variables are set by the playback controller when displaying
-	//ways to interact with the pointcloud data
-//	CloudsRGBDVideoPlayer* sharedRenderer;
-	//set to true if the pointcloud renderer has valid speaker
+	
 	bool hasSpeaker;
 	bool confirmedDataPath;
 	string cachedDataPath;
@@ -465,9 +471,6 @@ class CloudsVisualSystem {
 	string speakerLastName;
 	string quoteName;
 	
-	//keyword is the topic of conversation
-//	string currentTopic;
-	//theme is the topic chosen
 	
 	string mainKeyword;
 	vector<string> keywords;
@@ -478,8 +481,6 @@ class CloudsVisualSystem {
 	void loadTransitionOptions();
 	void setTransitionOptionGui(string type, string screenName, ofxUIEventArgs &e);
 	string getTransitionOption();
-//	map<string, vector<string> > transitionOptionMap;
-//	ofxUISuperCanvas* transitionOptionGui;
 	
 	//INTERACTIVE CAMERA
 	bool bUseInteractiveCamera;
@@ -496,25 +497,5 @@ class CloudsVisualSystem {
     float bloomAmount;
     int bloomSamples;
     
-#ifdef OCULUS_RIFT
-    static float cursorSize;
-#elif KINECT_INPUT
-    static float cursorDownSizeMin, cursorDownSizeMax;
-    static float cursorUpSizeMin, cursorUpSizeMax;
-#else
-    static float cursorDownSize, cursorUpSize;
-#endif
-    
 };
 
-//#ifdef CLOUDS_APP
-//static  vector<CloudsPortal> gPortals;
-//static bool gShowInterludePortals;
-//vector<CloudsPortal>& InterludePortalsRef();
-//void SetInterludePortalsRef(vector<CloudsPortal>& ref);
-//void ResetInterludePortals();
-//bool GetSelectedInterludePortalContinue();
-//bool GetSelectedInterludePortalResetClouds();
-//void ShowInterludePortals(bool show);
-//bool CanShowInterludePortals();
-//#endif

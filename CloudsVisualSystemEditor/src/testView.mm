@@ -96,7 +96,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	if(runningTest){
 		
-		if(ofGetElapsedTimef() - lastSystemStartTime > 1){
+		if(ofGetElapsedTimef() - lastSystemStartTime > 10){
 			
 			if(currentVisualSystem != NULL){
 				cout << "5) (" << currentTestPresetIndex << "/" << testPresetIndeces.size() << ") STOPPING SYSTEM " << currentVisualSystem->getSystemName() << endl;

@@ -277,8 +277,6 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	ofVec3f maxBounds(0,0,0);
 	ofVec3f minBounds(0,0,0);
 	
-	ofVec2f flickerCoord = ofVec2f(0,0);
-	int flickerWidth = 100;
 	for(int i = 0; i < parser->getAllClips().size(); i++){
 		CloudsClusterNode n;
 		CloudsClip& clip = parser->getAllClips()[i];
@@ -309,10 +307,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	}
 
 	
-	flickerNoise.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
-	flickerNoiseTarget.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
-	flickerNoise.getPixelsRef().set(0);
-	flickerNoiseTarget.set(0);
+
 	
 	networkCentroid /= nodes.size();
 	float maxDistance = 0;
@@ -466,28 +461,27 @@ void CloudsVisualSystemClusterMap::populateAssociations(){
         
         string line = topicAssociations.getNextLine();
         if(line.find(":") == string::npos){
-            cout << "Skipping line " << line << endl;
+//            cout << "Skipping line " << line << endl;
             continue;
         }
         
         vector<string> association = ofSplitString(line, ":", true, true);
         if(association.size() != 2){
-            cout << "line " << line << " has more than one :"<<endl;
+//            cout << "line " << line << " has more than one :"<<endl;
             continue;
         }
         
         vector<string> clipcount = ofSplitString(line, "\t",true,true);
         if(clipcount.size() != 2){
-            cout << "line " << line << " has more than one tab"<<endl;
+//            cout << "line " << line << " has more than one tab"<<endl;
             continue;
         }
         
         string associatedKeyword = association[1];
         string subtopic = ofSplitString(association[0],"\t",true,true)[1];
         associations[subtopic] = associatedKeyword;
-        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
+//        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
     }
-    bool b = false;
 }
 
 void CloudsVisualSystemClusterMap::traverse(){
@@ -787,11 +781,18 @@ void CloudsVisualSystemClusterMap::selfSetupTimeline(){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemClusterMap::selfSetup(){
-	gameCamera.setup();
-	gameCamera.autosavePosition = true;
-	gameCamera.loadCameraPosition();
+//	gameCamera.setup();
+//	gameCamera.autosavePosition = true;
+//	gameCamera.loadCameraPosition();
 	
 	firstClip = true;
+	
+	flickerCoord = ofVec2f(0,0);
+	flickerWidth = 100;
+	flickerNoise.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
+	flickerNoiseTarget.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
+	flickerNoise.getPixelsRef().set(0);
+	flickerNoiseTarget.set(0);
 	
 	reloadShaders();
 }
@@ -850,7 +851,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	}
 	
 	//UPDATE CAMERA
-	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
+//	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
 	if(cursorIsOverGUI()){
 		easyCamera.disableMouseInput();
 	}
@@ -1205,7 +1206,7 @@ void CloudsVisualSystemClusterMap::selfKeyPressed(ofKeyEventArgs & args){
 	
 	int key = args.key;
 	if(key == 'C'){
-		gameCamera.reset();
+//		gameCamera.reset();
 	}
 	if(key == 'G'){
 		traverse();

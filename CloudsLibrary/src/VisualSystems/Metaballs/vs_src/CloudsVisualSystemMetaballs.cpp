@@ -75,7 +75,10 @@ void CloudsVisualSystemMetaballs::selfSetupGui(){
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
 }
-
+void CloudsVisualSystemMetaballs::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemMetaballs::selfGuiEvent(ofxUIEventArgs &e){
 	string name = e.widget->getName();
 	

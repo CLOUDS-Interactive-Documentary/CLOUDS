@@ -2,6 +2,9 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    ofSetFrameRate(60);
+    ofSetVerticalSync(true);
+    
 	vs.setup();
 	vs.playSystem();
 }

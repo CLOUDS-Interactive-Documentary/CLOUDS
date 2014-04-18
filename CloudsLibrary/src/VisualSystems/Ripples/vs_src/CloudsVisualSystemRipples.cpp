@@ -78,7 +78,10 @@ void CloudsVisualSystemRipples::selfSetupGui()
 	guis.push_back(soundGui);
 	guimap[customGui->getName()] = soundGui;
 }
-
+void CloudsVisualSystemRipples::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
 void CloudsVisualSystemRipples::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "TINT HUE") {

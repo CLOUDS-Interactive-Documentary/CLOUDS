@@ -1,5 +1,10 @@
 <keyframes>
     <key>
+        <flag>PROMPT</flag>
+        <time>00:00:11:698</time>
+        <value>0.524999976</value>
+    </key>
+    <key>
         <flag>LOOP_START</flag>
         <time>00:00:43:851</time>
         <value>0.699999988</value>

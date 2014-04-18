@@ -73,6 +73,7 @@
 		4695E3ED1752A089003001E2 /* ofxEasingQuint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E3CF1752A088003001E2 /* ofxEasingQuint.cpp */; };
 		4695E3EE1752A089003001E2 /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E3D11752A088003001E2 /* ofxEasingSine.cpp */; };
 		4695E3EF1752A089003001E2 /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E3D31752A088003001E2 /* ofxTween.cpp */; };
+		6427B72D18FDFA47003551DB /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6427B72B18FDFA47003551DB /* CloudsInputOculus.cpp */; };
 		850EDB3F183056EC004411A3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		850EDB40183056EC004411A3 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
 		850EDB41183056EC004411A3 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
@@ -261,8 +262,6 @@
 		AE6FFE43187F36AF00677B60 /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A619518553799002145E1 /* IpEndpointName.cpp */; };
 		AE6FFE44187F36AF00677B60 /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A619A18553799002145E1 /* NetworkingUtils.cpp */; };
 		AE6FFE45187F36AF00677B60 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A619B18553799002145E1 /* UdpSocket.cpp */; };
-		AE6FFE46187F36AF00677B60 /* NetworkingUtilsWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A619F18553799002145E1 /* NetworkingUtilsWin.cpp */; };
-		AE6FFE47187F36AF00677B60 /* UdpSocketWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61A018553799002145E1 /* UdpSocketWin.cpp */; };
 		AE6FFE48187F36AF00677B60 /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61A518553799002145E1 /* OscOutboundPacketStream.cpp */; };
 		AE6FFE49187F36AF00677B60 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61A818553799002145E1 /* OscPrintReceivedElements.cpp */; };
 		AE6FFE4A187F36AF00677B60 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61AA18553799002145E1 /* OscReceivedElements.cpp */; };
@@ -331,20 +330,6 @@
 		F35A6186185535EC002145E1 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A617F185535EC002145E1 /* CloudsInput.cpp */; };
 		F35A6189185535EC002145E1 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A6183185535EC002145E1 /* CloudsInputMouse.cpp */; };
 		F35A618A185535EC002145E1 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A6183185535EC002145E1 /* CloudsInputMouse.cpp */; };
-		F35A618E1855365F002145E1 /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A618C1855365F002145E1 /* CloudsInputKinectOSC.cpp */; };
-		F35A61BA18553799002145E1 /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A619518553799002145E1 /* IpEndpointName.cpp */; };
-		F35A61BC18553799002145E1 /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A619A18553799002145E1 /* NetworkingUtils.cpp */; };
-		F35A61BE18553799002145E1 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A619B18553799002145E1 /* UdpSocket.cpp */; };
-		F35A61C018553799002145E1 /* NetworkingUtilsWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A619F18553799002145E1 /* NetworkingUtilsWin.cpp */; };
-		F35A61C218553799002145E1 /* UdpSocketWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61A018553799002145E1 /* UdpSocketWin.cpp */; };
-		F35A61C418553799002145E1 /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61A518553799002145E1 /* OscOutboundPacketStream.cpp */; };
-		F35A61C618553799002145E1 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61A818553799002145E1 /* OscPrintReceivedElements.cpp */; };
-		F35A61C818553799002145E1 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61AA18553799002145E1 /* OscReceivedElements.cpp */; };
-		F35A61CA18553799002145E1 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61AC18553799002145E1 /* OscTypes.cpp */; };
-		F35A61CC18553799002145E1 /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61B118553799002145E1 /* ofxOscBundle.cpp */; };
-		F35A61CE18553799002145E1 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61B318553799002145E1 /* ofxOscMessage.cpp */; };
-		F35A61D018553799002145E1 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61B518553799002145E1 /* ofxOscReceiver.cpp */; };
-		F35A61D218553799002145E1 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F35A61B718553799002145E1 /* ofxOscSender.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -623,6 +608,8 @@
 		4695E3D21752A088003001E2 /* ofxEasingSine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasingSine.h; sourceTree = "<group>"; };
 		4695E3D31752A088003001E2 /* ofxTween.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTween.cpp; sourceTree = "<group>"; };
 		4695E3D41752A088003001E2 /* ofxTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTween.h; sourceTree = "<group>"; };
+		6427B72B18FDFA47003551DB /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
+		6427B72C18FDFA47003551DB /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
 		850EDBA9183056EC004411A3 /* YellowTailOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YellowTailOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		850EDC3318305746004411A3 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		850EDC3418305746004411A3 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
@@ -718,8 +705,6 @@
 		F35A619B18553799002145E1 /* UdpSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UdpSocket.cpp; sourceTree = "<group>"; };
 		F35A619C18553799002145E1 /* TimerListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerListener.h; sourceTree = "<group>"; };
 		F35A619D18553799002145E1 /* UdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdpSocket.h; sourceTree = "<group>"; };
-		F35A619F18553799002145E1 /* NetworkingUtilsWin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkingUtilsWin.cpp; sourceTree = "<group>"; };
-		F35A61A018553799002145E1 /* UdpSocketWin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UdpSocketWin.cpp; sourceTree = "<group>"; };
 		F35A61A218553799002145E1 /* MessageMappingOscPacketListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageMappingOscPacketListener.h; sourceTree = "<group>"; };
 		F35A61A318553799002145E1 /* OscException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscException.h; sourceTree = "<group>"; };
 		F35A61A418553799002145E1 /* OscHostEndianness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscHostEndianness.h; sourceTree = "<group>"; };
@@ -1592,6 +1577,8 @@
 				F35A6184185535EC002145E1 /* CloudsInputMouse.h */,
 				F35A618C1855365F002145E1 /* CloudsInputKinectOSC.cpp */,
 				F35A618B18553650002145E1 /* CloudsInputKinectOSC.h */,
+				6427B72B18FDFA47003551DB /* CloudsInputOculus.cpp */,
+				6427B72C18FDFA47003551DB /* CloudsInputOculus.h */,
 			);
 			name = Input;
 			path = ../../CloudsLibrary/src/Input;
@@ -1642,7 +1629,6 @@
 				F35A619918553799002145E1 /* posix */,
 				F35A619C18553799002145E1 /* TimerListener.h */,
 				F35A619D18553799002145E1 /* UdpSocket.h */,
-				F35A619E18553799002145E1 /* win32 */,
 			);
 			path = ip;
 			sourceTree = "<group>";
@@ -1654,15 +1640,6 @@
 				F35A619B18553799002145E1 /* UdpSocket.cpp */,
 			);
 			path = posix;
-			sourceTree = "<group>";
-		};
-		F35A619E18553799002145E1 /* win32 */ = {
-			isa = PBXGroup;
-			children = (
-				F35A619F18553799002145E1 /* NetworkingUtilsWin.cpp */,
-				F35A61A018553799002145E1 /* UdpSocketWin.cpp */,
-			);
-			path = win32;
 			sourceTree = "<group>";
 		};
 		F35A61A118553799002145E1 /* osc */ = {
@@ -1912,6 +1889,7 @@
 				850EDB77183056EC004411A3 /* ofxTextInputField.cpp in Sources */,
 				850EDB78183056EC004411A3 /* ofxTimecode.cpp in Sources */,
 				850EDB79183056EC004411A3 /* ofxEasing.cpp in Sources */,
+				6427B72D18FDFA47003551DB /* CloudsInputOculus.cpp in Sources */,
 				850EDB7A183056EC004411A3 /* ofxEasingBack.cpp in Sources */,
 				850EDB7B183056EC004411A3 /* ofxEasingBounce.cpp in Sources */,
 				850EDB7C183056EC004411A3 /* ofxEasingCirc.cpp in Sources */,
@@ -1937,20 +1915,6 @@
 				850EDC6718305747004411A3 /* ofxOculusRift.cpp in Sources */,
 				F35A6186185535EC002145E1 /* CloudsInput.cpp in Sources */,
 				F35A618A185535EC002145E1 /* CloudsInputMouse.cpp in Sources */,
-				F35A618E1855365F002145E1 /* CloudsInputKinectOSC.cpp in Sources */,
-				F35A61BA18553799002145E1 /* IpEndpointName.cpp in Sources */,
-				F35A61BC18553799002145E1 /* NetworkingUtils.cpp in Sources */,
-				F35A61BE18553799002145E1 /* UdpSocket.cpp in Sources */,
-				F35A61C018553799002145E1 /* NetworkingUtilsWin.cpp in Sources */,
-				F35A61C218553799002145E1 /* UdpSocketWin.cpp in Sources */,
-				F35A61C418553799002145E1 /* OscOutboundPacketStream.cpp in Sources */,
-				F35A61C618553799002145E1 /* OscPrintReceivedElements.cpp in Sources */,
-				F35A61C818553799002145E1 /* OscReceivedElements.cpp in Sources */,
-				F35A61CA18553799002145E1 /* OscTypes.cpp in Sources */,
-				F35A61CC18553799002145E1 /* ofxOscBundle.cpp in Sources */,
-				F35A61CE18553799002145E1 /* ofxOscMessage.cpp in Sources */,
-				F35A61D018553799002145E1 /* ofxOscReceiver.cpp in Sources */,
-				F35A61D218553799002145E1 /* ofxOscSender.cpp in Sources */,
 				E71670FB187A5A040047B7DC /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2046,8 +2010,6 @@
 				AE6FFE43187F36AF00677B60 /* IpEndpointName.cpp in Sources */,
 				AE6FFE44187F36AF00677B60 /* NetworkingUtils.cpp in Sources */,
 				AE6FFE45187F36AF00677B60 /* UdpSocket.cpp in Sources */,
-				AE6FFE46187F36AF00677B60 /* NetworkingUtilsWin.cpp in Sources */,
-				AE6FFE47187F36AF00677B60 /* UdpSocketWin.cpp in Sources */,
 				AE6FFE48187F36AF00677B60 /* OscOutboundPacketStream.cpp in Sources */,
 				AE6FFE49187F36AF00677B60 /* OscPrintReceivedElements.cpp in Sources */,
 				AE6FFE4A187F36AF00677B60 /* OscReceivedElements.cpp in Sources */,

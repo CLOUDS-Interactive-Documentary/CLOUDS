@@ -75,6 +75,15 @@ namespace k4w
         ActionState_Lasso       =  1,
         ActionState_Closed      =  2
     };
+
+	// defined by us
+    enum ViewerState 
+    {
+        ViewerState_None        = 0,
+        ViewerState_OutOfRange  = 1,
+        ViewerState_PresentIdle = 2,
+        ViewerState_Interacting = 3
+    };
     
     struct Joint 
     {
@@ -88,6 +97,8 @@ namespace k4w
     struct HandJoint : public Joint
     {
         HandState handState;
+		ofVec3f clampedPosition;  // input position, clamped to bounds if (bClampToBounds == true)
+        float focus;
     };
     
     class Body 
@@ -115,6 +126,12 @@ namespace k4w
             
             shoulderRightJoint.type = JointType_ShoulderRight;
             shoulderRightJoint.trackingState = TrackingState_NotTracked;
+
+			elbowLeftJoint.type = JointType_ElbowLeft;
+            elbowLeftJoint.trackingState = TrackingState_NotTracked;
+            
+            elbowRightJoint.type = JointType_ElbowRight;
+            elbowRightJoint.trackingState = TrackingState_NotTracked;
             
             age = 0;
         }
@@ -129,6 +146,8 @@ namespace k4w
         Joint spineBaseJoint;
         Joint shoulderLeftJoint;
         Joint shoulderRightJoint;
+		Joint elbowLeftJoint;
+		Joint elbowRightJoint;
     };
     
     class Hand
@@ -168,22 +187,27 @@ public:
     
     void update(ofEventArgs& args);
     
-    void mapCoords(k4w::Joint& joint, ofVec3f& origin, float zRef, float width, float height);
+    void mapHandCoords(k4w::HandJoint& joint, ofVec3f& origin, float zRef, float width, float height);
 	void processHandEvent(int handIdx, k4w::Hand * hand, k4w::HandState newState);
     
     void debug(float x, float y, float width, float height);
+	void draw(float x, float y, float width, float height, float alpha = 255);
     
     ofxOscReceiver receiver;
     int lastOscFrame;
     int primaryIdx;
     float activeThresholdY;
     float activeThresholdZ;
+    float focusRange;
     ofVec3f boundsMin;
     ofVec3f boundsMax;
     float jointLerpPct;
     bool bClampToBounds;
     
     bool bDoDebug;
+
+	k4w::ViewerState viewerState;
+    unsigned long viewerIdleTime;
     
     // current position attributes
     float posResetLerpPct;
@@ -194,6 +218,11 @@ public:
     
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;
+    
+    void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus);
+    
+    float cursorDownSizeMin, cursorDownSizeMax;
+    float cursorUpSizeMin, cursorUpSizeMax;
 };
 
 void SetCloudsInputKinect(float activeThresholdY = 0.8f, float activeThresholdZ = 0.4f);

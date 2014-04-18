@@ -58,6 +58,7 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
 	
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
+    void selfSetDefaults();
 
 	// Sound
     ofxUISuperCanvas* soundGui;

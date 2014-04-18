@@ -29,6 +29,7 @@ void testApp::setup(){
 	storyEngine.toggleGuis(true);
     
     sound.setup(storyEngine);
+    sound.isScoreDesigner = true;
     
 	parser.printDichotomyRatios();
 	
@@ -201,7 +202,7 @@ void testApp::draw(){
     }
     if(mixer.showCompressor)
     {
-        int r = ofMap(mixer.gain, 0.5, 1., 255, 0);
+        int r = ofMap(GetCloudsAudioEvents()->gain, 0.5, 1., 255, 0);
         int g = ofMap(mixer.followgain, 0., 0.5, 0, 255);
         ofSetColor(0, g, 0);
         ofFill();
