@@ -450,6 +450,19 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     else {
         viewerIdleTime = 0;
     }
+    
+    if (viewerState == k4w::ViewerState_None) {
+        cout << "VIEWER STATE:: NONE" << endl;
+    }
+    else if (viewerState == k4w::ViewerState_OutOfRange) {
+        cout << "VIEWER STATE:: OUT OF RANGE" << endl;
+    }
+    else if (viewerState == k4w::ViewerState_PresentIdle) {
+        cout << "VIEWER STATE:: PRESENT IDLE " << viewerIdleTime << endl;
+    }
+    else {
+        cout << "VIEWER STATE:: INTERACTING" << endl;
+    }
 }
 
 //--------------------------------------------------------------
