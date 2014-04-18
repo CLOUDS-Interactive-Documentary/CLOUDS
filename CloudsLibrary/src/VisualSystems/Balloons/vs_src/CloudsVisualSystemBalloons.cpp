@@ -35,7 +35,7 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	colorGui = new ofxUISuperCanvas("BALLOONS_COLOR", gui);
 	colorGui->copyCanvasStyle(gui);
 	colorGui->copyCanvasProperties(gui);
-	colorGui->setName("Balloons");
+	colorGui->setName("BalloonsColor");
 	colorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	
@@ -316,14 +316,11 @@ void CloudsVisualSystemBalloons::selfSceneTransformation(){
 void CloudsVisualSystemBalloons::selfUpdate()
 {
 	p0->getTextureReference().readToPixels(pospix);
-	ofFloatColor poscol = pospix.getColor(1,1);
+	ofFloatColor poscol = pospix.getColor(0,0);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
-//	ofVec3f camPos = getCameraPosition();
-//	getCameraRef().setPosition(balloon00Pos);
-//	((ofEasyCam*)&getCameraRef())->setDistance(balloon00Pos.length());
-//	getCameraRef().lookAt(ofVec3f(0,0,0));
-//	
+	balloonCam.setPosition(0, 0, 100);
+	//balloonCam.lookAt(ofVec3f(balloon00Pos));
 }
 
 void CloudsVisualSystemBalloons::selfDraw()
@@ -337,6 +334,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	posShader.begin();
 	posShader.setUniformTexture("posTexture", p1->getTextureReference(), 0);
 	posShader.setUniformTexture("velTexture", v1->getTextureReference(), 1);
+	posShader.setUniform3f("camOffset", balloon00Pos.x,balloon00Pos.y,balloon00Pos.z);
 	posShader.setUniform1f("dimX", dimX);
 	posShader.setUniform1f("dimY", dimY);
 	posShader.setUniform1f("bound", dim);
@@ -354,6 +352,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.begin();
 	velShader.setUniformTexture("posTexture", p1->getTextureReference(), 0);
 	velShader.setUniformTexture("velTexture", v1->getTextureReference(), 1);
+	velShader.setUniform3f("camOffset", balloon00Pos.x,balloon00Pos.y,balloon00Pos.z);
 	velShader.setUniform1f("netHeight", netHeight );
 	velShader.setUniform1f("dimX", dimX);
 	velShader.setUniform1f("dimY", dimY);
@@ -406,6 +405,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	ofFloatColor bg1 = bgColor2;
 	shader.setUniform4f("bg0", bg0.r, bg0.g, bg0.b, 1 );
 	shader.setUniform4f("bg1", bg1.r, bg1.g, bg1.b, 1 );
+	shader.setUniform1f("bgExpo", backgroundGradientExponent);
 	
 	shader.setUniform1f("dim", dim );
 	shader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
@@ -428,9 +428,10 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	shader.end();
 	
+	glLineWidth(2);
 	ofSetColor(0, 255, 0);
 	ofNoFill();
-	ofSphere(balloon00Pos, 30);
+	ofBox(balloon00Pos, 30);
 	
 	glPopAttrib();
 	ofPopStyle();

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>241.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1061.000000000</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -14,6 +14,11 @@
     <Kind>2</Kind>
     <Name>default</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>dusky</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -39,9 +44,4 @@
     <Kind>2</Kind>
     <Name>tower</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>dusky</Name>
-    <Value>1</Value>
 </Widget>

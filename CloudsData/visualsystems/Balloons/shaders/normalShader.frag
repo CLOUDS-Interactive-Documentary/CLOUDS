@@ -13,6 +13,7 @@ uniform float lightLinearAttenuation = .0025;
 uniform float screenHeight;
 uniform vec4 bg0;
 uniform vec4 bg1;
+uniform float bgExpo;
 
 varying vec4 lPos;
 varying vec4 lCol;
@@ -63,9 +64,9 @@ void main(void)
 	
 	PointLight( lPos.xyz, ePos, ecPosition.xyz, normal, diffuse, specular, lCol);
 
-	vec4 fogColor = mix( bg1, bg0, gl_FragCoord.y / screenHeight);
+	vec4 fogColor = mix( bg1, bg0, pow(clamp(gl_FragCoord.y / screenHeight, 0., 1.), bgExpo));
 	
-	diffuse += pow(texture2DRect( sphericalMap, vN ), vec4(4.));
+	diffuse += pow(texture2DRect( sphericalMap, vN ), vec4(2.)) * .5;
 	gl_FragColor = mix( fogColor, diffuse, fogMix);
 	gl_FragColor.w = 1. - fr * .025;
 }

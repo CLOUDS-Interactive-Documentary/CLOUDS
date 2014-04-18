@@ -1,10 +1,15 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1061.000000000</XPosition>
-    <YPosition>355.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>241.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bloodCells</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>default</Name>
@@ -12,7 +17,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ski</Name>
+    <Name>dusky</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SaoPaulo</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>sky</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -23,11 +38,6 @@
 <Widget>
     <Kind>2</Kind>
     <Name>sway</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>test</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
