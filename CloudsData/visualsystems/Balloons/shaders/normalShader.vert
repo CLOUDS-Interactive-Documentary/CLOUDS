@@ -142,7 +142,7 @@ void main()
 	v.xyz = qtransform(q, v.xyz);
 	v.xyz += pos;
 	
-	fogMix = 1. - pow(abs(v.y) / dim, 2.);
+	fogMix = 1. - pow(abs(v.y) / (dim*.9), 4.);
 	//	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / fogDist, 3.), 0., 1.);
 	
 	

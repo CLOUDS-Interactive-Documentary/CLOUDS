@@ -28,7 +28,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>fixedOnBalloon_Raise</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>sky</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -58,10 +58,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>testing</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>tower</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>sky0</Name>
+    <Value>1</Value>
 </Widget>

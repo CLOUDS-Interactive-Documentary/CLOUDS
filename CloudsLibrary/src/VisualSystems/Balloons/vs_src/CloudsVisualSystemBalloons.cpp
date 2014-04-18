@@ -298,7 +298,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
 	
-	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/sky.jpg");
+	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/sky_1.jpg");
 	
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
@@ -330,11 +330,12 @@ void CloudsVisualSystemBalloons::selfSceneTransformation(){
 void CloudsVisualSystemBalloons::selfUpdate()
 {
 	p0->getTextureReference().readToPixels(pospix);
-	ofFloatColor poscol = pospix.getColor(1,1);
+	ofFloatColor poscol = pospix.getColor(0,0);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
 	
+//	balloonCam.setPosition(balloon00Pos.x, 0, cameraTargetDist + balloon00Pos.z);
 	balloonCam.setPosition(0, 0, cameraTargetDist);
 	//balloonCam.lookAt(ofVec3f(balloon00Pos));
 }
