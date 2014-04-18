@@ -94,7 +94,7 @@ void main()
 //	p.y += time + camOffset.y;
 	
 	p.y += time;
-//	p += camOffset;
+	p.y += camOffset.y;
 	vec3 acc = vec3(0.,0.,0.);
 	
 	//noise influence

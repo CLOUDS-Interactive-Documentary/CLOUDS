@@ -8,52 +8,52 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noiseScl</Name>
-    <Value>0.409901470</Value>
+    <Value>0.205073893</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseSampleScale</Name>
-    <Value>0.023921182</Value>
+    <Value>0.023433497</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>velocityAttenuation</Name>
-    <Value>0.977000058</Value>
+    <Value>0.981527090</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>accelScale</Name>
-    <Value>0.113300495</Value>
+    <Value>0.172413796</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gravity</Name>
-    <Value>0.030541873</Value>
+    <Value>0.012315271</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attractionToCenter</Name>
-    <Value>0.024137931</Value>
+    <Value>0.034482758</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>highSpeedPercent</Name>
-    <Value>0.369458139</Value>
+    <Value>0.502463043</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>highSpeedScale</Name>
-    <Value>1.256157637</Value>
+    <Value>1.502463102</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>speedScaleLow</Name>
-    <Value>0.929064035</Value>
+    <Value>0.849261105</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>speedScaleHi</Name>
-    <Value>1.241379261</Value>
+    <Value>1.625615835</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -63,7 +63,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>cameraTargetDist</Name>
-    <Value>145.320190430</Value>
+    <Value>128.768478394</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
