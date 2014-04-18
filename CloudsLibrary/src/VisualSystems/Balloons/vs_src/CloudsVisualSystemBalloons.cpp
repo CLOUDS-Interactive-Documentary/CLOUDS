@@ -284,6 +284,8 @@ void CloudsVisualSystemBalloons::selfSetup()
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
 	
+	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/bar.jpeg");
+	
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
 	
@@ -317,10 +319,11 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	ofFloatColor poscol = pospix.getColor(1,1);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
-	ofVec3f camPos = getCameraPosition();
-	getCameraRef().setPosition(balloon00Pos);
+//	ofVec3f camPos = getCameraPosition();
+//	getCameraRef().setPosition(balloon00Pos);
 //	((ofEasyCam*)&getCameraRef())->setDistance(balloon00Pos.length());
 //	getCameraRef().lookAt(ofVec3f(0,0,0));
+//	
 }
 
 void CloudsVisualSystemBalloons::selfDraw()
@@ -397,6 +400,12 @@ void CloudsVisualSystemBalloons::selfDraw()
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	shader.begin();
 	shader.setUniform1f("shininess", 2);
+	shader.setUniform1f("screenHeight", ofGetScreenHeight());
+	
+	ofFloatColor bg0 = bgColor;
+	ofFloatColor bg1 = bgColor2;
+	shader.setUniform4f("bg0", bg0.r, bg0.g, bg0.b, 1 );
+	shader.setUniform4f("bg1", bg1.r, bg1.g, bg1.b, 1 );
 	
 	shader.setUniform1f("dim", dim );
 	shader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
@@ -409,6 +418,8 @@ void CloudsVisualSystemBalloons::selfDraw()
 	shader.setUniformTexture("velTexture", v0->getTextureReference(), 1);
 	shader.setUniformTexture("colTexture", colFbo.getTextureReference(), 2);
 	shader.setUniformTexture("quatTexture", quatFbo.getTextureReference(), 3);
+	shader.setUniformTexture("sphericalMap", sphericalMap, 4);
+	shader.setUniform2f("sphericalMapDim", sphericalMap.getWidth(), sphericalMap.getHeight());
 	
 	//vbo instancing
 	vbo.bind();
