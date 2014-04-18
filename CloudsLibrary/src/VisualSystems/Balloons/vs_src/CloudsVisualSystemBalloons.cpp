@@ -22,7 +22,7 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	customGui->addSlider("attractionToCenter", 0, .1, &attractionToCenter);
 	
 	customGui->addSlider("cameraBounce", 0, 20, &cameraBounce);
-	customGui->addSlider("cameraAttractionToCenter", 0, 2, &cameraAttractionToCenter);
+	//customGui->addSlider("cameraAttractionToCenter", 0, 2, &cameraAttractionToCenter);
 	customGui->addSlider("cameraTargetDist", 20, 500, &cameraTargetDist);
 	
 	customGui->addSlider("dim", 100, 500, &dim );
@@ -328,6 +328,7 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	camerVel += acc;
 	
 	getCameraRef().setPosition( camPos + camerVel );
+	getCameraRef().lookAt(ofVec3f(0,0,0));
 	
 	ofVec3f targetPos = getCameraPosition().normalized() * cameraTargetDist;
 	getCameraRef().setPosition(camPos * .975 + targetPos * .025);
