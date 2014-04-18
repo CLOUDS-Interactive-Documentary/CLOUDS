@@ -51,12 +51,14 @@ void CloudsIntroSequence::selfSetDefaults(){
 	nodeAlphaAttenuate = 1.0; //rift calibration nodes
 	
 	introNodeOne.clickSound = introNodeTwo.clickSound = introNodeThree.clickSound = &click;
+	introNodeOne.introNode = introNodeTwo.introNode = introNodeThree.introNode = true;
+	
 	introNodeOne.selectSound = introNodeTwo.selectSound = &selectHigh;
 	introNodeThree.selectSound = &selectMid;
 	
-	introNodeOne.multiplier  = 1;
-	introNodeTwo.multiplier = -1;
-	introNodeThree.multiplier = 0;
+	introNodeOne.multiplier   =  1;
+	introNodeTwo.multiplier   = -1;
+	introNodeThree.multiplier =  0;
 	
 	hintCursorEndPoint = ofVec2f(320,240);
 

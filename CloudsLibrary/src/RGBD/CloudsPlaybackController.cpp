@@ -246,7 +246,7 @@ void CloudsPlaybackController::showIntro(){
 	currentVisualSystem = introSequence;
 	
 	//HACCCK!
-	currentVisualSystem->isInterlude = true;
+//	currentVisualSystem->isInterlude = true;
 	
 	numActsCreated = 0;
     

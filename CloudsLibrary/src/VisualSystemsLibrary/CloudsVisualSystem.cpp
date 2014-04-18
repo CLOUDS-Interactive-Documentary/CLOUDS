@@ -681,34 +681,28 @@ void CloudsVisualSystem::drawScene(){
 void CloudsVisualSystem::drawInterludeInterface(){
 	
 #if defined(CLOUDS_INTERLUDE_NAV)
+
+	ofPushStyle();
+	glDisable(GL_DEPTH_TEST);
+	ofDisableLighting();
+	ofEnableAlphaBlending();
+	ofSetColor(255);
+	
 	if(currentInterludeFontSize != interludeFontSize){
 		interludeFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", interludeFontSize);
 		currentInterludeFontSize = interludeFontSize;
 	}
 
-	ofPushMatrix();
-	
 	resetNode.draw();
 	continueNode.draw();
-	
-	//////
-//	ofVec3f lookat = ofVec3f(0,0,1);
-//	ofRotate(180, lookat.x, lookat.y, lookat.z);//flip around
-//	ofMatrix4x4 compensate;
-//	compensate.rotate(180, lookat.x,lookat.y,lookat.z);
-	//////
-	ofVec3f lookat = getCameraRef().getLookAtDir();
-	ofRotate(180, lookat.x, lookat.y, lookat.z);//flip around
-	ofMatrix4x4 compensate;
-	compensate.rotate(180, lookat.x,lookat.y,lookat.z);
-	//////
 	
 	interludeFont.setTracking(interludeTypeTracking);
 	float hoverTextWidth  = interludeFont.stringWidth("RESET");
 	float hoverTextHeight = interludeFont.stringHeight("RESET");
 
 	ofPushMatrix();
-	getOculusRift().multBillboardMatrix( compensate.preMult(resetNode.worldPosition), getCameraRef().getUpDir() );
+	getOculusRift().multBillboardMatrix( resetNode.worldPosition, getCameraRef().getUpDir() );
+	ofRotate(180,0,0,1);
 	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
 	interludeFont.drawString("RESET", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
 	ofPopMatrix();
@@ -717,11 +711,14 @@ void CloudsVisualSystem::drawInterludeInterface(){
 	hoverTextWidth  = interludeFont.stringWidth("CONTINUE");
 	hoverTextHeight = interludeFont.stringHeight("CONTINUE");
 	
-	getOculusRift().multBillboardMatrix( compensate.preMult(continueNode.worldPosition), getCameraRef().getUpDir() );
+	ofPushMatrix();
+	getOculusRift().multBillboardMatrix( continueNode.worldPosition, getCameraRef().getUpDir() );
+	ofRotate(180,0,0,1);
 	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
 	interludeFont.drawString("CONTINUE", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
-	
 	ofPopMatrix();
+	
+	ofPopStyle();
 #endif
 }
 
