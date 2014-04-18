@@ -103,6 +103,11 @@ class CloudsPlaybackController : public ofThread {
     
     void drawRenderTarget();
     void drawInterludeInterface();
+
+#ifdef KINECT_INPUT
+    void drawKinectFeedback();
+    float kinectFeedbackAlpha;
+#endif
     
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
