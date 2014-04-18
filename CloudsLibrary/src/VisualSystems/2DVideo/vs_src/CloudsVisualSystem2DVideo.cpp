@@ -201,8 +201,8 @@ void CloudsVisualSystem2DVideo::selfUpdate()
         videoRect.width = player->getWidth();
         videoRect.height = player->getHeight();
         //DONT NEED FOR 3D Drawing
-        //        videoRect.scaleTo(screenRect);
-    
+//        videoRect.scaleTo(screenRect);
+        videoRect.setFromCenter(screenRect.width/2, screenRect.height/2, videoRect.width, videoRect.height);
     }
     if (! bFileLoaded) {
         if(player->getWidth() >0){
@@ -236,31 +236,29 @@ void CloudsVisualSystem2DVideo::selfDraw()
     if(player->isLoaded() && receivedFrame){
 
         
-        ofVec3f topLeft = vidCam.screenToWorld(screenRect.getTopLeft());
-        ofVec3f bottomLeft = vidCam.screenToWorld(screenRect.getBottomLeft());
-        ofVec3f topRight =vidCam.screenToWorld(screenRect.getTopRight());
-        ofVec3f bottomRight =vidCam.screenToWorld(screenRect.getBottomRight());
-
+        ofVec3f topLeft = vidCam.screenToWorld(videoRect.getTopLeft());
+        ofVec3f bottomLeft = vidCam.screenToWorld(videoRect.getBottomLeft());
+        ofVec3f topRight =vidCam.screenToWorld(videoRect.getTopRight());
+        ofVec3f bottomRight =vidCam.screenToWorld(videoRect.getBottomRight());
         
         //create a mesh
         ofMesh mesh;
-        
         //TOP LEFT
         //texture coordinates are in the image space
-        mesh.addTexCoord(videoRect.getTopLeft());
+        mesh.addTexCoord(ofVec3f(0,0,0));
         //vertices are in the screen space
         mesh.addVertex(topLeft);
 
         //BOTTOM LEFT
-        mesh.addTexCoord(videoRect.getBottomLeft());
+        mesh.addTexCoord(ofVec3f(0,videoRect.height,0));
         mesh.addVertex(bottomLeft);
 
         //TOP RIGHT
-        mesh.addTexCoord(videoRect.getTopRight());
+        mesh.addTexCoord(ofVec3f(videoRect.width,0,0));
         mesh.addVertex(topRight);
         
         //BOTTOM RIGHT
-        mesh.addTexCoord(videoRect.getBottomRight());
+        mesh.addTexCoord(ofVec3f(videoRect.width,videoRect.height,0));
         mesh.addVertex(bottomRight);
         
         mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
@@ -270,31 +268,23 @@ void CloudsVisualSystem2DVideo::selfDraw()
 		
         float yRotationPercent = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -rotationRange.y, rotationRange.y,true);
 		currentRotation.y += (yRotationPercent - currentRotation.y) * .05;
-		
+        ofPushMatrix();
 		ofTranslate(mesh.getCentroid());
 		ofRotate(currentRotation.x, 0, 1, 0);
 		ofRotate(currentRotation.y, 1, 0, 0);
 		ofTranslate(-mesh.getCentroid());
-		
-        //vidCam.begin();
-        
-        //translate so that 0,0 is the center of the screen
-        ofPushMatrix();
+
         //Extract the rotation from the current rotation
         ofVec3f axis;
         float angle;
         curRot.getRotate(angle, axis);
-        
-        //apply the quaternion's rotation to the viewport and draw the sphere
-        //ofRotate(angle, axis.x, axis.y, axis.z);
+
         player->getTextureReference().bind();
         mesh.draw();
         player->getTextureReference().unbind();
         
         ofPopMatrix();
         
-
-        //vidCam.end();
 	}
     
     
