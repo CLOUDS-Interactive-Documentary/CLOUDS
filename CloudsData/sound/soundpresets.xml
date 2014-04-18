@@ -68,7 +68,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "0" />
-		<pattr name = "disabled" value = "" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "0.461538" />
@@ -164,7 +164,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "1" />
-		<pattr name = "disabled" value = "" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "0.307692" />
@@ -212,7 +212,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "slowwaves" />
 		<pattr name = "energy" value = "" />
-		<pattr name = "disabled" value = "" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "0.230769" />
@@ -437,7 +437,7 @@
 		<pattr name = "d1" value = "0 10" />
 		<pattr name = "d2" value = "0 10" />
 		<pattr name = "d3" value = "0 10" />
-		<pattr name = "d4" value = "0 6" />
+		<pattr name = "d4" value = "0 10" />
 		<pattr name = "d5" value = "6 10" />
 		<pattr name = "d6" value = "0 3" />
 		<pattr name = "d7" value = "0 10" />
@@ -596,7 +596,7 @@
 		<pattr name = "orch4" value = "avibeats" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "0" />
-		<pattr name = "disabled" value = "" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "0.153846" />
@@ -1316,7 +1316,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "0" />
-		<pattr name = "disabled" value = "0" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "0.230769" />
@@ -1452,7 +1452,7 @@
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "5" />
 		<pattr name = "rhythm" value = "0" />
-		<pattr name = "tempo" value = "120" />
+		<pattr name = "tempo" value = "100" />
 		<pattr name = "pname" value = "science fiction fuller" />
 		<pattr name = "orch1" value = "slowlowwish" />
 		<pattr name = "orch2" value = "granular_buzz" />
@@ -1463,8 +1463,8 @@
 		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;interface:What's the ultimate interface?&quot;" />
-		<pattr name = "amp1" value = "0.692308" />
-		<pattr name = "amp2" value = "0.461539" />
+		<pattr name = "amp1" value = "0.461539" />
+		<pattr name = "amp2" value = "0.384616" />
 		<pattr name = "amp3" value = "0.538462" />
 		<pattr name = "amp4" value = "0.769231" />
 		<pattr name = "amp5" value = "1." />
@@ -4724,16 +4724,16 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "0" />
-		<pattr name = "disabled" value = "0" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.461538" />
+		<pattr name = "amp1" value = "0.153846" />
 		<pattr name = "amp2" value = "0.307693" />
 		<pattr name = "amp3" value = "0.538462" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.307692" />
-		<pattr name = "rev2" value = "0.615385" />
+		<pattr name = "rev1" value = "0.692307" />
+		<pattr name = "rev2" value = "0.346154" />
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
@@ -4772,7 +4772,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "1" />
-		<pattr name = "disabled" value = "1" />
+		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;programming:Is programming a waste of time?&quot;" />
 		<pattr name = "amp1" value = "0.384615" />
@@ -5060,16 +5060,16 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "0" />
-		<pattr name = "disabled" value = "0" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "&quot;artificial life, biology&quot;" />
 		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "0.384615" />
-		<pattr name = "amp2" value = "0.384615" />
+		<pattr name = "amp2" value = "0.153846" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
+		<pattr name = "rev2" value = "1." />
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />

@@ -15,22 +15,7 @@
 #include "CloudsPortal.h"
 #include "ofxFTGL.h"
 #include "CloudsPortalEvents.h"
-
-//basic little struct for intro node
-
-typedef struct{
-	ofVec3f worldPosition;
-	ofVec2f screenPosition;
-	ofVec2f cursorDirection;
-	float cursorDistance;
-	bool hover;
-	bool finished;
-	float finishedTime;
-	float percentComplete;
-	float hoverStartTime;
-	float gazePercent;
-	int multiplier;
-} IntroNode;
+#include "CloudsCalibrationNode.h"
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
@@ -189,8 +174,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void drawPortals();
     void drawCursors();
 	
-	void updateIntroNodePosition(IntroNode& node);
-	void updateIntroNodeInteraction(IntroNode& node);
+	void updateIntroNodePosition(CalibrationNode& node);
+	void updateIntroNodeInteraction(CalibrationNode& node);
 	
 	//intro sequence
 	float introNodeSize;
@@ -199,16 +184,14 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	ofVec3f introNodeOffset; //mirrored along the axis
 
-	IntroNode introNodeOne;
-	IntroNode introNodeTwo;
-	IntroNode introNodeThree;
-	vector<IntroNode*> introNodes;
+	CalibrationNode introNodeOne;
+	CalibrationNode introNodeTwo;
+	CalibrationNode introNodeThree;
+	vector<CalibrationNode*> introNodes;
 	float nodeAlphaAttenuate;
 	float nodeActivatedTime;
 	ofVec2f hintCursorEndPoint;
 
-
-	
 	float timeSinceLastPrompt;
 	float promptTime;
 	bool promptShown;

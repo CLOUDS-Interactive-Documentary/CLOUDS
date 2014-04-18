@@ -23,6 +23,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , bClampToBounds(true)
 , bDoDebug(false)
 , viewerState(k4w::ViewerState_None)
+, viewerIdleTime(0)
 , boundsMin(-0.5f, -0.7f, 1.0f)
 , boundsMax( 0.5f, -0.2f, 2.0f)
 , posResetLerpPct(0.1f)
@@ -61,6 +62,11 @@ void CloudsInputKinectOSC::disable()
 //--------------------------------------------------------------
 void CloudsInputKinectOSC::update(ofEventArgs& args)
 {
+    if (receiver.hasWaitingMessages()) {
+        // set viewer state to its lowest form, then bring it up as needed
+        viewerState = k4w::ViewerState_None;
+    }
+    
     // check for waiting messages
     while (receiver.hasWaitingMessages()) {
 		// get the next message
@@ -300,6 +306,17 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 // refresh the update frame
                 hands[handIdx]->lastUpdateFrame = lastOscFrame;
             }
+            
+            // bump up the viewer state as there's someone detected
+            // we'll bump to "interacting" outside the loop further down...
+            if (viewerState == k4w::ViewerState_None) {
+                // upgrayedd!
+                viewerState = k4w::ViewerState_OutOfRange;
+            }
+            if (viewerState < k4w::ViewerState_PresentIdle && !bBodyOutOfBounds) {
+                // upgrayedd!
+                viewerState = k4w::ViewerState_PresentIdle;
+            }
 		}
         
         if (!bRecognized) {
@@ -421,17 +438,18 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             currentPosition.interpolate(hands[primaryIdx]->handJoint.screenPosition, posSetLerpPct);
         }
     }
-
-	// update the viewer state
-	if (primaryIdx != -1) {
-		viewerState = k4w::ViewerState_Present;
-	}
-	else if (bodies.size()) {
-		viewerState = k4w::ViewerState_OutOfRange;
-	}
-	else {
-		viewerState = k4w::ViewerState_None;
-	}
+    
+    // update the viewer state and idle time
+	if (viewerState < k4w::ViewerState_Interacting && primaryIdx != -1) {
+        // upgrayedd!
+        viewerState = k4w::ViewerState_Interacting;
+    }
+    if (viewerState == k4w::ViewerState_PresentIdle) {
+        viewerIdleTime += ofGetLastFrameTime() * 1000;
+    }
+    else {
+        viewerIdleTime = 0;
+    }
 }
 
 //--------------------------------------------------------------

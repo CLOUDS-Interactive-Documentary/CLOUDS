@@ -87,6 +87,8 @@ void CloudsInput::setBleedPixels(int b){
 void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size)
 {
     if (mode == CURSOR_MODE_NONE) return;
+    // EZ: Don't draw INACTIVE cursors for now
+    if (mode == CURSOR_MODE_INACTIVE) return;
     
     ofPushStyle();
     
