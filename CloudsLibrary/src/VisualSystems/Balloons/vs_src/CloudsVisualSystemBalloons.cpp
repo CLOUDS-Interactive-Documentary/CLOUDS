@@ -23,7 +23,7 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	
 	customGui->addSlider("cameraBounce", 0, 20, &cameraBounce);
 	//customGui->addSlider("cameraAttractionToCenter", 0, 2, &cameraAttractionToCenter);
-//	customGui->addSlider("cameraTargetDist", 20, 500, &cameraTargetDist);
+	customGui->addSlider("cameraTargetDist", 20, 500, &cameraTargetDist);
 	customGui->addSlider("balloonFrameVal", 0, 1, &balloonFrameVal);
 	
 	customGui->addSlider("dim", 100, 500, &dim );
@@ -322,7 +322,7 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
 	
-//	balloonCam.setPosition(0, 0, 100);
+	balloonCam.setPosition(0, 0, cameraTargetDist);
 	//balloonCam.lookAt(ofVec3f(balloon00Pos));
 }
 

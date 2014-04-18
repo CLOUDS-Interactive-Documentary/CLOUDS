@@ -14,7 +14,7 @@ void main()
 	vec3 pos = texture2DRect( posTexture, uv).xyz;
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
-//	pos -= camOffset*.5;
+////	pos -= camOffset*.5;
 	pos.y -= camOffset.y*.5;
 	
 	pos += vel;
@@ -39,10 +39,10 @@ void main()
 //		pos.x = bound;
 //	}
 //	
-//	if (pos.y < -bound) {
-//		pos.y = bound;
-//	}
-//	
+	if (pos.y < -bound) {
+		pos.y = bound;
+	}
+//
 //	if (pos.z < -bound) {
 //		pos.z = bound;
 //	}

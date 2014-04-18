@@ -83,7 +83,10 @@ void main()
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
 	vec3 p = pos * noiseSampleScale;
-	p.y += time + camOffset.y;
+//	p.y += time + camOffset.y;
+	
+	p.y += time;
+//	p += camOffset;
 	vec3 acc = vec3(0.,0.,0.);
 	
 	//noise influence
@@ -117,6 +120,8 @@ void main()
 	vel *= velAtten;
 	vel += acc * accScl;
 	vel.y += gravity;
+	
+	if(uv.x * dimY + uv.y < dimX*dimY*.4)	vel.y += gravity * .4;
 	
 	//draw it
    	gl_FragColor = vec4(vel, 1.0);
