@@ -5,8 +5,12 @@
 
 @implementation testView
 @synthesize clipTable;
+@synthesize trackTable;
+
 @synthesize interventionTextBox;
 @synthesize speakerVolTextBox;
+@synthesize trackVolTextBox;
+
 - (void)setup
 {
 
@@ -15,7 +19,7 @@
 	ofBackground(22);
 
 	parser.loadFromFiles();
-
+	sound.setup();
 	
 	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
 		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
@@ -26,11 +30,18 @@
 	}
 
 
+
 	[clipTable setTarget:self];
 	[clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[clipTable reloadData];
+
+	[trackTable setTarget:self];
+	[trackTable setDoubleAction:@selector(loadTrackFromTable:)];
+	[trackTable reloadData];
+
     [interventionTextBox setTarget:self];   
 	[speakerVolTextBox setTarget:self];
+	[trackVolTextBox setTarget:self];
     
 //    rgbdVisualSystem.setNumSamples(4);
 	rgbdVisualSystem.setDrawToScreen(false);
@@ -39,8 +50,8 @@
 	hud.setup();
 
 #ifdef OCULUS_RIFT
-//    rgbdVisualSystem.hud = &hud;
-//    rgbdVisualSystem.setupHUDGui();
+//  rgbdVisualSystem.hud = &hud;
+//  rgbdVisualSystem.setupHUDGui();
 //	rgbdVisualSystem.loadPresetGUISFromName("RGBD_OC_POINTS");
 #else
 //	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
@@ -64,6 +75,7 @@
     rgbdVisualSystem.getRGBDVideoPlayer().forceStop = false;
     rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setLoopState(OF_LOOP_NORMAL);
     rgbdVisualSystem.getRGBDVideoPlayer().maxVolume = 1.;
+	
 	hud.update();
 	
 }
@@ -86,11 +98,15 @@
 
 - (void) loadClipFromTable:(id)sender
 {
-
 	if(clipTable.selectedRow >= 0){
-		
 		[self loadClip: parser.getAllClips()[ clipTable.selectedRow ] ];
-		
+	}
+}
+
+- (IBAction)loadTrackFromTable:(id)sender
+{
+	if(trackTable.selectedRow >= 0){
+		sound.playImmediately(sound.renderedTracks[ trackTable.selectedRow ]);
 	}
 }
 
@@ -99,7 +115,7 @@
 	if(clip.hasMediaAsset && clip.voiceOverAudio && rgbdVisualSystem.getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
 		
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
-		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
+		rgbdVisualSystem.setupSpeaker(CloudsSpeaker::speakers[clip.person].firstName,
 									  CloudsSpeaker::speakers[clip.person].lastName,
 									  clip.name );
 		
@@ -259,7 +275,12 @@
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
-	return parser.getAllClips().size();
+	if(aTableView == clipTable){
+		return parser.getAllClips().size();
+	}
+	else if(aTableView == trackTable){
+		return sound.renderedTracks.size();
+	}
 }
 
 - (std::string)convertString:(NSString *)string
@@ -268,7 +289,7 @@
     return cppString;
 }
 
--(IBAction)addIntervention:(id)sender{
+- (IBAction)addIntervention:(id)sender{
 
     const char* interventionName =[interventionTextBox.stringValue UTF8String ];
     string name = interventionName;
@@ -281,7 +302,7 @@
 
 - (IBAction)updateSpeakerVolume:(id)sender{
 
-    float speakerVol =speakerVolTextBox.floatValue;
+    float speakerVol = speakerVolTextBox.floatValue;
 
     if(clipTable.selectedRow >= 0){
         CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
@@ -291,32 +312,65 @@
         
         rgbdVisualSystem.getRGBDVideoPlayer().currentMaxVolume = rgbdVisualSystem.getRGBDVideoPlayer().maxVolume *  speakerVol;
     }
-    
 }
+
+- (IBAction)updateTrackVoume:(id)sender
+{
+	if(trackTable.selectedRow >= 0){
+		sound.setMixVolumeForTrack(sound.renderedTracks[ trackTable.selectedRow ], trackVolTextBox.floatValue);
+		sound.saveMixLevels();
+		[trackTable reloadData];
+	}
+}
+
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
     if (aNotification.object == clipTable) {
-        [self updateSpeakerVolumeTextField];
+        [self updateSpeakerVolumeTextField:self];
     }
+	else if(aNotification.object == trackTable){
+		[self updateTrackVolumeTextField:self];
+	}
 }
 
-- (void) updateSpeakerVolumeTextField{
-        if(clipTable.selectedRow >= 0){
-            CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
-            speakerVolTextBox.floatValue = clip.getSpeakerVolume();
-        }
+- (void) updateSpeakerVolumeTextField:(id)sender
+{
+	if(clipTable.selectedRow >= 0){
+		CloudsClip& clip = parser.getAllClips()[[clipTable selectedRow]];
+		speakerVolTextBox.floatValue = clip.getSpeakerVolume();
+	}
 }
+
+- (void)updateTrackVolumeTextField:(id)sender
+{
+	if(trackTable.selectedRow >= 0){
+		trackVolTextBox.floatValue = sound.mixVolumeForTrack(sound.renderedTracks[ trackTable.selectedRow ] );
+	}
+
+}
+
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 
-	if([@"person" isEqualToString:aTableColumn.identifier]){
-		return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].person.c_str() ];
+	if(aTableView == clipTable){
+		if([@"person" isEqualToString:aTableColumn.identifier]){
+			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].person.c_str() ];
+		}
+		else if([@"clip" isEqualToString:aTableColumn.identifier]){
+			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].name.c_str() ];
+		}
+		else if([@"combined" isEqualToString:aTableColumn.identifier]){
+			return parser.getAllClips()[rowIndex].hasMediaAsset ? @"YES" : @"NO";
+		}
 	}
-	else if([@"clip" isEqualToString:aTableColumn.identifier]){
-		return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].name.c_str() ];
-	}
-	else if([@"combined" isEqualToString:aTableColumn.identifier]){
-		return parser.getAllClips()[rowIndex].hasMediaAsset ? @"YES" : @"NO";
+	else if(aTableView == trackTable){
+		if([@"track" isEqualToString:aTableColumn.identifier]){
+			return [NSString stringWithUTF8String: sound.renderedTracks[rowIndex].c_str() ];
+		}
+		else if([@"volume" isEqualToString:aTableColumn.identifier]){
+			return [NSString stringWithUTF8String: ofToString( sound.mixVolumeForTrack(sound.renderedTracks[rowIndex]) ).c_str() ];
+		}
+
 	}
 	return @"";
 	
