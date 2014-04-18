@@ -92,6 +92,7 @@ void CalibrationNode::updateInteraction(){
 void CalibrationNode::draw(){
 	ofPushMatrix();
 	ofPushStyle();
+	
 	ofFloatColor baseColor;
 	if(finished){
 		baseColor = tint;

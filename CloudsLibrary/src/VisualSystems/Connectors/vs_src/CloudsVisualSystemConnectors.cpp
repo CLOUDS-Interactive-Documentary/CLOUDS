@@ -133,14 +133,12 @@ void CloudsVisualSystemConnectors::selfSceneTransformation(){
 void CloudsVisualSystemConnectors::selfUpdate(){
     volumeControl.value(gain);
 	generator.update();
-
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemConnectors::selfDraw(){
 
-	
 	//ofEnableAlphaBlending();
 //	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	glDisable(GL_DEPTH_TEST);
