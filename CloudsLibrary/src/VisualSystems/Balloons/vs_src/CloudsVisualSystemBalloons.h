@@ -144,6 +144,7 @@ protected:
 	ofShader quatShader;
 	float noiseScl, offset, noiseSampleScale, velAtten, radius, accScl, gravity, attractionToCenter, cameraBounce,cameraAttractionToCenter, cameraOffset;
 	float spawnRad, cameraTargetDist;
+	float highSpeedScale, speedLow, speedHi, highSpeedPercent;
 	
 	int dimY, dimX;
 	ofFbo posFbo0;
