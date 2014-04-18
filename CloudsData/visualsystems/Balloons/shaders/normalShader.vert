@@ -141,24 +141,8 @@ void main()
 	v.xyz = qtransform(q, v.xyz);
 	v.xyz += pos;
 	
-	fogMix = 1. - pow(abs(v.y) / dim, 6.);
+	fogMix = 1. - pow(abs(v.y) / dim, 2.);
 	//	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / fogDist, 3.), 0., 1.);
-	
-	
-	
-	//		vec4 p = vec4( position, 1. );
-	//
-	//		vec3 e = normalize( vec3( modelViewMatrix * p ) );
-	//		vec3 n = normalize( normalMatrix * normal );
-	//
-	//		vec3 r = reflect( e, n );
-	//		float m = 2. * sqrt(
-	//							pow( r.x, 2. ) +
-	//							pow( r.y, 2. ) +
-	//							pow( r.z + 1., 2. )
-	//							);
-	//		vN = r.xy / m + .5;
-	
 	
 	
 	lPos = vec4(0.,0.,0.,1.);//texture2DRect( posTexture, vec2(10.) );
@@ -168,11 +152,6 @@ void main()
 	ecPosition = gl_ModelViewMatrix * v;
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	gl_Position = gl_ProjectionMatrix * ecPosition;
-	
-	
-	//vec4 p = vec4( position, 1. );
-	//vec3 e = ePos;
-	//vec3 n = normalize( normalMatrix * normal );
 	
 	vec3 r = reflect( ePos, norm );
 	float m = 2. * sqrt(r.x*r.x + r.y*r.y + pow(r.z+1., 2.));
