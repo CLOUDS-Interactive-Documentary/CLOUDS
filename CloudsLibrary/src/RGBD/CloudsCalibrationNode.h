@@ -38,7 +38,12 @@ class CalibrationNode{
 	float nodeBaseSize;
 	ofFloatColor tint;
 	
+	bool introNode; //hakity hack for intro nodes
+	
 	void updatePosition();
 	void updateInteraction();
 	void draw();
+	
+	ofCamera* cam;
+
 };

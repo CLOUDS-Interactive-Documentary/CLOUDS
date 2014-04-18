@@ -15,11 +15,16 @@
 #include "CloudsPortal.h"
 #endif
 
+#ifdef CLOUDS_INTERLUDE_NAV
+#include "ofxFTGL.h"
+#include "CloudsCalibrationNode.h"
+#endif
+
 #ifdef OCULUS_RIFT
 #include "ofxOculusRift.h"
-#ifdef CLOUDS_APP
-#include "CloudsHUDController.h"
-#endif
+	#ifdef CLOUDS_APP
+		#include "CloudsHUDController.h"
+	#endif
 #endif
 
 /**
@@ -42,11 +47,6 @@ enum ofxViewType
     OFX_VIEW_LEFT,
     OFX_VIEW_3D
 };
-
-#ifdef CLOUDS_APP
-#include "ofxFTGL.h"
-#include "CloudsCalibrationNode.h"
-#endif
 
 class CloudsVisualSystem {
   public:
@@ -320,7 +320,7 @@ class CloudsVisualSystem {
 	bool updateInterludeInterface();
 	void drawInterludeInterface();
 	
-#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
+#ifdef CLOUDS_INTERLUDE_NAV
 	CalibrationNode resetNode;
 	CalibrationNode continueNode;
 	ofxFTGLFont interludeFont;

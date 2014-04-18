@@ -410,7 +410,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 
     durationLabel->setLabel(ofxTimecode::timecodeForSeconds(timeline->getInOutRange().span() * timeline->getDurationInSeconds()));
     
-	bgColor = ofColor::fromHsb(MIN(bgHue,254.), bgSat, bgBri, 255);
+	bgColor  = ofColor::fromHsb(MIN(bgHue,254.),  bgSat,  bgBri,  255);
 	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
 	
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
@@ -427,9 +427,9 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 
 bool CloudsVisualSystem::updateInterludeInterface(){
 
-#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
-	resetNode.multiplier	= 1;
-	continueNode.multiplier = -1;
+#ifdef CLOUDS_INTERLUDE_NAV
+	resetNode.multiplier	= -1;
+	continueNode.multiplier = 1;
 	CalibrationNode* n[2] = { &resetNode, &continueNode };
 	for(int i = 0; i < 2; i++){
 		n[i]->nodeAlphaAttenuate = 1.0;
@@ -438,15 +438,19 @@ bool CloudsVisualSystem::updateInterludeInterface(){
 		n[i]->tint.a = 1.0;
 		
 		n[i]->baseOffset = ofVec3f(interludeBasePosX, 0, interludeBasePosZ);
-		n[i]->titleTypeOffset = 0;
 		n[i]->activationDistance = interludeActivationRange;
 		n[i]->holdTime = interludeNodeHoldTime;
+		n[i]->cam = &getCameraRef();
+
 	}
 
 	resetNode.updatePosition();
 	resetNode.updateInteraction();
 	continueNode.updatePosition();
 	continueNode.updateInteraction();
+	
+//	cout << "Reset node position " << resetNode.worldPosition << " cam pos " << getCameraRef().getPosition() << endl;
+	
 #endif
 }
 
@@ -517,7 +521,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			getCameraRef().end();
             
-
 			ofPushStyle();
 			ofPushMatrix();
 			ofTranslate(0, getCanvasHeight() );
@@ -677,28 +680,44 @@ void CloudsVisualSystem::drawScene(){
 
 void CloudsVisualSystem::drawInterludeInterface(){
 	
-#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
-	resetNode.draw();
-	continueNode.draw();
+#if defined(CLOUDS_INTERLUDE_NAV)
 	if(currentInterludeFontSize != interludeFontSize){
 		interludeFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", interludeFontSize);
 		currentInterludeFontSize = interludeFontSize;
 	}
-	interludeFont.setTracking(interludeTypeTracking);
-	
+
 	ofPushMatrix();
 	
-	ofRotate(180, 0, 0, 1);//flip around
+	resetNode.draw();
+	continueNode.draw();
+	
+//	ofMatrix4x4 compensate = getCameraRef().getLookAtDir();
+	
+	//////
+	ofVec3f lookat = getCameraRef().getLookAtDir();
+	ofRotate(180, lookat.x, lookat.y, lookat.z);//flip around
 	ofMatrix4x4 compensate;
-	compensate.rotate(180, 0, 0, 1);
-
+	compensate.rotate(180, lookat.x,lookat.y,lookat.z);
+	//////
+	
+	interludeFont.setTracking(interludeTypeTracking);
 	float hoverTextWidth  = interludeFont.stringWidth("RESET");
 	float hoverTextHeight = interludeFont.stringHeight("RESET");
-	
-	getOculusRift().multBillboardMatrix( compensate.preMult(resetNode.worldPosition) );
+
+	ofPushMatrix();
+	getOculusRift().multBillboardMatrix( compensate.preMult(resetNode.worldPosition), getCameraRef().getUpDir() );
 	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
 	interludeFont.drawString("RESET", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
-
+	ofPopMatrix();
+	
+	interludeFont.setTracking(interludeTypeTracking*.5);
+	hoverTextWidth  = interludeFont.stringWidth("CONTINUE");
+	hoverTextHeight = interludeFont.stringHeight("CONTINUE");
+	
+	getOculusRift().multBillboardMatrix( compensate.preMult(continueNode.worldPosition), getCameraRef().getUpDir() );
+	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
+	interludeFont.drawString("CONTINUE", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	
 	ofPopMatrix();
 #endif
 }
@@ -3011,8 +3030,8 @@ void CloudsVisualSystem::setupOculusGui()
 	oculusGui->addSlider("INTERLUDE NODE SIZE", 0, 10, &interludeNodeSize);
 	oculusGui->addRangeSlider("INTERLUDE NODE DIST", 100, 200, &interludeActivationRange.min, &interludeActivationRange.max);
 	oculusGui->addSlider("INTERLUDE NODE HOLD TIME", 5, 15, &interludeNodeHoldTime);
-	oculusGui->addSlider("INTERLUDE X POS", 0, 10, &interludeBasePosX);
-	oculusGui->addSlider("INTERLUDE Z POS", 0, 10, &interludeBasePosZ);
+	oculusGui->addSlider("INTERLUDE X POS", 0,  10, &interludeBasePosX);
+	oculusGui->addSlider("INTERLUDE Z POS", 0, -10, &interludeBasePosZ);
 	//TYPE
 	oculusGui->addIntSlider("INTERLUDE TYPE SIZE",  1, 20, &interludeFontSize);
 	oculusGui->addSlider("INTERLUDE TYPE SCALE",    0, 1.0, &interludeTypeScale);

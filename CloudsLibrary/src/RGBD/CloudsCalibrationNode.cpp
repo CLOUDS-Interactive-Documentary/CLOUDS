@@ -5,6 +5,7 @@
 float CalibrationNode::nodeActivatedTime = 0;
 
 CalibrationNode::CalibrationNode(){
+	
 	cursorDistance = .0;
 	hover = false;
 	finished = false;
@@ -16,19 +17,31 @@ CalibrationNode::CalibrationNode(){
 	clickSound = NULL;
 	selectSound = NULL;
 	nodeActivatedTime = 0;
+	titleTypeOffset = 0;
+	introNode = false;
+	cam = NULL;
+	
 }
 
 void CalibrationNode::updatePosition(){
-	
 	worldPosition = ofVec3f( baseOffset.x, -baseOffset.y, baseOffset.z + titleTypeOffset);
 	worldPosition.x *= multiplier;
 	worldPosition.y *= multiplier;
 	
-	if(multiplier == 0){
-		worldPosition.y -= 10; //plus 20 just to move everything down a little bit
+	if(cam != NULL){
+//		worldPosition  = cam->getModelViewMatrix() * worldPosition;
+		worldPosition  = cam->getOrientationQuat() * worldPosition;
+		worldPosition += cam->getPosition();
 	}
-	else{
-		worldPosition.z *= .5; //bring the side nodes closer in Z
+	
+	//hack for intro node
+	if(introNode){
+		if(multiplier == 0){
+			worldPosition.y -= 10; //plus 20 just to move everything down a little bit
+		}
+		else {
+			worldPosition.z *= .5; //bring the side nodes closer in Z
+		}
 	}
 
 #ifdef OCULUS_RIFT
@@ -79,18 +92,23 @@ void CalibrationNode::updateInteraction(){
 void CalibrationNode::draw(){
 	ofPushMatrix();
 	ofPushStyle();
+	ofFloatColor baseColor;
 	if(finished){
-		ofSetColor(tint, 200*nodeAlphaAttenuate);
+		baseColor = tint;
+		tint.a = 200*nodeAlphaAttenuate;
 	}
 	else if(hover){
-		ofSetColor(255,100,100,200);
+		baseColor = ofFloatColor(1.0, 100/255.0,100/255.0,200/255.0);
 	}
 	else{
-		ofSetColor(255,200);
+		baseColor = ofFloatColor(1.0, 200.0/255.0);
 	}
+	ofSetColor(baseColor);
 	
 #ifdef OCULUS_RIFT
-	CloudsVisualSystem::getOculusRift().multBillboardMatrix(worldPosition);
+	ofVec3f up = ofVec3f(0,1,0);
+	if(cam != NULL) up = cam->getUpDir();
+	CloudsVisualSystem::getOculusRift().multBillboardMatrix(worldPosition,up);
 #endif
 	
 	float afterFinishScalar = 0.0;
@@ -107,15 +125,16 @@ void CalibrationNode::draw(){
 		arc.setFilled(false);
 		arc.setStrokeWidth(3);
 		arc.setStrokeColor(arcColor);
-		arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 0, 360*percentComplete, true);
+		arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 90, 360*percentComplete + 90, true);
 		arc.draw();
 	}
+	
+	ofCircle(0,0,0, nodeBaseSize * (1.0-afterFinishScalar) );
+	ofFill();
+	baseColor.a *= .1;
+	ofSetColor(baseColor);
 	ofCircle(0,0,0, nodeBaseSize * (1.0-afterFinishScalar) );
 	
-//	if(finished){
-//		ofFill();
-		//			ofCircle(0,0,0, introNodeSize);
-//	}
 	ofPopStyle();
 	ofPopMatrix();
 }

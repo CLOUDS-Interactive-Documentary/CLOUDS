@@ -10364,6 +10364,7 @@
 					"AVF_PLAYER=1",
 					"OCULUS_RIFT=1",
 					"CLOUDS_APP=1",
+					"CLOUDS_INTERLUDE_NAV=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
@@ -10539,6 +10540,7 @@
 					"AVF_PLAYER=1",
 					"OCULUS_RIFT=1",
 					"CLOUDS_APP=1",
+					"CLOUDS_INTERLUDE_NAV=1",
 					"CLOUDS_RELEASE=1",
 				);
 				HEADER_SEARCH_PATHS = (
