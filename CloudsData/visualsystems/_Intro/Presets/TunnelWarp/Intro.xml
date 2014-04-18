@@ -2,23 +2,23 @@
     <Kind>42</Kind>
     <Name>Intro</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>466.000000000</XPosition>
-    <YPosition>312.000000000</YPosition>
+    <XPosition>475.000000000</XPosition>
+    <YPosition>414.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Intro Node Size</Name>
-    <Value>30.482757568</Value>
+    <Value>18.896551132</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Intro Node X</Name>
-    <Value>369.458129883</Value>
+    <Value>364.532012939</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Intro Node Y</Name>
-    <Value>24.630540848</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Intro Node Center Y</Name>
-    <Value>-100.000000000</Value>
+    <Value>-68.472908020</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
