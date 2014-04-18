@@ -265,6 +265,7 @@ void CloudsVisualSystemColony::selfUpdate()
     //Debug
     
     //FIXME: Should definitely be removed in the distribution mode
+#ifndef CLOUDS_APP
     if (bDebug){
         if ( (!img_debug.isAllocated())
             || (!img_debug.getWidth()==getSharedRenderTarget().getWidth())
@@ -283,16 +284,17 @@ void CloudsVisualSystemColony::selfUpdate()
         }
         img_debug.update();
     }
-    
+#endif
+	
 }
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
     //FIXME: This shouldn't be here, but it's the only way to draw stuff in 2d
-    if(bDebug){
-        img_debug.draw(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
-        ofLog(OF_LOG_ERROR, "Colony: bDebug is on. Remove this before reaching production");
-    }
+//    if(bDebug){
+//        img_debug.draw(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+//        ofLog(OF_LOG_ERROR, "Colony: bDebug is on. Remove this before reaching production");
+//    }
     
     //FIXME: This is a safety check if FBOs are not allocated, in order to avoid calling an empty one
     
@@ -368,9 +370,6 @@ void CloudsVisualSystemColony::selfExit(){
     clear();
     billboard.unload();
     levelSet.unload();
-    //TODO: is this necessary?
-//    delete guiLooks;
-//    delete guiDynamics;
 }
 
 void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){
@@ -381,15 +380,15 @@ void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){
 }
 
 void CloudsVisualSystemColony::clear(){
-    for (int i = cells.size()-1; i >= 0; i--){
-        cells.erase(cells.begin()+i);
-    }
+//    for (int i = cells.size()-1; i >= 0; i--){
+//        cells.erase(cells.begin()+i);
+//    }
     cells.clear();
     vbo.clear();
 }
 
 void CloudsVisualSystemColony::populate(){
-    for (int i = 0; i < (int) numInitialCells; i++) {
+    for (int i = 0; i < numInitialCells; i++) {
         cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight(), i * 0.01), params));
         cells.push_back(newCell);
     }

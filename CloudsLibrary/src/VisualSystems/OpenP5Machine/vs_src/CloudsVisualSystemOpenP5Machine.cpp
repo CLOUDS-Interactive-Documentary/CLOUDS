@@ -228,14 +228,9 @@ void CloudsVisualSystemOpenP5Machine::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemOpenP5Machine::selfMousePressed(int x, int y, int button){
-//	if (gui->isHit(x, y)) {
-//        cam.disableMouseInput();
-//    }
 }
 
 void CloudsVisualSystemOpenP5Machine::selfMouseReleased(int x, int y, int button){
-//     cam.enableMouseInput();
-	
 }
 
 Generator CloudsVisualSystemOpenP5Machine::buildSynth()
