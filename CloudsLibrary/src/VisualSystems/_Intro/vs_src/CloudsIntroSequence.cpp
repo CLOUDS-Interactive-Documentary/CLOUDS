@@ -30,7 +30,6 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	selectLow.setLoop(false);
 	selectMid.setLoop(false);
 	selectHigh.setLoop(false);
-
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
@@ -51,10 +50,10 @@ void CloudsIntroSequence::selfSetDefaults(){
 	kinectHelperAlpha = 0.0;
 	nodeAlphaAttenuate = 1.0; //rift calibration nodes
 	
-	introNodeOne.hover = introNodeOne.finished = false;
-	introNodeTwo.hover = introNodeTwo.finished = false;
-	introNodeThree.hover = introNodeThree.finished = false;
-
+	introNodeOne.clickSound = introNodeTwo.clickSound = introNodeThree.clickSound = &click;
+	introNodeOne.selectSound = introNodeTwo.selectSound = &selectHigh;
+	introNodeThree.selectSound = &selectMid;
+	
 	introNodeOne.multiplier  = 1;
 	introNodeTwo.multiplier = -1;
 	introNodeThree.multiplier = 0;
@@ -359,68 +358,76 @@ void CloudsIntroSequence::updateWaiting(){
 }
 
 
-void CloudsIntroSequence::updateIntroNodePosition(IntroNode& node){
+void CloudsIntroSequence::updateIntroNodePosition(CalibrationNode& node){
 #ifdef OCULUS_RIFT
-	node.worldPosition = ofVec3f( introNodeOffset.x, -introNodeOffset.y, introNodeOffset.z + titleTypeOffset);
-	node.worldPosition.x *= node.multiplier;
-	node.worldPosition.y *= node.multiplier;
-	if(node.multiplier == 0){
-		node.worldPosition.y -= 10; //plus 20 just to move everything down a little bit
-	}
-	else{
-		node.worldPosition.z *= .5; //bring the side nodes closer in Z
-	}
+	node.baseOffset = introNodeOffset;
+	node.titleTypeOffset = titleTypeOffset;
+	node.activationDistance = questionTugDistance;
+	node.holdTime = introNodeHoldTime;
+	node.updatePosition();
 	
-	ofRectangle viewport = getOculusRift().getOculusViewport();
-	ofVec3f screenPos = getOculusRift().worldToScreen(node.worldPosition, true);
-	//if we look too far behind it'll flip!
-	if(screenPos.z < 0){
-		node.screenPosition = getOculusRift().worldToScreen(introNodeThree.worldPosition, true);
-	}
-	else{
-		node.screenPosition = ofVec2f(screenPos.x,screenPos.y);
-	}
-	node.cursorDirection = node.screenPosition - viewport.getCenter();
-	node.cursorDistance  = node.cursorDirection.length();
-	node.cursorDirection.normalize();
+//	node.worldPosition = ofVec3f( introNodeOffset.x, -introNodeOffset.y, introNodeOffset.z + titleTypeOffset);
+//	node.worldPosition.x *= node.multiplier;
+//	node.worldPosition.y *= node.multiplier;
+//	if(node.multiplier == 0){
+//		node.worldPosition.y -= 10; //plus 20 just to move everything down a little bit
+//	}
+//	else{
+//		node.worldPosition.z *= .5; //bring the side nodes closer in Z
+//	}
+//	
+//	ofRectangle viewport = getOculusRift().getOculusViewport();
+//	ofVec3f screenPos = getOculusRift().worldToScreen(node.worldPosition, true);
+//	//if we look too far behind it'll flip!
+//	if(screenPos.z < 0){
+//		node.screenPosition = getOculusRift().worldToScreen(introNodeThree.worldPosition, true);
+//	}
+//	else{
+//		node.screenPosition = ofVec2f(screenPos.x,screenPos.y);
+//	}
+//	node.cursorDirection = node.screenPosition - viewport.getCenter();
+//	node.cursorDistance  = node.cursorDirection.length();
+//	node.cursorDirection.normalize();
 
 #endif
 }
 
-void CloudsIntroSequence::updateIntroNodeInteraction(IntroNode& node){
+void CloudsIntroSequence::updateIntroNodeInteraction(CalibrationNode& node){
 	
 	#ifdef OCULUS_RIFT
-	if(node.finished){
-		return;
-	}
+	node.updateInteraction();
 	
-	if(!node.hover && node.cursorDistance < questionTugDistance.min){
-		node.hover = true;
-		node.hoverStartTime = ofGetElapsedTimef();
-		click.setPosition(0);
-		click.play();
-	}
-	else if(node.hover){
-		if(node.cursorDistance > questionTugDistance.max){
-			node.hover = false;
-			node.percentComplete = 0.0;
-		}
-		else if(node.percentComplete >= 1.0){
-			node.finished = true;
-			node.finishedTime = nodeActivatedTime = ofGetElapsedTimef(); //used for alpha on helper text
-			if(node.multiplier == 0){
-				selectMid.setPosition(0);
-				selectMid.play();
-			}
-			else{
-				selectHigh.setPosition(0);
-				selectHigh.play();
-			}
-		}
-		else{
-			node.percentComplete = ofMap(ofGetElapsedTimef(), node.hoverStartTime, node.hoverStartTime+introNodeHoldTime, 0.0, 1.0,true);
-		}
-	}
+//	if(node.finished){
+//		return;
+//	}
+//	
+//	if(!node.hover && node.cursorDistance < questionTugDistance.min){
+//		node.hover = true;
+//		node.hoverStartTime = ofGetElapsedTimef();
+//		click.setPosition(0);
+//		click.play();
+//	}
+//	else if(node.hover){
+//		if(node.cursorDistance > questionTugDistance.max){
+//			node.hover = false;
+//			node.percentComplete = 0.0;
+//		}
+//		else if(node.percentComplete >= 1.0){
+//			node.finished = true;
+//			node.finishedTime = nodeActivatedTime = ofGetElapsedTimef(); //used for alpha on helper text
+//			if(node.multiplier == 0){
+//				selectMid.setPosition(0);
+//				selectMid.play();
+//			}
+//			else{
+//				selectHigh.setPosition(0);
+//				selectHigh.play();
+//			}
+//		}
+//		else{
+//			node.percentComplete = ofMap(ofGetElapsedTimef(), node.hoverStartTime, node.hoverStartTime+introNodeHoldTime, 0.0, 1.0,true);
+//		}
+//	}
 	#endif
 }
 
@@ -885,12 +892,16 @@ void CloudsIntroSequence::drawHelperType(){
 		if(introNodeThree.hover || introNodeTwo.finished){
 			helpHoverText = "LOOK CENTER";
 			basePosition = introNodeTwo.worldPosition;
-			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(), nodeActivatedTime, nodeActivatedTime+.8,0.0,.8,true), 2.) * (1.0-introNodeThree.percentComplete);
+			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
+										   CalibrationNode::nodeActivatedTime,
+										   CalibrationNode::nodeActivatedTime+.8,0.0,.8,true), 2.) * (1.0-introNodeThree.percentComplete);
 		}
 		else if(introNodeTwo.hover || introNodeOne.finished){
 			helpHoverText = "LOOK RIGHT";
 			basePosition = introNodeOne.worldPosition;
-			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(), nodeActivatedTime, nodeActivatedTime+.8,0.0,.8,true), 2.);
+			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
+										   CalibrationNode::nodeActivatedTime,
+										   CalibrationNode::nodeActivatedTime+.8,0.0,.8,true), 2.);
 		}
 		else {
 			helpHoverText = "LOOK LEFT";
@@ -939,45 +950,52 @@ void CloudsIntroSequence::drawIntroNodes(){
 	ofPushStyle();
 	
 	for(int i = 0; i < introNodes.size(); i++){
-		ofPushMatrix();
-
-		if(introNodes[i]->finished){
-			ofFloatColor tinted = ofFloatColor::fromHsb(tint.r, tint.g, tint.b);
-			ofSetColor(tinted, 200*nodeAlphaAttenuate);
-		}
-		else if(introNodes[i]->hover){
-			ofSetColor(255,100,100,200);
-		}
-		else{
-			ofSetColor(255,200);
-		}
+		introNodes[i]->nodeAlphaAttenuate = nodeAlphaAttenuate;
+		introNodes[i]->nodeBaseSize = introNodeSize;
+		introNodes[i]->tint = ofFloatColor::fromHsb(tint.r, tint.g, tint.b);
+		introNodes[i]->tint.a = 200*nodeAlphaAttenuate;
 		
-		getOculusRift().multBillboardMatrix(introNodes[i]->worldPosition);
-		float afterFinishScalar = 0.0;
-		ofNoFill();
-		if(introNodes[i]->percentComplete > 0.0){
-			float nodeSize = introNodeSize;
-			ofColor arcColor = ofGetStyle().color;
-			if(introNodes[i]->finished){
-				afterFinishScalar = powf(ofMap(ofGetElapsedTimef(), introNodes[i]->finishedTime, introNodes[i]->finishedTime+.2, 0.0, 1.0, true), 2.0f);
-				nodeSize = introNodeSize + ( afterFinishScalar * 8.0);
-				arcColor.a = 255*(1.0-afterFinishScalar);
-			}
-			ofPath arc;
-			arc.setFilled(false);
-			arc.setStrokeWidth(3);
-			arc.setStrokeColor(arcColor);
-			arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 0, 360*introNodes[i]->percentComplete, true);
-			arc.draw();
-		}
-		ofCircle(0,0,0, introNodeSize * (1.0-afterFinishScalar) );
-
-		if(introNodes[i]->finished){
-			ofFill();
-//			ofCircle(0,0,0, introNodeSize);
-		}
-		ofPopMatrix();
+		introNodes[i]->draw();
 		
+//		ofPushMatrix();
+//
+//		if(introNodes[i]->finished){
+//			ofFloatColor tinted = ofFloatColor::fromHsb(tint.r, tint.g, tint.b);
+//			ofSetColor(tinted, 200*nodeAlphaAttenuate);
+//		}
+//		else if(introNodes[i]->hover){
+//			ofSetColor(255,100,100,200);
+//		}
+//		else{
+//			ofSetColor(255,200);
+//		}
+//		
+//		getOculusRift().multBillboardMatrix(introNodes[i]->worldPosition);
+//		float afterFinishScalar = 0.0;
+//		ofNoFill();
+//		if(introNodes[i]->percentComplete > 0.0){
+//			float nodeSize = introNodeSize;
+//			ofColor arcColor = ofGetStyle().color;
+//			if(introNodes[i]->finished){
+//				afterFinishScalar = powf(ofMap(ofGetElapsedTimef(), introNodes[i]->finishedTime, introNodes[i]->finishedTime+.2, 0.0, 1.0, true), 2.0f);
+//				nodeSize = introNodeSize + ( afterFinishScalar * 8.0);
+//				arcColor.a = 255*(1.0-afterFinishScalar);
+//			}
+//			ofPath arc;
+//			arc.setFilled(false);
+//			arc.setStrokeWidth(3);
+//			arc.setStrokeColor(arcColor);
+//			arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 0, 360*introNodes[i]->percentComplete, true);
+//			arc.draw();
+//		}
+//		ofCircle(0,0,0, introNodeSize * (1.0-afterFinishScalar) );
+//
+//		if(introNodes[i]->finished){
+//			ofFill();
+////			ofCircle(0,0,0, introNodeSize);
+//		}
+//		ofPopMatrix();
+//		
 		if(!introNodes[i]->finished){
 			break;
 		}

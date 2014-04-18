@@ -173,7 +173,7 @@ class CloudsPlaybackController : public ofThread {
     void cleanupInterlude();
 
     //INTERLUDE INTERFACE
-	void resetInterludeVariabls();
+	void resetInterludeVariables();
 	ofxFTGLFont interludeInterfaceFont;
 	float interludeExitBarWidth;
 	bool interludeHoveringContinue;
