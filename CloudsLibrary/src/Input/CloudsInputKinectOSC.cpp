@@ -24,6 +24,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , bDoDebug(false)
 , viewerState(k4w::ViewerState_None)
 , viewerIdleTime(0)
+, bCurrViewerHasInteracted(false)
 , boundsMin(-0.5f, -0.7f, 1.0f)
 , boundsMax( 0.5f, -0.2f, 2.0f)
 , posResetLerpPct(0.1f)
@@ -446,12 +447,17 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
 	if (viewerState < k4w::ViewerState_Interacting && primaryIdx != -1) {
         // upgrayedd!
         viewerState = k4w::ViewerState_Interacting;
+        bCurrViewerHasInteracted = true;
     }
     if (viewerState == k4w::ViewerState_PresentIdle) {
         viewerIdleTime += ofGetLastFrameTime() * 1000;
     }
     else {
         viewerIdleTime = 0;
+    }
+    if (viewerState <= k4w::ViewerState_OutOfRange) {
+        // this should work assuming a user can't just magically appear in PresentIdle state
+        bCurrViewerHasInteracted = false;
     }
 }
 

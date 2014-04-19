@@ -210,6 +210,7 @@ public:
 
 	k4w::ViewerState viewerState;
     unsigned long viewerIdleTime;
+    bool bCurrViewerHasInteracted;
     
     // current position attributes
     float posResetLerpPct;
