@@ -2,28 +2,28 @@
     <Kind>42</Kind>
     <Name>OP FLOW</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1009.000000000</XPosition>
+    <YPosition>131.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW FLOW WINDOW</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW TINT</Name>
-    <Value>64.064041138</Value>
+    <Value>162.044342041</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>FLOW DENSITY</Name>
-    <Value>3</Value>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,17 +33,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW WIDTH</Name>
-    <Value>0.100000001</Value>
+    <Value>0.300492615</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW HEIGHT</Name>
-    <Value>0.100000001</Value>
+    <Value>0.399014771</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE LENGTH</Name>
-    <Value>1.000000000</Value>
+    <Value>1.128078818</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -53,12 +53,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE WIDTH</Name>
-    <Value>2.000000000</Value>
+    <Value>1.798029542</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE DAMP</Name>
-    <Value>1.000000000</Value>
+    <Value>0.108374387</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
