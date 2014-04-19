@@ -1144,7 +1144,7 @@ void CloudsVisualSystemRGBD::updateQuestions(){
     
     if (caughtPortal != NULL) {
         // move the sticky cursor towards the caught portal
-        stickyCursor.interpolate(caughtPortal->screenPosition - ofVec2f(bleed,bleed)*.5, 0.2f);
+        stickyCursor.interpolate(caughtPortal->screenPosition, 0.2f);
     }
     else {
         stickyCursor.interpolate(cursor, 0.5f);
