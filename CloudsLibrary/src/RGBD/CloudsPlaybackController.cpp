@@ -940,7 +940,7 @@ void CloudsPlaybackController::drawKinectFeedback(){
     else {
         kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 0, 0.5f);
     }
-    kinectInput->draw(60, ofGetHeight() - 285 - 60, 380, 285, kinectFeedbackAlpha);
+    kinectInput->draw(kinectFeedbackAlpha);
 
     ofSetColor(255, kinectFeedbackAlpha);
     float textWidth  = kinectFeedbackFont.stringWidth(promptText);
