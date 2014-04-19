@@ -90,6 +90,8 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
     // EZ: Don't draw INACTIVE cursors for now
     if (mode == CURSOR_MODE_INACTIVE) return;
     
+    focus = ofMap(ofDist(pos.x, pos.y, ofGetWidth()/2, ofGetHeight()/2), 0, 200, 1.0f, 0.0f, true);
+    
     ofPushStyle();
     
     if (mode == CURSOR_MODE_INACTIVE) {
