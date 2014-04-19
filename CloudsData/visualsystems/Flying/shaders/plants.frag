@@ -22,5 +22,5 @@ void main()
     
 	float diffuse = max(dot(lightN, l), 0.0);
     
-    gl_FragColor = (1.0 - fogAmount) * vec4(gl_Color.rgb * (diffuse/* + specular*/), 1.0);//gl_Color;//vec4(gl_TexCoord[0].s, gl_TexCoord[0].s, gl_TexCoord[0].s, 1.0) * diffuse;//
+    gl_FragColor = (1.0 - fogAmount) * vec4(gl_Color.rgb * diffuse, 1.0);//gl_Color;//vec4(gl_TexCoord[0].s, gl_TexCoord[0].s, gl_TexCoord[0].s, 1.0) * diffuse;//
 }

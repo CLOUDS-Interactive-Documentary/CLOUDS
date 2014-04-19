@@ -258,7 +258,7 @@ void CloudsVisualSystemFlying::selfDraw()
     //glGetFloatv(GL_MODELVIEW_MATRIX, modelview.getPtr());
     
     // eye space light pos
-    ofVec3f lEye = ofVec3f(1000, 1000, 1000);// * modelview;
+    ofVec3f lEye = ofVec3f(1000, -1000, -1000);// * modelview;
     
     float growDistSq = growDist * growDist;
     
@@ -306,19 +306,20 @@ void CloudsVisualSystemFlying::selfDraw()
     floorShader.setUniform1f("growDist", growDist);
     floor.draw();
     floorShader.end();
-    
-    glPopAttrib();
+
+	glPopAttrib();
 }
 
 void CloudsVisualSystemFlying::selfPostDraw()
 {
+	//CloudsVisualSystem::selfPostDraw();
     glPushAttrib(GL_ENABLE_BIT);
     glDisable(GL_DEPTH_TEST);
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-    if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
+    if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, 0, getCanvasWidth(), getCanvasHeight());
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-    else CloudsVisualSystem::getSharedRenderTarget().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
+    else CloudsVisualSystem::getSharedRenderTarget().draw(0, 0, getCanvasWidth(), getCanvasHeight());
     glPopAttrib();
 }
 

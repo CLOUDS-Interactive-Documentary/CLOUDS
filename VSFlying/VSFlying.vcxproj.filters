@@ -306,6 +306,9 @@
     <Filter Include="CloudsLibrary\src\Sound">
       <UniqueIdentifier>{93ff702b-ffbd-4581-a60c-900d6b134616}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\Flying\shaders">
+      <UniqueIdentifier>{d8844c37-70d2-49d2-8fbf-970c2d8d7e35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testApp.h">
@@ -608,5 +611,19 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\CloudsData\visualsystems\Flying\shaders\plants.frag">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\shaders</Filter>
+    </None>
+    <None Include="..\CloudsData\visualsystems\Flying\shaders\plants.vert">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\shaders</Filter>
+    </None>
+    <None Include="..\CloudsData\visualsystems\Flying\shaders\floor.frag">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\shaders</Filter>
+    </None>
+    <None Include="..\CloudsData\visualsystems\Flying\shaders\floor.vert">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

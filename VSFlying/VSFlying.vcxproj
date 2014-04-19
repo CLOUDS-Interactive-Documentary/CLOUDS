@@ -395,5 +395,11 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\CloudsData\visualsystems\Flying\shaders\floor.frag" />
+    <None Include="..\CloudsData\visualsystems\Flying\shaders\floor.vert" />
+    <None Include="..\CloudsData\visualsystems\Flying\shaders\plants.frag" />
+    <None Include="..\CloudsData\visualsystems\Flying\shaders\plants.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
