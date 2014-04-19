@@ -275,7 +275,7 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
 	int flowHeight = opticalFlowPixels.getHeight();
 	
 	if(bDrawFlowWindow){
-
+        primaryCursorMode = CURSOR_MODE_CAMERA;
 		float screenToFlowScale = flowWidth / videoRect.width;
 		float mouseXVideo = (GetCloudsInputX() - videoRect.x) * screenToFlowScale;
 		float mouseYVideo = (GetCloudsInputY() - videoRect.y) * screenToFlowScale;
@@ -284,6 +284,7 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
 								 flowHeight*windowHeight);
 	}
 	else{
+        primaryCursorMode = CURSOR_MODE_INACTIVE;
 		flowWindow = ofRectangle(0,0,flowWidth,flowHeight);
 	}
 
