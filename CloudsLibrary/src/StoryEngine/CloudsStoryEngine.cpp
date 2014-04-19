@@ -444,7 +444,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     //we keep a local copy of these for seeding with start level questions.
     
     //rigs
-    showOnlyStartQuestions = true;
+//    showOnlyStartQuestions = true;
     //    bLogClipDetails = false;
     startingQuestions = getStartingQuestions();
 
@@ -588,35 +588,19 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		
         ///////////////// QUESTIONS
         //adding all option clips with questions
-#ifndef OCULUS_RIFT
-		if(state.topicNum > 1 || run.actCount > 0){
+//#ifndef OCULUS_RIFT
+		if(state.timesOnCurrentTopic > 2){
             if(showOnlyStartQuestions){
                 if(startingQuestions.size() > 0){
                     addQuestions(state, startingQuestions);
                     startingQuestions.clear();
                 }
-//                //refresh questionws
-//                if(startingQuesitons.size() < 2){
-//                    startingQuesitons = getStartingQuestions();
-//                }
-//                
-//                //ask away
-//                if(startingQuesitons.size() >= 2){
-//                    random_shuffle(startingQuesitons.begin(), startingQuesitons.end());
-//                    vector<CloudsClip> randStartQuestions;
-//                    randStartQuestions.push_back(startingQuesitons.back());
-//                    startingQuesitons.pop_back();
-//                    randStartQuestions.push_back(startingQuesitons.back());
-//                    startingQuesitons.pop_back();
-//                    
-//                    addQuestions(state, randStartQuestions);
-//                }
             }
             else {
                 addQuestions(state, questionClips);
             }
         }
-#endif
+//#endif
         /////////////////
 		
 		///////////////// DIOCHOTOMIES
