@@ -4,11 +4,6 @@
 
 #include "CloudsVisualSystemOpenP5SeaOfLines.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
 {
@@ -43,11 +38,13 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
 	guimap[customGui->getName()] = customGui;
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfSetDefaults(){
     primaryCursorMode   = CURSOR_MODE_INACTIVE;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
     
 }
+
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfGuiEvent(ofxUIEventArgs &e)
 {
@@ -62,11 +59,14 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupSystemGui(){
 void CloudsVisualSystemOpenP5SeaOfLines::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
+
 //use render gui for display settings, like changing colors
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfSetupRenderGui(){
 
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
@@ -196,6 +196,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDraw()
 }
 
 // draw any debug stuff here
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfDrawDebug(){
 
 }
@@ -236,19 +237,15 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfKeyPressed(ofKeyEventArgs & args){
 void CloudsVisualSystemOpenP5SeaOfLines::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
-
 void CloudsVisualSystemOpenP5SeaOfLines::selfMouseDragged(ofMouseEventArgs& data){
 
 }
-
 void CloudsVisualSystemOpenP5SeaOfLines::selfMouseMoved(ofMouseEventArgs& data){
 	
 }
-
 void CloudsVisualSystemOpenP5SeaOfLines::selfMousePressed(ofMouseEventArgs& data){
 	
 }
-
 void CloudsVisualSystemOpenP5SeaOfLines::selfMouseReleased(ofMouseEventArgs& data){
 
 }
