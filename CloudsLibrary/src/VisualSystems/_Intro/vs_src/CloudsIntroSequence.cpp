@@ -522,7 +522,7 @@ void CloudsIntroSequence::updateQuestions(){
         stickyCursor.interpolate(caughtQuestion->screenPosition - ofVec2f(bleed,bleed)*.5, 0.2f);
     }
     else {
-        stickyCursor = cursor;
+        stickyCursor.interpolate(cursor, 0.5f);
     }
 }
 
