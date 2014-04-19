@@ -689,7 +689,7 @@ void CloudsVisualSystem::drawInterludeInterface(){
 	ofEnableAlphaBlending();
 	ofSetColor(255);
 	
-	if(currentInterludeFontSize != interludeFontSize){
+	if(!interludeFont.isLoaded() || currentInterludeFontSize != interludeFontSize){
 		interludeFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", interludeFontSize);
 		currentInterludeFontSize = interludeFontSize;
 	}
