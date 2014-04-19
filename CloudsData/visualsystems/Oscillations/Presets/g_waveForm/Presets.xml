@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>264.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -58,6 +58,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>laser blast_rotation</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>laser_blast</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
