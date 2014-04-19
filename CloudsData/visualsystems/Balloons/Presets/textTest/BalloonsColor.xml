@@ -1,0 +1,87 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>BalloonsColor</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>-1.000000000</XPosition>
+    <YPosition>67.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c0Hue</Name>
+    <Value>142</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c0Saturation</Name>
+    <Value>205</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c0Brightness</Name>
+    <Value>235</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>w0</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c1Hue</Name>
+    <Value>31</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c1Saturation</Name>
+    <Value>196</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c1Brightness</Name>
+    <Value>224</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>w1</Name>
+    <Value>0.200000003</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2Hue</Name>
+    <Value>17</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2Saturation</Name>
+    <Value>233</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2Brightness</Name>
+    <Value>224</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>w2</Name>
+    <Value>0.200000003</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c3Hue</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c3Saturation</Name>
+    <Value>255</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c3Brightness</Name>
+    <Value>205</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>w3</Name>
+    <Value>0.200000003</Value>
+</Widget>

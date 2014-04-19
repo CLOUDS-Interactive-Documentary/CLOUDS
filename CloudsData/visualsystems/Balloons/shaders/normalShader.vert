@@ -146,7 +146,7 @@ void main()
 	//	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / fogDist, 3.), 0., 1.);
 	
 	
-	lPos = vec4(0.,0.,0.,1.);//texture2DRect( posTexture, vec2(10.) );
+	lPos = vec4(0.,dim,0.,1.); // texture2DRect( posTexture, vec2(10.) );//vec4(0.,0.,0.,1.);//
 	lCol = vec4(1.) - pow(abs(lPos.y) / dim, 4.);
 	lPos = gl_ModelViewMatrix * lPos;
 	
@@ -157,7 +157,7 @@ void main()
 	vec3 r = reflect( ePos, vNorm );
 	float m = 2. * sqrt(r.x*r.x + r.y*r.y + pow(r.z+1., 2.));
 	vN = (r.xy / m + .5);
-	vN.y = 1. - vN.y;
+//	vN.y = 1. - vN.y;
 	vN *= sphericalMapDim;
 }
 

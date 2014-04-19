@@ -11,8 +11,15 @@ uniform float speedLow;
 uniform float speedHi;
 uniform float highSpeedPercent;
 
+uniform float textRadius;
+
+uniform int numCredits;
+uniform vec4 credits[10];
 
 uniform vec3 camPos;
+uniform vec3 line0;
+uniform vec3 line1;
+
 
 uniform float bound;
 uniform float dimX;
@@ -64,34 +71,44 @@ float noise( float x, float y, float z)
 	return _noise( vec3(x,y,z) );
 }
 
-void bounce(inout vec3 acc, in vec3 pos, in vec3 p, inout int collisionCount, float radius)
+void bounce(inout vec3 acc, in vec3 pos, in vec3 p, inout int collisionCount, float rad)
 {
-	vec3 delta = p - pos;//texture2DRect( posTexture, vec2(float(i), float(j))).xyz - pos;
+	vec3 delta = p - pos;
 	vec3 deltaMag = abs(delta);
-	if( deltaMag.y < radius && deltaMag.x < radius && deltaMag.z < radius)
+	if( deltaMag.y < rad && deltaMag.x < rad && deltaMag.z < rad)
 	{
 		float dist = deltaMag.x + deltaMag.y + deltaMag.z;
-		if(dist < radius)
+		if(dist < rad)
 		{
-			acc -= normalize(delta) * (1. - dist / radius);
+			acc -= normalize(delta) * (1. - dist / rad);
 			collisionCount++;
 		}
 	}
 }
 
+vec3 IntersectionPointLine( vec3 p3, vec3 p1, vec3 p2 )
+{
+	vec3 intersection;
+	vec3 diff = p3 - p1;
+	vec3 dir = p2 - p1;
+	
+	float u = dot( diff, dir ) / dot( dir, dir );
+	
+	if ( u < 0. )	return p1;
+	else if( u > 1. )	return p2;
+	
+	intersection = p1 + dir * u;
+	return intersection;
+}
+
+
 void main()
 {
-//	//TODO: make these uniforms
-//	float noiseScl = .4, offset = .1, noiseSampleScale = .01, velAtten = .97, radius = 25., accScl = .2, gravity = .02, attractionToCenter = .01, cameraBounce = 10.;
-	
 	vec3 pos = texture2DRect( posTexture, uv).xyz;
-	
-//	pos -= camOffset*.5;
 	
 	vec3 vel = texture2DRect( velTexture, uv).xyz;
 	
 	vec3 p = pos * noiseSampleScale;
-//	p.y += time + camOffset.y;
 	
 	p.y += time;
 	p.y -= camOffset.y;
@@ -120,7 +137,23 @@ void main()
 	
 	//repel from camera
 	bounce(acc, pos, camPos, collisionCount, radius * 2.5);
-
+	
+	//bounce off line
+//	vec3 intersection = IntersectionPointLine(pos, line0, line1);
+//	bounce(acc, pos, intersection, collisionCount, radius * textRadius);
+	
+	//bounce off credits
+	vec3 p0, p1;
+	vec3 intersection;
+	for(int i=0; i<numCredits; i++)
+	{
+		p0 = p1 = credits[i].xyz;
+		p1.x += credits[i].w;
+		
+		intersection = IntersectionPointLine(pos, p0, p1);
+		bounce(acc, pos, intersection, collisionCount, radius * textRadius);
+	}
+	
 	//attract them to the center axis
 	acc.xz -= normalize(pos.xz) * attractionToCenter;
 	
