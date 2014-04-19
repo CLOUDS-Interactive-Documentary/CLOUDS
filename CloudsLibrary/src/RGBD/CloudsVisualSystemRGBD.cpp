@@ -445,6 +445,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	cameraGui->addSlider("DRIFT DENSITY", 0, 1.0, &cloudsCamera.driftNoiseDensity);
 	cameraGui->addSlider("DRIFT SPEED", 0, .01, &attenuatedCameraDrift);
     cameraGui->addSlider("DAMPING", .001, .1, &cloudsCamera.damp);
+    cameraGui->addRangeSlider("FOV ZOOM", 40, 120, &cloudsCamera.zoomFOVRange.min, &cloudsCamera.zoomFOVRange.max);
 
 	guis.push_back(cameraGui);
 	guimap[cameraGui->getName()] = cameraGui;
