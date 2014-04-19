@@ -1,10 +1,15 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>VISION Sound</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>241.000000000</XPosition>
-    <YPosition>679.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>76.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Main Gain</Name>
+    <Value>0.000000000</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>distorted_drones.aif</Name>

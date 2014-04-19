@@ -286,9 +286,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	CloudsPortal rightPortal;
 	
 	//Oculus reset portal
-	CloudsPortal resetPortal;
-	ofVec3f resetHoverPosition;
-	void updateResetPortal();
+//	CloudsPortal resetPortal;
+//	ofVec3f resetHoverPosition;
+//	void updateResetPortal();
 	
 	vector<CloudsPortal*> portals;
     vector<QuestionQueue> questions;
@@ -297,6 +297,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void updateQuestions();
 	void drawQuestions();
 	
+    void drawCursors();
+    ofVec3f cursor;
+    ofVec3f stickyCursor;
     
 	
 	//transition
