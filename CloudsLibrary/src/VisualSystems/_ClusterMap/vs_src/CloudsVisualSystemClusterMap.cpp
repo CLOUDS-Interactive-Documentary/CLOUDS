@@ -1161,7 +1161,7 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	}
 	
     if(drawAssociation){
-        if(associationFontSize != currentAssociationFont){
+        if(!associationFont.isLoaded() || associationFontSize != currentAssociationFont){
             associationFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", associationFontSize);
             currentAssociationFont = associationFontSize;
         }
