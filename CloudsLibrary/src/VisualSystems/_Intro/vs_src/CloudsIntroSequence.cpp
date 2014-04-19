@@ -942,7 +942,8 @@ void CloudsIntroSequence::drawCursors(){
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
         if (it->second.primary) {
-            selfDrawCursor(stickyCursor, it->second.dragged, primaryCursorMode, it->second.focus);
+            // override primaryCursorMode
+            selfDrawCursor(stickyCursor, it->second.dragged, caughtQuestion? CURSOR_MODE_DRAW : CURSOR_MODE_CAMERA, it->second.focus);
         }
         else {
             selfDrawCursor(it->second.position, it->second.dragged, secondaryCursorMode, it->second.focus);
