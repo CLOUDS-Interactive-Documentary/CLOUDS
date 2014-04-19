@@ -2994,6 +2994,13 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addSlider("MOVE THRESHOLD", 0, 100, &kinectInput->posSetInstantThreshold);
     kinectGui->addIntSlider("OUT OF BOUNDS DELAY", 0, 5000, &kinectInput->posOutOfBoundsDelay);
     
+    kinectGui->addSpacer();
+    kinectGui->addSlider("FEEDBACK SCALE", 0.0f, 1.0f, &kinectInput->feedbackScale);
+    kinectGui->addSlider("FEEDBACK MARGIN", 0.0f, 0.5f, &kinectInput->feedbackMargin);
+    kinectGui->addMinimalSlider("FEEDBACK HUE", 0, 255, &kinectInput->feedbackHSB.x);
+    kinectGui->addMinimalSlider("FEEDBACK SAT", 0, 255, &kinectInput->feedbackHSB.y);
+    kinectGui->addMinimalSlider("FEEDBACK BRI", 0, 255, &kinectInput->feedbackHSB.z);
+    
     kinectGui->autoSizeToFitWidgets();
     ofAddListener(kinectGui->newGUIEvent, this, &CloudsVisualSystem::guiKinectEvent);
     guis.push_back(kinectGui);
