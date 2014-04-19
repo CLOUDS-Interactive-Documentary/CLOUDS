@@ -226,9 +226,6 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfEnd(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfExit()
 {
-//    for (int i = 0; i < players.size(); i++) {
-//        delete players[i];
-//    }
     players.clear();
 }
 

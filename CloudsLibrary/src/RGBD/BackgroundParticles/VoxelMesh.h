@@ -17,6 +17,8 @@ class VoxelMesh {
 		
 	void addGui(ofxUISuperCanvas* gui);
 	
+	void setDefaults();
+	
 	void setup();
 	void update();
 	void draw();

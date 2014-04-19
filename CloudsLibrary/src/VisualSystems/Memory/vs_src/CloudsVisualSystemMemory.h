@@ -82,7 +82,7 @@ class Block : public ofRectangle {
 	void update(){
 		ofFloatColor curStroke;
 		if(bActivated){
-			curStroke = ofFloatColor(1.0, .2, .2, borderColor.a);
+			curStroke = ofFloatColor(1.0, 1.0, 1.0, borderColor.a);
 		}
 		else if (bSelected){
             curStroke = borderColor;

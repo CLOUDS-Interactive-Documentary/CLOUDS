@@ -926,9 +926,12 @@ void CloudsPlaybackController::drawKinectFeedback(){
     
     string promptText = "";
     ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+    // Display feedback if either:
+    // 1. A viewer is detected but out of range (not in the hot seat)
+    // 2. A viewer is in the hot seat AND has been idle for x milliseconds AND has never interacted yet
     if ((kinectInput->viewerState == k4w::ViewerState_OutOfRange) ||
-        (kinectInput->viewerState == k4w::ViewerState_PresentIdle && kinectInput->viewerIdleTime >= 5000)) {
-        kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 255, 0.3f);
+        (kinectInput->viewerState == k4w::ViewerState_PresentIdle && kinectInput->viewerIdleTime >= 5000 && !kinectInput->bCurrViewerHasInteracted)) {
+        kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 255, 0.1f);
         
         if (kinectInput->viewerState == k4w::ViewerState_OutOfRange) {
             promptText = "MOVE CLOSER TO THE DISPLAY";
@@ -940,7 +943,7 @@ void CloudsPlaybackController::drawKinectFeedback(){
     else {
         kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 0, 0.5f);
     }
-    kinectInput->draw(60, ofGetHeight() - 285 - 60, 380, 285, kinectFeedbackAlpha);
+    kinectInput->draw(kinectFeedbackAlpha);
 
     ofSetColor(255, kinectFeedbackAlpha);
     float textWidth  = kinectFeedbackFont.stringWidth(promptText);

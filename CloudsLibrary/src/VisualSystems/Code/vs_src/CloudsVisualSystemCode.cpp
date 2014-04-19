@@ -329,7 +329,7 @@ void CloudsVisualSystemCode::updateColors(){
 //normal update call
 void CloudsVisualSystemCode::selfUpdate(){
 	
-	if(currentFontSize != fontSize){
+	if(!sharedFont.isLoaded() || currentFontSize != fontSize){
 		sharedFont.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
 		sharedLayout.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
 		currentFontSize = fontSize;

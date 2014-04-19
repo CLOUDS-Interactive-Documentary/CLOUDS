@@ -398,7 +398,8 @@ void CloudsIntroSequence::updateIntroNodeInteraction(CalibrationNode& node){
 
 void CloudsIntroSequence::updateTitle(){
 	
-	if(currentFontSize != titleFontSize ||
+	if(!extrudedTitleText.isLoaded() ||
+	   currentFontSize != titleFontSize ||
 	   currentFontExtrusion != titleFontExtrude)
 	{
 		currentFontSize = titleFontExtrude;
@@ -841,7 +842,7 @@ void CloudsIntroSequence::drawHelperType(){
 	ofPushStyle();
 	glDisable(GL_DEPTH_TEST);
 	
-	if(currentHelperFontSize != helperFontSize){
+	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
 //		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", helperFontSize);
 		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 		currentHelperFontSize = helperFontSize;
