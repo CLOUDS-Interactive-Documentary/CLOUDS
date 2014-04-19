@@ -297,6 +297,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void updateQuestions();
 	void drawQuestions();
 	
+    void drawCursors();
+    ofVec3f cursor;
+    ofVec3f stickyCursor;
     
 	
 	//transition
