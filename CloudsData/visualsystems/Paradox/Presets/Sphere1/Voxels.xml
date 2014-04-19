@@ -44,7 +44,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>twist speed x</Name>
-    <Value>0.000054187</Value>
+    <Value>0.000034483</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -54,7 +54,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>twist speed y</Name>
-    <Value>0.000226601</Value>
+    <Value>0.000225000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
