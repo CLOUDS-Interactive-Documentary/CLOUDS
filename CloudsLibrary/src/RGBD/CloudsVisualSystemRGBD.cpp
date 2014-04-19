@@ -1138,6 +1138,14 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		}
         minDistanceToQuestion = MIN(distanceToQuestion, minDistanceToQuestion);
 	}
+    
+    if (caughtPortal != NULL) {
+        // move the sticky cursor towards the caught portal
+        stickyCursor.interpolate(caughtPortal->screenPosition, 0.2f);
+    }
+    else {
+        stickyCursor.interpolate(cursor, 0.5f);
+    }
 }
 
 //void CloudsVisualSystemRGBD::updateResetPortal(){
@@ -1833,6 +1841,19 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 
 }
 
+void CloudsVisualSystemRGBD::drawCursors(){
+    map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
+    for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+        if (it->second.primary) {
+            // override primaryCursorMode
+            selfDrawCursor(stickyCursor, it->second.dragged, caughtPortal? CURSOR_MODE_DRAW : CURSOR_MODE_CAMERA, it->second.focus);
+        }
+        else {
+            selfDrawCursor(it->second.position, it->second.dragged, secondaryCursorMode, it->second.focus);
+        }
+    }
+}
+
 void CloudsVisualSystemRGBD::selfDrawOverlay() {
     if(bPortalDebugOn){
         ofPushStyle();
@@ -1932,11 +1953,12 @@ void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemRGBD::selfMouseDragged(ofMouseEventArgs& data){
-	
+    cursor.set(data.x, data.y, cursor.z);
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfMouseMoved(ofMouseEventArgs& data){
+    cursor.set(data.x, data.y, cursor.z);
 }
 
 //--------------------------------------------------------------
