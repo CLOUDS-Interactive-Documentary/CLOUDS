@@ -10,6 +10,11 @@
 #include "CloudsGlobal.h"
 
 VoxelMesh::VoxelMesh(){
+	setDefaults();
+}
+
+void VoxelMesh::setDefaults(){
+	
 	numVoxels = 10;
 	voxelWidth = 100;
 	noisePosition = 0;
@@ -17,7 +22,36 @@ VoxelMesh::VoxelMesh(){
 	twistPositionY = 0;
 	drawPoints = false;
 	drawLines = false;
-
+	
+	shouldRegenerate = false;
+	
+	numVoxels = 10;
+	voxelWidth = 100;
+	
+	sphereRadius = 100;
+	spherePercent = 0.0;
+	
+	minDistance = 0;
+	maxDistance = 10;
+	
+	twistFactorY = 0;
+	twistSpeedY = 0;
+	
+	twistFactorX = 0;
+	twistSpeedX = 0;
+	
+	spiralFactor = 0;
+	
+	noiseDistort = ofVec4f();
+	noiseDensity = 0;
+	noiseSpeed = 0;
+	
+	centerDecayMinRadius = 0;
+	centerDecayMaxRadius = 0;
+	center = ofVec3f(0,0,0);
+	
+	drawPoints = false;
+	drawLines = false;
 }
 
 void VoxelMesh::addGui(ofxUISuperCanvas* gui){
