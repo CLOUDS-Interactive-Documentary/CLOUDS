@@ -18,32 +18,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW TINT</Name>
-    <Value>178.374389648</Value>
+    <Value>242.438415527</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>FLOW DENSITY</Name>
-    <Value>2</Value>
+    <Value>3</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW ALPHA</Name>
-    <Value>1.000000000</Value>
+    <Value>0.975369453</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW WIDTH</Name>
-    <Value>0.295566499</Value>
+    <Value>0.300492615</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW HEIGHT</Name>
-    <Value>0.399014771</Value>
+    <Value>0.403940886</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE LENGTH</Name>
-    <Value>1.534482718</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE DAMP</Name>
-    <Value>0.596059084</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
