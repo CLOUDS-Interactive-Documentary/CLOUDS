@@ -3,7 +3,7 @@
     <Name>SPH0Settings</Name>
     <IsMinified>0</IsMinified>
     <XPosition>849.000061035</XPosition>
-    <YPosition>211.000000000</YPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,10 +28,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SPH0 RADIUS</Name>
-    <Value>53.711341858</Value>
+    <Value>57.687995911</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SPH0 LIMIT</Name>
-    <Value>0.000000000</Value>
+    <Value>3.629353046</Value>
 </Widget>
