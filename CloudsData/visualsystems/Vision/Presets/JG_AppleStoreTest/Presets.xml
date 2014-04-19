@@ -2,12 +2,37 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>372.000000000</XPosition>
-    <YPosition>231.000000000</YPosition>
+    <XPosition>578.000000000</XPosition>
+    <YPosition>241.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>AppleStore2_short</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BridgePreset</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CV_DISCO</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>flowDancer</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>GreenPoint_Contour</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GreenPoint_Contour_extreme</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -22,7 +47,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>JG_AppleStoreTest</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Soho_Boxes</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Soho_HeatMap</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -37,7 +72,27 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>tokyoCrossingHeatMap</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TokyoEscalator</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>TokyoEscalator_flow1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TokyoEscalatorFlow</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UnionFlow_JG</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -47,6 +102,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>JG_AppleStoreTest</Name>
-    <Value>1</Value>
+    <Name>UnionSqGhost</Name>
+    <Value>0</Value>
 </Widget>
