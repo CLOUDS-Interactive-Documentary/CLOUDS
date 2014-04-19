@@ -94,7 +94,7 @@ void main()
 //	p.y += time + camOffset.y;
 	
 	p.y += time;
-	p.y += camOffset.y;
+	p.y -= camOffset.y;
 	vec3 acc = vec3(0.,0.,0.);
 	
 	//noise influence
@@ -124,22 +124,25 @@ void main()
 	//attract them to the center axis
 	acc.xz -= normalize(pos.xz) * attractionToCenter;
 	
-	//acceleration & gravity
-	vel *= velAtten;
-	vel += acc * accScl;
+	acc *= accScl;
+	acc.y += gravity;
 	
 	//gravity with varience based on index and other stuff...
 	float i = uv.x * dimY + uv.y;
 	float total = dimX * dimY;
-	
 	if( i < total*highSpeedPercent)
 	{
-		vel.y += gravity * highSpeedScale * mix(speedLow, speedHi, i / total*highSpeedPercent);
+		acc.y *= highSpeedScale * mix(speedLow, speedHi, i / total*highSpeedPercent);
 	}
 	else
 	{
-		vel.y += gravity * mix(speedLow, speedHi, (i-total) / (total * (1.- highSpeedPercent)));
+		acc.y *= mix(speedLow, speedHi, (i-total) / (total * (1.- highSpeedPercent)));
 	}
+	
+	
+	//acceleration & gravity
+	vel *= velAtten;
+	vel += acc;
 	
 	//draw it
    	gl_FragColor = vec4(vel, 1.0);
