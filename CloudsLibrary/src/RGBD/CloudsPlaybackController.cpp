@@ -930,8 +930,8 @@ void CloudsPlaybackController::drawKinectFeedback(){
     // 1. A viewer is detected but out of range (not in the hot seat)
     // 2. A viewer is in the hot seat AND has been idle for x milliseconds AND has never interacted yet
     if ((kinectInput->viewerState == k4w::ViewerState_OutOfRange) ||
-        kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 255, 0.3f);
         (kinectInput->viewerState == k4w::ViewerState_PresentIdle && kinectInput->viewerIdleTime >= 5000 && !kinectInput->bCurrViewerHasInteracted)) {
+        kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 255, 0.1f);
         
         if (kinectInput->viewerState == k4w::ViewerState_OutOfRange) {
             promptText = "MOVE CLOSER TO THE DISPLAY";
