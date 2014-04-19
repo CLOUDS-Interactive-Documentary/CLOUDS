@@ -3,7 +3,7 @@
     <Name>SPH1Settings</Name>
     <IsMinified>0</IsMinified>
     <XPosition>849.000061035</XPosition>
-    <YPosition>384.000000000</YPosition>
+    <YPosition>174.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,10 +28,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SPH1 RADIUS</Name>
-    <Value>26.719142914</Value>
+    <Value>35.273792267</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SPH1 LIMIT</Name>
-    <Value>5.341224670</Value>
+    <Value>3.974327564</Value>
 </Widget>

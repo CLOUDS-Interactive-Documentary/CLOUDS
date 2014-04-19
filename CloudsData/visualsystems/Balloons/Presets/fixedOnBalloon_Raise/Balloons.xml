@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Balloons</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>417.000000000</XPosition>
-    <YPosition>21.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>274.000000000</XPosition>
+    <YPosition>55.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseScl</Name>
-    <Value>0.239211828</Value>
+    <Value>0.244088680</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,32 +18,57 @@
 <Widget>
     <Kind>4</Kind>
     <Name>velocityAttenuation</Name>
-    <Value>0.987192094</Value>
+    <Value>0.967241347</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>accelScale</Name>
-    <Value>0.024630541</Value>
+    <Value>0.113300495</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gravity</Name>
-    <Value>0.027093595</Value>
+    <Value>0.038916256</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attractionToCenter</Name>
-    <Value>0.026600985</Value>
+    <Value>0.005911330</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>highSpeedPercent</Name>
+    <Value>0.064039409</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>highSpeedScale</Name>
+    <Value>1.187192082</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>speedScaleLow</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>speedScaleHi</Name>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cameraBounce</Name>
-    <Value>16.453201294</Value>
+    <Value>11.231527328</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cameraTargetDist</Name>
+    <Value>246.995071411</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>balloonFrameVal</Name>
-    <Value>0.000000000</Value>
+    <Value>0.423645318</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

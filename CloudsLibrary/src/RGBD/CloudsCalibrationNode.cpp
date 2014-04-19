@@ -20,16 +20,22 @@ CalibrationNode::CalibrationNode(){
 	titleTypeOffset = 0;
 	introNode = false;
 	cam = NULL;
-	
+	centerYAdjust = 10;
 }
 
-void CalibrationNode::updatePosition(){
+void CalibrationNode::update(){
+	updateWorldPosition();
+	updateScreenPosition();
+	updateInteraction();
+}
+
+void CalibrationNode::updateWorldPosition(){
 	worldPosition = ofVec3f( baseOffset.x, -baseOffset.y, baseOffset.z + titleTypeOffset);
 	worldPosition.x *= multiplier;
 	worldPosition.y *= multiplier;
-	
+
 	if(cam != NULL){
-//		worldPosition  = cam->getModelViewMatrix() * worldPosition;
+		//		worldPosition  = cam->getModelViewMatrix() * worldPosition;
 		worldPosition  = cam->getOrientationQuat() * worldPosition;
 		worldPosition += cam->getPosition();
 	}
@@ -37,21 +43,26 @@ void CalibrationNode::updatePosition(){
 	//hack for intro node
 	if(introNode){
 		if(multiplier == 0){
-			worldPosition.y -= 10; //plus 20 just to move everything down a little bit
+			worldPosition.y -= centerYAdjust; //plus 20 just to move everything down a little bit
 		}
 		else {
 			worldPosition.z *= .5; //bring the side nodes closer in Z
 		}
 	}
+	
+}
+
+void CalibrationNode::updateScreenPosition(){
 
 #ifdef OCULUS_RIFT
 	ofRectangle viewport = CloudsVisualSystem::getOculusRift().getOculusViewport();
 	ofVec3f screenPos = CloudsVisualSystem::getOculusRift().worldToScreen(worldPosition, true);
-#else
-	//kinect version
-#endif
 	screenPosition = ofVec2f(screenPos.x,screenPos.y);
 	cursorDirection = screenPosition - viewport.getCenter();
+#else
+	screenPosition = ofVec2f(worldPosition.x,worldPosition.y);
+	cursorDirection = screenPosition - ofVec2f(GetCloudsInputX(), GetCloudsInputY());
+#endif
 	cursorDistance  = cursorDirection.length();
 	cursorDirection.normalize();
 }
@@ -61,7 +72,9 @@ void CalibrationNode::updateInteraction(){
 	if(finished){
 		return;
 	}
-
+	
+	//cout << "activation distance from " << screenPosition << " is " << cursorDistance << endl;
+	
 	if(!hover && cursorDistance < activationDistance.min){
 		hover = true;
 		hoverStartTime = ofGetElapsedTimef();
@@ -96,7 +109,7 @@ void CalibrationNode::draw(){
 	ofFloatColor baseColor;
 	if(finished){
 		baseColor = tint;
-		tint.a = 200*nodeAlphaAttenuate;
+		baseColor.a = nodeAlphaAttenuate;
 	}
 	else if(hover){
 		baseColor = ofFloatColor(1.0, 100/255.0,100/255.0,200/255.0);
@@ -110,6 +123,10 @@ void CalibrationNode::draw(){
 	ofVec3f up = ofVec3f(0,1,0);
 	if(cam != NULL) up = cam->getUpDir();
 	CloudsVisualSystem::getOculusRift().multBillboardMatrix(worldPosition,up);
+#else
+	//just do a 2D transform
+	ofTranslate(worldPosition.x,worldPosition.y, 0);
+	ofRotate(180,0,0,1);//flip it back around
 #endif
 	
 	float afterFinishScalar = 0.0;
@@ -124,9 +141,11 @@ void CalibrationNode::draw(){
 		}
 		ofPath arc;
 		arc.setFilled(false);
-		arc.setStrokeWidth(3);
+		arc.setArcResolution(100);
+		arc.setStrokeWidth(5);
 		arc.setStrokeColor(arcColor);
-		arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 90, 360*percentComplete + 90, true);
+		float animationProgress = ofxTween::map(percentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+		arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 90, 360*animationProgress + 90, true);
 		arc.draw();
 	}
 	

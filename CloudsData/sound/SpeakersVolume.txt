@@ -18,8 +18,8 @@ Karsten:1.08
 Kevin:1.14
 Kyle_CH:1
 Kyle_MC:1.3
-LIA:1.4
-Lauren:1.05
+LIA:1.5
+Lauren:0.75
 Maeda:1.2
 Martin:1.2
 Nervous_Jesse:1.2
