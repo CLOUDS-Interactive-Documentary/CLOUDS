@@ -10,7 +10,7 @@
 #include "CloudsInputEvents.h"
 
 CloudsInputMouse::CloudsInputMouse()
-: cursorDownSize(7)
+: cursorDownSize(10)
 , cursorUpSize(12)
 {}
 

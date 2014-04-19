@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -13,22 +13,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>CurveProgress</Name>
-    <Value>1.000000000</Value>
+    <Value>0.921182275</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Height</Name>
-    <Value>400.000000000</Value>
+    <Value>1477.832519531</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Width</Name>
-    <Value>400.000000000</Value>
+    <Value>1379.310302734</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Depth</Name>
-    <Value>7000.000000000</Value>
+    <Value>8029.556640625</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Speed</Name>
-    <Value>0.015000000</Value>
+    <Value>0.029556651</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

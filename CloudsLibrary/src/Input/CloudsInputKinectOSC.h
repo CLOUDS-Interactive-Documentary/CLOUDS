@@ -191,6 +191,8 @@ public:
 	void processHandEvent(int handIdx, k4w::Hand * hand, k4w::HandState newState);
     
     void debug(float x, float y, float width, float height);
+    
+    void draw(float alpha = 255);
 	void draw(float x, float y, float width, float height, float alpha = 255);
     
     ofxOscReceiver receiver;
@@ -208,6 +210,7 @@ public:
 
 	k4w::ViewerState viewerState;
     unsigned long viewerIdleTime;
+    bool bCurrViewerHasInteracted;
     
     // current position attributes
     float posResetLerpPct;
@@ -219,10 +222,16 @@ public:
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;
     
+    // cursors
     void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus);
     
     float cursorDownSizeMin, cursorDownSizeMax;
     float cursorUpSizeMin, cursorUpSizeMax;
+    
+    // draw feedback
+    float feedbackScale;
+    float feedbackMargin;
+    ofVec3f feedbackHSB;
 };
 
 void SetCloudsInputKinect(float activeThresholdY = 0.8f, float activeThresholdZ = 0.4f);

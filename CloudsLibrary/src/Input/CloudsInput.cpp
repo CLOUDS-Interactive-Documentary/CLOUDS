@@ -90,6 +90,9 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
     // EZ: Don't draw INACTIVE cursors for now
     if (mode == CURSOR_MODE_INACTIVE) return;
     
+    // EZ: Uncomment this line to test focus using the mouse
+    //focus = ofMap(ofDist(pos.x, pos.y, ofGetWidth()/2, ofGetHeight()/2), 50, 400, 1.0f, 0.0f, true);
+    
     ofPushStyle();
     
     if (mode == CURSOR_MODE_INACTIVE) {
@@ -102,27 +105,31 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
     else if (mode == CURSOR_MODE_DRAW) {
         ofSetLineWidth(2);
         ofNoFill();
-        ofSetColor(255, 255, 255, 192 * focus);
+        ofSetColor(255, 255, 255, 192);
         ofCircle(pos, size);
+        ofFill();
+        ofSetColor(255, 255, 255, 64);
+        ofCircle(pos, size * focus);
     }
     else {  // mode == CURSOR_MODE_CAMERA
         ofSetLineWidth(2);
-        ofSetColor(255, 255, 255, 192 * focus);
+        ofSetColor(255, 255, 255, 192);
+        
         static const float kCoreRadius = 0.2f;
-        ofLine(pos.x - size, pos.y, pos.x - size * kCoreRadius, pos.y);
-        ofLine(pos.x + size, pos.y, pos.x + size * kCoreRadius, pos.y);
-        ofLine(pos.x, pos.y - size, pos.x, pos.y - size * kCoreRadius);
-        ofLine(pos.x, pos.y + size, pos.x, pos.y + size * kCoreRadius);
+        float lineLength = size * ofMap(focus, 0.0f, 1.0f, kCoreRadius, (1.0f - kCoreRadius));
+        ofLine(pos.x - size, pos.y, pos.x - size + lineLength, pos.y);
+        ofLine(pos.x + size, pos.y, pos.x + size - lineLength, pos.y);
+        ofLine(pos.x, pos.y - size, pos.x, pos.y - size + lineLength);
+        ofLine(pos.x, pos.y + size, pos.x, pos.y + size - lineLength);
 
         if (bDragged) {
             ofNoFill();
-            ofCircle(pos, kCoreRadius);
+            ofCircle(pos, lineLength);
         }
         else {  // !bDragged
-            static const float kMidRadius = 0.5f;
-            ofSetColor(255, 255, 255, 64 * focus);
+            ofSetColor(255, 255, 255, 64);
             ofFill();
-            ofCircle(pos, kMidRadius);
+            ofCircle(pos, lineLength);
         }
     }
 

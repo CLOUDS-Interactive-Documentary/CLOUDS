@@ -10,6 +10,7 @@ void CloudsVisualSystemParadox::selfSetupGui(){
 	paradoxGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
 	vm.addGui(paradoxGui);
+	
 //	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
 //	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
 //	customGui->addButton("Custom Button", false);
@@ -48,7 +49,7 @@ void CloudsVisualSystemParadox::guiRenderEvent(ofxUIEventArgs &e){
 //use it to ensure all your simple variables are initialized to an
 //acceptable default state
 void CloudsVisualSystemParadox::selfSetDefaults(){
-
+	vm.setDefaults();
 }
 
 // selfSetup is called when the visual system is first instantiated

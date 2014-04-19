@@ -26,8 +26,7 @@ struct SOLPlayer
 class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
 {
     public:
-        string getSystemName()
-        {
+        string getSystemName(){
             return "OpenP5SeaOfLines";
         }
 
@@ -93,11 +92,6 @@ class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
         void selfMouseReleased(ofMouseEventArgs& data);
         void selfSetDefaults();
 
-        // if you use a custom camera to fly through the scene
-        // you must implement this method for the transitions to work properly
-    //	ofCamera& getCameraRef(){
-    //		return myCustomCamera;
-    //	}
 
     protected:
         ofxUISuperCanvas * customGui;
@@ -111,5 +105,5 @@ class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
         float gravity;
     
         ofVboMesh mesh;
-        vector<SOLPlayer *> players;
+        vector<SOLPlayer> players;
 };

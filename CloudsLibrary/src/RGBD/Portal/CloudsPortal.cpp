@@ -19,6 +19,16 @@ void CloudsPortal::reloadShader(){
 
 CloudsPortal::CloudsPortal(){
 
+	hoverStartTime = 0;
+	selectedTime = 0;
+	
+    onScreen = false;
+	bLookAtCamera = false;
+	
+	tunnelQuadrantIndex = 0;
+	cam = NULL;
+	font = NULL;
+
 	scale = 1.0f;
 	
     ringStartRadius = 100;
@@ -35,8 +45,11 @@ CloudsPortal::CloudsPortal(){
 	selected = false;
 	hovering = false;
 	bLookAtCamera = false;
-	
-	hoverPercentComplete = 0.;
+
+	hoverStartTime = 0.0;
+
+	hoverPercentComplete = 0.0;
+	selectedPercentComplete = 0.0 ;
 	
 	minSelectDistance = 20.; //screenspace distance from node to hover
 	maxHoverTime = 5.; //how long to hover before select

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>453.000000000</XPosition>
-    <YPosition>185.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>147.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,22 +18,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>VIDEO TINT</Name>
-    <Value>0.000000000</Value>
+    <Value>35.172412872</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD TINT</Name>
-    <Value>13.817734718</Value>
+    <Value>52.758621216</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DIFF TINT</Name>
-    <Value>32.660099030</Value>
+    <Value>45.221672058</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW WINDOW TINT</Name>
-    <Value>48.990146637</Value>
+    <Value>158.275848389</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -87,11 +87,6 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Swarm_EindhovenTest_Watec_two-visitors.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
     <Name>Swarm_EindhovenTest_Watec_two-visitors_Crop(2).mov</Name>
     <Value>0</Value>
 </Widget>
@@ -113,6 +108,11 @@
 <Widget>
     <Kind>17</Kind>
     <Name>TokyoEscalator.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>YouTubeDancer.mp4</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

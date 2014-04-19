@@ -48,7 +48,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	bQuestionDebug = false;
 	
 	kinectHelperAlpha = 0.0;
-	nodeAlphaAttenuate = 1.0; //rift calibration nodes
+	nodeAlphaAttenuate = 1.0;
 	
 	introNodeOne.clickSound = introNodeTwo.clickSound = introNodeThree.clickSound = &click;
 	introNodeOne.introNode = introNodeTwo.introNode = introNodeThree.introNode = true;
@@ -217,12 +217,21 @@ void CloudsIntroSequence::selfSetupGuis(){
 	introGui->copyCanvasProperties(gui);
 	introGui->setName("Intro");
 	introGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
+	//different ranges
+#ifdef OCULUS_RIFT
 	introGui->addSlider("Intro Node Size", 2, 7, &introNodeSize);
-	introGui->addSlider("Intro Node Hold Time", .5, 3, &introNodeHoldTime); //seconds
 	introGui->addSlider("Intro Node X",    0, 400, &introNodeOffset.x); //mirrored along the axis
 	introGui->addSlider("Intro Node Y",    0, 200, &introNodeOffset.y); //mirrored along the axis
 	introGui->addSlider("Intro Node Z", -100, 100, &introNodeOffset.z); //mirrored along the axis
+#else
+	introGui->addSlider("Intro Node Size", 2, 100, &introNodeSize);
+	introGui->addSlider("Intro Node X",    0, 1000, &introNodeOffset.x); //mirrored along the axis
+	introGui->addSlider("Intro Node Y",    0, 1000, &introNodeOffset.y); //mirrored along the axis
+	introGui->addSlider("Intro Node Z", -100, 100, &introNodeOffset.z); //mirrored along the axis
+#endif
+	introGui->addSlider("Intro Node Center Y", -100, 100, &introNodeYAdjust); //mirrored along the axis
+
+	introGui->addSlider("Intro Node Hold Time", .5, 3, &introNodeHoldTime); //seconds
 	
 	guis.push_back(introGui);
 	guimap[introGui->getName()] = introGui;
@@ -296,8 +305,7 @@ void CloudsIntroSequence::updateWaiting(){
 		nodeAlphaAttenuate = MAX(0,nodeAlphaAttenuate-0.02);
 		return;
 	}
-	
-	#ifdef OCULUS_RIFT
+
 	for(int i = 0; i < introNodes.size(); i++){
 		updateIntroNodePosition(*introNodes[i]);
 	}
@@ -314,8 +322,11 @@ void CloudsIntroSequence::updateWaiting(){
 		startedOnclick = true;
 		timeline->play();
 	}
+
+	#ifdef OCULUS_RIFT
 	
 	#elif defined(KINECT_INPUT)
+	
 	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
 	if(startQuestions.size() > 0 && viewerState != k4w::ViewerState_None){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 8){
@@ -362,26 +373,33 @@ void CloudsIntroSequence::updateWaiting(){
 
 void CloudsIntroSequence::updateIntroNodePosition(CalibrationNode& node){
 	
-	#ifdef OCULUS_RIFT
 	node.baseOffset = introNodeOffset;
 	node.titleTypeOffset = titleTypeOffset;
-	node.activationDistance = questionTugDistance;
 	node.holdTime = introNodeHoldTime;
-	node.updatePosition();
+	node.centerYAdjust = introNodeYAdjust;
+	node.updateWorldPosition();
+	#ifdef OCULUS_RIFT
+	node.activationDistance = questionTugDistance;
+	#else
+	node.activationDistance = ofRange(introNodeSize*3, introNodeSize*5);
+	node.worldPosition.x += getCanvasWidth()/2;
+	node.worldPosition.y += getCanvasHeight()/2;
 	#endif
+	node.updateScreenPosition();
 	
 }
 
 void CloudsIntroSequence::updateIntroNodeInteraction(CalibrationNode& node){
 	
-	#ifdef OCULUS_RIFT
+//	#ifdef OCULUS_RIFT
 	node.updateInteraction();
-	#endif
+//	#endif
 }
 
 void CloudsIntroSequence::updateTitle(){
 	
-	if(currentFontSize != titleFontSize ||
+	if(!extrudedTitleText.isLoaded() ||
+	   currentFontSize != titleFontSize ||
 	   currentFontExtrusion != titleFontExtrude)
 	{
 		currentFontSize = titleFontExtrude;
@@ -457,7 +475,7 @@ void CloudsIntroSequence::updateQuestions(){
 //												   questionTugDistance.max, questionTugDistance.min,
 //												   0, cameraForwardSpeed);
 		
-		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.max){
+		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.max || &curQuestion == caughtQuestion){
 #ifdef OCULUS_RIFT
             ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
 			ofRectangle viewport = getOculusRift().getOculusViewport();
@@ -505,7 +523,7 @@ void CloudsIntroSequence::updateQuestions(){
         stickyCursor.interpolate(caughtQuestion->screenPosition - ofVec2f(bleed,bleed)*.5, 0.2f);
     }
     else {
-        stickyCursor = cursor;
+        stickyCursor.interpolate(cursor, 0.5f);
     }
 }
 
@@ -721,7 +739,9 @@ void CloudsIntroSequence::selfDraw(){
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 	drawCloudsType();
+#ifdef OCULUS_RIFT
 	drawIntroNodes();
+#endif
 	drawTunnel();
 	drawPortals();
 	drawHelperType();
@@ -822,7 +842,7 @@ void CloudsIntroSequence::drawHelperType(){
 	ofPushStyle();
 	glDisable(GL_DEPTH_TEST);
 	
-	if(currentHelperFontSize != helperFontSize){
+	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
 //		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", helperFontSize);
 		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 		currentHelperFontSize = helperFontSize;
@@ -876,10 +896,10 @@ void CloudsIntroSequence::drawHelperType(){
 		
 		#ifdef OCULUS_RIFT
 		getOculusRift().multBillboardMatrix( basePosition );
-		ofRotate(180, 0, 0, 1);//flip around
 		#else
-		ofTranslate(compensate.preMult(basePosition) );
+		ofTranslate(basePosition);
 		#endif
+		ofRotate(180, 0, 0, 1);//flip around
 		ofScale(scaleModifier*helperFontScale,
 				scaleModifier*helperFontScale,
 				scaleModifier*helperFontScale);
@@ -897,7 +917,7 @@ void CloudsIntroSequence::drawHelperType(){
 
 void CloudsIntroSequence::drawIntroNodes(){
 
-#ifdef OCULUS_RIFT
+//#ifdef OCULUS_RIFT
 	ofPushStyle();
 	
 	for(int i = 0; i < introNodes.size(); i++){
@@ -908,45 +928,6 @@ void CloudsIntroSequence::drawIntroNodes(){
 		
 		introNodes[i]->draw();
 		
-//		ofPushMatrix();
-//
-//		if(introNodes[i]->finished){
-//			ofFloatColor tinted = ofFloatColor::fromHsb(tint.r, tint.g, tint.b);
-//			ofSetColor(tinted, 200*nodeAlphaAttenuate);
-//		}
-//		else if(introNodes[i]->hover){
-//			ofSetColor(255,100,100,200);
-//		}
-//		else{
-//			ofSetColor(255,200);
-//		}
-//		
-//		getOculusRift().multBillboardMatrix(introNodes[i]->worldPosition);
-//		float afterFinishScalar = 0.0;
-//		ofNoFill();
-//		if(introNodes[i]->percentComplete > 0.0){
-//			float nodeSize = introNodeSize;
-//			ofColor arcColor = ofGetStyle().color;
-//			if(introNodes[i]->finished){
-//				afterFinishScalar = powf(ofMap(ofGetElapsedTimef(), introNodes[i]->finishedTime, introNodes[i]->finishedTime+.2, 0.0, 1.0, true), 2.0f);
-//				nodeSize = introNodeSize + ( afterFinishScalar * 8.0);
-//				arcColor.a = 255*(1.0-afterFinishScalar);
-//			}
-//			ofPath arc;
-//			arc.setFilled(false);
-//			arc.setStrokeWidth(3);
-//			arc.setStrokeColor(arcColor);
-//			arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 0, 360*introNodes[i]->percentComplete, true);
-//			arc.draw();
-//		}
-//		ofCircle(0,0,0, introNodeSize * (1.0-afterFinishScalar) );
-//
-//		if(introNodes[i]->finished){
-//			ofFill();
-////			ofCircle(0,0,0, introNodeSize);
-//		}
-//		ofPopMatrix();
-//		
 		if(!introNodes[i]->finished){
 			break;
 		}
@@ -954,7 +935,7 @@ void CloudsIntroSequence::drawIntroNodes(){
 	}
 	
 	ofPopStyle();
-#endif
+//#endif
 	
 }
 
@@ -962,7 +943,8 @@ void CloudsIntroSequence::drawCursors(){
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
         if (it->second.primary) {
-            selfDrawCursor(stickyCursor, it->second.dragged, primaryCursorMode, it->second.focus);
+            // override primaryCursorMode
+            selfDrawCursor(stickyCursor, it->second.dragged, caughtQuestion? CURSOR_MODE_DRAW : CURSOR_MODE_CAMERA, it->second.focus);
         }
         else {
             selfDrawCursor(it->second.position, it->second.dragged, secondaryCursorMode, it->second.focus);
@@ -972,6 +954,10 @@ void CloudsIntroSequence::drawCursors(){
 
 void CloudsIntroSequence::selfDrawOverlay(){
 
+#ifndef OCULUS_RIFT
+//	ofCircle(introNodeOffset.x, introNodeOffset.y, 0, 100);
+	drawIntroNodes();
+#endif
 	//old oculus arrow draing code
 //	
 //	bool drawDirection = false;
@@ -1086,15 +1072,15 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data)
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 #if !defined(OCULUS_RIFT)
-	if(!startedOnclick && startQuestions.size() > 0){
-		startedOnclick  = true;
-		timeline->play();
-		
-		CloudsPortalEventArgs args("");
-		ofNotifyEvent(events.portalHoverEnded, args);
-		timeSinceLastPrompt = ofGetElapsedTimef();
-		promptShown = false;
-	}
+//	if(!startedOnclick && startQuestions.size() > 0){
+//		startedOnclick  = true;
+//		timeline->play();
+//		
+//		CloudsPortalEventArgs args("");
+//		ofNotifyEvent(events.portalHoverEnded, args);
+//		timeSinceLastPrompt = ofGetElapsedTimef();
+//		promptShown = false;
+//	}
 #endif
 }
 

@@ -24,6 +24,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , bDoDebug(false)
 , viewerState(k4w::ViewerState_None)
 , viewerIdleTime(0)
+, bCurrViewerHasInteracted(false)
 , boundsMin(-0.5f, -0.7f, 1.0f)
 , boundsMax( 0.5f, -0.2f, 2.0f)
 , posResetLerpPct(0.1f)
@@ -35,6 +36,9 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , cursorDownSizeMax(10)
 , cursorUpSizeMin(8)
 , cursorUpSizeMax(16)
+, feedbackScale(0.2f)
+, feedbackMargin(0.02f)
+, feedbackHSB(255, 0, 255)
 {
 
 }
@@ -443,12 +447,17 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
 	if (viewerState < k4w::ViewerState_Interacting && primaryIdx != -1) {
         // upgrayedd!
         viewerState = k4w::ViewerState_Interacting;
+        bCurrViewerHasInteracted = true;
     }
     if (viewerState == k4w::ViewerState_PresentIdle) {
         viewerIdleTime += ofGetLastFrameTime() * 1000;
     }
     else {
         viewerIdleTime = 0;
+    }
+    if (viewerState <= k4w::ViewerState_OutOfRange) {
+        // this should work assuming a user can't just magically appear in PresentIdle state
+        bCurrViewerHasInteracted = false;
     }
 }
 
@@ -634,6 +643,15 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
 }
 
 //--------------------------------------------------------------
+void CloudsInputKinectOSC::draw(float alpha)
+{
+    float margin = ofGetHeight() * feedbackMargin;
+    float height = ofGetHeight() * feedbackScale;
+    float width = height * 4.0f/3.0f;
+    draw(margin, ofGetHeight() - height - margin, width, height, alpha);
+}
+
+//--------------------------------------------------------------
 void CloudsInputKinectOSC::draw(float x, float y, float width, float height, float alpha)
 {
     // Adjust the dimensions to fit in a 4:3 window cause stretching is gross.
@@ -652,7 +670,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height, flo
         ofTranslate(1, 1);
         ofScale(1, -1);
         
-		ofSetColor(ofColor::white, alpha);
+		ofSetColor(ofColor::fromHsb(feedbackHSB.x, feedbackHSB.y, feedbackHSB.z), alpha);
 
         ofNoFill();
 		ofRect(-1, -1, 2, 2);

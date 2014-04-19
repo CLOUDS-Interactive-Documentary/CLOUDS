@@ -27,6 +27,8 @@ CloudsRGBDCamera::CloudsRGBDCamera(){
 	canvasWidth = 1920;
 	canvasHeight = 1080;
 
+	zoomFOVRange = ofRange(50, 100);
+	
 	maxDriftAngle = 0;
 
 }
@@ -128,6 +130,19 @@ void CloudsRGBDCamera::setPositionFromMouse(){
 	
 	mouseBasedNode.setPosition(driftPosition);
 	mouseBasedNode.lookAt(currentLookTarget);
+	
+	//Compute new FOV
+	bool onEdge = GetCloudsInputX() < 20 || GetCloudsInputX() > canvasWidth - 40 ||
+					GetCloudsInputY() < 20 || GetCloudsInputY() > canvasHeight - 40;
+	float newFov;
+	if(onEdge){
+		newFov = getFov() + ( zoomFOVRange.max - getFov() ) * .05;
+	}
+	else{
+		newFov = getFov() + (zoomFOVRange.min - getFov() ) * .005;
+	}
+	setFov(newFov);
+				
 }
 
 void CloudsRGBDCamera::setTransitionStartNode( ofNode* _startNode ){

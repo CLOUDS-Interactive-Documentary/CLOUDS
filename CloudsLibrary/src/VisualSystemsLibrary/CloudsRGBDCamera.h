@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofRange.h"
 
 class CloudsRGBDCamera : public ofCamera {
   public:
@@ -62,6 +63,9 @@ class CloudsRGBDCamera : public ofCamera {
 	float driftNoiseDensity;
 	float driftNoiseSpeed;
 	float driftNoisePosition;
+	
+
+	ofRange zoomFOVRange;
 	
   protected:
 	ofVec3f currentPosition;

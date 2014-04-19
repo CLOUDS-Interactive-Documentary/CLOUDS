@@ -4,11 +4,6 @@
 
 #include "CloudsVisualSystemOpenP5SeaOfLines.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
 {
@@ -43,11 +38,13 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
 	guimap[customGui->getName()] = customGui;
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfSetDefaults(){
     primaryCursorMode   = CURSOR_MODE_INACTIVE;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
     
 }
+
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfGuiEvent(ofxUIEventArgs &e)
 {
@@ -62,11 +59,14 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupSystemGui(){
 void CloudsVisualSystemOpenP5SeaOfLines::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
+
 //use render gui for display settings, like changing colors
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfSetupRenderGui(){
 
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
@@ -93,18 +93,20 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
     for (float i = 0; i < (getCanvasWidth() / step - 1); i++) {
         for (float j = 0; j < (getCanvasHeight() / step - 1); j++) {
             if (ofRandom(3) > 1) {
-                SOLPlayer * player = new SOLPlayer();
+				
+				players.push_back(SOLPlayer());
+				
+				SOLPlayer& player = players.back();
+				
+                player.x = i * step + step * 0.5f;
+                player.y = j * step + step * 0.5f;
                 
-                player->x = i * step + step * 0.5f;
-                player->y = j * step + step * 0.5f;
-                
-                player->speed = ofRandom(minSpeed, maxSpeed);
+                player.speed = ofRandom(minSpeed, maxSpeed);
                 
                 float angle = ofRandom(TWO_PI);
-                player->sx = cosf(angle) * player->speed;
-                player->sy = sinf(angle) * player->speed;
+                player.sx = cosf(angle) * player.speed;
+                player.sy = sinf(angle) * player.speed;
                 
-                players.push_back(player);
             }
         }
     }
@@ -139,47 +141,47 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
 
     // First pass: Update player position.
     for (int i = 0; i < players.size(); i++) {
-        players[i]->x += players[i]->sx;
-        players[i]->y += players[i]->sy;
+        players[i].x += players[i].sx;
+        players[i].y += players[i].sy;
         
-        players[i]->sy += gravity;
+        players[i].sy += gravity;
         
         // Bounce off walls.
-        if (players[i]->x < 0) {
-            players[i]->x = 0;
-            players[i]->sx *= -1;
+        if (players[i].x < 0) {
+            players[i].x = 0;
+            players[i].sx *= -1;
         }
         //MA: changed ofGetWidth() to getCanvasWidth()
-        else if (players[i]->x > getCanvasWidth()) {
-            players[i]->x = getCanvasWidth();
-            players[i]->sx *= -1;
+        else if (players[i].x > getCanvasWidth()) {
+            players[i].x = getCanvasWidth();
+            players[i].sx *= -1;
         }
-        if (players[i]->y < 0) {
-            players[i]->y = 0;
-            players[i]->sy *= -1;
+        if (players[i].y < 0) {
+            players[i].y = 0;
+            players[i].sy *= -1;
         }
         //MA: changed ofGetHeight() to getCanvasHeight()
-        else if (players[i]->y > getCanvasHeight()) {
-            players[i]->y = getCanvasHeight();
-            players[i]->sy *= -1;
+        else if (players[i].y > getCanvasHeight()) {
+            players[i].y = getCanvasHeight();
+            players[i].sy *= -1;
         }
         
-        mesh.addVertex(ofVec3f(players[i]->x, players[i]->y));
+        mesh.addVertex(ofVec3f(players[i].x, players[i].y));
         mesh.addColor((i%2 == 0)? lineColor1:lineColor2);
     }
     
     // Second pass: Handle collisions and proximity.
     for (int i = 0; i < players.size(); i++) {
-        SOLPlayer * one = players[i];
+        SOLPlayer& one = players[i];
         for (int j = i + 1; j < players.size(); j++) {
-            SOLPlayer * two = players[j];
-            float dist = ofDist(one->x, one->y, two->x, two->y);
+            SOLPlayer& two = players[j];
+            float dist = ofDist(one.x, one.y, two.x, two.y);
             if (dist < collideDist) {
-                one->speed = ofRandom(minSpeed, maxSpeed);
+                one.speed = ofRandom(minSpeed, maxSpeed);
                 
-                float ang = atan2f(one->y - two->y, one->x - two->x);
-                one->sx = cosf(ang) * one->speed;
-                one->sy = sinf(ang) * one->speed;
+                float ang = atan2f(one.y - two.y, one.x - two.x);
+                one.sx = cosf(ang) * one.speed;
+                one.sy = sinf(ang) * one.speed;
             }
             else if (dist < lineDist) {
                 mesh.addIndex(i);
@@ -196,6 +198,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDraw()
 }
 
 // draw any debug stuff here
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfDrawDebug(){
 
 }
@@ -204,6 +207,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawDebug(){
 void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
 {
     ofSetColor(bgColor, bgAlpha * 255);
+
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     ofRect(0, 0, getCanvasWidth(), getCanvasHeight());
     glDisable(GL_LINE_SMOOTH);
@@ -222,9 +226,6 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfEnd(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfExit()
 {
-    for (int i = 0; i < players.size(); i++) {
-        delete players[i];
-    }
     players.clear();
 }
 
@@ -236,19 +237,15 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfKeyPressed(ofKeyEventArgs & args){
 void CloudsVisualSystemOpenP5SeaOfLines::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
-
 void CloudsVisualSystemOpenP5SeaOfLines::selfMouseDragged(ofMouseEventArgs& data){
 
 }
-
 void CloudsVisualSystemOpenP5SeaOfLines::selfMouseMoved(ofMouseEventArgs& data){
 	
 }
-
 void CloudsVisualSystemOpenP5SeaOfLines::selfMousePressed(ofMouseEventArgs& data){
 	
 }
-
 void CloudsVisualSystemOpenP5SeaOfLines::selfMouseReleased(ofMouseEventArgs& data){
 
 }
