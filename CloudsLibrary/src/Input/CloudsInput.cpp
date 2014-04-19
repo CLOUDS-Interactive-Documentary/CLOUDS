@@ -102,8 +102,11 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
     else if (mode == CURSOR_MODE_DRAW) {
         ofSetLineWidth(2);
         ofNoFill();
-        ofSetColor(255, 255, 255, 192 * focus);
+        ofSetColor(255, 255, 255, 192);
         ofCircle(pos, size);
+        ofFill();
+        ofSetColor(255, 255, 255, 96);
+        ofCircle(pos, size * focus);
     }
     else {  // mode == CURSOR_MODE_CAMERA
         ofSetLineWidth(2);
