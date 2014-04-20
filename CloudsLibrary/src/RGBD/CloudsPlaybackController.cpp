@@ -85,7 +85,12 @@ void CloudsPlaybackController::clearAct(){
 	
     delete currentAct;
     currentAct = NULL;
-    
+	
+	//hack to clear frame buffer
+	CloudsVisualSystem::getStaticRenderTarget().begin();
+	ofClear(0,0,0);
+	CloudsVisualSystem::getStaticRenderTarget().end();
+	
     numActsCreated++;
 }
 
@@ -383,6 +388,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
         }
 	}
     
+#ifdef OCULUS_RIFT
     if(args.key == OF_KEY_RETURN){
         if(showingInterlude){
             interludeSystem->getTimeline()->stop();
@@ -396,7 +402,8 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
             currentAct->getTimeline().stop();
         }
     }
-    
+#endif
+	
     if(args.key == 'R'){
         oscSender.reset();
     }
@@ -1123,6 +1130,8 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
         clearAct();
     }
     
+	rgbdVisualSystem->clearQuestions();
+	
 	numClipsPlayed = 0;
 	shouldLoadAct = true;
 	shouldPlayAct = false;
