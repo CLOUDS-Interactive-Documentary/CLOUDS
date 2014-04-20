@@ -37,7 +37,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	resetInterludeVariables();
 	
     interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
-    
+
 #ifdef KINECT_INPUT
     kinectFeedbackAlpha = 0;
     kinectFeedbackFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
@@ -58,6 +58,8 @@ void CloudsPlaybackController::resetInterludeVariables(){
 	interludeBarHoverPercentComplete = 0;
 	interludeContinueSelected = false;
 	interludeResetSelected = false;
+	interludeTimedOut = false;
+	interludeForceOnTimer = 10;
 	
 }
 
@@ -83,7 +85,12 @@ void CloudsPlaybackController::clearAct(){
 	
     delete currentAct;
     currentAct = NULL;
-    
+	
+	//hack to clear frame buffer
+	CloudsVisualSystem::getStaticRenderTarget().begin();
+	ofClear(0,0,0);
+	CloudsVisualSystem::getStaticRenderTarget().end();
+	
     numActsCreated++;
 }
 
@@ -278,6 +285,9 @@ void CloudsPlaybackController::showIntro(){
 	
 	//HACCCK!
 //	currentVisualSystem->isInterlude = true;
+//	interludeSystem = currentVisualSystem;
+//	interludeStartTime = ofGetElapsedTimef();
+	//////////
 	
 	numActsCreated = 0;
     
@@ -378,6 +388,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
         }
 	}
     
+#ifdef OCULUS_RIFT
     if(args.key == OF_KEY_RETURN){
         if(showingInterlude){
             interludeSystem->getTimeline()->stop();
@@ -391,7 +402,8 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
             currentAct->getTimeline().stop();
         }
     }
-    
+#endif
+	
     if(args.key == 'R'){
         oscSender.reset();
     }
@@ -836,7 +848,10 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	return false;
 #else
 	
-	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth){
+	interludeTimedOut = ofGetElapsedTimef() - interludeStartTime > interludeForceOnTimer;
+	
+	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth)
+	{
 		if(!interludeHoveringContinue){
 			interludeHoveringContinue = true;
 			interludeBarHoverStartTime = ofGetElapsedTimef();
@@ -862,7 +877,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeBarHoverPercentComplete = ofMap(ofGetElapsedTimef(),
 												 interludeBarHoverStartTime,interludeBarHoverStartTime+interludeBarHoverHoldTime,
 												 0.0, 1.0, true);
-		
+//		cout << " interludeBarHoverPercentComplete " << interludeBarHoverPercentComplete << endl;
 		if(interludeBarHoverPercentComplete == 1.0){
 			//TODO PLAY SOUND
 			
@@ -877,6 +892,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		//slowly attenuate it back down
 		interludeBarHoverPercentComplete *= 0.995;
 		interludeBarHoverPercentComplete = MAX(0.0,interludeBarHoverPercentComplete-.001);
+//		interludeBarHoverPercentComplete = 0;
 	}
 	
 	if(ofGetElapsedTimef() - interludeStartTime > 60){
@@ -902,57 +918,92 @@ void CloudsPlaybackController::drawInterludeInterface(){
 	bool hovering = false;
 	string promptType;
 	int tracking;
-	if(interludeHoveringContinue){
+	if(interludeSystem != NULL){
+//	if(interludeHoveringContinue){
 		hoverRect = ofRectangle(interludeSystem->getCanvasWidth(), 0,
 								-interludeExitBarWidth, interludeSystem->getCanvasHeight());
-		hovering = true;
+		hovering = interludeHoveringContinue;
 		promptType = "CONTINUE";
 		tracking = 6;
-	}
-	else if(interludeHoveringReset){
+		drawInterludePanel(hoverRect, promptType, hovering, tracking);
+//	}
+//	else if(interludeHoveringReset){
 		hoverRect = ofRectangle(0, 0, interludeExitBarWidth, interludeSystem->getCanvasHeight());
-		hovering = true;
+		hovering = interludeHoveringReset;
 		promptType = "RESET";
 		tracking = 11;
+		drawInterludePanel(hoverRect, promptType, hovering, tracking);
+//	}
 	}
-	
+}
+
+void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string promptType, bool hovering, int tracking ){
+
 	ofPushStyle();
 	ofEnableAlphaBlending();
-
-	ofFill();
-	float alpha      = ofxTween::map(interludeBarHoverPercentComplete, 0.0, .3, 0.2, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
-	hoverRect.width *= ofxTween::map(interludeBarHoverPercentComplete, 0.0, .2, 0.1, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
-	ofFloatColor arcColor = ofFloatColor(1.0, alpha*powf(crossfadeValue,2.0f) *  .3);
-	ofSetColor(arcColor);
-	ofRect(hoverRect);
 	
+	ofFill();
+	
+	float forceExtendPercent = ofMap(ofGetElapsedTimef(),
+									 interludeStartTime+interludeForceOnTimer,
+									 interludeStartTime+interludeForceOnTimer+2.0,
+									 0.0, 1.0, true);
+	float percentExtended = MAX(interludeBarHoverPercentComplete, forceExtendPercent);
+	float alpha;
 	if(hovering){
-		
+		hoverRect.width *= ofxTween::map(percentExtended, 0.0, 0.2, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+		alpha = ofxTween::map(percentExtended, 0.0, .3, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+	}
+	else{
+		hoverRect.width *= ofxTween::map(percentExtended, 0.7, 0.9, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+		alpha = ofxTween::map(percentExtended, 0.7, 0.9, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+	}
+	ofFloatColor shelfColor = ofFloatColor(1.0, alpha*powf(crossfadeValue,2.0f) * .3);
+	if(interludeSystem->getBgColor().getBrightness() > 128){
+		ofSetColor(0, shelfColor.a*255);
+	}
+	else{
+		ofSetColor(255, shelfColor.a*255);
+	}
+	ofRect(hoverRect);
+	ofVec2f cursorPosition = GetCloudsInputPosition();
+	float halfWidth = hoverRect.getStandardized().getWidth()*.5;
+	cursorPosition.x = ofClamp(cursorPosition.x, halfWidth, interludeSystem->getCanvasWidth() - halfWidth);
+	cursorPosition.y = ofClamp(cursorPosition.y, interludeArcRadius*2.2, interludeSystem->getCanvasHeight() - interludeArcRadius*2.2);
+	
+	//force extend after interludeForceOnTimer times out
+	if(percentExtended > 0.0){
+		//draw basic circle
 		ofNoFill();
-		ofSetColor(255, 100*crossfadeValue);
-		ofCircle(GetCloudsInputPosition(), interludeArcRadius*crossfadeValue);
-		
-		if(interludeBarHoverPercentComplete > 0.0){
-			float arcPercent = ofxTween::map(interludeBarHoverPercentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
-			ofPath arc;
-			arc.setFilled(false);
-			arc.setStrokeWidth(3);
-			arc.setStrokeColor(arcColor);
-			float expandedArcRadius = interludeArcRadius + powf(1.0-crossfadeValue,2.0f) * 40; //expand it beyond when it's finished
-			
-			arc.arc( GetCloudsInputPosition(), expandedArcRadius, expandedArcRadius, -90, 360*arcPercent-90, true);
-			arc.draw();
+		ofFloatColor arcColor = ofFloatColor(1.0, 100/255.0,100/255.0, crossfadeValue*powf(crossfadeValue,2.0f) );
+		if(hovering){
+			ofSetColor(arcColor, 100*crossfadeValue*alpha);
+		}else{
+			ofSetColor(1.0, 100*crossfadeValue*alpha) ;
 		}
-		
+		ofCircle(cursorPosition, interludeArcRadius*crossfadeValue);
 		interludeInterfaceFont.setTracking(tracking);
 		float typeWidth  = interludeInterfaceFont.stringWidth(promptType);
 		float typeHeight = interludeInterfaceFont.stringHeight(promptType);
-		
-		ofSetColor(255*alpha*crossfadeValue);
+		//draw type
+		ofSetColor(255, 255*alpha*crossfadeValue);
 		interludeInterfaceFont.drawString(promptType, hoverRect.getCenter().x - typeWidth/2 - 10, GetCloudsInputY() + interludeArcRadius + typeHeight + 10);
+
+		if(hovering){
+			float arcPercent = ofxTween::map(interludeBarHoverPercentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+			ofPath arc;
+			arc.setFilled(false);
+			arc.setStrokeWidth(4);
+			arc.setStrokeColor(arcColor);
+			float expandedArcRadius = interludeArcRadius + powf(1.0-crossfadeValue,2.0f) * 40; //expand it beyond when it's finished
+			
+			arc.arc( cursorPosition, expandedArcRadius, expandedArcRadius, -90, 360*arcPercent-90, true);
+			arc.draw();
+		}
+		
 	}
-	ofPopStyle();
 	
+	ofPopStyle();
 }
 
 #ifdef KINECT_INPUT
@@ -1079,6 +1130,8 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
         clearAct();
     }
     
+	rgbdVisualSystem->clearQuestions();
+	
 	numClipsPlayed = 0;
 	shouldLoadAct = true;
 	shouldPlayAct = false;
@@ -1285,6 +1338,9 @@ void CloudsPlaybackController::cleanupInterlude(){
     else if(currentVisualSystem != NULL && currentVisualSystem == interludeSystem){
         interludeSystem->stopSystem();
         interludeSystem->exit();
+		
+		interludeSystem = NULL;
+		
 		hud.clearQuestion();
         exitedInterlude = true;
     }

@@ -331,12 +331,12 @@ void CloudsIntroSequence::updateWaiting(){
 	if(startQuestions.size() > 0 && viewerState != k4w::ViewerState_None){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 8){
 			if(viewerState == k4w::ViewerState_OutOfRange){
-				CloudsPortalEventArgs args("MOVE CLOSER TO THE DISPLAY");
-				ofNotifyEvent(events.portalHoverBegan, args);
+//				CloudsPortalEventArgs args("MOVE CLOSER TO THE DISPLAY");
+//				ofNotifyEvent(events.portalHoverBegan, args);
 			}
 			else if(viewerState == k4w::ViewerState_PresentIdle){
-				CloudsPortalEventArgs args("EXTEND YOUR HAND TO BEGIN");
-				ofNotifyEvent(events.portalHoverBegan, args);
+//				CloudsPortalEventArgs args("EXTEND YOUR HAND TO BEGIN");
+//				ofNotifyEvent(events.portalHoverBegan, args);
 			}
 			timeSinceLastPrompt = ofGetElapsedTimef();
 			promptShown = true;
@@ -354,8 +354,8 @@ void CloudsIntroSequence::updateWaiting(){
 	#else
 	if(startQuestions.size() > 0){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 10){
-			CloudsPortalEventArgs args("CLICK TO BEGIN");
-			ofNotifyEvent(events.portalHoverBegan, args);
+//			CloudsPortalEventArgs args("CLICK TO BEGIN");
+//			ofNotifyEvent(events.portalHoverBegan, args);
 			timeSinceLastPrompt = ofGetElapsedTimef();
 			promptShown = true;
 

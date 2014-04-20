@@ -294,6 +294,7 @@ class CloudsVisualSystem {
 	//LB
 	ofVec3f getCameraPosition();
 	ofVec3f positionOffset;
+	ofColor getBgColor(){ return bgColor; }
 
 	RGBDTransitionType getTransitionType();
 	

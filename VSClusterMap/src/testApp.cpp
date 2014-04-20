@@ -20,7 +20,9 @@ void testApp::setup(){
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
 	srand(ofGetSeconds());
     cout << "starting node size is " << startingNodes.size() << endl;
-    ofRandomuf();
+
+    
+	ofRandomuf();
     ofRandomuf();
     ofRandomuf();
     
@@ -36,15 +38,12 @@ void testApp::setup(){
 		cout << "	** " << run.clipHistory[i].getID() << endl;
 	}
 	
-    clusterMap.setNumSamples(4);
+//    clusterMap.setNumSamples(4);
 	clusterMap.setup();
 	clusterMap.setRun(run);
 	clusterMap.buildEntireCluster(parser);
-	clusterMap.playSystem();
+	//	clusterMap.playSystem();
 	
-//	for(int i = 0; i < parser.getAllClips().size(); i++){
-//		cout << parser.getAllClips()[i].getID() << endl;
-//	}
 }
 
 //--------------------------------------------------------------
@@ -63,7 +62,7 @@ void testApp::exit(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+	clusterMap.playSystem();
 }
 
 //--------------------------------------------------------------
