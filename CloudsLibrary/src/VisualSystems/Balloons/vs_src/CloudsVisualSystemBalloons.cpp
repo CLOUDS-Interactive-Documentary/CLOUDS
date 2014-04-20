@@ -47,6 +47,7 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	
 	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
 	textGui->addSlider("textRadius", 1, 10, &textRadius);
+	textGui->addSlider("creditLightDist", 10, 500, &creditLightDist);
 	
 	ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemBalloons::selfGuiEvent);
 	guis.push_back(textGui);
@@ -430,7 +431,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
 	
-	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/sky.jpg");
+	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/cloudy_afternoon_preview.jpg");
 	
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
@@ -446,7 +447,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	quatShader.load(getVisualSystemDataPath() + "shaders/quatShader");
 	
 	
-	for(int i=0; i<40; i++)
+	for(int i=0; i<100; i++)
 	{
 		ofVec3f pos( 0, i * dim, 0);
 		Credit c("title", "name", pos);
@@ -580,9 +581,6 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1f("speedHi", speedHi );
 	velShader.setUniform1f("highSpeedPercent", highSpeedPercent );
 	
-	velShader.setUniform3f("line0", line0.x, line0.y, line0.z);
-	velShader.setUniform3f("line1", line1.x, line1.y, line1.z);
-	
 	ofRect(-1,-1,2,2);
 	
 	velShader.end();
@@ -608,7 +606,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	shader.begin();
-	shader.setUniform1f("shininess", 2);
+	shader.setUniform1f("shininess", 10);
 	shader.setUniform1f("screenHeight", ofGetHeight());
 	
 	ofFloatColor bg0 = bgColor;
@@ -630,6 +628,12 @@ void CloudsVisualSystemBalloons::selfDraw()
 	shader.setUniformTexture("quatTexture", quatFbo.getTextureReference(), 3);
 	shader.setUniformTexture("sphericalMap", sphericalMap, 4);
 	shader.setUniform2f("sphericalMapDim", sphericalMap.getWidth(), sphericalMap.getHeight());
+	
+	shader.setUniform1f("creditThresh", creditLightDist);
+	
+	if(creditPositions.size())	shader.setUniform4fv("lights", &creditPositions[0][0], creditPositions.size());
+	shader.setUniform1f("numLights", creditPositions.size());
+	
 	
 	//vbo instancing
 	vbo.bind();

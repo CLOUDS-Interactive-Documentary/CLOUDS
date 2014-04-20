@@ -126,6 +126,18 @@ varying float fogMix;
 
 varying vec2 vN;
 
+
+uniform float numLights;
+uniform vec4 lights[5];
+varying vec4 wordLightPos;
+varying float wordLightAtten;
+
+varying vec4 wordLightPos0;
+varying float wordLightAtten0;
+
+uniform	float creditThresh;
+varying float creditLight;
+
 void main()
 {
 	vec2 st = vec2(mod(float(gl_InstanceID), dimY), floor(float(gl_InstanceID) / dimY));
@@ -143,12 +155,30 @@ void main()
 	v.xyz += pos;
 	
 	fogMix = 1. - pow(abs(v.y) / (dim*.9), 4.);
+	fogMix = clamp(fogMix,0.,1.);
+	
 	//	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / fogDist, 3.), 0., 1.);
 	
 	
-	lPos = vec4(0.,dim,0.,1.); // texture2DRect( posTexture, vec2(10.) );//vec4(0.,0.,0.,1.);//
+	lPos = vec4(0.,dim*.75,0.,1.); // texture2DRect( posTexture, vec2(10.) );//vec4(0.,0.,0.,1.);//
 	lCol = vec4(1.) - pow(abs(lPos.y) / dim, 4.);
 	lPos = gl_ModelViewMatrix * lPos;
+	
+	creditLight = 0.;
+	vec3 delta;
+	float a, fr, thresholdSquared = creditThresh * creditThresh;
+	for(int i=0; i<int(numLights); i++)
+	{
+		//the lights come in as the left position of the credit so we need to add half the width
+		delta = lights[i].xyz + vec3(lights[i].w*.5,0.,0.) - v.xyz;
+		
+		//attenuation and facing ratio
+		a = max(0., 1. - dot(delta,delta) / thresholdSquared );
+		fr = dot(normalize(delta), vNorm) * .5 + .5;
+//		fr = max(0., dot(normalize(delta), vNorm));
+		
+		creditLight += a * a * a * fr * fr;
+	}
 	
 	ecPosition = gl_ModelViewMatrix * v;
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
@@ -157,7 +187,7 @@ void main()
 	vec3 r = reflect( ePos, vNorm );
 	float m = 2. * sqrt(r.x*r.x + r.y*r.y + pow(r.z+1., 2.));
 	vN = (r.xy / m + .5);
-	vN.y = 1. - vN.y;
+//	vN.y = 1. - vN.y;
 	vN *= sphericalMapDim;
 }
 
