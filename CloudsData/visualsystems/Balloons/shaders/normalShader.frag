@@ -8,7 +8,7 @@ uniform float facingRatio;
 uniform sampler2DRect sphericalMap;
 
 uniform float lightConstantAttenuation = 1.;
-uniform float lightLinearAttenuation = .0025;
+uniform float lightLinearAttenuation = .000125;
 
 uniform float screenHeight;
 uniform vec4 bg0;

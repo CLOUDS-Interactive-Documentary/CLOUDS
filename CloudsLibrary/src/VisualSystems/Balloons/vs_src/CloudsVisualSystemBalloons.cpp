@@ -6,14 +6,14 @@
 #include "CloudsRGBDVideoPlayer.h"
 
 void CloudsVisualSystemBalloons::selfSetupGui(){
-
+	
+	//balloon behavior
 	customGui = new ofxUISuperCanvas("BALLOONS_BEHAVIOR", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Balloons");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	//balloon behavior
 	customGui->addSlider("noiseScl", .01, 1, &noiseScl)->setIncrement(.001);
 	customGui->addSlider("noiseSampleScale", .001, .1, &noiseSampleScale)->setIncrement(.001);
 	customGui->addSlider("velocityAttenuation", .95, 1., &velAtten)->setIncrement(.001);
@@ -33,18 +33,54 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	customGui->addSlider("balloonFrameVal", 0, 1, &balloonFrameVal);
 	
 	customGui->addSlider("dim", 100, 500, &dim );
-	customGui->addSlider("spawnRad", 20, 200, &spawnRad );
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemBalloons::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 	
+	//TEXT
+	textGui = new ofxUISuperCanvas("BALLOONS_TEXT", gui);
+	textGui->copyCanvasStyle(gui);
+	textGui->copyCanvasProperties(gui);
+	textGui->setName("Text");
+	textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
+	textGui->addSlider("textRadius", 1, 10, &textRadius);
+	
+	ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemBalloons::selfGuiEvent);
+	guis.push_back(textGui);
+	guimap[textGui->getName()] = textGui;
+	
+	//Balloon Release
+	balloonReleaseGui = new ofxUISuperCanvas("BALLOONS_RELEASE", gui);
+	balloonReleaseGui->copyCanvasStyle(gui);
+	balloonReleaseGui->copyCanvasProperties(gui);
+	balloonReleaseGui->setName("BalloonsRelease");
+	balloonReleaseGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	balloonReleaseGui->addSlider("spawnRad", 20, 300, &spawnRad );
+	balloonReleaseGui->addButton("release", false);
+	balloonReleaseGui->addButton("reset", false);
+	
+	balloonReleaseGui->addSpacer();
+	vector<string> releaseTypes;
+	releaseTypes.push_back("sphereVolume");
+	releaseTypes.push_back("plane");
+	releaseTypes.push_back("cos");
+	releaseTypes.push_back("bulge");
+	balloonReleaseGui->addRadio("releaseTypes", releaseTypes);
+	
+	ofAddListener(balloonReleaseGui->newGUIEvent, this, &CloudsVisualSystemBalloons::selfGuiEvent);
+	guis.push_back(balloonReleaseGui);
+	guimap[balloonReleaseGui->getName()] = balloonReleaseGui;
+	
+	//Balloon Colors
 	colorGui = new ofxUISuperCanvas("BALLOONS_COLOR", gui);
 	colorGui->copyCanvasStyle(gui);
 	colorGui->copyCanvasProperties(gui);
 	colorGui->setName("BalloonsColor");
 	colorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
 	
 	colorGui->addSpacer();
 	colorGui->addLabel("c0")->setColorFill(c0);
@@ -131,6 +167,45 @@ void CloudsVisualSystemBalloons::selfGuiEvent(ofxUIEventArgs &e)
 		
 		setBalloonColors();
 	}
+	else if(name == "reset")
+	{
+		bReleased = false;
+		setBalloonPositions();
+	}
+	
+	else if(name == "release")
+	{
+		bReleased = true;
+	}
+	
+	else if(name == "sphereVolume")
+	{
+		releaseType = 0;
+		bReleased = false;
+		setBalloonPositions();
+	}
+	
+	else if(name == "plane")
+	{
+		releaseType = 1;
+		bReleased = false;
+		setBalloonPositions();
+	}
+	
+	else if(name == "cos")
+	{
+		releaseType = 2;
+		bReleased = false;
+		setBalloonPositions();
+	}
+	
+	
+	else if(name == "bulge")
+	{
+		releaseType = 3;
+		bReleased = false;
+		setBalloonPositions();
+	}
 }
 
 void CloudsVisualSystemBalloons::selfSetupSystemGui(){
@@ -165,7 +240,8 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	cameraTargetDist = 200;
 	
 	dim = 250;
-	spawnRad = 75;
+	spawnRad = 150;
+	releaseType = 1;
 	
 	//make data
 	dimX = 64;
@@ -206,6 +282,14 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	highSpeedPercent = .1;
 	
 	balloonFrameVal = 1.;
+	
+	bReleased = false;
+	
+	line0.set(-30, 0,0);
+	line1.set(30, 0,0);
+	
+	textSpeed = -1;
+	textRadius = 3.;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -240,17 +324,65 @@ void CloudsVisualSystemBalloons::setBalloonPositions()
 	vector<ofVec3f>pos(dimY*dimX);
 	vector<ofVec3f>vel(dimY*dimX);
 	
-	for (int i=0; i<dimY; i++)
+	if(releaseType == 0)
 	{
-		for(int j=0; j<dimX; j++)
+		//sphere volume
+		for (int i=0; i<dimY; i++)
 		{
-			pos[i*dimX + j] = randomPointInSphere(spawnRad, ofVec3f(0,-spawnRad, 0) );
+			for(int j=0; j<dimX; j++)
+			{
+				pos[i*dimX + j] = randomPointInSphere(spawnRad, ofVec3f(0,-spawnRad, 0) );
+			}
+		}
+	}
+	else if(releaseType == 1)
+	{
+		for (int i=0; i<dimY; i++)
+		{
+			for(int j=0; j<dimX; j++)
+			{
+				//PLANE
+				pos[i*dimX + j].set( j - dimY*.5, -10, i - dimY*.5);
+				pos[i*dimX + j] *= radius * .5;
+			}
+		}
+	}
+	//cos
+	else if(releaseType == 2)
+	{
+		float iStep = TWO_PI / dimY;
+		float jStep = TWO_PI / dimX;
+		for (int i=0; i<dimY; i++)
+		{
+			for(int j=0; j<dimX; j++)
+			{
+				pos[i*dimX + j].set( j - dimY*.5, -10 + cos(j * jStep) * cos(i * iStep) * 30, i - dimY*.5);
+				pos[i*dimX + j] *= radius;
+			}
 		}
 	}
 	
+	//Bulge
+	else if(releaseType == 3)
+	{
+		float iStep = PI / dimY;
+		float jStep = PI / dimX;
+		for (int i=0; i<dimY; i++)
+		{
+			for(int j=0; j<dimX; j++)
+			{
+				pos[i*dimX + j].set( j - dimY*.5, -10 + sin(j * jStep) * sin(i * iStep) * 15, i - dimY*.5);
+				pos[i*dimX + j] *= radius;
+			}
+		}
+	}
+	
+	random_shuffle( pos.begin(), pos.end() );
+	
 	for(int i=0; i<vel.size(); i++)
 	{
-		vel[i].set(0,ofRandom(-1.5, 3),0);
+//		vel[i].set(0,ofRandom(-1.5, 3),0);
+		vel[i].set(0,ofRandom(0, 1),0);
 	}
 	
 	//store data
@@ -298,7 +430,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
 	
-	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/sky_1.jpg");
+	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/sky.jpg");
 	
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
@@ -312,6 +444,15 @@ void CloudsVisualSystemBalloons::selfSetup()
 	posShader.load(getVisualSystemDataPath() + "shaders/posShader");
 	velShader.load(getVisualSystemDataPath() + "shaders/velShader");
 	quatShader.load(getVisualSystemDataPath() + "shaders/quatShader");
+	
+	
+	for(int i=0; i<40; i++)
+	{
+		ofVec3f pos( 0, i * dim, 0);
+		Credit c("title", "name", pos);
+		
+		credits.push_back(c);
+	}
 }
 
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){
@@ -335,9 +476,29 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
 	
-//	balloonCam.setPosition(balloon00Pos.x, 0, cameraTargetDist + balloon00Pos.z);
-	balloonCam.setPosition(0, 0, cameraTargetDist);
-	//balloonCam.lookAt(ofVec3f(balloon00Pos));
+//	getCameraRef().setPosition(balloon00Pos.x, 0, cameraTargetDist + balloon00Pos.z);
+//	getCameraRef().setPosition(0, 0, cameraTargetDist);
+	//getCameraRef().lookAt(ofVec3f(balloon00Pos));
+	
+	//words dropping down
+//	line0.y = line1.y = ofMap(fmod(ofGetElapsedTimef() * 40, dim), 0, dim, dim, -dim, true);
+	
+	line0.y += textSpeed;
+	
+	if(line0.y > dim)
+	{
+		line0.y = -dim;
+	}else if(line0.y <-dim)
+	{
+		line0.y = dim;
+	}
+	
+	line1.y = line0.y;
+	
+	for(auto& c: credits)
+	{
+		c.pos.y += textSpeed;
+	}
 }
 
 void CloudsVisualSystemBalloons::selfDraw()
@@ -345,23 +506,44 @@ void CloudsVisualSystemBalloons::selfDraw()
 	ofPushStyle();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
-	//update positions
-	p0->begin();
-    ofClear(0, 255);
-	posShader.begin();
-	posShader.setUniformTexture("posTexture", p1->getTextureReference(), 0);
-	posShader.setUniformTexture("velTexture", v1->getTextureReference(), 1);
-	posShader.setUniform3f("camOffset", balloon00Pos.x,balloon00Pos.y,balloon00Pos.z);
-	posShader.setUniform1f("dimX", dimX);
-	posShader.setUniform1f("dimY", dimY);
-	posShader.setUniform1f("bound", dim);
-
-	ofRect(-1,-1,2,2);
+	if(bReleased)
+	{
+		//update positions
+		p0->begin();
+		ofClear(0, 255);
+		posShader.begin();
+		posShader.setUniformTexture("posTexture", p1->getTextureReference(), 0);
+		posShader.setUniformTexture("velTexture", v1->getTextureReference(), 1);
+		posShader.setUniform3f("camOffset", balloon00Pos.x,balloon00Pos.y,balloon00Pos.z);
+		posShader.setUniform1f("dimX", dimX);
+		posShader.setUniform1f("dimY", dimY);
+		posShader.setUniform1f("bound", dim);
+		
+		ofRect(-1,-1,2,2);
+		
+		posShader.end();
+		
+		p0->end();
+		swap(p0, p1);
+	}
 	
-	posShader.end();
+	//get our active credits to pass to the shader
+	vector<Credit*> activeCredits;
+	for(auto& c: credits)
+	{
+		if(c.pos.y > -dim && c.pos.y<dim)
+		{
+			activeCredits.push_back(&c);
+		}
+	}
 	
-	p0->end();
-	swap(p0, p1);
+	vector<ofVec4f> creditPositions;
+	for(auto& c: activeCredits)
+	{
+		ofVec4f cp = c->getLeft();
+		cp.w = c->width;
+		creditPositions.push_back(cp);
+	}
 	
 	//update velocities
 	ofVec3f camPos = getCameraPosition();
@@ -376,6 +558,11 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1f("dimX", dimX);
 	velShader.setUniform1f("dimY", dimY);
 	velShader.setUniform1f("bound", dim);
+	
+	if(creditPositions.size())	velShader.setUniform4fv("credits", &creditPositions[0][0], creditPositions.size());
+	velShader.setUniform1i("numCredits", creditPositions.size());
+	
+	velShader.setUniform1f("textRadius", textRadius);
 	
 	velShader.setUniform1f("time", ofGetElapsedTimef() * -1.);
 	velShader.setUniform1f("noiseScl", noiseScl);
@@ -392,7 +579,9 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1f("speedLow", speedLow );
 	velShader.setUniform1f("speedHi", speedHi );
 	velShader.setUniform1f("highSpeedPercent", highSpeedPercent );
-
+	
+	velShader.setUniform3f("line0", line0.x, line0.y, line0.z);
+	velShader.setUniform3f("line1", line1.x, line1.y, line1.z);
 	
 	ofRect(-1,-1,2,2);
 	
@@ -449,10 +638,16 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	shader.end();
 	
-	glLineWidth(2);
-	ofSetColor(0, 255, 0);
-	ofNoFill();
-	ofBox(balloon00Pos, 30);
+//	glLineWidth(2);
+//	ofSetColor(0, 255, 0);
+//	ofNoFill();
+//	ofBox(balloon00Pos, 30);
+	
+	//draw the credits
+	for(auto& c: credits)
+	{
+		c.draw();
+	}
 	
 	glPopAttrib();
 	ofPopStyle();
@@ -490,7 +685,8 @@ void CloudsVisualSystemBalloons::selfExit()
 	quatFbo.getTextureReference().clear();
 }
 
-void CloudsVisualSystemBalloons::selfKeyPressed(ofKeyEventArgs & args){
+void CloudsVisualSystemBalloons::selfKeyPressed(ofKeyEventArgs & args)
+{
 	
 }
 void CloudsVisualSystemBalloons::selfKeyReleased(ofKeyEventArgs & args)
@@ -508,6 +704,18 @@ void CloudsVisualSystemBalloons::selfKeyReleased(ofKeyEventArgs & args)
 		posShader.load(getVisualSystemDataPath() + "shaders/posShader");
 		velShader.load(getVisualSystemDataPath() + "shaders/velShader");
 		quatShader.load(getVisualSystemDataPath() + "shaders/quatShader");
+	}
+	else if(args.key == 'R')
+	{
+		if(bReleased)
+		{
+			bReleased = false;
+			setBalloonPositions();
+		}
+		else
+		{
+			bReleased = true;
+		}
 	}
 }
 

@@ -13,6 +13,58 @@
 #include "CloudsVisualSystem.h"
 #include "ofxObjLoader.h"
 
+class Credit
+{
+public:
+	Credit(string _title, string _name, ofVec3f _pos) :
+	name( _name ),
+	title( _title ),
+	pos(_pos)
+	{
+		setup();
+	}
+	
+	~Credit()
+	{
+		
+	}
+	
+	void setup()
+	{
+		getTextWidth();
+	}
+	
+	void getTextWidth()
+	{
+		//figure out the text width here
+		
+		width = 75;//temp
+	}
+	
+	ofVec3f getLeft()
+	{
+		return ofVec3f(pos.x - width*.5, pos.y, pos.z);
+	}
+	
+	void draw()
+	{
+		//draw text at the position
+		glDisable(GL_CULL_FACE);
+		ofSetColor(255,255,255);
+//		ofDrawBitmapString("YO DAWG, I PUT SOME WORDS IN YOUR BALLOONS", pos.x - width*.5, pos.y + );
+//		ofDrawBitmapString("Dr. Van Nostron", pos.x - width*.5, pos.y - 6);
+		
+		ofSetColor(255, 255, 0);
+		glLineWidth(2);
+		ofLine(pos.x - width*.5, pos.y, pos.z, pos.x + width*.5, pos.y, pos.z);
+	}
+	
+	string title;
+	string name;
+	
+	ofVec3f pos;
+	float width;
+};
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemBalloons : public CloudsVisualSystem {
@@ -112,17 +164,34 @@ class CloudsVisualSystemBalloons : public CloudsVisualSystem {
 	void setBalloonPositions();
 	void setBalloonColors();
 	
-	
-	ofCamera& getCameraRef(){
-		//		return cloudsCamera;
-		return balloonCam;
-	}
-	
 	template<class T>
 	T mix( T x, T y, float u)
 	{
 		return x * (1.f - u) + y * u;
 	}
+	
+	
+	float DistancePointLine( ofVec3f& p3, ofVec3f& p1, ofVec3f& p2 )
+    {
+        ofVec3f intersection = IntersectionPointLine( p3, p1, p2 );
+
+		return p3.distance(intersection);
+    }
+	
+    ofVec3f IntersectionPointLine( ofVec3f& p3, ofVec3f& p1, ofVec3f& p2 )
+    {
+		ofVec3f intersection;
+        ofVec3f diff = p3 - p1;
+        ofVec3f dir = p2 - p1;
+		
+        float u = diff.dot( dir ) / dir.dot( dir );
+		
+		if ( u < 0.0f )	return p1;
+		else if( u > 1.0f )	return p2;
+		
+		intersection = p1 + dir * u;
+		return intersection;
+    }
 	
 protected:
     
@@ -131,6 +200,10 @@ protected:
 	
 	ofxUISuperCanvas* customGui;
 	ofxUISuperCanvas* colorGui;
+	ofxUISuperCanvas* balloonReleaseGui;
+	ofxUISuperCanvas* textGui;
+	
+	int releaseType;
 
 	
 	ofVbo vbo;
@@ -145,6 +218,10 @@ protected:
 	float noiseScl, offset, noiseSampleScale, velAtten, radius, accScl, gravity, attractionToCenter, cameraBounce,cameraAttractionToCenter, cameraOffset;
 	float spawnRad, cameraTargetDist;
 	float highSpeedScale, speedLow, speedHi, highSpeedPercent;
+	
+	float balloonFrameVal;
+	
+	bool bReleased;
 	
 	int dimY, dimX;
 	ofFbo posFbo0;
@@ -176,6 +253,10 @@ protected:
 	
 	ofImage sphericalMap;
 	
-	ofEasyCam balloonCam;
-	float balloonFrameVal;
+	ofEasyCam c;
+	
+	ofVec3f line0, line1;
+
+	float textSpeed, textRadius;
+	vector<Credit> credits;
 };
