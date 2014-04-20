@@ -878,7 +878,6 @@ void CloudsPlaybackController::drawInterludeInterface(){
 		tracking = 11;
 	}
 	
-		
 	ofPushStyle();
 	ofEnableAlphaBlending();
 
@@ -972,12 +971,12 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 #endif
     
 	drawDebugOverlay();
-	
-	if(loadingAct){
-		float progressWidth = ofGetWidth() * .66;
-		//		loadingFont.drawString("Generating a response to your query.", ofGetWidth()*.33, ofGetHeight()*.5 - 5);
-		ofRect(ofGetWidth()*.33 / 2, ofGetHeight()*.5, progressWidth * currentPresetIndex / currentAct->getAllVisualSystemPresets().size(), 50. );
-	}
+//bad loading screen... debug only
+//	if(loadingAct){
+//		float progressWidth = ofGetWidth() * .66;
+//		//		loadingFont.drawString("Generating a response to your query.", ofGetWidth()*.33, ofGetHeight()*.5 - 5);
+//		ofRect(ofGetWidth()*.33 / 2, ofGetHeight()*.5, progressWidth * currentPresetIndex / currentAct->getAllVisualSystemPresets().size(), 50. );
+//	}
 	
 	glPopAttrib();
 }

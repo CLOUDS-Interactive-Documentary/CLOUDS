@@ -843,7 +843,6 @@ void CloudsIntroSequence::drawHelperType(){
 	glDisable(GL_DEPTH_TEST);
 	
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
-//		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", helperFontSize);
 		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 		currentHelperFontSize = helperFontSize;
 	}

@@ -412,6 +412,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guimap[occlusionGui->getName()] = occlusionGui;
     ////////////////// OCCLUSION
     
+	
     ////////////////// ACTUATORS
     actuatorGui = new ofxUISuperCanvas("ACTUATORS", gui);
 	actuatorGui->copyCanvasStyle(gui);
@@ -425,7 +426,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     guis.push_back(actuatorGui);
 	guimap[actuatorGui->getName()] = actuatorGui;
     ////////////////// ACTUATORS
-    
     
     ////////////////// CAMERA
 	cameraGui = new ofxUISuperCanvas("CAMERA", gui);
@@ -520,10 +520,16 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 
 	questionGui->addToggle("DEBUG PORTALS", &bPortalDebugOn);
 	questionGui->addSlider("PORTAL SCALE", .01, .5, &portalScale);
-	
+	questionGui->addIntSlider("QUESTION FONT SIZE", 4, 20, &questionFontSize);
 	questionGui->addSlider("HOVER X",    0, 500, &portalBaseHover.x);
 	questionGui->addSlider("HOVER Y", -500, 500, &portalBaseHover.y);
 	questionGui->addSlider("HOVER Z", -200, 200, &portalBaseHover.z);
+	questionGui->addRangeSlider("PORTAL SELECT DISTANCE", 20, 200,
+								&portalTugDistance.min, &portalTugDistance.max);
+	questionGui->addSlider("QUESTION FONT SCALE", 0, 1.0, &questionFontScale);
+	questionGui->addSlider("QUESTION FONT Y SHIFT", -200.0, 200.0, &questionYOffset);
+	questionGui->addSlider("QUESTION FONT TRACKING", 1.0, 20, &questionFontTracking);
+	
 	
 #ifdef OCULUS_RIFT
 //	questionGui->addSlider("RESET Y", -300, 300, &resetHoverPosition.y);
@@ -531,8 +537,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 #endif
 	
 	//in pixels
-	questionGui->addRangeSlider("PORTAL SELECT DISTANCE", 20, 200,
-								&portalTugDistance.min, &portalTugDistance.max);
 
 	guis.push_back(questionGui);
 	guimap[questionGui->getName()] = questionGui;
@@ -1034,20 +1038,21 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic,
     //////////////QUEUE WAY
     
     /////////////////////OLD WAY
-    /*
+	/*
 	CloudsPortal* testportal = (questionToReplace++ % 2 == 0) ? &leftPortal : &rightPortal;
-	
 	if(testportal->question != "" || testportal == caughtPortal){
 		//swap and override for certain so we keep the newest!
 		testportal = (testportal == &leftPortal) ? &rightPortal : &leftPortal;
 	}
-    
+		//replaces a question
 	if(testportal != caughtPortal){
+
         testportal->question = question;
         testportal->topic = topic;
         testportal->clip = questionClip;
     }
-    */
+	 */
+    /////////////////////OLD WAY
 }
 
 //--------------------------------------------------------------
@@ -1081,15 +1086,7 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 	for(int i = 0; i < portals.size(); i++){
 		
 		portals[i]->update();
-        /////NEW QUESTION WAY
-        if(portals[i]->question == "" && questions.size() > 0){
-            portals[i]->clip = questions.back().clip;
-            portals[i]->topic = questions.back().topic;
-            portals[i]->question = questions.back().question;
-            questions.pop_back();
-        }
-        /////NEW QUESTION WAY
-        
+		      
         if(!portals[i]->onScreen || portals[i]->question == ""){
             continue;
         }
@@ -1109,9 +1106,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 				if(distanceToQuestion < portalTugDistance.min) {
 					caughtPortal = portals[i];
                     /////NEW QUESTION WAY
-
 					if (caughtPortal->startHovering()) {
-//                        CloudsPortalEventArgs args(*portals[i], getQuestionText());
+						//JG SWITCH QUESTION TEST
                         CloudsPortalEventArgs args(getQuestionText());
                         ofNotifyEvent(events.portalHoverBegan, args);
                     }
@@ -1128,13 +1124,15 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			else if(distanceToQuestion > portalTugDistance.max){
 				caughtPortal->stopHovering();
                 /////NEW QUESTION WAY
-                caughtPortal->question = "";
+//                caughtPortal->question = "";
                 /////NEW QUESTION WAY
 				caughtPortal = NULL;
                 
 //                CloudsPortalEventArgs args(*portals[i], getQuestionText());
-                CloudsPortalEventArgs args(getQuestionText());
-                ofNotifyEvent(events.portalHoverEnded, args);
+				//JG QUESTION SWITCH TEXT
+//                CloudsPortalEventArgs args(getQuestionText());
+//                ofNotifyEvent(events.portalHoverEnded, args);
+				
 			}
 		}
         minDistanceToQuestion = MIN(distanceToQuestion, minDistanceToQuestion);
@@ -1142,7 +1140,11 @@ void CloudsVisualSystemRGBD::updateQuestions(){
     
     if (caughtPortal != NULL) {
         // move the sticky cursor towards the caught portal
-        stickyCursor.interpolate(caughtPortal->screenPosition, 0.2f);
+		ofVec2f targetPosition = caughtPortal->screenPosition;
+		if(bEnablePostFX){
+			targetPosition -= ofVec2f(bleed,bleed)*.5;
+		}
+        stickyCursor.interpolate(targetPosition, 0.2f); //minue ten for bleed
     }
     else {
         stickyCursor.interpolate(cursor, 0.5f);
@@ -1543,8 +1545,32 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
 
 void CloudsVisualSystemRGBD::speakerChanged(){
 
-   if(timeline!=NULL)
+	if(timeline!=NULL){
        timeline->hide();
+	}
+	
+	//clearQuestions();
+	
+	assignAvailableQuestion(leftPortal);
+	assignAvailableQuestion(rightPortal);
+}
+
+void CloudsVisualSystemRGBD::assignAvailableQuestion(CloudsPortal& portal){
+
+	/////NEW QUESTION WAY
+	if(questions.size() == 0){
+		return;
+	}
+	
+	if(&portal != caughtPortal && &portal != selectedPortal){
+		portal.clip = questions.back().clip;
+		portal.topic = questions.back().topic;
+		portal.question = questions.back().question;
+	}
+	
+	questions.pop_back();
+	
+	/////NEW QUESTION WAY
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
@@ -1834,12 +1860,55 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 	if(rightPortal.question != "" || bPortalDebugOn){
 		rightPortal.draw();
 	}
-#ifdef OCULUS_RIFT
-//		resetPortal.draw();
-#endif
 	CloudsPortal::shader.end();
+#ifdef OCULUS_RIFT
+	drawQuestionType();
+#endif
+
 	glEnable(GL_DEPTH_TEST);
 
+
+}
+
+//called either in draw for rift, or draw overlay for normal
+void CloudsVisualSystemRGBD::drawQuestionType(){
+	if(!questionFont.isLoaded() || currentQuestionFontSize != questionFontSize){
+		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+		currentQuestionFontSize = questionFontSize;
+	}
+	
+	string questionText = getQuestionText();
+	if(questionText == "" || (caughtPortal == NULL && selectedPortal == NULL) ){
+		return;
+	}
+
+	ofVec3f basePosition = caughtPortal != NULL ? caughtPortal->hoverPosition : selectedPortal->hoverPosition;
+	float textOpacity = 1.0;
+	questionFont.setTracking(questionFontTracking);
+		
+	float questionTextWidth  = questionFont.stringWidth(questionText);
+	float questionTextHeight = questionFont.stringHeight(questionText);
+
+	ofPushMatrix();
+	ofPushStyle();
+	ofEnableAlphaBlending();
+	ofDisableLighting();
+
+	#ifdef OCULUS_RIFT
+	getOculusRift().multBillboardMatrix( basePosition );
+	#else
+	ofTranslate(basePosition);
+	#endif
+	ofRotate(180, 0, 0, 1);//flip around
+	ofScale(questionFontScale,questionFontScale,questionFontScale);
+
+	ofSetColor(255,255*textOpacity);
+
+	//int yOffsetMult = (!bUseOculusRift && caughtQuestion->tunnelQuadrantIndex == 2) ? -1 : 1;
+	questionFont.drawString(questionText, -questionTextWidth/2, questionYOffset - questionTextHeight/2);
+	ofEnableLighting();
+	ofPopStyle();
+	ofPopMatrix();
 }
 
 void CloudsVisualSystemRGBD::drawCursors(){
@@ -1879,6 +1948,8 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
         
         ofPopStyle();
     }
+	
+//	questionFont.drawString("IM A TEST", getCanvasWidth()/2, getCanvasHeight()/2);
 }
 
 void CloudsVisualSystemRGBD::selfExit(){
@@ -1917,10 +1988,10 @@ string CloudsVisualSystemRGBD::getQuestionText(){
         return "WHAT DOES IT FEEL LIKE TO CODE?";
     }
     else if(caughtPortal != NULL){
-        return caughtPortal->question;
+        return ofToUpper(caughtPortal->question);
     }
     else if(selectedPortal != NULL){
-        return selectedPortal->question;
+        return ofToUpper(selectedPortal->question);
     }
     return "";
 }
