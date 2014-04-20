@@ -20553,7 +20553,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -22188,7 +22188,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -22227,8 +22227,8 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -23633,12 +23633,31 @@
     <interlude>0</interlude>
 </system>
 <system name="Paradox_Vortex4">
-    <keywords></keywords>
+    <keywords>abstraction|generative art</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Bruce - Gardening 1</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Parametric vs Generative</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Casey - ideas of art history</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kyle_CH - new generation</clip>
+        <clip>Marcus - call to action</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - my work exists in a utopian space,</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Patricio - Alchemy 1</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Theo - favorite projects</clip>
+        <clip>Theo - generative and pre-rendered</clip>
+        <clip>Zach - action script shorter</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -23705,12 +23724,75 @@
     <interlude>0</interlude>
 </system>
 <system name="Paradox_Whitney2">
-    <keywords></keywords>
+    <keywords>old media|history|spiritual|zen|math</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Bruce - 7 year lifespan of novelty</clip>
+        <clip>Bruce - Art history vs Trendspotting</clip>
+        <clip>Bruce - Dead sea scrolls</clip>
+        <clip>Bruce - Fax machine</clip>
+        <clip>Bruce - atemporality</clip>
+        <clip>Bruce - lashup 3</clip>
+        <clip>Bruce - past and future</clip>
+        <clip>Bruce - relating to history through networks</clip>
+        <clip>Bruce - talking about the future as history</clip>
+        <clip>Bruce - unstable mileau of media art</clip>
+        <clip>Damion - BeingOnDrugs</clip>
+        <clip>Elliot - Wiremap1</clip>
+        <clip>Golan - keeping you stuff working</clip>
+        <clip>Golan - raytraced spheres</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Jen - deep interaction</clip>
+        <clip>Jen - immersion of reading</clip>
+        <clip>Jer - Software1</clip>
+        <clip>Jer - Software2</clip>
+        <clip>Jer - storage</clip>
+        <clip>Karolina - awkward performances</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - culture and evolution</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - demo scene 2</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - new media</clip>
+        <clip>Karsten - obsolescence</clip>
+        <clip>Karsten - preserving history</clip>
+        <clip>Kevin - from code to magazines to code</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kyle_CH - Cory Arcangel</clip>
+        <clip>Kyle_CH - erase distinctions</clip>
+        <clip>Lindsay - death of technology</clip>
+        <clip>Maeda - Design in the foreground</clip>
+        <clip>Maeda - Isn&apos;t it supposed to be new?</clip>
+        <clip>Maeda - distraction and focus</clip>
+        <clip>Maeda - do not resuscitate</clip>
+        <clip>Maeda - old and new</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Patricio - CLOUDS</clip>
+        <clip>Shantell - drawing with computers</clip>
+        <clip>Shantell - every line is a mistake</clip>
+        <clip>Shantell - simple</clip>
+        <clip>Shiffman - what do you archive?</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+        <clip>Zach - drawn2</clip>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Andres - correct is beautiful</clip>
+        <clip>Binx - Background</clip>
+        <clip>Bruce - Truth is unstable</clip>
+        <clip>Greg - makematics1</clip>
+        <clip>Jen - numbers and words</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Martin - words and numbers</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -34390,7 +34472,7 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Xstatic_FastPhysics2_">
+<system name="Xstatic_FastPhysics2">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>

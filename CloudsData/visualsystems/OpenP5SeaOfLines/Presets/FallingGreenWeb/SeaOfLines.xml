@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SeaOfLines</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>997.000000000</XPosition>
-    <YPosition>89.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -21,6 +21,11 @@
     <Name>TRAVEL SPEED</Name>
     <HighValue>7.384235859</HighValue>
     <LowValue>4.724138260</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CURSOR RANGE</Name>
+    <Value>0.325123161</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -4,8 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>LINE ALPHA 1</WidgetName>
-                <WidgetID>19</WidgetID>
+                <WidgetName>GRAVITY</WidgetName>
+                <WidgetID>12</WidgetID>
                 <WidgetCanvasParent>SeaOfLines</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -20,8 +20,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>GRAVITY</WidgetName>
-                <WidgetID>10</WidgetID>
+                <WidgetName>LINE ALPHA 1</WidgetName>
+                <WidgetID>21</WidgetID>
                 <WidgetCanvasParent>SeaOfLines</WidgetCanvasParent>
             </Widget>
             <Track></Track>
