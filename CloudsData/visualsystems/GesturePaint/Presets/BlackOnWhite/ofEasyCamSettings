@@ -1,0 +1,27 @@
+--------------ofCamera parameters--------------
+transformMatrix
+0.999983, 6.3304e-05, 0.0058898,        0
+-0.00170977, 0.960007,  0.27997,        0
+-0.00563652, -0.279974, 0.959989,        0
+-1.12731,  -55.995,  191.998,        1
+fov
+60
+near
+6.65107
+far
+6651.07
+lensOffset
+0, 0
+isOrtho
+0
+--------------ofEasyCam parameters--------------
+target
+0, 0, 0
+bEnableMouseMiddleButton
+1
+bMouseInputEnabled
+0
+drag
+0.9
+doTranslationKey
+m
