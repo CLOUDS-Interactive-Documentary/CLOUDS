@@ -23531,12 +23531,20 @@
     <interlude>0</interlude>
 </system>
 <system name="Paradox_Sphere1">
-    <keywords></keywords>
+    <keywords>generative art|abstraction</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Bruce - Gardening 1</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>LIA - TimeStamps2</clip>
+        <clip>Theo - favorite projects</clip>
+        <clip>Marcus - call to action</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -23555,12 +23563,34 @@
     <interlude>0</interlude>
 </system>
 <system name="Paradox_TwistingBlackHole">
-    <keywords></keywords>
+    <keywords>math|truth|abstraction</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Bruce - Fractal graphics</clip>
+        <clip>Bruce - Infinity in a grain of sand</clip>
+        <clip>Casey - ideas of art history</clip>
+        <clip>Casey - randomness</clip>
+        <clip>Fernanda - aesthetics as communication</clip>
+        <clip>Fernanda - beautiful evidence 1</clip>
+        <clip>Jen - data memory 1</clip>
+        <clip>Jen - data memory 2</clip>
+        <clip>Jen - data truth</clip>
+        <clip>Jen - numbers and words</clip>
+        <clip>Jen - oversimplified circles 1</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kevin - human perception</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Kevin - reality in the eyes of data</clip>
+        <clip>LIA - Circle1</clip>
+        <clip>LIA - Circle2</clip>
+        <clip>LIA - CircleFormula1</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -23603,6 +23633,78 @@
     <interlude>0</interlude>
 </system>
 <system name="Paradox_Vortex4">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Paradox_Vortex5">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Paradox_Vortex6">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Paradox_Vortex7">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Paradox_Vortex8">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Paradox_Whitney">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Paradox_Whitney2">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -34288,13 +34390,21 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Xstatic_FastPhysics2">
+<system name="Xstatic_FastPhysics2_">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Xstatic_FastPhysics2_TumblingBox">
     <keywords>universe|cosmogeny</keywords>
-    <links>
-        <clip>Shiffman - a mystical quality</clip>
-        <clip>Patricio - Alchemy 3</clip>
-        <clip>Patricio - Alchemy 2</clip>
-    </links>
+    <links></links>
     <suppressions>
         <clip>Ramsey - Conway 1</clip>
         <clip>Ramsey - Conway 2</clip>
@@ -34302,11 +34412,12 @@
         <clip>LIA - Circle1</clip>
         <clip>Ramsey - minecraft 1</clip>
         <clip>Ramsey - minecraft 2</clip>
+        <clip>Ramsey - New Kind of Science</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
