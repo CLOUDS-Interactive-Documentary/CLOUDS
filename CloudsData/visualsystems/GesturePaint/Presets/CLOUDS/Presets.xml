@@ -1,57 +1,62 @@
 <Canvas>
     <Kind>42</Kind>
-    <Name>Settings</Name>
+    <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
+    <XPosition>1273.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>UPDATE</Name>
+    <Name>BlackOnWhite</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLOUDS</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RENDER</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>PRIMARY CURSOR NONE</Name>
+    <Name>Hubble</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>PRIMARY CURSOR INACTIVE</Name>
+    <Name>Monet2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>PRIMARY CURSOR CAMERA</Name>
+    <Name>Richter1</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>PRIMARY CURSOR DRAW</Name>
+    <Name>Richter2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SEC. CURSORS NONE</Name>
+    <Name>Richter5</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SEC. CURSORS INACTIVE</Name>
+    <Name>Rothko</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SEC. CURSORS CAMERA</Name>
+    <Name>RothkoSunset</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SEC. CURSORS DRAW</Name>
+    <Name>Turrell</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>WhiteOnBlack</Name>
     <Value>0</Value>
 </Widget>

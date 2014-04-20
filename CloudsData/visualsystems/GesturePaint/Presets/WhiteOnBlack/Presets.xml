@@ -2,9 +2,14 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>449.000000000</XPosition>
-    <YPosition>289.000000000</YPosition>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlackOnWhite</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Hubble</Name>
@@ -43,11 +48,6 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Turrell</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BlackOnWhite</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
