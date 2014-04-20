@@ -1334,7 +1334,6 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
         else {
             rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
         }
-        
     }
 	
 	rgbdVisualSystem->playSystem();
@@ -1384,12 +1383,3 @@ void CloudsPlaybackController::portalHoverEnded(CloudsPortalEventArgs &args){
 		currentAct->getTimeline().stop();		
 	}
 }
-
-//void CloudsPlaybackController::clearRestButtonParams(){
-//    bResetSelected = false;
-//    prevResetValue = false;
-////    resetSelectedPercentComplete = 0;
-//    bResetTransitionComplete = false;
-//}
-//
-

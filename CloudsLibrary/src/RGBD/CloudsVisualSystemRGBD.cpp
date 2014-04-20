@@ -1130,9 +1130,10 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 					caughtPortal = portals[i];
                     /////NEW QUESTION WAY
 					if (caughtPortal->startHovering()) {
+						//REMOVED!
 						//JG SWITCH QUESTION TEST
-                        CloudsPortalEventArgs args(getQuestionText());
-                        ofNotifyEvent(events.portalHoverBegan, args);
+  //                      CloudsPortalEventArgs args(getQuestionText());
+//                        ofNotifyEvent(events.portalHoverBegan, args);
                     }
 				}
 			}
@@ -1142,6 +1143,9 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			//we went over the timer distance! zoooom!!!
 			if(caughtPortal->isSelected() ){
 				selectedPortal = caughtPortal;
+				CloudsPortalEventArgs args(getQuestionText());
+				ofNotifyEvent(events.portalHoverBegan, args);
+				
 			}
 			//let it go
 			else if(distanceToQuestion > portalTugDistance.max){
