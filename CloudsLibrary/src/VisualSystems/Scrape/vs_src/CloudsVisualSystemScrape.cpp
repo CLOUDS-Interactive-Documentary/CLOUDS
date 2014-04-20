@@ -69,6 +69,11 @@ void CloudsVisualSystemScrape::selfSetupGui()
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemScrape::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
+
 //--------------------------------------------------------------
 void CloudsVisualSystemScrape::selfGuiEvent(ofxUIEventArgs &e)
 {
@@ -109,7 +114,8 @@ void CloudsVisualSystemScrape::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemScrape::selfSetup()
 {
-    fboSize = ofNextPow2(MAX(ofGetWidth(), ofGetHeight()));
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    fboSize = ofNextPow2(MAX(getCanvasWidth(), getCanvasHeight()));
     contentFbo.allocate(fboSize, fboSize);
 }
 
@@ -143,7 +149,8 @@ void CloudsVisualSystemScrape::selfUpdate()
     if (bComplete) {
         if (bGrowing) {
             if (bOverlay) {
-                screenGrab.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
+                //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+                screenGrab.grabScreen(0, 0, getCanvasWidth(), getCanvasHeight());
                 doGrow();
             }
             else {
@@ -181,7 +188,8 @@ void CloudsVisualSystemScrape::selfUpdate()
         ofClear(0, 0);
         
         if (bOverlay) {
-            screenGrab.draw(0, 0, ofGetWidth(), ofGetHeight());
+            //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+            screenGrab.draw(0, 0, getCanvasWidth(), getCanvasHeight());
         }
         
         // Draw the Scrape boxes.

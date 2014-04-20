@@ -27,51 +27,6 @@
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AR</Name>
-    <Value>0.062826268</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AG</Name>
-    <Value>0.209422797</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AB</Name>
-    <Value>0.308899879</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DR</Name>
-    <Value>0.989527822</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DG</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DB</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SR</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SG</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SB</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
     <Name>AH</Name>
     <Value>0.567376196</Value>
 </Widget>

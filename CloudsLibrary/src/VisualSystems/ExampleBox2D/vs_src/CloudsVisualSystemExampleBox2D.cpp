@@ -19,8 +19,6 @@ void CloudsVisualSystemExampleBox2D::selfSetupGui(){
 	customGui->setName("EXAMPLE BOX 2D");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
-    customGui->addToggle("DISPLAY", &bDrawToScreen);
-    
     customGui->addToggle("GAVITY CONTROL MODE", &bGravityMod);
     
     customGui->addToggle("CIRCLES", &bCircles);
@@ -65,16 +63,19 @@ void CloudsVisualSystemExampleBox2D::selfSetupGui(){
     customGui->addMinimalSlider("S3", 0.0, 255, &rectHSB.g, length, dim)->setShowValue(true);
     customGui->addMinimalSlider("B3", 0.0, 255, &rectHSB.b, length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-
-#ifdef TONIC_WAVES
+    
     customGui->addSpacer("SOUNDS");
-    customGui->addSlider("MAX FREQ", 0, 300, &noteMax);
-    customGui->addSlider("MIN FREQ", 0, 300, &noteMin);
-#endif
+    
+    customGui->addSlider("Volume", 0, 1, &masterVolume);
 
     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemExampleBox2D::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+}
+
+void CloudsVisualSystemExampleBox2D::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
 }
 
 void CloudsVisualSystemExampleBox2D::selfGuiEvent(ofxUIEventArgs &e)
@@ -116,20 +117,6 @@ void CloudsVisualSystemExampleBox2D::selfGuiEvent(ofxUIEventArgs &e)
             rects.clear();
         }
     }
-#ifdef TONIC_WAVES
-    else if (e.widget->getName() == "MAX FREQ") {
-        for (int i=0; i<WAVE_GEN_NUM; i++)
-        {
-            noteControl[i].max(noteMax);
-        }
-    }
-    else if (e.widget->getName() == "MIN FREQ") {
-        for (int i=0; i<WAVE_GEN_NUM; i++)
-        {
-            noteControl[i].min(noteMin);
-        }
-    }
-#endif
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -161,15 +148,19 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     box2d.setGravity(0, 7);
     box2d.createBounds();
     box2d.setFPS(60);
+	ofAddListener(box2d.contactStartEvents,
+                  this,
+                  &CloudsVisualSystemExampleBox2D::contactStart);
     
-    prevScreenSize = ofVec2f(ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    prevScreenSize = ofVec2f(getCanvasWidth(), getCanvasHeight());
     
     // preset init
     bGravityMod = false;
     gravityForce = ofVec2f(0, 5);
-    minObjectCount = 50;
-    maxCircles = 100;
-    maxRects = 100;
+    minObjectCount = int(ofRandom(75,200));
+    maxCircles = 200;
+    maxRects = 150;
     triggerForce = 15;
     
     bCircles = true;
@@ -185,65 +176,38 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     rectSizeDev = 10;
     rectSizeMean = 20;
     
-    triggerIndex = 0;
     
     circleHSB = ofFloatColor(100, 100, 100);
     circleLineHSB = ofFloatColor(100, 100, 100);
     rectHSB = ofFloatColor(100, 100, 100);
-
-#ifdef TONIC_WAVES
-    noteMin = 0;
-    noteMax = 50;
-#endif
     
     // setup sound synth
-#ifdef TONIC_WAVES
-    vector<float> scale;
-    scale.push_back(0);
-    scale.push_back(4);
-    scale.push_back(7);
-    scale.push_back(11);
-    
-    for (int i=0; i<GENERATOR_NUM; i++)
+    masterVolume = 1;
+    lastSampleTime = 0;
+    soundsLoaded = true;
+    for (int i=0; i<5; i++)
     {
-        noteControl[i] = ControlRandom().min(noteMin).max(noteMax).trigger(collisionTrigger[i]);
-        ControlSnapToScale scaleSnapper = ControlSnapToScale().setScale(scale);
-        scaleSnapper.input(20 + noteControl[i]);
-
-        Generator collisionGen = SineWave().freq(ControlMidiToFreq().input(scaleSnapper)) * 0.05 * ADSR(0.01, 0.1, 0, 0).trigger(collisionTrigger[i]);
-        
-        output = output + collisionGen;
+        ostringstream fn;
+        fn << GetCloudsDataPath() << "sound/triggers/drip" << i+1 << ".aif";
+        soundsLoaded &= samplePlayer[i].loadSound(fn.str());
+        samplePlayer[i].setMultiPlay(true);
+        samplePlayer[i].setSpeed(0.5);
     }
-#else
-    string strDir = GetCloudsDataPath()+"sound/triggers/";
-    ofDirectory sdir(strDir);
     
-    // load the samples
-    for (int i=0; i<7; i++)
+    for (int i=0; i<5; i++)
     {
-        char filename[32];
-        std::sprintf(filename, "cardboard%d.aif", i+1);
-        string strAbsPath1 = sdir.getAbsolutePath() + "/" + filename;
-        boxSamples[i] = loadAudioFile(strAbsPath1);
-        
-        std::sprintf(filename, "drip%d.aif", i+1);
-        string strAbsPath2 = sdir.getAbsolutePath() + "/" + filename;
-        circleSamples[i] = loadAudioFile(strAbsPath2);
+        ostringstream fn;
+        fn << GetCloudsDataPath() << "sound/triggers/cardboard" << i+1 << ".aif";
+
+        soundsLoaded &= samplePlayer[i+5].loadSound(fn.str());
+        samplePlayer[i+5].setMultiPlay(true);
+
+    }
+    
+    if(!soundsLoaded){
+        ofLogError("CloudsVisualSystemExampleBox2D::selfSetup") << "Some clips failed to load. Disabling sound";
     }
 
-    // allocate the generators
-    for (int i=0; i<GENERATOR_NUM; i++)
-    {
-        Generator gen = BufferPlayer().setBuffer(circleSamples[i%7]).trigger(circleTrigger[i]) * circleVolume[i];
-        output = output + gen;
-    }
-    for (int i=0; i<GENERATOR_NUM; i++)
-    {
-        Generator gen = BufferPlayer().setBuffer(boxSamples[i%7]).trigger(boxTrigger[i]) * boxVolume[i];
-        output = output + gen;
-    }
-#endif
-    synth.setOutputGen(output);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -277,12 +241,6 @@ void CloudsVisualSystemExampleBox2D::selfBegin()
     if (!bRandomPlatforms) {
         removeRandomPlatform();
     }
-    
-    ofAddListener(box2d.contactStartEvents,
-                  this,
-                  &CloudsVisualSystemExampleBox2D::contactStart);
-
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemExampleBox2D::audioRequested);
 }
 
 //do things like ofRotate/ofTranslate here
@@ -295,10 +253,12 @@ void CloudsVisualSystemExampleBox2D::selfSceneTransformation(){
 void CloudsVisualSystemExampleBox2D::selfUpdate(){
     
     // reinit world bound when screen size changes
-    if (prevScreenSize.x != ofGetWidth() ||
-        prevScreenSize.y != ofGetHeight()) {
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    if (prevScreenSize.x != getCanvasWidth() ||
+        prevScreenSize.y != getCanvasHeight()) {
         reinitBounds();
-        prevScreenSize = ofVec2f(ofGetWidth(), ofGetHeight());
+    
+        prevScreenSize = ofVec2f(getCanvasWidth(), getCanvasHeight());
     }
     
     // remove excessive objects
@@ -310,10 +270,10 @@ void CloudsVisualSystemExampleBox2D::selfUpdate(){
     // handle random platform
     if (bRandomPlatforms) {
         randomPlatformCounter--;
-        if (randomPlatformCounter == 0) {
+        if (randomPlatformCounter==0) {
             addRandomPlatform();
         }
-        if (randomPlatformCounter < -400) {
+        if (randomPlatformCounter<-400) {
             removeRandomPlatform();
             randomPlatformCounter = 150;
         }
@@ -405,7 +365,8 @@ void CloudsVisualSystemExampleBox2D::selfDrawBackground()
     
     if (bGravityMod) {
         ofPushMatrix();
-        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+        //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+        ofTranslate(getCanvasWidth()/2, getCanvasHeight()/2);
         float angle = (atan2(gravityLine.y, gravityLine.x) * 180 / PI);
         float len = gravityLine.length();
         ofRotate(angle);
@@ -422,10 +383,15 @@ void CloudsVisualSystemExampleBox2D::selfDrawBackground()
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemExampleBox2D::selfEnd(){
-    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemExampleBox2D::audioRequested);
+	
+	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemExampleBox2D::selfExit(){
+	ofRemoveListener(box2d.contactStartEvents,
+                  this,
+                  &CloudsVisualSystemExampleBox2D::contactStart);
+
 }
 
 //events are called when the system is active
@@ -467,8 +433,9 @@ void CloudsVisualSystemExampleBox2D::selfMouseMoved(ofMouseEventArgs& data){
     }
     else {
         // gravity control mode
-        gravityLine = ofVec2f(curMouse.x - ofGetWidth()/2,
-                              curMouse.y - ofGetHeight()/2);
+        //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+        gravityLine = ofVec2f(curMouse.x - getCanvasWidth()/2,
+                              curMouse.y - getCanvasHeight()/2);
         ofVec2f gravityForce = gravityLine / 10;
         box2d.setGravity(gravityForce.x, gravityForce.y);
     }
@@ -507,14 +474,16 @@ void CloudsVisualSystemExampleBox2D::createRandomObjects()
 void CloudsVisualSystemExampleBox2D::addRandomCircle()
 {
     float r = getGaussian()/2*circleSizeDev + circleSizeMean;
-    addCircle(ofVec2f(ofGetWidth()/2, ofGetHeight()/2), ofVec2f(0, 0), r);
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    addCircle(ofVec2f(getCanvasWidth()/2, getCanvasHeight()/2), ofVec2f(0, 0), r);
 }
 
 void CloudsVisualSystemExampleBox2D::addRandomRect()
 {
     float w = getGaussian()*rectSizeDev + rectSizeMean;
     float h = getGaussian()*rectSizeDev + rectSizeMean;
-    addRect(ofVec2f(ofGetWidth()/2, ofGetHeight()/2), ofVec2f(0, 0), ofVec2f(w, h));
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    addRect(ofVec2f(getCanvasWidth()/2, getCanvasHeight()/2), ofVec2f(0, 0), ofVec2f(w, h));
 }
 
 void CloudsVisualSystemExampleBox2D::addCircle(ofVec2f pos, ofVec2f vel, float rad)
@@ -524,9 +493,8 @@ void CloudsVisualSystemExampleBox2D::addCircle(ofVec2f pos, ofVec2f vel, float r
     circle.setup(box2d.getWorld(), pos.x, pos.y, rad);
     circle.setVelocity(vel);
     circle.setRotation(ofRandom(180));
-
     circle.body->SetUserData((void*)0);
-    
+//    circle.setData((void*)1234);
     circles.push_back(circle);
 }
 
@@ -538,9 +506,7 @@ void CloudsVisualSystemExampleBox2D::addRect(ofVec2f pos, ofVec2f vel, ofVec2f s
     rect.setup(box2d.getWorld(), pos.x, pos.y, size.x, size.y);
     rect.setVelocity(vel);
     rect.setRotation(ofRandom(180));
-
     rect.body->SetUserData((void*)1);
-    
     rects.push_back(rect);
 }
 
@@ -552,17 +518,18 @@ void CloudsVisualSystemExampleBox2D::addStaticPlatforms()
     }
     
     ofxBox2dPolygon polyLine;
-    polyLine.addVertex(ofGetWidth()*0.2, ofGetHeight()*0.8);
-    polyLine.addVertex(ofGetWidth()*0.3, ofGetHeight()*0.9);
-    polyLine.addVertex(ofGetWidth()*0.5, ofGetHeight()*0.86);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    polyLine.addVertex(getCanvasWidth()*0.2, getCanvasHeight()*0.8);
+    polyLine.addVertex(getCanvasWidth()*0.3, getCanvasHeight()*0.9);
+    polyLine.addVertex(getCanvasWidth()*0.5, getCanvasHeight()*0.86);
     polyLine.setPhysics(0.0, 0.5, 0.5);
     polyLine.create(box2d.getWorld());
     platforms.push_back(polyLine);
     
     polyLine = ofxBox2dPolygon();
-    polyLine.addVertex(ofGetWidth()*0.8, ofGetHeight()*0.5);
-    polyLine.addVertex(ofGetWidth()*0.7, ofGetHeight()*0.6);
-    polyLine.addVertex(ofGetWidth()*0.5, ofGetHeight()*0.7);
+    polyLine.addVertex(getCanvasWidth()*0.8, getCanvasHeight()*0.5);
+    polyLine.addVertex(getCanvasWidth()*0.7, getCanvasHeight()*0.6);
+    polyLine.addVertex(getCanvasWidth()*0.5, getCanvasHeight()*0.7);
     polyLine.setPhysics(0.0, 0.5, 0.5);
     polyLine.create(box2d.getWorld());
     platforms.push_back(polyLine);
@@ -585,8 +552,9 @@ void CloudsVisualSystemExampleBox2D::addRandomPlatform()
     polygon.addVertex(vec*3);
     polygon.setPhysics(0.0, 0.5, 0.5);
     polygon.create(box2d.getWorld());
-    polygon.setPosition(ofRandom(-100, ofGetWidth()*0.7),
-                        ofRandom(ofGetHeight()/2, ofGetHeight()*0.8));
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    polygon.setPosition(ofRandom(-100, getCanvasWidth()*0.7),
+                        ofRandom(getCanvasHeight()/2, getCanvasHeight()*0.8));
     randomPlatforms.push_back(polygon);
 }
 
@@ -631,38 +599,39 @@ void CloudsVisualSystemExampleBox2D::reinitBounds()
 
 void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
 {
-    b2Vec2 aVel = e.a->GetBody()->GetLinearVelocity();
-    b2Vec2 bVel = e.b->GetBody()->GetLinearVelocity();
     
-    float maxVel = max(aVel.Length(), bVel.Length());
-    if (maxVel > 8)
-    {
-        int type=0;
-        if (aVel.Length() > bVel.Length()) {
-            type = (int)e.a->GetBody()->GetUserData();
-        }
-        else {
-            type = (int)e.b->GetBody()->GetUserData();
-        }
+    if(!soundsLoaded){
+        return;
 
-        float vol = maxVel / 200;
-        vol = (vol>1) ? 0.05 : pow(vol, 2);
-        
-        if (triggerIndex >= GENERATOR_NUM) {
-            triggerIndex = 0;
-        }
-        
-        if (type == 0) {
-            circleVolume[triggerIndex].value(vol);
-            circleTrigger[triggerIndex].trigger();
-        }
-        else {
-            boxVolume[triggerIndex].value(vol);
-            boxTrigger[triggerIndex].trigger();
-        }
-        triggerIndex++;
     }
     
+    float aVel = e.a->GetBody()->GetLinearVelocity().Length();
+    float bVel = e.b->GetBody()->GetLinearVelocity().Length();
+    
+    int type;
+    if (aVel > bVel) {
+        type = (int)e.a->GetBody()->GetUserData();
+    }
+    else {
+        type = (int)e.b->GetBody()->GetUserData();
+    }
+    
+    int sIndex = type;
+    
+    float maxVel = max(aVel, bVel);
+    if (maxVel > 6)
+    {
+        int index = sIndex*5 + (int)ofRandom(5);
+        float vol = maxVel / 200;
+        vol = (vol<1) ? pow(vol, 2) : 1;
+
+        if (ofRandom(maxRects) < (float)rects.size()*0.8) {
+            return;
+        }
+
+        samplePlayer[index].setVolume(vol * masterVolume);
+        samplePlayer[index].play();
+    }
 }
 
 float CloudsVisualSystemExampleBox2D::getGaussian() {
@@ -672,9 +641,4 @@ float CloudsVisualSystemExampleBox2D::getGaussian() {
     float x2 = ofRandomuf();
     
     return (sqrt (-2.0 * log(x1)) * cos(2.0 * PI * x2)) / 2;
-}
-
-void CloudsVisualSystemExampleBox2D::audioRequested(ofAudioEventArgs& args)
-{
-    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
 }

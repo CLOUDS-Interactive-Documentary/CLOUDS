@@ -14,6 +14,15 @@
 #include "ofxAVFVideoPlayer.h"
 #endif
 #include "ofRange.h"
+#include "CloudsGlobal.h"
+
+
+#ifdef SHOW_SUBTITLES
+    #include "ofxSubtitles.h"
+#endif
+
+
+
 
 class CloudsRGBDVideoPlayer {
 public:
@@ -23,7 +32,7 @@ public:
 	
     //  SET
     //
-	bool setup(string videoPath, string calibrationXMLPath, float offsetTime = 0, float clipVolume =1);
+	bool setup(string videoPath, string calibrationXMLPath, string subtitlesPath = "", float offsetTime = 0, float clipVolume =1);
 	bool setupVO(string audioPath);
 	void swapAndPlay();
 	
@@ -31,10 +40,12 @@ public:
     
 	//  CYCLE
 	//
-	
+	void stop();
+    
 	bool isPlaying();
 	bool isDone();
-	
+	bool forceStop; //default to true when playin in clouds
+    
 	float getFadeIn(){
 		return fadeInValue;
 	};
@@ -70,6 +81,10 @@ public:
     float currentClipVolumeAdjustment;
     float nextClipVolumeAdjustment;
     float currentMaxVolume;
+	
+	bool hasSubtitles();
+    void drawSubtitles(float x, float y);
+
   protected:
 
 	//  UPDATE
@@ -134,4 +149,14 @@ public:
 	float fadeInValue;
 	float fadeOutValue;
     
+    /* Subtitles */
+    bool loadSubtitles(string path);
+    bool currentClipHasSubtitles;
+    bool nextClipHasSubtitles;
+    
+#ifdef SHOW_SUBTITLES
+    ofxSubtitles currentSubtitles;
+    ofxSubtitles nextSubtitles;
+#endif
+ 
 };

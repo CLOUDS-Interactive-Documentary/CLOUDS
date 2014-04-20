@@ -50,6 +50,7 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     }
     customGui->addRadio("SOUNDS", soundNames);
     
+    customGui->addSlider("MAIN GAIN", 0.0001, 1, &fMainGain);
     customGui->addSlider("LEVEL ADJUST", 0.0f, 10.0f, &levelAdjust);
     
     customGui->addSpacer();
@@ -110,6 +111,11 @@ void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
             }
         }
     }
+}
+
+void CloudsVisualSystemHistogram::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -173,6 +179,8 @@ void CloudsVisualSystemHistogram::selfSetup()
     dampening = 0.1f;
     
     fogDensity = 0.3;
+    
+    fMainGain = 1;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -212,6 +220,7 @@ void CloudsVisualSystemHistogram::selfUpdate()
         addRandomPoint();
     }
     else if (soundPlayer.isLoaded()) {
+        soundPlayer.setVolume(fMainGain);
         addSoundPoint();
     }
     else {
@@ -345,12 +354,19 @@ void CloudsVisualSystemHistogram::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemHistogram::selfEnd(){
 	
-	
+	soundPlayer.stop();
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemHistogram::selfExit(){
-	
+    ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystemHistogram::selfGuiEvent);
+
+    stopSound();
+    envelope.clear();
+    dampened.clear();
+
+    dataPoints.clear();
+    histoMesh.clear();
 }
 
 //events are called when the system is active

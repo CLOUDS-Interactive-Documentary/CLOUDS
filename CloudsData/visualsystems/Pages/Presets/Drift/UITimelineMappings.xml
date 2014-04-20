@@ -4,8 +4,32 @@
     <SliderCurves>
         <Mapping>
             <Widget>
+                <WidgetName>MESH ALPHA</WidgetName>
+                <WidgetID>8</WidgetID>
+                <WidgetCanvasParent>Page</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>FILL ALPHA</WidgetName>
+                <WidgetID>6</WidgetID>
+                <WidgetCanvasParent>Page</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
                 <WidgetName>OFFSET</WidgetName>
                 <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>Page</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>NUM PAGES</WidgetName>
+                <WidgetID>3</WidgetID>
                 <WidgetCanvasParent>Page</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -20,8 +44,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>TOP BEND</WidgetName>
-                <WidgetID>31</WidgetID>
+                <WidgetName>TWIRL</WidgetName>
+                <WidgetID>16</WidgetID>
+                <WidgetCanvasParent>Page</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>TILT</WidgetName>
+                <WidgetID>18</WidgetID>
                 <WidgetCanvasParent>Page</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -44,32 +76,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>NUM PAGES</WidgetName>
-                <WidgetID>3</WidgetID>
-                <WidgetCanvasParent>Page</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>MESH ALPHA</WidgetName>
-                <WidgetID>8</WidgetID>
-                <WidgetCanvasParent>Page</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>FILL ALPHA</WidgetName>
-                <WidgetID>6</WidgetID>
-                <WidgetCanvasParent>Page</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>TORNADO</WidgetName>
-                <WidgetID>36</WidgetID>
+                <WidgetName>TOP BEND</WidgetName>
+                <WidgetID>31</WidgetID>
                 <WidgetCanvasParent>Page</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -84,16 +92,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>TILT</WidgetName>
-                <WidgetID>18</WidgetID>
-                <WidgetCanvasParent>Page</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>TWIRL</WidgetName>
-                <WidgetID>16</WidgetID>
+                <WidgetName>TORNADO</WidgetName>
+                <WidgetID>36</WidgetID>
                 <WidgetCanvasParent>Page</WidgetCanvasParent>
             </Widget>
             <Track></Track>

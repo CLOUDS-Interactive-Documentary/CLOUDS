@@ -268,7 +268,6 @@ CloudsMovieDirectory_remote.txt
 /CloudsData/sound/samps/loops/Eccentric_Groove4_12.wav
 /CloudsData/sound/samps/loops/Eccentric_drone_12.wav
 
-/CloudsData/visualsystems/Twitter/Presets/JM_basic/
 
 /CloudsData/sound/Eccentric_Ring2_12.wav
 /CloudsData/sound/Eccentric_Ring1_12.wav
@@ -333,6 +332,38 @@ CloudsMovieDirectory_remote.txt
 /CloudsData/visualsystems/WormHole/Presets/_debug/Timeline/IntroOutro.xml
 /CloudsData/visualsystems/WormHole/Presets/_debug/UITimelineMappings.xml
 
-/CloudsData/CloudsMovieDirectory_whitedwarf.txt
-
 /CloudsLibrary/src/VisualSystemsPrivate/
+
+/CloudsData/logs/acts/ACT_1_9_14_19.txt
+/CloudsData/logs/acts/ACT_1_9_36_40.txt
+/CloudsData/logs/acts/ACT_1_9_36_46.txt
+/CloudsData/logs/acts/ACT_1_9_43_13.txt
+/CloudsData/logs/acts/ACT_1_9_52_13.txt
+/CloudsData/logs/acts/ACT_1_9_6_37.txt
+
+/CloudsData/secondaryDisplay/OSC/OSCSettings.xml
+
+CloudsData/visualsystems/WormHole/models/folding-small-simplified.mtl
+CloudsData/visualsystems/WormHole/models/folding-small-simplified.obj
+CloudsData/visualsystems/WormHole/models/PolyFlower_02_Tunnel_01.mtl
+CloudsData/visualsystems/WormHole/models/PolyFlower_02_Tunnel_01.obj
+CloudsData/visualsystems/WormHole/models/PolyFlower_02_Tunnel_02.mtl
+CloudsData/visualsystems/WormHole/models/PolyFlower_02_Tunnel_02.obj
+
+/CloudsData/logs/acts
+
+CloudsData/visualsystems/3DModelLoader/models*
+
+/CloudsData/visualsystems_ignored_old
+
+screencapture_*
+
+/CloudsVisualSystemPlaylist/bin/data/index_save.txt
+
+/CloudsVisualSystemEditor/bin/data/_VisualSystemsSkipped.txt
+
+/CloudsData/sound/renders/
+
+/CloudsVisualSystemEditor/bin/data/Selects/
+
+/CloudsData/sound/_soundDiscard/

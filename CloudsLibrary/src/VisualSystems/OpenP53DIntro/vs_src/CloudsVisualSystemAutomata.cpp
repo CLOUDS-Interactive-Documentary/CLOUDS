@@ -45,6 +45,11 @@ void CloudsVisualSystemOpenP53DIntro::selfSetupGui(){
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemOpenP53DIntro::selfSetDefaults(){
+    primaryCursorMode= CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+    
+}
 void CloudsVisualSystemOpenP53DIntro::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;

@@ -26,7 +26,8 @@ void CloudsVisualSystemRulez::selfSetup()
     generate();
     if (!structures.empty()) structure = &structures.begin()->second;
     
-	post.init(ofGetWidth(), ofGetHeight(), true);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	post.init(getCanvasWidth(), getCanvasHeight(), true);
     post.createPass<EdgePass>();
     post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
@@ -56,7 +57,10 @@ void CloudsVisualSystemRulez::selfSetup()
     //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
 }
-
+void CloudsVisualSystemRulez::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemRulez::generate()
 {
     for (auto it = structures.begin(); it != structures.end(); ++it)
@@ -79,7 +83,8 @@ void CloudsVisualSystemRulez::selfUpdate()
 {
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     //rules.step();
-    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (post.getWidth() != getCanvasWidth() || post.getHeight() != getCanvasHeight()) post.init(getCanvasWidth(), getCanvasHeight(), true);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -91,7 +96,9 @@ void CloudsVisualSystemRulez::selfDraw()
         shader.begin();
     #warning take light pos from clouds
         shader.setUniform3f("lightPos", 1000, 1000, 1000);
-        shader.setUniform1f("growth", structure->getMaxDepth() * (ofGetWidth() - ofGetMouseX()) / (float)ofGetWidth());
+        //MA: replaced ofGetMouseX() with GetCloudsInputX()
+        //MA: changed ofGetWidth() to getCanvasWidth()
+        shader.setUniform1f("growth", structure->getMaxDepth() * (getCanvasWidth() - GetCloudsInputX()) / (float)getCanvasWidth());
         shader.setUniform1f("maxDepth", structure->getMaxDepth());
         structure->draw();
         shader.end();
@@ -113,8 +120,9 @@ void CloudsVisualSystemRulez::selfPostDraw()
     glPushAttrib(GL_ENABLE_BIT);
     glDisable(GL_DEPTH_TEST);
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
-    if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
-    else CloudsVisualSystem::getSharedRenderTarget().draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
+    else CloudsVisualSystem::getSharedRenderTarget().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
     glPopAttrib();
 }
 

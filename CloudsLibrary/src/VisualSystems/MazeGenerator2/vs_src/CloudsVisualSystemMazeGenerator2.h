@@ -11,14 +11,13 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ParamManager.h"
-#include "Maze.h"
+#include "ParamManager2.h"
+#include "Maze2.h"
+//#include "MazeCamera2.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemMazeGenerator2 : public CloudsVisualSystem {
   public:
-    
-    CloudsVisualSystemMazeGenerator2();
     
 	//TODO: Change this to the name of your visual system
 	//This determines your d2ata path so name it at first!
@@ -78,6 +77,7 @@ class CloudsVisualSystemMazeGenerator2 : public CloudsVisualSystem {
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
 
+    void selfSetDefaults();
 	//events are called when the system is active
 	//Feel free to make things interactive for you, and for the user!
     void selfKeyPressed(ofKeyEventArgs & args);
@@ -98,8 +98,8 @@ class CloudsVisualSystemMazeGenerator2 : public CloudsVisualSystem {
 protected:
     void setLightOri(ofLight* light, ofVec3f rot);
     
-    Maze* maze[3];
-    MazeCamera* mazeCam;
+    Maze2* maze;
+    MazeCamera2* mazeCam;
     
     ofLight *light;
     ofVec3f lightAng;

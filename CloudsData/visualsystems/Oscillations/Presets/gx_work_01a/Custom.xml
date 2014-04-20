@@ -2,28 +2,28 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>399.000000000</XPosition>
+    <YPosition>111.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Precision</Name>
-    <Value>0.592118263</Value>
+    <Value>2.560590982</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CurveProgress</Name>
-    <Value>0.093596056</Value>
+    <Value>0.049261082</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Height</Name>
-    <Value>2068.965576172</Value>
+    <Value>1231.527099609</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Width</Name>
-    <Value>1970.443237305</Value>
+    <Value>886.699462891</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Z Position</Name>
-    <Value>1000.000000000</Value>
+    <Value>-1000.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -62,8 +62,8 @@
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>Width</Name>
-    <Value>0.000000000</Value>
+    <Name>Line Width</Name>
+    <Value>0.100000001</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

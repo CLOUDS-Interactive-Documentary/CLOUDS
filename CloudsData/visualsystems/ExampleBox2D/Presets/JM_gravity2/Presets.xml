@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000122070</XPosition>
+    <XPosition>637.000061035</XPosition>
     <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -38,5 +38,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>JM_gravity2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_GravityCircles</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_Squares</Name>
     <Value>1</Value>
 </Widget>

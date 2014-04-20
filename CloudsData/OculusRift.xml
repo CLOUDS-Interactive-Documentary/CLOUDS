@@ -1,0 +1,58 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OculusRift</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>367.000000000</XPosition>
+    <YPosition>206.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CURSOR</Name>
+    <Value>2.118226528</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INTERLUDE NODE SIZE</Name>
+    <Value>1.083743811</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>INTERLUDE NODE DIST</Name>
+    <HighValue>120.197044373</HighValue>
+    <LowValue>100.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INTERLUDE NODE HOLD TIME</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INTERLUDE X POS</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INTERLUDE Z POS</Name>
+    <Value>-9.162561417</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>INTERLUDE TYPE SIZE</Name>
+    <Value>11</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INTERLUDE TYPE SCALE</Name>
+    <Value>0.029556651</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INTERLUDE TYPE OFFSET</Name>
+    <Value>64.719207764</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INTERLUDE TYPE TRACKING</Name>
+    <Value>14.758620262</Value>
+</Widget>

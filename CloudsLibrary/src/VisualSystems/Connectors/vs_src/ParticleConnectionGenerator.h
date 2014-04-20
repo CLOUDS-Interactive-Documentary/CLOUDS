@@ -14,6 +14,7 @@ class ParticleConnectionGenerator {
 	float numParticles;
 	int maxTotalConnections;
 	float maxConnections;
+    float connectorsSpeed;
 	
 	float minDistance;
 	float boundarySize;

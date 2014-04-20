@@ -4,14 +4,6 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>pathPosition</WidgetName>
-                <WidgetID>4</WidgetID>
-                <WidgetCanvasParent>CameraPath</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>FOV</WidgetName>
                 <WidgetID>7</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
@@ -55,6 +47,14 @@
                 <WidgetName>DH</WidgetName>
                 <WidgetID>22</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>pathPosition</WidgetName>
+                <WidgetID>4</WidgetID>
+                <WidgetCanvasParent>CameraPath</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

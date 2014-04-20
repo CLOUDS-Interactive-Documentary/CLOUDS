@@ -111,6 +111,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
     audioGui->addSlider("LEVEL TO NOISE SCALE", 0, 100, &levelToNoiseScale);
     audioGui->addSlider("LEVEL TO NOISE RATIO", 0, 1, &levelToNoiseRatio);
     
+    audioGui->addSlider("Main Gain", 0.001, 1, &fMainGain);
+    
 	ofAddListener(audioGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::guiAudioEvent);
 	guis.push_back(audioGui);
 	guimap[audioGui->getName()] = audioGui;
@@ -191,6 +193,9 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetDefaults(){
 	soundPlayerReady = false;
 	videoPlayerReady = false;
 
+    fMainGain = 1;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -245,6 +250,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfBegin(){
 	else {
 		soundPlayer.play();
 		soundPlayer.setLoop(true);
+        soundPlayer.setVolume(fMainGain);
 	}
 	
 }
@@ -287,7 +293,9 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
         ofSoundUpdate();
         bAudioBuffered = true;
 
-        currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust;
+        soundPlayer.setVolume(fMainGain);
+        
+        currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust * (1/fMainGain);
     }
     
     if (bAudioBuffered) {
@@ -332,8 +340,9 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 //	glEnable(GL_DEPTH_TEST);
 	ofEnableAlphaBlending();
 
-    float rxp = ((GetCloudsInputX()-(ofGetWidth()/2))*0.3);
-	float ryp = ((ofGetMouseY()-(ofGetHeight()/2))*0.3);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    float rxp = ((GetCloudsInputX()-(getCanvasWidth()/2))*0.3);
+	float ryp = ((GetCloudsInputY()-(getCanvasHeight()/2))*0.3);
 	rx = (rx*0.9)+(rxp*0.1);
 	ry = (ry*0.9)+(ryp*0.1);
 	ofRotateY(rx);
@@ -352,6 +361,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 	}    
 	
 	if(drawLines){
+        glDisable(GL_LINE_SMOOTH);
 		shader.begin();
 		shader.setUniform1f("alphaDamp", lineAlpha);
 		ofSetLineWidth(ofMap(currLevel, 0, 1, minHairLineWidth, maxHairLineWidth));
@@ -411,8 +421,10 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfExit()
     if (leftBuffer  != NULL) delete [] leftBuffer;
     if (rightBuffer != NULL) delete [] rightBuffer;
     leftBuffer = rightBuffer = NULL;
-    
-    delete [] Hair::levelScaleLookUp;
+    if(Hair::levelScaleLookUp != NULL){
+        delete [] Hair::levelScaleLookUp;
+        Hair::levelScaleLookUp = NULL;
+    }
 }
 
 //events are called when the system is active

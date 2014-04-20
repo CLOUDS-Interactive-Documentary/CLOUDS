@@ -4,6 +4,12 @@
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
 
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#elif OCULUS_RIFT
+#include "CloudsInputOculus.h"
+#endif
+
 #ifdef TARGET_OSX
 #include "ofxSystemTextbox.h"
 #endif
@@ -14,15 +20,19 @@
 
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
+static ofImage cloudsPostDistortionMap;
 static CloudsRGBDVideoPlayer rgbdPlayer;
 static bool backgroundShaderLoaded = false;
+static ofShader cloudsPostShader;
+static bool postShaderLoaded = false;
 static ofShader backgroundShader;
 static ofImage backgroundGradientCircle;
 static ofImage backgroundGradientBar;
+static ofImage backgroundGradientWash;
 static bool screenResolutionForced = false;
 static int forcedScreenWidth;
 static int forcedScreenHeight;
-static int numSamples = 0;
+static int numSamples = 4;
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
@@ -60,8 +70,16 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 void CloudsVisualSystem::loadBackgroundShader(){
 	backgroundGradientBar.loadImage(GetCloudsDataPath() + "backgrounds/bar.png");
 	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
+    backgroundGradientWash.loadImage(GetCloudsDataPath() + "backgrounds/wash.png");
 	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
+    
+}
+
+void CloudsVisualSystem::loadPostShader(){
+    cloudsPostShader.load("",GetCloudsDataPath() + "shaders/post.fs");
+    cloudsPostDistortionMap.loadImage( GetCloudsDataPath() + "images/7.jpg");
+    postShaderLoaded = true;
 }
 
 void CloudsVisualSystem::getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height){
@@ -105,11 +123,13 @@ void CloudsVisualSystem::get2dMesh(ofMesh& mesh, float width, float height){
 
 
 #ifdef OCULUS_RIFT
-static ofxOculusRift oculusRift;
 #include "OVR.h"
+static ofxOculusRift oculusRift;
 ofxOculusRift& CloudsVisualSystem::getOculusRift(){
 	if(!oculusRift.isSetup()){
+        checkOpenGLError("PRE SETUP OCULUS");
 		oculusRift.setup();
+        checkOpenGLError("POST SETUP OCULUS");
 	}
 
 	return oculusRift;
@@ -129,17 +149,23 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
-	bDrawCursor = true;
+	primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 	updateCyclced = false;
+    bDoBloom = false;
+    bloomAmount = 0.;
+	isInterlude = false;
+	   
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
+	hudGui = NULL;	
 #else
 	bUseOculusRift = false;
 #endif 
-	
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
+
 	//can't save guis because the virtual subclass members return the wrong data
 //    saveGUIS();
 }
@@ -148,23 +174,25 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
 	ofFbo& renderTarget = getStaticRenderTarget();
-	
-	bool reallocateTarget = !renderTarget.isAllocated();
+    
+   int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
+    int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
+    
+bool reallocateTarget = !renderTarget.isAllocated();
 	reallocateTarget |= !screenResolutionForced &&
-						(renderTarget.getWidth() != ofGetWidth() ||
-						 renderTarget.getHeight() != ofGetHeight());
+						(renderTarget.getWidth() != targetWidth ||
+						 renderTarget.getHeight() != targetHeight );
 	reallocateTarget |= screenResolutionForced &&
 						(renderTarget.getWidth() != forcedScreenWidth ||
 						 renderTarget.getHeight() != forcedScreenHeight);
 
 	if(reallocateTarget){
 		if(screenResolutionForced){
-//			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 		}
 		else{
 //			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
-			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
+			renderTarget.allocate(targetWidth, targetHeight, GL_RGB, numSamples);
 		}
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -188,20 +216,31 @@ ofxTimeline* CloudsVisualSystem::getTimeline(){
 	return timeline;
 }
 
+
 void CloudsVisualSystem::setup(){
 	
-	if(bIsSetup){
+    if(bIsSetup){
 		return;
 	}
-	
+    
+    backgroundGradientExponent = 1.0;
+    bWashGradient = false;
+    
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
 	//ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
 	if(!backgroundShaderLoaded){
 		loadBackgroundShader();
 	}
-
-//	currentCamera = &cam;
+    
+    if(!postShaderLoaded){
+        loadPostShader();
+    }
+    
+#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
+    hud = NULL;
+    hudGui = NULL;
+#endif
 	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath()+"Presets/";
@@ -234,6 +273,23 @@ void CloudsVisualSystem::setup(){
 	hideGUIS();
 
 	bIsSetup = true;
+	
+    bEnablePostFX = false;
+	bUseInteractiveCamera = false;
+	interactiveCameraDamping = 0;
+	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
+	interactiveCameraRot = ofVec2f(0,0);
+	interactiveCameraDamping = 0;
+	interactiveCameraRot.set(0,0);
+    postChromaDist = 0.f;
+    postGrainDist = 0.f;
+    //POST PROCESSING BLEED AMNT
+    bleed = 20;
+    if(bEnablePostFX) SetBleedPixels(bleed);
+    else SetBleedPixels(0);
+	
+	//pushes variables through internally so upDirection, etc is right
+	getCameraRef().setOrientation(getCameraRef().getOrientationQuat());
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -248,9 +304,9 @@ void CloudsVisualSystem::playSystem(){
 
 	if(!bIsPlaying){
 		cout << "**** PLAYING " << getSystemName() << endl;
-		//ofRegisterMouseEvents(this);
+
 		CloudsRegisterInputEvents(this);
-//		ofAddListener(GetCloudsInput()->getEvents().interactionMoved, this, &CloudsVisualSystem::interactionMoved);
+
 		ofRegisterKeyEvents(this);
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
@@ -304,27 +360,6 @@ void CloudsVisualSystem::setKeywords(string main, vector<string> allKeywords){
 	keywords = allKeywords;
 }
 
-//float CloudsVisualSystem::getSecondsRemaining(){
-//	return secondsRemaining;
-//}
-//
-//void CloudsVisualSystem::setSecondsRemaining(float seconds){
-//	secondsRemaining = seconds;
-//}
-
-
-//string CloudsVisualSystem::getCurrentKeyword(){
-//	return currentKeyword;
-//}
-
-//void CloudsVisualSystem::setCurrentTopic(string topic){
-//	currentTopic = topic;
-//}
-//
-//string CloudsVisualSystem::getCurrentTopic(){
-//	return currentTopic;
-//}
-
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,
 									  string quoteName)
@@ -342,46 +377,48 @@ void CloudsVisualSystem::speakerEnded()
 	hasSpeaker = false;
 }
 
-#define REZANATOR_GUI_ALPHA_MULTIPLIER 4
-
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
-    if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
-    {
+
+    if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack){
         updateTimelineUIParams();
     }
     
 	cloudsCamera.setCanvasWidthHeight(getCanvasWidth(), getCanvasHeight());
 	
-	//JG Never skip the update loop this is causing lots of problems
-//    if(bUpdateSystem)
-    {
-        for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
-        {
-            (*it)->update();
-        }
-        
-		
-		//update camera
-		translatedHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
-		cloudsCamera.lookTarget = translatedHeadPosition;
-		
-        selfUpdate();
-    }
+#ifdef OCULUS_RIFT
+	getOculusRift().baseCamera = &getCameraRef();
+#endif
 	
-	if(bMatchBackgrounds){
+	for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it){
+		(*it)->update();
+	}
+	
+	//update camera
+	ofVec3f newHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
+	translatedHeadPosition += (newHeadPosition - translatedHeadPosition) * .1;
+	cloudsCamera.lookTarget = translatedHeadPosition;
+	
+	selfUpdate();
+	
+	if(isInterlude){
+		updateInterludeInterface();
+	}
+	
+	if(bMatchBackgrounds) {
 		bgHue2 = bgHue;
 		bgSat2 = bgSat;
 		bgBri2 = bgBri;
 	}
-	
-	bgColor = ofColor::fromHsb(MIN(bgHue,254.), bgSat, bgBri, 255);
+
+    durationLabel->setLabel(ofxTimecode::timecodeForSeconds(timeline->getInOutRange().span() * timeline->getDurationInSeconds()));
+    
+	bgColor  = ofColor::fromHsb(MIN(bgHue,254.),  bgSat,  bgBri,  255);
 	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
 	
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
-	if(!ofGetMousePressed())
-    {
-//		ofLogError("TIMELINE UPDATE FOR SYSTEM " + getSystemName());
+    
+	if(!ofGetMousePressed()){
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
@@ -389,6 +426,33 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	checkOpenGLError(getSystemName() + ":: UPDATE");
 	
 	updateCyclced = true;
+}
+
+bool CloudsVisualSystem::updateInterludeInterface(){
+
+#ifdef CLOUDS_INTERLUDE_NAV
+	resetNode.multiplier	= -1;
+	continueNode.multiplier = 1;
+	CalibrationNode* n[2] = { &resetNode, &continueNode };
+	for(int i = 0; i < 2; i++){
+		n[i]->nodeAlphaAttenuate = 1.0;
+		n[i]->nodeBaseSize = interludeNodeSize;
+		n[i]->tint = ofFloatColor::red;
+		n[i]->tint.a = 1.0;
+		
+		n[i]->baseOffset = ofVec3f(interludeBasePosX, 0, interludeBasePosZ);
+		n[i]->activationDistance = interludeActivationRange;
+		n[i]->holdTime = interludeNodeHoldTime;
+		n[i]->cam = &getCameraRef();
+
+	}
+
+	resetNode.update();
+	continueNode.update();
+	
+//	cout << "Reset node position " << resetNode.worldPosition << " cam pos " << getCameraRef().getPosition() << endl;
+	
+#endif
 }
 
 void CloudsVisualSystem::draw(ofEventArgs & args)
@@ -405,13 +469,16 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		//bind our fbo, lights, debug
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
+			checkOpenGLError(getSystemName() + ":: BEFORE DRAW BACKGROUND");
             getOculusRift().beginBackground();
 			drawBackgroundGradient();
             getOculusRift().endBackground();
+			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
-			getOculusRift().beginOverlay(-230, 320,240);
+			getOculusRift().beginOverlay(-230, 640,480);
+			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
 			selfDrawOverlay();
-			checkOpenGLError(getSystemName() + ":: DRAW OVERLAY");
+			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
 			getOculusRift().endOverlay();
 			
             if(bIs2D){
@@ -420,10 +487,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                     ofClear(0, 0, 0, 1.0);
                 }                
                 selfDrawBackground();
-				checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");
                 CloudsVisualSystem::getSharedRenderTarget().end();
                 
-                getOculusRift().baseCamera = &getCameraRef();
                 getOculusRift().beginLeftEye();
                 draw2dSystemPlane();
                 getOculusRift().endLeftEye();
@@ -433,7 +498,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                 getOculusRift().endRightEye();
             }
             else{
-                getOculusRift().baseCamera = &getCameraRef();
                 getOculusRift().beginLeftEye();
                 drawScene();
                 getOculusRift().endLeftEye();
@@ -445,7 +509,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			#endif
 		}
 		else {
-		
+			
 			CloudsVisualSystem::getSharedRenderTarget().begin();
 			if(bClearBackground){
 				ofClear(0, 0, 0, 1.0);
@@ -453,30 +517,38 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			drawBackground();
 			
 			getCameraRef().begin();
-			drawScene();
-			getCameraRef().end();
 			
+			drawScene();
+			
+			getCameraRef().end();
+            
 			ofPushStyle();
 			ofPushMatrix();
 			ofTranslate(0, getCanvasHeight() );
 			ofScale(1,-1,1);
 			
 			selfDrawOverlay();
-			
+
 			ofPopMatrix();
 			ofPopStyle();
 	
 			CloudsVisualSystem::getSharedRenderTarget().end();
+            
 		}
 		
 		//draw the fbo to the screen as a full screen quad
 		if(bDrawToScreen){
-//			if(getSystemName() != "_Intro"){
-//				cout << "Post draw should not have happened";
-//			}
 			selfPostDraw();
+            checkOpenGLError(getSystemName() + ":: POST DRAW");
 		}
 		
+#ifndef OCULUS_RIFT
+        drawCursors();
+#endif
+#ifdef KINECT_INPUT
+        drawKinectDebug();
+#endif
+
 	}
     
 	if(timeline != NULL && timeline->getIsShowing())
@@ -490,13 +562,30 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
     ofPopStyle();
 }
 
+#ifdef KINECT_INPUT
+void CloudsVisualSystem::drawKinectDebug(){
+    if (timeline->getIsShowing()) {
+        ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+        if (kinectInput->bDoDebug) {
+            static const int kDebugMargin = 0;
+            static const int kDebugWidth  = 640;
+            static const int kDebugHeight = 480;
+            kinectInput->debug(CloudsVisualSystem::getSharedRenderTarget().getWidth()  - kDebugWidth  - kDebugMargin,
+                               kDebugMargin,
+                               kDebugWidth, kDebugHeight);
+        }
+    }
+}
+#endif
+
 void CloudsVisualSystem::draw2dSystemPlane(){
     // create a plane and map our 2d systems to it
     ofPushMatrix();
     ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2, 0);
     
     ofMesh mesh;
-    get2dMesh(mesh, ofGetWidth(), ofGetHeight());
+    //MA: chaged to getCanvasWidth from ofGetWidth
+    get2dMesh(mesh, getCanvasWidth(), getCanvasHeight());
     getSharedRenderTarget().getTextureReference().bind();
     mesh.draw();
     getSharedRenderTarget().getTextureReference().unbind();
@@ -506,16 +595,31 @@ void CloudsVisualSystem::draw2dSystemPlane(){
 
 void CloudsVisualSystem::drawScene(){
 	
-	
-//	//start our 3d scene
+	ofPushMatrix();
+    
+	//start our 3d scene
 	ofRotateX(xRot->getPos());
 	ofRotateY(yRot->getPos());
 	ofRotateZ(zRot->getPos());
-	
+    
 	selfSceneTransformation();
-	
-	//accumulated position offset
-//	ofTranslate( positionOffset );
+
+    if(bUseInteractiveCamera && !bUseOculusRift){
+        
+        interactiveCameraRot *= 1. - interactiveCameraDamping;
+        
+        interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
+        interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
+
+        GLfloat model[16];
+        glGetFloatv(GL_MODELVIEW_MATRIX, model);
+        ofMatrix4x4 curmv;
+        curmv.set(model);
+        ofMultMatrix(curmv.getInverse());
+        ofRotate( interactiveCameraRot.x, 0, 1, 0);
+        ofRotate( interactiveCameraRot.y, 1, 0, 0);
+        ofMultMatrix(curmv);
+    }
 	
 	glEnable(GL_DEPTH_TEST);
 	
@@ -535,25 +639,91 @@ void CloudsVisualSystem::drawScene(){
 	lightsEnd();
 	
 	glDisable(GL_DEPTH_TEST);
-	
+    
+    ofPopMatrix();
 
 #ifdef OCULUS_RIFT
-	if(bDrawCursor){
-		ofPushMatrix();
-		ofPushStyle();
-		oculusRift.multBillboardMatrix();
-	//	ofNoFill();
-	//	ofSetColor(255, 50);
-	//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-		ofSetColor(240,240,255, 175);
-//		ofSetLineWidth(2);
-//		ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, .15, .1, true, ofxEasingQuad()));
-		ofPopStyle();
-		ofPopMatrix();
+	if(isInterlude){
+		drawInterludeInterface();
 	}
+	
+    // EZ: Only draw cursor on _Intro for now
+    if(primaryCursorMode > CURSOR_MODE_NONE && getSystemName() == "_Intro"){
+        ofPushStyle();
+        ofPushMatrix();
+        glPushAttrib(GL_ALL_ATTRIB_BITS);
+        glDisable(GL_LIGHTING);
+        glDisable(GL_DEPTH_TEST);
+        
+        ofTranslate(getCameraRef().getPosition());
+        ofMatrix4x4 baseRotation;
+        baseRotation.makeRotationMatrix(getCameraRef().getOrientationQuat());
+        if(getOculusRift().lockView){
+            ofMultMatrix(baseRotation);
+        }
+        else {
+            ofMultMatrix(getOculusRift().getOrientationMat() * baseRotation);
+        }
+        
+        ofEnableAlphaBlending();
+        
+        ofVec3f cursorPt = ofVec3f(0, 0, -150);
+        selfDrawCursor(cursorPt, false, primaryCursorMode);
+        
+        glPopAttrib();
+        ofPopMatrix();
+        ofPopStyle();
+    }
 #endif
 	
 }
+
+
+void CloudsVisualSystem::drawInterludeInterface(){
+	
+#if defined(CLOUDS_INTERLUDE_NAV)
+
+	ofPushStyle();
+	glDisable(GL_DEPTH_TEST);
+	ofDisableLighting();
+	ofEnableAlphaBlending();
+	ofSetColor(255);
+	
+	if(!interludeFont.isLoaded() || currentInterludeFontSize != interludeFontSize){
+		interludeFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", interludeFontSize);
+		currentInterludeFontSize = interludeFontSize;
+	}
+
+	resetNode.draw();
+	continueNode.draw();
+	
+	interludeFont.setTracking(interludeTypeTracking);
+	float hoverTextWidth  = interludeFont.stringWidth("RESET");
+	float hoverTextHeight = interludeFont.stringHeight("RESET");
+
+	ofPushMatrix();
+	getOculusRift().multBillboardMatrix( resetNode.worldPosition, getCameraRef().getUpDir() );
+	ofRotate(180,0,0,1);
+	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
+	interludeFont.drawString("RESET", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	ofPopMatrix();
+	
+	interludeFont.setTracking(interludeTypeTracking*.5);
+	hoverTextWidth  = interludeFont.stringWidth("CONTINUE");
+	hoverTextHeight = interludeFont.stringHeight("CONTINUE");
+	
+	ofPushMatrix();
+	getOculusRift().multBillboardMatrix( continueNode.worldPosition, getCameraRef().getUpDir() );
+	ofRotate(180,0,0,1);
+	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
+	interludeFont.drawString("CONTINUE", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	ofPopMatrix();
+	
+	ofPopStyle();
+#endif
+}
+
+
 
 void CloudsVisualSystem::setupRGBDTransforms(){
 	ofTranslate(0,0,pointcloudOffsetZ);
@@ -566,11 +736,13 @@ void CloudsVisualSystem::exit()
 	if( !bIsSetup ){
 		return;
 	}
-	
-	
+    
     saveGUIS();
-	deleteGUIS();
 	
+    selfExit();
+    
+	deleteGUIS();
+    
     for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
     {
         ofx1DExtruder *e = (*it);
@@ -604,7 +776,7 @@ void CloudsVisualSystem::exit()
 		timeline = NULL;
 	}
 	bIsSetup = false;
- 
+    
 }
 
 void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
@@ -639,6 +811,16 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         case '5':
             toggleGuiAndPosition(lgtGui);
             break;
+#ifdef KINECT_INPUT
+        case '8':
+            toggleGuiAndPosition(kinectGui);
+            break;
+#endif
+#ifdef OCULUS_RIFT
+        case '9':
+            toggleGuiAndPosition(oculusGui);
+            break;
+#endif
 //        case '0':
 //            toggleGuiAndPosition(camGui);
 //            break;
@@ -652,8 +834,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         case ' ':
         {
 			timeline->togglePlay();
-//            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->setValue(timeline->getIsPlaying());
-//            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->triggerSelf();
+
         }
             break;
 			
@@ -761,8 +942,8 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             }
         }
 		break;
-		
-		case 'T':
+            
+        case 'T':
 			cameraTrack->addKeyframe();
 			break;
 		case 'L':
@@ -777,7 +958,9 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 		case 'O':
 			timeline->setOutPointAtPlayhead();
 			break;
+            
 #ifdef OCULUS_RIFT
+        case OF_KEY_BACKSPACE:
 		case '0':
 			oculusRift.reset();
 			break;
@@ -855,7 +1038,7 @@ void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
 }
 
 void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
-    if(args.primary){    
+    if(args.primary){
         ofMouseEventArgs fakeArgs;
         fakeArgs.x = args.position.x;
         fakeArgs.y = args.position.y;
@@ -947,9 +1130,7 @@ void CloudsVisualSystem::setupCameraParams()
     camDistance = 200;
     cam.setDistance(camDistance);
     cam.setFov(camFOV);
-	//    cam.setForceAspectRatio(true);
-	//    bgAspectRatio = (float)ofGetWidth()/(float)ofGetHeight();
-	//    cam.setAspectRatio(bgAspectRatio);
+
     xRot = new ofx1DExtruder(0);
     yRot = new ofx1DExtruder(0);
     zRot = new ofx1DExtruder(0);
@@ -972,16 +1153,11 @@ void CloudsVisualSystem::setupLightingParams()
 	globalAmbientColorHSV.a = 1.0;
 	
 	light = new ofxLight();
-//    globalAmbientColor = new float[4];
-//    globalAmbientColor[0] = 0.5;
-//    globalAmbientColor[1] = 0.5;
-//    globalAmbientColor[2] = 0.5;
-//    globalAmbientColor[3] = 1.0;
+
 }
 
 void CloudsVisualSystem::setupMaterialParams()
 {
-//    mat = new ofMaterial();
 	mat = new ofxMaterial();
 }
 
@@ -989,7 +1165,7 @@ void CloudsVisualSystem::setupTimeLineParams()
 {
 	timeline = NULL;
     bShowTimeline = false;
-	bTimelineIsIndefinite = true;
+	bTimelineIsIndefinite = false;
     bDeleteTimelineTrack = false;
     timelineDuration = 60;
     bEnableTimeline = true;
@@ -1007,6 +1183,13 @@ void CloudsVisualSystem::setupCoreGuis()
     setupMaterial("MATERIAL 1", mat);
     setupPointLight("POINT LIGHT 1", light);
     setupPresetGui();
+    setupPostGui();
+#ifdef KINECT_INPUT
+    setupKinectGui();
+#endif
+#ifdef OCULUS_RIFT
+    setupOculusGui();
+#endif
 }
 
 void CloudsVisualSystem::setupGui()
@@ -1032,10 +1215,24 @@ void CloudsVisualSystem::setupGui()
     gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     gui->addWidgetNorthOf(loadbtn, "RENDER", true);
     gui->setPlacer(updatebtn);
+
     gui->addSpacer();
+    vector<string> primaryCursorModes;
+    primaryCursorModes.push_back("PRIMARY CURSOR NONE");
+    primaryCursorModes.push_back("PRIMARY CURSOR INACTIVE");
+    primaryCursorModes.push_back("PRIMARY CURSOR CAMERA");
+    primaryCursorModes.push_back("PRIMARY CURSOR DRAW");
+    gui->addRadio("PRIMARY CURSOR MODE", primaryCursorModes);
+    gui->addSpacer();
+    vector<string> secondaryCursorModes;
+    secondaryCursorModes.push_back("SEC. CURSORS NONE");
+    secondaryCursorModes.push_back("SEC. CURSORS INACTIVE");
+    secondaryCursorModes.push_back("SEC. CURSORS CAMERA");
+    secondaryCursorModes.push_back("SEC. CURSORS DRAW");
+    gui->addRadio("SECONDARY CURSOR MODE", secondaryCursorModes);
+    
     selfSetupGui();
     gui->autoSizeToFitWidgets();
-
     
     ofAddListener(gui->newGUIEvent,this,&CloudsVisualSystem::guiEvent);
     guis.push_back(gui);
@@ -1127,6 +1324,48 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
             
         }
     }
+
+    else if (name == "PRIMARY CURSOR NONE") {
+        if (e.getButton()->getValue()) {
+            primaryCursorMode = CURSOR_MODE_NONE;
+        }
+    }
+    else if(name == "PRIMARY CURSOR INACTIVE") {
+        if (e.getButton()->getValue()) {
+            primaryCursorMode = CURSOR_MODE_INACTIVE;
+        }
+    }
+    else if(name == "PRIMARY CURSOR CAMERA") {
+        if (e.getButton()->getValue()) {
+            primaryCursorMode = CURSOR_MODE_CAMERA;
+        }
+    }
+    else if(name == "PRIMARY CURSOR DRAW") {
+        if (e.getButton()->getValue()) {
+            primaryCursorMode = CURSOR_MODE_DRAW;
+        }
+    }
+    
+    else if (name == "SEC. CURSORS NONE") {
+        if (e.getButton()->getValue()) {
+            secondaryCursorMode = CURSOR_MODE_NONE;
+        }
+    }
+    else if(name == "SEC. CURSORS INACTIVE") {
+        if (e.getButton()->getValue()) {
+            secondaryCursorMode = CURSOR_MODE_INACTIVE;
+        }
+    }
+    else if(name == "SEC. CURSORS CAMERA") {
+        if (e.getButton()->getValue()) {
+            secondaryCursorMode = CURSOR_MODE_CAMERA;
+        }
+    }
+    else if(name == "SEC. CURSORS DRAW") {
+        if (e.getButton()->getValue()) {
+            secondaryCursorMode = CURSOR_MODE_DRAW;
+        }
+    }
 	
     selfGuiEvent(e);
 }
@@ -1145,8 +1384,7 @@ void CloudsVisualSystem::setupSystemGui()
     sysGui->resetPlacer();
     sysGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
     sysGui->addWidgetToHeader(toggle);
-    sysGui->addSpacer();
-    
+    sysGui->addSpacer();    
     selfSetupSystemGui();
     sysGui->autoSizeToFitWidgets();
     ofAddListener(sysGui->newGUIEvent,this,&CloudsVisualSystem::guiSystemEvent);
@@ -1173,40 +1411,10 @@ void CloudsVisualSystem::setupRenderGui()
 
 void CloudsVisualSystem::setupBackgroundGui()
 {
-//    bgHue = new ofx1DExtruder(0);
-//	bgSat = new ofx1DExtruder(0);
-//	bgBri = new ofx1DExtruder(0);
-	
-//	bgHue->setPhysics(.95, 5.0, 25.0);
-//	bgSat->setPhysics(.95, 5.0, 25.0);
-//	bgBri->setPhysics(.95, 5.0, 25.0);
-	
-//    bgHue2 = new ofx1DExtruder(0);
-//	bgSat2 = new ofx1DExtruder(0);
-//	bgBri2 = new ofx1DExtruder(0);
-	
-//	bgHue2->setPhysics(.95, 5.0, 25.0);
-//	bgSat2->setPhysics(.95, 5.0, 25.0);
-//	bgBri2->setPhysics(.95, 5.0, 25.0);
     
 	gradientMode = 0;
-//    bgHue->setHome((330.0/360.0)*255.0);
-//	bgSat->setHome(0);
-//	bgBri->setHome(0);
-//    bgColor = new ofColor(0,0,0);
     bgColor = ofColor(0,0,0);
-//    bgHue2->setHome((330.0/360.0)*255.0);
-//	bgSat2->setHome(0);
-//	bgBri2->setHome(0);
-//	bgColor2 = new ofColor(0,0,0);
     bgColor2 = ofColor(0,0,0);
-//    extruders.push_back(bgHue);
-//    extruders.push_back(bgSat);
-//    extruders.push_back(bgBri);
-//    
-//    extruders.push_back(bgHue2);
-//    extruders.push_back(bgSat2);
-//    extruders.push_back(bgBri2);
     
     bgGui = new ofxUISuperCanvas("BACKGROUND", gui);
     bgGui->copyCanvasStyle(gui);
@@ -1221,8 +1429,10 @@ void CloudsVisualSystem::setupBackgroundGui()
     bgGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
     bgGui->addWidgetToHeader(toggle);
 	bgGui->addToggle("BAR GRAD", &bBarGradient);
+	bgGui->addToggle("WASH GRAD", &bWashGradient);
+    bgGui->addSlider("EXPONENT", 0, 5.0, &backgroundGradientExponent);
     bgGui->addSpacer();
-
+    
     bgGui->addSlider("HUE", 0.0, 255.0, &bgHue);
     bgGui->addSlider("SAT", 0.0, 255.0, &bgSat);
     bgGui->addSlider("BRI", 0.0, 255.0, &bgBri);
@@ -1235,6 +1445,8 @@ void CloudsVisualSystem::setupBackgroundGui()
     ofAddListener(bgGui->newGUIEvent, this, &CloudsVisualSystem::guiBackgroundEvent);
     guis.push_back(bgGui);
     guimap[bgGui->getName()] = bgGui;
+	
+	
 }
 
 void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
@@ -1243,14 +1455,14 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
     
     if(name == "BRI")
     {
-       // bgBri->setPosAndHome(bgBri->getPos());
+        // bgBri->setPosAndHome(bgBri->getPos());
         for(int i = 0; i < guis.size(); i++)
         {
             guis[i]->setColorBack(ofColor(255*.2, 255*.9));
 			
         }
     }
-
+    
     else if(name == "GRAD")
     {
         ofxUIToggle *t = (ofxUIToggle *) e.widget;
@@ -1295,6 +1507,44 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
 		bgGui->getWidget("SAT2")->setColorFill(backgrounfFillColor);
 		bgGui->getWidget("BRI2")->setColorFill(backgrounfFillColor);
 	}
+}
+
+void CloudsVisualSystem::setupPostGui()
+{
+    postGui = new ofxUISuperCanvas("POST EFFECTS", gui);
+    postGui->copyCanvasStyle(gui);
+    postGui->copyCanvasProperties(gui);
+    postGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
+    postGui->setName("Post Effects");
+    postGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    postGui->addSpacer();
+    postGui->addToggle("Enable", &bEnablePostFX);
+    postGui->addSlider("Chroma_Distortion", 0.0, 1.0, &postChromaDist);
+    postGui->addSlider("Grain_Distortion", 0.0, 1.0, &postGrainDist);
+    postGui->addToggle("Do Bloom", &bDoBloom);
+    postGui->addSlider("Bloom Level", 0., 1., &bloomAmount);
+    postGui->addIntSlider("Bloom Size", 1, 20, &bloomSamples);
+    postGui->autoSizeToFitWidgets();
+    
+    ofAddListener(postGui->newGUIEvent, this, &CloudsVisualSystem::guiPostEvent);
+    guis.push_back(postGui);
+    guimap[postGui->getName()] = postGui;
+}
+
+void CloudsVisualSystem::guiPostEvent(ofxUIEventArgs &e)
+{
+    string name = e.widget->getName();
+    
+    if(name == "Enable"){
+        ofxUIToggle *t = (ofxUIToggle *) e.widget;
+        if(t->getValue()){
+            SetBleedPixels(bleed);
+        }else{
+            SetBleedPixels(0);
+        }
+    }
+    
 }
 
 void CloudsVisualSystem::setupLightingGui()
@@ -1376,6 +1626,17 @@ void CloudsVisualSystem::setupCameraGui()
     camGui->addSlider("ROT-Z", 0, 360.0, zRot->getPosPtr())->setIncrement(1.0);
     camGui->addLabel("TRACK");
     camGui->addButton("ADD KEYFRAME", false);
+	
+	camGui->addSpacer();
+	camGui->addToggle("InteractiveCamera", &bUseInteractiveCamera);
+	camGui->addSlider("damping", 0, 1, &interactiveCameraDamping);
+	
+	camGui->addMinimalSlider("minX", -90	, 90, &interactiveCameraMinX);
+	camGui->addMinimalSlider("maxX", -90	, 90, &interactiveCameraMaxX);
+	camGui->addMinimalSlider("minY", -90	, 90, &interactiveCameraMinY);
+	camGui->addMinimalSlider("maxY", -90	, 90, &interactiveCameraMaxY);
+	camGui->addSpacer();
+	
 	vector<string> transitions;
 	transitions.push_back("2D");
 	transitions.push_back("3D FLY THROUGH");
@@ -1406,12 +1667,49 @@ void CloudsVisualSystem::setupCameraGui()
     guis.push_back(camGui);
     guimap[camGui->getName()] = camGui;
 	
+
 }
+
+////load our Transitions.xml into a map of vectors used for saving transition option name
+//void CloudsVisualSystem::loadTransitionOptions()
+//{
+//	ofxXmlSettings *XML = new ofxXmlSettings();
+//	XML->loadFile( GetCloudsDataPath() + "transitions/Transitions.xml" );
+//	
+//	for(int i=0; i<XML->getNumTags("TRANSITION_TYPE"); i++)
+//	{
+//		XML->pushTag("TRANSITION_TYPE", i);
+//		
+//		string typeName = XML->getValue("NAME", "NULL", 0);
+//		transitionOptionMap[typeName];
+//		transitionOptionMap[typeName].clear();
+//		
+//		int numOptions = XML->getNumTags("OPTION");
+//		
+//		for(int j=0; j<numOptions; j++)
+//		{
+//			XML->pushTag("OPTION", j);
+//			
+//			string optionName = XML->getValue("NAME", "NULL", 0);
+//			
+//			transitionOptionMap[typeName].push_back(optionName);
+//			
+//			XML->popTag();
+//		}
+//		XML->popTag();
+//	}
+//	delete XML;
+//}
 
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
 {
-	if(transitionRadio->getActive() == NULL) return WHIP_PAN;
-	
+    if(transitionRadio == NULL){
+        return WHIP_PAN;
+    }
+    
+	if(transitionRadio->getActive() == NULL)
+		return WHIP_PAN;
+
 	string activeTransitionType = transitionRadio->getActive()->getName();
 	if(activeTransitionType == "2D"){
 		cout << "TWO_DIMENSIONAL" << endl;
@@ -1539,7 +1837,73 @@ void CloudsVisualSystem::guiCameraEvent(ofxUIEventArgs &e)
 	else if(name == "ADD KEYFRAME"){
 		cameraTrack->addKeyframe();
 	}
+	
+	else if(name == "bUseInteractiveCamera")
+	{
+        interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX);
+        interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY);
+	}
+	
+//	//TRANSITION OPTIONS
+//	if(name == "2D")
+//	{
+//		setTransitionOptionGui("TWO_DIMENSIONAL", "2D", e);
+//	}
+//	else if(name == "3D FLY THROUGH")
+//	{
+//		setTransitionOptionGui( "FLY_THROUGH", "3D FLY THROUGH", e);
+//	}
+//	else if(name == "3D WHIP PAN")
+//	{
+//		setTransitionOptionGui( "WHIP_PAN", "3D WHIP PAN", e);
+//	}
+//	else if(e.widget->getParent() == transitionOptionGui->getWidget("optionsRadio"))
+//	{
+//		cout << "getTransitionOption() = "<< getTransitionOption() << endl;
+//	}
+//	else{
+//		transitionOptionGui->setVisible(false);
+//	}
 }
+
+//void CloudsVisualSystem::setTransitionOptionGui(string transitionType, string screenName, ofxUIEventArgs &e)
+//{
+//	if(transitionOptionMap[transitionType].size()>0)
+//	{
+//		transitionOptionGui->setVisible(true);
+//		if(transitionOptionGui->getWidget(screenName) == NULL)
+//		{
+//			//clear then fill the gui with stuff
+//			transitionOptionGui->removeWidgets();
+//			transitionOptionGui->addLabel(screenName);
+//			transitionOptionGui->addSpacer();
+//			transitionOptionGui->addRadio("optionsRadio", transitionOptionMap[transitionType]);
+//			transitionOptionGui->autoSizeToFitWidgets();
+//		}
+//		
+//		transitionOptionGui->setPosition( e.widget->getRect()->getX() + transitionOptionGui->getRect()->getWidth(), e.widget->getRect()->getY());
+//	}
+//}
+
+//string CloudsVisualSystem::getTransitionOption()
+//{
+//	if(transitionOptionGui != NULL)
+//	{
+//		ofxUIRadio* r = (ofxUIRadio*)transitionOptionGui->getWidget("optionsRadio");
+//		if( r != NULL)
+//		{
+//			for (auto &t: r->getToggles())
+//			{
+//				if(t->getValue())
+//				{
+//					return t->getName();
+//				}
+//			}
+//		}
+//	}
+//	
+//	return "default";
+//}
 
 void CloudsVisualSystem::setupPresetGui()
 {
@@ -1976,12 +2340,14 @@ void CloudsVisualSystem::setupTimelineGui()
     tlGui->addWidgetToHeader(toggle);
     tlGui->addSpacer();
     
+    durationLabel = tlGui->addLabel("");
+    
     tlGui->addNumberDialer("DURATION", 0.0, 60*5, &timelineDuration, 0.0)->setDisplayLabel(true);
     tlGui->addToggle("INDEFINITE", &bTimelineIsIndefinite);
     
     tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
     tlGui->addToggle("DELETE", &bDeleteTimelineTrack);
-
+    
     //tlGui->addToggle("SHOW/HIDE", &bShowTimeline);
     
     selfSetupTimelineGui();
@@ -2519,6 +2885,9 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
                         string widgetname = XML->getValue("WidgetName", "NULL", 0);
                         int widgetID = XML->getValue("WidgetID", -1, 0);
                         string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+
+//                        cout << "Widget canvas parent is " << widgetCanvasParent << endl;
+                        
                         map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
                         if(it != guimap.end())
                         {
@@ -2527,6 +2896,16 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
                             {
                                 bindWidgetToTimeline(w);
                             }
+                            else {
+#ifndef CLOUDS_RELEASE
+                                ofSystemAlertDialog("WARNING: " + widgetCanvasParent + " COULD NOT FIND WIDGET " + widgetname + " IN GUI MAP. MAY BE MISCONFIGURED IN GUI");
+#endif                                
+                            }
+                        }
+                        else{
+#ifndef CLOUDS_RELEASE
+                            ofSystemAlertDialog("WARNING: " + widgetCanvasParent + " NOT FOUND IN GUI MAP. MAY BE MISCONFIGURED IN GUI");
+#endif
                         }
                         XML->popTag();
                     }
@@ -2570,6 +2949,240 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
 	timeline->setCurrentPage(0);
 }
 
+#ifdef KINECT_INPUT
+void CloudsVisualSystem::setupKinectGui()
+{
+    kinectGui = new ofxUISuperCanvas("KINECT", gui);
+    kinectGui->copyCanvasStyle(gui);
+    kinectGui->copyCanvasProperties(gui);
+    kinectGui->setName("Kinect");
+    kinectGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
+    kinectGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+    
+    ofxUIButton *button = kinectGui->addButton("SAVE", false);
+    button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    kinectGui->resetPlacer();
+    kinectGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
+    kinectGui->addWidgetToHeader(button);
+    
+    kinectGui->addSpacer();
+    kinectGui->addToggle("DEBUG", &kinectInput->bDoDebug);
+    
+    kinectGui->addSpacer();
+    kinectGui->addLabel("CURSOR");
+    kinectGui->addRangeSlider("CURSOR DOWN", 1, 20,
+                              &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorDownSizeMin, &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorDownSizeMax);
+    kinectGui->addRangeSlider("CURSOR UP", 1, 20,
+                              &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorUpSizeMin, &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorUpSizeMax);
+    
+    kinectGui->addSpacer();
+    kinectGui->addRangeSlider("BODY RANGE X", -1.0f, 1.0f, &kinectInput->boundsMin.x, &kinectInput->boundsMax.x);
+    kinectGui->addRangeSlider("BODY RANGE Y", -1.0f, 1.0f, &kinectInput->boundsMin.y, &kinectInput->boundsMax.y);
+    kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
+    
+    kinectGui->addSpacer();
+    kinectGui->addToggle("CLAMP TO BOUNDS", &kinectInput->bClampToBounds);
+    kinectGui->addSlider("ACTIVE THRESHOLD Y", 0.0f, 1.0f, &kinectInput->activeThresholdY);
+    kinectGui->addSlider("ACTIVE THRESHOLD Z", 0.0f, 1.0f, &kinectInput->activeThresholdZ);
+    kinectGui->addSlider("FOCUS RANGE", 0.0f, 1.0f, &kinectInput->focusRange);
+    
+    kinectGui->addSpacer();
+    kinectGui->addSlider("RESET LERP", 0, 1, &kinectInput->posResetLerpPct);
+    kinectGui->addSlider("MOVE LERP", 0, 1, &kinectInput->posSetLerpPct);
+    kinectGui->addSlider("MOVE THRESHOLD", 0, 100, &kinectInput->posSetInstantThreshold);
+    kinectGui->addIntSlider("OUT OF BOUNDS DELAY", 0, 5000, &kinectInput->posOutOfBoundsDelay);
+    
+    kinectGui->addSpacer();
+    kinectGui->addSlider("FEEDBACK SCALE", 0.0f, 1.0f, &kinectInput->feedbackScale);
+    kinectGui->addSlider("FEEDBACK MARGIN", 0.0f, 0.5f, &kinectInput->feedbackMargin);
+    kinectGui->addMinimalSlider("FEEDBACK HUE", 0, 255, &kinectInput->feedbackHSB.x);
+    kinectGui->addMinimalSlider("FEEDBACK SAT", 0, 255, &kinectInput->feedbackHSB.y);
+    kinectGui->addMinimalSlider("FEEDBACK BRI", 0, 255, &kinectInput->feedbackHSB.z);
+    
+    kinectGui->autoSizeToFitWidgets();
+    ofAddListener(kinectGui->newGUIEvent, this, &CloudsVisualSystem::guiKinectEvent);
+    guis.push_back(kinectGui);
+    guimap[kinectGui->getName()] = kinectGui;
+}
+
+void CloudsVisualSystem::guiKinectEvent(ofxUIEventArgs &e)
+{
+    if (e.getName() == "SAVE") {
+        kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+    }
+}
+#endif
+
+#ifdef OCULUS_RIFT
+void CloudsVisualSystem::setupOculusGui()
+{
+    oculusGui = new ofxUISuperCanvas("OCULUS RIFT", gui);
+    oculusGui->copyCanvasStyle(gui);
+    oculusGui->copyCanvasProperties(gui);
+    oculusGui->setName("OculusRift");
+    oculusGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
+    oculusGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    ofxUIButton *button = oculusGui->addButton("SAVE", false);
+    button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    oculusGui->resetPlacer();
+    oculusGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
+    oculusGui->addWidgetToHeader(button);
+    
+    oculusGui->addSpacer();
+    oculusGui->addLabel("CURSOR");
+    oculusGui->addSlider("CURSOR", 0, 5, &((CloudsInputOculus *)GetCloudsInput().get())->cursorSize);
+    //Interlude stuff
+	oculusGui->addSlider("INTERLUDE NODE SIZE", 0, 10, &interludeNodeSize);
+	oculusGui->addRangeSlider("INTERLUDE NODE DIST", 100, 200, &interludeActivationRange.min, &interludeActivationRange.max);
+	oculusGui->addSlider("INTERLUDE NODE HOLD TIME", 5, 15, &interludeNodeHoldTime);
+	oculusGui->addSlider("INTERLUDE X POS", 0,  10, &interludeBasePosX);
+	oculusGui->addSlider("INTERLUDE Z POS", 0, -10, &interludeBasePosZ);
+	//TYPE
+	oculusGui->addIntSlider("INTERLUDE TYPE SIZE",  1, 20, &interludeFontSize);
+	oculusGui->addSlider("INTERLUDE TYPE SCALE",    0, 1.0, &interludeTypeScale);
+	oculusGui->addSlider("INTERLUDE TYPE OFFSET",   1, 200, &interludeTypeYOffset);
+	oculusGui->addSlider("INTERLUDE TYPE TRACKING", 1, 20, &interludeTypeTracking);
+	
+    oculusGui->autoSizeToFitWidgets();
+    ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+    guis.push_back(oculusGui);
+    guimap[oculusGui->getName()] = oculusGui;
+}
+
+void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
+{
+    if (e.getName() == "SAVE") {
+        oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+    }
+}
+
+#ifdef CLOUDS_APP
+void CloudsVisualSystem::setupHUDGui()
+{
+    if (hud == NULL || hudGui != NULL) return;
+    
+    hudGui = new ofxUISuperCanvas("HUD", gui);
+    hudGui->copyCanvasStyle(gui);
+    hudGui->copyCanvasProperties(gui);
+    hudGui->setName("HUD");
+    hudGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
+    hudGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    ofxUIButton *button = hudGui->addButton("SAVE", false);
+    button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    hudGui->resetPlacer();
+    hudGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
+    hudGui->addWidgetToHeader(button);
+    
+    hudGui->addSpacer();
+    hudGui->addSlider("QUESTION DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_QUESTION]);
+    hudGui->addSlider("QUESTION ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_QUESTION]);
+    hudGui->addSlider("QUESTION ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_QUESTION]);
+    hudGui->addLabel("BILLBOARD");
+    vector<string> hudBillboardQ;
+    hudBillboardQ.push_back("BB Q NONE");
+    hudBillboardQ.push_back("BB Q CAMERA");
+    hudBillboardQ.push_back("BB Q OCULUS");
+    hudGui->addRadio("QUESTION BILLBOARD", hudBillboardQ)->activateToggle("BB Q CAMERA");
+
+    hudGui->addSpacer();
+    hudGui->addSlider("LOWER 3RD DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_LOWER_THIRD]);
+    hudGui->addSlider("LOWER 3RD ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_LOWER_THIRD]);
+    hudGui->addSlider("LOWER 3RD ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_LOWER_THIRD]);
+    hudGui->addLabel("BILLBOARD");
+    vector<string> hudBillboardL3;
+    hudBillboardL3.push_back("BB L3 NONE");
+    hudBillboardL3.push_back("BB L3 CAMERA");
+    hudBillboardL3.push_back("BB L3 OCULUS");
+    hudGui->addRadio("LOWER 3RD BILLBOARD", hudBillboardL3)->activateToggle("BB L3 CAMERA");
+
+    hudGui->addSpacer();
+    hudGui->addSlider("PROJ EX DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_PROJECT_EXAMPLE]);
+    hudGui->addSlider("PROJ EX ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_PROJECT_EXAMPLE]);
+    hudGui->addSlider("PROJ EX ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_PROJECT_EXAMPLE]);
+    hudGui->addLabel("BILLBOARD");
+    vector<string> hudBillboardPE;
+    hudBillboardPE.push_back("BB PE NONE");
+    hudBillboardPE.push_back("BB PE CAMERA");
+    hudBillboardPE.push_back("BB PE OCULUS");
+    hudGui->addRadio("PROJ EX BILLBOARD", hudBillboardPE)->activateToggle("BB PE CAMERA");
+
+    hudGui->addSpacer();
+    hudGui->addSlider("MAP DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_MAP]);
+    hudGui->addSlider("MAP ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_MAP]);
+    hudGui->addSlider("MAP ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_MAP]);
+    hudGui->addLabel("BILLBOARD");
+    vector<string> hudBillboardM;
+    hudBillboardM.push_back("BB M NONE");
+    hudBillboardM.push_back("BB M CAMERA");
+    hudBillboardM.push_back("BB M OCULUS");
+    hudGui->addRadio("MAP BILLBOARD", hudBillboardM)->activateToggle("BB M CAMERA");
+
+    hudGui->autoSizeToFitWidgets();
+    ofAddListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
+    guis.push_back(hudGui);
+    guimap[hudGui->getName()] = hudGui;
+    
+    // load initial settings
+    hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+
+    // sync visibility with others
+    hudGui->setVisible(gui->isVisible());
+}
+
+void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
+{
+    string name = e.getName();
+    if (name == "SAVE") {
+        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+    }
+
+    else if (name == "BB Q NONE") {
+        hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_NONE;
+    }
+    else if (name == "BB Q CAMERA") {
+        hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    }
+    else if (name == "BB Q OCULUS") {
+        hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_OCULUS;
+    }
+    
+    else if (name == "BB L3 NONE") {
+        hud->layerBillboard[CLOUDS_HUD_LOWER_THIRD] = CLOUDS_HUD_BILLBOARD_NONE;
+    }
+    else if (name == "BB L3 CAMERA") {
+        hud->layerBillboard[CLOUDS_HUD_LOWER_THIRD] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    }
+    else if (name == "BB L3 OCULUS") {
+        hud->layerBillboard[CLOUDS_HUD_LOWER_THIRD] = CLOUDS_HUD_BILLBOARD_OCULUS;
+    }
+    
+    else if (name == "BB PE NONE") {
+        hud->layerBillboard[CLOUDS_HUD_PROJECT_EXAMPLE] = CLOUDS_HUD_BILLBOARD_NONE;
+    }
+    else if (name == "BB PE CAMERA") {
+        hud->layerBillboard[CLOUDS_HUD_PROJECT_EXAMPLE] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    }
+    else if (name == "BB PE OCULUS") {
+        hud->layerBillboard[CLOUDS_HUD_PROJECT_EXAMPLE] = CLOUDS_HUD_BILLBOARD_OCULUS;
+    }
+    
+    else if (name == "BB M NONE") {
+        hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_NONE;
+    }
+    else if (name == "BB M CAMERA") {
+        hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    }
+    else if (name == "BB M OCULUS") {
+        hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_OCULUS;
+    }
+}
+#endif  // CLOUDS_APP
+#endif  // OCULUS_RIFT
+
 void CloudsVisualSystem::lightsBegin()
 {
     ofSetSmoothLighting(bSmoothLighting);
@@ -2600,23 +3213,52 @@ void CloudsVisualSystem::loadGUIS()
 
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+        if (guis[i] == hudGui) continue;
+#endif
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
 		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
 //        setColors();
 //        guis[i]->setTheme(OFX_UI_THEME_ZOOLANDER);
     }
+
+#ifdef KINECT_INPUT
+    kinectGui->loadSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+#endif
+    
+#ifdef OCULUS_RIFT
+    oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+#ifdef CLOUDS_APP
+    if (hudGui != NULL) {
+        hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+    }
+#endif
+#endif
+    
     cam.reset();
     ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
     resetTimeline();
+    
     loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
     timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
-
+    
 }
 
 void CloudsVisualSystem::saveGUIS()
 {
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+        if (guis[i] == hudGui) continue;
+#endif
         guis[i]->saveSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
@@ -2625,6 +3267,17 @@ void CloudsVisualSystem::saveGUIS()
     if(timeline != NULL){
 		timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 	}
+
+    // EZ: These are saved using the SAVE button for each GUI.
+//#ifdef KINECT_INPUT
+//    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+//#endif
+//#ifdef OCULUS_RIFT
+//    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+//    if (hudGui) {
+//        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+//    }
+//#endif
 }
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
@@ -2638,9 +3291,19 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     
 	resetTimeline();
 	
+    bWashGradient = false;
+    bBarGradient = false;
+    backgroundGradientExponent = 1.0;
+    
 	selfSetDefaults();
 	
     for(int i = 0; i < guis.size(); i++) {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
     }
@@ -2673,12 +3336,16 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 
 	selfPresetLoaded(presetPath);
 	currentPresetName = ofFilePath::getBaseName(presetPath);
-//	getSharedRenderTarget().begin();
-//	ofClear(0.0,0.0,0.0,1.0);
-//	getSharedRenderTarget().end();
+
 		
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
+    if(cameraTrack->lockCameraToTrack){
+        ofxTLCameraFrame* firstCamFrame = (ofxTLCameraFrame*) cameraTrack->getKeyframes()[0];
+        cam.setPosition(firstCamFrame->position);
+        cam.setOrientation(firstCamFrame->orientation);
+    }
+    
 	timeline->setCurrentTimeMillis(0);
 	timeline->play();
 	
@@ -2702,6 +3369,12 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
     
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
         guis[i]->saveSettings(presetDirectory+guis[i]->getName()+".xml");
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/"+presetName+"/ofEasyCamSettings");
@@ -2714,7 +3387,6 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	
 	
 //	cout << "after save range " << timeline->getInOutRange() << endl;
-	
 	timeline->setName("Working");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
@@ -2727,7 +3399,11 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	timeInfo.addValue("outroDuration", getOutroDuration());
 	timeInfo.popTag();//timeinfo
 	timeInfo.saveFile(getVisualSystemDataPath()+"Presets/"+presetName+"/TimeInfo.xml");
-	
+    
+    //Add auto refresh file
+    ofBuffer refreshFlag;
+    refreshFlag.append("refreshme");
+    ofBufferToFile(getVisualSystemDataPath()+"Presets/Working/_refreshme.txt", refreshFlag);
 }
 
 void CloudsVisualSystem::deleteGUIS()
@@ -2743,6 +3419,17 @@ void CloudsVisualSystem::deleteGUIS()
 	{
 		ofRemoveListener(it->second->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
 	}
+#ifdef KINECT_INPUT
+    ofRemoveListener(kinectGui->newGUIEvent, this, &CloudsVisualSystem::guiKinectEvent);
+#endif
+#ifdef OCULUS_RIFT
+    ofRemoveListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+#ifdef CLOUDS_APP
+    if (hudGui != NULL) {
+        ofRemoveListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
+    }
+#endif
+#endif
 	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
     {
@@ -2798,21 +3485,6 @@ void CloudsVisualSystem::toggleGuiAndPosition(ofxUISuperCanvas *g)
         g->setMinified(true);
     }
 }
-
-//void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
-//{
-//	currentCamera = &swappedInCam;
-//}
-
-//ofCamera* CloudsVisualSystem::getCurrentCamera()
-//{
-//	return currentCamera;
-//}
-
-//void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
-//{
-//	setCurrentCamera(*swappedInCam);
-//}
 
 ofCamera& CloudsVisualSystem::getCameraRef(){
 	return cam;
@@ -2889,46 +3561,6 @@ void CloudsVisualSystem::billBoard(ofVec3f globalCamPosition, ofVec3f globelObje
     glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);
 }
 
-//void CloudsVisualSystem::drawTexturedQuad()
-//{
-//    glBegin (GL_QUADS);
-//    
-//    glTexCoord2f (0.0, 0.0);
-//    glVertex3f (0.0, 0.0, 0.0);
-//    
-//    glTexCoord2f (ofGetWidth(), 0.0);
-//    glVertex3f (ofGetWidth(), 0.0, 0.0);
-//    
-//    
-//    glTexCoord2f (ofGetWidth(), ofGetHeight());
-//    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
-//    
-//    glTexCoord2f (0.0, ofGetHeight());
-//    glVertex3f (0.0, ofGetHeight(), 0.0);
-//    
-//    glEnd ();
-//}
-
-//void CloudsVisualSystem::drawNormalizedTexturedQuad()
-//{
-//    glBegin (GL_QUADS);
-//    
-//    glTexCoord2f (0.0, 0.0);
-//    glVertex3f (0.0, 0.0, 0.0);
-//    
-//    glTexCoord2f (1.0, 0.0);
-//    glVertex3f (ofGetWidth(), 0.0, 0.0);
-//    
-//    
-//    glTexCoord2f (1.0, 1.0);
-//    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
-//    
-//    glTexCoord2f (0.0, 1.0);
-//    glVertex3f (0.0, ofGetHeight(), 0.0);
-//    
-//    glEnd ();
-//}
-
 void CloudsVisualSystem::drawBackground()
 {
 	
@@ -2936,7 +3568,8 @@ void CloudsVisualSystem::drawBackground()
 	
 	ofPushStyle();
 	ofPushMatrix();
-	ofTranslate(0, ofGetHeight());
+    //MA:: changed ofGetHeight to getCanvasHeight to fix post processing bugs
+	ofTranslate(0, getCanvasHeight());
 	ofScale(1,-1,1);
 	selfDrawBackground();
 	checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");		
@@ -2957,43 +3590,74 @@ void CloudsVisualSystem::drawBackgroundGradient(){
 	{
 		
 		if(gradientMode != -1){
-			if(bBarGradient){
-				if(backgroundGradientBar.isAllocated()){
-					backgroundShader.begin();
-					backgroundShader.setUniformTexture("image", backgroundGradientBar, 1);
-					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
-					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
-					ofMesh mesh;
-                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
-					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
-					mesh.draw();
-					backgroundShader.end();
-				}
-				else{
-					ofSetSmoothLighting(true);
-					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_BAR);
-				}
-			}
-			else{
-				if(backgroundGradientCircle.isAllocated()){
-					backgroundShader.begin();
-					backgroundShader.setUniformTexture("image", backgroundGradientCircle, 1);
-					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
-					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
-					ofMesh mesh;
-                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
-					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
-					mesh.draw();
-					backgroundShader.end();
-				}
-				else{
-					ofSetSmoothLighting(true);
-					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_CIRCULAR);
-				}
-			}
+            
+            ofImage* gradientImage = NULL;
+            if(bBarGradient && backgroundGradientBar.isAllocated()){
+                gradientImage = &backgroundGradientBar;
+            }
+            else if(bWashGradient && backgroundGradientWash.isAllocated()){
+                gradientImage = &backgroundGradientWash;
+            }
+            else if(backgroundGradientCircle.isAllocated()){
+                gradientImage = &backgroundGradientCircle;
+            }
+            
+            if(gradientImage != NULL){
+                backgroundShader.begin();
+                backgroundShader.setUniformTexture("image", *gradientImage, 1);
+                backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
+                backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
+                backgroundShader.setUniform1f("gradientExponent", backgroundGradientExponent);
+                
+                ofMesh mesh;
+                getBackgroundMesh(mesh, *gradientImage, ofGetViewportWidth(), ofGetViewportHeight());
+                //getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
+                mesh.draw();
+                backgroundShader.end();
+            }
+            //images didn't load
+            else {
+                ofSetSmoothLighting(true);
+                ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_BAR);
+            }
+//            if(bBarGradient){
+//				if(backgroundGradientBar.isAllocated()){
+//					backgroundShader.begin();
+//					backgroundShader.setUniformTexture("image", backgroundGradientBar, 1);
+//					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
+//					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
+//					ofMesh mesh;
+//                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
+//					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
+//					mesh.draw();
+//					backgroundShader.end();
+//				}
+//				else{
+//					ofSetSmoothLighting(true);
+//					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_BAR);
+//				}
+//			}
+//			else{
+//				if(backgroundGradientCircle.isAllocated()){
+//					backgroundShader.begin();
+//					backgroundShader.setUniformTexture("image", backgroundGradientCircle, 1);
+//					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
+//					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
+//					ofMesh mesh;
+//                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
+//					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
+//					mesh.draw();
+//					backgroundShader.end();
+//				}
+//				else{
+//					ofSetSmoothLighting(true);
+//					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_CIRCULAR);
+//				}
+//			}
 		}
 		else{
 			ofSetSmoothLighting(false);
+			//TODO: fix this call
 			ofBackground(bgColor);
 		}
 	}
@@ -3077,55 +3741,68 @@ void CloudsVisualSystem::selfDraw()
 }
 
 void CloudsVisualSystem::selfDrawOverlay(){
-	
+
 }
 
 void CloudsVisualSystem::selfPostDraw(){
+	selfPostDraw(getCanvasWidth(),getCanvasHeight());
+}
+
+void CloudsVisualSystem::selfPostDraw(int width, int height){
 	
 	glDisable(GL_LIGHTING);
 	
 #ifdef OCULUS_RIFT
     oculusRift.draw();
 #else
-    //draws to viewport
-    CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
-                                                       CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-                                                      -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-    
-	//TODO REPLACE WITH REAL CURSOR SYSTEM
-    if(bDrawCursor){
-        ofPushMatrix();
-        ofPushStyle();
-        ofSetLineWidth(2);
-        map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
-        for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
-            //	ofNoFill();
-            //	ofSetColor(255, 50);
-            //	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-            if(it->second.actionType == 0){
-                ofSetColor(ofColor::steelBlue, 255);
-            }
-            else if (it->second.primary) {
-                ofSetColor(240,240,100, 175);
-            }
-            else {
-                ofSetColor(240,240,255, 175);
-            }
-            ofCircle(it->second.position.x,
-					 it->second.position.y,
-					 ofMap(it->second.position.z, 2, -2, 3, 10, true) );
-//            cout << " z pos " << it->second.position.z << endl;
-        }
-        ofPopStyle();
-        ofPopMatrix();
+
+    int offset;
+    if(bEnablePostFX){
+        cloudsPostShader.begin();
+        cloudsPostShader.setUniformTexture("distortionMap", cloudsPostDistortionMap, 1);
+        cloudsPostShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
+        cloudsPostShader.setUniform2f("dMapResolution", cloudsPostDistortionMap.getWidth(), cloudsPostDistortionMap.getHeight());
+        cloudsPostShader.setUniform1f("chromaDist", postChromaDist);
+        cloudsPostShader.setUniform1f("grainDist", postGrainDist);
+        cloudsPostShader.setUniform1f("doBloom", bDoBloom?1.:0.);
+        cloudsPostShader.setUniform1f("bloomAmount", bloomAmount);
+        cloudsPostShader.setUniform1i("bloomSize", bloomSamples);
+        offset = bleed;
     }
-	///END TODO
+	else{
+        offset = 0;
+    }
+	
+//    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,
+//													 CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
+//                                                     CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+//                                                     -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+    CloudsVisualSystem::getSharedRenderTarget().draw(-offset, height - offset, width, -height);
+	
+    if(bEnablePostFX){
+        cloudsPostShader.end();
+    }
+    //end
 	
 #endif
-
+    
 }
 
-	
+void CloudsVisualSystem::drawCursors()
+{
+    map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
+    for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+        selfDrawCursor(it->second.position, it->second.dragged, it->second.primary? primaryCursorMode : secondaryCursorMode, it->second.focus);
+    }
+}
+
+// Override this method to customize the position or rendering of the cursors for a specific CloudsVisualSystem!
+void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus)
+{
+    // Use the default cursor rendering from CloudsInput.
+    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
+}
+
 void CloudsVisualSystem::selfExit()
 {
     
@@ -3148,7 +3825,6 @@ void CloudsVisualSystem::selfKeyPressed(ofKeyEventArgs & args)
 
 void CloudsVisualSystem::selfKeyReleased(ofKeyEventArgs & args)
 {
-    
 }
 
 void CloudsVisualSystem::selfMouseDragged(ofMouseEventArgs& data)

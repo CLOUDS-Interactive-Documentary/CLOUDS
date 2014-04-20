@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2A316EF1187B568D00662636 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EE7187B568D00662636 /* CloudsVisualSystemMazeGenerator2.cpp */; };
-		2A316EF2187B568D00662636 /* Maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EE9187B568D00662636 /* Maze.cpp */; };
-		2A316EF3187B568D00662636 /* MazeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EEB187B568D00662636 /* MazeCamera.cpp */; };
-		2A316EF4187B568D00662636 /* MazeCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EED187B568D00662636 /* MazeCell.cpp */; };
-		2A316EF5187B568D00662636 /* ParamManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EEF187B568D00662636 /* ParamManager.cpp */; };
+		2A316EF2187B568D00662636 /* Maze2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EE9187B568D00662636 /* Maze2.cpp */; };
+		2A316EF3187B568D00662636 /* MazeCamera2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EEB187B568D00662636 /* MazeCamera2.cpp */; };
+		2A316EF4187B568D00662636 /* MazeCell2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EED187B568D00662636 /* MazeCell2.cpp */; };
+		2A316EF5187B568D00662636 /* ParamManager2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EEF187B568D00662636 /* ParamManager2.cpp */; };
 		2A316EFE187B574900662636 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EF7187B574900662636 /* CloudsInput.cpp */; };
 		2A316F00187B574900662636 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316EFC187B574900662636 /* CloudsInputMouse.cpp */; };
 		2A316F04187B581300662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F03187B581300662636 /* ofxSystemTextbox.mm */; };
@@ -147,14 +147,14 @@
 /* Begin PBXFileReference section */
 		2A316EE7187B568D00662636 /* CloudsVisualSystemMazeGenerator2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMazeGenerator2.cpp; sourceTree = "<group>"; };
 		2A316EE8187B568D00662636 /* CloudsVisualSystemMazeGenerator2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMazeGenerator2.h; sourceTree = "<group>"; };
-		2A316EE9187B568D00662636 /* Maze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Maze.cpp; sourceTree = "<group>"; };
-		2A316EEA187B568D00662636 /* Maze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Maze.h; sourceTree = "<group>"; };
-		2A316EEB187B568D00662636 /* MazeCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeCamera.cpp; sourceTree = "<group>"; };
-		2A316EEC187B568D00662636 /* MazeCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCamera.h; sourceTree = "<group>"; };
-		2A316EED187B568D00662636 /* MazeCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeCell.cpp; sourceTree = "<group>"; };
-		2A316EEE187B568D00662636 /* MazeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell.h; sourceTree = "<group>"; };
-		2A316EEF187B568D00662636 /* ParamManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParamManager.cpp; sourceTree = "<group>"; };
-		2A316EF0187B568D00662636 /* ParamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamManager.h; sourceTree = "<group>"; };
+		2A316EE9187B568D00662636 /* Maze2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Maze2.cpp; sourceTree = "<group>"; };
+		2A316EEA187B568D00662636 /* Maze2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Maze2.h; sourceTree = "<group>"; };
+		2A316EEB187B568D00662636 /* MazeCamera2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeCamera2.cpp; sourceTree = "<group>"; };
+		2A316EEC187B568D00662636 /* MazeCamera2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCamera2.h; sourceTree = "<group>"; };
+		2A316EED187B568D00662636 /* MazeCell2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeCell2.cpp; sourceTree = "<group>"; };
+		2A316EEE187B568D00662636 /* MazeCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell2.h; sourceTree = "<group>"; };
+		2A316EEF187B568D00662636 /* ParamManager2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParamManager2.cpp; sourceTree = "<group>"; };
+		2A316EF0187B568D00662636 /* ParamManager2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamManager2.h; sourceTree = "<group>"; };
 		2A316EF7187B574900662636 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		2A316EF8187B574900662636 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		2A316EF9187B574900662636 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -454,14 +454,14 @@
 			children = (
 				2A316EE7187B568D00662636 /* CloudsVisualSystemMazeGenerator2.cpp */,
 				2A316EE8187B568D00662636 /* CloudsVisualSystemMazeGenerator2.h */,
-				2A316EE9187B568D00662636 /* Maze.cpp */,
-				2A316EEA187B568D00662636 /* Maze.h */,
-				2A316EEB187B568D00662636 /* MazeCamera.cpp */,
-				2A316EEC187B568D00662636 /* MazeCamera.h */,
-				2A316EED187B568D00662636 /* MazeCell.cpp */,
-				2A316EEE187B568D00662636 /* MazeCell.h */,
-				2A316EEF187B568D00662636 /* ParamManager.cpp */,
-				2A316EF0187B568D00662636 /* ParamManager.h */,
+				2A316EE9187B568D00662636 /* Maze2.cpp */,
+				2A316EEA187B568D00662636 /* Maze2.h */,
+				2A316EEB187B568D00662636 /* MazeCamera2.cpp */,
+				2A316EEC187B568D00662636 /* MazeCamera2.h */,
+				2A316EED187B568D00662636 /* MazeCell2.cpp */,
+				2A316EEE187B568D00662636 /* MazeCell2.h */,
+				2A316EEF187B568D00662636 /* ParamManager2.cpp */,
+				2A316EF0187B568D00662636 /* ParamManager2.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1227,7 +1227,7 @@
 				E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */,
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
-				2A316EF3187B568D00662636 /* MazeCamera.cpp in Sources */,
+				2A316EF3187B568D00662636 /* MazeCamera2.cpp in Sources */,
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
 				E7D32FA01751C626006706ED /* ofxBehavior.cpp in Sources */,
 				E7D32FA11751C626006706ED /* ofxBufferEffectorBehavior.cpp in Sources */,
@@ -1236,7 +1236,7 @@
 				E7D32FA31751C626006706ED /* ofxDistorterBehavior.cpp in Sources */,
 				2A316F00187B574900662636 /* CloudsInputMouse.cpp in Sources */,
 				E7D32FA41751C626006706ED /* ofxElectroStaticBehavior.cpp in Sources */,
-				2A316EF4187B568D00662636 /* MazeCell.cpp in Sources */,
+				2A316EF4187B568D00662636 /* MazeCell2.cpp in Sources */,
 				E7D32FA51751C626006706ED /* ofxField2D.cpp in Sources */,
 				E7D32FA61751C626006706ED /* ofxHomingBehavior.cpp in Sources */,
 				2A316F04187B581300662636 /* ofxSystemTextbox.mm in Sources */,
@@ -1281,7 +1281,7 @@
 				E7CF78591753FEA1006B7D41 /* ofxTLPageTabs.cpp in Sources */,
 				E7CF785A1753FEA1006B7D41 /* ofxTLSwitches.cpp in Sources */,
 				E7CF785B1753FEA1006B7D41 /* ofxTLTicker.cpp in Sources */,
-				2A316EF2187B568D00662636 /* Maze.cpp in Sources */,
+				2A316EF2187B568D00662636 /* Maze2.cpp in Sources */,
 				E7CF785C1753FEA1006B7D41 /* ofxTLTrack.cpp in Sources */,
 				E7CF785D1753FEA1006B7D41 /* ofxTLTrackHeader.cpp in Sources */,
 				E7CF785E1753FEA1006B7D41 /* ofxTLVideoThumb.cpp in Sources */,
@@ -1289,7 +1289,7 @@
 				E7CF785F1753FEA1006B7D41 /* ofxTLVideoTrack.cpp in Sources */,
 				E7CF78601753FEA1006B7D41 /* ofxTLZoomer.cpp in Sources */,
 				E7CF78891753FEC0006B7D41 /* ofxTimecode.cpp in Sources */,
-				2A316EF5187B568D00662636 /* ParamManager.cpp in Sources */,
+				2A316EF5187B568D00662636 /* ParamManager2.cpp in Sources */,
 				E7CF78C61753FECA006B7D41 /* ofxEasing.cpp in Sources */,
 				E7CF78C71753FECA006B7D41 /* ofxEasingBack.cpp in Sources */,
 				E7CF78C81753FECA006B7D41 /* ofxEasingBounce.cpp in Sources */,

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>236.000000000</XPosition>
-    <YPosition>21.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>312.000000000</XPosition>
+    <YPosition>-11.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,17 +18,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Force Amount</Name>
-    <Value>2.129999876</Value>
+    <Value>1.865395427</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Particle Speed</Name>
-    <Value>62.606567383</Value>
+    <Value>97.584495544</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Particles Return</Name>
-    <Value>0.026611984</Value>
+    <Value>0.001000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -53,5 +53,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Box Connect Distance</Name>
-    <Value>0.500000000</Value>
+    <Value>0.952511668</Value>
 </Widget>

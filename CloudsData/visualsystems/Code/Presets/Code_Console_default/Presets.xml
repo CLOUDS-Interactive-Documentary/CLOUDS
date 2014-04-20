@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>640.000061035</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>640.000000000</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,6 +13,21 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Basic2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Code_Console_default</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Code_default</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cryptic</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -32,26 +47,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SimpleCode</Name>
+    <Name>JG_TenPrintCascade</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Teletype</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Code_default</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Code_Console_default</Name>
+    <Name>JM_BlueCascade2</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Cryptic</Name>
+    <Name>JM_BlueCascade_</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TenPrint</Name>
     <Value>0</Value>
 </Widget>

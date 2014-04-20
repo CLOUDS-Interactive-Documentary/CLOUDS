@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>40.000000000</XPosition>
-    <YPosition>333.000000000</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -17,12 +17,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>plasticbeast</Name>
+    <Name>flamencodancers</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>flamencodancers</Name>
+    <Name>plasticbeast</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

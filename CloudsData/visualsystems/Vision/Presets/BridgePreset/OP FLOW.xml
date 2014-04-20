@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>OP FLOW</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>691.000000000</XPosition>
-    <YPosition>50.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,12 +13,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW FLOW WINDOW</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW TINT</Name>
-    <Value>170.837432861</Value>
+    <Value>158.275848389</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -33,12 +33,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW WIDTH</Name>
-    <Value>1.000000000</Value>
+    <Value>0.492610842</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW HEIGHT</Name>
-    <Value>1.000000000</Value>
+    <Value>0.758620679</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW COLOUR MAP RANGE</Name>
-    <Value>50.000000000</Value>
+    <Value>570.837402344</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE DAMP</Name>
-    <Value>0.093596056</Value>
+    <Value>0.179845065</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

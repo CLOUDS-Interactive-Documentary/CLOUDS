@@ -4,16 +4,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>2D SCALE</WidgetName>
-                <WidgetID>7</WidgetID>
+                <WidgetName>FADE</WidgetName>
+                <WidgetID>28</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>FADE</WidgetName>
-                <WidgetID>28</WidgetID>
+                <WidgetName>2D SCALE</WidgetName>
+                <WidgetID>7</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

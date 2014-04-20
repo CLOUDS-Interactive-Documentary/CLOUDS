@@ -62,23 +62,23 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void updateCurrentSelection(int index,bool firstTime );
     
     //i/o stuff
-    void loadJSONData(string folderName);
+
     void addUsersFromMentions(ofVec2f& curActivityMapCoord, int activityMapWidth );
     void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
-    void createNewGraph(string outputFileName, string inputDataFolder);
+//    void createNewGraph(string outputFileName, string inputDataFolder);
     
 
     //data stuff
     int getUserIdByName(string name);
     vector<Tweeter> getTweetersForDate(int index);
     Tweeter& getTweeterByID(int _id );
-    string getDateAsString(Date d);
     void drawTweetsForDate(int index);
     void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
     void sortTweetsByDate();
+
     
     //shader stuff
     void reloadShaders();
@@ -107,7 +107,6 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float feedStringWidthCap;
     
     //text stuff
-    ofxJSONElement result;
     ofxFTGLSimpleLayout font;
     ofxFTGLSimpleLayout tweetFont;
     ofxFTGLSimpleLayout tweetFontSmall;
@@ -127,17 +126,17 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void loadMesh();
     void updateActiveTweeters(int index);
     void setActiveTweeters(int index );
+    Tweet csvParseTweet(vector<string>& line, Tweeter& curTweeter);
     void updateMesh();
     void drawText(string text, ofVec3f pos, float alpha);
     void drawText2D(string text, ofVec2f pos);
 
     //helpers 
-    vector<Date> dateIndex;
-    map<string,int>dateIndexMap;
+
     set<pair<int,int> > links;
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
-    map<string,int> numberOfMentions;
-    map<string,int> userNameIdMap;
+
+    Date getDateFromString(string dString);
 
     int currentDateIndex;
     float dateIndexMin, dateIndexMax;
@@ -153,6 +152,15 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bAnimateSpriteSize;
     bool bStaticNameDraw;
     bool bOldData;
+    
+    static void loadJSONData(string folderName, vector<Tweeter>& curTweeters);
+    static vector<Tweeter>& getOldTweeterData();
+    static vector<Tweeter>& getNewTweeterData();
+    static string getDateAsString(Date d);    
+
+    void allocateActivityMap();
+    //void updateDateIndex();
+//    map<string,int>dateIndexMap;
   protected:
     ofDirectory meshDir;
     vector<string> meshStrings;
@@ -175,8 +183,14 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofFloatColor spritePopColorHSV;
     stringstream ss;
     
-    ofVboMesh nodeMesh;
-    ofVboMesh edgeMesh;
+//    ofVboMesh nodeMesh;
+//    ofVboMesh edgeMesh;
+    ofVbo edgeMeshVbo;
+    ofVbo nodeMeshVbo; 
+    vector<ofVec3f> edgeMeshNormals;
+    vector<ofVec3f> nodeMeshNormals;
+    int edgeMeshNumVertices;
+    int nodeMeshNumVertices;
     ofVec3f min,max;
     
     int refreshRate;
@@ -207,6 +221,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<string, ofImage> avatars;
 
     void loadAvatars();
+    void loadCSVData( vector<Tweeter>& curTweeters);
     void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
     map< ofFloatColor*, ofxUILabel*> labelColors;
 
@@ -245,5 +260,6 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
 
     ofRectangle tweetFeedRect;
     
+    Tweeter dummyTweet;
 	
 };

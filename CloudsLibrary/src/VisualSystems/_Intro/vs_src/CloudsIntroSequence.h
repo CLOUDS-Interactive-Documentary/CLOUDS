@@ -10,22 +10,23 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
-//#include "ofxGameCamera.h"
 #include "CloudsClip.h"
+#include "CloudsEvents.h"
 #include "CloudsPortal.h"
-//#include "CloudsRun.h"
 #include "ofxFTGL.h"
+#include "CloudsPortalEvents.h"
+#include "CloudsCalibrationNode.h"
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
 	CloudsIntroSequence();
-	~CloudsIntroSequence();
 	
 	string getSystemName();
 	
     void selfSetup();
     void selfSetupGuis();
-    
+    void selfSetDefaults();
+	
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -36,7 +37,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     void selfExit();
     void selfBegin();
 	void selfEnd();
-	
+
+	void selfDrawOverlay();
+	void selfPostDraw();
+
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
@@ -44,13 +48,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
-	void selfDrawOverlay();
-	void selfPostDraw();
 
 	void selfGuiEvent(ofxUIEventArgs &e);
 	
-    void selfSetupSystemGui();
     void guiSystemEvent(ofxUIEventArgs &e);
     
     void selfSetupRenderGui();
@@ -58,42 +58,35 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
 	void selfSetupCameraGui();
 	
-	ofCamera& getCameraRef(){
-//		if(useDebugCamera){
-//			return camera;
-//		}
-//		else{
-			return warpCamera;
-//		}
-	}
-	
 	void selfPresetLoaded(string presetPath);
 	
 	void setStartQuestions(vector<CloudsClip>& possibleStartQuestions);
+
 	bool isStartQuestionSelected();
+	bool istStartQuestionHovering();
+	
+	string getQuestionText();
+	
 	void autoSelectQuestion();
 	CloudsPortal* getSelectedQuestion();
-//	CloudsRun& getSelectedRun(){
-//		return currentRun;
-//	};
-	
+    
+    static CloudsVisualSystemEvents events;
+    
+	ofCamera& getCameraRef(){
+		return warpCamera;
+	}
+
   protected:
 		
 	ofxUISuperCanvas* questionGui;
 	ofxUISuperCanvas* tunnelGui;
 	ofxUISuperCanvas* typeGui;
+	ofxUISuperCanvas* introGui;
+	ofxUISuperCanvas* helperTextGui;
 	
 	bool showingQuestions;
 	float questionWrapDistance;
 	float cameraForwardSpeed;
-	
-	float questionTugMinDepth;
-	float questionTugMinDistance;
-	float questionTugMaxDistance;
-	float questionScale;
-	float questionTunnelInnerRadius;
-	
-	bool startedOnclick;
 	
 	ofxFTGLFont extrudedTitleText; //for the title
 	float currentTitleOpacity;
@@ -114,21 +107,44 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofRectangle titleRect;
 	bool hoveringTitle;
 	
-	ofxFTGLSimpleLayout questionFont;
-    void rebuildQuestionFont();
-    int questionFontSize;
+	ofxFTGLFont helperFont;
+    int helperFontSize;
+	int currentHelperFontSize;
+	float helperFontTracking;
+	float helperFontY;
+	float helperFontScale;
+	
+	float questionScale;
+	ofRange questionTugDistance;
+	ofRange questionAttenuateDistance;
+	float questionPauseDuration;
+	
+	bool bQuestionDebug;
 	float questionLineLength;
     float questionLineSpacing;
-
-	
+	float questionTunnelInnerRadius;
+	ofRange questionZStopRange;
 	float currentFontSize;
 	float currentFontExtrusion;
 
 	void positionStartQuestions();
+	
 	vector<CloudsPortal> startQuestions;
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;
-
+	float selectedQuestionTime;
+	ofVec3f selectQuestionStartPos;
+	ofQuaternion selectQuestionStartRot;
+	
+	//sound effects
+	ofSoundPlayer click;
+	ofSoundPlayer selectHigh;
+	ofSoundPlayer selectMid;
+	ofSoundPlayer selectLow;
+	
+	vector<bool> questionChannels; //0-3 for the four qeustion slots
+	vector<float> channelPauseTime;
+	
 	vector<string> loadedQuestions;
 	float perlinOffset;
 	float wireframeAlpha;
@@ -140,24 +156,56 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofMesh tunnelMeshTight;
 	ofMesh tunnelMeshLoose;
 	
-	bool useDebugCamera;
-//	ofxGameCamera camera;
 	ofCamera warpCamera;
 	
 	float camWobbleRange;
 	float camWobbleSpeed;
 
 	ofShader tunnelShader;
-	ofShader questionShader;
-	ofShader chroma;
 	ofShader typeShader;
 	
 	ofRange pointSize;	
 	ofRange distanceRange;
 	
 	void drawCloudsType();
+    void drawIntroNodes();//rift only
+	void drawHelperType();
+	void drawTunnel();
+	void drawPortals();
+    void drawCursors();
+	
+	void updateIntroNodePosition(CalibrationNode& node);
+	void updateIntroNodeInteraction(CalibrationNode& node);
+	
+	//intro sequence
+	float introNodeSize;
+	float introNodeMinDistance;
+	float introNodeHoldTime;
+	float introNodeYAdjust;
+	
+	ofVec3f introNodeOffset; //mirrored along the axis
 
-	float maxChromaDistort;
+	CalibrationNode introNodeOne;
+	CalibrationNode introNodeTwo;
+	CalibrationNode introNodeThree;
+	vector<CalibrationNode*> introNodes;
+	float nodeAlphaAttenuate;
+	float nodeActivatedTime;
+	ofVec2f hintCursorEndPoint;
+
+	float timeSinceLastPrompt;
+	float promptTime;
+	bool promptShown;
+	float kinectHelperAlpha;
+	float kinectHelperTargetAlpha;
+	
+	void updateCamera();
+	void updateWaiting();
+	void updateTitle();
+	void updateQuestions();
+	
+	//intro state machien stuff
+	bool startedOnclick;
 	float perlinAmplitude;
 	float perlinDensity;
 	float perlinSpeed;
@@ -168,15 +216,24 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float tunnelDistance;
 	float tunnelStartZ;
 	
+	bool regenerateTunnel;
 	void generateTunnel();
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;
 	
+
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;
 	
 	ofImage sprite;
 
     ofVec3f cursor;
+    ofVec3f stickyCursor;
+    
+#ifdef OCULUS_RIFT
+    bool bCursorInCenter;
+    float startTimeCursorInCenter;
+#endif
     
 };
+

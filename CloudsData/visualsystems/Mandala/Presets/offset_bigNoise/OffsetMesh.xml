@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>OffsetMesh</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>202</XPosition>
-    <YPosition>11</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>70.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -11,8 +11,93 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>28</Kind>
+    <Name>c0</Name>
+    <XValue>0.359375000</XValue>
+    <YValue>0.398438007</YValue>
+    <RColor>10</RColor>
+    <GColor>80</GColor>
+    <BColor>172</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>c0_alpha</Name>
+    <Value>0.482758999</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>c1</Name>
+    <XValue>0.593750000</XValue>
+    <YValue>0.406250000</YValue>
+    <RColor>135</RColor>
+    <GColor>0</GColor>
+    <BColor>104</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>c1_alpha</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>colorMixScale</Name>
+    <Value>6.354680061</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>faceScale</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>faceOffset</Name>
+    <Value>2.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseOctaveScale</Name>
+    <Value>0.551329970</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseExpo</Name>
+    <Value>1.585219979</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseExpoScale</Name>
+    <Value>0.918227017</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>meshNoiseScale</Name>
+    <Value>0.003544830</Value>
+</Widget>
+<Widget>
     <Kind>17</Kind>
     <Name>diaSphere.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>geometric_hi.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>geometric_mid.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>geometric_too.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>geometric.txt</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -27,71 +112,21 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>organicDense.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>organicSphere.txt</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>28</Kind>
-    <Name>c0</Name>
-    <XValue>0.359375</XValue>
-    <YValue>0.398438</YValue>
-    <RColor>10</RColor>
-    <GColor>80</GColor>
-    <BColor>172</BColor>
-    <AColor>255</AColor>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>c0_alpha</Name>
-    <Value>0.482759</Value>
-</Widget>
-<Widget>
-    <Kind>28</Kind>
-    <Name>c1</Name>
-    <XValue>0.59375</XValue>
-    <YValue>0.40625</YValue>
-    <RColor>135</RColor>
-    <GColor>0</GColor>
-    <BColor>104</BColor>
-    <AColor>255</AColor>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>c1_alpha</Name>
+    <Kind>17</Kind>
+    <Name>orgo.txt</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>colorMixScale</Name>
-    <Value>6.35468</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>faceScale</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>faceOffset</Name>
-    <Value>2</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>noiseOctaveScale</Name>
-    <Value>0.55133</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>noiseExpo</Name>
-    <Value>1.58522</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>noiseExpoScale</Name>
-    <Value>0.918227</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>meshNoiseScale</Name>
-    <Value>0.00354483</Value>
+    <Kind>17</Kind>
+    <Name>organic_heavy.txt</Name>
+    <Value>0</Value>
 </Widget>

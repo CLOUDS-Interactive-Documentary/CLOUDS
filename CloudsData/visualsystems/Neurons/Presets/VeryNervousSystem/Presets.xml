@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>378.000000000</XPosition>
-    <YPosition>191.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -32,7 +32,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>MezzyNeurons_Q</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>MezzyNeuronsOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Quatumble_default</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -42,11 +52,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>XmasDendrites</Name>
+    <Name>showoff-nov7_wide</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>VeryNervousSystem</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>XmasDendrites</Name>
+    <Value>0</Value>
 </Widget>

@@ -38,7 +38,7 @@ void main(void){
     offset[8] = vec2(  1.0, 1.0);
     
     vec2 texColor		= texture2DRect( backbuffer, st ).rb;
-    float srcTexColor   = texture2DRect( tex0, st ).r*abs(sin(time*0.01))*fade;
+    float srcTexColor   = texture2DRect( tex0, st ).r*fade;
    // float srcTexColor   = vec2(texture2DRect( tex0, st )*mouse).r;
 
     vec2 lap            = vec2( 0.0, 0.0 );

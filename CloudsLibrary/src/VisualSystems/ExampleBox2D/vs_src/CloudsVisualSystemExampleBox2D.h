@@ -13,14 +13,8 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 #include "ofxBox2d.h"
-#include "CloudsAudioEvents.h"
+#include "ofSoundPlayer.h"
 #include "CloudsGlobal.h"
-#include "ofxTonic.h"
-
-using namespace Tonic;
-
-#define GENERATOR_NUM    60
-class DummyApp;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemExampleBox2D : public CloudsVisualSystem {
@@ -85,7 +79,7 @@ class CloudsVisualSystemExampleBox2D : public CloudsVisualSystem {
 
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
-
+    void selfSetDefaults();
 	//events are called when the system is active
 	//Feel free to make things interactive for you, and for the user!
     void selfKeyPressed(ofKeyEventArgs & args);
@@ -152,6 +146,8 @@ protected:
     float triggerForce;
     
     int randomPlatformCounter;
+
+    bool soundsLoaded;
     
     ofFloatColor circleHSB;
     ofFloatColor circleLineHSB;
@@ -162,24 +158,7 @@ protected:
     float rectSizeDev;
     float rectSizeMean;
     
-    // Sound
-    ofxTonicSynth synth;
-    SampleTable boxSamples[7];
-    SampleTable circleSamples[7];
-#ifdef TONIC_WAVES
-    ControlTrigger collisionTrigger[GENERATOR_NUM];
-    ControlRandom noteControl[GENERATOR_NUM];
-    float noteMax;
-    float noteMin;
-#else
-    ControlTrigger boxTrigger[GENERATOR_NUM];
-    ControlParameter boxVolume[GENERATOR_NUM];
-    
-    ControlTrigger circleTrigger[GENERATOR_NUM];
-    ControlParameter circleVolume[GENERATOR_NUM];
-#endif
-    int triggerIndex;
-    Generator output;
-
-	void audioRequested(ofAudioEventArgs& args);
+    float masterVolume;
+    ofSoundPlayer samplePlayer[16];
+    unsigned long long lastSampleTime;
 };

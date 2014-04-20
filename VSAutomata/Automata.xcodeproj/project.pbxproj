@@ -63,6 +63,7 @@
 		2AAEF59E180F136F005F33D3 /* b2RevoluteJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF572180F136F005F33D3 /* b2RevoluteJoint.cpp */; };
 		2AAEF59F180F136F005F33D3 /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF574180F136F005F33D3 /* b2WeldJoint.cpp */; };
 		2AAEF5A0180F136F005F33D3 /* del_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF578180F136F005F33D3 /* del_impl.cpp */; };
+		6474F94D1884717E003FBE4E /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6474F94C1884717E003FBE4E /* ofxSystemTextbox.mm */; };
 		856A9E48182C3F6B00007CAA /* CloudsVisualSystemAutomata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 856A9E46182C3F6B00007CAA /* CloudsVisualSystemAutomata.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -321,6 +322,8 @@
 		2AAEF57B180F136F005F33D3 /* triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle.h; sourceTree = "<group>"; };
 		2AAEF57C180F136F005F33D3 /* triangle_impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = triangle_impl.hpp; sourceTree = "<group>"; };
 		642CF4BB1831EB44007394FF /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
+		6474F94B1884717E003FBE4E /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		6474F94C1884717E003FBE4E /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		856A9E46182C3F6B00007CAA /* CloudsVisualSystemAutomata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemAutomata.cpp; sourceTree = "<group>"; };
 		856A9E47182C3F6B00007CAA /* CloudsVisualSystemAutomata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemAutomata.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1525,6 +1528,8 @@
 		E7E5EC601817C01400CA4196 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				6474F94B1884717E003FBE4E /* ofxSystemTextbox.h */,
+				6474F94C1884717E003FBE4E /* ofxSystemTextbox.mm */,
 				E7E5EC611817C01400CA4196 /* CloudsRGBDCamera.cpp */,
 				E7E5EC621817C01400CA4196 /* CloudsRGBDCamera.h */,
 				E7E5EC631817C01400CA4196 /* CloudsRGBDVideoPlayer.cpp */,
@@ -1577,6 +1582,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Automata" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1651,6 +1658,7 @@
 				2AAEF588180F136F005F33D3 /* b2Settings.cpp in Sources */,
 				E7D32FA41751C626006706ED /* ofxElectroStaticBehavior.cpp in Sources */,
 				E7D32FA51751C626006706ED /* ofxField2D.cpp in Sources */,
+				6474F94D1884717E003FBE4E /* ofxSystemTextbox.mm in Sources */,
 				2AAEF58E180F136F005F33D3 /* b2World.cpp in Sources */,
 				E7D32FA61751C626006706ED /* ofxHomingBehavior.cpp in Sources */,
 				2AAEF59B180F136F005F33D3 /* b2MouseJoint.cpp in Sources */,

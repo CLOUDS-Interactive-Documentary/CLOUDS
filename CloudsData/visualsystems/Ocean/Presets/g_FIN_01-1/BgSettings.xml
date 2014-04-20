@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>BgSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>144.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GRAD</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BAR GRAD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HUE</Name>
+    <Value>149.482757568</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SAT</Name>
+    <Value>103.004928589</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BRI</Name>
+    <Value>13.817734718</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HUE2</Name>
+    <Value>149.482727051</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SAT2</Name>
+    <Value>103.004913330</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BRI2</Name>
+    <Value>27.635473251</Value>
+</Widget>

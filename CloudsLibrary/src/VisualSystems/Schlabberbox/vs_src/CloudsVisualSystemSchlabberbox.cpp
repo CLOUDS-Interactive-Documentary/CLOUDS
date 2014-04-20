@@ -62,7 +62,8 @@ void CloudsVisualSystemSchlabberbox::guiRenderEvent(ofxUIEventArgs &e){
 //use it to ensure all your simple variables are initialized to an
 //acceptable default state
 void CloudsVisualSystemSchlabberbox::selfSetDefaults(){
-
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 // selfSetup is called when the visual system is first instantiated

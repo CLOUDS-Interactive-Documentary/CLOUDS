@@ -28,17 +28,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROTATION SPEED</Name>
-    <Value>-0.581280828</Value>
+    <Value>0.443349838</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LINE WIDTH</Name>
-    <Value>1.842364550</Value>
+    <Value>5.305418968</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FADE SPEED</Name>
-    <Value>0.165270939</Value>
+    <Value>0.232512310</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SHOW AXIS</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

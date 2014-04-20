@@ -2,11 +2,12 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxGameCamera.h"
+
 #include "CloudsClusterNode.h"
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
 #include "ofxFTGLFont.h"
+#include "ofxNearestNeighbour.h"
 
 typedef struct{
 	ofIndexType startIndex;
@@ -14,6 +15,8 @@ typedef struct{
 } TraversalSegment;
 
 typedef struct{
+    int numSubTopics;
+    vector<ofVec3f> subTopicPositions;
 	string keyword;
 	ofVec3f position;
 	ofVec2f screenPosition;
@@ -33,11 +36,15 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	void setQuestions(vector<CloudsClip>& questions);
 	CloudsQuestion* getSelectedQuestion();
 
+    void setCurrentTopic(string topic);
+    
 	//will add the latest state of the run to the traversal
 	void traverse();
-	
-	void traverseToClip(CloudsClip& clip);
-	
+
+	void traverseToClip(CloudsClip clip);
+
+	void clearTraversal();
+    
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
@@ -121,8 +128,9 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	}
 
 	void reloadShaders();
-	
 
+    void parseAssociations();
+    
   protected:
 
 	ofxUISuperCanvas* nodesGui;
@@ -134,8 +142,11 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	ofEasyCam easyCamera;
 	ofCamera axisCamera;
-	ofxGameCamera gameCamera;
+//	ofxGameCamera gameCamera;
 	
+	ofVec2f flickerCoord;
+	int flickerWidth;
+
 	CloudsFCPParser* parser;
 	CloudsRun* run;
 	void resetGeometry();
@@ -176,6 +187,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float meshExpansion;
 	ofRange pointSize;
 
+    ofVec3f networkCentroid;
 	ofVec3f trailHead;
 
 	float nodePopLength;
@@ -194,7 +206,14 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traverseHomingMinDistance;
 	float traverseMinSolvedDistance;
 	float traverseLineWidth;
-	
+	bool autoTraversePoints;
+	bool bConstrainTraversal;
+    float maxTraverseAngle;
+    float maxTraverseDistance;
+    float minTraverseDistance;
+    int minTraverseNextOptions;
+    ofxNearestNeighbour3D kdtree;
+    
 	//colors~
 	bool matchLineColor;
 	ofFloatColor lineNodeColorHSV;
@@ -206,6 +225,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float lineFlickerIntensity;
 	float lineFlickerFrequency;
 	float lineFlickerDampening;
+	bool bSmoothLines;
 	
 	bool matchTraversalColor;
 	ofFloatColor traverseHeadColorHSV;
@@ -213,7 +233,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofFloatColor traverseTailColorHSV;
 	ofFloatColor traverseTailColorRGB;
 	float traverseFalloff;
-
+	float traverseRevealVerts;
+	
 	ofFloatImage flickerNoise;
 	ofFloatPixels flickerNoiseTarget;
 	ofFloatColor optionColorHSV;
@@ -242,9 +263,18 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofIntRange typeSizeRange;
 	ofIntRange currentTypeSizeRange;
 	
-	
+    void populateAssociations();
+    map<string,string> associations;
+    bool drawAssociation;
+    int associationFontSize;
+    int currentAssociationFont;
+    string currentTopic;
+    ofVec2f trailheadScreenPos;
+    ofxFTGLFont associationFont;
+    
 	ofVec3f randomDirection();
-	
+    int numTraversed;
+    
 	vector<CloudsQuestion> questions;
 	CloudsQuestion* selectedQuestion;
 

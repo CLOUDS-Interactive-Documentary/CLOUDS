@@ -12,16 +12,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>AV</WidgetName>
-                <WidgetID>18</WidgetID>
+                <WidgetName>Y</WidgetName>
+                <WidgetID>8</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Y</WidgetName>
-                <WidgetID>8</WidgetID>
+                <WidgetName>AV</WidgetName>
+                <WidgetID>18</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

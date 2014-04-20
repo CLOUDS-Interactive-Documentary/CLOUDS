@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>DYNAMICS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000061035</XPosition>
-    <YPosition>121.000000000</YPosition>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -54,12 +54,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Nutrient Change Ratio</Name>
-    <Value>100.000000000</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Nutrient Contrast</Name>
     <Value>0.630541861</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Nutrient Scale</Name>
+    <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>

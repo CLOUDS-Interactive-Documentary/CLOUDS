@@ -8,6 +8,10 @@
 
 #include "CloudsRGBDVideoPlayer.h"
 
+#ifdef SHOW_SUBTITLES
+  #include "CloudsVisualSystem.h"
+#endif
+
 //---------------------------------------------------------------
 CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
     
@@ -39,6 +43,7 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	currentVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 	nextVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 
+	currentClipHasSubtitles = nextClipHasSubtitles = false;
 }
 
 //---------------------------------------------------------------
@@ -48,7 +53,7 @@ CloudsRGBDVideoPlayer::~CloudsRGBDVideoPlayer(){
 
 //---------------------------------------------------------------
 //SURYA TODO: Add new end time
-bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, float offsetTime,float clipVolume ){
+bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume ){
 	
 	if(!bEventRegistered){
 		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
@@ -65,6 +70,9 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, f
 	nextCalibrationXML = calibrationXMLPath;
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
 
+    /* Subtitles */
+    nextClipHasSubtitles = loadSubtitles(subtitlesPath);
+    
 	clipPrerolled = true;
 	nextClipIsVO = false;
     nextClipVolumeAdjustment = clipVolume;
@@ -200,12 +208,14 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	currentVoiceoverPlayer->stop();
 	currentPlayer->stop();
 	currentClipVolumeAdjustment = nextClipVolumeAdjustment;
-    currentMaxVolume = maxVolume * currentClipVolumeAdjustment;
     
 //    cout<<"Current Max Vol: "<<currentMaxVolume<<endl;
 	swap(currentPlayer,nextPlayer);
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
-	
+#ifdef SHOW_SUBTITLES
+    swap(currentSubtitles, nextSubtitles);
+#endif
+	currentClipHasSubtitles = nextClipHasSubtitles;
 	if(nextClipIsVO){
 		currentVoiceoverPlayer->play();
 		currentVoiceoverPlayer->setLoop(false);
@@ -284,6 +294,11 @@ ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 	return *currentPlayer;
 }
 
+void CloudsRGBDVideoPlayer::stop(){
+    getPlayer().stop();
+    currentVoiceoverPlayer->stop();
+}
+    
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
@@ -295,38 +310,55 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	if(clipPrerolled && !nextClipIsVO){
 		nextPlayer->update();
 	}
-	
 
+    float  audioVolume =  maxVolume * currentClipVolumeAdjustment;
+    // audioVolume = 0; // kludge
 
-    float  audioVolume = currentMaxVolume;
 	if(playingVO){
 		currentVoiceoverPlayer->setVolume(audioVolume);
 	}
 	else{
 		float position = getPlayer().getPosition()*getPlayer().getDuration();
 		float duration = getPlayer().getDuration();
-		float handleLength = 1.1;
+//		float handleLength = 1.1;
 		
 		//sometimes NAN comes back from position.
 		if(position != position){
 			return;
 		}
+        
 		//cout << "position is " << position << " " << duration << " duration " << endl;
 		
 		fadeInValue = MIN(position, 1.0);
 		fadeOutValue = ofMap(position, duration - 1.0, duration, 1.0, 0.0, true);
+        
+		//remap to make it tigheter
+        fadeInValue  = powf(ofMap(fadeInValue,  .5, 1.0, 0.0, 1.0, true), 2.0);
+        fadeOutValue = powf(ofMap(fadeOutValue, .5, 1.0, 0.0, 1.0, true), 2.0);
+		
+		float fadeInStartTime = 1.0;
+		float fadeInEndTime = 1.4;
+		float fadeOutStartTime = duration - 1.3 ;
+		float fadeOutEndTime = duration - 1.0;
 		if(position < 1.0){
-			audioVolume = ofMap(position, 1.0, 1.1, 0., maxVolume, true);
+			audioVolume = ofMap(position, fadeInStartTime, fadeInEndTime, 0., maxVolume, true);
 		}
-		else if(position > duration - 1.0){
-			audioVolume = ofMap(position, duration - 1.1, duration - 1.0, maxVolume, 0.0, true);
+		else if(position > fadeOutStartTime){
+			audioVolume = ofMap(position, fadeOutStartTime, fadeOutEndTime, maxVolume, 0.0, true);
 		}
 		
 		getPlayer().setVolume(audioVolume);
 
-		if(position > duration - .04){
+		if(forceStop && position > duration - .04){
 			getPlayer().stop();
 		}
+        
+        /* Subtitles */
+        if (currentClipHasSubtitles) {
+#ifdef SHOW_SUBTITLES
+            currentSubtitles.setTimeInSeconds(getPlayer().getCurrentTime());
+#endif
+        }
 	}
 }
 
@@ -337,3 +369,67 @@ bool CloudsRGBDVideoPlayer::isPlaying(){
 bool CloudsRGBDVideoPlayer::isDone(){
 	return playingVO ? !currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && !getPlayer().isPlaying());
 }
+
+#ifdef SHOW_SUBTITLES
+bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
+    
+    if (path == "") {
+        return false;
+    }
+
+    if (!ofFile(path).exists()) {
+        return false;
+    }
+    
+    // need to know fps (all 24 except Higa (30))
+    int fps = 24;
+    if (strstr(path.data(), "Higa") != NULL) {
+        fps = 30;
+    }
+    
+    int fontSize = 36;
+    if(!nextSubtitles.setup(path, GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize/2, fps, TEXT_JUSTIFICATION_CENTER)) {
+        return false;
+    }
+    
+    // find font size based on 85% canvas width and a predefined maximum string
+    float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
+    string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
+    ofRectangle bounds = nextSubtitles.font.getStringBoundingBox(maxStr, 0, 0);
+    
+    // loop here until you find the right font size
+    while (bounds.width > requiredWidth) {
+        nextSubtitles.font.setSize(--fontSize);
+        bounds = nextSubtitles.font.getStringBoundingBox(maxStr, 0, 0);
+    }
+//    cout << "font size is " << fontSize << endl;
+    return true;
+}
+#else
+bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
+    return false;
+}
+#endif
+
+void CloudsRGBDVideoPlayer::drawSubtitles(float x, float y)
+{
+#ifdef SHOW_SUBTITLES
+    if (hasSubtitles()) {
+        ofPushStyle();
+        ofSetColor(0, 200);
+        currentSubtitles.draw(x+3, y-2);
+        ofSetColor(255);
+        currentSubtitles.draw(x, y);
+        
+//        cout << "line one is " << currentSubtitles.getCurrentLine1() << endl;
+        
+        ofPopStyle();
+    }
+#endif
+}
+    
+bool CloudsRGBDVideoPlayer::hasSubtitles()
+{
+    return currentClipHasSubtitles;
+}
+    

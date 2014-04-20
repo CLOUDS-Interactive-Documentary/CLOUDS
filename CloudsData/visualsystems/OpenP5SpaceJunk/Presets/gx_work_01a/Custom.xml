@@ -11,6 +11,16 @@
     <Value>25.000000000</Value>
 </Widget>
 <Widget>
+    <Kind>44</Kind>
+    <Name>Num Cubes</Name>
+    <Value>500</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Spread</Name>
+    <Value>140</Value>
+</Widget>
+<Widget>
     <Kind>6</Kind>
     <Name>X Scale</Name>
     <HighValue>46.798030853</HighValue>

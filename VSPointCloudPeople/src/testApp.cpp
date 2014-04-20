@@ -2,6 +2,12 @@
 #include "testApp.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#endif
+#ifdef OCULUS_RIFT
+#include "CloudsInputOculus.h"
+#endif
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -9,9 +15,12 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
   
 	ofSetLogLevel(OF_LOG_NOTICE);
+    
 	
 	rgbd.setup();
+	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
+	
 	
 	type = CloudsVisualSystem::FLY_THROUGH;
 }
@@ -30,9 +39,11 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 	if(key == 'O'){
+		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToVisualSystem(1.0, 1.0);
 	}
 	if(key == 'I'){
+		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToInterview(1.0, 1.0);
 	}
 }
@@ -45,13 +56,13 @@ void testApp::keyReleased(int key){
 	}
 	
 	if(key == 'Q'){
-		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set05");
-		qtestnodes.allowExt("png");
-		qtestnodes.listDir();
-		vector<string> testpaths;
-		for(int i = 0; i < qtestnodes.numFiles(); i++)
-			testpaths.push_back(qtestnodes.getPath(i));
-		rgbd.addFakeQuestion(testpaths);
+//		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set05");
+//		qtestnodes.allowExt("png");
+//		qtestnodes.listDir();
+//		vector<string> testpaths;
+//		for(int i = 0; i < qtestnodes.numFiles(); i++)
+//			testpaths.push_back(qtestnodes.getPath(i));
+////		rgbd.addFakeQuestion(testpaths);
 	}
 	
 }
@@ -67,7 +78,9 @@ void testApp::updateTransitions(){
 	float crossfadeValue = transitionController.getFadeValue();
 	rgbd.visualSystemFadeValue = crossfadeValue;
 	
-	//cout << "visual system fade value is " << rgbd.visualSystemFadeValue << endl;
+//	cout << "\tCUR STATE:" << transitionController.getCurrentStateDescription() << endl
+//         << "\tPREVIOUS STATE: " << transitionController.getPreviousStateDescription() << endl
+//         << "\tFADE VALUE " << rgbd.visualSystemFadeValue << endl;
 	
 	if(transitionController.transitioning){
 		ofLogNotice("testApp::updateTransitions") << transitionController.getCurrentStateDescription() << " TRANSITIONING: " << transitionController.getInterviewTransitionPoint();
@@ -81,7 +94,8 @@ void testApp::updateTransitions(){
 			
 			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW OUT";
 			
-			rgbd.startTransitionOut( type );
+			//rgbd.startTransitionOut( type );
+			rgbd.startCurrentTransitionOut();
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_VISUALSYSTEM_IN){
 			
@@ -99,7 +113,8 @@ void testApp::updateTransitions(){
 			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW IN";
 			
 			rgbd.playSystem();
-			rgbd.startTransitionIn( type );
+			//rgbd.startTransitionIn( type );
+			rgbd.startCurrentTransitionIn();
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_IDLE){
 			

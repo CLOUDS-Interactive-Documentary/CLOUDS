@@ -17,21 +17,25 @@ class CloudsRun
 	};
 
 	int actCount;
+    
     vector<CloudsClip> clipHistory;
-    map<string, int> timesClipPlayed;
     vector<string> presetHistory;
 	vector<string> topicHistory;
-	set<string> questionTopicHistory;
-	
-    map<string, int> timesOnCurrentTopicHistory;
-    map<string, int> timesQuestionAsked;
+
+    bool historyContainsClip(CloudsClip& clip);
+    
+    //only for the last run
+	map<string, int> accumuluatedTopics;
+    
+    void clear();
     
     void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);
 	void clipBegan(CloudsClipEventArgs& args);
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
-	void questionAsked(CloudsQuestionEventArgs& args);
+	void questionProposed(CloudsQuestionEventArgs& args);
+	void questionSelected(CloudsQuestionEventArgs& args);
 	void topicChanged(CloudsTopicEventArgs& args);
     void preRollRequested(CloudsPreRollEventArgs& args);
 

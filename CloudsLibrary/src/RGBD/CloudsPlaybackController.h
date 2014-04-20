@@ -7,7 +7,6 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsAct.h"
-#include "ofxGameCamera.h"
 #include "ofxUI.h"
 
 #include "CloudsIntroSequence.h"
@@ -22,19 +21,24 @@
 
 #include "CloudsTransitionController.h"
 
+#include "CloudsPortal.h"
+
+
 /**
  * This class controls playback of RGBD sequences
  * and decides when to show Visual Systems
  *
  */
-class CloudsPlaybackController {
+class CloudsPlaybackController : public ofThread {
   public:
 	CloudsPlaybackController();
-	~CloudsPlaybackController();
 
 	//set it up with an existing story engine that will register the events
-	void setup();	
-	void playAct(CloudsAct* act);
+	void setup();
+	void loadCurrentAct(); //starts loading screen
+	void updateLoadingAct(); //loads one system everytime it's called
+	void playCurrentAct();//when done loading
+	
 	CloudsRGBDVideoPlayer& getSharedVideoPlayer();
 	
 	//update and draw to the screen, this will always
@@ -55,16 +59,28 @@ class CloudsPlaybackController {
 	void clipBegan(CloudsClipEventArgs& args);
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
-	void questionAsked(CloudsQuestionEventArgs& args);
+	void questionProposed(CloudsQuestionEventArgs& args);
+	void questionSelected(CloudsQuestionEventArgs& args);
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
+    
+    void portalHoverBegan(CloudsPortalEventArgs& args);
+    void portalHoverEnded(CloudsPortalEventArgs& args);
+	
+	void drawContinueReset();
 	
 	void exit(ofEventArgs & args);
 	
 	vector<CloudsClip> fakeQuestions;
-
+	
+	void finishSetup(); //called at the end of the threaded function
+	bool loading;
+	float loadPercent;
+	bool loadFinished;
+	
+	void threadedFunction();
   protected:
-
+	vector<CloudsClip> startingNodes;
 	//*** CORE CLOUDS STUFF
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
@@ -80,49 +96,122 @@ class CloudsPlaybackController {
 	CloudsClip currentClip;
 	int numClipsPlayed;
 	string currentTopic;
-	bool shouldPlayAct;
 	
+	bool shouldLoadAct;
+	bool shouldPlayAct;
+    bool shouldClearAct;
+    
+    void drawRenderTarget();
+    void drawInterludeInterface();
+
+#ifdef KINECT_INPUT
+    void drawKinectFeedback();
+    float kinectFeedbackAlpha;
+    ofTrueTypeFont kinectFeedbackFont;
+#endif
+    
+    CloudsVisualSystem* currentVisualSystem;
+    void createInterludeSoundQueue();
+    int numActsCreated;
+    
+    bool cachedTransition;
+    CloudsVisualSystem::RGBDTransitionType cachedTransitionType;
+    
 	//RGBD STUFF
-	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
+	CloudsVisualSystemRGBD* rgbdVisualSystem;
+	vector<string> backgroundPresets;
+	vector<string> pointcloudPresets;
+	string basePreset;
+	void populateRGBDPresets();
+	
 	//if there is a system playing this wil be non-null
-	ofPtr<CloudsIntroSequence> introSequence;
-	ofPtr<CloudsVisualSystemClusterMap> clusterMap;
+	CloudsIntroSequence* introSequence;
+	CloudsVisualSystemClusterMap* clusterMap;
+	CloudsVisualSystem* interludeSystem;
+    float interludeStartTime;
 	
 	CloudsVisualSystemPreset nextVisualSystemPreset;	
 	CloudsVisualSystemPreset currentVisualSystemPreset;
-	ofPtr<CloudsVisualSystem> currentVisualSystem;
 		
 	CloudsTransitionController transitionController;
 	void updateTransition();
-
+	bool updateInterludeInterface(); //true if we should stop interlude
+	void updateCompletedInterlude(); //after one option has been selected;
+	
+	//loader screen
+	bool loadingAct;
+	int currentPresetIndex;
+	
+    string currentClipName;
+    float actCreatedTime;
 	float crossfadeValue;
-	float cursorMovedTime;
-	bool showingCursor;
 	string combinedMoviesFolder;
+	void drawDebugOverlay();
 	
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
-	
+	bool returnToIntro;
+    
 	string prerolledClipID;
 	void prerollClip(CloudsClip& clip, float toTime);
-	void playClip(CloudsClip& clip);
+	void playClip(CloudsClip clip);
 
 	//VISUAL SYSTEMS
 	//
 	void showIntro();
-	void showIntro(vector<CloudsClip>& possibleStartQuestions);
 
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
+    bool showingInterlude;
+    bool exitedInterlude;
+	bool bQuestionAsked;
 	
-	void clearAct(bool destroy = true);
-			
-	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
-//	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
+	void clearAct();
+    
 	//remove the current visual system
 	void hideVisualSystem();
 	void showRGBDVisualSystem();
 	void playNextVisualSystem();
-	
+    void showClusterMap();
+    void showInterlude();
+    void cleanupInterlude();
+
+    //INTERLUDE INTERFACE
+	void resetInterludeVariables();
+	ofxFTGLFont interludeInterfaceFont;
+	float interludeExitBarWidth;
+	bool interludeHoveringContinue;
+	bool interludeHoveringReset;
+	float interludeBarHoverStartTime;
+	float interludeBarHoverHoldTime;
+	float interludeBarHoverPercentComplete;
+	bool interludeContinueSelected;
+	bool interludeResetSelected;
+	float interludeArcRadius;
+	float interludeArcBaseAlpha;
+
+//    CloudsPortal continuePortal;
+//    void setupPortals();
+//    ofRectangle resetRect;
+//    ofRectangle resetSelectionRect;
+//    float resetSelectedPercentComplete;
+//    float maxResetHoverTime;
+//    float startResetHoverTime;
+//    float endResetHoverValue;
+//    bool prevResetValue;
+//	
+//    bool bResetSelected;
+//    bool bResetTransitionComplete;
+
+
+
+//    void clearRestButtonParams();
+//    ofVec2f lastMousePos, currMousePos;
+//    unsigned long long lastMouseMoveMillis;
 };
+
+
+
+
+

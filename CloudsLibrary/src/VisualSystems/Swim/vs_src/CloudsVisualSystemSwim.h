@@ -15,7 +15,8 @@
 #include "Bubbles.h"
 #include "MarineSnow.h"
 #include "ofxPostProcessing.h"
-#include "ofxTonic.h"
+//#include "ofxTonic.h"
+#include "TonicSample.h"
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
 
@@ -56,6 +57,7 @@ class CloudsVisualSystemSwim : public CloudsVisualSystem {
 	// this is a good time to prepare for transitions
 	// but try to keep it light weight as to not cause stuttering
     void selfBegin();
+    void selfSetDefaults();
 
 	// selfPresetLoaded is called whenever a new preset is triggered
 	// it'll be called right before selfBegin() and you may wish to
@@ -138,11 +140,15 @@ protected:
     
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[2] = {"Underwater_stretch.aif",
-        "underwater.aif"};
-    bool playSample[2] = {false};
-    ControlTrigger soundTriggers[2];
+    vector<TonicSample> tonicSamples;
+//    string soundFiles[2] = {"underwater_stretch.aif",
+//        "Underwater.aif"};
+//    bool playSample[2] = {false};
+//    ControlTrigger soundTriggers[2];
     ofxTonicSynth synth;
     Generator buildSynth();
+    ControlParameter volumeControl;
+    float gain;
 	void audioRequested(ofAudioEventArgs& args);
+    
 };

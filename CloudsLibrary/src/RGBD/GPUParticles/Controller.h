@@ -16,6 +16,7 @@ namespace GPUParticles {
 		
 		void setShaderDirectory(string directory);
 		void setParticleCount(int numParticles);
+        int getNumParticles();
 		void setup();
 		void update();
 		void draw();

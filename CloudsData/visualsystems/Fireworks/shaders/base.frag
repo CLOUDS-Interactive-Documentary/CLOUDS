@@ -77,5 +77,5 @@ void main(){
 	}
 	
 	//color
-	gl_FragColor = color * depthVal;
+	gl_FragColor = color;// * depthVal; // + vec4(1.,1.,0.,1.)
 }

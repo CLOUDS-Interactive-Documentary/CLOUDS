@@ -25,6 +25,7 @@ class CloudsVisualSystemCosmic : public CloudsVisualSystem {
     void guiSystemEvent(ofxUIEventArgs &e);
     
     void selfSetupRenderGui();
+    void selfSetupCameraGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
 	void selfSetup();
@@ -40,6 +41,7 @@ class CloudsVisualSystemCosmic : public CloudsVisualSystem {
 	void selfDrawBackground();
 	void selfEnd();
     void selfExit();
+    void selfSetDefaults();
     
     void selfKeyPressed(ofKeyEventArgs & args);
 //
@@ -81,17 +83,13 @@ class CloudsVisualSystemCosmic : public CloudsVisualSystem {
     
     void addGui(ofxUISuperCanvas *g);
     void selfSetupGuis();    
-//    void drawTexturedQuad(float x, float y, float w, float h, float texWidth, float texHeight);
     
     void selfSetupTimeline();
     
 protected:
 	void clear();
 	bool vbosAllocated;
-    ofxColorPalettes *colorPalettes;
-    
 
-    float colorIndex;
     int numTris;
     int numIndi;
     int rows;
@@ -100,17 +98,8 @@ protected:
     
     float *pos;
     float *vel;
-    ofVec3f * verts;
-	ofFloatColor * colors;
-    ofVec3f * normals;
-    ofVec2f * texCoords;
-    ofIndexType * indices;
     
-    ofVbo vbo;
     ofVbo vboFloor;
-    
-    ofTexture glow;
-    float spriteSize;
     
     ofFbo homeFbo;
     ofFbo radiFbo;
@@ -122,9 +111,9 @@ protected:
     ofFbo velFboDst;
     
     ofFbo accFboSrc;
-    ofFbo accFboDst;  
-
-    ofFbo electroFbo; 
+    ofFbo accFboDst;
+    
+    ofFbo electroFbo;
     
     ofxAutoReloadedShader accShader;
     ofxAutoReloadedShader velShader;
@@ -144,6 +133,11 @@ protected:
     float time;
     
     float radiusMultiplier;
+    float particleAlpha;
+
+    ofxColorPalettes *colorPalettes;
+    float colorIndex;
+    ofFloatColor *floorColors;    
     
     //Sphere Shader
     ofxAutoReloadedShader sphereShader;
@@ -175,10 +169,12 @@ protected:
     int floorIndexSize;
     float shadowScale;
     float shadowOpacity;
-
+    
     //Curl Noise Shader
     ofxAutoReloadedShader noiseShader;
     bool bNoiseActive;
     float noiseForceLimit;
     float noiseScale;
+    
+    ofRange clipPlanes;
 };

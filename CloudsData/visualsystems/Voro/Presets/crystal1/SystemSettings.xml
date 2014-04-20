@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>82.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -83,7 +83,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Wall</Name>
-    <Value>1.178769112</Value>
+    <Value>1.125854254</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

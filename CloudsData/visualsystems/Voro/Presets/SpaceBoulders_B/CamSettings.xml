@@ -8,27 +8,57 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DIST</Name>
-    <Value>57.858486176</Value>
+    <Value>63.592464447</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOV</Name>
-    <Value>51.353240967</Value>
+    <Value>44.431262970</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-X</Name>
-    <Value>191.554656982</Value>
+    <Value>162.107894897</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>148.311187744</Value>
+    <Value>125.464820862</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Z</Name>
-    <Value>128.324356079</Value>
+    <Value>87.823989868</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>InteractiveCamera</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>damping</Name>
+    <Value>0.029556349</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minX</Name>
+    <Value>-13.743896484</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxX</Name>
+    <Value>40.344772339</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minY</Name>
+    <Value>-16.403991699</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxY</Name>
+    <Value>27.930976868</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

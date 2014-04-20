@@ -10,6 +10,14 @@
             </Widget>
             <Track></Track>
         </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Y</WidgetName>
+                <WidgetID>8</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
     </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

@@ -11,9 +11,8 @@
 
 string CloudsVisualSystemTerrain::getSystemName()
 {
-        return "Terrain";
+	return "Terrain";
 }
-
 
 void CloudsVisualSystemTerrain::selfSetupSystemGui()
 {
@@ -34,6 +33,7 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
     customGui->addSlider("noise_speed", 0.0, 1.0, &noiseSpeed);
     customGui->addToggle("Show Debug", &bShowDebug);
     customGui->addLabel("GrayScott");
+    customGui->addSlider("Height Scale", 0.0, 100.f, &mHeightScale);
     customGui->addSlider("Feed", 0.0, 0.1, &grayscottFade);
     customGui->addSlider("Loops", 1.0, 25, &grayscottLoops);
     customGui->addSlider("DiffV", 0.0, 1.0, &diffV);
@@ -45,6 +45,8 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
     customGui->addButton("clean", &bCleanGrayscott);
     customGui->addToggle("Draw", &bDoDraw);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    customGui->addSlider("Blur Radius", 0, 5., &blurRadius);
+	customGui->addSlider("Dry Rate", .01, .1, &dryRate);
     customGui->addLabel("Colors");
     customGui->addMinimalSlider("High R", 0, 1, &mHighColor.r, length, dim)->setShowValue(false);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
@@ -59,6 +61,13 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
     customGui->addMinimalSlider("Low B", 0, 1, &mLowColor.b, length, dim)->setShowValue(false);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     customGui->addMinimalSlider("Low A", 0, 1, &mLowColor.a);
+    customGui->addSpacer();
+    customGui->addMinimalSlider("Trace R", 0, 1, &mTraceColor.r, length, dim)->setShowValue(false);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("Trace G", 0, 1, &mTraceColor.g, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("Trace B", 0, 1, &mTraceColor.b, length, dim)->setShowValue(false);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    customGui->addMinimalSlider("Trace A", 0, 1, &mTraceColor.a);
     customGui->addSpacer();
     customGui->addSlider("Balance", 0, 1, &mBalance);
     customGui->addSlider("Texture Mix", 0, 1, &mTexMix);
@@ -94,14 +103,17 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
 	guis.push_back(fogGui);
 	guimap[fogGui->getName()] = fogGui;
 }
-
+void CloudsVisualSystemTerrain::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
 void CloudsVisualSystemTerrain::selfSetup()
 {
-    grayscottLoops = 10;
+    grayscottLoops = 1;
     terrainResolution = 1.0;
     diffU=0.25;
     diffV=0.04;
-    k=0.047;
+    k=0.47;
     f=0.2;
 
     terrainResolution = 1.0;
@@ -113,8 +125,11 @@ void CloudsVisualSystemTerrain::selfSetup()
     patternShader.load("", getVisualSystemDataPath()+"shaders/pattern.fs");
     grayscottShader.load("", getVisualSystemDataPath()+"shaders/grayscott.fs");
     colorShader.load(getVisualSystemDataPath()+"shaders/color.vs", getVisualSystemDataPath()+"shaders/color.fs");
-    circleShader.load("", getVisualSystemDataPath()+"shaders/circle.fs");
+    circleShader.load(getVisualSystemDataPath()+"shaders/circle.vs", getVisualSystemDataPath()+"shaders/circle.fs");
+    vBlurShader.load(getVisualSystemDataPath()+"shaders/vblur.vs", getVisualSystemDataPath()+"shaders/blur.fs");
+    hBlurShader.load(getVisualSystemDataPath()+"shaders/hblur.vs", getVisualSystemDataPath()+"shaders/blur.fs");
 
+    
     patternScale = 50.0;
     
     stripeAlpha = 1.0;
@@ -122,7 +137,16 @@ void CloudsVisualSystemTerrain::selfSetup()
     dotsAlpha = 1.0;
     mTexMix = 0.;
     
+    brushSize = 25.;
+
+    blurRadius = .9;
+	dryRate = .06;
+    
+    mDepositScale = 25.f;
+    
     noiseSpeed = 0.0;
+    
+    mHeightScale = 30.f;
     
     bChange = true;
     
@@ -130,20 +154,50 @@ void CloudsVisualSystemTerrain::selfSetup()
     bDoDraw = true;
     bShowDebug = false;
     
+    mTraceColor = ofFloatColor(1.,0.,0.,1.);
     mHighColor = ofFloatColor(0.,1.,1.,1.);
     mLowColor = ofFloatColor(1.,0.,0.,1.);
     mAtten = 0.f;
     mBalance = .5f;
     mouse = ofVec2f(0,0);
     
-    canvas.allocate(200, 200, OF_IMAGE_COLOR);
-    for(int x = 0;x<canvas.getWidth();x++){
-        for(int y=0; y<canvas.getHeight();y++){
-            canvas.setColor(x, y, ofColor(0,0,0));
-        }
-    }
+    resizeBrush();
+    
+    blurMesh.clear();
+	blurMesh.addVertex(ofVec3f(0,0,0));
+	blurMesh.addVertex(ofVec3f(200,0,0));
+	blurMesh.addVertex(ofVec3f(0,200,0));
+	blurMesh.addVertex(ofVec3f(200,200,0));
+	
+	blurMesh.addTexCoord(ofVec2f(0,0));
+	blurMesh.addTexCoord(ofVec2f(200,0));
+	blurMesh.addTexCoord(ofVec2f(0,200));
+	blurMesh.addTexCoord(ofVec2f(200,200));
+	
+	blurMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+    
+    makeTerrain(grayscottFbo[0].getTextureReference());
+
+    
 }
 
+void CloudsVisualSystemTerrain::resizeBrush(){
+    
+    brushMesh.clear();
+	brushMesh.addVertex(ofVec3f(0,0,0));
+	brushMesh.addVertex(ofVec3f(mDepositScale,0,0));
+	brushMesh.addVertex(ofVec3f(0,mDepositScale,0));
+	brushMesh.addVertex(ofVec3f(mDepositScale,mDepositScale,0));
+	
+	brushMesh.addTexCoord(ofVec2f(-1,-1));
+	brushMesh.addTexCoord(ofVec2f(1,-1));
+	brushMesh.addTexCoord(ofVec2f(-1,1));
+	brushMesh.addTexCoord(ofVec2f(1,1));
+	
+	brushMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	
+	mCurDepositScale = mDepositScale;
+}
 
 void CloudsVisualSystemTerrain::selfBegin()
 {
@@ -176,25 +230,10 @@ void CloudsVisualSystemTerrain::guiSystemEvent(ofxUIEventArgs &e)
         setResolution(size, size);
     }
     
+    if(name == "Brush Size") resizeBrush();
+    
     bChange = true;
     
-     if(name == "fogSaturation" || name == "fogHue" || name == "fogBrightness" )
-	{
-		fc.setHsb(fogHue, fogSaturation, fogBrightness);
-		
-		fogGui->getWidget("FOG_Color")->setColorFill( fc);
-		fogGui->getWidget("fogHue")->setColorFill( fc);
-		fogGui->getWidget("fogSaturation")->setColorFill(fc);
-		fogGui->getWidget("fogBrightness")->setColorFill(fc);
-		
-        //		fogGui->setColorBack( fogColor );
-		
-		bgHue = fogHue;
-		bgSat = fogSaturation;
-		bgBri = fogBrightness;
-        
-	}
-
     
 }
 
@@ -213,8 +252,15 @@ void CloudsVisualSystemTerrain::setResolution( int _width, int _height ){
         grayscottFbo[i].end();
     }
     
+    canvasSrc.allocate(width, height);
+    canvasSrc.begin();
+    ofClear(0, 0, 0);
+    canvasSrc.end();
     
-
+    canvasDest.allocate(width, height);
+    canvasDest.begin();
+    ofClear(0, 0, 0);
+    canvasDest.end();
 }
 
 void CloudsVisualSystemTerrain::selfKeyPressed(ofKeyEventArgs & args){
@@ -233,6 +279,8 @@ void CloudsVisualSystemTerrain::selfKeyPressed(ofKeyEventArgs & args){
 
 void CloudsVisualSystemTerrain::selfUpdate()
 {
+    
+    ofFbo& canvas = (ofGetFrameNum()%2==0) ? canvasSrc : canvasDest;
     
     if ( bChange || noiseSpeed > 0.0){
     
@@ -282,9 +330,10 @@ void CloudsVisualSystemTerrain::selfUpdate()
                 grayscottShader.setUniform1f("diffV", diffV);
                 grayscottShader.setUniform1f("k", k);
                 grayscottShader.setUniform1f("f", f);
-                grayscottShader.setUniform1f("time", ofGetElapsedTimef());
+                grayscottShader.setUniform1f("time", ofGetElapsedTimef()+500.f);
                 grayscottShader.setUniform1f("fade", grayscottFade);
-                grayscottShader.setUniform2f("mouse", mouse.x/ofGetWidth(), mouse.y/ofGetHeight() );
+                //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+                grayscottShader.setUniform2f("mouse", mouse.x/getCanvasWidth(), mouse.y/getCanvasHeight() );
                 glBegin(GL_QUADS);
                 glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
                 glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
@@ -309,11 +358,11 @@ void CloudsVisualSystemTerrain::selfUpdate()
         normalsShader.end();
         normalsFbo.end();
         
-        if(bGrayscott){
-            makeTerrain(grayscottFbo[nPingPong%2].getTextureReference());
-        } else {
-            makeTerrain(noiseFbo.getTextureReference());
-        }
+//        if(bGrayscott){
+//            makeTerrain(grayscottFbo[nPingPong%2].getTextureReference());
+//        } else {
+//            makeTerrain(noiseFbo.getTextureReference());
+//        }
         
         //  Pattern
         //
@@ -346,25 +395,68 @@ void CloudsVisualSystemTerrain::selfUpdate()
     }
     
     if(bDoDraw){
-//    for(int x = 0;x<canvas.getWidth();x++){
-//        for(int y=0; y<canvas.getHeight();y++){
-//            if(canvas.getColor(x, y).r>0){
-//                ofColor sample = canvas.getColor(x, y);
-//                ofColor col = ofColor(sample.r-1, sample.g-1, sample.b-1 );
-//                canvas.setColor(x, y, col);
-//            }
-//        }
-//    }
-//    canvas.update();
+        
+        glDisable(GL_DEPTH_TEST);
+        ofSetColor(255);
+        
+        canvasDest.begin();
+        
+        ofDisableAlphaBlending();
+        ofClear(0, 0, 0, 0);
         
         
+        hBlurShader.begin();
+        hBlurShader.setUniformTexture("s_texture", canvasSrc.getTextureReference(), 1);
+        hBlurShader.setUniform2f("dimensions", canvasDest.getWidth(), canvasDest.getHeight());
+        hBlurShader.setUniform1f("dryRate", dryRate);
+        hBlurShader.setUniform1f("blurRadius", blurRadius);
+        blurMesh.draw();
+        hBlurShader.end();
         
+        canvasDest.end();
+        
+        swap(canvasSrc, canvasDest);
+        
+        canvasDest.begin();
+        
+        ofDisableAlphaBlending();
+        ofClear(0, 0, 0, 0);
+        
+        vBlurShader.begin();
+        vBlurShader.setUniformTexture("s_texture", canvasSrc.getTextureReference(), 1);
+        vBlurShader.setUniform2f("dimensions", canvasDest.getWidth(), canvasDest.getHeight());
+        vBlurShader.setUniform1f("dryRate", dryRate);
+        vBlurShader.setUniform1f("blurRadius", blurRadius);
+        blurMesh.draw();
+        vBlurShader.end();
+        
+        ofEnableAlphaBlending();
+
+        circleShader.begin();
+        ofVec2f centerTranslate = ofVec2f(mDepositScale*.5,mDepositScale*.5);
+        map<int, vector<ofVec2f> >::iterator it;
+        for (it = playerDepositPoints.begin(); it != playerDepositPoints.end(); it++) {
+            for(int i = 0; i <it->second.size(); i++){
+                ofPushMatrix();
+                //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+                ofTranslate(ofVec2f(ofMap(it->second[i].x,0,getCanvasWidth(), 0,canvasDest.getWidth()),ofMap(it->second[i].y,0,getCanvasHeight(), 0,canvasDest.getHeight())) - centerTranslate);
+                brushMesh.draw();
+                ofPopMatrix();
+            }
+        }
+
+        circleShader.end();
+        canvasDest.end();
+        ofDisableAlphaBlending();
+        
+        swap(canvasSrc, canvasDest);
+        
+        for (it = playerDepositPoints.begin(); it != playerDepositPoints.end(); it++) {
+            it->second.clear();
+        }
         
     }
     
-//    fc.setHue(fogHue);
-//	fc.setSaturation(fogSaturation);
-//	fc.setBrightness(fogBrightness);
     fc = bgColor;
 }
 
@@ -466,52 +558,47 @@ void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ){
 
 void CloudsVisualSystemTerrain::selfDraw()
 {
+    ofFbo& canvas = (ofGetFrameNum()%2==0) ? canvasSrc : canvasDest;
+    
     mat->begin();
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
     
     ofPushMatrix();
     ofSetColor(255);
-    glEnable(GL_SMOOTH);
+    //glEnable(GL_SMOOTH);
     glShadeModel(GL_SMOOTH);
-    
- //   grayscottFbo[nPingPong%2].getTextureReference().bind();
     
     colorShader.begin();
 
     if(bGrayscott){
         colorShader.setUniformTexture("map", grayscottFbo[nPingPong%2], 0);
     } else {
-//        noiseFbo.getTextureReference().bind();
         colorShader.setUniformTexture("map", patternFbo, 0 );
     }
     
     colorShader.setUniformTexture("drawMap", canvas, 1);
+    colorShader.setUniformTexture("normalMap", normalsFbo, 2);
+    colorShader.setUniformTexture("noiseMap", noiseFbo, 3);
 
     colorShader.setUniform4fv("highColor", mHighColor.v);
     colorShader.setUniform4fv("lowColor", mLowColor.v);
     colorShader.setUniform1f("_atten", mAtten);
     colorShader.setUniform1f("balance", mBalance);
     colorShader.setUniform1f("texMix", mTexMix);
-
+    colorShader.setUniform4fv("traceColor", mTraceColor.v);
+    
+	colorShader.setUniform1f("heightScale", mHeightScale );
     colorShader.setUniform4f("fogColor", fc.r, fc.g, fc.g, fc.a );
 	colorShader.setUniform1f("fogDist", fogDist );
 	colorShader.setUniform1f("fogExpo", fogExpo );
+    colorShader.setUniform1f("doDraw", bDoDraw );
     
     ofVec3f cp = getCameraRef().getPosition() / 1.;
 	colorShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
 
     terrainVbo.draw(GL_TRIANGLES , 0, nVertexCount);
     colorShader.end();
-//    if(bGrayscott){
-//        grayscottFbo[nPingPong%2].getTextureReference().unbind();
-//    } else {
-//        //noiseFbo.getTextureReference().unbind();
-//        patternFbo.getTextureReference().unbind();
-//    }
-//
-  //  grayscottFbo[nPingPong%2].getTextureReference().unbind();
-
     
     ofPopMatrix();
     
@@ -563,21 +650,133 @@ void CloudsVisualSystemTerrain::selfSceneTransformation()
 void CloudsVisualSystemTerrain::selfExit()
 {
     
+    brushMesh.clear();
+    blurMesh.clear();
+    playerHistoryMap.clear();
+    playerDepositPoints.clear();
+    depositPoints.clear();
+    
+    colorShader.unload();
+    circleShader.unload();
+    vBlurShader.unload();
+    hBlurShader.unload();
+    normalsShader.unload();
+    patternShader.unload();
+    
+    terrainVbo.clear();
+    grayscottShader.unload();
+    noiseShader.unload();
 }
 
+ofVec2f CloudsVisualSystemTerrain::hermiteInterpolate(ofVec2f y0, ofVec2f y1, ofVec2f y2, ofVec2f y3, float pct, float tension, float bias){
+	ofVec2f m0,m1;
+	float pct2,pct3;
+	float a0,a1,a2,a3;
+	pct2 = pct * pct;
+	pct3 = pct2 * pct;
+	m0  = (y1-y0)*(1+bias)*(1-tension)/2;
+	m0 += (y2-y1)*(1-bias)*(1-tension)/2;
+	m1  = (y2-y1)*(1+bias)*(1-tension)/2;
+	m1 += (y3-y2)*(1-bias)*(1-tension)/2;
+	a0 =  2*pct3 - 3*pct2 + 1;
+	a1 =  pct3 - 2*pct2 + pct;
+	a2 =  pct3 - pct2;
+	a3 =  -2*pct3 + 3*pct2;
+	return(a0*y1 + a1*m0+a2*m1+a3*y2);
+}
+
+void CloudsVisualSystemTerrain::selfInteractionDragged(CloudsInteractionEventArgs& args){
+    if(bDoDraw){
+        
+        mouse.x = args.position.x;
+        mouse.y = args.position.y;
+        
+        playerHistoryMap[args.playerId].push_back(ofVec2f(args.position.x,args.position.y));
+        
+        vector<ofVec2f> splineHandles;
+        //make a spline
+        if(playerHistoryMap[args.playerId].size() == 1){
+            return; //draw next time
+        }
+        if(playerHistoryMap[args.playerId].size() == 2){
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+        }
+        else if(playerHistoryMap[args.playerId].size() == 3){
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][2]);
+        }
+        else{
+            for(int i = playerHistoryMap[args.playerId].size()-4; i < playerHistoryMap[args.playerId].size(); i++){
+                splineHandles.push_back(playerHistoryMap[args.playerId][i]);
+            }
+        }
+        
+        float stepsize = ofMap(brushSize, 2, 200, .005, .1, true);
+        
+        for(float a = 0; a < 1.; a+=stepsize){
+            playerDepositPoints[args.playerId].push_back(hermiteInterpolate(splineHandles[0],
+																			splineHandles[1],
+																			splineHandles[2],
+																			splineHandles[3], a, 0, 0));
+        }
+        
+        if(playerHistoryMap[args.playerId].size() > 4){
+            playerHistoryMap[args.playerId].erase(playerHistoryMap[args.playerId].begin());
+        }
+        
+    }
+
+}
 
 void CloudsVisualSystemTerrain::selfInteractionMoved(CloudsInteractionEventArgs& args){
     if(bDoDraw){
-    mouse.x = args.position.x;
-    mouse.y = args.position.y;
-//    for(int x = 0;x<canvas.getWidth();x++){
-//        for(int y=0; y<canvas.getHeight();y++){
-//            if(x>ofMap(mouse.x,0,ofGetWidth(),0,200)-10 && x< ofMap(mouse.x,0,ofGetWidth(),0,200) +10 && y>ofMap(mouse.y,0,ofGetHeight(),0,200)-10 && y<ofMap(mouse.y,0,ofGetHeight(),0,200)+10){
-//                canvas.setColor(x, y, ofColor(255,255,255));
-//            }
-//        }
-//    }
-//    }
+        
+        mouse.x = args.position.x;
+        mouse.y = args.position.y;
+        
+        playerHistoryMap[args.playerId].push_back(ofVec2f(args.position.x,args.position.y));
+        
+        vector<ofVec2f> splineHandles;
+        //make a spline
+        if(playerHistoryMap[args.playerId].size() == 1){
+            return; //draw next time
+        }
+        if(playerHistoryMap[args.playerId].size() == 2){
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+        }
+        else if(playerHistoryMap[args.playerId].size() == 3){
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][2]);
+        }
+        else{
+            for(int i = playerHistoryMap[args.playerId].size()-4; i < playerHistoryMap[args.playerId].size(); i++){
+                splineHandles.push_back(playerHistoryMap[args.playerId][i]);
+            }
+        }
+        
+        float stepsize = ofMap(brushSize, 2, 200, .005, .1, true);
+        
+        for(float a = 0; a < 1.; a+=stepsize){
+            playerDepositPoints[args.playerId].push_back(hermiteInterpolate(splineHandles[0],
+																			splineHandles[1],
+																			splineHandles[2],
+																			splineHandles[3], a, 0, 0));
+        }
+        
+        if(playerHistoryMap[args.playerId].size() > 4){
+            playerHistoryMap[args.playerId].erase(playerHistoryMap[args.playerId].begin());
+        }
+        
     }
 }
 
@@ -614,6 +813,8 @@ void CloudsVisualSystemTerrain::selfSetupGui()
 {
     
 }
+
+
 
 
 void CloudsVisualSystemTerrain::guiRenderEvent(ofxUIEventArgs &e)

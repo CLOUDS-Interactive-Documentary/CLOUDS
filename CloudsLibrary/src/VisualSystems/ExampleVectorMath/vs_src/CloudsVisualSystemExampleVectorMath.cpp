@@ -75,6 +75,10 @@ void CloudsVisualSystemExampleVectorMath::selfSetupRenderGui(){
 void CloudsVisualSystemExampleVectorMath::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
+void CloudsVisualSystemExampleVectorMath::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
 
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
@@ -88,9 +92,6 @@ void CloudsVisualSystemExampleVectorMath::selfSetup(){
     fadeSpeed = 10;
     autoDrawSpeed = 2;
     bAutoDraw = false;
-	
-	//jg temp to remove mismatched cursor
-	bDrawCursor = false;
 	
     colorShiftSpeed = 0.5;
     color = ofFloatColor::white;
@@ -255,8 +256,9 @@ void CloudsVisualSystemExampleVectorMath::selfMouseDragged(ofMouseEventArgs& dat
 
 void CloudsVisualSystemExampleVectorMath::selfMouseMoved(ofMouseEventArgs& data){
 
-    float x = ofMap(data.x, 0, ofGetWidth(), -(ofGetWidth()/2.0), (ofGetWidth()/2.0));
-    float y = ofMap(data.y, 0, ofGetHeight(), -(ofGetHeight()/2.0), (ofGetHeight()/2.0));
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    float x = ofMap(data.x, 0, getCanvasWidth(), -(getCanvasWidth()/2.0), (getCanvasWidth()/2.0));
+    float y = ofMap(data.y, 0, getCanvasHeight(), -(getCanvasHeight()/2.0), (getCanvasHeight()/2.0));
 
 //    float x = ofMap(data.x, 0, ofGetWidth(), -1, 1);
 //    float y = ofMap(data.y, 0, ofGetHeight(), -1, 1);

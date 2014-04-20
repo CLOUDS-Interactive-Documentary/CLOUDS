@@ -57,12 +57,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Cube_256.obj</Name>
-    <Value>1</Value>
+    <Name>elephant.obj</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>elephant.obj</Name>
+    <Name>ellipsoid1.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ellipsoid2(2).obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ellipsoid2.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -78,6 +88,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>FallingChairs_Triangulated.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>folding-small-simplified.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -102,12 +117,27 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Hypersphere1.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Kelp.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Kelp2.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Laplacian1.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Laplacian2.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -122,8 +152,18 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>MegaSphere.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>NestedBrokenSphere.obj</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>pathDebugModel.obj</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -138,6 +178,26 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Tangle_Triangulated.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_Ellipsoid.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ToxiAllInOne.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Trachia.obj</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>tube1.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

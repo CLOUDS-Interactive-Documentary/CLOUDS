@@ -123,7 +123,10 @@ void CloudsVisualSystemWebHistory::selfSetupGui()
 	guis.push_back(treeGui);
 	guimap[treeGui->getName()] = treeGui;
 }
-
+void CloudsVisualSystemWebHistory::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //--------------------------------------------------------------
 void CloudsVisualSystemWebHistory::selfGuiEvent(ofxUIEventArgs &e)
 {
@@ -467,7 +470,8 @@ void CloudsVisualSystemWebHistory::selfDrawBackground()
     ofSetColor(listColor);
     
     int stringHeight = 20;
-    int maxNumStrings = ofGetHeight() / stringHeight;
+    //MA: changed ofGetHeight() to getCanvasHeight()
+    int maxNumStrings = getCanvasHeight() / stringHeight;
     
     if (bClearScreen) {
         if (searchTermCount > 0 && (ofGetFrameNum() % (int)typeSpeed == 0)) {

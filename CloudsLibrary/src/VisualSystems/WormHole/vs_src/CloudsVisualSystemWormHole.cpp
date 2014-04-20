@@ -187,11 +187,13 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	soundGui->copyCanvasProperties(gui);
 	soundGui->setName("WORMHOLE Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-
-    for (int i=0; i<nSamples; i++)
+    
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        soundGui->addToggle(soundFiles[i], &playSample[i]);
+        soundGui->addToggle(tonicSamples[i].soundFile, &tonicSamples[i].playSample);
     }
+    
+    soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
     
 	guis.push_back(soundGui);
 	guimap[soundGui->getName()] = soundGui;
@@ -310,13 +312,13 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		wormholeLightGui->getWidget("lightBrightness")->setColorFill(lightColor);
 	}
 
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (e.widget->getName() == soundFiles[i]) {
+        if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
+            tonicSamples[i].playSample = toggle->getValue();
             if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+                tonicSamples[i].soundTrigger.trigger();
             }
         }
     }
@@ -409,12 +411,18 @@ void CloudsVisualSystemWormHole::selfSetDefaults()
 	lightQuadraticAttenuation = .01;
 	
 	bCullBackface = true;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemWormHole::selfSetup()
 {
 	currentShader = NULL;
-	
+
+	tonicSamples.push_back(TonicSample("EchoVortex.aif"));
+	tonicSamples.push_back(TonicSample("wormholeZoom.aif"));
+	tonicSamples.push_back(TonicSample("wormholeZoom2.aif"));
+	tonicSamples.push_back(TonicSample("slowgrains_short.aif"));
 	//meshes
 	modelPath = getVisualSystemDataPath(true) + "models/";
 	cameraPathPath = getVisualSystemDataPath() + "cameraPaths/";
@@ -454,17 +462,19 @@ void CloudsVisualSystemWormHole::selfSetup()
 	colorSampleImage.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	
     // sound
-    synth.setOutputGen(buildSynth());
+    fMainGain = 0;
+    mainGain.value(0);
+    synth.setOutputGen(buildSynth() * mainGain);
 }
 
 void CloudsVisualSystemWormHole::selfBegin(){
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+        if (tonicSamples[i].playSample) {
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
@@ -482,11 +492,11 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	{
 		pathCamera.update( cameraPathPosition );
 		
-		getCameraRef().setPosition(pathCamera.getPosition());
-		getCameraRef().lookAt(pathCamera.getLookAtDir() + pathCamera.getPosition());
-		
 		//light on path
 		lightPos = pathCamera.getPositionSpline().getPoint( ofClamp(pathCamera.u + lightPathOffset, 0, 1) );
+		
+		
+		pathCamera.setFov( CloudsVisualSystem::getCameraRef().getFov() );
 		
 	}
 	else
@@ -505,23 +515,36 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	
 	noiseTime += timeDelta * noiseSpeed;
     
+    // sound
+    mainGain.value(fMainGain);
 }
 
 void CloudsVisualSystemWormHole::selfDraw()
 {
-	
-    if (bCullBackface == true){
-    glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-    }
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	ofPushStyle();
 	
 	//alpha blending
 	if(currentBlendMode == OF_BLENDMODE_DISABLED)
 	{
 		ofDisableAlphaBlending();
-	}else{
+	}
+	else if( currentShader == shaderMap["XRayShader"])
+	{
+		bCullBackface = false;
+		bDepthTest = false;
+		currentBlendMode = OF_BLENDMODE_ADD;
+		ofBlendMode( currentBlendMode );
+	}
+	else{
 		ofEnableBlendMode(currentBlendMode);
 	}
+	
+	//cull
+	if (bCullBackface){
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+    }
 	
 	//depth testing
 	bDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
@@ -550,16 +573,11 @@ void CloudsVisualSystemWormHole::selfDraw()
 		ofFloatColor c2f = c2;
 		currentShader->setUniform4f("c1", c1f.r, c1f.g, c1f.b, c1f.a );
 		currentShader->setUniform4f("c2", c2f.r, c2f.g, c2f.b, c2f.a );
-
-//		currentShader->setUniform1i("useNoiseDisplacement", bUseNoiseDisplacement );
-//		currentShader->setUniform3f("noiseOffset", noiseDir.x * noiseTime, noiseDir.y * noiseTime, noiseDir.z * noiseTime);
-//		currentShader->setUniform1f("noiseScale", noiseScale );
-//		currentShader->setUniform1f("noiseDisplacement", noiseDisplacement );
 	}
 
 	//draw mesh
-	ofPushMatrix();
-	ofMultMatrix( meshNode.getGlobalTransformMatrix() );
+//	ofPushMatrix();
+//	ofMultMatrix( meshNode.getGlobalTransformMatrix() );
 
 	if(!bDoShader){
 		mat->begin();
@@ -579,17 +597,10 @@ void CloudsVisualSystemWormHole::selfDraw()
 	//unbind shade
 	if (bDoShader && currentShader != NULL)	currentShader->end();
 	
-	ofPopMatrix();
-	
-	
-	//disable depth testing
-	glDisable(GL_DEPTH_TEST);
-	
-	
-	glDisable(GL_CULL_FACE);
-
-	//disable alpha blending
-	ofDisableAlphaBlending();
+//	ofPopMatrix();
+		
+	ofPopStyle();
+	glPopAttrib();
 }
 
 void CloudsVisualSystemWormHole::selfPresetLoaded(string presetPath){
@@ -614,6 +625,7 @@ void CloudsVisualSystemWormHole::selfEnd()
 {
     // sound
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
+
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemWormHole::selfExit()
@@ -630,6 +642,16 @@ void CloudsVisualSystemWormHole::selfExit()
 		delete shader;
 	}
 	shaderMap.clear();
+	
+	
+	//rendering guis
+	ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(meshGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(cameraGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(shaderGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(fogGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(wormholeLightGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(displacementGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 }
 
 //events are called when the system is active
@@ -795,16 +817,16 @@ Generator CloudsVisualSystemWormHole::buildSynth()
     
     SampleTable samples[4];
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+       string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = loadAudioFile(strAbsPath);
     }
     
     Generator sampleGen[4];
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(soundTriggers[i]);
+        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(tonicSamples[i].soundTrigger);
     }
     
     return sampleGen[0] * 1.0f +

@@ -278,6 +278,9 @@ void CloudsVisualSystemCode::selfSetDefaults(){
 	speedRange.max  =  .9;
 	
 	bCascadeMode = false;
+    
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 	
 }
 // selfSetup is called when the visual system is first instantiated
@@ -326,7 +329,7 @@ void CloudsVisualSystemCode::updateColors(){
 //normal update call
 void CloudsVisualSystemCode::selfUpdate(){
 	
-	if(currentFontSize != fontSize){
+	if(!sharedFont.isLoaded() || currentFontSize != fontSize){
 		sharedFont.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
 		sharedLayout.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
 		currentFontSize = fontSize;
@@ -422,7 +425,9 @@ void CloudsVisualSystemCode::selfMouseDragged(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemCode::selfMouseMoved(ofMouseEventArgs& data){
-	
+	for(int i = 0; i < panelsFront.size(); i++){
+		panelsFront[i]->selected = panelsFront[i]->drawRect.inside(data.x, data.y);
+	}
 }
 
 void CloudsVisualSystemCode::selfMousePressed(ofMouseEventArgs& data){

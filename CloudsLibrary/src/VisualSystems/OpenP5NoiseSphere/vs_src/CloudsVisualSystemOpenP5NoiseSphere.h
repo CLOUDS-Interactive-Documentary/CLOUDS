@@ -231,4 +231,6 @@ protected:
     bool bLevelToNoise;
     float levelToNoiseScale;
     float levelToNoiseRatio;
+    
+    float fMainGain;
 };

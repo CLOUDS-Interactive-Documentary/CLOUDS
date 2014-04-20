@@ -21,16 +21,25 @@ CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camSpeed(-600.f), regenerate(
 // geometry should be loaded here
 void CloudsVisualSystemSwim::selfSetup()
 {
+    tonicSamples.push_back(TonicSample("underwater_stretch.aif"));
+    tonicSamples.push_back(TonicSample("Underwater.aif"));
+
     snow.init(getVisualSystemDataPath());
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
-    post.init(ofGetWidth(), ofGetHeight(), true);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    post.init(getCanvasWidth(), getCanvasHeight(), true);
     //post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
     
     // sound
+    volumeControl.value(0);
     synth.setOutputGen(buildSynth());
+}
+void CloudsVisualSystemSwim::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -46,8 +55,8 @@ void CloudsVisualSystemSwim::selfBegin()
     
     for (int i=0; i<2; i++)
     {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+        if (tonicSamples[i].playSample) {
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
@@ -76,9 +85,9 @@ void CloudsVisualSystemSwim::generate()
 //normal update call
 void CloudsVisualSystemSwim::selfUpdate()
 {
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
-    
-    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    volumeControl.value(gain);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (post.getWidth() != getCanvasWidth() || post.getHeight() != getCanvasHeight()) post.init(getCanvasWidth(), getCanvasHeight(), true);
     
     if (regenerate)
     {
@@ -102,18 +111,23 @@ void CloudsVisualSystemSwim::selfUpdate()
     }
     
     // cam
-    ofVec2f targetLookAngle;
-    targetLookAngle.x = ofMap(GetCloudsInputY(), 0, ofGetHeight(), 10.f, -10.f, true);
-    targetLookAngle.y = ofMap(GetCloudsInputX(), 0, ofGetWidth(), 20.f, -20.f, true);
-    currentLookAngle.interpolate(targetLookAngle, .05);
-    ofQuaternion rx, ry;
-    rx.makeRotate(currentLookAngle.x, 1, 0, 0);
-    ry.makeRotate(currentLookAngle.y, 0, 1, 0);
-    getCameraRef().setOrientation(rx * ry);
-    getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
-    //getCameraRef().move(0, 0, ofMap(GetCloudsInputY(), 0, ofGetHeight(), -50.f, 0.f));
-    //getCameraRef().setPosition(0, 0, 2000);
-    
+    if(!bUseOculusRift){
+        ofVec2f targetLookAngle;
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+        targetLookAngle.x = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 10.f, -10.f, true);
+        targetLookAngle.y = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 20.f, -20.f, true);
+        currentLookAngle.interpolate(targetLookAngle, .05);
+        ofQuaternion rx, ry;
+        rx.makeRotate(currentLookAngle.x, 1, 0, 0);
+        ry.makeRotate(currentLookAngle.y, 0, 1, 0);
+        getCameraRef().setOrientation(rx * ry);
+        getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
+        //getCameraRef().move(0, 0, ofMap(GetCloudsInputY(), 0, ofGetHeight(), -50.f, 0.f));
+        //getCameraRef().setPosition(0, 0, 2000);
+    }
+    else{
+        getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());        
+    }
     //bubbles.update();
     creatures.update();
 }
@@ -132,7 +146,8 @@ void CloudsVisualSystemSwim::selfPostDraw()
     glPushAttrib(GL_ENABLE_BIT);
     glDisable(GL_DEPTH_TEST);
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
-    post.getProcessedTextureReference().draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
     glPopAttrib();
 }
 
@@ -217,8 +232,10 @@ void CloudsVisualSystemSwim::selfSetupGui()
     
     soundGui = createCustomGui("Sound");
     // sound
-    soundGui->addToggle(soundFiles[0], &playSample[0]);
-    soundGui->addToggle(soundFiles[1], &playSample[1]);
+    soundGui->addToggle(tonicSamples[0].soundFile, &tonicSamples[0].playSample);
+    soundGui->addToggle(tonicSamples[1].soundFile, &tonicSamples[1].playSample);
+    
+    soundGui->addSlider("Gain", 0, 1, &gain);
     
     ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemSwim::selfGuiEvent);
 }
@@ -278,9 +295,9 @@ void CloudsVisualSystemSwim::selfKeyPressed(ofKeyEventArgs & args)
             saveSeed = true;
             break;
             
-        case 'l':
+        /*case 'l':
             loadSeed = true;
-            break;
+            break;*/
             
         default:
             break;
@@ -308,11 +325,11 @@ void CloudsVisualSystemSwim::selfGuiEvent(ofxUIEventArgs &e){
 	}
     for (int i=0; i<2; i++)
     {
-        if (e.widget->getName() == soundFiles[i]) {
+        if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
+            tonicSamples[i].playSample = toggle->getValue();
             if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+                tonicSamples[i].soundTrigger.trigger();
             }
         }
     }
@@ -351,6 +368,7 @@ void CloudsVisualSystemSwim::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemSwim::selfEnd(){
 	
+    volumeControl.value(0); 
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemSwim::audioRequested);
 	
 }
@@ -386,17 +404,21 @@ Generator CloudsVisualSystemSwim::buildSynth()
     
     SampleTable samples[3];
     
-    int nSounds = sizeof(soundFiles) / sizeof(string);
-    for (int i=0; i<nSounds; i++)
-    {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//    int nSounds = sizeof(soundFiles) / sizeof(string);
+//    for (int i=0; i<nSounds; i++)
+//    {
+//        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//        samples[i] = loadAudioFile(strAbsPath);
+//    }
+    for(int i=0; i<tonicSamples.size();i++){
+        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
-    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[0].soundTrigger);
     
-    return sampleGen1 * 1.0f + sampleGen2 * 1.0f;
+    return (sampleGen1 * 1.0f + sampleGen2 * 1.0f) * volumeControl;
 }
 
 void CloudsVisualSystemSwim::audioRequested(ofAudioEventArgs& args)

@@ -1,13 +1,18 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>SHADERS</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>70.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>depthTest</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>backface culling</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
@@ -52,6 +57,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>WormholeShader</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>XRayShader</Name>
     <Value>0</Value>
 </Widget>
@@ -67,36 +77,41 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>facingRatioExpo</Name>
+    <Value>6.221670151</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>shininess</Name>
     <Value>16.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>28</Kind>
-    <Name>c1</Name>
-    <XValue>0.500000000</XValue>
-    <YValue>0.500000000</YValue>
-    <RColor>0</RColor>
-    <GColor>1</GColor>
-    <BColor>5</BColor>
-    <AColor>255</AColor>
+    <Kind>44</Kind>
+    <Name>c1Hue</Name>
+    <Value>138</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>c1_alpha</Name>
-    <Value>1.000000000</Value>
+    <Kind>44</Kind>
+    <Name>c1Saturation</Name>
+    <Value>211</Value>
 </Widget>
 <Widget>
-    <Kind>28</Kind>
-    <Name>c2</Name>
-    <XValue>0.500000000</XValue>
-    <YValue>0.500000000</YValue>
-    <RColor>0</RColor>
-    <GColor>1</GColor>
-    <BColor>5</BColor>
-    <AColor>255</AColor>
+    <Kind>44</Kind>
+    <Name>c1Brightness</Name>
+    <Value>255</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>c2_alpha</Name>
-    <Value>1.000000000</Value>
+    <Kind>44</Kind>
+    <Name>c2Hue</Name>
+    <Value>208</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2Saturation</Name>
+    <Value>151</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2Brightness</Name>
+    <Value>255</Value>
 </Widget>

@@ -56,6 +56,7 @@ public:
     
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
+    void selfSetDefaults();
 	
 protected:
 	
@@ -72,7 +73,6 @@ protected:
 	void addParticle();
 	
 	ofVec3f getDirection(float x, float y);
-//	float getMagnitude(float x, float y);
 	float sampleField(float x, float y);
 	
 	void initFlowField();
@@ -107,6 +107,8 @@ protected:
     ofFbo fboInitial, fboBlurX, fboFinal;
     
     // Sound
+    float fMainGain;
+    ControlParameter mainGain;
     int prevInputX, prevInputY;
     ofxTonicSynth synth;
     ControlParameter lpfCutoff;

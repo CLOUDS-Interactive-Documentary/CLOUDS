@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A316F8A187F87F300662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F89187F87F300662636 /* ofxSystemTextbox.mm */; };
+		2A316F8B187F87F300662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F89187F87F300662636 /* ofxSystemTextbox.mm */; };
 		3D5B95CB175308AE00F558AC /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9557175308AD00F558AC /* kiss_fft.c */; };
 		3D5B95CC175308AE00F558AC /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9558175308AD00F558AC /* kiss_fftr.c */; };
 		3D5B95CD175308AE00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B955B175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -376,6 +378,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A316F88187F87F300662636 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		2A316F89187F87F300662636 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
@@ -1715,6 +1719,8 @@
 		E7DD846117DBC0A500AFB2DD /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				2A316F88187F87F300662636 /* ofxSystemTextbox.h */,
+				2A316F89187F87F300662636 /* ofxSystemTextbox.mm */,
 				E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */,
 				E7DD846417DBC0A500AFB2DD /* CloudsRGBDCamera.h */,
 				E7DD846517DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp */,
@@ -1791,6 +1797,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Memory" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1923,6 +1931,7 @@
 				3D5B967F175308D000F558AC /* ofxEasingBack.cpp in Sources */,
 				3D5B9680175308D000F558AC /* ofxEasingBounce.cpp in Sources */,
 				3D5B9681175308D000F558AC /* ofxEasingCirc.cpp in Sources */,
+				2A316F8A187F87F300662636 /* ofxSystemTextbox.mm in Sources */,
 				3D5B9682175308D000F558AC /* ofxEasingCubic.cpp in Sources */,
 				3D5B9683175308D000F558AC /* ofxEasingElastic.cpp in Sources */,
 				3D5B9684175308D000F558AC /* ofxEasingExpo.cpp in Sources */,
@@ -2118,6 +2127,7 @@
 				85F8B30C187266F7006960CB /* ControlTriggerFilter.cpp in Sources */,
 				85F8B30E187266F7006960CB /* ControlValue.cpp in Sources */,
 				85F8B310187266F7006960CB /* ControlXYSpeed.cpp in Sources */,
+				2A316F8B187F87F300662636 /* ofxSystemTextbox.mm in Sources */,
 				85F8B312187266F7006960CB /* DelayUtils.cpp in Sources */,
 				85F8B314187266F7006960CB /* DSPUtils.cpp in Sources */,
 				85F8B316187266F7006960CB /* Effect.cpp in Sources */,

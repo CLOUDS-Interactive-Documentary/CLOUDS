@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>343.052764893</Value>
+    <Value>180.151596069</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -32,8 +32,33 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>LOCK TO TRACK</Name>
-    <Value>0</Value>
+    <Name>InteractiveCamera</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>damping</Name>
+    <Value>0.019704133</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minX</Name>
+    <Value>-25.270988464</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxX</Name>
+    <Value>11.970390320</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minY</Name>
+    <Value>-10.197097778</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxY</Name>
+    <Value>6.650192261</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

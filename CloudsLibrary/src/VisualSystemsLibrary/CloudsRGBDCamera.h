@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofRange.h"
 
 class CloudsRGBDCamera : public ofCamera {
   public:
@@ -43,6 +44,7 @@ class CloudsRGBDCamera : public ofCamera {
 	void setTransitionStartNode( ofNode* _startNode );
 	void setTransitionTargetNode( ofNode* _targetNode );
 	void setTransitionPercent( float t );
+	void setTransitionRotationPercent(float t);
 	
 	
 	void jumpToPosition();
@@ -62,6 +64,9 @@ class CloudsRGBDCamera : public ofCamera {
 	float driftNoiseSpeed;
 	float driftNoisePosition;
 	
+
+	ofRange zoomFOVRange;
+	
   protected:
 	ofVec3f currentPosition;
 	ofVec3f currentLookTarget;
@@ -75,6 +80,7 @@ class CloudsRGBDCamera : public ofCamera {
 	bool isHovering;
 	
 	float transitionAmount;
+	float transitionRotAmount;
 	bool transitioning;
 	
 	

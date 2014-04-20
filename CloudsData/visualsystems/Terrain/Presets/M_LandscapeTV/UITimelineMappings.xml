@@ -13,7 +13,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>k</WidgetName>
-                <WidgetID>18</WidgetID>
+                <WidgetID>20</WidgetID>
                 <WidgetCanvasParent>Terrain</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -21,7 +21,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>t</WidgetName>
-                <WidgetID>20</WidgetID>
+                <WidgetID>22</WidgetID>
                 <WidgetCanvasParent>Terrain</WidgetCanvasParent>
             </Widget>
             <Track></Track>

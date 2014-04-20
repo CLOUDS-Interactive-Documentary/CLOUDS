@@ -73,7 +73,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Flow1_gesture</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -88,7 +88,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Kittenstep</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -103,7 +103,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Logo1</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -143,5 +143,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Zipcode</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GitHubMap</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Gource</Name>
     <Value>0</Value>
 </Widget>

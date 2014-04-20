@@ -24,6 +24,7 @@ void Astrolabe::clear()
 	vbo.clear();
 	vertices.clear();
 	normals.clear();
+	profile.clear();
 }
 
 void Astrolabe::setupMesh( float _lowRadian, float _hiRadian, float _innerRadius, float _outerRadius, float _thickness)
@@ -199,6 +200,9 @@ void Astrolabe::buildTheMesh()
 		vbo.clear();
 		vbo.setVertexData( &vertices[0], vertices.size(), GL_DYNAMIC_DRAW );
 		vbo.setNormalData( &normals[0], normals.size(), GL_DYNAMIC_DRAW );
+		
+		vertices.clear();
+		normals.clear();
 	}
 }
 

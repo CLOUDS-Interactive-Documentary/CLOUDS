@@ -2,18 +2,33 @@
     <Kind>42</Kind>
     <Name>Audio</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>714.000000000</XPosition>
-    <YPosition>8.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>177.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>RedNoise.aif</Name>
+    <Name>Glitch2.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThingsInDark.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThingsInDark2.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThingsInDark3.aif</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL</Name>
-    <Value>0.034774918</Value>
+    <Value>0.038573258</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -59,4 +74,9 @@
     <Kind>4</Kind>
     <Name>LEVEL TO NOISE RATIO</Name>
     <Value>0.640394092</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Main Gain</Name>
+    <Value>0.202768475</Value>
 </Widget>

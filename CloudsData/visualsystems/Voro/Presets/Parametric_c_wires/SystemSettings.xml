@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max_Size</Name>
-    <Value>2.357749224</Value>
+    <Value>4.599999905</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Atraction</Name>
-    <Value>0.037500001</Value>
+    <Value>0.097500004</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Repulsion</Name>
-    <Value>0.217415065</Value>
+    <Value>0.300000012</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

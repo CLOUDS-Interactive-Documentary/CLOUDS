@@ -22,8 +22,8 @@
         <ow>0.154212132</ow>
         <easein>0</easein>
         <easeout>0</easeout>
-        <time>00:00:15:934</time>
-        <value>0.899999976</value>
+        <time>00:00:11:312</time>
+        <value>0.500000000</value>
     </key>
     <key>
         <px>109.722808838</px>
@@ -35,8 +35,8 @@
         <ow>0.237683639</ow>
         <easein>1</easein>
         <easeout>1</easeout>
-        <time>00:00:29:906</time>
-        <value>0.998000026</value>
+        <time>00:00:25:284</time>
+        <value>0.597999573</value>
     </key>
     <key>
         <px>129.254898071</px>
@@ -48,8 +48,8 @@
         <ow>0.342571348</ow>
         <easein>0</easein>
         <easeout>0</easeout>
-        <time>00:00:44:748</time>
-        <value>0.949999988</value>
+        <time>00:00:40:126</time>
+        <value>0.550000012</value>
     </key>
     <key>
         <px>-16.421279907</px>
@@ -61,7 +61,7 @@
         <ow>0.154212147</ow>
         <easein>1</easein>
         <easeout>0</easeout>
-        <time>00:00:57:236</time>
-        <value>0.999000013</value>
+        <time>00:00:52:614</time>
+        <value>0.599000573</value>
     </key>
 </keyframes>

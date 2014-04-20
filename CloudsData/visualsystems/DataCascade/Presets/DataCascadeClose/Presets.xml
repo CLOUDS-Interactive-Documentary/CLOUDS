@@ -2,12 +2,17 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>437.000000000</XPosition>
-    <YPosition>36.000000000</YPosition>
+    <XPosition>637.000000000</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>DataCascade</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DataCascade_JG_Intro_Sweept</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -17,7 +22,52 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>DataCascadeCloseOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DataCascadeOC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>DoubleTunnel</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DoubleTunnelOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_01c</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_02a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_02b</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_03a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_04a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_05a</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -27,6 +77,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RGBDTunnel</Name>
-    <Value>0</Value>
+    <Name>UpwardStream</Name>
+    <Value>1</Value>
 </Widget>

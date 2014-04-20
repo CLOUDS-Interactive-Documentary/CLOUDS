@@ -29,6 +29,7 @@ void testApp::setup(){
 	storyEngine.toggleGuis(true);
     
     sound.setup(storyEngine);
+    sound.isScoreDesigner = true;
     
 	parser.printDichotomyRatios();
 	
@@ -109,7 +110,11 @@ void testApp::topicChanged(CloudsTopicEventArgs& newTopic){
 	
 }
 
-void testApp::questionAsked(CloudsQuestionEventArgs& args){
+void testApp::questionProposed(CloudsQuestionEventArgs& args){
+    
+}
+
+void testApp::questionSelected(CloudsQuestionEventArgs& args){
     
 }
 
@@ -130,7 +135,7 @@ void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
 void testApp::update(){
 //	ofShowCursor();
 	//keepin it real
-	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
+	//storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
     player.maxVolume = sound.maxSpeakerVolume;
     sound.update();
 	
@@ -138,7 +143,6 @@ void testApp::update(){
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
 		if(m.getAddress() == "/setupMusic"){
-            //sound.stopMusic();
 			oharmony = m.getArgAsInt32(0);
 			orhythm = m.getArgAsInt32(1);
 			otempo = m.getArgAsInt32(2);
@@ -170,7 +174,6 @@ void testApp::update(){
 		else if(m.getAddress() == "/stopMusic"){
             cout << "STOPPING MUSIC" << endl;
             sound.stopMusic();
-            //flush_sched();
 		}
         else if(m.getAddress() == "/reloadPresets") {
             sound.reloadPresets();
@@ -199,7 +202,7 @@ void testApp::draw(){
     }
     if(mixer.showCompressor)
     {
-        int r = ofMap(mixer.gain, 0.5, 1., 255, 0);
+        int r = ofMap(GetCloudsAudioEvents()->gain, 0.5, 1., 255, 0);
         int g = ofMap(mixer.followgain, 0., 0.5, 0, 255);
         ofSetColor(0, g, 0);
         ofFill();
@@ -252,6 +255,20 @@ void testApp::keyPressed(int key){
     }
     if(key == 'a') {
         sound.exitTunnel();
+    }
+    if(key == 'x') {
+        sound.enterClusterMap();
+    }
+    if(key == 'z') {
+        sound.exitClusterMap();
+    }
+    if(key == 'u') {
+        float t = 2.;
+        mixer.fadeUp(t);
+    }
+    if(key == 'j') {
+        float t = 0.5;
+        mixer.fadeDown(t);
     }
 }
 

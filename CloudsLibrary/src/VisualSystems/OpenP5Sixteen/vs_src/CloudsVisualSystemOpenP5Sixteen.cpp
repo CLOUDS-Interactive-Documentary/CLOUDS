@@ -116,7 +116,8 @@ void CloudsVisualSystemOpenP5Sixteen::selfDrawBackground()
     tex.loadData(pixels, width, height, GL_RGBA);
     
 	ofRectangle textureRect(0,0,width,height);
-	ofRectangle screenRect(0,0, ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());
 	textureRect.alignTo(screenRect, OF_ALIGN_HORZ_CENTER, OF_ALIGN_VERT_CENTER);
 	
 	tex.draw(textureRect);

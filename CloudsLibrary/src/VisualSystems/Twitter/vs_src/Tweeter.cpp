@@ -66,6 +66,16 @@ bool Tweeter::hasTweetOnDate(string tweetDate){
     return false;
 }
 
+Date Tweeter::getDateFromString(string dString){
+    vector<string> ds = ofSplitString(dString, " ");
+    Date d;
+    d.day = ofToInt(ds[0]);
+    d.month = ofToInt(ds[1]);
+    d.year = ofToInt(ds[2]);
+    return d;
+
+}
+
 string Tweeter::getDateAsString(Date d){
     string dateString;
     dateString += ofToString(d.day) + " - ";

@@ -12,7 +12,8 @@
 #include "gCell.h"
 #include "CloudsGlobal.h"
 #include "CloudsAudioEvents.h"
-#include "ofxTonic.h"
+//#include "ofxTonic.h"
+#include "TonicSample.h"
 
 using namespace Tonic;
 
@@ -80,9 +81,11 @@ private:
     
     /* WOW VIDEO */
     ofFbo fbo_main;
-    ofTexture sprite, grunge;
+    ofTexture sprite, backgroundTexture;
     ofShader    levelSet;
     ofShader    billboard;
+    string backgroundFilename;
+    vector<string> backgroundFilenames;
     
     /* LOL DATA */
     colonyPartitionMap pMap;
@@ -91,11 +94,14 @@ private:
     /* SO GUI */
     ofxUISuperCanvas* guiDynamics;
     ofxUISuperCanvas* guiLooks;
+    ofxUISuperCanvas* guiBackground;
     
     /* ALL THE UTILITY */
     void updateFoodTexture();
     bool areFbosAllocatedAndSized();
     void loadShaders();
+    void loadTexture(string);
+    void loadTextureAndUpdateUI(string);
     void reallocateFramebuffers();
     
     void clear();
@@ -104,14 +110,19 @@ private:
     /* VERY DEBUG */
     ofImage img_debug;
     
-    // Sound
+    /* SOUND LVL=100 */
     ofxUISuperCanvas* soundGui;
-    string soundFiles[3] = {"granular_water2.aif",
-        "granular_water2_slow.aif",
-        "Grains1_slow_low.aif"};
-    bool playSample[3];
-    ControlTrigger soundTriggers[3];
+
+    vector<TonicSample> tonicSamples;
+    
+//    string soundFiles[3] = {"granular_water2.aif",
+//        "granular_water2_slow.aif",
+//        "Grains1_slow_low.aif"};
+//    bool playSample[3];
+//    ControlTrigger soundTriggers[3];
     ofxTonicSynth synth;
     Generator buildSynth();
+    ControlParameter volumeControl;
+    float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };

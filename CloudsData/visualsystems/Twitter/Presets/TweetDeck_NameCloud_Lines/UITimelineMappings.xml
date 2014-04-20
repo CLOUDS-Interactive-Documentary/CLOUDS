@@ -4,32 +4,24 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>SPRITE SIZE Min</WidgetName>
-                <WidgetID>4</WidgetID>
-                <WidgetCanvasParent>Sprite</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SPRITE SIZE max</WidgetName>
-                <WidgetID>6</WidgetID>
-                <WidgetCanvasParent>Sprite</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LEB BRI</WidgetName>
-                <WidgetID>35</WidgetID>
+                <WidgetName>LNP SAT</WidgetName>
+                <WidgetID>42</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>LEB ALPHA</WidgetName>
-                <WidgetID>37</WidgetID>
+                <WidgetName>LNP BRI</WidgetName>
+                <WidgetID>44</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNP ALPHA</WidgetName>
+                <WidgetID>46</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -60,25 +52,33 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>LNP SAT</WidgetName>
-                <WidgetID>42</WidgetID>
+                <WidgetName>LEB BRI</WidgetName>
+                <WidgetID>35</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>LNP BRI</WidgetName>
-                <WidgetID>44</WidgetID>
+                <WidgetName>LEB ALPHA</WidgetName>
+                <WidgetID>37</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>LNP ALPHA</WidgetName>
-                <WidgetID>46</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+                <WidgetName>SPRITE SIZE max</WidgetName>
+                <WidgetID>6</WidgetID>
+                <WidgetCanvasParent>Sprite</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPRITE SIZE Min</WidgetName>
+                <WidgetID>4</WidgetID>
+                <WidgetCanvasParent>Sprite</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

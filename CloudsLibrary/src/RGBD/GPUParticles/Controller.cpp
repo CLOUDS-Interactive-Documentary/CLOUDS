@@ -13,9 +13,12 @@ namespace GPUParticles {
 	Controller::Controller(){
 		updating = true;
 		numParticles = 50000;
-
 	}
 	
+    int Controller::getNumParticles(){
+        return numParticles;
+    }
+    
 	void Controller::setShaderDirectory(string directory){
 		shaderDirectory = directory;
 	}

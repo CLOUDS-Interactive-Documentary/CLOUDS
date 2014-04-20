@@ -5,7 +5,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>WIND SPEED</WidgetName>
-                <WidgetID>48</WidgetID>
+                <WidgetID>47</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

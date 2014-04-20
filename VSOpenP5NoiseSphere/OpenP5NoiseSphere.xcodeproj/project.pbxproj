@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A316FA1187F986200662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316FA0187F986200662636 /* ofxSystemTextbox.mm */; };
+		2A316FA2187F986200662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316FA0187F986200662636 /* ofxSystemTextbox.mm */; };
+		2A316FAD187F987700662636 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316FA4187F987700662636 /* CloudsInput.cpp */; };
+		2A316FAE187F987700662636 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316FA4187F987700662636 /* CloudsInput.cpp */; };
+		2A316FB1187F987700662636 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316FA9187F987700662636 /* CloudsInputMouse.cpp */; };
+		2A316FB2187F987700662636 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A316FA9187F987700662636 /* CloudsInputMouse.cpp */; };
 		2AAEF500180F12D7005F33D3 /* ofxBox2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4AC180F12D7005F33D3 /* ofxBox2d.cpp */; };
 		2AAEF501180F12D7005F33D3 /* ofxBox2dBaseShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4AE180F12D7005F33D3 /* ofxBox2dBaseShape.cpp */; };
 		2AAEF502180F12D7005F33D3 /* ofxBox2dCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4B0180F12D7005F33D3 /* ofxBox2dCircle.cpp */; };
@@ -344,6 +350,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A316F9F187F986200662636 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		2A316FA0187F986200662636 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
+		2A316FA4187F987700662636 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		2A316FA5187F987700662636 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		2A316FA6187F987700662636 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		2A316FA9187F987700662636 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		2A316FAA187F987700662636 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		2AAEF4AC180F12D7005F33D3 /* ofxBox2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBox2d.cpp; sourceTree = "<group>"; };
 		2AAEF4AD180F12D7005F33D3 /* ofxBox2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBox2d.h; sourceTree = "<group>"; };
 		2AAEF4AE180F12D7005F33D3 /* ofxBox2dBaseShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBox2dBaseShape.cpp; sourceTree = "<group>"; };
@@ -756,6 +769,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A316FA3187F987700662636 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				2A316FA4187F987700662636 /* CloudsInput.cpp */,
+				2A316FA5187F987700662636 /* CloudsInput.h */,
+				2A316FA6187F987700662636 /* CloudsInputEvents.h */,
+				2A316FA9187F987700662636 /* CloudsInputMouse.cpp */,
+				2A316FAA187F987700662636 /* CloudsInputMouse.h */,
+			);
+			name = Input;
+			path = src/Input;
+			sourceTree = "<group>";
+		};
 		2AAEF348180F12D0005F33D3 /* ofxBox2d */ = {
 			isa = PBXGroup;
 			children = (
@@ -1617,6 +1643,8 @@
 				E7E5EC631817C01400CA4196 /* CloudsRGBDVideoPlayer.cpp */,
 				E7E5EC641817C01400CA4196 /* CloudsRGBDVideoPlayer.h */,
 				E7E5EC651817C01400CA4196 /* CloudsVisualSystem.cpp */,
+				2A316F9F187F986200662636 /* ofxSystemTextbox.h */,
+				2A316FA0187F986200662636 /* ofxSystemTextbox.mm */,
 				E7E5EC661817C01400CA4196 /* CloudsVisualSystem.h */,
 				E7E5EC671817C01400CA4196 /* ofxLight.h */,
 				E7E5EC681817C01400CA4196 /* README.md */,
@@ -1628,6 +1656,7 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				2A316FA3187F987700662636 /* Input */,
 				646724A7184430A400F87A29 /* CloudsGlobal.h */,
 				E7E5EC2F1817C00600CA4196 /* OpenP5NoiseSphere */,
 			);
@@ -1681,6 +1710,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OpenP5NoiseSphere" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1762,6 +1793,7 @@
 				850EE1B718306E27004411A3 /* ofxXmlSettings.cpp in Sources */,
 				850EE1B818306E27004411A3 /* ofxBehavior.cpp in Sources */,
 				850EE1B918306E27004411A3 /* ofxBufferEffectorBehavior.cpp in Sources */,
+				2A316FAE187F987700662636 /* CloudsInput.cpp in Sources */,
 				850EE1BA18306E27004411A3 /* ofxDamperBehavior.cpp in Sources */,
 				850EE1BB18306E27004411A3 /* b2CircleContact.cpp in Sources */,
 				850EE1BC18306E27004411A3 /* b2PolygonAndCircleContact.cpp in Sources */,
@@ -1790,6 +1822,7 @@
 				850EE1D318306E27004411A3 /* kiss_fftr.c in Sources */,
 				850EE1D418306E27004411A3 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				850EE1D518306E27004411A3 /* ofxHotKeys_impl_linux.cpp in Sources */,
+				2A316FA2187F986200662636 /* ofxSystemTextbox.mm in Sources */,
 				850EE1D618306E27004411A3 /* ofxHotKeys_impl_mac.mm in Sources */,
 				850EE1D718306E27004411A3 /* ofxHotKeys_impl_win.cpp in Sources */,
 				850EE1D818306E27004411A3 /* ofxRemoveCocoaMenu.mm in Sources */,
@@ -1822,6 +1855,7 @@
 				850EE1F318306E27004411A3 /* ofxTLInOut.cpp in Sources */,
 				850EE1F418306E27004411A3 /* b2DynamicTree.cpp in Sources */,
 				850EE1F518306E27004411A3 /* ofxTLKeyframes.cpp in Sources */,
+				2A316FB2187F987700662636 /* CloudsInputMouse.cpp in Sources */,
 				850EE1F618306E27004411A3 /* ofxTLLFO.cpp in Sources */,
 				850EE1F718306E27004411A3 /* ofxTLPage.cpp in Sources */,
 				850EE1F818306E27004411A3 /* ofxTLPageTabs.cpp in Sources */,
@@ -1945,11 +1979,13 @@
 				2AAEF57D180F136F005F33D3 /* b2BroadPhase.cpp in Sources */,
 				2AAEF504180F12D7005F33D3 /* ofxBox2dPolygon.cpp in Sources */,
 				2AAEF503180F12D7005F33D3 /* ofxBox2dJoint.cpp in Sources */,
+				2A316FAD187F987700662636 /* CloudsInput.cpp in Sources */,
 				E7CF78531753FEA1006B7D41 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				E7CF78541753FEA1006B7D41 /* ofxTLImageTrack.cpp in Sources */,
 				2AAEF583180F136F005F33D3 /* b2TimeOfImpact.cpp in Sources */,
 				E7CF78551753FEA1006B7D41 /* ofxTLInOut.cpp in Sources */,
 				2AAEF582180F136F005F33D3 /* b2DynamicTree.cpp in Sources */,
+				2A316FA1187F986200662636 /* ofxSystemTextbox.mm in Sources */,
 				E7CF78561753FEA1006B7D41 /* ofxTLKeyframes.cpp in Sources */,
 				E7CF78571753FEA1006B7D41 /* ofxTLLFO.cpp in Sources */,
 				E7CF78581753FEA1006B7D41 /* ofxTLPage.cpp in Sources */,
@@ -1975,6 +2011,7 @@
 				E7CF78C91753FECA006B7D41 /* ofxEasingCirc.cpp in Sources */,
 				2AAEF59D180F136F005F33D3 /* b2PulleyJoint.cpp in Sources */,
 				E7CF78CA1753FECA006B7D41 /* ofxEasingCubic.cpp in Sources */,
+				2A316FB1187F987700662636 /* CloudsInputMouse.cpp in Sources */,
 				E7CF78CB1753FECA006B7D41 /* ofxEasingElastic.cpp in Sources */,
 				2AAEF501180F12D7005F33D3 /* ofxBox2dBaseShape.cpp in Sources */,
 				E7CF78CC1753FECA006B7D41 /* ofxEasingExpo.cpp in Sources */,

@@ -2,13 +2,28 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>577.000000000</XPosition>
-    <YPosition>138.000000000</YPosition>
+    <XPosition>1061.000122070</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlackLines_1</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>DeepSea</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FallingFireweb</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FallingGreenWeb</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -17,11 +32,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>FireWeb_mellow</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GravityShift</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Mellow</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>GravityShift</Name>
+    <Name>WhiteLines_2</Name>
     <Value>1</Value>
 </Widget>

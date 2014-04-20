@@ -4,8 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Box Connect Distance</WidgetName>
-                <WidgetID>20</WidgetID>
+                <WidgetName>Particle Speed</WidgetName>
+                <WidgetID>8</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -28,16 +28,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Particle Speed</WidgetName>
-                <WidgetID>8</WidgetID>
+                <WidgetName>Particles Return</WidgetName>
+                <WidgetID>10</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Particles Return</WidgetName>
-                <WidgetID>10</WidgetID>
+                <WidgetName>Box Connect Distance</WidgetName>
+                <WidgetID>20</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

@@ -79,6 +79,7 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
 
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
+    void selfSetDefaults();
 
 	//events are called when the system is active
 	//Feel free to make things interactive for you, and for the user!
@@ -110,7 +111,6 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     ofShader ripplesShader;
     ofFbo ripplesSrcFbo, ripplesDstFbo;
     ofVboMesh renderMesh;
-    ofVec2f currentUserInput;
     
     float minDropHue, maxDropHue;
     float minDropSat, maxDropSat;
@@ -134,6 +134,8 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     ControlParameter volumeControl[2];
     bool bEnableSounds;
     ofMutex mutex;
+    ControlParameter mainGain;
+    float fMainGain;
     ofxTonicSynth mainSynth;
     ofxTonicSynth notes[5];
     int noteIndex;

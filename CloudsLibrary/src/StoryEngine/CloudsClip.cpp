@@ -12,8 +12,6 @@
 
 //#define FRAME_PADDING 24
 
-
-
 CloudsClip::CloudsClip(){
 	currentScore = 0;
 	startFrame = 0;
@@ -122,6 +120,10 @@ string CloudsClip::getCombinedCalibrationXML(){
 	return getID() + ".xml";
 }
 
+string CloudsClip::getCombinedSRTFile() {
+    return getID() + ".srt";
+}
+
 bool CloudsClip::is30FPS(){
     return person == "Higa";
 }
@@ -207,6 +209,12 @@ bool CloudsClip::hasQuestion(){
 	return questionTopicMap.size() > 0;
 }
 
+bool CloudsClip::isPartOfSeries(){
+	//does the clip name end with a number?
+	string nums = "0123456789";
+	return name.find_last_of(nums) == name.length() - 1;
+}
+
 map<string,string>& CloudsClip::getAllQuestionTopicPairs(){
     if(keywordsDirty){
         collateKeywords();
@@ -244,7 +252,7 @@ void CloudsClip::collateKeywords(){
     }
     
     //remove special keywords from keywords -> specialKeywords
-    for (int l = keywords.size() - 1 ; l>=0; l--) {
+    for (int l = keywords.size() - 1 ; l >= 0; l--) {
         
         if(keywords[l].compare(0, 1, "#") == 0 && !ofContains(specialKeywords, keywords[l])){
 //            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;

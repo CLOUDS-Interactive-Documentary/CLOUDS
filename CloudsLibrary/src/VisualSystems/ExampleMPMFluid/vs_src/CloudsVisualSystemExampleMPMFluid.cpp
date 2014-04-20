@@ -70,11 +70,18 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
     soundGui->addSlider("Volume 1", 0, 3, &volume[1]);
     soundGui->addSlider("Volume 2", 0, 3, &volume[2]);
     soundGui->addSlider("Volume 3", 0, 3, &volume[3]);
+    
+    soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
+    
 	guis.push_back(soundGui);
 	guimap[customGui->getName()] = soundGui;
 
 }
 
+void CloudsVisualSystemExampleMPMFluid::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode  = CURSOR_MODE_DRAW;
+}
 void CloudsVisualSystemExampleMPMFluid::selfGuiEvent(ofxUIEventArgs &e)
 {
     
@@ -126,7 +133,9 @@ void CloudsVisualSystemExampleMPMFluid::selfSetup()
     fluid.addObstacle(obstacle);
     
     // sound
-    synth.setOutputGen(buildSynth());
+    fMainGain = 0;
+    mainGain.value(0);
+    synth.setOutputGen(buildSynth() * mainGain);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -164,7 +173,8 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
     fluid.elasticity = elasticity;
     fluid.gravity = gravity/10;
     
-    fluid.scaleFactor = scaleFactor = (float)ofGetWidth() / fluid.getGridSizeX();
+    //MA: changed ofGetWidth() to getCanvasWidth()
+    fluid.scaleFactor = scaleFactor = (float)getCanvasWidth() / fluid.getGridSizeX();
     
     // handle interactivity
     ofxUIToggle* toggle = (ofxUIToggle*)interModeRadio->getToggles()[0];
@@ -177,8 +187,10 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
         fluid.bDoMouse = false;
         fluid.bDoObstacles = true;
 		//JG: REMOVE MOUSE INTERACTION?
-        obstacle->cx = (float)ofGetMouseX()/scaleFactor;
-        obstacle->cy = (float)ofGetMouseY()/scaleFactor;
+        //MA: replaced ofGetMouseX() with GetCloudsInputX()
+
+        obstacle->cx = (float)GetCloudsInputX()/scaleFactor;
+        obstacle->cy = (float)GetCloudsInputY()/scaleFactor;
         obstacle->radius = obstacleSize;
         obstacle->radius2 = obstacleSize * obstacleSize;
     }
@@ -202,8 +214,9 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
     
     float speed = (float)sqrt(pow(prevMouseX - GetCloudsInputX(), 2) + pow(prevMouseY - GetCloudsInputY(), 2));
     mouseSpeed.value(mouseSpeed.getValue() + (speed - mouseSpeed.getValue()) * 0.05);
-    mouseX.value(ofMap(GetCloudsInputX(), 0, ofGetWidth(), 0, 1));
-    mouseY.value(ofMap(GetCloudsInputY(), 0, ofGetHeight(), 0, 1));
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    mouseX.value(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 0, 1));
+    mouseY.value(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 0, 1));
     prevMouseX = GetCloudsInputX();
     prevMouseY = GetCloudsInputY();
     for (int i=0; i<4; i++)
@@ -211,6 +224,7 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
         volumeControl[i].value(volume[i]);
     }
     
+    mainGain.value(fMainGain);
 
 }
 
@@ -237,7 +251,7 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 	// These improve the appearance of small lines and/or points.
 	glDisable(GL_LIGHTING);
     //	glDisable(GL_DEPTH_TEST);
-	glEnable (GL_LINE_SMOOTH);
+	glDisable (GL_LINE_SMOOTH);
 	glEnable (GL_POINT_SMOOTH); // in case you want it
     //	glEnable (GL_MULTISAMPLE);
     //	glEnable (GL_BLEND);
@@ -250,7 +264,8 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 	glLineWidth(lineWidth); // or thicker, if you prefer
 	
 	ofPushMatrix();
-    ofTranslate((ofGetWidth() - (float)fluid.getGridSizeX()*scaleFactor)/2, 0);
+    //MA: changed ofGetWidth() to getCanvasWidth()
+    ofTranslate((getCanvasWidth() - (float)fluid.getGridSizeX()*scaleFactor)/2, 0);
 	ofScale(scaleFactor, scaleFactor, 1.0);
 	
 	// Draw the active particles as a short line,

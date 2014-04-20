@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>855.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,7 +12,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>D3_Cascade</Name>
+    <Name>Cascade</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>D3_Cord</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -67,27 +72,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Flow2</Name>
+    <Name>Flow1_gesture</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Flow3</Name>
+    <Name>Flow2_Blue</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Flow_1</Name>
+    <Name>Flow3_Closeup</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Kittenstep</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>LiveCode1_gesturepaint</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -137,16 +137,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>USMap</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Zipcode</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Cascade</Name>
+    <Name>GitHubMap</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>USMap</Name>
-    <Value>1</Value>
+    <Name>Gource</Name>
+    <Value>0</Value>
 </Widget>

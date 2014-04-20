@@ -32,7 +32,13 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
 // geometry should be loaded here
 void CloudsVisualSystemFlying::selfSetup()
 {
-    post.init(ofGetWidth(), ofGetHeight(), true);
+
+    tonicSamples.push_back(TonicSample("SriLankaForest.aif"));
+    tonicSamples.push_back(TonicSample("FOREST.aif"));
+    tonicSamples.push_back(TonicSample("organ_slower.aif"));
+    
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    post.init(getCanvasWidth(), getCanvasHeight(), true);
     //post.createPass<EdgePass>();
     post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
@@ -57,7 +63,10 @@ void CloudsVisualSystemFlying::selfSetup()
     // sound
     synth.setOutputGen(buildSynth());
 }
-
+void CloudsVisualSystemFlying::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemFlying::generate()
 {
     plantMeshes.clear();
@@ -152,10 +161,10 @@ void CloudsVisualSystemFlying::selfBegin()
     
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
 
-    for (int i=0; i<3; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+        if (tonicSamples[i].playSample) {
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
@@ -163,7 +172,10 @@ void CloudsVisualSystemFlying::selfBegin()
 //normal update call
 void CloudsVisualSystemFlying::selfUpdate()
 {
-    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    
+    volumeControl.value(gain);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (post.getWidth() != getCanvasWidth() || post.getHeight() != getCanvasHeight()) post.init(getCanvasWidth(), getCanvasHeight(), true);
  
     if (regenerate)
     {
@@ -171,11 +183,12 @@ void CloudsVisualSystemFlying::selfUpdate()
         regenerate = false;
     }
     
-    if (cameraControl)
+    if (!bUseOculusRift && cameraControl)
     {
         ofVec2f targetLookAngle;
-        targetLookAngle.x = ofMap(GetCloudsInputY(), 0, ofGetHeight(), -20.f, -30.f, true);
-        targetLookAngle.y = ofMap(GetCloudsInputX(), 0, ofGetWidth(), 20.f, -20.f, true);
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+        targetLookAngle.x = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -20.f, -30.f, true);
+        targetLookAngle.y = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 20.f, -20.f, true);
         currentLookAngle.interpolate(targetLookAngle, .05);
         ofQuaternion rx, ry;
         rx.makeRotate(currentLookAngle.x, 1, 0, 0);
@@ -293,8 +306,10 @@ void CloudsVisualSystemFlying::selfPostDraw()
     glPushAttrib(GL_ENABLE_BIT);
     glDisable(GL_DEPTH_TEST);
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
-    if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
-    else CloudsVisualSystem::getSharedRenderTarget().draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    else CloudsVisualSystem::getSharedRenderTarget().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
     glPopAttrib();
 }
 
@@ -327,9 +342,10 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     }
     
     rdrGui->addSpacer();
-    rdrGui->addToggle(soundFiles[0], &playSample[0]);
-    rdrGui->addToggle(soundFiles[1], &playSample[1]);
-    rdrGui->addToggle(soundFiles[2], &playSample[2]);
+    rdrGui->addToggle(tonicSamples[0].soundFile, &tonicSamples[0].playSample);
+    rdrGui->addToggle(tonicSamples[1].soundFile, &tonicSamples[1].playSample);
+    rdrGui->addToggle(tonicSamples[2].soundFile, &tonicSamples[2].playSample);
+    rdrGui->addSlider("Gain", 0, 1, &gain);
 }
 
 //events are called when the system is active
@@ -351,11 +367,11 @@ void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
 {
     for (int i=0; i<3; i++)
     {
-        if (e.widget->getName() == soundFiles[i]) {
+        if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
+            tonicSamples[i].playSample = toggle->getValue();
             if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+                tonicSamples[i].soundTrigger.trigger();
             }
         }
     }
@@ -407,6 +423,7 @@ void CloudsVisualSystemFlying::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemFlying::selfEnd(){
+    volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
 }
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -442,18 +459,22 @@ Generator CloudsVisualSystemFlying::buildSynth()
     
     SampleTable samples[3];
     
-    int nSounds = sizeof(soundFiles) / sizeof(string);
-    for (int i=0; i<nSounds; i++)
-    {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//    int nSounds = sizeof(soundFiles) / sizeof(string);
+//    for (int i=0; i<nSounds; i++)
+//    {
+//        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//        samples[i] = loadAudioFile(strAbsPath);
+//    }
+    for(int i=0; i<tonicSamples.size();i++){
+        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
-    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).trigger(soundTriggers[1]).loop(1);
-    Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).trigger(soundTriggers[2]).loop(1);
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).trigger(tonicSamples[1].soundTrigger).loop(1);
+    Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).trigger(tonicSamples[2].soundTrigger).loop(1);
     
-    return sampleGen1 * 1.0f + sampleGen2 * 0.35f + sampleGen3 * 0.6f;
+    return (sampleGen1 * 1.0f + sampleGen2 * 0.35f + sampleGen3 * 0.6f) * volumeControl;
 }
 
 void CloudsVisualSystemFlying::audioRequested(ofAudioEventArgs& args)

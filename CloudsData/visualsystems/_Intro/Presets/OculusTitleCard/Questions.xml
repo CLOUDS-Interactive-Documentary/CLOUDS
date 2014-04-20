@@ -1,0 +1,44 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Questions</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>849.000061035</XPosition>
+    <YPosition>211.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Debug Tug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Scale</Name>
+    <Value>0.014778325</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Wrap Distance</Name>
+    <Value>1000.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Question Min Z</Name>
+    <Value>55.665027618</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Inner Radius</Name>
+    <Value>7.054187298</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Tug Distance</Name>
+    <HighValue>74.285713196</HighValue>
+    <LowValue>45.714286804</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Attenuate Distance</Name>
+    <HighValue>144.285705566</HighValue>
+    <LowValue>21.428558350</LowValue>
+</Widget>

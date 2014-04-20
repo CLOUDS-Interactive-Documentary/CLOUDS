@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>523.000000000</XPosition>
-    <YPosition>62.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>147.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,12 +33,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW WINDOW TINT</Name>
-    <Value>64.064041138</Value>
+    <Value>162.044342041</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DIFFERENCE HUE</Name>
     <Value>0.187192112</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DIFFERENCE SAT</Name>
+    <Value>0.783251226</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DIFFERENCE BRI</Name>
+    <Value>0.940886676</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -77,16 +87,6 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Street_Slow1_BWCrop.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>Swarm_EindhovenTest_Watec_two-visitors.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
     <Name>Swarm_EindhovenTest_Watec_two-visitors_Crop(2).mov</Name>
     <Value>0</Value>
 </Widget>
@@ -109,6 +109,11 @@
     <Kind>17</Kind>
     <Name>TokyoEscalator.mov</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>YouTubeDancer.mp4</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>

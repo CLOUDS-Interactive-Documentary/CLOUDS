@@ -30,6 +30,7 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
     
 	//Use system gui for global or logical settings, for exmpl
     void selfSetupSystemGui();
+    void selfSetupCameraGui();
     void guiSystemEvent(ofxUIEventArgs &e);
     
 	//use render gui for display settings, like changing colors
@@ -40,6 +41,7 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
     void selfSetup();
+    void selfSetDefaults();
 
 	// selfBegin is called when the system is ready to be shown
 	// this is a good time to prepare for transitions
@@ -137,4 +139,5 @@ protected:
     ofFloatColor color1;
     ofFloatColor color2;
     float colorWeight;
+    ofRange clipPlanes;
 };

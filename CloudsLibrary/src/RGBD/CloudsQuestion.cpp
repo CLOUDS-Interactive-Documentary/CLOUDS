@@ -12,15 +12,6 @@
 
 ofShader CloudsQuestion::shader = ofShader();
 
-//ofVec3f randomPointOnSphere(){
-//	
-//	float theta = ofRandom(TWO_PI);
-//	float u = ofRandomf();
-//	float usqrtinv = sqrt(1. - powf(u,2.));
-//	return ofVec3f(cos(theta) * usqrtinv,
-//				   sin(theta) * usqrtinv, u);
-//};
-
 CloudsQuestion::CloudsQuestion(){
 	
 	currentTestFileIndex = 0;

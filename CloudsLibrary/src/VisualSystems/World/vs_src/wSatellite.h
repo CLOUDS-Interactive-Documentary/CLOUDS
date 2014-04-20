@@ -19,7 +19,13 @@ public:
     void    update();
     
 	void	draw();
-    
+	
+	//JG optimization
+//	ofIndexType meshIndex;
+//    vector<int> connectedIndeces;
+//	vector<ofIndexType> connectedIndecesIndedeces;
+	
+//	ofVboMesh* satelliteMesh;
 private:
     float   lat,lon,freq;
     ofPoint orbit;

@@ -1,0 +1,17 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>FOG</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>411.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogDist</Name>
+    <Value>507.438415527</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogExpo</Name>
+    <Value>1.191133022</Value>
+</Widget>

@@ -2,23 +2,28 @@
     <Kind>42</Kind>
     <Name>Ticks</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213</XPosition>
-    <YPosition>1</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>delayOffsetScale</Name>
-    <Value>0.25</Value>
+    <Value>0.250000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>innerSpeed</Name>
-    <Value>1</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>outerSpeed</Name>
-    <Value>10</Value>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>skipAheadOnCreation</Name>
+    <Value>7</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

@@ -20,6 +20,8 @@ public:
     void selfSetup();
     void selfSetupGuis();
     
+    void selfSetDefaults();
+    
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -53,19 +55,57 @@ public:
 	}
 	
   protected:
+    bool bDrawVideoDebug;
 	ofxAVFVideoPlayer player;
-	ofShader rgbdPixelToPixelShader;
 	Intrinsics videoIntrinsics;
-	ofVboMesh pointCloud;
-	
-	float pointoffset;
-	
+    
+    bool blendModeAdd; //vs screen
+    
+    ofxUISuperCanvas* occlusionGui;
+	ofShader occlusionShader;
+    ofVbo occlusionMesh;
+    bool bEnableOcclusion;
+    bool bEnableOcclusionDebug;
+	float occlusionSimplifyX;
+	float occlusionSimplifyY;
+    bool refreshOcclusion;
+    void generateOcclusion();
+    int occlusionVertexCount;
+    int occlusionIndexCount;
+    void drawOcclusionLayer();
+    
+	ofxUISuperCanvas* linesGui;
+    ofShader linesShader;
+	ofVbo lines;
+    bool bEnableLines;
+	float lineGranularity;
+	float lineSpacing;
+	float lineThickness;
+    bool refreshLines;
+	void generateLines();
+
+    ofxUISuperCanvas* pointsGui;
+    ofShader pointsShader;
+	ofVboMesh points;
+    bool bEnablePoints;
+    float pointAlpha;
+	float pointsSimplifyX;
+	float pointsSimplifyY;
+	float pointSize;
+    bool refreshPoints;
+    void generatePoints();
+
+	void setupGeneralUniforms(ofShader& shader);
+    
+	float pointscale;
+    ofVec3f pointShift;
+    
 	void reloadShader();
 	
 	bool playMovie(string path);
 	string loadMoviePath;
 	
-
+    float yLift;
 	bool movieLoaded;
 	
 	ofxUITextInput* videoPathField;

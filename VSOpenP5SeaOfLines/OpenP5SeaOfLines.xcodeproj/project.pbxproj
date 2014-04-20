@@ -146,6 +146,9 @@
 		E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330291751C69E006706ED /* ofxCameraSaveLoad.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7F7FD1E19022A34003CCBEE /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7FD1319022A34003CCBEE /* CloudsInput.cpp */; };
+		E7F7FD2019022A34003CCBEE /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7FD1819022A34003CCBEE /* CloudsInputMouse.cpp */; };
+		E7F7FD2519022A51003CCBEE /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7F7FD2419022A51003CCBEE /* ofxSystemTextbox.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -542,6 +545,15 @@
 		E7D3302A1751C69E006706ED /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7F7FD1319022A34003CCBEE /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		E7F7FD1419022A34003CCBEE /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		E7F7FD1519022A34003CCBEE /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		E7F7FD1819022A34003CCBEE /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		E7F7FD1919022A34003CCBEE /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
+		E7F7FD1A19022A34003CCBEE /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
+		E7F7FD1B19022A34003CCBEE /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
+		E7F7FD2319022A51003CCBEE /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSystemTextbox.h; path = src/VisualSystemsLibrary/ofxSystemTextbox.h; sourceTree = "<group>"; };
+		E7F7FD2419022A51003CCBEE /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofxSystemTextbox.mm; path = src/VisualSystemsLibrary/ofxSystemTextbox.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1489,12 +1501,30 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E7F7FD2319022A51003CCBEE /* ofxSystemTextbox.h */,
+				E7F7FD2419022A51003CCBEE /* ofxSystemTextbox.mm */,
+				E7F7FD1219022A34003CCBEE /* Input */,
 				6435748A183E652600295E35 /* CloudsGlobal.h */,
 				640A313518243CC900DDFBA2 /* OpenP5SeaOfLines */,
 				E72FF11817E688FE0007780D /* VisualSystemsLibrary */,
 			);
 			name = CloudsLibrary;
 			path = ../../CloudsLibrary;
+			sourceTree = "<group>";
+		};
+		E7F7FD1219022A34003CCBEE /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				E7F7FD1319022A34003CCBEE /* CloudsInput.cpp */,
+				E7F7FD1419022A34003CCBEE /* CloudsInput.h */,
+				E7F7FD1519022A34003CCBEE /* CloudsInputEvents.h */,
+				E7F7FD1819022A34003CCBEE /* CloudsInputMouse.cpp */,
+				E7F7FD1919022A34003CCBEE /* CloudsInputMouse.h */,
+				E7F7FD1A19022A34003CCBEE /* CloudsInputOculus.cpp */,
+				E7F7FD1B19022A34003CCBEE /* CloudsInputOculus.h */,
+			);
+			name = Input;
+			path = src/Input;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1524,6 +1554,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OpenP5SeaOfLines" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1587,6 +1619,7 @@
 				E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */,
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
+				E7F7FD2019022A34003CCBEE /* CloudsInputMouse.cpp in Sources */,
 				2AAEF586180F136F005F33D3 /* b2BlockAllocator.cpp in Sources */,
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
 				E7D32FA01751C626006706ED /* ofxBehavior.cpp in Sources */,
@@ -1623,6 +1656,7 @@
 				E7CF78461753FEA1006B7D41 /* ofxHotKeys_impl_win.cpp in Sources */,
 				E7CF78471753FEA1006B7D41 /* ofxRemoveCocoaMenu.mm in Sources */,
 				2AAEF58D180F136F005F33D3 /* b2Island.cpp in Sources */,
+				E7F7FD2519022A51003CCBEE /* ofxSystemTextbox.mm in Sources */,
 				2AAEF584180F136F005F33D3 /* b2CircleShape.cpp in Sources */,
 				2AAEF595180F136F005F33D3 /* b2TOISolver.cpp in Sources */,
 				E7CF78481753FEA1006B7D41 /* ofxTimeline.cpp in Sources */,
@@ -1687,6 +1721,7 @@
 				2AAEF500180F12D7005F33D3 /* ofxBox2d.cpp in Sources */,
 				E7CF78D01753FECA006B7D41 /* ofxEasingQuint.cpp in Sources */,
 				E7CF78D11753FECA006B7D41 /* ofxEasingSine.cpp in Sources */,
+				E7F7FD1E19022A34003CCBEE /* CloudsInput.cpp in Sources */,
 				2AAEF592180F136F005F33D3 /* b2ContactSolver.cpp in Sources */,
 				2AAEF58C180F136F005F33D3 /* b2Fixture.cpp in Sources */,
 				E7CF78D21753FECA006B7D41 /* ofxTween.cpp in Sources */,

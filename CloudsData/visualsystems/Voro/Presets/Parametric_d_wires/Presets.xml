@@ -2,17 +2,17 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>848.999938965</XPosition>
+    <XPosition>849.000122070</XPosition>
     <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>BluePrint</Name>
+    <Name>BluePrint_a</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BluePrint_a</Name>
+    <Name>BluePrint_b</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -32,6 +32,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Dream_Crystal1</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>electric</Name>
     <Value>0</Value>
 </Widget>
@@ -48,6 +53,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Gray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Gray_2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

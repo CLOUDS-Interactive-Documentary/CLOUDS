@@ -36,6 +36,7 @@ void main(void)
 	gl_FragColor = vec4( gl_Color.xyz * xray, fr) * mix(c1, c2, xray);
 	
 	//fog
-	gl_FragColor = mix( vec4(fogColor.xyz, 0.), gl_FragColor, fogAmount);
+	if(fogAmount<.01)	discard;
+	gl_FragColor = mix( vec4(gl_FragColor.xyz, 0.), gl_FragColor, fogAmount);
 }
 

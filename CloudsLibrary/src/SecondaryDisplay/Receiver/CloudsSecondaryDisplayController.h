@@ -17,6 +17,7 @@
 #include "CloudsSpeaker.h"
 #include "CloudsSVGMesh.h"
 #include "CloudsHUDLabel.h"
+#include <iostream>
 
 class CloudsSecondaryDisplayController {
   public:
@@ -79,7 +80,8 @@ class CloudsSecondaryDisplayController {
     
     float playhead, animationSpeed;
     
-    string displayMode, lastQuestion;
+    string displayMode, lastQuestion, currentTopic;
+    bool firstTopic;
     
     //colors
     ofColor lightBlue, darkBlue;

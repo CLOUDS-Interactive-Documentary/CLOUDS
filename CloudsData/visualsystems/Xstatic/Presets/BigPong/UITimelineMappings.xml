@@ -13,24 +13,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
+                <WidgetName>DRAG</WidgetName>
+                <WidgetID>49</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
                 <WidgetName>PULL SPEED</WidgetName>
-                <WidgetID>46</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>WIND SPEED</WidgetName>
-                <WidgetID>48</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>ROTATE ANGLE</WidgetName>
-                <WidgetID>42</WidgetID>
+                <WidgetID>45</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -38,15 +30,23 @@
         <Mapping>
             <Widget>
                 <WidgetName>ROTATE SPEED</WidgetName>
-                <WidgetID>44</WidgetID>
+                <WidgetID>43</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>DRAG</WidgetName>
-                <WidgetID>50</WidgetID>
+                <WidgetName>WIND SPEED</WidgetName>
+                <WidgetID>47</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>ROTATE ANGLE</WidgetName>
+                <WidgetID>41</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

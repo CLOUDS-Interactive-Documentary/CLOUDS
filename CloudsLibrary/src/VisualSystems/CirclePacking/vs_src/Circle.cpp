@@ -15,7 +15,7 @@ Circle::Circle()
     
 }
 
-Circle::Circle(float _x, float _y, float _r, string _label)
+Circle::Circle(float _x, float _y, float _r, string _label, ofFloatColor _p, ofFloatColor _s, float _a)
 {
     this->x = _x; //this->x
     this->y = _y;
@@ -24,10 +24,10 @@ Circle::Circle(float _x, float _y, float _r, string _label)
     
     
     growth = ofRandom(-.05, .05);
-    hue = 120 + ofRandom(60);
-    hue2 = ofRandom(255); 
-    brightness = 180 + ofRandom(70);
-    
+    hue = ofRandom(_p.r, _s.r);
+    sat = ofRandom(_p.g, _s.g);
+    brightness = ofRandom(_p.b, _s.b);
+    alpha = _a;
 }
 
 float Circle::distance(float _x1, float _y1, float _x2, float _y2)
@@ -56,10 +56,10 @@ void Circle::draw()
     r -= .01;
    
     ofPushStyle();
-    //color1.setHsb(0,0, brightness);
-    ofSetColor(255,255,255);
+    color1.setHsb(hue, sat, brightness);
+    color1.a = alpha;
+    ofSetColor(color1);
     ofSetCircleResolution(100);
-   // ofFill();
     ofCircle(x, y, r);
     ofPopStyle();
     
@@ -93,10 +93,10 @@ void Circle::drawCompanies()
     std::string number = ostr.str();
     
     ofPushStyle();
-    color1.setHsb(hue, 130, brightness);
+    color1.setHsb(hue, sat, brightness);
+    color1.a = alpha;
     ofSetColor(color1);
     ofSetCircleResolution(100);
-    ofFill();
     ofCircle(x, y, r);
     ofPopStyle();
     
@@ -121,7 +121,8 @@ void Circle::drawHashtags()
     {
         
         ofPushStyle();
-        color1.setHsb(hue2, 80, brightness);
+        color1.setHsb(hue, sat, brightness);
+        color1.a = alpha;
         ofSetColor(color1);
         //ofSetCircleResolution(100);
         //ofFill();
@@ -129,7 +130,7 @@ void Circle::drawHashtags()
         
         
         if (r<100){
-            ofSetColor(255);
+            //ofSetColor(255);
            // checkFontSize(label, x, y);
            // ofRectangle rect = Font.getStringBoundingBox(label, x, y);
           //  float _x =  x- rect.width/2;

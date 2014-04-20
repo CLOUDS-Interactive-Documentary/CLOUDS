@@ -319,6 +319,9 @@ void CloudsVisualSystemCubeCraft::selfSetDefaults()
 	
 	//cube craft
 	updateAllColors();
+    
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemCubeCraft::selfSetup()
@@ -328,15 +331,8 @@ void CloudsVisualSystemCubeCraft::selfSetup()
 
 	colorMap.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png");
 	
-	cout << "Number of boxes == " << (dimX * dimY * dimZ) << endl;
-	
-	
+	//cout << "Number of boxes == " << (dimX * dimY * dimZ) << endl;
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/box.obj", cubeMesh );
-	
-	cubeIndexCount = cubeMesh.getIndices().size();
-	cubeVbo.setVertexData( &cubeMesh.getVertices()[0], cubeMesh.getVertices().size(), GL_STATIC_DRAW );
-	cubeVbo.setNormalData( &cubeMesh.getNormals()[0], cubeMesh.getNormals().size(), GL_STATIC_DRAW );
-	cubeVbo.setIndexData( &cubeMesh.getIndices()[0], cubeMesh.getIndices().size(), GL_STATIC_DRAW );
 	
 	loadShaders();
 	
@@ -397,9 +393,8 @@ void CloudsVisualSystemCubeCraft::selfDraw()
 
 void CloudsVisualSystemCubeCraft::drawVoxelGrid()
 {
-	
+	ofPushStyle();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	
 	glEnable( GL_DEPTH_TEST );
 	
 	ofDisableAlphaBlending();
@@ -454,19 +449,16 @@ void CloudsVisualSystemCubeCraft::drawVoxelGrid()
 	
 	ofPopMatrix();
 	
-	glDisable(GL_CULL_FACE);
-	
-	glDisable( GL_DEPTH_TEST );
-	
 	glPopAttrib();
+	ofPopStyle();
 }
 
 void CloudsVisualSystemCubeCraft::drawCubeCraft()
 {
+	ofPushStyle();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
 	glEnable( GL_DEPTH_TEST );
-	
 	ofDisableAlphaBlending();
 	
 	glEnable(GL_CULL_FACE);
@@ -561,15 +553,10 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	
 	mineCraftCloudsShader.end();
 	
-	
 	ofPopMatrix();
 	
-	glDisable(GL_CULL_FACE);
-	
-	glDisable( GL_DEPTH_TEST );
-	
 	glPopAttrib();
-	
+	ofPopStyle();
 }
 
 void CloudsVisualSystemCubeCraft::resizeVoxelGrid()
@@ -581,8 +568,8 @@ void CloudsVisualSystemCubeCraft::resizeVoxelGrid()
 	int numVertices = dimX*dimY*dimZ*cubeMesh.getVertices().size();
 	int numIndices = dimX*dimY*dimZ*cubeMesh.getIndices().size();
 	
-	cout << "numVertices: " << numVertices << endl;
-	cout << "numIndices: " << numIndices << endl;
+	//cout << "numVertices: " << numVertices << endl;
+	//cout << "numIndices: " << numIndices << endl;
 	
 	vector<ofVec3f> vertices( numVertices );
 	vector<ofVec3f> normals( numVertices );
@@ -693,8 +680,6 @@ void CloudsVisualSystemCubeCraft::selfExit()
 	cubeMesh.clear();
 	
 	voxelVbo.clear();
-	
-	cubeVbo.clear();
 	
 	unloadShaders();
 }

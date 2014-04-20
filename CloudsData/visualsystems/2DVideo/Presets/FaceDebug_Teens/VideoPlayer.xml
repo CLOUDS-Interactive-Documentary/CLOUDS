@@ -62,6 +62,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>GitHub2.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Gource.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>FaceSub_lowSat.mov</Name>
     <Value>0</Value>
 </Widget>
@@ -138,7 +148,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Flow5_Blue.mov</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -158,5 +168,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>OUTTIME</Name>
-    <Value>0.000000000</Value>
+    <Value>34.246181488</Value>
 </Widget>

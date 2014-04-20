@@ -4,16 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>NORMALS DECAY</WidgetName>
-                <WidgetID>16</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SBC ALPHA</WidgetName>
-                <WidgetID>15</WidgetID>
+                <WidgetName>SPRITE SIZE Min</WidgetName>
+                <WidgetID>4</WidgetID>
                 <WidgetCanvasParent>Sprite</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -28,16 +20,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SPRITE SIZE Min</WidgetName>
-                <WidgetID>4</WidgetID>
+                <WidgetName>SBC ALPHA</WidgetName>
+                <WidgetID>15</WidgetID>
                 <WidgetCanvasParent>Sprite</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>LNP BRI</WidgetName>
-                <WidgetID>44</WidgetID>
+                <WidgetName>LEP ALPHA</WidgetName>
+                <WidgetID>55</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -52,16 +44,24 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>LEP ALPHA</WidgetName>
-                <WidgetID>55</WidgetID>
+                <WidgetName>LNP BRI</WidgetName>
+                <WidgetID>44</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>LEB BRI</WidgetName>
-                <WidgetID>35</WidgetID>
+                <WidgetName>EDGE DECAY</WidgetName>
+                <WidgetID>14</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>NORMALS DECAY</WidgetName>
+                <WidgetID>16</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -76,8 +76,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>EDGE DECAY</WidgetName>
-                <WidgetID>14</WidgetID>
+                <WidgetName>LEB BRI</WidgetName>
+                <WidgetID>35</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>

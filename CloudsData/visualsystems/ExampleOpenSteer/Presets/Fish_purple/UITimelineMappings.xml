@@ -12,16 +12,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>COHESION WEIGHT</WidgetName>
-                <WidgetID>78</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+                <WidgetName>ROT-Z</WidgetName>
+                <WidgetID>13</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SEPARATION WEIGHT</WidgetName>
-                <WidgetID>80</WidgetID>
+                <WidgetName>COHESION WEIGHT</WidgetName>
+                <WidgetID>78</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -36,9 +36,9 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>ROT-Z</WidgetName>
-                <WidgetID>13</WidgetID>
-                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+                <WidgetName>SEPARATION WEIGHT</WidgetName>
+                <WidgetID>80</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

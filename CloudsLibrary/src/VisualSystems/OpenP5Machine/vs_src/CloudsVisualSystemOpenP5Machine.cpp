@@ -32,12 +32,19 @@ void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
     customGui->addSlider("Shift X", 0.0, 5.0, &shiftX);
 	customGui->addSlider("Shift Y", 0.0, 5.0, &shiftY);
 	customGui->addSlider("Shift Z", 0.0, 5.0, &shiftZ);
+    
+    customGui->addWidgetDown(new ofxUILabel("AUDIO", OFX_UI_FONT_MEDIUM));
+    customGui->addSlider("Gain", 0, 1, &gain);
+
 
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Machine::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
-
+void CloudsVisualSystemOpenP5Machine::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemOpenP5Machine::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;
@@ -73,6 +80,7 @@ void CloudsVisualSystemOpenP5Machine::selfSetup(){
     color2HSB.b = 90;
 
     // sound
+    gain = 0; 
     synth.setOutputGen(buildSynth());
     
 }
@@ -101,7 +109,7 @@ void CloudsVisualSystemOpenP5Machine::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemOpenP5Machine::selfUpdate(){
  
-   
+    volumeControl.value(gain);
 
 }
 
@@ -193,6 +201,7 @@ void CloudsVisualSystemOpenP5Machine::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemOpenP5Machine::selfEnd(){
+    volumeControl.value(0);
 	ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOpenP5Machine::audioRequested);
 }
 
@@ -219,27 +228,25 @@ void CloudsVisualSystemOpenP5Machine::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemOpenP5Machine::selfMousePressed(int x, int y, int button){
-//	if (gui->isHit(x, y)) {
-//        cam.disableMouseInput();
-//    }
 }
 
 void CloudsVisualSystemOpenP5Machine::selfMouseReleased(int x, int y, int button){
-//     cam.enableMouseInput();
-	
 }
 
 Generator CloudsVisualSystemOpenP5Machine::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath()+"sound/textures";
     ofDirectory sdir(strDir);
-    string strAbsPath = sdir.getAbsolutePath() + "/Machine.aif";
-    
+//    string strAbsPath = sdir.getAbsolutePath() + "/Machine.aif";
+//    for(int i=0; i<tonicSamples.size();i++){
+    string strAbsPath = ofToDataPath(strDir + "/" + "Machine.aif");
+//        samples[i] = loadAudioFile(strAbsPath);
+//    }
     SampleTable sample = loadAudioFile(strAbsPath);
     
     Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);
     
-    return sampleGen * .07;
+    return sampleGen * volumeControl;
 }
 
 void CloudsVisualSystemOpenP5Machine::audioRequested(ofAudioEventArgs& args)

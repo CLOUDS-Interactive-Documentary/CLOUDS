@@ -10,9 +10,10 @@ class ParticleConnector {
 	ParticleConnector();
 	~ParticleConnector();
 
-	void update();
+	void update(float speed);
 	ofVec3f position;
 	ofVec3f direction;
+    float speed;
 	
 	set<ParticleConnector*> connectingParticles;
 	set<ParticleConnection*> connectingLines;

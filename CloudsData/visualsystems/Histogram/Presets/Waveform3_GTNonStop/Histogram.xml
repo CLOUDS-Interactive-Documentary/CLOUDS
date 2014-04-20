@@ -117,6 +117,11 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>MAIN GAIN</Name>
+    <Value>0.354744315</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>LEVEL ADJUST</Name>
     <Value>6.551723957</Value>
 </Widget>

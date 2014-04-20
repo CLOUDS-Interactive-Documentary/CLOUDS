@@ -32,18 +32,18 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>path camera</Name>
+    <Name>four view</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>four view</Name>
+    <Name>path camera</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>mouseScl</Name>
-    <Value>1.000000000</Value>
+    <Value>0.773398995</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -53,7 +53,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>cameraSpeed</Name>
-    <Value>1.399014711</Value>
+    <Value>1.842364550</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

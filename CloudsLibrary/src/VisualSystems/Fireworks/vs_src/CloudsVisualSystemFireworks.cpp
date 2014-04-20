@@ -175,12 +175,15 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 }
 
+void CloudsVisualSystemFireworks::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e)
 {
 	string name = e.widget->getName();
 	
 	if( name == "birth_color_map"){
-		
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
 		startColor = sampler->getColor();
 	}
@@ -301,10 +304,14 @@ void CloudsVisualSystemFireworks::selfSetup()
 	//setupParticles
 	FIREWORKS_NUM_PARTICLES = 200000;
 	
-	positions = new ofVec3f[ FIREWORKS_NUM_PARTICLES ];
-	velocities = new ofVec3f[ FIREWORKS_NUM_PARTICLES ];
-	lifeData = new ofFloatColor[ FIREWORKS_NUM_PARTICLES ];
-	indices = new ofIndexType[ FIREWORKS_NUM_PARTICLES ];
+	//positions = new ofVec3f[ FIREWORKS_NUM_PARTICLES ];
+	//velocities = new ofVec3f[ FIREWORKS_NUM_PARTICLES ];
+	//lifeData = new ofFloatColor[ FIREWORKS_NUM_PARTICLES ];
+	//indices = new ofIndexType[ FIREWORKS_NUM_PARTICLES ];
+	positions.resize( FIREWORKS_NUM_PARTICLES );
+	velocities.resize( FIREWORKS_NUM_PARTICLES );
+	lifeData.resize( FIREWORKS_NUM_PARTICLES );
+	indices.resize( FIREWORKS_NUM_PARTICLES );
 	
 	float lifespan;
 	float t = ofGetElapsedTimef();
@@ -343,8 +350,9 @@ void CloudsVisualSystemFireworks::selfSetup()
 	
 	nextFireworkExplosionTime = ofGetElapsedTimef() + 1;
 	
-	ofDisableArbTex();
 	
+	
+	ofDisableArbTex();
 	
 	dotImage.loadImage(  getVisualSystemDataPath() + "images/sphereNormal.png" );
 	triangleImage.loadImage(  getVisualSystemDataPath() + "images/triangle-sprite.png" );
@@ -356,13 +364,14 @@ void CloudsVisualSystemFireworks::selfSetup()
 	getCameraRef().setPosition(0, 0, 0);
 	camTarget.set( 0,0,spawnDistance);
 	
-	glowFbo0.allocate( ofGetWidth(), ofGetHeight(), GL_RGB );
-	glowFbo1.allocate( glowFbo0.getWidth()/2, glowFbo0.getHeight()/2, GL_RGB );;
-	glowFbo2.allocate( glowFbo1.getWidth()/2, glowFbo1.getHeight()/2, GL_RGB );;
-	glowFbo3.allocate( glowFbo2.getWidth()/2, glowFbo2.getHeight()/2, GL_RGB );;
-	glowFbo4.allocate( glowFbo3.getWidth()/2, glowFbo3.getHeight()/2, GL_RGB );;
-	glowFbo5.allocate( glowFbo4.getWidth()/2, glowFbo4.getHeight()/2, GL_RGB );;
-	glowFbo6.allocate( glowFbo5.getWidth()/2, glowFbo5.getHeight()/2, GL_RGB );;
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+//	glowFbo0.allocate( getCanvasWidth(), getCanvasHeight(), GL_RGB );
+//	glowFbo1.allocate( glowFbo0.getWidth()/2, glowFbo0.getHeight()/2, GL_RGB );;
+//	glowFbo2.allocate( glowFbo1.getWidth()/2, glowFbo1.getHeight()/2, GL_RGB );;
+//	glowFbo3.allocate( glowFbo2.getWidth()/2, glowFbo2.getHeight()/2, GL_RGB );;
+//	glowFbo4.allocate( glowFbo3.getWidth()/2, glowFbo3.getHeight()/2, GL_RGB );;
+//	glowFbo5.allocate( glowFbo4.getWidth()/2, glowFbo4.getHeight()/2, GL_RGB );;
+//	glowFbo6.allocate( glowFbo5.getWidth()/2, glowFbo5.getHeight()/2, GL_RGB );;
 	
 	glowShader.load(getVisualSystemDataPath() + "shaders/post");
 }
@@ -428,8 +437,9 @@ void CloudsVisualSystemFireworks::selfUpdate()
 		float noiseValY = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl ) * noiseOffsetScl;
 		
 		//pan and tilt with mouse
-		float pan = ofMap(GetCloudsInputX() + noiseValX, 0, ofGetWidth(), cameraMotionScl, -cameraMotionScl);
-		float tilt = ofMap(GetCloudsInputY() + noiseValY, 0, ofGetHeight(), cameraMotionScl, -cameraMotionScl) * xDamp;
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+		float pan = ofMap(GetCloudsInputX() + noiseValX, 0, getCanvasWidth(), cameraMotionScl, -cameraMotionScl);
+		float tilt = ofMap(GetCloudsInputY() + noiseValY, 0, getCanvasHeight(), cameraMotionScl, -cameraMotionScl) * xDamp;
 
 		if(abs(eul.x) < 90) getCameraRef().tilt( tilt );
 		getCameraRef().pan( pan );
@@ -491,7 +501,7 @@ void CloudsVisualSystemFireworks::selfUpdate()
 	}
 	
 	if(updateIndices){
-		vbo.updateIndexData( indices, indexCount );
+		vbo.updateIndexData( &indices[0], indexCount );
 	}
 	
 	if(	bUpdateVbo )
@@ -509,11 +519,11 @@ void CloudsVisualSystemFireworks::selfUpdate()
 
 void CloudsVisualSystemFireworks::selfDraw()
 {
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	ofPushStyle();
+	
 	glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
-	//    mat->begin();
-	
-	ofPushStyle();
 	
 	ofEnableAlphaBlending();
 	ofBlendMode( OF_BLENDMODE_ADD );
@@ -573,7 +583,8 @@ void CloudsVisualSystemFireworks::selfDraw()
 	
 	shader.end();
 	
-	ofDisablePointSprites();
+	glPopAttrib();
+	ofPopStyle();
 }
 
 
@@ -870,25 +881,36 @@ void CloudsVisualSystemFireworks::selfExit()
 	circleImage.clear();
 	dotImage.clear();
 	
-	//???: whats the right way to de-allocate these?
-	glowFbo0.allocate( 0, 0 );
-	glowFbo1.allocate( 0, 0 );
-	glowFbo2.allocate( 0, 0 );
-	glowFbo3.allocate( 0, 0 );
-	glowFbo4.allocate( 0, 0 );
-	glowFbo5.allocate( 0, 0 );
-	glowFbo6.allocate( 0, 0 );
+//	//???: whats the right way to de-allocate these?
+//	glowFbo0.allocate( 0, 0 );
+//	glowFbo1.allocate( 0, 0 );
+//	glowFbo2.allocate( 0, 0 );
+//	glowFbo3.allocate( 0, 0 );
+//	glowFbo4.allocate( 0, 0 );
+//	glowFbo5.allocate( 0, 0 );
+//	glowFbo6.allocate( 0, 0 );
 	
 	emitters.clear();
-	rockets.clear();
 	
 	vbo.clear();
 	
-    delete [] positions;
-    delete [] velocities;
-    delete [] baseVelocities;
-    delete [] lifeData;
-    delete [] indices;
+    //delete [] positions;
+    //delete [] velocities;
+    //delete [] baseVelocities;
+    //delete [] lifeData;
+    //delete [] indices;
+	
+	positions.clear();
+	velocities.clear();
+	baseVelocities.clear();
+	lifeData.clear();
+	indices.clear();
+	
+	ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
+	ofRemoveListener(camGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
+	ofRemoveListener(fireworkGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
+	ofRemoveListener(fireworkColorsGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
+	ofRemoveListener(fireworkFogGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
 }
 
 //events are called when the system is active

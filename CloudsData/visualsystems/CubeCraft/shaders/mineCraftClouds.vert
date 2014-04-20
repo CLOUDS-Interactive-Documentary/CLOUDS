@@ -12,12 +12,16 @@ uniform float cloudThickness = 8.;
 uniform vec3 noiseOffset;
 uniform vec3 cameraOffset;
 
+uniform float fogDist;
+uniform float fogExpo;
+
 varying vec3 vertex;
 varying vec3 vNormal;
 varying vec3 norm;
 varying vec3 ePos;
 varying vec2 uv;
 varying float camDelta;
+varying float fogAmount;
 
 varying float doDiscard = .0;
 varying float isCloud = 0.;
@@ -115,8 +119,6 @@ void main()
 	
 	vec3 boxCenter = gl_Color.xyz;
 	
-	camDelta = lengthSqr(cameraPos - boxCenter + cd);
-	
 	vec4 v = gl_Vertex;
 	v.xz -= fract(cameraOffset.xz);
 	
@@ -142,5 +144,10 @@ void main()
 	vec4 ecPosition = gl_ModelViewMatrix * (v + vec4(boxCenter, 0.) );
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	gl_Position = gl_ProjectionMatrix * ecPosition;
+	
+//	camDelta = length( ecPosition.xyz );//cameraPos - boxCenter + cd);
+	
+	camDelta = length( ecPosition.xyz );
+	fogAmount = min(1., max(0., 1.25 * pow( (camDelta / (fogDist*30.)), fogExpo) ) );
 }
 

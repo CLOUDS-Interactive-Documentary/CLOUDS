@@ -1,0 +1,48 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Snow</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>233.000000000</XPosition>
+    <YPosition>489.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowFogRange</Name>
+    <HighValue>5123.152832031</HighValue>
+    <LowValue>1182.265869141</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowInnerFogRange</Name>
+    <HighValue>679.802978516</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowAlphaRange</Name>
+    <HighValue>0.729064047</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowSizeRange</Name>
+    <HighValue>812.807861328</HighValue>
+    <LowValue>133.104904175</LowValue>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numSnowParticles</Name>
+    <Value>100000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>hueRange</Name>
+    <HighValue>0.729064047</HighValue>
+    <LowValue>0.472906440</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>saturationRange</Name>
+    <HighValue>0.950738907</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>

@@ -20,10 +20,10 @@
 typedef struct {
 	
 	CloudsAct* act;
-	int currentRun;
-	string currentTopic;
-	CloudsVisualSystemPreset currentPreset;
-	CloudsClip currentClip;
+	int run;
+	string topic;
+	CloudsVisualSystemPreset preset;
+	CloudsClip clip;
 	
 	vector<string> topicHistory;
 	vector<string> presetHistory;
@@ -31,8 +31,8 @@ typedef struct {
 
 	bool freeTopic;
 	
-	float currentDuration;
-	int currentTopicNum;
+	float duration;
+	int topicNum;
 	int timesOnCurrentTopic;
 
 	bool visualSystemRunning;
@@ -52,20 +52,22 @@ class CloudsStoryEngine {
 	
 	CloudsFCPParser* parser;
 	CloudsVisualSystemManager* visualSystems;
-	
+
 	void setup();
 	
 	//will send this act instead of generating one when buildAct is called
 	void setCustomAct(CloudsAct* customAct);
-	
+
+    vector<CloudsClip> getStartingQuestions();
+    
+	CloudsAct* buildAct(CloudsRun& run);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed, string topic, bool playSeed = true);
-	
+	bool getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset);
     void initGui();
     void saveGuiSettings();
     void toggleGuis(bool actOnly = false);
 	void positionGuis();
-    void updateRunData();
 	
     //after this many clips the topic opens up again
 	bool printDecisions;
@@ -90,6 +92,7 @@ class CloudsStoryEngine {
     ofxUISuperCanvas *vsGui;
 	ofxUISuperCanvas *topicGui;
 	ofxUISuperCanvas *runGui;
+	ofxUISuperCanvas *logGui;
 	
     void guiEvent(ofxUIEventArgs &e);
 
@@ -97,6 +100,14 @@ class CloudsStoryEngine {
 	bool isSetup;
 	CloudsAct* customAct;
 	
+	bool bCreateLog;
+	bool bLogTopicDetails;
+	bool bLogClipDetails;
+	bool bLogVisualSystemDetails;
+	
+    bool showOnlyStartQuestions;
+    vector<CloudsClip> startingQuestions;
+    
 	string log;
     vector<string> runTopicCount;
     int dichotomyThreshold;
@@ -109,7 +120,7 @@ class CloudsStoryEngine {
 	float scoreForVisualSystem(CloudsStoryState& currentState, CloudsVisualSystemPreset& potentialNextPreset);
 
 	CloudsClip selectClip(CloudsStoryState& currentState, vector<CloudsClip>& questionClips);
-    float scoreForClip(CloudsStoryState& currentState, CloudsClip& potentialNextClip);
+    float scoreForClip(CloudsStoryState& currentState, CloudsClip& potentialNextClip, stringstream& cliplog);
     
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
@@ -117,9 +128,7 @@ class CloudsStoryEngine {
 	void addQuestions(CloudsStoryState& currentState, vector<CloudsClip>& questionClips);
     void updateDichotomies(CloudsClip& clip);
 	void clearDichotomiesBalance();
-
 	vector<CloudsDichotomy> dichotomies;
-	
 	
     //Act Builder Parameters
     float actLength;
@@ -134,15 +143,17 @@ class CloudsStoryEngine {
 	
     float longClipThreshold;
     float longClipFadeInPercent;
-//	float getHandleForClip(CloudsClip& clip);
     float cadenceForTopicChangeMultiplier;
 	float clipGapTime;
     float voClipGapTime;
 	
 	//max time to watch visuals
     float maxVisualSystemRunTime;
+    //min time to watch indefinites
+    float minVisualSystemRunTime;
 	//max time between visuals
     float maxVisualSystemGapTime;
+
 	//how long to extend visual systems over the end of topics
 	float visualSystemTopicEndExtend;
 
@@ -159,12 +170,12 @@ class CloudsStoryEngine {
 	float genderBalanceFactor;
     float goldClipFactor;
     float easyClipScoreFactor;
-	float offTopicFactor;//deprecated
-	int digressionDenialCount;
-	int numTopicHistoryOccurrences;
+	float seriesBoostFactor;
+//	int digressionDenialCount;
+//	int numTopicHistoryOccurrences;
 
-	float distantClipSuppressionFactor;
-
+	float distantClipSuppressionFactor; // no longer using
+    
 	//Topic selection parameters
 	float topicRelevancyMultiplier;
 	float lastClipSharesTopicBoost;

@@ -86,7 +86,8 @@ class CloudsVisualSystemChromogram : public CloudsVisualSystem {
 	
     // generate random colors
     
-    void generateRandomColors(); 
+    void generateRandomColors();
+    void selfSetDefaults();
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly

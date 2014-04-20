@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>24.000000000</YPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -53,11 +53,6 @@
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>SPRITE SIZE</Name>
-    <Value>21.280788422</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
     <Name>LNB HUE</Name>
     <Value>0.565445006</Value>
 </Widget>
@@ -69,7 +64,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNB BRI</Name>
-    <Value>0.528789580</Value>
+    <Value>0.331162751</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -109,7 +104,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNP BRI</Name>
-    <Value>0.413663179</Value>
+    <Value>0.391963631</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -134,7 +129,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEP ALPHA</Name>
-    <Value>0.119744793</Value>
+    <Value>0.234853625</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -162,17 +157,77 @@
     <Value>1.394088626</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>X POS</Name>
-    <Value>1.000000000</Value>
+    <Kind>17</Kind>
+    <Name>BigSphere1_1_old.net</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>Y POS</Name>
-    <Value>1.000000000</Value>
+    <Kind>17</Kind>
+    <Name>BigSphere_1_old.net</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>Z POS</Name>
-    <Value>10.000000000</Value>
+    <Kind>17</Kind>
+    <Name>Circular_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Circular_4_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Galaxy2_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Galaxy3_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Galaxy_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NS_4_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Pointy_4_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Simple_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky2_1_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky_1_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOld_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitter_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitter_1_old.net</Name>
+    <Value>0</Value>
 </Widget>

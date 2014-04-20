@@ -5,6 +5,7 @@
 void testApp::setup(){
 	
 	ofSetVerticalSync(true);
+//    ofSetFrameRate(60);
 	ofEnableAlphaBlending();
 	
 	secondaryDisplay.setup();
@@ -19,6 +20,9 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
+#ifdef CLOUDS_RELEASE
+    ofHideCursor();
+#endif
 	secondaryDisplay.update();
     
     if(testAllClips && timer){

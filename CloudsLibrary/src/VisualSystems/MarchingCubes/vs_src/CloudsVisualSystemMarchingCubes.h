@@ -89,6 +89,8 @@ public:
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+    void reloadShaders();
+    void selfSetDefaults();
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -98,7 +100,7 @@ public:
 	
 	
 protected:
-    ofxUISuperCanvas * customGui;
+    ofxUISuperCanvas * customGui, * fogGui;
     ofx1DExtruder * fgHue, * fgSat, * fgBri, * fgAlpha;
     
 	ofxMarchingCubes mc;
@@ -113,4 +115,18 @@ protected:
 	int differentSurfaces;
     
     ofColor fgColor;
+    
+    ofShader styleShader;
+    
+    ofFloatColor fc;
+    float fogDist;
+    float fogExpo;
+    bool bUseFog;
+    int fogHue;
+    int fogSaturation;
+    int fogBrightness;
+    bool bNoisy;
+    float noiseAmt;
+    bool bColorGrain;
+    bool motion;
 };

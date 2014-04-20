@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>121.000000000</XPosition>
+    <YPosition>387.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,6 +13,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>g_containervolume</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>g_containervolume_v2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -27,12 +32,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>gx_work_01a</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Helix</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Helix-Inverted</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jm_default</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -74,9 +89,4 @@
     <Kind>2</Kind>
     <Name>Wormhole</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>gx_work_01a</Name>
-    <Value>1</Value>
 </Widget>

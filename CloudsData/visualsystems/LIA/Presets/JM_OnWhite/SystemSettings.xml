@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>372.000000000</XPosition>
+    <YPosition>-8.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -73,5 +73,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>invertColors</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>

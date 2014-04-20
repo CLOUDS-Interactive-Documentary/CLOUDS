@@ -75,6 +75,8 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetDefaults(){
     spinSpeed = 0.5f;
     NWalkers = 100;
     smooth = true;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 void CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){

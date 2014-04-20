@@ -8,6 +8,9 @@ uniform vec3 cameraPos;
 varying vec4 fsColor;
 varying float camDelta;
 
+uniform sampler2DRect normalMap;
+uniform float heightScale;
+
 float lengthSqr(vec3 x)
 {
 	return dot(x,x);
@@ -16,14 +19,19 @@ float lengthSqr(vec3 x)
 void main()
 {
     gl_TexCoord[0]  = gl_MultiTexCoord0;
-    
+    fsColor = texture2DRect(map,gl_TexCoord[0].st);
+
 	ecPosition		= gl_ModelViewMatrix * gl_Vertex;
 	ecPosition3		= vec3( ecPosition ) / ecPosition.w;
-    
-	normal			= gl_NormalMatrix * gl_Normal;
-	gl_Position		= gl_ModelViewProjectionMatrix * gl_Vertex;
+    vec3 n = texture2DRect(normalMap,gl_TexCoord[0].st).rgb;
+    n.x  = n.x * 2. - 1.;
+    n.y  = n.y * 2. - 1.;
+    n.z  = n.z * 2. - 1.;
+	normal			= gl_NormalMatrix * n;
+    vec4 pos = gl_Vertex;
+    pos.y =  1.0 - fsColor.r * heightScale;
+	gl_Position		= gl_ModelViewProjectionMatrix * pos;
 	
-    fsColor = texture2DRect(map,gl_TexCoord[0].st);
     
     camDelta = lengthSqr(cameraPos - gl_Vertex.xyz);
     

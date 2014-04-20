@@ -1,6 +1,12 @@
 
 #include "CloudsVisualSystemYellowTail.h"
 
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#else
+#include "CloudsInputMouse.h"
+#endif
+
 
 CloudsVisualSystemYellowTail::CloudsVisualSystemYellowTail(){
 
@@ -13,7 +19,8 @@ string CloudsVisualSystemYellowTail::getSystemName(){
 void CloudsVisualSystemYellowTail::selfSetup(){
 	
     // It'll be 16 & 11 on iPad, 8 & 6 on iPhone
-	float deviceScale = ofClamp(ofGetHeight() / 1024,1, 1024);
+    //MA: changed ofGetHeight() to getCanvasHeight()
+	float deviceScale = ofClamp(getCanvasHeight() / 1024,1, 1024);
 	softMaxGestures = MIN(ceil(16.0 * deviceScale), MAX_GESTURES);
 	softMaxTouches  = MIN(ceil(11.0 * deviceScale), MAX_TOUCHES);
 	
@@ -26,6 +33,11 @@ void CloudsVisualSystemYellowTail::selfSetup(){
     neverTouchedBefore = true;
 	clearGestures();
     	
+}
+
+void CloudsVisualSystemYellowTail::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
 }
 
 void CloudsVisualSystemYellowTail::selfSetupGuis(){
@@ -67,7 +79,7 @@ void CloudsVisualSystemYellowTail::selfDrawBackground(){
 	ofPushStyle();
 	ofEnableAlphaBlending();
 	
-	glEnable(GL_SMOOTH);
+	//glEnable(GL_SMOOTH);
 	glEnable(GL_LINE_SMOOTH);
 	ofSetLineWidth(1.0f);
     for (vector<Gesture *>::iterator gesture = fadingGestures.begin(); gesture != fadingGestures.end(); gesture++) {
@@ -93,8 +105,10 @@ void CloudsVisualSystemYellowTail::selfDrawBackground(){
     }
 	
 	ofPopStyle();
-    
-//    ((CloudsInputKinectOSC *)GetCloudsInput().get())->debug(0, 0, ofGetWidth(), ofGetHeight());
+
+#ifdef KINECT_INPUT
+	((CloudsInputKinectOSC *)GetCloudsInput().get())->draw(0, 0, ofGetWidth(), ofGetHeight(), ofMap(ofGetMouseX(), 0, ofGetWidth(), 0, 255, true));
+#endif
 }
 
 void CloudsVisualSystemYellowTail::selfDrawDebug(){
@@ -115,7 +129,8 @@ void CloudsVisualSystemYellowTail::selfExit(){
 
 void CloudsVisualSystemYellowTail::selfBegin(){
 
-    Gesture *introGesture = new Gesture(ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    Gesture *introGesture = new Gesture(getCanvasWidth(), getCanvasHeight());
     introGesture->fromXMLFile( getVisualSystemDataPath() + "strokes/y_stroke.xml" );
     gestures.push_back(introGesture);
 }
@@ -123,6 +138,44 @@ void CloudsVisualSystemYellowTail::selfBegin(){
 void CloudsVisualSystemYellowTail::selfEnd(){
 	//CLEAR ALL MEMORY
 	clearGestures();
+}
+
+void CloudsVisualSystemYellowTail::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus){
+    
+#ifdef OCULUS_RIFT
+    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
+    return;
+    
+#else
+    ofPushStyle();
+    
+    float cursorSize;
+
+#ifdef KINECT_INPUT
+    ofPtr<CloudsInputKinectOSC> kinectOscInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+    if (bDragged)
+        cursorSize = ofMap(pos.z, 2, -2, kinectOscInput->cursorDownSizeMin, kinectOscInput->cursorDownSizeMax, true);
+    else
+        cursorSize = ofMap(pos.z, 2, -2, kinectOscInput->cursorUpSizeMin, kinectOscInput->cursorUpSizeMax, true);
+#else
+    ofPtr<CloudsInputMouse> mouseInput = dynamic_pointer_cast<CloudsInputMouse>(GetCloudsInput());
+    if (bDragged)
+        cursorSize = mouseInput->cursorDownSize;
+    else
+        cursorSize = mouseInput->cursorUpSize;
+#endif
+    
+    ofSetLineWidth(2);
+    ofNoFill();
+    if (bDragged)
+        ofSetColor(62, 69, 213, 192 * focus);
+    else  // !bDragged
+        ofSetColor(255, 255, 255, 192 * focus);
+    ofCircle(pos, cursorSize);
+    
+    ofPopStyle();
+    
+#endif
 }
 
 void CloudsVisualSystemYellowTail::selfKeyPressed(ofKeyEventArgs & args){
@@ -232,7 +285,8 @@ void CloudsVisualSystemYellowTail::selfInteractionStarted(CloudsInteractionEvent
 //        mNewGestureStyle = GestureStyleInPlace;
 //    } 
     
-	Gesture *newGesture = new Gesture(ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	Gesture *newGesture = new Gesture(getCanvasWidth(), getCanvasHeight());
 	newGesture->clear();
 	newGesture->clearPolygons();
 	newGesture->addPoint((float)args.position.x, (float)args.position.y);

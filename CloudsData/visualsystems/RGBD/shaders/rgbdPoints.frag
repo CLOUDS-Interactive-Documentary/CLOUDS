@@ -9,26 +9,25 @@ uniform vec3 skinSampleColor;
 uniform vec3 skinWeights;
 uniform vec2 skinThreshold;
 
+uniform float colorBoost;
+uniform float skinBoost;
+
 varying float positionValid;
 
+uniform float normalMix;
+uniform float depthMix;
 //LIGHTING
-varying vec3 eye;
+//varying vec3 eye;
 varying vec3 normal;
-varying float diffuseAttenuate;
-varying vec3 diffuseLightDirection;
+varying vec4 normalColor;
+
+
+varying float actuatorAttenuation;
 
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
 
 const float epsilon = 1e-6;
-
-float calculateLight(){
-	vec3 N = normal;
-	vec3 L = diffuseLightDirection;
-	
-	float lambertTerm = dot(N,L) * diffuseAttenuate;
-	return lambertTerm;
-}
 
 ////START SKIN STUFF
 float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
@@ -70,6 +69,7 @@ float weightedDistance(vec3 pnt1,vec3 pnt2,vec3 weights){
 	vec3 v = pnt1 - pnt2;
 	return sqrt(weights.x*(v.x*v.x) + weights.y*(v.y*v.y) + weights.z*(v.z*v.z) ) ;
 }
+
 float isSkin(){
 	
     vec4 test0 = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
@@ -99,17 +99,13 @@ void main(){
     }
 
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
-	
-	/////basic coloring
-	gl_FragColor.rgb = col.rgb * edgeAttenuate * (1.0-headPositionAttenuation);
-	gl_FragColor.a = alpha;
-	
-	//apply light to just skin
-//	gl_FragColor = gl_Color * col * attenuate * max( calculateLight(), isSkin() );
-	
-	//incorporating luminance from video, and skin
- //   gl_FragColor = gl_Color * col * attenuate * mix(calculateLight(), 1.0, isSkin() * min(pow(lum,2.0), 1.0) );
-		
-	//gl_FragColor = vec4(normal,1.0);
+	gl_FragColor.rgb = mix(col.rgb, normalColor.rgb, normalMix) *
+                       mix( colorBoost + headPositionAttenuation, 1.0 + skinBoost, isSkin()) *
+                       alpha * smoothstep(actuatorAttenuation,0.0,.2) *
+                       edgeAttenuate;
+//    gl_FragColor.rgb = normalColor.rgb;
+    
+	gl_FragColor.a = 1.0;
 }
+
 

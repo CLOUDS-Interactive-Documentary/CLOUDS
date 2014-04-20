@@ -51,5 +51,6 @@ void main( void )
     vec2 q, r;
     float f = pattern(c * 0.01, cplx, q, r);
     
-    gl_FragColor = vec4( f, f, f, 1.0 );
+    gl_FragColor.rgb = vec3( f );
+    gl_FragColor.a = gl_Color.a;
 }

@@ -13,6 +13,7 @@ CloudsHUDLabel::CloudsHUDLabel(){
     
     bIsAnimatingIn = false;
     bIsAnimatingOut = false;
+    bIsVisible = false;
     caps = true;
     
     animationClamp.min = 0.3;
@@ -43,7 +44,12 @@ void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
 void CloudsHUDLabel::draw(){
     
     if( bIsAnimatingIn ){
-        pct = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 0., 1., true );
+        if(animationSpeed != 0){
+            pct = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 0., 1., true );
+        }
+        else{
+            pct = beginTime;
+        }
         playhead = floor(text.length() * pct);
         if( pct >= 1.0 ){
             bIsAnimatingIn = false;
@@ -53,18 +59,23 @@ void CloudsHUDLabel::draw(){
     if( bIsAnimatingOut ){
         pct = ofMap( ofGetElapsedTimef(), beginTime, beginTime+fadeOutSpeed, 1., 0., true );
         textAlpha = floor( 255. * pct );
+        if(textAlpha <= 0.0){
+            text == "";
+            bIsAnimatingOut = false;
+        }
     }
     
     if(type == "LAYOUT"){
-    if( layout ){
-        ofPushStyle();{
-            ofSetColor(255, 255, 255, textAlpha);
-            string t = text.substr(0, playhead );
-            if(caps)
-                t = ofToUpper(t);
-            layout->drawString( t, bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
-        }ofPopStyle();
-    }
+        if( layout ){
+            ofPushStyle();{
+                ofSetColor(255, 255, 255, textAlpha);
+                string t = text.substr(0, playhead );
+                if(caps){
+                    t = ofToUpper(t);
+                }
+                layout->drawString( t, bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
+            }ofPopStyle();
+        }
     }
     else if (type == "FONT"){
         ofPushStyle();{
@@ -77,27 +88,69 @@ void CloudsHUDLabel::draw(){
     }
 }
 
-void CloudsHUDLabel::setText( string newText ){
+void CloudsHUDLabel::setText(string newText, bool forceOn){
     cout << "CloudsHUDLabel::setText: " << newText;
     text = newText;
+    
+    if(caps)
+        text = ofToUpper(newText);
     playhead = 0;
     
     if( text != "" ){
         animationSpeed = baseAnimationSpeed * (text.length() / 300.);
         animationSpeed = ofClamp(animationSpeed, animationClamp.min, animationClamp.max);
-        animateIn();
+        if (forceOn) {
+            animateIn(true);
+        }
     }
 }
 
-void CloudsHUDLabel::animateIn() {
+int CloudsHUDLabel::getRightEdge(){
+    if(type == "LAYOUT")
+        return layout->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
+    else if (type == "FONT")
+        return font->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
+}
+
+string CloudsHUDLabel::getText(){
+	return text;
+}
+
+void CloudsHUDLabel::animateIn(bool force) {
+    if (!force && bIsVisible) return;
+    bIsVisible = true;
+    
     beginTime = ofGetElapsedTimef();
     bIsAnimatingIn = true;
     bIsAnimatingOut = false;
     textAlpha = 255;
 }
 
-void CloudsHUDLabel::animateOut() {
+void CloudsHUDLabel::animateOut(bool force) {
+    if (!force && !bIsVisible) return;
+    bIsVisible = false;
+    
     beginTime = ofGetElapsedTimef();
     bIsAnimatingIn = false;
     bIsAnimatingOut = true;
+}
+
+void CloudsHUDLabel::instantIn() {
+    bIsVisible = true;
+    
+    pct = 1.0;
+    playhead = floor(text.length() * pct);
+    textAlpha = 255;
+}
+
+void CloudsHUDLabel::instantOut() {
+    bIsVisible = false;
+    
+    pct = 0.0;
+    textAlpha = floor( 255. * pct );
+//    text = "";
+}
+
+bool CloudsHUDLabel::isVisible() {
+    return bIsVisible;
 }

@@ -2,7 +2,9 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    mixer.setup(2, 44100, 512, 2);
+    ofSetVerticalSync(true);
+    
+    mixer.setup();
     mixer.setDiageticVolume(1);
     
 	exampleBox2D.setup();

@@ -1,6 +1,15 @@
 <Map>
     <Bangs></Bangs>
     <Switches></Switches>
-    <SliderCurves></SliderCurves>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>Blur Radius</WidgetName>
+                <WidgetID>2</WidgetID>
+                <WidgetCanvasParent>Water</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

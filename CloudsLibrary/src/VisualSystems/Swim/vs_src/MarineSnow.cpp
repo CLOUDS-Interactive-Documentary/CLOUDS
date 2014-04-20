@@ -47,10 +47,7 @@ namespace itg
         shader.load(dataPath + "shaders/snow");
         ofDisableArbTex();
         tex.setCompression(OF_COMPRESS_ARB);
-        tex.loadImage(dataPath + "images/snow.png");
-        tex.bind();
-        glTexEnvi(GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE);
-        tex.unbind();
+        tex.loadImage(dataPath + "images/snow2.png");
         ofEnableArbTex();
     }
     
@@ -75,6 +72,11 @@ namespace itg
     
     void MarineSnow::draw(const ofCamera& cam)
     {
+        // putting this here otherwise isn't working in VSE
+        tex.bind();
+        glTexEnvi(GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE);
+        tex.unbind();
+        
         ofPushStyle();
         glPushAttrib(GL_ENABLE_BIT);
         glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);

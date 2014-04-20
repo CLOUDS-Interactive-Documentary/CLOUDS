@@ -38,4 +38,17 @@
         <time>00:00:18:288</time>
         <value>0.000000000</value>
     </key>
+    <key>
+        <px>-26.771564484</px>
+        <py>-10.811696053</py>
+        <pz>7.061455250</pz>
+        <ox>0.698893785</ox>
+        <oy>-0.338257909</oy>
+        <oz>-0.314805567</oz>
+        <ow>0.546003342</ow>
+        <easein>0</easein>
+        <easeout>0</easeout>
+        <time>00:00:22:666</time>
+        <value>0.000000000</value>
+    </key>
 </keyframes>

@@ -20,6 +20,7 @@
 #include "CloudsGlobal.h"
 #include "CloudsAudioEvents.h"
 #include "ofxTonic.h"
+#include "TonicSample.h"
 
 using namespace Tonic;
 
@@ -99,13 +100,8 @@ class CloudsVisualSystemWormHole : public CloudsVisualSystem {
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
-	//
 	ofCamera& getCameraRef(){
-		return CloudsVisualSystem::getCameraRef();
+		return pathCamera;
 	}
 	
 	void selfSetDefaults();
@@ -183,14 +179,17 @@ protected:
     float nearClipPlane;
 
     // Sound
+    float fMainGain;
+    ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
-    int nSamples = 4;
-    string soundFiles[4] = {"EchoVortex.aif",
-        "wormholeZoom.aif",
-        "wormholeZoom2.aif",
-        "slowgrains_short.aif"};
-    bool playSample[4];
-    ControlTrigger soundTriggers[4];
+    vector<TonicSample> tonicSamples;
+//    int nSamples = 4;
+//    string soundFiles[4] = {"EchoVortex.aif",
+//        "wormholeZoom.aif",
+//        "wormholeZoom2.aif",
+//        "slowgrains_short.aif"};
+//    bool playSample[4];
+//    ControlTrigger soundTriggers[ 4];
     ofxTonicSynth synth;
     Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);

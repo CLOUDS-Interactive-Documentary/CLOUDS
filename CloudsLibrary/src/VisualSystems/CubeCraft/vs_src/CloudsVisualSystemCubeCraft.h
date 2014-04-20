@@ -133,7 +133,6 @@ protected:
 	int halfDimX, halfDimY, halfDimZ;
 	ofMesh cubeMesh;
 	ofVbo voxelVbo;
-	ofVbo cubeVbo;
 	int voxelIndexCount, cubeIndexCount;
 	
 	ofShader cubeCraftShader;

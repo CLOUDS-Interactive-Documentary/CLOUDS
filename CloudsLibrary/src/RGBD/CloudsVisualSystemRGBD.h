@@ -2,24 +2,48 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
-//#include "ParticleConnectionGenerator.h"
-//#include "CloudsCaption.h"
+#include "CloudsPortal.h"
 #include "CloudsQuestion.h"
+#include "CloudsEvents.h"
 #include "GPUParticles/Controller.h"
+
+#ifdef HAS_GAMECAM
 #include "ofxGameCamera.h"
-#include "ofxDelaunay.h"
+#endif
+
 #include "ofxFTGL.h"
+#include "CloudsPortalEvents.h"
+#include "CloudsRGBDPointLayer.h"
+#include "VoxelMesh.h"
 
 struct TransitionInfo{
 	ofVec3f inStartPos;
-	ofVec3f outTargetPos;
-	ofQuaternion inStartQuat;
-	ofQuaternion outTargetQuat;
-	string name;
+	ofQuaternion inQuat;
+	
+	ofVec3f outRightPos;
+	ofQuaternion outRightQuat;
+	
+	ofVec3f outLeftPos;
+	ofQuaternion outLeftQuat;
+	
+	string optionName;
+	string transitionName;
 };
+
+
+typedef struct {
+    CloudsClip clip;
+    string question;
+    string topic;
+} QuestionQueue;
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
+	
+	enum OutOption{
+		OutLeft,
+		OutRight
+	};
 
 	string getSystemName();
     
@@ -38,21 +62,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfBegin();
 	void selfEnd();
     
-	void speakerChanged();
-	
-	void addFakeQuestion(vector<string> testPngFilePaths);
-	void addQuestion(CloudsClip& q,string topic, string question);
-    void setSelectedQuestion();
-
-    void clearQuestions();
-    bool isQuestionSelectedAndClipDone();
-	bool isQuestionSelected();
-    CloudsQuestion* getSelectedQuestion();
-    
-//    ofxFTGLFont captionFont;
-//    void rebuildCaptionFont();
-//    int captionFontSize;
-	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
@@ -70,65 +79,104 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
-	float visualSystemFadeValue;
+	void speakerChanged();
+    
+	void loadBackgroundGUISFromName(string presetName);
+	void loadPointcloudGUISFromName(string presetName);
+	vector<ofxUISuperCanvas*> pointcloudGuis;
+	vector<ofxUISuperCanvas*> backgroundGuis;
 	
+    ////////QUESTIONS
+    void addQuestion(CloudsClip& questionClip, string topic, string question);
+    void clearQuestions();
+	void assignAvailableQuestion(CloudsPortal& p);
+	
+    bool isQuestionSelectedAndClipDone();
+	bool isQuestionSelected();
+    CloudsPortal* getSelectedQuestion();
+    string getQuestionText();
+    ////////QUESTIONS
+
+	float visualSystemFadeValue;
+    int questionToReplace;
+    
 	ofCamera& getCameraRef(){
-//		if(currentCamera != NULL)	return  *currentCamera;
+#ifdef HAS_GAMECAM
 		if(placingTransitionNodes){
 			return transitionCam;
 		}
+#endif
 		return cloudsCamera;
 	}
 	
-	//TODO
-	void startTransitionOut(RGBDTransitionType transitionType);
-	void startTransitionIn(RGBDTransitionType transitionType);
+	/////TRANSITIONS
+	void startCurrentTransitionOut();
+	void startCurrentTransitionIn();
+	void startTransitionOut(RGBDTransitionType transitionType, string option="default");
+	void startTransitionIn(RGBDTransitionType transitionType, string option="default");
 	void updateTransition(float percentComplete);
 	void transtionFinished();
 	
-	//DEPRECATED
-	void transitionIn( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
-	void transitionOut( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
-	void transition( float duration=3, float startTime=ofGetElapsedTimef() );
-	
 	ofNode* transitionTarget;
 	ofNode transitionInStart;
-	ofNode transitionOutTarget;
+	ofNode transitionOutLeft;
+	ofNode transitionOutRight;
 	ofVec3f transitionEndPosition;
 	ofQuaternion transitionEndRotation;
 	
-	void transitionIn( ofNode& targetNode, float duration, float startTime );
-	void transitionOut( ofNode& startNode, float duration, float startTime );
-	
 	bool bTransitionIn, bTransitionOut;
-	bool bLookThroughIn, bLookThroughOut;
+	bool bLookThroughIn, bLookThroughOutLeft, bLookThroughOutRight;
 	bool bSaveTransition;
 	
 	void lookThroughTransitionIn();
-	void lookThroughTransitionOut();
+	void lookThroughTransitionOutLeft();
+	void lookThroughTransitionOutRight();
 
+	#ifdef HAS_GAMECAM
 	ofxGameCamera transitionCam;
+	#endif
 	ofNode* transitionCamTargetNode;
 	
-	void printTransitionNodes();
-	void setTransitionNodes( RGBDTransitionType transitionType );
-	
-	void playTestVideo();
-	
-	ofVec3f bottomRight;
-	
-	void loadTransitionSettings(string filename = "Transitions");
-	void saveTransitionSettings(string transitionName);
+	void setTransitionNodes( RGBDTransitionType transitionType, string option="default" );
+    
+	void loadTransitionOptions(string filename );
+	void saveTransitionSettings(string filename = "Transitions");
 	void setTransitionNodes( string transitionName );
-	void updateTransition();
-	void updateTransitionGui();
-
-
+	
+	void addTransitionGui(string guiName);
+	void clearTransitionMap();
+	
+	void addTransionEditorsToGui();
+	void setTransitionNodes( string type, string option );
+	void setOutOption( OutOption outOption );
+	
+	void resetTransitionNodes();
+	void resetInTransitionNode();
+	void resetLeftTransitionNode();
+	void resetRightTransitionNode();
+	
+	void StopEditTransitionMode();
+    //////////TRANSITIONS
+    
+	void playTestVideo();
+    
+    static CloudsVisualSystemEvents events;
+    
   protected:
 	
-	ofxUISuperCanvas *transitionEditorGui;
-	map< string, TransitionInfo> transitionMap;
-
+	//TRANSITIONS
+	map< string, TransitionInfo> transitionOptionMap;
+	map<string, string> transitionTypes;
+	map<string, map<string, TransitionInfo> > transitionMap;
+	map<string, ofxUISuperCanvas*> transitionsGuis;
+	bool bTransitionsAddedToGui;
+	string currentTransitionType;
+	ofxTween::ofxEasingType transitionEase;
+	OutOption transitionOutOption;
+	bool bMoveTransitionCameraUp, bMoveTransitionCameraDown;
+	float transitionScrubIn, transitionScrubOut;
+	
+	//MESH
 	ofxUISuperCanvas *globalMeshGui;
 	bool drawRGBD;
 	float edgeAttenuate;
@@ -136,24 +184,18 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float skinBrightness;
 	
 	//POINTS
-	ofxUISuperCanvas *pointsGui;
+
+	//ofxUISuperCanvas *pointsGui;
+    CloudsRGBDPointLayer pointLayer1;
+    CloudsRGBDPointLayer pointLayer2;
+    
 	ofShader pointShader;
-	ofVboMesh points;
-	bool drawPoints;
-	float pointAlpha;
-	int numRandomPoints;
-	ofRange pointSize;
-	float pointHeadOverlap;
-	float pointFlowPosition;
-	float pointFlowSpeed;
-	bool pointsFlowUp;
-	bool refreshPointcloud;
-	void generatePoints();
 	
 	//LINES
 	ofxUISuperCanvas *linesGui;
 	ofShader lineShader;
-	ofVboMesh lines;
+	ofVbo lines;
+    int lineVertexCount;
 	bool drawLines;
 	float lineAlpha;
 	float lineThickness;
@@ -164,13 +206,19 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float lineFlowSpeed;
 	float lineHeadOverlap;
 	bool linesFlowUp;
+    float lineColorBoost;
+    float lineSkinBoost;
+    float lineMaxActuatorRetract;
+    float lineRandomOffset;
 	bool refreshLines;
 	void generateLines();
 	
+    
 	//MESH
 	ofxUISuperCanvas *meshGui;
 	ofShader meshShader;
-	ofVboMesh mesh;
+    ofVbo mesh;
+    int meshVertexCount;
 	bool drawMesh;
 	float meshAlpha;
 	float xSimplify;
@@ -179,54 +227,109 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float meshFaceMinRadius;
 	float meshFaceFalloff;
 	float meshRetractionFalloff;
-	float meshForceGeoRectraction;
-	
-	bool refreshMesh;
+	float meshForceGeoRetraction;
+    float meshColorBoost;
+    float meshSkinBoost;
+    float meshMaxActuatorRetract;
+    bool refreshMesh;
 	void generateMesh();
+
+    //FILL
+	ofxUISuperCanvas *fillGui;
+    bool bEnableFill;
+    float fillAlpha;
+	float fillFaceFalloff;
+	float fillRetractionFalloff;
+    float fillFaceMinRadius;
+//	float fillForceGeoRetraction;
+
+    ///OCCLUSION
+	ofxUISuperCanvas *occlusionGui;
+    bool bDrawOcclusion;
+    bool drawOcclusionDebug;
+
+    ofShader occlusionShader;
+    ofVbo occlusion;
+    int occlusionVertexCount;
+   	float occlusionXSimplify;
+	float occlusionYSimplify;
+    float occlusionMeshFaceMinRadius;
+    float occlusionMeshFaceFalloff;
+	float occlusionMeshRetractionFalloff;
+    bool refreshOcclusion;
+    void generateOcclusion();
+    void drawOcclusionLayer();
+    
+    ///ACTUATORS
+    float actuatorSpinPosition;
+    float actuatorSpinSpeed;
+    float actuatorShineAngle;
+
+    void updateActuators();
+    ofVec3f pointActuator;
+    ofVec3f lineActuator;
+    ofVec3f meshActuator;
 	
 	void loadShader();
 
 	ofxUISuperCanvas *cameraGui;
 	ofxUISuperCanvas *particleGui;
+	ofxUISuperCanvas *backgroundMeshGui;
 	ofxUISuperCanvas *questionGui;
-
-	//TODO: move to hud
-	ofxFTGLSimpleLayout displayFont;
-
+    ofxUISuperCanvas *actuatorGui;
+    
+	bool drawParticulate;
+	float attenuatedCameraDrift;
+	VoxelMesh voxelMesh;
 	GPUParticles::Controller particulateController;
+    float particleCount;
+    ofVec4f pointColor;
+    
+    ///PORTALS
+	float portalScale;
+    ofRange portalTugDistance;
+	float minDistanceToQuestion;
+	bool bPortalDebugOn;
+	ofVec3f portalBaseHover;
+
+	CloudsPortal leftPortal;
+	CloudsPortal rightPortal;
+	string questionText;
 	
+	//Oculus reset portal
+//	CloudsPortal resetPortal;
+//	ofVec3f resetHoverPosition;
+//	void updateResetPortal();
+	
+	ofxFTGLFont questionFont;
+	int questionFontSize;
+	int currentQuestionFontSize;
+	float questionFontScale;
+	float questionYOffset;
+	float questionFontTracking;
+	float questionFontSplitWidth;
+	void drawQuestionType();
+	
+	vector<CloudsPortal*> portals;
+    vector<QuestionQueue> questions;
+	CloudsPortal* caughtPortal;
+    CloudsPortal* selectedPortal;
 	void updateQuestions();
 	void drawQuestions();
 	
-	vector<CloudsQuestion*> questions;
-	CloudsQuestion* caughtQuestion;
-    CloudsQuestion* selectedQuestion;
-	ofVec4f pointColor;
-	
-	bool placingTransitionNodes;
-	bool drawTransitionNodes;
-
-	bool drawParticulate;
-	float attenuatedCameraDrift;
+    void drawCursors();
+    ofVec3f cursor;
+    ofVec3f stickyCursor;
+    
 	
 	//transition
-	bool transitioning, transitioningIn, transitioningOut, bResetLookThoughs;
+	bool placingTransitionNodes;
+	bool drawTransitionNodes;
+	bool transitioning, transitioningIn, transitioningOut, bResetLookThoughs, bResetRight,bResetLeft,bResetIn;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
 	string activeTransition;
 	
 	RGBDTransitionType transitionType;
-	ofxEasingSine transitionEase;
 	
 	float transitionVal;
-	
-	ofVec3f questionXZ;
-	float questionDriftRange;
-	float questionYCenter;
-	float questionYDriftRange;
-	float questionYRange;
-	float questionLifeSpan; //minutes
-	
-	ofFloatColor questionBaseHSB;
-	ofFloatColor questionHoverHSB;
-	
 };

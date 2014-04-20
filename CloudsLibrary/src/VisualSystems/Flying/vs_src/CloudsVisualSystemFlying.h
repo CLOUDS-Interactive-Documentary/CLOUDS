@@ -13,9 +13,10 @@
 #include "CloudsVisualSystem.h"
 #include "ofxRules.h"
 #include "ofxPostProcessing.h"
-#include "ofxTonic.h"
+//#include "ofxTonic.h"
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
+#include "TonicSample.h"
 
 using namespace Tonic;
 
@@ -91,6 +92,7 @@ class CloudsVisualSystemFlying : public CloudsVisualSystem
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
 
+    void selfSetDefaults();
 	//events are called when the system is active
 	//Feel free to make things interactive for you, and for the user!
     void selfKeyPressed(ofKeyEventArgs & args);
@@ -163,13 +165,16 @@ protected:
 	ofVboMesh simplePointcloud;*/
     
 	// Sound
-    string soundFiles[3] = {"SriLankaForest.aif",
-        "FOREST.aif",
-        "organ_slower.aif"};
-    float sampleVolume[3] = {0};
-    bool playSample[3] = {false};
-    ControlTrigger soundTriggers[3];
+    vector<TonicSample> tonicSamples;
+//    string soundFiles[3] = {"SriLankaForest.aif",
+//        "FOREST.aif",
+//        "organ_slower.aif"};
+//    float sampleVolume[3] = {0};
+//    bool playSample[3] = {false};
+//    ControlTrigger soundTriggers[3];
     ofxTonicSynth synth;
     Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
+    ControlParameter volumeControl;
+    float gain;
 };

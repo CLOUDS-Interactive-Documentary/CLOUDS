@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A316F9B187F932100662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F9A187F932100662636 /* ofxSystemTextbox.mm */; };
+		2A316F9C187F932100662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F9A187F932100662636 /* ofxSystemTextbox.mm */; };
 		2A567225186E8BD700E7C982 /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A56719E186E8BD600E7C982 /* ofxTonicSynth.cpp */; };
 		2A567226186E8BD700E7C982 /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A56719E186E8BD600E7C982 /* ofxTonicSynth.cpp */; };
 		2A567227186E8BD700E7C982 /* ADSR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A5671A1186E8BD600E7C982 /* ADSR.cpp */; };
@@ -370,6 +372,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A316F99187F932100662636 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		2A316F9A187F932100662636 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		2A56719D186E8BD600E7C982 /* ofxTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonic.h; sourceTree = "<group>"; };
 		2A56719E186E8BD600E7C982 /* ofxTonicSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTonicSynth.cpp; sourceTree = "<group>"; };
 		2A56719F186E8BD600E7C982 /* ofxTonicSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonicSynth.h; sourceTree = "<group>"; };
@@ -1104,6 +1108,8 @@
 			isa = PBXGroup;
 			children = (
 				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
+				2A316F99187F932100662636 /* ofxSystemTextbox.h */,
+				2A316F9A187F932100662636 /* ofxSystemTextbox.mm */,
 				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
 				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
 				E72FF11D17E688FE0007780D /* CloudsRGBDVideoPlayer.h */,
@@ -1816,6 +1822,7 @@
 				85E1C72918304940003FE0EE /* ofxRParticleSystem.cpp in Sources */,
 				85E1C72A18304940003FE0EE /* ofxSolver.cpp in Sources */,
 				2A56722A186E8BD700E7C982 /* Arithmetic.cpp in Sources */,
+				2A316F9C187F932100662636 /* ofxSystemTextbox.mm in Sources */,
 				2A56723E186E8BD700E7C982 /* ControlChangeNotifier.cpp in Sources */,
 				2A56723A186E8BD700E7C982 /* ControlArithmetic.cpp in Sources */,
 				85E1C72B18304940003FE0EE /* ofxSphericalAttractionBehavior.cpp in Sources */,
@@ -2046,6 +2053,7 @@
 				2A567259186E8BD700E7C982 /* ControlRandom.cpp in Sources */,
 				E7CF78CE1753FECA006B7D41 /* ofxEasingQuad.cpp in Sources */,
 				2A56725F186E8BD700E7C982 /* ControlStepper.cpp in Sources */,
+				2A316F9B187F932100662636 /* ofxSystemTextbox.mm in Sources */,
 				2A567283186E8BD700E7C982 /* RectWave.cpp in Sources */,
 				2A56728B186E8BD700E7C982 /* SawtoothWave.cpp in Sources */,
 				E7CF78CF1753FECA006B7D41 /* ofxEasingQuart.cpp in Sources */,

@@ -8,10 +8,7 @@ varying vec4 faceFeatureSample;
 varying vec4 deltaChangeSample; 
 
 //LIGHTING
-varying vec3 eye;
 varying vec3 normal;
-varying float diffuseAttenuate;
-varying vec3 diffuseLightDirection;
 
 uniform float eyeMultiplier;
 uniform float skinMultiplier;
@@ -21,26 +18,23 @@ uniform float fadeValue;
 uniform float headAttenuateMix;
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
-varying float forceFade;
+
+varying float actuatorExtendAttenuate;
 
 uniform float meshAlpha;
+uniform float colorBoost;
+uniform float skinBoost;
 
 //SKIN DETECTION SAMPLES
 uniform vec3 skinSampleColor;
 uniform vec3 skinWeights;
 uniform vec2 skinThreshold;
 
+varying vec4 normalcolor;
+varying vec4 depthcolor;
 
 const float epsilon = 1e-6;
 
-////// START LIGHTS
-float calculateLight(){
-	vec3 N = normal;
-	vec3 L = diffuseLightDirection;
-	
-	float lambertTerm = dot(N,L) * diffuseAttenuate;
-	return lambertTerm;
-}
 ////// END LIGHTS
 
 ////START SKIN STUFF
@@ -126,40 +120,18 @@ void main(){
     }
 
 	float attenuate = 1.0;
-//	float attenuate = (baseMultiplier + max(isEye() * eyeMultiplier, isSkin() * skinMultiplier)) * fadeValue * forceFade;
-//	if(attenuate < epsilon){
-//		discard;
-//		return;
-//	}
-	
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
-	//apply lighting universaly
-    //gl_FragColor = gl_Color * col * attenuate * calculateLight();
-	
-	//apply lighting based on video luminosity
-//	gl_FragColor = gl_Color * col * 
-//					attenuate *
-//					mix( mix(calculateLight(),1.0,isSkin()), 1.0, pow(lum,2.0) ) *
-//					mix(1.0-headPositionAttenuation,headPositionAttenuation, headAttenuateMix) * edgeAttenuate;
-//	
-	gl_FragColor = col * mix(headPositionAttenuation * edgeAttenuate,1.0,isSkin())*meshAlpha;
-	//gl_FragColor = vec4(vec3(edgeAttenuate),1.0);
-//	gl_FragColor = vec4(vec3(mix(1.0,headPositionAttenuation * edgeAttenuate, 1.0)),1.0);
-	//gl_FragColor = vec4(headPositionAttenuation);
-//	gl_FragColor.a = 1.0;
-	gl_FragColor.a = 1.0;
-//	gl_FragColor = vec4(1.0);
-	
-//	gl_FragColor = vec4(1.0);
-	
-	//apply light to just skin
-//	gl_FragColor = gl_Color * col * attenuate * max( calculateLight(), isSkin() );
-	
-	//incorporating luminance from video, and skin
- //   gl_FragColor = gl_Color * col * attenuate * mix(calculateLight(), 1.0, isSkin() * min(pow(lum,2.0), 1.0) );
-		
-	//gl_FragColor = gl_Color * col * attenuate *  max(calculateLight(), isEye() );
-	
-	//gl_FragColor = vec4(normal,1.0);
+    //vec4 col = normalcolor;
+    //vec4 col = depthcolor;
+	//gl_FragColor = col * mix( colorBoost + headPositionAttenuation, 1. + skinBoost, isSkin())  * edgeAttenuate * meshAlpha * smoothstep(0.2, .3, actuatorExtendAttenuate);
+	gl_FragColor.rgb = col.rgb *
+                       meshAlpha *
+                       headPositionAttenuation *
+                       smoothstep(.2, .3, actuatorExtendAttenuate) * // filter out the small points
+                       mix(headPositionAttenuation, 1.0, isSkin()) * // 
+                       edgeAttenuate;
+    
+//    gl_FragColor.rgb = vec3(1.0);
+    
+    gl_FragColor.a = 1.0;
 }
-

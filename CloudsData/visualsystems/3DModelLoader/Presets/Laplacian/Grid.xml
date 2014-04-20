@@ -1,0 +1,72 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Grid</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>47.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gridLineWidth</Name>
+    <Value>1.014778376</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>majorGridLineWidth</Name>
+    <Value>4.665024757</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gridScale</Name>
+    <Value>19.532018661</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gridMajorScale</Name>
+    <Value>8.921181679</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>gridColor</Name>
+    <XValue>0.250000000</XValue>
+    <YValue>0.367187500</YValue>
+    <RColor>56</RColor>
+    <GColor>206</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gridAlpha</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gridBrightness</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>gridMajorColor</Name>
+    <XValue>0.195312500</XValue>
+    <YValue>0.101562500</YValue>
+    <RColor>255</RColor>
+    <GColor>255</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gridMajorAlpha</Name>
+    <Value>85.418716431</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gridMajorBrightness</Name>
+    <Value>0.645320177</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gridAlphaScale</Name>
+    <Value>0.743842363</Value>
+</Widget>

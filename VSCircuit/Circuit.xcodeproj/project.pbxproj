@@ -77,6 +77,8 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		85384ECB18827F790076AF5A /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85384ECA18827F790076AF5A /* ofxSystemTextbox.mm */; };
+		85384ECC18827F790076AF5A /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85384ECA18827F790076AF5A /* ofxSystemTextbox.mm */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -522,6 +524,9 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		85384EC918827F790076AF5A /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSystemTextbox.h; path = VisualSystemsLibrary/ofxSystemTextbox.h; sourceTree = "<group>"; };
+		85384ECA18827F790076AF5A /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofxSystemTextbox.mm; path = VisualSystemsLibrary/ofxSystemTextbox.mm; sourceTree = "<group>"; };
+		A646D9D7188336AE00DBBF37 /* Circuit copy-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Circuit copy-Info.plist"; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -665,7 +670,6 @@
 		E70CDCF018667FE100955691 /* tracking.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tracking.hpp; sourceTree = "<group>"; };
 		E70CDCF118667FE100955691 /* video.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = video.hpp; sourceTree = "<group>"; };
 		E70CDCF418667FE100955691 /* opencv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = opencv.a; sourceTree = "<group>"; };
-		E70CDCF71866806800955691 /* Circuit copy-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Circuit copy-Info.plist"; sourceTree = "<group>"; };
 		E7380142183C871A0018AB96 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E738FFE1183C86F50018AB96 /* CircuitOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircuitOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1365,7 +1369,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				E70CDCF71866806800955691 /* Circuit copy-Info.plist */,
+				A646D9D7188336AE00DBBF37 /* Circuit copy-Info.plist */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -1877,6 +1881,8 @@
 		E7DD71F117DBC08D00AFB2DD /* src */ = {
 			isa = PBXGroup;
 			children = (
+				85384EC918827F790076AF5A /* ofxSystemTextbox.h */,
+				85384ECA18827F790076AF5A /* ofxSystemTextbox.mm */,
 				E7DD71F217DBC08D00AFB2DD /* CloudsGlobal.h */,
 				E70CD8F118667C1E00955691 /* Input */,
 				E7DD846117DBC0A500AFB2DD /* VisualSystemsLibrary */,
@@ -1945,6 +1951,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Circuit" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2110,6 +2118,7 @@
 				E75BC348186DEE4600582E19 /* blips.vert in Sources */,
 				E7FA0B6F1879C347002477DF /* mesh.frag in Sources */,
 				E7FA0B711879C347002477DF /* mesh.vert in Sources */,
+				85384ECB18827F790076AF5A /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2212,6 +2221,7 @@
 				E75BC349186DEE4600582E19 /* blips.vert in Sources */,
 				E7FA0B701879C347002477DF /* mesh.frag in Sources */,
 				E7FA0B721879C347002477DF /* mesh.vert in Sources */,
+				85384ECC18827F790076AF5A /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2263,6 +2273,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -2299,6 +2310,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = macosx10.8;
 			};
 			name = Release;
 		};
@@ -2410,7 +2422,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = CircuitDebug;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2522,7 +2534,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = Circuit;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -1,15 +1,6 @@
 <Map>
     <Bangs></Bangs>
     <Switches></Switches>
-    <SliderCurves>
-        <Mapping>
-            <Widget>
-                <WidgetName>STEP SIZE</WidgetName>
-                <WidgetID>17</WidgetID>
-                <WidgetCanvasParent>Spaghetti</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-    </SliderCurves>
+    <SliderCurves></SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

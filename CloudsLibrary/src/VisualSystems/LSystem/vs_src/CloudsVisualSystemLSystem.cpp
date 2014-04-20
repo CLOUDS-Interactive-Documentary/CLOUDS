@@ -45,6 +45,11 @@ void CloudsVisualSystemLSystem::selfEnd(){
     
 }
 
+void CloudsVisualSystemLSystem::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
+
 void CloudsVisualSystemLSystem::selfSetupSystemGui(){
     sysGui->addLabel("Structure");
     ofxUITextInput *uiAxiom = sysGui->addTextInput("Axiom", "B", OFX_UI_FONT_SMALL);
@@ -394,7 +399,8 @@ void CloudsVisualSystemLSystem::selfPostDraw(){
 	
     postShader.begin();
     postShader.setUniformTexture("tex1", postTexture, 1);
-    postShader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    postShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
     postShader.setUniform2f("textureResolution", postTexture.getWidth(), postTexture.getHeight());
     postShader.setUniform1f("chroma", postChromaDist);
     postShader.setUniform1f("grain", postGrainDist);

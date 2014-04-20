@@ -2,22 +2,72 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1331.000000000</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>1103.000000000</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>2014GreenyPink</Name>
+    <Name>2014BlueyPinkSeed1</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>2014GreenyPinkSeed1</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>CombJellies</Name>
+    <Name>2014GreenyPinkSeed2</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Asteroids</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Deepsea</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Deepsea3_SND</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Deepsea_SND</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Detritus</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Detritus_2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Detritus_3</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Detritus_4</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>invertedOcean</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JellyCity</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -32,11 +82,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>whatevz</Name>
+    <Name>Warpspeed</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>2014GreenyPinkTest</Name>
-    <Value>1</Value>
+    <Name>whatevz</Name>
+    <Value>0</Value>
 </Widget>

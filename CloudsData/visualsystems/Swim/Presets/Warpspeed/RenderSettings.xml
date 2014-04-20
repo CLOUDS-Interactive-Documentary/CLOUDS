@@ -1,0 +1,109 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>657.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>regenerate</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>camSpeed</Name>
+    <Value>-731.527099609</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>creatureFogRange</Name>
+    <HighValue>7832.513671875</HighValue>
+    <LowValue>4975.369628906</LowValue>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>zoneRadius</Name>
+    <Value>655.172363281</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>alignmentLower</Name>
+    <Value>0.330000013</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>alignmentUpper</Name>
+    <Value>0.660000026</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>repelStrength</Name>
+    <Value>0.320197046</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>alignStrength</Name>
+    <Value>0.310344815</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>attractStrength</Name>
+    <Value>0.310344815</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxDistFromCentre</Name>
+    <Value>2620.689697266</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>undulationAmt</Name>
+    <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>undulationFreqRange</Name>
+    <HighValue>1.000000000</HighValue>
+    <LowValue>0.300000012</LowValue>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numJellyOne</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numJellyTwo</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numGreyFish</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>greySizeAverage</Name>
+    <Value>0.700000048</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>greySizeStdDeviation</Name>
+    <Value>0.280788183</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numYellowFish</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>yellowSizeAverage</Name>
+    <Value>0.557142854</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>yellowSizeStdDeviation</Name>
+    <Value>0.211822659</Value>
+</Widget>

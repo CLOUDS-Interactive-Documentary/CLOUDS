@@ -158,6 +158,8 @@ void CloudsVisualSystemOscillations::selfSetDefaults(){
     
     clipPlanes.min = 0.01;
     clipPlanes.max = 5000;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 
@@ -184,8 +186,9 @@ void CloudsVisualSystemOscillations::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemOscillations::selfUpdate(){
     
-    width = ofGetWidth();
-    height = ofGetHeight();
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    width = getCanvasWidth();
+    height = getCanvasHeight();
     offsetX += speed;
     
     if (renderLines){
@@ -206,7 +209,7 @@ void CloudsVisualSystemOscillations::selfDraw(){
     
 	ofPushStyle();
     glPushAttrib(GL_LINE_SMOOTH | GL_DEPTH_TEST | GL_POINT_SIZE);
-    glEnable( GL_LINE_SMOOTH );
+    glDisable( GL_LINE_SMOOTH );
     glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
     glDisable(GL_DEPTH_TEST);
 //    ofEnableBlendMode(OF_BLENDMODE_ADD);

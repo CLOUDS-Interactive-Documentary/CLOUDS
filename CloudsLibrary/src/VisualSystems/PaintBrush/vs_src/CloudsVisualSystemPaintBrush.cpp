@@ -55,6 +55,10 @@ void CloudsVisualSystemPaintBrush::selfSetup()
 	
 //	bClearBackground = false;
 }
+void CloudsVisualSystemPaintBrush::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
 
 void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
 {
@@ -183,7 +187,9 @@ void CloudsVisualSystemPaintBrush::drawPaint(){
 	canvasSrc.draw(0, 0);
 	
 	ofSetColor(255, 255);
-	ofCircle(ofGetMouseX(), ofGetMouseY(), 20);
+    
+    //MA: replaced ofGetMouseX() with GetCloudsInputX()
+	ofCircle(GetCloudsInputX(), GetCloudsInputY(), 20);
 	
 //	ofSetColor(255, 255, 255, fadeAmount*255);
 //	ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);

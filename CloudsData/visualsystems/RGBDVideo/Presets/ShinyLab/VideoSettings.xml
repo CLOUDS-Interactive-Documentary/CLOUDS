@@ -2,16 +2,36 @@
     <Kind>42</Kind>
     <Name>VideoSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000061035</XPosition>
-    <YPosition>487.000000000</YPosition>
+    <XPosition>536.000000000</XPosition>
+    <YPosition>73.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>12</Kind>
     <Name>VideoPath</Name>
     <Value>ShinyAll.mov</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>Add Blend</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset X</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset Y</Name>
+    <Value>108.374389648</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Point Offset</Name>
-    <Value>-829.489257812</Value>
+    <Value>-611.385253906</Value>
 </Widget>

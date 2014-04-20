@@ -109,6 +109,10 @@ void CloudsVisualSystemCities::selfSetup()
     postShader.load("",getVisualSystemDataPath()+"shaders/postprocess.fs");
     ofLoadImage(postTexture, getVisualSystemDataPath()+"images/6.jpg");
 }
+void CloudsVisualSystemCities::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 
 void CloudsVisualSystemCities::selfBegin()
 {
@@ -610,7 +614,8 @@ void CloudsVisualSystemCities::selfDraw()
 void CloudsVisualSystemCities::selfPostDraw(){
     postShader.begin();
     postShader.setUniformTexture("tex1", postTexture, 1);
-    postShader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    postShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
     postShader.setUniform2f("textureResolution", postTexture.getWidth(), postTexture.getHeight());
     postShader.setUniform1f("chromaDist", postChromaDist);
     postShader.setUniform1f("grainDist", postGrainDist);

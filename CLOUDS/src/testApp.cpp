@@ -1,6 +1,5 @@
 #include "testApp.h"
 #include "CloudsGlobal.h"
-#include "CloudsInputKinectOSC.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -8,11 +7,10 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofBackground(0);
-	ofToggleFullscreen();
-	
-	//SetCloudsInputKinect();
-	
+//	ofToggleFullscreen();
+
 	player.setup();
+
 }
 
 //--------------------------------------------------------------

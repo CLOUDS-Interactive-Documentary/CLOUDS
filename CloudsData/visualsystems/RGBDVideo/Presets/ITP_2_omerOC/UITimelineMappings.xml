@@ -5,7 +5,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>Point Offset</WidgetName>
-                <WidgetID>6</WidgetID>
+                <WidgetID>14</WidgetID>
                 <WidgetCanvasParent>VideoSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

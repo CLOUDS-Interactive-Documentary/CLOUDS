@@ -11,6 +11,21 @@
     <Value>0</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>BAR GRAD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>WASH GRAD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>EXPONENT</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>HUE</Name>
     <Value>159.532028198</Value>
@@ -23,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
-    <Value>32.660099030</Value>
+    <Value>23.866994858</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

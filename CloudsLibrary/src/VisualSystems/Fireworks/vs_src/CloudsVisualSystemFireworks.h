@@ -231,6 +231,8 @@ public:
 	
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
+    
+    void selfSetDefaults();
 	
 	//events are called when the system is active
 	//Feel free to make things interactive for you, and for the user!
@@ -275,11 +277,16 @@ public:
 	ofVec3f camAim, camVel;
 	
 	//particles
-	ofVec3f* positions;
-	ofVec3f* velocities;
-	ofVec3f* baseVelocities;
-	ofFloatColor* lifeData;
-	ofIndexType* indices;
+	//ofVec3f* positions;
+	//ofVec3f* velocities;
+	//ofVec3f* baseVelocities;
+	//ofFloatColor* lifeData
+	//ofIndexType* indices;
+	vector<ofVec3f> positions;
+	vector<ofVec3f> velocities;
+	vector<ofVec3f> baseVelocities;
+	vector<ofFloatColor> lifeData;
+	vector<ofIndexType> indices;
 	int indexCount, nextIndex;
 	float minExplosionTime, maxExplosionTime;
 	
@@ -332,7 +339,6 @@ public:
 	ofFbo glowFbo6;
 	ofShader glowShader;
 	
-	vector<FireworkRocket> rockets;
 	int rocketCount;
 	
 	ofVbo curvePoints;

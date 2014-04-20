@@ -34,7 +34,8 @@ public:
     float   rippleScale;
     
     bool    bRipple;
-    
+    ofVboMesh* citiesMesh;
+	ofIndexType meshIndex;
 private:
     void drawRipple( float _pct );
     ofQuaternion quaternion;

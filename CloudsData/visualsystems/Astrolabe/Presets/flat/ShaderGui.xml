@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>ShaderGui</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425</XPosition>
-    <YPosition>1</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c0_saturation</Name>
-    <Value>255</Value>
+    <Value>22</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c1_saturation</Name>
-    <Value>255</Value>
+    <Value>92</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -53,7 +53,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c2_hue</Name>
-    <Value>223</Value>
+    <Value>143</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -63,7 +63,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c2_saturation</Name>
-    <Value>255</Value>
+    <Value>57</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

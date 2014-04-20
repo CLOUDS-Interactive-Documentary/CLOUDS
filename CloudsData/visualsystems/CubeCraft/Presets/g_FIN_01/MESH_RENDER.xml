@@ -1,0 +1,67 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>MESH_RENDER</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>edgeWidth</Name>
+    <Value>0.059113301</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FillCubes</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ScaleCubes</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cubeScale</Name>
+    <Value>7.093595982</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>specExpo</Name>
+    <Value>10.035468102</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>specScale</Name>
+    <Value>1.256157637</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>edgeColor</Name>
+    <XValue>0.550000012</XValue>
+    <YValue>0.509999990</YValue>
+    <RColor>48</RColor>
+    <GColor>5</GColor>
+    <BColor>0</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>fillColor</Name>
+    <XValue>0.259999990</XValue>
+    <YValue>0.409999996</YValue>
+    <RColor>24</RColor>
+    <GColor>188</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>specColor</Name>
+    <XValue>0.469999999</XValue>
+    <YValue>0.300000012</YValue>
+    <RColor>84</RColor>
+    <GColor>0</GColor>
+    <BColor>198</BColor>
+    <AColor>255</AColor>
+</Widget>

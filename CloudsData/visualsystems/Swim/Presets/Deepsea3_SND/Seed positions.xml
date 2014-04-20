@@ -1,0 +1,27 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Seed positions</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>229.000000000</XPosition>
+    <YPosition>769.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>no seed data</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>2014bp_1.seed</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>2014gp_1.seed</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>2014gp_2.seed</Name>
+    <Value>0</Value>
+</Widget>

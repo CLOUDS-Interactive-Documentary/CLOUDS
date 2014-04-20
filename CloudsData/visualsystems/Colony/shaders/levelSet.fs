@@ -157,5 +157,6 @@ void main(){
     }
     
     gl_FragColor = color;
+    gl_FragColor.a = gl_Color.a;
 }
 

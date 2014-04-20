@@ -1,12 +1,9 @@
 #include "testApp.h"
-#include "CloudsInputKinectOSC.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
-    
-//    SetCloudsInputKinect();
     
 	vs.setup();
 	vs.playSystem();

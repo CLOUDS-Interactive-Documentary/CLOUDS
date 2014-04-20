@@ -77,7 +77,10 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfGuiEvent(ofxUIEventArgs &e)
         fgAlpha->setPosAndHome(fgAlpha->getPos());
     }
 }
-
+void CloudsVisualSystemOpenP5DrawingMachine10::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemOpenP5DrawingMachine10::selfSetupSystemGui(){
 	
@@ -180,8 +183,9 @@ void CloudsVisualSystemOpenP5DrawingMachine10::restart()
     delete [] attData;
     
     // Allocate/Reset the output FBO.
-    if (!renderBuffer.isAllocated() || renderBuffer.getWidth() != ofGetWidth() || renderBuffer.getHeight() != ofGetHeight()) {
-        renderBuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA32F);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (!renderBuffer.isAllocated() || renderBuffer.getWidth() != getCanvasWidth() || renderBuffer.getHeight() != getCanvasHeight()) {
+        renderBuffer.allocate(getCanvasWidth(), getCanvasHeight(), GL_RGBA32F);
     }
     renderBuffer.begin();
     {
@@ -309,7 +313,8 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfDrawBackground()
         }
         
         ofSetColor(ofColor::fromHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos(), fadeAlpha));
-        renderBuffer.draw(0, 0, ofGetWidth(), ofGetHeight());
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+        renderBuffer.draw(0, 0, getCanvasWidth(), getCanvasHeight());
     }
 }
 

@@ -1,0 +1,77 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Kinect</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>325.000000000</XPosition>
+    <YPosition>183.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>CURSOR DOWN</Name>
+    <HighValue>8.674877167</HighValue>
+    <LowValue>5.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>CURSOR UP</Name>
+    <HighValue>15.320197105</HighValue>
+    <LowValue>8.487684250</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>BODY RANGE X</Name>
+    <HighValue>0.615763545</HighValue>
+    <LowValue>-0.201970458</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>BODY RANGE Y</Name>
+    <HighValue>0.103448272</HighValue>
+    <LowValue>-0.408867002</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>BODY RANGE Z</Name>
+    <HighValue>2.667487621</HighValue>
+    <LowValue>1.347290874</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLAMP TO BOUNDS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ACTIVE THRESHOLD Y</Name>
+    <Value>0.724137902</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ACTIVE THRESHOLD Z</Name>
+    <Value>0.251231521</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RESET LERP</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MOVE LERP</Name>
+    <Value>0.300000012</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MOVE THRESHOLD</Name>
+    <Value>20.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>OUT OF BOUNDS DELAY</Name>
+    <Value>2000</Value>
+</Widget>

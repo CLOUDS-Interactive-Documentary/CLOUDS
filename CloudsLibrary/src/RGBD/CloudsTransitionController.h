@@ -13,15 +13,16 @@
 
 typedef enum {
 	TRANSITION_IDLE = 0,
-	TRANSITION_INTERVIEW_OUT = 1,
-	TRANSITION_VISUALSYSTEM_IN = 2,
-	TRANSITION_VISUALSYSTEM_OUT = 3,
-	TRANSITION_INTERVIEW_IN = 4,
-	TRANSITION_INTRO_OUT = 5,
-    TRANSITION_CLUSTERMAP_IN = 7,
-    TRANSITION_CLUSTERMAP_OUT = 8,
-	TRANSITION_QUESTION_IN = 9,
-	TRANSITION_QUESTION_OUT = 10
+	TRANSITION_INTRO_IN = 1,
+	TRANSITION_INTRO_OUT = 2,
+	TRANSITION_INTERVIEW_IN = 3,
+	TRANSITION_INTERVIEW_OUT = 4,
+	TRANSITION_VISUALSYSTEM_IN = 5,
+	TRANSITION_VISUALSYSTEM_OUT = 6,
+	TRANSITION_QUESTION_IN = 7,
+	TRANSITION_QUESTION_OUT = 8,
+    TRANSITION_INTERLUDE_IN = 9,
+    TRANSITION_INTERLUDE_OUT = 10,
 } CloudsTransitionState;
 
 typedef struct {
@@ -35,16 +36,25 @@ class CloudsTransitionController {
   public:
 	CloudsTransitionController();
 	
+    void transitionToIntro(float inDuration);
 	void transitionFromIntro(float transitionOutDuration);
+    
+    void transitionToFirstInterview(float transitionDuration);
 	void transitionToFirstVisualSystem(float transitionOutDuration);
+    
 	void transitionToVisualSystem(float transitionOutDuration, float transitionInDuration);
 	void transitionToInterview(float transitionOutDuration, float transitionInDuration);
-	void transitionToClusterMap(float inDuration,float outDuration);
-	void transitionFromClusterMap(float inDuration);
-	void transitionToQuestion(float outDuration, float portalDuration, float inDuration);
+    
+	void transitionToInterlude(float inDuration, float outDuration);
+	void transitionFromInterlude(float outDuration);
+    
+	void transitionWithQuestion(float outDuration, float portalDuration);
+
 	
 	void update();
 	
+    bool isTransitioning();
+    
 	float transitionPercent;
 
 	float getInterviewTransitionPoint();
@@ -59,11 +69,14 @@ class CloudsTransitionController {
 	float getFadeValue();
 	
 	bool isStateNew();
+	CloudsTransitionState getPendingState();
 	CloudsTransitionState getCurrentState();
 	CloudsTransitionState getPreviousState();
+	string getPendingStateDescription();
 	string getCurrentStateDescription();
+    string getPreviousStateDescription();
 	string getStateDescription(CloudsTransitionState state);
-	
+    
   protected:
 	
 	deque<CloudsTransitionQueueEntry> stateQueue;
@@ -78,6 +91,7 @@ class CloudsTransitionController {
 	
 	CloudsTransitionState currentState;
 	CloudsTransitionState previousState;
+	CloudsTransitionState pendingState;
 	float transitionStartTime;
 	
 	float transitionInCompleteTime;
@@ -86,5 +100,7 @@ class CloudsTransitionController {
 	
 	bool newState;
 	CloudsTransitionState getNextState();
+    
+    int previousFadeVal;
 	
 };

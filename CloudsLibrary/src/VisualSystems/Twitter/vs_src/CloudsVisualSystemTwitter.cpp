@@ -3,9 +3,33 @@
 //
 
 #include "CloudsVisualSystemTwitter.h"
+#include "CloudsGlobal.h"
 //#include "CloudsRGBDVideoPlayer.h"
 
 //#include <Poco/URI.h>
+
+// trim from start
+//static inline std::string &ltrim(std::string &s) {
+//    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+//    return s;
+//}
+//
+//// trim from end
+//static inline std::string &rtrim(std::string &s) {
+//    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
+//    return s;
+//}
+//
+//// trim from both ends
+//static inline std::string &trim(std::string &s) {
+//    return ltrim(rtrim(s));
+//}
+
+
+static vector<Tweeter> oldTweeterData;
+static vector<Tweeter> newTweeterData;
+static map<string,int> userNameIdMap;
+static vector<Date> dateIndex;
 
 bool dateSorter(Date const& lhs, Date const& rhs) {
     if (lhs.year != rhs.year)
@@ -15,12 +39,34 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
     return lhs.day < rhs.day;
 }
 
+vector<Tweeter>& CloudsVisualSystemTwitter::getOldTweeterData(){
+    if(oldTweeterData.size() == 0){
+        cout<<"Loading JSON OLD FOR THE FIRST TIME IN TWITTER"<<endl;
+        loadJSONData("tweetsOld",oldTweeterData);
+        
+        return oldTweeterData;
+    }
+    else{
+        return oldTweeterData;
+    }
+}
+
+vector<Tweeter>& CloudsVisualSystemTwitter::getNewTweeterData(){
+    if(newTweeterData.size() == 0){
+        cout<<"Loading JSON NEW FOR THE FIRST TIME IN TWITTER"<<endl;
+        loadJSONData("tweetsClean",newTweeterData);
+        return newTweeterData;
+    }
+    else{
+        return newTweeterData;
+    }
+}
+
 void CloudsVisualSystemTwitter::selfSetDefaults(){
     
     refreshRate = 1000;
     edgeDecayRate = 0.8;
     meshExpansion = 100;
-//    pointSize =10;
     
     dateIndexMin = 0;
     dateIndexMax = 100;
@@ -80,11 +126,14 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     textColorHSV = ofFloatColor(128,128,128);
     tweetDeckColorHSV  = ofFloatColor(128,128,128);
     bOldData = false;
-    
+    bRenderFeed = false;
 //    ofEnableSmoothing();
 //    ofEnableAlphaBlending();
     animationLerpRate = 0.02;
-    
+    currentMeshFilePath = "";
+//    currentDateIndex = 0;
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemTwitter::selfSetup()
@@ -93,11 +142,9 @@ void CloudsVisualSystemTwitter::selfSetup()
      
      //Minimum num of users to add to tweeter links.
      minUserMentions = 0;
-     
      createNewGraph("twitterNewData0Men.net","tweets_");
      cout<<"created new network"<<endl;
      while(1);
-     
      */
     
     meshDir.listDir(getVisualSystemDataPath() + "graphs" );
@@ -106,7 +153,9 @@ void CloudsVisualSystemTwitter::selfSetup()
         meshStrings.push_back(meshDir.getName(i));
     }
     currentMeshIndex = 8;
-    initSystem(getVisualSystemDataPath() +"graphs/"+meshStrings[currentMeshIndex]);
+    ofLogNotice("CloudsVisualSystemTwitter::selfSetup");
+//    initSystem(getVisualSystemDataPath(true) +"twitterVSNewData/twitterNewData2Men.net");
+        initSystem(getVisualSystemDataPath() +"graphs/"+meshStrings[currentMeshIndex]);
 //    initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
     reloadShaders();
 }
@@ -171,8 +220,6 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	guis.push_back(clusterGui);
 	guimap[clusterGui->getName()] = clusterGui;
 
-    
-
     spriteGui = new ofxUISuperCanvas("SPRITE PARAMS", gui);
     spriteGui->copyCanvasStyle(gui);
 	spriteGui->copyCanvasProperties(gui);
@@ -187,9 +234,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	guimap[spriteGui->getName()] = spriteGui;
 //	addColorToGui(clusterGui,"NODE BASE",nodeBaseColorHSV);
 //	addColorToGui(clusterGui,"NODE POP",nodePopColorHSV);
-	
 
-    
     textGui = new ofxUISuperCanvas("TEXT PARAMS", gui);
     textGui->copyCanvasStyle(gui);
 	textGui->copyCanvasProperties(gui);
@@ -246,28 +291,216 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
 	guimap[textGui->getName()] = twitterFeedGui;
+}
+
+void CloudsVisualSystemTwitter::loadCSVData(vector<Tweeter>& curTweeters){
+
+    int tweeterID = 0;
+    string filePath =GetCloudsVisualSystemDataPath("Twitter",true)+"twitter.csv";
+    cout<<"File Path : "<<filePath<<endl;
+    ofBuffer buffer = ofBufferFromFile(filePath);
+    cout<<buffer.size()<<endl;
+
+    //CSV FORMAT
+    //name~,dateString~,tweet~,userStart~,<users>~,userEnd~,htStart~,<hashtags>,~,htEnd~,
     
+    ofVec2f curActivityMapCoord(0,0);
+	int activityMapCoordWidth = 100;
     
+    string firstLine = buffer.getFirstLine();
+    vector<string> l = ofSplitString(firstLine, "~,");
+
+    if(l.size() > 1){
+    Tweeter twtr;
+        twtr.name = "@" + trim(l[0]);
+        Tweet t = csvParseTweet (l, twtr);
+        twtr.tweets.push_back(t);
+        twtr.addTweetsToDate(t);
+        twtr.ID = tweeterID++;
+        userNameIdMap[twtr.name] = twtr.ID;
+        twtr.activityMapCoord = curActivityMapCoord;
+        curActivityMapCoord.x++;
+        if(curActivityMapCoord.x >= activityMapCoordWidth){
+            curActivityMapCoord.x = 0;
+            curActivityMapCoord.y++;
+        }
+        
+        curTweeters.push_back(twtr);
+    }
+
+    
+    int lineNumber = 1;
+    
+    while(! buffer.isLastLine()){
+
+        string nextLine =  buffer.getNextLine();
+        lineNumber++;
+        vector<string> line = ofSplitString(nextLine, "~,");
+//        cout<<nextLine<<endl;
+        if(line.size() < 2){
+            continue;
+        }
+
+        bool alreadyExists = false;
+        for (int i =0 ; i<tweeters.size(); i++) {
+            if(curTweeters[i].name == "@" + trim(line[0])){
+                Tweet t = csvParseTweet(line,curTweeters[i]);
+                curTweeters[i].tweets.push_back(t);
+                curTweeters[i].addTweetsToDate(t);
+                
+                alreadyExists = true;
+//                cout<<"already exists "<<tweeters[i].name<<endl;
+                break;
+            }
+        }
+        
+        if(! alreadyExists){
+            Tweeter twtr;
+            twtr.name ="@" + trim(line[0]);
+            Tweet t = csvParseTweet (line, twtr);
+            twtr.tweets.push_back(t);
+            twtr.addTweetsToDate(t);
+            twtr.ID = tweeterID++;
+            userNameIdMap[twtr.name] = twtr.ID;
+            
+            twtr.activityMapCoord = curActivityMapCoord;
+            curActivityMapCoord.x++;
+            if(curActivityMapCoord.x >= activityMapCoordWidth){
+                curActivityMapCoord.x = 0;
+                curActivityMapCoord.y++;
+            }
+            curTweeters.push_back(twtr);
+        }
+        
+    }
+    
+    map<string,int> numberOfMentions;
+    vector<string> names;
+    
+    for (int i= 0; i < curTweeters.size(); i++) {
+        names.push_back(curTweeters[i].name);
+    }
+    
+    for (int i= 0; i < curTweeters.size(); i++) {
+        for(int j=0; j<curTweeters[i].userLinks.size(); j++){
+            
+            if(! ofContains(names, curTweeters[i].userLinks[j])){
+                numberOfMentions[curTweeters[i].userLinks[j]]++;
+            }
+        }
+    }
+    
+    map<string,int>::iterator it;
+    for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
+        Tweeter cur = Tweeter(it->first, curTweeters.size());
+        cur.activityMapCoord = curActivityMapCoord;
+        curActivityMapCoord.x++;
+        if(curActivityMapCoord.x >= activityMapCoordWidth){
+            curActivityMapCoord.x = 0;
+            curActivityMapCoord.y++;
+        }
+        curTweeters.push_back(cur);
+    }
+
     
 }
 
-void CloudsVisualSystemTwitter::loadJSONData(string folderName){
+Tweet CloudsVisualSystemTwitter::csvParseTweet(vector<string>& line,Tweeter& curTweeter){
+    Tweet t;
+    int index = 1;
+    
+    //1
+    t.dateString = line[index];
+    t.tweetDate = getDateFromString(line[index++]);
+//    cout<<t.dateString<<endl;
+    bool alreadyExists = false;
+    for(int i=0; i<dateIndex.size(); i++){
+        
+        if(dateIndex[i].year == t.tweetDate.year && dateIndex[i].month == t.tweetDate.month && dateIndex[i].day == t.tweetDate.day){
+            alreadyExists = true;
+            break;
+        }
+    }
+    if(! alreadyExists){
+        dateIndex.push_back(t.tweetDate);
+    }
+    
+    //2
+    t.tweet = line[index++];
+    
+    //3
+    if(line[index] == "userStart"){
+        index++;
+    }
+    
+    //4 ..users
+    if(line[index] != "userEnd"){
+        while (line[index] != "userEnd") {
+
+            if (line[index].length() >2) {
+//                cout<<"Adding user : "<<line[index]<<endl;
+                vector<string> users = ofSplitString(line[index], " ");
+                for(int i =0; i< users.size();i++){
+                    curTweeter.userLinks.push_back(users[i]);
+                }
+            }
+            index++;
+        }
+    }
+    else{
+        cout<<"no users "<<endl;
+        index++;
+    }
+    
+    //.. htStart
+    if(line[index] == "htStart"){
+        index++;
+    }
+    
+    // ..hashtags
+    if(line[index] != "htEnd"){
+        while (line[index] != "htEnd") {
+            t.hashtags.push_back(line[index]);
+            index++;
+        }
+    }
+    else{
+        cout<<"no hashtags "<<endl;
+        index++;
+    }
+    
+    return t;
+}
+
+Date CloudsVisualSystemTwitter::getDateFromString(string dString){
+//    vector<string> ds = ofSplitString(dString, " - ");
+    vector<string> ds = ofSplitString(dString, " - ");
+    Date d;
+    d.day = ofToInt(ds[0]);
+    d.month = ofToInt(ds[1]);
+    d.year = ofToInt(ds[2]);
+    return d;
+    
+}
+
+void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>& curTweeters){
     
     ofFile f = ofFile();
-    
-    ofDirectory dir(getVisualSystemDataPath(true)+folderName+"/");
+    curTweeters.clear();
+
+    ofDirectory dir(GetCloudsVisualSystemDataPath("Twitter",true)+folderName+"/");
     dir.listDir();
-	
+	float loadTime = ofGetElapsedTimeMillis();
 	ofVec2f curActivityMapCoord(0,0);
 	int activityMapCoordWidth = 100;
-    maxUserLinks = 0;
+    ofxJSONElement result;
+
     if(dir.exists()){
         int size = dir.size();
         vector<ofFile>files= dir.getFiles();
-        
+
         for(int i = 0; i< files.size(); i++){
-            string filePath =getVisualSystemDataPath(true)+folderName+"/"+files[i].getFileName();
-            
+            string filePath =GetCloudsVisualSystemDataPath("Twitter",true)+folderName+"/"+files[i].getFileName();
             bool parsingSuccessful = result.openLocal(filePath);
             if (parsingSuccessful) {
                 
@@ -289,13 +522,7 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
                         Tweet t;
                         t.tweet = tweets[j]["Tweet"].asString();
                         
-                        if(ofIsStringInString("\\ud83c",t.tweet))
-                        {
-                            cout<<" Replacing shit"<<endl;
-                            ofStringReplace(t.tweet, "\\ud83c", " TEST ");
-                        }
                         
-                        ofStringReplace(t.tweet, "ud83d", " TEST ");
                         if(tweets[j]["Hashtag"].isValidIndex(0)){
                             ofxJSONElement hashTags = tweets[j]["Hashtag"];
                             
@@ -331,10 +558,7 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
                                 }
                             }
                             if(! alreadyExists){
-                                dateIndex.push_back(t.tweetDate);
-                                
-                                dateIndexMap[t.dateString] = dateIndex.size()-1;
-                                
+                                dateIndex.push_back(t.tweetDate);    
                             }
                         }
                         userTweets.push_back(t);
@@ -346,8 +570,8 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
 						curActivityMapCoord.x = 0;
 						curActivityMapCoord.y++;
 					}
-                    maxUserLinks = MAX(maxUserLinks,cur.userLinks.size());
-                    tweeters.push_back(cur);
+//                    maxUserLinks = MAX(maxUserLinks,cur.userLinks.size());
+                    curTweeters.push_back(cur);
                 } else {
                     cout  << "Failed to parse JSON" << endl;
                 }
@@ -355,10 +579,42 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
         }
     }
     
-//    cout<<"Max no. of user links = "<<maxUserLinks<<endl;
-    addUsersFromMentions(curActivityMapCoord, activityMapCoordWidth);
-	
-	activityMap.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
+    cout<<"JSON LOADED : "<<ofGetElapsedTimeMillis()-loadTime<<endl;
+    loadTime =  ofGetElapsedTimeMillis();
+
+    map<string,int> numberOfMentions; 
+    vector<string> names;
+    
+    for (int i= 0; i < curTweeters.size(); i++) {
+        names.push_back(curTweeters[i].name);
+    }
+    
+    for (int i= 0; i < curTweeters.size(); i++) {
+        for(int j=0; j<curTweeters[i].userLinks.size(); j++){
+            
+            if(! ofContains(names, curTweeters[i].userLinks[j])){
+                numberOfMentions[curTweeters[i].userLinks[j]]++;
+            }
+        }
+    }
+    
+    map<string,int>::iterator it;
+    for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
+        Tweeter cur = Tweeter(it->first, curTweeters.size());
+        cur.activityMapCoord = curActivityMapCoord;
+        curActivityMapCoord.x++;
+        if(curActivityMapCoord.x >= activityMapCoordWidth){
+            curActivityMapCoord.x = 0;
+            curActivityMapCoord.y++;
+        }
+        curTweeters.push_back(cur);
+    }
+
+}
+
+void CloudsVisualSystemTwitter::allocateActivityMap(){
+ 	int activityMapCoordWidth = 100;
+    activityMap.allocate(activityMapCoordWidth, tweeters[tweeters.size() - 1].activityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
 	activityMap.getPixelsRef().set(0);
 	activityMap.update();
 }
@@ -381,7 +637,6 @@ void CloudsVisualSystemTwitter::loadAvatars(){
                 
                 if ( img.loadImage(filePath) ){}
                 else { cout<<filePath<<" not loaded "<<endl; }
-                
                 avatars["default"] =img;
                 cout<<"Adding default avatar "<< handle[0]<<endl;
             }
@@ -390,8 +645,7 @@ void CloudsVisualSystemTwitter::loadAvatars(){
                 
                 if(tweeters[j].name == "@" +handle[0]){
                     ofImage img;
-                    if( img.loadImage(filePath) ){
-                    }
+                    if( img.loadImage(filePath) ){}
                     else{
                         cout<<filePath<<" not loaded "<<endl;
                     }
@@ -404,19 +658,18 @@ void CloudsVisualSystemTwitter::loadAvatars(){
             }
         }
     }
-    
 }
 
 void CloudsVisualSystemTwitter::clearData(){
-    dateIndex.clear();
-    dateIndexMap.clear();
+//    dateIndex.clear();
+//    dateIndexMap.clear();
     links.clear();
     lineIndexPairs.clear();
-    numberOfMentions.clear();
+//    numberOfMentions.clear();
     
 }
 void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
-    
+    cout<<"Load graph : "<<fileName<<endl;
     ofBuffer pajekFile = ofBufferFromFile(fileName);
 	bool findingNodes = false;
     bool findingEdges = false;;
@@ -458,17 +711,22 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             int id = ofToInt(components[0]);
             //428 4 8 9 11 15 17 18
             Tweeter& tweeter = getTweeterByID(id);
-            if(tweeter.name != " "){
-            //            if(tweeter.ID > 0){
+
+            if(tweeter.name == " "){
+                cout<<"Error! "<<tweeter.name<<"  : "<<tweeter.ID<<" not found "<<endl;
+                continue;
+            }
+            
                 for(int i =1; i< components.size()-1; i++){
-                    if(tweeter.ID != ofToInt(components[i]) ){
+                    if(tweeter.ID != ofToInt(components[i])) {
+                        
                         tweeter.linksById.push_back(ofToInt(components[i]));
                     }
                     else{
                         cout<<"Error! "<<tweeter.name<<"  : "<<tweeter.ID<<" index "<< ofToInt(components[i])<<endl;
                     }
                 }
-            }
+            
         }
 	}
 }
@@ -477,7 +735,6 @@ void CloudsVisualSystemTwitter::setActiveTweeters(int index){
     string currentDate = getDateAsString(dateIndex[index]);
     
     for (int i = 0 ; i<activeTweeters.size(); i++) {
-//        cout<<ofGetFrameNum() % refreshRate<< " : "<<activeTweeters[i]->refreshNum<<endl;
         if (ofGetFrameNum() % refreshRate  != activeTweeters[i]->refreshNum) {
             continue;
         }
@@ -485,14 +742,12 @@ void CloudsVisualSystemTwitter::setActiveTweeters(int index){
         activeTweeters[i]->refreshNum = 0;
         activeTweeters[i]->textDecayRate = 1.0;
         vector<Tweet>&  tweetsOnDate = activeTweeters[i]->getTweetsByDate(currentDate);
-        ///
 		int activityMapIndex = activeTweeters[i]->activityMapCoord.y * activityMap.getWidth() + activeTweeters[i]->activityMapCoord.x;
 		activityMap.getPixels()[activityMapIndex] = 1.0;
 		
         
 		// pop the active tweeter node
-		nodeMesh.getNormals()[activeTweeters[i]->nodeVertexIndex].y = 1.0;
-//        cout<<		nodeMesh.getNormals()[activeTweeters[i]->nodeVertexIndex].y<<endl;
+        nodeMeshNormals[activeTweeters[i]->nodeVertexIndex].y = 1.0;
 		for(int k = 0; k < tweetsOnDate.size(); k ++){
             
             activeTweetPairs.push_back(make_pair(&activeTweeters[i]->name, &tweetsOnDate[k].tweet));
@@ -506,7 +761,7 @@ void CloudsVisualSystemTwitter::setActiveTweeters(int index){
 				Tweeter& t = getTweeterByID(user);
                 int activityMapIndex = t.activityMapCoord.y * activityMap.getWidth() + t.activityMapCoord.x;
                 activityMap.getPixels()[activityMapIndex] = 1.0;
-                //                activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
+
 				//find the nodes
 				pair<int, int> currentIndeces;
                 
@@ -522,55 +777,11 @@ void CloudsVisualSystemTwitter::setActiveTweeters(int index){
 				}
                 
 				//set the edges
-				edgeMesh.getNormals()[currentIndeces.first].y = 1.0;
-				edgeMesh.getNormals()[currentIndeces.second].y = 1.0;
+                edgeMeshNormals[currentIndeces.first].y =1.0;
+                edgeMeshNormals[currentIndeces.second].y =1.0;
 				int ind = MIN(currentIndeces.first,currentIndeces.second) + 1;
-				edgeMesh.getNormals()[ind++].y = 1.0;
-				edgeMesh.getNormals()[ind  ].y = 1.0;
-                
-                nodeMesh.getNormals()[t.nodeVertexIndex].y = 1.0;
-
-        ////
-//		int activityMapIndex = tweeters[i].activityMapCoord.y * activityMap.getWidth() + tweeters[i].activityMapCoord.x;
-//		activityMap.getPixels()[activityMapIndex] = 1.0;
-//		
-//		// pop the active tweeter node
-//		nodeMesh.getNormals()[tweeters[i].nodeVertexIndex].y = 1.0;
-//        
-//		for(int k = 0; k < tweetsOnDate.size(); k ++){
-//            
-//            activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
-//            
-//			for(int l = 0; l < tweetsOnDate[k].mentionedUsers.size(); l++){
-//				int user = getUserIdByName(tweetsOnDate[k].mentionedUsers[l]);
-//				if(user == -1){
-//					continue;
-//				}
-//				
-//				Tweeter& t = getTweeterByID(user);
-//                int activityMapIndex = t.activityMapCoord.y * activityMap.getWidth() + t.activityMapCoord.x;
-//                activityMap.getPixels()[activityMapIndex] = 1.0;
-//                //                activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
-//				//find the nodes
-//				pair<int, int> currentIndeces;
-//
-//				if(lineIndexPairs.find(make_pair(tweeters[i].name, t.name)) != lineIndexPairs.end()){
-//					currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
-//				}
-//				else if(lineIndexPairs.find(make_pair(t.name,tweeters[i].name)) != lineIndexPairs.end()){
-//					pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
-//				}
-//				else{
-//					//error!!
-//					continue;
-//				}
-//                
-//				//set the edges
-//				edgeMesh.getNormals()[currentIndeces.first].y = 1.0;
-//				edgeMesh.getNormals()[currentIndeces.second].y = 1.0;
-//				int ind = MIN(currentIndeces.first,currentIndeces.second) + 1;
-//				edgeMesh.getNormals()[ind++].y = 1.0;
-//				edgeMesh.getNormals()[ind  ].y = 1.0;
+                edgeMeshNormals[ind++  ].y = 1.0;
+                edgeMeshNormals[ind].y = 1.0;
             }
         }
     }
@@ -590,35 +801,46 @@ void CloudsVisualSystemTwitter::updateActiveTweeters(int index){
         if(tweeters[i].position != ofVec3f(-1,-1,-1)){
                 activeTweeters.push_back(&tweeters[i]);
         }
-
-
     }
     
     for(int i = 0; i < activeTweeters.size(); i++){
-
-        
         activeTweeters[i]->refreshNum = ofMap(i, 0, activeTweeters.size(),0, refreshRate );
-        
     }
-    
     
 }
 
 void CloudsVisualSystemTwitter::updateMesh(){
-	for(int i = 0; i < nodeMesh.getVertices().size(); i++){
-		nodeMesh.getNormals()[i].y *= activityMapDamping;
+
+    //	for(int i = 0; i < nodeMesh.getVertices().size(); i++){
+    //		nodeMesh.getNormals()[i].y *= activityMapDamping;
+    //	}
+    //	for(int i = 0; i < edgeMesh.getVertices().size(); i++){
+    //		edgeMesh.getNormals()[i].y *= normalDecay;
+    //	}
+    
+    for(int i = 0; i < nodeMeshNormals.size(); i++){
+		nodeMeshNormals[i].y *= activityMapDamping;
 	}
-	
-	for(int i = 0; i < edgeMesh.getVertices().size(); i++){
-		edgeMesh.getNormals()[i].y *= normalDecay;
-	}
+    nodeMeshVbo.setNormalData(&nodeMeshNormals[0], nodeMeshNormals.size(), GL_STATIC_DRAW);
+    for(int i = 0; i < edgeMeshNormals.size(); i++){
+        edgeMeshNormals[i].y *= normalDecay;
+    }
+
+    edgeMeshVbo.setNormalData(&edgeMeshNormals[0], edgeMeshNormals.size(), GL_STATIC_DRAW);
+
 }
 
 void CloudsVisualSystemTwitter::loadMesh(){
     
-    edgeMesh.clear();
-    nodeMesh.clear();
-	
+//    edgeMesh.clear();
+//    nodeMesh.clear();
+	edgeMeshVbo.clear();
+    nodeMeshVbo.clear();
+    nodeMeshNormals.clear();
+    edgeMeshNormals.clear();
+    ofMesh m;
+    ofMesh m1;
+    
     int  currentIndex =0;
     
     for(int j = 0; j < tweeters.size(); j++){
@@ -636,60 +858,88 @@ void CloudsVisualSystemTwitter::loadMesh(){
 				continue;
 			}
             
-			edgeMesh.addVertex(tweeters[j].position);
-			edgeMesh.addNormal(ofVec3f(1,0,0));
-			edgeMesh.addTexCoord(ofVec2f(tweeters[j].activityMapCoord.x,tweeters[j].activityMapCoord.y));
+            m.addVertex(tweeters[j].position);
+            m.addTexCoord(ofVec2f(tweeters[j].activityMapCoord.x,tweeters[j].activityMapCoord.y));
+            //setting x to determine if its an edge or midpoint in ths shader
+            //using y fot the synapse mix
+            m.addNormal(ofVec3f(1,0,0));
+            edgeMeshNormals.push_back(ofVec3f(0,0,0));
+            
+//			edgeMesh.addVertex(tweeters[j].position);
+//			edgeMesh.addNormal(ofVec3f(1,0,0));
+//			edgeMesh.addTexCoord(ofVec2f(tweeters[j].activityMapCoord.x,tweeters[j].activityMapCoord.y));
 //			tweeters[j].edgeVertexIndex = currentIndex;
 			currentIndex++;
 			
 			//adding midpoint
 			ofVec3f midpoint = tweeters[j].position.getInterpolated(t.position, .5);
-			edgeMesh.addVertex(midpoint);
-			edgeMesh.addNormal(ofVec3f(0,0,0));
-			edgeMesh.addTexCoord(ofVec2f(tweeters[j].activityMapCoord.x,tweeters[j].activityMapCoord.y));
+            m.addVertex(midpoint);
+            m.addTexCoord(ofVec2f(tweeters[j].activityMapCoord.x,tweeters[j].activityMapCoord.y));
+            m.addNormal(ofVec3f(0,0,0));
+            edgeMeshNormals.push_back(ofVec3f(0,0,0));            
+//			edgeMesh.addVertex(midpoint);
+//			edgeMesh.addNormal(ofVec3f(0,0,0));
+//			edgeMesh.addTexCoord(ofVec2f(tweeters[j].activityMapCoord.x,tweeters[j].activityMapCoord.y));
 			currentIndex++;
 			
 			//adding midpoint
-			edgeMesh.addVertex(midpoint);
-			edgeMesh.addNormal(ofVec3f(0,0,0));
-			edgeMesh.addTexCoord(ofVec2f(t.activityMapCoord.x,t.activityMapCoord.y));
+            m.addVertex(midpoint);
+            m.addTexCoord(ofVec2f(t.activityMapCoord.x,t.activityMapCoord.y));
+            m.addNormal(ofVec3f(0,0,0));
+            edgeMeshNormals.push_back(ofVec3f(0,0,0));
+//			edgeMesh.addVertex(midpoint);
+//			edgeMesh.addNormal(ofVec3f(0,0,0));
+//			edgeMesh.addTexCoord(ofVec2f(t.activityMapCoord.x,t.activityMapCoord.y));
 			currentIndex++;
-			
-			edgeMesh.addVertex(t.position);
-			edgeMesh.addNormal(ofVec3f(1,0,0));
-			edgeMesh.addTexCoord(ofVec2f(t.activityMapCoord.x,t.activityMapCoord.y));
-//			t.edgeVertexIndex = currentIndex;
+            
+            m.addVertex(t.position);
+            m.addTexCoord(ofVec2f(t.activityMapCoord.x,t.activityMapCoord.y));
+            m.addNormal(ofVec3f(1,0,0));
+            edgeMeshNormals.push_back(ofVec3f(1,0,0));
+//			edgeMesh.addVertex(t.position);
+//			edgeMesh.addNormal(ofVec3f(1,0,0));
+//			edgeMesh.addTexCoord(ofVec2f(t.activityMapCoord.x,t.activityMapCoord.y));
+//            t.edgeVertexIndex = currentIndex;
+			currentIndex++;
 			
 			links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
 			lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-3, currentIndex);
-			
-			currentIndex++;
+
         }
     }
-	
-	edgeMesh.setUsage(GL_STATIC_DRAW);
-    edgeMesh.setMode(OF_PRIMITIVE_LINES);
+    edgeMeshVbo.setMesh(m, GL_STATIC_DRAW);
+    edgeMeshNumVertices = m.getNumVertices();
+    edgeMeshVbo.setNormalData(&edgeMeshNormals[0], edgeMeshNormals.size(), GL_STATIC_DRAW);
+//	edgeMesh.setUsage(GL_STATIC_DRAW);
+//  edgeMesh.setMode(OF_PRIMITIVE_LINES);
+    cout<<"No of vertices in edges "<< edgeMeshNumVertices<<endl;
     
-    cout<<"No of vertices in edges "<< edgeMesh.getVertices().size()<<endl;
     currentIndex = 0;
     for(int j=0; j<tweeters.size(); j++){
-        float userLinkFactor = ofMap(tweeters[j].userLinks.size(), 0, maxUserLinks, 0, 1);
+//        float userLinkFactor = ofMap(tweeters[j].userLinks.size(), 0, maxUserLinks, 0, 1);
 
-        nodeMesh.addVertex(tweeters[j].position);
-        nodeMesh.addNormal(ofVec3f(userLinkFactor,1.0,0));
+        m1.addVertex(tweeters[j].position);
+        m1.addNormal(ofVec3f(0.5,1.0,0));
+        nodeMeshNormals.push_back(ofVec3f(0.5,1.0,0));
+//        nodeMesh.addVertex(tweeters[j].position);
+//        nodeMesh.addNormal(ofVec3f(userLinkFactor,1.0,0));
         tweeters[j].nodeVertexIndex = currentIndex;
         currentIndex++;
     }
 	
-    cout<<"No of vertices in node "<<  nodeMesh.getVertices().size()<<endl;
-    nodeMesh.setUsage(GL_STATIC_DRAW);
-    nodeMesh.setMode(OF_PRIMITIVE_POINTS);
+
+    nodeMeshVbo.setMesh(m1, GL_STATIC_DRAW);
+    nodeMeshNumVertices = m1.getNumVertices();
+    nodeMeshVbo.setNormalData(&nodeMeshNormals[0], nodeMeshNormals.size(), GL_STATIC_DRAW);
+    cout<<"No of vertices in node "<<  nodeMeshNumVertices<<endl;
+//    nodeMesh.setUsage(GL_STATIC_DRAW);
+//    nodeMesh.setMode(OF_PRIMITIVE_POINTS);
 }
 
 void CloudsVisualSystemTwitter::addUsersFromMentions(ofVec2f& curActivityMapCoord, int activityMapWidth ){
     
     vector<string> names;
-    
+    map<string,int> numberOfMentions;
     for (int i= 0; i < tweeters.size(); i++) {
         names.push_back(tweeters[i].name);
     }
@@ -705,8 +955,6 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(ofVec2f& curActivityMapCoor
     
     map<string,int>::iterator it;
     for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
-        //Filter mentioned users by times mentioned
-//        if(it->second > minUserMentions){
             Tweeter cur = Tweeter(it->first, tweeters.size());
             cur.activityMapCoord = curActivityMapCoord;
             curActivityMapCoord.x++;
@@ -715,7 +963,6 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(ofVec2f& curActivityMapCoor
                 curActivityMapCoord.y++;
             }
             tweeters.push_back(cur);
-//        }
     }
 }
 
@@ -783,6 +1030,7 @@ void CloudsVisualSystemTwitter::drawTweetsForDate(int index){
 
 string CloudsVisualSystemTwitter::getDateAsString(Date d){
     string dateString;
+//    cout<<d.month<<endl;
     dateString += ofToString(d.day) + " - ";
     dateString += ofToString(d.month) + " - ";
     dateString += ofToString(d.year);
@@ -797,6 +1045,8 @@ Tweeter& CloudsVisualSystemTwitter::getTweeterByID(int _id ){
             return tweeters[i];
         }
     }
+    
+    return dummyTweet;
 }
 
 void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
@@ -810,12 +1060,12 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
        ofxUIButton* t  = (ofxUIButton*) e.widget;
        if (t->getValue()) {
            string presetMeshPath = getVisualSystemDataPath() + "graphs/" + t->getName();
-           if (presetMeshPath != currentMeshFilePath) {
-               initSystem(presetMeshPath);
-           }
-           else{
-               cout<<"Mesh : "<<presetMeshPath<<" already loaded"<<endl;
-           }
+//           if (presetMeshPath != currentMeshFilePath) {
+//               initSystem(presetMeshPath);
+//           }
+//           else{
+//               cout<<"Mesh : "<<presetMeshPath<<" already loaded"<<endl;
+//           }
        }
     }
 	else if(e.getName() == "ROTATE"){
@@ -825,8 +1075,12 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
         }
     }
     else if(e.getName() == "RENDER FEEDS"){
-        cout<<"Updating selection from gui event"<<endl;
-        updateCurrentSelection(currentDateIndex, true);
+       ofxUIToggle* t  = (ofxUIToggle*) e.widget;
+        if(t->getValue()){
+            cout<<"Updating selection from gui event"<<endl;
+            updateCurrentSelection(currentDateIndex, true);
+        }
+
     }
     
     font.setSize(fontSize);
@@ -838,6 +1092,7 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     twitterHandleFont.setSize(tweetHandleFontSize);
     twitterHandleFont.setLineLength(tweetHandleLineLength);
     
+
 }
 
 void CloudsVisualSystemTwitter::updateLabelWithCurrentMeshName(string name){
@@ -846,36 +1101,59 @@ void CloudsVisualSystemTwitter::updateLabelWithCurrentMeshName(string name){
 }
 
 void CloudsVisualSystemTwitter::initSystem(string filePath){
-    
+    tweeters.clear();
     vector<string> strs =ofSplitString(filePath, "_");
     vector<string> strs1 =ofSplitString(filePath, "/");
     cout<<strs1[strs1.size()-1]<<" num user mentions = "<<strs[1] <<endl;
-//    minUserMentions = ofToInt(strs[1]);
+
     float startTime = ofGetElapsedTimeMillis();
     currentMeshFilePath = filePath;
+
     clearData();
-    if(strs[strs.size()-1] =="old.net"){
-        cout<<"old data, using tweetsOld folder"<<endl;
-        loadJSONData("tweetsOld");
-        bOldData = true;
-    }
-    else if (strs[strs.size()-1] =="new.net"){
-        cout<<"New data, using tweets clean folder"<<endl;
-        loadJSONData("tweetsClean");
-        bOldData = false;
-        
-    }
-    else{
-        cout<<"poopzz : " <<strs[strs.size()-1]<<endl;
-    }
+    
+    //TODO: make the old data csv too
+    
+//    if(strs[strs.size()-1] =="old.net"){
+//        cout<<"old data, using tweetsOld folder"<<endl;
+//        tweeters = getOldTweeterData();
+//        bOldData = true;
+//    }
+//    else if (strs[strs.size()-1] =="new.net"){
+//        cout<<"New data, using tweets clean folder"<<endl;
+//        tweeters = getNewTweeterData();
+//        bOldData = false;
+//    }
+//    else{
+//        cout<<"poopzz : "<<strs[strs.size()-1]<<endl;
+//    }
+    
+    loadCSVData( tweeters);
+    
+//    for(int i =0 ; i<tweeters.size(); i++){
+//        cout<<tweeters[i].name<< " : "<<tweeters[i].ID<<endl;
+//    }
+    cout<<"Time taken to parse JSON : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+    cout<<" Tweeters size "<<tweeters.size()<<endl;
+    allocateActivityMap();
+    
+
+    startTime = ofGetElapsedTimeMillis();
     xScale = 100;
     yScale = 100;
     zScale = 100;
+    
     loadAvatars();
+    cout<<"Time taken to load avatars : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+    
+    startTime = ofGetElapsedTimeMillis();
     parseClusterNetwork(filePath);
+    cout<<"Time taken to parse pajek : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+    startTime = ofGetElapsedTimeMillis();
     
     loadMesh();
+    
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
+    
     currentDateIndex = dateIndex.size() -1;
     updateActiveTweeters(currentDateIndex);
     
@@ -885,17 +1163,18 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     
     cout<<"Time taken to load mesh : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
 }
-
-void CloudsVisualSystemTwitter::createNewGraph(string outputFileName, string inputDataFolder){
-    clearData();
-    loadJSONData(inputDataFolder);
-    createPajekNetwork(outputFileName);
-}
+    
+//void CloudsVisualSystemTwitter::createNewGraph(string outputFileName, string inputDataFolder){
+//    clearData();
+//    loadJSONData(inputDataFolder);
+//    createPajekNetwork(outputFileName);
+//}
 
 void CloudsVisualSystemTwitter::loadGraphFromPath(string filePath){
     cout<<filePath<<endl;
     
     if(ofFile::doesFileExist(filePath)){
+        ofLogNotice("CloudsVisualSystemTwitter::loadGraphFromPath");
         initSystem(filePath);
     }
     else{
@@ -937,6 +1216,7 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
             cout<<"LOADING MESH : "<<t[i]->getName()<<endl;
             string presetMeshPath = getVisualSystemDataPath() + "graphs/" + t[i]->getName();
             if (presetMeshPath != currentMeshFilePath) {
+                        ofLogNotice("CloudsVisualSystemTwitter::selfPresetLoaded");
                 initSystem(presetMeshPath);
             }
             else{
@@ -1011,14 +1291,17 @@ ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor& hsv){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTwitter::selfDraw()
 {
-    
     ofPushStyle();
     ofPushMatrix();
     
     ofSetBackgroundColor(0,0,0);
+    
     glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LINE_SMOOTH);
+    
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofEnableSmoothing();
+    
 	ofFloatColor lineNodeBase = getRGBfromHSV(lineNodeBaseHSV);
 	ofFloatColor lineEdgeBase = getRGBfromHSV(lineEdgeBaseHSV);
 	ofFloatColor lineNodePop = getRGBfromHSV(lineNodePopHSV);
@@ -1031,31 +1314,17 @@ void CloudsVisualSystemTwitter::selfDraw()
     if(bRenderMesh){
         
 ////POINTS
+
 		pointsShader.begin();
 		
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
 		glEnable(GL_POINT_SMOOTH);
-		
-//		pointsShader.setUniform1f("pointSize", ofRandom(4));
-//		pointsShader.setUniform4f("nodeBaseColor",
-//								  nodeBaseColor.r,
-//								  nodeBaseColor.g,
-//								  nodeBaseColor.b,
-//								  nodeBaseColor.a);
-//		pointsShader.setUniform4f("nodePopColor",
-//								  nodePopColor.r,
-//								  nodePopColor.g,
-//								  nodePopColor.b,
-//								  nodePopColor.a);
         
         pointsShader.setUniformTexture("tex", sprite, 1);
-
+		pointsShader.setUniformTexture("activityMap", activityMap, 2);
         pointsShader.setUniform1f("maxSize", maxSize);
         pointsShader.setUniform1f("minSize", minSize);
-//        pointsShader.setUniform1f("sizeMultiplier", sizeMultiplier);
-//        pointsShader.setUniform3f("attractor", 0, 0, 0);
-//        pointsShader.setUniform1f("radius", 300.);
 		pointsShader.setUniform4f("spriteBaseColor",
 								spriteBaseColor.r,
 								spriteBaseColor.g,
@@ -1070,11 +1339,15 @@ void CloudsVisualSystemTwitter::selfDraw()
         
         ofEnablePointSprites();
         ofDisableArbTex();
-        nodeMesh.draw();
+        
+        
+        
+        nodeMeshVbo.draw(ofGetGLPrimitiveMode(OF_PRIMITIVE_POINTS), 0, nodeMeshNumVertices);
         ofEnableArbTex();
         ofDisablePointSprites();
 		pointsShader.end();
 /////END POINTS
+        
         
         
 		lineShader.begin();
@@ -1108,12 +1381,14 @@ void CloudsVisualSystemTwitter::selfDraw()
 								edgeInterpolateExponent);
 		lineShader.setUniformTexture("activityMap", activityMap, 1);
         lineShader.setUniform1f("synapseLevel",synapseLevel);
-		
-        edgeMesh.draw();
+
+        edgeMeshVbo.draw(ofGetGLPrimitiveMode(OF_PRIMITIVE_LINES), 0, edgeMeshNumVertices);
 		lineShader.end();
+
     }
     
-    if(bRenderText){
+    if(bRenderText)
+    {
         for(int i = 0; i < activeTweeters.size(); i++){
 //            activeTweeters[i]->textDecayRate *= edgeDecayRate;
 //            string test  = " : " + ofToString(activeTweeters[i]->position);
@@ -1146,7 +1421,7 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
             for(int i=0; i< numberOfTweets; i++){
                 bool alreadySelected = false;
                 string currentDate = getDateAsString(dateIndex[index]);
-                
+                cout<<currentDate<<endl;
                 vector<pair<string*, string*> > :: iterator it;
                 for(int i = 0; i < tweeters.size(); i++){
                     
@@ -1186,7 +1461,7 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
             else{
                 index--;
             }
-            cout<<"current size : "<<currentSelection.size()<<" required size : "<<numberOfTweets<<endl;
+//            cout<<"current size : "<<currentSelection.size()<<" required size : "<<numberOfTweets<<endl;
         }
     }
     else{
@@ -1228,10 +1503,8 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
             
         }
     }
-    
     animationLerpAmt = 0;
     bAnimateFeed = true;
-    
 }
 
 void CloudsVisualSystemTwitter::drawFeed(){
@@ -1455,7 +1728,6 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos, float alpha){
     ofxBillboardBeginSphericalCheat(pos);
     ofPushStyle();
     ofSetColor(col);
-//    ofSetColor(col.r,col.g,col.b,col.a);
     ofScale(0.01,-0.01,0.01);
     ofTranslate(pos.x,pos.y,pos.z);
     font.drawString(ofToUpper(text),0,0);

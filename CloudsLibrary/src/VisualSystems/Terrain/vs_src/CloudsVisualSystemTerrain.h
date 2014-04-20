@@ -10,6 +10,7 @@
 
 #include "CloudsVisualSystem.h"
 
+
 class CloudsVisualSystemTerrain : public CloudsVisualSystem {
 public:
     
@@ -27,7 +28,7 @@ public:
     void selfDraw();
     void selfExit();
     void selfBegin();
-        void selfEnd();
+	void selfEnd();
     
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
@@ -38,7 +39,7 @@ public:
     void selfMouseReleased(ofMouseEventArgs& data);
     
     void selfInteractionMoved(CloudsInteractionEventArgs& args);
-    
+    void selfInteractionDragged(CloudsInteractionEventArgs& args);
     void selfSetupGui();
  
     void selfSetupSystemGui();
@@ -48,6 +49,13 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
     void billBoard();
+    
+    void resizeBrush();
+    void selfSetDefaults();
+	
+	ofVec2f hermiteInterpolate(ofVec2f y0, ofVec2f y1,
+							   ofVec2f y2, ofVec2f y3,
+							   float pct, float tension, float bias);
 
         // if you use a custom camera to fly through the scene
     // you must implement this method for the transitions to work properly
@@ -120,12 +128,14 @@ protected:
     
     ofShader   colorShader;
     ofShader   circleShader;
+    ofShader   vBlurShader, hBlurShader;
     ofFloatColor  mHighColor;
     ofFloatColor  mLowColor;
     float          mAtten;
     float         mBalance;
     ofVec2f mouse;
-    ofImage canvas;
+    ofFbo canvasSrc;
+    ofFbo canvasDest;
     
     bool bShowDebug;
     bool bDoNoise;
@@ -142,4 +152,15 @@ protected:
 	float bgSat;
 	float bgBri;
     float mTexMix;
+    float brushSize;
+    float mHeightScale;
+    
+    ofFloatColor mTraceColor;
+    
+    ofMesh brushMesh, blurMesh;
+    float mDepositScale, mCurDepositScale, dryRate, blurRadius;
+    map<int, vector<ofVec2f> > playerHistoryMap;
+    map<int, vector<ofVec2f> > playerDepositPoints;
+    vector<ofVec2f> depositPoints;
+
 };

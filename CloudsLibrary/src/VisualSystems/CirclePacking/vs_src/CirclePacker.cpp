@@ -63,10 +63,10 @@ void CirclePacker::pack()
                 float vx = (dx/droot) * (r-droot);
                 float vy = (dy/droot) * (r-droot);
                 
-                c1.x -= vx * cd1/(cd1+cd2) * ofClamp(ofMap(c1.r, 100., 0., .3, 1.),.3,1.);
-                c1.y -= vy * cd1/(cd1+cd2) * ofClamp(ofMap(c1.r, 100., 0., .3, 1.),.3,1.);
-                c2.x += vx * cd2/(cd1+cd2) * ofClamp(ofMap(c2.r, 100., 0., .3, 1.),.3,1.);
-                c2.y += vy * cd2/(cd1+cd2) * ofClamp(ofMap(c2.r, 100., 0., .3, 1.),.3,1.);
+                c1.x -= vx * cd1/(cd1+cd2) * ofMap(c1.r, 100., 0., .3, 1., true);
+                c1.y -= vy * cd1/(cd1+cd2) * ofMap(c1.r, 100., 0., .3, 1., true);
+                c2.x += vx * cd2/(cd1+cd2) * ofMap(c2.r, 100., 0., .3, 1., true);
+                c2.y += vy * cd2/(cd1+cd2) * ofMap(c2.r, 100., 0., .3, 1., true);
             }
         }
     }
@@ -97,7 +97,7 @@ void CirclePacker::update() {
 
 void CirclePacker::draw(bool _nasdaq, bool _blanks, bool _hashtags)
 {
-    if (_blanks == true && !circles.empty()){
+    if (_blanks && !circles.empty()){
         for (list<Circle>::iterator i = circles.begin();i != circles.end();)
     {
         Circle& c = *i;
@@ -113,40 +113,43 @@ void CirclePacker::draw(bool _nasdaq, bool _blanks, bool _hashtags)
         }
     }
     
-//    if (_nasdaq == true){
-//        for (int i = 0; i < circles.size(); i++)
-//        {
-//            Circle& c = circles[i];
-//            if (c.r < 1)
-//            {
-//                circles.erase(circles.begin() + i);
-//            }
-//            else
-//            {
-//                c.drawCompanies();
-//            }
-//        }
-//        
-//    }
-//    
-//    if (_hashtags == true){
-//        for (int i = 0; i < circles.size(); i++)
-//        {
-//            Circle& c = circles[i];
-//            if (circles.size() > 25 )
-//            {
-//                circles[0].r -= .5;
-//            }
-//            if (c.r < 1)
-//            {
-//                circles.erase(circles.begin() + i);
-//            }
-//            else
-//            {
-//                c.drawHashtags();
-//            }
-//        }
-   // }
+    if (_nasdaq ){
+        for (list<Circle>::iterator i = circles.begin();i != circles.end();)
+        {
+            Circle& c = *i;
+            if (c.r < 1)
+            {
+                i = circles.erase(i);
+            }
+            else
+            {
+                c.drawCompanies();
+                i++;
+            }
+        }
+    }
     
+    
+    if (_hashtags ){
+        
+        for (list<Circle>::iterator i = circles.begin(); i != circles.end();)
+        {
+            Circle& c = *i;
+            if (circles.size() > 25 )
+            {
+                Circle& b = *(circles.begin());
+                b.r -= .5;
+            }
+            if (c.r < 1)
+            {
+                i = circles.erase(i);
+            }
+            else
+            {
+                c.drawHashtags();
+            }
+        }
+    
+    }
 }
 

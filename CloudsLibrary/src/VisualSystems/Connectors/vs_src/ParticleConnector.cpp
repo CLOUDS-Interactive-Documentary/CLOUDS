@@ -32,9 +32,9 @@ ParticleConnector::~ParticleConnector(){
 	
 }
 
-void ParticleConnector::update(){
+void ParticleConnector::update(float speed){
 
-	position += direction;
+	position += direction * speed;
 	
 	if(position.x > upperBounds.x) position.x = lowerBounds.x + (position.x - upperBounds.x);
 	if(position.y > upperBounds.y) position.y = lowerBounds.y + (position.y - upperBounds.y);

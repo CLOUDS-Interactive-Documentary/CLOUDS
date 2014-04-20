@@ -58,6 +58,9 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVboByteColor &vbo, string path
 	vbo.setIndexData(indices,numTriangles*3, GL_STATIC_DRAW);
 	
 	//cout << "File " << path << " has " << numTriangles << " triangles " << endl;
+    
+    delete buffer;
+    
 	return numTriangles*3;
 }
 
@@ -120,6 +123,11 @@ void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
     guis.push_back(customGui);
     guimap[customGui->getName()] = customGui;
 
+}
+
+void CloudsVisualSystemLaplacianTunnel::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemLaplacianTunnel::selfGuiEvent(ofxUIEventArgs &e){
@@ -212,8 +220,8 @@ void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
 
 	
 	ofVec2f targetLookAngle;
-	targetLookAngle.x = ofMap(GetCloudsInputX(), 0, ofGetWidth(), -maxLookAngle,maxLookAngle);
-	targetLookAngle.y = ofMap(GetCloudsInputY(), 0, ofGetHeight(),-maxLookAngle,maxLookAngle);
+	targetLookAngle.x = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), -maxLookAngle,maxLookAngle);
+	targetLookAngle.y = ofMap(GetCloudsInputY(), 0, getCanvasHeight(),-maxLookAngle,maxLookAngle);
 	
 	currentLookAngle.interpolate(targetLookAngle, .05);
 	

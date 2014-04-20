@@ -38,7 +38,7 @@ typedef struct{
 	bool isEdge;
 	float speed;
 	ofVec3f orig,goal,gridV;
-	ofVec3f vD;
+	ofVec3f vD,v;
 	Particle3D* p;
 } MWParticle;
 
@@ -96,18 +96,21 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	ofCamera& getCameraRef(){
 			return cam;
 	}
+    void selfSetDefaults();
 
   protected:
 
-	bool doAutoGenerate;
+	bool doAutoGenerate,doLoRes;
 
     ofCamera cam;
+    ofVec3f camC,camRot,camRotGoal;
     ofVec3f grav,gravGoal;
+    float camSpeed;
     int gravCnt,gravCntGoal;
 
     ofVec3f camCenterOffs,mousePos;
-    ofVec3f modelRot,modelRotD;
-    float modelRotMax;
+    ofVec3f modelRot;
+    float modelRotD[3],modelRotMax,modelTrans;
 	bool camEnabled,colorLightEnabled;
 
 	ofFloatColor cWhite,cBlack,cGray;
@@ -116,7 +119,9 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	static const bool MWDEBUG=true;
 	static const int FREE=0,FIXEDSTATIC=2,FIXEDMOVING=1;
 	static const int GRIDRECT=1,GRIDCIRC=0,GRIDCYL=2;
-	static const int LIGHTS=3;
+	static const int LIGHTS=4;
+
+	bool lineMesh;
 
   	vector<MWParticle> pp;
 	vector<MWParticle> ppActive;
@@ -124,19 +129,25 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	int activityCnt;
 	float clothWidth;
 	float clothHeight;
-	float colorIndex,colorMod;
+	float colorIndex,colorMod,colorStrategyF;
 	int colorStrategy;
 
+	ofxUILabel* bbLabel[4];
+	ofVec3f bbMin,bbMax,bbC,meshCentroid;
+	float bbDim,bbMult,bbMultTmp;
 
 	bool gridDoStitch;
 	int gridSize;
-	float gridSizeF;
 	int gridType;
 	int fixCnt;
+	float gridSizeF,gridTypeF;
+	float vnormalMod;
+	float activityMod;
 	
 
 	void mwUpdate();
 	void mwUpdateCamera();
+	void mwMeshBB();
 	void mwLights();
 	void mwNewLightColor();
 
@@ -164,6 +175,9 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 
 	ofColor rndColor();
 	void shiftHue(ofColor &cc,float mod);
+	float wraplerp(float a, float b, float t, float w);
+
+
 	bool rndBool(float prob);
 	float rndSigned(float a,float b);
 	float bezierPoint(float a, float b, float c, float d, float t);
@@ -195,9 +209,10 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	
 	void updateNormals();
 	
+	int lastID;
+	int lastCnt;
 
-
-	vector< vector<Particle3D*> > particles;
+	vector<vector<Particle3D*> > particles;
 	
 	//color generators
 	void initColors(int row,int cnt);

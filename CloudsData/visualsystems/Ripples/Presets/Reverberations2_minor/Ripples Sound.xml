@@ -1,0 +1,57 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Ripples Sound</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>442.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Enable sound</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Note vol</Name>
+    <Value>0.413793117</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Note noise vol</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Base note</Name>
+    <Value>2</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Chord Major 4</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Chord Minor 4</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Scale Major</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Scale Blues</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Scale Pentatonic</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Main gain</Name>
+    <Value>0.581280768</Value>
+</Widget>

@@ -12,7 +12,8 @@
 
 class wArc {
 public:
-    
+    wArc();
+	~wArc();
     void init(wCity _from, wCity _to);
     void init(wArc _fromArcDst, wCity _to);
     
@@ -24,10 +25,12 @@ public:
     void update();
     void draw();
     
+	ofVboMesh tail;
+//	vector<ofIndexType> indeces;
     bool bActive;
 private:
     
-    vector<ofPoint> tail;
+//    vector<ofPoint> tail;
     ofQuaternion from,to;
     wCity   dst;
     

@@ -21,7 +21,9 @@ void CloudsVisualSystemMemory::selfSetup()
     generate();
     
     // sound
-    synth.setOutputGen(buildSynth());
+    fMainGain = 0;
+    mainGain.value(0);
+    synth.setOutputGen(buildSynth() * mainGain);
 }
 
 void CloudsVisualSystemMemory::selfSetDefaults(){
@@ -40,6 +42,9 @@ void CloudsVisualSystemMemory::selfSetDefaults(){
     bDeFrag = false;
     bBiDirectionalSort = false;
     bIs2D = true;
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+    
 }
 
 void CloudsVisualSystemMemory::selfSetupSystemGui()
@@ -58,6 +63,8 @@ void CloudsVisualSystemMemory::selfSetupSystemGui()
     sysGui->addSlider("Random_Up", 0.0, 100, &randomUp);
     sysGui->addSlider("Random_Down", 0.0, 100, &randomDown);
     sysGui->addSlider("Noise_Lerp", 0.0, 1.0, &noiseLerp);
+    
+    sysGui->addSlider("Main Gain", 0, 1, &fMainGain);
 }
 
 void CloudsVisualSystemMemory::selfSetupRenderGui()
@@ -132,9 +139,9 @@ void CloudsVisualSystemMemory::generateFromMemory(){
     
     int xMargin = 0;
     int yMargin = 0;
-    
-    int width = ofGetWidth()-xMargin*2.0;
-    int height = ofGetHeight()-yMargin*2.0;
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    int width = getCanvasWidth()-xMargin*2.0;
+    int height = getCanvasHeight()-yMargin*2.0;
     
     float widthBlocks = blockWidth*blockScale;
     float heightBlocks = blockHeight*blockScale;
@@ -206,8 +213,9 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
     int xMargin = 0;
     int yMargin = 0;
     
-    int width = ofGetWidth()-xMargin*2.0;
-    int height = ofGetHeight()-yMargin*2.0;
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    int width = getCanvasWidth()-xMargin*2.0;
+    int height = getCanvasHeight()-yMargin*2.0;
     
     ofRectangle block;
     block.width = blockWidth*blockScale;
@@ -287,6 +295,7 @@ void CloudsVisualSystemMemory::selfUpdate()
                 if ( index < blocks.size() ){
                     blocks[index].color = ofFloatColor( ofLerp( blocks[index].color.getBrightness(), ofNoise(x,y,ofGetElapsedTimef()*0.1), noiseLerp) );
                     blocks[index].value = blocks[index].color.getBrightness()*255;
+
                     index++;
                 } else {
                     break;
@@ -317,7 +326,10 @@ void CloudsVisualSystemMemory::selfUpdate()
 	
     for (int i = 0; i < blocks.size(); i++) {
         blocks[i].update();
-  }
+    }
+    
+    // sound
+    mainGain.value(fMainGain);
 
 }
 
@@ -443,6 +455,7 @@ void CloudsVisualSystemMemory::applyDeFrag()
 void CloudsVisualSystemMemory::swapBlocks(int _indexA, int _indexB, bool _colored){
     swap(blocks[_indexA].value, blocks[_indexB].value);
     swap(blocks[_indexA].color, blocks[_indexB].color);
+	swap(blocks[_indexA].bActivated, blocks[_indexB].bActivated	);
     blocks[_indexA].bSelected = _colored;
     blocks[_indexB].bSelected = _colored;
 }
@@ -450,10 +463,6 @@ void CloudsVisualSystemMemory::swapBlocks(int _indexA, int _indexB, bool _colore
 void CloudsVisualSystemMemory::selfDrawBackground()
 {
     ofSetLineWidth(0.01);
-//    for (int i = 0; i < blocks.size(); i++) {
-//        blocks[i].draw();
-//  }
-	
 	fillMesh.draw();
 	outlineMesh.draw();
 }
@@ -463,8 +472,13 @@ Generator CloudsVisualSystemMemory::buildSynth()
 {
     string strDir = GetCloudsDataPath()+"sound/textures/";
     ofDirectory sdir(strDir);
-    string strAbsPath = sdir.getAbsolutePath() + "/CPUBeepsFastDrone_.aif";
-    
+//    string strAbsPath = sdir.getAbsolutePath() + "/CPUBeepsFastDrone_.aif";
+    string strAbsPath = ofToDataPath(strDir + "/" + "CPUBeepsFastDrone_.aif", true);
+//    for(int i=0; i<tonicSamples.size();i++){
+//        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
+//        samples[i] = loadAudioFile(strAbsPath);
+//    }
+
     SampleTable sample = loadAudioFile(strAbsPath);
     
     Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);
@@ -503,22 +517,29 @@ void CloudsVisualSystemMemory::selfKeyReleased(ofKeyEventArgs & args)
 
 }
 
-void CloudsVisualSystemMemory::mouseDragged(ofMouseEventArgs& data)
+void CloudsVisualSystemMemory::selfMouseDragged(ofMouseEventArgs& data)
 {
 
 }
 
-void CloudsVisualSystemMemory::mouseMoved(ofMouseEventArgs &args)
+void CloudsVisualSystemMemory::selfMouseMoved(ofMouseEventArgs &args)
 {
-    
+	for(int i = 0; i < blocks.size(); i++){
+		ofRectangle r(blocks[i]);
+		r.scaleFromCenter(5.0);
+        if(r.inside( args.x, args.y )){
+			blocks[i].bActivated = true;
+//			break;
+		}
+    }
 }
 
-void CloudsVisualSystemMemory::mousePressed(ofMouseEventArgs &args)
+void CloudsVisualSystemMemory::selfMousePressed(ofMouseEventArgs &args)
 {
 
 }
 
-void CloudsVisualSystemMemory::mouseReleased(ofMouseEventArgs &args)
+void CloudsVisualSystemMemory::selfMouseReleased(ofMouseEventArgs &args)
 {
     
 }

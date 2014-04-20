@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>322.000000000</XPosition>
-    <YPosition>235.000000000</YPosition>
+    <XPosition>849.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,11 +12,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>HazyCloseUp</Name>
+    <Name>Brown_wide</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Hazy_wide</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>HazyCloseUp</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Simple</Name>
+    <Value>0</Value>
 </Widget>

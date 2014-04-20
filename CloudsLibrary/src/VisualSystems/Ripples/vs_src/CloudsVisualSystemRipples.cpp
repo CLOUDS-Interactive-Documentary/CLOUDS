@@ -72,12 +72,16 @@ void CloudsVisualSystemRipples::selfSetupGui()
     items.push_back("Scale Blues");
     items.push_back("Scale Pentatonic");
     soundGui->addDropDownList("Scale", items);
+    soundGui->addSlider("Main gain", 0, 1, &fMainGain);
     
 	ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemRipples::selfGuiEvent);
 	guis.push_back(soundGui);
 	guimap[customGui->getName()] = soundGui;
 }
-
+void CloudsVisualSystemRipples::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
 void CloudsVisualSystemRipples::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "TINT HUE") {
@@ -148,8 +152,9 @@ void CloudsVisualSystemRipples::selfSetup()
     noteIndex = 0;
     baseNote = 0;
     setScaleByName("Scale Pentatonic");
-    mainSynth.setOutputGen(buildSynth());
-    currentUserInput = ofVec2f(-1, -1);
+    fMainGain = 0;
+    mainGain.value(0);
+    mainSynth.setOutputGen(buildSynth() * mainGain);
 }
 
 void CloudsVisualSystemRipples::restart()
@@ -182,6 +187,8 @@ void CloudsVisualSystemRipples::restart()
     renderMesh.addTexCoord(ofVec2f(width, 0));
     renderMesh.addTexCoord(ofVec2f(width, height));
     renderMesh.addTexCoord(ofVec2f(0, height));
+	
+	bRestart = false;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -215,42 +222,49 @@ void CloudsVisualSystemRipples::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemRipples::selfUpdate()
 {    
-    if (bRestart || ripplesSrcFbo.getWidth() != getCanvasWidth() || ripplesSrcFbo.getHeight() != getCanvasHeight()) {
+    if (bRestart ||
+		ripplesSrcFbo.getWidth() != getCanvasWidth() ||
+		ripplesSrcFbo.getHeight() != getCanvasHeight())
+	{
         restart();
-        bRestart = false;
     }
     
     tintColor.setHsb(tintHue->getPos(), tintSat->getPos(), tintBri->getPos(), tintAlpha->getPos());
     dropColor.setHsb(ofRandom(minDropHue, maxDropHue), ofRandom(minDropSat, maxDropSat), ofRandom(minDropBri, maxDropBri));
     
-    if ((bDropOnPress && GetCloudsInputPressed()) || (!bDropOnPress && ofGetFrameNum() % dropRate == 0)) {
-        ofPushStyle();
-        ofPushMatrix();
-        ripplesSrcFbo.begin();
-        {
-            ofSetColor(dropColor);
-            ofNoFill();
-#ifdef OCULUS_RIFT
-            // I don't know why everything is flipped, but it is.
-            ofCircle(getCanvasHeight() - GetCloudsInputY(), getCanvasWidth() - GetCloudsInputX(), radius);
-#else
-            if(currentUserInput.x != -1) ofCircle(currentUserInput.x, currentUserInput.y , radius);
-            
-#endif
-        }
-        ripplesSrcFbo.end();
-        ofPopMatrix();
-        ofPopStyle();
+    // Add new drops.
+    ofPushStyle();
+    ofPushMatrix();
+    ripplesSrcFbo.begin();
+    {
+        ofSetColor(dropColor);
+        ofNoFill();
         
-        // sound
-        if (dontTriggerSoundCounter == 0) {
-            dontTriggerSoundCounter = 20;
-            if (bEnableSounds) {
-                playNote(currentUserInput.x/40+50);
+#ifdef OCULUS_RIFT
+        // I don't know why everything is flipped, but it is.
+        ofCircle(getCanvasHeight() - GetCloudsInputY(), getCanvasWidth() - GetCloudsInputX(), radius);
+#else
+        map<int, CloudsInteractionEventArgs> inputPoints = GetCloudsInputPoints();
+        for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+            if ((bDropOnPress && it->second.actionType > 0) || (!bDropOnPress && ofGetFrameNum() % dropRate == 0)) {
+                ofCircle(it->second.position.x, it->second.position.y, radius);
+                
+                // sound
+                if (dontTriggerSoundCounter == 0) {
+                    dontTriggerSoundCounter = 20;
+                    if (bEnableSounds) {
+                        playNote(it->second.position.x / 40 + 50);
+                    }
+                }
+
             }
         }
+#endif
     }
-    
+    ripplesSrcFbo.end();
+    ofPopMatrix();
+    ofPopStyle();
+        
     ripplesDstFbo.begin();
     ripplesShader.begin();
     ripplesShader.setUniformTexture("backbuffer", ripplesDstFbo.getTextureReference(), 1);
@@ -262,8 +276,6 @@ void CloudsVisualSystemRipples::selfUpdate()
     ripplesShader.end();
     ripplesDstFbo.end();
 
-    ofPopStyle();
-    
     // sound
     if (dontTriggerSoundCounter > 0)
     {
@@ -271,6 +283,7 @@ void CloudsVisualSystemRipples::selfUpdate()
     }
     volumeControl[0].value(volume[0]);
     volumeControl[1].value(volume[1]);
+    mainGain.value(fMainGain);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -320,7 +333,7 @@ void CloudsVisualSystemRipples::selfKeyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemRipples::selfInteractionDragged(CloudsInteractionEventArgs& args){
-    currentUserInput = ofVec2f(args.position.x, args.position.y);
+
 }
 
 void CloudsVisualSystemRipples::selfInteractionMoved(CloudsInteractionEventArgs& args){
@@ -328,11 +341,11 @@ void CloudsVisualSystemRipples::selfInteractionMoved(CloudsInteractionEventArgs&
 }
 
 void CloudsVisualSystemRipples::selfInteractionStarted(CloudsInteractionEventArgs& args){
-    currentUserInput = ofVec2f(args.position.x, args.position.y);
+
 }
 
 void CloudsVisualSystemRipples::selfInteractionEnded(CloudsInteractionEventArgs& args){
-//    currentUserInput = ofVec2f(args.position.x, args.position.y);
+
 }
 
 Generator CloudsVisualSystemRipples::buildSynth()

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>MINECRAFT</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>471.000000000</XPosition>
-    <YPosition>84.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>70.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>44</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>cloudShadow</Name>
-    <Value>0.556650221</Value>
+    <Value>0.088669948</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>groundBrightness</Name>
-    <Value>0.000000000</Value>
+    <Value>8.793103218</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -78,15 +78,15 @@
 <Widget>
     <Kind>25</Kind>
     <Name>cloudShadowHue</Name>
-    <Value>116.822654724</Value>
+    <Value>154.507385254</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>cloudShadowSaturation</Name>
-    <Value>187.167480469</Value>
+    <Value>61.551723480</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>cloudShadowBrightness</Name>
-    <Value>33.916255951</Value>
+    <Value>10.049261093</Value>
 </Widget>

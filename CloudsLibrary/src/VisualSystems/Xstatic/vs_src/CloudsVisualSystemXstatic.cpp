@@ -29,7 +29,9 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addToggle("DRAW BOX", &bDrawBox);
     //customGui->addSlider("BOX SIZE", 10, 300, &kBoxSize);
     customGui->addToggle("REGENERATE", &bShouldRegenerate);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     customGui->addToggle("BIG BANG MODE", &bBigBang);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     customGui->addIntSlider("NUM PARTICLES", 0, 2000, &nParticles);
     customGui->addToggle("BOUNCE OFF WALLS", &bBounceOffWalls);
     customGui->addToggle("WRAP EDGES", &bWrapEdges);
@@ -45,13 +47,14 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addSpacer();
     customGui->addToggle("FREEZE", &bShouldFreeze);
     customGui->addToggle("RISE", &bShouldRise);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     customGui->addToggle("FALL", &bShouldFall);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     customGui->addMinimalSlider("RISE/FALL SPEED", 0, 200, &riseFallSpeed);
     
     customGui->addToggle("EXPLODE", &bShouldExplode);
     customGui->addMinimalSlider("EXPLODE SPEED", 0, 450, &explodeSpeed);
     
-    customGui->addLabel("GRAVITY");
     customGui->addMinimalSlider("GRAVITY X", -1, 1, &gravity.x);
     customGui->addMinimalSlider("GRAVITY Y", -1, 1, &gravity.y);
     customGui->addMinimalSlider("GRAVITY Z", -1, 1, &gravity.z);
@@ -90,6 +93,11 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemXstatic::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+}
+
+void CloudsVisualSystemXstatic::selfSetupCameraGui(){
+    camGui->addSlider("near plane", 0.01, 10, &clipPlanes.min);
+	camGui->addSlider("far plane" , 1000, 100000, &clipPlanes.max);
 }
 
 void CloudsVisualSystemXstatic::selfGuiEvent(ofxUIEventArgs &e)
@@ -143,7 +151,24 @@ void CloudsVisualSystemXstatic::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemXstatic::selfSetup()
 {
     
+    clipPlanes.min = 1.f;
+    clipPlanes.max = 100000.f;
     
+    nParticles = 500;
+    data = new GLfloat[kMaxParticles * kStrideData];
+    regenerate(bBigBang);
+    bShouldRegenerate = true;
+    
+    spriteDir.listDir(getVisualSystemDataPath() + "spriteImages");
+    spriteDir.sort();
+    
+    ofDisableArbTex();
+    shader.load(getVisualSystemDataPath() + "shaders/particles");
+    ofEnableArbTex();
+}
+
+void CloudsVisualSystemXstatic::selfSetDefaults()
+{
     gravity.set(0);
     drag = 0.0;
     
@@ -163,7 +188,7 @@ void CloudsVisualSystemXstatic::selfSetup()
     
     explodeSpeed  = 1.0;
     riseFallSpeed = 1.0;
-
+    
     bShouldExplode = true;
     bShouldFreeze  = false;
     bShouldFall    = false;
@@ -179,17 +204,8 @@ void CloudsVisualSystemXstatic::selfSetup()
     bBounceOffWalls = true;
     bWrapEdges = false;
     
-    nParticles = 500;
-    data = new GLfloat[kMaxParticles * kStrideData];
-    regenerate(bBigBang);
-    bShouldRegenerate = true;
-    
-    spriteDir.listDir(getVisualSystemDataPath() + "spriteImages");
-    spriteDir.sort();
-    
-    ofDisableArbTex();
-    shader.load(getVisualSystemDataPath() + "shaders/particles");
-    ofEnableArbTex();
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemXstatic::regenerate(bool bBigBang)
@@ -233,6 +249,9 @@ void CloudsVisualSystemXstatic::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemXstatic::selfUpdate()
 {
+    getCameraRef().setNearClip(clipPlanes.min);
+    getCameraRef().setFarClip(clipPlanes.max);
+    
     if (bShouldRegenerate) {
         regenerate(bBigBang);
         bShouldRegenerate = false;

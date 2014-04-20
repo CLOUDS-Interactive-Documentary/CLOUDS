@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>425.000061035</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>195.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -52,6 +52,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>QuantumDecoherence_jm</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>RapidCulture</Name>
     <Value>0</Value>
 </Widget>
@@ -68,5 +73,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SyntheticWhite</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>We are stars</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Worms</Name>
     <Value>0</Value>
 </Widget>

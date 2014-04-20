@@ -21,22 +21,6 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>SPH1 RADIUS</WidgetName>
-                <WidgetID>12</WidgetID>
-                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SPH1 LIMIT</WidgetName>
-                <WidgetID>14</WidgetID>
-                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>SPH0 RADIUS</WidgetName>
                 <WidgetID>12</WidgetID>
                 <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
@@ -48,6 +32,22 @@
                 <WidgetName>SPH0 LIMIT</WidgetName>
                 <WidgetID>14</WidgetID>
                 <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH1 RADIUS</WidgetName>
+                <WidgetID>12</WidgetID>
+                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH1 LIMIT</WidgetName>
+                <WidgetID>14</WidgetID>
+                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

@@ -1,1 +1,15 @@
-<keyframes />
+<keyframes>
+    <key>
+        <px>5.584310055</px>
+        <py>0.698062003</py>
+        <pz>199.921005249</pz>
+        <ox>-0.001745333</ox>
+        <oy>0.013962161</oy>
+        <oz>0.000000000</oz>
+        <ow>0.999900997</ow>
+        <easein>0</easein>
+        <easeout>0</easeout>
+        <time>00:00:00:962</time>
+        <value>0.000000000</value>
+    </key>
+</keyframes>

@@ -1,0 +1,23 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>pathPosition</WidgetName>
+                <WidgetID>4</WidgetID>
+                <WidgetCanvasParent>CameraPath</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>fogExpo</WidgetName>
+                <WidgetID>4</WidgetID>
+                <WidgetCanvasParent>Fog</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

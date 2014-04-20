@@ -163,23 +163,30 @@ private:
 public:
     colonyPartitionMap(){
         //Populating this in advance. Cost is very little for any reasonably sized partition.
-        for (int i = 0 ; i < MAP_SUBDIV ; ++i){
+        for (int i = 0 ; i < MAP_SUBDIV; ++i){
             for (int j = 0; j < MAP_SUBDIV; ++j) {
                 coord2i c = coord2i(i, j);
                 partitions[c.ordered()] = new vector<cellPtr>();
+				neighbors[c.ordered()] = NULL;
             }}}
     ~colonyPartitionMap(){
         clear();
         for ( int i = 0 ; i < MAP_SUBDIV * MAP_SUBDIV ; i++ ){
-            delete partitions[i];
-            partitions[i] = NULL; //UGH C++
+			if(partitions[i] != NULL){
+				delete partitions[i];
+				partitions[i] = NULL; //UGH C++
+			}
         }
     }
     void clear(){
         for (int i = 0 ; i < MAP_SUBDIV * MAP_SUBDIV ; i++) {
-            partitions[i]->clear();
-            delete neighbors[i];
-            neighbors[i] = NULL; //YOU ARE A BAD MAN, BJARNE
+			if(partitions[i] != NULL){
+				partitions[i]->clear();
+			}
+			if(neighbors[i] != NULL){
+				delete neighbors[i];
+				neighbors[i] = NULL; //YOU ARE A BAD MAN, BJARNE
+			}
         }
     }
     void put(const cellPtr& cp){partitions[coord2i(cp->getPosition()).ordered()]->push_back(cp);}

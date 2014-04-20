@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A316F90187F8D5900662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F8F187F8D5900662636 /* ofxSystemTextbox.mm */; };
 		2A566D6F186CF53600E7C982 /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A566CF0186CF53600E7C982 /* ofxTonicSynth.cpp */; };
 		2A566D70186CF53600E7C982 /* ADSR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A566CF3186CF53600E7C982 /* ADSR.cpp */; };
 		2A566D71186CF53600E7C982 /* Arithmetic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A566CF5186CF53600E7C982 /* Arithmetic.cpp */; };
@@ -239,6 +240,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A316F8E187F8D5900662636 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		2A316F8F187F8D5900662636 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		2A566CEF186CF53600E7C982 /* ofxTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonic.h; sourceTree = "<group>"; };
 		2A566CF0186CF53600E7C982 /* ofxTonicSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTonicSynth.cpp; sourceTree = "<group>"; };
 		2A566CF1186CF53600E7C982 /* ofxTonicSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonicSynth.h; sourceTree = "<group>"; };
@@ -1736,6 +1739,8 @@
 		E7E5EC601817C01400CA4196 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				2A316F8E187F8D5900662636 /* ofxSystemTextbox.h */,
+				2A316F8F187F8D5900662636 /* ofxSystemTextbox.mm */,
 				E7E5EC611817C01400CA4196 /* CloudsRGBDCamera.cpp */,
 				E7E5EC621817C01400CA4196 /* CloudsRGBDCamera.h */,
 				E7E5EC631817C01400CA4196 /* CloudsRGBDVideoPlayer.cpp */,
@@ -1906,6 +1911,7 @@
 				E7D32FAE1751C626006706ED /* ofxSwarmBehavior.cpp in Sources */,
 				2A566D8A186CF53600E7C982 /* ControlRecorder.cpp in Sources */,
 				E7D32FAF1751C626006706ED /* ofxVerletSolver.cpp in Sources */,
+				2A316F90187F8D5900662636 /* ofxSystemTextbox.mm in Sources */,
 				E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */,
 				E7CF783C1753FEA0006B7D41 /* kiss_fft.c in Sources */,
 				E7CF783D1753FEA0006B7D41 /* kiss_fftr.c in Sources */,

@@ -10,14 +10,6 @@
             </Widget>
             <Track></Track>
         </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SET SIZE</WidgetName>
-                <WidgetID>28</WidgetID>
-                <WidgetCanvasParent>text</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
     </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

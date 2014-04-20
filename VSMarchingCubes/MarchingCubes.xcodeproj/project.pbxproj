@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FC9393C187E4C40000D92EE /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FC9393B187E4C40000D92EE /* ofxSystemTextbox.mm */; };
+		4FC93945187E4D1C000D92EE /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FC9393E187E4C7E000D92EE /* CloudsInput.cpp */; };
+		4FC93946187E4D1C000D92EE /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FC93943187E4C7E000D92EE /* CloudsInputMouse.cpp */; };
 		5055DB9E181B06DA00761DA0 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB99181B06DA00761DA0 /* ofxObjLoader.cpp */; };
 		5055DBC4181B076F00761DA0 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 5055DBC2181B076F00761DA0 /* glm.c */; };
 		85732FF418308421002B53D9 /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85732FE518308421002B53D9 /* CloudsVisualSystemMarchingCubes.cpp */; };
@@ -137,6 +140,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4FC9393A187E4C40000D92EE /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		4FC9393B187E4C40000D92EE /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
+		4FC9393E187E4C7E000D92EE /* CloudsInput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		4FC9393F187E4C7E000D92EE /* CloudsInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		4FC93940187E4C7E000D92EE /* CloudsInputEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		4FC93943187E4C7E000D92EE /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		4FC93944187E4C7E000D92EE /* CloudsInputMouse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		5055DB99181B06DA00761DA0 /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
 		5055DB9A181B06DA00761DA0 /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
 		5055DBC2181B076F00761DA0 /* glm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glm.c; sourceTree = "<group>"; };
@@ -416,6 +426,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FC9393D187E4C7E000D92EE /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				4FC9393E187E4C7E000D92EE /* CloudsInput.cpp */,
+				4FC9393F187E4C7E000D92EE /* CloudsInput.h */,
+				4FC93940187E4C7E000D92EE /* CloudsInputEvents.h */,
+				4FC93943187E4C7E000D92EE /* CloudsInputMouse.cpp */,
+				4FC93944187E4C7E000D92EE /* CloudsInputMouse.h */,
+			);
+			name = Input;
+			path = src/Input;
+			sourceTree = "<group>";
+		};
 		5055DB82181B06DA00761DA0 /* ofxObjLoader */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +635,8 @@
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				4FC9393A187E4C40000D92EE /* ofxSystemTextbox.h */,
+				4FC9393B187E4C40000D92EE /* ofxSystemTextbox.mm */,
 				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
 				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
 				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
@@ -1130,6 +1155,7 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				4FC9393D187E4C7E000D92EE /* Input */,
 				E72FF11817E688FE0007780D /* VisualSystemsLibrary */,
 			);
 			name = CloudsLibrary;
@@ -1163,6 +1189,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "MarchingCubes" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1245,6 +1273,8 @@
 				E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */,
 				E7CF783C1753FEA0006B7D41 /* kiss_fft.c in Sources */,
 				E7CF783D1753FEA0006B7D41 /* kiss_fftr.c in Sources */,
+				4FC9393C187E4C40000D92EE /* ofxSystemTextbox.mm in Sources */,
+				4FC93945187E4D1C000D92EE /* CloudsInput.cpp in Sources */,
 				E7CF783E1753FEA0006B7D41 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E7CF78441753FEA1006B7D41 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				E7CF78451753FEA1006B7D41 /* ofxHotKeys_impl_mac.mm in Sources */,
@@ -1281,6 +1311,7 @@
 				E7CF78C81753FECA006B7D41 /* ofxEasingBounce.cpp in Sources */,
 				E7CF78C91753FECA006B7D41 /* ofxEasingCirc.cpp in Sources */,
 				E7CF78CA1753FECA006B7D41 /* ofxEasingCubic.cpp in Sources */,
+				4FC93946187E4D1C000D92EE /* CloudsInputMouse.cpp in Sources */,
 				E7CF78CB1753FECA006B7D41 /* ofxEasingElastic.cpp in Sources */,
 				E7CF78CC1753FECA006B7D41 /* ofxEasingExpo.cpp in Sources */,
 				E7CF78CD1753FECA006B7D41 /* ofxEasingLinear.cpp in Sources */,

@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max Point Size</Name>
-    <Value>0.293999821</Value>
+    <Value>0.328999937</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,12 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max Distance</Name>
-    <Value>130.167938232</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Chroma Max Distort</Name>
-    <Value>0.098522164</Value>
+    <Value>0.516455531</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,5 +38,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Wireframe Alpha</Name>
-    <Value>0.452200383</Value>
+    <Value>0.000000000</Value>
 </Widget>

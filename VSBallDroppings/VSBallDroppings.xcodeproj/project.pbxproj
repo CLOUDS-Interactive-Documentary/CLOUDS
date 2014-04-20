@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A316F2D187F6A3F00662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F2C187F6A3F00662636 /* ofxSystemTextbox.mm */; };
 		2A450EE0182AB23900BF557A /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A450EDB182AB23900BF557A /* ofxSimpleSpline.cpp */; };
 		2A4F340C1863E9590070C0ED /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F34061863E9590070C0ED /* CloudsInput.cpp */; };
 		2A4F340E1863E9590070C0ED /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F340A1863E9590070C0ED /* CloudsInputMouse.cpp */; };
@@ -148,6 +149,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A316F2B187F6A3F00662636 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		2A316F2C187F6A3F00662636 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		2A450EDB182AB23900BF557A /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
 		2A450EDC182AB23900BF557A /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
 		2A4F34041863E8FE0070C0ED /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputEvents.h; path = src/Input/CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -640,6 +643,8 @@
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				2A316F2B187F6A3F00662636 /* ofxSystemTextbox.h */,
+				2A316F2C187F6A3F00662636 /* ofxSystemTextbox.mm */,
 				E72FF12017E688FE0007780D /* ofxLight.h */,
 				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
 				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
@@ -1276,6 +1281,7 @@
 				E7D32FAB1751C626006706ED /* ofxRParticleSystem.cpp in Sources */,
 				2A6D83B3182D6949001C2F45 /* ParamManager.cpp in Sources */,
 				2ACC04DB1811B0CE00953B09 /* ofxMPMParticle.cpp in Sources */,
+				2A316F2D187F6A3F00662636 /* ofxSystemTextbox.mm in Sources */,
 				E7D32FAC1751C626006706ED /* ofxSolver.cpp in Sources */,
 				E7D32FAD1751C626006706ED /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7D32FAE1751C626006706ED /* ofxSwarmBehavior.cpp in Sources */,

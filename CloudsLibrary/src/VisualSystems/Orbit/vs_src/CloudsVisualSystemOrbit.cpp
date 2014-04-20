@@ -32,7 +32,8 @@ void CloudsVisualSystemOrbit::selfSetup()
     Path::maxMeshLength = 10;
     Path::lineWidth = 1.f;
     
-    post.init(ofGetWidth(), ofGetHeight(), true);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    post.init(getCanvasWidth(), getCanvasHeight(), true);
     post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
     
@@ -45,11 +46,15 @@ void CloudsVisualSystemOrbit::selfSetup()
     
     shader.load(getVisualSystemDataPath() + "shaders/orbit");
 }
-
+void CloudsVisualSystemOrbit::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode =CURSOR_MODE_INACTIVE;
+}
 //normal update call
 void CloudsVisualSystemOrbit::selfUpdate()
 {
-    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (post.getWidth() != getCanvasWidth() || post.getHeight() != getCanvasHeight()) post.init(getCanvasWidth(), getCanvasHeight(), true);
 
     switch (motion)
     {
@@ -141,12 +146,13 @@ void CloudsVisualSystemOrbit::selfPostDraw()
 {
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
     
-    if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, ofGetHeight(),
-                                             ofGetWidth(),
-                                             -ofGetHeight());
-    else CloudsVisualSystem::getSharedRenderTarget().draw(0, ofGetHeight(),
-                                                          ofGetWidth(),
-                                                          -ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, getCanvasHeight(),
+                                             getCanvasWidth(),
+                                             -getCanvasHeight());
+    else CloudsVisualSystem::getSharedRenderTarget().draw(0, getCanvasHeight(),
+                                                          getCanvasWidth(),
+                                                          -getCanvasHeight());
 }
 
 //use render gui for display settings, like changing colors

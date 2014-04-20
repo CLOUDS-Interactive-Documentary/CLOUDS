@@ -27,11 +27,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>zipcode.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>OpenPaths.mov</Name>
     <Value>0</Value>
 </Widget>
@@ -52,12 +47,27 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>CordDiagram_videogames.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>zipcode.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>USMap.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>CordDiagram_videogames.mov</Name>
+    <Name>GitHub2.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Gource.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>290.000000000</XPosition>
-    <YPosition>138.000000000</YPosition>
+    <XPosition>1079.000122070</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -27,6 +27,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>JM_basic</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>JM_TheCloud</Name>
     <Value>0</Value>
 </Widget>
@@ -43,6 +48,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>JM_TheCloud_c_Massive</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_d</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_e_Massive</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -104,6 +119,16 @@
     <Kind>2</Kind>
     <Name>stars2</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>stars3</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>stars_handles</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

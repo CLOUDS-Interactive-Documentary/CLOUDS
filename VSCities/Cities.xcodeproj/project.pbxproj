@@ -61,6 +61,7 @@
 		64216385183C606B00D0D95C /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 6421637D183C606B00D0D95C /* glm.c */; };
 		64216386183C606B00D0D95C /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64216381183C606B00D0D95C /* ofxObjLoader.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		D828FD1118F8B0ED00ABF7F6 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = D828FD1018F8B0ED00ABF7F6 /* ofxSystemTextbox.mm */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -297,6 +298,8 @@
 		64216382183C606B00D0D95C /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
 		642CF4BB1831EB44007394FF /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		D828FD0F18F8B0ED00ABF7F6 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		D828FD1018F8B0ED00ABF7F6 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -1445,6 +1448,8 @@
 		E7E5EC601817C01400CA4196 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				D828FD0F18F8B0ED00ABF7F6 /* ofxSystemTextbox.h */,
+				D828FD1018F8B0ED00ABF7F6 /* ofxSystemTextbox.mm */,
 				E7E5EC611817C01400CA4196 /* CloudsRGBDCamera.cpp */,
 				E7E5EC621817C01400CA4196 /* CloudsRGBDCamera.h */,
 				E7E5EC631817C01400CA4196 /* CloudsRGBDVideoPlayer.cpp */,
@@ -1496,6 +1501,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Cities" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1566,6 +1573,7 @@
 				E7D32FA21751C626006706ED /* ofxDamperBehavior.cpp in Sources */,
 				2AAEF590180F136F005F33D3 /* b2CircleContact.cpp in Sources */,
 				2AAEF593180F136F005F33D3 /* b2PolygonAndCircleContact.cpp in Sources */,
+				D828FD1118F8B0ED00ABF7F6 /* ofxSystemTextbox.mm in Sources */,
 				E7D32FA31751C626006706ED /* ofxDistorterBehavior.cpp in Sources */,
 				2AAEF588180F136F005F33D3 /* b2Settings.cpp in Sources */,
 				E7D32FA41751C626006706ED /* ofxElectroStaticBehavior.cpp in Sources */,

@@ -30,10 +30,17 @@ string CloudsVisualSystemOcean::getSystemName(){
 void CloudsVisualSystemOcean::selfSetup(){
 	needsRegenerate = true;
     
+    tonicSamples.push_back(TonicSample("Vocal_harmonic_high_shorter.aif"));
+    tonicSamples.push_back(TonicSample("vocal_harmony_bass.aif"));
+
     // sound
+    gain = 0;
     synth.setOutputGen(buildSynth());
 }
-
+void CloudsVisualSystemOcean::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemOcean::selfPresetLoaded(string presetPath){
 	generateOcean();
 }
@@ -82,7 +89,6 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 	oceanGui->addSlider("FOG DENSITY", 0, .3, &fogDensity);
 	
 	ofAddListener(oceanGui->newGUIEvent, this, &CloudsVisualSystemOcean::selfGuiEvent);
-	
     guis.push_back(oceanGui);
     guimap[oceanGui->getName()] = oceanGui;
 	
@@ -99,8 +105,8 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 	oceanCameraGui->addSlider("MAX LOOK DOWN ROT", 0, 90, &maxLookDownRot);
 	
     guis.push_back(oceanCameraGui);
-    guimap[oceanGui->getName()] = oceanCameraGui;
-
+    guimap[oceanCameraGui->getName()] = oceanCameraGui;
+    
 	oceanCamera.ocean = &ocean;
 	
 	blendMode = OF_BLENDMODE_ALPHA;
@@ -112,8 +118,9 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 	soundGui->setName("OCEAN Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
-    soundGui->addToggle(soundFiles[0], &playSample[0]);
-    soundGui->addToggle(soundFiles[1], &playSample[1]);
+    soundGui->addSlider("Gain", 0, 1, &gain);
+    soundGui->addToggle(tonicSamples[0].soundFile, &tonicSamples[0].playSample);
+    soundGui->addToggle(tonicSamples[1].soundFile, &tonicSamples[1].playSample);
     
 	guis.push_back(soundGui);
 	guimap[soundGui->getName()] = soundGui;
@@ -121,6 +128,8 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 }
 
 void CloudsVisualSystemOcean::selfUpdate(){
+    
+    volumeControl.value(gain);
 	
 	if(	needsRegenerate){
 		generateOcean();
@@ -156,7 +165,8 @@ void CloudsVisualSystemOcean::selfUpdate(){
 		
 	//now we can move the camera up and down based on mouse position
 	if(useOceanCam){
-		float mouseYPercent = 1.*ofGetMouseY() / ofGetHeight();
+        //MA: changed ofGetHeight() to getCanvasHeight()
+		float mouseYPercent = 1. * GetCloudsInputY() / getCanvasHeight();
 		if(mouseYPercent > .6){
 			currentLookRot += (ofMap(mouseYPercent, .6, 1.0, 0, -maxLookUpRot, true) - currentLookRot) * .005;
 		}
@@ -186,14 +196,16 @@ void CloudsVisualSystemOcean::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemOcean::selfDraw(){
-	
-	glPushAttrib(GL_POINT_BIT | GL_POLYGON_BIT | GL_FOG_BIT | GL_DEPTH_BITS);
+    
+	//glPushAttrib(GL_POINT_BIT | GL_POLYGON_BIT | GL_FOG_BIT | GL_DEPTH_BITS);
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    
 	glEnable(GL_POINT_SMOOTH);
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 	glPointSize(pointSize);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
-	
+	glDisable(GL_LINE_SMOOTH);
 //	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
 	glEnable(GL_FOG);
@@ -245,16 +257,17 @@ void CloudsVisualSystemOcean::selfBegin(){
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOcean::audioRequested);
     
-    for (int i=0; i<2; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+        if (tonicSamples[i].playSample) {
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
 
 void CloudsVisualSystemOcean::selfEnd(){
     // remove sound listener
+    volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOcean::audioRequested);
 	
 }
@@ -298,11 +311,11 @@ void CloudsVisualSystemOcean::selfGuiEvent(ofxUIEventArgs &e){
     
     for (int i=0; i<2; i++)
     {
-        if (e.widget->getName() == soundFiles[i]) {
+        if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
+            tonicSamples[i].playSample = toggle->getValue();
             if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+                tonicSamples[i].soundTrigger.trigger();
             }
         }
     }
@@ -347,17 +360,21 @@ Generator CloudsVisualSystemOcean::buildSynth()
     
     SampleTable samples[2];
     
-    int nSounds = sizeof(soundFiles) / sizeof(string);
-    for (int i=0; i<nSounds; i++)
-    {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//    int nSounds = sizeof(soundFiles) / sizeof(string);
+//    for (int i=0; i<nSounds; i++)
+//    {
+//        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//        samples[i] = loadAudioFile(strAbsPath);
+//    }
+    for(int i=0; i<tonicSamples.size();i++){
+        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
-    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[1].soundTrigger);
     
-    return sampleGen1 * 1.0f + sampleGen2 * 1.0f;
+    return (sampleGen1 * 1.0f + sampleGen2 * 1.0f) * volumeControl;
 }
 
 void CloudsVisualSystemOcean::audioRequested(ofAudioEventArgs& args)

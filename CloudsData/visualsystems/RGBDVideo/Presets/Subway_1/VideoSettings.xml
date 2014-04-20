@@ -2,16 +2,36 @@
     <Kind>42</Kind>
     <Name>VideoSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>241.000000000</XPosition>
-    <YPosition>178.000000000</YPosition>
+    <XPosition>713.000000000</XPosition>
+    <YPosition>330.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>12</Kind>
     <Name>VideoPath</Name>
     <Value>Subway_1.mp4</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>Add Blend</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset X</Name>
+    <Value>-143.842376709</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset Y</Name>
+    <Value>400.000000000</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Point Offset</Name>
-    <Value>-778.325683594</Value>
+    <Value>-1497.536865234</Value>
 </Widget>

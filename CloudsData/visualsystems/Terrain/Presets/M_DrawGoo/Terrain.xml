@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>4.242940903</Value>
+    <Value>0.197825640</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -22,8 +22,13 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>Height Scale</Name>
+    <Value>30.000001907</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>Feed</Name>
-    <Value>0.058128078</Value>
+    <Value>0.071428575</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +48,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>k</Name>
-    <Value>0.087890483</Value>
+    <Value>0.076032341</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -61,19 +66,29 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>4</Kind>
+    <Name>Blur Radius</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dry Rate</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
     <Kind>25</Kind>
     <Name>High R</Name>
-    <Value>0.000000000</Value>
+    <Value>0.251308888</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>High G</Name>
-    <Value>0.000000000</Value>
+    <Value>0.382198632</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>High B</Name>
-    <Value>0.701570511</Value>
+    <Value>0.858638585</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -83,17 +98,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>Low R</Name>
-    <Value>0.094240837</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Low G</Name>
-    <Value>0.209423766</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Low B</Name>
-    <Value>0.544502437</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -101,9 +116,29 @@
     <Value>1.000000000</Value>
 </Widget>
 <Widget>
+    <Kind>25</Kind>
+    <Name>Trace R</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace G</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace B</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace A</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Balance</Name>
-    <Value>0.714285731</Value>
+    <Value>0.674876869</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -118,7 +153,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Terrain_Altitud</Name>
-    <Value>1.201970458</Value>
+    <Value>1.536945820</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -33,23 +33,32 @@ public:
 
     CloudsAudioEvents& getEvents() { return events; };
     
+    //receive fade events from the act timelines
+    void fadeDown(float& time);
+    void fadeUp(float& time);
+    
     bool showCompressor;
     float followgain;
-    float gain;
+//    float gain;
     
 protected:
     ofAudioEventArgs musicArgs;
     ofAudioEventArgs diageticArgs;
+    ofAudioEventArgs delayLine;
+    int delptr;
     
     float musicVol;
     float diageticVol;
-    float masterGain;
-    
+
     // compressor data
     float attack;
     float decay;
     float thresh;
     float ratio;
+    int fsig;
+//    float fval; replaced by GetCloudsAudioEvents()->fadeValue
+    float dval;
+    float famt;
     
     CloudsAudioEvents events;
 };

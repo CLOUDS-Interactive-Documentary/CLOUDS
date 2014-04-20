@@ -13,7 +13,8 @@
 class CloudsInputMouse : public CloudsInput
 {
   public:
-	
+	CloudsInputMouse();
+    
 	virtual void enable();
 	virtual void disable();
 	
@@ -21,5 +22,11 @@ class CloudsInputMouse : public CloudsInput
 	void mousePressed(ofMouseEventArgs& data);
 	void mouseDragged(ofMouseEventArgs& data);
 	void mouseReleased(ofMouseEventArgs& data);
-
+    
+    void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus);
+    
+    float cursorDownSize;
+    float cursorUpSize;
 };
+
+void SetCloudsInputMouse();

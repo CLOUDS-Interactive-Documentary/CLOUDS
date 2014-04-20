@@ -20,7 +20,10 @@ CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
 string CloudsVisualSystemVectorFlow::getSystemName(){
 	return "VectorFlow";
 }
-
+void CloudsVisualSystemVectorFlow::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //--------------------------------------------------------------
 void CloudsVisualSystemVectorFlow::initFlowField(){
 	maxVertices = generateMaxVerts;
@@ -49,6 +52,8 @@ void CloudsVisualSystemVectorFlow::initFlowField(){
 			lines.addColor( ofColor::white );
 		}
 	}
+    
+    lines.setUsage(GL_STREAM_DRAW);
 }
 
 //--------------------------------------------------------------
@@ -56,13 +61,15 @@ void CloudsVisualSystemVectorFlow::selfSetup(){
 	colorMap.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	bIs2D = true;
     
-    shaderBlurX.load(GetCloudsDataPath()+"/visualsystems/VectorFlow/shaders/simpleBlurHorizontal");
-    shaderBlurY.load(GetCloudsDataPath()+"/visualsystems/VectorFlow/shaders/simpleBlurVertical");
+    shaderBlurX.load(getVisualSystemDataPath() + "shaders/simpleBlurHorizontal");
+    shaderBlurY.load(getVisualSystemDataPath() + "shaders/simpleBlurVertical");
     
     initBlurFilter();
     
     // sound
-    synth.setOutputGen(buildSynth());
+    fMainGain = 0;
+    mainGain.value(0);
+    synth.setOutputGen(buildSynth() * mainGain);
 }
 
 void CloudsVisualSystemVectorFlow::selfSetupGuis(){
@@ -70,13 +77,23 @@ void CloudsVisualSystemVectorFlow::selfSetupGuis(){
 }
 
 void CloudsVisualSystemVectorFlow::selfUpdate(){
-	   
-	if(regenerateFlow || width != ofGetWidth() || height != ofGetHeight()){
+    
+    if(maxVertices != int(generateMaxVerts) ||
+       trailLength != int(generateTrailLength) )
+    {
+        regenerateFlow = true;
+    }
+
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	if(regenerateFlow ||
+       width != getCanvasWidth() ||
+       height != getCanvasHeight())
+    {
 		regenerateFlow = false;
 		initFlowField();
+        initBlurFilter();
 	}
     
-
 	//UPDATE PARTICLES
 	for(int i = 0; i < particlesPerFrame; i++){
 		addParticle();
@@ -141,6 +158,7 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 	}
     
     // UPDATE Sound parameters
+    mainGain.value(fMainGain);
     float distX = abs(GetCloudsInputX() - prevInputX);
     float distY = abs(GetCloudsInputY() - prevInputY);
     float mSpeed = sqrt(distX*distX + distY*distY);
@@ -149,6 +167,35 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
     volume.value(ofMap(curMSpeed, 0, 20, 0, .7, true));
     prevInputX = GetCloudsInputX();
     prevInputY = GetCloudsInputY();
+    
+    // draw to first FBO
+    fboInitial.begin();
+    
+	ofPushStyle();
+	ofEnableAlphaBlending();
+	ofSetColor(255);
+	ofSetLineWidth(1);
+	glDisable(GL_LINE_SMOOTH);
+    
+	if(blendAdd){
+		ofEnableBlendMode(OF_BLENDMODE_ADD);
+	}
+	else{
+		ofEnableAlphaBlending();
+	}
+	
+	lines.draw();
+	particleMesh.draw();
+	
+	if(!bClearBackground){
+		ofEnableAlphaBlending();
+		ofSetColor(0,0,0, 5);
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+		ofRect(0, 0, getCanvasWidth(), getCanvasHeight());
+	}
+	ofPopStyle();
+    
+    fboInitial.end();
 }
 
 void CloudsVisualSystemVectorFlow::addParticle(){
@@ -214,7 +261,6 @@ ofVec3f CloudsVisualSystemVectorFlow::getDirection(float x, float y){
 	return ofVec3f(0,1,0).getRotated( anglePercent  * 360,  ofVec3f(0,0,1) );
 }
 
-
 float CloudsVisualSystemVectorFlow::sampleField(float x, float y){
 	float chaossqr   = powf(chaos,2);
 	float oscillator = sin( oscFrequency*ofGetFrameNum() ) ;
@@ -230,7 +276,8 @@ void CloudsVisualSystemVectorFlow::getSincSourceAngle(int x, int y, float& angle
 	float distSq = sincToPos.lengthSquared();
 //	if( distSq < powf(sincRadius, 2) ){
 //	angle = ofVec2f(0, 1).angle(sincToPos) / 360.0;;
-	float sincRadSq = powf(sincRadius*ofGetWidth(),2);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	float sincRadSq = powf(sincRadius*getCanvasWidth(),2);
 	if(sincRadius > 0 && distSq < sincRadSq){
 //		angle = ofMap( atan2(y,x) - atan2(mousePos.y,mousePos.x), -PI/2.0, PI/2.0, 0, 1.0 ) ;
 		angle = ofMap( atan2(sincToPos.y,sincToPos.x), -TWO_PI, TWO_PI, -1.0, 1.0 ) ;
@@ -244,35 +291,9 @@ void CloudsVisualSystemVectorFlow::getSincSourceAngle(int x, int y, float& angle
 }
 void CloudsVisualSystemVectorFlow::selfDrawBackground(){
     
-    // draw to first FBO
-    fboInitial.begin();
-    
-	ofPushStyle();
-	ofEnableAlphaBlending();
-	ofSetColor(255);
-	ofSetLineWidth(1);
-	
-	if(blendAdd){
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
-	}
-	else{
-		ofEnableAlphaBlending();
-	}
-	
-	lines.draw();
-	particleMesh.draw();
-	
-	if(!bClearBackground){
-		ofEnableAlphaBlending();
-		ofSetColor(0,0,0, 5);
-		ofRect(0, 0, ofGetWidth(), ofGetHeight());
-	}
-	ofPopStyle();
-
-    fboInitial.end();
-
     // BLUR fboInitial
     fboBlurX.begin();
+//    ofClear(0,0,0);
     shaderBlurX.begin();
     shaderBlurX.setUniform1f("blurAmnt", blurAmount);
 
@@ -283,6 +304,7 @@ void CloudsVisualSystemVectorFlow::selfDrawBackground(){
     fboBlurX.end();
     
     fboFinal.begin();
+//    ofClear(0,0,0);
     shaderBlurY.begin();
     shaderBlurY.setUniform1f("blurAmnt", blurAmount);
     fboBlurX.draw(0, 0);
@@ -400,6 +422,8 @@ void CloudsVisualSystemVectorFlow::selfSetupRenderGui(){
 	rdrGui->addToggle("Blend Add", &blendAdd);
     
     rdrGui->addSlider("Blur", 0, 10, &blurAmount);
+    
+    sysGui->addSlider("Main Gain", 0, 1, &fMainGain);
 
 }
 
@@ -420,10 +444,11 @@ void CloudsVisualSystemVectorFlow::guiRenderEvent(ofxUIEventArgs &e){
 
 void CloudsVisualSystemVectorFlow::initBlurFilter()
 {
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    fboBlurX.allocate(getCanvasWidth(), getCanvasHeight());
+    fboFinal.allocate(getCanvasWidth(), getCanvasHeight());
+    fboInitial.allocate(getCanvasWidth(), getCanvasHeight());
     
-    fboBlurX.allocate(ofGetWidth(), ofGetHeight());
-    fboFinal.allocate(ofGetWidth(), ofGetHeight());
-    fboInitial.allocate(ofGetWidth(), ofGetHeight());
     fboBlurX.begin();
     ofClear(0, 0, 0);
     fboBlurX.end();
@@ -441,11 +466,13 @@ Generator CloudsVisualSystemVectorFlow::buildSynth()
     
     ofDirectory sdir(strDir);
     //string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif";
-    string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif"; //Wind 2. aif
+    //string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif"; //Wind 2. aif
+    string strAbsPath = ofToDataPath(strDir + "/" +"Wind 2.aif", true);
     
     SampleTable sample = loadAudioFile(strAbsPath);
     
-    string strAbsPath2 = sdir.getAbsolutePath() + "/slowgrains_short.aif"; //slowgrains.aif
+//    string strAbsPath2 = sdir.getAbsolutePath() + "/slowgrains_short.aif"; //slowgrains.aif
+    string strAbsPath2 = ofToDataPath(strDir + "/" +"slowgrains_short.aif", true);
     
     SampleTable sample2 = loadAudioFile(strAbsPath2);
     

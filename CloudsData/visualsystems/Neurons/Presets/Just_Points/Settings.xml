@@ -16,6 +16,21 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>NO CURSOR</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>PRIMARY CURSOR</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ALL CURSORS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Spin Speed</Name>
     <Value>0.325122833</Value>

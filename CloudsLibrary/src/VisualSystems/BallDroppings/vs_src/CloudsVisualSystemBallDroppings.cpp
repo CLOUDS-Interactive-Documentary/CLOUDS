@@ -10,6 +10,7 @@
 
 CloudsVisualSystemBallDroppings::CloudsVisualSystemBallDroppings()
 {
+
 }
 
 void CloudsVisualSystemBallDroppings::selfSetupGui()
@@ -31,11 +32,17 @@ void CloudsVisualSystemBallDroppings::selfSetupGui()
     customGui->addSlider("EMITTER BRIGHTNESS", 0, 1, &emitterColor);
     customGui->addSlider("LINES BRIGHTNESS", 0, 1, &linesColor);
     
+    customGui->addSlider("GAIN", 0, 1, &mainGain);
+    
     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemBallDroppings::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemBallDroppings::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode =  CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemBallDroppings::selfGuiEvent(ofxUIEventArgs &e)
 {
 
@@ -95,9 +102,11 @@ void CloudsVisualSystemBallDroppings::selfSetup()
 	balls = new LinkedList();
 	lines = new LinkedList();
 	emptyBalls = new LinkedList(); //make a new queue for recyclable ball spots.
-	
+
+    mainGain = 0.3f;
+    
 	//load a new ball.
-	Ball *b = new Ball(hole, balls->size(), getVisualSystemDataPath() + "sine.wav");
+	Ball *b = new Ball(hole, balls->size(), getVisualSystemDataPath() + "sine.wav", mainGain);
 	balls->push((long)b);
 	
 	font.loadFont("Verdana.ttf",8);
@@ -150,7 +159,7 @@ void CloudsVisualSystemBallDroppings::selfDrawDebug()
 void CloudsVisualSystemBallDroppings::selfDrawBackground()
 {
     
-	ofBackground(!ballcolor*255);
+	//ofBackground(!ballcolor*255);
     
 	//draw balldropper
 	ofSetColor(emitterColor*255);
@@ -305,8 +314,9 @@ void CloudsVisualSystemBallDroppings::selfMouseReleased(ofMouseEventArgs& data)
 		if ( sqrt(xd*xd+yd*yd) > 10 ){//10 is the mouse drag movement margin for nondraggers
             ofMouseEventArgs args;
 			//JG: REMOVE MOUSE CALLS
-            args.x = ofGetMouseX();
-            args.y = ofGetMouseY();
+            //MA: replaced ofGetMouseX() with getCloudsInputx();
+            args.x =  GetCloudsInputX();
+            args.y = GetCloudsInputY();
             args.button = 0;
 			mousePressed(args);//nudge the new line drawing.
 		}
@@ -366,18 +376,20 @@ void CloudsVisualSystemBallDroppings::step(){
 //--------------------------------------------------------------
 
 void CloudsVisualSystemBallDroppings::createBall(){
-    
+    if (balls->size() - emptyBalls->size() > 10) {
+        return;
+    }
 	//load a new ball.
-	Ball *b = new Ball(hole, balls->size(), getVisualSystemDataPath() + "sine.wav");
+    cout<<"creating ball with gain: "<<mainGain<<endl;
+	Ball *b = new Ball(hole, balls->size(), getVisualSystemDataPath() + "sine.wav", mainGain);
 	b->applyForce(0.0001,0);//give it an initial push
     
-	//search for an empty spot in the list
+//	//search for an empty spot in the list
 	if(emptyBalls->size()>0){
 		balls->set( emptyBalls->unshift(),(long)b);
 	} else {//else, you have to make a new one.
 		balls->push((long)b);
 	}
-	
 }
 
 //--------------------------------------------------------------
@@ -560,8 +572,9 @@ void CloudsVisualSystemBallDroppings::updateClosestPickingLine(){
 		if ( mousestate_draggingvert==0){
 			//v1
 			//measuring distance from mouse
-			float xd = thisLine->x1 - ofGetMouseX();
-			float yd = thisLine->y1 - ofGetMouseY();
+            //MA: replaced ofGetMouseX() with GetCloudsInputX()
+			float xd = thisLine->x1 - GetCloudsInputX();
+			float yd = thisLine->y1 - GetCloudsInputY();
 			float dist = sqrt(xd*xd+yd*yd);
 			//have we got a winner?
 			if ( dist  < closeDist){
@@ -572,8 +585,9 @@ void CloudsVisualSystemBallDroppings::updateClosestPickingLine(){
             
 			//v2
 			//measuring distance from mouse
-			xd = thisLine->x2 - ofGetMouseX();
-			yd = thisLine->y2 - ofGetMouseY();
+            //MA: replaced ofGetMouseX() with GetCloudsInputX()
+			xd = thisLine->x2 - GetCloudsInputX();
+			yd = thisLine->y2 - GetCloudsInputY();
 			dist = sqrt(xd*xd+yd*yd);
 			//have we got a winner?
 			if ( dist  < closeDist){
@@ -594,13 +608,14 @@ void CloudsVisualSystemBallDroppings::updateClosestPickingLine(){
 		closestLine = closeL;
 		closestLineVertex = closeLV;
 		closestLineDistance = closeDist;
-	} else {
-		//JG: REMOVE MOUSE INTERACTION
+	} else if(closestLine != NULL){
 		//set vertex to mouse position.
-		if(closestLineVertex==0){//which side of the line?
-			closestLine->set1(ofGetMouseX(),ofGetMouseY());
+		if(closestLineVertex == 0){//which side of the line?
+            //MA: replaced ofGetMouseX() with GetCloudsInputX()
+			closestLine->set1(GetCloudsInputX(),GetCloudsInputY());
 		} else {
-			closestLine->set2(ofGetMouseX(),ofGetMouseY());
+            //MA: replaced ofGetMouseX() with GetCloudsInputX()
+			closestLine->set2(GetCloudsInputX(),GetCloudsInputY());
 		}
 		//fix just in case
 		if(closestLine->fixDirection()){

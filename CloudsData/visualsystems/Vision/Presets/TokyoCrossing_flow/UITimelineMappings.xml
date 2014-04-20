@@ -12,14 +12,6 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>WINDOW WIDTH</WidgetName>
-                <WidgetID>13</WidgetID>
-                <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>WINDOW TINT</WidgetName>
                 <WidgetID>7</WidgetID>
                 <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
@@ -30,6 +22,14 @@
             <Widget>
                 <WidgetName>FLOW LINE LENGTH</WidgetName>
                 <WidgetID>17</WidgetID>
+                <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>WINDOW WIDTH</WidgetName>
+                <WidgetID>13</WidgetID>
                 <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
             </Widget>
             <Track></Track>

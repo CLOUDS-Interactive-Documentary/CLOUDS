@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A316F28187F545700662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F27187F545600662636 /* ofxSystemTextbox.mm */; };
+		2A316F29187F545700662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F27187F545600662636 /* ofxSystemTextbox.mm */; };
 		2A4F33BF1863B0C30070C0ED /* CloudsMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33AF1863B0C20070C0ED /* CloudsMixer.cpp */; };
 		2A4F33C01863B0C30070C0ED /* CloudsMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33AF1863B0C20070C0ED /* CloudsMixer.cpp */; };
 		2A4F33D11863BE9B0070C0ED /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33D01863BE9B0070C0ED /* CloudsAudioEvents.cpp */; };
@@ -452,6 +454,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A316F26187F545600662636 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		2A316F27187F545600662636 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		2A4F33AE1863B0C20070C0ED /* CloudsAudioEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAudioEvents.h; sourceTree = "<group>"; };
 		2A4F33AF1863B0C20070C0ED /* CloudsMixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMixer.cpp; sourceTree = "<group>"; };
 		2A4F33B01863B0C20070C0ED /* CloudsMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMixer.h; sourceTree = "<group>"; };
@@ -1471,6 +1475,8 @@
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				2A316F26187F545600662636 /* ofxSystemTextbox.h */,
+				2A316F27187F545600662636 /* ofxSystemTextbox.mm */,
 				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
 				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
 				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
@@ -2139,6 +2145,7 @@
 				2ACA69201871EDB60029603B /* Effect.cpp in Sources */,
 				85732C4018307C80002B53D9 /* ofxDamperBehavior.cpp in Sources */,
 				2ACA68F81871EDB60029603B /* ControlDelay.cpp in Sources */,
+				2A316F29187F545700662636 /* ofxSystemTextbox.mm in Sources */,
 				85732C4118307C80002B53D9 /* b2CircleContact.cpp in Sources */,
 				85732C4218307C80002B53D9 /* b2PolygonAndCircleContact.cpp in Sources */,
 				85732C4318307C80002B53D9 /* ofxDistorterBehavior.cpp in Sources */,
@@ -2438,6 +2445,7 @@
 				2ACA69431871EDB60029603B /* TableLookupOsc.cpp in Sources */,
 				E7CF78C61753FECA006B7D41 /* ofxEasing.cpp in Sources */,
 				E7CF78C71753FECA006B7D41 /* ofxEasingBack.cpp in Sources */,
+				2A316F28187F545700662636 /* ofxSystemTextbox.mm in Sources */,
 				2ACA690D1871EDB60029603B /* ControlSnapToScale.cpp in Sources */,
 				E7CF78C81753FECA006B7D41 /* ofxEasingBounce.cpp in Sources */,
 				E7CF78C91753FECA006B7D41 /* ofxEasingCirc.cpp in Sources */,

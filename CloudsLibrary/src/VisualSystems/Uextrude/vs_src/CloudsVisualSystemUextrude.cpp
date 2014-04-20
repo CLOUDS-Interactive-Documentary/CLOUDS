@@ -126,8 +126,9 @@ void CloudsVisualSystemUextrude::selfDraw(){
 	extrudeShader.setUniform1f("extrusionAmount", extrusionAmount);
 	
 	ofPushMatrix();
-	ofTranslate(ofGetWidth()/2- vidGrabber.getWidth()/2,
-				ofGetHeight()/2-vidGrabber.getHeight()/2);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	ofTranslate(getCanvasWidth()/2- vidGrabber.getWidth()/2,
+				getCanvasHeight()/2-vidGrabber.getHeight()/2);
 	
 	mainMesh.drawFaces();
     

@@ -1,0 +1,122 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>EXAMPLE BOX 2D</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GAVITY CONTROL MODE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CIRCLES</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RECTANGLES</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TRIGGER FORCE</Name>
+    <Value>5.615763187</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX CIRCLES</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX RECTANGLES</Name>
+    <Value>585.467956543</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CIRCLE MAX MEAN</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CIRCLE SIZE DEVIATION</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT MAX MEAN</Name>
+    <Value>28.275861740</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT SIZE DEVIATION</Name>
+    <Value>16.305418015</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FILL</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>STATIC PLATFORMS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RANDOM PLATFORMS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>H1</Name>
+    <Value>132.172775269</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S1</Name>
+    <Value>85.445007324</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>B1</Name>
+    <Value>230.968414307</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>H2</Name>
+    <Value>136.178009033</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S2</Name>
+    <Value>65.418823242</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>B2</Name>
+    <Value>54.738178253</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>H3</Name>
+    <Value>152.198944092</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S3</Name>
+    <Value>97.460708618</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>B3</Name>
+    <Value>74.764358521</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Volume</Name>
+    <Value>0.073891625</Value>
+</Widget>

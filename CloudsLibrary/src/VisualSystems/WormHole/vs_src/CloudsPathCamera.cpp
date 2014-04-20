@@ -32,10 +32,6 @@ void CloudsPathCamera::loadPathFromFile( string path )
 	
 	xml.loadFile( path );
 	int numFrames = xml.getNumTags("frame");
-		
-	//vector<ofVec3f> cameraPath( numFrames );
-	//vector<ofVec3f> cameraTargetPath(numFrames);
-	//vector<ofVec3f> cameraUp( numFrames );
 	
 	ofPolyline posLine;
 	ofPolyline targetLine;
@@ -44,22 +40,17 @@ void CloudsPathCamera::loadPathFromFile( string path )
 	for (int i=0; i<numFrames; i++) {
 		xml.pushTag("frame", i);
 		
-		posLine.addVertex( ofVec3f(xml.getValue("x", 0.f), xml.getValue("y", 0.f), xml.getValue("z", 0.f) ) );
+		ofVec3f p(xml.getValue("x", 0.f), xml.getValue("y", 0.f), xml.getValue("z", 0.f) );
+		posLine.addVertex( p );
 		targetLine.addVertex(ofVec3f(xml.getValue("tx", 0.f), xml.getValue("ty", 0.f), xml.getValue("tz", 0.f)));
 		upLine.addVertex(ofVec3f(xml.getValue("upx", 0.f), xml.getValue("upy", 0.f), xml.getValue("upz", 0.f)));
-		//cameraPath[i].set( xml.getValue("x", 0.f), xml.getValue("y", 0.f), xml.getValue("z", 0.f) );
-		//cameraTargetPath[i].set( xml.getValue("tx", 0.f), xml.getValue("ty", 0.f), xml.getValue("tz", 0.f) );
-		//cameraUp[i].set( xml.getValue("upx", 0.f), xml.getValue("upy", 0.f), xml.getValue("upz", 0.f) );
 		
 		xml.popTag();
 	}
 	
 	clear();
-
-	//addPositionControlVertices( cameraPath );
-	//addTargetControlVertices( cameraTargetPath );
-	//addUpControlVertices( cameraUp );
-
+	
+	xml.clear();
 	
 	//linearize the cv spacing for the control curve
 	float spacing = .5;//this seemed to fit the typical paths we have so far
@@ -67,6 +58,10 @@ void CloudsPathCamera::loadPathFromFile( string path )
 	addPositionControlVertices( posLine.getResampledBySpacing(spacing).getVertices() );
 	addTargetControlVertices( targetLine.getResampledBySpacing(spacing).getVertices() );
 	addUpControlVertices( upLine.getResampledBySpacing(spacing).getVertices() );
+	
+	posLine.clear();
+	targetLine.clear();
+	upLine.clear();
 	
 	startTime = ofGetElapsedTimef();
 }
@@ -120,7 +115,12 @@ void CloudsPathCamera::setUpControlVertices( vector<ofVec3f>& v )
 
 void CloudsPathCamera::	update()
 {
-	u = ofMap( ofGetElapsedTimef(), startTime, startTime + duration,0 ,1);
+    if(duration == 0){
+        u = startTime;
+    }
+    else{
+        u = ofMap( ofGetElapsedTimef(), startTime, startTime + duration,0 ,1);
+    }
 	update( u );
 }
 

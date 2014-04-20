@@ -95,7 +95,6 @@ public:
 	ofVbo* adoptedVbo;
 	ofVbo vbo;
 	int numVertices;
-	vector<ofIndexType> indices;
 	vector<ofVec3f> vertices;
 	vector<ofVec3f> normals;
 	

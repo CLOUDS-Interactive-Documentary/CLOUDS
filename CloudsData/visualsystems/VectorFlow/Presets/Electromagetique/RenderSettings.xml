@@ -8,12 +8,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>maxVerts</Name>
-    <Value>29950.738281250</Value>
+    <Value>20197.044921875</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>trail length</Name>
-    <Value>64.901473999</Value>
+    <Value>32.142860413</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -39,6 +39,11 @@
     <Kind>4</Kind>
     <Name>sincRadius</Name>
     <Value>0.689655185</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sincStrength</Name>
+    <Value>0.492610812</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -94,4 +99,9 @@
     <Kind>2</Kind>
     <Name>Blend Add</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Blur</Name>
+    <Value>0.000000000</Value>
 </Widget>

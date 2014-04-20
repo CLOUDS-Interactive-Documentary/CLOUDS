@@ -21,7 +21,7 @@ class Block : public ofRectangle {
     int             value;
     float           border;
     bool            bSelected;
-    
+    bool			bActivated; //mouse interactivity
 	ofIntRange outlineIndices;
 	ofIntRange fillIndices;
 	ofVboMesh* outlineMesh;
@@ -35,6 +35,8 @@ class Block : public ofRectangle {
 	}
     
 	void setup(){
+		bActivated = false;
+		bSelected = false;
 		outlineIndices.min = outlineMesh->getNumVertices();
 		
 		ofVec3f a = ofVec3f(getMinX(),getMinY(),0);
@@ -79,7 +81,10 @@ class Block : public ofRectangle {
 		
 	void update(){
 		ofFloatColor curStroke;
-		if (bSelected){
+		if(bActivated){
+			curStroke = ofFloatColor(1.0, 1.0, 1.0, borderColor.a);
+		}
+		else if (bSelected){
             curStroke = borderColor;
         } else {
             curStroke = ofFloatColor(borderBase,borderColor.a);
@@ -94,24 +99,7 @@ class Block : public ofRectangle {
 			
 
 	}
-		
-//    void draw(){
-//		ofPushStyle();
-//        
-//        ofFill();
-//        ofSetColor(color);
-//        ofRect(*this);
-//        
-//        ofNoFill();
-//        if (bSelected){
-//            ofSetColor(borderColor);
-//        } else {
-//            ofSetColor(ofFloatColor(0.5,borderColor.a));
-//        }
-//        ofRect(*this);
-//        
-//        ofPopStyle();
-//    }
+
 };
 
 
@@ -137,10 +125,10 @@ public:
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
-    void mouseDragged(ofMouseEventArgs & args);
-    void mouseMoved(ofMouseEventArgs & args);
-    void mousePressed(ofMouseEventArgs & args);
-    void mouseReleased(ofMouseEventArgs & args);
+    void selfMouseDragged(ofMouseEventArgs & args);
+    void selfMouseMoved(ofMouseEventArgs & args);
+    void selfMousePressed(ofMouseEventArgs & args);
+    void selfMouseReleased(ofMouseEventArgs & args);
     
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
@@ -192,6 +180,8 @@ private:
     bool    bTexture;
     
     // Sound
+    float fMainGain;
+    ControlParameter mainGain;
     ofxTonicSynth synth;
     Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);

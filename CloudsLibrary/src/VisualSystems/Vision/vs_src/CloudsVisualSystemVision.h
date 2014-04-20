@@ -15,7 +15,8 @@
 
 #include "CloudsGlobal.h"
 #include "CloudsAudioEvents.h"
-#include "ofxTonic.h"
+//#include "ofxTonic.h"
+#include "TonicSample.h"
 
 using namespace Tonic;
 
@@ -186,12 +187,15 @@ protected:
     ofShader shader;
     
     // Sound
+    float fMainGain;
+    ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
-    int nSamples = 2;
-    string soundFiles[2] = {"distorted_drones.aif",
-        "slowgrains_short.aif"};
-    bool playSample[2];
-    ControlTrigger soundTriggers[2];
+    vector<TonicSample> tonicSamples;
+//    int nSamples = 2;
+//    string soundFiles[2] = {"distorted_drones.aif",
+//        "slowgrains_short.aif"};
+//    bool playSample[2];
+//    ControlTrigger soundTriggers[2];
     ofxTonicSynth synth;
     Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
