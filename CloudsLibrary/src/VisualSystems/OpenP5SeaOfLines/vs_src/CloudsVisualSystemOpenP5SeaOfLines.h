@@ -102,7 +102,10 @@ class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
     
         float collideDist, lineDist;
         float minSpeed, maxSpeed;
+        float cursorRange;
         float gravity;
+    
+        ofVec2f cursor;
     
         ofVboMesh mesh;
         vector<SOLPlayer> players;

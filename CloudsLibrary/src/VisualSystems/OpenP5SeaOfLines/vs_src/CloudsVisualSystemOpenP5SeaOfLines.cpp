@@ -19,6 +19,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
     customGui->addSpacer();
     customGui->addRangeSlider("DISTANCES", 1.0f, 100.0f, &collideDist, &lineDist);
     customGui->addRangeSlider("TRAVEL SPEED", 1.0f, 10.0f, &minSpeed, &maxSpeed);
+    customGui->addSlider("CURSOR RANGE", 0.0f, 1.0f, &cursorRange);
     customGui->addSlider("GRAVITY", -1.0f, 1.0f, &gravity);
 
     customGui->addSpacer();
@@ -39,10 +40,17 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
 }
 
 //--------------------------------------------------------------
-void CloudsVisualSystemOpenP5SeaOfLines::selfSetDefaults(){
-    primaryCursorMode   = CURSOR_MODE_INACTIVE;
-    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+void CloudsVisualSystemOpenP5SeaOfLines::selfSetDefaults()
+{
+    collideDist = 1.0f;
+    lineDist = 30.0f;
+    minSpeed = 4.0f;
+    maxSpeed = 6.0f;
+    cursorRange = 1.0f;
+    gravity = 0.1f;
     
+    primaryCursorMode   = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 //--------------------------------------------------------------
@@ -74,13 +82,6 @@ void CloudsVisualSystemOpenP5SeaOfLines::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
 {
-    // Set defaults.
-    collideDist = 1.0f;
-    lineDist = 30.0f;
-    minSpeed = 4.0f;
-    maxSpeed = 6.0f;
-    gravity = 0.1f;
-	
     bIs2D = true;
     bClearBackground = false;
     
@@ -171,8 +172,10 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
     }
     
     // Second pass: Handle collisions and proximity.
+    float cursorRadius = getCanvasWidth() * cursorRange;
     for (int i = 0; i < players.size(); i++) {
         SOLPlayer& one = players[i];
+        float cursorDist = ofDist(one.x, one.y, cursor.x, cursor.y);
         for (int j = i + 1; j < players.size(); j++) {
             SOLPlayer& two = players[j];
             float dist = ofDist(one.x, one.y, two.x, two.y);
@@ -183,7 +186,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
                 one.sx = cosf(ang) * one.speed;
                 one.sy = sinf(ang) * one.speed;
             }
-            else if (dist < lineDist) {
+            else if (dist < lineDist && cursorDist < cursorRadius) {
                 mesh.addIndex(i);
                 mesh.addIndex(j);
             }
@@ -237,12 +240,19 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfKeyPressed(ofKeyEventArgs & args){
 void CloudsVisualSystemOpenP5SeaOfLines::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
-void CloudsVisualSystemOpenP5SeaOfLines::selfMouseDragged(ofMouseEventArgs& data){
 
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5SeaOfLines::selfMouseDragged(ofMouseEventArgs& data)
+{
+    cursor.set(data.x, data.y);
 }
-void CloudsVisualSystemOpenP5SeaOfLines::selfMouseMoved(ofMouseEventArgs& data){
-	
+
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5SeaOfLines::selfMouseMoved(ofMouseEventArgs& data)
+{
+    cursor.set(data.x, data.y);
 }
+
 void CloudsVisualSystemOpenP5SeaOfLines::selfMousePressed(ofMouseEventArgs& data){
 	
 }
