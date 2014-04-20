@@ -15,7 +15,8 @@
 #include "Bubbles.h"
 #include "MarineSnow.h"
 #include "ofxPostProcessing.h"
-#include "ofxTonic.h"
+//#include "ofxTonic.h"
+#include "TonicSample.h"
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
 
@@ -139,10 +140,11 @@ protected:
     
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[2] = {"underwater_stretch.aif",
-        "Underwater.aif"};
-    bool playSample[2] = {false};
-    ControlTrigger soundTriggers[2];
+    vector<TonicSample> tonicSamples;
+//    string soundFiles[2] = {"underwater_stretch.aif",
+//        "Underwater.aif"};
+//    bool playSample[2] = {false};
+//    ControlTrigger soundTriggers[2];
     ofxTonicSynth synth;
     Generator buildSynth();
     ControlParameter volumeControl;
