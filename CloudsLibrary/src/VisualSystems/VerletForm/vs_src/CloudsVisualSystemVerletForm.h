@@ -209,7 +209,8 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	
 	void updateNormals();
 	
-
+	int lastID;
+	int lastCnt;
 
 	vector<vector<Particle3D*> > particles;
 	

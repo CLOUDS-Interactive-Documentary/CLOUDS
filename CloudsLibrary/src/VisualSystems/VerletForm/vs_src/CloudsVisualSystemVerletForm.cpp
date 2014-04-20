@@ -12,6 +12,7 @@
 ofVec3f axisY=ofVec3f(0,1,0);
 ofVec3f axisX=ofVec3f(1,0,0);
 ofVec3f axisZ=ofVec3f(0,0,1);
+
 MWTerrain terrain;
 float radMin=0.1f;
 int fixChance=40;
@@ -196,9 +197,13 @@ ofVec3f CloudsVisualSystemVerletForm::mwNewMove(MWParticle& pt) {
 
 
 void CloudsVisualSystemVerletForm::selfSetDefaults(){
+	lastID = 0;
+	lastCnt = 0;
+
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode  = CURSOR_MODE_INACTIVE;
 }
+
 void CloudsVisualSystemVerletForm::mwLights() {
 	ofSetGlobalAmbientColor(ofColor(0,0,0));
 	ofSetSmoothLighting(true);
@@ -504,7 +509,7 @@ void CloudsVisualSystemVerletForm::mwUpdate() {
 				printf(
 						"%d activityCnt=%d | id=%d stateCnt %d | pp=%d/%d/%d | %1.2f | grav=%.4f\n",
 						ofGetFrameNum(),activityCnt,
-						pt.id,pt.stateCnt,pp.size(),ppActive.size(),fixCnt,
+						pt.id,pt.stateCnt,int(pp.size()),int(ppActive.size()),fixCnt,
 						fpsMod,
 						g);
 			}
@@ -546,12 +551,12 @@ void CloudsVisualSystemVerletForm::mwUpdate() {
 		MWParticle& pt=ppActive.at(ofClamp((int)ofRandom(10)*10,0,ppActive.size()-1));
 		printf(
 				"id=%d stateCnt %d | pp=%d/%d | %1.2f\n",
-				pt.id,pt.stateCnt,pp.size(),ppActive.size(),fpsMod);
+				pt.id,pt.stateCnt,int(pp.size()),int(ppActive.size()),fpsMod);
 	}
 
 
 	if(MWDEBUG && ofGetFrameNum()%500==0) {
-		printf("pp %d/%d\n",pp.size(),ppActive.size());
+		printf("pp %d/%d\n",int(pp.size()),int(ppActive.size()));
 	}
 }
 
@@ -583,8 +588,8 @@ ofVec3f CloudsVisualSystemVerletForm::mwOutlineShape(ofVec3f &v) {
 	return v;
 }
 
-int lastID=0;
-int lastCnt=0;
+
+//JG MOVED TO H FILE
 
 MWParticle & CloudsVisualSystemVerletForm::mwGetParticle(bool fromEdge) {
 	MWParticle& pt=pp.at(0);
@@ -701,7 +706,7 @@ void CloudsVisualSystemVerletForm::mwNewActivity(MWParticle& pt,signed int state
 
 	ppActive.push_back(pt);
 	if(MWDEBUG && ppActive.size()>0 && ppActive.size()%25==0) printf("%d mwNewActivity - pp %d/%d state %d stateCnt=%d\n",
-		ofGetFrameNum(),pp.size(),ppActive.size(),
+		ofGetFrameNum(),int(pp.size()),int(ppActive.size()),
 		pt.state,pt.stateCnt);
 
 
@@ -745,8 +750,7 @@ void CloudsVisualSystemVerletForm::mwMakeParticle(int x,int y,ofVec3f &o) {
 }
 
 void CloudsVisualSystemVerletForm::mwCreateLights() {
-	if(MWDEBUG) printf("========\nmwCreateLights pp=%d / gridSize=%d\n",
-		pp.size(),gridSize);
+	if(MWDEBUG) printf("========\nmwCreateLights pp=%d / gridSize=%d\n", int(pp.size()), gridSize);
 
 	    ofVec3f xax(1, 0, 0);
 	    ofVec3f yax(0, 1, 0);
@@ -817,7 +821,7 @@ void CloudsVisualSystemVerletForm::mwCreateLights() {
 
 
 	if(MWDEBUG) printf("========\nmwCreateLights DONE | pp=%d / gridSize=%d\n",
-		pp.size(),gridSize);
+		int(pp.size()),gridSize);
 
 }
 
@@ -882,7 +886,7 @@ void CloudsVisualSystemVerletForm::shiftHue(ofColor &cc,float mod) {
 
 void CloudsVisualSystemVerletForm::mwGenerate() {
 	printf("========\nmwGenerate pp=%d / gridSize=%d / gridType=%d\n ",
-		pp.size(),gridSize,gridType);
+		int(pp.size()),int(gridSize),gridType);
 
 	activityCnt=ofRandom(20,50)*fpsMod*activityMod;
 	fixCnt=0;
@@ -961,7 +965,7 @@ void CloudsVisualSystemVerletForm::mwGenerate() {
 
 
 	printf("========\nmwGenerate pp=%d / gridSize=%d / gridType=%d\n ",
-		pp.size(),gridSize,gridType);
+		int(pp.size()),gridSize,gridType);
 }
 
 void CloudsVisualSystemVerletForm::mwGridSticky() {
@@ -1104,9 +1108,9 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 
 	printf("initColors(%d,-1)\n",ci);
 	initColors(ci,-1);
-	printf("initColors(%d,-1) - %d\n",ci,colors.size());
+	printf("initColors(%d,-1) - %d\n",ci, int(colors.size()));
 	initColors(ci+ofRandom(200,450),-1);
-	printf("done - initColors(%d,-1) == %d colors\n",ci,colors.size());
+	printf("done - initColors(%d,-1) == %d colors\n",ci,int(colors.size()));
 
 	int n=colors.size();
 	float b=rndBool(50) ? 81 : 255;
@@ -1183,7 +1187,7 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 	
 
 
-	printf("generateMesh() - pp size %d grid=%d\n",pp.size(),(int)gridSize);
+	printf("generateMesh() - pp size %d grid=%d\n",int(pp.size()),(int)gridSize);
 
 	for (int j = 0; j < gridSize; j++){
 		for (int i = 0; i < gridSize; i++){
@@ -1243,9 +1247,9 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 	
 
 	printf("==============\ncolorIndex=%d colors.size()=%d colorMod=%.2f\n",
-			(int)colorIndex,colors.size(),colorMod);
+			(int)colorIndex,int(colors.size()),colorMod);
 	printf("pp=%d baseMesh.indices=%d %.1f\n",
-			pp.size(),
+			int(pp.size()),
 			baseMesh.getNumIndices(),
 			(float)baseMesh.getNumIndices()/(float)pp.size());
 
@@ -1452,13 +1456,15 @@ void CloudsVisualSystemVerletForm::selfDraw(){
 	ofEnableAlphaBlending();
 	
 	mwUpdate();
-	
+
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
 
 	mat->begin();
 	ofPushMatrix();
-
-	if(camEnabled) mwUpdateCamera();
+	if(camEnabled){
+		mwUpdateCamera();
+	}
 	ofRotateX(modelRot.x+currentRotAngle.x);
 	ofRotateZ(modelRot.z);
 	ofRotateY(modelRot.y+currentRotAngle.y);
@@ -1513,7 +1519,7 @@ void CloudsVisualSystemVerletForm::selfDraw(){
 		auxLights[i].light.disable();
 	}
 
-	
+	glPopAttrib();
 }
 
 void CloudsVisualSystemVerletForm::selfExit(){
