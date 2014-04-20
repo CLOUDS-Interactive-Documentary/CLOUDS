@@ -86,7 +86,8 @@ void CloudsVisualSystemVision::selfSetDefaults(){
 void CloudsVisualSystemVision::selfSetup()
 {
 
-
+    tonicSamples.push_back(TonicSample("distorted_drones.aif"));
+    tonicSamples.push_back(TonicSample("slowgrains_short.aif"));
     shader.load(getVisualSystemDataPath() + "heatMapShader");
 
     //	app
@@ -216,9 +217,9 @@ void CloudsVisualSystemVision::selfSetupGui()
     
     soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        soundGui->addToggle(soundFiles[i], &playSample[i]);
+        soundGui->addToggle(tonicSamples[i].soundFile   , &tonicSamples[i].playSample);
     }
     
 	guis.push_back(soundGui);
@@ -374,10 +375,10 @@ void CloudsVisualSystemVision::selfBegin()
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVision::audioRequested);
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+        if (tonicSamples[i].playSample) {
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
@@ -773,13 +774,13 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         if(t->getValue())loadMovieWithName( t->getName() );
     }
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (e.widget->getName() == soundFiles[i]) {
+        if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
+            tonicSamples[i].playSample = toggle->getValue();
             if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+                 tonicSamples[i].soundTrigger.trigger();
             }
         }
     }
@@ -841,16 +842,16 @@ Generator CloudsVisualSystemVision::buildSynth()
     
     SampleTable samples[2];
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        string strAbsPath = sdir.getAbsolutePath() + "/" + tonicSamples[i].soundFile;
         samples[i] = loadAudioFile(strAbsPath);
     }
     
     Generator sampleGen[2];
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(soundTriggers[i]);
+        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(tonicSamples[i].soundTrigger);
     }
     
     return sampleGen[0] * 1.0f +
