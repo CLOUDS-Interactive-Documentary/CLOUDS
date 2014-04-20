@@ -7523,7 +7523,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
+    <sound_allow_vo>1</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="Colony_SyntheticBlack">
@@ -7572,7 +7572,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
+    <sound_allow_vo>1</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="Colony_SyntheticGreen">
@@ -7596,7 +7596,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
+    <sound_allow_vo>1</sound_allow_vo>
     <interlude>1</interlude>
 </system>
 <system name="Colony_We_are_stars">
@@ -25741,7 +25741,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
@@ -25875,8 +25875,8 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>1</sound_allow_vo>
+    <sound_exclude_vo>1</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
 </system>
 <system name="Replicator_Replicator_organ">
@@ -25968,7 +25968,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
 </system>
