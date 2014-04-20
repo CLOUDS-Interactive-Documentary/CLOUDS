@@ -971,6 +971,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 #endif
     
 	drawDebugOverlay();
+	
 //bad loading screen... debug only
 //	if(loadingAct){
 //		float progressWidth = ofGetWidth() * .66;
@@ -1092,7 +1093,6 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
     }
     
 	//rgbdVisualSystem->clearQuestions();
-    
 	nextVisualSystemPreset = args.preset;
     
 	//	cout << "CloudsPlaybackController::showVisualSystem SETTING NEXT SYSTEM TO " << nextVisualSystem.presetName << endl;
@@ -1264,23 +1264,45 @@ void CloudsPlaybackController::hideVisualSystem() {
 
 void CloudsPlaybackController::showRGBDVisualSystem(){
 #ifdef OCULUS_RIFT
+	rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_BASE");
+    if(numActsCreated == 0){
+		rgbdVisualSystem->loadBackgroundGUISFromName("RGBD_OC_ACT1");
+		rgbdVisualSystem->loadPointcloudGUISFromName("RGBD_OC_ACT1");
+	}
+    else if(numActsCreated == 1){
+		rgbdVisualSystem->loadBackgroundGUISFromName("RGBD_OC_ACT2");
+		rgbdVisualSystem->loadPointcloudGUISFromName("RGBD_OC_ACT2");
+    }
+    else if(numActsCreated == 2){
+		rgbdVisualSystem->loadBackgroundGUISFromName("RGBD_OC_ACT3");
+		rgbdVisualSystem->loadPointcloudGUISFromName("RGBD_OC_ACT3");
+    }
+	else{
+		//randomizer
+	}
     //	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
     //    if(run.actCount == 1){
-    rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_POINTS");
     //    }
     //    else{
     //        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
     //    }
 #else
+	rgbdVisualSystem->loadPresetGUISFromName("RGBD_BASE");
     if(numActsCreated == 0){
-        rgbdVisualSystem->loadPresetGUISFromName("RGBD_NewAct1");
+		rgbdVisualSystem->loadBackgroundGUISFromName("RGBD_ACT1");
+		rgbdVisualSystem->loadPointcloudGUISFromName("RGBD_ACT1");
     }
     else if(numActsCreated == 1){
-        rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT2_LINES_NEW");
+		rgbdVisualSystem->loadBackgroundGUISFromName("RGBD_ACT2");
+		rgbdVisualSystem->loadPointcloudGUISFromName("RGBD_ACT2");
     }
-    else{
-        rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT3_MESH_NEW");
+    else if(numActsCreated == 2){
+		rgbdVisualSystem->loadBackgroundGUISFromName("RGBD_ACT3");
+		rgbdVisualSystem->loadPointcloudGUISFromName("RGBD_ACT3");
     }
+	else{
+		//randomizer
+	}
 #endif
     
     if(currentVisualSystem == NULL){

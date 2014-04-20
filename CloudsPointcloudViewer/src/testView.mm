@@ -84,6 +84,8 @@
 {
     ofBackground(0);
     
+	ofHideCursor();
+	
 	rgbdVisualSystem.selfPostDraw();
 
 #ifndef OCULUS_RIFT

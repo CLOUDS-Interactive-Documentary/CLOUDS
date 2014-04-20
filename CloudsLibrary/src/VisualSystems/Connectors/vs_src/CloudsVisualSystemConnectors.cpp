@@ -211,7 +211,8 @@ Generator CloudsVisualSystemConnectors::buildSynth()
     int nSounds = sizeof(soundFiles) / sizeof(string);
     for (int i=0; i<nSounds; i++)
     {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+		string strAbspath = ofToDataPath(strDir + "/" + soundFiles[i], true);
         samples[i] = loadAudioFile(strAbsPath);
     }
     
