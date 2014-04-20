@@ -509,6 +509,9 @@ void CloudsIntroSequence::updateQuestions(){
 					selectedQuestionTime = ofGetElapsedTimef();
 					selectQuestionStartPos = warpCamera.getPosition();
 					selectQuestionStartRot = warpCamera.getOrientationQuat();
+					CloudsPortalEventArgs args(ofToUpper(selectedQuestion->question));
+					ofNotifyEvent(events.portalHoverBegan, args);
+					
 				}
 				else if(distanceToQuestion > questionTugDistance.max && selectedQuestion == NULL){
 					caughtQuestion->stopHovering();
@@ -716,20 +719,20 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 
 void CloudsIntroSequence::selfDraw(){
 	
-#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
-    if (hud != NULL) {
-        if(selectedQuestion != NULL){
-            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -selectedQuestion->screenPosition.y/2));
-        }
-        else if(caughtQuestion != NULL){
-            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -caughtQuestion->screenPosition.y/2));
-        }
-        else{
-            hud->draw3D(getOculusRift().baseCamera);
-        }
-    }
-#endif
-    
+//#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
+//    if (hud != NULL) {
+//        if(selectedQuestion != NULL){
+//            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -selectedQuestion->screenPosition.y/2));
+//        }
+//        else if(caughtQuestion != NULL){
+//            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -caughtQuestion->screenPosition.y/2));
+//        }
+//        else{
+//            hud->draw3D(getOculusRift().baseCamera);
+//        }
+//    }
+//#endif
+//    
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -843,7 +846,6 @@ void CloudsIntroSequence::drawHelperType(){
 	glDisable(GL_DEPTH_TEST);
 	
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
-//		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", helperFontSize);
 		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 		currentHelperFontSize = helperFontSize;
 	}

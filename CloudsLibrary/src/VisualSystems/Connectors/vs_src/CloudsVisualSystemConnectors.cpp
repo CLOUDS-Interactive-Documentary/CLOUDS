@@ -204,14 +204,15 @@ void CloudsVisualSystemConnectors::selfMouseReleased(ofMouseEventArgs& data){
 Generator CloudsVisualSystemConnectors::buildSynth()
 {
     string strDir = GetCloudsDataPath()+"sound/textures/";
-    ofDirectory sdir(strDir);
+//    ofDirectory sdir(strDir);
     
     SampleTable samples[1];
     
     int nSounds = sizeof(soundFiles) / sizeof(string);
     for (int i=0; i<nSounds; i++)
     {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+		string strAbsPath = ofToDataPath(strDir + "/" + soundFiles[i], true);
         samples[i] = loadAudioFile(strAbsPath);
     }
     

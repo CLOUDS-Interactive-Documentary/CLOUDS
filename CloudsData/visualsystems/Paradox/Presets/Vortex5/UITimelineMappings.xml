@@ -1,0 +1,55 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>voxel spacing</WidgetName>
+                <WidgetID>8</WidgetID>
+                <WidgetCanvasParent>Voxels</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>sphere percent</WidgetName>
+                <WidgetID>12</WidgetID>
+                <WidgetCanvasParent>Voxels</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>twist speed y</WidgetName>
+                <WidgetID>20</WidgetID>
+                <WidgetCanvasParent>Voxels</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>twist factor x</WidgetName>
+                <WidgetID>18</WidgetID>
+                <WidgetCanvasParent>Voxels</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>twist factor y</WidgetName>
+                <WidgetID>22</WidgetID>
+                <WidgetCanvasParent>Voxels</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>ROT-Y</WidgetName>
+                <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

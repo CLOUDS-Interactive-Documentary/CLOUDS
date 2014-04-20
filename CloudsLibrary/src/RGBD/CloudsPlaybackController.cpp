@@ -145,6 +145,7 @@ void CloudsPlaybackController::setup(){
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
 	
+	
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
 	rgbdVisualSystem->setDrawToScreen(false);
@@ -199,6 +200,8 @@ void CloudsPlaybackController::threadedFunction(){
 	clusterMap->setRun(run);
 	clusterMap->buildEntireCluster(parser);
 	
+	populateRGBDPresets();
+	
 	//END THREADED
 	loading = false;
 	loadFinished = true;
@@ -222,6 +225,34 @@ void CloudsPlaybackController::finishSetup(){
     
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
+#endif
+
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::populateRGBDPresets(){
+#ifdef OCULUS_RIFT
+	basePreset = "RGBD_OC_BASE";
+	
+	backgroundPresets.push_back("RGBD_OC_ACT1");
+	pointcloudPresets.push_back("RGBD_OC_ACT1");
+	
+	backgroundPresets.push_back("RGBD_OC_ACT2");
+	pointcloudPresets.push_back("RGBD_OC_ACT2");
+	
+	backgroundPresets.push_back("RGBD_OC_ACT3");
+	pointcloudPresets.push_back("RGBD_OC_ACT3");
+#else
+	basePreset = "RGBD_BASE";
+	
+	backgroundPresets.push_back("RGBD_ACT1");
+	pointcloudPresets.push_back("RGBD_ACT1");
+	
+	backgroundPresets.push_back("RGBD_ACT2");
+	pointcloudPresets.push_back("RGBD_ACT2");
+	
+	backgroundPresets.push_back("RGBD_ACT3");
+	pointcloudPresets.push_back("RGBD_ACT3");
 #endif
 
 }
@@ -878,7 +909,6 @@ void CloudsPlaybackController::drawInterludeInterface(){
 		tracking = 11;
 	}
 	
-		
 	ofPushStyle();
 	ofEnableAlphaBlending();
 
@@ -973,11 +1003,12 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     
 	drawDebugOverlay();
 	
-	if(loadingAct){
-		float progressWidth = ofGetWidth() * .66;
-		//		loadingFont.drawString("Generating a response to your query.", ofGetWidth()*.33, ofGetHeight()*.5 - 5);
-		ofRect(ofGetWidth()*.33 / 2, ofGetHeight()*.5, progressWidth * currentPresetIndex / currentAct->getAllVisualSystemPresets().size(), 50. );
-	}
+//bad loading screen... debug only
+//	if(loadingAct){
+//		float progressWidth = ofGetWidth() * .66;
+//		//		loadingFont.drawString("Generating a response to your query.", ofGetWidth()*.33, ofGetHeight()*.5 - 5);
+//		ofRect(ofGetWidth()*.33 / 2, ofGetHeight()*.5, progressWidth * currentPresetIndex / currentAct->getAllVisualSystemPresets().size(), 50. );
+//	}
 	
 	glPopAttrib();
 }
@@ -1093,7 +1124,6 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
     }
     
 	//rgbdVisualSystem->clearQuestions();
-    
 	nextVisualSystemPreset = args.preset;
     
 	//	cout << "CloudsPlaybackController::showVisualSystem SETTING NEXT SYSTEM TO " << nextVisualSystem.presetName << endl;
@@ -1264,25 +1294,34 @@ void CloudsPlaybackController::hideVisualSystem() {
 }
 
 void CloudsPlaybackController::showRGBDVisualSystem(){
-#ifdef OCULUS_RIFT
-    //	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
-    //    if(run.actCount == 1){
-    rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_POINTS");
-    //    }
-    //    else{
-    //        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
-    //    }
-#else
-    if(numActsCreated == 0){
-        rgbdVisualSystem->loadPresetGUISFromName("RGBD_NewAct1");
+//#ifdef OCULUS_RIFT
+//	rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_BASE");
+//    if(numActsCreated == 0){
+//		rgbdVisualSystem->loadBackgroundGUISFromName("RGBD_OC_ACT1");
+//		rgbdVisualSystem->loadPointcloudGUISFromName("RGBD_OC_ACT1");
+//	}
+//    else if(numActsCreated == 1){
+//		rgbdVisualSystem->loadBackgroundGUISFromName("RGBD_OC_ACT2");
+//		rgbdVisualSystem->loadPointcloudGUISFromName("RGBD_OC_ACT2");
+//    }
+//    else if(numActsCreated == 2){
+//		rgbdVisualSystem->loadBackgroundGUISFromName("RGBD_OC_ACT3");
+//		rgbdVisualSystem->loadPointcloudGUISFromName("RGBD_OC_ACT3");
+//    }
+//	else{
+//		//randomizer
+//	}
+//#else
+	rgbdVisualSystem->loadPresetGUISFromName(basePreset);
+    if(numActsCreated < 3){
+		rgbdVisualSystem->loadBackgroundGUISFromName(backgroundPresets[numActsCreated]);
+		rgbdVisualSystem->loadPointcloudGUISFromName(pointcloudPresets[numActsCreated]);
     }
-    else if(numActsCreated == 1){
-        rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT2_LINES_NEW");
-    }
-    else{
-        rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT3_MESH_NEW");
-    }
-#endif
+	else{
+		rgbdVisualSystem->loadBackgroundGUISFromName(backgroundPresets[ ofRandom(backgroundPresets.size()) ]);
+		rgbdVisualSystem->loadPointcloudGUISFromName(pointcloudPresets[ ofRandom(pointcloudPresets.size()) ]);
+	}
+//#endif
     
     if(currentVisualSystem == NULL){
         rgbdVisualSystem->startTransitionIn( CloudsVisualSystemRGBD::FLY_THROUGH );
@@ -1295,7 +1334,6 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
         else {
             rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
         }
-        
     }
 	
 	rgbdVisualSystem->playSystem();
@@ -1345,12 +1383,3 @@ void CloudsPlaybackController::portalHoverEnded(CloudsPortalEventArgs &args){
 		currentAct->getTimeline().stop();		
 	}
 }
-
-//void CloudsPlaybackController::clearRestButtonParams(){
-//    bResetSelected = false;
-//    prevResetValue = false;
-////    resetSelectedPercentComplete = 0;
-//    bResetTransitionComplete = false;
-//}
-//
-

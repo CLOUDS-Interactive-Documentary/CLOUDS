@@ -119,6 +119,11 @@ class CloudsPlaybackController : public ofThread {
     
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;
+	vector<string> backgroundPresets;
+	vector<string> pointcloudPresets;
+	string basePreset;
+	void populateRGBDPresets();
+	
 	//if there is a system playing this wil be non-null
 	CloudsIntroSequence* introSequence;
 	CloudsVisualSystemClusterMap* clusterMap;

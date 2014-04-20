@@ -445,6 +445,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     
     //rigs
 //    showOnlyStartQuestions = true;
+	showOnlyStartQuestions = false;
     //    bLogClipDetails = false;
     startingQuestions = getStartingQuestions();
 
@@ -589,7 +590,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         ///////////////// QUESTIONS
         //adding all option clips with questions
 //#ifndef OCULUS_RIFT
-		if(state.timesOnCurrentTopic > 2){
+		if(state.act->getAllVisualSystemPresets().size() > 1){
             if(showOnlyStartQuestions){
                 if(startingQuestions.size() > 0){
                     addQuestions(state, startingQuestions);
@@ -914,11 +915,12 @@ CloudsClip CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<CloudsC
 	}
 	
 	//select next clip
-	CloudsClip& winningClip = winningClips[ofRandom(winningClips.size())];
+	int winningClipIndex = ofRandom(winningClips.size());
+	CloudsClip& winningClip = winningClips[winningClipIndex];
 	
 	//select next questions
 	for(int k = 0; k < nextOptions.size(); k++){
-		if(nextOptions[k].hasQuestion()){
+		if(nextOptions[k].hasQuestion() && nextOptions[k].getID() != winningClip.getID()){
 			questionClips.push_back(nextOptions[k]);
 		}
 	}

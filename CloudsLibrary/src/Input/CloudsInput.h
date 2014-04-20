@@ -44,7 +44,8 @@ class CloudsInput
 	
 	CloudsInputEvents& getEvents();
 	void setBleedPixels(int bleed);
-    
+    ofVec2f getBleedPixels();
+	
     virtual void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus) = 0;
     void selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size);
     
@@ -52,8 +53,8 @@ class CloudsInput
 
     ofVec3f currentPosition;
 	ofVec3f lastPosition;
-    ofVec2f bleedOffset;
-    
+    ofVec3f bleedOffset;
+	
     bool dragging;
     int bleed;
     
