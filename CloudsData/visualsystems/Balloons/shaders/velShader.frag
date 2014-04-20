@@ -14,7 +14,7 @@ uniform float highSpeedPercent;
 uniform float textRadius;
 
 uniform int numCredits;
-uniform vec4 credits[10];
+uniform vec4 credits[5];
 
 uniform vec3 camPos;
 uniform vec3 line0;
@@ -145,7 +145,8 @@ void main()
 	//bounce off credits
 	vec3 p0, p1;
 	vec3 intersection;
-	for(int i=0; i<numCredits; i++)
+	int numC = int( min( float(numCredits), 4.) );
+	for(int i=0; i<numC; i++)
 	{
 		p0 = p1 = credits[i].xyz;
 		p1.x += credits[i].w;

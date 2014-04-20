@@ -193,6 +193,11 @@ class CloudsVisualSystemBalloons : public CloudsVisualSystem {
 		return intersection;
     }
 	
+	
+	ofCamera& getCameraRef(){
+		return cloudsCamera;
+	}
+	
 protected:
     
     //  Your Stuff

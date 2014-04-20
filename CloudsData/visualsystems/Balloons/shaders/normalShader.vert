@@ -157,7 +157,7 @@ void main()
 	vec3 r = reflect( ePos, vNorm );
 	float m = 2. * sqrt(r.x*r.x + r.y*r.y + pow(r.z+1., 2.));
 	vN = (r.xy / m + .5);
-//	vN.y = 1. - vN.y;
+	vN.y = 1. - vN.y;
 	vN *= sphericalMapDim;
 }
 
