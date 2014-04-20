@@ -318,7 +318,7 @@ void CloudsPlaybackController::updateLoadingAct(){
 	if(currentPresetIndex == currentAct->getAllVisualSystemPresets().size()){
 		loadingAct = false;
 		shouldPlayAct = true;
-	}	
+	}
 }
 
 //--------------------------------------------------------------------
@@ -829,6 +829,10 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeContinueSelected = true;
 		return true;
 	}
+	if(ofGetElapsedTimef() - interludeStartTime > 30){
+		interludeResetSelected = true;
+		return true;
+	}
 	return false;
 #else
 	
@@ -874,6 +878,12 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeBarHoverPercentComplete *= 0.995;
 		interludeBarHoverPercentComplete = MAX(0.0,interludeBarHoverPercentComplete-.001);
 	}
+	
+	if(ofGetElapsedTimef() - interludeStartTime > 60){
+		interludeContinueSelected = true;
+		return true;
+	}
+	
 	return false;
 #endif
 	
