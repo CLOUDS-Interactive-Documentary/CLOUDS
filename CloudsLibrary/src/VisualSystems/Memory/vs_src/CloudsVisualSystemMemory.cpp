@@ -472,8 +472,13 @@ Generator CloudsVisualSystemMemory::buildSynth()
 {
     string strDir = GetCloudsDataPath()+"sound/textures/";
     ofDirectory sdir(strDir);
-    string strAbsPath = sdir.getAbsolutePath() + "/CPUBeepsFastDrone_.aif";
-    
+//    string strAbsPath = sdir.getAbsolutePath() + "/CPUBeepsFastDrone_.aif";
+    string strAbsPath = ofToDataPath(strDir + "/" + "CPUBeepsFastDrone_.aif", true);
+//    for(int i=0; i<tonicSamples.size();i++){
+//        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
+//        samples[i] = loadAudioFile(strAbsPath);
+//    }
+
     SampleTable sample = loadAudioFile(strAbsPath);
     
     Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);

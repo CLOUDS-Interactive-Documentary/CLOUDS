@@ -8,7 +8,8 @@
 #include "ofxOceanCamera.h"
 #include "CloudsGlobal.h"
 #include "CloudsAudioEvents.h"
-#include "ofxTonic.h"
+//#include "ofxTonic.h"
+#include "TonicSample.h"
 
 using namespace Tonic;
 
@@ -101,11 +102,12 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
 	
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[2] = {
-        "Vocal_harmonic_high_shorter.aif",
-        "vocal_harmony_bass.aif"};
-    bool playSample[2];
-    ControlTrigger soundTriggers[2];
+    vector<TonicSample> tonicSamples;
+//    string soundFiles[2] = {
+//        "Vocal_harmonic_high_shorter.aif",
+//        "vocal_harmony_bass.aif"};
+//    bool playSample[2];
+//    ControlTrigger soundTriggers[2];
     ofxTonicSynth synth;
     Generator buildSynth();
     ControlParameter volumeControl;
