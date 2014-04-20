@@ -28,7 +28,7 @@ void CloudsVisualSystem2DVideo::selfSetupGui()
 }
 
 void CloudsVisualSystem2DVideo:: selfSetDefaults(){
-    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode =  CURSOR_MODE_INACTIVE;
 	rotationRange = ofVec2f(5,5);
 }

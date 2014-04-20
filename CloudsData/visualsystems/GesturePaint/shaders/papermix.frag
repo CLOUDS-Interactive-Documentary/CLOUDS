@@ -6,6 +6,7 @@ uniform vec2 dimensions;
 uniform sampler2DRect source_texture;
 uniform sampler2DRect water_texture;
 uniform sampler2DRect flow_texture;
+uniform int saturationBoost;
 
 uniform float flowSwap;
 uniform float flowWidth;
@@ -76,7 +77,9 @@ void main()
 		gl_FragColor += texture2DRect(source_texture, v_texCoord+
 										  flowDirection*v_blurTexCoords[13]*flowAmount)*0.0044299121055113265;
         vec4 color = vec4(rgb2hsv(gl_FragColor.rgb),gl_FragColor.a);
-        color.y += 0.05;
+		if(saturationBoost == 1){
+			color.y += 0.05;
+		}
         gl_FragColor = vec4(hsv2rgb(color.rgb),color.a);
 	}
 	else{

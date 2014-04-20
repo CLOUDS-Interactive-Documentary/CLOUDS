@@ -175,8 +175,8 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
 	ofFbo& renderTarget = getStaticRenderTarget();
     
-   int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
-    int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
+	int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
+	int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
     
 bool reallocateTarget = !renderTarget.isAllocated();
 	reallocateTarget |= !screenResolutionForced &&

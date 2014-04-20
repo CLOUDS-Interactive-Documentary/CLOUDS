@@ -957,12 +957,12 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	flickerNoise.update();
 	
 	///UPDATE TYPE
-	if(currentTypeSizeRange != typeSizeRange && typeSizeRange.span() > 0){
+	if( (topicFont.size() == 0 || currentTypeSizeRange != typeSizeRange) && typeSizeRange.span() > 0){
 		topicFont.clear();
 		topicFont.resize(typeSizeRange.span());
 		int fontIndex = 0;
 		for(int i = typeSizeRange.min; i < typeSizeRange.max; i++){
-			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
+//			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
 		}
 		currentTypeSizeRange = typeSizeRange;
 	}
