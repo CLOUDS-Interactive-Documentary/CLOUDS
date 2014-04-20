@@ -13,9 +13,10 @@
 #include "CloudsVisualSystem.h"
 #include "ofxRules.h"
 #include "ofxPostProcessing.h"
-#include "ofxTonic.h"
+//#include "ofxTonic.h"
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
+#include "TonicSample.h"
 
 using namespace Tonic;
 
@@ -164,12 +165,13 @@ protected:
 	ofVboMesh simplePointcloud;*/
     
 	// Sound
-    string soundFiles[3] = {"SriLankaForest.aif",
-        "FOREST.aif",
-        "organ_slower.aif"};
-    float sampleVolume[3] = {0};
-    bool playSample[3] = {false};
-    ControlTrigger soundTriggers[3];
+    vector<TonicSample> tonicSamples;
+//    string soundFiles[3] = {"SriLankaForest.aif",
+//        "FOREST.aif",
+//        "organ_slower.aif"};
+//    float sampleVolume[3] = {0};
+//    bool playSample[3] = {false};
+//    ControlTrigger soundTriggers[3];
     ofxTonicSynth synth;
     Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);

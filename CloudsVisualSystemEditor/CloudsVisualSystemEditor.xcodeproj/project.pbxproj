@@ -1781,6 +1781,7 @@
 		2A4F33EC1863CDD00070C0ED /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
 		2A4F33ED1863CDD00070C0ED /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lukeFuncs.h; sourceTree = "<group>"; };
 		2A4F33EE1863CDD00070C0ED /* lukeMusicFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeMusicFuncs.cpp; sourceTree = "<group>"; };
+		4695CB04190381630001F64B /* TonicSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TonicSample.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -3333,6 +3334,7 @@
 				2A4F33E31863CDD00070C0ED /* CloudsSoundFilesSamplesDatabases.cpp */,
 				2A4F33E41863CDD00070C0ED /* CloudsSoundFuncs.cpp */,
 				2A4F33E51863CDD00070C0ED /* RTCMix */,
+				4695CB04190381630001F64B /* TonicSample.h */,
 			);
 			path = Sound;
 			sourceTree = "<group>";

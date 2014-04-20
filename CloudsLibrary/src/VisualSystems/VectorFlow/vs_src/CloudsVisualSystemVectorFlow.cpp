@@ -466,11 +466,13 @@ Generator CloudsVisualSystemVectorFlow::buildSynth()
     
     ofDirectory sdir(strDir);
     //string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif";
-    string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif"; //Wind 2. aif
+    //string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif"; //Wind 2. aif
+    string strAbsPath = ofToDataPath(strDir + "/" +"Wind 2.aif", true);
     
     SampleTable sample = loadAudioFile(strAbsPath);
     
-    string strAbsPath2 = sdir.getAbsolutePath() + "/slowgrains_short.aif"; //slowgrains.aif
+//    string strAbsPath2 = sdir.getAbsolutePath() + "/slowgrains_short.aif"; //slowgrains.aif
+    string strAbsPath2 = ofToDataPath(strDir + "/" +"slowgrains_short.aif", true);
     
     SampleTable sample2 = loadAudioFile(strAbsPath2);
     

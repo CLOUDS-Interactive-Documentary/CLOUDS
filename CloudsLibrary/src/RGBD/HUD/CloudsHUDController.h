@@ -55,6 +55,8 @@ class CloudsHUDController {
     void setHudEnabled(bool enable);
     bool isHudEnabled();
 	
+	void clearQuestion();
+	
 	void buildLayerSets();
     void calculateFontSizes();
     int getFontSizeForMesh( SVGMesh* textMesh );
@@ -110,7 +112,7 @@ class CloudsHUDController {
     bool    bIsHudOpen;
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
-    
+    bool	bActJustStarted;
     bool    bLowerThirdCued;
     bool    bVisualSystemDisplayed;
     float   cuedClipEndTime;

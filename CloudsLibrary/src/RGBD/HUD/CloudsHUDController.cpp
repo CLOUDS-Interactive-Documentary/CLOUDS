@@ -21,7 +21,8 @@ CloudsHUDController::CloudsHUDController(){
     bSkipAVideoFrame = false;
     bDrawHud = true;
     bDrawHome = true;
-    
+    bActJustStarted = false;
+	cuedClipEndTime = 0;
     bVisualSystemDisplayed = false;
     bLowerThirdCued = false;
 	
@@ -66,10 +67,16 @@ void CloudsHUDController::setup(){
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 	bDrawHud = true;
+	bActJustStarted = true;
+	animateOn( CLOUDS_HUD_QUESTION );
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 	animateOff( CLOUDS_HUD_FULL );
+}
+
+void CloudsHUDController::clearQuestion(){
+	hudLabelMap["QuestionTextBox"]->setText("", false);
 }
 
 void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
@@ -90,12 +97,16 @@ void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 void CloudsHUDController::questionProposed(CloudsQuestionEventArgs& args){
 //    populateQuestion( args.question, true);
 }
+
 void CloudsHUDController::questionSelected(CloudsQuestionEventArgs& args){
     populateQuestion( args.question, true);
 }
 
 void CloudsHUDController::topicChanged(CloudsTopicEventArgs& args){
-    animateOff( CLOUDS_HUD_QUESTION );
+	if(!bActJustStarted){
+		animateOff( CLOUDS_HUD_QUESTION );
+	}
+	bActJustStarted = false;
 }
 
 void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
@@ -209,12 +220,14 @@ void CloudsHUDController::populateLowerThird( string firstName, string lastName,
     int lastNameRight = lastNameLabel->getRightEdge();
     int rightEdge = 0;
     
-    if(firstNameRight > lastNameRight)
+    if(firstNameRight > lastNameRight){
         rightEdge = firstNameRight;
-    else
+    }
+	else{
         rightEdge = lastNameRight;
+	}
 
-    cout<< "right edge: " << rightEdge << endl;
+//    cout<< "right edge: " << rightEdge << endl;
     
     //move these over to float left of name
     CloudsHUDLabel* locationLabel = hudLabelMap["BylineTopicTextBoxTop"];
