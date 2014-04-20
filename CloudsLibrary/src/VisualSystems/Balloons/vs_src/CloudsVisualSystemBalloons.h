@@ -193,6 +193,11 @@ class CloudsVisualSystemBalloons : public CloudsVisualSystem {
 		return intersection;
     }
 	
+	
+	ofCamera& getCameraRef(){
+		return cloudsCamera;
+	}
+	
 protected:
     
     //  Your Stuff
@@ -257,6 +262,6 @@ protected:
 	
 	ofVec3f line0, line1;
 
-	float textSpeed, textRadius;
+	float textSpeed, textRadius, creditLightDist;
 	vector<Credit> credits;
 };

@@ -295,33 +295,30 @@ void CloudsPlaybackController::loadCurrentAct(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::updateLoadingAct(){
+	
+	if(currentAct == NULL){
+		ofLogError("CloudsPlaybackController::updateLoadingAct") << "Current Act is NULL";
+		return;
+	}
+	
+	if(currentPresetIndex < currentAct->getAllVisualSystemPresets().size()){
+		CloudsVisualSystemPreset& preset = currentAct->getAllVisualSystemPresets()[currentPresetIndex];
+		
+		preset.system = CloudsVisualSystemManager::InstantiateSystem(preset.systemName);
+		if(preset.system != NULL){
+			preset.system->setup();
+		}
+		else{
+			ofLogError("CloudsPlaybackController::updateLoadingAct") << preset.systemName << " NULL right after instantiaton.";
+		}
 
-	CloudsVisualSystemPreset& preset = currentAct->getAllVisualSystemPresets()[currentPresetIndex];
-	
-	preset.system = CloudsVisualSystemManager::InstantiateSystem(preset.systemName);
-	if(preset.system != NULL){
-		preset.system->setup();
-	}
-	else{
-		ofLogError("CloudsPlaybackController::updateLoadingAct") << preset.systemName << " NULL right after instantiaton.";
+		currentPresetIndex++;
 	}
 	
-	currentPresetIndex++;
 	if(currentPresetIndex == currentAct->getAllVisualSystemPresets().size()){
 		loadingAct = false;
 		shouldPlayAct = true;
 	}
-	
-//	for(int i = 0; i < presets.size(); i++){
-//		if(presetsToLoad[i].system != NULL){
-//            //			cout << "CloudsPlaybackController::playAct -- Setting up:: " << presets[i].systemName << endl;
-//			presetsToLoad[i].system->setup();
-//		}
-//		else{
-//			ofLogError("CloudsPlaybackController::playAct") << presetsToLoad[i].systemName << " NULL right after instantiaton.");
-//		}
-//	}
-	
 }
 
 //--------------------------------------------------------------------
@@ -832,6 +829,10 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeContinueSelected = true;
 		return true;
 	}
+	if(ofGetElapsedTimef() - interludeStartTime > 30){
+		interludeResetSelected = true;
+		return true;
+	}
 	return false;
 #else
 	
@@ -877,6 +878,12 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeBarHoverPercentComplete *= 0.995;
 		interludeBarHoverPercentComplete = MAX(0.0,interludeBarHoverPercentComplete-.001);
 	}
+	
+	if(ofGetElapsedTimef() - interludeStartTime > 60){
+		interludeContinueSelected = true;
+		return true;
+	}
+	
 	return false;
 #endif
 	
@@ -1278,6 +1285,7 @@ void CloudsPlaybackController::cleanupInterlude(){
     else if(currentVisualSystem != NULL && currentVisualSystem == interludeSystem){
         interludeSystem->stopSystem();
         interludeSystem->exit();
+		hud.clearQuestion();
         exitedInterlude = true;
     }
     else {
@@ -1334,7 +1342,6 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
         else {
             rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
         }
-        
     }
 	
 	rgbdVisualSystem->playSystem();
@@ -1384,12 +1391,3 @@ void CloudsPlaybackController::portalHoverEnded(CloudsPortalEventArgs &args){
 		currentAct->getTimeline().stop();		
 	}
 }
-
-//void CloudsPlaybackController::clearRestButtonParams(){
-//    bResetSelected = false;
-//    prevResetValue = false;
-////    resetSelectedPercentComplete = 0;
-//    bResetTransitionComplete = false;
-//}
-//
-

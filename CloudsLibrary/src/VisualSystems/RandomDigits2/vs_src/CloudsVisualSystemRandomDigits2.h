@@ -121,14 +121,15 @@ protected:
 
     // Sound
     ofxUISuperCanvas* soundGui;
-    int nSamples = 4;
-    string soundFiles[4] = {"EchoVortex.aif",
-        "wormholeZoom.aif",
-        "wormholeZoom2.aif",
-        "slowgrains_short.aif"};
-    bool playSample[4];
-    ControlTrigger soundTriggers[4];
-    ofxTonicSynth synth;
-    Generator buildSynth();
+//SM:Commented out for Tribeca
+//    int nSamples = 4;
+//    string soundFiles[4] = {"EchoVortex.aif",
+//        "wormholeZoom.aif",
+//        "wormholeZoom2.aif",
+//        "slowgrains_short.aif"};
+//    bool playSample[4];
+//    ControlTrigger soundTriggers[4];
+//    ofxTonicSynth synth;
+//    Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
 };
