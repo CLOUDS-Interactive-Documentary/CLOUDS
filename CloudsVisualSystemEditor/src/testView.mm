@@ -174,7 +174,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[ self.selectedPresetIndex ].systemName );
 		
 		///SCREENCAPTURE MODE
-		currentVisualSystem->setNumSamples(4);
+//		currentVisualSystem->setNumSamples(4);
 		currentVisualSystem->forceScreenResolution(1920, 1080);
 		currentVisualSystem->setDrawToScreen(false);
 		/////
