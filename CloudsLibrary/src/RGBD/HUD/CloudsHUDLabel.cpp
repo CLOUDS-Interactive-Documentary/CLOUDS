@@ -148,7 +148,7 @@ void CloudsHUDLabel::instantOut() {
     
     pct = 0.0;
     textAlpha = floor( 255. * pct );
-    text == "";
+//    text = "";
 }
 
 bool CloudsHUDLabel::isVisible() {

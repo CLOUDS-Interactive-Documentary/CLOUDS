@@ -8,7 +8,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Alpha</Name>
-    <Value>1.000000000</Value>
+    <Value>0.798029542</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Y Simplify</Name>
-    <Value>1.551724195</Value>
+    <Value>1.586206913</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Point Size</Name>
-    <HighValue>1.581280708</HighValue>
+    <HighValue>1.034482718</HighValue>
     <LowValue>0.339901477</LowValue>
 </Widget>
 <Widget>
@@ -69,7 +69,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Speed</Name>
-    <Value>16.551725388</Value>
+    <Value>2.857142925</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -79,12 +79,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Angle</Name>
-    <Value>76.256156921</Value>
+    <Value>70.049263000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Max Affect</Name>
-    <Value>0.536945820</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
