@@ -14,12 +14,9 @@ uniform float highSpeedPercent;
 uniform float textRadius;
 
 uniform int numCredits;
-uniform vec4 credits[10];
+uniform vec4 credits[5];
 
 uniform vec3 camPos;
-uniform vec3 line0;
-uniform vec3 line1;
-
 
 uniform float bound;
 uniform float dimX;
@@ -138,14 +135,11 @@ void main()
 	//repel from camera
 	bounce(acc, pos, camPos, collisionCount, radius * 2.5);
 	
-	//bounce off line
-//	vec3 intersection = IntersectionPointLine(pos, line0, line1);
-//	bounce(acc, pos, intersection, collisionCount, radius * textRadius);
-	
 	//bounce off credits
 	vec3 p0, p1;
 	vec3 intersection;
-	for(int i=0; i<numCredits; i++)
+	int numC = int( min( float(numCredits), 4.) );
+	for(int i=0; i<numC; i++)
 	{
 		p0 = p1 = credits[i].xyz;
 		p1.x += credits[i].w;
@@ -157,10 +151,11 @@ void main()
 	//attract them to the center axis
 	acc.xz -= normalize(pos.xz) * attractionToCenter;
 	
+	//scale acceleration and add gravity
 	acc *= accScl;
 	acc.y += gravity;
 	
-	//gravity with varience based on index and other stuff...
+	//acceleration varience based on index...
 	float i = uv.x * dimY + uv.y;
 	float total = dimX * dimY;
 	if( i < total*highSpeedPercent)
