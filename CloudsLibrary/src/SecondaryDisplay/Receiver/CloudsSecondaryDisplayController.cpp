@@ -16,7 +16,7 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
     lightBlue = ofColor::fromHex(0x97d7fb);
     darkBlue = ofColor::fromHex(0x439ced);
     color = false;
-  //  stringCounter = 0;
+
     tx = .1;
     animatingIn = false;
     animatingOut = false;
@@ -36,11 +36,13 @@ void CloudsSecondaryDisplayController::setup(){
 	clusterMap.setDrawToScreen(false);
 
 	clusterMap.setup();
+	clusterMap.loadPresetGUISFromName("2DFollowCam");
+	
+	clusterMap.buildEntireCluster(parser);
+	clusterMap.allocateFlickerTexture();
+	
 	clusterMap.playSystem();
 
-	clusterMap.loadPresetGUISFromName("2DFollowCam");
-	clusterMap.buildEntireCluster(parser);
-    
     archivePlayer.setLoopState(OF_LOOP_NORMAL);
 
     //setup OSC reciever
@@ -285,7 +287,7 @@ void CloudsSecondaryDisplayController::update(){
 	}
     
     if( animatingIn ){
-        cout << "animatingIn" <<endl;
+//        cout << "animatingIn" <<endl;
         playhead = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 0., 1. );
        // cout << "playhead: " << playhead << endl;
         if( playhead >= 1.0 ){
