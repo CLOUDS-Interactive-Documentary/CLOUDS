@@ -60,7 +60,7 @@ void CloudsPlaybackController::resetInterludeVariables(){
 	interludeContinueSelected = false;
 	interludeResetSelected = false;
 	interludeTimedOut = false;
-	interludeForceOnTimer = 10;
+	interludeForceOnTimer = 50;
 	
 }
 
