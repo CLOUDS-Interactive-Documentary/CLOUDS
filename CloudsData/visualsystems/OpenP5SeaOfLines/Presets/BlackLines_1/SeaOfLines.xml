@@ -13,8 +13,13 @@
 <Widget>
     <Kind>6</Kind>
     <Name>DISTANCES</Name>
-    <HighValue>39.039409637</HighValue>
-    <LowValue>1.000000000</LowValue>
+    <HighValue>71.226593018</HighValue>
+    <LowValue>28.310344696</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BASE DISTANCE</Name>
+    <Value>31.236454010</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -25,7 +30,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>CURSOR RANGE</Name>
-    <Value>0.241379306</Value>
+    <Value>0.330049247</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -50,7 +55,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LINE ALPHA 1</Name>
-    <Value>0.324999988</Value>
+    <Value>0.574999988</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -60,7 +65,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LINE SAT 2</Name>
-    <Value>0.206896558</Value>
+    <Value>0.231527090</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -70,5 +75,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LINE ALPHA 2</Name>
-    <Value>0.536945820</Value>
+    <Value>0.768472910</Value>
 </Widget>

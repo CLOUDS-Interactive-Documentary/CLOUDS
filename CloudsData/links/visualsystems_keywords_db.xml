@@ -20722,20 +20722,25 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5SeaOfLines_BlackLines_1">
-    <keywords></keywords>
+    <keywords>processing|sketching</keywords>
     <links></links>
     <suppressions>
         <clip>Andres - examples of the impossible</clip>
         <clip>Andres - make an egg</clip>
+        <clip>Casey - Birth of processing</clip>
         <clip>Casey - People would pop up</clip>
         <clip>Casey - Processing addons</clip>
         <clip>Casey - Processing open</clip>
         <clip>Casey - group teaching</clip>
+        <clip>Casey - sketching with code</clip>
+        <clip>Golan - make a mark</clip>
         <clip>Intro - CodingSketching</clip>
         <clip>Jen - necessity of code 2</clip>
+        <clip>Kevin - Draft mode</clip>
         <clip>Kyle_CH - fun accessible art</clip>
         <clip>Maeda - Batman superman</clip>
         <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Maeda - Processing</clip>
         <clip>Maeda - early computer graphics</clip>
         <clip>Maeda - thinking about interfaces</clip>
         <clip>Nervous_Jessica - John Maeda</clip>
@@ -20748,15 +20753,47 @@
         <clip>Shiffman - NOC 2</clip>
         <clip>Shiffman - Not a visual thinker</clip>
         <clip>Shiffman - make it random</clip>
-        <clip>Theo - favorite projects</clip>
-        <clip>Theo - generative and pre-rendered</clip>
-        <clip>Marius - gardening</clip>
-        <clip>LIA - TimeStamps1</clip>
-        <clip>LIA - TimeStamps2</clip>
-        <clip>LIA - CircleFormula1</clip>
-        <clip>Kevin - algo culture 4</clip>
-        <clip>Bruce - Gardening 1</clip>
-        <clip>Bruce - Gardening 2</clip>
+        <clip>Zach - processing, publishing</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="OpenP5SeaOfLines_BlackLines_connect">
+    <keywords>sketching|interactivity|interconnectedness</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Golan - make a mark</clip>
+        <clip>Intro - CodingSketching</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Karsten - immediate feedback</clip>
+        <clip>Kevin - Draft mode</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+        <clip>Nervous_Jessica - Can&apos;t draw</clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - Coding gesturally</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shiffman - Not a visual thinker</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Julia - make us more compassionate</clip>
+        <clip>Julia - feeling of kinship</clip>
+        <clip>Jer - active not interactive</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Golan - twitching in a room</clip>
+        <clip>Golan - project example</clip>
+        <clip>Golan - instruments</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -20779,12 +20816,40 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5SeaOfLines_FallingFireweb">
-    <keywords></keywords>
+    <keywords>sketching|interactivity|interconnectedness</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Golan - make a mark</clip>
+        <clip>Intro - CodingSketching</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Karsten - immediate feedback</clip>
+        <clip>Kevin - Draft mode</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+        <clip>Nervous_Jessica - Can&apos;t draw</clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - Coding gesturally</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shiffman - Not a visual thinker</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Julia - make us more compassionate</clip>
+        <clip>Julia - feeling of kinship</clip>
+        <clip>Jer - active not interactive</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Golan - twitching in a room</clip>
+        <clip>Golan - project example</clip>
+        <clip>Golan - instruments</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -20829,7 +20894,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -20958,20 +21023,25 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5SeaOfLines_WhiteLines_2">
-    <keywords></keywords>
+    <keywords>processing|sketching</keywords>
     <links></links>
     <suppressions>
         <clip>Andres - examples of the impossible</clip>
         <clip>Andres - make an egg</clip>
+        <clip>Casey - Birth of processing</clip>
         <clip>Casey - People would pop up</clip>
         <clip>Casey - Processing addons</clip>
         <clip>Casey - Processing open</clip>
         <clip>Casey - group teaching</clip>
+        <clip>Casey - sketching with code</clip>
+        <clip>Golan - make a mark</clip>
         <clip>Intro - CodingSketching</clip>
         <clip>Jen - necessity of code 2</clip>
+        <clip>Kevin - Draft mode</clip>
         <clip>Kyle_CH - fun accessible art</clip>
         <clip>Maeda - Batman superman</clip>
         <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Maeda - Processing</clip>
         <clip>Maeda - early computer graphics</clip>
         <clip>Maeda - thinking about interfaces</clip>
         <clip>Nervous_Jessica - John Maeda</clip>
@@ -20984,15 +21054,7 @@
         <clip>Shiffman - NOC 2</clip>
         <clip>Shiffman - Not a visual thinker</clip>
         <clip>Shiffman - make it random</clip>
-        <clip>Theo - favorite projects</clip>
-        <clip>Theo - generative and pre-rendered</clip>
-        <clip>Marius - gardening</clip>
-        <clip>LIA - TimeStamps1</clip>
-        <clip>LIA - TimeStamps2</clip>
-        <clip>LIA - CircleFormula1</clip>
-        <clip>Kevin - algo culture 4</clip>
-        <clip>Bruce - Gardening 1</clip>
-        <clip>Bruce - Gardening 2</clip>
+        <clip>Zach - processing, publishing</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -23728,30 +23790,6 @@
 </system>
 <system name="Oscillations_laser_blast">
     <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Oscillations_laser_blast_rotation">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Oscillations_laser_blast">
-    <keywords></keywords>
     <links>
         <clip>LIA - MalleableMath</clip>
         <clip>LIA - NotInventingAnything1</clip>
@@ -23792,6 +23830,18 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Oscillations_laser_blast_rotation">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
