@@ -13,7 +13,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
 	customGui->setName("SeaOfLines");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
-    customGui->addIntSlider("NUM PARTICLES", 1, 2000, &numParticles);
+    customGui->addIntSlider("NUM PARTICLES", 1, 3000, &numParticles);
 
     customGui->addSpacer();
     customGui->addSlider("BG ALPHA", 0.0, 1.0, &bgAlpha);
