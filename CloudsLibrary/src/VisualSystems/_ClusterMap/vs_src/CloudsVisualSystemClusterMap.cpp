@@ -850,7 +850,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	
 	///UPDATE ANIMATION
 	percentTraversed = ofMap(ofGetElapsedTimef(),
-							 traverseStartTime, traverseStartTime+traverseAnimationDuration * (autoTraversePoints ? .6 : 1.0),
+							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
 							 0, 1.0, true);
 	
 	if(autoTraversePoints) {
@@ -889,11 +889,17 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
             trailHead = frontVert.getInterpolated(backVert, alpha);
         }
         
-		if(lockCameraAxis && !autoTraversePoints){
+		if(lockCameraAxis){
 			ofVec3f curPosition = axisCamera.getPosition();
             ofQuaternion nextRot,lastRot,curRot;
-            nextRot.makeRotate(fmod((numTraversed+1)*90,360.0f), ofVec3f(0,1,0));
-            lastRot.makeRotate(fmod(numTraversed*90,360.0f), ofVec3f(0,1,0));
+			if(autoTraversePoints){
+				nextRot.makeRotate(0, ofVec3f(0,1,0));
+				lastRot.makeRotate(0, ofVec3f(0,1,0));
+			}
+			else{
+				nextRot.makeRotate(fmod((numTraversed+1)*90,360.0f), ofVec3f(0,1,0));
+				lastRot.makeRotate(fmod(numTraversed*90,360.0f), ofVec3f(0,1,0));
+			}
             curRot.slerp(percentTraversed,lastRot,nextRot);
             
             //cout << "current rot " << numTraversed << "last rot is " << lastRot.getEuler() << " Next rot is " << nextRot.getEuler() << " cur rot is " << curRot.getEuler() << endl;
