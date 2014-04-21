@@ -117,8 +117,8 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 	if( bExploreMode && !GetCloudsInputPressed() && viewport.inside( GetCloudsInputX(), GetCloudsInputY() ) )
 	{
 		//convert mouse coords in to somethin we can work with
-		float mx = ofMap( GetCloudsInputX(), viewport.getLeft()+1, viewport.getRight()-1, 1., -1., true );
-		float my = ofMap( GetCloudsInputY(), viewport.getTop()+1, viewport.getBottom()-1, 1., -1., true );
+		float mx = ofMap( GetCloudsInputX(), viewport.getLeft(), viewport.getRight(), 1., -1., true );
+		float my = ofMap( GetCloudsInputY(), viewport.getTop(), viewport.getBottom(), 1., -1., true );
 		float dist = ofVec2f(mx, my).length();
 		
 		if(dist > deadZone)
@@ -126,7 +126,7 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 			float weight = ofMap( dist - deadZone, 0, 1, 0, 1, true );
 			
 			//dead zone in the middle where nowe just sit an stare
-			mx *= weight;
+//I think this is slowing the rotation --> mx *= weight;
 			my *= weight;
 			
 			float panVal = mx * mouseScl;
