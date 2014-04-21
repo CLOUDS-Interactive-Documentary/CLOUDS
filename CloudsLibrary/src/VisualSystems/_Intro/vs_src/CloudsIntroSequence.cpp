@@ -30,6 +30,11 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	selectLow.setLoop(false);
 	selectMid.setLoop(false);
 	selectHigh.setLoop(false);
+	click.setVolume(.4);
+	selectLow.setVolume(.4);
+	selectMid.setVolume(.4);
+	selectHigh.setVolume(.4);
+
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
@@ -428,7 +433,6 @@ void CloudsIntroSequence::updateTitle(){
 
 void CloudsIntroSequence::updateQuestions(){
 
-
 	for(int i = 0; i < startQuestions.size(); i++){
 		CloudsPortal& curQuestion = startQuestions[i];
 		curQuestion.scale = questionScale;
@@ -630,6 +634,9 @@ void CloudsIntroSequence::positionStartQuestions(){
 //	}
 
 	//new way with sets of 4
+	srand(ofGetSeconds());
+	random_shuffle(startQuestions.begin(), startQuestions.end());
+	
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].tunnelQuadrantIndex = i%4;
 		startQuestions[i].hoverPosition = ofVec3f(0, questionTunnelInnerRadius, 0);
