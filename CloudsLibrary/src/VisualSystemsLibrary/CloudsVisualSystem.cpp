@@ -33,6 +33,11 @@ static bool screenResolutionForced = false;
 static int forcedScreenWidth;
 static int forcedScreenHeight;
 static int numSamples = 4;
+static ofSoundPlayer* click = NULL;
+static ofSoundPlayer* selectHigh = NULL;
+static ofSoundPlayer* selectMid = NULL;
+static ofSoundPlayer* selectLow = NULL;
+
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
@@ -73,13 +78,52 @@ void CloudsVisualSystem::loadBackgroundShader(){
     backgroundGradientWash.loadImage(GetCloudsDataPath() + "backgrounds/wash.png");
 	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
-    
 }
 
 void CloudsVisualSystem::loadPostShader(){
     cloudsPostShader.load("",GetCloudsDataPath() + "shaders/post.fs");
     cloudsPostDistortionMap.loadImage( GetCloudsDataPath() + "images/7.jpg");
     postShaderLoaded = true;
+}
+
+ofSoundPlayer* CloudsVisualSystem::getClick(){
+	if(click == NULL){
+		click = new ofSoundPlayer();
+		click->setLoop(false);
+		click->loadSound(GetCloudsDataPath() + "sound/interface/click.aif");
+		click->setVolume(.4);
+	}
+	return click;
+}
+
+ofSoundPlayer* CloudsVisualSystem::getSelectHigh(){
+	if(selectHigh == NULL){
+		selectHigh = new ofSoundPlayer();
+		selectHigh->loadSound(GetCloudsDataPath() + "sound/interface/select_high.wav");
+		selectHigh->setLoop(false);
+		selectHigh->setVolume(.4);
+	}
+	return selectHigh;
+}
+
+ofSoundPlayer* CloudsVisualSystem::getSelectMid(){
+	if(selectMid == NULL){
+		selectMid = new ofSoundPlayer();
+		selectMid->loadSound(GetCloudsDataPath() + "sound/interface/select_mid.aif");
+		selectMid->setLoop(false);
+		selectMid->setVolume(.4);
+	}
+	return selectMid;
+}
+
+ofSoundPlayer* CloudsVisualSystem::getSelectLow(){
+	if(selectLow == NULL){
+		selectLow = new ofSoundPlayer();
+		selectLow->loadSound(GetCloudsDataPath() + "sound/interface/select_low.aif");
+		selectLow->setLoop(false);
+		selectLow->setVolume(.4);
+	}
+	return selectLow;
 }
 
 void CloudsVisualSystem::getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height){
@@ -223,6 +267,7 @@ void CloudsVisualSystem::setup(){
 		return;
 	}
     
+	
     backgroundGradientExponent = 1.0;
     bWashGradient = false;
     
