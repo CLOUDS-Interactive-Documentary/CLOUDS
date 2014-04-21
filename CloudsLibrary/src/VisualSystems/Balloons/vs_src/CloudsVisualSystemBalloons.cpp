@@ -574,11 +574,14 @@ void CloudsVisualSystemBalloons::selfDraw()
 	}
 	
 	vector<ofVec4f> creditPositions;
+	vector<ofVec4f> creditPositionsL;
+	vector<ofVec4f> creditPositionsR;
 	for(auto& c: activeCredits)
 	{
-		ofVec4f cp = c->getLeft();
-		cp.w = c->width;
-		creditPositions.push_back(cp);
+		c->update();
+		creditPositions.push_back(c->pos);
+		creditPositionsL.push_back(c->left);
+		creditPositionsR.push_back(c->right);
 	}
 	
 	//update velocities
@@ -595,8 +598,12 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1f("dimY", dimY);
 	velShader.setUniform1f("bound", dim);
 	
-	if(creditPositions.size())	velShader.setUniform4fv("credits", &creditPositions[0][0], creditPositions.size());
-	velShader.setUniform1i("numCredits", creditPositions.size());
+	if(creditPositionsL.size())
+	{
+		velShader.setUniform4fv("creditsL", &creditPositionsL[0][0], creditPositionsL.size());
+		velShader.setUniform4fv("creditsR", &creditPositionsR[0][0], creditPositionsR.size());
+	}
+	velShader.setUniform1i("numCredits", creditPositionsL.size());
 	
 	velShader.setUniform1f("textRadius", textRadius);
 	
@@ -677,7 +684,8 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	shader.end();
 
-	//draw the credits
+	//draw creditsh
+	glDisable(GL_CULL_FACE);
 	for(auto& c: credits)
 	{
 		c.draw();

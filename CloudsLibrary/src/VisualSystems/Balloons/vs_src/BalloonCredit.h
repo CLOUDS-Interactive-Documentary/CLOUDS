@@ -20,14 +20,15 @@ class BalloonCredit
 	void setup();
 	ofCamera* camera;
 	
-	void getTextWidth();
+	float getTextWidth();
 	ofVec3f getLeft();
+	void update();
 	void draw();
 	
 	string title;
 	string name;
 	
-	ofVec3f pos;
+	ofVec3f pos, left, right;
 	float width;
 	
 	ofxFTGLFont* font;

@@ -16,7 +16,8 @@ uniform float cameraBounceRadius;
 uniform float textRadius;
 
 uniform int numCredits;
-uniform vec4 credits[5];
+uniform vec4 creditsL[5];
+uniform vec4 creditsR[5];
 
 uniform vec3 camPos;
 
@@ -143,8 +144,8 @@ void main()
 	int numC = int( min( float(numCredits), 4.) );
 	for(int i=0; i<numC; i++)
 	{
-		p0 = p1 = credits[i].xyz;
-		p1.x += credits[i].w;
+		p0 = creditsL[i].xyz;
+		p1 = creditsR[i].xyz;
 		
 		intersection = IntersectionPointLine(pos, p0, p1);
 		bounce(acc, pos, intersection, collisionCount, radius * textRadius);
