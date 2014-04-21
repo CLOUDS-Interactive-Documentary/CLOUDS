@@ -18895,16 +18895,88 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+    <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="Ocean_NightOcean_OC">
-    <keywords></keywords>
+    <keywords>simulation|nature</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Andres - modeling complex systems</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Bruce - Fountain pen</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Casey - Tron</clip>
+        <clip>Casey - emergence</clip>
+        <clip>Casey - pseudo-science</clip>
+        <clip>Elliot_UK - tree sculpture</clip>
+        <clip>Jen - Big data</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Jer - Generative Art</clip>
+        <clip>Karolina - stasis</clip>
+        <clip>Karolina - suspension of disbelief</clip>
+        <clip>Karolina - uncanny/sniff</clip>
+        <clip>Kevin - computation is unnatural</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_CH - Modeling consciousness</clip>
+        <clip>Kyle_CH - coding 2</clip>
+        <clip>Kyle_CH - coding is 1</clip>
+        <clip>Kyle_CH - modeling consciousness 2</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - code for storytelling</clip>
+        <clip>Marcus - energy flow</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marcus - modeling consciousness</clip>
+        <clip>Martin - birds eye view</clip>
+        <clip>Martin - data revleation</clip>
+        <clip>Martin - starry night</clip>
+        <clip>Nervous_Jesse - simulation</clip>
+        <clip>Nervous_Jessica - Why is it beautiful</clip>
+        <clip>Philip - all the points can flush</clip>
+        <clip>Philip - bits and bytes</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - Magnets</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - NOC 3</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Shiffman - reality will only get you so far</clip>
+        <clip>Sophy - Evolution</clip>
+        <clip>Theo - evolution</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Theo - inspired by nature</clip>
+        <clip>Theo - inspired by nature shorter</clip>
+        <clip>Theo - magic</clip>
+        <clip>Theo - relating to nature</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
@@ -18914,13 +18986,85 @@
     <interlude>0</interlude>
 </system>
 <system name="Ocean_NightOcean_SND">
-    <keywords></keywords>
+    <keywords>simulation|nature</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Andres - modeling complex systems</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Bruce - Fountain pen</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Casey - Tron</clip>
+        <clip>Casey - emergence</clip>
+        <clip>Casey - pseudo-science</clip>
+        <clip>Elliot_UK - tree sculpture</clip>
+        <clip>Jen - Big data</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Jer - Generative Art</clip>
+        <clip>Karolina - stasis</clip>
+        <clip>Karolina - suspension of disbelief</clip>
+        <clip>Karolina - uncanny/sniff</clip>
+        <clip>Kevin - computation is unnatural</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_CH - Modeling consciousness</clip>
+        <clip>Kyle_CH - coding 2</clip>
+        <clip>Kyle_CH - coding is 1</clip>
+        <clip>Kyle_CH - modeling consciousness 2</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - code for storytelling</clip>
+        <clip>Marcus - energy flow</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marcus - modeling consciousness</clip>
+        <clip>Martin - birds eye view</clip>
+        <clip>Martin - data revleation</clip>
+        <clip>Martin - starry night</clip>
+        <clip>Nervous_Jesse - simulation</clip>
+        <clip>Nervous_Jessica - Why is it beautiful</clip>
+        <clip>Philip - all the points can flush</clip>
+        <clip>Philip - bits and bytes</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - Magnets</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - NOC 3</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Shiffman - reality will only get you so far</clip>
+        <clip>Sophy - Evolution</clip>
+        <clip>Theo - evolution</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Theo - inspired by nature</clip>
+        <clip>Theo - inspired by nature shorter</clip>
+        <clip>Theo - magic</clip>
+        <clip>Theo - relating to nature</clip>
+    </suppressions>
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>1</sound_allow_vo>
     <interlude>1</interlude>
@@ -19013,16 +19157,63 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="Ocean_StormyOceanOC">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>videogames|virtual</keywords>
+    <links>
+        <clip>Jer - ambiguous narrative</clip>
+        <clip>Joel - scale of universe</clip>
+        <clip>Joel - in the now</clip>
+        <clip>Karolina - Journey</clip>
+    </links>
+    <suppressions>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Casey - Indie Game movement</clip>
+        <clip>Diederick - don&apos;t like that kind of interaction</clip>
+        <clip>JTNimoy - Cortex</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Kevin - game designers</clip>
+        <clip>Kevin - Big games 1</clip>
+        <clip>Kevin - non-mimetic reality</clip>
+        <clip>Kevin - area code 1</clip>
+        <clip>Kevin - Area code 2</clip>
+        <clip>Kevin - Acknolwedgement of artifice</clip>
+        <clip>Kyle_CH - Cory Arcangel</clip>
+        <clip>Kyle_CH - MMORPGs</clip>
+        <clip>Paola - Moma games</clip>
+        <clip>Paola - Portal</clip>
+        <clip>Ramsey - games for access</clip>
+        <clip>Ramsey - videogame development</clip>
+        <clip>Zach - minecraft livecode</clip>
+        <clip>Bruce - Pointcloud world</clip>
+        <clip>Kyle_CH - RMB city</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>Lauren - virtual relationships</clip>
+        <clip>Lauren - text based relationships</clip>
+        <clip>Lauren - real and virtual 1</clip>
+        <clip>Lauren - rape in cyberspace</clip>
+        <clip>Marius - my work exists in a utopian space,</clip>
+        <clip>Paola - bach mozart coders</clip>
+        <clip>Bruce - Everted Cyberspace</clip>
+        <clip>JTNimoy - immersion</clip>
+        <clip>JTNimoy - immersion2</clip>
+        <clip>Karolina - suspension of disbelief</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Kyle_CH - virtual and identity</clip>
+        <clip>Kevin - Race to versimilitude</clip>
+        <clip>Kevin - No consequences 1</clip>
+        <clip>Kevin - Distributable perceptual model</clip>
+        <clip>Elliot_UK - lightscape</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>

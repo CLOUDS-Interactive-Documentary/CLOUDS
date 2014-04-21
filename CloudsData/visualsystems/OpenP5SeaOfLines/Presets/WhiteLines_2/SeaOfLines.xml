@@ -13,13 +13,13 @@
 <Widget>
     <Kind>6</Kind>
     <Name>DISTANCES</Name>
-    <HighValue>74.640396118</HighValue>
+    <HighValue>66.349754333</HighValue>
     <LowValue>31.236454010</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BASE DISTANCE</Name>
-    <Value>31.724136353</Value>
+    <Value>32.236457825</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -30,12 +30,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>CURSOR RANGE</Name>
-    <Value>0.394088656</Value>
+    <Value>0.305418730</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>GRAVITY</Name>
-    <Value>0.135135174</Value>
+    <Value>-0.220200062</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
