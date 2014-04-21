@@ -217,6 +217,8 @@ void CloudsPlaybackController::threadedFunction(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::finishSetup(){
 	
+	clusterMap->allocateFlickerTexture();
+	
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	storyEngine.printDecisions = false;

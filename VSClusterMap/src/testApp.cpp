@@ -38,11 +38,14 @@ void testApp::setup(){
 		cout << "	** " << run.clipHistory[i].getID() << endl;
 	}
 	
-//    clusterMap.setNumSamples(4);
 	clusterMap.setup();
+	clusterMap.loadPresetGUISFromName("2DFollowCam");
+
 	clusterMap.setRun(run);
 	clusterMap.buildEntireCluster(parser);
-	//	clusterMap.playSystem();
+	clusterMap.allocateFlickerTexture();
+	
+	clusterMap.playSystem();
 	
 }
 
@@ -62,7 +65,7 @@ void testApp::exit(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	clusterMap.playSystem();
+
 }
 
 //--------------------------------------------------------------
