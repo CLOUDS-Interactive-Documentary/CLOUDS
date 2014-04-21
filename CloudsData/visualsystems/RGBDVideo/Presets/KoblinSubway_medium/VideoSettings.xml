@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>VideoSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1909.000122070</XPosition>
+    <XPosition>2362.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -33,5 +33,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Offset</Name>
-    <Value>-1586.349853516</Value>
+    <Value>-1180.000488281</Value>
 </Widget>

@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1273.000122070</XPosition>
+    <XPosition>1697.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -73,6 +73,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>KoblinSubway_medium</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>KoblinSubway_medium_OC</Name>
     <Value>1</Value>
 </Widget>
 <Widget>

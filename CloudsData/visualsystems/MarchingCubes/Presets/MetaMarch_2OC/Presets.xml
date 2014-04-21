@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1697.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>241.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -37,6 +37,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>M_TriBlobsSmoothOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>MarchingTumors</Name>
     <Value>0</Value>
 </Widget>
@@ -62,7 +67,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>MetaMarch_2OC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>MetaMarch_3</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MetaMarch_3OC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -79,9 +94,4 @@
     <Kind>2</Kind>
     <Name>SineWire2</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MetaMarch_2OC</Name>
-    <Value>1</Value>
 </Widget>
