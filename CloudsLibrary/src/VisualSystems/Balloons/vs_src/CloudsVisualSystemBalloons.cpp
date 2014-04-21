@@ -3,7 +3,8 @@
 //
 
 #include "CloudsVisualSystemBalloons.h"
-#include "CloudsRGBDVideoPlayer.h"
+#include "ofxObjLoader.h"
+#include "CloudsGlobal.h"
 
 void CloudsVisualSystemBalloons::selfSetupGui(){
 	
@@ -455,14 +456,38 @@ void CloudsVisualSystemBalloons::selfSetup()
 	velShader.load(getVisualSystemDataPath() + "shaders/velShader");
 	quatShader.load(getVisualSystemDataPath() + "shaders/quatShader");
 	
-	
-	for(int i=0; i<100; i++)
-	{
-		ofVec3f pos( 0, i * dim, 0);
-		Credit c("title", "name", pos);
+	ofxXmlSettings creditsXml;
+	if(creditsXml.loadFile(GetCloudsDataPath() + "credits.xml")){
+		creditsXml.pushTag("credits");
 		
-		credits.push_back(c);
+		int numCredits = creditsXml.getNumTags("credit");
+		for(int i = 0; i < numCredits; i++){
+			string justification = creditsXml.getAttribute("credit", "align", "left", i) ;
+			ofVec3f pos( 0, i * dim, 0);
+			if(justification == "left"){
+				pos.x = -100;
+			}
+			else if(justification == "right"){
+				pos.x = 100;
+			}else{} // center
+			
+			creditsXml.pushTag("credit", i);
+			credits.push_back(BalloonCredit(creditsXml.getValue("title", ""),
+											creditsXml.getValue("name", ""),
+											pos));
+		}
 	}
+	else{
+		ofLogError("Balloons") << "Couldn't load credits XML!";
+	}
+	
+	//TEST
+	
+	for(int i = 0; i < 100; i++){
+		credits.push_back( credits[0] );
+	}
+		
+
 }
 
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){
@@ -521,7 +546,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	}
 	
 	//get our active credits to pass to the shader
-	vector<Credit*> activeCredits;
+	vector<BalloonCredit*> activeCredits;
 	for(auto& c: credits)
 	{
 		if(c.pos.y > -dim && c.pos.y<dim)
