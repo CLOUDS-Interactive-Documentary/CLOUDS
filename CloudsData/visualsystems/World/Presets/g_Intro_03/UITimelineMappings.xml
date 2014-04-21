@@ -4,25 +4,17 @@
     <SliderCurves>
         <Mapping>
             <Widget>
+                <WidgetName>density</WidgetName>
+                <WidgetID>15</WidgetID>
+                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
                 <WidgetName>gravity</WidgetName>
                 <WidgetID>17</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>neigbordhood</WidgetName>
-                <WidgetID>23</WidgetID>
-                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>Halo_Sphere_Scale</WidgetName>
-                <WidgetID>14</WidgetID>
-                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -36,8 +28,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>density</WidgetName>
-                <WidgetID>15</WidgetID>
+                <WidgetName>Halo_Sphere_Scale</WidgetName>
+                <WidgetID>14</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>neigbordhood</WidgetName>
+                <WidgetID>23</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
