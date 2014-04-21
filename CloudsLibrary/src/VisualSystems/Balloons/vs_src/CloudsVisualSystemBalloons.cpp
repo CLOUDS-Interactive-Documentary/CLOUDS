@@ -15,6 +15,8 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	customGui->setName("Balloons");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
+	customGui->addSlider("cameraBounceRadiusScale", 1, 10, &cameraBounceRadius);
+	
 	customGui->addSlider("noiseScl", .01, 1, &noiseScl)->setIncrement(.001);
 	customGui->addSlider("noiseSampleScale", .001, .1, &noiseSampleScale)->setIncrement(.001);
 	customGui->addSlider("velocityAttenuation", .95, 1., &velAtten)->setIncrement(.001);
@@ -303,6 +305,8 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	lightScale = .75;
 	creditLightScale = .75;
 	facingRatioScale = .5;
+	
+	cameraBounceRadius = 3;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -597,6 +601,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1f("speedLow", speedLow );
 	velShader.setUniform1f("speedHi", speedHi );
 	velShader.setUniform1f("highSpeedPercent", highSpeedPercent );
+	velShader.setUniform1f("cameraBounceRadius", cameraBounceRadius);
 	
 	ofRect(-1,-1,2,2);
 	

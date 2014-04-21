@@ -167,7 +167,7 @@ protected:
 	ofShader velShader;
 	ofShader quatShader;
 	float noiseScl, offset, noiseSampleScale, velAtten, radius, accScl, gravity, attractionToCenter, cameraBounce,cameraAttractionToCenter, cameraOffset;
-	float spawnRad, cameraTargetDist;
+	float spawnRad, cameraTargetDist, cameraBounceRadius;
 	float highSpeedScale, speedLow, speedHi, highSpeedPercent;
 	
 	float balloonFrameVal;
