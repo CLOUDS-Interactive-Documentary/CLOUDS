@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Brush</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>24.000000000</YPosition>
+    <YPosition>148.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Brush Size</Name>
-    <Value>41.197044373</Value>
+    <Value>78.881774902</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

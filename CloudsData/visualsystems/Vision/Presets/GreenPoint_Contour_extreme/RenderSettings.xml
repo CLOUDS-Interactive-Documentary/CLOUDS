@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>147.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>453.000000000</XPosition>
+    <YPosition>289.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>VIDEO TINT</Name>
-    <Value>27.635469437</Value>
+    <Value>47.733989716</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DIFF TINT</Name>
-    <Value>56.527091980</Value>
+    <Value>52.758621216</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW WINDOW TINT</Name>
-    <Value>255.000000000</Value>
+    <Value>55.270938873</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DIFFERENCE SAT</Name>
-    <Value>0.443349749</Value>
+    <Value>0.408867002</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DIFFERENCE BRI</Name>
-    <Value>0.467980295</Value>
+    <Value>0.369458139</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -87,6 +87,16 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>Street_Slow1_BWCrop.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Swarm_EindhovenTest_Watec_two-visitors.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>Swarm_EindhovenTest_Watec_two-visitors_Crop(2).mov</Name>
     <Value>0</Value>
 </Widget>
@@ -108,11 +118,6 @@
 <Widget>
     <Kind>17</Kind>
     <Name>TokyoEscalator.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>YouTubeDancer.mp4</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
