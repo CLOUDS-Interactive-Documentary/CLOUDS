@@ -82,7 +82,7 @@ void main(void)
 	vec3 normal = normalize(norm);
 	float fr = abs(dot(ePos, normal));
 	
-	vec4 diffuse = color * mix(1., fr, facingRatio);
+	vec4 diffuse = color * mix(1.1, fr, facingRatio);
 	vec4 specular = vec4(1.);
 	
 	PointLight( lPos.xyz, ePos, ecPosition.xyz, normal, diffuse, specular, lCol, 0., 0., shininess);
@@ -92,6 +92,6 @@ void main(void)
 	vec4 fogColor = mix( bg1, bg0, pow(gl_FragCoord.y/screenHeight, bgExpo) );
 
 	gl_FragColor = mix( fogColor, diffuse, clamp(fogMix,0.,1.));
-	gl_FragColor.w = 1. - fr * fr * fr * .1;
+	gl_FragColor.w = 1. - pow(fr,10.) * .1;
 }
 
