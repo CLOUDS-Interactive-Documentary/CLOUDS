@@ -34,6 +34,8 @@ varying float creditLight;
 
 uniform vec2 sphericalMapDim;
 
+varying vec3 vPos;
+
 void PointLight(in vec3 lightPosition,
                 in vec3 eye,
                 in vec3 ecPosition3,
@@ -61,9 +63,23 @@ void PointLight(in vec3 lightPosition,
     // Compute attenuation.  default is 1, 0, 0 which is no attenutation
     attenuation = 1.0 / (1.	+ linearAtten * d + quadAtten * d * d);
 	
-    nDotVP = pow( dot( normal, VP)*.5 + .5, shine);
-	//nDotVP = pow( max(0., dot( normal, VP) ), shine);
-    diffuse += 1.1 * lightColor * nDotVP * attenuation;
+    halfVector = normalize(VP + eye);
+	
+	nDotVP = dot( normal, VP);
+	
+	vec4 colorScl = nDotVP > 0.? vec4(1.) : color * .5;
+	colorScl *= .75;
+	
+	nDotVP = abs(nDotVP);
+    nDotHV = abs( dot( normal, halfVector) );
+	
+    if (nDotVP == 0.0)
+        pf = 0.0;
+    else
+        pf = pow(nDotHV, shininess);
+	
+    diffuse += colorScl * lightColor * nDotVP * attenuation;
+    diffuse += colorScl * lightColor * pf * attenuation;
 }
 
 void main(void)
@@ -79,10 +95,8 @@ void main(void)
 	diffuse += creditLight;
 
 	vec4 fogColor = mix( bg1, bg0, pow(gl_FragCoord.y/screenHeight, bgExpo) );
-	
-//	diffuse += texture2DRect( sphericalMap, vN ) * .25;
-	
+
 	gl_FragColor = mix( fogColor, diffuse, clamp(fogMix,0.,1.));
-	gl_FragColor.w = 1. - fr * .05;
+	gl_FragColor.w = 1. - fr * fr * fr * .1;
 }
 

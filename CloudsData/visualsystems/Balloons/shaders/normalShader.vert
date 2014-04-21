@@ -138,6 +138,8 @@ varying float wordLightAtten0;
 uniform	float creditThresh;
 varying float creditLight;
 
+varying vec3 vPos;
+
 void main()
 {
 	vec2 st = vec2(mod(float(gl_InstanceID), dimY), floor(float(gl_InstanceID) / dimY));
@@ -152,6 +154,7 @@ void main()
 	vec3 vNorm = qtransform(q, gl_Normal);
 	norm = gl_NormalMatrix * vNorm;
 	v.xyz = qtransform(q, v.xyz);
+	vPos = norm;//v.xyz;
 	v.xyz += pos;
 	
 	fogMix = 1. - pow(abs(v.y) / (dim*.9), 4.);
@@ -183,11 +186,5 @@ void main()
 	ecPosition = gl_ModelViewMatrix * v;
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	gl_Position = gl_ProjectionMatrix * ecPosition;
-	
-	vec3 r = reflect( ePos, vNorm );
-	float m = 2. * sqrt(r.x*r.x + r.y*r.y + pow(r.z+1., 2.));
-	vN = (r.xy / m + .5);
-//	vN.y = 1. - vN.y;
-	vN *= sphericalMapDim;
 }
 

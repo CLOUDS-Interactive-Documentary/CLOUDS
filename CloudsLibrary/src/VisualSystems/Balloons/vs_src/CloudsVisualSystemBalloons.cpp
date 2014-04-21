@@ -49,6 +49,9 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	textGui->addSlider("textRadius", 1, 10, &textRadius);
 	textGui->addSlider("creditLightDist", 10, 500, &creditLightDist);
 	
+	textGui->addSpacer();
+	textGui->addIntSlider("shininess", 2, 128, &shininess);
+	
 	ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemBalloons::selfGuiEvent);
 	guis.push_back(textGui);
 	guimap[textGui->getName()] = textGui;
@@ -291,6 +294,8 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	
 	textSpeed = -1;
 	textRadius = 3.;
+	
+	shininess = 10;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -431,7 +436,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
 	
-	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/cloudy_afternoon_preview.jpg");
+	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/glows.png");
 	
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
@@ -606,7 +611,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	shader.begin();
-	shader.setUniform1f("shininess", 10);
+	shader.setUniform1f("shininess", shininess);
 	shader.setUniform1f("screenHeight", ofGetHeight());
 	
 	ofFloatColor bg0 = bgColor;
