@@ -94,6 +94,8 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E70AC36419046A93009C0B1D /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E70AC36319046A93009C0B1D /* ofxSystemTextbox.mm */; };
+		E70AC36519046A93009C0B1D /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E70AC36319046A93009C0B1D /* ofxSystemTextbox.mm */; };
 		E70CD8F918667C1E00955691 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CD8F218667C1E00955691 /* CloudsInput.cpp */; };
 		E70CD8FA18667C1E00955691 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CD8F218667C1E00955691 /* CloudsInput.cpp */; };
 		E70CD8FD18667C1E00955691 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CD8F718667C1E00955691 /* CloudsInputMouse.cpp */; };
@@ -509,6 +511,8 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E70AC36219046A93009C0B1D /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		E70AC36319046A93009C0B1D /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		E70CD8F218667C1E00955691 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		E70CD8F318667C1E00955691 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		E70CD8F418667C1E00955691 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -1341,6 +1345,8 @@
 		E7DD846117DBC0A500AFB2DD /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E70AC36219046A93009C0B1D /* ofxSystemTextbox.h */,
+				E70AC36319046A93009C0B1D /* ofxSystemTextbox.mm */,
 				E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */,
 				E7DD846417DBC0A500AFB2DD /* CloudsRGBDCamera.h */,
 				E7DD846517DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp */,
@@ -1399,6 +1405,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Process11" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1495,6 +1503,7 @@
 				4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */,
 				3D5B95CB175308AE00F558AC /* kiss_fft.c in Sources */,
 				3D5B95CC175308AE00F558AC /* kiss_fftr.c in Sources */,
+				E70AC36419046A93009C0B1D /* ofxSystemTextbox.mm in Sources */,
 				3D5B95CD175308AE00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				3D5B95D3175308AE00F558AC /* ofxHotKeys_impl_linux.cpp in Sources */,
 				3D5B95D4175308AE00F558AC /* ofxHotKeys_impl_mac.mm in Sources */,
@@ -1598,6 +1607,7 @@
 				E738FFA2183C86F50018AB96 /* ofxTLImageSequence.cpp in Sources */,
 				E738FFA3183C86F50018AB96 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				E738FFA4183C86F50018AB96 /* ofxTLImageTrack.cpp in Sources */,
+				E70AC36519046A93009C0B1D /* ofxSystemTextbox.mm in Sources */,
 				E738FFA5183C86F50018AB96 /* ofxTLInOut.cpp in Sources */,
 				E738FFA6183C86F50018AB96 /* ofxTLKeyframes.cpp in Sources */,
 				E738FFA7183C86F50018AB96 /* ofxTLLFO.cpp in Sources */,

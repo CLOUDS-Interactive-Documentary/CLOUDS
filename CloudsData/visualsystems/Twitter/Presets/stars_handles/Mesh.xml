@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -18,13 +18,13 @@
 <Widget>
     <Kind>44</Kind>
     <Name>REFRESH RATE</Name>
-    <Value>79</Value>
+    <Value>214</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>DATE RANGE</Name>
     <HighValue>2141.000000000</HighValue>
-    <LowValue>1750.950805664</LowValue>
+    <LowValue>1877.453125000</LowValue>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -89,7 +89,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEB ALPHA</Name>
-    <Value>0.015997365</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

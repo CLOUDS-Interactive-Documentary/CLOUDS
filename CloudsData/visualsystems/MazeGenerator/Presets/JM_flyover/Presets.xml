@@ -2,9 +2,24 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1485.000000000</XPosition>
+    <XPosition>637.000061035</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FlyOver2_</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Flyover3</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>flyover_near</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>gal1</Name>
@@ -13,6 +28,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>gal2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gal2OC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -32,11 +52,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>MouseCam</Name>
-    <Value>0</Value>
+    <Name>JM_flyover</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>JM_flyover</Name>
+    <Name>JM_groundcam</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MouseCam</Name>
+    <Value>0</Value>
 </Widget>

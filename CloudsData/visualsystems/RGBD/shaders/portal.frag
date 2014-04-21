@@ -22,6 +22,9 @@ float map(float value, float inputMin, float inputMax, float outputMin, float ou
 	return clamp( ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin), inputMin, inputMax);
 }
 
+const vec3 highlightBlueDark = vec3(43.0/255.0,113.0/255.0,205.0/255.0);
+const vec3 highlightBlueLight = vec3(235.0/255.0,244.0/255.0,255.0/255.0);
+
 void main() {
 
 	//default hide everything
@@ -38,11 +41,12 @@ void main() {
 		hoverfade *= smoothstep(0.0, startDelay, hoverPercent);
 		//if we are the inner ring be white
 		if(ringPosition < .5){
-			gl_FragColor.rgb = vec3(1.);
+			gl_FragColor.rgb = highlightBlueDark;
 		}
 		//othwerise take the normal color
 		else{
-			gl_FragColor.rgb = gl_Color.rgb;
+//			gl_FragColor.rgb = gl_Color.rgb;
+			gl_FragColor.rgb = highlightBlueLight;
 		}
 		//attenuate based on the color
 		gl_FragColor.a = gl_Color.a*hoverfade;
@@ -55,12 +59,16 @@ void main() {
 		gl_FragColor.rgb = gl_Color.rgb;
 		gl_FragColor.a = gl_Color.a*selectReveal;
 	}
-	else if(ringPosition < 3.0-epsilon){
-		//normal, just draw based on the hover percent
+	else if(ringPosition < 2.0-epsilon){
 		float hoverfade = 1.0 - smoothstep(0.0, .3, hoverPercent);
 		gl_FragColor.rgb = gl_Color.rgb;
 		gl_FragColor.a = gl_Color.a*hoverfade;
-		
+	}
+	else if(ringPosition < 3.0-epsilon){
+		//normal, just draw based on the hover percent
+		float hoverfade = smoothstep(0.0, .3, hoverPercent);
+		gl_FragColor.rgb = gl_Color.rgb;
+		gl_FragColor.a = gl_Color.a*hoverfade*.5;
 	}
 	
 	if(doAttenuate == 1){

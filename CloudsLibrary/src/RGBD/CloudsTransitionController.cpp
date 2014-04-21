@@ -22,20 +22,22 @@ CloudsTransitionController::CloudsTransitionController(){
 	fadeOutStates.push_back(TRANSITION_INTRO_OUT);
     fadeOutStates.push_back(TRANSITION_INTERLUDE_OUT);
 	fadeOutStates.push_back(TRANSITION_QUESTION_OUT);
+	fadeOutStates.push_back(TRANSITION_CLUSTERMAP_OUT);
 	
 	fadeInStates.push_back(TRANSITION_VISUALSYSTEM_IN);
 	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
     fadeInStates.push_back(TRANSITION_INTERLUDE_IN);
 	fadeInStates.push_back(TRANSITION_QUESTION_IN);
 	fadeInStates.push_back(TRANSITION_INTRO_IN);
+	fadeInStates.push_back(TRANSITION_CLUSTERMAP_IN);
 }
 
-void CloudsTransitionController::confirmEmpty(){
+void CloudsTransitionController::confirmEmpty(string transitionName){
 	if(currentState != TRANSITION_IDLE){
 		for(int i = 0; i < queueHistory.size(); i++){
 			ofLogError("TRANSITION QUEUE HISTORY") << getStateDescription(queueHistory[i].state) << " : " << queueHistory[i].timeRange;
 		}
-		ofLogError("CloudsTransitionController::confirmEmpty") << "Current state is not IDLE on new transition: " << getStateDescription(currentState);
+		ofLogError("CloudsTransitionController::confirmEmpty") << "Current state " << getStateDescription(currentState) << " is not IDLE on new transition " << transitionName;
 		for(int i = 0; i < stateQueue.size(); i++){
 			ofLogError("TRANSITION QUEUE REMAINING") << getStateDescription(stateQueue[i].state);
 		}
@@ -48,7 +50,7 @@ void CloudsTransitionController::confirmEmpty(){
 
 void CloudsTransitionController::transitionFromIntro(float outDuration){
 
-	confirmEmpty();
+	confirmEmpty("transitionFromIntro");
 
 	queueState(TRANSITION_INTRO_OUT, outDuration);
 	
@@ -56,8 +58,27 @@ void CloudsTransitionController::transitionFromIntro(float outDuration){
 
 }
 
+void CloudsTransitionController::transitionToClusterMap(float transitionDuration){
+	
+	confirmEmpty("transitionToClusterMap");
+
+	queueState(TRANSITION_CLUSTERMAP_IN, transitionDuration);
+	
+	startTransition();
+}
+
+void CloudsTransitionController::transitionFromClusterMap(float transitionDuration){
+	
+	confirmEmpty("transitionFromClusterMap");
+	
+	queueState(TRANSITION_CLUSTERMAP_OUT, transitionDuration);
+	
+	startTransition();
+}
+
 void CloudsTransitionController::transitionToIntro(float inDuration){
-	confirmEmpty();
+	
+	confirmEmpty("transitionToIntro");
 
     if(previousState == TRANSITION_INTERLUDE_IN){
         queueState(TRANSITION_INTERLUDE_OUT, inDuration);
@@ -76,7 +97,7 @@ void CloudsTransitionController::transitionToIntro(float inDuration){
 
 void CloudsTransitionController::transitionToFirstVisualSystem(float duration){
 
-	confirmEmpty();
+	confirmEmpty("transitionToFirstVisualSystem");
 
 	queueState(TRANSITION_VISUALSYSTEM_IN, duration);
 
@@ -85,7 +106,7 @@ void CloudsTransitionController::transitionToFirstVisualSystem(float duration){
 
 void CloudsTransitionController::transitionToFirstInterview(float duration){
 
-	confirmEmpty();
+	confirmEmpty("transitionToFirstInterview");
     
 	queueState(TRANSITION_INTERVIEW_IN, duration);
     
@@ -95,7 +116,7 @@ void CloudsTransitionController::transitionToFirstInterview(float duration){
 
 void CloudsTransitionController::transitionToVisualSystem(float outDuration, float inDuration){
 
-	confirmEmpty();
+	confirmEmpty("transitionToVisualSystem");
 	
 	cout << "TRANSITION POINTCLOUD --> VISUAL SYSTEM" << endl;
 	
@@ -107,7 +128,7 @@ void CloudsTransitionController::transitionToVisualSystem(float outDuration, flo
 
 void CloudsTransitionController::transitionToInterview(float outDuration, float inDuration){
 
-	confirmEmpty();
+	confirmEmpty("transitionToInterview");
 	
 	cout << "TRANSITION VISUAL SYSTEM --> POINTCLOUD" << endl;
 	
@@ -120,7 +141,7 @@ void CloudsTransitionController::transitionToInterview(float outDuration, float 
 
 void CloudsTransitionController::transitionToInterlude(float inDuration,float outDuration){
 	
-	confirmEmpty();
+	confirmEmpty("transitionToInterlude");
 	
 	//we are in a visual system
 	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
@@ -141,7 +162,7 @@ void CloudsTransitionController::transitionToInterlude(float inDuration,float ou
 
 void CloudsTransitionController::transitionFromInterlude(float inDuration){
 
-    confirmEmpty();
+    confirmEmpty("transitionFromInterlude");
 
     queueState(TRANSITION_INTERLUDE_OUT, inDuration);
 	
@@ -151,7 +172,7 @@ void CloudsTransitionController::transitionFromInterlude(float inDuration){
 
 void CloudsTransitionController::transitionWithQuestion(float outDuration, float portalDuration){
 	
-	confirmEmpty();
+	confirmEmpty("transitionWithQuestion");
 	
 	queueState(TRANSITION_INTERVIEW_OUT, outDuration);
 	
@@ -315,6 +336,10 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
 			return "TransitionInterludeIn";
         case TRANSITION_INTERLUDE_OUT:
 			return "TransitionInterludeOut";
+		case TRANSITION_CLUSTERMAP_IN:
+			return "TransitionClusterMapIn";
+		case TRANSITION_CLUSTERMAP_OUT:
+			return "TransitionClusterMapOut";
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
 	}

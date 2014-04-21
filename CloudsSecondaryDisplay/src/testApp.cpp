@@ -31,6 +31,7 @@ void testApp::update(){
         //goto next clip
         timer = false;
         startTime = ofGetElapsedTimef();
+		
         cout<<"Secondary Display::currentTestClip = "<<currentTestClip<<endl;
     }
     

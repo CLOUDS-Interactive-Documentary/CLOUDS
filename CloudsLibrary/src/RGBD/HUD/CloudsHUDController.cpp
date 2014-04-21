@@ -21,7 +21,8 @@ CloudsHUDController::CloudsHUDController(){
     bSkipAVideoFrame = false;
     bDrawHud = true;
     bDrawHome = true;
-    
+    bActJustStarted = false;
+	cuedClipEndTime = 0;
     bVisualSystemDisplayed = false;
     bLowerThirdCued = false;
 	
@@ -66,10 +67,16 @@ void CloudsHUDController::setup(){
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 	bDrawHud = true;
+	bActJustStarted = true;
+	animateOn( CLOUDS_HUD_QUESTION );
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 	animateOff( CLOUDS_HUD_FULL );
+}
+
+void CloudsHUDController::clearQuestion(){
+	hudLabelMap["QuestionTextBox"]->setText("", false);
 }
 
 void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
@@ -90,12 +97,16 @@ void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 void CloudsHUDController::questionProposed(CloudsQuestionEventArgs& args){
 //    populateQuestion( args.question, true);
 }
+
 void CloudsHUDController::questionSelected(CloudsQuestionEventArgs& args){
     populateQuestion( args.question, true);
 }
 
 void CloudsHUDController::topicChanged(CloudsTopicEventArgs& args){
-    animateOff( CLOUDS_HUD_QUESTION );
+	if(!bActJustStarted){
+		animateOff( CLOUDS_HUD_QUESTION );
+	}
+	bActJustStarted = false;
 }
 
 void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
@@ -110,10 +121,11 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 	
 #ifdef KINECT_INPUT
     // EZ: No lower third in Kinect version
-    return;
+	// JG: adding it back
+//    return;
 #endif
     
-// LOWER THIRD
+	//LOWER THIRD
     //update lower third, but only if the speaker has changed
     if(speaker.fcpID != CloudsSpeaker::speakers[ clip.person ].fcpID){
         speaker = CloudsSpeaker::speakers[ clip.person ];
@@ -131,6 +143,7 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
     }
     
 // PROJECT EXAMPLE
+#ifndef OCULUS_RIFT
 	if(clip.hasProjectExample && clip.projectExample.exampleVideos.size() ){
 		CloudsProjectExample example = clip.projectExample;
         string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
@@ -139,6 +152,7 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 	else{
         animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
     }
+#endif
 }
 
 void CloudsHUDController::questionHoverOn(string question){
@@ -209,12 +223,14 @@ void CloudsHUDController::populateLowerThird( string firstName, string lastName,
     int lastNameRight = lastNameLabel->getRightEdge();
     int rightEdge = 0;
     
-    if(firstNameRight > lastNameRight)
+    if(firstNameRight > lastNameRight){
         rightEdge = firstNameRight;
-    else
+    }
+	else{
         rightEdge = lastNameRight;
+	}
 
-    cout<< "right edge: " << rightEdge << endl;
+//    cout<< "right edge: " << rightEdge << endl;
     
     //move these over to float left of name
     CloudsHUDLabel* locationLabel = hudLabelMap["BylineTopicTextBoxTop"];
@@ -498,6 +514,13 @@ ofVec2f CloudsHUDController::getCenter(bool bScaled){
 }
 
 void CloudsHUDController::update(){
+	//HACK TO KEEP QUESTION ON after asked
+	if(hudLabelMap["QuestionTextBox"]->getText() != "" && !hudLabelMap["QuestionTextBox"]->isVisible()){
+		hudLabelMap["QuestionTextBox"]->animateIn();
+		
+	}
+//	cout << "CURRENT QUESTION " << hudLabelMap["QuestionTextBox"]->getText() << " VISIBLE? " << (hudLabelMap["QuestionTextBox"]->isVisible() ? "YES" : "NO") << endl;
+
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
 	}
@@ -550,6 +573,7 @@ void CloudsHUDController::draw(){
     if( !bDrawHud )
         return;
     
+	
 	ofPushStyle();
 	ofPushMatrix();
 	ofEnableAlphaBlending();

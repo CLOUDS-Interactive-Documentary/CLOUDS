@@ -30,6 +30,11 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	selectLow.setLoop(false);
 	selectMid.setLoop(false);
 	selectHigh.setLoop(false);
+	click.setVolume(.4);
+	selectLow.setVolume(.4);
+	selectMid.setVolume(.4);
+	selectHigh.setVolume(.4);
+
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
@@ -331,12 +336,12 @@ void CloudsIntroSequence::updateWaiting(){
 	if(startQuestions.size() > 0 && viewerState != k4w::ViewerState_None){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 8){
 			if(viewerState == k4w::ViewerState_OutOfRange){
-				CloudsPortalEventArgs args("MOVE CLOSER TO THE DISPLAY");
-				ofNotifyEvent(events.portalHoverBegan, args);
+//				CloudsPortalEventArgs args("MOVE CLOSER TO THE DISPLAY");
+//				ofNotifyEvent(events.portalHoverBegan, args);
 			}
 			else if(viewerState == k4w::ViewerState_PresentIdle){
-				CloudsPortalEventArgs args("EXTEND YOUR HAND TO BEGIN");
-				ofNotifyEvent(events.portalHoverBegan, args);
+//				CloudsPortalEventArgs args("EXTEND YOUR HAND TO BEGIN");
+//				ofNotifyEvent(events.portalHoverBegan, args);
 			}
 			timeSinceLastPrompt = ofGetElapsedTimef();
 			promptShown = true;
@@ -354,8 +359,8 @@ void CloudsIntroSequence::updateWaiting(){
 	#else
 	if(startQuestions.size() > 0){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 10){
-			CloudsPortalEventArgs args("CLICK TO BEGIN");
-			ofNotifyEvent(events.portalHoverBegan, args);
+//			CloudsPortalEventArgs args("CLICK TO BEGIN");
+//			ofNotifyEvent(events.portalHoverBegan, args);
 			timeSinceLastPrompt = ofGetElapsedTimef();
 			promptShown = true;
 
@@ -427,7 +432,6 @@ void CloudsIntroSequence::updateTitle(){
 }
 
 void CloudsIntroSequence::updateQuestions(){
-
 
 	for(int i = 0; i < startQuestions.size(); i++){
 		CloudsPortal& curQuestion = startQuestions[i];
@@ -509,6 +513,9 @@ void CloudsIntroSequence::updateQuestions(){
 					selectedQuestionTime = ofGetElapsedTimef();
 					selectQuestionStartPos = warpCamera.getPosition();
 					selectQuestionStartRot = warpCamera.getOrientationQuat();
+					CloudsPortalEventArgs args(ofToUpper(selectedQuestion->question));
+					ofNotifyEvent(events.portalHoverBegan, args);
+					
 				}
 				else if(distanceToQuestion > questionTugDistance.max && selectedQuestion == NULL){
 					caughtQuestion->stopHovering();
@@ -627,6 +634,9 @@ void CloudsIntroSequence::positionStartQuestions(){
 //	}
 
 	//new way with sets of 4
+	srand(ofGetSeconds());
+	random_shuffle(startQuestions.begin(), startQuestions.end());
+	
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].tunnelQuadrantIndex = i%4;
 		startQuestions[i].hoverPosition = ofVec3f(0, questionTunnelInnerRadius, 0);
@@ -716,20 +726,20 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 
 void CloudsIntroSequence::selfDraw(){
 	
-#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
-    if (hud != NULL) {
-        if(selectedQuestion != NULL){
-            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -selectedQuestion->screenPosition.y/2));
-        }
-        else if(caughtQuestion != NULL){
-            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -caughtQuestion->screenPosition.y/2));
-        }
-        else{
-            hud->draw3D(getOculusRift().baseCamera);
-        }
-    }
-#endif
-    
+//#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
+//    if (hud != NULL) {
+//        if(selectedQuestion != NULL){
+//            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -selectedQuestion->screenPosition.y/2));
+//        }
+//        else if(caughtQuestion != NULL){
+//            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -caughtQuestion->screenPosition.y/2));
+//        }
+//        else{
+//            hud->draw3D(getOculusRift().baseCamera);
+//        }
+//    }
+//#endif
+//    
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -843,7 +853,6 @@ void CloudsIntroSequence::drawHelperType(){
 	glDisable(GL_DEPTH_TEST);
 	
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
-//		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", helperFontSize);
 		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 		currentHelperFontSize = helperFontSize;
 	}

@@ -14,7 +14,8 @@
 #include "ParticleConnectionGenerator.h"
 #include "CloudsGlobal.h"
 #include "CloudsAudioEvents.h"
-#include "ofxTonic.h"
+//#include "ofxTonic.h"
+#include "TonicSample.h"
 
 using namespace Tonic;
 
@@ -107,9 +108,10 @@ protected:
 	
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[1] = {"WindChimes1.aif"};
-    bool playSample[1];
-    ControlTrigger soundTriggers[1];
+    vector<TonicSample> tonicSamples;
+//    string soundFiles[1] = {"WindChimes1.aif"};
+//    bool playSample[1];
+//    ControlTrigger soundTriggers[1];
     ofxTonicSynth synth;
     Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);

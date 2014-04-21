@@ -4,17 +4,17 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Y</WidgetName>
-                <WidgetID>8</WidgetID>
-                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+                <WidgetName>WAVE SCALE</WidgetName>
+                <WidgetID>12</WidgetID>
+                <WidgetCanvasParent>OceanSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>WAVE SCALE</WidgetName>
-                <WidgetID>12</WidgetID>
-                <WidgetCanvasParent>OceanSettings</WidgetCanvasParent>
+                <WidgetName>Y</WidgetName>
+                <WidgetID>8</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

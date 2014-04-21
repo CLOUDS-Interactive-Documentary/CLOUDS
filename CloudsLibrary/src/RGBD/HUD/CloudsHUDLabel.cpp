@@ -43,7 +43,9 @@ void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
 
 void CloudsHUDLabel::draw(){
     
-    if( bIsAnimatingIn ){
+	
+    
+	if( bIsAnimatingIn ){
         if(animationSpeed != 0){
             pct = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 0., 1., true );
         }
@@ -148,7 +150,7 @@ void CloudsHUDLabel::instantOut() {
     
     pct = 0.0;
     textAlpha = floor( 255. * pct );
-    text == "";
+//    text = "";
 }
 
 bool CloudsHUDLabel::isVisible() {

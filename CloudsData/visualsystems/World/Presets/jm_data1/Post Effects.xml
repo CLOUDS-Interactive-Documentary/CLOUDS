@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Post Effects</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1485.000122070</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>849.000000000</XPosition>
+    <YPosition>539.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Bloom Level</Name>
-    <Value>0.581280768</Value>
+    <Value>0.556650221</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

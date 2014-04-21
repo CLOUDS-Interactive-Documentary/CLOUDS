@@ -22,7 +22,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 {
     ofBackground(0);
     ofSetVerticalSync(true);
-    
+    goToNext = false;
 	currentVisualSystem = NULL;
 	selectedPreset = NULL;
 	
@@ -96,8 +96,10 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	if(runningTest){
 		
-		if(ofGetElapsedTimef() - lastSystemStartTime > 10){
-			
+//		if(ofGetElapsedTimef() - lastSystemStartTime > 10){
+		if(goToNext){
+            goToNext = false;
+
 			if(currentVisualSystem != NULL){
 				cout << "5) (" << currentTestPresetIndex << "/" << testPresetIndeces.size() << ") STOPPING SYSTEM " << currentVisualSystem->getSystemName() << endl;
 				currentVisualSystem->stopSystem();
@@ -146,9 +148,12 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			if(testBatchIndex < testBatch.size()){
 				currentVisualSystem = testBatch[testBatchIndex];
 				cout << "4) PLAYING SYSTEM " << currentVisualSystem->getSystemName() << endl;
+                currentVisualSystem->setDrawToScreen(false);
 				currentVisualSystem->playSystem();
 				lastSystemStartTime = ofGetElapsedTimef();
-				
+                debugCurrentVS = currentVisualSystem->getSystemName();
+                debugCurrentPreset = visualSystems.getPresets()[testPresetIndeces[currentTestPresetIndex]].presetName;
+                string debugCurrentPreset;
 				testBatchIndex++;
 				currentTestPresetIndex++;
                 if(currentTestPresetIndex == testPresetIndeces.size()-1){
@@ -174,7 +179,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[ self.selectedPresetIndex ].systemName );
 		
 		///SCREENCAPTURE MODE
-		currentVisualSystem->setNumSamples(4);
+//		currentVisualSystem->setNumSamples(4);
 		currentVisualSystem->forceScreenResolution(1920, 1080);
 		currentVisualSystem->setDrawToScreen(false);
 		/////
@@ -295,8 +300,24 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		///
 		
 //		currentVisualSystem->getSharedRenderTarget().draw();
+        
+
+
+//        cout<<ss.str()<<endl;
 		currentVisualSystem->selfPostDraw();
-		
+        if(runningTest){
+            stringstream ss;
+            ss<<"Current system"<<debugCurrentVS<<" Preset: "<<debugCurrentPreset<<endl;
+            ofPushMatrix();
+            ofPushStyle();
+            ofSetColor(255);
+            ofDrawBitmapString(ss.str(),ofGetWidth()*0.1, ofGetHeight()*0.1 );
+            ofPopStyle();
+            ofPopMatrix();
+        }
+        
+
+
 	}
 }
 
@@ -311,6 +332,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)keyPressed:(int)key
 {
+    if(key=='\\'){
+        goToNext = true;
+    }
 
     if(key == 'm'){
         ofHideCursor();
