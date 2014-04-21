@@ -24,8 +24,6 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	autoTraversePoints = false;
 	
 	flickerWidth = 100;
-	
-//    axisRotation = 0;
     numTraversed = 0;
     
 	clipsShowTopic = ofIntRange(20, 40);
@@ -35,8 +33,7 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	typeSizeRange.min = 5;
 	typeSizeRange.max = 14;
 	lineDensity = 200;
-	
-//	currentTraversalIndex = -1;
+
 	
 	lineFlickerIntensity = 7.;
 	lineFlickerFrequency = 100;
@@ -53,6 +50,8 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     associationFontSize = -1;
     currentAssociationFont = 8;
     
+	traverseNextFrame = false;
+	
 	firstClip = true;
 }
 
@@ -846,14 +845,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 								   traverseStartTime+traverseAnimationDuration,
 								   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
 								   0.0, 1.0, true);
-	if(percentTraversed >= 1.0){
-//        axisRotation += 90;
-    }
     
-	if(autoTraversePoints && (firstClip || percentOptionsRevealed >= 1.0) ){
-		traverse();
-	}
-	
 	//UPDATE CAMERA
 //	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
 	if(cursorIsOverGUI()){
@@ -863,7 +855,6 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 		easyCamera.enableMouseInput();
 	}
 	
-
 	if(traversalPath.size() > 0){
 		float curIndex = ofMap(percentTraversed,
 									 0, 1.0,
@@ -984,7 +975,11 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
         trailheadScreenPos = getCameraRef().worldToScreen(trailHead * meshExpansion,
                                                           ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()));        
     }
-    
+	
+	if(!traverseNextFrame && autoTraversePoints && (firstClip || percentTraversed >= 1.0) ){
+		traverseNextFrame = true;
+	}
+	
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -1127,6 +1122,11 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	ofPopMatrix();
 	ofPopStyle();
 	glPopAttrib();
+	
+	if(traverseNextFrame){
+		traverse();
+		traverseNextFrame = false;
+	}
 }
 
 // draw any debug stuff here

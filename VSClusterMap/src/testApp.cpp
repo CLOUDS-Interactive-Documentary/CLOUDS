@@ -45,6 +45,8 @@ void testApp::setup(){
 	clusterMap.buildEntireCluster(parser);
 	clusterMap.allocateFlickerTexture();
 	
+	clusterMap.autoTraversePoints = true;
+	
 	clusterMap.playSystem();
 	
 }

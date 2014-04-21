@@ -129,7 +129,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	}
 
 	void reloadShaders();
-
+	bool autoTraversePoints;
     void parseAssociations();
     
   protected:
@@ -151,6 +151,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	CloudsFCPParser* parser;
 	CloudsRun* run;
 	void resetGeometry();
+	
+	bool traverseNextFrame;
 	
 	bool drawNodes;
 	bool drawLines;
@@ -207,7 +209,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traverseHomingMinDistance;
 	float traverseMinSolvedDistance;
 	float traverseLineWidth;
-	bool autoTraversePoints;
+
 	bool bConstrainTraversal;
     float maxTraverseAngle;
     float maxTraverseDistance;
