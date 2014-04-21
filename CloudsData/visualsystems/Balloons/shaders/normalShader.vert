@@ -170,7 +170,7 @@ void main()
 	for(int i=0; i<int(numLights); i++)
 	{
 		//the lights come in as the left position of the credit so we need to add half the width
-		delta = lights[i].xyz + vec3(lights[i].w*.5,0.,0.) - v.xyz;
+		delta = lights[i].xyz - v.xyz;
 		
 		//attenuation and facing ratio
 		a = max(0., 1. - dot(delta,delta) / thresholdSquared );
