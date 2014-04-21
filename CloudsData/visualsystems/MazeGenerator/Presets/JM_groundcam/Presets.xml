@@ -17,6 +17,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>flyover_near</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>gal1</Name>
     <Value>0</Value>
 </Widget>
@@ -52,18 +57,8 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>JM_flyoverOC</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>JM_groundcam</Name>
     <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>JM_groundcamOC</Name>
-    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

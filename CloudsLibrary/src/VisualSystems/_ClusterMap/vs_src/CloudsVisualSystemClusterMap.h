@@ -31,9 +31,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	CloudsVisualSystemClusterMap();
 	
 	void buildEntireCluster(CloudsFCPParser& parser);
-
 	void setRun(CloudsRun& run);
 	void setQuestions(vector<CloudsClip>& questions);
+	void allocateFlickerTexture();
+
 	CloudsQuestion* getSelectedQuestion();
 
     void setCurrentTopic(string topic);

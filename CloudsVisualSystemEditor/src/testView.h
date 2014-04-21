@@ -64,9 +64,10 @@
 	bool runningTest;
 	float lastSystemStartTime;
 	vector< CloudsVisualSystem* > testBatch;
-
+    string debugCurrentVS;
+    string debugCurrentPreset;
 	int testBatchIndex;
-    
+    bool goToNext;
 	ofFbo saveFbo;
     bool hasPasteboardPreset;
     CloudsVisualSystemPreset pasteboardPreset;

@@ -23,6 +23,8 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	bSmoothLines = false;
 	autoTraversePoints = false;
 	
+	flickerWidth = 100;
+	
 //    axisRotation = 0;
     numTraversed = 0;
     
@@ -51,6 +53,7 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     associationFontSize = -1;
     currentAssociationFont = 8;
     
+	firstClip = true;
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -261,6 +264,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	
 	firstClip = true;
 //	lastTraverseStartedIndex = -1;
+	flickerCoord = ofVec2f(0,0);
 
 	networkMesh.clear();
 	traversalMesh.clear();
@@ -305,11 +309,11 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 		
 		nodes.push_back(n);
 	}
-
-	
-
 	
 	networkCentroid /= nodes.size();
+
+//	cout << "CENTROID IS " << networkCentroid << endl;
+	
 	float maxDistance = 0;
 	for(int i = 0; i < parser->getAllClips().size(); i++){
 		maxDistance = MAX(maxDistance, parser->getAllClips()[i].networkPosition.distance(networkCentroid));
@@ -389,7 +393,9 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 				float distance = clip.networkPosition.distance(meta[j].networkPosition);
 				
 				int numSteps = distance * lineDensity;
+
 //				cout << "DISTANCE IS " << distance << " completing with " << numSteps << " steps " << endl;
+				
 				for(int i = 0; i <= numSteps; i++){
 					float stepPercent = (1.* i) / numSteps;
 					ofQuaternion step;
@@ -415,6 +421,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 			}
 		}
 	}
+	
     
     nodeMesh.setMode(OF_PRIMITIVE_POINTS);
 	networkMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
@@ -423,7 +430,6 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	optionsMeshPrev.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
     kdtree.buildIndex( nodeMesh.getVertices() );
-
     
 	populateTopicPoints();
     populateAssociations();
@@ -483,6 +489,15 @@ void CloudsVisualSystemClusterMap::populateAssociations(){
 //        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
     }
 }
+
+void CloudsVisualSystemClusterMap::allocateFlickerTexture(){
+
+	flickerNoise.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
+	flickerNoiseTarget.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
+	flickerNoise.getPixelsRef().set(0);
+	flickerNoiseTarget.set(0);
+}
+
 
 void CloudsVisualSystemClusterMap::traverse(){
 	
@@ -781,19 +796,8 @@ void CloudsVisualSystemClusterMap::selfSetupTimeline(){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemClusterMap::selfSetup(){
-//	gameCamera.setup();
-//	gameCamera.autosavePosition = true;
-//	gameCamera.loadCameraPosition();
-	
-	firstClip = true;
-	
-	flickerCoord = ofVec2f(0,0);
-	flickerWidth = 100;
-	flickerNoise.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
-	flickerNoiseTarget.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
-	flickerNoise.getPixelsRef().set(0);
-	flickerNoiseTarget.set(0);
-	
+
+//	cout << "BUILDING WITH FLICKER WIDTH " << flickerWidth << " AND COORD " << flickerCoord << endl;
 	reloadShaders();
 }
 
@@ -957,12 +961,12 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	flickerNoise.update();
 	
 	///UPDATE TYPE
-	if(currentTypeSizeRange != typeSizeRange && typeSizeRange.span() > 0){
+	if( (topicFont.size() == 0 || currentTypeSizeRange != typeSizeRange) && typeSizeRange.span() > 0){
 		topicFont.clear();
 		topicFont.resize(typeSizeRange.span());
 		int fontIndex = 0;
 		for(int i = typeSizeRange.min; i < typeSizeRange.max; i++){
-			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
+//			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
 		}
 		currentTypeSizeRange = typeSizeRange;
 	}

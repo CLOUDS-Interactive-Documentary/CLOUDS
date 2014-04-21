@@ -20,7 +20,9 @@ void testApp::setup(){
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
 	srand(ofGetSeconds());
     cout << "starting node size is " << startingNodes.size() << endl;
-    ofRandomuf();
+
+    
+	ofRandomuf();
     ofRandomuf();
     ofRandomuf();
     
@@ -36,15 +38,15 @@ void testApp::setup(){
 		cout << "	** " << run.clipHistory[i].getID() << endl;
 	}
 	
-    clusterMap.setNumSamples(4);
 	clusterMap.setup();
+	clusterMap.loadPresetGUISFromName("2DFollowCam");
+
 	clusterMap.setRun(run);
 	clusterMap.buildEntireCluster(parser);
+	clusterMap.allocateFlickerTexture();
+	
 	clusterMap.playSystem();
 	
-//	for(int i = 0; i < parser.getAllClips().size(); i++){
-//		cout << parser.getAllClips()[i].getID() << endl;
-//	}
 }
 
 //--------------------------------------------------------------
