@@ -32,9 +32,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	void buildEntireCluster(CloudsFCPParser& parser);
 	void setRun(CloudsRun& run);
+	void setAct(CloudsAct* newAct);
 	void setQuestions(vector<CloudsClip>& questions);
 	void allocateFlickerTexture();
-
+	
 	CloudsQuestion* getSelectedQuestion();
 
     void setCurrentTopic(string topic);
@@ -130,6 +131,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 
 	void reloadShaders();
 	bool autoTraversePoints;
+	bool finishedTraversing;
     void parseAssociations();
     
   protected:
@@ -143,7 +145,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	ofEasyCam easyCamera;
 	ofCamera axisCamera;
-//	ofxGameCamera gameCamera;
+	CloudsAct* act;
 	
 	ofVec2f flickerCoord;
 	int flickerWidth;

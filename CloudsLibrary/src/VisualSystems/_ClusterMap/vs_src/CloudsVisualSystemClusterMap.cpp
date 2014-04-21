@@ -5,10 +5,12 @@
 #include "CloudsVisualSystemClusterMap.h"
 #include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
+#include "CloudsAct.h"
 
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	run = NULL;
 	matchLineColor = false;
+	act = NULL;
 }
 
 void CloudsVisualSystemClusterMap::selfSetDefaults(){
@@ -22,6 +24,8 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	drawLineFlickerDebug = false;
 	bSmoothLines = false;
 	autoTraversePoints = false;
+	finishedTraversing = false;
+
 	
 	flickerWidth = 100;
     numTraversed = 0;
@@ -259,6 +263,10 @@ void CloudsVisualSystemClusterMap::setRun(CloudsRun& newRun){
 	run = &newRun;
 }
 
+void CloudsVisualSystemClusterMap::setAct(CloudsAct* newAct){
+	act = newAct;
+}
+
 void CloudsVisualSystemClusterMap::resetGeometry(){
 	
 	firstClip = true;
@@ -339,9 +347,8 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 			valid &= (nameA != nameB);
 			valid &= (clip.person != meta[j].person || parser->clipLinksTo(nameA, nameB));
 			valid &= !parser->linkIsSuppressed(nameA, nameB);
-//			valid &= parser.getNumberOfSharedKeywords(clip, meta[j]) > 1;
-			if(valid)
-			{
+
+			if(valid) {
 				CloudsClusterNode& n2 = nodes[ clipIdToNodeIndex[nameB] ];
 				n1.adjascentClipIds.push_back(n2.clipId);
 				
@@ -502,18 +509,21 @@ void CloudsVisualSystemClusterMap::traverse(){
 	
 	//cout << " CloudsVisualSystemClusterMap::traverse TRAVERSING 1" << endl;
 	
-	if(run == NULL){
-		ofLogError("CloudsVisualSystemClusterMap::traverse") << "Traversed without RUN" << endl;
+	if(act == NULL){
+		ofLogError("CloudsVisualSystemClusterMap::traverse") << "Traversed without ACT" << endl;
 		return;
 	}
 
-	if(currentTraversalIndex < run->clipHistory.size()){
-		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
-		traverseToClip( clip );
+//	if(currentTraversalIndex < run->clipHistory.size()){
+	if(currentTraversalIndex < MIN(8,act->getAllClips().size()) ){
+//		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
+//		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
+		traverseToClip( act->getClip(currentTraversalIndex) );
 		currentTraversalIndex++;
 	}
 	else if(autoTraversePoints){
-		timeline->stop(); //finished!
+//		timeline->stop(); //finished!
+		finishedTraversing = true;
 	}
 
 }
@@ -721,6 +731,7 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
 			else{
 				percentComplete = ofMap(i,edge.startIndex,edge.endIndex-1, 0.0, 1.0);
 			}
+			
 			//z attenuates the handles
 			optionsMeshNext.addNormal(ofVec3f(percentComplete,0,networkMesh.getNormal(i).z) );
 			optionsMeshNext.addVertex(networkMesh.getVertex(i));
@@ -839,13 +850,19 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	
 	///UPDATE ANIMATION
 	percentTraversed = ofMap(ofGetElapsedTimef(),
-							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
+							 traverseStartTime, traverseStartTime+traverseAnimationDuration * (autoTraversePoints ? .6 : 1.0),
 							 0, 1.0, true);
-	percentOptionsRevealed = ofMap(ofGetElapsedTimef(),
-								   traverseStartTime+traverseAnimationDuration,
-								   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
-								   0.0, 1.0, true);
-    
+	
+	if(autoTraversePoints) {
+		percentOptionsRevealed = 0.0;
+	}
+	else{
+		percentOptionsRevealed = ofMap(ofGetElapsedTimef(),
+									   traverseStartTime+traverseAnimationDuration,
+									   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
+									   0.0, 1.0, true);
+    }
+	
 	//UPDATE CAMERA
 //	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
 	if(cursorIsOverGUI()){
@@ -872,7 +889,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
             trailHead = frontVert.getInterpolated(backVert, alpha);
         }
         
-		if(lockCameraAxis){
+		if(lockCameraAxis && !autoTraversePoints){
 			ofVec3f curPosition = axisCamera.getPosition();
             ofQuaternion nextRot,lastRot,curRot;
             nextRot.makeRotate(fmod((numTraversed+1)*90,360.0f), ofVec3f(0,1,0));
@@ -957,7 +974,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 		topicFont.resize(typeSizeRange.span());
 		int fontIndex = 0;
 		for(int i = typeSizeRange.min; i < typeSizeRange.max; i++){
-//			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
+			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
 		}
 		currentTypeSizeRange = typeSizeRange;
 	}

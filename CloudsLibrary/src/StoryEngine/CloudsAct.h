@@ -90,9 +90,11 @@ class CloudsAct{
 	vector<CloudsSoundCue>& getSoundCues();
 	
     vector<string>& getAllTopics();
-    
+	
+	
     CloudsClip& getClip(int index);
     CloudsClip& getClipAtTime(float time);
+
 
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     float addClip(CloudsClip& clip, string topic, float startTime);
