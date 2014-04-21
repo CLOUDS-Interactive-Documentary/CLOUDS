@@ -5,10 +5,12 @@
 #include "CloudsVisualSystemClusterMap.h"
 #include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
+#include "CloudsAct.h"
 
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	run = NULL;
 	matchLineColor = false;
+	act = NULL;
 }
 
 void CloudsVisualSystemClusterMap::selfSetDefaults(){
@@ -22,8 +24,10 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	drawLineFlickerDebug = false;
 	bSmoothLines = false;
 	autoTraversePoints = false;
+	finishedTraversing = false;
+
 	
-//    axisRotation = 0;
+	flickerWidth = 100;
     numTraversed = 0;
     
 	clipsShowTopic = ofIntRange(20, 40);
@@ -33,8 +37,7 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	typeSizeRange.min = 5;
 	typeSizeRange.max = 14;
 	lineDensity = 200;
-	
-//	currentTraversalIndex = -1;
+
 	
 	lineFlickerIntensity = 7.;
 	lineFlickerFrequency = 100;
@@ -51,6 +54,9 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     associationFontSize = -1;
     currentAssociationFont = 8;
     
+	traverseNextFrame = false;
+	
+	firstClip = true;
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -257,10 +263,15 @@ void CloudsVisualSystemClusterMap::setRun(CloudsRun& newRun){
 	run = &newRun;
 }
 
+void CloudsVisualSystemClusterMap::setAct(CloudsAct* newAct){
+	act = newAct;
+}
+
 void CloudsVisualSystemClusterMap::resetGeometry(){
 	
 	firstClip = true;
 //	lastTraverseStartedIndex = -1;
+	flickerCoord = ofVec2f(0,0);
 
 	networkMesh.clear();
 	traversalMesh.clear();
@@ -305,11 +316,11 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 		
 		nodes.push_back(n);
 	}
-
-	
-
 	
 	networkCentroid /= nodes.size();
+
+//	cout << "CENTROID IS " << networkCentroid << endl;
+	
 	float maxDistance = 0;
 	for(int i = 0; i < parser->getAllClips().size(); i++){
 		maxDistance = MAX(maxDistance, parser->getAllClips()[i].networkPosition.distance(networkCentroid));
@@ -336,9 +347,8 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 			valid &= (nameA != nameB);
 			valid &= (clip.person != meta[j].person || parser->clipLinksTo(nameA, nameB));
 			valid &= !parser->linkIsSuppressed(nameA, nameB);
-//			valid &= parser.getNumberOfSharedKeywords(clip, meta[j]) > 1;
-			if(valid)
-			{
+
+			if(valid) {
 				CloudsClusterNode& n2 = nodes[ clipIdToNodeIndex[nameB] ];
 				n1.adjascentClipIds.push_back(n2.clipId);
 				
@@ -389,7 +399,9 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 				float distance = clip.networkPosition.distance(meta[j].networkPosition);
 				
 				int numSteps = distance * lineDensity;
+
 //				cout << "DISTANCE IS " << distance << " completing with " << numSteps << " steps " << endl;
+				
 				for(int i = 0; i <= numSteps; i++){
 					float stepPercent = (1.* i) / numSteps;
 					ofQuaternion step;
@@ -415,6 +427,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 			}
 		}
 	}
+	
     
     nodeMesh.setMode(OF_PRIMITIVE_POINTS);
 	networkMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
@@ -423,7 +436,6 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	optionsMeshPrev.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
     kdtree.buildIndex( nodeMesh.getVertices() );
-
     
 	populateTopicPoints();
     populateAssociations();
@@ -484,22 +496,34 @@ void CloudsVisualSystemClusterMap::populateAssociations(){
     }
 }
 
+void CloudsVisualSystemClusterMap::allocateFlickerTexture(){
+
+	flickerNoise.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
+	flickerNoiseTarget.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
+	flickerNoise.getPixelsRef().set(0);
+	flickerNoiseTarget.set(0);
+}
+
+
 void CloudsVisualSystemClusterMap::traverse(){
 	
 	//cout << " CloudsVisualSystemClusterMap::traverse TRAVERSING 1" << endl;
 	
-	if(run == NULL){
-		ofLogError("CloudsVisualSystemClusterMap::traverse") << "Traversed without RUN" << endl;
+	if(act == NULL){
+		ofLogError("CloudsVisualSystemClusterMap::traverse") << "Traversed without ACT" << endl;
 		return;
 	}
 
-	if(currentTraversalIndex < run->clipHistory.size()){
-		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
-		traverseToClip( clip );
+//	if(currentTraversalIndex < run->clipHistory.size()){
+	if(currentTraversalIndex < MIN(8,act->getAllClips().size()) ){
+//		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
+//		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
+		traverseToClip( act->getClip(currentTraversalIndex) );
 		currentTraversalIndex++;
 	}
 	else if(autoTraversePoints){
-		timeline->stop(); //finished!
+//		timeline->stop(); //finished!
+		finishedTraversing = true;
 	}
 
 }
@@ -707,6 +731,7 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
 			else{
 				percentComplete = ofMap(i,edge.startIndex,edge.endIndex-1, 0.0, 1.0);
 			}
+			
 			//z attenuates the handles
 			optionsMeshNext.addNormal(ofVec3f(percentComplete,0,networkMesh.getNormal(i).z) );
 			optionsMeshNext.addVertex(networkMesh.getVertex(i));
@@ -781,19 +806,8 @@ void CloudsVisualSystemClusterMap::selfSetupTimeline(){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemClusterMap::selfSetup(){
-//	gameCamera.setup();
-//	gameCamera.autosavePosition = true;
-//	gameCamera.loadCameraPosition();
-	
-	firstClip = true;
-	
-	flickerCoord = ofVec2f(0,0);
-	flickerWidth = 100;
-	flickerNoise.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
-	flickerNoiseTarget.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
-	flickerNoise.getPixelsRef().set(0);
-	flickerNoiseTarget.set(0);
-	
+
+//	cout << "BUILDING WITH FLICKER WIDTH " << flickerWidth << " AND COORD " << flickerCoord << endl;
 	reloadShaders();
 }
 
@@ -838,17 +852,16 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	percentTraversed = ofMap(ofGetElapsedTimef(),
 							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
 							 0, 1.0, true);
-	percentOptionsRevealed = ofMap(ofGetElapsedTimef(),
-								   traverseStartTime+traverseAnimationDuration,
-								   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
-								   0.0, 1.0, true);
-	if(percentTraversed >= 1.0){
-//        axisRotation += 90;
-    }
-    
-	if(autoTraversePoints && (firstClip || percentOptionsRevealed >= 1.0) ){
-		traverse();
+	
+	if(autoTraversePoints) {
+		percentOptionsRevealed = 0.0;
 	}
+	else{
+		percentOptionsRevealed = ofMap(ofGetElapsedTimef(),
+									   traverseStartTime+traverseAnimationDuration,
+									   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
+									   0.0, 1.0, true);
+    }
 	
 	//UPDATE CAMERA
 //	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
@@ -859,7 +872,6 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 		easyCamera.enableMouseInput();
 	}
 	
-
 	if(traversalPath.size() > 0){
 		float curIndex = ofMap(percentTraversed,
 									 0, 1.0,
@@ -880,8 +892,14 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 		if(lockCameraAxis){
 			ofVec3f curPosition = axisCamera.getPosition();
             ofQuaternion nextRot,lastRot,curRot;
-            nextRot.makeRotate(fmod((numTraversed+1)*90,360.0f), ofVec3f(0,1,0));
-            lastRot.makeRotate(fmod(numTraversed*90,360.0f), ofVec3f(0,1,0));
+			if(autoTraversePoints){
+				nextRot.makeRotate(0, ofVec3f(0,1,0));
+				lastRot.makeRotate(0, ofVec3f(0,1,0));
+			}
+			else{
+				nextRot.makeRotate(fmod((numTraversed+1)*90,360.0f), ofVec3f(0,1,0));
+				lastRot.makeRotate(fmod(numTraversed*90,360.0f), ofVec3f(0,1,0));
+			}
             curRot.slerp(percentTraversed,lastRot,nextRot);
             
             //cout << "current rot " << numTraversed << "last rot is " << lastRot.getEuler() << " Next rot is " << nextRot.getEuler() << " cur rot is " << curRot.getEuler() << endl;
@@ -957,7 +975,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	flickerNoise.update();
 	
 	///UPDATE TYPE
-	if(currentTypeSizeRange != typeSizeRange && typeSizeRange.span() > 0){
+	if( (topicFont.size() == 0 || currentTypeSizeRange != typeSizeRange) && typeSizeRange.span() > 0){
 		topicFont.clear();
 		topicFont.resize(typeSizeRange.span());
 		int fontIndex = 0;
@@ -980,7 +998,11 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
         trailheadScreenPos = getCameraRef().worldToScreen(trailHead * meshExpansion,
                                                           ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()));        
     }
-    
+	
+	if(!traverseNextFrame && autoTraversePoints && (firstClip || percentTraversed >= 1.0) ){
+		traverseNextFrame = true;
+	}
+	
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -1123,6 +1145,11 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	ofPopMatrix();
 	ofPopStyle();
 	glPopAttrib();
+	
+	if(traverseNextFrame){
+		traverse();
+		traverseNextFrame = false;
+	}
 }
 
 // draw any debug stuff here

@@ -43,12 +43,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>-78.472961426</Value>
+    <Value>-62.512371063</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>79.359542847</Value>
+    <Value>32.364479065</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>maxY</Name>
-    <Value>64.285659790</Value>
+    <Value>44.778274536</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

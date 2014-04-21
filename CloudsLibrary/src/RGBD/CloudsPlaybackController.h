@@ -100,16 +100,20 @@ class CloudsPlaybackController : public ofThread {
 	bool shouldLoadAct;
 	bool shouldPlayAct;
     bool shouldClearAct;
-    
+    bool shouldPlayClusterMap;
+	
     void drawRenderTarget();
     void drawInterludeInterface();
-
+	void drawInterludePanel(ofRectangle rect, string promptText, bool hovering, int tracking );
 #ifdef KINECT_INPUT
     void drawKinectFeedback();
     float kinectFeedbackAlpha;
     ofTrueTypeFont kinectFeedbackFont;
 #endif
-    
+	//transition
+	CloudsPortal* selectedQuestion;
+	CloudsClip selectedQuestionClip;
+
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
     int numActsCreated;
@@ -188,9 +192,10 @@ class CloudsPlaybackController : public ofThread {
 	float interludeBarHoverPercentComplete;
 	bool interludeContinueSelected;
 	bool interludeResetSelected;
+	bool interludeTimedOut;
 	float interludeArcRadius;
 	float interludeArcBaseAlpha;
-
+	float interludeForceOnTimer;
 //    CloudsPortal continuePortal;
 //    void setupPortals();
 //    ofRectangle resetRect;

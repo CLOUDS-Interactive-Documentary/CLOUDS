@@ -2,18 +2,18 @@
     <Kind>42</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>451.000061035</XPosition>
+    <XPosition>1299.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>DIST</Name>
-    <Value>200.000000000</Value>
+    <Value>231.527084351</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOV</Name>
-    <Value>60.000000000</Value>
+    <Value>59.408809662</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,32 +33,32 @@
 <Widget>
     <Kind>2</Kind>
     <Name>InteractiveCamera</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>damping</Name>
-    <Value>0.000000000</Value>
+    <Value>0.039408866</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>0.000000000</Value>
+    <Value>-21.724136353</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>0.000000000</Value>
+    <Value>19.950744629</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minY</Name>
-    <Value>0.000000000</Value>
+    <Value>-19.064041138</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxY</Name>
-    <Value>0.000000000</Value>
+    <Value>20.837440491</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

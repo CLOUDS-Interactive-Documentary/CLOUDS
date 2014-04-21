@@ -4,8 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>t</WidgetName>
-                <WidgetID>22</WidgetID>
+                <WidgetName>k</WidgetName>
+                <WidgetID>20</WidgetID>
                 <WidgetCanvasParent>Terrain</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -20,8 +20,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>k</WidgetName>
-                <WidgetID>20</WidgetID>
+                <WidgetName>t</WidgetName>
+                <WidgetID>22</WidgetID>
                 <WidgetCanvasParent>Terrain</WidgetCanvasParent>
             </Widget>
             <Track></Track>

@@ -1,19 +1,19 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>CamSettings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>122.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000045776</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>DIST</Name>
-    <Value>200.000000000</Value>
+    <Value>187.191894531</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOV</Name>
-    <Value>60.000000000</Value>
+    <Value>46.108329773</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

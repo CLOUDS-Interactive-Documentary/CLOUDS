@@ -23,7 +23,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>NUM PARTICLES</Name>
-    <Value>118</Value>
+    <Value>157</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -118,7 +118,7 @@
 <Widget>
     <Kind>6</Kind>
     <Name>SIZE</Name>
-    <HighValue>5.221674919</HighValue>
+    <HighValue>6.108374596</HighValue>
     <LowValue>4.334975243</LowValue>
 </Widget>
 <Widget>
@@ -170,12 +170,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 1</Name>
-    <Value>0.029556651</Value>
+    <Value>0.266009837</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>BRI 1</Name>
-    <Value>1.000000000</Value>
+    <Value>0.881773412</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

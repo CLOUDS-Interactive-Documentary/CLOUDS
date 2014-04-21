@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>MATERIAL 1Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>617.000000000</YPosition>
+    <XPosition>849.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>25</Kind>
     <Name>EH</Name>
-    <Value>0.975000024</Value>
+    <Value>0.969117105</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>EV</Name>
-    <Value>0.000000000</Value>
+    <Value>0.190578043</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

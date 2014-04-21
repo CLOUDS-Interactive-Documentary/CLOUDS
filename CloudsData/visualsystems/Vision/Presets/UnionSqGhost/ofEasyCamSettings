@@ -1,9 +1,9 @@
 --------------ofCamera parameters--------------
 transformMatrix
-       1,        0,        0,        0
-       0,  1.00001,        0,        0
-       0,        0, 0.999996,        0
-       0,        0,      200,        1
+0.965856, 0.210941, 0.150418,        0
+-0.210351, 0.977431, -0.0200213,        0
+-0.151244, -0.0123027, 0.988416,        0
+ -30.249, -2.46055,  197.684,        1
 fov
 61.1823
 near
@@ -20,7 +20,7 @@ target
 bEnableMouseMiddleButton
 1
 bMouseInputEnabled
-0
+1
 drag
 0.9
 doTranslationKey

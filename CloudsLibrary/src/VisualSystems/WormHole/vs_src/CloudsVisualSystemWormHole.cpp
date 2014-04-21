@@ -188,9 +188,9 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	soundGui->setName("WORMHOLE Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        soundGui->addToggle(soundFiles[i], &playSample[i]);
+        soundGui->addToggle(tonicSamples[i].soundFile, &tonicSamples[i].playSample);
     }
     
     soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
@@ -312,13 +312,13 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		wormholeLightGui->getWidget("lightBrightness")->setColorFill(lightColor);
 	}
 
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (e.widget->getName() == soundFiles[i]) {
+        if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
+            tonicSamples[i].playSample = toggle->getValue();
             if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+                tonicSamples[i].soundTrigger.trigger();
             }
         }
     }
@@ -418,7 +418,11 @@ void CloudsVisualSystemWormHole::selfSetDefaults()
 void CloudsVisualSystemWormHole::selfSetup()
 {
 	currentShader = NULL;
-	
+
+	tonicSamples.push_back(TonicSample("EchoVortex.aif"));
+	tonicSamples.push_back(TonicSample("wormholeZoom.aif"));
+	tonicSamples.push_back(TonicSample("wormholeZoom2.aif"));
+	tonicSamples.push_back(TonicSample("slowgrains_short.aif"));
 	//meshes
 	modelPath = getVisualSystemDataPath(true) + "models/";
 	cameraPathPath = getVisualSystemDataPath() + "cameraPaths/";
@@ -467,10 +471,10 @@ void CloudsVisualSystemWormHole::selfBegin(){
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+        if (tonicSamples[i].playSample) {
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
@@ -813,16 +817,16 @@ Generator CloudsVisualSystemWormHole::buildSynth()
     
     SampleTable samples[4];
     
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+       string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = loadAudioFile(strAbsPath);
     }
     
     Generator sampleGen[4];
-    for (int i=0; i<nSamples; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(soundTriggers[i]);
+        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(tonicSamples[i].soundTrigger);
     }
     
     return sampleGen[0] * 1.0f +

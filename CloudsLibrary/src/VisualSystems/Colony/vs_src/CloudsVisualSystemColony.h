@@ -12,7 +12,8 @@
 #include "gCell.h"
 #include "CloudsGlobal.h"
 #include "CloudsAudioEvents.h"
-#include "ofxTonic.h"
+//#include "ofxTonic.h"
+#include "TonicSample.h"
 
 using namespace Tonic;
 
@@ -111,11 +112,14 @@ private:
     
     /* SOUND LVL=100 */
     ofxUISuperCanvas* soundGui;
-    string soundFiles[3] = {"granular_water2.aif",
-        "granular_water2_slow.aif",
-        "Grains1_slow_low.aif"};
-    bool playSample[3];
-    ControlTrigger soundTriggers[3];
+
+    vector<TonicSample> tonicSamples;
+    
+//    string soundFiles[3] = {"granular_water2.aif",
+//        "granular_water2_slow.aif",
+//        "Grains1_slow_low.aif"};
+//    bool playSample[3];
+//    ControlTrigger soundTriggers[3];
     ofxTonicSynth synth;
     Generator buildSynth();
     ControlParameter volumeControl;
