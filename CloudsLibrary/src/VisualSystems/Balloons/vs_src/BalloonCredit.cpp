@@ -26,8 +26,10 @@ ofVec3f BalloonCredit::getLeft()
 
 void BalloonCredit::draw()
 {
-	
+	ofPushStyle();
 	ofPushMatrix();
+	ofSetColor(255);
+	ofDisableLighting();
 	
 	ofNode n;
 	n.setPosition( pos );
@@ -46,16 +48,9 @@ void BalloonCredit::draw()
 	float titleHeight = font->stringHeight(title);
 	font->drawString(title, titleWidth/2, titleHeight/2);
 	
-//	glDisable(GL_CULL_FACE);
-//	ofSetColor(255,255,255);
-////		ofDrawBitmapString("YO DAWG, I PUT SOME WORDS IN YOUR BALLOONS", pos.x - width*.5, pos.y + );
-////		ofDrawBitmapString("Dr. Van Nostron", pos.x - width*.5, pos.y - 6);
-//	
-//	ofSetColor(255, 255, 0);
-//	glLineWidth(2);
-//	ofLine(pos.x - width*.5, pos.y, pos.z, pos.x + width*.5, pos.y, pos.z);
-	
+	ofEnableLighting();
 	ofPopMatrix();
+	ofPopStyle();
 }
 	
 

@@ -483,7 +483,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 			creditsXml.pushTag("credit", i);
 			
 			BalloonCredit bc;
-			bc.title = creditsXml.getValue("title", "");
+			bc.title = ofToUpper(creditsXml.getValue("title", ""));
 			bc.name = creditsXml.getValue("name", "");
 			bc.pos = pos;
 			bc.font = &font;
@@ -500,9 +500,9 @@ void CloudsVisualSystemBalloons::selfSetup()
 	}
 	
 	//TEST
-	for(int i = 0; i < 3; i++){
-		credits.push_back( credits[0] );
-	}
+//	for(int i = 0; i < 3; i++){
+//		credits.push_back( credits[0] );
+//	}
 }
 
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){
