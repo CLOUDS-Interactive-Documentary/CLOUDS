@@ -106,6 +106,8 @@ class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
         float gravity;
     
         ofVec2f cursor;
+        int numParticles;
+        void generateParticles();
     
         ofVboMesh mesh;
         vector<SOLPlayer> players;

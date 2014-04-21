@@ -12,7 +12,9 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("SeaOfLines");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
+
+    customGui->addIntSlider("NUM PARTICLES", 1, 2000, &numParticles);
+
     customGui->addSpacer();
     customGui->addSlider("BG ALPHA", 0.0, 1.0, &bgAlpha);
     
@@ -51,6 +53,8 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetDefaults()
     cursorRange = 1.0f;
     gravity = 0.1f;
     
+    numParticles = 500;
+
     primaryCursorMode   = CURSOR_MODE_DRAW;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
@@ -60,6 +64,43 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.getName() == "DISTANCES") {
         baseDist = MAX(baseDist, collideDist + 1.0f);
+    }
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5SeaOfLines::generateParticles(){
+    
+    players.clear();
+    
+    // Add the players.
+    float step = 20;
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    
+    //jg control player count by looping over this until it's done
+    while(true){
+        for (float i = 0; i < (getCanvasWidth() / step - 1); i++) {
+            for (float j = 0; j < (getCanvasHeight() / step - 1); j++) {
+                if (ofRandom(3) > 1) {
+                    
+                    players.push_back(SOLPlayer());
+                    
+                    SOLPlayer& player = players.back();
+                    
+                    player.x = i * step + step * 0.5f;
+                    player.y = j * step + step * 0.5f;
+                    
+                    player.speed = ofRandom(minSpeed, maxSpeed);
+                    
+                    float angle = ofRandom(TWO_PI);
+                    player.sx = cosf(angle) * player.speed;
+                    player.sy = sinf(angle) * player.speed;
+                    
+                    if(players.size() == numParticles){
+                        return;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -92,35 +133,17 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
     mesh.setMode(OF_PRIMITIVE_LINES);
     mesh.setUsage(GL_STREAM_DRAW);
     
-    // Add the players.
-    float step = 20;
-    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-    for (float i = 0; i < (getCanvasWidth() / step - 1); i++) {
-        for (float j = 0; j < (getCanvasHeight() / step - 1); j++) {
-            if (ofRandom(3) > 1) {
-				
-				players.push_back(SOLPlayer());
-				
-				SOLPlayer& player = players.back();
-				
-                player.x = i * step + step * 0.5f;
-                player.y = j * step + step * 0.5f;
-                
-                player.speed = ofRandom(minSpeed, maxSpeed);
-                
-                float angle = ofRandom(TWO_PI);
-                player.sx = cosf(angle) * player.speed;
-                player.sy = sinf(angle) * player.speed;
-                
-            }
-        }
-    }
+    
+
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemOpenP5SeaOfLines::selfPresetLoaded(string presetPath){
+
+
+    generateParticles();
 
 }
 
@@ -140,6 +163,11 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
 {
+    
+    if(players.size() != numParticles){
+        generateParticles();
+    }
+    
     mesh.clear();
     lineColor1.setHsb(lineParams1[0], lineParams1[1], lineParams1[2], lineParams1[3]);
     lineColor2.setHsb(lineParams2[0], lineParams2[1], lineParams2[2], lineParams2[3]);
@@ -228,6 +256,8 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     ofRect(0, 0, getCanvasWidth(), getCanvasHeight());
     glDisable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_FASTEST);
+
     ofSetColor(255);
     
     mesh.draw();
@@ -236,8 +266,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemOpenP5SeaOfLines::selfEnd(){
-
-	
+    players.clear();
 }
 
 //--------------------------------------------------------------

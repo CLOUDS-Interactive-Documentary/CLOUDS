@@ -180,7 +180,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		///SCREENCAPTURE MODE
 //		currentVisualSystem->setNumSamples(4);
-		currentVisualSystem->forceScreenResolution(1920, 1080);
+//		currentVisualSystem->forceScreenResolution(1920, 1080);
 		currentVisualSystem->setDrawToScreen(false);
 		/////
 		
@@ -305,6 +305,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 //        cout<<ss.str()<<endl;
 		currentVisualSystem->selfPostDraw();
+        
         if(runningTest){
             stringstream ss;
             ss<<"Current system"<<debugCurrentVS<<" Preset: "<<debugCurrentPreset<<endl;
