@@ -103,8 +103,6 @@ uniform sampler2DRect velTexture;
 uniform sampler2DRect quatTexture;
 uniform sampler2DRect colTexture;
 
-uniform vec2 sphericalMapDim;
-
 uniform vec3 camPos;
 uniform vec3 l0;
 
@@ -137,6 +135,8 @@ varying float wordLightAtten0;
 
 uniform	float creditThresh;
 varying float creditLight;
+
+uniform float shininess;
 
 void main()
 {
@@ -177,17 +177,11 @@ void main()
 		fr = dot(normalize(delta), vNorm) * .5 + .5;
 //		fr = max(0., dot(normalize(delta), vNorm));
 		
-		creditLight += a * a * a * fr * fr;
+		creditLight += a * a * a * pow(fr, max(1., shininess * .1));
 	}
 	
 	ecPosition = gl_ModelViewMatrix * v;
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	gl_Position = gl_ProjectionMatrix * ecPosition;
-	
-	vec3 r = reflect( ePos, vNorm );
-	float m = 2. * sqrt(r.x*r.x + r.y*r.y + pow(r.z+1., 2.));
-	vN = (r.xy / m + .5);
-//	vN.y = 1. - vN.y;
-	vN *= sphericalMapDim;
 }
 

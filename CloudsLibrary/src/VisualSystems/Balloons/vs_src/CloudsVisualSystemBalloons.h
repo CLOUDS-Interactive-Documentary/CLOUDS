@@ -264,4 +264,7 @@ protected:
 
 	float textSpeed, textRadius, creditLightDist;
 	vector<Credit> credits;
+	
+	int shininess;
+	float lightScale, facingRatioScale, creditLightScale;
 };

@@ -49,6 +49,12 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	textGui->addSlider("textRadius", 1, 10, &textRadius);
 	textGui->addSlider("creditLightDist", 10, 500, &creditLightDist);
 	
+	textGui->addSpacer();
+	textGui->addIntSlider("shininess", 2, 128, &shininess);
+	textGui->addSlider("lightScale", 0, 1, &lightScale);
+	textGui->addSlider("creditLightScale", 0, 1, &creditLightScale);
+	textGui->addSlider("facingRatioScale", 0, 1, &facingRatioScale);
+	
 	ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemBalloons::selfGuiEvent);
 	guis.push_back(textGui);
 	guimap[textGui->getName()] = textGui;
@@ -291,6 +297,11 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	
 	textSpeed = -1;
 	textRadius = 3.;
+	
+	shininess = 10;
+	lightScale = .75;
+	creditLightScale = .75;
+	facingRatioScale = .4;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -430,9 +441,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_low.obj", temp);
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
-	
-	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/cloudy_afternoon_preview.jpg");
-	
+		
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
 	
@@ -606,7 +615,8 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	shader.begin();
-	shader.setUniform1f("shininess", 10);
+	shader.setUniform1f("shininess", shininess);
+	shader.setUniform1f("lightScale", lightScale);
 	shader.setUniform1f("screenHeight", ofGetHeight());
 	
 	ofFloatColor bg0 = bgColor;
@@ -617,7 +627,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	shader.setUniform1f("dim", dim );
 	shader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
-	shader.setUniform1f("facingRatio", .4);//TODO: <-- slider
+	shader.setUniform1f("facingRatio", facingRatioScale);//TODO: <-- slider
 	shader.setUniform1f("fogDist", 400);//TODO: <-- slider
 	shader.setUniform1f("dimX", dimX);
 	shader.setUniform1f("dimY", dimY);
@@ -626,14 +636,12 @@ void CloudsVisualSystemBalloons::selfDraw()
 	shader.setUniformTexture("velTexture", v0->getTextureReference(), 1);
 	shader.setUniformTexture("colTexture", colFbo.getTextureReference(), 2);
 	shader.setUniformTexture("quatTexture", quatFbo.getTextureReference(), 3);
-	shader.setUniformTexture("sphericalMap", sphericalMap, 4);
-	shader.setUniform2f("sphericalMapDim", sphericalMap.getWidth(), sphericalMap.getHeight());
 	
 	shader.setUniform1f("creditThresh", creditLightDist);
+	shader.setUniform1f("creditLightScale", creditLightScale);
 	
 	if(creditPositions.size())	shader.setUniform4fv("lights", &creditPositions[0][0], creditPositions.size());
 	shader.setUniform1f("numLights", creditPositions.size());
-	
 	
 	//vbo instancing
 	vbo.bind();
