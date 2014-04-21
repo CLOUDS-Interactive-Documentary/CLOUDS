@@ -4,6 +4,7 @@
 uniform float shininess = 3.;
 uniform float dim;
 uniform float facingRatio = .4;
+uniform float lightScale;
 
 uniform float screenHeight;
 uniform vec4 bg0;
@@ -28,8 +29,6 @@ varying vec4 wordLightPos0;
 varying float wordLightAtten0;
 
 varying float creditLight;
-
-varying vec3 vPos;
 
 void PointLight(in vec3 lightPosition,
                 in vec3 eye,
@@ -62,8 +61,8 @@ void PointLight(in vec3 lightPosition,
 	
 	nDotVP = dot( normal, VP);
 	
-	vec4 colorScl = nDotVP > 0.? vec4(1.) : color * .5;
-	colorScl *= .75;
+	vec4 colorScl = nDotVP > 0.? vec4(1.) : color * .3;
+	colorScl *= lightScale;
 	
 	nDotVP = abs(nDotVP);
     nDotHV = abs( dot( normal, halfVector) );

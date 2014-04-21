@@ -136,7 +136,7 @@ varying float wordLightAtten0;
 uniform	float creditThresh;
 varying float creditLight;
 
-varying vec3 vPos;
+uniform float shininess;
 
 void main()
 {
@@ -152,7 +152,6 @@ void main()
 	vec3 vNorm = qtransform(q, gl_Normal);
 	norm = gl_NormalMatrix * vNorm;
 	v.xyz = qtransform(q, v.xyz);
-	vPos = norm;//v.xyz;
 	v.xyz += pos;
 	
 	fogMix = 1. - pow(abs(v.y) / (dim*.9), 4.);
@@ -178,7 +177,8 @@ void main()
 		fr = dot(normalize(delta), vNorm) * .5 + .5;
 //		fr = max(0., dot(normalize(delta), vNorm));
 		
-		creditLight += a * a * a * fr * fr;
+//		creditLight *= 1.1;
+		creditLight += a * a * a * pow(fr, shininess * .1);
 	}
 	
 	ecPosition = gl_ModelViewMatrix * v;

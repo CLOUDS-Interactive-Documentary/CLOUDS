@@ -51,6 +51,8 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	
 	textGui->addSpacer();
 	textGui->addIntSlider("shininess", 2, 128, &shininess);
+	textGui->addSlider("lightScale", 0, 1, &lightScale);
+	textGui->addSlider("facingRatioScale", 0, 1, &facingRatioScale);
 	
 	ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemBalloons::selfGuiEvent);
 	guis.push_back(textGui);
@@ -296,6 +298,8 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	textRadius = 3.;
 	
 	shininess = 10;
+	lightScale = .75;
+	facingRatioScale = .4;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -610,6 +614,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	shader.begin();
 	shader.setUniform1f("shininess", shininess);
+	shader.setUniform1f("lightScale", lightScale);
 	shader.setUniform1f("screenHeight", ofGetHeight());
 	
 	ofFloatColor bg0 = bgColor;
@@ -620,7 +625,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	shader.setUniform1f("dim", dim );
 	shader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
-	shader.setUniform1f("facingRatio", .4);//TODO: <-- slider
+	shader.setUniform1f("facingRatio", facingRatioScale);//TODO: <-- slider
 	shader.setUniform1f("fogDist", 400);//TODO: <-- slider
 	shader.setUniform1f("dimX", dimX);
 	shader.setUniform1f("dimY", dimY);

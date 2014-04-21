@@ -266,4 +266,5 @@ protected:
 	vector<Credit> credits;
 	
 	int shininess;
+	float lightScale, facingRatioScale;
 };
