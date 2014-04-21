@@ -670,6 +670,9 @@
 		E703CCB8185C1D5800547738 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCAA185C1D5800547738 /* lukeFuncs.cpp */; };
 		E703CCB9185C1D5800547738 /* lukeMusicFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCAC185C1D5800547738 /* lukeMusicFuncs.cpp */; };
 		E703CCBA185C1D5800547738 /* lukeMusicFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCAC185C1D5800547738 /* lukeMusicFuncs.cpp */; };
+		E70AC3FF19059A96009C0B1D /* BalloonCredit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70AC3FD19059A96009C0B1D /* BalloonCredit.cpp */; };
+		E70AC40019059A96009C0B1D /* BalloonCredit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70AC3FD19059A96009C0B1D /* BalloonCredit.cpp */; };
+		E70AC40119059A96009C0B1D /* BalloonCredit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70AC3FD19059A96009C0B1D /* BalloonCredit.cpp */; };
 		E70CDDC8186958B200955691 /* CloudsSecondaryDisplayOSCSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDC2186958B200955691 /* CloudsSecondaryDisplayOSCSender.cpp */; };
 		E70CE1E118695CCC00955691 /* CloudsVisualSystem2DVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDCD18695CC800955691 /* CloudsVisualSystem2DVideo.cpp */; };
 		E70CE1E218695CCC00955691 /* CloudsVisualSystem2DVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDCD18695CC800955691 /* CloudsVisualSystem2DVideo.cpp */; };
@@ -2072,6 +2075,8 @@
 		E703CCAA185C1D5800547738 /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
 		E703CCAB185C1D5800547738 /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lukeFuncs.h; sourceTree = "<group>"; };
 		E703CCAC185C1D5800547738 /* lukeMusicFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeMusicFuncs.cpp; sourceTree = "<group>"; };
+		E70AC3FD19059A96009C0B1D /* BalloonCredit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BalloonCredit.cpp; sourceTree = "<group>"; };
+		E70AC3FE19059A96009C0B1D /* BalloonCredit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalloonCredit.h; sourceTree = "<group>"; };
 		E70CDDC2186958B200955691 /* CloudsSecondaryDisplayOSCSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSecondaryDisplayOSCSender.cpp; sourceTree = "<group>"; };
 		E70CDDC3186958B200955691 /* CloudsSecondaryDisplayOSCSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSecondaryDisplayOSCSender.h; sourceTree = "<group>"; };
 		E70CDDCD18695CC800955691 /* CloudsVisualSystem2DVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem2DVideo.cpp; sourceTree = "<group>"; };
@@ -4230,6 +4235,8 @@
 		E7032B0B19003E5000AFD9BA /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				E70AC3FD19059A96009C0B1D /* BalloonCredit.cpp */,
+				E70AC3FE19059A96009C0B1D /* BalloonCredit.h */,
 				E7032B0C19003E5000AFD9BA /* CloudsVisualSystemBalloons.cpp */,
 				E7032B0D19003E5000AFD9BA /* CloudsVisualSystemBalloons.h */,
 			);
@@ -8615,6 +8622,7 @@
 				AE6F00891880716900677B60 /* ofxMPMFluid.cpp in Sources */,
 				AE6F008A1880716900677B60 /* ofxMPMNode.cpp in Sources */,
 				AE6F008B1880716900677B60 /* ofxMPMObstacle.cpp in Sources */,
+				E70AC40119059A96009C0B1D /* BalloonCredit.cpp in Sources */,
 				AE6F008C1880716900677B60 /* ofxMPMParticle.cpp in Sources */,
 				AE6F008D1880716900677B60 /* BleachBypassPass.cpp in Sources */,
 				AE6F008E1880716900677B60 /* BloomPass.cpp in Sources */,
@@ -9163,6 +9171,7 @@
 				E7D9FB13182B063600AD56C1 /* Wrappers.cpp in Sources */,
 				E7D9FB85182B064900AD56C1 /* ofxMPMFluid.cpp in Sources */,
 				E7D9FB86182B064900AD56C1 /* ofxMPMNode.cpp in Sources */,
+				E70AC3FF19059A96009C0B1D /* BalloonCredit.cpp in Sources */,
 				E7D9FB87182B064900AD56C1 /* ofxMPMObstacle.cpp in Sources */,
 				E7D9FB88182B064900AD56C1 /* ofxMPMParticle.cpp in Sources */,
 				E780CE681852C7B50096AE8D /* BleachBypassPass.cpp in Sources */,
@@ -9829,6 +9838,7 @@
 				E70CE2BC18695CCC00955691 /* CloudsVisualSystemNbody.cpp in Sources */,
 				E70CE2BE18695CCC00955691 /* CloudsVisualSystemNeurons.cpp in Sources */,
 				7DA2F70C190366AE00D91533 /* ofxCvHaarFinder.cpp in Sources */,
+				E70AC40019059A96009C0B1D /* BalloonCredit.cpp in Sources */,
 				E70CE2C018695CCC00955691 /* CloudsVisualSystemOcean.cpp in Sources */,
 				E70CE2C218695CCC00955691 /* CloudsVisualSystemAutomata.cpp in Sources */,
 				E70CE2C418695CCC00955691 /* Caster.cpp in Sources */,

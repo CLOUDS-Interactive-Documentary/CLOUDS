@@ -10,12 +10,15 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ofxFTGL.h"
 
 class BalloonCredit
 {
   public:
-	BalloonCredit(string _title, string _name, ofVec3f _pos);
+//	BalloonCredit();
+		
 	void setup();
+	ofCamera* camera;
 	
 	void getTextWidth();
 	ofVec3f getLeft();
@@ -26,4 +29,6 @@ class BalloonCredit
 	
 	ofVec3f pos;
 	float width;
+	
+	ofxFTGLFont* font;
 };
