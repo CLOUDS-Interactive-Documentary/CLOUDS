@@ -73,7 +73,20 @@ public:
     int occlusionVertexCount;
     int occlusionIndexCount;
     void drawOcclusionLayer();
-    
+
+	ofxUISuperCanvas* meshLayer;
+	ofShader meshShader;
+    ofVbo meshVbo;
+    bool bEnableMesh;
+	float meshAlpha;
+	float meshSimplifyX;
+	float meshSimplifyY;
+    bool refreshMesh;
+    void generateMesh();
+    int meshVertexCount;
+    int meshIndexCount;
+    void drawMeshLayer();
+
 	ofxUISuperCanvas* linesGui;
     ofShader linesShader;
 	ofVbo lines;
@@ -94,6 +107,7 @@ public:
 	float pointSize;
     bool refreshPoints;
     void generatePoints();
+	void drawPointLayer();
 
 	void setupGeneralUniforms(ofShader& shader);
     

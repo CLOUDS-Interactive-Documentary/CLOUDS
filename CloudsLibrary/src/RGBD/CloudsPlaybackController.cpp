@@ -273,6 +273,7 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showIntro(){
 	
+
 	resetInterludeVariables();
 	
 #ifdef OCULUS_RIFT
@@ -295,6 +296,7 @@ void CloudsPlaybackController::showIntro(){
 	showingVisualSystem = true;
 	showingIntro = true;
 	hud.setHomeEnabled(false);
+	hud.animateOff();
 }
 
 //--------------------------------------------------------------------

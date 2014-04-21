@@ -1950,6 +1950,14 @@
 		E7032B061900324B00AFD9BA /* VoxelMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoxelMesh.h; path = ../../../RGBD/BackgroundParticles/VoxelMesh.h; sourceTree = "<group>"; };
 		E70AC4041905A077009C0B1D /* BalloonCredit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BalloonCredit.cpp; sourceTree = "<group>"; };
 		E70AC4051905A077009C0B1D /* BalloonCredit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalloonCredit.h; sourceTree = "<group>"; };
+		E70AC40A1905B116009C0B1D /* rgbd_simple_lines.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_lines.frag; sourceTree = "<group>"; };
+		E70AC40B1905B116009C0B1D /* rgbd_simple_lines.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_lines.vert; sourceTree = "<group>"; };
+		E70AC40C1905B116009C0B1D /* rgbd_simple_mesh.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_mesh.frag; sourceTree = "<group>"; };
+		E70AC40D1905B116009C0B1D /* rgbd_simple_mesh.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_mesh.vert; sourceTree = "<group>"; };
+		E70AC40E1905B116009C0B1D /* rgbd_simple_occlude.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_occlude.frag; sourceTree = "<group>"; };
+		E70AC40F1905B116009C0B1D /* rgbd_simple_occlude.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_occlude.vert; sourceTree = "<group>"; };
+		E70AC4101905B116009C0B1D /* rgbd_simple_points.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_points.frag; sourceTree = "<group>"; };
+		E70AC4111905B116009C0B1D /* rgbd_simple_points.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_points.vert; sourceTree = "<group>"; };
 		E70CE3A51869648900955691 /* CloudsVisualSystem2DVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem2DVideo.cpp; sourceTree = "<group>"; };
 		E70CE3A61869648900955691 /* CloudsVisualSystem2DVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem2DVideo.h; sourceTree = "<group>"; };
 		E70CE3AC1869648900955691 /* CloudsOrthoCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsOrthoCamera.cpp; sourceTree = "<group>"; };
@@ -3859,10 +3867,26 @@
 			children = (
 				E70AC4041905A077009C0B1D /* BalloonCredit.cpp */,
 				E70AC4051905A077009C0B1D /* BalloonCredit.h */,
-				E7032AFE19002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp */,
 				E7032AFF19002E3800AFD9BA /* CloudsVisualSystemBalloons.h */,
+				E7032AFE19002E3800AFD9BA /* CloudsVisualSystemBalloons.cpp */,
 			);
 			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E70AC4091905B116009C0B1D /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E70AC40A1905B116009C0B1D /* rgbd_simple_lines.frag */,
+				E70AC40B1905B116009C0B1D /* rgbd_simple_lines.vert */,
+				E70AC40C1905B116009C0B1D /* rgbd_simple_mesh.frag */,
+				E70AC40D1905B116009C0B1D /* rgbd_simple_mesh.vert */,
+				E70AC40E1905B116009C0B1D /* rgbd_simple_occlude.frag */,
+				E70AC40F1905B116009C0B1D /* rgbd_simple_occlude.vert */,
+				E70AC4101905B116009C0B1D /* rgbd_simple_points.frag */,
+				E70AC4111905B116009C0B1D /* rgbd_simple_points.vert */,
+			);
+			name = shaders;
+			path = ../../../../CloudsData/visualsystems/RGBDVideo/shaders;
 			sourceTree = "<group>";
 		};
 		E70CE3A21869648900955691 /* VisualSystems */ = {
@@ -5029,6 +5053,7 @@
 		E70CE6E81869649000955691 /* RGBDVideo */ = {
 			isa = PBXGroup;
 			children = (
+				E70AC4091905B116009C0B1D /* shaders */,
 				E70CE6E91869649000955691 /* vs_src */,
 			);
 			path = RGBDVideo;

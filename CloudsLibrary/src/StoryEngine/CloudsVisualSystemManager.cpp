@@ -323,7 +323,7 @@ void CloudsVisualSystemManager::updatePresetsForSystem(CloudsVisualSystem* syste
 	vector<string> systemPresets = system->getPresets();
 	for(int p = 0; p < systemPresets.size(); p++){
 		if( !systemHasPreset( system->getSystemName(), systemPresets[p] ) ){
-			cout << "FOUND NEW PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
+//			cout << "FOUND NEW PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
 			CloudsVisualSystemPreset preset;
 			preset.presetName = systemPresets[ p ];
 			preset.systemName = system->getSystemName();
@@ -334,7 +334,7 @@ void CloudsVisualSystemManager::updatePresetsForSystem(CloudsVisualSystem* syste
 //			nameToPresets[preset.systemName].push_back( preset );
 		}
 		else{
-			cout << "FOUND EXISTING PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
+//			cout << "FOUND EXISTING PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
 			CloudsVisualSystemPreset& preset = getPresetForSystem( system->getSystemName(), systemPresets[p] );
             preset.loadTimeInfo();
 			preset.stillPresent = true;
@@ -417,7 +417,6 @@ void CloudsVisualSystemManager::deletePreset(int i){
 		return;
 	}
   
-
 	preset.eraseFiles();
     presets.erase( presets.begin() + i );
     
