@@ -117,8 +117,8 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 	if( bExploreMode && !GetCloudsInputPressed() && viewport.inside( GetCloudsInputX(), GetCloudsInputY() ) )
 	{
 		//convert mouse coords in to somethin we can work with
-		float mx = ofMap( GetCloudsInputX(), viewport.getLeft()+1, viewport.getRight()-1, 1., -1., true );
-		float my = ofMap( GetCloudsInputY(), viewport.getTop()+1, viewport.getBottom()-1, 1., -1., true );
+		float mx = ofMap( GetCloudsInputX(), viewport.getLeft(), viewport.getRight(), 1., -1., true );
+		float my = ofMap( GetCloudsInputY(), viewport.getTop(), viewport.getBottom(), 1., -1., true );
 		float dist = ofVec2f(mx, my).length();
 		
 		if(dist > deadZone)
@@ -155,12 +155,10 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 		float mx = -1;
 
 		if(viewport.getLeft() != viewport.getRight()){
-			float inputx = ofClamp(GetCloudsInputX(), viewport.getLeft()+1, viewport.getRight()-1);
-			mx = ofMap( inputx, viewport.getLeft(), viewport.getRight(), -1., 1., true );
+			mx = ofMap( GetCloudsInputX(), viewport.getLeft(), viewport.getRight(), -1., 1., true );
 		}
 		float my = -1;
 		if(viewport.getTop() != viewport.getBottom()){
-			float inputY = ofClamp(GetCloudsInputY(), viewport.getTop()+1, viewport.getBottom()-1);
 			my = ofMap( GetCloudsInputY(), viewport.getTop(), viewport.getBottom(), -1., 1., true );
 		}
 		
@@ -184,7 +182,7 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 		float oneMinusAtt = 1. - orbitVelAttenuation;
 		
 		//mouse input
-		if(dist > deadZone && viewport.inside( GetCloudsInputX(), GetCloudsInputY() ) )
+		if(dist > deadZone)// && viewport.inside( GetCloudsInputX(), GetCloudsInputY() ) )
 		{
 			//the deadzone is an area in the center of the screen where we don't rotate
 			float weight = ofMap( dist - deadZone, deadZone, 1, 0, 1, true );
