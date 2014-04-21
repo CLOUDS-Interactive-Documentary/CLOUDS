@@ -121,7 +121,8 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 	
 #ifdef KINECT_INPUT
     // EZ: No lower third in Kinect version
-    return;
+	// JG: adding it back
+//    return;
 #endif
     
 	//LOWER THIRD
