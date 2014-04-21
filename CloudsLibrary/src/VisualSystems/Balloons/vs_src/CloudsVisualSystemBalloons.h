@@ -211,6 +211,14 @@ protected:
 	float textSpeed, textRadius, creditLightDist;
 	vector<BalloonCredit> credits;
 	
+	//font options
+	ofxFTGLFont font;
+	int currentFontSize;
+	int fontSize;
+	float fontScale;
+	float justificationWidth;
+	
+	
 	int shininess;
 	float lightScale, facingRatioScale, creditLightScale;
 };
