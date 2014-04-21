@@ -654,7 +654,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	shader.setUniform1f("creditLightScale", creditLightScale);
 	
 	if(creditPositions.size())	shader.setUniform4fv("lights", &creditPositions[0][0], creditPositions.size());
-	shader.setUniform1f("numLights", creditPositions.size());
+	shader.setUniform1f("numLights", fmin(creditPositions.size(), 4));
 	
 	//vbo instancing
 	vbo.bind();
