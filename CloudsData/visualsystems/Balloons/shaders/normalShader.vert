@@ -177,8 +177,7 @@ void main()
 		fr = dot(normalize(delta), vNorm) * .5 + .5;
 //		fr = max(0., dot(normalize(delta), vNorm));
 		
-//		creditLight *= 1.1;
-		creditLight += a * a * a * pow(fr, shininess * .1);
+		creditLight += a * a * a * pow(fr, max(1., shininess * .1));
 	}
 	
 	ecPosition = gl_ModelViewMatrix * v;

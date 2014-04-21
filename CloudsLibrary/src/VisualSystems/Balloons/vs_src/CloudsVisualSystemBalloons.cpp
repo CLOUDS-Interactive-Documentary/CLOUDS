@@ -52,6 +52,7 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	textGui->addSpacer();
 	textGui->addIntSlider("shininess", 2, 128, &shininess);
 	textGui->addSlider("lightScale", 0, 1, &lightScale);
+	textGui->addSlider("creditLightScale", 0, 1, &creditLightScale);
 	textGui->addSlider("facingRatioScale", 0, 1, &facingRatioScale);
 	
 	ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemBalloons::selfGuiEvent);
@@ -299,6 +300,7 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	
 	shininess = 10;
 	lightScale = .75;
+	creditLightScale = .75;
 	facingRatioScale = .4;
 }
 
@@ -636,10 +638,10 @@ void CloudsVisualSystemBalloons::selfDraw()
 	shader.setUniformTexture("quatTexture", quatFbo.getTextureReference(), 3);
 	
 	shader.setUniform1f("creditThresh", creditLightDist);
+	shader.setUniform1f("creditLightScale", creditLightScale);
 	
 	if(creditPositions.size())	shader.setUniform4fv("lights", &creditPositions[0][0], creditPositions.size());
 	shader.setUniform1f("numLights", creditPositions.size());
-	
 	
 	//vbo instancing
 	vbo.bind();

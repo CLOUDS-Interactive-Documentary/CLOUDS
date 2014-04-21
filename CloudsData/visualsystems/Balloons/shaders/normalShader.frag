@@ -29,6 +29,7 @@ varying vec4 wordLightPos0;
 varying float wordLightAtten0;
 
 varying float creditLight;
+uniform float creditLightScale;
 
 void PointLight(in vec3 lightPosition,
                 in vec3 eye,
@@ -86,7 +87,7 @@ void main(void)
 	
 	PointLight( lPos.xyz, ePos, ecPosition.xyz, normal, diffuse, specular, lCol, 0., 0., shininess);
 	
-	diffuse += creditLight;
+	diffuse += creditLight * creditLightScale;
 
 	vec4 fogColor = mix( bg1, bg0, pow(gl_FragCoord.y/screenHeight, bgExpo) );
 
