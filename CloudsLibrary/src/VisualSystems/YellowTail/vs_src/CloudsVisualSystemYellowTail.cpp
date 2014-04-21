@@ -107,7 +107,7 @@ void CloudsVisualSystemYellowTail::selfDrawBackground(){
 	ofPopStyle();
 
 #ifdef KINECT_INPUT
-	((CloudsInputKinectOSC *)GetCloudsInput().get())->draw(0, 0, ofGetWidth(), ofGetHeight(), ofMap(ofGetMouseX(), 0, ofGetWidth(), 0, 255, true));
+//	((CloudsInputKinectOSC *)GetCloudsInput().get())->draw(0, 0, ofGetWidth(), ofGetHeight(), ofMap(ofGetMouseX(), 0, ofGetWidth(), 0, 255, true));
 #endif
 }
 

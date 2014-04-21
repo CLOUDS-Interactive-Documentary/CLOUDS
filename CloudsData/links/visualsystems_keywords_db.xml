@@ -15903,7 +15903,7 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="MazeGenerator_FlyOver2_">
+<system name="MazeGenerator_FlyOver2">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -34786,7 +34786,7 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Xstatic_FastPhysics2">
+<system name="Xstatic_FastPhysics2_">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -34814,6 +34814,26 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Xstatic_FastPhysics2_TumblingBoxOC">
+    <keywords>universe|cosmogeny</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>LIA - Circle1</clip>
+        <clip>Ramsey - minecraft 1</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
