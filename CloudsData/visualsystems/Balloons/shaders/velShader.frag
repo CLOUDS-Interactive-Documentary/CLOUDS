@@ -11,6 +11,8 @@ uniform float speedLow;
 uniform float speedHi;
 uniform float highSpeedPercent;
 
+uniform float cameraBounceRadius;
+
 uniform float textRadius;
 
 uniform int numCredits;
@@ -133,7 +135,7 @@ void main()
 	}
 	
 	//repel from camera
-	bounce(acc, pos, camPos, collisionCount, radius * 2.5);
+	bounce(acc, pos, camPos, collisionCount, radius * cameraBounceRadius);
 	
 	//bounce off credits
 	vec3 p0, p1;
