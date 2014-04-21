@@ -135,13 +135,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float selectedQuestionTime;
 	ofVec3f selectQuestionStartPos;
 	ofQuaternion selectQuestionStartRot;
-	
-	//sound effects
-	ofSoundPlayer click;
-	ofSoundPlayer selectHigh;
-	ofSoundPlayer selectMid;
-	ofSoundPlayer selectLow;
-	
+		
 	vector<bool> questionChannels; //0-3 for the four qeustion slots
 	vector<float> channelPauseTime;
 	

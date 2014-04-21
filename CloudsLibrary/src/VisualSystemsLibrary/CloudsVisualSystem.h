@@ -73,6 +73,12 @@ class CloudsVisualSystem {
 	static void getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height);
     static void get2dMesh(ofMesh& mesh, float width, float height);
 	
+	//sound effects
+	static ofSoundPlayer* getClick();
+	static ofSoundPlayer* getSelectHigh();
+	static ofSoundPlayer* getSelectMid();
+	static ofSoundPlayer* getSelectLow();
+
 #ifdef OCULUS_RIFT
 	static ofxOculusRift& getOculusRift();
 #endif
