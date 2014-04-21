@@ -39,6 +39,7 @@ void BalloonCredit::draw()
 	ofTranslate( pos );
 	// Perform the rotation.
 	ofRotate(angle, axis.x, axis.y, axis.z);
+	ofRotate(180, 0, 0, 1);
 		
 	//draw text at the position
 	float titleWidth  = font->stringWidth(title);

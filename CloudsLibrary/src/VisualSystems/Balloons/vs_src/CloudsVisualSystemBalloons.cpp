@@ -500,7 +500,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 	}
 	
 	//TEST
-	for(int i = 0; i < 100; i++){
+	for(int i = 0; i < 3; i++){
 		credits.push_back( credits[0] );
 	}
 }
