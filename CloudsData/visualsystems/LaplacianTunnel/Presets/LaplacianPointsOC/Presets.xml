@@ -2,12 +2,37 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>228.000000000</XPosition>
-    <YPosition>462.000000000</YPosition>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>Black_5Reps</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LaplacianBlack</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LaplacianGray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LaplacianPointsOC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>LaplacianTunnel</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LaplacianWhite</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -17,11 +42,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>LaplacianWhiteOc</Name>
+    <Name>White_4Reps</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>LaplacianPointsOC</Name>
-    <Value>1</Value>
+    <Name>White_5Reps_Slow</Name>
+    <Value>0</Value>
 </Widget>

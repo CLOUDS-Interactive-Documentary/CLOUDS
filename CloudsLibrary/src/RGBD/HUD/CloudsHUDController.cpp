@@ -155,8 +155,8 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 #endif
 }
 
-void CloudsHUDController::questionHoverOn(string question){
-	populateQuestion(question,true);
+void CloudsHUDController::questionHoverOn(string question, bool animate){
+	populateQuestion(question,true, animate);
 }
 
 void CloudsHUDController::questionHoverOff(){
@@ -182,7 +182,7 @@ void CloudsHUDController::populateMap( string leftBox, string rightBox, bool for
     }
 }
 
-void CloudsHUDController::populateQuestion( string question, bool forceOn ){
+void CloudsHUDController::populateQuestion( string question, bool forceOn, bool animate){
 //    cout << "setting text with current value " << question << " " << hudLabelMap["QuestionTextBox"]->getText() << endl;
     // EZ: Commented this out because populateQuestion should only be called when hover starts
     // Otherwise it wouldn't work if hovering over the same question twice.
@@ -205,7 +205,12 @@ void CloudsHUDController::populateQuestion( string question, bool forceOn ){
 		hudLabelMap["QuestionTextBox"]->setText( question, forceOn );
 		
 		if( forceOn ){
-			animateOn( CLOUDS_HUD_QUESTION );
+			if(animate){
+				animateOn( CLOUDS_HUD_QUESTION );
+			}
+			else{
+				hudLabelMap["QuestionTextBox"]->instantIn();
+			}
 		}
 	}
 }

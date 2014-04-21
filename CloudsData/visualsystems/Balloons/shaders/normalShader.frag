@@ -4,8 +4,7 @@
 uniform float shininess = 3.;
 uniform float dim;
 uniform float facingRatio = .4;
-
-uniform sampler2DRect sphericalMap;
+uniform float lightScale;
 
 uniform float screenHeight;
 uniform vec4 bg0;
@@ -29,10 +28,8 @@ varying float wordLightAtten;
 varying vec4 wordLightPos0;
 varying float wordLightAtten0;
 
-
 varying float creditLight;
-
-uniform vec2 sphericalMapDim;
+uniform float creditLightScale;
 
 void PointLight(in vec3 lightPosition,
                 in vec3 eye,
@@ -61,9 +58,23 @@ void PointLight(in vec3 lightPosition,
     // Compute attenuation.  default is 1, 0, 0 which is no attenutation
     attenuation = 1.0 / (1.	+ linearAtten * d + quadAtten * d * d);
 	
-    nDotVP = pow( dot( normal, VP)*.5 + .5, shine);
-	//nDotVP = pow( max(0., dot( normal, VP) ), shine);
-    diffuse += 1.1 * lightColor * nDotVP * attenuation;
+    halfVector = normalize(VP + eye);
+	
+	nDotVP = dot( normal, VP);
+	
+	vec4 colorScl = nDotVP > 0.? vec4(1.) : color * .3;
+	colorScl *= lightScale;
+	
+	nDotVP = abs(nDotVP);
+    nDotHV = abs( dot( normal, halfVector) );
+	
+    if (nDotVP == 0.0)
+        pf = 0.0;
+    else
+        pf = pow(nDotHV, shininess);
+	
+    diffuse += colorScl * lightColor * nDotVP * attenuation;
+    diffuse += colorScl * lightColor * pf * attenuation;
 }
 
 void main(void)
@@ -71,18 +82,16 @@ void main(void)
 	vec3 normal = normalize(norm);
 	float fr = abs(dot(ePos, normal));
 	
-	vec4 diffuse = color * mix(1., fr, facingRatio);
+	vec4 diffuse = color * mix(1.1, fr, facingRatio);
 	vec4 specular = vec4(1.);
 	
 	PointLight( lPos.xyz, ePos, ecPosition.xyz, normal, diffuse, specular, lCol, 0., 0., shininess);
 	
-	diffuse += creditLight;
+	diffuse += creditLight * creditLightScale;
 
 	vec4 fogColor = mix( bg1, bg0, pow(gl_FragCoord.y/screenHeight, bgExpo) );
-	
-//	diffuse += texture2DRect( sphericalMap, vN ) * .25;
-	
+
 	gl_FragColor = mix( fogColor, diffuse, clamp(fogMix,0.,1.));
-	gl_FragColor.w = 1. - fr * .05;
+	gl_FragColor.w = 1. - pow(fr,10.) * .1;
 }
 

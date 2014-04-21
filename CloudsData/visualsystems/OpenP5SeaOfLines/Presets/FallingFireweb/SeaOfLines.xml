@@ -1,20 +1,25 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>SeaOfLines</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>BG ALPHA</Name>
-    <Value>0.905817449</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>DISTANCES</Name>
-    <HighValue>43.428573608</HighValue>
-    <LowValue>8.315273285</LowValue>
+    <HighValue>80.004913330</HighValue>
+    <LowValue>45.866996765</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BASE DISTANCE</Name>
+    <Value>46.866996765</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -24,8 +29,13 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>CURSOR RANGE</Name>
+    <Value>0.339901477</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>GRAVITY</Name>
-    <Value>-0.267010212</Value>
+    <Value>-1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

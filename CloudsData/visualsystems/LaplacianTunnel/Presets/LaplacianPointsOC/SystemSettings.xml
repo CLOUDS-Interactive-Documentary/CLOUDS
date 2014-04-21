@@ -2,11 +2,11 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>244.000000000</XPosition>
-    <YPosition>414.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>482.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>DEBUG</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>

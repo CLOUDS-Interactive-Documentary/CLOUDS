@@ -1130,10 +1130,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 					caughtPortal = portals[i];
                     /////NEW QUESTION WAY
 					if (caughtPortal->startHovering()) {
-						//REMOVED!
-						//JG SWITCH QUESTION TEST
-  //                      CloudsPortalEventArgs args(getQuestionText());
-//                        ofNotifyEvent(events.portalHoverBegan, args);
+						CloudsVisualSystem::getClick()->setPosition(0);
+						CloudsVisualSystem::getClick()->play();
                     }
 				}
 			}
@@ -1145,7 +1143,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 				selectedPortal = caughtPortal;
 				CloudsPortalEventArgs args(getQuestionText());
 				ofNotifyEvent(events.portalHoverBegan, args);
-				
+				CloudsVisualSystem::getSelectLow()->setPosition(0);
+				CloudsVisualSystem::getSelectLow()->play();
 			}
 			//let it go
 			else if(distanceToQuestion > portalTugDistance.max){
@@ -1177,39 +1176,6 @@ void CloudsVisualSystemRGBD::updateQuestions(){
         stickyCursor.interpolate(cursor, 0.5f);
     }
 }
-
-//void CloudsVisualSystemRGBD::updateResetPortal(){
-//#ifdef OCULUS_RIFT
-//	resetHoverPosition.x = 0;
-//	resetPortal.hoverPosition  = resetHoverPosition + cloudsCamera.getPosition();
-//	resetPortal.scale = portalScale;
-//	resetPortal.lookTarget = cloudsCamera.getPosition();
-//	
-//	ofVec3f screenPos = getOculusRift().worldToScreen(resetPortal.hoverPosition, true);
-//	ofRectangle viewport = getOculusRift().getOculusViewport();
-//	float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
-//									  viewport.getCenter().x, viewport.getCenter().y);
-//	
-//	resetPortal.update();
-//	
-//	if(resetPortal.hovering){
-//		if(distanceToQuestion > portalTugDistance.max){
-//			resetPortal.stopHovering();
-//		}
-//		else if(resetPortal.isSelected()){
-//			
-//			resetPortal.stopHovering();
-////			CloudsPortalEventArgs args(resetPortal, "RESET");
-//			CloudsPortalEventArgs args("RESET");
-//			ofNotifyEvent(events.portalHoverEnded, args);
-//
-//		}
-//	}
-//	else if(distanceToQuestion < portalTugDistance.min){
-//		resetPortal.startHovering();
-//	}
-//#endif
-//}
 
 void CloudsVisualSystemRGBD::clearQuestions(){
 	rightPortal.question = "";
