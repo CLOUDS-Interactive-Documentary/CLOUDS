@@ -18,6 +18,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
     
     customGui->addSpacer();
     customGui->addRangeSlider("DISTANCES", 1.0f, 100.0f, &collideDist, &lineDist);
+    customGui->addSlider("BASE DISTANCE", 1.0f, 100.0f, &baseDist);
     customGui->addRangeSlider("TRAVEL SPEED", 1.0f, 10.0f, &minSpeed, &maxSpeed);
     customGui->addSlider("CURSOR RANGE", 0.0f, 1.0f, &cursorRange);
     customGui->addSlider("GRAVITY", -1.0f, 1.0f, &gravity);
@@ -44,6 +45,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetDefaults()
 {
     collideDist = 1.0f;
     lineDist = 30.0f;
+    baseDist = 2.0f;
     minSpeed = 4.0f;
     maxSpeed = 6.0f;
     cursorRange = 1.0f;
@@ -56,7 +58,9 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetDefaults()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfGuiEvent(ofxUIEventArgs &e)
 {
-
+    if (e.getName() == "DISTANCES") {
+        baseDist = MAX(baseDist, collideDist + 1.0f);
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -140,7 +144,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
     lineColor1.setHsb(lineParams1[0], lineParams1[1], lineParams1[2], lineParams1[3]);
     lineColor2.setHsb(lineParams2[0], lineParams2[1], lineParams2[2], lineParams2[3]);
 
-    // First pass: Update player position.
+    // First pass: Update player position and bounce off walls.
     for (int i = 0; i < players.size(); i++) {
         players[i].x += players[i].sx;
         players[i].y += players[i].sy;
@@ -151,17 +155,19 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
         if (players[i].x < 0) {
             players[i].x = 0;
             players[i].sx *= -1;
+//            players[i].sx = ABS(players[i].sx);
+//            players[i].x += getCanvasWidth();
         }
-        //MA: changed ofGetWidth() to getCanvasWidth()
         else if (players[i].x > getCanvasWidth()) {
             players[i].x = getCanvasWidth();
             players[i].sx *= -1;
+//            players[i].sx = ABS(players[i].sx) * -1;
+//            players[i].x -= getCanvasWidth();
         }
         if (players[i].y < 0) {
             players[i].y = 0;
             players[i].sy *= -1;
         }
-        //MA: changed ofGetHeight() to getCanvasHeight()
         else if (players[i].y > getCanvasHeight()) {
             players[i].y = getCanvasHeight();
             players[i].sy *= -1;
@@ -170,12 +176,20 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
         mesh.addVertex(ofVec3f(players[i].x, players[i].y));
         mesh.addColor((i%2 == 0)? lineColor1:lineColor2);
     }
-    
+
     // Second pass: Handle collisions and proximity.
-    float cursorRadius = getCanvasWidth() * cursorRange;
+    float cursorMaxRadius = getCanvasWidth() * cursorRange;
+    float cursorDist, mappedLineDist;
     for (int i = 0; i < players.size(); i++) {
         SOLPlayer& one = players[i];
-        float cursorDist = ofDist(one.x, one.y, cursor.x, cursor.y);
+        cursorDist = ofDist(one.x, one.y, cursor.x, cursor.y);
+        if (cursorMaxRadius == 0) {
+            mappedLineDist = lineDist;
+        }
+        else {
+            mappedLineDist = ofMap(cursorDist, 0, cursorMaxRadius, lineDist, collideDist);
+        }
+
         for (int j = i + 1; j < players.size(); j++) {
             SOLPlayer& two = players[j];
             float dist = ofDist(one.x, one.y, two.x, two.y);
@@ -186,7 +200,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
                 one.sx = cosf(ang) * one.speed;
                 one.sy = sinf(ang) * one.speed;
             }
-            else if (dist < lineDist && cursorDist < cursorRadius) {
+            else if (dist < mappedLineDist || dist < baseDist) {
                 mesh.addIndex(i);
                 mesh.addIndex(j);
             }

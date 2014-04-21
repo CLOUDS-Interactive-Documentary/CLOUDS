@@ -22,18 +22,6 @@ string CloudsIntroSequence::getSystemName(){
 }
 
 CloudsIntroSequence::CloudsIntroSequence(){
-	click.loadSound(GetCloudsDataPath() + "sound/interface/click.aif");
-	selectLow.loadSound(GetCloudsDataPath() + "sound/interface/select_low.aif");
-	selectMid.loadSound(GetCloudsDataPath() + "sound/interface/select_mid.aif");
-	selectHigh.loadSound(GetCloudsDataPath() + "sound/interface/select_high.wav");
-	click.setLoop(false);
-	selectLow.setLoop(false);
-	selectMid.setLoop(false);
-	selectHigh.setLoop(false);
-	click.setVolume(.4);
-	selectLow.setVolume(.4);
-	selectMid.setVolume(.4);
-	selectHigh.setVolume(.4);
 
 }
 
@@ -55,11 +43,10 @@ void CloudsIntroSequence::selfSetDefaults(){
 	kinectHelperAlpha = 0.0;
 	nodeAlphaAttenuate = 1.0;
 	
-	introNodeOne.clickSound = introNodeTwo.clickSound = introNodeThree.clickSound = &click;
 	introNodeOne.introNode = introNodeTwo.introNode = introNodeThree.introNode = true;
-	
-	introNodeOne.selectSound = introNodeTwo.selectSound = &selectHigh;
-	introNodeThree.selectSound = &selectMid;
+	introNodeOne.clickSound = introNodeTwo.clickSound = introNodeThree.clickSound = getClick();
+	introNodeOne.selectSound = introNodeTwo.selectSound = getSelectHigh();
+	introNodeThree.selectSound = getSelectMid();
 	
 	introNodeOne.multiplier   =  1;
 	introNodeTwo.multiplier   = -1;
@@ -493,8 +480,8 @@ void CloudsIntroSequence::updateQuestions(){
 					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &curQuestion;
 						if (caughtQuestion->startHovering()) {
-							click.setPosition(0);
-							click.play();
+							getClick()->setPosition(0);
+							getClick()->play();
 //                            CloudsPortalEventArgs args(getQuestionText());
 //                            ofNotifyEvent(events.portalHoverBegan, args);
                         }
@@ -506,8 +493,8 @@ void CloudsIntroSequence::updateQuestions(){
 			else if(caughtQuestion == &curQuestion){
 //				curQuestion.hoverPosition.z += cameraForwardSpeed;
 				if( caughtQuestion->isSelected() && !bQuestionDebug && selectedQuestion == NULL){
-					selectLow.setPosition(0);
-					selectLow.play();
+					getSelectLow()->setPosition(0);
+					getSelectLow()->play();
 //					caughtQuestion = NULL;
 					selectedQuestion = caughtQuestion;
 					selectedQuestionTime = ofGetElapsedTimef();

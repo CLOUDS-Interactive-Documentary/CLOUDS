@@ -204,7 +204,6 @@ void CloudsPlaybackController::threadedFunction(){
 	oscSender.setup();
 #endif
 	
-//	clusterMap->setRun(run);
 	clusterMap->buildEntireCluster(parser);
 	
 	populateRGBDPresets();
@@ -863,6 +862,8 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 			interludeHoveringContinue = true;
 			interludeBarHoverStartTime = ofGetElapsedTimef();
 			//TODO PLAY SOUND
+			CloudsVisualSystem::getClick()->setPosition(0);
+			CloudsVisualSystem::getClick()->play();
 		}
 	}
 	else{
@@ -873,7 +874,8 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		if(!interludeHoveringReset){
 			interludeHoveringReset = true;
 			interludeBarHoverStartTime = ofGetElapsedTimef();
-			//TODO PLAY SOUND
+			CloudsVisualSystem::getClick()->setPosition(0);
+			CloudsVisualSystem::getClick()->play();
 		}
 	}
 	else{
@@ -886,12 +888,12 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 												 0.0, 1.0, true);
 //		cout << " interludeBarHoverPercentComplete " << interludeBarHoverPercentComplete << endl;
 		if(interludeBarHoverPercentComplete == 1.0){
-			//TODO PLAY SOUND
 			
 			///one of these will be true
 			interludeContinueSelected = interludeHoveringContinue;
 			interludeResetSelected = interludeHoveringReset;
-			//return false; //hack
+			CloudsVisualSystem::getSelectMid()->setPosition(0);
+			CloudsVisualSystem::getSelectMid()->play();
 			return true;
 		}
 	}

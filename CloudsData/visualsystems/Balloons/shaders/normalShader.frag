@@ -62,7 +62,7 @@ void PointLight(in vec3 lightPosition,
     attenuation = 1.0 / (1.	+ linearAtten * d + quadAtten * d * d);
 	
     nDotVP = pow( dot( normal, VP)*.5 + .5, shine);
-//    nDotVP = pow( max(0., dot( normal, VP) ), shine);
+	//nDotVP = pow( max(0., dot( normal, VP) ), shine);
     diffuse += 1.1 * lightColor * nDotVP * attenuation;
 }
 
