@@ -519,7 +519,14 @@ void CloudsVisualSystemMemory::selfKeyReleased(ofKeyEventArgs & args)
 
 void CloudsVisualSystemMemory::selfMouseDragged(ofMouseEventArgs& data)
 {
-
+	for(int i = 0; i < blocks.size(); i++){
+		ofRectangle r(blocks[i]);
+		r.scaleFromCenter(5.0);
+        if(r.inside( data.x, data.y )){
+			blocks[i].bActivated = true;
+            //			break;
+		}
+    }
 }
 
 void CloudsVisualSystemMemory::selfMouseMoved(ofMouseEventArgs &args)
