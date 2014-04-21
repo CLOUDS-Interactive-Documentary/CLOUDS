@@ -301,7 +301,7 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	shininess = 10;
 	lightScale = .75;
 	creditLightScale = .75;
-	facingRatioScale = .4;
+	facingRatioScale = .5;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -482,28 +482,10 @@ void CloudsVisualSystemBalloons::selfUpdate()
 {
 	p0->getTextureReference().readToPixels(pospix);
 	ofFloatColor poscol = pospix.getColor(0,0);
-	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
+//	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
+	balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .5);
 	
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
-	
-//	getCameraRef().setPosition(balloon00Pos.x, 0, cameraTargetDist + balloon00Pos.z);
-//	getCameraRef().setPosition(0, 0, cameraTargetDist);
-	//getCameraRef().lookAt(ofVec3f(balloon00Pos));
-	
-	//words dropping down
-//	line0.y = line1.y = ofMap(fmod(ofGetElapsedTimef() * 40, dim), 0, dim, dim, -dim, true);
-	
-	line0.y += textSpeed;
-	
-	if(line0.y > dim)
-	{
-		line0.y = -dim;
-	}else if(line0.y <-dim)
-	{
-		line0.y = dim;
-	}
-	
-	line1.y = line0.y;
 	
 	for(auto& c: credits)
 	{
@@ -627,8 +609,8 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	shader.setUniform1f("dim", dim );
 	shader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
-	shader.setUniform1f("facingRatio", facingRatioScale);//TODO: <-- slider
-	shader.setUniform1f("fogDist", 400);//TODO: <-- slider
+	shader.setUniform1f("facingRatio", facingRatioScale);
+	shader.setUniform1f("fogDist", 400);// I don't think we're using this...
 	shader.setUniform1f("dimX", dimX);
 	shader.setUniform1f("dimY", dimY);
 	shader.setUniform3f("l0", l0.x, l0.y, l0.z);
@@ -703,14 +685,7 @@ void CloudsVisualSystemBalloons::selfKeyPressed(ofKeyEventArgs & args)
 }
 void CloudsVisualSystemBalloons::selfKeyReleased(ofKeyEventArgs & args)
 {
-	if(args.key == ' ')
-	{
-		getCameraRef().setPosition(0, 0, -dim * 1.5);
-		getCameraRef().lookAt(ofVec3f(0,0,0));
-		setBalloonPositions();
-	}
-	
-	else if(args.key == 'l')
+	if(args.key == 'l')
 	{
 		shader.load(getVisualSystemDataPath() + "shaders/normalShader");
 		posShader.load(getVisualSystemDataPath() + "shaders/posShader");

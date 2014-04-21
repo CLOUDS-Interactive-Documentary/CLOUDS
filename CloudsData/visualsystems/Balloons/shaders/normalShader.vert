@@ -160,7 +160,7 @@ void main()
 	//	fogMix *= clamp(1. - pow(distance(camPos, v.xyz) / fogDist, 3.), 0., 1.);
 	
 	
-	lPos = vec4(0.,dim*.75,0.,1.); // texture2DRect( posTexture, vec2(10.) );//vec4(0.,0.,0.,1.);//
+	lPos = vec4(0.,dim*.8,0.,1.); // texture2DRect( posTexture, vec2(10.) );//vec4(0.,0.,0.,1.);//
 	lCol = vec4(1.) - pow(abs(lPos.y) / dim, 4.);
 	lPos = gl_ModelViewMatrix * lPos;
 	
@@ -174,8 +174,8 @@ void main()
 		
 		//attenuation and facing ratio
 		a = max(0., 1. - dot(delta,delta) / thresholdSquared );
-		fr = dot(normalize(delta), vNorm) * .5 + .5;
-//		fr = max(0., dot(normalize(delta), vNorm));
+//		fr = dot(normalize(delta), vNorm) * .5 + .5;
+		fr = max(0., dot(normalize(delta), vNorm));
 		
 		creditLight += a * a * a * pow(fr, max(1., shininess * .1));
 	}

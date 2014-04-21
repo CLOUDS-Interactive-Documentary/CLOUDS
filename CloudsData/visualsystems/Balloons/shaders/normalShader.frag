@@ -92,6 +92,6 @@ void main(void)
 	vec4 fogColor = mix( bg1, bg0, pow(gl_FragCoord.y/screenHeight, bgExpo) );
 
 	gl_FragColor = mix( fogColor, diffuse, clamp(fogMix,0.,1.));
-	gl_FragColor.w = 1. - fr * fr * fr * .1;
+	gl_FragColor.w = 1. - pow(fr,10.) * .1;
 }
 
