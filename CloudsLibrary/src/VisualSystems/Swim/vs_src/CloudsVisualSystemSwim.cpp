@@ -17,7 +17,7 @@ CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camSpeed(-600.f), regenerate(
 }
 
 // selfSetup is called when the visual system is first instantiated
-// This will be called during a "loading" screen, so any big images or
+// This will be called during a "loading" screen, so any big ffs or
 // geometry should be loaded here
 void CloudsVisualSystemSwim::selfSetup()
 {
