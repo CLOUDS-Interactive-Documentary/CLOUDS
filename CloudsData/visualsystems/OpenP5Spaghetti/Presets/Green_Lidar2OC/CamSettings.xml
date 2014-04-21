@@ -8,27 +8,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DIST</Name>
-    <Value>200.000000000</Value>
+    <Value>152.709045410</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOV</Name>
-    <Value>5.320197105</Value>
+    <Value>5.320142746</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-X</Name>
-    <Value>56.748767853</Value>
+    <Value>56.748661041</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>26.600984573</Value>
+    <Value>26.600877762</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Z</Name>
-    <Value>0.000000000</Value>
+    <Value>26.600877762</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -43,22 +43,22 @@
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>-5.763603210</Value>
+    <Value>-14.630599976</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>6.650192261</Value>
+    <Value>11.083694458</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minY</Name>
-    <Value>-8.423698425</Value>
+    <Value>-7.537002563</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxY</Name>
-    <Value>2.216697693</Value>
+    <Value>5.763488770</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

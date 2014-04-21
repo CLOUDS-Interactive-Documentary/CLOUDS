@@ -47,13 +47,13 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BlueScribblesOC</Name>
-    <Value>0</Value>
+    <Name>BlueScribbles</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BlueSmoothScribblesOC</Name>
-    <Value>0</Value>
+    <Name>BlueSmoothScribbles</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -157,11 +157,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>PurpleYellow_wormsOC</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Rainbow_worms</Name>
     <Value>0</Value>
 </Widget>
@@ -197,7 +192,7 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>scribblesOC</Name>
+    <Name>scribbles_Oc</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -219,9 +214,4 @@
     <Kind>2</Kind>
     <Name>VioletBlue_worms</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BlueScribbles</Name>
-    <Value>1</Value>
 </Widget>

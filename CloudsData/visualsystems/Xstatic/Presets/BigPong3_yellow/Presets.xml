@@ -67,7 +67,37 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>FallingSnow</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FallingSnow2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FastPhysics2_</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FastPhysics2_TumblingBox</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FastPhysics_TumblingBox</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>fireflies</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FrozenBalls_TumblingBox</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

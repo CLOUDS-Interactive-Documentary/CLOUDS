@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>text</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>47.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>231.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,12 +18,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>T HUE</Name>
-    <Value>128.000000000</Value>
+    <Value>0.439790577</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T SAT</Name>
-    <Value>128.000000000</Value>
+    <Value>0.507853091</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>T ALPHA</Name>
-    <Value>1.000000000</Value>
+    <Value>0.916256130</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -58,10 +58,10 @@
 <Widget>
     <Kind>25</Kind>
     <Name>STRING WIDTH</Name>
-    <Value>936.492614746</Value>
+    <Value>1172.827636719</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SET SIZE</Name>
-    <Value>59.455596924</Value>
+    <Value>81.791625977</Value>
 </Widget>
