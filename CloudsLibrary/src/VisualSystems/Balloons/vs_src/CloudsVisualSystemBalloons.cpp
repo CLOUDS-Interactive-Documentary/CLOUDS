@@ -295,7 +295,7 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	line0.set(-30, 0,0);
 	line1.set(30, 0,0);
 	
-	textSpeed = -1;
+	textSpeed = -.4;
 	textRadius = 3.;
 	
 	shininess = 10;
@@ -482,8 +482,9 @@ void CloudsVisualSystemBalloons::selfUpdate()
 {
 	p0->getTextureReference().readToPixels(pospix);
 	ofFloatColor poscol = pospix.getColor(0,0);
-//	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
-	balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .5);
+	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
+	
+//	balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .1);
 	
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
 	
@@ -631,12 +632,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	vbo.unbind();
 	
 	shader.end();
-	
-//	glLineWidth(2);
-//	ofSetColor(0, 255, 0);
-//	ofNoFill();
-//	ofBox(balloon00Pos, 30);
-	
+
 	//draw the credits
 	for(auto& c: credits)
 	{

@@ -82,7 +82,7 @@ void main(void)
 	vec3 normal = normalize(norm);
 	float fr = abs(dot(ePos, normal));
 	
-	vec4 diffuse = color * mix(1., fr, facingRatio);
+	vec4 diffuse = color * mix(1.1, fr, facingRatio);
 	vec4 specular = vec4(1.);
 	
 	PointLight( lPos.xyz, ePos, ecPosition.xyz, normal, diffuse, specular, lCol, 0., 0., shininess);
