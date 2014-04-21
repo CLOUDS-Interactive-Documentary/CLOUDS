@@ -58,6 +58,11 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	textGui->addSlider("creditLightScale", 0, 1, &creditLightScale);
 	textGui->addSlider("facingRatioScale", 0, 1, &facingRatioScale);
 	
+	textGui->addLabel("TYPE DISPLAY");
+	textGui->addIntSlider("Font Size", 5, 25, &fontSize);
+	textGui->addSlider("Font Scale", 0.0, 1.9, &fontScale);
+	textGui->addSlider("Justification Offset", 0, 700, &justificationWidth);
+	
 	ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemBalloons::selfGuiEvent);
 	guis.push_back(textGui);
 	guimap[textGui->getName()] = textGui;
@@ -469,38 +474,41 @@ void CloudsVisualSystemBalloons::selfSetup()
 			string justification = creditsXml.getAttribute("credit", "align", "left", i) ;
 			ofVec3f pos( 0, i * dim, 0);
 			if(justification == "left"){
-				pos.x = -100;
+				pos.x = -justificationWidth;
 			}
 			else if(justification == "right"){
-				pos.x = 100;
+				pos.x = justificationWidth;
 			}else{} // center
 			
 			creditsXml.pushTag("credit", i);
-			credits.push_back(BalloonCredit(creditsXml.getValue("title", ""),
-											creditsXml.getValue("name", ""),
-											pos));
+			
+			BalloonCredit bc;
+			bc.title = creditsXml.getValue("title", "");
+			bc.name = creditsXml.getValue("name", "");
+			bc.pos = pos;
+			bc.font = &font;
+			bc.camera = &cloudsCamera;
+			credits.push_back(bc);
+			
+			creditsXml.popTag(); //credit
 		}
+		creditsXml.popTag(); //credits
 	}
 	else{
 		ofLogError("Balloons") << "Couldn't load credits XML!";
+		return;
 	}
 	
 	//TEST
-	
 	for(int i = 0; i < 100; i++){
 		credits.push_back( credits[0] );
 	}
-		
-
 }
 
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){
-	
 }
 
-void CloudsVisualSystemBalloons::selfBegin()
-{
-	
+void CloudsVisualSystemBalloons::selfBegin(){
 }
 
 void CloudsVisualSystemBalloons::selfSceneTransformation(){
@@ -520,6 +528,12 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	for(auto& c: credits)
 	{
 		c.pos.y += textSpeed;
+	}
+	
+	if(!font.isLoaded() || currentFontSize != fontSize)
+	{
+		font.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize);
+		currentFontSize = fontSize;
 	}
 }
 
