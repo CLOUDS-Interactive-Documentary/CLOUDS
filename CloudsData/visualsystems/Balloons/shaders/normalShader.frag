@@ -5,8 +5,6 @@ uniform float shininess = 3.;
 uniform float dim;
 uniform float facingRatio = .4;
 
-uniform sampler2DRect sphericalMap;
-
 uniform float screenHeight;
 uniform vec4 bg0;
 uniform vec4 bg1;
@@ -29,10 +27,7 @@ varying float wordLightAtten;
 varying vec4 wordLightPos0;
 varying float wordLightAtten0;
 
-
 varying float creditLight;
-
-uniform vec2 sphericalMapDim;
 
 varying vec3 vPos;
 

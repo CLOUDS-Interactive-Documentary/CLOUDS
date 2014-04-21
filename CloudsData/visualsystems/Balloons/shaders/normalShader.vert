@@ -103,8 +103,6 @@ uniform sampler2DRect velTexture;
 uniform sampler2DRect quatTexture;
 uniform sampler2DRect colTexture;
 
-uniform vec2 sphericalMapDim;
-
 uniform vec3 camPos;
 uniform vec3 l0;
 
