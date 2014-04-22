@@ -51,7 +51,15 @@ void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     refreshOcclusion = false;
     refreshPoints = false;
     
-	
+    bDrawDust = false;
+    dustParticleCount = 1000;
+    dustAlpha = 1.0;
+    dustRadius = 1000.0;
+    dustSizeWeight = .2;
+    dustPointSizeSmall = 1.0;
+    dustPointSizeBig = 3.0;
+
+
 	bEnableMesh = false;
 	meshAlpha = 0.0;
 	meshSimplifyX = 2.0;
@@ -59,6 +67,11 @@ void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     refreshMesh = false;
     meshVertexCount = 0;
     meshIndexCount = 0;
+
+    bool bDrawDust;
+    int dustParticleCount;
+    float dustRadius;
+    float dustPointSize;
 
 
     blendModeAdd = false;
@@ -187,6 +200,28 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
 	guimap[pointsGui->getName()] = pointsGui;
     ////////////////// POINTS
     
+    ////////////////// DUST
+    dustGui = new ofxUISuperCanvas("DUST", gui);
+	dustGui->copyCanvasStyle(gui);
+	dustGui->copyCanvasProperties(gui);
+	dustGui->setName("Dust");
+	dustGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	toggle = dustGui->addToggle("ENABLE", &bDrawDust);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	dustGui->resetPlacer();
+	dustGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	dustGui->addWidgetToHeader(toggle);
+
+    dustGui->addSlider("Dust Alpha", 0.0, 1.0, &dustAlpha);
+    dustGui->addIntSlider("Dust Count", 0, 5000, &dustParticleCount);
+    dustGui->addSlider("Dust Spread", 100, 2000, &dustRadius);
+    dustGui->addRangeSlider("Dust Point Size", 0.0, 5.0, &dustPointSizeSmall, &dustPointSizeBig);
+    dustGui->addSlider("Dust Size Weight", 0.0, 1.0, &dustSizeWeight);
+    
+ 	ofAddListener(dustGui->newGUIEvent, this, &CloudsVisualSystemRGBDVideo::selfGuiEvent);
+	guis.push_back(dustGui);
+	guimap[dustGui->getName()] = dustGui;
+    ////////////////// DUST
 }
 
 //--------------------------------------------------------------
@@ -200,6 +235,10 @@ void CloudsVisualSystemRGBDVideo::selfUpdate(){
 		loadMoviePath = "";
 	}
 	
+    if(dustSizeWeight != currentDustSizeWeight || dustMeshSmall.getNumVertices() + dustMeshBig.getNumVertices() != dustParticleCount){
+        generateDust();
+    }
+    
     cloudsCamera.lookTarget = ofVec3f(0,0,0);
     
 	if(movieLoaded){
@@ -347,6 +386,27 @@ void CloudsVisualSystemRGBDVideo::generateMesh(){
     refreshMesh = false;
 }
 
+void CloudsVisualSystemRGBDVideo::generateDust(){
+    dustMeshBig.clear();
+    dustMeshSmall.clear();
+    
+    for(int i = 0; i < dustParticleCount; i++){
+        if( ofRandomuf() > dustSizeWeight ){
+            dustMeshBig.addVertex(ofVec3f(ofRandomf(),
+                                          ofRandomf(),
+                                          ofRandomf()));
+        }
+        else{
+            dustMeshSmall.addVertex(ofVec3f(ofRandomf(),
+                                            ofRandomf(),
+                                            ofRandomf()));
+        }
+    }
+    
+    currentDustSizeWeight = dustSizeWeight;
+    //currentDustRadius = dustRadius;
+}
+
 
 void CloudsVisualSystemRGBDVideo::selfDrawBackground(){
     if(bDrawVideoDebug){
@@ -371,15 +431,44 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     
 	if(bEnableMesh){
+        if(bEnableOcclusion){
+            drawOcclusionLayer();
+        }
+        
 		drawMeshLayer();
 	}
     
-	if(bEnableOcclusion){
-		drawOcclusionLayer();
-	}
-        
+    if(!bEnableOcclusion){
+        glDisable(GL_DEPTH_TEST);
+    }
+    
     if(bEnablePoints){
+        if(bEnableOcclusion){
+            glClear(GL_DEPTH_BUFFER_BIT);
+            drawOcclusionLayer();
+        }
+
 		drawPointLayer();
+    }
+    
+    if(bDrawDust){
+        glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_POINT_SMOOTH);
+
+        ofPushStyle();
+        ofPushMatrix();
+
+        ofScale(dustRadius, dustRadius, dustRadius);
+        
+        ofSetColor(255*dustAlpha);
+        glPointSize(dustPointSizeSmall);
+        dustMeshSmall.drawVertices();
+        
+        glPointSize(dustPointSizeBig);
+        dustMeshBig.drawVertices();
+        
+        ofPopStyle();
+        ofPopMatrix();
     }
     
     glPopAttrib();
