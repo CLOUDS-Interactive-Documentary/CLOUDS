@@ -17891,6 +17891,56 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="Neurons_Brain_wide_OC">
+    <keywords>network|artificial intelligence</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Sophy - city</clip>
+        <clip>Sophy - the Cloud</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Philip - in touch all the time</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Lauren - sentiment anaylsis</clip>
+        <clip>Kyle_MC - uncanny</clip>
+        <clip>Kyle_MC - new aesthetic 2</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_CH - Cloud atlas</clip>
+        <clip>Kyle_CH - Sentience of digital art</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kevin - algo chess 3</clip>
+        <clip>Kevin - algo chess 2</clip>
+        <clip>Kevin - algo chess 1</clip>
+        <clip>Kevin - autonomous machines crash</clip>
+        <clip>Kevin - machines crash</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Karsten - DarkNet</clip>
+        <clip>Julian - I love networks</clip>
+        <clip>Julia - net friends</clip>
+        <clip>Julia - strength of weak ties</clip>
+        <clip>Julia - Who owns the internet?</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Bruce - Everted Cyberspace</clip>
+        <clip>Andres - Computational lens</clip>
+        <clip>Aaron - collaboration</clip>
+        <clip>Aaron - digital trace</clip>
+        <clip>Aaron - Tailored Stories</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>1</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="Neurons_Cosmic">
     <keywords></keywords>
     <links></links>
@@ -18080,8 +18130,8 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
+    <enabled>0</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -18115,8 +18165,8 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
+    <enabled>0</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -18208,13 +18258,99 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
 </system>
-<system name="Neurons_XmasDendrites">
-    <keywords></keywords>
+<system name="Neurons_VeryNervousSystem_OC">
+    <keywords>hallucination|perception|cognition|intelligence|artificial intelligence</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - Computational lens</clip>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Bruce - Eno 2</clip>
+        <clip>Bruce - networks vs robots</clip>
+        <clip>Bruce - twitter is not your friend</clip>
+        <clip>Elliot_UK - 2D vision in a 3D world</clip>
+        <clip>Fernanda - Wind visualization 1</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - seeing patterns 1</clip>
+        <clip>Fernanda - seeing patterns 2</clip>
+        <clip>Greg - Doug Engelbart part 1</clip>
+        <clip>Joel - scale of universe</clip>
+        <clip>Joel - scaleofUniverse</clip>
+        <clip>Julia - how it makes me feel</clip>
+        <clip>Julia - what is it doing to us</clip>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Karsten - 256 bytes part 1</clip>
+        <clip>Karsten - DarkNet</clip>
+        <clip>Karsten - code as way of knowing</clip>
+        <clip>Kevin - algo chess 1</clip>
+        <clip>Kevin - algo chess 2</clip>
+        <clip>Kevin - algo chess 3</clip>
+        <clip>Kevin - algo culture 1</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - autonomous machines crash</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kevin - machines crash</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Kyle_CH - Cloud atlas</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_MC - new aesthetic 2</clip>
+        <clip>Kyle_MC - uncanny</clip>
+        <clip>LIA - audiovisualization</clip>
+        <clip>Lauren - sentiment anaylsis</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marius - Machines change the way we see</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Marius - cyperpunk history</clip>
+        <clip>Martin - Big data</clip>
+        <clip>Martin - Seeing the whole 1</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Martin - seeing thought 2</clip>
+        <clip>Paola - bach mozart coders</clip>
+        <clip>Ramsey - no ambiguity allowed</clip>
+        <clip>Sophy - made of photons</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>1</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Neurons_XmasDendrites">
+    <keywords>reality|mind|brain|hallucination|real and virtual</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Andres - Computational lens</clip>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>JTNimoy - be a robot</clip>
+        <clip>Jen - Math simulating reality</clip>
+        <clip>Karolina - uncanny/sniff</clip>
+        <clip>Kevin - Acknolwedgement of artifice</clip>
+        <clip>Kevin - Area code 2</clip>
+        <clip>Kevin - Big games 1</clip>
+        <clip>Kevin - No consequences 1</clip>
+        <clip>Kevin - Race to versimilitude</clip>
+        <clip>Kevin - algo culture 3</clip>
+        <clip>Kevin - game designers</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kevin - non-mimetic reality</clip>
+        <clip>Kevin - reality in the eyes of data</clip>
+        <clip>Kyle_CH - coding, magic</clip>
+        <clip>Kyle_CH - coding 2</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Paola - bach mozart coders</clip>
+        <clip>Patricio - Discovering Mathematical Reality</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Regine - virtual</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>

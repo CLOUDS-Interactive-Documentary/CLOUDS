@@ -13,12 +13,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Mesh Alpha</Name>
-    <Value>0.211822659</Value>
+    <Value>0.187192112</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Face Min Radius</Name>
-    <Value>600.000000000</Value>
+    <Value>248.275863647</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,5 +28,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Edge Geo Retraction</Name>
-    <Value>0.793103456</Value>
+    <Value>0.541871905</Value>
 </Widget>

@@ -84,7 +84,7 @@
 {
     ofBackground(0);
     
-	ofHideCursor();
+	//ofHideCursor();
 	
 	rgbdVisualSystem.selfPostDraw();
 
