@@ -908,7 +908,6 @@ void CloudsIntroSequence::drawHelperType(){
 		helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY-hoverTextHeight/2) );
         ofPopMatrix();
 	}
-//#ifdef OCULUS_RIFT
     
     if(firstQuestionStopped){
         ofPushMatrix();
@@ -916,6 +915,7 @@ void CloudsIntroSequence::drawHelperType(){
         float questionhintAlpha = ofMap(ofGetElapsedTimef(),
                                         firstQuestionStoppedTime, firstQuestionStoppedTime+2,
                                         0.0, .2, true) * (1.0-helperTextOpacity);
+        
         float hintTextWidth  = helperFont.stringWidth("SELECT A QUESTION");
 		float hintTextHeight = helperFont.stringHeight("SELECT A QUESTION");
 		ofVec3f basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
@@ -925,16 +925,24 @@ void CloudsIntroSequence::drawHelperType(){
 		ofTranslate(basePosition);
 #endif
 		ofRotate(180, 0, 0, 1); //flip around
-		ofScale(helperFontScale*.6,
-				helperFontScale*.6,
-				helperFontScale*.6);
+		ofScale(helperFontScale*.8,
+				helperFontScale*.8,
+				helperFontScale*.8);
         
         ofSetColor(255, 255*questionhintAlpha);
         helperFont.drawString("SELECT A QUESTION", -hintTextWidth*.5, hintTextHeight*.5 );
 
+        if(caughtQuestion != NULL){
+            float questionHoldAlpha = ofMap(caughtQuestion->hoverPercentComplete, .2, .3, 0.0, .2, true);
+            ofSetColor(255, 255*questionHoldAlpha);
+            hintTextWidth = helperFont.stringWidth("HOLD TO SELECT");
+            hintTextHeight = helperFont.stringWidth("HOLD TO SELECT");
+            helperFont.drawString("HOLD TO SELECT", -hintTextWidth*.5, hintTextHeight*.5 );
+        }
+        
         ofPopMatrix();
     }
-//#endif
+
     ofEnableLighting();
 	glEnable(GL_DEPTH_TEST);
 	ofPopStyle();
