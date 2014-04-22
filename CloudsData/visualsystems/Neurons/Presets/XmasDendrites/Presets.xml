@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000061035</XPosition>
+    <XPosition>1485.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -13,6 +13,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Brain_wide</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Brain_wide_OC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -69,6 +74,11 @@
     <Kind>2</Kind>
     <Name>VeryNervousSystem</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>VeryNervousSystem_OC</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

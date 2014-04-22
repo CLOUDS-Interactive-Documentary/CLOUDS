@@ -13,17 +13,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Face Min Radius</Name>
-    <Value>493.596038818</Value>
+    <Value>600.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Face Falloff</Name>
-    <Value>224.630538940</Value>
+    <Value>14.778324127</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Alpha</Name>
-    <Value>0.330049247</Value>
+    <Value>0.187192112</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,17 +38,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point X Simplify</Name>
-    <Value>1.793103456</Value>
+    <Value>1.586206913</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Y Simplify</Name>
-    <Value>1.862068892</Value>
+    <Value>2.275862217</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Point Size</Name>
-    <HighValue>0.857142925</HighValue>
+    <HighValue>0.931034446</HighValue>
     <LowValue>0.157635555</LowValue>
 </Widget>
 <Widget>
@@ -69,7 +69,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Speed</Name>
-    <Value>2.463054180</Value>
+    <Value>5.911330223</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -89,7 +89,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Normal Mix</Name>
-    <Value>0.000000000</Value>
+    <Value>0.719211817</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

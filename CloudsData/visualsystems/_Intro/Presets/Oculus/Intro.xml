@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Intro</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>310.000000000</XPosition>
-    <YPosition>319.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>335.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Intro Node Size</Name>
-    <Value>3.083743811</Value>
+    <Value>4.783250809</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

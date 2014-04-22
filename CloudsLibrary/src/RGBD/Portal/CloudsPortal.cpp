@@ -52,7 +52,7 @@ CloudsPortal::CloudsPortal(){
 	selectedPercentComplete = 0.0 ;
 	
 	minSelectDistance = 20.; //screenspace distance from node to hover
-	maxHoverTime = 5.; //how long to hover before select
+	maxHoverTime = 4.; //how long to hover before select
     
     charsPerSecond = 45;
 }

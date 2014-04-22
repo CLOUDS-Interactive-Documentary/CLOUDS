@@ -39,11 +39,6 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	
     interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
 
-#ifdef KINECT_INPUT
-    kinectFeedbackAlpha = 0;
-    kinectFeedbackFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
-#endif
-
 }
 
 void CloudsPlaybackController::resetInterludeVariables(){
@@ -273,6 +268,8 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showIntro(){
 	
+    float ftime = 0.1;
+    ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 
 	resetInterludeVariables();
 	
@@ -295,6 +292,10 @@ void CloudsPlaybackController::showIntro(){
     
 	showingVisualSystem = true;
 	showingIntro = true;
+    
+    oscSender.reset();
+    
+    hud.clearQuestion();
 	hud.setHomeEnabled(false);
 	hud.animateOff();
 }
@@ -442,8 +443,12 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
     if(LUKEDEBUG) cout << "TOTAL DURATION: " << cue.duration+5.0 << endl;
     else cout << "SOUND: MUSIC STARTED." << endl;
 	
+    
 #ifdef RTCMIX
 	sound.startMusicFX(0, cue.duration+5.0);
+#else
+    float ftime = 0.1;
+    ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 #endif
 	
     if(LUKEDEBUG) cout << "   preset: " << interludePreset.slotnumber << endl;
@@ -483,6 +488,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //	updateInterludeInterface();
 	/////
 
+    GetCloudsInput()->bUserBegan = (!showingIntro) || (showingIntro && introSequence->userHasBegun());
+
 	if(loading){
 		return;
 	}
@@ -501,6 +508,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	////////////////////
 	//INTRO
 	if(showingIntro){
+    
 		if(introSequence->isStartQuestionSelected()){
 			
 			CloudsPortal* q = introSequence->getSelectedQuestion();
@@ -562,13 +570,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             transitionController.transitionWithQuestion(2.0, 0.1);
 			
         }
-		
-		if(returnToIntro){
-			returnToIntro = false;
-			transitionController.transitionToIntro(1.0);
-		}
     }
     
+    if(returnToIntro){
+        returnToIntro = false;
+        transitionController.transitionToIntro(1.0);
+    }
+
 	if(!showingClusterMap && !showingInterlude){
 		hud.update();
 	}
@@ -713,18 +721,8 @@ void CloudsPlaybackController::updateTransition(){
 				
 				hud.setHomeEnabled(false);
                 
-
+                showInterlude();
                 
-#ifdef OCULUS_RIFT
-                showInterlude();
-#else
-                //                if(run.actCount == 1){
-                //                    showClusterMap();
-                //                }
-                //                else {
-                showInterlude();
-                //                }
-#endif
 				createInterludeSoundQueue();
                 
                 break;
@@ -1023,36 +1021,8 @@ void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::drawKinectFeedback(){
     
-    ofPushStyle();
-    
-    string promptText = "";
     ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
-    // Display feedback if either:
-    // 1. A viewer is detected but out of range (not in the hot seat)
-    // 2. A viewer is in the hot seat AND has been idle for x milliseconds AND has never interacted yet
-    if ((kinectInput->viewerState == k4w::ViewerState_OutOfRange) ||
-        (kinectInput->viewerState == k4w::ViewerState_PresentIdle && kinectInput->viewerIdleTime >= 5000 && !kinectInput->bCurrViewerHasInteracted)) {
-        kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 255, 0.1f);
-        
-        if (kinectInput->viewerState == k4w::ViewerState_OutOfRange) {
-            promptText = "MOVE CLOSER TO THE DISPLAY";
-        }
-        else {
-            promptText = "EXTEND YOUR HAND TO BEGIN";
-        }
-    }
-    else {
-        kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 0, 0.5f);
-    }
-    kinectInput->draw(kinectFeedbackAlpha);
-
-    ofSetColor(255, kinectFeedbackAlpha);
-    float textWidth  = kinectFeedbackFont.stringWidth(promptText);
-    float textHeight = kinectFeedbackFont.stringHeight(promptText);
-    kinectFeedbackFont.drawString(promptText, (ofGetWidth() - textWidth) / 2, (ofGetHeight() - textHeight) / 2);
-    
-    ofPopStyle();
-    
+    kinectInput->draw();
 }
 #endif
 
@@ -1099,8 +1069,7 @@ void CloudsPlaybackController::drawRenderTarget(){
 		currentVisualSystem->selfPostDraw();
         
 		//TODO Make parametric based on HUD
-        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0,
-                                                               CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
+        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
         
 #ifndef OCULUS_RIFT
 		hud.draw();
@@ -1156,7 +1125,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 	}
 	
 	
-	cout << "***** ORDER OF OPERATIONS: ACT CRATED CONTROLLER " << args.act << endl;
+	cout << "***** ORDER OF OPERATIONS: ACT CREATED CONTROLLER " << args.act << endl;
 
 }
 
@@ -1330,6 +1299,7 @@ void CloudsPlaybackController::showInterlude(){
 	
     vector<string> topics;
     CloudsVisualSystemPreset interludePreset;
+    //HACK HACK HACK
     if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
         
         interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
@@ -1346,7 +1316,8 @@ void CloudsPlaybackController::showInterlude(){
     }
     else{
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";
-        showClusterMap();
+//        showClusterMap();
+        returnToIntro = true;
     }
 }
 

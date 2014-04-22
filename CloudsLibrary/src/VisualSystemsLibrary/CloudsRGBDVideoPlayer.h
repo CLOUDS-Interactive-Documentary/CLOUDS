@@ -83,7 +83,9 @@ public:
     float currentMaxVolume;
 	
 	bool hasSubtitles();
-    void drawSubtitles(float x, float y);
+    void drawSubtitles();
+    //deleteme
+    void drawSubtitles(int x,int y);
 
   protected:
 

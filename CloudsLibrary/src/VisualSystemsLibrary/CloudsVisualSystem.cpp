@@ -200,6 +200,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
     bloomAmount = 0.;
 	isInterlude = false;
 	   
+	pointcloudOffsetZ = 0.0;
+
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 	hudGui = NULL;	
@@ -3023,9 +3025,9 @@ void CloudsVisualSystem::setupKinectGui()
     
     kinectGui->addSpacer();
     kinectGui->addLabel("CURSOR");
-    kinectGui->addRangeSlider("CURSOR DOWN", 1, 20,
+    kinectGui->addRangeSlider("CURSOR DOWN", 1, 50,
                               &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorDownSizeMin, &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorDownSizeMax);
-    kinectGui->addRangeSlider("CURSOR UP", 1, 20,
+    kinectGui->addRangeSlider("CURSOR UP", 1, 50,
                               &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorUpSizeMin, &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorUpSizeMax);
     
     kinectGui->addSpacer();
@@ -3048,9 +3050,6 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addSpacer();
     kinectGui->addSlider("FEEDBACK SCALE", 0.0f, 1.0f, &kinectInput->feedbackScale);
     kinectGui->addSlider("FEEDBACK MARGIN", 0.0f, 0.5f, &kinectInput->feedbackMargin);
-    kinectGui->addMinimalSlider("FEEDBACK HUE", 0, 255, &kinectInput->feedbackHSB.x);
-    kinectGui->addMinimalSlider("FEEDBACK SAT", 0, 255, &kinectInput->feedbackHSB.y);
-    kinectGui->addMinimalSlider("FEEDBACK BRI", 0, 255, &kinectInput->feedbackHSB.z);
     
     kinectGui->autoSizeToFitWidgets();
     ofAddListener(kinectGui->newGUIEvent, this, &CloudsVisualSystem::guiKinectEvent);

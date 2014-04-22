@@ -70,6 +70,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void autoSelectQuestion();
 	CloudsPortal* getSelectedQuestion();
     
+    bool userHasBegun();
+    bool introNodesShown;
+    float introNodeChangeTime;
+    
     static CloudsVisualSystemEvents events;
     
 	ofCamera& getCameraRef(){
@@ -128,7 +132,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float currentFontExtrusion;
 
 	void positionStartQuestions();
-	
+	bool firstQuestionStopped;
+    float firstQuestionStoppedTime;
+    
 	vector<CloudsPortal> startQuestions;
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;

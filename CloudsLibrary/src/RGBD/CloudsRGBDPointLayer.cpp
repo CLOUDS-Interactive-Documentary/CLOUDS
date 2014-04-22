@@ -20,7 +20,7 @@ CloudsRGBDPointLayer::CloudsRGBDPointLayer(){
 
 CloudsRGBDPointLayer::~CloudsRGBDPointLayer(){
     if(eventsRegistered){
-//        ofAddListener(pointsGui->newGUIEvent, this, &CloudsRGBDPointLayer::selfGuiEvent);
+//        ofRemoveListener(pointsGui->newGUIEvent, this, &CloudsRGBDPointLayer::selfGuiEvent);
     }
 }
 

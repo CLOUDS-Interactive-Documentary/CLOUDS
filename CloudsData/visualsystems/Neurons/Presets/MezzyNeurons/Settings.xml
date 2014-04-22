@@ -56,9 +56,14 @@
     <Value>0</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>Do Spin Camera</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Spin Speed</Name>
-    <Value>0.147783279</Value>
+    <Value>0.206896305</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
