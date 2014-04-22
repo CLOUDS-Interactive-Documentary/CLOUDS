@@ -706,7 +706,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
     // 2. A viewer just sat in the hot seat
     // 3. A viewer is interacting properly
     bool bNobody = (viewerState == k4w::ViewerState_None);
-    bool bJustSat = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime < 5000);
+//    bool bJustSat = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime < 5000);
     bool bGoodJob = (primaryIdx != -1 && (hands[primaryIdx]->handJoint.focus <= -0.3 || hands[primaryIdx]->handJoint.focus >= 0));
     
     if (!feedbackTween.isRunning()) {
@@ -720,12 +720,12 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
             else {  // bPushTooFar
                 feedbackPrompt = "TOO CLOSE";
             }
-            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0.2f * 255, 1000, 0);
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0.4f * 255, 1000, 0);
             feedbackTween.addValue(1.0f, 1.0f);
             feedbackTween.start();
         }
-        else if (bNobody || bJustSat || bGoodJob) {
-            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 250, 500);
+        else if (bNobody /* || bJustSat */ || bGoodJob) {
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 250, bNobody? 4000:500);
             feedbackTween.addValue(feedbackFade, 1.25f);
             feedbackTween.start();
         }

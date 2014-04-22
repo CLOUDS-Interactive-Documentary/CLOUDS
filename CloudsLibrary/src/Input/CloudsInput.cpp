@@ -26,6 +26,7 @@ CloudsInput::CloudsInput(){
 	lastPosition = ofVec3f();
     bleedOffset = ofVec3f();
 	dragging = false;
+    bUserBegan = false;
 }
 
 CloudsInputEvents& CloudsInput::getEvents(){
