@@ -654,6 +654,10 @@ string CloudsIntroSequence::getQuestionText(){
 	return "";
 }
 
+bool CloudsIntroSequence::userHasBegun(){
+    return startedOnclick;
+}
+
 bool CloudsIntroSequence::isStartQuestionSelected(){
 	return selectedQuestion != NULL;
 }
@@ -973,60 +977,9 @@ void CloudsIntroSequence::drawCursors(){
 void CloudsIntroSequence::selfDrawOverlay(){
 
 #ifndef OCULUS_RIFT
-//	ofCircle(introNodeOffset.x, introNodeOffset.y, 0, 100);
 	drawIntroNodes();
 #endif
-	//old oculus arrow draing code
-//	
-//	bool drawDirection = false;
-//	float cursorScalar;
-//	int maxCursorDistance = 400;
-//	ofVec2f cursorDirection;
-//	ofVec2f direction;
-//	
-//	helpHoverText = "";
-//	if(introNodeThree.hover){
-//		///no text
-//	}
-//	else if(introNodeTwo.finished){
-//		drawDirection = true;
-//		cursorScalar = ofMap(introNodeThree.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
-//		cursorDirection = introNodeThree.cursorDirection;
-//		helpHoverText = "";
-//	}
-//	else if(introNodeTwo.hover || introNodeOne.finished){
-//		drawDirection = true;
-//		cursorScalar = ofMap(introNodeTwo.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
-//		cursorDirection = introNodeTwo.cursorDirection;
-//		helpHoverText = "LOOK RIGHT";
-//	}
-//	else {
-//		drawDirection = true;
-//		cursorScalar = ofMap(introNodeOne.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
-//		cursorDirection = introNodeOne.cursorDirection;
-//		helpHoverText = "LOOK LEFT";
-//	}
-//	
-//	if(false && drawDirection){
-//		ofPushStyle();
-//		ofSetColor(255, 200);
-//		ofVec2f start(320,240);
-//		hintCursorEndPoint += (start + cursorDirection*(1.0-powf(1.0-cursorScalar,3.0f))*40 - hintCursorEndPoint) * .1;
-//		ofLine(start,hintCursorEndPoint);
-//		ofPushMatrix();
-//		ofTranslate(hintCursorEndPoint);
-//		ofRotate( -(hintCursorEndPoint - start).normalized().angle(ofVec2f(0,1)) );
-//		ofTriangle(ofVec2f(0,0), ofVec2f(-3,-6), ofVec2f(3,-6));
-//		ofPopMatrix();
-//		ofPopStyle();
-//	}
-	
-//	if(helpHoverText != ""){
-//		float hoverTextWidth  = questionFont.stringWidth(hoverText);
-//		float hoverTextHeight = questionFont.stringHeight(hoverText);
-//		questionFont.drawString(hoverText, 320 - hoverTextWidth/2, 240 + hoverTextHeight*1.5);
-//	}
-
+    
 }
 
 void CloudsIntroSequence::selfPostDraw(){
