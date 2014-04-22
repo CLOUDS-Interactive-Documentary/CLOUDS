@@ -494,7 +494,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     ////////////////////
 	//OS CURSOR
 #ifdef CLOUDS_RELEASE
-    ofHideCursor();
+    //ofHideCursor();
 #endif
     
 	////////////////////
@@ -1034,10 +1034,10 @@ void CloudsPlaybackController::drawKinectFeedback(){
         kinectFeedbackAlpha = ofLerp(kinectFeedbackAlpha, 255, 0.1f);
         
         if (kinectInput->viewerState == k4w::ViewerState_OutOfRange) {
-            promptText = "MOVE CLOSER TO THE DISPLAY";
+            promptText = "HAVE A SEAT";
         }
         else {
-            promptText = "EXTEND YOUR HAND TO BEGIN";
+            promptText = "SELECT A QUESTION";
         }
     }
     else {

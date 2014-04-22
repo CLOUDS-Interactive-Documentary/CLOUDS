@@ -1080,12 +1080,13 @@ void CloudsIntroSequence::selfKeyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsIntroSequence::selfMouseDragged(ofMouseEventArgs& data){
-    cursor.set(data.x, data.y, cursor.z);
+    // use CloudsInput directly to get the z value too.
+    cursor.set(GetCloudsInput()->getPosition());
 }
 
-void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data)
-{
-    cursor.set(data.x, data.y, cursor.z);
+void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
+    // use CloudsInput directly to get the z value too.
+    cursor.set(GetCloudsInput()->getPosition());
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
