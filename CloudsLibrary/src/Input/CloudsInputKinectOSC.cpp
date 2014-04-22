@@ -717,7 +717,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
                 feedbackPrompt = "HAVE A SEAT";
             }
             else if (bHasNotBegun) {
-                feedbackPrompt = "SELECT THE CIRCLES";
+                feedbackPrompt = "SELECT THE CIRCLE";
             }
             else {  // bPushTooFar
                 feedbackPrompt = "TOO CLOSE";
