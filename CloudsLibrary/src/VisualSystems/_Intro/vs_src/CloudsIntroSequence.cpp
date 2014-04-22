@@ -956,18 +956,25 @@ void CloudsIntroSequence::drawIntroNodes(){
     
 #ifdef KINECT_INPUT
 	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
-    if(viewerState == k4w::ViewerState_None && introNodeShown){
+    if(viewerState < k4w::ViewerState_PresentIdle && introNodesShown){
         introNodesShown = false;
         introNodeChangeTime = ofGetElapsedTimef();
     }
-	if(viewerState != k4w::ViewerState_None && !introNodesShown){
-        introNodeShown = true
+	if(viewerState >= k4w::ViewerState_PresentIdle && !introNodesShown){
+        introNodesShown = true;
         introNodeChangeTime = ofGetElapsedTimef();
     }
+    
     extraAttenuate = ofMap(ofGetElapsedTimef(),
                            introNodeChangeTime, introNodeChangeTime+.5,
                            0.0, 1.0, true);
-    if(!introNodeShown) 1.0 - extraAttenuate;
+    //if(!introNodesShown) 1.0 - extraAttenuate;
+    
+    //cout << "show nodes " << introNodesShown << " attenuate " << endl;
+    if(!introNodesShown){
+        return;
+    }
+    
 #endif
     
 	for(int i = 0; i < introNodes.size(); i++){

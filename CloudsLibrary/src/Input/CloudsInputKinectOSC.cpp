@@ -19,6 +19,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 : activeThresholdY(activeThresholdY)
 , activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
+, mainBodyIdx(-1)
 , jointLerpPct(0.3f)
 , focusRange(0.2f)
 , bClampToBounds(true)
@@ -324,6 +325,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             if (viewerState < k4w::ViewerState_PresentIdle && !bBodyOutOfBounds) {
                 // upgrayedd!
                 viewerState = k4w::ViewerState_PresentIdle;
+                mainBodyIdx = idx;
             }
 		}
         
@@ -695,10 +697,10 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 
     // Display feedback if either:
     // 1. A viewer is detected but out of range (not in the hot seat)
-    // 2. A viewer is in the hot seat AND has been idle for x milliseconds AND has never interacted yet
+    // 2. A viewer is in the hot seat AND has not began yet
     // 3. A viewer is interacting and pushing in too far
     bool bOutOfRange = (viewerState == k4w::ViewerState_OutOfRange);
-    bool bNotInteracting = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime >= 5000 && !bCurrViewerHasInteracted);
+    bool bHasNotBegun = (viewerState > k4w::ViewerState_OutOfRange && !bUserBegan);
     bool bPushTooFar = (primaryIdx != -1 && hands[primaryIdx]->handJoint.focus < 0 && hands[primaryIdx]->handJoint.focus > -0.3);
 
     // Hide feedback if either:
@@ -706,15 +708,15 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
     // 2. A viewer just sat in the hot seat
     // 3. A viewer is interacting properly
     bool bNobody = (viewerState == k4w::ViewerState_None);
-//    bool bJustSat = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime < 5000);
+    bool bHasBegun = (viewerState > k4w::ViewerState_OutOfRange && bUserBegan);
     bool bGoodJob = (primaryIdx != -1 && (hands[primaryIdx]->handJoint.focus <= -0.3 || hands[primaryIdx]->handJoint.focus >= 0));
     
     if (!feedbackTween.isRunning()) {
-        if (bOutOfRange || bNotInteracting || bPushTooFar) {
+        if (bOutOfRange || bHasNotBegun || bPushTooFar) {
             if (bOutOfRange) {
                 feedbackPrompt = "HAVE A SEAT";
             }
-            else if (bNotInteracting) {
+            else if (bHasNotBegun) {
                 feedbackPrompt = "SELECT THE CIRCLE";
             }
             else {  // bPushTooFar
@@ -724,8 +726,8 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
             feedbackTween.addValue(1.0f, 1.0f);
             feedbackTween.start();
         }
-        else if (bNobody /* || bJustSat */ || bGoodJob) {
-            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 250, bNobody? 4000:500);
+        else if (bNobody || bHasBegun || bGoodJob) {
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 250, bNobody? 4000 : (bHasBegun? 3000 : 500));
             feedbackTween.addValue(feedbackFade, 1.25f);
             feedbackTween.start();
         }
@@ -756,6 +758,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 		ofRect(-1, -1, 2, 2);
         
         ofScale(1.5, 1.5);
+        ofTranslate(0, -0.2);
         
         if (viewerState < k4w::ViewerState_PresentIdle) {
             ofSetColor(ofColor::gray, feedbackAlpha);
@@ -767,6 +770,11 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 
         // draw bodies
         for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
+            if (viewerState > k4w::ViewerState_OutOfRange && it->first != mainBodyIdx) {
+                // Only draw the main body.
+                continue;
+            }
+            
             k4w::Body * body = it->second;
             
             ofNoFill();
@@ -797,6 +805,11 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
         // draw hands
         for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
             k4w::Hand * hand = it->second;
+            
+            if (viewerState > k4w::ViewerState_OutOfRange && hand->bodyIdx != mainBodyIdx) {
+                // Only draw the main body hands.
+                continue;
+            }
             
             // draw the arm
             ofLine(hand->handJoint.inputPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->elbowLeftJoint.inputPosition : bodies[hand->bodyIdx]->elbowRightJoint.inputPosition);
