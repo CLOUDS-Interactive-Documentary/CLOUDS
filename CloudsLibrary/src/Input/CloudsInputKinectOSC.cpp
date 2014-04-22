@@ -698,7 +698,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
     // 2. A viewer is in the hot seat AND has not began yet
     // 3. A viewer is interacting and pushing in too far
     bool bOutOfRange = (viewerState == k4w::ViewerState_OutOfRange);
-    bool bHasNotBegan = (viewerState > k4w::ViewerState_OutOfRange && !bUserBegan);
+    bool bHasNotBegun = (viewerState > k4w::ViewerState_OutOfRange && !bUserBegan);
     bool bPushTooFar = (primaryIdx != -1 && hands[primaryIdx]->handJoint.focus < 0 && hands[primaryIdx]->handJoint.focus > -0.3);
 
     // Hide feedback if either:
@@ -710,11 +710,11 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
     bool bGoodJob = (primaryIdx != -1 && (hands[primaryIdx]->handJoint.focus <= -0.3 || hands[primaryIdx]->handJoint.focus >= 0));
     
     if (!feedbackTween.isRunning()) {
-        if (bOutOfRange || bHasNotBegan || bPushTooFar) {
+        if (bOutOfRange || bHasNotBegun || bPushTooFar) {
             if (bOutOfRange) {
                 feedbackPrompt = "HAVE A SEAT";
             }
-            else if (bHasNotBegan) {
+            else if (bHasNotBegun) {
                 feedbackPrompt = "SELECT THE CIRCLE";
             }
             else {  // bPushTooFar
@@ -725,7 +725,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
             feedbackTween.start();
         }
         else if (bNobody || bHasBegun || bGoodJob) {
-            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 250, bNobody? 4000 : (bHasBegun? 10000 : 500));
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 250, bNobody? 4000 : (bHasBegun? 3000 : 500));
             feedbackTween.addValue(feedbackFade, 1.25f);
             feedbackTween.start();
         }
@@ -756,6 +756,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 		ofRect(-1, -1, 2, 2);
         
         ofScale(1.5, 1.5);
+        ofTranslate(0, -0.2);
         
         if (viewerState < k4w::ViewerState_PresentIdle) {
             ofSetColor(ofColor::gray, feedbackAlpha);

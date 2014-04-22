@@ -486,7 +486,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //	updateInterludeInterface();
 	/////
 
-    GetCloudsInput()->userBegan = (!showingIntro) || (showingIntro && introSequence->userHasBegun());
+    GetCloudsInput()->bUserBegan = (!showingIntro) || (showingIntro && introSequence->userHasBegun());
 
 	if(loading){
 		return;
