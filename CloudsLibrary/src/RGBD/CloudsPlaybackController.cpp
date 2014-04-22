@@ -39,11 +39,6 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	
     interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
 
-#ifdef KINECT_INPUT
-    kinectFeedbackAlpha = 0;
-    kinectFeedbackFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
-#endif
-
 }
 
 void CloudsPlaybackController::resetInterludeVariables(){
@@ -1025,7 +1020,7 @@ void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string 
 void CloudsPlaybackController::drawKinectFeedback(){
     
     ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
-    kinectInput->draw(kinectFeedbackAlpha);
+    kinectInput->draw();
 }
 #endif
 

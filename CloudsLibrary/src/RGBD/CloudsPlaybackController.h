@@ -107,8 +107,6 @@ class CloudsPlaybackController : public ofThread {
 	void drawInterludePanel(ofRectangle rect, string promptText, bool hovering, int tracking );
 #ifdef KINECT_INPUT
     void drawKinectFeedback();
-    float kinectFeedbackAlpha;
-    ofTrueTypeFont kinectFeedbackFont;
 #endif
 	//transition
 	CloudsPortal* selectedQuestion;
