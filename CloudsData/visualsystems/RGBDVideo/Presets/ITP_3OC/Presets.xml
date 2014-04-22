@@ -77,6 +77,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>KoblinSubway_medium_OC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>ShinyLab</Name>
     <Value>0</Value>
 </Widget>
