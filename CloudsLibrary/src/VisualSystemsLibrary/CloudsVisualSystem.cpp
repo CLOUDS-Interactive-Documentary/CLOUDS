@@ -3023,9 +3023,9 @@ void CloudsVisualSystem::setupKinectGui()
     
     kinectGui->addSpacer();
     kinectGui->addLabel("CURSOR");
-    kinectGui->addRangeSlider("CURSOR DOWN", 1, 20,
+    kinectGui->addRangeSlider("CURSOR DOWN", 1, 50,
                               &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorDownSizeMin, &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorDownSizeMax);
-    kinectGui->addRangeSlider("CURSOR UP", 1, 20,
+    kinectGui->addRangeSlider("CURSOR UP", 1, 50,
                               &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorUpSizeMin, &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorUpSizeMax);
     
     kinectGui->addSpacer();
