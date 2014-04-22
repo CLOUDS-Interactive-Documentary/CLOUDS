@@ -905,7 +905,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	}
 	
 	if(ofGetElapsedTimef() - interludeStartTime > 60){
-		interludeContinueSelected = true;
+		interludeResetSelected = true;
 		return true;
 	}
 	

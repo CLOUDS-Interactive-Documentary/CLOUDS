@@ -682,6 +682,8 @@ void CloudsInputKinectOSC::draw()
 //--------------------------------------------------------------
 void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 {
+    
+    
     // Adjust the dimensions to fit in a 4:3 window cause stretching is gross.
 	if (width/height != 4.0f/3.0f) {
 		float newWidth = 4.0f * height / 3.0f;

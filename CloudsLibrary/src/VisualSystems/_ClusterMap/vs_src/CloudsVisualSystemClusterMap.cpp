@@ -848,6 +848,9 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
+#ifndef KINECT_INPUT
+    bUseInteractiveCamera = false;
+#endif
 	///UPDATE ANIMATION
 	percentTraversed = ofMap(ofGetElapsedTimef(),
 							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
