@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Backgroundmesh</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>434.000000000</XPosition>
-    <YPosition>132.000000000</YPosition>
+    <XPosition>335.000000000</XPosition>
+    <YPosition>224.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>num voxels</Name>
-    <Value>27</Value>
+    <Value>16</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,8 +38,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>distance range</Name>
-    <HighValue>0.827586234</HighValue>
-    <LowValue>0.403940827</LowValue>
+    <HighValue>0.876847267</HighValue>
+    <LowValue>0.305418760</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -59,7 +59,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>twist factor y</Name>
-    <Value>0.088669948</Value>
+    <Value>0.039408866</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

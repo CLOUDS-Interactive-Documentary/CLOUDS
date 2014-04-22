@@ -16,6 +16,11 @@
     <Value>0.111379310</Value>
 </Widget>
 <Widget>
+    <Kind>44</Kind>
+    <Name>QUESTION FONT SIZE</Name>
+    <Value>16</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>HOVER X</Name>
     <Value>339.901489258</Value>
@@ -35,4 +40,24 @@
     <Name>PORTAL SELECT DISTANCE</Name>
     <HighValue>137.044342041</HighValue>
     <LowValue>52.807880402</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>QUESTION FONT SCALE</Name>
+    <Value>0.448275864</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>QUESTION FONT Y SHIFT</Name>
+    <Value>131.034484863</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>QUESTION FONT TRACKING</Name>
+    <Value>4.088669777</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>QUESTION FONT SPLIT WIDTH</Name>
+    <Value>299.014770508</Value>
 </Widget>
