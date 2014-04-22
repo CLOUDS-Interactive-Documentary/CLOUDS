@@ -293,6 +293,8 @@ void CloudsPlaybackController::showIntro(){
 	showingVisualSystem = true;
 	showingIntro = true;
     
+    oscSender.reset();
+    
     hud.clearQuestion();
 	hud.setHomeEnabled(false);
 	hud.animateOff();
