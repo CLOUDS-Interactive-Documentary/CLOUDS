@@ -28,7 +28,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
     loadingAct = false;
 	shouldLoadAct = false;
 	shouldPlayClusterMap = false;
-	
+	forceInterludeReset = false;
+    
 	loading = false;
 	loadPercent = 0.0;
 	
@@ -396,10 +397,11 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
     if(args.key == OF_KEY_RETURN){
         if(showingInterlude){
             interludeSystem->getTimeline()->stop();
+            forceInterludeReset = true;
         }
-        else if(showingClusterMap){
-            clusterMap->getTimeline()->stop();
-        }
+//        else if(showingClusterMap){
+//            clusterMap->getTimeline()->stop();
+//        }
         else if(!showingIntro){
             returnToIntro = true;
             CloudsVisualSystem::getRGBDVideoPlayer().stop();
@@ -543,10 +545,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	//INTERLUDE
 	else if(showingInterlude){
 
-		bool stopInterlude = updateInterludeInterface();
+		bool stopInterlude = forceInterludeReset || updateInterludeInterface();
 		
         if(stopInterlude){
-
+            
+            forceInterludeReset = false;
             sound.stopMusic();
             
             if(interludeContinueSelected){
