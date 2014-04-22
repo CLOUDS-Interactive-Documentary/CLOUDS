@@ -695,10 +695,10 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 
     // Display feedback if either:
     // 1. A viewer is detected but out of range (not in the hot seat)
-    // 2. A viewer is in the hot seat AND has been idle for x milliseconds AND has never interacted yet
+    // 2. A viewer is in the hot seat AND has not began yet
     // 3. A viewer is interacting and pushing in too far
     bool bOutOfRange = (viewerState == k4w::ViewerState_OutOfRange);
-    bool bNotInteracting = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime >= 5000 && !bCurrViewerHasInteracted);
+    bool bHasNotBegan = (viewerState > k4w::ViewerState_OutOfRange && !bUserBegan);
     bool bPushTooFar = (primaryIdx != -1 && hands[primaryIdx]->handJoint.focus < 0 && hands[primaryIdx]->handJoint.focus > -0.3);
 
     // Hide feedback if either:
@@ -706,15 +706,15 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
     // 2. A viewer just sat in the hot seat
     // 3. A viewer is interacting properly
     bool bNobody = (viewerState == k4w::ViewerState_None);
-//    bool bJustSat = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime < 5000);
+    bool bHasBegun = (viewerState > k4w::ViewerState_OutOfRange && bUserBegan);
     bool bGoodJob = (primaryIdx != -1 && (hands[primaryIdx]->handJoint.focus <= -0.3 || hands[primaryIdx]->handJoint.focus >= 0));
     
     if (!feedbackTween.isRunning()) {
-        if (bOutOfRange || bNotInteracting || bPushTooFar) {
+        if (bOutOfRange || bHasNotBegan || bPushTooFar) {
             if (bOutOfRange) {
                 feedbackPrompt = "HAVE A SEAT";
             }
-            else if (bNotInteracting) {
+            else if (bHasNotBegan) {
                 feedbackPrompt = "SELECT THE CIRCLE";
             }
             else {  // bPushTooFar
@@ -724,8 +724,8 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
             feedbackTween.addValue(1.0f, 1.0f);
             feedbackTween.start();
         }
-        else if (bNobody /* || bJustSat */ || bGoodJob) {
-            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 250, bNobody? 4000:500);
+        else if (bNobody || bHasBegun || bGoodJob) {
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 250, bNobody? 4000 : (bHasBegun? 10000 : 500));
             feedbackTween.addValue(feedbackFade, 1.25f);
             feedbackTween.start();
         }
