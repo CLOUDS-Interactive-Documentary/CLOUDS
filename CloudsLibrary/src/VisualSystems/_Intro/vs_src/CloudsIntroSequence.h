@@ -71,6 +71,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	CloudsPortal* getSelectedQuestion();
     
     bool userHasBegun();
+    bool introNodesShown;
+    float introNodeChangeTime;
     
     static CloudsVisualSystemEvents events;
     

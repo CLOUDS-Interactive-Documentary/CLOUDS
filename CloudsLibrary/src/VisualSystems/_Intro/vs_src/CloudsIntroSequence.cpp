@@ -41,6 +41,8 @@ void CloudsIntroSequence::selfSetDefaults(){
 	bQuestionDebug = false;
 	firstQuestionStopped = false;
     
+    introNodeChangeTime = 0;
+    introNodesShown = true;
 	kinectHelperAlpha = 0.0;
 	nodeAlphaAttenuate = 1.0;
 	
@@ -942,12 +944,29 @@ void CloudsIntroSequence::drawHelperType(){
 void CloudsIntroSequence::drawIntroNodes(){
 
 	ofPushStyle();
-	
+    float extraAttenuate = 1.0;
+    
+#ifdef KINECT_INPUT
+	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
+    if(viewerState == k4w::ViewerState_None && introNodeShown){
+        introNodesShown = false;
+        introNodeChangeTime = ofGetElapsedTimef();
+    }
+	if(viewerState != k4w::ViewerState_None && !introNodesShown){
+        introNodeShown = true
+        introNodeChangeTime = ofGetElapsedTimef();
+    }
+    extraAttenuate = ofMap(ofGetElapsedTimef(),
+                           introNodeChangeTime, introNodeChangeTime+.5,
+                           0.0, 1.0, true);
+    if(!introNodeShown) 1.0 - extraAttenuate;
+#endif
+    
 	for(int i = 0; i < introNodes.size(); i++){
 		introNodes[i]->nodeAlphaAttenuate = nodeAlphaAttenuate;
 		introNodes[i]->nodeBaseSize = introNodeSize;
 		introNodes[i]->tint = ofFloatColor::fromHsb(tint.r, tint.g, tint.b);
-		introNodes[i]->tint.a = 200*nodeAlphaAttenuate;
+		introNodes[i]->tint.a = 200*nodeAlphaAttenuate*extraAttenuate;
 		
 		introNodes[i]->draw();
 		
