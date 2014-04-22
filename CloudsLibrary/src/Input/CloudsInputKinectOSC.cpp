@@ -700,9 +700,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
     bool bOutOfRange = (viewerState == k4w::ViewerState_OutOfRange);
     bool bNotInteracting = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime >= 5000 && !bCurrViewerHasInteracted);
     bool bPushTooFar = (primaryIdx != -1 && hands[primaryIdx]->handJoint.focus < 0 && hands[primaryIdx]->handJoint.focus > -0.3);
-    if (primaryIdx != -1) {
-    cout << bPushTooFar << " - " << hands[primaryIdx]->handJoint.focus << endl;
-    }
+
     // Hide feedback if either:
     // 1. No one is around
     // 2. A viewer just sat in the hot seat
@@ -717,7 +715,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
                 feedbackPrompt = "HAVE A SEAT";
             }
             else if (bNotInteracting) {
-                feedbackPrompt = "USE YOUR HAND";
+                feedbackPrompt = "SELECT THE CIRCLE";
             }
             else {  // bPushTooFar
                 feedbackPrompt = "TOO CLOSE";
