@@ -353,6 +353,9 @@ void CloudsVisualSystem::playSystem(){
 		CloudsRegisterInputEvents(this);
 
 		ofRegisterKeyEvents(this);
+#ifndef CLOUDS_APP
+        ofRegisterMouseEvents(this);
+#endif
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
 		
@@ -391,6 +394,9 @@ void CloudsVisualSystem::stopSystem(){
 		
 		CloudsUnregisterInputEvents(this);
 		ofUnregisterKeyEvents(this);
+#ifndef CLOUDS_APP
+        ofUnregisterMouseEvents(this);
+#endif
 		ofRemoveListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofRemoveListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
 			

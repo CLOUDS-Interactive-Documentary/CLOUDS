@@ -33,7 +33,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>InteractiveCamera</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>-15.517295837</Value>
+    <Value>-19.064094543</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

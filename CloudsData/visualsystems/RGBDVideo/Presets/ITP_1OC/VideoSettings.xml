@@ -1,14 +1,34 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>VideoSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1273.000000000</XPosition>
-    <YPosition>165.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>266.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>12</Kind>
     <Name>VideoPath</Name>
     <Value>ITP_1.mp4</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Add Blend</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset X</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset Y</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

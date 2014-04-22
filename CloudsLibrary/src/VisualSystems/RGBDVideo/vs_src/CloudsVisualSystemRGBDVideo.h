@@ -113,6 +113,17 @@ public:
     
 	float pointscale;
     ofVec3f pointShift;
+
+    ofxUISuperCanvas* dustGui;
+    ofVboMesh dustMeshBig,dustMeshSmall;
+    bool bDrawDust;
+    int dustParticleCount;
+    float dustAlpha;
+    float dustRadius;
+    float dustSizeWeight, currentDustSizeWeight;
+    float dustPointSizeSmall;
+    float dustPointSizeBig;
+    void generateDust();
     
 	void reloadShader();
 	

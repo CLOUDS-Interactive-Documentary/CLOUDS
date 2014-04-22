@@ -14970,7 +14970,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -15968,7 +15968,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -16074,7 +16074,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -16184,7 +16184,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -18884,7 +18884,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>1</sound_allow_vo>
@@ -18990,7 +18990,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -19379,7 +19379,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -20277,7 +20277,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -20348,7 +20348,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -20417,7 +20417,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -21042,7 +21042,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -21161,7 +21161,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -21282,7 +21282,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -21433,7 +21433,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -22284,7 +22284,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -22761,7 +22761,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -22978,8 +22978,8 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
+    <enabled>0</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -23019,7 +23019,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -23184,7 +23184,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -23204,7 +23204,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -25737,7 +25737,7 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_AIC_Kids">
-    <keywords>rgbd|kinect|camera</keywords>
+    <keywords>rgbd|kinect|camera|playfulness|play</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
@@ -25761,7 +25761,7 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_Eyebeam_spinningDude">
-    <keywords>rgbd|kinect</keywords>
+    <keywords>rgbd|kinect|play|children</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
@@ -25773,7 +25773,7 @@
     <interlude>0</interlude>
 </system>
 <system name="RGBDVideo_Hangar">
-    <keywords>open source|rgbd|kinect|learning|cameras</keywords>
+    <keywords>open source|rgbd|kinect|learning|cameras|hackathon</keywords>
     <links></links>
     <suppressions>
         <clip>Aaron - exquisite forest</clip>
@@ -25903,7 +25903,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -25936,7 +25936,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -26047,7 +26047,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -26122,7 +26122,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -26134,8 +26134,8 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -26147,7 +26147,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -26264,6 +26264,18 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>1</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="RGBDVideo_KoblinSubway_medium_OC">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -34109,16 +34121,30 @@
     <interlude>0</interlude>
 </system>
 <system name="WormHole_OrganicTunnel_2_White">
-    <keywords>dna|biology and code</keywords>
-    <links>
-        <clip>Nervous_Jessica - RNA and Viruses</clip>
-    </links>
+    <keywords>future of cinema|dreams</keywords>
+    <links></links>
     <suppressions>
         <clip>Shiffman - genetic algos 1</clip>
         <clip>Shiffman - genetic algos 2</clip>
         <clip>Shiffman - genetics short 2</clip>
         <clip>Shiffman - Carl Sims</clip>
         <clip>Ramsey - biology and the internet</clip>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Aaron - mini-brains</clip>
+        <clip>Aaron - mini-brains 2</clip>
+        <clip>Javier - Hummingbird drone</clip>
+        <clip>Kevin - algo stories 1</clip>
+        <clip>Kevin - algo stories 2</clip>
+        <clip>Kyle_MC - folowing the finger</clip>
+        <clip>Marcus - code for storytelling</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Patricio - Dream of eggs</clip>
+        <clip>Philip - all the points can flush</clip>
+        <clip>Vera - Energy Flow1</clip>
+        <clip>Vera - Energy Flow2</clip>
+        <clip>Aaron - autonomous storytellers</clip>
+        <clip>Aaron - exquisite forest</clip>
+        <clip>Binx - face data</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
