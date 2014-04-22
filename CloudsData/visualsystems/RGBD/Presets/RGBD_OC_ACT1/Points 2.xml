@@ -38,17 +38,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point X Simplify</Name>
-    <Value>3.620689631</Value>
+    <Value>3.206896544</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Y Simplify</Name>
-    <Value>3.655172348</Value>
+    <Value>3.137931108</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Point Size</Name>
-    <HighValue>1.906404018</HighValue>
+    <HighValue>1.699507356</HighValue>
     <LowValue>0.157635555</LowValue>
 </Widget>
 <Widget>
@@ -69,7 +69,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Speed</Name>
-    <Value>3.546797991</Value>
+    <Value>2.068965673</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -79,12 +79,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Angle</Name>
-    <Value>47.881771088</Value>
+    <Value>83.349754333</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Max Affect</Name>
-    <Value>0.093596056</Value>
+    <Value>0.147783250</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

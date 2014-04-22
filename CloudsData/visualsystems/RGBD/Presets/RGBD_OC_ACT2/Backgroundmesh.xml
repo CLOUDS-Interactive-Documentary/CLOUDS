@@ -13,17 +13,17 @@
 <Widget>
     <Kind>2</Kind>
     <Name>draw lines</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>num voxels</Name>
-    <Value>10</Value>
+    <Value>20</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>voxel spacing</Name>
-    <Value>100.000000000</Value>
+    <Value>57.438423157</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,13 +33,13 @@
 <Widget>
     <Kind>4</Kind>
     <Name>sphere percent</Name>
-    <Value>1.014778376</Value>
+    <Value>-0.522167444</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>distance range</Name>
-    <HighValue>2.000000000</HighValue>
-    <LowValue>0.000000000</LowValue>
+    <HighValue>1.310344815</HighValue>
+    <LowValue>0.009852217</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -79,21 +79,21 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noise distort radial</Name>
-    <Value>0.000000000</Value>
+    <Value>0.655172408</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise density</Name>
-    <Value>0.000000000</Value>
+    <Value>0.033497538</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>center decay</Name>
-    <HighValue>0.000000000</HighValue>
+    <HighValue>0.763546824</HighValue>
     <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise speed</Name>
-    <Value>0.000000000</Value>
+    <Value>0.008374385</Value>
 </Widget>

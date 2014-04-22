@@ -13,12 +13,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PORTAL SCALE</Name>
-    <Value>0.292413801</Value>
+    <Value>0.232068986</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>QUESTION FONT SIZE</Name>
-    <Value>15</Value>
+    <Value>16</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HOVER Y</Name>
-    <Value>32.019653320</Value>
+    <Value>-27.093597412</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,26 +38,26 @@
 <Widget>
     <Kind>6</Kind>
     <Name>PORTAL SELECT DISTANCE</Name>
-    <HighValue>270.837524414</HighValue>
-    <LowValue>115.467979431</LowValue>
+    <HighValue>400.000000000</HighValue>
+    <LowValue>216.551712036</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTION FONT SCALE</Name>
-    <Value>0.719211817</Value>
+    <Value>0.448275864</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTION FONT Y SHIFT</Name>
-    <Value>123.152709961</Value>
+    <Value>131.034484863</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTION FONT TRACKING</Name>
-    <Value>11.482758522</Value>
+    <Value>4.088669777</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTION FONT SPLIT WIDTH</Name>
-    <Value>182.758621216</Value>
+    <Value>299.014770508</Value>
 </Widget>
