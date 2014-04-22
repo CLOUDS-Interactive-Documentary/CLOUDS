@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Points 2</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>316.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>378.000000000</XPosition>
+    <YPosition>208.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Alpha</Name>
-    <Value>1.000000000</Value>
+    <Value>0.852216721</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,18 +38,18 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point X Simplify</Name>
-    <Value>3.620689631</Value>
+    <Value>3.482758522</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Y Simplify</Name>
-    <Value>3.655172348</Value>
+    <Value>3.137931108</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Point Size</Name>
-    <HighValue>1.906404018</HighValue>
-    <LowValue>0.157635555</LowValue>
+    <HighValue>1.403941393</HighValue>
+    <LowValue>0.532019675</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -59,7 +59,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Flow</Name>
-    <Value>0.142857149</Value>
+    <Value>0.157635465</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -69,7 +69,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Speed</Name>
-    <Value>3.546797991</Value>
+    <Value>3.054187298</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -79,17 +79,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Angle</Name>
-    <Value>47.881771088</Value>
+    <Value>65.615760803</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Max Affect</Name>
-    <Value>0.093596056</Value>
+    <Value>0.167487681</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Normal Mix</Name>
-    <Value>0.000000000</Value>
+    <Value>0.369458139</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

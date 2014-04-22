@@ -8,17 +8,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FRONT DISTANCE</Name>
-    <Value>169.704437256</Value>
+    <Value>163.054199219</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SIDE DISTANCE</Name>
-    <Value>341.576354980</Value>
+    <Value>100.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SIDE PULLBACK</Name>
-    <Value>2.463043213</Value>
+    <Value>-42.364532471</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -53,11 +53,11 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DAMPING</Name>
-    <Value>0.041316897</Value>
+    <Value>0.039039407</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>FOV ZOOM</Name>
-    <HighValue>100.000000000</HighValue>
-    <LowValue>50.000000000</LowValue>
+    <HighValue>109.753692627</HighValue>
+    <LowValue>74.285713196</LowValue>
 </Widget>

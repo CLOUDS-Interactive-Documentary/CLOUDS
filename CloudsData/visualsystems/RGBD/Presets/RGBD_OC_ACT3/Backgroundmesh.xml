@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Backgroundmesh</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>512.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1090.000000000</XPosition>
+    <YPosition>265.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,38 +13,38 @@
 <Widget>
     <Kind>2</Kind>
     <Name>draw lines</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>num voxels</Name>
-    <Value>10</Value>
+    <Value>24</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>voxel spacing</Name>
-    <Value>100.000000000</Value>
+    <Value>30.837438583</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>sphere radius</Name>
-    <Value>100.000000000</Value>
+    <Value>413.793090820</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>sphere percent</Name>
-    <Value>1.014778376</Value>
+    <Value>-0.147783279</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>distance range</Name>
-    <HighValue>2.000000000</HighValue>
+    <HighValue>0.916256249</HighValue>
     <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>twist speed x</Name>
-    <Value>0.000000000</Value>
+    <Value>0.000059113</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -54,12 +54,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>twist speed y</Name>
-    <Value>0.000000000</Value>
+    <Value>0.000177340</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>twist factor y</Name>
-    <Value>0.000000000</Value>
+    <Value>0.216748774</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -79,21 +79,21 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noise distort radial</Name>
-    <Value>0.000000000</Value>
+    <Value>0.817734003</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise density</Name>
-    <Value>0.000000000</Value>
+    <Value>0.118226603</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>center decay</Name>
-    <HighValue>0.000000000</HighValue>
-    <LowValue>0.000000000</LowValue>
+    <HighValue>0.911330044</HighValue>
+    <LowValue>0.325123131</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise speed</Name>
-    <Value>0.000000000</Value>
+    <Value>0.000985222</Value>
 </Widget>

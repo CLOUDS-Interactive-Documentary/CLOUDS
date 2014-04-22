@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PORTAL SCALE</Name>
-    <Value>0.292413801</Value>
+    <Value>0.183793113</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HOVER Y</Name>
-    <Value>32.019653320</Value>
+    <Value>-27.093597412</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,8 +38,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>PORTAL SELECT DISTANCE</Name>
-    <HighValue>270.837524414</HighValue>
-    <LowValue>115.467979431</LowValue>
+    <HighValue>137.044342041</HighValue>
+    <LowValue>52.807880402</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
