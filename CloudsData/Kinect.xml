@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Kinect</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>577.000000000</XPosition>
-    <YPosition>136.000000000</YPosition>
+    <XPosition>278.000000000</XPosition>
+    <YPosition>127.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,32 +13,32 @@
 <Widget>
     <Kind>6</Kind>
     <Name>CURSOR DOWN</Name>
-    <HighValue>8.674877167</HighValue>
-    <LowValue>5.000000000</LowValue>
+    <HighValue>50.000000000</HighValue>
+    <LowValue>1.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>CURSOR UP</Name>
-    <HighValue>15.320197105</HighValue>
-    <LowValue>8.487684250</LowValue>
+    <HighValue>50.000000000</HighValue>
+    <LowValue>1.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE X</Name>
-    <HighValue>0.605910778</HighValue>
-    <LowValue>-0.064040005</LowValue>
+    <HighValue>0.320197105</HighValue>
+    <LowValue>-0.251231551</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE Y</Name>
-    <HighValue>-0.399015307</HighValue>
-    <LowValue>-1.000000000</LowValue>
+    <HighValue>0.280786991</HighValue>
+    <LowValue>-0.576354682</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE Z</Name>
-    <HighValue>2.667487621</HighValue>
-    <LowValue>1.347290874</LowValue>
+    <HighValue>2.411330223</HighValue>
+    <LowValue>1.997536898</LowValue>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,12 +48,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ACTIVE THRESHOLD Y</Name>
-    <Value>0.709359586</Value>
+    <Value>0.842364550</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ACTIVE THRESHOLD Z</Name>
-    <Value>0.275862068</Value>
+    <Value>0.399014771</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -83,7 +83,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FEEDBACK SCALE</Name>
-    <Value>0.200000003</Value>
+    <Value>0.285714298</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
