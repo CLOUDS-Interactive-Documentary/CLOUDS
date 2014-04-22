@@ -1866,6 +1866,14 @@
 		1892A2561878B5F000B4B474 /* tracking.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tracking.hpp; sourceTree = "<group>"; };
 		1892A2571878B5F000B4B474 /* video.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = video.hpp; sourceTree = "<group>"; };
 		1892A2A51878B5F000B4B474 /* opencv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = opencv.a; sourceTree = "<group>"; };
+		46CCD12719063E21008C3D12 /* rgbd_simple_lines.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_lines.frag; sourceTree = "<group>"; };
+		46CCD12819063E21008C3D12 /* rgbd_simple_lines.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_lines.vert; sourceTree = "<group>"; };
+		46CCD12919063E21008C3D12 /* rgbd_simple_mesh.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_mesh.frag; sourceTree = "<group>"; };
+		46CCD12A19063E21008C3D12 /* rgbd_simple_mesh.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_mesh.vert; sourceTree = "<group>"; };
+		46CCD12B19063E21008C3D12 /* rgbd_simple_occlude.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_occlude.frag; sourceTree = "<group>"; };
+		46CCD12C19063E21008C3D12 /* rgbd_simple_occlude.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_occlude.vert; sourceTree = "<group>"; };
+		46CCD12D19063E21008C3D12 /* rgbd_simple_points.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_points.frag; sourceTree = "<group>"; };
+		46CCD12E19063E21008C3D12 /* rgbd_simple_points.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbd_simple_points.vert; sourceTree = "<group>"; };
 		64323E84187A4DAE00316058 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortal.cpp; sourceTree = "<group>"; };
 		64323E85187A4DAE00316058 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
 		64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
@@ -3671,6 +3679,22 @@
 				1892A2A51878B5F000B4B474 /* opencv.a */,
 			);
 			path = osx;
+			sourceTree = "<group>";
+		};
+		46CCD12619063E21008C3D12 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				46CCD12719063E21008C3D12 /* rgbd_simple_lines.frag */,
+				46CCD12819063E21008C3D12 /* rgbd_simple_lines.vert */,
+				46CCD12919063E21008C3D12 /* rgbd_simple_mesh.frag */,
+				46CCD12A19063E21008C3D12 /* rgbd_simple_mesh.vert */,
+				46CCD12B19063E21008C3D12 /* rgbd_simple_occlude.frag */,
+				46CCD12C19063E21008C3D12 /* rgbd_simple_occlude.vert */,
+				46CCD12D19063E21008C3D12 /* rgbd_simple_points.frag */,
+				46CCD12E19063E21008C3D12 /* rgbd_simple_points.vert */,
+			);
+			name = shaders;
+			path = ../../../../CloudsData/visualsystems/RGBDVideo/shaders;
 			sourceTree = "<group>";
 		};
 		64323E83187A4DAE00316058 /* Portal */ = {
@@ -5555,6 +5579,7 @@
 		E70CE11018695CCB00955691 /* RGBDVideo */ = {
 			isa = PBXGroup;
 			children = (
+				46CCD12619063E21008C3D12 /* shaders */,
 				E70CE11118695CCB00955691 /* vs_src */,
 			);
 			path = RGBDVideo;

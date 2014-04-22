@@ -909,7 +909,7 @@ void CloudsIntroSequence::drawHelperType(){
         
         float questionhintAlpha = ofMap(ofGetElapsedTimef(),
                                         firstQuestionStoppedTime, firstQuestionStoppedTime+2,
-                                        0.0, .5, true) * (1.0-helperTextOpacity);
+                                        0.0, .2, true) * (1.0-helperTextOpacity);
         float hintTextWidth  = helperFont.stringWidth("SELECT A QUESTION");
 		float hintTextHeight = helperFont.stringHeight("SELECT A QUESTION");
 		ofVec3f basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);

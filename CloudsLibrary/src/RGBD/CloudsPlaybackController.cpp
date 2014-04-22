@@ -294,6 +294,8 @@ void CloudsPlaybackController::showIntro(){
     
 	showingVisualSystem = true;
 	showingIntro = true;
+    
+    hud.clearQuestion();
 	hud.setHomeEnabled(false);
 	hud.animateOff();
 }
@@ -494,7 +496,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     ////////////////////
 	//OS CURSOR
 #ifdef CLOUDS_RELEASE
-    //ofHideCursor();
+    ofHideCursor();
 #endif
     
 	////////////////////
@@ -561,13 +563,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             transitionController.transitionWithQuestion(2.0, 0.1);
 			
         }
-		
-		if(returnToIntro){
-			returnToIntro = false;
-			transitionController.transitionToIntro(1.0);
-		}
     }
     
+    if(returnToIntro){
+        returnToIntro = false;
+        transitionController.transitionToIntro(1.0);
+    }
+
 	if(!showingClusterMap && !showingInterlude){
 		hud.update();
 	}
@@ -1154,7 +1156,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 	}
 	
 	
-	cout << "***** ORDER OF OPERATIONS: ACT CRATED CONTROLLER " << args.act << endl;
+	cout << "***** ORDER OF OPERATIONS: ACT CREATED CONTROLLER " << args.act << endl;
 
 }
 
@@ -1328,6 +1330,7 @@ void CloudsPlaybackController::showInterlude(){
 	
     vector<string> topics;
     CloudsVisualSystemPreset interludePreset;
+    //HACK HACK HACK
     if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
         
         interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
@@ -1344,7 +1347,8 @@ void CloudsPlaybackController::showInterlude(){
     }
     else{
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";
-        showClusterMap();
+//        showClusterMap();
+        returnToIntro = true;
     }
 }
 

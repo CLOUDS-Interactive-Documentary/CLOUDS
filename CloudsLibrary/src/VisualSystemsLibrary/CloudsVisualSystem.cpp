@@ -200,6 +200,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
     bloomAmount = 0.;
 	isInterlude = false;
 	   
+	pointcloudOffsetZ = 0.0;
+
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 	hudGui = NULL;	
