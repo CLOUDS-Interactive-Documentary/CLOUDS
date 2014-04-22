@@ -116,7 +116,7 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
     }
     else {  // mode == CURSOR_MODE_CAMERA
         ofSetLineWidth(2);
-        
+#ifndef OCULUS_RIFT
 //        static const float kCoreRadius = 0.2f;
 //        float lineLength = size * ofMap(focus, 0.0f, 1.0f, kCoreRadius, (1.0f - kCoreRadius));
         float lineLength;
@@ -136,7 +136,7 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
         ofLine(pos.x + size, pos.y, pos.x + size - lineLength, pos.y);
         ofLine(pos.x, pos.y - size, pos.x, pos.y - size + lineLength);
         ofLine(pos.x, pos.y + size, pos.x, pos.y + size - lineLength);
-
+#endif
 //        if (bDragged) {
 //            ofNoFill();
 //            ofCircle(pos, lineLength);
