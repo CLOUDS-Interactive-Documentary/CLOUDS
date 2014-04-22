@@ -358,7 +358,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     // remove any dead bodies
     vector<int> toRemove;
     for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
-        if (ABS(it->second->lastUpdateFrame - lastOscFrame) > kNumFramesForRemoval) {
+        if (ABS(it->second->lastUpdateFrame - ofGetFrameNum()) > kNumFramesForRemoval) {
             toRemove.push_back(it->first);
         }
     }
@@ -370,7 +370,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     // process any dead or inactive hands
     toRemove.clear();
     for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
-        bool bDead = ABS(it->second->lastUpdateFrame - lastOscFrame) > kNumFramesForRemoval;
+        bool bDead = ABS(it->second->lastUpdateFrame - ofGetFrameNum()) > kNumFramesForRemoval;
         if (bDead || it->second->actionState == k4w::ActionState_Inactive) {
             // make sure the hand is not mid-action when getting removed
             processHandEvent(it->first, hands[it->first], k4w::HandState_Unknown);
@@ -448,12 +448,17 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     }
     
     // update the viewer state and idle time
-	if (viewerState < k4w::ViewerState_Interacting && primaryIdx != -1) {
+    if (bodies.empty()) {
+        // downgrayedd!
+        viewerState = k4w::ViewerState_None;
+    }
+	else if (viewerState < k4w::ViewerState_Interacting && primaryIdx != -1) {
         // upgrayedd!
         viewerState = k4w::ViewerState_Interacting;
         currViewerBodyIdx = primaryIdx;
         bCurrViewerHasInteracted = true;
     }
+    
     if (viewerState == k4w::ViewerState_PresentIdle) {
         viewerIdleTime += ofGetLastFrameTime() * 1000;
     }
@@ -685,6 +690,8 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
     static ofxEasingQuad easingQuad;
     
     ofPushStyle();
+    
+    ofSetLineWidth(2);
 
     // Display feedback if either:
     // 1. A viewer is detected but out of range (not in the hot seat)
@@ -692,13 +699,17 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
     // 3. A viewer is interacting and pushing in too far
     bool bOutOfRange = (viewerState == k4w::ViewerState_OutOfRange);
     bool bNotInteracting = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime >= 5000 && !bCurrViewerHasInteracted);
-    bool bPushTooFar = (primaryIdx != -1 && hands[primaryIdx]->handJoint.screenPosition.z < -0.8f);
-    
+    bool bPushTooFar = (primaryIdx != -1 && hands[primaryIdx]->handJoint.focus < 0 && hands[primaryIdx]->handJoint.focus > -0.3);
+    if (primaryIdx != -1) {
+    cout << bPushTooFar << " - " << hands[primaryIdx]->handJoint.focus << endl;
+    }
     // Hide feedback if either:
-    // 1. A viewer just sat in the hot seat
-    // 2. A viewer is interacting properly
+    // 1. No one is around
+    // 2. A viewer just sat in the hot seat
+    // 3. A viewer is interacting properly
+    bool bNobody = (viewerState == k4w::ViewerState_None);
     bool bJustSat = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime < 5000);
-    bool bGoodJob = (primaryIdx != -1 && hands[primaryIdx]->handJoint.screenPosition.z > -0.8f);
+    bool bGoodJob = (primaryIdx != -1 && (hands[primaryIdx]->handJoint.focus <= -0.3 || hands[primaryIdx]->handJoint.focus >= 0));
     
     if (!feedbackTween.isRunning()) {
         if (bOutOfRange || bNotInteracting || bPushTooFar) {
@@ -706,18 +717,18 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
                 feedbackPrompt = "HAVE A SEAT";
             }
             else if (bNotInteracting) {
-                feedbackPrompt = "SELECT A QUESTION";
+                feedbackPrompt = "USE YOUR HAND";
             }
             else {  // bPushTooFar
                 feedbackPrompt = "TOO CLOSE";
             }
-            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 255, 1000, 0);
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0.2f * 255, 1000, 0);
             feedbackTween.addValue(1.0f, 1.0f);
             feedbackTween.start();
         }
-        else if (bJustSat || bGoodJob) {
-            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 500, 1000);
-            feedbackTween.addValue(feedbackFade, 1.2f);
+        else if (bNobody || bJustSat || bGoodJob) {
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 250, 500);
+            feedbackTween.addValue(feedbackFade, 1.25f);
             feedbackTween.start();
         }
     }
@@ -733,7 +744,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
     
     // Draw the text prompt.
     ofSetColor(ofColor::white, feedbackAlpha);
-    feedbackFont.drawString(feedbackPrompt, x + (width - feedbackFont.stringWidth(feedbackPrompt)) / 2, y - feedbackFont.stringHeight(feedbackPrompt));
+    feedbackFont.drawString(feedbackPrompt, x + (width - feedbackFont.stringWidth(feedbackPrompt)) / 2, y + height - feedbackFont.stringHeight(feedbackPrompt));
 	
     ofPushMatrix();
     {
@@ -745,6 +756,8 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
         
         ofNoFill();
 		ofRect(-1, -1, 2, 2);
+        
+        ofScale(1.5, 1.5);
         
         if (viewerState < k4w::ViewerState_PresentIdle) {
             ofSetColor(ofColor::gray, feedbackAlpha);
