@@ -70,6 +70,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void autoSelectQuestion();
 	CloudsPortal* getSelectedQuestion();
     
+    bool userHasBegun();
+    
     static CloudsVisualSystemEvents events;
     
 	ofCamera& getCameraRef(){

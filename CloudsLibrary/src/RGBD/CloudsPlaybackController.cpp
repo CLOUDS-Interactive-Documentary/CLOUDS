@@ -271,7 +271,6 @@ void CloudsPlaybackController::showIntro(){
     float ftime = 0.1;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 
-    
 	resetInterludeVariables();
 	
 #ifdef OCULUS_RIFT
@@ -487,6 +486,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //	updateInterludeInterface();
 	/////
 
+    GetCloudsInput()->userBegan = (!showingIntro) || (showingIntro && introSequence->userHasBegun());
+
 	if(loading){
 		return;
 	}
@@ -505,6 +506,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	////////////////////
 	//INTRO
 	if(showingIntro){
+    
 		if(introSequence->isStartQuestionSelected()){
 			
 			CloudsPortal* q = introSequence->getSelectedQuestion();
