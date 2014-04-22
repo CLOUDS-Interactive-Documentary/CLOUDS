@@ -19,6 +19,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 : activeThresholdY(activeThresholdY)
 , activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
+, mainBodyIdx(-1)
 , jointLerpPct(0.3f)
 , focusRange(0.2f)
 , bClampToBounds(true)
@@ -324,6 +325,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             if (viewerState < k4w::ViewerState_PresentIdle && !bBodyOutOfBounds) {
                 // upgrayedd!
                 viewerState = k4w::ViewerState_PresentIdle;
+                mainBodyIdx = idx;
             }
 		}
         
@@ -768,6 +770,11 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 
         // draw bodies
         for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
+            if (viewerState > k4w::ViewerState_OutOfRange && it->first != mainBodyIdx) {
+                // Only draw the main body.
+                continue;
+            }
+            
             k4w::Body * body = it->second;
             
             ofNoFill();
@@ -798,6 +805,11 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
         // draw hands
         for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
             k4w::Hand * hand = it->second;
+            
+            if (viewerState > k4w::ViewerState_OutOfRange && hand->bodyIdx != mainBodyIdx) {
+                // Only draw the main body hands.
+                continue;
+            }
             
             // draw the arm
             ofLine(hand->handJoint.inputPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->elbowLeftJoint.inputPosition : bodies[hand->bodyIdx]->elbowRightJoint.inputPosition);

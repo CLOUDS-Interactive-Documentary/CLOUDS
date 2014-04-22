@@ -199,6 +199,7 @@ public:
     ofxOscReceiver receiver;
     int lastOscFrame;
     int primaryIdx;
+    int mainBodyIdx;
     float activeThresholdY;
     float activeThresholdZ;
     float focusRange;
