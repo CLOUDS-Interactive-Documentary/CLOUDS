@@ -273,7 +273,6 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showIntro(){
 	
-
 	resetInterludeVariables();
 	
 #ifdef OCULUS_RIFT
@@ -1071,8 +1070,7 @@ void CloudsPlaybackController::drawRenderTarget(){
 		currentVisualSystem->selfPostDraw();
         
 		//TODO Make parametric based on HUD
-        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0,
-                                                               CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
+        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
         
 #ifndef OCULUS_RIFT
 		hud.draw();
