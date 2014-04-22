@@ -410,11 +410,16 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     return false;
 }
 #endif
+void CloudsRGBDVideoPlayer::drawSubtitles(int x,int y){
+    drawSubtitles();
+}
 
-void CloudsRGBDVideoPlayer::drawSubtitles(float x, float y)
+void CloudsRGBDVideoPlayer::drawSubtitles()
 {
 #ifdef SHOW_SUBTITLES
     if (hasSubtitles()) {
+        int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
+        int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.7;
         ofPushStyle();
         ofSetColor(0, 200);
         currentSubtitles.draw(x+3, y-2);

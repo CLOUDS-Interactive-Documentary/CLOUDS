@@ -902,7 +902,7 @@ void CloudsIntroSequence::drawHelperType(){
 		helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY-hoverTextHeight/2) );
         ofPopMatrix();
 	}
-#ifdef OCULUS_RIFT
+//#ifdef OCULUS_RIFT
     
     if(firstQuestionStopped){
         ofPushMatrix();
@@ -928,7 +928,7 @@ void CloudsIntroSequence::drawHelperType(){
 
         ofPopMatrix();
     }
-#endif
+//#endif
     ofEnableLighting();
 	glEnable(GL_DEPTH_TEST);
 	ofPopStyle();
