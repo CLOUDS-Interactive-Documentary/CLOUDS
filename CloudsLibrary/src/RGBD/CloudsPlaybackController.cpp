@@ -268,6 +268,10 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showIntro(){
 	
+    float ftime = 0.1;
+    ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
+
+    
 	resetInterludeVariables();
 	
 #ifdef OCULUS_RIFT
@@ -438,8 +442,12 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
     if(LUKEDEBUG) cout << "TOTAL DURATION: " << cue.duration+5.0 << endl;
     else cout << "SOUND: MUSIC STARTED." << endl;
 	
+    
 #ifdef RTCMIX
 	sound.startMusicFX(0, cue.duration+5.0);
+#else
+    float ftime = 0.1;
+    ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 #endif
 	
     if(LUKEDEBUG) cout << "   preset: " << interludePreset.slotnumber << endl;
@@ -709,18 +717,8 @@ void CloudsPlaybackController::updateTransition(){
 				
 				hud.setHomeEnabled(false);
                 
-
+                showInterlude();
                 
-#ifdef OCULUS_RIFT
-                showInterlude();
-#else
-                //                if(run.actCount == 1){
-                //                    showClusterMap();
-                //                }
-                //                else {
-                showInterlude();
-                //                }
-#endif
 				createInterludeSoundQueue();
                 
                 break;
