@@ -125,14 +125,11 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
             lineLength = ofMap(focus, 0.0f, 1.0f, 1, size);
         }
         else {
-            if (focus < -0.8f) {
-                ofColor flashColor(255);
-                flashColor.lerp(ofColor(255, 0, 0), cosf(ofGetElapsedTimef() * 0.1f));
-                ofSetColor(flashColor, MAX(35, 192 * focus * -1));
+            ofColor flashColor(255, MAX(35, 192 * focus * -1));
+            if (focus < 0 && focus > -0.3) {
+                flashColor.lerp(ofColor(255, 0, 0), cosf(ofGetElapsedTimef() * 10) * 0.5 + 0.5);
             }
-            else {
-                ofSetColor(255, 255, 255, MAX(35, 192 * focus * -1));
-            }
+            ofSetColor(flashColor);
             lineLength = size;
         }
         ofLine(pos.x - size, pos.y, pos.x - size + lineLength, pos.y);
