@@ -8,6 +8,7 @@
 
 #include "CloudsInputKinectOSC.h"
 #include "CloudsInputEvents.h"
+#include "CloudsGlobal.h"
 
 int kListenPort          = 12345;
 int kNumFramesForRemoval = 60;
@@ -39,9 +40,11 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , cursorUpSizeMax(16)
 , feedbackScale(0.2f)
 , feedbackMargin(0.02f)
-, feedbackHSB(255, 0, 255)
+, feedbackAlpha(0)
+, feedbackFade(1.0f)
+, feedbackPrompt("")
 {
-
+    feedbackFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", 15);
 }
 
 //--------------------------------------------------------------
@@ -661,16 +664,16 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
 }
 
 //--------------------------------------------------------------
-void CloudsInputKinectOSC::draw(float alpha)
+void CloudsInputKinectOSC::draw()
 {
     float margin = ofGetHeight() * feedbackMargin;
     float height = ofGetHeight() * feedbackScale;
     float width = height * 4.0f/3.0f;
-    draw(margin, ofGetHeight() - height - margin, width, height, alpha);
+    draw(margin, ofGetHeight() - height - margin, width, height);
 }
 
 //--------------------------------------------------------------
-void CloudsInputKinectOSC::draw(float x, float y, float width, float height, float alpha)
+void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 {
     // Adjust the dimensions to fit in a 4:3 window cause stretching is gross.
 	if (width/height != 4.0f/3.0f) {
@@ -678,20 +681,74 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height, flo
 		x += (width - newWidth) / 2.0f;
 		width = newWidth;
 	}
+    
+    static ofxEasingQuad easingQuad;
+    
+    ofPushStyle();
+
+    // Display feedback if either:
+    // 1. A viewer is detected but out of range (not in the hot seat)
+    // 2. A viewer is in the hot seat AND has been idle for x milliseconds AND has never interacted yet
+    // 3. A viewer is interacting and pushing in too far
+    bool bOutOfRange = (viewerState == k4w::ViewerState_OutOfRange);
+    bool bNotInteracting = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime >= 5000 && !bCurrViewerHasInteracted);
+    bool bPushTooFar = (primaryIdx != -1 && hands[primaryIdx]->handJoint.screenPosition.z < -0.8f);
+    
+    // Hide feedback if either:
+    // 1. A viewer just sat in the hot seat
+    // 2. A viewer is interacting properly
+    bool bJustSat = (viewerState == k4w::ViewerState_PresentIdle && viewerIdleTime < 5000);
+    bool bGoodJob = (primaryIdx != -1 && hands[primaryIdx]->handJoint.screenPosition.z > -0.8f);
+    
+    if (!feedbackTween.isRunning()) {
+        if (bOutOfRange || bNotInteracting || bPushTooFar) {
+            if (bOutOfRange) {
+                feedbackPrompt = "HAVE A SEAT";
+            }
+            else if (bNotInteracting) {
+                feedbackPrompt = "SELECT A QUESTION";
+            }
+            else {  // bPushTooFar
+                feedbackPrompt = "TOO CLOSE";
+            }
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 255, 1000, 0);
+            feedbackTween.addValue(1.0f, 1.0f);
+            feedbackTween.start();
+        }
+        else if (bJustSat || bGoodJob) {
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 500, 1000);
+            feedbackTween.addValue(feedbackFade, 1.2f);
+            feedbackTween.start();
+        }
+    }
+//    else {
+//        feedbackPrompt = "";
+//        feedbackAlpha = ofLerp(feedbackAlpha, 0, 0.5f);
+//    }
+    
+    if (feedbackTween.isRunning()) {
+        feedbackAlpha = feedbackTween.update();
+        feedbackFade = feedbackTween.getTarget(1);
+    }
+    
+    // Draw the text prompt.
+    ofSetColor(ofColor::white, feedbackAlpha);
+    feedbackFont.drawString(feedbackPrompt, x + (width - feedbackFont.stringWidth(feedbackPrompt)) / 2, y - feedbackFont.stringHeight(feedbackPrompt));
 	
-	ofPushStyle();
     ofPushMatrix();
     {
         // scale up from our -1, 1 viewport
         ofTranslate(x, y);
         ofScale(width / 2.0f, height / 2.0f);
         ofTranslate(1, 1);
-        ofScale(1, -1);
+        ofScale(1 * feedbackFade, -1 * feedbackFade);
         
-		ofSetColor(ofColor::fromHsb(feedbackHSB.x, feedbackHSB.y, feedbackHSB.z), alpha);
-
         ofNoFill();
 		ofRect(-1, -1, 2, 2);
+        
+        if (viewerState < k4w::ViewerState_PresentIdle) {
+            ofSetColor(ofColor::gray, feedbackAlpha);
+        }
         
         // TODO: Make sure the skeletons are drawn inside the box.
 //        glEnable(GL_SCISSOR_TEST);
@@ -746,6 +803,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height, flo
 //        glDisable(GL_SCISSOR_TEST);
     }
     ofPopMatrix();
+    
     ofPopStyle();
 }
 

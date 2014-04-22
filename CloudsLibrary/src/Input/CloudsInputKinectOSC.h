@@ -11,6 +11,7 @@
 #include "CloudsInput.h"
 
 #include "ofxOsc.h"
+#include "ofxTween.h"
 
 namespace k4w 
 {
@@ -192,8 +193,8 @@ public:
     
     void debug(float x, float y, float width, float height);
     
-    void draw(float alpha = 255);
-	void draw(float x, float y, float width, float height, float alpha = 255);
+    void draw();
+	void draw(float x, float y, float width, float height);
     
     ofxOscReceiver receiver;
     int lastOscFrame;
@@ -232,7 +233,11 @@ public:
     // draw feedback
     float feedbackScale;
     float feedbackMargin;
-    ofVec3f feedbackHSB;
+    float feedbackAlpha;
+    float feedbackFade;
+    ofTrueTypeFont feedbackFont;
+    string feedbackPrompt;
+    ofxTween feedbackTween;
 };
 
 void SetCloudsInputKinect(float activeThresholdY = 0.8f, float activeThresholdZ = 0.4f);
