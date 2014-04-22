@@ -35,6 +35,7 @@ void _C::selfSetup(){
     camDuration = 0;
 	rx = 0;
 	ry = 0;
+	doSpinCamera = false;
 
 }
 
@@ -43,11 +44,16 @@ void _C::selfSetDefaults(){
     bounce = false;
     flythrough = false;
     camDuration = 0.f;
+	doSpinCamera = false;
+	
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
+
 }
 
 void _C::selfSetupGuis(){
+	
+	gui->addToggle("Do Spin Camera", &doSpinCamera);
     spinSlider = gui->addSlider("Spin Speed",-6.0, 6.0,1);
     dotSizeSlider = gui->addSlider("Dot Size",1, 64, 2);
     nucleusSize = gui->addSlider("Nucleus Size",0, 5, 1);
@@ -69,7 +75,6 @@ void _C::selfSetupGuis(){
    // generateRandCam = camGui->addButton( "Generate Random Bounce",false, 32,32);
    // tumbleCam = camGui->addButton( "Quatumble",false, 32,32);
    // camDuration = camGui->addSlider("Cam Path Duration",0,120,60);
-
     
     rdrGui->addToggle("Show Neurons", &renderNeurons);
     rdrGui->addSlider("Depth Coloring", 0.0, 1.0, &_C::colorMix);
@@ -457,12 +462,14 @@ void _C::selfDraw(){
 	
     ofPushMatrix();
 
-	float rxp = ((GetCloudsInputX()-(getCanvasWidth()/2))*0.2);
-	float ryp = ((GetCloudsInputY()-(getCanvasHeight()/2))*0.2);
-	rx = (rx*0.95) + (rxp*0.05);
-	ry = (ry*0.95) + (ryp*0.05);
-	ofRotateY(rx);
-	ofRotateX(ry);
+	if(doSpinCamera){
+		float rxp = ((GetCloudsInputX()-(getCanvasWidth()/2))*0.2);
+		float ryp = ((GetCloudsInputY()-(getCanvasHeight()/2))*0.2);
+		rx = (rx*0.95) + (rxp*0.05);
+		ry = (ry*0.95) + (ryp*0.05);
+		ofRotateY(rx);
+		ofRotateX(ry);
+	}
 
 
     //some camera sway
