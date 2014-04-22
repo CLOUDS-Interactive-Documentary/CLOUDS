@@ -39,7 +39,8 @@ void CloudsIntroSequence::selfSetDefaults(){
 	hoveringTitle = false;
 	currentTitleOpacity = 0;
 	bQuestionDebug = false;
-	
+	firstQuestionStopped = false;
+    
 	kinectHelperAlpha = 0.0;
 	nodeAlphaAttenuate = 1.0;
 	
@@ -449,6 +450,10 @@ void CloudsIntroSequence::updateQuestions(){
 //				curQuestion.hoverPosition.z += slowDownFactor * cameraForwardSpeed;
 				if(slowDownFactor > .9){
 					//pause this node and all the ones behind it
+                    if(!firstQuestionStopped){
+                        firstQuestionStoppedTime = ofGetElapsedTimef();
+                        firstQuestionStopped = true;
+                    }
 					questionChannels[curQuestion.tunnelQuadrantIndex] = true;
 					channelPauseTime[curQuestion.tunnelQuadrantIndex] = ofGetElapsedTimef();
 				}
@@ -507,6 +512,9 @@ void CloudsIntroSequence::updateQuestions(){
 				else if(distanceToQuestion > questionTugDistance.max && selectedQuestion == NULL){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
+                    if(firstQuestionStopped){
+                        firstQuestionStoppedTime = ofGetElapsedTimef();
+                    }
 				}
 			}
 		}
@@ -712,21 +720,7 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 }
 
 void CloudsIntroSequence::selfDraw(){
-	
-//#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
-//    if (hud != NULL) {
-//        if(selectedQuestion != NULL){
-//            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -selectedQuestion->screenPosition.y/2));
-//        }
-//        else if(caughtQuestion != NULL){
-//            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -caughtQuestion->screenPosition.y/2));
-//        }
-//        else{
-//            hud->draw3D(getOculusRift().baseCamera);
-//        }
-//    }
-//#endif
-//    
+  
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -835,10 +829,10 @@ void CloudsIntroSequence::drawCloudsType(){
 
 void CloudsIntroSequence::drawHelperType(){
 
-	ofPushMatrix();
 	ofPushStyle();
 	glDisable(GL_DEPTH_TEST);
-	
+	ofDisableLighting();
+    
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
 		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 		currentHelperFontSize = helperFontSize;
@@ -878,13 +872,15 @@ void CloudsIntroSequence::drawHelperType(){
 	if(caughtQuestion != NULL){
 		basePosition = caughtQuestion->hoverPosition;
 		helpHoverText = caughtQuestion->question;
-		helperTextOpacity = 1.0;
+		helperTextOpacity = ofMap(caughtQuestion->hoverPercentComplete, 0.0, .05, 0.0, 1.0, true);
+
 		scaleModifier = .5;
 		helperFont.setTracking(helperFontTracking*.1);
 	}
 
+    //draw the text
 	if(helpHoverText != ""){
-		
+        ofPushMatrix();
 		helpHoverText = ofToUpper(helpHoverText);
 		
 		float hoverTextWidth  = helperFont.stringWidth(helpHoverText);
@@ -895,7 +891,7 @@ void CloudsIntroSequence::drawHelperType(){
 		#else
 		ofTranslate(basePosition);
 		#endif
-		ofRotate(180, 0, 0, 1);//flip around
+		ofRotate(180, 0, 0, 1); //flip around
 		ofScale(scaleModifier*helperFontScale,
 				scaleModifier*helperFontScale,
 				scaleModifier*helperFontScale);
@@ -904,16 +900,43 @@ void CloudsIntroSequence::drawHelperType(){
 		
 		int yOffsetMult = (!bUseOculusRift && caughtQuestion->tunnelQuadrantIndex == 2) ? -1 : 1;
 		helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY-hoverTextHeight/2) );
+        ofPopMatrix();
 	}
-	
+#ifdef OCULUS_RIFT
+    
+    if(firstQuestionStopped){
+        ofPushMatrix();
+        
+        float questionhintAlpha = ofMap(ofGetElapsedTimef(),
+                                        firstQuestionStoppedTime, firstQuestionStoppedTime+2,
+                                        0.0, .5, true) * (1.0-helperTextOpacity);
+        float hintTextWidth  = helperFont.stringWidth("SELECT A QUESTION");
+		float hintTextHeight = helperFont.stringHeight("SELECT A QUESTION");
+		ofVec3f basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
+#ifdef OCULUS_RIFT
+		getOculusRift().multBillboardMatrix( basePosition );
+#else
+		ofTranslate(basePosition);
+#endif
+		ofRotate(180, 0, 0, 1); //flip around
+		ofScale(helperFontScale*.6,
+				helperFontScale*.6,
+				helperFontScale*.6);
+        
+        ofSetColor(255, 255*questionhintAlpha);
+        helperFont.drawString("SELECT A QUESTION", -hintTextWidth*.5, hintTextHeight*.5 );
+
+        ofPopMatrix();
+    }
+#endif
+    ofEnableLighting();
 	glEnable(GL_DEPTH_TEST);
 	ofPopStyle();
-	ofPopMatrix();
+//	ofPopMatrix();
 }
 
 void CloudsIntroSequence::drawIntroNodes(){
 
-//#ifdef OCULUS_RIFT
 	ofPushStyle();
 	
 	for(int i = 0; i < introNodes.size(); i++){
@@ -931,7 +954,6 @@ void CloudsIntroSequence::drawIntroNodes(){
 	}
 	
 	ofPopStyle();
-//#endif
 	
 }
 

@@ -273,7 +273,6 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showIntro(){
 	
-
 	resetInterludeVariables();
 	
 #ifdef OCULUS_RIFT

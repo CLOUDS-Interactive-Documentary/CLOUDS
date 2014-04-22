@@ -128,7 +128,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float currentFontExtrusion;
 
 	void positionStartQuestions();
-	
+	bool firstQuestionStopped;
+    float firstQuestionStoppedTime;
+    
 	vector<CloudsPortal> startQuestions;
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;
