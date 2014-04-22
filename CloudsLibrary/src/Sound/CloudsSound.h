@@ -18,6 +18,7 @@
 typedef struct{
 	string trackPath;
 	float startTime;
+	float mixLevel;
 } QueuedTrack;
 
 class CloudsSound : public ofThread {
@@ -81,6 +82,8 @@ class CloudsSound : public ofThread {
 	void playImmediately(string trackPath);
 
 	void saveMixLevels();
+	float frontMixLevel;
+	float backMixLevel;
 	
   protected:
 
