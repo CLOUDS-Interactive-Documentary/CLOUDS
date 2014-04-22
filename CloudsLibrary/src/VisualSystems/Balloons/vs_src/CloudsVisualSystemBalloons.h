@@ -3,7 +3,6 @@
 //
 // VISUAL SYSTEMS
 //
-// Welcome to the EMPTY CloudsVisualSystem
 //
 //
 //
@@ -11,60 +10,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxObjLoader.h"
-
-class Credit
-{
-public:
-	Credit(string _title, string _name, ofVec3f _pos) :
-	name( _name ),
-	title( _title ),
-	pos(_pos)
-	{
-		setup();
-	}
-	
-	~Credit()
-	{
-		
-	}
-	
-	void setup()
-	{
-		getTextWidth();
-	}
-	
-	void getTextWidth()
-	{
-		//figure out the text width here
-		
-		width = 75;//temp
-	}
-	
-	ofVec3f getLeft()
-	{
-		return ofVec3f(pos.x - width*.5, pos.y, pos.z);
-	}
-	
-	void draw()
-	{
-		//draw text at the position
-		glDisable(GL_CULL_FACE);
-		ofSetColor(255,255,255);
-//		ofDrawBitmapString("YO DAWG, I PUT SOME WORDS IN YOUR BALLOONS", pos.x - width*.5, pos.y + );
-//		ofDrawBitmapString("Dr. Van Nostron", pos.x - width*.5, pos.y - 6);
-		
-		ofSetColor(255, 255, 0);
-		glLineWidth(2);
-		ofLine(pos.x - width*.5, pos.y, pos.z, pos.x + width*.5, pos.y, pos.z);
-	}
-	
-	string title;
-	string name;
-	
-	ofVec3f pos;
-	float width;
-};
+#include "BalloonCredit.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemBalloons : public CloudsVisualSystem {
@@ -221,7 +167,7 @@ protected:
 	ofShader velShader;
 	ofShader quatShader;
 	float noiseScl, offset, noiseSampleScale, velAtten, radius, accScl, gravity, attractionToCenter, cameraBounce,cameraAttractionToCenter, cameraOffset;
-	float spawnRad, cameraTargetDist;
+	float spawnRad, cameraTargetDist, cameraBounceRadius;
 	float highSpeedScale, speedLow, speedHi, highSpeedPercent;
 	
 	float balloonFrameVal;
@@ -263,5 +209,16 @@ protected:
 	ofVec3f line0, line1;
 
 	float textSpeed, textRadius, creditLightDist;
-	vector<Credit> credits;
+	vector<BalloonCredit> credits;
+	
+	//font options
+	ofxFTGLFont font;
+	int currentFontSize;
+	int fontSize;
+	float fontScale;
+	float justificationWidth;
+	
+	
+	int shininess;
+	float lightScale, facingRatioScale, creditLightScale;
 };

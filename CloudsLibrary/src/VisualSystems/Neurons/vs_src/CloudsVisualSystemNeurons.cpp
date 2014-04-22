@@ -33,6 +33,10 @@ void _C::selfSetup(){
     flythrough = false;
     bounce = false;
     camDuration = 0;
+	rx = 0;
+	ry = 0;
+	doSpinCamera = false;
+
 }
 
 void _C::selfSetDefaults(){
@@ -40,11 +44,16 @@ void _C::selfSetDefaults(){
     bounce = false;
     flythrough = false;
     camDuration = 0.f;
+	doSpinCamera = false;
+	
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
+
 }
 
 void _C::selfSetupGuis(){
+	
+	gui->addToggle("Do Spin Camera", &doSpinCamera);
     spinSlider = gui->addSlider("Spin Speed",-6.0, 6.0,1);
     dotSizeSlider = gui->addSlider("Dot Size",1, 64, 2);
     nucleusSize = gui->addSlider("Nucleus Size",0, 5, 1);
@@ -66,7 +75,6 @@ void _C::selfSetupGuis(){
    // generateRandCam = camGui->addButton( "Generate Random Bounce",false, 32,32);
    // tumbleCam = camGui->addButton( "Quatumble",false, 32,32);
    // camDuration = camGui->addSlider("Cam Path Duration",0,120,60);
-
     
     rdrGui->addToggle("Show Neurons", &renderNeurons);
     rdrGui->addSlider("Depth Coloring", 0.0, 1.0, &_C::colorMix);
@@ -454,33 +462,31 @@ void _C::selfDraw(){
 	
     ofPushMatrix();
 
-    //ofTranslate(0,0,camDistance);
-    
-    //cloudsPathCam.draw();
+	if(doSpinCamera){
+		float rxp = ((GetCloudsInputX()-(getCanvasWidth()/2))*0.2);
+		float ryp = ((GetCloudsInputY()-(getCanvasHeight()/2))*0.2);
+		rx = (rx*0.95) + (rxp*0.05);
+		ry = (ry*0.95) + (ryp*0.05);
+		ofRotateY(rx);
+		ofRotateX(ry);
+	}
 
-    //ofSetColor(0,0xff,0);
-    //cloudsPathCam.drawPaths(5);
-
-    //ofRotate(rotation,0,0,1);
 
     //some camera sway
-    ofTranslate(
-                ofNoise( ofGetFrameNum() * 0.01 , 1000) * _C::sway,
-                ofNoise( ofGetFrameNum() * 0.01 , 2000) * _C::sway,
-                ofNoise( ofGetFrameNum() * 0.01 , 3000) * _C::sway
-    );
+//    ofTranslate(
+//                ofNoise( ofGetFrameNum() * 0.01 , 1000) * _C::sway,
+//                ofNoise( ofGetFrameNum() * 0.01 , 2000) * _C::sway,
+//                ofNoise( ofGetFrameNum() * 0.01 , 3000) * _C::sway
+//    );
     
     
     ofCamera &cam = getCameraRef();
-    /*
-    
-    cam->setGlobalPosition( *rootNodes[0] );
-     */
     
     
     if(renderNeurons){
 
         _N::drawMode = GL_LINES;
+
         ofMesh m;
         // for all root nodes:
         vector<_N*>::iterator it;
@@ -503,28 +509,18 @@ void _C::selfDraw(){
         
 		//TODO: remove all immediate modes and replace with ofMesh
         glPointSize(dotSize);
-//        glBegin(GL_POINTS);		
-//        glColor3f(1,1,1);
-        // for all terminals
-        for(it=_N::terminals.begin();it!=_N::terminals.end();it++){
-//            glVertex3f( (*it)->x,
-//                                    (*it)->y,
-//                                    (*it)->z );
+        for(it = _N::terminals.begin(); it!=_N::terminals.end(); it++){
 			m.addVertex(ofVec3f( (*it)->x,(*it)->y,(*it)->z) );
 		}
 		
 		ofSetColor(255);
 		m.drawVertices();
-//        glEnd();
         
     }
 
 	ofPopMatrix();
 	
     ofSetColor(255);
-//    stringstream fps;
-//    fps << "FPS: " << ofGetFrameRate();
-//    cout << fps.str() << endl;
 	
 	ofPopStyle();
 	glPopAttrib();
@@ -661,6 +657,8 @@ void _N::draw(){
     
 	for(that=children.begin(); that!=children.end();that++){
 		
+		ofPushStyle();
+		
         if(isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
 			ofSetColor(255,0,0,255);
         }else{
@@ -701,6 +699,8 @@ void _N::draw(){
         }
 		
 		(*that)->draw();
+		
+		ofPopStyle();
 	}
 	
 }

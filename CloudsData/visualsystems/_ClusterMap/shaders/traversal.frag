@@ -17,7 +17,7 @@ float map(float value, float inputMin, float inputMax, float outputMin, float ou
 void main () {
     
     //this is how far along the reveal is on the front
-	float traverseReveal = 1.0 - smoothstep(percentTraverseRevealed, percentTraverseRevealed+.01,freshTraversalPosition);
+	float traverseReveal = 1.0 - smoothstep(percentTraverseRevealed, percentTraverseRevealed + .01, freshTraversalPosition);
     
     //this calculates the fall off on the back of the trail
     float vertsRemainingReveal = segmentVertCount * (1.0 - percentTraverseRevealed);
@@ -34,7 +34,7 @@ void main () {
 	//float segmentVertexPosition = freshTraversalPosition * segmentVertCount;
 //	float colorMix = map(segmentVertCount*traverseReveal - segmentVertexPosition, 0.0, colorFalloff*10., 0., 1.0);
     //blend the two primary colors together
-    float colormix = smoothstep(colorFalloff, .995,trailAttenuate);
+    float colormix = smoothstep(colorFalloff, .995, trailAttenuate);
     //then flash the tip white
     float whiteflash = smoothstep(.995,1.0,trailAttenuate);
     //mix em together
@@ -43,5 +43,6 @@ void main () {
     
     gl_FragColor.rgb = result.rgb * trailAttenuate;
 	gl_FragColor.a = 1.0;
+//	gl_FragColor.rgb = vec3(freshTraversalPosition);
 //	gl_FragColor.rgb = vec3( falloff*max(traverseReveal,finalizedTraversalBit) );
 }

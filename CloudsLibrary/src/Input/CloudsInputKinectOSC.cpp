@@ -8,6 +8,7 @@
 
 #include "CloudsInputKinectOSC.h"
 #include "CloudsInputEvents.h"
+#include "CloudsGlobal.h"
 
 int kListenPort          = 12345;
 int kNumFramesForRemoval = 60;
@@ -18,12 +19,14 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 : activeThresholdY(activeThresholdY)
 , activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
+, mainBodyIdx(-1)
 , jointLerpPct(0.3f)
 , focusRange(0.2f)
 , bClampToBounds(true)
 , bDoDebug(false)
 , viewerState(k4w::ViewerState_None)
 , viewerIdleTime(0)
+, currViewerBodyIdx(-1)
 , bCurrViewerHasInteracted(false)
 , boundsMin(-0.5f, -0.7f, 1.0f)
 , boundsMax( 0.5f, -0.2f, 2.0f)
@@ -38,9 +41,11 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , cursorUpSizeMax(16)
 , feedbackScale(0.2f)
 , feedbackMargin(0.02f)
-, feedbackHSB(255, 0, 255)
+, feedbackAlpha(0)
+, feedbackFade(1.0f)
+, feedbackPrompt("")
 {
-
+    feedbackFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", 15);
 }
 
 //--------------------------------------------------------------
@@ -320,6 +325,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             if (viewerState < k4w::ViewerState_PresentIdle && !bBodyOutOfBounds) {
                 // upgrayedd!
                 viewerState = k4w::ViewerState_PresentIdle;
+                mainBodyIdx = idx;
             }
 		}
         
@@ -354,7 +360,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     // remove any dead bodies
     vector<int> toRemove;
     for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
-        if (ABS(it->second->lastUpdateFrame - lastOscFrame) > kNumFramesForRemoval) {
+        if (ABS(it->second->lastUpdateFrame - ofGetFrameNum()) > kNumFramesForRemoval) {
             toRemove.push_back(it->first);
         }
     }
@@ -366,7 +372,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     // process any dead or inactive hands
     toRemove.clear();
     for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
-        bool bDead = ABS(it->second->lastUpdateFrame - lastOscFrame) > kNumFramesForRemoval;
+        bool bDead = ABS(it->second->lastUpdateFrame - ofGetFrameNum()) > kNumFramesForRemoval;
         if (bDead || it->second->actionState == k4w::ActionState_Inactive) {
             // make sure the hand is not mid-action when getting removed
             processHandEvent(it->first, hands[it->first], k4w::HandState_Unknown);
@@ -444,18 +450,24 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     }
     
     // update the viewer state and idle time
-	if (viewerState < k4w::ViewerState_Interacting && primaryIdx != -1) {
+    if (bodies.empty()) {
+        // downgrayedd!
+        viewerState = k4w::ViewerState_None;
+    }
+	else if (viewerState < k4w::ViewerState_Interacting && primaryIdx != -1) {
         // upgrayedd!
         viewerState = k4w::ViewerState_Interacting;
+        currViewerBodyIdx = primaryIdx;
         bCurrViewerHasInteracted = true;
     }
+    
     if (viewerState == k4w::ViewerState_PresentIdle) {
         viewerIdleTime += ofGetLastFrameTime() * 1000;
     }
     else {
         viewerIdleTime = 0;
     }
-    if (viewerState <= k4w::ViewerState_OutOfRange) {
+    if (viewerState <= k4w::ViewerState_OutOfRange || (primaryIdx != -1 && primaryIdx != currViewerBodyIdx)) {
         // this should work assuming a user can't just magically appear in PresentIdle state
         bCurrViewerHasInteracted = false;
     }
@@ -478,7 +490,19 @@ void CloudsInputKinectOSC::mapHandCoords(k4w::HandJoint& joint, ofVec3f& origin,
     float focusXY = ofMap(joint.inputPosition.distance(joint.clampedPosition), 0.0f, 0.5f, 1.0f, 0.0f, true);
     //float focusZ = ofMap(joint.screenPosition.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
     float focusZ = ofMap(ABS(joint.screenPosition.z - activeThresholdZ), focusRange, 1.0f, 1.0f, 0.0f, true);
-    joint.focus = powf(MIN(focusXY, focusZ), 2.0f);
+    if (focusXY < focusZ) {
+        joint.focus = powf(focusXY, 2.0f);
+    }
+    else {
+        joint.focus = powf(focusZ, 2.0f);
+        if (joint.screenPosition.z > activeThresholdZ) {
+            if (joint.focus == 0) {
+                joint.focus = 0.0000001;
+            }
+            joint.focus *= -1;
+        }
+    }
+//    joint.focus = powf(MIN(focusXY, focusZ), 2.0f);
 }
 
 //--------------------------------------------------------------
@@ -549,6 +573,8 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
     ofPushStyle();
     ofPushMatrix();
     {
+        ofDisableLighting();
+        
         // scale up from our -1, 1 viewport
         ofTranslate(x, y);
         ofScale(width / 2.0f, height / 2.0f);
@@ -584,6 +610,8 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
 				ofVertex(body->shoulderRightJoint.inputPosition);
             }
             ofEndShape();
+            
+            ofDrawBitmapString(ofToString(body->spineBaseJoint.inputPosition.z), body->spineBaseJoint.inputPosition);
         }
         
         // draw hands
@@ -643,16 +671,16 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
 }
 
 //--------------------------------------------------------------
-void CloudsInputKinectOSC::draw(float alpha)
+void CloudsInputKinectOSC::draw()
 {
     float margin = ofGetHeight() * feedbackMargin;
     float height = ofGetHeight() * feedbackScale;
     float width = height * 4.0f/3.0f;
-    draw(margin, ofGetHeight() - height - margin, width, height, alpha);
+    draw(margin, ofGetHeight() - height - margin, width, height);
 }
 
 //--------------------------------------------------------------
-void CloudsInputKinectOSC::draw(float x, float y, float width, float height, float alpha)
+void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 {
     // Adjust the dimensions to fit in a 4:3 window cause stretching is gross.
 	if (width/height != 4.0f/3.0f) {
@@ -660,23 +688,93 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height, flo
 		x += (width - newWidth) / 2.0f;
 		width = newWidth;
 	}
+    
+    static ofxEasingQuad easingQuad;
+    
+    ofPushStyle();
+    
+    ofSetLineWidth(2);
+
+    // Display feedback if either:
+    // 1. A viewer is detected but out of range (not in the hot seat)
+    // 2. A viewer is in the hot seat AND has not began yet
+    // 3. A viewer is interacting and pushing in too far
+    bool bOutOfRange = (viewerState == k4w::ViewerState_OutOfRange);
+    bool bHasNotBegun = (viewerState > k4w::ViewerState_OutOfRange && !bUserBegan);
+    bool bPushTooFar = (primaryIdx != -1 && hands[primaryIdx]->handJoint.focus < 0 && hands[primaryIdx]->handJoint.focus > -0.3);
+
+    // Hide feedback if either:
+    // 1. No one is around
+    // 2. A viewer just sat in the hot seat
+    // 3. A viewer is interacting properly
+    bool bNobody = (viewerState == k4w::ViewerState_None);
+    bool bHasBegun = (viewerState > k4w::ViewerState_OutOfRange && bUserBegan);
+    bool bGoodJob = (primaryIdx != -1 && (hands[primaryIdx]->handJoint.focus <= -0.3 || hands[primaryIdx]->handJoint.focus >= 0));
+    
+    if (!feedbackTween.isRunning()) {
+        if (bOutOfRange || bHasNotBegun || bPushTooFar) {
+            if (bOutOfRange) {
+                feedbackPrompt = "HAVE A SEAT";
+            }
+            else if (bHasNotBegun) {
+                feedbackPrompt = "SELECT THE CIRCLE";
+            }
+            else {  // bPushTooFar
+                feedbackPrompt = "TOO CLOSE";
+            }
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0.4f * 255, 1000, 0);
+            feedbackTween.addValue(1.0f, 1.0f);
+            feedbackTween.start();
+        }
+        else if (bNobody || bHasBegun || bGoodJob) {
+            feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 250, bNobody? 4000 : (bHasBegun? 3000 : 500));
+            feedbackTween.addValue(feedbackFade, 1.25f);
+            feedbackTween.start();
+        }
+    }
+//    else {
+//        feedbackPrompt = "";
+//        feedbackAlpha = ofLerp(feedbackAlpha, 0, 0.5f);
+//    }
+    
+    if (feedbackTween.isRunning()) {
+        feedbackAlpha = feedbackTween.update();
+        feedbackFade = feedbackTween.getTarget(1);
+    }
+    
+    // Draw the text prompt.
+    ofSetColor(ofColor::white, feedbackAlpha);
+    feedbackFont.drawString(feedbackPrompt, x + (width - feedbackFont.stringWidth(feedbackPrompt)) / 2, y + height - feedbackFont.stringHeight(feedbackPrompt));
 	
-	ofPushStyle();
     ofPushMatrix();
     {
         // scale up from our -1, 1 viewport
         ofTranslate(x, y);
         ofScale(width / 2.0f, height / 2.0f);
         ofTranslate(1, 1);
-        ofScale(1, -1);
+        ofScale(1 * feedbackFade, -1 * feedbackFade);
         
-		ofSetColor(ofColor::fromHsb(feedbackHSB.x, feedbackHSB.y, feedbackHSB.z), alpha);
-
         ofNoFill();
 		ofRect(-1, -1, 2, 2);
+        
+        ofScale(1.5, 1.5);
+        ofTranslate(0, -0.2);
+        
+        if (viewerState < k4w::ViewerState_PresentIdle) {
+            ofSetColor(ofColor::gray, feedbackAlpha);
+        }
+        
+        // TODO: Make sure the skeletons are drawn inside the box.
+//        glEnable(GL_SCISSOR_TEST);
+//        glScissor-1, -1, 2, 2);
 
         // draw bodies
         for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
+            if (viewerState > k4w::ViewerState_OutOfRange && it->first != mainBodyIdx) {
+                // Only draw the main body.
+                continue;
+            }
+            
             k4w::Body * body = it->second;
             
             ofNoFill();
@@ -708,6 +806,11 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height, flo
         for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
             k4w::Hand * hand = it->second;
             
+            if (viewerState > k4w::ViewerState_OutOfRange && hand->bodyIdx != mainBodyIdx) {
+                // Only draw the main body hands.
+                continue;
+            }
+            
             // draw the arm
             ofLine(hand->handJoint.inputPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->elbowLeftJoint.inputPosition : bodies[hand->bodyIdx]->elbowRightJoint.inputPosition);
             
@@ -720,8 +823,11 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height, flo
 			// draw the hand
             ofCircle(hand->handJoint.inputPosition, 0.02f);
         }
+        
+//        glDisable(GL_SCISSOR_TEST);
     }
     ofPopMatrix();
+    
     ofPopStyle();
 }
 

@@ -37,13 +37,16 @@ void testApp::setup(){
 	for(int i = 0; i < run.clipHistory.size(); i++){
 		cout << "	** " << run.clipHistory[i].getID() << endl;
 	}
-	
+    
+//	clusterMap.forceScreenResolution(1920, 1080);
 	clusterMap.setup();
 	clusterMap.loadPresetGUISFromName("2DFollowCam");
 
 	clusterMap.setRun(run);
 	clusterMap.buildEntireCluster(parser);
 	clusterMap.allocateFlickerTexture();
+	
+	clusterMap.autoTraversePoints = true;
 	
 	clusterMap.playSystem();
 	
@@ -65,7 +68,9 @@ void testApp::exit(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+//    ofPixels p;
+//    clusterMap.getSharedRenderTarget().readToPixels(p);
+//    ofSaveImage(p, "CLUSTER_BACKGROUND.png");
 }
 
 //--------------------------------------------------------------

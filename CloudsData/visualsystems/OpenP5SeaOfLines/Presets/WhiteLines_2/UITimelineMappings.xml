@@ -4,8 +4,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
+                <WidgetName>BG ALPHA</WidgetName>
+                <WidgetID>3</WidgetID>
+                <WidgetCanvasParent>SeaOfLines</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
                 <WidgetName>GRAVITY</WidgetName>
-                <WidgetID>12</WidgetID>
+                <WidgetID>14</WidgetID>
                 <WidgetCanvasParent>SeaOfLines</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -13,15 +21,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>LINE ALPHA 1</WidgetName>
-                <WidgetID>21</WidgetID>
-                <WidgetCanvasParent>SeaOfLines</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>BG ALPHA</WidgetName>
-                <WidgetID>3</WidgetID>
+                <WidgetID>23</WidgetID>
                 <WidgetCanvasParent>SeaOfLines</WidgetCanvasParent>
             </Widget>
             <Track></Track>

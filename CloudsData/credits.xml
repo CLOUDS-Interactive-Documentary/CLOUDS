@@ -1,0 +1,119 @@
+<credits>
+	
+	<!-- US -->
+	<credit align="center">
+		<title>
+			Directors
+		</title>
+		<name>
+			Jonathan Minard, James George
+		</name>
+	</credit>
+	
+	<!-- GOLAN -->
+	<credit align="right">
+		<title>
+			Executive Producer
+		</title>
+		<name>
+			Golan Levin 
+		</name>
+	</credit>
+
+	<!-- WINSLOW -->
+	<credit align="left">
+		<title>
+			Producer
+		</title>
+		<name>
+			Winslow Porter
+		</name>
+	</credit>
+
+	<!-- LUKE -->
+	<credit align="left">
+		<title>
+			Music
+		</title>
+		<name>
+			R. Luke DuBois
+		</name>
+	</credit>
+
+	<!-- BRADLEY -->
+	<credit align="left">
+		<title>
+			Design Director
+		</title>
+		<name>
+			Bradley "GMUNK" Munkowitz
+		</name>
+	</credit>
+
+	<!-- ELIE -->
+	<credit align="left">
+		<title>
+			Interaction Programming
+		</title>
+		<name>
+			Ellie Zananiri
+		</name>
+	</credit>
+	
+	<!-- LARS -->
+	<credit align="right">
+		<title>
+			Lead Visual Programming
+		</title>
+		<name>
+			Lars Berg
+		</name>
+	</credit>
+	
+	<!-- SURYA -->
+	<credit align="left">
+		<title>
+			Systems Engineer
+		</title>
+		<name>
+			Surya Mattu
+		</name>
+	</credit>
+	
+</credits>
+
+<!--
+Executive Producer: Golan Levin 
+
+Producer: Winslow Porter
+
+Music Composer: Luke DuBois Design Director: Bradley G 
+
+Munkowitz
+
+Interaction Developer: Elie Zananiri
+
+System Engineer: Surya Mattu
+
+Interface Design: Sarah Hallacher, 
+
+Erica Gorochow
+
+Additional Programming: Lars Berg, 
+
+Patricio González-Vivo, Luisa 
+
+Pereira, Jeff Crouse, Gal Sasson, 
+
+Neil Mendoza, Omer Shapira, 
+
+Reza Ali, Michael Allison, Charlie 
+
+Whitney, Jack Kalish, Jason 
+
+Walters
+
+Additional Sound: Jules Laplace
+
+Sound Engineer: Brett Murphy
+-->

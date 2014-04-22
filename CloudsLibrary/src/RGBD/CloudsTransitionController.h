@@ -23,6 +23,8 @@ typedef enum {
 	TRANSITION_QUESTION_OUT = 8,
     TRANSITION_INTERLUDE_IN = 9,
     TRANSITION_INTERLUDE_OUT = 10,
+	TRANSITION_CLUSTERMAP_IN = 11,
+	TRANSITION_CLUSTERMAP_OUT = 12
 } CloudsTransitionState;
 
 typedef struct {
@@ -39,6 +41,9 @@ class CloudsTransitionController {
     void transitionToIntro(float inDuration);
 	void transitionFromIntro(float transitionOutDuration);
     
+	void transitionToClusterMap(float transitionDuration);
+	void transitionFromClusterMap(float transitionDuration);
+	
     void transitionToFirstInterview(float transitionDuration);
 	void transitionToFirstVisualSystem(float transitionOutDuration);
     
@@ -96,7 +101,7 @@ class CloudsTransitionController {
 	
 	float transitionInCompleteTime;
 	float transitionOutCompleteTime;
-	void confirmEmpty();
+	void confirmEmpty(string transitionName);
 	
 	bool newState;
 	CloudsTransitionState getNextState();

@@ -35,7 +35,6 @@ void CalibrationNode::updateWorldPosition(){
 	worldPosition.y *= multiplier;
 
 	if(cam != NULL){
-		//		worldPosition  = cam->getModelViewMatrix() * worldPosition;
 		worldPosition  = cam->getOrientationQuat() * worldPosition;
 		worldPosition += cam->getPosition();
 	}

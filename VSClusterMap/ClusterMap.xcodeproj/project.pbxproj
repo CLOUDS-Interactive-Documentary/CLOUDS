@@ -633,8 +633,6 @@
 		E7F051231872492200017521 /* traversal.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = traversal.vert; sourceTree = "<group>"; };
 		E7F051271872654400017521 /* options.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = options.frag; sourceTree = "<group>"; };
 		E7F051281872654400017521 /* options.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = options.vert; sourceTree = "<group>"; };
-		E7F0512C18734EE000017521 /* background.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = background.frag; path = ../CloudsData/shaders/background.frag; sourceTree = "<group>"; };
-		E7F0512D18734EE100017521 /* background.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = background.vert; path = ../CloudsData/shaders/background.vert; sourceTree = "<group>"; };
 		E7FEFDD91876171F009533A7 /* ClusterMap copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ClusterMap copy-Info.plist"; path = "/Users/focus/Documents/Xcode/of_Clouds_v.0.7.4_osx_release/of_v0.7.4_osx_release/apps/CLOUDS/VSClusterMap/ClusterMap copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -1215,8 +1213,6 @@
 			children = (
 				A633AB6618865DF70088E767 /* CloudsPortal.h */,
 				A633AB6518865DF70088E767 /* CloudsPortal.cpp */,
-				E7F0512C18734EE000017521 /* background.frag */,
-				E7F0512D18734EE100017521 /* background.vert */,
 				E7D483681860C5D000BE9BF8 /* Input */,
 				E704D00A17B3BB3600F77528 /* VisualSystemsLibrary */,
 				E7E5E31C1812404300CA4196 /* _ClusterMap */,
@@ -1605,8 +1601,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ClusterMap" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;

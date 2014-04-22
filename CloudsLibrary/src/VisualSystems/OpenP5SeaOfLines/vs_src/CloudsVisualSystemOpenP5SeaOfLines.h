@@ -100,12 +100,14 @@ class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
         float lineParams1[4], lineParams2[4];
         ofFloatColor lineColor1, lineColor2;
     
-        float collideDist, lineDist;
+        float collideDist, lineDist, baseDist;
         float minSpeed, maxSpeed;
         float cursorRange;
         float gravity;
     
         ofVec2f cursor;
+        int numParticles;
+        void generateParticles();
     
         ofVboMesh mesh;
         vector<SOLPlayer> players;

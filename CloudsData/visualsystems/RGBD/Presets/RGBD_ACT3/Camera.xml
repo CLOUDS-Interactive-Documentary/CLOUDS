@@ -55,3 +55,9 @@
     <Name>DAMPING</Name>
     <Value>0.041316897</Value>
 </Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>FOV ZOOM</Name>
+    <HighValue>99.507385254</HighValue>
+    <LowValue>70.344833374</LowValue>
+</Widget>

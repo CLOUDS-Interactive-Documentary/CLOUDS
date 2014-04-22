@@ -1,0 +1,27 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Msh</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>341.000000000</XPosition>
+    <YPosition>285.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Mesh Alpha</Name>
+    <Value>0.024630541</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Mesh X Simplify</Name>
+    <Value>1.827586174</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Mesh Y Simplify</Name>
+    <Value>2.000000000</Value>
+</Widget>

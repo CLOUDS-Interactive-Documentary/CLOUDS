@@ -3,7 +3,8 @@
 //
 
 #include "CloudsVisualSystemBalloons.h"
-#include "CloudsRGBDVideoPlayer.h"
+#include "ofxObjLoader.h"
+#include "CloudsGlobal.h"
 
 void CloudsVisualSystemBalloons::selfSetupGui(){
 	
@@ -13,6 +14,8 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Balloons");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	customGui->addSlider("cameraBounceRadiusScale", 1, 10, &cameraBounceRadius);
 	
 	customGui->addSlider("noiseScl", .01, 1, &noiseScl)->setIncrement(.001);
 	customGui->addSlider("noiseSampleScale", .001, .1, &noiseSampleScale)->setIncrement(.001);
@@ -48,6 +51,17 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
 	textGui->addSlider("textRadius", 1, 10, &textRadius);
 	textGui->addSlider("creditLightDist", 10, 500, &creditLightDist);
+	
+	textGui->addSpacer();
+	textGui->addIntSlider("shininess", 2, 128, &shininess);
+	textGui->addSlider("lightScale", 0, 1, &lightScale);
+	textGui->addSlider("creditLightScale", 0, 1, &creditLightScale);
+	textGui->addSlider("facingRatioScale", 0, 1, &facingRatioScale);
+	
+	textGui->addLabel("TYPE DISPLAY");
+	textGui->addIntSlider("Font Size", 5, 25, &fontSize);
+	textGui->addSlider("Font Scale", 0.0, 1.9, &fontScale);
+	textGui->addSlider("Justification Offset", 0, 700, &justificationWidth);
 	
 	ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemBalloons::selfGuiEvent);
 	guis.push_back(textGui);
@@ -289,8 +303,15 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	line0.set(-30, 0,0);
 	line1.set(30, 0,0);
 	
-	textSpeed = -1;
+	textSpeed = -.4;
 	textRadius = 3.;
+	
+	shininess = 10;
+	lightScale = .75;
+	creditLightScale = .75;
+	facingRatioScale = .5;
+	
+	cameraBounceRadius = 3;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -430,9 +451,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_low.obj", temp);
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon_mid.obj", temp);
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/balloon.obj", temp);
-	
-	sphericalMap.loadImage( getVisualSystemDataPath() + "sphericalMaps/cloudy_afternoon_preview.jpg");
-	
+		
 	vector<ofVec3f>& v = temp.getVertices();
 	vector<ofVec3f>& n = temp.getNormals();
 	
@@ -446,23 +465,50 @@ void CloudsVisualSystemBalloons::selfSetup()
 	velShader.load(getVisualSystemDataPath() + "shaders/velShader");
 	quatShader.load(getVisualSystemDataPath() + "shaders/quatShader");
 	
-	
-	for(int i=0; i<100; i++)
-	{
-		ofVec3f pos( 0, i * dim, 0);
-		Credit c("title", "name", pos);
+	ofxXmlSettings creditsXml;
+	if(creditsXml.loadFile(GetCloudsDataPath() + "credits.xml")){
+		creditsXml.pushTag("credits");
 		
-		credits.push_back(c);
+		int numCredits = creditsXml.getNumTags("credit");
+		for(int i = 0; i < numCredits; i++){
+			string justification = creditsXml.getAttribute("credit", "align", "left", i) ;
+			ofVec3f pos( 0, i * dim, 0);
+			if(justification == "left"){
+				pos.x = -justificationWidth;
+			}
+			else if(justification == "right"){
+				pos.x = justificationWidth;
+			}else{} // center
+			
+			creditsXml.pushTag("credit", i);
+			
+			BalloonCredit bc;
+			bc.title = ofToUpper(creditsXml.getValue("title", ""));
+			bc.name = creditsXml.getValue("name", "");
+			bc.pos = pos;
+			bc.font = &font;
+			bc.camera = &cloudsCamera;
+			credits.push_back(bc);
+			
+			creditsXml.popTag(); //credit
+		}
+		creditsXml.popTag(); //credits
 	}
+	else{
+		ofLogError("Balloons") << "Couldn't load credits XML!";
+		return;
+	}
+	
+	//TEST
+//	for(int i = 0; i < 3; i++){
+//		credits.push_back( credits[0] );
+//	}
 }
 
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){
-	
 }
 
-void CloudsVisualSystemBalloons::selfBegin()
-{
-	
+void CloudsVisualSystemBalloons::selfBegin(){
 }
 
 void CloudsVisualSystemBalloons::selfSceneTransformation(){
@@ -475,30 +521,19 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	ofFloatColor poscol = pospix.getColor(0,0);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
+//	balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .1);
+	
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
-	
-//	getCameraRef().setPosition(balloon00Pos.x, 0, cameraTargetDist + balloon00Pos.z);
-//	getCameraRef().setPosition(0, 0, cameraTargetDist);
-	//getCameraRef().lookAt(ofVec3f(balloon00Pos));
-	
-	//words dropping down
-//	line0.y = line1.y = ofMap(fmod(ofGetElapsedTimef() * 40, dim), 0, dim, dim, -dim, true);
-	
-	line0.y += textSpeed;
-	
-	if(line0.y > dim)
-	{
-		line0.y = -dim;
-	}else if(line0.y <-dim)
-	{
-		line0.y = dim;
-	}
-	
-	line1.y = line0.y;
 	
 	for(auto& c: credits)
 	{
 		c.pos.y += textSpeed;
+	}
+	
+	if(!font.isLoaded() || currentFontSize != fontSize)
+	{
+		font.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize);
+		currentFontSize = fontSize;
 	}
 }
 
@@ -529,7 +564,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	}
 	
 	//get our active credits to pass to the shader
-	vector<Credit*> activeCredits;
+	vector<BalloonCredit*> activeCredits;
 	for(auto& c: credits)
 	{
 		if(c.pos.y > -dim && c.pos.y<dim)
@@ -539,11 +574,14 @@ void CloudsVisualSystemBalloons::selfDraw()
 	}
 	
 	vector<ofVec4f> creditPositions;
+	vector<ofVec4f> creditPositionsL;
+	vector<ofVec4f> creditPositionsR;
 	for(auto& c: activeCredits)
 	{
-		ofVec4f cp = c->getLeft();
-		cp.w = c->width;
-		creditPositions.push_back(cp);
+		c->update();
+		creditPositions.push_back(c->pos);
+		creditPositionsL.push_back(c->left);
+		creditPositionsR.push_back(c->right);
 	}
 	
 	//update velocities
@@ -560,8 +598,12 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1f("dimY", dimY);
 	velShader.setUniform1f("bound", dim);
 	
-	if(creditPositions.size())	velShader.setUniform4fv("credits", &creditPositions[0][0], creditPositions.size());
-	velShader.setUniform1i("numCredits", creditPositions.size());
+	if(creditPositionsL.size())
+	{
+		velShader.setUniform4fv("creditsL", &creditPositionsL[0][0], creditPositionsL.size());
+		velShader.setUniform4fv("creditsR", &creditPositionsR[0][0], creditPositionsR.size());
+	}
+	velShader.setUniform1i("numCredits", creditPositionsL.size());
 	
 	velShader.setUniform1f("textRadius", textRadius);
 	
@@ -580,6 +622,7 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1f("speedLow", speedLow );
 	velShader.setUniform1f("speedHi", speedHi );
 	velShader.setUniform1f("highSpeedPercent", highSpeedPercent );
+	velShader.setUniform1f("cameraBounceRadius", cameraBounceRadius);
 	
 	ofRect(-1,-1,2,2);
 	
@@ -606,7 +649,8 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	shader.begin();
-	shader.setUniform1f("shininess", 10);
+	shader.setUniform1f("shininess", shininess);
+	shader.setUniform1f("lightScale", lightScale);
 	shader.setUniform1f("screenHeight", ofGetHeight());
 	
 	ofFloatColor bg0 = bgColor;
@@ -617,8 +661,8 @@ void CloudsVisualSystemBalloons::selfDraw()
 	
 	shader.setUniform1f("dim", dim );
 	shader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
-	shader.setUniform1f("facingRatio", .4);//TODO: <-- slider
-	shader.setUniform1f("fogDist", 400);//TODO: <-- slider
+	shader.setUniform1f("facingRatio", facingRatioScale);
+	shader.setUniform1f("fogDist", 400);// I don't think we're using this...
 	shader.setUniform1f("dimX", dimX);
 	shader.setUniform1f("dimY", dimY);
 	shader.setUniform3f("l0", l0.x, l0.y, l0.z);
@@ -626,14 +670,12 @@ void CloudsVisualSystemBalloons::selfDraw()
 	shader.setUniformTexture("velTexture", v0->getTextureReference(), 1);
 	shader.setUniformTexture("colTexture", colFbo.getTextureReference(), 2);
 	shader.setUniformTexture("quatTexture", quatFbo.getTextureReference(), 3);
-	shader.setUniformTexture("sphericalMap", sphericalMap, 4);
-	shader.setUniform2f("sphericalMapDim", sphericalMap.getWidth(), sphericalMap.getHeight());
 	
 	shader.setUniform1f("creditThresh", creditLightDist);
+	shader.setUniform1f("creditLightScale", creditLightScale);
 	
 	if(creditPositions.size())	shader.setUniform4fv("lights", &creditPositions[0][0], creditPositions.size());
-	shader.setUniform1f("numLights", creditPositions.size());
-	
+	shader.setUniform1f("numLights", fmin(creditPositions.size(), 4));
 	
 	//vbo instancing
 	vbo.bind();
@@ -641,13 +683,9 @@ void CloudsVisualSystemBalloons::selfDraw()
 	vbo.unbind();
 	
 	shader.end();
-	
-//	glLineWidth(2);
-//	ofSetColor(0, 255, 0);
-//	ofNoFill();
-//	ofBox(balloon00Pos, 30);
-	
-	//draw the credits
+
+	//draw creditsh
+	glDisable(GL_CULL_FACE);
 	for(auto& c: credits)
 	{
 		c.draw();
@@ -695,14 +733,7 @@ void CloudsVisualSystemBalloons::selfKeyPressed(ofKeyEventArgs & args)
 }
 void CloudsVisualSystemBalloons::selfKeyReleased(ofKeyEventArgs & args)
 {
-	if(args.key == ' ')
-	{
-		getCameraRef().setPosition(0, 0, -dim * 1.5);
-		getCameraRef().lookAt(ofVec3f(0,0,0));
-		setBalloonPositions();
-	}
-	
-	else if(args.key == 'l')
+	if(args.key == 'l')
 	{
 		shader.load(getVisualSystemDataPath() + "shaders/normalShader");
 		posShader.load(getVisualSystemDataPath() + "shaders/posShader");

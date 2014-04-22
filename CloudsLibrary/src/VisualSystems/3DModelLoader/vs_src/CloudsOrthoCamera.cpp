@@ -182,7 +182,7 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 		float oneMinusAtt = 1. - orbitVelAttenuation;
 		
 		//mouse input
-		if(dist > deadZone && viewport.inside( GetCloudsInputX(), GetCloudsInputY() ) )
+		if(dist > deadZone)// && viewport.inside( GetCloudsInputX(), GetCloudsInputY() ) )
 		{
 			//the deadzone is an area in the center of the screen where we don't rotate
 			float weight = ofMap( dist - deadZone, deadZone, 1, 0, 1, true );

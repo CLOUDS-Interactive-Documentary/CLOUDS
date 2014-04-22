@@ -26,6 +26,7 @@ CloudsInput::CloudsInput(){
 	lastPosition = ofVec3f();
     bleedOffset = ofVec3f();
 	dragging = false;
+    bUserBegan = false;
 }
 
 CloudsInputEvents& CloudsInput::getEvents(){
@@ -110,30 +111,42 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
         ofNoFill();
         ofSetColor(255, 255, 255, 192);
         ofCircle(pos, size);
-        ofFill();
-        ofSetColor(255, 255, 255, 64);
-        ofCircle(pos, size * focus);
+//        ofFill();
+//        ofSetColor(255, 255, 255, 64);
+//        ofCircle(pos, size * focus);
     }
     else {  // mode == CURSOR_MODE_CAMERA
         ofSetLineWidth(2);
-        ofSetColor(255, 255, 255, 192);
-        
-        static const float kCoreRadius = 0.2f;
-        float lineLength = size * ofMap(focus, 0.0f, 1.0f, kCoreRadius, (1.0f - kCoreRadius));
+#ifndef OCULUS_RIFT
+//        static const float kCoreRadius = 0.2f;
+//        float lineLength = size * ofMap(focus, 0.0f, 1.0f, kCoreRadius, (1.0f - kCoreRadius));
+        float lineLength;
+        if (focus >= 0) {
+            ofSetColor(255, 255, 255, 192);
+            lineLength = ofMap(focus, 0.0f, 1.0f, 1, size);
+        }
+        else {
+            ofColor flashColor(255, MAX(35, 192 * focus * -1));
+            if (focus < 0 && focus > -0.3) {
+                flashColor.lerp(ofColor(255, 0, 0), cosf(ofGetElapsedTimef() * 10) * 0.5 + 0.5);
+            }
+            ofSetColor(flashColor);
+            lineLength = size;
+        }
         ofLine(pos.x - size, pos.y, pos.x - size + lineLength, pos.y);
         ofLine(pos.x + size, pos.y, pos.x + size - lineLength, pos.y);
         ofLine(pos.x, pos.y - size, pos.x, pos.y - size + lineLength);
         ofLine(pos.x, pos.y + size, pos.x, pos.y + size - lineLength);
-
-        if (bDragged) {
-            ofNoFill();
-            ofCircle(pos, lineLength);
-        }
-        else {  // !bDragged
-            ofSetColor(255, 255, 255, 64);
+#endif
+//        if (bDragged) {
+//            ofNoFill();
+//            ofCircle(pos, lineLength);
+//        }
+//        else {  // !bDragged
+//            ofSetColor(255, 255, 255, 64);
             ofFill();
-            ofCircle(pos, lineLength);
-        }
+            ofCircle(pos, 1);
+//        }
     }
 	ofEnableLighting();
     ofPopStyle();

@@ -1,0 +1,72 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>ClothSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1273.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GRID STITCH</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>AUTO-REGENERATE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LOWRES</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GRID TYPE</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GRID SIZE</Name>
+    <Value>40.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STICKY</Name>
+    <Value>14.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPRING STRENGTH</Name>
+    <Value>0.045827270</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPRING EXTEND</Name>
+    <Value>1.478828669</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COLOR INDEX</Name>
+    <Value>54.992713928</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COLOR MOD</Name>
+    <Value>3.196236610</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COLOR STRATEGY</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>VNMORMAL MOD</Name>
+    <Value>1.315045595</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ACTIVITY MOD</Name>
+    <Value>0.722844422</Value>
+</Widget>

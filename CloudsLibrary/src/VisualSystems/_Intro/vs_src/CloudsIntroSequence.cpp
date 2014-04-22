@@ -22,14 +22,7 @@ string CloudsIntroSequence::getSystemName(){
 }
 
 CloudsIntroSequence::CloudsIntroSequence(){
-	click.loadSound(GetCloudsDataPath() + "sound/interface/click.aif");
-	selectLow.loadSound(GetCloudsDataPath() + "sound/interface/select_low.aif");
-	selectMid.loadSound(GetCloudsDataPath() + "sound/interface/select_mid.aif");
-	selectHigh.loadSound(GetCloudsDataPath() + "sound/interface/select_high.wav");
-	click.setLoop(false);
-	selectLow.setLoop(false);
-	selectMid.setLoop(false);
-	selectHigh.setLoop(false);
+
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
@@ -46,15 +39,17 @@ void CloudsIntroSequence::selfSetDefaults(){
 	hoveringTitle = false;
 	currentTitleOpacity = 0;
 	bQuestionDebug = false;
-	
+	firstQuestionStopped = false;
+    
+    introNodeChangeTime = 0;
+    introNodesShown = true;
 	kinectHelperAlpha = 0.0;
 	nodeAlphaAttenuate = 1.0;
 	
-	introNodeOne.clickSound = introNodeTwo.clickSound = introNodeThree.clickSound = &click;
 	introNodeOne.introNode = introNodeTwo.introNode = introNodeThree.introNode = true;
-	
-	introNodeOne.selectSound = introNodeTwo.selectSound = &selectHigh;
-	introNodeThree.selectSound = &selectMid;
+	introNodeOne.clickSound = introNodeTwo.clickSound = introNodeThree.clickSound = getClick();
+	introNodeOne.selectSound = introNodeTwo.selectSound = getSelectHigh();
+	introNodeThree.selectSound = getSelectMid();
 	
 	introNodeOne.multiplier   =  1;
 	introNodeTwo.multiplier   = -1;
@@ -428,7 +423,6 @@ void CloudsIntroSequence::updateTitle(){
 
 void CloudsIntroSequence::updateQuestions(){
 
-
 	for(int i = 0; i < startQuestions.size(); i++){
 		CloudsPortal& curQuestion = startQuestions[i];
 		curQuestion.scale = questionScale;
@@ -458,6 +452,10 @@ void CloudsIntroSequence::updateQuestions(){
 //				curQuestion.hoverPosition.z += slowDownFactor * cameraForwardSpeed;
 				if(slowDownFactor > .9){
 					//pause this node and all the ones behind it
+                    if(!firstQuestionStopped){
+                        firstQuestionStoppedTime = ofGetElapsedTimef();
+                        firstQuestionStopped = true;
+                    }
 					questionChannels[curQuestion.tunnelQuadrantIndex] = true;
 					channelPauseTime[curQuestion.tunnelQuadrantIndex] = ofGetElapsedTimef();
 				}
@@ -489,8 +487,8 @@ void CloudsIntroSequence::updateQuestions(){
 					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &curQuestion;
 						if (caughtQuestion->startHovering()) {
-							click.setPosition(0);
-							click.play();
+							getClick()->setPosition(0);
+							getClick()->play();
 //                            CloudsPortalEventArgs args(getQuestionText());
 //                            ofNotifyEvent(events.portalHoverBegan, args);
                         }
@@ -502,8 +500,8 @@ void CloudsIntroSequence::updateQuestions(){
 			else if(caughtQuestion == &curQuestion){
 //				curQuestion.hoverPosition.z += cameraForwardSpeed;
 				if( caughtQuestion->isSelected() && !bQuestionDebug && selectedQuestion == NULL){
-					selectLow.setPosition(0);
-					selectLow.play();
+					getSelectLow()->setPosition(0);
+					getSelectLow()->play();
 //					caughtQuestion = NULL;
 					selectedQuestion = caughtQuestion;
 					selectedQuestionTime = ofGetElapsedTimef();
@@ -516,6 +514,9 @@ void CloudsIntroSequence::updateQuestions(){
 				else if(distanceToQuestion > questionTugDistance.max && selectedQuestion == NULL){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
+                    if(firstQuestionStopped){
+                        firstQuestionStoppedTime = ofGetElapsedTimef();
+                    }
 				}
 			}
 		}
@@ -630,6 +631,9 @@ void CloudsIntroSequence::positionStartQuestions(){
 //	}
 
 	//new way with sets of 4
+	srand(ofGetSeconds());
+	random_shuffle(startQuestions.begin(), startQuestions.end());
+	
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].tunnelQuadrantIndex = i%4;
 		startQuestions[i].hoverPosition = ofVec3f(0, questionTunnelInnerRadius, 0);
@@ -650,6 +654,10 @@ string CloudsIntroSequence::getQuestionText(){
 		return caughtQuestion->question;
 	}
 	return "";
+}
+
+bool CloudsIntroSequence::userHasBegun(){
+    return startedOnclick;
 }
 
 bool CloudsIntroSequence::isStartQuestionSelected(){
@@ -718,21 +726,7 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 }
 
 void CloudsIntroSequence::selfDraw(){
-	
-//#if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
-//    if (hud != NULL) {
-//        if(selectedQuestion != NULL){
-//            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -selectedQuestion->screenPosition.y/2));
-//        }
-//        else if(caughtQuestion != NULL){
-//            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -caughtQuestion->screenPosition.y/2));
-//        }
-//        else{
-//            hud->draw3D(getOculusRift().baseCamera);
-//        }
-//    }
-//#endif
-//    
+  
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -841,10 +835,10 @@ void CloudsIntroSequence::drawCloudsType(){
 
 void CloudsIntroSequence::drawHelperType(){
 
-	ofPushMatrix();
 	ofPushStyle();
 	glDisable(GL_DEPTH_TEST);
-	
+	ofDisableLighting();
+    
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
 		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 		currentHelperFontSize = helperFontSize;
@@ -884,13 +878,15 @@ void CloudsIntroSequence::drawHelperType(){
 	if(caughtQuestion != NULL){
 		basePosition = caughtQuestion->hoverPosition;
 		helpHoverText = caughtQuestion->question;
-		helperTextOpacity = 1.0;
+		helperTextOpacity = ofMap(caughtQuestion->hoverPercentComplete, 0.0, .05, 0.0, 1.0, true);
+
 		scaleModifier = .5;
 		helperFont.setTracking(helperFontTracking*.1);
 	}
 
+    //draw the text
 	if(helpHoverText != ""){
-		
+        ofPushMatrix();
 		helpHoverText = ofToUpper(helpHoverText);
 		
 		float hoverTextWidth  = helperFont.stringWidth(helpHoverText);
@@ -901,7 +897,7 @@ void CloudsIntroSequence::drawHelperType(){
 		#else
 		ofTranslate(basePosition);
 		#endif
-		ofRotate(180, 0, 0, 1);//flip around
+		ofRotate(180, 0, 0, 1); //flip around
 		ofScale(scaleModifier*helperFontScale,
 				scaleModifier*helperFontScale,
 				scaleModifier*helperFontScale);
@@ -910,23 +906,82 @@ void CloudsIntroSequence::drawHelperType(){
 		
 		int yOffsetMult = (!bUseOculusRift && caughtQuestion->tunnelQuadrantIndex == 2) ? -1 : 1;
 		helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY-hoverTextHeight/2) );
+        ofPopMatrix();
 	}
-	
+    
+    if(firstQuestionStopped){
+        ofPushMatrix();
+        
+        float questionhintAlpha = ofMap(ofGetElapsedTimef(),
+                                        firstQuestionStoppedTime, firstQuestionStoppedTime+2,
+                                        0.0, .2, true) * (1.0-helperTextOpacity);
+        
+        float hintTextWidth  = helperFont.stringWidth("SELECT A QUESTION");
+		float hintTextHeight = helperFont.stringHeight("SELECT A QUESTION");
+		ofVec3f basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
+#ifdef OCULUS_RIFT
+		getOculusRift().multBillboardMatrix( basePosition );
+#else
+		ofTranslate(basePosition);
+#endif
+		ofRotate(180, 0, 0, 1); //flip around
+		ofScale(helperFontScale*.8,
+				helperFontScale*.8,
+				helperFontScale*.8);
+        
+        ofSetColor(255, 255*questionhintAlpha);
+        helperFont.drawString("SELECT A QUESTION", -hintTextWidth*.5, hintTextHeight*.5 );
+
+        if(caughtQuestion != NULL){
+            float questionHoldAlpha = ofMap(caughtQuestion->hoverPercentComplete, .2, .3, 0.0, .2, true);
+            ofSetColor(255, 255*questionHoldAlpha);
+            hintTextWidth = helperFont.stringWidth("HOLD TO SELECT");
+            hintTextHeight = helperFont.stringWidth("HOLD TO SELECT");
+            helperFont.drawString("HOLD TO SELECT", -hintTextWidth*.5, hintTextHeight*.5 );
+        }
+        
+        ofPopMatrix();
+    }
+
+    ofEnableLighting();
 	glEnable(GL_DEPTH_TEST);
 	ofPopStyle();
-	ofPopMatrix();
+//	ofPopMatrix();
 }
 
 void CloudsIntroSequence::drawIntroNodes(){
 
-//#ifdef OCULUS_RIFT
 	ofPushStyle();
-	
+    float extraAttenuate = 1.0;
+    
+#ifdef KINECT_INPUT
+	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
+    if(viewerState < k4w::ViewerState_PresentIdle && introNodesShown){
+        introNodesShown = false;
+        introNodeChangeTime = ofGetElapsedTimef();
+    }
+	if(viewerState >= k4w::ViewerState_PresentIdle && !introNodesShown){
+        introNodesShown = true;
+        introNodeChangeTime = ofGetElapsedTimef();
+    }
+    
+    extraAttenuate = ofMap(ofGetElapsedTimef(),
+                           introNodeChangeTime, introNodeChangeTime+.5,
+                           0.0, 1.0, true);
+    //if(!introNodesShown) 1.0 - extraAttenuate;
+    
+    //cout << "show nodes " << introNodesShown << " attenuate " << endl;
+    if(!introNodesShown){
+        return;
+    }
+    
+#endif
+    
 	for(int i = 0; i < introNodes.size(); i++){
 		introNodes[i]->nodeAlphaAttenuate = nodeAlphaAttenuate;
 		introNodes[i]->nodeBaseSize = introNodeSize;
 		introNodes[i]->tint = ofFloatColor::fromHsb(tint.r, tint.g, tint.b);
-		introNodes[i]->tint.a = 200*nodeAlphaAttenuate;
+		introNodes[i]->tint.a = 200*nodeAlphaAttenuate*extraAttenuate;
 		
 		introNodes[i]->draw();
 		
@@ -937,7 +992,6 @@ void CloudsIntroSequence::drawIntroNodes(){
 	}
 	
 	ofPopStyle();
-//#endif
 	
 }
 
@@ -957,60 +1011,9 @@ void CloudsIntroSequence::drawCursors(){
 void CloudsIntroSequence::selfDrawOverlay(){
 
 #ifndef OCULUS_RIFT
-//	ofCircle(introNodeOffset.x, introNodeOffset.y, 0, 100);
 	drawIntroNodes();
 #endif
-	//old oculus arrow draing code
-//	
-//	bool drawDirection = false;
-//	float cursorScalar;
-//	int maxCursorDistance = 400;
-//	ofVec2f cursorDirection;
-//	ofVec2f direction;
-//	
-//	helpHoverText = "";
-//	if(introNodeThree.hover){
-//		///no text
-//	}
-//	else if(introNodeTwo.finished){
-//		drawDirection = true;
-//		cursorScalar = ofMap(introNodeThree.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
-//		cursorDirection = introNodeThree.cursorDirection;
-//		helpHoverText = "";
-//	}
-//	else if(introNodeTwo.hover || introNodeOne.finished){
-//		drawDirection = true;
-//		cursorScalar = ofMap(introNodeTwo.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
-//		cursorDirection = introNodeTwo.cursorDirection;
-//		helpHoverText = "LOOK RIGHT";
-//	}
-//	else {
-//		drawDirection = true;
-//		cursorScalar = ofMap(introNodeOne.cursorDistance, 0, maxCursorDistance, 0, 1.0,true);
-//		cursorDirection = introNodeOne.cursorDirection;
-//		helpHoverText = "LOOK LEFT";
-//	}
-//	
-//	if(false && drawDirection){
-//		ofPushStyle();
-//		ofSetColor(255, 200);
-//		ofVec2f start(320,240);
-//		hintCursorEndPoint += (start + cursorDirection*(1.0-powf(1.0-cursorScalar,3.0f))*40 - hintCursorEndPoint) * .1;
-//		ofLine(start,hintCursorEndPoint);
-//		ofPushMatrix();
-//		ofTranslate(hintCursorEndPoint);
-//		ofRotate( -(hintCursorEndPoint - start).normalized().angle(ofVec2f(0,1)) );
-//		ofTriangle(ofVec2f(0,0), ofVec2f(-3,-6), ofVec2f(3,-6));
-//		ofPopMatrix();
-//		ofPopStyle();
-//	}
-	
-//	if(helpHoverText != ""){
-//		float hoverTextWidth  = questionFont.stringWidth(hoverText);
-//		float hoverTextHeight = questionFont.stringHeight(hoverText);
-//		questionFont.drawString(hoverText, 320 - hoverTextWidth/2, 240 + hoverTextHeight*1.5);
-//	}
-
+    
 }
 
 void CloudsIntroSequence::selfPostDraw(){
@@ -1064,12 +1067,13 @@ void CloudsIntroSequence::selfKeyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsIntroSequence::selfMouseDragged(ofMouseEventArgs& data){
-    cursor.set(data.x, data.y, cursor.z);
+    // use CloudsInput directly to get the z value too.
+    cursor.set(GetCloudsInput()->getPosition());
 }
 
-void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data)
-{
-    cursor.set(data.x, data.y, cursor.z);
+void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
+    // use CloudsInput directly to get the z value too.
+    cursor.set(GetCloudsInput()->getPosition());
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
