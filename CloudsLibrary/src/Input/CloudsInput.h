@@ -49,6 +49,8 @@ class CloudsInput
     virtual void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus) = 0;
     void selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size);
     
+    bool bUserBegan;
+    
   protected:
 
     ofVec3f currentPosition;
