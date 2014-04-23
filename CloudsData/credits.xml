@@ -79,38 +79,286 @@
 			Surya Mattu
 		</name>
 	</credit>
+
+
+<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+			Casey Reas
+
+			Bruce Sterling
+
+		</name>
+	</credit>
+
+<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+			Daniel Shiffman
+
+			Diederick Huijbers
+
+		</name>
+	</credit>
+
+
+<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+
+			Elliot Woods
+
+			Golan Levin
+
+	</name>
+	</credit>
+			Greg Borenstein
+
+			Jer Thorp
+
+	<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+
+			Jesse Louis-Rosenberg
+
+			Jessica Rosenkrantz
+
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+
+			Joel Gethin Lewis
+
+			John Maeda
+
+	</name>
+	</credit>
+
+			Josh Nimoy
+
+			Julia Kaganskiy
+
+		<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+			
+			Julian Oliver
+
+			Karolina Sobecka
+
+		</name>
+	</credit>
+
+			Karsten Schmidt
+
+			Kyle Chayka
+
+	<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+
+			Kyle McDonald
+
+			Lindsay Howard
+
+			</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+			Marcus Wendt
+
+			Marius Watz
+
+	</name>
+	</credit>
+
+		<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+
+			Nick Fox-Gieg
+
+			Philip Whitfield
+
+	</name>
+	</credit>
+
+			
+	<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+			Rachel Binx
+
+			Regine Debatty
+		</name>
+	</credit>
+
+
+	<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+
+			Satoru Higa
+
+			Shantell Martin
+
+	</name>
+	</credit>
+
+
+	<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+			Sofy Yuditskaya
+
+			Theodore Watson
+
+		</name>
+	</credit>
+
+		<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+
+			Vera Glahn
+
+			Zachary Lieberman
+		</name>
+	</credit>
 	
 
 <!-- Creative Coders -->
 
 	<credit align="left">
 		<title>
-			Creative Coders
+			Creative Developers
 		</title>
 		<name>
 			Lars Berg 
 
 			Patricio González-Vivo
 
-			Luisa Pereira
+					</name>
+	</credit>
+
+
+	<credit align="left">
+		<title>
+			Creative Developers
+		</title>
+		<name>
 
 			Jeff Crouse
 
 			Gal Sasson
 
+
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Creative Developers
+		</title>
+		<name>
+
 			Neil Mendoza
 
 			Omer Shapira
+
+	</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Creative Developers
+		</title>
+		<name>
 
 			Reza Ali
 
 			Michael Allison
 
+		</name>
+	</credit>
+
+	
+
+	<credit align="left">
+		<title>
+			Interface Design
+		</title>
+		<name>
+
+			Luisa Pereira
+
+			Sarah Hallacher
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Interface Design
+		</title>
+		<name>
+
 			Charlie Whitney
 
-			Jack Kalish
+			Jack Kailash
 
-			Jason Walters
+		</name>
+	</credit>
+
+		<credit align="left">
+		<title>
+			Additional Cinematography
+		</title>
+		<name>
+
+			Alexander Porter
+
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Additional Footage
+		</title>
+		<name>
+
+			Matt Rutherford
 
 		</name>
 	</credit>
@@ -135,74 +383,71 @@
 	</credit>
 
 
-	<credit align="left">
+	
+
+<credit align="left">
 		<title>
-			Featuring
+			Sponsors
 		</title>
 		<name>
-			Casey Reas
+			Studio for Creative Inquiry
+		</name>
+	</credit>
 
-			Bruce Sterling
+	<credit align="left">
+		<title>
+			Sponsors
+		</title>
+		<name>
+			Eyebeam Art and Technology Center
+		</name>
+	</credit>
 
-			Daniel Shiffman
+	<credit align="left">
+		<title>
+			Sponsors
+		</title>
+		<name>
+			The Kickstarter Community
+		</name>
+	</credit>
 
-			Diederick Huijbers
+	<credit align="left">
+		<title>
+			Sponsors
+		</title>
+		<name>
+			Microsoft Research
+		</name>
+	</credit>
 
-			Elliot Woods
+	<credit align="left">
+		<title>
+			Coded using
+		</title>
+		<name>
+			openFrameworks
+		</name>
+	</credit>
 
-			Golan Levin
 
-			Greg Borenstein
-			Jer Thorp
-			Jesse Louis-Rosenberg
+	<credit align="left">
+		<title>
+			Thanks
+		</title>
+		<name>
+			Tribeca Film Institute 
+			#Storyscapes
+			Bombay Sapphire
+		</name>
+	</credit>
 
-			Jessica Rosenkrantz
-
-			Joel Gethin Lewis
-
-			John Maeda
-
-			Josh Nimoy
-
-			Julia Kaganskiy
-			
-			Julian Oliver
-
-			Karolina Sobecka
-
-			Karsten Schmidt
-
-			Kyle Chayka
-
-			Kyle McDonald
-
-			Lindsay Howard
-
-			Marcus Wendt
-
-			Marius Watz
-
-			Nick Fox-Gieg
-
-			Paola Antonelli
-
-			Philip Whitfield
-
-			Rachel Binx
-
-			Regine Debatty
-
-			Satoru Higa
-
-			Shantell Martin
-
-			Sofy Yuditskaya
-
-			Theodore Watson
-
-			Vera Glahn
-
-			Zachary Lieberman
+	<credit align="left">
+		<title>
+			Special Thanks to 
+		</title>
+		<name>
+			Ingrid Kopp
 		</name>
 	</credit>
 

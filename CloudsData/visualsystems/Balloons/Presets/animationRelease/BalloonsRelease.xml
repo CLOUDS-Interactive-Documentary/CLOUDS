@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>BalloonsRelease</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>391.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>47.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>spawnRad</Name>
-    <Value>150.000000000</Value>
+    <Value>257.241394043</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

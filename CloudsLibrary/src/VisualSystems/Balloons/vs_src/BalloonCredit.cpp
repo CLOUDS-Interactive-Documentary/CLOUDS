@@ -35,7 +35,7 @@ void BalloonCredit::update()
 	ofVec3f axis; float angle;
 	n.getOrientationQuat().getRotate(angle, axis);
 	
-	width = font->stringWidth(title);
+	width = fmax(font->stringWidth(title), font->stringWidth(name)  ) * .25;
 	
 	left = ofVec3f(-width * .5, 0, 0) * n.getGlobalTransformMatrix();
 	right = ofVec3f(width * .5, 0, 0) * n.getGlobalTransformMatrix();
@@ -59,11 +59,15 @@ void BalloonCredit::draw()
 	// Perform the rotation.
 	ofRotate(angle, axis.x, axis.y, axis.z);
 	ofRotate(180, 0, 0, 1);
+	
+	ofScale(.25,.25,.25);
 		
 	//draw text at the position
 	float titleWidth  = font->stringWidth(title);
 	float titleHeight = font->stringHeight(title);
+	float nameWidth  = font->stringWidth(name);
 	font->drawString(title, -titleWidth/2, titleHeight/2);
+	font->drawString(name, -nameWidth/2, titleHeight * 2);
 	
 	ofEnableLighting();
 	ofPopMatrix();

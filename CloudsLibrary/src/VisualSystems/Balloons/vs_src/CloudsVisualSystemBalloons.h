@@ -221,4 +221,10 @@ protected:
 	
 	int shininess;
 	float lightScale, facingRatioScale, creditLightScale;
+	
+	float creditPosition;
+	float creditStartTime, creditDuration;
+	float balloonFramStartTime, balloonFramEndTime;
+	vector<ofVec3f> originalCreditPositions;
+	
 };

@@ -10,10 +10,10 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 {
 	
 	//balloon behavior
-	customGui = new ofxUISuperCanvas("BALLOONS_BEHAVIOR", gui);
+	customGui = new ofxUISuperCanvas("BALLOONSBEHAVIOR", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
-	customGui->setName("Balloons");
+	customGui->setName("BalloonsBehavior");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	customGui->addSlider("cameraBounceRadiusScale", 1, 10, &cameraBounceRadius);
@@ -34,7 +34,7 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 	customGui->addSpacer();
 	customGui->addSlider("cameraBounce", 0, 20, &cameraBounce);
 	customGui->addSlider("cameraTargetDist", 20, 500, &cameraTargetDist);
-	customGui->addSlider("balloonFrameVal", 0, 1, &balloonFrameVal);
+//	customGui->addSlider("balloonFrameVal", 0, 1, &balloonFrameVal);
 	
 	customGui->addSlider("dim", 100, 500, &dim );
 	
@@ -49,7 +49,7 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 	textGui->setName("Text");
 	textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
+//	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
 	textGui->addSlider("textRadius", 1, 10, &textRadius);
 	textGui->addSlider("creditLightDist", 10, 500, &creditLightDist);
 	
@@ -58,9 +58,10 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 	textGui->addSlider("lightScale", 0, 1, &lightScale);
 	textGui->addSlider("creditLightScale", 0, 1, &creditLightScale);
 	textGui->addSlider("facingRatioScale", 0, 1, &facingRatioScale);
+//	textGui->addSlider("creditPosition", 0, 1, &creditPosition)->setIncrement(.001);
 	
 	textGui->addLabel("TYPE DISPLAY");
-	textGui->addIntSlider("Font Size", 5, 25, &fontSize);
+	textGui->addIntSlider("Font Size", 12, 25, &fontSize);
 	textGui->addSlider("Font Scale", 0.0, 1.9, &fontScale);
 	textGui->addSlider("Justification Offset", 0, 700, &justificationWidth);
 	
@@ -224,7 +225,8 @@ void CloudsVisualSystemBalloons::selfGuiEvent(ofxUIEventArgs &e)
 	}
 }
 
-void CloudsVisualSystemBalloons::selfSetupSystemGui(){
+void CloudsVisualSystemBalloons::selfSetupSystemGui()
+{
 	
 }
 
@@ -313,6 +315,9 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	facingRatioScale = .5;
 	
 	cameraBounceRadius = 3;
+	fontSize = 15;
+	creditStartTime = 0;
+	creditDuration = 240; //James & Jonathan, this is the amount of time it'll take for the credits to fall all the way. the larget this number the slower they move
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -347,6 +352,11 @@ void CloudsVisualSystemBalloons::setBalloonColors()
 
 void CloudsVisualSystemBalloons::setBalloonPositions()
 {
+	creditStartTime = ofGetElapsedTimef();
+	
+	balloonFramStartTime = creditStartTime + 4;
+	balloonFramEndTime = balloonFramStartTime + 6;
+	
 	vector<ofVec3f>pos(dimY*dimX);
 	vector<ofVec3f>vel(dimY*dimX);
 	
@@ -487,7 +497,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 		int numCredits = creditsXml.getNumTags("credit");
 		for(int i = 0; i < numCredits; i++){
 			string justification = creditsXml.getAttribute("credit", "align", "left", i) ;
-			ofVec3f pos( 0, i * dim, 0);
+			ofVec3f pos( 0, i * dim * .7, 0);
 			if(justification == "left"){
 				pos.x = -justificationWidth;
 			}
@@ -508,16 +518,16 @@ void CloudsVisualSystemBalloons::selfSetup()
 			creditsXml.popTag(); //credit
 		}
 		creditsXml.popTag(); //credits
+		
+		for(int i=0; i<credits.size(); i++)
+		{
+			originalCreditPositions.push_back(credits[i].pos);
+		}
 	}
 	else{
 		ofLogError("Balloons") << "Couldn't load credits XML!";
 		return;
 	}
-	
-	//TEST
-//	for(int i = 0; i < 3; i++){
-//		credits.push_back( credits[0] );
-//	}
 }
 
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){
@@ -536,13 +546,21 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	ofFloatColor poscol = pospix.getColor(0,0);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
-//	balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .1);
-	
+	//balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .1);
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
 	
-	for(auto& c: credits)
+	
+	float t = ofGetElapsedTimef();
+	float progrees = ofMap(t, creditStartTime, creditStartTime + creditDuration, 0, 1, true);
+	balloonFrameVal = ofMap(t, balloonFramStartTime, balloonFramEndTime, 1, 0, true);
+
+	
+	//float creditOffset = -(creditPosition * (originalCreditPositions.back().y+dim*2) ) + dim;
+	float creditOffset = -(progrees * (originalCreditPositions.back().y+dim*2) ) + dim;
+	
+	for(int i=0; i<credits.size(); i++)
 	{
-		c.pos.y += textSpeed;
+		credits[i].pos.y = originalCreditPositions[i].y + creditOffset;
 	}
 	
 	if(!font.isLoaded() || currentFontSize != fontSize)
