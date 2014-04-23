@@ -46,7 +46,7 @@
 			Design Director
 		</title>
 		<name>
-			Bradley "GMUNK" Munkowitz
+			Bradley GMUNK Munkowitz
 		</name>
 	</credit>
 
@@ -73,15 +73,143 @@
 	<!-- SURYA -->
 	<credit align="left">
 		<title>
-			Systems Engineer
+			Lead Narrative Programming
 		</title>
 		<name>
 			Surya Mattu
 		</name>
 	</credit>
 	
-</credits>
 
+<!-- Creative Coders -->
+
+	<credit align="left">
+		<title>
+			Creative Coders
+		</title>
+		<name>
+			Lars Berg 
+
+			Patricio González-Vivo
+
+			Luisa Pereira
+
+			Jeff Crouse
+
+			Gal Sasson
+
+			Neil Mendoza
+
+			Omer Shapira
+
+			Reza Ali
+
+			Michael Allison
+
+			Charlie Whitney
+
+			Jack Kalish
+
+			Jason Walters
+
+		</name>
+	</credit>
+	
+	<credit align="left">
+		<title>
+			Additional Sound
+		</title>
+		<name>
+			Jules Laplace
+		</name>
+	</credit>
+	
+
+	<credit align="left">
+		<title>
+			Sound Engineer
+		</title>
+		<name>
+			Brett Murphy
+		</name>
+	</credit>
+
+
+	<credit align="left">
+		<title>
+			Featuring
+		</title>
+		<name>
+			Casey Reas
+
+			Bruce Sterling
+
+			Daniel Shiffman
+
+			Diederick Huijbers
+
+			Elliot Woods
+
+			Golan Levin
+
+			Greg Borenstein
+			Jer Thorp
+			Jesse Louis-Rosenberg
+
+			Jessica Rosenkrantz
+
+			Joel Gethin Lewis
+
+			John Maeda
+
+			Josh Nimoy
+
+			Julia Kaganskiy
+			
+			Julian Oliver
+
+			Karolina Sobecka
+
+			Karsten Schmidt
+
+			Kyle Chayka
+
+			Kyle McDonald
+
+			Lindsay Howard
+
+			Marcus Wendt
+
+			Marius Watz
+
+			Nick Fox-Gieg
+
+			Paola Antonelli
+
+			Philip Whitfield
+
+			Rachel Binx
+
+			Regine Debatty
+
+			Satoru Higa
+
+			Shantell Martin
+
+			Sofy Yuditskaya
+
+			Theodore Watson
+
+			Vera Glahn
+
+			Zachary Lieberman
+		</name>
+	</credit>
+
+
+
+	
+</credits>
 <!--
 Executive Producer: Golan Levin 
 
