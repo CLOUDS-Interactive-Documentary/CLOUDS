@@ -58,6 +58,7 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 	textGui->addSlider("lightScale", 0, 1, &lightScale);
 	textGui->addSlider("creditLightScale", 0, 1, &creditLightScale);
 	textGui->addSlider("facingRatioScale", 0, 1, &facingRatioScale);
+	textGui->addSlider("creditPosition", 0, 1, &creditPosition)->setIncrement(.001);
 	
 	textGui->addLabel("TYPE DISPLAY");
 	textGui->addIntSlider("Font Size", 5, 25, &fontSize);
@@ -508,6 +509,11 @@ void CloudsVisualSystemBalloons::selfSetup()
 			creditsXml.popTag(); //credit
 		}
 		creditsXml.popTag(); //credits
+		
+		for(int i=0; i<credits.size(); i++)
+		{
+			originalCreditPositions.push_back(credits[i].pos);
+		}
 	}
 	else{
 		ofLogError("Balloons") << "Couldn't load credits XML!";
@@ -540,9 +546,11 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
 	
-	for(auto& c: credits)
+	
+	float creditOffset = -(creditPosition * (originalCreditPositions.back().y+dim*2) ) + dim;
+	for(int i=0; i<credits.size(); i++)
 	{
-		c.pos.y += textSpeed;
+		credits[i].pos.y = originalCreditPositions[i].y + creditOffset;
 	}
 	
 	if(!font.isLoaded() || currentFontSize != fontSize)

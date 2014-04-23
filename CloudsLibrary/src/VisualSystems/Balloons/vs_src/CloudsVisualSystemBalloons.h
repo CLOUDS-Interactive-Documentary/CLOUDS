@@ -221,4 +221,8 @@ protected:
 	
 	int shininess;
 	float lightScale, facingRatioScale, creditLightScale;
+	
+	float creditPosition;
+	
+	vector<ofVec3f> originalCreditPositions;
 };
