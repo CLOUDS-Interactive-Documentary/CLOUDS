@@ -34,7 +34,7 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 	customGui->addSpacer();
 	customGui->addSlider("cameraBounce", 0, 20, &cameraBounce);
 	customGui->addSlider("cameraTargetDist", 20, 500, &cameraTargetDist);
-	customGui->addSlider("balloonFrameVal", 0, 1, &balloonFrameVal);
+//	customGui->addSlider("balloonFrameVal", 0, 1, &balloonFrameVal);
 	
 	customGui->addSlider("dim", 100, 500, &dim );
 	
@@ -353,6 +353,10 @@ void CloudsVisualSystemBalloons::setBalloonColors()
 void CloudsVisualSystemBalloons::setBalloonPositions()
 {
 	creditStartTime = ofGetElapsedTimef();
+	
+	balloonFramStartTime = creditStartTime + 4;
+	balloonFramEndTime = balloonFramStartTime + 6;
+	
 	vector<ofVec3f>pos(dimY*dimX);
 	vector<ofVec3f>vel(dimY*dimX);
 	
@@ -549,6 +553,8 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	
 	float t = ofGetElapsedTimef();
 	float progrees = ofMap(t, creditStartTime, creditStartTime + creditDuration, 0, 1, true);
+	balloonFrameVal = ofMap(t, balloonFramStartTime, balloonFramEndTime, 1, 0, true);
+
 	
 	//float creditOffset = -(creditPosition * (originalCreditPositions.back().y+dim*2) ) + dim;
 	

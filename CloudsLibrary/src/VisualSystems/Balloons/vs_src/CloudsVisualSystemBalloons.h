@@ -224,6 +224,7 @@ protected:
 	
 	float creditPosition;
 	float creditStartTime, creditDuration;
+	float balloonFramStartTime, balloonFramEndTime;
 	vector<ofVec3f> originalCreditPositions;
 	
 };
