@@ -49,7 +49,7 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 	textGui->setName("Text");
 	textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
+//	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
 	textGui->addSlider("textRadius", 1, 10, &textRadius);
 	textGui->addSlider("creditLightDist", 10, 500, &creditLightDist);
 	
@@ -58,7 +58,7 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 	textGui->addSlider("lightScale", 0, 1, &lightScale);
 	textGui->addSlider("creditLightScale", 0, 1, &creditLightScale);
 	textGui->addSlider("facingRatioScale", 0, 1, &facingRatioScale);
-	textGui->addSlider("creditPosition", 0, 1, &creditPosition)->setIncrement(.001);
+//	textGui->addSlider("creditPosition", 0, 1, &creditPosition)->setIncrement(.001);
 	
 	textGui->addLabel("TYPE DISPLAY");
 	textGui->addIntSlider("Font Size", 12, 25, &fontSize);
@@ -317,7 +317,7 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	cameraBounceRadius = 3;
 	
 	creditStartTime = 0;
-	creditDuration = 240;
+	creditDuration = 240; //James & Jonathan, this is the amount of time it'll take for the credits to fall all the way. the larget this number the slower they move
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -546,8 +546,7 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	ofFloatColor poscol = pospix.getColor(0,0);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
-//	balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .1);
-	
+	//balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .1);
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
 	
 	
@@ -557,7 +556,6 @@ void CloudsVisualSystemBalloons::selfUpdate()
 
 	
 	//float creditOffset = -(creditPosition * (originalCreditPositions.back().y+dim*2) ) + dim;
-	
 	float creditOffset = -(progrees * (originalCreditPositions.back().y+dim*2) ) + dim;
 	
 	for(int i=0; i<credits.size(); i++)
