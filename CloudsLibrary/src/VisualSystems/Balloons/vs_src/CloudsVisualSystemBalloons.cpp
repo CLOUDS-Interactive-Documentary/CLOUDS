@@ -49,7 +49,8 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 	textGui->setName("Text");
 	textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-//	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
+	//	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
+	textGui->addSlider("creditDurationScale", .1, 2, &creditDurationScale);
 	textGui->addSlider("textRadius", 1, 10, &textRadius);
 	textGui->addSlider("creditLightDist", 10, 500, &creditLightDist);
 	
@@ -58,6 +59,7 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 	textGui->addSlider("lightScale", 0, 1, &lightScale);
 	textGui->addSlider("creditLightScale", 0, 1, &creditLightScale);
 	textGui->addSlider("facingRatioScale", 0, 1, &facingRatioScale);
+	
 //	textGui->addSlider("creditPosition", 0, 1, &creditPosition)->setIncrement(.001);
 	
 	textGui->addLabel("TYPE DISPLAY");
@@ -318,6 +320,7 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	fontSize = 15;
 	creditStartTime = 0;
 	creditDuration = 240; //James & Jonathan, this is the amount of time it'll take for the credits to fall all the way. the larget this number the slower they move
+	creditDurationScale = 1.;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -551,7 +554,7 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	
 	
 	float t = ofGetElapsedTimef();
-	float progrees = ofMap(t, creditStartTime, creditStartTime + creditDuration, 0, 1, true);
+	float progrees = ofMap(t, creditStartTime, creditStartTime + creditDuration * creditDurationScale, 0, 1, true);
 	balloonFrameVal = ofMap(t, balloonFramStartTime, balloonFramEndTime, 1, 0, true);
 
 	
