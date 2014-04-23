@@ -10,10 +10,10 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 {
 	
 	//balloon behavior
-	customGui = new ofxUISuperCanvas("BALLOONS_BEHAVIOR", gui);
+	customGui = new ofxUISuperCanvas("BALLOONSBEHAVIOR", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
-	customGui->setName("Balloons");
+	customGui->setName("BalloonsBehavior");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	customGui->addSlider("cameraBounceRadiusScale", 1, 10, &cameraBounceRadius);
@@ -61,7 +61,7 @@ void CloudsVisualSystemBalloons::selfSetupGui()
 	textGui->addSlider("creditPosition", 0, 1, &creditPosition)->setIncrement(.001);
 	
 	textGui->addLabel("TYPE DISPLAY");
-	textGui->addIntSlider("Font Size", 5, 25, &fontSize);
+	textGui->addIntSlider("Font Size", 12, 25, &fontSize);
 	textGui->addSlider("Font Scale", 0.0, 1.9, &fontScale);
 	textGui->addSlider("Justification Offset", 0, 700, &justificationWidth);
 	
@@ -488,7 +488,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 		int numCredits = creditsXml.getNumTags("credit");
 		for(int i = 0; i < numCredits; i++){
 			string justification = creditsXml.getAttribute("credit", "align", "left", i) ;
-			ofVec3f pos( 0, i * dim, 0);
+			ofVec3f pos( 0, i * dim * .4, 0);
 			if(justification == "left"){
 				pos.x = -justificationWidth;
 			}
@@ -519,11 +519,6 @@ void CloudsVisualSystemBalloons::selfSetup()
 		ofLogError("Balloons") << "Couldn't load credits XML!";
 		return;
 	}
-	
-	//TEST
-//	for(int i = 0; i < 3; i++){
-//		credits.push_back( credits[0] );
-//	}
 }
 
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){

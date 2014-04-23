@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
-    <Name>Balloons</Name>
+    <Name>BalloonsBehavior</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>255.000000000</XPosition>
-    <YPosition>12.000000000</YPosition>
+    <XPosition>222.000000000</XPosition>
+    <YPosition>4.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -13,52 +13,52 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noiseScl</Name>
-    <Value>0.146551728</Value>
+    <Value>0.351379305</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseSampleScale</Name>
-    <Value>0.015655173</Value>
+    <Value>0.015630541</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>velocityAttenuation</Name>
-    <Value>0.983004928</Value>
+    <Value>0.981527090</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>accelScale</Name>
-    <Value>0.197044328</Value>
+    <Value>0.167487681</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gravity</Name>
-    <Value>0.012315271</Value>
+    <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attractionToCenter</Name>
-    <Value>0.003940887</Value>
+    <Value>0.002463054</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>highSpeedPercent</Name>
-    <Value>0.413793117</Value>
+    <Value>0.100000001</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>highSpeedScale</Name>
-    <Value>1.679802895</Value>
+    <Value>1.399999976</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>speedScaleLow</Name>
-    <Value>0.849261105</Value>
+    <Value>0.800000012</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>speedScaleHi</Name>
-    <Value>1.211822629</Value>
+    <Value>1.500000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -68,15 +68,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>cameraTargetDist</Name>
-    <Value>86.206893921</Value>
+    <Value>200.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>balloonFrameVal</Name>
-    <Value>1.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>dim</Name>
-    <Value>322.660095215</Value>
+    <Value>250.000000000</Value>
 </Widget>

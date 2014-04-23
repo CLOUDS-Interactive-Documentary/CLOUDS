@@ -2,18 +2,18 @@
     <Kind>42</Kind>
     <Name>Text</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>477.000000000</XPosition>
+    <YPosition>7.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>textSpeed</Name>
-    <Value>-0.399999619</Value>
+    <Value>-0.443349838</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>textRadius</Name>
-    <Value>3.000000000</Value>
+    <Value>1.931034565</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -39,6 +39,11 @@
     <Kind>4</Kind>
     <Name>facingRatioScale</Name>
     <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>creditPosition</Name>
+    <Value>0.796130955</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
