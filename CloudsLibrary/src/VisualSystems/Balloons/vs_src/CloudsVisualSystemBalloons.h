@@ -223,7 +223,7 @@ protected:
 	float lightScale, facingRatioScale, creditLightScale;
 	
 	float creditPosition;
-	float creditStartTime, creditDuration;
+	float creditStartTime, creditDuration, creditDurationScale;
 	float balloonFramStartTime, balloonFramEndTime;
 	vector<ofVec3f> originalCreditPositions;
 	
