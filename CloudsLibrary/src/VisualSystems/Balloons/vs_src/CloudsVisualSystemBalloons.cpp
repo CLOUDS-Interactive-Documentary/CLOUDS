@@ -356,6 +356,8 @@ void CloudsVisualSystemBalloons::setBalloonPositions()
 				pos[i*dimX + j] = randomPointInSphere(spawnRad, ofVec3f(0,-spawnRad, 0) );
 			}
 		}
+		
+		pos[0].y = -spawnRad;
 	}
 	else if(releaseType == 1)
 	{
@@ -393,8 +395,14 @@ void CloudsVisualSystemBalloons::setBalloonPositions()
 		{
 			for(int j=0; j<dimX; j++)
 			{
-				pos[i*dimX + j].set( j - dimY*.5, -10 + sin(j * jStep) * sin(i * iStep) * 15, i - dimY*.5);
-				pos[i*dimX + j] *= radius;
+				pos[i*dimX + j].set( j - dimY*.5, sin(j * jStep) * sin(i * iStep), i - dimY*.5);
+				//				pos[i*dimX + j] *= radius;
+				pos[i*dimX + j].x *= radius;
+				
+				pos[i*dimX + j].y *= dim * .5;
+				pos[i*dimX + j].y -= dim * .75;
+				
+				pos[i*dimX + j].z *= radius;
 			}
 		}
 	}
