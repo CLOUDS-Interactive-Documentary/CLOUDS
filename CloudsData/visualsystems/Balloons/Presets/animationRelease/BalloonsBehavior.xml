@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>BalloonsBehavior</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>222.000000000</XPosition>
-    <YPosition>4.000000000</YPosition>
+    <XPosition>878.000000000</XPosition>
+    <YPosition>3.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>attractionToCenter</Name>
-    <Value>0.002463054</Value>
+    <Value>0.004463054</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

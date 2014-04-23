@@ -225,7 +225,8 @@ void CloudsVisualSystemBalloons::selfGuiEvent(ofxUIEventArgs &e)
 	}
 }
 
-void CloudsVisualSystemBalloons::selfSetupSystemGui(){
+void CloudsVisualSystemBalloons::selfSetupSystemGui()
+{
 	
 }
 
@@ -314,6 +315,9 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	facingRatioScale = .5;
 	
 	cameraBounceRadius = 3;
+	
+	creditStartTime = 0;
+	creditDuration = 240;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -348,6 +352,7 @@ void CloudsVisualSystemBalloons::setBalloonColors()
 
 void CloudsVisualSystemBalloons::setBalloonPositions()
 {
+	creditStartTime = ofGetElapsedTimef();
 	vector<ofVec3f>pos(dimY*dimX);
 	vector<ofVec3f>vel(dimY*dimX);
 	
@@ -488,7 +493,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 		int numCredits = creditsXml.getNumTags("credit");
 		for(int i = 0; i < numCredits; i++){
 			string justification = creditsXml.getAttribute("credit", "align", "left", i) ;
-			ofVec3f pos( 0, i * dim * .4, 0);
+			ofVec3f pos( 0, i * dim * .7, 0);
 			if(justification == "left"){
 				pos.x = -justificationWidth;
 			}
@@ -542,7 +547,13 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
 	
 	
-	float creditOffset = -(creditPosition * (originalCreditPositions.back().y+dim*2) ) + dim;
+	float t = ofGetElapsedTimef();
+	float progrees = ofMap(t, creditStartTime, creditStartTime + creditDuration, 0, 1, true);
+	
+	//float creditOffset = -(creditPosition * (originalCreditPositions.back().y+dim*2) ) + dim;
+	
+	float creditOffset = -(progrees * (originalCreditPositions.back().y+dim*2) ) + dim;
+	
 	for(int i=0; i<credits.size(); i++)
 	{
 		credits[i].pos.y = originalCreditPositions[i].y + creditOffset;

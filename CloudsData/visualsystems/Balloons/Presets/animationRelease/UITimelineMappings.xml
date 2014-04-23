@@ -27,14 +27,6 @@
             </Widget>
             <Track></Track>
         </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>balloonFrameVal</WidgetName>
-                <WidgetID>30</WidgetID>
-                <WidgetCanvasParent>BalloonsBehavior</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
     </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

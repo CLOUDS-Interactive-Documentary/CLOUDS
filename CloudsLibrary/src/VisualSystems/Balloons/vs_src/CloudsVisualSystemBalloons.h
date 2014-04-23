@@ -223,6 +223,7 @@ protected:
 	float lightScale, facingRatioScale, creditLightScale;
 	
 	float creditPosition;
-	
+	float creditStartTime, creditDuration;
 	vector<ofVec3f> originalCreditPositions;
+	
 };
