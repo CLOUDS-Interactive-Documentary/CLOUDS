@@ -16,7 +16,8 @@ string CloudsVisualSystemRGBD::getSystemName(){
 
 void CloudsVisualSystemRGBD::selfSetDefaults(){
 	visualSystemFadeValue = 1.0;
-
+	portalToClear = NULL;
+	
 	drawRGBD = true;
 	
 	transitionOutOption = OutLeft;
@@ -611,9 +612,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 
 	updateActuators();
 	updateQuestions();
-#ifdef OCULUS_RIFT
-//	updateResetPortal();
-#endif
+	
 	if( placingTransitionNodes )
 	{
 		#ifdef HAS_GAMECAM
@@ -1145,6 +1144,10 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 				ofNotifyEvent(events.portalHoverBegan, args);
 				CloudsVisualSystem::getSelectLow()->setPosition(0);
 				CloudsVisualSystem::getSelectLow()->play();
+				#ifdef CLOUDS_SCREENING
+				portalToClear = selectedPortal;
+				//selectedPortal->question = ""; //flag it to be replaced next speaker
+				#endif
 			}
 			//let it go
 			else if(distanceToQuestion > portalTugDistance.max){
@@ -1153,7 +1156,6 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 //                caughtPortal->question = "";
                 /////NEW QUESTION WAY
 				caughtPortal = NULL;
-                
 //                CloudsPortalEventArgs args(*portals[i], getQuestionText());
 				//JG QUESTION SWITCH TEXT
 //                CloudsPortalEventArgs args(getQuestionText());
@@ -1178,13 +1180,16 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 }
 
 void CloudsVisualSystemRGBD::clearQuestions(){
+	
+#ifndef CLOUDS_SCREENING
 	rightPortal.question = "";
 	leftPortal.question = "";
-    
     questions.clear();
+#endif
     
     leftPortal.clearSelection();
     rightPortal.clearSelection();
+	
     selectedPortal = NULL;
     caughtPortal = NULL;
 }
@@ -1543,6 +1548,10 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 	}
 	
 	//clearQuestions();
+	if(portalToClear != NULL){
+		portalToClear->question = "";
+		portalToClear = NULL;
+	}
 	
 	assignAvailableQuestion(leftPortal);
 	assignAvailableQuestion(rightPortal);
@@ -1555,13 +1564,23 @@ void CloudsVisualSystemRGBD::assignAvailableQuestion(CloudsPortal& portal){
 		return;
 	}
 	
+#ifdef CLOUDS_SCREENING
+	if(&portal != caughtPortal && &portal != selectedPortal && portal.question == ""){
+		portal.clip = questions.front().clip;
+		portal.topic = questions.front().topic;
+		portal.question = questions.front().question;
+	}
+	questions.erase( questions.erase(questions.begin()) );		
+#else
 	if(&portal != caughtPortal && &portal != selectedPortal){
 		portal.clip = questions.back().clip;
 		portal.topic = questions.back().topic;
 		portal.question = questions.back().question;
 	}
-	
 	questions.pop_back();
+#endif
+	
+
 	
 	/////NEW QUESTION WAY
 }

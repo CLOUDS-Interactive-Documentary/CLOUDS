@@ -433,9 +433,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     hardIntros.push_back("audiovisualization");
     hardIntros.push_back("big data"); 
     hardIntros.push_back("videogames");
-    
+
+    int firstActNum = 0;
     if(run.actCount == 0 && ofContains(hardIntros, seedTopic)){
         run.actCount = 1; //force
+		firstActNum = 1;
     }
 	   
 	//begin laying down clips based on seed topic
@@ -600,9 +602,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		//Kyle_CH - coding, magic
 		
 #ifdef CLOUDS_SCREENING
-		if(state.run == 0 && state.clipHistory.size() > 4 && !screeningQuestionsAdded){
+		if(state.run == firstActNum && state.act->getAllClips().size() > 3 && !screeningQuestionsAdded){
 			addQuestions(state, screeningQuestionClips);
-			screeningQuestionClips.clear();
+			screeningQuestionsAdded = true;
 		}
 #else
 		if(state.act->getAllVisualSystemPresets().size() > 1){
