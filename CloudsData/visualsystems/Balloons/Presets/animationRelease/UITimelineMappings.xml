@@ -18,15 +18,6 @@
         </Mapping>
     </Bangs>
     <Switches></Switches>
-    <SliderCurves>
-        <Mapping>
-            <Widget>
-                <WidgetName>creditPosition</WidgetName>
-                <WidgetID>17</WidgetID>
-                <WidgetCanvasParent>Text</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-    </SliderCurves>
+    <SliderCurves></SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>
