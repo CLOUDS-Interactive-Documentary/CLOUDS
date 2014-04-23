@@ -12042,7 +12042,6 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
-					"KINECT_INPUT=1",
 					"SHOW_SUBTITLES=1",
 					"CLOUDS_SCREENING=1",
 					"CLOUDS_APP=1",
@@ -12194,10 +12193,10 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
-					"KINECT_INPUT=1",
 					"SHOW_SUBTITLES=1",
 					"CLOUDS_APP=1",
 					"CLOUDS_SCREENING=1",
+					"KINECT_INPUT=1",
 					"CLOUDS_RELEASE=1",
 				);
 				INFOPLIST_FILE = CLOUDS_SCREENING.plist;

@@ -784,7 +784,9 @@ void CloudsPlaybackController::updateTransition(){
                         topic = selectedQuestion->topic;
                         
                         rgbdVisualSystem->transtionFinished();
+//						#ifndef CLOUDS_SCREENING
                         rgbdVisualSystem->clearQuestions();
+//						#endif
                         rgbdVisualSystem->stopSystem();
                         
                         CloudsVisualSystem::getRGBDVideoPlayer().stop();
@@ -1122,9 +1124,9 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
         clearAct();
     }
     
-#ifndef CLOUDS_SCREENING
+//#ifndef CLOUDS_SCREENING
 	rgbdVisualSystem->clearQuestions();
-#endif
+//#endif
 	
 	numClipsPlayed = 0;
 	currentAct = args.act;

@@ -122,7 +122,9 @@ class CloudsAct{
     CloudsStoryEvents& getEvents();
     
   protected:
-
+	
+	float incrementalQuesitonTime;
+	
     ofxTimeline timeline;
     ofxTLFlags* visualSystemsTrack;
     ofxTLFlags* clipsTrack;
