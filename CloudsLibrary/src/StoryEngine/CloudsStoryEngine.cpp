@@ -28,8 +28,8 @@ CloudsStoryEngine::CloudsStoryEngine(){
     isSetup = false;
     printDecisions = true;
     combinedClipsOnly = false;
-    printCriticalDecisions = false;
-    
+    screeningQuestionsAdded = false;
+	
     maxTimesOnTopic = 4;
     voClipGapTime = 1.0;
 	clipGapTime = .4;
@@ -86,8 +86,10 @@ void CloudsStoryEngine::setup(){
         initGui();
         
         dichotomyThreshold = 3;
-
+		
 		dichotomies = CloudsDichotomy::getDichotomies();
+		
+		populateScreeningQuestions();
     }
 }
 
@@ -299,6 +301,12 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
         return false;
     }
     
+#ifdef CLOUDS_SCREENING
+	if(run.questionsAsked >= screeningQuestionClips.size()-1){
+		visualSystems->getPresetForSystem("Balloons", "Credits");
+	}
+#endif
+	
     map<string, int>::iterator it;
     vector<string> topics;
     for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
@@ -589,7 +597,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		
         ///////////////// QUESTIONS
         //adding all option clips with questions
-//#ifndef OCULUS_RIFT
+		//Kyle_CH - coding, magic
+		
+#ifdef CLOUDS_SCREENING
+		if(state.run == 0 && state.clipHistory.size() > 4 && !screeningQuestionsAdded){
+			addQuestions(state, screeningQuestionClips);
+			screeningQuestionClips.clear();
+		}
+#else
 		if(state.act->getAllVisualSystemPresets().size() > 1){
             if(showOnlyStartQuestions){
                 if(startingQuestions.size() > 0){
@@ -601,7 +616,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
                 addQuestions(state, questionClips);
             }
         }
-//#endif
+#endif
         /////////////////
 		
 		///////////////// DIOCHOTOMIES
@@ -1445,3 +1460,35 @@ int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack, vector<
 CloudsStoryEvents& CloudsStoryEngine::getEvents(){
     return events;
 }
+
+void CloudsStoryEngine::populateScreeningQuestions(){
+	string linkName;
+	linkName = "Casey - Software is what i love the most";
+	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+	
+	linkName = "Kyle_CH - coding, magic";
+	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+	
+	linkName = "Intro - Collaboration";
+	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+	
+	linkName = "Julia - make us more compassionate";
+	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+	
+	linkName = "Bruce - Textual technologies";
+	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+
+	linkName = "Jen - data crystal ball";
+	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+	
+	linkName = "Julia - CLOUDS";
+	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+	
+	linkName = "Intro - VirtualReality";
+	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+	
+}
+
+
+
+

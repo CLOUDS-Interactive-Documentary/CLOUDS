@@ -33,7 +33,6 @@ class CloudsVisualSystemManager {
 	CloudsVisualSystemPreset& getPresetForSystem(string systemName, string presetName);
 	
 	vector<int> getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA, string systemName = "");
-//	vector<int> getFilteredPresetIndecesForSystem(,bool enabled, bool oculus, bool gradeA);
 		
 	vector<CloudsVisualSystemPreset>& getPresets();
 	
@@ -42,7 +41,6 @@ class CloudsVisualSystemManager {
 	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
 	vector<string> keywordsForPreset(string systemName, string presetName);
 	vector<CloudsVisualSystemPreset> getPresetsForKeyword(string keyword);
-
 	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords, string clipName = "", bool isInterlude = false);
 
 	CloudsVisualSystem* getEmptySystem(string mainKeyword, vector<string> keywords);

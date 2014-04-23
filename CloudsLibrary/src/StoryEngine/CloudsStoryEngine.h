@@ -71,7 +71,6 @@ class CloudsStoryEngine {
 	
     //after this many clips the topic opens up again
 	bool printDecisions;
-	bool printCriticalDecisions;
 	bool atDeadEnd();
 
 	//for use in the main clouds repository
@@ -83,7 +82,10 @@ class CloudsStoryEngine {
     
     //this is a test
     CloudsRun runTest;
-
+	
+	bool screeningQuestionsAdded;
+	vector<CloudsClip> screeningQuestionClips;
+	
  protected:
 	
 	ofxUISuperCanvas *actGui;
@@ -95,7 +97,8 @@ class CloudsStoryEngine {
 	ofxUISuperCanvas *logGui;
 	
     void guiEvent(ofxUIEventArgs &e);
-
+	void populateScreeningQuestions();
+	
 	CloudsStoryEvents events;
 	bool isSetup;
 	CloudsAct* customAct;

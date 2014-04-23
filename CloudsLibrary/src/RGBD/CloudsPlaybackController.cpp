@@ -545,7 +545,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	//INTERLUDE
 	else if(showingInterlude){
 
-		bool stopInterlude = forceInterludeReset || updateInterludeInterface();
+		bool stopInterlude = updateInterludeInterface();
 		
         if(stopInterlude){
             
@@ -791,7 +791,8 @@ void CloudsPlaybackController::updateTransition(){
                         CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = 1.0;
                         
                         crossfadeValue = 0;
-                        
+						
+                        run.questionsAsked++;
                         storyEngine.buildAct(run, selectedQuestionClip, topic);
                         
                         bQuestionAsked = false;
@@ -837,6 +838,11 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 //		interludeSystem = currentVisualSystem;
 //	}
 	//hack
+	
+	if(forceInterludeReset){
+		forceInterludeReset = false;
+		return true;
+	}
 	
 #ifdef OCULUS_RIFT
 	interludeContinueSelected = interludeHoveringContinue;
@@ -907,7 +913,8 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 //		interludeBarHoverPercentComplete = 0;
 	}
 	
-	if(ofGetElapsedTimef() - interludeStartTime > 60){
+	
+	if( interludeSystem->getSystemName() != "Balooons" && ofGetElapsedTimef() - interludeStartTime > 60){
 		interludeResetSelected = true;
 		return true;
 	}
@@ -1115,7 +1122,9 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
         clearAct();
     }
     
+#ifndef CLOUDS_SCREENING
 	rgbdVisualSystem->clearQuestions();
+#endif
 	
 	numClipsPlayed = 0;
 	currentAct = args.act;
@@ -1306,7 +1315,6 @@ void CloudsPlaybackController::showInterlude(){
     if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
         
         interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
-        
         interludeSystem->setDrawToScreen( false );
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
