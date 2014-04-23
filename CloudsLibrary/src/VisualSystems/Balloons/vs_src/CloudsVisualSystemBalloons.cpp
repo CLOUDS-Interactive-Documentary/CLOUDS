@@ -6,7 +6,8 @@
 #include "ofxObjLoader.h"
 #include "CloudsGlobal.h"
 
-void CloudsVisualSystemBalloons::selfSetupGui(){
+void CloudsVisualSystemBalloons::selfSetupGui()
+{
 	
 	//balloon behavior
 	customGui = new ofxUISuperCanvas("BALLOONS_BEHAVIOR", gui);
@@ -336,6 +337,9 @@ void CloudsVisualSystemBalloons::setBalloonColors()
 		else					col[i].set(c3f.r, c3f.g, c3f.b );
 	}
 	
+	
+	random_shuffle( col.begin(), col.end() );
+	
 	colFbo.allocate(dimX, dimY, GL_RGB16F);
 	colFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     colFbo.getTextureReference().loadData( &col[0][0], dimX, dimY, GL_RGB);
@@ -396,7 +400,7 @@ void CloudsVisualSystemBalloons::setBalloonPositions()
 			for(int j=0; j<dimX; j++)
 			{
 				pos[i*dimX + j].set( j - dimY*.5, sin(j * jStep) * sin(i * iStep), i - dimY*.5);
-				//				pos[i*dimX + j] *= radius;
+
 				pos[i*dimX + j].x *= radius;
 				
 				pos[i*dimX + j].y *= dim * .5;
@@ -405,9 +409,12 @@ void CloudsVisualSystemBalloons::setBalloonPositions()
 				pos[i*dimX + j].z *= radius;
 			}
 		}
+		
+		
+		random_shuffle( pos.begin(), pos.end() );
+		
+		swap(pos[0], pos[pos.size()/2]);
 	}
-	
-	random_shuffle( pos.begin(), pos.end() );
 	
 	for(int i=0; i<vel.size(); i++)
 	{
