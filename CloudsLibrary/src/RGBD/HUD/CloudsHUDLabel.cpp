@@ -91,7 +91,7 @@ void CloudsHUDLabel::draw(){
 }
 
 void CloudsHUDLabel::setText(string newText, bool forceOn){
-    cout << "CloudsHUDLabel::setText: " << newText;
+//    cout << "CloudsHUDLabel::setText: " << newText;
     text = newText;
     
     if(caps)
