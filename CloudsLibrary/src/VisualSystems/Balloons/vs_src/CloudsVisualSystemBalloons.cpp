@@ -321,6 +321,8 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	creditStartTime = 0;
 	creditDuration = 240; //James & Jonathan, this is the amount of time it'll take for the credits to fall all the way. the larget this number the slower they move
 	creditDurationScale = 1.;
+	
+	bSetManualBackgroundColors = true;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
