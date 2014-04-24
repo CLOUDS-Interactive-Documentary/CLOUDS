@@ -473,6 +473,9 @@ void CloudsVisualSystemBalloons::selfSetup()
 	v0 = &velFbo0;
 	v1 = &velFbo1;
 
+	//baclkgrojnd ramp
+	bgRamp.loadImage(getVisualSystemDataPath() + "images/backgroundRamp.png");
+	
 	//load balloon mesh
 	ofMesh temp;
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/box.obj", temp);
@@ -554,12 +557,11 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	
 	
 	float t = ofGetElapsedTimef();
-	float progrees = ofMap(t, creditStartTime, creditStartTime + creditDuration * creditDurationScale, 0, 1, true);
+	progress = ofMap(t, creditStartTime, creditStartTime + creditDuration * creditDurationScale, 0, 1, true);
 	balloonFrameVal = ofMap(t, balloonFramStartTime, balloonFramEndTime, 1, 0, true);
 
-	
 	//float creditOffset = -(creditPosition * (originalCreditPositions.back().y+dim*2) ) + dim;
-	float creditOffset = -(progrees * (originalCreditPositions.back().y+dim*2) ) + dim;
+	float creditOffset = -(progress * (originalCreditPositions.back().y+dim*2) ) + dim;
 	
 	for(int i=0; i<credits.size(); i++)
 	{
@@ -571,6 +573,15 @@ void CloudsVisualSystemBalloons::selfUpdate()
 		font.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize);
 		currentFontSize = fontSize;
 	}
+	
+	
+	//background color
+	if(bgRamp.isAllocated())
+	{
+		bgColor = bgRamp.getColor(0, (1. - progress) * bgRamp.getHeight());
+		bgColor2 = bgRamp.getColor(1, (1. - progress) * bgRamp.getHeight());
+	}
+	
 }
 
 void CloudsVisualSystemBalloons::selfDraw()

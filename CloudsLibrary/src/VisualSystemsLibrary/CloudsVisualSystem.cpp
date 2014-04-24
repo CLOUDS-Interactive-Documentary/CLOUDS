@@ -452,6 +452,10 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	translatedHeadPosition += (newHeadPosition - translatedHeadPosition) * .1;
 	cloudsCamera.lookTarget = translatedHeadPosition;
 	
+	
+	bgColor  = ofColor::fromHsb(MIN(bgHue,254.),  bgSat,  bgBri,  255);
+	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
+	
 	selfUpdate();
 	
 	if(isInterlude){
@@ -465,9 +469,11 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	}
 
     durationLabel->setLabel(ofxTimecode::timecodeForSeconds(timeline->getInOutRange().span() * timeline->getDurationInSeconds()));
-    
-	bgColor  = ofColor::fromHsb(MIN(bgHue,254.),  bgSat,  bgBri,  255);
-	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
+	
+	
+//    James, james, JAMES
+//	bgColor  = ofColor::fromHsb(MIN(bgHue,254.),  bgSat,  bgBri,  255);
+//	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
 	
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
     
