@@ -1036,6 +1036,14 @@ void CloudsVisualSystemRGBD::loadPointcloudGUISFromName(string presetName){
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic, string question){
     
 
+//#ifdef CLOUDS_SCREENING
+//	QuestionQueue q;
+//	q.clip  = questionClip;
+//	q.topic = topic;
+//	q.question = question;
+//	questions.push_back(q);
+//	cout << "ADDING QUESTIONS. SIZE IS NOW " << questions.size() << endl;
+//#else
     //////////////QUEUE WAY
     CloudsPortal* testportal = NULL;
     if(leftPortal.question == ""){
@@ -1057,6 +1065,8 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic,
         q.question = question;
         questions.push_back(q);
     }
+//#endif
+	
     //////////////QUEUE WAY
     
     /////////////////////OLD WAY
@@ -1549,7 +1559,13 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 	
 	//clearQuestions();
 	if(portalToClear != NULL){
-		portalToClear->question = "";
+		if(questions.size() != 0){
+			portalToClear->clip = questions[0].clip;
+			portalToClear->topic = questions[0].topic;
+			portalToClear->question = questions[0].question;
+			questions.erase( questions.begin() );
+			cout << "******ERASING QUESTIONS. SIZE IS NOE " << questions.size() << endl;
+		}
 		portalToClear = NULL;
 	}
 	
@@ -1564,14 +1580,8 @@ void CloudsVisualSystemRGBD::assignAvailableQuestion(CloudsPortal& portal){
 		return;
 	}
 	
-#ifdef CLOUDS_SCREENING
-	if(&portal != caughtPortal && &portal != selectedPortal && portal.question == ""){
-		portal.clip = questions.front().clip;
-		portal.topic = questions.front().topic;
-		portal.question = questions.front().question;
-	}
-	questions.erase( questions.erase(questions.begin()) );		
-#else
+#ifndef CLOUDS_SCREENING
+//#else
 	if(&portal != caughtPortal && &portal != selectedPortal){
 		portal.clip = questions.back().clip;
 		portal.topic = questions.back().topic;

@@ -602,7 +602,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		//Kyle_CH - coding, magic
 		
 #ifdef CLOUDS_SCREENING
-		if(state.run == firstActNum && state.act->getAllClips().size() > 3 && !screeningQuestionsAdded){
+		if(state.run == firstActNum && state.act->getAllClips().size() > 2 && !screeningQuestionsAdded){
 			addQuestions(state, screeningQuestionClips);
 			screeningQuestionsAdded = true;
 		}
