@@ -24831,7 +24831,7 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5Spaghetti_SmoothScribblesOC">
-    <keywords>drawing|sketching|improvization</keywords>
+    <keywords>drawing|improvization</keywords>
     <links></links>
     <suppressions>
         <clip>Andres - make an egg</clip>
@@ -24870,6 +24870,7 @@
         <clip>Zach - Time slows down</clip>
         <clip>Zach - drawn2</clip>
         <clip>Zach - minecraft livecode</clip>
+        <clip>Intro - CodingSketching</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
