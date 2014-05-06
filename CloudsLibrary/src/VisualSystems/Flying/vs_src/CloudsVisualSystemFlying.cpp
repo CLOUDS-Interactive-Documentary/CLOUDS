@@ -27,16 +27,6 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
         rules.back().load(dir.getPath(i));
         rulesWeights.push_back(1.f);
     }
-
-	soundFiles.push_back("SriLankaForest.aif");
-	soundFiles.push_back("FOREST.aif");
-	soundFiles.push_back("organ_slower.aif");
-
-	for(int i = 0; i < soundFiles.size(); i++){ 
-		playSample[i]	= 0;
-		sampleVolume[i] = 0;
-	}
-
 }
 
 // selfSetup is called when the visual system is first instantiated
