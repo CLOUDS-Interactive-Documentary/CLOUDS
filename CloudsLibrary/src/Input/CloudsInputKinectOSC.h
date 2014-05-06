@@ -80,16 +80,10 @@ namespace k4w
 	// defined by us
     enum ViewerState 
     {
-<<<<<<< HEAD
-        ViewerState_None       = 0,
-        ViewerState_OutOfRange = 1,
-        ViewerState_Present    = 2
-=======
         ViewerState_None        = 0,
         ViewerState_OutOfRange  = 1,
         ViewerState_PresentIdle = 2,
         ViewerState_Interacting = 3
->>>>>>> master
     };
     
     struct Joint 
@@ -104,11 +98,8 @@ namespace k4w
     struct HandJoint : public Joint
     {
         HandState handState;
-		ofVec3f clampedPosition;  // input position, clamped to bounds if (bClampToBounds == true)
-<<<<<<< HEAD
-=======
+        ofVec3f clampedPosition;  // input position, clamped to bounds if (bClampToBounds == true)
         float focus;
->>>>>>> master
     };
     
     class Body 
@@ -220,13 +211,10 @@ public:
     
     bool bDoDebug;
 
-	k4w::ViewerState viewerState;
-<<<<<<< HEAD
-=======
+    k4w::ViewerState viewerState;
     unsigned long viewerIdleTime;
     int currViewerBodyIdx;
     bool bCurrViewerHasInteracted;
->>>>>>> master
     
     // current position attributes
     float posResetLerpPct;
