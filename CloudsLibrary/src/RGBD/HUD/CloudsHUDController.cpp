@@ -155,13 +155,13 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 #endif
 }
 
-<<<<<<< HEAD
-void CloudsHUDController::questionHoverOn(const string& question){
-	populateQuestion(question,true);
-=======
-void CloudsHUDController::questionHoverOn(string question, bool animate){
-	populateQuestion(question,true, animate);
->>>>>>> master
+//<<<<<<< HEAD
+void CloudsHUDController::questionHoverOn(const string& question,bool animate){
+	populateQuestion(question, true, animate);
+//=======
+//void CloudsHUDController::questionHoverOn(string question, bool animate){
+//	populateQuestion(question,true, animate);
+//>>>>>>> master
 }
 
 void CloudsHUDController::questionHoverOff(){

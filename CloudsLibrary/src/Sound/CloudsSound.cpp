@@ -280,7 +280,7 @@ void CloudsSound::update(){
 #endif
         sleep(1);
         // zero output buffer (AHA!)
-        bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
+        memset((void *) s_audio_outbuf, 0, nchans*framesize*sizeof(short));
         GetCloudsAudioEvents()->respawn = false;
         playCurrentCues();
     }
@@ -442,38 +442,38 @@ void CloudsSound::playCurrentCues(){
 			
         }
     }
-<<<<<<< HEAD
-    if(LUKEDEBUG) cout << "====================" << endl;
-    if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
-    if(LUKEDEBUG) cout << "====================" << endl;
-	#endif
+//<<<<<<< HEAD
+//    if(LUKEDEBUG) cout << "====================" << endl;
+//    if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
+//    if(LUKEDEBUG) cout << "====================" << endl;
+//	#endif
 
-    actTimeLine.setCurrentPage(0);
-    
-=======
+//    actTimeLine.setCurrentPage(0);
+//    
+//=======
 	cueFlagsAdded = true;
->>>>>>> master
+//>>>>>>> master
 }
 
 void CloudsSound::enterTunnel()
 {
     string soundfile = "CLOUDS_introTunnel_light.wav"; // change to something in trax
     float volume = 1.0; // how load does this sound play?
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	
-	#ifdef RTC_MIX
-=======
+//	#ifdef RTC_MIX
+//=======
 #ifdef RTCMIX
->>>>>>> master
+//>>>>>>> master
     if(LUKEDEBUG) cout << "sound: enterTunnel()" << endl;
 
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
     SCHEDULEBANG(477.); // length of sound
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	
-	#endif
-=======
+//	#endif
+//=======
 #else
 	//TODO: enter tunnel on main system
 //	frontPlayer->loadSound();
@@ -487,7 +487,7 @@ void CloudsSound::enterTunnel()
 	unlock();
 
 #endif
->>>>>>> master
+//>>>>>>> master
     in_tunnel = true;
     float ftime = 0.1;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
@@ -500,15 +500,15 @@ void CloudsSound::exitTunnel()
 
     if(LUKEDEBUG) cout << "sound: exitTunnel()" << endl;
 
-<<<<<<< HEAD
-    PFIELD_SCHED(0., fd, PF_TUNNEL_BUS, "ramp_10");
-	#endif
+//<<<<<<< HEAD
+//    PFIELD_SCHED(0., fd, PF_TUNNEL_BUS, "ramp_10");
+//	#endif
     
-	dopull = false;
-=======
+//	dopull = false;
+//=======
     stopMusic();
     // PFIELD_SCHED(0., fd, PF_TUNNEL_BUS, "ramp_10");
->>>>>>> master
+//>>>>>>> master
     in_tunnel = false;
 }
 
@@ -526,10 +526,10 @@ void CloudsSound::enterClusterMap()
     if(LUKEDEBUG) cout << "sound: enterClusterMap()" << endl;
 #ifdef RTCMIX
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
-<<<<<<< HEAD
-    STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_CLUSTERMAP_BUS);
-	#endif  
-=======
+//<<<<<<< HEAD
+//    STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_CLUSTERMAP_BUS);
+//	#endif  
+//=======
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0);
 #else
 //	frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/cloudsdream_mix1.mp3");
@@ -546,7 +546,7 @@ void CloudsSound::enterClusterMap()
 	
     float ftime = 0.1;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
->>>>>>> master
+//>>>>>>> master
 }
 
 void CloudsSound::playImmediately(string trackPath){
@@ -562,21 +562,21 @@ void CloudsSound::playImmediately(string trackPath){
 
 void CloudsSound::exitClusterMap()
 {
-<<<<<<< HEAD
-    float fd = 5.0; // change to adjust fade time
-	#ifdef RTC_MIX
-=======
->>>>>>> master
+//<<<<<<< HEAD
+//    float fd = 5.0; // change to adjust fade time
+//	#ifdef RTC_MIX
+//=======
+//>>>>>>> master
     if(LUKEDEBUG) cout << "sound: exitClusterMap()" << endl;
     
     stopMusic();
     // PFIELD_SCHED(0., fd, PF_CLUSTERMAP_BUS, "ramp_10");
     whichdream = (whichdream+1)%3;
-<<<<<<< HEAD
-	#endif
-    dopull = false;
-=======
->>>>>>> master
+//<<<<<<< HEAD
+//	#endif
+//    dopull = false;
+//=======
+//>>>>>>> master
 }
 
 
@@ -667,19 +667,18 @@ void CloudsSound::doPrinting() {
 // =========================
 void CloudsSound::audioRequested(ofAudioEventArgs& args){
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	#ifdef RTC_MIX
-    if(dopull) {
-
-=======
->>>>>>> master
+//<<<<<<< HEAD
+//<<<<<<< HEAD
+//	#ifdef RTC_MIX
+//    if(dopull) {
+//=======
+//>>>>>>> master
         pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
-=======
-#ifdef RTCMIX
-    int cdif = 0;
-    int csum = 0;
->>>>>>> master
+//=======
+//#ifdef RTCMIX
+//    int cdif = 0;
+//    int csum = 0;
+//>>>>>>> master
 
         pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
         // fill up the audio buffer
@@ -720,18 +719,17 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
             
             reset_print();
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    }
-	#endif
-
-=======
-    
->>>>>>> master
+//<<<<<<< HEAD
+//<<<<<<< HEAD
+//    }
+//	#endif
+//
+//=======  
+//>>>>>>> master
 =======
 #endif
 	
->>>>>>> master
+//>>>>>>> master
 }
 
 void CloudsSound::mouseReleased(ofMouseEventArgs & args){
