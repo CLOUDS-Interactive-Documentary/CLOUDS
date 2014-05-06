@@ -7,10 +7,6 @@
 
 //These methods let us add custom GUI parameters and respond to their events
 
-void CloudsVisualSystemExampleMPMFluid::selfSetDefaults(){
-    memset(volume,0, sizeof(float)*4);
-}
-
 void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
     customGui = new ofxUISuperCanvas("EXAMPLE MPM FLUID", gui);
     customGui->copyCanvasStyle(gui);
@@ -78,6 +74,8 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
 }
 
 void CloudsVisualSystemExampleMPMFluid::selfSetDefaults(){
+    memset(volume,0, sizeof(float)*4);
+
     primaryCursorMode = CURSOR_MODE_DRAW;
     secondaryCursorMode  = CURSOR_MODE_DRAW;
 }
