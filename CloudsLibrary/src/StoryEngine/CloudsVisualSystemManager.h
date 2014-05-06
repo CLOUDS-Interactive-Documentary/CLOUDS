@@ -32,26 +32,25 @@ class CloudsVisualSystemManager {
     bool hasPresetWithID(const string& ID, int& index);
 	CloudsVisualSystemPreset& getPresetForSystem(const string& systemName, const string& presetName);
 	
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	vector<int> getFilteredPresetIndeces(bool enabled = false, bool oculus = false, bool gradeA = false, string systemName = "");
 //	vector<int> getFilteredPresetIndecesForSystem(,bool enabled, bool oculus, bool gradeA);
-=======
-	vector<int> getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA, string systemName = "");
->>>>>>> master
+//=======
+//	vector<int> getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA, string systemName = "");
+//>>>>>>> master
 		
 	vector<CloudsVisualSystemPreset>& getPresets();
 	
 	bool presetHasKeywords(CloudsVisualSystemPreset& preset);
 	vector<string> keywordsForPreset(int index);
 	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	vector<string> keywordsForPreset(const string& systemName, const string& presetName);
 	vector<CloudsVisualSystemPreset> getPresetsForKeyword(const string& keyword);
-
-=======
-	vector<string> keywordsForPreset(string systemName, string presetName);
-	vector<CloudsVisualSystemPreset> getPresetsForKeyword(string keyword);
->>>>>>> master
+//=======
+//	vector<string> keywordsForPreset(string systemName, string presetName);
+//	vector<CloudsVisualSystemPreset> getPresetsForKeyword(string keyword);
+//>>>>>>> master
 	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords, string clipName = "", bool isInterlude = false);
 
 	CloudsVisualSystem* getEmptySystem(const string& mainKeyword, vector<string> keywords);
