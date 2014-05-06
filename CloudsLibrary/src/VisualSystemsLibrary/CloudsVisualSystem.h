@@ -10,10 +10,6 @@
 #include "ofxLight.h"
 #include "ofxGenerative.h"
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 #ifdef CLOUDS_APP
 #include "CloudsPortal.h"
 #endif
@@ -51,7 +47,6 @@ enum ofxViewType
     OFX_VIEW_3D
 };
 
-<<<<<<< HEAD
 enum CloudsCursorMode
 {
     CURSOR_MODE_NONE = 0,
@@ -60,8 +55,6 @@ enum CloudsCursorMode
     CURSOR_MODE_DRAW
 };
 
-=======
->>>>>>> master
 class CloudsVisualSystem {
   public:
 	   
@@ -113,17 +106,9 @@ class CloudsVisualSystem {
     virtual void selfDraw();
 	virtual void selfDrawOverlay();
 	virtual void selfPostDraw();
-<<<<<<< HEAD
-    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float alphaScalar = 255);
-=======
 	virtual void selfPostDraw(int width, int height);
-<<<<<<< HEAD
-	
-    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged);
->>>>>>> master
-=======
     virtual void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus = 1.0f);
->>>>>>> master
+
 	virtual void selfPresetLoaded(string presetPath);
 	
     virtual void selfExit();
@@ -225,11 +210,7 @@ class CloudsVisualSystem {
     void draw2dSystemPlane();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
     
-<<<<<<< HEAD
-    void drawCursors();
-=======
     virtual void drawCursors();
->>>>>>> master
 	
     //Core Param Setup
     void setupAppParams();
@@ -350,8 +331,6 @@ class CloudsVisualSystem {
     CloudsCursorMode primaryCursorMode;
     CloudsCursorMode secondaryCursorMode;
     
-<<<<<<< HEAD
-=======
 	bool isInterlude;
 	bool updateInterludeInterface();
 	void drawInterludeInterface();
@@ -372,7 +351,7 @@ class CloudsVisualSystem {
 	float interludeTypeScale;
 	float interludeTypeYOffset;
 	float interludeTypeTracking;
->>>>>>> master
+
   protected:
 		
 	//UI
@@ -537,7 +516,3 @@ class CloudsVisualSystem {
 	bool bSetManualBackgroundColors;
     
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> master
