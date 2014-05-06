@@ -182,19 +182,19 @@ protected:
     float fMainGain;
     Tonic::ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
-<<<<<<< HEAD
-	vector<string> soundFiles;
+//<<<<<<< HEAD
+//	vector<string> soundFiles;
     //int nSamples = 4;
     //string soundFiles[4] = {"EchoVortex.aif",
     //    "wormholeZoom.aif",
     //    "wormholeZoom2.aif",
     //    "slowgrains_short.aif"};
-    bool playSample[4];
-    Tonic::ControlTrigger soundTriggers[4];
-    Tonic::ofxTonicSynth synth;
-    Tonic::Generator buildSynth();
+//    bool playSample[4];
+//    Tonic::ControlTrigger soundTriggers[4];
+//    Tonic::ofxTonicSynth synth;
+//    Tonic::Generator buildSynth();
 
-=======
+//=======
     vector<TonicSample> tonicSamples;
 //    int nSamples = 4;
 //    string soundFiles[4] = {"EchoVortex.aif",
@@ -203,8 +203,8 @@ protected:
 //        "slowgrains_short.aif"};
 //    bool playSample[4];
 //    ControlTrigger soundTriggers[ 4];
-    ofxTonicSynth synth;
-    Generator buildSynth();
->>>>>>> master
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
+//>>>>>>> master
 	void audioRequested(ofAudioEventArgs& args);
 };

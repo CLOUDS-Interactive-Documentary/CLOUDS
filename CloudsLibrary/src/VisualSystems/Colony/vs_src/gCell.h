@@ -163,52 +163,24 @@ private:
 public:
     colonyPartitionMap(){
         //Populating this in advance. Cost is very little for any reasonably sized partition.
-<<<<<<< HEAD
-        for (int i = 0 ; i < MAP_SUBDIV ; ++i) {
-            for (int j = 0; j < MAP_SUBDIV; ++j) {
-                coord2i c = coord2i(i, j);
-                partitions[c.ordered()] = new vector<cellPtr>();
-            }
-		}
-
-		for(int i = 0; i < MAP_SUBDIV * MAP_SUBDIV; i++){
-			neighbors[i] = NULL;
-		}
-	}
-
-=======
         for (int i = 0 ; i < MAP_SUBDIV; ++i){
             for (int j = 0; j < MAP_SUBDIV; ++j) {
                 coord2i c = coord2i(i, j);
                 partitions[c.ordered()] = new vector<cellPtr>();
 				neighbors[c.ordered()] = NULL;
             }}}
->>>>>>> master
     ~colonyPartitionMap(){
         clear();
         for ( int i = 0 ; i < MAP_SUBDIV * MAP_SUBDIV ; i++ ){
 			if(partitions[i] != NULL){
-<<<<<<< HEAD
-	            delete partitions[i];
-			}
-            partitions[i] = NULL; //UGH C++
-=======
 				delete partitions[i];
 				partitions[i] = NULL; //UGH C++
 			}
->>>>>>> master
         }
     }
 
     void clear(){
         for (int i = 0 ; i < MAP_SUBDIV * MAP_SUBDIV ; i++) {
-<<<<<<< HEAD
-            partitions[i]->clear();
-			if(neighbors != NULL){
-	            delete neighbors[i];
-			}
-            neighbors[i] = NULL; //YOU ARE A BAD MAN, BJARNE
-=======
 			if(partitions[i] != NULL){
 				partitions[i]->clear();
 			}
@@ -216,7 +188,6 @@ public:
 				delete neighbors[i];
 				neighbors[i] = NULL; //YOU ARE A BAD MAN, BJARNE
 			}
->>>>>>> master
         }
     }
 

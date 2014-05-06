@@ -5,10 +5,7 @@
 #include "CloudsAudioEvents.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsAct.h"
-
-#ifdef RTC_MIX
 #include "lukeFuncs.h"
-#endif
 
 #define PF_INTRO_BUS 1
 #define PF_TUNNEL_BUS 2
@@ -64,15 +61,8 @@ class CloudsSound : public ofThread {
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
     // Luke's public stuff
-//<<<<<<< HEAD
-//	#ifdef RTC_MIX
-//    void schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel);
-//	#endif  
-//	void startMusicFX(float outskip, float musicdur);
-//=======
     void schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel, int orchstep);
     void startMusicFX(float outskip, float musicdur);
-//>>>>>>> master
     void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope);
     void stopMusic();
     void reloadPresets();
@@ -81,12 +71,6 @@ class CloudsSound : public ofThread {
     bool in_tunnel;
     bool isScoreDesigner;
     
-//<<<<<<< HEAD
-//	#ifdef RTC_MIX
-//    // public data structures
-//    vector<lukePreset> presets;
-//	#endif
-//=======
 	void threadedFunction();
 		
     // public data structures
@@ -96,7 +80,6 @@ class CloudsSound : public ofThread {
 	float mixVolumeForTrack(string trackPath);
 	void setMixVolumeForTrack(string trackPath, float level);
 	void playImmediately(string trackPath);
-//>>>>>>> master
 
 	void saveMixLevels();
 	float frontMixLevel;
@@ -140,14 +123,12 @@ class CloudsSound : public ofThread {
     bool DOCMIXPRINT;
     vector<string> ab; // act bus strings for RTCMIX
     vector<int> abn; // act bus numbers for RTCMIX
-
-	#ifdef RTC_MIX
+	
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;
     vector<lukeSimpleMelody> simplemelodies;
 
     vector<lukeSample> looperSamples;
-	#endif
 
 	vector<CloudsSoundCue> currentCues;
 

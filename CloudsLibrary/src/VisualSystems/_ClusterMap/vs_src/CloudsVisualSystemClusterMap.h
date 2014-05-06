@@ -34,13 +34,12 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	void setRun(CloudsRun& run);
 	void setAct(CloudsAct* newAct);
 	void setQuestions(vector<CloudsClip>& questions);
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	//CloudsQuestion* getSelectedQuestion();
-=======
+//=======
 	void allocateFlickerTexture();
-	
-	CloudsQuestion* getSelectedQuestion();
->>>>>>> master
+//	CloudsQuestion* getSelectedQuestion();
+//>>>>>>> master
 
     void setCurrentTopic(string topic);
     

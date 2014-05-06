@@ -620,27 +620,24 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 
 	else if(showingClusterMap){
 		
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		//TODO add questions or something to the cluster map
 		//right now we can just have a canned animation and stop it when we are done
         
         //MIKE
         //if(HUD->continue: go to next act
         //else if hud reset: go to next intro
-		if(!clusterMap->getTimeline()->getIsPlaying()){
-#ifdef RTC_MIX
-            sound.stopMusic();
-#endif
-#ifdef OCULUS_RIFT
-            transitionController.transitionToIntro(1.0);
-#else
-            transitionController.transitionFromInterlude(1.0);
-#endif
-			cout << "TRANSITIONING FROM CLUSTER MAP IN UPDATE" << endl;
-=======
+//		if(!clusterMap->getTimeline()->getIsPlaying()){
+//#ifdef OCULUS_RIFT
+//            transitionController.transitionToIntro(1.0);
+//#else
+//            transitionController.transitionFromInterlude(1.0);
+//#endif
+//			cout << "TRANSITIONING FROM CLUSTER MAP IN UPDATE" << endl;
+//=======
 		if(clusterMap->finishedTraversing){
 			transitionController.transitionFromClusterMap(1.0);
->>>>>>> master
+//>>>>>>> master
             showingClusterMap = false;
 		}
 	}
@@ -652,18 +649,18 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		bool stopInterlude = updateInterludeInterface();
 		
         if(stopInterlude){
-<<<<<<< HEAD
-#ifdef RTC_MIX
-            sound.stopMusic();
-#endif
-            if(goToNextAct){
-=======
+//<<<<<<< HEAD
+//#ifdef RTC_MIX
+//            sound.stopMusic();
+//#endif
+//            if(goToNextAct){
+//=======
             
             forceInterludeReset = false;
             sound.stopMusic();
             
             if(interludeContinueSelected){
->>>>>>> master
+//>>>>>>> master
                 transitionController.transitionFromInterlude(1.0);
             }
             else{
@@ -1424,17 +1421,16 @@ void CloudsPlaybackController::showInterlude(){
 	
     vector<string> topics;
     CloudsVisualSystemPreset interludePreset;
-    //HACK HACK HACK
     if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
         
         interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
-<<<<<<< HEAD
-        if(interludeSystem == NULL){
-			ofLogError("CloudsPlaybackController::showInterlude") << "System is null. should not happen!";
-			return;
-		}
-=======
->>>>>>> master
+//<<<<<<< HEAD
+//        if(interludeSystem == NULL){
+//			ofLogError("CloudsPlaybackController::showInterlude") << "System is null. should not happen!";
+//			return;
+//		}
+//=======
+//>>>>>>> master
         interludeSystem->setDrawToScreen( false );
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
@@ -1444,17 +1440,17 @@ void CloudsPlaybackController::showInterlude(){
         currentVisualSystem = interludeSystem;
         
         showingInterlude = true;
-<<<<<<< HEAD
-        continuePortal.hoverPosition =  ofVec3f(CloudsVisualSystem::getStaticRenderTarget().getWidth() *0.95 , CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.1, 0);
-        int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.01;
-        int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.95;
+//<<<<<<< HEAD
+//        continuePortal.hoverPosition =  ofVec3f(CloudsVisualSystem::getStaticRenderTarget().getWidth() *0.95 , CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.1, 0);
+//        int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.01;
+//        int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.95;
         
-        ofRectangle resetText = resetFont.getStringBoundingBox("RESET",x,y);
-        resetRect = ofRectangle(x,y,resetText.height + 1,resetText.height + 1);
-        resetSelectionRect = ofRectangle(0,CloudsVisualSystem::getStaticRenderTarget().getHeight() - CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2,CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.2,CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2);
+//        ofRectangle resetText = resetFont.getStringBoundingBox("RESET",x,y);
+//        resetRect = ofRectangle(x,y,resetText.height + 1,resetText.height + 1);
+//        resetSelectionRect = ofRectangle(0,CloudsVisualSystem::getStaticRenderTarget().getHeight() - CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2,CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.2,CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2);
         
-=======
->>>>>>> master
+//=======
+//>>>>>>> master
     }
     else{
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";

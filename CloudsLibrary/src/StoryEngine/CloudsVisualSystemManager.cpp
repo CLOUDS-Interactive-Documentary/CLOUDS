@@ -80,20 +80,13 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemOrbit.h"
 #include "CloudsVisualSystemOscillations.h"
 #include "CloudsVisualSystemPages.h"
-<<<<<<< HEAD
-//#include "CloudsVisualSystemPaintBrush.h"
-=======
 #include "CloudsVisualSystemParadox.h"
-#include "CloudsVisualSystemPaintBrush.h"
->>>>>>> master
+//#include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemPhotoGlitch.h"
 #include "CloudsVisualSystemProcess11.h"
 #include "CloudsVisualSystemProcess18.h"
 #include "CloudsVisualSystemRGBDVideo.h"
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 #include "CloudsVisualSystemRandomDigits2.h"
 
 #include "CloudsVisualSystemReplicator.h"
