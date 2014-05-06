@@ -120,10 +120,6 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(){
 	
-<<<<<<< HEAD
-	cout << "*****LOAD STEP PARSER " << endl;
-
-=======
 	loading = true;
 	
     if(!eventsRegistered){
@@ -173,7 +169,6 @@ void CloudsPlaybackController::threadedFunction(){
 	
 	loadPercent = 0.0;
 	
->>>>>>> master
 	///START THREADED
 	parser.loadFromFiles();
 	if(!isThreadRunning()) return;
@@ -186,34 +181,18 @@ void CloudsPlaybackController::threadedFunction(){
 
 	cout << "*****LOAD STEP MEDIA" << endl;
 	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-<<<<<<< HEAD
-
-	cout << "*****LOAD STEP PRESETS" << endl;
-	visualSystems.loadPresets();
-    visualSystems.loadCachedDataForSystems();
+//<<<<<<< HEAD
+//	cout << "*****LOAD STEP PRESETS" << endl;
+//	visualSystems.loadPresets();
+//  visualSystems.loadCachedDataForSystems();
     
-	cout << "*****LOAD STEP STORY ENGINE" << endl;
-	storyEngine.parser = &parser;
-	storyEngine.visualSystems = &visualSystems;
-	storyEngine.printDecisions = false;
-	storyEngine.combinedClipsOnly = true;
-	storyEngine.setup();
-	
-//    vector< pair<int,string> > topicCountPairs;
-//    for(int i = 0; i < parser.getAllKeywords().size(); i++){
-//        topicCountPairs.push_back(make_pair(parser.getClipsWithKeyword( parser.getAllKeywords()[i]).size(),
-//                                            parser.getAllKeywords()[i] ) );
-//    }
-//
-//    sort(topicCountPairs.begin(), topicCountPairs.end(), listsort);
-//    ofBuffer b;
-//
-//    for(int i = 0; i < topicCountPairs.size(); i++){
-//        b.append( ofToString(topicCountPairs[i].first) + "\t" + topicCountPairs[i].second + "\n" );
-//    }
-//    ofBufferToFile(GetCloudsDataPath() + "logs/topics.txt", b);
-    
-=======
+//	cout << "*****LOAD STEP STORY ENGINE" << endl;
+//	storyEngine.parser = &parser;
+//	storyEngine.visualSystems = &visualSystems;
+//	storyEngine.printDecisions = false;
+//	storyEngine.combinedClipsOnly = true;
+//	storyEngine.setup();
+//=======
 	
 	if(!isThreadRunning()) return;
 	
@@ -222,14 +201,14 @@ void CloudsPlaybackController::threadedFunction(){
 	
 	if(!isThreadRunning()) return;
 	
->>>>>>> master
+//>>>>>>> master
 	///SOUND
 	cout << "*****LOAD STEP SOUND" << endl;
 	mixer.setup();
 	sound.setup(storyEngine);
-<<<<<<< HEAD
-    
-    
+
+//<<<<<<< HEAD
+/*    
 #ifndef OCULUS_RIFT
 	////COMMUNICATION
 	oscSender.setup();
@@ -242,13 +221,6 @@ void CloudsPlaybackController::threadedFunction(){
 	rgbdVisualSystem->setDrawToScreen(false);
 	
 	cout << "*****LOAD STEP CLUSTER MAP" << endl;
-	/*
-	clusterMap = new CloudsVisualSystemClusterMap();
-	clusterMap->setRun(run);
-	clusterMap->setup();
-	clusterMap->buildEntireCluster(parser);
-	clusterMap->setDrawToScreen(false);
-	*/
 
 	cout << "*****LOAD STEP INTRO" << endl;
 	introSequence = new CloudsIntroSequence();
@@ -258,7 +230,8 @@ void CloudsPlaybackController::threadedFunction(){
 	
 	cout << "*****LOAD STEP HUD" << endl;
 	hud.setup();
-=======
+	*/
+//=======
 	sound.enterTunnel();
 	
 	if(!isThreadRunning()) return;
@@ -291,7 +264,8 @@ void CloudsPlaybackController::finishSetup(){
 	startingNodes = storyEngine.getStartingQuestions();
 	introSequence->setStartQuestions(startingNodes);
 
->>>>>>> master
+//>>>>>>> master
+
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
     rgbdVisualSystem->setupHUDGui();
@@ -299,6 +273,7 @@ void CloudsPlaybackController::finishSetup(){
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
+	/*
 <<<<<<< HEAD
     
 	cout << "*****LOAD STEP EVENTS" << endl;
@@ -335,7 +310,7 @@ void CloudsPlaybackController::finishSetup(){
 	cout << "*****LOAD SETUP COMPLETE" << endl;
 =======
 >>>>>>> master
-
+*/
 }
 
 //--------------------------------------------------------------------
@@ -429,11 +404,7 @@ void CloudsPlaybackController::updateLoadingAct(){
 			preset.system->setup();
 		}
 		else{
-<<<<<<< HEAD
-			ofLogError("CloudsPlaybackController::playAct") << presets[i].systemName << " NULL right after instantiaton.";
-=======
 			ofLogError("CloudsPlaybackController::updateLoadingAct") << preset.systemName << " NULL right after instantiaton.";
->>>>>>> master
 		}
 
 		currentPresetIndex++;
@@ -533,7 +504,8 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
     CloudsSoundCue cue;
 	vector<int> validInterludePresetIndices;
 	ofRange validRange(56,65);
-#ifdef RTC_MIX
+
+//#ifdef RTC_MIX
 	for(int i = 0; i < sound.presets.size(); i++){
 		if(validRange.contains( sound.presets[i].slotnumber) ){
 			validInterludePresetIndices.push_back(i);
@@ -563,20 +535,15 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 #endif
 	
-    if(LUKEDEBUG) cout << "   preset: " << interludePreset.slotnumber << endl;
-<<<<<<< HEAD
-	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
-<<<<<<< HEAD
-#endif
-=======
-=======
+//    if(LUKEDEBUG) cout << "   preset: " << interludePreset.slotnumber << endl;
+//	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
+//#endif
+
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel, 0);
->>>>>>> master
 
     if(LUKEDEBUG) cout << "====================" << endl;
     if(LUKEDEBUG) cout << "DONE INTERLUDE MUSIC!!!" << endl;
     if(LUKEDEBUG) cout << "====================" << endl;
->>>>>>> master
 
 }
 

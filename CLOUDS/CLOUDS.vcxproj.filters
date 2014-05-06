@@ -1120,6 +1120,15 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\itgPath.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeFileFuncs.cpp">
+      <Filter>CloudsLibrary\src\Sound\rtcmix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeFuncs.cpp">
+      <Filter>CloudsLibrary\src\Sound\rtcmix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeMusicFuncs.cpp">
+      <Filter>CloudsLibrary\src\Sound\rtcmix</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1328,6 +1337,9 @@
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\Compiler">
       <UniqueIdentifier>{ea1e62dc-6d2a-4834-8963-b18e5e548c2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Sound\rtcmix">
+      <UniqueIdentifier>{956a20b6-6db7-4a47-b9a0-95c908668249}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2926,6 +2938,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\itgPath.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeFuncs.h">
+      <Filter>CloudsLibrary\src\Sound\rtcmix</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
