@@ -208,12 +208,6 @@ void CloudsVisualSystemXstatic::selfSetDefaults()
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
-void CloudsVisualSystemXstatic::selfSetDefaults()
-{
-    primaryCursorMode = CURSOR_MODE_DRAW;
-    secondaryCursorMode  = CURSOR_MODE_DRAW;
-}
-
 void CloudsVisualSystemXstatic::regenerate(bool bBigBang)
 {
     particles.clear();
