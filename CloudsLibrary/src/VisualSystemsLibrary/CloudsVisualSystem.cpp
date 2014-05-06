@@ -193,13 +193,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
-<<<<<<< HEAD
-	primaryCursorMode = CURSOR_MODE_NONE;
-    secondaryCursorMode = CURSOR_MODE_NONE;
-=======
 	primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
->>>>>>> master
 	updateCyclced = false;
     bDoBloom = false;
     bloomAmount = 0.;
@@ -1322,22 +1317,15 @@ void CloudsVisualSystem::setupGui()
     primaryCursorModes.push_back("PRIMARY CURSOR INACTIVE");
     primaryCursorModes.push_back("PRIMARY CURSOR CAMERA");
     primaryCursorModes.push_back("PRIMARY CURSOR DRAW");
-<<<<<<< HEAD
-    gui->addRadio("PRIMARY CURSOR MODE", primaryCursorModes)->activateToggle(primaryCursorModes[CURSOR_MODE_NONE]);
-=======
     gui->addRadio("PRIMARY CURSOR MODE", primaryCursorModes);
->>>>>>> master
+
     gui->addSpacer();
     vector<string> secondaryCursorModes;
     secondaryCursorModes.push_back("SEC. CURSORS NONE");
     secondaryCursorModes.push_back("SEC. CURSORS INACTIVE");
     secondaryCursorModes.push_back("SEC. CURSORS CAMERA");
     secondaryCursorModes.push_back("SEC. CURSORS DRAW");
-<<<<<<< HEAD
-    gui->addRadio("SECONDARY CURSOR MODE", secondaryCursorModes)->activateToggle(secondaryCursorModes[CURSOR_MODE_NONE]);
-=======
     gui->addRadio("SECONDARY CURSOR MODE", secondaryCursorModes);
->>>>>>> master
     
     selfSetupGui();
     gui->autoSizeToFitWidgets();
@@ -3845,15 +3833,15 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	else{
         offset = 0;
     }
-<<<<<<< HEAD
-#if OF_VERSION_MINOR < 8
-    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
-                                                       CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-                                                      -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-#else
-    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,-offset);
-#endif
-=======
+
+    // EZ: Fix this to make sure we're always drawing right side up
+//#if OF_VERSION_MINOR < 8
+//    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
+//                                                       CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+//                                                      -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+//#else
+//    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,-offset);
+//#endif
 	
 //    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,
 //													 CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
@@ -3861,7 +3849,6 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 //                                                     -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     CloudsVisualSystem::getSharedRenderTarget().draw(-offset, height - offset, width, -height);
 	
->>>>>>> master
     if(bEnablePostFX){
         cloudsPostShader.end();
     }
@@ -3873,139 +3860,6 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 
 void CloudsVisualSystem::drawCursors()
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
-    for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
-=======
-	
-	return;
-	
-//    if (drawCursorMode > DRAW_CURSOR_NONE) {
-        map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
-        for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
-            if (drawCursorMode != DRAW_CURSOR_ALL && !it->second.primary) {
-                continue;
-            }
-            
->>>>>>> master
-#ifdef KINECT_INPUT
-		// Fade out as we reach out to the sides too far.
-		float alphaScalarXY = 1.0f;
-		if (((CloudsInputKinectOSC *)GetCloudsInput().get())->hands.count(it->first)) {
-			k4w::Hand * hand = ((CloudsInputKinectOSC *)GetCloudsInput().get())->hands[it->first];
-			alphaScalarXY = ofMap(hand->handJoint.inputPosition.distance(hand->handJoint.clampedPosition), 0.0f, 0.5f, 1.0f, 0.0f, true);
-		}
-
-		// Fade out as we reach in towards the screen too far.
-		float alphaScalarZ = ofMap(it->second.position.z, 0.2f, 1.0f, 1.0f, 0.0f, true);
-		
-		float alphaScalar = powf(MIN(alphaScalarXY, alphaScalarZ), 2.0f);
-        selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle, it->second.primary? primaryCursorMode : secondaryCursorMode, alphaScalar);
-#elif TOUCH_INPUT
-        selfDrawCursor(it->second.position, false, it->second.primary? primaryCursorMode : secondaryCursorMode);
-        // EZ: Replace the line above by the line below to test dragging by pressing a mouse button.
-//        selfDrawCursor(it->second.position, ofGetMousePressed(), it->second.primary? primaryCursorMode : secondaryCursorMode);
-#else
-        // EZ: This ofGetMousePressed() call is ghetto but will do for now
-        selfDrawCursor(it->second.position, ofGetMousePressed(), primaryCursorMode);
-#endif
-    }
-}
-
-void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float alphaScalar)
-{
-    if (mode == CURSOR_MODE_NONE) return;
-
-    ofPushStyle();
-
-    if (mode == CURSOR_MODE_INACTIVE) {
-        ofSetLineWidth(3);
-        ofSetColor(213, 69, 62, 192 * alphaScalar);
-#ifdef OCULUS_RIFT
-        float totalRadius = cursorSize * 0.5;
-#elif KINECT_INPUT
-		float totalRadius = cursorUpSizeMax * 0.5;
-#else
-		float totalRadius = cursorUpSize * 0.5;
-#endif
-        ofLine(pos.x - totalRadius, pos.y - totalRadius, pos.x + totalRadius, pos.y + totalRadius);
-        ofLine(pos.x - totalRadius, pos.y + totalRadius, pos.x + totalRadius, pos.y - totalRadius);
-    }
-    else if (mode == CURSOR_MODE_DRAW) {
-        ofSetLineWidth(2);
-        ofNoFill();
-        if (bDragged) {
-			ofSetColor(62, 69, 213, 192 * alphaScalar);
-
-#ifdef OCULUS_RIFT
-            ofCircle(pos, cursorSize);
-#elif KINECT_INPUT
-            ofCircle(pos.x, pos.y,
-                     ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true));
-#else
-            ofCircle(pos, cursorDownSize);
-#endif
-        }
-        else {  // !bDragged
-#ifdef OCULUS_RIFT
-            ofSetColor(255, 255, 255, 64 * alphaScalar);
-            ofCircle(pos, cursorSize);
-#elif KINECT_INPUT
-            ofSetColor(255, 255, 255, 192 * alphaScalar);
-            ofCircle(pos.x, pos.y,
-                     ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true));
-#else
-            ofSetColor(255, 255, 255, 192);
-            ofCircle(pos, cursorUpSize);
-#endif
-        }
-    }
-    else {  // mode == CURSOR_MODE_CAMERA
-        ofSetLineWidth(2);
-        static float coreRadius = 0.2f;
-        if (bDragged) {
-            ofSetColor(62, 69, 213, 192 * alphaScalar);
-            float totalRadius;
-#ifdef OCULUS_RIFT
-            totalRadius = cursorSize;
-#elif KINECT_INPUT
-            totalRadius = ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true);
-#else
-            totalRadius = cursorDownSize;
-#endif
-            ofLine(pos.x - totalRadius, pos.y, pos.x - totalRadius * coreRadius, pos.y);
-            ofLine(pos.x + totalRadius, pos.y, pos.x + totalRadius * coreRadius, pos.y);
-            ofLine(pos.x, pos.y - totalRadius, pos.x, pos.y - totalRadius * coreRadius);
-            ofLine(pos.x, pos.y + totalRadius, pos.x, pos.y + totalRadius * coreRadius);
-            ofNoFill();
-            ofCircle(pos, coreRadius);
-        }
-        else {  // !bDragged
-            static float midRadius = 0.5f;
-            float totalRadius;
-#ifdef OCULUS_RIFT
-            ofSetColor(255, 255, 255, 64 * alphaScalar);
-            totalRadius = cursorSize;
-#elif KINECT_INPUT
-            ofSetColor(255, 255, 255, 192 * alphaScalar);
-            totalRadius = ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true);
-#else
-            ofSetColor(255, 255, 255, 192 * alphaScalar);
-            totalRadius = cursorUpSize;
-#endif
-            ofLine(pos.x - totalRadius, pos.y, pos.x - totalRadius * coreRadius, pos.y);
-            ofLine(pos.x + totalRadius, pos.y, pos.x + totalRadius * coreRadius, pos.y);
-            ofLine(pos.x, pos.y - totalRadius, pos.x, pos.y - totalRadius * coreRadius);
-            ofLine(pos.x, pos.y + totalRadius, pos.x, pos.y + totalRadius * coreRadius);
-            ofSetColor(255, 255, 255, 64);
-            ofFill();
-            ofCircle(pos, midRadius);
-        }
-    }
-    
-    ofPopStyle();
-=======
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
         selfDrawCursor(it->second.position, it->second.dragged, it->second.primary? primaryCursorMode : secondaryCursorMode, it->second.focus);
@@ -4017,7 +3871,6 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
 {
     // Use the default cursor rendering from CloudsInput.
     GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
->>>>>>> master
 }
 
 void CloudsVisualSystem::selfExit()
