@@ -173,7 +173,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 void CloudsVisualSystemRGBD::playTestVideo(){
 
-<<<<<<< HEAD
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Shiffman_programming_the_universe";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Shantell_Coding_gesturally";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Golan_yellow_tail";
@@ -190,13 +189,6 @@ void CloudsVisualSystemRGBD::playTestVideo(){
 	string filePathXml = sourceFile+".xml";
 	if(ofFile::doesFileExist(filePathMov)){
         getRGBDVideoPlayer().setup(filePathMov, filePathXml);
-=======
-	if(ofFile::doesFileExist("TestVideo/Lindsay_memes_2.mov")){
-//        CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().loadMovie("TestVideo/Lindsay_memes_2.mov");
-        CloudsVisualSystem::getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
-                                                       "TestVideo/Lindsay_memes_2.xml",
-                                                       "", 0, 1);
->>>>>>> master
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 }
