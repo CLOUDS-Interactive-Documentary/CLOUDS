@@ -8,19 +8,6 @@
 #include "CloudsVisualSystemVision.h"
 using namespace ofxCv;
 using namespace cv; 
-using namespace Tonic;
-
-CloudsVisualSystemVision::CloudsVisualSystemVision(){
-	soundFiles.push_back("distorted_drones.aif");
-	soundFiles.push_back("slowgrains_short.aif");
-	playSample[0] = playSample[1] = false;
-
-    //int nSamples = 2;
-    //string soundFiles[2] = {"distorted_drones.aif",
-//        "slowgrains_short.aif"};
-//    bool playSample[2];
-
-}
 
 string CloudsVisualSystemVision::getSystemName()
 {
@@ -230,11 +217,7 @@ void CloudsVisualSystemVision::selfSetupGui()
     
     soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
     
-<<<<<<< HEAD
-    for (int i = 0; i < soundFiles.size(); i++)
-=======
     for (int i=0; i<tonicSamples.size(); i++)
->>>>>>> master
     {
         soundGui->addToggle(tonicSamples[i].soundFile   , &tonicSamples[i].playSample);
     }
@@ -392,11 +375,7 @@ void CloudsVisualSystemVision::selfBegin()
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVision::audioRequested);
     
-<<<<<<< HEAD
-    for (int i=0; i<soundFiles.size(); i++)
-=======
     for (int i=0; i<tonicSamples.size(); i++)
->>>>>>> master
     {
         if (tonicSamples[i].playSample) {
             tonicSamples[i].soundTrigger.trigger();
@@ -795,11 +774,7 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         if(t->getValue())loadMovieWithName( t->getName() );
     }
     
-<<<<<<< HEAD
-    for (int i=0; i<soundFiles.size(); i++)
-=======
     for (int i=0; i<tonicSamples.size(); i++)
->>>>>>> master
     {
         if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
@@ -860,31 +835,23 @@ void CloudsVisualSystemVision::guiRenderEvent(ofxUIEventArgs &e)
 }
 
 
-Generator CloudsVisualSystemVision::buildSynth()
+Tonic::Generator CloudsVisualSystemVision::buildSynth()
 {
     string strDir = GetCloudsDataPath()+"sound/textures/";
     ofDirectory sdir(strDir);
     
-    SampleTable samples[2];
+    Tonic::SampleTable samples[2];
     
-<<<<<<< HEAD
-    for (int i=0; i<soundFiles.size(); i++)
-=======
     for (int i=0; i<tonicSamples.size(); i++)
->>>>>>> master
     {
         string strAbsPath = sdir.getAbsolutePath() + "/" + tonicSamples[i].soundFile;
-        samples[i] = loadAudioFile(strAbsPath);
+        samples[i] = Tonic::loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen[2];
-<<<<<<< HEAD
-	for (int i=0; i<soundFiles.size(); i++)
-=======
+    Tonic::Generator sampleGen[2];
     for (int i=0; i<tonicSamples.size(); i++)
->>>>>>> master
     {
-        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(tonicSamples[i].soundTrigger);
+        sampleGen[i] = Tonic::BufferPlayer().setBuffer(samples[i]).loop(1).trigger(tonicSamples[i].soundTrigger);
     }
     
     return sampleGen[0] * 1.0f +
