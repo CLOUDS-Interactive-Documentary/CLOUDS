@@ -23,7 +23,6 @@
 class CloudsVisualSystemVision : public CloudsVisualSystem {
 public:
 
-    CloudsVisualSystemVision();
     string getSystemName();
     
     void selfSetup();
@@ -191,26 +190,13 @@ protected:
     float fMainGain;
     Tonic::ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
-<<<<<<< HEAD
-
-	vector<string> soundFiles;
-    //int nSamples = 2;
-    //string soundFiles[2] = {"distorted_drones.aif",
-//        "slowgrains_short.aif"};
-    bool playSample[2];
-
-    Tonic::ControlTrigger soundTriggers[2];
-    Tonic::ofxTonicSynth synth;
-    Tonic::Generator buildSynth();
-=======
     vector<TonicSample> tonicSamples;
 //    int nSamples = 2;
 //    string soundFiles[2] = {"distorted_drones.aif",
 //        "slowgrains_short.aif"};
 //    bool playSample[2];
 //    ControlTrigger soundTriggers[2];
-    ofxTonicSynth synth;
-    Generator buildSynth();
->>>>>>> master
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
 };

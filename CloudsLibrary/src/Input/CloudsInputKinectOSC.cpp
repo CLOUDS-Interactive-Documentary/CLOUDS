@@ -25,12 +25,9 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , bClampToBounds(true)
 , bDoDebug(false)
 , viewerState(k4w::ViewerState_None)
-<<<<<<< HEAD
-=======
 , viewerIdleTime(0)
 , currViewerBodyIdx(-1)
 , bCurrViewerHasInteracted(false)
->>>>>>> master
 , boundsMin(-0.5f, -0.7f, 1.0f)
 , boundsMax( 0.5f, -0.2f, 2.0f)
 , posResetLerpPct(0.1f)
@@ -451,20 +448,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             currentPosition.interpolate(hands[primaryIdx]->handJoint.screenPosition, posSetLerpPct);
         }
     }
-<<<<<<< HEAD
 
-	// update the viewer state
-	if (primaryIdx != -1) {
-		viewerState = k4w::ViewerState_Present;
-	}
-	else if (bodies.size()) {
-		viewerState = k4w::ViewerState_OutOfRange;
-	}
-	else {
-		viewerState = k4w::ViewerState_None;
-	}
-=======
-    
     // update the viewer state and idle time
     if (bodies.empty()) {
         // downgrayedd!
@@ -487,7 +471,6 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
         // this should work assuming a user can't just magically appear in PresentIdle state
         bCurrViewerHasInteracted = false;
     }
->>>>>>> master
 }
 
 //--------------------------------------------------------------
@@ -617,7 +600,7 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
                 ofVertex(body->spineMidJoint.inputPosition);
                 ofVertex(body->spineBaseJoint.inputPosition);
             }
-            ofEndShape();
+            ofEndShape(false);
             
             // draw the arm span
             ofBeginShape();
@@ -626,7 +609,7 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
 				ofVertex(body->spineShoulderJoint.inputPosition);
 				ofVertex(body->shoulderRightJoint.inputPosition);
             }
-            ofEndShape();
+            ofEndShape(false);
             
             ofDrawBitmapString(ofToString(body->spineBaseJoint.inputPosition.z), body->spineBaseJoint.inputPosition);
         }
@@ -688,9 +671,6 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
 }
 
 //--------------------------------------------------------------
-<<<<<<< HEAD
-void CloudsInputKinectOSC::draw(float x, float y, float width, float height, float alpha)
-=======
 void CloudsInputKinectOSC::draw()
 {
     float margin = ofGetHeight() * feedbackMargin;
@@ -701,7 +681,6 @@ void CloudsInputKinectOSC::draw()
 
 //--------------------------------------------------------------
 void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
->>>>>>> master
 {
     // Adjust the dimensions to fit in a 4:3 window cause stretching is gross.
 	if (width/height != 4.0f/3.0f) {
@@ -709,10 +688,6 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 		x += (width - newWidth) / 2.0f;
 		width = newWidth;
 	}
-<<<<<<< HEAD
-	
-	ofPushStyle();
-=======
     
     static ofxEasingQuad easingQuad;
     
@@ -771,24 +746,12 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
     ofSetColor(ofColor::white, feedbackAlpha);
     feedbackFont.drawString(feedbackPrompt, x + (width - feedbackFont.stringWidth(feedbackPrompt)) / 2, y + height - feedbackFont.stringHeight(feedbackPrompt));
 	
->>>>>>> master
     ofPushMatrix();
     {
         // scale up from our -1, 1 viewport
         ofTranslate(x, y);
         ofScale(width / 2.0f, height / 2.0f);
         ofTranslate(1, 1);
-<<<<<<< HEAD
-        ofScale(1, -1);
-        
-		ofSetColor(ofColor::white, alpha);
-
-        ofNoFill();
-		ofRect(-1, -1, 2, 2);
-
-        // draw bodies
-        for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
-=======
         ofScale(1 * feedbackFade, -1 * feedbackFade);
         
         ofNoFill();
@@ -812,7 +775,6 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
                 continue;
             }
             
->>>>>>> master
             k4w::Body * body = it->second;
             
             ofNoFill();
@@ -844,14 +806,11 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
         for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
             k4w::Hand * hand = it->second;
             
-<<<<<<< HEAD
-=======
             if (viewerState > k4w::ViewerState_OutOfRange && hand->bodyIdx != mainBodyIdx) {
                 // Only draw the main body hands.
                 continue;
             }
             
->>>>>>> master
             // draw the arm
             ofLine(hand->handJoint.inputPosition, (hand->handJoint.type == k4w::JointType_HandLeft)? bodies[hand->bodyIdx]->elbowLeftJoint.inputPosition : bodies[hand->bodyIdx]->elbowRightJoint.inputPosition);
             
@@ -864,22 +823,15 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 			// draw the hand
             ofCircle(hand->handJoint.inputPosition, 0.02f);
         }
-<<<<<<< HEAD
-    }
-    ofPopMatrix();
-=======
         
 //        glDisable(GL_SCISSOR_TEST);
     }
     ofPopMatrix();
     
->>>>>>> master
     ofPopStyle();
 }
 
 //--------------------------------------------------------------
-<<<<<<< HEAD
-=======
 void CloudsInputKinectOSC::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
     float cursorSize;
     if (mode == CURSOR_MODE_INACTIVE)
@@ -892,7 +844,6 @@ void CloudsInputKinectOSC::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos
 }
 
 //--------------------------------------------------------------
->>>>>>> master
 void SetCloudsInputKinect(float activeThresholdY, float activeThresholdZ)
 {
     SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC(activeThresholdY, activeThresholdZ)));
