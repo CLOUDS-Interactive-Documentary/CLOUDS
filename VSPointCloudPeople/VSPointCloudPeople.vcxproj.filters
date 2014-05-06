@@ -19,9 +19,6 @@
     <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp">
       <Filter>addons\ofxObjLoader\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm.c">
-      <Filter>addons\ofxObjLoader\libs</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
@@ -104,10 +101,10 @@
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp">
-      <Filter>CloudsLibrary\src\Input\Portal</Filter>
+      <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp">
-      <Filter>CloudsLibrary\src\Input\Portal</Filter>
+      <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.cpp">
       <Filter>addons\ofxGameCamera\src</Filter>
@@ -116,28 +113,34 @@
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.cpp">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.cpp">
+      <Filter>CloudsLibrary\src\RGBD\BackgroundParticles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -195,20 +198,26 @@
     <Filter Include="CloudsLibrary\src\RGBD">
       <UniqueIdentifier>{964fad5f-d266-4540-b91f-1b2c529c20fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\Input\Portal">
-      <UniqueIdentifier>{3e6215af-3eff-4b98-aeda-d7a97a17e5c6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons\ofxGameCamera">
       <UniqueIdentifier>{d6c4f7de-310d-4d24-bb61-c5ac6d3a67cf}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxGameCamera\src">
       <UniqueIdentifier>{b1465e9a-136a-430e-894f-ba7dd3f8bc3a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\Input\GPUParticles">
-      <UniqueIdentifier>{aa225aa5-2444-41d0-ace9-a373f4218101}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CloudsLibrary\src\StoryEngine">
       <UniqueIdentifier>{62e09112-7656-4382-be59-1912db5b54cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxObjLoader\libs\glm">
+      <UniqueIdentifier>{5ac21163-ec60-47e1-8520-ec27a3fb3f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\RGBD\GPUParticles">
+      <UniqueIdentifier>{aa225aa5-2444-41d0-ace9-a373f4218101}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\RGBD\Portal">
+      <UniqueIdentifier>{3e6215af-3eff-4b98-aeda-d7a97a17e5c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\RGBD\BackgroundParticles">
+      <UniqueIdentifier>{d3980732-8752-48be-b9e1-d2f11ebdc667}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -229,9 +238,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h">
       <Filter>addons\ofxObjLoader\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm.h">
-      <Filter>addons\ofxObjLoader\libs</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
@@ -390,34 +396,34 @@
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h">
-      <Filter>CloudsLibrary\src\Input\Portal</Filter>
+      <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h">
-      <Filter>CloudsLibrary\src\Input\Portal</Filter>
+      <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h">
-      <Filter>CloudsLibrary\src\Input\Portal</Filter>
+      <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.h">
       <Filter>addons\ofxGameCamera\src</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.h">
-      <Filter>CloudsLibrary\src\Input\GPUParticles</Filter>
+      <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
@@ -427,6 +433,12 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.h">
+      <Filter>CloudsLibrary\src\RGBD\BackgroundParticles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

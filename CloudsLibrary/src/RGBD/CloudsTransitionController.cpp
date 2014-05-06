@@ -337,15 +337,12 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
 			return "TransitionInterludeIn";
         case TRANSITION_INTERLUDE_OUT:
 			return "TransitionInterludeOut";
-<<<<<<< HEAD
-=======
 		case TRANSITION_CLUSTERMAP_IN:
 			return "TransitionClusterMapIn";
 		case TRANSITION_CLUSTERMAP_OUT:
 			return "TransitionClusterMapOut";
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
->>>>>>> master
 	}
 	return "UNKNOWN STATE " + ofToString(int(currentState));
 

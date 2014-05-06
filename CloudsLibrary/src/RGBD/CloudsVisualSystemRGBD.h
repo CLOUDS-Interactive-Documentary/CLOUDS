@@ -318,14 +318,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void updateQuestions();
 	void drawQuestions();
 	
-<<<<<<< HEAD
     GLuint cullFace;
-=======
     void drawCursors();
     ofVec3f cursor;
     ofVec3f stickyCursor;
     
->>>>>>> master
 	
 	//transition
 	bool placingTransitionNodes;

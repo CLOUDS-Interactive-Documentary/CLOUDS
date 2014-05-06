@@ -5,11 +5,7 @@
 #include "CloudsVisualSystemConnectors.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-using namespace Tonic;
-
-void CloudsVisualSystemConnectors::selfSetDefaults(){
-	soundFiles[0] = "WindChimes1.aif";
-}
+//using namespace Tonic;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemConnectors::selfSetupGui(){
@@ -70,6 +66,7 @@ void CloudsVisualSystemConnectors::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
+
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemConnectors::selfSetupSystemGui(){
 	
@@ -94,12 +91,7 @@ void CloudsVisualSystemConnectors::selfSetup(){
     
     
     gain = 0;
-<<<<<<< HEAD
-    
-
-=======
     tonicSamples.push_back(TonicSample("WindChimes1.aif"));    
->>>>>>> master
 	generator.setup();
 
 //	generator.setBounds(ofVec3f(-500,-500,-500), ofVec3f(500,500,500), 5);
@@ -181,15 +173,8 @@ void CloudsVisualSystemConnectors::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemConnectors::selfEnd(){
-<<<<<<< HEAD
-	
-	
-=======
-		
->>>>>>> master
     volumeControl.value(0);
-    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemConnectors::audioRequested);
-    
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemConnectors::audioRequested);    
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemConnectors::selfExit(){
@@ -221,12 +206,12 @@ void CloudsVisualSystemConnectors::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
-Generator CloudsVisualSystemConnectors::buildSynth()
+Tonic::Generator CloudsVisualSystemConnectors::buildSynth()
 {
     string strDir = GetCloudsDataPath()+"sound/textures";
     ofDirectory sdir(strDir);
 //
-    SampleTable samples[1];
+    Tonic::SampleTable samples[1];
 //
 //    int nSounds = sizeof(soundFiles) / sizeof(string);
 //    for (int i=0; i<nSounds; i++)
@@ -237,10 +222,10 @@ Generator CloudsVisualSystemConnectors::buildSynth()
 //    }
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = loadAudioFile(strAbsPath);
+        samples[i] = Tonic::loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
+    Tonic::Generator sampleGen1 = Tonic::BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
     
     return sampleGen1 * volumeControl;
 }

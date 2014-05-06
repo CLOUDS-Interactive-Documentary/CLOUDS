@@ -86,7 +86,7 @@ void testApp::keyReleased(int key){
 //		vector<string> testpaths;
 //		for(int i = 0; i < qtestnodes.numFiles(); i++)
 //			testpaths.push_back(qtestnodes.getPath(i));
-////		rgbd.addFakeQuestion(testpaths);
+//		rgbd.addFakeQuestion(testpaths);
 	}
 	if(key == 'm'){
 		ofHideCursor();
@@ -106,20 +106,11 @@ void testApp::updateTransitions(){
 	
 	float crossfadeValue = transitionController.getFadeValue();
 	rgbd.visualSystemFadeValue = crossfadeValue;
-<<<<<<< HEAD
-	/*
-	cout << "\tCUR STATE:" << transitionController.getCurrentStateDescription() << endl
-         << "\tPREVIOUS STATE: " << transitionController.getPreviousStateDescription() << endl
-         << "\tFADE VALUE " << rgbd.visualSystemFadeValue << endl;
-	*/
-
-=======
 	
 //	cout << "\tCUR STATE:" << transitionController.getCurrentStateDescription() << endl
 //         << "\tPREVIOUS STATE: " << transitionController.getPreviousStateDescription() << endl
 //         << "\tFADE VALUE " << rgbd.visualSystemFadeValue << endl;
 	
->>>>>>> master
 	if(transitionController.transitioning){
 		ofLogNotice("testApp::updateTransitions") << transitionController.getCurrentStateDescription() << " TRANSITIONING: " << transitionController.getInterviewTransitionPoint();
 	}
