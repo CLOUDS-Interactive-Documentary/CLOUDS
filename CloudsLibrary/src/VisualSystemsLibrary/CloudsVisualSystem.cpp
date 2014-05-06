@@ -226,7 +226,6 @@ CloudsVisualSystem::~CloudsVisualSystem(){
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
-<<<<<<< HEAD
 	ofFbo& renderTarget = getStaticRenderTarget();  
 //	int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
 //	int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
@@ -251,20 +250,20 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	bool reallocateTarget = !renderTarget.isAllocated() ||
 							renderTarget.getWidth() != computedWidth ||
 							renderTarget.getHeight() != computedHeight;
-=======
-	ofFbo& renderTarget = getStaticRenderTarget();
-    
-	int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
-	int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
-    
-bool reallocateTarget = !renderTarget.isAllocated();
-	reallocateTarget |= !screenResolutionForced &&
-						(renderTarget.getWidth() != targetWidth ||
-						 renderTarget.getHeight() != targetHeight );
-	reallocateTarget |= screenResolutionForced &&
-						(renderTarget.getWidth() != forcedScreenWidth ||
-						 renderTarget.getHeight() != forcedScreenHeight);
->>>>>>> master
+
+    // EZ: Old version, commented out for now!
+//	ofFbo& renderTarget = getStaticRenderTarget();
+//    
+//	int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
+//	int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
+//    
+//bool reallocateTarget = !renderTarget.isAllocated();
+//	reallocateTarget |= !screenResolutionForced &&
+//						(renderTarget.getWidth() != targetWidth ||
+//						 renderTarget.getHeight() != targetHeight );
+//	reallocateTarget |= screenResolutionForced &&
+//						(renderTarget.getWidth() != forcedScreenWidth ||
+//						 renderTarget.getHeight() != forcedScreenHeight);
 
 	if(reallocateTarget){
 		renderTarget.allocate(computedWidth, computedHeight, GL_RGB, numSamples);
@@ -359,16 +358,7 @@ void CloudsVisualSystem::setup(){
     
 	loadGUIS();
 	hideGUIS();
-<<<<<<< HEAD
-    
-    if(bEnablePostFX) SetBleedPixels(bleed);
-    else SetBleedPixels(0);
 
-	bIsSetup = true;
-=======
-
-	bIsSetup = true;
-	
     bEnablePostFX = false;
 	bUseInteractiveCamera = false;
 	interactiveCameraDamping = 0;
@@ -385,7 +375,8 @@ void CloudsVisualSystem::setup(){
 	
 	//pushes variables through internally so upDirection, etc is right
 	getCameraRef().setOrientation(getCameraRef().getOrientationQuat());
->>>>>>> master
+
+    bIsSetup = true;
 }
 
 bool CloudsVisualSystem::isSetup(){
