@@ -11,16 +11,10 @@
 //#endif
 
 const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
-using namespace Tonic;
 
 CloudsVisualSystemSwim::CloudsVisualSystemSwim() : 
 	camSpeed(-600.f), regenerate(false), loadSeed(false), saveSeed(false)
 {
-	soundFiles.push_back("underwater_stretch.aif");
-	soundFiles.push_back("Underwater.aif");
-	playSample[0] = false;
-	playSample[1] = false;
-
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -404,12 +398,12 @@ void CloudsVisualSystemSwim::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
-Generator CloudsVisualSystemSwim::buildSynth()
+Tonic::Generator CloudsVisualSystemSwim::buildSynth()
 {
     string strDir = GetCloudsDataPath()+"sound/textures/";
     ofDirectory sdir(strDir);
     
-    SampleTable samples[3];
+    Tonic::SampleTable samples[3];
     
 //    int nSounds = sizeof(soundFiles) / sizeof(string);
 //    for (int i=0; i<nSounds; i++)
@@ -419,11 +413,11 @@ Generator CloudsVisualSystemSwim::buildSynth()
 //    }
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = loadAudioFile(strAbsPath);
+        samples[i] = Tonic::loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
-    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[0].soundTrigger);
+    Tonic::Generator sampleGen1 = Tonic::BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
+    Tonic::Generator sampleGen2 = Tonic::BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[0].soundTrigger);
     
     return (sampleGen1 * 1.0f + sampleGen2 * 1.0f) * volumeControl;
 }
