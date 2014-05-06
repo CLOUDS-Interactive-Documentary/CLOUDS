@@ -41,7 +41,7 @@ void CloudsVisualSystemConnectors::selfSetupGui(){
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     soundGui->addSlider("gain", 0.0, 1.0, &gain);
 
-    soundGui->addToggle(soundFiles[0], &playSample[0]);
+    soundGui->addToggle(tonicSamples[0].soundFile, &tonicSamples[0].playSample);
 
 	guis.push_back(soundGui);
 	guimap[soundGui->getName()] = soundGui;
@@ -53,19 +53,23 @@ void CloudsVisualSystemConnectors::selfGuiEvent(ofxUIEventArgs &e){
 		cout << "Button pressed!" << endl;
 	}
     
-    for (int i=0; i<1; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (e.widget->getName() == soundFiles[i]) {
+        if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
+            tonicSamples[i].playSample= toggle->getValue();
             if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+//                soundTriggers[i].trigger();
+                tonicSamples[i].soundTrigger.trigger();
             }
         }
     }
 
 }
-
+void CloudsVisualSystemConnectors::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemConnectors::selfSetupSystemGui(){
 	
@@ -90,15 +94,20 @@ void CloudsVisualSystemConnectors::selfSetup(){
     
     
     gain = 0;
+<<<<<<< HEAD
     
 
+=======
+    tonicSamples.push_back(TonicSample("WindChimes1.aif"));    
+>>>>>>> master
 	generator.setup();
 
 //	generator.setBounds(ofVec3f(-500,-500,-500), ofVec3f(500,500,500), 5);
-//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
     
     // sound
+
     synth.setOutputGen(buildSynth());
+
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -116,10 +125,15 @@ void CloudsVisualSystemConnectors::selfBegin(){
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemConnectors::audioRequested);
     
-    for (int i=0; i<1; i++)
-    {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+//    for (int i = 0; i < 1; i++){
+//        if (playSample[i]) {
+//            soundTriggers[i].trigger();
+//        }
+//    }
+    
+    for(int i =0; i<tonicSamples.size();i++){
+        if (tonicSamples[i].playSample) {
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
@@ -134,14 +148,12 @@ void CloudsVisualSystemConnectors::selfSceneTransformation(){
 void CloudsVisualSystemConnectors::selfUpdate(){
     volumeControl.value(gain);
 	generator.update();
-
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemConnectors::selfDraw(){
 
-	
 	//ofEnableAlphaBlending();
 //	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	glDisable(GL_DEPTH_TEST);
@@ -169,11 +181,14 @@ void CloudsVisualSystemConnectors::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemConnectors::selfEnd(){
+<<<<<<< HEAD
 	
 	
+=======
+		
+>>>>>>> master
     volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemConnectors::audioRequested);
-    
     
 }
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -208,19 +223,24 @@ void CloudsVisualSystemConnectors::selfMouseReleased(ofMouseEventArgs& data){
 
 Generator CloudsVisualSystemConnectors::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath()+"sound/textures";
     ofDirectory sdir(strDir);
-    
+//
     SampleTable samples[1];
-    
-    int nSounds = sizeof(soundFiles) / sizeof(string);
-    for (int i=0; i<nSounds; i++)
-    {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//
+//    int nSounds = sizeof(soundFiles) / sizeof(string);
+//    for (int i=0; i<nSounds; i++)
+//    {
+////        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//		string strAbsPath = ofToDataPath(strDir + "/" + soundFiles[i], true);
+//        samples[i] = loadAudioFile(strAbsPath);
+//    }
+    for(int i=0; i<tonicSamples.size();i++){
+        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
     
     return sampleGen1 * volumeControl;
 }

@@ -8,12 +8,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Enable</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Chroma_Distortion</Name>
-    <Value>0.000000000</Value>
+    <Value>0.394088656</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

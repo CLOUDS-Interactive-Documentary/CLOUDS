@@ -15,14 +15,14 @@
 	IBOutlet NSTableView* presetTable;
 	IBOutlet NSTableView* clipTable;
 	IBOutlet NSTableView* suppressedClipTable;
-//	IBOutlet NSTableView* allKeywordTable;
+
 	IBOutlet NSTableView* allClipTable;
 	IBOutlet NSTableView* clipPresetTable; //presets for the selected clip
 	
 	IBOutlet NSTextField* keywordPercent;
 	IBOutlet NSTextField* clipPercent;
 	
-//	IBOutlet NSTextField* notesText;
+
 	IBOutlet NSComboBox* grade;
 	IBOutlet NSButton* enabledBox;
 	IBOutlet NSButton* oculusBox;
@@ -35,6 +35,7 @@
 	IBOutlet NSButton* filterGradeABox;
 
 	bool shouldPlaySelectedRow;
+	
 	
 	CloudsFCPParser parser;
     CloudsMixer mixer;
@@ -63,8 +64,10 @@
 	bool runningTest;
 	float lastSystemStartTime;
 	vector< CloudsVisualSystem* > testBatch;
+    string debugCurrentVS;
+    string debugCurrentPreset;
 	int testBatchIndex;
-    
+    bool goToNext;
 	ofFbo saveFbo;
     bool hasPasteboardPreset;
     CloudsVisualSystemPreset pasteboardPreset;

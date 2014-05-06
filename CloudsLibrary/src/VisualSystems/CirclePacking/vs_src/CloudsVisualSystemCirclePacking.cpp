@@ -52,6 +52,11 @@ void CloudsVisualSystemCirclePacking::selfSetupGui(){
 	guimap[customGui->getName()] = customGui;
 	
 }
+void CloudsVisualSystemCirclePacking::selfSetDefaults(){
+    
+    primaryCursorMode =CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
 
 void CloudsVisualSystemCirclePacking::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){

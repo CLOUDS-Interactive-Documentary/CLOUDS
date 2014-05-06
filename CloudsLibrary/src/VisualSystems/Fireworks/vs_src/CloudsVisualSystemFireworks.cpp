@@ -170,6 +170,10 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 }
 
+void CloudsVisualSystemFireworks::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e)
 {
 	string name = e.widget->getName();

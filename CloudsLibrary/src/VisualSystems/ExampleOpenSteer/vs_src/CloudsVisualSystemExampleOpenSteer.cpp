@@ -330,7 +330,10 @@ void CloudsVisualSystemExampleOpenSteer::selfKeyPressed(ofKeyEventArgs & args){
 	}
      */
 }
-
+void CloudsVisualSystemExampleOpenSteer::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemExampleOpenSteer::selfKeyReleased(ofKeyEventArgs & args){
 	
 }

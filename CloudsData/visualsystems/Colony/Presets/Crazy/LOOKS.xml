@@ -1,0 +1,97 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>LOOKS</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>264.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Level Set BG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Level Set Shadow</Name>
+    <Value>0.182266012</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell Floor Translusence</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dish Floor Translusence</Name>
+    <Value>0.064039409</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>R</Name>
+    <Value>0.175000012</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>G</Name>
+    <Value>0.074999988</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>B</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>A</Name>
+    <Value>0.037500024</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Stipple Scale</Name>
+    <Value>0.669950724</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>R1</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>G1</Name>
+    <Value>0.362500012</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>B1</Name>
+    <Value>0.625000000</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>A1</Name>
+    <Value>0.787500024</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>R2</Name>
+    <Value>0.412500024</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>G2</Name>
+    <Value>0.337499976</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>B2</Name>
+    <Value>0.949999988</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>A2</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Shadow</Name>
+    <Value>0.310344815</Value>
+</Widget>

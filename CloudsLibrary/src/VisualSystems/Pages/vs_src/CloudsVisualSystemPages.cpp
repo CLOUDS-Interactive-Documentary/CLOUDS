@@ -94,6 +94,12 @@ void CloudsVisualSystemPages::selfSetup()
 
 }
 
+void CloudsVisualSystemPages::selfSetDefaults()
+{
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
+
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles

@@ -2,7 +2,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxGameCamera.h"
+
 #include "CloudsClusterNode.h"
 //#include "CloudsQuestion.h"
 #include "CloudsRun.h"
@@ -31,10 +31,16 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	CloudsVisualSystemClusterMap();
 	
 	void buildEntireCluster(CloudsFCPParser& parser);
-
 	void setRun(CloudsRun& run);
+	void setAct(CloudsAct* newAct);
 	void setQuestions(vector<CloudsClip>& questions);
+<<<<<<< HEAD
 	//CloudsQuestion* getSelectedQuestion();
+=======
+	void allocateFlickerTexture();
+	
+	CloudsQuestion* getSelectedQuestion();
+>>>>>>> master
 
     void setCurrentTopic(string topic);
     
@@ -128,7 +134,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	}
 
 	void reloadShaders();
-
+	bool autoTraversePoints;
+	bool finishedTraversing;
     void parseAssociations();
     
   protected:
@@ -142,11 +149,16 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	ofEasyCam easyCamera;
 	ofCamera axisCamera;
-	ofxGameCamera gameCamera;
+	CloudsAct* act;
 	
+	ofVec2f flickerCoord;
+	int flickerWidth;
+
 	CloudsFCPParser* parser;
 	CloudsRun* run;
 	void resetGeometry();
+	
+	bool traverseNextFrame;
 	
 	bool drawNodes;
 	bool drawLines;
@@ -203,7 +215,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traverseHomingMinDistance;
 	float traverseMinSolvedDistance;
 	float traverseLineWidth;
-	bool autoTraversePoints;
+
 	bool bConstrainTraversal;
     float maxTraverseAngle;
     float maxTraverseDistance;

@@ -44,14 +44,10 @@ void main()
     
 	
 	float m = length(force);
-	if(m < epsilon){
-	  	gl_FragColor = vec4(acc, 1.0);
+	if(m > limit)
+	{
+		force = normalize(force)*limit; 
 	}
-	else{
-		if(m > limit){
-			force = (force/m)*limit;
-		}
-		
-		gl_FragColor = vec4(acc-force, 1.0);
-	}
+    
+  	gl_FragColor = vec4(acc-force, 1.0); 
 }

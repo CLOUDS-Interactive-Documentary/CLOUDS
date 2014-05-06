@@ -82,6 +82,7 @@ class CloudsVisualSystemRandomDigits2 : public CloudsVisualSystem {
 
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
+    void selfSetDefaults();
     
 	//events are called when the system is active
 	//Feel free to make things interactive for you, and for the user!
@@ -95,9 +96,6 @@ class CloudsVisualSystemRandomDigits2 : public CloudsVisualSystem {
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
 
 
 protected:
@@ -112,6 +110,7 @@ protected:
     ofxUISuperCanvas* customGui;
     std::map< ofFloatColor*, ofxUILabel*> labelColors;
 
+	bool rotationFix;
     vector<RandomNumber> numbers;
     ofVbo vbo;
     ofImage numbersImg;
@@ -124,6 +123,7 @@ protected:
 
     // Sound
     ofxUISuperCanvas* soundGui;
+<<<<<<< HEAD
 	vector<string> soundFiles;
     //int nSamples = 4;
     //string soundFiles[4] = {"EchoVortex.aif",
@@ -134,5 +134,17 @@ protected:
     Tonic::ControlTrigger soundTriggers[4];
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
+=======
+//SM:Commented out for Tribeca
+//    int nSamples = 4;
+//    string soundFiles[4] = {"EchoVortex.aif",
+//        "wormholeZoom.aif",
+//        "wormholeZoom2.aif",
+//        "slowgrains_short.aif"};
+//    bool playSample[4];
+//    ControlTrigger soundTriggers[4];
+//    ofxTonicSynth synth;
+//    Generator buildSynth();
+>>>>>>> master
 	void audioRequested(ofAudioEventArgs& args);
 };

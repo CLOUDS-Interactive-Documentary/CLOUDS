@@ -4,8 +4,8 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-//	ofSetVerticalSync(true);
-    ofSetFrameRate(60);
+	ofSetVerticalSync(true);
+//    ofSetFrameRate(60);
 	ofEnableAlphaBlending();
 	
 	secondaryDisplay.setup();
@@ -31,6 +31,7 @@ void testApp::update(){
         //goto next clip
         timer = false;
         startTime = ofGetElapsedTimef();
+		
         cout<<"Secondary Display::currentTestClip = "<<currentTestClip<<endl;
     }
     

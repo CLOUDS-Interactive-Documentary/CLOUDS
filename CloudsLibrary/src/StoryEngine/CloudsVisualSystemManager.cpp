@@ -14,6 +14,7 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemAstrolabe.h"
 #include "CloudsVisualSystemAutomata.h"
 #include "CloudsVisualSystemBallDroppings.h"
+#include "CloudsVisualSystemBalloons.h"
 #include "CloudsVisualSystemChromogram.h"
 #include "CloudsVisualSystemCirclePacking.h"
 #include "CloudsVisualSystemCircuit.h"
@@ -79,12 +80,20 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemOrbit.h"
 #include "CloudsVisualSystemOscillations.h"
 #include "CloudsVisualSystemPages.h"
+<<<<<<< HEAD
 //#include "CloudsVisualSystemPaintBrush.h"
+=======
+#include "CloudsVisualSystemParadox.h"
+#include "CloudsVisualSystemPaintBrush.h"
+>>>>>>> master
 #include "CloudsVisualSystemPhotoGlitch.h"
 #include "CloudsVisualSystemProcess11.h"
 #include "CloudsVisualSystemProcess18.h"
 #include "CloudsVisualSystemRGBDVideo.h"
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 #include "CloudsVisualSystemRandomDigits2.h"
 
 #include "CloudsVisualSystemReplicator.h"
@@ -122,6 +131,7 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemYellowTail.h"
 #include "CloudsVisualSystemSchlabberbox.h"
 
+
 // register a mapping of visual system constructors
 // so it's easy to instantiate them in groups when needed
 template< typename T > CloudsVisualSystem* fCreate() {
@@ -140,6 +150,7 @@ struct Mapping {
 		return map<string,tConstructor>::value_type(classname, constructor);
 	}
 } mapping[] = {
+<<<<<<< HEAD
 	{ "2DVideo", &fCreate<CloudsVisualSystem2DVideo> },
 	{ "3DModelLoader", &fCreate<CloudsVisualSystem3DModelLoader> },
 	{ "Astrolabe", &fCreate<CloudsVisualSystemAstrolabe> },
@@ -269,6 +280,89 @@ struct Mapping {
 	{ "WormHole", &fCreate<CloudsVisualSystemWormHole> },
 	{ "Xstatic", &fCreate<CloudsVisualSystemXstatic> },
 	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> }	
+=======
+	{ "2DVideo",				&fCreate<CloudsVisualSystem2DVideo> },
+	{ "3DModelLoader",			&fCreate<CloudsVisualSystem3DModelLoader> },
+	{ "Astrolabe",				&fCreate<CloudsVisualSystemAstrolabe> },
+	{ "Automata",				&fCreate<CloudsVisualSystemAutomata> },
+	{ "BallDroppings",			&fCreate<CloudsVisualSystemBallDroppings> },
+	{ "Balloons",			&fCreate<CloudsVisualSystemBalloons> },
+	{ "Chromogram",				&fCreate<CloudsVisualSystemChromogram> },
+	{ "CirclePacking",			&fCreate<CloudsVisualSystemCirclePacking> },
+	{ "Circuit",				&fCreate<CloudsVisualSystemCircuit> },
+	{ "Cities",					&fCreate<CloudsVisualSystemCities> },
+	{ "Code",					&fCreate<CloudsVisualSystemCode> },
+	{ "Colony",					&fCreate<CloudsVisualSystemColony> },
+	{ "Connectors",				&fCreate<CloudsVisualSystemConnectors> },
+	{ "Cosmic",					&fCreate<CloudsVisualSystemCosmic> },
+	{ "CubeCraft",				&fCreate<CloudsVisualSystemCubeCraft> },
+	{ "DataCascade",			&fCreate<CloudsVisualSystemDataCascade> },
+	{ "DrawnLine",				&fCreate<CloudsVisualSystemDrawnLine> },
+	{ "Empty",					&fCreate<CloudsVisualSystemEmpty> },
+	{ "ExampleBox2D",			&fCreate<CloudsVisualSystemExampleBox2D> },
+	{ "ExampleMPMFluid",		&fCreate<CloudsVisualSystemExampleMPMFluid> },
+	{ "ExampleOpenSteer",		&fCreate<CloudsVisualSystemExampleOpenSteer> },
+	{ "ExampleVectorMath",		&fCreate<CloudsVisualSystemExampleVectorMath> },
+	{ "Fireworks",				&fCreate<CloudsVisualSystemFireworks> },
+	{ "Flocking",				&fCreate<CloudsVisualSystemFlocking> },
+	{ "Flying",					&fCreate<CloudsVisualSystemFlying> },
+	{ "ForkingPaths",			&fCreate<CloudsVisualSystemForkingPaths> },
+	{ "GesturePaint",			&fCreate<CloudsVisualSystemGesturePaint> },
+	{ "Histogram",				&fCreate<CloudsVisualSystemHistogram> },
+	{ "LIA",					&fCreate<CloudsVisualSystemLIA> },
+	{ "LSystem",				&fCreate<CloudsVisualSystemLSystem> },
+	{ "LaplacianTunnel",		&fCreate<CloudsVisualSystemLaplacianTunnel> },
+	{ "Mandala",				&fCreate<CloudsVisualSystemMandala> },
+	{ "MarchingCubes",			&fCreate<CloudsVisualSystemMarchingCubes> },
+	{ "MazeGenerator",			&fCreate<CloudsVisualSystemMazeGenerator> },
+    { "MazeGenerator2",			&fCreate<CloudsVisualSystemMazeGenerator2> },
+	{ "Memory",					&fCreate<CloudsVisualSystemMemory> },
+	{ "Neurons",				&fCreate<CloudsVisualSystemNeurons> },
+	{ "Ocean",					&fCreate<CloudsVisualSystemOcean> },
+	{ "OpenP5Caustics",			&fCreate<CloudsVisualSystemOpenP5Caustics> },
+	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
+	{ "OpenP5Fifteen",			&fCreate<CloudsVisualSystemOpenP5Fifteen> },
+	{ "OpenP5Hackpact",			&fCreate<CloudsVisualSystemOpenP5Hackpact> },
+	{ "OpenP5Machine",			&fCreate<CloudsVisualSystemOpenP5Machine> },
+	{ "OpenP5NoiseSphere",		&fCreate<CloudsVisualSystemOpenP5NoiseSphere> },
+	{ "OpenP5SeaOfLines",		&fCreate<CloudsVisualSystemOpenP5SeaOfLines> },
+	{ "OpenP5Sixteen",			&fCreate<CloudsVisualSystemOpenP5Sixteen> },
+	{ "OpenP5SpaceJunk",		&fCreate<CloudsVisualSystemOpenP5SpaceJunk> },
+	{ "OpenP5Spaghetti",		&fCreate<CloudsVisualSystemOpenP5Spaghetti> },
+	{ "OpenP5SpinningSolids",	&fCreate<CloudsVisualSystemOpenP5SpinningSolids> },
+	{ "OpenP5TextUniverse",		&fCreate<CloudsVisualSystemOpenP5TextUniverse> },
+	{ "Orbit",					&fCreate<CloudsVisualSystemOrbit> },
+	{ "Oscillations",			&fCreate<CloudsVisualSystemOscillations> },
+	{ "Paradox",				&fCreate<CloudsVisualSystemParadox> },
+	{ "Pages",					&fCreate<CloudsVisualSystemPages> },
+	{ "PaintBrush",				&fCreate<CloudsVisualSystemPaintBrush> },
+	{ "PhotoGlitch",			&fCreate<CloudsVisualSystemPhotoGlitch> },
+	{ "Process11",				&fCreate<CloudsVisualSystemProcess11> },
+	{ "Process18",				&fCreate<CloudsVisualSystemProcess18> },
+	{ "RGBDVideo",				&fCreate<CloudsVisualSystemRGBDVideo> },
+    { "RandomDigits2",			&fCreate<CloudsVisualSystemRandomDigits2> },
+	{ "Replicator",				&fCreate<CloudsVisualSystemReplicator> },
+	{ "Ripples",				&fCreate<CloudsVisualSystemRipples> },
+	{ "Rulez",					&fCreate<CloudsVisualSystemRulez> },
+	{ "Satoruhiga",				&fCreate<CloudsVisualSystemSatoruhiga> },
+	{ "Scrape",					&fCreate<CloudsVisualSystemScrape> },
+    { "Schlabberbox",			&fCreate<CloudsVisualSystemSchlabberbox> },
+	{ "Swim",					&fCreate<CloudsVisualSystemSwim> },
+	{ "Terrain",				&fCreate<CloudsVisualSystemTerrain> },
+	{ "ThingsInTheDark",		&fCreate<CloudsVisualSystemThingsInTheDark> },
+	{ "TunnelDrawing",			&fCreate<CloudsVisualSystemTunnelDrawing> },
+	{ "Twitter",				&fCreate<CloudsVisualSystemTwitter> },
+	{ "Uextrude",				&fCreate<CloudsVisualSystemUextrude> },
+	{ "VectorFlow",				&fCreate<CloudsVisualSystemVectorFlow> },
+	{ "VerletForm",				&fCreate<CloudsVisualSystemVerletForm> },
+	{ "Vision",					&fCreate<CloudsVisualSystemVision> },
+	{ "Voro",					&fCreate<CloudsVisualSystemVoro> },
+	{ "WebHistory",				&fCreate<CloudsVisualSystemWebHistory> },
+	{ "World",					&fCreate<CloudsVisualSystemWorld> },
+	{ "WormHole",				&fCreate<CloudsVisualSystemWormHole> },
+	{ "Xstatic",				&fCreate<CloudsVisualSystemXstatic> },
+	{ "YellowTail",				&fCreate<CloudsVisualSystemYellowTail> }
+>>>>>>> master
 };
 
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
@@ -396,7 +490,7 @@ void CloudsVisualSystemManager::updatePresetsForSystem(CloudsVisualSystem* syste
 	vector<string> systemPresets = system->getPresets();
 	for(int p = 0; p < systemPresets.size(); p++){
 		if( !systemHasPreset( system->getSystemName(), systemPresets[p] ) ){
-			cout << "FOUND NEW PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
+//			cout << "FOUND NEW PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
 			CloudsVisualSystemPreset preset;
 			preset.presetName = systemPresets[ p ];
 			preset.systemName = system->getSystemName();
@@ -407,7 +501,7 @@ void CloudsVisualSystemManager::updatePresetsForSystem(CloudsVisualSystem* syste
 //			nameToPresets[preset.systemName].push_back( preset );
 		}
 		else{
-			cout << "FOUND EXISTING PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
+//			cout << "FOUND EXISTING PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
 			CloudsVisualSystemPreset& preset = getPresetForSystem( system->getSystemName(), systemPresets[p] );
             preset.loadTimeInfo();
 			preset.stillPresent = true;
@@ -490,7 +584,6 @@ void CloudsVisualSystemManager::deletePreset(int i){
 		return;
 	}
   
-
 	preset.eraseFiles();
     presets.erase( presets.begin() + i );
     
@@ -819,12 +912,32 @@ vector<int> CloudsVisualSystemManager::getPresetIndicesForSystem(const string& s
 void CloudsVisualSystemManager::loadCachedDataForSystems(){
     //making a local copy just to init and cache the data.
 #ifndef CLOUDS_NO_VS
+<<<<<<< HEAD
 //JG TEMP FOR LOAD TIME
+=======
+>>>>>>> master
 //        CloudsVisualSystemTwitter::getOldTweeterData();
 //        CloudsVisualSystemTwitter::getNewTweeterData();
 #endif
     
 }
+<<<<<<< HEAD
+=======
+
+//--------------------------------------------------------------------
+//vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForSystem(string systemName){
+//    vector<CloudsVisualSystemPreset> systemPresets;
+//    for(int i = 0; i < presets.size(); i++){
+//        if(presets[i].systemName == systemName){
+//            systemPresets.push_back(presets[i]
+//        }
+//    }
+//    for(int i = 0; i = nameToPresetsIndex[systemName].size(); i++){
+//        presets.push_back( presets[ ] )
+//    }
+//	return nameToPresets[systemName];
+//}
+>>>>>>> master
 
 //--------------------------------------------------------------------
 bool CloudsVisualSystemManager::systemHasPreset(const string& systemName, const string& presetName){

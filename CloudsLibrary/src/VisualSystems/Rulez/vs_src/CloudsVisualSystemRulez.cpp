@@ -57,7 +57,10 @@ void CloudsVisualSystemRulez::selfSetup()
     //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
 }
-
+void CloudsVisualSystemRulez::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemRulez::generate()
 {
     for (auto it = structures.begin(); it != structures.end(); ++it)

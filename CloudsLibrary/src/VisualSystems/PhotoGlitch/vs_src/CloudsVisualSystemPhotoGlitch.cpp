@@ -125,7 +125,10 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
 	guis.push_back(target2Gui);
 	guimap[target2Gui->getName()] = target2Gui;
 }
-
+void CloudsVisualSystemPhotoGlitch::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemPhotoGlitch::addTargetToUI(ofxUISuperCanvas* gui,string suffix, glitchParams& params ){
     
     gui->addLabel("TARGET "+suffix+" PARAMS");

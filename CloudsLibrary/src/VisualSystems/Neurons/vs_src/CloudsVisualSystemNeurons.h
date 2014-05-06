@@ -144,7 +144,10 @@ class _C:public CloudsVisualSystem{
     
     static bool renderNeurons;
     
-    
+	float rx;
+	float ry;
+	bool doSpinCamera;
+	
     bool quatCam;
     bool flythrough;
     bool bounce;

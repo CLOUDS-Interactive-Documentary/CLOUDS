@@ -44,6 +44,7 @@ class CloudsVisualSystemDataCascade : public CloudsVisualSystem {
     void guiRenderEvent(ofxUIEventArgs &e);
 	
 	void selfPresetLoaded(string presetPath);
+    void selfSetDefaults();
 	
 	virtual ofCamera& getCameraRef(){
 		if(doRGBD){

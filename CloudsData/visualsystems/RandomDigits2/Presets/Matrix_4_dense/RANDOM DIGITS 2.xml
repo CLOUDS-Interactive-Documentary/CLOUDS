@@ -65,3 +65,8 @@
     <Name>FOG DENSITY</Name>
     <Value>0.000000000</Value>
 </Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ROTATION FIX HACK</Name>
+    <Value>1</Value>
+</Widget>

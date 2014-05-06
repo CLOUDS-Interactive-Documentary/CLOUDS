@@ -37,7 +37,10 @@ void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
-
+void CloudsVisualSystemOpenP5Machine::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemOpenP5Machine::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;
@@ -221,22 +224,20 @@ void CloudsVisualSystemOpenP5Machine::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemOpenP5Machine::selfMousePressed(int x, int y, int button){
-//	if (gui->isHit(x, y)) {
-//        cam.disableMouseInput();
-//    }
 }
 
 void CloudsVisualSystemOpenP5Machine::selfMouseReleased(int x, int y, int button){
-//     cam.enableMouseInput();
-	
 }
 
 Generator CloudsVisualSystemOpenP5Machine::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath()+"sound/textures";
     ofDirectory sdir(strDir);
-    string strAbsPath = sdir.getAbsolutePath() + "/Machine.aif";
-    
+//    string strAbsPath = sdir.getAbsolutePath() + "/Machine.aif";
+//    for(int i=0; i<tonicSamples.size();i++){
+    string strAbsPath = ofToDataPath(strDir + "/" + "Machine.aif");
+//        samples[i] = loadAudioFile(strAbsPath);
+//    }
     SampleTable sample = loadAudioFile(strAbsPath);
     
     Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);

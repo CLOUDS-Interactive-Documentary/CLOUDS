@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Tunnel</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1063.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>671.000000000</XPosition>
+    <YPosition>222.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Tunnel Tint S</Name>
-    <Value>0.330048949</Value>
+    <Value>0.423645318</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Tunnel Tint B</Name>
-    <Value>0.714285433</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

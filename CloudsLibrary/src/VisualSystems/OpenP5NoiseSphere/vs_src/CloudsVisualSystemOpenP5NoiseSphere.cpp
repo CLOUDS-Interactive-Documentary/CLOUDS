@@ -196,6 +196,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetDefaults()
 #endif
 
     fMainGain = 1;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 // selfSetup is called when the visual system is first instantiated

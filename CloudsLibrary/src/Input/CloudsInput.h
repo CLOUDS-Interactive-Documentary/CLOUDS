@@ -10,6 +10,14 @@
 
 #include "ofMain.h"
 
+enum CloudsCursorMode
+{
+    CURSOR_MODE_NONE = 0,
+    CURSOR_MODE_INACTIVE,
+    CURSOR_MODE_CAMERA,
+    CURSOR_MODE_DRAW
+};
+
 class CloudsInputEvents;
 class CloudsInteractionEventArgs;
 class CloudsInput
@@ -20,10 +28,10 @@ class CloudsInput
 	virtual void enable() = 0;
 	virtual void disable() = 0;
 	
-	void interactionMoved(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
-	void interactionStarted(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
-	void interactionDragged(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
-	void interactionEnded(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
+	void interactionMoved(ofVec3f pos, bool primary = false, bool dragged = false, int actionType = 0, int playerId = 0, float focus = 1.0f);
+	void interactionStarted(ofVec3f pos, bool primary = false, bool dragged = false, int actionType = 0, int playerId = 0, float focus = 1.0f);
+	void interactionDragged(ofVec3f pos, bool primary = false, bool dragged = false, int actionType = 0, int playerId = 0, float focus = 1.0f);
+	void interactionEnded(ofVec3f pos, bool primary = false, bool dragged = false, int actionType = 0, int playerId = 0, float focus = 1.0f);
 
 	bool isDragging();
 	float getPositionX();
@@ -36,13 +44,19 @@ class CloudsInput
 	
 	CloudsInputEvents& getEvents();
 	void setBleedPixels(int bleed);
+    ofVec2f getBleedPixels();
+	
+    virtual void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus) = 0;
+    void selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size);
+    
+    bool bUserBegan;
     
   protected:
 
     ofVec3f currentPosition;
 	ofVec3f lastPosition;
-    ofVec2f bleedOffset;
-    
+    ofVec3f bleedOffset;
+	
     bool dragging;
     int bleed;
     

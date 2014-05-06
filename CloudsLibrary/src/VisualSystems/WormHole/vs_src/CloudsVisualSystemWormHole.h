@@ -20,6 +20,7 @@
 #include "CloudsGlobal.h"
 #include "CloudsAudioEvents.h"
 #include "ofxTonic.h"
+#include "TonicSample.h"
 
 
 //TODO: rename this to your own visual system
@@ -181,6 +182,7 @@ protected:
     float fMainGain;
     Tonic::ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
+<<<<<<< HEAD
 	vector<string> soundFiles;
     //int nSamples = 4;
     //string soundFiles[4] = {"EchoVortex.aif",
@@ -192,5 +194,17 @@ protected:
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
 
+=======
+    vector<TonicSample> tonicSamples;
+//    int nSamples = 4;
+//    string soundFiles[4] = {"EchoVortex.aif",
+//        "wormholeZoom.aif",
+//        "wormholeZoom2.aif",
+//        "slowgrains_short.aif"};
+//    bool playSample[4];
+//    ControlTrigger soundTriggers[ 4];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+>>>>>>> master
 	void audioRequested(ofAudioEventArgs& args);
 };

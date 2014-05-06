@@ -1,0 +1,57 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Settings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>997.000000000</XPosition>
+    <YPosition>38.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UPDATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RENDER</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>PRIMARY CURSOR NONE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>PRIMARY CURSOR INACTIVE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>PRIMARY CURSOR CAMERA</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>PRIMARY CURSOR DRAW</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SEC. CURSORS NONE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SEC. CURSORS INACTIVE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SEC. CURSORS CAMERA</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SEC. CURSORS DRAW</Name>
+    <Value>0</Value>
+</Widget>

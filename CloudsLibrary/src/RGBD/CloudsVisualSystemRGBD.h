@@ -6,10 +6,15 @@
 #include "CloudsQuestion.h"
 #include "CloudsEvents.h"
 #include "GPUParticles/Controller.h"
+
+#ifdef HAS_GAMECAM
 #include "ofxGameCamera.h"
+#endif
+
 #include "ofxFTGL.h"
 #include "CloudsPortalEvents.h"
 #include "CloudsRGBDPointLayer.h"
+#include "VoxelMesh.h"
 
 struct TransitionInfo{
 	ofVec3f inStartPos;
@@ -25,11 +30,12 @@ struct TransitionInfo{
 	string transitionName;
 };
 
+
 typedef struct {
     CloudsClip clip;
     string question;
     string topic;
-}QuestionQueue;
+} QuestionQueue;
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
@@ -75,9 +81,16 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	void speakerChanged();
     
+	void loadBackgroundGUISFromName(string presetName);
+	void loadPointcloudGUISFromName(string presetName);
+	vector<ofxUISuperCanvas*> pointcloudGuis;
+	vector<ofxUISuperCanvas*> backgroundGuis;
+	
     ////////QUESTIONS
     void addQuestion(CloudsClip& questionClip, string topic, string question);
     void clearQuestions();
+	void assignAvailableQuestion(CloudsPortal& p);
+	
     bool isQuestionSelectedAndClipDone();
 	bool isQuestionSelected();
     CloudsPortal* getSelectedQuestion();
@@ -88,9 +101,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     int questionToReplace;
     
 	ofCamera& getCameraRef(){
+#ifdef HAS_GAMECAM
 		if(placingTransitionNodes){
 			return transitionCam;
 		}
+#endif
 		return cloudsCamera;
 	}
 	
@@ -117,7 +132,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void lookThroughTransitionOutLeft();
 	void lookThroughTransitionOutRight();
 
+	#ifdef HAS_GAMECAM
 	ofxGameCamera transitionCam;
+	#endif
 	ofNode* transitionCamTargetNode;
 	
 	void setTransitionNodes( RGBDTransitionType transitionType, string option="default" );
@@ -257,11 +274,13 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	ofxUISuperCanvas *cameraGui;
 	ofxUISuperCanvas *particleGui;
+	ofxUISuperCanvas *backgroundMeshGui;
 	ofxUISuperCanvas *questionGui;
     ofxUISuperCanvas *actuatorGui;
     
 	bool drawParticulate;
 	float attenuatedCameraDrift;
+	VoxelMesh voxelMesh;
 	GPUParticles::Controller particulateController;
     float particleCount;
     ofVec4f pointColor;
@@ -275,11 +294,22 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	CloudsPortal leftPortal;
 	CloudsPortal rightPortal;
+	CloudsPortal* portalToClear; //clears when started
+	string questionText;
 	
 	//Oculus reset portal
-	CloudsPortal resetPortal;
-	ofVec3f resetHoverPosition;
-	void updateResetPortal();
+//	CloudsPortal resetPortal;
+//	ofVec3f resetHoverPosition;
+//	void updateResetPortal();
+	
+	ofxFTGLFont questionFont;
+	int questionFontSize;
+	int currentQuestionFontSize;
+	float questionFontScale;
+	float questionYOffset;
+	float questionFontTracking;
+	float questionFontSplitWidth;
+	void drawQuestionType();
 	
 	vector<CloudsPortal*> portals;
     vector<QuestionQueue> questions;
@@ -288,7 +318,14 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void updateQuestions();
 	void drawQuestions();
 	
+<<<<<<< HEAD
     GLuint cullFace;
+=======
+    void drawCursors();
+    ofVec3f cursor;
+    ofVec3f stickyCursor;
+    
+>>>>>>> master
 	
 	//transition
 	bool placingTransitionNodes;

@@ -16,7 +16,7 @@
 #include <set>
 
 
-#define MAX_GESTURES    5
+#define MAX_GESTURES    7
 #define MAX_TOUCHES     11
 
 class CloudsVisualSystemYellowTail : public CloudsVisualSystem {
@@ -39,6 +39,11 @@ class CloudsVisualSystemYellowTail : public CloudsVisualSystem {
     void selfBegin();
 	void selfEnd();
 	void selfSetDefaults();
+<<<<<<< HEAD
+=======
+    
+    void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus);
+>>>>>>> master
 	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);

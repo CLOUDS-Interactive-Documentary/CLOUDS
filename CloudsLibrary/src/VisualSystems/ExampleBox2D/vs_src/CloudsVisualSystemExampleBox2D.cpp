@@ -71,6 +71,11 @@ void CloudsVisualSystemExampleBox2D::selfSetupGui(){
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemExampleBox2D::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
+
 void CloudsVisualSystemExampleBox2D::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "GAVITY CONTROL MODE") {
@@ -397,8 +402,35 @@ void CloudsVisualSystemExampleBox2D::selfKeyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemExampleBox2D::selfMouseDragged(ofMouseEventArgs& data){
-    prevMouse.x = data.x;
-    prevMouse.y = data.y;
+    ofVec2f curMouse(data.x, data.y);
+    
+    if (!bGravityMod) {
+        ofVec2f speed = curMouse - prevMouse;
+        
+        if (speed.length() > triggerForce) {
+            if (bCircles && (speed.x > 0 || !bRects)) {
+                // create circles
+                float r = getGaussian()*circleSizeDev + circleSizeMean;
+                addCircle(curMouse, speed, r);
+            }
+            else if (bRects && (speed.x < 0 || !bCircles)) {
+                // create rects
+                float w = getGaussian()*rectSizeDev + rectSizeMean;
+                float h = getGaussian()*rectSizeDev + rectSizeMean;
+                addRect(curMouse, speed, ofVec2f(w, h));
+            }
+        }
+        
+        prevMouse = curMouse;
+    }
+    else {
+        // gravity control mode
+        //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+        gravityLine = ofVec2f(curMouse.x - getCanvasWidth()/2,
+                              curMouse.y - getCanvasHeight()/2);
+        ofVec2f gravityForce = gravityLine / 10;
+        box2d.setGravity(gravityForce.x, gravityForce.y);
+    }
 }
 
 void CloudsVisualSystemExampleBox2D::selfMouseMoved(ofMouseEventArgs& data){

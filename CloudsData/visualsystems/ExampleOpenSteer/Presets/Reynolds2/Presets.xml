@@ -17,11 +17,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BasicOC</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>BronzeTrails</Name>
     <Value>0</Value>
 </Widget>
@@ -73,11 +68,6 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Streamers</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Streamers_OC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

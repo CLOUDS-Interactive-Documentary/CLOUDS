@@ -151,7 +151,6 @@ class CloudsFCPParser {
     float getCohesionIndexForKeyword(const string&  keyword);
     float getDistanceFromAdjacentKeywords(const string&  keyword1, const string&  keyword2);
     
-//    void saveClusterMap(map<string, ofVec2f> centroidMap);
   protected:
     
     void reciprocateSuppressions(CloudsClip& clip );

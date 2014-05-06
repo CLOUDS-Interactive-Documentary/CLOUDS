@@ -8,6 +8,7 @@
 #include "ofxTonic.h"
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
+#include "TonicSample.h"
 
 //using namespace Tonic;
 
@@ -58,9 +59,11 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
 	
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
+    void selfSetDefaults();
 
 	// Sound
     ofxUISuperCanvas* soundGui;
+<<<<<<< HEAD
 	vector<string> soundFiles;
     //string soundFiles[2] = {"organ_slower.aif",
     //    "EchoVortex.aif"};
@@ -70,6 +73,17 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
     Tonic::Generator buildSynth();
     Tonic::ControlParameter volumeControl;
 
+=======
+    
+    vector<TonicSample> tonicSamples;
+//    string soundFiles[2] = {"organ_slower.aif",
+//        "EchoVortex.aif"};
+//    bool playSample[2] = {false};
+//    ControlTrigger soundTriggers[2];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+    ControlParameter volumeControl;
+>>>>>>> master
     float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };

@@ -99,7 +99,8 @@ void CloudsVisualSystemVision::selfSetDefaults(){
 void CloudsVisualSystemVision::selfSetup()
 {
 
-
+    tonicSamples.push_back(TonicSample("distorted_drones.aif"));
+    tonicSamples.push_back(TonicSample("slowgrains_short.aif"));
     shader.load(getVisualSystemDataPath() + "heatMapShader");
 
     //	app
@@ -229,9 +230,13 @@ void CloudsVisualSystemVision::selfSetupGui()
     
     soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
     
+<<<<<<< HEAD
     for (int i = 0; i < soundFiles.size(); i++)
+=======
+    for (int i=0; i<tonicSamples.size(); i++)
+>>>>>>> master
     {
-        soundGui->addToggle(soundFiles[i], &playSample[i]);
+        soundGui->addToggle(tonicSamples[i].soundFile   , &tonicSamples[i].playSample);
     }
     
 	guis.push_back(soundGui);
@@ -288,7 +293,7 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
 	int flowHeight = opticalFlowPixels.getHeight();
 	
 	if(bDrawFlowWindow){
-
+        primaryCursorMode = CURSOR_MODE_CAMERA;
 		float screenToFlowScale = flowWidth / videoRect.width;
 		float mouseXVideo = (GetCloudsInputX() - videoRect.x) * screenToFlowScale;
 		float mouseYVideo = (GetCloudsInputY() - videoRect.y) * screenToFlowScale;
@@ -297,6 +302,7 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
 								 flowHeight*windowHeight);
 	}
 	else{
+        primaryCursorMode = CURSOR_MODE_INACTIVE;
 		flowWindow = ofRectangle(0,0,flowWidth,flowHeight);
 	}
 
@@ -386,10 +392,14 @@ void CloudsVisualSystemVision::selfBegin()
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVision::audioRequested);
     
+<<<<<<< HEAD
     for (int i=0; i<soundFiles.size(); i++)
+=======
+    for (int i=0; i<tonicSamples.size(); i++)
+>>>>>>> master
     {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+        if (tonicSamples[i].playSample) {
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
@@ -785,13 +795,17 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         if(t->getValue())loadMovieWithName( t->getName() );
     }
     
+<<<<<<< HEAD
     for (int i=0; i<soundFiles.size(); i++)
+=======
+    for (int i=0; i<tonicSamples.size(); i++)
+>>>>>>> master
     {
-        if (e.widget->getName() == soundFiles[i]) {
+        if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
+            tonicSamples[i].playSample = toggle->getValue();
             if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+                 tonicSamples[i].soundTrigger.trigger();
             }
         }
     }
@@ -853,16 +867,24 @@ Generator CloudsVisualSystemVision::buildSynth()
     
     SampleTable samples[2];
     
+<<<<<<< HEAD
     for (int i=0; i<soundFiles.size(); i++)
+=======
+    for (int i=0; i<tonicSamples.size(); i++)
+>>>>>>> master
     {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        string strAbsPath = sdir.getAbsolutePath() + "/" + tonicSamples[i].soundFile;
         samples[i] = loadAudioFile(strAbsPath);
     }
     
     Generator sampleGen[2];
+<<<<<<< HEAD
 	for (int i=0; i<soundFiles.size(); i++)
+=======
+    for (int i=0; i<tonicSamples.size(); i++)
+>>>>>>> master
     {
-        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(soundTriggers[i]);
+        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(tonicSamples[i].soundTrigger);
     }
     
     return sampleGen[0] * 1.0f +

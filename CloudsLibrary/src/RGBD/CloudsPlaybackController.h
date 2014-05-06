@@ -7,7 +7,6 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsAct.h"
-#include "ofxGameCamera.h"
 #include "ofxUI.h"
 
 #include "CloudsIntroSequence.h"
@@ -30,14 +29,16 @@
  * and decides when to show Visual Systems
  *
  */
-class CloudsPlaybackController {
+class CloudsPlaybackController : public ofThread {
   public:
 	CloudsPlaybackController();
-	~CloudsPlaybackController();
 
 	//set it up with an existing story engine that will register the events
-	void setup();	
-	void playAct(CloudsAct* act);
+	void setup();
+	void loadCurrentAct(); //starts loading screen
+	void updateLoadingAct(); //loads one system everytime it's called
+	void playCurrentAct();//when done loading
+	
 	CloudsRGBDVideoPlayer& getSharedVideoPlayer();
 	
 	//update and draw to the screen, this will always
@@ -66,10 +67,18 @@ class CloudsPlaybackController {
     void portalHoverBegan(CloudsPortalEventArgs& args);
     void portalHoverEnded(CloudsPortalEventArgs& args);
 	
+	void drawContinueReset();
+	
 	void exit(ofEventArgs & args);
 	
 	vector<CloudsClip> fakeQuestions;
+	
+	void finishSetup(); //called at the end of the threaded function
+	bool loading;
+	float loadPercent;
+	bool loadFinished;
 
+	void threadedFunction();
   protected:
 	vector<CloudsClip> startingNodes;
 	//*** CORE CLOUDS STUFF
@@ -87,12 +96,22 @@ class CloudsPlaybackController {
 	CloudsClip currentClip;
 	int numClipsPlayed;
 	string currentTopic;
+	
+	bool shouldLoadAct;
 	bool shouldPlayAct;
     bool shouldClearAct;
-    
+    bool shouldPlayClusterMap;
+	
     void drawRenderTarget();
     void drawInterludeInterface();
-    
+	void drawInterludePanel(ofRectangle rect, string promptText, bool hovering, int tracking );
+#ifdef KINECT_INPUT
+    void drawKinectFeedback();
+#endif
+	//transition
+	CloudsPortal* selectedQuestion;
+	CloudsClip selectedQuestionClip;
+
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
     int numActsCreated;
@@ -102,6 +121,11 @@ class CloudsPlaybackController {
     
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;
+	vector<string> backgroundPresets;
+	vector<string> pointcloudPresets;
+	string basePreset;
+	void populateRGBDPresets();
+	
 	//if there is a system playing this wil be non-null
 	CloudsIntroSequence* introSequence;
 	CloudsVisualSystemClusterMap* clusterMap;
@@ -113,7 +137,14 @@ class CloudsPlaybackController {
 		
 	CloudsTransitionController transitionController;
 	void updateTransition();
-
+	bool updateInterludeInterface(); //true if we should stop interlude
+	void updateCompletedInterlude(); //after one option has been selected;
+	bool forceInterludeReset;
+    
+	//loader screen
+	bool loadingAct;
+	int currentPresetIndex;
+	
     string currentClipName;
     float actCreatedTime;
 	float crossfadeValue;
@@ -131,7 +162,6 @@ class CloudsPlaybackController {
 	//VISUAL SYSTEMS
 	//
 	void showIntro();
-	void showIntro(vector<CloudsClip>& possibleStartQuestions);
 
 	bool showingIntro;
 	bool showingVisualSystem;
@@ -150,27 +180,39 @@ class CloudsPlaybackController {
     void showInterlude();
     void cleanupInterlude();
 
-    //INTERLUDE PORTAL
-    bool bShowPortals;
-    CloudsPortal continuePortal;
-    void setupPortals();
-    ofRectangle resetRect;
-    ofRectangle resetSelectionRect;
-    bool bResetSelected;
-    bool bResetTransitionComplete;
-    ofxFTGLFont resetFont;
-    float resetSelectedPercentComplete;
-    float maxResetHoverTime;
-    float startResetHoverTime;
-    float endResetHoverValue;
-    bool prevResetValue;
+    //INTERLUDE INTERFACE
+	void resetInterludeVariables();
+	ofxFTGLFont interludeInterfaceFont;
+	float interludeExitBarWidth;
+	bool interludeHoveringContinue;
+	bool interludeHoveringReset;
+	float interludeBarHoverStartTime;
+	float interludeBarHoverHoldTime;
+	float interludeBarHoverPercentComplete;
+	bool interludeContinueSelected;
+	bool interludeResetSelected;
+	bool interludeTimedOut;
+	float interludeArcRadius;
+	float interludeArcBaseAlpha;
+	float interludeForceOnTimer;
+//    CloudsPortal continuePortal;
+//    void setupPortals();
+//    ofRectangle resetRect;
+//    ofRectangle resetSelectionRect;
+//    float resetSelectedPercentComplete;
+//    float maxResetHoverTime;
+//    float startResetHoverTime;
+//    float endResetHoverValue;
+//    bool prevResetValue;
+//	
+//    bool bResetSelected;
+//    bool bResetTransitionComplete;
 
-    void clearRestButtonParams();
-    // OS cursor display
-    ofVec2f lastMousePos, currMousePos;
-    unsigned long long lastMouseMoveMillis;
 
 
+//    void clearRestButtonParams();
+//    ofVec2f lastMousePos, currMousePos;
+//    unsigned long long lastMouseMoveMillis;
 };
 
 

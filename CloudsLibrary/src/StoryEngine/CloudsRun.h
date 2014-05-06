@@ -14,10 +14,11 @@ class CloudsRun
   public:
 	CloudsRun(){
 		actCount = 0;
+		questionsAsked = 0;
 	};
 
 	int actCount;
-    
+    int questionsAsked;
     vector<CloudsClip> clipHistory;
     vector<string> presetHistory;
 	vector<string> topicHistory;

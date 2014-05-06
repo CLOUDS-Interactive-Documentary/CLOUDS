@@ -19,6 +19,16 @@ void CloudsPortal::reloadShader(){
 
 CloudsPortal::CloudsPortal(){
 
+	hoverStartTime = 0;
+	selectedTime = 0;
+	
+    onScreen = false;
+	bLookAtCamera = false;
+	
+	tunnelQuadrantIndex = 0;
+	cam = NULL;
+	font = NULL;
+
 	scale = 1.0f;
 	
     ringStartRadius = 100;
@@ -30,16 +40,19 @@ CloudsPortal::CloudsPortal(){
 	ringCount = 10;
 	
 	selectedPercentComplete = 0.0;
-	selectAnimationDuration = 3.0;
+	selectAnimationDuration = 1.0;
 	
 	selected = false;
 	hovering = false;
 	bLookAtCamera = false;
-	
-	hoverPercentComplete = 0.;
+
+	hoverStartTime = 0.0;
+
+	hoverPercentComplete = 0.0;
+	selectedPercentComplete = 0.0 ;
 	
 	minSelectDistance = 20.; //screenspace distance from node to hover
-	maxHoverTime = 5.; //how long to hover before select
+	maxHoverTime = 4.; //how long to hover before select
     
     charsPerSecond = 45;
 }
@@ -97,12 +110,11 @@ bool CloudsPortal::isSelected(){
 }
 
 void CloudsPortal::update(){
-    if(ofGetFrameNum() % 1000 == 0) cout << "question node " << question << " is selected? " << selected << " hovering? " << hovering << endl;
+//    if(ofGetFrameNum() % 1000 == 0) cout << "question node " << question << " is selected? " << selected << " hovering? " << hovering << endl;
     
     if(cam != NULL){
         float dot = ( hoverPosition - cam->getPosition()).dot(cam->getLookAtDir());
         onScreen = dot > 0;
-        
 		screenPosition = cam->worldToScreen(hoverPosition);
     }
     else{

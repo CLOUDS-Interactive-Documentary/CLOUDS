@@ -61,6 +61,8 @@ class CloudsHUDController {
     void setHudEnabled(bool enable);
     bool isHudEnabled();
 	
+	void clearQuestion();
+	
 	void buildLayerSets();
     void calculateFontSizes();
     int getFontSizeForMesh( SVGMesh* textMesh );
@@ -76,7 +78,11 @@ class CloudsHUDController {
 	void saveGuiSettings();
 	void toggleGuis();
 	
+<<<<<<< HEAD
 	void questionHoverOn(const string& question);
+=======
+	void questionHoverOn(string question, bool animate = true);
+>>>>>>> master
 	void questionHoverOff();
 	
 	ofxUISuperCanvas *hudGui;
@@ -105,8 +111,13 @@ class CloudsHUDController {
   protected:
 	
     void populateLowerThird( string firstName="", string lastName="", string title="", string location="", string textbox="", bool forceOn=false );
+<<<<<<< HEAD
     void populateProjectExample(const string& videoPath, const string& textLeft, const string& textRight, const string& textTop, bool forceOn=false);
     void populateQuestion( string question="", bool forceOn=false);
+=======
+    void populateProjectExample(string videoPath="", string textLeft="", string textRight="", string textTop="", bool forceOn=false);
+    void populateQuestion( string question="", bool forceOn = false, bool animate = true);
+>>>>>>> master
     void populateMap( string leftBox="", string rightBox="", bool forceOn=false);
     
 	VIDEOCLASS		       videoPlayer;
@@ -116,7 +127,7 @@ class CloudsHUDController {
     bool    bIsHudOpen;
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
-    
+    bool	bActJustStarted;
     bool    bLowerThirdCued;
     bool    bVisualSystemDisplayed;
     float   cuedClipEndTime;

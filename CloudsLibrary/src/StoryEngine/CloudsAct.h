@@ -90,9 +90,11 @@ class CloudsAct{
 	vector<CloudsSoundCue>& getSoundCues();
 	
     vector<string>& getAllTopics();
-    
+	
+	
     CloudsClip& getClip(int index);
     CloudsClip& getClipAtTime(float time);
+
 
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     float addClip(CloudsClip& clip, string topic, float startTime);
@@ -120,7 +122,9 @@ class CloudsAct{
     CloudsStoryEvents& getEvents();
     
   protected:
-
+	
+	float incrementalQuesitonTime;
+	
     ofxTimeline timeline;
     ofxTLFlags* visualSystemsTrack;
     ofxTLFlags* clipsTrack;

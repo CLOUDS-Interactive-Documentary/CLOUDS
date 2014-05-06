@@ -16,8 +16,9 @@ string CloudsVisualSystemReplicator::getSystemName(){
 
 void CloudsVisualSystemReplicator::selfSetup(){
 	local_time = ofGetElapsedTimef() + ofRandom(10000);
-    
-    // sound
+
+    tonicSamples.push_back(TonicSample("organ_slower.aif"));
+    tonicSamples.push_back(TonicSample("EchoVortex.aif"));
     gain = 0; 
     synth.setOutputGen(buildSynth());
 }
@@ -78,7 +79,10 @@ void CloudsVisualSystemReplicator::selfUpdate(){
 	
 	local_time += ofGetLastFrameTime();
 }
-
+void CloudsVisualSystemReplicator::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemReplicator::selfDrawBackground(){
 
 }
@@ -153,10 +157,10 @@ void CloudsVisualSystemReplicator::selfBegin(){
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemReplicator::audioRequested);
     
-    for (int i=0; i<2; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+        if (tonicSamples[i].playSample) {
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
@@ -202,8 +206,8 @@ void CloudsVisualSystemReplicator::selfSetupGui(){
 	soundGui->setName("Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
-    soundGui->addToggle(soundFiles[0], &playSample[0]);
-    soundGui->addToggle(soundFiles[1], &playSample[1]);
+    soundGui->addToggle(tonicSamples[0].soundFile, &tonicSamples[0].playSample);
+    soundGui->addToggle(tonicSamples[1].soundFile, &tonicSamples[1].playSample);
     soundGui->addSlider("Gain", 0, 1, &gain);
     guis.push_back(soundGui);
 	guimap[soundGui->getName()] = soundGui;
@@ -214,11 +218,11 @@ void CloudsVisualSystemReplicator::selfSetupGui(){
 void CloudsVisualSystemReplicator::selfGuiEvent(ofxUIEventArgs &e){
     for (int i=0; i<2; i++)
     {
-        if (e.widget->getName() == soundFiles[i]) {
+        if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
+            tonicSamples[i].playSample = toggle->getValue();
             if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+                tonicSamples[i].soundTrigger.trigger();
             }
         }
     }
@@ -249,15 +253,19 @@ Generator CloudsVisualSystemReplicator::buildSynth()
     
     SampleTable samples[2];
     
-    int nSounds = sizeof(soundFiles) / sizeof(string);
-    for (int i=0; i<nSounds; i++)
-    {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//    int nSounds = sizeof(soundFiles) / sizeof(string);
+//    for (int i=0; i<nSounds; i++)
+//    {
+//        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//        samples[i] = loadAudioFile(strAbsPath);
+//    }
+    for(int i=0; i<tonicSamples.size();i++){
+        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
-    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[1].soundTrigger);
     
     return (sampleGen1 * 0.7f + sampleGen2 * 1.0f) * volumeControl;
 }

@@ -1638,10 +1638,10 @@
 		E7E5EC601817C01400CA4196 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E7E5EC611817C01400CA4196 /* CloudsRGBDCamera.cpp */,
 				E7E5EC621817C01400CA4196 /* CloudsRGBDCamera.h */,
-				E7E5EC631817C01400CA4196 /* CloudsRGBDVideoPlayer.cpp */,
+				E7E5EC611817C01400CA4196 /* CloudsRGBDCamera.cpp */,
 				E7E5EC641817C01400CA4196 /* CloudsRGBDVideoPlayer.h */,
+				E7E5EC631817C01400CA4196 /* CloudsRGBDVideoPlayer.cpp */,
 				E7E5EC651817C01400CA4196 /* CloudsVisualSystem.cpp */,
 				2A316F9F187F986200662636 /* ofxSystemTextbox.h */,
 				2A316FA0187F986200662636 /* ofxSystemTextbox.mm */,

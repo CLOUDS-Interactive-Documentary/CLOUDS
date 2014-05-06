@@ -79,6 +79,12 @@ public:
     float currentClipVolumeAdjustment;
     float nextClipVolumeAdjustment;
     float currentMaxVolume;
+	
+	bool hasSubtitles();
+    void drawSubtitles();
+    //deleteme
+    void drawSubtitles(int x,int y);
+
   protected:
 
 	//  UPDATE
@@ -148,13 +154,9 @@ public:
 	float fadeOutValue;
     
     /* Subtitles */
-public:
-    bool haveSubtitles();
-    void drawSubtitles(float x, float y);
-private:
     bool loadSubtitles(string path);
-    bool currentHaveSubtitles;
-    bool nextHaveSubtitles;
+    bool currentClipHasSubtitles;
+    bool nextClipHasSubtitles;
     
 #ifdef SHOW_SUBTITLES
     ofxSubtitles currentSubtitles;

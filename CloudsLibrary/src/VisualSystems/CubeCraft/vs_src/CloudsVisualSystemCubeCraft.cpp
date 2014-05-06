@@ -314,6 +314,9 @@ void CloudsVisualSystemCubeCraft::selfSetDefaults()
 	
 	//cube craft
 	updateAllColors();
+    
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 void CloudsVisualSystemCubeCraft::selfSetup()

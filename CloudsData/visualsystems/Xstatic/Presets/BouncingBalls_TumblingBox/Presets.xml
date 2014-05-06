@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1511.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>663.000061035</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -77,7 +77,27 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>FastPhysics2_</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FastPhysics2_TumblingBox</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FastPhysics_TumblingBox</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>fireflies</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FrozenBalls_TumblingBox</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

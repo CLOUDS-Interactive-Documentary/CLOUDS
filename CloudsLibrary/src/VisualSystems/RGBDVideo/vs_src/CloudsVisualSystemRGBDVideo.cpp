@@ -16,6 +16,17 @@ string CloudsVisualSystemRGBDVideo::getSystemName(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
+	
+    bEnableOcclusion = false;
+    bEnableOcclusionDebug = false;
+	occlusionSimplifyX = 2.0;
+	occlusionSimplifyY = 2.0;
+
+    occlusionVertexCount = 0;
+    occlusionIndexCount = 0;
+	loadMoviePath = "";
+	
+	movieLoaded = false;
     pointscale = .25;
     pointShift = ofVec3f(0,0,0);
     pointSize = 1.0;
@@ -40,7 +51,32 @@ void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     refreshOcclusion = false;
     refreshPoints = false;
     
+    bDrawDust = false;
+    dustParticleCount = 1000;
+    dustAlpha = 1.0;
+    dustRadius = 1000.0;
+    dustSizeWeight = .2;
+    dustPointSizeSmall = 1.0;
+    dustPointSizeBig = 3.0;
+
+
+	bEnableMesh = false;
+	meshAlpha = 0.0;
+	meshSimplifyX = 2.0;
+	meshSimplifyY = 2.0;
+    refreshMesh = false;
+    meshVertexCount = 0;
+    meshIndexCount = 0;
+
+    bool bDrawDust;
+    int dustParticleCount;
+    float dustRadius;
+    float dustPointSize;
+
+
     blendModeAdd = false;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 //--------------------------------------------------------------
@@ -56,9 +92,11 @@ void CloudsVisualSystemRGBDVideo::reloadShader(){
 	pointsShader.load(getVisualSystemDataPath() + "shaders/rgbd_simple_points");
     cout << "loading lines shader" << endl;
 	linesShader.load(getVisualSystemDataPath() + "shaders/rgbd_simple_lines");
+    cout << "loading mesh shader" << endl;
+	meshShader.load(getVisualSystemDataPath() + "shaders/rgbd_simple_mesh");
     cout << "loading occlusion shader" << endl;
 	occlusionShader.load(getVisualSystemDataPath() + "shaders/rgbd_simple_occlude");
-    
+
 }
 
 //--------------------------------------------------------------
@@ -117,6 +155,28 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
 	guimap[occlusionGui->getName()] = occlusionGui;
     ////////////////// OCCLUSION
 
+	////////////////// MESH
+    occlusionGui = new ofxUISuperCanvas("MESH", gui);
+	occlusionGui->copyCanvasStyle(gui);
+	occlusionGui->copyCanvasProperties(gui);
+	occlusionGui->setName("Msh");
+	occlusionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	toggle = occlusionGui->addToggle("ENABLE", &bEnableMesh);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	occlusionGui->resetPlacer();
+	occlusionGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	occlusionGui->addWidgetToHeader(toggle);
+    
+	occlusionGui->addSlider("Mesh Alpha", 0.0, 1.0, &meshAlpha);
+	occlusionGui->addSlider("Mesh X Simplify", 1.0, 8.0, &meshSimplifyX);
+	occlusionGui->addSlider("Mesh Y Simplify", 1.0, 8.0, &meshSimplifyY);
+	
+ 	ofAddListener(occlusionGui->newGUIEvent, this, &CloudsVisualSystemRGBDVideo::selfGuiEvent);
+	guis.push_back(occlusionGui);
+	guimap[occlusionGui->getName()] = occlusionGui;
+	////////////////// MESH
+	
     ////////////////// POINTS
     pointsGui = new ofxUISuperCanvas("POINTS", gui);
 	pointsGui->copyCanvasStyle(gui);
@@ -133,13 +193,35 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
     pointsGui->addSlider("Points Alpha", 0.0, 1.0, &pointAlpha);
     pointsGui->addSlider("Point X Simplify", 1.0, 8, &pointsSimplifyX);
     pointsGui->addSlider("Point Y Simplify", 1.0, 8, &pointsSimplifyY);
-	pointsGui->addSlider("Point Size", 0.0, 3.0, &pointSize);
+	pointsGui->addSlider("Point Size", 0.0, 5.0, &pointSize);
     
  	ofAddListener(pointsGui->newGUIEvent, this, &CloudsVisualSystemRGBDVideo::selfGuiEvent);
 	guis.push_back(pointsGui);
 	guimap[pointsGui->getName()] = pointsGui;
     ////////////////// POINTS
     
+    ////////////////// DUST
+    dustGui = new ofxUISuperCanvas("DUST", gui);
+	dustGui->copyCanvasStyle(gui);
+	dustGui->copyCanvasProperties(gui);
+	dustGui->setName("Dust");
+	dustGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	toggle = dustGui->addToggle("ENABLE", &bDrawDust);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	dustGui->resetPlacer();
+	dustGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	dustGui->addWidgetToHeader(toggle);
+
+    dustGui->addSlider("Dust Alpha", 0.0, 1.0, &dustAlpha);
+    dustGui->addIntSlider("Dust Count", 0, 5000, &dustParticleCount);
+    dustGui->addSlider("Dust Spread", 100, 2000, &dustRadius);
+    dustGui->addRangeSlider("Dust Point Size", 0.0, 5.0, &dustPointSizeSmall, &dustPointSizeBig);
+    dustGui->addSlider("Dust Size Weight", 0.0, 1.0, &dustSizeWeight);
+    
+ 	ofAddListener(dustGui->newGUIEvent, this, &CloudsVisualSystemRGBDVideo::selfGuiEvent);
+	guis.push_back(dustGui);
+	guimap[dustGui->getName()] = dustGui;
+    ////////////////// DUST
 }
 
 //--------------------------------------------------------------
@@ -153,6 +235,10 @@ void CloudsVisualSystemRGBDVideo::selfUpdate(){
 		loadMoviePath = "";
 	}
 	
+    if(dustSizeWeight != currentDustSizeWeight || dustMeshSmall.getNumVertices() + dustMeshBig.getNumVertices() != dustParticleCount){
+        generateDust();
+    }
+    
     cloudsCamera.lookTarget = ofVec3f(0,0,0);
     
 	if(movieLoaded){
@@ -170,6 +256,10 @@ void CloudsVisualSystemRGBDVideo::selfUpdate(){
     if(refreshPoints) {
         generatePoints();
     }
+	
+	if(refreshMesh){
+		generateMesh();
+	}
 }
 
 void CloudsVisualSystemRGBDVideo::generatePoints(){
@@ -234,32 +324,6 @@ void CloudsVisualSystemRGBDVideo::generateOcclusion(){
 		y++;
 		x = 0;
 	}
-	
-/*
-	for(int i = 0; i < indeces.size(); i+=3){
-		
-		ofVec3f& a = vertices[ indeces[i+0] ];
-		ofVec3f& b = vertices[ indeces[i+1] ];
-		ofVec3f& c = vertices[ indeces[i+2] ];
-		ofVec3f mid = (a+b+c)/3.;
-		
-		ofVec3f toA = a-mid;
-		ofVec3f toB = b-mid;
-		ofVec3f toC = c-mid;
-		
-		m.addNormal(toA);
-		m.addColor(ofFloatColor(toB.x/640.,toB.y/480.,toC.x/640.,toC.y/480.));
-		m.addVertex(mid);
-        
-		m.addNormal(toB);
-		m.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toC.x/640.,toC.y/480.));
-		m.addVertex(mid);
-		
-		m.addNormal(toC);
-		m.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toB.x/640.,toB.y/480.));
-		m.addVertex(mid);
-	}
-    */
     
     occlusionVertexCount = m.getNumVertices();
     occlusionIndexCount = m.getNumIndices();
@@ -268,6 +332,81 @@ void CloudsVisualSystemRGBDVideo::generateOcclusion(){
     refreshOcclusion = false;
 //    cout << "generated " << occlusionVertexCount << " vertices" << endl;
 }
+
+void CloudsVisualSystemRGBDVideo::generateMesh(){
+	
+	meshVbo.clear();
+
+    if(meshSimplifyX <= 0) meshSimplifyX = 1.0;
+	if(meshSimplifyY <= 0) meshSimplifyY = 1.0;
+    
+	int x = 0;
+	int y = 0;
+    
+	int gw = ceil(640. / meshSimplifyX);
+	int w = gw*meshSimplifyX;
+	int h = 480.;
+	ofMesh m;
+    
+	for (float y = 0; y < 480; y += meshSimplifyY){
+		for (float x = 0; x < 640; x += meshSimplifyX){
+			m.addVertex( ofVec3f(x,y,0) );
+		}
+	}
+	
+	for (float ystep = 0; ystep < h-meshSimplifyY; ystep += meshSimplifyY){
+		for (float xstep = 0; xstep < w-meshSimplifyX; xstep += meshSimplifyX){
+			ofIndexType a,b,c;
+			
+			a = x+y*gw;
+			b = (x+1)+y*gw;
+			c = x+(y+1)*gw;
+			m.addIndex(a);
+			m.addIndex(b);
+			m.addIndex(c);
+			
+			a = (x+1)+(y+1)*gw;
+			b = x+(y+1)*gw;
+			c = (x+1)+(y)*gw;
+			m.addIndex(a);
+			m.addIndex(b);
+			m.addIndex(c);
+			
+			x++;
+		}
+		
+		y++;
+		x = 0;
+	}
+    
+    meshVertexCount = m.getNumVertices();
+    meshIndexCount = m.getNumIndices();
+    
+    meshVbo.setMesh(m, GL_STATIC_DRAW);
+    refreshMesh = false;
+}
+
+void CloudsVisualSystemRGBDVideo::generateDust(){
+    dustMeshBig.clear();
+    dustMeshSmall.clear();
+    
+    for(int i = 0; i < dustParticleCount; i++){
+        if( ofRandomuf() > dustSizeWeight ){
+            dustMeshBig.addVertex(ofVec3f(ofRandomf(),
+                                          ofRandomf(),
+                                          ofRandomf()));
+        }
+        else{
+            dustMeshSmall.addVertex(ofVec3f(ofRandomf(),
+                                            ofRandomf(),
+                                            ofRandomf()));
+        }
+    }
+    
+    currentDustSizeWeight = dustSizeWeight;
+    //currentDustRadius = dustRadius;
+}
+
 
 void CloudsVisualSystemRGBDVideo::selfDrawBackground(){
     if(bDrawVideoDebug){
@@ -291,28 +430,44 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     
-    if(bEnablePoints){
-        
+	if(bEnableMesh){
         if(bEnableOcclusion){
             drawOcclusionLayer();
         }
         
-        ofPushMatrix();
-        glPointSize(pointSize);
-        glEnable(GL_POINT_SMOOTH);
+		drawMeshLayer();
+	}
+    
+    if(!bEnableOcclusion){
+        glDisable(GL_DEPTH_TEST);
+    }
+    
+    if(bEnablePoints){
+        if(bEnableOcclusion){
+            glClear(GL_DEPTH_BUFFER_BIT);
+            drawOcclusionLayer();
+        }
+
+		drawPointLayer();
+    }
+    
+    if(bDrawDust){
         glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_POINT_SMOOTH);
+
+        ofPushStyle();
+        ofPushMatrix();
+
+        ofScale(dustRadius, dustRadius, dustRadius);
         
-        ofEnableBlendMode(blendModeAdd ? OF_BLENDMODE_ADD : OF_BLENDMODE_SCREEN);
+        ofSetColor(255*dustAlpha);
+        glPointSize(dustPointSizeSmall);
+        dustMeshSmall.drawVertices();
         
-        setupRGBDTransforms();
-        ofTranslate(0, yLift, 0);
+        glPointSize(dustPointSizeBig);
+        dustMeshBig.drawVertices();
         
-        pointsShader.begin();
-        pointsShader.setUniform1f("alpha", pointAlpha);
-        setupGeneralUniforms(pointsShader);
-        points.drawVertices();
-        pointsShader.end();
-        
+        ofPopStyle();
         ofPopMatrix();
     }
     
@@ -336,8 +491,8 @@ void CloudsVisualSystemRGBDVideo::setupGeneralUniforms(ofShader& shader){
 void CloudsVisualSystemRGBDVideo::drawOcclusionLayer(){
     
     glPushMatrix();
+	
     if(!bEnableOcclusionDebug){
-        
         ofTranslate(0, 0, 5.44);
         glEnable(GL_DEPTH_TEST);  // We want depth test !
         glDepthFunc(GL_LESS);     // We want to get the nearest pixels
@@ -346,7 +501,8 @@ void CloudsVisualSystemRGBDVideo::drawOcclusionLayer(){
     }
     
     setupRGBDTransforms();
-    
+    ofTranslate(0, yLift, 0);
+	
     occlusionShader.begin();
     occlusionShader.setUniform1f("edgeClip", 200);
     occlusionShader.setUniform2f("simplify", occlusionSimplifyX,occlusionSimplifyY);
@@ -364,6 +520,44 @@ void CloudsVisualSystemRGBDVideo::drawOcclusionLayer(){
     glPopMatrix();
 }
 
+void CloudsVisualSystemRGBDVideo::drawMeshLayer(){
+    
+	glPushMatrix();
+	
+    setupRGBDTransforms();
+    ofSetColor(255, meshAlpha*255);
+    meshShader.begin();
+    meshShader.setUniform1f("edgeClip", 200);
+    meshShader.setUniform2f("simplify", meshSimplifyX,meshSimplifyY);
+    setupGeneralUniforms(meshShader);
+    meshVbo.drawElements(GL_TRIANGLES, meshIndexCount);
+    meshShader.end();
+    
+    glPopMatrix();
+}
+
+void CloudsVisualSystemRGBDVideo::drawPointLayer(){
+	
+	ofPushMatrix();
+	glPointSize(pointSize);
+	
+	glEnable(GL_POINT_SMOOTH);
+	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+	
+	ofEnableBlendMode(blendModeAdd ? OF_BLENDMODE_ADD : OF_BLENDMODE_SCREEN);
+	
+	setupRGBDTransforms();
+	ofTranslate(0, yLift, 0);
+	
+	pointsShader.begin();
+	pointsShader.setUniform1f("alpha", pointAlpha);
+	setupGeneralUniforms(pointsShader);
+	points.drawVertices();
+	pointsShader.end();
+	
+	ofPopMatrix();
+}
+
 void CloudsVisualSystemRGBDVideo::selfExit(){
 	
 }
@@ -374,6 +568,7 @@ void CloudsVisualSystemRGBDVideo::selfPresetLoaded(string presetPath){
     refreshLines = true;
     refreshOcclusion = true;
     refreshPoints = true;
+	refreshMesh = true;
 }
 
 bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
@@ -501,6 +696,11 @@ void CloudsVisualSystemRGBDVideo::selfGuiEvent(ofxUIEventArgs &e){
     {
         refreshPoints = true;
     }
+    else if(e.widget->getName() == "Mesh X Simplify" ||
+            e.widget->getName() == "Mesh Y Simplify" )
+    {
+		refreshMesh = true;
+	}
 }
 
 //--------------------------------------------------------------

@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -118,8 +118,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>SIZE</Name>
-    <HighValue>5.418719292</HighValue>
-    <LowValue>0.591132998</LowValue>
+    <HighValue>10.541872025</HighValue>
+    <LowValue>1.083743811</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -135,7 +135,7 @@
     <Kind>6</Kind>
     <Name>BRIGHTNESS</Name>
     <HighValue>1.000000000</HighValue>
-    <LowValue>0.615763545</LowValue>
+    <LowValue>0.512315273</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -175,7 +175,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>BRI 1</Name>
-    <Value>0.822660089</Value>
+    <Value>0.881773412</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

@@ -11,6 +11,7 @@
 #include "CloudsInput.h"
 
 #include "ofxOsc.h"
+#include "ofxTween.h"
 
 namespace k4w 
 {
@@ -79,9 +80,16 @@ namespace k4w
 	// defined by us
     enum ViewerState 
     {
+<<<<<<< HEAD
         ViewerState_None       = 0,
         ViewerState_OutOfRange = 1,
         ViewerState_Present    = 2
+=======
+        ViewerState_None        = 0,
+        ViewerState_OutOfRange  = 1,
+        ViewerState_PresentIdle = 2,
+        ViewerState_Interacting = 3
+>>>>>>> master
     };
     
     struct Joint 
@@ -97,6 +105,10 @@ namespace k4w
     {
         HandState handState;
 		ofVec3f clampedPosition;  // input position, clamped to bounds if (bClampToBounds == true)
+<<<<<<< HEAD
+=======
+        float focus;
+>>>>>>> master
     };
     
     class Body 
@@ -191,11 +203,16 @@ public:
     void debug(float x, float y, float width, float height);
 	void draw(float x, float y, float width, float height, float alpha = 255);
     
+    void draw();
+	void draw(float x, float y, float width, float height);
+    
     ofxOscReceiver receiver;
     int lastOscFrame;
     int primaryIdx;
+    int mainBodyIdx;
     float activeThresholdY;
     float activeThresholdZ;
+    float focusRange;
     ofVec3f boundsMin;
     ofVec3f boundsMax;
     float jointLerpPct;
@@ -204,6 +221,12 @@ public:
     bool bDoDebug;
 
 	k4w::ViewerState viewerState;
+<<<<<<< HEAD
+=======
+    unsigned long viewerIdleTime;
+    int currViewerBodyIdx;
+    bool bCurrViewerHasInteracted;
+>>>>>>> master
     
     // current position attributes
     float posResetLerpPct;
@@ -214,6 +237,21 @@ public:
     
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;
+    
+    // cursors
+    void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus);
+    
+    float cursorDownSizeMin, cursorDownSizeMax;
+    float cursorUpSizeMin, cursorUpSizeMax;
+    
+    // draw feedback
+    float feedbackScale;
+    float feedbackMargin;
+    float feedbackAlpha;
+    float feedbackFade;
+    ofTrueTypeFont feedbackFont;
+    string feedbackPrompt;
+    ofxTween feedbackTween;
 };
 
 void SetCloudsInputKinect(float activeThresholdY = 0.8f, float activeThresholdZ = 0.4f);

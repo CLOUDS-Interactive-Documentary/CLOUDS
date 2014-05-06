@@ -6,6 +6,8 @@
 
 #ifdef KINECT_INPUT
 #include "CloudsInputKinectOSC.h"
+#elif OCULUS_RIFT
+#include "CloudsInputOculus.h"
 #endif
 
 #ifdef TARGET_OSX
@@ -14,18 +16,6 @@
 
 #ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
-#endif
-
-#ifdef OCULUS_RIFT
-float CloudsVisualSystem::cursorSize = 1;
-#elif KINECT_INPUT
-float CloudsVisualSystem::cursorDownSizeMin = 5;
-float CloudsVisualSystem::cursorDownSizeMax = 10;
-float CloudsVisualSystem::cursorUpSizeMin   = 8;
-float CloudsVisualSystem::cursorUpSizeMax   = 16;
-#else
-float CloudsVisualSystem::cursorDownSize = 7;
-float CloudsVisualSystem::cursorUpSize   = 12;
 #endif
 
 static ofFbo staticRenderTarget;
@@ -42,7 +32,12 @@ static ofImage backgroundGradientWash;
 static bool screenResolutionForced = false;
 static int forcedScreenWidth;
 static int forcedScreenHeight;
-static int numSamples = 0;
+static int numSamples = 4;
+static ofSoundPlayer* click = NULL;
+static ofSoundPlayer* selectHigh = NULL;
+static ofSoundPlayer* selectMid = NULL;
+static ofSoundPlayer* selectLow = NULL;
+
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
@@ -83,13 +78,52 @@ void CloudsVisualSystem::loadBackgroundShader(){
     backgroundGradientWash.loadImage(GetCloudsDataPath() + "backgrounds/wash.png");
 	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
-    
 }
 
 void CloudsVisualSystem::loadPostShader(){
     cloudsPostShader.load("",GetCloudsDataPath() + "shaders/post.fs");
     cloudsPostDistortionMap.loadImage( GetCloudsDataPath() + "images/7.jpg");
     postShaderLoaded = true;
+}
+
+ofSoundPlayer* CloudsVisualSystem::getClick(){
+	if(click == NULL){
+		click = new ofSoundPlayer();
+		click->setLoop(false);
+		click->loadSound(GetCloudsDataPath() + "sound/interface/click.aif");
+		click->setVolume(.4);
+	}
+	return click;
+}
+
+ofSoundPlayer* CloudsVisualSystem::getSelectHigh(){
+	if(selectHigh == NULL){
+		selectHigh = new ofSoundPlayer();
+		selectHigh->loadSound(GetCloudsDataPath() + "sound/interface/select_high.wav");
+		selectHigh->setLoop(false);
+		selectHigh->setVolume(.4);
+	}
+	return selectHigh;
+}
+
+ofSoundPlayer* CloudsVisualSystem::getSelectMid(){
+	if(selectMid == NULL){
+		selectMid = new ofSoundPlayer();
+		selectMid->loadSound(GetCloudsDataPath() + "sound/interface/select_mid.aif");
+		selectMid->setLoop(false);
+		selectMid->setVolume(.4);
+	}
+	return selectMid;
+}
+
+ofSoundPlayer* CloudsVisualSystem::getSelectLow(){
+	if(selectLow == NULL){
+		selectLow = new ofSoundPlayer();
+		selectLow->loadSound(GetCloudsDataPath() + "sound/interface/select_low.aif");
+		selectLow->setLoop(false);
+		selectLow->setVolume(.4);
+	}
+	return selectLow;
 }
 
 void CloudsVisualSystem::getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height){
@@ -133,8 +167,8 @@ void CloudsVisualSystem::get2dMesh(ofMesh& mesh, float width, float height){
 
 
 #ifdef OCULUS_RIFT
-static ofxOculusRift oculusRift;
 #include "OVR.h"
+static ofxOculusRift oculusRift;
 ofxOculusRift& CloudsVisualSystem::getOculusRift(){
 	if(!oculusRift.isSetup()){
         checkOpenGLError("PRE SETUP OCULUS");
@@ -159,16 +193,22 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
+<<<<<<< HEAD
 	primaryCursorMode = CURSOR_MODE_NONE;
     secondaryCursorMode = CURSOR_MODE_NONE;
+=======
+	primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+>>>>>>> master
 	updateCyclced = false;
     bDoBloom = false;
     bloomAmount = 0.;
+	isInterlude = false;
+	
+	bSetManualBackgroundColors = false;
+	   
+	pointcloudOffsetZ = 0.0;
 
-//#ifdef CLOUDS_APP
-//    bShowPortals = true;
-//#endif
-    
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 	hudGui = NULL;	
@@ -186,6 +226,7 @@ CloudsVisualSystem::~CloudsVisualSystem(){
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
+<<<<<<< HEAD
 	ofFbo& renderTarget = getStaticRenderTarget();  
 //	int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
 //	int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
@@ -210,6 +251,20 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	bool reallocateTarget = !renderTarget.isAllocated() ||
 							renderTarget.getWidth() != computedWidth ||
 							renderTarget.getHeight() != computedHeight;
+=======
+	ofFbo& renderTarget = getStaticRenderTarget();
+    
+	int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
+	int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
+    
+bool reallocateTarget = !renderTarget.isAllocated();
+	reallocateTarget |= !screenResolutionForced &&
+						(renderTarget.getWidth() != targetWidth ||
+						 renderTarget.getHeight() != targetHeight );
+	reallocateTarget |= screenResolutionForced &&
+						(renderTarget.getWidth() != forcedScreenWidth ||
+						 renderTarget.getHeight() != forcedScreenHeight);
+>>>>>>> master
 
 	if(reallocateTarget){
 		renderTarget.allocate(computedWidth, computedHeight, GL_RGB, numSamples);
@@ -235,41 +290,15 @@ string CloudsVisualSystem::getVisualSystemDataPath(bool ignoredFolder){
 ofxTimeline* CloudsVisualSystem::getTimeline(){
 	return timeline;
 }
-//#ifdef CLOUDS_APP
-//void CloudsVisualSystem::setupPortals(){
-//    
-// 
-//    
-//    CloudsPortal rp;
-//    rp.hoverPosition = ofVec3f(75.f, getCanvasHeight()/4*3, 0);
-//    rp.scale = .3;
-//    rp.cam = &getCameraRef();
-//    rp.question = "Return";
-//    rp.setup();
-//    portals.push_back(rp);
-//    
-//    CloudsPortal cp;
-//    cp.hoverPosition = ofVec3f(getCanvasWidth()-75.f, getCanvasHeight()/4*3, 0);
-//    cp.scale = .3;
-//    cp.cam = &getCameraRef();
-//    cp.question = "Continue";
-//    cp.setup();
-//    portals.push_back(cp);
-//    
-//    SetInterludePortalsRef(portals);
-//    
-//}
-//#endif
+
 
 void CloudsVisualSystem::setup(){
 	
     if(bIsSetup){
 		return;
 	}
-//#ifdef CLOUDS_APP
-//    setupPortals();
-//#endif
     
+	
     backgroundGradientExponent = 1.0;
     bWashGradient = false;
 
@@ -295,8 +324,6 @@ void CloudsVisualSystem::setup(){
     if(!postShaderLoaded){
         loadPostShader();
     }
-
-//	currentCamera = &cam;
     
 #if defined(OCULUS_RIFT) && defined(CLOUDS_APP)
     hud = NULL;
@@ -332,11 +359,33 @@ void CloudsVisualSystem::setup(){
     
 	loadGUIS();
 	hideGUIS();
+<<<<<<< HEAD
     
     if(bEnablePostFX) SetBleedPixels(bleed);
     else SetBleedPixels(0);
 
 	bIsSetup = true;
+=======
+
+	bIsSetup = true;
+	
+    bEnablePostFX = false;
+	bUseInteractiveCamera = false;
+	interactiveCameraDamping = 0;
+	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
+	interactiveCameraRot = ofVec2f(0,0);
+	interactiveCameraDamping = 0;
+	interactiveCameraRot.set(0,0);
+    postChromaDist = 0.f;
+    postGrainDist = 0.f;
+    //POST PROCESSING BLEED AMNT
+    bleed = 20;
+    if(bEnablePostFX) SetBleedPixels(bleed);
+    else SetBleedPixels(0);
+	
+	//pushes variables through internally so upDirection, etc is right
+	getCameraRef().setOrientation(getCameraRef().getOrientationQuat());
+>>>>>>> master
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -351,10 +400,13 @@ void CloudsVisualSystem::playSystem(){
 
 	if(!bIsPlaying){
 		cout << "**** PLAYING " << getSystemName() << endl;
-		//ofRegisterMouseEvents(this);
+
 		CloudsRegisterInputEvents(this);
-//		ofAddListener(GetCloudsInput()->getEvents().interactionMoved, this, &CloudsVisualSystem::interactionMoved);
+
 		ofRegisterKeyEvents(this);
+#ifndef CLOUDS_APP
+        ofRegisterMouseEvents(this);
+#endif
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
 		
@@ -393,6 +445,9 @@ void CloudsVisualSystem::stopSystem(){
 		
 		CloudsUnregisterInputEvents(this);
 		ofUnregisterKeyEvents(this);
+#ifndef CLOUDS_APP
+        ofUnregisterMouseEvents(this);
+#endif
 		ofRemoveListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofRemoveListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
 			
@@ -426,89 +481,50 @@ void CloudsVisualSystem::speakerEnded()
 
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
-    
-//#ifdef CLOUDS_APP
-//    
-//    bShowPortals = CanShowInterludePortals();
-//
-//    if(bShowPortals){
-//        ofVec2f mouseNode(GetCloudsInputX(),getCanvasHeight()-GetCloudsInputY());
-//        for(int i=0;i<portals.size();i++){
-//            portals[i].hoverPosition.y += .2*sin(ofGetElapsedTimef());
-//            portals[i].update();
-//            float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
-//            if(distanceToPortal<100.f){
-//                portals[i].startHovering();
-//            }
-//            else{
-//                portals[i].stopHovering();
-//            }
-//        }
-//        //cout<<GetSelectedInterludePortalContinue()<<endl;
-//        SetInterludePortalsRef(portals);
-//    }
-////    else{
-////        for(int i=0;i<portals.size();i++){
-////            portals[i].clearSelection();
-////            portals[i].stopHovering();
-////        }
-////    }
-//    
-//#endif
 
-//#ifdef CLOUDS_RELEASE
-//    // show/hide the mouse cursor
-//    currMousePos.set(ofGetMouseX(), ofGetMouseY());
-//    if (currMousePos != lastMousePos) {
-//        lastMouseMoveMillis = ofGetElapsedTimeMillis();
-//        ofShowCursor();
-//    }
-//    else if ((ofGetElapsedTimeMillis() - lastMouseMoveMillis) > 1000) {
-//        ofHideCursor();
-//    }
-//    lastMousePos = currMousePos;
-//#endif
-    
-    if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
-    {
+    if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack){
         updateTimelineUIParams();
     }
     
 	cloudsCamera.setCanvasWidthHeight(getCanvasWidth(), getCanvasHeight());
 	
-	//JG Never skip the update loop this is causing lots of problems
-//    if(bUpdateSystem)
-    {
-        for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
-        {
-            (*it)->update();
-        }
-        
-		
-		//update camera
-        ofVec3f newHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
-		translatedHeadPosition += (newHeadPosition - translatedHeadPosition) * .1;
-		cloudsCamera.lookTarget = translatedHeadPosition;
-		
-        selfUpdate();
-    }
+#ifdef OCULUS_RIFT
+	getOculusRift().baseCamera = &getCameraRef();
+#endif
 	
-	if(bMatchBackgrounds){
+	for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it){
+		(*it)->update();
+	}
+	
+	//update camera
+	ofVec3f newHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
+	translatedHeadPosition += (newHeadPosition - translatedHeadPosition) * .1;
+	cloudsCamera.lookTarget = translatedHeadPosition;
+	
+	selfUpdate();
+	
+	if(isInterlude){
+		updateInterludeInterface();
+	}
+	
+	if(bMatchBackgrounds) {
 		bgHue2 = bgHue;
 		bgSat2 = bgSat;
 		bgBri2 = bgBri;
 	}
 
     durationLabel->setLabel(ofxTimecode::timecodeForSeconds(timeline->getInOutRange().span() * timeline->getDurationInSeconds()));
-    
-	bgColor = ofColor::fromHsb(MIN(bgHue,254.), bgSat, bgBri, 255);
-	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
+
 	
+    //James, james, JAMES
+	if(!bSetManualBackgroundColors)
+	{
+		bgColor  = ofColor::fromHsb(MIN(bgHue,254.),  bgSat,  bgBri,  255);
+		bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
+	}
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
     
-	if(!ofGetMousePressed())
-    {
-//		ofLogError("TIMELINE UPDATE FOR SYSTEM " + getSystemName());
+	if(!ofGetMousePressed()){
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
@@ -516,6 +532,33 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	checkOpenGLError(getSystemName() + ":: UPDATE");
 	
 	updateCyclced = true;
+}
+
+bool CloudsVisualSystem::updateInterludeInterface(){
+
+#ifdef CLOUDS_INTERLUDE_NAV
+	resetNode.multiplier	= -1;
+	continueNode.multiplier = 1;
+	CalibrationNode* n[2] = { &resetNode, &continueNode };
+	for(int i = 0; i < 2; i++){
+		n[i]->nodeAlphaAttenuate = 1.0;
+		n[i]->nodeBaseSize = interludeNodeSize;
+		n[i]->tint = ofFloatColor::red;
+		n[i]->tint.a = 1.0;
+		
+		n[i]->baseOffset = ofVec3f(interludeBasePosX, 0, interludeBasePosZ);
+		n[i]->activationDistance = interludeActivationRange;
+		n[i]->holdTime = interludeNodeHoldTime;
+		n[i]->cam = &getCameraRef();
+
+	}
+
+	resetNode.update();
+	continueNode.update();
+	
+//	cout << "Reset node position " << resetNode.worldPosition << " cam pos " << getCameraRef().getPosition() << endl;
+	
+#endif
 }
 
 void CloudsVisualSystem::draw(ofEventArgs & args)
@@ -552,7 +595,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                 selfDrawBackground();
                 CloudsVisualSystem::getSharedRenderTarget().end();
                 
-                getOculusRift().baseCamera = &getCameraRef();
                 getOculusRift().beginLeftEye();
                 draw2dSystemPlane();
                 getOculusRift().endLeftEye();
@@ -562,7 +604,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                 getOculusRift().endRightEye();
             }
             else{
-                getOculusRift().baseCamera = &getCameraRef();
                 getOculusRift().beginLeftEye();
                 drawScene();
                 getOculusRift().endLeftEye();
@@ -587,7 +628,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			getCameraRef().end();
             
-
 			ofPushStyle();
 			ofPushMatrix();
 			ofTranslate(0, getCanvasHeight() );
@@ -709,8 +749,12 @@ void CloudsVisualSystem::drawScene(){
     ofPopMatrix();
 
 #ifdef OCULUS_RIFT
+	if(isInterlude){
+		drawInterludeInterface();
+	}
+	
     // EZ: Only draw cursor on _Intro for now
-    if(drawCursorMode > DRAW_CURSOR_NONE && getSystemName() == "_Intro"){
+    if(primaryCursorMode > CURSOR_MODE_NONE && getSystemName() == "_Intro"){
         ofPushStyle();
         ofPushMatrix();
         glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -739,6 +783,53 @@ void CloudsVisualSystem::drawScene(){
 #endif
 	
 }
+
+
+void CloudsVisualSystem::drawInterludeInterface(){
+	
+#if defined(CLOUDS_INTERLUDE_NAV)
+
+	ofPushStyle();
+	glDisable(GL_DEPTH_TEST);
+	ofDisableLighting();
+	ofEnableAlphaBlending();
+	ofSetColor(255);
+	
+	if(!interludeFont.isLoaded() || currentInterludeFontSize != interludeFontSize){
+		interludeFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", interludeFontSize);
+		currentInterludeFontSize = interludeFontSize;
+	}
+
+	resetNode.draw();
+	continueNode.draw();
+	
+	interludeFont.setTracking(interludeTypeTracking);
+	float hoverTextWidth  = interludeFont.stringWidth("RESET");
+	float hoverTextHeight = interludeFont.stringHeight("RESET");
+
+	ofPushMatrix();
+	getOculusRift().multBillboardMatrix( resetNode.worldPosition, getCameraRef().getUpDir() );
+	ofRotate(180,0,0,1);
+	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
+	interludeFont.drawString("RESET", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	ofPopMatrix();
+	
+	interludeFont.setTracking(interludeTypeTracking*.5);
+	hoverTextWidth  = interludeFont.stringWidth("CONTINUE");
+	hoverTextHeight = interludeFont.stringHeight("CONTINUE");
+	
+	ofPushMatrix();
+	getOculusRift().multBillboardMatrix( continueNode.worldPosition, getCameraRef().getUpDir() );
+	ofRotate(180,0,0,1);
+	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
+	interludeFont.drawString("CONTINUE", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	ofPopMatrix();
+	
+	ofPopStyle();
+#endif
+}
+
+
 
 void CloudsVisualSystem::setupRGBDTransforms(){
 	ofTranslate(0,0,pointcloudOffsetZ);
@@ -1240,14 +1331,22 @@ void CloudsVisualSystem::setupGui()
     primaryCursorModes.push_back("PRIMARY CURSOR INACTIVE");
     primaryCursorModes.push_back("PRIMARY CURSOR CAMERA");
     primaryCursorModes.push_back("PRIMARY CURSOR DRAW");
+<<<<<<< HEAD
     gui->addRadio("PRIMARY CURSOR MODE", primaryCursorModes)->activateToggle(primaryCursorModes[CURSOR_MODE_NONE]);
+=======
+    gui->addRadio("PRIMARY CURSOR MODE", primaryCursorModes);
+>>>>>>> master
     gui->addSpacer();
     vector<string> secondaryCursorModes;
     secondaryCursorModes.push_back("SEC. CURSORS NONE");
     secondaryCursorModes.push_back("SEC. CURSORS INACTIVE");
     secondaryCursorModes.push_back("SEC. CURSORS CAMERA");
     secondaryCursorModes.push_back("SEC. CURSORS DRAW");
+<<<<<<< HEAD
     gui->addRadio("SECONDARY CURSOR MODE", secondaryCursorModes)->activateToggle(secondaryCursorModes[CURSOR_MODE_NONE]);
+=======
+    gui->addRadio("SECONDARY CURSOR MODE", secondaryCursorModes);
+>>>>>>> master
     
     selfSetupGui();
     gui->autoSizeToFitWidgets();
@@ -2908,7 +3007,7 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
                         int widgetID = XML->getValue("WidgetID", -1, 0);
                         string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
 
-                        cout << "Widget canvas parent is " << widgetCanvasParent << endl;
+//                        cout << "Widget canvas parent is " << widgetCanvasParent << endl;
                         
                         map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
                         if(it != guimap.end())
@@ -2994,8 +3093,10 @@ void CloudsVisualSystem::setupKinectGui()
     
     kinectGui->addSpacer();
     kinectGui->addLabel("CURSOR");
-    kinectGui->addRangeSlider("CURSOR DOWN", 1, 20, &cursorDownSizeMin, &cursorDownSizeMax);
-    kinectGui->addRangeSlider("CURSOR UP", 1, 20, &cursorUpSizeMin, &cursorUpSizeMax);
+    kinectGui->addRangeSlider("CURSOR DOWN", 1, 50,
+                              &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorDownSizeMin, &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorDownSizeMax);
+    kinectGui->addRangeSlider("CURSOR UP", 1, 50,
+                              &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorUpSizeMin, &((CloudsInputKinectOSC *)GetCloudsInput().get())->cursorUpSizeMax);
     
     kinectGui->addSpacer();
     kinectGui->addRangeSlider("BODY RANGE X", -1.0f, 1.0f, &kinectInput->boundsMin.x, &kinectInput->boundsMax.x);
@@ -3006,12 +3107,17 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addToggle("CLAMP TO BOUNDS", &kinectInput->bClampToBounds);
     kinectGui->addSlider("ACTIVE THRESHOLD Y", 0.0f, 1.0f, &kinectInput->activeThresholdY);
     kinectGui->addSlider("ACTIVE THRESHOLD Z", 0.0f, 1.0f, &kinectInput->activeThresholdZ);
+    kinectGui->addSlider("FOCUS RANGE", 0.0f, 1.0f, &kinectInput->focusRange);
     
     kinectGui->addSpacer();
     kinectGui->addSlider("RESET LERP", 0, 1, &kinectInput->posResetLerpPct);
     kinectGui->addSlider("MOVE LERP", 0, 1, &kinectInput->posSetLerpPct);
     kinectGui->addSlider("MOVE THRESHOLD", 0, 100, &kinectInput->posSetInstantThreshold);
     kinectGui->addIntSlider("OUT OF BOUNDS DELAY", 0, 5000, &kinectInput->posOutOfBoundsDelay);
+    
+    kinectGui->addSpacer();
+    kinectGui->addSlider("FEEDBACK SCALE", 0.0f, 1.0f, &kinectInput->feedbackScale);
+    kinectGui->addSlider("FEEDBACK MARGIN", 0.0f, 0.5f, &kinectInput->feedbackMargin);
     
     kinectGui->autoSizeToFitWidgets();
     ofAddListener(kinectGui->newGUIEvent, this, &CloudsVisualSystem::guiKinectEvent);
@@ -3045,8 +3151,19 @@ void CloudsVisualSystem::setupOculusGui()
     
     oculusGui->addSpacer();
     oculusGui->addLabel("CURSOR");
-    oculusGui->addSlider("CURSOR", 0, 5, &cursorSize);
-    
+    oculusGui->addSlider("CURSOR", 0, 5, &((CloudsInputOculus *)GetCloudsInput().get())->cursorSize);
+    //Interlude stuff
+	oculusGui->addSlider("INTERLUDE NODE SIZE", 0, 10, &interludeNodeSize);
+	oculusGui->addRangeSlider("INTERLUDE NODE DIST", 100, 200, &interludeActivationRange.min, &interludeActivationRange.max);
+	oculusGui->addSlider("INTERLUDE NODE HOLD TIME", 5, 15, &interludeNodeHoldTime);
+	oculusGui->addSlider("INTERLUDE X POS", 0,  10, &interludeBasePosX);
+	oculusGui->addSlider("INTERLUDE Z POS", 0, -10, &interludeBasePosZ);
+	//TYPE
+	oculusGui->addIntSlider("INTERLUDE TYPE SIZE",  1, 20, &interludeFontSize);
+	oculusGui->addSlider("INTERLUDE TYPE SCALE",    0, 1.0, &interludeTypeScale);
+	oculusGui->addSlider("INTERLUDE TYPE OFFSET",   1, 200, &interludeTypeYOffset);
+	oculusGui->addSlider("INTERLUDE TYPE TRACKING", 1, 20, &interludeTypeTracking);
+	
     oculusGui->autoSizeToFitWidgets();
     ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
     guis.push_back(oculusGui);
@@ -3228,11 +3345,14 @@ void CloudsVisualSystem::loadGUIS()
 #ifdef KINECT_INPUT
     kinectGui->loadSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
 #endif
+    
 #ifdef OCULUS_RIFT
     oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
-    if (hudGui) {
+#ifdef CLOUDS_APP
+    if (hudGui != NULL) {
         hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
     }
+#endif
 #endif
     
     cam.reset();
@@ -3763,6 +3883,7 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 void CloudsVisualSystem::drawCursors()
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
 =======
@@ -3893,6 +4014,19 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCurso
     }
     
     ofPopStyle();
+=======
+    map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
+    for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+        selfDrawCursor(it->second.position, it->second.dragged, it->second.primary? primaryCursorMode : secondaryCursorMode, it->second.focus);
+    }
+}
+
+// Override this method to customize the position or rendering of the cursors for a specific CloudsVisualSystem!
+void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus)
+{
+    // Use the default cursor rendering from CloudsInput.
+    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
+>>>>>>> master
 }
 
 void CloudsVisualSystem::selfExit()
@@ -4012,33 +4146,3 @@ void CloudsVisualSystem::checkOpenGLError(string function){
         ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
     }
 }
-
-//#ifdef CLOUDS_APP
-//
-//void SetInterludePortalsRef(vector<CloudsPortal>& ref){
-//    gPortals = ref;
-//}
-//
-//vector<CloudsPortal>& InterludePortalsRef(){
-//    return gPortals;
-//}
-//
-//void ResetInterludePortals(){
-//    for(int i=0;i<InterludePortalsRef().size();i++){
-//        InterludePortalsRef()[i].clearSelection();
-//    }
-//}
-//bool GetSelectedInterludePortalContinue(){
-//    return InterludePortalsRef()[1].isSelected();
-//}
-//bool GetSelectedInterludePortalResetClouds(){
-//    return InterludePortalsRef()[0].isSelected();
-//}
-//
-//bool CanShowInterludePortals(){
-//    return gShowInterludePortals;
-//}
-//void ShowInterludePortals( bool show ){
-//    gShowInterludePortals = show;
-//}
-//#endif

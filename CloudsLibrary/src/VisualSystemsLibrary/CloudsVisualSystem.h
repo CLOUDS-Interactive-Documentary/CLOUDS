@@ -10,15 +10,24 @@
 #include "ofxLight.h"
 #include "ofxGenerative.h"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 #ifdef CLOUDS_APP
 #include "CloudsPortal.h"
 #endif
 
+#ifdef CLOUDS_INTERLUDE_NAV
+#include "ofxFTGL.h"
+#include "CloudsCalibrationNode.h"
+#endif
+
 #ifdef OCULUS_RIFT
 #include "ofxOculusRift.h"
-#ifdef CLOUDS_APP
-#include "CloudsHUDController.h"
-#endif
+	#ifdef CLOUDS_APP
+		#include "CloudsHUDController.h"
+	#endif
 #endif
 
 /**
@@ -42,6 +51,7 @@ enum ofxViewType
     OFX_VIEW_3D
 };
 
+<<<<<<< HEAD
 enum CloudsCursorMode
 {
     CURSOR_MODE_NONE = 0,
@@ -50,6 +60,8 @@ enum CloudsCursorMode
     CURSOR_MODE_DRAW
 };
 
+=======
+>>>>>>> master
 class CloudsVisualSystem {
   public:
 	   
@@ -75,6 +87,12 @@ class CloudsVisualSystem {
 	static void getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height);
     static void get2dMesh(ofMesh& mesh, float width, float height);
 	
+	//sound effects
+	static ofSoundPlayer* getClick();
+	static ofSoundPlayer* getSelectHigh();
+	static ofSoundPlayer* getSelectMid();
+	static ofSoundPlayer* getSelectLow();
+
 #ifdef OCULUS_RIFT
 	static ofxOculusRift& getOculusRift();
 #endif
@@ -99,8 +117,12 @@ class CloudsVisualSystem {
     virtual void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float alphaScalar = 255);
 =======
 	virtual void selfPostDraw(int width, int height);
+<<<<<<< HEAD
 	
     virtual void selfDrawCursor(ofVec3f& pos, bool bDragged);
+>>>>>>> master
+=======
+    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus = 1.0f);
 >>>>>>> master
 	virtual void selfPresetLoaded(string presetPath);
 	
@@ -181,7 +203,6 @@ class CloudsVisualSystem {
 	
 	bool isSetup();
 	bool isPlaying();
-	
 
 	void setupSpeaker(string speakerFirstName,
 					  string speakerLastName,
@@ -204,7 +225,11 @@ class CloudsVisualSystem {
     void draw2dSystemPlane();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
     
+<<<<<<< HEAD
     void drawCursors();
+=======
+    virtual void drawCursors();
+>>>>>>> master
 	
     //Core Param Setup
     void setupAppParams();
@@ -262,6 +287,7 @@ class CloudsVisualSystem {
     void setupKinectGui();
 	void guiKinectEvent(ofxUIEventArgs &e);
 #endif
+	
 #ifdef OCULUS_RIFT
     void setupOculusGui();
 	void guiOculusEvent(ofxUIEventArgs &e);
@@ -271,6 +297,7 @@ class CloudsVisualSystem {
     void setupHUDGui();
 	void guiHUDEvent(ofxUIEventArgs &e);
 #endif
+	
 #endif
     
     //Lighting Helpers
@@ -290,16 +317,7 @@ class CloudsVisualSystem {
     void toggleGUIS();
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
-    
-//#ifdef CLOUDS_APP
-//    void setupPortals();
-//#endif
-
-//	void setCurrentCamera( ofCamera& cam );
-//	void setCurrentCamera( ofCamera* swappedInCam );
-//	ofCamera* getCurrentCamera();
 	virtual ofCamera& getCameraRef();
-
 	
 	ofVec3f translatedHeadPosition;
 	float pointcloudScale;
@@ -309,6 +327,7 @@ class CloudsVisualSystem {
 	//LB
 	ofVec3f getCameraPosition();
 	ofVec3f positionOffset;
+	ofColor getBgColor(){ return bgColor; }
 
 	RGBDTransitionType getTransitionType();
 	
@@ -331,6 +350,29 @@ class CloudsVisualSystem {
     CloudsCursorMode primaryCursorMode;
     CloudsCursorMode secondaryCursorMode;
     
+<<<<<<< HEAD
+=======
+	bool isInterlude;
+	bool updateInterludeInterface();
+	void drawInterludeInterface();
+	
+#ifdef CLOUDS_INTERLUDE_NAV
+	CalibrationNode resetNode;
+	CalibrationNode continueNode;
+	ofxFTGLFont interludeFont;
+#endif
+	
+	float interludeNodeSize;
+	ofRange interludeActivationRange;
+	float interludeNodeHoldTime;
+	float interludeBasePosX;
+	float interludeBasePosZ;
+	int interludeFontSize;
+	int currentInterludeFontSize;
+	float interludeTypeScale;
+	float interludeTypeYOffset;
+	float interludeTypeTracking;
+>>>>>>> master
   protected:
 		
 	//UI
@@ -375,7 +417,6 @@ class CloudsVisualSystem {
 	float bgSat2;
 	float bgBri2;
 	
-	
     ofxUISlider *hueSlider;
     ofxUISlider *satSlider;
     ofxUISlider *briSlider;
@@ -418,7 +459,6 @@ class CloudsVisualSystem {
 	bool bDrawToScreen;
 	bool bUseOculusRift;
 
-    
     //CAM
     float camDistance;
     float camFOV;
@@ -457,11 +497,7 @@ class CloudsVisualSystem {
 
 	//background stuff
 	bool bMatchBackgrounds;
-		
-	//these variables are set by the playback controller when displaying
-	//ways to interact with the pointcloud data
-//	CloudsRGBDVideoPlayer* sharedRenderer;
-	//set to true if the pointcloud renderer has valid speaker
+	
 	bool hasSpeaker;
 	bool confirmedDataPath;
 	string cachedDataPath;
@@ -472,9 +508,6 @@ class CloudsVisualSystem {
 	string speakerLastName;
 	string quoteName;
 	
-	//keyword is the topic of conversation
-//	string currentTopic;
-	//theme is the topic chosen
 	
 	string mainKeyword;
 	vector<string> keywords;
@@ -485,8 +518,6 @@ class CloudsVisualSystem {
 	void loadTransitionOptions();
 	void setTransitionOptionGui(string type, string screenName, ofxUIEventArgs &e);
 	string getTransitionOption();
-//	map<string, vector<string> > transitionOptionMap;
-//	ofxUISuperCanvas* transitionOptionGui;
 	
 	//INTERACTIVE CAMERA
 	bool bUseInteractiveCamera;
@@ -502,14 +533,11 @@ class CloudsVisualSystem {
     bool bDoBloom;
     float bloomAmount;
     int bloomSamples;
-    
-#ifdef OCULUS_RIFT
-    static float cursorSize;
-#elif KINECT_INPUT
-    static float cursorDownSizeMin, cursorDownSizeMax;
-    static float cursorUpSizeMin, cursorUpSizeMax;
-#else
-    static float cursorDownSize, cursorUpSize;
-#endif
+	
+	bool bSetManualBackgroundColors;
     
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> master

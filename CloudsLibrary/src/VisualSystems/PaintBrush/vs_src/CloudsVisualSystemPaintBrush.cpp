@@ -55,6 +55,10 @@ void CloudsVisualSystemPaintBrush::selfSetup()
 	
 //	bClearBackground = false;
 }
+void CloudsVisualSystemPaintBrush::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
+}
 
 void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
 {

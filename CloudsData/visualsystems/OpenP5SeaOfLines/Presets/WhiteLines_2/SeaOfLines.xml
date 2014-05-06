@@ -1,0 +1,79 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SeaOfLines</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BG ALPHA</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>DISTANCES</Name>
+    <HighValue>66.349754333</HighValue>
+    <LowValue>31.236454010</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BASE DISTANCE</Name>
+    <Value>32.236457825</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>TRAVEL SPEED</Name>
+    <HighValue>2.906404257</HighValue>
+    <LowValue>1.133005023</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CURSOR RANGE</Name>
+    <Value>0.305418730</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GRAVITY</Name>
+    <Value>-0.220200062</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE HUE 1</Name>
+    <Value>0.118225418</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE SAT 1</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE BRI 1</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE ALPHA 1</Name>
+    <Value>0.675000012</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE HUE 2</Name>
+    <Value>0.522162259</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE SAT 2</Name>
+    <Value>0.157635465</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE BRI 2</Name>
+    <Value>0.773398995</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE ALPHA 2</Name>
+    <Value>0.551724136</Value>
+</Widget>

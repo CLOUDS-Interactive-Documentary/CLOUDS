@@ -136,7 +136,11 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     set<pair<int,int> > links;
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
 
+<<<<<<< HEAD
     Date getDateFromString(string& dString);
+=======
+    Date getDateFromString(string dString);
+>>>>>>> master
 
     int currentDateIndex;
     float dateIndexMin, dateIndexMax;

@@ -8,13 +8,18 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BG ALPHA</Name>
-    <Value>0.869120598</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>DISTANCES</Name>
-    <HighValue>43.428573608</HighValue>
-    <LowValue>8.315273285</LowValue>
+    <HighValue>80.004913330</HighValue>
+    <LowValue>45.866996765</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BASE DISTANCE</Name>
+    <Value>46.866996765</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -24,8 +29,13 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>CURSOR RANGE</Name>
+    <Value>0.339901477</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>GRAVITY</Name>
-    <Value>0.408361435</Value>
+    <Value>-1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -35,17 +45,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LINE SAT 1</Name>
-    <Value>0.591132998</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LINE BRI 1</Name>
-    <Value>0.418719202</Value>
+    <Value>0.704433501</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LINE ALPHA 1</Name>
-    <Value>0.575503707</Value>
+    <Value>0.550000012</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -55,15 +65,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LINE SAT 2</Name>
-    <Value>0.743842363</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LINE BRI 2</Name>
-    <Value>0.477832526</Value>
+    <Value>0.532019675</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LINE ALPHA 2</Name>
-    <Value>0.295566499</Value>
+    <Value>0.945812821</Value>
 </Widget>

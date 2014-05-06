@@ -16,11 +16,6 @@ void testApp::setup(){
 	shouldPlayTestVideo = false;
 	ofSetLogLevel(OF_LOG_NOTICE);
     
-#if defined(KINECT_INPUT)
-    SetCloudsInputKinect();
-#elif defined(OCULUS_RIFT)
-    SetCloudsInputOculus();
-#endif
 	
 	rgbd.setup();
 	rgbd.forceScreenResolution(1920*2,1080*2);
@@ -111,12 +106,20 @@ void testApp::updateTransitions(){
 	
 	float crossfadeValue = transitionController.getFadeValue();
 	rgbd.visualSystemFadeValue = crossfadeValue;
+<<<<<<< HEAD
 	/*
 	cout << "\tCUR STATE:" << transitionController.getCurrentStateDescription() << endl
          << "\tPREVIOUS STATE: " << transitionController.getPreviousStateDescription() << endl
          << "\tFADE VALUE " << rgbd.visualSystemFadeValue << endl;
 	*/
 
+=======
+	
+//	cout << "\tCUR STATE:" << transitionController.getCurrentStateDescription() << endl
+//         << "\tPREVIOUS STATE: " << transitionController.getPreviousStateDescription() << endl
+//         << "\tFADE VALUE " << rgbd.visualSystemFadeValue << endl;
+	
+>>>>>>> master
 	if(transitionController.transitioning){
 		ofLogNotice("testApp::updateTransitions") << transitionController.getCurrentStateDescription() << " TRANSITIONING: " << transitionController.getInterviewTransitionPoint();
 	}

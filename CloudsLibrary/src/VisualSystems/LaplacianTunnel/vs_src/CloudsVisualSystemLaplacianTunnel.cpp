@@ -125,6 +125,11 @@ void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
 
 }
 
+void CloudsVisualSystemLaplacianTunnel::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
+
 void CloudsVisualSystemLaplacianTunnel::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;

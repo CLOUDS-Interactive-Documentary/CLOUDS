@@ -40,12 +40,17 @@ void CloudsVisualSystemOcean::selfSetDefaults(){
 void CloudsVisualSystemOcean::selfSetup(){
 	needsRegenerate = true;
     
-    
+    tonicSamples.push_back(TonicSample("Vocal_harmonic_high_shorter.aif"));
+    tonicSamples.push_back(TonicSample("vocal_harmony_bass.aif"));
+
     // sound
     gain = 0;
     synth.setOutputGen(buildSynth());
 }
-
+void CloudsVisualSystemOcean::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 void CloudsVisualSystemOcean::selfPresetLoaded(string presetPath){
 	generateOcean();
 }
@@ -124,8 +129,8 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     soundGui->addSlider("Gain", 0, 1, &gain);
-    soundGui->addToggle(soundFiles[0], &playSample[0]);
-    soundGui->addToggle(soundFiles[1], &playSample[1]);
+    soundGui->addToggle(tonicSamples[0].soundFile, &tonicSamples[0].playSample);
+    soundGui->addToggle(tonicSamples[1].soundFile, &tonicSamples[1].playSample);
     
 	guis.push_back(soundGui);
 	guimap[soundGui->getName()] = soundGui;
@@ -262,10 +267,10 @@ void CloudsVisualSystemOcean::selfBegin(){
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOcean::audioRequested);
     
-    for (int i=0; i<2; i++)
+    for (int i=0; i<tonicSamples.size(); i++)
     {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+        if (tonicSamples[i].playSample) {
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
@@ -316,11 +321,11 @@ void CloudsVisualSystemOcean::selfGuiEvent(ofxUIEventArgs &e){
     
     for (int i=0; i<2; i++)
     {
-        if (e.widget->getName() == soundFiles[i]) {
+        if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
+            tonicSamples[i].playSample = toggle->getValue();
             if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+                tonicSamples[i].soundTrigger.trigger();
             }
         }
     }
@@ -365,15 +370,19 @@ Generator CloudsVisualSystemOcean::buildSynth()
     
     SampleTable samples[2];
     
-    int nSounds = sizeof(soundFiles) / sizeof(string);
-    for (int i=0; i<nSounds; i++)
-    {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//    int nSounds = sizeof(soundFiles) / sizeof(string);
+//    for (int i=0; i<nSounds; i++)
+//    {
+//        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+//        samples[i] = loadAudioFile(strAbsPath);
+//    }
+    for(int i=0; i<tonicSamples.size();i++){
+        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
-    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[1].soundTrigger);
     
     return (sampleGen1 * 1.0f + sampleGen2 * 1.0f) * volumeControl;
 }

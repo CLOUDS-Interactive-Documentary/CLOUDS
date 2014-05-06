@@ -58,22 +58,22 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SOLID LINE TRAIL</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>RIBBON TRAIL</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RIBBON SIZE</Name>
-    <Value>14.290640831</Value>
+    <Value>9.049261093</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>TRAIL COLOR MIX</Name>
-    <Value>0.733990133</Value>
+    <Value>0.714285731</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

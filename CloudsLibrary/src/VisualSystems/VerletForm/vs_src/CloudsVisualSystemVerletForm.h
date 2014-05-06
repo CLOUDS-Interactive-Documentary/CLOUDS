@@ -96,6 +96,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	ofCamera& getCameraRef(){
 			return cam;
 	}
+    void selfSetDefaults();
 
   protected:
 
@@ -208,7 +209,8 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	
 	void updateNormals();
 	
-
+	int lastID;
+	int lastCnt;
 
 	vector<vector<Particle3D*> > particles;
 	

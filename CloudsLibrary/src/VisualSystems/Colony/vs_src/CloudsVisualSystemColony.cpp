@@ -9,6 +9,11 @@ string CloudsVisualSystemColony::getSystemName()
 
 void CloudsVisualSystemColony::selfSetup()
 {
+    
+    tonicSamples.push_back(TonicSample("granular_water2.aif"));
+    tonicSamples.push_back(TonicSample("granular_water2_slow.aif"));
+    tonicSamples.push_back(TonicSample("Grains1_slow_low.aif"));
+    
     ofDirectory textureDir(getVisualSystemDataPath() + "textures");
     textureDir.listDir();
     //TODO: Maybe the reason you can't see anythign in texture2d is becasue you haven't disabled abrtexture?
@@ -70,10 +75,15 @@ void CloudsVisualSystemColony::selfSetDefaults(){
     } else {
         ofLog(OF_LOG_ERROR, "[Colony] no textures in texture directory");
     }
+<<<<<<< HEAD
 
 	soundFiles.push_back("granular_water2.aif");
     soundFiles.push_back("granular_water2_slow.aif");
     soundFiles.push_back("Grains1_slow_low.aif");
+=======
+    primaryCursorMode = CURSOR_MODE_INACTIVE;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+>>>>>>> master
 }
 
 void CloudsVisualSystemColony::loadShaders(){
@@ -171,11 +181,11 @@ void CloudsVisualSystemColony::selfSetupGuis(){
 	soundGui->copyCanvasProperties(gui);
 	soundGui->setName("COLONY Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    soundGui->addSlider("Gain", 0, 1, &gain); 
-    
-    soundGui->addToggle(soundFiles[0], &playSample[0]);
-    soundGui->addToggle(soundFiles[1], &playSample[1]);
-    soundGui->addToggle(soundFiles[2], &playSample[2]);
+    soundGui->addSlider("Gain", 0, 1, &gain);
+
+    soundGui->addToggle(    tonicSamples[0].soundFile, &tonicSamples[0].playSample);
+    soundGui->addToggle(    tonicSamples[1].soundFile, &tonicSamples[1].playSample);
+    soundGui->addToggle(    tonicSamples[2].soundFile, &tonicSamples[2].playSample);
     
     guis.push_back(guiDynamics);
     guis.push_back(guiLooks);
@@ -186,7 +196,7 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guimap[guiLooks->getName()] = guiLooks;
 	guimap[soundGui->getName()] = soundGui;
     guimap[guiBackground->getName()] = guiBackground;
-
+    
     ofAddListener(guiDynamics->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
     ofAddListener(guiBackground->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
     ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
@@ -269,6 +279,7 @@ void CloudsVisualSystemColony::selfUpdate()
     //Debug
     
     //FIXME: Should definitely be removed in the distribution mode
+#ifndef CLOUDS_APP
     if (bDebug){
         if ( (!img_debug.isAllocated())
             || (!img_debug.getWidth()==getSharedRenderTarget().getWidth())
@@ -287,16 +298,17 @@ void CloudsVisualSystemColony::selfUpdate()
         }
         img_debug.update();
     }
-    
+#endif
+	
 }
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
     //FIXME: This shouldn't be here, but it's the only way to draw stuff in 2d
-    if(bDebug){
-        img_debug.draw(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
-        ofLog(OF_LOG_ERROR, "Colony: bDebug is on. Remove this before reaching production");
-    }
+    //    if(bDebug){
+    //        img_debug.draw(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+    //        ofLog(OF_LOG_ERROR, "Colony: bDebug is on. Remove this before reaching production");
+    //    }
     
     //FIXME: This is a safety check if FBOs are not allocated, in order to avoid calling an empty one
     
@@ -353,8 +365,15 @@ void CloudsVisualSystemColony::selfBegin()
     
     for (int i=0; i<3; i++)
     {
-        if (playSample[i]) {
-            soundTriggers[i].trigger();
+        //        if (playSample[i]) {
+        //            soundTriggers[i].trigger();
+        //        }
+        
+    }
+    
+    for(int i=0; i<tonicSamples.size();i++){
+        if(tonicSamples[i].playSample){
+            tonicSamples[i].soundTrigger.trigger();
         }
     }
 }
@@ -372,9 +391,6 @@ void CloudsVisualSystemColony::selfExit(){
     clear();
     billboard.unload();
     levelSet.unload();
-    //TODO: is this necessary?
-//    delete guiLooks;
-//    delete guiDynamics;
 }
 
 void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){
@@ -385,15 +401,15 @@ void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){
 }
 
 void CloudsVisualSystemColony::clear(){
-    for (int i = cells.size()-1; i >= 0; i--){
-        cells.erase(cells.begin()+i);
-    }
+    //    for (int i = cells.size()-1; i >= 0; i--){
+    //        cells.erase(cells.begin()+i);
+    //    }
     cells.clear();
     vbo.clear();
 }
 
 void CloudsVisualSystemColony::populate(){
-    for (int i = 0; i < (int) numInitialCells; i++) {
+    for (int i = 0; i < numInitialCells; i++) {
         cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight(), i * 0.01), params));
         cells.push_back(newCell);
     }
@@ -455,17 +471,27 @@ void CloudsVisualSystemColony::mouseReleased(ofMouseEventArgs &args){}
 void CloudsVisualSystemColony::selfSetupGui(){}
 void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
 {
-
+    
     string parent = (e.widget->getParent())->getName();
     
     if (parent == "COLONY Sound"){
         for (int i=0; i<3; i++)
         {
-            if (e.widget->getName() == soundFiles[i]) {
+            //            if (e.widget->getName() == soundFiles[i]) {
+            //                ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+            //                playSample[i] = toggle->getValue();
+            //                if (toggle->getValue() == true) {
+            //                    soundTriggers[i].trigger();
+            //                }
+            //            }
+        }
+        
+        for(int i=0; i<tonicSamples.size();i++){
+            if (e.widget->getName() == tonicSamples[i].soundFile) {
                 ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-                playSample[i] = toggle->getValue();
+                tonicSamples[i].playSample = toggle->getValue();
                 if (toggle->getValue() == true) {
-                    soundTriggers[i].trigger();
+                    tonicSamples[i].soundTrigger.trigger();
                 }
             }
         }
@@ -488,17 +514,31 @@ Generator CloudsVisualSystemColony::buildSynth()
     
     SampleTable samples[3];
     
+<<<<<<< HEAD
     //int nSounds = sizeof(strin) / sizeof(string);
 	int nSounds = soundFiles.size();
     for (int i=0; i<nSounds; i++)
     {
         string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+=======
+    //    int nSounds = sizeof(soundFiles) / sizeof(string);
+    //    for (int i=0; i<nSounds; i++)
+    //    {
+    //
+    //        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+    //        samples[i] = loadAudioFile(strAbsPath);
+    //    }
+    
+    for(int i=0; i<tonicSamples.size();i++){
+        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
+>>>>>>> master
         samples[i] = loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
-    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
-    Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).loop(1).trigger(soundTriggers[2]);
+    
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[1].soundTrigger);
+    Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).loop(1).trigger(tonicSamples[2].soundTrigger);
     
     return (sampleGen1 * 0.8f + sampleGen2 * 0.8f + sampleGen3 * 0.4f) * volumeControl;
 }

@@ -26,6 +26,10 @@ void CloudsVisualSystemThingsInTheDark::loadMovieForComposition(string videoPath
 //		renderer.getPlayer().play();
 	}
 }
+void CloudsVisualSystemThingsInTheDark::selfSetDefaults(){
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
+}
 
 void CloudsVisualSystemThingsInTheDark::selfSetupGuis(){
 	
@@ -232,7 +236,7 @@ void CloudsVisualSystemThingsInTheDark::selfSetupRenderGui(){
 }
 
 void CloudsVisualSystemThingsInTheDark::selfSetupTimeline(){
-	timeline->addVideoTrack("Video");
+//	timeline->addVideoTrack("Video");
 }
 
 void CloudsVisualSystemThingsInTheDark::guiRenderEvent(ofxUIEventArgs &e){

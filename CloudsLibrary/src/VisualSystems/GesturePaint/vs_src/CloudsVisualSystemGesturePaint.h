@@ -109,6 +109,8 @@ protected:
 	int currentPalette;
 	float paletteExpandPercent;
 	void createPaintBrush();
+	bool usePaperTexture;
+	bool saturationBoost;
 	
 	ofFbo watersrc,waterdst;
 	ofFbo canvassrc,canvasdst;

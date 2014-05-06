@@ -14,7 +14,8 @@
 #include "ParticleConnectionGenerator.h"
 #include "CloudsGlobal.h"
 #include "CloudsAudioEvents.h"
-#include "ofxTonic.h"
+//#include "ofxTonic.h"
+#include "TonicSample.h"
 
 //using namespace Tonic;
 
@@ -93,13 +94,17 @@ class CloudsVisualSystemConnectors : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+    void selfSetDefaults();
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
+<<<<<<< HEAD
 //	ofCamera& getCameraRef(){
 //		return myCustomCamera;
 //	}
 
+=======
+>>>>>>> master
 
 protected:
     
@@ -113,11 +118,20 @@ protected:
 	
 	// Sound
     ofxUISuperCanvas* soundGui;
+<<<<<<< HEAD
     string soundFiles[1];
     bool playSample[1];
     Tonic::ControlTrigger soundTriggers[1];
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
+=======
+    vector<TonicSample> tonicSamples;
+//    string soundFiles[1] = {"WindChimes1.aif"};
+//    bool playSample[1];
+//    ControlTrigger soundTriggers[1];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+>>>>>>> master
 	void audioRequested(ofAudioEventArgs& args);
     Tonic::ControlParameter volumeControl;
     float gain;

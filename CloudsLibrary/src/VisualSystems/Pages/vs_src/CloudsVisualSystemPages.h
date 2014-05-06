@@ -41,6 +41,7 @@ class CloudsVisualSystemPages : public CloudsVisualSystem
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
     void selfSetup();
+    void selfSetDefaults();
 
 	// selfBegin is called when the system is ready to be shown
 	// this is a good time to prepare for transitions

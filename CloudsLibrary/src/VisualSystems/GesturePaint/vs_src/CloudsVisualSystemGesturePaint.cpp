@@ -47,7 +47,8 @@ void CloudsVisualSystemGesturePaint::selfSetupGui(){
 	
 	brushGui->addSpacer();
 	brushGui->addToggle("Show Palette", &previewPalette);
-	
+	brushGui->addToggle("Show Paper", &usePaperTexture);
+	brushGui->addToggle("Saturation Boost", &saturationBoost);
 	ofAddListener(brushGui->newGUIEvent, this, &CloudsVisualSystemGesturePaint::selfGuiEvent);
 	guis.push_back(brushGui);
 	guimap[brushGui->getName()] = brushGui;
@@ -77,20 +78,26 @@ void CloudsVisualSystemGesturePaint::guiRenderEvent(ofxUIEventArgs &e){
 }
 
 void CloudsVisualSystemGesturePaint::selfSetDefaults(){
+
 	blurRadius = 1.;
 	dryRate = .001;
 	showWaterDebug = false;
+	usePaperTexture = true;
 	palette.clear();
 	
 	previewPalette = false;
 	brushInterpolateStep = 4.;
 	paletteTraversalSpeed = 1.0;
 	
+	saturationBoost = true;
+	
 	currentDepositeScale = 0;
 	depositeScale = 64.;
 	
 	brushSize = 128.;
 	currentBrushSize = 0;
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -102,20 +109,20 @@ void CloudsVisualSystemGesturePaint::selfSetup(){
 
 void CloudsVisualSystemGesturePaint::reloadShader(){
 	
-	cout << "loading hblur" << endl;
+//	cout << "loading hblur" << endl;
 	hblurShader.load(getVisualSystemDataPath() + "shaders/hblur.vert",
 					 getVisualSystemDataPath() + "shaders/blur.frag");
-	cout << "loading vblur" << endl;
+//	cout << "loading vblur" << endl;
 	vblurShader.load(getVisualSystemDataPath() + "shaders/vblur.vert",
 					 getVisualSystemDataPath() + "shaders/blur.frag");
     
-	cout << "loading paper mix" << endl;
+//	cout << "loading paper mix" << endl;
 	paperMixShader.load(getVisualSystemDataPath() + "shaders/papermix");
 	
-	cout << "loading force brush shader" << endl;
+//	cout << "loading force brush shader" << endl;
 	forceBrushShader.load(getVisualSystemDataPath() + "shaders/forcebrush");
     
-	cout << "loading paint brush shader" << endl;
+//	cout << "loading paint brush shader" << endl;
 	paintBrushShader.load(getVisualSystemDataPath() + "shaders/paintbrush");
 	
 	brushImage.loadImage(getVisualSystemDataPath() + "images/brush.png");
@@ -315,6 +322,8 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 									 noiseFlowTex.getTextureReference(),  3);
 	paperMixShader.setUniform2f("dimensions",
 								canvassrc.getWidth(), canvassrc.getHeight());
+	paperMixShader.setUniform1i("saturationBoost", saturationBoost ? 1 : 0);
+	
 	float flowSwap = fmod(ofGetElapsedTimef(), 2.0f);
 	if(flowSwap > 1.0) flowSwap = 2.0 - flowSwap;
 	
@@ -354,6 +363,7 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
         for(int i = 0; i <it->second.size(); i++){
             ofPushMatrix();
             ofTranslate(it->second[i]);
+			ofRotate(ofGetElapsedTimef() * 100);
             paintBrushMesh.draw();
             ofPopMatrix();
         }
@@ -391,7 +401,9 @@ void CloudsVisualSystemGesturePaint::selfDrawBackground(){
     
 	glDisable(GL_DEPTH_TEST);
 	ofEnableAlphaBlending();
-	paperImage.draw(paperRect);
+	if(usePaperTexture){
+		paperImage.draw(paperRect);
+	}
 	canvassrc.getTextureReference().draw(0,0);
 	if(previewPalette && palette.isAllocated()){
 		palette.draw(0, 0);

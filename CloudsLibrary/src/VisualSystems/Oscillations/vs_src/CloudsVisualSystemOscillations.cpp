@@ -158,6 +158,8 @@ void CloudsVisualSystemOscillations::selfSetDefaults(){
     
     clipPlanes.min = 0.01;
     clipPlanes.max = 5000;
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 

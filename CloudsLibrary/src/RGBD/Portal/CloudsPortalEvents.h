@@ -3,13 +3,14 @@
 #include "ofMain.h"
 #include "CloudsPortal.h"
 
-class CloudsPortalEventArgs : public ofEventArgs{
-public:
-    CloudsPortalEventArgs(CloudsPortal& portal, string question)
-    : portal(portal), question(question){}
+class CloudsPortalEventArgs : public ofEventArgs
+{
+  public:
+	CloudsPortalEventArgs(string question = "", bool animate = true)
+		: question(question), animate(animate){}
 	
-    CloudsPortal& portal;
 	string question;
+	bool animate;
 };
 
 class CloudsVisualSystemEvents {

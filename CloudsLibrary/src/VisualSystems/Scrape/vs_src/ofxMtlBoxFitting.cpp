@@ -87,9 +87,12 @@ void ofxMtlBoxFitting::setup(int _wid, int _hei, int _divx, int _divy, int _maxs
 	// further sanity check? hopefully not necessary:
 	// if ((rows>0xffff)||(cols>0xffff)) then too big for current encoding
 	// allocate
-	cells = new int*[rows];
+	cells.resize(rows);
+	
+	//cells = new int*[rows];
 	for( int i = 0 ; i < rows ; i++ ) {
-		cells[i] = new int [cols];
+		//cells[i] = new int [cols];
+		cells[i].resize(cols);
 	}
 }
 
@@ -156,6 +159,10 @@ void ofxMtlBoxFitting::generate(int s) {
 	nbOfBox = 0;
 	int counter = 0;
 	do {
+		if(row >= cells.size() || col >= cells[row].size()){
+			break;
+		}
+		
 		int cell = cells[row][col];
 		int work = (cell>>16) & 0xff;
 		int sizer = (cell) & 0xffff;

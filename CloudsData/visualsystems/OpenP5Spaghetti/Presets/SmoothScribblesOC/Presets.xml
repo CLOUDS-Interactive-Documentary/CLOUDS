@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1529.000000000</XPosition>
+    <XPosition>1505.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -44,6 +44,16 @@
     <Kind>2</Kind>
     <Name>BlueGreen_worms</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlueScribbles</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlueSmoothScribbles</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -147,11 +157,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>PurpleYellow_wormsOC</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Rainbow_worms</Name>
     <Value>0</Value>
 </Widget>
@@ -187,8 +192,8 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>scribblesOC</Name>
-    <Value>1</Value>
+    <Name>scribbles_Oc</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
