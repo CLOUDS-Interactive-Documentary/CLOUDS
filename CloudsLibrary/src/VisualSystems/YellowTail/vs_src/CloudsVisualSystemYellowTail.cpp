@@ -3,11 +3,8 @@
 
 #ifdef KINECT_INPUT
 #include "CloudsInputKinectOSC.h"
-<<<<<<< HEAD
-=======
 #else
 #include "CloudsInputMouse.h"
->>>>>>> master
 #endif
 
 
@@ -109,13 +106,6 @@ void CloudsVisualSystemYellowTail::selfDrawBackground(){
 	
 	ofPopStyle();
 
-#ifdef KINECT_INPUT
-<<<<<<< HEAD
-	((CloudsInputKinectOSC *)GetCloudsInput().get())->draw(0, 0, ofGetWidth(), ofGetHeight(), ofMap(ofGetMouseX(), 0, ofGetWidth(), 0, 255, true));
-=======
-//	((CloudsInputKinectOSC *)GetCloudsInput().get())->draw(0, 0, ofGetWidth(), ofGetHeight(), ofMap(ofGetMouseX(), 0, ofGetWidth(), 0, 255, true));
->>>>>>> master
-#endif
 }
 
 void CloudsVisualSystemYellowTail::selfDrawDebug(){
