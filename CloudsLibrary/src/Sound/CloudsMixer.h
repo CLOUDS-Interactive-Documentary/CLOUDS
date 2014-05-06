@@ -22,8 +22,6 @@ public:
     
     void setMusicVolume(float vol);
     void setDiageticVolume(float vol);
-    void fadeMusicDown();
-    void fadeMusicUp();
 
     //legacy
     void fillBuffer(float *output, int bufferSize, int nChannels){
@@ -46,6 +44,8 @@ public:
 protected:
     ofAudioEventArgs musicArgs;
     ofAudioEventArgs diageticArgs;
+    ofAudioEventArgs delayLine;
+    int delptr;
     
     float musicVol;
     float diageticVol;
@@ -57,6 +57,8 @@ protected:
     float ratio;
     int fsig;
     float fval;
+    float dval;
+    float famt;
     
     CloudsAudioEvents events;
 };

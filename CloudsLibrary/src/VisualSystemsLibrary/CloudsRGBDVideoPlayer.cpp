@@ -332,6 +332,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	}
 
     float  audioVolume =  maxVolume * currentClipVolumeAdjustment;
+    // audioVolume = 0; // kludge
 
 	if(playingVO){
 		currentVoiceoverPlayer->setVolume(audioVolume);

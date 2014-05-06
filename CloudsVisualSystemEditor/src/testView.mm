@@ -170,6 +170,12 @@ bool clipsort(CloudsClip a, CloudsClip b){
         visualSystems.DeallocateSystems();
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[ self.selectedPresetIndex ].systemName );
 		
+		///SCREENCAPTURE MODE
+		currentVisualSystem->setNumSamples(4);
+		currentVisualSystem->forceScreenResolution(1920, 1080);
+		currentVisualSystem->setDrawToScreen(false);
+		/////
+		
 		if(currentVisualSystem != NULL){
 			currentVisualSystem->setup();
 			string presetName = visualSystems.getPresets()[ self.selectedPresetIndex ].presetName;
@@ -267,7 +273,25 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)draw
 {
-
+	if(currentVisualSystem != NULL){
+		
+		if(saveFbo.getWidth()  != currentVisualSystem->getSharedRenderTarget().getWidth() ||
+		   saveFbo.getHeight() != currentVisualSystem->getSharedRenderTarget().getHeight() )
+		{
+			saveFbo.allocate(currentVisualSystem->getSharedRenderTarget().getWidth(),
+							 currentVisualSystem->getSharedRenderTarget().getHeight(),
+							 GL_RGB);
+		}
+		
+		saveFbo.begin();
+		ofClear(0,0,0);
+		currentVisualSystem->selfPostDraw();
+		saveFbo.end();
+		
+		saveFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+		
+//		currentVisualSystem->getSharedRenderTarget().draw();
+	}
 }
 
 - (void)exit
@@ -281,6 +305,16 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)keyPressed:(int)key
 {
+	if(key == ' ' && currentVisualSystem != NULL){
+		ofPixels p;
+		saveFbo.readToPixels(p);
+		
+		char screenshot[1024];
+		
+		sprintf(screenshot, "screencapture_%s_%d_%d_%d_%d.png",
+				currentVisualSystem->getSystemName().c_str(), ofGetDay(), ofGetHours(), ofGetMinutes(), ofGetSeconds());
+		ofSaveImage(p, screenshot);
+	}
 
 }
 

@@ -272,8 +272,15 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float minDistanceToQuestion;
 	bool bPortalDebugOn;
 	ofVec3f portalBaseHover;
+
 	CloudsPortal leftPortal;
 	CloudsPortal rightPortal;
+	
+	//Oculus reset portal
+	CloudsPortal resetPortal;
+	ofVec3f resetHoverPosition;
+	void updateResetPortal();
+	
 	vector<CloudsPortal*> portals;
     vector<QuestionQueue> questions;
 	CloudsPortal* caughtPortal;
