@@ -39,28 +39,32 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
     return lhs.day < rhs.day;
 }
 
-vector<Tweeter>& CloudsVisualSystemTwitter::getOldTweeterData(){
-    if(oldTweeterData.size() == 0){
-        cout<<"Loading JSON OLD FOR THE FIRST TIME IN TWITTER"<<endl;
-        loadJSONData("tweetsOld",oldTweeterData);
-        
-        return oldTweeterData;
-    }
-    else{
-        return oldTweeterData;
-    }
-}
+//We rexported tweeters from to get more data I think.
+//The implication was that the graphs we made in graphinsight with the old data couldnt be used with the new data
+// So we now have both options load old and new.
+//This problem goes away with the csv stuff, because i merge them in to the same file
+//vector<Tweeter>& CloudsVisualSystemTwitter::getOldTweeterData(){
+//    if(oldTweeterData.size() == 0){
+//       cout<<"Loading JSON OLD FOR THE FIRST TIME IN TWITTER"<<endl;
+//        loadJSONData("tweetsOld",oldTweeterData);
+//        
+//       return oldTweeterData;
+//    }
+//    else{
+//        return oldTweeterData;
+//    }
+//}
 
-vector<Tweeter>& CloudsVisualSystemTwitter::getNewTweeterData(){
-    if(newTweeterData.size() == 0){
-        cout<<"Loading JSON NEW FOR THE FIRST TIME IN TWITTER"<<endl;
-        loadJSONData("tweetsClean",newTweeterData);
-        return newTweeterData;
-    }
-    else{
-        return newTweeterData;
-    }
-}
+//vector<Tweeter>& CloudsVisualSystemTwitter::getNewTweeterData(){
+//    if(newTweeterData.size() == 0){
+//        cout<<"Loading JSON NEW FOR THE FIRST TIME IN TWITTER"<<endl;
+//        loadJSONData("tweetsClean",newTweeterData);
+//        return newTweeterData;
+//    }
+//    else{
+//        return newTweeterData;
+//    }
+//}
 
 void CloudsVisualSystemTwitter::selfSetDefaults(){
     
@@ -301,7 +305,13 @@ void CloudsVisualSystemTwitter::loadCSVData(vector<Tweeter>& curTweeters){
 
     int tweeterID = 0;
     string filePath =GetCloudsVisualSystemDataPath("Twitter",true)+"twitter.csv";
-    cout<<"File Path : "<<filePath<<endl;
+    //cout<<"File Path : "<<filePath<<endl;
+	if(! ofFile::doesFileExist(filePath)){
+	  ofLogError()<<"[ VS Twitter ]"<<" Load file error, check to see if twitter.csv is in the vs ignored data folder"<<endl;
+	}
+	else{
+	  ofLog()<<"[ VS Twitter ]"<<" Load file : twitter.csv"<<endl;
+	}
     ofBuffer buffer = ofBufferFromFile(filePath);
     cout<<buffer.size()<<endl;
 
@@ -485,148 +495,148 @@ Date CloudsVisualSystemTwitter::getDateFromString(const string& dString){
     return d;    
 }
 
-void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>& curTweeters){
-    
-    ofFile f = ofFile();
-    curTweeters.clear();
-	
-    ofDirectory dir(GetCloudsVisualSystemDataPath("Twitter",true)+folderName+"/");
-    dir.listDir();
-	
-	ofVec2f curActivityMapCoord(0,0);
-	int activityMapCoordWidth = 100;
-    ofxJSONElement result;
-
-    if(dir.exists()){
-        int size = dir.size();
-        vector<ofFile>files= dir.getFiles();
-		curTweeters.resize(files.size());
-        for(int i = 0; i< files.size(); i++){
-
-			float loadTime = ofGetElapsedTimeMillis();
-            string filePath = GetCloudsVisualSystemDataPath("Twitter",true)+folderName+"/"+files[i].getFileName();
-			
-			//cout<<"OPEN JSON FILE PATH: "<<filePath<<" : "<<loadTime<<endl;
-            
-			bool parsingSuccessful = result.openLocal(filePath);
-			cout<<"PARSED FILE IN "<<(ofGetElapsedTimeMillis()- loadTime)<<endl;
-            if (parsingSuccessful) {
-              //  ofLogNotice("CloudsVisualSystemTwitter::loadJSONData") << filePath;
-                if(result.isMember("errors")) {
-                    ofDrawBitmapString(result.getRawString(), 10, 14);
-                }
-                else if(result.isMember("Tweets")){
-                    
-                    Tweeter cur;
-                    ofxJSONElement tweets = result["Tweets"];
-					vector<Tweet> userTweets;
-					userTweets.resize(tweets.size());
-                    
-					float tweetsLoadTime = ofGetElapsedTimeMillis();                    
-                    vector<string> names = ofSplitString(result["name"].asString(), ".");
-                    cur.name = "@" + names[0];
-                    cur.ID = i;
-                    userNameIdMap[cur.name] = i;
-                   
-                    for(int j =0; j<tweets.size(); j ++){
-						float dataLoadTime = ofGetElapsedTimeMillis();   
-
-                        Tweet& t  = userTweets[j];
-                        t.tweet = tweets[j]["Tweet"].asString();
-                        
-                        if(tweets[j]["Hashtag"].isValidIndex(0)){
-                            ofxJSONElement hashTags = tweets[j]["Hashtag"];
-                            
-                            for(int k=0; k<hashTags.size(); k++){
-                                t.hashtags.push_back(hashTags[k ].asString());
-                            }
-
-							//cout<<"Added hash tags in "<<(ofGetElapsedTimeMillis() - dataLoadTime)<<endl; 
-                        }
-                        
-                        if(tweets[j]["Users"].isValidIndex(0)){
-                            ofxJSONElement users = tweets[j]["Users"];
-                            
-                            for(int k=0; k<users.size(); k++){
-                                
-                                if( !ofContains(cur.userLinks, users[k].asString())){
-                                    t.mentionedUsers.push_back(users[k].asString());
-                                    cur.userLinks.push_back(users[k].asString());
-                                }
-                            }
-                        }
-                        if(tweets[j].isMember("Date")){
-                            bool alreadyExists = false;
-                            ofxJSONElement date = tweets[j]["Date"];
-                            t.tweetDate.day = date["Day"].asInt();
-                            t.tweetDate.month =date["Month"].asInt();
-                            t.tweetDate.year =date["Year"].asInt();
-                            t.dateString = getDateAsString(t.tweetDate);
-                            cur.addTweetsToDate(t);
-                            for(int i=0; i<dateIndex.size(); i++){
-                                
-                                if(dateIndex[i].year == t.tweetDate.year && dateIndex[i].month == t.tweetDate.month && dateIndex[i].day == t.tweetDate.day){
-                                    alreadyExists = true;
-                                    break;
-                                }
-                            }
-                            if(! alreadyExists){
-                                dateIndex.push_back(t.tweetDate);    
-                            }
-                        }
-                        //userTweets.push_back(t);
-                    }
-					 cout<<"ADDING TWEETS: "<<cur.name<<" in "<<(ofGetElapsedTimeMillis()- loadTime)<<endl;
-                    cur.tweets= userTweets;
-                    cur.activityMapCoord = curActivityMapCoord;
-					curActivityMapCoord.x++;
-					if(curActivityMapCoord.x >= activityMapCoordWidth){
-						curActivityMapCoord.x = 0;
-						curActivityMapCoord.y++;
-					}
-//                    maxUserLinks = MAX(maxUserLinks,cur.userLinks.size());
-					cout<<"ADDED TWEETER: "<<cur.name<<" in "<<(ofGetElapsedTimeMillis()- tweetsLoadTime)<<endl;
-                    //curTweeters.push_back(cur);
-					curTweeters[i] = cur;
-                } else {
-                    cout  << "Failed to parse JSON" << endl;
-                }
-            }
-        }
-    }
-    
-    //cout<<"JSON LOADED : "<<ofGetElapsedTimeMillis()-loadTime<<endl;
-    //loadTime =  ofGetElapsedTimeMillis();
-
-    map<string,int> numberOfMentions; 
-    vector<string> names;
-    
-    for (int i= 0; i < curTweeters.size(); i++) {
-        names.push_back(curTweeters[i].name);
-    }
-    
-    for (int i= 0; i < curTweeters.size(); i++) {
-        for(int j=0; j<curTweeters[i].userLinks.size(); j++){
-            
-            if(! ofContains(names, curTweeters[i].userLinks[j])){
-                numberOfMentions[curTweeters[i].userLinks[j]]++;
-            }
-        }
-    }
-    
-    map<string,int>::iterator it;
-    for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
-        Tweeter cur = Tweeter(it->first, curTweeters.size());
-        cur.activityMapCoord = curActivityMapCoord;
-        curActivityMapCoord.x++;
-        if(curActivityMapCoord.x >= activityMapCoordWidth){
-            curActivityMapCoord.x = 0;
-            curActivityMapCoord.y++;
-        }
-        curTweeters.push_back(cur);
-    }
-
-}
+//void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>& curTweeters){
+//    
+//    ofFile f = ofFile();
+//    curTweeters.clear();
+//	
+//    ofDirectory dir(GetCloudsVisualSystemDataPath("Twitter",true)+folderName+"/");
+//    dir.listDir();
+//	
+//	ofVec2f curActivityMapCoord(0,0);
+//	int activityMapCoordWidth = 100;
+//    ofxJSONElement result;
+//
+//    if(dir.exists()){
+//        int size = dir.size();
+//        vector<ofFile>files= dir.getFiles();
+//		curTweeters.resize(files.size());
+//        for(int i = 0; i< files.size(); i++){
+//
+//			float loadTime = ofGetElapsedTimeMillis();
+//            string filePath = GetCloudsVisualSystemDataPath("Twitter",true)+folderName+"/"+files[i].getFileName();
+//			
+//			//cout<<"OPEN JSON FILE PATH: "<<filePath<<" : "<<loadTime<<endl;
+//            
+//			bool parsingSuccessful = result.openLocal(filePath);
+//			cout<<"PARSED FILE IN "<<(ofGetElapsedTimeMillis()- loadTime)<<endl;
+//            if (parsingSuccessful) {
+//              //  ofLogNotice("CloudsVisualSystemTwitter::loadJSONData") << filePath;
+//                if(result.isMember("errors")) {
+//                    ofDrawBitmapString(result.getRawString(), 10, 14);
+//                }
+//                else if(result.isMember("Tweets")){
+//                    
+//                    Tweeter cur;
+//                    ofxJSONElement tweets = result["Tweets"];
+//					vector<Tweet> userTweets;
+//					userTweets.resize(tweets.size());
+//                    
+//					float tweetsLoadTime = ofGetElapsedTimeMillis();                    
+//                    vector<string> names = ofSplitString(result["name"].asString(), ".");
+//                    cur.name = "@" + names[0];
+//                    cur.ID = i;
+//                    userNameIdMap[cur.name] = i;
+//                   
+//                    for(int j =0; j<tweets.size(); j ++){
+//						float dataLoadTime = ofGetElapsedTimeMillis();   
+//
+//                        Tweet& t  = userTweets[j];
+//                        t.tweet = tweets[j]["Tweet"].asString();
+//                        
+//                        if(tweets[j]["Hashtag"].isValidIndex(0)){
+//                            ofxJSONElement hashTags = tweets[j]["Hashtag"];
+//                            
+//                            for(int k=0; k<hashTags.size(); k++){
+//                                t.hashtags.push_back(hashTags[k ].asString());
+//                            }
+//
+//							//cout<<"Added hash tags in "<<(ofGetElapsedTimeMillis() - dataLoadTime)<<endl; 
+//                        }
+//                        
+//                        if(tweets[j]["Users"].isValidIndex(0)){
+//                            ofxJSONElement users = tweets[j]["Users"];
+//                            
+//                            for(int k=0; k<users.size(); k++){
+//                                
+//                                if( !ofContains(cur.userLinks, users[k].asString())){
+//                                    t.mentionedUsers.push_back(users[k].asString());
+//                                    cur.userLinks.push_back(users[k].asString());
+//                                }
+//                            }
+//                        }
+//                        if(tweets[j].isMember("Date")){
+//                            bool alreadyExists = false;
+//                            ofxJSONElement date = tweets[j]["Date"];
+//                            t.tweetDate.day = date["Day"].asInt();
+//                            t.tweetDate.month =date["Month"].asInt();
+//                            t.tweetDate.year =date["Year"].asInt();
+//                            t.dateString = getDateAsString(t.tweetDate);
+//                            cur.addTweetsToDate(t);
+//                            for(int i=0; i<dateIndex.size(); i++){
+//                                
+//                                if(dateIndex[i].year == t.tweetDate.year && dateIndex[i].month == t.tweetDate.month && dateIndex[i].day == t.tweetDate.day){
+//                                    alreadyExists = true;
+//                                    break;
+//                                }
+//                            }
+//                            if(! alreadyExists){
+//                                dateIndex.push_back(t.tweetDate);    
+//                            }
+//                        }
+//                        //userTweets.push_back(t);
+//                    }
+//					 cout<<"ADDING TWEETS: "<<cur.name<<" in "<<(ofGetElapsedTimeMillis()- loadTime)<<endl;
+//                    cur.tweets= userTweets;
+//                    cur.activityMapCoord = curActivityMapCoord;
+//					curActivityMapCoord.x++;
+//					if(curActivityMapCoord.x >= activityMapCoordWidth){
+//						curActivityMapCoord.x = 0;
+//						curActivityMapCoord.y++;
+//					}
+////                    maxUserLinks = MAX(maxUserLinks,cur.userLinks.size());
+//					cout<<"ADDED TWEETER: "<<cur.name<<" in "<<(ofGetElapsedTimeMillis()- tweetsLoadTime)<<endl;
+//                    //curTweeters.push_back(cur);
+//					curTweeters[i] = cur;
+//                } else {
+//                    cout  << "Failed to parse JSON" << endl;
+//                }
+//            }
+//        }
+//    }
+//    
+//    //cout<<"JSON LOADED : "<<ofGetElapsedTimeMillis()-loadTime<<endl;
+//    //loadTime =  ofGetElapsedTimeMillis();
+//
+//    map<string,int> numberOfMentions; 
+//    vector<string> names;
+//    
+//    for (int i= 0; i < curTweeters.size(); i++) {
+//        names.push_back(curTweeters[i].name);
+//    }
+//    
+//    for (int i= 0; i < curTweeters.size(); i++) {
+//        for(int j=0; j<curTweeters[i].userLinks.size(); j++){
+//            
+//            if(! ofContains(names, curTweeters[i].userLinks[j])){
+//                numberOfMentions[curTweeters[i].userLinks[j]]++;
+//            }
+//        }
+//    }
+//    
+//    map<string,int>::iterator it;
+//    for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
+//        Tweeter cur = Tweeter(it->first, curTweeters.size());
+//        cur.activityMapCoord = curActivityMapCoord;
+//        curActivityMapCoord.x++;
+//        if(curActivityMapCoord.x >= activityMapCoordWidth){
+//            curActivityMapCoord.x = 0;
+//            curActivityMapCoord.y++;
+//        }
+//        curTweeters.push_back(cur);
+//    }
+//
+//}
 
 void CloudsVisualSystemTwitter::allocateActivityMap(){
  	int activityMapCoordWidth = 100;
@@ -1148,7 +1158,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
 //    for(int i =0 ; i<tweeters.size(); i++){
 //        cout<<tweeters[i].name<< " : "<<tweeters[i].ID<<endl;
 //    }
-    cout<<"Time taken to parse JSON : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+    cout<<"Time taken to parse CSV : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
     cout<<" Tweeters size "<<tweeters.size()<<endl;
     allocateActivityMap();
     
