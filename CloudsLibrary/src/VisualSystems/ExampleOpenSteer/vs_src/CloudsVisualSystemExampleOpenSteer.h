@@ -11,10 +11,12 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "Flocking.h"
-#include "PathFollowing.h"
-#include "ObstacleAvoidance.h"
-#include "PursuitAndEvade.h"
+//#include "Flocking.h"
+//#include "PathFollowing.h"
+//#include "ObstacleAvoidance.h"
+//#include "PursuitAndEvade.h"
+
+class ofxOpenSteerPlugin;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemExampleOpenSteer : public CloudsVisualSystem {
@@ -113,11 +115,6 @@ protected:
 	ofVec3f avgPosition;
 
     //ofEasyCam cam;
-	
-    Flocking flocking;
-    PathFollowing pathFollowing;
-    ObstacleAvoidance obstacleAvoidance;
-    PursuitAndEvade pursuitAndEvade;
 	
     vector<ofxOpenSteerPlugin*> simulations;
     ofxOpenSteerPlugin* currentSimulation;

@@ -4,6 +4,10 @@
 
 #include "CloudsVisualSystemExampleOpenSteer.h"
 
+#include "Flocking.h"
+#include "PathFollowing.h"
+#include "ObstacleAvoidance.h"
+#include "PursuitAndEvade.h"
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemExampleOpenSteer::selfSetupGui(){
@@ -209,10 +213,10 @@ void CloudsVisualSystemExampleOpenSteer::selfSetup(){
     Boid::tickColor.set(1.0, 1.0, 1.0);
     
     // add the simulations to the vector and initialize the first one
-	simulations.push_back(&flocking);
-	simulations.push_back(&pathFollowing);
-	simulations.push_back(&obstacleAvoidance);
-    simulations.push_back(&pursuitAndEvade);
+	simulations.push_back(new Flocking());
+	simulations.push_back(new PathFollowing());
+	simulations.push_back(new ObstacleAvoidance());
+    simulations.push_back(new PursuitAndEvade());
 
 	currentSimulation = NULL;
 
@@ -307,7 +311,10 @@ void CloudsVisualSystemExampleOpenSteer::selfEnd(){
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemExampleOpenSteer::selfExit(){
-	
+	for (int i = 0; i < simulations.size(); i++) {
+		delete simulations[i];
+	}
+	simulations.clear();
 }
 
 //events are called when the system is active
