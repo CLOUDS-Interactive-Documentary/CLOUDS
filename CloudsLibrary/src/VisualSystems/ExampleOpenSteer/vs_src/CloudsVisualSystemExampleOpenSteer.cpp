@@ -267,6 +267,8 @@ void CloudsVisualSystemExampleOpenSteer::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemExampleOpenSteer::selfUpdate(){
+    if (!currentSimulation) return;
+
     currentSimulation->update();
 
     ofVec3f pos;
@@ -279,6 +281,7 @@ void CloudsVisualSystemExampleOpenSteer::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemExampleOpenSteer::selfDraw(){
+    if (!currentSimulation) return;
 
 	ofPushStyle();
     currentSimulation->draw();

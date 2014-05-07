@@ -39,11 +39,8 @@ class CloudsVisualSystemYellowTail : public CloudsVisualSystem {
     void selfBegin();
 	void selfEnd();
 	void selfSetDefaults();
-<<<<<<< HEAD
-=======
     
     void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus);
->>>>>>> master
 	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);

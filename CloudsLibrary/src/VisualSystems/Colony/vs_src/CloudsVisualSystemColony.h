@@ -112,17 +112,6 @@ private:
     
     /* SOUND LVL=100 */
     ofxUISuperCanvas* soundGui;
-//<<<<<<< HEAD
-//	vector<string> soundFiles;
-    //string soundFiles[3] = {"granular_water2.aif",
-    //    "granular_water2_slow.aif",
-    //    "Grains1_slow_low.aif"};
-//    bool playSample[3];
-//    Tonic::ControlTrigger soundTriggers[3];
-//    Tonic::ofxTonicSynth synth;
-//    Tonic::Generator buildSynth();
-//    Tonic::ControlParameter volumeControl;
-//=======
 
     vector<TonicSample> tonicSamples;
     
@@ -134,7 +123,6 @@ private:
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
     Tonic::ControlParameter volumeControl;
-//>>>>>>> master
     float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };

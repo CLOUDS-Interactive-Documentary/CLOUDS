@@ -334,12 +334,7 @@ void CloudsVisualSystemTwitter::loadCSVData(vector<Tweeter>& curTweeters){
 
     
     int lineNumber = 1;
-<<<<<<< HEAD
-	string prevTweeter = "";
-    int loadTime = ofGetElapsedTimeMillis();
-=======
     
->>>>>>> master
     while(! buffer.isLastLine()){
 
         string nextLine =  buffer.getNextLine();
@@ -349,37 +344,6 @@ void CloudsVisualSystemTwitter::loadCSVData(vector<Tweeter>& curTweeters){
         if(line.size() < 2){
             continue;
         }
-<<<<<<< HEAD
-		
-        bool alreadyExists = false;
-
-		if(prevTweeter == "@" + trim(line[0]) ){
-			Tweet t = csvParseTweet(line,curTweeters[curTweeters.size()-1]);
-                curTweeters[curTweeters.size()-1].tweets.push_back(t);
-                curTweeters[curTweeters.size()-1].addTweetsToDate(t);
-				//cout<<"Time taken to update tweeter "<<curTweeters[curTweeters.size()-1].name<<" : "<<(ofGetElapsedTimeMillis()-loadTime)<<endl;                
-                alreadyExists = true;		
-		}
-		else{
-		 cout<<"Time taken to update tweeter "<<curTweeters[curTweeters.size()-1].name<<" : "<<(ofGetElapsedTimeMillis()-loadTime)<<endl;
-		 loadTime = ofGetElapsedTimeMillis();
-		}
-
-//        for (int i =0 ; i<tweeters.size(); i++) {
-//         
-//			if(curTweeters[i].name == "@" + trim(line[0])){
-//				cout<<curTweeters[i].name <<" : "<< "@" + trim(line[0])<<endl;
-//                Tweet t = csvParseTweet(line,curTweeters[i]);
-//                curTweeters[i].tweets.push_back(t);
-//                curTweeters[i].addTweetsToDate(t);
-//                
-//                alreadyExists = true;
-//                cout<<"already exists "<<tweeters[i].name<<endl;
-//               break;
-//				cout<<"Time taken to update tweeter "<<curTweeters[i].name<<" : "<<(ofGetElapsedTimeMillis()-loadTime)<<endl;
- //           }
-//        }
-=======
 
         bool alreadyExists = false;
         for (int i =0 ; i<tweeters.size(); i++) {
@@ -393,7 +357,6 @@ void CloudsVisualSystemTwitter::loadCSVData(vector<Tweeter>& curTweeters){
                 break;
             }
         }
->>>>>>> master
         
         if(! alreadyExists){
             Tweeter twtr;
@@ -410,13 +373,7 @@ void CloudsVisualSystemTwitter::loadCSVData(vector<Tweeter>& curTweeters){
                 curActivityMapCoord.x = 0;
                 curActivityMapCoord.y++;
             }
-<<<<<<< HEAD
-			prevTweeter = twtr.name;
             curTweeters.push_back(twtr);
-			cout<<"Time taken to add tweeter "<<twtr.name<<" : "<<(ofGetElapsedTimeMillis()-loadTime)<<endl;
-=======
-            curTweeters.push_back(twtr);
->>>>>>> master
         }
         
     }
@@ -447,11 +404,6 @@ void CloudsVisualSystemTwitter::loadCSVData(vector<Tweeter>& curTweeters){
             curActivityMapCoord.y++;
         }
         curTweeters.push_back(cur);
-<<<<<<< HEAD
-		
-
-=======
->>>>>>> master
     }
 
     
@@ -463,28 +415,6 @@ Tweet CloudsVisualSystemTwitter::csvParseTweet(vector<string>& line,Tweeter& cur
     
     //1
     t.dateString = line[index];
-<<<<<<< HEAD
-    t.tweetDate = getDateFromString(line[index]);
-	string curDateString = line[index++];
-//    cout<<t.dateString<<endl;
-    bool alreadyExists = false;
-
-	if(dateMap.find(curDateString) != dateMap.end()){
-		alreadyExists = true;
-	}
-	else{
-		dateMap[curDateString] = t.tweetDate;
-        dateIndex.push_back(t.tweetDate);
-    }
-    //for(int i=0; i<dateIndex.size(); i++){
-    //    
-    //    if(dateIndex[i].year == t.tweetDate.year && dateIndex[i].month == t.tweetDate.month && dateIndex[i].day == t.tweetDate.day){
-    //        alreadyExists = true;
-    //        break;
-    //    }
-    //}
-
-=======
     t.tweetDate = getDateFromString(line[index++]);
 //    cout<<t.dateString<<endl;
     bool alreadyExists = false;
@@ -498,7 +428,6 @@ Tweet CloudsVisualSystemTwitter::csvParseTweet(vector<string>& line,Tweeter& cur
     if(! alreadyExists){
         dateIndex.push_back(t.tweetDate);
     }
->>>>>>> master
     
     //2
     t.tweet = line[index++];
@@ -553,8 +482,7 @@ Date CloudsVisualSystemTwitter::getDateFromString(const string& dString){
     d.day = ofToInt(ds[0]);
     d.month = ofToInt(ds[1]);
     d.year = ofToInt(ds[2]);
-    return d;
-    
+    return d;    
 }
 
 void CloudsVisualSystemTwitter::loadJSONData(string folderName, vector<Tweeter>& curTweeters){

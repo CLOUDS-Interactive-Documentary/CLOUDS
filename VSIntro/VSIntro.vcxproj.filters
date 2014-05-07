@@ -136,6 +136,9 @@
     <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
       <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\RGBD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -424,6 +427,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
       <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

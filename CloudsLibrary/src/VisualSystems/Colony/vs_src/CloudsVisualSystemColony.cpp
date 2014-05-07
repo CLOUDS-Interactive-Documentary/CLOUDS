@@ -75,15 +75,9 @@ void CloudsVisualSystemColony::selfSetDefaults(){
     } else {
         ofLog(OF_LOG_ERROR, "[Colony] no textures in texture directory");
     }
-<<<<<<< HEAD
 
-	soundFiles.push_back("granular_water2.aif");
-    soundFiles.push_back("granular_water2_slow.aif");
-    soundFiles.push_back("Grains1_slow_low.aif");
-=======
     primaryCursorMode = CURSOR_MODE_INACTIVE;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
->>>>>>> master
 }
 
 void CloudsVisualSystemColony::loadShaders(){
@@ -507,20 +501,13 @@ void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
     
 }
 
-Generator CloudsVisualSystemColony::buildSynth()
+Tonic::Generator CloudsVisualSystemColony::buildSynth()
 {
     string strDir = GetCloudsDataPath()+"sound/textures/";
     ofDirectory sdir(strDir);
     
     SampleTable samples[3];
     
-<<<<<<< HEAD
-    //int nSounds = sizeof(strin) / sizeof(string);
-	int nSounds = soundFiles.size();
-    for (int i=0; i<nSounds; i++)
-    {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
-=======
     //    int nSounds = sizeof(soundFiles) / sizeof(string);
     //    for (int i=0; i<nSounds; i++)
     //    {
@@ -531,14 +518,13 @@ Generator CloudsVisualSystemColony::buildSynth()
     
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
->>>>>>> master
         samples[i] = loadAudioFile(strAbsPath);
     }
     
     
-    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
-    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[1].soundTrigger);
-    Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).loop(1).trigger(tonicSamples[2].soundTrigger);
+    Tonic::Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
+    Tonic::Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[1].soundTrigger);
+    Tonic::Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).loop(1).trigger(tonicSamples[2].soundTrigger);
     
     return (sampleGen1 * 0.8f + sampleGen2 * 0.8f + sampleGen3 * 0.4f) * volumeControl;
 }
@@ -547,5 +533,3 @@ void CloudsVisualSystemColony::audioRequested(ofAudioEventArgs& args)
 {
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
 }
-
-

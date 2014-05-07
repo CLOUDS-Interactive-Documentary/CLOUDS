@@ -51,7 +51,6 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
 
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
-    void selfSetDefaults();
 	
 	ofCamera& getCameraRef(){
 		return useOceanCam ? oceanCamera : CloudsVisualSystem::getCameraRef();
@@ -104,24 +103,15 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
 	
 	// Sound
     ofxUISuperCanvas* soundGui;
-<<<<<<< HEAD
-    string soundFiles[2];
-    bool playSample[2];
-    Tonic::ControlTrigger soundTriggers[2];
-    Tonic::ofxTonicSynth synth;
-    Tonic::Generator buildSynth();
-    Tonic::ControlParameter volumeControl;
-=======
     vector<TonicSample> tonicSamples;
 //    string soundFiles[2] = {
 //        "Vocal_harmonic_high_shorter.aif",
 //        "vocal_harmony_bass.aif"};
 //    bool playSample[2];
 //    ControlTrigger soundTriggers[2];
-    ofxTonicSynth synth;
-    Generator buildSynth();
-    ControlParameter volumeControl;
->>>>>>> master
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
+    Tonic::ControlParameter volumeControl;
     float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };

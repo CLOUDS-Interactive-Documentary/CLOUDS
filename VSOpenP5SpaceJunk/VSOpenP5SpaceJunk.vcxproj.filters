@@ -139,6 +139,9 @@
     <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
       <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.cpp">
+      <Filter>CloudsLibrary\src\RGBD\BackgroundParticles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -212,6 +215,9 @@
     </Filter>
     <Filter Include="addons\ofxObjLoader\libs\glm">
       <UniqueIdentifier>{6837143e-8ca7-4be7-9198-0d3843a5df61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\RGBD\BackgroundParticles">
+      <UniqueIdentifier>{be259046-7773-43fc-91e0-0b8d54512936}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -430,6 +436,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
       <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.h">
+      <Filter>CloudsLibrary\src\RGBD\BackgroundParticles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
