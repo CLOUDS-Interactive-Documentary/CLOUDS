@@ -26,8 +26,8 @@
 //}
 
 
-static vector<Tweeter> oldTweeterData;
-static vector<Tweeter> newTweeterData;
+//static vector<Tweeter> oldTweeterData;
+//static vector<Tweeter> newTweeterData;
 static map<string,int> userNameIdMap;
 static vector<Date> dateIndex;
 

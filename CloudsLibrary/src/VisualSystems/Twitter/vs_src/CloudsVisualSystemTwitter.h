@@ -153,9 +153,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bStaticNameDraw;
     bool bOldData;
     
-    static void loadJSONData(string folderName, vector<Tweeter>& curTweeters);
-    static vector<Tweeter>& getOldTweeterData();
-    static vector<Tweeter>& getNewTweeterData();
+    //static void loadJSONData(string folderName, vector<Tweeter>& curTweeters);
+    //static vector<Tweeter>& getOldTweeterData();
+    //static vector<Tweeter>& getNewTweeterData();
     static string getDateAsString(Date d);    
 
     void allocateActivityMap();
