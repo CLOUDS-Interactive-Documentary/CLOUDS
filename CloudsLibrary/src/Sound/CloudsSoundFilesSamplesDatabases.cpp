@@ -9,7 +9,6 @@
 
 #include "CloudsSound.h"
 
-#ifdef RTC_MIX
 void CloudsSound::loadRTcmixFiles()
 {
     if(LUKEDEBUG)
@@ -95,6 +94,7 @@ void CloudsSound::reloadPresets()
 
 void CloudsSound::loadRTcmixSamples()
 {
+#ifdef RTC_MIX
     if(LUKEDEBUG)
     {
         cout << "==============" << endl;
@@ -192,6 +192,6 @@ void CloudsSound::loadRTcmixSamples()
         cout << "============" << endl;
     }
     
-    
+#endif
     
 }

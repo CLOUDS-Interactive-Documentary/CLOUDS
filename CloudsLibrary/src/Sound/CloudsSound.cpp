@@ -605,9 +605,11 @@ void CloudsSound::mousePressed(ofMouseEventArgs & args){
 }
 
 void CloudsSound::doPrinting() {
+#ifdef RTC_MIX
     DOCMIXPRINT = !DOCMIXPRINT;
     if(DOCMIXPRINT) RTcmixParseScoreFile("print_on.sco");
     else RTcmixParseScoreFile("print_off.sco");
+#endif
 }
 
 // =========================

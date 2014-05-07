@@ -23,7 +23,7 @@
 class CloudsVisualSystemRandomDigits2 : public CloudsVisualSystem {
   public:
 
-    CloudsVisualSystemRandomDigits2();
+   // CloudsVisualSystemRandomDigits2();
 
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
