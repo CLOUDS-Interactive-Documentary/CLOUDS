@@ -370,6 +370,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsSound.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsSoundFilesSamplesDatabases.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsSoundFuncs.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeFileFuncs.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeFuncs.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeMusicFuncs.cpp" />
