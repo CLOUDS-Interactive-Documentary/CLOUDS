@@ -1120,6 +1120,18 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\itgPath.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.cpp">
+      <Filter>CloudsLibrary\src\RGBD\BackgroundParticles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeFileFuncs.cpp">
+      <Filter>CloudsLibrary\src\Sound\RTCMix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeFuncs.cpp">
+      <Filter>CloudsLibrary\src\Sound\RTCMix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeMusicFuncs.cpp">
+      <Filter>CloudsLibrary\src\Sound\RTCMix</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1328,6 +1340,12 @@
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\Compiler">
       <UniqueIdentifier>{ea1e62dc-6d2a-4834-8963-b18e5e548c2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\RGBD\BackgroundParticles">
+      <UniqueIdentifier>{b4137a09-bf4d-4525-9a48-0462c6ead7d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Sound\RTCMix">
+      <UniqueIdentifier>{db1936a3-b08c-4b73-886b-8f94c02c7ec8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2926,6 +2944,12 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Orbit\vs_src\itgPath.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.h">
+      <Filter>CloudsLibrary\src\RGBD\BackgroundParticles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeFuncs.h">
+      <Filter>CloudsLibrary\src\Sound\RTCMix</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

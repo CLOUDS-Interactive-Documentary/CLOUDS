@@ -131,10 +131,10 @@ private:
 //        "Grains1_slow_low.aif"};
 //    bool playSample[3];
 //    ControlTrigger soundTriggers[3];
-    ofxTonicSynth synth;
-    Generator buildSynth();
-    ControlParameter volumeControl;
->>>>>>> master
+    Tonic::ofxTonicSynth synth;
+    Tonic::Generator buildSynth();
+    Tonic::ControlParameter volumeControl;
+//>>>>>>> master
     float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };

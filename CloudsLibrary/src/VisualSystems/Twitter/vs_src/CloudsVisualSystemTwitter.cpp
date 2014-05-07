@@ -547,15 +547,8 @@ Tweet CloudsVisualSystemTwitter::csvParseTweet(vector<string>& line,Tweeter& cur
     return t;
 }
 
-<<<<<<< HEAD
-Date CloudsVisualSystemTwitter::getDateFromString(string& dString){
-//    vector<string> ds = ofSplitString(dString, " - ");
-    vector<string>& ds = ofSplitString(dString, " - ");
-=======
-Date CloudsVisualSystemTwitter::getDateFromString(string dString){
-//    vector<string> ds = ofSplitString(dString, " - ");
+Date CloudsVisualSystemTwitter::getDateFromString(const string& dString){
     vector<string> ds = ofSplitString(dString, " - ");
->>>>>>> master
     Date d;
     d.day = ofToInt(ds[0]);
     d.month = ofToInt(ds[1]);

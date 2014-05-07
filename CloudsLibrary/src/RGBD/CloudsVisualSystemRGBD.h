@@ -30,7 +30,6 @@ struct TransitionInfo{
 	string transitionName;
 };
 
-
 typedef struct {
     CloudsClip clip;
     string question;
