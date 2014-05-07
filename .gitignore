@@ -365,3 +365,4 @@ screencapture_*
 
 /CloudsData/sound/_soundDiscard/
 CLOUDS/fmod.log
+*.log
