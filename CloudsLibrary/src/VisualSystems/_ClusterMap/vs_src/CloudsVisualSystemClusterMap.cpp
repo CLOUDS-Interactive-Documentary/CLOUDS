@@ -269,7 +269,7 @@ void CloudsVisualSystemClusterMap::setAct(CloudsAct* newAct){
 
 void CloudsVisualSystemClusterMap::resetGeometry(){
 	
-	cout << "**** RESETING GEOMETRY" << endl;
+//	cout << "**** RESETING GEOMETRY" << endl;
 
 	firstClip = true;
 //	lastTraverseStartedIndex = -1;
@@ -294,7 +294,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 
 		CloudsClusterNode n;
 		CloudsClip& clip = parser->getAllClips()[i];
-		cout << "****POSITIONER GETTING CLIP " << i << " " << clip.getLinkName() << endl;
+		//cout << "****POSITIONER GETTING CLIP " << i << " " << clip.getLinkName() << endl;
 		n.clipId = clip.getID();
 		n.mesh = &nodeMesh;
 		n.vertexIndex = nodeMesh.getNumVertices();
@@ -337,7 +337,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 
 		CloudsClip& clip = parser->getAllClips()[i];
 
-		cout << "****CONNECTOR GETTING CLIP " << i << "" << parser->getAllClips().size() << " " << clip.getLinkName() << endl;
+		//cout << "****CONNECTOR GETTING CLIP " << i << "" << parser->getAllClips().size() << " " << clip.getLinkName() << endl;
 
 		vector<CloudsClip> meta = parser->getClipsWithKeyword(clip.getKeywords());
 		vector<CloudsLink> links = parser->getLinksForClip(clip);

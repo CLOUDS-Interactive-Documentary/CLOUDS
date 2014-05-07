@@ -1138,6 +1138,18 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Balloons\vs_src\CloudsVisualSystemBalloons.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Paradox\vs_src\CloudsVisualSystemParadox.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsSoundFilesSamplesDatabases.cpp">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsSoundFuncs.cpp">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\RGBD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2962,6 +2974,12 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Balloons\vs_src\CloudsVisualSystemBalloons.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Paradox\vs_src\CloudsVisualSystemParadox.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

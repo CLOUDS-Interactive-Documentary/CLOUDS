@@ -11,6 +11,7 @@
 
 void CloudsSound::loadRTcmixFiles()
 {
+#ifdef RTC_MIX
     if(LUKEDEBUG)
     {
         cout << "==================" << endl;
@@ -76,6 +77,7 @@ void CloudsSound::loadRTcmixFiles()
     {
         cout << "melodies... ";
     }
+#endif
 
     //loadpresets("presets.txt", presets);
     loadpresets_xml("soundpresets.xml", presets);

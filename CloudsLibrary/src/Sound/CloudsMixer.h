@@ -19,6 +19,7 @@ public:
     CloudsMixer();
     ~CloudsMixer();
     void setup(int nChannels = 2, int sampleRate = 44100, int bufferSize = 512, int nBuffers = 2);
+//    void setup(int nChannels = 2, int sampleRate = 44100, int bufferSize = 512, int nBuffers = 2);
     
     void setMusicVolume(float vol);
     void setDiageticVolume(float vol);

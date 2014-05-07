@@ -3848,7 +3848,8 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 //													 CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
 //                                                     CloudsVisualSystem::getSharedRenderTarget().getWidth(),
 //                                                     -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-    CloudsVisualSystem::getSharedRenderTarget().draw(-offset, height - offset, width, -height);
+   // CloudsVisualSystem::getSharedRenderTarget().draw(-offset, height - offset, width, -height);
+	 CloudsVisualSystem::getSharedRenderTarget().draw(-offset, -offset, width, height);
 	
     if(bEnablePostFX){
         cloudsPostShader.end();

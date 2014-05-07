@@ -889,8 +889,8 @@ vector<int> CloudsVisualSystemManager::getPresetIndicesForSystem(const string& s
 void CloudsVisualSystemManager::loadCachedDataForSystems(){
 #ifndef CLOUDS_NO_VS
     //making a local copy just to init and cache the data.
-	CloudsVisualSystemTwitter::getOldTweeterData();
-	CloudsVisualSystemTwitter::getNewTweeterData();
+//	CloudsVisualSystemTwitter::getOldTweeterData();
+//	CloudsVisualSystemTwitter::getNewTweeterData();
 #endif    
 }
 

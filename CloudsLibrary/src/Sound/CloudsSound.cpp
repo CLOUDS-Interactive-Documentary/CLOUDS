@@ -43,7 +43,6 @@ void CloudsSound::setup(){
         // load data files
         loadRTcmixFiles();
 
-#ifdef RTCMIX
         // RTcmix audio stuff
         sr = 44100;
         nbufs = 2; // you can use more for more processing but latency will suffer
@@ -52,6 +51,7 @@ void CloudsSound::setup(){
         s_audio_outbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
         s_audio_compbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
 		
+#ifdef RTCMIX
         // initialize RTcmix
         rtcmixmain();
         maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
@@ -256,6 +256,9 @@ void CloudsSound::update(ofEventArgs & args){
 }
 
 void CloudsSound::update(){
+	
+	return;
+
     if(GetCloudsAudioEvents()->doflush)
     {
         if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
@@ -265,9 +268,9 @@ void CloudsSound::update(){
 #endif
         sleep(1);
         // zero output buffer (AHA!)
-        //bzero((void *) s_audio_outbuf, nchans*framesize*sizeof(short));
+
         memset(s_audio_outbuf, 0, nchans*framesize*sizeof(short));
-        GetCloudsAudioEvents()->setupflush = false;
+		GetCloudsAudioEvents()->setupflush = false;
         GetCloudsAudioEvents()->doflush = false;
     }
     if(GetCloudsAudioEvents()->respawn)

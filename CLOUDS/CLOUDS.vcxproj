@@ -346,6 +346,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp" />
@@ -368,6 +369,8 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsSound.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsSoundFilesSamplesDatabases.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsSoundFuncs.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeFileFuncs.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeFuncs.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\RTCMix\src\lukeMusicFuncs.cpp" />
@@ -497,6 +500,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\CloudsVisualSystemPaintBrush.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Particle.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Spring.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Paradox\vs_src\CloudsVisualSystemParadox.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\PhotoGlitch\vs_src\CloudsVisualSystemPhotoGlitch.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\CloudsVisualSystemRandomDigits2.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\Rand.cpp" />
@@ -861,6 +865,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h" />
@@ -1024,6 +1029,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\CloudsVisualSystemPaintBrush.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Particle.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PaintBrush\vs_src\Spring.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Paradox\vs_src\CloudsVisualSystemParadox.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\PhotoGlitch\vs_src\CloudsVisualSystemPhotoGlitch.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\CloudsVisualSystemRandomDigits2.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\RandomDigits2\vs_src\Rand.h" />

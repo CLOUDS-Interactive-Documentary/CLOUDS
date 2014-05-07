@@ -118,9 +118,10 @@ void CloudsVisualSystemMemory::generate(){
         //  Image
         //
         ofImage img;
-        img.loadImage( getVisualSystemDataPath() + "images/img.jpg");
-        generateFromTexture( img.getTextureReference() );
-        
+		if(img.loadImage( getVisualSystemDataPath() + "images/img.jpg")){
+			generateFromTexture( img.getTextureReference() );
+		}
+
         //  FBO
         //
 //        ofFbo fbo;
