@@ -4,19 +4,6 @@
 
 #include "CloudsVisualSystemRandomDigits2.h"
 
-using namespace Tonic;
-
-CloudsVisualSystemRandomDigits2::CloudsVisualSystemRandomDigits2(){
-    int nSamples = 4;
-	soundFiles.push_back("EchoVortex.aif");
-	soundFiles.push_back("wormholeZoom.aif");
-	soundFiles.push_back("wormholeZoom2.aif");
-	soundFiles.push_back("slowgrains_short.aif");
-    
-	for(int i = 0; i < 4; i++){
-		playSample[i] = false;
-	}
-}
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemRandomDigits2::selfSetupGui(){

@@ -291,7 +291,7 @@ int lindenSequencer::tick()
 void precomputemarkov(lukePitchArray& p)
 {
     if(LUKEDEBUG) cout << "TEST MARKOV: " << p.notes.size() << endl;
-    
+#ifdef RTC_MIX
     // step one - analyze
     int tabsize = 0;
     bool pass;
@@ -345,7 +345,7 @@ void precomputemarkov(lukePitchArray& p)
         }
     }
     
-    
+#endif
     
 }
 

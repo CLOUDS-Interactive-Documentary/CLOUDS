@@ -26,8 +26,7 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
 	
 	Replicator repl;
 	float local_time;
-	
-	CloudsVisualSystemReplicator();
+
 
 	string getSystemName();
 	
@@ -63,27 +62,11 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
 
 	// Sound
     ofxUISuperCanvas* soundGui;
-<<<<<<< HEAD
-	vector<string> soundFiles;
-    //string soundFiles[2] = {"organ_slower.aif",
-    //    "EchoVortex.aif"};
-    bool playSample[2];
-    Tonic::ControlTrigger soundTriggers[2];
+
+    vector<TonicSample> tonicSamples;
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
     Tonic::ControlParameter volumeControl;
-
-=======
-    
-    vector<TonicSample> tonicSamples;
-//    string soundFiles[2] = {"organ_slower.aif",
-//        "EchoVortex.aif"};
-//    bool playSample[2] = {false};
-//    ControlTrigger soundTriggers[2];
-    ofxTonicSynth synth;
-    Generator buildSynth();
-    ControlParameter volumeControl;
->>>>>>> master
     float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };

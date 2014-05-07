@@ -35,7 +35,7 @@ void BalloonCredit::update()
 	ofVec3f axis; float angle;
 	n.getOrientationQuat().getRotate(angle, axis);
 	
-	width = fmax(font->stringWidth(title), font->stringWidth(name)  ) * .25;
+	width = MAX(font->stringWidth(title), font->stringWidth(name)  ) * .25;
 	
 	left = ofVec3f(-width * .5, 0, 0) * n.getGlobalTransformMatrix();
 	right = ofVec3f(width * .5, 0, 0) * n.getGlobalTransformMatrix();

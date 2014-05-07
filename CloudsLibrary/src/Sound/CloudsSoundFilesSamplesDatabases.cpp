@@ -9,7 +9,7 @@
 
 #include "CloudsSound.h"
 
-
+#ifdef RTC_MIX
 void CloudsSound::loadRTcmixFiles()
 {
     if(LUKEDEBUG)

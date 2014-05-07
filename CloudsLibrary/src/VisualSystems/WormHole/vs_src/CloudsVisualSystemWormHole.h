@@ -27,10 +27,6 @@
 class CloudsVisualSystemWormHole : public CloudsVisualSystem {
   public:
     
-	CloudsVisualSystemWormHole();
-	//TODO: Change this to the name of your visual system
-	//This determines your data path so name it at first!
-	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
 		return "WormHole";
 	}
@@ -182,29 +178,8 @@ protected:
     float fMainGain;
     Tonic::ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
-//<<<<<<< HEAD
-//	vector<string> soundFiles;
-    //int nSamples = 4;
-    //string soundFiles[4] = {"EchoVortex.aif",
-    //    "wormholeZoom.aif",
-    //    "wormholeZoom2.aif",
-    //    "slowgrains_short.aif"};
-//    bool playSample[4];
-//    Tonic::ControlTrigger soundTriggers[4];
-//    Tonic::ofxTonicSynth synth;
-//    Tonic::Generator buildSynth();
-
-//=======
     vector<TonicSample> tonicSamples;
-//    int nSamples = 4;
-//    string soundFiles[4] = {"EchoVortex.aif",
-//        "wormholeZoom.aif",
-//        "wormholeZoom2.aif",
-//        "slowgrains_short.aif"};
-//    bool playSample[4];
-//    ControlTrigger soundTriggers[ 4];
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
-//>>>>>>> master
 	void audioRequested(ofAudioEventArgs& args);
 };

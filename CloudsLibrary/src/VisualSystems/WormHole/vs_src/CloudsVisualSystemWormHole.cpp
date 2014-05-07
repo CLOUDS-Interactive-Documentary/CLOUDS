@@ -6,18 +6,6 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include <map>
 
-using namespace Tonic;
-
-CloudsVisualSystemWormHole::CloudsVisualSystemWormHole(){
-    soundFiles.push_back("EchoVortex.aif");
-    soundFiles.push_back("wormholeZoom.aif");
-    soundFiles.push_back("wormholeZoom2.aif");
-    soundFiles.push_back("slowgrains_short.aif");
-
-	memset(playSample, 4, sizeof(bool));
-
-
-}
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemWormHole::selfSetupGui(){
 	
@@ -201,11 +189,7 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	soundGui->setName("WORMHOLE Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
-<<<<<<< HEAD
-	for (int i=0; i<soundFiles.size(); i++)
-=======
     for (int i=0; i<tonicSamples.size(); i++)
->>>>>>> master
     {
         soundGui->addToggle(tonicSamples[i].soundFile, &tonicSamples[i].playSample);
     }
@@ -329,11 +313,7 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		wormholeLightGui->getWidget("lightBrightness")->setColorFill(lightColor);
 	}
 
-<<<<<<< HEAD
-	for (int i=0; i<soundFiles.size(); i++)
-=======
     for (int i=0; i<tonicSamples.size(); i++)
->>>>>>> master
     {
         if (e.widget->getName() == tonicSamples[i].soundFile) {
             ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
@@ -492,11 +472,7 @@ void CloudsVisualSystemWormHole::selfBegin(){
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
     
-<<<<<<< HEAD
-    for (int i = 0; i < soundFiles.size(); i++)
-=======
     for (int i=0; i<tonicSamples.size(); i++)
->>>>>>> master
     {
         if (tonicSamples[i].playSample) {
             tonicSamples[i].soundTrigger.trigger();
@@ -835,31 +811,23 @@ void CloudsVisualSystemWormHole::facetMesh( ofMesh& smoothedMesh, ofMesh& target
 }
 
 
-Generator CloudsVisualSystemWormHole::buildSynth()
+Tonic::Generator CloudsVisualSystemWormHole::buildSynth()
 {
     string strDir = GetCloudsDataPath()+"sound/textures/";
     ofDirectory sdir(strDir);
     
-    SampleTable samples[4];
+    Tonic::SampleTable samples[4];
     
-<<<<<<< HEAD
-	for (int i=0; i<soundFiles.size(); i++)
-=======
     for (int i=0; i<tonicSamples.size(); i++)
->>>>>>> master
     {
        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = loadAudioFile(strAbsPath);
+        samples[i] = Tonic::loadAudioFile(strAbsPath);
     }
     
-    Generator sampleGen[4];
-<<<<<<< HEAD
-    for (int i=0; i<soundFiles.size(); i++)
-=======
+    Tonic::Generator sampleGen[4];
     for (int i=0; i<tonicSamples.size(); i++)
->>>>>>> master
     {
-        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(tonicSamples[i].soundTrigger);
+        sampleGen[i] = Tonic::BufferPlayer().setBuffer(samples[i]).loop(1).trigger(tonicSamples[i].soundTrigger);
     }
     
     return sampleGen[0] * 1.0f +

@@ -123,18 +123,15 @@ protected:
 
     // Sound
     ofxUISuperCanvas* soundGui;
-<<<<<<< HEAD
+//<<<<<<< HEAD
+	/*
 	vector<string> soundFiles;
-    //int nSamples = 4;
-    //string soundFiles[4] = {"EchoVortex.aif",
-    //    "wormholeZoom.aif",
-    //    "wormholeZoom2.aif",
-    //    "slowgrains_short.aif"};
     bool playSample[4];
     Tonic::ControlTrigger soundTriggers[4];
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
-=======
+	*/
+//=======
 //SM:Commented out for Tribeca
 //    int nSamples = 4;
 //    string soundFiles[4] = {"EchoVortex.aif",
@@ -145,6 +142,6 @@ protected:
 //    ControlTrigger soundTriggers[4];
 //    ofxTonicSynth synth;
 //    Generator buildSynth();
->>>>>>> master
+//>>>>>>> master
 	void audioRequested(ofAudioEventArgs& args);
 };

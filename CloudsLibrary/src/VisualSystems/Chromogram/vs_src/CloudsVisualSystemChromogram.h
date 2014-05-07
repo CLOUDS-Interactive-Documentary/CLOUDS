@@ -86,19 +86,8 @@ class CloudsVisualSystemChromogram : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-    // generate random colors
-    
+    // generate random colors    
     void generateRandomColors();
-    void selfSetDefaults();
-
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
-	//
-
 
 protected:
     
@@ -106,9 +95,7 @@ protected:
     //
 	
 	ofxUISuperCanvas* customGui;
-	
-
-    
+	    
     int seed;
     int stepSize;
     int noiseHue;
