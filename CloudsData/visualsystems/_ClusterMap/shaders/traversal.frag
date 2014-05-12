@@ -1,3 +1,5 @@
+#version 120
+
 uniform float trailVertCount;
 uniform float segmentVertCount;
 uniform float trailRevealCount;

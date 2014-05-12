@@ -1,3 +1,5 @@
+#version 120
+
 uniform vec4 lineColor;
 uniform float percentOptionsRevealed;
 uniform int fadeIn;

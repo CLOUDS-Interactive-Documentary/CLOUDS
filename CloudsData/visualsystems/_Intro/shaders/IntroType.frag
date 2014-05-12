@@ -1,3 +1,5 @@
+#version 120
+
 uniform float colorAttenuate;
 uniform vec4 tint;
 uniform sampler2D sprite;

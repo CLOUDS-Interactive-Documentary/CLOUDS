@@ -1,9 +1,9 @@
+#version 120
 
 uniform float noisePosition;
 uniform float noiseDensity;
 uniform float glowMin;
 uniform float glowMax;
-
 
 float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
 	return ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);

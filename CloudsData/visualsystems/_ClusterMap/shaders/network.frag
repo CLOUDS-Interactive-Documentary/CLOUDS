@@ -1,3 +1,4 @@
+#version 120
 
 uniform vec4 lineColorNode;
 uniform vec4 lineColorEdge;

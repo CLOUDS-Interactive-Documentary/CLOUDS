@@ -1,3 +1,5 @@
+#version 120
+
 uniform float minSize;
 uniform float maxSize;
 uniform vec3 attractor;

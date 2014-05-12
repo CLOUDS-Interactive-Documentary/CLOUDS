@@ -1,3 +1,6 @@
+#version 120
+#extension GL_ARB_texture_rectangle : enable
+
 uniform sampler2DRect image;
 uniform float minPointSize;
 uniform float maxPointSize;

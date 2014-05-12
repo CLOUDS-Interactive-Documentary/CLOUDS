@@ -1,4 +1,4 @@
-
+#version 120
 
 varying float freshTraversalPosition;
 varying float finalizedTraversalBit;
