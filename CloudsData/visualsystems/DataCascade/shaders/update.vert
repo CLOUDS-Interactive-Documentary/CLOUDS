@@ -1,3 +1,4 @@
+#version 120
 
 //here are some example uniforms
 
