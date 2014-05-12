@@ -2031,6 +2031,11 @@ void CloudsVisualSystem::setupPresetGui()
 
 void CloudsVisualSystem::guiPresetEvent(ofxUIEventArgs &e)
 {
+    if (e.widget->getName() == "PRESETS") {
+        // Ignore this event, it will be followed by an event from the actual toggle that was clicked.
+        return;
+    }
+
     ofxUIToggle *t = (ofxUIToggle *) e.widget;
     if(t->getValue()){
 		
