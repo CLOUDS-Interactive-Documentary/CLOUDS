@@ -43,7 +43,12 @@
 	[speakerVolTextBox setTarget:self];
 	[trackVolTextBox setTarget:self];
     
-//    rgbdVisualSystem.setNumSamples(4);
+    //SCREENSHOT MODE
+    rgbdVisualSystem.setNumSamples(4);
+    rgbdVisualSystem.forceScreenResolution(1920*2, 1080*2);
+    targetFbo.allocate(1920*2, 1080*2, GL_RGB);
+    //SCREENSHOT MODE
+    
 	rgbdVisualSystem.setDrawToScreen(false);
 	rgbdVisualSystem.setup();
     
@@ -70,7 +75,7 @@
 - (void)update
 {
 	
-	[self updateTransitions ];
+	[self updateTransitions];
     
     rgbdVisualSystem.getRGBDVideoPlayer().forceStop = false;
     rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setLoopState(OF_LOOP_NORMAL);
@@ -84,7 +89,7 @@
 {
     ofBackground(0);
 
-	rgbdVisualSystem.selfPostDraw();
+	rgbdVisualSystem.selfPostDraw(1920,1080);
 
 #ifndef OCULUS_RIFT
 	//hud.draw();
@@ -176,6 +181,19 @@
 	if(key == 'R'){
 //		renderer.reloadShader();
 	}
+    
+    if(key == 'S'){
+        targetFbo.begin();
+        ofClear(0,0,0);
+        CloudsVisualSystem::getStaticRenderTarget().draw(0,targetFbo.getHeight(),targetFbo.getWidth(),-targetFbo.getHeight());
+        targetFbo.end();
+        ofPixels p;
+        targetFbo.readToPixels(p);
+        char filename[1024];
+        sprintf(filename, "SCREENSHOT_%s_%02d_%02d_%02d_%02d_%02d.png", currentClip.person.c_str(),
+                ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes(), ofGetSeconds());
+        ofSaveImage(p, filename);
+    }
 	
 }
 

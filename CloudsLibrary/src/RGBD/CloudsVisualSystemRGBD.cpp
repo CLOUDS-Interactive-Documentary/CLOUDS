@@ -494,6 +494,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	backgroundMeshGui->addToggle("draw points", &voxelMesh.drawPoints);
 	backgroundMeshGui->addToggle("draw lines", &voxelMesh.drawLines);
+	backgroundMeshGui->addSlider("point size", 1.0, 4.0, &voxelMesh.pointSize);
+	backgroundMeshGui->addSlider("line width", 1.0, 4.0, &voxelMesh.lineWidth);
 	
 	backgroundMeshGui->addIntSlider("num voxels", 10, 100, &voxelMesh.numVoxels);
 	backgroundMeshGui->addSlider("voxel spacing", 10, 100, &voxelMesh.voxelWidth);

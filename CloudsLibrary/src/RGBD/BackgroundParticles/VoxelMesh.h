@@ -52,6 +52,9 @@ class VoxelMesh {
 	float centerDecayMaxRadius;
 	ofVec3f center;
 	
+    float pointSize;
+    float lineWidth;
+    
 	bool drawPoints;
 	bool drawLines;
 	
