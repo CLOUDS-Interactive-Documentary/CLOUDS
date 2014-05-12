@@ -144,6 +144,7 @@ void CalibrationNode::draw(){
 		arc.setStrokeWidth(5);
 		arc.setStrokeColor(arcColor);
 		float animationProgress = ofxTween::map(percentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+        arc.moveTo(0, nodeSize, 0);  // EZ: This is necessary under Windows
 		arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 90, 360*animationProgress + 90, true);
 		arc.draw();
 	}
