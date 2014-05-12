@@ -77,7 +77,7 @@ class CloudsPlaybackController : public ofThread {
 	bool loading;
 	float loadPercent;
 	bool loadFinished;
-	
+
 	void threadedFunction();
   protected:
 	vector<CloudsClip> startingNodes;
@@ -139,7 +139,8 @@ class CloudsPlaybackController : public ofThread {
 	void updateTransition();
 	bool updateInterludeInterface(); //true if we should stop interlude
 	void updateCompletedInterlude(); //after one option has been selected;
-	
+	bool forceInterludeReset;
+    
 	//loader screen
 	bool loadingAct;
 	int currentPresetIndex;

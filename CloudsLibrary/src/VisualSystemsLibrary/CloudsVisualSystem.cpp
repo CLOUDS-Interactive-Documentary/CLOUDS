@@ -199,6 +199,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
     bDoBloom = false;
     bloomAmount = 0.;
 	isInterlude = false;
+	
+	bSetManualBackgroundColors = false;
 	   
 	pointcloudOffsetZ = 0.0;
 
@@ -465,10 +467,14 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	}
 
     durationLabel->setLabel(ofxTimecode::timecodeForSeconds(timeline->getInOutRange().span() * timeline->getDurationInSeconds()));
-    
-	bgColor  = ofColor::fromHsb(MIN(bgHue,254.),  bgSat,  bgBri,  255);
-	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
+
 	
+    //James, james, JAMES
+	if(!bSetManualBackgroundColors)
+	{
+		bgColor  = ofColor::fromHsb(MIN(bgHue,254.),  bgSat,  bgBri,  255);
+		bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
+	}
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
     
 	if(!ofGetMousePressed()){

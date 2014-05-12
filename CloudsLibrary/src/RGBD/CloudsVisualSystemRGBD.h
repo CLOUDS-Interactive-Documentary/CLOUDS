@@ -294,6 +294,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	CloudsPortal leftPortal;
 	CloudsPortal rightPortal;
+	CloudsPortal* portalToClear; //clears when started
 	string questionText;
 	
 	//Oculus reset portal

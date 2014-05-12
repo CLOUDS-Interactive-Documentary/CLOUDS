@@ -503,6 +503,8 @@ class CloudsVisualSystem {
     bool bDoBloom;
     float bloomAmount;
     int bloomSamples;
+	
+	bool bSetManualBackgroundColors;
     
 };
 
