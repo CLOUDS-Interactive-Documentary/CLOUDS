@@ -723,7 +723,7 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, of
     if (layer == CLOUDS_HUD_PROJECT_EXAMPLE && videoPlayer.isPlaying()) {
         ofSetColor(255, 255, 255, 255*0.7);
         if( !bSkipAVideoFrame ){
-            videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
+//            videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
         }
     }
     

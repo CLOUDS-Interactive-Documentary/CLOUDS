@@ -264,6 +264,7 @@ void CloudsPlaybackController::finishSetup(){
 	startingNodes = storyEngine.getStartingQuestions();
 	introSequence->setStartQuestions(startingNodes);
 
+    /*
 //>>>>>>> master
 
 #ifdef OCULUS_RIFT
@@ -766,10 +767,11 @@ void CloudsPlaybackController::updateTransition(){
                 introSequence = new CloudsIntroSequence();
                 introSequence->setup();
 				introSequence->setStartQuestions(startingNodes);
-#ifdef OCULUS_RIFT
-                introSequence->hud = &hud;
-                introSequence->setupHUDGui();
-#endif
+// TODO: Where'd the HuD go?
+//#ifdef OCULUS_RIFT
+//                introSequence->hud = &hud;
+//                introSequence->setupHUDGui();
+//#endif
                 introSequence->setDrawToScreen(false);
                 
                 // TODO: Look into using Intro events for setting bDrawHud, so it works like everything else.
@@ -955,21 +957,22 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	}
 	
 #ifdef OCULUS_RIFT
-	interludeContinueSelected = interludeHoveringContinue;
-	interludeResetSelected = interludeHoveringReset;
+    // TODO: Figure this out!!!
+    //interludeContinueSelected = interludeHoveringContinue;
+	//interludeResetSelected = interludeHoveringReset;
 
-	if(currentVisualSystem->resetNode.finished){
-		interludeResetSelected = true;
-		return true;
-	}
-	if(currentVisualSystem->continueNode.finished){
-		interludeContinueSelected = true;
-		return true;
-	}
-	if(ofGetElapsedTimef() - interludeStartTime > 30){
-		interludeResetSelected = true;
-		return true;
-	}
+	//if(currentVisualSystem->resetNode.finished){
+	//	interludeResetSelected = true;
+	//	return true;
+	//}
+	//if(currentVisualSystem->continueNode.finished){
+	//	interludeContinueSelected = true;
+	//	return true;
+	//}
+	//if(ofGetElapsedTimef() - interludeStartTime > 30){
+	//	interludeResetSelected = true;
+	//	return true;
+	//}
 	return false;
 #else
 	
@@ -1024,7 +1027,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	}
 	
 	
-	if( interludeSystem->getSystemName() != "Balooons" && ofGetElapsedTimef() - interludeStartTime > 60){
+	if( interludeSystem->getSystemName() != "Balloons" && ofGetElapsedTimef() - interludeStartTime > 60){
 		interludeResetSelected = true;
 		return true;
 	}
@@ -1127,8 +1130,8 @@ void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string 
 			arc.setStrokeWidth(4);
 			arc.setStrokeColor(arcColor);
 			float expandedArcRadius = interludeArcRadius + powf(1.0-crossfadeValue,2.0f) * 40; //expand it beyond when it's finished
-			
-			arc.arc( cursorPosition, expandedArcRadius, expandedArcRadius, -90, 360*arcPercent-90, true);
+			arc.moveTo(cursorPosition.x, cursorPosition.y + expandedArcRadius, 0);
+			arc.arc(cursorPosition, expandedArcRadius, expandedArcRadius, -90, 360*arcPercent-90, true);
 			arc.draw();
 		}
 		
