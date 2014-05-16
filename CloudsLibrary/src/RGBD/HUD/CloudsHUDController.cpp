@@ -178,7 +178,7 @@ void CloudsHUDController::playCued(){
     }
 }
 
-void CloudsHUDController::populateMap( string leftBox, string rightBox, bool forceOn){
+void CloudsHUDController::populateMap(const string& leftBox, const string& rightBox, bool forceOn){
     hudLabelMap["TopicTextBoxLeft"]->setText( leftBox, forceOn );
     hudLabelMap["TopicTextBoxRight"]->setText( rightBox, forceOn );
     
@@ -187,7 +187,7 @@ void CloudsHUDController::populateMap( string leftBox, string rightBox, bool for
     }
 }
 
-void CloudsHUDController::populateQuestion( string question, bool forceOn, bool animate){
+void CloudsHUDController::populateQuestion(const string& question, bool forceOn, bool animate){
 //    cout << "setting text with current value " << question << " " << hudLabelMap["QuestionTextBox"]->getText() << endl;
     // EZ: Commented this out because populateQuestion should only be called when hover starts
     // Otherwise it wouldn't work if hovering over the same question twice.
@@ -221,7 +221,7 @@ void CloudsHUDController::populateQuestion( string question, bool forceOn, bool 
 }
 
 //BIO
-void CloudsHUDController::populateLowerThird( string firstName, string lastName, string title, string location, string textbox, bool forceOn ) {
+void CloudsHUDController::populateLowerThird(const string& firstName, const string& lastName, const string& title, const string& location, const string& textbox, bool forceOn) {
     
     CloudsHUDLabel* firstNameLabel  = hudLabelMap["BylineFirstNameTextBox_1_"];
     CloudsHUDLabel* lastNameLabel  = hudLabelMap["BylineLastNameTextBox"];
@@ -388,7 +388,7 @@ void CloudsHUDController::calculateFontSizes(){
     tempFontList.clear();
 }
 
-ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, string fontPath ) {
+ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer(const string& layerName, const string& fontPath) {
     for( int i=0; i<allLayers.size(); i++ ){
         SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
         
@@ -422,7 +422,7 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, s
     return NULL;
 }
 
-ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, string fontPath, bool caps ) {
+ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer(const string& layerName, const string& fontPath, bool caps) {
     for( int i=0; i<allLayers.size(); i++ ){
         SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
         
@@ -458,7 +458,7 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, s
     
 }
 
-ofxFTGLFont* CloudsHUDController::getFontForLayer( string layerName, string fontPath, int kerning ) {
+ofxFTGLFont* CloudsHUDController::getFontForLayer(const string& layerName, const string& fontPath, int kerning) {
     for( int i=0; i<allLayers.size(); i++ ){
         SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
         

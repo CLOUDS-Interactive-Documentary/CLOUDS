@@ -71,11 +71,7 @@ class CloudsHUDController {
 	void saveGuiSettings();
 	void toggleGuis();
 	
-//<<<<<<< HEAD
 	void questionHoverOn(const string& question, bool animate = true);
-//=======
-//	void questionHoverOn(string question, bool animate = true);
-//>>>>>>> master
 	void questionHoverOff();
 	
 	ofxUISuperCanvas *hudGui;
@@ -103,15 +99,10 @@ class CloudsHUDController {
 
   protected:
 	
-    void populateLowerThird( string firstName="", string lastName="", string title="", string location="", string textbox="", bool forceOn=false );
-//<<<<<<< HEAD
-    void populateProjectExample(const string& videoPath, const string& textLeft, const string& textRight, const string& textTop, bool forceOn=false);
-    void populateQuestion( string question="", bool forceOn=false, bool animate = true);
-//=======
-//    void populateProjectExample(string videoPath="", string textLeft="", string textRight="", string textTop="", bool forceOn=false);
-//    void populateQuestion( string question="", bool forceOn = false, bool animate = true);
-//>>>>>>> master
-    void populateMap( string leftBox="", string rightBox="", bool forceOn=false);
+    void populateLowerThird(const string& firstName="", const string& lastName="", const string& title="", const string& location="", const string& textbox="", bool forceOn=false );
+    void populateProjectExample(const string& videoPath="", const string& textLeft="", const string& textRight="", const string& textTop="", bool forceOn=false);
+    void populateQuestion(const string& question="", bool forceOn=false, bool animate = true);
+    void populateMap(const string& leftBox="", const string& rightBox="", bool forceOn=false);
     
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
@@ -129,9 +120,9 @@ class CloudsHUDController {
 #ifdef OCULUS_RIFT
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
 #endif
-    ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
-    ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath, bool caps );
-    ofxFTGLFont*            getFontForLayer( string layerName, string fontPath, int kerning );
+    ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath);
+    ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath, bool caps);
+    ofxFTGLFont*            getFontForLayer(const string& layerName, const string& fontPath, int kerning);
 
     
     vector<ofxFTGLFont*>    tempFontList;
