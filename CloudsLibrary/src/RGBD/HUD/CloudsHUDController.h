@@ -11,13 +11,6 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "ofxFTGL.h"
-#ifdef TARGET_OSX
-#include "ofxAVFVideoPlayer.h"
-#define VIDEOCLASS ofxAVFVideoPlayer
-#else
-#include "ofDirectShowPlayer.h"
-#define VIDEOCLASS ofDirectShowPlayer
-#endif
 
 #include "CloudsHUDLayer.h"
 #include "CloudsHUDHomeButton.h"
@@ -120,8 +113,8 @@ class CloudsHUDController {
 //>>>>>>> master
     void populateMap( string leftBox="", string rightBox="", bool forceOn=false);
     
-	VIDEOCLASS		       videoPlayer;
-    ofRectangle             svgVideoBounds, videoBounds;
+	ofVideoPlayer videoPlayer;
+    ofRectangle   svgVideoBounds, videoBounds;
     
 	bool	bDrawHome;
     bool    bIsHudOpen;
