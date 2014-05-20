@@ -10,15 +10,13 @@
 
 #include "ofMain.h"
 #include "CloudsEvents.h"
-
 #include "ofxTimeline.h"
 #include "CloudsDichotomy.h"
 
 
 typedef enum {
-    Clip =0,
+    Clip = 0,
     VS,
-//    Gap,
     Question,
     PreRoll,
 	Note
@@ -77,43 +75,39 @@ class CloudsAct{
     void populateTime();
     void play();
     void clear();
-	
-	bool isClipEnergyShift(CloudsClip& clip);
-	
-    bool startsWithVisualSystem();
     
-    vector<CloudsClip>& getAllClips();
+    vector<CloudsClip*>& getAllClips();
     vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
-//	vector< ofPtr<CloudsVisualSystem> > getAllVisualSystems();
-	vector<CloudsDichotomy>& getDichotomiesForClip(CloudsClip& clip);
+	vector<CloudsDichotomy>& getDichotomiesForClip(CloudsClip* clip);
 	vector<CloudsDichotomy>& getDichotomiesForClip(string clipName);
 	vector<CloudsSoundCue>& getSoundCues();
 	
     vector<string>& getAllTopics();
 	
-	
-    CloudsClip& getClip(int index);
-    CloudsClip& getClipAtTime(float time);
-
+    CloudsClip* getClip(int index);
+    CloudsClip* getClipAtTime(float time);
 
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
-    float addClip(CloudsClip& clip, string topic, float startTime);
-    float addClip(CloudsClip& clip, string topic, float startTime, vector<CloudsDichotomy> currentDichotomiesBalance);
+    float addClip(CloudsClip* clip, string topic, float startTime);
+    float addClip(CloudsClip* clip, string topic, float startTime, vector<CloudsDichotomy> currentDichotomiesBalance);
     float addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float endTime);
-    void addQuestion(CloudsClip& clip, string topic, float startTime);
+    void addQuestion(CloudsClip* clip, string topic, float startTime);
 	void addNote(string note, float time);
     void addSilenceRange(ofRange range);
     
-    ActTimeItem& getItemForClip(CloudsClip& clip);
+    ActTimeItem& getItemForClip(CloudsClip* clip);
     ActTimeItem& getItemForVisualSystem(CloudsVisualSystemPreset& preset);
-    float getClipStartTime(CloudsClip& clip);
-	float getClipEndTime(CloudsClip& clip);
+    float getClipStartTime(CloudsClip* clip);
+	float getClipEndTime(CloudsClip* clip);
     
     void setTopicForClip(string topic, string clipName);
-    string getTopicForClip(CloudsClip& clip);
+    string getTopicForClip(CloudsClip* clip);
 	
 	ofxTimeline& getTimeline(){ return timeline; }
     
+	bool isClipEnergyShift(CloudsClip* clip);	
+    bool startsWithVisualSystem();
+
     void drawDebug();
 	//set via storyengine param
 	float defaulPrerollDuration;
@@ -141,7 +135,7 @@ class CloudsAct{
 	bool timelinePopulated;
     string currentTopic;
     CloudsStoryEvents events;
-    vector<CloudsClip> clips;
+    vector<CloudsClip*> clips;
     vector<CloudsVisualSystemPreset> visualSystems;
 	
     vector<ActTimeItem> actItems;
@@ -155,7 +149,7 @@ class CloudsAct{
     vector<CloudsDichotomy> dummyDichotomies;
     vector<string> energyShiftClipIDs;
 	
-    map<string, CloudsClip> clipMap;
+    map<string, CloudsClip*> clipMap;
     map<string, ActTimeItem> clipItems;
     map<string, string> clipDifficultyMap;
 
@@ -165,7 +159,7 @@ class CloudsAct{
 	vector<string> topicHistory;
 	map<string, float> topicDurationMap;
 	
-    map<string, CloudsClip> questionsMap;
+    map<string, CloudsClip*> questionsMap;
     map<string, vector<CloudsDichotomy> > dichotomiesMap;
 	ofxTLFlags* dichotomyClips;
 	map<string, ofxTLCurves*> dichotomyTracks;

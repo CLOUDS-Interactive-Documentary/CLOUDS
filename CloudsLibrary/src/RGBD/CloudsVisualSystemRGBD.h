@@ -31,7 +31,7 @@ struct TransitionInfo{
 };
 
 typedef struct {
-    CloudsClip clip;
+    CloudsClip* clip;
     string question;
     string topic;
 } QuestionQueue;
@@ -86,7 +86,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	vector<ofxUISuperCanvas*> backgroundGuis;
 	
     ////////QUESTIONS
-    void addQuestion(CloudsClip& questionClip, string topic, string question);
+    void addQuestion(CloudsClip* questionClip, string topic, string question);
     void clearQuestions();
 	void assignAvailableQuestion(CloudsPortal& p);
 	

@@ -1050,7 +1050,7 @@ void CloudsVisualSystemRGBD::loadPointcloudGUISFromName(string presetName){
 }
 
 //--------------------------------------------------------------
-void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic, string question){
+void CloudsVisualSystemRGBD::addQuestion(CloudsClip* questionClip, string topic, string question){
     
 
 //#ifdef CLOUDS_SCREENING

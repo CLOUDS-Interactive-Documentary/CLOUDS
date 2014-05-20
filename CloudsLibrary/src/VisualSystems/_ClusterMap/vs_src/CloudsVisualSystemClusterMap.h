@@ -33,7 +33,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	void buildEntireCluster(CloudsFCPParser& parser);
 	void setRun(CloudsRun& run);
 	void setAct(CloudsAct* newAct);
-	void setQuestions(vector<CloudsClip>& questions);
+//	void setQuestions(vector<CloudsClip*>& questions);
 	void allocateFlickerTexture();
 //	CloudsQuestion* getSelectedQuestion();
 
@@ -42,7 +42,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	//will add the latest state of the run to the traversal
 	void traverse();
 
-	void traverseToClip(CloudsClip clip);
+	void traverseToClip(CloudsClip* clip);
 
 	void clearTraversal();
     

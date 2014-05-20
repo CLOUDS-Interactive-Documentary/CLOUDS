@@ -16,6 +16,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	showingVisualSystem = false;
 	currentAct = NULL;
     interludeSystem = NULL;
+	selectedQuestionClip = NULL;
+	currentClip = NULL;
 	showingClusterMap = false;
 	shouldPlayAct = false;
     shouldClearAct = false;
@@ -29,7 +31,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	shouldLoadAct = false;
 	shouldPlayClusterMap = false;
 	forceInterludeReset = false;
-    
+
 	loading = false;
 	loadPercent = 0.0;
 	
@@ -434,8 +436,8 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	if(args.key == 'Q'){
 		for(int i = 0; i < fakeQuestions.size(); i++){
 			rgbdVisualSystem->addQuestion(fakeQuestions[i],
-										  fakeQuestions[i].getTopicsWithQuestions()[0],
-										  fakeQuestions[i].getQuestions()[0]);
+										  fakeQuestions[i]->getTopicsWithQuestions()[0],
+										  fakeQuestions[i]->getQuestions()[0]);
 		}
 	}
     
@@ -457,9 +459,9 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 			}
 			
             for(int i = 0; i < currentAct->getAllClips().size(); i++){
-                CloudsClip& clip = currentAct->getAllClips()[i];
-                for(int i = 0; i < clip.getKeywords().size(); i++){
-                    run.accumuluatedTopics[clip.getKeywords()[i]]++;
+                CloudsClip* clip = currentAct->getAllClips()[i];
+                for(int i = 0; i < clip->getKeywords().size(); i++){
+                    run.accumuluatedTopics[clip->getKeywords()[i]]++;
                 }
                 run.clipHistory.push_back( clip );
             }
@@ -600,14 +602,14 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		if(introSequence->isStartQuestionSelected()){
 			
 			CloudsPortal* q = introSequence->getSelectedQuestion();
-			CloudsClip& clip = q->clip;
+			CloudsClip* clip = q->clip;
 			
-			map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
+			map<string,string> questionsAndTopics = clip->getAllQuestionTopicPairs();
 			if(questionsAndTopics.size() > 0){
 				transitionController.transitionFromIntro(1.0);
 			}
 			else{
-				ofLogError("CloudsPlaybackController::update") << "Somehow selected an intro question with no topics " << clip.getLinkName();
+				ofLogError("CloudsPlaybackController::update") << "Somehow selected an intro question with no topics " << clip->getLinkName();
 			}
 		}
 	}
@@ -650,18 +652,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		bool stopInterlude = updateInterludeInterface();
 		
         if(stopInterlude){
-//<<<<<<< HEAD
-//#ifdef RTC_MIX
-//            sound.stopMusic();
-//#endif
-//            if(goToNextAct){
-//=======
             
             forceInterludeReset = false;
             sound.stopMusic();
             
             if(interludeContinueSelected){
-//>>>>>>> master
                 transitionController.transitionFromInterlude(1.0);
             }
             else{
@@ -1358,46 +1353,49 @@ void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
-	if(!clip.hasMediaAsset){
-		ofLogError("CloudsPlaybackController::prerollClip") << "clip " << clip.getLinkName() << " doesn't have combined video";
+void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
+	if(!clip->hasMediaAsset){
+		ofLogError("CloudsPlaybackController::prerollClip") << "clip " << clip->getLinkName() << " doesn't have combined video";
 		return;
 	}
 	
 	bool clipLoadSuccessfullyLoaded = false;
-	if(clip.voiceOverAudio){
-		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath);
+	if(clip->voiceOverAudio){
+		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath);
 	}
 	else{
-		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip.combinedVideoPath,
-																					clip.combinedCalibrationXMLPath,
-                                                                                    clip.combinedSRTPath,
-																					toTime,clip.getSpeakerVolume());
+		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip->combinedVideoPath,
+																					clip->combinedCalibrationXMLPath,
+                                                                                    clip->combinedSRTPath,
+																					toTime, clip->getSpeakerVolume());
 	}
     
 	if(!clipLoadSuccessfullyLoaded){
-		ofLogError("CloudsPlaybackController::prerollClip") << "Error loading clip " << clip.getLinkName() << " file path " << clip.combinedVideoPath;
+		ofLogError("CloudsPlaybackController::prerollClip") << "Error loading clip " << clip->getLinkName() << " file path " << clip->combinedVideoPath;
 		return;
 	}
     
-	prerolledClipID = clip.getID();
+	prerolledClipID = clip->getID();
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::playClip(CloudsClip clip){
+void CloudsPlaybackController::playClip(CloudsClip* clip){
     
 	numClipsPlayed++;
 	
     //	rgbdVisualSystem->clearQuestions();
-	if(clip.getID() != prerolledClipID){
+	if(clip->getID() != prerolledClipID){
 		prerollClip(clip, 1);
 	}
 	
-	rgbdVisualSystem->setupSpeaker( clip.getSpeakerFirstName(),clip.getSpeakerLastName(), clip.name);
+	rgbdVisualSystem->setupSpeaker( 
+		clip->getSpeakerFirstName(),
+		clip->getSpeakerLastName(), 
+		clip->name);
 	
 	prerolledClipID = "";
 	currentClip = clip;
-	currentClipName = clip.getID();
+	currentClipName = clip->getID();
     
 	rgbdVisualSystem->getRGBDVideoPlayer().swapAndPlay();
 }
@@ -1427,13 +1425,6 @@ void CloudsPlaybackController::showInterlude(){
     if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
         
         interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
-//<<<<<<< HEAD
-//        if(interludeSystem == NULL){
-//			ofLogError("CloudsPlaybackController::showInterlude") << "System is null. should not happen!";
-//			return;
-//		}
-//=======
-//>>>>>>> master
         interludeSystem->setDrawToScreen( false );
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
@@ -1443,17 +1434,7 @@ void CloudsPlaybackController::showInterlude(){
         currentVisualSystem = interludeSystem;
         
         showingInterlude = true;
-//<<<<<<< HEAD
-//        continuePortal.hoverPosition =  ofVec3f(CloudsVisualSystem::getStaticRenderTarget().getWidth() *0.95 , CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.1, 0);
-//        int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.01;
-//        int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.95;
-        
-//        ofRectangle resetText = resetFont.getStringBoundingBox("RESET",x,y);
-//        resetRect = ofRectangle(x,y,resetText.height + 1,resetText.height + 1);
-//        resetSelectionRect = ofRectangle(0,CloudsVisualSystem::getStaticRenderTarget().getHeight() - CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2,CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.2,CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.2);
-        
-//=======
-//>>>>>>> master
+
     }
     else{
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";

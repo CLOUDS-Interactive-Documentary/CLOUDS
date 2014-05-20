@@ -28,7 +28,7 @@ class CloudsPortal {
     
 	string question;
 	string topic;
-    CloudsClip clip; //the clip must have a question associated
+    CloudsClip* clip; //the clip must have a question associated
     
     bool startHovering();
 	void stopHovering();

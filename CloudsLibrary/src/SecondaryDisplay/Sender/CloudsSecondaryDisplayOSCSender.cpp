@@ -72,7 +72,6 @@ void CloudsSecondaryDisplayOSCSender::actEnded(CloudsActEventArgs& args){
 
 void CloudsSecondaryDisplayOSCSender::clipBegan(CloudsClipEventArgs& args){
 	sendClip(args.chosenClip);
-
 }
 
 void CloudsSecondaryDisplayOSCSender::visualSystemBegan(CloudsVisualSystemEventArgs& args){
@@ -94,21 +93,21 @@ void CloudsSecondaryDisplayOSCSender::preRollRequested(CloudsPreRollEventArgs& c
 	
 }
 
-void CloudsSecondaryDisplayOSCSender::sendClip(CloudsClip& clip){
+void CloudsSecondaryDisplayOSCSender::sendClip(CloudsClip* clip){
 	
     if(!bSetup) return;
     
 	ofxOscMessage m;
 	
     m.setAddress("/clip");
-	m.addStringArg(clip.person);//final cut person id
-	m.addStringArg(clip.getID());//clip id
-	m.addFloatArg(clip.getDuration());//duraiton
+	m.addStringArg(clip->person);//final cut person id
+	m.addStringArg(clip->getID());//clip id
+	m.addFloatArg(clip->getDuration());//duraiton
 	m.addStringArg(currentTopic); //topic
-	m.addStringArg(clip.projectExampleTitle); //example
+	m.addStringArg(clip->projectExampleTitle); //example
     
-	if(clip.hasQuestion()){
-		m.addStringArg( clip.getQuestionForTopic(clip.getTopicsWithQuestions()[0]) );
+	if(clip->hasQuestion()){
+		m.addStringArg( clip->getQuestionForTopic(clip->getTopicsWithQuestions()[0]) );
 	}
 	else{
 		m.addStringArg(lastQuestionAsked); //question
@@ -117,11 +116,9 @@ void CloudsSecondaryDisplayOSCSender::sendClip(CloudsClip& clip){
 }
 
 void CloudsSecondaryDisplayOSCSender::reset(){
-    
     if(!bSetup) return;
-    
+
  	ofxOscMessage m;
     m.setAddress("/reset");
-   
  	sender.sendMessage(m);
 }

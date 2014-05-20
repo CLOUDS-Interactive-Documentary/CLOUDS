@@ -532,7 +532,7 @@ void CloudsIntroSequence::updateQuestions(){
 }
 
 
-void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQuestions){
+void CloudsIntroSequence::setStartQuestions(vector<CloudsClip*>& possibleStartQuestions){
 
 	selectedQuestion = NULL;
 	startQuestions.clear();
@@ -544,8 +544,8 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 		q.bLookAtCamera = true;
 //		q.font = &questionFont;
 		q.clip = possibleStartQuestions[i];
-		q.topic = q.clip.getAllTopicsWithQuestion()[0];
-		q.question = q.clip.getQuestionForTopic(q.topic);
+		q.topic = q.clip->getAllTopicsWithQuestion()[0];
+		q.question = q.clip->getQuestionForTopic(q.topic);
 
 		q.setup();
 		

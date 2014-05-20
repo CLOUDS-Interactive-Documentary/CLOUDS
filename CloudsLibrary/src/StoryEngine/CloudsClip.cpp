@@ -51,8 +51,8 @@ float CloudsClip::getDuration(){
 	return (endFrame - startFrame) / (is30FPS() ? 29.97 : 23.976); //TODO: HigaSan was recorded @ 30.0, need to compensate
 }
 
-void CloudsClip::addOverlappingClip(CloudsClip& clip){
-    overlappingClipIDs.push_back(clip.getID());
+void CloudsClip::addOverlappingClip(CloudsClip* clip){
+    overlappingClipIDs.push_back(clip->getID());
 }
 
 void CloudsClip::addOverlappingClipID(string clipID){
@@ -81,8 +81,8 @@ bool CloudsClip::hasOverlappingClips(){
 vector<string>& CloudsClip::getOverlappingClipIDs(){
     return overlappingClipIDs;
 }
-bool CloudsClip::overlapsWithClip(CloudsClip& clip){
-	return ofContains(overlappingClipIDs, clip.getID());
+bool CloudsClip::overlapsWithClip(CloudsClip* clip){
+	return ofContains(overlappingClipIDs, clip->getID());
 }
 bool CloudsClip::overlapsWithClipID(string clipID){
 	return ofContains(overlappingClipIDs, clipID);
@@ -107,8 +107,6 @@ string CloudsClip::getID(){
 }
 
 string CloudsClip::getCombinedPNGExportFolder(){
-    //	string nameNoSpaces = name;
-    //	ofStringReplace(nameNoSpaces, " ", "_");
 	return getID() + "/";
 }
 

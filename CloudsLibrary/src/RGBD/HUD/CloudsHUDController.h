@@ -62,7 +62,7 @@ class CloudsHUDController {
 	
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
-	void respondToClip(CloudsClip& clip);
+	void respondToClip(CloudsClip* clip);
     void playCued();
 	
 	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;

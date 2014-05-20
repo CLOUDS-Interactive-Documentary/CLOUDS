@@ -28,10 +28,10 @@ class CloudsFCPParser {
 #pragma mark Clips
 	bool hasClipWithLinkName(const string& linkname);
 	bool hasClipWithID(const string& ID);
-	CloudsClip& getClipWithLinkName( const string& linkname );
-	CloudsClip& getClipWithLinkName( const string& linkname, bool& clipFound );
-	CloudsClip& getClipWithID( const string& ID );
-	CloudsClip& getClipWithID( const string& ID, bool& clipFound );
+	CloudsClip* getClipWithLinkName( const string& linkname );
+	CloudsClip* getClipWithLinkName( const string& linkname, bool& clipFound );
+	CloudsClip* getClipWithID( const string& ID );
+	CloudsClip* getClipWithID( const string& ID, bool& clipFound );
 
 #pragma mark Links
 	void parseVOClips();
@@ -46,16 +46,16 @@ class CloudsFCPParser {
     void autolinkSequentialClips();
     
     map<string,string> cloudsClipToFileID;
-    map<string,vector<CloudsClip> > fileIDtoCloudsClips;
+    map<string,vector<CloudsClip*> > fileIDtoCloudsClips;
     map<string,vector<string> > overlappingClipsMap;
     
-	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
+	vector<CloudsLink>& getLinksForClip(CloudsClip* clip);
     vector<CloudsLink>& getLinksForClip(const string& clipName);
-	vector<CloudsLink>& getSuppressionsForClip(CloudsClip& clip);
+	vector<CloudsLink>& getSuppressionsForClip(CloudsClip* clip);
     vector<CloudsLink>& getSuppressionsForClip(const string& clipName);
 
 	void addLink(const string& sourceName, const string& targetName);
-	void addLink(CloudsClip& source, CloudsClip& target);
+	void addLink(CloudsClip* source, CloudsClip* target);
     void addLink(CloudsLink& link);
 	void setSpeakerVolume(const string& speaker, float vol);
     float getSpeakerVolume(const string& speakerFullName);
@@ -65,7 +65,7 @@ class CloudsFCPParser {
 	void saveLinks(const string& linkFile);
 
 	void suppressConnection(const string& sourceName, const string& targetName);
-	void suppressConnection(CloudsClip& source, CloudsClip& target);
+	void suppressConnection(CloudsClip* source, CloudsClip* target);
 	void suppressConnection(CloudsLink& link);
     void unsuppressConnection(const string& linkName, int linkIndex);
 	void unsuppressConnection(const string& linkName, const string& targetName);
@@ -79,7 +79,7 @@ class CloudsFCPParser {
 	
 	//QUERIES
 	//true if A has any out going links at all
-	bool clipHasLink(CloudsClip& clip);
+	bool clipHasLink(CloudsClip* clip);
 	bool clipHasLink(const string& clipName);
 	//true if A links to B
     bool clipLinksTo(const string& clipNameA, const string& clipNameB);
@@ -91,16 +91,16 @@ class CloudsFCPParser {
 	bool keywordsShareLink(const string& keyA, const string& keyB);
 	
 	//are there any clips that this suppresses?
-	bool clipHasSuppressions(CloudsClip& clip);
+	bool clipHasSuppressions(CloudsClip* clip);
 	bool clipHasSuppressions(string clipName);
 	
     //are there any revoked or additional toolkits?
-    bool clipHasRevokedKeywords(CloudsClip& clip);
-    bool clipHasAdditionalKeywords(CloudsClip& clip);
+    bool clipHasRevokedKeywords(CloudsClip* clip);
+    bool clipHasAdditionalKeywords(CloudsClip* clip);
     
 	//old way
     //are there any starting Questions?
-    bool clipHasStartingQuestions(CloudsClip& clip);
+    bool clipHasStartingQuestions(CloudsClip* clip);
     bool clipHasStartingQuestions(const string& clipName);
     
 	//are we suppressing this connection?
@@ -113,26 +113,26 @@ class CloudsFCPParser {
 #pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
-    vector<CloudsClip>& getAllClips();
-	CloudsClip& getRandomClip(bool hasMediaAsset = false,
+    vector<CloudsClip*>& getAllClips();
+	CloudsClip* getRandomClip(bool hasMediaAsset = false,
 							  bool hasQuestion = false,
 							  bool hasStartQuestion = false);
 	int getNumberOfClipsWithKeyword(const string& filterWord);
-	vector<CloudsClip> getClipsWithKeyword(const string& filterWord);
-	vector<CloudsClip> getClipsWithKeyword(const string& filterWord, vector<CloudsClip>& searchClips);
-    vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter);
-	vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter, vector<CloudsClip>& searchClips);
-    vector<CloudsClip> getClipsWithQuestionsForTopic(const string&  topic);
+	vector<CloudsClip*> getClipsWithKeyword(const string& filterWord);
+	vector<CloudsClip*> getClipsWithKeyword(const string& filterWord, vector<CloudsClip*>& searchClips);
+    vector<CloudsClip*> getClipsWithKeyword(const vector<string>& filter);
+	vector<CloudsClip*> getClipsWithKeyword(const vector<string>& filter, vector<CloudsClip*>& searchClips);
+    vector<CloudsClip*> getClipsWithQuestionsForTopic(const string&  topic);
 	
     set<string> getRelatedKeywords(const string&  filterWord);
-	int getNumberOfSharedKeywords(CloudsClip& a, CloudsClip& b);
+	int getNumberOfSharedKeywords(CloudsClip* a, CloudsClip* b);
 	
-	vector<string> getSharedKeywords(CloudsClip& a, CloudsClip& b);
+	vector<string> getSharedKeywords(CloudsClip* a, CloudsClip* b);
 	int getNumberOfSharedClips(const string& keywordA, const string& keywordB);
 	
-	vector<CloudsClip> getSharedClips(const string&  keywordA, const string&  keywordB);
-	vector<CloudsClip> getMetaDataConnections(CloudsClip& source);
-	int getNumMetaDataConnections(CloudsClip& source);
+	vector<CloudsClip*> getSharedClips(const string&  keywordA, const string&  keywordB);
+	vector<CloudsClip*> getMetaDataConnections(CloudsClip* source);
+	int getNumMetaDataConnections(CloudsClip* source);
 	
     int occurrencesOfKeyword(const string& keyword);
     bool operator()(const string& a, const string& b);
@@ -147,13 +147,13 @@ class CloudsFCPParser {
 	string closestKeyThemeToTag(const string&  searchTag);
 	
 	set<string> clusterMapColors;
-    vector<string> getAdjacentKeywords( const string&  currentKeyword, int numOfDesiredKeywords);
+    vector<string> getAdjacentKeywords(const string&  currentKeyword, int numOfDesiredKeywords);
     float getCohesionIndexForKeyword(const string&  keyword);
     float getDistanceFromAdjacentKeywords(const string&  keyword1, const string&  keyword2);
     
   protected:
     
-    void reciprocateSuppressions(CloudsClip& clip );
+    void reciprocateSuppressions(CloudsClip* clip );
     
     string xmlDirectory;
     string combinedVideoDirectory;
@@ -169,7 +169,7 @@ class CloudsFCPParser {
     set<string> markerLinkNames;
 	set<string> speakerFcpIds;
     
-    vector<CloudsClip> allClips;
+    vector<CloudsClip*> allClips;
     map<string, int> clipIDToIndex;
     map<string, int> clipLinkNameToIndex;
     map<string, vector<int> > questionTopicstoClipIndex;

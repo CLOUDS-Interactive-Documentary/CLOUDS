@@ -3839,28 +3839,11 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	else{
         offset = 0;
     }
-
-    // EZ: Fix this to make sure we're always drawing right side up
-//#if OF_VERSION_MINOR < 8
-//    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
-//                                                       CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-//                                                      -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-//#else
-//    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,-offset);
-//#endif
-	
-//    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,
-//													 CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
-//                                                     CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-//                                                     -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-   // CloudsVisualSystem::getSharedRenderTarget().draw(-offset, height - offset, width, -height);
 	 CloudsVisualSystem::getSharedRenderTarget().draw(-offset, -offset, width, height);
 	
     if(bEnablePostFX){
         cloudsPostShader.end();
     }
-    //end
-	
 #endif
     
 }

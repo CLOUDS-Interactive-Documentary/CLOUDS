@@ -293,13 +293,13 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	for(int i = 0; i < parser->getAllClips().size(); i++){
 
 		CloudsClusterNode n;
-		CloudsClip& clip = parser->getAllClips()[i];
+		CloudsClip* clip = parser->getAllClips()[i];
 		//cout << "****POSITIONER GETTING CLIP " << i << " " << clip.getLinkName() << endl;
-		n.clipId = clip.getID();
+		n.clipId = clip->getID();
 		n.mesh = &nodeMesh;
 		n.vertexIndex = nodeMesh.getNumVertices();
-		n.networkPosition = clip.networkPosition;
-		clipIdToNodeIndex[clip.getID()] = nodes.size();
+		n.networkPosition = clip->networkPosition;
+		clipIdToNodeIndex[clip->getID()] = nodes.size();
 		nodeMesh.addVertex( n.networkPosition );
 		n.flickerTextureCoord = flickerCoord;
 		n.luckyNumber = ofRandomuf();
@@ -309,14 +309,14 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 			flickerCoord.x = 0;
 			flickerCoord.y++;
 		}
-		networkCentroid += clip.networkPosition;
-		maxBounds = ofVec3f(MAX(maxBounds.x,clip.networkPosition.x),
-							MAX(maxBounds.y,clip.networkPosition.y),
-							MAX(maxBounds.z,clip.networkPosition.z));
+		networkCentroid += clip->networkPosition;
+		maxBounds = ofVec3f(MAX(maxBounds.x,clip->networkPosition.x),
+							MAX(maxBounds.y,clip->networkPosition.y),
+							MAX(maxBounds.z,clip->networkPosition.z));
 		
-		minBounds = ofVec3f(MIN(minBounds.x,clip.networkPosition.x),
-							MIN(minBounds.y,clip.networkPosition.y),
-							MIN(minBounds.z,clip.networkPosition.z));
+		minBounds = ofVec3f(MIN(minBounds.x,clip->networkPosition.x),
+							MIN(minBounds.y,clip->networkPosition.y),
+							MIN(minBounds.z,clip->networkPosition.z));
 		
 		nodes.push_back(n);
 	}
@@ -327,7 +327,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	
 	float maxDistance = 0;
 	for(int i = 0; i < parser->getAllClips().size(); i++){
-		maxDistance = MAX(maxDistance, parser->getAllClips()[i].networkPosition.distance(networkCentroid));
+		maxDistance = MAX(maxDistance, parser->getAllClips()[i]->networkPosition.distance(networkCentroid));
 	}
 	
 	//add all connections to connection mesh
@@ -335,13 +335,13 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	unsigned long start;
 	for(int i = 0; i < parser->getAllClips().size(); i++){
 
-		CloudsClip& clip = parser->getAllClips()[i];
+		CloudsClip* clip = parser->getAllClips()[i];
 
 		//cout << "****CONNECTOR GETTING CLIP " << i << "" << parser->getAllClips().size() << " " << clip.getLinkName() << endl;
 
-		vector<CloudsClip> meta = parser->getClipsWithKeyword(clip.getKeywords());
+		vector<CloudsClip*> meta = parser->getClipsWithKeyword(clip->getKeywords());
 		vector<CloudsLink> links = parser->getLinksForClip(clip);
-		string nameA = clip.getID();
+		string nameA = clip->getID();
 		CloudsClusterNode& n1 = nodes[ clipIdToNodeIndex[nameA] ];
 		
 		start = ofGetElapsedTimeMillis(); 
@@ -352,11 +352,11 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 		ofVec3f randDir = randomDirection();
 		for(int j = 0; j < meta.size(); j++){
 			
-			string nameB = meta[j].getID();
+			string nameB = meta[j]->getID();
 //			cout << "****	CONNECTING CLIP " << j << "" << meta.size() << " " << nameB << endl;
 			bool valid = true;
 			valid &= (nameA != nameB);
-			valid &= (clip.person != meta[j].person || parser->clipLinksTo(nameA, nameB));
+			valid &= (clip->person != meta[j]->person || parser->clipLinksTo(nameA, nameB));
 			valid &= !parser->linkIsSuppressed(nameA, nameB);
 
 			if(valid) {
@@ -375,12 +375,12 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 					continue;
 				}
 				
-				if(clip.networkPosition.distance(networkCentroid) > maxDistance * .6) {
+				if(clip->networkPosition.distance(networkCentroid) > maxDistance * .6) {
 //					cout << "filtering outer ring clip " << meta[j].getLinkName() << endl;
 					continue;
 				}
 				
-				if(meta[j].networkPosition.distance(networkCentroid) > maxDistance * .6 ) {
+				if(meta[j]->networkPosition.distance(networkCentroid) > maxDistance * .6 ) {
 //					cout << "filtering outer ring clip " << meta[j].getLinkName() << endl;
 					continue;
 				}
@@ -389,8 +389,8 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 				//create curved connection mesh
 				//naive simple spherical interpolation over 10 steps
 				connectionEdge.startIndex = networkMesh.getNumVertices();
-				ofVec3f vecToStart = clip.networkPosition - networkCentroid;
-				ofVec3f vecToDest  = meta[j].networkPosition - networkCentroid;
+				ofVec3f vecToStart = clip->networkPosition - networkCentroid;
+				ofVec3f vecToDest  = meta[j]->networkPosition - networkCentroid;
 				float radStart = vecToStart.length();
 				float radDest  = vecToDest.length();
 				ofVec3f dirToStart = vecToStart / radStart;
@@ -405,9 +405,9 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 													   n2.flickerTextureCoord.y);
 				networkMesh.addColor(flickermix);
 				networkMesh.addNormal(ofVec3f(0.0, 0.0, 0.0));
-				networkMesh.addVertex(clip.networkPosition);
+				networkMesh.addVertex(clip->networkPosition);
 
-				float distance = clip.networkPosition.distance(meta[j].networkPosition);
+				float distance = clip->networkPosition.distance(meta[j]->networkPosition);
 				
 				int numSteps = distance * lineDensity;
 
@@ -428,7 +428,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 				//handle
 				networkMesh.addColor(flickermix);
 				networkMesh.addNormal(ofVec3f(1.0, 0.0, 0.0));
-				networkMesh.addVertex(meta[j].networkPosition);
+				networkMesh.addVertex(meta[j]->networkPosition);
 				
 				connectionEdge.endIndex = networkMesh.getNumVertices();
 				connectionEdge.source = true;
@@ -527,8 +527,8 @@ void CloudsVisualSystemClusterMap::traverse(){
 
 //	if(currentTraversalIndex < run->clipHistory.size()){
 	if(currentTraversalIndex < MIN(8,act->getAllClips().size()) ){
-//		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
-//		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
+//		CloudsClip* clip = run->clipHistory[currentTraversalIndex];
+//		CloudsClip* clip = run->clipHistory[currentTraversalIndex];
 		traverseToClip( act->getClip(currentTraversalIndex) );
 		currentTraversalIndex++;
 	}
@@ -539,23 +539,23 @@ void CloudsVisualSystemClusterMap::traverse(){
 
 }
 
-void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
+void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip* clip){
 	
-	if(clipIdToNodeIndex.find(clip.getID()) == clipIdToNodeIndex.end()){
+	if(clipIdToNodeIndex.find(clip->getID()) == clipIdToNodeIndex.end()){
 		ofLogError("CloudsVisualSystemClusterMap::traverseToClip") << "Isn't included in cluster map";
 		return;
 	}
 	
     numTraversed++;
     
-	ofIndexType newNodeIndex = clipIdToNodeIndex[ clip.getID() ];
+	ofIndexType newNodeIndex = clipIdToNodeIndex[ clip->getID() ];
 	CloudsClusterNode n = nodes[ newNodeIndex ];
 
 	ofVec3f startDirection;
 	if(firstClip){
 //		currentTraversalDirection = randomDirection();
-        currentTraversalDirection = clip.networkPosition - networkCentroid;
-		currentTraversalPosition = clip.networkPosition;
+        currentTraversalDirection = clip->networkPosition - networkCentroid;
+		currentTraversalPosition = clip->networkPosition;
 	}
 	else{
 
@@ -566,7 +566,7 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
 		TraversalSegment newSegment;
 		newSegment.startIndex = traversalMesh.getNumVertices();
 		int maxSteps = 1000;
-		float currentDistance = currentTraversalPosition.distance(clip.networkPosition);
+		float currentDistance = currentTraversalPosition.distance(clip->networkPosition);
         
         //check traversal parameters to potentiall fake a new clip
         if(bConstrainTraversal){
@@ -576,7 +576,7 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
             float localMinTraverseDistance = minTraverseDistance/100.0;
 
             int constrainedPositionIndex = -1;
-            float traversalAngle = (clip.networkPosition - currentTraversalPosition).angle(currentTraversalDirection);
+            float traversalAngle = (clip->networkPosition - currentTraversalPosition).angle(currentTraversalDirection);
             int numOptions = n.connectionCurves.size();
             if(currentDistance > localMaxTraversedDistance ||
                currentDistance < minTraverseDistance ||
@@ -589,7 +589,7 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
                 vector<float> distsSq;
                 vector<NNIndex> indices;
                 //search for 100 nearby clips and take the first acceptable one
-                kdtree.findNClosestPoints(clip.networkPosition, 1000, indices, distsSq);
+                kdtree.findNClosestPoints(clip->networkPosition, 1000, indices, distsSq);
                 for(int i = 0; i < indices.size(); i++){
                     ofVec3f testPosition = nodeMesh.getVertex( indices[i] );
                     float testDistance = currentTraversalPosition.distance( testPosition );
@@ -682,8 +682,8 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
         }
         
 		while(localMinSolve < currentDistance && maxSteps-- > 0){
-			ofVec3f toNodeDirection  = (clip.networkPosition - currentTraversalPosition).normalized();
-			ofVec3f vectorToNode = clip.networkPosition - currentTraversalPosition;
+			ofVec3f toNodeDirection  = (clip->networkPosition - currentTraversalPosition).normalized();
+			ofVec3f vectorToNode = clip->networkPosition - currentTraversalPosition;
 			float distanceToNode = vectorToNode.length();
 			ofVec3f directionToNode = vectorToNode/distanceToNode;
 			
@@ -696,12 +696,12 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
 			currentTraversalPosition += currentTraversalDirection * localStepSize;
 			
 			traversalMesh.addVertex(currentTraversalPosition);
-			currentDistance = currentTraversalPosition.distance(clip.networkPosition);
+			currentDistance = currentTraversalPosition.distance(clip->networkPosition);
 		}
 		
 		//cap it off
-		currentTraversalPosition = clip.networkPosition;
-		traversalMesh.addVertex(clip.networkPosition);
+		currentTraversalPosition = clip->networkPosition;
+		traversalMesh.addVertex(clip->networkPosition);
 		
 		newSegment.endIndex = traversalMesh.getNumVertices();
 		cout << "Step took " << (newSegment.endIndex - newSegment.startIndex) << " vertices" << endl;

@@ -142,16 +142,16 @@ void CloudsAct::populateTime(){
 	CloudsSoundCue introCue;
 	
     //TODO Only intro cue on the first act...?
-	CloudsClip& startClip = clips[0];
-	if(startClip.hasStartingQuestion() && startClip.getTopicsWithQuestions().size() > 0){
-		string startTopic    = startClip.getTopicsWithQuestions()[0];
-		string startQuestion = startClip.getQuestionForTopic(startTopic);
+	CloudsClip* startClip = clips[0];
+	if(startClip->hasStartingQuestion() && startClip->getTopicsWithQuestions().size() > 0){
+		string startTopic    = startClip->getTopicsWithQuestions()[0];
+		string startQuestion = startClip->getQuestionForTopic(startTopic);
 		introCue.soundQuestionKey = startTopic + ":" + startQuestion;
 	}
     
 	int introCueEndIndex = clips.size() > 2 ? 2 : 1;
 	introCue.mixLevel = 2;
-	introCue.dichotomies = dichotomiesMap[startClip.getLinkName()];
+	introCue.dichotomies = dichotomiesMap[startClip->getLinkName()];
 	//if the first system has sound...
     if(visualSystems[0].hasSound() &&
 	   //visualSystems.size() > 0 &&
@@ -169,7 +169,7 @@ void CloudsAct::populateTime(){
 		//skip the intro cue if it overlaps a sound system
     }
     else {
-        introCue.startTime = clipItems[startClip.getLinkName()].startTime;
+        introCue.startTime = clipItems[startClip->getLinkName()].startTime;
     }
 
 	
@@ -182,7 +182,7 @@ void CloudsAct::populateTime(){
 	bool firstLoop = true;
 	for(int i = introCueEndIndex; i < clips.size()-2; i++){
 		
-		string clipID = clips[i].getLinkName();
+		string clipID = clips[i]->getLinkName();
 		float startTime = clipItems[clipID].startTime;
 		dichotomyClips->addFlagAtTime(clipID, startTime*1000);
 		if(dichotomiesMap.find(clipID) == dichotomiesMap.end()){
@@ -326,8 +326,8 @@ bool CloudsAct::startsWithVisualSystem(){
     return visualSystems.size() > 0 && visualSystemItems[visualSystems[0].getID() ].startTime == 0;
 }
 
-bool CloudsAct::isClipEnergyShift(CloudsClip& clip){
-	return ofContains(energyShiftClipIDs, clip.getLinkName());
+bool CloudsAct::isClipEnergyShift(CloudsClip* clip){
+	return ofContains(energyShiftClipIDs, clip->getLinkName());
 }
 
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
@@ -355,21 +355,21 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
 		}
     }
     else if(bang.track == questionsTrack){
-		CloudsClip& questionClip = questionsMap[bang.flag];
+		CloudsClip* questionClip = questionsMap[bang.flag];
 		string topic = ofSplitString( bang.flag, "??")[1];
-		string question = questionClip.getQuestionForTopic(topic);
-		cout << "** story engine :: creating question " << question << " with topic " << topic << endl;
-        CloudsQuestionEventArgs args(questionClip,question,topic);
+		string question = questionClip->getQuestionForTopic(topic);
+//		cout << "** story engine :: creating question " << question << " with topic " << topic << endl;
+        CloudsQuestionEventArgs args(questionClip, question, topic);
         ofNotifyEvent(events.questionProposed, args);
     }
     else if(bang.track == clipPreRollTrack){
         vector<string> clipName = ofSplitString(bang.flag, "%");
-        cout<<"sending clip: "<<clipName[1] <<" with Offset: "<< actItemsMap[bang.flag].handleLength << endl;
+//        cout<<"sending clip: "<<clipName[1] <<" with Offset: "<< actItemsMap[bang.flag].handleLength << endl;
         CloudsPreRollEventArgs args(clipMap[clipName[1]],actItemsMap[bang.flag].handleLength);
         ofNotifyEvent(events.preRollRequested, args);
     }
 	else if(bang.track == topicsTrack){
-        cout<<"sending topic: "<<bang.flag <<" with duration: "<< topicDurationMap[bang.flag] << endl;
+//        cout<<"sending topic: "<<bang.flag <<" with duration: "<< topicDurationMap[bang.flag] << endl;
 		CloudsTopicEventArgs args(bang.flag, topicDurationMap[bang.flag] );
 		ofNotifyEvent(events.topicChanged, args);
 	}
@@ -396,27 +396,16 @@ vector<CloudsSoundCue>& CloudsAct::getSoundCues(){
 	return cues;
 }
 
-vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(CloudsClip& clip){
-	return getDichotomiesForClip(clip.getLinkName());
+vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(CloudsClip* clip){
+	return getDichotomiesForClip(clip->getLinkName());
 }
 
 vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(string clipName){
-    
     if(dichotomiesMap.find(clipName) != dichotomiesMap.end()){
         return dichotomiesMap[clipName];
     }
     return dummyDichotomies;
 }
-
-//vector< ofPtr<CloudsVisualSystem> > CloudsAct::getAllVisualSystems(){
-//	vector< ofPtr<CloudsVisualSystem> > vs;
-//	for(int i = 0; i < visualSystems.size(); i++){
-//		if(!ofContains(vs, visualSystems[i].system)){
-//			vs.push_back(visualSystems[i].system);
-//		}
-//	}
-//	return vs;
-//}
 
 vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystemPresets(){
     return visualSystems;
@@ -427,39 +416,39 @@ void CloudsAct::drawDebug(){
     timeline.draw();
 }
 
-CloudsClip& CloudsAct::getClip(int index){
+CloudsClip* CloudsAct::getClip(int index){
     return clips[index];
 }
 
-CloudsClip& CloudsAct::getClipAtTime(float time){
+CloudsClip* CloudsAct::getClipAtTime(float time){
     for(int i=0; i< clips.size(); i++){
         ActTimeItem item = getItemForClip(clips[i]);
         if(time >= item.startTime && time <= item.endTime){
             return clips[i];
         }
     }
-    cout<<"No clip found at that time!"<<endl;
-    return dummyClip;
+    ofLogError("CloudsAct::getClipAtTime") << "No clip found at time: " << time;
+    return &dummyClip;
 }
 
 CloudsVisualSystemPreset& CloudsAct::getVisualSystemInAct(int index){
     return visualSystems[index];
 }
 
-float CloudsAct::getClipStartTime(CloudsClip& clip){
+float CloudsAct::getClipStartTime(CloudsClip* clip){
 	return getItemForClip(clip).startTime;
 }
 
-float CloudsAct::getClipEndTime(CloudsClip& clip){
+float CloudsAct::getClipEndTime(CloudsClip* clip){
 	return getItemForClip(clip).endTime;
 }
 
-ActTimeItem& CloudsAct::getItemForClip(CloudsClip& clip){
-    if(clipMap.find(clip.getLinkName()) == clipMap.end()){
-        ofLogError() << "Couldn't find Act Item for cilp " << clip.getLinkName();
+ActTimeItem& CloudsAct::getItemForClip(CloudsClip* clip){
+    if(clipMap.find(clip->getLinkName()) == clipMap.end()){
+        ofLogError() << "Couldn't find Act Item for cilp " << clip->getLinkName();
         return dummy;
     }
-    return clipItems[clip.getLinkName()];
+    return clipItems[clip->getLinkName()];
 }
 
 ActTimeItem& CloudsAct::getItemForVisualSystem(CloudsVisualSystemPreset& preset){
@@ -469,20 +458,20 @@ ActTimeItem& CloudsAct::getItemForVisualSystem(CloudsVisualSystemPreset& preset)
     return visualSystemItems[preset.getID()];
 }
 
-float CloudsAct::addClip(CloudsClip& clip, string topic, float startTime){
+float CloudsAct::addClip(CloudsClip* clip, string topic, float startTime){
 	return addClip(clip, topic, startTime, CloudsDichotomy::getDichotomies());
 }
 
-float CloudsAct::addClip(CloudsClip& clip, string topic, float startTime, vector<CloudsDichotomy> currentDichotomiesBalance){
+float CloudsAct::addClip(CloudsClip* clip, string topic, float startTime, vector<CloudsDichotomy> currentDichotomiesBalance){
     clips.push_back(clip);
-    clipMap[clip.getLinkName()] = clip;
-    topicMap[clip.getLinkName()] = topic;
+    clipMap[clip->getLinkName()] = clip;
+    topicMap[clip->getLinkName()] = topic;
 
     string clipDifficulty;
-    if (clip.hasSpecialKeyword("easy")) {
+    if (clip->hasSpecialKeyword("easy")) {
         clipDifficulty = "easy";
     }
-    else if(clip.hasSpecialKeyword("hard")){
+    else if(clip->hasSpecialKeyword("hard")){
         clipDifficulty = "hard";
     }
     else{
@@ -493,21 +482,21 @@ float CloudsAct::addClip(CloudsClip& clip, string topic, float startTime, vector
 	float clipOffsetTime = 1.0;
     ActTimeItem item;
     item.type = Clip;
-    item.key = clip.getLinkName();
+    item.key = clip->getLinkName();
     item.startTime = startTime + clipOffsetTime;
-    item.endTime = startTime + clip.getDuration() + clipOffsetTime;
+    item.endTime = startTime + clip->getDuration() + clipOffsetTime;
     duration = MAX(item.endTime, duration);
     
     actItems.push_back(item);
     actItemsMap[item.key] = item;
     dichotomiesMap[item.key] = currentDichotomiesBalance;
-    clipItems[clip.getLinkName()] = item;
-    clipDifficultyMap[clip.getLinkName()] = clipDifficulty;
+    clipItems[clip->getLinkName()] = item;
+    clipDifficultyMap[clip->getLinkName()] = clipDifficulty;
 	
 	//Preroll the clip
     ActTimeItem prerollItem;
     prerollItem.type = PreRoll;
-    prerollItem.key = "%" + clip.getLinkName();
+    prerollItem.key = "%" + clip->getLinkName();
     prerollItem.startTime = item.startTime - defaulPrerollDuration;
     prerollItem.endTime = prerollItem.startTime;
     prerollItem.handleLength = clipOffsetTime;
@@ -558,11 +547,11 @@ float CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTi
 	return duration;
 }
 
-void CloudsAct::addQuestion(CloudsClip& clip, string topic, float startTime){
+void CloudsAct::addQuestion(CloudsClip* clip, string topic, float startTime){
     ActTimeItem item;
     item.type = Question;
     
-    item.key = clip.getID() + "??" + topic;
+    item.key = clip->getID() + "??" + topic;
     
     item.startTime = startTime + 10 + incrementalQuesitonTime;;
     //dont care about end time as it will end with visual system;
@@ -581,12 +570,12 @@ void CloudsAct::addSilenceRange(ofRange range){
     silenceCues.push_back(range);
 }
 
-vector<CloudsClip>& CloudsAct::getAllClips(){
+vector<CloudsClip*>& CloudsAct::getAllClips(){
     return clips;
 }
 
-string CloudsAct::getTopicForClip(CloudsClip& clip){
-    return topicMap[ clip.getLinkName() ];
+string CloudsAct::getTopicForClip(CloudsClip* clip){
+    return topicMap[ clip->getLinkName() ];
 }
 
 vector<string>& CloudsAct::getAllTopics(){

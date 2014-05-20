@@ -60,7 +60,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	void selfPresetLoaded(string presetPath);
 	
-	void setStartQuestions(vector<CloudsClip>& possibleStartQuestions);
+	void setStartQuestions(vector<CloudsClip*>& possibleStartQuestions);
 
 	bool isStartQuestionSelected();
 	bool istStartQuestionHovering();

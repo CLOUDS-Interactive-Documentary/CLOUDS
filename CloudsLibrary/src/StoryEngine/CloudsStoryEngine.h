@@ -23,11 +23,11 @@ typedef struct {
 	int run;
 	string topic;
 	CloudsVisualSystemPreset preset;
-	CloudsClip clip;
+	CloudsClip* clip;
 	
 	vector<string> topicHistory;
 	vector<string> presetHistory;
-	vector<CloudsClip> clipHistory;
+	vector<CloudsClip*> clipHistory;
 
 	bool freeTopic;
 	
@@ -58,11 +58,11 @@ class CloudsStoryEngine {
 	//will send this act instead of generating one when buildAct is called
 	void setCustomAct(CloudsAct* customAct);
 
-    vector<CloudsClip> getStartingQuestions();
+    vector<CloudsClip*> getStartingQuestions();
     
 	CloudsAct* buildAct(CloudsRun& run);
-	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed);
-	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed, string topic, bool playSeed = true);
+	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed);
+	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed, string topic, bool playSeed = true);
 	bool getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset);
     void initGui();
     void saveGuiSettings();
@@ -84,7 +84,7 @@ class CloudsStoryEngine {
     CloudsRun runTest;
 
 	bool screeningQuestionsAdded;
-	vector<CloudsClip> screeningQuestionClips;
+	vector<CloudsClip*> screeningQuestionClips;
 	
  protected:
 	
@@ -109,7 +109,7 @@ class CloudsStoryEngine {
 	bool bLogVisualSystemDetails;
 	
     bool showOnlyStartQuestions;
-    vector<CloudsClip> startingQuestions;
+    vector<CloudsClip*> startingQuestions;
     
 	string log;
     vector<string> runTopicCount;
@@ -122,14 +122,14 @@ class CloudsStoryEngine {
     CloudsVisualSystemPreset selectVisualSystem(CloudsStoryState& currentState, bool allowSound);
 	float scoreForVisualSystem(CloudsStoryState& currentState, CloudsVisualSystemPreset& potentialNextPreset);
 
-	CloudsClip selectClip(CloudsStoryState& currentState, vector<CloudsClip>& questionClips);
-    float scoreForClip(CloudsStoryState& currentState, CloudsClip& potentialNextClip, stringstream& cliplog);
+	CloudsClip* selectClip(CloudsStoryState& currentState, vector<CloudsClip*>& questionClips);
+    float scoreForClip(CloudsStoryState& currentState, CloudsClip* potentialNextClip, stringstream& cliplog);
     
-	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
-	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
+	bool historyContainsClip(CloudsClip* m, vector<CloudsClip*>& history);
+	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip*>& history);
 	
-	void addQuestions(CloudsStoryState& currentState, vector<CloudsClip>& questionClips);
-    void updateDichotomies(CloudsClip& clip);
+	void addQuestions(CloudsStoryState& currentState, vector<CloudsClip*>& questionClips);
+    void updateDichotomies(CloudsClip* clip);
 	void clearDichotomiesBalance();
 	vector<CloudsDichotomy> dichotomies;
 	

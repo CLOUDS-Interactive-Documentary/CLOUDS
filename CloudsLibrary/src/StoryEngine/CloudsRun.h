@@ -19,11 +19,11 @@ class CloudsRun
 
 	int actCount;
     int questionsAsked;
-    vector<CloudsClip> clipHistory;
+    vector<CloudsClip*> clipHistory;
     vector<string> presetHistory;
 	vector<string> topicHistory;
 
-    bool historyContainsClip(CloudsClip& clip);
+    bool historyContainsClip(CloudsClip* clip);
     
     //only for the last run
 	map<string, int> accumuluatedTopics;
