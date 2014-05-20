@@ -113,7 +113,7 @@ void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
 	
 }
 
-void CloudsHUDController::respondToClip(CloudsClip& clip){
+void CloudsHUDController::respondToClip(CloudsClip* clip){
 	
 //	cout << "ID's on clip " << clip.name << " and fcp id? " << clip.fcpFileId << endl;
 //	cout << "Clip is " <<  clip.getLinkName() << endl;
@@ -127,14 +127,14 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
     
 	//LOWER THIRD
     //update lower third, but only if the speaker has changed
-    if(speaker.fcpID != CloudsSpeaker::speakers[ clip.person ].fcpID){
-        speaker = CloudsSpeaker::speakers[ clip.person ];
+    if(speaker.fcpID != CloudsSpeaker::speakers[ clip->person ].fcpID){
+        speaker = CloudsSpeaker::speakers[ clip->person ];
         populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, false );
         
         if (bVisualSystemDisplayed) {
             // cue up the lower third until the visual system is done
             bLowerThirdCued = true;
-            cuedClipEndTime = ofGetElapsedTimef() + clip.getDuration();
+            cuedClipEndTime = ofGetElapsedTimef() + clip->getDuration();
         }
         else {
             // display the lower third right away
@@ -144,8 +144,8 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
     
 // PROJECT EXAMPLE
 #ifndef OCULUS_RIFT
-	if(clip.hasProjectExample && clip.projectExample.exampleVideos.size() ){
-		CloudsProjectExample example = clip.projectExample;
+	if(clip->hasProjectExample && clip->projectExample.exampleVideos.size() ){
+		CloudsProjectExample example = clip->projectExample;
         string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
         populateProjectExample( videoPath, example.creatorName, "", example.title, true );
 	}
@@ -155,13 +155,8 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 #endif
 }
 
-//<<<<<<< HEAD
 void CloudsHUDController::questionHoverOn(const string& question,bool animate){
 	populateQuestion(question, true, animate);
-//=======
-//void CloudsHUDController::questionHoverOn(string question, bool animate){
-//	populateQuestion(question,true, animate);
-//>>>>>>> master
 }
 
 void CloudsHUDController::questionHoverOff(){

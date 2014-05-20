@@ -7,6 +7,7 @@
 
 class CloudsClip {
   public:
+
 	CloudsClip();
 	
 	string name;
@@ -73,12 +74,12 @@ class CloudsClip {
 	CloudsProjectExample projectExample;
 
     //overlapping clips
-    void addOverlappingClip(CloudsClip& clip);
+    void addOverlappingClip(CloudsClip* clip);
 	void addOverlappingClipID(string clipID);
 //	void removeOverlappingClipName(string clipName);
     vector<string>& getOverlappingClipIDs();
     bool hasOverlappingClips();
-    bool overlapsWithClip(CloudsClip& clip);
+    bool overlapsWithClip(CloudsClip* clip);
     bool overlapsWithClipID(string clipID);
 	
 	bool is30FPS();
@@ -94,8 +95,6 @@ class CloudsClip {
     string getCombinedSRTFile();
     string getFFMpegLine(string alternativeVideoPath, string exportFolder);
     
-
-
 	bool hasMediaAsset;
 	string combinedVideoPath;
 	string voiceOverAudioPath;
@@ -116,7 +115,6 @@ class CloudsClip {
 	ofVec3f adjustRotate;
 	ofVec3f adjustScale;
 	ofVec2f faceCoord;
-	    
     
     //SURYA TODO: Replace contour parameters colour parameters
     //Skin Parameters

@@ -71,7 +71,7 @@ class CloudsPlaybackController : public ofThread {
 	
 	void exit(ofEventArgs & args);
 	
-	vector<CloudsClip> fakeQuestions;
+	vector<CloudsClip*> fakeQuestions;
 	
 	void finishSetup(); //called at the end of the threaded function
 	bool loading;
@@ -80,7 +80,7 @@ class CloudsPlaybackController : public ofThread {
 
 	void threadedFunction();
   protected:
-	vector<CloudsClip> startingNodes;
+	vector<CloudsClip*> startingNodes;
 	//*** CORE CLOUDS STUFF
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
@@ -93,7 +93,7 @@ class CloudsPlaybackController : public ofThread {
 	//STATE STUFF
 	CloudsRun run;
 	CloudsAct* currentAct;
-	CloudsClip currentClip;
+	CloudsClip* currentClip;
 	int numClipsPlayed;
 	string currentTopic;
 	
@@ -110,7 +110,7 @@ class CloudsPlaybackController : public ofThread {
 #endif
 	//transition
 	CloudsPortal* selectedQuestion;
-	CloudsClip selectedQuestionClip;
+	CloudsClip* selectedQuestionClip;
 
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
@@ -156,8 +156,8 @@ class CloudsPlaybackController : public ofThread {
 	bool returnToIntro;
     
 	string prerolledClipID;
-	void prerollClip(CloudsClip& clip, float toTime);
-	void playClip(CloudsClip clip);
+	void prerollClip(CloudsClip* clip, float toTime);
+	void playClip(CloudsClip* clip);
 
 	//VISUAL SYSTEMS
 	//

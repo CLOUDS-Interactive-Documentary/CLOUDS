@@ -18,13 +18,13 @@ class CloudsActEventArgs : public ofEventArgs {
 
 class CloudsClipEventArgs : public ofEventArgs {
   public:
-	CloudsClipEventArgs(CloudsClip& chosenClip, string currentTopic, vector<CloudsDichotomy>& currentDichotomiesBalance)
+	CloudsClipEventArgs(CloudsClip* chosenClip, string currentTopic, vector<CloudsDichotomy>& currentDichotomiesBalance)
 		: chosenClip(chosenClip), currentTopic(currentTopic),currentDichotomiesBalance(currentDichotomiesBalance)
 	{
 		timeUntilNextClip = 0;
 	}
 	
-	CloudsClip& chosenClip;
+	CloudsClip* chosenClip;
 	vector<CloudsDichotomy>& currentDichotomiesBalance;
 	string currentTopic;
 	float timeUntilNextClip;
@@ -40,10 +40,10 @@ class CloudsVisualSystemEventArgs : public ofEventArgs {
 
 class CloudsQuestionEventArgs : public ofEventArgs{
    public:
-    CloudsQuestionEventArgs(CloudsClip& questionClip, string question, string topic)
+    CloudsQuestionEventArgs(CloudsClip* questionClip, string question, string topic)
 		: questionClip(questionClip), question(question), topic(topic){}
 	
-    CloudsClip& questionClip;
+    CloudsClip* questionClip;
 	string question;
 	string topic;
 };
@@ -51,13 +51,13 @@ class CloudsQuestionEventArgs : public ofEventArgs{
 
 class CloudsPreRollEventArgs : public ofEventArgs{
 public:
-    CloudsPreRollEventArgs(CloudsClip& preRollClip, float clipStartTimeOffset)
+    CloudsPreRollEventArgs(CloudsClip* preRollClip, float clipStartTimeOffset)
 		: preRollClip(preRollClip)
     {
         clipStartTimeOffset = 0;
     }
     
-    CloudsClip& preRollClip;
+    CloudsClip* preRollClip;
     float handleLength;
 };
 
