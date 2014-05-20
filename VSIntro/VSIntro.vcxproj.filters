@@ -139,6 +139,9 @@
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.cpp">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -430,6 +433,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

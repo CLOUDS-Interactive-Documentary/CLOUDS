@@ -31,8 +31,9 @@ void testApp::setup(){
 	hud.setup();
 
 #ifdef OCULUS_RIFT
-    intro.hud = &hud;
-    intro.setupHUDGui();
+    // TODO: Re-enable the HUD
+    //intro.hud = &hud;
+    //intro.setupHUDGui();
 #endif
 	intro.setStartQuestions(startingNodes);
 	ofAddListener(intro.events.portalHoverBegan, this, &testApp::portalHoverBegan);
