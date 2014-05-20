@@ -281,7 +281,7 @@ vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
         }
         #ifdef OCULUS_RIFT
         else if(!startingNodes[i]->hasSpecialKeyword("#oculus")){
-            ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i].getID() << " is not tagged for the oculus.";
+            ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i]->getID() << " is not tagged for the oculus.";
             startingNodes.erase(startingNodes.begin() + i);
         }
         #endif
@@ -1287,7 +1287,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
 		return 0;
 	}
 #ifdef OCULUS_RIFT
-	if(ofToLower(potentialNextClip.person) == "higa" || ofToLower(potentialNextClip.person) == "patricio"){
+	if(ofToLower(potentialNextClip->person) == "higa" || ofToLower(potentialNextClip->person) == "patricio"){
         cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
 		return 0;
 	}
