@@ -15,7 +15,7 @@ void CloudsVisualSystemCircuit::selfSetupGui(){
 	blipGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	blipGui->addSlider("BLIP SPEED", 0, 10, &blipSpeed);
-	blipGui->addRangeSlider("BLIP SIZE", 0., 2.0, &pointSizeRange.min, &pointSizeRange.max);
+	blipGui->addRangeSlider("BLIP SIZE", 0.01, 2.0, &pointSizeRange.min, &pointSizeRange.max);
 	blipGui->addRangeSlider("BLIP DISTANCE", 0, 1200.,
 							  &pointDistanceRange.min,
 							  &pointDistanceRange.max);
