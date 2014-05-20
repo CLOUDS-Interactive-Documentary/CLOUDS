@@ -19,9 +19,6 @@
     <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp">
       <Filter>addons\ofxObjLoader\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm.c">
-      <Filter>addons\ofxObjLoader\libs</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
@@ -91,23 +88,14 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.cpp">
-      <Filter>addons\ofxAutoreloadShader\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.cpp">
-      <Filter>addons\ofDirectShowPlayer\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxCv\libs\CLD\src\fdog.cpp">
-      <Filter>addons\ofxCv\CLD\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxCv\libs\CLD\src\ETF.cpp">
-      <Filter>addons\ofxCv\CLD\src</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Circuit\vs_src\CloudsVisualSystemCircuit.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Circuit\vs_src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,41 +150,14 @@
     <Filter Include="CloudsLibrary\src\Input">
       <UniqueIdentifier>{311161e7-1ae0-42e6-9c73-a0fc0372abf4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxColorPalettes">
-      <UniqueIdentifier>{2fe82b45-a394-47e7-b654-34de225b4c39}</UniqueIdentifier>
+    <Filter Include="addons\ofxObjLoader\libs\glm">
+      <UniqueIdentifier>{3c3a084f-1f94-410a-beea-5864fde43503}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxColorPalettes\src">
-      <UniqueIdentifier>{9f72cdd7-bcf2-46d3-a493-6812f0fb6f97}</UniqueIdentifier>
+    <Filter Include="CloudsLibrary\src\VisualSystems\Circuit">
+      <UniqueIdentifier>{c6d6e5a1-f831-4f07-9442-226bbd386435}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxAutoreloadShader">
-      <UniqueIdentifier>{e02eb43c-6992-4c9d-87ab-bd603ce11ff2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxAutoreloadShader\src">
-      <UniqueIdentifier>{683505b1-6cb3-41e3-9e5b-77abc0dc0d9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofDirectShowPlayer">
-      <UniqueIdentifier>{708b066a-2379-437c-af4d-ca9ef2418060}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofDirectShowPlayer\src">
-      <UniqueIdentifier>{f35c3dbb-8223-42e4-8fb8-7b0218ffceed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxCv">
-      <UniqueIdentifier>{b64cff4a-e0a3-4236-955a-b566fb31cf11}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxCv\src">
-      <UniqueIdentifier>{dccac13d-42f6-4768-af22-f29d31b14bb0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxCv\libs">
-      <UniqueIdentifier>{3b946801-c153-4f1a-9fbb-eb58b4210994}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxCv\CLD">
-      <UniqueIdentifier>{280123d4-37de-4f5b-b211-8c0059bebf5c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxCv\CLD\include">
-      <UniqueIdentifier>{561542b4-8b7c-4629-869b-c9a8da669bb6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxCv\CLD\src">
-      <UniqueIdentifier>{79e00c7e-6821-4c21-918b-ac82b293546b}</UniqueIdentifier>
+    <Filter Include="CloudsLibrary\src\VisualSystems\Circuit\vs_src">
+      <UniqueIdentifier>{a5bd867b-a290-4d82-b6a2-d558ce1ca61f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -217,9 +178,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h">
       <Filter>addons\ofxObjLoader\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm.h">
-      <Filter>addons\ofxObjLoader\libs</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
@@ -362,38 +320,14 @@
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Cosmic\vs_src\CloudsVisualSystemCosmic.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxColorPalettes\src\ofxColorPalette.h">
-      <Filter>addons\ofxColorPalettes\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxColorPalettes\src\ofxColorPalettes.h">
-      <Filter>addons\ofxColorPalettes\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAutoReloadedShader\src\ofxAutoReloadedShader.h">
-      <Filter>addons\ofxAutoreloadShader\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofDirectShowVideoPlayer\src\ofDirectShowPlayer.h">
-      <Filter>addons\ofDirectShowPlayer\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxCv\src\ofxCv.h">
-      <Filter>addons\ofxCv\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\ETF.h">
-      <Filter>addons\ofxCv\CLD\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\fdog.h">
-      <Filter>addons\ofxCv\CLD\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\imatrix.h">
-      <Filter>addons\ofxCv\CLD\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\myvec.h">
-      <Filter>addons\ofxCv\CLD\include</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Circuit\vs_src\CloudsVisualSystemCircuit.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Circuit\vs_src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
