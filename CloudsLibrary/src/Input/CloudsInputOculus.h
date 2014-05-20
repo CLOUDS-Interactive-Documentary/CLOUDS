@@ -8,6 +8,8 @@
 
 #pragma once
 
+#ifdef OCULUS_RIFT
+
 #include "CloudsInput.h"
 
 class CloudsInputOculus : public CloudsInput
@@ -26,3 +28,5 @@ public:
 };
 
 void SetCloudsInputOculus();
+
+#endif

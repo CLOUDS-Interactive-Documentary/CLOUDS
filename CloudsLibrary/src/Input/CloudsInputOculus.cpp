@@ -6,6 +6,8 @@
 //
 //
 
+#ifdef OCULUS_RIFT
+
 #include "CloudsInputOculus.h"
 #include "CloudsVisualSystem.h"
 
@@ -43,3 +45,5 @@ void SetCloudsInputOculus()
 {
     SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputOculus()));
 }
+
+#endif
