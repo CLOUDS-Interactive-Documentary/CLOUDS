@@ -358,7 +358,12 @@ void CloudsPlaybackController::showIntro(){
 	resetInterludeVariables();
 	
 #ifdef OCULUS_RIFT
-	introSequence->loadPresetGUISFromName("Oculus");
+    if (CloudsVisualSystem::getOculusRift().isHD()) {
+	    introSequence->loadPresetGUISFromName("Oculus");
+    }
+    else {
+        introSequence->loadPresetGUISFromName("OculusSD");
+    }
 #else
 	introSequence->loadPresetGUISFromName("TunnelWarp");
 #endif
