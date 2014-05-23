@@ -18,8 +18,8 @@ void testApp::setup(){
     
 	
 	rgbd.setup();
-	rgbd.forceScreenResolution(1920*2,1080*2);
-	rgbd.setDrawToScreen(false);
+	//rgbd.forceScreenResolution(1920*2,1080*2);
+	//rgbd.setDrawToScreen(false);
 	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
 	
