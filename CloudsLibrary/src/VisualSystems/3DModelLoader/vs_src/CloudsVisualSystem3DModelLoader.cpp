@@ -3,7 +3,7 @@
 //
 
 #include "CloudsVisualSystem3DModelLoader.h"
-
+#include "ofxBinaryMesh.h"
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystem3DModelLoader::selfSetupGui()
@@ -245,7 +245,7 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 		{
 			string parent = e.getToggle()->getParent()->getName();
 			cout << "**** " << name << " TRIGGERED TOGGLE " << parent << endl;
-		
+			
 			if (parent == "shaders")
 			{
 				//switch to this active shader from a shader map
@@ -264,8 +264,9 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 					if(objFiles[i] == name )
 					{
 						cout << "loading model: " << name << endl;
+						loadModel(name);
 						//loadModel( "models/" + name, bSmoothModel );
-						loadModel( getVisualSystemDataPath(true) + "models/" + name, bSmoothModel );
+						//loadModel( getVisualSystemDataPath(true) + "models/" + name, bSmoothModel );
 					}
 				}
 			}
@@ -380,19 +381,19 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 {
 	
 	//get list of models from the model directory
-	string path = getVisualSystemDataPath(true) + "models/";
+	string path = getVisualSystemDataPath(true) + "models_binary/";
 //	string path = getVisualSystemDataPath(false) + "models/";
 	cout << "model path: " << path << endl;
 	
 	ofDirectory dir;
-	dir.allowExt("obj");
+	dir.allowExt("obm");
 	dir.listDir( path );
 	for(int i = 0; i < dir.numFiles(); i++){
 		objFiles.push_back( dir.getName(i) );
-		cout << "OBJ FILE NAME: " << dir.getName( i ) << endl;
+		cout << "OBM FILE NAME: " << dir.getName( i ) << endl;
 	}
 	
-	path = getVisualSystemDataPath(true) + "cameraPaths/";
+	path = getVisualSystemDataPath() + "cameraPaths/";
 	cout << "camera path path: " << path << endl;
 	
 	ofDirectory camdir;
@@ -468,7 +469,7 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 	
 	//load our non-model meshes
 
-	ofxObjLoader::load( getVisualSystemDataPath() + "arrow.obj", arrowMesh, true );
+	//ofxObjLoader::load( getVisualSystemDataPath() + "arrow.obj", arrowMesh, true );
 	resizeTheArrowMesh( arrowRadius, arrowHeight, arrowPointHeight );
 	
 	loadCameraLineModel( cameraLines, getVisualSystemDataPath() + "cameraVertices.txt" );
@@ -888,19 +889,24 @@ void CloudsVisualSystem3DModelLoader::drawBoundingBox()
 	ofPopMatrix();
 };
 
-void CloudsVisualSystem3DModelLoader::loadModel( string fileName, bool bSmoothMesh )
+void CloudsVisualSystem3DModelLoader::loadModel( string fileName )
 {
 //	perspCam.reset();
 	cout << "*** LOADING MODEL " << fileName << endl;
-	string filePath = getVisualSystemDataPath(true) + fileName;
+	string filePath = getVisualSystemDataPath(true) + "models_binary/" + fileName;
 //	string filePath = getVisualSystemDataPath(false) + fileName;
+	
+	//ofStringReplace(filePath,"models/", "models_binary/");
+	//ofStringReplace(filePath,".obj", ".obm");
+
 	if(!ofFile(filePath).exists()){
 		ofLogError("CloudsVisualSystem3DModelLoader::loadModel") << filePath << " Doesn't exist";
 	}
 	else{
 		cout << "Found path " << filePath << " to exist" << endl;
 	}
-	ofxObjLoader::load(filePath, modelMesh, true );
+	ofxBinaryMesh::load(filePath, modelMesh);
+//	ofxObjLoader::load(filePath, modelMesh, true );
 //	ofxObjLoader::load_oldway(filePath, modelMesh, true );
 	cout << "*** FULL PATH " << filePath << " FOUND " << modelMesh.getNumVertices() << " verts " <<  endl;
 
@@ -908,14 +914,7 @@ void CloudsVisualSystem3DModelLoader::loadModel( string fileName, bool bSmoothMe
 
 	float mScl = maxDim / max( maxBound.x - minBound.x, max(maxBound.y-minBound.y, maxBound.z - minBound.z ));
 	modelScl.set( mScl, mScl, mScl );
-	
-//	if(bSmoothMesh)
-//	{
-//		smoothMesh( modelMesh, modelMesh );
-//	}else{
-//		facetMesh( modelMesh, modelMesh );
-//	}
-	
+
 	updateModelTransform();
 	
 	setupMultipleCameras( modelTransform.getPosition() );

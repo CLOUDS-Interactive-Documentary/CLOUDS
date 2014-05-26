@@ -37,146 +37,146 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Assasin_triangualated.obj</Name>
+    <Name>Assasin_triangualated.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BigCube_ErrodedTriangulate.obj</Name>
+    <Name>BigCube_ErrodedTriangulate.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BigCube_triangulate.obj</Name>
+    <Name>BigCube_triangulate.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>CheesePuffsTriangulated.obj</Name>
+    <Name>CheesePuffsTriangulated.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>elephant.obj</Name>
+    <Name>elephant.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ellipsoid1.obj</Name>
+    <Name>ellipsoid1.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ellipsoid2(2).obj</Name>
+    <Name>ellipsoid2(2).obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ellipsoid2.obj</Name>
+    <Name>ellipsoid2.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>eyeball__obj.obj</Name>
+    <Name>eyeball__obj.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FallenCubes_Triangulated.obj</Name>
+    <Name>FallenCubes_Triangulated.obm</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FallingChairs_Triangulated.obj</Name>
+    <Name>FallingChairs_Triangulated.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>folding-small-simplified.obj</Name>
+    <Name>folding-small-simplified.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Hive_triangulated1.obj</Name>
+    <Name>Hive_triangulated1.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Hive_triangulated2.obj</Name>
+    <Name>Hive_triangulated2.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Hive_Triangulated3.obj</Name>
+    <Name>Hive_Triangulated3.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>house_wood.obj</Name>
+    <Name>house_wood.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Hypersphere1.obj</Name>
+    <Name>Hypersphere1.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Kelp.obj</Name>
+    <Name>Kelp.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Kelp2.obj</Name>
+    <Name>Kelp2.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Man.obj</Name>
+    <Name>Man.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Man_Bicycle.obj</Name>
+    <Name>Man_Bicycle.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>NestedBrokenSphere.obj</Name>
+    <Name>NestedBrokenSphere.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>pathDebugModel.obj</Name>
+    <Name>pathDebugModel.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>StackofChairs_Triangulated.obj</Name>
+    <Name>StackofChairs_Triangulated.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SucculentTriangulated.obj</Name>
+    <Name>SucculentTriangulated.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Tangle_Triangulated.obj</Name>
+    <Name>Tangle_Triangulated.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>tube1.obj</Name>
+    <Name>tube1.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>voronoi.obj</Name>
+    <Name>voronoi.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Vortex_Triangulated.obj</Name>
+    <Name>Vortex_Triangulated.obm</Name>
     <Value>0</Value>
 </Widget>

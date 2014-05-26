@@ -57,6 +57,7 @@ ${NEWPREFIX}ofxPtf
 ${NEWPREFIX}ofxNearestNeighbour
 ${NEWPREFIX}ofxPostProcessing
 ${NEWPREFIX}ofxSubtitles
+${NEWPREFIX}ofxBinaryMesh
 
 # git clone https://github.com/kylemcdonald/ofxCv
 ${NEWPREFIX}ofxCv

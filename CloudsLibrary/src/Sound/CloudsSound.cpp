@@ -119,7 +119,7 @@ void CloudsSound::setup(){
 		}
 		
 		//load all rendered tracks
-		ofDirectory dir(GetCloudsDataPath() + "sound/renders/");
+		ofDirectory dir(GetCloudsDataPath(true) + "sound/renders/");
 		dir.allowExt("wav");
 		dir.allowExt("aiff");
 		dir.allowExt("mp3");
@@ -166,7 +166,7 @@ void CloudsSound::threadedFunction(){
 				backMixLevel = frontMixLevel;
 			}
 			
-			//		string filename = GetCloudsDataPath() + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
+			//		string filename = GetCloudsDataPath(true) + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
 			if(ofFile(track.trackPath).exists()){
 				frontPlayer->loadSound(track.trackPath);
 				currentTrackKey = ofFilePath::getBaseName(track.trackPath);
@@ -174,7 +174,7 @@ void CloudsSound::threadedFunction(){
 				frontMixLevel = track.mixLevel;
 			}
 			else{
-				frontPlayer->loadSound(GetCloudsDataPath() + "sound/renders/1.mp3");
+				frontPlayer->loadSound(GetCloudsDataPath(true) + "sound/renders/1.mp3");
 				frontMixAttenuate = 1.0;
 				ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << track.trackPath;
 			}
@@ -464,7 +464,7 @@ void CloudsSound::enterTunnel()
 	QueuedTrack t;
 	t.mixLevel = 1.0;
 	t.startTime = ofGetElapsedTimef();
-	t.trackPath = GetCloudsDataPath() + "sound/renders/tunnel.mp3";
+	t.trackPath = GetCloudsDataPath(true) + "sound/renders/tunnel.mp3";
 	lock();
 	queuedTracks.push_back(t);
 	unlock();
@@ -505,7 +505,7 @@ void CloudsSound::enterClusterMap()
 	QueuedTrack t;
 	t.mixLevel = 1.0;
 	t.startTime = ofGetElapsedTimef();
-	t.trackPath = GetCloudsDataPath() + "sound/renders/cloudsdream_mix1.mp3";
+	t.trackPath = GetCloudsDataPath(true) + "sound/renders/cloudsdream_mix1.mp3";
 	lock();
 	queuedTracks.push_back(t);
 	unlock();

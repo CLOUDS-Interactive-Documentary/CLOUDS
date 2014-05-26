@@ -178,7 +178,7 @@
     <GenerateManifest>true</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Oculus|x64'">
-    <TargetName>$(ProjectName)_debug</TargetName>
+    <TargetName>$(ProjectName)_OCULUS_debug</TargetName>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
   </PropertyGroup>
@@ -197,6 +197,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Oculus|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_OCULUS</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -290,7 +291,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>ftgl_static_D.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <OutputFile>$(OutDir)$(TargetName)_OCULUS$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"

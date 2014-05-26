@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "ofxObjLoader.h"
+//#include "ofxObjLoader.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsOrthoCamera.h"
 #include "CloudsPathCamera.h"
@@ -93,7 +93,7 @@ class CloudsVisualSystem3DModelLoader : public CloudsVisualSystem {
 	void loadShaders();
 	void addToShaderMap( string name, ofShader* shader );
 	
-	void loadModel( string fileName, bool bSmoothMesh = false );
+	void loadModel( string fileName );
 	void calcBoundingBox();
 	void drawBoundingBox();
 	string vec3ToString( ofVec3f v, int precision=3 );

@@ -26,7 +26,7 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
 	QueuedTrack t;
 	t.mixLevel = mixlevel;
 	t.startTime = ofGetElapsedTimef() + outskip;
-	t.trackPath = GetCloudsDataPath() + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
+	t.trackPath = GetCloudsDataPath(true) + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
 	lock();
 	queuedTracks.push_back(t);
 	unlock();
