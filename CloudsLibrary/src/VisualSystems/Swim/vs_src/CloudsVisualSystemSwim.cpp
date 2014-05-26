@@ -5,10 +5,6 @@
 #include "CloudsVisualSystemSwim.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
 
 const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
 
@@ -38,6 +34,7 @@ void CloudsVisualSystemSwim::selfSetup()
     volumeControl.value(0);
     synth.setOutputGen(buildSynth());
 }
+
 void CloudsVisualSystemSwim::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
@@ -278,7 +275,6 @@ void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& para
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath)
 {
-    
     //regenerate = true;
 }
 

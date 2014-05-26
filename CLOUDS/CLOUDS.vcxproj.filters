@@ -1153,6 +1153,9 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxBinaryMesh\src\ofxBinaryMesh.cpp">
+      <Filter>addons\ofxBinaryMesh\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1367,6 +1370,12 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\RGBD\BackgroundParticles">
       <UniqueIdentifier>{5b8926ba-681d-450c-a159-6a640e1fb385}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBinaryMesh">
+      <UniqueIdentifier>{6ceec6bf-e927-4271-97dc-a344e4dafef2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBinaryMesh\src">
+      <UniqueIdentifier>{11ce0b07-6ae0-4426-8d5d-85163dad0340}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2986,6 +2995,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
       <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxBinaryMesh\src\ofxBinaryMesh.h">
+      <Filter>addons\ofxBinaryMesh\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

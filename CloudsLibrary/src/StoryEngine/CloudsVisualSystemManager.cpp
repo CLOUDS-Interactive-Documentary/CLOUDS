@@ -86,11 +86,8 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemProcess11.h"
 #include "CloudsVisualSystemProcess18.h"
 #include "CloudsVisualSystemRGBDVideo.h"
-
 #include "CloudsVisualSystemRandomDigits2.h"
-
 #include "CloudsVisualSystemReplicator.h"
-
 #include "CloudsVisualSystemRipples.h"
 #include "CloudsVisualSystemRulez.h"
 #include "CloudsVisualSystemSatoruhiga.h"
@@ -143,138 +140,7 @@ struct Mapping {
 		return map<string,tConstructor>::value_type(classname, constructor);
 	}
 } mapping[] = {
-	/*
-	{ "2DVideo", &fCreate<CloudsVisualSystem2DVideo> },
-	{ "3DModelLoader", &fCreate<CloudsVisualSystem3DModelLoader> },
-	{ "Astrolabe", &fCreate<CloudsVisualSystemAstrolabe> },
-	{ "Automata", &fCreate<CloudsVisualSystemAutomata> },
-	{ "BallDroppings", &fCreate<CloudsVisualSystemBallDroppings> },
-	{ "Chromogram", &fCreate<CloudsVisualSystemChromogram> },
-	{ "CirclePacking", &fCreate<CloudsVisualSystemCirclePacking> },
 	
-///////64 bit
-//	{ "Circuit", &fCreate<CloudsVisualSystemCircuit> },
-///////
-	
-	{ "Cities", &fCreate<CloudsVisualSystemCities> },
-	{ "Code", &fCreate<CloudsVisualSystemCode> },
-	{ "Colony", &fCreate<CloudsVisualSystemColony> },
-	{ "Connectors", &fCreate<CloudsVisualSystemConnectors> },
-	{ "Cosmic", &fCreate<CloudsVisualSystemCosmic> },
-	{ "CubeCraft", &fCreate<CloudsVisualSystemCubeCraft> },
-	{ "DataCascade", &fCreate<CloudsVisualSystemDataCascade> },
-	{ "DrawnLine", &fCreate<CloudsVisualSystemDrawnLine> },
-	{ "Empty", &fCreate<CloudsVisualSystemEmpty> },
-	{ "ExampleBox2D", &fCreate<CloudsVisualSystemExampleBox2D> },
-	{ "ExampleMPMFluid", &fCreate<CloudsVisualSystemExampleMPMFluid> },
-	{ "ExampleOpenSteer", &fCreate<CloudsVisualSystemExampleOpenSteer> },
-	{ "ExampleVectorMath", &fCreate<CloudsVisualSystemExampleVectorMath> },
-	{ "Fireworks", &fCreate<CloudsVisualSystemFireworks> },
-	{ "Flocking", &fCreate<CloudsVisualSystemFlocking> },
-	
-///////64 bit
-//	{ "Flying", &fCreate<CloudsVisualSystemFlying> },
-///////
-
-	{ "ForkingPaths", &fCreate<CloudsVisualSystemForkingPaths> },
-///NOT USED
-//	{ "GPUParticles", &fCreate<CloudsVisualSystemGPUParticles> },
-	{ "GesturePaint", &fCreate<CloudsVisualSystemGesturePaint> },
-///////64 bit
-//	{ "Histogram", &fCreate<CloudsVisualSystemHistogram> },
-///////
-	{ "LIA", &fCreate<CloudsVisualSystemLIA> },
-	{ "LSystem", &fCreate<CloudsVisualSystemLSystem> },
-	{ "LaplacianTunnel", &fCreate<CloudsVisualSystemLaplacianTunnel> },
-	{ "Mandala", &fCreate<CloudsVisualSystemMandala> },
-	{ "MarchingCubes", &fCreate<CloudsVisualSystemMarchingCubes> },
-	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
-    { "MazeGenerator2", &fCreate<CloudsVisualSystemMazeGenerator2> },
-	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
-///NOT USED
-//	{ "Metaballs", &fCreate<CloudsVisualSystemMetaballs> },
-//	{ "Nbody", &fCreate<CloudsVisualSystemNbody> },
-	
-///////64 bit
-//	{ "Neurons", &fCreate<CloudsVisualSystemNeurons> },
-///
-	
-	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
-//	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
-//	{ "OpenP5Caustics", &fCreate<CloudsVisualSystemOpenP5Caustics> },
-///////64 bit
-//	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
-//////
-	{ "OpenP5Fifteen", &fCreate<CloudsVisualSystemOpenP5Fifteen> },
-	{ "OpenP5Hackpact", &fCreate<CloudsVisualSystemOpenP5Hackpact> },
-	{ "OpenP5Machine", &fCreate<CloudsVisualSystemOpenP5Machine> },
-	{ "OpenP5NoiseSphere", &fCreate<CloudsVisualSystemOpenP5NoiseSphere> },
-	{ "OpenP5SeaOfLines", &fCreate<CloudsVisualSystemOpenP5SeaOfLines> },
-
-///////64 bit
-//	{ "OpenP5Sixteen", &fCreate<CloudsVisualSystemOpenP5Sixteen> },
-////////
-
-	{ "OpenP5SpaceJunk", &fCreate<CloudsVisualSystemOpenP5SpaceJunk> },
-	{ "OpenP5Spaghetti", &fCreate<CloudsVisualSystemOpenP5Spaghetti> },
-	{ "OpenP5SpinningSolids", &fCreate<CloudsVisualSystemOpenP5SpinningSolids> },
-	{ "OpenP5TextUniverse", &fCreate<CloudsVisualSystemOpenP5TextUniverse> },
-	{ "Orbit", &fCreate<CloudsVisualSystemOrbit> },
-	{ "Oscillations", &fCreate<CloudsVisualSystemOscillations> },
-	{ "Pages", &fCreate<CloudsVisualSystemPages> },
-///////64 bit
-//	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
-///////
-	{ "PhotoGlitch", &fCreate<CloudsVisualSystemPhotoGlitch> },
-	{ "Process11", &fCreate<CloudsVisualSystemProcess11> },
-	{ "Process18", &fCreate<CloudsVisualSystemProcess18> },
-	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
-
-///////64 bit
-///    { "RandomDigits2", &fCreate<CloudsVisualSystemRandomDigits2> },
-///////
-	
-///////64 bit
-//	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
-///////
-	
-	{ "Ripples", &fCreate<CloudsVisualSystemRipples> },
-	{ "Rulez", &fCreate<CloudsVisualSystemRulez> },
-	{ "Satoruhiga", &fCreate<CloudsVisualSystemSatoruhiga> },
-	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
-    { "Schlabberbox", &fCreate<CloudsVisualSystemSchlabberbox> },
-
-///////64 bit
-///	{ "Swim", &fCreate<CloudsVisualSystemSwim> }, // TEMP
-///////
-	
-	{ "Terrain", &fCreate<CloudsVisualSystemTerrain> },
-///////64 bit
-//	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
-////////
-//	{ "TunnelDrawing", &fCreate<CloudsVisualSystemTunnelDrawing> },
-////////
-	{ "Twitter", &fCreate<CloudsVisualSystemTwitter> },
-//	{ "Uextrude", &fCreate<CloudsVisualSystemUextrude> },
-	{ "VectorFlow", &fCreate<CloudsVisualSystemVectorFlow> },
-	{ "VerletForm", &fCreate<CloudsVisualSystemVerletForm> },
-	
-///////64 bit
-//	{ "Vision", &fCreate<CloudsVisualSystemVision> },
-///////64 bit
-	
-	{ "Voro", &fCreate<CloudsVisualSystemVoro> },
-///////64 bit
-//	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
-///////64 bit
-
-	{ "World", &fCreate<CloudsVisualSystemWorld> },
-	{ "WormHole", &fCreate<CloudsVisualSystemWormHole> },
-	{ "Xstatic", &fCreate<CloudsVisualSystemXstatic> },
-	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> }	
-	
-=======
-	*/
 	{ "2DVideo",				&fCreate<CloudsVisualSystem2DVideo> },
 	{ "3DModelLoader",			&fCreate<CloudsVisualSystem3DModelLoader> },
 	{ "Astrolabe",				&fCreate<CloudsVisualSystemAstrolabe> },
@@ -356,7 +222,6 @@ struct Mapping {
 	{ "WormHole",				&fCreate<CloudsVisualSystemWormHole> },
 	{ "Xstatic",				&fCreate<CloudsVisualSystemXstatic> },
 	{ "YellowTail",				&fCreate<CloudsVisualSystemYellowTail> }
-//>>>>>>> master
 };
 
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
