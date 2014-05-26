@@ -813,7 +813,7 @@ void CloudsVisualSystemWormHole::facetMesh( ofMesh& smoothedMesh, ofMesh& target
 
 Tonic::Generator CloudsVisualSystemWormHole::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
     
     Tonic::SampleTable samples[4];

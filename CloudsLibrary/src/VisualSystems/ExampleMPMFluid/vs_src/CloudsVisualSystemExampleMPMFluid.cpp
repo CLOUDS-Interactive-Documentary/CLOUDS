@@ -365,7 +365,7 @@ void CloudsVisualSystemExampleMPMFluid::selfMouseReleased(ofMouseEventArgs& data
 
 Tonic::Generator CloudsVisualSystemExampleMPMFluid::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
     string strAbsPath = sdir.getAbsolutePath() + "/slowchimes.aif";
     Tonic::SampleTable sample = Tonic::loadAudioFile(strAbsPath);

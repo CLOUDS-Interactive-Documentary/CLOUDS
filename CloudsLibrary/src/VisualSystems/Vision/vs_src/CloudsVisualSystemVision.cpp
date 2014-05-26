@@ -837,7 +837,7 @@ void CloudsVisualSystemVision::guiRenderEvent(ofxUIEventArgs &e)
 
 Tonic::Generator CloudsVisualSystemVision::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
     
     Tonic::SampleTable samples[2];

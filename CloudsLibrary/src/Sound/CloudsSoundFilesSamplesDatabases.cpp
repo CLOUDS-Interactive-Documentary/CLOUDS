@@ -108,7 +108,7 @@ void CloudsSound::loadRTcmixSamples()
         cout << "SOUND: LOADING SAMPLES...";
     }
     
-    string spath = GetCloudsDataPath() + "sound/samps/";
+    string spath = GetCloudsDataPath(true) + "sound/samps/";
     ofDirectory sdir(spath);
     
     // load individual base hits

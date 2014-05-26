@@ -130,7 +130,7 @@ void STREAMSOUND(double outskip, string file, double dur, double amp)
     
     char thebuf [256];
     int bx;
-    string p = GetCloudsDataPath() + "sound/trax/";
+    string p = GetCloudsDataPath(true) + "sound/trax/";
     ofDirectory sdir(p);
     
     string f = sdir.getAbsolutePath()+"/"+file;
@@ -155,7 +155,7 @@ void STREAMSOUND_DYNAMIC(double outskip, string file, double amp)
 {
     char thebuf [256];
     int bx;
-    string p = GetCloudsDataPath() + "sound/trax/";
+    string p = GetCloudsDataPath(true) + "sound/trax/";
     ofDirectory sdir(p);
     
     string f = sdir.getAbsolutePath()+"/"+file;

@@ -231,13 +231,9 @@ void CloudsVisualSystemOpenP5Machine::selfMouseReleased(int x, int y, int button
 
 Generator CloudsVisualSystemOpenP5Machine::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures";
+    string strDir = GetCloudsDataPath(true)+"sound/textures";
     ofDirectory sdir(strDir);
-//    string strAbsPath = sdir.getAbsolutePath() + "/Machine.aif";
-//    for(int i=0; i<tonicSamples.size();i++){
-    string strAbsPath = ofToDataPath(strDir + "/" + "Machine.aif");
-//        samples[i] = loadAudioFile(strAbsPath);
-//    }
+    string strAbsPath = ofToDataPath(strDir + "/Machine.aif");
     SampleTable sample = loadAudioFile(strAbsPath);
     
     Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);

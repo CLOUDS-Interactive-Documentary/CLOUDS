@@ -471,7 +471,7 @@ void CloudsVisualSystemMemory::selfDrawBackground()
 
 Generator CloudsVisualSystemMemory::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
 //    string strAbsPath = sdir.getAbsolutePath() + "/CPUBeepsFastDrone_.aif";
     string strAbsPath = ofToDataPath(strDir + "/" + "CPUBeepsFastDrone_.aif", true);

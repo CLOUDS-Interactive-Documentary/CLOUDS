@@ -464,12 +464,10 @@ void CloudsVisualSystemVectorFlow::initBlurFilter()
 
 Generator CloudsVisualSystemVectorFlow::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath(true)+"sound/textures/";
     
     ofDirectory sdir(strDir);
-    //string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif";
-    //string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif"; //Wind 2. aif
-    string strAbsPath = ofToDataPath(strDir + "/" +"Wind 2.aif", true);
+    string strAbsPath = ofToDataPath(strDir + "/Wind 2.aif", true);
     
     SampleTable sample = loadAudioFile(strAbsPath);
     

@@ -186,7 +186,7 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     for (int i=0; i<5; i++)
     {
         ostringstream fn;
-        fn << GetCloudsDataPath() << "sound/triggers/drip" << i+1 << ".aif";
+        fn << GetCloudsDataPath(true) << "sound/triggers/drip" << i+1 << ".aif";
         soundsLoaded &= samplePlayer[i].loadSound(fn.str());
         samplePlayer[i].setMultiPlay(true);
         samplePlayer[i].setSpeed(0.5);
@@ -195,7 +195,7 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     for (int i=0; i<5; i++)
     {
         ostringstream fn;
-        fn << GetCloudsDataPath() << "sound/triggers/cardboard" << i+1 << ".aif";
+        fn << GetCloudsDataPath(true) << "sound/triggers/cardboard" << i+1 << ".aif";
 
         soundsLoaded &= samplePlayer[i+5].loadSound(fn.str());
         samplePlayer[i+5].setMultiPlay(true);

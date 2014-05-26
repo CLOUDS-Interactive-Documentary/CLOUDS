@@ -239,7 +239,7 @@ void CloudsVisualSystemReplicator::guiRenderEvent(ofxUIEventArgs &e){
 
 Tonic::Generator CloudsVisualSystemReplicator::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
     
     Tonic::SampleTable samples[2];

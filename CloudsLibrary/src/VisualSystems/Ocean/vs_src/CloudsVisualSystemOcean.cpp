@@ -356,7 +356,7 @@ void CloudsVisualSystemOcean::guiRenderEvent(ofxUIEventArgs &e){
 
 Generator CloudsVisualSystemOcean::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
     
     SampleTable samples[2];

@@ -503,7 +503,7 @@ void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
 
 Tonic::Generator CloudsVisualSystemColony::buildSynth()
 {
-    string strDir = GetCloudsDataPath()+"sound/textures/";
+    string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
     
     SampleTable samples[3];
