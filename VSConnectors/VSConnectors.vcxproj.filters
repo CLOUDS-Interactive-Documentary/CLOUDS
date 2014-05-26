@@ -109,9 +109,11 @@
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
       <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -354,9 +356,11 @@
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
     <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
       <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -290,6 +290,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>ftgl_static_D.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)_OCULUS$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
@@ -390,6 +391,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>ftgl_static.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"

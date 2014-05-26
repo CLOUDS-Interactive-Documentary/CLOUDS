@@ -14,7 +14,7 @@ static bool confirmedDataPath = false;
 static bool usingDevelopmentFolder = false;
 
 //--------------------------------------------------------------------
-static string GetCloudsDataPath()
+static string GetCloudsDataPath(bool ignored = false)
 {
 	if(!confirmedDataPath){
 		usingDevelopmentFolder = ofDirectory("../../../CloudsData/").exists();
@@ -23,18 +23,18 @@ static string GetCloudsDataPath()
 		}
 		confirmedDataPath = true;
 	}
-    return usingDevelopmentFolder ? "../../../CloudsData/" : "CloudsData/";
+    return string(usingDevelopmentFolder ? "../../../" : "") + "CloudsData"  + (ignored ? "_ignored" : "") + "/";
 }
 
 static string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder = false){
 	//  building from src project file
 	string datapath;
 	if(ofDirectory("../../../CloudsData/").exists()){
-		datapath = string("../../../CloudsData/visualsystems") + (ignoredFolder ? "_ignored" : "") + "/" + systemName + "/";
+		datapath = string("../../../CloudsData") + (ignoredFolder ? "_ignored" : "") + "/visualsystems/" + systemName + "/";
 	}
 	//  stand alone full app
 	else if(ofDirectory("CloudsData/").exists()){
-		datapath =  string("CloudsData/visualsystems") + (ignoredFolder ? "_ignored" : "") + "/" + systemName + "/";
+		datapath =  string("CloudsData") + (ignoredFolder ? "_ignored" : "") + "/visualsystems/" + systemName + "/";
 	}
 	//  stand alone single app
 	else{
