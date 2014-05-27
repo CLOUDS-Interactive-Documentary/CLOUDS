@@ -1,4 +1,3 @@
-
 #version 120
 #extension GL_ARB_texture_rectangle : enable
 
@@ -6,10 +5,10 @@ uniform vec4 fogColor;
 uniform float useFog;
 
 uniform float groundDrama;
-uniform float maxHeight;// = 10.;
+uniform float maxHeight;
 
-uniform vec4 groundColor;// = vec4( .4, 1., .6, 1.);
-uniform vec4 undergroundColor;// = vec4( .6 ,.2, .1, 1.);
+uniform vec4 groundColor;
+uniform vec4 undergroundColor;
 uniform vec4 cloudShadowColor;
 uniform float cloudShadow;
 
@@ -53,7 +52,9 @@ void main(void)
 	vec4 topColor = mix( undergroundColor, groundColor, pow(1.2*vertex.y/(maxHeight*groundDrama),2.) );
 	if(vNormal.y > .5)
 	{
-		gl_FragColor = topColor;//mix( undergroundColor, groundColor, pow(1.2*vertex.y/(maxHeight*groundDrama),2.) );// * (groundSample*.75+.5);
+		gl_FragColor = topColor;
+		//mix( undergroundColor, groundColor, pow(1.2*vertex.y/(maxHeight*groundDrama),2.) );
+		// * (groundSample*.75+.5);
 	}
 	else{
 		gl_FragColor = mix(undergroundColor, topColor, pow(vMix, 2.) );

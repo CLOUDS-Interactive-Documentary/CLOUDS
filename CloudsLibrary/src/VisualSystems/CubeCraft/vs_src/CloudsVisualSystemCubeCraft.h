@@ -95,19 +95,6 @@ public:
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-	//	ofCamera& getCameraRef(){
-	//		return myCustomCamera;
-	//	}
-	
-	
-//	ofCamera& getCameraRef(){
-//		//		return cloudsCamera;
-//		return camera;
-//	}
-	
 protected:
 	
 	void loadFileToGeometry( string loc, vector<ofVec3f>& points );

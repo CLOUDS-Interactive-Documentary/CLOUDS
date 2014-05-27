@@ -282,6 +282,48 @@ void CloudsVisualSystemCubeCraft::guiSystemEvent(ofxUIEventArgs &e){
 
 void CloudsVisualSystemCubeCraft::selfSetDefaults()
 {
+	dimX = dimY = dimZ = 0;
+	halfDimX = halfDimY = halfDimZ = 0;
+
+	voxelIndexCount = 0;
+	cubeIndexCount = 0;
+
+	
+	noiseTime = 0.0;
+	lastTime = 0.0;
+	speed = 0.0;;
+	noiseThreshold = 0.0;
+	noiseScale = 0.0; 
+	edgeWidth = 0.0;
+
+	bFillCubes = false; 
+	bScaleCubes = false;;
+	
+	edgeSmoothing = 0.0;
+	cubeScale = 1.0;
+	specExpo = 0.0;
+	specScale = 0.0;
+	
+	fogDist = 0.0; 
+	fogExpo = 0.0;
+	
+	bUseFog = false;
+	
+	bDrawVoxels = false, 
+	bDrawCubeCraft = false;
+	
+	
+	groundDrama = 0.0;
+	cloudThreshold = 0.0;
+	cloudHeight = 0.0;
+
+	cloudSpeed = 0.0;
+	cloudThickness = 0.0;
+	cloudShadow = 0.0;
+
+	mineCraftDimX = 0;
+	mineCraftDimY = 0;
+
 	//defaults
 	bDrawVoxels = bDrawCubeCraft = false;
 	
@@ -311,7 +353,8 @@ void CloudsVisualSystemCubeCraft::selfSetDefaults()
 	specExpo = 4;
 	specScale = 1.2;
 	
-	
+
+
 	//cube craft
 	updateAllColors();
     
@@ -335,7 +378,6 @@ void CloudsVisualSystemCubeCraft::selfSetup()
 {
 	
 	//gui
-
 	colorMap.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png");
 	
 	//cout << "Number of boxes == " << (dimX * dimY * dimZ) << endl;
@@ -474,10 +516,11 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	float scale = 30.;
 	ofPushMatrix();
 	ofScale(scale,scale,scale);
+	ofVec3f cp = getCameraRef().getPosition() / scale;
+	ofVec3f cloudVel = noiseDirection * noiseTime * cloudSpeed;
 	
 	mineCraftGroundShader.begin();
 
-	mineCraftGroundShader.begin();
 	mineCraftGroundShader.setUniform1f("maxHeight", 10);
 	mineCraftGroundShader.setUniform1f("cameraCutoffDistance", 3);
 	
@@ -491,9 +534,6 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 
 	mineCraftGroundShader.setUniform1f("useFog", bUseFog);
 
-	fc = fillColor2;
-	mineCraftGroundShader.setUniform4f("specularColor", fc.r, fc.g, fc.b, fc.a );
-
 	fc = groundColor;
 	mineCraftGroundShader.setUniform4f("groundColor", fc.r, fc.g, fc.b, fc.a );
 
@@ -503,14 +543,13 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	fc = cloudShadowColor;
 	mineCraftGroundShader.setUniform4f("cloudShadowColor", fc.r, fc.g, fc.b, fc.a );
 
-	ofVec3f cp = getCameraRef().getPosition() / scale;
+	//ofVec3f cp = getCameraRef().getPosition() / scale;
 	mineCraftGroundShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
 	
 	mineCraftGroundShader.setUniform1f("cloudThreshold", cloudThreshold);
 	mineCraftGroundShader.setUniform1f("cloudShadow", 1. - cloudShadow);
 	mineCraftGroundShader.setUniform1f("groundDrama", groundDrama);
 
-	ofVec3f cloudVel = noiseDirection * noiseTime * cloudSpeed;
 	mineCraftGroundShader.setUniform3f("noiseOffset", cloudVel.x, cloudVel.y, cloudVel.z);
 	mineCraftGroundShader.setUniform3f("cameraOffset", -cameraOffset.x, 0., -cameraOffset.z);
 	
@@ -519,7 +558,7 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
 
 	mineCraftGroundShader.end();
-	
+
 	
 	//CLOUDS
 	mineCraftCloudsShader.begin();
