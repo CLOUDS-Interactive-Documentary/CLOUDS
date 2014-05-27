@@ -5,9 +5,9 @@
 uniform vec3 cameraPos;
 uniform float cameraCutoffDistance;
 
-uniform float cloudThreshold = .55;
-uniform float cloudHeight = 0.;
-uniform float cloudThickness = 8.;
+uniform float cloudThreshold;// = .55;
+uniform float cloudHeight;// = 0.;
+uniform float cloudThickness;// = 8.;
 
 uniform vec3 noiseOffset;
 uniform vec3 cameraOffset;

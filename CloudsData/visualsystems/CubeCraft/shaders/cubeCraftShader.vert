@@ -27,11 +27,11 @@ varying float isGround;
 varying float isCloud;
 
 varying vec4 groundSample;
-uniform float groundDrama = .75;
+uniform float groundDrama;// = .75;
 
-uniform float cloudThreshold = .55;
-uniform float cloudHeight = 4.;
-uniform float cloudThickness = 8.;
+uniform float cloudThreshold;// = .55;
+uniform float cloudHeight;// = 4.;
+uniform float cloudThickness;// = 8.;
 
 
 uniform vec3 noiseOffset;
