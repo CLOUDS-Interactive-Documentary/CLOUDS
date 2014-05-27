@@ -468,6 +468,7 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	mineCraftGroundShader.begin();
 
 	mineCraftGroundShader.begin();
+	mineCraftGroundShader.setUniform1f("maxHeight", 10);
 	mineCraftGroundShader.setUniform1f("cameraCutoffDistance", 3);
 	
 	mineCraftGroundShader.setUniform1f("specExpo", specExpo);
