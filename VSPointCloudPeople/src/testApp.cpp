@@ -23,7 +23,7 @@ void testApp::setup(){
 	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
 	
-	ofHideCursor();
+	//ofHideCursor();
 
 	type = CloudsVisualSystem::FLY_THROUGH;
 }

@@ -18,7 +18,11 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 #ifdef TARGET_OSX
 	cullFace = GL_FRONT;
 #else
-	cullFace = GL_BACK;
+	#ifdef OCULUS_RIFT
+		cullFace = GL_FRONT;
+	#else
+		cullFace = GL_BACK;
+	#endif
 #endif
 	transitionOutOption = OutLeft;
 	
