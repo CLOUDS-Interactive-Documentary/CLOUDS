@@ -6,10 +6,10 @@ uniform vec4 fogColor;
 uniform float useFog;
 
 uniform float groundDrama;
-uniform float maxHeight = 10.;
+uniform float maxHeight;// = 10.;
 
-uniform vec4 groundColor = vec4( .4, 1., .6, 1.);
-uniform vec4 undergroundColor = vec4( .6 ,.2, .1, 1.);
+uniform vec4 groundColor;// = vec4( .4, 1., .6, 1.);
+uniform vec4 undergroundColor;// = vec4( .6 ,.2, .1, 1.);
 uniform vec4 cloudShadowColor;
 uniform float cloudShadow;
 

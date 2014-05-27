@@ -16,9 +16,6 @@
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp">
       <Filter>addons\ofxFTGL\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp">
-      <Filter>addons\ofxObjLoader\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
@@ -88,17 +85,17 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
-      <Filter>addons\ofxObjLoader\libs\glm</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\CubeCraft\vs_src\CloudsVisualSystemCubeCraft.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\CubeCraft\vs_src</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Memory\vs_src\CloudsVisualSystemMemory.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Memory</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
-      <Filter>CloudsLibrary\src\Input</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp">
+      <Filter>CloudsLibrary\src\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,15 +116,6 @@
     </Filter>
     <Filter Include="addons\ofxFTGL\src">
       <UniqueIdentifier>{0edaa6ac-2a39-450b-a158-af0ad414ec05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader">
-      <UniqueIdentifier>{5a499287-c163-4448-bf25-f2bc2246199f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader\src">
-      <UniqueIdentifier>{9cd579b6-7f5c-4c5e-bac2-8db6c7e143db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader\libs">
-      <UniqueIdentifier>{e0b4b5ae-87c5-435f-8993-6fc5ed2ac486}</UniqueIdentifier>
     </Filter>
     <Filter Include="CloudsLibrary">
       <UniqueIdentifier>{3f91ef80-5457-40be-b909-0e1182dd2195}</UniqueIdentifier>
@@ -153,14 +141,11 @@
     <Filter Include="CloudsLibrary\src\Input">
       <UniqueIdentifier>{311161e7-1ae0-42e6-9c73-a0fc0372abf4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxObjLoader\libs\glm">
-      <UniqueIdentifier>{3c3a084f-1f94-410a-beea-5864fde43503}</UniqueIdentifier>
+    <Filter Include="CloudsLibrary\src\VisualSystems\Memory">
+      <UniqueIdentifier>{52168fbc-c844-46cc-96e6-90bef5109a5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\CubeCraft">
-      <UniqueIdentifier>{c6d6e5a1-f831-4f07-9442-226bbd386435}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\CubeCraft\vs_src">
-      <UniqueIdentifier>{a5bd867b-a290-4d82-b6a2-d558ce1ca61f}</UniqueIdentifier>
+    <Filter Include="CloudsLibrary\src\Sound">
+      <UniqueIdentifier>{e4676106-ca39-4ba6-bd29-3d75e9016ae0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -178,9 +163,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h">
       <Filter>addons\ofxFTGL\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h">
-      <Filter>addons\ofxObjLoader\src</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
@@ -323,17 +305,17 @@
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
-      <Filter>addons\ofxObjLoader\libs\glm</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\CubeCraft\vs_src\CloudsVisualSystemCubeCraft.h">
-      <Filter>CloudsLibrary\src\VisualSystems\CubeCraft\vs_src</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Memory\vs_src\CloudsVisualSystemMemory.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Memory</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
-      <Filter>CloudsLibrary\src\Input</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h">
+      <Filter>CloudsLibrary\src\Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

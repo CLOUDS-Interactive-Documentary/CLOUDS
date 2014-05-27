@@ -12,8 +12,8 @@ uniform vec4 edgeColor;
 uniform vec4 fillColor;
 uniform vec4 specularColor;
 
-uniform vec4 groundColor = vec4( .4, 1., .6, 1.);
-uniform vec4 undergroundColor = vec4( .6 ,.2, .1, 1.);
+uniform vec4 groundColor;// = vec4( .4, 1., .6, 1.);
+uniform vec4 undergroundColor;// = vec4( .6 ,.2, .1, 1.);
 uniform vec4 cloudShadowColor;
 uniform float cloudShadow;
 

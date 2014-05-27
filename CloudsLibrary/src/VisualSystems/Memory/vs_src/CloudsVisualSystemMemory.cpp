@@ -9,8 +9,6 @@
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsGlobal.h"
 
-using namespace Tonic;
-
 string CloudsVisualSystemMemory::getSystemName()
 {
 	return "Memory";
@@ -469,20 +467,15 @@ void CloudsVisualSystemMemory::selfDrawBackground()
 }
 
 
-Generator CloudsVisualSystemMemory::buildSynth()
+Tonic::Generator CloudsVisualSystemMemory::buildSynth()
 {
-    string strDir = GetCloudsDataPath(true)+"sound/textures/";
+    string strDir = GetCloudsDataPath(true) + "sound/textures/";
     ofDirectory sdir(strDir);
-//    string strAbsPath = sdir.getAbsolutePath() + "/CPUBeepsFastDrone_.aif";
-    string strAbsPath = ofToDataPath(strDir + "/" + "CPUBeepsFastDrone_.aif", true);
-//    for(int i=0; i<tonicSamples.size();i++){
-//        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-//        samples[i] = loadAudioFile(strAbsPath);
-//    }
+    string strAbsPath = ofToDataPath(strDir + "/CPUBeepsFastDrone_.aif", true);
 
-    SampleTable sample = loadAudioFile(strAbsPath);
+    Tonic::SampleTable sample = Tonic::loadAudioFile(strAbsPath);
     
-    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);
+    Tonic::Generator sampleGen = Tonic::BufferPlayer().setBuffer(sample).trigger(1).loop(1);
     
     return sampleGen * 5;
 }
@@ -491,7 +484,6 @@ void CloudsVisualSystemMemory::audioRequested(ofAudioEventArgs& args)
 {
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
 }
-
 
 void CloudsVisualSystemMemory::selfSetupGuis()
 {

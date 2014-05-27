@@ -172,4 +172,6 @@ protected:
 	ofFloatColor fc;
 	
 	int mineCraftDimX, mineCraftDimY;
+	
+	GLenum cullDirection;
 };

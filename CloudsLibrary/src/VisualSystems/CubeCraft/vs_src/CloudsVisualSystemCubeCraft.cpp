@@ -317,6 +317,8 @@ void CloudsVisualSystemCubeCraft::selfSetDefaults()
     
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
+	
+	cullDirection = GL_FRONT; // GL_BACK; // GL_NONE;
 }
 
 void CloudsVisualSystemCubeCraft::selfSetup()
@@ -395,7 +397,7 @@ void CloudsVisualSystemCubeCraft::drawVoxelGrid()
 	ofDisableAlphaBlending();
 	
 	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
+	glCullFace(cullDirection);
 	
 	float scale = 30.;
 	ofPushMatrix();
@@ -457,7 +459,7 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	ofDisableAlphaBlending();
 	
 	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
+	glCullFace(cullDirection);
 	
 	float scale = 30.;
 	ofPushMatrix();
@@ -466,6 +468,7 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	mineCraftGroundShader.begin();
 
 	mineCraftGroundShader.begin();
+	mineCraftGroundShader.setUniform1f("maxHeight", 10);
 	mineCraftGroundShader.setUniform1f("cameraCutoffDistance", 3);
 	
 	mineCraftGroundShader.setUniform1f("specExpo", specExpo);

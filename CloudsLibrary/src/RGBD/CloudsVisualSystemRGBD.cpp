@@ -1,7 +1,3 @@
-//TODO: replace string keys with RGBDTransitionType
-//TODO: confirm where does duration get set
-
-
 
 #include "CloudsVisualSystemRGBD.h"
 #include "CloudsRGBDVideoPlayer.h"
@@ -181,9 +177,10 @@ void CloudsVisualSystemRGBD::playTestVideo(){
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_networked_creativity";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_dreaming_together";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Fernanda_Social_dynamics";
-	string sourceFile = "E:\\CLOUDS_MEDIA\\Fernanda_What_people_are_thinking";
+	//string sourceFile = "E:\\CLOUDS_MEDIA\\Fernanda_What_people_are_thinking";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Lauren_sentiment_anaylsis";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Jen_a_different_mathematics";
+	string sourceFile = GetCloudsDataPath(true) + "media/Jen_a_different_mathematics";
 
 	string filePathMov = sourceFile+".mov";
 	string filePathXml = sourceFile+".xml";
@@ -696,9 +693,11 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	else {
         //this stops the camera from drifting around as you move closer tothe question
 		//cloudsCamera.driftNoiseSpeed = caughtPortal ? 0 : attenuatedCameraDrift;
-		float cameraDriftDamp = powf(ofMap(minDistanceToQuestion, portalTugDistance.max, portalTugDistance.center(),
-										   1.0, 0,true), 2.0);
-        cloudsCamera.driftNoiseSpeed = attenuatedCameraDrift * cameraDriftDamp;
+		if( portalTugDistance.max != portalTugDistance.center() ){
+			float cameraDriftDamp = powf(ofMap(minDistanceToQuestion, portalTugDistance.max, portalTugDistance.center(),
+											   1.0, 0,true), 2.0);
+			cloudsCamera.driftNoiseSpeed = attenuatedCameraDrift * cameraDriftDamp;
+		}
 	}
 
 	if(bSaveTransition) {
