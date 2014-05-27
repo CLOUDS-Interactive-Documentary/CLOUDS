@@ -1435,17 +1435,17 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemTwitter::selfEnd()
 {
-	for(int i = 0; i < tweeters.size(); i++){
-		delete tweeters[i];
-	}
-	tweeters.clear();
+
   
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemTwitter::selfExit()
 {
-    
+    for(int i = 0; i < tweeters.size(); i++){
+		delete tweeters[i];
+	}
+	tweeters.clear();
 }
 
 void CloudsVisualSystemTwitter::reloadShaders(){
