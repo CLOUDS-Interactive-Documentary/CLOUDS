@@ -16,9 +16,6 @@
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp">
       <Filter>addons\ofxFTGL\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp">
-      <Filter>addons\ofxObjLoader\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
@@ -94,9 +91,6 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
-      <Filter>addons\ofxObjLoader\libs\glm</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\CloudsVisualSystemTwitter.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
@@ -105,18 +99,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxBillboard\src\ofxBillboard.cpp">
       <Filter>addons\ofxBillboard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp">
-      <Filter>addons\ofxJSON\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_reader.cpp">
-      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_value.cpp">
-      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_writer.cpp">
-      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,15 +119,6 @@
     </Filter>
     <Filter Include="addons\ofxFTGL\src">
       <UniqueIdentifier>{0edaa6ac-2a39-450b-a158-af0ad414ec05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader">
-      <UniqueIdentifier>{5a499287-c163-4448-bf25-f2bc2246199f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader\src">
-      <UniqueIdentifier>{9cd579b6-7f5c-4c5e-bac2-8db6c7e143db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader\libs">
-      <UniqueIdentifier>{e0b4b5ae-87c5-435f-8993-6fc5ed2ac486}</UniqueIdentifier>
     </Filter>
     <Filter Include="CloudsLibrary">
       <UniqueIdentifier>{3f91ef80-5457-40be-b909-0e1182dd2195}</UniqueIdentifier>
@@ -183,32 +156,8 @@
     <Filter Include="addons\ofxAutoreloadShader\src">
       <UniqueIdentifier>{683505b1-6cb3-41e3-9e5b-77abc0dc0d9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxObjLoader\libs\glm">
-      <UniqueIdentifier>{cca4cc9d-4b7f-4e8d-a131-c8d0781de364}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxJSON">
-      <UniqueIdentifier>{a165615f-139b-42e0-b8af-0a58e2d331d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons\ofxBillboard">
       <UniqueIdentifier>{3ee5e86e-e17d-4c15-8398-6025273c8108}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxJSON\libs">
-      <UniqueIdentifier>{67925b5f-2138-4ab4-84d5-50d0bf9ec870}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxJSON\src">
-      <UniqueIdentifier>{75d1dc7c-16b0-44b2-bc49-15bc0d81d1ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxJSON\libs\jsoncpp">
-      <UniqueIdentifier>{0f2f95cc-745a-435a-84b4-34de5392c3a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxJSON\libs\jsoncpp\include">
-      <UniqueIdentifier>{ed1b85c3-47bf-49a4-a4ce-e0dfaa3d2b18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxJSON\libs\jsoncpp\src">
-      <UniqueIdentifier>{2bbca724-cf4e-40f1-b163-83ed6eb8a396}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxJSON\libs\jsoncpp\include\json">
-      <UniqueIdentifier>{787b5738-2ae0-4376-a1de-9fd5ea498844}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -226,9 +175,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h">
       <Filter>addons\ofxFTGL\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h">
-      <Filter>addons\ofxObjLoader\src</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
@@ -383,64 +329,14 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
-      <Filter>addons\ofxObjLoader\libs\glm</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\CloudsVisualSystemTwitter.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Twitter\vs_src\Tweeter.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h">
-      <Filter>addons\ofxJSON\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_tool.h">
-      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_batchallocator.h">
-      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\autolink.h">
-      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\config.h">
-      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\features.h">
-      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\forwards.h">
-      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h">
-      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\reader.h">
-      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\value.h">
-      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\writer.h">
-      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_valueiterator.inl">
-      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
-    </None>
-    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\sconscript">
-      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
-    </None>
-    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_internalarray.inl">
-      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
-    </None>
-    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_internalmap.inl">
-      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
-    </None>
   </ItemGroup>
 </Project>

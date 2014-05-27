@@ -23,8 +23,6 @@ void testApp::setup(){
 	}
 
 	random_shuffle( presetIndices.begin(), presetIndices.end() );
-	//random_shuffle(presetIndices.begin(), presetIndices.end());
-
 }
 
 //--------------------------------------------------------------

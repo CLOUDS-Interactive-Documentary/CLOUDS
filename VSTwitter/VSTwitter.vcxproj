@@ -172,7 +172,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxColorPalettes\src;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxAutoReloadedShader\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Twitter\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\StoryEngine;..\..\..\addons\ofxBillboard\src;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\src;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxColorPalettes\src;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxAutoReloadedShader\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\Twitter\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src;..\..\..\addons\ofxBillboard\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -215,12 +215,6 @@
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_reader.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_value.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_writer.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c" />
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
@@ -279,19 +273,6 @@
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxTrailParticle.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\autolink.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\config.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\features.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\forwards.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\reader.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\value.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\writer.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_batchallocator.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_tool.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h" />
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h" />
     <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h" />
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
@@ -321,12 +302,6 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_internalarray.inl" />
-    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_internalmap.inl" />
-    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_valueiterator.inl" />
-    <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\sconscript" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

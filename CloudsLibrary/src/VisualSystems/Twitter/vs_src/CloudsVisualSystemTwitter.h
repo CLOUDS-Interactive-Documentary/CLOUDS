@@ -11,7 +11,6 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxJSONElement.h"
 #include "Tweeter.h"
 #include "ofxFTGL.h"
 #include "ofxBillboard.h"
@@ -47,8 +46,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
 	void selfDrawBackground();
 	void selfEnd();
     void selfExit();
-    void selfKeyPressed(ofKeyEventArgs & args);
-    void selfKeyReleased(ofKeyEventArgs & args);
+
+    void selfKeyPressed(ofKeyEventArgs& args);
+    void selfKeyReleased(ofKeyEventArgs& args);
     void selfMouseDragged(ofMouseEventArgs& data);
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
@@ -56,30 +56,27 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     void initSystem(string filePath);
     
-    
     //twitter feed
     void drawFeed();
     void updateCurrentSelection(int index,bool firstTime );
     
     //i/o stuff
 
-    void addUsersFromMentions(ofVec2f& curActivityMapCoord, int activityMapWidth );
+//    void addUsersFromMentions(ofVec2f& curActivityMapCoord, int activityMapWidth );
     void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
 //    void createNewGraph(string outputFileName, string inputDataFolder);
     
-
     //data stuff
     int getUserIdByName(string name);
-    vector<Tweeter> getTweetersForDate(int index);
-    Tweeter& getTweeterByID(int _id );
+    vector<Tweeter*> getTweetersForDate(int index);
+    Tweeter* getTweeterByID(int _id );
     void drawTweetsForDate(int index);
     void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
     void sortTweetsByDate();
 
-    
     //shader stuff
     void reloadShaders();
 
@@ -120,19 +117,17 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float tweetHandleLineLength;
     
     int minUserMentions;
-
     
     //draw stuff
     void loadMesh();
     void updateActiveTweeters(int index);
     void setActiveTweeters(int index );
-    Tweet csvParseTweet(vector<string>& line, Tweeter& curTweeter);
+    Tweet* csvParseTweet(vector<string>& line, Tweeter* curTweeter);
     void updateMesh();
     void drawText(string text, ofVec3f pos, float alpha);
     void drawText2D(string text, ofVec2f pos);
 
-    //helpers 
-
+    //helpers
     set<pair<int,int> > links;
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
 
@@ -159,8 +154,6 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     static string getDateAsString(Date d);    
 
     void allocateActivityMap();
-    //void updateDateIndex();
-//    map<string,int>dateIndexMap;
   protected:
     ofDirectory meshDir;
     vector<string> meshStrings;
@@ -168,7 +161,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     int maxUserLinks;
     ofColor listColor;
-    vector<Tweeter> tweeters;
+    vector<Tweeter*> tweeters;
     float sizeMultiplier;
     float maxAlphaTweetFeed;
     float lineAlpha;
@@ -183,8 +176,6 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofFloatColor spritePopColorHSV;
     stringstream ss;
     
-//    ofVboMesh nodeMesh;
-//    ofVboMesh edgeMesh;
     ofVbo edgeMeshVbo;
     ofVbo nodeMeshVbo; 
     vector<ofVec3f> edgeMeshNormals;
@@ -221,7 +212,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<string, ofImage> avatars;
 
     void loadAvatars();
-    void loadCSVData( vector<Tweeter>& curTweeters);
+    void loadCSVData();
     void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
     map< ofFloatColor*, ofxUILabel*> labelColors;
 	map< string, Date> dateMap;
