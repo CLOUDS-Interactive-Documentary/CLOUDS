@@ -1150,6 +1150,9 @@
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsSoundFuncs.cpp">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxBinaryMesh\src\ofxBinaryMesh.cpp">
+      <Filter>addons\ofxBinaryMesh\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1364,6 +1367,12 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\Sound\RTCMix">
       <UniqueIdentifier>{db1936a3-b08c-4b73-886b-8f94c02c7ec8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBinaryMesh">
+      <UniqueIdentifier>{6c90d2b4-10a7-4c7b-afe6-291fafe333c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBinaryMesh\src">
+      <UniqueIdentifier>{10cc322c-5fc1-4360-87f2-fa9c3a5ae779}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2980,6 +2989,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxBinaryMesh\src\ofxBinaryMesh.h">
+      <Filter>addons\ofxBinaryMesh\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

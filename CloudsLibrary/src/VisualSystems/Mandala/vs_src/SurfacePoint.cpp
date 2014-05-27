@@ -14,6 +14,7 @@ SurfacePoint::SurfacePoint()
 	surface = NULL;
 	outpos = NULL;
 	outnorm = NULL;
+	uv = ofVec2f();
 };
 SurfacePoint::~SurfacePoint(){}
 
