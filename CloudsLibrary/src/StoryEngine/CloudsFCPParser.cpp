@@ -112,7 +112,7 @@ void CloudsFCPParser::parseVOClips(){
 		string fileName = components[0];
 		CloudsClip* clip = new CloudsClip();
 		clip->voiceOverAudio = true;
-		clip->voiceOverAudioPath = GetCloudsDataPath() + "VO/" + fileName;
+		clip->voiceOverAudioPath = GetCloudsDataPath(true) + "VO/" + fileName;
 		clip->sourceVideoFilePath = clip->voiceOverAudioPath;
 		clip->hasMediaAsset = ofFile(clip->voiceOverAudioPath).exists();
 		if (!clip->hasMediaAsset) {

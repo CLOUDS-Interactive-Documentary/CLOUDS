@@ -175,27 +175,22 @@ void CloudsPlaybackController::threadedFunction(){
 	parser.loadFromFiles();
 	if(!isThreadRunning()) return;
 	
-	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-		ofSystemAlertDialog("Could not find movie file path. \
-							Create a file called CloudsMovieDirectory.txt \
-							that contains one line, the path to your movies folder");
+	cout << "*****LOAD STEP MEDIA" << endl;
+	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
+		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+	}
+	else{
+		string defaultFilePath = GetCloudsDataPath(true) + "media/";
+		if(ofFile::doesFileExist(defaultFilePath)){
+			parser.setCombinedVideoDirectory(defaultFilePath);
+		}
+		else{
+			ofSystemAlertDialog("Could not find movie file path. \
+								Create a file called CloudsMovieDirectory.txt \
+								that contains one line, the path to your movies folder");	
+		}
 	}
 
-	cout << "*****LOAD STEP MEDIA" << endl;
-	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-//<<<<<<< HEAD
-//	cout << "*****LOAD STEP PRESETS" << endl;
-//	visualSystems.loadPresets();
-//  visualSystems.loadCachedDataForSystems();
-    
-//	cout << "*****LOAD STEP STORY ENGINE" << endl;
-//	storyEngine.parser = &parser;
-//	storyEngine.visualSystems = &visualSystems;
-//	storyEngine.printDecisions = false;
-//	storyEngine.combinedClipsOnly = true;
-//	storyEngine.setup();
-//=======
-	
 	if(!isThreadRunning()) return;
 	
 	visualSystems.loadPresets();
@@ -203,37 +198,11 @@ void CloudsPlaybackController::threadedFunction(){
 	
 	if(!isThreadRunning()) return;
 	
-//>>>>>>> master
 	///SOUND
 	cout << "*****LOAD STEP SOUND" << endl;
 	mixer.setup();
 	sound.setup(storyEngine);
 
-//<<<<<<< HEAD
-/*    
-#ifndef OCULUS_RIFT
-	////COMMUNICATION
-	oscSender.setup();
-#endif
-    
-	//END THREADED
-	cout << "*****LOAD STEP RGBD SYSTEM" << endl;
-	rgbdVisualSystem = new CloudsVisualSystemRGBD();
-	rgbdVisualSystem->setup();
-	rgbdVisualSystem->setDrawToScreen(false);
-	
-	cout << "*****LOAD STEP CLUSTER MAP" << endl;
-
-	cout << "*****LOAD STEP INTRO" << endl;
-	introSequence = new CloudsIntroSequence();
-	introSequence->setup();
-	introSequence->setDrawToScreen(false);
-	
-	
-	cout << "*****LOAD STEP HUD" << endl;
-	hud.setup();
-	*/
-//=======
 	sound.enterTunnel();
 	
 	if(!isThreadRunning()) return;
