@@ -18,10 +18,23 @@ class testApp : public ofBaseApp{
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-	
+	void advanceSystem();
+	void shuffleSystemIndices();
+	void toLog( const std::string& to_log );
+	void logEnd();
+
+	float elapsedTime( float& start_time );
+
 	CloudsVisualSystemManager systemManager;
 	CloudsVisualSystem* currentSystem;
 	vector<int> presetIndices;
 	int currentSystemIndex;
 	float lastSystemChangedTime;
+
+	ofBuffer log;
+	char logFilename[1024];
+	float startTime;
+	bool bForward;
+	vector<std::pair<string,string>> blackList;
+
 };

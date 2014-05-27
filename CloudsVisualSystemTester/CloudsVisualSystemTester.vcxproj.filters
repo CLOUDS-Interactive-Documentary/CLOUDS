@@ -1153,6 +1153,9 @@
     <ClCompile Include="..\..\..\addons\ofxBinaryMesh\src\ofxBinaryMesh.cpp">
       <Filter>addons\ofxBinaryMesh\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2992,6 +2995,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxBinaryMesh\src\ofxBinaryMesh.h">
       <Filter>addons\ofxBinaryMesh\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
