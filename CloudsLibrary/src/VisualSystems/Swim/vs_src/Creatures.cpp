@@ -386,6 +386,7 @@ namespace itg
                 ++tentacleIdx;
             }
         }
+		
         tentacles.loadDataTexture(ofxGpuParticles::POSITION, tentaclePosns[0].getPtr(), 0, 0, 1, tentacles.getHeight());
         tentacles.getUpdateShaderRef().begin();
         tentacles.getUpdateShaderRef().setUniform1f("restLength", TENTACLE_SECTION_LENGTH);

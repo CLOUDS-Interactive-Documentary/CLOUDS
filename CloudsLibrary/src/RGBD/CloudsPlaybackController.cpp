@@ -198,11 +198,9 @@ void CloudsPlaybackController::setup(){
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
 	
-	
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
 	rgbdVisualSystem->setDrawToScreen(false);
-
 	
 	clusterMap = new CloudsVisualSystemClusterMap();
 	clusterMap->setup();
@@ -284,8 +282,12 @@ void CloudsPlaybackController::finishSetup(){
 	startingNodes = storyEngine.getStartingQuestions();
 	introSequence->setStartQuestions(startingNodes);
 
-    /*
+	/*
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 8ab0cbbfb062bbed941275c3f536d0ed8f44f594
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
     rgbdVisualSystem->setupHUDGui();
@@ -293,8 +295,44 @@ void CloudsPlaybackController::finishSetup(){
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
+<<<<<<< HEAD
 */
 
+//=======
+    
+	//cout << "*****LOAD STEP EVENTS" << endl;
+ //   if(!eventsRegistered){
+	//	
+	//	eventsRegistered = true;
+	//	
+ //       ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+ //       
+	//	ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
+	//	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+ //       
+ //       ofAddListener(CloudsIntroSequence::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
+ //       ofAddListener(CloudsIntroSequence::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
+ //       
+ //       ofAddListener(CloudsVisualSystemRGBD::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
+ //       ofAddListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
+ //       
+	//	ofRegisterKeyEvents(this);
+	//	ofRegisterMouseEvents(this);
+	//}
+	//
+ //   startingNodes = storyEngine.getStartingQuestions();
+ //   
+	////////////////SHOW INTRO
+	//cout << "Found " << startingNodes.size() << " questions" << endl;
+	//showIntro( startingNodes );
+ //   
+ //   sound.enterTunnel();
+	//
+	//cout << "*****LOAD STEP PORTALS" << endl;
+ //   setupPortals();
+
+	//cout << "*****LOAD SETUP COMPLETE" << endl;
+//>>>>>>> 8ab0cbbfb062bbed941275c3f536d0ed8f44f594
 }
 
 //--------------------------------------------------------------------
@@ -748,11 +786,10 @@ void CloudsPlaybackController::updateTransition(){
                 introSequence = new CloudsIntroSequence();
                 introSequence->setup();
 				introSequence->setStartQuestions(startingNodes);
-// TODO: Where'd the HuD go?
-//#ifdef OCULUS_RIFT
-//                introSequence->hud = &hud;
-//                introSequence->setupHUDGui();
-//#endif
+#ifdef OCULUS_RIFT
+                introSequence->hud = &hud;
+                introSequence->setupHUDGui();
+#endif
                 introSequence->setDrawToScreen(false);
                 
                 // TODO: Look into using Intro events for setting bDrawHud, so it works like everything else.
