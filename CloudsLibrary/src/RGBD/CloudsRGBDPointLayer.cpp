@@ -26,6 +26,32 @@ CloudsRGBDPointLayer::~CloudsRGBDPointLayer(){
 
 void CloudsRGBDPointLayer::setDefaults(){
     
+	/////BASE DEFAULTS
+	pointXSimplify = pointYSimplify = 0;
+    pointCount = 0;
+	drawPoints = false;
+	pointAlpha = 0;
+	numRandomPoints = 0;
+	pointHeadOverlap = 0;
+	pointFlowPosition = 0;
+	pointFlowSpeed = 0;
+	pointsFlowUp = false;
+    pointColorBoost = 0;
+    pointSkinBoost = 0;
+    pointFaceMinRadius = 0;
+    pointFaceFalloff = 0;
+    edgeAttenuate = 0;
+	refreshPointcloud = false;
+    eventsRegistered = false;
+    actuatorPosition = 0;
+    actuatorSpeed = 0;
+    actuatorPhase = 0;
+    actuatorAngle = 0;
+    actuatorMaxAffect = 0;
+	normalMix = 0;
+    normalExtend = 0;
+	/////BASE DEFAULTS
+
 	drawPoints = true;
     pointColorBoost = .0;
     pointSkinBoost = .0;
