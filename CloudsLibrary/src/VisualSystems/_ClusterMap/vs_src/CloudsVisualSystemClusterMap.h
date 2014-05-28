@@ -33,9 +33,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	void buildEntireCluster(CloudsFCPParser& parser);
 	void setRun(CloudsRun& run);
 	void setAct(CloudsAct* newAct);
-//	void setQuestions(vector<CloudsClip*>& questions);
 	void allocateFlickerTexture();
-//	CloudsQuestion* getSelectedQuestion();
 
     void setCurrentTopic(string topic);
     
@@ -278,8 +276,5 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     
 	ofVec3f randomDirection();
     int numTraversed;
-    
-	//vector<CloudsQuestion> questions;
-	//CloudsQuestion* selectedQuestion;
 
 };

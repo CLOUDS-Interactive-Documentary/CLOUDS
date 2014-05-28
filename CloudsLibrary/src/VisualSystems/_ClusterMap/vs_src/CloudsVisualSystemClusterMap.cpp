@@ -14,7 +14,70 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 }
 
 void CloudsVisualSystemClusterMap::selfSetDefaults(){
+	autoTraversePoints = false;
+	finishedTraversing = false;
 	
+	flickerWidth = 0;
+	act = NULL;
+	parser = NULL;
+	run = NULL;
+	traverseNextFrame = false;
+	lastTraverseStartedIndex = 0;
+	firstClip = false;
+	currentNodeIndex = 0;
+	currentTraversalIndex = 0;	
+	percentToDest = 0.0;	
+	meshExpansion = 0.0;
+	nodePopLength = 0.0;
+	lineDensity = 0.0;
+	lineFocalDistance = 0.0;
+	lineFocalRange = 0.0;
+	networkLineWidth = 0.0;
+	
+	drawTraversalPoints = false;
+	lockCameraAxis = false;
+	traverseCamFOV = 0;
+	traversCameraDistance = 0;
+	traversedNodeSize = 0;
+	traverseStepSize = 0;
+	traverseAngleDampen = 0;
+	traverseHomingMinDistance = 0;
+	traverseMinSolvedDistance = 0;
+	traverseLineWidth = 0;
+
+	bConstrainTraversal = false;
+    maxTraverseAngle = 0;
+    maxTraverseDistance = 0;
+    minTraverseDistance = 0;
+    minTraverseNextOptions = 0;
+	matchLineColor = false;
+	lineColorMixExponent = 0.0;
+	drawLineFlickerDebug = false;
+	lineFlickerIntensity = 0;
+	lineFlickerFrequency = 0;
+	lineFlickerDampening = 0;
+	bSmoothLines = false;
+	
+	matchTraversalColor = false;
+	traverseFalloff = 0;
+	traverseRevealVerts = 0;
+	traverseAnimationDuration = 0;
+	optionsAnimationDuration = 0;
+	optionLineWidth = 0;
+	
+	drawHomingDistanceDebug = false;
+	traverseStartTime = 0;
+	percentTraversed = 0;
+	percentOptionsRevealed = 0;
+	drawType = false;
+	baseFontSize = 0;
+	
+    drawAssociation = false;
+    associationFontSize = 0;
+    currentAssociationFont = 0;
+    numTraversed = 0;
+	///END INIT
+
 	drawNodes = true;
 	drawLines = true;
 	drawTraversal = true;
