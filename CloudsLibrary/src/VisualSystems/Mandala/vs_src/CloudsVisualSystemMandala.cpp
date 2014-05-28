@@ -115,6 +115,9 @@ void CloudsVisualSystemMandala::selfSetupGui()
 void CloudsVisualSystemMandala::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
+
+	
+	
 }
 
 void CloudsVisualSystemMandala::selfGuiEvent(ofxUIEventArgs &e)
@@ -247,6 +250,19 @@ void CloudsVisualSystemMandala::selfSetup()
 {
 	//set defaults
 	//TODO: add these to surfaceGui for re-construction 
+
+	surfaceNoiseTime = 0.f;
+	
+	noiseTime = 0.f;
+
+	clockTime = 0.f;
+	hexMeshVertexCount = 0;
+	time = 0.f;
+	meshNoiseScale = 0.f;
+	lastTime = 0.f; 
+	currentTime = 0.f;
+
+
 	numU = 13, numV = 12;
 	radius = 100;
 	
@@ -605,8 +621,8 @@ void CloudsVisualSystemMandala::selfDraw()
 	}
 
 	
-	
-	glLineWidth(2);
+	ofPushStyle();
+	ofSetLineWidth(2);
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 
 	if(bDrawTails)
@@ -617,7 +633,7 @@ void CloudsVisualSystemMandala::selfDraw()
 		}
 	}
 	ofDisableAlphaBlending();
-	
+	ofPopStyle();
 
 	
 	//nested surfaces
@@ -631,7 +647,7 @@ void CloudsVisualSystemMandala::selfDraw()
 void CloudsVisualSystemMandala::drawOffsetMesh()
 {
 	
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 	hexMeshNode.setScale(1);

@@ -244,7 +244,7 @@ void CloudsVisualSystemLaplacianTunnel::reloadShader(){
 void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 	
 	//glEnable(GL_CULL_FACE);
-	glEnable(GL_DEPTH_TEST);
+	ofEnableDepthTest();
 	glDisable(GL_LIGHTING);
 	//glFrontFace(GL_CCW);
 	

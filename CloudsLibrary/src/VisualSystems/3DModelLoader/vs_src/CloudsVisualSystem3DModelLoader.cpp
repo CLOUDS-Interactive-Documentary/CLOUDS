@@ -771,7 +771,7 @@ void CloudsVisualSystem3DModelLoader::drawMultipleViewCameras( float cameraScale
 		cam = currentSingleCam;
 	}
 	
-	glLineWidth( cameraLineWidth );
+	ofSetLineWidth( cameraLineWidth );
 	
 	//persp
 	if(cam != &perspCam )
@@ -878,7 +878,7 @@ void CloudsVisualSystem3DModelLoader::setupGridVbos()
 void CloudsVisualSystem3DModelLoader::drawBoundingBox()
 {
 	
-	glLineWidth( boundBoxLineWidth );
+	ofSetLineWidth( boundBoxLineWidth );
 	
 	ofPushMatrix();
 	ofTranslate(boundCenter);
@@ -1095,7 +1095,7 @@ void CloudsVisualSystem3DModelLoader::drawSceneGeometry( ofCamera* cam)
 		ofPushMatrix();
 		ofScale( gridScale, gridScale, gridScale );
 		
-		glLineWidth( gridLineWidth );
+		ofSetLineWidth( gridLineWidth );
 		ofSetColor( gridColor.r*gridBrightness, gridColor.g*gridBrightness, gridColor.b*gridBrightness, gridAlpha );
 		grid.draw(GL_LINES, 0, numGridVertices );
 		
@@ -1107,7 +1107,7 @@ void CloudsVisualSystem3DModelLoader::drawSceneGeometry( ofCamera* cam)
 		ofTranslate( getCameraRef().getLookAtDir() * -gridLineWidth / gridScale );
 		ofScale( gridScale * gms,gridScale * gms, gridScale * gms );
 		
-		glLineWidth( majorGridLineWidth );
+		ofSetLineWidth( majorGridLineWidth );
 		ofSetColor( gridMajorColor.r*gridMajorBrightness, gridMajorColor.g*gridMajorBrightness, gridMajorColor.b*gridMajorBrightness, gridMajorAlpha );
 		grid.draw(GL_LINES, 0, numGridVertices );
 		
@@ -1178,7 +1178,7 @@ void CloudsVisualSystem3DModelLoader::drawSceneGeometry( ofCamera* cam)
 	
 	if(bDrawCameraPath)
 	{
-		glLineWidth(majorGridLineWidth);
+		ofSetLineWidth(majorGridLineWidth);
 		simpleShader.begin();
 		pathCamera.drawPaths();
 		simpleShader.end();
@@ -1216,7 +1216,7 @@ void CloudsVisualSystem3DModelLoader::drawSceneGeometry( ofCamera* cam)
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		}
 		else{
-			if(bWireframe)	glLineWidth( wireframeLinewidth );
+			if(bWireframe)	ofSetLineWidth( wireframeLinewidth );
 			bWireframe?	modelMesh.drawWireframe() : modelMesh.draw();
 		}
 		

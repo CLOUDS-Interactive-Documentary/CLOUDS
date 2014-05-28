@@ -483,6 +483,7 @@ void CloudsVisualSystemCities::selfUpdate()
 
 void CloudsVisualSystemCities::selfDraw()
 {
+	ofPushStyle();
 	ofPushMatrix();
 	ofRotate(90, 1, 0, 0);
 	ofScale(blockSize,blockSize,-blockSize);
@@ -525,7 +526,7 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	
 	ofEnableAlphaBlending();
-	glDisable( GL_DEPTH_TEST );
+	ofDisableDepthTest();
 	
 	glEnable( GL_CULL_FACE );
 	glCullFace( GL_FRONT );
@@ -536,7 +537,7 @@ void CloudsVisualSystemCities::selfDraw()
 		bool bAlphaBlending = true;
 		if(bPassOne)
 		{
-			bPassOneDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
+			bPassOneDepthTest ? ofEnableDepthTest() : ofDisableDepthTest();
 			ofEnableBlendMode( passOneBlendMode );
 			if(passOneBlendMode == OF_BLENDMODE_DISABLED )
 			{
@@ -558,7 +559,7 @@ void CloudsVisualSystemCities::selfDraw()
 		if(bPassTwo)
 		{
 			glClear( GL_DEPTH_BUFFER_BIT );
-			bPassTwoDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
+			bPassTwoDepthTest ? ofEnableDepthTest() : ofDisableDepthTest();
 			ofEnableBlendMode( passTwoBlendMode );
 			if(passOneBlendMode == OF_BLENDMODE_DISABLED )
 			{
@@ -576,14 +577,14 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	
 	//draw edges
-	glEnable(GL_DEPTH_TEST);
+	ofEnableDepthTest();
 	ofEnableBlendMode(edgeBlendMode);
 	ofSetColor(edgeColor.r, edgeColor.g, edgeColor.b, edgeAlpha * 255);
 	cubesShader.setUniform4f("overallColor", 1,1,1,1);
 	cubesShader.setUniform1f("bUseEdgeMap", float(bUseEdgeMapProjection) );
 	
 	if (bDrawEdges) {
-		glLineWidth( edgeLineWidth );
+		ofSetLineWidth( edgeLineWidth );
 		cubesShader.setUniform1f("lineWidth", edgeLineWidth );
 		cubesShader.setUniform1f("drawEdges", 1. );
 		cubesShader.setUniform1f("edgeOffset", edgeOffset);
@@ -602,13 +603,14 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	
 	ofPopMatrix();
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 	glDisable( GL_CULL_FACE );
 	
 	ofDisableAlphaBlending();
 	
 	
 	ofSetColor(255);
+	ofPopStyle();
 }
 
 void CloudsVisualSystemCities::selfPostDraw(){

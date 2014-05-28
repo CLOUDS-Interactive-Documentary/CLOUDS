@@ -334,7 +334,7 @@ void CloudsVisualSystemLSystem::selfDrawBackground()
 
 void CloudsVisualSystemLSystem::selfDraw(){
 //    mat->begin();
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
     
     ofPushMatrix();
     ofPushStyle();
@@ -343,7 +343,7 @@ void CloudsVisualSystemLSystem::selfDraw(){
     //
     ofPushStyle();
 //    ofEnableBlendMode(OF_BLENDMODE_ADD);
-    glLineWidth(gridCrossWidth);
+    ofSetLineWidth(gridCrossWidth);
     grid.draw();
     ofPopStyle();
     

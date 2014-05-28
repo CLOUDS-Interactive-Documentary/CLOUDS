@@ -267,7 +267,7 @@ void CloudsVisualSystemVoro::selfDraw()
     
     ofPushMatrix();
     ofPushStyle();
-    glEnable(GL_DEPTH_TEST);
+    ofEnableDepthTest();
 
     if (cellsVertexAlpha > 0.0){
 		glPointSize(cellsVertexSize);
@@ -300,7 +300,7 @@ void CloudsVisualSystemVoro::selfDraw()
     
 
     
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
 	ofPopStyle();
     ofPopMatrix();
     

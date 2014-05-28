@@ -222,13 +222,13 @@ void CloudsVisualSystemOcean::selfDraw(){
 	if(depthTesting){
 		GLfloat fogColor[4] = {bgColor.r/255.,bgColor.g/255.,bgColor.b/255., 1.0 };
 		glFogfv (GL_FOG_COLOR, fogColor);
-		glEnable(GL_DEPTH_TEST);
+		ofEnableDepthTest();
 		ofEnableAlphaBlending();
 	}
 	else{
 		GLfloat fogColor[4] = {0.0, 0.0, 0.0, 1.0};
 		glFogfv (GL_FOG_COLOR, fogColor);
-		glDisable(GL_DEPTH_TEST);
+		ofDisableDepthTest();
 		ofEnableBlendMode(OF_BLENDMODE_ADD);
 	}
 	

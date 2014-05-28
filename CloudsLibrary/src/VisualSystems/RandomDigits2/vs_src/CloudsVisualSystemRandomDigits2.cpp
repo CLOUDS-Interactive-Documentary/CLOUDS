@@ -153,7 +153,7 @@ void CloudsVisualSystemRandomDigits2::selfDraw(){
 	glFogf(GL_FOG_DENSITY, powf(fogDensity, 2));
     GLfloat fogColor[4] = { bgColor.r / 255.,bgColor.g / 255.,bgColor.b / 255., 1.0 };
     glFogfv(GL_FOG_COLOR, fogColor);
-    glEnable(GL_DEPTH_TEST);
+    ofEnableDepthTest();
     ofEnableAlphaBlending();
     
     ofPushStyle();
@@ -163,7 +163,7 @@ void CloudsVisualSystemRandomDigits2::selfDraw(){
     
     numbersImg.bind();
     ofSetColor(255, 255, 255);
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     vbo.drawElements(GL_TRIANGLES, numbers.size()*6);
 

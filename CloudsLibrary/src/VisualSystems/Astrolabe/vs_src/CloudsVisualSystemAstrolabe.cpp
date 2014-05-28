@@ -353,6 +353,12 @@ void CloudsVisualSystemAstrolabe::selfSetup()
 
 void CloudsVisualSystemAstrolabe::selfSetDefaults()
 {
+	
+	bSetupRings = false;
+	ringsNoiseyness = 0.f;
+	ringsFalloff = 0.f;	
+	bDrawCircles = false;
+
 	ringsCount = 15;
 	ringsInnerRad = 5;
 	ringsWidth = 40;
@@ -554,14 +560,15 @@ void CloudsVisualSystemAstrolabe::resetRingRotations()
 
 void CloudsVisualSystemAstrolabe::selfDraw()
 {
+	ofPushStyle();
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	
 	currentBlendMode != OF_BLENDMODE_DISABLED?	ofEnableBlendMode(currentBlendMode) : ofDisableAlphaBlending();
 
-	bDepthTest? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
+	bDepthTest? ofEnableDepthTest() : ofDisableDepthTest();
 
-	glLineWidth(circleLinewidth);
+	ofSetLineWidth(circleLinewidth);
 
 	facingRatio.begin();
 	float rad, sphereRad, arcStep = 1. / (numSpheresPerArc - 1.);
@@ -610,11 +617,12 @@ void CloudsVisualSystemAstrolabe::selfDraw()
 	}
 	facingRatio.end();
 	
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 	
 	glDisable(GL_CULL_FACE);
 	
 	ofDisableAlphaBlending();
+	ofPopStyle();
 }
 
 // draw any debug stuff here

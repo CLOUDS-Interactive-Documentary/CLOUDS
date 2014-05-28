@@ -250,7 +250,7 @@ void CloudsVisualSystemColony::selfUpdate()
         ofEnableAlphaBlending();
         
         ofEnableBlendMode(OF_BLENDMODE_ADD);
-        glDisable(GL_DEPTH_TEST);
+        ofDisableDepthTest();
         ofClear(0,0,0,0);
         
         billboard.begin();

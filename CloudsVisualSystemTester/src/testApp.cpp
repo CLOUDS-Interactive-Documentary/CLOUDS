@@ -22,45 +22,47 @@ void testApp::setup(){
 	bForward = true;
 
 	blackList.clear();
-	blackList.push_back(make_pair("Memory", "ThinBlueRows_wide")); //crash in loadingPresetGUI
-	blackList.push_back(make_pair("Oscillations", "Wavessuccess")); //crash crash on exit
-	blackList.push_back(make_pair("WebHistory", "Hazy_widesuccess")); //not registered
-	blackList.push_back(make_pair("Vision", "UnionSqGhost")); //not registered
-	blackList.push_back(make_pair("Orbit", "Lorenz_Dolly")); //crash during run
-	blackList.push_back(make_pair("Flying", "DenseForest_SND")); //not registered
-	blackList.push_back(make_pair("Vision", "BridgePreset")); //not registered
-	blackList.push_back(make_pair("Memory", "ThinTealRows")); //crash in loadingPresetGUI
-	blackList.push_back(make_pair("Neurons", "XmasDendrites")); //not registered
-	blackList.push_back(make_pair("Memory", "randomWaves")); //crash in loadingPresetGUI
-	blackList.push_back(make_pair("Histogram", "DataHistogram3")); //not registered
-	blackList.push_back(make_pair("Neurons", "MezzyNeurons")); //not registered
-	blackList.push_back(make_pair("Vision", "Soho_Boxes")); //not registered, but i came up?? a space in the name?
-	blackList.push_back(make_pair("Histogram", "Waveform1_Happen")); //not registered
-	blackList.push_back(make_pair("Mandala", "HeartMachine")); //running and registered but showing nothing
-	blackList.push_back(make_pair("Schlabberbox", "jm_whirl")); //maybe crashed during run? it followed the mysterious Mandala
-	blackList.push_back(make_pair("Cosmic", "JM_biological2")); //running and registered but showing nothing
-	blackList.push_back(make_pair("OpenP5DrawingMachine10", "chaos")); //not registered
-	blackList.push_back(make_pair("WebHistory", "AutoSpiderShell")); //not registered
-	blackList.push_back(make_pair("CubeCraft", "g_FIN_02")); //running and registered but showing nothing
-	blackList.push_back(make_pair("Swim", "Asteroids")); //not registered
-	blackList.push_back(make_pair("Vision", "Tokyo1_boxes")); //not registered
+
+	
 	blackList.push_back(make_pair("Memory", "ThinBlueRows_2")); //crash in loadingPresetGUI
-	blackList.push_back(make_pair("Neurons", "MezzyNeurons_Q")); //not registered
-	blackList.push_back(make_pair("Neurons", "VeryNervousSystem_OC")); //not registered
-	blackList.push_back(make_pair("Neurons", "MezzyNeuronsOC")); //not registered
-	blackList.push_back(make_pair("Neurons", "XmasDendrites_OC")); //not registered
+	blackList.push_back(make_pair("Memory", "ThinBlueRows_wide")); //crash in loadingPresetGUI
+	blackList.push_back(make_pair("Memory", "ThinTealRows")); //crash in loadingPresetGUI
+	blackList.push_back(make_pair("Memory", "randomWaves")); //crash in loadingPresetGUI
 	blackList.push_back(make_pair("Histogram", "Waveform1")); //not registered
 	blackList.push_back(make_pair("Histogram", "Waveform1_Happen")); //not registered
 	blackList.push_back(make_pair("Histogram", "Waveform3_GTNonStop")); //not registered
 	blackList.push_back(make_pair("Histogram", "Waveform3")); //not registered
 	blackList.push_back(make_pair("Histogram", "DataHistogram4")); //not registered
-	blackList.push_back(make_pair("Voro", "crystal1")); //running and registered but showing nothing
-	blackList.push_back(make_pair("Voro", "Dream_Crystal1")); //running and registered but showing nothing
+	blackList.push_back(make_pair("Histogram", "DataHistogram3")); //not registered
+	blackList.push_back(make_pair("Histogram", "Waveform1_Happen")); //not registered
 	blackList.push_back(make_pair("Rulez", "Ico_rotate")); //running and registered but showing nothing
 	blackList.push_back(make_pair("RandomDigits", "BasicOC"));//not registered
-	blackList.push_back(make_pair("Mandala", "DinoSkinPlanetOC"));//running and registered but showing just a boring ass big red ball
+	blackList.push_back(make_pair("OpenP5DrawingMachine10", "chaos")); //not registered
+	blackList.push_back(make_pair("WebHistory", "AutoSpiderShell")); //not registered
+	blackList.push_back(make_pair("WebHistory", "Hazy_widesuccess")); //not registered
+	
+	//blackList.push_back(make_pair("Orbit", "Lorenz_Dolly")); //crash during run
+	blackList.push_back(make_pair("Xstatic", "StarChurn")); //something wrong with preset
+	blackList.push_back(make_pair("Cosmic", "JM_biological2")); //running and registered but showing nothing, or causing problems, also weird preset
+	//blackList.push_back(make_pair("Schlabberbox", "jm_whirl")); //maybe crashed during run? it followed the mysterious Mandala
+	blackList.push_back(make_pair("Xstatic", "fireflies")); //something wrong with preset
+	blackList.push_back(make_pair("CubeCraft", "MC_FlyoverDesert")); //looks bad in preset
 
+	//cubeCraft MC_FlyoverDesert looks like shit
+	//cubeCraft has a bgColor state leak
+	//cubecraft fog tweaks
+	//xstatic fireflies all particles drawing in the same place on top of eachother, state leak!
+	//xstatic star churn is all in a line?
+	//voro dream crystal1 check alpha blending??
+	//cosmic JM_biological2  , preset has some problems and is suseptibable to depth_test state leak
+	//connectors susseptible to line width state leak
+	//prior to 128 was a lineWidth return to 0?
+	//egg astrolabe far clipping plane in oculus needs extension
+	//OpenP5Machine  is the slowest general system, needs optimization
 
+	//line width state leak victims = ocean, world, twitter, connections, 
+
+	//check OpenP5Hackpact  for line state leak? openP5Spaghetti?
 
 	presetIndices = systemManager.getFilteredPresetIndeces(false,true);
 	for(int i = 0; i < presetIndices.size(); i++){

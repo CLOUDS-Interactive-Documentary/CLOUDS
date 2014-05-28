@@ -327,7 +327,7 @@ void CloudsVisualSystemCircuit::selfDraw(){
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
 	if(bDrawMesh){
-		glEnable(GL_DEPTH_TEST);
+		ofEnableDepthTest();
 		meshShader.begin();
 		meshShader.setUniform1f("distanceMin", pointDistanceRange.min);
 		meshShader.setUniform1f("distanceMax", pointDistanceRange.max);
@@ -335,7 +335,7 @@ void CloudsVisualSystemCircuit::selfDraw(){
 		meshShader.end();
 	}
 
-    glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 	if(bDrawLine){
 		ofSetColor(255);
 		ofEnableAlphaBlending();

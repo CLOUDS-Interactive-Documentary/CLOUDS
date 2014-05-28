@@ -118,7 +118,7 @@ void CloudsVisualSystemRulez::selfDraw()
 void CloudsVisualSystemRulez::selfPostDraw()
 {
     glPushAttrib(GL_ENABLE_BIT);
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());

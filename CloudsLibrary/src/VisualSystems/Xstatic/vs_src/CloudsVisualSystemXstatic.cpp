@@ -204,7 +204,7 @@ void CloudsVisualSystemXstatic::selfSetDefaults()
     bBounceOffWalls = true;
     bWrapEdges = false;
     
-    bBigBang = false;
+    bBigBang = true;
 
     bDrawBox = false;
 
@@ -213,6 +213,9 @@ void CloudsVisualSystemXstatic::selfSetDefaults()
     
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
+
+	 bShouldRegenerate = false;
+    
 }
 
 void CloudsVisualSystemXstatic::regenerate(bool bBigBang)
@@ -357,6 +360,7 @@ void CloudsVisualSystemXstatic::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemXstatic::selfDraw()
 {
+	ofPushStyle();
     ofSetColor(255);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
@@ -365,7 +369,7 @@ void CloudsVisualSystemXstatic::selfDraw()
         ofBox(0, 0, 0, kBoxSize);
     }
 
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
     
     shader.begin();
     ofEnablePointSprites();
@@ -376,6 +380,7 @@ void CloudsVisualSystemXstatic::selfDraw()
     }
     tex.getTextureReference().unbind();
     ofDisablePointSprites();
+	ofPopStyle();
     shader.end();
 }
 

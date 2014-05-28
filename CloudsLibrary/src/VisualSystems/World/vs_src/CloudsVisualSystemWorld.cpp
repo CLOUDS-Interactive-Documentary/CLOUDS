@@ -10,6 +10,18 @@
 
 void CloudsVisualSystemWorld::selfSetDefaults()
 {
+    arcsAlpha = 0;
+    arcsMax = 0;
+	postChromaDist = 0;
+    postGrainDist = 0;
+
+    blinkingAlpha = 0.f;
+    blinkingSpeed = 0.f;
+
+	citiesAlpha = 0.f;
+	haloSphereScale = 0.f;
+	haloSphereAlpha = 0.f;
+
     nMaxPoints = 1000;
     pointNoisePeaks = 0.0;
     rippleThreshold = 1.0;
@@ -430,7 +442,7 @@ void CloudsVisualSystemWorld::selfUpdate()
 void CloudsVisualSystemWorld::selfDraw()
 {
     
-    glEnable(GL_DEPTH_TEST);
+    ofEnableDepthTest();
     glEnable(GL_NORMALIZE);
     glDisable(GL_LINE_SMOOTH);
     
@@ -516,6 +528,7 @@ void CloudsVisualSystemWorld::selfDraw()
     //  STARS & CONSTELATIONS ( outside the pushMatrix )
     //
     glPointSize(1.1);
+	ofSetLineWidth(.1);
     for(int i = 0; i < stars.size(); i++){
         if (stars[i]->constName == selectedConstelation && constelationRnd >= 1.0 ){
             stars[i]->constAlpha = ofLerp(stars[i]->constAlpha,constelationMax,0.01);
@@ -526,7 +539,7 @@ void CloudsVisualSystemWorld::selfDraw()
     }
     
     glDisable(GL_NORMALIZE);
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
     
 }
 

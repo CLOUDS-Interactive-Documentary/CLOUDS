@@ -301,9 +301,6 @@
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp">
       <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.cpp">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClCompile>
@@ -1930,9 +1927,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h">
       <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>

@@ -257,7 +257,7 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
     c.a = 200;
 	ofSetColor(c);
 	
-	glLineWidth(lineWidth); // or thicker, if you prefer
+	ofSetLineWidth(lineWidth); // or thicker, if you prefer
 	
 	ofPushMatrix();
     //MA: changed ofGetWidth() to getCanvasWidth()

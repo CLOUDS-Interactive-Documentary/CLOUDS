@@ -517,7 +517,7 @@ void CloudsVisualSystemFireworks::selfDraw()
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	ofPushStyle();
 	
-	glEnable(GL_DEPTH_TEST);
+	ofEnableDepthTest();
     glEnable(GL_NORMALIZE);
 	
 	ofEnableAlphaBlending();

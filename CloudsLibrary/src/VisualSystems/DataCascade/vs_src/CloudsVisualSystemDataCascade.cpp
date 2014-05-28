@@ -127,7 +127,7 @@ void CloudsVisualSystemDataCascade::selfUpdate(){
 	ofPushStyle();
 	
 	ofDisableAlphaBlending();
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 
 	sourceOffset.begin();
 	
@@ -191,7 +191,7 @@ void CloudsVisualSystemDataCascade::selfDraw(){
 	ofEnableAlphaBlending();	
 	glPushAttrib(GL_POINT_BIT | GL_FOG_BIT);
 	
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 	glEnable(GL_FOG);
 	glFogi(GL_FOG_COORD_SRC, GL_FOG_COORDINATE);
 	glFogf(GL_FOG_START, fogMinDepth);

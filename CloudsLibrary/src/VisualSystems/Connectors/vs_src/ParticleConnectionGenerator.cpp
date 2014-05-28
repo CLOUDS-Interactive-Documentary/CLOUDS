@@ -244,7 +244,7 @@ void ParticleConnectionGenerator::drawBins(){
 
 void ParticleConnectionGenerator::draw(){
 	
-	ofPushStyle();
+	//ofPushStyle();
 //	ofNoFill();
 	for(int i = 0; i < connectors.size(); i++){
 		pointMesh.setVertex(i, connectors[i]->position);
@@ -254,6 +254,6 @@ void ParticleConnectionGenerator::draw(){
 	pointMesh.drawVertices();
 	connectionMesh.draw();
 	
-	ofPopStyle();
+	//ofPopStyle();
 }
 

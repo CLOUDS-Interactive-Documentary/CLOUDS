@@ -138,7 +138,7 @@ void CloudsPathCamera::update( float t )
 
 void CloudsPathCamera::drawPaths( float lineWidth)
 {
-	glLineWidth(lineWidth);
+	ofSetLineWidth(lineWidth);
 	ofSetColor(255,0,0, 255);
 	positionSpline.update();
 	positionSpline.draw();

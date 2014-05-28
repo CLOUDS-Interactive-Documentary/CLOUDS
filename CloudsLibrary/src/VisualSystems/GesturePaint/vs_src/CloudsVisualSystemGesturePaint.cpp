@@ -260,7 +260,7 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 		createPaintBrush();
 	}
 	
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 	ofSetColor(255);
 	
 	waterdst.begin();
@@ -399,7 +399,7 @@ void CloudsVisualSystemGesturePaint::selfDrawBackground(){
         return;
     }
     
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 	ofEnableAlphaBlending();
 	if(usePaperTexture){
 		paperImage.draw(paperRect);

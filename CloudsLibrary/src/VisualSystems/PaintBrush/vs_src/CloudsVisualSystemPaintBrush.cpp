@@ -179,7 +179,7 @@ void CloudsVisualSystemPaintBrush::drawPaint(){
     canvasDst.begin();
 	ofClear(0,0);
 	ofPushStyle();
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
 
 	ofEnableAlphaBlending();
 //	ofSetColor(255, 255);
@@ -242,7 +242,7 @@ void CloudsVisualSystemPaintBrush::selfDrawBackground()
 {
     ofPushStyle();
     ofSetColor(255);
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
     //ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofEnableAlphaBlending();
     canvasSrc.draw(0, 0);

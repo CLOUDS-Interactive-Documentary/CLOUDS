@@ -187,7 +187,7 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     
 
     ofPushStyle();
-    glEnable(GL_DEPTH_TEST);
+    ofEnableDepthTest();
     
 	ofPushMatrix();
 	ofEnableAlphaBlending();

@@ -134,4 +134,5 @@ protected:
     float chromaAbbr, lensDistortion;
     //TODO: Change back to just a shader after building
     ofShader crtShader, oscillator;
+	int NUMPOINTS; 
 };

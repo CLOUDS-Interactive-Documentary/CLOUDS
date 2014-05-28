@@ -183,7 +183,7 @@ void CloudsVisualSystemScrape::selfUpdate()
     contentFbo.begin();
     {
         // Need to disable depth test or else the overlay won't work.
-        glDisable(GL_DEPTH_TEST);
+        ofDisableDepthTest();
         
         ofClear(0, 0);
         

@@ -111,7 +111,7 @@ void CloudsVisualSystemOrbit::selfUpdate()
 void CloudsVisualSystemOrbit::selfDraw()
 {
     glPushAttrib(GL_ENABLE_BIT);
-    glEnable(GL_DEPTH_TEST);
+	ofEnableDepthTest();
     glEnable(GL_CULL_FACE);
     
     //ofPushStyle();

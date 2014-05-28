@@ -58,7 +58,7 @@ void CloudsVisualSystemOpenP5SpinningSolids::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5SpinningSolids::selfSetup(){
 	
-    glEnable(GL_DEPTH_TEST);
+    ofEnableDepthTest();
 
     //int IDnumber = 0;
     
