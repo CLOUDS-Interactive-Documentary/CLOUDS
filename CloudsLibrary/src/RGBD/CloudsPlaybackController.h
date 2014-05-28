@@ -195,6 +195,7 @@ class CloudsPlaybackController : public ofThread {
 	float interludeArcRadius;
 	float interludeArcBaseAlpha;
 	float interludeForceOnTimer;
+
 //    CloudsPortal continuePortal;
 //    void setupPortals();
 //    ofRectangle resetRect;

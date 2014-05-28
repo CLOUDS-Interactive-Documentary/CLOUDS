@@ -12,6 +12,55 @@ bool listsort(pair<int,string> a, pair<int,string> b){
 //--------------------------------------------------------------------
 CloudsPlaybackController::CloudsPlaybackController(){
 	
+	loading = false;
+	loadPercent = 0.0;
+	loadFinished = false;
+	currentAct = NULL;
+	currentClip = NULL;
+	numClipsPlayed = 0;
+	
+	shouldLoadAct = shouldPlayAct = shouldClearAct = shouldPlayClusterMap = false;
+	selectedQuestion = NULL;
+	selectedQuestionClip = NULL;
+
+    numActsCreated = 0;
+    
+    cachedTransition = false;
+    currentVisualSystem = NULL;
+	rgbdVisualSystem = NULL;
+	introSequence = NULL;
+	clusterMap = NULL;
+	interludeSystem = NULL;
+    interludeStartTime = 0.0;
+	
+	forceInterludeReset = false;
+	loadingAct = false;
+	currentPresetIndex = 0;
+    actCreatedTime = 0.0;
+	crossfadeValue = 0.0;
+	
+	eventsRegistered = false;
+	returnToIntro = false;
+
+	showingIntro = false;
+	showingVisualSystem = false;
+	showingClusterMap = false;
+    showingInterlude = false;
+    exitedInterlude = false;
+	bQuestionAsked = false;
+	interludeExitBarWidth = 0.0;
+	interludeHoveringContinue = false;
+	interludeHoveringReset = false;
+	interludeBarHoverStartTime = 0.0;
+	interludeBarHoverHoldTime = 0.0;
+	interludeBarHoverPercentComplete = 0.0;
+	interludeContinueSelected = false;
+	interludeResetSelected = false;
+	interludeTimedOut = false;
+	interludeArcRadius = 0.0;
+	interludeArcBaseAlpha = 0.0;
+	interludeForceOnTimer = 0.0;
+	/*
 	eventsRegistered = false;
 	showingVisualSystem = false;
 	currentAct = NULL;
@@ -37,7 +86,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	
     returnToIntro = false;
     cachedTransition = false;
-    
+    */
 	resetInterludeVariables();
 	
     interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
@@ -149,11 +198,9 @@ void CloudsPlaybackController::setup(){
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
 	
-	
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
 	rgbdVisualSystem->setDrawToScreen(false);
-
 	
 	clusterMap = new CloudsVisualSystemClusterMap();
 	clusterMap->setup();
@@ -235,7 +282,12 @@ void CloudsPlaybackController::finishSetup(){
 	startingNodes = storyEngine.getStartingQuestions();
 	introSequence->setStartQuestions(startingNodes);
 
+	/*
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 8ab0cbbfb062bbed941275c3f536d0ed8f44f594
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
     rgbdVisualSystem->setupHUDGui();
@@ -243,6 +295,10 @@ void CloudsPlaybackController::finishSetup(){
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
+<<<<<<< HEAD
+*/
+
+//=======
     
 	//cout << "*****LOAD STEP EVENTS" << endl;
  //   if(!eventsRegistered){
@@ -276,6 +332,7 @@ void CloudsPlaybackController::finishSetup(){
  //   setupPortals();
 
 	//cout << "*****LOAD SETUP COMPLETE" << endl;
+//>>>>>>> 8ab0cbbfb062bbed941275c3f536d0ed8f44f594
 }
 
 //--------------------------------------------------------------------
@@ -918,22 +975,22 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	}
 	
 #ifdef OCULUS_RIFT
-    // TODO: Figure this out!!!
-    //interludeContinueSelected = interludeHoveringContinue;
-	//interludeResetSelected = interludeHoveringReset;
 
-	//if(currentVisualSystem->resetNode.finished){
-	//	interludeResetSelected = true;
-	//	return true;
-	//}
-	//if(currentVisualSystem->continueNode.finished){
-	//	interludeContinueSelected = true;
-	//	return true;
-	//}
-	//if(ofGetElapsedTimef() - interludeStartTime > 30){
-	//	interludeResetSelected = true;
-	//	return true;
-	//}
+    interludeContinueSelected = interludeHoveringContinue;
+	interludeResetSelected = interludeHoveringReset;
+
+	if(currentVisualSystem->resetNode.finished){
+		interludeResetSelected = true;
+		return true;
+	}
+	if(currentVisualSystem->continueNode.finished){
+		interludeContinueSelected = true;
+		return true;
+	}
+	if(ofGetElapsedTimef() - interludeStartTime > 30){
+		interludeResetSelected = true;
+		return true;
+	}
 	return false;
 #else
 	
