@@ -9,18 +9,15 @@
 
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	run = NULL;
-	matchLineColor = false;
 	act = NULL;
-}
+	matchLineColor = false;
+	
+	parser = NULL;
 
-void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	autoTraversePoints = false;
 	finishedTraversing = false;
 	
 	flickerWidth = 0;
-	act = NULL;
-	parser = NULL;
-	run = NULL;
 	traverseNextFrame = false;
 	lastTraverseStartedIndex = 0;
 	firstClip = false;
@@ -77,6 +74,11 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     currentAssociationFont = 0;
     numTraversed = 0;
 	///END INIT
+
+}
+
+void CloudsVisualSystemClusterMap::selfSetDefaults(){
+
 
 	drawNodes = true;
 	drawLines = true;
