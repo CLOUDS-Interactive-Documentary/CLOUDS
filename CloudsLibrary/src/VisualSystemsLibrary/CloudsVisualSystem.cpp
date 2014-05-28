@@ -171,8 +171,15 @@ void CloudsVisualSystem::get2dMesh(ofMesh& mesh, float width, float height){
 static ofxOculusRift oculusRift;
 ofxOculusRift& CloudsVisualSystem::getOculusRift(){
 	if(!oculusRift.isSetup()){
+
+		ofFbo::Settings renderSettings;
+		renderSettings.useDepth = true;
+		renderSettings.numSamples = 4;
+		renderSettings.depthStencilInternalFormat = GL_DEPTH_COMPONENT32F;
+		renderSettings.internalformat = GL_RGB;
+
         checkOpenGLError("PRE SETUP OCULUS");
-		oculusRift.setup();
+		oculusRift.setup(renderSettings);
         checkOpenGLError("POST SETUP OCULUS");
 	}
 

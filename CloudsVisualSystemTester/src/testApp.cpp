@@ -96,7 +96,6 @@ void testApp::advanceSystem(){
 		auto it = blackList.begin();
 		auto end = blackList.end();
 		while(it != end){
-			cout<<"compare: "<< preset.presetName << "  " << it->second <<endl;
 			if( preset.presetName == it->second ){
 				allow = false;
 				break;
@@ -151,6 +150,7 @@ void testApp::advanceSystem(){
 			toLog( "success " + to_string(elapsedTime(shortStartTime))  + "ms \n");
 			toLog( "beginning setDrawToScreen -- ");
 			currentSystem->setDrawToScreen(false);
+			currentSystem->setNumSamples(4);
 			toLog( "success \n");
 			toLog( "beginning playSystem -- ");
 			shortStartTime =  ofGetElapsedTimef();
