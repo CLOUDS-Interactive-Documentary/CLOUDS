@@ -393,9 +393,11 @@ void CloudsVisualSystemHistogram::selfMouseReleased(ofMouseEventArgs& data){
 
 void CloudsVisualSystemHistogram::stopSound()
 {
-    // close whatever sound was previously open
-    soundPlayer.stop();
-    soundPlayer.unloadSound();
+    if (soundPlayer.isLoaded()) {
+        // close whatever sound was previously open
+        soundPlayer.stop();
+        soundPlayer.unloadSound();
+    }
 }
 
 void CloudsVisualSystemHistogram::reloadSound()
