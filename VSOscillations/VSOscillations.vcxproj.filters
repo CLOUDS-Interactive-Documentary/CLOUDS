@@ -94,11 +94,11 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\CubeCraft\vs_src\CloudsVisualSystemCubeCraft.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\CubeCraft\vs_src</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Oscillations\vs_src\CloudsVisualSystemOscillations.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Oscillations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,11 +156,8 @@
     <Filter Include="addons\ofxObjLoader\libs\glm">
       <UniqueIdentifier>{3c3a084f-1f94-410a-beea-5864fde43503}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\CubeCraft">
-      <UniqueIdentifier>{c6d6e5a1-f831-4f07-9442-226bbd386435}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\CubeCraft\vs_src">
-      <UniqueIdentifier>{a5bd867b-a290-4d82-b6a2-d558ce1ca61f}</UniqueIdentifier>
+    <Filter Include="CloudsLibrary\src\VisualSystems\Oscillations">
+      <UniqueIdentifier>{b8e2e59d-3331-4e1b-9b98-49c7b50148e8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -329,11 +326,11 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\CubeCraft\vs_src\CloudsVisualSystemCubeCraft.h">
-      <Filter>CloudsLibrary\src\VisualSystems\CubeCraft\vs_src</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
       <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Oscillations\vs_src\CloudsVisualSystemOscillations.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Oscillations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
