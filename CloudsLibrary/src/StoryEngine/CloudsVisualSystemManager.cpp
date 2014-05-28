@@ -33,11 +33,7 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemExampleVectorMath.h"
 #include "CloudsVisualSystemFireworks.h"
 #include "CloudsVisualSystemFlocking.h"
-
-///////64 bit
-//#include "CloudsVisualSystemFlying.h"
-///////
-
+#include "CloudsVisualSystemFlying.h"
 #include "CloudsVisualSystemForkingPaths.h"
 #include "CloudsVisualSystemGesturePaint.h"
 
@@ -54,13 +50,7 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemMazeGenerator2.h"
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemMetaballs.h"
-
-//NOT USED
-//#include "CloudsVisualSystemNbody.h"
-
-///////64 bit
-//#include "CloudsVisualSystemNeurons.h"
-//////
+#include "CloudsVisualSystemNeurons.h"
 
 #include "CloudsVisualSystemOcean.h"
 //NOT USED
@@ -92,10 +82,7 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemRulez.h"
 #include "CloudsVisualSystemSatoruhiga.h"
 #include "CloudsVisualSystemScrape.h"
-
-///////64 bit
-///#include "CloudsVisualSystemSwim.h"
-///////
+#include "CloudsVisualSystemSwim.h"
 
 #include "CloudsVisualSystemTerrain.h"
 //#include "CloudsVisualSystemThingsInTheDark.h"
@@ -106,7 +93,7 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemVerletForm.h"
 
 ///////64 bit
-////#include "CloudsVisualSystemVision.h"
+#include "CloudsVisualSystemVision.h"
 ///////64 bit
 
 #include "CloudsVisualSystemVoro.h"

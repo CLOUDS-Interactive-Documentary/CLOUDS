@@ -352,8 +352,6 @@ void CloudsVisualSystemCubeCraft::selfSetDefaults()
 	edgeSmoothing = .01;
 	specExpo = 4;
 	specScale = 1.2;
-	
-
 
 	//cube craft
 	updateAllColors();
