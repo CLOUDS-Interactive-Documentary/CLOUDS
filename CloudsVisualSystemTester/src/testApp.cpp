@@ -23,7 +23,7 @@ void testApp::setup(){
 
 	blackList.clear();
 
-	/*
+	
 	blackList.push_back(make_pair("Memory", "ThinBlueRows_2")); //crash in loadingPresetGUI
 	blackList.push_back(make_pair("Memory", "ThinBlueRows_wide")); //crash in loadingPresetGUI
 	blackList.push_back(make_pair("Memory", "ThinTealRows")); //crash in loadingPresetGUI
@@ -40,14 +40,13 @@ void testApp::setup(){
 	blackList.push_back(make_pair("OpenP5DrawingMachine10", "chaos")); //not registered
 	blackList.push_back(make_pair("WebHistory", "AutoSpiderShell")); //not registered
 	blackList.push_back(make_pair("WebHistory", "Hazy_widesuccess")); //not registered
-	*/
-
-	blackList.push_back(make_pair("Orbit", "Lorenz_Dolly")); //crash during run
-	blackList.push_back(make_pair("Swim", "Asteroids")); //not registered
-	blackList.push_back(make_pair("Cosmic", "JM_biological2")); //running and registered but showing nothing
-	blackList.push_back(make_pair("Schlabberbox", "jm_whirl")); //maybe crashed during run? it followed the mysterious Mandala
-	blackList.push_back(make_pair("Oscillations", "Progressive_wormhole_1")); //Hung on setup
-	blackList.push_back(make_pair("Oscillations", "Wavessuccess")); //crash crash on exit
+	
+	//blackList.push_back(make_pair("Orbit", "Lorenz_Dolly")); //crash during run
+	//blackList.push_back(make_pair("Swim", "Asteroids")); //not registered
+	//blackList.push_back(make_pair("Cosmic", "JM_biological2")); //running and registered but showing nothing
+	//blackList.push_back(make_pair("Schlabberbox", "jm_whirl")); //maybe crashed during run? it followed the mysterious Mandala
+	//blackList.push_back(make_pair("Oscillations", "Progressive_wormhole_1")); //Hung on setup
+	//blackList.push_back(make_pair("Oscillations", "Wavessuccess")); //crash crash on exit
 
 	//cubeCraft MC_FlyoverDesert looks like shit
 	//cubeCraft has a bgColor state leak
@@ -97,7 +96,7 @@ void testApp::advanceSystem(){
 			++it;
 		}
 
-		if(allow){
+		if(!allow){
 			if(bForward) currentSystemIndex = currentSystemIndex + 1 % presetIndices.size();
 			else currentSystemIndex = currentSystemIndex - 1 % presetIndices.size();
 			advanceSystem();
