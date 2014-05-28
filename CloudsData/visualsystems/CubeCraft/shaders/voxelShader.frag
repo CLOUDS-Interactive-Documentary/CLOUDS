@@ -1,4 +1,3 @@
-
 #version 120
 #extension GL_ARB_texture_rectangle : enable
 
@@ -41,7 +40,7 @@ void main(void)
 	if( nScl < noiseCutoff)	discard;
 	if( camDelta < cameraCutoffDistance*cameraCutoffDistance) discard;
 	
-	vec3 v = abs(vertex) * 2.;
+	vec3 v = abs(vertex) * 2.0;
 	float edgeSample = max( v.x * v.y, max( v.y * v.z, v.z * v.x ));
 
 	//edge color
@@ -65,7 +64,7 @@ void main(void)
 	float edgeMix = edgeSample + edgeSmoothing;
 	if( edgeMix > edgeThreshold && edgeSample <= edgeThreshold)
 	{
-		gl_FragColor = mix( gl_FragColor, edgeColor, (edgeMix-edgeThreshold)/edgeSmoothing );
+		gl_FragColor = mix( gl_FragColor, edgeColor, (edgeMix-edgeThreshold) / edgeSmoothing );
 	}
 	
 	//fog

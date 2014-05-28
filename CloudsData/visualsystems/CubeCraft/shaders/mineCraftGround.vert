@@ -1,14 +1,13 @@
-
 #version 120
 #extension GL_ARB_texture_rectangle : enable
 
-uniform float groundDrama;// = .75;
+uniform float groundDrama;
 
-uniform float cloudThreshold;// = .55;
-uniform float cloudHeight;// = 4.;
-uniform float cloudThickness;// = 8.;
+uniform float cloudThreshold;
+uniform float cloudHeight;
+uniform float cloudThickness;
 
-uniform vec3 cubeScale;// = vec3(1.,1.,1.);
+uniform vec3 cubeScale;
 
 uniform vec3 cameraPos;
 uniform float cameraCutoffDistance;
@@ -16,8 +15,7 @@ uniform float cameraCutoffDistance;
 uniform vec3 noiseOffset;
 uniform vec3 cameraOffset;
 
-uniform float maxHeight;// = 10.;
-
+uniform float maxHeight;
 
 uniform float fogDist;
 uniform float fogExpo;

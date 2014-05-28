@@ -11,6 +11,29 @@
 
 CloudsRGBDCamera::CloudsRGBDCamera(){
 	
+	//////START INIT VARS
+	sideDistance = 0;
+	frontDistance = 0;
+	sidePullback = 0;
+	dropAmount = 0;
+	liftAmount = 0;
+	liftRange = 0;
+
+	//looking and dampening params
+	damp = 0;
+	
+	//perlin drift params
+	driftRadius = 0;
+
+	maxDriftAngle = driftNoiseDensity = driftNoiseSpeed = driftNoisePosition = 0;
+	
+	isSetup = false;
+	isHovering = false;
+	
+	transitionAmount = transitionRotAmount = 0;
+	transitioning = false;
+	//////// END INIT VARS
+
 	targetNode = NULL;
 	startNode = NULL;
 	
@@ -22,7 +45,6 @@ CloudsRGBDCamera::CloudsRGBDCamera(){
 	dropAmount = 33;
 	isSetup = false;
 	damp = .1;
-	driftNoisePosition = 0;
 	
 	canvasWidth = 1920;
 	canvasHeight = 1080;

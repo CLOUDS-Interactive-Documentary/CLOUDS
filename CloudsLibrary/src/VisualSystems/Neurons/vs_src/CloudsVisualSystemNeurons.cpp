@@ -497,8 +497,7 @@ void _C::selfDraw(){
             ofTranslate((*it)->x,(*it)->y,(*it)->z);
             ofSetColor( ofFloatColor( (*it)->r,(*it)->g,(*it)->b,_C::alpha) );
 			
-			//TODO: use ofSphere as GLUT will leave with of 0.8
-			ofDrawSphere(nucleusSize->getScaledValue(),8,8);
+			ofDrawSphere(nucleusSize->getScaledValue());
             ofPopMatrix();
             
             //tell the thing to draw a line for itself.
