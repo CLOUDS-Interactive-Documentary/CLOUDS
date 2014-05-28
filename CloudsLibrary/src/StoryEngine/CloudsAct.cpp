@@ -78,7 +78,7 @@ void CloudsAct::populateTime(){
 		if(item.type == Clip){
             currentTopic = topicMap[item.key];
             
-			cout << "***ADDING CLIP WITH TIME " << itemStartTime << endl;
+			//cout << "***ADDING CLIP WITH TIME " << itemStartTime << endl;
             clipsTrack->addFlagAtTime(item.key, itemStartTime * 1000);
             clipsTrack->addFlagAtTime(" ", item.endTime * 1000);
             

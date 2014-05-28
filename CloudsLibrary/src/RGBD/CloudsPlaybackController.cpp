@@ -12,6 +12,55 @@ bool listsort(pair<int,string> a, pair<int,string> b){
 //--------------------------------------------------------------------
 CloudsPlaybackController::CloudsPlaybackController(){
 	
+	loading = false;
+	loadPercent = 0.0;
+	loadFinished = false;
+	currentAct = NULL;
+	currentClip = NULL;
+	numClipsPlayed = 0;
+	
+	shouldLoadAct = shouldPlayAct = shouldClearAct = shouldPlayClusterMap = false;
+	selectedQuestion = NULL;
+	selectedQuestionClip = NULL;
+
+    numActsCreated = 0;
+    
+    cachedTransition = false;
+    currentVisualSystem = NULL;
+	rgbdVisualSystem = NULL;
+	introSequence = NULL;
+	clusterMap = NULL;
+	interludeSystem = NULL;
+    interludeStartTime = 0.0;
+	
+	forceInterludeReset = false;
+	loadingAct = false;
+	currentPresetIndex = 0;
+    actCreatedTime = 0.0;
+	crossfadeValue = 0.0;
+	
+	eventsRegistered = false;
+	returnToIntro = false;
+
+	showingIntro = false;
+	showingVisualSystem = false;
+	showingClusterMap = false;
+    showingInterlude = false;
+    exitedInterlude = false;
+	bQuestionAsked = false;
+	interludeExitBarWidth = 0.0;
+	interludeHoveringContinue = false;
+	interludeHoveringReset = false;
+	interludeBarHoverStartTime = 0.0;
+	interludeBarHoverHoldTime = 0.0;
+	interludeBarHoverPercentComplete = 0.0;
+	interludeContinueSelected = false;
+	interludeResetSelected = false;
+	interludeTimedOut = false;
+	interludeArcRadius = 0.0;
+	interludeArcBaseAlpha = 0.0;
+	interludeForceOnTimer = 0.0;
+	/*
 	eventsRegistered = false;
 	showingVisualSystem = false;
 	currentAct = NULL;
@@ -37,7 +86,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	
     returnToIntro = false;
     cachedTransition = false;
-    
+    */
 	resetInterludeVariables();
 	
     interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
@@ -236,7 +285,6 @@ void CloudsPlaybackController::finishSetup(){
 	introSequence->setStartQuestions(startingNodes);
 
     /*
-//>>>>>>> master
 
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
@@ -245,44 +293,8 @@ void CloudsPlaybackController::finishSetup(){
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
-	/*
-<<<<<<< HEAD
-    
-	cout << "*****LOAD STEP EVENTS" << endl;
-    if(!eventsRegistered){
-		
-		eventsRegistered = true;
-		
-        ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
-        
-		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
-		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-        
-        ofAddListener(CloudsIntroSequence::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
-        ofAddListener(CloudsIntroSequence::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
-        
-        ofAddListener(CloudsVisualSystemRGBD::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
-        ofAddListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
-        
-		ofRegisterKeyEvents(this);
-		ofRegisterMouseEvents(this);
-	}
-	
-    startingNodes = storyEngine.getStartingQuestions();
-    
-	//////////////SHOW INTRO
-	cout << "Found " << startingNodes.size() << " questions" << endl;
-	showIntro( startingNodes );
-    
-    sound.enterTunnel();
-	
-	cout << "*****LOAD STEP PORTALS" << endl;
-    setupPortals();
-
-	cout << "*****LOAD SETUP COMPLETE" << endl;
-=======
->>>>>>> master
 */
+
 }
 
 //--------------------------------------------------------------------
@@ -926,22 +938,22 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	}
 	
 #ifdef OCULUS_RIFT
-    // TODO: Figure this out!!!
-    //interludeContinueSelected = interludeHoveringContinue;
-	//interludeResetSelected = interludeHoveringReset;
 
-	//if(currentVisualSystem->resetNode.finished){
-	//	interludeResetSelected = true;
-	//	return true;
-	//}
-	//if(currentVisualSystem->continueNode.finished){
-	//	interludeContinueSelected = true;
-	//	return true;
-	//}
-	//if(ofGetElapsedTimef() - interludeStartTime > 30){
-	//	interludeResetSelected = true;
-	//	return true;
-	//}
+    interludeContinueSelected = interludeHoveringContinue;
+	interludeResetSelected = interludeHoveringReset;
+
+	if(currentVisualSystem->resetNode.finished){
+		interludeResetSelected = true;
+		return true;
+	}
+	if(currentVisualSystem->continueNode.finished){
+		interludeContinueSelected = true;
+		return true;
+	}
+	if(ofGetElapsedTimef() - interludeStartTime > 30){
+		interludeResetSelected = true;
+		return true;
+	}
 	return false;
 #else
 	
