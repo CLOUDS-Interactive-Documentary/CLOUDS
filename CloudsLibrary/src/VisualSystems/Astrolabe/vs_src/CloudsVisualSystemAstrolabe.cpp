@@ -353,6 +353,12 @@ void CloudsVisualSystemAstrolabe::selfSetup()
 
 void CloudsVisualSystemAstrolabe::selfSetDefaults()
 {
+	
+	bSetupRings = false;
+	ringsNoiseyness = 0.f;
+	ringsFalloff = 0.f;	
+	bDrawCircles = false;
+
 	ringsCount = 15;
 	ringsInnerRad = 5;
 	ringsWidth = 40;
