@@ -36,11 +36,7 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemFlying.h"
 #include "CloudsVisualSystemForkingPaths.h"
 #include "CloudsVisualSystemGesturePaint.h"
-
-///////64 bit
-//#include "CloudsVisualSystemHistogram.h"
-///////
-
+#include "CloudsVisualSystemHistogram.h"
 #include "CloudsVisualSystemLIA.h"
 #include "CloudsVisualSystemLSystem.h"
 #include "CloudsVisualSystemLaplacianTunnel.h"
@@ -91,11 +87,7 @@ static vector<CloudsVisualSystem*> systems;
 //#include "CloudsVisualSystemUextrude.h"
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemVerletForm.h"
-
-///////64 bit
 #include "CloudsVisualSystemVision.h"
-///////64 bit
-
 #include "CloudsVisualSystemVoro.h"
 
 //////////////64 Bit
@@ -107,7 +99,6 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemXstatic.h"
 #include "CloudsVisualSystemYellowTail.h"
 #include "CloudsVisualSystemSchlabberbox.h"
-
 
 // register a mapping of visual system constructors
 // so it's easy to instantiate them in groups when needed
@@ -155,7 +146,7 @@ struct Mapping {
 	{ "Flying",					&fCreate<CloudsVisualSystemFlying> },
 	{ "ForkingPaths",			&fCreate<CloudsVisualSystemForkingPaths> },
 	{ "GesturePaint",			&fCreate<CloudsVisualSystemGesturePaint> },
-//64	{ "Histogram",				&fCreate<CloudsVisualSystemHistogram> },
+	{ "Histogram",				&fCreate<CloudsVisualSystemHistogram> },
 	{ "LIA",					&fCreate<CloudsVisualSystemLIA> },
 	{ "LSystem",				&fCreate<CloudsVisualSystemLSystem> },
 	{ "LaplacianTunnel",		&fCreate<CloudsVisualSystemLaplacianTunnel> },
