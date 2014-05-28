@@ -14,9 +14,10 @@ class XParticle
 { 
 public:
     XParticle();
-    XParticle(ofVec3f pos);
+    XParticle(const ofVec3f& pos);
+    void setup(const ofVec3f& pos, float mass);
     
-    void applyForce(ofVec3f force);
+    void applyForce(const ofVec3f& force);
     void update(float drag);
     
     void bounceEdges();

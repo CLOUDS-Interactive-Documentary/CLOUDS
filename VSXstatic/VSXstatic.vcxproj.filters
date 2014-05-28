@@ -103,6 +103,9 @@
     <ClCompile Include="..\..\..\addons\ofxBillboard\src\ofxBillboard.cpp">
       <Filter>addons\ofxBillboard\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -346,6 +349,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxBillboard\src\ofxBillboard.h">
       <Filter>addons\ofxBillboard\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
