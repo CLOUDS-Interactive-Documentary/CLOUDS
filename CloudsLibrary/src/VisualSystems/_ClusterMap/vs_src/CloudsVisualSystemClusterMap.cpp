@@ -1098,7 +1098,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	else{
 		glDisable(GL_LINE_SMOOTH);
 	}
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 
 	ofPushStyle();
 	ofPushMatrix();
@@ -1245,7 +1245,7 @@ void CloudsVisualSystemClusterMap::selfDrawBackground(){
 void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	//turn the background refresh off
 	if(drawType){
-		glDisable(GL_LIGHTING);
+		ofDisableLighting();
 		ofRectangle screenRect(0,0,getCanvasWidth(), getCanvasHeight());
 		for(int i = 0; i < topicPoints.size(); i++){
 
@@ -1264,7 +1264,7 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 				}
 			}
 		}
-		glEnable(GL_LIGHTING);
+		ofEnableLighting();
 	}
 	
     if(drawAssociation){

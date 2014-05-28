@@ -1064,7 +1064,7 @@ void CloudsVisualSystemTwitter::selfDraw()
     
     ofSetBackgroundColor(0,0,0);
     
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
     glDisable(GL_LINE_SMOOTH);
     
 	ofEnableBlendMode(OF_BLENDMODE_ADD);

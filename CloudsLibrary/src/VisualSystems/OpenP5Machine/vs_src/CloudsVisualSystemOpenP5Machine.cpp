@@ -116,7 +116,7 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
     ofPushStyle();
 	ofSetLineWidth(.1);
 	
-	glEnable(GL_DEPTH_TEST);
+	ofEnableDepthTest();
 	
     mat->begin();
 	ofColor color;

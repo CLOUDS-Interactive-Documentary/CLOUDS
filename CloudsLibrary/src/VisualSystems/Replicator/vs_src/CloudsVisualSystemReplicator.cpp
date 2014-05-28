@@ -99,7 +99,7 @@ void CloudsVisualSystemReplicator::selfDraw(){
 	
 	ofSetRectMode(OF_RECTMODE_CENTER);
 #if (OF_VERSION_MINOR < 8)
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 #else
 	ofDisableDepthTest();
 #endif

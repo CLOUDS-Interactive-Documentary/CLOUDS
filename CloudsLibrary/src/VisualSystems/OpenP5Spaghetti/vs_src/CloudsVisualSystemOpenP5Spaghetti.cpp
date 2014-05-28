@@ -255,7 +255,7 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
 void CloudsVisualSystemOpenP5Spaghetti::selfDraw(){
 
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 	glEnable(GL_POINT_SMOOTH);
     glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
     glPointSize(1);

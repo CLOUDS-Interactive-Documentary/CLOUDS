@@ -125,7 +125,7 @@ void CloudsVisualSystemOscillations::selfSetup(){
     
 	NUMPOINTS = 10000;
 	GridPointSpacing = 100;
-    ofEnableAlphaBlending();
+    
     cout<<"made it to selfsetup"<<endl;
     ofFloatColor zero = ofFloatColor(0,0,0);
     for (int i = 0; i < NUMPOINTS ; i++){
@@ -162,11 +162,14 @@ void CloudsVisualSystemOscillations::selfSetDefaults(){
     CurveLineWidth = 0.1;
     displayGrid = false;
     curveProgress = NUMPOINTS;
-    
+	GridClipping.low = .01;
+	GridClipping.high = 5000;
     clipPlanes.min = 0.01;
     clipPlanes.max = 5000;
+	GridLineWidth = .1;
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
+    GridPattern = 0;
 }
 
 
@@ -215,10 +218,11 @@ void CloudsVisualSystemOscillations::selfUpdate(){
 void CloudsVisualSystemOscillations::selfDraw(){
     
 	ofPushStyle();
+	ofEnableAlphaBlending();
     glPushAttrib(GL_LINE_SMOOTH | GL_DEPTH_TEST | GL_POINT_SIZE);
     glDisable( GL_LINE_SMOOTH );
     glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
 //    ofEnableBlendMode(OF_BLENDMODE_ADD);
     if (displayGrid) {
         glLineStipple((int)GridPattern, 0x8888);
@@ -335,7 +339,7 @@ void CloudsVisualSystemOscillations::BuildGrid(){
     grid.clear();
     int spacing = (int) floor(GridPointSpacing);
 
-	
+
     for (float x = GridClipping.low; x < GridClipping.high ; x += spacing){
         for (float y = GridClipping.low; y < GridClipping.high ; y +=spacing){
             float   _x1 =x, _x2 = x,

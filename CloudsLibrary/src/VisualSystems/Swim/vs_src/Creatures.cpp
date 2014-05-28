@@ -399,7 +399,7 @@ namespace itg
     void Creatures::draw(const ofCamera& cam)
     {
         glPushAttrib(GL_ENABLE_BIT);
-        glEnable(GL_DEPTH_TEST);
+        ofEnableDepthTest();
         
         // draw all creatures except point creatures
         for (unsigned i = 0; i < creaturesByType.size(); ++i)

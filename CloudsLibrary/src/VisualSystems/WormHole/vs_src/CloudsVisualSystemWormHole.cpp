@@ -549,7 +549,7 @@ void CloudsVisualSystemWormHole::selfDraw()
 	
 	//depth testing
 	//bDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
-	 glEnable(GL_DEPTH_TEST);
+	 ofEnableDepthTest();
 	//shader binding
 	if (bDoShader && currentShader != NULL)
 	{

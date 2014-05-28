@@ -197,7 +197,7 @@ void CloudsVisualSystemMazeGenerator::selfUpdate()
 void CloudsVisualSystemMazeGenerator::selfDraw()
 {
 	
-	glEnable(GL_DEPTH_TEST);
+	ofEnableDepthTest();
     // draw fog
     ofFloatColor fc = settings.getFogColor();
     GLfloat fogColor[4] = {fc.r, fc.g, fc.b, 1.0};

@@ -750,8 +750,10 @@ void CloudsVisualSystemCosmic::updatePosition()
 
 void CloudsVisualSystemCosmic::drawParticles()
 {
+	ofPushStyle();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDepthMask(false);
+	ofDisableDepthTest();
 //    glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
 //    glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
@@ -773,13 +775,17 @@ void CloudsVisualSystemCosmic::drawParticles()
     rdrShader.end();
     glDepthMask(true);
 	glPopAttrib();
+	ofPopStyle();
 }
 
 void CloudsVisualSystemCosmic::drawFloor()
 {
+	ofPushStyle();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glDisable(GL_DEPTH_TEST);
-    glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
+    glDepthMask(false);
+    ofDisableDepthTest();
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+   // glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
     floorShader.begin();
     floorShader.setUniformTexture("radiData", radiFbo.getTextureReference(), 1);
     floorShader.setUniformTexture("posData", posFboSrc.getTextureReference(), 2);
@@ -789,8 +795,9 @@ void CloudsVisualSystemCosmic::drawFloor()
     ofSetColor(255, 0, 0);
     vboFloor.drawElements(GL_TRIANGLES, floorIndexSize);
     floorShader.end();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	glDepthMask(true);
 	glPopAttrib();
+	ofPopStyle();
 }
 
 void CloudsVisualSystemCosmic::setupFboViewerGui(string name, ofFbo *fbo)

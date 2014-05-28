@@ -244,7 +244,7 @@ ofxSimpleSpline* Maze::createSimpleSpline(int sx, int sy, int length)
     while (!solveStack.empty())
     {
         cell = solveStack.top();
-        cout<<"cell["<<cell->getX()<<"]["<<cell->getY()<<"]\n";
+        //cout<<"cell["<<cell->getX()<<"]["<<cell->getY()<<"]\n";
         points.push_back(ofVec3f(cell->getX()*cellSize+cellSize/2,
                                  settings->ballRadius,
                                  cell->getY()*cellSize+cellSize/2));

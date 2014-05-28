@@ -148,14 +148,16 @@ void CloudsVisualSystemConnectors::selfDraw(){
 
 	//ofEnableAlphaBlending();
 //	ofEnableBlendMode(OF_BLENDMODE_ADD);
-	glDisable(GL_DEPTH_TEST);
-	
+	ofPushStyle();
+	ofDisableDepthTest();
+	ofSetLineWidth(1.f);
+
 	generator.draw();
 	
 	ofNoFill();
 	ofSetColor(20);
 	ofBox(0,0,0, generator.boundarySize*2);
-	
+	ofPopStyle();
 }
 
 // draw any debug stuff here

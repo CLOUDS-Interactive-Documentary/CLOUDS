@@ -621,8 +621,8 @@ void CloudsVisualSystemMandala::selfDraw()
 	}
 
 	
-	
-	glLineWidth(2);
+	ofPushStyle();
+	ofSetLineWidth(2);
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 
 	if(bDrawTails)
@@ -633,7 +633,7 @@ void CloudsVisualSystemMandala::selfDraw()
 		}
 	}
 	ofDisableAlphaBlending();
-	
+	ofPopStyle();
 
 	
 	//nested surfaces
@@ -647,7 +647,7 @@ void CloudsVisualSystemMandala::selfDraw()
 void CloudsVisualSystemMandala::drawOffsetMesh()
 {
 	
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 	hexMeshNode.setScale(1);

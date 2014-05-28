@@ -439,7 +439,7 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 	}
     
     if(!bEnableOcclusion){
-        glDisable(GL_DEPTH_TEST);
+        ofDisableDepthTest();
     }
     
     if(bEnablePoints){
@@ -494,7 +494,7 @@ void CloudsVisualSystemRGBDVideo::drawOcclusionLayer(){
 	
     if(!bEnableOcclusionDebug){
         ofTranslate(0, 0, 5.44);
-        glEnable(GL_DEPTH_TEST);  // We want depth test !
+        ofEnableDepthTest();  // We want depth test !
         glDepthFunc(GL_LESS);     // We want to get the nearest pixels
         glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
         glDepthMask(GL_TRUE);     // Ask z writing
@@ -511,7 +511,7 @@ void CloudsVisualSystemRGBDVideo::drawOcclusionLayer(){
     occlusionShader.end();
     
     if(!bEnableOcclusionDebug){
-        glEnable(GL_DEPTH_TEST);  // We still want depth test
+        ofEnableDepthTest();  // We still want depth test
         glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
         glColorMask(1,1,1,1);     // We want color this time
         glDepthMask(GL_FALSE);

@@ -225,9 +225,9 @@ namespace itg
         shader.setUniform1f("lightingAmount", 0.f);
         shader.setUniform4f("colour", tentacleColour.r, tentacleColour.g, tentacleColour.b, 40 / 255.f);
         
-        glLineWidth(.2f);
+        ofSetLineWidth(.2f);
         lineMesh.draw();
-        glLineWidth(1.f);
+        ofSetLineWidth(1.f);
         
         glDepthMask(GL_TRUE);
         ofDisableBlendMode();

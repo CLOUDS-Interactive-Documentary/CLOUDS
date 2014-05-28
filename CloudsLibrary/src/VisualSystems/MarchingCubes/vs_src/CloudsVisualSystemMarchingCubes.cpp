@@ -227,13 +227,13 @@ void CloudsVisualSystemMarchingCubes::selfUpdate()
 void CloudsVisualSystemMarchingCubes::selfDraw()
 {
     if (!bRenderNormals && fgColor.a < 255.0f) {
-        glDisable(GL_DEPTH_TEST);
+        ofDisableDepthTest();
     }
     else {
-        glEnable(GL_DEPTH_TEST);
+        ofEnableDepthTest();
     }
 	mat->begin();
-    glEnable(GL_DEPTH_TEST);
+    ofEnableDepthTest();
     //draw the mesh
 	styleShader.begin();
     styleShader.setUniform1i("bRenderNormals", bRenderNormals);
@@ -257,7 +257,7 @@ void CloudsVisualSystemMarchingCubes::selfDraw()
     
     if (bDrawGrid) mc.drawGrid();
     
-    glDisable(GL_DEPTH_TEST);
+   ofDisableDepthTest();
     
 }
 

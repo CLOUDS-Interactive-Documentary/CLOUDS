@@ -721,7 +721,7 @@ void CloudsVisualSystem::drawScene(){
         ofMultMatrix(curmv);
     }
 	
-	glEnable(GL_DEPTH_TEST);
+	ofEnableDepthTest();
 	
 	ofPushStyle();
 	drawDebug();
@@ -738,7 +738,7 @@ void CloudsVisualSystem::drawScene(){
 	
 	lightsEnd();
 	
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
     
     ofPopMatrix();
 
@@ -753,7 +753,7 @@ void CloudsVisualSystem::drawScene(){
         ofPushMatrix();
         glPushAttrib(GL_ALL_ATTRIB_BITS);
         glDisable(GL_LIGHTING);
-        glDisable(GL_DEPTH_TEST);
+        ofDisableDepthTest();
         
         ofTranslate(getCameraRef().getPosition());
         ofMatrix4x4 baseRotation;
@@ -784,7 +784,7 @@ void CloudsVisualSystem::drawInterludeInterface(){
 #if defined(CLOUDS_INTERLUDE_NAV)
 
 	ofPushStyle();
-	glDisable(GL_DEPTH_TEST);
+	ofDisableDepthTest();
 	ofDisableLighting();
 	ofEnableAlphaBlending();
 	ofSetColor(255);
@@ -3690,8 +3690,8 @@ void CloudsVisualSystem::drawBackgroundGradient(){
 	ofPushStyle();
 
 	ofEnableAlphaBlending();
-	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_LIGHTING);
+	ofDisableDepthTest();
+	ofDisableLighting();
 	ofSetGlobalAmbientColor(ofColor(0,0,0));
 
 	if(bClearBackground)

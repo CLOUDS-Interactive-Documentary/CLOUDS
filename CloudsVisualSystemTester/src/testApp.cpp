@@ -42,18 +42,27 @@ void testApp::setup(){
 	blackList.push_back(make_pair("WebHistory", "Hazy_widesuccess")); //not registered
 	
 	//blackList.push_back(make_pair("Orbit", "Lorenz_Dolly")); //crash during run
-	//blackList.push_back(make_pair("Swim", "Asteroids")); //not registered
-	//blackList.push_back(make_pair("Cosmic", "JM_biological2")); //running and registered but showing nothing
+	blackList.push_back(make_pair("Xstatic", "StarChurn")); //something wrong with preset
+	blackList.push_back(make_pair("Cosmic", "JM_biological2")); //running and registered but showing nothing, or causing problems, also weird preset
 	//blackList.push_back(make_pair("Schlabberbox", "jm_whirl")); //maybe crashed during run? it followed the mysterious Mandala
-	//blackList.push_back(make_pair("Oscillations", "Progressive_wormhole_1")); //Hung on setup
-	//blackList.push_back(make_pair("Oscillations", "Wavessuccess")); //crash crash on exit
+	blackList.push_back(make_pair("Xstatic", "fireflies")); //something wrong with preset
+	blackList.push_back(make_pair("CubeCraft", "MC_FlyoverDesert")); //looks bad in preset
 
 	//cubeCraft MC_FlyoverDesert looks like shit
 	//cubeCraft has a bgColor state leak
 	//cubecraft fog tweaks
-	//xstatic fireflies all particles drawing in the same place on top of eachother
+	//xstatic fireflies all particles drawing in the same place on top of eachother, state leak!
 	//xstatic star churn is all in a line?
+	//voro dream crystal1 check alpha blending??
+	//cosmic JM_biological2  , preset has some problems and is suseptibable to depth_test state leak
+	//connectors susseptible to line width state leak
+	//prior to 128 was a lineWidth return to 0?
+	//egg astrolabe far clipping plane in oculus needs extension
+	//OpenP5Machine  is the slowest general system, needs optimization
 
+	//line width state leak victims = ocean, world, twitter, connections, 
+
+	//check OpenP5Hackpact  for line state leak? openP5Spaghetti?
 
 	presetIndices = systemManager.getFilteredPresetIndeces(false,true);
 	for(int i = 0; i < presetIndices.size(); i++){

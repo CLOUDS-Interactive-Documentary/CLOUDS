@@ -396,7 +396,7 @@ void CloudsVisualSystemTerrain::selfUpdate()
     
     if(bDoDraw){
         
-        glDisable(GL_DEPTH_TEST);
+        ofDisableDepthTest();
         ofSetColor(255);
         
         canvasDest.begin();
@@ -561,7 +561,7 @@ void CloudsVisualSystemTerrain::selfDraw()
     ofFbo& canvas = (ofGetFrameNum()%2==0) ? canvasSrc : canvasDest;
     
     mat->begin();
-    glEnable(GL_DEPTH_TEST);
+    ofEnableDepthTest();
     glEnable(GL_NORMALIZE);
     
     ofPushMatrix();
@@ -603,7 +603,7 @@ void CloudsVisualSystemTerrain::selfDraw()
     ofPopMatrix();
     
     glDisable(GL_NORMALIZE);
-    glDisable(GL_DEPTH_TEST);
+    ofDisableDepthTest();
     mat->end();
     
     if(bShowDebug){
