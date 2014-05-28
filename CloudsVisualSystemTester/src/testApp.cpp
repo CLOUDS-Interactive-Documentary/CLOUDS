@@ -23,7 +23,6 @@ void testApp::setup(){
 
 	blackList.clear();
 	blackList.push_back(make_pair("Memory", "ThinBlueRows_wide")); //crash in loadingPresetGUI
-	blackList.push_back(make_pair("Oscillations", "Wavessuccess")); //crash crash on exit
 	blackList.push_back(make_pair("WebHistory", "Hazy_widesuccess")); //not registered
 	//blackList.push_back(make_pair("Vision", "UnionSqGhost")); //not registered
 	blackList.push_back(make_pair("Orbit", "Lorenz_Dolly")); //crash during run
@@ -57,7 +56,12 @@ void testApp::setup(){
 	//blackList.push_back(make_pair("Voro", "Dream_Crystal1")); //running and registered but showing nothing
 	blackList.push_back(make_pair("Rulez", "Ico_rotate")); //running and registered but showing nothing
 	blackList.push_back(make_pair("RandomDigits", "BasicOC"));//not registered
-	blackList.push_back(make_pair("Mandala", "DinoSkinPlanetOC"));//running and registered but showing just a boring ass big red ball
+	//blackList.push_back(make_pair("Mandala", "DinoSkinPlanetOC"));//running and registered but showing just a boring ass big red ball
+	blackList.push_back(make_pair("Oscillations", "Progressive_wormhole_1")); //Hung on setup
+	blackList.push_back(make_pair("Oscillations", "Wavessuccess")); //crash crash on exit
+
+	//cubeCraft MC_FlyoverDesert looks like shit
+	//cubeCraft has a bgColor state leak
 
 
 

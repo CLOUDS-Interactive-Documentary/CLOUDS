@@ -12,7 +12,7 @@
 //These methods let us add custom GUI parameters and respond to their events
 
 
-#define NUMPOINTS 10000
+
 
 void CloudsVisualSystemOscillations::selfSetupGui(){
     
@@ -123,19 +123,26 @@ void CloudsVisualSystemOscillations::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemOscillations::selfSetup(){
     
+	NUMPOINTS = 10000;
+
     ofEnableAlphaBlending();
-    
+    cout<<"made it to selfsetup"<<endl;
     ofFloatColor zero = ofFloatColor(0,0,0);
     for (int i = 0; i < NUMPOINTS ; i++){
         //the Zpos serves as an index
         mesh.addVertex(ofPoint(0,0,i));
         mesh.addColor(ofFloatColor(1.,1.,1.,1.));
     }
-    
+    cout<<"made it past mesh creation loop"<<endl;
+
     //TODO: Find way to update on every resize
     offsetX = offsetY = 0;
     BuildGrid();
+	cout<<"made it past build grid"<<endl;
+
     loadShader();
+	cout<<"made it past build grid"<<endl;
+
 }
 
 void CloudsVisualSystemOscillations::loadShader(){

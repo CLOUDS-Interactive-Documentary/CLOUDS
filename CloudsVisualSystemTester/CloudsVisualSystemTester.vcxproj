@@ -543,7 +543,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.cpp" />
@@ -1064,7 +1063,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.h" />
