@@ -22,7 +22,33 @@ string CloudsVisualSystemVoro::getSystemName()
 void CloudsVisualSystemVoro::selfSetDefaults()
 {
 	bUseMaterial = false;
+
+    atractionPct = 0.f;
+	repulsionPct = 0.f;
+    bornRate = 0.f;
+	growRate = 0.f;
+    MaxNumOfParticles = 0.f;
+	MaxSize = 0.f;
+    initialForce = 0.f;
+    zMove = 0.f;
+    wallThikness = 0.f;
+    fps = 60;
+    bClear = false;
+    
+    tSize = 0.f;
+    bDrawGlow = false;
+    bDrawNucles = false;
+    
+    //  Voronoi
+    //
+    containerSize = 0.f;
+	containerHeight = 0.f;
+    cellsAlpha = 1.f;
 	
+    containerPeriodic = 0.f;
+    bSphere = false;
+    bCyllinder = false;
+    
 	cellsWireThickness = 1.0;
 	cellsWireAlpha = 1.0;
 	cellsVertexAlpha = 1.0;

@@ -72,7 +72,7 @@ namespace itg
         fishShader.setUniform1f("fogEnd", fogEnd);
         if (textures.find(modelIdx) != textures.end())
         {
-            ofTexture tex = fishModels[modelIdx].getTextureForMesh(0);
+           // ofTexture tex = fishModels[modelIdx].getTextureForMesh(0);
             fishShader.setUniformTexture("tex", textures[modelIdx], 0);
             //fishShader.setUniformTexture("tex", tex, 1);
             //fishShader.setUniform1f("texAmt", texAmount);
