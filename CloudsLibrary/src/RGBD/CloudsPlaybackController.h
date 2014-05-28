@@ -196,24 +196,6 @@ class CloudsPlaybackController : public ofThread {
 	float interludeArcBaseAlpha;
 	float interludeForceOnTimer;
 
-//    CloudsPortal continuePortal;
-//    void setupPortals();
-//    ofRectangle resetRect;
-//    ofRectangle resetSelectionRect;
-//    float resetSelectedPercentComplete;
-//    float maxResetHoverTime;
-//    float startResetHoverTime;
-//    float endResetHoverValue;
-//    bool prevResetValue;
-//	
-//    bool bResetSelected;
-//    bool bResetTransitionComplete;
-
-
-
-//    void clearRestButtonParams();
-//    ofVec2f lastMousePos, currMousePos;
-//    unsigned long long lastMouseMoveMillis;
 };
 
 

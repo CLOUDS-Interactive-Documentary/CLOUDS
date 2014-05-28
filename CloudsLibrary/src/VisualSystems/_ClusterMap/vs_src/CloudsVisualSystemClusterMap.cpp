@@ -79,7 +79,6 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 
 void CloudsVisualSystemClusterMap::selfSetDefaults(){
 
-
 	drawNodes = true;
 	drawLines = true;
 	drawTraversal = true;
@@ -826,39 +825,15 @@ void CloudsVisualSystemClusterMap::clearTraversal(){
     
     firstClip = true;
     traversalMesh.clear();
+	traversalPath.clear();
+
     currentTraversalIndex = 0;
 }
 
-/*
-void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClips){
-	selectedQuestion = NULL;
-	questions.clear();
-	
-	for(int i = 0; i < questionClips.size(); i++){
-		
-		CloudsQuestion q;
-		q.cam = &getCameraRef();
-		q.clip = questionClips[i];
-		
-		q.setup();
-		
-		questions.push_back(q);
-	}
-}
-*/
 
 void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     currentTopic = topic;
 }
-
-/*
-CloudsQuestion* CloudsVisualSystemClusterMap::getSelectedQuestion(){
-	//TODO: interaction for selecting a question
-	
-	//Temporary to just return the first one
-	return &questions[0];
-}
-*/
 
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemClusterMap::selfSetupSystemGui(){

@@ -223,6 +223,7 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	}
 	else{
 		currentPlayer->play();
+		currentPlayer->setLoopState(OF_LOOP_NONE);
 	}
 	
 	playingVO = nextClipIsVO;

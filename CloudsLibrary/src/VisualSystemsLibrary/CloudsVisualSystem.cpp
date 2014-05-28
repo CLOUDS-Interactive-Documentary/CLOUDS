@@ -3237,7 +3237,7 @@ void CloudsVisualSystem::setupHUDGui()
     guimap[hudGui->getName()] = hudGui;
     
     // load initial settings
-    hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+    hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+(getOculusRift().isHD()? "":"_SD")+".xml");
 
     // sync visibility with others
     hudGui->setVisible(gui->isVisible());
@@ -3247,7 +3247,7 @@ void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
 {
     string name = e.getName();
     if (name == "SAVE") {
-        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+(getOculusRift().isHD()? "":"_SD")+".xml");
     }
 
     else if (name == "BB Q NONE") {

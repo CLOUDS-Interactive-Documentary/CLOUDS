@@ -108,11 +108,6 @@ void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
     }
 }
 
-void CloudsVisualSystemHistogram::selfSetDefaults(){
-    primaryCursorMode = CURSOR_MODE_CAMERA;
-    secondaryCursorMode = CURSOR_MODE_INACTIVE;
-}
-
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemHistogram::selfSetupSystemGui(){
 	
@@ -135,12 +130,12 @@ void CloudsVisualSystemHistogram::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemHistogram::selfSetup()
 {
-    seed = int(ofRandom(20));
-	stepSize = 2;
-	noiseValue = 100;
-
+    noiseValue = 100;
 	n = 0;
-    
+}
+
+void CloudsVisualSystemHistogram::selfSetDefaults()
+{
     bDoAlphaBlending = true;
     bDoDepthTesting  = false;
     
@@ -180,6 +175,9 @@ void CloudsVisualSystemHistogram::selfSetup()
     fogDensity = 0.3;
     
     fMainGain = 1;
+
+    primaryCursorMode = CURSOR_MODE_CAMERA;
+    secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -395,9 +393,11 @@ void CloudsVisualSystemHistogram::selfMouseReleased(ofMouseEventArgs& data){
 
 void CloudsVisualSystemHistogram::stopSound()
 {
-    // close whatever sound was previously open
-    soundPlayer.stop();
-    soundPlayer.unloadSound();
+    if (soundPlayer.isLoaded()) {
+        // close whatever sound was previously open
+        soundPlayer.stop();
+        soundPlayer.unloadSound();
+    }
 }
 
 void CloudsVisualSystemHistogram::reloadSound()

@@ -364,8 +364,8 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     }
     else if(bang.track == clipPreRollTrack){
         vector<string> clipName = ofSplitString(bang.flag, "%");
-//        cout<<"sending clip: "<<clipName[1] <<" with Offset: "<< actItemsMap[bang.flag].handleLength << endl;
-        CloudsPreRollEventArgs args(clipMap[clipName[1]],actItemsMap[bang.flag].handleLength);
+        cout<<"sending clip: "<<clipName[1] <<" with Offset: "<< actItemsMap[bang.flag].handleLength << endl;
+        CloudsPreRollEventArgs args(clipMap[clipName[1]], actItemsMap[bang.flag].handleLength);
         ofNotifyEvent(events.preRollRequested, args);
     }
 	else if(bang.track == topicsTrack){
@@ -497,7 +497,7 @@ float CloudsAct::addClip(CloudsClip* clip, string topic, float startTime, vector
     ActTimeItem prerollItem;
     prerollItem.type = PreRoll;
     prerollItem.key = "%" + clip->getLinkName();
-    prerollItem.startTime = item.startTime - defaulPrerollDuration;
+    prerollItem.startTime = MAX(0, item.startTime - defaulPrerollDuration);
     prerollItem.endTime = prerollItem.startTime;
     prerollItem.handleLength = clipOffsetTime;
     
