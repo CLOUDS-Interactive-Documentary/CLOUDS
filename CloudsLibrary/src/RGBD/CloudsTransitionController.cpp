@@ -111,7 +111,7 @@ void CloudsTransitionController::transitionToFirstInterview(float duration){
 	queueState(TRANSITION_INTERVIEW_IN, duration);
     
 	startTransition();
-    
+  
 }
 
 void CloudsTransitionController::transitionToVisualSystem(float outDuration, float inDuration){

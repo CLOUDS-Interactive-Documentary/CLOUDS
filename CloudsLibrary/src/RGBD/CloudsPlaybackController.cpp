@@ -60,33 +60,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	interludeArcRadius = 0.0;
 	interludeArcBaseAlpha = 0.0;
 	interludeForceOnTimer = 0.0;
-	/*
-	eventsRegistered = false;
-	showingVisualSystem = false;
-	currentAct = NULL;
-    interludeSystem = NULL;
-	selectedQuestionClip = NULL;
-	currentClip = NULL;
-	showingClusterMap = false;
-	shouldPlayAct = false;
-    shouldClearAct = false;
-	bQuestionAsked = false;
-    showingInterlude = false;
-    exitedInterlude = false;
-	interludeStartTime = 0;
-    numActsCreated = 0;
-    crossfadeValue = 0;
-    loadingAct = false;
-	shouldLoadAct = false;
-	shouldPlayClusterMap = false;
-	forceInterludeReset = false;
 
-	loading = false;
-	loadPercent = 0.0;
-	
-    returnToIntro = false;
-    cachedTransition = false;
-    */
 	resetInterludeVariables();
 	
     interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
@@ -604,25 +578,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	}
 
 	else if(showingClusterMap){
-		
-//<<<<<<< HEAD
-		//TODO add questions or something to the cluster map
-		//right now we can just have a canned animation and stop it when we are done
-        
-        //MIKE
-        //if(HUD->continue: go to next act
-        //else if hud reset: go to next intro
-//		if(!clusterMap->getTimeline()->getIsPlaying()){
-//#ifdef OCULUS_RIFT
-//            transitionController.transitionToIntro(1.0);
-//#else
-//            transitionController.transitionFromInterlude(1.0);
-//#endif
-//			cout << "TRANSITIONING FROM CLUSTER MAP IN UPDATE" << endl;
-//=======
 		if(clusterMap->finishedTraversing){
 			transitionController.transitionFromClusterMap(1.0);
-//>>>>>>> master
             showingClusterMap = false;
 		}
 	}
@@ -691,9 +648,9 @@ void CloudsPlaybackController::updateTransition(){
 	
 	transitionController.update();
     
-    //if(transitionController.getCurrentState() != TRANSITION_IDLE){
-    //    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
-    //	}
+//	if(transitionController.getCurrentState() != TRANSITION_IDLE && ofGetFrameNum() % 5 == 0){
+//        cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
+//    }
     
 	string topic;
 	if(transitionController.isStateNew()){
@@ -715,7 +672,6 @@ void CloudsPlaybackController::updateTransition(){
 				}
                 
                 hud.animateOff(CLOUDS_HUD_FULL);
-                
                 break;
                 
             case TRANSITION_INTRO_OUT:
@@ -774,7 +730,7 @@ void CloudsPlaybackController::updateTransition(){
                 
                 // no need to do anything special, the crossfade value will take care of this
                 
-                //                hud.animateOff(CLOUDS_HUD_FULL);
+                //hud.animateOff(CLOUDS_HUD_FULL);
                 
                 break;
                 
@@ -822,20 +778,9 @@ void CloudsPlaybackController::updateTransition(){
             case TRANSITION_IDLE:
 
                 if(transitionController.getPreviousState() == TRANSITION_INTRO_IN){
-					
                     sound.enterTunnel();
-					
                 }
-				if(transitionController.getPreviousState() == TRANSITION_CLUSTERMAP_OUT){
-				
-					shouldLoadAct = true;
-					shouldPlayAct = false;
-					clusterMap->stopSystem();
-					
-					break;
-				}
-				
-                if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
+				else if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
 
 					selectedQuestion = introSequence->getSelectedQuestion();
                     selectedQuestionClip = selectedQuestion->clip;
@@ -848,8 +793,18 @@ void CloudsPlaybackController::updateTransition(){
                     
                     storyEngine.buildAct(run, selectedQuestionClip, selectedQuestion->topic, true);
                 }
+				else if(transitionController.getPreviousState() == TRANSITION_CLUSTERMAP_OUT){
+				
+					shouldLoadAct = true;
+					shouldPlayAct = false;
+
+					showingVisualSystem = false;
+					clusterMap->stopSystem();
+					
+					break;
+				}
+				
                 else if(transitionController.getPreviousState() == TRANSITION_INTERLUDE_OUT){
-                    
                     
                     cachedTransition = true;
                     cachedTransitionType = interludeSystem->getTransitionType();
@@ -870,9 +825,7 @@ void CloudsPlaybackController::updateTransition(){
                         topic = selectedQuestion->topic;
                         
                         rgbdVisualSystem->transtionFinished();
-//						#ifndef CLOUDS_SCREENING
                         rgbdVisualSystem->clearQuestions();
-//						#endif
                         rgbdVisualSystem->stopSystem();
                         
                         CloudsVisualSystem::getRGBDVideoPlayer().stop();
@@ -886,17 +839,28 @@ void CloudsPlaybackController::updateTransition(){
                         bQuestionAsked = false;
                     }
 				}
-                
+				
                 //we just finished fading out of the interview
                 else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_IN){
                     rgbdVisualSystem->transtionFinished();
                 }
-                
+				else if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
+					if(currentVisualSystem == clusterMap){
+						playNextVisualSystem();
+						ofLogError("TRANSITIONED WITHOUT SYSTEM STARTING");
+					}
+                }                
                 break;
 				
             default:
                 break;
         }
+
+		if(transitionController.fadedOut()){
+			CloudsVisualSystem::getStaticRenderTarget().begin();
+			ofClear(0,0,0);
+			CloudsVisualSystem::getStaticRenderTarget().end();
+		}
 	}
     
 //    if(abs(crossfadeValue - transitionController.getFadeValue()) > .5){
@@ -1441,7 +1405,7 @@ void CloudsPlaybackController::cleanupInterlude(){
         exitedInterlude = true;
     }
     else {
-        ofLogError("CloudsPlaybackController::updateTransition") << " Ended interulde while not showing ClusterMap or Interlude System";
+        ofLogError("CloudsPlaybackController::cleanupInterlude") << " Ended interulde while not showing ClusterMap or Interlude System";
     }
 }
 

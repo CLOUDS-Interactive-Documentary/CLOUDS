@@ -128,7 +128,9 @@ void CloudsSound::setup(){
 		for(int i = 0; i < dir.numFiles(); i++){
 			renderedTracks.push_back(dir.getPath(i));
 		}
-		
+
+		currentAct = NULL;
+
 		startThread(true);
 	}
 }
@@ -295,9 +297,9 @@ void CloudsSound::drawDebug(){
 
 //--------------------------------------------------------------------
 void CloudsSound::actCreated(CloudsActEventArgs& args){
-	if(currentAct != NULL){
-		currentAct->unregisterEvents(this);
-	}
+//	if(currentAct != NULL){
+//		currentAct->unregisterEvents(this);
+//	}
 	currentAct = args.act;
 	currentAct->registerEvents(this);
 }
