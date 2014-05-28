@@ -150,14 +150,8 @@ void CloudsVisualSystemXstatic::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemXstatic::selfSetup()
 {
-    
-    clipPlanes.min = 1.f;
-    clipPlanes.max = 100000.f;
-    
-    nParticles = 500;
     data = new GLfloat[kMaxParticles * kStrideData];
     regenerate(bBigBang);
-    bShouldRegenerate = true;
     
     spriteDir.listDir(getVisualSystemDataPath() + "spriteImages");
     spriteDir.sort();
@@ -169,6 +163,8 @@ void CloudsVisualSystemXstatic::selfSetup()
 
 void CloudsVisualSystemXstatic::selfSetDefaults()
 {
+    nParticles = 500;
+
     gravity.set(0);
     drag = 0.0;
     
@@ -188,6 +184,10 @@ void CloudsVisualSystemXstatic::selfSetDefaults()
     
     explodeSpeed  = 1.0;
     riseFallSpeed = 1.0;
+    windSpeed = 0.0;
+    rotateAngle = 45.0;
+    rotateSpeed = 0.0;
+    pullSpeed = 0.0;
     
     bShouldExplode = true;
     bShouldFreeze  = false;
@@ -203,6 +203,13 @@ void CloudsVisualSystemXstatic::selfSetDefaults()
     
     bBounceOffWalls = true;
     bWrapEdges = false;
+    
+    bBigBang = false;
+
+    bDrawBox = false;
+
+    clipPlanes.min = 1.f;
+    clipPlanes.max = 100000.f;
     
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
@@ -221,16 +228,13 @@ void CloudsVisualSystemXstatic::regenerate(bool bBigBang)
             particles.push_back(XParticle());
         }
     }
-
-    
-
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemXstatic::selfPresetLoaded(string presetPath){
-	
+    bShouldRegenerate = true;
 }
 
 // selfBegin is called when the system is ready to be shown

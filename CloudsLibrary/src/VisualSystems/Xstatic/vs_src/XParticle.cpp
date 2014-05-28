@@ -26,9 +26,18 @@ bool    XParticle::bOscillateBri;
 
 XParticle::XParticle()
 {
-    location.set(ofRandom(lowerBounds.x, upperBounds.x),
-                 ofRandom(lowerBounds.y, upperBounds.y),
-                 ofRandom(lowerBounds.z, upperBounds.z));
+    setup(ofVec3f(ofRandom(lowerBounds.x, upperBounds.x),
+                  ofRandom(lowerBounds.y, upperBounds.y),
+                  ofRandom(lowerBounds.z, upperBounds.z)),
+          1);
+}
+
+XParticle::XParticle(const ofVec3f& pos){
+    setup(pos, ofRandom(5));
+}
+
+void XParticle::setup(const ofVec3f& pos, float mmass){
+    location.set(pos.x,pos.y,pos.z);
     velocity.set(0, 0, 0);
     acceleration.set(0, 0, 0);
     lumocity.set(1,1); 
@@ -37,8 +46,9 @@ XParticle::XParticle()
     
     bTriggered = false;
     luckyNumber = int(ofRandom(10));
-    mass = 1;
- 
+
+    mass = mmass;
+    size = minSize;
     brightness = minBri;
     
     oscPos = ofRandom(100);
@@ -46,24 +56,7 @@ XParticle::XParticle()
     colorPicker = ofRandomuf();
 }
 
-XParticle::XParticle(ofVec3f pos){
-    location.set(pos.x,pos.y,pos.z);
-    velocity.set(0, 0, 0);
-    acceleration.set(0, 0, 0);
-    lumocity.set(1,1);
-    mass = ofRandom(5);
-    
-    bTriggered = false;
-    luckyNumber = int(ofRandom(10));
-    
-    brightness = minBri;
-    
-    oscPos = ofRandom(100);
-    
-    colorPicker = ofRandomuf();
-}
-
-void XParticle::applyForce(ofVec3f force)
+void XParticle::applyForce(const ofVec3f& force)
 {    
     ofVec3f f = force / mass; // << the right way of calculating Newton's 2nd takes mass into consideration in calculating force
    // ofVec3f f = force / 1.5; //let's pretend all the masses are the same
