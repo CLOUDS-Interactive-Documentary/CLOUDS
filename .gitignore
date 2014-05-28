@@ -36,6 +36,8 @@ graphviz/
 Working/
 standinassets/
 
+/CloudsVisualSystemTester/bin/data/*.txt
+
 #PCL stuff
 pcl/
 
@@ -368,3 +370,4 @@ screencapture_*
 /CloudsData/sound/_soundDiscard/
 CLOUDS/fmod.log
 *.log
+CloudsVisualSystemTester/bin/data/log_05_27_13_04_35.txt

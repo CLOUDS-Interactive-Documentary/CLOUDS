@@ -147,7 +147,7 @@ void CloudsVisualSystemOpenP5Spaghetti::regenerate(){
     //shouldn't PRELOADS should happen in regenerate...?
     for (int j = 0; j<numPreloads; j++){
         selfUpdate();
-        cout << "preloaded " << j << "times" << endl;
+       // cout << "preloaded " << j << "times" << endl;
         //selfDraw();
     }
     

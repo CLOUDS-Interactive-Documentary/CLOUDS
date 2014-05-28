@@ -52,8 +52,9 @@ namespace itg
         maxDistFromCentre = 2000.f;
         
         // fish one
+		
         ModelCreature::fishModels.push_back(ofxAssimpModelLoader());
-        ModelCreature::fishModels.back().loadModel(dataPath + "models/plotva.3ds");
+        ModelCreature::fishModels.back().loadModel(dataPath + "models/plotva.obj");
         ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
         ModelCreature::fishModels.back().setRotation(1, 90, 0, 1, 0);
         ModelCreature::fishModels.back().setScale(0.3, 0.3, 0.3);
