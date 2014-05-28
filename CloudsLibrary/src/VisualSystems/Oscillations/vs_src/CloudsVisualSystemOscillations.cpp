@@ -124,7 +124,7 @@ void CloudsVisualSystemOscillations::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemOscillations::selfSetup(){
     
 	NUMPOINTS = 10000;
-
+	GridPointSpacing = 100;
     ofEnableAlphaBlending();
     cout<<"made it to selfsetup"<<endl;
     ofFloatColor zero = ofFloatColor(0,0,0);
@@ -141,7 +141,7 @@ void CloudsVisualSystemOscillations::selfSetup(){
 	cout<<"made it past build grid"<<endl;
 
     loadShader();
-	cout<<"made it past build grid"<<endl;
+	cout<<"made it past load shaders"<<endl;
 
 }
 
@@ -334,6 +334,8 @@ void CloudsVisualSystemOscillations::selfMouseReleased(ofMouseEventArgs& data){
 void CloudsVisualSystemOscillations::BuildGrid(){
     grid.clear();
     int spacing = (int) floor(GridPointSpacing);
+
+	
     for (float x = GridClipping.low; x < GridClipping.high ; x += spacing){
         for (float y = GridClipping.low; y < GridClipping.high ; y +=spacing){
             float   _x1 =x, _x2 = x,
