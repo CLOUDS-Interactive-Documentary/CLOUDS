@@ -146,17 +146,15 @@ void CloudsVisualSystemConnectors::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemConnectors::selfDraw(){
 
-	//ofEnableAlphaBlending();
 	ofPushStyle();
+	ofSetLineWidth(1.f);
 	ofDisableDepthTest();
+	ofDisableAlphaBlending();
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	ofNoFill();
 	ofSetColor(20);
 	ofBox(0,0,0, generator.boundarySize*2);
-	ofPopStyle();
 
-	ofPushStyle();
-	ofSetLineWidth(1.f);
 	generator.draw();
 	ofPopStyle();
 }

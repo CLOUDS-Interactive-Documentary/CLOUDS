@@ -239,7 +239,7 @@ void wParticle::update(float _speed){
 
 void wParticle::draw(){
     ofPushStyle();
-    
+	ofSetLineWidth(1.0);
     if (bTrail){
         
 //        ofSetColor(color);

@@ -1067,6 +1067,8 @@ void CloudsVisualSystemTwitter::selfDraw()
     ofDisableDepthTest();
     glDisable(GL_LINE_SMOOTH);
     
+	ofSetLineWidth(1.0);
+
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofEnableSmoothing();
     

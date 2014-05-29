@@ -530,7 +530,7 @@ void CloudsVisualSystemWorld::selfDraw()
 	ofPushStyle();
 	ofEnableAlphaBlending();
     glPointSize(1.1);
-	ofSetLineWidth(2);
+	ofSetLineWidth(1.0);
 	ofMesh starMesh;
 	ofMesh lineMesh;
     for(int i = 0; i < stars.size(); i++){
