@@ -127,12 +127,10 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     tweetDeckColorHSV  = ofFloatColor(128,128,128);
     bOldData = false;
     bRenderFeed = false;
-//    ofEnableSmoothing();
-//    ofEnableAlphaBlending();
     animationLerpRate = 0.02;
     currentMeshFilePath = "";
-//    currentDateIndex = 0;
-    primaryCursorMode = CURSOR_MODE_DRAW;
+
+    primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
 
