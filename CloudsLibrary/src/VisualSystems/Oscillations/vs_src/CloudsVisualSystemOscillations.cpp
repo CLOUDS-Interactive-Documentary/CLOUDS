@@ -4,19 +4,8 @@
 
 #include "CloudsVisualSystemOscillations.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
-//These methods let us add custom GUI parameters and respond to their events
-
-
-
-
 void CloudsVisualSystemOscillations::selfSetupGui(){
     
-    //Using James' values.
     float length = (gui->getGlobalCanvasWidth()-gui->getWidgetSpacing()*5)/3.;
     float dim = gui->getGlobalSliderHeight();
     
@@ -219,9 +208,10 @@ void CloudsVisualSystemOscillations::selfDraw(){
     
 	ofPushStyle();
 	ofEnableAlphaBlending();
-    glPushAttrib(GL_LINE_SMOOTH | GL_DEPTH_TEST | GL_POINT_SIZE);
-    glDisable( GL_LINE_SMOOTH );
-    glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
+
+    //glPushAttrib(GL_LINE_SMOOTH | GL_DEPTH_TEST | GL_POINT_SIZE);
+    //glDisable( GL_LINE_SMOOTH );
+    //glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
     ofDisableDepthTest();
 //    ofEnableBlendMode(OF_BLENDMODE_ADD);
     if (displayGrid) {
@@ -233,9 +223,7 @@ void CloudsVisualSystemOscillations::selfDraw(){
         grid.drawWireframe();
         glDisable(GL_LINE_STIPPLE);
     }
-    
-	
-    
+ 
     //TODO: Customize
     glPointSize(2.0);
 
@@ -254,9 +242,11 @@ void CloudsVisualSystemOscillations::selfDraw(){
     oscillator.setUniform2f("resolution",width,height);
 	
     ofSetLineWidth(CurveLineWidth);
+
 	mesh.draw();
     oscillator.end();
-    glPopAttrib();
+
+//    glPopAttrib();
 	ofPopStyle();
 }
 

@@ -15,7 +15,7 @@ public:
 	wStar();
     
     void    place( float _ra, float _dec );
-	void	draw();
+	void	draw(ofMesh& starMesh, ofMesh& lineMesh);
     
     string  constName;
     float   constAlpha;

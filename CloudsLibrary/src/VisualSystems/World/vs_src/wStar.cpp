@@ -24,19 +24,26 @@ void wStar::place( float _ra, float _dec){
     this->set(decRot * raRot * ofPoint(0,0,-1000));
 }
 
-void wStar::draw(){
-    ofPushStyle();
-    
-    ofSetColor(ofFloatColor(1.0,ofNoise(x,y,z*ofGetElapsedTimef()*0.005)*1.5 ));
-    glBegin(GL_POINTS);
-    glVertex3f(x,y,z);
-    glEnd();
+void wStar::draw(ofMesh& starMesh, ofMesh& lineMesh){
+ //   ofPushStyle();
+ 
+	starMesh.addColor(ofFloatColor(1.0,ofNoise(x,y,z*ofGetElapsedTimef()*0.005)*1.5 ));
+	starMesh.addVertex(*this);
+
+//    ofSetColor();
+//    glBegin(GL_POINTS);
+//    glVertex3f(x,y,z);
+//    glEnd();
     
     if (connect != NULL){
-        ofSetColor(ofFloatColor(0.8,constAlpha));
-        ofSetLineWidth(2.0);
-        ofLine(*this, *connect);
+		lineMesh.addColor(ofFloatColor(0.8,constAlpha));
+		lineMesh.addColor(ofFloatColor(0.8,constAlpha));
+//        ofSetColor();
+//        ofSetLineWidth(2.0);
+		lineMesh.addVertex(*this);
+		lineMesh.addVertex(*connect);
+//        ofLine(*this, *connect);
     }
     
-    ofPopStyle();
+//    ofPopStyle();
 }

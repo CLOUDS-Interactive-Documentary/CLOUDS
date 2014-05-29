@@ -527,19 +527,28 @@ void CloudsVisualSystemWorld::selfDraw()
     
     //  STARS & CONSTELATIONS ( outside the pushMatrix )
     //
+	ofPushStyle();
+	ofEnableAlphaBlending();
     glPointSize(1.1);
-	ofSetLineWidth(.1);
+	ofSetLineWidth(2);
+	ofMesh starMesh;
+	ofMesh lineMesh;
     for(int i = 0; i < stars.size(); i++){
         if (stars[i]->constName == selectedConstelation && constelationRnd >= 1.0 ){
             stars[i]->constAlpha = ofLerp(stars[i]->constAlpha,constelationMax,0.01);
         } else {
             stars[i]->constAlpha = ofLerp(stars[i]->constAlpha,constelationMin,0.01);
         }
-        stars[i]->draw();
+        stars[i]->draw(starMesh, lineMesh);
     }
+	starMesh.drawVertices();
+	lineMesh.setMode(OF_PRIMITIVE_LINES);
+	lineMesh.draw();
+	ofPopStyle();
     
     glDisable(GL_NORMALIZE);
     ofDisableDepthTest();
+
     
 }
 
