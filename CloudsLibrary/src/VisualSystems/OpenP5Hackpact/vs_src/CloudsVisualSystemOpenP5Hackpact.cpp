@@ -92,6 +92,7 @@ void CloudsVisualSystemOpenP5Hackpact::selfSetup(){
 	}
 	mesh.setMode(OF_PRIMITIVE_POINTS);
 	mesh.setUsage(GL_STREAM_DRAW);
+	glPointSize(1.0);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered

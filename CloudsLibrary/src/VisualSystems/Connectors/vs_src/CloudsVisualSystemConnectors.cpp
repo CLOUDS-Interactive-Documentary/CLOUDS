@@ -147,9 +147,9 @@ void CloudsVisualSystemConnectors::selfUpdate(){
 void CloudsVisualSystemConnectors::selfDraw(){
 
 	//ofEnableAlphaBlending();
-//	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	ofPushStyle();
 	ofDisableDepthTest();
+	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	ofNoFill();
 	ofSetColor(20);
 	ofBox(0,0,0, generator.boundarySize*2);

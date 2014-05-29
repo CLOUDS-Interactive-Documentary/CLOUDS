@@ -362,8 +362,9 @@ void CloudsVisualSystemXstatic::selfDraw()
 {
 	ofPushStyle();
     ofSetColor(255);
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
+    ofEnableAlphaBlending();
+    ofSetLineWidth(1.0);
+
     if (bDrawBox) {
         ofNoFill();
         ofBox(0, 0, 0, kBoxSize);
@@ -380,8 +381,9 @@ void CloudsVisualSystemXstatic::selfDraw()
     }
     tex.getTextureReference().unbind();
     ofDisablePointSprites();
-	ofPopStyle();
     shader.end();
+	ofPopStyle();
+
 }
 
 // draw any debug stuff here

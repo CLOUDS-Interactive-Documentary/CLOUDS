@@ -65,6 +65,7 @@ void CloudsVisualSystemVoro::selfSetup()
     for(int i = 0; i < 28; i++){
         ofLoadImage(nucles[i], getVisualSystemDataPath()+"images/Cell"+ofToString(i,2,'0')+".png");
     }	
+
 }
 
 void CloudsVisualSystemVoro::selfSetupGuis()
@@ -268,7 +269,7 @@ void CloudsVisualSystemVoro::selfDraw()
     ofPushMatrix();
     ofPushStyle();
     ofEnableDepthTest();
-
+	ofEnableAlphaBlending();
     if (cellsVertexAlpha > 0.0){
 		glPointSize(cellsVertexSize);
         for(int i = 0; i < cellMeshes.size(); i++){
