@@ -622,6 +622,8 @@
     <links>
         <clip>Julian - what&apos;s inside this thing</clip>
         <clip>Julian - what&apos;s inside this thing</clip>
+        <clip>Julian - what&apos;s inside this thing</clip>
+        <clip>Julian - what&apos;s inside this thing</clip>
     </links>
     <suppressions>
         <clip>Kyle_MC - Face Tracking military</clip>
@@ -3706,22 +3708,6 @@
         <clip>Damion - OOO</clip>
         <clip>Greg - AI 1</clip>
         <clip>Greg - Object Oriented Ontology 2</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>1</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="2DVideo_FaceShift_noisy">
-    <keywords>face tracking|new aesthetic</keywords>
-    <links>
-        <clip>Julian - what&apos;s inside this thing</clip>
-        <clip>Julian - what&apos;s inside this thing</clip>
-    </links>
-    <suppressions>
         <clip>Kyle_MC - Face Tracking military</clip>
         <clip>Kyle_MC - box on your face</clip>
         <clip>Kyle_MC - face algos</clip>
@@ -9726,6 +9712,18 @@
     <interlude>0</interlude>
 </system>
 <system name="BallDroppings_jm">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Balloons_CREDITS_FINAL">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
