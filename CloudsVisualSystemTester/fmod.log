@@ -1135,3 +1135,27 @@ FMOD: SystemI::createSample          : done
 FMOD: SystemI::createSoundInternal   : No name found in file, use filename.
 FMOD: SystemI::createSoundInternal   : done.  OpenState now = FMOD_OPENSTATE_READY.
 
+FMOD: SystemI::close                 : 
+FMOD: SystemI::close                 : Stop all sounds
+FMOD: Thread::callback               : * FMOD stream thread finished
+FMOD: Thread::close                  : FMOD stream thread thread destroyed
+FMOD: SystemI::close                 : Stream thread destroyed
+FMOD: Global::decRef                 : Shut down streamer and FMOD_NONBLOCKING and FileSystem thread.
+FMOD: Global::decRef                 : Shut down profiler.
+FMOD: Global::decRef                 : Shut down file system.
+FMOD: SystemI::close                 : Free master channel group.
+FMOD: SystemI::close                 : Remove 'master' sound group.
+FMOD: SystemI::close                 : Shut down output.
+FMOD: Thread::callback               : * FMOD (WASAPI) feeder thread finished
+FMOD: Thread::close                  : FMOD (WASAPI) feeder thread thread destroyed
+FMOD: Thread::callback               : * FMOD mixer thread finished
+FMOD: Thread::close                  : FMOD mixer thread thread destroyed
+FMOD: OutputWASAPI::close            : Closing...
+FMOD: OutputWASAPI::close            : Done.
+FMOD: SystemI::close                 : Free software output.
+FMOD: SystemI::close                 : Free emulated output.
+FMOD: SystemI::close                 : Free channel pool.
+FMOD: SystemI::close                 : Remove DSP Soundcard unit.
+FMOD: SystemI::close                 : Remove miscllaneous DSP stuff.
+FMOD: SystemI::close                 : done.
+

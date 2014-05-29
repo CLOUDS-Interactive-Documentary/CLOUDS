@@ -416,7 +416,7 @@ void CloudsVisualSystemHistogram::addRandomPoint()
     //randomData.push_back(ofRandom(1,100)); // random float between 1 and 100
     noiseValue += ofNoise(n * .01, t) * 10 - 5; //generate noise value
     noiseValue = noiseValue + ofRandom(-70.0, 70.0); // add randomness
-    float newValue = ofMap(noiseValue, -500, 2000, colHeightMin, colHeightMax);
+    float newValue = ofMap(noiseValue, -500, 2000, colHeightMin, colHeightMax, true);
     dataPoints.push_back(newValue); // noise value
     //cout << "time: " <<  t << "size of vector: " << randomData.size() << "  current number: " << randomData.at(i) << endl;
     //cout << "time: " <<  t << "size of vector: " << randomData.size() << "  noise value " << noiseValue << endl;
@@ -430,9 +430,9 @@ void CloudsVisualSystemHistogram::addSoundPoint()
         }
         vector<float> allLevels = getFFT();
         for (int i = 0; i < numRows; i++) {
-            int levelIdx = ofMap(i, 0, numRows, 0, allLevels.size() * sampleOffset);
+            int levelIdx = ofMap(i, 0, numRows, 0, allLevels.size() * sampleOffset, true);
             float currLevel = allLevels[levelIdx] * levelAdjust;
-            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
+            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax, true);
             
             // move everything back one position
             int last  = MIN(dataPoints.size() - 1, (i + 1) * colsPerRow - 1);
@@ -451,7 +451,7 @@ void CloudsVisualSystemHistogram::addSoundPoint()
         }
         if(getFFT().size() > 0){
             float currLevel = getFFT()[0] * levelAdjust;
-            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
+            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax, true);
             dataPoints.push_back(newValue);
         }
 
@@ -484,11 +484,11 @@ vector<float>& CloudsVisualSystemHistogram::getFFT()
     
         float max = 0;
         for(int i = 0; i < fftAverages.size(); i++){
-            max = MAX(max, fftAverages[i]);
+			if(fftAverages[i] > max)max = fftAverages[i];
         }
-        if(max != 0){
+		if(max > FLT_EPSILON){
             for(int i = 0; i < fftAverages.size(); i++){
-                fftAverages[i] = ofMap(fftAverages[i],0, max, 0, 1.0);
+                fftAverages[i] = ofMap(fftAverages[i], 0, max, 0, 1.0, true);
             }
         }
         
@@ -511,6 +511,6 @@ void CloudsVisualSystemHistogram::generateEnvelope(int size)
                                          ofPoint(0.1f, 0),
                                          ofPoint(0.2f, 0),
                                          ofPoint(1.0f, 0),
-                                         ofMap(i, 0, size - 1, 0, 1)).x);
+                                         ofMap(i, 0, size - 1, 0, 1,true)).x);
     }
 }
