@@ -789,8 +789,10 @@ void CloudsPlaybackController::updateTransition(){
                         
                         crossfadeValue = 0;
                         
-                        storyEngine.buildAct(run, selectedQuestionClip, topic);
+                        shouldPlayClusterMap = run.questionsAsked % 3 == 2;
                         
+                        storyEngine.buildAct(run, selectedQuestionClip, topic);
+
                         bQuestionAsked = false;
                     }
 				}
@@ -847,7 +849,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeContinueSelected = true;
 		return true;
 	}
-	if(ofGetElapsedTimef() - interludeStartTime > 30 && currentVisualSystem->getSystemName() != "Balloons"){
+	if(ofGetElapsedTimef() - interludeStartTime > 30){
 		interludeResetSelected = true;
 		return true;
 	}
@@ -904,7 +906,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 //		interludeBarHoverPercentComplete = 0;
 	}
 	
-	if(ofGetElapsedTimef() - interludeStartTime > 60){
+	if(ofGetElapsedTimef() - interludeStartTime > 60 && currentVisualSystem->getSystemName() != "Balloons"){
 		interludeResetSelected = true;
 		return true;
 	}
@@ -923,6 +925,10 @@ void CloudsPlaybackController::updateCompletedInterlude(){
 void CloudsPlaybackController::drawInterludeInterface(){
     
 
+    if(currentVisualSystem->getSystemName() == "Balloons"){
+        return;
+    }
+    
 	ofRectangle hoverRect;
 	bool hovering = false;
 	string promptType;
@@ -1283,6 +1289,9 @@ void CloudsPlaybackController::showClusterMap(){
 	clusterMap->loadPresetGUISFromName("2DFollowCam");
     clusterMap->playSystem();
 	clusterMap->autoTraversePoints = true;
+    
+    clusterMap->clearTraversal();
+    
 	clusterMap->traverse();
 	clusterMap->traverse();
 	
