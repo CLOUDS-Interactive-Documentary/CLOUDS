@@ -509,7 +509,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 		int numCredits = creditsXml.getNumTags("credit");
 		for(int i = 0; i < numCredits; i++){
 			string justification = creditsXml.getAttribute("credit", "align", "left", i) ;
-			ofVec3f pos( 0, i * dim * .7, 0);
+			ofVec3f pos( 0, 1000 + i * dim * 2.9, 0);
 			if(justification == "left"){
 				pos.x = -justificationWidth;
 			}
@@ -520,7 +520,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 			creditsXml.pushTag("credit", i);
 			
 			BalloonCredit bc;
-			bc.title = ofToUpper(creditsXml.getValue("title", ""));
+			bc.title = (creditsXml.getValue("title", ""));
 			bc.name = creditsXml.getValue("name", "");
 			bc.pos = pos;
 			bc.font = &font;
@@ -590,6 +590,7 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	{
 		bgColor = bgRamp.getColor(0, (1. - progress) * bgRamp.getHeight());
 		bgColor2 = bgRamp.getColor(1, (1. - progress) * bgRamp.getHeight());
+        bgColor2.setBrightness(bgColor2.getBrightness()*.5);
 	}
 	
 }

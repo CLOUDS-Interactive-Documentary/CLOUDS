@@ -59,14 +59,16 @@ void BalloonCredit::draw()
     
 	ofNode n;
 	n.setPosition( pos );
-	n.lookAt(camera->getPosition(), ofVec3f(0,1,0));
+    ofVec3f lookAtPos = camera->getPosition();
+    lookAtPos.y = pos.y;
+	n.lookAt(lookAtPos, ofVec3f(0,1,0));
 	ofVec3f axis; float angle;
 	n.getOrientationQuat().getRotate(angle, axis);
 	
 	// Translate the object to its position.
 	// Perform the rotation.
     
-    ofScale(.25,.25,.25);
+    ofScale(.15,.15,.15);
     
     //ofTranslate( pos );
     ofMultMatrix(n.getGlobalTransformMatrix());

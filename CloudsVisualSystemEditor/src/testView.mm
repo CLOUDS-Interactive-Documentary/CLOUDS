@@ -96,9 +96,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	if(runningTest){
 		
-//		if(ofGetElapsedTimef() - lastSystemStartTime > 10){
-		if(goToNext){
-            goToNext = false;
+		if(ofGetElapsedTimef() - lastSystemStartTime > 10){
+//		if(goToNext){
+//            goToNext = false;
 
 			if(currentVisualSystem != NULL){
 				cout << "5) (" << currentTestPresetIndex << "/" << testPresetIndeces.size() << ") STOPPING SYSTEM " << currentVisualSystem->getSystemName() << endl;
@@ -373,7 +373,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)mousePressed:(NSPoint)p button:(int)button
 {
-	
+
 }
 
 - (void)mouseReleased:(NSPoint)p button:(int)button
@@ -721,6 +721,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (IBAction) runTests:(id)sender
 {
+
 	testPresetIndeces = visualSystems.getFilteredPresetIndeces(true,false,false);
 	random_shuffle( testPresetIndeces.begin(),testPresetIndeces.end() );
 	

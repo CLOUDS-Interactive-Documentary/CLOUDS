@@ -857,6 +857,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 #else
 	
     if( currentVisualSystem->getSystemName() == "Balloons" ){
+        hud.clearQuestion();
         return false;
     }
     

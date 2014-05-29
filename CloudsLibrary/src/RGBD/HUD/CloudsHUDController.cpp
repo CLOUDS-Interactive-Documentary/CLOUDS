@@ -601,8 +601,8 @@ void CloudsHUDController::draw(){
 
 	////JG TEMP COMMENT OUT
 //	drawLayer(CLOUDS_HUD_QUESTION);
-	drawLayer(CLOUDS_HUD_LOWER_THIRD);
-	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
+//	drawLayer(CLOUDS_HUD_LOWER_THIRD);
+//	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
 //	drawLayer(CLOUDS_HUD_MAP);
 	////JG TEMP COMMENT OUT
 	
