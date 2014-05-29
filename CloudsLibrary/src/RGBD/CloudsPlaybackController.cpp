@@ -566,7 +566,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(!transitionController.isTransitioning() && !bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
-            
+            run.questionsAsked++;
             transitionController.transitionWithQuestion(2.0, 0.1);
 			
         }
