@@ -55,6 +55,10 @@ void CloudsHUDLayer::start(bool animate){
     }
     bIsOpen = true;
     
+    //////
+    endPoint = ofVec2f(ofGetWidth(), ofGetHeight());
+    //////
+    
     if (animate) {
         startTime = ofGetElapsedTimef();
         animating = true;
