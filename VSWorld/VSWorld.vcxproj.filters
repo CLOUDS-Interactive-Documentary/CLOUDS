@@ -97,8 +97,23 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Oscillations\vs_src\CloudsVisualSystemOscillations.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Oscillations</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\CloudsVisualSystemWorld.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wArc.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wCity.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wParticle.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wSatellite.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wStar.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,8 +171,8 @@
     <Filter Include="addons\ofxObjLoader\libs\glm">
       <UniqueIdentifier>{3c3a084f-1f94-410a-beea-5864fde43503}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Oscillations">
-      <UniqueIdentifier>{b8e2e59d-3331-4e1b-9b98-49c7b50148e8}</UniqueIdentifier>
+    <Filter Include="CloudsLibrary\src\VisualSystems\World">
+      <UniqueIdentifier>{ccce968e-dc93-43a1-97ff-b9ba27993267}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -329,8 +344,23 @@
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Oscillations\vs_src\CloudsVisualSystemOscillations.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Oscillations</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\CloudsVisualSystemWorld.h">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wArc.h">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wCity.h">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wParticle.h">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wSatellite.h">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\World\vs_src\wStar.h">
+      <Filter>CloudsLibrary\src\VisualSystems\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

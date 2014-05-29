@@ -6,7 +6,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxUILib", "..\..\..\addons
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTimelineLib", "..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj", "{A72C4F16-CB16-4143-BA5C-5E4FA802D636}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSOscillations", "VSOscillations.vcxproj", "{7FD42DF7-442E-479A-BA76-D0022F99702A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSWorld", "VSWorld.vcxproj", "{7FD42DF7-442E-479A-BA76-D0022F99702A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
