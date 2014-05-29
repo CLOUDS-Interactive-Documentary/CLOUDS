@@ -12,7 +12,6 @@
 		3D5B95D5175308AE00F558AC /* ofxHotKeys_impl_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B957E175308AD00F558AC /* ofxHotKeys_impl_win.cpp */; };
 		3D5B95D6175308AE00F558AC /* ofxRemoveCocoaMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9580175308AD00F558AC /* ofxRemoveCocoaMenu.mm */; };
 		3D5B95D7175308AE00F558AC /* ofxTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9581175308AD00F558AC /* ofxTimeline.cpp */; };
-		3D5B95D8175308AE00F558AC /* ofxTLAudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9583175308AD00F558AC /* ofxTLAudioTrack.cpp */; };
 		3D5B95D9175308AE00F558AC /* ofxTLBangs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9585175308AD00F558AC /* ofxTLBangs.cpp */; };
 		3D5B95DA175308AE00F558AC /* ofxTLCameraTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9587175308AD00F558AC /* ofxTLCameraTrack.cpp */; };
 		3D5B95DB175308AE00F558AC /* ofxTLColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9589175308AD00F558AC /* ofxTLColors.cpp */; };
@@ -141,7 +140,6 @@
 		E738FF96183C86F50018AB96 /* ofxHotKeys_impl_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B957E175308AD00F558AC /* ofxHotKeys_impl_win.cpp */; };
 		E738FF97183C86F50018AB96 /* ofxRemoveCocoaMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9580175308AD00F558AC /* ofxRemoveCocoaMenu.mm */; };
 		E738FF98183C86F50018AB96 /* ofxTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9581175308AD00F558AC /* ofxTimeline.cpp */; };
-		E738FF99183C86F50018AB96 /* ofxTLAudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9583175308AD00F558AC /* ofxTLAudioTrack.cpp */; };
 		E738FF9A183C86F50018AB96 /* ofxTLBangs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9585175308AD00F558AC /* ofxTLBangs.cpp */; };
 		E738FF9B183C86F50018AB96 /* ofxTLCameraTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9587175308AD00F558AC /* ofxTLCameraTrack.cpp */; };
 		E738FF9C183C86F50018AB96 /* ofxTLColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9589175308AD00F558AC /* ofxTLColors.cpp */; };
@@ -268,8 +266,6 @@
 		3D5B9580175308AD00F558AC /* ofxRemoveCocoaMenu.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxRemoveCocoaMenu.mm; sourceTree = "<group>"; };
 		3D5B9581175308AD00F558AC /* ofxTimeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimeline.cpp; sourceTree = "<group>"; };
 		3D5B9582175308AD00F558AC /* ofxTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimeline.h; sourceTree = "<group>"; };
-		3D5B9583175308AD00F558AC /* ofxTLAudioTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLAudioTrack.cpp; sourceTree = "<group>"; };
-		3D5B9584175308AD00F558AC /* ofxTLAudioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLAudioTrack.h; sourceTree = "<group>"; };
 		3D5B9585175308AD00F558AC /* ofxTLBangs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLBangs.cpp; sourceTree = "<group>"; };
 		3D5B9586175308AD00F558AC /* ofxTLBangs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLBangs.h; sourceTree = "<group>"; };
 		3D5B9587175308AD00F558AC /* ofxTLCameraTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLCameraTrack.cpp; sourceTree = "<group>"; };
@@ -651,8 +647,6 @@
 				3D5B9580175308AD00F558AC /* ofxRemoveCocoaMenu.mm */,
 				3D5B9581175308AD00F558AC /* ofxTimeline.cpp */,
 				3D5B9582175308AD00F558AC /* ofxTimeline.h */,
-				3D5B9583175308AD00F558AC /* ofxTLAudioTrack.cpp */,
-				3D5B9584175308AD00F558AC /* ofxTLAudioTrack.h */,
 				3D5B9585175308AD00F558AC /* ofxTLBangs.cpp */,
 				3D5B9586175308AD00F558AC /* ofxTLBangs.h */,
 				3D5B9587175308AD00F558AC /* ofxTLCameraTrack.cpp */,
@@ -1485,7 +1479,6 @@
 				506D625B18FEF1E000F8FE01 /* CloudsRGBDCamera.cpp in Sources */,
 				3D5B95D6175308AE00F558AC /* ofxRemoveCocoaMenu.mm in Sources */,
 				3D5B95D7175308AE00F558AC /* ofxTimeline.cpp in Sources */,
-				3D5B95D8175308AE00F558AC /* ofxTLAudioTrack.cpp in Sources */,
 				3D5B95D9175308AE00F558AC /* ofxTLBangs.cpp in Sources */,
 				3D5B95DA175308AE00F558AC /* ofxTLCameraTrack.cpp in Sources */,
 				3D5B95DB175308AE00F558AC /* ofxTLColors.cpp in Sources */,
@@ -1577,7 +1570,6 @@
 				E738FF96183C86F50018AB96 /* ofxHotKeys_impl_win.cpp in Sources */,
 				E738FF97183C86F50018AB96 /* ofxRemoveCocoaMenu.mm in Sources */,
 				E738FF98183C86F50018AB96 /* ofxTimeline.cpp in Sources */,
-				E738FF99183C86F50018AB96 /* ofxTLAudioTrack.cpp in Sources */,
 				E738FF9A183C86F50018AB96 /* ofxTLBangs.cpp in Sources */,
 				E738FF9B183C86F50018AB96 /* ofxTLCameraTrack.cpp in Sources */,
 				E738FF9C183C86F50018AB96 /* ofxTLColors.cpp in Sources */,
