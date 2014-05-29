@@ -46,8 +46,11 @@ void BalloonCredit::draw()
 	ofPushStyle();
 	ofPushMatrix();
 	ofSetColor(255);
+    
 	ofDisableLighting();
-	
+	ofDisableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
 	ofNode n;
 	n.setPosition( pos );
 	n.lookAt(camera->getPosition(), ofVec3f(0,1,0));

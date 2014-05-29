@@ -1,4 +1,4 @@
-//
+ //
 //  CloudsVisualSystemBalloons.cpp
 //
 
@@ -696,7 +696,10 @@ void CloudsVisualSystemBalloons::selfDraw()
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	
-	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	
+    ofDisableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
 	shader.begin();
 	shader.setUniform1f("shininess", shininess);
 	shader.setUniform1f("lightScale", lightScale);
