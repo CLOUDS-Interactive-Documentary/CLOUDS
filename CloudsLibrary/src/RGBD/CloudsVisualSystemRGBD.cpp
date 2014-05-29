@@ -1158,7 +1158,6 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 				CloudsVisualSystem::getSelectLow()->play();
 				#ifdef CLOUDS_SCREENING
 				portalToClear = selectedPortal;
-				//selectedPortal->question = ""; //flag it to be replaced next speaker
 				#endif
 			}
 			//let it go
@@ -1568,6 +1567,10 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 			questions.erase( questions.begin() );
 			cout << "******ERASING QUESTIONS. SIZE IS NOE " << questions.size() << endl;
 		}
+        else{
+			portalToClear->topic = "";
+			portalToClear->question = "";
+        }
 		portalToClear = NULL;
 	}
 	
