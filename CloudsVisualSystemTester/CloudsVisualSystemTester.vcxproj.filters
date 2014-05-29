@@ -1153,6 +1153,9 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2992,6 +2995,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
       <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

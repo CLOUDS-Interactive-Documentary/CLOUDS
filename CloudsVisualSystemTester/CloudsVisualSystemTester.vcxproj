@@ -106,20 +106,20 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
-    <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
+    <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Oculus|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
-    <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
+    <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -142,20 +142,20 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
-    <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
+    <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Oculus|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
-    <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
+    <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -646,6 +646,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Flying\vs_src\CloudsVisualSystemFlying.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\ForkingPaths\vs_src\CloudsVisualSystemForkingPaths.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\GesturePaint\vs_src\CloudsVisualSystemGesturePaint.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\ofVboByteColor.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LSystem\vs_src\CloudsVisualSystemLSystem.cpp" />
@@ -1171,6 +1172,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Flying\vs_src\CloudsVisualSystemFlying.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\ForkingPaths\vs_src\CloudsVisualSystemForkingPaths.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\GesturePaint\vs_src\CloudsVisualSystemGesturePaint.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\ofVboByteColor.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LinePoem\vs_src\angleLengthLine.h" />

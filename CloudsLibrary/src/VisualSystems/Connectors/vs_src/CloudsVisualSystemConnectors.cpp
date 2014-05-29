@@ -150,13 +150,14 @@ void CloudsVisualSystemConnectors::selfDraw(){
 //	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	ofPushStyle();
 	ofDisableDepthTest();
-	ofSetLineWidth(1.f);
-
-	generator.draw();
-	
 	ofNoFill();
 	ofSetColor(20);
 	ofBox(0,0,0, generator.boundarySize*2);
+	ofPopStyle();
+
+	ofPushStyle();
+	ofSetLineWidth(1.f);
+	generator.draw();
 	ofPopStyle();
 }
 

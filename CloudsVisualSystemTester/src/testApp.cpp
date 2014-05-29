@@ -28,6 +28,7 @@ void testApp::setup(){
 	blackList.push_back(make_pair("Memory", "ThinBlueRows_wide")); //crash in loadingPresetGUI
 	blackList.push_back(make_pair("Memory", "ThinTealRows")); //crash in loadingPresetGUI
 	blackList.push_back(make_pair("Memory", "randomWaves")); //crash in loadingPresetGUI
+	/*
 	blackList.push_back(make_pair("Histogram", "Waveform1")); //not registered
 	blackList.push_back(make_pair("Histogram", "Waveform1_Happen")); //not registered
 	blackList.push_back(make_pair("Histogram", "Waveform3_GTNonStop")); //not registered
@@ -35,6 +36,7 @@ void testApp::setup(){
 	blackList.push_back(make_pair("Histogram", "DataHistogram4")); //not registered
 	blackList.push_back(make_pair("Histogram", "DataHistogram3")); //not registered
 	blackList.push_back(make_pair("Histogram", "Waveform1_Happen")); //not registered
+	*/
 	blackList.push_back(make_pair("Rulez", "Ico_rotate")); //running and registered but showing nothing
 	blackList.push_back(make_pair("RandomDigits", "BasicOC"));//not registered
 	blackList.push_back(make_pair("OpenP5DrawingMachine10", "chaos")); //not registered
