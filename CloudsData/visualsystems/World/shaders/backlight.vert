@@ -1,4 +1,4 @@
-
+#version 120
 
 varying vec3 eyeVec;
 
