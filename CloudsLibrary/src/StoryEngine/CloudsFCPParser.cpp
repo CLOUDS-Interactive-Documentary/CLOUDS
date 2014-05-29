@@ -1206,7 +1206,7 @@ void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
 		}
         
         /* Subtitles */
-        allClips[i]->combinedSRTPath = directory + "/" + allClips[i]->getCombinedSRTFile();
+        //allClips[i]->subtitlePath = directory + "/" + allClips[i]->getSubtitlePath();
 	}
 	
 	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasMediaAssetAndQuestionIndeces.size() << " items with questions & combined " << endl;

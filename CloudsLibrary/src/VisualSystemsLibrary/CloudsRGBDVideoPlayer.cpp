@@ -378,7 +378,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         /* Subtitles */
         if (currentClipHasSubtitles) {
 #ifdef SHOW_SUBTITLES
-            currentSubtitles.setTimeInSeconds(getPlayer().getCurrentTime());
+			currentSubtitles.setTimeInSeconds(getPlayer().getPosition()*getPlayer().getDuration());
 #endif
         }
 	}
@@ -447,9 +447,6 @@ void CloudsRGBDVideoPlayer::drawSubtitles()
         currentSubtitles.draw(x+3, y-2);
         ofSetColor(255);
         currentSubtitles.draw(x, y);
-        
-//        cout << "line one is " << currentSubtitles.getCurrentLine1() << endl;
-        
         ofPopStyle();
     }
 #endif

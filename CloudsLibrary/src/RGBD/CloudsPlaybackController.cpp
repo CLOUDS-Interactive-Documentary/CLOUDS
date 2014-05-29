@@ -1311,7 +1311,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 	else{
 		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip->combinedVideoPath,
 																					clip->combinedCalibrationXMLPath,
-                                                                                    clip->combinedSRTPath,
+																					GetCloudsDataPath() + "subtitles/"+ clip->getSubtitlesPath(),
 																					toTime, clip->getSpeakerVolume());
 	}
     

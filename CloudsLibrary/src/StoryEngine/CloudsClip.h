@@ -92,14 +92,14 @@ class CloudsClip {
 	string getCombinedPNGExportFolder();
 	string getCombinedMovieFile();
 	string getCombinedCalibrationXML();
-    string getCombinedSRTFile();
+    string getSubtitlesPath();
     string getFFMpegLine(string alternativeVideoPath, string exportFolder);
     
 	bool hasMediaAsset;
 	string combinedVideoPath;
 	string voiceOverAudioPath;
 	string combinedCalibrationXMLPath;
-    string combinedSRTPath;
+    string subtitlePath;
 	
 	string getRelinkedVideoFilePath();
 	

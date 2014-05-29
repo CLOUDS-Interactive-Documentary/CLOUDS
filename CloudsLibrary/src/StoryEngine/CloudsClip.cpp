@@ -118,7 +118,7 @@ string CloudsClip::getCombinedCalibrationXML(){
 	return getID() + ".xml";
 }
 
-string CloudsClip::getCombinedSRTFile() {
+string CloudsClip::getSubtitlesPath() {
     return getID() + ".srt";
 }
 
