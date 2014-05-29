@@ -847,7 +847,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeContinueSelected = true;
 		return true;
 	}
-	if(ofGetElapsedTimef() - interludeStartTime > 30){
+	if(ofGetElapsedTimef() - interludeStartTime > 30 && currentVisualSystem->getSystemName() != "Balloons"){
 		interludeResetSelected = true;
 		return true;
 	}
