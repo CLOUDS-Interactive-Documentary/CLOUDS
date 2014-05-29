@@ -856,6 +856,10 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	return false;
 #else
 	
+    if( currentVisualSystem->getSystemName() == "Balloons" ){
+        return false;
+    }
+    
 	interludeTimedOut = ofGetElapsedTimef() - interludeStartTime > interludeForceOnTimer;
 	
 	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth)
@@ -906,11 +910,13 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 //		interludeBarHoverPercentComplete = 0;
 	}
 	
-	if(ofGetElapsedTimef() - interludeStartTime > 60 && currentVisualSystem->getSystemName() != "Balloons"){
+#ifndef CLOUDS_SCREENING
+	if(ofGetElapsedTimef() - interludeStartTime > 60){
 		interludeResetSelected = true;
 		return true;
 	}
-	
+#endif
+    
 	return false;
 #endif
 	

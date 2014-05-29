@@ -39,6 +39,12 @@ void BalloonCredit::update()
 	
 	left = ofVec3f(-width * .5, 0, 0) * n.getGlobalTransformMatrix();
 	right = ofVec3f(width * .5, 0, 0) * n.getGlobalTransformMatrix();
+    
+    
+//    cout<<"credit pos " <<pos<<endl;
+//    cout<<"camera pos " <<camera->getPosition()<<endl;
+
+    
 }
 
 void BalloonCredit::draw()
@@ -58,13 +64,17 @@ void BalloonCredit::draw()
 	n.getOrientationQuat().getRotate(angle, axis);
 	
 	// Translate the object to its position.
-	ofTranslate( pos );
 	// Perform the rotation.
-	ofRotate(angle, axis.x, axis.y, axis.z);
-	ofRotate(180, 0, 0, 1);
+    
+    ofScale(.25,.25,.25);
+    
+    //ofTranslate( pos );
+    ofMultMatrix(n.getGlobalTransformMatrix());
+    ofRotate(180, 0, 0, 1);
+//	ofRotate(angle, axis.x, axis.y, axis.z);
 	
-	ofScale(.25,.25,.25);
-		
+
+
 	//draw text at the position
 	float titleWidth  = font->stringWidth(title);
 	float titleHeight = font->stringHeight(title);

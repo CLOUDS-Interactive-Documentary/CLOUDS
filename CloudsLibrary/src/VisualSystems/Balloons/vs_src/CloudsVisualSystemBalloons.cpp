@@ -254,7 +254,8 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	accScl = .2;
 	gravity = .01;
 	attractionToCenter = .01;
-	
+	progress = 0;
+    
 	cameraBounce = 10.;
 	cameraAttractionToCenter = 1.;
 	cameraTargetDist = 200;
@@ -310,12 +311,15 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	
 	textSpeed = -.4;
 	textRadius = 3.;
-	
+    
 	shininess = 10;
 	lightScale = .75;
 	creditLightScale = .75;
 	facingRatioScale = .5;
 	
+    
+    creditPosition = 0;
+    
 	cameraBounceRadius = 3;
 	fontSize = 15;
 	creditStartTime = 0;
@@ -536,6 +540,8 @@ void CloudsVisualSystemBalloons::selfSetup()
 		ofLogError("Balloons") << "Couldn't load credits XML!";
 		return;
 	}
+    
+    creditPosition = 0;
 }
 
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){
@@ -550,6 +556,8 @@ void CloudsVisualSystemBalloons::selfSceneTransformation(){
 
 void CloudsVisualSystemBalloons::selfUpdate()
 {
+    cloudsCamera.lookTarget = ofVec3f(0,0,0);
+    
 	p0->getTextureReference().readToPixels(pospix);
 	ofFloatColor poscol = pospix.getColor(0,0);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
