@@ -22,7 +22,10 @@ string CloudsIntroSequence::getSystemName(){
 }
 
 CloudsIntroSequence::CloudsIntroSequence(){
-
+	getSelectLow();
+	getSelectMid();
+	getSelectHigh();
+	getClick();
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
@@ -498,15 +501,16 @@ void CloudsIntroSequence::updateQuestions(){
 			
 			//we have a caught question make sure it's still close
 			else if(caughtQuestion == &curQuestion){
-//				curQuestion.hoverPosition.z += cameraForwardSpeed;
+
 				if( caughtQuestion->isSelected() && !bQuestionDebug && selectedQuestion == NULL){
 					getSelectLow()->setPosition(0);
 					getSelectLow()->play();
-//					caughtQuestion = NULL;
+
 					selectedQuestion = caughtQuestion;
 					selectedQuestionTime = ofGetElapsedTimef();
 					selectQuestionStartPos = warpCamera.getPosition();
 					selectQuestionStartRot = warpCamera.getOrientationQuat();
+
 					CloudsPortalEventArgs args(ofToUpper(selectedQuestion->question));
 					ofNotifyEvent(events.portalHoverBegan, args);
 					
