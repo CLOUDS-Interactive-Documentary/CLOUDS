@@ -31,6 +31,13 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 
 	bEventRegistered = false;
 	clipPrerolled = false;
+
+    nextVideoPath = "";
+    nextCalibrationXMLPath = "";
+    nextSubtitlesPath = "";
+    nextOffsetTime = 0;
+    nextClipVolume = 0;
+    bLoadResult = false;
 	
 //#ifdef TARGET_OSX
 //	nextPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
@@ -53,8 +60,6 @@ CloudsRGBDVideoPlayer::~CloudsRGBDVideoPlayer(){
     
 }
 
-#ifdef TARGET_WIN32
-
 //---------------------------------------------------------------
 bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume){
 
@@ -68,63 +73,47 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 		bEventRegistered = true;
 	}
     
-    this->videoPath = videoPath;
-    this->calibrationXMLPath = calibrationXMLPath;
-    this->subtitlesPath = subtitlesPath;
-    this->offsetTime = offsetTime;
-    this->clipVolume = clipVolume;
+    nextVideoPath = videoPath;
+    nextCalibrationXMLPath = calibrationXMLPath;
+    nextSubtitlesPath = subtitlesPath;
+    nextOffsetTime = offsetTime;
+    nextClipVolume = clipVolume;
 
+#ifdef TARGET_WIN32
     nextPlayer->setUseTexture(false);
-
     startThread(false);
 
     return true;
+#else
+    // No need to use a thread, just call this function directly.
+    threadedFunction();
+
+    return bLoadResult;
+#endif
 }
 
 //---------------------------------------------------------------
 void CloudsRGBDVideoPlayer::threadedFunction(){
 
-#else
-
-//---------------------------------------------------------------
-bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume ){
-
-    if(!bEventRegistered){
-		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
-		bEventRegistered = true;
-	}
-
-#endif
-	
-	if(!nextPlayer->loadMovie(videoPath)){
-		ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
-
-#ifdef TARGET_WIN32
-        stopThread();
+    if(!nextPlayer->loadMovie(nextVideoPath)){
+		ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << nextVideoPath << " failed to load";
+        bLoadResult = false;
         return;
-#else
-        return false;
-#endif
-
     }
 
-	nextPlayer->setPosition( offsetTime / nextPlayer->getDuration() );
+	nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
 
-	nextCalibrationXML = calibrationXMLPath;
-	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
+	nextCalibrationXML = nextCalibrationXMLPath;
+	cout << "prerolled clip " << nextVideoPath << " to time " << nextOffsetTime << endl;
 
     /* Subtitles */
-    nextClipHasSubtitles = loadSubtitles(subtitlesPath);
+    nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
     
 	clipPrerolled = true;
 	nextClipIsVO = false;
-    nextClipVolumeAdjustment = clipVolume;
+    nextClipVolumeAdjustment = nextClipVolume;
 
-#ifdef TARGET_WIN32
-    stopThread();
-#else
-	return true;
-#endif
+    bLoadResult = true;
 }
 
 bool CloudsRGBDVideoPlayer::setupVO(string audioPath){
