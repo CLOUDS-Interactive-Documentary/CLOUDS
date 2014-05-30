@@ -245,9 +245,7 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	currentPlayer->stop();
 	currentClipVolumeAdjustment = nextClipVolumeAdjustment;
 
-#ifdef TARGET_WIN32
     nextPlayer->setUseTexture(true);
-#endif
     
 //    cout<<"Current Max Vol: "<<currentMaxVolume<<endl;
 	swap(currentPlayer,nextPlayer);
