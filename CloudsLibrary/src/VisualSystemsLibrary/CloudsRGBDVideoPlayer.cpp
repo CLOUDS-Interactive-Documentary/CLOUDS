@@ -53,18 +53,60 @@ CloudsRGBDVideoPlayer::~CloudsRGBDVideoPlayer(){
     
 }
 
+#ifdef TARGET_WIN32
+
 //---------------------------------------------------------------
-bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume ){
-	
-	if(!bEventRegistered){
+bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume){
+
+    if (!ofFile::doesFileExist(videoPath)){
+    	ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
+        return false;
+    }
+
+    if(!bEventRegistered){
 		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
 		bEventRegistered = true;
 	}
+    
+    this->videoPath = videoPath;
+    this->calibrationXMLPath = calibrationXMLPath;
+    this->subtitlesPath = subtitlesPath;
+    this->offsetTime = offsetTime;
+    this->clipVolume = clipVolume;
+
+    nextPlayer->setUseTexture(false);
+
+    startThread(false);
+
+    return true;
+}
+
+//---------------------------------------------------------------
+void CloudsRGBDVideoPlayer::threadedFunction(){
+
+#else
+
+//---------------------------------------------------------------
+bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume ){
+
+    if(!bEventRegistered){
+		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
+		bEventRegistered = true;
+	}
+
+#endif
 	
 	if(!nextPlayer->loadMovie(videoPath)){
 		ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
-		return false;
-	}
+
+#ifdef TARGET_WIN32
+        stopThread();
+        return;
+#else
+        return false;
+#endif
+
+    }
 
 	nextPlayer->setPosition( offsetTime / nextPlayer->getDuration() );
 
@@ -78,7 +120,11 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 	nextClipIsVO = false;
     nextClipVolumeAdjustment = clipVolume;
 
+#ifdef TARGET_WIN32
+    stopThread();
+#else
 	return true;
+#endif
 }
 
 bool CloudsRGBDVideoPlayer::setupVO(string audioPath){
@@ -209,6 +255,10 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	currentVoiceoverPlayer->stop();
 	currentPlayer->stop();
 	currentClipVolumeAdjustment = nextClipVolumeAdjustment;
+
+#ifdef TARGET_WIN32
+    nextPlayer->setUseTexture(true);
+#endif
     
 //    cout<<"Current Max Vol: "<<currentMaxVolume<<endl;
 	swap(currentPlayer,nextPlayer);
