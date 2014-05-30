@@ -20,7 +20,11 @@
 #endif
 
 
-class CloudsRGBDVideoPlayer {
+class CloudsRGBDVideoPlayer
+#ifdef TARGET_WIN32
+    : public ofThread
+#endif
+{
 public:
     
     CloudsRGBDVideoPlayer();
@@ -31,6 +35,16 @@ public:
 	bool setup(string videoPath, string calibrationXMLPath, string subtitlesPath = "", float offsetTime = 0, float clipVolume =1);
 	bool setupVO(string audioPath);
 	void swapAndPlay();
+
+#ifdef TARGET_WIN32
+    void threadedFunction();
+
+    string videoPath;
+    string calibrationXMLPath;
+    string subtitlesPath;
+    float offsetTime;
+    float clipVolume;
+#endif
 	
 	void setupProjectionUniforms(ofShader& shader);
     
