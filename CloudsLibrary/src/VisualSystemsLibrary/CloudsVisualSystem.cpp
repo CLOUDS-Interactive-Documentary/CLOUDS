@@ -21,7 +21,7 @@
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static ofImage cloudsPostDistortionMap;
-static CloudsRGBDVideoPlayer rgbdPlayer;
+static CloudsRGBDVideoPlayer* rgbdPlayer = NULL;
 static bool backgroundShaderLoaded = false;
 static ofShader cloudsPostShader;
 static bool postShaderLoaded = false;
@@ -69,7 +69,10 @@ int CloudsVisualSystem::getCanvasHeight(){
 }
 
 CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
-	return rgbdPlayer;
+	if(rgbdPlayer == NULL){
+		rgbdPlayer = new CloudsRGBDVideoPlayer();
+	}
+	return *rgbdPlayer;
 }
 
 void CloudsVisualSystem::loadBackgroundShader(){
@@ -227,10 +230,7 @@ CloudsVisualSystem::~CloudsVisualSystem(){
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
-	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
 	ofFbo& renderTarget = getStaticRenderTarget();  
-//	int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
-//	int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
 	int targetWidth  = ofGetWidth();
 	int targetHeight = ofGetHeight();
     
@@ -250,22 +250,9 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	}
 
 	bool reallocateTarget = !renderTarget.isAllocated() ||
-							renderTarget.getWidth() != computedWidth ||
-							renderTarget.getHeight() != computedHeight;
+							 renderTarget.getWidth()  != computedWidth ||
+							 renderTarget.getHeight() != computedHeight;
 
-    // EZ: Old version, commented out for now!
-//	ofFbo& renderTarget = getStaticRenderTarget();
-//    
-//	int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
-//	int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
-//    
-//bool reallocateTarget = !renderTarget.isAllocated();
-//	reallocateTarget |= !screenResolutionForced &&
-//						(renderTarget.getWidth() != targetWidth ||
-//						 renderTarget.getHeight() != targetHeight );
-//	reallocateTarget |= screenResolutionForced &&
-//						(renderTarget.getWidth() != forcedScreenWidth ||
-//						 renderTarget.getHeight() != forcedScreenHeight);
 
 	if(reallocateTarget){
 		renderTarget.allocate(computedWidth, computedHeight, GL_RGB, numSamples);
