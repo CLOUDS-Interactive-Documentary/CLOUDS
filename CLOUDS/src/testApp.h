@@ -22,11 +22,10 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	
 	CloudsPlaybackController player;
-	
-//	void actCreated(CloudsActEventArgs& args);
-//	
-//	bool useScratch;
-	
-	
-//	void audioRequested(float * output, int bufferSize, int nChannels);
+
+	bool firstFrame;
+	bool playerSetup;
+	bool shouldSetupPlayer;
+	ofImage loader;
+
 };

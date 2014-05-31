@@ -333,9 +333,9 @@ bool CloudsAct::isClipEnergyShift(CloudsClip* clip){
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     if(bang.track == clipsTrack){
         if(bang.flag !=" "){
+            cout << "CloudsAct::timelineEventFired SENDING CLIP BEGAN" << endl;
             CloudsClipEventArgs args(clipMap[bang.flag], topicMap[bang.flag],getDichotomiesForClip(bang.flag));
             ofNotifyEvent(events.clipBegan, args);
-            cout << "CloudsAct::timelineEventFired SENDING CLIP BEGAN" << endl;
         }
     }
     else if(bang.track == visualSystemsTrack){

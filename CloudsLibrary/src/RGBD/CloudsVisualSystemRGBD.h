@@ -3,9 +3,8 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsPortal.h"
-#include "CloudsQuestion.h"
 #include "CloudsEvents.h"
-#include "GPUParticles/Controller.h"
+//#include "GPUParticles/Controller.h"
 
 #ifdef HAS_GAMECAM
 #include "ofxGameCamera.h"
@@ -43,6 +42,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 		OutLeft,
 		OutRight
 	};
+
+	CloudsVisualSystemRGBD();
 
 	string getSystemName();
     
@@ -273,7 +274,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void loadShader();
 
 	ofxUISuperCanvas *cameraGui;
-	ofxUISuperCanvas *particleGui;
+//	ofxUISuperCanvas *particleGui;
 	ofxUISuperCanvas *backgroundMeshGui;
 	ofxUISuperCanvas *questionGui;
     ofxUISuperCanvas *actuatorGui;
@@ -281,7 +282,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool drawParticulate;
 	float attenuatedCameraDrift;
 	VoxelMesh voxelMesh;
-	GPUParticles::Controller particulateController;
+	//GPUParticles::Controller particulateController;
     float particleCount;
     ofVec4f pointColor;
     

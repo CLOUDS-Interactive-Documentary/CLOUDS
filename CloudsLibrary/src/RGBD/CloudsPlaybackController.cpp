@@ -63,7 +63,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 
 	resetInterludeVariables();
 	
-    interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
+    interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-MEDIUM.ttf", 15);
 
 }
 
@@ -168,18 +168,23 @@ void CloudsPlaybackController::setup(){
         
 	}
 		
+	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
 	
+	cout << "*****LOAD STEP*** STARTING RGBD" << endl;
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
 	rgbdVisualSystem->setDrawToScreen(false);
 	
+	cout << "*****LOAD STEP*** STARTING CLUSTER" << endl;
 	clusterMap = new CloudsVisualSystemClusterMap();
 	clusterMap->setup();
 	clusterMap->setDrawToScreen(false);
 	
+
+	cout << "*****LOAD STEP*** STARTING HUD" << endl;
 	hud.setup();
 
 #ifdef OCULUS_RIFT
@@ -191,8 +196,11 @@ void CloudsPlaybackController::setup(){
     introSequence->setupHUDGui();
 #endif
 	
+	cout << "*****LOAD STEP*** SHOWING INTRO" << endl;
+
 	showIntro();
 
+	cout << "*****LOAD STEP*** STARTING THREAD" << endl;
 	startThread();
 }
 
@@ -201,6 +209,8 @@ void CloudsPlaybackController::threadedFunction(){
 	
 	loadPercent = 0.0;
 	
+	cout << "*****LOAD STEP PARSER" << endl;
+
 	///START THREADED
 	parser.loadFromFiles();
 	if(!isThreadRunning()) return;
@@ -1304,6 +1314,12 @@ void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
+
+	if(clip == NULL){
+		ofLogError("CloudsPlaybackController::prerollClip") << "clip IS NULL ";
+		return;
+	}
+
 	if(!clip->hasMediaAsset){
 		ofLogError("CloudsPlaybackController::prerollClip") << "clip " << clip->getLinkName() << " doesn't have combined video";
 		return;
@@ -1333,8 +1349,10 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
     
 	numClipsPlayed++;
 	
+	cout << "**** CLIP BEGAN" << endl;
 
 	if(clip->getID() != prerolledClipID){
+		cout << "**** HAD TO MANUALLY PREROLL IN CLIP BEGAN" << endl;
 		prerollClip(clip, 1);
 	}
 	
@@ -1347,6 +1365,7 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 	currentClip = clip;
 	currentClipName = clip->getID();
     
+	cout << "**** SWAPPING IN FROM CLIP BEGAN" << endl;
 	rgbdVisualSystem->getRGBDVideoPlayer().swapAndPlay();
 }
 

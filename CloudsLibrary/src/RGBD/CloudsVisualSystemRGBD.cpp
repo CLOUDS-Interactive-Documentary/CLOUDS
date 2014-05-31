@@ -6,6 +6,91 @@
 CloudsVisualSystemEvents CloudsVisualSystemRGBD::events;
 
 //--------------------------------------------------------------
+CloudsVisualSystemRGBD::CloudsVisualSystemRGBD(){
+
+	visualSystemFadeValue = 0.0;
+    questionToReplace = 0;	
+	transitionTarget = NULL;
+	bTransitionIn = bTransitionOut = false;
+	bLookThroughIn = bLookThroughOutLeft = bLookThroughOutRight = false;
+	bSaveTransition = false;
+	
+	transitionCamTargetNode = NULL;
+	
+	bTransitionsAddedToGui = false;
+	transitionOutOption = OutLeft;
+	bMoveTransitionCameraUp = bMoveTransitionCameraDown = false;
+	transitionScrubIn = transitionScrubOut = 0;
+	
+	//MESH
+	globalMeshGui = NULL;
+	drawRGBD = false;
+	edgeAttenuate = edgeAttenuateExponent = skinBrightness = 0;
+	
+	//LINES
+	linesGui = NULL;
+    lineVertexCount = 0;
+	drawLines = false;
+	lineAlpha = lineThickness = lineSpacing =
+		lineDensityVariance = lineGranularity = 
+			lineFlowPosition = lineFlowSpeed = lineHeadOverlap = 0.0f;
+	linesFlowUp = false;
+    lineColorBoost = lineSkinBoost = lineMaxActuatorRetract = lineRandomOffset = 0.0f;
+	refreshLines = false;
+	
+    
+	//MESH
+	meshGui = NULL;
+    meshVertexCount = 0;
+	drawMesh = false;
+	meshAlpha = xSimplify = ySimplify = randomVariance = 
+		meshFaceMinRadius = meshFaceFalloff = meshRetractionFalloff = meshForceGeoRetraction = 
+		meshColorBoost = meshSkinBoost = meshMaxActuatorRetract = 0;
+    refreshMesh = false;
+
+    //FILL
+	fillGui = NULL;
+    bEnableFill = false;
+	fillAlpha = fillFaceFalloff = fillRetractionFalloff = fillFaceMinRadius = 0;
+
+    ///OCCLUSION
+	occlusionGui = NULL;
+    bDrawOcclusion = drawOcclusionDebug = false;
+
+    occlusionVertexCount = occlusionXSimplify = occlusionYSimplify = 
+		occlusionMeshFaceMinRadius = occlusionMeshFaceFalloff = occlusionMeshRetractionFalloff = 0;
+    refreshOcclusion = false;
+    
+    ///ACTUATORS
+    actuatorSpinPosition = actuatorSpinSpeed = actuatorShineAngle = 0;
+
+	cameraGui  = backgroundMeshGui = questionGui = actuatorGui = NULL;
+    
+	drawParticulate = 0;
+	attenuatedCameraDrift = 0;
+    particleCount = 0;
+    
+	portalScale = 0;
+	minDistanceToQuestion = 0;
+	bPortalDebugOn = false;
+
+	portalToClear = NULL;
+	questionFontSize = currentQuestionFontSize = questionFontScale = questionYOffset = questionFontTracking = questionFontSplitWidth = 0;
+	
+	caughtPortal = selectedPortal = NULL;
+	
+	cullFace = GL_FRONT;    
+	placingTransitionNodes = false;
+	drawTransitionNodes = false;
+	transitioning, transitioningIn, transitioningOut, bResetLookThoughs, bResetRight,bResetLeft,bResetIn = false;
+	transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal = 0;
+	
+	transitionType = TWO_DIMENSIONAL;
+	
+	transitionVal = 0.0;
+}
+
+//--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
 	return "RGBD";
 }
@@ -141,18 +226,22 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	loadShader();
 	
+	cout << "*** LOADING POINT LAYERS" << endl;
     pointLayer1.pointShader = &pointShader;
     pointLayer2.pointShader = &pointShader;
     pointLayer1.visualSystemFadeValue = &visualSystemFadeValue;
     pointLayer2.visualSystemFadeValue = &visualSystemFadeValue;
     
+
+
+	cout << "*** LOAD GENERATE LINES" << endl;
 	generateLines();
-	//generatePoints();
+	cout << "*** LOAD GENERATE MESH" << endl;
 	generateMesh();
 		
-	particulateController.setParticleCount(2000);
-	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-	particulateController.setup();
+	//particulateController.setParticleCount(2000);
+	//particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+	//particulateController.setup();
 	voxelMesh.setup();
 	
 	cloudsCamera.setup();
@@ -484,6 +573,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guimap[cameraGui->getName()] = cameraGui;
 	
     ////////////////// BACKGROUND PARTICLES
+	/*
 	particleGui = new ofxUISuperCanvas("PARTICLE", gui);
 	particleGui->copyCanvasStyle(gui);
 	particleGui->copyCanvasProperties(gui);
@@ -497,6 +587,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	particleGui->addWidgetToHeader(toggle);
 	
 //    particleGui->addSlider("NUM PARTICLES", 10, 10000, &particleCount);
+	
 	particleGui->addSlider("BIRTH RATE", 0, .01, &particulateController.birthRate);
 	particleGui->addSlider("BIRTH SPREAD", 10, 10000, &particulateController.birthSpread);
 	particleGui->addSlider("POINT SIZE THRESHOLD", 0, .01, &particulateController.getPoints().sizeThreshold);
@@ -508,6 +599,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(particleGui);
 	guimap[particleGui->getName()] = particleGui;
 	backgroundGuis.push_back(particleGui);
+	*/
     //////////////////
 	
 	////////////////// BACKGROUND PARTICLES
@@ -614,7 +706,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	lineFlowPosition += powf(lineFlowSpeed,2.0);
     //TODO FLOW POINTS
 //	pointFlowPosition += powf(pointFlowSpeed,2.0);
-	
+	/*
 	if(drawParticulate){
 		
 //        if(particulateController.getNumParticles() != particleCount){
@@ -631,6 +723,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		particulateController.update();
 	
 	}
+	*/
 
 	voxelMesh.center = cloudsCamera.lookTarget;
 	voxelMesh.update();

@@ -13,8 +13,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Perlin Amplitude</WidgetName>
-                <WidgetID>9</WidgetID>
+                <WidgetName>Wireframe Alpha</WidgetName>
+                <WidgetID>15</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -45,8 +45,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Wireframe Alpha</WidgetName>
-                <WidgetID>15</WidgetID>
+                <WidgetName>Perlin Amplitude</WidgetName>
+                <WidgetID>9</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

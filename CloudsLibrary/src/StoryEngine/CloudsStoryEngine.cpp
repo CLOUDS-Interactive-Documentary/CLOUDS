@@ -268,7 +268,11 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 }
 
 vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
+#ifdef OCULUS_RIFT
+    vector<CloudsClip*> startingNodes = parser->getClipsWithKeyword("#oculus");
+#else
     vector<CloudsClip*> startingNodes = parser->getClipsWithKeyword("#start");
+#endif
     //safe guard delete any starters that don't have questions
     for(int i = startingNodes.size()-1; i >= 0; i--){
         if(!startingNodes[i]->hasQuestion() ) {
@@ -279,12 +283,6 @@ vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
             ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i]->getID() << " has no media asset, removing.";
             startingNodes.erase(startingNodes.begin() + i);
         }
-        #ifdef OCULUS_RIFT
-        else if(!startingNodes[i]->hasSpecialKeyword("#oculus")){
-            ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i]->getID() << " is not tagged for the oculus.";
-            startingNodes.erase(startingNodes.begin() + i);
-        }
-        #endif
         //JG rig question
 //        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
 //			startingNodes.erase(startingNodes.begin() + i);

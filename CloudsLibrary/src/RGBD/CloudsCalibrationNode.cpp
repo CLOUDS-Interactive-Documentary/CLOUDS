@@ -141,7 +141,7 @@ void CalibrationNode::draw(){
 		ofPath arc;
 		arc.setFilled(false);
 		arc.setArcResolution(100);
-		arc.setStrokeWidth(5);
+		arc.setStrokeWidth(3);
 		arc.setStrokeColor(arcColor);
 		float animationProgress = ofxTween::map(percentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
         arc.moveTo(0, nodeSize, 0);  // EZ: This is necessary under Windows

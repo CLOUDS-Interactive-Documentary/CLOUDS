@@ -179,7 +179,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	tunnelGui->addSlider("Tunnel Tint B",  0, 1.0, &tint.b);
 	
 	tunnelGui->addSlider("Loose Rez X", 5, 20, &looseTunnelResolutionX);
-	tunnelGui->addSlider("Loose Rez Z", 5, 50, &looseTunnelResolutionZ);
+	tunnelGui->addSlider("Loose Rez Z", 5, 100, &looseTunnelResolutionZ);
     
 	tunnelGui->addButton("generate tunnel", false);
 	

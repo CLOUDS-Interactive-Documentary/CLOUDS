@@ -719,6 +719,7 @@ void CloudsVisualSystem::drawScene(){
 	
 	//draw this visual system
 	ofPushStyle();
+	ofSetLineWidth(1);
 	selfDraw();
 	checkOpenGLError(getSystemName() + ":: DRAW");
 	ofPopStyle();

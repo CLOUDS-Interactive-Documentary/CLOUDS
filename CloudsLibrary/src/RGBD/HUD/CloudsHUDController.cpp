@@ -586,7 +586,7 @@ void CloudsHUDController::draw(){
 	ofPushStyle();
 	ofPushMatrix();
 	ofEnableAlphaBlending();
-	
+	ofSetLineWidth(1);
     ofTranslate( (ofGetWindowSize() - getSize() ) * 0.5 );
     ofScale( scaleAmt, scaleAmt );
     
@@ -644,7 +644,8 @@ void CloudsHUDController::draw3D(ofCamera* cam, ofVec2f offset){
 	glDisable(GL_DEPTH_TEST);
     glDisable(GL_LIGHTING);
     ofEnableAlphaBlending();
-    
+	ofSetLineWidth(1);
+
     drawLayer3D(CLOUDS_HUD_QUESTION, cam, offset);
     drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam, offset);
 	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam, offset);
