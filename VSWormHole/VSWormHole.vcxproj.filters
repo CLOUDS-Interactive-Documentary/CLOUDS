@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp">
+      <Filter>addons\ofxCameraSaveLoad\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsPathCamera.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\WormHole\vs_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsVisualSystemWormHole.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\WormHole\vs_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp">
+      <Filter>addons\ofxObjLoader\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSimpleSpline\src\ofxSimpleSpline.cpp">
+      <Filter>addons\ofxSimpleSpline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxBinaryMesh\src\ofxBinaryMesh.cpp">
+      <Filter>addons\ofxBinaryMesh\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{1fdbdf30-aa97-4eef-a39b-2c96ca06558b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCameraSaveLoad">
+      <UniqueIdentifier>{b285e277-3392-4c4e-b8a6-3c3bc77e676d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCameraSaveLoad\src">
+      <UniqueIdentifier>{5d605218-4505-4cd1-be41-18e4f65f0c63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary">
+      <UniqueIdentifier>{c829bda5-2352-48c1-8e09-d3c35f843240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src">
+      <UniqueIdentifier>{e415a9e1-6ca7-4da8-9781-1b19942dae1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystemsLibrary">
+      <UniqueIdentifier>{9d49e904-4ec0-4251-9905-997aab0889e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems">
+      <UniqueIdentifier>{87dc45d9-4d6e-4052-82e1-f7e04b31188e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Sound">
+      <UniqueIdentifier>{28ada4a6-fb0a-4cf2-b419-f29d167ff81d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Input">
+      <UniqueIdentifier>{9f4facfb-7ab3-4575-be50-f423dcd62bc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGenerative">
+      <UniqueIdentifier>{30cd8d73-9142-4f12-aefb-9b9b616767a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGenerative\src">
+      <UniqueIdentifier>{6ab9f75e-6343-4567-a979-651962f63346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\StoryEngine">
+      <UniqueIdentifier>{f95d2c40-1dcd-4bc7-bd34-4254cb576fd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\WormHole">
+      <UniqueIdentifier>{48668dfc-7fcb-4646-ab8a-239cd72486f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\WormHole\vs_src">
+      <UniqueIdentifier>{b97b6010-14dc-417d-b1ea-89ea8767f38f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxObjLoader">
+      <UniqueIdentifier>{02e90bc6-e06a-427b-8f8a-c2dba4f77dfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxObjLoader\libs">
+      <UniqueIdentifier>{d9ba3018-edb0-4c65-9cbe-6a0a216612d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxObjLoader\src">
+      <UniqueIdentifier>{ca747cae-9202-47db-87af-bc32d0fe28fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxObjLoader\libs\glm">
+      <UniqueIdentifier>{b7f346cb-a637-42d5-88a8-e2b30b9eae68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSimpleSpline">
+      <UniqueIdentifier>{9d17546f-6629-426b-a719-4b02181bf4c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSimpleSpline\src">
+      <UniqueIdentifier>{8e9517e1-f70c-4e37-a01e-1a51f03ee881}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBinaryMesh">
+      <UniqueIdentifier>{f8743afa-3b45-4f40-bff6-ac9e24c68175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBinaryMesh\src">
+      <UniqueIdentifier>{6003cd1e-671c-4cf5-a6ae-a7a44fc0a5cb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h">
+      <Filter>addons\ofxCameraSaveLoad\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h">
+      <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofx1DExtruder.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsEvents.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsPathCamera.h">
+      <Filter>CloudsLibrary\src\VisualSystems\WormHole\vs_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsVisualSystemWormHole.h">
+      <Filter>CloudsLibrary\src\VisualSystems\WormHole\vs_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h">
+      <Filter>addons\ofxObjLoader\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
+      <Filter>addons\ofxObjLoader\libs\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSimpleSpline\src\ofxSimpleSpline.h">
+      <Filter>addons\ofxSimpleSpline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxBinaryMesh\src\ofxBinaryMesh.h">
+      <Filter>addons\ofxBinaryMesh\src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
