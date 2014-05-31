@@ -43,12 +43,6 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsVisualSystemWormHole.cpp">
       <Filter>CloudsLibrary\src\VisualSystems\WormHole\vs_src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp">
-      <Filter>addons\ofxObjLoader\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
-      <Filter>addons\ofxObjLoader\libs\glm</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxSimpleSpline\src\ofxSimpleSpline.cpp">
       <Filter>addons\ofxSimpleSpline\src</Filter>
     </ClCompile>
@@ -101,18 +95,6 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\VisualSystems\WormHole\vs_src">
       <UniqueIdentifier>{b97b6010-14dc-417d-b1ea-89ea8767f38f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader">
-      <UniqueIdentifier>{02e90bc6-e06a-427b-8f8a-c2dba4f77dfa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader\libs">
-      <UniqueIdentifier>{d9ba3018-edb0-4c65-9cbe-6a0a216612d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader\src">
-      <UniqueIdentifier>{ca747cae-9202-47db-87af-bc32d0fe28fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxObjLoader\libs\glm">
-      <UniqueIdentifier>{b7f346cb-a637-42d5-88a8-e2b30b9eae68}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxSimpleSpline">
       <UniqueIdentifier>{9d17546f-6629-426b-a719-4b02181bf4c8}</UniqueIdentifier>
@@ -178,12 +160,6 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\WormHole\vs_src\CloudsVisualSystemWormHole.h">
       <Filter>CloudsLibrary\src\VisualSystems\WormHole\vs_src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h">
-      <Filter>addons\ofxObjLoader\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
-      <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxSimpleSpline\src\ofxSimpleSpline.h">
       <Filter>addons\ofxSimpleSpline\src</Filter>

@@ -105,7 +105,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxBinaryMesh\src;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxSimpleSpline\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\WormHole\vs_src;src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxBinaryMesh\src;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxSimpleSpline\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\WormHole\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -129,7 +129,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.d
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxBinaryMesh\src;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxSimpleSpline\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\WormHole\vs_src;src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxBinaryMesh\src;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxSimpleSpline\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\WormHole\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -151,7 +151,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxBinaryMesh\src;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxSimpleSpline\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\WormHole\vs_src;src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxBinaryMesh\src;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxSimpleSpline\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\WormHole\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -176,7 +176,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.d
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxBinaryMesh\src;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxSimpleSpline\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\WormHole\vs_src;src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxBinaryMesh\src;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxSimpleSpline\src;..\CloudsLibrary\src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\WormHole\vs_src;src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -198,8 +198,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
   <ItemGroup>
     <ClCompile Include="..\..\..\addons\ofxBinaryMesh\src\ofxBinaryMesh.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c" />
-    <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp" />
     <ClCompile Include="..\..\..\addons\ofxSimpleSpline\src\ofxSimpleSpline.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
@@ -217,8 +215,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClInclude Include="..\..\..\addons\ofxBinaryMesh\src\ofxBinaryMesh.h" />
     <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofx1DExtruder.h" />
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h" />
-    <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h" />
     <ClInclude Include="..\..\..\addons\ofxSimpleSpline\src\ofxSimpleSpline.h" />
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
