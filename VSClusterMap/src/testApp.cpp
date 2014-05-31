@@ -17,10 +17,9 @@ void testApp::setup(){
 	storyEngine.setup();
 	
     
-	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
+	vector<CloudsClip*> startingNodes = parser.getClipsWithKeyword("#start");
 	srand(ofGetSeconds());
     cout << "starting node size is " << startingNodes.size() << endl;
-
     
 	ofRandomuf();
     ofRandomuf();
@@ -35,14 +34,24 @@ void testApp::setup(){
 	run.clipHistory = act->getAllClips();
 	cout << "** TRAVERSAL INCLUDES:" << endl;
 	for(int i = 0; i < run.clipHistory.size(); i++){
-		cout << "	** " << run.clipHistory[i].getID() << endl;
+		cout << "	** " << run.clipHistory[i]->getID() << endl;
 	}
     
 //	clusterMap.forceScreenResolution(1920, 1080);
 	clusterMap.setup();
-	clusterMap.loadPresetGUISFromName("2DFollowCam");
+#ifdef OCULUS_RIFT
+	if(CloudsVisualSystem::getOculusRift().isHD()){
+		clusterMap.loadPresetGUISFromName("FollowTraverse_OculusHD");
+	}
+	else{
+		clusterMap.loadPresetGUISFromName("FollowTraverse_OculusSD");
+	}
+#else
+	clusterMap.loadPresetGUISFromName("FollowTraverse_Screen");
+#endif
 
 	clusterMap.setRun(run);
+	clusterMap.setAct(act);
 	clusterMap.buildEntireCluster(parser);
 	clusterMap.allocateFlickerTexture();
 	

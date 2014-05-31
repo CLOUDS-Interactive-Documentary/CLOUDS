@@ -19,7 +19,7 @@ float map(float value, float inputMin, float inputMax, float outputMin, float ou
 void main () {
     
     //this is how far along the reveal is on the front
-	float traverseReveal = 1.0 - smoothstep(percentTraverseRevealed, percentTraverseRevealed + .01, freshTraversalPosition);
+	float traverseReveal = 1.0 - smoothstep(percentTraverseRevealed, percentTraverseRevealed + .01, max(.01,freshTraversalPosition) );
     
     //this calculates the fall off on the back of the trail
     float vertsRemainingReveal = segmentVertCount * (1.0 - percentTraverseRevealed);
@@ -29,7 +29,7 @@ void main () {
     float falloff = smoothstep(trailFadeEnd, //from the end of the trail
                                trailFadeStart, //to the head of the last segment
                                totalTraversalPosition);
-    
+    falloff = max(falloff,0.0);
     //mix the alpha
     float trailAttenuate = falloff * max(traverseReveal,finalizedTraversalBit);
     

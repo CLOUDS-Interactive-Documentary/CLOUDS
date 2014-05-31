@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>TopicType</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>338.000000000</XPosition>
-    <YPosition>131.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>122.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -11,22 +11,22 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>SIZE MIN</Name>
     <Value>5</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>SIZE MAX</Name>
     <Value>14</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>MIN CLIP NUM</Name>
     <Value>20</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>MAX CLIP SCALE</Name>
     <Value>40</Value>
 </Widget>
@@ -36,7 +36,7 @@
     <Value>1</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>ASSOCATION SIZE</Name>
     <Value>29</Value>
 </Widget>
