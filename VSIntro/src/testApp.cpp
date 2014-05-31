@@ -9,19 +9,19 @@ void testApp::setup(){
 	
 	//////////////SHOW INTRO
     parser.loadFromFiles();
-	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
+	vector<CloudsClip*> startingNodes = parser.getClipsWithKeyword("#start");
 	//safe guard delete any starters that don't have questions
 	for(int i = startingNodes.size()-1; i >= 0; i--){
-		if(!startingNodes[i].hasQuestion() ) {
-			ofLogError() << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
+		if(!startingNodes[i]->hasQuestion() ) {
+			ofLogError() << "Clip " << startingNodes[i]->getID() << " is labeled as #start but has no question, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
-		else if(!startingNodes[i].hasMediaAsset){
-			ofLogError() << "Clip " << startingNodes[i].getID() << " has no media asset, removing.";
+		else if(!startingNodes[i]->hasMediaAsset){
+			ofLogError() << "Clip " << startingNodes[i]->getID() << " has no media asset, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
 		else{
-			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
+			cout << " Adding Clip " << startingNodes[i]->getID() << " with question " << startingNodes[i]->getQuestions()[0] << endl;
 		}
 	}
 	
@@ -41,7 +41,12 @@ void testApp::setup(){
 
 	intro.setup();
 #ifdef OCULUS_RIFT
-//	intro.loadPresetGUISFromName("Oculus");
+	if(CloudsVisualSystem::getOculusRift().isHD()){
+		intro.loadPresetGUISFromName("Oculus");
+	}
+	else{
+		intro.loadPresetGUISFromName("OculusSD");
+	}
 #else
 	intro.loadPresetGUISFromName("TunnelWarp");
 #endif
