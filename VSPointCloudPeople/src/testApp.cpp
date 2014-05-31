@@ -21,7 +21,7 @@ void testApp::setup(){
     
 	CloudsSpeaker::populateSpeakers();
 
-	//parser.loadFromFiles();
+	parser.loadFromFiles();
 	//parser.loadMediaAssets();
 	rgbd.setup();
 
@@ -56,9 +56,6 @@ void testApp::update(){
 		CloudsQuestionEventArgs args(clip, "WHAT'S YOUR QUESTION?", "topic");
 		hud.questionSelected(args);
 
-		//CloudsClip* clip = parser.getRandomClip(true);
-		//rgbd.playTestVideo(clip);
-		//hud.respondToClip(clip);
 	}
 }
 
@@ -105,14 +102,15 @@ void testApp::keyReleased(int key){
 	}
 
 	if(key == 'Q'){
-//		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set05");
-//		qtestnodes.allowExt("png");
-//		qtestnodes.listDir();
-//		vector<string> testpaths;
-//		for(int i = 0; i < qtestnodes.numFiles(); i++)
-//			testpaths.push_back(qtestnodes.getPath(i));
-//		rgbd.addFakeQuestion(testpaths);
+		CloudsClip* clip = parser.getRandomClip(false,true);
+		if(clip->hasQuestion()){
+			rgbd.addQuestion(clip, clip->getTopicsWithQuestions()[0], clip->getQuestions()[0] );
+		}
+		else {
+			cout << "clip " << clip->getLinkName() << " does not have a question!" << endl;
+		}
 	}
+
 	if(key == 'm'){
 		ofHideCursor();
 	}

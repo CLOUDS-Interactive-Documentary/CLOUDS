@@ -3225,7 +3225,6 @@ void CloudsVisualSystem::setupHUDGui()
     
     // load initial settings
 	string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
-
     hudGui->loadSettings(hudFileName);
 
     // sync visibility with others

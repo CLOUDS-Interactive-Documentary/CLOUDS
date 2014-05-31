@@ -389,9 +389,7 @@ void CloudsIntroSequence::updateIntroNodePosition(CalibrationNode& node){
 
 void CloudsIntroSequence::updateIntroNodeInteraction(CalibrationNode& node){
 	
-//	#ifdef OCULUS_RIFT
 	node.updateInteraction();
-//	#endif
 }
 
 void CloudsIntroSequence::updateTitle(){
@@ -471,11 +469,7 @@ void CloudsIntroSequence::updateQuestions(){
 		
 		curQuestion.hoverPosition.z += cameraForwardSpeed * slowDownFactor;
 
-		//old slow down method
-//		startQuestions[i].hoverPosition.z += ofMap(distanceToQuestion,
-//												   questionTugDistance.max, questionTugDistance.min,
-//												   0, cameraForwardSpeed);
-		
+
 		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.max || &curQuestion == caughtQuestion){
 #ifdef OCULUS_RIFT
             ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
@@ -627,20 +621,15 @@ void CloudsIntroSequence::generateTunnel(){
 
 void CloudsIntroSequence::positionStartQuestions(){
 
-	//set the start questions along a random tunnel
-//	for(int i = 0; i < startQuestions.size(); i++){
-//		startQuestions[i].hoverPosition = ofVec3f(0, ofRandom(questionTunnelInnerRadius, tunnelMax.y), 0);
-//		startQuestions[i].hoverPosition.rotate(ofRandom(360), ofVec3f(0,0,1));
-//		startQuestions[i].hoverPosition.z = 400 + tunnelMax.z*.5 + ofRandom(questionWrapDistance);
-//	}
-
 	//new way with sets of 4
 	srand(ofGetSeconds());
 	random_shuffle(startQuestions.begin(), startQuestions.end());
 	
 	for(int i = 0; i < startQuestions.size(); i++){
-		startQuestions[i].tunnelQuadrantIndex = i%4;
-		startQuestions[i].hoverPosition = ofVec3f(0, questionTunnelInnerRadius, 0);
+		startQuestions[i].tunnelQuadrantIndex = i % 4;
+		//push the top ones down a bit and push out the side ones
+		float attenuator = (i % 2 == 0) ? .7 : 1.3;
+		startQuestions[i].hoverPosition = ofVec3f(0, questionTunnelInnerRadius * attenuator, 0);
 		startQuestions[i].hoverPosition.rotate(i%4 * .25 * 360, ofVec3f(0,0,1));
 		startQuestions[i].hoverPosition.z = 400 + tunnelMax.z*.5 + i * (1.0*questionWrapDistance / startQuestions.size() );
 	}
@@ -893,9 +882,24 @@ void CloudsIntroSequence::drawHelperType(){
         ofPushMatrix();
 		helpHoverText = ofToUpper(helpHoverText);
 		
-		float hoverTextWidth  = helperFont.stringWidth(helpHoverText);
+		float hoverTextWidth = helperFont.stringWidth(helpHoverText);
+		float hoverTextWidth2,questionTextHeight2;
+		string secondLine;
+		bool twoLines = hoverTextWidth > 200;
+		if(twoLines){
+			vector<string> pieces = ofSplitString(helpHoverText, " ", true,true);
+			vector<string> firstHalf;
+			vector<string> secondHalf;
+			int halfsize = pieces.size() / 2;
+			firstHalf.insert(firstHalf.begin(), pieces.begin(), pieces.begin() + halfsize);
+			secondHalf.insert(secondHalf.begin(), pieces.begin() + halfsize, pieces.end());
+			helpHoverText = ofJoinString(firstHalf, " ");
+			secondLine = ofJoinString(secondHalf, " ");
+			hoverTextWidth  = helperFont.stringWidth(helpHoverText);
+			hoverTextWidth2 = helperFont.stringWidth(secondLine);
+		}
 		float hoverTextHeight = helperFont.stringHeight(helpHoverText);
-		
+
 		#ifdef OCULUS_RIFT
 		getOculusRift().multBillboardMatrix( basePosition );
 		#else
@@ -909,8 +913,12 @@ void CloudsIntroSequence::drawHelperType(){
 		ofSetColor(255,255*helperTextOpacity);
 		
 		int yOffsetMult = (!bUseOculusRift && caughtQuestion->tunnelQuadrantIndex == 2) ? -1 : 1;
-		helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY-hoverTextHeight/2) );
-        ofPopMatrix();
+		//helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY - hoverTextHeight/2) );
+       	helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
+		if(twoLines){
+			helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
+		} 
+		ofPopMatrix();
 	}
     
     if(firstQuestionStopped){

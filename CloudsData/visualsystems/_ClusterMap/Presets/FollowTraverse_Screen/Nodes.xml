@@ -1,0 +1,33 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Nodes</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MESH SCALE</Name>
+    <Value>702.955627441</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>POINT SIZE RANGE</Name>
+    <HighValue>1.120689154</HighValue>
+    <LowValue>0.500000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TRAVERSED NODE SIZE</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE POP LENGTH</Name>
+    <Value>50.000000000</Value>
+</Widget>

@@ -270,8 +270,13 @@ void CloudsPlaybackController::finishSetup(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::populateRGBDPresets(){
 #ifdef OCULUS_RIFT
-	basePreset = "RGBD_OC_BASE";
-	
+	if(CloudsVisualSystem::getOculusRift().isHD()){
+		basePreset = "RGBD_OC_BASE";
+	}
+	else{
+		basePreset = "RGBD_OC_BASE_SD";
+	}
+
 	backgroundPresets.push_back("RGBD_OC_ACT1");
 	pointcloudPresets.push_back("RGBD_OC_ACT1");
 	
@@ -1347,8 +1352,16 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showClusterMap(){
-    
-	clusterMap->loadPresetGUISFromName("2DFollowCam");
+#ifdef OCULUS_RIFT
+	if(CloudsVisualSystem::getOculusRift().isHD()){
+		clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD");
+	}
+	else{
+		clusterMap->loadPresetGUISFromName("FollowTraverse_OculusSD");
+	}
+#else
+	clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
+#endif
     clusterMap->playSystem();
 	clusterMap->autoTraversePoints = true;
 	clusterMap->traverse();
