@@ -885,7 +885,7 @@ void CloudsIntroSequence::drawHelperType(){
 		float hoverTextWidth = helperFont.stringWidth(helpHoverText);
 		float hoverTextWidth2,questionTextHeight2;
 		string secondLine;
-		bool twoLines = hoverTextWidth > 200;
+		bool twoLines = hoverTextWidth > 500;
 		if(twoLines){
 			vector<string> pieces = ofSplitString(helpHoverText, " ", true,true);
 			vector<string> firstHalf;

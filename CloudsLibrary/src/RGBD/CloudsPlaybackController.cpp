@@ -1317,7 +1317,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip->combinedVideoPath,
 																					clip->combinedCalibrationXMLPath,
 																					GetCloudsDataPath() + "subtitles/"+ clip->getSubtitlesPath(),
-																					toTime, clip->getSpeakerVolume());
+																					1.0, clip->getSpeakerVolume());
 	}
     
 	if(!clipLoadSuccessfullyLoaded){
@@ -1333,7 +1333,7 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
     
 	numClipsPlayed++;
 	
-    //	rgbdVisualSystem->clearQuestions();
+
 	if(clip->getID() != prerolledClipID){
 		prerollClip(clip, 1);
 	}

@@ -347,34 +347,38 @@ void CloudsHUDController::calculateFontSizes(){
     // temporary allocate
     int minFontSize = 1;
     int maxFontSize = 70;
-    
+    #ifdef OCULUS_RIFT
+	string fontPath = GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
+	#else
+	string fontPath = GetCloudsDataPath() + "font/Blender-THIN.ttf";
+	#endif
+
     for(int i = minFontSize; i < maxFontSize; i++){
         ofxFTGLFont *tmp = new ofxFTGLFont();
-        tmp->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", i );
+        tmp->loadFont(fontPath , i );
         tempFontList.push_back( tmp );
     }
 
     //BIO
     ////first name
-    
-    BylineFirstNameTextBox      = getFontForLayer("BylineFirstNameTextBox_1_", GetCloudsDataPath() + "font/Blender-THIN.ttf", 50);
+    BylineFirstNameTextBox      = getFontForLayer("BylineFirstNameTextBox_1_", fontPath, 50);
     ////last name
-    BylineLastNameTextBox       = getFontForLayer("BylineLastNameTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf", 50);
+    BylineLastNameTextBox       = getFontForLayer("BylineLastNameTextBox", fontPath, 50);
     ////title
-    BylineTopicTextBoxBottom    = getFontForLayer("BylineTopicTextBoxBottom", GetCloudsDataPath() + "font/Blender-THIN.ttf", 35);
+    BylineTopicTextBoxBottom    = getFontForLayer("BylineTopicTextBoxBottom", fontPath, 35);
     ////location
-    BylineTopicTextBoxTop       = getFontForLayer("BylineTopicTextBoxTop", GetCloudsDataPath() + "font/Blender-THIN.ttf", 35);
+    BylineTopicTextBoxTop       = getFontForLayer("BylineTopicTextBoxTop", fontPath, 35);
     ////description
-    BylineBodyCopyTextBox       = getLayoutForLayer("BylineBodyCopyTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf", false);
+    BylineBodyCopyTextBox       = getLayoutForLayer("BylineBodyCopyTextBox", fontPath, false);
     defaultBioBounds            = hudLabelMap["BylineBodyCopyTextBox"]->bounds;
     
-    ResetButtonTextBox          = getLayoutForLayer("ResetButtonTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf");
-    QuestionTextBox             = getLayoutForLayer("QuestionTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf");
-    TopicTextBoxLeft            = getLayoutForLayer("TopicTextBoxLeft", GetCloudsDataPath() + "font/Blender-THIN.ttf");
-    TopicTextBoxRight           = getLayoutForLayer("TopicTextBoxRight", GetCloudsDataPath() + "font/Blender-THIN.ttf");
-    ProjectExampleTextboxLeft   = getLayoutForLayer("ProjectExampleTextboxLeft", GetCloudsDataPath() + "font/Blender-THIN.ttf");
-    ProjectExampleTextboxRight  = getLayoutForLayer("ProjectExampleTextboxRight", GetCloudsDataPath() + "font/Blender-THIN.ttf");
-    ProjectExampleTextBoxTop    = getLayoutForLayer("ProjectExampleTextBoxTop", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    ResetButtonTextBox          = getLayoutForLayer("ResetButtonTextBox", fontPath);
+    QuestionTextBox             = getLayoutForLayer("QuestionTextBox", fontPath);
+    TopicTextBoxLeft            = getLayoutForLayer("TopicTextBoxLeft", fontPath);
+    TopicTextBoxRight           = getLayoutForLayer("TopicTextBoxRight", fontPath);
+    ProjectExampleTextboxLeft   = getLayoutForLayer("ProjectExampleTextboxLeft", fontPath);
+    ProjectExampleTextboxRight  = getLayoutForLayer("ProjectExampleTextboxRight", fontPath);
+    ProjectExampleTextBoxTop    = getLayoutForLayer("ProjectExampleTextBoxTop", fontPath);
     
     // cleanup!
     for( int i=0; i<tempFontList.size(); i++ ){
@@ -774,7 +778,7 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
         hudLabelMap["BylineTopicTextBoxTop"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxBottom"]->animateIn( true );
 		//JG TEMP
-//        hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
+        hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
 //JG TEMP
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
