@@ -3167,13 +3167,16 @@ void CloudsVisualSystem::setupHUDGui()
     hudGui->setName("HUD");
     hudGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
     hudGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
-    ofxUIButton *button = hudGui->addButton("SAVE", false);
+
+	ofxUIButton *button;
+	/*
+    *button = hudGui->addButton("SAVE", false);
     button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
     hudGui->resetPlacer();
     hudGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
     hudGui->addWidgetToHeader(button);
-    
+    */
+
     hudGui->addSpacer();
     hudGui->addSlider("QUESTION DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_QUESTION]);
     hudGui->addSlider("QUESTION ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_QUESTION]);
@@ -3224,8 +3227,8 @@ void CloudsVisualSystem::setupHUDGui()
     guimap[hudGui->getName()] = hudGui;
     
     // load initial settings
-	string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
-    hudGui->loadSettings(hudFileName);
+//	string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
+//    hudGui->loadSettings(hudFileName);
 
     // sync visibility with others
     hudGui->setVisible(gui->isVisible());
@@ -3234,12 +3237,12 @@ void CloudsVisualSystem::setupHUDGui()
 void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
 {
     string name = e.getName();
-    if (name == "SAVE") {
-		string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
-        hudGui->saveSettings(hudFileName);
-    }
+//    if (name == "SAVE") {
+//		string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
+//       hudGui->saveSettings(hudFileName);
+//    }
 
-    else if (name == "BB Q NONE") {
+    if (name == "BB Q NONE") {
         hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_NONE;
     }
     else if (name == "BB Q CAMERA") {
@@ -3248,7 +3251,7 @@ void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
     else if (name == "BB Q OCULUS") {
         hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_OCULUS;
     }
-    
+
     else if (name == "BB L3 NONE") {
         hud->layerBillboard[CLOUDS_HUD_LOWER_THIRD] = CLOUDS_HUD_BILLBOARD_NONE;
     }
