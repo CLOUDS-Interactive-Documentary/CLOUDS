@@ -170,6 +170,12 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
 }
+void CloudsVisualSystemRGBD::playTestVideo(CloudsClip* clip){
+	getRGBDVideoPlayer().setup(
+		clip->combinedVideoPath, 
+		clip->combinedCalibrationXMLPath);
+	getRGBDVideoPlayer().swapAndPlay();
+}
 
 void CloudsVisualSystemRGBD::playTestVideo(){
 
@@ -185,12 +191,15 @@ void CloudsVisualSystemRGBD::playTestVideo(){
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Lauren_sentiment_anaylsis";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Jen_a_different_mathematics";
 	string sourceFile = GetCloudsDataPath(true) + "media/Jen_a_different_mathematics";
-
+	
 	string filePathMov = sourceFile+".mov";
 	string filePathXml = sourceFile+".xml";
 	if(ofFile::doesFileExist(filePathMov)){
         getRGBDVideoPlayer().setup(filePathMov, filePathXml);
 		getRGBDVideoPlayer().swapAndPlay();
+	}
+	else{
+		ofSystemAlertDialog("Test Video " + filePathMov + " does not exist");
 	}
 }
 
@@ -1630,7 +1639,7 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 void CloudsVisualSystemRGBD::selfDraw(){
 	
     #ifdef OCULUS_RIFT 
-	#ifdef CLOUDS_APP
+	#ifdef CLOUDS_HUD
     if (hud != NULL) {
         hud->draw3D(getOculusRift().baseCamera);
     }

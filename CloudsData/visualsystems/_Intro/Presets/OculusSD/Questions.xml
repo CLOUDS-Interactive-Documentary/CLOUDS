@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Scale</Name>
-    <Value>0.019704433</Value>
+    <Value>0.034313727</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,19 +23,19 @@
 <Widget>
     <Kind>6</Kind>
     <Name>Question Z Range</Name>
-    <HighValue>71.428558350</HighValue>
-    <LowValue>38.571426392</LowValue>
+    <HighValue>61.176471710</HighValue>
+    <LowValue>38.431373596</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Inner Radius</Name>
-    <Value>11.487684250</Value>
+    <Value>18.676469803</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Tug Distance</Name>
-    <HighValue>74.285713196</HighValue>
-    <LowValue>45.714286804</LowValue>
+    <HighValue>61.176471710</HighValue>
+    <LowValue>34.166667938</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>

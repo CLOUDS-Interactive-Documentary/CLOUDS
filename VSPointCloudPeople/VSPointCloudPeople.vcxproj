@@ -229,11 +229,11 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CLOUDS_HUD=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\BackgroundParticles;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\BackgroundParticles;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD\HUD;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>Default</CompileAs>
       <PrecompiledHeader />
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -254,11 +254,11 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <PreprocessorDefinitions>OCULUS_RIFT=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CLOUDS_HUD=1;OCULUS_RIFT=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\BackgroundParticles;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\BackgroundParticles;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD\HUD;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>Default</CompileAs>
       <PrecompiledHeader>
       </PrecompiledHeader>
@@ -329,10 +329,10 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CLOUDS_HUD=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\BackgroundParticles;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\BackgroundParticles;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD\HUD;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -354,10 +354,10 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Oculus|x64'">
     <ClCompile>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <PreprocessorDefinitions>OCULUS_RIFT=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CLOUDS_HUD=1;OCULUS_RIFT=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\BackgroundParticles;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxObjLoader\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxGameCamera\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\RGBD\BackgroundParticles;..\CloudsLibrary\src\RGBD\GPUParticles;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\RGBD\HUD;..\CloudsLibrary\src\RGBD;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -415,14 +415,21 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDController.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDHomeButton.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
@@ -489,17 +496,24 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDController.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDHomeButton.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>

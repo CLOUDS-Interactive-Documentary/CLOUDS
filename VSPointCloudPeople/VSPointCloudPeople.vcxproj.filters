@@ -82,9 +82,6 @@
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp">
       <Filter>addons\ofxGenerative\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
@@ -145,6 +142,30 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDController.cpp">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDHomeButton.cpp">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.cpp">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.cpp">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -192,9 +213,6 @@
     <Filter Include="addons\ofxGenerative\src">
       <UniqueIdentifier>{79f0fa72-1b4c-4a8d-8a6c-07b72e084eed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems">
-      <UniqueIdentifier>{4046dd83-344a-485d-8d98-a59dddbe4541}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CloudsLibrary\src\Input">
       <UniqueIdentifier>{311161e7-1ae0-42e6-9c73-a0fc0372abf4}</UniqueIdentifier>
     </Filter>
@@ -221,6 +239,9 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\RGBD\BackgroundParticles">
       <UniqueIdentifier>{d3980732-8752-48be-b9e1-d2f11ebdc667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\RGBD\HUD">
+      <UniqueIdentifier>{180cf9d4-1c96-454c-9f93-3e30d2cd7b5e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -371,9 +392,6 @@
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h">
       <Filter>addons\ofxGenerative\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\DataCascade\vs_src\CloudsVisualSystemDataCascade.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClInclude>
@@ -445,6 +463,30 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
       <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDController.h">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDHomeButton.h">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.h">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

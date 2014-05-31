@@ -5,11 +5,12 @@ uniform float maxSize;
 uniform vec3 attractor;
 
 void main() {
-		//gl_PointSize = minSize * (gl_Normal.x+1.);// * att * nearAttenuate;
-	gl_PointSize = 7.0;
+	gl_PointSize = minSize + gl_Normal.x * (maxSize - minSize);
+	//gl_PointSize = 7.0;
 	gl_FrontColor = gl_Color;//*nearAttenuate;
 	gl_TexCoord[0] = gl_MultiTexCoord0;
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
+
 /*
 	float radius = 15.0;
 	vec3 expandedVert = gl_Vertex.xyz;

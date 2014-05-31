@@ -365,6 +365,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 		n.networkPosition = clip->networkPosition;
 		clipIdToNodeIndex[clip->getID()] = nodes.size();
 		nodeMesh.addVertex( n.networkPosition );
+		nodeMesh.addNormal( ofVec3f(powf(ofRandomuf(), 3.0), 0, 0) ); //normals control the size, 0 - 1 min to max
 		n.flickerTextureCoord = flickerCoord;
 		n.luckyNumber = ofRandomuf();
 		
@@ -594,11 +595,13 @@ void CloudsVisualSystemClusterMap::traverse(){
 //		CloudsClip* clip = run->clipHistory[currentTraversalIndex];
 //		CloudsClip* clip = run->clipHistory[currentTraversalIndex];
 		traverseToClip( act->getClip(currentTraversalIndex) );
+		percentTraversed = 0.0;
 		currentTraversalIndex++;
 	}
 	else if(autoTraversePoints){
 //		timeline->stop(); //finished!
 		finishedTraversing = true;
+		percentTraversed = 1.0;
 	}
 
 }
@@ -903,11 +906,18 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
+	if(!traverseNextFrame && autoTraversePoints && (firstClip || percentTraversed >= 1.0) ){
+		//traverseNextFrame = true;
+		traverse();
+//		cout << "Traversing! " << endl;
+	//	percentTraversed = 0.0;
+	}
+
 	///UPDATE ANIMATION
 	percentTraversed = ofMap(ofGetElapsedTimef(),
 							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
 							 0, 1.0, true);
-	
+//	cout << "percentTraversed " << percentTraversed << endl;
 	if(autoTraversePoints) {
 		percentOptionsRevealed = 0.0;
 	}
@@ -917,6 +927,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 									   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
 									   0.0, 1.0, true);
     }
+
 	
 	//UPDATE CAMERA
 //	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
@@ -1003,8 +1014,8 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	traverseTailColorRGB.a = traverseTailColorHSV.a;
 
 	optionColorRGB = ofFloatColor::fromHsb(optionColorHSV.r,
-												 optionColorHSV.g,
-												 optionColorHSV.b);
+											optionColorHSV.g,
+											optionColorHSV.b);
 	optionColorRGB.a = optionColorHSV.a;
 	
 	
@@ -1054,10 +1065,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
                                                           ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()));        
     }
 	
-	if(!traverseNextFrame && autoTraversePoints && (firstClip || percentTraversed >= 1.0) ){
-		traverseNextFrame = true;
-	}
-	
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -1135,6 +1143,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	}
 	else if(drawTraversal && traversalPath.size() > 0){
 		traversalShader.begin();
+
 		traversalShader.setUniform1f("percentTraverseRevealed", percentTraversed);
 		traversalShader.setUniform4f("headColor",
 									 traverseHeadColorRGB.r,
@@ -1148,7 +1157,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 									 traverseTailColorRGB.a);
 
         int numVertsInSegment = traversalPath.back().endIndex - traversalPath.back().startIndex;
-
+		//cout << "NUM VERTS IN SEGMENT " << numVertsInSegment << endl;
 		traversalShader.setUniform1f("colorFalloff", traverseFalloff);
 		traversalShader.setUniform1f("trailVertCount", traversalMesh.getNumVertices());
 		traversalShader.setUniform1f("segmentVertCount", numVertsInSegment);
@@ -1201,10 +1210,10 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	ofPopStyle();
 	glPopAttrib();
 	
-	if(traverseNextFrame){
-		traverse();
-		traverseNextFrame = false;
-	}
+	//if(traverseNextFrame){
+	//	traverse();
+	//	traverseNextFrame = false;
+	//}
 }
 
 // draw any debug stuff here

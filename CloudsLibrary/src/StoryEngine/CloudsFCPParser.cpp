@@ -1179,6 +1179,15 @@ void CloudsFCPParser::refreshAllKeywords(){
     }
 }
 
+void CloudsFCPParser::loadMediaAssets(){
+	string defaultFilePath = GetCloudsDataPath(true) + "media/";
+	if(ofFile::doesFileExist(defaultFilePath)){
+		setCombinedVideoDirectory(defaultFilePath);
+	}
+	else{
+		ofLogError("CloudsFCPParser::loadMediaAssets") << "default directory " << defaultFilePath << " does not exist";
+	}
+}
 void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
 	hasMediaAssetIndeces.clear();
 	hasMediaAssetAndQuestionIndeces.clear();

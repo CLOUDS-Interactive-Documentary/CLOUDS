@@ -2,9 +2,12 @@
 #include "testApp.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
+#include "CloudsSpeaker.h"
+
 #ifdef KINECT_INPUT
 #include "CloudsInputKinectOSC.h"
 #endif
+
 #ifdef OCULUS_RIFT
 #include "CloudsInputOculus.h"
 #endif
@@ -16,14 +19,26 @@ void testApp::setup(){
 	shouldPlayTestVideo = false;
 	ofSetLogLevel(OF_LOG_NOTICE);
     
-	
+	CloudsSpeaker::populateSpeakers();
+
+	parser.loadFromFiles();
+	//parser.loadMediaAssets();
 	rgbd.setup();
+
+	hud.setup();
+#ifdef OCULUS_RIFT
+    // Link the HUD.
+    rgbd.hud = &hud;
+    rgbd.setupHUDGui();
+#endif
+
 	//rgbd.forceScreenResolution(1920*2,1080*2);
 	//rgbd.setDrawToScreen(false);
 	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
-	
-	//ofHideCursor();
+
+	hud.setHudEnabled(true);
+
 
 	type = CloudsVisualSystem::FLY_THROUGH;
 }
@@ -31,9 +46,16 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 	//updateTransitions();
+	hud.update();
 	if(shouldPlayTestVideo){
 		shouldPlayTestVideo = false;
 		rgbd.playTestVideo();
+		CloudsClip* clip = new CloudsClip();
+		clip->person = "Jen";
+		hud.respondToClip(clip);
+		CloudsQuestionEventArgs args(clip, "WHAT'S YOUR QUESTION?", "topic");
+		hud.questionSelected(args);
+
 	}
 }
 
@@ -80,14 +102,15 @@ void testApp::keyReleased(int key){
 	}
 
 	if(key == 'Q'){
-//		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set05");
-//		qtestnodes.allowExt("png");
-//		qtestnodes.listDir();
-//		vector<string> testpaths;
-//		for(int i = 0; i < qtestnodes.numFiles(); i++)
-//			testpaths.push_back(qtestnodes.getPath(i));
-//		rgbd.addFakeQuestion(testpaths);
+		CloudsClip* clip = parser.getRandomClip(false,true);
+		if(clip->hasQuestion()){
+			rgbd.addQuestion(clip, clip->getTopicsWithQuestions()[0], clip->getQuestions()[0] );
+		}
+		else {
+			cout << "clip " << clip->getLinkName() << " does not have a question!" << endl;
+		}
 	}
+
 	if(key == 'm'){
 		ofHideCursor();
 	}

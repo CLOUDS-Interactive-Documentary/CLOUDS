@@ -270,8 +270,13 @@ void CloudsPlaybackController::finishSetup(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::populateRGBDPresets(){
 #ifdef OCULUS_RIFT
-	basePreset = "RGBD_OC_BASE";
-	
+	if(CloudsVisualSystem::getOculusRift().isHD()){
+		basePreset = "RGBD_OC_BASE";
+	}
+	else{
+		basePreset = "RGBD_OC_BASE_SD";
+	}
+
 	backgroundPresets.push_back("RGBD_OC_ACT1");
 	pointcloudPresets.push_back("RGBD_OC_ACT1");
 	
@@ -1312,7 +1317,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip->combinedVideoPath,
 																					clip->combinedCalibrationXMLPath,
 																					GetCloudsDataPath() + "subtitles/"+ clip->getSubtitlesPath(),
-																					toTime, clip->getSpeakerVolume());
+																					1.0, clip->getSpeakerVolume());
 	}
     
 	if(!clipLoadSuccessfullyLoaded){
@@ -1328,7 +1333,7 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
     
 	numClipsPlayed++;
 	
-    //	rgbdVisualSystem->clearQuestions();
+
 	if(clip->getID() != prerolledClipID){
 		prerollClip(clip, 1);
 	}
@@ -1347,8 +1352,16 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showClusterMap(){
-    
-	clusterMap->loadPresetGUISFromName("2DFollowCam");
+#ifdef OCULUS_RIFT
+	if(CloudsVisualSystem::getOculusRift().isHD()){
+		clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD");
+	}
+	else{
+		clusterMap->loadPresetGUISFromName("FollowTraverse_OculusSD");
+	}
+#else
+	clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
+#endif
     clusterMap->playSystem();
 	clusterMap->autoTraversePoints = true;
 	clusterMap->traverse();
@@ -1444,7 +1457,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 	
 	rgbdVisualSystem->playSystem();
 	
-	hud.setHomeEnabled(true);
+	hud.setHomeEnabled(false);
 	
 	currentVisualSystem = rgbdVisualSystem;
 }

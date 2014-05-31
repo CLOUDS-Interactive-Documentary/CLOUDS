@@ -33,19 +33,13 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	clipPrerolled = false;
 
     nextVideoPath = "";
-    nextCalibrationXMLPath = "";
+    nextCalibrationXML = "";
     nextSubtitlesPath = "";
     nextOffsetTime = 0;
     nextClipVolume = 0;
     bLoadResult = false;
-	
-//#ifdef TARGET_OSX
-//	nextPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
-//	currentPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
-//#else
-//	currentPlayer = ofPtr<ofDirectShowPlayer>( new ofDirectShowPlayer() );
-//	nextPlayer = ofPtr<ofDirectShowPlayer>( new ofDirectShowPlayer() );
-//#endif
+	bPlayWhenReady = false;
+
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 	nextPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 
@@ -68,20 +62,29 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
         return false;
     }
 
+	if(!ofFile::doesFileExist(calibrationXMLPath)){
+    	ofLogError("CloudsRGBDVideoPlayer::setup") << "XML path " << calibrationXMLPath << " failed to load";
+		return false;
+	}
+
     if(!bEventRegistered){
 		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
 		bEventRegistered = true;
 	}
     
     nextVideoPath = videoPath;
-    nextCalibrationXMLPath = calibrationXMLPath;
+    nextCalibrationXML = calibrationXMLPath;
     nextSubtitlesPath = subtitlesPath;
     nextOffsetTime = offsetTime;
     nextClipVolume = clipVolume;
 
+	clipPrerolled = true;
+
 #ifdef TARGET_WIN32
     nextPlayer->setUseTexture(false);
-    startThread(false);
+	bLoadResult = false;
+
+    startThread(true);
 
     return true;
 #else
@@ -98,18 +101,17 @@ void CloudsRGBDVideoPlayer::threadedFunction(){
     if(!nextPlayer->loadMovie(nextVideoPath)){
 		ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << nextVideoPath << " failed to load";
         bLoadResult = false;
+		clipPrerolled = false;
         return;
     }
 
 	nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
 
-	nextCalibrationXML = nextCalibrationXMLPath;
 	cout << "prerolled clip " << nextVideoPath << " to time " << nextOffsetTime << endl;
 
     /* Subtitles */
     nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
     
-	clipPrerolled = true;
 	nextClipIsVO = false;
     nextClipVolumeAdjustment = nextClipVolume;
 
@@ -120,6 +122,8 @@ bool CloudsRGBDVideoPlayer::setupVO(string audioPath){
 	
 	if(!nextVoiceoverPlayer->loadSound(audioPath)){
 		ofLogError("CloudsRGBDVideoPlayer::setupVO") << "Audio path " << audioPath << " failed to load";
+		bLoadResult = false;
+		clipPrerolled = false;
 		return false;
 	}
 	
@@ -167,7 +171,7 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 		
 		headPosition = ofVec3f(-XML.getValue("face:x", 0.0),
 							   -XML.getValue("face:y", 0.0),
-							   XML.getValue("face:z", 0.0));
+							    XML.getValue("face:z", 0.0));
 		
 		//cout << "head position " << headPosition << endl;
 		
@@ -238,8 +242,20 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 		colorScale.x = colorWidth / colorRect.width;
 		colorScale.y = float(colorHeight - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
 		useFaces = true;
-		
 	}
+
+	if(clipPrerolled){
+		if(bLoadResult){
+			startPlayer();
+		}
+		else{
+			bPlayWhenReady = true;
+		}
+	}
+}
+
+//--------------------------------------------------------------- ACTIONS
+void CloudsRGBDVideoPlayer::startPlayer(){
 
 	currentVoiceoverPlayer->stop();
 	currentPlayer->stop();
@@ -247,7 +263,6 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 
     nextPlayer->setUseTexture(true);
     
-//    cout<<"Current Max Vol: "<<currentMaxVolume<<endl;
 	swap(currentPlayer,nextPlayer);
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
 #ifdef SHOW_SUBTITLES
@@ -267,7 +282,6 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	clipPrerolled = false;
 
 //	cout << "swapped and played clip " << endl;
-
 }
 
 //--------------------------------------------------------------- ACTIONS
@@ -325,21 +339,11 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 }
 
 //--------------------------------------------------------------- ACTIONS
-//#ifdef TARGET_OSX
-//ofxAVFVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
-//#else
-//ofDirectShowPlayer& CloudsRGBDVideoPlayer::getPlayer(){
-//#endif
 ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 	return *currentPlayer;
 }
 
 ofTexture& CloudsRGBDVideoPlayer::getTextureReference(){
-//#ifdef TARGET_OSX
-//	return getPlayer().getTextureReference();
-//#else
-//	return videoTexture;
-//#endif
 	return getPlayer().getTextureReference();
 }
 
@@ -351,27 +355,20 @@ void CloudsRGBDVideoPlayer::stop(){
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
-	//TODO: Optimize these!
 	if(!playingVO){
 		currentPlayer->update();
-//#ifdef TARGET_WIN32
-//		if(currentPlayer->isFrameNew()){
-//			if(!videoTexture.isAllocated()){
-//				videoTexture.allocate(currentPlayer->getPixelsRef());
-//			}
-//			else{
-//				videoTexture.loadData(currentPlayer->getPixelsRef());
-//			}
-//		}
-//#endif
 	}
 	
 	if(clipPrerolled && !nextClipIsVO){
 		nextPlayer->update();
 	}
 
-    float  audioVolume =  maxVolume * currentClipVolumeAdjustment;
-    // audioVolume = 0; // kludge
+	if(bPlayWhenReady && bLoadResult){
+		startPlayer();
+		bPlayWhenReady = false;
+	}
+
+    float audioVolume =  maxVolume * currentClipVolumeAdjustment;
 
 	if(playingVO){
 		currentVoiceoverPlayer->setVolume(audioVolume);
@@ -469,6 +466,7 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     return false;
 }
 #endif
+
 void CloudsRGBDVideoPlayer::drawSubtitles(int x,int y){
     drawSubtitles();
 }
