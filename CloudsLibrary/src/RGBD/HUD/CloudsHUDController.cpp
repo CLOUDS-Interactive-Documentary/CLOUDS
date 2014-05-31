@@ -629,8 +629,9 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 #ifdef OCULUS_RIFT
 void CloudsHUDController::draw3D(ofCamera* cam, ofVec2f offset){
     
-    if( !bDrawHud )
+    if( !bDrawHud ){
         return;
+	}
     
 	ofPushStyle();
 	ofPushMatrix();

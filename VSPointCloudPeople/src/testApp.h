@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "CloudsVisualSystemRGBD.h"
 #include "CloudsTransitionController.h"
+#include "CloudsHUDController.h"
+#include "CloudsFCPParser.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -22,6 +24,9 @@ class testApp : public ofBaseApp{
 	void exit();
 	
 	void updateTransitions();
+	
+	CloudsHUDController hud;
+	CloudsFCPParser parser;
 
 	bool shouldPlayTestVideo;
 	CloudsVisualSystemRGBD rgbd;

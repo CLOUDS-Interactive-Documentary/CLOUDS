@@ -2,9 +2,12 @@
 #include "testApp.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
+#include "CloudsSpeaker.h"
+
 #ifdef KINECT_INPUT
 #include "CloudsInputKinectOSC.h"
 #endif
+
 #ifdef OCULUS_RIFT
 #include "CloudsInputOculus.h"
 #endif
@@ -16,14 +19,26 @@ void testApp::setup(){
 	shouldPlayTestVideo = false;
 	ofSetLogLevel(OF_LOG_NOTICE);
     
-	
+	CloudsSpeaker::populateSpeakers();
+
+	//parser.loadFromFiles();
+	//parser.loadMediaAssets();
 	rgbd.setup();
+
+	hud.setup();
+#ifdef OCULUS_RIFT
+    // Link the HUD.
+    rgbd.hud = &hud;
+    rgbd.setupHUDGui();
+#endif
+
 	//rgbd.forceScreenResolution(1920*2,1080*2);
 	//rgbd.setDrawToScreen(false);
 	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
-	
-	//ofHideCursor();
+
+	hud.setHudEnabled(true);
+
 
 	type = CloudsVisualSystem::FLY_THROUGH;
 }
@@ -31,9 +46,19 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 	//updateTransitions();
+	hud.update();
 	if(shouldPlayTestVideo){
 		shouldPlayTestVideo = false;
 		rgbd.playTestVideo();
+		CloudsClip* clip = new CloudsClip();
+		clip->person = "Jen";
+		hud.respondToClip(clip);
+		CloudsQuestionEventArgs args(clip, "WHAT'S YOUR QUESTION?", "topic");
+		hud.questionSelected(args);
+
+		//CloudsClip* clip = parser.getRandomClip(true);
+		//rgbd.playTestVideo(clip);
+		//hud.respondToClip(clip);
 	}
 }
 

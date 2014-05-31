@@ -157,6 +157,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void StopEditTransitionMode();
     //////////TRANSITIONS
     
+	void playTestVideo(CloudsClip* clip);
 	void playTestVideo();
     
     static CloudsVisualSystemEvents events;

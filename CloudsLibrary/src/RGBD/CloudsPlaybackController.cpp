@@ -1444,7 +1444,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 	
 	rgbdVisualSystem->playSystem();
 	
-	hud.setHomeEnabled(true);
+	hud.setHomeEnabled(false);
 	
 	currentVisualSystem = rgbdVisualSystem;
 }

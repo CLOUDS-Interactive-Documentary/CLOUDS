@@ -40,7 +40,8 @@ public:
     float nextOffsetTime;
     float nextClipVolume;
     bool bLoadResult;
-	
+	bool bPlayWhenReady;
+
 	void setupProjectionUniforms(ofShader& shader);
     
 	//  CYCLE
@@ -58,11 +59,6 @@ public:
 		return fadeOutValue;
 	};
 
-//#ifdef TARGET_OSX
-//	ofxAVFVideoPlayer& getPlayer();
-//#else
-//	ofDirectShowPlayer& getPlayer();
-//#endif
 	ofVideoPlayer& getPlayer();
 	ofTexture& getTextureReference();
 
@@ -101,22 +97,14 @@ public:
 	bool bEventRegistered;
     void update(ofEventArgs& args);
 	
-//#ifdef TARGET_OSX
-//	ofPtr<ofxAVFVideoPlayer> currentPlayer;
-//	ofPtr<ofxAVFVideoPlayer> nextPlayer;
-//#else
-//	ofPtr<ofDirectShowPlayer> currentPlayer;
-//	ofPtr<ofDirectShowPlayer> nextPlayer;
-//	ofTexture videoTexture;
-//#endif
+	void startPlayer(); //
+
 	ofPtr<ofVideoPlayer> currentPlayer;
 	ofPtr<ofVideoPlayer> nextPlayer;
 
 	ofPtr<ofSoundPlayer> currentVoiceoverPlayer;
 	ofPtr<ofSoundPlayer> nextVoiceoverPlayer;
 	bool nextClipIsVO;
-
-
 	
     //  RGB
     //
@@ -154,10 +142,6 @@ public:
 	bool useFaces;
 	
 	bool clipPrerolled;
-	
-//    bool bRendererBound;
-//    bool bMeshGenerated;
-	
 	
 	float fadeInValue;
 	float fadeOutValue;
