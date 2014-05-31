@@ -106,7 +106,7 @@ void VoxelMesh::draw(){
 	ofPushMatrix();
 	ofPushStyle();
 	ofTranslate(center);
-	
+	ofSetLineWidth(1);
 	glDisable(GL_DEPTH_TEST);
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	

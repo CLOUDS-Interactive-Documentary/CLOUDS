@@ -127,7 +127,7 @@ void CloudsRGBDCamera::setPositionFromMouse(){
 	targetPosition = position;
 	currentPosition += (targetPosition - currentPosition) * damp;
 	
-	currentLookTarget = lookTarget - ofVec3f(0,dropAmount,0);
+	currentLookTarget = lookTarget - ofVec3f(0,dropAmount,-sidePullback);
 	
 	//calculate drift;
 	//ofVec3f driftOffset(0,0,0);
