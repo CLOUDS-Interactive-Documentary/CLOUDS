@@ -333,9 +333,9 @@ void CloudsVisualSystemWormHole::loadMesh(string name)
 		currentMeshName = name;
 		
 		mesh.clear();
-		
-		ofxObjLoader::load( modelPath + name, mesh, false );
-		
+
+		ofxBinaryMesh::load( modelPath + name, mesh );
+				
 		cout << name + " loaded in " << ofGetElapsedTimeMillis() - startTime << " milliseconds" << endl;
 	}
 }
@@ -425,7 +425,7 @@ void CloudsVisualSystemWormHole::selfSetup()
 	tonicSamples.push_back(TonicSample("wormholeZoom2.aif"));
 	tonicSamples.push_back(TonicSample("slowgrains_short.aif"));
 	//meshes
-	modelPath = getVisualSystemDataPath(true) + "models/";
+	modelPath = getVisualSystemDataPath(true) + "models_binary/";
 	cameraPathPath = getVisualSystemDataPath() + "cameraPaths/";
 	
 	cout << modelPath << endl;
@@ -433,7 +433,7 @@ void CloudsVisualSystemWormHole::selfSetup()
 	
 
 	ofDirectory dir;
-	dir.allowExt("obj");
+	dir.allowExt("obm");
 	dir.listDir( modelPath );
 	for(int i = 0; i < dir.numFiles(); i++){
 		meshNames.push_back( dir.getName(i) );

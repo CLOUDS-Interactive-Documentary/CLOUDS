@@ -14,8 +14,7 @@
 #include "CloudsGlobal.h"
 #include "ofxSimpleSpline.h"
 #include "CloudsPathCamera.h"
-#include "ofxObjLoader.h"
-#include "glm.h"
+#include "ofxBinaryMesh.h"
 
 #include "CloudsGlobal.h"
 #include "CloudsAudioEvents.h"
