@@ -13,6 +13,14 @@
     <SliderCurves>
         <Mapping>
             <Widget>
+                <WidgetName>Perlin Amplitude</WidgetName>
+                <WidgetID>9</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
                 <WidgetName>Max Point Size</WidgetName>
                 <WidgetID>3</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
@@ -31,14 +39,6 @@
             <Widget>
                 <WidgetName>Max Distance</WidgetName>
                 <WidgetID>7</WidgetID>
-                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>Perlin Amplitude</WidgetName>
-                <WidgetID>9</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

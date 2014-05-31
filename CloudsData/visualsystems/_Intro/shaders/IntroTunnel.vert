@@ -149,7 +149,7 @@ void main(void)
 							 //snoise(vec4(gl_Vertex.zxy / noiseDensity, noisePosition)));
 
 	float zPush = sign(mod(cameraZ,tunnelDepth) - gl_Vertex.z) * .5 + .5;
-	float wrapOffset = (floor(cameraZ / tunnelDepth) + zPush) * tunnelDepth;
+	float wrapOffset = (floor(cameraZ / tunnelDepth) + zPush) * tunnelDepth - tunnelDepth*.5;
 	float newZ = wrapOffset + gl_Vertex.z;
 	vec4 pos = vec4(vec3(gl_Vertex.xy,newZ) + noiseDistort * noiseAmplitude, 1.0);
 	//vec4 pos = vec4(gl_Vertex.xyz + noiseDistort * noiseAmplitude, 1.0);

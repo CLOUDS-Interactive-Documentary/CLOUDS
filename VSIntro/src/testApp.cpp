@@ -50,8 +50,7 @@ void testApp::setup(){
 #else
 	intro.loadPresetGUISFromName("TunnelWarp");
 #endif
-//	intro.loadPresetGUISFromName("Working");
-	intro.setNumSamples(4);
+
 	intro.setDrawToScreen(false);
 	intro.playSystem();
 	//////////////SHOW INTRO
