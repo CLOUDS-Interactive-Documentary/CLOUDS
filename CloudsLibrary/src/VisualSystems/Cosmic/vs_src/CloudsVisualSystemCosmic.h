@@ -17,6 +17,8 @@
 //TODO: rename this to your own visual system
 class CloudsVisualSystemCosmic : public CloudsVisualSystem {
   public:
+	CloudsVisualSystemCosmic();
+
     string getSystemName(){
 		return "Cosmic";
 	}
@@ -44,14 +46,6 @@ class CloudsVisualSystemCosmic : public CloudsVisualSystem {
     void selfSetDefaults();
     
     void selfKeyPressed(ofKeyEventArgs & args);
-//
-//	ofCamera& getCameraRef(){
-//		return cloudsCamera;
-//	}
-    
-//    ofCamera& getCameraRef(){
-//		return cam;
-//	}
 
     int ID(int x, int y); 
     void setupFboViewerGui(string name, ofFbo *fbo);

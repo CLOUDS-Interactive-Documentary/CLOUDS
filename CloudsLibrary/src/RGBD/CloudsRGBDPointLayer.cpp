@@ -14,8 +14,6 @@ CloudsRGBDPointLayer::CloudsRGBDPointLayer(){
     setDefaults();
     
     pointShader = NULL;
-    visualSystemFadeValue = NULL;
-
 }
 
 CloudsRGBDPointLayer::~CloudsRGBDPointLayer(){
@@ -184,11 +182,7 @@ void CloudsRGBDPointLayer::draw(){
     pointShader->setUniform1f("pointSizeMin", pointSize.min);
     pointShader->setUniform1f("pointSizeMax", pointSize.max);
     
-    pointShader->setUniform1f("alpha",
-                             pointAlpha *
-                             CloudsVisualSystem::getRGBDVideoPlayer().getFadeIn() *
-                             CloudsVisualSystem::getRGBDVideoPlayer().getFadeOut() *
-                             *visualSystemFadeValue);
+    pointShader->setUniform1f("alpha", pointAlpha * visualSystemFadeValue);
 
     pointShader->setUniform3f("actuatorDirection",
                              actuator.x,

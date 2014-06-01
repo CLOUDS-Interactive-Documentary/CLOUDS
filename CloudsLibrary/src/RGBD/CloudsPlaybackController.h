@@ -150,7 +150,8 @@ class CloudsPlaybackController : public ofThread {
 	float crossfadeValue;
 	string combinedMoviesFolder;
 	void drawDebugOverlay();
-	
+	void clearRenderTarget();
+
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
 	bool returnToIntro;

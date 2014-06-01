@@ -9,6 +9,7 @@ CloudsVisualSystemEvents CloudsVisualSystemRGBD::events;
 CloudsVisualSystemRGBD::CloudsVisualSystemRGBD(){
 
 	visualSystemFadeValue = 0.0;
+	questionSelectFade = 0.0;
     questionToReplace = 0;	
 	transitionTarget = NULL;
 	bTransitionIn = bTransitionOut = false;
@@ -229,10 +230,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	cout << "*** LOADING POINT LAYERS" << endl;
     pointLayer1.pointShader = &pointShader;
     pointLayer2.pointShader = &pointShader;
-    pointLayer1.visualSystemFadeValue = &visualSystemFadeValue;
-    pointLayer2.visualSystemFadeValue = &visualSystemFadeValue;
-    
-
 
 	cout << "*** LOAD GENERATE LINES" << endl;
 	generateLines();
@@ -682,7 +679,12 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 //    else {
 //        drawCursorMode =  DRAW_CURSOR_NONE;
 //    }
-  
+	float curQuestionSelectFade = (caughtPortal == NULL ? 1.0 : powf(ofMap(caughtPortal->hoverPercentComplete, 
+																		0.0, .2, 1.0, 0.0, true), 2.0));
+	questionSelectFade += (curQuestionSelectFade - questionSelectFade) * .1;
+
+	pointLayer1.visualSystemFadeValue = getRGBDTransitionValue();
+    pointLayer2.visualSystemFadeValue = getRGBDTransitionValue();
     pointLayer1.update();
     pointLayer2.update();
     
@@ -1772,22 +1774,14 @@ void CloudsVisualSystemRGBD::selfDraw(){
             
 			meshShader.setUniform1f("meshAlpha", fillAlpha);
 			meshShader.setUniform1f("triangleExtend",
-                                    getRGBDVideoPlayer().getFadeIn()  *
-                                    getRGBDVideoPlayer().getFadeOut() *
-                                    visualSystemFadeValue);
+                                    getRGBDTransitionValue());
             
 			meshShader.setUniform1f("meshRetractionFalloff",fillRetractionFalloff);
 			meshShader.setUniform1f("headMinRadius", fillFaceMinRadius);
 			meshShader.setUniform1f("headFalloff", fillFaceFalloff);
 			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
 			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
-			meshShader.setUniform1f("forceGeoRetraction",0.0);
-            
-//			meshShader.setUniform3f("actuatorDirection",
-//                                    meshActuator.x,
-//                                    meshActuator.y,
-//                                    meshActuator.z);
-            
+			meshShader.setUniform1f("forceGeoRetraction",0.0);            
 			meshShader.setUniform1f("colorBoost", meshColorBoost);
 			meshShader.setUniform1f("skinBoost", meshSkinBoost);
 			meshShader.setUniform1f("maxActuatorRetract", 1.0);
@@ -1816,9 +1810,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		
 			meshShader.setUniform1f("meshAlpha", meshAlpha);
 			meshShader.setUniform1f("triangleExtend",
-                                    getRGBDVideoPlayer().getFadeIn()  *
-                                    getRGBDVideoPlayer().getFadeOut() *
-                                    visualSystemFadeValue);
+										getRGBDTransitionValue());
             
 			meshShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
 			meshShader.setUniform1f("headMinRadius", meshFaceMinRadius);
@@ -1862,10 +1854,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
             
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
 			
-			lineShader.setUniform1f("lineExtend",
-                                    getRGBDVideoPlayer().getFadeIn() *
-                                    getRGBDVideoPlayer().getFadeOut() *
-                                    visualSystemFadeValue);
+			lineShader.setUniform1f("lineExtend", getRGBDTransitionValue());
             lineShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			lineShader.setUniform1f("headFalloff", meshFaceFalloff);
 			lineShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
@@ -1953,6 +1942,13 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	drawQuestions();
 }
 
+float CloudsVisualSystemRGBD::getRGBDTransitionValue(){
+
+	return getRGBDVideoPlayer().getFadeIn()  *
+           getRGBDVideoPlayer().getFadeOut() *
+		   visualSystemFadeValue * questionSelectFade;
+}
+
 void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     
     glPushMatrix();
@@ -1970,10 +1966,7 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     
     getRGBDVideoPlayer().setupProjectionUniforms(occlusionShader);
     
-    occlusionShader.setUniform1f("triangleExtend",
-                                 getRGBDVideoPlayer().getFadeIn()  *
-                                 getRGBDVideoPlayer().getFadeOut() *
-                                 visualSystemFadeValue);
+    occlusionShader.setUniform1f("triangleExtend", getRGBDTransitionValue());
     occlusionShader.setUniform1f("meshRetractionFalloff",occlusionMeshRetractionFalloff);
     occlusionShader.setUniform1f("headMinRadius", occlusionMeshFaceMinRadius);
     occlusionShader.setUniform1f("headFalloff", occlusionMeshFaceFalloff);

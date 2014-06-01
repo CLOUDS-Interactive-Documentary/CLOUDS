@@ -801,6 +801,8 @@ void CloudsPlaybackController::updateTransition(){
                     selectedQuestionClip = selectedQuestion->clip;
                     
                     showingVisualSystem = false;
+					clearRenderTarget();
+
                     shouldPlayClusterMap = true;
 					
                     introSequence->stopSystem();
@@ -815,6 +817,7 @@ void CloudsPlaybackController::updateTransition(){
 
 					showingVisualSystem = false;
 					clusterMap->stopSystem();
+					clearRenderTarget();
 					
 					break;
 				}
@@ -872,15 +875,9 @@ void CloudsPlaybackController::updateTransition(){
         }
 
 		if(transitionController.fadedOut()){
-			CloudsVisualSystem::getStaticRenderTarget().begin();
-			ofClear(0,0,0);
-			CloudsVisualSystem::getStaticRenderTarget().end();
+			clearRenderTarget();
 		}
 	}
-    
-//    if(abs(crossfadeValue - transitionController.getFadeValue()) > .5){
-//        ofLogError("TRANSITION JUMP");
-//    }
     
     crossfadeValue = transitionController.getFadeValue();
 
@@ -894,8 +891,14 @@ void CloudsPlaybackController::updateTransition(){
     
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
-	}
-    
+	}   
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::clearRenderTarget(){
+	CloudsVisualSystem::getStaticRenderTarget().begin();
+	ofClear(0,0,0);
+	CloudsVisualSystem::getStaticRenderTarget().end();
 }
 
 //--------------------------------------------------------------------
@@ -1423,7 +1426,8 @@ void CloudsPlaybackController::showInterlude(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::cleanupInterlude(){
     showingVisualSystem = false;
-    
+	clearRenderTarget();
+
     if(currentVisualSystem == clusterMap) {
         clusterMap->stopSystem();
     }

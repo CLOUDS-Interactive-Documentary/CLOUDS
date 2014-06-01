@@ -97,7 +97,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     string getQuestionText();
     ////////QUESTIONS
 
+	float getRGBDTransitionValue();
 	float visualSystemFadeValue;
+	float questionSelectFade;
     int questionToReplace;
     
 	ofCamera& getCameraRef(){
@@ -297,11 +299,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	CloudsPortal rightPortal;
 	CloudsPortal* portalToClear; //clears when started
 	string questionText;
-	
-	//Oculus reset portal
-//	CloudsPortal resetPortal;
-//	ofVec3f resetHoverPosition;
-//	void updateResetPortal();
+
 	
 	ofxFTGLFont questionFont;
 	int questionFontSize;

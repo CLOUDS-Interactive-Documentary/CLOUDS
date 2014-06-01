@@ -372,7 +372,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		currentPlayer->update();
 	}
 	
-	if(clipPrerolled && !nextClipIsVO){
+	if(bLoadResult && clipPrerolled && !nextClipIsVO){
 		nextPlayer->update();
 	}
 

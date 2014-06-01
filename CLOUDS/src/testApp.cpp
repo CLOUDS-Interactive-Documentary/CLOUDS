@@ -9,6 +9,10 @@ void testApp::setup(){
 	ofBackground(0);
 	ofToggleFullscreen();
 
+#ifdef CLOUDS_RELEASE
+	ofHideCursor();
+#endif
+
 	firstFrame = true;
 	playerSetup = false;
 	shouldSetupPlayer = false;
