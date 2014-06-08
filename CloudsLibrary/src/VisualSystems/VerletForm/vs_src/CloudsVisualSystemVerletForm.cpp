@@ -975,11 +975,11 @@ void CloudsVisualSystemVerletForm::mwGridSticky() {
 
 	if(gridType==GRIDRECT) {
 		int corners[] = {
-				ofRandom(gridSize/2),
-				gridSize-1-ofRandom(gridSize/2),
-			pp.size()/2-ofRandom(-gridSize/2,gridSize/2),
-			pp.size()-1-ofRandom(gridSize/2),
-			pp.size()-(gridSize)+ofRandom(gridSize/2)};
+				static_cast<int>(ofRandom(gridSize/2)),
+				static_cast<int>(gridSize-1-ofRandom(gridSize/2)),
+				static_cast<int>(pp.size()/2-ofRandom(-gridSize/2,gridSize/2)),
+				static_cast<int>(pp.size()-1-ofRandom(gridSize/2)),
+				static_cast<int>(pp.size()-(gridSize)+ofRandom(gridSize/2))};
 
 		for(int i=4; i>-1; i--) if(ofRandom(100)>60) {
 			MWParticle &pt=pp[corners[i]];

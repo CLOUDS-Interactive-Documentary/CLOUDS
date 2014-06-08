@@ -32,7 +32,7 @@
 #pragma once
 
 #include "ofxAssimpModelLoader.h"
-#ifdef TARGET_WIN32
+#if (_MSC_VER || _LIBCPP_VERSION)
 #include <memory>
 #else
 #include <tr1/memory>
@@ -41,8 +41,10 @@
 
 namespace itg
 {
+	#if (_MSC_VER || _LIBCPP_VERSION)
+	#else
     using namespace tr1;
-    
+	#endif
     struct ModelParams
     {
         unsigned modelIdx;

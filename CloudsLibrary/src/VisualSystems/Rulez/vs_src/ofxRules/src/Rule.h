@@ -32,7 +32,9 @@
 #pragma once
 
 #include "ofMain.h"
-#ifdef TARGET_OSX
+#if (_MSC_VER || _LIBCPP_VERSION)
+#include <memory>
+#else
 #include <tr1/memory>
 #endif
 #include "Action.h"
@@ -40,8 +42,10 @@
 
 namespace itg
 {
+	#if (_MSC_VER || _LIBCPP_VERSION)
+	#else
     using namespace tr1;
-    
+	#endif
     class Rule
     {
     public:

@@ -209,8 +209,9 @@ void CloudsVisualSystemFlying::selfUpdate()
     
     const float maxPlantDist = growDist * 5.f;
     const float maxPlantDistSq = maxPlantDist * maxPlantDist;
-    
-    for (auto& it = plants.begin(); it != plants.end();)
+  
+	list<Plant>::iterator it;
+    for (it = plants.begin(); it != plants.end(); it++)
     {
         if ((it->pos - floorLookAt).lengthSquared() > maxPlantDistSq) {
 			it = plants.erase(it);

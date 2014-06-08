@@ -51,7 +51,7 @@ void testApp::keyPressed(int key){
 	if(key == 'L'){
 #ifdef OCULUS_RIFT
 		ofPixels p;
-		CloudsVisualSystem::getOculusRift().getRenderTarget().readToPixels(p);
+//		CloudsVisualSystem::getOculusRift().getRenderTarget().readToPixels(p);
 		ofSaveImage(p,"OCULUS_BG.png");
 #endif
 	}

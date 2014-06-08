@@ -1161,7 +1161,7 @@ float CloudsStoryEngine::scoreForTopic(CloudsStoryState& state, string potential
         return 0;
     }
     
-    if(ofContains(state.topicHistory, potentialNextTopic) && !state.topicNum == maxTopicsPerAct-1){
+    if(ofContains(state.topicHistory, potentialNextTopic) && state.topicNum != maxTopicsPerAct-1){
 		if(bLogTopicDetails)state.log << state.duration << "\t\t\t\t\tREJECTED Topic " << potentialNextTopic << " has already been explored" << endl;
         return 0;
     }

@@ -32,7 +32,7 @@
 #pragma once
 #include "ofxXmlSettings.h"
 #include "Branch.h"
-#ifdef TARGET_WIN32
+#if (_MSC_VER || _LIBCPP_VERSION)
 #include <memory.h>
 #else
 #include <tr1/memory>
@@ -40,7 +40,10 @@
 
 namespace itg
 {
+#if (_MSC_VER || _LIBCPP_VERSION)
+#else
     using namespace tr1;
+#endif
     
     class Action
     {

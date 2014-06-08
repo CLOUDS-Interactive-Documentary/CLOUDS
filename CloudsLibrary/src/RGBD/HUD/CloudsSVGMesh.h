@@ -43,6 +43,7 @@ class CloudsSVGMesh
   protected:
 	//void recurseSVGTag(ofxXmlSettings& xml, const string& parentId, float parentOpacity);
 	void recurseSVGTag(ofxXmlSettings& xml, const string& parentId, float parentOpacity);
+	string strrephack(string input, string searchStr, string replaceStr);
 	
 	vector<SVGMesh> meshes;
 	map<string,int> meshIdIndex;

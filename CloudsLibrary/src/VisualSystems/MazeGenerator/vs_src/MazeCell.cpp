@@ -24,7 +24,7 @@ MazeCell::MazeCell(int _x, int _y, float s, float t, float h)
     visible = true;
 }
 
-size_t MazeCell::addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals, vector<ofVec2f> &uvs)
+unsigned long long MazeCell::addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals, vector<ofVec2f> &uvs)
 {
     ofVec3f wallPoints[] = {
         // north wall bottom

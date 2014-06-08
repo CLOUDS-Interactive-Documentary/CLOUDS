@@ -41,7 +41,7 @@ typedef struct {
 } polyPtr;
 
 
-typedef struct lineSet{
+typedef struct lineSet {
     
     vector < ofPolyline > lines;
     vector < ofPolyline > normalizeLines;
@@ -55,8 +55,8 @@ typedef struct lineSet{
         return distance < input.distance;
     }
     
-    
-} ;
+};
+
 
 
 bool sortFunc(const distanceResult & a, const distanceResult & b);

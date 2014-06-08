@@ -38,8 +38,10 @@ namespace itg
     namespace mesh
     {
         using namespace std;
+#if (_MSC_VER || _LIBCPP_VERSION)
+#else
         using namespace tr1;
-        
+#endif
         class CircularFormula
         {
         public:

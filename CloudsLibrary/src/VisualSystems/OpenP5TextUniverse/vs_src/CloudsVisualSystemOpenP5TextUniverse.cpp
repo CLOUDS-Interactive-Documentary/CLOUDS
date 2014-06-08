@@ -407,7 +407,6 @@ void CloudsVisualSystemOpenP5TextUniverse::selfUpdate()
     
 #ifdef OCULUS_RIFT
     // TODO: Get Oculus orientation and fuck with oculusDir vector.
-    
     oculusSpinX += oculusDir.x * oculusSpeed;
     oculusSpinY += oculusDir.y * oculusSpeed;
 #else
@@ -430,7 +429,9 @@ void CloudsVisualSystemOpenP5TextUniverse::selfDraw()
     //	float FogCol[3]={0.8f,0.8f,0.8f}; // Define a nice light grey
     //	glFogfv(GL_FOG_COLOR, FogCol);     // Set the fog color
 	glFogf(GL_FOG_DENSITY, powf(fogDensity, 2));
-    GLfloat fogColor[4] = { bgColor.r / 255.,bgColor.g / 255.,bgColor.b / 255., 1.0 };
+    GLfloat fogColor[4] = { (GLfloat)(bgColor.r / 255.),
+							(GLfloat)(bgColor.g / 255.),
+							(GLfloat)(bgColor.b / 255.), (GLfloat)1.0f };
     glFogfv(GL_FOG_COLOR, fogColor);
     ofEnableDepthTest();
     ofEnableAlphaBlending();

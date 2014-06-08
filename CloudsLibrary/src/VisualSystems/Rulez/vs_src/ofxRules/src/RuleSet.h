@@ -33,7 +33,7 @@
 
 #include "ofMain.h"
 #include "Rule.h"
-#ifdef TARGET_WIN32
+#if (_MSC_VER || _LIBCPP_VERSION)
 #include <memory>
 #else
 #include <tr1/memory>
@@ -41,8 +41,10 @@
 
 namespace itg
 {
-    using namespace tr1;
-    
+	#if (_MSC_VER || _LIBCPP_VERSION)
+	#else
+	    using namespace tr1;
+	#endif
     class RuleSet
     {
     public:

@@ -14,9 +14,7 @@
 #include "ofxSystemTextbox.h"
 #endif
 
-#ifdef AVF_PLAYER
-#include "ofxAVFVideoPlayer.h"
-#endif
+
 
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;

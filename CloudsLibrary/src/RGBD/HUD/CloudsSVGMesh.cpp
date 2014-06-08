@@ -8,10 +8,6 @@
 
 #include "CloudsSVGMesh.h"
 
-string strrephack(string& input, const string& searchStr, const string& replaceStr){
-	ofStringReplace(input, searchStr, replaceStr);
-	return input;
-}
 
 //constructor
 CloudsSVGMesh::CloudsSVGMesh(){
@@ -26,6 +22,11 @@ bool CloudsSVGMesh::loadDirectory(string file){
 		load(dir.getPath(i));
 	}
 	return true;
+}
+
+string CloudsSVGMesh::strrephack(string input, string searchStr, string replaceStr){
+	ofStringReplace(input, searchStr, replaceStr);
+	return input;
 }
 
 bool CloudsSVGMesh::load(string file){
