@@ -16,7 +16,8 @@ string CloudsVisualSystemRGBD::getSystemName(){
 
 void CloudsVisualSystemRGBD::selfSetDefaults(){
 	visualSystemFadeValue = 1.0;
-
+	portalToClear = NULL;
+	
 	drawRGBD = true;
 	
 	transitionOutOption = OutLeft;
@@ -493,6 +494,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	backgroundMeshGui->addToggle("draw points", &voxelMesh.drawPoints);
 	backgroundMeshGui->addToggle("draw lines", &voxelMesh.drawLines);
+	backgroundMeshGui->addSlider("point size", 1.0, 4.0, &voxelMesh.pointSize);
+	backgroundMeshGui->addSlider("line width", 1.0, 4.0, &voxelMesh.lineWidth);
 	
 	backgroundMeshGui->addIntSlider("num voxels", 10, 100, &voxelMesh.numVoxels);
 	backgroundMeshGui->addSlider("voxel spacing", 10, 100, &voxelMesh.voxelWidth);
@@ -611,9 +614,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 
 	updateActuators();
 	updateQuestions();
-#ifdef OCULUS_RIFT
-//	updateResetPortal();
-#endif
+	
 	if( placingTransitionNodes )
 	{
 		#ifdef HAS_GAMECAM
@@ -1037,6 +1038,14 @@ void CloudsVisualSystemRGBD::loadPointcloudGUISFromName(string presetName){
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic, string question){
     
 
+//#ifdef CLOUDS_SCREENING
+//	QuestionQueue q;
+//	q.clip  = questionClip;
+//	q.topic = topic;
+//	q.question = question;
+//	questions.push_back(q);
+//	cout << "ADDING QUESTIONS. SIZE IS NOW " << questions.size() << endl;
+//#else
     //////////////QUEUE WAY
     CloudsPortal* testportal = NULL;
     if(leftPortal.question == ""){
@@ -1058,6 +1067,8 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic,
         q.question = question;
         questions.push_back(q);
     }
+//#endif
+	
     //////////////QUEUE WAY
     
     /////////////////////OLD WAY
@@ -1145,6 +1156,9 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 				ofNotifyEvent(events.portalHoverBegan, args);
 				CloudsVisualSystem::getSelectLow()->setPosition(0);
 				CloudsVisualSystem::getSelectLow()->play();
+				#ifdef CLOUDS_SCREENING
+				portalToClear = selectedPortal;
+				#endif
 			}
 			//let it go
 			else if(distanceToQuestion > portalTugDistance.max){
@@ -1153,7 +1167,6 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 //                caughtPortal->question = "";
                 /////NEW QUESTION WAY
 				caughtPortal = NULL;
-                
 //                CloudsPortalEventArgs args(*portals[i], getQuestionText());
 				//JG QUESTION SWITCH TEXT
 //                CloudsPortalEventArgs args(getQuestionText());
@@ -1178,13 +1191,16 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 }
 
 void CloudsVisualSystemRGBD::clearQuestions(){
+	
+#ifndef CLOUDS_SCREENING
 	rightPortal.question = "";
 	leftPortal.question = "";
-    
     questions.clear();
+#endif
     
     leftPortal.clearSelection();
     rightPortal.clearSelection();
+	
     selectedPortal = NULL;
     caughtPortal = NULL;
 }
@@ -1543,6 +1559,20 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 	}
 	
 	//clearQuestions();
+	if(portalToClear != NULL){
+		if(questions.size() != 0){
+			portalToClear->clip = questions[0].clip;
+			portalToClear->topic = questions[0].topic;
+			portalToClear->question = questions[0].question;
+			questions.erase( questions.begin() );
+			cout << "******ERASING QUESTIONS. SIZE IS NOE " << questions.size() << endl;
+		}
+        else{
+			portalToClear->topic = "";
+			portalToClear->question = "";
+        }
+		portalToClear = NULL;
+	}
 	
 	assignAvailableQuestion(leftPortal);
 	assignAvailableQuestion(rightPortal);
@@ -1555,13 +1585,17 @@ void CloudsVisualSystemRGBD::assignAvailableQuestion(CloudsPortal& portal){
 		return;
 	}
 	
+#ifndef CLOUDS_SCREENING
+//#else
 	if(&portal != caughtPortal && &portal != selectedPortal){
 		portal.clip = questions.back().clip;
 		portal.topic = questions.back().topic;
 		portal.question = questions.back().question;
 	}
-	
 	questions.pop_back();
+#endif
+	
+
 	
 	/////NEW QUESTION WAY
 }

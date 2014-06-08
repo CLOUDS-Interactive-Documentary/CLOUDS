@@ -232,7 +232,7 @@ void CloudsVisualSystemFlying::selfDraw()
     // icosphere seems to be wound backwards :(
     // glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
-    
+    ofDisableAlphaBlending();
     // DEBUG
     if (drawPlantPosns)
     {
@@ -305,6 +305,7 @@ void CloudsVisualSystemFlying::selfPostDraw()
 {
     glPushAttrib(GL_ENABLE_BIT);
     glDisable(GL_DEPTH_TEST);
+	ofDisableAlphaBlending();
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());

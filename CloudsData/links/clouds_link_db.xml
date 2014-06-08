@@ -40572,7 +40572,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>link:julian - shapes the way we think</revokedKeywords>
-    <additionalKeywords>?new aesthetic: What is the new aesthetic?,#tech,#hard,#conclusion,#start,#question</additionalKeywords>
+    <additionalKeywords>#question,#conclusion,#hard,#tech,?new aesthetic: What is the new aesthetic?</additionalKeywords>
 </clip>
 <clip>
     <name>Martin - Revelation</name>
@@ -43599,7 +43599,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>life and code</revokedKeywords>
-    <additionalKeywords>biology and code,#mindblowing,#logical,#hard,#start,?biology and code: What is the code of life?,#question</additionalKeywords>
+    <additionalKeywords>biology and code,#question,?biology and code: What is the code of life?,#hard,#logical,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - Design process</name>
@@ -58254,7 +58254,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>cosmogeny,god mode,simulation,?simulation: Is it possible to truly simulate reality?,#start,#oculus,#question</additionalKeywords>
+    <additionalKeywords>cosmogeny,god mode,simulation,#question,#oculus,?simulation: Is it possible to truly simulate reality?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - BuildingWorlds</name>
@@ -58268,7 +58268,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>cosmogeny,simulation,?cosmogeny: How do you create a digital universe?,#start,#gold,#mindblowing,#question</additionalKeywords>
+    <additionalKeywords>cosmogeny,simulation,#question,#mindblowing,#gold,?cosmogeny: How do you create a digital universe?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - CodingSketching</name>
@@ -58307,7 +58307,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>coding,sketching,self expression,creative coding,processing,?sketching: How do you sketch with code?,#start,drawing,#question</additionalKeywords>
+    <additionalKeywords>coding,sketching,self expression,creative coding,processing,drawing,#question,#start,?sketching: How do you sketch with code?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Collaboration</name>
@@ -58401,7 +58401,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?community: How does the network accelerate creativity?,#start,collaboration,sharing,community,#question</additionalKeywords>
+    <additionalKeywords>collaboration,sharing,community,#question,?community: How does the network accelerate creativity?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Computers</name>
@@ -58503,7 +58503,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>interfaces,technology,devices,ubiquitous computing,experience,seamlessness,sensor,?interfaces:What&apos;s the ultimate interface?,#start,#question</additionalKeywords>
+    <additionalKeywords>interfaces,technology,devices,ubiquitous computing,experience,seamlessness,sensor,#question,?interfaces:What&apos;s the ultimate interface?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - KinectFutureCamera</name>
@@ -58521,7 +58521,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>learning,#start,?programming: What does it feel like to program?,programming,#question</additionalKeywords>
+    <additionalKeywords>learning,programming,#question,?programming: What does it feel like to program?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - LogicOfPixels</name>
@@ -58540,7 +58540,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>thinking through code,coding,software,logic,computation,?coding: How can the logic of coding be creative?,#start,#question</additionalKeywords>
+    <additionalKeywords>thinking through code,coding,software,logic,computation,#question,?coding: How can the logic of coding be creative?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Programming</name>
@@ -58564,7 +58564,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>programming,addiction,coding,hackers,?programming: Is programming a waste of time?,#start,#question</additionalKeywords>
+    <additionalKeywords>programming,addiction,coding,hackers,#question,?programming: Is programming a waste of time?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Sharing</name>
@@ -58588,7 +58588,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?open source: What is open source all about?,#start,sharing,community,#question</additionalKeywords>
+    <additionalKeywords>sharing,community,#question,?open source: What is open source all about?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Toolmaker</name>
@@ -58631,7 +58631,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>virtual,reality,real,real and virtual,#start,?real and virtual: Have we hacked reality?,#oculus,#question</additionalKeywords>
+    <additionalKeywords>virtual,reality,real,real and virtual,#question,#oculus,?real and virtual: Have we hacked reality?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - interactivity1</name>
@@ -58640,7 +58640,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>interactivity,new media,play,systems,?interactivity: What makes a satisfying interaction?,#start,#question</additionalKeywords>
+    <additionalKeywords>interactivity,new media,play,systems,#question,?interactivity: What makes a satisfying interaction?</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - Amiga500</name>
@@ -59916,7 +59916,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>time,process,creativity,generative art,#oculus,#start,?generative art: When is an artwork done?,#mindblowing,#question</additionalKeywords>
+    <additionalKeywords>time,process,creativity,generative art,#question,#mindblowing,?generative art: When is an artwork done?,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>LIA - TimeStamps2</name>

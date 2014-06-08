@@ -1,0 +1,23 @@
+<Map>
+    <Bangs>
+        <Mapping>
+            <Widget>
+                <WidgetName>reset</WidgetName>
+                <WidgetID>6</WidgetID>
+                <WidgetCanvasParent>BalloonsRelease</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>release</WidgetName>
+                <WidgetID>4</WidgetID>
+                <WidgetCanvasParent>BalloonsRelease</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </Bangs>
+    <Switches></Switches>
+    <SliderCurves></SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

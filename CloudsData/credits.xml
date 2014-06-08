@@ -3,7 +3,7 @@
 	<!-- US -->
 	<credit align="center">
 		<title>
-			Directors
+			DIRECTORS
 		</title>
 		<name>
 			Jonathan Minard, James George
@@ -13,7 +13,7 @@
 	<!-- GOLAN -->
 	<credit align="right">
 		<title>
-			Executive Producer
+			EXECUTIVE PRODUCER
 		</title>
 		<name>
 			Golan Levin 
@@ -23,7 +23,7 @@
 	<!-- WINSLOW -->
 	<credit align="left">
 		<title>
-			Producer
+			PRODUCER
 		</title>
 		<name>
 			Winslow Porter
@@ -33,7 +33,7 @@
 	<!-- LUKE -->
 	<credit align="left">
 		<title>
-			Music
+			MUSIC
 		</title>
 		<name>
 			R. Luke DuBois
@@ -43,17 +43,17 @@
 	<!-- BRADLEY -->
 	<credit align="left">
 		<title>
-			Design Director
+			DESIGN DIRECTOR
 		</title>
 		<name>
-			Bradley "GMUNK" Munkowitz
+			Bradley GMUNK Munkowitz
 		</name>
 	</credit>
 
 	<!-- ELIE -->
 	<credit align="left">
 		<title>
-			Interaction Programming
+			INTERACTION PROGRAMMING
 		</title>
 		<name>
 			Ellie Zananiri
@@ -63,7 +63,7 @@
 	<!-- LARS -->
 	<credit align="right">
 		<title>
-			Lead Visual Programming
+			LEAD VISUAL PROGRAMMING
 		</title>
 		<name>
 			Lars Berg
@@ -73,15 +73,383 @@
 	<!-- SURYA -->
 	<credit align="left">
 		<title>
-			Systems Engineer
+			LEAD NARRATIVE PROGRAMMING
 		</title>
 		<name>
-			Surya Mattu
+			Surya A. Mattu
+		</name>
+	</credit>
+
+
+<credit align="left">
+		<title>
+			Casey Reas
+		</title>
+		<name>
+
+			Bruce Sterling
+
+		</name>
+	</credit>
+
+<credit align="left">
+		<title>
+			Daniel Shiffman
+		</title>
+		<name>
+			
+
+			Diederick Huijbers
+
+		</name>
+	</credit>
+
+
+<credit align="left">
+		<title>
+			Elliot Woods
+			
+		</title>
+		<name>
+
+
+			Golan Levin
+
+	</name>
+
+	</credit>
+	<credit align="left">
+		<title>
+			Greg Borenstein
+			
+		</title>
+		<name>
+
+			Jer Thorp
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Jesse Louis-Rosenberg
+		</title>
+		<name>
+			Jessica Rosenkrantz
+
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+
+			Joel Gethin Lewis
+			
+		</title>
+		<name>
+
+			John Maeda
+
+	</name>
+	</credit>
+	
+	<credit align="left">
+		<title>
+			Josh Nimoy
+		</title>
+		<name>
+
+			Julia Kaganskiy
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Julian Oliver
+			
+		</title>
+		<name>
+
+			Karolina Sobecka
+
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Karsten Schmidt			
+		</title>
+		<name>
+
+			Kyle Chayka
+			</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Kyle McDonald			
+		</title>
+		<name>
+
+			Lindsay Howard
+
+			</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Marcus Wendt			
+		</title>
+		<name>
+
+			Marius Watz
+
+		</name>
+	</credit>
+
+		<credit align="left">
+		<title>
+			Nick Fox-Gieg
+			
+		</title>
+		<name>
+
+
+			Philip Whitfield
+
+		</name>
+	</credit>
+
+			
+	<credit align="left">
+		<title>
+			Rachel Binx			
+		</title>
+		<name>
+
+			Regine Debatty
+		</name>
+	</credit>
+
+
+	<credit align="left">
+		<title>
+			Satoru Higa			
+		</title>
+		<name>
+
+			Shantell Martin
+
+		</name>
+	</credit>
+
+
+	<credit align="left">
+		<title>
+			Sofy Yuditskaya
+		</title>
+		<name>
+			
+
+			Theodore Watson
+
+		</name>
+	</credit>
+
+		<credit align="left">
+		<title>
+			Vera Glahn			
+		</title>
+		<name>
+
+			Zachary Lieberman
 		</name>
 	</credit>
 	
-</credits>
 
+<!-- Creative Coders -->
+
+	<credit align="left">
+		<title>
+			CREATIVE DEVELOPERS
+		</title>
+		<name>
+			Lars Berg 
+			Patricio González-Vivo
+
+		</name>
+	</credit>
+
+
+	<credit align="left">
+		<title>
+			CREATIVE DEVELOPERS
+		</title>
+		<name>
+
+			Jeff Crouse
+
+			Gal Sasson
+
+
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			CREATIVE DEVELOPERS
+		</title>
+		<name>
+
+			Neil Mendoza
+
+			Omer Shapira
+
+	</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			CREATIVE DEVELOPERS
+		</title>
+		<name>
+
+			Reza Ali
+
+			Michael Allison
+
+		</name>
+	</credit>
+
+	
+
+	<credit align="left">
+		<title>
+			INTERFACE DESIGN
+		</title>
+		<name>
+
+			Luisa Pereira
+
+			Sarah Hallacher
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			INTERFACE DESIGN
+		</title>
+		<name>
+
+			Charlie Whitney
+
+			Jack Kailash
+
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			SECOND CAMERA
+		</title>
+		<name>
+
+			Alexander Porter
+
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			LIGHTING
+		</title>
+		<name>
+
+			Paul Porter
+
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			ADDITIONAL FOOTAGE
+		</title>
+		<name>
+
+			Matt Rutherford
+
+		</name>
+	</credit>
+	
+	<credit align="left">
+		<title>
+			ADDITIONAL SOUND
+		</title>
+		<name>
+			Jules Laplace
+		</name>
+	</credit>
+	
+
+	<credit align="left">
+		<title>
+			SOUND ENGINEER
+		</title>
+		<name>
+			Brett Murphy
+		</name>
+	</credit>
+
+
+	<credit align="left">
+		<title>
+			SPONSORS
+		</title>
+		<name>
+			Studio for Creative Inquiry
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			SPONSORS
+		</title>
+		<name>
+			Eyebeam Art and Technology Center
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			SPONSORS
+		</title>
+		<name>
+			Microsoft Research
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			MADE WITH
+		</title>
+		<name>
+			openFrameworks
+		</name>
+	</credit>
+
+
+	<credit align="left">
+		<title>
+			THANK YOU 
+		</title>
+		<name>
+			Kickstarter Backers
+		</name>
+	</credit>
+
+
+
+	
+</credits>
 <!--
 Executive Producer: Golan Levin 
 

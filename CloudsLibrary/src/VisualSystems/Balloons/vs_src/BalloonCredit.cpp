@@ -35,10 +35,16 @@ void BalloonCredit::update()
 	ofVec3f axis; float angle;
 	n.getOrientationQuat().getRotate(angle, axis);
 	
-	width = font->stringWidth(title);
+	width = fmax(font->stringWidth(title), font->stringWidth(name)  ) * .25;
 	
 	left = ofVec3f(-width * .5, 0, 0) * n.getGlobalTransformMatrix();
 	right = ofVec3f(width * .5, 0, 0) * n.getGlobalTransformMatrix();
+    
+    
+//    cout<<"credit pos " <<pos<<endl;
+//    cout<<"camera pos " <<camera->getPosition()<<endl;
+
+    
 }
 
 void BalloonCredit::draw()
@@ -46,24 +52,37 @@ void BalloonCredit::draw()
 	ofPushStyle();
 	ofPushMatrix();
 	ofSetColor(255);
+    
 	ofDisableLighting();
-	
+	ofDisableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
 	ofNode n;
 	n.setPosition( pos );
-	n.lookAt(camera->getPosition(), ofVec3f(0,1,0));
+    ofVec3f lookAtPos = camera->getPosition();
+    lookAtPos.y = pos.y;
+	n.lookAt(lookAtPos, ofVec3f(0,1,0));
 	ofVec3f axis; float angle;
 	n.getOrientationQuat().getRotate(angle, axis);
 	
 	// Translate the object to its position.
-	ofTranslate( pos );
 	// Perform the rotation.
-	ofRotate(angle, axis.x, axis.y, axis.z);
-	ofRotate(180, 0, 0, 1);
-		
+    
+    ofScale(.15,.15,.15);
+    
+    //ofTranslate( pos );
+    ofMultMatrix(n.getGlobalTransformMatrix());
+    ofRotate(180, 0, 0, 1);
+//	ofRotate(angle, axis.x, axis.y, axis.z);
+	
+
+
 	//draw text at the position
 	float titleWidth  = font->stringWidth(title);
 	float titleHeight = font->stringHeight(title);
+	float nameWidth  = font->stringWidth(name);
 	font->drawString(title, -titleWidth/2, titleHeight/2);
+	font->drawString(name, -nameWidth/2, titleHeight * 2);
 	
 	ofEnableLighting();
 	ofPopMatrix();

@@ -1,4 +1,4 @@
-//
+ //
 //  CloudsVisualSystemBalloons.cpp
 //
 
@@ -6,13 +6,14 @@
 #include "ofxObjLoader.h"
 #include "CloudsGlobal.h"
 
-void CloudsVisualSystemBalloons::selfSetupGui(){
+void CloudsVisualSystemBalloons::selfSetupGui()
+{
 	
 	//balloon behavior
-	customGui = new ofxUISuperCanvas("BALLOONS_BEHAVIOR", gui);
+	customGui = new ofxUISuperCanvas("BALLOONSBEHAVIOR", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
-	customGui->setName("Balloons");
+	customGui->setName("BalloonsBehavior");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	customGui->addSlider("cameraBounceRadiusScale", 1, 10, &cameraBounceRadius);
@@ -33,7 +34,7 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	customGui->addSpacer();
 	customGui->addSlider("cameraBounce", 0, 20, &cameraBounce);
 	customGui->addSlider("cameraTargetDist", 20, 500, &cameraTargetDist);
-	customGui->addSlider("balloonFrameVal", 0, 1, &balloonFrameVal);
+//	customGui->addSlider("balloonFrameVal", 0, 1, &balloonFrameVal);
 	
 	customGui->addSlider("dim", 100, 500, &dim );
 	
@@ -48,7 +49,8 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	textGui->setName("Text");
 	textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
+	//	textGui->addSlider("textSpeed", -10, 10, &textSpeed)->setIncrement(.001);
+	textGui->addSlider("creditDurationScale", .1, 2, &creditDurationScale);
 	textGui->addSlider("textRadius", 1, 10, &textRadius);
 	textGui->addSlider("creditLightDist", 10, 500, &creditLightDist);
 	
@@ -58,8 +60,10 @@ void CloudsVisualSystemBalloons::selfSetupGui(){
 	textGui->addSlider("creditLightScale", 0, 1, &creditLightScale);
 	textGui->addSlider("facingRatioScale", 0, 1, &facingRatioScale);
 	
+//	textGui->addSlider("creditPosition", 0, 1, &creditPosition)->setIncrement(.001);
+	
 	textGui->addLabel("TYPE DISPLAY");
-	textGui->addIntSlider("Font Size", 5, 25, &fontSize);
+	textGui->addIntSlider("Font Size", 12, 25, &fontSize);
 	textGui->addSlider("Font Scale", 0.0, 1.9, &fontScale);
 	textGui->addSlider("Justification Offset", 0, 700, &justificationWidth);
 	
@@ -223,7 +227,8 @@ void CloudsVisualSystemBalloons::selfGuiEvent(ofxUIEventArgs &e)
 	}
 }
 
-void CloudsVisualSystemBalloons::selfSetupSystemGui(){
+void CloudsVisualSystemBalloons::selfSetupSystemGui()
+{
 	
 }
 
@@ -249,7 +254,8 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	accScl = .2;
 	gravity = .01;
 	attractionToCenter = .01;
-	
+	progress = 0;
+    
 	cameraBounce = 10.;
 	cameraAttractionToCenter = 1.;
 	cameraTargetDist = 200;
@@ -305,13 +311,22 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	
 	textSpeed = -.4;
 	textRadius = 3.;
-	
+    
 	shininess = 10;
 	lightScale = .75;
 	creditLightScale = .75;
 	facingRatioScale = .5;
 	
+    
+    creditPosition = 0;
+    
 	cameraBounceRadius = 3;
+	fontSize = 15;
+	creditStartTime = 0;
+	creditDuration = 240; //James & Jonathan, this is the amount of time it'll take for the credits to fall all the way. the larget this number the slower they move
+	creditDurationScale = 1.;
+	
+	bSetManualBackgroundColors = true;
 }
 
 void CloudsVisualSystemBalloons::setBalloonColors()
@@ -336,6 +351,9 @@ void CloudsVisualSystemBalloons::setBalloonColors()
 		else					col[i].set(c3f.r, c3f.g, c3f.b );
 	}
 	
+	
+	random_shuffle( col.begin(), col.end() );
+	
 	colFbo.allocate(dimX, dimY, GL_RGB16F);
 	colFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     colFbo.getTextureReference().loadData( &col[0][0], dimX, dimY, GL_RGB);
@@ -343,6 +361,11 @@ void CloudsVisualSystemBalloons::setBalloonColors()
 
 void CloudsVisualSystemBalloons::setBalloonPositions()
 {
+	creditStartTime = ofGetElapsedTimef();
+	
+	balloonFramStartTime = creditStartTime + 4;
+	balloonFramEndTime = balloonFramStartTime + 6;
+	
 	vector<ofVec3f>pos(dimY*dimX);
 	vector<ofVec3f>vel(dimY*dimX);
 	
@@ -356,6 +379,8 @@ void CloudsVisualSystemBalloons::setBalloonPositions()
 				pos[i*dimX + j] = randomPointInSphere(spawnRad, ofVec3f(0,-spawnRad, 0) );
 			}
 		}
+		
+		pos[0].y = -spawnRad;
 	}
 	else if(releaseType == 1)
 	{
@@ -393,13 +418,22 @@ void CloudsVisualSystemBalloons::setBalloonPositions()
 		{
 			for(int j=0; j<dimX; j++)
 			{
-				pos[i*dimX + j].set( j - dimY*.5, -10 + sin(j * jStep) * sin(i * iStep) * 15, i - dimY*.5);
-				pos[i*dimX + j] *= radius;
+				pos[i*dimX + j].set( j - dimY*.5, sin(j * jStep) * sin(i * iStep), i - dimY*.5);
+
+				pos[i*dimX + j].x *= radius;
+				
+				pos[i*dimX + j].y *= dim * .5;
+				pos[i*dimX + j].y -= dim * .75;
+				
+				pos[i*dimX + j].z *= radius;
 			}
 		}
+		
+		
+		random_shuffle( pos.begin(), pos.end() );
+		
+		swap(pos[0], pos[pos.size()/2]);
 	}
-	
-	random_shuffle( pos.begin(), pos.end() );
 	
 	for(int i=0; i<vel.size(); i++)
 	{
@@ -445,6 +479,9 @@ void CloudsVisualSystemBalloons::selfSetup()
 	v0 = &velFbo0;
 	v1 = &velFbo1;
 
+	//baclkgrojnd ramp
+	bgRamp.loadImage(getVisualSystemDataPath() + "images/backgroundRamp.png");
+	
 	//load balloon mesh
 	ofMesh temp;
 //	ofxObjLoader::load( getVisualSystemDataPath() + "models/box.obj", temp);
@@ -472,7 +509,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 		int numCredits = creditsXml.getNumTags("credit");
 		for(int i = 0; i < numCredits; i++){
 			string justification = creditsXml.getAttribute("credit", "align", "left", i) ;
-			ofVec3f pos( 0, i * dim, 0);
+			ofVec3f pos( 0, 1000 + i * dim * 2.9, 0);
 			if(justification == "left"){
 				pos.x = -justificationWidth;
 			}
@@ -483,7 +520,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 			creditsXml.pushTag("credit", i);
 			
 			BalloonCredit bc;
-			bc.title = ofToUpper(creditsXml.getValue("title", ""));
+			bc.title = (creditsXml.getValue("title", ""));
 			bc.name = creditsXml.getValue("name", "");
 			bc.pos = pos;
 			bc.font = &font;
@@ -493,16 +530,18 @@ void CloudsVisualSystemBalloons::selfSetup()
 			creditsXml.popTag(); //credit
 		}
 		creditsXml.popTag(); //credits
+		
+		for(int i=0; i<credits.size(); i++)
+		{
+			originalCreditPositions.push_back(credits[i].pos);
+		}
 	}
 	else{
 		ofLogError("Balloons") << "Couldn't load credits XML!";
 		return;
 	}
-	
-	//TEST
-//	for(int i = 0; i < 3; i++){
-//		credits.push_back( credits[0] );
-//	}
+    
+    creditPosition = 0;
 }
 
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){
@@ -517,17 +556,26 @@ void CloudsVisualSystemBalloons::selfSceneTransformation(){
 
 void CloudsVisualSystemBalloons::selfUpdate()
 {
+    cloudsCamera.lookTarget = ofVec3f(0,0,0);
+    
 	p0->getTextureReference().readToPixels(pospix);
 	ofFloatColor poscol = pospix.getColor(0,0);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
 	
-//	balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .1);
-	
+	//balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .1);
 	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
 	
-	for(auto& c: credits)
+	
+	float t = ofGetElapsedTimef();
+	progress = ofMap(t, creditStartTime, creditStartTime + creditDuration * creditDurationScale, 0, 1, true);
+	balloonFrameVal = ofMap(t, balloonFramStartTime, balloonFramEndTime, 1, 0, true);
+
+	//float creditOffset = -(creditPosition * (originalCreditPositions.back().y+dim*2) ) + dim;
+	float creditOffset = -(progress * (originalCreditPositions.back().y+dim*2) ) + dim;
+	
+	for(int i=0; i<credits.size(); i++)
 	{
-		c.pos.y += textSpeed;
+		credits[i].pos.y = originalCreditPositions[i].y + creditOffset;
 	}
 	
 	if(!font.isLoaded() || currentFontSize != fontSize)
@@ -535,6 +583,16 @@ void CloudsVisualSystemBalloons::selfUpdate()
 		font.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize);
 		currentFontSize = fontSize;
 	}
+	
+	
+	//background color
+	if(bgRamp.isAllocated())
+	{
+		bgColor = bgRamp.getColor(0, (1. - progress) * bgRamp.getHeight());
+		bgColor2 = bgRamp.getColor(1, (1. - progress) * bgRamp.getHeight());
+        bgColor2.setBrightness(bgColor2.getBrightness()*.5);
+	}
+	
 }
 
 void CloudsVisualSystemBalloons::selfDraw()
@@ -647,7 +705,10 @@ void CloudsVisualSystemBalloons::selfDraw()
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	
-	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	
+    ofDisableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
 	shader.begin();
 	shader.setUniform1f("shininess", shininess);
 	shader.setUniform1f("lightScale", lightScale);

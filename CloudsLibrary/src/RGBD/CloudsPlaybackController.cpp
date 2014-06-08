@@ -566,7 +566,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(!transitionController.isTransitioning() && !bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
-            
+            run.questionsAsked++;
             transitionController.transitionWithQuestion(2.0, 0.1);
 			
         }
@@ -789,8 +789,10 @@ void CloudsPlaybackController::updateTransition(){
                         
                         crossfadeValue = 0;
                         
-                        storyEngine.buildAct(run, selectedQuestionClip, topic);
+                        shouldPlayClusterMap = run.questionsAsked % 3 == 2;
                         
+                        storyEngine.buildAct(run, selectedQuestionClip, topic);
+
                         bQuestionAsked = false;
                     }
 				}
@@ -854,6 +856,11 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	return false;
 #else
 	
+    if( currentVisualSystem->getSystemName() == "Balloons" ){
+        hud.clearQuestion();
+        return false;
+    }
+    
 	interludeTimedOut = ofGetElapsedTimef() - interludeStartTime > interludeForceOnTimer;
 	
 	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth)
@@ -904,11 +911,13 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 //		interludeBarHoverPercentComplete = 0;
 	}
 	
+#ifndef CLOUDS_SCREENING
 	if(ofGetElapsedTimef() - interludeStartTime > 60){
-		interludeContinueSelected = true;
+		interludeResetSelected = true;
 		return true;
 	}
-	
+#endif
+    
 	return false;
 #endif
 	
@@ -923,6 +932,10 @@ void CloudsPlaybackController::updateCompletedInterlude(){
 void CloudsPlaybackController::drawInterludeInterface(){
     
 
+    if(currentVisualSystem->getSystemName() == "Balloons"){
+        return;
+    }
+    
 	ofRectangle hoverRect;
 	bool hovering = false;
 	string promptType;
@@ -1283,6 +1296,9 @@ void CloudsPlaybackController::showClusterMap(){
 	clusterMap->loadPresetGUISFromName("2DFollowCam");
     clusterMap->playSystem();
 	clusterMap->autoTraversePoints = true;
+    
+    clusterMap->clearTraversal();
+    
 	clusterMap->traverse();
 	clusterMap->traverse();
 	

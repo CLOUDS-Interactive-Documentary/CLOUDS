@@ -772,7 +772,7 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
         hudLabelMap["BylineTopicTextBoxTop"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxBottom"]->animateIn( true );
 		//JG TEMP
-//        hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
+        hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
 //JG TEMP
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){

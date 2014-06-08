@@ -41,6 +41,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     void setCurrentTopic(string topic);
     
 	//will add the latest state of the run to the traversal
+    void startTraverse();
 	void traverse();
 
 	void traverseToClip(CloudsClip clip);
@@ -217,6 +218,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     float maxTraverseDistance;
     float minTraverseDistance;
     int minTraverseNextOptions;
+    int startTraverseClip;
+    
     ofxNearestNeighbour3D kdtree;
     
 	//colors~

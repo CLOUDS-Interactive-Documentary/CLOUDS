@@ -19,6 +19,7 @@ CloudsAct::CloudsAct(){
     duration = 0;
 	defaulPrerollDuration = 2.0;
     defaultAudioFade = 2.0;
+	incrementalQuesitonTime = 0.0;
 }
 
 CloudsAct::~CloudsAct(){
@@ -560,10 +561,11 @@ void CloudsAct::addQuestion(CloudsClip& clip, string topic, float startTime){
     
     item.key = clip.getID() + "??" + topic;
     
-    item.startTime = startTime;
+    item.startTime = startTime + 10 + incrementalQuesitonTime;;
     //dont care about end time as it will end with visual system;
-    item.endTime = startTime + 10;
-    
+    item.endTime = startTime;
+    incrementalQuesitonTime += 1;
+	
     questionsMap[item.key] = clip;
     actItems.push_back(item);
 }

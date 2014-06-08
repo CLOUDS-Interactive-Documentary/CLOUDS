@@ -68,10 +68,9 @@ void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     meshVertexCount = 0;
     meshIndexCount = 0;
 
-    bool bDrawDust;
-    int dustParticleCount;
-    float dustRadius;
-    float dustPointSize;
+    bDrawDust = false;
+    dustParticleCount = 0;
+    dustRadius = 0;
 
 
     blendModeAdd = false;
