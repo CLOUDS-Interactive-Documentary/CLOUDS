@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>717.000000000</XPosition>
+    <YPosition>12.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -170,12 +170,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 1</Name>
-    <Value>0.921182275</Value>
+    <Value>0.679802954</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>BRI 1</Name>
-    <Value>1.000000000</Value>
+    <Value>0.842364550</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -185,7 +185,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 2</Name>
-    <Value>0.399014771</Value>
+    <Value>0.389162570</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

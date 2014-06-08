@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>578.000000000</XPosition>
+    <YPosition>49.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>COLOR PALETTE</Name>
-    <Value>28.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

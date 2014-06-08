@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1023.000000000</XPosition>
+    <YPosition>7.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>EXPLODE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -135,7 +135,7 @@
     <Kind>6</Kind>
     <Name>BRIGHTNESS</Name>
     <HighValue>1.000000000</HighValue>
-    <LowValue>0.935960591</LowValue>
+    <LowValue>0.458128065</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -160,7 +160,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>TRIGGER RANGE</Name>
-    <Value>205.073883057</Value>
+    <Value>102.660095215</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -170,7 +170,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 1</Name>
-    <Value>0.802955687</Value>
+    <Value>0.403940886</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -185,7 +185,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 2</Name>
-    <Value>0.940886676</Value>
+    <Value>0.660098493</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
