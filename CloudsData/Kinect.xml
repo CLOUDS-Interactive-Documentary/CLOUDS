@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Kinect</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1061.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>753.000000000</XPosition>
+    <YPosition>65.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -25,20 +25,20 @@
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE X</Name>
-    <HighValue>0.320197105</HighValue>
-    <LowValue>-0.251231551</LowValue>
+    <HighValue>0.852216721</HighValue>
+    <LowValue>-0.704433501</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE Y</Name>
     <HighValue>0.280786991</HighValue>
-    <LowValue>-0.576354682</LowValue>
+    <LowValue>-0.714285731</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE Z</Name>
     <HighValue>2.411330223</HighValue>
-    <LowValue>1.997536898</LowValue>
+    <LowValue>1.977832556</LowValue>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -53,12 +53,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ACTIVE THRESHOLD Z</Name>
-    <Value>0.399014771</Value>
+    <Value>0.477832526</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOCUS RANGE</Name>
-    <Value>0.261083752</Value>
+    <Value>0.463054180</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -89,19 +89,4 @@
     <Kind>4</Kind>
     <Name>FEEDBACK MARGIN</Name>
     <Value>0.020000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>FEEDBACK HUE</Name>
-    <Value>255.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>FEEDBACK SAT</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>FEEDBACK BRI</Name>
-    <Value>255.000000000</Value>
 </Widget>
