@@ -83,7 +83,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>FastPhysics2_TumblingBox</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -138,7 +138,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Neutrinos_1</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
