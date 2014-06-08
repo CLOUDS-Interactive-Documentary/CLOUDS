@@ -94,7 +94,19 @@ protected:
     
     //  Your Stuff
     //
+    audioAnalytics aa;
+    colorSchemeDesigner cs;
+    terrainManager tm;
+    cameraManager cm;
+    lightManager lm;
+    postProcManager pm;
+    
+    int state;
+    
+    bool useLights;
+    bool updateCam;
 	
+    //vs sys standards
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
 	float customFloat1;
