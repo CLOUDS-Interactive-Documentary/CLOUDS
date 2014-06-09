@@ -1149,7 +1149,7 @@ void CloudsPlaybackController::drawRenderTarget(){
 		
 		currentVisualSystem->selfPostDraw();
         
-		//TODO Make parametric based on HUD
+        ofEnableAlphaBlending();		
         CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
         
 #ifndef OCULUS_RIFT
