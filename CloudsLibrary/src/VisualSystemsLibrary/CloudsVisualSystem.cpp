@@ -3667,10 +3667,7 @@ void CloudsVisualSystem::drawBackground()
 	
 	ofPushStyle();
 	ofPushMatrix();
-    //MA:: changed ofGetHeight to getCanvasHeight to fix post processing bugs
-	ofTranslate(0, getCanvasHeight());
-	ofScale(1,-1,1);
-	selfDrawBackground();
+    selfDrawBackground();
 	checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");		
 	ofPopMatrix();
 	ofPopStyle();
