@@ -69,6 +69,10 @@ ${NEWPREFIX}ofxMSAInteractiveObject
 ${NEWPREFIX}ofxFTGL
 ${NEWPREFIX}ofxMPMFluid
 
+${NEWPREFIX}ofxAudioUnit
+${NEWPREFIX}ofxAudioFeatures
+${NEWPREFIX}ofxMeshUtils
+
 ${NEWPREFIX}ofxTextInputField
 cd ofxTextInputField
 git checkout -b develop --track origin/develop
