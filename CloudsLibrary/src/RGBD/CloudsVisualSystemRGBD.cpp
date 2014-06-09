@@ -101,15 +101,12 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	portalToClear = NULL;
 	
 	drawRGBD = true;
-#ifdef TARGET_OSX
-	cullFace = GL_FRONT;
-#else
 	#ifdef OCULUS_RIFT
 		cullFace = GL_FRONT;
 	#else
 		cullFace = GL_BACK;
 	#endif
-#endif
+
 	transitionOutOption = OutLeft;
 	
 //	questionLifeSpan = 3;
@@ -1729,7 +1726,7 @@ void CloudsVisualSystemRGBD::selfDrawBackground(){
 }
 
 void CloudsVisualSystemRGBD::selfDrawDebug(){
-	ofSphere(translatedHeadPosition, 10);
+	ofDrawSphere(translatedHeadPosition, 10);
 }
 
 void CloudsVisualSystemRGBD::selfSceneTransformation(){
@@ -1748,6 +1745,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	ofPushStyle();
 	ofPushMatrix();
+    
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_LIGHTING);
 	

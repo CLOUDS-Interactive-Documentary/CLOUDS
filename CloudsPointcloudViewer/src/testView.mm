@@ -45,7 +45,7 @@
     
     //SCREENSHOT MODE
     rgbdVisualSystem.setNumSamples(4);
-    rgbdVisualSystem.forceScreenResolution(1920*2, 1080*2);
+//    rgbdVisualSystem.forceScreenResolution(1920*2, 1080*2);
     targetFbo.allocate(1920*2, 1080*2, GL_RGB);
     //SCREENSHOT MODE
     
@@ -194,7 +194,7 @@
         ofPixels p;
         targetFbo.readToPixels(p);
         char filename[1024];
-        sprintf(filename, "SCREENSHOT_%s_%02d_%02d_%02d_%02d_%02d.png", currentClip.person.c_str(),
+        sprintf(filename, "SCREENSHOT_%s_%02d_%02d_%02d_%02d_%02d.png", currentClip->person.c_str(),
                 ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes(), ofGetSeconds());
         ofSaveImage(p, filename);
     }

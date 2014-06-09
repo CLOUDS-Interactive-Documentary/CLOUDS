@@ -2034,10 +2034,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
-					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx64,
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release",
+					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
+					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 				);
 				PRODUCT_NAME = CloudsPointcloudViewer64Debug;
 				WRAPPER_EXTENSION = app;
@@ -2123,18 +2126,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					"/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT",
-					"/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL",
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxTimeline/libs/openal/libs/vs2010,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxTimeline/libs/sndfile/lib/osx,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxTimeline/libs/sndfile/lib/vs2010,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx64,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/linux,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/linux64,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/osx,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/vs,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/vs64,
+					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release",
+					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
+					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 				);
 				PRODUCT_NAME = CloudsPointcloudViewer64;
 				WRAPPER_EXTENSION = app;
