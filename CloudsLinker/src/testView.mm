@@ -219,13 +219,15 @@
 
 - (IBAction) saveLinks:(id)sender
 {
-	if(ofDirectory("../../../CloudsData/links/").exists()){
-		parser.saveLinks("../../../CloudsData/links/clouds_link_db.xml");
-        cout<<"saving!"<<endl;
-	}
-	else{
-		parser.saveLinks("clouds_link_db.xml");
-	}
+    parser.saveLinks();
+    
+//	if(ofDirectory("../../../CloudsData/links/").exists()){
+//		parser.saveLinks("../../../CloudsData/links/clouds_link_db.xml");
+//        cout<<"saving!"<<endl;
+//	}
+//	else{
+//		parser.saveLinks("clouds_link_db.xml");
+//	}
 }
 
 - (void) playClip:(CloudsClip*) clip

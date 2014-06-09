@@ -406,7 +406,7 @@ void CloudsVisualSystemHistogram::stopSound()
 void CloudsVisualSystemHistogram::reloadSound()
 {
     ofFile file = soundsDir.getFile(selectedSoundsIdx);
-    if (soundPlayer.loadSound(file.getAbsolutePath())) {
+    if ( soundPlayer.loadSound( ofToDataPath(soundsDir.getPath(selectedSoundsIdx), true) )) {
         soundPlayer.play();
         soundPlayer.setLoop(true);
         soundPlayer.getSpectrum(1024); //defaultSpectrumBandwidth

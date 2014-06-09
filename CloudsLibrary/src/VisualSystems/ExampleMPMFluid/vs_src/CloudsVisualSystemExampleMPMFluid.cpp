@@ -365,7 +365,8 @@ Tonic::Generator CloudsVisualSystemExampleMPMFluid::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
-    string strAbsPath = sdir.getAbsolutePath() + "/slowchimes.aif";
+    string strAbsPath = ofToDataPath( strDir + "/slowchimes.aif", true);
+                                     
     Tonic::SampleTable sample = Tonic::loadAudioFile(strAbsPath);
     
     Tonic::Generator low = Tonic::SineWave().freq(70) * 0.2;

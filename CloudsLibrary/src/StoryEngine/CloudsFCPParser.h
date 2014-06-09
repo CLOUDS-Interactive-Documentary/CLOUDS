@@ -63,7 +63,7 @@ class CloudsFCPParser {
     
     void removeLink(const string& linkName, int linkIndex);
 	void removeLink(const string& linkName, const string& targetName);
-	void saveLinks(const string& linkFile);
+	void saveLinks();
 
 	void suppressConnection(const string& sourceName, const string& targetName);
 	void suppressConnection(CloudsClip* source, CloudsClip* target);

@@ -283,10 +283,6 @@ vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
             ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i]->getID() << " has no media asset, removing.";
             startingNodes.erase(startingNodes.begin() + i);
         }
-        //JG rig question
-//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
-//			startingNodes.erase(startingNodes.begin() + i);
-//        }
     }
     cout << "returning " << startingNodes.size() << " nodes!" << endl;
     return startingNodes;
