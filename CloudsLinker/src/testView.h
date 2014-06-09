@@ -21,12 +21,12 @@
     
     vector<string> selectedKeywordsSource;
     vector<string> selectedKeywordsTarget;
-    CloudsClip currentPlayingClip;
+    CloudsClip* currentPlayingClip;
     BOOL clipLoaded;
     int clipEndFrame;
 	
-    vector<CloudsClip> selectedClipsTarget;
-    vector<CloudsClip> selectedClipsSource;
+    vector<CloudsClip*> selectedClipsTarget;
+    vector<CloudsClip*> selectedClipsSource;
     vector<CloudsLink> currentClipLinks;
     vector<CloudsLink> currentSuppressedLinks;
 	ofTrueTypeFont font;
@@ -44,7 +44,7 @@
 - (void) draw;
 - (void) exit;
 
-- (void) playClip:(CloudsClip&)clip;
+- (void) playClip:(CloudsClip*)clip;
 
 - (void) updateViews;
 
@@ -61,10 +61,10 @@
 
 - (float) clipPercentComplete;
 
-- (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target;
-- (void) suppressLink:(CloudsClip)source toClip:(CloudsClip) target;
+- (void) linkClip:(CloudsClip*) source toClip:(CloudsClip*) target;
+- (void) suppressLink:(CloudsClip*)source toClip:(CloudsClip*) target;
 
-- (void) selectClip:(CloudsClip)clip inAlternateTable:(id)sender;
+- (void) selectClip:(CloudsClip*)clip inAlternateTable:(id)sender;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;
