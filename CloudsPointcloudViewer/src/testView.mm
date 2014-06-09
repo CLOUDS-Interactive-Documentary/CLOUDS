@@ -18,12 +18,14 @@
 	
 	ofBackground(22);
 
+	ofSetDataPathRoot("../../");
+	
 	parser.loadFromFiles();
 	sound.setup();
 	
 	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
 		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath	() + "CloudsMovieDirectory.txt").getText()<<endl;
+        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
 	}
 	else{
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
@@ -45,9 +47,9 @@
 	rgbdVisualSystem.setDrawToScreen(false);
 	rgbdVisualSystem.setup();
   
-	cout << "PATH IS " << ofToDataPath( GetCloudsDataPath() ) << endl;
+	cout << "PATH IS " << ofToDataPath( GetCloudsDataPath(), true ) << endl;
 	
-//	hud.setup();
+	hud.setup();
 
 #ifdef OCULUS_RIFT
 //  rgbdVisualSystem.hud = &hud;
