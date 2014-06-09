@@ -1,14 +1,14 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>49.000000000</YPosition>
+    <YPosition>47.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Max Point Size</Name>
-    <Value>0.686000049</Value>
+    <Value>0.728000104</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max Distance</Name>
-    <Value>30.000000000</Value>
+    <Value>175.311126709</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,5 +38,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Wireframe Alpha</Name>
-    <Value>0.000000000</Value>
+    <Value>0.410746932</Value>
 </Widget>
