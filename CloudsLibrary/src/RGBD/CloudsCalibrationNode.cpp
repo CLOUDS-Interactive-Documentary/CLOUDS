@@ -104,6 +104,8 @@ void CalibrationNode::updateInteraction(){
 void CalibrationNode::draw(){
 	ofPushMatrix();
 	ofPushStyle();
+    
+    ofEnableAlphaBlending();
 	
 	ofFloatColor baseColor;
 	if(finished){
