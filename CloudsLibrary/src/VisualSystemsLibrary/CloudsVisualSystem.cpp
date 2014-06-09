@@ -609,11 +609,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             
 			ofPushStyle();
 			ofPushMatrix();
-			ofTranslate(0, getCanvasHeight() );
-			ofScale(1,-1,1);
-			
 			selfDrawOverlay();
-
 			ofPopMatrix();
 			ofPopStyle();
 	
