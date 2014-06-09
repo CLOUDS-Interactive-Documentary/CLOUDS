@@ -86,8 +86,6 @@ void CloudsVisualSystemTunnelDrawing::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTunnelDrawing::selfDraw(){
-
-	ofGet
 	
 	ofSetColor(255);
 	//do the same thing from the first example...
