@@ -13,7 +13,7 @@ void CloudsVisualSystemTunnelDrawing::selfSetupGui(){
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	customGui->addSlider("projection dist", -100, 100, &screenSpaceProjectDistance);
+	customGui->addSlider("projection dist", -1, 1, &screenSpaceProjectDistance);
 	customGui->addSlider("cam speed", -4, 0, &fallOffSpeed);
 
 	customGui->addSlider("debug sphere rad", .1, 5, &debugSphereRad);
@@ -98,10 +98,9 @@ void CloudsVisualSystemTunnelDrawing::selfUpdate(){
 void CloudsVisualSystemTunnelDrawing::selfDraw(){
 
 
-	ofSetColor(0);
+	ofSetColor(255);
 	//do the same thing from the first example...
     ofMesh mesh;
-	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	for(int i = 1; i < points.size(); i++){
         
 		//find this point and the next point
@@ -111,7 +110,8 @@ void CloudsVisualSystemTunnelDrawing::selfDraw(){
 		//get the direction from one to the next.
 		//the ribbon should fan out from this direction
 		ofVec3f direction = (nextPoint - thisPoint);
-        
+        direction.z = 0;
+		
 		//get the distance from one point to the next
 		float distance = direction.length();
         
@@ -127,28 +127,37 @@ void CloudsVisualSystemTunnelDrawing::selfDraw(){
 		//the longer the distance, the narrower the line.
 		//this makes it look a bit like brush strokes
 		float thickness = ofMap(distance, 0, 60, 20, 2, true);
-        
+//        thickness = 10;
+		
 		//calculate the points to the left and to the right
 		//by extending the current point in the direction of left/right by the length
-		ofVec3f leftPoint = thisPoint+toTheLeft*thickness;
-		ofVec3f rightPoint = thisPoint+toTheRight*thickness;
+		ofVec3f leftPoint  = thisPoint + toTheLeft  * thickness;
+		ofVec3f rightPoint = thisPoint + toTheRight * thickness;
         
 		//add these points to the triangle strip
+		mesh.addColor(ofColor::blue);
 		mesh.addVertex(ofVec3f(leftPoint.x, leftPoint.y, leftPoint.z));
+		mesh.addColor(ofColor::red);
 		mesh.addVertex(ofVec3f(rightPoint.x, rightPoint.y, rightPoint.z));
 	}
     
 	//end the shape
-	//mesh.draw();
+	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	mesh.drawWireframe();
     
+	ofPushStyle();
+	ofSetColor(255);
 	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(GetCloudsInputX(),
 													   GetCloudsInputY(),
 													   screenSpaceProjectDistance) );
-
+	
+	//cam.setFarClip(mousePoint.z - cam.getPosition().z);
+	ofPopStyle();
+	
 	ofPushStyle();
 	ofNoFill();
 	ofSetColor(255,0,0);
-	ofSphere(mousePoint, debugSphereRad);
+	ofDrawSphere(mousePoint, debugSphereRad);
 	ofPopStyle();
 }
 
@@ -213,6 +222,8 @@ void CloudsVisualSystemTunnelDrawing::selfMouseMoved(ofMouseEventArgs& data){
 													   GetCloudsInputY(),
 													   screenSpaceProjectDistance) );
 	points.push_back(mousePoint);
+	
+	cout << "added point " << points.back() << endl;
 //    }
     	
 }
