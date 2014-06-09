@@ -19,10 +19,10 @@ public:
     
     terrainManager * tm;
     
-    ofCamera cam;
+    ofCamera * cam;
 //    ofEasyCam cam;
-    void begin() { cam.begin(); }
-    void end() { cam.end(); }
+    void begin() { cam->begin(); }
+    void end() { cam->end(); }
     
     float camX, camY, camZ;
     float lastCamX, lastCamY;

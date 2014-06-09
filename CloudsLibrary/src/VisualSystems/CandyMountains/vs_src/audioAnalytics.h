@@ -15,7 +15,7 @@
 
 class audioAnalytics {
 public:
-    audioAnalytics();
+    void setup();
     
     void setupVectors();
     void loadTracks();
@@ -100,7 +100,10 @@ public:
     vector <float> maxdB, maxAmp, maxfft, maxPitch, maxCentroid, maxSpread, maxSkew, maxKurtosis;
     float maxdBGlobal, maxAmpGlobal, maxfftGlobal, maxPitchGlobal;
     //xml
-    ofXml xml;
+//    ofXml xml;
 
+    string basePath;
+    string basePathIgnored;
+    
     ofTrueTypeFont faucet;
 };

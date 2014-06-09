@@ -25,7 +25,7 @@ void cameraManager::setup(terrainManager * _tm) {
     camXSmoothed.setNumPValues(45);
     
     camXLookAhead = 45;
-    camYLookAhead = 45;
+    camYLookAhead = 5;
     camXRange = 50;
     center = 256;
     
@@ -62,6 +62,15 @@ void cameraManager::update() {
     camYSmoothed.addValue(camYDecayed.getValue());
     camY = camYSmoothed.getMean();
     
+//    if ( tm->waveHistory[5][camX + 256] * 20 * 180 + 150 > camY) {
+//        camY = camYSmoothed.getMean();
+//    }
+//    else if ( tm->waveHistory[1][camX + 256] * 20 * 180 + 150 < camY) {
+//        camY *= 0.99;
+//    }
+
+    
+    
 //    if ( tm->waveHistory[45][camX + 256] * 20 * 180 + 100 > camY) {
 //        camYSmoothed.addValue(tm->waveHistory[45][camX + 256] * 20 * 180 + 100);
 //        camY = camYSmoothed.getMean();
@@ -72,6 +81,7 @@ void cameraManager::update() {
     lookatX = camX - lastCamX;
     lookatY = camY - lastCamY;
     
-    cam.setPosition(camX, camY, camZ);
-    cam.lookAt(ofVec3f(lookatX, lookatY, lookatZ));
+    cam->setPosition(camX, camY, camZ);
+    cam->lookAt(ofVec3f(lookatX, lookatY, lookatZ));
+    
 }

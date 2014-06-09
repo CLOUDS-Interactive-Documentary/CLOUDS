@@ -1,3 +1,276 @@
+
+//
+//  CloudsVisualSystemCandyMountains.cpp
+//
+
+#include "CloudsVisualSystemCandyMountains.h"
+#include "CloudsRGBDVideoPlayer.h"
+
+//These methods let us add custom GUI parameters and respond to their events
+void CloudsVisualSystemCandyMountains::selfSetupGui(){
+    
+	customGui = new ofxUISuperCanvas("CUSTOM", gui);
+	customGui->copyCanvasStyle(gui);
+	customGui->copyCanvasProperties(gui);
+	customGui->setName("Custom");
+	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
+	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
+	customGui->addButton("Custom Button", false);
+	customGui->addToggle("Custom Toggle", &customToggle);
+	
+	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemCandyMountains::selfGuiEvent);
+	guis.push_back(customGui);
+	guimap[customGui->getName()] = customGui;
+}
+
+void CloudsVisualSystemCandyMountains::selfGuiEvent(ofxUIEventArgs &e){
+	if(e.widget->getName() == "Custom Button"){
+		cout << "Button pressed!" << endl;
+	}
+}
+
+//Use system gui for global or logical settings, for exmpl
+void CloudsVisualSystemCandyMountains::selfSetupSystemGui(){
+	
+}
+
+void CloudsVisualSystemCandyMountains::guiSystemEvent(ofxUIEventArgs &e){
+	
+}
+//use render gui for display settings, like changing colors
+void CloudsVisualSystemCandyMountains::selfSetupRenderGui(){
+    vector<string> names;
+    names.push_back("mono");
+    names.push_back("complement");
+    names.push_back("triad");
+    names.push_back("tetrad");
+    names.push_back("analogic");
+    names.push_back("accented");
+    rdrGui = new ofxUISuperCanvas("CUSTOM", gui);
+    
+    rdrGui->addSlider("primary hue", 0.0, 1.0, &cs.hue);
+    rdrGui->addSlider("primary brightness", 0.0, 1.0, &cs.brightness);
+    rdrGui->addSlider("primary saturation", 0.0, 1.0, &cs.saturation);
+    rdrGui->addSlider("angle", 0.01, 0.25, &cs.angle);
+    rdrGui->addSlider("distance", 0.1, 0.5, &cs.distance);
+    rdrGui->addRadio("RADIO VERTICAL", names, OFX_UI_ORIENTATION_VERTICAL);
+
+    ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemCandyMountains::guiRenderEvent);
+}
+
+void CloudsVisualSystemCandyMountains::guiRenderEvent(ofxUIEventArgs &e){
+    string name = e.widget->getName();
+	int kind = e.widget->getKind();
+    if(kind == OFX_UI_WIDGET_TOGGLE)
+    {
+        //        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        //        cout << name << "\t value: " << toggle->getValue() << endl;
+        if (name == "mono") cs.mode = 0;
+        else if (name == "complement") cs.mode = 1;
+        else if (name == "triad") cs.mode = 2;
+        else if (name == "tetrad") cs.mode = 3;
+        else if (name == "analogic") cs.mode = 4;
+        else if (name == "accented") cs.mode = 5;
+    }
+    
+    cs.updateColorScheme();
+}
+
+//This is called whenever a new preset is loaded, before selfSetup()
+//use it to ensure all your simple variables are initialized to an
+//acceptable default state
+void CloudsVisualSystemCandyMountains::selfSetDefaults(){
+    
+}
+
+// selfSetup is called when the visual system is first instantiated
+// This will be called during a "loading" screen, so any big images or
+// geometry should be loaded here
+void CloudsVisualSystemCandyMountains::selfSetup(){
+    ofSetFrameRate(30);
+//    ofSetDepthTest(true);
+    
+    state = 3;
+    
+    aa.basePathIgnored = getVisualSystemDataPath(true);
+    aa.basePath = getVisualSystemDataPath();
+    lm.basePath = getVisualSystemDataPath();
+    
+    aa.setup();
+    aa.playStems(0);
+    cs.setup();
+    cs.gui->setVisible(false);
+    
+    //    vector<ofFloatColor> colors;
+    //    for (int i = 0; i < 13; i++) {
+    //        colors.push_back(ofFloatColor(ofRandomuf()));
+    //    }
+    
+    //    for (int i = 0; i < 13; i++) {
+    //        cs.addColorRef(&colors[i]);
+    //    }
+    
+    cs.assignRandom(true);
+    
+    tm.setup(&aa, &cs);
+    cm.setup(&tm);
+    cm.cam = &getCameraRef();
+    lm.setup(&cs);
+    pm.setup();
+    
+    useLights = true;
+    
+    cm.cam->setupPerspective(false);
+    updateCam = false;
+}
+
+// selfPresetLoaded is called whenever a new preset is triggered
+// it'll be called right before selfBegin() and you may wish to
+// refresh anything that a preset may offset, such as stored colors or particles
+void CloudsVisualSystemCandyMountains::selfPresetLoaded(string presetPath){
+	
+}
+
+// selfBegin is called when the system is ready to be shown
+// this is a good time to prepare for transitions
+// but try to keep it light weight as to not cause stuttering
+void CloudsVisualSystemCandyMountains::selfBegin(){
+	
+}
+
+//do things like ofRotate/ofTranslate here
+//any type of transformation that doesn't have to do with the camera
+void CloudsVisualSystemCandyMountains::selfSceneTransformation(){
+	
+}
+
+//normal update call
+void CloudsVisualSystemCandyMountains::selfUpdate(){
+    aa.updateAnalytics();
+
+//    cs.setHue(ofMap(aa.kurtosisSmoothed.getMean(), 0, aa.maxKurtosis[0], 0.0, 1.0));
+//    cs.setSaturation(ofMap(aa.centroidSmoothed.getMean(), 30, 55, 0.0, 1.0));
+//    cs.setBrightness(aa.ampSmoothed.getMean());
+//    cs.setDistance(ofMap(aa.pitchSmoothed.getMean(), 50, 90, 0.0, 0.5));
+    tm.update();
+    cm.update();
+    lm.update();
+}
+
+// selfDraw draws in 3D using the default ofEasyCamera
+// you can change the camera by returning getCameraRef()
+void CloudsVisualSystemCandyMountains::selfDraw(){
+    ofEnableAlphaBlending();
+    
+    lm.begin();
+    tm.draw();
+    lm.end();
+    
+    ofDisableAlphaBlending();
+}
+
+// draw any debug stuff here
+void CloudsVisualSystemCandyMountains::selfDrawDebug(){
+    //how do I access this???
+    
+    if (state == 1) {
+        cs.draw();
+    }
+    else if (state == 2) {
+        aa.drawAnalytics();
+    }
+}
+// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
+void CloudsVisualSystemCandyMountains::selfDrawBackground(){
+    
+    //this just give a red background regardles of the values of gradientStart and gradientEnd.  ofBackground(gradientEnd) does work.
+    /*
+    ofFloatColor gradientStart = cs.colorScheme[0][0];
+    float complementHue = gradientStart.getHue() + 0.5;
+    if (complementHue > 1.0) complementHue-=1.0;
+    ofFloatColor gradientEnd;
+    gradientEnd.setHue(complementHue);
+    gradientEnd.setSaturation(gradientStart.getSaturation() - 0.2);
+    
+    ofBackgroundGradient(gradientEnd, gradientStart);
+    ofBackgroundGradient(ofFloatColor(1.0,0.0,0.0), ofFloatColor(0.0,0.0,1.0));
+    ofBackground(ofFloatColor(1.0,0.0,0.0));
+*/
+    
+    
+    
+//	//we are using this to draw what keywords are missing content
+//	if(mainKeyword != ""){
+//		string keystodraw = "PICKED RANDOM PRESET\n";
+//		keystodraw += mainKeyword + "\n" + ofJoinString(keywords, ",");
+//		ofPushMatrix();
+//		ofScale(5,5);
+//		ofDrawBitmapString(keystodraw, 20,20);
+//		ofPopMatrix();
+//	}
+	
+}
+// this is called when your system is no longer drawing.
+// Right after this selfUpdate() and selfDraw() won't be called any more
+void CloudsVisualSystemCandyMountains::selfEnd(){
+	
+}
+// this is called when you should clear all the memory and delet anything you made in setup
+void CloudsVisualSystemCandyMountains::selfExit(){
+	
+}
+
+//events are called when the system is active
+//Feel free to make things interactive for you, and for the user!
+void CloudsVisualSystemCandyMountains::selfKeyPressed(ofKeyEventArgs & args){
+	if (args.key == ' ') cout << "SPACE!";
+}
+void CloudsVisualSystemCandyMountains::selfKeyReleased(ofKeyEventArgs & args){
+	
+}
+
+void CloudsVisualSystemCandyMountains::selfMouseDragged(ofMouseEventArgs& data){
+	
+}
+
+void CloudsVisualSystemCandyMountains::selfMouseMoved(ofMouseEventArgs& data){
+	
+}
+
+void CloudsVisualSystemCandyMountains::selfMousePressed(ofMouseEventArgs& data){
+	
+}
+
+void CloudsVisualSystemCandyMountains::selfMouseReleased(ofMouseEventArgs& data){
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+//my stuff
+
 #include "testApp.h"
 
 
@@ -251,4 +524,4 @@ void testApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){ 
 
-}
+}*/
