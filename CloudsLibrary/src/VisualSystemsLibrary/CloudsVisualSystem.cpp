@@ -3653,7 +3653,13 @@ void CloudsVisualSystem::billBoard(ofVec3f globalCamPosition, ofVec3f globelObje
 void CloudsVisualSystem::drawBackground()
 {
 	
+	ofPushStyle();
+	ofPushMatrix();
+    ofTranslate(0, getCanvasHeight());
+    ofScale(1,-1,1);
 	drawBackgroundGradient();
+	ofPopMatrix();
+	ofPopStyle();
 	
 	ofPushStyle();
 	ofPushMatrix();
