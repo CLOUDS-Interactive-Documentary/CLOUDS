@@ -489,6 +489,8 @@
 		E755D93B1944230C00AA81C1 /* ofxUIWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIWrapper.h; sourceTree = "<group>"; };
 		E7DDC3581945661700E61D75 /* CloudsVisualSystemTunnelDrawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemTunnelDrawing.cpp; sourceTree = "<group>"; };
 		E7DDC3591945661700E61D75 /* CloudsVisualSystemTunnelDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemTunnelDrawing.h; sourceTree = "<group>"; };
+		E7DDC363194586BA00E61D75 /* ribbon.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ribbon.frag; sourceTree = "<group>"; };
+		E7DDC364194586BA00E61D75 /* ribbon.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ribbon.vert; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
@@ -1057,11 +1059,11 @@
 		E7211CD518A285970063EF97 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				E7211CD618A285970063EF97 /* CloudsInput.cpp */,
 				E7211CD718A285970063EF97 /* CloudsInput.h */,
+				E7211CD618A285970063EF97 /* CloudsInput.cpp */,
 				E7211CD818A285970063EF97 /* CloudsInputEvents.h */,
-				E7211CDB18A285970063EF97 /* CloudsInputMouse.cpp */,
 				E7211CDC18A285970063EF97 /* CloudsInputMouse.h */,
+				E7211CDB18A285970063EF97 /* CloudsInputMouse.cpp */,
 			);
 			name = Input;
 			path = ../CloudsLibrary/src/Input;
@@ -1180,11 +1182,22 @@
 		E7DDC3571945661600E61D75 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				E7DDC362194586BA00E61D75 /* shaders */,
 				E7DDC3591945661700E61D75 /* CloudsVisualSystemTunnelDrawing.h */,
 				E7DDC3581945661700E61D75 /* CloudsVisualSystemTunnelDrawing.cpp */,
 			);
 			name = vs_src;
 			path = ../CloudsLibrary/src/VisualSystems/TunnelDrawing/vs_src;
+			sourceTree = "<group>";
+		};
+		E7DDC362194586BA00E61D75 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E7DDC363194586BA00E61D75 /* ribbon.frag */,
+				E7DDC364194586BA00E61D75 /* ribbon.vert */,
+			);
+			name = shaders;
+			path = ../../../../../CloudsData/visualsystems/TunnelDrawing/shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
