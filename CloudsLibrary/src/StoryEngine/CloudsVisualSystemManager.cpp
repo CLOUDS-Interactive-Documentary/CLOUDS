@@ -82,7 +82,7 @@ static vector<CloudsVisualSystem*> systems;
 
 #include "CloudsVisualSystemTerrain.h"
 //#include "CloudsVisualSystemThingsInTheDark.h"
-//#include "CloudsVisualSystemTunnelDrawing.h"
+#include "CloudsVisualSystemTunnelDrawing.h"
 #include "CloudsVisualSystemTwitter.h"
 //#include "CloudsVisualSystemUextrude.h"
 #include "CloudsVisualSystemVectorFlow.h"
@@ -188,7 +188,7 @@ struct Mapping {
 	{ "Swim",					&fCreate<CloudsVisualSystemSwim> },
 	{ "Terrain",				&fCreate<CloudsVisualSystemTerrain> },
 //64	{ "ThingsInTheDark",		&fCreate<CloudsVisualSystemThingsInTheDark> },
-//64	{ "TunnelDrawing",			&fCreate<CloudsVisualSystemTunnelDrawing> },
+	{ "TunnelDrawing",			&fCreate<CloudsVisualSystemTunnelDrawing> },
 	{ "Twitter",				&fCreate<CloudsVisualSystemTwitter> },
 //64	{ "Uextrude",				&fCreate<CloudsVisualSystemUextrude> },
 	{ "VectorFlow",				&fCreate<CloudsVisualSystemVectorFlow> },

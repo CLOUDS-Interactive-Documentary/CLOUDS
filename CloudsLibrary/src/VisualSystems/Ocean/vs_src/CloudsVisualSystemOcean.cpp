@@ -205,7 +205,11 @@ void CloudsVisualSystemOcean::selfDraw(){
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 	glPointSize(pointSize);
 	glEnable(GL_CULL_FACE);
+#ifdef TARGET_WIN32
 	glCullFace(GL_BACK);
+#else
+    glCullFace(GL_FRONT);
+#endif
 	glDisable(GL_LINE_SMOOTH);
 //	glPushAttrib(GL_ALL_ATTRIB_BITS);
 

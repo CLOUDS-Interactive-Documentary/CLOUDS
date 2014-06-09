@@ -420,8 +420,11 @@ void CloudsVisualSystemCubeCraft::selfUpdate()
 	lastTime = currentTime;
 	
 	cameraOffset += getCameraRef().getLookAtDir() * tDelta * speed;
-	
-	ofSetWindowTitle( ofToString( ofGetFrameRate() ) );
+
+//#ifndef CLOUDS_APP
+//	ofSetWindowTitle( ofToString( ofGetFrameRate() ) );
+//#endif
+    
 }
 
 

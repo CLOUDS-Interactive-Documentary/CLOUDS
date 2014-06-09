@@ -26,8 +26,8 @@ bool _C::renderCamPath = true;
 void _C::selfSetup(){
     rotation = 0;
     reset();
-    readFromFile( "brain1" );
-    generateFlythrough();
+    //readFromFile( "brain1" );
+    //generateFlythrough();
     quatCam = false;
     flythrough = false;
     bounce = false;
