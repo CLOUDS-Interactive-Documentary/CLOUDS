@@ -23,7 +23,7 @@
 	CloudsHUDController hud;
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	
-	CloudsClip currentClip;
+	CloudsClip* currentClip;
 	int currentClipIndex;
 	
 	CloudsVisualSystem::RGBDTransitionType type;

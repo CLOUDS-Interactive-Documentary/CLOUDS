@@ -29,8 +29,6 @@
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
 	}
 
-
-
 	[clipTable setTarget:self];
 	[clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[clipTable reloadData];
@@ -46,8 +44,10 @@
 //    rgbdVisualSystem.setNumSamples(4);
 	rgbdVisualSystem.setDrawToScreen(false);
 	rgbdVisualSystem.setup();
-    
-	hud.setup();
+  
+	cout << "PATH IS " << ofToDataPath( GetCloudsDataPath() ) << endl;
+	
+//	hud.setup();
 
 #ifdef OCULUS_RIFT
 //  rgbdVisualSystem.hud = &hud;
@@ -110,31 +110,33 @@
 	}
 }
 
-- (IBAction)loadClip:(CloudsClip&)clip
+- (IBAction)loadClip:(CloudsClip*)clip
 {
-	if(clip.hasMediaAsset && clip.voiceOverAudio && rgbdVisualSystem.getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
+	if(clip->hasMediaAsset && clip->voiceOverAudio && rgbdVisualSystem.getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath) ){
 		
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
-		rgbdVisualSystem.setupSpeaker(CloudsSpeaker::speakers[clip.person].firstName,
-									  CloudsSpeaker::speakers[clip.person].lastName,
-									  clip.name );
+		rgbdVisualSystem.setupSpeaker(CloudsSpeaker::speakers[clip->person].firstName,
+									  CloudsSpeaker::speakers[clip->person].lastName,
+									  clip->name );
 		
 		currentClip = clip;
         // EZ: Temp to get HUD content
         hud.respondToClip(clip);
 	}
-	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, clip.combinedSRTPath, 1,clip.speakerVolume) ){
-		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
+	else if(clip->hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup(clip->combinedVideoPath,
+																			   clip->combinedCalibrationXMLPath,
+																			   clip->getSubtitlesPath(), 1, clip->speakerVolume) ){
+		cout<<"clip.speakerVolume : " << clip->speakerVolume<<endl;
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
-		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
-									   CloudsSpeaker::speakers[clip.person].lastName,
-									   clip.name );
+		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip->person].firstName,
+									   CloudsSpeaker::speakers[clip->person].lastName,
+									   clip->name );
 		currentClip = clip;
         // EZ: Temp to get HUD content
         hud.respondToClip(clip);
 	}
 	else{
-		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
+		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip->combinedVideoPath << " is not valid";
 	}	
 }
 
@@ -164,12 +166,12 @@
 	}
 	
 	if(key == 'Q'){
-		CloudsClip& clip = parser.getRandomClip(false,true);
-		if(clip.hasQuestion()){
-			rgbdVisualSystem.addQuestion(clip, clip.getTopicsWithQuestions()[0], clip.getQuestions()[0] );
+		CloudsClip* clip = parser.getRandomClip(false,true);
+		if(clip->hasQuestion()){
+			rgbdVisualSystem.addQuestion(clip, clip->getTopicsWithQuestions()[0], clip->getQuestions()[0] );
 		}
 		else {
-			cout << "clip " << clip.getLinkName() << " does not have a question!" << endl;
+			cout << "clip " << clip->getLinkName() << " does not have a question!" << endl;
 		}
 	}
 	
@@ -295,8 +297,8 @@
     string name = interventionName;
 
     if(clipTable.selectedRow >= 0){
-        CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
-        cout<<" Adding intervention : "<<name<<" to clip "<<clip.getLinkName()<<endl;
+        CloudsClip* clip = parser.getAllClips()[[clipTable selectedRow]];
+        cout<<" Adding intervention : "<<name<<" to clip "<<clip->getLinkName()<<endl;
     }
 }
 
@@ -305,9 +307,9 @@
     float speakerVol = speakerVolTextBox.floatValue;
 
     if(clipTable.selectedRow >= 0){
-        CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
-        parser.setSpeakerVolume(clip.person, speakerVol);
-        cout<<" Updating vol for speaker : "<<clip.person<<" new vol : "<<speakerVol<<endl;
+        CloudsClip* clip =parser.getAllClips()[[clipTable selectedRow]];
+        parser.setSpeakerVolume(clip->person, speakerVol);
+        cout<<" Updating vol for speaker : "<<clip->person<<" new vol : "<<speakerVol<<endl;
         parser.saveSpeakersVolume(GetCloudsDataPath()+"sound/SpeakersVolume.txt");
         
         rgbdVisualSystem.getRGBDVideoPlayer().currentMaxVolume = rgbdVisualSystem.getRGBDVideoPlayer().maxVolume *  speakerVol;
@@ -336,8 +338,8 @@
 - (void) updateSpeakerVolumeTextField:(id)sender
 {
 	if(clipTable.selectedRow >= 0){
-		CloudsClip& clip = parser.getAllClips()[[clipTable selectedRow]];
-		speakerVolTextBox.floatValue = clip.getSpeakerVolume();
+		CloudsClip* clip = parser.getAllClips()[[clipTable selectedRow]];
+		speakerVolTextBox.floatValue = clip->getSpeakerVolume();
 	}
 }
 
@@ -354,13 +356,13 @@
 
 	if(aTableView == clipTable){
 		if([@"person" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].person.c_str() ];
+			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex]->person.c_str() ];
 		}
 		else if([@"clip" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].name.c_str() ];
+			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex]->name.c_str() ];
 		}
 		else if([@"combined" isEqualToString:aTableColumn.identifier]){
-			return parser.getAllClips()[rowIndex].hasMediaAsset ? @"YES" : @"NO";
+			return parser.getAllClips()[rowIndex]->hasMediaAsset ? @"YES" : @"NO";
 		}
 	}
 	else if(aTableView == trackTable){
