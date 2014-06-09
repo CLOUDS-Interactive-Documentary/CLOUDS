@@ -834,17 +834,16 @@ void CloudsVisualSystemVision::guiRenderEvent(ofxUIEventArgs &e)
     
 }
 
-
 Tonic::Generator CloudsVisualSystemVision::buildSynth()
 {
-    string strDir = GetCloudsDataPath(true)+"sound/textures/";
+    string strDir = GetCloudsDataPath(true) + "sound/textures/";
     ofDirectory sdir(strDir);
     
     Tonic::SampleTable samples[2];
     
     for (int i=0; i<tonicSamples.size(); i++)
     {
-        string strAbsPath = sdir.getAbsolutePath() + "/" + tonicSamples[i].soundFile;
+        string strAbsPath = ofToDataPath(strDir, true) + "/" + tonicSamples[i].soundFile;
         samples[i] = Tonic::loadAudioFile(strAbsPath);
     }
     
