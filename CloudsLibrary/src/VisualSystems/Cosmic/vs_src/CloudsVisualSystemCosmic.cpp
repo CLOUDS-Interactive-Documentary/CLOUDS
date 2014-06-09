@@ -179,12 +179,18 @@ void CloudsVisualSystemCosmic::selfSetup()
     posFboSrc.getTextureReference().loadData(pos, cols, rows, GL_RGB);
     posFboDst.getTextureReference().loadData(pos, cols, rows, GL_RGB);
     velFboSrc.getTextureReference().loadData(vel, cols, rows, GL_RGB);
-    
-    accShader.load(getVisualSystemDataPath()+"shaders/accShader");
-    velShader.load(getVisualSystemDataPath()+"shaders/velShader");
-    posShader.load(getVisualSystemDataPath()+"shaders/posShader");
-    rdrShader.load(getVisualSystemDataPath()+"shaders/renderShader");
-    sphereShader.load(getVisualSystemDataPath()+"shaders/sphereShader");
+
+    string shaderName;
+    shaderName = getVisualSystemDataPath()+"shaders/accShader";
+    accShader.load(shaderName);
+    shaderName = getVisualSystemDataPath()+"shaders/velShader";
+    velShader.load(shaderName);
+    shaderName = getVisualSystemDataPath()+"shaders/posShader";
+    posShader.load(shaderName);
+    shaderName = getVisualSystemDataPath()+"shaders/renderShader";
+    rdrShader.load(shaderName);
+    shaderName = getVisualSystemDataPath()+"shaders/sphereShader";
+    sphereShader.load(shaderName);
     
     timeStep = 0.001;
     radiusMultiplier = 1.0;

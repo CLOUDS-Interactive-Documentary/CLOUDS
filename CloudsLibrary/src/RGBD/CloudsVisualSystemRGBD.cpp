@@ -678,10 +678,14 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 //    else {
 //        drawCursorMode =  DRAW_CURSOR_NONE;
 //    }
-	float curQuestionSelectFade = (caughtPortal == NULL ? 1.0 : powf(ofMap(caughtPortal->hoverPercentComplete, 
+#ifdef OCULUS_RIFT
+	float curQuestionSelectFade = (caughtPortal == NULL ? 1.0 : powf(ofMap(caughtPortal->hoverPercentComplete,
 																		0.0, .2, 1.0, 0.0, true), 2.0));
 	questionSelectFade += (curQuestionSelectFade - questionSelectFade) * .1;
-
+#else
+    questionSelectFade = 1.0;
+#endif
+    
 	pointLayer1.visualSystemFadeValue = getRGBDTransitionValue();
     pointLayer2.visualSystemFadeValue = getRGBDTransitionValue();
     pointLayer1.update();

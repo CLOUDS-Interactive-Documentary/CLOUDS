@@ -1,7 +1,7 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>EXAMPLE VECTOR MATH</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -13,17 +13,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>X ROTATION</Name>
-    <Value>-0.837438583</Value>
+    <Value>-0.837438703</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Y ROTATION</Name>
-    <Value>-2.512315750</Value>
+    <Value>-2.512315512</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Z ROTATION</Name>
-    <Value>0.147783279</Value>
+    <Value>0.147783756</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,12 +58,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>AUTO DRAW SPEED</Name>
-    <Value>1.614285827</Value>
+    <Value>1.614285707</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>R</Name>
-    <Value>0.445366144</Value>
+    <Value>0.413062245</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -73,5 +73,5 @@
 <Widget>
     <Kind>25</Kind>
     <Name>B</Name>
-    <Value>0.864932179</Value>
+    <Value>0.583517790</Value>
 </Widget>

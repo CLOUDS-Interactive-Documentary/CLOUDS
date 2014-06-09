@@ -749,7 +749,7 @@ void CloudsIntroSequence::drawTunnel(){
 		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 120.);
 	}
 	else{
-		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 200.);
+		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 120.);
 	}
 	
 	tunnelShader.setUniform1f("cameraZ", warpCamera.getPosition().z);

@@ -1,27 +1,27 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Drawer</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>216.000000000</YPosition>
+    <XPosition>265.000000000</XPosition>
+    <YPosition>97.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>RECT_W</Name>
-    <Value>10.842364311</Value>
+    <Value>60.054187775</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RECT_H</Name>
-    <Value>778.546813965</Value>
+    <Value>296.270935059</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT_X</Name>
-    <Value>-0.192118227</Value>
+    <Value>0.064039350</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT_Y</Name>
-    <Value>-0.113300502</Value>
+    <Value>-0.103448272</Value>
 </Widget>
