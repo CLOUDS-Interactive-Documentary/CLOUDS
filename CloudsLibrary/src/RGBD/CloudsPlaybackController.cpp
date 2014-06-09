@@ -1088,7 +1088,7 @@ void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string 
 			arc.setStrokeWidth(4);
 			arc.setStrokeColor(arcColor);
 			float expandedArcRadius = interludeArcRadius + powf(1.0-crossfadeValue,2.0f) * 40; //expand it beyond when it's finished
-			arc.moveTo(cursorPosition.x, cursorPosition.y + expandedArcRadius, 0);
+			arc.moveTo(cursorPosition.x, cursorPosition.y - expandedArcRadius, 0);
 			arc.arc(cursorPosition, expandedArcRadius, expandedArcRadius, -90, 360*arcPercent-90, true);
 			arc.draw();
 		}

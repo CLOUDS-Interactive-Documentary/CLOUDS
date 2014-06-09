@@ -104,6 +104,8 @@ void CalibrationNode::updateInteraction(){
 void CalibrationNode::draw(){
 	ofPushMatrix();
 	ofPushStyle();
+    
+    ofEnableAlphaBlending();
 	
 	ofFloatColor baseColor;
 	if(finished){
@@ -144,7 +146,7 @@ void CalibrationNode::draw(){
 		arc.setStrokeWidth(3);
 		arc.setStrokeColor(arcColor);
 		float animationProgress = ofxTween::map(percentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
-        arc.moveTo(0, nodeSize, 0);  // EZ: This is necessary under Windows
+        arc.moveTo(0, nodeSize, 0);
 		arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 90, 360*animationProgress + 90, true);
 		arc.draw();
 	}
