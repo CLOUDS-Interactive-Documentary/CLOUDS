@@ -490,13 +490,13 @@ void CloudsVisualSystemOpenP5NoiseSphere::reloadSound()
     if (file.getExtension() == "mp4" || file.getExtension() == "mov") {
         bModeVideo = true;
         
-        videoPlayer.loadMovie(file.getAbsolutePath());
+        videoPlayer.loadMovie( soundsDir.getPath(selectedSoundsIdx) );
 		videoPlayerReady = true;
     }
     else {
         bModeVideo = false;
 #endif
-        soundPlayer.loadSound(file.getAbsolutePath());
+        soundPlayer.loadSound( soundsDir.getPath(selectedSoundsIdx) );
 		soundPlayerReady = true;
 #ifdef TARGET_OSX
     }
