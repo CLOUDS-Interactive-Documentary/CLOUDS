@@ -2967,6 +2967,7 @@
 		850EDBA7183056EC004411A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2989,8 +2990,8 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"",
-					"\"$(SRCROOT)/../../../addons/ofxAudioFeatures/libs/aubio/lib/osx\"",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
@@ -2999,7 +3000,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3007,6 +3008,7 @@
 		850EDBA8183056EC004411A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3028,8 +3030,8 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"",
-					"\"$(SRCROOT)/../../../addons/ofxAudioFeatures/libs/aubio/lib/osx\"",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
@@ -3038,7 +3040,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -3046,6 +3048,7 @@
 		AE6FFE68187F36AF00677B60 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3068,13 +3071,13 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"",
-					"\"$(SRCROOT)/../../../addons/ofxAudioFeatures/libs/aubio/lib/osx\"",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3082,6 +3085,7 @@
 		AE6FFE69187F36AF00677B60 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3103,13 +3107,13 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"",
-					"\"$(SRCROOT)/../../../addons/ofxAudioFeatures/libs/aubio/lib/osx\"",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -3184,6 +3188,7 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3204,8 +3209,8 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"",
-					"\"$(SRCROOT)/../../../addons/ofxAudioFeatures/libs/aubio/lib/osx\"",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
@@ -3218,6 +3223,7 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3237,8 +3243,8 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"",
-					"\"$(SRCROOT)/../../../addons/ofxAudioFeatures/libs/aubio/lib/osx\"",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
