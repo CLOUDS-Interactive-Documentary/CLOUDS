@@ -8,15 +8,15 @@
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemTunnelDrawing::selfSetupGui(){
 
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
+	customGui = new ofxUISuperCanvas("TUNNEL", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
+	customGui->setName("Tunnel");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	customGui->addSlider("projection dist", -1, 1, &screenSpaceProjectDistance);
+	customGui->addSlider("projection dist", .9,1.0, &screenSpaceProjectDistance);
 	customGui->addSlider("cam speed", -4, 0, &fallOffSpeed);
 
-	customGui->addSlider("debug sphere rad", .1, 5, &debugSphereRad);
+//	customGui->addSlider("debug sphere rad", .1, 5, &debugSphereRad);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemTunnelDrawing::selfGuiEvent);
 	guis.push_back(customGui);
@@ -24,9 +24,6 @@ void CloudsVisualSystemTunnelDrawing::selfSetupGui(){
 }
 
 void CloudsVisualSystemTunnelDrawing::selfGuiEvent(ofxUIEventArgs &e){
-	if(e.widget->getName() == "Custom Button"){
-		cout << "Button pressed!" << endl;
-	}
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -51,10 +48,6 @@ void CloudsVisualSystemTunnelDrawing::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemTunnelDrawing::selfSetup(){
 	
-    
-	//initialize the variable so it's off at the beginning
-//    usecamer = true;
-//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
 }
 
@@ -88,16 +81,14 @@ void CloudsVisualSystemTunnelDrawing::selfUpdate(){
 	}
 	center = sumOfAllPoints / points.size();
 	
-//	camera.setPosition( ofVec3f(getSharedRenderTarget().getWidth()/2,
-//								getSharedRenderTarget().getHeight()/2, 0));
-	//camera.lookAt(center);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTunnelDrawing::selfDraw(){
 
-
+	ofGet
+	
 	ofSetColor(255);
 	//do the same thing from the first example...
     ofMesh mesh;
@@ -145,20 +136,19 @@ void CloudsVisualSystemTunnelDrawing::selfDraw(){
 	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	mesh.drawWireframe();
     
-	ofPushStyle();
-	ofSetColor(255);
-	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(GetCloudsInputX(),
-													   GetCloudsInputY(),
-													   screenSpaceProjectDistance) );
-	
+//	ofPushStyle();
+//	ofSetColor(255);
+//	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(GetCloudsInputX(),
+//													   GetCloudsInputY(),
+//													   screenSpaceProjectDistance) );
 	//cam.setFarClip(mousePoint.z - cam.getPosition().z);
-	ofPopStyle();
+//	ofPopStyle();
 	
-	ofPushStyle();
-	ofNoFill();
-	ofSetColor(255,0,0);
-	ofDrawSphere(mousePoint, debugSphereRad);
-	ofPopStyle();
+//	ofPushStyle();
+//	ofNoFill();
+//	ofSetColor(255,0,0);
+//	ofDrawSphere(mousePoint, debugSphereRad);
+//	ofPopStyle();
 }
 
 // draw any debug stuff here
@@ -199,33 +189,10 @@ void CloudsVisualSystemTunnelDrawing::selfMouseDragged(ofMouseEventArgs& data){
 void CloudsVisualSystemTunnelDrawing::selfMouseMoved(ofMouseEventArgs& data){
     
     
-//    if(usecamera){
-//        float rotateAmount = ofMap(data.x, 0, data.y, 0, 360);
-//        ofVec3f furthestPoint;
-//        if (points.size() > 0) {
-//            furthestPoint = points[0];
-//        }
-//        else
-//        {
-//            furthestPoint = ofVec3f(data.x, data.y, 0);
-//        }
-//        
-//        ofVec3f directionToFurthestPoint = (furthestPoint - center);
-//        ofVec3f directionToFurthestPointRotated = directionToFurthestPoint.rotated(rotateAmount, ofVec3f(0,1,0));
-//        camera.setPosition(center + directionToFurthestPointRotated);
-//        camera.lookAt(center);
-//    }
-	//otherwise add points like before
-//    else{
-	
 	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(GetCloudsInputX(),
 													   GetCloudsInputY(),
 													   screenSpaceProjectDistance) );
 	points.push_back(mousePoint);
-	
-	cout << "added point " << points.back() << endl;
-//    }
-    	
 }
 
 void CloudsVisualSystemTunnelDrawing::selfMousePressed(ofMouseEventArgs& data){
