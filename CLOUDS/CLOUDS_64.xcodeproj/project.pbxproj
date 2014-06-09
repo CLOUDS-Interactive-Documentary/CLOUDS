@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03C079BC194605FE0081ED9B /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03C079A9194605FE0081ED9B /* Timer.cpp */; };
+		03C079BD194605FE0081ED9B /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03C079A9194605FE0081ED9B /* Timer.cpp */; };
 		2E8074591820B7EC00A003A0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8074571820B7D500A003A0 /* AVFoundation.framework */; };
 		2E80745F1820B8B600A003A0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		64CDB66E194500EC00C56A13 /* ofxBinaryMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */; };
-		64CDB6901945037600C56A13 /* ofxAnimationPrimitivesTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CDB68C1945037600C56A13 /* ofxAnimationPrimitivesTimer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -1015,7 +1016,7 @@
 		E7DDC21E194437EC00E61D75 /* CloudsVisualSystemBalloons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D6DA1943F50E00AA81C1 /* CloudsVisualSystemBalloons.cpp */; };
 		E7DDC21F194437EC00E61D75 /* CloudsVisualSystemGPUParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8236B18BEBD6E00C1EB93 /* CloudsVisualSystemGPUParticles.cpp */; };
 		E7DDC220194437EC00E61D75 /* LimbDarkeningPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA890189F3622006C9E4E /* LimbDarkeningPass.cpp */; };
-		E7DDC221194437EC00E61D75 /* ofxBinaryMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D6CD1943F47C00AA81C1 /* ofxBinaryMesh.cpp */; };
+		E7DDC221194437EC00E61D75 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E7DDC222194437EC00E61D75 /* b2Distance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA254189F1CD9006C9E4E /* b2Distance.cpp */; };
 		E7DDC223194437EC00E61D75 /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8241A18BEBD6F00C1EB93 /* Brush.cpp */; };
 		E7DDC224194437EC00E61D75 /* ofxUISortableList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D59D1943F2AF00AA81C1 /* ofxUISortableList.cpp */; };
@@ -1194,7 +1195,7 @@
 		E7DDC2D1194437EC00E61D75 /* ofxTLLFO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827B318BEBDCF00C1EB93 /* ofxTLLFO.cpp */; };
 		E7DDC2D2194437EC00E61D75 /* CloudsVisualSystemMetaballs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D823B518BEBD6E00C1EB93 /* CloudsVisualSystemMetaballs.cpp */; };
 		E7DDC2D3194437EC00E61D75 /* CloudsVisualSystemFlying.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8235F18BEBD6E00C1EB93 /* CloudsVisualSystemFlying.cpp */; };
-		E7DDC2D4194437EC00E61D75 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D69C1943F3F200AA81C1 /* Timer.cpp */; };
+		E7DDC2D4194437EC00E61D75 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E7DDC2D5194437EC00E61D75 /* b2Contact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA27A189F1CD9006C9E4E /* b2Contact.cpp */; };
 		E7DDC2D6194437EC00E61D75 /* ModelCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8248818BEBD6F00C1EB93 /* ModelCreature.cpp */; };
 		E7DDC2D7194437EC00E61D75 /* MarineSnow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8248618BEBD6F00C1EB93 /* MarineSnow.cpp */; };
@@ -1367,20 +1368,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03C0799D194605FE0081ED9B /* Composition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Composition.h; sourceTree = "<group>"; };
+		03C0799E194605FE0081ED9B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		03C079A0194605FE0081ED9B /* Composition.inc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Composition.inc.h; sourceTree = "<group>"; };
+		03C079A1194605FE0081ED9B /* coroutine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = coroutine.hpp; sourceTree = "<group>"; };
+		03C079A2194605FE0081ED9B /* Easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Easing.h; sourceTree = "<group>"; };
+		03C079A3194605FE0081ED9B /* Generator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Generator.h; sourceTree = "<group>"; };
+		03C079A4194605FE0081ED9B /* InstanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstanceManager.h; sourceTree = "<group>"; };
+		03C079A5194605FE0081ED9B /* Lerp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lerp.h; sourceTree = "<group>"; };
+		03C079A6194605FE0081ED9B /* Pattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pattern.h; sourceTree = "<group>"; };
+		03C079A7194605FE0081ED9B /* Replicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replicator.h; sourceTree = "<group>"; };
+		03C079A8194605FE0081ED9B /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequence.h; sourceTree = "<group>"; };
+		03C079A9194605FE0081ED9B /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		03C079AA194605FE0081ED9B /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		03C079AB194605FE0081ED9B /* ofxAnimationPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitives.h; sourceTree = "<group>"; };
 		2E8074571820B7D500A003A0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2E80745D1820B8AB00A003A0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBinaryMesh.cpp; sourceTree = "<group>"; };
 		64CDB66A194500EC00C56A13 /* ofxBinaryMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBinaryMesh.h; sourceTree = "<group>"; };
-		64CDB6841945037600C56A13 /* coroutine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = coroutine.hpp; sourceTree = "<group>"; };
-		64CDB6851945037600C56A13 /* ofxAnimationPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitives.h; sourceTree = "<group>"; };
-		64CDB6861945037600C56A13 /* ofxAnimationPrimitivesConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesConstants.h; sourceTree = "<group>"; };
-		64CDB6871945037600C56A13 /* ofxAnimationPrimitivesEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesEasing.h; sourceTree = "<group>"; };
-		64CDB6881945037600C56A13 /* ofxAnimationPrimitivesGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesGenerator.h; sourceTree = "<group>"; };
-		64CDB6891945037600C56A13 /* ofxAnimationPrimitivesInstanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesInstanceManager.h; sourceTree = "<group>"; };
-		64CDB68A1945037600C56A13 /* ofxAnimationPrimitivesPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesPattern.h; sourceTree = "<group>"; };
-		64CDB68B1945037600C56A13 /* ofxAnimationPrimitivesReplicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesReplicator.h; sourceTree = "<group>"; };
-		64CDB68C1945037600C56A13 /* ofxAnimationPrimitivesTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAnimationPrimitivesTimer.cpp; sourceTree = "<group>"; };
-		64CDB68D1945037600C56A13 /* ofxAnimationPrimitivesTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesTimer.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -3144,6 +3149,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03C07959194605FE0081ED9B /* ofxAnimationPrimitives */ = {
+			isa = PBXGroup;
+			children = (
+				03C0799B194605FE0081ED9B /* src */,
+			);
+			name = ofxAnimationPrimitives;
+			path = ../../../addons/ofxAnimationPrimitives;
+			sourceTree = "<group>";
+		};
+		03C0799B194605FE0081ED9B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				03C0799C194605FE0081ED9B /* ofxAnimationPrimitives */,
+				03C079AB194605FE0081ED9B /* ofxAnimationPrimitives.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		03C0799C194605FE0081ED9B /* ofxAnimationPrimitives */ = {
+			isa = PBXGroup;
+			children = (
+				03C0799D194605FE0081ED9B /* Composition.h */,
+				03C0799E194605FE0081ED9B /* Constants.h */,
+				03C0799F194605FE0081ED9B /* detail */,
+				03C079A2194605FE0081ED9B /* Easing.h */,
+				03C079A3194605FE0081ED9B /* Generator.h */,
+				03C079A4194605FE0081ED9B /* InstanceManager.h */,
+				03C079A5194605FE0081ED9B /* Lerp.h */,
+				03C079A6194605FE0081ED9B /* Pattern.h */,
+				03C079A7194605FE0081ED9B /* Replicator.h */,
+				03C079A8194605FE0081ED9B /* Sequence.h */,
+				03C079A9194605FE0081ED9B /* Timer.cpp */,
+				03C079AA194605FE0081ED9B /* Timer.h */,
+			);
+			path = ofxAnimationPrimitives;
+			sourceTree = "<group>";
+		};
+		03C0799F194605FE0081ED9B /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				03C079A0194605FE0081ED9B /* Composition.inc.h */,
+				03C079A1194605FE0081ED9B /* coroutine.hpp */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
 		64CDB650194500EC00C56A13 /* ofxBinaryMesh */ = {
 			isa = PBXGroup;
 			children = (
@@ -3162,36 +3213,10 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		64CDB6721945037600C56A13 /* ofxAnimationPrimitives */ = {
-			isa = PBXGroup;
-			children = (
-				64CDB6831945037600C56A13 /* src */,
-			);
-			name = ofxAnimationPrimitives;
-			path = ../../../addons/ofxAnimationPrimitives;
-			sourceTree = "<group>";
-		};
-		64CDB6831945037600C56A13 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				64CDB6841945037600C56A13 /* coroutine.hpp */,
-				64CDB6851945037600C56A13 /* ofxAnimationPrimitives.h */,
-				64CDB6861945037600C56A13 /* ofxAnimationPrimitivesConstants.h */,
-				64CDB6871945037600C56A13 /* ofxAnimationPrimitivesEasing.h */,
-				64CDB6881945037600C56A13 /* ofxAnimationPrimitivesGenerator.h */,
-				64CDB6891945037600C56A13 /* ofxAnimationPrimitivesInstanceManager.h */,
-				64CDB68A1945037600C56A13 /* ofxAnimationPrimitivesPattern.h */,
-				64CDB68B1945037600C56A13 /* ofxAnimationPrimitivesReplicator.h */,
-				64CDB68C1945037600C56A13 /* ofxAnimationPrimitivesTimer.cpp */,
-				64CDB68D1945037600C56A13 /* ofxAnimationPrimitivesTimer.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				64CDB6721945037600C56A13 /* ofxAnimationPrimitives */,
+				03C07959194605FE0081ED9B /* ofxAnimationPrimitives */,
 				E7D82BC918BF0CEC00C1EB93 /* ofxAssimpModelLoader */,
 				E73DA332189F1CDC006C9E4E /* ofxAutoReloadedShader */,
 				E73DA2D4189F1CDA006C9E4E /* ofxBillboard */,
@@ -8162,7 +8187,6 @@
 				E7D8258A18BEBD7000C1EB93 /* ParticleConnectorBin.cpp in Sources */,
 				E7D8261618BEBD7000C1EB93 /* v_base.cpp in Sources */,
 				E7D825CD18BEBD7000C1EB93 /* CloudsVisualSystemOpenP5TextUniverse.cpp in Sources */,
-				64CDB6901945037600C56A13 /* ofxAnimationPrimitivesTimer.cpp in Sources */,
 				E7D8256418BEBD7000C1EB93 /* CloudsStoryEngine.cpp in Sources */,
 				E73DA8E9189F3622006C9E4E /* ParallelTransportFrames.cpp in Sources */,
 				E73DA928189F362A006C9E4E /* ofxOscReceiver.cpp in Sources */,
@@ -8622,6 +8646,7 @@
 				E7D8290518BEBE6D00C1EB93 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7D8280018BEBDCF00C1EB93 /* ofxTLTicker.cpp in Sources */,
 				E73DA6F9189F1CEA006C9E4E /* b2CircleContact.cpp in Sources */,
+				03C079BC194605FE0081ED9B /* Timer.cpp in Sources */,
 				E73DABFD189F3645006C9E4E /* Utilities.cpp in Sources */,
 				E7D8257518BEBD7000C1EB93 /* LinkedListItem.cpp in Sources */,
 				E7D828F818BEBE6D00C1EB93 /* ofxBufferEffectorBehavior.cpp in Sources */,
@@ -8780,6 +8805,7 @@
 				E7DDC107194437EC00E61D75 /* ControlComparison.cpp in Sources */,
 				E7DDC108194437EC00E61D75 /* PolylineSegmentedPath.cpp in Sources */,
 				E7DDC109194437EC00E61D75 /* ofxUIImageToggle.cpp in Sources */,
+				03C079BD194605FE0081ED9B /* Timer.cpp in Sources */,
 				E7DDC10A194437EC00E61D75 /* ofxSubtitles.cpp in Sources */,
 				E7DDC10B194437EC00E61D75 /* SampleTable.cpp in Sources */,
 				E7DDC10C194437EC00E61D75 /* RandomMover.cpp in Sources */,
@@ -9059,7 +9085,7 @@
 				E7DDC21E194437EC00E61D75 /* CloudsVisualSystemBalloons.cpp in Sources */,
 				E7DDC21F194437EC00E61D75 /* CloudsVisualSystemGPUParticles.cpp in Sources */,
 				E7DDC220194437EC00E61D75 /* LimbDarkeningPass.cpp in Sources */,
-				E7DDC221194437EC00E61D75 /* ofxBinaryMesh.cpp in Sources */,
+				E7DDC221194437EC00E61D75 /* (null) in Sources */,
 				E7DDC222194437EC00E61D75 /* b2Distance.cpp in Sources */,
 				E7DDC223194437EC00E61D75 /* Brush.cpp in Sources */,
 				E7DDC224194437EC00E61D75 /* ofxUISortableList.cpp in Sources */,
@@ -9238,7 +9264,7 @@
 				E7DDC2D1194437EC00E61D75 /* ofxTLLFO.cpp in Sources */,
 				E7DDC2D2194437EC00E61D75 /* CloudsVisualSystemMetaballs.cpp in Sources */,
 				E7DDC2D3194437EC00E61D75 /* CloudsVisualSystemFlying.cpp in Sources */,
-				E7DDC2D4194437EC00E61D75 /* Timer.cpp in Sources */,
+				E7DDC2D4194437EC00E61D75 /* (null) in Sources */,
 				E7DDC2D5194437EC00E61D75 /* b2Contact.cpp in Sources */,
 				E7DDC2D6194437EC00E61D75 /* ModelCreature.cpp in Sources */,
 				E7DDC2D7194437EC00E61D75 /* MarineSnow.cpp in Sources */,
@@ -9610,50 +9636,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/android/armeabi,
-					"/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/android/armeabi-v7a",
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/ios,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/linux,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/linux64,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/linuxarmv6l,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/linuxarmv7l,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/osx,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/vs,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/win_cb,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/linux,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/linux64,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/osx,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/vs2010,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/vs2012,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
-					"/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT",
-					"/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL",
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxTimeline/libs/openal/libs/vs2010,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxTimeline/libs/sndfile/lib/osx,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxTimeline/libs/sndfile/lib/vs2010,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxAssimpModelLoader/libs/assimp/lib/android/armeabi,
-					"/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxAssimpModelLoader/libs/assimp/lib/android/armeabi-v7a",
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxAssimpModelLoader/libs/assimp/lib/ios,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxAssimpModelLoader/libs/assimp/lib/linux,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxAssimpModelLoader/libs/assimp/lib/linux64,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxAssimpModelLoader/libs/assimp/lib/osx,
-					/Users/focus/Documents/Xcode/of_64_osx/openFrameworks/addons/ofxAssimpModelLoader/libs/assimp/lib/vs,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/android/armeabi,
-					"/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/android/armeabi-v7a",
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/ios,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/linux,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/linux64,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/linuxarmv6l,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/linuxarmv7l,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/osx/Debug,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/osx/Release,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/vs,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/vs64,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxOpenCv/libs/opencv/lib/win_cb,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxTimeline/libs/sndfile/lib/osx,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxAssimpModelLoader/libs/assimp/lib/osx,
+					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release",
+					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
+					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
+					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
