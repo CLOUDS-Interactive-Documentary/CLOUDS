@@ -1,5 +1,7 @@
 audiovisualization:What does music look like?
+beginnings:How does this story begin?
 big data:What is powerful about Big Data?
+clouds:How does this story end?
 data:What is data?
 emergence:How does complexity emerge from simple rules?
 sketching:How do you sketch with code?

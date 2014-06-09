@@ -90,6 +90,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>futue of cinema</revokedKeywords>
     <additionalKeywords>future of cinema,?storytelling: What is the future of storytelling?,#logical,#mindblowing,#serious,#question</additionalKeywords>
 </clip>
@@ -236,6 +241,11 @@
     </suppress>
     <suppress>
         <target>Marcus - simulation to stories</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -672,6 +682,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karsten - DarkNet</target>
         <startFrame>-1</startFrame>
@@ -766,6 +786,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Software Meme 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Marcus - Epic Games predictions</target>
         <startFrame>-1</startFrame>
@@ -802,6 +827,11 @@
     </suppress>
     <suppress>
         <target>Marcus - simulation to stories</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -1195,6 +1225,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Non-narrative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Greg - visual effects</target>
         <startFrame>-1</startFrame>
@@ -1232,6 +1267,11 @@
     </suppress>
     <suppress>
         <target>Bruce - Github Tarball</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -1711,6 +1751,11 @@
     </link>
     <link>
         <target>Nervous_Jesse - Open source education</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Software Meme 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2754,6 +2799,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Sonifying</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Simplicity 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Golan - formalism</target>
         <startFrame>-1</startFrame>
@@ -3069,6 +3124,11 @@
     </link>
     <link>
         <target>Maeda - People</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Hammers</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -3647,6 +3707,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Fractals</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Binx - changing the world</target>
         <startFrame>-1</startFrame>
@@ -4176,6 +4251,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Civili Engineering</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Shiffman - Magnets</target>
         <startFrame>-1</startFrame>
@@ -4211,7 +4291,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>math,#logical,#rational,#inspiring,#easy</additionalKeywords>
+    <additionalKeywords>math,#easy,#inspiring,#rational,#logical,?beginnings: How did you start?</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - there was no degree</name>
@@ -4247,6 +4327,11 @@
     </link>
     <link>
         <target>Marius - cross discplines</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Civili Engineering</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4800,6 +4885,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Deadline 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#ironic</additionalKeywords>
 </clip>
 <clip>
@@ -4845,6 +4935,16 @@
     </link>
     <link>
         <target>Golan - MachineIntelligence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - A bunch of lines 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -5093,6 +5193,11 @@
     </link>
     <link>
         <target>Marius - Aesthetic with no references,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -5534,6 +5639,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Fractals</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>poetry,#hard,#mindblowing,math</additionalKeywords>
 </clip>
 <clip>
@@ -5568,7 +5678,12 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>math,#discouraging</additionalKeywords>
+    <link>
+        <target>Memo_master - Psychedelic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>math,fractals,#discouraging,psychedelic</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - New media Wow</name>
@@ -5633,6 +5748,11 @@
     </link>
     <link>
         <target>LIA - AntiInteractivity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Sound and vision</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -5851,6 +5971,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Magic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#example,#pe?Funky Forest,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -5897,6 +6027,11 @@
     </link>
     <link>
         <target>Kevin - collaboration with machines</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -6409,6 +6544,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard,journey</additionalKeywords>
 </clip>
 <clip>
@@ -6802,6 +6947,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - looking at the ocean</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Bruce - Truth is unstable</name>
@@ -6890,6 +7040,11 @@
     </link>
     <link>
         <target>Casey - Developing a microworld</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -7036,6 +7191,16 @@
     </link>
     <link>
         <target>JTNimoy - one of us</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSA 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Civili Engineering</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -7219,6 +7384,11 @@
     </link>
     <link>
         <target>Shiffman - NOC 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Complexity 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -7501,6 +7671,11 @@
     <name>Casey - Craig Venter</name>
     <link>
         <target>Nervous_Jessica - Growing buildings</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Complexity 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -8136,6 +8311,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Master of universe 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Maeda - Processing toolkit</target>
         <startFrame>-1</startFrame>
@@ -8191,7 +8376,20 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>branching,emotion,abstraction,openness</revokedKeywords>
+</clip>
+<clip>
+    <name>Casey - passionate about cinema</name>
+    <link>
+        <target>Memo_master - Filmmaker aspirations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Casey - It&apos;s not cinema not a game</name>
@@ -8237,6 +8435,16 @@
     </link>
     <link>
         <target>Marcus - Epic Games predictions</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Story unfolds</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Non-narrative</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -8827,6 +9035,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Complexity 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Vera - Digital life forms</target>
         <startFrame>-1</startFrame>
@@ -8918,6 +9131,11 @@
     </suppress>
     <suppress>
         <target>Theo - magic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Master of universe 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -9084,6 +9302,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Story unfolds</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Non-narrative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Vera - Energy Flow2</target>
         <startFrame>-1</startFrame>
@@ -9140,6 +9368,11 @@
     </link>
     <link>
         <target>Kevin - non-mimetic reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -9355,6 +9588,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Psychedelic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Philip - understanding through physics</target>
         <startFrame>-1</startFrame>
@@ -9396,6 +9634,11 @@
     </link>
     <link>
         <target>Aaron - progress</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Software Meme 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -9697,6 +9940,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Psychedelic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - an overly complex model</target>
         <startFrame>-1</startFrame>
@@ -9788,6 +10036,11 @@
     </link>
     <link>
         <target>Jer - take advantage of this thing we can do</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Fractals</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -9892,6 +10145,11 @@
     </suppress>
     <suppress>
         <target>Martin - limits of computation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Fractals</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -10979,6 +11237,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - STEAM 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#easy,#inspiring,#sincere,questions,?science: How does the scientific method apply to creativity?,#question</additionalKeywords>
 </clip>
 <clip>
@@ -11778,6 +12041,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Synaesthesia 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - rafael&apos;s cardiogram</target>
         <startFrame>-1</startFrame>
@@ -11842,6 +12110,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Simplicity 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - rafael&apos;s cardiogram</target>
         <startFrame>-1</startFrame>
@@ -11856,6 +12129,11 @@
 </clip>
 <clip>
     <name>Golan - piano and pencil,</name>
+    <link>
+        <target>Memo_master - Simplicity 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Zach - Drawn1</target>
         <startFrame>-1</startFrame>
@@ -12042,6 +12320,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>project example</revokedKeywords>
     <additionalKeywords>#fun,#gold,#example,#hard</additionalKeywords>
 </clip>
@@ -12074,6 +12357,11 @@
     </link>
     <link>
         <target>Patricio - Seduced by Play 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -12880,6 +13168,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Hammers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - new toolkits</target>
         <startFrame>-1</startFrame>
@@ -13420,6 +13713,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Maximalist</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - correct is beautiful</target>
         <startFrame>-1</startFrame>
@@ -13456,6 +13754,16 @@
     </link>
     <link>
         <target>Maeda - playful systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Synaesthesia 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Sound design</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -13669,6 +13977,26 @@
     </link>
     <link>
         <target>Bruce - Infinity in a grain of sand</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Fractals</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Limited Perception</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - looking at the ocean</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -14740,6 +15068,26 @@
 </clip>
 <clip>
     <name>Higa - sound and video</name>
+    <link>
+        <target>Memo_master - Harmonic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Pulses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Sound and vision</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Synaesthesia 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#start,?audiovisualization: What does music look like?,#question</additionalKeywords>
 </clip>
 <clip>
@@ -14751,6 +15099,11 @@
     </link>
     <link>
         <target>Patricio - Making tools</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Simplicity 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -15207,6 +15560,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Civili Engineering</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Julia - beginning in the tech scene</target>
         <startFrame>-1</startFrame>
@@ -15232,7 +15590,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>struggle,struggle with technology,learning,#mundane,#logical,#obstacle</additionalKeywords>
+    <additionalKeywords>struggle,struggle with technology,learning,#obstacle,#logical,#mundane,?beginnings: How did you start?</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - a different mathematics</name>
@@ -15302,6 +15660,11 @@
     </link>
     <link>
         <target>Bruce - Truth is unstable</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - FictionalUniverse 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -15463,6 +15826,11 @@
     </suppress>
     <suppress>
         <target>LIA - PatternsIntheBrain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Fractals</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -15958,6 +16326,11 @@
     </suppress>
     <suppress>
         <target>LIA - PatternsIntheBrain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Fractals</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -16748,6 +17121,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Magic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Elliot_UK - wiremape_description</target>
         <startFrame>-1</startFrame>
@@ -16855,6 +17233,11 @@
     </suppress>
     <suppress>
         <target>LIA - TinyButtons2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - MSAFluid 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -17221,6 +17604,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Simplicity 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#serious,#rational,#ironic</additionalKeywords>
 </clip>
 <clip>
@@ -17432,6 +17820,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Limited Perception</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - looking at the ocean</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>zen,#inspiring</additionalKeywords>
 </clip>
 <clip>
@@ -17492,6 +17895,16 @@
     </link>
     <link>
         <target>Kyle_MC - imagining your pointcloud</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Story unfolds</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Filmmaker aspirations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -17644,6 +18057,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Fractals</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Binx - actually interesting</target>
         <startFrame>-1</startFrame>
@@ -17758,6 +18176,11 @@
     </link>
     <link>
         <target>Bruce - Textual technologies</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Story unfolds</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -18467,6 +18890,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Ramsey - Ramsey Intro</target>
         <startFrame>-1</startFrame>
@@ -18514,6 +18942,11 @@
     </link>
     <link>
         <target>LIA - PatternsIntheBrain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Fractals</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -18800,6 +19233,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Simplicity 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Kyle_CH - don&apos;t underestimate traditional art</target>
         <startFrame>-1</startFrame>
@@ -18925,6 +19363,11 @@
     </link>
     <link>
         <target>Kyle_CH - storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - looking at the ocean</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -19306,6 +19749,16 @@
     </link>
     <link>
         <target>Paola - code is a language</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Software Meme 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Software Meme 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -19875,6 +20328,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - ExampleBiting</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Maeda - Design by Numbers</target>
         <startFrame>-1</startFrame>
@@ -20012,6 +20470,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Psychedelic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>scale,zoom,#mindblowing,#emotional</additionalKeywords>
 </clip>
 <clip>
@@ -20033,6 +20496,21 @@
     </link>
     <link>
         <target>Bruce - Eno 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - looking at the ocean</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -20133,6 +20611,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - PerceivingThroughScience</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Kevin - printing code</target>
         <startFrame>-1</startFrame>
@@ -20187,17 +20670,7 @@
 <clip>
     <name>Joel - interactivity</name>
     <link>
-        <target>Golan - what&apos;s an instrument?</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Golan - instruments</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Golan - piano and pencil,</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -20207,22 +20680,12 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Maeda - playful systems</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Shantell - big kid</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Theo - leaving a mark</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Maeda - thinking about interfaces</target>
+        <target>Memo_master - Simplicity 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -20389,6 +20852,11 @@
     </link>
     <link>
         <target>Diederick - hackathon1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - 10yearsOld 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -21847,6 +22315,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - ExampleBiting</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Software Meme 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Casey - Processing open</target>
         <startFrame>-1</startFrame>
@@ -22056,7 +22534,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>beginnings,creative coders,creative coding,#sincere,#emotional,?clouds: What is the story of Clouds?,#question</additionalKeywords>
+    <additionalKeywords>beginnings,creative coders,creative coding,#question,#emotional,#sincere,?clouds: What is CLOUDS?</additionalKeywords>
 </clip>
 <clip>
     <name>Julia - lives online</name>
@@ -23650,6 +24128,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>code changes the way</revokedKeywords>
     <additionalKeywords>man vs machine,#rational,#serious</additionalKeywords>
 </clip>
@@ -23695,6 +24178,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - hacking into NASA</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#pe?Transparency Grenade,#example,#tech,#rational</additionalKeywords>
 </clip>
 <clip>
@@ -23711,6 +24199,26 @@
     </link>
     <link>
         <target>Kyle_CH - storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Story unfolds</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - looking at the ocean</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - A bunch of lines 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - instrument</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -23784,6 +24292,11 @@
     </link>
     <link>
         <target>Philip - bits and bytes</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - A bunch of lines 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -23921,6 +24434,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Paola - bach mozart coders</target>
         <startFrame>-1</startFrame>
@@ -23957,6 +24475,16 @@
     </link>
     <link>
         <target>Casey - Something new, totally engrossing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Story unfolds</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Non-narrative</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -24090,6 +24618,11 @@
     </link>
     <link>
         <target>Jer - Pattern</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -24313,6 +24846,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Synaesthesia 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Binx - maps</target>
         <startFrame>-1</startFrame>
@@ -24427,6 +24965,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - ExampleBiting</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Software Meme 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Julian - toolkit culture</target>
         <startFrame>-1</startFrame>
@@ -24471,6 +25019,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Hammers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#fun</additionalKeywords>
 </clip>
 <clip>
@@ -24504,6 +25057,11 @@
 </clip>
 <clip>
     <name>Karsten - processing</name>
+    <link>
+        <target>Memo_master - MSA 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Golan - limits to sharing</target>
         <startFrame>-1</startFrame>
@@ -24546,6 +25104,11 @@
     </link>
     <link>
         <target>Jer - Software2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSA 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -24919,7 +25482,22 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#tech,#logical</additionalKeywords>
+    <link>
+        <target>Memo_master - book for kids</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - 10yearsOld 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - 10yearsOld 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#logical,#tech,?beginnings: How did you start?</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - east german hardware 2</name>
@@ -25446,6 +26024,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Programming 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - hated computer science</target>
         <startFrame>-1</startFrame>
@@ -25461,7 +26049,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>learning,#easy,?programming: What does it feel like to program?,#inspiring,#logical,#tech,#question</additionalKeywords>
+    <additionalKeywords>learning,#question,#tech,#logical,#inspiring,?programming: What does it feel like to program?,#easy,problem solving</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - solving complex problems</name>
@@ -25532,6 +26120,11 @@
     </link>
     <link>
         <target>Jen - saving the world</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -25735,6 +26328,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Paola - changes the way you think</target>
         <startFrame>-1</startFrame>
@@ -25766,6 +26364,11 @@
     </link>
     <link>
         <target>Patricio - Seduced by Play 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -26005,7 +26608,12 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#mindblowing,#fun,?clouds: What is Clouds?,#question</additionalKeywords>
+    <link>
+        <target>Memo_master - Non-narrative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>?clouds: How does this story end?,#mindblowing,#fun,#question,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - new media</name>
@@ -26347,6 +26955,11 @@
     </link>
     <link>
         <target>LIA - HandCopyingCode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - book for kids</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -27067,6 +27680,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Complexity 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Kevin - computation was invented</name>
@@ -27675,6 +28293,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Ramsey - Google glass</target>
         <startFrame>-1</startFrame>
@@ -27796,6 +28419,16 @@
     </link>
     <link>
         <target>Bruce - what gets you out of bed</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Mushrooms 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Psychedelic 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -27979,6 +28612,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - A bunch of lines 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - objective subjective</target>
         <startFrame>-1</startFrame>
@@ -28101,6 +28739,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - A bunch of lines 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Paola - bach mozart coders</target>
         <startFrame>-1</startFrame>
@@ -28109,6 +28752,11 @@
 </clip>
 <clip>
     <name>Kevin - Acknolwedgement of artifice</name>
+    <link>
+        <target>Memo_master - A bunch of lines 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Aaron - mini-brains 2</target>
         <startFrame>-1</startFrame>
@@ -28144,12 +28792,22 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Kevin - algo stories 1</name>
     <link>
         <target>Kevin - algo stories 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Story unfolds</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -28160,6 +28818,11 @@
     </suppress>
     <suppress>
         <target>Marcus - audience</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -28194,6 +28857,11 @@
     </suppress>
     <suppress>
         <target>Marcus - audience</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -29434,6 +30102,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>uncanny,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -29646,6 +30319,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Casey - Developing a microworld</target>
         <startFrame>-1</startFrame>
@@ -29658,6 +30336,11 @@
     </suppress>
     <suppress>
         <target>Ramsey - Conway 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - FictionalUniverse 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -29750,6 +30433,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Psychedelic Pong</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#easy,#inspiring,#mindblowing,real and virtual,?digital meets physical: How do algorithms alter reality?,#question</additionalKeywords>
 </clip>
 <clip>
@@ -29771,6 +30469,11 @@
     </link>
     <link>
         <target>Ramsey - wizardry 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -29830,6 +30533,11 @@
     </link>
     <link>
         <target>Bruce - Fountain pen</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - 10yearsOld 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -29937,6 +30645,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#surreal,#gold,#mindblowing,#transcript</additionalKeywords>
 </clip>
 <clip>
@@ -29977,6 +30690,11 @@
     </link>
     <link>
         <target>Bruce - Fountain pen</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - A bunch of lines 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -30402,6 +31120,16 @@
     </link>
     <link>
         <target>Kyle_MC - code as a theme 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Programming 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -30979,8 +31707,13 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - hacking into NASA</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>link: julian oliver &quot;critical engineering&quot;</revokedKeywords>
-    <additionalKeywords>#tech,#rational,#serious</additionalKeywords>
+    <additionalKeywords>#tech,#rational,#serious,?hackers: What&apos;s the hacker ethos?</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - Hackers and artists</name>
@@ -31157,7 +31890,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#rational,#serious,#tech,#hard</additionalKeywords>
+    <additionalKeywords>#hard,#tech,#serious,#rational,?hackers: Do hackers pose a real threat to society?</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - Transparent Tech</name>
@@ -32809,6 +33542,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - hacking into NASA</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>identity,#emotional,#hard,#gold</additionalKeywords>
 </clip>
 <clip>
@@ -32946,6 +33684,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Emotional lines</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - A bunch of lines 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Marcus - energy flow</target>
         <startFrame>-1</startFrame>
@@ -32962,7 +33710,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>storyteling</revokedKeywords>
-    <additionalKeywords>storytelling,#logical,#mindblowing</additionalKeywords>
+    <additionalKeywords>storytelling,#mindblowing,#logical,metaphor</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - Beginning art and tech</name>
@@ -32986,7 +33734,12 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#easy,#sincere</additionalKeywords>
+    <link>
+        <target>Memo_master - book for kids</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>?beginnings: How does this story begin?,#start,#sincere,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - languages as tools</name>
@@ -33072,6 +33825,11 @@
     </link>
     <link>
         <target>Casey - New modes of expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - 10yearsOld 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -33180,6 +33938,16 @@
     </link>
     <link>
         <target>Patricio - Dreams</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Mushrooms 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -33336,6 +34104,11 @@
     </link>
     <link>
         <target>Julia - human in tech</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -34004,6 +34777,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Software Meme 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Software Meme 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - Reaching higher</target>
         <startFrame>-1</startFrame>
@@ -34165,6 +34948,11 @@
     </link>
     <link>
         <target>Kyle_CH - mainstreaming of fring visual culture</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - hacking into NASA</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -34678,6 +35466,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Sound design</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Theo - funky forest</target>
         <startFrame>-1</startFrame>
@@ -34909,6 +35702,16 @@
     </link>
     <link>
         <target>Fernanda - defense of complexity 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Simplicity 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Simplicity 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -35439,6 +36242,11 @@
     </link>
     <link>
         <target>Bruce - New media Wow</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Programming 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -36397,6 +37205,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - STEAM 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>what are the questions you&apos;re interested in?</revokedKeywords>
     <additionalKeywords>questions,problem solving,design and art,design,#logical,?design: Where&apos;s the line between design and art?,#question</additionalKeywords>
 </clip>
@@ -36974,6 +37787,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - STEAM 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>what comes after digital?,question</revokedKeywords>
     <additionalKeywords>questions,post-digital,#hard,?post-digital: What comes after digital?,#question</additionalKeywords>
 </clip>
@@ -37001,6 +37819,11 @@
     </link>
     <link>
         <target>Jen - objective subjective</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - STEAM 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -37517,6 +38340,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Complexity 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - fuzzy systems</target>
         <startFrame>-1</startFrame>
@@ -37638,6 +38466,26 @@
     </link>
     <link>
         <target>Aaron - stories make our lives worth living</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Story unfolds</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Emotional lines</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Non-narrative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - instrument</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -37817,6 +38665,16 @@
     </link>
     <link>
         <target>Aaron - autonomous storytellers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Non-narrative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - instrument</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -38582,6 +39440,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Pulses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Sound and vision</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#sincere,#fun,#hard,#example</additionalKeywords>
 </clip>
 <clip>
@@ -38631,7 +39499,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>generations,newness,#inspiring</additionalKeywords>
+    <additionalKeywords>generations,newness,#inspiring,beginnings</additionalKeywords>
 </clip>
 <clip>
     <name>Marcus - lego bricks</name>
@@ -38789,6 +39657,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - looking at the ocean</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Philip - all the points can flush</target>
         <startFrame>-1</startFrame>
@@ -38808,7 +39681,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#easy,?randomness: How is randomness a useful tool?,#question</additionalKeywords>
+    <revokedKeywords>generative</revokedKeywords>
+    <additionalKeywords>#question,?randomness: How is randomness a useful tool?,#easy,generative art</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - dropped out of computer science</name>
@@ -38899,6 +39773,11 @@
     </link>
     <link>
         <target>Patricio - Alchemy 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -38994,6 +39873,16 @@
     </link>
     <link>
         <target>Bruce - find the inner wellspring</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Deadline 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Deadline 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -39283,6 +40172,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Maximalist</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#emotional,#art,#fun,#ironic,#easy</additionalKeywords>
 </clip>
 <clip>
@@ -39366,6 +40260,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Maximalist</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Fernanda - beautiful evidence 2</target>
         <startFrame>-1</startFrame>
@@ -39435,6 +40334,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Pulses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>visual cortex,josh nimoy,subliminal,link:jtnimoy - cortex2</revokedKeywords>
     <additionalKeywords>electronic music,#art,#inspiring,#mindblowing,#pe?Syn_,#example,mind</additionalKeywords>
 </clip>
@@ -39447,6 +40356,11 @@
     </link>
     <link>
         <target>Julia - aesthetic value</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Maximalist</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -41376,6 +42290,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Software Meme 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#mindblowing,#logical,#easy,#hard,#rational</additionalKeywords>
 </clip>
 <clip>
@@ -41911,6 +42830,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Simplicity 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Simplicity 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karolina - collaboration</target>
         <startFrame>-1</startFrame>
@@ -42119,6 +43048,11 @@
     </link>
     <link>
         <target>Ramsey - language self expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - 10yearsOld 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -43065,6 +43999,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Philip - couldn&apos;t do this with actual water</target>
         <startFrame>-1</startFrame>
@@ -43458,6 +44402,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Flower</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>influences</revokedKeywords>
     <additionalKeywords>#logical,#rational,simulation</additionalKeywords>
 </clip>
@@ -43758,6 +44707,11 @@
     </link>
     <link>
         <target>Bruce - Don&apos;t care about design</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Deadline 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -44509,6 +45463,11 @@
     </link>
     <link>
         <target>Kyle_MC - beauty</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Maximalist</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -45281,6 +46240,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - ExampleBiting</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>installation,#easy,#mundane</additionalKeywords>
 </clip>
 <clip>
@@ -45337,6 +46311,11 @@
     </link>
     <link>
         <target>Karolina - system metaphor</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -45607,6 +46586,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Simplicity 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Hammers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>making tools is more important than art projects in themselves</revokedKeywords>
     <additionalKeywords>toolmakers,invention,tools,#easy,#logical</additionalKeywords>
 </clip>
@@ -45825,6 +46814,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>the fantastic things about code</revokedKeywords>
     <additionalKeywords>coding,imagination,creativity,#easy,#gold,#inspiring,dreams</additionalKeywords>
 </clip>
@@ -45912,6 +46906,11 @@
     </link>
     <link>
         <target>Bruce - Digital fabrication</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -46017,6 +47016,16 @@
     </link>
     <link>
         <target>Theo - hidden technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Fractals</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -46807,6 +47816,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Sound and vision</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Fluctuating creative modes</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Patricio - Jam session</target>
         <startFrame>-1</startFrame>
@@ -46883,6 +47902,11 @@
     </link>
     <link>
         <target>LIA - LTree</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - magic</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -46984,6 +48008,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karolina - suspension of disbelief</target>
         <startFrame>-1</startFrame>
@@ -46996,6 +48025,11 @@
     </suppress>
     <suppress>
         <target>Marcus - Epic Games predictions</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - FictionalUniverse 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -47021,6 +48055,11 @@
     </link>
     <link>
         <target>Kevin - invented as opposed to discovered 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -47143,6 +48182,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - MSAFluid 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - modeling the human being</target>
         <startFrame>-1</startFrame>
@@ -47190,6 +48234,11 @@
     </link>
     <link>
         <target>Shiffman - reality will only get you so far</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Mushrooms 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -47657,6 +48706,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Joel - Bicycles for the Mind</target>
         <startFrame>-1</startFrame>
@@ -47679,6 +48733,11 @@
     </suppress>
     <suppress>
         <target>Shiffman - Constraints,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - FictionalUniverse 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -48076,6 +49135,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - 10yearsOld 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>code,?self expression: When does code become poetry?,#easy,#sincere,#inspiring,#tech,#question</additionalKeywords>
 </clip>
 <clip>
@@ -48126,6 +49190,11 @@
     </link>
     <link>
         <target>Maeda - a computer is a clock</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -48515,6 +49584,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Limited Perception</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>speed</revokedKeywords>
     <additionalKeywords>#mindblowing,#tech</additionalKeywords>
 </clip>
@@ -48671,6 +49750,11 @@
     </link>
     <link>
         <target>Patricio - Learning through others</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - 10yearsOld 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -49882,7 +50966,12 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>opacity,#logical,#sincere,#fun,#hard</additionalKeywords>
+    <suppress>
+        <target>Memo_master - MSA 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>opacity,#hard,#fun,#sincere,#logical,beginnings</additionalKeywords>
 </clip>
 <clip>
     <name>Ramsey - legos 2</name>
@@ -49918,6 +51007,11 @@
     </suppress>
     <suppress>
         <target>Theo - development feedback,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - MSA 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -50019,6 +51113,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - MSA 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#gold,#logical,#mindblowing</additionalKeywords>
 </clip>
 <clip>
@@ -50055,6 +51164,16 @@
     </suppress>
     <suppress>
         <target>Intro - BuildingWorlds</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Master of universe 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -50110,6 +51229,21 @@
     </link>
     <link>
         <target>Ramsey - wizardry 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Fractals</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Psychedelic Pong</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -50220,6 +51354,21 @@
     </suppress>
     <suppress>
         <target>Marcus - Epic Games predictions</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Master of universe 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Master of universe 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -50358,6 +51507,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Master of universe 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>conway,project example</revokedKeywords>
     <additionalKeywords>cellular automata,#example,#mindblowing</additionalKeywords>
 </clip>
@@ -50433,6 +51592,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Master of universe 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>conway,project example,infinity</revokedKeywords>
     <additionalKeywords>cellular automata,#example,#logical,#mindblowing,#rational</additionalKeywords>
 </clip>
@@ -50490,6 +51664,11 @@
     </link>
     <link>
         <target>Shiffman - programming the universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Complexity 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -50628,6 +51807,16 @@
     </link>
     <link>
         <target>Patricio - Information 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Simplicity 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Simplicity 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -51100,6 +52289,11 @@
     </link>
     <link>
         <target>Kyle_MC - Hackers and artists</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - hacking into NASA</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -51815,6 +53009,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Memo_master - PosthumanFun</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>whimsy</revokedKeywords>
     <additionalKeywords>#inspiring,#sincere,#fun</additionalKeywords>
 </clip>
@@ -51915,6 +53114,11 @@
     </link>
     <link>
         <target>Jen - necessity of code 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52117,6 +53321,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#conclusion,#art,#sincere,#easy</additionalKeywords>
 </clip>
 <clip>
@@ -52155,6 +53364,16 @@
 </clip>
 <clip>
     <name>Shantell - Live performance,</name>
+    <link>
+        <target>Memo_master - Sound and vision</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Synaesthesia 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Zach - drawing with Tayoon</target>
         <startFrame>-1</startFrame>
@@ -52189,6 +53408,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Sound design</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Golan - playable image</target>
         <startFrame>-1</startFrame>
@@ -52205,6 +53429,11 @@
     </link>
     <link>
         <target>Theo - crazy researcher</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52457,6 +53686,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Simplicity 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Simplicity 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - sitting in front of a computer</target>
         <startFrame>-1</startFrame>
@@ -52656,6 +53895,11 @@
 </clip>
 <clip>
     <name>Shiffman - Maybe I&apos;d like that</name>
+    <link>
+        <target>Memo_master - Civili Engineering</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - examples of the impossible</target>
         <startFrame>-1</startFrame>
@@ -52697,7 +53941,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>beginning</revokedKeywords>
-    <additionalKeywords>beginnings,#easy</additionalKeywords>
+    <additionalKeywords>beginnings,#easy,?beginnings: How did you start?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - Magnets</name>
@@ -52708,6 +53952,11 @@
     </link>
     <link>
         <target>Marius - Continuous process of exploration</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Harmonic 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52798,6 +54047,11 @@
     </link>
     <link>
         <target>Shantell - work with zach</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Deadline 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -53000,6 +54254,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - modeling the human being</target>
         <startFrame>-1</startFrame>
@@ -53020,12 +54289,32 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - InspiredByNature</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#easy,nature of code</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - nature of code book</name>
     <link>
         <target>Ramsey - New Kind of Science</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - looking at the ocean</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -53159,6 +54448,11 @@
     </link>
     <link>
         <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -53752,6 +55046,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Programming 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Rational brain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Nervous_Jesse - Biology is messy</target>
         <startFrame>-1</startFrame>
@@ -53916,6 +55225,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Binx - hackathon</target>
         <startFrame>-1</startFrame>
@@ -54047,6 +55361,11 @@
     </link>
     <link>
         <target>LIA - VisualizeAnIdea</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Complexity 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -54235,7 +55554,22 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#art,#surreal</additionalKeywords>
+    <link>
+        <target>Memo_master - Magic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Mushrooms 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Psychedelic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#surreal,#art,drugs</additionalKeywords>
 </clip>
 <clip>
     <name>Sophy - everyday media</name>
@@ -54440,16 +55774,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - PosthumanFun</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Aaron - lego creatures</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#surreal</additionalKeywords>
+    <additionalKeywords>#surreal,drugs</additionalKeywords>
 </clip>
 <clip>
     <name>Sophy - techno-fungus</name>
-    <additionalKeywords>#surreal</additionalKeywords>
+    <additionalKeywords>#surreal,drugs</additionalKeywords>
 </clip>
 <clip>
     <name>Sophy - distributed culture</name>
@@ -54514,6 +55853,16 @@
     </link>
     <link>
         <target>Jen - more playfulness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -54711,6 +56060,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Mushrooms 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>JTNimoy - be a robot</target>
         <startFrame>-1</startFrame>
@@ -54772,7 +56126,17 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>phenomena,?nature: What inspires you?,#question</additionalKeywords>
+    <link>
+        <target>Memo_master - InspiredByNature</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>phenomena,#question,?nature: What inspires you?,art and science</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - relating to nature</name>
@@ -54788,6 +56152,11 @@
     </link>
     <link>
         <target>Martin - birds eye view</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - InspiredByNature</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -54827,6 +56196,11 @@
     </link>
     <link>
         <target>Bruce - Popular installation art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -54910,6 +56284,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Magic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Golan - playable image</target>
         <startFrame>-1</startFrame>
@@ -54967,6 +56346,11 @@
 </clip>
 <clip>
     <name>Theo - learning</name>
+    <link>
+        <target>Memo_master - Civili Engineering</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Nervous_Jessica - MIT beginning</target>
         <startFrame>-1</startFrame>
@@ -55180,6 +56564,11 @@
     </link>
     <link>
         <target>Zach - at a festival</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSA 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -55632,6 +57021,11 @@
 </clip>
 <clip>
     <name>Theo - inspired by nature shorter</name>
+    <link>
+        <target>Memo_master - InspiredByNature</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#sincere,#inspiring,?nature: What is your wellspring?,#question</additionalKeywords>
 </clip>
 <clip>
@@ -55658,6 +57052,11 @@
     </link>
     <link>
         <target>Bruce - Future art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -55714,6 +57113,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Psychedelic Pong</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - modeling the human being</target>
         <startFrame>-1</startFrame>
@@ -55760,10 +57174,20 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>virtual</revokedKeywords>
-    <additionalKeywords>#emotional,#inspiring,#easy</additionalKeywords>
+    <additionalKeywords>#easy,#inspiring,#emotional,installation</additionalKeywords>
 </clip>
 <clip>
     <name>Vera - Playing with a system</name>
+    <link>
+        <target>Memo_master - ExampleBiting</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Golan - project example</target>
         <startFrame>-1</startFrame>
@@ -55951,6 +57375,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Non-narrative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Aaron - mini-brains 2</target>
         <startFrame>-1</startFrame>
@@ -55958,6 +57387,11 @@
     </suppress>
     <suppress>
         <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -56013,6 +57447,11 @@
     </suppress>
     <suppress>
         <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Filmmaker aspirations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -56093,6 +57532,16 @@
     </link>
     <link>
         <target>Kyle_CH - storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Story unfolds</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Non-narrative</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -56597,6 +58046,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - data viz challenges</target>
         <startFrame>-1</startFrame>
@@ -56699,7 +58158,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#fun</additionalKeywords>
+    <additionalKeywords>#fun,legos</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - hide the tech</name>
@@ -56730,6 +58189,21 @@
     </link>
     <link>
         <target>Bruce - Future art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -56890,6 +58364,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Memo_master - MSA 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#logical,#tech,?open source: Before the internet existed, how did people learn to code?,#question</additionalKeywords>
 </clip>
 <clip>
@@ -56976,6 +58455,11 @@
     </link>
     <link>
         <target>Aaron - sharing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSA 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -57499,6 +58983,1661 @@
     <additionalKeywords>aesthetics,interactivity,art vs engineering,#question,?tech-demo: When does an experiment become an artwork?,#gold,#serious,#art,#inspiring,#sincere</additionalKeywords>
 </clip>
 <clip>
+    <name>Memo_master - STEAM 1</name>
+    <link>
+        <target>Joel - scale of universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>curiosity,universe</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - InspiredByNature</name>
+    <link>
+        <target>Joel - myth of art and technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - CircleFormula1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - NOC 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - MathAnotherLanguage</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>art and tech,#easy</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - PerceivingThroughScience</name>
+    <link>
+        <target>Nervous_Jessica - Science papers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - Craig Venter</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>art and tech</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Flower</name>
+    <link>
+        <target>Nervous_Jessica - Science papers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - Craig Venter</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - Complexity 1</name>
+    <link>
+        <target>Casey - Systems theory</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Vera - Digital life forms</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - simplicity and complexity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>simplicity,#easy</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Complexity 2</name>
+    <link>
+        <target>Andres - soft systems 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - Sims</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - emergence from simple rules</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - Games</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - LTree</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - Harmonic 1</name>
+    <link>
+        <target>Bruce - Eno 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - Audiovisual glue</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Harmonic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Harmonic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Pulses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Sonifying</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>audiovisualization</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Harmonic 3</name>
+    <link>
+        <target>Memo_master - Sonifying</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>audiovisualization</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Sonifying</name>
+    <link>
+        <target>Nervous_Jesse - theoretical</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - NonVerbalWay</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Andres - correct is beautiful</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>music,elegance</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Story unfolds</name>
+    <link>
+        <target>Karolina - Journey</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - energy flow</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Vera - Accessibility through strories</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karolina - motion story,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - in the movie</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - Pulses</name>
+    <link>
+        <target>Memo_master - Harmonic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>techno</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - FictionalUniverse 1</name>
+    <link>
+        <target>Memo_master - FictionalUniverse 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>universe building</revokedKeywords>
+    <additionalKeywords>imagination,world building,#gold,#easy,#mindblowing</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - FictionalUniverse 2</name>
+    <link>
+        <target>Karolina - uncanny/sniff</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - Math simulating reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - Sentience of digital art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - a mystical quality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - magic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jesse - simulation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Ramsey - Conway 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - Conway 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - Conway 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - minecraft 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - minecraft 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kyle_CH - coding is 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Philip - with programming you can do whatever</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Philip - build the whole universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <revokedKeywords>universe building</revokedKeywords>
+    <additionalKeywords>#mindblowing,world building</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Deadline 1</name>
+    <link>
+        <target>LIA - TimeStamps1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Continuous process of exploration</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Gardening 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Gardening 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>generative</revokedKeywords>
+    <additionalKeywords>generative art,#gold,?generative art: When is an artwork done?</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Deadline 2</name>
+    <link>
+        <target>Marius - Continuous process of exploration</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - TimeStamps1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - knowing it&apos;s beautiful</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Don&apos;t care about design</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#gold,#obstacle,#art</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Maximalist</name>
+    <link>
+        <target>Golan - formalism</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Techno-rococo</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - culturally biased aesthetic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - aesthetic experience</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Regine - Boring beauty</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - knowing it&apos;s beautiful</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>beauty</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Simplicity 1</name>
+    <link>
+        <target>Martin - simple elegant prose</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - Good at understanding complexity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Andres - correct is beautiful</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - elegant system</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Simplicity 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>elegance</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Simplicity 2</name>
+    <link>
+        <target>Joel - Interactivity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - simplicity and complexity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - Simplicity 3</name>
+    <link>
+        <target>Golan - piano and pencil,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - interactivity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Higa - simplicity of self made tools</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Binx - tool for others</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>toolmaker</revokedKeywords>
+    <additionalKeywords>toolmakers</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - MSA 1</name>
+    <link>
+        <target>Lauren - Constructed self</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lindsay - online identity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>JTNimoy - one of us</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - MSA 2</name>
+    <link>
+        <target>Karsten - processing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - Open Frameworks 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - toxiclibs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Ramsey - minecraft 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - legos 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - legos 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Zach - decompiling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>open source,#tech,#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Civili Engineering</name>
+    <link>
+        <target>Jen - MathMajor 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - learning</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - Maybe I&apos;d like that</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - Fractals</name>
+    <link>
+        <target>Bruce - Fractal graphics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - seeing patterns 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - PatternsIntheBrain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - woah2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - lego bricks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - There&apos;s an element of surprise</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - Wind visualization 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - all about complexity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Fernanda - Wind visualization 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Jen - data crystal ball 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Jen - Predicting weather</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>pattern,perception,surprise,#mindblowing,complexity</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Psychedelic Pong</name>
+    <link>
+        <target>JTNimoy - Cortex</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - immersive games</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - magic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - MSAFluid 2</name>
+    <link>
+        <target>Theo - magic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - InteractiveTable 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - a mystical quality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Philip - understanding through physics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Jen - rafael&apos;s cardiogram</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>installation</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - MSAFluid 3</name>
+    <link>
+        <target>Zach - hide the tech</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - a mystical quality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - programming the universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - NOC 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - VisualizeAnIdea</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>toolmaker</revokedKeywords>
+    <additionalKeywords>toolmakers,world building,systems,#mindblowing,#gold</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Hammers</name>
+    <link>
+        <target>Golan - limits to sharing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - Style diffuses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - community styles</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - memes</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - Educational tools</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Elliot - ToolmakerArtist2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Elliot - ToolmakerArtist1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julia - open source and ego</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>toolmaker</revokedKeywords>
+    <additionalKeywords>toolmakers</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - ExampleBiting</name>
+    <link>
+        <target>Patricio - InteractiveTable 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - more poetry, less demo</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julia - open source and ego</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - illusion of original thought</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>meme</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Software Meme 1</name>
+    <link>
+        <target>Lindsay - memes 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - memes</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - spoken word</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - Software Meme 2</name>
+    <link>
+        <target>Elliot_UK - Ideaspace</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - recombination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - exchange of ideas drives progress</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - spoken word</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - library 1</name>
+    <additionalKeywords>toolmakers,toolkit,#tech</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - library 2</name>
+    <additionalKeywords>#tech</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Magic 1</name>
+    <link>
+        <target>Patricio - Theory of Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - inspired by nature</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Elliot_UK - lightscape</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Popular installation art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - blows my mind</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - ShortCircuit</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#mindblowing,#emotional</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Magic 2</name>
+    <link>
+        <target>Damion - BeingOnDrugs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - hidden technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - Time slows down</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Elliot_UK - lightscape</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Future art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shantell - group improvisation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Golan - project example</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>interactivity,#gold,#breakthrough,?perception: What is the ultimate artform?</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Magic 3</name>
+    <link>
+        <target>Lauren - toward greater consciousness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - Time slows down</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - loseSenseofTime</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - hide the tech</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lauren - altering reality of users</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - art hallucination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - thinking previously unthinkable thoughts</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - are we having fun?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>zen,#gold,philosophy</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Mushrooms 1</name>
+    <link>
+        <target>Damion - BeingOnDrugs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - ShortCircuit</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - loseSenseofTime</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - InTheNow1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - Scale 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Distributable perceptual model</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Martin - birds eye view</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lauren - altering reality of users</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - made of photons</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - art hallucination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>scale,psychedelic,reality</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Synaesthesia 1</name>
+    <link>
+        <target>Karsten - database</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - Audiovisual glue</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>pattern,perception,#gold,audiovisualization</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - PosthumanFun</name>
+    <link>
+        <target>Marius - cyperpunk history</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Paola - Integrating with technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - computer dream</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Shantell - big kid</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>singularity,technological progress</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Psychedelic 1</name>
+    <link>
+        <target>Lauren - altering reality of users</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - art hallucination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - computer dream</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - techno-fungus</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>perception,#gold</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Limited Perception</name>
+    <link>
+        <target>Bruce - ideas about time</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - jolted into the NOW</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - in the now</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - a hundred million</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - thinking previously unthinkable thoughts</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#gold</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Sound and vision</name>
+    <link>
+        <target>Philip - audiovisual gigs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Higa - sound and video</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shantell - Live performance,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>electronic music</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Sound design</name>
+    <link>
+        <target>Maeda - reactive square</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - Synaesthesia 3</name>
+    <link>
+        <target>LIA - audiovisualization</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>beginnings</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Fluctuating creative modes</name>
+    <link>
+        <target>LIA - audiovisualization</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - just problem solving</name>
+    <link>
+        <target>Jen - to program or not to program</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - Critical engineering</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - code specifies behavior</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - not a big deal</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - offers me a way to think</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - code as a theme 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - code as way of knowing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>art versus engineering</revokedKeywords>
+    <additionalKeywords>programming,art vs engineering</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - 10yearsOld 1</name>
+    <link>
+        <target>Memo_master - Rational brain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - Amiga500</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - east german hardware 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>?beginnings: How did you start?</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - book for kids</name>
+    <link>
+        <target>Joel - Amiga500</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - east german hardware 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Memo_master - 10yearsOld 2</name>
+    <link>
+        <target>Karsten - east german hardware 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>JTNimoy - I addicted myself</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#start</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - 10yearsOld 3</name>
+    <link>
+        <target>Lauren - languages as tools</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - language self expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - language as expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Martin - language is like code</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - alter language 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>tools,language</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - blows lego out of the water</name>
+    <link>
+        <target>Marcus - lego bricks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - minecraft 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - minecraft livecode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>JTNimoy - I addicted myself</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - Magnets</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>lego</revokedKeywords>
+    <additionalKeywords>legos,beginnings</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Programming 1</name>
+    <link>
+        <target>Karsten - programming is...</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - offers me a way to think</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - designing languages</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - code as a theme 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - code as way of knowing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#logical</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Programming 2</name>
+    <additionalKeywords>problem solving,thinking through code,thinking with code</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Rational brain</name>
+    <link>
+        <target>JTNimoy - Pickle</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>ocd,beginnings</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - hacking into NASA</name>
+    <link>
+        <target>Julian - Transparency grenade</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - Hackers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - Anonymous</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lindsay - hackers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Regine - Hacking</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>beginings</revokedKeywords>
+    <additionalKeywords>beginnings,?hackers: Do hackers pose a real threat?</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Filmmaker aspirations</name>
+    <link>
+        <target>Greg - visual effects</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - It&apos;s not cinema not a game</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Vera - Accessibility through strories</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Aaron - mini-brains 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Aaron - mini-brains</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Aaron - autonomous storytellers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Aaron - exquisite forest</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Casey - Tree of Life</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kevin - Acknolwedgement of artifice</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kevin - algo stories 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kevin - algo stories 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kyle_CH - storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Vera - Energy Flow1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Vera - Energy Flow2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>future of cinema</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Master of universe 1</name>
+    <link>
+        <target>Shiffman - programming the universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - Ideally it goes beyond my imagination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - IdeaToCode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - nature of code book</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Ramsey - Conway 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - Conway 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - Conway 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Casey - Developing a microworld</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>creativity,#inspiring,#gold,#conclusion</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Master of universe 2</name>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Philip - with programming you can do whatever</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Philip - build the whole universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Binx - programming is a superpower</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - Ideally it goes beyond my imagination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - these things are in my head</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Imaginative technologies 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Alchemy 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - Bicycles1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - IdeaToCode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - nature of code book</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Ramsey - minecraft 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - minecraft 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - Conway 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - Conway 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>god mode,creativity,#conclusion,#gold,#inspiring</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - looking at the ocean</name>
+    <link>
+        <target>Bruce - ideas about time</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - in the now</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - loseSenseofTime</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - InTheNow1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - InTheNow2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - ambiguous narrative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - nature of code book</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>perception,revelation</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Non-narrative</name>
+    <link>
+        <target>Casey - Something new, totally engrossing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karolina - Journey</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - infinite conversation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>zen,future of cinema</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Emotional lines</name>
+    <link>
+        <target>Lauren - Metaphors</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - simulation to stories</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - exquisite forest</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - It&apos;s not cinema not a game</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karolina - Journey</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>storytelling,future of cinema,#gold</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - A bunch of lines 2</name>
+    <link>
+        <target>Karolina - suspension of disbelief</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karolina - motion story,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Acknolwedgement of artifice</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lauren - Metaphors</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - non-mimetic reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Race to versimilitude</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - Polygons</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#gold</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - instrument</name>
+    <link>
+        <target>Karsten - physical feedback</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>interactivity,feedback</additionalKeywords>
+</clip>
+<clip>
     <name>Chris - EthicOfSharing</name>
     <link>
         <target>Julia - make us more compassionate</target>
@@ -57625,6 +60764,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Mushrooms 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - soft systems 2</target>
         <startFrame>-1</startFrame>
@@ -57709,6 +60853,11 @@
     <name>Damion - HumanChemicalMachine</name>
     <link>
         <target>Patricio - Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Mushrooms 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -57828,6 +60977,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Mushrooms 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Elliot_UK - 2D vision in a 3D world</target>
         <startFrame>-1</startFrame>
@@ -57863,6 +61017,16 @@
     </link>
     <link>
         <target>Bruce - what gets you out of bed</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Mushrooms 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -58102,6 +61266,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Harmonic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Sound and vision</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>audiovisualization,#vo,music</additionalKeywords>
 </clip>
 <clip>
@@ -58189,6 +61363,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Hammers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>invention,inventor,hybridity,hacking,art vs engineering,toolmakers,#vo,#easy</additionalKeywords>
 </clip>
 <clip>
@@ -58198,12 +61377,22 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Hammers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>invention,inventor,tools,#vo,toolmakers</additionalKeywords>
 </clip>
 <clip>
     <name>Elliot - Wiremap1</name>
     <link>
         <target>Elliot - Wiremap2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -58258,6 +61447,11 @@
 </clip>
 <clip>
     <name>Intro - BuildingWorlds</name>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Ramsey - minecraft 2</target>
         <startFrame>-1</startFrame>
@@ -58540,6 +61734,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - just problem solving</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Programming 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>thinking through code,coding,software,logic,computation,#question,?coding: How can the logic of coding be creative?</additionalKeywords>
 </clip>
 <clip>
@@ -58684,12 +61888,32 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - 10yearsOld 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - 10yearsOld 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - 10yearsOld 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - book for kids</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Higa - language barriers</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>learning,coding,beginnings,#vo,#tech</additionalKeywords>
+    <additionalKeywords>learning,coding,beginnings,#tech,#vo,?beginnings: How did you start?</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - Bicycles1</name>
@@ -58715,6 +61939,16 @@
     </link>
     <link>
         <target>Bruce - Future camera 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -58814,6 +62048,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Mushrooms 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - looking at the ocean</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>time,zen,#gold,#vo,#emotional,#inspiring,#easy</additionalKeywords>
 </clip>
 <clip>
@@ -58830,6 +62074,11 @@
     </link>
     <link>
         <target>Bruce - what gets you out of bed</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - looking at the ocean</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -58934,6 +62183,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>painting,drawing,expression,simulation,art and code,#vo,#art</additionalKeywords>
 </clip>
 <clip>
@@ -58984,6 +62238,16 @@
     </link>
     <link>
         <target>Sophy - Evolution</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - STEAM 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Magic 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -59394,6 +62658,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Master of universe 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Master of universe 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Shantell - Coding gesturally</target>
         <startFrame>-1</startFrame>
@@ -59453,7 +62727,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>tree,simulation,limitations,system,complexity,nature of code,algorithm,#breakthrough,#easy</additionalKeywords>
+    <additionalKeywords>tree,simulation,limitations,system,complexity,nature of code,algorithm,#easy,#breakthrough,fractals</additionalKeywords>
 </clip>
 <clip>
     <name>LIA - Lingo</name>
@@ -59462,7 +62736,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>poetry,language,english,programming</additionalKeywords>
+    <additionalKeywords>poetry,language,english,programming,beginnings</additionalKeywords>
 </clip>
 <clip>
     <name>LIA - MalleableMath</name>
@@ -59643,6 +62917,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Sonifying</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>art,coding,communication,abstraction,#inspiring</additionalKeywords>
 </clip>
 <clip>
@@ -59669,6 +62948,11 @@
     </link>
     <link>
         <target>Andres - correct is beautiful</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Software Meme 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -59886,6 +63170,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Deadline 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Deadline 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>JTNimoy - thinking by doing</target>
         <startFrame>-1</startFrame>
@@ -60026,6 +63320,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - MSAFluid 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Ramsey - arab abstraction 2</target>
         <startFrame>-1</startFrame>
@@ -60070,6 +63369,16 @@
 </clip>
 <clip>
     <name>LIA - audiovisualization</name>
+    <link>
+        <target>Memo_master - Fluctuating creative modes</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Synaesthesia 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>audiovisualization,music,perception,#logical</additionalKeywords>
 </clip>
 <clip>
