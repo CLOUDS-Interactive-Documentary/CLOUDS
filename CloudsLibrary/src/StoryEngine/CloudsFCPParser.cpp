@@ -650,8 +650,8 @@ int CloudsFCPParser::getCentroidMapIndex(const string& keyword){
 	return -1;
 }
 
-void CloudsFCPParser::saveLinks(const string& linkFile){
-	
+void CloudsFCPParser::saveLinks(){
+	string linkFile = GetCloudsDataPath() + "links/clouds_link_db.xml";
     int numClips = 0;
 	if( (ofGetElapsedTimef() - lastBackupTime) >= backupTimeInterval){
 		char backup[1024];
