@@ -1,7 +1,7 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>559.000000000</YPosition>
+    <YPosition>89.000000000</YPosition>
 </Canvas>

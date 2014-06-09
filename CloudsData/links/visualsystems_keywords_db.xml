@@ -11201,30 +11201,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Cities_Lars_Doing_a_Jonathan">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Cities_Lars_debug">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Cities_LightCity">
     <keywords></keywords>
     <links></links>
@@ -20307,18 +20283,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Mandala_cracked_skin">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Mandala_gx_work_01a">
     <keywords>pattern</keywords>
     <links></links>
@@ -21205,18 +21169,6 @@
     <interlude>0</interlude>
 </system>
 <system name="MarchingCubes_SineWire2">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="MazeGenerator_FlyOver2">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -30871,40 +30823,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="QuineVisualSystem_PanDown">
-    <keywords>programming</keywords>
-    <links></links>
-    <suppressions>
-        <clip>Binx - tech fracturing</clip>
-        <clip>Binx - Programming is a superpower</clip>
-        <clip>Bruce - Constant improvement</clip>
-        <clip>Philip - get an idea</clip>
-        <clip>Philip - programming the river</clip>
-        <clip>Philip - learn through programming</clip>
-        <clip>Philip - with programming you can do whatever</clip>
-        <clip>Philip - understanding through physics</clip>
-        <clip>Philip - system in your head</clip>
-        <clip>Philip - image is in your brain</clip>
-        <clip>Ramsey - designing languages</clip>
-        <clip>Ramsey - independent of any human</clip>
-        <clip>Ramsey - language as expression</clip>
-        <clip>Ramsey - trapese 1</clip>
-        <clip>Ramsey - trapese 2</clip>
-        <clip>Shantell - Coding: what does it feel like?</clip>
-        <clip>Shantell - Coding gesturally</clip>
-        <clip>Shiffman - Maybe I&apos;d like that</clip>
-        <clip>Shiffman - offers me a way to think</clip>
-        <clip>Zach - on the street</clip>
-        <clip>Zach - action script shorter</clip>
-    </suppressions>
-    <comments></comments>
-    <grade>B</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="RGBDVideo_AIC_Kids">
     <keywords>rgbd|kinect|camera|playfulness|play</keywords>
     <links>
@@ -33030,30 +32948,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Rulez_X-Ray_Plant">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Rulez_X-Ray_Plant_rotation">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Satoruhiga_basic1">
     <keywords>beautiful exhuberance|aesthetic experience</keywords>
     <links>
@@ -33585,30 +33479,6 @@
     <interlude>0</interlude>
 </system>
 <system name="Scrape_SPYWALL">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Scrape_STACK_BURSTS">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Scrape_Tony&apos;s_Death_Star">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
