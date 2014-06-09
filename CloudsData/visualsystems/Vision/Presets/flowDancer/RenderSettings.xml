@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>453.000000000</XPosition>
-    <YPosition>185.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>143.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -51,6 +51,11 @@
     <Value>0.467980295</Value>
 </Widget>
 <Widget>
+    <Kind>22</Kind>
+    <Name>VIDEO</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>17</Kind>
     <Name>AppleStore1_short.mov</Name>
     <Value>0</Value>
@@ -83,6 +88,11 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Soho3_short1.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Street_Slow1_BWCrop.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
