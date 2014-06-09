@@ -1,19 +1,19 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Terrain</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>66.000000000</XPosition>
-    <YPosition>11.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>5.221674919</Value>
+    <Value>8.965517044</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_speed</Name>
-    <Value>0.679802954</Value>
+    <Value>0.339901477</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Feed</Name>
-    <Value>0.032499999</Value>
+    <Value>0.042414654</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,22 +38,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DiffV</Name>
-    <Value>0.156342626</Value>
+    <Value>0.291140288</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DiffU</Name>
-    <Value>0.297104836</Value>
+    <Value>0.304681152</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>k</Name>
-    <Value>0.159512341</Value>
+    <Value>0.111732669</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>t</Name>
-    <Value>0.100000024</Value>
+    <Value>0.086071149</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
