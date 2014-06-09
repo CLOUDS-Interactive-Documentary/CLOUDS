@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>451.000000000</XPosition>
-    <YPosition>100.000000000</YPosition>
+    <XPosition>451.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -18,17 +18,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-X</Name>
-    <Value>135.302536011</Value>
+    <Value>258.023132324</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>131.919982910</Value>
+    <Value>251.572555542</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Z</Name>
-    <Value>135.302536011</Value>
+    <Value>258.023132324</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,17 +38,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>damping</Name>
-    <Value>0.049260784</Value>
+    <Value>0.014778025</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>3.103446960</Value>
+    <Value>-19.950790405</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>26.157630920</Value>
+    <Value>12.857093811</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

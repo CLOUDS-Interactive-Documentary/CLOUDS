@@ -301,7 +301,8 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     
 #ifdef CLOUDS_SCREENING
 	if(run.questionsAsked >= screeningQuestionClips.size()-1){
-		visualSystems->getPresetForSystem("Balloons", "Credits");
+        preset = visualSystems->getPresetForSystem("Balloons", "CREDITS_FINAL");
+        return true;
 	}
 #endif
 	

@@ -10,6 +10,7 @@
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	run = NULL;
 	act = NULL;
+
 	matchLineColor = false;
 	
 	parser = NULL;
@@ -74,7 +75,6 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
     currentAssociationFont = 0;
     numTraversed = 0;
 	///END INIT
-
 }
 
 void CloudsVisualSystemClusterMap::selfSetDefaults(){
@@ -338,7 +338,8 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	firstClip = true;
 //	lastTraverseStartedIndex = -1;
 	flickerCoord = ofVec2f(0,0);
-
+    
+    
 	networkMesh.clear();
 	traversalMesh.clear();
 	optionsMeshNext.clear();
@@ -349,7 +350,8 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	clipIdToNodeIndex.clear();
 	
 	currentTraversalIndex = 0;
-	
+	startTraverseClip = 0;
+    
 	networkCentroid = ofVec3f(0,0,0);
 	ofVec3f maxBounds(0,0,0);
 	ofVec3f minBounds(0,0,0);
@@ -580,6 +582,10 @@ void CloudsVisualSystemClusterMap::allocateFlickerTexture(){
 	flickerNoiseTarget.set(0);
 }
 
+void CloudsVisualSystemClusterMap::startTraverse(){
+    startTraverseClip = traversalPath.size();
+    traverse();
+}
 
 void CloudsVisualSystemClusterMap::traverse(){
 	
@@ -592,14 +598,11 @@ void CloudsVisualSystemClusterMap::traverse(){
 
 //	if(currentTraversalIndex < run->clipHistory.size()){
 	if(currentTraversalIndex < MIN(8,act->getAllClips().size()) ){
-//		CloudsClip* clip = run->clipHistory[currentTraversalIndex];
-//		CloudsClip* clip = run->clipHistory[currentTraversalIndex];
 		traverseToClip( act->getClip(currentTraversalIndex) );
 		percentTraversed = 0.0;
 		currentTraversalIndex++;
 	}
 	else if(autoTraversePoints){
-//		timeline->stop(); //finished!
 		finishedTraversing = true;
 		percentTraversed = 1.0;
 	}
@@ -828,9 +831,11 @@ void CloudsVisualSystemClusterMap::clearTraversal(){
     
     firstClip = true;
     traversalMesh.clear();
-	traversalPath.clear();
-
+    traversalPath.clear();
+    
     currentTraversalIndex = 0;
+    startTraverseClip = 0;
+    
 }
 
 
@@ -906,6 +911,7 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
+
 	if(!traverseNextFrame && autoTraversePoints && (firstClip || percentTraversed >= 1.0) ){
 		//traverseNextFrame = true;
 		traverse();
@@ -913,6 +919,10 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	//	percentTraversed = 0.0;
 	}
 
+#ifndef KINECT_INPUT
+    bUseInteractiveCamera = false;
+#endif
+    
 	///UPDATE ANIMATION
 	percentTraversed = ofMap(ofGetElapsedTimef(),
 							 traverseStartTime, traverseStartTime+traverseAnimationDuration,

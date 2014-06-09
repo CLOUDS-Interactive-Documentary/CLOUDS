@@ -371,3 +371,5 @@ screencapture_*
 CLOUDS/fmod.log
 *.log
 CloudsVisualSystemTester/bin/data/log_05_27_13_04_35.txt
+
+SCREENSHOT_*

@@ -61,7 +61,7 @@ void CloudsTransitionController::transitionFromIntro(float outDuration){
 void CloudsTransitionController::transitionToClusterMap(float transitionDuration){
 	
 	confirmEmpty("transitionToClusterMap");
-
+    
 	queueState(TRANSITION_CLUSTERMAP_IN, transitionDuration);
 	
 	startTransition();

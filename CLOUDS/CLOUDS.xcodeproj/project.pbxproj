@@ -11657,7 +11657,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -11700,7 +11700,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 			};
 			name = Release;
 		};
@@ -12044,6 +12044,7 @@
 					"AVF_PLAYER=1",
 					"SHOW_SUBTITLES=1",
 					"CLOUDS_SCREENING=1",
+					"KINECT_INPUT=1",
 					"CLOUDS_APP=1",
 				);
 				INFOPLIST_FILE = CLOUDS_SCREENING.plist;

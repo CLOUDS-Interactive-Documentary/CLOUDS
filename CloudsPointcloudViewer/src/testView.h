@@ -30,6 +30,8 @@
 	CloudsTransitionController transitionController;
 
 	CloudsSound sound;
+    
+    ofFbo targetFbo;
 
 }
 

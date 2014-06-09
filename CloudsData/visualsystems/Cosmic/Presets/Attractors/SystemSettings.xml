@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>82.000000000</YPosition>
+    <XPosition>596.000000000</XPosition>
+    <YPosition>37.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -38,15 +38,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DAMPING</Name>
-    <Value>0.007513607</Value>
+    <Value>0.007000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ACCLIMIT</Name>
-    <Value>1.975806475</Value>
+    <Value>1.773398995</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>VELLIMIT</Name>
-    <Value>15.927418709</Value>
+    <Value>17.241378784</Value>
 </Widget>

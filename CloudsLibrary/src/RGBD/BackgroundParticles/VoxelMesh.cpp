@@ -50,6 +50,9 @@ void VoxelMesh::setDefaults(){
 	centerDecayMaxRadius = 0;
 	center = ofVec3f(0,0,0);
 	
+    pointSize = 1.0;
+    lineWidth = 1.0;
+
 	drawPoints = false;
 	drawLines = false;
 }
@@ -111,6 +114,8 @@ void VoxelMesh::draw(){
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 	if(drawLines){
+        ofSetLineWidth(lineWidth);
+        
 		lineShader.begin();
 		lineShader.setUniform1f("sphereRadius", sphereRadius);
 		lineShader.setUniform1f("spherePercent", spherePercent);
@@ -138,6 +143,9 @@ void VoxelMesh::draw(){
 	}
 	
 	if(drawPoints){
+        
+        glPointSize(pointSize);
+        
 		pointShader.begin();
 		pointShader.setUniform1f("sphereRadius",  sphereRadius);
 		pointShader.setUniform1f("spherePercent", spherePercent);

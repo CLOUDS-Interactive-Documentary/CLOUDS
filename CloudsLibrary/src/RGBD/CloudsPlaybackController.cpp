@@ -47,6 +47,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	showingClusterMap = false;
     showingInterlude = false;
     exitedInterlude = false;
+
 	bQuestionAsked = false;
 	interludeExitBarWidth = 0.0;
 	interludeHoveringContinue = false;
@@ -60,6 +61,20 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	interludeArcRadius = 0.0;
 	interludeArcBaseAlpha = 0.0;
 	interludeForceOnTimer = 0.0;
+
+	interludeStartTime = 0;
+    numActsCreated = 0;
+    crossfadeValue = 0;
+    loadingAct = false;
+	shouldLoadAct = false;
+	shouldPlayClusterMap = false;
+	
+	loading = false;
+	loadPercent = 0.0;
+	
+    returnToIntro = false;
+    cachedTransition = false;
+    
 
 	resetInterludeVariables();
 	
@@ -451,11 +466,10 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
     if(args.key == OF_KEY_RETURN){
         if(showingInterlude){
             interludeSystem->getTimeline()->stop();
-            forceInterludeReset = true;
         }
-//        else if(showingClusterMap){
-//            clusterMap->getTimeline()->stop();
-//        }
+        else if(showingClusterMap){
+            clusterMap->getTimeline()->stop();
+        }
         else if(!showingIntro){
             returnToIntro = true;
             CloudsVisualSystem::getRGBDVideoPlayer().stop();
@@ -606,8 +620,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		bool stopInterlude = updateInterludeInterface();
 		
         if(stopInterlude){
-            
-            forceInterludeReset = false;
+
             sound.stopMusic();
             
             if(interludeContinueSelected){
@@ -627,7 +640,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(!transitionController.isTransitioning() && !bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
-            
+            run.questionsAsked++;
             transitionController.transitionWithQuestion(2.0, 0.1);
 			
         }
@@ -850,10 +863,11 @@ void CloudsPlaybackController::updateTransition(){
                         CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = 1.0;
                         
                         crossfadeValue = 0;
-						
-                        run.questionsAsked++;
-                        storyEngine.buildAct(run, selectedQuestionClip, topic);
                         
+                        shouldPlayClusterMap = run.questionsAsked % 3 == 2;
+                        
+                        storyEngine.buildAct(run, selectedQuestionClip, topic);
+
                         bQuestionAsked = false;
                     }
 				}
@@ -909,11 +923,6 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 //	}
 	//hack
 	
-	if(forceInterludeReset){
-		forceInterludeReset = false;
-		return true;
-	}
-	
 #ifdef OCULUS_RIFT
 
     interludeContinueSelected = interludeHoveringContinue;
@@ -934,6 +943,11 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	return false;
 #else
 	
+    if( currentVisualSystem->getSystemName() == "Balloons" ){
+        hud.clearQuestion();
+        return false;
+    }
+    
 	interludeTimedOut = ofGetElapsedTimef() - interludeStartTime > interludeForceOnTimer;
 	
 	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth)
@@ -984,12 +998,11 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 //		interludeBarHoverPercentComplete = 0;
 	}
 	
-	
 	if( interludeSystem->getSystemName() != "Balloons" && ofGetElapsedTimef() - interludeStartTime > 60){
 		interludeResetSelected = true;
 		return true;
 	}
-	
+    
 	return false;
 #endif
 	
@@ -1004,6 +1017,10 @@ void CloudsPlaybackController::updateCompletedInterlude(){
 void CloudsPlaybackController::drawInterludeInterface(){
     
 
+    if(currentVisualSystem->getSystemName() == "Balloons"){
+        return;
+    }
+    
 	ofRectangle hoverRect;
 	bool hovering = false;
 	string promptType;
@@ -1193,9 +1210,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
         clearAct();
     }
     
-//#ifndef CLOUDS_SCREENING
 	rgbdVisualSystem->clearQuestions();
-//#endif
 	
 	numClipsPlayed = 0;
 	currentAct = args.act;
@@ -1386,6 +1401,9 @@ void CloudsPlaybackController::showClusterMap(){
 #endif
     clusterMap->playSystem();
 	clusterMap->autoTraversePoints = true;
+    
+    clusterMap->clearTraversal();
+    
 	clusterMap->traverse();
 	clusterMap->traverse();
 	
@@ -1405,6 +1423,7 @@ void CloudsPlaybackController::showInterlude(){
     if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
         
         interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
+        
         interludeSystem->setDrawToScreen( false );
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
