@@ -18,7 +18,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Ink_1</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -28,5 +28,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>TronBlack</Name>
-    <Value>1</Value>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Ink_2</Name>
+    <Value>0</Value>
 </Widget>

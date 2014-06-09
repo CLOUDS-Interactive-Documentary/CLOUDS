@@ -27800,7 +27800,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -27828,7 +27828,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -28215,7 +28215,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -28279,7 +28279,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -28341,7 +28341,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -28541,7 +28541,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -35010,13 +35010,74 @@
     <interlude>0</interlude>
 </system>
 <system name="TunnelDrawing_BlueWireframe">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>creativity|creative exploration|programming</keywords>
+    <links>
+        <clip>Bruce - Parametric vs Generative</clip>
+        <clip>Casey - pushing software beyond</clip>
+        <clip>Golan - playable image</clip>
+    </links>
+    <suppressions>
+        <clip>Binx - ar&amp;&amp;code</clip>
+        <clip>Binx - hackathon</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Bruce - Constant improvement</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Bruce - creativity in old age</clip>
+        <clip>Casey - Borrowing from culture</clip>
+        <clip>Casey - Programming at 26</clip>
+        <clip>Damion - CodingAndCommunication</clip>
+        <clip>Diederick - hackathon1</clip>
+        <clip>Higa - process of working alone</clip>
+        <clip>JTNimoy - 100 artists versus One</clip>
+        <clip>JTNimoy - Pickle</clip>
+        <clip>JTNimoy - one of us</clip>
+        <clip>Jen - hated computer science</clip>
+        <clip>Jen - sitting in front of a computer</clip>
+        <clip>Jen - struggle with programming</clip>
+        <clip>Jen - to program or not to program</clip>
+        <clip>Julian - mixing code</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>LIA - Lingo</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Marius - these things are in my head</clip>
+        <clip>Martin - verbal programming debate</clip>
+        <clip>Memo_master - 10yearsOld 1</clip>
+        <clip>Memo_master - MSAFluid 3</clip>
+        <clip>Memo_master - Rational brain</clip>
+        <clip>Paola - changes the way you think</clip>
+        <clip>Paola - code changes your thinking</clip>
+        <clip>Patricio - Alchemy 1</clip>
+        <clip>Patricio - Alchemy 2</clip>
+        <clip>Patricio - CopyPaste</clip>
+        <clip>Patricio - Seduced by Play 1</clip>
+        <clip>Philip - get an idea</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - designing languages</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - language as expression</clip>
+        <clip>Ramsey - literacy</clip>
+        <clip>Shantell - </clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shiffman - Maybe I&apos;d like that</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Shiffman - offers me a way to think</clip>
+        <clip>Zach - Fucking boring</clip>
+        <clip>Zach - minecraft livecode</clip>
+        <clip>Zach - on the street</clip>
+        <clip>Zach - programming 2</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -35033,26 +35094,212 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="TunnelDrawing_NeonWhite">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+<system name="TunnelDrawing_Ink_1">
+    <keywords>sketching|drawing</keywords>
+    <links>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - playable image</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Kyle_CH - interactivity</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+        <clip>Maeda - I can still draw</clip>
+    </links>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Kyle_MC - Eyewriter</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - simple</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Maeda - early computer graphics</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+        <clip>Maeda - own the tool</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="TunnelDrawing_Ink_2">
+    <keywords>sketching|drawing</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Kyle_MC - Eyewriter</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - simple</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Maeda - I can still draw</clip>
+        <clip>Maeda - early computer graphics</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="TunnelDrawing_NeonWhite">
+    <keywords>creativity|creative exploration|programming</keywords>
+    <links>
+        <clip>Bruce - Parametric vs Generative</clip>
+        <clip>Casey - pushing software beyond</clip>
+        <clip>Golan - playable image</clip>
+    </links>
+    <suppressions>
+        <clip>Binx - ar&amp;&amp;code</clip>
+        <clip>Binx - hackathon</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Bruce - Constant improvement</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Bruce - creativity in old age</clip>
+        <clip>Casey - Borrowing from culture</clip>
+        <clip>Casey - Programming at 26</clip>
+        <clip>Damion - CodingAndCommunication</clip>
+        <clip>Diederick - hackathon1</clip>
+        <clip>Higa - process of working alone</clip>
+        <clip>JTNimoy - 100 artists versus One</clip>
+        <clip>JTNimoy - Pickle</clip>
+        <clip>JTNimoy - one of us</clip>
+        <clip>Jen - hated computer science</clip>
+        <clip>Jen - sitting in front of a computer</clip>
+        <clip>Jen - struggle with programming</clip>
+        <clip>Jen - to program or not to program</clip>
+        <clip>Julian - mixing code</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>LIA - Lingo</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Marius - these things are in my head</clip>
+        <clip>Martin - verbal programming debate</clip>
+        <clip>Memo_master - 10yearsOld 1</clip>
+        <clip>Memo_master - MSAFluid 3</clip>
+        <clip>Memo_master - Rational brain</clip>
+        <clip>Paola - changes the way you think</clip>
+        <clip>Paola - code changes your thinking</clip>
+        <clip>Patricio - Alchemy 1</clip>
+        <clip>Patricio - Alchemy 2</clip>
+        <clip>Patricio - CopyPaste</clip>
+        <clip>Patricio - Seduced by Play 1</clip>
+        <clip>Philip - get an idea</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - designing languages</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - language as expression</clip>
+        <clip>Ramsey - literacy</clip>
+        <clip>Shantell - </clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shiffman - Maybe I&apos;d like that</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Shiffman - offers me a way to think</clip>
+        <clip>Zach - Fucking boring</clip>
+        <clip>Zach - minecraft livecode</clip>
+        <clip>Zach - on the street</clip>
+        <clip>Zach - programming 2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="TunnelDrawing_TronBlack">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>creativity|creative exploration|programming</keywords>
+    <links>
+        <clip>Bruce - Parametric vs Generative</clip>
+        <clip>Casey - pushing software beyond</clip>
+        <clip>Golan - playable image</clip>
+    </links>
+    <suppressions>
+        <clip>Binx - ar&amp;&amp;code</clip>
+        <clip>Binx - hackathon</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Bruce - Constant improvement</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Bruce - creativity in old age</clip>
+        <clip>Casey - Borrowing from culture</clip>
+        <clip>Casey - Programming at 26</clip>
+        <clip>Damion - CodingAndCommunication</clip>
+        <clip>Diederick - hackathon1</clip>
+        <clip>Higa - process of working alone</clip>
+        <clip>JTNimoy - 100 artists versus One</clip>
+        <clip>JTNimoy - Pickle</clip>
+        <clip>JTNimoy - one of us</clip>
+        <clip>Jen - hated computer science</clip>
+        <clip>Jen - sitting in front of a computer</clip>
+        <clip>Jen - struggle with programming</clip>
+        <clip>Jen - to program or not to program</clip>
+        <clip>Julian - mixing code</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>LIA - Lingo</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Marius - these things are in my head</clip>
+        <clip>Martin - verbal programming debate</clip>
+        <clip>Memo_master - 10yearsOld 1</clip>
+        <clip>Memo_master - MSAFluid 3</clip>
+        <clip>Memo_master - Rational brain</clip>
+        <clip>Paola - changes the way you think</clip>
+        <clip>Paola - code changes your thinking</clip>
+        <clip>Patricio - Alchemy 1</clip>
+        <clip>Patricio - Alchemy 2</clip>
+        <clip>Patricio - CopyPaste</clip>
+        <clip>Patricio - Seduced by Play 1</clip>
+        <clip>Philip - get an idea</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - designing languages</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - language as expression</clip>
+        <clip>Ramsey - literacy</clip>
+        <clip>Shantell - </clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shiffman - Maybe I&apos;d like that</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Shiffman - offers me a way to think</clip>
+        <clip>Zach - Fucking boring</clip>
+        <clip>Zach - minecraft livecode</clip>
+        <clip>Zach - on the street</clip>
+        <clip>Zach - programming 2</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>

@@ -28,5 +28,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>TronBlack</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Ink_2</Name>
     <Value>1</Value>
 </Widget>
