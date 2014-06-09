@@ -94,13 +94,6 @@ protected:
     
     //  Your Stuff
     //
-    audioAnalytics aa;
-    colorSchemeDesigner cs;
-    terrainManager tm;
-    cameraManager cm;
-    lightManager lm;
-    postProcManager pm;
-    
     int state;
     
     bool useLights;
