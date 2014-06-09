@@ -11,12 +11,12 @@
 
 #define NUMTRACKS 1
 
-audioAnalytics::audioAnalytics() {
+void audioAnalytics::setup() {
     setupVectors();
     loadTracks();
     setupAUGraph();
     
-    faucet.loadFont("faucet.ttf", 18);
+    faucet.loadFont(basePath + "faucet.ttf", 18);
 }
 
 
@@ -146,7 +146,7 @@ void audioAnalytics::setupVectors(){
 //--------------------------------------------------------------
 void audioAnalytics::loadTracks(){
     //vox
-    stems[0]->setFile(ofFilePath::getAbsolutePath("cloudsintro2.mp3"));
+    stems[0]->setFile(ofFilePath::getAbsolutePath(basePathIgnored + "cloudsintro2.mp3"));
     stemNames[0] = "clouds11_125.wav";
 //    cloudsintro2.mp3
   }

@@ -27,5 +27,7 @@ public:
 	bool		isShaderDirty;
 	bool		shouldRenderNormals;
 	bool		shouldUseFlatShading;
+    
+    string basePath;
 
 };

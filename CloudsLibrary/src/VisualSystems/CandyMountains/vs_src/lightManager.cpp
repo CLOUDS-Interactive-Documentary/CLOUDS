@@ -37,7 +37,7 @@ void lightManager::update() {
 		
 		if (mShdPhong != NULL ) delete mShdPhong;
 		mShdPhong = new ofShader();
-		mShdPhong->load("shaders/phong");
+		mShdPhong->load(basePath + "shaders/phong");
 		err = glGetError();	// we need this to clear out the error buffer.
 		ofLogNotice() << "Loaded Shader: " << err;
         
