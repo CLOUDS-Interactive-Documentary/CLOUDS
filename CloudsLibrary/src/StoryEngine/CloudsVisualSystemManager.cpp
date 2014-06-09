@@ -9,6 +9,16 @@ static vector<CloudsVisualSystem*> systems;
 
 #ifndef CLOUDS_NO_VS
 
+//DISABLED
+//#include "CloudsVisualSystemOpenP53DIntro.h"
+//#include "CloudsVisualSystemOpenP5Caustics.h"
+//#include "CloudsVisualSystemOpenP5DrawingMachine10.h"
+//#include "CloudsVisualSystemOpenP5Sixteen.h"
+//#include "CloudsVisualSystemPaintBrush.h"
+//#include "CloudsVisualSystemThingsInTheDark.h"
+//#include "CloudsVisualSystemUextrude.h"
+//#include "CloudsVisualSystemWebHistory.h"
+
 #include "CloudsVisualSystem2DVideo.h"
 #include "CloudsVisualSystem3DModelLoader.h"
 #include "CloudsVisualSystemAstrolabe.h"
@@ -48,17 +58,11 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemMetaballs.h"
 #include "CloudsVisualSystemNeurons.h"
 #include "CloudsVisualSystemOcean.h"
-
-//NOT USED
-//#include "CloudsVisualSystemOpenP53DIntro.h"
-//#include "CloudsVisualSystemOpenP5Caustics.h"
-//#include "CloudsVisualSystemOpenP5DrawingMachine10.h"
 #include "CloudsVisualSystemOpenP5Fifteen.h"
 #include "CloudsVisualSystemOpenP5Hackpact.h"
 #include "CloudsVisualSystemOpenP5Machine.h"
 #include "CloudsVisualSystemOpenP5NoiseSphere.h"
 #include "CloudsVisualSystemOpenP5SeaOfLines.h"
-//#include "CloudsVisualSystemOpenP5Sixteen.h"
 #include "CloudsVisualSystemOpenP5SpaceJunk.h"
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 #include "CloudsVisualSystemOpenP5SpinningSolids.h"
@@ -67,7 +71,6 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemOscillations.h"
 #include "CloudsVisualSystemPages.h"
 #include "CloudsVisualSystemParadox.h"
-//#include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemPhotoGlitch.h"
 #include "CloudsVisualSystemProcess11.h"
 #include "CloudsVisualSystemProcess18.h"
@@ -79,21 +82,13 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemSatoruhiga.h"
 #include "CloudsVisualSystemScrape.h"
 #include "CloudsVisualSystemSwim.h"
-
 #include "CloudsVisualSystemTerrain.h"
-//#include "CloudsVisualSystemThingsInTheDark.h"
 #include "CloudsVisualSystemTunnelDrawing.h"
 #include "CloudsVisualSystemTwitter.h"
-//#include "CloudsVisualSystemUextrude.h"
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemVerletForm.h"
 #include "CloudsVisualSystemVision.h"
 #include "CloudsVisualSystemVoro.h"
-
-//////////////64 Bit
-//#include "CloudsVisualSystemWebHistory.h"
-//////////////64 Bit
-
 #include "CloudsVisualSystemWorld.h"
 #include "CloudsVisualSystemWormHole.h"
 #include "CloudsVisualSystemXstatic.h"
