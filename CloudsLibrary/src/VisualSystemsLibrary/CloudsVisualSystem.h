@@ -479,7 +479,6 @@ class CloudsVisualSystem {
 	string speakerLastName;
 	string quoteName;
 	
-	
 	string mainKeyword;
 	vector<string> keywords;
 	
@@ -491,8 +490,14 @@ class CloudsVisualSystem {
 	string getTransitionOption();
 	
 	//INTERACTIVE CAMERA
-	bool bUseInteractiveCamera;
+	bool bUseInteractiveCamera, bEnableInteractiveSpin;
 	float interactiveCameraMinX, interactiveCameraMaxX, interactiveCameraMinY, interactiveCameraMaxY,interactiveCameraDamping;
+    
+    bool bInvertCameraSpinAxis;
+    float cameraSpinDamp;
+    ofVec2f interactiveCameraSpinRange;
+    ofVec2f interactiveCameraSpin;
+    
 	ofVec2f interactiveCameraRot, previousinteractiveCameraRot;
     
     //POST FX

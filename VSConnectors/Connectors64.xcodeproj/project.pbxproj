@@ -7,9 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03D5906B1946443400FCFF7B /* CloudsVisualSystemNeurons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D590691946443400FCFF7B /* CloudsVisualSystemNeurons.cpp */; };
-		03D5906F1946446E00FCFF7B /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D5906D1946446E00FCFF7B /* CloudsPathCamera.cpp */; };
-		03D5908A1946448300FCFF7B /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D590851946448300FCFF7B /* ofxSimpleSpline.cpp */; };
+		03D5922C1946731000FCFF7B /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592221946731000FCFF7B /* CloudsVisualSystemConnectors.cpp */; };
+		03D5922D1946731000FCFF7B /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592241946731000FCFF7B /* ParticleConnection.cpp */; };
+		03D5922E1946731000FCFF7B /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592261946731000FCFF7B /* ParticleConnectionGenerator.cpp */; };
+		03D5922F1946731000FCFF7B /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592281946731000FCFF7B /* ParticleConnector.cpp */; };
+		03D592301946731000FCFF7B /* ParticleConnectorBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D5922A1946731000FCFF7B /* ParticleConnectorBin.cpp */; };
+		03D592481946735200FCFF7B /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592331946735200FCFF7B /* CloudsAudioEvents.cpp */; };
+		03D592491946735200FCFF7B /* CloudsMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592351946735200FCFF7B /* CloudsMixer.cpp */; };
+		03D5931D1946736F00FCFF7B /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D5929D1946736E00FCFF7B /* ofxTonicSynth.cpp */; };
+		03D5931E1946736F00FCFF7B /* ADSR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592A01946736E00FCFF7B /* ADSR.cpp */; };
+		03D5931F1946736F00FCFF7B /* Arithmetic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592A21946736E00FCFF7B /* Arithmetic.cpp */; };
+		03D593201946736F00FCFF7B /* AudioFileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592A41946736E00FCFF7B /* AudioFileUtils.cpp */; };
+		03D593211946736F00FCFF7B /* BasicDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592A61946736E00FCFF7B /* BasicDelay.cpp */; };
+		03D593221946736F00FCFF7B /* BLEPOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592A81946736E00FCFF7B /* BLEPOscillator.cpp */; };
+		03D593231946736F00FCFF7B /* BufferFiller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592AA1946736E00FCFF7B /* BufferFiller.cpp */; };
+		03D593241946736F00FCFF7B /* BufferPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592AC1946736E00FCFF7B /* BufferPlayer.cpp */; };
+		03D593251946736F00FCFF7B /* CombFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592AE1946736E00FCFF7B /* CombFilter.cpp */; };
+		03D593261946736F00FCFF7B /* CompressorLimiter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592B01946736E00FCFF7B /* CompressorLimiter.cpp */; };
+		03D593271946736F00FCFF7B /* ControlArithmetic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592B21946736E00FCFF7B /* ControlArithmetic.cpp */; };
+		03D593281946736F00FCFF7B /* ControlCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592B41946736E00FCFF7B /* ControlCallback.cpp */; };
+		03D593291946736F00FCFF7B /* ControlChangeNotifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592B61946736E00FCFF7B /* ControlChangeNotifier.cpp */; };
+		03D5932A1946736F00FCFF7B /* ControlComparison.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592B81946736E00FCFF7B /* ControlComparison.cpp */; };
+		03D5932B1946736F00FCFF7B /* ControlConditioner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592BA1946736E00FCFF7B /* ControlConditioner.cpp */; };
+		03D5932C1946736F00FCFF7B /* ControlCounter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592BC1946736E00FCFF7B /* ControlCounter.cpp */; };
+		03D5932D1946736F00FCFF7B /* ControlDbToLinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592BE1946736E00FCFF7B /* ControlDbToLinear.cpp */; };
+		03D5932E1946736F00FCFF7B /* ControlDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592C01946736E00FCFF7B /* ControlDelay.cpp */; };
+		03D5932F1946736F00FCFF7B /* ControlFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592C21946736E00FCFF7B /* ControlFloor.cpp */; };
+		03D593301946736F00FCFF7B /* ControlGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592C41946736E00FCFF7B /* ControlGenerator.cpp */; };
+		03D593311946736F00FCFF7B /* ControlMetro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592C61946736E00FCFF7B /* ControlMetro.cpp */; };
+		03D593321946736F00FCFF7B /* ControlMetroDivider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592C81946736E00FCFF7B /* ControlMetroDivider.cpp */; };
+		03D593331946736F00FCFF7B /* ControlMidiToFreq.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592CA1946736E00FCFF7B /* ControlMidiToFreq.cpp */; };
+		03D593341946736F00FCFF7B /* ControlParameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592CC1946736E00FCFF7B /* ControlParameter.cpp */; };
+		03D593351946736F00FCFF7B /* ControlPrinter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592CE1946736E00FCFF7B /* ControlPrinter.cpp */; };
+		03D593361946736F00FCFF7B /* ControlPulse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592D01946736E00FCFF7B /* ControlPulse.cpp */; };
+		03D593371946736F00FCFF7B /* ControlRandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592D21946736E00FCFF7B /* ControlRandom.cpp */; };
+		03D593381946736F00FCFF7B /* ControlRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592D41946736E00FCFF7B /* ControlRecorder.cpp */; };
+		03D593391946736F00FCFF7B /* ControlSnapToScale.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592D61946736E00FCFF7B /* ControlSnapToScale.cpp */; };
+		03D5933A1946736F00FCFF7B /* ControlStepper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592D81946736E00FCFF7B /* ControlStepper.cpp */; };
+		03D5933B1946736F00FCFF7B /* ControlSwitcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592DA1946736E00FCFF7B /* ControlSwitcher.cpp */; };
+		03D5933C1946736F00FCFF7B /* ControlTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592DC1946736E00FCFF7B /* ControlTrigger.cpp */; };
+		03D5933D1946736F00FCFF7B /* ControlTriggerFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592DE1946736E00FCFF7B /* ControlTriggerFilter.cpp */; };
+		03D5933E1946736F00FCFF7B /* ControlValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592E01946736E00FCFF7B /* ControlValue.cpp */; };
+		03D5933F1946736F00FCFF7B /* ControlXYSpeed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592E21946736E00FCFF7B /* ControlXYSpeed.cpp */; };
+		03D593401946736F00FCFF7B /* DelayUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592E41946736E00FCFF7B /* DelayUtils.cpp */; };
+		03D593411946736F00FCFF7B /* DSPUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592E61946736E00FCFF7B /* DSPUtils.cpp */; };
+		03D593421946736F00FCFF7B /* Effect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592E81946736E00FCFF7B /* Effect.cpp */; };
+		03D593431946736F00FCFF7B /* Filters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592EA1946736E00FCFF7B /* Filters.cpp */; };
+		03D593441946736F00FCFF7B /* FilterUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592EC1946736E00FCFF7B /* FilterUtils.cpp */; };
+		03D593451946736F00FCFF7B /* FixedValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592EE1946736E00FCFF7B /* FixedValue.cpp */; };
+		03D593461946736F00FCFF7B /* Generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592F01946736E00FCFF7B /* Generator.cpp */; };
+		03D593471946736F00FCFF7B /* LFNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592F21946736E00FCFF7B /* LFNoise.cpp */; };
+		03D593481946736F00FCFF7B /* Mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592F41946736E00FCFF7B /* Mixer.cpp */; };
+		03D593491946736F00FCFF7B /* MonoToStereoPanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592F61946736E00FCFF7B /* MonoToStereoPanner.cpp */; };
+		03D5934A1946736F00FCFF7B /* Noise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592F81946736E00FCFF7B /* Noise.cpp */; };
+		03D5934B1946736F00FCFF7B /* RampedValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592FA1946736E00FCFF7B /* RampedValue.cpp */; };
+		03D5934C1946736F00FCFF7B /* RectWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592FC1946736E00FCFF7B /* RectWave.cpp */; };
+		03D5934D1946736F00FCFF7B /* Reverb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D592FE1946736E00FCFF7B /* Reverb.cpp */; };
+		03D5934E1946736F00FCFF7B /* RingBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D593001946736E00FCFF7B /* RingBuffer.cpp */; };
+		03D5934F1946736F00FCFF7B /* SampleTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D593021946736E00FCFF7B /* SampleTable.cpp */; };
+		03D593501946736F00FCFF7B /* SawtoothWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D593041946736E00FCFF7B /* SawtoothWave.cpp */; };
+		03D593511946736F00FCFF7B /* SineWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D593061946736E00FCFF7B /* SineWave.cpp */; };
+		03D593521946736F00FCFF7B /* StereoDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D593091946736E00FCFF7B /* StereoDelay.cpp */; };
+		03D593531946736F00FCFF7B /* Synth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D5930B1946736E00FCFF7B /* Synth.cpp */; };
+		03D593541946736F00FCFF7B /* TableLookupOsc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D5930D1946736E00FCFF7B /* TableLookupOsc.cpp */; };
+		03D593551946736F00FCFF7B /* TonicFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D593101946736E00FCFF7B /* TonicFrames.cpp */; };
 		644982DF189F223800E6AB7D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644982DE189F223800E6AB7D /* AVFoundation.framework */; };
 		644982E1189F224200E6AB7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644982E0189F224200E6AB7D /* QuartzCore.framework */; };
 		644982E3189F225000E6AB7D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644982E2189F225000E6AB7D /* CoreMedia.framework */; };
@@ -189,12 +250,140 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		03D590691946443400FCFF7B /* CloudsVisualSystemNeurons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemNeurons.cpp; sourceTree = "<group>"; };
-		03D5906A1946443400FCFF7B /* CloudsVisualSystemNeurons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemNeurons.h; sourceTree = "<group>"; };
-		03D5906D1946446E00FCFF7B /* CloudsPathCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsPathCamera.cpp; path = ../../WormHole/vs_src/CloudsPathCamera.cpp; sourceTree = "<group>"; };
-		03D5906E1946446E00FCFF7B /* CloudsPathCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsPathCamera.h; path = ../../WormHole/vs_src/CloudsPathCamera.h; sourceTree = "<group>"; };
-		03D590851946448300FCFF7B /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
-		03D590861946448300FCFF7B /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
+		03D592221946731000FCFF7B /* CloudsVisualSystemConnectors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemConnectors.cpp; sourceTree = "<group>"; };
+		03D592231946731000FCFF7B /* CloudsVisualSystemConnectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemConnectors.h; sourceTree = "<group>"; };
+		03D592241946731000FCFF7B /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
+		03D592251946731000FCFF7B /* ParticleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnection.h; sourceTree = "<group>"; };
+		03D592261946731000FCFF7B /* ParticleConnectionGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectionGenerator.cpp; sourceTree = "<group>"; };
+		03D592271946731000FCFF7B /* ParticleConnectionGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectionGenerator.h; sourceTree = "<group>"; };
+		03D592281946731000FCFF7B /* ParticleConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnector.cpp; sourceTree = "<group>"; };
+		03D592291946731000FCFF7B /* ParticleConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnector.h; sourceTree = "<group>"; };
+		03D5922A1946731000FCFF7B /* ParticleConnectorBin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectorBin.cpp; sourceTree = "<group>"; };
+		03D5922B1946731000FCFF7B /* ParticleConnectorBin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectorBin.h; sourceTree = "<group>"; };
+		03D592331946735200FCFF7B /* CloudsAudioEvents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAudioEvents.cpp; sourceTree = "<group>"; };
+		03D592341946735200FCFF7B /* CloudsAudioEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAudioEvents.h; sourceTree = "<group>"; };
+		03D592351946735200FCFF7B /* CloudsMixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMixer.cpp; sourceTree = "<group>"; };
+		03D592361946735200FCFF7B /* CloudsMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMixer.h; sourceTree = "<group>"; };
+		03D592471946735200FCFF7B /* TonicSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TonicSample.h; sourceTree = "<group>"; };
+		03D5929C1946736E00FCFF7B /* ofxTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonic.h; sourceTree = "<group>"; };
+		03D5929D1946736E00FCFF7B /* ofxTonicSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTonicSynth.cpp; sourceTree = "<group>"; };
+		03D5929E1946736E00FCFF7B /* ofxTonicSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonicSynth.h; sourceTree = "<group>"; };
+		03D592A01946736E00FCFF7B /* ADSR.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ADSR.cpp; sourceTree = "<group>"; };
+		03D592A11946736E00FCFF7B /* ADSR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSR.h; sourceTree = "<group>"; };
+		03D592A21946736E00FCFF7B /* Arithmetic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arithmetic.cpp; sourceTree = "<group>"; };
+		03D592A31946736E00FCFF7B /* Arithmetic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arithmetic.h; sourceTree = "<group>"; };
+		03D592A41946736E00FCFF7B /* AudioFileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFileUtils.cpp; sourceTree = "<group>"; };
+		03D592A51946736E00FCFF7B /* AudioFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFileUtils.h; sourceTree = "<group>"; };
+		03D592A61946736E00FCFF7B /* BasicDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicDelay.cpp; sourceTree = "<group>"; };
+		03D592A71946736E00FCFF7B /* BasicDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicDelay.h; sourceTree = "<group>"; };
+		03D592A81946736E00FCFF7B /* BLEPOscillator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BLEPOscillator.cpp; sourceTree = "<group>"; };
+		03D592A91946736E00FCFF7B /* BLEPOscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEPOscillator.h; sourceTree = "<group>"; };
+		03D592AA1946736E00FCFF7B /* BufferFiller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BufferFiller.cpp; sourceTree = "<group>"; };
+		03D592AB1946736E00FCFF7B /* BufferFiller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferFiller.h; sourceTree = "<group>"; };
+		03D592AC1946736E00FCFF7B /* BufferPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BufferPlayer.cpp; sourceTree = "<group>"; };
+		03D592AD1946736E00FCFF7B /* BufferPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferPlayer.h; sourceTree = "<group>"; };
+		03D592AE1946736E00FCFF7B /* CombFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CombFilter.cpp; sourceTree = "<group>"; };
+		03D592AF1946736E00FCFF7B /* CombFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CombFilter.h; sourceTree = "<group>"; };
+		03D592B01946736E00FCFF7B /* CompressorLimiter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorLimiter.cpp; sourceTree = "<group>"; };
+		03D592B11946736E00FCFF7B /* CompressorLimiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorLimiter.h; sourceTree = "<group>"; };
+		03D592B21946736E00FCFF7B /* ControlArithmetic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlArithmetic.cpp; sourceTree = "<group>"; };
+		03D592B31946736E00FCFF7B /* ControlArithmetic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlArithmetic.h; sourceTree = "<group>"; };
+		03D592B41946736E00FCFF7B /* ControlCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlCallback.cpp; sourceTree = "<group>"; };
+		03D592B51946736E00FCFF7B /* ControlCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlCallback.h; sourceTree = "<group>"; };
+		03D592B61946736E00FCFF7B /* ControlChangeNotifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlChangeNotifier.cpp; sourceTree = "<group>"; };
+		03D592B71946736E00FCFF7B /* ControlChangeNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlChangeNotifier.h; sourceTree = "<group>"; };
+		03D592B81946736E00FCFF7B /* ControlComparison.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlComparison.cpp; sourceTree = "<group>"; };
+		03D592B91946736E00FCFF7B /* ControlComparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlComparison.h; sourceTree = "<group>"; };
+		03D592BA1946736E00FCFF7B /* ControlConditioner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlConditioner.cpp; sourceTree = "<group>"; };
+		03D592BB1946736E00FCFF7B /* ControlConditioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlConditioner.h; sourceTree = "<group>"; };
+		03D592BC1946736E00FCFF7B /* ControlCounter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlCounter.cpp; sourceTree = "<group>"; };
+		03D592BD1946736E00FCFF7B /* ControlCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlCounter.h; sourceTree = "<group>"; };
+		03D592BE1946736E00FCFF7B /* ControlDbToLinear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlDbToLinear.cpp; sourceTree = "<group>"; };
+		03D592BF1946736E00FCFF7B /* ControlDbToLinear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlDbToLinear.h; sourceTree = "<group>"; };
+		03D592C01946736E00FCFF7B /* ControlDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlDelay.cpp; sourceTree = "<group>"; };
+		03D592C11946736E00FCFF7B /* ControlDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlDelay.h; sourceTree = "<group>"; };
+		03D592C21946736E00FCFF7B /* ControlFloor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlFloor.cpp; sourceTree = "<group>"; };
+		03D592C31946736E00FCFF7B /* ControlFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlFloor.h; sourceTree = "<group>"; };
+		03D592C41946736E00FCFF7B /* ControlGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlGenerator.cpp; sourceTree = "<group>"; };
+		03D592C51946736E00FCFF7B /* ControlGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlGenerator.h; sourceTree = "<group>"; };
+		03D592C61946736E00FCFF7B /* ControlMetro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlMetro.cpp; sourceTree = "<group>"; };
+		03D592C71946736E00FCFF7B /* ControlMetro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlMetro.h; sourceTree = "<group>"; };
+		03D592C81946736E00FCFF7B /* ControlMetroDivider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlMetroDivider.cpp; sourceTree = "<group>"; };
+		03D592C91946736E00FCFF7B /* ControlMetroDivider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlMetroDivider.h; sourceTree = "<group>"; };
+		03D592CA1946736E00FCFF7B /* ControlMidiToFreq.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlMidiToFreq.cpp; sourceTree = "<group>"; };
+		03D592CB1946736E00FCFF7B /* ControlMidiToFreq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlMidiToFreq.h; sourceTree = "<group>"; };
+		03D592CC1946736E00FCFF7B /* ControlParameter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlParameter.cpp; sourceTree = "<group>"; };
+		03D592CD1946736E00FCFF7B /* ControlParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlParameter.h; sourceTree = "<group>"; };
+		03D592CE1946736E00FCFF7B /* ControlPrinter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlPrinter.cpp; sourceTree = "<group>"; };
+		03D592CF1946736E00FCFF7B /* ControlPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPrinter.h; sourceTree = "<group>"; };
+		03D592D01946736E00FCFF7B /* ControlPulse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlPulse.cpp; sourceTree = "<group>"; };
+		03D592D11946736E00FCFF7B /* ControlPulse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPulse.h; sourceTree = "<group>"; };
+		03D592D21946736E00FCFF7B /* ControlRandom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlRandom.cpp; sourceTree = "<group>"; };
+		03D592D31946736E00FCFF7B /* ControlRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlRandom.h; sourceTree = "<group>"; };
+		03D592D41946736E00FCFF7B /* ControlRecorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlRecorder.cpp; sourceTree = "<group>"; };
+		03D592D51946736E00FCFF7B /* ControlRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlRecorder.h; sourceTree = "<group>"; };
+		03D592D61946736E00FCFF7B /* ControlSnapToScale.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlSnapToScale.cpp; sourceTree = "<group>"; };
+		03D592D71946736E00FCFF7B /* ControlSnapToScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlSnapToScale.h; sourceTree = "<group>"; };
+		03D592D81946736E00FCFF7B /* ControlStepper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlStepper.cpp; sourceTree = "<group>"; };
+		03D592D91946736E00FCFF7B /* ControlStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlStepper.h; sourceTree = "<group>"; };
+		03D592DA1946736E00FCFF7B /* ControlSwitcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlSwitcher.cpp; sourceTree = "<group>"; };
+		03D592DB1946736E00FCFF7B /* ControlSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlSwitcher.h; sourceTree = "<group>"; };
+		03D592DC1946736E00FCFF7B /* ControlTrigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlTrigger.cpp; sourceTree = "<group>"; };
+		03D592DD1946736E00FCFF7B /* ControlTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlTrigger.h; sourceTree = "<group>"; };
+		03D592DE1946736E00FCFF7B /* ControlTriggerFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlTriggerFilter.cpp; sourceTree = "<group>"; };
+		03D592DF1946736E00FCFF7B /* ControlTriggerFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlTriggerFilter.h; sourceTree = "<group>"; };
+		03D592E01946736E00FCFF7B /* ControlValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlValue.cpp; sourceTree = "<group>"; };
+		03D592E11946736E00FCFF7B /* ControlValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlValue.h; sourceTree = "<group>"; };
+		03D592E21946736E00FCFF7B /* ControlXYSpeed.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlXYSpeed.cpp; sourceTree = "<group>"; };
+		03D592E31946736E00FCFF7B /* ControlXYSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlXYSpeed.h; sourceTree = "<group>"; };
+		03D592E41946736E00FCFF7B /* DelayUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DelayUtils.cpp; sourceTree = "<group>"; };
+		03D592E51946736E00FCFF7B /* DelayUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayUtils.h; sourceTree = "<group>"; };
+		03D592E61946736E00FCFF7B /* DSPUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DSPUtils.cpp; sourceTree = "<group>"; };
+		03D592E71946736E00FCFF7B /* DSPUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPUtils.h; sourceTree = "<group>"; };
+		03D592E81946736E00FCFF7B /* Effect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Effect.cpp; sourceTree = "<group>"; };
+		03D592E91946736E00FCFF7B /* Effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Effect.h; sourceTree = "<group>"; };
+		03D592EA1946736E00FCFF7B /* Filters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Filters.cpp; sourceTree = "<group>"; };
+		03D592EB1946736E00FCFF7B /* Filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filters.h; sourceTree = "<group>"; };
+		03D592EC1946736E00FCFF7B /* FilterUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FilterUtils.cpp; sourceTree = "<group>"; };
+		03D592ED1946736E00FCFF7B /* FilterUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterUtils.h; sourceTree = "<group>"; };
+		03D592EE1946736E00FCFF7B /* FixedValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FixedValue.cpp; sourceTree = "<group>"; };
+		03D592EF1946736E00FCFF7B /* FixedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixedValue.h; sourceTree = "<group>"; };
+		03D592F01946736E00FCFF7B /* Generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Generator.cpp; sourceTree = "<group>"; };
+		03D592F11946736E00FCFF7B /* Generator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Generator.h; sourceTree = "<group>"; };
+		03D592F21946736E00FCFF7B /* LFNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LFNoise.cpp; sourceTree = "<group>"; };
+		03D592F31946736E00FCFF7B /* LFNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFNoise.h; sourceTree = "<group>"; };
+		03D592F41946736E00FCFF7B /* Mixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mixer.cpp; sourceTree = "<group>"; };
+		03D592F51946736E00FCFF7B /* Mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixer.h; sourceTree = "<group>"; };
+		03D592F61946736E00FCFF7B /* MonoToStereoPanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MonoToStereoPanner.cpp; sourceTree = "<group>"; };
+		03D592F71946736E00FCFF7B /* MonoToStereoPanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonoToStereoPanner.h; sourceTree = "<group>"; };
+		03D592F81946736E00FCFF7B /* Noise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Noise.cpp; sourceTree = "<group>"; };
+		03D592F91946736E00FCFF7B /* Noise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Noise.h; sourceTree = "<group>"; };
+		03D592FA1946736E00FCFF7B /* RampedValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RampedValue.cpp; sourceTree = "<group>"; };
+		03D592FB1946736E00FCFF7B /* RampedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RampedValue.h; sourceTree = "<group>"; };
+		03D592FC1946736E00FCFF7B /* RectWave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RectWave.cpp; sourceTree = "<group>"; };
+		03D592FD1946736E00FCFF7B /* RectWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectWave.h; sourceTree = "<group>"; };
+		03D592FE1946736E00FCFF7B /* Reverb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reverb.cpp; sourceTree = "<group>"; };
+		03D592FF1946736E00FCFF7B /* Reverb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reverb.h; sourceTree = "<group>"; };
+		03D593001946736E00FCFF7B /* RingBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RingBuffer.cpp; sourceTree = "<group>"; };
+		03D593011946736E00FCFF7B /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
+		03D593021946736E00FCFF7B /* SampleTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SampleTable.cpp; sourceTree = "<group>"; };
+		03D593031946736E00FCFF7B /* SampleTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTable.h; sourceTree = "<group>"; };
+		03D593041946736E00FCFF7B /* SawtoothWave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SawtoothWave.cpp; sourceTree = "<group>"; };
+		03D593051946736E00FCFF7B /* SawtoothWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SawtoothWave.h; sourceTree = "<group>"; };
+		03D593061946736E00FCFF7B /* SineWave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SineWave.cpp; sourceTree = "<group>"; };
+		03D593071946736E00FCFF7B /* SineWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SineWave.h; sourceTree = "<group>"; };
+		03D593081946736E00FCFF7B /* SquareWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareWave.h; sourceTree = "<group>"; };
+		03D593091946736E00FCFF7B /* StereoDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StereoDelay.cpp; sourceTree = "<group>"; };
+		03D5930A1946736E00FCFF7B /* StereoDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoDelay.h; sourceTree = "<group>"; };
+		03D5930B1946736E00FCFF7B /* Synth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Synth.cpp; sourceTree = "<group>"; };
+		03D5930C1946736E00FCFF7B /* Synth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Synth.h; sourceTree = "<group>"; };
+		03D5930D1946736E00FCFF7B /* TableLookupOsc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableLookupOsc.cpp; sourceTree = "<group>"; };
+		03D5930E1946736E00FCFF7B /* TableLookupOsc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableLookupOsc.h; sourceTree = "<group>"; };
+		03D5930F1946736E00FCFF7B /* TonicCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TonicCore.h; sourceTree = "<group>"; };
+		03D593101946736E00FCFF7B /* TonicFrames.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TonicFrames.cpp; sourceTree = "<group>"; };
+		03D593111946736E00FCFF7B /* TonicFrames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TonicFrames.h; sourceTree = "<group>"; };
+		03D593121946736E00FCFF7B /* TriangleWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleWave.h; sourceTree = "<group>"; };
+		03D593131946736E00FCFF7B /* Tonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tonic.h; sourceTree = "<group>"; };
 		644982DE189F223800E6AB7D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		644982E0189F224200E6AB7D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		644982E2189F225000E6AB7D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
@@ -209,7 +398,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* Neurons64Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neurons64Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* Connectors64Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Connectors64Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -533,59 +722,204 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03D590671946443400FCFF7B /* Neurons */ = {
+		03D592201946731000FCFF7B /* Connectors */ = {
 			isa = PBXGroup;
 			children = (
-				03D590681946443400FCFF7B /* vs_src */,
+				03D592211946731000FCFF7B /* vs_src */,
 			);
-			name = Neurons;
-			path = ../CloudsLibrary/src/VisualSystems/Neurons;
+			name = Connectors;
+			path = ../CloudsLibrary/src/VisualSystems/Connectors;
 			sourceTree = "<group>";
 		};
-		03D590681946443400FCFF7B /* vs_src */ = {
+		03D592211946731000FCFF7B /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				03D5906E1946446E00FCFF7B /* CloudsPathCamera.h */,
-				03D5906D1946446E00FCFF7B /* CloudsPathCamera.cpp */,
-				03D5906A1946443400FCFF7B /* CloudsVisualSystemNeurons.h */,
-				03D590691946443400FCFF7B /* CloudsVisualSystemNeurons.cpp */,
+				03D592221946731000FCFF7B /* CloudsVisualSystemConnectors.cpp */,
+				03D592231946731000FCFF7B /* CloudsVisualSystemConnectors.h */,
+				03D592241946731000FCFF7B /* ParticleConnection.cpp */,
+				03D592251946731000FCFF7B /* ParticleConnection.h */,
+				03D592261946731000FCFF7B /* ParticleConnectionGenerator.cpp */,
+				03D592271946731000FCFF7B /* ParticleConnectionGenerator.h */,
+				03D592281946731000FCFF7B /* ParticleConnector.cpp */,
+				03D592291946731000FCFF7B /* ParticleConnector.h */,
+				03D5922A1946731000FCFF7B /* ParticleConnectorBin.cpp */,
+				03D5922B1946731000FCFF7B /* ParticleConnectorBin.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
 		};
-		03D5906C1946443700FCFF7B /* CloudsLibrary */ = {
+		03D592311946731800FCFF7B /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E7211CE318A285BB0063EF97 /* CloudsGlobal.h */,
-				03D590671946443400FCFF7B /* Neurons */,
+				03D592321946735200FCFF7B /* Sound */,
+				03D592201946731000FCFF7B /* Connectors */,
 				E7211CD518A285970063EF97 /* Input */,
 				E7211CC518A2858F0063EF97 /* VisualSystemsLibrary */,
+				E4B69E1C0A3A1BDC003C02F2 /* src */,
 			);
 			name = CloudsLibrary;
 			sourceTree = "<group>";
 		};
-		03D590701946448300FCFF7B /* ofxSimpleSpline */ = {
+		03D592321946735200FCFF7B /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				03D590841946448300FCFF7B /* src */,
+				03D592331946735200FCFF7B /* CloudsAudioEvents.cpp */,
+				03D592341946735200FCFF7B /* CloudsAudioEvents.h */,
+				03D592351946735200FCFF7B /* CloudsMixer.cpp */,
+				03D592361946735200FCFF7B /* CloudsMixer.h */,
+				03D592471946735200FCFF7B /* TonicSample.h */,
 			);
-			name = ofxSimpleSpline;
-			path = ../../../addons/ofxSimpleSpline;
+			name = Sound;
+			path = ../CloudsLibrary/src/Sound;
 			sourceTree = "<group>";
 		};
-		03D590841946448300FCFF7B /* src */ = {
+		03D592521946736E00FCFF7B /* ofxTonic */ = {
 			isa = PBXGroup;
 			children = (
-				03D590851946448300FCFF7B /* ofxSimpleSpline.cpp */,
-				03D590861946448300FCFF7B /* ofxSimpleSpline.h */,
+				03D5929B1946736E00FCFF7B /* src */,
+			);
+			name = ofxTonic;
+			path = ../../../addons/ofxTonic;
+			sourceTree = "<group>";
+		};
+		03D5929B1946736E00FCFF7B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				03D5929C1946736E00FCFF7B /* ofxTonic.h */,
+				03D5929D1946736E00FCFF7B /* ofxTonicSynth.cpp */,
+				03D5929E1946736E00FCFF7B /* ofxTonicSynth.h */,
+				03D5929F1946736E00FCFF7B /* Tonic */,
+				03D593131946736E00FCFF7B /* Tonic.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		03D5929F1946736E00FCFF7B /* Tonic */ = {
+			isa = PBXGroup;
+			children = (
+				03D592A01946736E00FCFF7B /* ADSR.cpp */,
+				03D592A11946736E00FCFF7B /* ADSR.h */,
+				03D592A21946736E00FCFF7B /* Arithmetic.cpp */,
+				03D592A31946736E00FCFF7B /* Arithmetic.h */,
+				03D592A41946736E00FCFF7B /* AudioFileUtils.cpp */,
+				03D592A51946736E00FCFF7B /* AudioFileUtils.h */,
+				03D592A61946736E00FCFF7B /* BasicDelay.cpp */,
+				03D592A71946736E00FCFF7B /* BasicDelay.h */,
+				03D592A81946736E00FCFF7B /* BLEPOscillator.cpp */,
+				03D592A91946736E00FCFF7B /* BLEPOscillator.h */,
+				03D592AA1946736E00FCFF7B /* BufferFiller.cpp */,
+				03D592AB1946736E00FCFF7B /* BufferFiller.h */,
+				03D592AC1946736E00FCFF7B /* BufferPlayer.cpp */,
+				03D592AD1946736E00FCFF7B /* BufferPlayer.h */,
+				03D592AE1946736E00FCFF7B /* CombFilter.cpp */,
+				03D592AF1946736E00FCFF7B /* CombFilter.h */,
+				03D592B01946736E00FCFF7B /* CompressorLimiter.cpp */,
+				03D592B11946736E00FCFF7B /* CompressorLimiter.h */,
+				03D592B21946736E00FCFF7B /* ControlArithmetic.cpp */,
+				03D592B31946736E00FCFF7B /* ControlArithmetic.h */,
+				03D592B41946736E00FCFF7B /* ControlCallback.cpp */,
+				03D592B51946736E00FCFF7B /* ControlCallback.h */,
+				03D592B61946736E00FCFF7B /* ControlChangeNotifier.cpp */,
+				03D592B71946736E00FCFF7B /* ControlChangeNotifier.h */,
+				03D592B81946736E00FCFF7B /* ControlComparison.cpp */,
+				03D592B91946736E00FCFF7B /* ControlComparison.h */,
+				03D592BA1946736E00FCFF7B /* ControlConditioner.cpp */,
+				03D592BB1946736E00FCFF7B /* ControlConditioner.h */,
+				03D592BC1946736E00FCFF7B /* ControlCounter.cpp */,
+				03D592BD1946736E00FCFF7B /* ControlCounter.h */,
+				03D592BE1946736E00FCFF7B /* ControlDbToLinear.cpp */,
+				03D592BF1946736E00FCFF7B /* ControlDbToLinear.h */,
+				03D592C01946736E00FCFF7B /* ControlDelay.cpp */,
+				03D592C11946736E00FCFF7B /* ControlDelay.h */,
+				03D592C21946736E00FCFF7B /* ControlFloor.cpp */,
+				03D592C31946736E00FCFF7B /* ControlFloor.h */,
+				03D592C41946736E00FCFF7B /* ControlGenerator.cpp */,
+				03D592C51946736E00FCFF7B /* ControlGenerator.h */,
+				03D592C61946736E00FCFF7B /* ControlMetro.cpp */,
+				03D592C71946736E00FCFF7B /* ControlMetro.h */,
+				03D592C81946736E00FCFF7B /* ControlMetroDivider.cpp */,
+				03D592C91946736E00FCFF7B /* ControlMetroDivider.h */,
+				03D592CA1946736E00FCFF7B /* ControlMidiToFreq.cpp */,
+				03D592CB1946736E00FCFF7B /* ControlMidiToFreq.h */,
+				03D592CC1946736E00FCFF7B /* ControlParameter.cpp */,
+				03D592CD1946736E00FCFF7B /* ControlParameter.h */,
+				03D592CE1946736E00FCFF7B /* ControlPrinter.cpp */,
+				03D592CF1946736E00FCFF7B /* ControlPrinter.h */,
+				03D592D01946736E00FCFF7B /* ControlPulse.cpp */,
+				03D592D11946736E00FCFF7B /* ControlPulse.h */,
+				03D592D21946736E00FCFF7B /* ControlRandom.cpp */,
+				03D592D31946736E00FCFF7B /* ControlRandom.h */,
+				03D592D41946736E00FCFF7B /* ControlRecorder.cpp */,
+				03D592D51946736E00FCFF7B /* ControlRecorder.h */,
+				03D592D61946736E00FCFF7B /* ControlSnapToScale.cpp */,
+				03D592D71946736E00FCFF7B /* ControlSnapToScale.h */,
+				03D592D81946736E00FCFF7B /* ControlStepper.cpp */,
+				03D592D91946736E00FCFF7B /* ControlStepper.h */,
+				03D592DA1946736E00FCFF7B /* ControlSwitcher.cpp */,
+				03D592DB1946736E00FCFF7B /* ControlSwitcher.h */,
+				03D592DC1946736E00FCFF7B /* ControlTrigger.cpp */,
+				03D592DD1946736E00FCFF7B /* ControlTrigger.h */,
+				03D592DE1946736E00FCFF7B /* ControlTriggerFilter.cpp */,
+				03D592DF1946736E00FCFF7B /* ControlTriggerFilter.h */,
+				03D592E01946736E00FCFF7B /* ControlValue.cpp */,
+				03D592E11946736E00FCFF7B /* ControlValue.h */,
+				03D592E21946736E00FCFF7B /* ControlXYSpeed.cpp */,
+				03D592E31946736E00FCFF7B /* ControlXYSpeed.h */,
+				03D592E41946736E00FCFF7B /* DelayUtils.cpp */,
+				03D592E51946736E00FCFF7B /* DelayUtils.h */,
+				03D592E61946736E00FCFF7B /* DSPUtils.cpp */,
+				03D592E71946736E00FCFF7B /* DSPUtils.h */,
+				03D592E81946736E00FCFF7B /* Effect.cpp */,
+				03D592E91946736E00FCFF7B /* Effect.h */,
+				03D592EA1946736E00FCFF7B /* Filters.cpp */,
+				03D592EB1946736E00FCFF7B /* Filters.h */,
+				03D592EC1946736E00FCFF7B /* FilterUtils.cpp */,
+				03D592ED1946736E00FCFF7B /* FilterUtils.h */,
+				03D592EE1946736E00FCFF7B /* FixedValue.cpp */,
+				03D592EF1946736E00FCFF7B /* FixedValue.h */,
+				03D592F01946736E00FCFF7B /* Generator.cpp */,
+				03D592F11946736E00FCFF7B /* Generator.h */,
+				03D592F21946736E00FCFF7B /* LFNoise.cpp */,
+				03D592F31946736E00FCFF7B /* LFNoise.h */,
+				03D592F41946736E00FCFF7B /* Mixer.cpp */,
+				03D592F51946736E00FCFF7B /* Mixer.h */,
+				03D592F61946736E00FCFF7B /* MonoToStereoPanner.cpp */,
+				03D592F71946736E00FCFF7B /* MonoToStereoPanner.h */,
+				03D592F81946736E00FCFF7B /* Noise.cpp */,
+				03D592F91946736E00FCFF7B /* Noise.h */,
+				03D592FA1946736E00FCFF7B /* RampedValue.cpp */,
+				03D592FB1946736E00FCFF7B /* RampedValue.h */,
+				03D592FC1946736E00FCFF7B /* RectWave.cpp */,
+				03D592FD1946736E00FCFF7B /* RectWave.h */,
+				03D592FE1946736E00FCFF7B /* Reverb.cpp */,
+				03D592FF1946736E00FCFF7B /* Reverb.h */,
+				03D593001946736E00FCFF7B /* RingBuffer.cpp */,
+				03D593011946736E00FCFF7B /* RingBuffer.h */,
+				03D593021946736E00FCFF7B /* SampleTable.cpp */,
+				03D593031946736E00FCFF7B /* SampleTable.h */,
+				03D593041946736E00FCFF7B /* SawtoothWave.cpp */,
+				03D593051946736E00FCFF7B /* SawtoothWave.h */,
+				03D593061946736E00FCFF7B /* SineWave.cpp */,
+				03D593071946736E00FCFF7B /* SineWave.h */,
+				03D593081946736E00FCFF7B /* SquareWave.h */,
+				03D593091946736E00FCFF7B /* StereoDelay.cpp */,
+				03D5930A1946736E00FCFF7B /* StereoDelay.h */,
+				03D5930B1946736E00FCFF7B /* Synth.cpp */,
+				03D5930C1946736E00FCFF7B /* Synth.h */,
+				03D5930D1946736E00FCFF7B /* TableLookupOsc.cpp */,
+				03D5930E1946736E00FCFF7B /* TableLookupOsc.h */,
+				03D5930F1946736E00FCFF7B /* TonicCore.h */,
+				03D593101946736E00FCFF7B /* TonicFrames.cpp */,
+				03D593111946736E00FCFF7B /* TonicFrames.h */,
+				03D593121946736E00FCFF7B /* TriangleWave.h */,
+			);
+			path = Tonic;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				03D590701946448300FCFF7B /* ofxSimpleSpline */,
+				03D592521946736E00FCFF7B /* ofxTonic */,
 				E755D712194422ED00AA81C1 /* ofxUI */,
 				E72116B918A2842B0063EF97 /* ofxCameraSaveLoad */,
 				E72116CE18A2842C0063EF97 /* ofxGenerative */,
@@ -654,12 +988,14 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				03D5906C1946443700FCFF7B /* CloudsLibrary */,
-				E4B69E1C0A3A1BDC003C02F2 /* src */,
+				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				E7211CE318A285BB0063EF97 /* CloudsGlobal.h */,
+				03D592311946731800FCFF7B /* CloudsLibrary */,
+				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* Neurons64Debug.app */,
+				E4B69B5B0A3A1756003C02F2 /* Connectors64Debug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -676,8 +1012,6 @@
 		E4EEC9E9138DF44700A80321 /* openFrameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
-				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */,
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
@@ -1233,9 +1567,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* Neurons64 */ = {
+		E4B69B5A0A3A1756003C02F2 /* Connectors64 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Neurons64" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Connectors64" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -1247,9 +1581,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = Neurons64;
+			name = Connectors64;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* Neurons64Debug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* Connectors64Debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1260,7 +1594,7 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Neurons64" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Connectors64" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1281,7 +1615,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* Neurons64 */,
+				E4B69B5A0A3A1756003C02F2 /* Connectors64 */,
 			);
 		};
 /* End PBXProject section */
@@ -1317,60 +1651,82 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D5933B1946736F00FCFF7B /* ControlSwitcher.cpp in Sources */,
 				E7211C0418A284400063EF97 /* ofxTLCurves.cpp in Sources */,
+				03D592301946731000FCFF7B /* ParticleConnectorBin.cpp in Sources */,
 				E7211BC718A2843F0063EF97 /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E7211BCA18A2843F0063EF97 /* ofxSolver.cpp in Sources */,
 				E7211C0318A284400063EF97 /* ofxTLColorTrack.cpp in Sources */,
 				E755D9951944230C00AA81C1 /* ofxUIToggle.cpp in Sources */,
 				E7211BBD18A2843F0063EF97 /* ofxBehavior.cpp in Sources */,
+				03D593331946736F00FCFF7B /* ControlMidiToFreq.cpp in Sources */,
 				E7211BCD18A2843F0063EF97 /* ofxVerletSolver.cpp in Sources */,
+				03D5934D1946736F00FCFF7B /* Reverb.cpp in Sources */,
 				E7211BFA18A284400063EF97 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				E7211CE118A285970063EF97 /* CloudsInputMouse.cpp in Sources */,
+				03D593511946736F00FCFF7B /* SineWave.cpp in Sources */,
+				03D593211946736F00FCFF7B /* BasicDelay.cpp in Sources */,
 				E7211C5818A284400063EF97 /* tinyxml.cpp in Sources */,
 				E755D9781944230C00AA81C1 /* ofxUIEventArgs.cpp in Sources */,
+				03D5933D1946736F00FCFF7B /* ControlTriggerFilter.cpp in Sources */,
 				E755D9971944230C00AA81C1 /* ofxUIValuePlotter.cpp in Sources */,
 				E755D99A1944230C00AA81C1 /* ofxUIWidgetWithLabel.cpp in Sources */,
 				E7211BF318A284400063EF97 /* kiss_fftr.c in Sources */,
 				E755D9881944230C00AA81C1 /* ofxUIRadio.cpp in Sources */,
 				E7211BBE18A2843F0063EF97 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7211C5918A284400063EF97 /* tinyxmlerror.cpp in Sources */,
+				03D593541946736F00FCFF7B /* TableLookupOsc.cpp in Sources */,
 				E755D97D1944230C00AA81C1 /* ofxUIImageSampler.cpp in Sources */,
 				E7211C0E18A284400063EF97 /* ofxTLPage.cpp in Sources */,
+				03D593311946736F00FCFF7B /* ControlMetro.cpp in Sources */,
 				E755D9901944230C00AA81C1 /* ofxUISpectrum.cpp in Sources */,
 				E7211C0A18A284400063EF97 /* ofxTLImageTrack.cpp in Sources */,
 				E7211C0018A284400063EF97 /* ofxTLBangs.cpp in Sources */,
 				E7211C2118A284400063EF97 /* ofxEasingCubic.cpp in Sources */,
 				E755D9941944230C00AA81C1 /* ofxUITextInput.cpp in Sources */,
 				E7211C2618A284400063EF97 /* ofxEasingQuart.cpp in Sources */,
+				03D593401946736F00FCFF7B /* DelayUtils.cpp in Sources */,
 				E7211BFE18A284400063EF97 /* ofxTimeline.cpp in Sources */,
 				E755D9791944230C00AA81C1 /* ofxUIFPS.cpp in Sources */,
-				03D5906B1946443400FCFF7B /* CloudsVisualSystemNeurons.cpp in Sources */,
 				E7211BC418A2843F0063EF97 /* ofxLorentzBehavior.cpp in Sources */,
 				E7211BCE18A2843F0063EF97 /* ofxVortexBehavior.cpp in Sources */,
 				E755D9991944230C00AA81C1 /* ofxUIWidget.cpp in Sources */,
 				E755D9931944230C00AA81C1 /* ofxUITextArea.cpp in Sources */,
+				03D5934E1946736F00FCFF7B /* RingBuffer.cpp in Sources */,
 				E7211C1F18A284400063EF97 /* ofxEasingBounce.cpp in Sources */,
+				03D593381946736F00FCFF7B /* ControlRecorder.cpp in Sources */,
+				03D593261946736F00FCFF7B /* CompressorLimiter.cpp in Sources */,
 				E755D9741944230C00AA81C1 /* ofxUICanvas.cpp in Sources */,
 				E7211C0518A284400063EF97 /* ofxTLEmptyKeyframes.cpp in Sources */,
 				E755D9921944230C00AA81C1 /* ofxUITabBar.cpp in Sources */,
 				E7211BCC18A2843F0063EF97 /* ofxSwarmBehavior.cpp in Sources */,
+				03D5934B1946736F00FCFF7B /* RampedValue.cpp in Sources */,
+				03D5932C1946736F00FCFF7B /* ControlCounter.cpp in Sources */,
 				E755D9981944230C00AA81C1 /* ofxUIWaveform.cpp in Sources */,
 				E7211C1D18A284400063EF97 /* ofxEasing.cpp in Sources */,
 				E7211C1118A284400063EF97 /* ofxTLTicker.cpp in Sources */,
 				E7211BD218A2843F0063EF97 /* ofxMSATimer.cpp in Sources */,
+				03D593251946736F00FCFF7B /* CombFilter.cpp in Sources */,
 				E755D9811944230C00AA81C1 /* ofxUILabelButton.cpp in Sources */,
 				E7211C0118A284400063EF97 /* ofxTLCameraTrack.cpp in Sources */,
 				E7211C5A18A284400063EF97 /* tinyxmlparser.cpp in Sources */,
+				03D5932A1946736F00FCFF7B /* ControlComparison.cpp in Sources */,
 				E755D9801944230C00AA81C1 /* ofxUILabel.cpp in Sources */,
 				E7211C1618A284400063EF97 /* ofxTLZoomer.cpp in Sources */,
+				03D593221946736F00FCFF7B /* BLEPOscillator.cpp in Sources */,
 				E7211BC518A2843F0063EF97 /* ofxPerlinBehavior.cpp in Sources */,
+				03D592491946735200FCFF7B /* CloudsMixer.cpp in Sources */,
 				E7211C2418A284400063EF97 /* ofxEasingLinear.cpp in Sources */,
+				03D5932D1946736F00FCFF7B /* ControlDbToLinear.cpp in Sources */,
 				E755D98D1944230C00AA81C1 /* ofxUISlider.cpp in Sources */,
+				03D593271946736F00FCFF7B /* ControlArithmetic.cpp in Sources */,
 				E755D9721944230C00AA81C1 /* ofxUIBiLabelSlider.cpp in Sources */,
 				E7211C0818A284400063EF97 /* ofxTLImageSequence.cpp in Sources */,
+				03D593481946736F00FCFF7B /* Mixer.cpp in Sources */,
 				E755D9821944230C00AA81C1 /* ofxUILabelToggle.cpp in Sources */,
 				E755D96F1944230C00AA81C1 /* ofxUI2DGraph.cpp in Sources */,
 				E721168918A2839C0063EF97 /* testApp.cpp in Sources */,
+				03D5934C1946736F00FCFF7B /* RectWave.cpp in Sources */,
 				E7211C2918A284400063EF97 /* ofxTween.cpp in Sources */,
 				E7211C0F18A284400063EF97 /* ofxTLPageTabs.cpp in Sources */,
 				E7211C1518A284400063EF97 /* ofxTLVideoTrack.cpp in Sources */,
@@ -1380,35 +1736,51 @@
 				E7211BC618A2843F0063EF97 /* ofxRParticle.cpp in Sources */,
 				E755D9711944230C00AA81C1 /* ofxUIBaseDraws.cpp in Sources */,
 				E755D9911944230C00AA81C1 /* ofxUISuperCanvas.cpp in Sources */,
+				03D593471946736F00FCFF7B /* LFNoise.cpp in Sources */,
+				03D593491946736F00FCFF7B /* MonoToStereoPanner.cpp in Sources */,
 				E7211C1218A284400063EF97 /* ofxTLTrack.cpp in Sources */,
 				E7211C2518A284400063EF97 /* ofxEasingQuad.cpp in Sources */,
+				03D5934A1946736F00FCFF7B /* Noise.cpp in Sources */,
 				E755D98B1944230C00AA81C1 /* ofxUIRotarySlider.cpp in Sources */,
+				03D593551946736F00FCFF7B /* TonicFrames.cpp in Sources */,
 				E7211CD418A2858F0063EF97 /* ofxSystemTextbox.mm in Sources */,
 				E7211BC118A2843F0063EF97 /* ofxElectroStaticBehavior.cpp in Sources */,
+				03D593521946736F00FCFF7B /* StereoDelay.cpp in Sources */,
+				03D593241946736F00FCFF7B /* BufferPlayer.cpp in Sources */,
+				03D5931D1946736F00FCFF7B /* ofxTonicSynth.cpp in Sources */,
 				E7211C0B18A284400063EF97 /* ofxTLInOut.cpp in Sources */,
 				E7211C1318A284400063EF97 /* ofxTLTrackHeader.cpp in Sources */,
+				03D593321946736F00FCFF7B /* ControlMetroDivider.cpp in Sources */,
 				E7211C5B18A284400063EF97 /* ofxXmlSettings.cpp in Sources */,
 				E755D9761944230C00AA81C1 /* ofxUIDragableLabelButton.cpp in Sources */,
 				E7211C0618A284400063EF97 /* ofxTLEmptyTrack.cpp in Sources */,
 				E7211CDF18A285970063EF97 /* CloudsInput.cpp in Sources */,
+				03D593351946736F00FCFF7B /* ControlPrinter.cpp in Sources */,
 				E7211C1418A284400063EF97 /* ofxTLVideoThumb.cpp in Sources */,
 				E7211CD218A2858F0063EF97 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E755D98F1944230C00AA81C1 /* ofxUISpacer.cpp in Sources */,
-				03D5906F1946446E00FCFF7B /* CloudsPathCamera.cpp in Sources */,
+				03D5933F1946736F00FCFF7B /* ControlXYSpeed.cpp in Sources */,
+				03D593301946736F00FCFF7B /* ControlGenerator.cpp in Sources */,
 				E7211C0C18A284400063EF97 /* ofxTLKeyframes.cpp in Sources */,
 				E7211C1E18A284400063EF97 /* ofxEasingBack.cpp in Sources */,
+				03D593461946736F00FCFF7B /* Generator.cpp in Sources */,
+				03D593371946736F00FCFF7B /* ControlRandom.cpp in Sources */,
 				E755D98C1944230C00AA81C1 /* ofxUIScrollableCanvas.cpp in Sources */,
+				03D5932E1946736F00FCFF7B /* ControlDelay.cpp in Sources */,
 				E755D98E1944230C00AA81C1 /* ofxUISortableList.cpp in Sources */,
+				03D593291946736F00FCFF7B /* ControlChangeNotifier.cpp in Sources */,
 				E755D9841944230C00AA81C1 /* ofxUIMovingGraph.cpp in Sources */,
 				E755D98A1944230C00AA81C1 /* ofxUIRectangle.cpp in Sources */,
-				03D5908A1946448300FCFF7B /* ofxSimpleSpline.cpp in Sources */,
 				E755D9701944230C00AA81C1 /* ofxUI2DPad.cpp in Sources */,
 				E755D9771944230C00AA81C1 /* ofxUIDropDownList.cpp in Sources */,
 				E7211C0718A284400063EF97 /* ofxTLFlags.cpp in Sources */,
 				E7211BBF18A2843F0063EF97 /* ofxDamperBehavior.cpp in Sources */,
 				E7211BF418A284400063EF97 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
+				03D5931F1946736F00FCFF7B /* Arithmetic.cpp in Sources */,
 				E7211BC318A2843F0063EF97 /* ofxHomingBehavior.cpp in Sources */,
 				E7211C2018A284400063EF97 /* ofxEasingCirc.cpp in Sources */,
+				03D5932F1946736F00FCFF7B /* ControlFloor.cpp in Sources */,
+				03D593501946736F00FCFF7B /* SawtoothWave.cpp in Sources */,
 				E755D9871944230C00AA81C1 /* ofxUINumberDialer.cpp in Sources */,
 				E755D97B1944230C00AA81C1 /* ofxUIImage.cpp in Sources */,
 				E7211BBC18A2843F0063EF97 /* ofxCameraSaveLoad.cpp in Sources */,
@@ -1416,33 +1788,56 @@
 				E7211BFF18A284400063EF97 /* ofxTLAudioTrack.cpp in Sources */,
 				E7211BC918A2843F0063EF97 /* ofxRParticleSystem.cpp in Sources */,
 				E7211C0D18A284400063EF97 /* ofxTLLFO.cpp in Sources */,
+				03D5922C1946731000FCFF7B /* CloudsVisualSystemConnectors.cpp in Sources */,
 				E7211C0918A284400063EF97 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				E755D97C1944230C00AA81C1 /* ofxUIImageButton.cpp in Sources */,
 				E755D9861944230C00AA81C1 /* ofxUIMultiImageToggle.cpp in Sources */,
 				E755D9731944230C00AA81C1 /* ofxUIButton.cpp in Sources */,
 				E7211C2818A284400063EF97 /* ofxEasingSine.cpp in Sources */,
 				E755D9961944230C00AA81C1 /* ofxUIToggleMatrix.cpp in Sources */,
+				03D593421946736F00FCFF7B /* Effect.cpp in Sources */,
+				03D5922F1946731000FCFF7B /* ParticleConnector.cpp in Sources */,
+				03D593391946736F00FCFF7B /* ControlSnapToScale.cpp in Sources */,
 				E7211BFD18A284400063EF97 /* ofxRemoveCocoaMenu.mm in Sources */,
+				03D593231946736F00FCFF7B /* BufferFiller.cpp in Sources */,
 				E7211BD818A2843F0063EF97 /* ofxTimecode.cpp in Sources */,
 				E755D9891944230C00AA81C1 /* ofxUIRangeSlider.cpp in Sources */,
 				E7211BFC18A284400063EF97 /* ofxHotKeys_impl_win.cpp in Sources */,
+				03D5934F1946736F00FCFF7B /* SampleTable.cpp in Sources */,
+				03D5922E1946731000FCFF7B /* ParticleConnectionGenerator.cpp in Sources */,
+				03D593411946736F00FCFF7B /* DSPUtils.cpp in Sources */,
 				E755D97F1944230C00AA81C1 /* ofxUIImageToggle.cpp in Sources */,
 				E7211BFB18A284400063EF97 /* ofxHotKeys_impl_mac.mm in Sources */,
+				03D5933A1946736F00FCFF7B /* ControlStepper.cpp in Sources */,
+				03D593201946736F00FCFF7B /* AudioFileUtils.cpp in Sources */,
+				03D5933E1946736F00FCFF7B /* ControlValue.cpp in Sources */,
 				E755D97A1944230C00AA81C1 /* ofxUIFPSSlider.cpp in Sources */,
+				03D5922D1946731000FCFF7B /* ParticleConnection.cpp in Sources */,
+				03D593281946736F00FCFF7B /* ControlCallback.cpp in Sources */,
 				E755D9751944230C00AA81C1 /* ofxUICircleSlider.cpp in Sources */,
 				E7211BC218A2843F0063EF97 /* ofxField2D.cpp in Sources */,
 				E7211BD518A2843F0063EF97 /* ofxTextInputField.cpp in Sources */,
 				E755D9831944230C00AA81C1 /* ofxUIMinimalSlider.cpp in Sources */,
 				E7211BCB18A2843F0063EF97 /* ofxSphericalAttractionBehavior.cpp in Sources */,
+				03D5932B1946736F00FCFF7B /* ControlConditioner.cpp in Sources */,
+				03D593441946736F00FCFF7B /* FilterUtils.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				03D5933C1946736F00FCFF7B /* ControlTrigger.cpp in Sources */,
 				E7211C1018A284400063EF97 /* ofxTLSwitches.cpp in Sources */,
 				E7211BC818A2843F0063EF97 /* ofxRParticleRenderer.cpp in Sources */,
+				03D593431946736F00FCFF7B /* Filters.cpp in Sources */,
 				E7211C2718A284400063EF97 /* ofxEasingQuint.cpp in Sources */,
 				E7211C0218A284400063EF97 /* ofxTLColors.cpp in Sources */,
+				03D592481946735200FCFF7B /* CloudsAudioEvents.cpp in Sources */,
 				E7211CD318A2858F0063EF97 /* CloudsVisualSystem.cpp in Sources */,
+				03D593451946736F00FCFF7B /* FixedValue.cpp in Sources */,
 				E755D9851944230C00AA81C1 /* ofxUIMultiImageButton.cpp in Sources */,
+				03D593341946736F00FCFF7B /* ControlParameter.cpp in Sources */,
+				03D593531946736F00FCFF7B /* Synth.cpp in Sources */,
+				03D593361946736F00FCFF7B /* ControlPulse.cpp in Sources */,
 				E7211C2218A284400063EF97 /* ofxEasingElastic.cpp in Sources */,
 				E7211CD118A2858F0063EF97 /* CloudsRGBDCamera.cpp in Sources */,
+				03D5931E1946736F00FCFF7B /* ADSR.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1599,8 +1994,11 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx64,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxTonic/libs/sndfile/lib/vs64,
 				);
-				PRODUCT_NAME = Neurons64Debug;
+				PRODUCT_NAME = Connectors64Debug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1685,8 +2083,11 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx64,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxTonic/libs/sndfile/lib/vs64,
 				);
-				PRODUCT_NAME = Neurons64;
+				PRODUCT_NAME = Connectors64;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1694,7 +2095,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Neurons64" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Connectors64" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -1703,7 +2104,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Neurons64" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Connectors64" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
