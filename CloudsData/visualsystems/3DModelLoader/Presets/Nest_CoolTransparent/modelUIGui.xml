@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>modelUIGui</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>93.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>849.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -57,12 +57,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Cube_256.obm</Name>
-    <Value>1</Value>
+    <Name>elephant.obm</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>elephant.obm</Name>
+    <Name>elephant_binary.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ellipsoid1.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ellipsoid2.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -78,6 +88,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>FallingChairs_Triangulated.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>folding-small-simplified.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -102,6 +117,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Hypersphere1.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Kelp.obm</Name>
     <Value>0</Value>
 </Widget>
@@ -122,7 +142,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>MegaSphere.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>NestedBrokenSphere.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>pathDebugModel.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>sphere.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -138,6 +173,21 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Tangle_Triangulated.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_Ellipsoid.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ToxiAllInOne.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>tube1.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
