@@ -354,7 +354,8 @@ void CloudsVisualSystemBalloons::setBalloonColors()
 	
 	random_shuffle( col.begin(), col.end() );
 	
-	colFbo.allocate(dimX, dimY, GL_RGB16F);
+	//colFbo.allocate(dimX, dimY, GL_RGB16F);
+    colFbo.allocate(dimX, dimY, GL_RGB16);
 	colFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     colFbo.getTextureReference().loadData( &col[0][0], dimX, dimY, GL_RGB);
 }

@@ -57,9 +57,9 @@
 	hud.setup();
 
 #ifdef OCULUS_RIFT
-//  rgbdVisualSystem.hud = &hud;
-//  rgbdVisualSystem.setupHUDGui();
-//	rgbdVisualSystem.loadPresetGUISFromName("RGBD_OC_POINTS");
+    rgbdVisualSystem.hud = &hud;
+    rgbdVisualSystem.setupHUDGui();
+    rgbdVisualSystem.loadPresetGUISFromName("RGBD_OC_BASE");
 #else
 //	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
 //	rgbdVisualSystem.loadPresetGUISFromName("Working");
@@ -94,13 +94,12 @@
 	rgbdVisualSystem.selfPostDraw(1920,1080);
 
 #ifndef OCULUS_RIFT
-	//hud.draw();
+	hud.draw();
 #endif
     
     CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(
         CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.,
         CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
-
 }
 
 - (void) loadClipFromTable:(id)sender
@@ -139,8 +138,11 @@
 									   CloudsSpeaker::speakers[clip->person].lastName,
 									   clip->name );
 		currentClip = clip;
-        // EZ: Temp to get HUD content
         hud.respondToClip(clip);
+        
+        CloudsQuestionEventArgs args(clip, "WHAT'S YOUR QUESTION?", "topic");
+		hud.questionSelected(args);
+
 	}
 	else{
 		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip->combinedVideoPath << " is not valid";

@@ -360,15 +360,15 @@ void CloudsVisualSystemCubeCraft::selfSetDefaults()
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
 	
 	//cullDirection = GL_FRONT; // GL_BACK; // GL_NONE;
-#ifdef TARGET_WIN32
+//#ifdef TARGET_WIN32
 	#ifdef OCULUS_RIFT
 		cullDirection = GL_BACK;
 	#else
 		cullDirection = GL_FRONT;
 	#endif
-#else
-	cullDirection = GL_FRONT;
-#endif
+//#else
+//	cullDirection = GL_FRONT;
+//#endif
 
 }
 
