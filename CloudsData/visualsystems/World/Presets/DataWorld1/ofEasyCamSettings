@@ -3,7 +3,7 @@ transformMatrix
  0.99999,        0,        0,        0
        0,        1,        0,        0
        0,        0,        1,        0
-       0,        0,  259.605,        1
+       0,        0,  187.434,        1
 fov
 77.1428
 near
@@ -20,7 +20,7 @@ target
 bEnableMouseMiddleButton
 1
 bMouseInputEnabled
-1
+0
 drag
 0.9
 doTranslationKey

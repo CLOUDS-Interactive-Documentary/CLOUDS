@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -21,7 +21,7 @@
     <Value>1</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>NUM PARTICLES</Name>
     <Value>2000</Value>
 </Widget>
@@ -93,7 +93,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>ROTATE ANGLE</Name>
-    <Value>92.403999329</Value>
+    <Value>97.105262756</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

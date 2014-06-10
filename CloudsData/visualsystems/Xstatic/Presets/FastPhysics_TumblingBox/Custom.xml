@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -21,7 +21,7 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>NUM PARTICLES</Name>
     <Value>512</Value>
 </Widget>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>FREEZE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

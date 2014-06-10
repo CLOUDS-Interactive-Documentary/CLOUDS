@@ -16571,7 +16571,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -16669,7 +16669,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -17350,17 +17350,19 @@
         <clip>Zach - Time slows down</clip>
         <clip>Zach - drawn2</clip>
         <clip>Zach - hide the tech</clip>
+        <clip>Memo_master - MSAFluid 1</clip>
+        <clip>Memo_master - InspiredByNature</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>1</sound_allow_vo>
     <interlude>1</interlude>
 </system>
 <system name="Flying_DenseForest_SND">
-    <keywords>tree|nature|magic|children</keywords>
+    <keywords>tree|nature|magic|children|drugs</keywords>
     <links></links>
     <suppressions>
         <clip>Andres - modeling complex systems</clip>
@@ -17429,11 +17431,12 @@
         <clip>Zach - Time slows down</clip>
         <clip>Zach - drawn2</clip>
         <clip>Zach - hide the tech</clip>
+        <clip>Memo_master - MSAFluid 1</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
@@ -17487,7 +17490,7 @@
     <interlude>0</interlude>
 </system>
 <system name="Flying_lush">
-    <keywords>imagination|representation</keywords>
+    <keywords>imagination|representation|drugs</keywords>
     <links></links>
     <suppressions>
         <clip>Sophy - nanobots</clip>
@@ -17502,7 +17505,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -22207,14 +22210,14 @@
     <interlude>0</interlude>
 </system>
 <system name="Memory_ThinBlueRows">
-    <keywords></keywords>
+    <keywords>computational power</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
@@ -24023,6 +24026,18 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Ocean_NightOcean_OC">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -33788,7 +33803,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>1</sound_allow_vo>
     <interlude>0</interlude>
@@ -33859,7 +33874,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -33928,7 +33943,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
@@ -33999,7 +34014,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -34240,11 +34255,12 @@
         <clip>Shiffman - NOC 3</clip>
         <clip>Shiffman - programming the universe</clip>
         <clip>Shiffman - Carl Sims</clip>
+        <clip>Memo_master - A bunch of lines 2</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -34533,7 +34549,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -41522,7 +41538,7 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -41624,7 +41640,7 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Xstatic_FastPhysics2">
+<system name="Xstatic_FastPhysics2_">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -41733,6 +41749,7 @@
         <clip>Patricio - Imaginative technologies 1</clip>
         <clip>Patricio - Magic Spells 1</clip>
         <clip>Patricio - Discovering Mathematical Reality</clip>
+        <clip>Jer - fireflies</clip>
     </links>
     <suppressions>
         <clip>Marcus - call to action</clip>
@@ -41785,7 +41802,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -41807,6 +41824,7 @@
         <clip>Patricio - Imaginative technologies 1</clip>
         <clip>Patricio - Magic Spells 1</clip>
         <clip>Patricio - Discovering Mathematical Reality</clip>
+        <clip>Jer - fireflies</clip>
     </links>
     <suppressions>
         <clip>Marcus - call to action</clip>
@@ -41859,7 +41877,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>

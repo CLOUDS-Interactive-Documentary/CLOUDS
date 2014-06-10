@@ -1,14 +1,29 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>913.000000000</XPosition>
+    <YPosition>347.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>default</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>EZ_Manual</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GraySandbox</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>J_BlackMountains</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -62,11 +77,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>suryaPreset1</Name>
+    <Name>PurpleSandbox</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>J_BlackMountains</Name>
-    <Value>1</Value>
+    <Name>suryaPreset1</Name>
+    <Value>0</Value>
 </Widget>

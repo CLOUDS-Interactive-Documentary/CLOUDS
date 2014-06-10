@@ -21,8 +21,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>ROTATE SPEED</WidgetName>
-                <WidgetID>43</WidgetID>
+                <WidgetName>DRAG</WidgetName>
+                <WidgetID>49</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -37,8 +37,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>DRAG</WidgetName>
-                <WidgetID>49</WidgetID>
+                <WidgetName>ROTATE SPEED</WidgetName>
+                <WidgetID>43</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

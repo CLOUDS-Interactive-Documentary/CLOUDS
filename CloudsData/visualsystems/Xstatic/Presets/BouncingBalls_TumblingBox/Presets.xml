@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>663.000061035</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>210.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -87,6 +87,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>FastPhysics2_TumblingBoxOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>FastPhysics_TumblingBox</Name>
     <Value>1</Value>
 </Widget>
@@ -98,6 +103,21 @@
 <Widget>
     <Kind>2</Kind>
     <Name>FrozenBalls_TumblingBox</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Neutrinos_1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Neutrinos_2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Neutrinos_3</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
