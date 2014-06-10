@@ -545,10 +545,10 @@
 		03D590681946443400FCFF7B /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				03D5906D1946446E00FCFF7B /* CloudsPathCamera.cpp */,
 				03D5906E1946446E00FCFF7B /* CloudsPathCamera.h */,
-				03D590691946443400FCFF7B /* CloudsVisualSystemNeurons.cpp */,
+				03D5906D1946446E00FCFF7B /* CloudsPathCamera.cpp */,
 				03D5906A1946443400FCFF7B /* CloudsVisualSystemNeurons.h */,
+				03D590691946443400FCFF7B /* CloudsVisualSystemNeurons.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

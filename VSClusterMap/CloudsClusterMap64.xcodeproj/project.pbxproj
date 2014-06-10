@@ -774,10 +774,10 @@
 		03D591A519466F5900FCFF7B /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				03D591A619466F5900FCFF7B /* CloudsClusterNode.cpp */,
 				03D591A719466F5900FCFF7B /* CloudsClusterNode.h */,
-				03D591A819466F5900FCFF7B /* CloudsVisualSystemClusterMap.cpp */,
+				03D591A619466F5900FCFF7B /* CloudsClusterNode.cpp */,
 				03D591A919466F5900FCFF7B /* CloudsVisualSystemClusterMap.h */,
+				03D591A819466F5900FCFF7B /* CloudsVisualSystemClusterMap.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

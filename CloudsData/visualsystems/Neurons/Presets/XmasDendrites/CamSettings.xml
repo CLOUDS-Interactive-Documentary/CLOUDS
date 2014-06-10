@@ -1,19 +1,19 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
+    <XPosition>435.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>DIST</Name>
-    <Value>200.000000000</Value>
+    <Value>86.538467407</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOV</Name>
-    <Value>34.581226349</Value>
+    <Value>33.750000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>8.423599243</Value>
+    <Value>8.423595428</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -78,6 +78,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>3D RGBD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>22</Kind>
+    <Name>VIEW</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
