@@ -140,6 +140,7 @@ protected:
     bool bShowDebug;
     bool bDoNoise;
     bool bDoDraw;
+    bool bDoTelekinesis;
     ofFloatColor fc;
     float fogDist;
     float fogExpo;
