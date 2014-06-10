@@ -26613,7 +26613,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?clouds: How does this story end?,#mindblowing,#fun,#question,#start</additionalKeywords>
+    <additionalKeywords>#start,#question,#fun,#mindblowing,?clouds: How does this story end?,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - new media</name>
@@ -33739,7 +33739,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?beginnings: How does this story begin?,#start,#sincere,#easy</additionalKeywords>
+    <additionalKeywords>#easy,#sincere,#start,?beginnings: How does this story begin?,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - languages as tools</name>
@@ -60162,7 +60162,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#start</additionalKeywords>
 </clip>
 <clip>
     <name>Memo_master - 10yearsOld 3</name>
@@ -61409,7 +61408,7 @@
 </clip>
 <clip>
     <name>Intro - AudioVisualization</name>
-    <additionalKeywords>music,audiovisualization,?audiovisualization:What does music look like?,#start,#oculus,#question</additionalKeywords>
+    <additionalKeywords>music,audiovisualization,?audiovisualization:What does music look like?,#question</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - BuildingWorlds2</name>
@@ -61501,7 +61500,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>coding,sketching,self expression,creative coding,processing,drawing,#question,#start,?sketching: How do you sketch with code?</additionalKeywords>
+    <additionalKeywords>coding,sketching,self expression,creative coding,processing,drawing,?sketching: How do you sketch with code?,#start,#question,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Collaboration</name>
@@ -61634,7 +61633,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>computation,computer,thinking through code,#start,?thinking: Do computers make us smarter?,code,#question</additionalKeywords>
+    <additionalKeywords>computation,computer,thinking through code,code,#question,?thinking: Do computers make us smarter?,#start,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - CriticalPractices</name>
@@ -63379,7 +63378,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>audiovisualization,music,perception,#logical</additionalKeywords>
+    <additionalKeywords>audiovisualization,music,perception,#logical,#oculus,?audiovisualization:What does music look like?</additionalKeywords>
 </clip>
 <clip>
     <name>LIA - helldotcom</name>
