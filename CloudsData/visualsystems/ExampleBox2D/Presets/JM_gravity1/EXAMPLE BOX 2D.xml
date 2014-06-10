@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>EXAMPLE BOX 2D</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>968.000000000</XPosition>
+    <YPosition>152.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -108,7 +108,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>S3</Name>
-    <Value>255.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
