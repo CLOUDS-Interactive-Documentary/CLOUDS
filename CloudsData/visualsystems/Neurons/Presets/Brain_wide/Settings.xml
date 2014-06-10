@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Settings</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -63,7 +63,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Spin Speed</Name>
-    <Value>1.507389069</Value>
+    <Value>1.507389307</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

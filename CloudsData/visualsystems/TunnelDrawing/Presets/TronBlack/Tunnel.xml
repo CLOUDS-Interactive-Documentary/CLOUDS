@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>Tunnel</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1197.000000000</XPosition>
-    <YPosition>372.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -19,7 +19,7 @@
     <Kind>6</Kind>
     <Name>thickness range</Name>
     <HighValue>20.000000000</HighValue>
-    <LowValue>6.108374596</LowValue>
+    <LowValue>5.123152733</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>

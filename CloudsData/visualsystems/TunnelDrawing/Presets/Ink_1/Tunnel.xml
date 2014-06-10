@@ -1,0 +1,79 @@
+<Canvas>
+    <Kind>40</Kind>
+    <Name>Tunnel</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>projection dist</Name>
+    <Value>0.945320189</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cam speed</Name>
+    <Value>-2.305418730</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>thickness range</Name>
+    <HighValue>10.443349838</HighValue>
+    <LowValue>3.546797991</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>distance range</Name>
+    <HighValue>10.000000000</HighValue>
+    <LowValue>2.610837460</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW FILL</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>RH</Name>
+    <Value>0.628272235</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>RS</Name>
+    <Value>0.209424719</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>RV</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>RA</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW WIREFRAME</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WH</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WS</Name>
+    <Value>0.366492778</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WV</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WA</Name>
+    <Value>1.000000000</Value>
+</Widget>

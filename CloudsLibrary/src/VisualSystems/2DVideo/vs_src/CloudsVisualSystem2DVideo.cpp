@@ -124,8 +124,6 @@ void CloudsVisualSystem2DVideo::selfSetup()
     movieStrings.push_back("GitHub2.mov");
     movieStrings.push_back("Gource.mov");
 
-    
-    movieStrings.push_back("FaceSub_lowSat.mov");
     movieStrings.push_back("PeopleStaring.mp4");
     movieStrings.push_back("FaceShift_noise.mov");
     movieStrings.push_back("FaceSub_lowSat.mov");
