@@ -2198,7 +2198,6 @@
 		E7D822B618BEBD6E00C1EB93 /* CloudsVisualSystemPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPreset.h; sourceTree = "<group>"; };
 		E7D822BA18BEBD6E00C1EB93 /* CloudsVisualSystem2DVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem2DVideo.cpp; sourceTree = "<group>"; };
 		E7D822BB18BEBD6E00C1EB93 /* CloudsVisualSystem2DVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem2DVideo.h; sourceTree = "<group>"; };
-		E7D822BD18BEBD6E00C1EB93 /* CLOUDS_exportCameraPath.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = CLOUDS_exportCameraPath.py; sourceTree = "<group>"; };
 		E7D822BF18BEBD6E00C1EB93 /* CloudsOrthoCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsOrthoCamera.cpp; sourceTree = "<group>"; };
 		E7D822C018BEBD6E00C1EB93 /* CloudsOrthoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsOrthoCamera.h; sourceTree = "<group>"; };
 		E7D822C118BEBD6E00C1EB93 /* CloudsVisualSystem3DModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem3DModelLoader.cpp; sourceTree = "<group>"; };
@@ -5407,7 +5406,6 @@
 		E7D822BC18BEBD6E00C1EB93 /* 3DModelLoader */ = {
 			isa = PBXGroup;
 			children = (
-				E7D822BD18BEBD6E00C1EB93 /* CLOUDS_exportCameraPath.py */,
 				E7D822BE18BEBD6E00C1EB93 /* vs_src */,
 			);
 			path = 3DModelLoader;

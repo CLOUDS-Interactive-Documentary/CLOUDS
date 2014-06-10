@@ -471,7 +471,6 @@ void _C::selfDraw(){
 		ofRotateX(ry);
 	}
 
-
     //some camera sway
 //    ofTranslate(
 //                ofNoise( ofGetFrameNum() * 0.01 , 1000) * _C::sway,

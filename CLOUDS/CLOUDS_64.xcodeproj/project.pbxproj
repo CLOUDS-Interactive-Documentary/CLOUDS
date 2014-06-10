@@ -9761,8 +9761,6 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxTimeline/libs/sndfile/lib/osx,
-					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxAssimpModelLoader/libs/assimp/lib/osx,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",

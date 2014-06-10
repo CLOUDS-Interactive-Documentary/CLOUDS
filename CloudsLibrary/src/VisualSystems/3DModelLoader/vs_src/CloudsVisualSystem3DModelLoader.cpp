@@ -502,7 +502,6 @@ void CloudsVisualSystem3DModelLoader::selfBegin()
 {
 	accumulatedRotation.set( 0,0,0);
 	setupGridVbos();
-//	getCameraRef().setPosition(<#float px#>, <#float py#>, <#float pz#>)
 }
 
 //do things like ofRotate/ofTranslate here
@@ -522,6 +521,7 @@ void CloudsVisualSystem3DModelLoader::selfDraw()
 {
 	//???: update... for some reason the selfUpdate is being called in stand alone.
 //	bLeftCamIsActive = bFrontCamIsActive = bPlanCamIsActive = bPerspCamIsActive = false;
+    glDisable(GL_CULL_FACE);
 	if( cursorIsOverGUI() )
 	{
 		leftCam.disableMouseInput();

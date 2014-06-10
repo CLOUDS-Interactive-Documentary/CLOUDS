@@ -670,14 +670,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 
-    // TODO: Fix this cursor hack.
-//    drawCursorMode =  DRAW_CURSOR_PRIMARY;
-//    if(getQuestionText() != ""){
-//        drawCursorMode =  DRAW_CURSOR_PRIMARY;
-//    }
-//    else {
-//        drawCursorMode =  DRAW_CURSOR_NONE;
-//    }
+
 #ifdef OCULUS_RIFT
 	float curQuestionSelectFade = (caughtPortal == NULL ? 1.0 : powf(ofMap(caughtPortal->hoverPercentComplete,
 																		0.0, .2, 1.0, 0.0, true), 2.0));
@@ -691,11 +684,6 @@ void CloudsVisualSystemRGBD::selfUpdate(){
     pointLayer1.update();
     pointLayer2.update();
     
-//	if(numRandomPoints != points.getNumVertices()){
-//    if(refreshPointcloud){
-//    generatePoints();
-//	}
-	
 	if(refreshLines){
 		generateLines();
 	}
