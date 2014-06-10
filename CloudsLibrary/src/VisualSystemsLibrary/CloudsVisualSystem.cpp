@@ -1751,7 +1751,7 @@ void CloudsVisualSystem::setupCameraGui()
 	camGui->addMinimalSlider("maxY", -90, 90, &interactiveCameraMaxY);
     
     camGui->addToggle("Spin Camera", &bEnableInteractiveSpin);
-    camGui->addSlider("Spin Camera Damp", 0.9, 1.0, &cameraSpinDamp);
+    camGui->addSlider("Spin Camera Damp", 0.0, .5, &cameraSpinDamp);
     camGui->addSlider("Spin Camera Range X", 0, 180, &interactiveCameraSpinRange.x);
     camGui->addSlider("Spin Camera Range Y", 0, 180, &interactiveCameraSpinRange.y);
     camGui->addToggle("Invert Spin Axis", &bInvertCameraSpinAxis);
