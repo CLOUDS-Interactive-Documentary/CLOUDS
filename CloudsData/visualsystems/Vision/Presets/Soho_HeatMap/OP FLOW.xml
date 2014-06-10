@@ -1,7 +1,7 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>OP FLOW</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -18,12 +18,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW TINT</Name>
-    <Value>72.857147217</Value>
+    <Value>37.684730530</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>FLOW DENSITY</Name>
-    <Value>3</Value>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,27 +33,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW WIDTH</Name>
-    <Value>0.295566499</Value>
+    <Value>0.364532024</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW HEIGHT</Name>
-    <Value>0.399014771</Value>
+    <Value>0.359605908</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE LENGTH</Name>
-    <Value>1.000000000</Value>
+    <Value>1.645320177</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW COLOUR MAP RANGE</Name>
-    <Value>50.000000000</Value>
+    <Value>434.285705566</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE WIDTH</Name>
-    <Value>2.000000000</Value>
+    <Value>2.285714388</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
