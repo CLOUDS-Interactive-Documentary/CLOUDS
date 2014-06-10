@@ -562,7 +562,7 @@ void CloudsVisualSystemAstrolabe::selfDraw()
 {
 	ofPushStyle();
 	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
+	glCullFace(GL_FRONT);
 	
 	currentBlendMode != OF_BLENDMODE_DISABLED?	ofEnableBlendMode(currentBlendMode) : ofDisableAlphaBlending();
 
