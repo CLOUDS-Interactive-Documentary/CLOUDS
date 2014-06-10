@@ -61,8 +61,6 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 	filterGradeABox.state  = NSOffState;
 	
 	[self updateFilters:self];
-
-    NSLog(@"All clip table? %@", allClipTable);
     
     [clipTable setTarget:self];
     [clipTable setDoubleAction:@selector(loadClipFromTable:)];
