@@ -34273,9 +34273,34 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="Terrain_EZ_Manual">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="Terrain_GraySandbox">
     <keywords>fluid|world building</keywords>
-    <links></links>
+    <links>
+        <clip>LIA - PatternsIntheBrain</clip>
+        <clip>LIA - MalleableMath</clip>
+        <clip>Joel - Bicycles1</clip>
+        <clip>Intro - BuildingWorlds2</clip>
+        <clip>Memo_master - FictionalUniverse 2</clip>
+        <clip>Vera - Playing with a system</clip>
+        <clip>Theo - addictive process</clip>
+        <clip>Theo - inspired by nature</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+    </links>
     <suppressions>
         <clip>Kevin - area code 1</clip>
         <clip>Kevin - non-mimetic reality</clip>
@@ -34286,6 +34311,8 @@
         <clip>Ramsey - Conway 3</clip>
         <clip>Ramsey - minecraft 1</clip>
         <clip>Ramsey - minecraft 2</clip>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Memo_master - MSA 1</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -35067,6 +35094,35 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Terrain_PurpleSandbox">
+    <keywords></keywords>
+    <links>
+        <clip>Memo_master - MSAFluid 3</clip>
+        <clip>Memo_master - Simplicity 3</clip>
+        <clip>Memo_master - Complexity 2</clip>
+        <clip>Memo_master - Complexity 1</clip>
+        <clip>Memo_master - InspiredByNature</clip>
+        <clip>Memo_master - FictionalUniverse 2</clip>
+        <clip>Ramsey - wizardry 1</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - image is in your brain</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Philip - its a tool</clip>
+        <clip>Patricio - Alchemy 3</clip>
+        <clip>Patricio - Magic Spells 1</clip>
+        <clip>Patricio - Alchemy 2</clip>
+        <clip>Marius - code can be messy</clip>
+    </links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -37602,7 +37658,11 @@
 </system>
 <system name="VerletForm_MWDark">
     <keywords>formalism|abstraction|generative art</keywords>
-    <links></links>
+    <links>
+        <clip>Marius - these things are in my head</clip>
+        <clip>Marius - Techno-rococo</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+    </links>
     <suppressions>
         <clip>Casey - New modes of expression</clip>
         <clip>Casey - ideas of art history</clip>
@@ -37646,7 +37706,9 @@
 </system>
 <system name="VerletForm_MWDarkOC">
     <keywords>formalism|abstraction|generative art</keywords>
-    <links></links>
+    <links>
+        <clip>Marius - these things are in my head</clip>
+    </links>
     <suppressions>
         <clip>Casey - New modes of expression</clip>
         <clip>Casey - ideas of art history</clip>
@@ -37714,7 +37776,9 @@
 </system>
 <system name="VerletForm_MWLORES">
     <keywords>generative art|abstraction|formalism|beautiful exhuberance</keywords>
-    <links></links>
+    <links>
+        <clip>Marius - code can be messy</clip>
+    </links>
     <suppressions>
         <clip>Elliot_UK - points in space</clip>
         <clip>Zach - action script shorter</clip>

@@ -8,12 +8,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>6.041666985</Value>
+    <Value>0.089285716</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_speed</Name>
-    <Value>0.352380961</Value>
+    <Value>0.035238095</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -23,12 +23,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Height Scale</Name>
-    <Value>26.600984573</Value>
+    <Value>62.019229889</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Feed</Name>
-    <Value>0.051710527</Value>
+    <Value>0.032499999</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,22 +38,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DiffV</Name>
-    <Value>0.337945789</Value>
+    <Value>0.233130038</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DiffU</Name>
-    <Value>0.294029325</Value>
+    <Value>0.265428096</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>k</Name>
-    <Value>0.105365589</Value>
+    <Value>0.132100761</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>t</Name>
-    <Value>0.089560121</Value>
+    <Value>0.099313319</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -73,7 +73,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Blur Radius</Name>
-    <Value>2.093595982</Value>
+    <Value>1.947115421</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -88,7 +88,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>High G</Name>
-    <Value>1.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -133,7 +133,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>Trace B</Name>
-    <Value>0.000000000</Value>
+    <Value>0.732984126</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -153,12 +153,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Terrain_Size</Name>
-    <Value>160.689651489</Value>
+    <Value>162.548080444</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Terrain_Altitud</Name>
-    <Value>1.389162540</Value>
+    <Value>1.432692289</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

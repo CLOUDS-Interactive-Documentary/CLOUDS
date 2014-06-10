@@ -2,18 +2,18 @@
     <Kind>40</Kind>
     <Name>Terrain</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>408.000000000</XPosition>
-    <YPosition>12.000000000</YPosition>
+    <XPosition>218.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>7.025723457</Value>
+    <Value>5.841176510</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_speed</Name>
-    <Value>0.129441619</Value>
+    <Value>0.346728981</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,12 +48,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>k</Name>
-    <Value>0.019245937</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>t</Name>
-    <Value>0.155568317</Value>
+    <Value>0.100000024</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
