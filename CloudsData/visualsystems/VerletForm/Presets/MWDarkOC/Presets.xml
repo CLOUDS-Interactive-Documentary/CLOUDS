@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000061035</XPosition>
-    <YPosition>355.000000000</YPosition>
+    <XPosition>435.000000000</XPosition>
+    <YPosition>347.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -27,6 +27,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>JG_does_marius3OC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JG_does_mariusOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>mw01</Name>
     <Value>0</Value>
 </Widget>
@@ -37,7 +47,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>MWDarkOC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>MWHIRES</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MWHIRESOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -47,11 +67,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Tower</Name>
-    <Value>0</Value>
+    <Name>MWLORES_OC</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>MWDarkOC</Name>
-    <Value>1</Value>
+    <Name>Tower</Name>
+    <Value>0</Value>
 </Widget>
