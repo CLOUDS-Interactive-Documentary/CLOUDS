@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>526.000000000</XPosition>
-    <YPosition>153.000000000</YPosition>
+    <XPosition>508.000000000</XPosition>
+    <YPosition>113.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
