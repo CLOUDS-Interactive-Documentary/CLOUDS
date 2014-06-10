@@ -885,6 +885,7 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 
 	/////////////////SELECTION
 	float topScore = 0;
+    float secondTopScore = 0;
 	vector< pair<float, string> > cliplogs;
 	for(int i = 0; i < nextOptions.size(); i++){
 
@@ -893,15 +894,28 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 		stringstream cliplog;
 		cliplog << state.duration << "\t\t\t" << nextClipOption->getLinkName() << endl;
 		float score = scoreForClip(state, nextClipOption, cliplog);
-		topScore = MAX(topScore, score);
+//        if(score > topScore){
+//            secondTopScore = topScore;
+//            topScore = score;
+//        }
+//        else if(score > secondTopScore){
+//            secondTopScore = score;
+//        }
+//		topScore = MAX(topScore, score);
 		cliplogs.push_back(make_pair(score, cliplog.str()));
-		
 		nextClipOption->currentScore = score;
 	}
 	
 	
 	if(bLogClipDetails){
 		sort(cliplogs.begin(), cliplogs.end(), logsort);
+        if(cliplogs.size() > 0){
+            topScore = cliplogs[0].first;
+        }
+        if(cliplogs.size() > 1){
+            secondTopScore = cliplogs[1].first;
+        }
+        
 		for(int i = 0; i < cliplogs.size(); i++){
 			state.log << cliplogs[i].second;
 		}
@@ -918,7 +932,7 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 	
 	vector<CloudsClip*> winningClips;
 	for(int i = 0; i < nextOptions.size(); i++){
-		if(nextOptions[i]->currentScore == topScore){
+		if(nextOptions[i]->currentScore == topScore || (nextOptions[i]->currentScore == secondTopScore && secondTopScore != 0) ){
 			winningClips.push_back(nextOptions[i]);
 		}
 	}
