@@ -32207,7 +32207,7 @@
     <interlude>0</interlude>
 </system>
 <system name="Replicator_Replicator">
-    <keywords>network|information|the cloud</keywords>
+    <keywords>network|information|the cloud|spirituality</keywords>
     <links></links>
     <suppressions>
         <clip>Aaron - collaboration</clip>
@@ -33164,7 +33164,7 @@
     <interlude>1</interlude>
 </system>
 <system name="Satoruhiga_confettistorm">
-    <keywords>digital culture|digital art|aesthetic experience|weird|playfulness|play</keywords>
+    <keywords>digital culture|digital art|aesthetic experience|weird|playfulness|play|drugs</keywords>
     <links>
         <clip>Marius - aesthetic experience</clip>
         <clip>Marius - culturally biased aesthetic</clip>
@@ -33216,6 +33216,8 @@
         <clip>Sophy - computer dream</clip>
         <clip>Zach - Drawn1</clip>
         <clip>Theo - leaving a mark</clip>
+        <clip>Memo_master - MSAFluid 1</clip>
+        <clip>Memo_master - Psychedelic Pong</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
@@ -33255,7 +33257,7 @@
     <interlude>0</interlude>
 </system>
 <system name="Satoruhiga_stuff">
-    <keywords>abstraction|formalism|form</keywords>
+    <keywords>abstraction|formalism|form|drugs</keywords>
     <links>
         <clip>Higa - collaboration with machines 1</clip>
         <clip>Higa - beautiful-useful-interesting</clip>
@@ -33283,6 +33285,7 @@
         <clip>Ramsey - arab abstraction 2</clip>
         <clip>Golan - formalism</clip>
         <clip>LIA - MathAnotherLanguage</clip>
+        <clip>Memo_master - Sonifying</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
@@ -41569,7 +41572,7 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Xstatic_FastPhysics2_">
+<system name="Xstatic_FastPhysics2">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>

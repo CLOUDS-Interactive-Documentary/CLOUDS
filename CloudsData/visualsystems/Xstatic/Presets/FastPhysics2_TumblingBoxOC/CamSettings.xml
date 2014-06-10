@@ -2,7 +2,7 @@
     <Kind>40</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>468.000000000</XPosition>
+    <XPosition>435.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -18,17 +18,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-X</Name>
-    <Value>70.206695557</Value>
+    <Value>360.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>68.451530457</Value>
+    <Value>351.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Z</Name>
-    <Value>70.206695557</Value>
+    <Value>360.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Spin Camera Damp</Name>
-    <Value>0.009615385</Value>
+    <Value>0.146634609</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
