@@ -688,12 +688,11 @@ void CloudsVisualSystem::drawScene(){
         interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
 
         if(bEnableInteractiveSpin){
-//            float rxp = (GetCloudsInputX() - getCanvasWidth()/2)  * 0.2;
-//            float ryp = (GetCloudsInputY() - getCanvasHeight()/2) * 0.2;
             float rxp = ofMap(GetCloudsInputX(), 0, getCanvasWidth(),  -interactiveCameraSpinRange.x, interactiveCameraSpinRange.x, true);
             float ryp = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -interactiveCameraSpinRange.y, interactiveCameraSpinRange.y, true);
-            interactiveCameraSpin.x = (interactiveCameraSpin.x*(1.0-cameraSpinDamp)) + (rxp * cameraSpinDamp);
-            interactiveCameraSpin.y = (interactiveCameraSpin.y*(1.0-cameraSpinDamp)) + (ryp * cameraSpinDamp);
+            float cameraDampSquared = powf(cameraSpinDamp,2.0f);
+            interactiveCameraSpin.x = interactiveCameraSpin.x*(1.0-cameraDampSquared) + (rxp * cameraDampSquared);
+            interactiveCameraSpin.y = interactiveCameraSpin.y*(1.0-cameraDampSquared) + (ryp * cameraDampSquared);
             if(bInvertCameraSpinAxis){
                 ofRotate(interactiveCameraSpin.x,
                          getCameraRef().getSideDir().x,
@@ -1752,7 +1751,7 @@ void CloudsVisualSystem::setupCameraGui()
 	camGui->addMinimalSlider("maxY", -90, 90, &interactiveCameraMaxY);
     
     camGui->addToggle("Spin Camera", &bEnableInteractiveSpin);
-    camGui->addSlider("Spin Camera Damp", 0.0, 1.0, &cameraSpinDamp);
+    camGui->addSlider("Spin Camera Damp", 0.9, 1.0, &cameraSpinDamp);
     camGui->addSlider("Spin Camera Range X", 0, 180, &interactiveCameraSpinRange.x);
     camGui->addSlider("Spin Camera Range Y", 0, 180, &interactiveCameraSpinRange.y);
     camGui->addToggle("Invert Spin Axis", &bInvertCameraSpinAxis);
