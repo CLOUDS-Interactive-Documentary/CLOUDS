@@ -1,8 +1,8 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>PASS_TWO</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
+    <XPosition>218.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -18,10 +18,10 @@
 <Widget>
     <Kind>28</Kind>
     <Name>passTwoColor</Name>
-    <XValue>0.000000000</XValue>
-    <YValue>0.000000000</YValue>
-    <RColor>255</RColor>
-    <GColor>255</GColor>
+    <XValue>0.360000014</XValue>
+    <YValue>0.280000001</YValue>
+    <RColor>30</RColor>
+    <GColor>16</GColor>
     <BColor>255</BColor>
     <AColor>255</AColor>
 </Widget>

@@ -386,7 +386,6 @@
 			<gender>male</gender>
 		</person>
 
-				</person>
 	<person id="Memo_master">
 			<first>Memo</first>
 			<last>Akten</last>
@@ -395,7 +394,7 @@
 			<location1>Istanbul</location1>
 			<location2>London</location2>
 			<byline1>Founder of the design collective Marshmallow Laser Feast and Mega Super Awesome: Memo explores new ways of generating simultaneous image and sound, making the invisible visible and the impossible possible.</byline1>
-			<byline2></byline2>
+			<byline2>He is a regular contributor to openFrameworks</byline2>
 			<gender>male</gender>
 		</person>
 

@@ -1,7 +1,7 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Blips</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -13,8 +13,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>BLIP SIZE</Name>
-    <HighValue>1.073891640</HighValue>
-    <LowValue>0.000000000</LowValue>
+    <HighValue>0.735418737</HighValue>
+    <LowValue>0.010000000</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>

@@ -158,7 +158,7 @@
     <interlude>0</interlude>
 </system>
 <system name="2DVideo_D3_Dial">
-    <keywords>data visualization|information</keywords>
+    <keywords>data visualization|information|statistics</keywords>
     <links>
         <clip>Jen - oversimplified circles 1</clip>
         <clip>Jen - oversimplified circles 2</clip>
@@ -398,7 +398,7 @@
     <interlude>0</interlude>
 </system>
 <system name="2DVideo_D3_stock">
-    <keywords>stock market|data visualization</keywords>
+    <keywords>stock market|data visualization|statistics</keywords>
     <links></links>
     <suppressions>
         <clip>Andres - Computational lens</clip>
@@ -7868,7 +7868,7 @@
     <interlude>0</interlude>
 </system>
 <system name="2DVideo_Zipcode">
-    <keywords>mapping|maps|visualization|zoom</keywords>
+    <keywords>mapping|maps|visualization|zoom|gps</keywords>
     <links>
         <clip>Martin - Seeing the whole 1</clip>
         <clip>Martin - seeing the whole 2</clip>
@@ -11204,6 +11204,30 @@
     <interlude>0</interlude>
 </system>
 <system name="Cities_JG_CameraSwoop">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Cities_Lars_Doing_a_Jonathan">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Cities_Lars_debug">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -21546,7 +21570,7 @@
     <interlude>0</interlude>
 </system>
 <system name="MazeGenerator_JM_groundcam">
-    <keywords>exploration|discovery|journey|dreams|storytelling|videogames|frustration</keywords>
+    <keywords>exploration|discovery|journey|dreams|storytelling|videogames|frustration|virtual reality</keywords>
     <links></links>
     <suppressions>
         <clip>Aaron - exquisite forest 2</clip>
@@ -21672,6 +21696,15 @@
         <clip>Aaron - mini-brains 2</clip>
         <clip>Aaron - progress</clip>
         <clip>Aaron - stories make our lives worth living</clip>
+        <clip>Memo_master - 10yearsOld 2</clip>
+        <clip>Memo_master - A bunch of lines 2</clip>
+        <clip>Memo_master - Emotional lines</clip>
+        <clip>Memo_master - Filmmaker aspirations</clip>
+        <clip>Memo_master - Master of universe 1</clip>
+        <clip>Memo_master - Psychedelic Pong</clip>
+        <clip>Memo_master - Story unfolds</clip>
+        <clip>Memo_master - looking at the ocean</clip>
+        <clip>Sophy - computer dream</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
@@ -22279,7 +22312,7 @@
     <interlude>0</interlude>
 </system>
 <system name="Memory_Glitch">
-    <keywords>randomness|algorithms|control</keywords>
+    <keywords>randomness|algorithms|control|computers|computational power</keywords>
     <links>
         <clip>Ramsey - a hundred million</clip>
         <clip>Ramsey - independent of any human</clip>
@@ -22489,7 +22522,7 @@
     <interlude>0</interlude>
 </system>
 <system name="Memory_ThinBlueRows_wide">
-    <keywords>randomness|algorithms|control</keywords>
+    <keywords>randomness|algorithms|control|computers|computational power</keywords>
     <links>
         <clip>Ramsey - a hundred million</clip>
         <clip>Ramsey - independent of any human</clip>
@@ -22585,7 +22618,7 @@
     <interlude>0</interlude>
 </system>
 <system name="Memory_ThinTealRows2">
-    <keywords>computer</keywords>
+    <keywords>computer|computers</keywords>
     <links></links>
     <suppressions>
         <clip>Aaron - software is a brain</clip>
@@ -22611,6 +22644,8 @@
         <clip>Ramsey - what is a computer</clip>
         <clip>Shiffman - mysterious box</clip>
         <clip>Sophy - computer dream</clip>
+        <clip>Memo_master - 10yearsOld 2</clip>
+        <clip>Memo_master - book for kids</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
@@ -32240,7 +32275,7 @@
     <interlude>0</interlude>
 </system>
 <system name="RandomDigits2_Matrix_5">
-    <keywords>randomness|computational power|computer|infinity</keywords>
+    <keywords>randomness|computational power|computer|infinity|statistics</keywords>
     <links>
         <clip>Kevin - reality in the eyes of data</clip>
         <clip>Intro - VirtualReality</clip>
@@ -32621,7 +32656,7 @@
     <interlude>1</interlude>
 </system>
 <system name="Replicator_Replicator_organ">
-    <keywords>internet|technological progress|dreams|clouds|information</keywords>
+    <keywords>internet|technological progress|dreams|clouds|information|big data</keywords>
     <links></links>
     <suppressions>
         <clip>Aaron - curiosity</clip>
@@ -32704,6 +32739,28 @@
         <clip>Theo - newness</clip>
         <clip>Greg - camera scaling up</clip>
         <clip>Patricio - Dream of eggs</clip>
+        <clip>Binx - big data</clip>
+        <clip>Binx - face data</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Jen - data crystal ball 1</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jen - data essay 2</clip>
+        <clip>Jen - data viz challenges</clip>
+        <clip>Jen - facebook data</clip>
+        <clip>Jen - in the movie</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Kyle_MC - imagining your pointcloud</clip>
+        <clip>Kyle_MC - the comment thread</clip>
+        <clip>LIA - helldotcom</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Marcus - code for storytelling</clip>
+        <clip>Memo_master - PosthumanFun</clip>
+        <clip>Memo_master - Story unfolds</clip>
+        <clip>Regine - information should be free</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Patricio - Play 1</clip>
+        <clip>Aaron - digital trace</clip>
+        <clip>Aaron - lego creatures</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
@@ -35720,6 +35777,65 @@
         <clip>Zach - minecraft livecode</clip>
         <clip>Zach - on the street</clip>
         <clip>Zach - programming 2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Twitter_CLOUDS">
+    <keywords>clouds|network|internet</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Jen - data essay 2</clip>
+        <clip>Bruce - lashup 1</clip>
+        <clip>Binx - face data</clip>
+        <clip>Bruce - Pointcloud world</clip>
+        <clip>Martin - Net art</clip>
+        <clip>Sophy - Strange cultures</clip>
+        <clip>Sophy - city</clip>
+        <clip>Regine - Internet doesn&apos;t change things</clip>
+        <clip>Regine - information should be free</clip>
+        <clip>Regine - not everyone wants that</clip>
+        <clip>Ramsey - biology and the internet</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Twitter_CLOUDS_2">
+    <keywords>clouds|network|internet|singularity</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Jen - data essay 2</clip>
+        <clip>Bruce - lashup 1</clip>
+        <clip>Binx - face data</clip>
+        <clip>Bruce - Pointcloud world</clip>
+        <clip>Martin - Net art</clip>
+        <clip>Sophy - Strange cultures</clip>
+        <clip>Sophy - city</clip>
+        <clip>Regine - Internet doesn&apos;t change things</clip>
+        <clip>Regine - information should be free</clip>
+        <clip>Regine - not everyone wants that</clip>
+        <clip>Ramsey - biology and the internet</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - MMORPGs</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Kyle_MC - Julian Oliver</clip>
+        <clip>Kyle_MC - imagining your pointcloud</clip>
+        <clip>Kyle_MC - the comment thread</clip>
+        <clip>LIA - NeedTheInternet</clip>
+        <clip>LIA - helldotcom</clip>
+        <clip>Lauren - Social reality circa 2013</clip>
+        <clip>Lauren - breaking down barriers</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
