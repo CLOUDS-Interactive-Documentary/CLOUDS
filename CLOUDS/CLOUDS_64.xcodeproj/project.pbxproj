@@ -12919,7 +12919,7 @@
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
-				INFOPLIST_FILE = "CLOUDS_64 copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/CLOUDS.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -13036,7 +13036,7 @@
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
-				INFOPLIST_FILE = "CLOUDS_64 copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/CLOUDS.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -123,6 +123,10 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	questionScale = .1;
     questionCameraDistance = 10;
     
+    useQuestionCam = false;
+    selectedQuestion = NULL;
+    caughtQuestion = NULL;
+    
 	firstClip = true;
 }
 
