@@ -137,7 +137,13 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     
 	void setQuestions(vector<CloudsClip*> questions);
 	void populateDummyQuestions();
-
+    bool isQuestionSelected(){
+        return selectedQuestion != NULL;
+    }
+    CloudsPortal* getSelectedQuestion(){
+        return selectedQuestion;
+    }
+    
   protected:
 
 	ofxUISuperCanvas* nodesGui;
