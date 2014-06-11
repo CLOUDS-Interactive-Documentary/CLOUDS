@@ -435,7 +435,7 @@ void CloudsVisualSystemHistogram::addSoundPoint()
         for (int i = 0; i < numRows; i++) {
             int levelIdx = ofMap(i, 0, numRows, 0, allLevels.size() * sampleOffset, true);
             float currLevel = allLevels[levelIdx] * levelAdjust;
-            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax, true);
+            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
             
             // move everything back one position
             int last  = MIN(dataPoints.size() - 1, (i + 1) * colsPerRow - 1);
