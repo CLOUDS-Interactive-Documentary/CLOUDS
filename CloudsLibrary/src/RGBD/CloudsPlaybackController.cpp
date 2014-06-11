@@ -856,7 +856,10 @@ void CloudsPlaybackController::updateTransition(){
                     //build the next clip based on the history
                     #ifdef CLOUDS_SCREENING
                     if(run.questionsAsked > 2 && !showedClusterMapNavigation){
-                        shouldPlayClusterMap = true;
+						
+						createInterludeSoundQueue();
+                        
+						shouldPlayClusterMap = true;
                         showingClusterMapNavigation = true;
                     }
                     else{
@@ -1118,7 +1121,10 @@ void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string 
 										  interludeSystem->getCanvasHeight()*.5 + typeHeight + 10);
 
 		if(hovering){
-			float arcPercent = ofxTween::map(interludeBarHoverPercentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+			float arcPercent = ofxTween::map(interludeBarHoverPercentComplete,
+											 0.0, 1.0, 0.0, 1.0,
+											 true, ofxEasingQuad(), ofxTween::easeOut);
+			
 			ofPath arc;
 			arc.setFilled(false);
 			arc.setStrokeWidth(4);
