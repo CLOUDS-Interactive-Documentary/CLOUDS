@@ -15,9 +15,8 @@
 
 class terrainManager {
 public:
-    void setup(audioAnalytics * _aa,
-               colorSchemeDesigner * _cs);
-    void update();
+    void setup(colorSchemeDesigner * _cs);
+    void update(vector<float> &wave);
     void draw();
     
     audioAnalytics * aa;
