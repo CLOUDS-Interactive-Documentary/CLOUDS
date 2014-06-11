@@ -2042,7 +2042,6 @@
 
 /* Begin PBXFileReference section */
 		03A0F73D1947A0850071CF4B /* CLOUDS_64_KINECT_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_64_KINECT_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		03A0F73E1947A0860071CF4B /* CLOUDS_64 copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CLOUDS_64 copy2-Info.plist"; path = "/Users/Winslow/Documents/of_64_clouds/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS_64 copy2-Info.plist"; sourceTree = "<absolute>"; };
 		03C0799D194605FE0081ED9B /* Composition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Composition.h; sourceTree = "<group>"; };
 		03C0799E194605FE0081ED9B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		03C079A0194605FE0081ED9B /* Composition.inc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Composition.inc.h; sourceTree = "<group>"; };
@@ -3668,7 +3667,6 @@
 		E7DDC0B4194433E400E61D75 /* kiss_fftnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftnd.c; sourceTree = "<group>"; };
 		E7DDC0B5194433E400E61D75 /* kiss_fftnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftnd.h; sourceTree = "<group>"; };
 		E7DDC354194437EC00E61D75 /* CLOUDS_64_OCULUS_debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_64_OCULUS_debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7DDC355194437ED00E61D75 /* CLOUDS_64 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CLOUDS_64 copy-Info.plist"; path = "/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS_64 copy-Info.plist"; sourceTree = "<absolute>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
@@ -4075,9 +4073,7 @@
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4B69B5B0A3A1756003C02F2 /* CLOUDS_64Debug.app */,
 				E7DDC354194437EC00E61D75 /* CLOUDS_64_OCULUS_debug.app */,
-				E7DDC355194437ED00E61D75 /* CLOUDS_64 copy-Info.plist */,
 				03A0F73D1947A0850071CF4B /* CLOUDS_64_KINECT_Debug.app */,
-				03A0F73E1947A0860071CF4B /* CLOUDS_64 copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -10755,7 +10751,7 @@
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
-				INFOPLIST_FILE = "CLOUDS_64 copy2-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/CLOUDS.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -10872,7 +10868,7 @@
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
-				INFOPLIST_FILE = "CLOUDS_64 copy2-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/CLOUDS.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
