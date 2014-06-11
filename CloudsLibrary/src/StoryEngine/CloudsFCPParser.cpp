@@ -496,12 +496,16 @@ void CloudsFCPParser::disperseUnpositionedClips(){
         }
     }
     
+    ofVec3f center = minBounds.getInterpolated(maxBounds, .5);
+    ofVec3f minBoundsHalf = minBounds.getInterpolated(center, .5);
+    ofVec3f maxBoundsHalf = maxBounds.getInterpolated(center, .5);
+    
     for(int i = 1; i < allClips.size(); i++){
         ofVec3f pos = allClips[i]->networkPosition;
         if(pos == ofVec3f(-1,-1,-1)){
-            allClips[i]->networkPosition.x = ofRandom(minBounds.x, maxBounds.x);
-            allClips[i]->networkPosition.y = ofRandom(minBounds.y, maxBounds.y);
-            allClips[i]->networkPosition.z = ofRandom(minBounds.z, maxBounds.z);
+            allClips[i]->networkPosition.x = ofRandom(minBoundsHalf.x, maxBoundsHalf.x);
+            allClips[i]->networkPosition.y = ofRandom(minBoundsHalf.y, maxBoundsHalf.y);
+            allClips[i]->networkPosition.z = ofRandom(minBoundsHalf.z, maxBoundsHalf.z);
         }
     }
 }
