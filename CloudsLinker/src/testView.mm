@@ -79,9 +79,11 @@
 {
 	if(preview.isLoaded()){
 		if(preview.isPlaying()){
+			playingRGBD = false;
 			preview.stop();
 		}
 		else{
+			playingRGBD = true;
 			preview.play();
 		}
 	}
@@ -92,10 +94,16 @@
 {
 	
 	//most of the time we want to wait for a clip to finish or be interrupted by user interaction
-	if(preview.isLoaded()) {
+	if(playingRGBD){
 		preview.update();
-		if(preview.getCurrentFrame() >= clipEndFrame){
-			preview.stop();
+		if(preview.isLoaded()) {
+//			if(!preview.isPlaying()){
+//				preview.play();
+//			}
+//			if(preview.getCurrentFrame() >= clipEndFrame){
+//				playingRGBD = false;
+//				preview.stop();
+//			}
 		}
 	}
 }
