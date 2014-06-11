@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>RIBBON SIZE</Name>
-    <Value>16.911329269</Value>
+    <Value>3.246305466</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -163,15 +163,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>COHESION WEIGHT</Name>
-    <Value>10.695041656</Value>
+    <Value>14.002964020</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SEPARATION WEIGHT</Name>
-    <Value>9.422248840</Value>
+    <Value>8.550110817</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ALIGNMENT WEIGHT</Name>
-    <Value>9.371458054</Value>
+    <Value>8.152181625</Value>
 </Widget>
