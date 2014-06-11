@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -21,7 +21,7 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>NUM PARTICLES</Name>
     <Value>157</Value>
 </Widget>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>WRAP EDGES</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -118,8 +118,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>SIZE</Name>
-    <HighValue>6.108374596</HighValue>
-    <LowValue>4.334975243</LowValue>
+    <HighValue>9.852216721</HighValue>
+    <LowValue>6.600985050</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -129,12 +129,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>VEL TO SIZE</Name>
-    <Value>0.000000000</Value>
+    <Value>0.014778325</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BRIGHTNESS</Name>
-    <HighValue>0.729064047</HighValue>
+    <HighValue>0.709359586</HighValue>
     <LowValue>0.566502452</LowValue>
 </Widget>
 <Widget>
@@ -165,17 +165,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>HUE 1</Name>
-    <Value>1.000000000</Value>
+    <Value>0.940886676</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 1</Name>
-    <Value>0.266009837</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>BRI 1</Name>
-    <Value>0.881773412</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -185,7 +185,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 2</Name>
-    <Value>1.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

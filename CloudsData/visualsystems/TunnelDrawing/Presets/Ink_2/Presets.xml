@@ -3,7 +3,7 @@
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
     <XPosition>652.000000000</XPosition>
-    <YPosition>209.000000000</YPosition>
+    <YPosition>347.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -22,6 +22,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Ink_2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>NeonWhite</Name>
     <Value>0</Value>
 </Widget>
@@ -29,9 +34,4 @@
     <Kind>2</Kind>
     <Name>TronBlack</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Ink_2</Name>
-    <Value>1</Value>
 </Widget>

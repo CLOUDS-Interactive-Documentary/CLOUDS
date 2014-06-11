@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>modelUIGui</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>93.000000000</YPosition>
+    <YPosition>85.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -62,12 +62,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ellipsoid1.obm</Name>
+    <Name>elephant_binary.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ellipsoid2(2).obm</Name>
+    <Name>ellipsoid1.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -132,16 +132,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Laplacian1.obm</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Laplacian2.obm</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Man.obm</Name>
     <Value>0</Value>
 </Widget>
@@ -167,6 +157,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>sphere.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>StackofChairs_Triangulated.obm</Name>
     <Value>0</Value>
 </Widget>
@@ -188,11 +183,6 @@
 <Widget>
     <Kind>2</Kind>
     <Name>ToxiAllInOne.obm</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Trachia.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

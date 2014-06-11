@@ -2,7 +2,7 @@
     <Kind>40</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>696.000000000</XPosition>
+    <XPosition>435.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>damping</Name>
-    <Value>0.009852217</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -68,17 +68,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Spin Camera Damp</Name>
-    <Value>0.500000000</Value>
+    <Value>0.072115384</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Spin Camera Range X</Name>
-    <Value>0.000000000</Value>
+    <Value>131.538452148</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Spin Camera Range Y</Name>
-    <Value>0.000000000</Value>
+    <Value>104.711540222</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

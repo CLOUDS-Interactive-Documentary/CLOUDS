@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1023.000000000</XPosition>
-    <YPosition>7.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -21,9 +21,9 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>NUM PARTICLES</Name>
-    <Value>600</Value>
+    <Value>778</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -73,7 +73,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>EXPLODE SPEED</Name>
-    <Value>450.000000000</Value>
+    <Value>316.995086670</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

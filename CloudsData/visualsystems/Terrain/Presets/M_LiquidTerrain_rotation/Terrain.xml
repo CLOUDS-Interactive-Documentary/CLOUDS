@@ -1,19 +1,19 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Terrain</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
+    <XPosition>218.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>0.957984388</Value>
+    <Value>0.524057865</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_speed</Name>
-    <Value>1.000000000</Value>
+    <Value>0.040217392</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Feed</Name>
-    <Value>0.056818184</Value>
+    <Value>0.080648810</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -64,6 +64,11 @@
     <Kind>2</Kind>
     <Name>Draw</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Telekinesis</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

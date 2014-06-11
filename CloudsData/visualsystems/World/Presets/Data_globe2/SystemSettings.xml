@@ -1,8 +1,8 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
+    <XPosition>218.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>density</Name>
-    <Value>0.975000024</Value>
+    <Value>0.798651934</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
