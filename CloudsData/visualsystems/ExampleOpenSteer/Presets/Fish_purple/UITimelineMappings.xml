@@ -20,14 +20,6 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>COHESION WEIGHT</WidgetName>
-                <WidgetID>78</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>ALIGNMENT WEIGHT</WidgetName>
                 <WidgetID>82</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
@@ -38,6 +30,14 @@
             <Widget>
                 <WidgetName>SEPARATION WEIGHT</WidgetName>
                 <WidgetID>80</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>COHESION WEIGHT</WidgetName>
+                <WidgetID>78</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
