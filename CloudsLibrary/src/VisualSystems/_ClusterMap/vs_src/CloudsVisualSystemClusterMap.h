@@ -121,7 +121,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
-		if(lockCameraAxis){
+        if(useQuestionCam){
+            return questionCam;
+        }
+		else if(lockCameraAxis){
 			return axisCamera;
 		}
 		return easyCamera;
@@ -133,6 +136,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     void parseAssociations();
     
 	void setQuestions(vector<CloudsClip*> questions);
+	void populateDummyQuestions();
 
   protected:
 
@@ -146,6 +150,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	ofEasyCam easyCamera;
 	ofCamera axisCamera;
+    ofCamera questionCam;
 	CloudsAct* act;
 	
 	ofVec2f flickerCoord;
@@ -204,6 +209,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	bool drawTraversalPoints;
 	bool lockCameraAxis;
+    bool useQuestionCam;
 	float traverseCamFOV;
 	float traversCameraDistance;
 	float traversedNodeSize;
@@ -283,11 +289,25 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofVec3f randomDirection();
     int numTraversed;
 
-	vector<CloudsPortal*> questions;
+	vector<CloudsPortal> questions;
+    CloudsPortal* caughtQuestion;
+    CloudsPortal* selectedQuestion;
+    float selectedQuestionTime;
+    ofVec3f selectQuestionStartPos;
+    ofQuaternion selectQuestionStartRot;
+
+    ofVec3f cursor; //for question selection
+    ofVec3f stickyCursor;
+    
+    float questionCameraSpinSpeed;
+    float questionSpinAttenuate;
+    float questionCameraAxisDist;
 	float questionScale;
+    float questionCameraDistance;
 	ofRange questionTugDistance;
-	void drawQuestions();
 	void updateQuestions();
-	void populateDummyQuestions();
+	void drawQuestions();
+    void drawCursors();
+
 
 };

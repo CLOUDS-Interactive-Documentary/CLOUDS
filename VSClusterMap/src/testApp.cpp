@@ -45,7 +45,8 @@ void testApp::setup(){
 		clusterMap.loadPresetGUISFromName("FollowTraverse_OculusSD");
 	}
 #else
-	clusterMap.loadPresetGUISFromName("FollowTraverse_Screen");
+//	clusterMap.loadPresetGUISFromName("FollowTraverse_Screen");
+    	clusterMap.loadPresetGUISFromName("NavigationInterlude_Screen");
 #endif
 
 	clusterMap.setRun(run);
@@ -54,7 +55,8 @@ void testApp::setup(){
 	clusterMap.allocateFlickerTexture();
 	
 //	clusterMap.autoTraversePoints = true;
-	
+	clusterMap.populateDummyQuestions();
+    
 	clusterMap.playSystem();
 	
 }

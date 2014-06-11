@@ -2657,7 +2657,8 @@ void CloudsVisualSystem::bindWidgetToTimeline(ofxUIWidget* widget)
         {
             ofxUIToggle *t = (ofxUIToggle *) widget;
             tlToggleMap[t] = timeline->addSwitches(widget->getName(),
-												   widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml");
+												   ofFilePath::addTrailingSlash(timeline->getWorkingFolder()) +
+                                                   widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml");
         }
             break;
             
@@ -2665,7 +2666,8 @@ void CloudsVisualSystem::bindWidgetToTimeline(ofxUIWidget* widget)
         {
             ofxUINumberDialer *nd = (ofxUINumberDialer *) widget;
             tlDialerMap[nd] = timeline->addCurves(widget->getName(),
-												  widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml",
+												  ofFilePath::addTrailingSlash(timeline->getWorkingFolder()) +
+                                                  widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml",
 												  ofRange(nd->getMin(), nd->getMax()), nd->getValue());
         }
             break;
@@ -2683,7 +2685,8 @@ void CloudsVisualSystem::bindWidgetToTimeline(ofxUIWidget* widget)
         {
             ofxUISlider *s = (ofxUISlider *) widget;
             tlSliderMap[s] = timeline->addCurves(widget->getName(),
-												 widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml",
+												 ofFilePath::addTrailingSlash(timeline->getWorkingFolder()) +
+                                                 widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml",
 												 ofRange(s->getMin(), s->getMax()), s->getValue());
         }
             break;
