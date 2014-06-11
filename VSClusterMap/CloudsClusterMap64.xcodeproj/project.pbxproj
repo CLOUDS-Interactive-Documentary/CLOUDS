@@ -650,8 +650,8 @@
 		03D590BA1946509B00FCFF7B /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				03D590BE1946509B00FCFF7B /* CloudsCalibrationNode.cpp */,
 				03D590BF1946509B00FCFF7B /* CloudsCalibrationNode.h */,
+				03D590BE1946509B00FCFF7B /* CloudsCalibrationNode.cpp */,
 				03D590E41946509B00FCFF7B /* Portal */,
 			);
 			name = RGBD;
@@ -661,8 +661,8 @@
 		03D590E41946509B00FCFF7B /* Portal */ = {
 			isa = PBXGroup;
 			children = (
-				03D590E51946509B00FCFF7B /* CloudsPortal.cpp */,
 				03D590E61946509B00FCFF7B /* CloudsPortal.h */,
+				03D590E51946509B00FCFF7B /* CloudsPortal.cpp */,
 				03D590E71946509B00FCFF7B /* CloudsPortalEvents.h */,
 				03D590E81946509B00FCFF7B /* CloudsPortalRing.cpp */,
 				03D590E91946509B00FCFF7B /* CloudsPortalRing.h */,
@@ -1731,7 +1731,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
@@ -1766,7 +1766,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;

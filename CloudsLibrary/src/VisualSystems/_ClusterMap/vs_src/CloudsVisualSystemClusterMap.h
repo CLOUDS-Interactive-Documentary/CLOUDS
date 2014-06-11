@@ -4,7 +4,7 @@
 #include "CloudsVisualSystem.h"
 
 #include "CloudsClusterNode.h"
-//#include "CloudsQuestion.h"
+#include "CloudsPortal.h"
 #include "CloudsRun.h"
 #include "ofxFTGLFont.h"
 #include "ofxNearestNeighbour.h"
@@ -132,6 +132,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	bool finishedTraversing;
     void parseAssociations();
     
+	void setQuestions(vector<CloudsClip*> questions);
+
   protected:
 
 	ofxUISuperCanvas* nodesGui;
@@ -140,6 +142,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofxUISuperCanvas* traversalGui;
 	ofxUISuperCanvas* followCamGui;
 	ofxUISuperCanvas* typeGui;
+	ofxUISuperCanvas* questionGui;
 	
 	ofEasyCam easyCamera;
 	ofCamera axisCamera;
@@ -279,5 +282,12 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     
 	ofVec3f randomDirection();
     int numTraversed;
+
+	vector<CloudsPortal*> questions;
+	float questionScale;
+	ofRange questionTugDistance;
+	void drawQuestions();
+	void updateQuestions();
+	void populateDummyQuestions();
 
 };
