@@ -325,6 +325,7 @@ void CloudsFCPParser::parseClusterNetwork(const string& fileName){
 //	calculateCohesionMedianForKeywords();
 //	calculateKeywordAdjascency();
 	calculateKeywordFamilies();
+    disperseUnpositionedClips();
 }
 
 void CloudsFCPParser::parseProjectExamples(const string& filename){
@@ -477,6 +478,32 @@ void CloudsFCPParser::calculateKeywordAdjascency(){
 	for(int i = 0; i < keywords.size(); i++){
 		keywordAdjacency[keywords[i]] = getAdjacentKeywords(keywords[i], 10);
 	}
+}
+
+void CloudsFCPParser::disperseUnpositionedClips(){
+    ofVec3f minBounds = allClips[0]->networkPosition;
+    ofVec3f maxBounds = allClips[0]->networkPosition;
+    for(int i = 1; i < allClips.size(); i++){
+        ofVec3f pos = allClips[i]->networkPosition;
+        if(pos != ofVec3f(-1,-1,-1)){
+            minBounds.x = MIN(minBounds.x, pos.x);
+            minBounds.y = MIN(minBounds.y, pos.y);
+            minBounds.z = MIN(minBounds.z, pos.z);
+
+            maxBounds.x = MAX(maxBounds.x, pos.x);
+            maxBounds.y = MAX(maxBounds.y, pos.y);
+            maxBounds.z = MAX(maxBounds.z, pos.z);
+        }
+    }
+    
+    for(int i = 1; i < allClips.size(); i++){
+        ofVec3f pos = allClips[i]->networkPosition;
+        if(pos == ofVec3f(-1,-1,-1)){
+            allClips[i]->networkPosition.x = ofRandom(minBounds.x, maxBounds.x);
+            allClips[i]->networkPosition.y = ofRandom(minBounds.y, maxBounds.y);
+            allClips[i]->networkPosition.z = ofRandom(minBounds.z, maxBounds.z);
+        }
+    }
 }
 
 //returns keywords that are close to the given keyword on the cluster map
