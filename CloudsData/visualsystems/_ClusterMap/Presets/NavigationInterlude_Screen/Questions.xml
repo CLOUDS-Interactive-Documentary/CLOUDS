@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>Questions</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>458.000000000</XPosition>
-    <YPosition>187.000000000</YPosition>
+    <XPosition>415.000000000</XPosition>
+    <YPosition>162.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,26 +13,46 @@
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTION SCALE</Name>
-    <Value>0.142857149</Value>
+    <Value>0.201970443</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTION CAM DIST</Name>
-    <Value>28.078819275</Value>
+    <Value>66.009849548</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>QUESTION TUG DISTANCE</Name>
-    <HighValue>85.369438171</HighValue>
-    <LowValue>34.384235382</LowValue>
+    <HighValue>172.857147217</HighValue>
+    <LowValue>27.733989716</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTCAM SPIN</Name>
-    <Value>0.290640384</Value>
+    <Value>0.266009837</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTCAM AXIS DIST</Name>
-    <Value>0.000000000</Value>
+    <Value>38.423645020</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>FONT SIZE</Name>
+    <Value>24</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FONT SCALE</Name>
+    <Value>0.049261082</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TRACKING</Name>
+    <Value>12.413793564</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Y POSITION</Name>
+    <Value>200.000000000</Value>
 </Widget>

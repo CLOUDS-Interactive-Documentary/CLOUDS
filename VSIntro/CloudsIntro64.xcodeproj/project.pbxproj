@@ -924,8 +924,8 @@
 		03D590921946505D00FCFF7B /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				03D590931946505D00FCFF7B /* CloudsIntroSequence.cpp */,
 				03D590941946505D00FCFF7B /* CloudsIntroSequence.h */,
+				03D590931946505D00FCFF7B /* CloudsIntroSequence.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
