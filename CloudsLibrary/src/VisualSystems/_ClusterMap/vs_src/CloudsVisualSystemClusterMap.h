@@ -301,13 +301,21 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     float selectedQuestionTime;
     ofVec3f selectQuestionStartPos;
     ofQuaternion selectQuestionStartRot;
-
+	
+	int currentQuestionFontSize;
+	int questionFontSize;
+	float questionFontScale;
+	float questionFontTracking;
+	float questionFontY;
+	ofxFTGLFont questionFont;
+	
     ofVec3f cursor; //for question selection
     ofVec3f stickyCursor;
     
     float questionCameraSpinSpeed;
     float questionSpinAttenuate;
     float questionCameraAxisDist;
+	float curQuestionCamRotation;
 	float questionScale;
     float questionCameraDistance;
 	ofRange questionTugDistance;

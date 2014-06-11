@@ -324,7 +324,6 @@ void CloudsIntroSequence::updateWaiting(){
 	#ifdef OCULUS_RIFT
 	
 	#elif defined(KINECT_INPUT)
-	
 	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
 	if(startQuestions.size() > 0 && viewerState != k4w::ViewerState_None){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 8){
@@ -958,7 +957,7 @@ void CloudsIntroSequence::drawHelperType(){
     ofEnableLighting();
 	glEnable(GL_DEPTH_TEST);
 	ofPopStyle();
-//	ofPopMatrix();
+
 }
 
 void CloudsIntroSequence::drawIntroNodes(){

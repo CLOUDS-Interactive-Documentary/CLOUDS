@@ -8,9 +8,8 @@
 
 #include "terrainManager.h"
 
-void terrainManager::setup(audioAnalytics * _aa,
-                           colorSchemeDesigner * _cs) {
-    aa = _aa;
+void terrainManager::setup(colorSchemeDesigner * _cs) {
+//    aa = _aa;
     cs = _cs;
     
     for (int i = 0; i < 120; i++) {
@@ -23,10 +22,10 @@ void terrainManager::setup(audioAnalytics * _aa,
 }
 
 
-void terrainManager::update() {
-    vector<float> wave;
-    aa->taps[0]->getSamples(wave, 0);
-    wave.resize(512);
+void terrainManager::update(vector<float> &wave) {
+//    vector<float> wave;
+//    aa->taps[0]->getSamples(wave, 0);
+//    wave.resize(512);
     
     waveHistory.push_back(wave);
     if (waveHistory.size() > 120) waveHistory.erase(waveHistory.begin());

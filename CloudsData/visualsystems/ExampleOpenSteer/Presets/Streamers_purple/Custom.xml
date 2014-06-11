@@ -1,14 +1,14 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1363.000000000</XPosition>
-    <YPosition>-9.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>N BOIDS</Name>
-    <Value>10.000000000</Value>
+    <Value>126.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -163,15 +163,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>COHESION WEIGHT</Name>
-    <Value>15.670270920</Value>
+    <Value>5.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SEPARATION WEIGHT</Name>
-    <Value>6.980749130</Value>
+    <Value>16.625053406</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ALIGNMENT WEIGHT</Name>
-    <Value>17.180675507</Value>
+    <Value>18.500000000</Value>
 </Widget>
