@@ -17,7 +17,7 @@ void testApp::setup(){
 	playerSetup = false;
 	shouldSetupPlayer = false;
 #ifdef OCULUS_RIFT
-	loader.loadImage("OCULUS_BG.png");
+	loader.loadImage("OCULUS_BG_HD.png");
 #else
 	loader.loadImage("SCREEN_BG.png");
 #endif
@@ -51,8 +51,8 @@ void testApp::keyPressed(int key){
 	if(key == 'L'){
 #ifdef OCULUS_RIFT
 		ofPixels p;
-//		CloudsVisualSystem::getOculusRift().getRenderTarget().readToPixels(p);
-		ofSaveImage(p,"OCULUS_BG.png");
+		CloudsVisualSystem::getOculusRift().getRenderTarget().readToPixels(p);
+		ofSaveImage(p,"OCULUS_BG_HD.png");
 #endif
 	}
 }
