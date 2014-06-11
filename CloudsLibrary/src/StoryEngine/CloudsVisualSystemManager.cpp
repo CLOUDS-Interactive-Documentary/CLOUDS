@@ -255,8 +255,6 @@ void CloudsVisualSystemManager::DeallocateSystems(){
 
 #endif //end coupling guard
 
-
-
 bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
 	int comp = a.systemName.compare( b.systemName );
 	if( comp != 0 ){
@@ -264,7 +262,6 @@ bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
 	}
 	return a.presetName.compare( b.presetName ) < 0;
 }
-
 //--------------------------------------------------------------------
 
 //--------------------------------------------------------------------
