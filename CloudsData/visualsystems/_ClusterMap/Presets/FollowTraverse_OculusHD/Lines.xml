@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Lines</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>49.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1166.000000000</XPosition>
+    <YPosition>254.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,27 +18,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FOCAL DISTANCE</Name>
-    <Value>17.758604050</Value>
+    <Value>22.276142120</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOCAL RANGE</Name>
-    <Value>18.381711960</Value>
+    <Value>9.969741821</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLICKER FREQUENCY</Name>
-    <Value>14.876847267</Value>
+    <Value>12.660099030</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLICKER INTENSITY</Name>
-    <Value>11.384236336</Value>
+    <Value>17.945812225</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLICKER DAMPENING</Name>
-    <Value>0.078817733</Value>
+    <Value>0.142857149</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

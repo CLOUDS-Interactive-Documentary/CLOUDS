@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Traversal</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>74.000000000</YPosition>
+    <YPosition>72.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -116,7 +116,7 @@
     <Value>120.591133118</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>MIN NEXT OPTIONS</Name>
     <Value>3</Value>
 </Widget>
