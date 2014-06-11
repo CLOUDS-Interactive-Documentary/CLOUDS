@@ -25353,7 +25353,7 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5Hackpact_JM_1_bluer">
-    <keywords>processing|generative art|history|abstraction</keywords>
+    <keywords>processing|generative art|history|abstraction|beginnings</keywords>
     <links></links>
     <suppressions>
         <clip>Andres - examples of the impossible</clip>
@@ -27036,8 +27036,10 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5SeaOfLines_BlackLines_connect">
-    <keywords>sketching|interactivity|interconnectedness</keywords>
-    <links></links>
+    <keywords>sketching|interactivity|interconnectedness|beginnings</keywords>
+    <links>
+        <clip>Memo_master - A bunch of lines 2</clip>
+    </links>
     <suppressions>
         <clip>Andres - make an egg</clip>
         <clip>Golan - make a mark</clip>
@@ -27296,7 +27298,9 @@
 </system>
 <system name="OpenP5SeaOfLines_WhiteLines_2">
     <keywords>processing|sketching</keywords>
-    <links></links>
+    <links>
+        <clip>Memo_master - A bunch of lines 2</clip>
+    </links>
     <suppressions>
         <clip>Andres - examples of the impossible</clip>
         <clip>Andres - make an egg</clip>
