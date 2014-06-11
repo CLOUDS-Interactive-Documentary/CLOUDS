@@ -385,6 +385,20 @@
 			<byline2>Martin focuses on visual explorations of culturally significant data. He has a particular interest is using visual tools to foster collaboration and discovery. He and collaborator, Fernanda Viegas, lead Google's 'Big Picture' data visualization group in Cambridge, MA. Exploring topics such as social networks and collaboration.</byline2>
 			<gender>male</gender>
 		</person>
+
+				</person>
+	<person id="Memo_master">
+			<first>Memo</first>
+			<last>Akten</last>
+			<title>Artist, Musician, Engineer</title>
+			<twitter>@memotv</twitter>
+			<location1>Istanbul</location1>
+			<location2>London</location2>
+			<byline1>Founder of the design collective Marshmallow Laser Feast and Mega Super Awesome: Memo explores new ways of generating simultaneous image and sound, making the invisible visible and the impossible possible.</byline1>
+			<byline2></byline2>
+			<gender>male</gender>
+		</person>
+
 	<person id="Nervous_Jesse">
 			<first>Jesse</first>
 			<last>Rosenberg</last>
