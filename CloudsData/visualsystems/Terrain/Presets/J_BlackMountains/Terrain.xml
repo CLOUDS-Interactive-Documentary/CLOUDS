@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>Terrain</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>218.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>251.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noise_speed</Name>
-    <Value>0.360427797</Value>
+    <Value>0.039130434</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

@@ -3,16 +3,16 @@
     <Switches>
         <Mapping>
             <Widget>
-                <WidgetName>REGENERATE</WidgetName>
-                <WidgetID>5</WidgetID>
+                <WidgetName>EXPLODE</WidgetName>
+                <WidgetID>31</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>EXPLODE</WidgetName>
-                <WidgetID>31</WidgetID>
+                <WidgetName>REGENERATE</WidgetName>
+                <WidgetID>5</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -21,8 +21,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>ROTATE SPEED</WidgetName>
-                <WidgetID>43</WidgetID>
+                <WidgetName>DRAG</WidgetName>
+                <WidgetID>49</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -37,14 +37,6 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>PULL SPEED</WidgetName>
-                <WidgetID>45</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>WIND SPEED</WidgetName>
                 <WidgetID>47</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
@@ -53,8 +45,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>DRAG</WidgetName>
-                <WidgetID>49</WidgetID>
+                <WidgetName>ROTATE SPEED</WidgetName>
+                <WidgetID>43</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>PULL SPEED</WidgetName>
+                <WidgetID>45</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

@@ -7927,7 +7927,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -8170,7 +8170,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -8231,7 +8231,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -8446,14 +8446,14 @@
 </system>
 <system name="3DModelLoader_Toxi_Ellipsoid2">
     <keywords>paul burke|3d printing|randomness|math</keywords>
-    <links></links>
+    <links>
+        <clip>Karolina - ideas into things</clip>
+    </links>
     <suppressions>
         <clip>Andres - camera distorts reality</clip>
         <clip>Andres - correct is beautiful</clip>
         <clip>Binx - Background</clip>
-        <clip>Bruce - 3D printed buildings</clip>
         <clip>Bruce - Infinity in a grain of sand</clip>
-        <clip>Bruce - beauty of math</clip>
         <clip>Bruce - digital status quo</clip>
         <clip>Casey - 10Print</clip>
         <clip>Casey - You need noise</clip>
@@ -8798,7 +8798,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -34718,11 +34718,17 @@
         <clip>Shiffman - NOC 3</clip>
         <clip>Shiffman - mutation</clip>
         <clip>Theo - funky forest</clip>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Andres - make an egg</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Casey - Tron</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
+    <grade>A</grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -37788,6 +37794,12 @@
         <clip>Zach - action script shorter</clip>
         <clip>Theo - favorite projects</clip>
         <clip>Theo - generative and pre-rendered</clip>
+        <clip>Memo_master - FictionalUniverse 2</clip>
+        <clip>Memo_master - InspiredByNature</clip>
+        <clip>Memo_master - Maximalist</clip>
+        <clip>Memo_master - Sonifying</clip>
+        <clip>Nervous_Jesse - Marker 2</clip>
+        <clip>Nervous_Jesse - organic process</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -38086,6 +38098,51 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="Vision_Tokyo1_Blob">
+    <keywords>machine vision|surveillance|new aesthetic</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Hand dryer</clip>
+        <clip>Bruce - camera of future 25 years</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Bruce - future camera 5</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - Gaze tracking</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Javier - Drones can help</clip>
+        <clip>Javier - Hummingbird drone</clip>
+        <clip>Julian - Transparency grenade</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Kyle_CH - face OSC</clip>
+        <clip>Kyle_MC - Camera doesn&apos;t care if you&apos;re human</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - People staring at screens 1</clip>
+        <clip>Kyle_MC - People staring at screens 3</clip>
+        <clip>Kyle_MC - People staring at screens 4</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Kyle_MC - faceOSC 2</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Lauren - swapping perspectives 1</clip>
+        <clip>Lauren - swapping perspectives 2</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Damion - OOO</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+        <clip>Theo - 3D sensing</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="Vision_Tokyo1_boxes">
     <keywords>surveillance|cities</keywords>
     <links></links>
@@ -38106,8 +38163,8 @@
         <clip>Bruce - future city 2</clip>
     </suppressions>
     <comments></comments>
-    <grade>B</grade>
-    <enabled>1</enabled>
+    <grade>A</grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -38824,7 +38881,7 @@
         <clip>Lauren - breaking down barriers</clip>
     </suppressions>
     <comments></comments>
-    <grade>B</grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -38881,7 +38938,7 @@
         <clip>Lauren - breaking down barriers</clip>
     </suppressions>
     <comments></comments>
-    <grade>B</grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -41197,7 +41254,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -41217,7 +41274,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -41634,13 +41691,13 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Xstatic_FastPhysics2_">
+<system name="Xstatic_FastPhysics2">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>

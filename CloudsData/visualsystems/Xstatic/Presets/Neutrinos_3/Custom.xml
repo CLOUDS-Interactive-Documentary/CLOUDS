@@ -23,7 +23,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>NUM PARTICLES</Name>
-    <Value>600</Value>
+    <Value>778</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -73,7 +73,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>EXPLODE SPEED</Name>
-    <Value>450.000000000</Value>
+    <Value>316.995086670</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
