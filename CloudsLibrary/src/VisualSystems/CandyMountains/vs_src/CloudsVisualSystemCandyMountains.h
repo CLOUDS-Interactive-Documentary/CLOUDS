@@ -107,7 +107,10 @@ public:
 protected:
     //  Your Stuff
     //
-    audioAnalytics aa;
+//    audioAnalytics aa;
+    ofxAudioUnitFilePlayer player;
+    ofxAudioUnitTap tap;
+    ofxAudioUnitOutput output;
     colorSchemeDesigner cs;
     terrainManager tm;
     cameraManager cm;

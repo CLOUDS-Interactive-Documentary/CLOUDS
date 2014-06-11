@@ -44,7 +44,7 @@ public:
     vector<ofxAudioUnitFilePlayer*> stems;
     vector<string> stemNames;
     vector<ofxAudioUnitTap*> taps;
-    vector<ofxAudioUnitFftNode*> ffts;
+//    vector<ofxAudioUnitFftNode*> ffts;
     vector<ofPolyline> waves;
     ofxAudioUnitMixer mixer;
     ofxAudioUnitOutput output;

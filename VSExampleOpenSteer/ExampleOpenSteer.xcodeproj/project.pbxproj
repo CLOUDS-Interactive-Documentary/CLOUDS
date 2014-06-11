@@ -699,8 +699,7 @@
 		644DD80217A2072B009950CB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = /System/Library/Frameworks/CoreMedia.framework; sourceTree = "<absolute>"; };
 		644DD80317A2072B009950CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		850A2D0918358E65003764BA /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsGlobal.h; sourceTree = "<group>"; };
-		850EEA8818307765004411A3 /* ExampleOpenSteer copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExampleOpenSteer copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		850EEA8918307765004411A3 /* ExampleOpenSteer copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ExampleOpenSteer copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/VSExampleOpenSteer/ExampleOpenSteer copy-Info.plist"; sourceTree = "<absolute>"; };
+		850EEA8818307765004411A3 /* ExampleOpenSteerOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleOpenSteerOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		850EEB1218307787004411A3 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		850EEB1318307787004411A3 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1595,8 +1594,7 @@
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4B69B5B0A3A1756003C02F2 /* ExampleOpenSteerDebug.app */,
-				850EEA8818307765004411A3 /* ExampleOpenSteer copy.app */,
-				850EEA8918307765004411A3 /* ExampleOpenSteer copy-Info.plist */,
+				850EEA8818307765004411A3 /* ExampleOpenSteerOculus.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1782,7 +1780,7 @@
 			);
 			name = ExampleOpenSteerOculus;
 			productName = myOFApp;
-			productReference = 850EEA8818307765004411A3 /* ExampleOpenSteer copy.app */;
+			productReference = 850EEA8818307765004411A3 /* ExampleOpenSteerOculus.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E4B69B5A0A3A1756003C02F2 /* ExampleOpenSteer */ = {
@@ -1811,7 +1809,7 @@
 			isa = PBXProject;
 			attributes = {
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ExampleOpenSteer_xcode4" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ExampleOpenSteer" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2230,7 +2228,7 @@
 					../../../addons/ofxOpenSteer/libs/opensteer/include,
 					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
-				INFOPLIST_FILE = "ExampleOpenSteer copy-Info.plist";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2320,7 +2318,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "ExampleOpenSteer copy";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2350,7 +2348,7 @@
 					../../../addons/ofxOpenSteer/libs/opensteer/include,
 					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
-				INFOPLIST_FILE = "ExampleOpenSteer copy-Info.plist";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2440,7 +2438,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "ExampleOpenSteer copy";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2744,7 +2742,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ExampleOpenSteer_xcode4" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ExampleOpenSteer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,

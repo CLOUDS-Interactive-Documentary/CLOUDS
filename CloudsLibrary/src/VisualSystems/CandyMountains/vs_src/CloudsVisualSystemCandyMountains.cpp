@@ -94,12 +94,20 @@ void CloudsVisualSystemCandyMountains::selfSetup(){
     
     state = 3;
     
-    aa.basePathIgnored = getVisualSystemDataPath(true);
-    aa.basePath = getVisualSystemDataPath();
+//    aa.basePathIgnored = getVisualSystemDataPath(true);
+//    aa.basePath = getVisualSystemDataPath();
     lm.basePath = getVisualSystemDataPath();
     
-    aa.setup();
-    aa.playStems(0);
+//    aa.setup();
+//    aa.playStems(0);
+    
+    player.setFile(ofFilePath::getAbsolutePath(getVisualSystemDataPath(true) + "TenoriPhase.mp3"));
+    player.connectTo(tap);
+    tap.connectTo(output);
+    output.start();
+    player.play();
+    
+    
     cs.setup();
     cs.gui->setVisible(false);
     
@@ -114,7 +122,7 @@ void CloudsVisualSystemCandyMountains::selfSetup(){
     
     cs.assignRandom(true);
     
-    tm.setup(&aa, &cs);
+    tm.setup(&cs);
     cm.setup(&tm);
     cm.cam = &getCameraRef();
     lm.setup(&cs);
@@ -148,13 +156,17 @@ void CloudsVisualSystemCandyMountains::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemCandyMountains::selfUpdate(){
-    aa.updateAnalytics();
+//    aa.updateAnalytics();
 
 //    cs.setHue(ofMap(aa.kurtosisSmoothed.getMean(), 0, aa.maxKurtosis[0], 0.0, 1.0));
 //    cs.setSaturation(ofMap(aa.centroidSmoothed.getMean(), 30, 55, 0.0, 1.0));
 //    cs.setBrightness(aa.ampSmoothed.getMean());
 //    cs.setDistance(ofMap(aa.pitchSmoothed.getMean(), 50, 90, 0.0, 0.5));
-    tm.update();
+    
+    vector<float> wave;
+    tap.getSamples(wave);
+    wave.resize(512);
+    tm.update(wave);
     cm.update();
     lm.update();
 }
@@ -175,12 +187,12 @@ void CloudsVisualSystemCandyMountains::selfDraw(){
 void CloudsVisualSystemCandyMountains::selfDrawDebug(){
     //how do I access this???
     
-    if (state == 1) {
+//    if (state == 1) {
         cs.draw();
-    }
-    else if (state == 2) {
-        aa.drawAnalytics();
-    }
+//    }
+//    else if (state == 2) {
+//        aa.drawAnalytics();
+//    }
 }
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemCandyMountains::selfDrawBackground(){
