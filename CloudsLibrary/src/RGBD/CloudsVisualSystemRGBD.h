@@ -95,6 +95,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool isQuestionSelected();
     CloudsPortal* getSelectedQuestion();
     string getQuestionText();
+    vector<QuestionQueue>& getQuestionQueue();
+    //called from Playback controller during screening mode to remove selected question by clustermap
+    void removeQuestionFromQueue(CloudsClip* clip);
     ////////QUESTIONS
 
 	float getRGBDTransitionValue();

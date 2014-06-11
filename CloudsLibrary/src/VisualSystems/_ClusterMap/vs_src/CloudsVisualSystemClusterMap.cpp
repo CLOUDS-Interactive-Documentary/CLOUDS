@@ -618,6 +618,8 @@ void CloudsVisualSystemClusterMap::traverse(){
 	
 	if(act == NULL){
 		ofLogError("CloudsVisualSystemClusterMap::traverse") << "Traversed without ACT" << endl;
+		finishedTraversing = true;
+		percentTraversed = 1.0;
 		return;
 	}
 
@@ -1376,7 +1378,7 @@ void CloudsVisualSystemClusterMap::drawCursors(){
 
 void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip*> questionClips){
 
-	for(int i = 0; i < questions.size(); i++){
+	for(int i = 0; i < questionClips.size(); i++){
 		
 		CloudsPortal q;
         q.cam = &getCameraRef();
@@ -1384,9 +1386,10 @@ void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip*> questionClip
 		q.clip = questionClips[i];
 		q.topic = q.clip->getAllTopicsWithQuestion()[0];
 		q.question = q.clip->getQuestionForTopic(q.topic);
+        q.hoverPosition = getCameraRef().getPosition() + ofVec3f(questionCameraDistance,0,0).getRotated(1.0*i/questions.size() * 360, ofVec3f(0,1,0));
+        
   		q.setup();
 		
-//        q.hoverPosition = getCameraRef().getPosition() + getCameraRef().getLookAtDir() * 10;
 		questions.push_back(q);
 	}
 
