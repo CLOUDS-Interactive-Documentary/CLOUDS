@@ -1263,15 +1263,17 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		//we have a caught question make sure it's still close
 		else if(caughtPortal == portals[i]){
 			//we went over the timer distance! zoooom!!!
-			if(caughtPortal->isSelected() ){
-				selectedPortal = caughtPortal;
-				CloudsPortalEventArgs args(getQuestionText());
-				ofNotifyEvent(events.portalHoverBegan, args);
-				CloudsVisualSystem::getSelectLow()->setPosition(0);
-				CloudsVisualSystem::getSelectLow()->play();
-				#ifdef CLOUDS_SCREENING
-				portalToClear = selectedPortal;
-				#endif
+			if(caughtPortal->isSelected()){
+				if(selectedPortal == NULL){
+					selectedPortal = caughtPortal;
+					CloudsPortalEventArgs args(getQuestionText());
+					ofNotifyEvent(events.portalHoverBegan, args);
+					CloudsVisualSystem::getSelectLow()->setPosition(0);
+					CloudsVisualSystem::getSelectLow()->play();
+					#ifdef CLOUDS_SCREENING
+					portalToClear = selectedPortal;
+					#endif
+				}
 			}
 			//let it go
 			else if(distanceToQuestion > portalTugDistance.max){

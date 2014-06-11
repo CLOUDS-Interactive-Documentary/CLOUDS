@@ -75,6 +75,7 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
     associationFontSize = 0;
     currentAssociationFont = 0;
     numTraversed = 0;
+	curQuestionCamRotation = 0;
 	///END INIT
 }
 
@@ -127,6 +128,14 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     selectedQuestion = NULL;
     caughtQuestion = NULL;
     
+	questionScale = 0.1f;
+	questionFontScale = 14;
+	currentQuestionFontSize = 10;
+	questionFontSize = 5;
+	questionFontScale = 1.0;
+	questionFontTracking = 0;
+	questionFontY = 0;
+
 	firstClip = true;
 }
 
@@ -326,9 +335,15 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     questionGui->addToggle("QUESTION CAM", &useQuestionCam);
 	questionGui->addSlider("QUESTION SCALE", 0, 1.0, &questionScale);
 	questionGui->addSlider("QUESTION CAM DIST", 0, 100, &questionCameraDistance);
-	questionGui->addRangeSlider("QUESTION TUG DISTANCE", 10, 100, &questionTugDistance.min, &questionTugDistance.max);
+	questionGui->addRangeSlider("QUESTION TUG DISTANCE", 10, 300, &questionTugDistance.min, &questionTugDistance.max);
     questionGui->addSlider("QUESTCAM SPIN", .0, 1.0, &questionCameraSpinSpeed);
     questionGui->addSlider("QUESTCAM AXIS DIST", 0.0, 100.0, &questionCameraAxisDist);
+	
+	questionGui->addLabel("QUESTION TYPE");
+	questionGui->addIntSlider("FONT SIZE", 4, 100, &questionFontSize);
+	questionGui->addSlider("FONT SCALE", 0, 1.0, &questionFontScale);
+	questionGui->addSlider("TRACKING", 0, 30, &questionFontTracking);
+	questionGui->addSlider("Y POSITION", -200, 200, &questionFontY);
 
 	ofAddListener(questionGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(questionGui);
@@ -1033,9 +1048,13 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
             else{
                 curAtten = powf(ofMap(caughtQuestion->hoverPercentComplete, 0.0, .2, 1.0, 0.0, true), 2.0);
             }
-            //questionSpinAttenuate += (curAtten - questionSpinAttenuate) * .1;
-            questionSpinAttenuate = curAtten;
-            questionCam.rotate(questionCameraSpinSpeed * questionSpinAttenuate, ofVec3f(0,1,0));
+            questionSpinAttenuate += (curAtten - questionSpinAttenuate) * .1;
+            //questionSpinAttenuate = curAtten;
+			curQuestionCamRotation += questionCameraSpinSpeed * questionSpinAttenuate;
+			
+            //questionCam.rotate(questionCameraSpinSpeed * questionSpinAttenuate, ofVec3f(0,1,0));
+			questionCam.setPosition( ofVec3f(0,0,questionCameraAxisDist).getRotated(curQuestionCamRotation, ofVec3f(0,1,0)) );
+			questionCam.lookAt(ofVec3f(0,0,0));
         }
         else{
             float percentZoomed = powf(ofMap(ofGetElapsedTimef(), selectedQuestionTime, selectedQuestionTime + 2.0, 0.0, 1.0, true),2.);
@@ -1270,6 +1289,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	glPopAttrib();
     
     drawQuestions();
+
 }
 
 void CloudsVisualSystemClusterMap::updateQuestions(){
@@ -1283,7 +1303,6 @@ void CloudsVisualSystemClusterMap::updateQuestions(){
         if(selectedQuestion == NULL){
             curQuestion.hoverPosition = getCameraRef().getPosition() + ofVec3f(questionCameraDistance,0,0).getRotated(1.0*i/questions.size() * 360, ofVec3f(0,1,0));
         }
-
 
 #ifdef OCULUS_RIFT
         ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
@@ -1360,6 +1379,84 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
     
     ofEnableDepthTest();
 	ofPopStyle();
+	
+	ofPushStyle();
+	ofDisableLighting();
+    
+	if(!questionFont.isLoaded() || currentQuestionFontSize != questionFontSize){
+		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+		currentQuestionFontSize = questionFontSize;
+	}
+	string questionText;
+	ofVec3f basePosition(0,0,0);
+	float questionTextOpacity = 0.0;
+	float scaleModifier = 1.0;// * ofGetMouseX() / ofGetWidth();
+
+	if(caughtQuestion != NULL){
+		basePosition = caughtQuestion->hoverPosition;
+		questionText = caughtQuestion->question;
+		questionTextOpacity = ofMap(caughtQuestion->hoverPercentComplete, 0.0, .05, 0.0, 1.0, true);
+		
+		scaleModifier = .5;
+		questionFont.setTracking(questionFontTracking*.1);
+		
+		questionText = ofToUpper(questionText);
+		
+		float questionTextWidth = questionFont.stringWidth(questionText);
+		float questionTextWidth2, questionTextHeight2;
+		string secondLine;
+		bool twoLines = questionTextWidth > 500;
+		if(twoLines){
+			vector<string> pieces = ofSplitString(questionText, " ", true,true);
+			vector<string> firstHalf;
+			vector<string> secondHalf;
+			int halfsize = pieces.size() / 2;
+			firstHalf.insert(firstHalf.begin(), pieces.begin(), pieces.begin() + halfsize);
+			secondHalf.insert(secondHalf.begin(), pieces.begin() + halfsize, pieces.end());
+			questionText = ofJoinString(firstHalf, " ");
+			secondLine = ofJoinString(secondHalf, " ");
+			questionTextWidth  = questionFont.stringWidth(questionText);
+			questionTextWidth2 = questionFont.stringWidth(secondLine);
+		}
+		float questionTextHeight = questionFont.stringHeight(questionText);
+		
+        ofPushMatrix();
+		ofPushStyle();
+		ofEnableAlphaBlending();
+		ofDisableLighting();
+		
+#ifdef OCULUS_RIFT
+		getOculusRift().multBillboardMatrix( basePosition );
+#else
+		ofNode n;
+		n.setPosition( basePosition );
+		n.lookAt(getCameraRef().getPosition(), getCameraRef().getUpDir());
+		ofVec3f axis; float angle;
+		n.getOrientationQuat().getRotate(angle, axis);
+		// Translate the object to its position.
+		ofTranslate( basePosition );
+		// Perform the rotation.
+		ofRotate(angle, axis.x, axis.y, axis.z);
+#endif
+		
+		ofRotate(180, 0, 0, 1); //flip around
+		ofScale(questionFontScale,questionFontScale,questionFontScale);
+		ofSetColor(255,255*questionTextOpacity);
+		
+		questionFont.drawString(questionText, -questionTextWidth*.5, questionFontY - questionTextHeight*.5);
+		if(twoLines){
+			questionFont.drawString(secondLine, -questionTextWidth2*.5, questionFontY + questionTextHeight*1.5);
+		}
+		
+		ofEnableLighting();
+		ofPopStyle();
+		ofPopMatrix();
+	}
+	
+	ofEnableLighting();
+	glEnable(GL_DEPTH_TEST);
+	ofPopStyle();
+
 }
 
 void CloudsVisualSystemClusterMap::drawCursors(){
