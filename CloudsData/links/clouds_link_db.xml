@@ -13767,6 +13767,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Pulses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Marcus - Audiovisual glue</target>
         <startFrame>-1</startFrame>
@@ -59143,6 +59148,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Elliot - Audiovisuals</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>audiovisualization</additionalKeywords>
 </clip>
 <clip>
@@ -59171,7 +59181,20 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Pulses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>music,elegance</additionalKeywords>
+</clip>
+<clip>
+    <name>Memo_master - Harmonic 2</name>
+    <link>
+        <target>Memo_master - Pulses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Memo_master - Story unfolds</name>
@@ -59210,6 +59233,21 @@
     <name>Memo_master - Pulses</name>
     <link>
         <target>Memo_master - Harmonic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - audiovisualization</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Synaesthesia 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Harmonic 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -59974,6 +60012,11 @@
     </link>
     <link>
         <target>Marcus - Audiovisual glue</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Pulses</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -61297,6 +61340,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Memo_master - Harmonic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Pulses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>audiovisualization,#vo,music</additionalKeywords>
 </clip>
 <clip>
@@ -61430,6 +61483,11 @@
 </clip>
 <clip>
     <name>Intro - AudioVisualization</name>
+    <link>
+        <target>Memo_master - Pulses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>music,audiovisualization,?audiovisualization:What does music look like?,#question</additionalKeywords>
 </clip>
 <clip>
@@ -63397,6 +63455,11 @@
     </link>
     <link>
         <target>Memo_master - Synaesthesia 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Memo_master - Pulses</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
