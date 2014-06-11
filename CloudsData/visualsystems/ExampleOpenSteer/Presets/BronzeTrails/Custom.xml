@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>N BOIDS</Name>
-    <Value>100.000000000</Value>
+    <Value>129.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -168,7 +168,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SEPARATION WEIGHT</Name>
-    <Value>5.665024757</Value>
+    <Value>17.266010284</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

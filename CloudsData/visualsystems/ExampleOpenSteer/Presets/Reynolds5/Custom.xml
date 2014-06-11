@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>INITIAL POSITION RADIUS</Name>
-    <Value>39.162559509</Value>
+    <Value>47.438423157</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -168,7 +168,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SEPARATION WEIGHT</Name>
-    <Value>5.000000000</Value>
+    <Value>16.896551132</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
