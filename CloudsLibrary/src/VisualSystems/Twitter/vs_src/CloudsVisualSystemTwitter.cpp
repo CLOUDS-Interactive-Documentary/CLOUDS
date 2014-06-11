@@ -1322,7 +1322,7 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < getCanvasHeight()){
                     
                     if (avatars.find(*currentSelection[i].first)== avatars.end() ){
-                        cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
+//                        cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
                         avatars["default"].draw(avatarX,curAvatarY, avatarSize, avatarSize);
                     }
                     else{
@@ -1381,7 +1381,7 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < getCanvasHeight()){
                     
                     if (avatars.find(*currentSelection[i].first)== avatars.end() ){
-                        cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
+//                        cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
                         avatars["default"].draw(avatarX,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
                     }
                     else{

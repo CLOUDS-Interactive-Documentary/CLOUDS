@@ -101,7 +101,7 @@ class CloudsPlaybackController : public ofThread {
 	bool shouldPlayAct;
     bool shouldClearAct;
     bool shouldPlayClusterMap;
-	
+    
     void drawRenderTarget();
     void drawInterludeInterface();
 	void drawInterludePanel(ofRectangle rect, string promptText, bool hovering, int tracking );
@@ -167,6 +167,8 @@ class CloudsPlaybackController : public ofThread {
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
+    bool showingClusterMapNavigation;
+    bool showedClusterMapNavigation;
     bool showingInterlude;
     bool exitedInterlude;
 	bool bQuestionAsked;
