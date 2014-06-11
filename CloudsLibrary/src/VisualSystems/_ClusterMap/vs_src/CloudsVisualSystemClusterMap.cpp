@@ -624,7 +624,7 @@ void CloudsVisualSystemClusterMap::traverse(){
 	}
 
 //	if(currentTraversalIndex < run->clipHistory.size()){
-	if(currentTraversalIndex < MIN(8,act->getAllClips().size()) ){
+	if(currentTraversalIndex < MIN(4,act->getAllClips().size()) ){
 		traverseToClip( act->getClip(currentTraversalIndex) );
 		percentTraversed = 0.0;
 		currentTraversalIndex++;
@@ -1338,15 +1338,17 @@ void CloudsVisualSystemClusterMap::updateQuestions(){
 }
 
 void CloudsVisualSystemClusterMap::drawQuestions(){
+    if(questions.size() == 0){
+        return;
+    }
+    
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	ofDisableDepthTest();
-    
+
 	CloudsPortal::shader.begin();
 	
 	CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-//	CloudsPortal::shader.setUniform1f("minDistance", questionAttenuateDistance.min);
-//	CloudsPortal::shader.setUniform1f("maxDistance", questionAttenuateDistance.max);
 	
     ofSetColor(255);
     ofNoFill();
@@ -1356,9 +1358,6 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 	
 	CloudsPortal::shader.end();
     
-//	for(int i = 0; i < questions.size(); i++){
-//        ofDrawSphere(questions[i].hoverPosition, 10);
-//	}
     ofEnableDepthTest();
 	ofPopStyle();
 }
