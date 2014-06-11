@@ -236,7 +236,6 @@
         if(suppressedTable.selectedRow<0){
             return;
         }
-		
     }
 }
 
