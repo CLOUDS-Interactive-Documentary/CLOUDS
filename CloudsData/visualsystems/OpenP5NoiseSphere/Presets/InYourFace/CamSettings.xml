@@ -1,8 +1,8 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000061035</XPosition>
+    <XPosition>647.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-X</Name>
-    <Value>360.000000000</Value>
+    <Value>112.219871521</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,22 +43,47 @@
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>-10.197097778</Value>
+    <Value>-10.197098732</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>2.216697693</Value>
+    <Value>2.216695547</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minY</Name>
-    <Value>-20.837493896</Value>
+    <Value>-20.837491989</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxY</Name>
     <Value>12.857093811</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Spin Camera</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spin Camera Damp</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spin Camera Range X</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spin Camera Range Y</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Invert Spin Axis</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,6 +103,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>3D RGBD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>22</Kind>
+    <Name>VIEW</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

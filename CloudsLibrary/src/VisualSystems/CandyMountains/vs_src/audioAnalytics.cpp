@@ -46,7 +46,7 @@ void audioAnalytics::setupVectors(){
         taps.push_back(tap);
         
         ofxAudioUnitFftNode * fft = new ofxAudioUnitFftNode();
-        ffts.push_back(fft);
+//        ffts.push_back(fft);
         
         ofxAudioFeaturesChannel * channel = new ofxAudioFeaturesChannel();
         channel->setup(512, 64, 44100);

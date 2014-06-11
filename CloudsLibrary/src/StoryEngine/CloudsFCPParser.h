@@ -208,7 +208,7 @@ class CloudsFCPParser {
     int getCentroidMapIndex(const string&  keyword);
 	void calculateKeywordAdjascency();
 	void calculateKeywordFamilies();
-
+    void disperseUnpositionedClips();
     
 	CloudsProjectExample dummyProjectExample;
     CloudsClip dummyClip; // for failed reference returns

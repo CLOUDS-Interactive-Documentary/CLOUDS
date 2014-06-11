@@ -9554,7 +9554,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>cameras</revokedKeywords>
-    <additionalKeywords>camera,control,#mundane,#obstacle,#logical,#tech,#hard,Clouds</additionalKeywords>
+    <additionalKeywords>camera,control,#hard,#tech,#logical,#obstacle,#mundane,clouds</additionalKeywords>
 </clip>
 <clip>
     <name>Elliot_UK - 2D vision in a 3D world</name>
@@ -17905,6 +17905,11 @@
     </link>
     <link>
         <target>Memo_master - Filmmaker aspirations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - code for storytelling</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -26610,6 +26615,11 @@
     </link>
     <link>
         <target>Memo_master - Non-narrative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - code for storytelling</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -39662,6 +39672,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Karsten - infinite conversation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - in the movie</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Philip - all the points can flush</target>
         <startFrame>-1</startFrame>
@@ -39672,7 +39692,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#inspiring,#easy</additionalKeywords>
+    <revokedKeywords>simulation</revokedKeywords>
+    <additionalKeywords>#inspiring,#easy,clouds</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - algorithms as parameter space</name>
@@ -52032,7 +52053,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#easy,#tech</additionalKeywords>
+    <revokedKeywords>beginnings</revokedKeywords>
+    <additionalKeywords>#tech,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Regine - making a living</name>

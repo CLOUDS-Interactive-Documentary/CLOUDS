@@ -46,6 +46,7 @@ void testApp::setup(){
 	}
 #else
 	clusterMap.loadPresetGUISFromName("FollowTraverse_Screen");
+//    clusterMap.loadPresetGUISFromName("NavigationInterlude_Screen");
 #endif
 
 	clusterMap.setRun(run);
@@ -53,8 +54,9 @@ void testApp::setup(){
 	clusterMap.buildEntireCluster(parser);
 	clusterMap.allocateFlickerTexture();
 	
-//	clusterMap.autoTraversePoints = true;
-	
+	clusterMap.autoTraversePoints = true;
+//	clusterMap.populateDummyQuestions();
+    
 	clusterMap.playSystem();
 	
 }

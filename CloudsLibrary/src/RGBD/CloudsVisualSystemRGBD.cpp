@@ -2150,6 +2150,22 @@ string CloudsVisualSystemRGBD::getQuestionText(){
     return "";
 }
 
+vector<QuestionQueue>& CloudsVisualSystemRGBD::getQuestionQueue(){
+    return questions;
+}
+
+void CloudsVisualSystemRGBD::removeQuestionFromQueue(CloudsClip* clip){
+    for(int i = questions.size()-1; i >= 0; i--){
+        if(questions[i].clip == clip){
+            questions.erase(questions.begin() + i);
+            return;
+        }
+    }
+    
+    ofLogError("CloudsVisualSystemRGBD::removeQuestionFromQueue") << "Failed to remove clip " << clip->getLinkName() << " from queue";
+}
+
+
 bool CloudsVisualSystemRGBD::isQuestionSelected(){
 	return selectedPortal != NULL;
 }

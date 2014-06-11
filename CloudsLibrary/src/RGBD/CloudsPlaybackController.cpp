@@ -19,7 +19,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	currentClip = NULL;
 	numClipsPlayed = 0;
 	
-	shouldLoadAct = shouldPlayAct = shouldClearAct = shouldPlayClusterMap = false;
+	shouldLoadAct = shouldPlayAct = shouldClearAct = shouldPlayClusterMap = showingClusterMapNavigation = false;
 	selectedQuestion = NULL;
 	selectedQuestionClip = NULL;
 
@@ -74,7 +74,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	
     returnToIntro = false;
     cachedTransition = false;
-    
+    showedClusterMapNavigation = false;
 
 	resetInterludeVariables();
 	
@@ -122,7 +122,8 @@ void CloudsPlaybackController::clearAct(){
 	
     delete currentAct;
     currentAct = NULL;
-	
+	clusterMap->setAct(NULL);
+    
 	//hack to clear frame buffer
 	CloudsVisualSystem::getStaticRenderTarget().begin();
 	ofClear(0,0,0);
@@ -605,12 +606,16 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		shouldPlayClusterMap = false;
 		transitionController.transitionToClusterMap(1.0);
 	}
-
 	else if(showingClusterMap){
-		if(clusterMap->finishedTraversing){
-			transitionController.transitionFromClusterMap(1.0);
+        if( (showingClusterMapNavigation && clusterMap->isQuestionSelected() ) ||
+            (!showingClusterMapNavigation && clusterMap->finishedTraversing) )
+        {
+            if(showingClusterMapNavigation){
+                run.questionsAsked++;
+            }
             showingClusterMap = false;
-		}
+            transitionController.transitionFromClusterMap(1.0);
+        }
 	}
     
     ////////////////////
@@ -832,6 +837,12 @@ void CloudsPlaybackController::updateTransition(){
 					clusterMap->stopSystem();
 					clearRenderTarget();
 					
+                    if(showingClusterMapNavigation){
+                        showingClusterMapNavigation = false;
+                        rgbdVisualSystem->removeQuestionFromQueue(clusterMap->getSelectedQuestion()->clip);
+                        storyEngine.buildAct(run, clusterMap->getSelectedQuestion()->clip, clusterMap->getSelectedQuestion()->topic, true);
+                    }
+                    
 					break;
 				}
 				
@@ -843,9 +854,18 @@ void CloudsPlaybackController::updateTransition(){
                     cleanupInterlude();
                     
                     //build the next clip based on the history
+                    #ifdef CLOUDS_SCREENING
+                    if(run.questionsAsked > 2 && !showedClusterMapNavigation){
+                        shouldPlayClusterMap = true;
+                        showingClusterMapNavigation = true;
+                    }
+                    else{
+                        storyEngine.buildAct(run);
+                    }
+                    #else
 					storyEngine.buildAct(run);
-					
-                    cout<<"IDLE POST TRANSITION INTERLUDE OUT"<<endl;
+                    #endif
+                    cout << "IDLE POST TRANSITION INTERLUDE OUT" << endl;
                 }
 				else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
 
@@ -1026,21 +1046,20 @@ void CloudsPlaybackController::drawInterludeInterface(){
 	string promptType;
 	int tracking;
 	if(interludeSystem != NULL){
-//	if(interludeHoveringContinue){
+
 		hoverRect = ofRectangle(interludeSystem->getCanvasWidth(), 0,
 								-interludeExitBarWidth, interludeSystem->getCanvasHeight());
 		hovering = interludeHoveringContinue;
 		promptType = "CONTINUE";
 		tracking = 6;
 		drawInterludePanel(hoverRect, promptType, hovering, tracking);
-//	}
-//	else if(interludeHoveringReset){
+        
 		hoverRect = ofRectangle(0, 0, interludeExitBarWidth, interludeSystem->getCanvasHeight());
 		hovering = interludeHoveringReset;
 		promptType = "RESET";
 		tracking = 11;
 		drawInterludePanel(hoverRect, promptType, hovering, tracking);
-//	}
+
 	}
 }
 
@@ -1142,13 +1161,6 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     
 	drawDebugOverlay();
 	
-//bad loading screen... debug only
-//	if(loadingAct){
-//		float progressWidth = ofGetWidth() * .66;
-//		//		loadingFont.drawString("Generating a response to your query.", ofGetWidth()*.33, ofGetHeight()*.5 - 5);
-//		ofRect(ofGetWidth()*.33 / 2, ofGetHeight()*.5, progressWidth * currentPresetIndex / currentAct->getAllVisualSystemPresets().size(), 50. );
-//	}
-	
 	glPopAttrib();
 }
 
@@ -1221,7 +1233,6 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 		shouldLoadAct = true;
 		shouldPlayAct = false;
 	}
-	
 	
 	cout << "***** ORDER OF OPERATIONS: ACT CREATED CONTROLLER " << args.act << endl;
 
@@ -1389,24 +1400,56 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showClusterMap(){
-#ifdef OCULUS_RIFT
-	if(CloudsVisualSystem::getOculusRift().isHD()){
-		clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD");
-	}
-	else{
-		clusterMap->loadPresetGUISFromName("FollowTraverse_OculusSD");
-	}
-#else
-	clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
-#endif
+    if(showingClusterMapNavigation){
+        
+        #ifdef CLOUDS_SCREENING
+        //SHOW REMAINING QUESTIONS
+        vector<CloudsClip*> questionClips;
+        for(int i = 0; i < rgbdVisualSystem->getQuestionQueue().size(); i++){
+            questionClips.push_back(rgbdVisualSystem->getQuestionQueue()[i].clip);
+        }
+
+        if(questionClips.size() != 0){
+            clusterMap->setQuestions(questionClips);
+            showedClusterMapNavigation = true;
+            clusterMap->loadPresetGUISFromName("NavigationInterlude_Screen");
+        }
+        else{
+            showingClusterMapNavigation = false;
+            ofLogError("CloudsPlaybackController::showClusterMap") << "No question clips left in RGBD system";
+        }
+        #else
+        //SHOW QUESTIONS FROM CURRENT ACT
+        showingClusterMapNavigation = false; //TEMP HACK UNTIL WE GET THIS WORKING ON NON SCREENING MODE
+        #endif
+    }
+    
+    if(!showingClusterMapNavigation){
+        #ifdef OCULUS_RIFT
+        if(CloudsVisualSystem::getOculusRift().isHD()){
+            clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD");
+        }
+        else{
+            clusterMap->loadPresetGUISFromName("FollowTraverse_OculusSD");
+        }
+        #else
+        clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
+        #endif
+    }
+    
     clusterMap->playSystem();
-	clusterMap->autoTraversePoints = true;
-    
     clusterMap->clearTraversal();
+
+    if(!showingClusterMapNavigation){
+        clusterMap->autoTraversePoints = true;
+        
+        clusterMap->traverse();
+        clusterMap->traverse();
+    }
+    else{
+        clusterMap->autoTraversePoints = false;
+    }
     
-	clusterMap->traverse();
-	clusterMap->traverse();
-	
     currentVisualSystem = clusterMap;
 
     showingVisualSystem = true;

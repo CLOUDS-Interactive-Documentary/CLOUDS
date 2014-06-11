@@ -1,44 +1,44 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Grid</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>47.000000000</YPosition>
+    <YPosition>43.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>gridLineWidth</Name>
-    <Value>2.465517282</Value>
+    <Value>0.874384224</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>majorGridLineWidth</Name>
-    <Value>4.103447914</Value>
+    <Value>3.167487621</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridScale</Name>
-    <Value>3.438423634</Value>
+    <Value>33.187194824</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridMajorScale</Name>
-    <Value>8.921181679</Value>
+    <Value>13.650245667</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>gridColor</Name>
-    <XValue>0.000000000</XValue>
-    <YValue>0.031250000</YValue>
-    <RColor>255</RColor>
-    <GColor>255</GColor>
+    <XValue>0.234375000</XValue>
+    <YValue>0.242187500</YValue>
+    <RColor>150</RColor>
+    <GColor>231</GColor>
     <BColor>255</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridAlpha</Name>
-    <Value>52.758621216</Value>
+    <Value>71.600990295</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,25 +48,25 @@
 <Widget>
     <Kind>28</Kind>
     <Name>gridMajorColor</Name>
-    <XValue>0.445312500</XValue>
-    <YValue>0.460937500</YValue>
-    <RColor>4</RColor>
-    <GColor>31</GColor>
-    <BColor>70</BColor>
+    <XValue>0.242187500</XValue>
+    <YValue>0.398437500</YValue>
+    <RColor>48</RColor>
+    <GColor>222</GColor>
+    <BColor>255</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridMajorAlpha</Name>
-    <Value>134.408859253</Value>
+    <Value>126.871925354</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridMajorBrightness</Name>
-    <Value>0.645320177</Value>
+    <Value>0.453201979</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridAlphaScale</Name>
-    <Value>0.743842363</Value>
+    <Value>0.884236455</Value>
 </Widget>

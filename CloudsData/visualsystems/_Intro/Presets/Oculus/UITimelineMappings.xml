@@ -4,7 +4,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>hold camera</WidgetName>
-                <WidgetID>66</WidgetID>
+                <WidgetID>76</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -13,32 +13,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Max Point Size</WidgetName>
-                <WidgetID>3</WidgetID>
-                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>camera fwd force</WidgetName>
-                <WidgetID>60</WidgetID>
+                <WidgetID>70</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Min Distance</WidgetName>
-                <WidgetID>5</WidgetID>
-                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>Max Distance</WidgetName>
-                <WidgetID>7</WidgetID>
+                <WidgetName>Wireframe Alpha</WidgetName>
+                <WidgetID>15</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -53,8 +37,24 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Wireframe Alpha</WidgetName>
-                <WidgetID>15</WidgetID>
+                <WidgetName>Max Distance</WidgetName>
+                <WidgetID>7</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Max Point Size</WidgetName>
+                <WidgetID>3</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Min Distance</WidgetName>
+                <WidgetID>5</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Post Effects</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>241.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>869.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Chroma_Distortion</Name>
-    <Value>0.000000000</Value>
+    <Value>0.346153855</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,10 +28,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Bloom Level</Name>
-    <Value>0.349753708</Value>
+    <Value>0.346153855</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>Bloom Size</Name>
-    <Value>4</Value>
+    <Value>2</Value>
 </Widget>
