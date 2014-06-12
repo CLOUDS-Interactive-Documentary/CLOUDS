@@ -1,0 +1,92 @@
+<Canvas>
+    <Kind>40</Kind>
+    <Name>Kinect</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>279.000000000</XPosition>
+    <YPosition>107.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>CURSOR DOWN</Name>
+    <HighValue>49.528846741</HighValue>
+    <LowValue>1.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>CURSOR UP</Name>
+    <HighValue>50.000000000</HighValue>
+    <LowValue>1.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>BODY RANGE X</Name>
+    <HighValue>0.717601061</HighValue>
+    <LowValue>-0.839048862</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>BODY RANGE Y</Name>
+    <HighValue>0.280786991</HighValue>
+    <LowValue>-0.557692289</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>BODY RANGE Z</Name>
+    <HighValue>3.038461447</HighValue>
+    <LowValue>1.942307711</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLAMP TO BOUNDS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ACTIVE THRESHOLD Y</Name>
+    <Value>0.842364550</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ACTIVE THRESHOLD Z</Name>
+    <Value>0.288461536</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOCUS RANGE</Name>
+    <Value>0.221153840</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RESET LERP</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MOVE LERP</Name>
+    <Value>0.300000012</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MOVE THRESHOLD</Name>
+    <Value>20.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>OUT OF BOUNDS DELAY</Name>
+    <Value>2000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FEEDBACK SCALE</Name>
+    <Value>0.285714298</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FEEDBACK MARGIN</Name>
+    <Value>0.020000000</Value>
+</Widget>

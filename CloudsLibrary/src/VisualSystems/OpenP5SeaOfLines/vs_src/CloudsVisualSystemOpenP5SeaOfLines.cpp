@@ -74,22 +74,22 @@ void CloudsVisualSystemOpenP5SeaOfLines::generateParticles(){
     
     // Add the players.
     float step = 20;
-    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-    
+	float widthStep = getCanvasWidth() / step;
+	float heightStep = getCanvasHeight() / step;
     //jg control player count by looping over this until it's done
     while(true){
-        for (float i = 0; i < (getCanvasWidth() / step - 1); i++) {
-            for (float j = 0; j < (getCanvasHeight() / step - 1); j++) {
+        for (float i = 0; i < (widthStep - 1); i++) {
+            for (float j = 0; j < (heightStep - 1); j++) {
                 if (ofRandom(3) > 1) {
                     
                     players.push_back(SOLPlayer());
                     
                     SOLPlayer& player = players.back();
                     
-                    player.x = i * step + step * 0.5f;
-                    player.y = j * step + step * 0.5f;
-                    
-                    player.speed = ofRandom(minSpeed, maxSpeed);
+                    player.x = i * widthStep;
+                    player.y = j * heightStep;
+
+					player.speed = ofRandom(minSpeed, maxSpeed);
                     
                     float angle = ofRandom(TWO_PI);
                     player.sx = cosf(angle) * player.speed;
