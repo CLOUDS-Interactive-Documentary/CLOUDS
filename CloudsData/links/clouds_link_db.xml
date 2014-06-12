@@ -13777,6 +13777,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#hard,#sincere,#fun</additionalKeywords>
 </clip>
 <clip>
@@ -15093,6 +15098,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#start,?audiovisualization: What does music look like?,#question</additionalKeywords>
 </clip>
 <clip>
@@ -30072,6 +30082,91 @@
 </clip>
 <clip>
     <name>Kyle_CH - Casey Reas Music Visualizations</name>
+    <suppress>
+        <target>Golan - audiovisual concept</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Higa - sound and video</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Marcus - Audiovisual glue</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Marcus - electronic music influence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Philip - audiovisual gigs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Shantell - Live performance,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Harmonic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Harmonic 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Sonifying</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Harmonic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Pulses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Synaesthesia 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Synaesthesia 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Memo_master - Synaesthesia 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Elliot - Audiovisuals</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Intro - AudioVisualization</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>LIA - audiovisualization</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>project example</revokedKeywords>
     <additionalKeywords>#easy,#example,#inspiring</additionalKeywords>
 </clip>
@@ -38084,11 +38179,6 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Kyle_CH - Casey Reas Music Visualizations</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Marius - reach your visual cortex</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -38105,6 +38195,11 @@
     </suppress>
     <suppress>
         <target>Patricio - Jam session</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -39441,11 +39536,6 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Kyle_CH - Casey Reas Music Visualizations</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Philip - audiovisual gigs</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -39465,6 +39555,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#sincere,#fun,#hard,#example</additionalKeywords>
 </clip>
 <clip>
@@ -47823,11 +47918,6 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Kyle_CH - Casey Reas Music Visualizations</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Marius - reach your visual cortex</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -47854,6 +47944,11 @@
     </link>
     <suppress>
         <target>Patricio - Jam session</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -53418,6 +53513,11 @@
     </suppress>
     <suppress>
         <target>Patricio - Jam session</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -59153,6 +59253,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>audiovisualization</additionalKeywords>
 </clip>
 <clip>
@@ -59162,6 +59267,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>audiovisualization</additionalKeywords>
 </clip>
 <clip>
@@ -59186,6 +59296,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>music,elegance</additionalKeywords>
 </clip>
 <clip>
@@ -59195,6 +59310,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Memo_master - Story unfolds</name>
@@ -59251,6 +59371,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>techno</additionalKeywords>
 </clip>
 <clip>
@@ -60020,6 +60145,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>pattern,perception,#gold,audiovisualization</additionalKeywords>
 </clip>
 <clip>
@@ -60119,6 +60249,14 @@
     <additionalKeywords>electronic music</additionalKeywords>
 </clip>
 <clip>
+    <name>Memo_master - Synaesthesia 2</name>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+</clip>
+<clip>
     <name>Memo_master - Sound design</name>
     <link>
         <target>Maeda - reactive square</target>
@@ -60133,6 +60271,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>beginnings</additionalKeywords>
 </clip>
 <clip>
@@ -61350,6 +61493,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>audiovisualization,#vo,music</additionalKeywords>
 </clip>
 <clip>
@@ -61488,6 +61636,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>music,audiovisualization,?audiovisualization:What does music look like?,#question</additionalKeywords>
 </clip>
 <clip>
@@ -63463,6 +63616,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>audiovisualization,music,perception,#logical,#oculus,?audiovisualization:What does music look like?</additionalKeywords>
 </clip>
 <clip>

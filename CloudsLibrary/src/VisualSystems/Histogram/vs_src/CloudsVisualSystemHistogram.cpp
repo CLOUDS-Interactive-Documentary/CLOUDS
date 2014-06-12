@@ -45,30 +45,30 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     }
     customGui->addRadio("SOUNDS", soundNames);
     
-    customGui->addSlider("MAIN GAIN", 0.0001, 1, &fMainGain);
-    customGui->addSlider("LEVEL ADJUST", 0.0f, 10.0f, &levelAdjust);
+    customGui->addMinimalSlider("MAIN GAIN", 0.0001, 1, &fMainGain);
+    customGui->addMinimalSlider("LEVEL ADJUST", 0.0f, 10.0f, &levelAdjust);
     
     customGui->addSpacer();
     customGui->addLabel("COLOR");
     customGui->addRangeSlider("HUE RANGE", 0, 255, &hueMin, &hueMax);
-    customGui->addSlider("SAT BASE", 0, 255, &satBase);
-    customGui->addSlider("SAT RANGE", 0, 255, &satRange);
-    customGui->addSlider("BRI BASE", 0, 255, &briBase);
-    customGui->addSlider("BRI RANGE", 0, 255, &briRange);
-    customGui->addSlider("ALPHA", 0, 255, &alpha);
+    customGui->addMinimalSlider("SAT BASE", 0, 255, &satBase);
+    customGui->addMinimalSlider("SAT RANGE", 0, 255, &satRange);
+    customGui->addMinimalSlider("BRI BASE", 0, 255, &briBase);
+    customGui->addMinimalSlider("BRI RANGE", 0, 255, &briRange);
+    customGui->addMinimalSlider("ALPHA", 0, 255, &alpha);
     
     customGui->addSpacer();
     customGui->addLabel("DIMENSIONS");
     customGui->addIntSlider("NUM ROWS", 1, 32, &numRows);
     customGui->addIntSlider("COLS PER ROW", 1, 100, &colsPerRow);
-    customGui->addSlider("ROW SPACER", 1, 200, &rowSpacer);
-    customGui->addSlider("COL SPACER", 0, 50, &colSpacer);
-    customGui->addSlider("COL WIDTH", 0, 100, &colWidth);
+    customGui->addMinimalSlider("ROW SPACER", 1, 200, &rowSpacer);
+    customGui->addMinimalSlider("COL SPACER", 0, 50, &colSpacer);
+    customGui->addMinimalSlider("COL WIDTH", 0, 100, &colWidth);
     customGui->addRangeSlider("COL HEIGHT", 0, 500, &colHeightMin, &colHeightMax);
-    customGui->addSlider("LINE WIDTH", 0.1, 10, &lineWidth);
+    customGui->addMinimalSlider("LINE WIDTH", 0.1, 10, &lineWidth);
     
     customGui->addSpacer();
-    customGui->addSlider("FOG DENSITY", 0.0f, 0.3f, &fogDensity);
+    customGui->addMinimalSlider("FOG DENSITY", 0.0f, 0.3f, &fogDensity);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemHistogram::selfGuiEvent);
 	guis.push_back(customGui);
