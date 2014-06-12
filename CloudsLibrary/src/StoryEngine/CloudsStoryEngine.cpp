@@ -24,7 +24,8 @@ CloudsStoryEngine::CloudsStoryEngine(){
     customAct = NULL;
 	
     showOnlyStartQuestions = false;
-    
+    forceCredits = false;
+	
     isSetup = false;
     printDecisions = true;
     combinedClipsOnly = false;
@@ -296,7 +297,7 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     }
     
 #ifdef CLOUDS_SCREENING
-	if(run.questionsAsked >= screeningQuestionClips.size()-1){
+	if(run.questionsAsked >= screeningQuestionClips.size()-1 || forceCredits){
         preset = visualSystems->getPresetForSystem("Balloons", "CREDITS_FINAL");
         return true;
 	}
@@ -1470,6 +1471,7 @@ CloudsStoryEvents& CloudsStoryEngine::getEvents(){
 }
 
 void CloudsStoryEngine::populateScreeningQuestions(){
+	
 	string linkName;
 	linkName = "Casey - Software is what i love the most";
 	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
@@ -1496,7 +1498,5 @@ void CloudsStoryEngine::populateScreeningQuestions(){
 	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 	
 }
-
-
 
 

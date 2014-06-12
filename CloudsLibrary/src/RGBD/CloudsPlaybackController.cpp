@@ -420,13 +420,13 @@ void CloudsPlaybackController::playCurrentAct(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	
-	if(args.key == 'Q'){
-		for(int i = 0; i < fakeQuestions.size(); i++){
-			rgbdVisualSystem->addQuestion(fakeQuestions[i],
-										  fakeQuestions[i]->getTopicsWithQuestions()[0],
-										  fakeQuestions[i]->getQuestions()[0]);
-		}
-	}
+//	if(args.key == 'Q'){
+//		for(int i = 0; i < fakeQuestions.size(); i++){
+//			rgbdVisualSystem->addQuestion(fakeQuestions[i],
+//										  fakeQuestions[i]->getTopicsWithQuestions()[0],
+//										  fakeQuestions[i]->getQuestions()[0]);
+//		}
+//	}
     
     
 	if(args.key == '\\'){
@@ -477,6 +477,12 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
             currentAct->getTimeline().stop();
         }
     }
+#endif
+	
+#ifdef CLOUDS_SCREENING
+	if(args.key == 'Q'){
+		storyEngine.forceCredits = true;
+	}
 #endif
 	
     if(args.key == 'R'){
@@ -856,9 +862,7 @@ void CloudsPlaybackController::updateTransition(){
                     //build the next clip based on the history
                     #ifdef CLOUDS_SCREENING
                     if(run.questionsAsked > 2 && !showedClusterMapNavigation){
-						
 						createInterludeSoundQueue();
-                        
 						shouldPlayClusterMap = true;
                         showingClusterMapNavigation = true;
                     }
@@ -868,6 +872,7 @@ void CloudsPlaybackController::updateTransition(){
                     #else
 					storyEngine.buildAct(run);
                     #endif
+					
                     cout << "IDLE POST TRANSITION INTERLUDE OUT" << endl;
                 }
 				else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
@@ -1218,6 +1223,8 @@ void CloudsPlaybackController::drawDebugOverlay(){
 		currentAct->getTimeline().disableEvents();
 	}
 	
+
+	
 }
 
 #pragma story engine events
@@ -1410,11 +1417,13 @@ void CloudsPlaybackController::showClusterMap(){
         
         #ifdef CLOUDS_SCREENING
         //SHOW REMAINING QUESTIONS
-        vector<CloudsClip*> questionClips;
-        for(int i = 0; i < rgbdVisualSystem->getQuestionQueue().size(); i++){
-            questionClips.push_back(rgbdVisualSystem->getQuestionQueue()[i].clip);
-        }
-
+		/////******
+//        for(int i = 0; i < rgbdVisualSystem->getQuestionQueue().size(); i++){
+//            questionClips.push_back(rgbdVisualSystem->getQuestionQueue()[i].clip);
+//        }
+		////******
+		
+        vector<CloudsClip*> questionClips = storyEngine.getInterlude
         if(questionClips.size() != 0){
             clusterMap->setQuestions(questionClips);
             showedClusterMapNavigation = true;
@@ -1424,6 +1433,7 @@ void CloudsPlaybackController::showClusterMap(){
             showingClusterMapNavigation = false;
             ofLogError("CloudsPlaybackController::showClusterMap") << "No question clips left in RGBD system";
         }
+		
         #else
         //SHOW QUESTIONS FROM CURRENT ACT
         showingClusterMapNavigation = false; //TEMP HACK UNTIL WE GET THIS WORKING ON NON SCREENING MODE

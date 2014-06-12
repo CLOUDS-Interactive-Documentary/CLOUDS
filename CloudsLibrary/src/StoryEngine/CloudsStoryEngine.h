@@ -72,7 +72,8 @@ class CloudsStoryEngine {
     //after this many clips the topic opens up again
 	bool printDecisions;
 	bool atDeadEnd();
-
+	bool forceCredits;
+	
 	//for use in the main clouds repository
 	bool combinedClipsOnly;
 	
