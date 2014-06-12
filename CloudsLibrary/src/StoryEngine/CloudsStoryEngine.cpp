@@ -1471,31 +1471,30 @@ CloudsStoryEvents& CloudsStoryEngine::getEvents(){
 
 void CloudsStoryEngine::populateScreeningQuestions(){
 	string linkName;
-	linkName = "Casey - Software is what i love the most";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Kyle_CH - coding, magic";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Intro - Collaboration";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Julia - make us more compassionate";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Bruce - Textual technologies";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-
-	linkName = "Jen - data crystal ball";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Julia - CLOUDS";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Intro - VirtualReality";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	linkName = "Casey - Software is what i love the most";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Kyle_CH - coding, magic";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Intro - Collaboration";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Julia - make us more compassionate";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Bruce - Textual technologies";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//
+//	linkName = "Jen - data crystal ball";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Julia - CLOUDS";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Intro - VirtualReality";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
-    //
     linkName = "Higa - sound and video";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 	
@@ -1511,6 +1510,22 @@ void CloudsStoryEngine::populateScreeningQuestions(){
     linkName = "JTNimoy - Cortex";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
+    linkName = "Kyle_MC - new aesthetic 1";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+
+    linkName = "Jer - lives being documented through data";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+
+    linkName = "Julia - Who owns the internet?";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Shiffman - Sharing";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Karsten - infinite conversation";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+
 }
 
 
