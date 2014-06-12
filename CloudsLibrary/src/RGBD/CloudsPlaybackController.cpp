@@ -22,7 +22,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	shouldLoadAct = shouldPlayAct = shouldClearAct = shouldPlayClusterMap = showingClusterMapNavigation = false;
 	selectedQuestion = NULL;
 	selectedQuestionClip = NULL;
-
+	forceCredits = false;
+	
     numActsCreated = 0;
     
     cachedTransition = false;
@@ -481,7 +482,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	
 #ifdef CLOUDS_SCREENING
 	if(args.key == 'Q'){
-		storyEngine.forceCredits = true;
+		forceCredits = true;
 	}
 #endif
 	
@@ -1414,26 +1415,14 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showClusterMap(){
     if(showingClusterMapNavigation){
-        
+		rgbdVisualSystem->getQuestionQueue().clear();
         #ifdef CLOUDS_SCREENING
-        //SHOW REMAINING QUESTIONS
-		/////******
-//        for(int i = 0; i < rgbdVisualSystem->getQuestionQueue().size(); i++){
-//            questionClips.push_back(rgbdVisualSystem->getQuestionQueue()[i].clip);
-//        }
-		////******
-		
-        vector<CloudsClip*> questionClips = storyEngine.getInterlude
-        if(questionClips.size() != 0){
-            clusterMap->setQuestions(questionClips);
-            showedClusterMapNavigation = true;
-            clusterMap->loadPresetGUISFromName("NavigationInterlude_Screen");
-        }
-        else{
-            showingClusterMapNavigation = false;
-            ofLogError("CloudsPlaybackController::showClusterMap") << "No question clips left in RGBD system";
-        }
-		
+
+
+		storyEngine.populateScreeningQuestionsPart2();
+		clusterMap->setQuestions(storyEngine.screeningQuestionClips);
+		showedClusterMapNavigation = true;
+		clusterMap->loadPresetGUISFromName("NavigationInterlude_Screen");
         #else
         //SHOW QUESTIONS FROM CURRENT ACT
         showingClusterMapNavigation = false; //TEMP HACK UNTIL WE GET THIS WORKING ON NON SCREENING MODE
@@ -1479,7 +1468,12 @@ void CloudsPlaybackController::showInterlude(){
 	
     vector<string> topics;
     CloudsVisualSystemPreset interludePreset;
-    if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
+	#ifdef CLOUDS_SCREENING
+	if(rgbdVisualSystem->hasQuestionsRemaining()){
+		forceCredits = true;
+	}
+	#endif
+    if(storyEngine.getPresetIDForInterlude(run, interludePreset, forceCredits)){
         
         interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
         

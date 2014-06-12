@@ -2152,6 +2152,19 @@ string CloudsVisualSystemRGBD::getQuestionText(){
     return "";
 }
 
+#ifdef CLOUDS_SCREENING
+bool CloudsVisualSystemRGBD::hasQuestionsRemaining(){
+	return questions.size() == 0 && leftPortal.question == "" && rightPortal.question == "";
+}
+
+void CloudsVisualSystemRGBD::clearQuestionQueue(){
+	questions.clear();
+	leftPortal.question  = "";
+	rightPortal.question = "";
+}
+
+#endif
+
 vector<QuestionQueue>& CloudsVisualSystemRGBD::getQuestionQueue(){
     return questions;
 }

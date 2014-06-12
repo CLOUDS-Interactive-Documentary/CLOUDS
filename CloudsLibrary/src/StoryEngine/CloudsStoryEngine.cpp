@@ -23,19 +23,21 @@ CloudsStoryEngine::CloudsStoryEngine(){
     visualSystems = NULL;
     customAct = NULL;
 	
+	shouldGotoCredits = false;
     showOnlyStartQuestions = false;
-    forceCredits = false;
 	
+	shouldAddScreeningQuestionsToAct = false;
+
     isSetup = false;
     printDecisions = true;
     combinedClipsOnly = false;
     screeningQuestionsAdded = false;
 	
+	
     maxTimesOnTopic = 4;
     voClipGapTime = 1.0;
 	clipGapTime = .4;
 	
-//    systemMaxRunTime = 60*2;
 	seriesBoostFactor = 10;
     maxVisualSystemGapTime = 60*3;
     longClipThreshold = 30;
@@ -90,7 +92,7 @@ void CloudsStoryEngine::setup(){
 		
 		dichotomies = CloudsDichotomy::getDichotomies();
 		
-		populateScreeningQuestions();
+		populateScreeningQuestionsPart1();
     }
 }
 
@@ -289,7 +291,7 @@ vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
     return startingNodes;
 }
 
-bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset){
+bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset, bool forceCredits){
     
     if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
         ofLogError("CloudsStoryEngine::buildAct") << " no topics for next act!";
@@ -297,7 +299,8 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     }
     
 #ifdef CLOUDS_SCREENING
-	if(run.questionsAsked >= screeningQuestionClips.size()-1 || forceCredits){
+//	if(run.questionsAsked >= screeningQuestionClips.size()-1 || forceCredits){
+	if(forceCredits){
         preset = visualSystems->getPresetForSystem("Balloons", "CREDITS_FINAL");
         return true;
 	}
@@ -597,9 +600,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
         ///////////////// QUESTIONS
         //adding all option clips with questions		
 #ifdef CLOUDS_SCREENING
-		if(state.run == firstActNum && state.act->getAllClips().size() > 2 && !screeningQuestionsAdded){
+		if(shouldAddScreeningQuestionsToAct && state.act->getAllClips().size() > 2){
 			addQuestions(state, screeningQuestionClips);
-			screeningQuestionsAdded = true;
+			shouldAddScreeningQuestionsToAct = false;
 		}
 #else
 		if(state.act->getAllVisualSystemPresets().size() > 1){
@@ -1208,7 +1211,6 @@ float CloudsStoryEngine::scoreForTopic(CloudsStoryState& state, string potential
     return score;
 }
 
-
 #pragma mark CLIP SCORES
 float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* potentialNextClip, stringstream& cliplog){
     
@@ -1472,6 +1474,8 @@ CloudsStoryEvents& CloudsStoryEngine::getEvents(){
 
 void CloudsStoryEngine::populateScreeningQuestionsPart1(){
 
+	screeningQuestionClips.clear();
+	
 	///TRIBECA PLAYLIST
 	string linkName;
 //	linkName = "Casey - Software is what i love the most";
@@ -1497,9 +1501,7 @@ void CloudsStoryEngine::populateScreeningQuestionsPart1(){
 //	
 //	linkName = "Intro - VirtualReality";
 //	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-    ///
-	
-    //
+
     linkName = "Higa - sound and video";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 	
@@ -1515,11 +1517,31 @@ void CloudsStoryEngine::populateScreeningQuestionsPart1(){
     linkName = "JTNimoy - Cortex";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
+	shouldAddScreeningQuestionsToAct = true;
 }
 
 
 void CloudsStoryEngine::populateScreeningQuestionsPart2(){
+
 	screeningQuestionClips.clear();
+
+	string linkName;
+	linkName = "Kyle_MC - new aesthetic 1";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Jer - lives being documented through data";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 	
+    linkName = "Julia - Who owns the internet?";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Shiffman - Sharing";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Karsten - infinite conversation";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+
+	shouldAddScreeningQuestionsToAct = true;
+	shouldGotoCredits = true;
 }
 

@@ -172,6 +172,7 @@ class CloudsPlaybackController : public ofThread {
     bool showingInterlude;
     bool exitedInterlude;
 	bool bQuestionAsked;
+	bool forceCredits;
 	
 	void clearAct();
     

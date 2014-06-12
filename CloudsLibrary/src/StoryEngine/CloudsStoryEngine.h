@@ -63,7 +63,7 @@ class CloudsStoryEngine {
 	CloudsAct* buildAct(CloudsRun& run);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed, string topic, bool playSeed = true);
-	bool getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset);
+	bool getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset, bool forceCredits = false);
     void initGui();
     void saveGuiSettings();
     void toggleGuis(bool actOnly = false);
@@ -72,7 +72,6 @@ class CloudsStoryEngine {
     //after this many clips the topic opens up again
 	bool printDecisions;
 	bool atDeadEnd();
-	bool forceCredits;
 	
 	//for use in the main clouds repository
 	bool combinedClipsOnly;
@@ -86,7 +85,9 @@ class CloudsStoryEngine {
 
 	bool screeningQuestionsAdded;
 	vector<CloudsClip*> screeningQuestionClips;
-	
+	void populateScreeningQuestionsPart1();
+	void populateScreeningQuestionsPart2();
+
  protected:
 	
 	ofxUISuperCanvas *actGui;
@@ -98,7 +99,6 @@ class CloudsStoryEngine {
 	ofxUISuperCanvas *logGui;
 	
     void guiEvent(ofxUIEventArgs &e);
-	void populateScreeningQuestions();
 	
 	CloudsStoryEvents events;
 	bool isSetup;
@@ -175,9 +175,8 @@ class CloudsStoryEngine {
     float goldClipFactor;
     float easyClipScoreFactor;
 	float seriesBoostFactor;
-//	int digressionDenialCount;
-//	int numTopicHistoryOccurrences;
-
+	bool shouldAddScreeningQuestionsToAct;
+	bool shouldGotoCredits;
 	float distantClipSuppressionFactor; // no longer using
     
 	//Topic selection parameters
