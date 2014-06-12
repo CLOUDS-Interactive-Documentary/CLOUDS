@@ -4291,6 +4291,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Marcus - skating to coding</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>math,#easy,#inspiring,#rational,#logical,?beginnings: How did you start?</additionalKeywords>
 </clip>
 <clip>
@@ -4672,6 +4677,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Marcus - skating to coding</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#gold</additionalKeywords>
 </clip>
 <clip>
@@ -8337,7 +8347,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>how would you visualize your own data?&#x0D;process,mind and hand,heuristics,art and experience,imagination</revokedKeywords>
-    <additionalKeywords>process,creativity,#gold,#easy,#art,#emotional,#inspiring,#sincere</additionalKeywords>
+    <additionalKeywords>process,creativity,#sincere,#inspiring,#emotional,#art,#easy,#gold,?generative art: Is an artwork ever done?,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Tree of Life</name>
@@ -22840,7 +22850,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>social control,network security</revokedKeywords>
-    <additionalKeywords>personal data,the cloud,criticality,#hard,#serious,#rational,#tech</additionalKeywords>
+    <additionalKeywords>personal data,the cloud,criticality,#tech,#rational,#serious,#hard,?the cloud: Who owns the Internet?</additionalKeywords>
 </clip>
 <clip>
     <name>Julia - how it makes me feel</name>
@@ -31448,7 +31458,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>cyberpunk,#hard,?machine vision: When did machine vision become cool?,#question</additionalKeywords>
+    <additionalKeywords>cyberpunk,#question,?machine vision: When did machine vision become cool?,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - new aesthetic 2</name>
@@ -38120,32 +38130,27 @@
 </clip>
 <clip>
     <name>Marcus - skating to coding</name>
-    <link>
-        <target>Vera - What I like about this field</target>
+    <suppress>
+        <target>Memo_master - Synaesthesia 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Casey - Software is what i love the most</target>
+    </suppress>
+    <suppress>
+        <target>Binx - Background</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>JTNimoy - I addicted myself</target>
+    </suppress>
+    <suppress>
+        <target>Bruce - Tidepools</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>JTNimoy - Pickle</target>
+    </suppress>
+    <suppress>
+        <target>Zach - nerd art center</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Kyle_CH - MMORPGs</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <additionalKeywords>#breakthrough,#inspiring,#sincere,#pe?Syn_</additionalKeywords>
+    </suppress>
+    <additionalKeywords>#dud,#pe?Syn_,#sincere,#inspiring,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Marcus - community styles</name>
@@ -55050,7 +55055,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>thanks,?open source: What is open source all about?,#gold,#inspiring,#sincere,#question</additionalKeywords>
+    <additionalKeywords>thanks,#question,#sincere,#inspiring,#gold,?open source: What is open source all about?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - Open Source Contract</name>
@@ -58422,6 +58427,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Marcus - skating to coding</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>nerd,tribe,#ironic,#fun,?community: How did this community originate?,#question</additionalKeywords>
 </clip>
 <clip>
@@ -60273,6 +60283,11 @@
     </link>
     <suppress>
         <target>Kyle_CH - Casey Reas Music Visualizations</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Marcus - skating to coding</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -63442,7 +63457,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>time,process,creativity,generative art,#oculus,?generative art: When is an artwork done?,#mindblowing,#question,#start</additionalKeywords>
+    <additionalKeywords>time,process,creativity,generative art,#question,#mindblowing,?generative art: When is an artwork done?,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>LIA - TimeStamps2</name>

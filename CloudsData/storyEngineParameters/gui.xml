@@ -18,7 +18,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>MAX TIMES ON TOPIC</Name>
-    <Value>4</Value>
+    <Value>3</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MAX VS RUNTIME</Name>
-    <Value>31.921180725</Value>
+    <Value>39.310344696</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,10 +48,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MAX VS GAPTIME</Name>
-    <Value>15.369458199</Value>
+    <Value>7.684729099</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>TOPIC END VISUAL EXTEND</Name>
-    <Value>18.960590363</Value>
+    <Value>21.354679108</Value>
 </Widget>

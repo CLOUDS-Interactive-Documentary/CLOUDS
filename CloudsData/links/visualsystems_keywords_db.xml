@@ -10005,14 +10005,26 @@
     <interlude>0</interlude>
 </system>
 <system name="CandyMountains_Phasing">
-    <keywords></keywords>
+    <keywords>audiovisualization|synaesthesia</keywords>
     <links>
         <clip>Memo_master - Pulses</clip>
         <clip>Memo_master - Sonifying</clip>
         <clip>Memo_master - Harmonic 1</clip>
         <clip>Memo_master - Complexity 2</clip>
     </links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Golan - playable image</clip>
+        <clip>Kyle_CH - Casey Reas Music Visualizations</clip>
+        <clip>Maeda - reactive square</clip>
+        <clip>Marcus - skating to coding</clip>
+        <clip>Marcus - electronic music influence</clip>
+        <clip>Memo_master - Sound design</clip>
+        <clip>Memo_master - Synaesthesia 1</clip>
+        <clip>Memo_master - Synaesthesia 2</clip>
+        <clip>Memo_master - Synaesthesia 3</clip>
+        <clip>Shantell - drawing with noise</clip>
+        <clip>Shantell - Live performance,</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -35601,7 +35613,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
