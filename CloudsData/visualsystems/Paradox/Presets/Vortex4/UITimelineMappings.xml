@@ -12,8 +12,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>voxel spacing</WidgetName>
-                <WidgetID>8</WidgetID>
+                <WidgetName>twist factor y</WidgetName>
+                <WidgetID>22</WidgetID>
                 <WidgetCanvasParent>Voxels</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -22,14 +22,6 @@
             <Widget>
                 <WidgetName>twist speed y</WidgetName>
                 <WidgetID>20</WidgetID>
-                <WidgetCanvasParent>Voxels</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>twist factor y</WidgetName>
-                <WidgetID>22</WidgetID>
                 <WidgetCanvasParent>Voxels</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -46,6 +38,14 @@
             <Widget>
                 <WidgetName>sphere percent</WidgetName>
                 <WidgetID>12</WidgetID>
+                <WidgetCanvasParent>Voxels</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>voxel spacing</WidgetName>
+                <WidgetID>8</WidgetID>
                 <WidgetCanvasParent>Voxels</WidgetCanvasParent>
             </Widget>
             <Track></Track>
