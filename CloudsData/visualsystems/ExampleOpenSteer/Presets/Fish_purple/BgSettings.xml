@@ -2,13 +2,13 @@
     <Kind>40</Kind>
     <Name>BgSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>293.000000000</XPosition>
-    <YPosition>311.000000000</YPosition>
+    <XPosition>465.000000000</XPosition>
+    <YPosition>133.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>GRAD</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>WASH GRAD</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,20 +38,20 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
-    <Value>180.216354370</Value>
+    <Value>178.990386963</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>HUE2</Name>
-    <Value>0.000000000</Value>
+    <Value>150.793273926</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT2</Name>
-    <Value>0.000000000</Value>
+    <Value>44.134616852</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI2</Name>
-    <Value>97.980293274</Value>
+    <Value>62.524036407</Value>
 </Widget>
