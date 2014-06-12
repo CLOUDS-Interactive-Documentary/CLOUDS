@@ -1580,6 +1580,42 @@
 		E755D70619440E3000AA81C1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D70519440E3000AA81C1 /* QuartzCore.framework */; };
 		E755D70A1944159000AA81C1 /* libassimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D7091944159000AA81C1 /* libassimp.a */; };
 		E755D70D194415DD00AA81C1 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D70B194415DD00AA81C1 /* CloudsCalibrationNode.cpp */; };
+		E79BF66F1949206F00A0A83E /* audioAnalytics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65C1949206F00A0A83E /* audioAnalytics.cpp */; };
+		E79BF6701949206F00A0A83E /* audioAnalytics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65C1949206F00A0A83E /* audioAnalytics.cpp */; };
+		E79BF6711949206F00A0A83E /* audioAnalytics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65C1949206F00A0A83E /* audioAnalytics.cpp */; };
+		E79BF6721949206F00A0A83E /* audioAnalytics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65C1949206F00A0A83E /* audioAnalytics.cpp */; };
+		E79BF6731949206F00A0A83E /* cameraManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65E1949206F00A0A83E /* cameraManager.cpp */; };
+		E79BF6741949206F00A0A83E /* cameraManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65E1949206F00A0A83E /* cameraManager.cpp */; };
+		E79BF6751949206F00A0A83E /* cameraManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65E1949206F00A0A83E /* cameraManager.cpp */; };
+		E79BF6761949206F00A0A83E /* cameraManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65E1949206F00A0A83E /* cameraManager.cpp */; };
+		E79BF6771949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6601949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp */; };
+		E79BF6781949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6601949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp */; };
+		E79BF6791949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6601949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp */; };
+		E79BF67A1949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6601949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp */; };
+		E79BF67B1949206F00A0A83E /* colorSchemeDesigner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6621949206F00A0A83E /* colorSchemeDesigner.cpp */; };
+		E79BF67C1949206F00A0A83E /* colorSchemeDesigner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6621949206F00A0A83E /* colorSchemeDesigner.cpp */; };
+		E79BF67D1949206F00A0A83E /* colorSchemeDesigner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6621949206F00A0A83E /* colorSchemeDesigner.cpp */; };
+		E79BF67E1949206F00A0A83E /* colorSchemeDesigner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6621949206F00A0A83E /* colorSchemeDesigner.cpp */; };
+		E79BF67F1949206F00A0A83E /* lightManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6651949206F00A0A83E /* lightManager.cpp */; };
+		E79BF6801949206F00A0A83E /* lightManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6651949206F00A0A83E /* lightManager.cpp */; };
+		E79BF6811949206F00A0A83E /* lightManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6651949206F00A0A83E /* lightManager.cpp */; };
+		E79BF6821949206F00A0A83E /* lightManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6651949206F00A0A83E /* lightManager.cpp */; };
+		E79BF6831949206F00A0A83E /* postProcManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6671949206F00A0A83E /* postProcManager.cpp */; };
+		E79BF6841949206F00A0A83E /* postProcManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6671949206F00A0A83E /* postProcManager.cpp */; };
+		E79BF6851949206F00A0A83E /* postProcManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6671949206F00A0A83E /* postProcManager.cpp */; };
+		E79BF6861949206F00A0A83E /* postProcManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6671949206F00A0A83E /* postProcManager.cpp */; };
+		E79BF6871949206F00A0A83E /* scrollingGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6691949206F00A0A83E /* scrollingGraph.cpp */; };
+		E79BF6881949206F00A0A83E /* scrollingGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6691949206F00A0A83E /* scrollingGraph.cpp */; };
+		E79BF6891949206F00A0A83E /* scrollingGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6691949206F00A0A83E /* scrollingGraph.cpp */; };
+		E79BF68A1949206F00A0A83E /* scrollingGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF6691949206F00A0A83E /* scrollingGraph.cpp */; };
+		E79BF68B1949206F00A0A83E /* smoother.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF66B1949206F00A0A83E /* smoother.cpp */; };
+		E79BF68C1949206F00A0A83E /* smoother.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF66B1949206F00A0A83E /* smoother.cpp */; };
+		E79BF68D1949206F00A0A83E /* smoother.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF66B1949206F00A0A83E /* smoother.cpp */; };
+		E79BF68E1949206F00A0A83E /* smoother.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF66B1949206F00A0A83E /* smoother.cpp */; };
+		E79BF68F1949207000A0A83E /* terrainManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF66D1949206F00A0A83E /* terrainManager.cpp */; };
+		E79BF6901949207000A0A83E /* terrainManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF66D1949206F00A0A83E /* terrainManager.cpp */; };
+		E79BF6911949207000A0A83E /* terrainManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF66D1949206F00A0A83E /* terrainManager.cpp */; };
+		E79BF6921949207000A0A83E /* terrainManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF66D1949206F00A0A83E /* terrainManager.cpp */; };
 		E7D821A918BEBCC300C1EB93 /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D821A518BEBCC300C1EB93 /* ofxTimecode.cpp */; };
 		E7D8222F18BEBCEF00C1EB93 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D8221318BEBCEE00C1EB93 /* libftgl.a */; };
 		E7D8223318BEBCEF00C1EB93 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8221C18BEBCEF00C1EB93 /* ofxFTGLFont.cpp */; };
@@ -3422,6 +3458,25 @@
 		E755D7091944159000AA81C1 /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libassimp.a; sourceTree = "<group>"; };
 		E755D70B194415DD00AA81C1 /* CloudsCalibrationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCalibrationNode.cpp; sourceTree = "<group>"; };
 		E755D70C194415DD00AA81C1 /* CloudsCalibrationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCalibrationNode.h; sourceTree = "<group>"; };
+		E79BF65C1949206F00A0A83E /* audioAnalytics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audioAnalytics.cpp; sourceTree = "<group>"; };
+		E79BF65D1949206F00A0A83E /* audioAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audioAnalytics.h; sourceTree = "<group>"; };
+		E79BF65E1949206F00A0A83E /* cameraManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cameraManager.cpp; sourceTree = "<group>"; };
+		E79BF65F1949206F00A0A83E /* cameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cameraManager.h; sourceTree = "<group>"; };
+		E79BF6601949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCandyMountains.cpp; sourceTree = "<group>"; };
+		E79BF6611949206F00A0A83E /* CloudsVisualSystemCandyMountains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCandyMountains.h; sourceTree = "<group>"; };
+		E79BF6621949206F00A0A83E /* colorSchemeDesigner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = colorSchemeDesigner.cpp; sourceTree = "<group>"; };
+		E79BF6631949206F00A0A83E /* colorSchemeDesigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colorSchemeDesigner.h; sourceTree = "<group>"; };
+		E79BF6641949206F00A0A83E /* decayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decayer.h; sourceTree = "<group>"; };
+		E79BF6651949206F00A0A83E /* lightManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lightManager.cpp; sourceTree = "<group>"; };
+		E79BF6661949206F00A0A83E /* lightManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lightManager.h; sourceTree = "<group>"; };
+		E79BF6671949206F00A0A83E /* postProcManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = postProcManager.cpp; sourceTree = "<group>"; };
+		E79BF6681949206F00A0A83E /* postProcManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postProcManager.h; sourceTree = "<group>"; };
+		E79BF6691949206F00A0A83E /* scrollingGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scrollingGraph.cpp; sourceTree = "<group>"; };
+		E79BF66A1949206F00A0A83E /* scrollingGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scrollingGraph.h; sourceTree = "<group>"; };
+		E79BF66B1949206F00A0A83E /* smoother.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = smoother.cpp; sourceTree = "<group>"; };
+		E79BF66C1949206F00A0A83E /* smoother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smoother.h; sourceTree = "<group>"; };
+		E79BF66D1949206F00A0A83E /* terrainManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terrainManager.cpp; sourceTree = "<group>"; };
+		E79BF66E1949206F00A0A83E /* terrainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = terrainManager.h; sourceTree = "<group>"; };
 		E7D821A518BEBCC300C1EB93 /* ofxTimecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimecode.cpp; sourceTree = "<group>"; };
 		E7D821A618BEBCC300C1EB93 /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E7D821F518BEBCEE00C1EB93 /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
@@ -6465,6 +6520,40 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
+		E79BF65A1949206F00A0A83E /* CandyMountains */ = {
+			isa = PBXGroup;
+			children = (
+				E79BF65B1949206F00A0A83E /* vs_src */,
+			);
+			path = CandyMountains;
+			sourceTree = "<group>";
+		};
+		E79BF65B1949206F00A0A83E /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E79BF65C1949206F00A0A83E /* audioAnalytics.cpp */,
+				E79BF65D1949206F00A0A83E /* audioAnalytics.h */,
+				E79BF65E1949206F00A0A83E /* cameraManager.cpp */,
+				E79BF65F1949206F00A0A83E /* cameraManager.h */,
+				E79BF6601949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp */,
+				E79BF6611949206F00A0A83E /* CloudsVisualSystemCandyMountains.h */,
+				E79BF6621949206F00A0A83E /* colorSchemeDesigner.cpp */,
+				E79BF6631949206F00A0A83E /* colorSchemeDesigner.h */,
+				E79BF6641949206F00A0A83E /* decayer.h */,
+				E79BF6651949206F00A0A83E /* lightManager.cpp */,
+				E79BF6661949206F00A0A83E /* lightManager.h */,
+				E79BF6671949206F00A0A83E /* postProcManager.cpp */,
+				E79BF6681949206F00A0A83E /* postProcManager.h */,
+				E79BF6691949206F00A0A83E /* scrollingGraph.cpp */,
+				E79BF66A1949206F00A0A83E /* scrollingGraph.h */,
+				E79BF66B1949206F00A0A83E /* smoother.cpp */,
+				E79BF66C1949206F00A0A83E /* smoother.h */,
+				E79BF66D1949206F00A0A83E /* terrainManager.cpp */,
+				E79BF66E1949206F00A0A83E /* terrainManager.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		E7D8201D18BEBC7100C1EB93 /* opencv */ = {
 			isa = PBXGroup;
 			children = (
@@ -6782,6 +6871,7 @@
 		E7D822B718BEBD6E00C1EB93 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E79BF65A1949206F00A0A83E /* CandyMountains */,
 				E755D6F71943F6CC00AA81C1 /* Paradox */,
 				E7D822B818BEBD6E00C1EB93 /* 2DVideo */,
 				E7D822BC18BEBD6E00C1EB93 /* 3DModelLoader */,
@@ -9721,6 +9811,7 @@
 				038032581948167700AFD40C /* SawtoothWave.cpp in Sources */,
 				038032591948167700AFD40C /* ofxFTGLSimpleLayout.cpp in Sources */,
 				0380325A1948167700AFD40C /* b2DynamicTree.cpp in Sources */,
+				E79BF67E1949206F00A0A83E /* colorSchemeDesigner.cpp in Sources */,
 				0380325B1948167700AFD40C /* ofxCameraSaveLoad.cpp in Sources */,
 				0380325C1948167700AFD40C /* Tracker.cpp in Sources */,
 				0380325D1948167700AFD40C /* HistoryNode.cpp in Sources */,
@@ -9764,6 +9855,7 @@
 				038032831948167700AFD40C /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */,
 				038032841948167700AFD40C /* ofxUIBaseDraws.cpp in Sources */,
 				038032851948167700AFD40C /* CloudsVisualSystemCirclePacking.cpp in Sources */,
+				E79BF6821949206F00A0A83E /* lightManager.cpp in Sources */,
 				038032861948167700AFD40C /* CloudsVisualSystem.cpp in Sources */,
 				038032871948167700AFD40C /* Path.cpp in Sources */,
 				038032881948167700AFD40C /* ControlComparison.cpp in Sources */,
@@ -9861,6 +9953,7 @@
 				038032E41948167700AFD40C /* PostProcessing.cpp in Sources */,
 				038032E51948167700AFD40C /* b2TOISolver.cpp in Sources */,
 				038032E61948167700AFD40C /* MazeSettings.cpp in Sources */,
+				E79BF6921949207000A0A83E /* terrainManager.cpp in Sources */,
 				038032E71948167700AFD40C /* b2PulleyJoint.cpp in Sources */,
 				038032E81948167700AFD40C /* CloudsRGBDPointLayer.cpp in Sources */,
 				038032E91948167700AFD40C /* ofxUIFPSSlider.cpp in Sources */,
@@ -9900,6 +9993,7 @@
 				0380330B1948167700AFD40C /* CloudsVisualSystemWorld.cpp in Sources */,
 				0380330C1948167700AFD40C /* ofxUIToggleMatrix.cpp in Sources */,
 				0380330D1948167700AFD40C /* MonoToStereoPanner.cpp in Sources */,
+				E79BF68E1949206F00A0A83E /* smoother.cpp in Sources */,
 				0380330E1948167700AFD40C /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
 				0380330F1948167700AFD40C /* Camera.cpp in Sources */,
 				038033101948167700AFD40C /* CloudsVisualSystem2DVideo.cpp in Sources */,
@@ -9974,6 +10068,7 @@
 				038033551948167700AFD40C /* ofxField2D.cpp in Sources */,
 				038033561948167700AFD40C /* RampedValue.cpp in Sources */,
 				038033571948167700AFD40C /* Gravity.cpp in Sources */,
+				E79BF68A1949206F00A0A83E /* scrollingGraph.cpp in Sources */,
 				038033581948167700AFD40C /* CloudsVisualSystemWebHistory.cpp in Sources */,
 				038033591948167700AFD40C /* Panel.cpp in Sources */,
 				0380335A1948167700AFD40C /* VoxelMesh.cpp in Sources */,
@@ -9992,6 +10087,7 @@
 				038033671948167700AFD40C /* b2Fixture.cpp in Sources */,
 				038033681948167700AFD40C /* CompressorLimiter.cpp in Sources */,
 				038033691948167700AFD40C /* v_compute.cpp in Sources */,
+				E79BF6761949206F00A0A83E /* cameraManager.cpp in Sources */,
 				0380336A1948167700AFD40C /* Boid.cpp in Sources */,
 				0380336B1948167700AFD40C /* ofxOculusRift.cpp in Sources */,
 				0380336C1948167700AFD40C /* CloudsRGBDVideoPlayer.cpp in Sources */,
@@ -10018,6 +10114,7 @@
 				038033811948167700AFD40C /* CloudsVisualSystemGesturePaint.cpp in Sources */,
 				038033821948167700AFD40C /* GestureRenderer.cpp in Sources */,
 				038033831948167700AFD40C /* RunningBackground.cpp in Sources */,
+				E79BF6861949206F00A0A83E /* postProcManager.cpp in Sources */,
 				038033841948167700AFD40C /* ofxTLSwitches.cpp in Sources */,
 				038033851948167700AFD40C /* testApp.cpp in Sources */,
 				038033861948167700AFD40C /* Maze.cpp in Sources */,
@@ -10157,6 +10254,7 @@
 				0380340C1948167700AFD40C /* ofxUILabel.cpp in Sources */,
 				0380340D1948167700AFD40C /* PanelCode.cpp in Sources */,
 				0380340E1948167700AFD40C /* ofxSystemTextbox.mm in Sources */,
+				E79BF6721949206F00A0A83E /* audioAnalytics.cpp in Sources */,
 				0380340F1948167700AFD40C /* cell.cpp in Sources */,
 				038034101948167700AFD40C /* CloudsVisualSystemReplicator.cpp in Sources */,
 				038034111948167700AFD40C /* b2PrismaticJoint.cpp in Sources */,
@@ -10226,6 +10324,7 @@
 				038034511948167700AFD40C /* RGBShiftPass.cpp in Sources */,
 				038034521948167700AFD40C /* ContourFinder.cpp in Sources */,
 				038034531948167700AFD40C /* ofxTLLFO.cpp in Sources */,
+				E79BF67A1949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp in Sources */,
 				038034541948167700AFD40C /* CloudsVisualSystemMetaballs.cpp in Sources */,
 				038034551948167700AFD40C /* CloudsVisualSystemFlying.cpp in Sources */,
 				038034561948167700AFD40C /* b2Contact.cpp in Sources */,
@@ -10316,6 +10415,7 @@
 				03A0F4C21947A0850071CF4B /* SawtoothWave.cpp in Sources */,
 				03A0F4C31947A0850071CF4B /* ofxFTGLSimpleLayout.cpp in Sources */,
 				03A0F4C41947A0850071CF4B /* b2DynamicTree.cpp in Sources */,
+				E79BF67D1949206F00A0A83E /* colorSchemeDesigner.cpp in Sources */,
 				03A0F4C51947A0850071CF4B /* ofxCameraSaveLoad.cpp in Sources */,
 				03A0F4C61947A0850071CF4B /* Tracker.cpp in Sources */,
 				03A0F4C71947A0850071CF4B /* HistoryNode.cpp in Sources */,
@@ -10359,6 +10459,7 @@
 				03A0F4ED1947A0850071CF4B /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */,
 				03A0F4EE1947A0850071CF4B /* ofxUIBaseDraws.cpp in Sources */,
 				03A0F4EF1947A0850071CF4B /* CloudsVisualSystemCirclePacking.cpp in Sources */,
+				E79BF6811949206F00A0A83E /* lightManager.cpp in Sources */,
 				03A0F4F01947A0850071CF4B /* CloudsVisualSystem.cpp in Sources */,
 				03A0F4F11947A0850071CF4B /* Path.cpp in Sources */,
 				03A0F4F21947A0850071CF4B /* ControlComparison.cpp in Sources */,
@@ -10456,6 +10557,7 @@
 				03A0F54E1947A0850071CF4B /* PostProcessing.cpp in Sources */,
 				03A0F54F1947A0850071CF4B /* b2TOISolver.cpp in Sources */,
 				03A0F5501947A0850071CF4B /* MazeSettings.cpp in Sources */,
+				E79BF6911949207000A0A83E /* terrainManager.cpp in Sources */,
 				03A0F5511947A0850071CF4B /* b2PulleyJoint.cpp in Sources */,
 				03A0F5521947A0850071CF4B /* CloudsRGBDPointLayer.cpp in Sources */,
 				03A0F5531947A0850071CF4B /* ofxUIFPSSlider.cpp in Sources */,
@@ -10495,6 +10597,7 @@
 				03A0F5751947A0850071CF4B /* CloudsVisualSystemWorld.cpp in Sources */,
 				03A0F5761947A0850071CF4B /* ofxUIToggleMatrix.cpp in Sources */,
 				03A0F5771947A0850071CF4B /* MonoToStereoPanner.cpp in Sources */,
+				E79BF68D1949206F00A0A83E /* smoother.cpp in Sources */,
 				03A0F5781947A0850071CF4B /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
 				03A0F5791947A0850071CF4B /* Camera.cpp in Sources */,
 				03A0F57A1947A0850071CF4B /* CloudsVisualSystem2DVideo.cpp in Sources */,
@@ -10569,6 +10672,7 @@
 				03A0F5BF1947A0850071CF4B /* ofxField2D.cpp in Sources */,
 				03A0F5C01947A0850071CF4B /* RampedValue.cpp in Sources */,
 				03A0F5C11947A0850071CF4B /* Gravity.cpp in Sources */,
+				E79BF6891949206F00A0A83E /* scrollingGraph.cpp in Sources */,
 				03A0F5C21947A0850071CF4B /* CloudsVisualSystemWebHistory.cpp in Sources */,
 				03A0F5C31947A0850071CF4B /* Panel.cpp in Sources */,
 				03A0F5C41947A0850071CF4B /* VoxelMesh.cpp in Sources */,
@@ -10587,6 +10691,7 @@
 				03A0F5D11947A0850071CF4B /* b2Fixture.cpp in Sources */,
 				03A0F5D21947A0850071CF4B /* CompressorLimiter.cpp in Sources */,
 				03A0F5D31947A0850071CF4B /* v_compute.cpp in Sources */,
+				E79BF6751949206F00A0A83E /* cameraManager.cpp in Sources */,
 				03A0F5D41947A0850071CF4B /* Boid.cpp in Sources */,
 				03A0F5D51947A0850071CF4B /* ofxOculusRift.cpp in Sources */,
 				03A0F5D61947A0850071CF4B /* CloudsRGBDVideoPlayer.cpp in Sources */,
@@ -10613,6 +10718,7 @@
 				03A0F5EB1947A0850071CF4B /* CloudsVisualSystemGesturePaint.cpp in Sources */,
 				03A0F5EC1947A0850071CF4B /* GestureRenderer.cpp in Sources */,
 				03A0F5ED1947A0850071CF4B /* RunningBackground.cpp in Sources */,
+				E79BF6851949206F00A0A83E /* postProcManager.cpp in Sources */,
 				03A0F5EE1947A0850071CF4B /* ofxTLSwitches.cpp in Sources */,
 				03A0F5EF1947A0850071CF4B /* testApp.cpp in Sources */,
 				03A0F5F01947A0850071CF4B /* Maze.cpp in Sources */,
@@ -10752,6 +10858,7 @@
 				03A0F6761947A0850071CF4B /* ofxUILabel.cpp in Sources */,
 				03A0F6771947A0850071CF4B /* PanelCode.cpp in Sources */,
 				03A0F6781947A0850071CF4B /* ofxSystemTextbox.mm in Sources */,
+				E79BF6711949206F00A0A83E /* audioAnalytics.cpp in Sources */,
 				03A0F6791947A0850071CF4B /* cell.cpp in Sources */,
 				03A0F67A1947A0850071CF4B /* CloudsVisualSystemReplicator.cpp in Sources */,
 				03A0F67B1947A0850071CF4B /* b2PrismaticJoint.cpp in Sources */,
@@ -10821,6 +10928,7 @@
 				03A0F6BB1947A0850071CF4B /* RGBShiftPass.cpp in Sources */,
 				03A0F6BC1947A0850071CF4B /* ContourFinder.cpp in Sources */,
 				03A0F6BD1947A0850071CF4B /* ofxTLLFO.cpp in Sources */,
+				E79BF6791949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp in Sources */,
 				03A0F6BE1947A0850071CF4B /* CloudsVisualSystemMetaballs.cpp in Sources */,
 				03A0F6BF1947A0850071CF4B /* CloudsVisualSystemFlying.cpp in Sources */,
 				03A0F6C01947A0850071CF4B /* b2Contact.cpp in Sources */,
@@ -10911,6 +11019,7 @@
 				E7D82ADD18BF099000C1EB93 /* SawtoothWave.cpp in Sources */,
 				E7D8223418BEBCEF00C1EB93 /* ofxFTGLSimpleLayout.cpp in Sources */,
 				E73DA6EB189F1CEA006C9E4E /* b2DynamicTree.cpp in Sources */,
+				E79BF67B1949206F00A0A83E /* colorSchemeDesigner.cpp in Sources */,
 				E73DA73E189F1CEA006C9E4E /* ofxCameraSaveLoad.cpp in Sources */,
 				E73DABFC189F3645006C9E4E /* Tracker.cpp in Sources */,
 				E7D8261D18BEBD7000C1EB93 /* HistoryNode.cpp in Sources */,
@@ -10954,6 +11063,7 @@
 				E73DA6BC189F1CEA006C9E4E /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */,
 				E755D5EF1943F2AF00AA81C1 /* ofxUIBaseDraws.cpp in Sources */,
 				E7D8257B18BEBD7000C1EB93 /* CloudsVisualSystemCirclePacking.cpp in Sources */,
+				E79BF67F1949206F00A0A83E /* lightManager.cpp in Sources */,
 				E7D8262F18BEBD7000C1EB93 /* CloudsVisualSystem.cpp in Sources */,
 				E73DA6B8189F1CEA006C9E4E /* Path.cpp in Sources */,
 				E7D82AB718BF099000C1EB93 /* ControlComparison.cpp in Sources */,
@@ -11051,6 +11161,7 @@
 				E73DA8DE189F3622006C9E4E /* PostProcessing.cpp in Sources */,
 				E73DA6FE189F1CEA006C9E4E /* b2TOISolver.cpp in Sources */,
 				E755D6F01943F56F00AA81C1 /* MazeSettings.cpp in Sources */,
+				E79BF68F1949207000A0A83E /* terrainManager.cpp in Sources */,
 				E73DA706189F1CEA006C9E4E /* b2PulleyJoint.cpp in Sources */,
 				E7D8254018BEBD7000C1EB93 /* CloudsRGBDPointLayer.cpp in Sources */,
 				E755D5F81943F2AF00AA81C1 /* ofxUIFPSSlider.cpp in Sources */,
@@ -11090,6 +11201,7 @@
 				E7D8261E18BEBD7000C1EB93 /* CloudsVisualSystemWorld.cpp in Sources */,
 				E755D6141943F2AF00AA81C1 /* ofxUIToggleMatrix.cpp in Sources */,
 				E7D82AD618BF099000C1EB93 /* MonoToStereoPanner.cpp in Sources */,
+				E79BF68B1949206F00A0A83E /* smoother.cpp in Sources */,
 				E73DA6BD189F1CEA006C9E4E /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
 				E73DA6B0189F1CEA006C9E4E /* Camera.cpp in Sources */,
 				E7D8256718BEBD7000C1EB93 /* CloudsVisualSystem2DVideo.cpp in Sources */,
@@ -11164,6 +11276,7 @@
 				E7D828FC18BEBE6D00C1EB93 /* ofxField2D.cpp in Sources */,
 				E7D82AD818BF099000C1EB93 /* RampedValue.cpp in Sources */,
 				E7D8254618BEBD7000C1EB93 /* Gravity.cpp in Sources */,
+				E79BF6871949206F00A0A83E /* scrollingGraph.cpp in Sources */,
 				E7D8261C18BEBD7000C1EB93 /* CloudsVisualSystemWebHistory.cpp in Sources */,
 				E7D8257F18BEBD7000C1EB93 /* Panel.cpp in Sources */,
 				E755D38F1943F19200AA81C1 /* VoxelMesh.cpp in Sources */,
@@ -11182,6 +11295,7 @@
 				E73DA6F5189F1CEA006C9E4E /* b2Fixture.cpp in Sources */,
 				E7D82AB318BF099000C1EB93 /* CompressorLimiter.cpp in Sources */,
 				E7D8261718BEBD7000C1EB93 /* v_compute.cpp in Sources */,
+				E79BF6731949206F00A0A83E /* cameraManager.cpp in Sources */,
 				E7D8259618BEBD7000C1EB93 /* Boid.cpp in Sources */,
 				E7D829EF18BEBEF100C1EB93 /* ofxOculusRift.cpp in Sources */,
 				E7D8262E18BEBD7000C1EB93 /* CloudsRGBDVideoPlayer.cpp in Sources */,
@@ -11208,6 +11322,7 @@
 				E7D8259D18BEBD7000C1EB93 /* CloudsVisualSystemGesturePaint.cpp in Sources */,
 				E7D8262A18BEBD7000C1EB93 /* GestureRenderer.cpp in Sources */,
 				E73DABFB189F3645006C9E4E /* RunningBackground.cpp in Sources */,
+				E79BF6831949206F00A0A83E /* postProcManager.cpp in Sources */,
 				E7D827FF18BEBDCF00C1EB93 /* ofxTLSwitches.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				E755D6ED1943F56F00AA81C1 /* Maze.cpp in Sources */,
@@ -11347,6 +11462,7 @@
 				E755D5FE1943F2AF00AA81C1 /* ofxUILabel.cpp in Sources */,
 				E7D8258018BEBD7000C1EB93 /* PanelCode.cpp in Sources */,
 				E7D8263018BEBD7000C1EB93 /* ofxSystemTextbox.mm in Sources */,
+				E79BF66F1949206F00A0A83E /* audioAnalytics.cpp in Sources */,
 				E7D8261018BEBD7000C1EB93 /* cell.cpp in Sources */,
 				E7D825DF18BEBD7000C1EB93 /* CloudsVisualSystemReplicator.cpp in Sources */,
 				E73DA705189F1CEA006C9E4E /* b2PrismaticJoint.cpp in Sources */,
@@ -11416,6 +11532,7 @@
 				E73DA8E0189F3622006C9E4E /* RGBShiftPass.cpp in Sources */,
 				E73DABF6189F3645006C9E4E /* ContourFinder.cpp in Sources */,
 				E7D827FC18BEBDCF00C1EB93 /* ofxTLLFO.cpp in Sources */,
+				E79BF6771949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp in Sources */,
 				E7D825B718BEBD7000C1EB93 /* CloudsVisualSystemMetaballs.cpp in Sources */,
 				E7D8259B18BEBD7000C1EB93 /* CloudsVisualSystemFlying.cpp in Sources */,
 				E73DA6FA189F1CEA006C9E4E /* b2Contact.cpp in Sources */,
@@ -11527,6 +11644,7 @@
 				E7DDC0EC194437EC00E61D75 /* BleachBypassPass.cpp in Sources */,
 				E7DDC0ED194437EC00E61D75 /* ofxSQLiteFieldValues.cpp in Sources */,
 				E7DDC0EE194437EC00E61D75 /* ofxAssimpMeshHelper.cpp in Sources */,
+				E79BF68C1949206F00A0A83E /* smoother.cpp in Sources */,
 				E7DDC0EF194437EC00E61D75 /* CloudsVisualSystemEmpty.cpp in Sources */,
 				E7DDC0F0194437EC00E61D75 /* ParticleConnectorBin.cpp in Sources */,
 				E7DDC0F1194437EC00E61D75 /* v_base.cpp in Sources */,
@@ -11578,6 +11696,7 @@
 				E7DDC11E194437EC00E61D75 /* ofxTLEmptyKeyframes.cpp in Sources */,
 				E7DDC11F194437EC00E61D75 /* wSatellite.cpp in Sources */,
 				E7DDC120194437EC00E61D75 /* ControlPrinter.cpp in Sources */,
+				E79BF6781949206F00A0A83E /* CloudsVisualSystemCandyMountains.cpp in Sources */,
 				E7DDC121194437EC00E61D75 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				E7DDC122194437EC00E61D75 /* TableLookupOsc.cpp in Sources */,
 				E7DDC123194437EC00E61D75 /* CloudsSoundFuncs.cpp in Sources */,
@@ -11608,6 +11727,7 @@
 				E7DDC13C194437EC00E61D75 /* ObjectFinder.cpp in Sources */,
 				E7DDC13D194437EC00E61D75 /* CloudsVisualSystemCircuit.cpp in Sources */,
 				E7DDC13E194437EC00E61D75 /* ofxUIScrollableCanvas.cpp in Sources */,
+				E79BF6901949207000A0A83E /* terrainManager.cpp in Sources */,
 				E7DDC13F194437EC00E61D75 /* ofxBox2dRect.cpp in Sources */,
 				E7DDC140194437EC00E61D75 /* FakeSSSPass.cpp in Sources */,
 				E7DDC141194437EC00E61D75 /* Rules.cpp in Sources */,
@@ -11646,6 +11766,7 @@
 				E7DDC162194437EC00E61D75 /* ofxUIMovingGraph.cpp in Sources */,
 				E7DDC163194437EC00E61D75 /* PostProcessing.cpp in Sources */,
 				E7DDC164194437EC00E61D75 /* b2TOISolver.cpp in Sources */,
+				E79BF6701949206F00A0A83E /* audioAnalytics.cpp in Sources */,
 				E7DDC165194437EC00E61D75 /* MazeSettings.cpp in Sources */,
 				E7DDC166194437EC00E61D75 /* b2PulleyJoint.cpp in Sources */,
 				E7DDC167194437EC00E61D75 /* CloudsRGBDPointLayer.cpp in Sources */,
@@ -11834,6 +11955,8 @@
 				E7DDC21D194437EC00E61D75 /* CloudsVisualSystemTwitter.cpp in Sources */,
 				E7DDC21E194437EC00E61D75 /* CloudsVisualSystemBalloons.cpp in Sources */,
 				E7DDC21F194437EC00E61D75 /* CloudsVisualSystemGPUParticles.cpp in Sources */,
+				E79BF6881949206F00A0A83E /* scrollingGraph.cpp in Sources */,
+				E79BF6741949206F00A0A83E /* cameraManager.cpp in Sources */,
 				E7DDC220194437EC00E61D75 /* LimbDarkeningPass.cpp in Sources */,
 				E7DDC221194437EC00E61D75 /* (null) in Sources */,
 				E7DDC222194437EC00E61D75 /* b2Distance.cpp in Sources */,
@@ -11923,6 +12046,7 @@
 				E7DDC276194437EC00E61D75 /* PointAction.cpp in Sources */,
 				E7DDC277194437EC00E61D75 /* linePoemApp.cpp in Sources */,
 				E7DDC278194437EC00E61D75 /* ofxUIMinimalSlider.cpp in Sources */,
+				E79BF6841949206F00A0A83E /* postProcManager.cpp in Sources */,
 				E7DDC279194437EC00E61D75 /* ParamManager2.cpp in Sources */,
 				E7DDC27A194437EC00E61D75 /* ofxUIMultiImageToggle.cpp in Sources */,
 				E7DDC27B194437EC00E61D75 /* CubeAction.cpp in Sources */,
@@ -11993,6 +12117,7 @@
 				E7DDC2BC194437EC00E61D75 /* ofxTLTicker.cpp in Sources */,
 				E7DDC2BD194437EC00E61D75 /* b2CircleContact.cpp in Sources */,
 				E7DDC2BE194437EC00E61D75 /* Utilities.cpp in Sources */,
+				E79BF6801949206F00A0A83E /* lightManager.cpp in Sources */,
 				E7DDC2BF194437EC00E61D75 /* LinkedListItem.cpp in Sources */,
 				E7DDC2C0194437EC00E61D75 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7DDC2C1194437EC00E61D75 /* ofxEasingBounce.cpp in Sources */,
@@ -12029,6 +12154,7 @@
 				E7DDC2E0194437EC00E61D75 /* CloudsVisualSystemAutomata.cpp in Sources */,
 				E7DDC2E1194437EC00E61D75 /* OldPathway.cpp in Sources */,
 				E7DDC2E2194437EC00E61D75 /* ContrastPass.cpp in Sources */,
+				E79BF67C1949206F00A0A83E /* colorSchemeDesigner.cpp in Sources */,
 				E7DDC2E3194437EC00E61D75 /* sqlite3.c in Sources */,
 				E7DDC2E4194437EC00E61D75 /* ofxTLCameraTrack.cpp in Sources */,
 				E7DDC2E5194437EC00E61D75 /* Color.cpp in Sources */,
