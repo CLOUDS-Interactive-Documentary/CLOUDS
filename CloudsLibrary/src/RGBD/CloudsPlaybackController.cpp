@@ -1476,7 +1476,7 @@ void CloudsPlaybackController::showInterlude(){
     vector<string> topics;
     CloudsVisualSystemPreset interludePreset;
 	#ifdef CLOUDS_SCREENING
-	if(rgbdVisualSystem->hasQuestionsRemaining()){
+	if(rgbdVisualSystem->hasQuestionsRemaining() && showedClusterMapNavigation){
 		forceCredits = true;
 	}
 	#endif
