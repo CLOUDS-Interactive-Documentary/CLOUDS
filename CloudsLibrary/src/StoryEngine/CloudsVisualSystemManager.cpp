@@ -25,6 +25,7 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemAutomata.h"
 #include "CloudsVisualSystemBallDroppings.h"
 #include "CloudsVisualSystemBalloons.h"
+#include "CloudsVisualSystemCandyMountains.h"
 #include "CloudsVisualSystemChromogram.h"
 #include "CloudsVisualSystemCirclePacking.h"
 #include "CloudsVisualSystemCircuit.h"
@@ -120,6 +121,7 @@ struct Mapping {
 	{ "Automata",				&fCreate<CloudsVisualSystemAutomata> },
 	{ "BallDroppings",			&fCreate<CloudsVisualSystemBallDroppings> },
 	{ "Balloons",				&fCreate<CloudsVisualSystemBalloons> },
+	{ "CandyMountains",			&fCreate<CloudsVisualSystemCandyMountains> },
 	{ "Chromogram",				&fCreate<CloudsVisualSystemChromogram> },
 	{ "CirclePacking",			&fCreate<CloudsVisualSystemCirclePacking> },
 	{ "Circuit",				&fCreate<CloudsVisualSystemCircuit> },
