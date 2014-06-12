@@ -9650,7 +9650,7 @@
     <interlude>0</interlude>
 </system>
 <system name="BallDroppings_gal1">
-    <keywords>games|fun|videogames|play</keywords>
+    <keywords>games|fun|videogames|play|synaesthesia</keywords>
     <links></links>
     <suppressions>
         <clip>Casey - Indie Game movement</clip>
@@ -9716,10 +9716,19 @@
         <clip>Maeda - thinking about interfaces</clip>
         <clip>Paola - Moma games</clip>
         <clip>Ramsey - videogame development</clip>
+        <clip>Memo_master - PosthumanFun</clip>
+        <clip>Memo_master - 10yearsOld 2</clip>
+        <clip>Memo_master - MSAFluid 1</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - more playfulness</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+        <clip>Kyle_CH - virtual and identity</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -9728,10 +9737,83 @@
 <system name="BallDroppings_jm">
     <keywords></keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Casey - Indie Game movement</clip>
+        <clip>Casey - It&apos;s not cinema not a game</clip>
+        <clip>Karolina - Everything</clip>
+        <clip>Karolina - system metaphor</clip>
+        <clip>Kevin - No consequences 1</clip>
+        <clip>Kevin - algo chess 1</clip>
+        <clip>Kevin - algo chess 2</clip>
+        <clip>Kevin - game designers</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Paola - Portal</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - gambling 1</clip>
+        <clip>Shiffman - gambling 2</clip>
+        <clip>Shantell - big kid</clip>
+        <clip>Binx - Programming is a superpower</clip>
+        <clip>Aaron - experience design</clip>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Aaron - the best games are great stories</clip>
+        <clip>Aaron - webGL</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Kevin - Acknolwedgement of artifice</clip>
+        <clip>Kevin - Area code 2</clip>
+        <clip>Kevin - Big games 1</clip>
+        <clip>Kevin - immersive games</clip>
+        <clip>Kevin - non-mimetic reality</clip>
+        <clip>Kyle_CH - Avatars</clip>
+        <clip>Kyle_CH - Cory Arcangel</clip>
+        <clip>Kyle_CH - MMORPGs</clip>
+        <clip>Kyle_CH - videogame world</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+        <clip>Regine - virtual</clip>
+        <clip>Zach - minecraft livecode</clip>
+        <clip>Casey - radically different from a videogame</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - what&apos;s an instrument?</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Kevin - area code 1</clip>
+        <clip>Lauren - Lifelong project</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Patricio - Seduced by Play 1</clip>
+        <clip>Patricio - Seduced by Play 3</clip>
+        <clip>Patricio - Theory of Play 1</clip>
+        <clip>Shantell - Kids</clip>
+        <clip>Shiffman - inexactitude</clip>
+        <clip>Theo - Kids interacting</clip>
+        <clip>Theo - leaving a mark</clip>
+        <clip>Vera - Playing with a system</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Casey - Something new, totally engrossing</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+        <clip>Paola - Moma games</clip>
+        <clip>Ramsey - videogame development</clip>
+        <clip>Memo_master - PosthumanFun</clip>
+        <clip>Memo_master - 10yearsOld 2</clip>
+        <clip>Memo_master - MSAFluid 1</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - more playfulness</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+        <clip>Kyle_CH - virtual and identity</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -30275,8 +30357,8 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Paradox_Sphere1">
-    <keywords>generative art|abstraction</keywords>
+<system name="Paradox_GridZoom_2">
+    <keywords>generative art|abstraction|formalism</keywords>
     <links></links>
     <suppressions>
         <clip>Bruce - Gardening 1</clip>
@@ -30286,6 +30368,36 @@
         <clip>Theo - favorite projects</clip>
         <clip>Marcus - call to action</clip>
         <clip>Nervous_Jesse - organic process</clip>
+        <clip>Memo_master - FictionalUniverse 2</clip>
+        <clip>Memo_master - InspiredByNature</clip>
+        <clip>Elliot_UK - points in space</clip>
+        <clip>Casey - New modes of expression</clip>
+        <clip>Casey - ideas of art history</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Paradox_Sphere1">
+    <keywords>generative art|abstraction|formalism</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Bruce - Gardening 1</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>LIA - TimeStamps2</clip>
+        <clip>Theo - favorite projects</clip>
+        <clip>Marcus - call to action</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Memo_master - FictionalUniverse 2</clip>
+        <clip>Memo_master - InspiredByNature</clip>
+        <clip>Elliot_UK - points in space</clip>
+        <clip>Casey - New modes of expression</clip>
+        <clip>Casey - ideas of art history</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
