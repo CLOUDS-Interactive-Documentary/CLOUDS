@@ -1494,7 +1494,23 @@ void CloudsStoryEngine::populateScreeningQuestions(){
 	
 	linkName = "Intro - VirtualReality";
 	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    //
+    linkName = "Higa - sound and video";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 	
+    linkName = "Marius - Continuous process of exploration";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Casey - emergence";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Ramsey - a hundred million";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+
+    linkName = "JTNimoy - Cortex";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
 }
 
 
