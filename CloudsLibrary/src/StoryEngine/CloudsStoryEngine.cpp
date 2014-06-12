@@ -24,7 +24,8 @@ CloudsStoryEngine::CloudsStoryEngine(){
     customAct = NULL;
 	
     showOnlyStartQuestions = false;
-    
+    forceCredits = false;
+	
     isSetup = false;
     printDecisions = true;
     combinedClipsOnly = false;
@@ -296,7 +297,7 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     }
     
 #ifdef CLOUDS_SCREENING
-	if(run.questionsAsked >= screeningQuestionClips.size()-1){
+	if(run.questionsAsked >= screeningQuestionClips.size()-1 || forceCredits){
         preset = visualSystems->getPresetForSystem("Balloons", "CREDITS_FINAL");
         return true;
 	}
@@ -1470,33 +1471,63 @@ CloudsStoryEvents& CloudsStoryEngine::getEvents(){
 }
 
 void CloudsStoryEngine::populateScreeningQuestions(){
+	
 	string linkName;
-	linkName = "Casey - Software is what i love the most";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	linkName = "Casey - Software is what i love the most";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Kyle_CH - coding, magic";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Intro - Collaboration";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Julia - make us more compassionate";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Bruce - Textual technologies";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//
+//	linkName = "Jen - data crystal ball";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Julia - CLOUDS";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Intro - VirtualReality";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Higa - sound and video";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 	
-	linkName = "Kyle_CH - coding, magic";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Intro - Collaboration";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Julia - make us more compassionate";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Bruce - Textual technologies";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    linkName = "Marius - Continuous process of exploration";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Casey - emergence";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Ramsey - a hundred million";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 
-	linkName = "Jen - data crystal ball";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Julia - CLOUDS";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Intro - VirtualReality";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
+    linkName = "JTNimoy - Cortex";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Kyle_MC - new aesthetic 1";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+
+    linkName = "Jer - lives being documented through data";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+
+    linkName = "Julia - Who owns the internet?";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Shiffman - Sharing";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Karsten - infinite conversation";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+
 }
-
-
 
 
