@@ -12872,7 +12872,7 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
-					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxAudioFeatures/libs/aubio/lib/osx,
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -12991,7 +12991,7 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
-					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxAudioFeatures/libs/aubio/lib/osx,
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -13109,7 +13109,7 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
-					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxAudioFeatures/libs/aubio/lib/osx,
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -13227,7 +13227,7 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
-					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxAudioFeatures/libs/aubio/lib/osx,
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -13429,7 +13429,7 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
-					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxAudioFeatures/libs/aubio/lib/osx,
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -13546,7 +13546,7 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
-					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxAudioFeatures/libs/aubio/lib/osx,
+					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
