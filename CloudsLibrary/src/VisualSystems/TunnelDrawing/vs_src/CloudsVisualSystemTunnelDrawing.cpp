@@ -261,8 +261,8 @@ void CloudsVisualSystemTunnelDrawing::selfInteractionMoved(CloudsInteractionEven
 }
 
 void CloudsVisualSystemTunnelDrawing::addInteractionPoint(CloudsInteractionEventArgs& args){
-	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(GetCloudsInputX(),
-													   GetCloudsInputY(),
+	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(args.position.x,
+													   args.position.y,
 													   screenSpaceProjectDistance) );
 	currentTrails[args.playerId].points.push_back(mousePoint);
 	
