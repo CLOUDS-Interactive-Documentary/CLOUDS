@@ -1425,7 +1425,7 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 void CloudsPlaybackController::showClusterMap(){
     if(showingClusterMapNavigation){
         #ifdef CLOUDS_SCREENING
-		rgbdVisualSystem->getQuestionQueue().clear();
+		rgbdVisualSystem->clearQuestionQueue();
 		storyEngine.populateScreeningQuestionsPart2();
 		clusterMap->setQuestions(storyEngine.screeningQuestionClips);
 		showedClusterMapNavigation = true;

@@ -197,6 +197,9 @@ void CloudsVisualSystemMazeGenerator::selfUpdate()
 void CloudsVisualSystemMazeGenerator::selfDraw()
 {
 	
+	ofPushStyle();
+	glDisable(GL_CULL_FACE);
+	
 	ofEnableDepthTest();
     // draw fog
     ofFloatColor fc = settings.getFogColor();
@@ -224,6 +227,8 @@ void CloudsVisualSystemMazeGenerator::selfDraw()
     
     // disable fog
     glDisable(GL_FOG);
+	
+	ofPopStyle();
 }
 
 // draw any debug stuff here
