@@ -1,7 +1,7 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Histogram</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -116,12 +116,12 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>MAIN GAIN</Name>
     <Value>0.241455168</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>LEVEL ADJUST</Name>
     <Value>6.551723957</Value>
 </Widget>
@@ -132,52 +132,52 @@
     <LowValue>209.778320312</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>SAT BASE</Name>
     <Value>185.911331177</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>SAT RANGE</Name>
     <Value>30.147783279</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>BRI BASE</Name>
     <Value>225.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>BRI RANGE</Name>
     <Value>25.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>ALPHA</Name>
     <Value>225.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>NUM ROWS</Name>
     <Value>32</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>COLS PER ROW</Name>
     <Value>100</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>ROW SPACER</Name>
     <Value>117.655174255</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>COL SPACER</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>COL WIDTH</Name>
     <Value>33.497535706</Value>
 </Widget>
@@ -188,12 +188,12 @@
     <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>LINE WIDTH</Name>
-    <Value>1.000000000</Value>
+    <Value>5.366994858</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>FOG DENSITY</Name>
     <Value>0.106403939</Value>
 </Widget>
