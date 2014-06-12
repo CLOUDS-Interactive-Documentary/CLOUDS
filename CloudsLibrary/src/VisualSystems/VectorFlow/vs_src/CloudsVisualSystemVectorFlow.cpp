@@ -471,9 +471,7 @@ Generator CloudsVisualSystemVectorFlow::buildSynth()
     
     SampleTable sample = loadAudioFile(strAbsPath);
     
-//    string strAbsPath2 = sdir.getAbsolutePath() + "/slowgrains_short.aif"; //slowgrains.aif
     string strAbsPath2 = ofToDataPath(strDir + "/" +"slowgrains_short.aif", true);
-    
     SampleTable sample2 = loadAudioFile(strAbsPath2);
     
     lpfCutoff = synth.addParameter("cutoff_freq", 50).displayName("Cutoff Freq").min(50).max(8000);

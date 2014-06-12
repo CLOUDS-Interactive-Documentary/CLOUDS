@@ -19,7 +19,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	currentClip = NULL;
 	numClipsPlayed = 0;
 	
-	shouldLoadAct = shouldPlayAct = shouldClearAct = shouldPlayClusterMap = false;
+	shouldLoadAct = shouldPlayAct = shouldClearAct = shouldPlayClusterMap = showingClusterMapNavigation = false;
 	selectedQuestion = NULL;
 	selectedQuestionClip = NULL;
 
@@ -47,6 +47,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	showingClusterMap = false;
     showingInterlude = false;
     exitedInterlude = false;
+
 	bQuestionAsked = false;
 	interludeExitBarWidth = 0.0;
 	interludeHoveringContinue = false;
@@ -61,9 +62,23 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	interludeArcBaseAlpha = 0.0;
 	interludeForceOnTimer = 0.0;
 
+	interludeStartTime = 0;
+    numActsCreated = 0;
+    crossfadeValue = 0;
+    loadingAct = false;
+	shouldLoadAct = false;
+	shouldPlayClusterMap = false;
+	
+	loading = false;
+	loadPercent = 0.0;
+	
+    returnToIntro = false;
+    cachedTransition = false;
+    showedClusterMapNavigation = false;
+
 	resetInterludeVariables();
 	
-    interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-BOOK.ttf", 15);
+    interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-MEDIUM.ttf", 15);
 
 }
 
@@ -107,7 +122,8 @@ void CloudsPlaybackController::clearAct(){
 	
     delete currentAct;
     currentAct = NULL;
-	
+	clusterMap->setAct(NULL);
+    
 	//hack to clear frame buffer
 	CloudsVisualSystem::getStaticRenderTarget().begin();
 	ofClear(0,0,0);
@@ -168,18 +184,23 @@ void CloudsPlaybackController::setup(){
         
 	}
 		
+	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
 	
+	cout << "*****LOAD STEP*** STARTING RGBD" << endl;
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
 	rgbdVisualSystem->setDrawToScreen(false);
 	
+	cout << "*****LOAD STEP*** STARTING CLUSTER" << endl;
 	clusterMap = new CloudsVisualSystemClusterMap();
 	clusterMap->setup();
 	clusterMap->setDrawToScreen(false);
 	
+
+	cout << "*****LOAD STEP*** STARTING HUD" << endl;
 	hud.setup();
 
 #ifdef OCULUS_RIFT
@@ -191,8 +212,11 @@ void CloudsPlaybackController::setup(){
     introSequence->setupHUDGui();
 #endif
 	
+	cout << "*****LOAD STEP*** SHOWING INTRO" << endl;
+
 	showIntro();
 
+	cout << "*****LOAD STEP*** STARTING THREAD" << endl;
 	startThread();
 }
 
@@ -201,6 +225,8 @@ void CloudsPlaybackController::threadedFunction(){
 	
 	loadPercent = 0.0;
 	
+	cout << "*****LOAD STEP PARSER" << endl;
+
 	///START THREADED
 	parser.loadFromFiles();
 	if(!isThreadRunning()) return;
@@ -441,11 +467,10 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
     if(args.key == OF_KEY_RETURN){
         if(showingInterlude){
             interludeSystem->getTimeline()->stop();
-            forceInterludeReset = true;
         }
-//        else if(showingClusterMap){
-//            clusterMap->getTimeline()->stop();
-//        }
+        else if(showingClusterMap){
+            clusterMap->getTimeline()->stop();
+        }
         else if(!showingIntro){
             returnToIntro = true;
             CloudsVisualSystem::getRGBDVideoPlayer().stop();
@@ -581,12 +606,16 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		shouldPlayClusterMap = false;
 		transitionController.transitionToClusterMap(1.0);
 	}
-
 	else if(showingClusterMap){
-		if(clusterMap->finishedTraversing){
-			transitionController.transitionFromClusterMap(1.0);
+        if( (showingClusterMapNavigation && clusterMap->isQuestionSelected() ) ||
+            (!showingClusterMapNavigation && clusterMap->finishedTraversing) )
+        {
+            if(showingClusterMapNavigation){
+                run.questionsAsked++;
+            }
             showingClusterMap = false;
-		}
+            transitionController.transitionFromClusterMap(1.0);
+        }
 	}
     
     ////////////////////
@@ -596,8 +625,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		bool stopInterlude = updateInterludeInterface();
 		
         if(stopInterlude){
-            
-            forceInterludeReset = false;
+
             sound.stopMusic();
             
             if(interludeContinueSelected){
@@ -617,7 +645,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(!transitionController.isTransitioning() && !bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
-            
+            run.questionsAsked++;
             transitionController.transitionWithQuestion(2.0, 0.1);
 			
         }
@@ -791,6 +819,8 @@ void CloudsPlaybackController::updateTransition(){
                     selectedQuestionClip = selectedQuestion->clip;
                     
                     showingVisualSystem = false;
+					clearRenderTarget();
+
                     shouldPlayClusterMap = true;
 					
                     introSequence->stopSystem();
@@ -805,7 +835,14 @@ void CloudsPlaybackController::updateTransition(){
 
 					showingVisualSystem = false;
 					clusterMap->stopSystem();
+					clearRenderTarget();
 					
+                    if(showingClusterMapNavigation){
+                        showingClusterMapNavigation = false;
+                        rgbdVisualSystem->removeQuestionFromQueue(clusterMap->getSelectedQuestion()->clip);
+                        storyEngine.buildAct(run, clusterMap->getSelectedQuestion()->clip, clusterMap->getSelectedQuestion()->topic, true);
+                    }
+                    
 					break;
 				}
 				
@@ -817,9 +854,21 @@ void CloudsPlaybackController::updateTransition(){
                     cleanupInterlude();
                     
                     //build the next clip based on the history
+                    #ifdef CLOUDS_SCREENING
+                    if(run.questionsAsked > 2 && !showedClusterMapNavigation){
+						
+						createInterludeSoundQueue();
+                        
+						shouldPlayClusterMap = true;
+                        showingClusterMapNavigation = true;
+                    }
+                    else{
+                        storyEngine.buildAct(run);
+                    }
+                    #else
 					storyEngine.buildAct(run);
-					
-                    cout<<"IDLE POST TRANSITION INTERLUDE OUT"<<endl;
+                    #endif
+                    cout << "IDLE POST TRANSITION INTERLUDE OUT" << endl;
                 }
 				else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
 
@@ -837,10 +886,11 @@ void CloudsPlaybackController::updateTransition(){
                         CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = 1.0;
                         
                         crossfadeValue = 0;
-						
-                        run.questionsAsked++;
-                        storyEngine.buildAct(run, selectedQuestionClip, topic);
                         
+                        shouldPlayClusterMap = run.questionsAsked % 3 == 2;
+                        
+                        storyEngine.buildAct(run, selectedQuestionClip, topic);
+
                         bQuestionAsked = false;
                     }
 				}
@@ -862,15 +912,9 @@ void CloudsPlaybackController::updateTransition(){
         }
 
 		if(transitionController.fadedOut()){
-			CloudsVisualSystem::getStaticRenderTarget().begin();
-			ofClear(0,0,0);
-			CloudsVisualSystem::getStaticRenderTarget().end();
+			clearRenderTarget();
 		}
 	}
-    
-//    if(abs(crossfadeValue - transitionController.getFadeValue()) > .5){
-//        ofLogError("TRANSITION JUMP");
-//    }
     
     crossfadeValue = transitionController.getFadeValue();
 
@@ -884,8 +928,14 @@ void CloudsPlaybackController::updateTransition(){
     
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
-	}
-    
+	}   
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::clearRenderTarget(){
+	CloudsVisualSystem::getStaticRenderTarget().begin();
+	ofClear(0,0,0);
+	CloudsVisualSystem::getStaticRenderTarget().end();
 }
 
 //--------------------------------------------------------------------
@@ -895,11 +945,6 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 //		interludeSystem = currentVisualSystem;
 //	}
 	//hack
-	
-	if(forceInterludeReset){
-		forceInterludeReset = false;
-		return true;
-	}
 	
 #ifdef OCULUS_RIFT
 
@@ -921,6 +966,11 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	return false;
 #else
 	
+    if( currentVisualSystem->getSystemName() == "Balloons" ){
+        hud.clearQuestion();
+        return false;
+    }
+    
 	interludeTimedOut = ofGetElapsedTimef() - interludeStartTime > interludeForceOnTimer;
 	
 	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth)
@@ -971,12 +1021,11 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 //		interludeBarHoverPercentComplete = 0;
 	}
 	
-	
 	if( interludeSystem->getSystemName() != "Balloons" && ofGetElapsedTimef() - interludeStartTime > 60){
 		interludeResetSelected = true;
 		return true;
 	}
-	
+    
 	return false;
 #endif
 	
@@ -991,26 +1040,29 @@ void CloudsPlaybackController::updateCompletedInterlude(){
 void CloudsPlaybackController::drawInterludeInterface(){
     
 
+    if(currentVisualSystem->getSystemName() == "Balloons"){
+        return;
+    }
+    
 	ofRectangle hoverRect;
 	bool hovering = false;
 	string promptType;
 	int tracking;
 	if(interludeSystem != NULL){
-//	if(interludeHoveringContinue){
+
 		hoverRect = ofRectangle(interludeSystem->getCanvasWidth(), 0,
 								-interludeExitBarWidth, interludeSystem->getCanvasHeight());
 		hovering = interludeHoveringContinue;
 		promptType = "CONTINUE";
 		tracking = 6;
 		drawInterludePanel(hoverRect, promptType, hovering, tracking);
-//	}
-//	else if(interludeHoveringReset){
+        
 		hoverRect = ofRectangle(0, 0, interludeExitBarWidth, interludeSystem->getCanvasHeight());
 		hovering = interludeHoveringReset;
 		promptType = "RESET";
 		tracking = 11;
 		drawInterludePanel(hoverRect, promptType, hovering, tracking);
-//	}
+
 	}
 }
 
@@ -1069,13 +1121,16 @@ void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string 
 										  interludeSystem->getCanvasHeight()*.5 + typeHeight + 10);
 
 		if(hovering){
-			float arcPercent = ofxTween::map(interludeBarHoverPercentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+			float arcPercent = ofxTween::map(interludeBarHoverPercentComplete,
+											 0.0, 1.0, 0.0, 1.0,
+											 true, ofxEasingQuad(), ofxTween::easeOut);
+			
 			ofPath arc;
 			arc.setFilled(false);
 			arc.setStrokeWidth(4);
 			arc.setStrokeColor(arcColor);
 			float expandedArcRadius = interludeArcRadius + powf(1.0-crossfadeValue,2.0f) * 40; //expand it beyond when it's finished
-			arc.moveTo(cursorPosition.x, cursorPosition.y + expandedArcRadius, 0);
+			arc.moveTo(cursorPosition.x, cursorPosition.y - expandedArcRadius, 0);
 			arc.arc(cursorPosition, expandedArcRadius, expandedArcRadius, -90, 360*arcPercent-90, true);
 			arc.draw();
 		}
@@ -1112,13 +1167,6 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     
 	drawDebugOverlay();
 	
-//bad loading screen... debug only
-//	if(loadingAct){
-//		float progressWidth = ofGetWidth() * .66;
-//		//		loadingFont.drawString("Generating a response to your query.", ofGetWidth()*.33, ofGetHeight()*.5 - 5);
-//		ofRect(ofGetWidth()*.33 / 2, ofGetHeight()*.5, progressWidth * currentPresetIndex / currentAct->getAllVisualSystemPresets().size(), 50. );
-//	}
-	
 	glPopAttrib();
 }
 
@@ -1136,7 +1184,7 @@ void CloudsPlaybackController::drawRenderTarget(){
 		
 		currentVisualSystem->selfPostDraw();
         
-		//TODO Make parametric based on HUD
+        ofEnableAlphaBlending();		
         CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
         
 #ifndef OCULUS_RIFT
@@ -1180,9 +1228,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
         clearAct();
     }
     
-//#ifndef CLOUDS_SCREENING
 	rgbdVisualSystem->clearQuestions();
-//#endif
 	
 	numClipsPlayed = 0;
 	currentAct = args.act;
@@ -1193,7 +1239,6 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 		shouldLoadAct = true;
 		shouldPlayAct = false;
 	}
-	
 	
 	cout << "***** ORDER OF OPERATIONS: ACT CREATED CONTROLLER " << args.act << endl;
 
@@ -1304,6 +1349,12 @@ void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
+
+	if(clip == NULL){
+		ofLogError("CloudsPlaybackController::prerollClip") << "clip IS NULL ";
+		return;
+	}
+
 	if(!clip->hasMediaAsset){
 		ofLogError("CloudsPlaybackController::prerollClip") << "clip " << clip->getLinkName() << " doesn't have combined video";
 		return;
@@ -1333,8 +1384,10 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
     
 	numClipsPlayed++;
 	
+	cout << "**** CLIP BEGAN" << endl;
 
 	if(clip->getID() != prerolledClipID){
+		cout << "**** HAD TO MANUALLY PREROLL IN CLIP BEGAN" << endl;
 		prerollClip(clip, 1);
 	}
 	
@@ -1347,26 +1400,62 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 	currentClip = clip;
 	currentClipName = clip->getID();
     
+	cout << "**** SWAPPING IN FROM CLIP BEGAN" << endl;
 	rgbdVisualSystem->getRGBDVideoPlayer().swapAndPlay();
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showClusterMap(){
-#ifdef OCULUS_RIFT
-	if(CloudsVisualSystem::getOculusRift().isHD()){
-		clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD");
-	}
-	else{
-		clusterMap->loadPresetGUISFromName("FollowTraverse_OculusSD");
-	}
-#else
-	clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
-#endif
+    if(showingClusterMapNavigation){
+        
+        #ifdef CLOUDS_SCREENING
+        //SHOW REMAINING QUESTIONS
+        vector<CloudsClip*> questionClips;
+        for(int i = 0; i < rgbdVisualSystem->getQuestionQueue().size(); i++){
+            questionClips.push_back(rgbdVisualSystem->getQuestionQueue()[i].clip);
+        }
+
+        if(questionClips.size() != 0){
+            clusterMap->setQuestions(questionClips);
+            showedClusterMapNavigation = true;
+            clusterMap->loadPresetGUISFromName("NavigationInterlude_Screen");
+        }
+        else{
+            showingClusterMapNavigation = false;
+            ofLogError("CloudsPlaybackController::showClusterMap") << "No question clips left in RGBD system";
+        }
+        #else
+        //SHOW QUESTIONS FROM CURRENT ACT
+        showingClusterMapNavigation = false; //TEMP HACK UNTIL WE GET THIS WORKING ON NON SCREENING MODE
+        #endif
+    }
+    
+    if(!showingClusterMapNavigation){
+        #ifdef OCULUS_RIFT
+        if(CloudsVisualSystem::getOculusRift().isHD()){
+            clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD");
+        }
+        else{
+            clusterMap->loadPresetGUISFromName("FollowTraverse_OculusSD");
+        }
+        #else
+        clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
+        #endif
+    }
+    
     clusterMap->playSystem();
-	clusterMap->autoTraversePoints = true;
-	clusterMap->traverse();
-	clusterMap->traverse();
-	
+    clusterMap->clearTraversal();
+
+    if(!showingClusterMapNavigation){
+        clusterMap->autoTraversePoints = true;
+        
+        clusterMap->traverse();
+        clusterMap->traverse();
+    }
+    else{
+        clusterMap->autoTraversePoints = false;
+    }
+    
     currentVisualSystem = clusterMap;
 
     showingVisualSystem = true;
@@ -1383,6 +1472,7 @@ void CloudsPlaybackController::showInterlude(){
     if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
         
         interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
+        
         interludeSystem->setDrawToScreen( false );
         interludeSystem->setup();
         interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
@@ -1404,7 +1494,8 @@ void CloudsPlaybackController::showInterlude(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::cleanupInterlude(){
     showingVisualSystem = false;
-    
+	clearRenderTarget();
+
     if(currentVisualSystem == clusterMap) {
         clusterMap->stopSystem();
     }

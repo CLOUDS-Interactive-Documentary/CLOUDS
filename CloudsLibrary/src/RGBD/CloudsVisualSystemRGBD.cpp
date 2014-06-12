@@ -6,6 +6,92 @@
 CloudsVisualSystemEvents CloudsVisualSystemRGBD::events;
 
 //--------------------------------------------------------------
+CloudsVisualSystemRGBD::CloudsVisualSystemRGBD(){
+
+	visualSystemFadeValue = 0.0;
+	questionSelectFade = 0.0;
+    questionToReplace = 0;	
+	transitionTarget = NULL;
+	bTransitionIn = bTransitionOut = false;
+	bLookThroughIn = bLookThroughOutLeft = bLookThroughOutRight = false;
+	bSaveTransition = false;
+	
+	transitionCamTargetNode = NULL;
+	
+	bTransitionsAddedToGui = false;
+	transitionOutOption = OutLeft;
+	bMoveTransitionCameraUp = bMoveTransitionCameraDown = false;
+	transitionScrubIn = transitionScrubOut = 0;
+	
+	//MESH
+	globalMeshGui = NULL;
+	drawRGBD = false;
+	edgeAttenuate = edgeAttenuateExponent = skinBrightness = 0;
+	
+	//LINES
+	linesGui = NULL;
+    lineVertexCount = 0;
+	drawLines = false;
+	lineAlpha = lineThickness = lineSpacing =
+		lineDensityVariance = lineGranularity = 
+			lineFlowPosition = lineFlowSpeed = lineHeadOverlap = 0.0f;
+	linesFlowUp = false;
+    lineColorBoost = lineSkinBoost = lineMaxActuatorRetract = lineRandomOffset = 0.0f;
+	refreshLines = false;
+	
+    
+	//MESH
+	meshGui = NULL;
+    meshVertexCount = 0;
+	drawMesh = false;
+	meshAlpha = xSimplify = ySimplify = randomVariance = 
+		meshFaceMinRadius = meshFaceFalloff = meshRetractionFalloff = meshForceGeoRetraction = 
+		meshColorBoost = meshSkinBoost = meshMaxActuatorRetract = 0;
+    refreshMesh = false;
+
+    //FILL
+	fillGui = NULL;
+    bEnableFill = false;
+	fillAlpha = fillFaceFalloff = fillRetractionFalloff = fillFaceMinRadius = 0;
+
+    ///OCCLUSION
+	occlusionGui = NULL;
+    bDrawOcclusion = drawOcclusionDebug = false;
+
+    occlusionVertexCount = occlusionXSimplify = occlusionYSimplify = 
+		occlusionMeshFaceMinRadius = occlusionMeshFaceFalloff = occlusionMeshRetractionFalloff = 0;
+    refreshOcclusion = false;
+    
+    ///ACTUATORS
+    actuatorSpinPosition = actuatorSpinSpeed = actuatorShineAngle = 0;
+
+	cameraGui  = backgroundMeshGui = questionGui = actuatorGui = NULL;
+    
+	drawParticulate = 0;
+	attenuatedCameraDrift = 0;
+    particleCount = 0;
+    
+	portalScale = 0;
+	minDistanceToQuestion = 0;
+	bPortalDebugOn = false;
+
+	portalToClear = NULL;
+	questionFontSize = currentQuestionFontSize = questionFontScale = questionYOffset = questionFontTracking = questionFontSplitWidth = 0;
+	
+	caughtPortal = selectedPortal = NULL;
+	
+	cullFace = GL_FRONT;    
+	placingTransitionNodes = false;
+	drawTransitionNodes = false;
+	transitioning, transitioningIn, transitioningOut, bResetLookThoughs, bResetRight,bResetLeft,bResetIn = false;
+	transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal = 0;
+	
+	transitionType = TWO_DIMENSIONAL;
+	
+	transitionVal = 0.0;
+}
+
+//--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
 	return "RGBD";
 }
@@ -15,15 +101,12 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	portalToClear = NULL;
 	
 	drawRGBD = true;
-#ifdef TARGET_OSX
-	cullFace = GL_FRONT;
-#else
 	#ifdef OCULUS_RIFT
 		cullFace = GL_FRONT;
 	#else
 		cullFace = GL_BACK;
 	#endif
-#endif
+
 	transitionOutOption = OutLeft;
 	
 //	questionLifeSpan = 3;
@@ -141,18 +224,18 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	loadShader();
 	
+	cout << "*** LOADING POINT LAYERS" << endl;
     pointLayer1.pointShader = &pointShader;
     pointLayer2.pointShader = &pointShader;
-    pointLayer1.visualSystemFadeValue = &visualSystemFadeValue;
-    pointLayer2.visualSystemFadeValue = &visualSystemFadeValue;
-    
+
+	cout << "*** LOAD GENERATE LINES" << endl;
 	generateLines();
-	//generatePoints();
+	cout << "*** LOAD GENERATE MESH" << endl;
 	generateMesh();
 		
-	particulateController.setParticleCount(2000);
-	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-	particulateController.setup();
+	//particulateController.setParticleCount(2000);
+	//particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+	//particulateController.setup();
 	voxelMesh.setup();
 	
 	cloudsCamera.setup();
@@ -484,6 +567,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guimap[cameraGui->getName()] = cameraGui;
 	
     ////////////////// BACKGROUND PARTICLES
+	/*
 	particleGui = new ofxUISuperCanvas("PARTICLE", gui);
 	particleGui->copyCanvasStyle(gui);
 	particleGui->copyCanvasProperties(gui);
@@ -497,6 +581,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	particleGui->addWidgetToHeader(toggle);
 	
 //    particleGui->addSlider("NUM PARTICLES", 10, 10000, &particleCount);
+	
 	particleGui->addSlider("BIRTH RATE", 0, .01, &particulateController.birthRate);
 	particleGui->addSlider("BIRTH SPREAD", 10, 10000, &particulateController.birthSpread);
 	particleGui->addSlider("POINT SIZE THRESHOLD", 0, .01, &particulateController.getPoints().sizeThreshold);
@@ -508,6 +593,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(particleGui);
 	guimap[particleGui->getName()] = particleGui;
 	backgroundGuis.push_back(particleGui);
+	*/
     //////////////////
 	
 	////////////////// BACKGROUND PARTICLES
@@ -519,6 +605,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	backgroundMeshGui->addToggle("draw points", &voxelMesh.drawPoints);
 	backgroundMeshGui->addToggle("draw lines", &voxelMesh.drawLines);
+	backgroundMeshGui->addSlider("point size", 1.0, 4.0, &voxelMesh.pointSize);
+	backgroundMeshGui->addSlider("line width", 1.0, 4.0, &voxelMesh.lineWidth);
 	
 	backgroundMeshGui->addIntSlider("num voxels", 10, 100, &voxelMesh.numVoxels);
 	backgroundMeshGui->addSlider("voxel spacing", 10, 100, &voxelMesh.voxelWidth);
@@ -582,23 +670,20 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 
-    // TODO: Fix this cursor hack.
-//    drawCursorMode =  DRAW_CURSOR_PRIMARY;
-//    if(getQuestionText() != ""){
-//        drawCursorMode =  DRAW_CURSOR_PRIMARY;
-//    }
-//    else {
-//        drawCursorMode =  DRAW_CURSOR_NONE;
-//    }
-  
+
+#ifdef OCULUS_RIFT
+	float curQuestionSelectFade = (caughtPortal == NULL ? 1.0 : powf(ofMap(caughtPortal->hoverPercentComplete,
+																		0.0, .2, 1.0, 0.0, true), 2.0));
+	questionSelectFade += (curQuestionSelectFade - questionSelectFade) * .1;
+#else
+    questionSelectFade = 1.0;
+#endif
+    
+	pointLayer1.visualSystemFadeValue = getRGBDTransitionValue();
+    pointLayer2.visualSystemFadeValue = getRGBDTransitionValue();
     pointLayer1.update();
     pointLayer2.update();
     
-//	if(numRandomPoints != points.getNumVertices()){
-//    if(refreshPointcloud){
-//    generatePoints();
-//	}
-	
 	if(refreshLines){
 		generateLines();
 	}
@@ -614,7 +699,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	lineFlowPosition += powf(lineFlowSpeed,2.0);
     //TODO FLOW POINTS
 //	pointFlowPosition += powf(pointFlowSpeed,2.0);
-	
+	/*
 	if(drawParticulate){
 		
 //        if(particulateController.getNumParticles() != particleCount){
@@ -631,6 +716,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		particulateController.update();
 	
 	}
+	*/
 
 	voxelMesh.center = cloudsCamera.lookTarget;
 	voxelMesh.update();
@@ -1177,16 +1263,17 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		//we have a caught question make sure it's still close
 		else if(caughtPortal == portals[i]){
 			//we went over the timer distance! zoooom!!!
-			if(caughtPortal->isSelected() ){
-				selectedPortal = caughtPortal;
-				CloudsPortalEventArgs args(getQuestionText());
-				ofNotifyEvent(events.portalHoverBegan, args);
-				CloudsVisualSystem::getSelectLow()->setPosition(0);
-				CloudsVisualSystem::getSelectLow()->play();
-				#ifdef CLOUDS_SCREENING
-				portalToClear = selectedPortal;
-				//selectedPortal->question = ""; //flag it to be replaced next speaker
-				#endif
+			if(caughtPortal->isSelected()){
+				if(selectedPortal == NULL){
+					selectedPortal = caughtPortal;
+					CloudsPortalEventArgs args(getQuestionText());
+					ofNotifyEvent(events.portalHoverBegan, args);
+					CloudsVisualSystem::getSelectLow()->setPosition(0);
+					CloudsVisualSystem::getSelectLow()->play();
+					#ifdef CLOUDS_SCREENING
+					portalToClear = selectedPortal;
+					#endif
+				}
 			}
 			//let it go
 			else if(distanceToQuestion > portalTugDistance.max){
@@ -1595,6 +1682,10 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 			questions.erase( questions.begin() );
 			cout << "******ERASING QUESTIONS. SIZE IS NOE " << questions.size() << endl;
 		}
+        else{
+			portalToClear->topic = "";
+			portalToClear->question = "";
+        }
 		portalToClear = NULL;
 	}
 	
@@ -1629,7 +1720,7 @@ void CloudsVisualSystemRGBD::selfDrawBackground(){
 }
 
 void CloudsVisualSystemRGBD::selfDrawDebug(){
-	ofSphere(translatedHeadPosition, 10);
+	ofDrawSphere(translatedHeadPosition, 10);
 }
 
 void CloudsVisualSystemRGBD::selfSceneTransformation(){
@@ -1648,6 +1739,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	ofPushStyle();
 	ofPushMatrix();
+    
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_LIGHTING);
 	
@@ -1679,22 +1771,14 @@ void CloudsVisualSystemRGBD::selfDraw(){
             
 			meshShader.setUniform1f("meshAlpha", fillAlpha);
 			meshShader.setUniform1f("triangleExtend",
-                                    getRGBDVideoPlayer().getFadeIn()  *
-                                    getRGBDVideoPlayer().getFadeOut() *
-                                    visualSystemFadeValue);
+                                    getRGBDTransitionValue());
             
 			meshShader.setUniform1f("meshRetractionFalloff",fillRetractionFalloff);
 			meshShader.setUniform1f("headMinRadius", fillFaceMinRadius);
 			meshShader.setUniform1f("headFalloff", fillFaceFalloff);
 			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
 			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
-			meshShader.setUniform1f("forceGeoRetraction",0.0);
-            
-//			meshShader.setUniform3f("actuatorDirection",
-//                                    meshActuator.x,
-//                                    meshActuator.y,
-//                                    meshActuator.z);
-            
+			meshShader.setUniform1f("forceGeoRetraction",0.0);            
 			meshShader.setUniform1f("colorBoost", meshColorBoost);
 			meshShader.setUniform1f("skinBoost", meshSkinBoost);
 			meshShader.setUniform1f("maxActuatorRetract", 1.0);
@@ -1723,9 +1807,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		
 			meshShader.setUniform1f("meshAlpha", meshAlpha);
 			meshShader.setUniform1f("triangleExtend",
-                                    getRGBDVideoPlayer().getFadeIn()  *
-                                    getRGBDVideoPlayer().getFadeOut() *
-                                    visualSystemFadeValue);
+										getRGBDTransitionValue());
             
 			meshShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
 			meshShader.setUniform1f("headMinRadius", meshFaceMinRadius);
@@ -1769,10 +1851,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
             
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
 			
-			lineShader.setUniform1f("lineExtend",
-                                    getRGBDVideoPlayer().getFadeIn() *
-                                    getRGBDVideoPlayer().getFadeOut() *
-                                    visualSystemFadeValue);
+			lineShader.setUniform1f("lineExtend", getRGBDTransitionValue());
             lineShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			lineShader.setUniform1f("headFalloff", meshFaceFalloff);
 			lineShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
@@ -1860,6 +1939,13 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	drawQuestions();
 }
 
+float CloudsVisualSystemRGBD::getRGBDTransitionValue(){
+
+	return getRGBDVideoPlayer().getFadeIn()  *
+           getRGBDVideoPlayer().getFadeOut() *
+		   visualSystemFadeValue * questionSelectFade;
+}
+
 void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     
     glPushMatrix();
@@ -1877,10 +1963,7 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     
     getRGBDVideoPlayer().setupProjectionUniforms(occlusionShader);
     
-    occlusionShader.setUniform1f("triangleExtend",
-                                 getRGBDVideoPlayer().getFadeIn()  *
-                                 getRGBDVideoPlayer().getFadeOut() *
-                                 visualSystemFadeValue);
+    occlusionShader.setUniform1f("triangleExtend", getRGBDTransitionValue());
     occlusionShader.setUniform1f("meshRetractionFalloff",occlusionMeshRetractionFalloff);
     occlusionShader.setUniform1f("headMinRadius", occlusionMeshFaceMinRadius);
     occlusionShader.setUniform1f("headFalloff", occlusionMeshFaceFalloff);
@@ -2068,6 +2151,22 @@ string CloudsVisualSystemRGBD::getQuestionText(){
     }
     return "";
 }
+
+vector<QuestionQueue>& CloudsVisualSystemRGBD::getQuestionQueue(){
+    return questions;
+}
+
+void CloudsVisualSystemRGBD::removeQuestionFromQueue(CloudsClip* clip){
+    for(int i = questions.size()-1; i >= 0; i--){
+        if(questions[i].clip == clip){
+            questions.erase(questions.begin() + i);
+            return;
+        }
+    }
+    
+    ofLogError("CloudsVisualSystemRGBD::removeQuestionFromQueue") << "Failed to remove clip " << clip->getLinkName() << " from queue";
+}
+
 
 bool CloudsVisualSystemRGBD::isQuestionSelected(){
 	return selectedPortal != NULL;

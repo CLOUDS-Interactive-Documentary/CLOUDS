@@ -39,15 +39,15 @@
 	
 	CloudsFCPParser parser;
     CloudsMixer mixer;
-	CloudsClip currentClip;
+	CloudsClip* currentClip;
     
 	CloudsVisualSystemManager visualSystems;
 	CloudsVisualSystem* currentVisualSystem;
 	CloudsVisualSystemPreset* selectedPreset;
 	vector<int> filteredPresetInds;
 	
-	vector<CloudsClip> associatedClips;
-	vector<CloudsClip> suppressedClips;
+	vector<CloudsClip*> associatedClips;
+	vector<CloudsClip*> suppressedClips;
 	vector<string> associatedKeywords;
 	
 	vector<CloudsVisualSystemPreset> currentClipPresets;
@@ -113,7 +113,7 @@
 - (IBAction) playPreviousPreset:(id)sender;
 - (IBAction) playNextPreset:(id)sender;
 
-- (IBAction)loadClip:(CloudsClip&)clip;
+- (IBAction)loadClip:(CloudsClip*)clip;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

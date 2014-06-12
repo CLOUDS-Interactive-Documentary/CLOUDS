@@ -16,7 +16,6 @@ void testApp::setup(){
 	storyEngine.combinedClipsOnly = false;
 	storyEngine.setup();
 	
-    
 	vector<CloudsClip*> startingNodes = parser.getClipsWithKeyword("#start");
 	srand(ofGetSeconds());
     cout << "starting node size is " << startingNodes.size() << endl;
@@ -27,9 +26,8 @@ void testApp::setup(){
     
     int startNode = ofRandomuf()*startingNodes.size();
     cout << "START NODE index is " << startNode << endl;
+    
 	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ startNode ]);
-	
-	//act->triggerAllEvents();	
 	run.topicHistory = act->getAllTopics();
 	run.clipHistory = act->getAllClips();
 	cout << "** TRAVERSAL INCLUDES:" << endl;
@@ -47,7 +45,8 @@ void testApp::setup(){
 		clusterMap.loadPresetGUISFromName("FollowTraverse_OculusSD");
 	}
 #else
-	clusterMap.loadPresetGUISFromName("FollowTraverse_Screen");
+//	clusterMap.loadPresetGUISFromName("FollowTraverse_Screen");
+    clusterMap.loadPresetGUISFromName("NavigationInterlude_Screen");
 #endif
 
 	clusterMap.setRun(run);
@@ -55,8 +54,9 @@ void testApp::setup(){
 	clusterMap.buildEntireCluster(parser);
 	clusterMap.allocateFlickerTexture();
 	
-	clusterMap.autoTraversePoints = true;
-	
+//	clusterMap.autoTraversePoints = true;
+	clusterMap.populateDummyQuestions();
+    
 	clusterMap.playSystem();
 	
 }

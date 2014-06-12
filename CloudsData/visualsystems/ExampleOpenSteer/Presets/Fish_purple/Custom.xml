@@ -1,7 +1,7 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -68,12 +68,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>RIBBON SIZE</Name>
-    <Value>16.162561417</Value>
+    <Value>6.054186821</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>TRAIL COLOR MIX</Name>
-    <Value>0.532019675</Value>
+    <Value>0.615763545</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -168,7 +168,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SEPARATION WEIGHT</Name>
-    <Value>5.000000000</Value>
+    <Value>12.875000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

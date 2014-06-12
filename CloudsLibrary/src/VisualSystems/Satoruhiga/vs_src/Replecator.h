@@ -2,14 +2,18 @@
 
 #include "ofMain.h"
 
-#ifdef _MSC_VER
+#if (_MSC_VER || _LIBCPP_VERSION)
 #include <memory.h>
 #else
 #include <tr1/functional>
 #endif
 namespace std
 {
-        using tr1::function;
+#if (_MSC_VER || _LIBCPP_VERSION)
+//	using function;
+#else
+	using tr1::function;
+#endif
 }
 
 class Replecator

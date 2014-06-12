@@ -18,11 +18,12 @@
 	
 	movieSuccessfullyLoaded = false;
     
-//	parser.printErrors = true;
+    ofSetDataPathRoot("../../");
+    
 	parser.loadFromFiles();
     clipEndFrame = 0;
     clipLoaded = NO;
-	
+
 	
 	font.loadFont("materiapro_light.ttf", 12);
 	
@@ -35,9 +36,9 @@
 	[linkerA setup];
     [linkerB setup];
     
-	vector<CloudsClip> projectExamples = parser.getClipsWithKeyword("#example");
+	vector<CloudsClip*> projectExamples = parser.getClipsWithKeyword("#example");
 	for(int i = 0; i < projectExamples.size(); i++){
-		cout << projectExamples[i].getSpeakerFirstName() << " " << projectExamples[i].getSpeakerLastName() << ": " << projectExamples[i].name << endl;
+		cout << projectExamples[i]->getSpeakerFirstName() << " " << projectExamples[i]->getSpeakerLastName() << ": " << projectExamples[i]->name << endl;
 	}
 	
     
@@ -69,7 +70,7 @@
 {
     
 	if(movieSuccessfullyLoaded && preview.isLoaded() && preview.isPlaying()){
-		return (1.0*preview.getCurrentFrame() - currentPlayingClip.startFrame) / (currentPlayingClip.endFrame - currentPlayingClip.startFrame);
+		return (1.0*preview.getCurrentFrame() - currentPlayingClip->startFrame) / (currentPlayingClip->endFrame - currentPlayingClip->startFrame);
 	}
 	return 0;
 }
@@ -78,9 +79,11 @@
 {
 	if(preview.isLoaded()){
 		if(preview.isPlaying()){
+			playingRGBD = false;
 			preview.stop();
 		}
 		else{
+			playingRGBD = true;
 			preview.play();
 		}
 	}
@@ -91,10 +94,16 @@
 {
 	
 	//most of the time we want to wait for a clip to finish or be interrupted by user interaction
-	if(preview.isLoaded()) {
+	if(playingRGBD){
 		preview.update();
-		if(preview.getCurrentFrame() >= clipEndFrame){
-			preview.stop();
+		if(preview.isLoaded()) {
+//			if(!preview.isPlaying()){
+//				preview.play();
+//			}
+//			if(preview.getCurrentFrame() >= clipEndFrame){
+//				playingRGBD = false;
+//				preview.stop();
+//			}
 		}
 	}
 }
@@ -109,7 +118,7 @@
 		
         preview.draw(videoRect);
 		
-		font.drawString(currentPlayingClip.getLinkName() + "\n" + ofJoinString(currentPlayingClip.getKeywords(), ", "), 10, ofGetHeight() - font.getLineHeight()*2 - 10);
+		font.drawString(currentPlayingClip->getLinkName() + "\n" + ofJoinString(currentPlayingClip->getKeywords(), ", "), 10, ofGetHeight() - font.getLineHeight()*2 - 10);
     }	
 }
 
@@ -118,7 +127,7 @@
 	NSLog(@"exit!!");
 }
 
-- (void)selectClip:(CloudsClip)clip inAlternateTable:(id)sender
+- (void)selectClip:(CloudsClip*)clip inAlternateTable:(id)sender
 {
 	if(sender == linkerA){
 		[linkerB selectClip:clip];
@@ -173,15 +182,15 @@
     }
 }
 
-- (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target
+- (void) linkClip:(CloudsClip*) source toClip:(CloudsClip*) target
 {
-	if(source.getLinkName() != target.getLinkName()){
+	if(source->getLinkName() != target->getLinkName()){
 		
-		NSLog(@"creating link for %s + %s", source.getLinkName().c_str(), target.getLinkName().c_str());
+		NSLog(@"creating link for %s + %s", source->getLinkName().c_str(), target->getLinkName().c_str());
 		
 		CloudsLink l;
-		l.sourceName = source.getLinkName();
-		l.targetName = target.getLinkName();
+		l.sourceName = source->getLinkName();
+		l.targetName = target->getLinkName();
 		l.startFrame = -1;
 		l.endFrame = -1;
 		
@@ -193,23 +202,23 @@
 		[self saveLinks:self];
 	}
 	else{
-		NSLog(@"failed clip for %s + %s", source.getLinkName().c_str(), target.getLinkName().c_str());
+		NSLog(@"failed clip for %s + %s", source->getLinkName().c_str(), target->getLinkName().c_str());
 	}
 }
 
-- (void) suppressLink:(CloudsClip)source toClip:(CloudsClip) target
+- (void) suppressLink:(CloudsClip*)source toClip:(CloudsClip*) target
 {
-	if(source.getLinkName() != target.getLinkName()){
+	if(source != target){
 		
-		NSLog(@"suppressing link between %s + %s", source.getLinkName().c_str(), target.getLinkName().c_str());
+		NSLog(@"suppressing link between %s + %s", source->getLinkName().c_str(), target->getLinkName().c_str());
 		
 		CloudsLink l;
-		l.sourceName = source.getLinkName();
-		l.targetName = target.getLinkName();
+		l.sourceName = source->getLinkName();
+		l.targetName = target->getLinkName();
 		l.startFrame = -1;
 		l.endFrame = -1;
         
-		parser.removeLink(source.getLinkName(),target.getLinkName());
+		parser.removeLink(source->getLinkName(),target->getLinkName());
 		parser.suppressConnection(l);
         
 		[self saveLinks:self];
@@ -218,25 +227,27 @@
 
 - (IBAction) saveLinks:(id)sender
 {
-	if(ofDirectory("../../../CloudsData/links/").exists()){
-		parser.saveLinks("../../../CloudsData/links/clouds_link_db.xml");
-        cout<<"saving!"<<endl;
-	}
-	else{
-		parser.saveLinks("clouds_link_db.xml");
-	}
+    parser.saveLinks();
+    
+//	if(ofDirectory("../../../CloudsData/links/").exists()){
+//		parser.saveLinks("../../../CloudsData/links/clouds_link_db.xml");
+//        cout<<"saving!"<<endl;
+//	}
+//	else{
+//		parser.saveLinks("clouds_link_db.xml");
+//	}
 }
 
-- (void) playClip:(CloudsClip&) clip
+- (void) playClip:(CloudsClip*) clip
 {
 
-	if(currentPlayingClip.getLinkName() == clip.getLinkName()){
+	if(currentPlayingClip != NULL && currentPlayingClip->getLinkName() == clip->getLinkName()){
 		if(preview.isPlaying()){
 			preview.stop();
 		}
 		else{
 			if(preview.getCurrentFrame() >= clipEndFrame){
-				preview.setFrame( clip.startFrame );
+				preview.setFrame( clip->startFrame );
 			}
 			preview.play();
 		}
@@ -245,27 +256,27 @@
 		
 	preview.stop();
 	
-    if(clip.hasMediaAsset){
+    if(clip->hasMediaAsset){
         
-        movieSuccessfullyLoaded = preview.loadMovie(clip.combinedVideoPath);
+        movieSuccessfullyLoaded = preview.loadMovie(clip->combinedVideoPath);
         if(!movieSuccessfullyLoaded){
-            ofLogError() << "Clip " << clip.combinedVideoPath << " failed to load.";
+            ofLogError() << "Clip " << clip->combinedVideoPath << " failed to load.";
             return;
         }
         clipEndFrame = preview.getTotalNumFrames();
         playingRGBD = true;
     }
     else{
-        string clipFilePath = relinkFilePath( clip.sourceVideoFilePath );
+        string clipFilePath = relinkFilePath( clip->sourceVideoFilePath );
         movieSuccessfullyLoaded = preview.loadMovie(clipFilePath) ;
         if(!movieSuccessfullyLoaded){
             ofLogError() << "Clip " << clipFilePath << " failed to load.";
             return;
         }
         
-        preview.setFrame(clip.startFrame);
+        preview.setFrame(clip->startFrame);
         playingRGBD = false;
-        clipEndFrame = clip.endFrame;
+        clipEndFrame = clip->endFrame;
     }
     
 	preview.play();

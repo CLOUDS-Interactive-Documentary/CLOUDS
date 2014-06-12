@@ -6,10 +6,9 @@
 //
 //
 
-#ifndef __MazeGenerator__MazeCell__
-#define __MazeGenerator__MazeCell__
+#pragma once
 
-#include <ofMain.h>
+#include "ofMain.h"
 
 class MazeCell
 {
@@ -43,4 +42,4 @@ private:
 };
 
 
-#endif /* defined(__MazeGenerator__MazeCell__) */
+

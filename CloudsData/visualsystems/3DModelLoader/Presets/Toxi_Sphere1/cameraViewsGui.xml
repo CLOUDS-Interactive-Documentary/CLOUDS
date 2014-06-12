@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>cameraViewsGui</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>116.000000000</YPosition>
+    <YPosition>106.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -63,12 +63,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>minTilt</Name>
-    <Value>0.886703491</Value>
+    <Value>0.886702538</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>maxTilt</Name>
-    <Value>38.719207764</Value>
+    <Value>38.719211578</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

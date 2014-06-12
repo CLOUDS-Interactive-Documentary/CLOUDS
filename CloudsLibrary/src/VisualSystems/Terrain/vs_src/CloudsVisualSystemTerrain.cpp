@@ -44,6 +44,7 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     customGui->addButton("clean", &bCleanGrayscott);
     customGui->addToggle("Draw", &bDoDraw);
+    customGui->addToggle("Telekinesis", &bDoTelekinesis);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     customGui->addSlider("Blur Radius", 0, 5., &blurRadius);
 	customGui->addSlider("Dry Rate", .01, .1, &dryRate);
@@ -103,10 +104,15 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
 	guis.push_back(fogGui);
 	guimap[fogGui->getName()] = fogGui;
 }
-void CloudsVisualSystemTerrain::selfSetDefaults(){
+
+void CloudsVisualSystemTerrain::selfSetDefaults()
+{
+    bDoTelekinesis = false;
+    
     primaryCursorMode = CURSOR_MODE_DRAW;
     secondaryCursorMode = CURSOR_MODE_DRAW;
 }
+
 void CloudsVisualSystemTerrain::selfSetup()
 {
     grayscottLoops = 1;
@@ -686,51 +692,7 @@ ofVec2f CloudsVisualSystemTerrain::hermiteInterpolate(ofVec2f y0, ofVec2f y1, of
 }
 
 void CloudsVisualSystemTerrain::selfInteractionDragged(CloudsInteractionEventArgs& args){
-    if(bDoDraw){
-        
-        mouse.x = args.position.x;
-        mouse.y = args.position.y;
-        
-        playerHistoryMap[args.playerId].push_back(ofVec2f(args.position.x,args.position.y));
-        
-        vector<ofVec2f> splineHandles;
-        //make a spline
-        if(playerHistoryMap[args.playerId].size() == 1){
-            return; //draw next time
-        }
-        if(playerHistoryMap[args.playerId].size() == 2){
-            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
-            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
-            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
-            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
-        }
-        else if(playerHistoryMap[args.playerId].size() == 3){
-            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
-            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
-            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
-            splineHandles.push_back(playerHistoryMap[args.playerId][2]);
-        }
-        else{
-            for(int i = playerHistoryMap[args.playerId].size()-4; i < playerHistoryMap[args.playerId].size(); i++){
-                splineHandles.push_back(playerHistoryMap[args.playerId][i]);
-            }
-        }
-        
-        float stepsize = ofMap(brushSize, 2, 200, .005, .1, true);
-        
-        for(float a = 0; a < 1.; a+=stepsize){
-            playerDepositPoints[args.playerId].push_back(hermiteInterpolate(splineHandles[0],
-																			splineHandles[1],
-																			splineHandles[2],
-																			splineHandles[3], a, 0, 0));
-        }
-        
-        if(playerHistoryMap[args.playerId].size() > 4){
-            playerHistoryMap[args.playerId].erase(playerHistoryMap[args.playerId].begin());
-        }
-        
-    }
-
+    selfInteractionMoved(args);
 }
 
 void CloudsVisualSystemTerrain::selfInteractionMoved(CloudsInteractionEventArgs& args){
@@ -777,6 +739,11 @@ void CloudsVisualSystemTerrain::selfInteractionMoved(CloudsInteractionEventArgs&
             playerHistoryMap[args.playerId].erase(playerHistoryMap[args.playerId].begin());
         }
         
+    }
+    
+    if (bDoTelekinesis) {
+        noiseZoom = ofMap(args.position.x, 0, getCanvasWidth(), 0, 10);
+        noiseSpeed = ofMap(args.position.y, 0, getCanvasHeight(), 0, 1);
     }
 }
 

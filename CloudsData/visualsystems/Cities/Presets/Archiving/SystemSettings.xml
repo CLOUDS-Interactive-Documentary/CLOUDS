@@ -1,8 +1,8 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
+    <XPosition>435.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>maskSize</Name>
-    <Value>1.408798695</Value>
+    <Value>1.457310200</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

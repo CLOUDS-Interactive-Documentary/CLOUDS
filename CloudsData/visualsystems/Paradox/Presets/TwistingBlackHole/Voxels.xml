@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Voxels</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>297.000000000</XPosition>
-    <YPosition>64.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -16,7 +16,7 @@
     <Value>1</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>num voxels</Name>
     <Value>16</Value>
 </Widget>

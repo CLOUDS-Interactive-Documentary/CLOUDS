@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>CamSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>425.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>160.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -43,22 +43,22 @@
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>-29.704486847</Value>
+    <Value>-29.704488754</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>19.950691223</Value>
+    <Value>19.950689316</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minY</Name>
-    <Value>-30.591190338</Value>
+    <Value>-30.591188431</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxY</Name>
-    <Value>20.837387085</Value>
+    <Value>20.837385178</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,6 +78,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>3D RGBD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>22</Kind>
+    <Name>VIEW</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

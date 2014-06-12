@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>CamSettings</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>122.000000000</YPosition>
+    <YPosition>118.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -62,6 +62,31 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Spin Camera</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spin Camera Damp</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spin Camera Range X</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spin Camera Range Y</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Invert Spin Axis</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>2D</Name>
     <Value>0</Value>
 </Widget>
@@ -78,6 +103,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>3D RGBD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>22</Kind>
+    <Name>VIEW</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -123,7 +153,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>camera fwd force</Name>
-    <Value>0.004000000</Value>
+    <Value>0.710608184</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -138,5 +168,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>hold camera</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>

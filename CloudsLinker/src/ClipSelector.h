@@ -30,12 +30,12 @@
 	IBOutlet NSComboBox* projectExamples;
     IBOutlet NSButton* showOnlyQuestions;
     
-    vector<CloudsClip> selectedClips;
+    vector<CloudsClip*> selectedClips;
     vector<string> selectedKeywords;
     
     vector<CloudsLink> currentClipLinks;
     vector<CloudsLink> currentSuppressedLinks;
-    vector<CloudsClip> currentMetaLinks;
+    vector<CloudsClip*> currentMetaLinks;
 	
     CloudsFCPParser* parser;
 	CloudsClip dummyClip;
@@ -65,11 +65,11 @@
 - (bool) isClipSelected;
 - (bool) isKeywordSelected;
 
-- (CloudsClip&) selectedClip;
+- (CloudsClip*) selectedClip;
 - (CloudsLink&) selectedLink;
 - (CloudsLink&) selectedSuppression;
-- (CloudsClip&) selectedMeta;
-- (void) selectClip:(CloudsClip&) clip;
+- (CloudsClip*) selectedMeta;
+- (void) selectClip:(CloudsClip*) clip;
 
 - (IBAction) playDoubleClickedRow:(id)sender;
 

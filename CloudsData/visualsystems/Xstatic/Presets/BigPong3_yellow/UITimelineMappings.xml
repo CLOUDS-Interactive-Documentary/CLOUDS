@@ -3,30 +3,22 @@
     <Switches>
         <Mapping>
             <Widget>
-                <WidgetName>REGENERATE</WidgetName>
-                <WidgetID>5</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>EXPLODE</WidgetName>
                 <WidgetID>31</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
-    </Switches>
-    <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>WIND SPEED</WidgetName>
-                <WidgetID>47</WidgetID>
+                <WidgetName>REGENERATE</WidgetName>
+                <WidgetID>5</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
+    </Switches>
+    <SliderCurves>
         <Mapping>
             <Widget>
                 <WidgetName>DRAG</WidgetName>
@@ -39,6 +31,14 @@
             <Widget>
                 <WidgetName>ROTATE ANGLE</WidgetName>
                 <WidgetID>41</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>WIND SPEED</WidgetName>
+                <WidgetID>47</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

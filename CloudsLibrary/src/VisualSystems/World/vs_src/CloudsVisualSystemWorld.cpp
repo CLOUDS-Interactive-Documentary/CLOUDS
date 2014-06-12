@@ -8,6 +8,27 @@
 
 #include "CloudsVisualSystemWorld.h"
 
+CloudsVisualSystemWorld::CloudsVisualSystemWorld(){
+    
+    wireSphereScale = solidSphereScale = haloSphereScale = 0;
+    wireSphereAlpha = solidSphereAlpha =  haloSphereAlpha = 0;
+    coastAlpha = riversAlpha = 0;
+
+	citiesAlpha = 0;
+    
+    pointNoisePeaks = 0;
+    rippleThreshold = 0;
+	nMaxPoints = initialForce = density = gravity = repulsion = 0;
+    turbulence = neigbordhood = independence = 0;
+
+    constelationMin = constelationMax = constelationRnd = 0;
+    
+    satLinksAlpha = satLinksDist = nMaxSatellites = blinkingAlpha = blinkingSpeed;
+    arcsAlpha = arcsMax = 0;
+
+    postChromaDist = postGrainDist = 0;
+}
+
 void CloudsVisualSystemWorld::selfSetDefaults()
 {
     arcsAlpha = 0;

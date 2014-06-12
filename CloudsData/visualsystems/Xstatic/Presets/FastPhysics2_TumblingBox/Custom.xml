@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>16.000000000</XPosition>
-    <YPosition>5.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -21,7 +21,7 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>NUM PARTICLES</Name>
     <Value>1182</Value>
 </Widget>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>FREEZE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -118,7 +118,7 @@
 <Widget>
     <Kind>6</Kind>
     <Name>SIZE</Name>
-    <HighValue>6.699507236</HighValue>
+    <HighValue>1.773398995</HighValue>
     <LowValue>1.182265997</LowValue>
 </Widget>
 <Widget>
@@ -135,7 +135,7 @@
     <Kind>6</Kind>
     <Name>BRIGHTNESS</Name>
     <HighValue>1.000000000</HighValue>
-    <LowValue>0.793103456</LowValue>
+    <LowValue>0.684729040</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -150,12 +150,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>OSCILLATE BRI</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>TRIGGER DURATION</Name>
-    <Value>1.000000000</Value>
+    <Value>55.133007050</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

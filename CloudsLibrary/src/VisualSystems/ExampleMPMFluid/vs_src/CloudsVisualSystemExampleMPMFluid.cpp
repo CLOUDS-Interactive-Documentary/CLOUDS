@@ -1,6 +1,3 @@
-//
-//  CloudsVisualSystemEmpty.cpp
-//
 
 #include "CloudsVisualSystemExampleMPMFluid.h"
 #include "CloudsRGBDVideoPlayer.h"
@@ -314,21 +311,22 @@ void CloudsVisualSystemExampleMPMFluid:: selfInteractionMoved(CloudsInteractionE
     }
 }
 
-void CloudsVisualSystemExampleMPMFluid :: selfInteractionStarted(CloudsInteractionEventArgs& args){
+void CloudsVisualSystemExampleMPMFluid::selfInteractionStarted(CloudsInteractionEventArgs& args){
     
 }
 
-void CloudsVisualSystemExampleMPMFluid:: selfInteractionDragged(CloudsInteractionEventArgs& args){
+void CloudsVisualSystemExampleMPMFluid::selfInteractionDragged(CloudsInteractionEventArgs& args){
     
 }
 
-void CloudsVisualSystemExampleMPMFluid:: selfInteractionEnded(CloudsInteractionEventArgs& args){
+void CloudsVisualSystemExampleMPMFluid::selfInteractionEnded(CloudsInteractionEventArgs& args){
 
     map<int, int >::iterator it;
     for(it = currentPlayers.begin(); it != currentPlayers.end(); ){
         
         if (it->first == args.playerId) {
-            it = currentPlayers.erase(it);
+            currentPlayers.erase(it);
+			break;
 //            cout<<"removing from map "<<it->first<<endl;
         }
 		else {
@@ -367,7 +365,8 @@ Tonic::Generator CloudsVisualSystemExampleMPMFluid::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
-    string strAbsPath = sdir.getAbsolutePath() + "/slowchimes.aif";
+    string strAbsPath = ofToDataPath( strDir + "/slowchimes.aif", true);
+                                     
     Tonic::SampleTable sample = Tonic::loadAudioFile(strAbsPath);
     
     Tonic::Generator low = Tonic::SineWave().freq(70) * 0.2;

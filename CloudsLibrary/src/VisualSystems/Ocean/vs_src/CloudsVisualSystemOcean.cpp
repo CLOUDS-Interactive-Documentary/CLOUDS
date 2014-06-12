@@ -205,7 +205,11 @@ void CloudsVisualSystemOcean::selfDraw(){
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 	glPointSize(pointSize);
 	glEnable(GL_CULL_FACE);
+#ifdef TARGET_WIN32
 	glCullFace(GL_BACK);
+#else
+    glCullFace(GL_FRONT);
+#endif
 	glDisable(GL_LINE_SMOOTH);
 //	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
@@ -223,7 +227,11 @@ void CloudsVisualSystemOcean::selfDraw(){
 	ofEnableAlphaBlending();
 	ofSetLineWidth(1.0);
 	if(depthTesting){
-		GLfloat fogColor[4] = {bgColor.r/255.,bgColor.g/255.,bgColor.b/255., 1.0 };
+		GLfloat fogColor[4] = {
+			(GLfloat)(bgColor.r/255.),
+			(GLfloat)(bgColor.g/255.),
+			(GLfloat)(bgColor.b/255.), (GLfloat)(1.0)
+		};
 		glFogfv (GL_FOG_COLOR, fogColor);
 		ofEnableDepthTest();
 	}

@@ -6,6 +6,8 @@ void testApp::setup(){
   
 	gesturePaint.setup();
 	gesturePaint.playSystem();
+	
+
 }
 
 

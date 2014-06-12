@@ -41,10 +41,6 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetDefaults(){
 }
 
 void CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent(ofxUIEventArgs &e){
-//	if(e.widget->getName() == "Custom Button"){
-//		cout << "Button pressed!" << endl;
-//	}
-	
     if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
 		shouldRegenerate = true;
 	}

@@ -1,5 +1,26 @@
 #include "CloudsVisualSystemCosmic.h"
 
+CloudsVisualSystemCosmic::CloudsVisualSystemCosmic(){
+	vbosAllocated = false;
+    numTris = numIndi = rows = cols = size = 0;
+    pos = vel = NULL;
+    bUpdateRadius = bUpdateAcceleration = bUpdateVelocity = bUpdatePosition = false;
+    timeStep = accLimit = velLimit = damping = time = 0;
+    radiusMultiplier = particleAlpha = 0;
+
+    colorPalettes = NULL;
+    colorIndex = 0;
+	floorColors = NULL;    
+    bHomingActive = false;
+    homeForceLimit = 0.0;
+    bElectroActive = false;
+    electroForceLimit = 0.0;
+    floorIndexSize = shadowScale = shadowOpacity = 0;
+    
+    bNoiseActive = false;
+    noiseForceLimit = noiseScale = 0;
+}
+
 void CloudsVisualSystemCosmic::setupFloorVbo()
 {
     int floorSize = debugGridSize*debugGridSize*4;
@@ -158,12 +179,18 @@ void CloudsVisualSystemCosmic::selfSetup()
     posFboSrc.getTextureReference().loadData(pos, cols, rows, GL_RGB);
     posFboDst.getTextureReference().loadData(pos, cols, rows, GL_RGB);
     velFboSrc.getTextureReference().loadData(vel, cols, rows, GL_RGB);
-    
-    accShader.load(getVisualSystemDataPath()+"shaders/accShader");
-    velShader.load(getVisualSystemDataPath()+"shaders/velShader");
-    posShader.load(getVisualSystemDataPath()+"shaders/posShader");
-    rdrShader.load(getVisualSystemDataPath()+"shaders/renderShader");
-    sphereShader.load(getVisualSystemDataPath()+"shaders/sphereShader");
+
+    string shaderName;
+    shaderName = getVisualSystemDataPath()+"shaders/accShader";
+    accShader.load(shaderName);
+    shaderName = getVisualSystemDataPath()+"shaders/velShader";
+    velShader.load(shaderName);
+    shaderName = getVisualSystemDataPath()+"shaders/posShader";
+    posShader.load(shaderName);
+    shaderName = getVisualSystemDataPath()+"shaders/renderShader";
+    rdrShader.load(shaderName);
+    shaderName = getVisualSystemDataPath()+"shaders/sphereShader";
+    sphereShader.load(shaderName);
     
     timeStep = 0.001;
     radiusMultiplier = 1.0;
@@ -303,16 +330,6 @@ void CloudsVisualSystemCosmic::selfSceneTransformation()
 	
 }
 
-//TRIAL ONE -- NOTHING BUT UPDATES and RADIUS
-
-
-
-//TRIAL TWO -- HOMING ACTIVE
-//TRIAL TWO -- Then activated attractor, took off homing
-//TRIAL THREE -- put electro on
-//TRIAL FOUR -- turned on electro and homing
-//TRIAL FIVE -- sphere shader only
-//EVERYTHING
 void CloudsVisualSystemCosmic::selfUpdate()
 {
 	getCameraRef().setNearClip( clipPlanes.min );
@@ -756,6 +773,7 @@ void CloudsVisualSystemCosmic::drawParticles()
 	ofDisableDepthTest();
 //    glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
 //    glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
+	ofDisableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     rdrShader.begin();
     ofxColorPalette *p = colorPalettes->getPalletePointer(colorIndex);
@@ -784,6 +802,7 @@ void CloudsVisualSystemCosmic::drawFloor()
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDepthMask(false);
     ofDisableDepthTest();
+	ofDisableAlphaBlending();
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
    // glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
     floorShader.begin();

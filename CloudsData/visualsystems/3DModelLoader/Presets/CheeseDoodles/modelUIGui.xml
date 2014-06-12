@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>modelUIGui</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>732.000000000</XPosition>
-    <YPosition>19.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>85.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -62,12 +62,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ellipsoid1.obm</Name>
+    <Name>elephant_binary.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ellipsoid2(2).obm</Name>
+    <Name>ellipsoid1.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -153,6 +153,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>pathDebugModel.obm</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>sphere.obm</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

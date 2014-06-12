@@ -313,7 +313,10 @@ void CloudsVisualSystemHistogram::selfDraw()
 	glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
 	glFogi(GL_FOG_MODE, GL_EXP);
     
-    GLfloat fogColor[4] = { bgColor.r/255., bgColor.g/255., bgColor.b/255., 1.0 };
+    GLfloat fogColor[4] = {
+		(GLfloat)(bgColor.r/255.),
+		(GLfloat)(bgColor.g/255.),
+		(GLfloat)(bgColor.b/255.), (GLfloat)(1.0) };
     glFogfv(GL_FOG_COLOR, fogColor);
     
 	glFogf(GL_FOG_DENSITY, powf(fogDensity, 4));
@@ -403,7 +406,7 @@ void CloudsVisualSystemHistogram::stopSound()
 void CloudsVisualSystemHistogram::reloadSound()
 {
     ofFile file = soundsDir.getFile(selectedSoundsIdx);
-    if (soundPlayer.loadSound(file.getAbsolutePath())) {
+    if ( soundPlayer.loadSound( ofToDataPath(soundsDir.getPath(selectedSoundsIdx), true) )) {
         soundPlayer.play();
         soundPlayer.setLoop(true);
         soundPlayer.getSpectrum(1024); //defaultSpectrumBandwidth
@@ -432,7 +435,7 @@ void CloudsVisualSystemHistogram::addSoundPoint()
         for (int i = 0; i < numRows; i++) {
             int levelIdx = ofMap(i, 0, numRows, 0, allLevels.size() * sampleOffset, true);
             float currLevel = allLevels[levelIdx] * levelAdjust;
-            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax, true);
+            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
             
             // move everything back one position
             int last  = MIN(dataPoints.size() - 1, (i + 1) * colsPerRow - 1);

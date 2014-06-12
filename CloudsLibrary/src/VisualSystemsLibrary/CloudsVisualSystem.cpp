@@ -14,10 +14,6 @@
 #include "ofxSystemTextbox.h"
 #endif
 
-#ifdef AVF_PLAYER
-#include "ofxAVFVideoPlayer.h"
-#endif
-
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static ofImage cloudsPostDistortionMap;
@@ -285,13 +281,15 @@ void CloudsVisualSystem::setup(){
     if(bIsSetup){
 		return;
 	}
-    
 	
     backgroundGradientExponent = 1.0;
     bWashGradient = false;
 
 	bEnablePostFX = false;
 	bUseInteractiveCamera = false;
+    bEnableInteractiveSpin = false;
+    bInvertCameraSpinAxis = false;
+    cameraSpinDamp = 0.0;
 	interactiveCameraDamping = 0;
 	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
 	interactiveCameraRot = ofVec2f(0,0);
@@ -350,6 +348,7 @@ void CloudsVisualSystem::setup(){
 
     bEnablePostFX = false;
 	bUseInteractiveCamera = false;
+    bEnableInteractiveSpin = false;
 	interactiveCameraDamping = 0;
 	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
 	interactiveCameraRot = ofVec2f(0,0);
@@ -384,9 +383,6 @@ void CloudsVisualSystem::playSystem(){
 		CloudsRegisterInputEvents(this);
 
 		ofRegisterKeyEvents(this);
-#ifndef CLOUDS_APP
-        ofRegisterMouseEvents(this);
-#endif
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
 		
@@ -425,9 +421,6 @@ void CloudsVisualSystem::stopSystem(){
 		
 		CloudsUnregisterInputEvents(this);
 		ofUnregisterKeyEvents(this);
-#ifndef CLOUDS_APP
-        ofUnregisterMouseEvents(this);
-#endif
 		ofRemoveListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofRemoveListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
 			
@@ -611,11 +604,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             
 			ofPushStyle();
 			ofPushMatrix();
-			ofTranslate(0, getCanvasHeight() );
-			ofScale(1,-1,1);
-			
 			selfDrawOverlay();
-
 			ofPopMatrix();
 			ofPopStyle();
 	
@@ -698,13 +687,44 @@ void CloudsVisualSystem::drawScene(){
         interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
         interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
 
+        if(bEnableInteractiveSpin){
+            float rxp = ofMap(GetCloudsInputX(), 0, getCanvasWidth(),  -interactiveCameraSpinRange.x, interactiveCameraSpinRange.x, true);
+            float ryp = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -interactiveCameraSpinRange.y, interactiveCameraSpinRange.y, true);
+            float cameraDampSquared = powf(cameraSpinDamp,2.0f);
+            interactiveCameraSpin.x = interactiveCameraSpin.x*(1.0-cameraDampSquared) + (rxp * cameraDampSquared);
+            interactiveCameraSpin.y = interactiveCameraSpin.y*(1.0-cameraDampSquared) + (ryp * cameraDampSquared);
+            if(bInvertCameraSpinAxis){
+                ofRotate(interactiveCameraSpin.x,
+                         getCameraRef().getSideDir().x,
+                         getCameraRef().getSideDir().y,
+                         getCameraRef().getSideDir().z);
+                ofRotate(interactiveCameraSpin.y,
+                         getCameraRef().getUpDir().x,
+                         getCameraRef().getUpDir().y,
+                         getCameraRef().getUpDir().z);
+            }
+            else{
+                ofRotate(interactiveCameraSpin.x,
+                         getCameraRef().getUpDir().x,
+                         getCameraRef().getUpDir().y,
+                         getCameraRef().getUpDir().z);
+                ofRotate(interactiveCameraSpin.y,
+                         getCameraRef().getSideDir().x,
+                         getCameraRef().getSideDir().y,
+                         getCameraRef().getSideDir().z);
+            }
+        }
+
+        //remove any current transform from the scene
         GLfloat model[16];
         glGetFloatv(GL_MODELVIEW_MATRIX, model);
         ofMatrix4x4 curmv;
         curmv.set(model);
         ofMultMatrix(curmv.getInverse());
+        
         ofRotate( interactiveCameraRot.x, 0, 1, 0);
         ofRotate( interactiveCameraRot.y, 1, 0, 0);
+        
         ofMultMatrix(curmv);
     }
 	
@@ -719,6 +739,7 @@ void CloudsVisualSystem::drawScene(){
 	
 	//draw this visual system
 	ofPushStyle();
+	ofSetLineWidth(1);
 	selfDraw();
 	checkOpenGLError(getSystemName() + ":: DRAW");
 	ofPopStyle();
@@ -1721,12 +1742,21 @@ void CloudsVisualSystem::setupCameraGui()
 	
 	camGui->addSpacer();
 	camGui->addToggle("InteractiveCamera", &bUseInteractiveCamera);
+
 	camGui->addSlider("damping", 0, 1, &interactiveCameraDamping);
 	
-	camGui->addMinimalSlider("minX", -90	, 90, &interactiveCameraMinX);
-	camGui->addMinimalSlider("maxX", -90	, 90, &interactiveCameraMaxX);
-	camGui->addMinimalSlider("minY", -90	, 90, &interactiveCameraMinY);
-	camGui->addMinimalSlider("maxY", -90	, 90, &interactiveCameraMaxY);
+	camGui->addMinimalSlider("minX", -90, 90, &interactiveCameraMinX);
+	camGui->addMinimalSlider("maxX", -90, 90, &interactiveCameraMaxX);
+	camGui->addMinimalSlider("minY", -90, 90, &interactiveCameraMinY);
+	camGui->addMinimalSlider("maxY", -90, 90, &interactiveCameraMaxY);
+    
+    camGui->addToggle("Spin Camera", &bEnableInteractiveSpin);
+    camGui->addSlider("Spin Camera Damp", 0.0, .5, &cameraSpinDamp);
+    camGui->addSlider("Spin Camera Range X", 0, 180, &interactiveCameraSpinRange.x);
+    camGui->addSlider("Spin Camera Range Y", 0, 180, &interactiveCameraSpinRange.y);
+    camGui->addToggle("Invert Spin Axis", &bInvertCameraSpinAxis);
+    
+    
 	camGui->addSpacer();
 	
 	vector<string> transitions;
@@ -2627,7 +2657,8 @@ void CloudsVisualSystem::bindWidgetToTimeline(ofxUIWidget* widget)
         {
             ofxUIToggle *t = (ofxUIToggle *) widget;
             tlToggleMap[t] = timeline->addSwitches(widget->getName(),
-												   widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml");
+												   ofFilePath::addTrailingSlash(timeline->getWorkingFolder()) +
+                                                   widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml");
         }
             break;
             
@@ -2635,7 +2666,8 @@ void CloudsVisualSystem::bindWidgetToTimeline(ofxUIWidget* widget)
         {
             ofxUINumberDialer *nd = (ofxUINumberDialer *) widget;
             tlDialerMap[nd] = timeline->addCurves(widget->getName(),
-												  widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml",
+												  ofFilePath::addTrailingSlash(timeline->getWorkingFolder()) +
+                                                  widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml",
 												  ofRange(nd->getMin(), nd->getMax()), nd->getValue());
         }
             break;
@@ -2653,7 +2685,8 @@ void CloudsVisualSystem::bindWidgetToTimeline(ofxUIWidget* widget)
         {
             ofxUISlider *s = (ofxUISlider *) widget;
             tlSliderMap[s] = timeline->addCurves(widget->getName(),
-												 widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml",
+												 ofFilePath::addTrailingSlash(timeline->getWorkingFolder()) +
+                                                 widget->getCanvasParent()->getName() + "_" + widget->getName() + ".xml",
 												 ofRange(s->getMin(), s->getMax()), s->getValue());
         }
             break;
@@ -3664,14 +3697,17 @@ void CloudsVisualSystem::billBoard(ofVec3f globalCamPosition, ofVec3f globelObje
 void CloudsVisualSystem::drawBackground()
 {
 	
+	ofPushStyle();
+	ofPushMatrix();
+    ofTranslate(0, getCanvasHeight());
+    ofScale(1,-1,1);
 	drawBackgroundGradient();
+	ofPopMatrix();
+	ofPopStyle();
 	
 	ofPushStyle();
 	ofPushMatrix();
-    //MA:: changed ofGetHeight to getCanvasHeight to fix post processing bugs
-	ofTranslate(0, getCanvasHeight());
-	ofScale(1,-1,1);
-	selfDrawBackground();
+    selfDrawBackground();
 	checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");		
 	ofPopMatrix();
 	ofPopStyle();

@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>855.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -87,6 +87,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>GitHubMap</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Gource</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Kittenstep</Name>
     <Value>0</Value>
 </Widget>
@@ -144,14 +154,4 @@
     <Kind>2</Kind>
     <Name>Zipcode</Name>
     <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>GitHubMap</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Gource</Name>
-    <Value>0</Value>
 </Widget>

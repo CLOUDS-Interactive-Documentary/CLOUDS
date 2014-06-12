@@ -304,9 +304,6 @@
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.cpp">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClCompile>
@@ -1935,9 +1932,6 @@
       <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h">

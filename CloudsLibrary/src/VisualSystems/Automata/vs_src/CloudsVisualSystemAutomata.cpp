@@ -97,7 +97,7 @@ void CloudsVisualSystemAutomata::selfSetup()
     bIs2D = true;
 	
     seedDir.listDir(getVisualSystemDataPath() + "seedImages");
-    seedDir.sort();
+    //seedDir.sort();
     selectedSeedIdx = -1;
 }
 

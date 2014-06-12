@@ -57,6 +57,7 @@ CloudsRGBDVideoPlayer::~CloudsRGBDVideoPlayer(){
 //---------------------------------------------------------------
 bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume){
 
+	cout << "*** SETTING UP CLIP " << calibrationXMLPath << endl;
     if (!ofFile::doesFileExist(videoPath)){
     	ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
         return false;
@@ -66,6 +67,8 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
     	ofLogError("CloudsRGBDVideoPlayer::setup") << "XML path " << calibrationXMLPath << " failed to load";
 		return false;
 	}
+
+	cout << "*** SETTING UP CLIP FILES ARE PRESENT " << endl;
 
     if(!bEventRegistered){
 		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
@@ -84,6 +87,7 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
     nextPlayer->setUseTexture(false);
 	bLoadResult = false;
 
+	cout << "*** SETTING UP CLIP STARTING THREAD" << endl;
     startThread(true);
 
     return true;
@@ -97,6 +101,8 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 
 //---------------------------------------------------------------
 void CloudsRGBDVideoPlayer::threadedFunction(){
+	
+	cout << "*** SETTING UP CLIP ENTERED THREAD" << endl;
 
     if(!nextPlayer->loadMovie(nextVideoPath)){
 		ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << nextVideoPath << " failed to load";
@@ -114,6 +120,8 @@ void CloudsRGBDVideoPlayer::threadedFunction(){
     
 	nextClipIsVO = false;
     nextClipVolumeAdjustment = nextClipVolume;
+	
+	cout << "*** SETTING UP CLIP FINISHED SETUP" << endl;
 
     bLoadResult = true;
 }
@@ -129,11 +137,14 @@ bool CloudsRGBDVideoPlayer::setupVO(string audioPath){
 	
 	clipPrerolled = true;
 	nextClipIsVO = true;
+	bLoadResult = true;
 	return true;
 }
 
 void CloudsRGBDVideoPlayer::swapAndPlay(){
 	
+	cout << "*** SWAPPING CLIP" << endl;
+
 	if(!nextClipIsVO){
 		
 		ofxXmlSettings XML;
@@ -246,6 +257,7 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 
 	if(clipPrerolled){
 		if(bLoadResult){
+			cout << "*** STARTING PLAYER FROM SWAP" << endl;
 			startPlayer();
 		}
 		else{
@@ -256,6 +268,7 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::startPlayer(){
+
 
 	currentVoiceoverPlayer->stop();
 	currentPlayer->stop();
@@ -359,11 +372,12 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		currentPlayer->update();
 	}
 	
-	if(clipPrerolled && !nextClipIsVO){
+	if(bLoadResult && clipPrerolled && !nextClipIsVO){
 		nextPlayer->update();
 	}
 
 	if(bPlayWhenReady && bLoadResult){
+		cout << "*** STARTING PLAYER FROM UPDATE" << endl;
 		startPlayer();
 		bPlayWhenReady = false;
 	}

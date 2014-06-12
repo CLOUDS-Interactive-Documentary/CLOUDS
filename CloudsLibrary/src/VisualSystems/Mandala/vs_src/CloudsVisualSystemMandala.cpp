@@ -560,7 +560,7 @@ void CloudsVisualSystemMandala::selfUpdate()
 		}
 	}
 	
-	ofSetWindowTitle( ofToString(ofGetFrameRate()) );
+//	ofSetWindowTitle( ofToString(ofGetFrameRate()) );
 }
 
 void CloudsVisualSystemMandala::selfDraw()

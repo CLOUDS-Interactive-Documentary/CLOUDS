@@ -134,6 +134,7 @@ void CloudsVisualSystemSwim::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemSwim::selfDraw()
 {
+
     creatures.draw(getCameraRef());
     //bubbles.draw();
     snow.draw(getCameraRef());
@@ -141,8 +142,11 @@ void CloudsVisualSystemSwim::selfDraw()
 
 void CloudsVisualSystemSwim::selfPostDraw()
 {
+
+	
     glPushAttrib(GL_ENABLE_BIT);
     ofDisableDepthTest();
+	ofDisableAlphaBlending();
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());

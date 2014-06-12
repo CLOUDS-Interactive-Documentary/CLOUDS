@@ -268,7 +268,11 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 }
 
 vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
+#ifdef OCULUS_RIFT
+    vector<CloudsClip*> startingNodes = parser->getClipsWithKeyword("#oculus");
+#else
     vector<CloudsClip*> startingNodes = parser->getClipsWithKeyword("#start");
+#endif
     //safe guard delete any starters that don't have questions
     for(int i = startingNodes.size()-1; i >= 0; i--){
         if(!startingNodes[i]->hasQuestion() ) {
@@ -279,16 +283,6 @@ vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
             ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i]->getID() << " has no media asset, removing.";
             startingNodes.erase(startingNodes.begin() + i);
         }
-        #ifdef OCULUS_RIFT
-        else if(!startingNodes[i]->hasSpecialKeyword("#oculus")){
-            ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i]->getID() << " is not tagged for the oculus.";
-            startingNodes.erase(startingNodes.begin() + i);
-        }
-        #endif
-        //JG rig question
-//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
-//			startingNodes.erase(startingNodes.begin() + i);
-//        }
     }
     cout << "returning " << startingNodes.size() << " nodes!" << endl;
     return startingNodes;
@@ -303,7 +297,8 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     
 #ifdef CLOUDS_SCREENING
 	if(run.questionsAsked >= screeningQuestionClips.size()-1){
-		visualSystems->getPresetForSystem("Balloons", "Credits");
+        preset = visualSystems->getPresetForSystem("Balloons", "CREDITS_FINAL");
+        return true;
 	}
 #endif
 	
@@ -433,7 +428,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
     hardIntros.push_back("audiovisualization");
     hardIntros.push_back("big data"); 
     hardIntros.push_back("videogames");
-
+    hardIntros.push_back("clouds");
+    
     int firstActNum = 0;
     if(run.actCount == 0 && ofContains(hardIntros, seedTopic)){
         run.actCount = 1; //force
@@ -890,6 +886,7 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 
 	/////////////////SELECTION
 	float topScore = 0;
+    float secondTopScore = 0;
 	vector< pair<float, string> > cliplogs;
 	for(int i = 0; i < nextOptions.size(); i++){
 
@@ -898,15 +895,28 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 		stringstream cliplog;
 		cliplog << state.duration << "\t\t\t" << nextClipOption->getLinkName() << endl;
 		float score = scoreForClip(state, nextClipOption, cliplog);
-		topScore = MAX(topScore, score);
+//        if(score > topScore){
+//            secondTopScore = topScore;
+//            topScore = score;
+//        }
+//        else if(score > secondTopScore){
+//            secondTopScore = score;
+//        }
+//		topScore = MAX(topScore, score);
 		cliplogs.push_back(make_pair(score, cliplog.str()));
-		
 		nextClipOption->currentScore = score;
 	}
 	
 	
 	if(bLogClipDetails){
 		sort(cliplogs.begin(), cliplogs.end(), logsort);
+        if(cliplogs.size() > 0){
+            topScore = cliplogs[0].first;
+        }
+        if(cliplogs.size() > 1){
+            secondTopScore = cliplogs[1].first;
+        }
+        
 		for(int i = 0; i < cliplogs.size(); i++){
 			state.log << cliplogs[i].second;
 		}
@@ -923,7 +933,7 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 	
 	vector<CloudsClip*> winningClips;
 	for(int i = 0; i < nextOptions.size(); i++){
-		if(nextOptions[i]->currentScore == topScore){
+		if(nextOptions[i]->currentScore == topScore || (nextOptions[i]->currentScore == secondTopScore && secondTopScore != 0) ){
 			winningClips.push_back(nextOptions[i]);
 		}
 	}
@@ -1163,7 +1173,7 @@ float CloudsStoryEngine::scoreForTopic(CloudsStoryState& state, string potential
         return 0;
     }
     
-    if(ofContains(state.topicHistory, potentialNextTopic) && !state.topicNum == maxTopicsPerAct-1){
+    if(ofContains(state.topicHistory, potentialNextTopic) && state.topicNum != maxTopicsPerAct-1){
 		if(bLogTopicDetails)state.log << state.duration << "\t\t\t\t\tREJECTED Topic " << potentialNextTopic << " has already been explored" << endl;
         return 0;
     }

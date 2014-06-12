@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Occlusion</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>289.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>652.000000000</XPosition>
+    <YPosition>414.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>

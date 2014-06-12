@@ -12,12 +12,12 @@
 
 #include "CloudsVisualSystem.h"
 
-#ifdef TARGET_OSX
-#include "ofxAVFVideoPlayer.h"
-#endif
-
 #include "fft.h"
 #include "fftOctaveAnalyzer.h"
+
+#ifdef TARGET_OSX
+#include "ofAVFoundationPlayer.h"
+#endif
 
 #define BUFFER_SIZE 512
 
@@ -226,7 +226,7 @@ protected:
 #ifdef TARGET_OSX
 	bool bModeVideo;
 	bool videoPlayerReady;
-	ofxAVFVideoPlayer videoPlayer;
+	ofAVFoundationPlayer videoPlayer;
 #endif
     bool soundPlayerReady;
 	ofSoundPlayer soundPlayer;

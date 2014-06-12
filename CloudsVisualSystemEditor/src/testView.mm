@@ -12,8 +12,8 @@ struct sortObject {
 } cohesionSort;
 
 
-bool clipsort(CloudsClip a, CloudsClip b){
-	return a.getID().compare( b.getID() ) < 0;
+bool clipsort(CloudsClip* a, CloudsClip* b){
+	return a->getID().compare( b->getID() ) < 0;
 }
 
 @implementation testView
@@ -25,6 +25,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
     goToNext = false;
 	currentVisualSystem = NULL;
 	selectedPreset = NULL;
+
+    ofSetDataPathRoot("../../");
 	
     parser.loadFromFiles();
 
@@ -59,8 +61,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	filterGradeABox.state  = NSOffState;
 	
 	[self updateFilters:self];
-
-    NSLog(@"All clip table? %@", allClipTable);
     
     [clipTable setTarget:self];
     [clipTable setDoubleAction:@selector(loadClipFromTable:)];
@@ -96,9 +96,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	if(runningTest){
 		
-//		if(ofGetElapsedTimef() - lastSystemStartTime > 10){
-		if(goToNext){
-            goToNext = false;
+		if(ofGetElapsedTimef() - lastSystemStartTime > 10){
+//		if(goToNext){
+//            goToNext = false;
 
 			if(currentVisualSystem != NULL){
 				cout << "5) (" << currentTestPresetIndex << "/" << testPresetIndeces.size() << ") STOPPING SYSTEM " << currentVisualSystem->getSystemName() << endl;
@@ -139,6 +139,10 @@ bool clipsort(CloudsClip a, CloudsClip b){
 				
 				if(i == testPresetIndeces.size()){
 					runningTest = false;
+                    cout<<"TEST COMPLETE : Reshufling and looping test"<<endl;
+                    currentTestPresetIndex = 0;
+                    random_shuffle(testPresetIndeces.begin(), testPresetIndeces.end());
+                    runningTest = true;
 				}
 				
 				testBatchIndex = 0;
@@ -156,11 +160,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
                 string debugCurrentPreset;
 				testBatchIndex++;
 				currentTestPresetIndex++;
-                if(currentTestPresetIndex == testPresetIndeces.size()-1){
-                    cout<<"TEST COMPLETE : Reshufling and looping test"<<endl;
-                    currentTestPresetIndex = 0;
-                    random_shuffle(testPresetIndeces.begin(), testPresetIndeces.end());
-                }
+//                if(currentTestPresetIndex == testPresetIndeces.size()-1){
+//
+//                }
 			}
 			
 		}
@@ -211,7 +213,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
     if(sender == clipTable){
         cout<<"Sender for this was clipTable"<<endl;
         if(clipTable.selectedRow >= 0){
-            cout<<associatedClips[ clipTable.selectedRow ].getLinkName()<<endl;
+            cout<<associatedClips[ clipTable.selectedRow ]->getLinkName()<<endl;
             [self loadClip: associatedClips[ clipTable.selectedRow ] ];
             
         }
@@ -219,17 +221,17 @@ bool clipsort(CloudsClip a, CloudsClip b){
     else if(sender == allClipTable){
         if(allClipTable.selectedRow >= 0){
             cout<<"Sender for this was clipTable"<<endl;
-            cout<<parser.getAllClips()[ allClipTable.selectedRow ].getLinkName()<<endl;
+            cout<<parser.getAllClips()[ allClipTable.selectedRow ]->getLinkName()<<endl;
             [self loadClip: parser.getAllClips()[ allClipTable.selectedRow ] ];
             
         }
     }
 }
 
-- (IBAction)loadClip:(CloudsClip&)clip
+- (IBAction)loadClip:(CloudsClip*)clip
 {
 	cout<<"Im in load clip"<<endl;
-	if(clip.hasMediaAsset && clip.voiceOverAudio && CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
+	if(clip->hasMediaAsset && clip->voiceOverAudio && CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath) ){
 		
 		CloudsVisualSystem::getRGBDVideoPlayer().swapAndPlay();
 //		CloudsVisualSystem::setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
@@ -238,8 +240,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		currentClip = clip;
 	}
-	else if(clip.hasMediaAsset && CloudsVisualSystem::getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, clip.combinedSRTPath, 1,clip.speakerVolume) ){
-		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
+	else if(clip->hasMediaAsset && CloudsVisualSystem::getRGBDVideoPlayer().setup( clip->combinedVideoPath, clip->combinedCalibrationXMLPath, clip->getSubtitlesPath(), 1, clip->speakerVolume) ){
+		cout<<"clip.speakerVolume : " << clip->speakerVolume << endl;
 		CloudsVisualSystem::getRGBDVideoPlayer().swapAndPlay();
 //		CloudsVisualSystem::setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
 //                                      CloudsSpeaker::speakers[clip.person].lastName,
@@ -248,7 +250,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 	}
 	else{
-		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
+		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip->combinedVideoPath << " is not valid";
 	}	
 }
 
@@ -373,7 +375,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)mousePressed:(NSPoint)p button:(int)button
 {
-	
+
 }
 
 - (void)mouseReleased:(NSPoint)p button:(int)button
@@ -484,14 +486,14 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		while (idx != NSNotFound) {
 			
 			visualSystems.suppressClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(),
-									   associatedClips[idx].getLinkName());
+									   associatedClips[idx]->getLinkName());
 			
 			// get the next index in the set
 			idx = [clipTable.selectedRowIndexes indexGreaterThanIndex:idx];
 		}
 		
 		
-        cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[self.selectedPresetIndex].getID()<<endl;
+        cout<<"Clip: "<<associatedClips[clipTable.selectedRow]->getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[self.selectedPresetIndex].getID()<<endl;
         visualSystems.savePresets();
 		
 		[self updateAssociatedClips];
@@ -511,13 +513,13 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		while (idx != NSNotFound) {
 			
 			visualSystems.unsuppressClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(),
-										 suppressedClips[idx].getLinkName());
+										 suppressedClips[idx]->getLinkName());
 			
 			// get the next index in the set
 			idx = [suppressedClipTable.selectedRowIndexes indexGreaterThanIndex:idx];
 		}
 		
-        cout<<"Clip: "<<suppressedClips[suppressedClipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[self.selectedPresetIndex].getID()<<endl;
+        cout<<"Clip: "<<suppressedClips[suppressedClipTable.selectedRow]->getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[self.selectedPresetIndex].getID()<<endl;
         
 		visualSystems.savePresets();
 		
@@ -535,7 +537,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	   presetTable.selectedRow  >= 0)
 	{
 		visualSystems.linkClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(),
-							   parser.getAllClips()[allClipTable.selectedRow].getLinkName());
+							   parser.getAllClips()[allClipTable.selectedRow]->getLinkName());
 		
 		visualSystems.savePresets();
 
@@ -625,23 +627,23 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	}
 	else if(aTableView == clipTable){
 		if([@"clip" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: associatedClips[rowIndex].getLinkName().c_str() ];
+			return [NSString stringWithUTF8String: associatedClips[rowIndex]->getLinkName().c_str() ];
 		}
 		else if([@"keyword" isEqualToString:aTableColumn.identifier]){
 			if(visualSystems.isClipLinked(visualSystems.getPresets()[self.selectedPresetIndex].getID(),
-										  associatedClips[rowIndex].getLinkName() )){
+										  associatedClips[rowIndex]->getLinkName() )){
 				return @"LINK";
 			}
-			return [NSString stringWithUTF8String: ofJoinString([self entries:associatedClips[rowIndex].getKeywords()
+			return [NSString stringWithUTF8String: ofJoinString([self entries:associatedClips[rowIndex]->getKeywords()
 																   sharedWith:associatedKeywords], ",").c_str() ];
 		}
 	}
 	else if(aTableView == suppressedClipTable){
 		if([@"clip" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: suppressedClips[rowIndex].getLinkName().c_str() ];
+			return [NSString stringWithUTF8String: suppressedClips[rowIndex]->getLinkName().c_str() ];
 		}
 		else if([@"keyword" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: ofJoinString([self entries:suppressedClips[rowIndex].getKeywords()
+			return [NSString stringWithUTF8String: ofJoinString([self entries:suppressedClips[rowIndex]->getKeywords()
 																   sharedWith:associatedKeywords], ",").c_str() ];
 		}		
 	}
@@ -667,15 +669,15 @@ bool clipsort(CloudsClip a, CloudsClip b){
 //	}
 	else if(aTableView == allClipTable){
 		if([@"clip" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
+			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex]->getLinkName().c_str() ];
 		}
 		else{
-			CloudsClip& clip = parser.getAllClips()[rowIndex];
+			CloudsClip* clip = parser.getAllClips()[rowIndex];
 			vector<CloudsVisualSystemPreset> presets =
-				visualSystems.getPresetsForKeywords( clip.getKeywords(), clip.getLinkName() );
+				visualSystems.getPresetsForKeywords( clip->getKeywords(), clip->getLinkName() );
 			int numPresets = 0;
 			for(int i = 0; i < presets.size(); i++){
-				if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
+				if(!visualSystems.isClipSuppressed(presets[i].getID(), clip->getLinkName()) &&
 				   presets[i].enabledScreen)
 				{
 					numPresets++;
@@ -721,6 +723,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (IBAction) runTests:(id)sender
 {
+
 	testPresetIndeces = visualSystems.getFilteredPresetIndeces(true,false,false);
 	random_shuffle( testPresetIndeces.begin(),testPresetIndeces.end() );
 	
@@ -784,12 +787,12 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		return;
 	}
 	
-	CloudsClip& clip = parser.getAllClips()[allClipTable.selectedRow];
+	CloudsClip* clip = parser.getAllClips()[allClipTable.selectedRow];
 	vector<CloudsVisualSystemPreset> presets =
-	visualSystems.getPresetsForKeywords( clip.getKeywords(), clip.getLinkName() );
+        visualSystems.getPresetsForKeywords( clip->getKeywords(), clip->getLinkName() );
 	currentClipPresets.clear();
 	for(int i = 0; i < presets.size(); i++){
-		if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
+		if(!visualSystems.isClipSuppressed(presets[i].getID(), clip->getLinkName()) &&
 		   presets[i].enabled())
 		{
 			currentClipPresets.push_back( presets[i] );
@@ -877,7 +880,7 @@ completionsForSubstring:(NSString *)substring
 		//create a set of all the names
 		set<string> clipIds;
 		for(int i = 0; i < associatedClips.size(); i++){
-			clipIds.insert(associatedClips[i].getLinkName());
+			clipIds.insert(associatedClips[i]->getLinkName());
 		}
 		
 		//insert the links
@@ -889,7 +892,7 @@ completionsForSubstring:(NSString *)substring
 		}
 		
 		for(int i = associatedClips.size() - 1; i >= 0; i-- ){
-			if(visualSystems.isClipSuppressed(selectedPreset->getID(), associatedClips[i].getLinkName())){
+			if(visualSystems.isClipSuppressed(selectedPreset->getID(), associatedClips[i]->getLinkName())){
 				//			cout << "adding suppressed clip " << associatedClips[i].getLinkName();
 				suppressedClips.push_back(associatedClips[i]);
 				associatedClips.erase(associatedClips.begin() + i);

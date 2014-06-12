@@ -44,14 +44,14 @@ void CloudsExporter::saveGephiCSV(CloudsFCPParser& parser){
 	ofBuffer csvBuffer;
 	csvBuffer.append("source,target\n");
 	for(int i = 0; i < parser.getAllClips().size(); i++){
-		CloudsClip& clipA = parser.getAllClips()[i];
-		string nameA = clipA.getLinkName();
-		vector<CloudsClip> connections = parser.getClipsWithKeyword(clipA.getKeywords());
+		CloudsClip* clipA = parser.getAllClips()[i];
+		string nameA = clipA->getLinkName();
+		vector<CloudsClip*> connections = parser.getClipsWithKeyword(clipA->getKeywords());
 		for(int j = 0; j < connections.size(); j++){
-			CloudsClip& clipB = connections[j];
-			string nameB = connections[j].getLinkName();
+			CloudsClip* clipB = connections[j];
+			string nameB = connections[j]->getLinkName();
 			if(nameA != nameB &&
-			   clipA.person != clipB.person &&
+			   clipA->person != clipB->person &&
 			   !parser.linkIsSuppressed(nameA, nameB) &&
 //			   !parser.clipLinksTo(nameA, nameB) &&
 			   parser.getNumberOfSharedKeywords(clipA, clipB) > 1 )
@@ -77,16 +77,16 @@ void CloudsExporter::savePajekNetwork(CloudsFCPParser& parser){
 	pajekBuffer.append("*Vertices " + ofToString(parser.getAllClips().size()) + "\n");
 	map<string,string> nodeIndex;
 	for(int i = 0; i < parser.getAllClips().size(); i++){
-		nodeIndex[parser.getAllClips()[i].getLinkName()] = ofToString(i);
-		pajekBuffer.append( ofToString(i) + " \"" + parser.getAllClips()[i].getLinkName() + "\"\n" );
+		nodeIndex[parser.getAllClips()[i]->getLinkName()] = ofToString(i);
+		pajekBuffer.append( ofToString(i) + " \"" + parser.getAllClips()[i]->getLinkName() + "\"\n" );
 	}
 	
 	pajekBuffer.append("\n*Edgeslist\n");
 	for(int i = 0; i < parser.getAllClips().size(); i++){
 		
-		CloudsClip& clipA = parser.getAllClips()[i];
-		string nameA = clipA.getLinkName();
-		vector<CloudsClip> connections = parser.getClipsWithKeyword(clipA.getKeywords());
+		CloudsClip* clipA = parser.getAllClips()[i];
+		string nameA = clipA->getLinkName();
+		vector<CloudsClip*> connections = parser.getClipsWithKeyword(clipA->getKeywords());
 		vector<CloudsLink> links = parser.getLinksForClip(clipA);
 		for(int l = 0; l < links.size(); l++){
 			connections.push_back(parser.getClipWithLinkName(links[l].targetName));
@@ -96,12 +96,12 @@ void CloudsExporter::savePajekNetwork(CloudsFCPParser& parser){
 		
 		for(int j = 0; j < connections.size(); j++){
 			
-			CloudsClip& clipB = connections[j];
-			string nameB = connections[j].getLinkName();
+			CloudsClip* clipB = connections[j];
+			string nameB = connections[j]->getLinkName();
 			
 			if(nameA != nameB &&
 			   (parser.clipLinksTo(nameA, nameB) ||
-			   (clipA.person != clipB.person &&
+			   (clipA->person != clipB->person &&
 			   !parser.linkIsSuppressed(nameA, nameB) &&
 			   parser.getNumberOfSharedKeywords(clipA, clipB) > 1) ))
 			{

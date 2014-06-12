@@ -1,4 +1,4 @@
-//
+ //
 //  CloudsVisualSystemBalloons.cpp
 //
 
@@ -254,7 +254,8 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	accScl = .2;
 	gravity = .01;
 	attractionToCenter = .01;
-	
+	progress = 0;
+    
 	cameraBounce = 10.;
 	cameraAttractionToCenter = 1.;
 	cameraTargetDist = 200;
@@ -310,12 +311,15 @@ void CloudsVisualSystemBalloons::selfSetDefaults()
 	
 	textSpeed = -.4;
 	textRadius = 3.;
-	
+    
 	shininess = 10;
 	lightScale = .75;
 	creditLightScale = .75;
 	facingRatioScale = .5;
 	
+    
+    creditPosition = 0;
+    
 	cameraBounceRadius = 3;
 	fontSize = 15;
 	creditStartTime = 0;
@@ -350,7 +354,8 @@ void CloudsVisualSystemBalloons::setBalloonColors()
 	
 	random_shuffle( col.begin(), col.end() );
 	
-	colFbo.allocate(dimX, dimY, GL_RGB16F);
+	//colFbo.allocate(dimX, dimY, GL_RGB16F);
+    colFbo.allocate(dimX, dimY, GL_RGB16);
 	colFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
     colFbo.getTextureReference().loadData( &col[0][0], dimX, dimY, GL_RGB);
 }
@@ -505,7 +510,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 		int numCredits = creditsXml.getNumTags("credit");
 		for(int i = 0; i < numCredits; i++){
 			string justification = creditsXml.getAttribute("credit", "align", "left", i) ;
-			ofVec3f pos( 0, i * dim * .7, 0);
+			ofVec3f pos( 0, 1000 + i * dim * 2.9, 0);
 			if(justification == "left"){
 				pos.x = -justificationWidth;
 			}
@@ -516,7 +521,7 @@ void CloudsVisualSystemBalloons::selfSetup()
 			creditsXml.pushTag("credit", i);
 			
 			BalloonCredit bc;
-			bc.title = ofToUpper(creditsXml.getValue("title", ""));
+			bc.title = (creditsXml.getValue("title", ""));
 			bc.name = creditsXml.getValue("name", "");
 			bc.pos = pos;
 			bc.font = &font;
@@ -536,6 +541,8 @@ void CloudsVisualSystemBalloons::selfSetup()
 		ofLogError("Balloons") << "Couldn't load credits XML!";
 		return;
 	}
+    
+    creditPosition = 0;
 }
 
 void CloudsVisualSystemBalloons::selfPresetLoaded(string presetPath){
@@ -550,6 +557,8 @@ void CloudsVisualSystemBalloons::selfSceneTransformation(){
 
 void CloudsVisualSystemBalloons::selfUpdate()
 {
+    cloudsCamera.lookTarget = ofVec3f(0,0,0);
+    
 	p0->getTextureReference().readToPixels(pospix);
 	ofFloatColor poscol = pospix.getColor(0,0);
 	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
@@ -582,6 +591,7 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	{
 		bgColor = bgRamp.getColor(0, (1. - progress) * bgRamp.getHeight());
 		bgColor2 = bgRamp.getColor(1, (1. - progress) * bgRamp.getHeight());
+        bgColor2.setBrightness(bgColor2.getBrightness()*.5);
 	}
 	
 }
@@ -696,7 +706,10 @@ void CloudsVisualSystemBalloons::selfDraw()
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	
-	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	
+    ofDisableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
 	shader.begin();
 	shader.setUniform1f("shininess", shininess);
 	shader.setUniform1f("lightScale", lightScale);

@@ -25,9 +25,9 @@ void CloudsSVGParser::loadFile(string path){
 	for(int i = 0; i < numNodes; i++){
 		string clipLinkName = graph.getAttribute("circle", "class", "", i);
 		if(parser->hasClipWithLinkName(clipLinkName)){
-			CloudsClip& clip = parser->getClipWithLinkName(clipLinkName);
-			clip.networkPosition2d = ofVec2f(graph.getAttribute("circle","cx", 0, i),
-											 graph.getAttribute("circle","cy", 0, i));
+			CloudsClip* clip = parser->getClipWithLinkName(clipLinkName);
+			clip->networkPosition2d = ofVec2f(graph.getAttribute("circle","cx", 0, i),
+											  graph.getAttribute("circle","cy", 0, i));
 //			cout << "Clip position " << clip.getLinkName() << " is " << clip.networkPosition2d << endl;
 		}
 		else{
@@ -78,14 +78,14 @@ void CloudsSVGParser::loadFile(string path){
 		}
 		
 		//use original keyword to pull clips
-		vector<CloudsClip> clips = parser->getClipsWithKeyword(keyword);
+		vector<CloudsClip*> clips = parser->getClipsWithKeyword(keyword);
 		
 		//but map it with associated keyword
 		keyword = associations[keyword];
 
 		for( int i = 0; i < clips.size(); i++){
-			if( clips[i].networkPosition2d != ofVec2f(0, 0) ){
-				keywordPositionLists[keyword].push_back( clips[i].networkPosition2d );
+			if( clips[i]->networkPosition2d != ofVec2f(0, 0) ){
+				keywordPositionLists[keyword].push_back( clips[i]->networkPosition2d );
 			}
 		}
 	}

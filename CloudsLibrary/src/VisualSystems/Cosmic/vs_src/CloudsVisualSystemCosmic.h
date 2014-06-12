@@ -9,6 +9,8 @@
 //
 
 #pragma once
+#define COSMIC_SHADER_TYPE ofShader
+//#define COSMIC_SHADER_TYPE ofxAutoReloadedShader
 
 #include "CloudsVisualSystem.h"
 #include "ofxColorPalettes.h"
@@ -17,6 +19,8 @@
 //TODO: rename this to your own visual system
 class CloudsVisualSystemCosmic : public CloudsVisualSystem {
   public:
+	CloudsVisualSystemCosmic();
+
     string getSystemName(){
 		return "Cosmic";
 	}
@@ -44,14 +48,6 @@ class CloudsVisualSystemCosmic : public CloudsVisualSystem {
     void selfSetDefaults();
     
     void selfKeyPressed(ofKeyEventArgs & args);
-//
-//	ofCamera& getCameraRef(){
-//		return cloudsCamera;
-//	}
-    
-//    ofCamera& getCameraRef(){
-//		return cam;
-//	}
 
     int ID(int x, int y); 
     void setupFboViewerGui(string name, ofFbo *fbo);
@@ -114,12 +110,12 @@ protected:
     ofFbo accFboDst;
     
     ofFbo electroFbo;
-    
-    ofxAutoReloadedShader accShader;
-    ofxAutoReloadedShader velShader;
-    ofxAutoReloadedShader posShader;
-    ofxAutoReloadedShader rdrShader;
-    ofxAutoReloadedShader radShader;
+
+    COSMIC_SHADER_TYPE accShader;
+    COSMIC_SHADER_TYPE velShader;
+    COSMIC_SHADER_TYPE posShader;
+    COSMIC_SHADER_TYPE rdrShader;
+    COSMIC_SHADER_TYPE radShader;
     
     bool bUpdateRadius;
     bool bUpdateAcceleration;
@@ -140,24 +136,25 @@ protected:
     ofFloatColor *floorColors;    
     
     //Sphere Shader
-    ofxAutoReloadedShader sphereShader;
+    COSMIC_SHADER_TYPE sphereShader;
     vector<bool *> sphereActive;
     vector<float *> sphereRadius;
     vector<float *> sphereAccLimit;
     vector<ofVec3f *> spherePosition;
     
     //Home Shader
-    ofxAutoReloadedShader homeShader;
+    //ofxAutoReloadedShader homeShader;
+    ofShader homeShader;
     bool bHomingActive;
     float homeForceLimit;
     
     //Electro Shader
-    ofxAutoReloadedShader electroShader;
+    COSMIC_SHADER_TYPE electroShader;
     bool bElectroActive;
     float electroForceLimit;
     
     //Attractor Shader
-    ofxAutoReloadedShader attractorShader;
+    COSMIC_SHADER_TYPE attractorShader;
     vector<bool *> attractorActive;
     vector<float *> attractorPower;
     vector<float *> attractorExpPower;
@@ -165,13 +162,13 @@ protected:
     vector<ofVec3f *> attractorPosition;
     
     //Floor Shader
-    ofxAutoReloadedShader floorShader;
+    COSMIC_SHADER_TYPE floorShader;
     int floorIndexSize;
     float shadowScale;
     float shadowOpacity;
     
     //Curl Noise Shader
-    ofxAutoReloadedShader noiseShader;
+    COSMIC_SHADER_TYPE noiseShader;
     bool bNoiseActive;
     float noiseForceLimit;
     float noiseScale;

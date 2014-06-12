@@ -12,6 +12,10 @@
 
 #include "CloudsVisualSystem.h"
 
+typedef struct {
+	vector<ofVec3f> points;
+} RibbonTrail;
+
 //TODO: rename this to your own visual system
 class CloudsVisualSystemTunnelDrawing : public CloudsVisualSystem {
   public:
@@ -23,6 +27,7 @@ class CloudsVisualSystemTunnelDrawing : public CloudsVisualSystem {
 		return "TunnelDrawing";
 	}
 
+	void selfSetDefaults();
 	//These methods let us add custom GUI parameters and respond to their events
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
@@ -79,10 +84,11 @@ class CloudsVisualSystemTunnelDrawing : public CloudsVisualSystem {
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
-    void selfMouseDragged(ofMouseEventArgs& data);
-    void selfMouseMoved(ofMouseEventArgs& data);
-    void selfMousePressed(ofMouseEventArgs& data);
-    void selfMouseReleased(ofMouseEventArgs& data);
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+	void selfInteractionStarted(CloudsInteractionEventArgs& args);
+	void selfInteractionDragged(CloudsInteractionEventArgs& args);
+	void selfInteractionEnded(CloudsInteractionEventArgs& args);
+	void addInteractionPoint(CloudsInteractionEventArgs& args);
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -90,25 +96,23 @@ class CloudsVisualSystemTunnelDrawing : public CloudsVisualSystem {
 		return camera;
 	}
     
-    //this holds all of our points
-    vector<ofVec3f> points;
-    //this keeps track of the center of all the points
-    ofVec3f center;
-    
-	//our camera objects for looking at the scene from multiple perspectives
-	ofCamera camera;
-	
-	//if usecamera is true, we'll turn on the camera view
-
-	
 protected:
     
-    //  Your Stuff
-    //
-		
+	void drawRibbonTrail(const RibbonTrail& trail, ofMesh& geo);
+    //this holds all of our points
+    map<int, RibbonTrail> currentTrails;
+	
+	//our camera objects for looking at the scene from multiple perspectives
+	ofCamera camera;
 	ofxUISuperCanvas* customGui;
 	float screenSpaceProjectDistance;
 	float fallOffSpeed;
-	float camFOV;
-	float debugSphereRad;
+	ofRange thicknessRange;
+	ofRange distanceRange;
+	ofShader colorShader;
+	bool drawWireframe;
+	bool drawFill;
+	ofFloatColor ribbonColorHSV;
+	ofFloatColor wireframeColorHSV;
+	
 };

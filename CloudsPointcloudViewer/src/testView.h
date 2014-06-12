@@ -23,13 +23,15 @@
 	CloudsHUDController hud;
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	
-	CloudsClip currentClip;
+	CloudsClip* currentClip;
 	int currentClipIndex;
 	
 	CloudsVisualSystem::RGBDTransitionType type;
 	CloudsTransitionController transitionController;
 
 	CloudsSound sound;
+    
+    ofFbo targetFbo;
 
 }
 

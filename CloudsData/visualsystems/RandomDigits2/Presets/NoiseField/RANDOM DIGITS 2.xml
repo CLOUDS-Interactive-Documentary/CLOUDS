@@ -1,37 +1,37 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>RANDOM DIGITS 2</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>990.000000000</XPosition>
-    <YPosition>212.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>X Count</Name>
     <Value>50</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>Y Count</Name>
     <Value>50</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>Z Count</Name>
     <Value>6</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>X Spacing</Name>
     <Value>64</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>Y Spacing</Name>
     <Value>50</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>Z Spacing</Name>
     <Value>1000</Value>
 </Widget>

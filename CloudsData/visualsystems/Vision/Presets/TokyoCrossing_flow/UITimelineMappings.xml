@@ -4,8 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>WINDOW HEIGHT</WidgetName>
-                <WidgetID>15</WidgetID>
+                <WidgetName>FLOW LINE LENGTH</WidgetName>
+                <WidgetID>17</WidgetID>
                 <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -20,16 +20,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>FLOW LINE LENGTH</WidgetName>
-                <WidgetID>17</WidgetID>
+                <WidgetName>WINDOW WIDTH</WidgetName>
+                <WidgetID>13</WidgetID>
                 <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>WINDOW WIDTH</WidgetName>
-                <WidgetID>13</WidgetID>
+                <WidgetName>WINDOW HEIGHT</WidgetName>
+                <WidgetID>15</WidgetID>
                 <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
             </Widget>
             <Track></Track>

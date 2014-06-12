@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -43,10 +43,10 @@
 <Widget>
     <Kind>28</Kind>
     <Name>c1</Name>
-    <XValue>0.265625000</XValue>
-    <YValue>0.210937500</YValue>
-    <RColor>152</RColor>
-    <GColor>173</GColor>
+    <XValue>0.218750000</XValue>
+    <YValue>0.179687500</YValue>
+    <RColor>211</RColor>
+    <GColor>255</GColor>
     <BColor>255</BColor>
     <AColor>255</AColor>
 </Widget>

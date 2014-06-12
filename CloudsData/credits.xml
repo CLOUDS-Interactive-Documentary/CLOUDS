@@ -3,7 +3,7 @@
 	<!-- US -->
 	<credit align="center">
 		<title>
-			Directors
+			DIRECTORS
 		</title>
 		<name>
 			Jonathan Minard, James George
@@ -13,7 +13,7 @@
 	<!-- GOLAN -->
 	<credit align="right">
 		<title>
-			Executive Producer
+			EXECUTIVE PRODUCER
 		</title>
 		<name>
 			Golan Levin 
@@ -23,7 +23,7 @@
 	<!-- WINSLOW -->
 	<credit align="left">
 		<title>
-			Producer
+			PRODUCER
 		</title>
 		<name>
 			Winslow Porter
@@ -33,7 +33,7 @@
 	<!-- LUKE -->
 	<credit align="left">
 		<title>
-			Music
+			MUSIC
 		</title>
 		<name>
 			R. Luke DuBois
@@ -43,7 +43,7 @@
 	<!-- BRADLEY -->
 	<credit align="left">
 		<title>
-			Design Director
+			DESIGN DIRECTOR
 		</title>
 		<name>
 			Bradley GMUNK Munkowitz
@@ -53,7 +53,7 @@
 	<!-- ELIE -->
 	<credit align="left">
 		<title>
-			Interaction Programming
+			INTERACTION PROGRAMMING
 		</title>
 		<name>
 			Ellie Zananiri
@@ -63,7 +63,7 @@
 	<!-- LARS -->
 	<credit align="right">
 		<title>
-			Lead Visual Programming
+			LEAD VISUAL PROGRAMMING
 		</title>
 		<name>
 			Lars Berg
@@ -73,20 +73,19 @@
 	<!-- SURYA -->
 	<credit align="left">
 		<title>
-			Lead Narrative Programming
+			LEAD NARRATIVE PROGRAMMING
 		</title>
 		<name>
-			Surya Mattu
+			Surya A. Mattu
 		</name>
 	</credit>
 
 
 <credit align="left">
 		<title>
-			Featuring
+			Casey Reas
 		</title>
 		<name>
-			Casey Reas
 
 			Bruce Sterling
 
@@ -95,10 +94,10 @@
 
 <credit align="left">
 		<title>
-			Featuring
+			Daniel Shiffman
 		</title>
 		<name>
-			Daniel Shiffman
+			
 
 			Diederick Huijbers
 
@@ -108,28 +107,33 @@
 
 <credit align="left">
 		<title>
-			Featuring
+			Elliot Woods
+			
 		</title>
 		<name>
 
-			Elliot Woods
 
 			Golan Levin
 
 	</name>
+
 	</credit>
-			Greg Borenstein
-
-			Jer Thorp
-
 	<credit align="left">
 		<title>
-			Featuring
+			Greg Borenstein
+			
 		</title>
 		<name>
 
-			Jesse Louis-Rosenberg
+			Jer Thorp
+		</name>
+	</credit>
 
+	<credit align="left">
+		<title>
+			Jesse Louis-Rosenberg
+		</title>
+		<name>
 			Jessica Rosenkrantz
 
 		</name>
@@ -137,45 +141,54 @@
 
 	<credit align="left">
 		<title>
-			Featuring
-		</title>
-		<name>
 
 			Joel Gethin Lewis
+			
+		</title>
+		<name>
 
 			John Maeda
 
 	</name>
 	</credit>
-
-			Josh Nimoy
-
-			Julia Kaganskiy
-
-		<credit align="left">
+	
+	<credit align="left">
 		<title>
-			Featuring
+			Josh Nimoy
 		</title>
 		<name>
-			
+
+			Julia Kaganskiy
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
 			Julian Oliver
+			
+		</title>
+		<name>
 
 			Karolina Sobecka
 
 		</name>
 	</credit>
 
-			Karsten Schmidt
-
-			Kyle Chayka
-
 	<credit align="left">
 		<title>
-			Featuring
+			Karsten Schmidt			
 		</title>
 		<name>
 
-			Kyle McDonald
+			Kyle Chayka
+			</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			Kyle McDonald			
+		</title>
+		<name>
 
 			Lindsay Howard
 
@@ -184,36 +197,34 @@
 
 	<credit align="left">
 		<title>
-			Featuring
+			Marcus Wendt			
 		</title>
 		<name>
-			Marcus Wendt
 
 			Marius Watz
 
-	</name>
+		</name>
 	</credit>
 
 		<credit align="left">
 		<title>
-			Featuring
+			Nick Fox-Gieg
+			
 		</title>
 		<name>
 
-			Nick Fox-Gieg
 
 			Philip Whitfield
 
-	</name>
+		</name>
 	</credit>
 
 			
 	<credit align="left">
 		<title>
-			Featuring
+			Rachel Binx			
 		</title>
 		<name>
-			Rachel Binx
 
 			Regine Debatty
 		</name>
@@ -222,24 +233,22 @@
 
 	<credit align="left">
 		<title>
-			Featuring
+			Satoru Higa			
 		</title>
 		<name>
 
-			Satoru Higa
-
 			Shantell Martin
 
-	</name>
+		</name>
 	</credit>
 
 
 	<credit align="left">
 		<title>
-			Featuring
+			Sofy Yuditskaya
 		</title>
 		<name>
-			Sofy Yuditskaya
+			
 
 			Theodore Watson
 
@@ -248,11 +257,9 @@
 
 		<credit align="left">
 		<title>
-			Featuring
+			Vera Glahn			
 		</title>
 		<name>
-
-			Vera Glahn
 
 			Zachary Lieberman
 		</name>
@@ -263,20 +270,19 @@
 
 	<credit align="left">
 		<title>
-			Creative Developers
+			CREATIVE DEVELOPERS
 		</title>
 		<name>
 			Lars Berg 
-
 			Patricio González-Vivo
 
-					</name>
+		</name>
 	</credit>
 
 
 	<credit align="left">
 		<title>
-			Creative Developers
+			CREATIVE DEVELOPERS
 		</title>
 		<name>
 
@@ -290,7 +296,7 @@
 
 	<credit align="left">
 		<title>
-			Creative Developers
+			CREATIVE DEVELOPERS
 		</title>
 		<name>
 
@@ -303,7 +309,7 @@
 
 	<credit align="left">
 		<title>
-			Creative Developers
+			CREATIVE DEVELOPERS
 		</title>
 		<name>
 
@@ -318,7 +324,7 @@
 
 	<credit align="left">
 		<title>
-			Interface Design
+			INTERFACE DESIGN
 		</title>
 		<name>
 
@@ -330,7 +336,7 @@
 
 	<credit align="left">
 		<title>
-			Interface Design
+			INTERFACE DESIGN
 		</title>
 		<name>
 
@@ -341,9 +347,9 @@
 		</name>
 	</credit>
 
-		<credit align="left">
+	<credit align="left">
 		<title>
-			Additional Cinematography
+			SECOND CAMERA
 		</title>
 		<name>
 
@@ -354,7 +360,18 @@
 
 	<credit align="left">
 		<title>
-			Additional Footage
+			LIGHTING
+		</title>
+		<name>
+
+			Paul Porter
+
+		</name>
+	</credit>
+
+	<credit align="left">
+		<title>
+			ADDITIONAL FOOTAGE
 		</title>
 		<name>
 
@@ -365,7 +382,7 @@
 	
 	<credit align="left">
 		<title>
-			Additional Sound
+			ADDITIONAL SOUND
 		</title>
 		<name>
 			Jules Laplace
@@ -375,7 +392,7 @@
 
 	<credit align="left">
 		<title>
-			Sound Engineer
+			SOUND ENGINEER
 		</title>
 		<name>
 			Brett Murphy
@@ -383,11 +400,9 @@
 	</credit>
 
 
-	
-
-<credit align="left">
+	<credit align="left">
 		<title>
-			Sponsors
+			SPONSORS
 		</title>
 		<name>
 			Studio for Creative Inquiry
@@ -396,7 +411,7 @@
 
 	<credit align="left">
 		<title>
-			Sponsors
+			SPONSORS
 		</title>
 		<name>
 			Eyebeam Art and Technology Center
@@ -405,16 +420,7 @@
 
 	<credit align="left">
 		<title>
-			Sponsors
-		</title>
-		<name>
-			The Kickstarter Community
-		</name>
-	</credit>
-
-	<credit align="left">
-		<title>
-			Sponsors
+			SPONSORS
 		</title>
 		<name>
 			Microsoft Research
@@ -423,7 +429,7 @@
 
 	<credit align="left">
 		<title>
-			Coded using
+			MADE WITH
 		</title>
 		<name>
 			openFrameworks
@@ -433,21 +439,10 @@
 
 	<credit align="left">
 		<title>
-			Thanks
+			THANK YOU 
 		</title>
 		<name>
-			Tribeca Film Institute 
-			#Storyscapes
-			Bombay Sapphire
-		</name>
-	</credit>
-
-	<credit align="left">
-		<title>
-			Special Thanks to 
-		</title>
-		<name>
-			Ingrid Kopp
+			Kickstarter Backers
 		</name>
 	</credit>
 

@@ -28,7 +28,7 @@ void testApp::setup(){
 	cout << "Starting with " << startingNodes.size() << endl;
 	
 
-	hud.setup();
+//	hud.setup();
 
 #ifdef OCULUS_RIFT
     // TODO: Re-enable the HUD
@@ -58,12 +58,12 @@ void testApp::setup(){
 
 //--------------------------------------------------------------------
 void testApp::portalHoverBegan(CloudsPortalEventArgs &args){
-    hud.questionHoverOn(args.question);
+//    hud.questionHoverOn(args.question);
 }
 
 //--------------------------------------------------------------------
 void testApp::portalHoverEnded(CloudsPortalEventArgs &args){
-	hud.questionHoverOff();
+//	hud.questionHoverOff();
 }
 
 
@@ -76,7 +76,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	intro.selfPostDraw();
-	hud.draw();
+//	hud.draw();
 }
 
 //--------------------------------------------------------------

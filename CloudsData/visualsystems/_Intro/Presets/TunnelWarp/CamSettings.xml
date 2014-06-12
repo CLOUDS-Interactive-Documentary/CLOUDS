@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>CamSettings</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>122.000000000</YPosition>
+    <YPosition>118.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -81,6 +81,11 @@
     <Value>0</Value>
 </Widget>
 <Widget>
+    <Kind>22</Kind>
+    <Name>VIEW</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>17</Kind>
     <Name>TOP</Name>
     <Value>0</Value>
@@ -123,7 +128,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>camera fwd force</Name>
-    <Value>0.000000000</Value>
+    <Value>0.576435208</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -138,5 +143,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>hold camera</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>

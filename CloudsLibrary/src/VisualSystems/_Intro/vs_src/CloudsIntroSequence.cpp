@@ -179,7 +179,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	tunnelGui->addSlider("Tunnel Tint B",  0, 1.0, &tint.b);
 	
 	tunnelGui->addSlider("Loose Rez X", 5, 20, &looseTunnelResolutionX);
-	tunnelGui->addSlider("Loose Rez Z", 5, 50, &looseTunnelResolutionZ);
+	tunnelGui->addSlider("Loose Rez Z", 5, 100, &looseTunnelResolutionZ);
     
 	tunnelGui->addButton("generate tunnel", false);
 	
@@ -324,7 +324,6 @@ void CloudsIntroSequence::updateWaiting(){
 	#ifdef OCULUS_RIFT
 	
 	#elif defined(KINECT_INPUT)
-	
 	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
 	if(startQuestions.size() > 0 && viewerState != k4w::ViewerState_None){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 8){
@@ -749,7 +748,7 @@ void CloudsIntroSequence::drawTunnel(){
 		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 120.);
 	}
 	else{
-		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 200.);
+		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 120.);
 	}
 	
 	tunnelShader.setUniform1f("cameraZ", warpCamera.getPosition().z);
@@ -958,7 +957,7 @@ void CloudsIntroSequence::drawHelperType(){
     ofEnableLighting();
 	glEnable(GL_DEPTH_TEST);
 	ofPopStyle();
-//	ofPopMatrix();
+
 }
 
 void CloudsIntroSequence::drawIntroNodes(){

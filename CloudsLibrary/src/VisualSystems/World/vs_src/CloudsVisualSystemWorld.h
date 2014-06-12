@@ -19,6 +19,8 @@
 class CloudsVisualSystemWorld : public CloudsVisualSystem {
 public:
     
+	CloudsVisualSystemWorld();
+
     string getSystemName();
     
     void selfSetup();

@@ -4,7 +4,7 @@
 #include "CloudsVisualSystem.h"
 
 #include "CloudsClusterNode.h"
-//#include "CloudsQuestion.h"
+#include "CloudsPortal.h"
 #include "CloudsRun.h"
 #include "ofxFTGLFont.h"
 #include "ofxNearestNeighbour.h"
@@ -38,6 +38,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     void setCurrentTopic(string topic);
     
 	//will add the latest state of the run to the traversal
+    void startTraverse();
 	void traverse();
 
 	void traverseToClip(CloudsClip* clip);
@@ -120,7 +121,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
-		if(lockCameraAxis){
+        if(useQuestionCam){
+            return questionCam;
+        }
+		else if(lockCameraAxis){
 			return axisCamera;
 		}
 		return easyCamera;
@@ -131,6 +135,15 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	bool finishedTraversing;
     void parseAssociations();
     
+	void setQuestions(vector<CloudsClip*> questions);
+	void populateDummyQuestions();
+    bool isQuestionSelected(){
+        return selectedQuestion != NULL;
+    }
+    CloudsPortal* getSelectedQuestion(){
+        return selectedQuestion;
+    }
+    
   protected:
 
 	ofxUISuperCanvas* nodesGui;
@@ -139,9 +152,11 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofxUISuperCanvas* traversalGui;
 	ofxUISuperCanvas* followCamGui;
 	ofxUISuperCanvas* typeGui;
+	ofxUISuperCanvas* questionGui;
 	
 	ofEasyCam easyCamera;
 	ofCamera axisCamera;
+    ofCamera questionCam;
 	CloudsAct* act;
 	
 	ofVec2f flickerCoord;
@@ -200,6 +215,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	bool drawTraversalPoints;
 	bool lockCameraAxis;
+    bool useQuestionCam;
 	float traverseCamFOV;
 	float traversCameraDistance;
 	float traversedNodeSize;
@@ -214,6 +230,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     float maxTraverseDistance;
     float minTraverseDistance;
     int minTraverseNextOptions;
+    int startTraverseClip;
+    
     ofxNearestNeighbour3D kdtree;
     
 	//colors~
@@ -276,5 +294,34 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     
 	ofVec3f randomDirection();
     int numTraversed;
+
+	vector<CloudsPortal> questions;
+    CloudsPortal* caughtQuestion;
+    CloudsPortal* selectedQuestion;
+    float selectedQuestionTime;
+    ofVec3f selectQuestionStartPos;
+    ofQuaternion selectQuestionStartRot;
+	
+	int currentQuestionFontSize;
+	int questionFontSize;
+	float questionFontScale;
+	float questionFontTracking;
+	float questionFontY;
+	ofxFTGLFont questionFont;
+	
+    ofVec3f cursor; //for question selection
+    ofVec3f stickyCursor;
+    
+    float questionCameraSpinSpeed;
+    float questionSpinAttenuate;
+    float questionCameraAxisDist;
+	float curQuestionCamRotation;
+	float questionScale;
+    float questionCameraDistance;
+	ofRange questionTugDistance;
+	void updateQuestions();
+	void drawQuestions();
+    void drawCursors();
+
 
 };

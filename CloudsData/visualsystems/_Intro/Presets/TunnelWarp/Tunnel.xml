@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Tunnel</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>289.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>572.000000000</XPosition>
+    <YPosition>424.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Tunnel Depth</Name>
-    <Value>357.142578125</Value>
+    <Value>562.980773926</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Tunnel Tint S</Name>
-    <Value>0.379310340</Value>
+    <Value>0.485576928</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,5 +43,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Loose Rez Z</Name>
-    <Value>50.000000000</Value>
+    <Value>81.730766296</Value>
 </Widget>

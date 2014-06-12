@@ -10,6 +10,7 @@
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	run = NULL;
 	act = NULL;
+
 	matchLineColor = false;
 	
 	parser = NULL;
@@ -33,6 +34,7 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	
 	drawTraversalPoints = false;
 	lockCameraAxis = false;
+    useQuestionCam = false;
 	traverseCamFOV = 0;
 	traversCameraDistance = 0;
 	traversedNodeSize = 0;
@@ -73,8 +75,8 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
     associationFontSize = 0;
     currentAssociationFont = 0;
     numTraversed = 0;
+	curQuestionCamRotation = 0;
 	///END INIT
-
 }
 
 void CloudsVisualSystemClusterMap::selfSetDefaults(){
@@ -119,7 +121,21 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     currentAssociationFont = 8;
     
 	traverseNextFrame = false;
-	
+	questionScale = .1;
+    questionCameraDistance = 10;
+    
+    useQuestionCam = false;
+    selectedQuestion = NULL;
+    caughtQuestion = NULL;
+    
+	questionScale = 0.1f;
+	questionFontScale = 14;
+	currentQuestionFontSize = 10;
+	questionFontSize = 5;
+	questionFontScale = 1.0;
+	questionFontTracking = 0;
+	questionFontY = 0;
+
 	firstClip = true;
 }
 
@@ -133,7 +149,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	followCamGui->addSlider("CAMERA DISTANCE", 10, 400, &traversCameraDistance);
 	followCamGui->addToggle("LOCK AXIS", &lockCameraAxis);
 	followCamGui->addSlider("FOV", 4, 90, &traverseCamFOV);
-	
+    
 	ofAddListener(followCamGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(followCamGui);
 	guimap[followCamGui->getName()] = followCamGui;
@@ -309,6 +325,30 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	guis.push_back(typeGui);
 	guimap[typeGui->getName()] = typeGui;
 	
+	
+	questionGui = new ofxUISuperCanvas("QUESTIONS", gui);
+	questionGui->copyCanvasStyle(gui);
+	questionGui->copyCanvasProperties(gui);
+	questionGui->setName("Questions");
+	questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+    questionGui->addToggle("QUESTION CAM", &useQuestionCam);
+	questionGui->addSlider("QUESTION SCALE", 0, 1.0, &questionScale);
+	questionGui->addSlider("QUESTION CAM DIST", 0, 100, &questionCameraDistance);
+	questionGui->addRangeSlider("QUESTION TUG DISTANCE", 10, 300, &questionTugDistance.min, &questionTugDistance.max);
+    questionGui->addSlider("QUESTCAM SPIN", .0, 1.0, &questionCameraSpinSpeed);
+    questionGui->addSlider("QUESTCAM AXIS DIST", 0.0, 100.0, &questionCameraAxisDist);
+	
+	questionGui->addLabel("QUESTION TYPE");
+	questionGui->addIntSlider("FONT SIZE", 4, 100, &questionFontSize);
+	questionGui->addSlider("FONT SCALE", 0, 1.0, &questionFontScale);
+	questionGui->addSlider("TRACKING", 0, 30, &questionFontTracking);
+	questionGui->addSlider("Y POSITION", -200, 200, &questionFontY);
+
+	ofAddListener(questionGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(questionGui);
+	guimap[questionGui->getName()] = questionGui;
+	
 }
 
 void CloudsVisualSystemClusterMap::selfGuiEvent(ofxUIEventArgs &e){
@@ -338,7 +378,8 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	firstClip = true;
 //	lastTraverseStartedIndex = -1;
 	flickerCoord = ofVec2f(0,0);
-
+    
+    
 	networkMesh.clear();
 	traversalMesh.clear();
 	optionsMeshNext.clear();
@@ -349,7 +390,8 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	clipIdToNodeIndex.clear();
 	
 	currentTraversalIndex = 0;
-	
+	startTraverseClip = 0;
+    
 	networkCentroid = ofVec3f(0,0,0);
 	ofVec3f maxBounds(0,0,0);
 	ofVec3f minBounds(0,0,0);
@@ -580,6 +622,10 @@ void CloudsVisualSystemClusterMap::allocateFlickerTexture(){
 	flickerNoiseTarget.set(0);
 }
 
+void CloudsVisualSystemClusterMap::startTraverse(){
+    startTraverseClip = traversalPath.size();
+    traverse();
+}
 
 void CloudsVisualSystemClusterMap::traverse(){
 	
@@ -587,19 +633,18 @@ void CloudsVisualSystemClusterMap::traverse(){
 	
 	if(act == NULL){
 		ofLogError("CloudsVisualSystemClusterMap::traverse") << "Traversed without ACT" << endl;
+		finishedTraversing = true;
+		percentTraversed = 1.0;
 		return;
 	}
 
 //	if(currentTraversalIndex < run->clipHistory.size()){
-	if(currentTraversalIndex < MIN(8,act->getAllClips().size()) ){
-//		CloudsClip* clip = run->clipHistory[currentTraversalIndex];
-//		CloudsClip* clip = run->clipHistory[currentTraversalIndex];
+	if(currentTraversalIndex < MIN(4,act->getAllClips().size()) ){
 		traverseToClip( act->getClip(currentTraversalIndex) );
 		percentTraversed = 0.0;
 		currentTraversalIndex++;
 	}
 	else if(autoTraversePoints){
-//		timeline->stop(); //finished!
 		finishedTraversing = true;
 		percentTraversed = 1.0;
 	}
@@ -828,9 +873,11 @@ void CloudsVisualSystemClusterMap::clearTraversal(){
     
     firstClip = true;
     traversalMesh.clear();
-	traversalPath.clear();
-
+    traversalPath.clear();
+    
     currentTraversalIndex = 0;
+    startTraverseClip = 0;
+    
 }
 
 
@@ -906,6 +953,7 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
+
 	if(!traverseNextFrame && autoTraversePoints && (firstClip || percentTraversed >= 1.0) ){
 		//traverseNextFrame = true;
 		traverse();
@@ -913,6 +961,10 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	//	percentTraversed = 0.0;
 	}
 
+#ifndef KINECT_INPUT
+    bUseInteractiveCamera = false;
+#endif
+    
 	///UPDATE ANIMATION
 	percentTraversed = ofMap(ofGetElapsedTimef(),
 							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
@@ -985,6 +1037,30 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 		
 		getCameraRef().setFov(traverseCamFOV);
 	}
+
+    if(useQuestionCam){
+        //spinsies
+        if(selectedQuestion == NULL){
+            float curAtten;
+            if(caughtQuestion == NULL){
+                curAtten = 1.0;
+            }
+            else{
+                curAtten = powf(ofMap(caughtQuestion->hoverPercentComplete, 0.0, .2, 1.0, 0.0, true), 2.0);
+            }
+            questionSpinAttenuate += (curAtten - questionSpinAttenuate) * .1;
+            //questionSpinAttenuate = curAtten;
+			curQuestionCamRotation += questionCameraSpinSpeed * questionSpinAttenuate;
+			
+            //questionCam.rotate(questionCameraSpinSpeed * questionSpinAttenuate, ofVec3f(0,1,0));
+			questionCam.setPosition( ofVec3f(0,0,questionCameraAxisDist).getRotated(curQuestionCamRotation, ofVec3f(0,1,0)) );
+			questionCam.lookAt(ofVec3f(0,0,0));
+        }
+        else{
+            float percentZoomed = powf(ofMap(ofGetElapsedTimef(), selectedQuestionTime, selectedQuestionTime + 2.0, 0.0, 1.0, true),2.);
+            questionCam.setPosition(selectQuestionStartPos.interpolate(selectedQuestion->hoverPosition, percentZoomed));
+        }
+    }
 
 	/////UPDATE COLOR
 	if(matchLineColor){
@@ -1065,7 +1141,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
                                                           ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()));        
     }
 	
-
+    updateQuestions();
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -1167,15 +1243,16 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 		traversalMesh.draw();
 		traversalShader.end();
 	}
+	
 	if(drawHomingDistanceDebug){
 		ofPushStyle();
 		ofNoFill();
 		
 		ofSetColor(ofColor::royalBlue);
-		ofSphere(currentTraversalPosition, traverseMinSolvedDistance*.001);
+		ofDrawSphere(currentTraversalPosition, traverseMinSolvedDistance*.001);
 		
 		ofSetColor(ofColor::yellowGreen);
-		ofSphere(currentTraversalPosition, traverseHomingMinDistance*.001);
+		ofDrawSphere(currentTraversalPosition, traverseHomingMinDistance*.001);
 		
 		ofPopStyle();
 	}
@@ -1206,14 +1283,230 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	}
 	/////END OPTIONS
 	
+	
 	ofPopMatrix();
 	ofPopStyle();
 	glPopAttrib();
+    
+    drawQuestions();
+
+}
+
+void CloudsVisualSystemClusterMap::updateQuestions(){
+
+	for(int i = 0; i < questions.size(); i++){
+		CloudsPortal& curQuestion = questions[i];
+        curQuestion.cam = &getCameraRef();
+		curQuestion.scale = powf(questionScale,2.0);
+		curQuestion.update();
+
+        if(selectedQuestion == NULL){
+            curQuestion.hoverPosition = getCameraRef().getPosition() + ofVec3f(questionCameraDistance,0,0).getRotated(1.0*i/questions.size() * 360, ofVec3f(0,1,0));
+        }
+
+#ifdef OCULUS_RIFT
+        ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
+        ofRectangle viewport = getOculusRift().getOculusViewport();
+        float distanceToQuestion = ofDist(screenPos.x, screenPos.y,viewport.getCenter().x, viewport.getCenter().y);
+#else
+        ofVec2f mouseNode = cursor;
+        float distanceToQuestion = curQuestion.screenPosition.distance(mouseNode);
+#endif
+//        cout << "distance to question is " << distanceToQuestion << endl;
+        if(selectedQuestion == NULL && caughtQuestion == NULL){
+            if( distanceToQuestion < questionTugDistance.max  && curQuestion.screenPosition.z > 0 && curQuestion.screenPosition.z < 1 ){
+                if(distanceToQuestion < questionTugDistance.min){
+                    caughtQuestion = &curQuestion;
+                    if (caughtQuestion->startHovering()) {
+                        getClick()->setPosition(0);
+                        getClick()->play();
+                    }
+                }
+            }
+        }
+        
+        //we have a caught question make sure it's still close
+        else if(caughtQuestion == &curQuestion){
+            
+            if( caughtQuestion->isSelected() && selectedQuestion == NULL){
+                getSelectLow()->setPosition(0);
+                getSelectLow()->play();
+                
+                selectedQuestion = caughtQuestion;
+                selectedQuestionTime = ofGetElapsedTimef();
+                selectQuestionStartPos = getCameraRef().getPosition();
+                selectQuestionStartRot = getCameraRef().getOrientationQuat();
+
+            }
+            else if(distanceToQuestion > questionTugDistance.max && selectedQuestion == NULL){
+                caughtQuestion->stopHovering();
+                caughtQuestion = NULL;
+            }
+        }
+    }
+
+    
+    if (caughtQuestion != NULL) {
+        // move the sticky cursor towards the caught question
+        stickyCursor.interpolate(caughtQuestion->screenPosition - ofVec2f(bleed,bleed)*.5, 0.2f);
+    }
+    else {
+        stickyCursor.interpolate(cursor, 0.5f);
+    }
+
+}
+
+void CloudsVisualSystemClusterMap::drawQuestions(){
+    if(questions.size() == 0){
+        return;
+    }
+    
+    ofPushStyle();
+    ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	ofDisableDepthTest();
+
+	CloudsPortal::shader.begin();
 	
-	//if(traverseNextFrame){
-	//	traverse();
-	//	traverseNextFrame = false;
-	//}
+	CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+	
+    ofSetColor(255);
+    ofNoFill();
+	for(int i = 0; i < questions.size(); i++){
+		questions[i].draw();
+	}
+	
+	CloudsPortal::shader.end();
+    
+    ofEnableDepthTest();
+	ofPopStyle();
+	
+	ofPushStyle();
+	ofDisableLighting();
+    
+	if(!questionFont.isLoaded() || currentQuestionFontSize != questionFontSize){
+		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+		currentQuestionFontSize = questionFontSize;
+	}
+	string questionText;
+	ofVec3f basePosition(0,0,0);
+	float questionTextOpacity = 0.0;
+	float scaleModifier = 1.0;// * ofGetMouseX() / ofGetWidth();
+
+	if(caughtQuestion != NULL){
+		basePosition = caughtQuestion->hoverPosition;
+		questionText = caughtQuestion->question;
+		questionTextOpacity = ofMap(caughtQuestion->hoverPercentComplete, 0.0, .05, 0.0, 1.0, true);
+		
+		scaleModifier = .5;
+		questionFont.setTracking(questionFontTracking*.1);
+		
+		questionText = ofToUpper(questionText);
+		
+		float questionTextWidth = questionFont.stringWidth(questionText);
+		float questionTextWidth2, questionTextHeight2;
+		string secondLine;
+		bool twoLines = questionTextWidth > 500;
+		if(twoLines){
+			vector<string> pieces = ofSplitString(questionText, " ", true,true);
+			vector<string> firstHalf;
+			vector<string> secondHalf;
+			int halfsize = pieces.size() / 2;
+			firstHalf.insert(firstHalf.begin(), pieces.begin(), pieces.begin() + halfsize);
+			secondHalf.insert(secondHalf.begin(), pieces.begin() + halfsize, pieces.end());
+			questionText = ofJoinString(firstHalf, " ");
+			secondLine = ofJoinString(secondHalf, " ");
+			questionTextWidth  = questionFont.stringWidth(questionText);
+			questionTextWidth2 = questionFont.stringWidth(secondLine);
+		}
+		float questionTextHeight = questionFont.stringHeight(questionText);
+		
+        ofPushMatrix();
+		ofPushStyle();
+		ofEnableAlphaBlending();
+		ofDisableLighting();
+		
+#ifdef OCULUS_RIFT
+		getOculusRift().multBillboardMatrix( basePosition );
+#else
+		ofNode n;
+		n.setPosition( basePosition );
+		n.lookAt(getCameraRef().getPosition(), getCameraRef().getUpDir());
+		ofVec3f axis; float angle;
+		n.getOrientationQuat().getRotate(angle, axis);
+		// Translate the object to its position.
+		ofTranslate( basePosition );
+		// Perform the rotation.
+		ofRotate(angle, axis.x, axis.y, axis.z);
+#endif
+		
+		ofRotate(180, 0, 0, 1); //flip around
+		ofScale(questionFontScale,questionFontScale,questionFontScale);
+		ofSetColor(255,255*questionTextOpacity);
+		
+		questionFont.drawString(questionText, -questionTextWidth*.5, questionFontY - questionTextHeight*.5);
+		if(twoLines){
+			questionFont.drawString(secondLine, -questionTextWidth2*.5, questionFontY + questionTextHeight*1.5);
+		}
+		
+		ofEnableLighting();
+		ofPopStyle();
+		ofPopMatrix();
+	}
+	
+	ofEnableLighting();
+	glEnable(GL_DEPTH_TEST);
+	ofPopStyle();
+
+}
+
+void CloudsVisualSystemClusterMap::drawCursors(){
+    map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
+    for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+        if (it->second.primary) {
+            // override primaryCursorMode
+            selfDrawCursor(stickyCursor, it->second.dragged, caughtQuestion? CURSOR_MODE_DRAW : CURSOR_MODE_CAMERA, it->second.focus);
+        }
+        else {
+            selfDrawCursor(it->second.position, it->second.dragged, secondaryCursorMode, it->second.focus);
+        }
+    }
+}
+
+void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip*> questionClips){
+
+	for(int i = 0; i < questionClips.size(); i++){
+		
+		CloudsPortal q;
+        q.cam = &getCameraRef();
+		q.bLookAtCamera = true;
+		q.clip = questionClips[i];
+		q.topic = q.clip->getAllTopicsWithQuestion()[0];
+		q.question = q.clip->getQuestionForTopic(q.topic);
+        q.hoverPosition = getCameraRef().getPosition() + ofVec3f(questionCameraDistance,0,0).getRotated(1.0*i/questions.size() * 360, ofVec3f(0,1,0));
+        
+  		q.setup();
+		
+		questions.push_back(q);
+	}
+
+}
+
+void CloudsVisualSystemClusterMap::populateDummyQuestions(){
+    
+    int numQuestions = 4;
+	for(int i = 0; i < numQuestions; i++){
+		
+		CloudsPortal q;
+		q.cam = &getCameraRef();
+		q.bLookAtCamera = true;
+        q.hoverPosition = getCameraRef().getPosition() + ofVec3f(questionCameraDistance,0,0).getRotated(1.0*i/numQuestions * 360, ofVec3f(0,1,0));
+        q.topic = "fakeTopic";
+        q.question = "FAKE QUESTION " + ofToString(i);
+		q.setup();
+		
+		questions.push_back(q);
+	}
+    
 }
 
 // draw any debug stuff here
@@ -1317,11 +1610,12 @@ void CloudsVisualSystemClusterMap::selfKeyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemClusterMap::selfMouseDragged(ofMouseEventArgs& data){
+    cursor.set(GetCloudsInput()->getPosition());
 	
 }
 
 void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
-	
+    cursor.set(GetCloudsInput()->getPosition());	
 }
 
 void CloudsVisualSystemClusterMap::selfMousePressed(ofMouseEventArgs& data){

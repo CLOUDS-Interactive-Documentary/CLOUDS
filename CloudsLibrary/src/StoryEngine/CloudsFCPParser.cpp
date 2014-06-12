@@ -157,13 +157,7 @@ void CloudsFCPParser::parseVOClips(){
 		allClips.push_back(clip);
 		
 		for(int i = 1; i < components.size(); i++){
-//			if(!hasClipWithID(components[i])){
-//				ofSystemAlertDialog("VO clip " + clip.getLinkName() + " overlapping clip " + components[i] + " does not exist. Check the name.");
-//			}
-//			else {
-				clip->addOverlappingClipID(components[i]);
-//				cout << " *** overlapping clip is " << components[i] << endl;
-//			}
+			clip->addOverlappingClipID(components[i]);
 		}
 	}
 	
@@ -331,6 +325,7 @@ void CloudsFCPParser::parseClusterNetwork(const string& fileName){
 //	calculateCohesionMedianForKeywords();
 //	calculateKeywordAdjascency();
 	calculateKeywordFamilies();
+    disperseUnpositionedClips();
 }
 
 void CloudsFCPParser::parseProjectExamples(const string& filename){
@@ -483,6 +478,36 @@ void CloudsFCPParser::calculateKeywordAdjascency(){
 	for(int i = 0; i < keywords.size(); i++){
 		keywordAdjacency[keywords[i]] = getAdjacentKeywords(keywords[i], 10);
 	}
+}
+
+void CloudsFCPParser::disperseUnpositionedClips(){
+    ofVec3f minBounds = allClips[0]->networkPosition;
+    ofVec3f maxBounds = allClips[0]->networkPosition;
+    for(int i = 1; i < allClips.size(); i++){
+        ofVec3f pos = allClips[i]->networkPosition;
+        if(pos != ofVec3f(-1,-1,-1)){
+            minBounds.x = MIN(minBounds.x, pos.x);
+            minBounds.y = MIN(minBounds.y, pos.y);
+            minBounds.z = MIN(minBounds.z, pos.z);
+
+            maxBounds.x = MAX(maxBounds.x, pos.x);
+            maxBounds.y = MAX(maxBounds.y, pos.y);
+            maxBounds.z = MAX(maxBounds.z, pos.z);
+        }
+    }
+    
+    ofVec3f center = minBounds.getInterpolated(maxBounds, .5);
+    ofVec3f minBoundsHalf = minBounds.getInterpolated(center, .5);
+    ofVec3f maxBoundsHalf = maxBounds.getInterpolated(center, .5);
+    
+    for(int i = 1; i < allClips.size(); i++){
+        ofVec3f pos = allClips[i]->networkPosition;
+        if(pos == ofVec3f(-1,-1,-1)){
+            allClips[i]->networkPosition.x = ofRandom(minBoundsHalf.x, maxBoundsHalf.x);
+            allClips[i]->networkPosition.y = ofRandom(minBoundsHalf.y, maxBoundsHalf.y);
+            allClips[i]->networkPosition.z = ofRandom(minBoundsHalf.z, maxBoundsHalf.z);
+        }
+    }
 }
 
 //returns keywords that are close to the given keyword on the cluster map
@@ -656,8 +681,8 @@ int CloudsFCPParser::getCentroidMapIndex(const string& keyword){
 	return -1;
 }
 
-void CloudsFCPParser::saveLinks(const string& linkFile){
-	
+void CloudsFCPParser::saveLinks(){
+	string linkFile = GetCloudsDataPath() + "links/clouds_link_db.xml";
     int numClips = 0;
 	if( (ofGetElapsedTimef() - lastBackupTime) >= backupTimeInterval){
 		char backup[1024];

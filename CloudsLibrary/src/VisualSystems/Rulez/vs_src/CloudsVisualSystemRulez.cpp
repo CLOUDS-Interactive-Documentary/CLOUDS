@@ -81,7 +81,7 @@ void CloudsVisualSystemRulez::selfBegin(){
 //normal update call
 void CloudsVisualSystemRulez::selfUpdate()
 {
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+//    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     //rules.step();
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     if (post.getWidth() != getCanvasWidth() || post.getHeight() != getCanvasHeight()) post.init(getCanvasWidth(), getCanvasHeight(), true);

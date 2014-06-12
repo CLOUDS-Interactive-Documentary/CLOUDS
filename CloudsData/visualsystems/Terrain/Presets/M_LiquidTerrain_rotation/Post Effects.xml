@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Post Effects</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1273.000000000</XPosition>
-    <YPosition>297.000000000</YPosition>
+    <XPosition>1130.000000000</XPosition>
+    <YPosition>383.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -31,7 +31,7 @@
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>Bloom Size</Name>
     <Value>1</Value>
 </Widget>

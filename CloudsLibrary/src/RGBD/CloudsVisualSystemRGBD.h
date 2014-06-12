@@ -3,9 +3,8 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsPortal.h"
-#include "CloudsQuestion.h"
 #include "CloudsEvents.h"
-#include "GPUParticles/Controller.h"
+//#include "GPUParticles/Controller.h"
 
 #ifdef HAS_GAMECAM
 #include "ofxGameCamera.h"
@@ -43,6 +42,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 		OutLeft,
 		OutRight
 	};
+
+	CloudsVisualSystemRGBD();
 
 	string getSystemName();
     
@@ -94,9 +95,14 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool isQuestionSelected();
     CloudsPortal* getSelectedQuestion();
     string getQuestionText();
+    vector<QuestionQueue>& getQuestionQueue();
+    //called from Playback controller during screening mode to remove selected question by clustermap
+    void removeQuestionFromQueue(CloudsClip* clip);
     ////////QUESTIONS
 
+	float getRGBDTransitionValue();
 	float visualSystemFadeValue;
+	float questionSelectFade;
     int questionToReplace;
     
 	ofCamera& getCameraRef(){
@@ -273,7 +279,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void loadShader();
 
 	ofxUISuperCanvas *cameraGui;
-	ofxUISuperCanvas *particleGui;
+//	ofxUISuperCanvas *particleGui;
 	ofxUISuperCanvas *backgroundMeshGui;
 	ofxUISuperCanvas *questionGui;
     ofxUISuperCanvas *actuatorGui;
@@ -281,7 +287,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool drawParticulate;
 	float attenuatedCameraDrift;
 	VoxelMesh voxelMesh;
-	GPUParticles::Controller particulateController;
+	//GPUParticles::Controller particulateController;
     float particleCount;
     ofVec4f pointColor;
     
@@ -296,11 +302,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	CloudsPortal rightPortal;
 	CloudsPortal* portalToClear; //clears when started
 	string questionText;
-	
-	//Oculus reset portal
-//	CloudsPortal resetPortal;
-//	ofVec3f resetHoverPosition;
-//	void updateResetPortal();
+
 	
 	ofxFTGLFont questionFont;
 	int questionFontSize;

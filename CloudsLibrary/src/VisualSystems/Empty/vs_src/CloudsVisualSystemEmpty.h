@@ -94,7 +94,12 @@ protected:
     
     //  Your Stuff
     //
+    int state;
+    
+    bool useLights;
+    bool updateCam;
 	
+    //vs sys standards
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
 	float customFloat1;

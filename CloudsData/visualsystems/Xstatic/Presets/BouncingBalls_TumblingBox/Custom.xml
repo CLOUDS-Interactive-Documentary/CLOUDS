@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -21,9 +21,9 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>NUM PARTICLES</Name>
-    <Value>118</Value>
+    <Value>137</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -165,12 +165,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>HUE 1</Name>
-    <Value>1.000000000</Value>
+    <Value>0.438423634</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 1</Name>
-    <Value>0.029556651</Value>
+    <Value>0.172413796</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -180,12 +180,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>HUE 2</Name>
-    <Value>1.000000000</Value>
+    <Value>0.546798050</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 2</Name>
-    <Value>1.000000000</Value>
+    <Value>0.246305421</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>Tunnel</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>455.000000000</XPosition>
-    <YPosition>157.000000000</YPosition>
+    <XPosition>646.000000000</XPosition>
+    <YPosition>94.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -38,10 +38,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Loose Rez X</Name>
-    <Value>17.941177368</Value>
+    <Value>13.529412270</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Loose Rez Z</Name>
-    <Value>50.000000000</Value>
+    <Value>66.004898071</Value>
 </Widget>

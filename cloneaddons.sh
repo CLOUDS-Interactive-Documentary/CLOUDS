@@ -7,9 +7,9 @@
 
 cd ../../addons
 echo existing addons
-ls
+ls -1a
 
-#passing no arguments means read only
+#passing some argument reverts read only
 if [ -z $1 ]; then
     PREFIX="git clone git@github.com:"
     NEWPREFIX="git clone git@github.com:CLOUDS-Interactive-Documentary/"
@@ -34,7 +34,6 @@ ${NEWPREFIX}ofxCameraSaveLoad
 ${NEWPREFIX}ofxMSAPhysics
 ${NEWPREFIX}ofxMarchingCubes
 ${NEWPREFIX}ofxAutoReloadedShader
-${NEWPREFIX}ofxDelaunay
 ${NEWPREFIX}ofxSQLite
 ${NEWPREFIX}ofxTextWriter
 ${NEWPREFIX}ofxBillboard
@@ -50,8 +49,6 @@ cd ..
 
 ${NEWPREFIX}ofxSimpleSpline
 ${NEWPREFIX}ofxSimpleSurface
-${NEWPREFIX}ofxLibwebsockets
-${NEWPREFIX}ofxJSON
 ${NEWPREFIX}ofxTonic
 ${NEWPREFIX}ofxPtf
 ${NEWPREFIX}ofxNearestNeighbour
@@ -77,6 +74,10 @@ ${NEWPREFIX}ofxTween
 ${NEWPREFIX}ofxMSAInteractiveObject
 ${NEWPREFIX}ofxFTGL
 ${NEWPREFIX}ofxMPMFluid
+
+${NEWPREFIX}ofxAudioUnit
+${NEWPREFIX}ofxAudioFeatures
+${NEWPREFIX}ofxMeshUtils
 
 ${NEWPREFIX}ofxTextInputField
 cd ofxTextInputField

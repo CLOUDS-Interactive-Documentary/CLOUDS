@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Audio</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>177.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>425.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,17 +28,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL</Name>
-    <Value>0.053777028</Value>
+    <Value>0.686528742</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL ADJUST</Name>
-    <Value>6.192118168</Value>
+    <Value>4.430541515</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SCROLL SPEED</Name>
-    <Value>2.105911255</Value>
+    <Value>0.985221624</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

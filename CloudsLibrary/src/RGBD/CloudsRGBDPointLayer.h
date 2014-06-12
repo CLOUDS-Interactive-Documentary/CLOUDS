@@ -29,7 +29,7 @@ class CloudsRGBDPointLayer
     
     //set from the main app
 	ofShader* pointShader;
-    float* visualSystemFadeValue;
+    float visualSystemFadeValue;
 
 	ofVboMesh points;
     

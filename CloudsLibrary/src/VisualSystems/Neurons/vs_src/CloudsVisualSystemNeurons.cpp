@@ -4,7 +4,7 @@
 #define DEFAULT_GREEN 0x9A / 255.0
 #define DEFAULT_RED 0x6C / 255.0
 
-#define _N jtn::TreeNode
+//#define _N jtn::TreeNode
 
 #pragma mark
 
@@ -26,8 +26,8 @@ bool _C::renderCamPath = true;
 void _C::selfSetup(){
     rotation = 0;
     reset();
-    readFromFile( "brain1" );
-    generateFlythrough();
+    //readFromFile( "brain1" );
+    //generateFlythrough();
     quatCam = false;
     flythrough = false;
     bounce = false;
@@ -102,8 +102,8 @@ void _C::selfUpdate(){
     
     ofCamera& cam = getCameraRef();
     
-    _N::terminals.clear();
-    vector<_N*>::iterator it;
+    jtn::TreeNode::terminals.clear();
+    vector<jtn::TreeNode*>::iterator it;
     for(it=rootNodes.begin();it!=rootNodes.end();it++){
         (*it)->update();
     }
@@ -112,7 +112,7 @@ void _C::selfUpdate(){
     // these are separate because children are born in the previous update calls
     // and we want to catch them all
     
-    for(it=_N::all.begin();it!=_N::all.end();it++){
+    for(it=jtn::TreeNode::all.begin();it!=jtn::TreeNode::all.end();it++){
         (*it)->updateScreenSpace(cam);
     }
     
@@ -138,8 +138,8 @@ void _C::updateBoundingBox(){
     boundingBox.setOppositeExtremes();
     
     // loop through and compare bounds
-    vector<_N*>::iterator it;
-    for(it=_N::all.begin();it!=_N::all.end();it++){
+    vector<jtn::TreeNode*>::iterator it;
+    for(it=jtn::TreeNode::all.begin();it!=jtn::TreeNode::all.end();it++){
         boundingBox.stretch( (*it)->screenSpace );
     }
 }
@@ -148,14 +148,14 @@ void _C::reset(bool createRootNodes){
     
     //free all dynamically allocated memory
     
-    vector<_N*>::iterator it;
-    for( it=_N::all.begin() ; it!=_N::all.end() ; it++){
+    vector<jtn::TreeNode*>::iterator it;
+    for( it=jtn::TreeNode::all.begin() ; it!=jtn::TreeNode::all.end() ; it++){
         delete *it;
     }
     
     //clear all linked lists
     
-    _N::all.clear();
+    jtn::TreeNode::all.clear();
     rootNodes.clear();
 	
     
@@ -174,7 +174,7 @@ void _C::reset(bool createRootNodes){
                 float y = sin(i*incTheta) * sin(j*incPhi);
                 float z = cos(j*incPhi);
                 
-                _N *n = new _N();
+                jtn::TreeNode *n = new jtn::TreeNode();
                 n->generation = 0;
                 
                 //set the direction to current point scaled out.
@@ -200,7 +200,7 @@ void _C::reset(bool createRootNodes){
 ////    }else if(e.widget == camDuration && ofGetMousePressed() ) {
 // //       cloudsPathCam.setDuration(camDuration->getScaledValue());
 //    }else if(e.widget == tumbleCam && ofGetMousePressed() ) {
-//        _N::clearPathFlags();
+//        jtn::TreeNode::clearPathFlags();
 //        cloudsPathCam.clear();
 //    }
 //}
@@ -237,7 +237,7 @@ void _C::selfGuiEvent(ofxUIEventArgs &e){
     }
     if(name == "Quatumble" ){
         if(quatCam){
-            _N::clearPathFlags();
+            jtn::TreeNode::clearPathFlags();
             cloudsPathCam.clear();
         }
     }
@@ -252,7 +252,7 @@ void _C::generateRandCamBounce(){
     //reset cam path.
     cloudsPathCam.clear();
 
-    _N::clearPathFlags();
+    jtn::TreeNode::clearPathFlags();
     
     float s = 50;
     ofVec3f firstPos;
@@ -286,15 +286,15 @@ void _C::generateFlythrough(){
     //reset cam path.
     cloudsPathCam.clear();
 
-    _N::clearPathFlags();
+    jtn::TreeNode::clearPathFlags();
     
     // find someone in the youngest possible generation of terminal
     // therefore insuring a long path between a terminal and a root parent.
     
     int youngestGen = 0;
-    _N *thisNode = NULL;
-    vector<jtn::TreeNode*>::iterator nit = _N::all.begin();
-    for(;nit!=_N::all.end();nit++){
+    jtn::TreeNode *thisNode = NULL;
+    vector<jtn::TreeNode*>::iterator nit = jtn::TreeNode::all.begin();
+    for(;nit!=jtn::TreeNode::all.end();nit++){
         if( (*nit)->isTerminal() ){
             if((*nit)->generation > youngestGen) {
                 youngestGen = (*nit)->generation;
@@ -367,8 +367,8 @@ void _C::writeToFile(string filename){
         << endl;
     
     // flatten all neurons to a file
-    vector<_N*>::iterator nit = _N::all.begin();
-    for(;nit!=_N::all.end();nit++){
+    vector<jtn::TreeNode*>::iterator nit = jtn::TreeNode::all.begin();
+    for(;nit!=jtn::TreeNode::all.end();nit++){
         (*nit)->serialize(fout);
     }
     
@@ -396,7 +396,7 @@ void _C::readFromFile(string filename){
             fin >> version;
             ofLogNotice() << "NeuronNetwork file version " << version;
         }else if(token=="N"){
-            _N *n = new _N(fin); // node will parse the file by itself.
+            jtn::TreeNode *n = new jtn::TreeNode(fin); // node will parse the file by itself.
         }else if(token==""){
             fin.close();
             break;
@@ -411,25 +411,26 @@ void _C::readFromFile(string filename){
     
     // resolve indices to pointers.
     
-    vector<_N*>::iterator nit = _N::all.begin();
-    for(;nit != _N::all.end();nit++){
-        if( ((int)(*nit)->parent) == -1 ){ // if it was stored in the file as -1
+    vector<jtn::TreeNode*>::iterator nit = jtn::TreeNode::all.begin();
+    for(;nit != jtn::TreeNode::all.end();nit++){
+        if( ((uintptr_t)(*nit)->parent) == -1 ){ // if it was stored in the file as -1
             (*nit)->parent = NULL; // convert it back to null.
             rootNodes.push_back(*nit); // collect the parent into the root list.
-        }else{
+        }
+		else{
             //otherwise a straight element index.
-            (*nit)->parent = _N::all[ (int)((*nit)->parent) ];
+            (*nit)->parent = jtn::TreeNode::all[ (uintptr_t)((*nit)->parent) ];
         }
         
         // start a fresh list of pointers
-        vector<_N*> pointers;
+        vector<jtn::TreeNode*> pointers;
         
         //for all children
-        vector<_N*>::iterator cit = (*nit)->children.begin();
+        vector<jtn::TreeNode*>::iterator cit = (*nit)->children.begin();
         for(;cit != (*nit)->children.end(); cit++){
             
             //record the current pointer for the given index.
-            pointers.push_back( _N::all[ (int)(*cit) ] );
+            pointers.push_back( jtn::TreeNode::all[ (uintptr_t)(*cit) ] );
         }
         
         //swap lists
@@ -470,7 +471,6 @@ void _C::selfDraw(){
 		ofRotateX(ry);
 	}
 
-
     //some camera sway
 //    ofTranslate(
 //                ofNoise( ofGetFrameNum() * 0.01 , 1000) * _C::sway,
@@ -484,11 +484,11 @@ void _C::selfDraw(){
     
     if(renderNeurons){
 
-        _N::drawMode = GL_LINES;
+        jtn::TreeNode::drawMode = GL_LINES;
 
         ofMesh m;
         // for all root nodes:
-        vector<_N*>::iterator it;
+        vector<jtn::TreeNode*>::iterator it;
         int tCount=0;
         for(it=rootNodes.begin();it!=rootNodes.end();it++){
             
@@ -507,7 +507,7 @@ void _C::selfDraw(){
         
 		//TODO: remove all immediate modes and replace with ofMesh
         glPointSize(dotSize);
-        for(it = _N::terminals.begin(); it!=_N::terminals.end(); it++){
+        for(it = jtn::TreeNode::terminals.begin(); it!=jtn::TreeNode::terminals.end(); it++){
 			m.addVertex(ofVec3f( (*it)->x,(*it)->y,(*it)->z) );
 		}
 		
@@ -528,20 +528,20 @@ void _C::selfDraw(){
 //############################################################
 #pragma mark
 
-vector<_N*> _N::all;
-vector<_N*> _N::terminals;
-GLuint _N::drawMode = 0;
+vector<jtn::TreeNode*> jtn::TreeNode::all;
+vector<jtn::TreeNode*> jtn::TreeNode::terminals;
+GLuint jtn::TreeNode::drawMode = 0;
 
-int _N::maxDepth = 0;
+int jtn::TreeNode::maxDepth = 0;
 
-void _N::updateScreenSpace(ofCamera &cam){
+void jtn::TreeNode::updateScreenSpace(ofCamera &cam){
     //cache my world space value for use in draw()
     screenSpace = cam.worldToCamera(  *this );
     //screenSpace =  cam.worldToScreen( cam.cameraToWorld( *this ) );
 
 }
 
-void _N::update(){
+void jtn::TreeNode::update(){
 
     
     
@@ -562,7 +562,7 @@ void _N::update(){
 	z += (temp.z - z)*0.1;
     
 	
-	vector<_N*>::iterator it;
+	vector<jtn::TreeNode*>::iterator it;
 	
 	for(it=children.begin();it!=children.end();it++){
 		(*it)->update();
@@ -570,7 +570,7 @@ void _N::update(){
 	
     
     // branching rules
-	if( _N::all.size() < _C::nodeMax
+	if( jtn::TreeNode::all.size() < _C::nodeMax
 			&& (
 		 (ofRandomuf() < 0.1 && children.size()==0)
 		 ||
@@ -582,7 +582,7 @@ void _N::update(){
                     )
 		 ){
 
-		_N *n = new _N();
+		jtn::TreeNode *n = new jtn::TreeNode();
 		n->parent = this;
 		
 		if(parent==NULL){
@@ -637,19 +637,19 @@ void _N::update(){
 	age++;
 }
 
-void _N::updateMaxDepth(){
+void jtn::TreeNode::updateMaxDepth(){
 	if(maxDepth < generation)maxDepth = generation;
 }
 
-bool _N::isTerminal(){
+bool jtn::TreeNode::isTerminal(){
 	return children.size()==0 || (children.size()==1 && children[0]->age<1);
 }
 
-void _N::draw(){
+void jtn::TreeNode::draw(){
 	
 	
 	//TODO: remove immediate mode calls, replace with persistent meshes
-	vector<_N*>::iterator that;
+	vector<jtn::TreeNode*>::iterator that;
 	   
     jtn::PointD worldNormPos = _C::boundingBox.getNormalized( screenSpace );
     
@@ -675,7 +675,7 @@ void _N::draw(){
 		if( !(drawMode==GL_POINTS && isTerminal()) )
 			glVertex3f(x,y,z);
 		
-		_N *t = *that;
+		jtn::TreeNode *t = *that;
         
         if(t->isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
             ofSetColor(255,0,0,255);
@@ -703,7 +703,7 @@ void _N::draw(){
 	
 }
 
-_N::TreeNode(){
+jtn::TreeNode::TreeNode(){
 	ident = all.size();
 	all.push_back(this);
 	parent = NULL;
@@ -717,7 +717,7 @@ _N::TreeNode(){
     isPartOfCamPath = false;
 }
 
-_N::TreeNode(ifstream &fin){
+jtn::TreeNode::TreeNode(ifstream &fin){
 
     ident = all.size();
 	all.push_back(this);
@@ -741,18 +741,18 @@ _N::TreeNode(ifstream &fin){
     // store both parent index and child indices into pointer slots temporarily
     // and i promise to resolve the indices to pointers in a later global pass.
     
-    int parentIndex;
+    uintptr_t parentIndex;
     fin >> parentIndex;
-    parent = (_N*)(parentIndex);
+    parent = (jtn::TreeNode*)(parentIndex);
     
     int childCount;
     fin >> childCount;
     
-    int childIndex;
+    uintptr_t childIndex;
     
     for(int i=0;i<childCount;i++){
         fin >> childIndex;
-        children.push_back((_N*)childIndex);
+        children.push_back((jtn::TreeNode*)childIndex);
     }
     
     isPartOfCamPath = false;
@@ -763,10 +763,10 @@ _N::TreeNode(ifstream &fin){
     screenSpace = ofVec3f(0,0,0);
 }
 
-_N::~TreeNode(){
+jtn::TreeNode::~TreeNode(){
 }
 
-void _N::serialize(ofstream &fout){
+void jtn::TreeNode::serialize(ofstream &fout){
     
     //dump out all my attributes.
     
@@ -780,7 +780,7 @@ void _N::serialize(ofstream &fout){
         direction.x << ' ' << direction.y << ' ' << direction.z << ' ' ;
     
     // convert linkage pointers into file indexes,
-    // assuming nodes are written in same order as they appear in _N::all
+    // assuming nodes are written in same order as they appear in jtn::TreeNode::all
     
     if(parent==NULL){
         fout << -1 << ' ';
@@ -797,9 +797,9 @@ void _N::serialize(ofstream &fout){
 }
 
 
-void _N::clearPathFlags(){
-    vector<jtn::TreeNode*>::iterator nit = _N::all.begin();
-    for(;nit!=_N::all.end();nit++){
+void jtn::TreeNode::clearPathFlags(){
+    vector<jtn::TreeNode*>::iterator nit = jtn::TreeNode::all.begin();
+    for(;nit!=jtn::TreeNode::all.end();nit++){
         (*nit)->isPartOfCamPath = false;
     }
 }

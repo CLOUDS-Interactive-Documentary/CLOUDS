@@ -58,7 +58,9 @@ void Panel::draw(float screenHeight){
 	ofRect(currRect);
 	
 	glEnable(GL_SCISSOR_TEST);
-	glScissor(currRect.x+1, screenHeight - currRect.y - currRect.height,
+//	glScissor(currRect.x+1, screenHeight - currRect.y - currRect.height,
+//			  currRect.width, currRect.height);
+	glScissor(currRect.x+1, currRect.y,
 			  currRect.width, currRect.height);
 	
 	ofFill();

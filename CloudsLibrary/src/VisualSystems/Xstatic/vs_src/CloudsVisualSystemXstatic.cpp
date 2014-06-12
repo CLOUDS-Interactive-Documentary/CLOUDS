@@ -154,7 +154,7 @@ void CloudsVisualSystemXstatic::selfSetup()
     regenerate(bBigBang);
     
     spriteDir.listDir(getVisualSystemDataPath() + "spriteImages");
-    spriteDir.sort();
+//    spriteDir.sort();
     
     ofDisableArbTex();
     shader.load(getVisualSystemDataPath() + "shaders/particles");

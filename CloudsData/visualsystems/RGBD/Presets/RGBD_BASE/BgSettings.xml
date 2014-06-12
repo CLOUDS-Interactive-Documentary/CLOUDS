@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>BgSettings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>72.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>440.000000000</XPosition>
+    <YPosition>184.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>EXPONENT</Name>
-    <Value>2.364531994</Value>
+    <Value>3.485576868</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,12 +33,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>50.246303558</Value>
+    <Value>72.331733704</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
-    <Value>47.733989716</Value>
+    <Value>42.908653259</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
