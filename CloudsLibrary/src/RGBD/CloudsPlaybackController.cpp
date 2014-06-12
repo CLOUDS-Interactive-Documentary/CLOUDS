@@ -846,8 +846,17 @@ void CloudsPlaybackController::updateTransition(){
 					
                     if(showingClusterMapNavigation){
                         showingClusterMapNavigation = false;
-                        rgbdVisualSystem->removeQuestionFromQueue(clusterMap->getSelectedQuestion()->clip);
-                        storyEngine.buildAct(run, clusterMap->getSelectedQuestion()->clip, clusterMap->getSelectedQuestion()->topic, true);
+                        //rgbdVisualSystem->removeQuestionFromQueue(clusterMap->getSelectedQuestion()->clip);
+						vector<CloudsClip*>& screeningQueue = storyEngine.screeningQuestionClips;
+						CloudsClip* interludeExitClip = clusterMap->getSelectedQuestion()->clip;
+						if(ofContains(screeningQueue,interludeExitClip)){
+							storyEngine.screeningQuestionClips.erase(screeningQueue.begin() + ofFind(screeningQueue, interludeExitClip));
+						}
+						
+						//build the next act
+                        storyEngine.buildAct(run,
+											 clusterMap->getSelectedQuestion()->clip,
+											 clusterMap->getSelectedQuestion()->topic, true);
                     }
                     
 					break;
@@ -1415,10 +1424,8 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showClusterMap(){
     if(showingClusterMapNavigation){
-		rgbdVisualSystem->getQuestionQueue().clear();
         #ifdef CLOUDS_SCREENING
-
-
+		rgbdVisualSystem->getQuestionQueue().clear();
 		storyEngine.populateScreeningQuestionsPart2();
 		clusterMap->setQuestions(storyEngine.screeningQuestionClips);
 		showedClusterMapNavigation = true;
