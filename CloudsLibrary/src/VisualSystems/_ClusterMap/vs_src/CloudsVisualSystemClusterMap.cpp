@@ -1480,13 +1480,15 @@ void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip*> questionClip
         q.cam = &getCameraRef();
 		q.bLookAtCamera = true;
 		q.clip = questionClips[i];
-		q.topic = q.clip->getAllTopicsWithQuestion()[0];
-		q.question = q.clip->getQuestionForTopic(q.topic);
-        q.hoverPosition = getCameraRef().getPosition() + ofVec3f(questionCameraDistance,0,0).getRotated(1.0*i/questions.size() * 360, ofVec3f(0,1,0));
         
-  		q.setup();
-		
-		questions.push_back(q);
+        if(q.clip->getAllTopicsWithQuestion().size() > 0){
+            q.topic = q.clip->getAllTopicsWithQuestion()[0];
+            q.question = q.clip->getQuestionForTopic(q.topic);
+            q.hoverPosition = getCameraRef().getPosition() + ofVec3f(questionCameraDistance,0,0).getRotated(1.0*i/questions.size() * 360, ofVec3f(0,1,0));
+            
+            q.setup();
+            questions.push_back(q);
+        }
 	}
 
 }
