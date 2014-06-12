@@ -7458,7 +7458,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>how do you build serendipity into your systems?&#x0D;emergence</revokedKeywords>
-    <additionalKeywords>emergence,#mindblowing,?emergence: How does complexity emerge from simple rules?,#start,#oculus,#question</additionalKeywords>
+    <additionalKeywords>emergence,#question,#oculus,?emergence: How does complexity emerge from simple rules?,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - emergence</name>
@@ -11661,7 +11661,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?data: What is data?,#start,#easy,#tech,#sincere,#question</additionalKeywords>
+    <additionalKeywords>?data: What is data?,#easy,#tech,#sincere,#question,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - curiosity</name>
@@ -15113,7 +15113,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#start,?audiovisualization: What does music look like?,#question</additionalKeywords>
+    <additionalKeywords>#question,?audiovisualization: What does music look like?,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Higa - simplicity of self made tools</name>
@@ -21321,7 +21321,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>perception,subliminal,visualization,link:jtnimoy - cortex2,link:marius - reach your visual cortex</revokedKeywords>
-    <additionalKeywords>#oculus,#tech,#mindblowing,#easy,?videogames: How do videogames change the way we see?,#start,#question</additionalKeywords>
+    <additionalKeywords>#question,?videogames: How do videogames change the way we see?,#easy,#mindblowing,#tech,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - 100 artists versus One</name>
@@ -43294,7 +43294,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?big data: What is powerful about Big Data?,#logical,#fun,#start,#oculus,#question</additionalKeywords>
+    <additionalKeywords>#question,#oculus,#fun,#logical,?big data: What is powerful about Big Data?</additionalKeywords>
 </clip>
 <clip>
     <name>Martin - Big data</name>
@@ -60943,7 +60943,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>collaboration,community,#gold,#inspiring</additionalKeywords>
+    <additionalKeywords>collaboration,community,#inspiring,#gold,?collaboration: Does the network promote creativity?,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Chris - interfaces</name>
@@ -61690,7 +61690,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>cosmogeny,god mode,simulation,?simulation: Is it possible to truly simulate reality?,#oculus,#question,#start</additionalKeywords>
+    <additionalKeywords>cosmogeny,god mode,simulation,#question,#oculus,?simulation: Is it possible to truly simulate reality?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - BuildingWorlds</name>
@@ -61748,7 +61748,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>coding,sketching,self expression,creative coding,processing,drawing,?sketching: How do you sketch with code?,#start,#question,#oculus</additionalKeywords>
+    <additionalKeywords>coding,sketching,self expression,creative coding,processing,drawing,#question,#start,?sketching: How do you sketch with code?,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Collaboration</name>
@@ -61881,7 +61881,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>computation,computer,thinking through code,code,#question,?thinking: Do computers make us smarter?,#start,#oculus</additionalKeywords>
+    <additionalKeywords>computation,computer,thinking through code,code,#oculus,?thinking: Do computers make us smarter?,#question</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - CriticalPractices</name>
@@ -62082,7 +62082,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>virtual,reality,real,real and virtual,?real and virtual: Have we hacked reality?,#oculus,#question,#start</additionalKeywords>
+    <additionalKeywords>virtual,reality,real,real and virtual,#question,#oculus,?real and virtual: Have we hacked reality?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - interactivity1</name>
