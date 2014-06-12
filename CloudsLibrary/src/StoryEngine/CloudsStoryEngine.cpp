@@ -1470,33 +1470,35 @@ CloudsStoryEvents& CloudsStoryEngine::getEvents(){
     return events;
 }
 
-void CloudsStoryEngine::populateScreeningQuestions(){
-	
-	string linkName;
-	linkName = "Casey - Software is what i love the most";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Kyle_CH - coding, magic";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Intro - Collaboration";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Julia - make us more compassionate";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Bruce - Textual technologies";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+void CloudsStoryEngine::populateScreeningQuestionsPart1(){
 
-	linkName = "Jen - data crystal ball";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+	///TRIBECA PLAYLIST
+	string linkName;
+//	linkName = "Casey - Software is what i love the most";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Kyle_CH - coding, magic";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Intro - Collaboration";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Julia - make us more compassionate";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Bruce - Textual technologies";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//
+//	linkName = "Jen - data crystal ball";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Julia - CLOUDS";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//	
+//	linkName = "Intro - VirtualReality";
+//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    ///
 	
-	linkName = "Julia - CLOUDS";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-	
-	linkName = "Intro - VirtualReality";
-	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-    
     //
     linkName = "Higa - sound and video";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
@@ -1515,4 +1517,9 @@ void CloudsStoryEngine::populateScreeningQuestions(){
     
 }
 
+
+void CloudsStoryEngine::populateScreeningQuestionsPart2(){
+	screeningQuestionClips.clear();
+	
+}
 
