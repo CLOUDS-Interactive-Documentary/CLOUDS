@@ -398,7 +398,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Timer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesTimer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpModelLoader.cpp" />
@@ -543,7 +543,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.cpp" />
@@ -783,19 +782,15 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\coroutine.hpp" />
     <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Composition.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Constants.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\detail\Composition.inc.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\detail\coroutine.hpp" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Easing.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Generator.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\InstanceManager.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Lerp.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Pattern.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Replicator.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Sequence.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Timer.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesConstants.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesEasing.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesGenerator.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesInstanceManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesPattern.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesReplicator.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesTimer.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\aiAnim.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\aiAssert.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\aiCamera.h" />
@@ -1068,7 +1063,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.h" />

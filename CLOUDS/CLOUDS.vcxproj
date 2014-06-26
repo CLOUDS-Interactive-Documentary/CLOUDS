@@ -416,7 +416,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Timer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesTimer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpModelLoader.cpp" />
@@ -801,18 +801,15 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Composition.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Constants.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\detail\Composition.inc.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\detail\coroutine.hpp" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Easing.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Generator.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\InstanceManager.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Lerp.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Pattern.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Replicator.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Sequence.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Timer.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\coroutine.hpp" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesConstants.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesEasing.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesGenerator.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesInstanceManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesPattern.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesReplicator.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesTimer.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\aiAnim.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\aiAssert.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\aiCamera.h" />

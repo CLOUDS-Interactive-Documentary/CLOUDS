@@ -301,9 +301,6 @@
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp">
       <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClCompile>
@@ -1153,7 +1150,7 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.cpp">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Timer.cpp">
+    <ClCompile Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesTimer.cpp">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1933,9 +1930,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h">
       <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>
@@ -2975,43 +2969,31 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Histogram\vs_src\CloudsVisualSystemHistogram.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\coroutine.hpp">
+      <Filter>addons\ofxAnimationPrimitives\src</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives.h">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Composition.h">
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesConstants.h">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Constants.h">
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesEasing.h">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\detail\Composition.inc.h">
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesGenerator.h">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\detail\coroutine.hpp">
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesInstanceManager.h">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Easing.h">
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesPattern.h">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Generator.h">
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesReplicator.h">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\InstanceManager.h">
-      <Filter>addons\ofxAnimationPrimitives\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Lerp.h">
-      <Filter>addons\ofxAnimationPrimitives\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Pattern.h">
-      <Filter>addons\ofxAnimationPrimitives\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Replicator.h">
-      <Filter>addons\ofxAnimationPrimitives\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Sequence.h">
-      <Filter>addons\ofxAnimationPrimitives\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitives\Timer.h">
+    <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesTimer.h">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
     </ClInclude>
   </ItemGroup>
