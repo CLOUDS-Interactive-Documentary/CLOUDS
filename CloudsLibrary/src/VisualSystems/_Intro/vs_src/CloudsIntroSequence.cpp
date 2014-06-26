@@ -911,12 +911,23 @@ void CloudsIntroSequence::drawHelperType(){
 		
 		ofSetColor(255,255*helperTextOpacity);
 		
-		int yOffsetMult = (!bUseOculusRift && caughtQuestion->tunnelQuadrantIndex == 2) ? -1 : 1;
+        bool showAbove = !bUseOculusRift && caughtQuestion->tunnelQuadrantIndex == 2;
+		int yOffsetMult = (showAbove) ? -1 : 1;
 		//helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY - hoverTextHeight/2) );
-       	helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
+
 		if(twoLines){
-			helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
-		} 
+            if(showAbove){
+                helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
+                helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
+            }
+            else{
+                helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
+                helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
+            }
+		}
+        else{
+            helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
+        }
 		ofPopMatrix();
 	}
     
