@@ -27,7 +27,7 @@ void CloudsVisualSystemCandyMountains::selfSetupGui(){
 
 void CloudsVisualSystemCandyMountains::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
-		cout << "Button pressed!" << endl;
+//		cout << "Button pressed!" << endl;
 	}
 }
 
@@ -48,7 +48,7 @@ void CloudsVisualSystemCandyMountains::selfSetupRenderGui(){
     names.push_back("tetrad");
     names.push_back("analogic");
     names.push_back("accented");
-    rdrGui = new ofxUISuperCanvas("CUSTOM", gui);
+//    rdrGui = new ofxUISuperCanvas("CUSTOM", gui);
     
     rdrGui->addSlider("primary hue", 0.0, 1.0, &cs.hue);
     rdrGui->addSlider("primary brightness", 0.0, 1.0, &cs.brightness);
@@ -57,7 +57,7 @@ void CloudsVisualSystemCandyMountains::selfSetupRenderGui(){
     rdrGui->addSlider("distance", 0.1, 0.5, &cs.distance);
     rdrGui->addRadio("RADIO VERTICAL", names, OFX_UI_ORIENTATION_VERTICAL);
 
-    ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemCandyMountains::guiRenderEvent);
+//    ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemCandyMountains::guiRenderEvent);
 }
 
 void CloudsVisualSystemCandyMountains::guiRenderEvent(ofxUIEventArgs &e){
@@ -105,7 +105,6 @@ void CloudsVisualSystemCandyMountains::selfSetup(){
     player.connectTo(tap);
     tap.connectTo(output);
     output.start();
-    player.play();
     
     
     cs.setup();
@@ -145,7 +144,7 @@ void CloudsVisualSystemCandyMountains::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemCandyMountains::selfBegin(){
-	
+    player.play();
 }
 
 //do things like ofRotate/ofTranslate here
@@ -174,6 +173,7 @@ void CloudsVisualSystemCandyMountains::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemCandyMountains::selfDraw(){
+    ofPushStyle();
     ofEnableAlphaBlending();
     
     lm.begin();
@@ -181,6 +181,7 @@ void CloudsVisualSystemCandyMountains::selfDraw(){
     lm.end();
     
     ofDisableAlphaBlending();
+    ofPopStyle();
 }
 
 // draw any debug stuff here
@@ -227,7 +228,8 @@ void CloudsVisualSystemCandyMountains::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemCandyMountains::selfEnd(){
-	
+	player.stop();
+
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemCandyMountains::selfExit(){
