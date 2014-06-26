@@ -1489,6 +1489,9 @@ void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip*> questionClip
             q.setup();
             questions.push_back(q);
         }
+        else{
+            ofLogError("CloudsVisualSystemClusterMap::setQuestions") << "Question not found for clip " << q.clip->getLinkName();
+        }
 	}
 
 }
@@ -1603,6 +1606,9 @@ void CloudsVisualSystemClusterMap::selfKeyPressed(ofKeyEventArgs & args){
 	if(key == 'S'){
 		reloadShaders();
 	}
+    if(key == ']'){
+        selectedQuestion = &questions.at((int)ofRandom(questions.size()-1));
+    }
 	
 }
 

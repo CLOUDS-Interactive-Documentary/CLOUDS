@@ -3031,13 +3031,15 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
                             }
                             else {
 #ifndef CLOUDS_RELEASE
-                                ofSystemAlertDialog("WARNING: " + widgetCanvasParent + " COULD NOT FIND WIDGET " + widgetname + " IN GUI MAP. MAY BE MISCONFIGURED IN GUI");
-#endif                                
+                                //Commented out for EYEO Screening
+//                                ofSystemAlertDialog("WARNING: " + widgetCanvasParent + " COULD NOT FIND WIDGET " + widgetname + " IN GUI MAP. MAY BE MISCONFIGURED IN GUI");
+#endif
                             }
                         }
                         else{
 #ifndef CLOUDS_RELEASE
-                            ofSystemAlertDialog("WARNING: " + widgetCanvasParent + " NOT FOUND IN GUI MAP. MAY BE MISCONFIGURED IN GUI");
+                            //Commented out for EYEO Screening
+//                            ofSystemAlertDialog("WARNING: " + widgetCanvasParent + " NOT FOUND IN GUI MAP. MAY BE MISCONFIGURED IN GUI");
 #endif
                         }
                         XML->popTag();
