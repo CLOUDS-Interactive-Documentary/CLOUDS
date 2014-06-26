@@ -1535,7 +1535,7 @@ void CloudsStoryEngine::populateScreeningQuestionsPart2(){
     linkName = "Julia - Who owns the internet?";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
-    linkName = "Shiffman - Sharing";
+    linkName = "Shiffman - sharing";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
     linkName = "Karsten - infinite conversation";
