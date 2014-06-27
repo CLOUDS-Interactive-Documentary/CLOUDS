@@ -45,7 +45,7 @@ void MandalaComponent::setMesh( ofVboMesh* _m )
 
 void MandalaComponent::setUV( float u, float v)
 {
-	pOnS.uv.set( u,v );
+	pOnS.uv.set(u,v);
 }
 
 void MandalaComponent::setUV( ofVec2f uv)

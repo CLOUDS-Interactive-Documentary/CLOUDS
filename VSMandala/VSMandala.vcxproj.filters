@@ -88,101 +88,26 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp">
-      <Filter>CloudsLibrary\src\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp">
-      <Filter>CloudsLibrary\src\Sound</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
       <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\SecondaryDisplay\Receiver\CloudsSecondaryDisplayController.cpp">
-      <Filter>CloudsLibrary\src\SecondaryDisplay</Filter>
+    <ClCompile Include="..\..\..\addons\ofxSimpleSpline\src\ofxSimpleSpline.cpp">
+      <Filter>addons\ofxSimpleSpline</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp">
-      <Filter>addons\ofxOsc\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxSimpleSurface\src\ofxSimpleSurface.cpp">
+      <Filter>addons\ofxSimpleSurface</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp">
-      <Filter>addons\ofxOsc\src</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\CloudsVisualSystemMandala.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Mandala</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.cpp">
-      <Filter>addons\ofxOsc\src</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\MandalaComponent.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Mandala</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp">
-      <Filter>addons\ofxOsc\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp">
-      <Filter>addons\ofxOsc\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp">
-      <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtilsWin.cpp">
-      <Filter>addons\ofxOsc\libs\oscpack\ip\win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocketWin.cpp">
-      <Filter>addons\ofxOsc\libs\oscpack\ip\win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.cpp">
-      <Filter>CloudsLibrary\src\HUD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.cpp">
-      <Filter>CloudsLibrary\src\HUD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp">
-      <Filter>CloudsLibrary\src\HUD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\ClusterMap</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\ClusterMap</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsAct.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\SurfacePoint.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Mandala</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -237,56 +162,17 @@
     <Filter Include="CloudsLibrary\src\Input">
       <UniqueIdentifier>{311161e7-1ae0-42e6-9c73-a0fc0372abf4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\Sound">
-      <UniqueIdentifier>{47e8ceeb-ed01-46d0-9317-e044eec676ac}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons\ofxObjLoader\libs\glm">
-      <UniqueIdentifier>{8c90ba93-9c50-445a-bd22-bbd06c49ddf2}</UniqueIdentifier>
+      <UniqueIdentifier>{3c3a084f-1f94-410a-beea-5864fde43503}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxNearestNeighbor">
-      <UniqueIdentifier>{c294cbc2-296f-40a1-b67f-7e153bd5a30d}</UniqueIdentifier>
+    <Filter Include="addons\ofxSimpleSurface">
+      <UniqueIdentifier>{8a423524-7131-4d15-9fce-0d98bca50048}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxNearestNeighbor\src">
-      <UniqueIdentifier>{2daba604-f975-4bc1-9d90-b3fb4551fe00}</UniqueIdentifier>
+    <Filter Include="addons\ofxSimpleSpline">
+      <UniqueIdentifier>{8780b2b9-bcde-456d-b6a9-f91ea846610a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxNearestNeighbor\libs">
-      <UniqueIdentifier>{60998d2a-f769-46e4-9bad-2a4de04b9b1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\SecondaryDisplay">
-      <UniqueIdentifier>{359d4d66-f75b-410b-a618-3037fe47183c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOsc">
-      <UniqueIdentifier>{8b3edf46-aa68-4c03-a2dd-1acc7cd1ceeb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOsc\src">
-      <UniqueIdentifier>{f72067d9-7826-4f99-9fb1-03be7eb2e063}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOsc\libs">
-      <UniqueIdentifier>{d1db921d-a3a7-45b9-b56e-88b1ce6e7f54}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOsc\libs\oscpack">
-      <UniqueIdentifier>{12f85d35-f8cb-45d7-9076-67e15858cd7d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOsc\libs\oscpack\osc">
-      <UniqueIdentifier>{1f76f1fb-6cac-4ed0-87b0-bedbb33946ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOsc\libs\oscpack\ip">
-      <UniqueIdentifier>{d7a56c65-aa32-46f0-b692-488c2694d0e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOsc\libs\oscpack\ip\win32">
-      <UniqueIdentifier>{c508c395-5eb6-44e3-9373-22b00babf203}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\RGBD">
-      <UniqueIdentifier>{ac1e9905-9a2c-45fa-b022-099147b3cd49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\HUD">
-      <UniqueIdentifier>{40fcd8ec-89d3-459e-84c8-d35f2a334fff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\ClusterMap">
-      <UniqueIdentifier>{6ad0eb79-6dfe-43b2-a776-7a388b18848f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\StoryEngine">
-      <UniqueIdentifier>{c3bd4114-5caa-4852-8d79-608c27050d87}</UniqueIdentifier>
+    <Filter Include="CloudsLibrary\src\VisualSystems\Mandala">
+      <UniqueIdentifier>{ce6f2eed-924b-49fe-a919-0b47cf5ec29f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -449,143 +335,29 @@
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h">
-      <Filter>CloudsLibrary\src\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h">
-      <Filter>CloudsLibrary\src\Sound</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
       <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\NearestNeighbour.h">
-      <Filter>addons\ofxNearestNeighbor\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxSimpleSpline\src\ofxSimpleSpline.h">
+      <Filter>addons\ofxSimpleSpline</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\ofxNearestNeighbour.h">
-      <Filter>addons\ofxNearestNeighbor\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxSimpleSurface\src\ofxSimpleSurface.h">
+      <Filter>addons\ofxSimpleSurface</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\PointCloud.h">
-      <Filter>addons\ofxNearestNeighbor\src</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\CloudsVisualSystemMandala.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Mandala</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\libs\nanoflann\include\nanoflann.hpp">
-      <Filter>addons\ofxNearestNeighbor\libs</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\MandalaComponent.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Mandala</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\SecondaryDisplay\Receiver\CloudsSecondaryDisplayController.h">
-      <Filter>CloudsLibrary\src\SecondaryDisplay</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\MandalaTicker.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Mandala</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h">
-      <Filter>addons\ofxOsc\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h">
-      <Filter>addons\ofxOsc\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h">
-      <Filter>addons\ofxOsc\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h">
-      <Filter>addons\ofxOsc\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.h">
-      <Filter>addons\ofxOsc\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h">
-      <Filter>addons\ofxOsc\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h">
-      <Filter>addons\ofxOsc\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h">
-      <Filter>addons\ofxOsc\libs\oscpack\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h">
-      <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h">
-      <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h">
-      <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h">
-      <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h">
-      <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h">
-      <Filter>CloudsLibrary\src\HUD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.h">
-      <Filter>CloudsLibrary\src\HUD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h">
-      <Filter>CloudsLibrary\src\HUD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.h">
-      <Filter>CloudsLibrary\src\VisualSystems\ClusterMap</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.h">
-      <Filter>CloudsLibrary\src\VisualSystems\ClusterMap</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsAct.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Mandala\vs_src\SurfacePoint.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Mandala</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,8 +5,32 @@
 #include "CloudsVisualSystemMandala.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include <stdlib.h>     /* atoi */
+template<typename T>
+inline bool isinf(T value)
+{
+	return value == std::numeric_limits<T>::infinity() ||
+			value == -std::numeric_limits<T>::infinity() ;
+}
 
 int MandalaComponent::componentCount = 1;
+
+CloudsVisualSystemMandala::CloudsVisualSystemMandala()
+{
+	polarAlphaExpo, polarAlphaExpoScale = 0;	
+	surfaceNoiseTime = 0;
+	
+	noiseTime = noiseTimeScale = noiseScale = noiseOffset = 0;
+	numU = numV = 0;
+	radius = 0;
+	bDrawClock = false;
+	clockNumCogs, clockScale, clockOctaves, cloackOctaveScale, clockMaxSpeed, clockTime, clockSpread, clockV = 0;	
+	bDrawBoxClock = false;
+	hexMeshVertexCount = 0;
+	bDrawOffsetMesh = false;
+	time = faceScale = faceOffset = noiseOctaveScale = noiseExpo = noiseExpoScale = meshNoiseScale = colorMixScale = 0;
+	bDrawSurface = bSmoothSurface = bDrawTails = bDrawSpokes = false;
+	lastTime = currentTime = 0;	
+}
 
 void CloudsVisualSystemMandala::selfSetupGui()
 {

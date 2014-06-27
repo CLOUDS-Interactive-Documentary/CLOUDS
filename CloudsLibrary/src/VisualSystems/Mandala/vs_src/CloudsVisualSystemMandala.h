@@ -26,6 +26,7 @@ public:
 	SPMesh(){
 		sp = NULL;
 		bDraw = true;
+		m = NULL;
 	};
 	~SPMesh(){};
 	
@@ -316,10 +317,9 @@ public:
 };
 class CloudsVisualSystemMandala : public CloudsVisualSystem {
 public:
-    
-	//TODO: Change this to the name of your visual system
-	//This determines your data path so name it at first!
-	//ie getVisualSystemDataPath() uses this
+
+	CloudsVisualSystemMandala();
+
     string getSystemName(){
 		return "Mandala";
 	}

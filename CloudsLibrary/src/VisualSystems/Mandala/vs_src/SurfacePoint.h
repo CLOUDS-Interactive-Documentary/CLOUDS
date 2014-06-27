@@ -27,11 +27,18 @@ public:
 	
 	void operator = (SurfacePoint sp);
 	
-	//private:
 	ofVec3f position, normal;
-	ofVec2f uv;
 	
 	ofVec3f* outpos;
 	ofVec3f* outnorm;
 	ofxSimpleSurface* surface;
+	//ofVec2f& getUV(){
+	//	return uv;
+	//}
+	//void setUV(const ofVec2f& uv){
+	//	this->uv.set(uv);
+	//}
+//private:
+	ofVec2f uv;
+
 };
