@@ -14,17 +14,23 @@ template <class T> class MandalaTicker
 public:
 	MandalaTicker( int easeType = OFX_TWEEN_QUINT)
 	{
-		bLoop = false;
-		bContinue = false;
+
 		endTrigger = false;
-		bReverse = false;
-		
+		bLoop = bContinue = bReverse = bPaused = bStarted = bEnded = false;
+		startTime = endTime = span = delay = blend = 0;
+		startVal = targetVal = localVal = delta = 0;
+		value = NULL;
+		ease = 0;
+	
+		replayCount = 0;
+			
 		easeType = ofxTween::easeInOut;
 		ease = OFX_TWEEN_QUINT;
 		
 		note = "_";
 		miscVal = 1;
 	};
+
 	~MandalaTicker()
 	{
 	};
