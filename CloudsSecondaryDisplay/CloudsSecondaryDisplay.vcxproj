@@ -130,7 +130,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.d
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxNearestNeighbour\libs\nanoflann\include;..\..\..\addons\ofxNearestNeighbour\src;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\SecondaryDisplay\Receiver;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxNearestNeighbour\libs\nanoflann\include;..\..\..\addons\ofxNearestNeighbour\src;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src;..\CloudsLibrary\src\RGBD\HUD;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\SecondaryDisplay\Receiver;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>Default</CompileAs>
       <PrecompiledHeader />
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -178,7 +178,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs\*.d
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxNearestNeighbour\libs\nanoflann\include;..\..\..\addons\ofxNearestNeighbour\src;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\SecondaryDisplay\Receiver;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxNearestNeighbour\libs\nanoflann\include;..\..\..\addons\ofxNearestNeighbour\src;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src;..\CloudsLibrary\src\RGBD\HUD;..\CloudsLibrary\src\RGBD\Portal;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\SecondaryDisplay\Receiver;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -236,19 +236,27 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\SecondaryDisplay\Receiver\CloudsSecondaryDisplayController.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsAct.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\CloudsVisualSystemConnectors.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnection.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectionGenerator.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnector.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectorBin.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
@@ -327,21 +335,30 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h" />
     <ClInclude Include="..\CloudsLibrary\src\SecondaryDisplay\Receiver\CloudsSecondaryDisplayController.h" />
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsAct.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\CloudsVisualSystemConnectors.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnection.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectionGenerator.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnector.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectorBin.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>

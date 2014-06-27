@@ -304,11 +304,11 @@ void CloudsSecondaryDisplayController::update(){
     
 }
 
-void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
+void CloudsSecondaryDisplayController::respondToClip(CloudsClip* clip){
     animateIn();
 	
 	currentClip = clip;
-	currentSpeaker = CloudsSpeaker::speakers[currentClip.person];
+	currentSpeaker = CloudsSpeaker::speakers[currentClip->person];
 	//if the speaker has no name, there is no speaker
 	cout << "currentSpeaker.lastName: "<< currentSpeaker.lastName << endl;
 	if(currentSpeaker.lastName == "")
@@ -327,10 +327,10 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 	///JG END TEMP HACK
 
 	//string exampleId = m.getArgAsString(4);
-	if(currentClip.hasProjectExample){
+	if(currentClip->hasProjectExample){
         
-		if(currentClip.projectExample.exampleVideos.size() > 0){
-            currentExample = currentClip.projectExample;
+		if(currentClip->projectExample.exampleVideos.size() > 0){
+            currentExample = currentClip->projectExample;
 			playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
 			if(playingMovie){
 				archivePlayer.play();

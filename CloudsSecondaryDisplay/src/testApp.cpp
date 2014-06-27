@@ -78,7 +78,7 @@ void testApp::keyPressed(int key){
 	if(key == 'E'){
 		projectExampleIndecs.clear();
 		for(int i = 0; i < secondaryDisplay.parser.getAllClips().size(); i++){
-			if(secondaryDisplay.parser.getAllClips()[i].hasProjectExample){
+			if(secondaryDisplay.parser.getAllClips()[i]->hasProjectExample){
 				projectExampleIndecs.push_back(i);
 			}
 		}
@@ -87,9 +87,9 @@ void testApp::keyPressed(int key){
         testAllClips = false;
         
         if(testProjEx){
-            CloudsClip& clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
+            CloudsClip* clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
             secondaryDisplay.respondToClip( clip );
-            cout<<"Current Project Example Clip ID: "<<clip.getID()<<endl;
+            cout<<"Current Project Example Clip ID: "<<clip->getID()<<endl;
         }
         
 		
@@ -114,9 +114,9 @@ void testApp::keyPressed(int key){
         if(testProjEx){
             if(currentProjEx >= projectExampleIndecs.size()-1) currentProjEx = 0;
             else currentProjEx++;
-            CloudsClip& clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
+            CloudsClip* clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
             secondaryDisplay.respondToClip( clip );
-            cout<<"Current Project Example Clip ID: "<<clip.getID()<<endl;
+            cout<<"Current Project Example Clip ID: "<<clip->getID()<<endl;
         }
     }
     
@@ -124,9 +124,9 @@ void testApp::keyPressed(int key){
         if(testProjEx){
             if(currentProjEx <= 0) currentProjEx = projectExampleIndecs.size()-1;
             else currentProjEx--;
-            CloudsClip& clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
+            CloudsClip* clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
             secondaryDisplay.respondToClip( clip );
-            cout<<"Current Project Example Clip ID: "<<clip.getID()<<endl;
+            cout<<"Current Project Example Clip ID: "<<clip->getID()<<endl;
         }
     }
 }

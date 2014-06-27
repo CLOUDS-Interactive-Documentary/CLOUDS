@@ -617,7 +617,10 @@ void CloudsVisualSystemTwitter::updateActiveTweeters(int index){
     
     activeTweeters.clear();
     activeTweetPairs.clear();
-
+	
+	if(index < 0 || index >= dateIndex.size()){
+		return;
+	}
     string currentDate = getDateAsString(dateIndex[index]);
     int frameNum = 0;
     for(int i = 0; i < tweeters.size(); i++){
@@ -627,7 +630,7 @@ void CloudsVisualSystemTwitter::updateActiveTweeters(int index){
 		}
         
         if(tweeters[i]->position != ofVec3f(-1,-1,-1)){
-                activeTweeters.push_back( tweeters[i] );
+			activeTweeters.push_back( tweeters[i] );
         }
     }
     
@@ -1019,15 +1022,25 @@ void CloudsVisualSystemTwitter::selfUpdate()
     }
 
     if(ofGetFrameNum() % refreshRate == 0 && bAnimate){
-        
+
+		//JG santize date indecws
+		if(dateIndexMin >= dateIndexMax){
+			if(dateIndexMax == 0){
+				dateIndexMax = dateIndexMin+1;	
+			}
+			else {
+				dateIndexMin = dateIndexMax-1;	
+			}
+		}
+		//jg end
         if (currentDateIndex >= dateIndexMax){
             currentDateIndex = (int)dateIndexMin;
         }
         else{
             currentDateIndex++;
         }
-
-        updateActiveTweeters(currentDateIndex);
+	
+		updateActiveTweeters(currentDateIndex);
 
     }
     updateMesh();

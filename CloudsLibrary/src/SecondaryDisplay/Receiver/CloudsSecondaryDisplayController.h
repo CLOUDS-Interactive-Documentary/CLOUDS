@@ -36,7 +36,7 @@ class CloudsSecondaryDisplayController {
     void draw();
     
     bool debug, color;
-	void respondToClip(CloudsClip& clip);
+	void respondToClip(CloudsClip* clip);
 	CloudsFCPParser parser;
     
     float tx;
@@ -67,7 +67,7 @@ class CloudsSecondaryDisplayController {
 	bool playingMovie;
 	bool hasSpeaker;
 	CloudsSpeaker currentSpeaker;
-	CloudsClip currentClip;
+	CloudsClip* currentClip;
 	CloudsProjectExample currentExample;
 
 	//ofxFTGLSimpleLayout  *h1, *h2, *h3, *h4, *h5, *p;

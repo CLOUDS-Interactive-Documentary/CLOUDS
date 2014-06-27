@@ -88,21 +88,6 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\CloudsVisualSystemConnectors.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnection.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectionGenerator.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnector.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectorBin.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClCompile>
@@ -159,6 +144,45 @@
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp">
       <Filter>CloudsLibrary\src\RGBD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.cpp">
+      <Filter>CloudsLibrary\src\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.cpp">
+      <Filter>CloudsLibrary\src\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp">
+      <Filter>CloudsLibrary\src\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\ClusterMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\ClusterMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsAct.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +278,15 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\RGBD">
       <UniqueIdentifier>{ac1e9905-9a2c-45fa-b022-099147b3cd49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\HUD">
+      <UniqueIdentifier>{40fcd8ec-89d3-459e-84c8-d35f2a334fff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\ClusterMap">
+      <UniqueIdentifier>{6ad0eb79-6dfe-43b2-a776-7a388b18848f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\StoryEngine">
+      <UniqueIdentifier>{c3bd4114-5caa-4852-8d79-608c27050d87}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -416,21 +449,6 @@
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\CloudsVisualSystemConnectors.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnection.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectionGenerator.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnector.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Connectors\vs_src\ParticleConnectorBin.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClInclude>
@@ -526,6 +544,48 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h">
+      <Filter>CloudsLibrary\src\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.h">
+      <Filter>CloudsLibrary\src\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h">
+      <Filter>CloudsLibrary\src\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.h">
+      <Filter>CloudsLibrary\src\VisualSystems\ClusterMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.h">
+      <Filter>CloudsLibrary\src\VisualSystems\ClusterMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsAct.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
