@@ -82,7 +82,10 @@ void testApp::shuffleSystemIndices(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-		
+	if(ofGetElapsedTimef() - lastSystemChangedTime > 30){
+		currentSystemIndex = (currentSystemIndex + 1) % presetIndices.size();
+		advanceSystem();
+	}
 }
 
 float testApp::elapsedTime( float& start_time ){
@@ -111,9 +114,10 @@ void testApp::advanceSystem(){
 			if(bForward) currentSystemIndex = currentSystemIndex + 1 % presetIndices.size();
 			else currentSystemIndex = currentSystemIndex - 1 % presetIndices.size();
 			advanceSystem();
-		}else{
+		}
+		else{
 
-		if(currentSystem != NULL){
+			if(currentSystem != NULL){
 				shortStartTime =  ofGetElapsedTimef();
 				toLog("------------------------------------------ \n");
 				toLog( currentSystem->getSystemName() + " beginning stop -- " );
