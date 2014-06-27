@@ -107,7 +107,7 @@ void CloudsVisualSystemMemory::selfKeyPressed(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemMemory::generate(){
-    if (bTexture){
+    if (false && bTexture){
         
         //  Player
         //

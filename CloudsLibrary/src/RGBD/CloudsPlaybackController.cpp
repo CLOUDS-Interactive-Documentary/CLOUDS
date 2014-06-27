@@ -639,7 +639,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
                 transitionController.transitionFromInterlude(1.0);
             }
             else{
-                transitionController.transitionToIntro(1.0);
+				//TEMP FOR DURATIONAL TESTING
+				transitionController.transitionFromInterlude(1.0);
+				//REPLCE WITH RETURN TO INTRO
+                //transitionController.transitionToIntro(1.0);
             }
             
             showingInterlude = false;
