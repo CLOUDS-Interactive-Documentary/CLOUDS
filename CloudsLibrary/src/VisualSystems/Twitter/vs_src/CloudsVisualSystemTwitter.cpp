@@ -557,7 +557,9 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 }
 
 void CloudsVisualSystemTwitter::setActiveTweeters(int index){
-    
+    if(index < 0 || index >= dateIndex.size()){
+		return;
+	}
     string currentDate = getDateAsString(dateIndex[index]);
     
     for (int i = 0 ; i<activeTweeters.size(); i++) {

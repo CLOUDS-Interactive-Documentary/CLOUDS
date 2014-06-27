@@ -82,7 +82,7 @@ void testApp::shuffleSystemIndices(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-	if(ofGetElapsedTimef() - lastSystemChangedTime > 30){
+	if(ofGetElapsedTimef() - lastSystemChangedTime > 14){
 		currentSystemIndex = (currentSystemIndex + 1) % presetIndices.size();
 		advanceSystem();
 	}
