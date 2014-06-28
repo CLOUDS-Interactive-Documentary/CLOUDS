@@ -474,27 +474,30 @@ void CloudsVisualSystemWorld::selfDraw()
     
     //  Render globe
     //
-//    mat->begin();
     
     //  SPHERE
     //  -------------------------------------
     //
     //  Wire Sphere
+	
     ofNoFill();
+	glEnable(GL_CULL_FACE);
     ofSetColor(255,wireSphereAlpha*255.0);
-	ofSphere(0, 0, wireSphereScale*300);
+	ofDrawSphere(0, 0, wireSphereScale*300);
     //  Solid Sphere
     ofFill();
     ofSetColor(20,solidSphereAlpha*255.0);
-	ofSphere(0, 0, solidSphereScale*300 );
+	ofDrawSphere(0, 0, solidSphereScale*300 );
     //  Hallo
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     haloShader.begin();
     ofSetColor(0, 227, 255,haloSphereAlpha*255.0);
-	ofSphere(0, 0, haloSphereScale*300);
+	ofDrawSphere(0, 0, haloSphereScale*300);
 	haloShader.end();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
+	ofDisableLighting();
+	
     //  WORLD MAP
     //  -------------------------------------
     //
@@ -567,25 +570,13 @@ void CloudsVisualSystemWorld::selfDraw()
 	lineMesh.draw();
 	ofPopStyle();
     
+	ofEnableLighting();
     glDisable(GL_NORMALIZE);
+	glDisable(GL_CULL_FACE);
     ofDisableDepthTest();
 
     
 }
-
-void CloudsVisualSystemWorld::selfPostDraw(){
-    postShader.begin();
-    postShader.setUniformTexture("tex1", postTexture, 1);
-    postShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
-    postShader.setUniform2f("textureResolution", postTexture.getWidth(), postTexture.getHeight());
-    postShader.setUniform1f("chromaDist", postChromaDist);
-    postShader.setUniform1f("grainDist", postGrainDist);
-	
-    CloudsVisualSystem::selfPostDraw();
-	
-    postShader.end();
-}
-
 
 void CloudsVisualSystemWorld::selfSetupGuis()
 {
