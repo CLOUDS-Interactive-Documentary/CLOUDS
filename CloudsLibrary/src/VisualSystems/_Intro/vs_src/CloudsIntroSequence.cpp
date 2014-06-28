@@ -14,6 +14,7 @@
 #include "CloudsInputKinectOSC.h"
 #endif
 
+
 //JG REMOVING THIS
 CloudsVisualSystemEvents CloudsIntroSequence::events;
 
@@ -468,7 +469,6 @@ void CloudsIntroSequence::updateQuestions(){
 		
 		curQuestion.hoverPosition.z += cameraForwardSpeed * slowDownFactor;
 
-
 		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.max || &curQuestion == caughtQuestion){
 #ifdef OCULUS_RIFT
             ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
@@ -485,8 +485,6 @@ void CloudsIntroSequence::updateQuestions(){
 						if (caughtQuestion->startHovering()) {
 							getClick()->setPosition(0);
 							getClick()->play();
-//                            CloudsPortalEventArgs args(getQuestionText());
-//                            ofNotifyEvent(events.portalHoverBegan, args);
                         }
 					}
 				}
@@ -865,6 +863,10 @@ void CloudsIntroSequence::drawHelperType(){
 		}
 		helperFont.setTracking(helperFontTracking);
 	}
+	#elif defined(MOUSE_INPUT)
+		//helpHoverText = "< LOOK FORWARD";
+		//basePosition = ofVec3f(0,0,0);
+		//helperTextOpacity = currentTitleOpacity;
 	#endif
 	
 	if(caughtQuestion != NULL){
@@ -911,7 +913,7 @@ void CloudsIntroSequence::drawHelperType(){
 		
 		ofSetColor(255,255*helperTextOpacity);
 		
-        bool showAbove = !bUseOculusRift && caughtQuestion->tunnelQuadrantIndex == 2;
+        bool showAbove = !bUseOculusRift && caughtQuestion != NULL && caughtQuestion->tunnelQuadrantIndex == 2;
 		int yOffsetMult = (showAbove) ? -1 : 1;
 		//helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY - hoverTextHeight/2) );
 
@@ -952,14 +954,19 @@ void CloudsIntroSequence::drawHelperType(){
 				helperFontScale*.8);
         
         ofSetColor(255, 255*questionhintAlpha);
-        helperFont.drawString("SELECT A QUESTION", -hintTextWidth*.5, hintTextHeight*.5 );
+		helperFont.drawString("SELECT A QUESTION", -hintTextWidth*.5, hintTextHeight*.5 );
 
         if(caughtQuestion != NULL){
             float questionHoldAlpha = ofMap(caughtQuestion->hoverPercentComplete, .2, .3, 0.0, .2, true);
             ofSetColor(255, 255*questionHoldAlpha);
-            hintTextWidth = helperFont.stringWidth("HOLD TO SELECT");
-            hintTextHeight = helperFont.stringWidth("HOLD TO SELECT");
-            helperFont.drawString("HOLD TO SELECT", -hintTextWidth*.5, hintTextHeight*.5 );
+#ifdef MOUSE_INPUT
+			string textPrompt = "CLICK TO SELECT";
+#else
+			string textPrompt = "HOLD TO SELECT";
+#endif
+            hintTextWidth = helperFont.stringWidth(textPrompt);
+            hintTextHeight = helperFont.stringWidth(textPrompt);
+            helperFont.drawString(textPrompt, -hintTextWidth*.5, hintTextHeight*.5 );
         }
         
         ofPopMatrix();
@@ -1032,7 +1039,18 @@ void CloudsIntroSequence::drawCursors(){
 
 void CloudsIntroSequence::selfDrawOverlay(){
 
-#ifndef OCULUS_RIFT
+#if defined(MOUSE_INPUT)
+	
+	ofPushStyle();
+	string helpHoverText = "CLICK TO BEGIN";
+	float helperTextOpacity = currentTitleOpacity;
+	ofSetColor(255,helperTextOpacity*255);
+	helperFont.drawString(helpHoverText, ofGetWidth()/2, ofGetHeight()/2);
+	ofPopStyle();
+#elif defined(OCULUS_RIFT)
+	//no overlay
+#else
+	//standard mode and kinect mode
 	drawIntroNodes();
 #endif
     
@@ -1060,6 +1078,7 @@ void CloudsIntroSequence::selfBegin(){
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].stopHovering();
 	}
+
 }
 
 void CloudsIntroSequence::selfEnd(){
@@ -1099,16 +1118,11 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
-#if !defined(OCULUS_RIFT)
-//	if(!startedOnclick && startQuestions.size() > 0){
-//		startedOnclick  = true;
-//		timeline->play();
-//		
-//		CloudsPortalEventArgs args("");
-//		ofNotifyEvent(events.portalHoverEnded, args);
-//		timeSinceLastPrompt = ofGetElapsedTimef();
-//		promptShown = false;
-//	}
+#if defined(MOUSE_INPUT)
+	if(!startedOnclick && startQuestions.size() > 0){
+		startedOnclick  = true;
+		timeline->play();		
+	}
 #endif
 }
 

@@ -26,7 +26,7 @@ public:
     void selfDrawDebug();
     void selfSceneTransformation();
     void selfDraw();
-    void selfPostDraw();
+   //void selfPostDraw();
     void selfExit();
     void selfBegin();
 	void selfEnd();
@@ -96,11 +96,14 @@ protected:
     
     //  Post
     //
+	/*
+	//POST MOVED TO MAIN
     ofShader    postShader;
     ofTexture   postTexture;
     float       postChromaDist;
     float       postGrainDist;
-	
+	*/
+
 	//LB
 	ofImage* colorMap;
     vector<string> colorMapNames;

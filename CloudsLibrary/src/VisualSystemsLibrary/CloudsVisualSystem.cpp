@@ -14,6 +14,11 @@
 #include "ofxSystemTextbox.h"
 #endif
 
+#ifdef MOUSE_INPUT
+#include "ofAppGLFWWindow.h"
+//#include <GLFW/glfw3.h>
+#endif
+
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static ofImage cloudsPostDistortionMap;
@@ -465,6 +470,19 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	getOculusRift().baseCamera = &getCameraRef();
 #endif
 	
+#if defined(MOUSE_INPUT) && defined(CLOUDS_APP) && defined(CLODUS_RELEASE)
+	ofAppGLFWWindow* window = ( (ofAppGLFWWindow*) ofGetWindowPtr() );
+	if(!window->isCursorAboveWindow()){
+//		cout << ofGetElapsedTimef() << "setting cursor to " << ofGetMouseX() << " " << ofGetMouseY() << endl;
+		//glfwSetCursorPos(window->windowP, ofGetMouseX()-1, ofGetMouseY());
+		glfwSetCursorPos(window->windowP, ofGetWidth()/2, ofGetHeight()/2);
+//		glfwSetCursorPos(window->windowP, ofClamp(ofGetMouseX(), 200, ofGetWidth()  - 200), 
+//										  ofClamp(ofGetMouseY(), 200, ofGetHeight() - 200));
+
+//		glfwSetCursorPos( window->windowP, ofGetPreviousMouseX(), ofGetPreviousMouseY() );
+	}
+#endif
+
 	for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it){
 		(*it)->update();
 	}
@@ -1183,7 +1201,18 @@ void CloudsVisualSystem::mouseMoved(ofMouseEventArgs& data)
 //    cout << "MOUSE IN: " << data.x << ", " << data.y << " // VIEWPORT: " << viewport.x << ", " << viewport.y << ", " << viewport.width << ", " << viewport.height;
     data.x = ofMap(data.x, 0, ofGetWidth(), viewport.x, viewport.width);
     data.y = ofMap(data.y, 0, ofGetHeight(), viewport.y, viewport.height);
-//    cout << "// MOUSE OUT: " << data.x << ", " << data.y << endl;
+//    cout << "// MOUSE OUT: " << data.x << ", " << data.y << endl
+#elif defined(MOUSE_INPUT)
+	ofAppGLFWWindow* window = ( (ofAppGLFWWindow*) ofGetWindowPtr() );
+	if(!window->isCursorAboveWindow()){
+		cout << ofGetElapsedTimef() << "setting cursor to " << ofGetMouseX() << " " << ofGetMouseY() << endl;
+		//glfwSetCursorPos(window->windowP, ofGetMouseX()-1, ofGetMouseY());
+		//glfwSetCursorPos(window->windowP, ofGetWidth()/2, ofGetHeight()/2);
+//		glfwSetCursorPos(window->windowP, ofClamp(ofGetMouseX(), 200, ofGetWidth()  - 200), 
+//										  ofClamp(ofGetMouseY(), 200, ofGetHeight() - 200));
+
+		glfwSetCursorPos( window->windowP, ofGetPreviousMouseX(), ofGetPreviousMouseY() );
+	}
 #endif
     selfMouseMoved(data);
 }

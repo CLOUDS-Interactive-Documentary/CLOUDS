@@ -48,7 +48,6 @@ void CalibrationNode::updateWorldPosition(){
 			worldPosition.z *= .5; //bring the side nodes closer in Z
 		}
 	}
-	
 }
 
 void CalibrationNode::updateScreenPosition(){

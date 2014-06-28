@@ -106,8 +106,8 @@ void CloudsVisualSystemCities::selfSetup()
     
     //  Post
     //
-    postShader.load("",getVisualSystemDataPath()+"shaders/postprocess.fs");
-    ofLoadImage(postTexture, getVisualSystemDataPath()+"images/6.jpg");
+    //postShader.load("",getVisualSystemDataPath()+"shaders/postprocess.fs");
+    //ofLoadImage(postTexture, getVisualSystemDataPath()+"images/6.jpg");
 }
 void CloudsVisualSystemCities::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_CAMERA;
@@ -616,6 +616,7 @@ void CloudsVisualSystemCities::selfDraw()
 	ofPopStyle();
 }
 
+/*
 void CloudsVisualSystemCities::selfPostDraw(){
     postShader.begin();
     postShader.setUniformTexture("tex1", postTexture, 1);
@@ -629,6 +630,7 @@ void CloudsVisualSystemCities::selfPostDraw(){
 	
 //	overlayMap.draw(0,0,400, 400);
 }
+*/
 
 void CloudsVisualSystemCities::billBoard()
 {
