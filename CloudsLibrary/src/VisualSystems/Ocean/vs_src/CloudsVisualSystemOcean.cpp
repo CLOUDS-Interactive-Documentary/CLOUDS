@@ -205,7 +205,7 @@ void CloudsVisualSystemOcean::selfDraw(){
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 	glPointSize(pointSize);
 	glEnable(GL_CULL_FACE);
-#ifdef TARGET_WIN32
+#ifdef OCULUS_RIFT
 	glCullFace(GL_BACK);
 #else
     glCullFace(GL_FRONT);
