@@ -16,32 +16,26 @@ CloudsSecondaryDisplayOSCSender::CloudsSecondaryDisplayOSCSender(){
 void CloudsSecondaryDisplayOSCSender::setup(){
     ofxXmlSettings linksXML;
     
-    if(!linksXML.loadFile(GetCloudsDataPath()+"secondaryDisplay/" + "OSC/OSCSettings.xml")){
-        ofLogError("CloudsSecondaryDisplayOSCSender::setup") << "Secondary Display OSC settings not found";
-		return;
-	}
-	
-    linksXML.pushTag("OSC");
     string hostname;
     int port;
-    hostname = linksXML.getValue("hostname", "");
-    
-    //////////////////////////////
-    //hostname = "localhost";
-    //////////////////////////////
-    
-    if (hostname == "") {
-        ofLogError()<<"Check OSCSettings.xml in CloudsData/SecondaryDisplay/OSC"<<endl;
-        return;
+    if(linksXML.loadFile(GetCloudsDataPath()+"secondaryDisplay/" + "OSC/OSCSettings.xml")){
+	    linksXML.pushTag("OSC");
+		hostname = linksXML.getValue("hostname", "");
+		port = linksXML.getValue("port", -1);
+	    if (hostname == "" || port == -1) {
+	        ofLogError()<<"Check OSCSettings.xml in CloudsData/SecondaryDisplay/OSC"<<endl;
+			return;
+		}
     }
-    
-    port = linksXML.getValue("port", -1);
-    if (port == -1) {
-        ofLogError()<<"Check OSCSettings.xml in CloudsData/SecondaryDisplay/OSC"<<endl;
-        return;
-    }
+	else{
+//        ofLogError("CloudsSecondaryDisplayOSCSender::setup") << "Secondary Display OSC settings not found";
+		hostname = "localhost";
+		port = 12346;
+	}
+	
 
     cout<<"Setting up OSC Sender with IP: "<<hostname<<" and Port : "<<port<<endl;
+
     sender.setup(hostname, port);
     bSetup = true;
 }

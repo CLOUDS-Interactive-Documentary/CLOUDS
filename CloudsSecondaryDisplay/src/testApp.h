@@ -24,7 +24,8 @@ class testApp : public ofBaseApp {
 	CloudsSecondaryDisplayController secondaryDisplay;
     
     bool debug;
-    
+    bool fullscreened;
+
     bool testAllClips, testProjEx;
     int currentTestClip, currentProjEx;
     bool timer;

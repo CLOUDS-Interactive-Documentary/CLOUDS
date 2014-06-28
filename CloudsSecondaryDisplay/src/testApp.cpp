@@ -5,9 +5,8 @@
 void testApp::setup(){
 	
 	ofSetVerticalSync(true);
-//    ofSetFrameRate(60);
 	ofEnableAlphaBlending();
-	
+
 	secondaryDisplay.setup();
     testAllClips = false;
     timer = true;
@@ -16,10 +15,21 @@ void testApp::setup(){
     currentProjEx = 0;
     testProjEx = false;
     startTime = 0;
+
+	ofSetWindowPosition(1920 + 1920*.5,1080*.5);
+	fullscreened = false;
+
+
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+
+	if(ofGetFrameNum() > 10 && !fullscreened){
+		ofToggleFullscreen();
+		fullscreened = true;
+	}
+
 #ifdef CLOUDS_RELEASE
     ofHideCursor();
 #endif
