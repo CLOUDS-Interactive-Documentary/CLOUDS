@@ -115,8 +115,8 @@ protected:
 
     //  Post
     //
-    ofShader    postShader;
-    ofTexture   postTexture;
-    float       postChromaDist;
-    float       postGrainDist;
+    //ofShader    postShader;
+    //ofTexture   postTexture;
+    //float       postChromaDist;
+    //float       postGrainDist;
 };

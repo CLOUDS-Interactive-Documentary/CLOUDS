@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1303.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>240.000000000</XPosition>
+    <YPosition>243.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -42,6 +42,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>DataWorld1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Data_globe</Name>
     <Value>0</Value>
 </Widget>
@@ -52,8 +57,8 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>DataWorld1</Name>
-    <Value>0</Value>
+    <Name>GeoData</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -69,11 +74,6 @@
     <Kind>2</Kind>
     <Name>g_Intro_03</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>GeoData</Name>
-    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

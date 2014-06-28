@@ -83,8 +83,8 @@ void CloudsVisualSystemWorld::selfSetup()
     
     haloShader.load(getVisualSystemDataPath()+"shaders/backlight");
     
-    postShader.load("",getVisualSystemDataPath()+"shaders/postprocess.fs");
-    ofLoadImage(postTexture, getVisualSystemDataPath()+"images/7.jpg");
+    //postShader.load("",getVisualSystemDataPath()+"shaders/postprocess.fs");
+    //ofLoadImage(postTexture, getVisualSystemDataPath()+"images/7.jpg");
 
 	citiesMesh.clear();
 	citiesMesh.setMode(OF_PRIMITIVE_POINTS);
@@ -354,6 +354,8 @@ void CloudsVisualSystemWorld::selfKeyPressed(ofKeyEventArgs & args){
 
 void CloudsVisualSystemWorld::selfUpdate()
 {
+
+
     //  Insert Particles if it's need
     //
     if ( (cities.size() > 2) && (particles.size() < nMaxPoints-2) ){
