@@ -985,12 +985,12 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	}
 	return false;
 #else
-	
+	#ifdef CLOUDS_SCREENING
     if( currentVisualSystem->getSystemName() == "Balloons" ){
         hud.clearQuestion();
         return false;
     }
-    
+	#endif
 	interludeTimedOut = ofGetElapsedTimef() - interludeStartTime > interludeForceOnTimer;
 	
 	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth)
@@ -1063,11 +1063,12 @@ void CloudsPlaybackController::updateCompletedInterlude(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::drawInterludeInterface(){
     
-
+#ifdef CLOUDS_SCREENING
     if(currentVisualSystem->getSystemName() == "Balloons"){
         return;
     }
-    
+#endif
+
 	ofRectangle hoverRect;
 	bool hovering = false;
 	string promptType;
@@ -1489,26 +1490,23 @@ void CloudsPlaybackController::showInterlude(){
 		forceCredits = true;
 	}
 	#endif
-    if(storyEngine.getPresetIDForInterlude(run, interludePreset, forceCredits)){
-        
-        interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
-        
-        interludeSystem->setDrawToScreen( false );
-        interludeSystem->setup();
-        interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
-        interludeSystem->playSystem();
-        interludeSystem->isInterlude = true;
-		
-        currentVisualSystem = interludeSystem;
-        
-        showingInterlude = true;
-
-    }
-    else{
+    if(!storyEngine.getPresetIDForInterlude(run, interludePreset, forceCredits)){        
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";
-//        showClusterMap();
-        returnToIntro = true;
-    }
+		storyEngine.getPresetIDForInterlude(run, interludePreset, true);
+	}
+
+    interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
+        
+    interludeSystem->setDrawToScreen( false );
+    interludeSystem->setup();
+    interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
+    interludeSystem->playSystem();
+    interludeSystem->isInterlude = true;
+		
+    currentVisualSystem = interludeSystem;
+        
+    showingInterlude = true;
+
 }
 
 //--------------------------------------------------------------------

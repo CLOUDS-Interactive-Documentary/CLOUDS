@@ -12,7 +12,7 @@
 			<creator_name>Aaron Koblin</creator_name>
 			<description>TheSheepMarket.com is a collection of 10,000 sheep made by workers on Amazon's Mechanical Turk. Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description>
             <videos>
-				<file>Sheepmarket_720_30p.mov</file>
+				<file>Sheepmarket_720.mov</file>
 			</videos>
 	</project>
 
@@ -50,6 +50,7 @@
 			</videos>
 	</project>
 
+<!-- JG BARBICAN MISSING
 	<project title="openFrameworks">
 			<creator_name>Zach Lieberman, Theo Watson, Arturo Castro</creator_name>
 			<description>Open source libraries for creative coders developing in C++. It includes hundreds of addons for graphics, computer vision, and interactive applications.</description>
@@ -57,7 +58,7 @@
 				<file>openFrameworks_720.mov</file>
 			</videos>
 	</project>
-
+-->
 	<project title="Tron (1982)">
 			<creator_name>CGI by Ken Perlin</creator_name>
 			<description> One of the earliest feature films to reflect the video-game craze of the 1980s. Stars Jeff Bridges as computer programmer Kevin Flynn, who becomes part of the very game that he's programming</description>
@@ -65,6 +66,7 @@
                 <file>Tron_480.mov</file>
             </videos>
 	</project>
+
     <project title="Eyewriter">
 			<creator_name>Graffiti Research Lab </creator_name>
 			<description>A low-cost eyetracking system originally designed for paralyzed graffiti artist TEMPT1. It uses inexpensive cameras and computer vision enabling a user to draw with eye-movement.</description>
@@ -73,6 +75,7 @@
 			</videos>
 	</project>
 
+<!-- JG BARBICAN MISSING
 	<project title="Laser Tag">
 			<creator_name>Theo Watson, Zach Lieberman</creator_name>
 			<description>Artists use laser pointers tracked by computer vision to project ephemeral graffiti on the sides of buildings.</description>
@@ -81,7 +84,7 @@
 				<file>LaserTag_720.mov</file>
 			</videos>
 	</project>
-
+-->
 	<project title="Lumarca">
 			<creator_name>Albert Hwang, Matt Parker</creator_name>
 			<description>A projector throws its beam on an array of vertical wires. The result is a floating, glowing 3d object made entirely of light.</description>
@@ -89,6 +92,7 @@
 				<file>Lumarca_720.mov</file>
 			</videos>
 	</project>
+
     <project title="Lit Tree">
 			<creator_name>Elliot Woods, Mimi Son</creator_name>
 			<description>The leaves of a tree are used as the voxels in a 3D display for creating volumetric light patterns.</description>
@@ -96,6 +100,7 @@
 				<file>LitTree_720.mov</file>
 			</videos>
 	</project>
+	
 	<project title="Messa Di Voce">
 			<creator_name>Golan Levin, Zach Lieberman Joan La Barbara, Jaap Blonk</creator_name>
 			<description>A performance and installation in which the speech, shouts and songs produced by two vocalists are augmented in real-time by custom interactive visualization</description>
@@ -120,7 +125,8 @@
 				<file>ListeningPost_720.mov</file>
 			</videos>
 	</project>
-	
+	<!-- JG BARBICAN MISSING
+
 	<project title="The Transfiguration">
 			<creator_name>Matt Pyke - Universal Everything</creator_name>
 			<description>An ever-changing organic costume using motion captured walk cycles in a parade of fantastical humanoid characters.</description>
@@ -128,7 +134,7 @@
 				<file></file>
 			</videos>
 	</project>
-
+-->
     <project title="Open Paths">
 			<creator_name>Brian House, Jer Thorp, Jake Poroway</creator_name>
 			<description>A model for personal engagement with data that lets people track their locations and visualize where they've been using a simple smartphone app.</description>
@@ -137,7 +143,7 @@
 			</videos>
 	</project>
     
-	<project title="Good Morning!">
+	<project title="Good Morning">
 			<creator_name>Jer Thorp</creator_name>
 			<description>GoodMorning! is a Twitter visualization tool that shows about 11000 'good morning' tweets over a 24 hour period, rendering a sample of tweets around the globe.</description>
 			<videos>
@@ -145,6 +151,7 @@
 			</videos>
 	</project>
 
+<!-- JG BARBICAN MISSING
     <project title="Kepler Exoplanet Candidates">
 			<creator_name>Jer Thorp</creator_name>
 			<description>(2012)- A visualization of the 1236 exoplanet candidates observed by NASA's Kepler mission. </description>
@@ -152,7 +159,7 @@
 				<file></file>
 			</videos>
 	</project>
-
+-->
     
 	<project title="Cascade">
 			<creator_name>Jer Thorp, Mark Hansen, Jake Poroway</creator_name>
@@ -178,7 +185,6 @@
 			</videos>
 	</project>
 
-
 	<project title="Coronal Mass Ejection">
 			<creator_name>Robert Hodgin</creator_name>
 			<description>Generative Coronal Mass Ejection, created for the Written Images project. It was developed in Cinder, a powerful C++ library for art, design and visual effects.</description>
@@ -196,7 +202,6 @@
 	</project>
                 
 	<project title="Super Mario Clouds">
-
 			<creator_name>Cory Arcangel</creator_name>
 			<description>An old Mario Brothers cartridge modified to erase everything but the clouds.</description>
 			<videos>
@@ -356,6 +361,7 @@
 			</videos>
 	</project>
     
+    <!-- JG BARBICAN MISSING
     <project title="Face Subsitution">
 			<creator_name>Arturo Castro, Kyle McDonald</creator_name>
 			<description>Real time face tracking and substitution experiments including a realization of the Scramble Suit and an interactive installation Faces that picks a new face for you every time you blink. - 2011</description>
@@ -363,7 +369,8 @@
 				<file></file>
 			</videos>
 	</project>
-	
+	-->
+
     <project title="Sniff">
 			<creator_name>Karolina Sobecka, James George</creator_name>
 			<description>A CG dog projected on a storefront follows the viewer and responds to his gestures, behaving according to the person's state of engagement.</description>
@@ -386,7 +393,7 @@
 			</videos>
 	</project>
 
-	<project title="قلب">
+	<project title="Alb">
 			<creator_name>Ramsey Nasser</creator_name>
 			<description>A fully-functional programming language based on Arabic script.</description>
 			<videos>
@@ -427,6 +434,7 @@
 			</videos>
 	</project>
 
+<!-- JG BARBICAN
 	<project title="Tiny Riot">
 			<creator_name>Satoru Higa</creator_name>
 			<description>An iphone app that blasts rock music when shaken, inspiring users to thrash wildly in the spirit of Atari Teenage Riot.</description>
@@ -434,8 +442,9 @@
 				<file>TinyRiot_480.mov</file>
 			</videos>
 	</project>
-
-	<!--
+-->
+f
+<!--
 	<project title="Hyphae">
 			<creator_name>N-E-R-V-O-U-S System</creator_name>
 			<description>Hyphae is a collection of 3D printed artifacts constructed of rhizome-like networks, inspired by the vein structures that carry fluids through organisms from the leaves of plants to our own circulatory systems.</description>
