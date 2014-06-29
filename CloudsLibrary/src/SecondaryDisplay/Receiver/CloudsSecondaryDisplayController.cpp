@@ -537,7 +537,7 @@ void CloudsSecondaryDisplayController::draw(){
             meshProjectVideo->mesh.setVertex(7, playerRect.getTopLeft());
             
             
-            playingMovie = archivePlayer.isPlaying();
+            //playingMovie = archivePlayer.isPlaying();
         }
         
         shader.begin();

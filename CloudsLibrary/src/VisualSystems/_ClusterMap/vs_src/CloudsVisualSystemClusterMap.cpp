@@ -993,7 +993,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 		easyCamera.enableMouseInput();
 	}
 	
-	if(traversalPath.size() > 0){
+	if(traversalPath.size() > 0 && traversalPath.back().endIndex- traversalPath.back().startIndex > 3){
 		float curIndex = ofMap(percentTraversed,
 									 0, 1.0,
 									 traversalPath.back().startIndex, traversalPath.back().endIndex-2,true);

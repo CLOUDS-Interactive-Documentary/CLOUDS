@@ -346,9 +346,12 @@ void CloudsFCPParser::parseProjectExamples(const string& filename){
 	
 	if(ofFile(videoFilePathTxt).exists()){
 		videoFilePathPrefix = ofFilePath::addTrailingSlash(ofBufferFromFile(videoFilePathTxt).getText());
-		hasVideoDataPath = ofFile(videoFilePathPrefix).exists();
 	}
-	
+	else{
+		videoFilePathPrefix = GetCloudsDataPath(true) + "secondary/";		
+	}
+	hasVideoDataPath = ofFile(videoFilePathPrefix).exists();
+
 	if(!hasVideoDataPath){
 		ofLogError("CloudsFCPParser::parseProjectExamples") << "Couldn't find data path for videos";
 	}
