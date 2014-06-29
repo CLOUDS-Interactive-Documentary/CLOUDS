@@ -36,10 +36,9 @@ public:
 	unsigned int size;
 
 	/** Location of "marker particles" that represent the fluid. */
-	std::vector<FluidParticle> particles;
+	vector<FluidParticle> particles;
 
 	FluidBox();
-
 	~FluidBox();
 
 	void setup(int nSize, float viscosity = 0.001);
