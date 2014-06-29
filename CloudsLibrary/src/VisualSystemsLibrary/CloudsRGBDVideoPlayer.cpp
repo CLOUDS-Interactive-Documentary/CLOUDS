@@ -492,10 +492,12 @@ void CloudsRGBDVideoPlayer::drawSubtitles()
         int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
         int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.7;
         ofPushStyle();
+		ofEnableAlphaBlending();
         ofSetColor(0, 200);
         currentSubtitles.draw(x+3, y-2);
         ofSetColor(255);
         currentSubtitles.draw(x, y);
+		ofDisableAlphaBlending();
         ofPopStyle();
     }
 #endif

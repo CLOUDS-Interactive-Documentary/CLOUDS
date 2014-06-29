@@ -465,24 +465,14 @@ void CloudsVisualSystem::update(ofEventArgs & args)
     }
     
 	cloudsCamera.setCanvasWidthHeight(getCanvasWidth(), getCanvasHeight());
-	
+#ifdef MOUSE_INPUT
+	cam.disableMouseInput();
+#endif
+
 #ifdef OCULUS_RIFT
 	getOculusRift().baseCamera = &getCameraRef();
 #endif
-	
-//#if defined(MOUSE_INPUT) && defined(CLOUDS_APP) && defined(CLODUS_RELEASE)
-//	ofAppGLFWWindow* window = ( (ofAppGLFWWindow*) ofGetWindowPtr() );
-//	if(!window->isCursorAboveWindow()){
-////		cout << ofGetElapsedTimef() << "setting cursor to " << ofGetMouseX() << " " << ofGetMouseY() << endl;
-//		//glfwSetCursorPos(window->windowP, ofGetMouseX()-1, ofGetMouseY());
-//		glfwSetCursorPos(window->windowP, ofGetWidth()/2, ofGetHeight()/2);
-////		glfwSetCursorPos(window->windowP, ofClamp(ofGetMouseX(), 200, ofGetWidth()  - 200), 
-////										  ofClamp(ofGetMouseY(), 200, ofGetHeight() - 200));
-//
-////		glfwSetCursorPos( window->windowP, ofGetPreviousMouseX(), ofGetPreviousMouseY() );
-//	}
-//#endif
-//
+
 	for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it){
 		(*it)->update();
 	}
