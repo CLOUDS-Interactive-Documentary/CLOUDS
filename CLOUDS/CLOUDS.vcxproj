@@ -257,7 +257,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs\
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <PreprocessorDefinitions>SHOW_SUBTITLES=1;CLOUDS_HUD=1;NO_TIMER;CLOUDS_APP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SHOW_SUBTITLES=1;CLOUDS_HUD=1;MOUSE_INPUT=1;NO_TIMER;CLOUDS_APP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
