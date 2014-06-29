@@ -383,9 +383,6 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_Intro\vs_src\CloudsIntroSequence.h">
-      <Filter>CloudsLibrary\src\VisualSystems</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h">
       <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
     </ClInclude>
@@ -436,6 +433,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
       <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_Intro\vs_src\CloudsIntroSequence.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

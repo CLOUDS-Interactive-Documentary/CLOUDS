@@ -2220,7 +2220,14 @@ void CloudsVisualSystemRGBD::selfMouseMoved(ofMouseEventArgs& data){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfMousePressed(ofMouseEventArgs& data){
-	
+	#ifdef MOUSE_INPUT
+	if(leftPortal.question != ""){
+		leftPortal.mousePressed(data);
+	}
+	if(rightPortal.question != ""){
+		rightPortal.mousePressed(data);
+	}
+	#endif
 }
 
 //--------------------------------------------------------------

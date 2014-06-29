@@ -14,6 +14,10 @@
 #include "CloudsInputKinectOSC.h"
 #endif
 
+#ifdef MOUSE_INPUT
+//for moving mouse position on idle
+#include "ofAppGLFWWindow.h"
+#endif
 
 //JG REMOVING THIS
 CloudsVisualSystemEvents CloudsIntroSequence::events;
@@ -1146,7 +1150,7 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
     cursor.set(GetCloudsInput()->getPosition());
 	mouseLastMovedTime = ofGetElapsedTimef();
 #ifdef MOUSE_INPUT
-	if(!clickTextActive){
+	if(!clickTextActive && startQuestions.size() > 0){
 		clickTextActive = true;
 		clickTextActiveTime = mouseLastMovedTime;
 	}

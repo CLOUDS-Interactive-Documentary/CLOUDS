@@ -557,6 +557,8 @@ void CloudsPlaybackController::mouseMoved(ofMouseEventArgs & args){
 }
 
 void CloudsPlaybackController::mousePressed(ofMouseEventArgs & args){
+#ifdef MOUSE_INPUT
+#endif
 
 }
 
@@ -1022,7 +1024,11 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 												 interludeBarHoverStartTime,interludeBarHoverStartTime+interludeBarHoverHoldTime,
 												 0.0, 1.0, true);
 //		cout << " interludeBarHoverPercentComplete " << interludeBarHoverPercentComplete << endl;
-		if(interludeBarHoverPercentComplete == 1.0){
+		bool selectionComplete = interludeBarHoverPercentComplete == 1.0; 
+		#ifdef MOUSE_INPUT
+		selectionComplete |= ofGetMousePressed();
+		#endif
+		if(selectionComplete){
 			
 			///one of these will be true
 			interludeContinueSelected = interludeHoveringContinue;

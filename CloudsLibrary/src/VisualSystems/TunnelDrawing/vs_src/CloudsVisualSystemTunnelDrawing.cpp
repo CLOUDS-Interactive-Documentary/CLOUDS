@@ -102,11 +102,13 @@ void CloudsVisualSystemTunnelDrawing::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemTunnelDrawing::selfUpdate(){
     
+#ifndef MOUSE_INPUT
 	map<int, CloudsInteractionEventArgs>::iterator init;
 	for(init = GetCloudsInputPoints().begin(); init != GetCloudsInputPoints().end(); init++){
 		addInteractionPoint(init->second);
 	}
-	
+#endif
+
 	map<int, RibbonTrail>::iterator it;
 	for(it = currentTrails.begin(); it != currentTrails.end(); it++){
 		for(int i = 0; i < it->second.points.size(); i++){
@@ -253,11 +255,15 @@ void CloudsVisualSystemTunnelDrawing::selfKeyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemTunnelDrawing::selfInteractionDragged(CloudsInteractionEventArgs& data){
-//   addInteractionPoint(data);
+#ifdef MOUSE_INPUT
+   addInteractionPoint(data);
+#endif
 }
 
 void CloudsVisualSystemTunnelDrawing::selfInteractionMoved(CloudsInteractionEventArgs& data){
-//    addInteractionPoint(data);
+#ifdef MOUSE_INPUT
+    addInteractionPoint(data);
+#endif
 }
 
 void CloudsVisualSystemTunnelDrawing::addInteractionPoint(CloudsInteractionEventArgs& args){
