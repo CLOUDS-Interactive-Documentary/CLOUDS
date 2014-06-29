@@ -136,6 +136,8 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	questionFontTracking = 0;
 	questionFontY = 0;
 
+	hideCursors = false;
+
 	firstClip = true;
 }
 
@@ -149,7 +151,8 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	followCamGui->addSlider("CAMERA DISTANCE", 10, 400, &traversCameraDistance);
 	followCamGui->addToggle("LOCK AXIS", &lockCameraAxis);
 	followCamGui->addSlider("FOV", 4, 90, &traverseCamFOV);
-    
+	followCamGui->addToggle("HIDE CURSOR", &hideCursors);
+
 	ofAddListener(followCamGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(followCamGui);
 	guimap[followCamGui->getName()] = followCamGui;
@@ -1292,6 +1295,13 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 
 }
 
+
+void CloudsVisualSystemClusterMap::drawCursors(){
+	if(!hideCursors){
+		CloudsVisualSystem::drawCursors();
+	}
+}
+
 void CloudsVisualSystemClusterMap::updateQuestions(){
 
 	for(int i = 0; i < questions.size(); i++){
@@ -1457,19 +1467,6 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 	glEnable(GL_DEPTH_TEST);
 	ofPopStyle();
 
-}
-
-void CloudsVisualSystemClusterMap::drawCursors(){
-    map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
-    for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
-        if (it->second.primary) {
-            // override primaryCursorMode
-            selfDrawCursor(stickyCursor, it->second.dragged, caughtQuestion? CURSOR_MODE_DRAW : CURSOR_MODE_CAMERA, it->second.focus);
-        }
-        else {
-            selfDrawCursor(it->second.position, it->second.dragged, secondaryCursorMode, it->second.focus);
-        }
-    }
 }
 
 void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip*> questionClips){

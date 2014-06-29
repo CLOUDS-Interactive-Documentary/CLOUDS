@@ -51,6 +51,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 		return "_ClusterMap";
 	}
 
+    void drawCursors();
+
 	//These methods let us add custom GUI parameters and respond to their events
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
@@ -321,7 +323,6 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofRange questionTugDistance;
 	void updateQuestions();
 	void drawQuestions();
-    void drawCursors();
-
+ 	bool hideCursors;
 
 };
