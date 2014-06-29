@@ -71,6 +71,12 @@ void CloudsIntroSequence::selfSetDefaults(){
 	questionZStopRange.max = 300;
 	perlinOffset = 0;
 	
+	clickTextActive = false;
+	clickTextActiveTime = 0;
+	clickToBeginAlpha = 0;
+	mouseLastMovedTime = 0;
+
+
     warpCamera.setNearClip(.01);
 	
 	timeSinceLastPrompt = 0;
@@ -302,6 +308,9 @@ void CloudsIntroSequence::updateWaiting(){
     // Trigger start manually
     if (startedOnclick) {
 		nodeAlphaAttenuate = MAX(0,nodeAlphaAttenuate-0.02);
+		clickToBeginAlpha *= .99;
+		clickToBeginAlpha -= .001;
+		clickToBeginAlpha = MAX(0,clickToBeginAlpha);
 		return;
 	}
 
@@ -363,6 +372,23 @@ void CloudsIntroSequence::updateWaiting(){
 			ofNotifyEvent(events.portalHoverEnded, args);
 			timeSinceLastPrompt = ofGetElapsedTimef();
 			promptShown = false;
+		}
+	}
+	#endif
+	
+	#ifdef MOUSE_INPUT
+	if(clickTextActive){
+		float timeSinceActive = ofGetElapsedTimef() - clickTextActiveTime;
+		float timeSinceMouse = ofGetElapsedTimef() - mouseLastMovedTime;
+		clickToBeginAlpha = ofMap(timeSinceActive,
+								  .5,1.5,
+								  0.0,1.0,true) *
+								  ofMap(currentTitleOpacity,titleTypeOpacity,.9,0.3,.7,true);
+		if(timeSinceMouse > 4.){
+			clickToBeginAlpha *= ofMap(timeSinceMouse, 4.0, 5.0, 1.0, 0.0,true);
+			if(timeSinceMouse > 5.0){
+				clickTextActive = false;
+			}
 		}
 	}
 	#endif
@@ -1043,9 +1069,12 @@ void CloudsIntroSequence::selfDrawOverlay(){
 	
 	ofPushStyle();
 	string helpHoverText = "CLICK TO BEGIN";
-	float helperTextOpacity = currentTitleOpacity;
+	float helperTextOpacity = clickToBeginAlpha;
 	ofSetColor(255,helperTextOpacity*255);
-	helperFont.drawString(helpHoverText, ofGetWidth()/2, ofGetHeight()/2);
+	helperFont.setTracking(titleTypeTracking*.7);
+	float centerX = ofGetWidth()/2  - helperFont.stringWidth(helpHoverText)/2;
+	float centerY = ofGetHeight()/2 - helperFont.stringHeight(helpHoverText)/2;
+	helperFont.drawString(helpHoverText, centerX, centerY + helperFont.stringHeight(helpHoverText)*10);
 	ofPopStyle();
 #elif defined(OCULUS_RIFT)
 	//no overlay
@@ -1115,6 +1144,13 @@ void CloudsIntroSequence::selfMouseDragged(ofMouseEventArgs& data){
 void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
     // use CloudsInput directly to get the z value too.
     cursor.set(GetCloudsInput()->getPosition());
+	mouseLastMovedTime = ofGetElapsedTimef();
+#ifdef MOUSE_INPUT
+	if(!clickTextActive){
+		clickTextActive = true;
+		clickTextActiveTime = mouseLastMovedTime;
+	}
+#endif
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
@@ -1122,6 +1158,11 @@ void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 	if(!startedOnclick && startQuestions.size() > 0){
 		startedOnclick  = true;
 		timeline->play();		
+	}
+	else{
+		for(int i = 0; i < startQuestions.size(); i++){
+			startQuestions[i].mousePressed(data);
+		}
 	}
 #endif
 }

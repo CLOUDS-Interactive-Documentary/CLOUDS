@@ -160,6 +160,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	float camWobbleRange;
 	float camWobbleSpeed;
+	
 
 	ofShader tunnelShader;
 	ofShader typeShader;
@@ -198,7 +199,12 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	bool promptShown;
 	float kinectHelperAlpha;
 	float kinectHelperTargetAlpha;
-	
+
+	bool clickTextActive;
+	float clickTextActiveTime;
+	float clickToBeginAlpha;
+	float mouseLastMovedTime;
+
 	void updateCamera();
 	void updateWaiting();
 	void updateTitle();

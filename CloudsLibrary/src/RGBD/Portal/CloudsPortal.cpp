@@ -57,14 +57,14 @@ CloudsPortal::CloudsPortal(){
     charsPerSecond = 45;
 
 #ifdef MOUSE_INPUT
-	ofAddListener(ofEvents().mousePressed, this, &CloudsPortal::mousePressed);
+//	ofAddListener(ofEvents().mousePressed, this, &CloudsPortal::mousePressed);
 #endif
 
 }
 
 CloudsPortal::~CloudsPortal(){
 #ifdef MOUSE_INPUT
-	ofRemoveListener(ofEvents().mousePressed, this, &CloudsPortal::mousePressed);
+//	ofRemoveListener(ofEvents().mousePressed, this, &CloudsPortal::mousePressed);
 #endif
 }
 
