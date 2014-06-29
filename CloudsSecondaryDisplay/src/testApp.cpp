@@ -61,6 +61,11 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+	if(key == ']'){
+		ofPixels p;
+		CloudsVisualSystem::getStaticRenderTarget().readToPixels(p);
+		ofSaveImage(p,"clusterbackground.png");
+	}
     if(key == 'd'){
         debug = !debug;
         secondaryDisplay.debug = debug;

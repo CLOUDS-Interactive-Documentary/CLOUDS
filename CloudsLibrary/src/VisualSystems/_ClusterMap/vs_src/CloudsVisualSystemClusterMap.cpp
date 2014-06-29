@@ -1603,9 +1603,9 @@ void CloudsVisualSystemClusterMap::selfKeyPressed(ofKeyEventArgs & args){
 	if(key == 'S'){
 		reloadShaders();
 	}
-    if(key == ']'){
-        selectedQuestion = &questions.at((int)ofRandom(questions.size()-1));
-    }
+//    if(key == ']'){
+//        selectedQuestion = &questions.at((int)ofRandom(questions.size()-1));
+//    }
 	
 }
 
