@@ -54,7 +54,7 @@ void CloudsVisualSystemCirclePacking::selfSetupGui(){
 }
 void CloudsVisualSystemCirclePacking::selfSetDefaults(){
     
-    primaryCursorMode =CURSOR_MODE_DRAW;
+    primaryCursorMode = CURSOR_MODE_DRAW;
     secondaryCursorMode = CURSOR_MODE_DRAW;
 }
 
@@ -115,21 +115,17 @@ void CloudsVisualSystemCirclePacking::guiRenderEvent(ofxUIEventArgs &e){
 
 void CloudsVisualSystemCirclePacking::regenerate(){
  
-    pack.circles.clear();
     
     //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
-    pack = CirclePacker(1.0f*getCanvasWidth(),1.0f*getCanvasHeight(), 12);
+    pack = CirclePacker(getCanvasWidth(), getCanvasHeight(), 12);
     
     if (NASDAQ){
         initializeNasdaq();
     }
     else if (BLANKS){
-        
         initializeBlanks();
     }
-    
     else if (HASHTAGS){
-        
         initializeHashtags();
     }
     
@@ -147,7 +143,7 @@ void CloudsVisualSystemCirclePacking::selfSetup(){
     Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14);
     
     //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
-	cout << "SIZE = " << getCanvasWidth() << " " << getCanvasHeight() << endl;
+	//cout << "SIZE = " << getCanvasWidth() << " " << getCanvasHeight() << endl;
 	pack = CirclePacker(1.0f*getCanvasWidth(),1.0f*getCanvasHeight(), 15);
     
     if (NASDAQ){
@@ -258,14 +254,16 @@ void CloudsVisualSystemCirclePacking::initializeNasdaq(){
     string companies[50] = { "SQR", "ZNGA","ALBB","BIDU", "SMCI", "SSYS", "NCR", "DELL", "FTNT","RAX","VMW", "EQUIX", "XXIA", "CTSH", "OPEN", "SFLY", "SSTK","EPAM", "IPGP", "DDD","YHOO", "TWTR","MSFT","FB","IBM","GOOG","HPQ","AMZN","EBAY","AAPL","CSCO","SNE","NOK","INTC","NVDA","AMD","ADBE","EA","FSQR", "LNKD", "YELP", "TMBL","SNAP", "BNCH", "LPMT","LLBT","LYFT", "GIT", "AOL", "OVR" };
     float marketCap[50] = { 4.1, 4.11, 149, 59.9, .700, 5.85, 5.37, 24.38, 2.89, 4.88, 36.9, 8.4, .942, 28.3, 1.78, 1.82, 2.62, 1.51, 3.75, 8.32, 40.3, 137, 306, 130, 187.6, 354.4, 51.345, 175.9, 66.736, 498.8, 108.2, 18.169, 27.991, 120.7, 8.539, 2.670, 30.438, 6.869, 1, 25.7, 4.23, 2, 3, 4, 5, 5, 4, 6, 5, 3 };
 	
-    int size = sizeof(marketCap)/sizeof(marketCap[0]);
-    
+    //int size = sizeof(marketCap)/sizeof(marketCap[0]);
+    int size = 50;
+
     for(int i = 0; i < size; i++){
         //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
-        pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),ofRandom(getCanvasHeight()), (marketCap[i]/2), companies[i], primaryColor, secondaryColor, alph  ));
+        pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),ofRandom(getCanvasHeight()), 
+										marketCap[i]/2, companies[i], primaryColor, secondaryColor, alph  ));
         
-        }
-    }
+	}
+}
 
 void CloudsVisualSystemCirclePacking::initializeHashtags(){
     
@@ -273,12 +271,13 @@ void CloudsVisualSystemCirclePacking::initializeHashtags(){
     string hashtags[10] = { "IMHO", "Jacked-in", "Meatspace", "cyberbully", "datasexual", "Grrrl", "Hater", "Troll", "illiterati",
     "Infomania"};
 	
-    int size = sizeof(hashtags)/sizeof(hashtags[0]);
-    
+    //int size = sizeof(hashtags)/sizeof(hashtags[0]);
+    int size = 10;
+
     for(int i = 0; i < 10; i++){
         //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
         pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),ofRandom(getCanvasHeight()), ofRandom(40,100), hashtags[i], primaryColor, secondaryColor, alph ));
-        cout << "word " << i << hashtags[i] << endl;
+      //  cout << "word " << i << hashtags[i] << endl;
         
     }
 }
