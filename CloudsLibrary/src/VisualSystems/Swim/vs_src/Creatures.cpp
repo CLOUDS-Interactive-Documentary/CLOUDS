@@ -36,6 +36,7 @@
 namespace itg
 {
     const float Creatures::TENTACLE_SECTION_LENGTH = 2.f;
+	float Creatures::tentacleSpringForce = 800.f;
     
     void Creatures::init(const string& dataPath)
     {
@@ -394,7 +395,8 @@ namespace itg
         tentacles.getUpdateShaderRef().setUniform1f("restLength", TENTACLE_SECTION_LENGTH);
         tentacles.getUpdateShaderRef().setUniform1f("numSections", (float)TENTACLE_NUM_SECTIONS);
         tentacles.getUpdateShaderRef().setUniform1f("elapsed", Creature::getElapsed());
-        tentacles.getUpdateShaderRef().end();
+		tentacles.getUpdateShaderRef().setUniform1f("tentacleSpringForce", Creatures::tentacleSpringForce);
+		tentacles.getUpdateShaderRef().end();
         tentacles.update();
     }
     

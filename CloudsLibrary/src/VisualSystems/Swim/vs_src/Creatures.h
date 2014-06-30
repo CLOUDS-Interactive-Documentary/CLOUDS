@@ -74,6 +74,8 @@ namespace itg
         void loadSeed(const string& path);
         void saveSeed(const string& path);
         
+		static float tentacleSpringForce;
+
     private:
         void addPointFish(unsigned number, float hue);
         //void addModelFish(unsigned number, const ModelParams& params);
@@ -82,8 +84,7 @@ namespace itg
         
         static const unsigned TENTACLE_NUM_SECTIONS = 20;
         static const float TENTACLE_SECTION_LENGTH;
-		//static float tentacleSpringForce;
-        
+		
         vector<Creature::Ptr> creatures;
         vector<vector<Creature::Ptr> > creaturesByType;
         //vector<unsigned> jellyIndices;

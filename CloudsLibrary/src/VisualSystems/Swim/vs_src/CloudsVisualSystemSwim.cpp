@@ -38,6 +38,7 @@ void CloudsVisualSystemSwim::selfSetup()
 void CloudsVisualSystemSwim::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
+	Creatures::tentacleSpringForce = 800.f;
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -182,7 +183,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addRangeSlider("undulationFreqRange", 0.f, 10.f, &JellyCreature::undulationFreqMin, &JellyCreature::undulationFreqMax);
     rdrGui->addIntSlider("numJellyOne", 0, 300, &creatures.numJellyOne);
     rdrGui->addIntSlider("numJellyTwo", 0, 300, &creatures.numJellyTwo);
-	//rdrGui->addMinimalSlider("tentacleSpringForce", 100.f, 1600.f, &Creatures::tentacleSpringForce);
+	rdrGui->addMinimalSlider("tentacleSpringForce", 100.f, 1600.f, &Creatures::tentacleSpringForce);
     
     rdrGui->addLabel("Fish One");
     rdrGui->addSpacer();
