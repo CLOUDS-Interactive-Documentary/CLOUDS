@@ -142,6 +142,12 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp">
+      <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp">
+      <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -212,6 +218,12 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\StoryEngine">
       <UniqueIdentifier>{c19dc04d-7518-4ca6-91b2-c71b38d71326}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\RGBD">
+      <UniqueIdentifier>{31d7ef4a-fe49-4860-b189-71514039c912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\RGBD\Portal">
+      <UniqueIdentifier>{8817ae41-a286-452b-8ba0-8b4e4a303b55}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -442,6 +454,15 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
       <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h">
+      <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h">
+      <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h">
+      <Filter>CloudsLibrary\src\RGBD\Portal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

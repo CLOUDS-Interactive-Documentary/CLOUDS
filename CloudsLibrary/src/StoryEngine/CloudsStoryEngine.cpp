@@ -605,7 +605,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
 			shouldAddScreeningQuestionsToAct = false;
 		}
 #else
-		if(state.act->getAllVisualSystemPresets().size() > 1){
+		//if(state.act->getAllVisualSystemPresets().size() > 1){
             if(showOnlyStartQuestions){
                 if(startingQuestions.size() > 0){
                     addQuestions(state, startingQuestions);
@@ -615,7 +615,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
             else {
                 addQuestions(state, questionClips);
             }
-        }
+        //}
 #endif
         /////////////////
 		

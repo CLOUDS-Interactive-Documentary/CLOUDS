@@ -1200,6 +1200,7 @@ void CloudsPlaybackController::drawRenderTarget(){
 		
         ofPushStyle();
         ofEnableAlphaBlending();
+		ofDisableDepthTest();
         
 		//cout << "crosffade value is " << crossfadeValue << " showing intro? " << showingIntro << endl;
 		if(loading){
@@ -1209,7 +1210,7 @@ void CloudsPlaybackController::drawRenderTarget(){
 		
 		currentVisualSystem->selfPostDraw();
         
-        ofEnableAlphaBlending();		
+        ofEnableAlphaBlending();
         CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
         
 #ifndef OCULUS_RIFT

@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>343.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>342.000000000</XPosition>
+    <YPosition>345.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -17,11 +17,26 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>3DFreeCam</Name>
+    <Name>FollowTraverse_OculusHD</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>JG_SIMPLECAM</Name>
+    <Name>FollowTraverse_OculusSD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FollowTraverse_Screen</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>NavigationInterlude_Screen</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>NewPreset</Name>
+    <Value>0</Value>
 </Widget>

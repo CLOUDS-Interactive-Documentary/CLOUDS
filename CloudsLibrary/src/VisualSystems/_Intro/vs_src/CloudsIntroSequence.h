@@ -226,7 +226,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void generateTunnel();
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;
-	
+
+	ofVec2f cameraSwingRange;
+	ofVec2f curCameraSwing;
+	float cameraSwingDamp;
 
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;

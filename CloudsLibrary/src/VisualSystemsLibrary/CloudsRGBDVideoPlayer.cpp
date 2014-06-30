@@ -113,7 +113,7 @@ void CloudsRGBDVideoPlayer::threadedFunction(){
 
 	nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
 
-	cout << "prerolled clip " << nextVideoPath << " to time " << nextOffsetTime << endl;
+	cout << "prerolled clip " << nextVideoPath << " to time " << (nextOffsetTime / nextPlayer->getDuration()) << endl;
 
     /* Subtitles */
     nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
@@ -399,13 +399,14 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         
 		//cout << "position is " << position << " " << duration << " duration " << endl;
 		
-		fadeInValue = MIN(position, 1.0);
+		fadeInValue = MIN(position, 1.5);
 		fadeOutValue = ofMap(position, duration - 1.0, duration, 1.0, 0.0, true);
         
 		//remap to make it tigheter
-        fadeInValue  = powf(ofMap(fadeInValue,  .5, 1.0, 0.0, 1.0, true), 2.0);
+        fadeInValue  = powf(ofMap(fadeInValue,  1.0, 1.5, 0.0, 1.0, true), 2.0);
         fadeOutValue = powf(ofMap(fadeOutValue, .5, 1.0, 0.0, 1.0, true), 2.0);
 		
+
 		float fadeInStartTime = 1.0;
 		float fadeInEndTime = 1.4;
 		float fadeOutStartTime = duration - 1.3 ;
@@ -416,6 +417,8 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		else if(position > fadeOutStartTime){
 			audioVolume = ofMap(position, fadeOutStartTime, fadeOutEndTime, maxVolume, 0.0, true);
 		}
+
+//		cout << "/*/*/*/*/*/***** FADIN VALUE " << fadeInValue << " FADE OUT VALUE " << fadeOutValue << " AUDIO VOLUME " << audioVolume << endl;
 		
 		getPlayer().setVolume(audioVolume);
 
@@ -492,6 +495,8 @@ void CloudsRGBDVideoPlayer::drawSubtitles()
         int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
         int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.7;
         ofPushStyle();
+		glDisable(GL_CULL_FACE);
+		ofDisableLighting();
 		ofEnableAlphaBlending();
         ofSetColor(0, 200);
         currentSubtitles.draw(x+3, y-2);
