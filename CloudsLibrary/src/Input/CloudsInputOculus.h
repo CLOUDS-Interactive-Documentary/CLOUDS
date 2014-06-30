@@ -22,7 +22,7 @@ public:
 	
 	void update(ofEventArgs& data);
     
-    void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus);
+    void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float fadeOut);
     
     float cursorSize;
 };
