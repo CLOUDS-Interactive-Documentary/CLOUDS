@@ -33,7 +33,7 @@
 
 namespace itg
 {
-    vector<ofxAssimpModelLoader> ModelCreature::fishModels;
+	vector<ofVboMesh> ModelCreature::fishModels;
     vector<ofVec3f> ModelCreature::deformAxes;
     vector<float> ModelCreature::bends;
     map<unsigned, ofImage> ModelCreature::textures;
@@ -78,7 +78,7 @@ namespace itg
             //fishShader.setUniform1f("texAmt", texAmount);
         }
         else fishShader.setUniform1f("texAmt", 0.f);
-        fishModels[modelIdx].drawFaces();
+        fishModels[modelIdx].draw();
         fishShader.end();
     }
 }

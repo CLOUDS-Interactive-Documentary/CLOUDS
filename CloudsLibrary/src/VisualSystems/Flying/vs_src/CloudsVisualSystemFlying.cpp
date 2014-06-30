@@ -211,7 +211,7 @@ void CloudsVisualSystemFlying::selfUpdate()
     const float maxPlantDistSq = maxPlantDist * maxPlantDist;
   
 	list<Plant>::iterator it;
-    for (it = plants.begin(); it != plants.end(); it++)
+    for (it = plants.begin(); it != plants.end();)
     {
         if ((it->pos - floorLookAt).lengthSquared() > maxPlantDistSq) {
 			it = plants.erase(it);
@@ -237,8 +237,10 @@ void CloudsVisualSystemFlying::selfUpdate()
 void CloudsVisualSystemFlying::selfDraw()
 {
     glPushAttrib(GL_ENABLE_BIT);
+	ofPushStyle();
     // icosphere seems to be wound backwards :(
     // glEnable(GL_CULL_FACE);
+	ofDisableLighting();
     ofEnableDepthTest();
     ofDisableAlphaBlending();
     
@@ -307,6 +309,7 @@ void CloudsVisualSystemFlying::selfDraw()
     floor.draw();
     floorShader.end();
 
+	ofPopStyle();
 	glPopAttrib();
 }
 
@@ -314,6 +317,8 @@ void CloudsVisualSystemFlying::selfPostDraw()
 {
 	//CloudsVisualSystem::selfPostDraw();
     glPushAttrib(GL_ENABLE_BIT);
+	ofDisableLighting();
+	ofPushStyle();
     ofDisableDepthTest();
 	ofDisableAlphaBlending();
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
@@ -321,7 +326,8 @@ void CloudsVisualSystemFlying::selfPostDraw()
     if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, 0, getCanvasWidth(), getCanvasHeight());
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     else CloudsVisualSystem::getSharedRenderTarget().draw(0, 0, getCanvasWidth(), getCanvasHeight());
-    glPopAttrib();
+	ofPopStyle();
+	glPopAttrib();
 }
 
 //use render gui for display settings, like changing colors
