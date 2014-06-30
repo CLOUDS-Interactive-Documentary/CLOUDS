@@ -1211,10 +1211,10 @@ void CloudsPlaybackController::drawRenderTarget(){
 		currentVisualSystem->selfPostDraw();
         
         ofEnableAlphaBlending();
-        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
         
 #ifndef OCULUS_RIFT
 		hud.draw();
+        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
 #endif
 		ofPopStyle();
 	}

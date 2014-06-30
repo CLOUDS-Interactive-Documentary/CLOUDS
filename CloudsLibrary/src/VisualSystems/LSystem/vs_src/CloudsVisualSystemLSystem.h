@@ -16,6 +16,8 @@
 class CloudsVisualSystemLSystem : public CloudsVisualSystem {
 public:
     
+	CloudsVisualSystemLSystem();
+
     string getSystemName();
     
     void selfSetup();

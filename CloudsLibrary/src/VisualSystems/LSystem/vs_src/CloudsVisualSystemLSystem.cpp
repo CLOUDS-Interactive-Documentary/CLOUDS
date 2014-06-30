@@ -8,6 +8,10 @@
 
 #include "CloudsVisualSystemLSystem.h"
 
+CloudsVisualSystemLSystem::CloudsVisualSystemLSystem(){
+	selfSetDefaults();
+}
+
 string CloudsVisualSystemLSystem::getSystemName(){
 	return "LSystem";
 }
@@ -46,6 +50,40 @@ void CloudsVisualSystemLSystem::selfEnd(){
 }
 
 void CloudsVisualSystemLSystem::selfSetDefaults(){
+
+	grid.clear();
+    gridSize = 0;
+    gridResolution = 0;
+    gridCrossSize = 0;
+    gridCrossWidth = 0;
+    gridCrossAlpha = 0;
+    
+    lsysLines.clear();
+    lsysNodes.clear();
+    
+    lsysOriginal.clear();
+    lsysAngle = 0;
+	lsysScale = 0;
+	lsysDepth = 0;
+    lsysOriginalAlpha = 0;
+    
+    lsysGrowing.clear();
+    lsysGrowingBorn = 0;
+	lsysGrowingSpeed = 0;
+    lsysGrowingAlpha = 0;
+    dots.clear();
+    dotSize = 0;
+	dotAlpha = 0;
+    
+    lsysFlowSpeed = 0;
+    lsysFlowLenght = 0;
+    lsysFlowAlpha = 0;
+    
+    postChromaDist = 0;
+    postGrainDist = 0;
+    
+    time = 0;
+
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }

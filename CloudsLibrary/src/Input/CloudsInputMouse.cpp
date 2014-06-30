@@ -8,14 +8,23 @@
 
 #include "CloudsInputMouse.h"
 #include "CloudsInputEvents.h"
+#include "CloudsGlobal.h"
 
 CloudsInputMouse::CloudsInputMouse()
-: cursorDownSize(10)
+: viewerState(ViewerState_PresentIdle)
+, lastMouseEventTime(0)
+, mouseEventIdleInterval(5)
+, feedbackAlpha(0)
+, feedbackPrompt("USE YOUR MOUSE TO INTERACT")
+, cursorDownSize(10)
 , cursorUpSize(12)
-{}
+{
+	feedbackFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", 15);
+}
 
 void CloudsInputMouse::enable(){
 	if(!enabled){
+		ofAddListener(ofEvents().update, this, &CloudsInputMouse::update);
 		ofRegisterMouseEvents(this);
 		enabled = true;
 	}
@@ -23,36 +32,79 @@ void CloudsInputMouse::enable(){
 
 void CloudsInputMouse::disable(){
 	if(enabled){
+		ofRemoveListener(ofEvents().update, this, &CloudsInputMouse::update);
 		ofUnregisterMouseEvents(this);
 		enabled = false;
 	}
 }
 
+void CloudsInputMouse::update(ofEventArgs& args){
+	float nowTime = ofGetElapsedTimef();
+	if (nowTime - lastMouseEventTime > mouseEventIdleInterval) {
+		viewerState = ViewerState_None;
+	}
+	else if (nowTime - lastMouseEventTime > 0.1f) {
+		viewerState = ViewerState_PresentIdle;
+	}
+}
+
 void CloudsInputMouse::mouseMoved(ofMouseEventArgs& data){
-    lastPosition = currentPosition;
+	lastMouseEventTime = ofGetElapsedTimef();
+    viewerState = ViewerState_Interacting;
+		
+	lastPosition = currentPosition;
     currentPosition = ofVec3f(data.x, data.y, 0);
 	interactionMoved(currentPosition, true, dragging, data.button);
 }
 
 void CloudsInputMouse::mousePressed(ofMouseEventArgs& data){
-    currentPosition = ofVec3f(data.x, data.y, 0);
+    lastMouseEventTime = ofGetElapsedTimef();
+    viewerState = ViewerState_Interacting;
+	
+	currentPosition = ofVec3f(data.x, data.y, 0);
     dragging = true;
 	interactionStarted(currentPosition, true, dragging, data.button);
 }
 
 void CloudsInputMouse::mouseDragged(ofMouseEventArgs& data){
-    currentPosition = ofVec3f(data.x, data.y, 0);
+    lastMouseEventTime = ofGetElapsedTimef();
+    viewerState = ViewerState_Interacting;
+	
+	currentPosition = ofVec3f(data.x, data.y, 0);
 	interactionDragged(currentPosition, true, dragging, data.button);
 }
 
 void CloudsInputMouse::mouseReleased(ofMouseEventArgs& data){
-    dragging = false;
+    lastMouseEventTime = ofGetElapsedTimef();
+    viewerState = ViewerState_Interacting;
+	
+	dragging = false;
     currentPosition = ofVec3f(data.x, data.y, 0);
 	interactionEnded(currentPosition, true, dragging, data.button);
 }
 
 void CloudsInputMouse::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float fadeOut){
     selfDrawCursorDefault(mode, pos, bDragged, focus, fadeOut, bDragged? cursorDownSize:cursorUpSize);
+}
+
+void CloudsInputMouse::drawFeedback(float width, float height){
+	static ofxEasingQuad easingQuad;
+
+	if ((!feedbackTween.isRunning() && feedbackTween.isCompleted())) {
+		if (viewerState == ViewerState_None && feedbackAlpha != 255) {
+			feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 255, 1000, 0);
+			feedbackTween.start();
+		}
+		else if (viewerState != ViewerState_None && feedbackAlpha != 0) {
+			feedbackTween.setParameters(easingQuad, ofxTween::easeOut, feedbackAlpha, 0, 1000, 0);
+			feedbackTween.start();
+		}
+	}
+
+	feedbackAlpha = feedbackTween.update();
+
+	ofSetColor(ofColor::white, feedbackAlpha);
+    feedbackFont.drawString(feedbackPrompt, (width- feedbackFont.stringWidth(feedbackPrompt)) / 2, height - feedbackFont.stringHeight(feedbackPrompt) - 10);
 }
 
 void SetCloudsInputMouse()

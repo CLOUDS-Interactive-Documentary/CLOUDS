@@ -41,10 +41,14 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	bPlayWhenReady = false;
 
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
-	nextPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
+	nextPlayer    = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 
 	currentVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
-	nextVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
+	nextVoiceoverPlayer    = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
+#ifdef SHOW_SUBTITLES
+	currentSubtitles = ofPtr<ofxSubtitles>( new ofxSubtitles() );
+	nextSubtitles    = ofPtr<ofxSubtitles>( new ofxSubtitles() );
+#endif
 
 	currentClipHasSubtitles = nextClipHasSubtitles = false;
 }
@@ -429,7 +433,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         /* Subtitles */
         if (currentClipHasSubtitles) {
 #ifdef SHOW_SUBTITLES
-			currentSubtitles.setTimeInSeconds(getPlayer().getPosition()*getPlayer().getDuration());
+			currentSubtitles->setTimeInSeconds(getPlayer().getPosition()*getPlayer().getDuration());
 #endif
         }
 	}
@@ -460,21 +464,41 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
         fps = 30;
     }
     
+	/*
+	//////OLD WAY
     int fontSize = 36;
-    if(!nextSubtitles.setup(path, GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize/2, fps, TEXT_JUSTIFICATION_CENTER)) {
+    if(!nextSubtitles->setup(path, GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize/2, fps, TEXT_JUSTIFICATION_CENTER)) {
         return false;
     }
     
     // find font size based on 85% canvas width and a predefined maximum string
     float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
     string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
-    ofRectangle bounds = nextSubtitles.font.getStringBoundingBox(maxStr, 0, 0);
+    ofRectangle bounds = nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
     
     // loop here until you find the right font size
     while (bounds.width > requiredWidth) {
-        nextSubtitles.font.setSize(--fontSize);
-        bounds = nextSubtitles.font.getStringBoundingBox(maxStr, 0, 0);
+        nextSubtitles->font.setSize(--fontSize);
+        bounds = nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
     }
+	*/
+
+    int fontSize = 36;
+    
+    // find font size based on 85% canvas width and a predefined maximum string
+    float requiredWidth = CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
+    string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
+    ofRectangle bounds;//= nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
+    
+    // loop here until you find the right font size
+    do {
+		fontSize--;
+		if(!nextSubtitles->setup(path, GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
+			return false;
+		}
+        bounds = nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
+    }while(bounds.width > requiredWidth);
+
 //    cout << "font size is " << fontSize << endl;
     return true;
 }
@@ -495,11 +519,13 @@ void CloudsRGBDVideoPlayer::drawSubtitles()
         int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
         int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.7;
         ofPushStyle();
+		//glDisable(GL_CULL_FACE);
+		ofDisableLighting();
 		ofEnableAlphaBlending();
         ofSetColor(0, 200);
-        currentSubtitles.draw(x+3, y-2);
+        currentSubtitles->draw(x+3, y-2);
         ofSetColor(255);
-        currentSubtitles.draw(x, y);
+        currentSubtitles->draw(x, y);
 		ofDisableAlphaBlending();
         ofPopStyle();
     }

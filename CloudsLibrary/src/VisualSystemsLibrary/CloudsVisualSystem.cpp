@@ -4,9 +4,11 @@
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
 
-#ifdef KINECT_INPUT
+#if defined(MOUSE_INPUT)
+#include "CloudsInputMouse.h"
+#elif defined(KINECT_INPUT)
 #include "CloudsInputKinectOSC.h"
-#elif OCULUS_RIFT
+#elif defined(OCULUS_RIFT)
 #include "CloudsInputOculus.h"
 #endif
 
@@ -221,6 +223,10 @@ CloudsVisualSystem::CloudsVisualSystem(){
 #else
 	bUseOculusRift = false;
 #endif 
+
+#ifdef MOUSE_INPUT
+	bPromptForInteraction = false;
+#endif
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -631,6 +637,12 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 #endif
 #ifdef KINECT_INPUT
         drawKinectDebug();
+#endif
+#ifdef MOUSE_INPUT
+		if (bPromptForInteraction) {
+			ofPtr<CloudsInputMouse> mouseInput = dynamic_pointer_cast<CloudsInputMouse>(GetCloudsInput());
+			mouseInput->drawFeedback(CloudsVisualSystem::getSharedRenderTarget().getWidth(), CloudsVisualSystem::getSharedRenderTarget().getHeight());
+        }
 #endif
 
 	}
@@ -3885,6 +3897,7 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	else{
         offset = 0;
     }
+
 	 CloudsVisualSystem::getSharedRenderTarget().draw(-offset, -offset, width, height);
 	
     if(bEnablePostFX){
