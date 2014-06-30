@@ -1,12 +1,15 @@
 #include "testApp.h"
 
+#include "CloudsInputMouse.h"
+
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
+
+	gesturePaint.setDrawToScreen(false);
   
 	gesturePaint.setup();
 	gesturePaint.playSystem();
-	
 
 }
 
@@ -20,6 +23,19 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	
+	gesturePaint.selfPostDraw();
+
+	//#ifdef MOUSE_INPUT
+	
+	if (gesturePaint.bPromptForInteraction) {
+		bool drawBrightText = gesturePaint.getBgColor().getBrightness() < .5;
+		ofPtr<CloudsInputMouse> mouseInput = dynamic_pointer_cast<CloudsInputMouse>(GetCloudsInput());
+		mouseInput->drawFeedback(
+			gesturePaint.getCanvasWidth(), 
+			gesturePaint.getCanvasHeight(), drawBrightText);
+    }
+	
+	//#endif
 }
 
 //--------------------------------------------------------------

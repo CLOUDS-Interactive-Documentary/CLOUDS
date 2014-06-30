@@ -3,7 +3,7 @@
     <Name>CamSettings</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>118.000000000</YPosition>
+    <YPosition>223.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -149,39 +149,4 @@
     <Kind>17</Kind>
     <Name>DISABLE</Name>
     <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>camera fwd force</Name>
-    <Value>0.655999839</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>camera wobble range</Name>
-    <Value>7.142854214</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>camera wobble speed</Name>
-    <Value>0.098521866</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>camera swing x</Name>
-    <Value>42.647056580</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>camera swing y</Name>
-    <Value>18.137254715</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>camera swing damp</Name>
-    <Value>0.120000005</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>hold camera</Name>
-    <Value>0</Value>
 </Widget>

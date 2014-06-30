@@ -15,11 +15,11 @@ CloudsInputMouse::CloudsInputMouse()
 , lastMouseEventTime(0)
 , mouseEventIdleInterval(5)
 , feedbackAlpha(0)
-, feedbackPrompt("USE YOUR MOUSE TO INTERACT")
+, feedbackPrompt("USE THE MOUSE TO INTERACT")
 , cursorDownSize(10)
 , cursorUpSize(12)
 {
-	feedbackFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", 15);
+	feedbackFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", 19);
 }
 
 void CloudsInputMouse::enable(){
@@ -87,7 +87,8 @@ void CloudsInputMouse::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bo
     selfDrawCursorDefault(mode, pos, bDragged, focus, fadeOut, bDragged? cursorDownSize:cursorUpSize);
 }
 
-void CloudsInputMouse::drawFeedback(float width, float height){
+void CloudsInputMouse::drawFeedback(float width, float height, bool drawBrightText){
+	ofPushStyle();
 	static ofxEasingQuad easingQuad;
 
 	if ((!feedbackTween.isRunning() && feedbackTween.isCompleted())) {
@@ -102,9 +103,13 @@ void CloudsInputMouse::drawFeedback(float width, float height){
 	}
 
 	feedbackAlpha = feedbackTween.update();
-
-	ofSetColor(ofColor::white, feedbackAlpha);
-    feedbackFont.drawString(feedbackPrompt, (width- feedbackFont.stringWidth(feedbackPrompt)) / 2, height - feedbackFont.stringHeight(feedbackPrompt) - 10);
+	float positionX = (width - feedbackFont.stringWidth(feedbackPrompt)) / 2;
+	float positionY = height - feedbackFont.stringHeight(feedbackPrompt) - 10;
+	ofSetColor(drawBrightText ? ofColor::black : ofColor::white, feedbackAlpha);
+    feedbackFont.drawString(feedbackPrompt, positionX, positionY);
+	ofSetColor(drawBrightText ? ofColor::white : ofColor::black, feedbackAlpha);
+    feedbackFont.drawString(feedbackPrompt, positionX-3, positionY-3);
+	ofPopStyle();
 }
 
 void SetCloudsInputMouse()

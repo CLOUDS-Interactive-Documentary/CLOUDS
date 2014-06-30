@@ -8,6 +8,7 @@ uniform sampler2DRect particles1;
 uniform float restLength;
 uniform float elapsed;
 uniform float numSections;
+uniform float tentacleSpringForce;
 
 float SPRING_CONSTANT = 100.0;
 
@@ -36,7 +37,7 @@ void main()
     // for some reason nvidia 9600 osx driver is freaking
     // out if I try and get the length of or normalize forceDirection
     //vel += 120.0 * elapsed * forceDirection;
-    vel += 800.0 * elapsed * forceDirection;
+    vel += tentacleSpringForce * elapsed * forceDirection;
 
     vel *= clamp(1.0 - (9.0 * elapsed), 0.0, 1.0);
     
