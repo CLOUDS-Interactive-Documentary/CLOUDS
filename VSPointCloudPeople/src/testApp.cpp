@@ -22,10 +22,10 @@ void testApp::setup(){
 	CloudsSpeaker::populateSpeakers();
 
 	parser.loadFromFiles();
+	hud.setup();
 	//parser.loadMediaAssets();
 	rgbd.setup();
-
-	hud.setup();
+	rgbd.setDrawToScreen(false);
 #ifdef OCULUS_RIFT
     // Link the HUD.
     rgbd.hud = &hud;
@@ -39,7 +39,6 @@ void testApp::setup(){
 
 	hud.setHudEnabled(true);
 
-
 	type = CloudsVisualSystem::FLY_THROUGH;
 }
 
@@ -49,22 +48,29 @@ void testApp::update(){
 	hud.update();
 	if(shouldPlayTestVideo){
 		shouldPlayTestVideo = false;
+		cout << "**** playing test video" << endl;
 		rgbd.playTestVideo();
 		CloudsClip* clip = new CloudsClip();
 		clip->person = "Jen";
 		hud.respondToClip(clip);
 		CloudsQuestionEventArgs args(clip, "WHAT'S YOUR QUESTION?", "topic");
 		hud.questionSelected(args);
-
 	}
 }
 
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	//CloudsVisualSystem::getRGBDVideoPlayer().getTextureReference().draw(0,0);
-	//rgbd.selfPostDraw(0,0,1920,1080);
-	rgbd.getSharedRenderTarget().getTextureReference().draw(0,0,1920,1080);
+	ofBackground(0);
+	ofDisableDepthTest();
+	ofEnableAlphaBlending();
+	rgbd.selfPostDraw();
+#ifndef OCULUS_RIFT
+	ofSetColor(255);
+	hud.draw();
+	//ofDisableAlphaBlending();
+	CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
+#endif
 }
 
 //--------------------------------------------------------------

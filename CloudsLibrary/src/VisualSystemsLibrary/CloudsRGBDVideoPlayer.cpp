@@ -87,10 +87,12 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 
 	clipPrerolled = true;
 
+    nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
+
 #ifdef TARGET_WIN32
     nextPlayer->setUseTexture(false);
 	bLoadResult = false;
-
+	
 	cout << "*** SETTING UP CLIP STARTING THREAD" << endl;
     startThread(true);
 
@@ -119,9 +121,6 @@ void CloudsRGBDVideoPlayer::threadedFunction(){
 
 	cout << "prerolled clip " << nextVideoPath << " to time " << (nextOffsetTime / nextPlayer->getDuration()) << endl;
 
-    /* Subtitles */
-    nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
-    
 	nextClipIsVO = false;
     nextClipVolumeAdjustment = nextClipVolume;
 	
@@ -464,27 +463,34 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
         fps = 30;
     }
     
-	/*
 	//////OLD WAY
     int fontSize = 36;
-    if(!nextSubtitles->setup(path, GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize/2, fps, TEXT_JUSTIFICATION_CENTER)) {
+	string fontPath = GetCloudsDataPath() + "font/Blender-BOOK.ttf";;
+    if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
         return false;
     }
     
     // find font size based on 85% canvas width and a predefined maximum string
     float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
+	if(requiredWidth == 0){
+		requiredWidth = 1920* .85;
+	}
     string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
-    ofRectangle bounds = nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
+    float curStringWidth = nextSubtitles->font.stringWidth(maxStr);
     
     // loop here until you find the right font size
-    while (bounds.width > requiredWidth) {
-        nextSubtitles->font.setSize(--fontSize);
-        bounds = nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
+    while (curStringWidth > requiredWidth && fontSize > 0) {
+		nextSubtitles->font.setSize(--fontSize);
+        curStringWidth = nextSubtitles->font.stringWidth(maxStr);
     }
-	*/
 
+	if(fontSize == 0){
+		ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Font size went to 0, failed to load titles";
+		return false;
+	}
+
+	/*
     int fontSize = 36;
-    
     // find font size based on 85% canvas width and a predefined maximum string
     float requiredWidth = CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
     string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
@@ -498,8 +504,8 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 		}
         bounds = nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
     }while(bounds.width > requiredWidth);
-
-//    cout << "font size is " << fontSize << endl;
+	*/
+	cout << "SUBTITLE FONT SIZE IS " << fontSize << endl;
     return true;
 }
 #else
@@ -507,10 +513,6 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     return false;
 }
 #endif
-
-void CloudsRGBDVideoPlayer::drawSubtitles(int x,int y){
-    drawSubtitles();
-}
 
 void CloudsRGBDVideoPlayer::drawSubtitles()
 {

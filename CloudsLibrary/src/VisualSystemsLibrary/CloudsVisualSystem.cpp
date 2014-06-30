@@ -3874,8 +3874,9 @@ void CloudsVisualSystem::selfPostDraw(){
 
 void CloudsVisualSystem::selfPostDraw(int width, int height){
 	
-	glDisable(GL_LIGHTING);
-	
+	//glDisable(GL_LIGHTING);
+	ofDisableLighting();
+
 #ifdef OCULUS_RIFT
     oculusRift.draw();
 #else

@@ -10,10 +10,8 @@
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
-
 #include "ofRange.h"
 #include "CloudsGlobal.h"
-
 
 #ifdef SHOW_SUBTITLES
     #include "ofxSubtitles.h"
@@ -87,9 +85,12 @@ public:
 	
 	bool hasSubtitles();
     void drawSubtitles();
-    //deleteme
-    void drawSubtitles(int x,int y);
 
+	#ifdef SHOW_SUBTITLES
+	ofPtr<ofxSubtitles> getSubtitles(){
+		return currentSubtitles;
+	}
+	#endif
   protected:
 
 	//  UPDATE
