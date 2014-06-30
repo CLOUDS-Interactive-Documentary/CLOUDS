@@ -166,6 +166,12 @@
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.cpp">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -242,6 +248,12 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\RGBD\HUD">
       <UniqueIdentifier>{180cf9d4-1c96-454c-9f93-3e30d2cd7b5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSubtitles">
+      <UniqueIdentifier>{b0cdf8b9-cb06-4277-b905-8b2c38386105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSubtitles\src">
+      <UniqueIdentifier>{21f42385-3810-4e2e-b247-9742f08a99c1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -487,6 +499,12 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.h">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h">
+      <Filter>addons\ofxSubtitles\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

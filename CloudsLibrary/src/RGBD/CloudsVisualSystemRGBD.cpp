@@ -273,12 +273,13 @@ void CloudsVisualSystemRGBD::playTestVideo(){
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Fernanda_What_people_are_thinking";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Lauren_sentiment_anaylsis";
 	//string sourceFile = "E:\\CLOUDS_MEDIA\\Jen_a_different_mathematics";
-	string sourceFile = GetCloudsDataPath(true) + "media/Jen_a_different_mathematics";
-	
+//	string sourceFile = GetCloudsDataPath(true) + "media/Jen_a_different_mathematics";
+	string sourceFile = GetCloudsDataPath(true) + "media/Patricio_Alchemy_3";
 	string filePathMov = sourceFile+".mov";
 	string filePathXml = sourceFile+".xml";
+	string subtitlesPathSrt = GetCloudsDataPath() + "subtitles/Patricio_Alchemy_3.srt"; 
 	if(ofFile::doesFileExist(filePathMov)){
-        getRGBDVideoPlayer().setup(filePathMov, filePathXml);
+        getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 	else{

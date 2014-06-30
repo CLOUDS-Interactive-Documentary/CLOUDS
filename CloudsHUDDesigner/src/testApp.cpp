@@ -48,7 +48,7 @@ void testApp::keyPressed(int key){
 	if(key == 'E'){
 		vector<int> projectExampleIndecs;
 		for(int i = 0; i < parser.getAllClips().size(); i++){
-			if(parser.getAllClips()[i].hasProjectExample){
+			if(parser.getAllClips()[i]->hasProjectExample){
 				projectExampleIndecs.push_back(i);
 			}
 		}
@@ -56,7 +56,7 @@ void testApp::keyPressed(int key){
 		if(projectExampleIndecs.size() > 0){
 			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
 			hud.respondToClip( parser.getAllClips()[exampleIndex] );
-			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
+			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex]->getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex]->projectExampleTitle << endl;
 		}
 	}
 	

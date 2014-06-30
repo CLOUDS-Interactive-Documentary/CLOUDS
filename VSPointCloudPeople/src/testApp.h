@@ -6,6 +6,8 @@
 #include "CloudsHUDController.h"
 #include "CloudsFCPParser.h"
 
+#include "ofxFTGLFont.h"
+
 class testApp : public ofBaseApp{
   public:
 	void setup();
@@ -25,6 +27,7 @@ class testApp : public ofBaseApp{
 	
 	void updateTransitions();
 	
+	ofxFTGLFont font;
 	CloudsHUDController hud;
 	CloudsFCPParser parser;
 
