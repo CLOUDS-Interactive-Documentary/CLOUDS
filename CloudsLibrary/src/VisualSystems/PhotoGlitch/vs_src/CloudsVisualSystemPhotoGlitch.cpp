@@ -549,7 +549,8 @@ bool CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,string imgPath, boo
             int avgR = 0, avgG = 0, avgB = 0, avgA = 0;
             for (int y = (j + 0) * texSliceHeight; y < (j + 1) * texSliceHeight; y++) {
                 for (int x = (i + 0) * texSliceWidth; x < (i + 1) * texSliceWidth; x++) {
-                    ofColor c = pixels.getColor(x, y);
+					ofColor c = pixels.getColor(ofClamp(x, 0 ,pixels.getWidth()-1), 
+												ofClamp(y, 0, pixels.getHeight()-1) );
                     avgR += c.r;
                     avgG += c.g;
                     avgB += c.b;

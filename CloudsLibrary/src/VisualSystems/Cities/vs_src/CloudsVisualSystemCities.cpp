@@ -530,9 +530,9 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	glEnable( GL_CULL_FACE );
 #ifdef OCULUS_RIFT
-    glCullFace( GL_BACK );
-#else
 	glCullFace( GL_FRONT );
+#else
+    glCullFace( GL_BACK );
 #endif
 	
 	if(bDrawMesh)
