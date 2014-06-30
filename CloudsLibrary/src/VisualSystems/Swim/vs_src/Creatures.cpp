@@ -53,11 +53,11 @@ namespace itg
         
         // fish one
 		
-        ModelCreature::fishModels.push_back(ofxAssimpModelLoader());
-        ModelCreature::fishModels.back().loadModel(dataPath + "models/plotva.obj");
-        ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
+		ModelCreature::fishModels.push_back(ofVboMesh());
+        ModelCreature::fishModels.back().load(dataPath + "models/plotva.obj");
+        /*ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
         ModelCreature::fishModels.back().setRotation(1, 90, 0, 1, 0);
-        ModelCreature::fishModels.back().setScale(0.3, 0.3, 0.3);
+        ModelCreature::fishModels.back().setScale(0.3, 0.3, 0.3);*/
         ofDisableArbTex();
         ModelCreature::textures[ModelCreature::fishModels.size() - 1].setCompression(OF_COMPRESS_ARB);
         ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/plotva.png");
@@ -71,10 +71,10 @@ namespace itg
         fishOneParams.sizeStdDeviation = 0.5;
         
         // fish two
-        ModelCreature::fishModels.push_back(ofxAssimpModelLoader());
-        ModelCreature::fishModels.back().loadModel(dataPath + "models/TropicalFish05.obj");
-        ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
-        ModelCreature::fishModels.back().setScale(0.1, 0.1, 0.1);
+        ModelCreature::fishModels.push_back(ofVboMesh());
+        ModelCreature::fishModels.back().load(dataPath + "models/TropicalFish05.obj");
+        /*ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
+        ModelCreature::fishModels.back().setScale(0.1, 0.1, 0.1);*/
         ofDisableArbTex();
         ModelCreature::textures[ModelCreature::fishModels.size() - 1].setCompression(OF_COMPRESS_ARB);
         ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/TropicalFish05.png");
@@ -116,8 +116,8 @@ namespace itg
         
         const float startArea = 1200.f;
         
-        addModelFish(numGreyFish, fishOneParams);
-        addModelFish(numYellowFish, fishTwoParams);
+        //addModelFish(numGreyFish, fishOneParams);
+        //addModelFish(numYellowFish, fishTwoParams);
         
         /*
         addPointFish(numPointOne, huePointOne);
@@ -229,6 +229,7 @@ namespace itg
         }
     }
     
+	/*
     void Creatures::addModelFish(unsigned number, const ModelParams& params)
     {
         creaturesByType.push_back(vector<Creature::Ptr>());
@@ -240,6 +241,7 @@ namespace itg
             creaturesByType.back().push_back(creatures.back());
         }
     }
+	*/
     
     void Creatures::addJellyFish(unsigned number, const JellyParams& params)
     {

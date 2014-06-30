@@ -134,23 +134,27 @@ void CloudsVisualSystemSwim::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemSwim::selfDraw()
 {
-
+	ofPushStyle();
+	ofDisableLighting();
     creatures.draw(getCameraRef());
     //bubbles.draw();
     snow.draw(getCameraRef());
+	ofPopStyle();
 }
 
 void CloudsVisualSystemSwim::selfPostDraw()
 {
 
-	
+	ofPushStyle();
     glPushAttrib(GL_ENABLE_BIT);
     ofDisableDepthTest();
 	ofDisableAlphaBlending();
+	ofDisableLighting();
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-    post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
+    post.getProcessedTextureReference().draw(0, 0, getCanvasWidth(), getCanvasHeight());
     glPopAttrib();
+	ofPopStyle();
 }
 
 //use render gui for display settings, like changing colors
@@ -178,6 +182,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addRangeSlider("undulationFreqRange", 0.f, 10.f, &JellyCreature::undulationFreqMin, &JellyCreature::undulationFreqMax);
     rdrGui->addIntSlider("numJellyOne", 0, 300, &creatures.numJellyOne);
     rdrGui->addIntSlider("numJellyTwo", 0, 300, &creatures.numJellyTwo);
+	//rdrGui->addMinimalSlider("tentacleSpringForce", 100.f, 1600.f, &Creatures::tentacleSpringForce);
     
     rdrGui->addLabel("Fish One");
     rdrGui->addSpacer();

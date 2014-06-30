@@ -35,8 +35,9 @@ void main()
     
     // for some reason nvidia 9600 osx driver is freaking
     // out if I try and get the length of or normalize forceDirection
-    vel += 120.0 * elapsed * forceDirection;
-    
+    //vel += 120.0 * elapsed * forceDirection;
+    vel += 800.0 * elapsed * forceDirection;
+
     vel *= clamp(1.0 - (9.0 * elapsed), 0.0, 1.0);
     
     pos += vel * elapsed;//step(0.5, gl_TexCoord[0].s) * 0.5 * (vel + oldVel) * elapsed;

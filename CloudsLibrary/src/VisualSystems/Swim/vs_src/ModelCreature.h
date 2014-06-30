@@ -31,7 +31,6 @@
  */
 #pragma once
 
-#include "ofxAssimpModelLoader.h"
 #if (_MSC_VER || _LIBCPP_VERSION)
 #include <memory>
 #else
@@ -68,7 +67,7 @@ namespace itg
         ofFloatColor getColour() const { return colour; }
         
     private:
-        static vector<ofxAssimpModelLoader> fishModels;
+		static vector<ofVboMesh> fishModels;
         //static vector<ofImage> fishTextures;
         static ofShader fishShader;
         static vector<ofVec3f> deformAxes;

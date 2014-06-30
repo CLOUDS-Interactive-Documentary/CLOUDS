@@ -36,6 +36,8 @@ class CloudsVisualSystemSwim : public CloudsVisualSystem {
 		return "Swim";
 	}
 
+	void selfSetDefaults();
+
 	//These methods let us add custom GUI parameters and respond to their events
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
@@ -57,7 +59,7 @@ class CloudsVisualSystemSwim : public CloudsVisualSystem {
 	// this is a good time to prepare for transitions
 	// but try to keep it light weight as to not cause stuttering
     void selfBegin();
-    void selfSetDefaults();
+    //void selfSetDefaults();
 
 	// selfPresetLoaded is called whenever a new preset is triggered
 	// it'll be called right before selfBegin() and you may wish to
