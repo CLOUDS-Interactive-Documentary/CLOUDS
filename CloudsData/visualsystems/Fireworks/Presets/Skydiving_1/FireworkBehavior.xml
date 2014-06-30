@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>FireworkBehavior</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -21,7 +21,7 @@
     <Value>0.055133004</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>emissonRate</Name>
     <Value>3</Value>
 </Widget>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>gravity</Name>
-    <Value>-0.492607117</Value>
+    <Value>-0.492608547</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
