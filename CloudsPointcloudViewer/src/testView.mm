@@ -95,6 +95,7 @@
 
 #ifndef OCULUS_RIFT
 	hud.draw();
+	
 #endif
     
     CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(
@@ -118,6 +119,7 @@
 
 - (IBAction)loadClip:(CloudsClip*)clip
 {
+	string subtitlesPath = GetCloudsDataPath() + "subtitles/" + clip->getSubtitlesPath();
 	if(clip->hasMediaAsset && clip->voiceOverAudio && rgbdVisualSystem.getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath) ){
 		
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
@@ -131,7 +133,7 @@
 	}
 	else if(clip->hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup(clip->combinedVideoPath,
 																			   clip->combinedCalibrationXMLPath,
-																			   clip->getSubtitlesPath(), 1, clip->speakerVolume) ){
+																			   subtitlesPath, 1, clip->speakerVolume) ){
 		cout<<"clip.speakerVolume : " << clip->speakerVolume<<endl;
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
 		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip->person].firstName,
