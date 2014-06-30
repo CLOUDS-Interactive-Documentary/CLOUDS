@@ -638,12 +638,14 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 #ifdef KINECT_INPUT
         drawKinectDebug();
 #endif
+		/*
 #ifdef MOUSE_INPUT
 		if (bPromptForInteraction) {
 			ofPtr<CloudsInputMouse> mouseInput = dynamic_pointer_cast<CloudsInputMouse>(GetCloudsInput());
 			mouseInput->drawFeedback(CloudsVisualSystem::getSharedRenderTarget().getWidth(), CloudsVisualSystem::getSharedRenderTarget().getHeight());
         }
 #endif
+		*/
 
 	}
     

@@ -343,6 +343,8 @@ class CloudsVisualSystem {
 	float interludeTypeScale;
 	float interludeTypeYOffset;
 	float interludeTypeTracking;
+	
+	bool bPromptForInteraction;
 
   protected:
 		
@@ -357,8 +359,8 @@ class CloudsVisualSystem {
     ofxUISuperCanvas *tlGui;
     ofxUISuperCanvas *postGui;
 
+
 #if defined(MOUSE_INPUT)
-	bool bPromptForInteraction;
 #elif defined(KINECT_INPUT)
     ofxUISuperCanvas *kinectGui;
 #elif defined(OCULUS_RIFT)

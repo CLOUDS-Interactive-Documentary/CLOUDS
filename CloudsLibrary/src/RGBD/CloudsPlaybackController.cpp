@@ -5,6 +5,10 @@
 #include "CloudsInputKinectOSC.h"
 #endif
 
+#ifdef MOUSE_INPUT
+#include "CloudsInputMouse.h"
+#endif
+
 bool listsort(pair<int,string> a, pair<int,string> b){
     return a.first > b.first;
 }
@@ -1216,6 +1220,17 @@ void CloudsPlaybackController::drawRenderTarget(){
 		hud.draw();
         CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
 #endif
+
+#ifdef MOUSE_INPUT
+		if (currentVisualSystem->bPromptForInteraction) {
+			bool drawBrightText = currentVisualSystem->getBgColor().getBrightness() < .5;
+			ofPtr<CloudsInputMouse> mouseInput = dynamic_pointer_cast<CloudsInputMouse>(GetCloudsInput());
+			mouseInput->drawFeedback(
+				currentVisualSystem->getCanvasWidth(), 
+				currentVisualSystem->getCanvasHeight(), drawBrightText);
+        }
+#endif
+
 		ofPopStyle();
 	}
     else{
