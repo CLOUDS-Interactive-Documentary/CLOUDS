@@ -72,6 +72,9 @@ void CloudsVisualSystemExampleBox2D::selfSetupGui(){
 }
 
 void CloudsVisualSystemExampleBox2D::selfSetDefaults(){
+#ifdef MOUSE_INPUT
+	bPromptForInteraction = true;
+#endif
     primaryCursorMode = CURSOR_MODE_DRAW;
     secondaryCursorMode = CURSOR_MODE_DRAW;
 }

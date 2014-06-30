@@ -10,6 +10,12 @@ void CloudsVisualSystemTunnelDrawing::selfSetDefaults(){
 	fallOffSpeed = -2;
 	drawWireframe = false;
 	drawFill = true;
+
+#ifdef MOUSE_INPUT
+	bPromptForInteraction = true;
+#endif
+    primaryCursorMode = CURSOR_MODE_DRAW;
+    secondaryCursorMode = CURSOR_MODE_DRAW;
 }
 
 //These methods let us add custom GUI parameters and respond to their events
