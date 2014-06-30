@@ -3902,10 +3902,10 @@ void CloudsVisualSystem::drawCursors()
 }
 
 // Override this method to customize the position or rendering of the cursors for a specific CloudsVisualSystem!
-void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus)
+void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus, float fadeOut)
 {
     // Use the default cursor rendering from CloudsInput.
-    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
+    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus, fadeOut);
 }
 
 void CloudsVisualSystem::selfExit()

@@ -46,8 +46,8 @@ class CloudsInput
 	void setBleedPixels(int bleed);
     ofVec2f getBleedPixels();
 	
-    virtual void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus) = 0;
-    void selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size);
+    virtual void drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float fadeOut) = 0;
+    void selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float fadeOut, float size);
     
     bool bUserBegan;
     

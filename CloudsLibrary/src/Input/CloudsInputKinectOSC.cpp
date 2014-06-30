@@ -834,7 +834,7 @@ void CloudsInputKinectOSC::draw(float x, float y, float width, float height)
 }
 
 //--------------------------------------------------------------
-void CloudsInputKinectOSC::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus){
+void CloudsInputKinectOSC::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float fadeOut){
     float cursorSize;
     if (mode == CURSOR_MODE_INACTIVE)
         cursorSize = cursorUpSizeMin;
@@ -842,7 +842,7 @@ void CloudsInputKinectOSC::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos
         cursorSize = ofMap(pos.z, 2, -2, cursorDownSizeMin, cursorDownSizeMax, true);
     else
         cursorSize = ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true);
-    selfDrawCursorDefault(mode, pos, bDragged, focus, cursorSize);
+    selfDrawCursorDefault(mode, pos, bDragged, focus, fadeOut, cursorSize);
 }
 
 //--------------------------------------------------------------

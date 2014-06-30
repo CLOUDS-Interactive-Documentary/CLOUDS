@@ -80,6 +80,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	clickToBeginAlpha = 0;
 	mouseLastMovedTime = 0;
 
+	cameraSwingDamp = 0.0;
 
     warpCamera.setNearClip(.01);
 	
@@ -124,6 +125,10 @@ void CloudsIntroSequence::selfSetupCameraGui(){
 	camGui->addSlider("camera fwd force", 0, 2, &cameraForwardSpeed);
 	camGui->addSlider("camera wobble range", 0, 10, &camWobbleRange);
 	camGui->addSlider("camera wobble speed", 0, 1., &camWobbleSpeed);
+	camGui->addSlider("camera swing x", 0, 100., &cameraSwingRange.x);
+	camGui->addSlider("camera swing y", 0, 100., &cameraSwingRange.y);
+	camGui->addSlider("camera swing damp", 0, .4, &cameraSwingDamp);
+
 	camGui->addToggle("hold camera", &paused);
 }
 
@@ -299,7 +304,12 @@ void CloudsIntroSequence::updateCamera(){
 		else{
 			warpCamera.setPosition(wobble.x, wobble.y, 0);
 		}
-		warpCamera.lookAt( ofVec3f(0, 0, warpCamera.getPosition().z + 50) );
+		ofVec2f camSwing = ofVec2f(ofMap(GetCloudsInputPosition().x, 0, getCanvasWidth(), cameraSwingRange.x, -cameraSwingRange.x, true ),
+								   ofMap(GetCloudsInputPosition().y, 0, getCanvasHeight(), cameraSwingRange.y, -cameraSwingRange.y, true));
+
+		curCameraSwing.interpolate(camSwing,powf(cameraSwingDamp, 2.0));
+
+		warpCamera.lookAt( ofVec3f(curCameraSwing.x, curCameraSwing.y, warpCamera.getPosition().z + 50) );
 	}
 	else {
 		float percentZoomed = powf(ofMap(ofGetElapsedTimef(), selectedQuestionTime, selectedQuestionTime + 2.0, 0.0, 1.0, true),2.);
@@ -658,7 +668,7 @@ void CloudsIntroSequence::positionStartQuestions(){
 		float attenuator = (i % 2 == 0) ? .7 : 1.3;
 		startQuestions[i].hoverPosition = ofVec3f(0, questionTunnelInnerRadius * attenuator, 0);
 		startQuestions[i].hoverPosition.rotate(i%4 * .25 * 360, ofVec3f(0,0,1));
-		startQuestions[i].hoverPosition.z = 400 + tunnelMax.z*.5 + i * (1.0*questionWrapDistance / startQuestions.size() );
+		startQuestions[i].hoverPosition.z = 200 + tunnelMax.z*.25 + i * (1.0*questionWrapDistance / startQuestions.size() );
 	}
 }
 

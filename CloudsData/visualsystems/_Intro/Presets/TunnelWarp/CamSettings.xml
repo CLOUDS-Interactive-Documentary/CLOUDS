@@ -62,6 +62,31 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Spin Camera</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spin Camera Damp</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spin Camera Range X</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spin Camera Range Y</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Invert Spin Axis</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>2D</Name>
     <Value>0</Value>
 </Widget>
@@ -128,7 +153,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>camera fwd force</Name>
-    <Value>0.576435208</Value>
+    <Value>0.655999839</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -139,6 +164,21 @@
     <Kind>4</Kind>
     <Name>camera wobble speed</Name>
     <Value>0.098521866</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camera swing x</Name>
+    <Value>66.666671753</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camera swing y</Name>
+    <Value>18.137254715</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camera swing damp</Name>
+    <Value>0.120000005</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
