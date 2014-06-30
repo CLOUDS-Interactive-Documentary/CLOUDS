@@ -111,15 +111,10 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
         ofNoFill();
         ofSetColor(255, 255, 255, 192);
         ofCircle(pos, size);
-//        ofFill();
-//        ofSetColor(255, 255, 255, 64);
-//        ofCircle(pos, size * focus);
     }
     else {  // mode == CURSOR_MODE_CAMERA
         ofSetLineWidth(2);
 #ifndef OCULUS_RIFT
-//        static const float kCoreRadius = 0.2f;
-//        float lineLength = size * ofMap(focus, 0.0f, 1.0f, kCoreRadius, (1.0f - kCoreRadius));
         float lineLength;
         if (focus >= 0) {
             ofSetColor(255, 255, 255, 192);
@@ -138,15 +133,9 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
         ofLine(pos.x, pos.y - size, pos.x, pos.y - size + lineLength);
         ofLine(pos.x, pos.y + size, pos.x, pos.y + size - lineLength);
 #endif
-//        if (bDragged) {
-//            ofNoFill();
-//            ofCircle(pos, lineLength);
-//        }
-//        else {  // !bDragged
-//            ofSetColor(255, 255, 255, 64);
-            ofFill();
-            ofCircle(pos, 1);
-//        }
+
+        ofFill();
+        ofCircle(pos, 1);
     }
     
     ofDisableAlphaBlending();
