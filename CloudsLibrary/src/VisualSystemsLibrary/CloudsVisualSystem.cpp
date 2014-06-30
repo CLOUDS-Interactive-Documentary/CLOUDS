@@ -3884,6 +3884,7 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	else{
         offset = 0;
     }
+
 	 CloudsVisualSystem::getSharedRenderTarget().draw(-offset, -offset, width, height);
 	
     if(bEnablePostFX){

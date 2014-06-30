@@ -152,8 +152,8 @@ public:
     bool nextClipHasSubtitles;
     
 #ifdef SHOW_SUBTITLES
-    ofxSubtitles currentSubtitles;
-    ofxSubtitles nextSubtitles;
+    ofPtr<ofxSubtitles> currentSubtitles;
+    ofPtr<ofxSubtitles> nextSubtitles;
 #endif
  
 };
