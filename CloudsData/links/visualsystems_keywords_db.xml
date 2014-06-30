@@ -31601,7 +31601,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -34455,11 +34455,11 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <sound_allow_vo>1</sound_allow_vo>
+    <interlude>1</interlude>
 </system>
 <system name="Swim_BaybircarnTwooo">
     <keywords>space|universe|virtual|videogames|journey|artificial life|nature</keywords>
@@ -34526,11 +34526,11 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <sound_allow_vo>1</sound_allow_vo>
+    <interlude>1</interlude>
 </system>
 <system name="Swim_Deepsea">
     <keywords></keywords>
