@@ -117,6 +117,9 @@ void FluidBox::update() {
 }
 
 void FluidBox::draw() {
+
+	ofPushStyle();
+
 	float scaleMulti = width / (float)size;
 	int i = 0;
 	int j = 0;
@@ -133,11 +136,12 @@ void FluidBox::draw() {
 
 				float len = vel.lengthSquared();
 
-				if(len > .01)
+				if(len > .01){
 					meshVelocity.setVertex(j+1, (ofVec3f(ix, iy, iz) + vel * 6) * scaleMulti);
-				else
+				}
+				else{
 					meshVelocity.setVertex(j+1, ofVec3f(ix * scaleMulti, iy * scaleMulti, iz * scaleMulti));
-
+				}
 				/*
 				if(len > .01) {
 					float c = len * 100;
@@ -156,24 +160,33 @@ void FluidBox::draw() {
 			}
 		}
 	}
-	if(drawForceField)
+
+	if(drawForceField){
 		meshVelocity.draw();
+	}
 
 	ofSetColor(255);
 
-	std::vector<FluidParticle> skip;
+	vector<FluidParticle> skip;
 
 	//TODO: optimize this for performance
-
 	if(drawLines) {
-		for(std::vector<FluidParticle>::iterator it = particles.begin(); it<particles.end(); it+=2) {
+		vector<FluidParticle>::iterator it;
+		for(it = particles.begin(); it != particles.end(); it++) {
 
-			vector<FluidParticle> close;
-
+			//vector<FluidParticle> close;
+			cout << " DRAWING PARTICLE " << endl;
 			nn.findPointsWithinRadius(*it, particleConnectDistance, nnMatches);
 
 			for (unsigned i = 0; i < nnMatches.size(); ++i) {
 				ofLine(*it * scaleMulti, particles[nnMatches[i].first] * scaleMulti);
+			}
+
+			if(it != particles.end()){
+				it++; //skip one
+				if(it == particles.end()){
+					break;
+				}
 			}
 		}
 	}
@@ -188,6 +201,8 @@ void FluidBox::draw() {
 			ofPopMatrix();
 		}
 	}
+
+	ofPopStyle();
 }
 
 void FluidBox::addVelocity(int x, int y, int z, float amountX, float amountY, float amountZ) {
