@@ -97,8 +97,10 @@ void CloudsVisualSystemGesturePaint::selfSetDefaults(){
 	brushSize = 128.;
 	currentBrushSize = 0;
 
+#ifdef MOUSE_INPUT
 	bPromptForInteraction = true;
-    primaryCursorMode = CURSOR_MODE_DRAW;
+#endif
+	primaryCursorMode = CURSOR_MODE_DRAW;
     secondaryCursorMode = CURSOR_MODE_DRAW;
 }
 
