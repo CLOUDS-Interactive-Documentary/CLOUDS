@@ -136,7 +136,11 @@ void Maze::draw(ofCamera *cam, ofVec3f &lightPos)
     // draw maze geometry
     ofSetColor(settings->getWallColor());
 	glEnable(GL_CULL_FACE);
+#ifdef OCULUS_RIFT
 	glCullFace(GL_BACK);
+#else
+	glCullFace(GL_FRONT);
+#endif
 	geometry.draw(GL_TRIANGLES, vertexIndexForLines[camCellY], vertexIndexForLines[lastVisibleLine]-vertexIndexForLines[camCellY]);
 	glDisable(GL_CULL_FACE);
 
