@@ -144,7 +144,9 @@ void CloudsVisualSystemSwim::selfDraw()
 
 void CloudsVisualSystemSwim::selfPostDraw()
 {
-
+#ifdef OCULUS_RIFT
+	CloudsVisualSystem::selfPostDraw();
+#else
 	ofPushStyle();
     glPushAttrib(GL_ENABLE_BIT);
     ofDisableDepthTest();
@@ -155,6 +157,7 @@ void CloudsVisualSystemSwim::selfPostDraw()
     post.getProcessedTextureReference().draw(0, 0, getCanvasWidth(), getCanvasHeight());
     glPopAttrib();
 	ofPopStyle();
+#endif
 }
 
 //use render gui for display settings, like changing colors
