@@ -399,11 +399,11 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         
 		//cout << "position is " << position << " " << duration << " duration " << endl;
 		
-		fadeInValue = MIN(position, 1.0);
+		fadeInValue = MIN(position, 1.5);
 		fadeOutValue = ofMap(position, duration - 1.0, duration, 1.0, 0.0, true);
         
 		//remap to make it tigheter
-        fadeInValue  = powf(ofMap(fadeInValue,  .5, 1.0, 0.0, 1.0, true), 2.0);
+        fadeInValue  = powf(ofMap(fadeInValue,  1.0, 1.5, 0.0, 1.0, true), 2.0);
         fadeOutValue = powf(ofMap(fadeOutValue, .5, 1.0, 0.0, 1.0, true), 2.0);
 		
 
@@ -418,7 +418,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 			audioVolume = ofMap(position, fadeOutStartTime, fadeOutEndTime, maxVolume, 0.0, true);
 		}
 
-		//cout << "/*/*/*/*/*/***** FADIN VALUE " << fadeInValue << " FADE OUT VALUE " << fadeOutValue << " AUDIO VOLUME " << audioVolume << endl;
+//		cout << "/*/*/*/*/*/***** FADIN VALUE " << fadeInValue << " FADE OUT VALUE " << fadeOutValue << " AUDIO VOLUME " << audioVolume << endl;
 		
 		getPlayer().setVolume(audioVolume);
 
