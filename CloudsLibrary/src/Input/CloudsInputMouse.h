@@ -36,7 +36,7 @@ class CloudsInputMouse : public CloudsInput
 	void mouseDragged(ofMouseEventArgs& data);
 	void mouseReleased(ofMouseEventArgs& data);
 
-	void drawFeedback(float width, float height);
+	void drawFeedback(float width, float height, bool drawBrightText);
 	float feedbackAlpha;
     ofTrueTypeFont feedbackFont;
     string feedbackPrompt;
