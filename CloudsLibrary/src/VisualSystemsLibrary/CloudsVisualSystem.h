@@ -357,10 +357,11 @@ class CloudsVisualSystem {
     ofxUISuperCanvas *tlGui;
     ofxUISuperCanvas *postGui;
 
-#ifdef KINECT_INPUT
+#if defined(MOUSE_INPUT)
+	bool bPromptForInteraction;
+#elif defined(KINECT_INPUT)
     ofxUISuperCanvas *kinectGui;
-#endif
-#ifdef OCULUS_RIFT
+#elif defined(OCULUS_RIFT)
     ofxUISuperCanvas *oculusGui;
     ofxUISuperCanvas *hudGui;
 #endif
