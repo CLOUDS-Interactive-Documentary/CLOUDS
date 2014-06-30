@@ -964,8 +964,8 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	//	percentTraversed = 0.0;
 	}
 
-#ifndef KINECT_INPUT
-    bUseInteractiveCamera = false;
+#ifdef OCULUS_RIFT
+    //bUseInteractiveCamera = false;
 #endif
     
 	///UPDATE ANIMATION

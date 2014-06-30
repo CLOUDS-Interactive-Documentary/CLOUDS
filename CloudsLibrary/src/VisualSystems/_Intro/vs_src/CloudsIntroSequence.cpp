@@ -402,6 +402,7 @@ void CloudsIntroSequence::updateWaiting(){
 			clickToBeginAlpha *= ofMap(timeSinceMouse, 4.0, 5.0, 1.0, 0.0,true);
 			if(timeSinceMouse > 5.0){
 				clickTextActive = false;
+				glfwSetCursorPos( ofAppGLFWWindow::windowP, getCanvasWidth()/2, getCanvasHeight()/2);
 			}
 		}
 	}
@@ -1060,19 +1061,22 @@ void CloudsIntroSequence::drawIntroNodes(){
 
 	}
 	
-	ofPopStyle();
-	
+	ofPopStyle();	
 }
 
 void CloudsIntroSequence::drawCursors(){
+	float cursorAlpha = 1.0;
+	if(!startedOnclick){
+		cursorAlpha = ofMap(clickToBeginAlpha, 0, .3, 0.0, 1.0, true);
+	}
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
         if (it->second.primary) {
             // override primaryCursorMode
-            selfDrawCursor(stickyCursor, it->second.dragged, caughtQuestion? CURSOR_MODE_DRAW : CURSOR_MODE_CAMERA, it->second.focus);
+            selfDrawCursor(stickyCursor, it->second.dragged, caughtQuestion? CURSOR_MODE_DRAW : CURSOR_MODE_CAMERA, it->second.focus, cursorAlpha);
         }
         else {
-            selfDrawCursor(it->second.position, it->second.dragged, secondaryCursorMode, it->second.focus);
+            selfDrawCursor(it->second.position, it->second.dragged, secondaryCursorMode, it->second.focus, cursorAlpha);
         }
     }
 }
