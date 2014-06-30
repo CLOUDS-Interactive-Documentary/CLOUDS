@@ -113,7 +113,7 @@ void CloudsRGBDVideoPlayer::threadedFunction(){
 
 	nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
 
-	cout << "prerolled clip " << nextVideoPath << " to time " << nextOffsetTime << endl;
+	cout << "prerolled clip " << nextVideoPath << " to time " << (nextOffsetTime / nextPlayer->getDuration()) << endl;
 
     /* Subtitles */
     nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
@@ -406,6 +406,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         fadeInValue  = powf(ofMap(fadeInValue,  .5, 1.0, 0.0, 1.0, true), 2.0);
         fadeOutValue = powf(ofMap(fadeOutValue, .5, 1.0, 0.0, 1.0, true), 2.0);
 		
+
 		float fadeInStartTime = 1.0;
 		float fadeInEndTime = 1.4;
 		float fadeOutStartTime = duration - 1.3 ;
@@ -416,6 +417,8 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		else if(position > fadeOutStartTime){
 			audioVolume = ofMap(position, fadeOutStartTime, fadeOutEndTime, maxVolume, 0.0, true);
 		}
+
+		//cout << "/*/*/*/*/*/***** FADIN VALUE " << fadeInValue << " FADE OUT VALUE " << fadeOutValue << " AUDIO VOLUME " << audioVolume << endl;
 		
 		getPlayer().setVolume(audioVolume);
 
