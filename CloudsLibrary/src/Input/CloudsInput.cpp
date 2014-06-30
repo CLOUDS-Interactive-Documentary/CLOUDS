@@ -85,15 +85,17 @@ void CloudsInput::setBleedPixels(int b){
     bleed = b;
 }
 
-void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float size)
+void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float fadeOut, float size)
 {
-	
-    if (mode == CURSOR_MODE_NONE) return;
+	if (mode == CURSOR_MODE_NONE) return;
     // EZ: Don't draw INACTIVE cursors for now
     if (mode == CURSOR_MODE_INACTIVE) return;
     
     // EZ: Uncomment this line to test focus using the mouse
     //focus = ofMap(ofDist(pos.x, pos.y, ofGetWidth()/2, ofGetHeight()/2), 50, 400, 1.0f, 0.0f, true);
+
+    // EZ: Uncomment this line to test fadeOut using the frame count
+    //fadeOut = sinf(ofGetFrameNum() * 0.1f) + 0.5f;
     
     ofPushStyle();
     ofDisableLighting();
@@ -102,27 +104,22 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
     if (mode == CURSOR_MODE_INACTIVE) {
         size *= 0.5f;
         ofSetLineWidth(3);
-        ofSetColor(213, 69, 62, 192 * focus);
+        ofSetColor(213, 69, 62, 192 * focus * fadeOut);
         ofLine(pos.x - size, pos.y - size, pos.x + size, pos.y + size);
         ofLine(pos.x - size, pos.y + size, pos.x + size, pos.y - size);
     }
     else if (mode == CURSOR_MODE_DRAW) {
         ofSetLineWidth(2);
         ofNoFill();
-        ofSetColor(255, 255, 255, 192);
+        ofSetColor(255, 255, 255, 192 * fadeOut);
         ofCircle(pos, size);
-//        ofFill();
-//        ofSetColor(255, 255, 255, 64);
-//        ofCircle(pos, size * focus);
     }
     else {  // mode == CURSOR_MODE_CAMERA
         ofSetLineWidth(2);
 #ifndef OCULUS_RIFT
-//        static const float kCoreRadius = 0.2f;
-//        float lineLength = size * ofMap(focus, 0.0f, 1.0f, kCoreRadius, (1.0f - kCoreRadius));
         float lineLength;
         if (focus >= 0) {
-            ofSetColor(255, 255, 255, 192);
+            ofSetColor(255, 255, 255, 192 * fadeOut);
             lineLength = ofMap(focus, 0.0f, 1.0f, 1, size);
         }
         else {
@@ -130,7 +127,7 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
             if (focus < 0 && focus > -0.3) {
                 flashColor.lerp(ofColor(255, 0, 0), cosf(ofGetElapsedTimef() * 10) * 0.5 + 0.5);
             }
-            ofSetColor(flashColor);
+            ofSetColor(flashColor, 255 * fadeOut);
             lineLength = size;
         }
         ofLine(pos.x - size, pos.y, pos.x - size + lineLength, pos.y);
@@ -138,15 +135,9 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
         ofLine(pos.x, pos.y - size, pos.x, pos.y - size + lineLength);
         ofLine(pos.x, pos.y + size, pos.x, pos.y + size - lineLength);
 #endif
-//        if (bDragged) {
-//            ofNoFill();
-//            ofCircle(pos, lineLength);
-//        }
-//        else {  // !bDragged
-//            ofSetColor(255, 255, 255, 64);
-            ofFill();
-            ofCircle(pos, 1);
-//        }
+
+        ofFill();
+        ofCircle(pos, 1);
     }
     
     ofDisableAlphaBlending();

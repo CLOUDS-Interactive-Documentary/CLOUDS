@@ -341,13 +341,15 @@ void CloudsVisualSystemLSystem::selfDraw(){
     
     //  Grid
     //
-    ofPushStyle();
-//    ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ofSetLineWidth(gridCrossWidth);
-    grid.draw();
-    ofPopStyle();
+	if (gridCrossWidth > 0) {
+		ofPushStyle();
+		//ofEnableBlendMode(OF_BLENDMODE_ADD);
+		ofSetLineWidth(gridCrossWidth);
+		grid.draw();
+		ofPopStyle();
+	}
     
-    //  Original L-System
+	//  Original L-System
     //
     ofEnableAlphaBlending();
     ofSetColor(255, lsysOriginalAlpha*255);
@@ -382,7 +384,7 @@ void CloudsVisualSystemLSystem::selfDraw(){
             }
         }
     }
-    
+
     //  Growing Trace
     //
     ofSetColor(255, lsysGrowingAlpha*255);
