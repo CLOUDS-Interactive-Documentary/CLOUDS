@@ -55,6 +55,15 @@ void testApp::keyPressed(int key){
 		ofSaveImage(p,"OCULUS_BG_HD.png");
 #endif
 	}
+
+	//if(key == '1'){
+	//	int* crashme = NULL;
+	//	*crashme = 0;
+	//}
+
+	//if(key == '2'){
+	//	for(;;){}
+	//}
 }
 
 //--------------------------------------------------------------
