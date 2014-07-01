@@ -317,9 +317,16 @@ void CloudsHUDController::buildLayerSets(){
 	//////////
 	//TODO REPLACE WITH LINE WIPE SHADERS
     for( int i=0; i<allLayers.size(); i++ ){
+
+		for( int s = 0; s < allLayers[i]->svg.getMeshes().size(); s++){
+			ofVboMesh& m = allLayers[i]->svg.getMeshes()[s].mesh;
+			for(int v = 0; v < m.getNumVertices(); v++){
+				m.addNormal(ofVec3f(ofRandomuf(),0,0));
+			}
+		}
+
         allLayers[i]->duration = 1.5;
         allLayers[i]->delayTime = 0;
-        
         allLayers[i]->startPoint = ofVec2f(allLayers[i]->svg.getWidth(),0);
         allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
     }
