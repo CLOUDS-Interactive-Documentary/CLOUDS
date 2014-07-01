@@ -116,9 +116,11 @@ class CloudsHUDController {
 
 	//reset stuff
 	ofRectangle	  scaledResetRect;
+	ofMesh resetTriangle;
 	bool	bResetIsPressed;
 	bool	bResetIsHovered;
 	bool	bResetIsClicked;
+	float	resetHoverChangedTime;
 
 	void	updateReset();
 
