@@ -21,12 +21,15 @@ CloudsHUDController::CloudsHUDController(){
     bSkipAVideoFrame = false;
     bDrawHud = true;
     bDrawHome = true;
+
+
     bActJustStarted = false;
 	cuedClipEndTime = 0;
     bVisualSystemDisplayed = false;
     bLowerThirdCued = false;
 	
 	bResetIsHovered = false;
+	bResetIsPressed = false;
 	bResetIsClicked = false;
 
     scaleAmt = 1.0;
@@ -61,7 +64,15 @@ void CloudsHUDController::setup(){
 	
 	buildLayerSets();
     calculateFontSizes();
-	
+
+#ifdef MOUSE_INPUT
+	ofAddListener(ofEvents().mouseMoved,this, &CloudsHUDController::mouseMoved);
+	ofAddListener(ofEvents().mousePressed,this, &CloudsHUDController::mousePressed);
+	ofAddListener(ofEvents().mouseReleased,this, &CloudsHUDController::mouseReleased);
+#endif
+
+	hudLabelMap["ResetButtonTextBox"]->setText("RESET");
+
 	home.setup();
     
     cout << "canvas width: " << ofGetWidth() << endl;
@@ -313,7 +324,6 @@ void CloudsHUDController::buildLayerSets(){
         allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
     }
     ///////////
-	
     home.bounds = lowerThirdLayer->svg.getMeshByID("HomeButtonFrame")->bounds;
     home.bounds.scaleFromCenter(1.5);
     
@@ -323,7 +333,6 @@ void CloudsHUDController::buildLayerSets(){
     
     hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
-	hudLabelMap["ResetButtonTextBox"]->setText("RESET");
 	
 //	cout << "HUD BOUNDS " << hudBounds.width << " / " << hudBounds.height << endl;
 //    cout << "SCREEN " << ofGetScreenWidth() << " / " << ofGetScreenHeight() << endl;
@@ -476,9 +485,7 @@ ofxFTGLFont* CloudsHUDController::getFontForLayer(const string& layerName, const
             return newFont;
         }
     }
-    
     return NULL;
-    
 }
 
 int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
@@ -523,8 +530,13 @@ void CloudsHUDController::update(){
     float xScale = ofGetWindowWidth()/hudBounds.width;
     float yScale = ofGetWindowHeight()/hudBounds.height;
     
-    scaleAmt = (xScale < yScale) ? xScale : yScale;
-    
+	bool xDominantScale = xScale < yScale;
+    scaleAmt	= xDominantScale ? xScale : yScale;
+	scaleOffset = xDominantScale ? 
+		ofVec2f(0, ofGetWindowHeight()- hudBounds.height*scaleAmt)*.5 :
+		ofVec2f(ofGetWindowWidth() - hudBounds.width*scaleAmt, 0)*.5;
+
+
     if( videoPlayer.isPlaying() ){
         if( videoPlayer.isFrameNew() ){
             bSkipAVideoFrame = false;
@@ -546,6 +558,34 @@ void CloudsHUDController::update(){
     //    }
     //}
 	/////////////////////////////////
+
+	updateReset();
+}
+
+void CloudsHUDController::updateReset(){
+	ofRectangle resetRect = layerSets[CLOUDS_HUD_LOWER_THIRD][0]->svg.getMeshByID("ResetButtonBacking")->bounds;
+	scaledResetRect.x = resetRect.x * scaleAmt + scaleOffset.x;
+	scaledResetRect.y = resetRect.y * scaleAmt + scaleOffset.y;
+	scaledResetRect.width = resetRect.width * scaleAmt;
+	scaledResetRect.height = resetRect.height * scaleAmt;
+	//cout << "Reset Rect is " << tempScaledResetRect.x << " " << tempScaledResetRect.y << endl; 
+}
+
+void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
+	bResetIsHovered = scaledResetRect.inside(args.x,args.y);
+}
+
+void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
+	bResetIsPressed = scaledResetRect.inside(args.x,args.y);
+}
+
+void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
+	bResetIsClicked = bResetIsPressed &&  scaledResetRect.inside(args.x,args.y);
+	bResetIsPressed = false;
+}
+
+bool CloudsHUDController::isResetHit(){
+	return bResetIsClicked;
 }
 
 void CloudsHUDController::setHomeEnabled(bool enable){
@@ -576,7 +616,7 @@ void CloudsHUDController::draw(){
 	ofSetLineWidth(1);
     ofTranslate( (ofGetWindowSize() - getSize() ) * 0.5 );
     ofScale( scaleAmt, scaleAmt );
-    
+
     // EZ: Debug overlay rect dimensions
 //    ofSetColor(255, 0, 0, 127);
 //    ofRect(0, 0, hudBounds.width, hudBounds.height);

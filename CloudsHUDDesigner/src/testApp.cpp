@@ -18,6 +18,10 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 	hud.update();
+
+	if(hud.isResetHit()){
+		cout << "RESET!!!" << endl;
+	}
 }
 
 //--------------------------------------------------------------
@@ -25,6 +29,11 @@ void testApp::draw(){
 
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 20,20);
 	hud.draw();
+
+	ofEnableAlphaBlending();
+	ofSetColor(255,0,0,100);
+	//ofRect(hud.scaledResetRect);
+	ofSetColor(255);
 }
 
 //--------------------------------------------------------------
