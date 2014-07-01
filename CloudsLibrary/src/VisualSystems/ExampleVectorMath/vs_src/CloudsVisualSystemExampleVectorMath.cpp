@@ -249,18 +249,17 @@ void CloudsVisualSystemExampleVectorMath::selfKeyReleased(ofKeyEventArgs & args)
 }
 
 void CloudsVisualSystemExampleVectorMath::selfMouseDragged(ofMouseEventArgs& data){
-
+	addInteraction(data.x,data.y);
 }
 
 void CloudsVisualSystemExampleVectorMath::selfMouseMoved(ofMouseEventArgs& data){
+	addInteraction(data.x,data.y);
+}
 
-    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-    float x = ofMap(data.x, 0, getCanvasWidth(), -(getCanvasWidth()/2.0), (getCanvasWidth()/2.0));
-    float y = ofMap(data.y, 0, getCanvasHeight(), -(getCanvasHeight()/2.0), (getCanvasHeight()/2.0));
-
-//    float x = ofMap(data.x, 0, ofGetWidth(), -1, 1);
-//    float y = ofMap(data.y, 0, ofGetHeight(), -1, 1);
-    
+void CloudsVisualSystemExampleVectorMath::addInteraction(float xi, float yi){
+    float x = ofMap(xi, 0, getCanvasWidth(), -(getCanvasWidth()/2.0), (getCanvasWidth()/2.0));
+    float y = ofMap(yi, 0, getCanvasHeight(), -(getCanvasHeight()/2.0), (getCanvasHeight()/2.0));
+	
     if(!bAutoDraw) {
         DrawPoint pt;
         pt.pos.set(x, y);
@@ -269,7 +268,7 @@ void CloudsVisualSystemExampleVectorMath::selfMouseMoved(ofMouseEventArgs& data)
         pt.createdAt = ofGetElapsedTimef();
         pts.push_back( pt );
     }
-
+	
 }
 
 void CloudsVisualSystemExampleVectorMath::selfMousePressed(ofMouseEventArgs& data){

@@ -99,7 +99,8 @@ public:
 	ofCamera& getCameraRef(){
 		return camera;
 	}
-
+	
+	void addInteraction(float x, float y);
 protected:
     
     //  Your Stuff
