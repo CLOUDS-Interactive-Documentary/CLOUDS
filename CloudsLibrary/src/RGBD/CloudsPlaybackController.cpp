@@ -666,15 +666,22 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			
         }
     }
-    
+
+	if(!showingIntro && !showingClusterMap && !showingInterlude){
+		
+		hud.update();
+
+		if(currentVisualSystem == rgbdVisualSystem){
+			returnToIntro = hud.isResetHit();
+		}
+
+	}
+
     if(returnToIntro){
         returnToIntro = false;
         transitionController.transitionToIntro(1.0);
     }
 
-	if(!showingClusterMap && !showingInterlude){
-		hud.update();
-	}
 	
 	if(shouldLoadAct){
 		loadCurrentAct();

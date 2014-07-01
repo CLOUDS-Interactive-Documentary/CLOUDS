@@ -577,6 +577,9 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
 void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
 	bResetIsPressed = scaledResetRect.inside(args.x,args.y);
+	if(bResetIsPressed){
+		cout << "RESET STARTED PRESS";
+	}
 }
 
 void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
@@ -585,7 +588,9 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 }
 
 bool CloudsHUDController::isResetHit(){
-	return bResetIsClicked;
+	bool b = bResetIsClicked && hudLabelMap["ResetButtonTextBox"]->isVisible();
+	bResetIsClicked = false;
+	return b;
 }
 
 void CloudsHUDController::setHomeEnabled(bool enable){
@@ -804,9 +809,8 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
         hudLabelMap["BylineLastNameTextBox"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxTop"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxBottom"]->animateIn( true );
-		//JG TEMP
         hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
-//JG TEMP
+		hudLabelMap["ResetButtonTextBox"]->animateIn( true );
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
 //JG TEMP
@@ -890,6 +894,7 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
         hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
         hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
+        hudLabelMap["ResetButtonTextBox"]->animateOut();
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
         hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();
