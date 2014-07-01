@@ -68,11 +68,11 @@ void CloudsHUDController::setup(){
 	buildLayerSets();
     calculateFontSizes();
 
-//#ifdef MOUSE_INPUT
+#ifdef MOUSE_INPUT
 	ofAddListener(ofEvents().mouseMoved,this, &CloudsHUDController::mouseMoved);
 	ofAddListener(ofEvents().mousePressed,this, &CloudsHUDController::mousePressed);
 	ofAddListener(ofEvents().mouseReleased,this, &CloudsHUDController::mouseReleased);
-//#endif
+#endif
 
 	hudLabelMap["ResetButtonTextBox"]->setText("RESET");
 
@@ -279,17 +279,7 @@ void CloudsHUDController::populateProjectExample(const string& videoPath, const 
     
     if( ofFile(videoPath).exists() ){
        isPlaying =  videoPlayer.loadMovie(videoPath);
-//		   videoPlayer.update();
-		   videoPlayer.play();
-
-		cout<<"Player loaded? "<<videoPlayer.isLoaded()<<endl;
-		cout<<"Player playing ? "<<videoPlayer.isPlaying()<<endl;
-//		videoFrameCounter = 10;
-//	   }
-//	   else{
-//		   ofLogError()<<"Video :" + videoPath+" not loaded "<<endl;
-//	   }
-        
+	   videoPlayer.play();
         
         bSkipAVideoFrame = true;
         
@@ -612,6 +602,9 @@ void CloudsHUDController::updateReset(){
 }
 
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
+
+	if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) return;
+
 	bool orig = bResetIsHovered;
 	bResetIsHovered = scaledResetRect.inside(args.x,args.y);
 	if(orig != bResetIsHovered){
@@ -620,6 +613,9 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 }
 
 void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
+	
+	if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) return;
+
 	bResetIsPressed = scaledResetRect.inside(args.x,args.y);
 	if(bResetIsPressed){
 		cout << "RESET STARTED PRESS";
@@ -627,6 +623,9 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
 }
 
 void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
+
+	if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) return;
+
 	bResetIsClicked = bResetIsPressed &&  scaledResetRect.inside(args.x,args.y);
 	if(bResetIsClicked){
 		//resetHoverChangedTime = ofGetElapsedTimef();		
@@ -635,6 +634,9 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 }
 
 bool CloudsHUDController::isResetHit(){
+
+	if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) return false;
+
 	bool b = bResetIsClicked && hudLabelMap["ResetButtonTextBox"]->isVisible();
 	bResetIsClicked = false;
 	return b;

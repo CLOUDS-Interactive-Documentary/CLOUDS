@@ -16,9 +16,8 @@
 class CloudsVisualSystemBalloons : public CloudsVisualSystem {
   public:
     
-	//TODO: Change this to the name of your visual system
-	//This determines your data path so name it at first!
-	//ie getVisualSystemDataPath() uses this
+	 CloudsVisualSystemBalloons();
+
     string getSystemName()
 	{
 		return "Balloons";

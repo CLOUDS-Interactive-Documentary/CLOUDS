@@ -155,6 +155,8 @@ class CloudsPlaybackController : public ofThread {
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
 	bool returnToIntro;
+	bool badIdle;
+	float badIdleStartTime;
     bool userReset;
 
 	string prerolledClipID;

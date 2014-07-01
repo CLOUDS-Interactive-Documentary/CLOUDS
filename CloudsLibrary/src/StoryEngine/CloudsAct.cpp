@@ -504,6 +504,8 @@ float CloudsAct::addClip(CloudsClip* clip, string topic, float startTime, vector
     actItemsMap[prerollItem.key] = prerollItem;
     actItems.push_back(prerollItem);
 	
+	incrementalQuesitonTime = 0;
+
 	return duration;
 }
 
@@ -553,7 +555,7 @@ void CloudsAct::addQuestion(CloudsClip* clip, string topic, float startTime){
     
     item.key = clip->getID() + "??" + topic;
     
-    item.startTime = startTime + 10 + incrementalQuesitonTime;;
+    item.startTime = startTime + 5 + incrementalQuesitonTime;;
     //dont care about end time as it will end with visual system;
     item.endTime = startTime;
     incrementalQuesitonTime += 1;

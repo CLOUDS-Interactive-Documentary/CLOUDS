@@ -34,9 +34,12 @@ CloudsTransitionController::CloudsTransitionController(){
 
 void CloudsTransitionController::confirmEmpty(string transitionName){
 	if(currentState != TRANSITION_IDLE){
-		for(int i = 0; i < queueHistory.size(); i++){
-			ofLogError("TRANSITION QUEUE HISTORY") << getStateDescription(queueHistory[i].state) << " : " << queueHistory[i].timeRange;
-		}
+		//PRINT ALL HISTORY
+		//for(int i = 0; i < queueHistory.size(); i++){
+		//	ofLogError("TRANSITION QUEUE HISTORY") << getStateDescription(queueHistory[i].state) << " : " << queueHistory[i].timeRange;
+		//}
+		//////////////////
+
 		ofLogError("CloudsTransitionController::confirmEmpty") << "Current state " << getStateDescription(currentState) << " is not IDLE on new transition " << transitionName;
 		for(int i = 0; i < stateQueue.size(); i++){
 			ofLogError("TRANSITION QUEUE REMAINING") << getStateDescription(stateQueue[i].state);

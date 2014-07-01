@@ -6,6 +6,44 @@
 #include "ofxObjLoader.h"
 #include "CloudsGlobal.h"
 
+CloudsVisualSystemBalloons::CloudsVisualSystemBalloons(){
+	releaseType = 0;
+	total = 0;
+	dim = netHeight = 0;
+	
+	noiseScl = offset = noiseSampleScale = velAtten = radius = accScl = gravity = attractionToCenter = cameraBounce = cameraAttractionToCenter = cameraOffset = 0;
+	spawnRad = cameraTargetDist, cameraBounceRadius = 0;
+	highSpeedScale = speedLow, speedHi, highSpeedPercent = 0;
+	
+	balloonFrameVal = 0;
+	
+	bReleased = false;
+	
+	dimY = dimX = 0;
+	w0 = w1 = w2 = w3 = 0;
+	
+	c0Hue = c0Sat = c0Bri = 0;
+	c1Hue = c1Sat = c1Bri = 0;
+	c2Hue = c2Sat = c2Bri = 0;
+	c3Hue = c3Sat = c3Bri = 0;
+	
+	p0 = p1 = v0 = v1 = NULL;
+	
+	textSpeed = textRadius = creditLightDist = 0;
+	
+	currentFontSize = 0;
+	fontSize = 0;
+	fontScale = 0;
+	justificationWidth = 0;
+	
+	shininess = 0;
+	lightScale = facingRatioScale = creditLightScale = 0;
+	
+	creditPosition = 0;
+	creditStartTime = creditDuration = creditDurationScale = progress = 0;
+	balloonFramStartTime = balloonFramEndTime = 0;
+}
+
 void CloudsVisualSystemBalloons::selfSetupGui()
 {
 	

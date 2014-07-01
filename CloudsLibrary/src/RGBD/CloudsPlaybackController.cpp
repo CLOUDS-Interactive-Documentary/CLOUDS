@@ -48,6 +48,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 
 	userReset = false;
 	returnToIntro = false;
+	badIdle = false;
+	badIdleStartTime = false;
 
 	showingIntro = false;
 	showingVisualSystem = false;
@@ -673,6 +675,28 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         }
     }
 
+
+	//sanity check
+	//////////////BAD IDLE
+	/// acts are getting stuck at the end without going to interlude
+	if(currentVisualSystem == rgbdVisualSystem && 
+		(currentAct == NULL || !currentAct->getTimeline().getIsPlaying()) && 
+		!transitionController.isTransitioning())
+	{
+		if(badIdle && ofGetElapsedTimef() - badIdleStartTime > 20){
+			ofLogError("BAD IDLE") << "Started Bad ENDED BAD IDLE BY RETURNING TO INTRO";
+			badIdle = false;
+			returnToIntro = true;
+		}
+		else if(!badIdle){
+			ofLogError("BAD IDLE") << "Started Bad Idle";
+			badIdle = true;
+			badIdleStartTime = ofGetElapsedTimef();
+		}
+	}
+	//////////////BAD IDLE
+
+
 	if(!showingIntro && !showingClusterMap && !showingInterlude){
 		
 		hud.update();
@@ -1097,6 +1121,10 @@ void CloudsPlaybackController::drawInterludeInterface(){
     }
 #endif
 
+	ofPushStyle();
+	ofSetColor(255);
+	ofEnableAlphaBlending();
+
 	ofRectangle hoverRect;
 	bool hovering = false;
 	string promptType;
@@ -1117,6 +1145,8 @@ void CloudsPlaybackController::drawInterludeInterface(){
 		drawInterludePanel(hoverRect, promptType, hovering, tracking);
 
 	}
+	ofDisableAlphaBlending();
+	ofPopStyle();
 }
 
 void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string promptType, bool hovering, int tracking ){
@@ -1523,7 +1553,7 @@ void CloudsPlaybackController::showInterlude(){
     
 	resetInterludeVariables();
 	
-    vector<string> topics;
+//    vector<string> topics;
     CloudsVisualSystemPreset interludePreset;
 	#ifdef CLOUDS_SCREENING
 	if(rgbdVisualSystem->hasQuestionsRemaining() && showedClusterMapNavigation){
@@ -1536,16 +1566,20 @@ void CloudsPlaybackController::showInterlude(){
 	}
 
     interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
-        
-    interludeSystem->setDrawToScreen( false );
-    interludeSystem->setup();
-    interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
-    interludeSystem->playSystem();
-    interludeSystem->isInterlude = true;
+	if(interludeSystem == NULL){
+		returnToIntro = true;	
+	}
+	else{
+		interludeSystem->setDrawToScreen( false );
+		interludeSystem->setup();
+		interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
+		interludeSystem->playSystem();
+		interludeSystem->isInterlude = true;
 		
-    currentVisualSystem = interludeSystem;
+		currentVisualSystem = interludeSystem;
         
-    showingInterlude = true;
+		showingInterlude = true;
+	}
 
 }
 

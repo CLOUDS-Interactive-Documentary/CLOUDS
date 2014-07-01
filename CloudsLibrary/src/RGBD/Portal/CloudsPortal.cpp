@@ -104,6 +104,7 @@ void CloudsPortal::clearSelection(){
     stopHovering();
     selected = false;
     selectedPercentComplete = 0.0;
+	clickSelected = false;
 }
 
 bool CloudsPortal::isSelected(){

@@ -605,17 +605,17 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
 			shouldAddScreeningQuestionsToAct = false;
 		}
 #else
-		//if(state.act->getAllVisualSystemPresets().size() > 1){
-            if(showOnlyStartQuestions){
-                if(startingQuestions.size() > 0){
-                    addQuestions(state, startingQuestions);
-                    startingQuestions.clear();
-                }
-            }
-            else {
+//		if(state.act->getAllVisualSystemPresets().size() > 1){
+            //if(showOnlyStartQuestions){
+            //    if(startingQuestions.size() > 0){
+            //        addQuestions(state, startingQuestions);
+            //        startingQuestions.clear();
+            //    }
+            //}
+            //else {
                 addQuestions(state, questionClips);
-            }
-        //}
+//            }
+ //       }
 #endif
         /////////////////
 		
