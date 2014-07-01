@@ -1262,6 +1262,15 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: this clip has been marked with the #dud keyword"<<endl;
         return 0;
     }
+	
+	if(potentialNextClip->getSpeakerFirstName() == "Satoru" || potentialNextClip->getSpeakerFirstName() == "Patricio"){
+		string subtitleFilePath = GetCloudsDataPath() + "subtitles/"+potentialNextClip->getSubtitlesPath();
+		if(! ofFile(subtitleFilePath).exists() ){
+			cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: this clip should have subtitles but they cant be found"<<endl;
+			return 0;
+		}
+		
+	}
     
 	
     //  can't get a #hard clip until the topic has been heard 2 times by any clip
