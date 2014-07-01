@@ -45,6 +45,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	crossfadeValue = 0.0;
 	
 	eventsRegistered = false;
+
+	userReset = false;
 	returnToIntro = false;
 
 	showingIntro = false;
@@ -52,6 +54,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	showingClusterMap = false;
     showingInterlude = false;
     exitedInterlude = false;
+	
 
 	bQuestionAsked = false;
 	interludeExitBarWidth = 0.0;
@@ -111,6 +114,8 @@ void CloudsPlaybackController::clearAct(){
 	if(currentAct == NULL){
 		return;
 	}
+
+	CloudsVisualSystem::getRGBDVideoPlayer().stop();
 	
 	vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
     if( CloudsVisualSystemManager::HasSystemRegistered(currentVisualSystem) ){
@@ -343,6 +348,7 @@ void CloudsPlaybackController::showIntro(){
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 
 	resetInterludeVariables();
+	userReset = false;
 	
 #ifdef OCULUS_RIFT
     if (CloudsVisualSystem::getOculusRift().isHD()) {
@@ -646,9 +652,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             }
             else{
 				//TEMP FOR DURATIONAL TESTING
-				transitionController.transitionFromInterlude(1.0);
+				//transitionController.transitionFromInterlude(1.0);
 				//REPLCE WITH RETURN TO INTRO
-                //transitionController.transitionToIntro(1.0);
+                transitionController.transitionToIntro(1.0);
             }
             
             showingInterlude = false;
@@ -672,9 +678,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		hud.update();
 
 		if(currentVisualSystem == rgbdVisualSystem){
-			returnToIntro = hud.isResetHit();
+			if(hud.isResetHit() && !userReset){
+				userReset = true;
+			    returnToIntro = true;
+		        CloudsVisualSystem::getRGBDVideoPlayer().stop();
+	            currentAct->getTimeline().stop();
+			}
 		}
-
 	}
 
     if(returnToIntro){
@@ -682,14 +692,15 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         transitionController.transitionToIntro(1.0);
     }
 
-	
 	if(shouldLoadAct){
 		loadCurrentAct();
 		shouldLoadAct = false;
 	}
+
 	if(loadingAct){
 		updateLoadingAct();
 	}
+
 	if(shouldPlayAct){
 		playCurrentAct();
 		shouldPlayAct = false;
@@ -719,10 +730,16 @@ void CloudsPlaybackController::updateTransition(){
         switch (transitionController.getCurrentState()) {
                 
             case TRANSITION_INTERVIEW_OUT:
-                if(bQuestionAsked){
+				if(bQuestionAsked){
                     currentAct->getTimeline().stop();
 					rgbdVisualSystem->startTransitionOut( CloudsVisualSystem::QUESTION );
 				}
+				//else if(userReset){
+				//	userReset = false;
+				//	currentAct->getTimeline().stop();
+				//	clearAct();
+					//rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
+				//}
 				else{
                     rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
 				}

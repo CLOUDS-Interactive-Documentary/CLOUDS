@@ -635,10 +635,10 @@ void CloudsHUDController::draw(){
         ofSetColor(255, 255, 255, 255);
     }
 
-	////JG TEMP COMMENT OUT
 	drawLayer(CLOUDS_HUD_QUESTION);
 	drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
+	////JG TEMP COMMENT OUT
 //	drawLayer(CLOUDS_HUD_MAP);
 	////JG TEMP COMMENT OUT
 	
@@ -647,7 +647,6 @@ void CloudsHUDController::draw(){
     }
     
 	if (bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]){
-		////JG TEMP COMMENT OUT
 		home.draw();
     }
 	
