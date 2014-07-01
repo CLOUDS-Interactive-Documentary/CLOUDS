@@ -161,6 +161,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float camWobbleRange;
 	float camWobbleSpeed;
 	
+	float cursorAlpha;
 
 	ofShader tunnelShader;
 	ofShader typeShader;

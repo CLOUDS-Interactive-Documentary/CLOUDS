@@ -534,8 +534,8 @@ void CloudsHUDController::update(){
 	//HACK TO KEEP QUESTION ON after asked
 	if(hudLabelMap["QuestionTextBox"]->getText() != "" && !hudLabelMap["QuestionTextBox"]->isVisible()){
 		hudLabelMap["QuestionTextBox"]->animateIn();
-		
 	}
+
 //	cout << "CURRENT QUESTION " << hudLabelMap["QuestionTextBox"]->getText() << " VISIBLE? " << (hudLabelMap["QuestionTextBox"]->isVisible() ? "YES" : "NO") << endl;
 
 	for(int i = 0; i < allLayers.size(); i++){
@@ -550,18 +550,6 @@ void CloudsHUDController::update(){
 	scaleOffset = xDominantScale ? 
 		ofVec2f(0, ofGetWindowHeight()- hudBounds.height*scaleAmt)*.5 :
 		ofVec2f(ofGetWindowWidth() - hudBounds.width*scaleAmt, 0)*.5;
-
-  // if(videoPlayer.isLoaded() && !videoPlayer.isPlaying()){
-		//videoFrameCounter--;
-		
-	//  if(videoFrameCounter == 0){
-	//	 cout<<"Retrying to play video "<<endl;
-	//	 videoPlayer.update();
-	//	 videoPlayer.play();
-	// 	 videoFrameCounter = 10;
-	//	}
-	//}
-
 
    if( isPlaying){
 	   	if(! videoPlayer.isPlaying()){
@@ -603,10 +591,8 @@ void CloudsHUDController::updateReset(){
 
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
-	if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) return;
-
 	bool orig = bResetIsHovered;
-	bResetIsHovered = scaledResetRect.inside(args.x,args.y);
+	bResetIsHovered = hudOpenMap[CLOUDS_HUD_LOWER_THIRD] && scaledResetRect.inside(args.x,args.y);
 	if(orig != bResetIsHovered){
 		resetHoverChangedTime = ofGetElapsedTimef();
 	}
@@ -614,21 +600,20 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
 void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
 	
+	bResetIsPressed = false;
+
 	if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) return;
 
-	bResetIsPressed = scaledResetRect.inside(args.x,args.y);
-	if(bResetIsPressed){
+	if(scaledResetRect.inside(args.x,args.y)){
+		bResetIsPressed  = true;
 		cout << "RESET STARTED PRESS";
 	}
 }
 
 void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 
-	if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) return;
-
-	bResetIsClicked = bResetIsPressed &&  scaledResetRect.inside(args.x,args.y);
-	if(bResetIsClicked){
-		//resetHoverChangedTime = ofGetElapsedTimef();		
+	if(hudOpenMap[CLOUDS_HUD_LOWER_THIRD]){ 
+		bResetIsClicked = bResetIsPressed &&  scaledResetRect.inside(args.x,args.y);
 	}
 	bResetIsPressed = false;
 }
