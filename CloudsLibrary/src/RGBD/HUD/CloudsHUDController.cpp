@@ -32,6 +32,8 @@ CloudsHUDController::CloudsHUDController(){
 	bResetIsPressed = false;
 	bResetIsClicked = false;
 
+	isPlaying = false;
+
     scaleAmt = 1.0;
     margin = 40;
     
@@ -265,13 +267,23 @@ void CloudsHUDController::populateLowerThird(const string& firstName, const stri
 }
 
 void CloudsHUDController::populateProjectExample(const string& videoPath, const string& textLeft, const string& textRight, const string& textTop, bool forceOn) {
-    if( videoPlayer.isPlaying() ){
+	if( isPlaying){
         videoPlayer.stop();
     }
     
     if( ofFile(videoPath).exists() ){
-        videoPlayer.loadMovie(videoPath);
-        videoPlayer.play();
+       isPlaying =  videoPlayer.loadMovie(videoPath);
+//		   videoPlayer.update();
+		   videoPlayer.play();
+
+		cout<<"Player loaded? "<<videoPlayer.isLoaded()<<endl;
+		cout<<"Player playing ? "<<videoPlayer.isPlaying()<<endl;
+//		videoFrameCounter = 10;
+//	   }
+//	   else{
+//		   ofLogError()<<"Video :" + videoPath+" not loaded "<<endl;
+//	   }
+        
         
         bSkipAVideoFrame = true;
         
@@ -543,14 +555,29 @@ void CloudsHUDController::update(){
 		ofVec2f(0, ofGetWindowHeight()- hudBounds.height*scaleAmt)*.5 :
 		ofVec2f(ofGetWindowWidth() - hudBounds.width*scaleAmt, 0)*.5;
 
+  // if(videoPlayer.isLoaded() && !videoPlayer.isPlaying()){
+		//videoFrameCounter--;
+		
+	//  if(videoFrameCounter == 0){
+	//	 cout<<"Retrying to play video "<<endl;
+	//	 videoPlayer.update();
+	//	 videoPlayer.play();
+	// 	 videoFrameCounter = 10;
+	//	}
+	//}
 
-    if( videoPlayer.isPlaying() ){
+
+   if( isPlaying){
+	   	if(! videoPlayer.isPlaying()){
+			videoPlayer.play();
+		}
         if( videoPlayer.isFrameNew() ){
             bSkipAVideoFrame = false;
             
             videoBounds.set(0, 0, videoPlayer.getWidth(), videoPlayer.getHeight() );
             videoBounds.scaleTo( svgVideoBounds );
         }
+
         videoPlayer.update();
     }
 	
@@ -836,10 +863,13 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
 	//bIsHudOpen = false;
     
-    if (videoPlayer.isPlaying()) {
+    if (isPlaying) {
+		isPlaying = false;
         videoPlayer.stop();
         videoPlayer.close();
     }
+
+	
     
     // EZ: CODE BELOW IS FOR INSTANT OUT (TEMP!!!)
 	// JG: BARBICAN PUTTIN BACK IN
