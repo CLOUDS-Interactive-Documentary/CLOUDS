@@ -1563,9 +1563,6 @@ void CloudsPlaybackController::showInterlude(){
 	}
 	#endif
 
-	returnToIntro = true;	
-	return;
-
     if(!storyEngine.getPresetIDForInterlude(run, interludePreset, forceCredits)){        
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";
 		returnToIntro = true;	
