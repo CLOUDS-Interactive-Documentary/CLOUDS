@@ -95,6 +95,9 @@ class CloudsHUDController {
     
     ofVec2f getSize(bool bScaled = true);
     ofVec2f getCenter(bool bScaled = true);
+
+	int videoFrameCounter;
+	bool isPlaying;
     
 #ifdef OCULUS_RIFT
     map<CloudsHUDLayerSet, float> layerDistance;

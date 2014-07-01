@@ -10,7 +10,7 @@ void testApp::setup(){
     //ofEnableSmoothing();
 	ofBackground(0);
 
-//	parser.loadFromFiles();
+	parser.loadFromFiles();
 
 	hud.setup();
 }
