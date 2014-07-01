@@ -305,31 +305,18 @@ void CloudsSecondaryDisplayController::update(){
 }
 
 void CloudsSecondaryDisplayController::respondToClip(CloudsClip* clip){
-    animateIn();
+    
+	animateIn();
 	
 	currentClip = clip;
 	currentSpeaker = CloudsSpeaker::speakers[currentClip->person];
 	//if the speaker has no name, there is no speaker
 	cout << "currentSpeaker.lastName: "<< currentSpeaker.lastName << endl;
-	if(currentSpeaker.lastName == "")
-		hasSpeaker = false;
-	else
-		hasSpeaker = true;
+	hasSpeaker = currentSpeaker.firstName != "" && currentSpeaker.lastName != "";
 	
-
-	//TEMP HACK TO REVEAL ALL QUESTIONS!!
-//	if(currentClip.hasQuestion()){
-//		lastQuestion = currentClip.getQuestionForTopic(currentClip.getTopicsWithQuestions()[0]);
-//	}
-//	else{
-//		lastQuestion = "";
-//	}
-	///JG END TEMP HACK
-
 	//string exampleId = m.getArgAsString(4);
-	if(currentClip->hasProjectExample){
-        
-		if(currentClip->projectExample.exampleVideos.size() > 0){
+	if(currentClip->hasProjectExample && currentClip->projectExample.exampleVideos.size() > 0 && ofFile(currentClip->projectExample.exampleVideos[0]).exists()){
+
             currentExample = currentClip->projectExample;
 			playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
 			if(playingMovie){
@@ -348,10 +335,7 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip* clip){
                 hudLabelMap[meshProjectTitle->id]->setText( currentExample.title );
                 hudLabelMap[meshProjectDescription->id]->setText( currentExample.description );
 			}
-            
-		}
-		
-		
+
 	}
 	else{
 		displayMode = "BIO";
@@ -535,7 +519,6 @@ void CloudsSecondaryDisplayController::draw(){
             //d -> a
             meshProjectVideo->mesh.setVertex(6, playerRect.getBottomLeft());
             meshProjectVideo->mesh.setVertex(7, playerRect.getTopLeft());
-            
             
             //playingMovie = archivePlayer.isPlaying();
         }

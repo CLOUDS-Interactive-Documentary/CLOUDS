@@ -63,7 +63,8 @@ class CloudsPortal {
 	ofVec3f hoverPosition;
 	ofVec3f screenPosition; //filled out on update
     bool onScreen;
-    
+    bool clickSelected; //mouse mode only
+
 	bool bLookAtCamera;
 	ofVec3f lookTarget; //billboards the tunnel
 	

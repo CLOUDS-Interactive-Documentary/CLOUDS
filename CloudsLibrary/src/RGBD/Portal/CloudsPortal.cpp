@@ -55,17 +55,11 @@ CloudsPortal::CloudsPortal(){
 	maxHoverTime = 4.; //how long to hover before select
     
     charsPerSecond = 45;
-
-#ifdef MOUSE_INPUT
-//	ofAddListener(ofEvents().mousePressed, this, &CloudsPortal::mousePressed);
-#endif
+	clickSelected = false;
 
 }
 
 CloudsPortal::~CloudsPortal(){
-#ifdef MOUSE_INPUT
-//	ofRemoveListener(ofEvents().mousePressed, this, &CloudsPortal::mousePressed);
-#endif
 }
 
 void CloudsPortal::setup(){
@@ -130,7 +124,15 @@ void CloudsPortal::update(){
 
     if(hovering){
         hoverPercentComplete = ofClamp((ofGetElapsedTimef() - hoverStartTime) / maxHoverTime, 0,1.0);
-        
+		//don't allow portals to time out in mouse mode, only click
+        #ifdef MOUSE_INPUT
+		if(clickSelected){
+			hoverPercentComplete = 1.0;
+		}
+		else{
+			hoverPercentComplete = MIN(.9999,hoverPercentComplete);
+		}
+		#endif
         if(!selected && hoverPercentComplete == 1.0){
             selected = true;
             selectedTime = ofGetElapsedTimef();
@@ -231,6 +233,7 @@ void CloudsPortal::drawOverlay(bool anchorToScreen){
 
 void CloudsPortal::mousePressed(ofMouseEventArgs& args){
 	if(hovering && hoverPercentComplete > .1){
-		hoverStartTime = ofGetElapsedTimef() - maxHoverTime;
+		//hoverStartTime = ofGetElapsedTimef() - maxHoverTime;
+		clickSelected = true;
 	}
 }

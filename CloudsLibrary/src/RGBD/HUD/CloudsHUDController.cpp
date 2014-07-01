@@ -27,10 +27,13 @@ CloudsHUDController::CloudsHUDController(){
 	cuedClipEndTime = 0;
     bVisualSystemDisplayed = false;
     bLowerThirdCued = false;
-	
+
+	resetHoverChangedTime = 0;
 	bResetIsHovered = false;
 	bResetIsPressed = false;
 	bResetIsClicked = false;
+
+	isPlaying = false;
 
     scaleAmt = 1.0;
     margin = 40;
@@ -65,18 +68,23 @@ void CloudsHUDController::setup(){
 	buildLayerSets();
     calculateFontSizes();
 
-#ifdef MOUSE_INPUT
+//#ifdef MOUSE_INPUT
 	ofAddListener(ofEvents().mouseMoved,this, &CloudsHUDController::mouseMoved);
 	ofAddListener(ofEvents().mousePressed,this, &CloudsHUDController::mousePressed);
 	ofAddListener(ofEvents().mouseReleased,this, &CloudsHUDController::mouseReleased);
-#endif
+//#endif
 
 	hudLabelMap["ResetButtonTextBox"]->setText("RESET");
 
 	home.setup();
     
-    cout << "canvas width: " << ofGetWidth() << endl;
-    cout << "cancas height: " << ofGetHeight() << endl;
+	//manually load reset triangle
+	resetTriangle.addVertex(ofVec3f(1366.857,839.217));
+	resetTriangle.addVertex(ofVec3f(1366.857,851.783));
+	resetTriangle.addVertex(ofVec3f(1373.139,845.5));
+
+	resetTriangle.setMode(OF_PRIMITIVE_TRIANGLES);
+	 
 }
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
@@ -265,13 +273,23 @@ void CloudsHUDController::populateLowerThird(const string& firstName, const stri
 }
 
 void CloudsHUDController::populateProjectExample(const string& videoPath, const string& textLeft, const string& textRight, const string& textTop, bool forceOn) {
-    if( videoPlayer.isPlaying() ){
+	if( isPlaying){
         videoPlayer.stop();
     }
     
     if( ofFile(videoPath).exists() ){
-        videoPlayer.loadMovie(videoPath);
-        videoPlayer.play();
+       isPlaying =  videoPlayer.loadMovie(videoPath);
+//		   videoPlayer.update();
+		   videoPlayer.play();
+
+		cout<<"Player loaded? "<<videoPlayer.isLoaded()<<endl;
+		cout<<"Player playing ? "<<videoPlayer.isPlaying()<<endl;
+//		videoFrameCounter = 10;
+//	   }
+//	   else{
+//		   ofLogError()<<"Video :" + videoPath+" not loaded "<<endl;
+//	   }
+        
         
         bSkipAVideoFrame = true;
         
@@ -543,14 +561,29 @@ void CloudsHUDController::update(){
 		ofVec2f(0, ofGetWindowHeight()- hudBounds.height*scaleAmt)*.5 :
 		ofVec2f(ofGetWindowWidth() - hudBounds.width*scaleAmt, 0)*.5;
 
+  // if(videoPlayer.isLoaded() && !videoPlayer.isPlaying()){
+		//videoFrameCounter--;
+		
+	//  if(videoFrameCounter == 0){
+	//	 cout<<"Retrying to play video "<<endl;
+	//	 videoPlayer.update();
+	//	 videoPlayer.play();
+	// 	 videoFrameCounter = 10;
+	//	}
+	//}
 
-    if( videoPlayer.isPlaying() ){
+
+   if( isPlaying){
+	   	if(! videoPlayer.isPlaying()){
+			videoPlayer.play();
+		}
         if( videoPlayer.isFrameNew() ){
             bSkipAVideoFrame = false;
             
             videoBounds.set(0, 0, videoPlayer.getWidth(), videoPlayer.getHeight() );
             videoBounds.scaleTo( svgVideoBounds );
         }
+
         videoPlayer.update();
     }
 	
@@ -579,7 +612,11 @@ void CloudsHUDController::updateReset(){
 }
 
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
+	bool orig = bResetIsHovered;
 	bResetIsHovered = scaledResetRect.inside(args.x,args.y);
+	if(orig != bResetIsHovered){
+		resetHoverChangedTime = ofGetElapsedTimef();
+	}
 }
 
 void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
@@ -591,6 +628,9 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
 
 void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 	bResetIsClicked = bResetIsPressed &&  scaledResetRect.inside(args.x,args.y);
+	if(bResetIsClicked){
+		//resetHoverChangedTime = ofGetElapsedTimef();		
+	}
 	bResetIsPressed = false;
 }
 
@@ -656,9 +696,27 @@ void CloudsHUDController::draw(){
 	if (bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]){
 		home.draw();
     }
-	
+
+	if(bResetIsPressed){
+		ofSetColor(200,30,0,200);
+		resetTriangle.draw();
+	}
+
 	ofPopMatrix();
 	ofPopStyle();
+
+	ofPushStyle();
+	ofEnableAlphaBlending();
+	float resetHoverAlpha = ofMap(ofGetElapsedTimef() - resetHoverChangedTime, 0, .5, 0.0, 1.0, true);
+	if(!bResetIsHovered) resetHoverAlpha = 1.0 - resetHoverAlpha;
+	ofFill();
+	ofSetColor(200,30,0, 255*resetHoverAlpha*.3);
+	ofRect(scaledResetRect);
+	ofNoFill();
+	ofSetColor(200,30,0, 255*resetHoverAlpha*.7);
+	ofRect(scaledResetRect);
+	ofPopStyle();
+
 }
 
 void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
@@ -836,10 +894,13 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
 	//bIsHudOpen = false;
     
-    if (videoPlayer.isPlaying()) {
+    if (isPlaying) {
+		isPlaying = false;
         videoPlayer.stop();
         videoPlayer.close();
     }
+
+	
     
     // EZ: CODE BELOW IS FOR INSTANT OUT (TEMP!!!)
 	// JG: BARBICAN PUTTIN BACK IN
