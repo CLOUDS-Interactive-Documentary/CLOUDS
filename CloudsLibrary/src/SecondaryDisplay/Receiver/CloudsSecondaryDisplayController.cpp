@@ -315,9 +315,8 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip* clip){
 	hasSpeaker = currentSpeaker.firstName != "" && currentSpeaker.lastName != "";
 	
 	//string exampleId = m.getArgAsString(4);
-	if(currentClip->hasProjectExample){
-        
-		if(currentClip->projectExample.exampleVideos.size() > 0){
+	if(currentClip->hasProjectExample && currentClip->projectExample.exampleVideos.size() > 0 && ofFile(currentClip->projectExample.exampleVideos[0]).exists()){
+
             currentExample = currentClip->projectExample;
 			playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
 			if(playingMovie){
@@ -336,8 +335,7 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip* clip){
                 hudLabelMap[meshProjectTitle->id]->setText( currentExample.title );
                 hudLabelMap[meshProjectDescription->id]->setText( currentExample.description );
 			}
-            
-		}
+
 	}
 	else{
 		displayMode = "BIO";
