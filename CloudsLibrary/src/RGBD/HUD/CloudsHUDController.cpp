@@ -26,6 +26,9 @@ CloudsHUDController::CloudsHUDController(){
     bVisualSystemDisplayed = false;
     bLowerThirdCued = false;
 	
+	bResetIsHovered = false;
+	bResetIsClicked = false;
+
     scaleAmt = 1.0;
     margin = 40;
     
@@ -118,13 +121,7 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
 //	cout << "ID's on clip " << clip.name << " and fcp id? " << clip.fcpFileId << endl;
 //	cout << "Clip is " <<  clip.getLinkName() << endl;
 //	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
-	
-#ifdef KINECT_INPUT
-    // EZ: No lower third in Kinect version
-	// JG: adding it back
-//    return;
-#endif
-    
+	    
 	//LOWER THIRD
     //update lower third, but only if the speaker has changed
     if(speaker.fcpID != CloudsSpeaker::speakers[ clip->person ].fcpID){
@@ -183,27 +180,11 @@ void CloudsHUDController::populateMap(const string& leftBox, const string& right
 }
 
 void CloudsHUDController::populateQuestion(const string& question, bool forceOn, bool animate){
-//    cout << "setting text with current value " << question << " " << hudLabelMap["QuestionTextBox"]->getText() << endl;
-    // EZ: Commented this out because populateQuestion should only be called when hover starts
-    // Otherwise it wouldn't work if hovering over the same question twice.
-//	if( ofToUpper(hudLabelMap["QuestionTextBox"]->getText()) == ofToUpper(question) ){
-//		return;
-//	}
-//	else
     if(question == ""){
 		animateOff( CLOUDS_HUD_QUESTION );
 	}
 	else{
-        //JG HACK specific question
-        //Is it possible to truly simulate reality?
-        //What makes a satisfying interaction
-        //How does the network accelerate creativity?
-        
-        //question = "Is it possible to truly simulate reality?";
-        //JG END HACK
-        
 		hudLabelMap["QuestionTextBox"]->setText( question, forceOn );
-		
 		if( forceOn ){
 			if(animate){
 				animateOn( CLOUDS_HUD_QUESTION );
@@ -253,11 +234,13 @@ void CloudsHUDController::populateLowerThird(const string& firstName, const stri
     descLabel->layout->setLineLength(defaultBioBounds.width);
     int descLeftEdge = descLabel->bounds.getLeft();
     
-    if(locationLabel->getRightEdge() > titleLabel->getRightEdge())
+    if(locationLabel->getRightEdge() > titleLabel->getRightEdge()){
         rightEdge = locationLabel->getRightEdge();
-    else
+	}
+	else{
         rightEdge = titleLabel->getRightEdge();
-    
+	}
+
     if(rightEdge + margin >= descLeftEdge){
         descLabel->bounds.x = rightEdge+margin;
         descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
@@ -334,11 +317,14 @@ void CloudsHUDController::buildLayerSets(){
     home.bounds = lowerThirdLayer->svg.getMeshByID("HomeButtonFrame")->bounds;
     home.bounds.scaleFromCenter(1.5);
     
+
     svgVideoBounds = projectExampleLayer->svg.getMeshByID("ProjectExampleFrame")->bounds;
 	videoBounds = svgVideoBounds;
     
     hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
+	hudLabelMap["ResetButtonTextBox"]->setText("RESET");
+	
 //	cout << "HUD BOUNDS " << hudBounds.width << " / " << hudBounds.height << endl;
 //    cout << "SCREEN " << ofGetScreenWidth() << " / " << ofGetScreenHeight() << endl;
 }
@@ -538,9 +524,6 @@ void CloudsHUDController::update(){
     float yScale = ofGetWindowHeight()/hudBounds.height;
     
     scaleAmt = (xScale < yScale) ? xScale : yScale;
-
-    home.hudScale = scaleAmt;
-	home.update();
     
     if( videoPlayer.isPlaying() ){
         if( videoPlayer.isFrameNew() ){
@@ -551,14 +534,18 @@ void CloudsHUDController::update(){
         }
         videoPlayer.update();
     }
-    
-    if( home.wasHomeOpened() ){
-        if( !bIsHudOpen ){
-            animateOn( CLOUDS_HUD_FULL );
-        }else{
-            animateOff();
-        }
-    }
+	
+	/////////////////JG Barbican Disable HOME
+    //home.hudScale = scaleAmt;
+	//home.update();    
+    //if( home.wasHomeOpened() ){
+    //    if( !bIsHudOpen ){
+    //       animateOn( CLOUDS_HUD_FULL );
+    //    }else{
+    //        animateOff();
+    //    }
+    //}
+	/////////////////////////////////
 }
 
 void CloudsHUDController::setHomeEnabled(bool enable){
@@ -579,9 +566,9 @@ bool CloudsHUDController::isHudEnabled(){
 
 void CloudsHUDController::draw(){
     
-    if( !bDrawHud )
+    if( !bDrawHud ){
         return;
-    
+	}
 	
 	ofPushStyle();
 	ofPushMatrix();
@@ -598,8 +585,7 @@ void CloudsHUDController::draw(){
     if( videoPlayer.isPlaying() ){
         ofSetColor(255, 255, 255, 255*0.7);
         if( !bSkipAVideoFrame ){
-			//JG BRING BACK
-            //videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
+			videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
         }
         ofSetColor(255, 255, 255, 255);
     }

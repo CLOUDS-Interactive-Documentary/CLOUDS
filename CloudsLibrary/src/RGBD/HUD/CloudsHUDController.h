@@ -54,6 +54,8 @@ class CloudsHUDController {
     void setHudEnabled(bool enable);
     bool isHudEnabled();
 	
+	bool isResetHit();
+
 	void clearQuestion();
 	
 	void buildLayerSets();
@@ -114,6 +116,8 @@ class CloudsHUDController {
     bool	bActJustStarted;
     bool    bLowerThirdCued;
     bool    bVisualSystemDisplayed;
+	bool	bResetIsHovered;
+	bool	bResetIsClicked;
     float   cuedClipEndTime;
 	
     void drawLayer(CloudsHUDLayerSet layer);

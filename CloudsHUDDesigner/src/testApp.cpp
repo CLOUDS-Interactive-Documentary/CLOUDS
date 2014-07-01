@@ -6,14 +6,12 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	
-	ofToggleFullscreen();
-    ofEnableSmoothing();
-	ofBackground(0,0,0);
+	//ofToggleFullscreen();
+    //ofEnableSmoothing();
+	ofBackground(0);
 
-	parser.loadFromFiles();
-	
+//	parser.loadFromFiles();
 
-	
 	hud.setup();
 }
 
@@ -79,9 +77,7 @@ void testApp::keyPressed(int key){
     if(key == '4'){
 		hud.animateOn(CLOUDS_HUD_PROJECT_EXAMPLE);
 	}
-    
 
-	
     if(key == 'h'){
 		hud.toggleGuis();
 //        storyEngine.toggleGuis();
