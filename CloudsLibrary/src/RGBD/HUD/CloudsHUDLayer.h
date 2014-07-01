@@ -14,6 +14,7 @@
 
 class CloudsHUDLayer
 {
+	static ofShader lineShader;
   public:
 	
 	CloudsHUDLayer();

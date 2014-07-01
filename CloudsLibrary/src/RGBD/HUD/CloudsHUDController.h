@@ -54,6 +54,12 @@ class CloudsHUDController {
     void setHudEnabled(bool enable);
     bool isHudEnabled();
 	
+	//mouse for clicking reset
+	bool isResetHit();
+	void mouseMoved(ofMouseEventArgs& args);
+	void mousePressed(ofMouseEventArgs& args);
+	void mouseReleased(ofMouseEventArgs& args);
+
 	void clearQuestion();
 	
 	void buildLayerSets();
@@ -97,6 +103,7 @@ class CloudsHUDController {
     map<CloudsHUDLayerSet, CloudsHUDBillboard> layerBillboard;
 #endif
 
+
   protected:
 	
     void populateLowerThird(const string& firstName="", const string& lastName="", const string& title="", const string& location="", const string& textbox="", bool forceOn=false );
@@ -106,7 +113,15 @@ class CloudsHUDController {
     
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
-    
+
+	//reset stuff
+	ofRectangle	  scaledResetRect;
+	bool	bResetIsPressed;
+	bool	bResetIsHovered;
+	bool	bResetIsClicked;
+
+	void	updateReset();
+
 	bool	bDrawHome;
     bool    bIsHudOpen;
     bool    bDrawHud;
@@ -145,7 +160,7 @@ class CloudsHUDController {
     map<string, CloudsHUDLabel*>    hudLabelMap;
     ofRectangle hudBounds;
     float scaleAmt;
-    
+    ofVec2f scaleOffset;
     int margin;
     
     ofRectangle             defaultBioBounds;

@@ -8,6 +8,9 @@
 
 #include "CloudsHUDLayer.h"
 #include "ofxXmlSettings.h"
+#include "CloudsGlobal.h"
+
+ofShader CloudsHUDLayer::lineShader;
 
 CloudsHUDLayer::CloudsHUDLayer(){
 	startTime = 0;
@@ -120,15 +123,22 @@ void CloudsHUDLayer::draw(){
 	
 	ofPushStyle();
 	ofSetColor(255, 0, 0, 10);
-	
-	glEnable(GL_SCISSOR_TEST);
-	//invert and flip
-	float screenHeight = ofGetHeight();
-	glScissor(drawRect.x, screenHeight - drawRect.y - drawRect.height,
-			  drawRect.width*2., drawRect.height);
-	svg.draw();
-    glDisable(GL_SCISSOR_TEST);
+	if(!lineShader.isLoaded()){
+		lineShader.load(GetCloudsDataPath() + "shaders/secondaryDisplay");
+	}
 
+	lineShader.begin();
+	lineShader.setUniform1f("alphaAmt", percentComplete.x);
+
+//	glEnable(GL_SCISSOR_TEST);
+	//invert and flip
+//	float screenHeight = ofGetHeight();
+//	glScissor(drawRect.x, screenHeight - drawRect.y - drawRect.height,
+//			  drawRect.width*2., drawRect.height);
+	svg.draw();
+
+	lineShader.end();
+//    glDisable(GL_SCISSOR_TEST);
 	ofPopStyle();
 
 }

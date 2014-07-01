@@ -90,11 +90,7 @@ void CloudsHUDLabel::draw(){
     }
 }
 
-//<<<<<<< HEAD
 void CloudsHUDLabel::setText(const string& newText, bool forceOn){
-//=======
-//void CloudsHUDLabel::setText(string newText, bool forceOn){
-//>>>>>>> master
     text = newText;
     
     if(caps)
