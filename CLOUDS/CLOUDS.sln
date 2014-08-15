@@ -12,7 +12,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CLOUDS", "CLOUDS.vcxproj", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxCvLib", "..\..\..\addons\ofxCv\ofxCvLib\ofxCvLib.vcxproj", "{FAA73572-FD12-41FA-8FBE-CB47482D2D87}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxOculusRiftLib", "..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRiftLib.vcxproj", "{06DF4A39-7102-462B-8F20-FC26E9A93826}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxOculusDK2Lib", "..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2Lib.vcxproj", "{06DF4A39-7102-462B-8F20-FC26E9A93826}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -20,7 +20,7 @@
 #endif
 
 #ifdef OCULUS_RIFT
-#include "ofxOculusRift.h"
+#include "ofxOculusDK2.h"
 	#ifdef CLOUDS_HUD
 		#include "CloudsHUDController.h"
 	#endif
@@ -79,7 +79,7 @@ class CloudsVisualSystem {
 	static ofSoundPlayer* getSelectLow();
 
 #ifdef OCULUS_RIFT
-	static ofxOculusRift& getOculusRift();
+	static ofxOculusDK2& getOculusRift();
 #endif
 	ofFbo& getSharedRenderTarget();
 	ofImage& getCursor();
