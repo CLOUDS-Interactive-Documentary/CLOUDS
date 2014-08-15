@@ -92,7 +92,6 @@
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
-    <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Oculus|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -101,7 +100,6 @@
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
-    <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -110,7 +108,6 @@
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
-    <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Oculus|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -119,7 +116,7 @@
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
-    <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
+    <Import Project="..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -137,7 +134,6 @@
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
-    <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -146,7 +142,6 @@
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
-    <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Oculus|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -155,7 +150,7 @@
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
-    <Import Project="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRift.props" />
+    <Import Project="..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -1345,7 +1340,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     <ProjectReference Include="..\..\..\addons\ofxCv\ofxCvLib\ofxCvLib.vcxproj">
       <Project>{faa73572-fd12-41fa-8fbe-cb47482d2d87}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\addons\ofxOculusRift\ofxOculusRiftLib\ofxOculusRiftLib.vcxproj">
+    <ProjectReference Include="..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2Lib.vcxproj">
       <Project>{06df4a39-7102-462b-8f20-fc26e9a93826}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj">

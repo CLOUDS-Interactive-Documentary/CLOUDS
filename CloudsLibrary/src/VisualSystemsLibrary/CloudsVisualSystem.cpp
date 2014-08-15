@@ -174,8 +174,8 @@ void CloudsVisualSystem::get2dMesh(ofMesh& mesh, float width, float height){
 
 #ifdef OCULUS_RIFT
 #include "OVR.h"
-static ofxOculusRift oculusRift;
-ofxOculusRift& CloudsVisualSystem::getOculusRift(){
+static ofxOculusDK2 oculusRift;
+ofxOculusDK2& CloudsVisualSystem::getOculusRift(){
 	if(!oculusRift.isSetup()){
 
 		ofFbo::Settings renderSettings;

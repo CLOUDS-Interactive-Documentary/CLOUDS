@@ -11,11 +11,6 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-//#include "Flocking.h"
-//#include "PathFollowing.h"
-//#include "ObstacleAvoidance.h"
-//#include "PursuitAndEvade.h"
-
 class ofxOpenSteerPlugin;
 
 //TODO: rename this to your own visual system
