@@ -143,7 +143,13 @@ void CloudsVisualSystemYellowTail::selfEnd(){
 void CloudsVisualSystemYellowTail::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus, float fadeOut){
     
 #ifdef OCULUS_RIFT
+<<<<<<< HEAD
     return;    
+=======
+    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
+    return;
+    
+>>>>>>> parent of 5a0e402... first stab at new reset portal in Oculus
 #else
     ofPushStyle();
     

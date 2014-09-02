@@ -93,8 +93,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
     bool isQuestionSelectedAndClipDone();
 	bool isQuestionSelected();
-	bool isResetSelected();
-
     CloudsPortal* getSelectedQuestion();
     string getQuestionText();
     vector<QuestionQueue>& getQuestionQueue();
@@ -132,8 +130,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofNode transitionInStart;
 	ofNode transitionOutLeft;
 	ofNode transitionOutRight;
-	ofNode transitionOutReset;
-
 	ofVec3f transitionEndPosition;
 	ofQuaternion transitionEndRotation;
 	
@@ -305,13 +301,12 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float minDistanceToQuestion;
 	bool bPortalDebugOn;
 	ofVec3f portalBaseHover;
-	ofVec3f resetHoverPosition;
 
 	CloudsPortal leftPortal;
 	CloudsPortal rightPortal;
 	CloudsPortal* portalToClear; //clears when started
-	CloudsPortal resetPortal;
 	string questionText;
+
 	
 	ofxFTGLFont questionFont;
 	int questionFontSize;
