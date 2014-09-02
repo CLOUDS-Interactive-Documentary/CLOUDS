@@ -19,9 +19,9 @@ ffflink = http://www.famfamfam.com
 abtwin = About %appname%
 inifile := A_ScriptDir "\" appname ".ini"
 ;************* Custom tray menu *************
-notray = %1%
-;if ! notray
-;	Menu, Tray, Icon, %iconlocal%
+notray = 1
+if ! notray
+	Menu, Tray, Icon, %iconlocal%
 Menu, Tray, NoStandard
 Menu, Tray, Add, Settings, options
 Menu, Tray, Default, Settings
@@ -77,7 +77,8 @@ if s
 	SetTimer, %s%, Off
 SysGet, r, Monitor, %m%
 side := ( m = 1) ? rRight : rLeft
-s := ( m = 1) ? "t1" : "t2"
+;s := ( m = 1) ? "t1" : "t2"
+s := "t1"
 off := (m = 1) ? -5 : 5
 if t
 	gosub ButtonDisable
@@ -90,9 +91,9 @@ return
 
 t1:
 MouseGetPos, x, y
-if (x > side && !pass)
+if (x > 1920 && !pass)
 	gosub chk
-else if (x < side && pass)
+else if (x < 1920 && pass)
 	pass = 0
 return
 
@@ -108,7 +109,7 @@ chk:
 if GetKeyState("Ctrl", "P")
 	pass = 1
 else
-	DllCall("SetCursorPos", Int, side+off, Int, y)
+	DllCall("SetCursorPos", Int, 1915, Int, y)
 return
 
 ^!F9::
