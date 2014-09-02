@@ -40,7 +40,7 @@ class CloudsVisualSystemYellowTail : public CloudsVisualSystem {
 	void selfEnd();
 	void selfSetDefaults();
     
-    void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus);
+    void selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus, float fadeOut);
 	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);

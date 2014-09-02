@@ -140,12 +140,10 @@ void CloudsVisualSystemYellowTail::selfEnd(){
 	clearGestures();
 }
 
-void CloudsVisualSystemYellowTail::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus){
+void CloudsVisualSystemYellowTail::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus, float fadeOut){
     
 #ifdef OCULUS_RIFT
-    //GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
-    return;
-    
+    return;    
 #else
     ofPushStyle();
     
@@ -168,9 +166,9 @@ void CloudsVisualSystemYellowTail::selfDrawCursor(ofVec3f& pos, bool bDragged, C
     ofSetLineWidth(2);
     ofNoFill();
     if (bDragged)
-        ofSetColor(62, 69, 213, 192 * focus);
+        ofSetColor(62, 69, 213, 192 * focus * fadeOut);
     else  // !bDragged
-        ofSetColor(255, 255, 255, 192 * focus);
+        ofSetColor(255, 255, 255, 192 * focus * fadeOut);
     ofCircle(pos, cursorSize);
     
     ofPopStyle();

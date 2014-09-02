@@ -86,6 +86,8 @@ void CloudsIntroSequence::selfSetDefaults(){
 	
 	timeSinceLastPrompt = 0;
 	
+	cursorAlpha = 1.0;
+
 	questionChannels.resize(4);
 	channelPauseTime.resize(4);
 	
@@ -783,12 +785,7 @@ void CloudsIntroSequence::drawTunnel(){
 	tunnelShader.setUniform1f("maxPointSize", pointSize.max);
 	tunnelShader.setUniform1f("minDistance", distanceRange.min);
 	
-	if(bUseOculusRift){
-		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 120.);
-	}
-	else{
-		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 120.);
-	}
+	tunnelShader.setUniform1f("maxDistance", distanceRange.max + MAX(1.0 - cursorAlpha, currentTitleOpacity) * 120.);
 	
 	tunnelShader.setUniform1f("cameraZ", warpCamera.getPosition().z);
 	tunnelShader.setUniform1f("tunnelDepth", tunnelMax.z);
@@ -1058,14 +1055,13 @@ void CloudsIntroSequence::drawIntroNodes(){
 		if(!introNodes[i]->finished){
 			break;
 		}
-
 	}
 	
 	ofPopStyle();	
 }
 
 void CloudsIntroSequence::drawCursors(){
-	float cursorAlpha = 1.0;
+	cursorAlpha = 1.0;
 	if(!startedOnclick){
 		cursorAlpha = ofMap(clickToBeginAlpha, 0, .3, 0.0, 1.0, true);
 	}
