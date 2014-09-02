@@ -143,7 +143,7 @@ void CloudsVisualSystemYellowTail::selfEnd(){
 void CloudsVisualSystemYellowTail::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus){
     
 #ifdef OCULUS_RIFT
-    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
+    //GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus);
     return;
     
 #else

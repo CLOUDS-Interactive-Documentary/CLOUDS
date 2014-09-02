@@ -667,11 +667,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	// RGBD SYSTEM
     if(currentVisualSystem == rgbdVisualSystem){
         if(!transitionController.isTransitioning() && !bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
-            
             bQuestionAsked = true;
             run.questionsAsked++;
             transitionController.transitionWithQuestion(2.0, 0.1);
-			
         }
     }
 
@@ -702,11 +700,15 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		hud.update();
 
 		if(currentVisualSystem == rgbdVisualSystem){
-			if(hud.isResetHit() && !userReset){
+			if( (hud.isResetHit() || rgbdVisualSystem->isResetSelected() ) && !userReset){
 				userReset = true;
 			    returnToIntro = true;
+#ifdef OCULUS_RIFT
+				transitionController.transitionWithQuestion(2.0, 0.1);
+#else
 		        CloudsVisualSystem::getRGBDVideoPlayer().stop();
 	            currentAct->getTimeline().stop();
+#endif
 			}
 		}
 	}
@@ -754,16 +756,10 @@ void CloudsPlaybackController::updateTransition(){
         switch (transitionController.getCurrentState()) {
                 
             case TRANSITION_INTERVIEW_OUT:
-				if(bQuestionAsked){
+				if(bQuestionAsked || rgbdVisualSystem->isResetSelected()){
                     currentAct->getTimeline().stop();
 					rgbdVisualSystem->startTransitionOut( CloudsVisualSystem::QUESTION );
 				}
-				//else if(userReset){
-				//	userReset = false;
-				//	currentAct->getTimeline().stop();
-				//	clearAct();
-					//rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
-				//}
 				else{
                     rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
 				}
@@ -903,7 +899,6 @@ void CloudsPlaybackController::updateTransition(){
 					
                     if(showingClusterMapNavigation){
                         showingClusterMapNavigation = false;
-                        //rgbdVisualSystem->removeQuestionFromQueue(clusterMap->getSelectedQuestion()->clip);
 						vector<CloudsClip*>& screeningQueue = storyEngine.screeningQuestionClips;
 						CloudsClip* interludeExitClip = clusterMap->getSelectedQuestion()->clip;
 						if(ofContains(screeningQueue,interludeExitClip)){
