@@ -4,8 +4,8 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	ofSetVerticalSync(true);
-	ofSetFrameRate(60);
+//	ofSetVerticalSync(true);
+	//8ofSetFrameRate(60);
 	ofBackground(0);
 //	ofToggleFullscreen();
 
@@ -21,6 +21,9 @@ void testApp::setup(){
 #else
 	loader.loadImage("SCREEN_BG.png");
 #endif
+
+	ofSetWindowShape(1080*2,1920);
+	ofSetWindowPosition(0,0);
 
 }
 

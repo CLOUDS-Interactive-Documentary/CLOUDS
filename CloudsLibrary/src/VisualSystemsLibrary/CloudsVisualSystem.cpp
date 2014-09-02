@@ -175,6 +175,7 @@ void CloudsVisualSystem::get2dMesh(ofMesh& mesh, float width, float height){
 #ifdef OCULUS_RIFT
 #include "OVR.h"
 static ofxOculusDK2 oculusRift;
+static ofFbo oculusTarget;
 ofxOculusDK2& CloudsVisualSystem::getOculusRift(){
 	if(!oculusRift.isSetup()){
 
@@ -187,6 +188,9 @@ ofxOculusDK2& CloudsVisualSystem::getOculusRift(){
         checkOpenGLError("PRE SETUP OCULUS");
 		oculusRift.setup(renderSettings);
         checkOpenGLError("POST SETUP OCULUS");
+
+		//JG OCULUS TARGET HACK
+		oculusTarget.allocate(1920,1080,GL_RGB);
 	}
 
 	return oculusRift;
@@ -3880,9 +3884,43 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	ofDisableLighting();
 
 #ifdef OCULUS_RIFT
+	oculusTarget.begin();
     oculusRift.draw();
-#else
+	oculusTarget.end();
+	
+	ofMesh oculusTargetMesh;
+	oculusTargetMesh.addVertex(ofVec3f(0,1920,0));
+	oculusTargetMesh.addTexCoord(ofVec2f(0,1080));
 
+	oculusTargetMesh.addVertex(ofVec3f(0,0,0));
+	oculusTargetMesh.addTexCoord(ofVec2f(1920,1080));
+
+	oculusTargetMesh.addVertex(ofVec3f(1080,1920,0));
+	oculusTargetMesh.addTexCoord(ofVec2f(0,0));
+
+	oculusTargetMesh.addVertex(ofVec3f(1080,0,0));
+	oculusTargetMesh.addTexCoord(ofVec2f(1920,0));
+
+	
+	oculusTargetMesh.addVertex(ofVec3f(1080+0,1920,0));
+	oculusTargetMesh.addTexCoord(ofVec2f(0,1080));
+
+	oculusTargetMesh.addVertex(ofVec3f(1080+0,0,0));
+	oculusTargetMesh.addTexCoord(ofVec2f(1920,1080));
+
+	oculusTargetMesh.addVertex(ofVec3f(1080+1080,1920,0));
+	oculusTargetMesh.addTexCoord(ofVec2f(0,0));
+
+	oculusTargetMesh.addVertex(ofVec3f(1080+1080,0,0));
+	oculusTargetMesh.addTexCoord(ofVec2f(1920,0));
+
+	oculusTargetMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+
+	oculusTarget.getTextureReference().bind();
+	oculusTargetMesh.draw();
+	oculusTarget.getTextureReference().unbind();
+
+#else
     int offset;
     if(bEnablePostFX){
         cloudsPostShader.begin();
