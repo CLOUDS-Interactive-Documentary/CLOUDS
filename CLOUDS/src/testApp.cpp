@@ -7,7 +7,7 @@ void testApp::setup(){
 //	ofSetVerticalSync(true);
 	//8ofSetFrameRate(60);
 	ofBackground(0);
-//	ofToggleFullscreen();
+	ofToggleFullscreen();
 
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();

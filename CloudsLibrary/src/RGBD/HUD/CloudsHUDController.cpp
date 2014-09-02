@@ -861,7 +861,9 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
         hudLabelMap["BylineTopicTextBoxTop"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxBottom"]->animateIn( true );
         hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
+#ifndef OCULUS_RIFT
 		hudLabelMap["ResetButtonTextBox"]->animateIn( true );
+#endif
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
 //JG TEMP
@@ -948,7 +950,9 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
         hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
         hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
+#ifndef OCULUS_RIFT
         hudLabelMap["ResetButtonTextBox"]->animateOut();
+#endif
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
         hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();
