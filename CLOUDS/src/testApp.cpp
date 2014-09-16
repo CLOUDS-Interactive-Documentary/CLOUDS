@@ -18,8 +18,7 @@ void testApp::setup(){
 	shouldSetupPlayer = false;
 #ifdef OCULUS_RIFT
 //	loader.loadImage("OCULUS_BG_HD.png");0
-		loader.loadImage("CLOUDS_HD_BG_DOUBLE.jpg");
-
+	loader.loadImage("CLOUDS_HD_BG_DOUBLE.jpg");
 #else
 	loader.loadImage("SCREEN_BG.png");
 #endif
