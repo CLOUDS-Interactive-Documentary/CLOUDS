@@ -1469,7 +1469,7 @@ bool CloudsStoryEngine::historyContainsClip(CloudsClip* m, vector<CloudsClip*>& 
 int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip*>& history){
     int occurrences = 0;
     int startPoint = history.size() - MIN(stepsBack, history.size() );
-    for(int i = startPoint; i < history.size()-1; i++){ // -1 because the current clip is part of history
+    for(int i = startPoint; i < int(history.size())-1; i++){ // -1 because the current clip is part of history
         if(history[i]->person == person){
             occurrences++;
         }

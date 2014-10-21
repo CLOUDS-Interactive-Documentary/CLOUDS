@@ -153,8 +153,8 @@ void CloudsAct::populateTime(){
 	introCue.mixLevel = 2;
 	introCue.dichotomies = dichotomiesMap[startClip->getLinkName()];
 	//if the first system has sound...
-    if(visualSystems[0].hasSound() &&
-	   //visualSystems.size() > 0 &&
+    if(visualSystems.size() > 0 &&
+       visualSystems[0].hasSound() &&
        visualSystemItems[visualSystems[0].getID()].startTime == 0)
     {
         introCue.startTime = visualSystemItems[ visualSystems[0].getID() ].endTime;
@@ -560,6 +560,8 @@ void CloudsAct::addQuestion(CloudsClip* clip, string topic, float startTime){
     item.endTime = startTime;
     incrementalQuesitonTime += 1;
 	
+    questionClips.push_back( make_pair(clip, topic));
+    
     questionsMap[item.key] = clip;
     actItems.push_back(item);
 }
@@ -574,6 +576,10 @@ void CloudsAct::addSilenceRange(ofRange range){
 
 vector<CloudsClip*>& CloudsAct::getAllClips(){
     return clips;
+}
+
+vector< pair<CloudsClip*, string> >& CloudsAct::getAllQuestions(){
+    return questionClips;
 }
 
 string CloudsAct::getTopicForClip(CloudsClip* clip){
