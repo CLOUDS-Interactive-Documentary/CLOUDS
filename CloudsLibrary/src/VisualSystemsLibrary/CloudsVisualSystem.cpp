@@ -3886,10 +3886,11 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 #ifdef OCULUS_RIFT
 
 	//THIS WAY TO JUST DRAW
-	//oculusRift.draw();
+	oculusRift.draw();
 
 	
 	//THIS WAY TO DRAW FOR FANCY DK2 MIRRORING
+	/*
 	oculusTarget.begin();
 	oculusRift.draw();
 	oculusTarget.end();
@@ -3925,7 +3926,7 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	oculusTarget.getTextureReference().bind();
 	oculusTargetMesh.draw();
 	oculusTarget.getTextureReference().unbind();
-	
+	*/
 
 #else
     int offset;

@@ -8,6 +8,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTimelineLib", "..\..\..\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSTunnelDrawing", "VSTunnelDrawing.vcxproj", "{7FD42DF7-442E-479A-BA76-D0022F99702A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxOculusDK2Lib", "..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2Lib.vcxproj", "{06DF4A39-7102-462B-8F20-FC26E9A93826}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_Oculus|Win32 = Debug_Oculus|Win32
@@ -84,6 +86,22 @@ Global
 		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|Win32.Build.0 = Release|Win32
 		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|x64.ActiveCfg = Release|x64
 		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|x64.Build.0 = Release|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug_Oculus|Win32.ActiveCfg = Debug|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug_Oculus|Win32.Build.0 = Debug|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug_Oculus|x64.ActiveCfg = Debug|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug_Oculus|x64.Build.0 = Debug|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|Win32.ActiveCfg = Debug|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|Win32.Build.0 = Debug|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|x64.ActiveCfg = Debug|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|x64.Build.0 = Debug|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release_Oculus|Win32.ActiveCfg = Release|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release_Oculus|Win32.Build.0 = Release|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release_Oculus|x64.ActiveCfg = Release|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release_Oculus|x64.Build.0 = Release|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|Win32.ActiveCfg = Release|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|Win32.Build.0 = Release|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|x64.ActiveCfg = Release|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
