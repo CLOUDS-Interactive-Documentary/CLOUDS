@@ -3886,16 +3886,46 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 #ifdef OCULUS_RIFT
 
 	//THIS WAY TO JUST DRAW
-	oculusRift.draw();
+	//oculusRift.draw();
 
 	
 	//THIS WAY TO DRAW FOR FANCY DK2 MIRRORING
-	/*
+	
 	oculusTarget.begin();
 	oculusRift.draw();
 	oculusTarget.end();
 	
-	ofMesh oculusTargetMesh;
+	ofMesh oculusTargetMesh1;
+	oculusTargetMesh1.addVertex(ofVec3f(0,0,0));
+	oculusTargetMesh1.addTexCoord(ofVec2f(0,1080));
+
+	oculusTargetMesh1.addVertex(ofVec3f(1920,0,0));
+	oculusTargetMesh1.addTexCoord(ofVec2f(1920,1080));
+
+	oculusTargetMesh1.addVertex(ofVec3f(0,1080,0));
+	oculusTargetMesh1.addTexCoord(ofVec2f(0,0));
+
+	oculusTargetMesh1.addVertex(ofVec3f(1920,1080,0));
+	oculusTargetMesh1.addTexCoord(ofVec2f(1920,0));
+
+	/////////////////////////////////////////
+	/////////////////////////////////////////
+	ofMesh oculusTargetMesh2;
+
+	oculusTargetMesh2.addVertex(ofVec3f(1920+1080,0,0));
+	oculusTargetMesh2.addTexCoord(ofVec2f(0,1080));
+
+	oculusTargetMesh2.addVertex(ofVec3f(1920+1080,1920,0));
+	oculusTargetMesh2.addTexCoord(ofVec2f(1920,1080));
+
+	oculusTargetMesh2.addVertex(ofVec3f(1920,0,0));
+	oculusTargetMesh2.addTexCoord(ofVec2f(0,0));
+
+	oculusTargetMesh2.addVertex(ofVec3f(1920,1920,0));
+	oculusTargetMesh2.addTexCoord(ofVec2f(1920,0));
+
+
+	/*
 	oculusTargetMesh.addVertex(ofVec3f(0,1920,0));
 	oculusTargetMesh.addTexCoord(ofVec2f(0,1080));
 
@@ -3920,13 +3950,16 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 
 	oculusTargetMesh.addVertex(ofVec3f(1080+1080,0,0));
 	oculusTargetMesh.addTexCoord(ofVec2f(1920,0));
+	*/
 
-	oculusTargetMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	oculusTargetMesh1.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	oculusTargetMesh2.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 
 	oculusTarget.getTextureReference().bind();
-	oculusTargetMesh.draw();
+	oculusTargetMesh1.draw();
+	oculusTargetMesh2.draw();
 	oculusTarget.getTextureReference().unbind();
-	*/
+	
 
 #else
     int offset;
