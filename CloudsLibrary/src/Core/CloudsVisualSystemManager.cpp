@@ -502,6 +502,7 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset->grade = keywordXml.getValue("grade", "");
 		preset->enabledScreen = keywordXml.getValue("enabled", true );
 		preset->enabledOculus = keywordXml.getValue("oculus", false );
+        preset->bIsHeavy      = keywordXml.getValue("heavy", false );
         preset->soundAllowVO = keywordXml.getValue("sound_allow_vo", false );
         preset->soundExcludeVO = keywordXml.getValue("sound_exclude_vo", false );
         preset->interlude = keywordXml.getValue("interlude", false );
@@ -544,6 +545,7 @@ void CloudsVisualSystemManager::addDefaultPresetForSystem(const string& systemNa
 	newPreset.presetName = "+New Preset";
     newPreset.enabledScreen = false;
 	newPreset.enabledOculus = false;
+    newPreset.bIsHeavy      = false;
 //	nameToPresets[newPreset.systemName].push_back(newPreset);
 //    nameToPresetsIndex[newPreset.systemName].push_back(presets.size());
 	presets.push_back(newPreset);
@@ -646,6 +648,7 @@ void CloudsVisualSystemManager::savePresets(){
 		keywordXml.addValue("grade", preset.grade);
 		keywordXml.addValue("enabled", preset.enabledScreen);
 		keywordXml.addValue("oculus", preset.enabledOculus);
+        keywordXml.addValue("heavy", preset.bIsHeavy);
 		keywordXml.addValue("sound_exclude_vo", preset.soundExcludeVO);
         keywordXml.addValue("sound_allow_vo", preset.soundAllowVO);
         keywordXml.addValue("interlude", preset.interlude);

@@ -18,16 +18,15 @@ void testApp::setup(){
     vendor = reinterpret_cast<const char*>(glGetString(GL_VENDOR));
     card = reinterpret_cast<const char*>(glGetString(GL_RENDERER));
     
-	bEnableSpeedLog = true;
-    
-    vsFrameCount = 0;
+    bEnableSpeedLog = true;
     prevLoadedSpeedLog = false;
+    vsFrameCount = 0;
     vsLoadTime = 0.;
     vsStartTime = 0.;
     vsAvgFPS = 0.;
     vsLastSampleFrame = 0;
-	vsFPSLastSampleTime = 0.;
-
+    vsFPSLastSampleTime = 0.;
+    
 #ifdef OCULUS_RIFT
     
     speedLogFilenameXML = "clouds_vs_speed_log.oculus."+replaceAll(card, " ", "_")+".xml";
@@ -255,8 +254,6 @@ void testApp::writeSpeedLog(){
     
     for( auto & _vs : vs ){
         
-        out.append(_vs.name+",");
-        
         xml.addTag("visual_system");
         xml.addAttribute("visual_system", "name", _vs.name, vs_ind );
         xml.pushTag("visual_system", vs_ind);
@@ -264,7 +261,7 @@ void testApp::writeSpeedLog(){
         int p_ind = 0;
         for( auto& p : _vs.presets ){
             
-            out.append(p.name+","+ofToString(p.loadtime)+","+ofToString(p.fps)+"\n");
+            out.append(_vs.name+","+p.name+","+ofToString(p.loadtime)+","+ofToString(p.fps)+"\n");
             
             xml.addTag("preset");
             xml.addAttribute("preset", "name", p.name, p_ind );
@@ -310,11 +307,10 @@ void testApp::toSpeedLog( const std::string& vs_name, const std::string& preset,
                 p.name = preset;
                 p.loadtime = loadtime;
                 p.fps = avg_fps;
-                
                 _vs.presets.push_back(p);
-                foundVS = true;
             }
             
+            foundVS = true;
             break;
         }
     }
