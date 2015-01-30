@@ -9,7 +9,7 @@ void testApp::setup(){
     ofEnableSmoothing();
 	
 	currentAct = NULL;
-	rebuildAct = false;
+	//rebuildAct = false;
 	
 	parser.loadFromFiles();
 	parser.loadMediaAssets();
@@ -21,28 +21,32 @@ void testApp::setup(){
 	
 	storyEngine.setup();
     
-    vector<CloudsClip*> clips = storyEngine.getStartingQuestions();
-    random_shuffle(clips.begin(), clips.end());
-    
-    for(int i = 0; i < clips.size(); i++){
+    for(int run = 0; run < 10; run++){
+        vector<CloudsClip*> clips = storyEngine.getStartingQuestions();
+        random_shuffle(clips.begin(), clips.end());
         
-        CloudsClip* clip = clips[i];
-        string topic = clip->getAllQuestionTopicPairs().begin()->first;
-        CloudsRun run;
-        exploreAct(clip,topic,true,run,0,10);
+        for(int i = 0; i < clips.size(); i++){
+            
+            CloudsClip* clip = clips[i];
+            string topic = clip->getAllQuestionTopicPairs().begin()->first;
+            CloudsRun run;
+            exploreAct(clip,topic,true,run,0,10);
 
+        }
+        
     }
     
-    set<CloudsClip*>::iterator it;
+    map<CloudsClip*,int>::iterator it;
     int clipid = 0;
     for(it = traversedClips.begin(); it != traversedClips.end(); it++){
-        cout << clipid++ << "/" << traversedClips.size() << " " << (*it)->getLinkName() << endl;
+        cout << "(" << it->second << ") " << clipid++ << "/" << traversedClips.size() << " " << it->first->getLinkName() << endl;
     }
     
+    cout << "INCLUDED CLIPS" << endl;
     ofBuffer shellscript;
     shellscript.append("#!/bin/bash\n");
     for(it = traversedClips.begin(); it != traversedClips.end(); it++){
-        CloudsClip* clip = *it;
+        CloudsClip* clip = it->first;
         if(clip->hasMediaAsset){
             string mediaFile = ofToDataPath(clip->combinedVideoPath,true);
             string xmlFile   = ofToDataPath(clip->combinedCalibrationXMLPath,true);
@@ -50,13 +54,21 @@ void testApp::setup(){
             
             shellscript.append(string("echo \"copying ") + ofFilePath::getFileName(mediaFile) + "\"\n" );
             shellscript.append(string("cp \"") + mediaFile + "\" \"" + containingFolder + "__keepers/\"\n" );
-            shellscript.append(string("cp \"") + xmlFile   + "\" \"" + containingFolder + "__keepers/\"\n\n"  );
+            shellscript.append(string("cp \"") + xmlFile   + "\" \"" + containingFolder + "__keepers/\"\n\n");
+            
+            //cout << clip->getLinkName()<<endl;
         }
     }
     
     ofBufferToFile(GetCloudsDataPath()+"copyscript.sh", shellscript);
     
-	//ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
+    cout << "EXCLUDED CLIPS" << endl;
+    for(int i = 0; i < parser.getAllClips().size(); i++){
+        if(traversedClips.find(parser.getAllClips()[i]) == traversedClips.end()){
+            cout << parser.getAllClips()[i]->getLinkName() << endl;
+        }
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -67,11 +79,15 @@ void testApp::exploreAct(CloudsClip* clip, string topic, bool playSeed, CloudsRu
     
     if(topic == ""){
         ofLogError("TOPIC IS BLANK");
+        return;
     }
     
     CloudsAct* act = storyEngine.buildAct(storyEngine.runTest, clip, topic, playSeed);
-    copy( act->getAllClips().begin(), act->getAllClips().end(), inserter( traversedClips, traversedClips.end() ) );
-
+    //copy( act->getAllClips().begin(), act->getAllClips().end(), inserter( traversedClips, traversedClips.end() ) );
+    for(int i = 0; i < act->getAllClips().size(); i++){
+        traversedClips[act->getAllClips()[i]]++;
+    }
+    
     for(int c = 0; c < act->getAllQuestions().size(); c++){
         if(traversedClips.find(act->getAllQuestions()[c].first) == traversedClips.end()){
             cout << "TAKING QUESTION  " << act->getAllQuestions()[c].first->getLinkName() << " with TOPIC " <<  act->getAllQuestions()[c].second << " DEPTTH " << depth+1 << "/" << maxDepth << endl;
@@ -89,123 +105,23 @@ void testApp::exploreAct(CloudsClip* clip, string topic, bool playSeed, CloudsRu
 }
 
 //--------------------------------------------------------------
-void testApp::actCreated(CloudsActEventArgs& args){
-	
-	if(currentAct != NULL){
-		currentAct->unregisterEvents(this);
-		delete currentAct;
-	}
-
-	currentAct = args.act;
-	currentAct->registerEvents(this);
-	currentAct->play();
-    currentAct->getTimeline().enableEvents();
-}
-
-//--------------------------------------------------------------
-void testApp::actBegan(CloudsActEventArgs& args){
-}
-
-//--------------------------------------------------------------
-void testApp::actEnded(CloudsActEventArgs& args){
-	
-}
-
-//--------------------------------------------------------------
-void testApp::clipBegan(CloudsClipEventArgs& args){
-	
-}
-
-//--------------------------------------------------------------
-void testApp::visualSystemBegan(CloudsVisualSystemEventArgs& args){
-	
-}
-
-//--------------------------------------------------------------
-void testApp::visualSystemEnded(CloudsVisualSystemEventArgs& args){
-	
-}
-
-//--------------------------------------------------------------
-void testApp::topicChanged(CloudsTopicEventArgs& newTopic){
-	
-}
-
-void testApp::questionProposed(CloudsQuestionEventArgs& args){
-    
-}
-
-void testApp::questionSelected(CloudsQuestionEventArgs& args){
-    
-}
-
-void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
-    
-}
-//--------------------------------------------------------------
 void testApp::update(){
 
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    if(currentAct != NULL){
-		currentAct->drawDebug();
-	}
+	
 }
 
 //--------------------------------------------------------------
 void testApp::exit(){
-    storyEngine.saveGuiSettings();
-}
-
-//--------------------------------------------------------------
-void testApp::guiEvent(ofxUIEventArgs &e)
-{
-    string name = e.widget->getName();
-    ofxUIButton* b = (ofxUIButton*) e.widget;
-    if(name == "BUILD ACT" &&  b->getValue() ){
-        rebuildAct = true;
-    }
 
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    
-    if(key == 'h'){
-        storyEngine.toggleGuis();
-    }
-    else if(key =='f'){
-        ofToggleFullscreen();
-    }
-	if(key == 't'){
-		storyEngine.positionGuis();
-	}
-	if(key == 'S'){
-		storyEngine.saveGuiSettings();
-	}
 
-#ifndef CLOUDS_NO_OSC
-	if(key == 'E'){
-		vector<int> projectExampleIndecs;
-		for(int i = 0; i < parser.getAllClips().size(); i++){
-			if(parser.getAllClips()[i].hasProjectExample){
-				projectExampleIndecs.push_back(i);
-			}
-		}
-		
-		if(projectExampleIndecs.size() > 0){
-			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
-			oscSender.sendClip( parser.getAllClips()[exampleIndex]);
-			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
-		}
-	}
-	
-	if(key == 'C'){
-		oscSender.sendClip( parser.getAllClips()[ ofRandom(parser.getAllClips().size()) ] );
-	}
-#endif
 
 }
 

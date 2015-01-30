@@ -1,0 +1,335 @@
+Aaron - Google Data arts	How do artists approach engineering?
+Aaron - exciting time	What is new about new media?
+Aaron - mini-brains	What is the future of storytelling?
+Aaron - mini-brains 2	What is the future of storytelling?
+Aaron - story medium	What happens when games and cinema converge?
+Aaron - stories make our lives worth living	Why do humans share stories?
+Aaron - different ways of communicating	How do people communicate now?
+Aaron - exchange of ideas drives progress	What drives technological progress?
+Aaron - autonomous storytellers	What is the future of storytelling?
+Aaron - sheep market	How does the crowd become a collaborator?
+Aaron - networked creativity	Has the internet made us more creative?
+Aaron - data experience	How is meaning extracted from big data?
+Aaron - data storytelling	What can data tell us about ourselves?
+Aaron - webGL	Why don't we surf the web in 3D?
+Aaron - sharing	What is open source all about?
+Aaron - exquisite forest	How does the crowd become a collaborator?
+Aaron - experience design	How can software enhance real world experiences?
+Aaron - progress	How do artists influence the future?
+Andres - DNA computing 1	How do computer systems imitate biological systems?
+Andres - Less beautiful than it could be	Why doesn't science value aesthetics?
+Binx - maps	How do we make maps of memory?
+Binx - women in tech	Does the field of technology remain male dominated?
+Binx - creative coding is more diverse	Does the field of technology remain male dominated?
+Binx - field of data vis	What can data visualization teach us?
+Binx - art and culture	Why does society need art?
+Binx - Background	How did you start?
+Bruce - Textual technologies	How do we use data to tell stories?
+Bruce - Dead sea scrolls	What is the lifespan of code?
+Bruce - New media Wow	What is the medium of our time?
+Bruce - new aesthetic 1	What is the new aesthetic?
+Bruce - 7 year lifespan of novelty	What is the shelf life of new media?
+Bruce - Future art	What is the future of art and technology?
+Bruce - camera of future 25 years	How will the camera of the future work?
+Bruce - Hand dryer	What makes an effective interface?
+Bruce - Pointcloud world	What does it feel like to be made of voxels?
+Bruce - not one cyberpunk idea	Do we live in the future that Cyberpunk predicted?
+Bruce - future camera 5	What's the ultimate interface?
+Bruce - find the inner wellspring	What sustains our creativity?
+Bruce - twitter is not your friend	Is the net becoming a global brain?
+Bruce - A sappy Singularity	What happens when the Singularity arrives?
+Bruce - atemporality	What is time?
+Casey - tangle	How does a design emerge?
+Casey - Borrowing from culture	What nourishes creativity?
+Casey - Systems theory	How does complexity emerge from simple rules?
+Casey - emergence	How does complexity emerge from simple rules?
+Casey - Birth of processing	How did Processing get started?
+Casey - pushing software beyond	How did the Processing community take shape?
+Casey - People would pop up	Who were the first serious users of Processing?
+Casey - 10Print	What is the shortest program?
+Casey - randomness	What generates randomness?
+Casey - Software is what i love the most	Why use code as a design tool?
+Casey - branching off branching	How do you make creative decisions?
+Casey - Ideally it goes beyond my imagination	Is an artwork ever done?
+Casey - old media	What is the history of creative coding?
+Casey - learning from precursors	What is the history of generative art?
+Casey - Programming at 26	What motivated you to learn programming?
+Casey - Computer as collaborator	When will computers become collaborators?
+Casey - What is emergence?	How do lifelike behaviors emerge from code?
+Casey - Developing a microworld	How do you build a universe?
+Casey - Developing a microworld	Why recreate the world inside a computer?
+Casey - You need noise	What is the missing ingredient?
+Casey - Something new, totally engrossing	What is the future of cinema?
+Elliot_UK - aesthetic of error	What is the new aesthetic?
+Elliot_UK - 2D vision in a 3D world	How does the world appear in the eyes of a computer?
+Elliot_UK - Ideaspace	Can one person claim ownership of an idea?
+Elliot_UK - Laying claim on ideas	Can one person claim ownership of an idea?
+Fernanda - History flow 1	How do networks promote cooperation?
+Fernanda - A social lens	How do social scientists use Facebook?
+Fernanda - History flow 3	How do groups of people think together?
+Fernanda - seeing patterns 1	How does the eye process information?
+Fernanda - seeing patterns 2	What is gestalt?
+Fernanda - Wind visualization 1	How does data reveal the big picture?
+Fernanda - defense of complexity 1	Why does data visualization often look very complex?
+Fernanda - social network hairballs	What are the cliches of data visualization?
+Fernanda - Google plus 2	How do memes spread?
+Fernanda - Social dynamics	How does social media reflect human nature?
+Fernanda - art science spectrum	How does the scientific method apply to creativity?
+Fernanda - hybrid community	What does it mean to be hybrid?
+Fernanda - what do we mean by data	How can data become more accessible?
+Fernanda - fleshmap1	How does data reflect desire?
+Fernanda - fleshmap2	How does data reflect desire?
+Fernanda - what is data	What is data?
+Fernanda - curiosity	What is the starting point for an idea?
+Fernanda - beautiful evidence 1	Does beauty deceive?
+Fernanda - aesthetics as communication	How does truth appear?
+Golan - useless, whimsical	What is the value of art?
+Golan - why major in art	Why major in art?
+Golan - woah2	What is surprising?
+Golan - would be boring	Is it possible to engineer the unexpected?
+Golan - listening post	How does data convey human emotion?
+Golan - keeping you stuff working	What is the lifespan of code?
+Golan - open data	How can data become more accessible?
+Golan - why make art	Why does society need art?
+Golan - raytraced spheres	What is the shelf life of new media?
+Greg - AI 1	What is the current state of artificial intelligence?
+Greg - AI 2	What happens when machines surpass human intelligence?
+Greg - object oriented ontology 1	What is object oriented ontology?
+Higa - sound and video	What does music look like?
+Javier - Drones can help	How can military technology benefit humanity?
+Jen - MathMajor 1	How did you start?
+Jen - sitting in front of a computer	How much time do you spend in front of a computer?
+Jen - data crystal ball 1	What is powerful about Big Data?
+Jen - more playfulness	Does art need to take itself seriously?
+Jen - data truth	Does data lie?
+Jen - objective subjective	What is truth?
+Jen - immersion in data	How can data become more accessible?
+Jen - self and other	How can technology promote empathy?
+Jen - saving the world	What societal issues can designers address?
+Jer - lives being documented through data	What does data tell us about ourselves?
+Jer - open paths 1	How do we make maps of memory?
+Jer - active not interactive	What makes a satisfying interaction?
+Jer - opportunistic sensors for apple	Can the NSA track your location?
+Jer - Software1	Why should software be free?
+Jer - Software2	Why is commercial software so expensive?
+Jer - Post-capitalism	Why should software be free?
+Jer - Toxi: gurus	How do open source coders earn a living?
+Jer - fireflies	What does the ideal creative network look like?
+Joel - advertising	Why should software be free?
+JTNimoy - Describe the Kinect	How does a depth camera work?
+JTNimoy - I addicted myself	How do you become a hacker?
+JTNimoy - Cortex	How do videogames change the way we see?
+JTNimoy - one of us	What is the Scenius?
+JTNimoy - enough cooks	Are collectives more creative than individuals working alone?
+JTNimoy - relating	Are we alone together?
+JTNimoy - immersion	Where do you find immersion?
+JTNimoy - immersion2	What is immersive?
+Julia - community	What defines this community?
+Julia - CLOUDS	What is CLOUDS?
+Julia - make us more compassionate	Can technology help connect people?
+Julia - what is it doing to us	How are we shaped by technology?
+Julia - Who owns the internet?	Who owns the Internet?
+Julia - medium of our time	What's the medium of our time?
+Julian - Critical engineering	What's the idea behind critical engineering?
+Julian - ideology of seamlessness	What's wrong with seamless technologies?
+Julian - mixing code	What is open source all about?
+Julian - lulzSec	What is anonymous?
+Julian - I love networks	What does the internet look like?
+Karolina - Journey	Where are we going?
+Karsten - parallel processing	What's the future of computing?
+Karsten - becoming insular	What's the limit of open source?
+Karsten - east german hardware 1	How did you start?
+Karsten - demo scene 2	How did 8-bit games influence this generation?
+Karsten - code is information	What is code?
+Karsten - programming is...	What does it feel like to program?
+Karsten - malware	Do hackers pose a real threat?
+Karsten - code has nothing to do with machines	What is code?
+Karsten - DarkNet	What's the size of the internet?
+Karsten - infinite conversation	How does this story end?
+Karsten - preserving history	How is digital history preserved?
+Kevin - Networked intelligence	Is the net becoming a global brain?
+Kevin - Getting smarter together	Are we getting smarter?
+Kevin - Tools of perception	How have algorithms tranformed the experience of art?
+Kevin - Distributable perceptual model	What is the ultimate artform?
+Kevin - cognition vs computation 1	When will computers attain self-awareness?
+Kyle_CH - new aesthetic 1	What is the New Aesthetic?
+Kyle_CH - tribe of New media	What is media art?
+Kyle_CH - Avatars	Is virtual reality a place we want to inhabit?
+Kyle_CH - old server farms	How will future archaeologists learn about our civilization?
+Kyle_CH - MMORPGs	How have multiplayer games shaped the next generation of artists?
+Kyle_CH - coding, magic	How do algorithms alter reality?
+Kyle_MC - they all wear the same glasses	How would an anthropologist identify this tribe?
+Kyle_MC - code as a theme 1	What's the difference between art and engineering?
+Kyle_MC - Debug screen	Why do we find smart sensors spooky?
+Kyle_MC - new aesthetic 1	When did machine vision become cool?
+Kyle_MC - People staring at screens 1	If you stare at the screen will you go blind?
+Kyle_MC - Hackers	What's the hacker ethos?
+Kyle_MC - Hackers and artists	Do hackers pose a real threat to society?
+Kyle_MC - Anonymous	Do hackers pose a real threat to society?
+Kyle_MC - the comment thread	Who has the answer?
+Kyle_MC - box on your face	How do computers see the world?
+Kyle_MC - imagining your pointcloud	What does it feel like to be a pointcloud?
+Lauren - Social reality circa 2013	How do people communicate now?
+Lauren - how we communicate	How do people communicate now?
+Lauren - how we communicate, shorter	How do people communicate now?
+Lauren - real and virtual 1	Where's the line between real and virtual?
+Lauren - wearables 1	Where do fashion and technology meet?
+Lauren - Virtual tension 1	How can design address problems of distraction?
+Lauren - desires to connect	Are we alone together?
+Lauren - Constructed self	How does your avatar differ from your real world self?
+Lauren - Beginning art and tech	How does this story begin?
+Lauren - toward greater consciousness	What's the highest aim of software?
+Lauren - computer self 1	How does data encapsulate identity?
+Lauren - data ownership 1	Should we take better care to secure personal data?
+Lauren - data ownership 2	Should we be concerned about privacy of information?
+Lauren - digital afterlife	When you die what happens to your online identity?
+Lauren - inheriting digital property	When you die what happens to your online identity?
+Lauren - digital memory	What's the difference between data and biological memory?
+Lindsay - 319 scholes	Is internet art exhibited in galleries?
+Lindsay - collective creativity	Who deserves credit for the idea?
+Lindsay - hackers	What's the hacker ethos?
+Maeda - a computer is a clock	What is a computer?
+Maeda - do not resuscitate	What's the lifespan of code?
+Maeda - subversion	Does meaning transcend medium?
+Maeda - simplicity and complexity	Why keep it simple?
+Maeda - Isn't it supposed to be new?	What's new in new media?
+Maeda - mentors	How does one pay homage to mentors?
+Maeda - Glad to be alive,	Where does ambition come from?
+Maeda - Life in four quarters	How do you think about time?
+Maeda - I can still draw	Are you still an artist if you stop making things?
+Maeda - How do you relate to people?	What comes after digital?
+Maeda - distraction and focus	Do we suffer from being constantly connected?
+Maeda - Art is asking questions, design is making solutions	Where's the line between design and art?
+Maeda - Digital divide	How does digital art relate to the analog world?
+Maeda - post digital	What comes after digital?
+Maeda - All about the why?	What questions are you asking?
+Maeda - Clouds	What is Clouds?
+Marcus - Audiovisual glue	How does music influence visual expression?
+Marcus - simulation to stories	What hasn't been done yet?
+Marcus - global conversation	What will happen when the Singularity arrives?
+Marius - algorithms as parameter space	How is randomness a useful tool?
+Marius - these things are in my head	Where does abstraction originate?
+Marius - Continuous process of exploration	Is an artwork ever done?
+Marius - gardening	Is a generative artwork ever truly done?
+Marius - constraining randomness	Is a generative artwork ever truly done?
+Marius - Living in a state of newness since age 10	Do we fetishize newness?
+Marius - cross discplines	Has technology made traditional arts and crafts obsolete?
+Marius - new tools change perception	What is the new aesthetic?
+Martin - lolcats	What makes lolz go viral?
+Martin - rapid dissemination of info	What's the speed of information?
+Martin - Net art	How does content go viral?
+Martin - simple elegant prose	Why keep it simple?
+Martin - Big data 1	What is powerful about Big Data?
+Martin - Big data	What is powerful about Big Data?
+Martin - how to make us smarter	How can visualization help us understand complexity?
+Nervous_Jesse - Time in the universe	How does the computer help us grasp infinity?
+Nervous_Jesse - limiting open source	What are the limits of open source?
+Nervous_Jesse - Getting Ripped off	Where's the line between creative appropriation and theft?
+Nervous_Jessica - I create the work that I love	How do you know whether something is good?
+Nervous_Jessica - biocomputer	What is the code of life?
+Paola - should be useful	Does technology need to be useful?
+Patricio - Alchemy 2	How does code become tangible?
+Philip - changes your thinking	How does programming change the way you think?
+Philip - build the whole universe	How do you build a universe?
+Ramsey - language self expression	When does code become poetry?
+Ramsey - why code is special	What is code?
+Ramsey - a hundred million	How does programming change the way you think?
+Ramsey - does nature compute? 1	Does nature compute?
+Ramsey - what is a computer	What is a computer?
+Ramsey - computation is interpretation of rules	What is computation?
+Ramsey - unmaintainable code	How does software stand the test of time?
+Regine - new media ghetto	Will media art ever go mainstream?
+Regine - looking forward to problems	Does technology lead to a brighter future?
+Shantell - Coding: what does it feel like?	How do you sketch with code?
+Shantell - full circle	What comes after digital?
+Shantell - take the line further	What comes after digital?
+Shantell - Coding gesturally	How do you sketch with code?
+Shantell - circularity	How do you "sketch" with code?
+Shantell - simple	Why keep it simple?
+Shantell - sharing	What is open source all about?
+Shantell - Future gesture	How does music influence the image?
+Shiffman - Maybe I'd like that	How did you start?
+Shiffman - sketching with code	How does programming become addictive?
+Shiffman - Not a visual thinker	what can you make with a computer that's impossible by hand?
+Shiffman - what computers can do	How do computers speed up the creative process?
+Shiffman - what computers can do	what can you make with a computer that you can't accomplish by hand?
+Shiffman - a mystical quality	How can math simulate natural phenomena?
+Shiffman - nature of code book	How do you build a universe?
+Shiffman - how far could we get?	How do you build a universe?
+Shiffman - make it random	How is randomness useful as a tool?
+Shiffman - mutation	How do computer programs simulate evolution?
+Shiffman - evolution	How do computer programs simulate evolution?
+Shiffman - sharing	What is open source all about?
+Shiffman - Desire for order	How is code beautiful?
+Shiffman - offers me a way to think	How does the computer enhance creativity?
+Shiffman - NOC 2	How does software simulate nature?
+Shiffman - gambling 2	Does gambling take skill?
+Shiffman - genetic algos 1	How do genetic algorithms work?
+Shiffman - genetic algos 2	How does a monkey write Shakespeare?
+Sophy - RainbowSpaceCats	Why the obsession with cats?
+Sophy - information overload	How do we manage the flood of data?
+Theo - inspired by nature	What inspires you?
+Theo - leaving a mark	What's the long term impact?
+Theo - addictive process	What's addictive about the process?
+Theo - struggle with technology	What's most frustrating in the process?
+Theo - newness	What happens when the novelty wears off?
+Theo - 3D sensing	Where is there room for innovation?
+Theo - hide the technology,	How can technology create an immersive experience?
+Theo - development feedback,	How does experimentation lead to innovation?
+Theo - new media and old media,	Does new media have a place in contemporary art?
+Theo - art world	What's wrong with contemporary art?
+Theo - crazy researcher	How do you predict the future?
+Theo - approach to art	What is a new media artist?
+Theo - FFFFAT	What's the function of humor?
+Theo - inspired by nature shorter	What is your wellspring?
+Theo - evolution	What is creativity?
+Vera - Playing with a system	How is play essential to the process?
+Vera - Digital life forms	How does art imitate life?
+Vera - working for clients	What's challenging about commercial work?
+Vera - Energy Flow2	How does your artwork respond to current events?
+Vera - having a protagonist	How do you engage audiences?
+Vera - Accessibility through strories	Why do humans create stories?
+Vera - What I like about this field	What binds you to this community?
+Zach - open source challenge	What holds the community together?
+Zach - printshop	How does open source apply to non-digital culture ?
+Zach - action script	What was the gateway drug to creative coding?
+Zach - work with Golan	How did you become a media artist?
+Zach - hate working alone	Why collaborate?
+Zach - Time slows down	How do you know when it's working?
+Zach - Fucking boring	What's enjoyable about programmming?
+Zach - nerd art center	How did this community originate?
+Zach - decompiling	Before the internet existed
+Zach - less demo	When does code become poetry?
+Zach - Open Frameworks 1	What's the origin of openFrameworks?
+Zach - Open Frameworks 3	What barriers stand in the way of learning to code?
+Zach - drawing with Tayoon	How does drawing change the way you see?
+Zach - programming 2	What is the value of programming as a creative discipline?
+Zach - Joshua Davis	Who were the pioneers of sharing code?
+Zach - processing, publishing	When did sharing code become popular?
+Zach - more poetry, less demo	When does an experiment become an artwork?
+Memo_master - Deadline 1	When is an artwork done?
+Memo_master - Magic 2	What is the ultimate artform?
+Memo_master - 10yearsOld 1	How did you start?
+Memo_master - hacking into NASA	Do hackers pose a real threat?
+Chris - RemoteCollaboration	Does the network promote creativity?
+Intro - AudioVisualization	What does music look like?
+Intro - BuildingWorlds2	Is it possible to truly simulate reality?
+Intro - BuildingWorlds	How do you create a digital universe?
+Intro - CodingSketching	How do you sketch with code?
+Intro - Collaboration	How does the network accelerate creativity?
+Intro - Computers	Do computers make us smarter?
+Intro - CriticalPractices	How does academic research inform creative technology ?
+Intro - Interfaces	What's the ultimate interface?
+Intro - KinectFutureCamera	What is the camera of the future?
+Intro - Learning	What does it feel like to program?
+Intro - LogicOfPixels	How can the logic of coding be creative?
+Intro - Programming	Is programming a waste of time?
+Intro - Sharing	What is open source all about?
+Intro - VirtualReality	Have we hacked reality?
+Intro - interactivity1	What makes a satisfying interaction?
+Joel - Amiga500	How did you start?
+LIA - TimeStamps1	When is an artwork done?
+LIA - audiovisualization	What does music look like?
+Golan - Network1	What's the size of the internet?
+Golan - Network2	What will the internet become?
+Golan - WhenComputersSurpass	When will machines become smarter than humans?

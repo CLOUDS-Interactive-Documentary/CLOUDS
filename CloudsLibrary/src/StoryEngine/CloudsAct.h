@@ -77,6 +77,7 @@ class CloudsAct{
     void clear();
     
     vector<CloudsClip*>& getAllClips();
+    vector< pair<CloudsClip*, string> >& getAllQuestions();
     vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
 	vector<CloudsDichotomy>& getDichotomiesForClip(CloudsClip* clip);
 	vector<CloudsDichotomy>& getDichotomiesForClip(string clipName);
@@ -105,7 +106,7 @@ class CloudsAct{
 	
 	ofxTimeline& getTimeline(){ return timeline; }
     
-	bool isClipEnergyShift(CloudsClip* clip);	
+	bool isClipEnergyShift(CloudsClip* clip);
     bool startsWithVisualSystem();
 
     void drawDebug();
@@ -160,6 +161,7 @@ class CloudsAct{
 	map<string, float> topicDurationMap;
 	
     map<string, CloudsClip*> questionsMap;
+    vector< pair<CloudsClip*, string> > questionClips;    
     map<string, vector<CloudsDichotomy> > dichotomiesMap;
 	ofxTLFlags* dichotomyClips;
 	map<string, ofxTLCurves*> dichotomyTracks;

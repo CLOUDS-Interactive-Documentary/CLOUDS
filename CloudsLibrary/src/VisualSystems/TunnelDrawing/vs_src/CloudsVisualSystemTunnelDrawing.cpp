@@ -16,6 +16,12 @@ void CloudsVisualSystemTunnelDrawing::selfSetDefaults(){
 #endif
     primaryCursorMode = CURSOR_MODE_DRAW;
     secondaryCursorMode = CURSOR_MODE_DRAW;
+
+	#ifdef OCULUS_RIFT
+	camera.begin();
+	camera.end();
+	#endif
+
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -107,7 +113,7 @@ void CloudsVisualSystemTunnelDrawing::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemTunnelDrawing::selfUpdate(){
-    
+
 #ifndef MOUSE_INPUT
 	map<int, CloudsInteractionEventArgs>::iterator init;
 	for(init = GetCloudsInputPoints().begin(); init != GetCloudsInputPoints().end(); init++){

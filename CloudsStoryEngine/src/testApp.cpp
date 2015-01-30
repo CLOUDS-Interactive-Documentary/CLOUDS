@@ -14,6 +14,7 @@ void testApp::setup(){
 	
 	parser.loadFromFiles();
 	
+
 	visualSystems.loadPresets();
 	
 	storyEngine.parser = &parser;
@@ -30,6 +31,17 @@ void testApp::setup(){
 	oscSender.setup();
 #endif
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
+
+		//stringstream str;
+		//for(int i = 0; i < parser.getAllClips().size(); i++){
+		//	if(parser.getAllClips()[i]->hasQuestion()){
+		//		for(int q = 0; q < parser.getAllClips()[i]->getQuestions().size(); q++){
+		//			str << parser.getAllClips()[i]->getLinkName() << "	" << parser.getAllClips()[i]->getQuestions()[q] << endl;
+		//		}
+		//	}
+		//}
+		//ofBufferToFile("ALL_QUESTIONS.txt", ofBuffer(str));
+	
 }
 
 //--------------------------------------------------------------

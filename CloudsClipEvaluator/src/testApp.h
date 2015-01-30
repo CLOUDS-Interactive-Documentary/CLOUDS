@@ -32,29 +32,8 @@ class testApp : public ofBaseApp{
 	CloudsAct* currentAct;
 	CloudsRun run;
 	
-    set<CloudsClip*> traversedClips;
+    map<CloudsClip*, int> traversedClips;
     void exploreAct(CloudsClip* starter, string topic, bool playSeed, CloudsRun run, int depth, int maxDepth);
     
-#ifndef CLOUDS_NO_OSC
-	CloudsSecondaryDisplayOSCSender oscSender;
-#endif
-	//clip events
-	void actCreated(CloudsActEventArgs& args);
-	void actBegan(CloudsActEventArgs& args);
-	void actEnded(CloudsActEventArgs& args);
-	void clipBegan(CloudsClipEventArgs& args);
-	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
-	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
-    void questionProposed(CloudsQuestionEventArgs& args);
-    void questionSelected(CloudsQuestionEventArgs& args);
-	void topicChanged(CloudsTopicEventArgs& newTopic);
-    void preRollRequested(CloudsPreRollEventArgs& clip);
-		
-	bool rebuildAct;
-    ofxUISuperCanvas *gui;
-    ofxUISuperCanvas *clipGui;
-    bool displayGui;
-
-    void guiEvent(ofxUIEventArgs &e);
 
 };

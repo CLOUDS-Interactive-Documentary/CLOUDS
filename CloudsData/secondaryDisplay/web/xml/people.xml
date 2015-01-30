@@ -4,7 +4,7 @@
 			<last>Koblin</last>
 			<title>Media Artist</title>
 			<twitter>@aaronkoblin</twitter>
-			<location1>Santa Monica CA</location1>
+			<location1>b Santa Monica CA</location1>
 			<location2>San Francisco CA</location2>
 			<byline1>As creative director of the Data Arts Team at Google, he develops data visualizations and web-based storytelling platforms, and uses crowdscourcing as a vehicle to collaborate with thousands of participants.</byline1>
 			<byline2>As creative director of the Data Arts Team at Google, Aaron Koblin develops innovative uses of data visualization, crowdsourcing, and web-based storytelling. He works with community generated data to reflect on cultural trends and the changing relationship between humans and the systems they create.
@@ -29,7 +29,7 @@
 			<title>Futurist, Design Critic</title>
 			<twitter>@bruces</twitter>
 			<location1>b Austin TX</location1>
-			<location2>Austin - Turin</location2>
+			<location2>Austin - Turin, IT</location2>
 			<byline1>A science fiction writer and cyberspace theorist who is also still based there. His writing can be found on 'Beyond the Beyond', published by Wired magazine.
 </byline1>
 			<byline2>He blogs extensively on Beyond the Beyond, published by Wired Magazine and often features the work of hacker artists, programmers, inventors, critical engineers. 
@@ -42,7 +42,7 @@
 			<title>Data Visualizer</title>
 			<twitter>@rachelbinx</twitter>
 			<location1>b Albuquerque NM</location1>
-			<location2>San Francisco - Brooklyn</location2>
+			<location2>San Francisco</location2>
 			<byline1>By encoding GPS information in images and objects, she engages with personal location data, and takes an innovative approach to mapping people's global journeys.
 </byline1>
 			<byline2>Rachel Binx's projects engage with personal location data, and take an innovative approach to mapping people's global journeys. By encoding GPS information in images and objects, she designs mementos that embody the latent associations between memory and place. 
@@ -113,8 +113,7 @@
 	<person id="Fernanda">
 			<first>Fernanda</first>
 			<last>Viegas</last>
-			<title>Computational Designer
-</title>
+			<title>Computational Designer</title>
 			<twitter>@viegasf</twitter>
 			<location1>Rio de Janeiro BR</location1>
             <location2>Rio de Janeiro - Cambridge</location2>
@@ -132,7 +131,7 @@
 			<twitter>@golan</twitter>
 			<location1>New York NY</location1>
 			<location2>New York - Pittsburgh</location2>
-			<byline1>Explores the expressive use of computation, and focuses on the design of systems for performing simultaneous image and sound. He currently directs the STUDIO for Creative Inquiry, an arts research lab.
+			<byline1>Explores the expressive use of computation, and focuses on the design of systems for performing simultaneous image and sound. He currently directs the Frank-Ratchye STUDIO for Creative Inquiry, an arts research lab.
 </byline1>
 			<byline2>His work explores the expressive use of computation, and focuses on the design of systems for the performance of simultaneous image and sound. Levin applies creative twists to digital technologies that highlight our relationship with machines, combining equal measures of the whimsical, the provocative, and the sublime. He now directs the STUDIO for Creative Inquiry, an anti-disciplinary arts research lab at Carnegie Mellon University.
 </byline2>
@@ -221,7 +220,7 @@
 			<twitter>@joelgethinlewis</twitter>
 			<location1>London UK</location1>
 			<location2>London</location2>
-			<byline1>Creates experiences that take people into the moment. His company Hellicar-Lewis develops interactive marketing experiences for major brands while advocating for an open source approach. </byline1>
+			<byline1>Creates experiences that take people into the moment. His company Hellicar-Lewis develops interactive marketing experiences for major brands while advocating for an open source approach.</byline1>
 <byline2>Joel creates experiences that take people into the moment. His company Hellicar Lewis creates interactive marketing experiences for major brands, while advocating for an Open Source approach throughout society. His projects bring together traditional media, interaction and digital networks to make feedback loops between people, technology and places.
 </byline2>
 			<gender>male</gender>
@@ -295,7 +294,8 @@
 			<twitter>@chaykak</twitter>
 			<location1>Brooklyn NY</location1>
 			<location2>Brooklyn</location2>
-			<byline1>A freelance writer who covers digital media art, internet culture, and commerce for publications including The New Yorker, Pacific Standard, and The New Republic.</byline1>
+			<byline1>A freelance writer who covers digital media art, internet culture, and commerce for publications including Newsweek, The New Yorker, Pacific Standard, and The New Republic.
+			</byline1>
 			<byline2>He has also curated exhibitions at Garis and Hahn gallery and Moving Image art fair in New York and London.
 </byline2>
 			<gender>male</gender>
@@ -303,7 +303,7 @@
 	<person id="Kyle_MC">
 			<first>Kyle</first>
 			<last>McDonald</last>
-			<title>Artist </title>
+			<title>Artist</title>
 			<twitter>@kcimc</twitter>
 			<location1>Brooklyn NY</location1>
 			<location2>Brooklyn</location2>
@@ -344,7 +344,7 @@
 			<title>Designer, Educator</title>
 			<twitter>@johnmaeda</twitter>
 			<location1>Seattle WA</location1>
-			<location2>Seattle - Providence</location2>
+			<location2>Seattle - Silicon Valley</location2>
 			<byline1>Led one of the first research groups for computational art at the MIT Media Lab, and is a founding voice for simplicity in the digital age. His platform Design by Numbers inspired Processing.
 </byline1>
 			<byline2>His programming language, Design by Numbers, was the inspiration for Processing, an open source library invented by his students Casey Reas and Ben Fry during their time at the Media Lab. In 2008, Maeda became President of the Rhode Island School of Design (RISD).</byline2>
@@ -389,10 +389,10 @@
 	<person id="Memo_master">
 			<first>Memo</first>
 			<last>Akten</last>
-			<title>Artist, Musician, Engineer</title>
+			<title>Artist</title>
 			<twitter>@memotv</twitter>
 			<location1>Istanbul</location1>
-			<location2>London</location2>
+			<location2>Istanbul - London</location2>
 			<byline1>Founder of the design collective Marshmallow Laser Feast and Mega Super Awesome: Memo explores new ways of generating simultaneous image and sound, making the invisible visible and the impossible possible.</byline1>
 			<byline2>He is a regular contributor to openFrameworks</byline2>
 			<gender>male</gender>
@@ -418,7 +418,7 @@
 			<location2>Sommerville</location2>
 			<byline1>Founder and Creative Director of Nervous System, a generative design studio that uses computer programs to create unique and affordable art, jewelry, and housewares.</byline1>
 			<byline2>Drawing inspiration from natural phenomena, they write computer programs based on processes and patterns found in nature and use those programs to create unique and affordable art, jewelry, and housewares.</byline2>
-			<gender>male</gender>
+			<gender>female</gender>
 		</person>
 	<person id="Paola">
 			<first>Paola</first>

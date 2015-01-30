@@ -209,19 +209,22 @@ void CloudsVisualSystemRGBD::selfSetup(){
     
 	portals.push_back(&leftPortal);
 	portals.push_back(&rightPortal);
-	
+	//portals.push_back(&resetPortal);
+
 	leftPortal.setup();
 	rightPortal.setup();
-//	resetPortal.setup();
+	//resetPortal.setup();
 	
 	leftPortal.cam = &cloudsCamera;
 	rightPortal.cam = &cloudsCamera;
-//	resetPortal.cam = &cloudsCamera;
+	resetPortal.cam = &cloudsCamera;
 	
 	leftPortal.bLookAtCamera = true;
 	rightPortal.bLookAtCamera = true;
-//	resetPortal.bLookAtCamera = true;
+	resetPortal.bLookAtCamera = true;
 	
+	resetPortal.question = "RESET";
+
 	loadShader();
 	
 	cout << "*** LOADING POINT LAYERS" << endl;
@@ -248,7 +251,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	transitionCam.applyRotation = true;
 #endif
 	
-//    rebuildCaptionFont();
 	
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
@@ -305,17 +307,15 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 	ofQuaternion q;
 	
 	//just in case... maybe this fails a little more gracefully
-	if(transitionMap[type].find( option ) != transitionMap[type].end())
-	{
+	if(transitionMap[type].find( option ) != transitionMap[type].end()){
 		ti = transitionMap[type][option];
-	}else{
+	}
+	else{
 		ti = transitionMap[type]["default"];
 	}
 	
-	if(type == "QUESTION")
-	{
+	if(type == "QUESTION") {
 		q.set( getCameraRef().getOrientationQuat() );
-		
 		
 		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
 		transitionInStart.setOrientation( q );
@@ -330,9 +330,12 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 		
 		transitionOutRight.setPosition(leftPortal.hoverPosition + rightExtraFlying);
 		transitionOutRight.setOrientation( q );
+
+		transitionOutReset.setPosition(resetPortal.hoverPosition);
+		transitionOutReset.setOrientation( q );
+
 	}
-	else if(transitionMap.find(type) != transitionMap.end())
-	{	
+	else if(transitionMap.find(type) != transitionMap.end()){	
 		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
 		q.set( ti.inQuat );
 		transitionInStart.setOrientation( q );
@@ -655,8 +658,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	questionGui->addSlider("QUESTION FONT SPLIT WIDTH", 100, 500.0, &questionFontSplitWidth);
 	
 #ifdef OCULUS_RIFT
-//	questionGui->addSlider("RESET Y", -300, 300, &resetHoverPosition.y);
-//	questionGui->addSlider("RESET Z", -500, 500, &resetHoverPosition.z);
+	questionGui->addSlider("RESET Y", -300, 300, &resetHoverPosition.y);
+	questionGui->addSlider("RESET Z", -500, 500, &resetHoverPosition.z);
 #endif
 	
 	guis.push_back(questionGui);
@@ -1223,11 +1226,15 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 	
 	leftPortal.hoverPosition  = portalBaseHover + translatedHeadPosition;
 	rightPortal.hoverPosition = portalBaseHover*ofVec3f(-1,0,0) + translatedHeadPosition;
+	//resetPortal.hoverPosition = resetHoverPosition + translatedHeadPosition;
 
-	leftPortal.scale = portalScale;
+	leftPortal.scale  = portalScale;
 	rightPortal.scale = portalScale;
-	leftPortal.lookTarget = cloudsCamera.getPosition();
+	//resetPortal.scale = portalScale;
+
+	leftPortal.lookTarget  = cloudsCamera.getPosition();
 	rightPortal.lookTarget = cloudsCamera.getPosition();
+	//resetPortal.lookTarget = cloudsCamera.getPosition();
     
     //default to far away
     minDistanceToQuestion = portalTugDistance.max;
@@ -1279,15 +1286,7 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			//let it go
 			else if(distanceToQuestion > portalTugDistance.max){
 				caughtPortal->stopHovering();
-                /////NEW QUESTION WAY
-//                caughtPortal->question = "";
-                /////NEW QUESTION WAY
-				caughtPortal = NULL;
-//                CloudsPortalEventArgs args(*portals[i], getQuestionText());
-				//JG QUESTION SWITCH TEXT
-//                CloudsPortalEventArgs args(getQuestionText());
-//                ofNotifyEvent(events.portalHoverEnded, args);
-				
+				caughtPortal = NULL;				
 			}
 		}
         minDistanceToQuestion = MIN(distanceToQuestion, minDistanceToQuestion);
@@ -1326,11 +1325,13 @@ void CloudsVisualSystemRGBD::startCurrentTransitionOut()
 {
 	if(currentTransitionType == "QUESTION")
 	{
-		transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
 		transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
-		
+		transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
+		transitionOutReset.setOrientation( getCameraRef().getOrientationQuat() );
+
 		transitionOutRight.setPosition(leftPortal.hoverPosition);
 		transitionOutLeft.setPosition(rightPortal.hoverPosition);
+		//transitionOutReset.setPosition(resetPortal.hoverPosition);
 	}
 	
 	//transition to the left or right based on relative posiiton
@@ -1353,27 +1354,27 @@ void CloudsVisualSystemRGBD::startCurrentTransitionIn()
 	cloudsCamera.setTransitionTargetNode( &cloudsCamera.mouseBasedNode );
 }
 
-void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option)
-{
-	//I think this'll happen in setTransitionNodes
-	//if( transitionType == QUESTION)
-	//{
-	//	transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
-	//	transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
-	//}
+void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option){
 	
 	//set the in/out nodes
 	setTransitionNodes( transitionType, option );
 	
 	//transition to the left or right based on relative posiiton
-	setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
+	setOutOption( (cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
 	
 	//transitionEase = ofxTween::easeOut;
 	transitionEase = ofxTween::easeIn;
 	transitioning = true;
 	
-	cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
-	cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
+	if(isResetSelected()){
+		cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
+		cloudsCamera.setTransitionTargetNode( &transitionOutReset );
+	
+	}
+	else{
+		cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
+		cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
+	}
 }
 
 void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType, string option)
@@ -1702,7 +1703,6 @@ void CloudsVisualSystemRGBD::assignAvailableQuestion(CloudsPortal& portal){
 	}
 	
 #ifndef CLOUDS_SCREENING
-//#else
 	if(&portal != caughtPortal && &portal != selectedPortal){
 		portal.clip = questions.back().clip;
 		portal.topic = questions.back().topic;
@@ -1995,9 +1995,7 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 		rightPortal.draw();
 	}
 	CloudsPortal::shader.end();
-//#ifdef OCULUS_RIFT
 	drawQuestionType();
-//#endif
 	glEnable(GL_DEPTH_TEST);
 
 }
@@ -2181,13 +2179,16 @@ void CloudsVisualSystemRGBD::removeQuestionFromQueue(CloudsClip* clip){
     ofLogError("CloudsVisualSystemRGBD::removeQuestionFromQueue") << "Failed to remove clip " << clip->getLinkName() << " from queue";
 }
 
-
 bool CloudsVisualSystemRGBD::isQuestionSelected(){
-	return selectedPortal != NULL;
+	return selectedPortal != NULL && selectedPortal != &resetPortal;
 }
 
 CloudsPortal* CloudsVisualSystemRGBD::getSelectedQuestion(){
    return selectedPortal;
+}
+
+bool CloudsVisualSystemRGBD::isResetSelected(){
+	return selectedPortal == &resetPortal;
 }
 
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
@@ -2206,7 +2207,7 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
     }
 }
 
-void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs & args){
+void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs& args){
 
 }
 
@@ -2470,4 +2471,3 @@ void CloudsVisualSystemRGBD::selfSetupRenderGui(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::guiRenderEvent(ofxUIEventArgs &e){
 }
-

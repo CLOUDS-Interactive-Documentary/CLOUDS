@@ -667,11 +667,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	// RGBD SYSTEM
     if(currentVisualSystem == rgbdVisualSystem){
         if(!transitionController.isTransitioning() && !bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
-            
             bQuestionAsked = true;
             run.questionsAsked++;
             transitionController.transitionWithQuestion(2.0, 0.1);
-			
         }
     }
 
@@ -679,7 +677,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	//sanity check
 	//////////////BAD IDLE
 	/// acts are getting stuck at the end without going to interlude
-	/*
 	if(currentVisualSystem == rgbdVisualSystem && 
 		(currentAct == NULL || !currentAct->getTimeline().getIsPlaying()) && 
 		!transitionController.isTransitioning())
@@ -695,21 +692,23 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			badIdleStartTime = ofGetElapsedTimef();
 		}
 	}
-	*/
 	//////////////BAD IDLE
 
 
-	hud.update();
-
 	if(!showingIntro && !showingClusterMap && !showingInterlude){
 		
+		hud.update();
 
 		if(currentVisualSystem == rgbdVisualSystem){
-			if(hud.isResetHit() && !userReset){
+			if( (hud.isResetHit() || rgbdVisualSystem->isResetSelected() ) && !userReset){
 				userReset = true;
 			    returnToIntro = true;
+#ifdef OCULUS_RIFT
+				transitionController.transitionWithQuestion(2.0, 0.1);
+#else
 		        CloudsVisualSystem::getRGBDVideoPlayer().stop();
 	            currentAct->getTimeline().stop();
+#endif
 			}
 		}
 	}
@@ -757,16 +756,10 @@ void CloudsPlaybackController::updateTransition(){
         switch (transitionController.getCurrentState()) {
                 
             case TRANSITION_INTERVIEW_OUT:
-				if(bQuestionAsked){
+				if(bQuestionAsked || rgbdVisualSystem->isResetSelected()){
                     currentAct->getTimeline().stop();
 					rgbdVisualSystem->startTransitionOut( CloudsVisualSystem::QUESTION );
 				}
-				//else if(userReset){
-				//	userReset = false;
-				//	currentAct->getTimeline().stop();
-				//	clearAct();
-					//rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
-				//}
 				else{
                     rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
 				}
@@ -906,7 +899,6 @@ void CloudsPlaybackController::updateTransition(){
 					
                     if(showingClusterMapNavigation){
                         showingClusterMapNavigation = false;
-                        //rgbdVisualSystem->removeQuestionFromQueue(clusterMap->getSelectedQuestion()->clip);
 						vector<CloudsClip*>& screeningQueue = storyEngine.screeningQuestionClips;
 						CloudsClip* interludeExitClip = clusterMap->getSelectedQuestion()->clip;
 						if(ofContains(screeningQueue,interludeExitClip)){
@@ -1556,35 +1548,33 @@ void CloudsPlaybackController::showInterlude(){
     
 	resetInterludeVariables();
 	
+//    vector<string> topics;
     CloudsVisualSystemPreset interludePreset;
 	#ifdef CLOUDS_SCREENING
 	if(rgbdVisualSystem->hasQuestionsRemaining() && showedClusterMapNavigation){
 		forceCredits = true;
 	}
 	#endif
-
     if(!storyEngine.getPresetIDForInterlude(run, interludePreset, forceCredits)){        
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";
-		returnToIntro = true;	
-		return;
+		storyEngine.getPresetIDForInterlude(run, interludePreset, true);
 	}
 
     interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
 	if(interludeSystem == NULL){
 		returnToIntro = true;	
-		return;
 	}
-
-	interludeSystem->setDrawToScreen( false );
-	interludeSystem->setup();
-	interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
-	interludeSystem->playSystem();
-	interludeSystem->isInterlude = true;
+	else{
+		interludeSystem->setDrawToScreen( false );
+		interludeSystem->setup();
+		interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
+		interludeSystem->playSystem();
+		interludeSystem->isInterlude = true;
 		
-	currentVisualSystem = interludeSystem;
+		currentVisualSystem = interludeSystem;
         
-	showingInterlude = true;
-
+		showingInterlude = true;
+	}
 
 }
 

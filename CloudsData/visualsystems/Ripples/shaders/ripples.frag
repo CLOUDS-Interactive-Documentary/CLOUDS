@@ -27,7 +27,7 @@ void main()
     vec3 sum = vec3(0.0, 0.0, 0.0);
     
     for (int i = 0; i < 4 ; i++){
-        sum += texture2DRect(tex0, st + offset[i]).rgb;
+        sum += texture2DRect(backbuffer, st + offset[i]).rgb;
     }
     
     //  make an average and substract the center value
