@@ -1210,8 +1210,8 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
     }
 
 	//reject any clips that don't match the current language and are without a subtitle file
-	if(potentialNextClip->getLanguage() != GetLanguage() && !potentialNextClip->hasSubtitleFile())){
-		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": language" << endl;
+	if(potentialNextClip->getLanguage() != GetLanguage() && !potentialNextClip->hasSubtitleFile() ){
+		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": language is " << potentialNextClip->getLanguage() << " and no subtitles" << endl;
         return 0;
 	}
 
