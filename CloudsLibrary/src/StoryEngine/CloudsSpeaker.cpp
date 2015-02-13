@@ -19,7 +19,7 @@ void CloudsSpeaker::populateSpeakers(){
 	
 	//parse speaker xml
 	ofxXmlSettings speakerxml;
-	if(!speakerxml.loadFile(GetCloudsDataPath()+"secondaryDisplay/web/xml/people.xml")){
+	if(!speakerxml.loadFile(GetCloudsDataPath()+"bio/people.xml")){
 		ofLogError("CloudsSpeaker::populateSpeakers") << "People XML failed to load";
 		return;
 	}

@@ -434,7 +434,7 @@
 	<person id="Philip">
 			<first>Philip</first>
 			<last>Whitfield</last>
-			<title>Media artist</title>
+			<title>Media Artist</title>
 			<twitter>@underdoeg</twitter>
 			<location1>Basel CH</location1>
 			<location2>Basel</location2>
@@ -445,7 +445,7 @@
 	<person id="Ramsey">
 			<first>Ramsey</first>
 			<last>Nasser</last>
-			<title>Computer scientist, artist</title>
+			<title>Computer Scientist, Artist</title>
 			<twitter>@ra</twitter>
 			<location1>b Beirut LB</location1>
 			<location2>Beirut - New York</location2>
@@ -459,7 +459,7 @@
 			<title>Blogger, Art Critic</title>
 			<twitter>@WMMNA</twitter>
 			<location1>b Brussels BE</location1>
-			<location2>Brussels - Turin</location2>
+			<location2>Brussels</location2>
 			<byline1>Writes about the intersection between art, science and social issues on her blog we-make-money-not-art.com, highlighting the ways artists and hackers use science as a medium for critical discussion.</byline1>
 			<byline2>She also contributes to several European design and art magazines and lectures internationally about the way artists, hackers and designers use science as a medium for critical discussion.</byline2>
 			<gender>female</gender>
@@ -480,7 +480,7 @@
 			<last>Shiffman</last>
 			<title>Programmer, Educator</title>
 			<twitter>@shiffman</twitter>
-				<location1>New York NY</location1>
+			<location1>New York NY</location1>
 			<location2>New York</location2>
 			<byline1>Teaches programming to artists at NYU's Interactive Telecommunications Program. He is the author of the Nature of Code, a self published, open source book about simulating natural phenomena in software.</byline1>
 			<byline2>His work applies mathematical principles underlying physics to create digital worlds, which he develops through tutorials, examples, and libraries for Processing, an open source programming language and environment.</byline2>
@@ -545,14 +545,13 @@
 			<gender>male</gender>
 		</person>
 
-
 		<person id="Patricio">
 			<first>Patricio</first>
 			<last>Gonzalez Vivo</last>
 			<title>Artist</title>
 			<twitter>@patriciogv</twitter>
 			<location1></location1>
-			<location2>New York City</location2>
+			<location2>Buenos Aires - Brooklyn</location2>
 			<byline1>Brings a background in experimental psychology to designing spaces where creativity and play offer tranformative experiences.</byline1>
 			<byline2></byline2>
 			<gender>male</gender>
@@ -576,7 +575,7 @@
 		<person id="LIA">
 			<first>LIA</first>
 			<last></last>
-			<title>Software artist</title>
+			<title>Software Artist</title>
 			<twitter>@liasomething</twitter>
 			<location1>Vienna AU</location1>
 			<location2>Vienna</location2>

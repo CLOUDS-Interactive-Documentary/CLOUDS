@@ -32,7 +32,7 @@ void CloudsFCPParser::loadFromFiles(){
     parseSpeakersVolume();
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
-	parseProjectExamples(GetCloudsDataPath() + "secondaryDisplay/web/xml/projects.xml");
+	parseProjectExamples(GetCloudsDataPath() + "bio/projects.xml");
 	
 }
 

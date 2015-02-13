@@ -244,8 +244,8 @@
 	</project>
 
     <project title="Design by Numbers">
-			<creator_name></creator_name>
-			<description>A minimal programming enviornment for artists and designers, created by John Maeda in the 1990s. Its simple, intuitive approach inspired Processing by Reas and Fry.=</description>
+			<creator_name>John Maeda</creator_name>
+			<description>A minimal programming enviornment for artists and designers, created by John Maeda in the 1990s. Its simple, intuitive approach inspired Processing by Reas and Fry.</description>
 			<videos>
 				<file>DesignByNumbers_720.mov</file>
 			</videos>
@@ -321,7 +321,7 @@
 	</project>
 
 	<project title="Galapagos">
-			<creator_name>Carl Sims</creator_name>
+			<creator_name>Karl Sims</creator_name>
 			<description>Viewers help evolve 3D animated creatures by selecting which ones will be allowed to live and produce new, mutated offspring.</description>
 			<videos>
 				<file>CarlSims2_480.mov</file>
@@ -330,7 +330,7 @@
 	</project>
 	
 	<project title="Evolved Virtual Creatures">
-			<creator_name>Carl Sims</creator_name>
+			<creator_name>Karl Sims</creator_name>
 			<description>A population of several hundred creatures is created within a supercomputer, and each creature is tested for their ability to perform a given task.</description>
 			<videos>
 				<file>CarlSims_480.mov</file>
@@ -372,7 +372,7 @@
 	-->
 
     <project title="Sniff">
-			<creator_name>Karolina Sobecka, James George</creator_name>
+			<creator_name>Karolina Sobecka</creator_name>
 			<description>A CG dog projected on a storefront follows the viewer and responds to his gestures, behaving according to the person's state of engagement.</description>
 			<videos>
 				<file>Sniff_720.mov</file>
@@ -419,7 +419,7 @@
 	</project>
 
 	<project title="Particle Dreams">
-			<creator_name>Carl Sims</creator_name>
+			<creator_name>Karl Sims</creator_name>
 			<description>A collection of dream sequences created using 3D particle systems techniques. - 1988</description>
 			<videos>
 				<file>Particle_Dreams_480.mov</file>
