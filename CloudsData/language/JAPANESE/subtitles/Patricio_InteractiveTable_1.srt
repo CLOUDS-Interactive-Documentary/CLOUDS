@@ -1,0 +1,27 @@
+1
+0 --> 88
+I was doing research for 'interactivos' 
+
+2
+88 --> 211
+one of my first projects was called 'communitas', a circular multitouch table
+
+3
+220 --> 410
+So I spent time watching videos of how people interacted with tactile surfaces
+
+4
+411 --> 601
+and a recurring image was of people being drawn to the tactile table,
+
+5
+602 --> 676
+and moving things around
+
+6
+677 --> 870
+to try out the system with some confusion about how it works
+
+7
+871 --> 1016
+and not really interacting with others.

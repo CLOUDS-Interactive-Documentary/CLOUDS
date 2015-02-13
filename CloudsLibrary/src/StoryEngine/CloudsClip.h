@@ -18,6 +18,7 @@ class CloudsClip {
 	string getSpeakerFirstName();
     string getSpeakerFullName();
 	string getSpeakerGender();
+	string getLanguage();
     float getSpeakerVolume();
 	
 	string fcpFileId;
@@ -95,6 +96,7 @@ class CloudsClip {
     string getSubtitlesPath();
     string getFFMpegLine(string alternativeVideoPath, string exportFolder);
     
+	bool hasSubtitleFile();
 	bool hasMediaAsset;
 	string combinedVideoPath;
 	string voiceOverAudioPath;
@@ -116,7 +118,6 @@ class CloudsClip {
 	ofVec3f adjustScale;
 	ofVec2f faceCoord;
     
-    //SURYA TODO: Replace contour parameters colour parameters
     //Skin Parameters
     ofFloatColor skinTargetColor;
 	

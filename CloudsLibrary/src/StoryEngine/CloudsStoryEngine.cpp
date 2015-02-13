@@ -605,17 +605,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
 			shouldAddScreeningQuestionsToAct = false;
 		}
 #else
-//		if(state.act->getAllVisualSystemPresets().size() > 1){
-            //if(showOnlyStartQuestions){
-            //    if(startingQuestions.size() > 0){
-            //        addQuestions(state, startingQuestions);
-            //        startingQuestions.clear();
-            //    }
-            //}
-            //else {
-                addQuestions(state, questionClips);
-//            }
- //       }
+		addQuestions(state, questionClips);
 #endif
         /////////////////
 		
@@ -998,7 +988,6 @@ CloudsVisualSystemPreset CloudsStoryEngine::selectVisualSystem(CloudsStoryState&
 	return preset;
 }
 
-//TODO: Add to main logger
 float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVisualSystemPreset& potentialNextPreset)
 {
     
@@ -1219,13 +1208,20 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip \"" << potentialNextClip->getLinkName() << "\" no combined video file" << endl;
         return 0;
     }
-        
+
+	//reject any clips that don't match the current language and are without a subtitle file
+	if(potentialNextClip->getLanguage() != GetLanguage() && !potentialNextClip->hasSubtitleFile())){
+		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": language" << endl;
+        return 0;
+	}
+
     bool link = parser->clipLinksTo( state.clip->getLinkName(), potentialNextClip->getLinkName() );
     if(!link && potentialNextClip->person == state.clip->person){
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": same person" << endl;
         return 0;
     }
     
+
     //reject any nodes we've seen already
     if(historyContainsClip(potentialNextClip, state.clipHistory)){
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": already visited" << endl;

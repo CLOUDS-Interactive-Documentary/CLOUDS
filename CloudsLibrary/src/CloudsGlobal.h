@@ -43,6 +43,18 @@ static string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolde
 	
 	return datapath;
 }
+static string language = "ENGLISH";
+static bool languageSet = false;
+static string GetLanguage(){
+	if(!languageSet){
+		string languageFile = GetCloudsDataPath() + "language.txt";
+		if(ofFile(languageFile).exists()){
+			language = ofBuffer(languageFile).getText();
+		}
+		languageSet = true;
+	}
+	return language;
+}
 
 //--------------------------------------------------------------------
 static string relinkFilePath(string filePath){

@@ -16,11 +16,6 @@
 #include "ofxSystemTextbox.h"
 #endif
 
-#ifdef MOUSE_INPUT
-//#include "ofAppGLFWWindow.h"
-//#include <GLFW/glfw3.h>
-#endif
-
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static ofImage cloudsPostDistortionMap;

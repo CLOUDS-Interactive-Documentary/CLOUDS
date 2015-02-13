@@ -47,6 +47,20 @@ string CloudsClip::getSpeakerGender(){
 	return CloudsSpeaker::speakers[person].gender;
 }
 
+string CloudsClip::getLanguage(){
+	if(person == "Higa"){
+		return "JAPANESE";
+	}
+	else if(person == "PATRICIO"){
+		return "SPANISH";
+	}
+	return "ENGLISH";
+}
+
+bool CloudsClip::hasSubtitleFile(){
+	return ofFile(GetCloudsDataPath() + "language/" + GetLanguage() + "subtitles/" + getSubtitlesPath()).exists();
+}
+
 float CloudsClip::getDuration(){
 	return (endFrame - startFrame) / (is30FPS() ? 29.97 : 23.976); //TODO: HigaSan was recorded @ 30.0, need to compensate
 }
