@@ -23,6 +23,9 @@ CloudsStoryEngine::CloudsStoryEngine(){
     visualSystems = NULL;
     customAct = NULL;
 	
+	gui = NULL;
+	clipGui = NULL;
+
 	shouldGotoCredits = false;
     showOnlyStartQuestions = false;
 	
@@ -78,8 +81,12 @@ CloudsStoryEngine::CloudsStoryEngine(){
 }
 
 CloudsStoryEngine::~CloudsStoryEngine(){
-    delete gui;
-    delete clipGui;
+	if(gui != NULL){
+	    delete gui;
+	}
+	else if(clipGui != NULL){
+	    delete clipGui;
+	}
 }
 
 void CloudsStoryEngine::setup(){

@@ -49,7 +49,7 @@ static string GetLanguage(){
 	if(!languageSet){
 		string languageFile = GetCloudsDataPath() + "language.txt";
 		if(ofFile(languageFile).exists()){
-			language = ofBuffer(languageFile).getText();
+			language = ofBufferFromFile(languageFile).getText();
 		}
 		languageSet = true;
 	}
