@@ -27,7 +27,7 @@ public:
 	
     //  SET
     //
-	bool setup(string videoPath, string calibrationXMLPath, string subtitlesPath = "", float offsetTime = 0, float clipVolume =1);
+	bool setup(string videoPath, string calibrationXMLPath, string subtitlesPath = "", float offsetTime = 0, float clipVolume = 1);
 	bool setupVO(string audioPath);
 	void swapAndPlay();
 
