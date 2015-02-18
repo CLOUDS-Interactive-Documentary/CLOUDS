@@ -2014,7 +2014,7 @@ void CloudsVisualSystemRGBD::drawQuestionType(){
 
 	ofVec3f basePosition = caughtPortal != NULL ? caughtPortal->hoverPosition : selectedPortal->hoverPosition;
 	float textOpacity = 1.0;
-	questionFont.setTracking(questionFontTracking);
+	questionFont.setLetterSpacing(questionFontTracking);
 		
 	float questionTextWidth = questionFont.stringWidth(questionText);
 	float questionTextWidth2,questionTextHeight2;

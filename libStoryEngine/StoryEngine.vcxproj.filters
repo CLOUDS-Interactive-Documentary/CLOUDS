@@ -65,9 +65,6 @@
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsEvents.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
@@ -97,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h">
       <Filter>CloudsLibrary\src\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h">
+      <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

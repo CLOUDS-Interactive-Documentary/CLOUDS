@@ -4,7 +4,6 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsPortal.h"
 #include "CloudsEvents.h"
-//#include "GPUParticles/Controller.h"
 
 #ifdef HAS_GAMECAM
 #include "ofxGameCamera.h"

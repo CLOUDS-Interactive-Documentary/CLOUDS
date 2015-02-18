@@ -19,48 +19,64 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsAct.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsIntervention.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsStoryEngine.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemManager.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h" />
-    <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
-    <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsAct.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsIntervention.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsStoryEngine.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemManager.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj">
       <Project>{a72c4f16-cb16-4143-ba5c-5e4fa802d636}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj">
       <Project>{4bfe740e-43bf-49ec-bfb0-ccace5133295}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\libStoryEngine\StoryEngine.vcxproj">
+      <Project>{cdeaa2a4-ab4f-4fd4-9786-912d6a32b558}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libVisualSystemLibrary\VisualSystemsLibrary.vcxproj">
+      <Project>{7830dd8a-73ea-4efa-8642-9cde1e8847fc}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDController.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDHomeButton.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\ForceSet.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Gravity.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Points.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\State.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDController.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDHomeButton.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5999D394-4A43-4E21-85EA-27248B72E4BD}</ProjectGuid>
+    <ProjectGuid>{103DE523-23AF-4AF7-8020-52D03955F40F}</ProjectGuid>
     <RootNamespace>ofxTimelineLib</RootNamespace>
-    <ProjectName>StoryEngine</ProjectName>
+    <ProjectName>RGBD</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -101,7 +117,9 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="StoryEngine.props" />
+    <Import Project="RGBD.props" />
+    <Import Project="..\libVisualSystemLibrary\VisualSystemsLibrary.props" />
+    <Import Project="..\libStoryEngine\StoryEngine.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -112,7 +130,9 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="StoryEngine.props" />
+    <Import Project="RGBD.props" />
+    <Import Project="..\libVisualSystemLibrary\VisualSystemsLibrary.props" />
+    <Import Project="..\libStoryEngine\StoryEngine.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

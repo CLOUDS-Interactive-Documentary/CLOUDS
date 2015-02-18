@@ -482,7 +482,7 @@ ofxFTGLFont* CloudsHUDController::getFontForLayer(const string& layerName, const
             
             // make a layout
             ofxFTGLFont *newFont = new ofxFTGLFont();
-            newFont->setTracking(kerning * .08);
+			newFont->setLetterSpacing(kerning * .08);
             newFont->loadFont( fontPath, fontSize );
            // newLayout->setLineLength( 999 );
             
