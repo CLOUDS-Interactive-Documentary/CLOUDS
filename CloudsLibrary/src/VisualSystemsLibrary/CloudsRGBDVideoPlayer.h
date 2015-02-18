@@ -12,10 +12,7 @@
 #include "ofxXmlSettings.h"
 #include "ofRange.h"
 #include "CloudsGlobal.h"
-
-#ifdef SHOW_SUBTITLES
-    #include "ofxSubtitles.h"
-#endif
+#include "ofxSubtitles.h"
 
 // Secondary threads are only used to preload videos on Windows.
 // (This is done automatically on Mac with the AVFVideoPlayer)
@@ -86,11 +83,9 @@ public:
 	bool hasSubtitles();
     void drawSubtitles();
 
-	#ifdef SHOW_SUBTITLES
 	ofPtr<ofxSubtitles> getSubtitles(){
 		return currentSubtitles;
 	}
-	#endif
   protected:
 
 	//  UPDATE
@@ -152,9 +147,7 @@ public:
     bool currentClipHasSubtitles;
     bool nextClipHasSubtitles;
     
-#ifdef SHOW_SUBTITLES
     ofPtr<ofxSubtitles> currentSubtitles;
     ofPtr<ofxSubtitles> nextSubtitles;
-#endif
  
 };

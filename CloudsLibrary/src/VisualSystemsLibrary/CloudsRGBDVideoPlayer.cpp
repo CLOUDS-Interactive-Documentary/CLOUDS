@@ -7,10 +7,7 @@
 //
 
 #include "CloudsRGBDVideoPlayer.h"
-
-#ifdef SHOW_SUBTITLES
-  #include "CloudsVisualSystem.h"
-#endif
+#include "CloudsVisualSystem.h"
 
 //---------------------------------------------------------------
 CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
@@ -45,10 +42,8 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 
 	currentVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 	nextVoiceoverPlayer    = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
-#ifdef SHOW_SUBTITLES
 	currentSubtitles = ofPtr<ofxSubtitles>( new ofxSubtitles() );
 	nextSubtitles    = ofPtr<ofxSubtitles>( new ofxSubtitles() );
-#endif
 
 	currentClipHasSubtitles = nextClipHasSubtitles = false;
 }
@@ -281,9 +276,8 @@ void CloudsRGBDVideoPlayer::startPlayer(){
     
 	swap(currentPlayer,nextPlayer);
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
-#ifdef SHOW_SUBTITLES
     swap(currentSubtitles, nextSubtitles);
-#endif
+
 	currentClipHasSubtitles = nextClipHasSubtitles;
 	if(nextClipIsVO){
 		currentVoiceoverPlayer->play();
@@ -431,9 +425,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         
         /* Subtitles */
         if (currentClipHasSubtitles) {
-#ifdef SHOW_SUBTITLES
 			currentSubtitles->setTimeInSeconds(getPlayer().getPosition()*getPlayer().getDuration());
-#endif
         }
 	}
 }
@@ -446,7 +438,6 @@ bool CloudsRGBDVideoPlayer::isDone(){
 	return playingVO ? !currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && !getPlayer().isPlaying());
 }
 
-#ifdef SHOW_SUBTITLES
 bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     
     if (path == "") {
@@ -508,15 +499,9 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 	cout << "SUBTITLE FONT SIZE IS " << fontSize << endl;
     return true;
 }
-#else
-bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
-    return false;
-}
-#endif
 
 void CloudsRGBDVideoPlayer::drawSubtitles()
 {
-#ifdef SHOW_SUBTITLES
     if (hasSubtitles()) {
         int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
         int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.7;
@@ -531,7 +516,6 @@ void CloudsRGBDVideoPlayer::drawSubtitles()
 		ofDisableAlphaBlending();
         ofPopStyle();
     }
-#endif
 }
     
 bool CloudsRGBDVideoPlayer::hasSubtitles()

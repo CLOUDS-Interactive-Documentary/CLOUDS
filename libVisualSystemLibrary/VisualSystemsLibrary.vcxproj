@@ -20,8 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBufferEffectorBehavior.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxDamperBehavior.cpp" />
@@ -40,6 +38,8 @@
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
@@ -48,9 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h" />
-    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h" />
-    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h" />
-    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofx1DExtruder.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidParticle.h" />
@@ -90,6 +87,8 @@
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxTrailParticle.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.h" />
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h" />
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
@@ -100,6 +99,9 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLib.vcxproj">
+      <Project>{06df4a39-7102-462b-8f20-fc26e9a93826}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj">
       <Project>{a72c4f16-cb16-4143-ba5c-5e4fa802d636}</Project>
     </ProjectReference>
@@ -153,6 +155,7 @@
     <Import Project="VisualSystemsLibrary.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLibx64Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -165,6 +168,7 @@
     <Import Project="VisualSystemsLibrary.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
+    <Import Project="..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLibx64Release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -200,12 +204,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib />
-    <Lib>
-      <AdditionalDependencies>ftgl_static_D.lib</AdditionalDependencies>
-    </Lib>
-    <Lib>
-      <AdditionalLibraryDirectories>..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Lib>
+    <Lib />
+    <Lib />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -235,9 +235,10 @@
     <PreBuildEvent>
       <Command />
     </PreBuildEvent>
+    <Lib />
+    <Lib />
     <Lib>
       <AdditionalDependencies>ftgl_static.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\addons\ofxFTGL\libs\FTGL\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

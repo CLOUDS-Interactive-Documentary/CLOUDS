@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VisualSystemsLibrary", "..\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StoryEngine", "..\libStoryEngine\StoryEngine.vcxproj", "{5999D394-4A43-4E21-85EA-27248B72E4BD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxFTGLLib", "..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLib.vcxproj", "{06DF4A39-7102-462B-8F20-FC26E9A93826}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -68,6 +70,14 @@ Global
 		{5999D394-4A43-4E21-85EA-27248B72E4BD}.Release|Win32.Build.0 = Release|Win32
 		{5999D394-4A43-4E21-85EA-27248B72E4BD}.Release|x64.ActiveCfg = Release|x64
 		{5999D394-4A43-4E21-85EA-27248B72E4BD}.Release|x64.Build.0 = Release|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|Win32.ActiveCfg = Debug|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|Win32.Build.0 = Debug|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|x64.ActiveCfg = Debug|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|x64.Build.0 = Debug|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|Win32.ActiveCfg = Release|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|Win32.Build.0 = Release|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|x64.ActiveCfg = Release|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

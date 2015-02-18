@@ -16,12 +16,6 @@
     <Filter Include="CloudsLibrary\src\VisualSystemsLibrary">
       <UniqueIdentifier>{8cbef3b1-dd7c-477c-a36e-5491a477f504}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxFTGL">
-      <UniqueIdentifier>{1f10078b-68fa-4227-b0cf-66d6acfe60e2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxFTGL\src">
-      <UniqueIdentifier>{9ab132da-6a3e-4e35-ae5e-ab6881f83e37}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons\ofxGenerative">
       <UniqueIdentifier>{706cbce3-477c-428e-bcaa-ff52db67f230}</UniqueIdentifier>
     </Filter>
@@ -33,6 +27,12 @@
     </Filter>
     <Filter Include="addons\ofxCameraSaveLoad\src">
       <UniqueIdentifier>{0c8af5f4-14c2-479c-ae3e-671700df36ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSubtitles">
+      <UniqueIdentifier>{319539ab-ef46-434d-8e82-c181b6fbeee1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSubtitles\src">
+      <UniqueIdentifier>{9f417a9c-d307-42dd-837c-092ec28e97f6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -50,12 +50,6 @@
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp">
-      <Filter>addons\ofxFTGL\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp">
-      <Filter>addons\ofxFTGL\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.cpp">
       <Filter>addons\ofxGenerative\src</Filter>
@@ -114,6 +108,12 @@
     <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp">
       <Filter>addons\ofxCameraSaveLoad\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.cpp">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
@@ -130,15 +130,6 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h">
       <Filter>CloudsLibrary\src\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h">
-      <Filter>addons\ofxFTGL\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h">
-      <Filter>addons\ofxFTGL\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h">
-      <Filter>addons\ofxFTGL\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofx1DExtruder.h">
       <Filter>addons\ofxGenerative\src</Filter>
@@ -268,6 +259,12 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
       <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.h">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h">
+      <Filter>addons\ofxSubtitles\src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -28,7 +28,8 @@ class testApp : public ofBaseApp{
 	
 	CloudsFCPParser parser;
 	CloudsRGBDVideoPlayer player;
-
+	int currentClip;
+	vector<CloudsClip*> subtitleClips;
 	/*
     map<CloudsClip*, int> traversedClips;
     void exploreAct(CloudsClip* starter, string topic, bool playSeed, CloudsRun run, int depth, int maxDepth);

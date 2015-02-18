@@ -5,16 +5,17 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxSubtitles\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <PreBuildEvent>
       <Command>
       </Command>
     </PreBuildEvent>
-    <Link>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
+    <Link />
+    <Lib />
+    <Link />
+    <Lib />
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>

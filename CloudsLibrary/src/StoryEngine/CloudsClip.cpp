@@ -58,7 +58,8 @@ string CloudsClip::getLanguage(){
 }
 
 bool CloudsClip::hasSubtitleFile(){
-	return ofFile(GetCloudsDataPath() + "language/" + GetLanguage() + "subtitles/" + getSubtitlesPath()).exists();
+	string subtitleFilePath = GetCloudsDataPath() + "language/" + GetLanguage() + "/subtitles/" + getSubtitlesPath();
+	return ofFile(subtitleFilePath).exists();
 }
 
 float CloudsClip::getDuration(){

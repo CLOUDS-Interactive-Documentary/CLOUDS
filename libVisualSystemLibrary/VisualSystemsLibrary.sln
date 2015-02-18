@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTimelineLib", "..\..\..\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxUILib", "..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj", "{4BFE740E-43BF-49EC-BFB0-CCACE5133295}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxFTGLLib", "..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLib.vcxproj", "{06DF4A39-7102-462B-8F20-FC26E9A93826}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -39,6 +41,14 @@ Global
 		{4BFE740E-43BF-49EC-BFB0-CCACE5133295}.Release|Win32.Build.0 = Release|Win32
 		{4BFE740E-43BF-49EC-BFB0-CCACE5133295}.Release|x64.ActiveCfg = Release|x64
 		{4BFE740E-43BF-49EC-BFB0-CCACE5133295}.Release|x64.Build.0 = Release|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|Win32.ActiveCfg = Debug|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|Win32.Build.0 = Debug|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|x64.ActiveCfg = Debug|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Debug|x64.Build.0 = Debug|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|Win32.ActiveCfg = Release|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|Win32.Build.0 = Release|Win32
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|x64.ActiveCfg = Release|x64
+		{06DF4A39-7102-462B-8F20-FC26E9A93826}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
