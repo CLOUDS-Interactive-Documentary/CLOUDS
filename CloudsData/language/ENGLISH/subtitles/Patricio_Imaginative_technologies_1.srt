@@ -1,39 +1,52 @@
-1
-11 --> 141
-One of the fantastic things about code is the ability to
-
 2
-142 --> 197
- because you're in such an abstract environment
+00:00:00:29 --> 00:00:04:06
+One of the fantastic things about code
+
+
 
 3
-198 --> 399
-it's the most direct way to translate an idea from your imagination
+00:00:04:13 --> 00:00:08:10
+ is the ability to　because you're in such an abstract environment
 
-4 
-400 --> 545
-into a form that can be shared
+4
+00:00:08:14 --> 00:00:13:10
+it's the most direct way
 
 5
-546 --> 737 
-It could be a simple processing sketch
+00:00:13:13 --> 00:00:16:14
+to translate an idea
 
 6
-738 --> 814
-or an application that takes you longer to make in openFrameworks
+00:00:16:17 --> 00:00:17:27
+(qual lo que esta)
+
+
 
 7
-815 --> 945
-But in the end you have something tangible to show
+00:00:18:19 --> 00:00:22:07
+ from your imagination into a form that can be shared
 
 8
-946 --> 1055
-Something that talks about a process or about an idea 
+00:00:24:11 --> 00:00:27:27
+It could be a simple Processing sketch
 
 9
-1056 --> 1151
-that starts to develop from nowhere, an algorithm, a pattern
+00:00:29:01 --> 00:00:33:25
+or an application that takes you longer to make in openFrameworks
 
 10
-1152 --> 1248
-that repeats, something that has motion
+00:00:34:02 --> 00:00:39:08
+But in the end you have something tangible to show
+
+11
+00:00:39:15 --> 00:00:45:08
+Something that talks about a process or about an idea that starts
+
+12
+00:00:45:11 --> 00:00:49:13
+to develop from nowhere, an algorithm, a pattern that repeats, 
+
+13
+00:00:49:16 --> 00:00:52:07
+something that has motion
+

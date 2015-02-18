@@ -1,15 +1,16 @@
-1
-24 --> 241
-Interactive applications, and applications in general
-
 2
-242 --> 324
-tend to have expressive qualities
+00:00:02:08 --> 00:00:07:23
+(All these characters of ) Interactive applications, 
 
 3
-325 --> 417
-that are sometimes very abstract and 
+00:00:07:29 --> 00:00:11:06
+and applications in general
 
 4
-418 --> 502
-seem to come from the realm of the imagination.
+00:00:11:09 --> 00:00:15:07
+tend to have expressive qualities
+
+5
+00:00:15:27 --> 00:00:20:27
+that are sometimes very abstract and seem to come from the realm of the imagination.
+
