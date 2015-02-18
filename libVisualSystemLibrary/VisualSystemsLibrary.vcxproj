@@ -99,9 +99,6 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLib.vcxproj">
-      <Project>{06df4a39-7102-462b-8f20-fc26e9a93826}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj">
       <Project>{a72c4f16-cb16-4143-ba5c-5e4fa802d636}</Project>
     </ProjectReference>
@@ -155,7 +152,6 @@
     <Import Project="VisualSystemsLibrary.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLibx64Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -168,7 +164,6 @@
     <Import Project="VisualSystemsLibrary.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLibx64Release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -237,9 +232,7 @@
     </PreBuildEvent>
     <Lib />
     <Lib />
-    <Lib>
-      <AdditionalDependencies>ftgl_static.lib</AdditionalDependencies>
-    </Lib>
+    <Lib />
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

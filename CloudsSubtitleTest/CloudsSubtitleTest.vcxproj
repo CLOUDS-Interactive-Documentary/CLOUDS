@@ -182,23 +182,25 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>ftgl_static_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ftgl_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLib.vcxproj">
-      <Project>{06df4a39-7102-462b-8f20-fc26e9a93826}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj">
       <Project>{a72c4f16-cb16-4143-ba5c-5e4fa802d636}</Project>
     </ProjectReference>

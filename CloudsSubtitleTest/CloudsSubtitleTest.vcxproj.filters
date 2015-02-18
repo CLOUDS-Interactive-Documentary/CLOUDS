@@ -7,6 +7,12 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -21,10 +27,25 @@
     <Filter Include="CloudsLibrary\src">
       <UniqueIdentifier>{ba3cc539-df88-4086-8928-aabd55c76719}</UniqueIdentifier>
     </Filter>
+    <Filter Include="addons\ofxFTGL">
+      <UniqueIdentifier>{25a1eb7e-e8e3-48b2-a964-a3d068521c3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL\src">
+      <UniqueIdentifier>{43ac9927-fe1b-43f1-bef7-90e1522346b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testApp.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h">
+      <Filter>addons\ofxFTGL\src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
