@@ -8,6 +8,7 @@
 
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystem.h"
+#include "CloudsLocalization.h"
 
 //---------------------------------------------------------------
 CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
@@ -477,13 +478,14 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     
 	//////OLD WAY
     int fontSize = 36;
-	string fontPath;
-	if(GetLanguage() == "JAPANESE"){
-		fontPath = GetCloudsDataPath() + "font/mplus-1c-regular.ttf";
-	}
-	else{
-		fontPath = GetCloudsDataPath() + "font/Blender-BOOK.ttf";
-	}
+	string fontPath = GetFontPath();
+
+	//if(GetLanguage() == "JAPANESE"){
+	//	fontPath = GetCloudsDataPath() + "font/mplus-1c-regular.ttf";
+	//}
+	//else{
+	//	fontPath = GetCloudsDataPath() + "font/Blender-BOOK.ttf";
+	//}
     if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
         return false;
     }

@@ -34,6 +34,12 @@
     <Filter Include="addons\ofxSubtitles\src">
       <UniqueIdentifier>{9f417a9c-d307-42dd-837c-092ec28e97f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="addons\ofxLocalization">
+      <UniqueIdentifier>{410b4d1a-e64b-42bb-a8a5-4dba93a459f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization\src">
+      <UniqueIdentifier>{86292fa5-2011-4bf5-b1ae-1459d815f848}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
@@ -113,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp">
       <Filter>addons\ofxSubtitles\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
+      <Filter>addons\ofxLocalization\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +274,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h">
       <Filter>addons\ofxSubtitles\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h">
+      <Filter>addons\ofxLocalization\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
+      <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

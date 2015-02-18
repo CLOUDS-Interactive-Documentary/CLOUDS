@@ -25,16 +25,10 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	
-	
 	CloudsFCPParser parser;
 	CloudsRGBDVideoPlayer player;
 	vector<CloudsClip*> subtitleClips;
 	int currentClip;
 	void playCurrentClip();
-
-	/*
-    map<CloudsClip*, int> traversedClips;
-    void exploreAct(CloudsClip* starter, string topic, bool playSeed, CloudsRun run, int depth, int maxDepth);
-    */
 
 };

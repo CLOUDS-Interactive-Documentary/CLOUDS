@@ -43,6 +43,8 @@ static string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolde
 	
 	return datapath;
 }
+
+//--------------------------------------------------------------------
 static string language = "ENGLISH";
 static bool languageSet = false;
 static string GetLanguage(){
@@ -81,6 +83,7 @@ static string relinkFilePath(string filePath){
 	
 	return filePath;
 }
+
 
 //--------------------------------------
 static inline std::string &ltrim(std::string &s) {
