@@ -1216,6 +1216,7 @@ void CloudsFCPParser::loadMediaAssets(){
 		ofLogError("CloudsFCPParser::loadMediaAssets") << "default directory " << defaultFilePath << " does not exist";
 	}
 }
+
 void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
 	hasMediaAssetIndeces.clear();
 	hasMediaAssetAndQuestionIndeces.clear();

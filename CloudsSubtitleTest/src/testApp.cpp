@@ -15,22 +15,41 @@ void testApp::setup(){
 
 	for(int i = 0; i < parser.getAllClips().size(); i++){
 		CloudsClip* clip = parser.getAllClips()[i];
-		if(clip->hasSubtitleFile()){
+		if(clip->hasSubtitleFile() && clip->hasMediaAsset){
 			subtitleClips.push_back(clip);
 			cout << "added clip " << clip->getLinkName() << endl;
 		}
 	}
 
+	cout << "Found " << subtitleClips.size() << endl;
+
+	//double check there are no subtitles without clips
+	ofDirectory dir(GetCloudsDataPath() + "language/" + GetLanguage() + "/subtitles/");
+	dir.allowExt("srt");
+	dir.listDir();
+
+	cout << "Found " << dir.size() << " srt files" << endl;
+
+	for(int i = 0; i < dir.size(); i++){
+		string movieFilePath = GetCloudsDataPath(true) + "media/" + ofFilePath::removeExt(dir.getName(i)) + ".mov";
+		if(!ofFile(movieFilePath).exists()){
+			cout << "NO FILE " << movieFilePath << endl;
+		}
+	}
+
+
+	playCurrentClip();
 }
 
 
 //--------------------------------------------------------------
 void testApp::update(){
-
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
+	player.getPlayer().draw(0,0);
+	player.drawSubtitles(ofGetWidth()/2.0, ofGetHeight()*0.7);
 	
 }
 
@@ -41,8 +60,25 @@ void testApp::exit(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+	if(key == OF_KEY_LEFT){
+		currentClip = (currentClip + 1) % subtitleClips.size();
+		playCurrentClip();
+	}
+	else if(key == OF_KEY_RIGHT){
+		currentClip--;
+		if(currentClip < 0) currentClip += subtitleClips.size();
+		playCurrentClip();
+	}
+}
 
-
+//--------------------------------------------------------------
+void testApp::playCurrentClip(){
+	CloudsClip* clip = subtitleClips[currentClip];
+	player.setup(clip->combinedVideoPath,
+				 clip->combinedCalibrationXMLPath,
+				 clip->getSubtitlesPath(),
+				 1.0, clip->getSpeakerVolume());
+	player.swapAndPlay();
 }
 
 //--------------------------------------------------------------

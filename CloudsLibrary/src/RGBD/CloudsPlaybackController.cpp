@@ -1457,12 +1457,11 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath);
 	}
 	else{
-		string subtitlesPath = GetCloudsDataPath() + "language/" + GetLanguage() + "/subtitles/"+ clip->getSubtitlesPath();
+		//string subtitlesPath = GetCloudsDataPath() + "language/" + GetLanguage() + "/subtitles/"+ clip->getSubtitlesPath();
 
 		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip->combinedVideoPath,
 																					clip->combinedCalibrationXMLPath,
-																					//GetCloudsDataPath() + "subtitles/"+ clip->getSubtitlesPath(),
-																					subtitlesPath,
+																					clip->getSubtitlesPath(),
 																					1.0, clip->getSpeakerVolume());
 	}
     

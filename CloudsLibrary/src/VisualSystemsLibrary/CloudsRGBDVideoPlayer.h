@@ -47,12 +47,8 @@ public:
 	bool isDone();
 	bool forceStop; //default to true when playin in clouds
     
-	float getFadeIn(){
-		return fadeInValue;
-	};
-	float getFadeOut(){
-		return fadeOutValue;
-	};
+	float getFadeIn();
+	float getFadeOut();
 
 	ofVideoPlayer& getPlayer();
 	ofTexture& getTextureReference();
@@ -82,10 +78,10 @@ public:
 	
 	bool hasSubtitles();
     void drawSubtitles();
+	
+	void drawSubtitles(int x, int y);
+	ofPtr<ofxSubtitles> getSubtitles();
 
-	ofPtr<ofxSubtitles> getSubtitles(){
-		return currentSubtitles;
-	}
   protected:
 
 	//  UPDATE

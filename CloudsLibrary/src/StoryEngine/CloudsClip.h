@@ -94,6 +94,7 @@ class CloudsClip {
 	string getCombinedMovieFile();
 	string getCombinedCalibrationXML();
     string getSubtitlesPath();
+	string getSubtitlesFilename();
     string getFFMpegLine(string alternativeVideoPath, string exportFolder);
     
 	bool hasSubtitleFile();

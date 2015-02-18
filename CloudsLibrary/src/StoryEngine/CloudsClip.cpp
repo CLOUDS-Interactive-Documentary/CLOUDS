@@ -57,11 +57,6 @@ string CloudsClip::getLanguage(){
 	return "ENGLISH";
 }
 
-bool CloudsClip::hasSubtitleFile(){
-	string subtitleFilePath = GetCloudsDataPath() + "language/" + GetLanguage() + "/subtitles/" + getSubtitlesPath();
-	return ofFile(subtitleFilePath).exists();
-}
-
 float CloudsClip::getDuration(){
 	return (endFrame - startFrame) / (is30FPS() ? 29.97 : 23.976); //TODO: HigaSan was recorded @ 30.0, need to compensate
 }
@@ -133,7 +128,15 @@ string CloudsClip::getCombinedCalibrationXML(){
 	return getID() + ".xml";
 }
 
+bool CloudsClip::hasSubtitleFile(){
+	return ofFile(getSubtitlesPath()).exists();
+}
+
 string CloudsClip::getSubtitlesPath() {
+	return GetCloudsDataPath() + "language/" + GetLanguage() + "/subtitles/" + getSubtitlesFilename();
+}
+
+string CloudsClip::getSubtitlesFilename() {
     return getID() + ".srt";
 }
 

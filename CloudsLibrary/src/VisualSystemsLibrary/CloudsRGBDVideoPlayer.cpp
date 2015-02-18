@@ -348,21 +348,39 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 	shader.setUniform1f("flowPosition", flowPosition);
 }
 
-//--------------------------------------------------------------- ACTIONS
+//--------------------------------------------------------------- 
 ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 	return *currentPlayer;
 }
 
+//--------------------------------------------------------------- 
 ofTexture& CloudsRGBDVideoPlayer::getTextureReference(){
 	return getPlayer().getTextureReference();
 }
 
+//--------------------------------------------------------------- 
+ofPtr<ofxSubtitles> CloudsRGBDVideoPlayer::getSubtitles(){
+	return currentSubtitles;
+}
+
+    
+//--------------------------------------------------------------- 
+float CloudsRGBDVideoPlayer::getFadeIn(){
+	return fadeInValue;
+}
+
+//--------------------------------------------------------------- 
+float CloudsRGBDVideoPlayer::getFadeOut(){
+	return fadeOutValue;
+}
+
+//--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::stop(){
     getPlayer().stop();
     currentVoiceoverPlayer->stop();
 }
     
-//--------------------------------------------------------------- ACTIONS
+//--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
 	if(!playingVO){
@@ -430,14 +448,17 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	}
 }
 
+//--------------------------------------------------------------- 
 bool CloudsRGBDVideoPlayer::isPlaying(){
 	return playingVO ? currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && getPlayer().isPlaying());
 }
 
+//--------------------------------------------------------------- 
 bool CloudsRGBDVideoPlayer::isDone(){
 	return playingVO ? !currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && !getPlayer().isPlaying());
 }
 
+//--------------------------------------------------------------- 
 bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     
     if (path == "") {
@@ -456,7 +477,13 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     
 	//////OLD WAY
     int fontSize = 36;
-	string fontPath = GetCloudsDataPath() + "font/Blender-BOOK.ttf";;
+	string fontPath;
+	if(GetLanguage() == "JAPANESE"){
+		fontPath = GetCloudsDataPath() + "font/mplus-1c-regular.ttf";
+	}
+	else{
+		fontPath = GetCloudsDataPath() + "font/Blender-BOOK.ttf";
+	}
     if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
         return false;
     }
@@ -500,13 +527,17 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     return true;
 }
 
-void CloudsRGBDVideoPlayer::drawSubtitles()
-{
+//--------------------------------------------------------------- 
+void CloudsRGBDVideoPlayer::drawSubtitles(){
+    int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
+    int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.7;
+	drawSubtitles(x,y);
+}
+
+//--------------------------------------------------------------- 
+void CloudsRGBDVideoPlayer::drawSubtitles(int x, int y){
     if (hasSubtitles()) {
-        int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
-        int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.7;
         ofPushStyle();
-		//glDisable(GL_CULL_FACE);
 		ofDisableLighting();
 		ofEnableAlphaBlending();
         ofSetColor(0, 200);
@@ -518,8 +549,8 @@ void CloudsRGBDVideoPlayer::drawSubtitles()
     }
 }
     
-bool CloudsRGBDVideoPlayer::hasSubtitles()
-{
+//--------------------------------------------------------------- 
+bool CloudsRGBDVideoPlayer::hasSubtitles(){
     return currentClipHasSubtitles;
 }
     
