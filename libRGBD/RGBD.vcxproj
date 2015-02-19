@@ -34,9 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.cpp" />
@@ -54,9 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h" />
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\GPUParticles\Force.h" />

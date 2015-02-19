@@ -29,7 +29,6 @@
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsStoryEngine.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemManager.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -46,7 +45,6 @@
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsStoryEngine.h" />
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemManager.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.h" />
   </ItemGroup>
   <ItemGroup>
@@ -143,7 +141,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <MinimalRebuild>false</MinimalRebuild>
-      <PreprocessorDefinitions>CLOUDS_NO_VS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -171,7 +169,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>CLOUDS_NO_VS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

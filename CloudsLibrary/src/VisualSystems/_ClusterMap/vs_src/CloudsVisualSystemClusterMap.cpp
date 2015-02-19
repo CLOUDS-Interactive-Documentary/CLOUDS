@@ -1408,7 +1408,7 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 		questionTextOpacity = ofMap(caughtQuestion->hoverPercentComplete, 0.0, .05, 0.0, 1.0, true);
 		
 		scaleModifier = .5;
-		questionFont.setTracking(questionFontTracking*.1);
+		questionFont.setLetterSpacing(questionFontTracking*.1);
 		
 		questionText = ofToUpper(questionText);
 		

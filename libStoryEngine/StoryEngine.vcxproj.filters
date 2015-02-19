@@ -42,9 +42,6 @@
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsStoryEngine.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemManager.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClCompile>
@@ -84,9 +81,6 @@
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsStoryEngine.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemManager.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">

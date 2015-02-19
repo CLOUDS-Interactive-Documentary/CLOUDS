@@ -12,6 +12,7 @@
 #include "CloudsIntroSequence.h"
 #include "CloudsVisualSystemClusterMap.h"
 #include "CloudsVisualSystemRGBD.h"
+#include "CloudsVisualSystemManager.h"
 
 #include "CloudsHUDController.h"
 

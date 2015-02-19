@@ -7,7 +7,6 @@
 #include "CloudsEvents.h"
 #include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
-#include "CloudsVisualSystemManager.h"
 #include "CloudsRun.h"
 #include "CloudsDichotomy.h"
 
@@ -45,6 +44,7 @@ typedef struct {
 } CloudsStoryState;
 
 class CloudsAct;
+class CloudsVisualSystemManager;
 class CloudsStoryEngine {
   public:
 	CloudsStoryEngine();

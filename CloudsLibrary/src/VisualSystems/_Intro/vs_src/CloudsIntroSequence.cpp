@@ -843,7 +843,7 @@ void CloudsIntroSequence::drawCloudsType(){
 	ofEnableAlphaBlending();
 	ofSetColor(255, currentTitleOpacity*255);
 	ofTranslate(0, 0, titleTypeOffset );
-	extrudedTitleText.setTracking( titleTypeTracking );
+	extrudedTitleText.setLetterSpacing( titleTypeTracking );
 	float width  = extrudedTitleText.stringWidth("CLOUDS");
 	float height = extrudedTitleText.stringHeight("CLOUDS");
 	
@@ -913,7 +913,7 @@ void CloudsIntroSequence::drawHelperType(){
 		helperTextOpacity = ofMap(caughtQuestion->hoverPercentComplete, 0.0, .05, 0.0, 1.0, true);
 
 		scaleModifier = .5;
-		helperFont.setTracking(helperFontTracking*.1);
+		helperFont.setLetterSpacing(helperFontTracking*.1);
 	}
 
     //draw the text
@@ -1085,7 +1085,7 @@ void CloudsIntroSequence::selfDrawOverlay(){
 	string helpHoverText = "CLICK TO BEGIN";
 	float helperTextOpacity = clickToBeginAlpha;
 	ofSetColor(255,helperTextOpacity*255);
-	helperFont.setTracking(titleTypeTracking*.7);
+	helperFont.setLetterSpacing(titleTypeTracking*.7);
 	float centerX = ofGetWidth()/2  - helperFont.stringWidth(helpHoverText)/2;
 	float centerY = ofGetHeight()/2 - helperFont.stringHeight(helpHoverText)/2;
 	helperFont.drawString(helpHoverText, centerX, centerY + helperFont.stringHeight(helpHoverText)*10);

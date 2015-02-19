@@ -16,6 +16,9 @@
     <ClCompile Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.cpp">
       <Filter>addons\ofxGameCamera\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsTransitionController.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -58,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.h">
       <Filter>addons\ofxGameCamera\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsTransitionController.h">
+      <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

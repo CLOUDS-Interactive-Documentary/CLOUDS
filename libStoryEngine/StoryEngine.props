@@ -5,7 +5,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\Sound;..\CloudsLibrary\src\Core;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <PreBuildEvent>

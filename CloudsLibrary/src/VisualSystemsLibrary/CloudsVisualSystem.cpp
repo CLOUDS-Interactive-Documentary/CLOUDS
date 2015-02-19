@@ -826,7 +826,7 @@ void CloudsVisualSystem::drawInterludeInterface(){
 	resetNode.draw();
 	continueNode.draw();
 	
-	interludeFont.setTracking(interludeTypeTracking);
+	interludeFont.setLetterSpacing(interludeTypeTracking);
 	float hoverTextWidth  = interludeFont.stringWidth("RESET");
 	float hoverTextHeight = interludeFont.stringHeight("RESET");
 
@@ -834,10 +834,10 @@ void CloudsVisualSystem::drawInterludeInterface(){
 	getOculusRift().multBillboardMatrix( resetNode.worldPosition, getCameraRef().getUpDir() );
 	ofRotate(180,0,0,1);
 	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
-	interludeFont.drawString("RESET", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	interludeFont.drawString( "RESET", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
 	ofPopMatrix();
 	
-	interludeFont.setTracking(interludeTypeTracking*.5);
+	interludeFont.setLetterSpacing(interludeTypeTracking*.5);
 	hoverTextWidth  = interludeFont.stringWidth("CONTINUE");
 	hoverTextHeight = interludeFont.stringHeight("CONTINUE");
 	

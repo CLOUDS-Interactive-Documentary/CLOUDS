@@ -1189,7 +1189,7 @@ void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string 
 			ofSetColor(1.0, 100*crossfadeValue*alpha) ;
 		}
 		ofCircle(cursorPosition, interludeArcRadius*crossfadeValue);
-		interludeInterfaceFont.setTracking(tracking);
+		interludeInterfaceFont.setLetterSpacing(tracking);
 		float typeWidth  = interludeInterfaceFont.stringWidth(promptType);
 		float typeHeight = interludeInterfaceFont.stringHeight(promptType);
 		//draw type

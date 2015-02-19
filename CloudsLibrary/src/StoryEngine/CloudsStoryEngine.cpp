@@ -8,6 +8,7 @@
 
 #include "CloudsStoryEngine.h"
 #include "CloudsAct.h"
+#include "CloudsVisualSystemManager.h"
 
 bool logsort(pair<float,string> a, pair<float,string> b ){
     return a.first > b.first;
@@ -16,7 +17,6 @@ bool logsort(pair<float,string> a, pair<float,string> b ){
 bool score_sort(pair<string,int> a, pair<string,int>b ){
     return a.second > b.second;
 }
-
 
 CloudsStoryEngine::CloudsStoryEngine(){
     parser = NULL;
