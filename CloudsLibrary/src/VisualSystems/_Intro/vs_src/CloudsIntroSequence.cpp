@@ -14,6 +14,8 @@
 #include "CloudsInputKinectOSC.h"
 #endif
 
+#include "CloudsLocalization.h"
+
 #ifdef MOUSE_INPUT
 //for moving mouse position on idle
 #include "ofAppGLFWWindow.h"
@@ -868,7 +870,8 @@ void CloudsIntroSequence::drawHelperType(){
 	ofDisableLighting();
     
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
-		helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
+		//helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
+		helperFont.loadFont(GetFontPath(), helperFontSize);
 		currentHelperFontSize = helperFontSize;
 	}
 
@@ -881,25 +884,25 @@ void CloudsIntroSequence::drawHelperType(){
 	#ifdef OCULUS_RIFT
 	if(!startedOnclick){
 		if(introNodeThree.hover || introNodeTwo.finished){
-			helpHoverText = "< LOOK FORWARD";
+			helpHoverText = "< " + GetTranslationForString("LOOK FORWARD");
 			basePosition = introNodeTwo.worldPosition;
 			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
 										   CalibrationNode::nodeActivatedTime,
 										   CalibrationNode::nodeActivatedTime+.8,0.0,.8,true), 2.) * (1.0 - introNodeThree.percentComplete);
 		}
 		else if(introNodeTwo.hover || introNodeOne.finished){
-			helpHoverText = "LOOK RIGHT >";
+			helpHoverText = GetTranslationForString("LOOK RIGHT") + " >";
 			basePosition = introNodeOne.worldPosition;
 			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
 										   CalibrationNode::nodeActivatedTime,
 										   CalibrationNode::nodeActivatedTime+.8,0.0,.8,true), 2.);
 		}
 		else {
-			helpHoverText = "< LOOK LEFT";
+			helpHoverText = "< " + GetTranslationForString("LOOK LEFT");
 			basePosition = introNodeThree.worldPosition;
 			helperTextOpacity = (currentTitleOpacity - titleTypeOpacity) * (1.0 - introNodeOne.percentComplete);
 		}
-		helperFont.setTracking(helperFontTracking);
+		helperFont.setLetterSpacing(helperFontTracking);
 	}
 	#elif defined(MOUSE_INPUT)
 		//helpHoverText = "< LOOK FORWARD";
@@ -978,8 +981,8 @@ void CloudsIntroSequence::drawHelperType(){
                                         firstQuestionStoppedTime, firstQuestionStoppedTime+2,
                                         0.0, .2, true) * (1.0-helperTextOpacity);
         
-        float hintTextWidth  = helperFont.stringWidth("SELECT A QUESTION");
-		float hintTextHeight = helperFont.stringHeight("SELECT A QUESTION");
+        float hintTextWidth  = helperFont.stringWidth(GetTranslationForString("SELECT A QUESTION"));
+		float hintTextHeight = helperFont.stringHeight(GetTranslationForString("SELECT A QUESTION"));
 		ofVec3f basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
 #ifdef OCULUS_RIFT
 		getOculusRift().multBillboardMatrix( basePosition );
@@ -992,15 +995,15 @@ void CloudsIntroSequence::drawHelperType(){
 				helperFontScale*.8);
         
         ofSetColor(255, 255*questionhintAlpha);
-		helperFont.drawString("SELECT A QUESTION", -hintTextWidth*.5, hintTextHeight*.5 );
+		helperFont.drawString(GetTranslationForString("SELECT A QUESTION"), -hintTextWidth*.5, hintTextHeight*.5 );
 
         if(caughtQuestion != NULL){
             float questionHoldAlpha = ofMap(caughtQuestion->hoverPercentComplete, .2, .3, 0.0, .2, true);
             ofSetColor(255, 255*questionHoldAlpha);
 #ifdef MOUSE_INPUT
-			string textPrompt = "CLICK TO SELECT";
+			string textPrompt = GetTranslationForString("CLICK TO SELECT");
 #else
-			string textPrompt = "HOLD TO SELECT";
+			string textPrompt = GetTranslationForString("HOLD TO SELECT");
 #endif
             hintTextWidth = helperFont.stringWidth(textPrompt);
             hintTextHeight = helperFont.stringWidth(textPrompt);
@@ -1082,7 +1085,7 @@ void CloudsIntroSequence::selfDrawOverlay(){
 #if defined(MOUSE_INPUT)
 	
 	ofPushStyle();
-	string helpHoverText = "CLICK TO BEGIN";
+	string helpHoverText = GetTranslationForString("CLICK TO BEGIN");
 	float helperTextOpacity = clickToBeginAlpha;
 	ofSetColor(255,helperTextOpacity*255);
 	helperFont.setLetterSpacing(titleTypeTracking*.7);

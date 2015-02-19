@@ -1,5 +1,6 @@
 #include "testApp.h"
 #include "CloudsGlobal.h"
+#include "CloudsIntroSequence.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -8,6 +9,12 @@ void testApp::setup(){
 	//8ofSetFrameRate(60);
 	ofBackground(0);
 	//ofToggleFullscreen();
+
+	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
+	CloudsIntroSequence* introSequence;
+	introSequence = new CloudsIntroSequence();
+	introSequence->setup();
+	introSequence->setDrawToScreen(false);
 
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();

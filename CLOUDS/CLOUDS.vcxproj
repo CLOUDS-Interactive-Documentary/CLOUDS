@@ -105,24 +105,24 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
-    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\libRGBD\RGBD.props" />
     <Import Project="..\libStoryEngine\StoryEngine.props" />
     <Import Project="..\libVisualSystemLibrary\VisualSystemsLibrary.props" />
+    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Oculus|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
-    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2.props" />
     <Import Project="..\libRGBD\RGBD.props" />
     <Import Project="..\libStoryEngine\StoryEngine.props" />
     <Import Project="..\libVisualSystemLibrary\VisualSystemsLibrary.props" />
+    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -145,24 +145,24 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
-    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\libRGBD\RGBD.props" />
     <Import Project="..\libStoryEngine\StoryEngine.props" />
     <Import Project="..\libVisualSystemLibrary\VisualSystemsLibrary.props" />
+    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Oculus|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
-    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2.props" />
     <Import Project="..\libRGBD\RGBD.props" />
     <Import Project="..\libStoryEngine\StoryEngine.props" />
     <Import Project="..\libVisualSystemLibrary\VisualSystemsLibrary.props" />
+    <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

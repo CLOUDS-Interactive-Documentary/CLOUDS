@@ -9,32 +9,11 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsGlobal.h"
-#include "ofxLocalization.h"
 
 
 //--------------------------------------
-static ofxLocalization localization;
-static bool localizationLoaded = false;
-static bool InitLocalization(){
-	localizationLoaded = true;
-	return localization.load(GetCloudsDataPath() + "language/languagefile.csv");
-}
-
+bool InitLocalization();
 //--------------------------------------
-static string GetTranslationForString(string toTranslate){
-	if(!localizationLoaded){
-		InitLocalization();
-	}
-	return localization.translateKeyToLanguage(toTranslate, GetLanguage());
-}
-
+string GetTranslationForString(string toTranslate);
 //--------------------------------------
-static string GetFontPath(){
-	if(GetLanguage() == "JAPANESE"){
-		return GetCloudsDataPath() + "font/mplus-1c-regular.ttf";
-	}
-	else{
-		return 	GetCloudsDataPath() + "font/Blender-BOOK.ttf";
-	}
-}
+string GetFontPath();

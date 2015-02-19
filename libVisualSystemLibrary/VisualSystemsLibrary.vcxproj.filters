@@ -123,6 +123,15 @@
     <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
       <Filter>addons\ofxLocalization\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
+      <Filter>CloudsLibrary\src\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
@@ -280,6 +289,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
       <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

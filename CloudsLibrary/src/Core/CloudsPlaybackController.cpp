@@ -175,6 +175,7 @@ void CloudsPlaybackController::setup(){
 	
 	loading = true;
 	
+
     if(!eventsRegistered){
 		
 		eventsRegistered = true;
@@ -195,7 +196,7 @@ void CloudsPlaybackController::setup(){
         ofAddListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
         
 	}
-		
+	
 	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
@@ -205,12 +206,11 @@ void CloudsPlaybackController::setup(){
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
 	rgbdVisualSystem->setDrawToScreen(false);
-	
+
 	cout << "*****LOAD STEP*** STARTING CLUSTER" << endl;
 	clusterMap = new CloudsVisualSystemClusterMap();
 	clusterMap->setup();
 	clusterMap->setDrawToScreen(false);
-	
 
 	cout << "*****LOAD STEP*** STARTING HUD" << endl;
 	hud.setup();
