@@ -132,8 +132,8 @@ Global
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Debug_Oculus|Mixed Platforms.Build.0 = Debug|Win32
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Debug_Oculus|Win32.ActiveCfg = Debug|Win32
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Debug_Oculus|Win32.Build.0 = Debug|Win32
-		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Debug_Oculus|x64.ActiveCfg = Debug|x64
-		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Debug_Oculus|x64.Build.0 = Debug|x64
+		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Debug_Oculus|x64.ActiveCfg = Debug_Oculus|x64
+		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Debug_Oculus|x64.Build.0 = Debug_Oculus|x64
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Debug|Mixed Platforms.Build.0 = Debug|Win32
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Debug|Win32.ActiveCfg = Debug|Win32
@@ -144,8 +144,8 @@ Global
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Release_Oculus|Mixed Platforms.Build.0 = Release|Win32
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Release_Oculus|Win32.ActiveCfg = Release|Win32
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Release_Oculus|Win32.Build.0 = Release|Win32
-		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Release_Oculus|x64.ActiveCfg = Release|x64
-		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Release_Oculus|x64.Build.0 = Release|x64
+		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Release_Oculus|x64.ActiveCfg = Release_Oculus|x64
+		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Release_Oculus|x64.Build.0 = Release_Oculus|x64
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Release|Mixed Platforms.ActiveCfg = Release|Win32
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{7830DD8A-73EA-4EFA-8642-9CDE1E8847FC}.Release|Win32.ActiveCfg = Release|Win32
@@ -204,8 +204,8 @@ Global
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Debug_Oculus|Mixed Platforms.Build.0 = Debug|Win32
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Debug_Oculus|Win32.ActiveCfg = Debug|Win32
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Debug_Oculus|Win32.Build.0 = Debug|Win32
-		{103DE523-23AF-4AF7-8020-52D03955F40F}.Debug_Oculus|x64.ActiveCfg = Debug|x64
-		{103DE523-23AF-4AF7-8020-52D03955F40F}.Debug_Oculus|x64.Build.0 = Debug|x64
+		{103DE523-23AF-4AF7-8020-52D03955F40F}.Debug_Oculus|x64.ActiveCfg = Debug_Oculus|x64
+		{103DE523-23AF-4AF7-8020-52D03955F40F}.Debug_Oculus|x64.Build.0 = Debug_Oculus|x64
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Debug|Mixed Platforms.Build.0 = Debug|Win32
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Debug|Win32.ActiveCfg = Debug|Win32
@@ -216,8 +216,8 @@ Global
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Release_Oculus|Mixed Platforms.Build.0 = Release|Win32
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Release_Oculus|Win32.ActiveCfg = Release|Win32
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Release_Oculus|Win32.Build.0 = Release|Win32
-		{103DE523-23AF-4AF7-8020-52D03955F40F}.Release_Oculus|x64.ActiveCfg = Release|x64
-		{103DE523-23AF-4AF7-8020-52D03955F40F}.Release_Oculus|x64.Build.0 = Release|x64
+		{103DE523-23AF-4AF7-8020-52D03955F40F}.Release_Oculus|x64.ActiveCfg = Release_Oculus|x64
+		{103DE523-23AF-4AF7-8020-52D03955F40F}.Release_Oculus|x64.Build.0 = Release_Oculus|x64
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Release|Mixed Platforms.ActiveCfg = Release|Win32
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{103DE523-23AF-4AF7-8020-52D03955F40F}.Release|Win32.ActiveCfg = Release|Win32
