@@ -31,7 +31,24 @@ string GetTranslationForString(string toTranslate){
 	return localization.translateKeyToLanguage(toTranslate, GetLanguage());
 }
 
+string GetThinFontPath(){
+	if(GetLanguage() == "JAPANESE"){
+		return GetCloudsDataPath() + "font/mplus-1c-light.ttf";
+	}
+	else{
+		return GetCloudsDataPath() + "font/Blender-THIN.ttf";
+	}
+}
 //--------------------------------------
+string GetMediumFontPath(){
+	if(GetLanguage() == "JAPANESE"){
+		return GetCloudsDataPath() + "font/mplus-1c-medium.ttf";
+	}
+	else{
+		return 	GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
+	}
+}
+
 string GetFontPath(){
 	if(GetLanguage() == "JAPANESE"){
 		return GetCloudsDataPath() + "font/mplus-1c-regular.ttf";

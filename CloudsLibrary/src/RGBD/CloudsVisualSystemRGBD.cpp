@@ -2,6 +2,7 @@
 #include "CloudsVisualSystemRGBD.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
+#include "CloudsLocalization.h"
 
 CloudsVisualSystemEvents CloudsVisualSystemRGBD::events;
 
@@ -223,7 +224,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	rightPortal.bLookAtCamera = true;
 	resetPortal.bLookAtCamera = true;
 	
-	resetPortal.question = "RESET";
+	//resetPortal.question = "RESET";
 
 	loadShader();
 	
@@ -236,15 +237,11 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	cout << "*** LOAD GENERATE MESH" << endl;
 	generateMesh();
 		
-	//particulateController.setParticleCount(2000);
-	//particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-	//particulateController.setup();
 	voxelMesh.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
 			
-//	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
 #ifdef HAS_GAMECAM
 	transitionCam.setup();
 	transitionCam.applyTranslation = true;
@@ -2003,7 +2000,8 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 //called either in draw for rift, or draw overlay for normal
 void CloudsVisualSystemRGBD::drawQuestionType(){
 	if(!questionFont.isLoaded() || currentQuestionFontSize != questionFontSize){
-		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+//		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+		questionFont.loadFont(GetFontPath(), questionFontSize);
 		currentQuestionFontSize = questionFontSize;
 	}
 	
@@ -2143,10 +2141,10 @@ string CloudsVisualSystemRGBD::getQuestionText(){
         return "WHAT DOES IT FEEL LIKE TO CODE?";
     }
     else if(caughtPortal != NULL){
-        return ofToUpper(caughtPortal->question);
+        return GetTranslationForString( ofToUpper(caughtPortal->question) );
     }
     else if(selectedPortal != NULL){
-        return ofToUpper(selectedPortal->question);
+        return GetTranslationForString( ofToUpper(selectedPortal->question) );
     }
     return "";
 }

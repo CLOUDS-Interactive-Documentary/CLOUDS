@@ -16,7 +16,7 @@ void testApp::setup(){
     testProjEx = false;
     startTime = 0;
 
-	ofSetWindowPosition(1920 + 1920*.5,1080*.5);
+	//ofSetWindowPosition(1920 + 1920*.5,1080*.5);
 	fullscreened = false;
 
 

@@ -363,7 +363,6 @@ ofTexture& CloudsRGBDVideoPlayer::getTextureReference(){
 ofPtr<ofxSubtitles> CloudsRGBDVideoPlayer::getSubtitles(){
 	return currentSubtitles;
 }
-
     
 //--------------------------------------------------------------- 
 float CloudsRGBDVideoPlayer::getFadeIn(){
@@ -480,12 +479,6 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     int fontSize = 36;
 	string fontPath = GetFontPath();
 
-	//if(GetLanguage() == "JAPANESE"){
-	//	fontPath = GetCloudsDataPath() + "font/mplus-1c-regular.ttf";
-	//}
-	//else{
-	//	fontPath = GetCloudsDataPath() + "font/Blender-BOOK.ttf";
-	//}
     if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
         return false;
     }
@@ -509,22 +502,6 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 		return false;
 	}
 
-	/*
-    int fontSize = 36;
-    // find font size based on 85% canvas width and a predefined maximum string
-    float requiredWidth = CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
-    string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
-    ofRectangle bounds;//= nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
-    
-    // loop here until you find the right font size
-    do {
-		fontSize--;
-		if(!nextSubtitles->setup(path, GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
-			return false;
-		}
-        bounds = nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
-    }while(bounds.width > requiredWidth);
-	*/
 	cout << "SUBTITLE FONT SIZE IS " << fontSize << endl;
     return true;
 }

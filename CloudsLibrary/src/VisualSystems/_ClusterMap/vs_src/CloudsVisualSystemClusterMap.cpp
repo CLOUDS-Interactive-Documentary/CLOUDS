@@ -6,6 +6,7 @@
 #include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
 #include "CloudsAct.h"
+#include "CloudsLocalization.h"
 
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	run = NULL;
@@ -1125,7 +1126,8 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 		topicFont.resize(typeSizeRange.span());
 		int fontIndex = 0;
 		for(int i = typeSizeRange.min; i < typeSizeRange.max; i++){
-			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
+//			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
+			topicFont[fontIndex++].loadFont( GetFontPath(), i);
 		}
 		currentTypeSizeRange = typeSizeRange;
 	}
@@ -1394,7 +1396,8 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 	ofDisableLighting();
     
 	if(!questionFont.isLoaded() || currentQuestionFontSize != questionFontSize){
-		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+		//questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+		questionFont.loadFont(GetFontPath(), questionFontSize);
 		currentQuestionFontSize = questionFontSize;
 	}
 	string questionText;
@@ -1410,7 +1413,7 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 		scaleModifier = .5;
 		questionFont.setLetterSpacing(questionFontTracking*.1);
 		
-		questionText = ofToUpper(questionText);
+		questionText = GetTranslationForString( ofToUpper(questionText) );
 		
 		float questionTextWidth = questionFont.stringWidth(questionText);
 		float questionTextWidth2, questionTextHeight2;
@@ -1548,7 +1551,8 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	
     if(drawAssociation){
         if(!associationFont.isLoaded() || associationFontSize != currentAssociationFont){
-            associationFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", associationFontSize);
+            //associationFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", associationFontSize);
+			associationFont.loadFont( GetFontPath(), associationFontSize);
             currentAssociationFont = associationFontSize;
         }
         

@@ -819,33 +819,36 @@ void CloudsVisualSystem::drawInterludeInterface(){
 	ofSetColor(255);
 	
 	if(!interludeFont.isLoaded() || currentInterludeFontSize != interludeFontSize){
-		interludeFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", interludeFontSize);
+		//interludeFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", interludeFontSize);
+		interludeFont.loadFont(GetFontPath(), interludeFontSize);
 		currentInterludeFontSize = interludeFontSize;
 	}
 
 	resetNode.draw();
 	continueNode.draw();
-	
+	string resetTranslation = GetTranslationForString("RESET");
+	string continueTranslation = GetTranslationForString("CONTINUE");
+
 	interludeFont.setLetterSpacing(interludeTypeTracking);
-	float hoverTextWidth  = interludeFont.stringWidth("RESET");
-	float hoverTextHeight = interludeFont.stringHeight("RESET");
+	float hoverTextWidth  = interludeFont.stringWidth(resetTranslation);
+	float hoverTextHeight = interludeFont.stringHeight(resetTranslation);
 
 	ofPushMatrix();
 	getOculusRift().multBillboardMatrix( resetNode.worldPosition, getCameraRef().getUpDir() );
 	ofRotate(180,0,0,1);
 	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
-	interludeFont.drawString( "RESET", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	interludeFont.drawString( resetTranslation, -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
 	ofPopMatrix();
 	
 	interludeFont.setLetterSpacing(interludeTypeTracking*.5);
-	hoverTextWidth  = interludeFont.stringWidth("CONTINUE");
-	hoverTextHeight = interludeFont.stringHeight("CONTINUE");
+	hoverTextWidth  = interludeFont.stringWidth(continueTranslation);
+	hoverTextHeight = interludeFont.stringHeight(continueTranslation);
 	
 	ofPushMatrix();
 	getOculusRift().multBillboardMatrix( continueNode.worldPosition, getCameraRef().getUpDir() );
 	ofRotate(180,0,0,1);
 	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
-	interludeFont.drawString("CONTINUE", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	interludeFont.drawString(continueTranslation, -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
 	ofPopMatrix();
 	
 	ofPopStyle();

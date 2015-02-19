@@ -1,5 +1,6 @@
 
 #include "CloudsPlaybackController.h"
+#include "CloudsLocalization.h"
 
 #ifdef KINECT_INPUT
 #include "CloudsInputKinectOSC.h"
@@ -88,7 +89,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 
 	resetInterludeVariables();
 	
-    interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-MEDIUM.ttf", 15);
+    //interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-MEDIUM.ttf", 15);
+	interludeInterfaceFont.loadFont(GetMediumFontPath(), 15);
 
 }
 
@@ -1129,13 +1131,13 @@ void CloudsPlaybackController::drawInterludeInterface(){
 		hoverRect = ofRectangle(interludeSystem->getCanvasWidth(), 0,
 								-interludeExitBarWidth, interludeSystem->getCanvasHeight());
 		hovering = interludeHoveringContinue;
-		promptType = "CONTINUE";
+		promptType = GetTranslationForString("CONTINUE");
 		tracking = 6;
 		drawInterludePanel(hoverRect, promptType, hovering, tracking);
         
 		hoverRect = ofRectangle(0, 0, interludeExitBarWidth, interludeSystem->getCanvasHeight());
 		hovering = interludeHoveringReset;
-		promptType = "RESET";
+		promptType = GetTranslationForString("RESET");
 		tracking = 11;
 		drawInterludePanel(hoverRect, promptType, hovering, tracking);
 
@@ -1677,8 +1679,8 @@ void CloudsPlaybackController::portalHoverBegan(CloudsPortalEventArgs &args){
 void CloudsPlaybackController::portalHoverEnded(CloudsPortalEventArgs &args){
 	hud.questionHoverOff();
 	if(args.question == "RESET"){
-		returnToIntro = true;
-		CloudsVisualSystem::getRGBDVideoPlayer().stop();
-		currentAct->getTimeline().stop();		
+		//returnToIntro = true;
+		//CloudsVisualSystem::getRGBDVideoPlayer().stop();
+		//currentAct->getTimeline().stop();		
 	}
 }

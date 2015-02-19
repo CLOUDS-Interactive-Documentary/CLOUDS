@@ -9,17 +9,19 @@
 #include "CloudsInputMouse.h"
 #include "CloudsInputEvents.h"
 #include "CloudsGlobal.h"
+#include "CloudsLocalization.h"
 
 CloudsInputMouse::CloudsInputMouse()
 : viewerState(ViewerState_PresentIdle)
 , lastMouseEventTime(0)
 , mouseEventIdleInterval(5)
 , feedbackAlpha(0)
-, feedbackPrompt("USE THE MOUSE TO INTERACT")
+, feedbackPrompt(GetTranslationForString("USE THE MOUSE TO INTERACT"))
 , cursorDownSize(10)
 , cursorUpSize(12)
 {
-	feedbackFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", 19);
+	//feedbackFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", 19);
+	feedbackFont.loadFont(GetFontPath(), 19);
 }
 
 void CloudsInputMouse::enable(){

@@ -17,3 +17,7 @@ bool InitLocalization();
 string GetTranslationForString(string toTranslate);
 //--------------------------------------
 string GetFontPath();
+//--------------------------------------
+string GetMediumFontPath();
+//--------------------------------------
+string GetThinFontPath(); 

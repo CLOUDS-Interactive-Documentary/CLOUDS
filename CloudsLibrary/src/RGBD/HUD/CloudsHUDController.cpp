@@ -63,6 +63,7 @@ CloudsHUDController::CloudsHUDController(){
 #endif
 }
 
+#include "CloudsLocalization.h"
 void CloudsHUDController::setup(){
 	
 	buildLayerSets();
@@ -74,7 +75,7 @@ void CloudsHUDController::setup(){
 	ofAddListener(ofEvents().mouseReleased,this, &CloudsHUDController::mouseReleased);
 #endif
 
-	hudLabelMap["ResetButtonTextBox"]->setText("RESET");
+	hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("RESET"));
 
 	home.setup();
     
@@ -358,9 +359,11 @@ void CloudsHUDController::calculateFontSizes(){
     int minFontSize = 1;
     int maxFontSize = 70;
     #ifdef OCULUS_RIFT
-	string fontPath = GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
+	//string fontPath = GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
+	string fontPath = GetMediumFontPath();
 	#else
-	string fontPath = GetCloudsDataPath() + "font/Blender-THIN.ttf";
+	//string fontPath = GetCloudsDataPath() + "font/Blender-THIN.ttf";
+	string fontPath = GetThinFontPath();
 	#endif
 
     for(int i = minFontSize; i < maxFontSize; i++){
