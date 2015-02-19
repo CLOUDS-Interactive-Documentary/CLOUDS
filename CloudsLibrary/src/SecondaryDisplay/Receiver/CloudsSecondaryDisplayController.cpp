@@ -177,7 +177,7 @@ ofxFTGLFont* CloudsSecondaryDisplayController::getFontForLayer( SVGMesh* textMes
         // make a layout
         ofxFTGLFont *newFont = new ofxFTGLFont();
         newFont->loadFont( GetCloudsDataPath() + "font/"+font+".ttf", fontSize );
-        newFont->setTracking(kerning * .08);
+		newFont->setLetterSpacing(kerning * .08);
         
         // make a label
         CloudsHUDLabel *newLabel = new CloudsHUDLabel();
@@ -317,24 +317,24 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip* clip){
 	//string exampleId = m.getArgAsString(4);
 	if(currentClip->hasProjectExample && currentClip->projectExample.exampleVideos.size() > 0 && ofFile(currentClip->projectExample.exampleVideos[0]).exists()){
 
-            currentExample = currentClip->projectExample;
-			playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
-			if(playingMovie){
-				archivePlayer.play();
+        currentExample = currentClip->projectExample;
+		playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
+		if(playingMovie){
+			archivePlayer.play();
                 
-                displayMode = "PROJECT";
+            displayMode = "PROJECT";
                 
-                ////artist name
-                //////float left
-                string title = ofToUpper(currentExample.title);
-                ofRectangle titleRect = layoutProjectTitle->getStringBoundingBox(title, hudLabelMap[meshProjectTitle->id]->bounds.x, 0);
-                hudLabelMap[meshProjectArtist->id]->bounds.x = titleRect.x+titleRect.width+margin;
+            ////artist name
+            //////float left
+            string title = ofToUpper(currentExample.title);
+            ofRectangle titleRect = layoutProjectTitle->getStringBoundingBox(title, hudLabelMap[meshProjectTitle->id]->bounds.x, 0);
+            hudLabelMap[meshProjectArtist->id]->bounds.x = titleRect.x+titleRect.width+margin;
 
-                //setup project text
-                hudLabelMap[meshProjectArtist->id]->setText( currentExample.creatorName );
-                hudLabelMap[meshProjectTitle->id]->setText( currentExample.title );
-                hudLabelMap[meshProjectDescription->id]->setText( currentExample.description );
-			}
+            //setup project text
+            hudLabelMap[meshProjectArtist->id]->setText( currentExample.creatorName );
+            hudLabelMap[meshProjectTitle->id]->setText( currentExample.title );
+            hudLabelMap[meshProjectDescription->id]->setText( currentExample.description );
+		}
 
 	}
 	else{

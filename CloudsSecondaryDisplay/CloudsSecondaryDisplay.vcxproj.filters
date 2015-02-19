@@ -97,9 +97,6 @@
     <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c">
       <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\SecondaryDisplay\Receiver\CloudsSecondaryDisplayController.cpp">
       <Filter>CloudsLibrary\src\SecondaryDisplay</Filter>
     </ClCompile>
@@ -183,6 +180,24 @@
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
+      <Filter>addons\ofxLocalization\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.cpp">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -287,6 +302,18 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\StoryEngine">
       <UniqueIdentifier>{c3bd4114-5caa-4852-8d79-608c27050d87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization">
+      <UniqueIdentifier>{9cb5fd47-6884-451a-8eec-357874aeaf95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization\src">
+      <UniqueIdentifier>{9766f652-f418-42c7-a253-d66abf840a1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSubtitles">
+      <UniqueIdentifier>{2c5cecf5-b8f5-4346-b218-f0139b5fcd40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSubtitles\src">
+      <UniqueIdentifier>{f0e7827f-df7a-4bd1-9df7-ff654fea3b76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -458,9 +485,6 @@
     <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h">
       <Filter>addons\ofxObjLoader\libs\glm</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
-      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\NearestNeighbour.h">
       <Filter>addons\ofxNearestNeighbor\src</Filter>
     </ClInclude>
@@ -586,6 +610,21 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h">
+      <Filter>addons\ofxLocalization\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.h">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
+      <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

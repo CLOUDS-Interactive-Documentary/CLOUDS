@@ -5,16 +5,15 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-//	ofSetVerticalSync(true);
-	//8ofSetFrameRate(60);
+	ofSetVerticalSync(true);
 	ofBackground(0);
 	//ofToggleFullscreen();
 
-	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
-	CloudsIntroSequence* introSequence;
-	introSequence = new CloudsIntroSequence();
-	introSequence->setup();
-	introSequence->setDrawToScreen(false);
+	//cout << "*****LOAD STEP*** STARTING INTRO" << endl;
+	//CloudsIntroSequence introSequence;
+	////introSequence = new CloudsIntroSequence();
+	//introSequence.setup();
+	//introSequence.setDrawToScreen(false);
 
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();
