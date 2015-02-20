@@ -884,7 +884,7 @@ void CloudsIntroSequence::drawHelperType(){
 	#ifdef OCULUS_RIFT
 	if(!startedOnclick){
 		if(introNodeThree.hover || introNodeTwo.finished){
-			helpHoverText = "< " + GetTranslationForString("LOOK FORWARD");
+			helpHoverText = "< " + GetTranslationForString("LOOK CENTER");
 			basePosition = introNodeTwo.worldPosition;
 			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
 										   CalibrationNode::nodeActivatedTime,

@@ -1456,7 +1456,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 	
 	bool clipLoadSuccessfullyLoaded = false;
 	if(clip->voiceOverAudio){
-		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath);
+		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath, clip->getSubtitlesPath());
 	}
 	else{
 		//string subtitlesPath = GetCloudsDataPath() + "language/" + GetLanguage() + "/subtitles/"+ clip->getSubtitlesPath();

@@ -25,7 +25,7 @@ public:
     //  SET
     //
 	bool setup(string videoPath, string calibrationXMLPath, string subtitlesPath = "", float offsetTime = 0, float clipVolume = 1);
-	bool setupVO(string audioPath);
+	bool setupVO(string audioPath, string subtitlePath = "");
 	void swapAndPlay();
 
     void threadedFunction();
@@ -77,10 +77,11 @@ public:
     float currentMaxVolume;
 	
 	bool hasSubtitles();
-    void drawSubtitles();
-	
-	void drawSubtitles(int x, int y);
 	ofPtr<ofxSubtitles> getSubtitles();
+
+    void drawSubtitles();
+	void drawSubtitles(int x, int y);
+	void drawSubtitles3D();
 
   protected:
 

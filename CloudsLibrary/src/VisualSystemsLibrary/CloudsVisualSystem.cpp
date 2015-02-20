@@ -3,6 +3,7 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
+#include "CloudsLocalization.h"
 
 #if defined(MOUSE_INPUT)
 #include "CloudsInputMouse.h"
@@ -762,6 +763,9 @@ void CloudsVisualSystem::drawScene(){
 	ofPushStyle();
 	ofSetLineWidth(1);
 	selfDraw();
+	
+	CloudsRGBDVideoPlayer::drawSubtitles3D(getOculusRift().baseCamera);
+
 	checkOpenGLError(getSystemName() + ":: DRAW");
 	ofPopStyle();
 	
@@ -806,7 +810,6 @@ void CloudsVisualSystem::drawScene(){
 #endif
 	
 }
-
 
 void CloudsVisualSystem::drawInterludeInterface(){
 	
