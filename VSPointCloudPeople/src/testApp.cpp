@@ -71,8 +71,6 @@ void testApp::draw(){
 	CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
 #endif
 
-	//TEMP
-	CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(ofGetWidth()*.5, ofGetHeight()*.7);
 
 }
 
