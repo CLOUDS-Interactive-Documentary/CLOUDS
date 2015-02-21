@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.cpp">
+      <Filter>addons\ofxGameCamera\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsTransitionController.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{014ab87c-b1ee-4040-b3e5-4168bea9bf0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL">
+      <UniqueIdentifier>{f6f83f01-142d-486b-945e-d50972bd9aab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL\src">
+      <UniqueIdentifier>{0edaa6ac-2a39-450b-a158-af0ad414ec05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary">
+      <UniqueIdentifier>{3f91ef80-5457-40be-b909-0e1182dd2195}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src">
+      <UniqueIdentifier>{ba3cc539-df88-4086-8928-aabd55c76719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGameCamera">
+      <UniqueIdentifier>{d6c4f7de-310d-4d24-bb61-c5ac6d3a67cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGameCamera\src">
+      <UniqueIdentifier>{b1465e9a-136a-430e-894f-ba7dd3f8bc3a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.h">
+      <Filter>addons\ofxGameCamera\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsTransitionController.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>

@@ -1,8 +1,6 @@
 //
-//  CloudsGlobal.h
-//  CloudsStoryEngine
+//  CloudsLocalization.h
 //
-//  Created by James George on 7/11/13.
 //
 //
 

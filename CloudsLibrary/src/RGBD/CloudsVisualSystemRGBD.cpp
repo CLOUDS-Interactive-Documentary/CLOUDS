@@ -276,7 +276,8 @@ void CloudsVisualSystemRGBD::playTestVideo(){
 	string sourceFile = GetCloudsDataPath(true) + "media/Patricio_Alchemy_3";
 	string filePathMov = sourceFile+".mov";
 	string filePathXml = sourceFile+".xml";
-	string subtitlesPathSrt = GetCloudsDataPath() + "subtitles/Patricio_Alchemy_3.srt"; 
+	string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Shiffman_nature_of_code_book.srt"; 
+
 	if(ofFile::doesFileExist(filePathMov)){
         getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);
 		getRGBDVideoPlayer().swapAndPlay();
