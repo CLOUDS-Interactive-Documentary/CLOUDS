@@ -68,9 +68,12 @@ void testApp::draw(){
 #ifndef OCULUS_RIFT
 	ofSetColor(255);
 	hud.draw();
-	//ofDisableAlphaBlending();
 	CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
 #endif
+
+	//TEMP
+	CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(ofGetWidth()*.5, ofGetHeight()*.7);
+
 }
 
 //--------------------------------------------------------------

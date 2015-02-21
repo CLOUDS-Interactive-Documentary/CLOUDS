@@ -473,10 +473,12 @@ bool CloudsRGBDVideoPlayer::isDone(){
 bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     
     if (path == "") {
+		ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Subtitle path is blank";
         return false;
     }
 
     if (!ofFile(path).exists()) {
+		ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Subtitle path doesn't exist " << path;
         return false;
     }
     
@@ -491,6 +493,7 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 	string fontPath = GetFontPath();
 
     if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
+		ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Failed to set up subtitles at path " << path;
         return false;
     }
     
@@ -542,75 +545,72 @@ void CloudsRGBDVideoPlayer::drawSubtitles(int x, int y){
 //--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::drawSubtitles3D(ofCamera* cam){
 
+
 	if(!hasSubtitles()){
 		return;
 	}
 
- // Hook up to the camera to keep the layer steady.
-    ofMatrix4x4 baseRotation;
-    ofTranslate(cam->getPosition());
-    baseRotation.makeRotationMatrix(cam->getOrientationQuat());
-    ofMultMatrix(baseRotation);
-    
-    ofVec3f yAxis = ofVec3f(0.0, 1.0, 0.0);
-	ofVec3f xAxis = ofVec3f(1.0, 0.0, 0.0);
 
-    // Calculate the base position.
-	////////////////////////
-	// PARAMS
-	ofVec3f camPos = cam->getPosition();
-/*	float hRotate = 10;
-	float vRotate = 10; 
-	float zDistance = 20;
-	float scaleAmt = 1.0;
-	ofVec2f offset(0,0);
-  */	////////////////////////
 
-    ofVec3f basePos(subtitle3Doffset.x, subtitle3Doffset.y, -subtitle3DzDistance);
-    basePos.rotate(subtitle3DhRotate, camPos, yAxis);
-    basePos.rotate(subtitle3DvRotate, camPos, xAxis);
-    
-    // Get the total layer bounds.
-	ofRectangle layerBounds;
-    /*
-	for(int i = 0; i < layerSets[layer].size(); i++){
-        if (i == 0) layerBounds = layerSets[layer][i]->svg.getBounds();
-        else layerBounds.growToInclude(layerSets[layer][i]->svg.getBounds());
-	}
-    */
-    // Translate to the layer center pos.
-//    ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
-    ofVec3f layerPos = basePos - layerBounds.getCenter();
-    ofTranslate(layerPos);
-
-    //CLOUDS_HUD_BILLBOARD_OCULUS {
-    // Billboard rotation using the Oculus orientation.
-    //float angle;
-    //ofVec3f axis;
-    //CloudsVisualSystem::getOculusRift().getOrientationQuat().getRotate(angle, axis);
-    //ofRotate(angle, axis.x, axis.y, axis.z);
-    //ofScale(-1, 1, 1);
-
-	//CLOUDS_HUD_BILLBOARD_CAMERA) {
-	// Billboard rotation using the camera.
-    ofNode node;
-    node.setPosition(layerPos);
-    node.lookAt(camPos);
-    ofVec3f axis;
-    float angle;
-    node.getOrientationQuat().getRotate(angle, axis);
-    ofRotate(angle, axis.x, axis.y, axis.z);
-    
-    
-    // Transform for rendering the layer.
-    ofScale(-subtitle3DscaleAmt, -subtitle3DscaleAmt, 1);
-    ofTranslate(-layerBounds.getCenter());
-
-    // Draw the layer.
-    ofSetColor(255);
-	drawSubtitles(0,0);
-    
-    ofPopMatrix();		
+//	// Hook up to the camera to keep the layer steady.
+//    ofMatrix4x4 baseRotation;
+//    ofTranslate(cam->getPosition());
+//    baseRotation.makeRotationMatrix(cam->getOrientationQuat());
+//    ofMultMatrix(baseRotation);
+//    
+//    ofVec3f yAxis = ofVec3f(0.0, 1.0, 0.0);
+//	ofVec3f xAxis = ofVec3f(1.0, 0.0, 0.0);
+//
+//    // Calculate the base position.
+//	////////////////////////
+//	// PARAMS
+//	ofVec3f camPos = cam->getPosition();
+///*	float hRotate = 10;
+//	float vRotate = 10; 
+//	float zDistance = 20;
+//	float scaleAmt = 1.0;
+//	ofVec2f offset(0,0);
+//  */	////////////////////////
+//
+//    ofVec3f basePos(subtitle3Doffset.x, subtitle3Doffset.y, -subtitle3DzDistance);
+//    basePos.rotate(subtitle3DhRotate, camPos, yAxis);
+//    basePos.rotate(subtitle3DvRotate, camPos, xAxis);
+//    
+//    // Get the total layer bounds.
+//	ofRectangle layerBounds;
+//    // Translate to the layer center pos.
+////    ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
+//    ofVec3f layerPos = basePos - layerBounds.getCenter();
+//    ofTranslate(layerPos);
+//
+//    //CLOUDS_HUD_BILLBOARD_OCULUS {
+//    // Billboard rotation using the Oculus orientation.
+//    //float angle;
+//    //ofVec3f axis;
+//    //CloudsVisualSystem::getOculusRift().getOrientationQuat().getRotate(angle, axis);
+//    //ofRotate(angle, axis.x, axis.y, axis.z);
+//    //ofScale(-1, 1, 1);
+//
+//	//CLOUDS_HUD_BILLBOARD_CAMERA) {
+//	// Billboard rotation using the camera.
+//    ofNode node;
+//    node.setPosition(layerPos);
+//    node.lookAt(camPos);
+//    ofVec3f axis;
+//    float angle;
+//    node.getOrientationQuat().getRotate(angle, axis);
+//    ofRotate(angle, axis.x, axis.y, axis.z);
+//    
+//    
+//    // Transform for rendering the layer.
+//    //ofScale(-subtitle3DscaleAmt, -subtitle3DscaleAmt, 1);
+//    //ofTranslate(-layerBounds.getCenter());
+//
+//    // Draw the layer.
+//    ofSetColor(255);
+//	drawSubtitles(0,0);
+//    
+//    ofPopMatrix();		
 	
 }
 

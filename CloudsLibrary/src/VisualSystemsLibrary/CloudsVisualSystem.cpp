@@ -217,6 +217,11 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	   
 	pointcloudOffsetZ = 0.0;
 
+	subtitle3DBasePosX = 0;
+	subtitle3DBasePosY = 0;
+	subtitle3DBasePosZ = 0;
+	subtitle3DScale = 1.0;
+
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 	hudGui = NULL;	
@@ -764,9 +769,6 @@ void CloudsVisualSystem::drawScene(){
 	ofSetLineWidth(1);
 	selfDraw();
 	
-#ifdef OCULUS_RIFT
-	getRGBDVideoPlayer().drawSubtitles3D(getOculusRift().baseCamera);
-#endif
 
 	checkOpenGLError(getSystemName() + ":: DRAW");
 	ofPopStyle();
@@ -781,7 +783,11 @@ void CloudsVisualSystem::drawScene(){
 	if(isInterlude){
 		drawInterludeInterface();
 	}
-	
+
+	drawSubtitles3D();
+
+//	getRGBDVideoPlayer().drawSubtitles3D(getOculusRift().baseCamera);
+
     // EZ: Only draw cursor on _Intro for now
     if(primaryCursorMode > CURSOR_MODE_NONE && getSystemName() == "_Intro"){
         ofPushStyle();
@@ -860,7 +866,31 @@ void CloudsVisualSystem::drawInterludeInterface(){
 #endif
 }
 
+void CloudsVisualSystem::drawSubtitles3D(){
+#ifdef OCULUS_RIFT
 
+	//cout << "SUB 3D **: DRAWING SUBTITLES" << endl;
+	
+	ofDisableDepthTest();
+	ofVec3f subtitleWorldPosition;
+	subtitleWorldPosition = ofVec3f(0, -subtitle3DBasePosY, subtitle3DBasePosZ);
+	//subtitleWorldPosition.x *= multiplier;
+	//subtitleWorldPosition.y *= multiplier;
+
+	subtitleWorldPosition  = getCameraRef().getOrientationQuat() * subtitleWorldPosition;
+	subtitleWorldPosition += getCameraRef().getPosition();
+
+	ofPushMatrix();
+	getOculusRift().multBillboardMatrix( subtitleWorldPosition, getCameraRef().getUpDir() );
+	ofRotate(180,0,0,1);
+	ofScale(subtitle3DScale,subtitle3DScale,subtitle3DScale);
+	//interludeFont.drawString(continueTranslation, -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	getRGBDVideoPlayer().drawSubtitles(0,0);
+
+	ofEnableDepthTest();
+	ofPopMatrix();
+#endif
+}
 
 void CloudsVisualSystem::setupRGBDTransforms(){
 	ofTranslate(0,0,pointcloudOffsetZ);
@@ -3206,6 +3236,15 @@ void CloudsVisualSystem::setupOculusGui()
 	oculusGui->addSlider("INTERLUDE TYPE SCALE",    0, 1.0, &interludeTypeScale);
 	oculusGui->addSlider("INTERLUDE TYPE OFFSET",   1, 200, &interludeTypeYOffset);
 	oculusGui->addSlider("INTERLUDE TYPE TRACKING", 1, 20, &interludeTypeTracking);
+	//SUBTITLES
+	//oculusGui->addSlider("SUBTITLE X POS", 0,  10, &subtitle3DBasePosX);
+	oculusGui->addSlider("SUBTITLE Y POS", 1, 200, &subtitle3DBasePosY);
+	oculusGui->addSlider("SUBTITLE Z POS", 0, -10, &subtitle3DBasePosZ);
+	oculusGui->addSlider("SUBTITLE SCALE", 0,  1.0, &subtitle3DScale);
+	//float subtitle3DBasePosX;
+	//float subtitle3DBasePosY;
+	//float subtitle3DBasePosZ;
+	//float subtitle3DScale;
 	
     oculusGui->autoSizeToFitWidgets();
     ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);

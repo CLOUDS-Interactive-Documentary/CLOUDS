@@ -1,0 +1,86 @@
+2
+00:00:01:02 --> 00:00:03:24
+But I do like to think of it as telling a story
+
+3
+00:00:03:27 --> 00:00:08:05
+,so there is this story which is 
+
+what’s the beginning of the story,
+
+4
+00:00:08:08 --> 00:00:13:28
+X equals X plus one where you have this thing you are drawing at the location X and you add one to it and it moves over here.
+
+5
+00:00:14:01 --> 00:00:19:03
+You add one to it and it moves over here and that’s programming animation, that’s programming motion, the basic fundamentals, 
+
+6
+00:00:19:06 --> 00:00:24:04
+ so you start there and then oh, you add Y, 
+
+so now I have X and Y, I can make that into a vector,
+
+7
+00:00:24:07 --> 00:00:28:02
+well that vector is it’s velocity, oh, that’s no longer constant.  
+
+8
+00:00:28:05 --> 00:00:31:11
+ You could have an acceleration which the velocity changes, and now, 
+
+9
+00:00:31:14 --> 00:00:34:24
+oh, but force equals mass times acceleration, okay, 
+
+10
+00:00:34:27 --> 00:00:39:24
+ well, if I have acceleration, then there is this relationship between force and acceleration, so I can simulate forces.
+
+then I can start to simulate forces, 
+
+11
+00:00:39:27 --> 00:00:42:10
+so there is this like building up of concepts, 
+
+12
+00:00:42:13 --> 00:00:47:24
+start with the very, very basic elements of the graphics and drawing and animation,
+
+layer on this, layer on that, and then
+
+13
+00:00:47:27 --> 00:00:54:04
+ just that and what’s sort of excitement about this is that basic motion, that just
+
+14
+00:00:54:07 --> 00:00:58:02
+basic idea of motion, it’s there in every single example basically throughout the entire book,
+
+15
+00:00:58:05 --> 00:01:01:04
+it’s just here is a fancier way to calculate the acceleration.
+
+16
+00:01:01:07 --> 00:01:05:23
+Now we put a lot of those things together.  What if they interact with each other, what if we try to evolve them,
+
+17
+00:01:05:26 --> 00:01:09:26
+ what if we try to recursively like structure them on top of each other,
+
+18
+00:01:09:29 --> 00:01:14:11
+but thinking of that as a story that everything connects and
+
+19
+00:01:14:14 --> 00:01:17:27
+ that you are sort of learning and building piece by pieces is kind of
+
+20
+00:01:18:00 --> 00:01:24:04
+ whether that’s in reality actually in the book or just sort of a nice idea that I hopefully achieve, but that’s how I think about it.
+
+
+

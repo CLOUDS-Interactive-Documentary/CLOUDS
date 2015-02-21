@@ -332,7 +332,7 @@ class CloudsVisualSystem {
 	CalibrationNode continueNode;
 	ofxFTGLFont interludeFont;
 #endif
-	
+
 	float interludeNodeSize;
 	ofRange interludeActivationRange;
 	float interludeNodeHoldTime;
@@ -345,6 +345,13 @@ class CloudsVisualSystem {
 	float interludeTypeTracking;
 	
 	bool bPromptForInteraction;
+
+	//3D Subtitles
+	void drawSubtitles3D();
+	float subtitle3DBasePosX;
+	float subtitle3DBasePosY;
+	float subtitle3DBasePosZ;
+	float subtitle3DScale;
 
   protected:
 		
