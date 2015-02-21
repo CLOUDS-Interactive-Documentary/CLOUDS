@@ -764,7 +764,9 @@ void CloudsVisualSystem::drawScene(){
 	ofSetLineWidth(1);
 	selfDraw();
 	
+#ifdef OCULUS_RIFT
 	CloudsRGBDVideoPlayer::drawSubtitles3D(getOculusRift().baseCamera);
+#endif
 
 	checkOpenGLError(getSystemName() + ":: DRAW");
 	ofPopStyle();

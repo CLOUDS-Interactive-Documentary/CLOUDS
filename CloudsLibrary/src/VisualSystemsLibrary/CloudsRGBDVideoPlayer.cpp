@@ -38,6 +38,12 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
     bLoadResult = false;
 	bPlayWhenReady = false;
 
+	subtitle3DhRotate = 0;
+	subtitle3DvRotate = 0; 
+	subtitle3DzDistance = 20;
+	subtitle3DscaleAmt = 1.0;
+	subtitle3Doffset = ofVec2f(0,0);
+
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 	nextPlayer    = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 
@@ -404,6 +410,9 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 
 	if(playingVO){
 		currentVoiceoverPlayer->setVolume(audioVolume);
+        if (currentClipHasSubtitles) {
+			currentSubtitles->setTimeInSeconds(currentVoiceoverPlayer->getPosition());
+        }
 	}
 	else{
 		float position = getPlayer().getPosition()*getPlayer().getDuration();
@@ -424,7 +433,6 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         fadeInValue  = powf(ofMap(fadeInValue,  1.0, 1.5, 0.0, 1.0, true), 2.0);
         fadeOutValue = powf(ofMap(fadeOutValue, .5, 1.0, 0.0, 1.0, true), 2.0);
 		
-
 		float fadeInStartTime = 1.0;
 		float fadeInEndTime = 1.4;
 		float fadeOutStartTime = duration - 1.3 ;
@@ -544,32 +552,35 @@ void CloudsRGBDVideoPlayer::drawSubtitles3D(ofCamera* cam){
     baseRotation.makeRotationMatrix(cam->getOrientationQuat());
     ofMultMatrix(baseRotation);
     
+    ofVec3f yAxis = ofVec3f(0.0, 1.0, 0.0);
+	ofVec3f xAxis = ofVec3f(1.0, 0.0, 0.0);
+
     // Calculate the base position.
 	////////////////////////
 	// PARAMS
-    ofVec3f yAxis = ofVec3f(0.0, 1.0, 0.0);
-	ofVec3f xAxis = ofVec3f(1.0, 0.0, 0.0);
-	ofVec3f camPos = ofVec3f();  //cam->getPosition();
-	float hRotate = 10;
+	ofVec3f camPos = cam->getPosition();
+/*	float hRotate = 10;
 	float vRotate = 10; 
 	float zDistance = 20;
 	float scaleAmt = 1.0;
 	ofVec2f offset(0,0);
-  	////////////////////////
+  */	////////////////////////
 
-    ofVec3f basePos(offset.x, offset.y, -zDistance);
-    basePos.rotate(hRotate, camPos, yAxis);
-    basePos.rotate(vRotate, camPos, xAxis);
+    ofVec3f basePos(subtitle3Doffset.x, subtitle3Doffset.y, -subtitle3DzDistance);
+    basePos.rotate(subtitle3DhRotate, camPos, yAxis);
+    basePos.rotate(subtitle3DvRotate, camPos, xAxis);
     
     // Get the total layer bounds.
-    ofRectangle layerBounds;
+	ofRectangle layerBounds;
+    /*
 	for(int i = 0; i < layerSets[layer].size(); i++){
         if (i == 0) layerBounds = layerSets[layer][i]->svg.getBounds();
         else layerBounds.growToInclude(layerSets[layer][i]->svg.getBounds());
 	}
-    
+    */
     // Translate to the layer center pos.
-    ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
+//    ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
+    ofVec3f layerPos = basePos - layerBounds.getCenter();
     ofTranslate(layerPos);
 
     //CLOUDS_HUD_BILLBOARD_OCULUS {
@@ -592,7 +603,7 @@ void CloudsRGBDVideoPlayer::drawSubtitles3D(ofCamera* cam){
     
     
     // Transform for rendering the layer.
-    ofScale(-scaleAmt, -scaleAmt, 1);
+    ofScale(-subtitle3DscaleAmt, -subtitle3DscaleAmt, 1);
     ofTranslate(-layerBounds.getCenter());
 
     // Draw the layer.

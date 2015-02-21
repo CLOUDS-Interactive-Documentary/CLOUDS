@@ -72,6 +72,9 @@
     <ClCompile Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.cpp">
       <Filter>CloudsLibrary\src\RGBD\BackgroundParticles</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h">
@@ -124,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.h">
       <Filter>CloudsLibrary\src\RGBD\BackgroundParticles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
+      <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

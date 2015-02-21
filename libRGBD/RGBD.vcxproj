@@ -52,6 +52,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.cpp" />
@@ -70,6 +71,7 @@
     <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\BackgroundParticles\VoxelMesh.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.h" />

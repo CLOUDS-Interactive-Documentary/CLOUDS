@@ -81,7 +81,15 @@ public:
 
     void drawSubtitles();
 	void drawSubtitles(int x, int y);
-	void drawSubtitles3D();
+	void drawSubtitles3D(ofCamera* camera);
+
+	//subtitle 3D params
+	float subtitle3DhRotate;
+	float subtitle3DvRotate; 
+	float subtitle3DzDistance;
+	float subtitle3DscaleAmt;
+	ofVec2f subtitle3Doffset;
+	//end 3D
 
   protected:
 
