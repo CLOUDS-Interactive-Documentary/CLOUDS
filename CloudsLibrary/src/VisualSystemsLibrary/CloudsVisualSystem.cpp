@@ -31,7 +31,12 @@ static ofImage backgroundGradientWash;
 static bool screenResolutionForced = false;
 static int forcedScreenWidth;
 static int forcedScreenHeight;
+
+#ifdef OCULUS_RIFT
+static int numSamples = 1;
+#else
 static int numSamples = 4;
+#endif
 static ofSoundPlayer* click = NULL;
 static ofSoundPlayer* selectHigh = NULL;
 static ofSoundPlayer* selectMid = NULL;
@@ -178,6 +183,7 @@ ofxOculusDK2& CloudsVisualSystem::getOculusRift(){
 		ofFbo::Settings renderSettings;
 		renderSettings.useDepth = true;
 		renderSettings.numSamples = 4;
+		//renderSettings.numSamples = 1;
 		renderSettings.depthStencilInternalFormat = GL_DEPTH_COMPONENT32F;
 		renderSettings.internalformat = GL_RGB;
 
@@ -186,7 +192,7 @@ ofxOculusDK2& CloudsVisualSystem::getOculusRift(){
         checkOpenGLError("POST SETUP OCULUS");
 
 		//JG OCULUS TARGET HACK
-		oculusTarget.allocate(1920,1080,GL_RGB);
+		//oculusTarget.allocate(1920,1080,GL_RGB);
 	}
 
 	return oculusRift;
@@ -243,9 +249,13 @@ CloudsVisualSystem::~CloudsVisualSystem(){
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
 	ofFbo& renderTarget = getStaticRenderTarget();  
+#ifdef OCULUS_RIFT
+	int targetWidth  = 1920;
+	int targetHeight = 1080;
+#else
 	int targetWidth  = ofGetWidth();
 	int targetHeight = ofGetHeight();
-    
+#endif    
 	float computedWidth, computedHeight; 
 	if(screenResolutionForced){
 		computedWidth = forcedScreenWidth;
@@ -769,7 +779,6 @@ void CloudsVisualSystem::drawScene(){
 	ofSetLineWidth(1);
 	selfDraw();
 	
-
 	checkOpenGLError(getSystemName() + ":: DRAW");
 	ofPopStyle();
 	
@@ -785,8 +794,6 @@ void CloudsVisualSystem::drawScene(){
 	}
 
 	drawSubtitles3D();
-
-//	getRGBDVideoPlayer().drawSubtitles3D(getOculusRift().baseCamera);
 
     // EZ: Only draw cursor on _Intro for now
     if(primaryCursorMode > CURSOR_MODE_NONE && getSystemName() == "_Intro"){
@@ -871,7 +878,6 @@ void CloudsVisualSystem::drawSubtitles3D(){
 
 	//cout << "SUB 3D **: DRAWING SUBTITLES" << endl;
 	
-	ofDisableDepthTest();
 	ofVec3f subtitleWorldPosition;
 	subtitleWorldPosition = ofVec3f(0, -subtitle3DBasePosY, subtitle3DBasePosZ);
 	//subtitleWorldPosition.x *= multiplier;
@@ -884,10 +890,8 @@ void CloudsVisualSystem::drawSubtitles3D(){
 	getOculusRift().multBillboardMatrix( subtitleWorldPosition, getCameraRef().getUpDir() );
 	ofRotate(180,0,0,1);
 	ofScale(subtitle3DScale,subtitle3DScale,subtitle3DScale);
-	//interludeFont.drawString(continueTranslation, -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
 	getRGBDVideoPlayer().drawSubtitles(0,0);
 
-	ofEnableDepthTest();
 	ofPopMatrix();
 #endif
 }
@@ -3418,6 +3422,8 @@ void CloudsVisualSystem::loadGUIS()
 #endif
 #ifdef OCULUS_RIFT
         if (guis[i] == oculusGui) continue;
+#endif
+#ifdef CLOUDS_HUD
         if (guis[i] == hudGui) continue;
 #endif
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
@@ -3432,7 +3438,8 @@ void CloudsVisualSystem::loadGUIS()
     oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
 #ifdef CLOUDS_HUD
     if (hudGui != NULL) {
-        hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+		string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
+		hudGui->loadSettings(hudFileName);
     }
 #endif
 #endif
@@ -3501,6 +3508,9 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 #endif
 #ifdef OCULUS_RIFT
         if (guis[i] == oculusGui) continue;
+#endif
+#ifdef CLOUDS_HUD
+		if (guis[i] == hudGui) continue;
 #endif
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
@@ -3853,7 +3863,9 @@ void CloudsVisualSystem::ofLayerGradient(const ofColor& start, const ofColor& en
     }
     glDepthMask(false);
     mesh.draw();
+//	#ifndef OCULUS_RIFT
     glDepthMask(true);
+//	#endif
 }
 
 void CloudsVisualSystem::selfSetDefaults(){
@@ -3928,9 +3940,11 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	
 	//THIS WAY TO DRAW FOR FANCY DK2 MIRRORING
 	
-	oculusTarget.begin();
+	//oculusTarget.begin();
+	getSharedRenderTarget().begin();
 	oculusRift.draw();
-	oculusTarget.end();
+	getSharedRenderTarget().end();
+	//oculusTarget.end();
 	
 	ofMesh oculusTargetMesh1;
 	oculusTargetMesh1.addVertex(ofVec3f(0,0,0));
@@ -3992,12 +4006,11 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	oculusTargetMesh1.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	oculusTargetMesh2.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 
-	oculusTarget.getTextureReference().bind();
+	getSharedRenderTarget().getTextureReference().bind();
 	oculusTargetMesh1.draw();
 	oculusTargetMesh2.draw();
-	oculusTarget.getTextureReference().unbind();
+	getSharedRenderTarget().getTextureReference().unbind();
 	
-
 #else
     int offset;
     if(bEnablePostFX){

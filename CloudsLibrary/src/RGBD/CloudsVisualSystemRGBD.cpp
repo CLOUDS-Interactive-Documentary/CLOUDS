@@ -228,13 +228,10 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 	loadShader();
 	
-	cout << "*** LOADING POINT LAYERS" << endl;
     pointLayer1.pointShader = &pointShader;
     pointLayer2.pointShader = &pointShader;
 
-	cout << "*** LOAD GENERATE LINES" << endl;
 	generateLines();
-	cout << "*** LOAD GENERATE MESH" << endl;
 	generateMesh();
 		
 	voxelMesh.setup();
@@ -289,13 +286,21 @@ void CloudsVisualSystemRGBD::playTestVideo(){
 
 void CloudsVisualSystemRGBD::loadShader(){
 	cout << "loading point shader " << endl;
-	pointShader.load(getVisualSystemDataPath() + "shaders/rgbdPoints");
+	if(!pointShader.load(getVisualSystemDataPath() + "shaders/rgbdPoints")){
+		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
+	}
 	cout << "loading line shader " << endl;
-	lineShader.load( getVisualSystemDataPath() + "shaders/rgbdLines");
+	if(!lineShader.load( getVisualSystemDataPath() + "shaders/rgbdLines")){
+		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
+	}
 	cout << "loading mesh shader " << endl;
-	meshShader.load( getVisualSystemDataPath() + "shaders/rgbdMesh");
+	if(!meshShader.load( getVisualSystemDataPath() + "shaders/rgbdMesh")){
+		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
+	}
     cout << "loading occlusion shader " << endl;
-    occlusionShader.load( getVisualSystemDataPath() + "shaders/rgbdOcclusion");
+    if(!occlusionShader.load( getVisualSystemDataPath() + "shaders/rgbdOcclusion")){
+		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
+	}
 }
 
 void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
@@ -681,6 +686,9 @@ void CloudsVisualSystemRGBD::selfUpdate(){
     questionSelectFade = 1.0;
 #endif
     
+	float transitionValue = getRGBDTransitionValue();
+	//cout << "TRANSITION IS " << transitionValue << endl;
+
 	pointLayer1.visualSystemFadeValue = getRGBDTransitionValue();
     pointLayer2.visualSystemFadeValue = getRGBDTransitionValue();
     pointLayer1.update();
@@ -699,26 +707,6 @@ void CloudsVisualSystemRGBD::selfUpdate(){
     }
     
 	lineFlowPosition += powf(lineFlowSpeed,2.0);
-    //TODO FLOW POINTS
-//	pointFlowPosition += powf(pointFlowSpeed,2.0);
-	/*
-	if(drawParticulate){
-		
-//        if(particulateController.getNumParticles() != particleCount){
-//            particulateController.setParticleCount(particleCount);
-//            particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-//            particulateController.setup();
-//        }
-        
-		particulateController.birthPlace = translatedHeadPosition;
-		glDisable(GL_LIGHTING);
-		glDisable(GL_DEPTH_TEST);
-		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
-		particulateController.getPoints().color.a = pointColor.w;
-		particulateController.update();
-	
-	}
-	*/
 
 	voxelMesh.center = cloudsCamera.lookTarget;
 	voxelMesh.update();
@@ -792,7 +780,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 
 	}
 	else {
-        //this stops the camera from drifting around as you move closer tothe question
+        //this stops the camera from drifting around as you move closer to the question
 		//cloudsCamera.driftNoiseSpeed = caughtPortal ? 0 : attenuatedCameraDrift;
 		if( portalTugDistance.max != portalTugDistance.center() ){
 			float cameraDriftDamp = powf(ofMap(minDistanceToQuestion, portalTugDistance.max, portalTugDistance.center(),
@@ -1506,6 +1494,8 @@ void CloudsVisualSystemRGBD::generateLines(){
 	lines.setMesh(m, GL_STATIC_DRAW);
 	lineVertexCount = m.getNumVertices();
     
+	cout << "GENERATED LINES " << lineVertexCount << endl;
+
 	refreshLines = false;
 }
 
@@ -1587,6 +1577,8 @@ void CloudsVisualSystemRGBD::generateMesh(){
     mesh.setMesh(m, GL_STATIC_DRAW);
 	//m.setMode(OF_PRIMITIVE_TRIANGLES);
 	refreshMesh = false;
+
+	cout << "GENERATED MESH " << meshVertexCount << endl;
 }
 
 
@@ -1665,6 +1657,7 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
     occlusion.setMesh(m, GL_STATIC_DRAW);
     refreshOcclusion = false;
     
+	cout << "GENERATED OCCLUSION " << occlusionVertexCount << endl;
 }
 
 void CloudsVisualSystemRGBD::speakerChanged(){
@@ -1763,7 +1756,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
             }
 			
 			glEnable(GL_CULL_FACE);
-//            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
             glCullFace(cullFace);
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
@@ -1947,14 +1939,16 @@ float CloudsVisualSystemRGBD::getRGBDTransitionValue(){
 
 void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     
-    glPushMatrix();
+	ofPushMatrix();
     if(!drawOcclusionDebug){
-        
-        ofTranslate(0, 0, 5.44);
+        float occludeZOffset = 5.44;
+		//occludeZOffset = ofMap(ofGetMouseX(), 0, 500, -50,50, true);
+		//cout << " Z occlude " << occludeZOffset << endl;
+        ofTranslate(0, 0, occludeZOffset);
         
         glEnable(GL_DEPTH_TEST);  // We want depth test !
         glDepthFunc(GL_LESS);     // We want to get the nearest pixels
-        glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
+        glColorMask(0,0,0,0);     // Disable color, we only want depth.
         glDepthMask(GL_TRUE);     // Ask z writing
     }
     
@@ -1975,10 +1969,12 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
         glEnable(GL_DEPTH_TEST);  // We still want depth test
         glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
         glColorMask(1,1,1,1);     // We want color this time
+		#ifndef OCULUS_RIFT
         glDepthMask(GL_FALSE);
+		#endif
     }
     
-    glPopMatrix();
+	ofPopMatrix();
 }
 
 void CloudsVisualSystemRGBD::drawQuestions(){
@@ -2196,9 +2192,6 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 		loadShader();
 		voxelMesh.reloadShaders();
 		
-//		particulateController.reloadShaders();
-//		CloudsQuestion::reloadShader();
-//		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
     
     if(args.key == 'P'){

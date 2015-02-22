@@ -11,9 +11,9 @@
 #include "CloudsInput.h"
 #include "CloudsClip.h"
 #include "CloudsSpeaker.h"
-#ifdef OCULUS_RIFT
+//#ifdef OCULUS_RIFT
 #include "CloudsVisualSystem.h"
-#endif
+//#endif
 
 CloudsHUDController::CloudsHUDController(){
 	hudGui = NULL;
@@ -544,15 +544,16 @@ void CloudsHUDController::update(){
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
 	}
-    
-    float xScale = ofGetWindowWidth()/hudBounds.width;
-    float yScale = ofGetWindowHeight()/hudBounds.height;
+	float scaleToWidth  = CloudsVisualSystem::getStaticRenderTarget().getWidth();
+	float scaleToHeight = CloudsVisualSystem::getStaticRenderTarget().getWidth();
+	float xScale = scaleToWidth/hudBounds.width;
+	float yScale = scaleToHeight/hudBounds.height;
     
 	bool xDominantScale = xScale < yScale;
     scaleAmt	= xDominantScale ? xScale : yScale;
 	scaleOffset = xDominantScale ? 
-		ofVec2f(0, ofGetWindowHeight()- hudBounds.height*scaleAmt)*.5 :
-		ofVec2f(ofGetWindowWidth() - hudBounds.width*scaleAmt, 0)*.5;
+		ofVec2f(0, scaleToHeight- hudBounds.height*scaleAmt)*.5 :
+		ofVec2f(scaleToWidth - hudBounds.width*scaleAmt, 0)*.5;
 
    if( isPlaying){
 	   	if(! videoPlayer.isPlaying()){

@@ -16,7 +16,7 @@ void testApp::setup(){
 	//introSequence.setDrawToScreen(false);
 
 #ifdef CLOUDS_RELEASE
-	ofHideCursor();
+	//ofHideCursor();
 #endif
 
 	firstFrame = true;

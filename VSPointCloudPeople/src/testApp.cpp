@@ -33,7 +33,6 @@ void testApp::setup(){
 #endif
 
 	//rgbd.forceScreenResolution(1920*2,1080*2);
-	//rgbd.setDrawToScreen(false);
 	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
 
@@ -65,13 +64,15 @@ void testApp::draw(){
 	ofDisableDepthTest();
 	ofEnableAlphaBlending();
 	rgbd.selfPostDraw();
-#ifndef OCULUS_RIFT
 	ofSetColor(255);
+
+#ifndef OCULUS_RIFT
 	hud.draw();
 	CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
 #endif
 
-
+	ofDisableDepthTest();
+	//rgbd.getRGBDVideoPlayer().getPlayer().draw(0,0);
 }
 
 //--------------------------------------------------------------

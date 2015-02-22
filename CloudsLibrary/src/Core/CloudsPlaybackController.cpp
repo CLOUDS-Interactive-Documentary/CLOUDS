@@ -49,6 +49,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 
 	userReset = false;
 	returnToIntro = false;
+	pauseAct = false;
+
 	badIdle = false;
 	badIdleStartTime = false;
 
@@ -478,6 +480,22 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
         }
 	}
     
+	if(args.key == '/'){
+
+		if(currentAct != NULL){
+			if(!pauseAct){
+				pauseAct = true;
+				CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().setSpeed(0);
+				currentAct->getTimeline().stop();
+			}
+			else{
+				pauseAct = false;
+				CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().setSpeed(1.0);
+				currentAct->getTimeline().play();			
+			}
+		}
+	}
+
 #ifdef OCULUS_RIFT
     if(args.key == OF_KEY_RETURN){
         if(showingInterlude){
@@ -494,6 +512,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
     }
 #endif
 	
+
 #ifdef CLOUDS_SCREENING
 	if(args.key == 'Q'){
 		forceCredits = true;
@@ -1352,7 +1371,7 @@ void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	
-	if(!returnToIntro){
+	if(!returnToIntro && !pauseAct){
 		shouldClearAct = true;
 		
 		cout << "ACT ENDED TRIGGERED" << endl;
@@ -1361,6 +1380,7 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 			transitionController.transitionToInterlude(1.0,1.0);
 		}
 	}
+
 }
 
 //--------------------------------------------------------------------
