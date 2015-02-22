@@ -200,7 +200,7 @@ class CloudsVisualSystem {
     void drawBackground();
 	void drawBackgroundGradient();
     void draw2dSystemPlane();
-    void ofLayerGradient(const ofColor& start, const ofColor& end);
+    //void ofLayerGradient(const ofColor& start, const ofColor& end);
     
     virtual void drawCursors();
 	

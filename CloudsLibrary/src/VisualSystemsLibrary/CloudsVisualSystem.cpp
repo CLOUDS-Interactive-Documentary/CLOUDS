@@ -3422,9 +3422,9 @@ void CloudsVisualSystem::loadGUIS()
 #endif
 #ifdef OCULUS_RIFT
         if (guis[i] == oculusGui) continue;
-#endif
 #ifdef CLOUDS_HUD
         if (guis[i] == hudGui) continue;
+#endif
 #endif
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
 		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
@@ -3508,9 +3508,9 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 #endif
 #ifdef OCULUS_RIFT
         if (guis[i] == oculusGui) continue;
-#endif
-#ifdef CLOUDS_HUD
+	#ifdef CLOUDS_HUD
 		if (guis[i] == hudGui) continue;
+	#endif
 #endif
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
@@ -3632,11 +3632,11 @@ void CloudsVisualSystem::deleteGUIS()
 #endif
 #ifdef OCULUS_RIFT
     ofRemoveListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
-#ifdef CLOUDS_HUD
+	#ifdef CLOUDS_HUD
     if (hudGui != NULL) {
         ofRemoveListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
     }
-#endif
+	#endif
 #endif
 	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
@@ -3840,33 +3840,31 @@ void CloudsVisualSystem::drawBackgroundGradient(){
 	}
 	ofPopStyle();
 }
-
-void CloudsVisualSystem::ofLayerGradient(const ofColor& start, const ofColor& end)
-{
-    float w = cam.getDistance()*bgAspectRatio;
-    float h = cam.getDistance()*bgAspectRatio;
-    ofMesh mesh;
-    mesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
-    // this could be optimized by building a single mesh once, then copying
-    // it and just adding the colors whenever the function is called.
-    ofVec2f center(0.0,0.0);
-    mesh.addVertex(center);
-    mesh.addColor(start);
-    int n = 32; // circular gradient resolution
-    float angleBisector = TWO_PI / (n * 2);
-    float smallRadius = ofDist(0, 0, w / 2, h / 2);
-    float bigRadius = smallRadius / cos(angleBisector);
-    for(int i = 0; i <= n; i++) {
-        float theta = i * TWO_PI / n;
-        mesh.addVertex(center + ofVec2f(sin(theta), cos(theta)) * bigRadius);
-        mesh.addColor(end);
-    }
-    glDepthMask(false);
-    mesh.draw();
-//	#ifndef OCULUS_RIFT
-    glDepthMask(true);
-//	#endif
-}
+//
+//void CloudsVisualSystem::ofLayerGradient(const ofColor& start, const ofColor& end)
+//{
+//    float w = cam.getDistance()*bgAspectRatio;
+//    float h = cam.getDistance()*bgAspectRatio;
+//    ofMesh mesh;
+//    mesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
+//    // this could be optimized by building a single mesh once, then copying
+//    // it and just adding the colors whenever the function is called.
+//    ofVec2f center(0.0,0.0);
+//    mesh.addVertex(center);
+//    mesh.addColor(start);
+//    int n = 32; // circular gradient resolution
+//    float angleBisector = TWO_PI / (n * 2);
+//    float smallRadius = ofDist(0, 0, w / 2, h / 2);
+//    float bigRadius = smallRadius / cos(angleBisector);
+//    for(int i = 0; i <= n; i++) {
+//        float theta = i * TWO_PI / n;
+//        mesh.addVertex(center + ofVec2f(sin(theta), cos(theta)) * bigRadius);
+//        mesh.addColor(end);
+//    }
+//    glDepthMask(GL_FALSE);
+//    mesh.draw();
+//    glDepthMask(GL_TRUE);
+//}
 
 void CloudsVisualSystem::selfSetDefaults(){
 	
