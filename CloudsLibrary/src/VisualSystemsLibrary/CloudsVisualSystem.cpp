@@ -256,7 +256,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	int targetWidth  = ofGetWidth();
 	int targetHeight = ofGetHeight();
 #endif    
-	float computedWidth, computedHeight; 
+	int computedWidth, computedHeight; 
 	if(screenResolutionForced){
 		computedWidth = forcedScreenWidth;
 		computedHeight = forcedScreenHeight;
@@ -272,8 +272,8 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	}
 
 	bool reallocateTarget = !renderTarget.isAllocated() ||
-							 renderTarget.getWidth()  != computedWidth ||
-							 renderTarget.getHeight() != computedHeight;
+							 (int)renderTarget.getWidth()  != computedWidth ||
+							 (int)renderTarget.getHeight() != computedHeight;
 
 
 	if(reallocateTarget){
@@ -584,11 +584,12 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             getOculusRift().endBackground();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
-			getOculusRift().beginOverlay(-230, 640,480);
-			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
-			selfDrawOverlay();
-			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
-			getOculusRift().endOverlay();
+			//JG removing this before Yebizo festival, no visual systems use overlay in the rift
+			//getOculusRift().beginOverlay(-230, 640,480);
+			//checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
+			//selfDrawOverlay();
+			//checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
+			//getOculusRift().endOverlay();
 			
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();
