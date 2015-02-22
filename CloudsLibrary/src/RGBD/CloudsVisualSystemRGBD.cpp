@@ -1945,8 +1945,8 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
 		//occludeZOffset = ofMap(ofGetMouseX(), 0, 500, -50,50, true);
 		//cout << " Z occlude " << occludeZOffset << endl;
         ofTranslate(0, 0, occludeZOffset);
-        
-        glEnable(GL_DEPTH_TEST);  // We want depth test !
+		glClear(GL_DEPTH_BUFFER_BIT);
+		glEnable(GL_DEPTH_TEST);  // We want depth test !
         glDepthFunc(GL_LESS);     // We want to get the nearest pixels
         glColorMask(0,0,0,0);     // Disable color, we only want depth.
         glDepthMask(GL_TRUE);     // Ask z writing
@@ -1966,12 +1966,12 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     occlusionShader.end();
     
     if(!drawOcclusionDebug){
-        glEnable(GL_DEPTH_TEST);  // We still want depth test
+		glEnable(GL_DEPTH_TEST);  // We still want depth test
         glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
         glColorMask(1,1,1,1);     // We want color this time
-		#ifndef OCULUS_RIFT
+		//#ifndef OCULUS_RIFT
         glDepthMask(GL_FALSE);
-		#endif
+		//#endif
     }
     
 	ofPopMatrix();
