@@ -273,7 +273,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 
 	bool reallocateTarget = !renderTarget.isAllocated() ||
 							 (int)renderTarget.getWidth()  != computedWidth ||
-							 (int)renderTarget.getHeight() != computedHeight;
+							 (int)	renderTarget.getHeight() != computedHeight;
 
 
 	if(reallocateTarget){

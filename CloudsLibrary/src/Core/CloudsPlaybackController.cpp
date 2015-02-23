@@ -700,7 +700,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	/// acts are getting stuck at the end without going to interlude
 	if(currentVisualSystem == rgbdVisualSystem && 
 		(currentAct == NULL || !currentAct->getTimeline().getIsPlaying()) && 
-		!transitionController.isTransitioning())
+		!transitionController.isTransitioning() &&
+		!shouldLoadAct && !loadingAct && !shouldPlayAct)
 	{
 		if(badIdle && ofGetElapsedTimef() - badIdleStartTime > 20){
 			ofLogError("BAD IDLE") << "Started Bad ENDED BAD IDLE BY RETURNING TO INTRO";
@@ -712,6 +713,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			badIdle = true;
 			badIdleStartTime = ofGetElapsedTimef();
 		}
+	}
+	else{
+		badIdle = false;
 	}
 	//////////////BAD IDLE
 
@@ -1047,7 +1051,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeContinueSelected = true;
 		return true;
 	}
-	if(ofGetElapsedTimef() - interludeStartTime > 30){
+	if(ofGetElapsedTimef() - interludeStartTime > 30 && !interludeHoveringContinue && !interludeHoveringReset){
 		interludeResetSelected = true;
 		return true;
 	}
