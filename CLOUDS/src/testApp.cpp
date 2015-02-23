@@ -5,6 +5,12 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
+	ofSetWindowPosition(0,0);
+#ifdef OCULUS_RIFT
+	ofSetWindowShape(1920*2,1080);
+#else
+	ofSetWindowShape(1920,1080);
+#endif
 	ofSetVerticalSync(true);
 	//ofSetFrameRate(60);
 	ofBackground(0);
@@ -31,6 +37,9 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
+	if(ofGetFrameNum() == 10){
+		ofToggleFullscreen();
+	}
 	if(shouldSetupPlayer){
 		player.setup();
 		shouldSetupPlayer = false;

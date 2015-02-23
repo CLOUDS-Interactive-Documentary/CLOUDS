@@ -14,7 +14,10 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	
+
+	ofSetWindowPosition(0,0);
+	ofSetWindowShape(1920*2,1080);
+
 	ofSetVerticalSync(true);
 	shouldPlayTestVideo = false;
 	ofSetLogLevel(OF_LOG_NOTICE);
@@ -43,6 +46,10 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
+
+	if(ofGetFrameNum() == 10){
+		ofToggleFullscreen();
+	}
 	//updateTransitions();
 	hud.update();
 	if(shouldPlayTestVideo){

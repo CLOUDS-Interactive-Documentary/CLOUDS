@@ -33,7 +33,7 @@ static int forcedScreenWidth;
 static int forcedScreenHeight;
 
 #ifdef OCULUS_RIFT
-static int numSamples = 1;
+static int numSamples = 0;
 #else
 static int numSamples = 4;
 #endif
@@ -182,8 +182,8 @@ ofxOculusDK2& CloudsVisualSystem::getOculusRift(){
 
 		ofFbo::Settings renderSettings;
 		renderSettings.useDepth = true;
-		renderSettings.numSamples = 4;
-		//renderSettings.numSamples = 1;
+		//renderSettings.numSamples = 4;
+		renderSettings.numSamples = 0;
 		renderSettings.depthStencilInternalFormat = GL_DEPTH_COMPONENT32F;
 		renderSettings.internalformat = GL_RGB;
 
@@ -3978,6 +3978,8 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 
 	/////////////////////////////////////////
 	/////////////////////////////////////////
+	//SIDEWAYS:
+	/*
 	ofMesh oculusTargetMesh2;
 
 	oculusTargetMesh2.addVertex(ofVec3f(1920+1080,0,0));
@@ -3991,35 +3993,12 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 
 	oculusTargetMesh2.addVertex(ofVec3f(1920,1920,0));
 	oculusTargetMesh2.addTexCoord(ofVec2f(1920,0));
-
-
-	/*
-	oculusTargetMesh.addVertex(ofVec3f(0,1920,0));
-	oculusTargetMesh.addTexCoord(ofVec2f(0,1080));
-
-	oculusTargetMesh.addVertex(ofVec3f(0,0,0));
-	oculusTargetMesh.addTexCoord(ofVec2f(1920,1080));
-
-	oculusTargetMesh.addVertex(ofVec3f(1080,1920,0));
-	oculusTargetMesh.addTexCoord(ofVec2f(0,0));
-
-	oculusTargetMesh.addVertex(ofVec3f(1080,0,0));
-	oculusTargetMesh.addTexCoord(ofVec2f(1920,0));
-
-	
-	oculusTargetMesh.addVertex(ofVec3f(1080+0,1920,0));
-	oculusTargetMesh.addTexCoord(ofVec2f(0,1080));
-
-	oculusTargetMesh.addVertex(ofVec3f(1080+0,0,0));
-	oculusTargetMesh.addTexCoord(ofVec2f(1920,1080));
-
-	oculusTargetMesh.addVertex(ofVec3f(1080+1080,1920,0));
-	oculusTargetMesh.addTexCoord(ofVec2f(0,0));
-
-	oculusTargetMesh.addVertex(ofVec3f(1080+1080,0,0));
-	oculusTargetMesh.addTexCoord(ofVec2f(1920,0));
 	*/
 
+	ofMesh oculusTargetMesh2 = oculusTargetMesh1;
+	for(int i = 0; i < oculusTargetMesh2.getNumVertices(); i++){
+		oculusTargetMesh2.getVertices()[i].x += 1920;
+	}
 	oculusTargetMesh1.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	oculusTargetMesh2.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 
