@@ -69,6 +69,7 @@ public:
 	float nearClip;
 	
 	bool playingVO;
+	bool playingVideo;
 
 	float maxVolume;
     

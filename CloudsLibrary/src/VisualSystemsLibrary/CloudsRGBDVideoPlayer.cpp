@@ -16,7 +16,8 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	nearClip    = 1.0f;
 	edgeClip    = 50.0f;
 	farClip     = 6000.0f;
-	
+	playingVideo = false;
+
 	fadeOutValue = fadeInValue = 0.0;
 
 	minDepth = 400;
@@ -299,6 +300,7 @@ void CloudsRGBDVideoPlayer::startPlayer(){
 	}
 	
 	playingVO = nextClipIsVO;
+	playingVideo = !nextClipIsVO;
 	clipPrerolled = false;
 
 //	cout << "swapped and played clip " << endl;
@@ -445,7 +447,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		}
 
 //		cout << "/*/*/*/*/*/***** FADIN VALUE " << fadeInValue << " FADE OUT VALUE " << fadeOutValue << " AUDIO VOLUME " << audioVolume << endl;
-		
+//		cout << "is playing? " << (isPlaying() ? "YES" : "NO") << endl;
 		getPlayer().setVolume(audioVolume);
 
 		if(forceStop && position > duration - .04){
@@ -529,7 +531,8 @@ void CloudsRGBDVideoPlayer::drawSubtitles(){
 
 //--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::drawSubtitles(int x, int y){
-	if( hasSubtitles() && getPlayer().isPlaying() ) {
+	bool playing = isPlaying() ;
+	if( hasSubtitles() && playing) {
         ofPushStyle();
 		ofDisableLighting();
 		ofEnableAlphaBlending();
@@ -541,8 +544,6 @@ void CloudsRGBDVideoPlayer::drawSubtitles(int x, int y){
         ofPopStyle();
     }
 }
-
-
     
 //--------------------------------------------------------------- 
 bool CloudsRGBDVideoPlayer::hasSubtitles(){
