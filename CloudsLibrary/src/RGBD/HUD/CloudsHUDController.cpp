@@ -774,15 +774,16 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, of
     ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
     ofTranslate(layerPos);
 
-    if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
-        // Billboard rotation using the Oculus orientation.
-        float angle;
-        ofVec3f axis;
-        CloudsVisualSystem::getOculusRift().getOrientationQuat().getRotate(angle, axis);
-        ofRotate(angle, axis.x, axis.y, axis.z);
-        ofScale(-1, 1, 1);
-    }
-    else if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_CAMERA) {
+	//JG Yebizo Festival -- Commenting out other billboard modes for now
+    //if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
+    //    // Billboard rotation using the Oculus orientation.
+    //    float angle;
+    //    ofVec3f axis;
+    //    CloudsVisualSystem::getOculusRift().getOrientationQuat().getRotate(angle, axis);
+    //    ofRotate(angle, axis.x, axis.y, axis.z);
+    //    ofScale(-1, 1, 1);
+    //}
+//    else if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_CAMERA) {
         // Billboard rotation using the camera.
         ofNode node;
         node.setPosition(layerPos);
@@ -791,12 +792,12 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, of
         float angle;
         node.getOrientationQuat().getRotate(angle, axis);
         ofRotate(angle, axis.x, axis.y, axis.z);
-    }
-    else {
-//        ofRotateY(layerRotationH[layer]);
-//        ofRotateX(layerRotationV[layer]);
-        ofScale(-1, 1, 1);
-    }
+//    }
+//    else {
+////        ofRotateY(layerRotationH[layer]);
+////        ofRotateX(layerRotationV[layer]);
+//        ofScale(-1, 1, 1);
+//    }
     
     // Debug circle.
 //    ofSetColor(255);
