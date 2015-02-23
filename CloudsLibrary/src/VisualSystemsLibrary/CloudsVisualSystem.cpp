@@ -873,6 +873,8 @@ void CloudsVisualSystem::drawSubtitles3D(){
 }
 
 void CloudsVisualSystem::draw3DCursor(){
+#ifdef OCULUS_RIFT
+
 	// EZ: Only draw cursor on _Intro for now
 	// JG: Also draw during interlude
     if(getSystemName() == "_Intro" || isInterlude){
@@ -901,6 +903,9 @@ void CloudsVisualSystem::draw3DCursor(){
         ofPopMatrix();
         ofPopStyle();
     }
+#endif
+
+}
 
 void CloudsVisualSystem::setupRGBDTransforms(){
 	ofTranslate(0,0,pointcloudOffsetZ);
