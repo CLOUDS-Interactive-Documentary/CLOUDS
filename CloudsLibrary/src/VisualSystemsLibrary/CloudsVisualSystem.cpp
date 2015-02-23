@@ -793,11 +793,8 @@ void CloudsVisualSystem::drawScene(){
 	if(isInterlude){
 		drawInterludeInterface();
 	}
-
 	drawSubtitles3D();
 	draw3DCursor();
-
-
 #endif
 	
 }
@@ -856,17 +853,24 @@ void CloudsVisualSystem::drawSubtitles3D(){
 	
 	ofVec3f subtitleWorldPosition;
 	subtitleWorldPosition = ofVec3f(0, -subtitle3DBasePosY, subtitle3DBasePosZ);
-	//subtitleWorldPosition.x *= multiplier;
-	//subtitleWorldPosition.y *= multiplier;
-
 	subtitleWorldPosition  = getCameraRef().getOrientationQuat() * subtitleWorldPosition;
 	subtitleWorldPosition += getCameraRef().getPosition();
 
+
 	ofPushMatrix();
+
 	getOculusRift().multBillboardMatrix( subtitleWorldPosition, getCameraRef().getUpDir() );
 	ofRotate(180,0,0,1);
 	ofScale(subtitle3DScale,subtitle3DScale,subtitle3DScale);
 	getRGBDVideoPlayer().drawSubtitles(0,0);
+	
+	//TEST
+	ofPushStyle();
+	ofSetColor(255,0,0);
+	ofSetRectMode(OF_RECTMODE_CENTER);
+	ofRect(0,0,500,75);
+	ofPopStyle();
+	//TEST
 
 	ofPopMatrix();
 #endif
@@ -3456,8 +3460,10 @@ void CloudsVisualSystem::loadGUIS()
 #endif
     
     cam.reset();
+	#ifndef OCULUS_RIFT
     ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/ofEasyCamSettings");
-    resetTimeline();
+	#endif
+	resetTimeline();
     
     loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
     timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
@@ -3528,11 +3534,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     }
 	
     cam.reset();
+	#ifndef OCULUS_RIFT
 	string easyCamPath = presetPath+"/ofEasyCamSettings";
 	if(ofFile(easyCamPath).exists()){
 		ofxLoadCamera(cam, easyCamPath);
 	}
-	
+	#endif
     loadTimelineUIMappings(presetPath+"/UITimelineMappings.xml");
 	timeline->setName( ofFilePath::getBaseName( presetPath ) );
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");

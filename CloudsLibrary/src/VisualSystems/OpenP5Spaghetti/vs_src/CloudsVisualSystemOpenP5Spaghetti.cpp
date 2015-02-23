@@ -253,7 +253,6 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5Spaghetti::selfDraw(){
-
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	ofDisableDepthTest();
 	glEnable(GL_POINT_SMOOTH);
@@ -274,6 +273,7 @@ void CloudsVisualSystemOpenP5Spaghetti::selfDraw(){
 	ofPopStyle();
     ofPopMatrix();
 	glPopAttrib();
+
 }
 
 // draw any debug stuff here
