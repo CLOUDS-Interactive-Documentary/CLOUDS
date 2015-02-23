@@ -7,6 +7,7 @@
 //
 
 #include "CloudsHUDLabel.h"
+#include "CloudsLocalization.h"
 
 CloudsHUDLabel::CloudsHUDLabel(){
     text = "";
@@ -41,9 +42,9 @@ void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
     type = "FONT";
 }
 
+
+
 void CloudsHUDLabel::draw(){
-    
-	
     
 	if( bIsAnimatingIn ){
         if(animationSpeed != 0){
@@ -52,7 +53,15 @@ void CloudsHUDLabel::draw(){
         else{
             pct = beginTime;
         }
-        playhead = floor(text.length() * pct);
+        if(pct >= 1.0){
+			playhead = text.length();
+		}
+		else{
+			playhead = ((int)(floor(text.length() * pct)) / 2) * 2;
+		}
+		////////////////////////
+		//playhead = text.length();
+		/////////////////////////
         if( pct >= 1.0 ){
             bIsAnimatingIn = false;
         }
@@ -62,7 +71,7 @@ void CloudsHUDLabel::draw(){
         pct = ofMap( ofGetElapsedTimef(), beginTime, beginTime+fadeOutSpeed, 1., 0., true );
         textAlpha = floor( 255. * pct );
         if(textAlpha <= 0.0){
-            text == "";
+            text = "";
             bIsAnimatingOut = false;
         }
     }
@@ -71,7 +80,8 @@ void CloudsHUDLabel::draw(){
         if( layout ){
             ofPushStyle();{
                 ofSetColor(255, 255, 255, textAlpha);
-                string t = text.substr(0, playhead );
+//				string t = text.substr(0, playhead );
+				string t = utf8_substr(text, playhead);
                 if(caps){
                     t = ofToUpper(t);
                 }
@@ -82,9 +92,12 @@ void CloudsHUDLabel::draw(){
     else if (type == "FONT"){
         ofPushStyle();{
             ofSetColor(255, 255, 255, textAlpha);
-            string t = text.substr(0, playhead );
-            if(caps)
+            //string t = text.substr(0, playhead );
+			string t = utf8_substr(text, playhead);
+            
+			if(caps){
                 t = ofToUpper(t);
+			}
             font->drawString( t, bounds.x, bounds.y + font->getStringBoundingBox("W", 0, 0).height );
         }ofPopStyle();
     }

@@ -39,7 +39,8 @@ class CloudsHUDLabel {
     bool caps;
     
   protected:
-    string  text, type;
+	string  text;
+    string type;
     
     ofRange animationClamp;
     

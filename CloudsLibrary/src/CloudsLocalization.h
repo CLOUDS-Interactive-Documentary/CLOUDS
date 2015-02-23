@@ -18,4 +18,6 @@ string GetFontPath();
 //--------------------------------------
 string GetMediumFontPath();
 //--------------------------------------
-string GetThinFontPath(); 
+string GetThinFontPath();
+//--------------------------------------
+string utf8_substr(string originalString, int maxLength);
