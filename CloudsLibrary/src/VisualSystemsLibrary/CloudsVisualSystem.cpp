@@ -273,10 +273,11 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 
 	bool reallocateTarget = !renderTarget.isAllocated() ||
 							 (int)renderTarget.getWidth()  != computedWidth ||
-							 (int)	renderTarget.getHeight() != computedHeight;
+							 (int)renderTarget.getHeight() != computedHeight;
 
 
 	if(reallocateTarget){
+		cout << "REALLOCATING RENDER TARGET" << endl;
 		renderTarget.allocate(computedWidth, computedHeight, GL_RGB, numSamples);
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -865,11 +866,11 @@ void CloudsVisualSystem::drawSubtitles3D(){
 	getRGBDVideoPlayer().drawSubtitles(0,0);
 	
 	//TEST
-	ofPushStyle();
-	ofSetColor(255,0,0);
-	ofSetRectMode(OF_RECTMODE_CENTER);
-	ofRect(0,0,500,75);
-	ofPopStyle();
+	//ofPushStyle();
+	//ofSetColor(255,0,0);
+	//ofSetRectMode(OF_RECTMODE_CENTER);	
+	//ofRect(0,0,500,75);
+	//ofPopStyle();
 	//TEST
 
 	ofPopMatrix();
