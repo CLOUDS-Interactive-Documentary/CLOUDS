@@ -346,6 +346,8 @@ class CloudsVisualSystem {
 	
 	bool bPromptForInteraction;
 
+	void draw3DCursor();
+
 	//3D Subtitles
 	void drawSubtitles3D();
 	float subtitle3DBasePosX;

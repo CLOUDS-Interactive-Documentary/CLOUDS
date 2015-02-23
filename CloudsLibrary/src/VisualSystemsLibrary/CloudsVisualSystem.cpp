@@ -795,34 +795,9 @@ void CloudsVisualSystem::drawScene(){
 	}
 
 	drawSubtitles3D();
+	draw3DCursor();
 
-    // EZ: Only draw cursor on _Intro for now
-    if(primaryCursorMode > CURSOR_MODE_NONE && getSystemName() == "_Intro"){
-        ofPushStyle();
-        ofPushMatrix();
-        glPushAttrib(GL_ALL_ATTRIB_BITS);
-        glDisable(GL_LIGHTING);
-        ofDisableDepthTest();
-        
-        ofTranslate(getCameraRef().getPosition());
-        ofMatrix4x4 baseRotation;
-        baseRotation.makeRotationMatrix(getCameraRef().getOrientationQuat());
-        if(getOculusRift().lockView){
-            ofMultMatrix(baseRotation);
-        }
-        else {
-            ofMultMatrix(getOculusRift().getOrientationMat() * baseRotation);
-        }
-        
-        ofEnableAlphaBlending();
-        
-        ofVec3f cursorPt = ofVec3f(0, 0, -150);
-        selfDrawCursor(cursorPt, false, primaryCursorMode);
-        
-        glPopAttrib();
-        ofPopMatrix();
-        ofPopStyle();
-    }
+
 #endif
 	
 }
@@ -896,6 +871,36 @@ void CloudsVisualSystem::drawSubtitles3D(){
 	ofPopMatrix();
 #endif
 }
+
+void CloudsVisualSystem::draw3DCursor(){
+	// EZ: Only draw cursor on _Intro for now
+	// JG: Also draw during interlude
+    if(getSystemName() == "_Intro" || isInterlude){
+        ofPushStyle();
+        ofPushMatrix();
+        glPushAttrib(GL_ALL_ATTRIB_BITS);
+        glDisable(GL_LIGHTING);
+        ofDisableDepthTest();
+        
+        ofTranslate(getCameraRef().getPosition());
+        ofMatrix4x4 baseRotation;
+        baseRotation.makeRotationMatrix(getCameraRef().getOrientationQuat());
+        if(getOculusRift().lockView){
+            ofMultMatrix(baseRotation);
+        }
+        else {
+            ofMultMatrix(getOculusRift().getOrientationMat() * baseRotation);
+        }
+        
+        ofEnableAlphaBlending();
+        
+        ofVec3f cursorPt = ofVec3f(0, 0, -150);
+        selfDrawCursor(cursorPt, false, primaryCursorMode);
+        
+        glPopAttrib();
+        ofPopMatrix();
+        ofPopStyle();
+    }
 
 void CloudsVisualSystem::setupRGBDTransforms(){
 	ofTranslate(0,0,pointcloudOffsetZ);
