@@ -448,7 +448,8 @@ void CloudsIntroSequence::updateTitle(){
 		extrudedTitleText.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
 	}
 	
-	titleRect = ofRectangle(0,0,titleRectWidth*ofGetWidth(),titleRectHeight*ofGetHeight());
+	titleRect = ofRectangle(0,0,titleRectWidth * getSharedRenderTarget().getWidth(),
+								titleRectHeight * getSharedRenderTarget().getHeight() );
 	titleRect.alignTo( ofPoint(getCanvasWidth()/2, getCanvasHeight()/2) );
 	hoveringTitle = titleRect.inside(GetCloudsInputX(), GetCloudsInputY());
 	
