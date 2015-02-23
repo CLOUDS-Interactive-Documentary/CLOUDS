@@ -529,7 +529,7 @@ void CloudsRGBDVideoPlayer::drawSubtitles(){
 
 //--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::drawSubtitles(int x, int y){
-    if (hasSubtitles()) {
+	if( hasSubtitles() && getPlayer().isPlaying() ) {
         ofPushStyle();
 		ofDisableLighting();
 		ofEnableAlphaBlending();
