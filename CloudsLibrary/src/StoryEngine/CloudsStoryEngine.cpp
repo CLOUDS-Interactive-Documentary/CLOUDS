@@ -310,7 +310,6 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     }
     
 #ifdef CLOUDS_SCREENING
-//	if(run.questionsAsked >= screeningQuestionClips.size()-1 || forceCredits){
 	if(forceCredits){
         preset = visualSystems->getPresetForSystem("Balloons", "CREDITS_FINAL");
         return true;
@@ -326,7 +325,7 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     vector< pair<string,int> > potentialPresets;
     vector<CloudsVisualSystemPreset> currentSelection = visualSystems->getPresetsForKeywords(topics,"",true);
 	
-	for (int i =0 ; i < currentSelection.size(); i++) {
+	for (int i = 0; i < currentSelection.size(); i++) {
 		if( ofContains(run.presetHistory, currentSelection[i].getID() )){
 			cout<<currentSelection[i].getID()<<" already in history so not selecting"<<endl;
 			continue;
@@ -344,7 +343,7 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
 		vector<string> presetTopics = visualSystems->keywordsForPreset(currentSelection[i]);
 		int presetScore = 0;
 		
-		for (int k =0 ; k< presetTopics.size(); k++) {
+		for (int k = 0; k < presetTopics.size(); k++) {
 			if (ofContains(run.topicHistory, presetTopics[k])) {
 				presetScore++;
 			}
@@ -358,13 +357,23 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
         cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
 		run.presetHistory.push_back(potentialPresets[0].first);
         preset = visualSystems->getPresetWithID(potentialPresets[0].first);
-        return  true;
+        return true;
     }
     else{
         ofLogError("CloudsStoryEngine::getPresetForInterlude") << "Defaulting to cluster map because we found no topics from the last act";
         return false;
     }
+}
 
+bool CloudsStoryEngine::getRandomInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset){
+	vector<CloudsVisualSystemPreset> currentSelection = visualSystems->getAllInterludes();
+	
+	for (int i = 0; i < currentSelection.size(); i++) {
+	for (int i = currentSelection.size()-1; i >= 0; i--) {
+		if( ofContains(run.presetHistory, currentSelection[i].getID() )){
+			continue;
+		}
+	}
 }
 
 #pragma mark INIT ACT

@@ -719,6 +719,16 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 	return presetsWithKeywords;
 }
 
+vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getAllInterludes(){
+	vector<CloudsVisualSystemPreset> interludePresets;
+	for(int i = 0; i < presets.size(); i++){
+		if( presets[i].interlude ){
+			interludePresets.push_back(presets[i]);
+		}		
+	}
+	return interludePresets;
+}
+
 vector<int> CloudsVisualSystemManager::getPresetIndicesForSystem(const string& systemName){
     vector<int> indices;
     for(int i = 0; i < presets.size(); i++){

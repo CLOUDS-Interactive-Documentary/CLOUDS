@@ -64,6 +64,8 @@ class CloudsStoryEngine {
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed, string topic, bool playSeed = true);
 	bool getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset, bool forceCredits = false);
+	bool getRandomInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset);
+
     void initGui();
     void saveGuiSettings();
     void toggleGuis(bool actOnly = false);
