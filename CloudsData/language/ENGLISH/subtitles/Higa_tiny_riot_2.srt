@@ -1,6 +1,7 @@
 1
 00:00:01.2 - 00:00:04.9
-At that time, they explained the original concept. That was...  
+At that time, they explained the original concept. 
+That was...  
 
 2
 00:00:04.9 - 00:00:08.8
@@ -16,7 +17,8 @@ and so, we really didn't know what to do
 
 5
 00:00:16.6 - 00:00:20.6 
-we thought, we wanna just run. Why not make an application for running! Something like that... 
+we thought, we wanna just run. Why not make an 
+application for running! Something like that... 
 
 6
 00:00:20.6 - 00:00:25.4
