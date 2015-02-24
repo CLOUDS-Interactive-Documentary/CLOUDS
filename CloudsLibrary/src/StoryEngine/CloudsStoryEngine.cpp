@@ -366,14 +366,32 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
 }
 
 bool CloudsStoryEngine::getRandomInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset){
-	vector<CloudsVisualSystemPreset> currentSelection = visualSystems->getAllInterludes();
+	vector<CloudsVisualSystemPreset> validInterludes = visualSystems->getAllInterludes();
 	
-	for (int i = 0; i < currentSelection.size(); i++) {
-	for (int i = currentSelection.size()-1; i >= 0; i--) {
-		if( ofContains(run.presetHistory, currentSelection[i].getID() )){
-			continue;
+	for (int i = validInterludes.size()-1; i >= 0; i--) {
+		bool valid = true;
+		if( ofContains(run.presetHistory, validInterludes[i].getID() )){
+			valid = false;
+		}
+#ifdef OCULUS_RIFT
+		if(!validInterludes[i].enabledOculus){
+			valid = false;
+		}
+#else
+		if(!validInterludes[i].enabledScreen){
+			valid = false;
+		}
+#endif
+		if(!valid){
+			validInterludes.erase(validInterludes.begin() + i);
 		}
 	}
+
+	if(validInterludes.size() > 0){
+		preset = validInterludes[ (int)ofRandom(validInterludes.size()) ];
+		return true;
+	}
+	return false;
 }
 
 #pragma mark INIT ACT
