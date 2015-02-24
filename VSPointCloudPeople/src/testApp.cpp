@@ -26,6 +26,11 @@ void testApp::setup(){
 	ofSetLogLevel(OF_LOG_NOTICE);
     
 	CloudsSpeaker::populateSpeakers();
+	map<string,CloudsSpeaker>::iterator it;
+	for(it = CloudsSpeaker::speakers.begin(); it != CloudsSpeaker::speakers.end(); it++){
+		speakerKeys.push_back(it->first);
+	}
+	curSpeaker = 0;
 
 	parser.loadFromFiles();
 	hud.setup();
@@ -67,7 +72,6 @@ void testApp::update(){
 	}
 }
 
-
 //--------------------------------------------------------------
 void testApp::draw(){
 	ofBackground(0);
@@ -94,6 +98,22 @@ void testApp::keyPressed(int key){
 	if(key == 'I'){
 		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToInterview(1.0, 1.0);
+	}
+
+	if(key == OF_KEY_LEFT){
+		curSpeaker = (curSpeaker + 1) % speakerKeys.size();
+		CloudsClip clip;
+		clip.person = speakerKeys[curSpeaker];
+		hud.respondToClip(&clip);
+	}
+	else if(key == OF_KEY_RIGHT){
+		curSpeaker--;
+		if(curSpeaker < 0) curSpeaker += speakerKeys.size();
+		
+		CloudsClip clip;
+		clip.person = speakerKeys[curSpeaker];
+		hud.respondToClip(&clip);
+	
 	}
 }
 

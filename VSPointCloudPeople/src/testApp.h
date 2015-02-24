@@ -35,4 +35,6 @@ class testApp : public ofBaseApp{
 	CloudsVisualSystemRGBD rgbd;
 	CloudsVisualSystem::RGBDTransitionType type;
 	CloudsTransitionController transitionController;
+	vector<string> speakerKeys;
+	int curSpeaker;
 };
