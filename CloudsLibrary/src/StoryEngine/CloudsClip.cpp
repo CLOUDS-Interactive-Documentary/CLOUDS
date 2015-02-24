@@ -51,7 +51,7 @@ string CloudsClip::getLanguage(){
 	if(person == "Higa"){
 		return "JAPANESE";
 	}
-	else if(person == "PATRICIO"){
+	else if(person == "Patricio"){
 		return "SPANISH";
 	}
 	return "ENGLISH";

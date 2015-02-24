@@ -293,6 +293,10 @@ vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
             ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i]->getID() << " has no media asset, removing.";
             startingNodes.erase(startingNodes.begin() + i);
         }
+		else if(!startingNodes[i]->isLanguageCompatible()){
+            ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i]->getID() << " is not language comatible, removing.";
+            startingNodes.erase(startingNodes.begin() + i);
+		}
     }
     cout << "returning " << startingNodes.size() << " nodes!" << endl;
     return startingNodes;
@@ -946,7 +950,7 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 	//select next questions
 	for(int k = 0; k < nextOptions.size(); k++){
 		if( nextOptions[k]->hasQuestion() &&
-			nextOptions[k]->currentScore != 0 &&
+			nextOptions[k]->currentScore > 0 &&
 			nextOptions[k]->getID() != winningClip->getID())
 		{
 			questionClips.push_back(nextOptions[k]);
@@ -1220,7 +1224,8 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
     }
 
 	//reject any clips that don't match the current language and are without a subtitle file
-	if(potentialNextClip->getLanguage() != GetLanguage() && !potentialNextClip->hasSubtitleFile() ){
+	if(!potentialNextClip->isLanguageCompatible() ){
+	//if(potentialNextClip->getLanguage() != GetLanguage() && !potentialNextClip->hasSubtitleFile() ){
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": language is " << potentialNextClip->getLanguage() << " and no subtitles" << endl;
         return 0;
 	}
@@ -1314,12 +1319,12 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
 		return 0;
 	}
-#ifdef OCULUS_RIFT
-	if(ofToLower(potentialNextClip->person) == "higa" || ofToLower(potentialNextClip->person) == "patricio"){
-        cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
-		return 0;
-	}
-#endif
+//#ifdef OCULUS_RIFT
+	//if(ofToLower(potentialNextClip->person) == "higa" || ofToLower(potentialNextClip->person) == "patricio"){
+ //       cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
+	//	return 0;
+	//}
+//#endif
     //Base score
     float totalScore = 0;
     float offTopicScore = 0; //negative if this is a link & off topic
