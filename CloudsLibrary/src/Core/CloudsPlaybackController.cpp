@@ -436,15 +436,6 @@ void CloudsPlaybackController::playCurrentAct(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
-	
-//	if(args.key == 'Q'){
-//		for(int i = 0; i < fakeQuestions.size(); i++){
-//			rgbdVisualSystem->addQuestion(fakeQuestions[i],
-//										  fakeQuestions[i]->getTopicsWithQuestions()[0],
-//										  fakeQuestions[i]->getQuestions()[0]);
-//		}
-//	}
-    
     
 	if(args.key == '\\'){
 		if(showingIntro){
@@ -480,21 +471,21 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
         }
 	}
     
-	if(args.key == '/'){
+	//if(args.key == '/'){
 
-		if(currentAct != NULL){
-			if(!pauseAct){
-				pauseAct = true;
-				CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().setSpeed(0);
-				currentAct->getTimeline().stop();
-			}
-			else{
-				pauseAct = false;
-				CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().setSpeed(1.0);
-				currentAct->getTimeline().play();			
-			}
-		}
-	}
+	//	if(currentAct != NULL){
+	//		if(!pauseAct){
+	//			pauseAct = true;
+	//			CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().setSpeed(0);
+	//			currentAct->getTimeline().stop();
+	//		}
+	//		else{
+	//			pauseAct = false;
+	//			CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().setSpeed(1.0);
+	//			currentAct->getTimeline().play();			
+	//		}
+	//	}
+	//}
 
 #ifdef OCULUS_RIFT
     if(args.key == OF_KEY_RETURN){
@@ -512,7 +503,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
     }
 #endif
 	
-
 #ifdef CLOUDS_SCREENING
 	if(args.key == 'Q'){
 		forceCredits = true;
@@ -527,7 +517,16 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		GetCloudsAudioEvents()->respawn = true;
 	}
     
+	if(args.key == 'E'){
+		SetLanguage("ENGLISH");
+	}
+
+	if(args.key == 'J'){
+		SetLanguage("JAPANESE");
+	}
+
 }
+
 //--------------------------------------------------------------------
 void CloudsPlaybackController::createInterludeSoundQueue(){
     CloudsSoundCue cue;
@@ -693,6 +692,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             transitionController.transitionWithQuestion(2.0, 0.1);
         }
     }
+
+	getSharedVideoPlayer().showingLowerThirds = currentVisualSystem == rgbdVisualSystem;
 
 
 	//sanity check

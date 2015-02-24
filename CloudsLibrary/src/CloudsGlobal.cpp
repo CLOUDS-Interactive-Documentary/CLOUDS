@@ -27,6 +27,7 @@ string GetCloudsDataPath(bool ignored)
     return string(usingDevelopmentFolder ? "../../../" : "") + "CloudsData"  + (ignored ? "_ignored" : "") + "/";
 }
 
+//--------------------------------------------------------------------
 string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder){
 	//  building from src project file
 	string datapath;
@@ -60,6 +61,12 @@ string GetLanguage(){
 }
 
 //--------------------------------------------------------------------
+void SetLanguage(string newLanguage){
+	language = newLanguage;
+	languageSet = true;
+}
+
+//--------------------------------------------------------------------
 string relinkFilePath(string filePath){
 	
 	vector<string> drives;
@@ -81,6 +88,5 @@ string relinkFilePath(string filePath){
 			}
 		}
 	}
-	
 	return filePath;
 }

@@ -42,6 +42,7 @@ void testApp::setup(){
     rgbd.hud = &hud;
     rgbd.setupHUDGui();
 #endif
+	CloudsVisualSystem::getRGBDVideoPlayer().showingLowerThirds = true;
 
 	//rgbd.forceScreenResolution(1920*2,1080*2);
 	//rgbd.addTransionEditorsToGui();

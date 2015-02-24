@@ -38,12 +38,19 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
     nextClipVolume = 0;
     bLoadResult = false;
 	bPlayWhenReady = false;
+	showingLowerThirds = false;
 
-	subtitle3DhRotate = 0;
-	subtitle3DvRotate = 0; 
-	subtitle3DzDistance = 20;
-	subtitle3DscaleAmt = 1.0;
-	subtitle3Doffset = ofVec2f(0,0);
+	//subtitle3DhRotate = 0;
+	//subtitle3DvRotate = 0; 
+	//subtitle3DzDistance = 20;
+	//subtitle3DscaleAmt = 1.0;
+	//subtitle3Doffset = ofVec2f(0,0);
+
+	subtitle2DOffsetLowerThirds = .7;
+	subtitle2DOffsetVisualSystem = .9;
+
+	englishSubtitleKerning = .5;
+	japaneseSubtitleKerning = .5;
 
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 	nextPlayer    = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
@@ -498,7 +505,8 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 		ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Failed to set up subtitles at path " << path;
         return false;
     }
-    
+	nextSubtitles->font.setLetterSpacing(.4);
+
     // find font size based on 85% canvas width and a predefined maximum string
     float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
 	if(requiredWidth == 0){
@@ -525,7 +533,8 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 //--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::drawSubtitles(){
     int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
-    int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.7;
+    int y = CloudsVisualSystem::getStaticRenderTarget().getHeight();
+	y *= showingLowerThirds ? subtitle2DOffsetLowerThirds : subtitle2DOffsetVisualSystem;
 	drawSubtitles(x,y);
 }
 

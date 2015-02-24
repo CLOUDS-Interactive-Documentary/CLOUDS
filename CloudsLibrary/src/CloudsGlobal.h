@@ -17,6 +17,8 @@ string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder = fal
 //--------------------------------------------------------------------
 string GetLanguage();
 //--------------------------------------------------------------------
+void SetLanguage(string language);
+//--------------------------------------------------------------------
 string relinkFilePath(string filePath);
 
 //--------------------------------------

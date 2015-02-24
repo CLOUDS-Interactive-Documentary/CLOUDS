@@ -22,8 +22,6 @@ public:
     CloudsRGBDVideoPlayer();
     ~CloudsRGBDVideoPlayer();
 	
-    //  SET
-    //
 	bool setup(string videoPath, string calibrationXMLPath, string subtitlesPath = "", float offsetTime = 0, float clipVolume = 1);
 	bool setupVO(string audioPath, string subtitlePath = "");
 	void swapAndPlay();
@@ -83,13 +81,22 @@ public:
     void drawSubtitles();
 	void drawSubtitles(int x, int y);
 
-	//subtitle 3D params
-	float subtitle3DhRotate;
-	float subtitle3DvRotate; 
-	float subtitle3DzDistance;
-	float subtitle3DscaleAmt;
-	ofVec2f subtitle3Doffset;
-	//end 3D
+	//subtitle 2D params
+	float subtitle2DOffsetLowerThirds;
+	float subtitle2DOffsetVisualSystem;
+	bool showingLowerThirds;
+
+	////subtitle 3D params
+	//float subtitle3DhRotate;
+	//float subtitle3DvRotate; 
+	//float subtitle3DzDistance;
+	//float subtitle3DscaleAmt;
+	//ofVec2f subtitle3Doffset;
+	////end 3D
+
+	//type
+	float englishSubtitleKerning;
+	float japaneseSubtitleKerning;
 
   protected:
 
