@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:00:29 --> 00:00:03:24
 What is the connection between the initial  state 
 

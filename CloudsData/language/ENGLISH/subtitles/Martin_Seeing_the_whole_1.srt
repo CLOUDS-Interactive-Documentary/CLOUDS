@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:00:12 --> 00:00:03:17
 Sure, so there are couple of boundary conditions with visualization.
 

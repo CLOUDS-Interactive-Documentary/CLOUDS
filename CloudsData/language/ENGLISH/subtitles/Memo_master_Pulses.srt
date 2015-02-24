@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:01:07 --> 00:00:05:28
 So what happens is, you get these pulses, and then those pulses are in sync, 
 

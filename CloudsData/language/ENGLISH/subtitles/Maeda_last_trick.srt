@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:00:00 --> 00:00:05:02
 And so I was spending every night running a system in Python.  
 

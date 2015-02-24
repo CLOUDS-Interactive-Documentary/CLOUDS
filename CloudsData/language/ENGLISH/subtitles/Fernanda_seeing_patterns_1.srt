@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:00:29 --> 00:00:06:11
 One of the things that is so captivating about visualizing complex data
 

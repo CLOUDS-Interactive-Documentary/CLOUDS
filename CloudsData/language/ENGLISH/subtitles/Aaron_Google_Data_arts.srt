@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:00:14 --> 00:00:04:21
 I lead a small team at Google called the Data Arts team.  It’s part of the creative lab.
 

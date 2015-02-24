@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:01:05 --> 00:00:04:26
 When I first started writing with code, I was making things that were very architectural
 

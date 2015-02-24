@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:00:27 --> 00:00:04:28
 So my entry into creative coding was kind of coming out of from a more traditional 
 

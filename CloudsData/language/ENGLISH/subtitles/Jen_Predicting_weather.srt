@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:01:15 --> 00:00:05:24
 You can mathematically model in general what’s going to be happening, but then
 

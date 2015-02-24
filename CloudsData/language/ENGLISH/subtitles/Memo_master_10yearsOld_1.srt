@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:01:00 --> 00:00:06:27
 I think I’m quite fortunate in that I started early. I started programming when I was about ten.
 

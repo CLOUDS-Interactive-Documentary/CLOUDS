@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:00:29 --> 00:00:03:25
 There is an over-reliance of data as truth 
 

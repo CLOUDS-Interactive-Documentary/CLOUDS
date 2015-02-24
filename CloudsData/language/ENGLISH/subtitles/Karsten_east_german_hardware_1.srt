@@ -1,4 +1,4 @@
-2
+﻿2
 00:00:00:00 --> 00:00:04:27
 I was so excited basically when I started computing, I started on East German hardware, 
 
