@@ -857,7 +857,6 @@ void CloudsVisualSystem::drawSubtitles3D(){
 	subtitleWorldPosition  = getCameraRef().getOrientationQuat() * subtitleWorldPosition;
 	subtitleWorldPosition += getCameraRef().getPosition();
 
-
 	ofPushMatrix();
 
 	getOculusRift().multBillboardMatrix( subtitleWorldPosition, getCameraRef().getUpDir() );
