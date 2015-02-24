@@ -525,4 +525,12 @@
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\CloudsData\language\JAPANESE\bio\people.xml">
+      <Filter>src</Filter>
+    </Xml>
+    <Xml Include="..\CloudsData\language\JAPANESE\bio\projects.xml">
+      <Filter>src</Filter>
+    </Xml>
+  </ItemGroup>
 </Project>
