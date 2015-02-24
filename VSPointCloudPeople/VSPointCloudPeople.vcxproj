@@ -548,5 +548,9 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug_Oculus|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\CloudsData\language\JAPANESE\bio\people.xml" />
+    <Xml Include="..\CloudsData\language\JAPANESE\bio\projects.xml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
