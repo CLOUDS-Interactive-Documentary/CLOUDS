@@ -148,6 +148,11 @@ bool CloudsRGBDVideoPlayer::setupVO(string audioPath, string subtitlesPath){
 		return false;
 	}
 
+   if(!bEventRegistered){
+		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
+		bEventRegistered = true;
+	}
+
 	nextSubtitlesPath = subtitlesPath;
     nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
 
@@ -418,9 +423,10 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
     float audioVolume =  maxVolume * currentClipVolumeAdjustment;
 
 	if(playingVO){
-		currentVoiceoverPlayer->setVolume(audioVolume);
+		//JG: audio volume bug 
+		//currentVoiceoverPlayer->setVolume(audioVolume);
         if (currentClipHasSubtitles) {
-			currentSubtitles->setTimeInSeconds(currentVoiceoverPlayer->getPosition());
+			currentSubtitles->setTimeInSeconds(currentVoiceoverPlayer->getPositionMS()/1000.);
         }
 	}
 	else{

@@ -258,30 +258,31 @@ void CloudsVisualSystemRGBD::playTestVideo(CloudsClip* clip){
 
 void CloudsVisualSystemRGBD::playTestVideo(){
 
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Shiffman_programming_the_universe";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Shantell_Coding_gesturally";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Golan_yellow_tail";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Casey_emergence";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Kevin_Getting_smarter_together";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_networked_creativity";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_dreaming_together";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Fernanda_Social_dynamics";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Fernanda_What_people_are_thinking";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Lauren_sentiment_anaylsis";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Jen_a_different_mathematics";
-//	string sourceFile = GetCloudsDataPath(true) + "media/Jen_a_different_mathematics";
-	string sourceFile = GetCloudsDataPath(true) + "media/Patricio_Alchemy_3";
-	string filePathMov = sourceFile+".mov";
-	string filePathXml = sourceFile+".xml";
-	string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Shiffman_nature_of_code_book.srt"; 
 
-	if(ofFile::doesFileExist(filePathMov)){
-        getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);
+	string sourceFile = GetCloudsDataPath(true) + "VO/Intro_Computers.aif";
+	string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Intro_Computers.srt"; 
+	if(ofFile::doesFileExist(sourceFile)){
+        getRGBDVideoPlayer().setupVO(sourceFile, subtitlesPathSrt);
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 	else{
-		ofSystemAlertDialog("Test Video " + filePathMov + " does not exist");
+		ofSystemAlertDialog("Test Video " + sourceFile + " does not exist");
 	}
+
+
+	//string sourceFile = GetCloudsDataPath(true) + "media/Patricio_Alchemy_3";
+	//string filePathMov = sourceFile+".mov";
+	//string filePathXml = sourceFile+".xml";
+	//string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Shiffman_nature_of_code_boo.srt"; 
+
+
+	//if(ofFile::doesFileExist(filePathMov)){
+ //       getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);
+	//	getRGBDVideoPlayer().swapAndPlay();
+	//}
+	//else{
+	//	ofSystemAlertDialog("Test Video " + filePathMov + " does not exist");
+	//}
 }
 
 void CloudsVisualSystemRGBD::loadShader(){
