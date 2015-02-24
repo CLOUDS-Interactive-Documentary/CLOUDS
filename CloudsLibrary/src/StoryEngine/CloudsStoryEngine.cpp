@@ -945,7 +945,10 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 	
 	//select next questions
 	for(int k = 0; k < nextOptions.size(); k++){
-		if(nextOptions[k]->hasQuestion() && nextOptions[k]->getID() != winningClip->getID()){
+		if( nextOptions[k]->hasQuestion() &&
+			nextOptions[k]->currentScore != 0 &&
+			nextOptions[k]->getID() != winningClip->getID())
+		{
 			questionClips.push_back(nextOptions[k]);
 		}
 	}
