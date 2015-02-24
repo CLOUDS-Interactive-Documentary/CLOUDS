@@ -99,6 +99,7 @@ class CloudsClip {
     
 	bool hasSubtitleFile();
 	bool hasMediaAsset;
+	bool isLanguageCompatible();
 	string combinedVideoPath;
 	string voiceOverAudioPath;
 	string combinedCalibrationXMLPath;

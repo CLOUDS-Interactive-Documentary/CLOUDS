@@ -132,7 +132,15 @@ bool CloudsClip::hasSubtitleFile(){
 	return ofFile(getSubtitlesPath()).exists();
 }
 
+bool CloudsClip::isLanguageCompatible(){
+	return getLanguage() == GetLanguage() || hasSubtitleFile();
+}
+
 string CloudsClip::getSubtitlesPath() {
+	//for Higa-san, return english subtitles
+	if(getLanguage() == "JAPANESE" && GetLanguage() != "JAPANESE"){
+		return GetCloudsDataPath() + "language/ENGLISH/subtitles/" + getSubtitlesFilename();
+	}
 	return GetCloudsDataPath() + "language/" + GetLanguage() + "/subtitles/" + getSubtitlesFilename();
 }
 
