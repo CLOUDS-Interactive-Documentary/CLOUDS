@@ -39,12 +39,8 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
     bLoadResult = false;
 	bPlayWhenReady = false;
 	showingLowerThirds = false;
-
-	//subtitle3DhRotate = 0;
-	//subtitle3DvRotate = 0; 
-	//subtitle3DzDistance = 20;
-	//subtitle3DscaleAmt = 1.0;
-	//subtitle3Doffset = ofVec2f(0,0);
+	
+	fontLoadWidth = 0;
 
 	subtitle2DOffsetLowerThirds = .7;
 	subtitle2DOffsetVisualSystem = .9;
@@ -503,37 +499,43 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
         fps = 30;
     }
     
-	//////OLD WAY
-    int fontSize = 36;
-	string fontPath = GetFontPath();
+	if(fontLoadWidth != CloudsVisualSystem::getStaticRenderTarget().getWidth()){
+		int fontSize = 36;
+		string fontPath = GetFontPath();
 
-    if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
-		ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Failed to set up subtitles at path " << path;
-        return false;
-    }
-	nextSubtitles->font.setLetterSpacing(.4);
+		if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
+			ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Failed to set up subtitles at path " << path;
+			return false;
+		}
+		nextSubtitles->font.setLetterSpacing(japaneseSubtitleKerning);
 
-    // find font size based on 85% canvas width and a predefined maximum string
-    float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
-	if(requiredWidth == 0){
-		requiredWidth = 1920* .85;
-	}
-    string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
-    float curStringWidth = nextSubtitles->font.stringWidth(maxStr);
+		// find font size based on 85% canvas width and a predefined maximum string
+		float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
+		if(requiredWidth == 0){
+			requiredWidth = 1920* .85;
+		}
+		string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
+		float curStringWidth = nextSubtitles->font.stringWidth(maxStr);
     
-    // loop here until you find the right font size
-    while (curStringWidth > requiredWidth && fontSize > 0) {
-		nextSubtitles->font.setSize(--fontSize);
-        curStringWidth = nextSubtitles->font.stringWidth(maxStr);
-    }
+		// loop here until you find the right font size
+		while (curStringWidth > requiredWidth && fontSize > 0) {
+			nextSubtitles->font.setSize(--fontSize);
+			curStringWidth = nextSubtitles->font.stringWidth(maxStr);
+		}
 
-	if(fontSize == 0){
-		ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Font size went to 0, failed to load titles";
-		return false;
+		cout << "SUBTITLE FONT SIZE IS " << fontSize << endl;
+		if(fontSize == 0){
+			ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Font size went to 0, failed to load titles";
+			return false;
+		}
+		fontLoadWidth = fontSize;
+
+	    return true;
+	}
+	else{
+		return nextSubtitles->load(path);
 	}
 
-	cout << "SUBTITLE FONT SIZE IS " << fontSize << endl;
-    return true;
 }
 
 //--------------------------------------------------------------- 

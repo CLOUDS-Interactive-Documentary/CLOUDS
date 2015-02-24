@@ -103,12 +103,12 @@ void CloudsRGBDCamera::jumpToPosition(){
 
 void CloudsRGBDCamera::setCanvasWidthHeight(float width, float height ){
 	//JG TEMP!
-    //canvasWidth = width;
-	//canvasHeight = height;
+    canvasWidth = width;
+	canvasHeight = height;
     //JG END TEMP
     
-    canvasWidth = ofGetWidth();
-	canvasHeight = ofGetHeight();
+ //   canvasWidth = ofGetWidth();
+	//canvasHeight = ofGetHeight();
 }
 
 void CloudsRGBDCamera::setPositionFromMouse(){

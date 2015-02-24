@@ -1586,24 +1586,27 @@ void CloudsPlaybackController::showInterlude(){
 	#endif
     if(!storyEngine.getPresetIDForInterlude(run, interludePreset, forceCredits)){        
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";
-		storyEngine.getPresetIDForInterlude(run, interludePreset, true);
+		if(!storyEngine.getRandomInterlude(run, interludePreset)){
+			returnToIntro = true;
+			return;
+		}
 	}
 
     interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
 	if(interludeSystem == NULL){
 		returnToIntro = true;	
+		return;
 	}
-	else{
-		interludeSystem->setDrawToScreen( false );
-		interludeSystem->setup();
-		interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
-		interludeSystem->playSystem();
-		interludeSystem->isInterlude = true;
+
+	interludeSystem->setDrawToScreen( false );
+	interludeSystem->setup();
+	interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
+	interludeSystem->playSystem();
+	interludeSystem->isInterlude = true;
 		
-		currentVisualSystem = interludeSystem;
+	currentVisualSystem = interludeSystem;
         
-		showingInterlude = true;
-	}
+	showingInterlude = true;
 
 }
 

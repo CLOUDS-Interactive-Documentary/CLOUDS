@@ -549,7 +549,9 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="..\CloudsData\language\JAPANESE\bio\people.xml" />
+    <Xml Include="..\CloudsData\language\JAPANESE\bio\people.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="..\CloudsData\language\JAPANESE\bio\projects.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
