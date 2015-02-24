@@ -1,28 +1,28 @@
-﻿2
+﻿1
 00:00:01:00 --> 00:00:05:27
 And it’s not that I want everyone to be a machine.  It’s absolutely not like that, 
 
-3
+2
 00:00:06:11 --> 00:00:10:15
 but I think there’s so much to be learned about our own nature.
 
-4
+3
 00:00:10:18 --> 00:00:14:29
  I think most of the time when I am programming, I spend more time thinking about 
 
-5
+4
 00:00:15:02 --> 00:00:17:06
 how to structure something, 
 
-6
+5
 00:00:17:09 --> 00:00:19:05
 how it should be named, 
 
-7
+6
 00:00:19:08 --> 00:00:22:29
 what are the kinds of things, how they should fit together.
 
-8
+7
 00:00:23:06 --> 00:00:25:03
 rather than actually writing code.
 

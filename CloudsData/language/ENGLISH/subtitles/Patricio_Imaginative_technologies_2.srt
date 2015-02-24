@@ -1,16 +1,16 @@
-﻿2
+﻿1
 00:00:02:08 --> 00:00:07:23
 (All these characters of ) Interactive applications, 
 
-3
+2
 00:00:07:29 --> 00:00:11:06
 and applications in general
 
-4
+3
 00:00:11:09 --> 00:00:15:07
 tend to have expressive qualities
 
-5
+4
 00:00:15:27 --> 00:00:20:27
 that are sometimes very abstract and seem to come from the realm of the imagination.
 

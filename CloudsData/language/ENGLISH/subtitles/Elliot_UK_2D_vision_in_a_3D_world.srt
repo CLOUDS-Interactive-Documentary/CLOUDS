@@ -1,80 +1,80 @@
-﻿2
+﻿1
 00:00:01:07 --> 00:00:04:14
 People often think that understanding a 3D world
 
-3
+2
 00:00:04:17 --> 00:00:08:07
 and seeing a 3D world are naturally the same thing,
 
-4
+3
 00:00:08:10 --> 00:00:14:15
 and I think there is a distinction there which needs to be identified by any artist who works with 3D media.
 
-5
+4
 00:00:15:12 --> 00:00:18:09
 People understand 3D.  They understand that if they move their head left,
 
-6
+5
 00:00:18:12 --> 00:00:22:02
 the thing behind might come into view, and if they move their head right again, it might go back out of view. 
 
-7
+6
 00:00:22:22 --> 00:00:26:24
 Now, does that mean that we can see in 3D?
 
-8
+7
 00:00:27:07 --> 00:00:33:23
  I think that we, of course, from our point of view can point 
 
-9
+8
 00:00:34:04 --> 00:00:37:26
 and in order to point we are defining a 2D direction away from us, 
 
-10
+9
 00:00:38:29 --> 00:00:42:23
 and down that direction is something that we can see, 
 
-11
+10
 00:00:42:29 --> 00:00:45:03
 and this happens across our entire vision.
 
-12
+11
 00:00:46:14 --> 00:00:50:29
 Now, this defines everything that we can see. 
 
-13
+12
 00:00:51:02 --> 00:00:55:08
  We can define everything that we can see in 2D as a 2D map.
 
-14
+13
 00:00:56:02 --> 00:01:01:01
 For every position, we might be able to know more about it like how far away it is, which object does it belong to, 
 
-15
+14
 00:01:01:04 --> 00:01:03:22
 only to the things which are intelligent which involve understanding the world,
 
-16
+15
 00:01:03:25 --> 00:01:08:20
 but our sight in itself is a 2D faculty. 
 
-17
+16
 00:01:08:23 --> 00:01:11:11
 We see surfaces.  We have line of sight. 
 
-18
+17
 00:01:11:14 --> 00:01:16:12
 We have a position for the world out from which we observe the world. 
 
-19
+18
 00:01:16:29 --> 00:01:20:09
 We are 3D beings in a 3D world
 
-20
+19
 00:01:20:14 --> 00:01:22:22
 and therefore, we must see in 2D, 
 
-21
+20
 00:01:22:25 --> 00:01:26:23
 the same way that a 2D being in a 2D world must see in one dimension.
 

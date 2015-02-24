@@ -1,76 +1,76 @@
-﻿2
+﻿1
 00:00:01:06 --> 00:00:03:02
 I didn’t really think
 
-3
+2
 00:00:03:17 --> 00:00:08:00
  that hard about systems 
 
-4
+3
 00:00:08:29 --> 00:00:12:01
 and the kind of algorithmic approach to 
 
-5
+4
 00:00:13:12 --> 00:00:18:19
 experience, to just fundamental human experience, until I started working with game designers every day 
 
-6
+5
 00:00:18:27 --> 00:00:21:29
 at Area Code, so that’s stretching back maybe
 
-7
+6
 00:00:22:09 --> 00:00:23:25
  8 or 9 years now,
 
-8
+7
 00:00:24:04 --> 00:00:28:23
  and it was really sort of spending time with game designers
 
-9
+8
 00:00:28:26 --> 00:00:33:13
 who unlike most other people in the world
 
-10
+9
 00:00:33:16 --> 00:00:36:05
  are actually creating a living system 
 
-11
+10
 00:00:36:08 --> 00:00:39:10
 that then people are going to engage
 
-12
+11
 00:00:39:13 --> 00:00:44:18
  for hours of the day or thousands of hours over a lifetime 
 
-13
+12
 00:00:44:21 --> 00:00:49:01
  and understanding that the essence of what they are doing 
 
-14
+13
 00:00:49:04 --> 00:00:51:26
 when they design something is designing 
 
-15
+14
 00:00:51:29 --> 00:00:55:22
 the boundaries and the constraints on a human experience, 
 
-16
+15
 00:00:55:25 --> 00:01:00:02
 and I think that spending a lot of time with 
 
-17
+16
 00:01:00:05 --> 00:01:03:13
 some of the most talented game designers around for a couple of years 
 
-18
+17
 00:01:03:19 --> 00:01:08:13
 sensitized me to the idea that that is a
 
-19
+18
 00:01:08:16 --> 00:01:13:03
 subset of a much broader activity that’s happening in the world
 
-20
+19
  --> 
 
 

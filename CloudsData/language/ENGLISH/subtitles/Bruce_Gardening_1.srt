@@ -1,24 +1,24 @@
-﻿2
+﻿1
 00:00:00:00 --> 00:00:03:19
 So, it’s more like gardening or hunting.
 
-3
+2
 00:00:03:24 --> 00:00:07:27
 I’d like hark backed to Brian Eno on this. 
 
-4
+3
 00:00:08:00 --> 00:00:11:25
 I mean, he’s done a lot of generative stuff in the old lab there.
 
-5
+4
 00:00:12:02 --> 00:00:15:04
 It’s kind of a classic engineer tinkerer thing, 
 
-6
+5
 00:00:15:07 --> 00:00:20:20
 and if he finds some interesting, he just sort of like draws a circle around and says well, that was the target and I hit it!
 
-7
+6
 00:00:20:23 --> 00:00:22:10
 And then you ship it….
 

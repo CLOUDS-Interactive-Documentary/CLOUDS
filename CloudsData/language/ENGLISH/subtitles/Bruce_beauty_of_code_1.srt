@@ -1,20 +1,20 @@
-﻿2
+﻿1
 00:00:01:05 --> 00:00:04:09
 And I think generative art can be beautiful, 
 
-3
+2
 00:00:04:12 --> 00:00:09:06
 and I think there are certainly things that code does that can 
 
-4
+3
 00:00:09:20 --> 00:00:13:06
 speed up processes that otherwise would be impossible, 
 
-5
+4
 00:00:13:09 --> 00:00:17:12
 and I think there are areas of production that can be reached through code
 
-6
+5
 00:00:17:15 --> 00:00:21:04
  that would be basically impossible through any analog method.
 

@@ -1,58 +1,57 @@
-﻿2
+﻿1
 00:00:00:29 --> 00:00:06:13
 We tried to put our stuff out there, but I am aware it takes a lots of time and effort.
 
-3
+2
 00:00:06:16 --> 00:00:11:16
  I am really thankful for Karsten Schmidt, for example, 
 
-4
+3
 00:00:11:19 --> 00:00:14:10
 who has the ToxicLibs libraries.
 
-5
+4
 00:00:14:14 --> 00:00:17:26
  I haven’t used them personally, but I have looked them
 
-6
+5
 00:00:18:02 --> 00:00:21:29
 through many times and always learned new tricks how to do things, 
 
-7
+6
 00:00:22:02 --> 00:00:23:09
 and they're good references.
 
-8
+7
 00:00:24:10 --> 00:00:28:02
 I think we were talking yesterday about Paul Burke
 
-9
+8
 00:00:28:05 --> 00:00:32:15
 who is kind of a shared
-
 guru, basically.
 
-10
+9
 00:00:33:07 --> 00:00:35:25
 And it’s basically always the same people,
 
-11
+10
 00:00:35:29 --> 00:00:38:26
  it comes to the same guys in the 80s,
 
-12
+11
 00:00:39:00 --> 00:00:42:13
 Paul Burk, Craig Reynolds, Carl Sims,
 
-13
+12
 00:00:42:18 --> 00:00:47:19
 they are sort of same the equivalent to (professional skateboarder) Rodney Mullen in the creative coding world.
 
-14
+13
 00:00:48:14 --> 00:00:52:08
 They have all contributed something that I am still 
 
-15
+14
 00:00:52:25 --> 00:00:55:04
  trying to mimic or trying to learn from
 

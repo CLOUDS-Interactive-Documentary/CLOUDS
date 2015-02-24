@@ -1,60 +1,60 @@
-﻿2
+﻿1
 00:00:01:04 --> 00:00:03:21
 Another visualization we did Google Plus Ripples. 
 
-3
+2
 00:00:03:24 --> 00:00:06:01
 We were confronted exactly with that question,
 
-4
+3
 00:00:06:04 --> 00:00:11:15
 how do you show how things go viral on a social network? 
 
-5
+4
 00:00:11:18 --> 00:00:16:02
 We chose to show, okay, if you have a URL that everybody is sharing
 
-6
+5
 00:00:16:05 --> 00:00:21:04
 and talking about how do you show the path, the flow of this URL,
 
-7
+6
 00:00:21:22 --> 00:00:27:12
 and the first thing we thought about was can we visualize this as a tree?
 
-8
+7
 00:00:27:15 --> 00:00:31:25
  I share it with you, you share it with your friends, your friends share it, that’s a tree,
 
-9
+8
 00:00:31:28 --> 00:00:33:10
 okay, let’s do that.
 
-10
+9
 00:00:33:15 --> 00:00:36:20
 It didn’t work, obviously,
 
-11
+10
 00:00:36:23 --> 00:00:40:29
 because these things have exponential growth
 
-12
+11
 00:00:41:02 --> 00:00:43:23
 and so the tree had a huge breadth
 
-13
+12
 00:00:43:26 --> 00:00:49:23
 and you could not read any of the labels, 
 
-14
+13
 00:00:49:26 --> 00:00:53:00
 so you couldn’t see who was sharing things with whom.
 
-15
+14
 00:00:54:07 --> 00:01:00:25
 Now we could have continued with that visualization and said, well, that’s what it looks like, that’s the spread, that’s something going viral,
 
-16
+15
 00:01:01:08 --> 00:01:06:17
 but we weren’t happy with that.  We decided no, you have to be able to read people’s names.
 

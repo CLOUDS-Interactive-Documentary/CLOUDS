@@ -1,32 +1,32 @@
-﻿2
+﻿1
 00:00:01:06 --> 00:00:05:18
 Where you can look at a picture and immediately you understand
 
-3
+2
 00:00:05:21 --> 00:00:08:22
 what’s background and what’s foreground, what jumps at you.
 
-4
+3
 00:00:09:10 --> 00:00:12:06
 That’s very complex.
 
-5
+4
 00:00:12:09 --> 00:00:16:21
 It doesn’t sound complex, but it’s not trivial and we do it immediately,
 
-6
+5
 00:00:16:24 --> 00:00:24:01
 so one of the things that we get with data visualization is that we are able to show highly complex data 
 
-7
+6
 00:00:24:04 --> 00:00:29:00
 in ways that look almost natural or intuitive
 
-8
+7
 00:00:29:10 --> 00:00:34:07
  in a sense we are sort of playing these tricks with our brain.
 
-9
+8
 00:00:34:10 --> 00:00:38:15
 We are just sort of speaking the language of the brain in a sense.
 

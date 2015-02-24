@@ -1,24 +1,24 @@
-﻿2
+﻿1
 00:00:00:00 --> 00:00:03:24
 Yeah, for me it’s very much a continuing process of exploration,
 
-3
+2
 00:00:03:27 --> 00:00:07:16
 of discovering one form or one structure 
 
-4
+3
 00:00:07:19 --> 00:00:10:17
 or an approach to a certain algorithm
 
-5
+4
 00:00:10:20 --> 00:00:12:24
 and then seeing where that takes me
 
-6
+5
 00:00:12:27 --> 00:00:16:20
  and then the next time I wake up in the morning and think like I have to make a new piece, 
 
-7
+6
 00:00:16:23 --> 00:00:20:09
  I might build on something that exists already or I might take it somewhere else.
 

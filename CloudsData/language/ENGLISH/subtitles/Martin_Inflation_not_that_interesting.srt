@@ -1,24 +1,24 @@
-﻿2
+﻿1
 00:00:00:00 --> 00:00:03:00
 The difference is that if you just look at raw data,
 
-3
+2
 00:00:03:03 --> 00:00:07:02
 you often will see something mildly interesting you may have noted before. 
 
-4
+3
 00:00:07:05 --> 00:00:11:09
 If you look at a graph of inflation,
 
-5
+4
 00:00:11:12 --> 00:00:15:17
 you will see it’s going up over time and it’s kind of interesting. 
 
-6
+5
 00:00:15:20 --> 00:00:21:10
 We all know inflation is steady, so that the value of the dollar goes down over time. 
 
-7
+6
 00:00:21:13 --> 00:00:23:20
  That itself is not so interesting.
 

@@ -1,60 +1,60 @@
-﻿2
+﻿1
 00:00:01:02 --> 00:00:02:20
 To take
 
-3
+2
 00:00:03:11 --> 00:00:09:04
 literal spoken language or written language and use things to alter in such a way that it
 
-4
+3
 00:00:09:17 --> 00:00:11:28
  becomes something completely different.
 
-5
+4
 00:00:12:06 --> 00:00:15:09
 Words could spout other words, 
 
-6
+5
 00:00:15:12 --> 00:00:18:25
 adjectives spout all of their synonyms, 
 
-7
+6
 00:00:18:29 --> 00:00:24:22
  a story can tell itself over and over and over again in perfectly literate, 
 
-8
+7
 00:00:24:25 --> 00:00:28:02
 perfectly beautiful prose and never repeat itself. 
 
-9
+8
 00:00:30:10 --> 00:00:35:06
 (You know, I would like to)My world of code would be that kind of 
 
-10
+9
 00:00:35:10 --> 00:00:40:00
  space of never-ending, never-repeating stories and 
 
-11
+10
 00:00:41:17 --> 00:00:46:03
 narratives that would go on
 
-12
+11
 00:00:46:06 --> 00:00:51:08
 forever and perpetuate themselves and characters that would constantly reinvent themselves in
 
-13
+12
 00:00:51:11 --> 00:00:56:20
  ways that we are familiar with from our lives from the people who grow around us and 
 
-14
+13
 00:00:57:22 --> 00:01:00:03
 who we never wholly understand 
 
-15
+14
 00:01:00:27 --> 00:01:04:05
 to mirror that in code and words is 
 
-16
+15
 00:01:04:08 --> 00:01:06:23
 I think that would be really a beautiful thing.
 

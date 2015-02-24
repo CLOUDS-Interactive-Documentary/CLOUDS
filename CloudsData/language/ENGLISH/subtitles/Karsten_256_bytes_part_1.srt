@@ -1,40 +1,40 @@
-﻿2
+﻿1
 00:00:01:02 --> 00:00:04:28
 We have people who write demos in 256 bytes. 
 
-3
+2
 00:00:05:01 --> 00:00:07:18
  These are 256 numbers 
 
-4
+3
 00:00:07:21 --> 00:00:11:08
 strung together to create an image or an animation, 
 
-5
+4
 00:00:11:12 --> 00:00:15:10
 and this is incredible, because the way actually you can only achieve this is by
 
-6
+5
 00:00:15:13 --> 00:00:19:06
  knowing every single bit about the technology underneath,
 
-7
+6
 00:00:19:09 --> 00:00:24:02
  knowing what command to use in which position so you can actually reuse 
 
-8
+7
 00:00:24:05 --> 00:00:25:28
 the code as data 
 
-9
+8
 00:00:26:10 --> 00:00:27:26
 to create something else, 
 
-10
+9
 00:00:27:29 --> 00:00:32:15
 and it’s incredibly cryptic, but it shows incredible mental strength 
 
-11
+10
 00:00:32:18 --> 00:00:35:13
 and intelligence to actually achieve something like that.
 

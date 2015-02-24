@@ -1,8 +1,8 @@
-﻿2
+﻿1
 00:00:00:27 --> 00:00:02:23
 You take each word
 
-3
+2
 00:00:03:11 --> 00:00:07:02
 and have a different algorithmic treatment, per word.
 

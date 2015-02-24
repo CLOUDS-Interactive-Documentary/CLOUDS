@@ -1,44 +1,44 @@
-﻿2
+﻿1
 00:00:01:02 --> 00:00:03:25
 He didn’t know if infinite behavior was  possible.  
 
-3
+2
 00:00:04:05 --> 00:00:07:02
 He thought here is this thing, he  put out this challenge like 
 
-4
+3
 00:00:07:05 --> 00:00:10:06
 design and initial  configuration that iterates infinitely 
 
-5
+4
 00:00:10:16 --> 00:00:16:25
 and  given those rules, there is nothing that said  that should be possible or what that should  look like, 
 
-6
+5
 00:00:16:28 --> 00:00:20:17
 so through trial and error what’s  called the glider was invented 
 
-7
+6
 00:00:20:20 --> 00:00:25:11
 and the glider  was a particular shape that moves through  iterations in such a way, 
 
-8
+7
 00:00:25:14 --> 00:00:29:14
 Conway’s Game of  Life runs that algorithm over the universe  over and over and over again 
 
-9
+8
 00:00:30:03 --> 00:00:33:05
 and it moves in  such a way that it moves through space 
 
-10
+9
 00:00:33:10 --> 00:00:36:03
 and it  repeats infinitely. 
 
-11
+10
 00:00:36:18 --> 00:00:41:00
 So, from a finite initial  state and a finite set of 
 
-12
+11
 00:00:41:03 --> 00:00:43:23
 almost trivial rules  you can get infinite behavior.
 

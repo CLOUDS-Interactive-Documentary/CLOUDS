@@ -1,58 +1,55 @@
-﻿2
+﻿1
 00:00:01:01 --> 00:00:03:20
 The link to music is quite important, and I think
 
-3
+2
 00:00:03:23 --> 00:00:05:07
 code is
 
-4
+3
 00:00:05:11 --> 00:00:10:01
 in a way a great language to speak
-
 code is in a way a great language to speak
-
 speak to both areas in a way.
 
-5
+4
 00:00:10:04 --> 00:00:11:03
 So
 
-6
+5
 00:00:11:06 --> 00:00:15:01
 I was always interested in the visual side, I was always interested in the audio side, and
 
-7
+6
 00:00:15:04 --> 00:00:18:26
 code is kind of a tool where we can talk to both.
 
-8
+7
 00:00:19:00 --> 00:00:22:11
 You’re not necessarily a master painter or a master sound, 
 
-9
+8
 00:00:22:28 --> 00:00:27:07
 guy, so it leads to collaboration naturally, 
 
-10
+9
 00:00:28:21 --> 00:00:30:24
 and it’s a great glue in a way,
 
-11
+10
 00:00:30:27 --> 00:00:34:12
 great practical glue to bring the pieces together 
 
-12
+11
 00:00:34:15 --> 00:00:37:19
 and also add something new
-
 this whole
 
-13
+12
 00:00:37:24 --> 00:00:40:27
 way of composing stuff, in real-time,
 
-14
+13
 00:00:41:00 --> 00:00:43:29
 I mean, that’s another big topic for what we do.
 

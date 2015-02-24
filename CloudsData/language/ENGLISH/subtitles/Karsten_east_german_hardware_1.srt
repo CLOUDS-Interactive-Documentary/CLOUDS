@@ -1,20 +1,20 @@
-﻿2
+﻿1
 00:00:00:00 --> 00:00:04:27
 I was so excited basically when I started computing, I started on East German hardware, 
 
-3
+2
 00:00:05:00 --> 00:00:07:09
 and we had absolutely nothing.  
 
-4
+3
 00:00:07:12 --> 00:00:10:21
 Those machines they cost like the equivalent of three months of income 
 
-5
+4
 00:00:10:24 --> 00:00:15:04
 and they came with literally nothing, just a manual how to assemble it and 
 
-6
+5
 00:00:15:07 --> 00:00:16:08
 that was it.
 

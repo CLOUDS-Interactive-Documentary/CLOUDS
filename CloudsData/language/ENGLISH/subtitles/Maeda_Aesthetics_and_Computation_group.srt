@@ -1,36 +1,36 @@
-﻿2
+﻿1
 00:00:01:03 --> 00:00:03:28
 And these students knew no pain levels
 
-3
+2
 00:00:04:01 --> 00:00:07:04
  and they were excited to use computation for expression, 
 
-4
+3
 00:00:07:18 --> 00:00:11:00
 and we would see new kinds of work, whether it’s semantic processing, 
 
-5
+4
 00:00:11:03 --> 00:00:15:12
 using graphics or interactivity in a weird direction,
 
-6
+5
 00:00:15:20 --> 00:00:19:11
 and it was amazing because it was still new 
 
-7
+6
 00:00:19:22 --> 00:00:22:29
 using computation to express the human experience
 
-8
+7
 00:00:23:28 --> 00:00:27:18
  and that led to Aesthetics and Computation as our group name
 
-9
+8
 00:00:27:21 --> 00:00:30:27
  and began to look for people who were hybrids,
 
-10
+9
 00:00:31:00 --> 00:00:36:19
  who were coder-artists, artist-coders and began to pull them together into one space at MIT.
 

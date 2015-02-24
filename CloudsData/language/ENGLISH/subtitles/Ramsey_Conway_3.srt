@@ -1,20 +1,20 @@
-﻿2
+﻿1
 00:00:00:29 --> 00:00:03:24
 What is the connection between the initial  state 
 
-3
+2
 00:00:03:27 --> 00:00:07:15
 and the rules and the kind of behavior  that you get, 
 
-4
+3
 00:00:07:27 --> 00:00:10:00
 and the answer is that there isn ’t one, right?  
 
-5
+4
 00:00:10:03 --> 00:00:13:24
 You can’t predict what it  will do without actually running through over  single step 
 
-6
+5
 00:00:13:27 --> 00:00:16:19
 and Conway’s Game of Life in that  way is strongly emerging.
 

@@ -1,44 +1,42 @@
-﻿2
+﻿1
 00:00:00:03 --> 00:00:03:18
 And there was this moment when I went to a festival 
 
-3
+2
 00:00:04:00 --> 00:00:06:12
 and this artist had come from Japan,
 
-4
+3
 00:00:06:15 --> 00:00:10:28
 and he is like I'm using openframeworks and I had no idea.  
 
-5
+4
 00:00:11:01 --> 00:00:15:17
 I knew our friends were using it and I knew people 
 
-6
+5
 00:00:15:20 --> 00:00:20:15
 who were using it, but to meet somebody from really far away. 
 
-7
+6
 00:00:20:18 --> 00:00:25:23
 Or like the only time I was at a festival and this couple came up to me 
 
-8
+7
 00:00:25:26 --> 00:00:31:03
 and this guy was like I just want to say thank you for openFrameworks and 
 
-9
+8
 00:00:31:06 --> 00:00:37:20
 his girlfriend was like I hate you, like my boy friend spends all his time in front of the computer, you know. 
 
-10
+9
 00:00:37:23 --> 00:00:41:10
 So those were the things that like in the early days 
-
 when I started to realize
 
-11
+10
 00:00:41:13 --> 00:00:47:08
 that this thing is having a life of its own 
-
 and was spreading and going like really far.
 

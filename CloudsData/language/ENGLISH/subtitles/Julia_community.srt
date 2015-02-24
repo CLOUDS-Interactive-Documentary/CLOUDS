@@ -1,56 +1,54 @@
-﻿2
+﻿1
 00:00:01:00 --> 00:00:04:07
 You could say that they come from like different communities.
 
-3
+2
 00:00:04:10 --> 00:00:07:28
 There is the Processing community, Open Frameworks, Cinder.  There is 
 
-4
+3
 00:00:08:02 --> 00:00:12:16
 sort of the more data viz-y type folks, 
-
 the people who are
 
-5
+4
 00:00:12:24 --> 00:00:15:29
 doing more sort of experimental tech hacks, 
 
-6
+5
 00:00:16:22 --> 00:00:22:25
 maybe more interactive installation, exhibition design,
 
-7
+6
 00:00:23:23 --> 00:00:26:17
 all sorts of different approaches.
 
-8
+7
 00:00:26:21 --> 00:00:31:06
  I think what unites them is
 
-9
+8
 00:00:33:09 --> 00:00:36:02
 a sort of researcher-like mentality
 
-10
+9
 00:00:36:05 --> 00:00:41:22
 where they are really sort of on the frontiers
 
-11
+10
 00:00:43:02 --> 00:00:45:17
 of creatively engaging with technology
 
-12
+11
 00:00:46:06 --> 00:00:50:15
 and probing what is possible,
 
-13
+12
 00:00:51:07 --> 00:00:53:08
 what this technology means, 
 
-14
+13
 00:00:53:11 --> 00:00:58:15
 how it might be implemented in a
-
 creative, cultural capacity.
 

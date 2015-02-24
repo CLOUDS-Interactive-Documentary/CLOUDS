@@ -1,56 +1,56 @@
-﻿2
+﻿1
 00:00:01:01 --> 00:00:05:20
 One of the things that I like about our current era is that
 
-3
+2
 00:00:05:23 --> 00:00:09:08
 statistics is becoming something that everyone is starting to think about.
 
-4
+3
 00:00:09:11 --> 00:00:13:25
 There is this famous quote that statisticians repeat endlessly from Hal Varian 
 
-5
+4
 00:00:13:28 --> 00:00:16:13
 about statistics being the next sexy profession,
 
-6
+5
 00:00:16:16 --> 00:00:19:28
 and I think that it’s funny because it’s true,
 
-7
+6
 00:00:20:01 --> 00:00:23:09
 because it is suddenly really glamorous for people.
 
-8
+7
 00:00:23:12 --> 00:00:27:00
 They call themselves data scientists and I think that’s really good.
 
-9
+8
 00:00:27:03 --> 00:00:32:08
 I think the more that it becomes a part of the culture, the more that we will all as citizens
 
-10
+9
 00:00:32:11 --> 00:00:35:10
 be able to make the informed decisions.
 
-11
+10
 00:00:35:13 --> 00:00:39:15
 The more that people understand the difference between a median and a mean,
 
-12
+11
 00:00:39:19 --> 00:00:43:09
 the better equipped we are to think about issues like income inquality【inequality】
 
-13
+12
 00:00:43:12 --> 00:00:49:02
 and so to me I think to the extent that visualization can serve as kind of a gateway drug
 
-14
+13
 00:00:49:05 --> 00:00:53:21
  to statistics and can interest people in thinking quantitatively and statistically,
 
-15
+14
 00:00:53:24 --> 00:00:57:17
 I think it’s serving this higher purpose for a citizenship.
 

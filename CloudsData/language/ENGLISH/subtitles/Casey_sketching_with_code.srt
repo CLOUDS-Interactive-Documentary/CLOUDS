@@ -1,20 +1,20 @@
-﻿2
+﻿1
 00:00:00:27 --> 00:00:03:18
 …How you build things that are creative coder are really different from how you build things
 
-3
+2
 00:00:03:21 --> 00:00:08:00
 in the more classic computer science way where you plan first and then build.
 
-4
+3
 00:00:08:03 --> 00:00:11:12
 So this idea that we have really promoted with Processing of sketching with code,
 
-5
+4
 00:00:11:15 --> 00:00:15:18
 I think is the predominant thing that I learned there which is really a design process,
 
-6
+5
 00:00:15:21 --> 00:00:19:19
 that you think through doing and you learn and you develop through making.
 

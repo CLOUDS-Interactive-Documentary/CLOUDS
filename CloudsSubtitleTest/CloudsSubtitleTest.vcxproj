@@ -215,9 +215,6 @@
     <ProjectReference Include="..\libStoryEngine\StoryEngine.vcxproj">
       <Project>{5999d394-4a43-4e21-85ea-27248b72e4bd}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\libVisualSystemLibrary\VisualSystemsLibrary.vcxproj">
-      <Project>{7830dd8a-73ea-4efa-8642-9cde1e8847fc}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

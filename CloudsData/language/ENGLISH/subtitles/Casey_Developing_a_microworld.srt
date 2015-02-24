@@ -1,12 +1,12 @@
-﻿2
+﻿1
 00:00:00:27 --> 00:00:06:16
 I'm fascinated and inspired by nature, but I have never tried to or attempted to recreate it.
 
-3
+2
 00:00:07:00 --> 00:00:11:06
 For me, it’s always been about developing my own microworld from the ground up.
 
-4
+3
 00:00:11:20 --> 00:00:17:10
 It’s basically an abstraction of how nature works rather than trying to be an artificial nature.
 

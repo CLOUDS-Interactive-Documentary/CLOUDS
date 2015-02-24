@@ -1,32 +1,32 @@
-﻿2
+﻿1
 00:00:01:00 --> 00:00:04:15
 Working with someone like Zach is kind of special in the sense that
 
-3
+2
 00:00:04:29 --> 00:00:10:14
  the way he thinks is coming from a completely different direction to what I am, 
 
-4
+3
 00:00:10:17 --> 00:00:15:12
 and the way we work together is using drawing and code, 
 
-5
+4
 00:00:15:16 --> 00:00:21:04
 I get to use my ideas which are from a more like physical drawn perspective
 
-6
+5
 00:00:21:07 --> 00:00:27:04
  and Zach is coming from a perspective where it’s about the code and the language
 
-7
+6
 00:00:27:07 --> 00:00:32:08
  and point A and point B and how you program that in between, 
 
-8
+7
 00:00:32:12 --> 00:00:37:01
 so the two do kind of meet, but from different directions 
 
-9
+8
 00:00:37:04 --> 00:00:41:04
 and I feel like meeting in the middle is really fun.
 

@@ -1,24 +1,24 @@
-﻿2
+﻿1
 00:00:00:27 --> 00:00:04:28
 So my entry into creative coding was kind of coming out of from a more traditional 
 
-3
+2
 00:00:05:28 --> 00:00:09:27
 computer science background and then also 
 
-4
+3
 00:00:10:06 --> 00:00:12:19
 an art background and then meeting in the middle 
 
-5
+4
 00:00:12:25 --> 00:00:15:13
 and seeing the potential there
 
-6
+5
 00:00:15:16 --> 00:00:17:16
 and also seeing the use of 
 
-7
+6
 00:00:18:08 --> 00:00:21:17
 creating languages specifically for this intersection
 

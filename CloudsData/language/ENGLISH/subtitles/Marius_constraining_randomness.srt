@@ -1,48 +1,48 @@
-﻿2
+﻿1
 00:00:00:07 --> 00:00:03:13
 Well, okay, the way that I really see it is that,
 
-3
+2
 00:00:03:27 --> 00:00:09:02
 yes, I am approaching a potentially infinite space of possible outcomes,
 
-4
+3
 00:00:09:05 --> 00:00:14:13
  but I am also shaping that possible space,
 
-5
+4
 00:00:14:16 --> 00:00:17:25
 I mean, just by existing human constrained randomness,
 
-6
+5
 00:00:17:28 --> 00:00:21:28
 so the idea of like authorless generative works, I don’t believe in that all,
 
-7
+6
 00:00:22:01 --> 00:00:27:07
 because the work does not exists apart from its creation by the author. 
 
-8
+7
 00:00:27:10 --> 00:00:32:02
 That said you can put into it ways of sort of 
 
-9
+8
 00:00:32:09 --> 00:00:34:01
 co-discovering with machines, 
 
-10
+9
 00:00:34:04 --> 00:00:38:26
 that’s actually something I am fond of talking about like co-discovery with the algorithmic, 
 
-11
+10
 00:00:38:29 --> 00:00:42:28
 like actually figuring out things that you might not have found out on your own,
 
-12
+11
 00:00:43:01 --> 00:00:48:03
 but it doesn’t mean that the algorithm gains agency or that it’s creating itself, because it isn’t,
 
-13
+12
 00:00:48:06 --> 00:00:53:25
 I mean, unless you are doing something extremely esoteric, the algorithm is defined quite tightly by the author.
 

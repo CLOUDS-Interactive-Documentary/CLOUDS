@@ -1,24 +1,24 @@
-﻿2
+﻿1
 00:00:00:11 --> 00:00:03:09
 For example, think of an art directorial body that’s 
 
-3
+2
 00:00:03:12 --> 00:00:06:05
 a hundred people crowdsourced on Amazon Turk 
 
-4
+3
 00:00:06:25 --> 00:00:10:06
 instead of the Grammy Award winning 
 
-5
+4
 00:00:10:09 --> 00:00:13:29
 dude who sits at a desk in an advertising firm. 
 
-6
+5
 00:00:14:26 --> 00:00:16:08
 Which one could be stronger? 
 
-7
+6
 00:00:17:25 --> 00:00:19:16
  I’d like to find out, you know?
 

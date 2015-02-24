@@ -1,12 +1,12 @@
-﻿2
+﻿1
 00:00:01:13 --> 00:00:03:10
 What is data, how do you define data,
 
-3
+2
 00:00:03:13 --> 00:00:05:00
 and how do you capture things
 
-4
+3
 00:00:05:03 --> 00:00:09:11
 that you wouldn’t even think of as data necessarily?
 

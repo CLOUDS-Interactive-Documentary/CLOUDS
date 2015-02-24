@@ -1,12 +1,12 @@
-﻿2
+﻿1
 00:00:00:00 --> 00:00:02:06
 I am Ramsey Nasser.  I am a computer  scientists.
 
-3
+2
 00:00:02:09 --> 00:00:05:26
 My primary interest is in  programming language design 
 
-4
+3
 00:00:05:29 --> 00:00:09:29
 and code as a  medium of self-expression is how I have been  calling it.
 

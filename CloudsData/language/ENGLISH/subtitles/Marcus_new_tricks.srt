@@ -1,62 +1,61 @@
-﻿2
+﻿1
 00:00:01:04 --> 00:00:04:15
 I think there are two ways to explore it, there’s for one: 
 
-3
+2
 00:00:05:16 --> 00:00:06:16
 I really
 
-4
+3
 00:00:07:02 --> 00:00:11:22
 that kind of relates back to let’s say my early education in creative coding which was
 
-5
+4
 00:00:11:27 --> 00:00:16:07
 which was in Processing alpha,
-
 beta days and
 
-6
+5
 00:00:16:19 --> 00:00:19:04
  that kind of time when I looked up to
 
-7
+6
 00:00:19:07 --> 00:00:22:15
 the big guys and learned lots of tricks
 
-8
+7
 00:00:22:19 --> 00:00:25:09
 by looking through their code and there
 
-9
+8
 00:00:25:12 --> 00:00:27:05
 also there was this whole
 
-10
+9
 00:00:27:08 --> 00:00:30:14
 really vibrant vibe online,
 
-11
+10
 00:00:31:10 --> 00:00:35:08
  lots of guys showing little new snippets
 
-12
+11
 00:00:35:11 --> 00:00:40:09
  and I think that was an interesting time basically for several years
 
-13
+12
 00:00:40:12 --> 00:00:44:29
 until I think there was a certain point of satisfaction reached
 
-14
+13
 00:00:45:02 --> 00:00:48:21
 where everyone has kind of tried out everything and
 
-15
+14
 00:00:48:24 --> 00:00:51:15
 at least the obvious areas
 
-16
+15
 00:00:51:18 --> 00:00:56:08
 and then moved on to apply to bigger projects.
 

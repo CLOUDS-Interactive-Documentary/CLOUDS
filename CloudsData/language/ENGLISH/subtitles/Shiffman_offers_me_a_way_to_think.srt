@@ -1,38 +1,37 @@
-﻿2
+﻿1
 00:00:00:00 --> 00:00:03:09
 …what a computer offers me is a chance to be creative
 
-3
+2
 00:00:03:12 --> 00:00:07:28
  in an way that I don’t think that I normally am in everyday life.  I am much too afraid, 
 
-4
+3
 00:00:08:01 --> 00:00:12:23
 you know, also at the same time that I took this intro to programming  class, 
 
-5
+4
 00:00:12:26 --> 00:00:17:16
 I took a physical computing class to learn about building things in electronics and circuits and
 
-6
+5
 00:00:17:19 --> 00:00:20:08
 it just didn’t work for me.  I was
 
-7
+6
 00:00:20:14 --> 00:00:25:00
 burning my fingers or setting things on fire and falling apart.  
 
-8
+7
 00:00:25:03 --> 00:00:31:18
 The way that you think about software, the logical steps, 
-
 the way that you think about pixels,
 
-9
+8
 00:00:32:11 --> 00:00:35:13
  it fits with a way that I like to think
 
-10
+9
 00:00:35:16 --> 00:00:39:29
 and to me that offered a chance to be creative where I wouldn’t necessarily have done without them.
 

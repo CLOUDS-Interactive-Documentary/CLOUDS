@@ -1,40 +1,40 @@
-﻿2
+﻿1
 00:00:00:27 --> 00:00:04:03
 I was doing research for 'interactivos' 
 
-3
+2
 00:00:04:06 --> 00:00:08:27
 one of my first projects was called 'communitas', a circular multitouch table
 
-4
+3
 00:00:09:06 --> 00:00:15:00
 So I spent time watching videos of how people interacted 
 
-5
+4
 00:00:15:03 --> 00:00:16:25
 with tactile surfaces
 
-6
+5
 00:00:17:00 --> 00:00:21:13
 and a recurring image was of people 
 
-7
+6
 00:00:21:16 --> 00:00:25:09
 being drawn to the tactile table,
 
-8
+7
 00:00:25:21 --> 00:00:29:20
 and moving things around to try out the system 
 
-9
+8
 00:00:30:00 --> 00:00:35:26
 with some confusion about how it works
 
-10
+9
 00:00:36:14 --> 00:00:39:15
 and not really 
 
-11
+10
 00:00:40:07 --> 00:00:42:04
 interacting with others.
 

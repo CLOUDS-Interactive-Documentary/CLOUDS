@@ -1,12 +1,12 @@
-﻿2
+﻿1
 00:00:01:12 --> 00:00:05:07
 How do I design something 
 
-3
+2
 00:00:06:27 --> 00:00:11:08
 that can be  described in a sentence that could be  understood at a glance, 
 
-4
+3
 00:00:11:14 --> 00:00:15:08
 but at the same time  is not limiting in its simplicity.
 

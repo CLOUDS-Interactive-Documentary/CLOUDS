@@ -1,12 +1,12 @@
-﻿2
+﻿1
 00:00:00:28 --> 00:00:04:25
 If you are doing something public facing, if you are trying to
 
-3
+2
 00:00:05:05 --> 00:00:10:09
 convince the general public about something, I think it’s really hard to have these
 
-4
+3
 00:00:10:19 --> 00:00:14:01
 super complex things that take several minutes to understand.
 

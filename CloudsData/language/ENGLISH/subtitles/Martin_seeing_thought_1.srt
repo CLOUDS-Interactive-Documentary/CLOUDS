@@ -1,32 +1,32 @@
-﻿2
+﻿1
 00:00:00:21 --> 00:00:05:00
 Trying to see thought in any way is completely fascinating.
 
-3
+2
 00:00:05:03 --> 00:00:08:13
 I love looking at MRI scans, even though I don’t understand them,
 
-4
+3
 00:00:08:16 --> 00:00:13:02
 it’s the idea that you have access to something about how we are actually thinking,
 
-5
+4
 00:00:13:05 --> 00:00:16:18
 and with computers you actually do have access to certain things
 
-6
+5
 00:00:16:21 --> 00:00:19:25
 and with simple algorithms — there are beautiful visualizations 
 
-7
+6
 00:00:19:28 --> 00:00:24:04
 of sorting algorithms that can help you understand them.
 
-8
+7
 00:00:24:07 --> 00:00:28:14
 I did a visualization of chess where you can sort of see a computer thinking about chess
 
-9
+8
 00:00:28:17 --> 00:00:33:20
 and it gives you some idea of just how many moves it’s considering, which is very fun.
 

@@ -1,30 +1,29 @@
-﻿2
+﻿1
 00:00:00:22 --> 00:00:04:07
 On what level, if you can understand these simple tiny building blocks 
 
-3
+2
 00:00:04:10 --> 00:00:08:10
 and everything is just a nested system of these; 
 
-4
+3
 00:00:08:17 --> 00:00:12:00
 the body is a system of cells, 
 
-5
+4
 00:00:12:03 --> 00:00:16:13
 the city is a system of bodies, the world is a system of cities, you can go on and on and on,
 
-6
+5
 00:00:16:15 --> 00:00:18:04
 powers of 10 et cetera, 
 
-7
+6
 00:00:18:07 --> 00:00:23:16
 so that to me is a very exciting thing, this idea of
-
 how far could we get 
 
-8
+7
 00:00:24:08 --> 00:00:27:10
  in recreating our world through an algorithm.
 

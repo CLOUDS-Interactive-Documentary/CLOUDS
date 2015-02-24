@@ -1,20 +1,20 @@
-﻿2
+﻿1
 00:00:00:29 --> 00:00:06:12
 My ideal vision of the future is not one where  we have surrendered everything to algorithms,  right? 
 
-3
+2
 00:00:07:23 --> 00:00:12:15
 It’s one where we develop a healthy  relationship with computation and code 
 
-4
+3
 00:00:12:18 --> 00:00:17:06
 in a  way that can make our lives better, 
 
-5
+4
 00:00:17:14 --> 00:00:20:24
 but not  one where we blindly surrender everything to  code: 
 
-6
+5
 00:00:20:27 --> 00:00:25:25
 Code that is obfuscated, proprietary,  and run by corporations.
 

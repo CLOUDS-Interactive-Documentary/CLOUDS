@@ -1,20 +1,20 @@
-﻿2
+﻿1
 00:00:00:13 --> 00:00:04:11
 So, it’s sort of an unintuitive leap of faith
 
-3
+2
 00:00:04:20 --> 00:00:08:17
 that complexity can actually help
 
-4
+3
 00:00:08:20 --> 00:00:10:22
 make things easier to understand,
 
-5
+4
 00:00:10:25 --> 00:00:16:12
  but I think if done right, complexity is very important 
 
-6
+5
 00:00:16:15 --> 00:00:20:24
 to understanding the kinds of data that we deal with.
 

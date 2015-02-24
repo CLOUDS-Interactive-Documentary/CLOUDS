@@ -1,12 +1,12 @@
-﻿2
+﻿1
 00:00:01:10 --> 00:00:03:08
 Computation exists.  
 
-3
+2
 00:00:03:11 --> 00:00:07:12
 Computation is the  execution and the interpretation of rules 
 
-4
+3
 00:00:07:15 --> 00:00:09:23
 and  computers are just one way to do it.
 

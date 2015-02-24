@@ -1,46 +1,45 @@
-﻿2
+﻿1
 00:00:01:04 --> 00:00:04:03
 So Minecraft is sort of the logical 
 
-3
+2
 00:00:05:06 --> 00:00:09:12
 world- building lego project.  
 
-4
+3
 00:00:09:15 --> 00:00:13:27
 Minecraft is a  fascinating study in 
 
-5
+4
 00:00:14:13 --> 00:00:18:04
 language design in an  abstract sense, 
 
-6
+5
 00:00:18:07 --> 00:00:23:27
 because the trick to language  design and 
-
 the trick to the kind of flat...
 
-7
+6
 00:00:26:01 --> 00:00:31:00
 the trick to the kind of flat  relationship that I really envision is 
 
-8
+7
 00:00:31:04 --> 00:00:35:00
 if I am  making a tool and I am making a system, I am  obviously making 
 
-9
+8
 00:00:35:03 --> 00:00:38:21
 some set of primitives that  people are going to manipulate, right?  
 
-10
+9
 00:00:39:27 --> 00:00:45:16
 The  challenge is what is the minimal set of  primitives that I can create 
 
-11
+10
 00:00:46:02 --> 00:00:49:13
 that will allow  people and myself 
 
-12
+11
 00:00:49:16 --> 00:00:54:03
 to express the widest  variety of ideas.
 

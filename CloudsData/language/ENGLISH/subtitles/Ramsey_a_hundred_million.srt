@@ -1,26 +1,25 @@
-﻿2
+﻿1
 00:00:00:17 --> 00:00:04:20
 I mean, the computer can do 4 billion  calculations a second at this point, 
 
-3
+2
 00:00:04:28 --> 00:00:10:24
 and what  that means is that you can write code 
-
 that  specifies a loop for example 
 
-4
+3
 00:00:10:27 --> 00:00:15:18
 that will run a  100 million times doing different things on  each iteration, right, 
 
-5
+4
 00:00:15:28 --> 00:00:19:17
 and as a programmer you  can look at those three lines of code 
 
-6
+5
 00:00:19:22 --> 00:00:22:24
 and see  a 100 million iterations into the future 
 
-7
+6
 00:00:22:27 --> 00:00:25:21
 and  understand what that means in a single glance
 

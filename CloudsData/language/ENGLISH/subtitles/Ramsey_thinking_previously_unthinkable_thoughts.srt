@@ -1,28 +1,28 @@
-﻿2
+﻿1
 00:00:01:06 --> 00:00:03:22
 Edsger Dijkstra, the seminal computer  scientists 
 
-3
+2
 00:00:03:25 --> 00:00:06:23
 in his Turing acceptance lecture  
 
-4
+3
 00:00:06:27 --> 00:00:09:14
 said that programming has allowed human beings  
 
-5
+4
 00:00:09:17 --> 00:00:12:14
 to think thoughts previously unthinkable, 
 
-6
+5
 00:00:12:26 --> 00:00:15:26
 and  that’s the kind of thought that I think he  was referring to 
 
-7
+6
 00:00:15:29 --> 00:00:20:21
 is being able to see into  this impossibly deep iteration 
 
-8
+7
 00:00:20:24 --> 00:00:26:15
 and really  profoundly understand what it’s doing it, in  aggregate and at each iteration.
 

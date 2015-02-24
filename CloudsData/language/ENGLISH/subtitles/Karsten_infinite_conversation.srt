@@ -1,48 +1,48 @@
-﻿2
+﻿1
 00:00:00:28 --> 00:00:06:16
 The most interest thing would be if you would combine that with a data visualization approach
 
-3
+2
 00:00:06:29 --> 00:00:10:04
  in the context of that, 
 
-4
+3
 00:00:10:26 --> 00:00:13:22
 all the actors within that space and within - 
 
-5
+4
 00:00:13:25 --> 00:00:17:27
 not just the space or within that performance or whatever you want to call it-
 
-6
+5
 00:00:18:00 --> 00:00:23:02
  is not static, but could maybe be chosen by the viewer, 
 
-7
+6
 00:00:23:05 --> 00:00:27:10
  so you can have, for instance, a conversation about certain topics, 
 
-8
+7
 00:00:27:13 --> 00:00:32:07
 and because every in a way interview snippets
 
-9
+8
 00:00:32:10 --> 00:00:36:15
  has metadata associated, you can in a way create infinite
 
-10
+9
 00:00:36:18 --> 00:00:40:19
  conversations even if you have a finite amount of material.
 
-11
+10
 00:00:40:29 --> 00:00:43:28
  I mean, nearly infinite. Obviously if 
 
-12
+11
 00:00:44:04 --> 00:00:48:06
 you have a finite source, you always get a finite outcome, but
 
-13
+12
 00:00:50:10 --> 00:00:52:20
  yeah I mean that could be interesting, I don’t know.
 

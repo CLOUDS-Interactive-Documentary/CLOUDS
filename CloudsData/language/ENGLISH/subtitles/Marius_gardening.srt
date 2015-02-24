@@ -1,44 +1,44 @@
-﻿2
+﻿1
 00:00:00:00 --> 00:00:05:00
 So, the metaphor of the artist as gardener does come up quite a bit in relationship to code,
 
-3
+2
 00:00:05:03 --> 00:00:07:10
 and it has some relevance. 
 
-4
+3
 00:00:07:13 --> 00:00:09:26
  For me, I sometimes choose that approach.
 
-5
+4
 00:00:09:29 --> 00:00:15:04
 Sometimes I actually literally set up a system to generate a 100 random variations and I pick between them,
 
-6
+5
 00:00:15:07 --> 00:00:18:08
 other times it’s a much more sort of tightly controlled system.
 
-7
+6
 00:00:18:11 --> 00:00:22:03
  I don’t typically like systems where I am controlling all the parameters,
 
-8
+7
 00:00:22:06 --> 00:00:23:24
 that’s not something I normally do.
 
-9
+8
 00:00:23:27 --> 00:00:26:13
 There might be situations in which there is something you want,
 
-10
+9
 00:00:26:16 --> 00:00:30:06
 but I prefer to find forms instead of sort of
 
-11
+10
 00:00:30:09 --> 00:00:33:27
 top-down designing them from scratch.
 
-12
+11
  --> 
 
 
