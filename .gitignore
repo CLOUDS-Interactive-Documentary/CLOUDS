@@ -376,3 +376,6 @@ SCREENSHOT_*
 
 /gephi_edges.csv
 *.log
+CloudsData/language/MASTER/output/*
+CloudsData/language/MASTER/utf8_converted/*
+*.xlsm

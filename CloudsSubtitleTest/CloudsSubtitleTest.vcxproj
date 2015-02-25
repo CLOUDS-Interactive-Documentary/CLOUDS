@@ -59,8 +59,6 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
-    <Import Project="..\libVisualSystemLibrary\VisualSystemsLibrary.props" />
-    <Import Project="..\libStoryEngine\StoryEngine.props" />
     <Import Project="..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLibx64Release.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
@@ -74,8 +72,6 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline.props" />
-    <Import Project="..\libVisualSystemLibrary\VisualSystemsLibrary.props" />
-    <Import Project="..\libStoryEngine\StoryEngine.props" />
     <Import Project="..\..\..\addons\ofxFTGL\ofxFTGLLib\ofxFTGLLibx64Debug.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -133,7 +129,7 @@
       <CompileAs>Default</CompileAs>
       <PrecompiledHeader />
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxLocalization\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxSubtitles\src;..\..\..\addons\ofxLocalization\src;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -175,7 +171,7 @@
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxSubtitles\src;..\..\..\addons\ofxLocalization\src;..\CloudsLibrary\src\StoryEngine;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -193,6 +189,21 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp" />
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
@@ -200,6 +211,24 @@
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h" />
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h" />
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h" />
+    <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h" />
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.h" />
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h" />
+    <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h" />
+    <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>
@@ -211,9 +240,6 @@
     </ProjectReference>
     <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
       <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\libStoryEngine\StoryEngine.vcxproj">
-      <Project>{5999d394-4a43-4e21-85ea-27248b72e4bd}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
