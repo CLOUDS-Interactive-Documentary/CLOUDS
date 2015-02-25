@@ -6,8 +6,6 @@
 //
 //
 
-#pragma once
-
 #include "ofMain.h"
 #include "CloudsLocalization.h"
 #include "CloudsGlobal.h"
