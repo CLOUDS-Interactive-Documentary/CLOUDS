@@ -584,11 +584,12 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
 			//JG removing this before Yebizo festival, no visual systems use overlay in the rift
-			//getOculusRift().beginOverlay(-230, 640,480);
-			//checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
-			//selfDrawOverlay();
-			//checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
-			//getOculusRift().endOverlay();
+			getOculusRift().beginOverlay(-230, 1920,1080);
+			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
+//			selfDrawOverlay();
+			getRGBDVideoPlayer().drawSubtitles();
+			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
+			getOculusRift().endOverlay();
 			
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();
@@ -792,7 +793,7 @@ void CloudsVisualSystem::drawScene(){
 	if(isInterlude){
 		drawInterludeInterface();
 	}
-	drawSubtitles3D();
+	//drawSubtitles3D();
 	draw3DCursor();
 #endif
 	
