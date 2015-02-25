@@ -91,8 +91,6 @@ CloudsPlaybackController::CloudsPlaybackController(){
 
 	resetInterludeVariables();
 	
-    //interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-MEDIUM.ttf", 15);
-	interludeInterfaceFont.loadFont(GetMediumFontPath(), 15);
 
 }
 
@@ -178,7 +176,9 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 void CloudsPlaybackController::setup(){
 	
 	loading = true;
-	
+    //interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-MEDIUM.ttf", 15);
+	interludeInterfaceFont.loadFont(GetMediumFontPath(), 15);
+
 
     if(!eventsRegistered){
 		

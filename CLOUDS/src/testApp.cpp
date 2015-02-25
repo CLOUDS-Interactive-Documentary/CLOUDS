@@ -6,7 +6,7 @@
 void testApp::setup(){
 	
 	ofSetWindowPosition(0,0);
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(TARGET_WIN32)
 	ofSetWindowShape(1920*2,1080);
 #else
 	ofSetWindowShape(1920,1080);
