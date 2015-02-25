@@ -259,30 +259,29 @@ void CloudsVisualSystemRGBD::playTestVideo(CloudsClip* clip){
 void CloudsVisualSystemRGBD::playTestVideo(){
 
 
-	string sourceFile = GetCloudsDataPath(true) + "VO/Intro_Computers.aif";
-	string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Intro_Computers.srt"; 
-	if(ofFile::doesFileExist(sourceFile)){
-        getRGBDVideoPlayer().setupVO(sourceFile, subtitlesPathSrt);
-		getRGBDVideoPlayer().swapAndPlay();
-	}
-	else{
-		ofSystemAlertDialog("Test Video " + sourceFile + " does not exist");
-	}
-
-
-	//string sourceFile = GetCloudsDataPath(true) + "media/Patricio_Alchemy_3";
-	//string filePathMov = sourceFile+".mov";
-	//string filePathXml = sourceFile+".xml";
-	//string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Shiffman_nature_of_code_boo.srt"; 
-
-
-	//if(ofFile::doesFileExist(filePathMov)){
- //       getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);
+	//string sourceFile = GetCloudsDataPath(true) + "VO/Intro_Computers.aif";
+	//string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Intro_Computers.srt"; 
+	//if(ofFile::doesFileExist(sourceFile)){
+ //       getRGBDVideoPlayer().setupVO(sourceFile, subtitlesPathSrt);
 	//	getRGBDVideoPlayer().swapAndPlay();
 	//}
 	//else{
-	//	ofSystemAlertDialog("Test Video " + filePathMov + " does not exist");
+	//	ofSystemAlertDialog("Test Video " + sourceFile + " does not exist");
 	//}
+
+
+	string sourceFile = GetCloudsDataPath(true) + "media/Patricio_Alchemy_3";
+	string filePathMov = sourceFile+".mov";
+	string filePathXml = sourceFile+".xml";
+	string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Shiffman_nature_of_code_boo.srt"; 
+
+	if(ofFile::doesFileExist(filePathMov)){
+        getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);
+		getRGBDVideoPlayer().swapAndPlay();
+	}
+	else{
+		ofSystemAlertDialog("Test Video " + filePathMov + " does not exist");
+	}
 }
 
 void CloudsVisualSystemRGBD::loadShader(){

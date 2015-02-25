@@ -42,6 +42,9 @@ static ofSoundPlayer* selectHigh = NULL;
 static ofSoundPlayer* selectMid = NULL;
 static ofSoundPlayer* selectLow = NULL;
 
+static ofxFTGLFont hudSubtitleFont;
+static int subtitleFontSize = 12;
+
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
@@ -326,7 +329,11 @@ void CloudsVisualSystem::setup(){
     bleed  = 20;
     
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
-	
+
+	if(!hudSubtitleFont.isLoaded()){
+		hudSubtitleFont.loadFont(GetFontPath(), subtitleFontSize);
+	}
+
 	//ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
 	if(!backgroundShaderLoaded){
 		loadBackgroundShader();
