@@ -17,7 +17,6 @@
 		038032451948167700AFD40C /* DelayUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A7218BF099000C1EB93 /* DelayUtils.cpp */; };
 		038032461948167700AFD40C /* ParamManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822E618BEBD6E00C1EB93 /* ParamManager.cpp */; };
 		038032471948167700AFD40C /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8231E18BEBD6E00C1EB93 /* ParticleConnector.cpp */; };
-		038032481948167700AFD40C /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D70B194415DD00AA81C1 /* CloudsCalibrationNode.cpp */; };
 		038032491948167700AFD40C /* Walker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D823F718BEBD6E00C1EB93 /* Walker.cpp */; };
 		0380324A1948167700AFD40C /* del_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA29B189F1CD9006C9E4E /* del_impl.cpp */; };
 		0380324B1948167700AFD40C /* TubeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8245E18BEBD6F00C1EB93 /* TubeAction.cpp */; };
@@ -205,7 +204,6 @@
 		038033011948167700AFD40C /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824DB18BEBD6F00C1EB93 /* VoroParticle.cpp */; };
 		038033021948167700AFD40C /* ofxEasingQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8288018BEBE3A00C1EB93 /* ofxEasingQuad.cpp */; };
 		038033031948167700AFD40C /* ofxUIDragableLabelButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D56C1943F2AF00AA81C1 /* ofxUIDragableLabelButton.cpp */; };
-		038033041948167700AFD40C /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822B318BEBD6E00C1EB93 /* CloudsVisualSystemManager.cpp */; };
 		038033051948167700AFD40C /* ofxTLColorTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279E18BEBDCF00C1EB93 /* ofxTLColorTrack.cpp */; };
 		038033061948167700AFD40C /* ofxTLCurves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827A018BEBDCF00C1EB93 /* ofxTLCurves.cpp */; };
 		038033071948167700AFD40C /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA32C189F1CDC006C9E4E /* Delaunay.cpp */; };
@@ -308,7 +306,6 @@
 		038033681948167700AFD40C /* CompressorLimiter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A3E18BF099000C1EB93 /* CompressorLimiter.cpp */; };
 		038033691948167700AFD40C /* v_compute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824D318BEBD6F00C1EB93 /* v_compute.cpp */; };
 		0380336A1948167700AFD40C /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8234918BEBD6E00C1EB93 /* Boid.cpp */; };
-		0380336B1948167700AFD40C /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D829BD18BEBEF100C1EB93 /* ofxOculusRift.cpp */; };
 		0380336C1948167700AFD40C /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8251318BEBD6F00C1EB93 /* CloudsRGBDVideoPlayer.cpp */; };
 		0380336D1948167700AFD40C /* ofxPerlinBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D828DA18BEBE6D00C1EB93 /* ofxPerlinBehavior.cpp */; };
 		0380336E1948167700AFD40C /* BasicDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A3418BF099000C1EB93 /* BasicDelay.cpp */; };
@@ -386,7 +383,6 @@
 		038033B61948167700AFD40C /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8228C18BEBD6E00C1EB93 /* CloudsAudioEvents.cpp */; };
 		038033B71948167700AFD40C /* ofxTLPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827B518BEBDCF00C1EB93 /* ofxTLPage.cpp */; };
 		038033B81948167700AFD40C /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA834189F3611006C9E4E /* ofxSQLiteUpdate.cpp */; };
-		038033B91948167700AFD40C /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8225718BEBD6E00C1EB93 /* CloudsPlaybackController.cpp */; };
 		038033BA1948167700AFD40C /* b2FrictionJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA287189F1CD9006C9E4E /* b2FrictionJoint.cpp */; };
 		038033BB1948167700AFD40C /* IcosphereAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8245018BEBD6F00C1EB93 /* IcosphereAction.cpp */; };
 		038033BC1948167700AFD40C /* ofxUIValuePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D5B01943F2AF00AA81C1 /* ofxUIValuePlotter.cpp */; };
@@ -593,7 +589,6 @@
 		038034851948167700AFD40C /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA909189F362A006C9E4E /* OscPrintReceivedElements.cpp */; };
 		038034861948167700AFD40C /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA122189F1CD4006C9E4E /* Clock.cpp */; };
 		038034871948167700AFD40C /* ofxMPMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82B3E18BF0AC200C1EB93 /* ofxMPMNode.cpp */; };
-		038034881948167700AFD40C /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8225F18BEBD6E00C1EB93 /* CloudsTransitionController.cpp */; };
 		038034891948167700AFD40C /* UdpSocketWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA901189F362A006C9E4E /* UdpSocketWin.cpp */; };
 		0380348B1948167700AFD40C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D70519440E3000AA81C1 /* QuartzCore.framework */; };
 		0380348C1948167700AFD40C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D701194405C500AA81C1 /* libz.dylib */; };
@@ -672,7 +667,6 @@
 		03A0F4AF1947A0850071CF4B /* DelayUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A7218BF099000C1EB93 /* DelayUtils.cpp */; };
 		03A0F4B01947A0850071CF4B /* ParamManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822E618BEBD6E00C1EB93 /* ParamManager.cpp */; };
 		03A0F4B11947A0850071CF4B /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8231E18BEBD6E00C1EB93 /* ParticleConnector.cpp */; };
-		03A0F4B21947A0850071CF4B /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D70B194415DD00AA81C1 /* CloudsCalibrationNode.cpp */; };
 		03A0F4B31947A0850071CF4B /* Walker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D823F718BEBD6E00C1EB93 /* Walker.cpp */; };
 		03A0F4B41947A0850071CF4B /* del_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA29B189F1CD9006C9E4E /* del_impl.cpp */; };
 		03A0F4B51947A0850071CF4B /* TubeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8245E18BEBD6F00C1EB93 /* TubeAction.cpp */; };
@@ -860,7 +854,6 @@
 		03A0F56B1947A0850071CF4B /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824DB18BEBD6F00C1EB93 /* VoroParticle.cpp */; };
 		03A0F56C1947A0850071CF4B /* ofxEasingQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8288018BEBE3A00C1EB93 /* ofxEasingQuad.cpp */; };
 		03A0F56D1947A0850071CF4B /* ofxUIDragableLabelButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D56C1943F2AF00AA81C1 /* ofxUIDragableLabelButton.cpp */; };
-		03A0F56E1947A0850071CF4B /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822B318BEBD6E00C1EB93 /* CloudsVisualSystemManager.cpp */; };
 		03A0F56F1947A0850071CF4B /* ofxTLColorTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279E18BEBDCF00C1EB93 /* ofxTLColorTrack.cpp */; };
 		03A0F5701947A0850071CF4B /* ofxTLCurves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827A018BEBDCF00C1EB93 /* ofxTLCurves.cpp */; };
 		03A0F5711947A0850071CF4B /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA32C189F1CDC006C9E4E /* Delaunay.cpp */; };
@@ -963,7 +956,6 @@
 		03A0F5D21947A0850071CF4B /* CompressorLimiter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A3E18BF099000C1EB93 /* CompressorLimiter.cpp */; };
 		03A0F5D31947A0850071CF4B /* v_compute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824D318BEBD6F00C1EB93 /* v_compute.cpp */; };
 		03A0F5D41947A0850071CF4B /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8234918BEBD6E00C1EB93 /* Boid.cpp */; };
-		03A0F5D51947A0850071CF4B /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D829BD18BEBEF100C1EB93 /* ofxOculusRift.cpp */; };
 		03A0F5D61947A0850071CF4B /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8251318BEBD6F00C1EB93 /* CloudsRGBDVideoPlayer.cpp */; };
 		03A0F5D71947A0850071CF4B /* ofxPerlinBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D828DA18BEBE6D00C1EB93 /* ofxPerlinBehavior.cpp */; };
 		03A0F5D81947A0850071CF4B /* BasicDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A3418BF099000C1EB93 /* BasicDelay.cpp */; };
@@ -1041,7 +1033,6 @@
 		03A0F6201947A0850071CF4B /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8228C18BEBD6E00C1EB93 /* CloudsAudioEvents.cpp */; };
 		03A0F6211947A0850071CF4B /* ofxTLPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827B518BEBDCF00C1EB93 /* ofxTLPage.cpp */; };
 		03A0F6221947A0850071CF4B /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA834189F3611006C9E4E /* ofxSQLiteUpdate.cpp */; };
-		03A0F6231947A0850071CF4B /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8225718BEBD6E00C1EB93 /* CloudsPlaybackController.cpp */; };
 		03A0F6241947A0850071CF4B /* b2FrictionJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA287189F1CD9006C9E4E /* b2FrictionJoint.cpp */; };
 		03A0F6251947A0850071CF4B /* IcosphereAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8245018BEBD6F00C1EB93 /* IcosphereAction.cpp */; };
 		03A0F6261947A0850071CF4B /* ofxUIValuePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D5B01943F2AF00AA81C1 /* ofxUIValuePlotter.cpp */; };
@@ -1248,7 +1239,6 @@
 		03A0F6EF1947A0850071CF4B /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA909189F362A006C9E4E /* OscPrintReceivedElements.cpp */; };
 		03A0F6F01947A0850071CF4B /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA122189F1CD4006C9E4E /* Clock.cpp */; };
 		03A0F6F11947A0850071CF4B /* ofxMPMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82B3E18BF0AC200C1EB93 /* ofxMPMNode.cpp */; };
-		03A0F6F21947A0850071CF4B /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8225F18BEBD6E00C1EB93 /* CloudsTransitionController.cpp */; };
 		03A0F6F31947A0850071CF4B /* UdpSocketWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA901189F362A006C9E4E /* UdpSocketWin.cpp */; };
 		03A0F6F51947A0850071CF4B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D70519440E3000AA81C1 /* QuartzCore.framework */; };
 		03A0F6F61947A0850071CF4B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D701194405C500AA81C1 /* libz.dylib */; };
@@ -1320,6 +1310,115 @@
 		03C079BC194605FE0081ED9B /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03C079A9194605FE0081ED9B /* Timer.cpp */; };
 		03C079BD194605FE0081ED9B /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03C079A9194605FE0081ED9B /* Timer.cpp */; };
 		03D58F411946321500FCFF7B /* ofxBinaryMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */; };
+		03E28DA91A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */; };
+		03E28DAA1A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */; };
+		03E28DAB1A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */; };
+		03E28DAC1A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */; };
+		03E28DAD1A9D767D005AA181 /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA31A9D767D005AA181 /* CloudsPlaybackController.cpp */; };
+		03E28DAE1A9D767D005AA181 /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA31A9D767D005AA181 /* CloudsPlaybackController.cpp */; };
+		03E28DAF1A9D767D005AA181 /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA31A9D767D005AA181 /* CloudsPlaybackController.cpp */; };
+		03E28DB01A9D767D005AA181 /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA31A9D767D005AA181 /* CloudsPlaybackController.cpp */; };
+		03E28DB11A9D767D005AA181 /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA51A9D767D005AA181 /* CloudsTransitionController.cpp */; };
+		03E28DB21A9D767D005AA181 /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA51A9D767D005AA181 /* CloudsTransitionController.cpp */; };
+		03E28DB31A9D767D005AA181 /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA51A9D767D005AA181 /* CloudsTransitionController.cpp */; };
+		03E28DB41A9D767D005AA181 /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA51A9D767D005AA181 /* CloudsTransitionController.cpp */; };
+		03E28DB51A9D767D005AA181 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA71A9D767D005AA181 /* CloudsVisualSystemManager.cpp */; };
+		03E28DB61A9D767D005AA181 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA71A9D767D005AA181 /* CloudsVisualSystemManager.cpp */; };
+		03E28DB71A9D767D005AA181 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA71A9D767D005AA181 /* CloudsVisualSystemManager.cpp */; };
+		03E28DB81A9D767D005AA181 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA71A9D767D005AA181 /* CloudsVisualSystemManager.cpp */; };
+		03E28DBE1A9D7690005AA181 /* CloudsGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DBA1A9D7690005AA181 /* CloudsGlobal.cpp */; };
+		03E28DBF1A9D7690005AA181 /* CloudsGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DBA1A9D7690005AA181 /* CloudsGlobal.cpp */; };
+		03E28DC01A9D7690005AA181 /* CloudsGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DBA1A9D7690005AA181 /* CloudsGlobal.cpp */; };
+		03E28DC11A9D7690005AA181 /* CloudsGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DBA1A9D7690005AA181 /* CloudsGlobal.cpp */; };
+		03E28DC21A9D7690005AA181 /* CloudsLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DBC1A9D7690005AA181 /* CloudsLocalization.cpp */; };
+		03E28DC31A9D7690005AA181 /* CloudsLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DBC1A9D7690005AA181 /* CloudsLocalization.cpp */; };
+		03E28DC41A9D7690005AA181 /* CloudsLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DBC1A9D7690005AA181 /* CloudsLocalization.cpp */; };
+		03E28DC51A9D7690005AA181 /* CloudsLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DBC1A9D7690005AA181 /* CloudsLocalization.cpp */; };
+		03E28DCD1A9D9389005AA181 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */; };
+		03E28DCE1A9D9389005AA181 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */; };
+		03E28DCF1A9D9389005AA181 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */; };
+		03E28DD01A9D9389005AA181 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */; };
+		03E28EDB1A9D9AAC005AA181 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DE01A9D9AAC005AA181 /* Makefile */; };
+		03E28EDC1A9D9AAC005AA181 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DEC1A9D9AAC005AA181 /* main.cpp */; };
+		03E28EDD1A9D9AAC005AA181 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DED1A9D9AAC005AA181 /* testApp.cpp */; };
+		03E28EDE1A9D9AAC005AA181 /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DF21A9D9AAC005AA181 /* tinyxml2.cpp */; };
+		03E28EDF1A9D9AAC005AA181 /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E28DFC1A9D9AAC005AA181 /* libovr.a */; };
+		03E28EE01A9D9AAC005AA181 /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E28DFE1A9D9AAC005AA181 /* libovr.a */; };
+		03E28EE11A9D9AAC005AA181 /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E28E001A9D9AAC005AA181 /* libovr.a */; };
+		03E28EE21A9D9AAC005AA181 /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E28E021A9D9AAC005AA181 /* libovr.a */; };
+		03E28EE31A9D9AAC005AA181 /* libovr64.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E28E051A9D9AAC005AA181 /* libovr64.lib */; };
+		03E28EE41A9D9AAC005AA181 /* libovr64d.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E28E061A9D9AAC005AA181 /* libovr64d.lib */; };
+		03E28EE51A9D9AAC005AA181 /* libovr64.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E28E081A9D9AAC005AA181 /* libovr64.lib */; };
+		03E28EE61A9D9AAC005AA181 /* libovr64d.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E28E091A9D9AAC005AA181 /* libovr64d.lib */; };
+		03E28EE71A9D9AAC005AA181 /* libovr64.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E28E0B1A9D9AAC005AA181 /* libovr64.lib */; };
+		03E28EE81A9D9AAC005AA181 /* libovr64d.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E28E0C1A9D9AAC005AA181 /* libovr64d.lib */; };
+		03E28EE91A9D9AAC005AA181 /* CAPI_DistortionRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E0F1A9D9AAC005AA181 /* CAPI_DistortionRenderer.cpp */; };
+		03E28EEA1A9D9AAC005AA181 /* CAPI_FrameTimeManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E111A9D9AAC005AA181 /* CAPI_FrameTimeManager.cpp */; };
+		03E28EEB1A9D9AAC005AA181 /* CAPI_HMDRenderState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E131A9D9AAC005AA181 /* CAPI_HMDRenderState.cpp */; };
+		03E28EEC1A9D9AAC005AA181 /* CAPI_HMDState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E151A9D9AAC005AA181 /* CAPI_HMDState.cpp */; };
+		03E28EED1A9D9AAC005AA181 /* CAPI_HSWDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E171A9D9AAC005AA181 /* CAPI_HSWDisplay.cpp */; };
+		03E28EEE1A9D9AAC005AA181 /* CAPI_D3D10_DistortionRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E1A1A9D9AAC005AA181 /* CAPI_D3D10_DistortionRenderer.cpp */; };
+		03E28EEF1A9D9AAC005AA181 /* CAPI_D3D10_HSWDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E1C1A9D9AAC005AA181 /* CAPI_D3D10_HSWDisplay.cpp */; };
+		03E28EF01A9D9AAC005AA181 /* CAPI_D3D11_DistortionRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E1E1A9D9AAC005AA181 /* CAPI_D3D11_DistortionRenderer.cpp */; };
+		03E28EF11A9D9AAC005AA181 /* CAPI_D3D11_HSWDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E201A9D9AAC005AA181 /* CAPI_D3D11_HSWDisplay.cpp */; };
+		03E28EF21A9D9AAC005AA181 /* CAPI_D3D1X_DistortionRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E221A9D9AAC005AA181 /* CAPI_D3D1X_DistortionRenderer.cpp */; };
+		03E28EF31A9D9AAC005AA181 /* CAPI_D3D1X_HSWDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E241A9D9AAC005AA181 /* CAPI_D3D1X_HSWDisplay.cpp */; };
+		03E28EF41A9D9AAC005AA181 /* CAPI_D3D1X_Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E261A9D9AAC005AA181 /* CAPI_D3D1X_Util.cpp */; };
+		03E28EF51A9D9AAC005AA181 /* CAPI_D3D9_DistortionRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E281A9D9AAC005AA181 /* CAPI_D3D9_DistortionRenderer.cpp */; };
+		03E28EF61A9D9AAC005AA181 /* CAPI_D3D9_HSWDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E2A1A9D9AAC005AA181 /* CAPI_D3D9_HSWDisplay.cpp */; };
+		03E28EF71A9D9AAC005AA181 /* CAPI_D3D9_Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E2C1A9D9AAC005AA181 /* CAPI_D3D9_Util.cpp */; };
+		03E28EF81A9D9AAC005AA181 /* CAPI_GL_DistortionRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E2E1A9D9AAC005AA181 /* CAPI_GL_DistortionRenderer.cpp */; };
+		03E28EF91A9D9AAC005AA181 /* CAPI_GL_HSWDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E311A9D9AAC005AA181 /* CAPI_GL_HSWDisplay.cpp */; };
+		03E28EFA1A9D9AAC005AA181 /* CAPI_GL_Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E331A9D9AAC005AA181 /* CAPI_GL_Util.cpp */; };
+		03E28EFB1A9D9AAC005AA181 /* OVR_Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E591A9D9AAC005AA181 /* OVR_Display.cpp */; };
+		03E28EFC1A9D9AAC005AA181 /* OVR_OSX_Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E5B1A9D9AAC005AA181 /* OVR_OSX_Display.cpp */; };
+		03E28EFD1A9D9AAC005AA181 /* OVR_Win32_Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E5D1A9D9AAC005AA181 /* OVR_Win32_Display.cpp */; };
+		03E28EFE1A9D9AAC005AA181 /* OVR_Win32_FocusReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E601A9D9AAC005AA181 /* OVR_Win32_FocusReader.cpp */; };
+		03E28EFF1A9D9AAC005AA181 /* OVR_Win32_RenderShim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E621A9D9AAC005AA181 /* OVR_Win32_RenderShim.cpp */; };
+		03E28F001A9D9AAC005AA181 /* OVR_Win32_ShimFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E631A9D9AAC005AA181 /* OVR_Win32_ShimFunctions.cpp */; };
+		03E28F011A9D9AAC005AA181 /* OVR_Alg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E661A9D9AAC005AA181 /* OVR_Alg.cpp */; };
+		03E28F021A9D9AAC005AA181 /* OVR_Allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E681A9D9AAC005AA181 /* OVR_Allocator.cpp */; };
+		03E28F031A9D9AAC005AA181 /* OVR_Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E6B1A9D9AAC005AA181 /* OVR_Atomic.cpp */; };
+		03E28F041A9D9AAC005AA181 /* OVR_CRC32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E701A9D9AAC005AA181 /* OVR_CRC32.cpp */; };
+		03E28F051A9D9AAC005AA181 /* OVR_File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E741A9D9AAC005AA181 /* OVR_File.cpp */; };
+		03E28F061A9D9AAC005AA181 /* OVR_FileFILE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E761A9D9AAC005AA181 /* OVR_FileFILE.cpp */; };
+		03E28F071A9D9AAC005AA181 /* OVR_Lockless.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E7A1A9D9AAC005AA181 /* OVR_Lockless.cpp */; };
+		03E28F081A9D9AAC005AA181 /* OVR_Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E7C1A9D9AAC005AA181 /* OVR_Log.cpp */; };
+		03E28F091A9D9AAC005AA181 /* OVR_Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E7E1A9D9AAC005AA181 /* OVR_Math.cpp */; };
+		03E28F0A1A9D9AAC005AA181 /* OVR_RefCount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E821A9D9AAC005AA181 /* OVR_RefCount.cpp */; };
+		03E28F0B1A9D9AAC005AA181 /* OVR_SharedMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E841A9D9AAC005AA181 /* OVR_SharedMemory.cpp */; };
+		03E28F0C1A9D9AAC005AA181 /* OVR_Std.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E861A9D9AAC005AA181 /* OVR_Std.cpp */; };
+		03E28F0D1A9D9AAC005AA181 /* OVR_String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E881A9D9AAC005AA181 /* OVR_String.cpp */; };
+		03E28F0E1A9D9AAC005AA181 /* OVR_String_FormatUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E8A1A9D9AAC005AA181 /* OVR_String_FormatUtil.cpp */; };
+		03E28F0F1A9D9AAC005AA181 /* OVR_String_PathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E8B1A9D9AAC005AA181 /* OVR_String_PathUtil.cpp */; };
+		03E28F101A9D9AAC005AA181 /* OVR_SysFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E8D1A9D9AAC005AA181 /* OVR_SysFile.cpp */; };
+		03E28F111A9D9AAC005AA181 /* OVR_System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E8F1A9D9AAC005AA181 /* OVR_System.cpp */; };
+		03E28F121A9D9AAC005AA181 /* OVR_ThreadCommandQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E911A9D9AAC005AA181 /* OVR_ThreadCommandQueue.cpp */; };
+		03E28F131A9D9AAC005AA181 /* OVR_ThreadsPthread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E941A9D9AAC005AA181 /* OVR_ThreadsPthread.cpp */; };
+		03E28F141A9D9AAC005AA181 /* OVR_ThreadsWinAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E951A9D9AAC005AA181 /* OVR_ThreadsWinAPI.cpp */; };
+		03E28F151A9D9AAC005AA181 /* OVR_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E961A9D9AAC005AA181 /* OVR_Timer.cpp */; };
+		03E28F161A9D9AAC005AA181 /* OVR_UTF8Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E991A9D9AAC005AA181 /* OVR_UTF8Util.cpp */; };
+		03E28F171A9D9AAC005AA181 /* OVR_BitStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E9C1A9D9AAC005AA181 /* OVR_BitStream.cpp */; };
+		03E28F181A9D9AAC005AA181 /* OVR_NetworkPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28E9F1A9D9AAC005AA181 /* OVR_NetworkPlugin.cpp */; };
+		03E28F191A9D9AAC005AA181 /* OVR_PacketizedTCPSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EA21A9D9AAC005AA181 /* OVR_PacketizedTCPSocket.cpp */; };
+		03E28F1A1A9D9AAC005AA181 /* OVR_RPC1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EA41A9D9AAC005AA181 /* OVR_RPC1.cpp */; };
+		03E28F1B1A9D9AAC005AA181 /* OVR_Session.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EA61A9D9AAC005AA181 /* OVR_Session.cpp */; };
+		03E28F1C1A9D9AAC005AA181 /* OVR_Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EA81A9D9AAC005AA181 /* OVR_Socket.cpp */; };
+		03E28F1D1A9D9AAC005AA181 /* OVR_Unix_Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EAA1A9D9AAC005AA181 /* OVR_Unix_Socket.cpp */; };
+		03E28F1E1A9D9AAC005AA181 /* OVR_Win32_Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EAC1A9D9AAC005AA181 /* OVR_Win32_Socket.cpp */; };
+		03E28F1F1A9D9AAC005AA181 /* OVR_CAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EAE1A9D9AAC005AA181 /* OVR_CAPI.cpp */; };
+		03E28F201A9D9AAC005AA181 /* OVR_JSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EB21A9D9AAC005AA181 /* OVR_JSON.cpp */; };
+		03E28F211A9D9AAC005AA181 /* OVR_Profile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EB41A9D9AAC005AA181 /* OVR_Profile.cpp */; };
+		03E28F221A9D9AAC005AA181 /* OVR_SerialFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EB61A9D9AAC005AA181 /* OVR_SerialFormat.cpp */; };
+		03E28F231A9D9AAC005AA181 /* OVR_Stereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EB81A9D9AAC005AA181 /* OVR_Stereo.cpp */; };
+		03E28F241A9D9AAC005AA181 /* Service_NetClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EBD1A9D9AAC005AA181 /* Service_NetClient.cpp */; };
+		03E28F251A9D9AAC005AA181 /* Service_NetSessionCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EBF1A9D9AAC005AA181 /* Service_NetSessionCommon.cpp */; };
+		03E28F261A9D9AAD005AA181 /* Tracking_SensorStateReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EC41A9D9AAC005AA181 /* Tracking_SensorStateReader.cpp */; };
+		03E28F271A9D9AAD005AA181 /* Util_ImageWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EC71A9D9AAC005AA181 /* Util_ImageWindow.cpp */; };
+		03E28F281A9D9AAD005AA181 /* Util_Interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28EC91A9D9AAC005AA181 /* Util_Interface.cpp */; };
+		03E28F291A9D9AAD005AA181 /* Util_LatencyTest2Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28ECB1A9D9AAC005AA181 /* Util_LatencyTest2Reader.cpp */; };
+		03E28F2A1A9D9AAD005AA181 /* Util_Render_Stereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28ECE1A9D9AAC005AA181 /* Util_Render_Stereo.cpp */; };
+		03E28F2B1A9D9AAD005AA181 /* ofxOculusDK2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28ED91A9D9AAC005AA181 /* ofxOculusDK2.cpp */; };
 		03F5BF6D19493B6E0049B3CC /* libaubio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F5BF6619493B6E0049B3CC /* libaubio.a */; };
 		03F5BF6E19493B6E0049B3CC /* libaubio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F5BF6619493B6E0049B3CC /* libaubio.a */; };
 		03F5BF6F19493B6E0049B3CC /* libaubio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F5BF6619493B6E0049B3CC /* libaubio.a */; };
@@ -1588,7 +1687,6 @@
 		E755D702194405C500AA81C1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D701194405C500AA81C1 /* libz.dylib */; };
 		E755D70619440E3000AA81C1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D70519440E3000AA81C1 /* QuartzCore.framework */; };
 		E755D70A1944159000AA81C1 /* libassimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D7091944159000AA81C1 /* libassimp.a */; };
-		E755D70D194415DD00AA81C1 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D70B194415DD00AA81C1 /* CloudsCalibrationNode.cpp */; };
 		E79BF66F1949206F00A0A83E /* audioAnalytics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65C1949206F00A0A83E /* audioAnalytics.cpp */; };
 		E79BF6711949206F00A0A83E /* audioAnalytics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65C1949206F00A0A83E /* audioAnalytics.cpp */; };
 		E79BF6721949206F00A0A83E /* audioAnalytics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF65C1949206F00A0A83E /* audioAnalytics.cpp */; };
@@ -1711,9 +1809,7 @@
 		E7D8253818BEBD7000C1EB93 /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8224B18BEBD6E00C1EB93 /* CloudsInputKinectOSC.cpp */; };
 		E7D8253918BEBD7000C1EB93 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8224D18BEBD6E00C1EB93 /* CloudsInputMouse.cpp */; };
 		E7D8253A18BEBD7000C1EB93 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8224F18BEBD6E00C1EB93 /* CloudsInputOculus.cpp */; };
-		E7D8253D18BEBD7000C1EB93 /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8225718BEBD6E00C1EB93 /* CloudsPlaybackController.cpp */; };
 		E7D8254018BEBD7000C1EB93 /* CloudsRGBDPointLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8225D18BEBD6E00C1EB93 /* CloudsRGBDPointLayer.cpp */; };
-		E7D8254118BEBD7000C1EB93 /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8225F18BEBD6E00C1EB93 /* CloudsTransitionController.cpp */; };
 		E7D8254218BEBD7000C1EB93 /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226118BEBD6E00C1EB93 /* CloudsVisualSystemRGBD.cpp */; };
 		E7D8254318BEBD7000C1EB93 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226418BEBD6E00C1EB93 /* Controller.cpp */; };
 		E7D8254418BEBD7000C1EB93 /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226618BEBD6E00C1EB93 /* Force.cpp */; };
@@ -1746,7 +1842,6 @@
 		E7D8256218BEBD7000C1EB93 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822AD18BEBD6E00C1EB93 /* CloudsRun.cpp */; };
 		E7D8256318BEBD7000C1EB93 /* CloudsSpeaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822AF18BEBD6E00C1EB93 /* CloudsSpeaker.cpp */; };
 		E7D8256418BEBD7000C1EB93 /* CloudsStoryEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822B118BEBD6E00C1EB93 /* CloudsStoryEngine.cpp */; };
-		E7D8256518BEBD7000C1EB93 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822B318BEBD6E00C1EB93 /* CloudsVisualSystemManager.cpp */; };
 		E7D8256618BEBD7000C1EB93 /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822B518BEBD6E00C1EB93 /* CloudsVisualSystemPreset.cpp */; };
 		E7D8256718BEBD7000C1EB93 /* CloudsVisualSystem2DVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822BA18BEBD6E00C1EB93 /* CloudsVisualSystem2DVideo.cpp */; };
 		E7D8256818BEBD7000C1EB93 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822BF18BEBD6E00C1EB93 /* CloudsOrthoCamera.cpp */; };
@@ -2020,7 +2115,6 @@
 		E7D8290718BEBE6D00C1EB93 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D828F318BEBE6D00C1EB93 /* ofxVerletSolver.cpp */; };
 		E7D8290818BEBE6D00C1EB93 /* ofxVortexBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D828F518BEBE6D00C1EB93 /* ofxVortexBehavior.cpp */; };
 		E7D8293118BEBE8100C1EB93 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8292A18BEBE8100C1EB93 /* ofxObjLoader.cpp */; };
-		E7D829EF18BEBEF100C1EB93 /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D829BD18BEBEF100C1EB93 /* ofxOculusRift.cpp */; };
 		E7D82AAA18BF099000C1EB93 /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A2B18BF099000C1EB93 /* ofxTonicSynth.cpp */; };
 		E7D82AAB18BF099000C1EB93 /* ADSR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A2E18BF099000C1EB93 /* ADSR.cpp */; };
 		E7D82AAC18BF099000C1EB93 /* Arithmetic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A3018BF099000C1EB93 /* Arithmetic.cpp */; };
@@ -2104,7 +2198,6 @@
 		E7DDC0C4194437EC00E61D75 /* DelayUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A7218BF099000C1EB93 /* DelayUtils.cpp */; };
 		E7DDC0C5194437EC00E61D75 /* ParamManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822E618BEBD6E00C1EB93 /* ParamManager.cpp */; };
 		E7DDC0C6194437EC00E61D75 /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8231E18BEBD6E00C1EB93 /* ParticleConnector.cpp */; };
-		E7DDC0C7194437EC00E61D75 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D70B194415DD00AA81C1 /* CloudsCalibrationNode.cpp */; };
 		E7DDC0C8194437EC00E61D75 /* Walker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D823F718BEBD6E00C1EB93 /* Walker.cpp */; };
 		E7DDC0C9194437EC00E61D75 /* del_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA29B189F1CD9006C9E4E /* del_impl.cpp */; };
 		E7DDC0CA194437EC00E61D75 /* TubeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8245E18BEBD6F00C1EB93 /* TubeAction.cpp */; };
@@ -2291,7 +2384,6 @@
 		E7DDC17F194437EC00E61D75 /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824DB18BEBD6F00C1EB93 /* VoroParticle.cpp */; };
 		E7DDC180194437EC00E61D75 /* ofxEasingQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8288018BEBE3A00C1EB93 /* ofxEasingQuad.cpp */; };
 		E7DDC181194437EC00E61D75 /* ofxUIDragableLabelButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D56C1943F2AF00AA81C1 /* ofxUIDragableLabelButton.cpp */; };
-		E7DDC182194437EC00E61D75 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822B318BEBD6E00C1EB93 /* CloudsVisualSystemManager.cpp */; };
 		E7DDC183194437EC00E61D75 /* ofxTLColorTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279E18BEBDCF00C1EB93 /* ofxTLColorTrack.cpp */; };
 		E7DDC184194437EC00E61D75 /* ofxTLCurves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827A018BEBDCF00C1EB93 /* ofxTLCurves.cpp */; };
 		E7DDC185194437EC00E61D75 /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA32C189F1CDC006C9E4E /* Delaunay.cpp */; };
@@ -2394,7 +2486,6 @@
 		E7DDC1E6194437EC00E61D75 /* CompressorLimiter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A3E18BF099000C1EB93 /* CompressorLimiter.cpp */; };
 		E7DDC1E7194437EC00E61D75 /* v_compute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824D318BEBD6F00C1EB93 /* v_compute.cpp */; };
 		E7DDC1E8194437EC00E61D75 /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8234918BEBD6E00C1EB93 /* Boid.cpp */; };
-		E7DDC1E9194437EC00E61D75 /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D829BD18BEBEF100C1EB93 /* ofxOculusRift.cpp */; };
 		E7DDC1EA194437EC00E61D75 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8251318BEBD6F00C1EB93 /* CloudsRGBDVideoPlayer.cpp */; };
 		E7DDC1EB194437EC00E61D75 /* ofxPerlinBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D828DA18BEBE6D00C1EB93 /* ofxPerlinBehavior.cpp */; };
 		E7DDC1EC194437EC00E61D75 /* BasicDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A3418BF099000C1EB93 /* BasicDelay.cpp */; };
@@ -2473,7 +2564,6 @@
 		E7DDC235194437EC00E61D75 /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8228C18BEBD6E00C1EB93 /* CloudsAudioEvents.cpp */; };
 		E7DDC236194437EC00E61D75 /* ofxTLPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827B518BEBDCF00C1EB93 /* ofxTLPage.cpp */; };
 		E7DDC237194437EC00E61D75 /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA834189F3611006C9E4E /* ofxSQLiteUpdate.cpp */; };
-		E7DDC238194437EC00E61D75 /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8225718BEBD6E00C1EB93 /* CloudsPlaybackController.cpp */; };
 		E7DDC239194437EC00E61D75 /* b2FrictionJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA287189F1CD9006C9E4E /* b2FrictionJoint.cpp */; };
 		E7DDC23A194437EC00E61D75 /* IcosphereAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8245018BEBD6F00C1EB93 /* IcosphereAction.cpp */; };
 		E7DDC23B194437EC00E61D75 /* ofxUIValuePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D5B01943F2AF00AA81C1 /* ofxUIValuePlotter.cpp */; };
@@ -2680,7 +2770,6 @@
 		E7DDC304194437EC00E61D75 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA909189F362A006C9E4E /* OscPrintReceivedElements.cpp */; };
 		E7DDC305194437EC00E61D75 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA122189F1CD4006C9E4E /* Clock.cpp */; };
 		E7DDC306194437EC00E61D75 /* ofxMPMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82B3E18BF0AC200C1EB93 /* ofxMPMNode.cpp */; };
-		E7DDC307194437EC00E61D75 /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8225F18BEBD6E00C1EB93 /* CloudsTransitionController.cpp */; };
 		E7DDC308194437EC00E61D75 /* UdpSocketWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA901189F362A006C9E4E /* UdpSocketWin.cpp */; };
 		E7DDC30A194437EC00E61D75 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D70519440E3000AA81C1 /* QuartzCore.framework */; };
 		E7DDC30B194437EC00E61D75 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D701194405C500AA81C1 /* libz.dylib */; };
@@ -2769,6 +2858,13 @@
 			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
 			remoteInfo = openFrameworks;
 		};
+		03E28F2D1A9D9AAD005AA181 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03E28DE51A9D9AAC005AA181 /* OculusRenderingBasic.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B69B5B0A3A1756003C02F2;
+			remoteInfo = OculusRenderingBasic;
+		};
 		E4328147138ABC890047C5CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
@@ -2852,6 +2948,249 @@
 		03C079A9194605FE0081ED9B /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		03C079AA194605FE0081ED9B /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		03C079AB194605FE0081ED9B /* ofxAnimationPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitives.h; sourceTree = "<group>"; };
+		03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCalibrationNode.cpp; sourceTree = "<group>"; };
+		03E28DA21A9D767D005AA181 /* CloudsCalibrationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCalibrationNode.h; sourceTree = "<group>"; };
+		03E28DA31A9D767D005AA181 /* CloudsPlaybackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPlaybackController.cpp; sourceTree = "<group>"; };
+		03E28DA41A9D767D005AA181 /* CloudsPlaybackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPlaybackController.h; sourceTree = "<group>"; };
+		03E28DA51A9D767D005AA181 /* CloudsTransitionController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsTransitionController.cpp; sourceTree = "<group>"; };
+		03E28DA61A9D767D005AA181 /* CloudsTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsTransitionController.h; sourceTree = "<group>"; };
+		03E28DA71A9D767D005AA181 /* CloudsVisualSystemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemManager.cpp; sourceTree = "<group>"; };
+		03E28DA81A9D767D005AA181 /* CloudsVisualSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemManager.h; sourceTree = "<group>"; };
+		03E28DB91A9D7690005AA181 /* CloudsEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsEvents.h; sourceTree = "<group>"; };
+		03E28DBA1A9D7690005AA181 /* CloudsGlobal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsGlobal.cpp; sourceTree = "<group>"; };
+		03E28DBB1A9D7690005AA181 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
+		03E28DBC1A9D7690005AA181 /* CloudsLocalization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsLocalization.cpp; sourceTree = "<group>"; };
+		03E28DBD1A9D7690005AA181 /* CloudsLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsLocalization.h; sourceTree = "<group>"; };
+		03E28DC81A9D9389005AA181 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		03E28DC91A9D9389005AA181 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLocalization.cpp; sourceTree = "<group>"; };
+		03E28DCC1A9D9389005AA181 /* ofxLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLocalization.h; sourceTree = "<group>"; };
+		03E28DD21A9D9AAC005AA181 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		03E28DD41A9D9AAC005AA181 /* addons.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addons.make; sourceTree = "<group>"; };
+		03E28DD71A9D9AAC005AA181 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		03E28DD91A9D9AAC005AA181 /* DIN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIN.otf; sourceTree = "<group>"; };
+		03E28DDB1A9D9AAC005AA181 /* HmdWarpDK2.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarpDK2.frag; sourceTree = "<group>"; };
+		03E28DDC1A9D9AAC005AA181 /* HmdWarpDK2.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarpDK2.vert; sourceTree = "<group>"; };
+		03E28DDD1A9D9AAC005AA181 /* HmdWarpDK2_simple.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarpDK2_simple.vert; sourceTree = "<group>"; };
+		03E28DDE1A9D9AAC005AA181 /* icon.aps */ = {isa = PBXFileReference; lastKnownFileType = file; path = icon.aps; sourceTree = "<group>"; };
+		03E28DDF1A9D9AAC005AA181 /* icon.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icon.rc; sourceTree = "<group>"; };
+		03E28DE01A9D9AAC005AA181 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		03E28DE11A9D9AAC005AA181 /* OculusRenderingBasic.sln */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OculusRenderingBasic.sln; sourceTree = "<group>"; };
+		03E28DE21A9D9AAC005AA181 /* OculusRenderingBasic.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OculusRenderingBasic.vcxproj; sourceTree = "<group>"; };
+		03E28DE31A9D9AAC005AA181 /* OculusRenderingBasic.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OculusRenderingBasic.vcxproj.filters; sourceTree = "<group>"; };
+		03E28DE41A9D9AAC005AA181 /* OculusRenderingBasic.vcxproj.user */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OculusRenderingBasic.vcxproj.user; sourceTree = "<group>"; };
+		03E28DE51A9D9AAC005AA181 /* OculusRenderingBasic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = OculusRenderingBasic.xcodeproj; sourceTree = "<group>"; };
+		03E28DE91A9D9AAC005AA181 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		03E28DEA1A9D9AAC005AA181 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		03E28DEC1A9D9AAC005AA181 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		03E28DED1A9D9AAC005AA181 /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
+		03E28DEE1A9D9AAC005AA181 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
+		03E28DF21A9D9AAC005AA181 /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml2.cpp; sourceTree = "<group>"; };
+		03E28DF31A9D9AAC005AA181 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
+		03E28DF61A9D9AAC005AA181 /* OVR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR.h; sourceTree = "<group>"; };
+		03E28DF71A9D9AAC005AA181 /* OVR_Kernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Kernel.h; sourceTree = "<group>"; };
+		03E28DF81A9D9AAC005AA181 /* OVR_Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Version.h; sourceTree = "<group>"; };
+		03E28DFC1A9D9AAC005AA181 /* libovr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libovr.a; sourceTree = "<group>"; };
+		03E28DFE1A9D9AAC005AA181 /* libovr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libovr.a; sourceTree = "<group>"; };
+		03E28E001A9D9AAC005AA181 /* libovr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libovr.a; sourceTree = "<group>"; };
+		03E28E021A9D9AAC005AA181 /* libovr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libovr.a; sourceTree = "<group>"; };
+		03E28E051A9D9AAC005AA181 /* libovr64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libovr64.lib; sourceTree = "<group>"; };
+		03E28E061A9D9AAC005AA181 /* libovr64d.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libovr64d.lib; sourceTree = "<group>"; };
+		03E28E081A9D9AAC005AA181 /* libovr64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libovr64.lib; sourceTree = "<group>"; };
+		03E28E091A9D9AAC005AA181 /* libovr64d.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libovr64d.lib; sourceTree = "<group>"; };
+		03E28E0B1A9D9AAC005AA181 /* libovr64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libovr64.lib; sourceTree = "<group>"; };
+		03E28E0C1A9D9AAC005AA181 /* libovr64d.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libovr64d.lib; sourceTree = "<group>"; };
+		03E28E0F1A9D9AAC005AA181 /* CAPI_DistortionRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_DistortionRenderer.cpp; sourceTree = "<group>"; };
+		03E28E101A9D9AAC005AA181 /* CAPI_DistortionRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_DistortionRenderer.h; sourceTree = "<group>"; };
+		03E28E111A9D9AAC005AA181 /* CAPI_FrameTimeManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_FrameTimeManager.cpp; sourceTree = "<group>"; };
+		03E28E121A9D9AAC005AA181 /* CAPI_FrameTimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_FrameTimeManager.h; sourceTree = "<group>"; };
+		03E28E131A9D9AAC005AA181 /* CAPI_HMDRenderState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_HMDRenderState.cpp; sourceTree = "<group>"; };
+		03E28E141A9D9AAC005AA181 /* CAPI_HMDRenderState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_HMDRenderState.h; sourceTree = "<group>"; };
+		03E28E151A9D9AAC005AA181 /* CAPI_HMDState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_HMDState.cpp; sourceTree = "<group>"; };
+		03E28E161A9D9AAC005AA181 /* CAPI_HMDState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_HMDState.h; sourceTree = "<group>"; };
+		03E28E171A9D9AAC005AA181 /* CAPI_HSWDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_HSWDisplay.cpp; sourceTree = "<group>"; };
+		03E28E181A9D9AAC005AA181 /* CAPI_HSWDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_HSWDisplay.h; sourceTree = "<group>"; };
+		03E28E1A1A9D9AAC005AA181 /* CAPI_D3D10_DistortionRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_D3D10_DistortionRenderer.cpp; sourceTree = "<group>"; };
+		03E28E1B1A9D9AAC005AA181 /* CAPI_D3D10_DistortionRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_D3D10_DistortionRenderer.h; sourceTree = "<group>"; };
+		03E28E1C1A9D9AAC005AA181 /* CAPI_D3D10_HSWDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_D3D10_HSWDisplay.cpp; sourceTree = "<group>"; };
+		03E28E1D1A9D9AAC005AA181 /* CAPI_D3D10_HSWDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_D3D10_HSWDisplay.h; sourceTree = "<group>"; };
+		03E28E1E1A9D9AAC005AA181 /* CAPI_D3D11_DistortionRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_D3D11_DistortionRenderer.cpp; sourceTree = "<group>"; };
+		03E28E1F1A9D9AAC005AA181 /* CAPI_D3D11_DistortionRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_D3D11_DistortionRenderer.h; sourceTree = "<group>"; };
+		03E28E201A9D9AAC005AA181 /* CAPI_D3D11_HSWDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_D3D11_HSWDisplay.cpp; sourceTree = "<group>"; };
+		03E28E211A9D9AAC005AA181 /* CAPI_D3D11_HSWDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_D3D11_HSWDisplay.h; sourceTree = "<group>"; };
+		03E28E221A9D9AAC005AA181 /* CAPI_D3D1X_DistortionRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_D3D1X_DistortionRenderer.cpp; sourceTree = "<group>"; };
+		03E28E231A9D9AAC005AA181 /* CAPI_D3D1X_DistortionRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_D3D1X_DistortionRenderer.h; sourceTree = "<group>"; };
+		03E28E241A9D9AAC005AA181 /* CAPI_D3D1X_HSWDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_D3D1X_HSWDisplay.cpp; sourceTree = "<group>"; };
+		03E28E251A9D9AAC005AA181 /* CAPI_D3D1X_HSWDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_D3D1X_HSWDisplay.h; sourceTree = "<group>"; };
+		03E28E261A9D9AAC005AA181 /* CAPI_D3D1X_Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_D3D1X_Util.cpp; sourceTree = "<group>"; };
+		03E28E271A9D9AAC005AA181 /* CAPI_D3D1X_Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_D3D1X_Util.h; sourceTree = "<group>"; };
+		03E28E281A9D9AAC005AA181 /* CAPI_D3D9_DistortionRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_D3D9_DistortionRenderer.cpp; sourceTree = "<group>"; };
+		03E28E291A9D9AAC005AA181 /* CAPI_D3D9_DistortionRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_D3D9_DistortionRenderer.h; sourceTree = "<group>"; };
+		03E28E2A1A9D9AAC005AA181 /* CAPI_D3D9_HSWDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_D3D9_HSWDisplay.cpp; sourceTree = "<group>"; };
+		03E28E2B1A9D9AAC005AA181 /* CAPI_D3D9_HSWDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_D3D9_HSWDisplay.h; sourceTree = "<group>"; };
+		03E28E2C1A9D9AAC005AA181 /* CAPI_D3D9_Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_D3D9_Util.cpp; sourceTree = "<group>"; };
+		03E28E2E1A9D9AAC005AA181 /* CAPI_GL_DistortionRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_GL_DistortionRenderer.cpp; sourceTree = "<group>"; };
+		03E28E2F1A9D9AAC005AA181 /* CAPI_GL_DistortionRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_GL_DistortionRenderer.h; sourceTree = "<group>"; };
+		03E28E301A9D9AAC005AA181 /* CAPI_GL_DistortionShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_GL_DistortionShaders.h; sourceTree = "<group>"; };
+		03E28E311A9D9AAC005AA181 /* CAPI_GL_HSWDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_GL_HSWDisplay.cpp; sourceTree = "<group>"; };
+		03E28E321A9D9AAC005AA181 /* CAPI_GL_HSWDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_GL_HSWDisplay.h; sourceTree = "<group>"; };
+		03E28E331A9D9AAC005AA181 /* CAPI_GL_Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPI_GL_Util.cpp; sourceTree = "<group>"; };
+		03E28E341A9D9AAC005AA181 /* CAPI_GL_Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPI_GL_Util.h; sourceTree = "<group>"; };
+		03E28E361A9D9AAC005AA181 /* Distortion_ps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Distortion_ps.h; sourceTree = "<group>"; };
+		03E28E371A9D9AAC005AA181 /* Distortion_ps.psh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Distortion_ps.psh; sourceTree = "<group>"; };
+		03E28E381A9D9AAC005AA181 /* Distortion_ps_refl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Distortion_ps_refl.h; sourceTree = "<group>"; };
+		03E28E391A9D9AAC005AA181 /* Distortion_vs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Distortion_vs.h; sourceTree = "<group>"; };
+		03E28E3A1A9D9AAC005AA181 /* Distortion_vs.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Distortion_vs.vsh; sourceTree = "<group>"; };
+		03E28E3B1A9D9AAC005AA181 /* Distortion_vs_refl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Distortion_vs_refl.h; sourceTree = "<group>"; };
+		03E28E3C1A9D9AAC005AA181 /* DistortionChroma_ps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistortionChroma_ps.h; sourceTree = "<group>"; };
+		03E28E3D1A9D9AAC005AA181 /* DistortionChroma_ps.psh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DistortionChroma_ps.psh; sourceTree = "<group>"; };
+		03E28E3E1A9D9AAC005AA181 /* DistortionChroma_ps_refl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistortionChroma_ps_refl.h; sourceTree = "<group>"; };
+		03E28E3F1A9D9AAC005AA181 /* DistortionChroma_vs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistortionChroma_vs.h; sourceTree = "<group>"; };
+		03E28E401A9D9AAC005AA181 /* DistortionChroma_vs.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DistortionChroma_vs.vsh; sourceTree = "<group>"; };
+		03E28E411A9D9AAC005AA181 /* DistortionChroma_vs_refl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistortionChroma_vs_refl.h; sourceTree = "<group>"; };
+		03E28E421A9D9AAC005AA181 /* DistortionTimewarp_vs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistortionTimewarp_vs.h; sourceTree = "<group>"; };
+		03E28E431A9D9AAC005AA181 /* DistortionTimewarp_vs.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DistortionTimewarp_vs.vsh; sourceTree = "<group>"; };
+		03E28E441A9D9AAC005AA181 /* DistortionTimewarp_vs_refl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistortionTimewarp_vs_refl.h; sourceTree = "<group>"; };
+		03E28E451A9D9AAC005AA181 /* DistortionTimewarpChroma_vs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistortionTimewarpChroma_vs.h; sourceTree = "<group>"; };
+		03E28E461A9D9AAC005AA181 /* DistortionTimewarpChroma_vs.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DistortionTimewarpChroma_vs.vsh; sourceTree = "<group>"; };
+		03E28E471A9D9AAC005AA181 /* DistortionTimewarpChroma_vs_refl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistortionTimewarpChroma_vs_refl.h; sourceTree = "<group>"; };
+		03E28E481A9D9AAC005AA181 /* genPixelShaderHeader.bat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = genPixelShaderHeader.bat; sourceTree = "<group>"; };
+		03E28E491A9D9AAC005AA181 /* genVertexShaderHeader.bat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = genVertexShaderHeader.bat; sourceTree = "<group>"; };
+		03E28E4A1A9D9AAC005AA181 /* SimpleQuad_ps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleQuad_ps.h; sourceTree = "<group>"; };
+		03E28E4B1A9D9AAC005AA181 /* SimpleQuad_ps.psh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleQuad_ps.psh; sourceTree = "<group>"; };
+		03E28E4C1A9D9AAC005AA181 /* SimpleQuad_ps_refl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleQuad_ps_refl.h; sourceTree = "<group>"; };
+		03E28E4D1A9D9AAC005AA181 /* SimpleQuad_vs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleQuad_vs.h; sourceTree = "<group>"; };
+		03E28E4E1A9D9AAC005AA181 /* SimpleQuad_vs.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SimpleQuad_vs.vsh; sourceTree = "<group>"; };
+		03E28E4F1A9D9AAC005AA181 /* SimpleQuad_vs_refl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleQuad_vs_refl.h; sourceTree = "<group>"; };
+		03E28E501A9D9AAC005AA181 /* SimpleTexturedQuad_ps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTexturedQuad_ps.h; sourceTree = "<group>"; };
+		03E28E511A9D9AAC005AA181 /* SimpleTexturedQuad_ps.psh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleTexturedQuad_ps.psh; sourceTree = "<group>"; };
+		03E28E521A9D9AAC005AA181 /* SimpleTexturedQuad_ps_refl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTexturedQuad_ps_refl.h; sourceTree = "<group>"; };
+		03E28E531A9D9AAC005AA181 /* SimpleTexturedQuad_vs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTexturedQuad_vs.h; sourceTree = "<group>"; };
+		03E28E541A9D9AAC005AA181 /* SimpleTexturedQuad_vs.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SimpleTexturedQuad_vs.vsh; sourceTree = "<group>"; };
+		03E28E551A9D9AAC005AA181 /* SimpleTexturedQuad_vs_refl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTexturedQuad_vs_refl.h; sourceTree = "<group>"; };
+		03E28E571A9D9AAC005AA181 /* healthAndSafety.tga.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = healthAndSafety.tga.h; sourceTree = "<group>"; };
+		03E28E591A9D9AAC005AA181 /* OVR_Display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Display.cpp; sourceTree = "<group>"; };
+		03E28E5A1A9D9AAC005AA181 /* OVR_Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Display.h; sourceTree = "<group>"; };
+		03E28E5B1A9D9AAC005AA181 /* OVR_OSX_Display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_OSX_Display.cpp; sourceTree = "<group>"; };
+		03E28E5C1A9D9AAC005AA181 /* OVR_OSX_Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_OSX_Display.h; sourceTree = "<group>"; };
+		03E28E5D1A9D9AAC005AA181 /* OVR_Win32_Display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Win32_Display.cpp; sourceTree = "<group>"; };
+		03E28E5E1A9D9AAC005AA181 /* OVR_Win32_Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Win32_Display.h; sourceTree = "<group>"; };
+		03E28E5F1A9D9AAC005AA181 /* OVR_Win32_Dxgi_Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Win32_Dxgi_Display.h; sourceTree = "<group>"; };
+		03E28E601A9D9AAC005AA181 /* OVR_Win32_FocusReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Win32_FocusReader.cpp; sourceTree = "<group>"; };
+		03E28E611A9D9AAC005AA181 /* OVR_Win32_FocusReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Win32_FocusReader.h; sourceTree = "<group>"; };
+		03E28E621A9D9AAC005AA181 /* OVR_Win32_RenderShim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Win32_RenderShim.cpp; sourceTree = "<group>"; };
+		03E28E631A9D9AAC005AA181 /* OVR_Win32_ShimFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Win32_ShimFunctions.cpp; sourceTree = "<group>"; };
+		03E28E641A9D9AAC005AA181 /* OVR_Win32_ShimFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Win32_ShimFunctions.h; sourceTree = "<group>"; };
+		03E28E661A9D9AAC005AA181 /* OVR_Alg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Alg.cpp; sourceTree = "<group>"; };
+		03E28E671A9D9AAC005AA181 /* OVR_Alg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Alg.h; sourceTree = "<group>"; };
+		03E28E681A9D9AAC005AA181 /* OVR_Allocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Allocator.cpp; sourceTree = "<group>"; };
+		03E28E691A9D9AAC005AA181 /* OVR_Allocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Allocator.h; sourceTree = "<group>"; };
+		03E28E6A1A9D9AAC005AA181 /* OVR_Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Array.h; sourceTree = "<group>"; };
+		03E28E6B1A9D9AAC005AA181 /* OVR_Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Atomic.cpp; sourceTree = "<group>"; };
+		03E28E6C1A9D9AAC005AA181 /* OVR_Atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Atomic.h; sourceTree = "<group>"; };
+		03E28E6D1A9D9AAC005AA181 /* OVR_Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Color.h; sourceTree = "<group>"; };
+		03E28E6E1A9D9AAC005AA181 /* OVR_Compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Compiler.h; sourceTree = "<group>"; };
+		03E28E6F1A9D9AAC005AA181 /* OVR_ContainerAllocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_ContainerAllocator.h; sourceTree = "<group>"; };
+		03E28E701A9D9AAC005AA181 /* OVR_CRC32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_CRC32.cpp; sourceTree = "<group>"; };
+		03E28E711A9D9AAC005AA181 /* OVR_CRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_CRC32.h; sourceTree = "<group>"; };
+		03E28E721A9D9AAC005AA181 /* OVR_Delegates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Delegates.h; sourceTree = "<group>"; };
+		03E28E731A9D9AAC005AA181 /* OVR_Deque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Deque.h; sourceTree = "<group>"; };
+		03E28E741A9D9AAC005AA181 /* OVR_File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_File.cpp; sourceTree = "<group>"; };
+		03E28E751A9D9AAC005AA181 /* OVR_File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_File.h; sourceTree = "<group>"; };
+		03E28E761A9D9AAC005AA181 /* OVR_FileFILE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_FileFILE.cpp; sourceTree = "<group>"; };
+		03E28E771A9D9AAC005AA181 /* OVR_Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Hash.h; sourceTree = "<group>"; };
+		03E28E781A9D9AAC005AA181 /* OVR_KeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_KeyCodes.h; sourceTree = "<group>"; };
+		03E28E791A9D9AAC005AA181 /* OVR_List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_List.h; sourceTree = "<group>"; };
+		03E28E7A1A9D9AAC005AA181 /* OVR_Lockless.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Lockless.cpp; sourceTree = "<group>"; };
+		03E28E7B1A9D9AAC005AA181 /* OVR_Lockless.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Lockless.h; sourceTree = "<group>"; };
+		03E28E7C1A9D9AAC005AA181 /* OVR_Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Log.cpp; sourceTree = "<group>"; };
+		03E28E7D1A9D9AAC005AA181 /* OVR_Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Log.h; sourceTree = "<group>"; };
+		03E28E7E1A9D9AAC005AA181 /* OVR_Math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Math.cpp; sourceTree = "<group>"; };
+		03E28E7F1A9D9AAC005AA181 /* OVR_Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Math.h; sourceTree = "<group>"; };
+		03E28E801A9D9AAC005AA181 /* OVR_Nullptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Nullptr.h; sourceTree = "<group>"; };
+		03E28E811A9D9AAC005AA181 /* OVR_Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Observer.h; sourceTree = "<group>"; };
+		03E28E821A9D9AAC005AA181 /* OVR_RefCount.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_RefCount.cpp; sourceTree = "<group>"; };
+		03E28E831A9D9AAC005AA181 /* OVR_RefCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_RefCount.h; sourceTree = "<group>"; };
+		03E28E841A9D9AAC005AA181 /* OVR_SharedMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_SharedMemory.cpp; sourceTree = "<group>"; };
+		03E28E851A9D9AAC005AA181 /* OVR_SharedMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_SharedMemory.h; sourceTree = "<group>"; };
+		03E28E861A9D9AAC005AA181 /* OVR_Std.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Std.cpp; sourceTree = "<group>"; };
+		03E28E871A9D9AAC005AA181 /* OVR_Std.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Std.h; sourceTree = "<group>"; };
+		03E28E881A9D9AAC005AA181 /* OVR_String.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_String.cpp; sourceTree = "<group>"; };
+		03E28E891A9D9AAC005AA181 /* OVR_String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_String.h; sourceTree = "<group>"; };
+		03E28E8A1A9D9AAC005AA181 /* OVR_String_FormatUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_String_FormatUtil.cpp; sourceTree = "<group>"; };
+		03E28E8B1A9D9AAC005AA181 /* OVR_String_PathUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_String_PathUtil.cpp; sourceTree = "<group>"; };
+		03E28E8C1A9D9AAC005AA181 /* OVR_StringHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_StringHash.h; sourceTree = "<group>"; };
+		03E28E8D1A9D9AAC005AA181 /* OVR_SysFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_SysFile.cpp; sourceTree = "<group>"; };
+		03E28E8E1A9D9AAC005AA181 /* OVR_SysFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_SysFile.h; sourceTree = "<group>"; };
+		03E28E8F1A9D9AAC005AA181 /* OVR_System.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_System.cpp; sourceTree = "<group>"; };
+		03E28E901A9D9AAC005AA181 /* OVR_System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_System.h; sourceTree = "<group>"; };
+		03E28E911A9D9AAC005AA181 /* OVR_ThreadCommandQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_ThreadCommandQueue.cpp; sourceTree = "<group>"; };
+		03E28E921A9D9AAC005AA181 /* OVR_ThreadCommandQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_ThreadCommandQueue.h; sourceTree = "<group>"; };
+		03E28E931A9D9AAC005AA181 /* OVR_Threads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Threads.h; sourceTree = "<group>"; };
+		03E28E941A9D9AAC005AA181 /* OVR_ThreadsPthread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_ThreadsPthread.cpp; sourceTree = "<group>"; };
+		03E28E951A9D9AAC005AA181 /* OVR_ThreadsWinAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_ThreadsWinAPI.cpp; sourceTree = "<group>"; };
+		03E28E961A9D9AAC005AA181 /* OVR_Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Timer.cpp; sourceTree = "<group>"; };
+		03E28E971A9D9AAC005AA181 /* OVR_Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Timer.h; sourceTree = "<group>"; };
+		03E28E981A9D9AAC005AA181 /* OVR_Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Types.h; sourceTree = "<group>"; };
+		03E28E991A9D9AAC005AA181 /* OVR_UTF8Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_UTF8Util.cpp; sourceTree = "<group>"; };
+		03E28E9A1A9D9AAC005AA181 /* OVR_UTF8Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_UTF8Util.h; sourceTree = "<group>"; };
+		03E28E9C1A9D9AAC005AA181 /* OVR_BitStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_BitStream.cpp; sourceTree = "<group>"; };
+		03E28E9D1A9D9AAC005AA181 /* OVR_BitStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_BitStream.h; sourceTree = "<group>"; };
+		03E28E9E1A9D9AAC005AA181 /* OVR_MessageIDTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_MessageIDTypes.h; sourceTree = "<group>"; };
+		03E28E9F1A9D9AAC005AA181 /* OVR_NetworkPlugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_NetworkPlugin.cpp; sourceTree = "<group>"; };
+		03E28EA01A9D9AAC005AA181 /* OVR_NetworkPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_NetworkPlugin.h; sourceTree = "<group>"; };
+		03E28EA11A9D9AAC005AA181 /* OVR_NetworkTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_NetworkTypes.h; sourceTree = "<group>"; };
+		03E28EA21A9D9AAC005AA181 /* OVR_PacketizedTCPSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_PacketizedTCPSocket.cpp; sourceTree = "<group>"; };
+		03E28EA31A9D9AAC005AA181 /* OVR_PacketizedTCPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_PacketizedTCPSocket.h; sourceTree = "<group>"; };
+		03E28EA41A9D9AAC005AA181 /* OVR_RPC1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_RPC1.cpp; sourceTree = "<group>"; };
+		03E28EA51A9D9AAC005AA181 /* OVR_RPC1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_RPC1.h; sourceTree = "<group>"; };
+		03E28EA61A9D9AAC005AA181 /* OVR_Session.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Session.cpp; sourceTree = "<group>"; };
+		03E28EA71A9D9AAC005AA181 /* OVR_Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Session.h; sourceTree = "<group>"; };
+		03E28EA81A9D9AAC005AA181 /* OVR_Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Socket.cpp; sourceTree = "<group>"; };
+		03E28EA91A9D9AAC005AA181 /* OVR_Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Socket.h; sourceTree = "<group>"; };
+		03E28EAA1A9D9AAC005AA181 /* OVR_Unix_Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Unix_Socket.cpp; sourceTree = "<group>"; };
+		03E28EAB1A9D9AAC005AA181 /* OVR_Unix_Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Unix_Socket.h; sourceTree = "<group>"; };
+		03E28EAC1A9D9AAC005AA181 /* OVR_Win32_Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Win32_Socket.cpp; sourceTree = "<group>"; };
+		03E28EAD1A9D9AAC005AA181 /* OVR_Win32_Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Win32_Socket.h; sourceTree = "<group>"; };
+		03E28EAE1A9D9AAC005AA181 /* OVR_CAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_CAPI.cpp; sourceTree = "<group>"; };
+		03E28EAF1A9D9AAC005AA181 /* OVR_CAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_CAPI.h; sourceTree = "<group>"; };
+		03E28EB01A9D9AAC005AA181 /* OVR_CAPI_D3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_CAPI_D3D.h; sourceTree = "<group>"; };
+		03E28EB11A9D9AAC005AA181 /* OVR_CAPI_GL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_CAPI_GL.h; sourceTree = "<group>"; };
+		03E28EB21A9D9AAC005AA181 /* OVR_JSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_JSON.cpp; sourceTree = "<group>"; };
+		03E28EB31A9D9AAC005AA181 /* OVR_JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_JSON.h; sourceTree = "<group>"; };
+		03E28EB41A9D9AAC005AA181 /* OVR_Profile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Profile.cpp; sourceTree = "<group>"; };
+		03E28EB51A9D9AAC005AA181 /* OVR_Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Profile.h; sourceTree = "<group>"; };
+		03E28EB61A9D9AAC005AA181 /* OVR_SerialFormat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_SerialFormat.cpp; sourceTree = "<group>"; };
+		03E28EB71A9D9AAC005AA181 /* OVR_SerialFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_SerialFormat.h; sourceTree = "<group>"; };
+		03E28EB81A9D9AAC005AA181 /* OVR_Stereo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVR_Stereo.cpp; sourceTree = "<group>"; };
+		03E28EB91A9D9AAC005AA181 /* OVR_Stereo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Stereo.h; sourceTree = "<group>"; };
+		03E28EBB1A9D9AAC005AA181 /* OVR_DeviceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_DeviceConstants.h; sourceTree = "<group>"; };
+		03E28EBD1A9D9AAC005AA181 /* Service_NetClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Service_NetClient.cpp; sourceTree = "<group>"; };
+		03E28EBE1A9D9AAC005AA181 /* Service_NetClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service_NetClient.h; sourceTree = "<group>"; };
+		03E28EBF1A9D9AAC005AA181 /* Service_NetSessionCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Service_NetSessionCommon.cpp; sourceTree = "<group>"; };
+		03E28EC01A9D9AAC005AA181 /* Service_NetSessionCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service_NetSessionCommon.h; sourceTree = "<group>"; };
+		03E28EC21A9D9AAC005AA181 /* Tracking_PoseState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracking_PoseState.h; sourceTree = "<group>"; };
+		03E28EC31A9D9AAC005AA181 /* Tracking_SensorState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracking_SensorState.h; sourceTree = "<group>"; };
+		03E28EC41A9D9AAC005AA181 /* Tracking_SensorStateReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tracking_SensorStateReader.cpp; sourceTree = "<group>"; };
+		03E28EC51A9D9AAC005AA181 /* Tracking_SensorStateReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracking_SensorStateReader.h; sourceTree = "<group>"; };
+		03E28EC71A9D9AAC005AA181 /* Util_ImageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util_ImageWindow.cpp; sourceTree = "<group>"; };
+		03E28EC81A9D9AAC005AA181 /* Util_ImageWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util_ImageWindow.h; sourceTree = "<group>"; };
+		03E28EC91A9D9AAC005AA181 /* Util_Interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util_Interface.cpp; sourceTree = "<group>"; };
+		03E28ECA1A9D9AAC005AA181 /* Util_Interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util_Interface.h; sourceTree = "<group>"; };
+		03E28ECB1A9D9AAC005AA181 /* Util_LatencyTest2Reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util_LatencyTest2Reader.cpp; sourceTree = "<group>"; };
+		03E28ECC1A9D9AAC005AA181 /* Util_LatencyTest2Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util_LatencyTest2Reader.h; sourceTree = "<group>"; };
+		03E28ECD1A9D9AAC005AA181 /* Util_LatencyTest2State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util_LatencyTest2State.h; sourceTree = "<group>"; };
+		03E28ECE1A9D9AAC005AA181 /* Util_Render_Stereo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util_Render_Stereo.cpp; sourceTree = "<group>"; };
+		03E28ECF1A9D9AAC005AA181 /* Util_Render_Stereo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util_Render_Stereo.h; sourceTree = "<group>"; };
+		03E28ED01A9D9AAC005AA181 /* license.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.md; sourceTree = "<group>"; };
+		03E28ED21A9D9AAC005AA181 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		03E28ED31A9D9AAC005AA181 /* ofxOculusDK2.props */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ofxOculusDK2.props; sourceTree = "<group>"; };
+		03E28ED41A9D9AAC005AA181 /* ofxOculusDK2Lib.sln */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofxOculusDK2Lib.sln; sourceTree = "<group>"; };
+		03E28ED51A9D9AAC005AA181 /* ofxOculusDK2Lib.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ofxOculusDK2Lib.vcxproj; sourceTree = "<group>"; };
+		03E28ED61A9D9AAC005AA181 /* ofxOculusDK2Lib.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ofxOculusDK2Lib.vcxproj.filters; sourceTree = "<group>"; };
+		03E28ED71A9D9AAC005AA181 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		03E28ED91A9D9AAC005AA181 /* ofxOculusDK2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusDK2.cpp; sourceTree = "<group>"; };
+		03E28EDA1A9D9AAC005AA181 /* ofxOculusDK2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusDK2.h; sourceTree = "<group>"; };
 		03F5BF3219493B6E0049B3CC /* aubio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aubio.h; sourceTree = "<group>"; };
 		03F5BF3319493B6E0049B3CC /* cvec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvec.h; sourceTree = "<group>"; };
 		03F5BF3419493B6E0049B3CC /* fmat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fmat.h; sourceTree = "<group>"; };
@@ -3591,8 +3930,6 @@
 		E755D701194405C500AA81C1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E755D70519440E3000AA81C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E755D7091944159000AA81C1 /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libassimp.a; sourceTree = "<group>"; };
-		E755D70B194415DD00AA81C1 /* CloudsCalibrationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCalibrationNode.cpp; sourceTree = "<group>"; };
-		E755D70C194415DD00AA81C1 /* CloudsCalibrationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCalibrationNode.h; sourceTree = "<group>"; };
 		E79BF65C1949206F00A0A83E /* audioAnalytics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audioAnalytics.cpp; sourceTree = "<group>"; };
 		E79BF65D1949206F00A0A83E /* audioAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audioAnalytics.h; sourceTree = "<group>"; };
 		E79BF65E1949206F00A0A83E /* cameraManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cameraManager.cpp; sourceTree = "<group>"; };
@@ -3700,12 +4037,8 @@
 		E7D8224E18BEBD6E00C1EB93 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		E7D8224F18BEBD6E00C1EB93 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
 		E7D8225018BEBD6E00C1EB93 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
-		E7D8225718BEBD6E00C1EB93 /* CloudsPlaybackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPlaybackController.cpp; sourceTree = "<group>"; };
-		E7D8225818BEBD6E00C1EB93 /* CloudsPlaybackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPlaybackController.h; sourceTree = "<group>"; };
 		E7D8225D18BEBD6E00C1EB93 /* CloudsRGBDPointLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDPointLayer.cpp; sourceTree = "<group>"; };
 		E7D8225E18BEBD6E00C1EB93 /* CloudsRGBDPointLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDPointLayer.h; sourceTree = "<group>"; };
-		E7D8225F18BEBD6E00C1EB93 /* CloudsTransitionController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsTransitionController.cpp; sourceTree = "<group>"; };
-		E7D8226018BEBD6E00C1EB93 /* CloudsTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsTransitionController.h; sourceTree = "<group>"; };
 		E7D8226118BEBD6E00C1EB93 /* CloudsVisualSystemRGBD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBD.cpp; sourceTree = "<group>"; };
 		E7D8226218BEBD6E00C1EB93 /* CloudsVisualSystemRGBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBD.h; sourceTree = "<group>"; };
 		E7D8226418BEBD6E00C1EB93 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
@@ -3755,7 +4088,6 @@
 		E7D822A218BEBD6E00C1EB93 /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClip.h; sourceTree = "<group>"; };
 		E7D822A318BEBD6E00C1EB93 /* CloudsDichotomy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsDichotomy.cpp; sourceTree = "<group>"; };
 		E7D822A418BEBD6E00C1EB93 /* CloudsDichotomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsDichotomy.h; sourceTree = "<group>"; };
-		E7D822A518BEBD6E00C1EB93 /* CloudsEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsEvents.h; sourceTree = "<group>"; };
 		E7D822A618BEBD6E00C1EB93 /* CloudsFCPParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsFCPParser.cpp; sourceTree = "<group>"; };
 		E7D822A718BEBD6E00C1EB93 /* CloudsFCPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsFCPParser.h; sourceTree = "<group>"; };
 		E7D822A818BEBD6E00C1EB93 /* CloudsIntervention.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsIntervention.cpp; sourceTree = "<group>"; };
@@ -3769,8 +4101,6 @@
 		E7D822B018BEBD6E00C1EB93 /* CloudsSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSpeaker.h; sourceTree = "<group>"; };
 		E7D822B118BEBD6E00C1EB93 /* CloudsStoryEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsStoryEngine.cpp; sourceTree = "<group>"; };
 		E7D822B218BEBD6E00C1EB93 /* CloudsStoryEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsStoryEngine.h; sourceTree = "<group>"; };
-		E7D822B318BEBD6E00C1EB93 /* CloudsVisualSystemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemManager.cpp; sourceTree = "<group>"; };
-		E7D822B418BEBD6E00C1EB93 /* CloudsVisualSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemManager.h; sourceTree = "<group>"; };
 		E7D822B518BEBD6E00C1EB93 /* CloudsVisualSystemPreset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPreset.cpp; sourceTree = "<group>"; };
 		E7D822B618BEBD6E00C1EB93 /* CloudsVisualSystemPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPreset.h; sourceTree = "<group>"; };
 		E7D822BA18BEBD6E00C1EB93 /* CloudsVisualSystem2DVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem2DVideo.cpp; sourceTree = "<group>"; };
@@ -4365,8 +4695,6 @@
 		E7D828F618BEBE6D00C1EB93 /* ofxVortexBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVortexBehavior.h; sourceTree = "<group>"; };
 		E7D8292A18BEBE8100C1EB93 /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
 		E7D8292B18BEBE8100C1EB93 /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
-		E7D829BD18BEBEF100C1EB93 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
-		E7D829BE18BEBEF100C1EB93 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E7D82A2A18BF099000C1EB93 /* ofxTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonic.h; sourceTree = "<group>"; };
 		E7D82A2B18BF099000C1EB93 /* ofxTonicSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTonicSynth.cpp; sourceTree = "<group>"; };
 		E7D82A2C18BF099000C1EB93 /* ofxTonicSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonicSynth.h; sourceTree = "<group>"; };
@@ -4812,6 +5140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E79BFA7719492CB900A0A83E /* AudioUnit.framework in Frameworks */,
+				03E28EE71A9D9AAC005AA181 /* libovr64.lib in Frameworks */,
 				E7DDC30A194437EC00E61D75 /* QuartzCore.framework in Frameworks */,
 				E7DDC30B194437EC00E61D75 /* libz.dylib in Frameworks */,
 				E7DDC30C194437EC00E61D75 /* libc++.dylib in Frameworks */,
@@ -4820,6 +5149,7 @@
 				E7DDC30F194437EC00E61D75 /* libopencv_objdetect.a in Frameworks */,
 				E7DDC310194437EC00E61D75 /* libopencv_contrib.a in Frameworks */,
 				E7DDC311194437EC00E61D75 /* libopencv_videostab.a in Frameworks */,
+				03E28EE31A9D9AAC005AA181 /* libovr64.lib in Frameworks */,
 				E7DDC312194437EC00E61D75 /* Accelerate.framework in Frameworks */,
 				E7DDC313194437EC00E61D75 /* QTKit.framework in Frameworks */,
 				E7DDC314194437EC00E61D75 /* libopencv_flann.a in Frameworks */,
@@ -4830,9 +5160,13 @@
 				E7DDC319194437EC00E61D75 /* openFrameworksDebug.a in Frameworks */,
 				E7DDC31B194437EC00E61D75 /* AGL.framework in Frameworks */,
 				E7DDC31C194437EC00E61D75 /* libopencv_objdetect.a in Frameworks */,
+				03E28EE61A9D9AAC005AA181 /* libovr64d.lib in Frameworks */,
 				E7DDC31D194437EC00E61D75 /* libopencv_haartraining_engine.a in Frameworks */,
 				E7DDC31E194437EC00E61D75 /* libopencv_contrib.a in Frameworks */,
+				03E28EE11A9D9AAC005AA181 /* libovr.a in Frameworks */,
+				03E28EDF1A9D9AAC005AA181 /* libovr.a in Frameworks */,
 				E7DDC31F194437EC00E61D75 /* ApplicationServices.framework in Frameworks */,
+				03E28EE01A9D9AAC005AA181 /* libovr.a in Frameworks */,
 				E7DDC320194437EC00E61D75 /* AudioToolbox.framework in Frameworks */,
 				E7DDC321194437EC00E61D75 /* libopencv_gpu.a in Frameworks */,
 				E7DDC322194437EC00E61D75 /* libopencv_gpu.a in Frameworks */,
@@ -4848,9 +5182,11 @@
 				E7DDC32C194437EC00E61D75 /* OpenGL.framework in Frameworks */,
 				E7DDC32D194437EC00E61D75 /* libopencv_features2d.a in Frameworks */,
 				E7DDC32E194437EC00E61D75 /* libopencv_photo.a in Frameworks */,
+				03E28EE51A9D9AAC005AA181 /* libovr64.lib in Frameworks */,
 				E7DDC330194437EC00E61D75 /* libopencv_highgui.a in Frameworks */,
 				E7DDC331194437EC00E61D75 /* QuickTime.framework in Frameworks */,
 				E7DDC332194437EC00E61D75 /* libopencv_video.a in Frameworks */,
+				03E28EE21A9D9AAC005AA181 /* libovr.a in Frameworks */,
 				E7DDC333194437EC00E61D75 /* libopencv_superres.a in Frameworks */,
 				E7DDC334194437EC00E61D75 /* libsndfile.a in Frameworks */,
 				E7DDC335194437EC00E61D75 /* libopencv_nonfree.a in Frameworks */,
@@ -4864,6 +5200,8 @@
 				E7DDC33D194437EC00E61D75 /* libopencv_ts.a in Frameworks */,
 				E7DDC33E194437EC00E61D75 /* IOKit.framework in Frameworks */,
 				E7DDC33F194437EC00E61D75 /* libopencv_legacy.a in Frameworks */,
+				03E28EE81A9D9AAC005AA181 /* libovr64d.lib in Frameworks */,
+				03E28EE41A9D9AAC005AA181 /* libovr64d.lib in Frameworks */,
 				E7DDC340194437EC00E61D75 /* libopencv_highgui.a in Frameworks */,
 				E7DDC341194437EC00E61D75 /* libopencv_stitching.a in Frameworks */,
 				E7DDC342194437EC00E61D75 /* libopencv_ml.a in Frameworks */,
@@ -4928,6 +5266,571 @@
 				03C079A1194605FE0081ED9B /* coroutine.hpp */,
 			);
 			path = detail;
+			sourceTree = "<group>";
+		};
+		03E28DA01A9D767D005AA181 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */,
+				03E28DA21A9D767D005AA181 /* CloudsCalibrationNode.h */,
+				03E28DA31A9D767D005AA181 /* CloudsPlaybackController.cpp */,
+				03E28DA41A9D767D005AA181 /* CloudsPlaybackController.h */,
+				03E28DA51A9D767D005AA181 /* CloudsTransitionController.cpp */,
+				03E28DA61A9D767D005AA181 /* CloudsTransitionController.h */,
+				03E28DA71A9D767D005AA181 /* CloudsVisualSystemManager.cpp */,
+				03E28DA81A9D767D005AA181 /* CloudsVisualSystemManager.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		03E28DC71A9D9389005AA181 /* ofxLocalization */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DC81A9D9389005AA181 /* .gitignore */,
+				03E28DC91A9D9389005AA181 /* README.md */,
+				03E28DCA1A9D9389005AA181 /* src */,
+			);
+			name = ofxLocalization;
+			path = ../../../addons/ofxLocalization;
+			sourceTree = "<group>";
+		};
+		03E28DCA1A9D9389005AA181 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */,
+				03E28DCC1A9D9389005AA181 /* ofxLocalization.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		03E28DD11A9D9AAC005AA181 /* ofxOculusDK2 */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DD21A9D9AAC005AA181 /* .gitignore */,
+				03E28DD31A9D9AAC005AA181 /* example-OculusRiftRendering */,
+				03E28DEF1A9D9AAC005AA181 /* libs */,
+				03E28ED01A9D9AAC005AA181 /* license.md */,
+				03E28ED11A9D9AAC005AA181 /* ofxOculusDK2Lib */,
+				03E28ED71A9D9AAC005AA181 /* README.md */,
+				03E28ED81A9D9AAC005AA181 /* src */,
+			);
+			name = ofxOculusDK2;
+			path = ../../../addons/ofxOculusDK2;
+			sourceTree = "<group>";
+		};
+		03E28DD31A9D9AAC005AA181 /* example-OculusRiftRendering */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DD41A9D9AAC005AA181 /* addons.make */,
+				03E28DD51A9D9AAC005AA181 /* bin */,
+				03E28DDE1A9D9AAC005AA181 /* icon.aps */,
+				03E28DDF1A9D9AAC005AA181 /* icon.rc */,
+				03E28DE01A9D9AAC005AA181 /* Makefile */,
+				03E28DE11A9D9AAC005AA181 /* OculusRenderingBasic.sln */,
+				03E28DE21A9D9AAC005AA181 /* OculusRenderingBasic.vcxproj */,
+				03E28DE31A9D9AAC005AA181 /* OculusRenderingBasic.vcxproj.filters */,
+				03E28DE41A9D9AAC005AA181 /* OculusRenderingBasic.vcxproj.user */,
+				03E28DE51A9D9AAC005AA181 /* OculusRenderingBasic.xcodeproj */,
+				03E28DE91A9D9AAC005AA181 /* openFrameworks-Info.plist */,
+				03E28DEA1A9D9AAC005AA181 /* Project.xcconfig */,
+				03E28DEB1A9D9AAC005AA181 /* src */,
+			);
+			path = "example-OculusRiftRendering";
+			sourceTree = "<group>";
+		};
+		03E28DD51A9D9AAC005AA181 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DD61A9D9AAC005AA181 /* data */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		03E28DD61A9D9AAC005AA181 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DD71A9D9AAC005AA181 /* .gitkeep */,
+				03E28DD81A9D9AAC005AA181 /* Fonts */,
+				03E28DDA1A9D9AAC005AA181 /* Shaders */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		03E28DD81A9D9AAC005AA181 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DD91A9D9AAC005AA181 /* DIN.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		03E28DDA1A9D9AAC005AA181 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DDB1A9D9AAC005AA181 /* HmdWarpDK2.frag */,
+				03E28DDC1A9D9AAC005AA181 /* HmdWarpDK2.vert */,
+				03E28DDD1A9D9AAC005AA181 /* HmdWarpDK2_simple.vert */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		03E28DE61A9D9AAC005AA181 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03E28F2E1A9D9AAD005AA181 /* OculusRenderingBasicDebug.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03E28DEB1A9D9AAC005AA181 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DEC1A9D9AAC005AA181 /* main.cpp */,
+				03E28DED1A9D9AAC005AA181 /* testApp.cpp */,
+				03E28DEE1A9D9AAC005AA181 /* testApp.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		03E28DEF1A9D9AAC005AA181 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DF01A9D9AAC005AA181 /* 3rdParty */,
+				03E28DF41A9D9AAC005AA181 /* LibOVR */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		03E28DF01A9D9AAC005AA181 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DF11A9D9AAC005AA181 /* TinyXml */,
+			);
+			path = 3rdParty;
+			sourceTree = "<group>";
+		};
+		03E28DF11A9D9AAC005AA181 /* TinyXml */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DF21A9D9AAC005AA181 /* tinyxml2.cpp */,
+				03E28DF31A9D9AAC005AA181 /* tinyxml2.h */,
+			);
+			path = TinyXml;
+			sourceTree = "<group>";
+		};
+		03E28DF41A9D9AAC005AA181 /* LibOVR */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DF51A9D9AAC005AA181 /* Include */,
+				03E28DF91A9D9AAC005AA181 /* Lib */,
+				03E28E0D1A9D9AAC005AA181 /* Src */,
+			);
+			path = LibOVR;
+			sourceTree = "<group>";
+		};
+		03E28DF51A9D9AAC005AA181 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DF61A9D9AAC005AA181 /* OVR.h */,
+				03E28DF71A9D9AAC005AA181 /* OVR_Kernel.h */,
+				03E28DF81A9D9AAC005AA181 /* OVR_Version.h */,
+			);
+			path = Include;
+			sourceTree = "<group>";
+		};
+		03E28DF91A9D9AAC005AA181 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DFA1A9D9AAC005AA181 /* MacOS */,
+				03E28E031A9D9AAC005AA181 /* x64 */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		03E28DFA1A9D9AAC005AA181 /* MacOS */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DFB1A9D9AAC005AA181 /* Debug */,
+				03E28DFD1A9D9AAC005AA181 /* Debug32 */,
+				03E28DFF1A9D9AAC005AA181 /* Release */,
+				03E28E011A9D9AAC005AA181 /* Release32 */,
+			);
+			path = MacOS;
+			sourceTree = "<group>";
+		};
+		03E28DFB1A9D9AAC005AA181 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DFC1A9D9AAC005AA181 /* libovr.a */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		03E28DFD1A9D9AAC005AA181 /* Debug32 */ = {
+			isa = PBXGroup;
+			children = (
+				03E28DFE1A9D9AAC005AA181 /* libovr.a */,
+			);
+			path = Debug32;
+			sourceTree = "<group>";
+		};
+		03E28DFF1A9D9AAC005AA181 /* Release */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E001A9D9AAC005AA181 /* libovr.a */,
+			);
+			path = Release;
+			sourceTree = "<group>";
+		};
+		03E28E011A9D9AAC005AA181 /* Release32 */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E021A9D9AAC005AA181 /* libovr.a */,
+			);
+			path = Release32;
+			sourceTree = "<group>";
+		};
+		03E28E031A9D9AAC005AA181 /* x64 */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E041A9D9AAC005AA181 /* VS2010 */,
+				03E28E071A9D9AAC005AA181 /* VS2012 */,
+				03E28E0A1A9D9AAC005AA181 /* VS2013 */,
+			);
+			path = x64;
+			sourceTree = "<group>";
+		};
+		03E28E041A9D9AAC005AA181 /* VS2010 */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E051A9D9AAC005AA181 /* libovr64.lib */,
+				03E28E061A9D9AAC005AA181 /* libovr64d.lib */,
+			);
+			path = VS2010;
+			sourceTree = "<group>";
+		};
+		03E28E071A9D9AAC005AA181 /* VS2012 */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E081A9D9AAC005AA181 /* libovr64.lib */,
+				03E28E091A9D9AAC005AA181 /* libovr64d.lib */,
+			);
+			path = VS2012;
+			sourceTree = "<group>";
+		};
+		03E28E0A1A9D9AAC005AA181 /* VS2013 */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E0B1A9D9AAC005AA181 /* libovr64.lib */,
+				03E28E0C1A9D9AAC005AA181 /* libovr64d.lib */,
+			);
+			path = VS2013;
+			sourceTree = "<group>";
+		};
+		03E28E0D1A9D9AAC005AA181 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E0E1A9D9AAC005AA181 /* CAPI */,
+				03E28E581A9D9AAC005AA181 /* Displays */,
+				03E28E651A9D9AAC005AA181 /* Kernel */,
+				03E28E9B1A9D9AAC005AA181 /* Net */,
+				03E28EAE1A9D9AAC005AA181 /* OVR_CAPI.cpp */,
+				03E28EAF1A9D9AAC005AA181 /* OVR_CAPI.h */,
+				03E28EB01A9D9AAC005AA181 /* OVR_CAPI_D3D.h */,
+				03E28EB11A9D9AAC005AA181 /* OVR_CAPI_GL.h */,
+				03E28EB21A9D9AAC005AA181 /* OVR_JSON.cpp */,
+				03E28EB31A9D9AAC005AA181 /* OVR_JSON.h */,
+				03E28EB41A9D9AAC005AA181 /* OVR_Profile.cpp */,
+				03E28EB51A9D9AAC005AA181 /* OVR_Profile.h */,
+				03E28EB61A9D9AAC005AA181 /* OVR_SerialFormat.cpp */,
+				03E28EB71A9D9AAC005AA181 /* OVR_SerialFormat.h */,
+				03E28EB81A9D9AAC005AA181 /* OVR_Stereo.cpp */,
+				03E28EB91A9D9AAC005AA181 /* OVR_Stereo.h */,
+				03E28EBA1A9D9AAC005AA181 /* Sensors */,
+				03E28EBC1A9D9AAC005AA181 /* Service */,
+				03E28EC11A9D9AAC005AA181 /* Tracking */,
+				03E28EC61A9D9AAC005AA181 /* Util */,
+			);
+			path = Src;
+			sourceTree = "<group>";
+		};
+		03E28E0E1A9D9AAC005AA181 /* CAPI */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E0F1A9D9AAC005AA181 /* CAPI_DistortionRenderer.cpp */,
+				03E28E101A9D9AAC005AA181 /* CAPI_DistortionRenderer.h */,
+				03E28E111A9D9AAC005AA181 /* CAPI_FrameTimeManager.cpp */,
+				03E28E121A9D9AAC005AA181 /* CAPI_FrameTimeManager.h */,
+				03E28E131A9D9AAC005AA181 /* CAPI_HMDRenderState.cpp */,
+				03E28E141A9D9AAC005AA181 /* CAPI_HMDRenderState.h */,
+				03E28E151A9D9AAC005AA181 /* CAPI_HMDState.cpp */,
+				03E28E161A9D9AAC005AA181 /* CAPI_HMDState.h */,
+				03E28E171A9D9AAC005AA181 /* CAPI_HSWDisplay.cpp */,
+				03E28E181A9D9AAC005AA181 /* CAPI_HSWDisplay.h */,
+				03E28E191A9D9AAC005AA181 /* D3D1X */,
+				03E28E2D1A9D9AAC005AA181 /* GL */,
+				03E28E351A9D9AAC005AA181 /* Shaders */,
+				03E28E561A9D9AAC005AA181 /* Textures */,
+			);
+			path = CAPI;
+			sourceTree = "<group>";
+		};
+		03E28E191A9D9AAC005AA181 /* D3D1X */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E1A1A9D9AAC005AA181 /* CAPI_D3D10_DistortionRenderer.cpp */,
+				03E28E1B1A9D9AAC005AA181 /* CAPI_D3D10_DistortionRenderer.h */,
+				03E28E1C1A9D9AAC005AA181 /* CAPI_D3D10_HSWDisplay.cpp */,
+				03E28E1D1A9D9AAC005AA181 /* CAPI_D3D10_HSWDisplay.h */,
+				03E28E1E1A9D9AAC005AA181 /* CAPI_D3D11_DistortionRenderer.cpp */,
+				03E28E1F1A9D9AAC005AA181 /* CAPI_D3D11_DistortionRenderer.h */,
+				03E28E201A9D9AAC005AA181 /* CAPI_D3D11_HSWDisplay.cpp */,
+				03E28E211A9D9AAC005AA181 /* CAPI_D3D11_HSWDisplay.h */,
+				03E28E221A9D9AAC005AA181 /* CAPI_D3D1X_DistortionRenderer.cpp */,
+				03E28E231A9D9AAC005AA181 /* CAPI_D3D1X_DistortionRenderer.h */,
+				03E28E241A9D9AAC005AA181 /* CAPI_D3D1X_HSWDisplay.cpp */,
+				03E28E251A9D9AAC005AA181 /* CAPI_D3D1X_HSWDisplay.h */,
+				03E28E261A9D9AAC005AA181 /* CAPI_D3D1X_Util.cpp */,
+				03E28E271A9D9AAC005AA181 /* CAPI_D3D1X_Util.h */,
+				03E28E281A9D9AAC005AA181 /* CAPI_D3D9_DistortionRenderer.cpp */,
+				03E28E291A9D9AAC005AA181 /* CAPI_D3D9_DistortionRenderer.h */,
+				03E28E2A1A9D9AAC005AA181 /* CAPI_D3D9_HSWDisplay.cpp */,
+				03E28E2B1A9D9AAC005AA181 /* CAPI_D3D9_HSWDisplay.h */,
+				03E28E2C1A9D9AAC005AA181 /* CAPI_D3D9_Util.cpp */,
+			);
+			path = D3D1X;
+			sourceTree = "<group>";
+		};
+		03E28E2D1A9D9AAC005AA181 /* GL */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E2E1A9D9AAC005AA181 /* CAPI_GL_DistortionRenderer.cpp */,
+				03E28E2F1A9D9AAC005AA181 /* CAPI_GL_DistortionRenderer.h */,
+				03E28E301A9D9AAC005AA181 /* CAPI_GL_DistortionShaders.h */,
+				03E28E311A9D9AAC005AA181 /* CAPI_GL_HSWDisplay.cpp */,
+				03E28E321A9D9AAC005AA181 /* CAPI_GL_HSWDisplay.h */,
+				03E28E331A9D9AAC005AA181 /* CAPI_GL_Util.cpp */,
+				03E28E341A9D9AAC005AA181 /* CAPI_GL_Util.h */,
+			);
+			path = GL;
+			sourceTree = "<group>";
+		};
+		03E28E351A9D9AAC005AA181 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E361A9D9AAC005AA181 /* Distortion_ps.h */,
+				03E28E371A9D9AAC005AA181 /* Distortion_ps.psh */,
+				03E28E381A9D9AAC005AA181 /* Distortion_ps_refl.h */,
+				03E28E391A9D9AAC005AA181 /* Distortion_vs.h */,
+				03E28E3A1A9D9AAC005AA181 /* Distortion_vs.vsh */,
+				03E28E3B1A9D9AAC005AA181 /* Distortion_vs_refl.h */,
+				03E28E3C1A9D9AAC005AA181 /* DistortionChroma_ps.h */,
+				03E28E3D1A9D9AAC005AA181 /* DistortionChroma_ps.psh */,
+				03E28E3E1A9D9AAC005AA181 /* DistortionChroma_ps_refl.h */,
+				03E28E3F1A9D9AAC005AA181 /* DistortionChroma_vs.h */,
+				03E28E401A9D9AAC005AA181 /* DistortionChroma_vs.vsh */,
+				03E28E411A9D9AAC005AA181 /* DistortionChroma_vs_refl.h */,
+				03E28E421A9D9AAC005AA181 /* DistortionTimewarp_vs.h */,
+				03E28E431A9D9AAC005AA181 /* DistortionTimewarp_vs.vsh */,
+				03E28E441A9D9AAC005AA181 /* DistortionTimewarp_vs_refl.h */,
+				03E28E451A9D9AAC005AA181 /* DistortionTimewarpChroma_vs.h */,
+				03E28E461A9D9AAC005AA181 /* DistortionTimewarpChroma_vs.vsh */,
+				03E28E471A9D9AAC005AA181 /* DistortionTimewarpChroma_vs_refl.h */,
+				03E28E481A9D9AAC005AA181 /* genPixelShaderHeader.bat */,
+				03E28E491A9D9AAC005AA181 /* genVertexShaderHeader.bat */,
+				03E28E4A1A9D9AAC005AA181 /* SimpleQuad_ps.h */,
+				03E28E4B1A9D9AAC005AA181 /* SimpleQuad_ps.psh */,
+				03E28E4C1A9D9AAC005AA181 /* SimpleQuad_ps_refl.h */,
+				03E28E4D1A9D9AAC005AA181 /* SimpleQuad_vs.h */,
+				03E28E4E1A9D9AAC005AA181 /* SimpleQuad_vs.vsh */,
+				03E28E4F1A9D9AAC005AA181 /* SimpleQuad_vs_refl.h */,
+				03E28E501A9D9AAC005AA181 /* SimpleTexturedQuad_ps.h */,
+				03E28E511A9D9AAC005AA181 /* SimpleTexturedQuad_ps.psh */,
+				03E28E521A9D9AAC005AA181 /* SimpleTexturedQuad_ps_refl.h */,
+				03E28E531A9D9AAC005AA181 /* SimpleTexturedQuad_vs.h */,
+				03E28E541A9D9AAC005AA181 /* SimpleTexturedQuad_vs.vsh */,
+				03E28E551A9D9AAC005AA181 /* SimpleTexturedQuad_vs_refl.h */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		03E28E561A9D9AAC005AA181 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E571A9D9AAC005AA181 /* healthAndSafety.tga.h */,
+			);
+			path = Textures;
+			sourceTree = "<group>";
+		};
+		03E28E581A9D9AAC005AA181 /* Displays */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E591A9D9AAC005AA181 /* OVR_Display.cpp */,
+				03E28E5A1A9D9AAC005AA181 /* OVR_Display.h */,
+				03E28E5B1A9D9AAC005AA181 /* OVR_OSX_Display.cpp */,
+				03E28E5C1A9D9AAC005AA181 /* OVR_OSX_Display.h */,
+				03E28E5D1A9D9AAC005AA181 /* OVR_Win32_Display.cpp */,
+				03E28E5E1A9D9AAC005AA181 /* OVR_Win32_Display.h */,
+				03E28E5F1A9D9AAC005AA181 /* OVR_Win32_Dxgi_Display.h */,
+				03E28E601A9D9AAC005AA181 /* OVR_Win32_FocusReader.cpp */,
+				03E28E611A9D9AAC005AA181 /* OVR_Win32_FocusReader.h */,
+				03E28E621A9D9AAC005AA181 /* OVR_Win32_RenderShim.cpp */,
+				03E28E631A9D9AAC005AA181 /* OVR_Win32_ShimFunctions.cpp */,
+				03E28E641A9D9AAC005AA181 /* OVR_Win32_ShimFunctions.h */,
+			);
+			path = Displays;
+			sourceTree = "<group>";
+		};
+		03E28E651A9D9AAC005AA181 /* Kernel */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E661A9D9AAC005AA181 /* OVR_Alg.cpp */,
+				03E28E671A9D9AAC005AA181 /* OVR_Alg.h */,
+				03E28E681A9D9AAC005AA181 /* OVR_Allocator.cpp */,
+				03E28E691A9D9AAC005AA181 /* OVR_Allocator.h */,
+				03E28E6A1A9D9AAC005AA181 /* OVR_Array.h */,
+				03E28E6B1A9D9AAC005AA181 /* OVR_Atomic.cpp */,
+				03E28E6C1A9D9AAC005AA181 /* OVR_Atomic.h */,
+				03E28E6D1A9D9AAC005AA181 /* OVR_Color.h */,
+				03E28E6E1A9D9AAC005AA181 /* OVR_Compiler.h */,
+				03E28E6F1A9D9AAC005AA181 /* OVR_ContainerAllocator.h */,
+				03E28E701A9D9AAC005AA181 /* OVR_CRC32.cpp */,
+				03E28E711A9D9AAC005AA181 /* OVR_CRC32.h */,
+				03E28E721A9D9AAC005AA181 /* OVR_Delegates.h */,
+				03E28E731A9D9AAC005AA181 /* OVR_Deque.h */,
+				03E28E741A9D9AAC005AA181 /* OVR_File.cpp */,
+				03E28E751A9D9AAC005AA181 /* OVR_File.h */,
+				03E28E761A9D9AAC005AA181 /* OVR_FileFILE.cpp */,
+				03E28E771A9D9AAC005AA181 /* OVR_Hash.h */,
+				03E28E781A9D9AAC005AA181 /* OVR_KeyCodes.h */,
+				03E28E791A9D9AAC005AA181 /* OVR_List.h */,
+				03E28E7A1A9D9AAC005AA181 /* OVR_Lockless.cpp */,
+				03E28E7B1A9D9AAC005AA181 /* OVR_Lockless.h */,
+				03E28E7C1A9D9AAC005AA181 /* OVR_Log.cpp */,
+				03E28E7D1A9D9AAC005AA181 /* OVR_Log.h */,
+				03E28E7E1A9D9AAC005AA181 /* OVR_Math.cpp */,
+				03E28E7F1A9D9AAC005AA181 /* OVR_Math.h */,
+				03E28E801A9D9AAC005AA181 /* OVR_Nullptr.h */,
+				03E28E811A9D9AAC005AA181 /* OVR_Observer.h */,
+				03E28E821A9D9AAC005AA181 /* OVR_RefCount.cpp */,
+				03E28E831A9D9AAC005AA181 /* OVR_RefCount.h */,
+				03E28E841A9D9AAC005AA181 /* OVR_SharedMemory.cpp */,
+				03E28E851A9D9AAC005AA181 /* OVR_SharedMemory.h */,
+				03E28E861A9D9AAC005AA181 /* OVR_Std.cpp */,
+				03E28E871A9D9AAC005AA181 /* OVR_Std.h */,
+				03E28E881A9D9AAC005AA181 /* OVR_String.cpp */,
+				03E28E891A9D9AAC005AA181 /* OVR_String.h */,
+				03E28E8A1A9D9AAC005AA181 /* OVR_String_FormatUtil.cpp */,
+				03E28E8B1A9D9AAC005AA181 /* OVR_String_PathUtil.cpp */,
+				03E28E8C1A9D9AAC005AA181 /* OVR_StringHash.h */,
+				03E28E8D1A9D9AAC005AA181 /* OVR_SysFile.cpp */,
+				03E28E8E1A9D9AAC005AA181 /* OVR_SysFile.h */,
+				03E28E8F1A9D9AAC005AA181 /* OVR_System.cpp */,
+				03E28E901A9D9AAC005AA181 /* OVR_System.h */,
+				03E28E911A9D9AAC005AA181 /* OVR_ThreadCommandQueue.cpp */,
+				03E28E921A9D9AAC005AA181 /* OVR_ThreadCommandQueue.h */,
+				03E28E931A9D9AAC005AA181 /* OVR_Threads.h */,
+				03E28E941A9D9AAC005AA181 /* OVR_ThreadsPthread.cpp */,
+				03E28E951A9D9AAC005AA181 /* OVR_ThreadsWinAPI.cpp */,
+				03E28E961A9D9AAC005AA181 /* OVR_Timer.cpp */,
+				03E28E971A9D9AAC005AA181 /* OVR_Timer.h */,
+				03E28E981A9D9AAC005AA181 /* OVR_Types.h */,
+				03E28E991A9D9AAC005AA181 /* OVR_UTF8Util.cpp */,
+				03E28E9A1A9D9AAC005AA181 /* OVR_UTF8Util.h */,
+			);
+			path = Kernel;
+			sourceTree = "<group>";
+		};
+		03E28E9B1A9D9AAC005AA181 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				03E28E9C1A9D9AAC005AA181 /* OVR_BitStream.cpp */,
+				03E28E9D1A9D9AAC005AA181 /* OVR_BitStream.h */,
+				03E28E9E1A9D9AAC005AA181 /* OVR_MessageIDTypes.h */,
+				03E28E9F1A9D9AAC005AA181 /* OVR_NetworkPlugin.cpp */,
+				03E28EA01A9D9AAC005AA181 /* OVR_NetworkPlugin.h */,
+				03E28EA11A9D9AAC005AA181 /* OVR_NetworkTypes.h */,
+				03E28EA21A9D9AAC005AA181 /* OVR_PacketizedTCPSocket.cpp */,
+				03E28EA31A9D9AAC005AA181 /* OVR_PacketizedTCPSocket.h */,
+				03E28EA41A9D9AAC005AA181 /* OVR_RPC1.cpp */,
+				03E28EA51A9D9AAC005AA181 /* OVR_RPC1.h */,
+				03E28EA61A9D9AAC005AA181 /* OVR_Session.cpp */,
+				03E28EA71A9D9AAC005AA181 /* OVR_Session.h */,
+				03E28EA81A9D9AAC005AA181 /* OVR_Socket.cpp */,
+				03E28EA91A9D9AAC005AA181 /* OVR_Socket.h */,
+				03E28EAA1A9D9AAC005AA181 /* OVR_Unix_Socket.cpp */,
+				03E28EAB1A9D9AAC005AA181 /* OVR_Unix_Socket.h */,
+				03E28EAC1A9D9AAC005AA181 /* OVR_Win32_Socket.cpp */,
+				03E28EAD1A9D9AAC005AA181 /* OVR_Win32_Socket.h */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
+		03E28EBA1A9D9AAC005AA181 /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				03E28EBB1A9D9AAC005AA181 /* OVR_DeviceConstants.h */,
+			);
+			path = Sensors;
+			sourceTree = "<group>";
+		};
+		03E28EBC1A9D9AAC005AA181 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				03E28EBD1A9D9AAC005AA181 /* Service_NetClient.cpp */,
+				03E28EBE1A9D9AAC005AA181 /* Service_NetClient.h */,
+				03E28EBF1A9D9AAC005AA181 /* Service_NetSessionCommon.cpp */,
+				03E28EC01A9D9AAC005AA181 /* Service_NetSessionCommon.h */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		03E28EC11A9D9AAC005AA181 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				03E28EC21A9D9AAC005AA181 /* Tracking_PoseState.h */,
+				03E28EC31A9D9AAC005AA181 /* Tracking_SensorState.h */,
+				03E28EC41A9D9AAC005AA181 /* Tracking_SensorStateReader.cpp */,
+				03E28EC51A9D9AAC005AA181 /* Tracking_SensorStateReader.h */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+		03E28EC61A9D9AAC005AA181 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				03E28EC71A9D9AAC005AA181 /* Util_ImageWindow.cpp */,
+				03E28EC81A9D9AAC005AA181 /* Util_ImageWindow.h */,
+				03E28EC91A9D9AAC005AA181 /* Util_Interface.cpp */,
+				03E28ECA1A9D9AAC005AA181 /* Util_Interface.h */,
+				03E28ECB1A9D9AAC005AA181 /* Util_LatencyTest2Reader.cpp */,
+				03E28ECC1A9D9AAC005AA181 /* Util_LatencyTest2Reader.h */,
+				03E28ECD1A9D9AAC005AA181 /* Util_LatencyTest2State.h */,
+				03E28ECE1A9D9AAC005AA181 /* Util_Render_Stereo.cpp */,
+				03E28ECF1A9D9AAC005AA181 /* Util_Render_Stereo.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		03E28ED11A9D9AAC005AA181 /* ofxOculusDK2Lib */ = {
+			isa = PBXGroup;
+			children = (
+				03E28ED21A9D9AAC005AA181 /* .gitignore */,
+				03E28ED31A9D9AAC005AA181 /* ofxOculusDK2.props */,
+				03E28ED41A9D9AAC005AA181 /* ofxOculusDK2Lib.sln */,
+				03E28ED51A9D9AAC005AA181 /* ofxOculusDK2Lib.vcxproj */,
+				03E28ED61A9D9AAC005AA181 /* ofxOculusDK2Lib.vcxproj.filters */,
+			);
+			path = ofxOculusDK2Lib;
+			sourceTree = "<group>";
+		};
+		03E28ED81A9D9AAC005AA181 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				03E28ED91A9D9AAC005AA181 /* ofxOculusDK2.cpp */,
+				03E28EDA1A9D9AAC005AA181 /* ofxOculusDK2.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		03F5BF2D19493B6E0049B3CC /* ofxAudioFeatures */ = {
@@ -5127,6 +6030,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				03E28DD11A9D9AAC005AA181 /* ofxOculusDK2 */,
+				03E28DC71A9D9389005AA181 /* ofxLocalization */,
 				03F5BF2D19493B6E0049B3CC /* ofxAudioFeatures */,
 				E79BF81B194927D700A0A83E /* ofxAudioUnit */,
 				03C07959194605FE0081ED9B /* ofxAnimationPrimitives */,
@@ -5154,7 +6059,6 @@
 				E7D82B5318BF0BC000C1EB93 /* ofxNearestNeighbour */,
 				E7D8290918BEBE8000C1EB93 /* ofxObjLoader */,
 				E7D82B8618BF0BEE00C1EB93 /* ofxOcean */,
-				E7D8293818BEBEF100C1EB93 /* ofxOculusRift */,
 				E73DA0E3189F1CD4006C9E4E /* ofxOpenSteer */,
 				E73DA8F1189F362A006C9E4E /* ofxOsc */,
 				E73DA864189F3621006C9E4E /* ofxPostProcessing */,
@@ -7149,7 +8053,13 @@
 		E7D8224218BEBD6E00C1EB93 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				03E28DB91A9D7690005AA181 /* CloudsEvents.h */,
+				03E28DBA1A9D7690005AA181 /* CloudsGlobal.cpp */,
+				03E28DBB1A9D7690005AA181 /* CloudsGlobal.h */,
+				03E28DBC1A9D7690005AA181 /* CloudsLocalization.cpp */,
+				03E28DBD1A9D7690005AA181 /* CloudsLocalization.h */,
 				E7D8224318BEBD6E00C1EB93 /* CloudsGlobal.h */,
+				03E28DA01A9D767D005AA181 /* Core */,
 				E7D8224718BEBD6E00C1EB93 /* Input */,
 				E7D8225118BEBD6E00C1EB93 /* RGBD */,
 				E7D8228118BEBD6E00C1EB93 /* SecondaryDisplay */,
@@ -7185,14 +8095,8 @@
 				E7D8226318BEBD6E00C1EB93 /* GPUParticles */,
 				E7D8227018BEBD6E00C1EB93 /* HUD */,
 				E7D8227B18BEBD6E00C1EB93 /* Portal */,
-				E755D70B194415DD00AA81C1 /* CloudsCalibrationNode.cpp */,
-				E755D70C194415DD00AA81C1 /* CloudsCalibrationNode.h */,
-				E7D8225718BEBD6E00C1EB93 /* CloudsPlaybackController.cpp */,
-				E7D8225818BEBD6E00C1EB93 /* CloudsPlaybackController.h */,
 				E7D8225D18BEBD6E00C1EB93 /* CloudsRGBDPointLayer.cpp */,
 				E7D8225E18BEBD6E00C1EB93 /* CloudsRGBDPointLayer.h */,
-				E7D8225F18BEBD6E00C1EB93 /* CloudsTransitionController.cpp */,
-				E7D8226018BEBD6E00C1EB93 /* CloudsTransitionController.h */,
 				E7D8226118BEBD6E00C1EB93 /* CloudsVisualSystemRGBD.cpp */,
 				E7D8226218BEBD6E00C1EB93 /* CloudsVisualSystemRGBD.h */,
 			);
@@ -7308,7 +8212,6 @@
 				E7D822A218BEBD6E00C1EB93 /* CloudsClip.h */,
 				E7D822A318BEBD6E00C1EB93 /* CloudsDichotomy.cpp */,
 				E7D822A418BEBD6E00C1EB93 /* CloudsDichotomy.h */,
-				E7D822A518BEBD6E00C1EB93 /* CloudsEvents.h */,
 				E7D822A618BEBD6E00C1EB93 /* CloudsFCPParser.cpp */,
 				E7D822A718BEBD6E00C1EB93 /* CloudsFCPParser.h */,
 				E7D822A818BEBD6E00C1EB93 /* CloudsIntervention.cpp */,
@@ -7322,8 +8225,6 @@
 				E7D822B018BEBD6E00C1EB93 /* CloudsSpeaker.h */,
 				E7D822B118BEBD6E00C1EB93 /* CloudsStoryEngine.cpp */,
 				E7D822B218BEBD6E00C1EB93 /* CloudsStoryEngine.h */,
-				E7D822B318BEBD6E00C1EB93 /* CloudsVisualSystemManager.cpp */,
-				E7D822B418BEBD6E00C1EB93 /* CloudsVisualSystemManager.h */,
 				E7D822B518BEBD6E00C1EB93 /* CloudsVisualSystemPreset.cpp */,
 				E7D822B618BEBD6E00C1EB93 /* CloudsVisualSystemPreset.h */,
 			);
@@ -9583,24 +10484,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		E7D8293818BEBEF100C1EB93 /* ofxOculusRift */ = {
-			isa = PBXGroup;
-			children = (
-				E7D829BC18BEBEF100C1EB93 /* src */,
-			);
-			name = ofxOculusRift;
-			path = ../../../addons/ofxOculusRift;
-			sourceTree = "<group>";
-		};
-		E7D829BC18BEBEF100C1EB93 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E7D829BD18BEBEF100C1EB93 /* ofxOculusRift.cpp */,
-				E7D829BE18BEBEF100C1EB93 /* ofxOculusRift.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		E7D829F418BF098D00C1EB93 /* ofxTonic */ = {
 			isa = PBXGroup;
 			children = (
@@ -10160,6 +11043,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 03E28DE61A9D9AAC005AA181 /* Products */;
+					ProjectRef = 03E28DE51A9D9AAC005AA181 /* OculusRenderingBasic.xcodeproj */;
+				},
+				{
 					ProductGroup = E4328144138ABC890047C5CB /* Products */;
 					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
 				},
@@ -10175,6 +11062,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		03E28F2E1A9D9AAD005AA181 /* OculusRenderingBasicDebug.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = OculusRenderingBasicDebug.app;
+			remoteRef = 03E28F2D1A9D9AAD005AA181 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E4328148138ABC890047C5CB /* openFrameworksDebug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -10254,7 +11148,6 @@
 				038032451948167700AFD40C /* DelayUtils.cpp in Sources */,
 				038032461948167700AFD40C /* ParamManager.cpp in Sources */,
 				038032471948167700AFD40C /* ParticleConnector.cpp in Sources */,
-				038032481948167700AFD40C /* CloudsCalibrationNode.cpp in Sources */,
 				038032491948167700AFD40C /* Walker.cpp in Sources */,
 				0380324A1948167700AFD40C /* del_impl.cpp in Sources */,
 				E79BF923194927D900A0A83E /* ofxAudioUnitNetSend.cpp in Sources */,
@@ -10291,6 +11184,7 @@
 				038032681948167700AFD40C /* CloudsVisualSystemVerletForm.cpp in Sources */,
 				038032691948167700AFD40C /* CloudsVisualSystemOpenP5Fifteen.cpp in Sources */,
 				0380326A1948167700AFD40C /* Mixer.cpp in Sources */,
+				03E28DC11A9D7690005AA181 /* CloudsGlobal.cpp in Sources */,
 				0380326B1948167700AFD40C /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				0380326C1948167700AFD40C /* ofxDistorterBehavior.cpp in Sources */,
 				0380326D1948167700AFD40C /* BleachBypassPass.cpp in Sources */,
@@ -10351,6 +11245,7 @@
 				038032A11948167700AFD40C /* ControlPrinter.cpp in Sources */,
 				038032A21948167700AFD40C /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				038032A31948167700AFD40C /* TableLookupOsc.cpp in Sources */,
+				03E28DD01A9D9389005AA181 /* ofxLocalization.cpp in Sources */,
 				038032A41948167700AFD40C /* CloudsSoundFuncs.cpp in Sources */,
 				038032A51948167700AFD40C /* Rand.cpp in Sources */,
 				038032A61948167700AFD40C /* GestureRendererInPlace.cpp in Sources */,
@@ -10453,7 +11348,6 @@
 				038033021948167700AFD40C /* ofxEasingQuad.cpp in Sources */,
 				038033031948167700AFD40C /* ofxUIDragableLabelButton.cpp in Sources */,
 				E79BF933194927D900A0A83E /* ofxAudioUnitSpeechSynth.cpp in Sources */,
-				038033041948167700AFD40C /* CloudsVisualSystemManager.cpp in Sources */,
 				038033051948167700AFD40C /* ofxTLColorTrack.cpp in Sources */,
 				038033061948167700AFD40C /* ofxTLCurves.cpp in Sources */,
 				038033071948167700AFD40C /* Delaunay.cpp in Sources */,
@@ -10464,6 +11358,7 @@
 				0380330C1948167700AFD40C /* ofxUIToggleMatrix.cpp in Sources */,
 				0380330D1948167700AFD40C /* MonoToStereoPanner.cpp in Sources */,
 				E79BF68E1949206F00A0A83E /* smoother.cpp in Sources */,
+				03E28DB81A9D767D005AA181 /* CloudsVisualSystemManager.cpp in Sources */,
 				0380330E1948167700AFD40C /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
 				0380330F1948167700AFD40C /* Camera.cpp in Sources */,
 				038033101948167700AFD40C /* CloudsVisualSystem2DVideo.cpp in Sources */,
@@ -10483,6 +11378,7 @@
 				0380331D1948167700AFD40C /* Creatures.cpp in Sources */,
 				0380331E1948167700AFD40C /* lq.c in Sources */,
 				0380331F1948167700AFD40C /* ofxTLKeyframes.cpp in Sources */,
+				03E28DAC1A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */,
 				038033201948167700AFD40C /* ofxTLImageTrack.cpp in Sources */,
 				038033211948167700AFD40C /* wStar.cpp in Sources */,
 				038033221948167700AFD40C /* ofxFTGLFont.cpp in Sources */,
@@ -10562,7 +11458,6 @@
 				038033691948167700AFD40C /* v_compute.cpp in Sources */,
 				E79BF6761949206F00A0A83E /* cameraManager.cpp in Sources */,
 				0380336A1948167700AFD40C /* Boid.cpp in Sources */,
-				0380336B1948167700AFD40C /* ofxOculusRift.cpp in Sources */,
 				0380336C1948167700AFD40C /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				0380336D1948167700AFD40C /* ofxPerlinBehavior.cpp in Sources */,
 				0380336E1948167700AFD40C /* BasicDelay.cpp in Sources */,
@@ -10647,7 +11542,6 @@
 				038033B61948167700AFD40C /* CloudsAudioEvents.cpp in Sources */,
 				038033B71948167700AFD40C /* ofxTLPage.cpp in Sources */,
 				038033B81948167700AFD40C /* ofxSQLiteUpdate.cpp in Sources */,
-				038033B91948167700AFD40C /* CloudsPlaybackController.cpp in Sources */,
 				038033BA1948167700AFD40C /* b2FrictionJoint.cpp in Sources */,
 				038033BB1948167700AFD40C /* IcosphereAction.cpp in Sources */,
 				038033BC1948167700AFD40C /* ofxUIValuePlotter.cpp in Sources */,
@@ -10692,6 +11586,7 @@
 				038033E21948167700AFD40C /* ofxAssimpAnimation.cpp in Sources */,
 				038033E31948167700AFD40C /* CloudsVisualSystemConnectors.cpp in Sources */,
 				038033E41948167700AFD40C /* State.cpp in Sources */,
+				03E28DB41A9D767D005AA181 /* CloudsTransitionController.cpp in Sources */,
 				038033E51948167700AFD40C /* Synth.cpp in Sources */,
 				038033E61948167700AFD40C /* SurfacePoint.cpp in Sources */,
 				038033E71948167700AFD40C /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */,
@@ -10725,6 +11620,7 @@
 				038034021948167700AFD40C /* StereoDelay.cpp in Sources */,
 				038034031948167700AFD40C /* ofxOpenSteerPlugin.cpp in Sources */,
 				038034041948167700AFD40C /* c_loops.cpp in Sources */,
+				03E28DC51A9D7690005AA181 /* CloudsLocalization.cpp in Sources */,
 				038034051948167700AFD40C /* ofxTimeline.cpp in Sources */,
 				038034061948167700AFD40C /* CircularFormula.cpp in Sources */,
 				038034071948167700AFD40C /* ofxSQLiteDelete.cpp in Sources */,
@@ -10817,6 +11713,7 @@
 				038034591948167700AFD40C /* CloudsVisualSystemChromogram.cpp in Sources */,
 				0380345A1948167700AFD40C /* PanelGraph.cpp in Sources */,
 				0380345B1948167700AFD40C /* CloudsInput.cpp in Sources */,
+				03E28DB01A9D767D005AA181 /* CloudsPlaybackController.cpp in Sources */,
 				0380345C1948167700AFD40C /* ConvolutionPass.cpp in Sources */,
 				0380345D1948167700AFD40C /* ofxEasingQuint.cpp in Sources */,
 				0380345E1948167700AFD40C /* ofxSQLiteSelect.cpp in Sources */,
@@ -10862,7 +11759,6 @@
 				038034851948167700AFD40C /* OscPrintReceivedElements.cpp in Sources */,
 				038034861948167700AFD40C /* Clock.cpp in Sources */,
 				038034871948167700AFD40C /* ofxMPMNode.cpp in Sources */,
-				038034881948167700AFD40C /* CloudsTransitionController.cpp in Sources */,
 				038034891948167700AFD40C /* UdpSocketWin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10881,7 +11777,6 @@
 				03A0F4AF1947A0850071CF4B /* DelayUtils.cpp in Sources */,
 				03A0F4B01947A0850071CF4B /* ParamManager.cpp in Sources */,
 				03A0F4B11947A0850071CF4B /* ParticleConnector.cpp in Sources */,
-				03A0F4B21947A0850071CF4B /* CloudsCalibrationNode.cpp in Sources */,
 				03A0F4B31947A0850071CF4B /* Walker.cpp in Sources */,
 				03A0F4B41947A0850071CF4B /* del_impl.cpp in Sources */,
 				E79BF922194927D900A0A83E /* ofxAudioUnitNetSend.cpp in Sources */,
@@ -10918,6 +11813,7 @@
 				03A0F4D21947A0850071CF4B /* CloudsVisualSystemVerletForm.cpp in Sources */,
 				03A0F4D31947A0850071CF4B /* CloudsVisualSystemOpenP5Fifteen.cpp in Sources */,
 				03A0F4D41947A0850071CF4B /* Mixer.cpp in Sources */,
+				03E28DC01A9D7690005AA181 /* CloudsGlobal.cpp in Sources */,
 				03A0F4D51947A0850071CF4B /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				03A0F4D61947A0850071CF4B /* ofxDistorterBehavior.cpp in Sources */,
 				03A0F4D71947A0850071CF4B /* BleachBypassPass.cpp in Sources */,
@@ -10978,6 +11874,7 @@
 				03A0F50B1947A0850071CF4B /* ControlPrinter.cpp in Sources */,
 				03A0F50C1947A0850071CF4B /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				03A0F50D1947A0850071CF4B /* TableLookupOsc.cpp in Sources */,
+				03E28DCF1A9D9389005AA181 /* ofxLocalization.cpp in Sources */,
 				03A0F50E1947A0850071CF4B /* CloudsSoundFuncs.cpp in Sources */,
 				03A0F50F1947A0850071CF4B /* Rand.cpp in Sources */,
 				03A0F5101947A0850071CF4B /* GestureRendererInPlace.cpp in Sources */,
@@ -11080,7 +11977,6 @@
 				03A0F56C1947A0850071CF4B /* ofxEasingQuad.cpp in Sources */,
 				03A0F56D1947A0850071CF4B /* ofxUIDragableLabelButton.cpp in Sources */,
 				E79BF932194927D900A0A83E /* ofxAudioUnitSpeechSynth.cpp in Sources */,
-				03A0F56E1947A0850071CF4B /* CloudsVisualSystemManager.cpp in Sources */,
 				03A0F56F1947A0850071CF4B /* ofxTLColorTrack.cpp in Sources */,
 				03A0F5701947A0850071CF4B /* ofxTLCurves.cpp in Sources */,
 				03A0F5711947A0850071CF4B /* Delaunay.cpp in Sources */,
@@ -11091,6 +11987,7 @@
 				03A0F5761947A0850071CF4B /* ofxUIToggleMatrix.cpp in Sources */,
 				03A0F5771947A0850071CF4B /* MonoToStereoPanner.cpp in Sources */,
 				E79BF68D1949206F00A0A83E /* smoother.cpp in Sources */,
+				03E28DB71A9D767D005AA181 /* CloudsVisualSystemManager.cpp in Sources */,
 				03A0F5781947A0850071CF4B /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
 				03A0F5791947A0850071CF4B /* Camera.cpp in Sources */,
 				03A0F57A1947A0850071CF4B /* CloudsVisualSystem2DVideo.cpp in Sources */,
@@ -11110,6 +12007,7 @@
 				03A0F5871947A0850071CF4B /* Creatures.cpp in Sources */,
 				03A0F5881947A0850071CF4B /* lq.c in Sources */,
 				03A0F5891947A0850071CF4B /* ofxTLKeyframes.cpp in Sources */,
+				03E28DAB1A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */,
 				03A0F58A1947A0850071CF4B /* ofxTLImageTrack.cpp in Sources */,
 				03A0F58B1947A0850071CF4B /* wStar.cpp in Sources */,
 				03A0F58C1947A0850071CF4B /* ofxFTGLFont.cpp in Sources */,
@@ -11189,7 +12087,6 @@
 				03A0F5D31947A0850071CF4B /* v_compute.cpp in Sources */,
 				E79BF6751949206F00A0A83E /* cameraManager.cpp in Sources */,
 				03A0F5D41947A0850071CF4B /* Boid.cpp in Sources */,
-				03A0F5D51947A0850071CF4B /* ofxOculusRift.cpp in Sources */,
 				03A0F5D61947A0850071CF4B /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				03A0F5D71947A0850071CF4B /* ofxPerlinBehavior.cpp in Sources */,
 				03A0F5D81947A0850071CF4B /* BasicDelay.cpp in Sources */,
@@ -11274,7 +12171,6 @@
 				03A0F6201947A0850071CF4B /* CloudsAudioEvents.cpp in Sources */,
 				03A0F6211947A0850071CF4B /* ofxTLPage.cpp in Sources */,
 				03A0F6221947A0850071CF4B /* ofxSQLiteUpdate.cpp in Sources */,
-				03A0F6231947A0850071CF4B /* CloudsPlaybackController.cpp in Sources */,
 				03A0F6241947A0850071CF4B /* b2FrictionJoint.cpp in Sources */,
 				03A0F6251947A0850071CF4B /* IcosphereAction.cpp in Sources */,
 				03A0F6261947A0850071CF4B /* ofxUIValuePlotter.cpp in Sources */,
@@ -11319,6 +12215,7 @@
 				03A0F64C1947A0850071CF4B /* ofxAssimpAnimation.cpp in Sources */,
 				03A0F64D1947A0850071CF4B /* CloudsVisualSystemConnectors.cpp in Sources */,
 				03A0F64E1947A0850071CF4B /* State.cpp in Sources */,
+				03E28DB31A9D767D005AA181 /* CloudsTransitionController.cpp in Sources */,
 				03A0F64F1947A0850071CF4B /* Synth.cpp in Sources */,
 				03A0F6501947A0850071CF4B /* SurfacePoint.cpp in Sources */,
 				03A0F6511947A0850071CF4B /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */,
@@ -11352,6 +12249,7 @@
 				03A0F66C1947A0850071CF4B /* StereoDelay.cpp in Sources */,
 				03A0F66D1947A0850071CF4B /* ofxOpenSteerPlugin.cpp in Sources */,
 				03A0F66E1947A0850071CF4B /* c_loops.cpp in Sources */,
+				03E28DC41A9D7690005AA181 /* CloudsLocalization.cpp in Sources */,
 				03A0F66F1947A0850071CF4B /* ofxTimeline.cpp in Sources */,
 				03A0F6701947A0850071CF4B /* CircularFormula.cpp in Sources */,
 				03A0F6711947A0850071CF4B /* ofxSQLiteDelete.cpp in Sources */,
@@ -11444,6 +12342,7 @@
 				03A0F6C31947A0850071CF4B /* CloudsVisualSystemChromogram.cpp in Sources */,
 				03A0F6C41947A0850071CF4B /* PanelGraph.cpp in Sources */,
 				03A0F6C51947A0850071CF4B /* CloudsInput.cpp in Sources */,
+				03E28DAF1A9D767D005AA181 /* CloudsPlaybackController.cpp in Sources */,
 				03A0F6C61947A0850071CF4B /* ConvolutionPass.cpp in Sources */,
 				03A0F6C71947A0850071CF4B /* ofxEasingQuint.cpp in Sources */,
 				03A0F6C81947A0850071CF4B /* ofxSQLiteSelect.cpp in Sources */,
@@ -11489,7 +12388,6 @@
 				03A0F6EF1947A0850071CF4B /* OscPrintReceivedElements.cpp in Sources */,
 				03A0F6F01947A0850071CF4B /* Clock.cpp in Sources */,
 				03A0F6F11947A0850071CF4B /* ofxMPMNode.cpp in Sources */,
-				03A0F6F21947A0850071CF4B /* CloudsTransitionController.cpp in Sources */,
 				03A0F6F31947A0850071CF4B /* UdpSocketWin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -11508,7 +12406,6 @@
 				E7D82ACD18BF099000C1EB93 /* DelayUtils.cpp in Sources */,
 				E7D8257618BEBD7000C1EB93 /* ParamManager.cpp in Sources */,
 				E7D8258918BEBD7000C1EB93 /* ParticleConnector.cpp in Sources */,
-				E755D70D194415DD00AA81C1 /* CloudsCalibrationNode.cpp in Sources */,
 				E7D825CA18BEBD7000C1EB93 /* Walker.cpp in Sources */,
 				E73DA709189F1CEA006C9E4E /* del_impl.cpp in Sources */,
 				E79BF920194927D900A0A83E /* ofxAudioUnitNetSend.cpp in Sources */,
@@ -11545,6 +12442,7 @@
 				E7D8260B18BEBD7000C1EB93 /* CloudsVisualSystemVerletForm.cpp in Sources */,
 				E7D825C018BEBD7000C1EB93 /* CloudsVisualSystemOpenP5Fifteen.cpp in Sources */,
 				E7D82AD518BF099000C1EB93 /* Mixer.cpp in Sources */,
+				03E28DBE1A9D7690005AA181 /* CloudsGlobal.cpp in Sources */,
 				E7D8258F18BEBD7000C1EB93 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				E7D828FA18BEBE6D00C1EB93 /* ofxDistorterBehavior.cpp in Sources */,
 				E73DA8CE189F3622006C9E4E /* BleachBypassPass.cpp in Sources */,
@@ -11605,6 +12503,7 @@
 				E7D82AC218BF099000C1EB93 /* ControlPrinter.cpp in Sources */,
 				E7D825B118BEBD7000C1EB93 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				E7D82AE118BF099000C1EB93 /* TableLookupOsc.cpp in Sources */,
+				03E28DCD1A9D9389005AA181 /* ofxLocalization.cpp in Sources */,
 				E7D8255718BEBD7000C1EB93 /* CloudsSoundFuncs.cpp in Sources */,
 				E7D825DD18BEBD7000C1EB93 /* Rand.cpp in Sources */,
 				E7D8262B18BEBD7000C1EB93 /* GestureRendererInPlace.cpp in Sources */,
@@ -11707,7 +12606,6 @@
 				E7D8289818BEBE3A00C1EB93 /* ofxEasingQuad.cpp in Sources */,
 				E755D5F41943F2AF00AA81C1 /* ofxUIDragableLabelButton.cpp in Sources */,
 				E79BF930194927D900A0A83E /* ofxAudioUnitSpeechSynth.cpp in Sources */,
-				E7D8256518BEBD7000C1EB93 /* CloudsVisualSystemManager.cpp in Sources */,
 				E7D827F218BEBDCF00C1EB93 /* ofxTLColorTrack.cpp in Sources */,
 				E7D827F318BEBDCF00C1EB93 /* ofxTLCurves.cpp in Sources */,
 				E73DA727189F1CEA006C9E4E /* Delaunay.cpp in Sources */,
@@ -11718,6 +12616,7 @@
 				E755D6141943F2AF00AA81C1 /* ofxUIToggleMatrix.cpp in Sources */,
 				E7D82AD618BF099000C1EB93 /* MonoToStereoPanner.cpp in Sources */,
 				E79BF68B1949206F00A0A83E /* smoother.cpp in Sources */,
+				03E28DB51A9D767D005AA181 /* CloudsVisualSystemManager.cpp in Sources */,
 				E73DA6BD189F1CEA006C9E4E /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
 				E73DA6B0189F1CEA006C9E4E /* Camera.cpp in Sources */,
 				E7D8256718BEBD7000C1EB93 /* CloudsVisualSystem2DVideo.cpp in Sources */,
@@ -11737,6 +12636,7 @@
 				E7D825FA18BEBD7000C1EB93 /* Creatures.cpp in Sources */,
 				E73DA6B4189F1CEA006C9E4E /* lq.c in Sources */,
 				E7D827FB18BEBDCF00C1EB93 /* ofxTLKeyframes.cpp in Sources */,
+				03E28DA91A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */,
 				E7D827F918BEBDCF00C1EB93 /* ofxTLImageTrack.cpp in Sources */,
 				E7D8262318BEBD7000C1EB93 /* wStar.cpp in Sources */,
 				E7D8223318BEBCEF00C1EB93 /* ofxFTGLFont.cpp in Sources */,
@@ -11816,7 +12716,6 @@
 				E7D8261718BEBD7000C1EB93 /* v_compute.cpp in Sources */,
 				E79BF6731949206F00A0A83E /* cameraManager.cpp in Sources */,
 				E7D8259618BEBD7000C1EB93 /* Boid.cpp in Sources */,
-				E7D829EF18BEBEF100C1EB93 /* ofxOculusRift.cpp in Sources */,
 				E7D8262E18BEBD7000C1EB93 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E7D828FF18BEBE6D00C1EB93 /* ofxPerlinBehavior.cpp in Sources */,
 				E7D82AAE18BF099000C1EB93 /* BasicDelay.cpp in Sources */,
@@ -11901,7 +12800,6 @@
 				E7D8255318BEBD7000C1EB93 /* CloudsAudioEvents.cpp in Sources */,
 				E7D827FD18BEBDCF00C1EB93 /* ofxTLPage.cpp in Sources */,
 				E73DA85B189F3611006C9E4E /* ofxSQLiteUpdate.cpp in Sources */,
-				E7D8253D18BEBD7000C1EB93 /* CloudsPlaybackController.cpp in Sources */,
 				E73DA700189F1CEA006C9E4E /* b2FrictionJoint.cpp in Sources */,
 				E7D825E618BEBD7000C1EB93 /* IcosphereAction.cpp in Sources */,
 				E755D6151943F2AF00AA81C1 /* ofxUIValuePlotter.cpp in Sources */,
@@ -11946,6 +12844,7 @@
 				E7D82C1618BF0CED00C1EB93 /* ofxAssimpAnimation.cpp in Sources */,
 				E7D8258618BEBD7000C1EB93 /* CloudsVisualSystemConnectors.cpp in Sources */,
 				E7D8254818BEBD7000C1EB93 /* State.cpp in Sources */,
+				03E28DB11A9D767D005AA181 /* CloudsTransitionController.cpp in Sources */,
 				E7D82AE018BF099000C1EB93 /* Synth.cpp in Sources */,
 				E7D825A918BEBD7000C1EB93 /* SurfacePoint.cpp in Sources */,
 				E7D825C918BEBD7000C1EB93 /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */,
@@ -11979,6 +12878,7 @@
 				E7D82ADF18BF099000C1EB93 /* StereoDelay.cpp in Sources */,
 				E73DA6C4189F1CEA006C9E4E /* ofxOpenSteerPlugin.cpp in Sources */,
 				E7D8260F18BEBD7000C1EB93 /* c_loops.cpp in Sources */,
+				03E28DC21A9D7690005AA181 /* CloudsLocalization.cpp in Sources */,
 				E7D827ED18BEBDCF00C1EB93 /* ofxTimeline.cpp in Sources */,
 				E7D825FF18BEBD7000C1EB93 /* CircularFormula.cpp in Sources */,
 				E73DA856189F3611006C9E4E /* ofxSQLiteDelete.cpp in Sources */,
@@ -12071,6 +12971,7 @@
 				E7D8257818BEBD7000C1EB93 /* CloudsVisualSystemChromogram.cpp in Sources */,
 				E7D8258218BEBD7000C1EB93 /* PanelGraph.cpp in Sources */,
 				E7D8253718BEBD7000C1EB93 /* CloudsInput.cpp in Sources */,
+				03E28DAD1A9D767D005AA181 /* CloudsPlaybackController.cpp in Sources */,
 				E73DA8D1189F3622006C9E4E /* ConvolutionPass.cpp in Sources */,
 				E7D8289A18BEBE3A00C1EB93 /* ofxEasingQuint.cpp in Sources */,
 				E73DA859189F3611006C9E4E /* ofxSQLiteSelect.cpp in Sources */,
@@ -12116,7 +13017,6 @@
 				E73DA922189F362A006C9E4E /* OscPrintReceivedElements.cpp in Sources */,
 				E73DA6B1189F1CEA006C9E4E /* Clock.cpp in Sources */,
 				E7D82B4718BF0AC200C1EB93 /* ofxMPMNode.cpp in Sources */,
-				E7D8254118BEBD7000C1EB93 /* CloudsTransitionController.cpp in Sources */,
 				E73DA920189F362A006C9E4E /* UdpSocketWin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -12133,9 +13033,10 @@
 				E7DDC0C2194437EC00E61D75 /* b2Settings.cpp in Sources */,
 				E7DDC0C3194437EC00E61D75 /* ControlConditioner.cpp in Sources */,
 				E7DDC0C4194437EC00E61D75 /* DelayUtils.cpp in Sources */,
+				03E28F191A9D9AAC005AA181 /* OVR_PacketizedTCPSocket.cpp in Sources */,
+				03E28F0D1A9D9AAC005AA181 /* OVR_String.cpp in Sources */,
 				E7DDC0C5194437EC00E61D75 /* ParamManager.cpp in Sources */,
 				E7DDC0C6194437EC00E61D75 /* ParticleConnector.cpp in Sources */,
-				E7DDC0C7194437EC00E61D75 /* CloudsCalibrationNode.cpp in Sources */,
 				E7DDC0C8194437EC00E61D75 /* Walker.cpp in Sources */,
 				E7DDC0C9194437EC00E61D75 /* del_impl.cpp in Sources */,
 				E7DDC0CA194437EC00E61D75 /* TubeAction.cpp in Sources */,
@@ -12151,6 +13052,7 @@
 				E7DDC0D4194437EC00E61D75 /* ofxSQLite.cpp in Sources */,
 				E7DDC0D5194437EC00E61D75 /* ofVboByteColor.cpp in Sources */,
 				E7DDC0D6194437EC00E61D75 /* ConeAction.cpp in Sources */,
+				03E28F231A9D9AAC005AA181 /* OVR_Stereo.cpp in Sources */,
 				E7DDC0D7194437EC00E61D75 /* SawtoothWave.cpp in Sources */,
 				E7DDC0D8194437EC00E61D75 /* ofxFTGLSimpleLayout.cpp in Sources */,
 				E7DDC0D9194437EC00E61D75 /* b2DynamicTree.cpp in Sources */,
@@ -12165,6 +13067,7 @@
 				E7DDC0E2194437EC00E61D75 /* CloudsHUDLayer.cpp in Sources */,
 				E7DDC0E3194437EC00E61D75 /* TransformAction.cpp in Sources */,
 				E7DDC0E4194437EC00E61D75 /* Wrappers.cpp in Sources */,
+				03E28F0A1A9D9AAC005AA181 /* OVR_RefCount.cpp in Sources */,
 				E7DDC0E5194437EC00E61D75 /* ofxUISlider.cpp in Sources */,
 				E7DDC0E6194437EC00E61D75 /* MyTracker.cpp in Sources */,
 				E7DDC0E7194437EC00E61D75 /* CloudsVisualSystemVerletForm.cpp in Sources */,
@@ -12189,29 +13092,40 @@
 				E7DDC0F9194437EC00E61D75 /* CloudsClip.cpp in Sources */,
 				E7DDC0FA194437EC00E61D75 /* ofxBehavior.cpp in Sources */,
 				E7DDC0FB194437EC00E61D75 /* ofxTween.cpp in Sources */,
+				03E28EEE1A9D9AAC005AA181 /* CAPI_D3D10_DistortionRenderer.cpp in Sources */,
 				E7DDC0FC194437EC00E61D75 /* ofxTextInputField.cpp in Sources */,
 				E7DDC0FD194437EC00E61D75 /* RenderPass.cpp in Sources */,
+				03E28F011A9D9AAC005AA181 /* OVR_Alg.cpp in Sources */,
+				03E28EFF1A9D9AAC005AA181 /* OVR_Win32_RenderShim.cpp in Sources */,
 				E7DDC0FE194437EC00E61D75 /* CloudsInputOculus.cpp in Sources */,
 				E7DDC0FF194437EC00E61D75 /* b2RevoluteJoint.cpp in Sources */,
 				E7DDC100194437EC00E61D75 /* MeshUtils.cpp in Sources */,
 				E7DDC101194437EC00E61D75 /* CloudsVisualSystemTerrain.cpp in Sources */,
+				03E28DB21A9D767D005AA181 /* CloudsTransitionController.cpp in Sources */,
 				E79BF91D194927D900A0A83E /* ofxAudioUnitNetReceive.cpp in Sources */,
 				E7DDC102194437EC00E61D75 /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */,
+				03E28EF31A9D9AAC005AA181 /* CAPI_D3D1X_HSWDisplay.cpp in Sources */,
 				E7DDC103194437EC00E61D75 /* ofxUIBaseDraws.cpp in Sources */,
+				03E28F161A9D9AAC005AA181 /* OVR_UTF8Util.cpp in Sources */,
 				E7DDC104194437EC00E61D75 /* CloudsVisualSystemCirclePacking.cpp in Sources */,
 				E7DDC105194437EC00E61D75 /* CloudsVisualSystem.cpp in Sources */,
+				03E28F281A9D9AAD005AA181 /* Util_Interface.cpp in Sources */,
 				E7DDC106194437EC00E61D75 /* Path.cpp in Sources */,
 				E7DDC107194437EC00E61D75 /* ControlComparison.cpp in Sources */,
+				03E28EF41A9D9AAC005AA181 /* CAPI_D3D1X_Util.cpp in Sources */,
 				E7DDC108194437EC00E61D75 /* PolylineSegmentedPath.cpp in Sources */,
 				E7DDC109194437EC00E61D75 /* ofxUIImageToggle.cpp in Sources */,
 				03C079BD194605FE0081ED9B /* Timer.cpp in Sources */,
 				E7DDC10A194437EC00E61D75 /* ofxSubtitles.cpp in Sources */,
 				E7DDC10B194437EC00E61D75 /* SampleTable.cpp in Sources */,
 				E7DDC10C194437EC00E61D75 /* RandomMover.cpp in Sources */,
+				03E28F111A9D9AAC005AA181 /* OVR_System.cpp in Sources */,
 				E7DDC10D194437EC00E61D75 /* ControlTriggerFilter.cpp in Sources */,
 				E7DDC10E194437EC00E61D75 /* NoiseWarpPass.cpp in Sources */,
+				03E28EF21A9D9AAC005AA181 /* CAPI_D3D1X_DistortionRenderer.cpp in Sources */,
 				E7DDC10F194437EC00E61D75 /* b2LineJoint.cpp in Sources */,
 				E7DDC110194437EC00E61D75 /* ofxMtlBoxFitting.cpp in Sources */,
+				03E28F021A9D9AAC005AA181 /* OVR_Allocator.cpp in Sources */,
 				E7DDC111194437EC00E61D75 /* OscTypes.cpp in Sources */,
 				E7DDC112194437EC00E61D75 /* ofxEasingCubic.cpp in Sources */,
 				E7DDC113194437EC00E61D75 /* V3.cpp in Sources */,
@@ -12239,6 +13153,7 @@
 				E7DDC129194437EC00E61D75 /* CloudsVisualSystemExampleVectorMath.cpp in Sources */,
 				E79BF919194927D900A0A83E /* ofxAudioUnitMixer.cpp in Sources */,
 				E7DDC12A194437EC00E61D75 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
+				03E28F1D1A9D9AAC005AA181 /* OVR_Unix_Socket.cpp in Sources */,
 				E7DDC12B194437EC00E61D75 /* ofxTLBangs.cpp in Sources */,
 				E7DDC12C194437EC00E61D75 /* b2CollideCircle.cpp in Sources */,
 				E7DDC12D194437EC00E61D75 /* ofxAssimpModelLoader.cpp in Sources */,
@@ -12248,6 +13163,7 @@
 				E7DDC131194437EC00E61D75 /* ForceSet.cpp in Sources */,
 				E7DDC132194437EC00E61D75 /* ofxEasingSine.cpp in Sources */,
 				E7DDC133194437EC00E61D75 /* ofxOscMessage.cpp in Sources */,
+				03E28F201A9D9AAC005AA181 /* OVR_JSON.cpp in Sources */,
 				E7DDC134194437EC00E61D75 /* Calibration.cpp in Sources */,
 				E7DDC135194437EC00E61D75 /* CloudsDichotomy.cpp in Sources */,
 				E7DDC136194437EC00E61D75 /* ControlSnapToScale.cpp in Sources */,
@@ -12256,11 +13172,13 @@
 				E7DDC139194437EC00E61D75 /* Maze2.cpp in Sources */,
 				E7DDC13A194437EC00E61D75 /* RandomNumber.cpp in Sources */,
 				E7DDC13B194437EC00E61D75 /* fft.cpp in Sources */,
+				03E28EEA1A9D9AAC005AA181 /* CAPI_FrameTimeManager.cpp in Sources */,
 				E7DDC13C194437EC00E61D75 /* ObjectFinder.cpp in Sources */,
 				E7DDC13D194437EC00E61D75 /* CloudsVisualSystemCircuit.cpp in Sources */,
 				E7DDC13E194437EC00E61D75 /* ofxUIScrollableCanvas.cpp in Sources */,
 				E7DDC13F194437EC00E61D75 /* ofxBox2dRect.cpp in Sources */,
 				E7DDC140194437EC00E61D75 /* FakeSSSPass.cpp in Sources */,
+				03E28F121A9D9AAC005AA181 /* OVR_ThreadCommandQueue.cpp in Sources */,
 				E7DDC141194437EC00E61D75 /* Rules.cpp in Sources */,
 				E7DDC142194437EC00E61D75 /* ofxHomingBehavior.cpp in Sources */,
 				E7DDC143194437EC00E61D75 /* BloomPass.cpp in Sources */,
@@ -12281,10 +13199,13 @@
 				E7DDC151194437EC00E61D75 /* ControlStepper.cpp in Sources */,
 				E7DDC152194437EC00E61D75 /* LUTPass.cpp in Sources */,
 				E7DDC153194437EC00E61D75 /* ofxSQLiteAbstract.cpp in Sources */,
+				03E28F131A9D9AAC005AA181 /* OVR_ThreadsPthread.cpp in Sources */,
+				03E28F211A9D9AAC005AA181 /* OVR_Profile.cpp in Sources */,
 				E7DDC154194437EC00E61D75 /* PixelatePass.cpp in Sources */,
 				E7DDC155194437EC00E61D75 /* ParticleConnectionGenerator.cpp in Sources */,
 				E7DDC156194437EC00E61D75 /* CloudsVisualSystemOpenP5SpaceJunk.cpp in Sources */,
 				E7DDC157194437EC00E61D75 /* ControlCallback.cpp in Sources */,
+				03E28F1E1A9D9AAC005AA181 /* OVR_Win32_Socket.cpp in Sources */,
 				E7DDC158194437EC00E61D75 /* CirclePacker.cpp in Sources */,
 				E79BF939194927D900A0A83E /* TPCircularBuffer.c in Sources */,
 				E7DDC159194437EC00E61D75 /* lukeFuncs.cpp in Sources */,
@@ -12292,6 +13213,8 @@
 				E7DDC15B194437EC00E61D75 /* ofxOscSender.cpp in Sources */,
 				E7DDC15C194437EC00E61D75 /* NetworkingUtils.cpp in Sources */,
 				E7DDC15D194437EC00E61D75 /* ofxBox2dCircle.cpp in Sources */,
+				03E28DAE1A9D767D005AA181 /* CloudsPlaybackController.cpp in Sources */,
+				03E28EF11A9D9AAC005AA181 /* CAPI_D3D11_HSWDisplay.cpp in Sources */,
 				E7DDC15E194437EC00E61D75 /* ofxOpenSteerVehicle.cpp in Sources */,
 				E7DDC15F194437EC00E61D75 /* FixedValue.cpp in Sources */,
 				E7DDC160194437EC00E61D75 /* ControlXYSpeed.cpp in Sources */,
@@ -12301,8 +13224,10 @@
 				E7DDC164194437EC00E61D75 /* b2TOISolver.cpp in Sources */,
 				E7DDC165194437EC00E61D75 /* MazeSettings.cpp in Sources */,
 				E7DDC166194437EC00E61D75 /* b2PulleyJoint.cpp in Sources */,
+				03E28F031A9D9AAC005AA181 /* OVR_Atomic.cpp in Sources */,
 				E7DDC167194437EC00E61D75 /* CloudsRGBDPointLayer.cpp in Sources */,
 				E7DDC168194437EC00E61D75 /* ofxUIFPSSlider.cpp in Sources */,
+				03E28F0F1A9D9AAC005AA181 /* OVR_String_PathUtil.cpp in Sources */,
 				E7DDC169194437EC00E61D75 /* LinkedList.cpp in Sources */,
 				E7DDC16A194437EC00E61D75 /* ofxTLTrack.cpp in Sources */,
 				E7DDC16B194437EC00E61D75 /* CloudsOrthoCamera.cpp in Sources */,
@@ -12311,6 +13236,7 @@
 				E7DDC16E194437EC00E61D75 /* IpEndpointName.cpp in Sources */,
 				03D58F411946321500FCFF7B /* ofxBinaryMesh.cpp in Sources */,
 				E7DDC16F194437EC00E61D75 /* b2TimeOfImpact.cpp in Sources */,
+				03E28F081A9D9AAC005AA181 /* OVR_Log.cpp in Sources */,
 				E7DDC170194437EC00E61D75 /* CloudsVisualSystem3DModelLoader.cpp in Sources */,
 				E7DDC171194437EC00E61D75 /* CloudsVisualSystemMazeGenerator.cpp in Sources */,
 				E7DDC172194437EC00E61D75 /* SuperFormula.cpp in Sources */,
@@ -12318,6 +13244,7 @@
 				E7DDC174194437EC00E61D75 /* Vec3Utilities.cpp in Sources */,
 				E7DDC175194437EC00E61D75 /* ofxUIRotarySlider.cpp in Sources */,
 				E7DDC176194437EC00E61D75 /* PlaneAction.cpp in Sources */,
+				03E28EFB1A9D9AAC005AA181 /* OVR_Display.cpp in Sources */,
 				E7DDC177194437EC00E61D75 /* CloudsVisualSystemSchlabberbox.cpp in Sources */,
 				E7DDC178194437EC00E61D75 /* Circle.cpp in Sources */,
 				E7DDC179194437EC00E61D75 /* CloudsSecondaryDisplayOSCSender.cpp in Sources */,
@@ -12329,7 +13256,8 @@
 				E7DDC17F194437EC00E61D75 /* VoroParticle.cpp in Sources */,
 				E7DDC180194437EC00E61D75 /* ofxEasingQuad.cpp in Sources */,
 				E7DDC181194437EC00E61D75 /* ofxUIDragableLabelButton.cpp in Sources */,
-				E7DDC182194437EC00E61D75 /* CloudsVisualSystemManager.cpp in Sources */,
+				03E28F101A9D9AAC005AA181 /* OVR_SysFile.cpp in Sources */,
+				03E28F1B1A9D9AAC005AA181 /* OVR_Session.cpp in Sources */,
 				E7DDC183194437EC00E61D75 /* ofxTLColorTrack.cpp in Sources */,
 				E7DDC184194437EC00E61D75 /* ofxTLCurves.cpp in Sources */,
 				E7DDC185194437EC00E61D75 /* Delaunay.cpp in Sources */,
@@ -12338,6 +13266,7 @@
 				E7DDC188194437EC00E61D75 /* CloudsAct.cpp in Sources */,
 				E7DDC189194437EC00E61D75 /* CloudsVisualSystemWorld.cpp in Sources */,
 				E7DDC18A194437EC00E61D75 /* ofxUIToggleMatrix.cpp in Sources */,
+				03E28EF61A9D9AAC005AA181 /* CAPI_D3D9_HSWDisplay.cpp in Sources */,
 				E7DDC18B194437EC00E61D75 /* MonoToStereoPanner.cpp in Sources */,
 				E7DDC18C194437EC00E61D75 /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
 				E7DDC18D194437EC00E61D75 /* Camera.cpp in Sources */,
@@ -12347,6 +13276,7 @@
 				E7DDC191194437EC00E61D75 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
 				E7DDC192194437EC00E61D75 /* StopAction.cpp in Sources */,
 				E7DDC193194437EC00E61D75 /* CloudsVisualSystemOpenP5SpinningSolids.cpp in Sources */,
+				03E28F2A1A9D9AAD005AA181 /* Util_Render_Stereo.cpp in Sources */,
 				E7DDC194194437EC00E61D75 /* DofPass.cpp in Sources */,
 				E7DDC195194437EC00E61D75 /* ofxMSATimer.cpp in Sources */,
 				E7DDC196194437EC00E61D75 /* glm.c in Sources */,
@@ -12359,6 +13289,7 @@
 				E7DDC19D194437EC00E61D75 /* ofxTLKeyframes.cpp in Sources */,
 				E7DDC19E194437EC00E61D75 /* ofxTLImageTrack.cpp in Sources */,
 				E7DDC19F194437EC00E61D75 /* wStar.cpp in Sources */,
+				03E28F0E1A9D9AAC005AA181 /* OVR_String_FormatUtil.cpp in Sources */,
 				E7DDC1A0194437EC00E61D75 /* ofxFTGLFont.cpp in Sources */,
 				E7DDC1A1194437EC00E61D75 /* CloudsClusterNode.cpp in Sources */,
 				E7DDC1A2194437EC00E61D75 /* Points.cpp in Sources */,
@@ -12369,14 +13300,17 @@
 				E7DDC1A7194437EC00E61D75 /* ofxMPMParticle.cpp in Sources */,
 				E7DDC1A8194437EC00E61D75 /* Voro.cpp in Sources */,
 				E7DDC1A9194437EC00E61D75 /* lukeMusicFuncs.cpp in Sources */,
+				03E28DCE1A9D9389005AA181 /* ofxLocalization.cpp in Sources */,
 				E7DDC1AA194437EC00E61D75 /* tinyxmlparser.cpp in Sources */,
 				E7DDC1AB194437EC00E61D75 /* Caster.cpp in Sources */,
 				E7DDC1AC194437EC00E61D75 /* CloudsIntroSequence.cpp in Sources */,
 				E7DDC1AD194437EC00E61D75 /* ofxOscParameterSync.cpp in Sources */,
+				03E28F0B1A9D9AAC005AA181 /* OVR_SharedMemory.cpp in Sources */,
 				E7DDC1AE194437EC00E61D75 /* ofxUI2DGraph.cpp in Sources */,
 				E7DDC1AF194437EC00E61D75 /* CloudsVisualSystemNeurons.cpp in Sources */,
 				E7DDC1B0194437EC00E61D75 /* CloudsVisualSystemVision.cpp in Sources */,
 				E7DDC1B1194437EC00E61D75 /* UdpSocket.cpp in Sources */,
+				03E28DBF1A9D7690005AA181 /* CloudsGlobal.cpp in Sources */,
 				E7DDC1B2194437EC00E61D75 /* CloudsVisualSystemProcess11.cpp in Sources */,
 				E7DDC1B3194437EC00E61D75 /* ofxUIWaveform.cpp in Sources */,
 				E7DDC1B4194437EC00E61D75 /* ofxHotKeys_impl_mac.mm in Sources */,
@@ -12384,6 +13318,7 @@
 				E7DDC1B6194437EC00E61D75 /* unitcell.cpp in Sources */,
 				E7DDC1B7194437EC00E61D75 /* ofxUIEventArgs.cpp in Sources */,
 				E7DDC1B8194437EC00E61D75 /* CloudsHUDController.cpp in Sources */,
+				03E28EDD1A9D9AAC005AA181 /* testApp.cpp in Sources */,
 				E7DDC1B9194437EC00E61D75 /* CloudsVisualSystemProcess18.cpp in Sources */,
 				E7DDC1BA194437EC00E61D75 /* EditLine.cpp in Sources */,
 				E7DDC1BB194437EC00E61D75 /* lineMatchUtils.cpp in Sources */,
@@ -12396,6 +13331,8 @@
 				E7DDC1C2194437EC00E61D75 /* DofAltPass.cpp in Sources */,
 				E7DDC1C3194437EC00E61D75 /* RuleSet.cpp in Sources */,
 				E7DDC1C4194437EC00E61D75 /* Page.cpp in Sources */,
+				03E28EFC1A9D9AAC005AA181 /* OVR_OSX_Display.cpp in Sources */,
+				03E28EFA1A9D9AAC005AA181 /* CAPI_GL_Util.cpp in Sources */,
 				E7DDC1C5194437EC00E61D75 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */,
 				E7DDC1C6194437EC00E61D75 /* CloudsPortalRing.cpp in Sources */,
 				E7DDC1C7194437EC00E61D75 /* CloudsSpeaker.cpp in Sources */,
@@ -12403,10 +13340,13 @@
 				E7DDC1C8194437EC00E61D75 /* ofxUINumberDialer.cpp in Sources */,
 				E7DDC1C9194437EC00E61D75 /* CloudsVisualSystemDataCascade.cpp in Sources */,
 				E7DDC1CA194437EC00E61D75 /* OscReceivedElements.cpp in Sources */,
+				03E28EEB1A9D9AAC005AA181 /* CAPI_HMDRenderState.cpp in Sources */,
 				E7DDC1CB194437EC00E61D75 /* ETF.cpp in Sources */,
+				03E28EDE1A9D9AAC005AA181 /* tinyxml2.cpp in Sources */,
 				E7DDC1CC194437EC00E61D75 /* ofxOscBundle.cpp in Sources */,
 				E79BF92D194927D900A0A83E /* ofxAudioUnitSampler.cpp in Sources */,
 				E7DDC1CD194437EC00E61D75 /* ofxUIRectangle.cpp in Sources */,
+				03E28F251A9D9AAC005AA181 /* Service_NetSessionCommon.cpp in Sources */,
 				E7DDC1CE194437EC00E61D75 /* ofxRemoveCocoaMenu.mm in Sources */,
 				E7DDC1CF194437EC00E61D75 /* b2BlockAllocator.cpp in Sources */,
 				E7DDC1D0194437EC00E61D75 /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
@@ -12415,10 +13355,12 @@
 				E7DDC1D3194437EC00E61D75 /* ofxField2D.cpp in Sources */,
 				E7DDC1D4194437EC00E61D75 /* RampedValue.cpp in Sources */,
 				E7DDC1D5194437EC00E61D75 /* Gravity.cpp in Sources */,
+				03E28EEF1A9D9AAC005AA181 /* CAPI_D3D10_HSWDisplay.cpp in Sources */,
 				E7DDC1D6194437EC00E61D75 /* CloudsVisualSystemWebHistory.cpp in Sources */,
 				E7DDC1D7194437EC00E61D75 /* Panel.cpp in Sources */,
 				E7DDC1D8194437EC00E61D75 /* VoxelMesh.cpp in Sources */,
 				E7DDC1D9194437EC00E61D75 /* CloudsVisualSystemTunnelDrawing.cpp in Sources */,
+				03E28EDB1A9D9AAC005AA181 /* Makefile in Sources */,
 				E7DDC1DA194437EC00E61D75 /* ofxSolver.cpp in Sources */,
 				E7DDC1DB194437EC00E61D75 /* OscOutboundPacketStream.cpp in Sources */,
 				E7DDC1DC194437EC00E61D75 /* b2Joint.cpp in Sources */,
@@ -12429,12 +13371,13 @@
 				E7DDC1E1194437EC00E61D75 /* PanelConsole.cpp in Sources */,
 				E7DDC1E2194437EC00E61D75 /* drawnLineApp.cpp in Sources */,
 				E7DDC1E3194437EC00E61D75 /* ofxEasing.cpp in Sources */,
+				03E28DC31A9D7690005AA181 /* CloudsLocalization.cpp in Sources */,
 				E7DDC1E4194437EC00E61D75 /* CloudsVisualSystemVectorFlow.cpp in Sources */,
 				E7DDC1E5194437EC00E61D75 /* b2Fixture.cpp in Sources */,
 				E7DDC1E6194437EC00E61D75 /* CompressorLimiter.cpp in Sources */,
+				03E28F151A9D9AAC005AA181 /* OVR_Timer.cpp in Sources */,
 				E7DDC1E7194437EC00E61D75 /* v_compute.cpp in Sources */,
 				E7DDC1E8194437EC00E61D75 /* Boid.cpp in Sources */,
-				E7DDC1E9194437EC00E61D75 /* ofxOculusRift.cpp in Sources */,
 				E7DDC1EA194437EC00E61D75 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E7DDC1EB194437EC00E61D75 /* ofxPerlinBehavior.cpp in Sources */,
 				E7DDC1EC194437EC00E61D75 /* BasicDelay.cpp in Sources */,
@@ -12442,10 +13385,12 @@
 				E7DDC1EE194437EC00E61D75 /* Tetra.cpp in Sources */,
 				E7DDC1EF194437EC00E61D75 /* KaleidoscopePass.cpp in Sources */,
 				E7DDC1F0194437EC00E61D75 /* ControlChangeNotifier.cpp in Sources */,
+				03E28EE91A9D9AAC005AA181 /* CAPI_DistortionRenderer.cpp in Sources */,
 				E7DDC1F1194437EC00E61D75 /* CloudsVisualSystemPaintBrush.cpp in Sources */,
 				E79BF905194927D900A0A83E /* ofxAudioUnitFilePlayer.cpp in Sources */,
 				E7DDC1F2194437EC00E61D75 /* ofxOceanCamera.cpp in Sources */,
 				E7DDC1F3194437EC00E61D75 /* AudioFileUtils.cpp in Sources */,
+				03E28EF71A9D9AAC005AA181 /* CAPI_D3D9_Util.cpp in Sources */,
 				E79BF929194927D900A0A83E /* ofxAudioUnitRecorder.cpp in Sources */,
 				E7DDC1F4194437EC00E61D75 /* main.cpp in Sources */,
 				E7DDC1F5194437EC00E61D75 /* Helpers.cpp in Sources */,
@@ -12454,6 +13399,7 @@
 				E7DDC1F8194437EC00E61D75 /* ControlMetro.cpp in Sources */,
 				E7DDC1F9194437EC00E61D75 /* brushedLine.cpp in Sources */,
 				E7DDC1FA194437EC00E61D75 /* ofxEasingExpo.cpp in Sources */,
+				03E28F1F1A9D9AAC005AA181 /* OVR_CAPI.cpp in Sources */,
 				E7DDC1FB194437EC00E61D75 /* CloudsVisualSystemOrbit.cpp in Sources */,
 				E7DDC1FC194437EC00E61D75 /* Ball.cpp in Sources */,
 				E7DDC1FD194437EC00E61D75 /* MandalaComponent.cpp in Sources */,
@@ -12461,8 +13407,10 @@
 				E7DDC1FF194437EC00E61D75 /* CloudsVisualSystemGesturePaint.cpp in Sources */,
 				E7DDC200194437EC00E61D75 /* GestureRenderer.cpp in Sources */,
 				E7DDC201194437EC00E61D75 /* RunningBackground.cpp in Sources */,
+				03E28EED1A9D9AAC005AA181 /* CAPI_HSWDisplay.cpp in Sources */,
 				E7DDC202194437EC00E61D75 /* ofxTLSwitches.cpp in Sources */,
 				E7DDC203194437EC00E61D75 /* testApp.cpp in Sources */,
+				03E28DAA1A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */,
 				E7DDC204194437EC00E61D75 /* Maze.cpp in Sources */,
 				E7DDC205194437EC00E61D75 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E7DDC206194437EC00E61D75 /* CloudsVisualSystemSwim.cpp in Sources */,
@@ -12493,6 +13441,7 @@
 				E7DDC21F194437EC00E61D75 /* CloudsVisualSystemGPUParticles.cpp in Sources */,
 				E7DDC220194437EC00E61D75 /* LimbDarkeningPass.cpp in Sources */,
 				E7DDC221194437EC00E61D75 /* (null) in Sources */,
+				03E28F0C1A9D9AAC005AA181 /* OVR_Std.cpp in Sources */,
 				E7DDC222194437EC00E61D75 /* b2Distance.cpp in Sources */,
 				E7DDC223194437EC00E61D75 /* Brush.cpp in Sources */,
 				E79BF935194927D900A0A83E /* ofxAudioUnitTap.cpp in Sources */,
@@ -12504,19 +13453,24 @@
 				E7DDC229194437EC00E61D75 /* ofxTLAudioTrack.cpp in Sources */,
 				E7DDC22A194437EC00E61D75 /* wParticle.cpp in Sources */,
 				E7DDC22B194437EC00E61D75 /* b2Math.cpp in Sources */,
+				03E28EDC1A9D9AAC005AA181 /* main.cpp in Sources */,
+				03E28F1A1A9D9AAC005AA181 /* OVR_RPC1.cpp in Sources */,
 				E7DDC22C194437EC00E61D75 /* b2GearJoint.cpp in Sources */,
 				E7DDC22D194437EC00E61D75 /* CloudsVisualSystemOpenP5Sixteen.cpp in Sources */,
 				E7DDC22E194437EC00E61D75 /* RimHighlightingPass.cpp in Sources */,
 				E7DDC22F194437EC00E61D75 /* CloudsVisualSystemCode.cpp in Sources */,
 				E7DDC230194437EC00E61D75 /* ControlGenerator.cpp in Sources */,
 				E7DDC231194437EC00E61D75 /* CloudsVisualSystemLia.cpp in Sources */,
+				03E28DB61A9D767D005AA181 /* CloudsVisualSystemManager.cpp in Sources */,
 				E7DDC232194437EC00E61D75 /* ControlTrigger.cpp in Sources */,
 				E7DDC233194437EC00E61D75 /* ofxUIMultiImageButton.cpp in Sources */,
+				03E28F171A9D9AAC005AA181 /* OVR_BitStream.cpp in Sources */,
 				E7DDC234194437EC00E61D75 /* NetworkingUtilsWin.cpp in Sources */,
+				03E28EF51A9D9AAC005AA181 /* CAPI_D3D9_DistortionRenderer.cpp in Sources */,
+				03E28F221A9D9AAC005AA181 /* OVR_SerialFormat.cpp in Sources */,
 				E7DDC235194437EC00E61D75 /* CloudsAudioEvents.cpp in Sources */,
 				E7DDC236194437EC00E61D75 /* ofxTLPage.cpp in Sources */,
 				E7DDC237194437EC00E61D75 /* ofxSQLiteUpdate.cpp in Sources */,
-				E7DDC238194437EC00E61D75 /* CloudsPlaybackController.cpp in Sources */,
 				E7DDC239194437EC00E61D75 /* b2FrictionJoint.cpp in Sources */,
 				E7DDC23A194437EC00E61D75 /* IcosphereAction.cpp in Sources */,
 				E7DDC23B194437EC00E61D75 /* ofxUIValuePlotter.cpp in Sources */,
@@ -12524,14 +13478,17 @@
 				E7DDC23D194437EC00E61D75 /* CloudsVisualSystemPhotoGlitch.cpp in Sources */,
 				E7DDC23E194437EC00E61D75 /* ofxUIFPS.cpp in Sources */,
 				E7DDC23F194437EC00E61D75 /* LNode.cpp in Sources */,
+				03E28F181A9D9AAC005AA181 /* OVR_NetworkPlugin.cpp in Sources */,
 				E7DDC240194437EC00E61D75 /* common.cpp in Sources */,
 				E7DDC241194437EC00E61D75 /* E5.cpp in Sources */,
 				E7DDC242194437EC00E61D75 /* CloudsPortal.cpp in Sources */,
 				E7DDC243194437EC00E61D75 /* LFNoise.cpp in Sources */,
 				E7DDC244194437EC00E61D75 /* SimpleVehicle.cpp in Sources */,
+				03E28F071A9D9AAC005AA181 /* OVR_Lockless.cpp in Sources */,
 				E7DDC245194437EC00E61D75 /* ofxVortexBehavior.cpp in Sources */,
 				E7DDC246194437EC00E61D75 /* ofxBillboard.cpp in Sources */,
 				E7DDC247194437EC00E61D75 /* CloudsVisualSystemRipples.cpp in Sources */,
+				03E28F271A9D9AAD005AA181 /* Util_ImageWindow.cpp in Sources */,
 				E7DDC248194437EC00E61D75 /* VerticalTiltShifPass.cpp in Sources */,
 				E7DDC249194437EC00E61D75 /* CloudsVisualSystemBallDroppings.cpp in Sources */,
 				E7DDC24A194437EC00E61D75 /* ControlRecorder.cpp in Sources */,
@@ -12545,6 +13502,7 @@
 				E7DDC251194437EC00E61D75 /* MazeCell.cpp in Sources */,
 				E7DDC252194437EC00E61D75 /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */,
 				E7DDC253194437EC00E61D75 /* SineWave.cpp in Sources */,
+				03E28F001A9D9AAC005AA181 /* OVR_Win32_ShimFunctions.cpp in Sources */,
 				E7DDC254194437EC00E61D75 /* CloudsVisualSystemFireworks.cpp in Sources */,
 				E7DDC255194437EC00E61D75 /* b2Collision.cpp in Sources */,
 				E7DDC256194437EC00E61D75 /* ofxSimpleSurface.cpp in Sources */,
@@ -12583,11 +13541,14 @@
 				E7DDC277194437EC00E61D75 /* linePoemApp.cpp in Sources */,
 				E7DDC278194437EC00E61D75 /* ofxUIMinimalSlider.cpp in Sources */,
 				E7DDC279194437EC00E61D75 /* ParamManager2.cpp in Sources */,
+				03E28F061A9D9AAC005AA181 /* OVR_FileFILE.cpp in Sources */,
 				E7DDC27A194437EC00E61D75 /* ofxUIMultiImageToggle.cpp in Sources */,
+				03E28EFD1A9D9AAC005AA181 /* OVR_Win32_Display.cpp in Sources */,
 				E7DDC27B194437EC00E61D75 /* CubeAction.cpp in Sources */,
 				E79BF911194927D900A0A83E /* ofxAudioUnitMatrixMixer.cpp in Sources */,
 				E7DDC27C194437EC00E61D75 /* ofxBox2dBaseShape.cpp in Sources */,
 				E7DDC27D194437EC00E61D75 /* Branch.cpp in Sources */,
+				03E28F291A9D9AAD005AA181 /* Util_LatencyTest2Reader.cpp in Sources */,
 				E79BF964194927E900A0A83E /* ofxMeshUtils.cpp in Sources */,
 				E7DDC27E194437EC00E61D75 /* ofxUISpacer.cpp in Sources */,
 				E7DDC27F194437EC00E61D75 /* ControlSwitcher.cpp in Sources */,
@@ -12598,6 +13559,7 @@
 				E7DDC284194437EC00E61D75 /* ofxTimeline.cpp in Sources */,
 				E7DDC285194437EC00E61D75 /* CircularFormula.cpp in Sources */,
 				E7DDC286194437EC00E61D75 /* ofxSQLiteDelete.cpp in Sources */,
+				03E28EF01A9D9AAC005AA181 /* CAPI_D3D11_DistortionRenderer.cpp in Sources */,
 				E7DDC287194437EC00E61D75 /* CloudsVisualSystemCubeCraft.cpp in Sources */,
 				E7DDC288194437EC00E61D75 /* ofxTimecode.cpp in Sources */,
 				E7DDC289194437EC00E61D75 /* ofxUILabelToggle.cpp in Sources */,
@@ -12608,15 +13570,19 @@
 				E7DDC28E194437EC00E61D75 /* cell.cpp in Sources */,
 				E7DDC28F194437EC00E61D75 /* CloudsVisualSystemReplicator.cpp in Sources */,
 				E7DDC290194437EC00E61D75 /* b2PrismaticJoint.cpp in Sources */,
+				03E28F041A9D9AAC005AA181 /* OVR_CRC32.cpp in Sources */,
 				E7DDC291194437EC00E61D75 /* MazeCell2.cpp in Sources */,
 				E7DDC292194437EC00E61D75 /* CloudsVisualSystemOscillations.cpp in Sources */,
 				E7DDC293194437EC00E61D75 /* vParticle.cpp in Sources */,
 				E7DDC294194437EC00E61D75 /* kiss_fftnd.c in Sources */,
+				03E28F1C1A9D9AAC005AA181 /* OVR_Socket.cpp in Sources */,
 				E7DDC295194437EC00E61D75 /* SphericalGenerator.cpp in Sources */,
 				E7DDC296194437EC00E61D75 /* ofxCocoaGLView.mm in Sources */,
 				E7DDC297194437EC00E61D75 /* b2ContactSolver.cpp in Sources */,
 				E7DDC298194437EC00E61D75 /* ofxElectroStaticBehavior.cpp in Sources */,
 				E7DDC299194437EC00E61D75 /* ofxTLInOut.cpp in Sources */,
+				03E28EFE1A9D9AAC005AA181 /* OVR_Win32_FocusReader.cpp in Sources */,
+				03E28EF91A9D9AAC005AA181 /* CAPI_GL_HSWDisplay.cpp in Sources */,
 				E7DDC29A194437EC00E61D75 /* b2BroadPhase.cpp in Sources */,
 				E7DDC29B194437EC00E61D75 /* EdgePass.cpp in Sources */,
 				E7DDC29C194437EC00E61D75 /* ofxUIImageSlider.cpp in Sources */,
@@ -12696,6 +13662,8 @@
 				E7DDC2E2194437EC00E61D75 /* ContrastPass.cpp in Sources */,
 				E7DDC2E3194437EC00E61D75 /* sqlite3.c in Sources */,
 				E79BF8F5194927D900A0A83E /* CADebugMacros.cpp in Sources */,
+				03E28EF81A9D9AAC005AA181 /* CAPI_GL_DistortionRenderer.cpp in Sources */,
+				03E28F2B1A9D9AAD005AA181 /* ofxOculusDK2.cpp in Sources */,
 				E7DDC2E4194437EC00E61D75 /* ofxTLCameraTrack.cpp in Sources */,
 				E7DDC2E5194437EC00E61D75 /* Color.cpp in Sources */,
 				E7DDC2E6194437EC00E61D75 /* itgPath.cpp in Sources */,
@@ -12706,14 +13674,17 @@
 				E7DDC2EB194437EC00E61D75 /* CloudsSoundFilesSamplesDatabases.cpp in Sources */,
 				E7DDC2EC194437EC00E61D75 /* CloudsPathCamera.cpp in Sources */,
 				E7DDC2ED194437EC00E61D75 /* lukeFileFuncs.cpp in Sources */,
+				03E28F051A9D9AAC005AA181 /* OVR_File.cpp in Sources */,
 				E7DDC2EE194437EC00E61D75 /* CloudsMixer.cpp in Sources */,
 				E7DDC2EF194437EC00E61D75 /* ofxSwarmBehavior.cpp in Sources */,
 				E7DDC2F0194437EC00E61D75 /* ofxEasingBack.cpp in Sources */,
 				E7DDC2F1194437EC00E61D75 /* ofxMPMFluid.cpp in Sources */,
 				E7DDC2F2194437EC00E61D75 /* CloudsRun.cpp in Sources */,
 				E7DDC2F3194437EC00E61D75 /* CloudsVisualSystemParadox.cpp in Sources */,
+				03E28EEC1A9D9AAC005AA181 /* CAPI_HMDState.cpp in Sources */,
 				E7DDC2F4194437EC00E61D75 /* E2.cpp in Sources */,
 				E7DDC2F5194437EC00E61D75 /* GpuParticles.cpp in Sources */,
+				03E28F241A9D9AAC005AA181 /* Service_NetClient.cpp in Sources */,
 				E7DDC2F6194437EC00E61D75 /* ControlMetroDivider.cpp in Sources */,
 				E7DDC2F7194437EC00E61D75 /* Force.cpp in Sources */,
 				E7DDC2F8194437EC00E61D75 /* ofxEasingElastic.cpp in Sources */,
@@ -12722,19 +13693,21 @@
 				E7DDC2FB194437EC00E61D75 /* ofxUIWidgetWithLabel.cpp in Sources */,
 				E7DDC2FC194437EC00E61D75 /* b2CollidePolygon.cpp in Sources */,
 				E7DDC2FD194437EC00E61D75 /* ofxOcean.cpp in Sources */,
+				03E28F141A9D9AAC005AA181 /* OVR_ThreadsWinAPI.cpp in Sources */,
 				E7DDC2FE194437EC00E61D75 /* CloudsSVGMesh.cpp in Sources */,
 				E7DDC2FF194437EC00E61D75 /* SphereAction.cpp in Sources */,
 				E7DDC300194437EC00E61D75 /* CloudsVisualSystemYellowTail.cpp in Sources */,
+				03E28F091A9D9AAC005AA181 /* OVR_Math.cpp in Sources */,
 				E7DDC301194437EC00E61D75 /* ControlDbToLinear.cpp in Sources */,
 				E79BF915194927D900A0A83E /* ofxAudioUnitMidi.cpp in Sources */,
 				E7DDC302194437EC00E61D75 /* fdog.cpp in Sources */,
+				03E28F261A9D9AAD005AA181 /* Tracking_SensorStateReader.cpp in Sources */,
 				E7DDC303194437EC00E61D75 /* Astrolabe.cpp in Sources */,
 				E79BF901194927D900A0A83E /* ofxAudioUnitFftNode.cpp in Sources */,
 				E7DDC304194437EC00E61D75 /* OscPrintReceivedElements.cpp in Sources */,
 				E79BF921194927D900A0A83E /* ofxAudioUnitNetSend.cpp in Sources */,
 				E7DDC305194437EC00E61D75 /* Clock.cpp in Sources */,
 				E7DDC306194437EC00E61D75 /* ofxMPMNode.cpp in Sources */,
-				E7DDC307194437EC00E61D75 /* CloudsTransitionController.cpp in Sources */,
 				E7DDC308194437EC00E61D75 /* UdpSocketWin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -13664,6 +14637,13 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug32,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release32,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/x64/VS2010,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/x64/VS2012,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/x64/VS2013,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -13783,6 +14763,13 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug32,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release32,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/x64/VS2010,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/x64/VS2012,
+					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/x64/VS2013,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
