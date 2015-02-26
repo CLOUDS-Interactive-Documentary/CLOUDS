@@ -199,6 +199,9 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -314,6 +317,9 @@
     </Filter>
     <Filter Include="addons\ofxSubtitles\src">
       <UniqueIdentifier>{f0e7827f-df7a-4bd1-9df7-ff654fea3b76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Core">
+      <UniqueIdentifier>{82c16a54-3f23-42d9-81e6-0c7cdc62088d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -625,6 +631,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

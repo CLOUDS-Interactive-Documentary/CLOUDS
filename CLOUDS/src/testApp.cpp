@@ -5,10 +5,13 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	ofSetWindowPosition(0,0);
 #if defined(OCULUS_RIFT) && defined(TARGET_WIN32)
+	ofSetWindowPosition(0,0);
 	ofSetWindowShape(1920*2,1080);
 #else
+	#ifdef CLOUDS_RELEASE
+		ofSetWindowPosition(1920 + 1920*.5,1080*.5);
+	#endif
 	ofSetWindowShape(1920,1080);
 #endif
 	ofSetVerticalSync(true);
@@ -18,8 +21,9 @@ void testApp::setup(){
 
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();
+	//for set at yebizo
 #endif
-
+		
 	firstFrame = true;
 	playerSetup = false;
 	shouldSetupPlayer = false;
