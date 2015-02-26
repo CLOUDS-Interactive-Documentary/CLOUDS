@@ -6,7 +6,7 @@
 void testApp::setup(){
 	
 	ofSetWindowPosition(0,0);
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(TARGET_WIN32)
 	ofSetWindowShape(1920*2,1080);
 #else
 	ofSetWindowShape(1920,1080);
@@ -24,14 +24,11 @@ void testApp::setup(){
 	playerSetup = false;
 	shouldSetupPlayer = false;
 #ifdef OCULUS_RIFT
-//	loader.loadImage("OCULUS_BG_HD.png");
 	loader.loadImage("CLOUDS_HD_BG_DOUBLE.png");
 #else
 	loader.loadImage("SCREEN_BG.png");
 #endif
 
-	//ofSetWindowShape(1080*2,1920);
-	//ofSetWindowPosition(0,0);
 
 }
 

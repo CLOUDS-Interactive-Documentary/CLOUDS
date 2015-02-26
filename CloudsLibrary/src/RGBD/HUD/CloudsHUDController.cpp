@@ -144,6 +144,7 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
 	    
 	//LOWER THIRD
     //update lower third, but only if the speaker has changed
+#ifndef OCULUS_RIFT
     if(speaker.fcpID != CloudsSpeaker::speakers[ clip->person ].fcpID){
         speaker = CloudsSpeaker::speakers[ clip->person ];
         populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, false );
@@ -160,7 +161,6 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
     }
     
 // PROJECT EXAMPLE
-#ifndef OCULUS_RIFT
 	if(clip->hasProjectExample && clip->projectExample.exampleVideos.size() ){
 		CloudsProjectExample example = clip->projectExample;
         string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];

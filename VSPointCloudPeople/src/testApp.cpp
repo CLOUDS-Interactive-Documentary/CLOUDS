@@ -34,7 +34,21 @@ void testApp::setup(){
 
 	parser.loadFromFiles();
 	hud.setup();
-	//parser.loadMediaAssets();
+	
+	////////////////////////////////////////////////
+	//stringstream questions;
+	//for(int i = 0; i < parser.getAllClips().size(); i++){
+	//	CloudsClip* clip = parser.getAllClips()[i];
+	//	if(clip->isLanguageCompatible() && clip->hasQuestion()){
+	//		map<string,string>::iterator it;
+	//		for( it = clip->getAllQuestionTopicPairs().begin(); it != clip->getAllQuestionTopicPairs().end(); it++){
+	//			questions << clip->getLinkName() << "	" << it->first << "	" << it->second << "	" << (clip->hasSpecialKeyword("#oculus") || clip->hasSpecialKeyword("#start") ? "YES" : "NO") << endl;
+	//		}
+	//	}
+	//}
+	//ofBufferToFile(GetCloudsDataPath() + "TRANSLATED_question_topics.txt", ofBuffer(questions.str()));
+	////////////////////////////////////////////////
+
 	rgbd.setup();
 	rgbd.setDrawToScreen(false);
 #ifdef OCULUS_RIFT
@@ -65,6 +79,7 @@ void testApp::update(){
 		shouldPlayTestVideo = false;
 		cout << "**** playing test video" << endl;
 		rgbd.playTestVideo();
+
 		CloudsClip* clip = new CloudsClip();
 		clip->person = "Jen";
 		hud.respondToClip(clip);

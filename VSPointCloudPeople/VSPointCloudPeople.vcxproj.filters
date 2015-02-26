@@ -178,6 +178,9 @@
     <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
       <Filter>addons\ofxLocalization\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -520,6 +523,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h">
       <Filter>addons\ofxLocalization\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

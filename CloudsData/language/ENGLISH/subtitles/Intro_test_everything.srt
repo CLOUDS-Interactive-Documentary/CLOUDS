@@ -3,7 +3,7 @@
 
 
 2
-0:0:00:00 --> 0:0:03:00
+00:00:00:00 --> 00:00:03:00
 Reality will only get you so far.
 
 3
@@ -28,42 +28,14 @@ Well	 what I want to do… I want to program like I can paint
 So ten years ago I painted a lot
 
 8
-0:0:07:00 --> 00:00:10:00
+00:00:07:00 --> 00:00:10:00
 and I want to get the same feeling with code
 
 
 9
-0:0:10:00 --> 00:00:13:00
+00:00:10:00 --> 00:00:13:00
 I sort of had a problem that I couldn’t draw
 
 10
-0:0:13:00 --> 00:00:17
-
-and I couldn’t sculpt	 and I couldn’t basically do anything
-
-
-11
-0:0:17:00 --> 00:00:21:00
-I ended up going into using coding for that
-
-
-12
-0:0:21:00 --> 00:00:24:00
-engaging people with art that was more technical
-
-
-13
-0:0:24:00 --> 00:00:27:00
-and creating this way for people who were not technical to code as well
-
-
-14
-0:0:27:00 --> 3.47222222222222E-04
-so this idea that we have really promoted with processing: sketching with code
-
-
-15
-0:0:30:00 --> 00:00:34:00
-that you think through doing and you learn and you develop through making
-
+00:00:13:00 --> 00:00:17
 

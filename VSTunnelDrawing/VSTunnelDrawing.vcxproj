@@ -235,7 +235,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxLocalization\src;..\..\..\addons\ofxSubtitles\src;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Core;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>Default</CompileAs>
       <PrecompiledHeader />
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -259,7 +259,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxLocalization\src;..\..\..\addons\ofxSubtitles\src;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Core;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>Default</CompileAs>
       <PrecompiledHeader>
       </PrecompiledHeader>
@@ -330,7 +330,7 @@
       <PreprocessorDefinitions>MOUSE_INPUT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxLocalization\src;..\..\..\addons\ofxSubtitles\src;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Core;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -354,7 +354,7 @@
       <PreprocessorDefinitions>OCULUS_RIFT=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxOculusRift\src;..\..\..\addons\ofxOculusRift\libs\3rdParty\TinyXml;..\..\..\addons\ofxOculusRift\libs\LibOVR\Include;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxFTGL\src;..\..\..\addons\ofxFTGL\libs\FTGL\include;..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL;..\..\..\addons\ofxLocalization\src;..\..\..\addons\ofxSubtitles\src;..\..\..\addons\ofxCameraSaveLoad\src\;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxObjLoader\libs\glm;..\..\..\addons\ofxGenerative\src;..\CloudsLibrary\src\VisualSystemsLibrary;..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src;..\CloudsLibrary\src\Input;..\CloudsLibrary\src\Core;..\CloudsLibrary\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -394,8 +394,14 @@
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp" />
     <ClCompile Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.c" />
     <ClCompile Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp" />
@@ -450,9 +456,15 @@
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxTrailParticle.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.h" />
+    <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h" />
     <ClInclude Include="..\..\..\addons\ofxObjLoader\libs\glm\glm.h" />
     <ClInclude Include="..\..\..\addons\ofxObjLoader\src\ofxObjLoader.h" />
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.h" />
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h" />
+    <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />

@@ -18,7 +18,7 @@ void CloudsVisualSystemTunnelDrawing::selfSetDefaults(){
     secondaryCursorMode = CURSOR_MODE_DRAW;
 
 	#ifdef OCULUS_RIFT
-	camera.begin();
+	camera.begin( ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()) );
 	camera.end();
 	#endif
 
@@ -117,6 +117,7 @@ void CloudsVisualSystemTunnelDrawing::selfUpdate(){
 #ifndef MOUSE_INPUT
 	map<int, CloudsInteractionEventArgs>::iterator init;
 	for(init = GetCloudsInputPoints().begin(); init != GetCloudsInputPoints().end(); init++){
+		//cout << "adding interaction point " << init->second.position << endl;
 		addInteractionPoint(init->second);
 	}
 #endif
@@ -281,7 +282,8 @@ void CloudsVisualSystemTunnelDrawing::selfInteractionMoved(CloudsInteractionEven
 void CloudsVisualSystemTunnelDrawing::addInteractionPoint(CloudsInteractionEventArgs& args){
 	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(args.position.x,
 													   args.position.y,
-													   screenSpaceProjectDistance) );
+													   screenSpaceProjectDistance),
+													   ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()));
     if (currentTrails[args.playerId].points.empty() ||
         currentTrails[args.playerId].points.back().distance(mousePoint) > 10.0) {
         currentTrails[args.playerId].points.push_back(mousePoint);

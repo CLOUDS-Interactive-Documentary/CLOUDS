@@ -42,6 +42,9 @@ static ofSoundPlayer* selectHigh = NULL;
 static ofSoundPlayer* selectMid = NULL;
 static ofSoundPlayer* selectLow = NULL;
 
+static ofxFTGLFont subtitleNameFont;
+static int subtitleNameFontSize = 20;
+
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
@@ -227,6 +230,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	subtitle3DBasePosY = 0;
 	subtitle3DBasePosZ = 0;
 	subtitle3DScale = 1.0;
+	subtitleHudZ = -300;
+	subtitleHudY = .5;
 
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
@@ -326,7 +331,8 @@ void CloudsVisualSystem::setup(){
     bleed  = 20;
     
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
-	
+
+
 	//ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
 	if(!backgroundShaderLoaded){
 		loadBackgroundShader();
@@ -537,7 +543,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 
 bool CloudsVisualSystem::updateInterludeInterface(){
 
-#ifdef CLOUDS_INTERLUDE_NAV
+//#ifdef CLOUDS_INTERLUDE_NAV
 	resetNode.multiplier	= -1;
 	continueNode.multiplier = 1;
 	CalibrationNode* n[2] = { &resetNode, &continueNode };
@@ -558,7 +564,7 @@ bool CloudsVisualSystem::updateInterludeInterface(){
 	continueNode.update();
 	
 //	cout << "Reset node position " << resetNode.worldPosition << " cam pos " << getCameraRef().getPosition() << endl;
-#endif
+//#endif
 	return false;
 
 }
@@ -584,11 +590,27 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
 			//JG removing this before Yebizo festival, no visual systems use overlay in the rift
-			//getOculusRift().beginOverlay(-230, 640,480);
-			//checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
-			//selfDrawOverlay();
-			//checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
-			//getOculusRift().endOverlay();
+			getOculusRift().beginOverlay(subtitleHudZ, 1920,1080);
+			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
+
+			float renderTargetMidpoint = CloudsVisualSystem::getStaticRenderTarget().getWidth()*.5;
+			float subtitleHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() * subtitleHudY;
+			getRGBDVideoPlayer().drawSubtitles(renderTargetMidpoint,subtitleHeight);
+			
+//			string speakerFullName = speakerFirstName + " " + speakerLastName;
+			if(getRGBDVideoPlayer().isPlaying()){
+				if(!subtitleNameFont.isLoaded()){
+					subtitleNameFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", subtitleNameFontSize);
+				}
+				string speakerFullName = speakerFirstName + " " + speakerLastName;
+
+				float speakerNameWidth = subtitleNameFont.stringWidth(speakerFullName);
+				subtitleNameFont.drawString(speakerFullName, 
+					renderTargetMidpoint-speakerNameWidth*.5,
+					subtitleHeight - 45); 
+			}
+			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
+			getOculusRift().endOverlay();
 			
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();
@@ -792,7 +814,7 @@ void CloudsVisualSystem::drawScene(){
 	if(isInterlude){
 		drawInterludeInterface();
 	}
-	drawSubtitles3D();
+	//drawSubtitles3D();
 	draw3DCursor();
 #endif
 	
@@ -800,7 +822,7 @@ void CloudsVisualSystem::drawScene(){
 
 void CloudsVisualSystem::drawInterludeInterface(){
 	
-#if defined(CLOUDS_INTERLUDE_NAV)
+#if defined(OCULUS_RIFT)
 
 	ofPushStyle();
 	ofDisableDepthTest();
@@ -3258,7 +3280,10 @@ void CloudsVisualSystem::setupOculusGui()
 	oculusGui->addSlider("SUBTITLE Y POS", 1, 200, &subtitle3DBasePosY);
 	oculusGui->addSlider("SUBTITLE Z POS", 0, -100, &subtitle3DBasePosZ);
 	oculusGui->addSlider("SUBTITLE SCALE", 0,  1.0, &subtitle3DScale);
-	
+	oculusGui->addSpacer();
+	oculusGui->addSlider("SUBTITLE HUD Z", 0, -700, &subtitleHudZ);
+	oculusGui->addSlider("SUBTITLE HUD Y", 0,  1.0, &subtitleHudY);
+
     oculusGui->autoSizeToFitWidgets();
     ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
     guis.push_back(oculusGui);

@@ -17,11 +17,9 @@ and I want to get the same feeling with code
 I sort of had a problem that I couldn’t draw
 
 5
-00:00:13:00 --> 00:00:17
-
+00:00:13:00 --> 00:00:17:00
 and I couldn’t sculpt	 and 
 I couldn’t basically do anything
-
 
 6
 00:00:17:00 --> 00:00:21:00
@@ -32,22 +30,18 @@ I ended up going into using coding for that
 00:00:21:00 --> 00:00:24:00
 engaging people with art that was more technical
 
-
 8
 00:00:24:00 --> 00:00:27:00
 and creating this way for people who 
 were not technical to code as well
-
 
 9
 00:00:27:00 --> 00:00:30:00
 so this idea that we have really promoted 
 with processing: sketching with code
 
-
 10
 00:00:30:00 --> 00:00:34:00
 that you think through doing and you learn and 
 you develop through making
-
 

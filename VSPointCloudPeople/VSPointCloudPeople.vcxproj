@@ -408,6 +408,7 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Core\CloudsTransitionController.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
@@ -492,6 +493,7 @@ xcopy /y "$(ProjectDir)..\sharedCode\addons\ofxCopyCat\scripts\vs\CopyCat.bat" "
     <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
     <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h" />
     <ClInclude Include="..\CloudsLibrary\src\Core\CloudsTransitionController.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
