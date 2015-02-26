@@ -10,7 +10,7 @@ void testApp::setup(){
 	ofSetWindowShape(1920*2,1080);
 #else
 	#ifdef CLOUDS_RELEASE
-		ofSetWindowPosition(1920 + 1920*.5,1080*.5);
+		//ofSetWindowPosition(1920 + 1920*.5,1080*.5);
 	#endif
 	ofSetWindowShape(1920,1080);
 #endif

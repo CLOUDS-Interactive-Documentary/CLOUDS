@@ -29,9 +29,7 @@ string GetTranslationForString(string toTranslate){
 		return toTranslate;
 	}
 	else{
-		stringstream str;
-		str <<localization.translateKeyToLanguage(toTranslate, GetLanguage()) << " " << toTranslate;
-		return str.str();
+		return localization.translateKeyToLanguage(ofToUpper(toTranslate), GetLanguage())  + " " + localization.translateKeyToLanguage(ofToUpper(toTranslate), "ENGLISH");
 	}
 }
 

@@ -913,7 +913,7 @@ void CloudsIntroSequence::drawHelperType(){
 	
 	if(caughtQuestion != NULL){
 		basePosition = caughtQuestion->hoverPosition;
-		helpHoverText = caughtQuestion->question;
+		helpHoverText = GetTranslationForString( caughtQuestion->question );
 		helperTextOpacity = ofMap(caughtQuestion->hoverPercentComplete, 0.0, .05, 0.0, 1.0, true);
 
 		scaleModifier = .5;
