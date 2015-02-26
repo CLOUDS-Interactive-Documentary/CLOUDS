@@ -14,10 +14,10 @@
 #include "CloudsPortal.h"
 #endif
 
-#ifdef CLOUDS_INTERLUDE_NAV
+//#ifdef CLOUDS_INTERLUDE_NAV
 #include "ofxFTGL.h"
 #include "CloudsCalibrationNode.h"
-#endif
+//#endif
 
 #ifdef OCULUS_RIFT
 #include "ofxOculusDK2.h"
@@ -327,11 +327,11 @@ class CloudsVisualSystem {
 	bool updateInterludeInterface();
 	void drawInterludeInterface();
 	
-#ifdef CLOUDS_INTERLUDE_NAV
+//#ifdef CLOUDS_INTERLUDE_NAV
 	CalibrationNode resetNode;
 	CalibrationNode continueNode;
 	ofxFTGLFont interludeFont;
-#endif
+//#endif
 
 	float interludeNodeSize;
 	ofRange interludeActivationRange;
@@ -354,6 +354,10 @@ class CloudsVisualSystem {
 	float subtitle3DBasePosY;
 	float subtitle3DBasePosZ;
 	float subtitle3DScale;
+
+	float subtitleHudZ;
+	float subtitleHudY;
+
 
   protected:
 		
