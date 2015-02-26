@@ -8,6 +8,7 @@
 
 #include "CloudsSecondaryDisplayController.h"
 #include "CloudsGlobal.h"
+#include "CloudsLocalization.h"
 
 CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	hasSpeaker = false;
@@ -56,11 +57,13 @@ void CloudsSecondaryDisplayController::setup(){
     
     for( int i=minFontSize; i<maxFontSize; i++){
         ofxFTGLFont *tmpThin = new ofxFTGLFont();
-        tmpThin->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", i );
+//        tmpThin->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", i );
+		tmpThin->loadFont( GetThinFontPath(), i );
         tempFontListThin.push_back( tmpThin );
         
         ofxFTGLFont *tmpBook = new ofxFTGLFont();
-        tmpBook->loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i );
+//        tmpBook->loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i );
+		tmpBook->loadFont( GetFontPath(), i );
         tempFontListBook.push_back( tmpBook );
     }
     
@@ -85,18 +88,18 @@ void CloudsSecondaryDisplayController::setup(){
     meshProjectDescription = projectLayout.getMeshByID("TEXTBOX_x5F_DESC_1_");
     
     //setup all font layout objects
-    layoutQuestion = getLayoutForLayer(meshQuestion, "Blender-BOOK", 55);
+    layoutQuestion = getLayoutForLayer(meshQuestion, GetFontPath(), 55);
     
-    fontBioLastName = getFontForLayer(meshBioLastName, "Blender-BOOK", 50);
-    fontBioFirstName = getFontForLayer(meshBioFirstName, "Blender-THIN", 50);
-    fontBioLocation = getFontForLayer(meshBioLocation, "Blender-BOOK", 35);
-    fontBioTitle = getFontForLayer(meshBioTitle, "Blender-BOOK", 35);
-    layoutBioDescription = getLayoutForLayer(meshBioDescription, "Blender-BOOK", 40);
+    fontBioLastName = getFontForLayer(meshBioLastName, GetFontPath(), 50);
+	fontBioFirstName = getFontForLayer(meshBioFirstName, GetThinFontPath(), 50);
+    fontBioLocation = getFontForLayer(meshBioLocation, GetFontPath(), 35);
+    fontBioTitle = getFontForLayer(meshBioTitle, GetFontPath(), 35);
+    layoutBioDescription = getLayoutForLayer(meshBioDescription, GetFontPath(), 40);
     defaultBioBounds = meshBioDescription->bounds;
     
-    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-BOOK", 55);
-    layoutProjectArtist = getLayoutForLayer(meshProjectArtist, "Blender-BOOK", 40);
-    layoutProjectDescription = getLayoutForLayer(meshProjectDescription, "Blender-BOOK", 40);
+    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, GetFontPath(), 55);
+    layoutProjectArtist = getLayoutForLayer(meshProjectArtist, GetFontPath(), 40);
+    layoutProjectDescription = getLayoutForLayer(meshProjectDescription, GetFontPath(), 40);
     
 	displayTarget.allocate(1920, 1080, GL_RGB);
     // cleanup!
@@ -155,7 +158,8 @@ ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMes
         int fontSize = getFontSizeForMesh( textMesh, font );
         // make a layout
         ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
-        newLayout->loadFont( GetCloudsDataPath() + "font/"+font+".ttf", fontSize );
+        //newLayout->loadFont( GetCloudsDataPath() + "font/"+font+".ttf", fontSize );
+        newLayout->loadFont( font, fontSize );
         newLayout->setLineLength( textMesh->bounds.width );
         
         // make a label
@@ -176,7 +180,8 @@ ofxFTGLFont* CloudsSecondaryDisplayController::getFontForLayer( SVGMesh* textMes
         int fontSize = getFontSizeForMesh( textMesh, font );
         // make a layout
         ofxFTGLFont *newFont = new ofxFTGLFont();
-        newFont->loadFont( GetCloudsDataPath() + "font/"+font+".ttf", fontSize );
+        //newFont->loadFont( GetCloudsDataPath() + "font/"+font, fontSize );
+        newFont->loadFont( font, fontSize );
 		newFont->setLetterSpacing(kerning * .08);
         
         // make a label
@@ -201,11 +206,12 @@ int CloudsSecondaryDisplayController::getFontSizeForMesh( SVGMesh* textMesh, str
     
     for( int k=0; k<tempFontListThin.size()-1; k++){
         float f1h, f2h;
-        if(font == "Blender-THIN"){
+//        if(font == "Blender-THIN.ttf"){
+        if(font == GetThinFontPath()){
             f1h = tempFontListThin[k]->getStringBoundingBox("M", 0, 0).height;
             f2h = tempFontListThin[k+1]->getStringBoundingBox("M", 0, 0).height;
         }
-        else if(font == "Blender-BOOK"){
+		else if(font == GetFontPath()){
             f1h = tempFontListBook[k]->getStringBoundingBox("M", 0, 0).height;
             f2h = tempFontListBook[k+1]->getStringBoundingBox("M", 0, 0).height;
         }
