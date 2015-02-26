@@ -25,8 +25,14 @@ string GetTranslationForString(string toTranslate){
 	if(!localizationLoaded){
 		InitLocalization();
 	}
-
-	return localization.translateKeyToLanguage(toTranslate, GetLanguage());
+	if(GetLanguage() == "ENGLISH"){
+		return toTranslate;
+	}
+	else{
+		stringstream str;
+		str <<localization.translateKeyToLanguage(toTranslate, GetLanguage()) << " " << toTranslate;
+		return str.str();
+	}
 }
 
 string GetThinFontPath(){

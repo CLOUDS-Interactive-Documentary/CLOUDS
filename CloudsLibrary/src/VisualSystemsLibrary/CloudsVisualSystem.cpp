@@ -43,7 +43,7 @@ static ofSoundPlayer* selectMid = NULL;
 static ofSoundPlayer* selectLow = NULL;
 
 static ofxFTGLFont subtitleNameFont;
-static int subtitleNameFontSize = 14;
+static int subtitleNameFontSize = 20;
 
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
