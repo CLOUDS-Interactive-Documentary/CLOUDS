@@ -42,8 +42,8 @@ static ofSoundPlayer* selectHigh = NULL;
 static ofSoundPlayer* selectMid = NULL;
 static ofSoundPlayer* selectLow = NULL;
 
-static ofxFTGLFont hudSubtitleFont;
-static int subtitleFontSize = 12;
+static ofxFTGLFont subtitleNameFont;
+static int subtitleNameFontSize = 14;
 
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
@@ -332,9 +332,6 @@ void CloudsVisualSystem::setup(){
     
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 
-	if(!hudSubtitleFont.isLoaded()){
-		hudSubtitleFont.loadFont(GetFontPath(), subtitleFontSize);
-	}
 
 	//ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
 	if(!backgroundShaderLoaded){
@@ -601,12 +598,17 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			getRGBDVideoPlayer().drawSubtitles(renderTargetMidpoint,subtitleHeight);
 			
 //			string speakerFullName = speakerFirstName + " " + speakerLastName;
-			string speakerFullName = "Daniel Shiffman";
-			float speakerNameWidth = interludeFont.stringWidth(speakerFullName);
-			interludeFont.drawString(speakerFullName, 
-				renderTargetMidpoint-speakerNameWidth*.5,
-				subtitleHeight - 40); 
+			if(getRGBDVideoPlayer().isPlaying()){
+				if(!subtitleNameFont.isLoaded()){
+					subtitleNameFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", subtitleNameFontSize);
+				}
+				string speakerFullName = speakerFirstName + " " + speakerLastName;
 
+				float speakerNameWidth = subtitleNameFont.stringWidth(speakerFullName);
+				subtitleNameFont.drawString(speakerFullName, 
+					renderTargetMidpoint-speakerNameWidth*.5,
+					subtitleHeight - 45); 
+			}
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
 			getOculusRift().endOverlay();
 			

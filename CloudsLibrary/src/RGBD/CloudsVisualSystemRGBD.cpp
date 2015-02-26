@@ -270,11 +270,11 @@ void CloudsVisualSystemRGBD::playTestVideo(){
 	//}
 
 
-	string sourceFile = GetCloudsDataPath(true) + "media/Patricio_Alchemy_3";
+	string sourceFile = GetCloudsDataPath(true) + "media/Jen_necessity_of_code_2";
 	string filePathMov = sourceFile+".mov";
 	string filePathXml = sourceFile+".xml";
-	string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Shiffman_nature_of_code_boo.srt"; 
-
+	string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Shiffman_nature_of_code_book.srt"; 
+	setupSpeaker("Jen", "Lowe","");
 	if(ofFile::doesFileExist(filePathMov)){
         getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);
 		getRGBDVideoPlayer().swapAndPlay();

@@ -79,6 +79,7 @@ void testApp::update(){
 		shouldPlayTestVideo = false;
 		cout << "**** playing test video" << endl;
 		rgbd.playTestVideo();
+
 		CloudsClip* clip = new CloudsClip();
 		clip->person = "Jen";
 		hud.respondToClip(clip);
