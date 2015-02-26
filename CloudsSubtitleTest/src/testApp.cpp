@@ -12,14 +12,23 @@ void testApp::setup(){
 	parser.loadMediaAssets();
 
 	currentClip = 0;
+	stringstream questions;
 
 	for(int i = 0; i < parser.getAllClips().size(); i++){
 		CloudsClip* clip = parser.getAllClips()[i];
-		if(clip->hasSubtitleFile() && clip->hasMediaAsset){
+		if(clip->isLanguageCompatible() && clip->hasMediaAsset){
 			subtitleClips.push_back(clip);
 			cout << "added clip " << clip->getLinkName() << endl;
+			if(clip->hasQuestion()){
+				map<string,string>::iterator it;
+				for( it = clip->getAllQuestionTopicPairs().begin(); it != clip->getAllQuestionTopicPairs().end(); it++){
+					questions << clip->getLinkName() << "	" << it->first << "	" << it->second << endl;
+				}
+			}
 		}
 	}
+	
+	ofBufferToFile(GetCloudsDataPath() + "TRANSLATED_question_topics.txt", ofBuffer(questions.str()));
 
 	cout << "Found " << subtitleClips.size() << endl;
 
