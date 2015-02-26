@@ -357,7 +357,8 @@ class CloudsVisualSystem {
 
 	float subtitleHudZ;
 	float subtitleHudY;
-
+	int subtitleNameFontSize;
+	ofxFTGLFont subtitleNameFont;
 
   protected:
 		
