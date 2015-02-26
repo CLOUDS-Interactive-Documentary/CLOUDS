@@ -112,6 +112,9 @@
     <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.cpp">
       <Filter>addons\ofxSubtitles\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -176,6 +179,9 @@
     </Filter>
     <Filter Include="addons\ofxSubtitles\src">
       <UniqueIdentifier>{a91ce92c-a1f2-49f6-bf9b-5de122bee5ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Core">
+      <UniqueIdentifier>{3a4e10b3-df01-4baa-bb6b-fa92f64e030d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -361,6 +367,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h">
       <Filter>addons\ofxSubtitles\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
