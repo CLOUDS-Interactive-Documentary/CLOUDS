@@ -218,11 +218,11 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	leftPortal.cam = &cloudsCamera;
 	rightPortal.cam = &cloudsCamera;
-	resetPortal.cam = &cloudsCamera;
+	//resetPortal.cam = &cloudsCamera;
 	
 	leftPortal.bLookAtCamera = true;
 	rightPortal.bLookAtCamera = true;
-	resetPortal.bLookAtCamera = true;
+	//resetPortal.bLookAtCamera = true;
 	
 	//resetPortal.question = "RESET";
 
@@ -2006,7 +2006,7 @@ void CloudsVisualSystemRGBD::drawQuestionType(){
 	if(questionText == "" || (caughtPortal == NULL && selectedPortal == NULL) ){
 		return;
 	}
-
+	//cout << "Question Text " << questionText << endl;
 	ofVec3f basePosition = caughtPortal != NULL ? caughtPortal->hoverPosition : selectedPortal->hoverPosition;
 	float textOpacity = 1.0;
 	questionFont.setLetterSpacing(questionFontTracking);
@@ -2015,7 +2015,15 @@ void CloudsVisualSystemRGBD::drawQuestionType(){
 	float questionTextWidth2,questionTextHeight2;
 	string secondLine;
 	bool twoLines = questionTextWidth > questionFontSplitWidth;
-	if(twoLines){
+	if(questionText.find("\n") != string::npos){
+		twoLines = true;
+		vector<string> split = ofSplitString(questionText, "\n", true,true);
+		questionText = split[0];
+		secondLine = split[1];
+		questionTextWidth  = questionFont.stringWidth(questionText);
+		questionTextWidth2 = questionFont.stringWidth(secondLine);
+	}
+	else if(twoLines){
 		vector<string> pieces = ofSplitString(questionText, " ", true,true);
 		vector<string> firstHalf;
 		vector<string> secondHalf;

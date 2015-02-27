@@ -48,13 +48,26 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	englishSubtitleKerning = .5;
 	japaneseSubtitleKerning = .4;
 
+//		if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 	nextPlayer    = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 
 	currentVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 	nextVoiceoverPlayer    = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
+
 	currentSubtitles = ofPtr<ofxSubtitles>( new ofxSubtitles() );
 	nextSubtitles    = ofPtr<ofxSubtitles>( new ofxSubtitles() );
+#ifdef OCULUS_RIFT
+	subtitleFontSize = 20;
+	currentSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);
+    nextSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);;
+#else
+	subtitleFontSize = 20;
+	currentSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);
+    nextSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);;
+#endif
+	currentSubtitles->lineHeight = .5;
+	nextSubtitles->lineHeight = .5;
 
 	currentClipHasSubtitles = nextClipHasSubtitles = false;
 }
@@ -498,7 +511,9 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     if (strstr(path.data(), "Higa") != NULL) {
         fps = 30;
     }
-    
+	nextSubtitles->setFramesPerSecond(fps);
+
+    /*
 	if(fontLoadWidth != CloudsVisualSystem::getStaticRenderTarget().getWidth()){
 		int fontSize = 50;
 		string fontPath = GetFontPath();
@@ -512,9 +527,12 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 			return false;
 		}
 		nextSubtitles->font.setLetterSpacing(japaneseSubtitleKerning);
-		nextSubtitles->lineHeight = .3;
 		// find font size based on 85% canvas width and a predefined maximum string
+#ifdef OCULUS_RIFT
+		float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth() * .65;
+#else
 		float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth() * .85;
+#endif
 		if(requiredWidth == 0){
 			requiredWidth = 1920*.85;
 		}
@@ -537,15 +555,16 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 	    return true;
 	}
 	else{
+		*/
 		return nextSubtitles->load(path);
-	}
+	//}
 
 }
 
 //--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::drawSubtitles(){
 #ifdef OCULUS_RIFT
-	int x = 700;
+	int x = 660;
 #else
 	int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
 #endif

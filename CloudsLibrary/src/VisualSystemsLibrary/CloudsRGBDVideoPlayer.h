@@ -85,7 +85,7 @@ public:
 	float subtitle2DOffsetLowerThirds;
 	float subtitle2DOffsetVisualSystem;
 	bool showingLowerThirds;
-
+	int subtitleFontSize;
 	//type
 	float englishSubtitleKerning;
 	float japaneseSubtitleKerning;

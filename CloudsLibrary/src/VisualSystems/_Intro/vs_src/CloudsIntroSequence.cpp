@@ -872,7 +872,11 @@ void CloudsIntroSequence::drawHelperType(){
     
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
 		//helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
-		helperFont.loadFont(GetFontPath(), helperFontSize-4	); //hack!
+#ifdef OCULUS_RIFT
+		helperFont.loadFont(GetFontPath(), helperFontSize-5	); //hack!
+#else
+		helperFont.loadFont(GetFontPath(), helperFontSize-3	); //hack!
+#endif		
 		currentHelperFontSize = helperFontSize;
 	}
 
@@ -929,7 +933,15 @@ void CloudsIntroSequence::drawHelperType(){
 		float hoverTextWidth2,questionTextHeight2;
 		string secondLine;
 		bool twoLines = hoverTextWidth > 500;
-		if(twoLines){
+		if(helpHoverText.find("\n") != string::npos){
+			twoLines = true;
+			vector<string> split = ofSplitString(helpHoverText, "\n", true,true);
+			helpHoverText = split[0];
+			secondLine = split[1];
+			hoverTextWidth = helperFont.stringWidth(helpHoverText);
+			hoverTextWidth2 = helperFont.stringWidth(secondLine);
+		}
+		else if(twoLines){
 			vector<string> pieces = ofSplitString(helpHoverText, " ", true,true);
 			vector<string> firstHalf;
 			vector<string> secondHalf;
