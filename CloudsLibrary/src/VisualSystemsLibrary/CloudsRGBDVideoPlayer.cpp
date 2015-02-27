@@ -42,11 +42,11 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	
 	fontLoadWidth = 0;
 
-	subtitle2DOffsetLowerThirds = .7;
-	subtitle2DOffsetVisualSystem = .9;
+	subtitle2DOffsetLowerThirds = .65;
+	subtitle2DOffsetVisualSystem = .85;
 
 	englishSubtitleKerning = .5;
-	japaneseSubtitleKerning = .5;
+	japaneseSubtitleKerning = .4;
 
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 	nextPlayer    = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
@@ -514,7 +514,7 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 		if(requiredWidth == 0){
 			requiredWidth = 1920;
 		}
-		string maxStr = "If I'd have to choose from something interesting";
+		string maxStr = "If I'd have to choose from something interesting. Something else";
 		float curStringWidth = nextSubtitles->font.stringWidth(maxStr);
     
 		// loop here until you find the right font size
