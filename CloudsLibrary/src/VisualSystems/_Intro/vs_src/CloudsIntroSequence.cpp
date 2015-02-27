@@ -548,7 +548,7 @@ void CloudsIntroSequence::updateQuestions(){
 					selectQuestionStartPos = warpCamera.getPosition();
 					selectQuestionStartRot = warpCamera.getOrientationQuat();
 
-					CloudsPortalEventArgs args(ofToUpper(selectedQuestion->question));
+					CloudsPortalEventArgs args( GetTranslationForString( ofToUpper(selectedQuestion->question) ) );
 					ofNotifyEvent(events.portalHoverBegan, args);
 					
 				}

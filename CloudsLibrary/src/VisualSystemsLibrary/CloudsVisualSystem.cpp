@@ -1170,9 +1170,12 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             
 #ifdef OCULUS_RIFT
         case OF_KEY_BACKSPACE:
+			ofExit();
+		case 320:
 		case '0':
 			oculusRift.reset();
 			break;
+		case 
 #endif
         default:
             selfKeyPressed(args);
