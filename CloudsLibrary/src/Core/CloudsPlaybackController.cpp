@@ -1302,7 +1302,7 @@ void CloudsPlaybackController::drawRenderTarget(){
 			ofPtr<CloudsInputMouse> mouseInput = dynamic_pointer_cast<CloudsInputMouse>(GetCloudsInput());
 			mouseInput->drawFeedback(
 				currentVisualSystem->getCanvasWidth(), 
-				currentVisualSystem->getCanvasHeight(), drawBrightText);
+				currentVisualSystem->getCanvasHeight()-400, drawBrightText);
         }
 #endif
 
