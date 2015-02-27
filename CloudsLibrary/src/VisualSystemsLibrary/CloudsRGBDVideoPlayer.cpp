@@ -503,16 +503,20 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 		int fontSize = 50;
 		string fontPath = GetFontPath();
 
+#ifdef OCULUS_RIFT
+		if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_LEFT)) {
+#else
 		if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
+#endif
 			ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Failed to set up subtitles at path " << path;
 			return false;
 		}
 		nextSubtitles->font.setLetterSpacing(japaneseSubtitleKerning);
-
+		nextSubtitles->lineHeight = .3;
 		// find font size based on 85% canvas width and a predefined maximum string
-		float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth();
+		float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth() * .85;
 		if(requiredWidth == 0){
-			requiredWidth = 1920;
+			requiredWidth = 1920*.85;
 		}
 		string maxStr = "If I'd have to choose from something interesting. Something else";
 		float curStringWidth = nextSubtitles->font.stringWidth(maxStr);
@@ -540,7 +544,11 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 
 //--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::drawSubtitles(){
-    int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
+#ifdef OCULUS_RIFT
+	int x = 700;
+#else
+	int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
+#endif
     int y = CloudsVisualSystem::getStaticRenderTarget().getHeight();
 	y *= showingLowerThirds ? subtitle2DOffsetLowerThirds : subtitle2DOffsetVisualSystem;
 	drawSubtitles(x,y);

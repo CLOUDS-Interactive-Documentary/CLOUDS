@@ -872,7 +872,7 @@ void CloudsIntroSequence::drawHelperType(){
     
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
 		//helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
-		helperFont.loadFont(GetFontPath(), helperFontSize);
+		helperFont.loadFont(GetFontPath(), helperFontSize-4	); //hack!
 		currentHelperFontSize = helperFontSize;
 	}
 
