@@ -1175,7 +1175,6 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 		case '0':
 			oculusRift.reset();
 			break;
-		case 
 #endif
         default:
             selfKeyPressed(args);
