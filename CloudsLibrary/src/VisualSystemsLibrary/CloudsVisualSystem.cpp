@@ -43,7 +43,7 @@ static ofSoundPlayer* selectMid = NULL;
 static ofSoundPlayer* selectLow = NULL;
 
 static ofxFTGLFont subtitleNameFont;
-static int subtitleNameFontSize = 20;
+static int subtitleNameFontSize = 24;
 
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
@@ -595,7 +595,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 
 			float renderTargetMidpoint = CloudsVisualSystem::getStaticRenderTarget().getWidth()*.5;
 			float subtitleHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() * subtitleHudY;
-			getRGBDVideoPlayer().drawSubtitles(renderTargetMidpoint,subtitleHeight);
+			getRGBDVideoPlayer().drawSubtitles(700,subtitleHeight);
 			
 //			string speakerFullName = speakerFirstName + " " + speakerLastName;
 			if(getRGBDVideoPlayer().isPlaying()){
@@ -606,7 +606,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 
 				float speakerNameWidth = subtitleNameFont.stringWidth(speakerFullName);
 				subtitleNameFont.drawString(speakerFullName, 
-					renderTargetMidpoint-speakerNameWidth*.5,
+					75,
 					subtitleHeight - 45); 
 			}
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
@@ -3485,8 +3485,11 @@ void CloudsVisualSystem::loadGUIS()
 #endif
     
     cam.reset();
-	#ifndef OCULUS_RIFT
     ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/ofEasyCamSettings");
+	#ifdef OCULUS_RIFT
+	ofVec3f pos = cam.getPosition();
+	cam.reset();
+	cam.setPosition(pos);
 	#endif
 	resetTimeline();
     
@@ -3559,12 +3562,15 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     }
 	
     cam.reset();
-	#ifndef OCULUS_RIFT
 	string easyCamPath = presetPath+"/ofEasyCamSettings";
 	if(ofFile(easyCamPath).exists()){
 		ofxLoadCamera(cam, easyCamPath);
+		#ifdef OCULUS_RIFT
+		ofVec3f pos = cam.getPosition();
+		cam.reset();
+		cam.setPosition(pos);
+		#endif
 	}
-	#endif
     loadTimelineUIMappings(presetPath+"/UITimelineMappings.xml");
 	timeline->setName( ofFilePath::getBaseName( presetPath ) );
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
