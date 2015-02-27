@@ -29,13 +29,13 @@ string GetTranslationForString(string toTranslate){
 		return toTranslate;
 	}
 	else{
-		return localization.translateKeyToLanguage(ofToUpper(toTranslate), GetLanguage())  + " " + localization.translateKeyToLanguage(ofToUpper(toTranslate), "ENGLISH");
+		return localization.translateKeyToLanguage(ofToUpper(toTranslate), GetLanguage())  + "\n" + localization.translateKeyToLanguage(ofToUpper(toTranslate), "ENGLISH");
 	}
 }
 
 string GetThinFontPath(){
 	if(GetLanguage() == "JAPANESE"){
-		return GetCloudsDataPath() + "font/mplus-1c-light.ttf";
+		return GetCloudsDataPath() + "font/Yu Gothic Medium.otf";
 	}
 	else{
 		return GetCloudsDataPath() + "font/Blender-THIN.ttf";
@@ -44,7 +44,7 @@ string GetThinFontPath(){
 //--------------------------------------
 string GetMediumFontPath(){
 	if(GetLanguage() == "JAPANESE"){
-		return GetCloudsDataPath() + "font/mplus-1c-medium.ttf";
+		return GetCloudsDataPath() + "font/Yu Gothic Medium.otf";
 	}
 	else{
 		return 	GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
@@ -53,7 +53,7 @@ string GetMediumFontPath(){
 
 string GetFontPath(){
 	if(GetLanguage() == "JAPANESE"){
-		return GetCloudsDataPath() + "font/mplus-1c-regular.ttf";
+		return GetCloudsDataPath() + "font/Yu Gothic Medium.otf";
 	}
 	else{
 		return 	GetCloudsDataPath() + "font/Blender-BOOK.ttf";

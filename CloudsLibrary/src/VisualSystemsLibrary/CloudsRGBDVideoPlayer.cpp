@@ -500,7 +500,7 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     }
     
 	if(fontLoadWidth != CloudsVisualSystem::getStaticRenderTarget().getWidth()){
-		int fontSize = 36;
+		int fontSize = 50;
 		string fontPath = GetFontPath();
 
 		if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
@@ -510,11 +510,11 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 		nextSubtitles->font.setLetterSpacing(japaneseSubtitleKerning);
 
 		// find font size based on 85% canvas width and a predefined maximum string
-		float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
+		float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth();
 		if(requiredWidth == 0){
-			requiredWidth = 1920* .85;
+			requiredWidth = 1920;
 		}
-		string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
+		string maxStr = "If I'd have to choose from something interesting";
 		float curStringWidth = nextSubtitles->font.stringWidth(maxStr);
     
 		// loop here until you find the right font size
