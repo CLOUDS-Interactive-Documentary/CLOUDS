@@ -515,6 +515,8 @@ class CloudsVisualSystem {
     
 	ofVec2f interactiveCameraRot, previousinteractiveCameraRot;
     
+	float questionSelectFade; //only used on Oculus in RGBD system
+
     //POST FX
     bool bEnablePostFX;
     float postChromaDist;

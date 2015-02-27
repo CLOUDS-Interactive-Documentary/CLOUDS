@@ -10,7 +10,6 @@ CloudsVisualSystemEvents CloudsVisualSystemRGBD::events;
 CloudsVisualSystemRGBD::CloudsVisualSystemRGBD(){
 
 	visualSystemFadeValue = 0.0;
-	questionSelectFade = 0.0;
     questionToReplace = 0;	
 	transitionTarget = NULL;
 	bTransitionIn = bTransitionOut = false;

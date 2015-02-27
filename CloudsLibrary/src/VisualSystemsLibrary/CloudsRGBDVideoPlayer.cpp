@@ -42,7 +42,7 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	
 	fontLoadWidth = 0;
 
-	subtitle2DOffsetLowerThirds = .65;
+	subtitle2DOffsetLowerThirds = .70;
 	subtitle2DOffsetVisualSystem = .85;
 
 	englishSubtitleKerning = .5;
@@ -61,13 +61,15 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	subtitleFontSize = 20;
 	currentSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);
     nextSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);;
+	currentSubtitles->lineHeight = .5;
+	nextSubtitles->lineHeight = .5;
 #else
 	subtitleFontSize = 20;
 	currentSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);
     nextSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);;
+	currentSubtitles->lineHeight = .8;
+	nextSubtitles->lineHeight = .8;
 #endif
-	currentSubtitles->lineHeight = .5;
-	nextSubtitles->lineHeight = .5;
 
 	currentClipHasSubtitles = nextClipHasSubtitles = false;
 }
@@ -564,7 +566,7 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 //--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::drawSubtitles(){
 #ifdef OCULUS_RIFT
-	int x = 660;
+	int x = 650;
 #else
 	int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
 #endif
@@ -574,15 +576,15 @@ void CloudsRGBDVideoPlayer::drawSubtitles(){
 }
 
 //--------------------------------------------------------------- 
-void CloudsRGBDVideoPlayer::drawSubtitles(int x, int y){
+void CloudsRGBDVideoPlayer::drawSubtitles(int x, int y, float fade){
 	bool playing = isPlaying() ;
 	if( hasSubtitles() && playing) {
         ofPushStyle();
 		ofDisableLighting();
 		ofEnableAlphaBlending();
-        ofSetColor(0, 200);
-        currentSubtitles->draw(x+3, y-2);
-        ofSetColor(255);
+        ofSetColor(0, 200*fade);
+        currentSubtitles->draw(x+2, y+2);
+        ofSetColor(255,255*fade);
         currentSubtitles->draw(x, y);
 		ofDisableAlphaBlending();
         ofPopStyle();

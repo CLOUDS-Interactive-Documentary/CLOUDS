@@ -329,7 +329,8 @@ void CloudsVisualSystem::setup(){
     postGrainDist = 0.f;
     //POST PROCESSING BLEED AMNT
     bleed  = 20;
-    
+   	questionSelectFade = 1.0;
+
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 
 
@@ -595,17 +596,24 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 
 			float renderTargetMidpoint = CloudsVisualSystem::getStaticRenderTarget().getWidth()*.5;
 			float subtitleHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() * subtitleHudY;
-			getRGBDVideoPlayer().drawSubtitles(650,subtitleHeight);
+			ofPushStyle();
+
+			getRGBDVideoPlayer().drawSubtitles(650,subtitleHeight, questionSelectFade);
 			
 //			string speakerFullName = speakerFirstName + " " + speakerLastName;
 			if(getRGBDVideoPlayer().isPlaying()){
 				if(!subtitleNameFont.isLoaded()){
 					subtitleNameFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", subtitleNameFontSize);
 				}
-				string speakerFullName = speakerFirstName + " " + speakerLastName;
 
+				string speakerFullName = speakerFirstName + " " + speakerLastName;
 				float speakerNameWidth = subtitleNameFont.stringWidth(speakerFullName);
+				ofPushStyle();
+				ofSetColor(0,255*questionSelectFade);
+				subtitleNameFont.drawString(speakerFullName, 650+2, subtitleHeight - 54+2); 
+				ofSetColor(255,255*questionSelectFade);
 				subtitleNameFont.drawString(speakerFullName, 650, subtitleHeight - 54); 
+				ofPopStyle();
 			}
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
 			getOculusRift().endOverlay();

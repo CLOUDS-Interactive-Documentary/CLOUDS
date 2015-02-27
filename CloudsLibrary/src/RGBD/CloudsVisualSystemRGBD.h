@@ -107,7 +107,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	float getRGBDTransitionValue();
 	float visualSystemFadeValue;
-	float questionSelectFade;
+//	float questionSelectFade;
     int questionToReplace;
     
 	ofCamera& getCameraRef(){
