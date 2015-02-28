@@ -7746,7 +7746,6 @@
 <system name="2DVideo_Reas_network1">
     <keywords>processing</keywords>
     <links>
-        <clip>Casey - emergence</clip>
         <clip>LIA - PatternsIntheBrain</clip>
         <clip>LIA - VisualizeAnIdea</clip>
         <clip>LIA - IdeaToCode</clip>
@@ -16268,7 +16267,9 @@
 </system>
 <system name="ExampleOpenSteer_Pursuit_gray">
     <keywords>emergence|artificial life|rules|games</keywords>
-    <links></links>
+    <links>
+        <clip>Casey - emergence</clip>        
+    </links>
     <suppressions>
         <clip>Andres - soft systems 1</clip>
         <clip>Bruce - Anthropomorphism</clip>
@@ -23935,7 +23936,7 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>1</sound_allow_vo>
@@ -32676,7 +32677,10 @@
 </system>
 <system name="Replicator_Replicator">
     <keywords>network|information|the cloud|spirituality</keywords>
-    <links></links>
+    <links>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>        
+    </links>
     <suppressions>
         <clip>Aaron - collaboration</clip>
         <clip>Aaron - digital trace</clip>
@@ -35356,6 +35360,7 @@
         <clip>Bruce - Fractal graphics</clip>
     </links>
     <suppressions>
+        <clip>Casey - emergence</clip>        
         <clip>Memo_master - Psychedelic Pong</clip>
         <clip>LIA - LTree</clip>
         <clip>Philip - all the points can flush</clip>

@@ -1,10 +1,15 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>SeaOfLines</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>42</Kind>
+    <Name>NUM PARTICLES</Name>
+    <Value>1759</Value>
+</Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BG ALPHA</Name>
@@ -35,7 +40,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>GRAVITY</Name>
-    <Value>-0.027027011</Value>
+    <Value>-0.383196652</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

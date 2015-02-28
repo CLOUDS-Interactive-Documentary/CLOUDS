@@ -79,13 +79,13 @@ public:
 	ofPtr<ofxSubtitles> getSubtitles();
 
     void drawSubtitles();
-	void drawSubtitles(int x, int y);
+	void drawSubtitles(int x, int y, float fade = 1.0);
 
 	//subtitle 2D params
 	float subtitle2DOffsetLowerThirds;
 	float subtitle2DOffsetVisualSystem;
 	bool showingLowerThirds;
-
+	int subtitleFontSize;
 	//type
 	float englishSubtitleKerning;
 	float japaneseSubtitleKerning;

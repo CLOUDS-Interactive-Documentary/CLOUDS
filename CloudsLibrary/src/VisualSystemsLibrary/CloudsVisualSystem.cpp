@@ -329,7 +329,8 @@ void CloudsVisualSystem::setup(){
     postGrainDist = 0.f;
     //POST PROCESSING BLEED AMNT
     bleed  = 20;
-    
+   	questionSelectFade = 1.0;
+
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 
 
@@ -595,19 +596,24 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 
 			float renderTargetMidpoint = CloudsVisualSystem::getStaticRenderTarget().getWidth()*.5;
 			float subtitleHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() * subtitleHudY;
-			getRGBDVideoPlayer().drawSubtitles(700,subtitleHeight);
+			ofPushStyle();
+
+			getRGBDVideoPlayer().drawSubtitles(650,subtitleHeight, questionSelectFade);
 			
 //			string speakerFullName = speakerFirstName + " " + speakerLastName;
 			if(getRGBDVideoPlayer().isPlaying()){
 				if(!subtitleNameFont.isLoaded()){
 					subtitleNameFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", subtitleNameFontSize);
 				}
-				string speakerFullName = speakerFirstName + " " + speakerLastName;
 
+				string speakerFullName = speakerFirstName + " " + speakerLastName;
 				float speakerNameWidth = subtitleNameFont.stringWidth(speakerFullName);
-				subtitleNameFont.drawString(speakerFullName, 
-					75,
-					subtitleHeight - 45); 
+				ofPushStyle();
+				ofSetColor(0,255*questionSelectFade);
+				subtitleNameFont.drawString(speakerFullName, 650+2, subtitleHeight - 54+2); 
+				ofSetColor(255,255*questionSelectFade);
+				subtitleNameFont.drawString(speakerFullName, 650, subtitleHeight - 54); 
+				ofPopStyle();
 			}
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
 			getOculusRift().endOverlay();
@@ -1175,7 +1181,6 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 		case '0':
 			oculusRift.reset();
 			break;
-		case 
 #endif
         default:
             selfKeyPressed(args);
@@ -3489,8 +3494,10 @@ void CloudsVisualSystem::loadGUIS()
     ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/ofEasyCamSettings");
 	#ifdef OCULUS_RIFT
 	ofVec3f pos = cam.getPosition();
+	ofQuaternion rot = cam.getOrientationQuat();
 	cam.reset();
 	cam.setPosition(pos);
+	cam.setOrientation(rot);	
 	#endif
 	resetTimeline();
     
@@ -3568,8 +3575,10 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 		ofxLoadCamera(cam, easyCamPath);
 		#ifdef OCULUS_RIFT
 		ofVec3f pos = cam.getPosition();
+		ofQuaternion rot = cam.getOrientationQuat();
 		cam.reset();
 		cam.setPosition(pos);
+		cam.setOrientation(rot);
 		#endif
 	}
     loadTimelineUIMappings(presetPath+"/UITimelineMappings.xml");

@@ -1,14 +1,19 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1485.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>435.000000000</XPosition>
+    <YPosition>209.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>BlackLines_1</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlackLines_connect</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -49,9 +54,4 @@
     <Kind>2</Kind>
     <Name>WhiteLines_2</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BlackLines_connect</Name>
-    <Value>1</Value>
 </Widget>

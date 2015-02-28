@@ -10,7 +10,6 @@ CloudsVisualSystemEvents CloudsVisualSystemRGBD::events;
 CloudsVisualSystemRGBD::CloudsVisualSystemRGBD(){
 
 	visualSystemFadeValue = 0.0;
-	questionSelectFade = 0.0;
     questionToReplace = 0;	
 	transitionTarget = NULL;
 	bTransitionIn = bTransitionOut = false;
@@ -218,11 +217,11 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	leftPortal.cam = &cloudsCamera;
 	rightPortal.cam = &cloudsCamera;
-	resetPortal.cam = &cloudsCamera;
+	//resetPortal.cam = &cloudsCamera;
 	
 	leftPortal.bLookAtCamera = true;
 	rightPortal.bLookAtCamera = true;
-	resetPortal.bLookAtCamera = true;
+	//resetPortal.bLookAtCamera = true;
 	
 	//resetPortal.question = "RESET";
 
@@ -1662,18 +1661,19 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
 
 void CloudsVisualSystemRGBD::speakerChanged(){
 
-	if(timeline!=NULL){
+	if(timeline != NULL){
        timeline->hide();
 	}
 	
-	//clearQuestions();
+    //only during screening
+    /*
 	if(portalToClear != NULL){
 		if(questions.size() != 0){
 			portalToClear->clip = questions[0].clip;
 			portalToClear->topic = questions[0].topic;
 			portalToClear->question = questions[0].question;
 			questions.erase( questions.begin() );
-			cout << "******ERASING QUESTIONS. SIZE IS NOE " << questions.size() << endl;
+			cout << "******ERASING QUESTIONS. SIZE IS NOW " << questions.size() << endl;
 		}
         else{
 			portalToClear->topic = "";
@@ -1681,7 +1681,8 @@ void CloudsVisualSystemRGBD::speakerChanged(){
         }
 		portalToClear = NULL;
 	}
-	
+	*/
+    
 	assignAvailableQuestion(leftPortal);
 	assignAvailableQuestion(rightPortal);
 }
@@ -2006,7 +2007,7 @@ void CloudsVisualSystemRGBD::drawQuestionType(){
 	if(questionText == "" || (caughtPortal == NULL && selectedPortal == NULL) ){
 		return;
 	}
-
+	//cout << "Question Text " << questionText << endl;
 	ofVec3f basePosition = caughtPortal != NULL ? caughtPortal->hoverPosition : selectedPortal->hoverPosition;
 	float textOpacity = 1.0;
 	questionFont.setLetterSpacing(questionFontTracking);
@@ -2015,7 +2016,15 @@ void CloudsVisualSystemRGBD::drawQuestionType(){
 	float questionTextWidth2,questionTextHeight2;
 	string secondLine;
 	bool twoLines = questionTextWidth > questionFontSplitWidth;
-	if(twoLines){
+	if(questionText.find("\n") != string::npos){
+		twoLines = true;
+		vector<string> split = ofSplitString(questionText, "\n", true,true);
+		questionText = split[0];
+		secondLine = split[1];
+		questionTextWidth  = questionFont.stringWidth(questionText);
+		questionTextWidth2 = questionFont.stringWidth(secondLine);
+	}
+	else if(twoLines){
 		vector<string> pieces = ofSplitString(questionText, " ", true,true);
 		vector<string> firstHalf;
 		vector<string> secondHalf;
@@ -2126,7 +2135,22 @@ void CloudsVisualSystemRGBD::selfBegin(){
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){
-	
+
+    if(portalToClear != NULL){
+		if(questions.size() != 0){
+			portalToClear->clip = questions[0].clip;
+			portalToClear->topic = questions[0].topic;
+			portalToClear->question = questions[0].question;
+			questions.erase( questions.begin() );
+			cout << "******ERASING QUESTIONS. SIZE IS NOW " << questions.size() << endl;
+		}
+        else{
+			portalToClear->topic = "";
+			portalToClear->question = "";
+        }
+		portalToClear = NULL;
+	}
+
 }
 
 bool CloudsVisualSystemRGBD::isQuestionSelectedAndClipDone(){
@@ -2148,7 +2172,7 @@ string CloudsVisualSystemRGBD::getQuestionText(){
 
 #ifdef CLOUDS_SCREENING
 bool CloudsVisualSystemRGBD::hasQuestionsRemaining(){
-	return questions.size() == 0 && leftPortal.question == "" && rightPortal.question == "";
+	return !(questions.size() == 0 && leftPortal.question == "" && rightPortal.question == "");
 }
 
 void CloudsVisualSystemRGBD::clearQuestionQueue(){

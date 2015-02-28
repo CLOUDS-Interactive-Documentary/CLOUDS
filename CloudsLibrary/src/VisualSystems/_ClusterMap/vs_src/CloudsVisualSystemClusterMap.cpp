@@ -1419,7 +1419,15 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 		float questionTextWidth2, questionTextHeight2;
 		string secondLine;
 		bool twoLines = questionTextWidth > 500;
-		if(twoLines){
+        if(questionText.find("\n") != string::npos){
+            twoLines = true;
+            vector<string> split = ofSplitString(questionText, "\n", true,true);
+            questionText = split[0];
+            secondLine = split[1];
+            questionTextWidth  = questionFont.stringWidth(questionText);
+            questionTextWidth2 = questionFont.stringWidth(secondLine);
+        }
+        else if(twoLines){
 			vector<string> pieces = ofSplitString(questionText, " ", true,true);
 			vector<string> firstHalf;
 			vector<string> secondHalf;
@@ -1431,7 +1439,7 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 			questionTextWidth  = questionFont.stringWidth(questionText);
 			questionTextWidth2 = questionFont.stringWidth(secondLine);
 		}
-		float questionTextHeight = questionFont.stringHeight(questionText);
+ 		float questionTextHeight = questionFont.stringHeight(questionText);
 		
         ofPushMatrix();
 		ofPushStyle();

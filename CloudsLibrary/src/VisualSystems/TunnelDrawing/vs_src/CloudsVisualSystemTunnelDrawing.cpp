@@ -17,10 +17,6 @@ void CloudsVisualSystemTunnelDrawing::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_DRAW;
     secondaryCursorMode = CURSOR_MODE_DRAW;
 
-	#ifdef OCULUS_RIFT
-	camera.begin( ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()) );
-	camera.end();
-	#endif
 
 }
 
@@ -89,6 +85,9 @@ void CloudsVisualSystemTunnelDrawing::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemTunnelDrawing::selfSetup(){
 	colorShader.load(getVisualSystemDataPath() + "shaders/ribbon");
+   	camera.begin( ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()) );
+	camera.end();
+ 
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered

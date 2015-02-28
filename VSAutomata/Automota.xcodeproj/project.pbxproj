@@ -13,8 +13,7 @@
 		031E27C01AA1652200424146 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27B81AA1652200424146 /* CloudsCalibrationNode.cpp */; };
 		031E27C71AA1653900424146 /* CloudsGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27C41AA1653900424146 /* CloudsGlobal.cpp */; };
 		031E27C81AA1653900424146 /* CloudsLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27C51AA1653900424146 /* CloudsLocalization.cpp */; };
-		03D5936D19469D0400FCFF7B /* BalloonCredit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D5936919469D0300FCFF7B /* BalloonCredit.cpp */; };
-		03D5936E19469D0400FCFF7B /* CloudsVisualSystemBalloons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D5936B19469D0300FCFF7B /* CloudsVisualSystemBalloons.cpp */; };
+		031E27CF1AA1658C00424146 /* CloudsVisualSystemAutomata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27CD1AA1658C00424146 /* CloudsVisualSystemAutomata.cpp */; };
 		03D593F419469D4000FCFF7B /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D593D819469D4000FCFF7B /* libftgl.a */; };
 		03D593F919469D4000FCFF7B /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D593E219469D4000FCFF7B /* ofxFTGLFont.cpp */; };
 		03D593FA19469D4000FCFF7B /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D593E419469D4000FCFF7B /* ofxFTGLSimpleLayout.cpp */; };
@@ -210,10 +209,8 @@
 		031E27C41AA1653900424146 /* CloudsGlobal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsGlobal.cpp; path = ../CloudsLibrary/src/CloudsGlobal.cpp; sourceTree = "<group>"; };
 		031E27C51AA1653900424146 /* CloudsLocalization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsLocalization.cpp; path = ../CloudsLibrary/src/CloudsLocalization.cpp; sourceTree = "<group>"; };
 		031E27C61AA1653900424146 /* CloudsLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsLocalization.h; path = ../CloudsLibrary/src/CloudsLocalization.h; sourceTree = "<group>"; };
-		03D5936919469D0300FCFF7B /* BalloonCredit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BalloonCredit.cpp; sourceTree = "<group>"; };
-		03D5936A19469D0300FCFF7B /* BalloonCredit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalloonCredit.h; sourceTree = "<group>"; };
-		03D5936B19469D0300FCFF7B /* CloudsVisualSystemBalloons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemBalloons.cpp; sourceTree = "<group>"; };
-		03D5936C19469D0300FCFF7B /* CloudsVisualSystemBalloons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemBalloons.h; sourceTree = "<group>"; };
+		031E27CD1AA1658C00424146 /* CloudsVisualSystemAutomata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemAutomata.cpp; sourceTree = "<group>"; };
+		031E27CE1AA1658C00424146 /* CloudsVisualSystemAutomata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemAutomata.h; sourceTree = "<group>"; };
 		03D593BB19469D4000FCFF7B /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
 		03D593BC19469D4000FCFF7B /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
 		03D593BD19469D4000FCFF7B /* FTBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBuffer.h; sourceTree = "<group>"; };
@@ -261,7 +258,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* Balloons64Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Balloons64Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* AutomotaDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomotaDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -634,22 +631,20 @@
 			path = ../CloudsLibrary/src/Core;
 			sourceTree = "<group>";
 		};
-		03D5936719469D0300FCFF7B /* Balloons */ = {
+		031E27CB1AA1658C00424146 /* Automata */ = {
 			isa = PBXGroup;
 			children = (
-				03D5936819469D0300FCFF7B /* vs_src */,
+				031E27CC1AA1658C00424146 /* vs_src */,
 			);
-			name = Balloons;
-			path = ../CloudsLibrary/src/VisualSystems/Balloons;
+			name = Automata;
+			path = ../CloudsLibrary/src/VisualSystems/Automata;
 			sourceTree = "<group>";
 		};
-		03D5936819469D0300FCFF7B /* vs_src */ = {
+		031E27CC1AA1658C00424146 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				03D5936919469D0300FCFF7B /* BalloonCredit.cpp */,
-				03D5936A19469D0300FCFF7B /* BalloonCredit.h */,
-				03D5936B19469D0300FCFF7B /* CloudsVisualSystemBalloons.cpp */,
-				03D5936C19469D0300FCFF7B /* CloudsVisualSystemBalloons.h */,
+				031E27CD1AA1658C00424146 /* CloudsVisualSystemAutomata.cpp */,
+				031E27CE1AA1658C00424146 /* CloudsVisualSystemAutomata.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -865,14 +860,14 @@
 				031E27C51AA1653900424146 /* CloudsLocalization.cpp */,
 				031E27C61AA1653900424146 /* CloudsLocalization.h */,
 				031E27B71AA1652200424146 /* Core */,
-				03D5936719469D0300FCFF7B /* Balloons */,
+				031E27CB1AA1658C00424146 /* Automata */,
 				E7211CD518A285970063EF97 /* Input */,
 				E7211CC518A2858F0063EF97 /* VisualSystemsLibrary */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* Balloons64Debug.app */,
+				E4B69B5B0A3A1756003C02F2 /* AutomotaDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1444,9 +1439,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* Balloons64 */ = {
+		E4B69B5A0A3A1756003C02F2 /* Automota */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Balloons64" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Automota" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -1458,9 +1453,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = Balloons64;
+			name = Automota;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* Balloons64Debug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* AutomotaDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1471,7 +1466,7 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Balloons64" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Automota" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1492,7 +1487,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* Balloons64 */,
+				E4B69B5A0A3A1756003C02F2 /* Automota */,
 			);
 		};
 /* End PBXProject section */
@@ -1617,7 +1612,6 @@
 				E755D98E1944230C00AA81C1 /* ofxUISortableList.cpp in Sources */,
 				E755D9841944230C00AA81C1 /* ofxUIMovingGraph.cpp in Sources */,
 				E755D98A1944230C00AA81C1 /* ofxUIRectangle.cpp in Sources */,
-				03D5936E19469D0400FCFF7B /* CloudsVisualSystemBalloons.cpp in Sources */,
 				E755D9701944230C00AA81C1 /* ofxUI2DPad.cpp in Sources */,
 				E755D9771944230C00AA81C1 /* ofxUIDropDownList.cpp in Sources */,
 				E7211C0718A284400063EF97 /* ofxTLFlags.cpp in Sources */,
@@ -1629,7 +1623,6 @@
 				E755D9871944230C00AA81C1 /* ofxUINumberDialer.cpp in Sources */,
 				E755D97B1944230C00AA81C1 /* ofxUIImage.cpp in Sources */,
 				E7211BBC18A2843F0063EF97 /* ofxCameraSaveLoad.cpp in Sources */,
-				03D5936D19469D0400FCFF7B /* BalloonCredit.cpp in Sources */,
 				E7211BC018A2843F0063EF97 /* ofxDistorterBehavior.cpp in Sources */,
 				E7211BFF18A284400063EF97 /* ofxTLAudioTrack.cpp in Sources */,
 				031E27C81AA1653900424146 /* CloudsLocalization.cpp in Sources */,
@@ -1638,6 +1631,7 @@
 				E7211C0918A284400063EF97 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				E755D97C1944230C00AA81C1 /* ofxUIImageButton.cpp in Sources */,
 				E755D9861944230C00AA81C1 /* ofxUIMultiImageToggle.cpp in Sources */,
+				031E27CF1AA1658C00424146 /* CloudsVisualSystemAutomata.cpp in Sources */,
 				E755D9731944230C00AA81C1 /* ofxUIButton.cpp in Sources */,
 				E7211C2818A284400063EF97 /* ofxEasingSine.cpp in Sources */,
 				E755D9961944230C00AA81C1 /* ofxUIToggleMatrix.cpp in Sources */,
@@ -1829,7 +1823,7 @@
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
 				);
-				PRODUCT_NAME = Balloons64Debug;
+				PRODUCT_NAME = AutomotaDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1916,7 +1910,7 @@
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
 				);
-				PRODUCT_NAME = Balloons64;
+				PRODUCT_NAME = Automota;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1924,7 +1918,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Balloons64" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Automota" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -1933,7 +1927,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Balloons64" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Automota" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
