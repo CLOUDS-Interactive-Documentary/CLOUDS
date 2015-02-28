@@ -909,10 +909,7 @@ void CloudsIntroSequence::drawHelperType(){
 		}
 		helperFont.setLetterSpacing(helperFontTracking);
 	}
-	#elif defined(MOUSE_INPUT)
-		//helpHoverText = "< LOOK FORWARD";
-		//basePosition = ofVec3f(0,0,0);
-		//helperTextOpacity = currentTitleOpacity;
+
 	#endif
 	
 	if(caughtQuestion != NULL){
@@ -940,6 +937,8 @@ void CloudsIntroSequence::drawHelperType(){
 			secondLine = split[1];
 			hoverTextWidth = helperFont.stringWidth(helpHoverText);
 			hoverTextWidth2 = helperFont.stringWidth(secondLine);
+            
+            cout << "QUESTION " << helpHoverText << " " << secondLine << endl;
 		}
 		else if(twoLines){
 			vector<string> pieces = ofSplitString(helpHoverText, " ", true,true);
@@ -954,6 +953,8 @@ void CloudsIntroSequence::drawHelperType(){
 			hoverTextWidth2 = helperFont.stringWidth(secondLine);
 		}
 		float hoverTextHeight = helperFont.stringHeight(helpHoverText);
+		
+        //basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
 
 		#ifdef OCULUS_RIFT
 		getOculusRift().multBillboardMatrix( basePosition );
@@ -970,13 +971,19 @@ void CloudsIntroSequence::drawHelperType(){
         bool showAbove = !bUseOculusRift && caughtQuestion != NULL && caughtQuestion->tunnelQuadrantIndex == 2;
 		int yOffsetMult = (showAbove) ? -1 : 1;
 		//helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY - hoverTextHeight/2) );
-
+        
+        cout << "helper text opacity " << helperTextOpacity << endl;
+        cout << "helper font y " << helperFontY << endl;
 		if(twoLines){
             if(showAbove){
+                cout << "drawing " << helpHoverText << " w " << hoverTextWidth << " h " <<  helperFontY + hoverTextHeight*1.5 << endl;
+                cout << "drawing " << secondLine << " w " << hoverTextWidth << " h " << hoverTextHeight << endl;
                 helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
                 helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
             }
             else{
+                cout << "drawing " << secondLine << " w " << hoverTextWidth << " h " <<  hoverTextHeight << endl;
+                cout << "drawing " << helpHoverText << " w " << hoverTextWidth << " h " << hoverTextHeight << endl;
                 helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
                 helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
             }
@@ -996,7 +1003,7 @@ void CloudsIntroSequence::drawHelperType(){
         
         float hintTextWidth  = helperFont.stringWidth(GetTranslationForString("SELECT A QUESTION"));
 		float hintTextHeight = helperFont.stringHeight(GetTranslationForString("SELECT A QUESTION"));
-		ofVec3f basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
+		basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
 #ifdef OCULUS_RIFT
 		getOculusRift().multBillboardMatrix( basePosition );
 #else

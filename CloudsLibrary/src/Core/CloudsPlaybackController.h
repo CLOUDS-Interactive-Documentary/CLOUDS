@@ -192,7 +192,8 @@ class CloudsPlaybackController : public ofThread {
 
     //INTERLUDE INTERFACE
 	void resetInterludeVariables();
-	ofxFTGLFont interludeInterfaceFont;
+    ofxFTGLSimpleLayout interludeInterfaceFont;
+//	ofxFTGLFont interludeInterfaceFont;
 	float interludeExitBarWidth;
 	bool interludeHoveringContinue;
 	bool interludeHoveringReset;

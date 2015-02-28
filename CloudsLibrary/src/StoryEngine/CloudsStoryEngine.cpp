@@ -304,18 +304,18 @@ vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
 
 bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset, bool forceCredits){
     
+    #ifdef CLOUDS_SCREENING
+	if(forceCredits){
+        preset = visualSystems->getPresetForSystem("Balloons", "CREDITS_FINAL");
+        return true;
+	}
+    #endif
+    
     if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
         ofLogError("CloudsStoryEngine::buildAct") << " no topics for next act!";
         return false;
     }
     
-#ifdef CLOUDS_SCREENING
-	if(forceCredits){
-        preset = visualSystems->getPresetForSystem("Balloons", "CREDITS_FINAL");
-        return true;
-	}
-#endif
-	
     map<string, int>::iterator it;
     vector<string> topics;
     for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
@@ -1558,9 +1558,6 @@ void CloudsStoryEngine::populateScreeningQuestionsPart1(){
     linkName = "Casey - emergence";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
-    linkName = "Ramsey - a hundred million";
-    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-
     linkName = "JTNimoy - Cortex";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
@@ -1573,18 +1570,29 @@ void CloudsStoryEngine::populateScreeningQuestionsPart2(){
 	screeningQuestionClips.clear();
 
 	string linkName;
-	linkName = "Kyle_MC - new aesthetic 1";
+    //machine vision
+//	linkName = "Kyle_MC - new aesthetic 1";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Ramsey - a hundred million";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
-    linkName = "Jer - lives being documented through data";
+    //virtual reality
+    linkName = "Intro - VirtualReality";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+ 
+ 
+//    linkName = "Jer - lives being documented through data";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 	
-    linkName = "Julia - Who owns the internet?";
+//    linkName = "Julia - Who owns the internet?";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    //OPEN SOURCE
+    linkName = "Intro - Collaboration";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
-    linkName = "Shiffman - sharing";
-    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-    
+    //WHERE DOES THE STORY END
     linkName = "Karsten - infinite conversation";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 

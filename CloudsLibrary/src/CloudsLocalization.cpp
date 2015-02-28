@@ -35,7 +35,7 @@ string GetTranslationForString(string toTranslate){
 
 string GetThinFontPath(){
 	if(GetLanguage() == "JAPANESE"){
-		return GetCloudsDataPath() + "font/Yu Gothic Medium.otf";
+		return GetCloudsDataPath() + "font/AxisStd-Regular.otf";
 	}
 	else{
 		return GetCloudsDataPath() + "font/Blender-THIN.ttf";
@@ -44,7 +44,7 @@ string GetThinFontPath(){
 //--------------------------------------
 string GetMediumFontPath(){
 	if(GetLanguage() == "JAPANESE"){
-		return GetCloudsDataPath() + "font/Yu Gothic Medium.otf";
+		return GetCloudsDataPath() + "font/AxisStd-Regular.otf";
 	}
 	else{
 		return 	GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
@@ -53,7 +53,7 @@ string GetMediumFontPath(){
 
 string GetFontPath(){
 	if(GetLanguage() == "JAPANESE"){
-		return GetCloudsDataPath() + "font/Yu Gothic Medium.otf";
+		return GetCloudsDataPath() + "font/AxisStd-Regular.otf";
 	}
 	else{
 		return 	GetCloudsDataPath() + "font/Blender-BOOK.ttf";

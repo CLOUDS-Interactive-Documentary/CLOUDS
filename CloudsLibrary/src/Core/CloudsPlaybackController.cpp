@@ -177,7 +177,7 @@ void CloudsPlaybackController::setup(){
 	
 	loading = true;
     //interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-MEDIUM.ttf", 15);
-	interludeInterfaceFont.loadFont(GetMediumFontPath(), 15);
+	interludeInterfaceFont.loadFont(GetMediumFontPath(), 14);
 
 
     if(!eventsRegistered){
@@ -1151,6 +1151,7 @@ void CloudsPlaybackController::drawInterludeInterface(){
 	string promptType;
 	int tracking;
 	if(interludeSystem != NULL){
+        interludeInterfaceFont.setLineLength(interludeExitBarWidth);
 
 		hoverRect = ofRectangle(interludeSystem->getCanvasWidth(), 0,
 								-interludeExitBarWidth, interludeSystem->getCanvasHeight());
@@ -1174,7 +1175,7 @@ void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string 
 
 	ofPushStyle();
 	ofEnableAlphaBlending();
-	
+
 	ofFill();
 	
 	float forceExtendPercent = ofMap(ofGetElapsedTimef(),
@@ -1405,7 +1406,6 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
         return;
     }
     
-	//rgbdVisualSystem->clearQuestions();
 	nextVisualSystemPreset = args.preset;
     
 	//	cout << "CloudsPlaybackController::showVisualSystem SETTING NEXT SYSTEM TO " << nextVisualSystem.presetName << endl;
@@ -1577,13 +1577,15 @@ void CloudsPlaybackController::showInterlude(){
     
 	resetInterludeVariables();
 	
-//    vector<string> topics;
     CloudsVisualSystemPreset interludePreset;
-	#ifdef CLOUDS_SCREENING
-	if(rgbdVisualSystem->hasQuestionsRemaining() && showedClusterMapNavigation){
+    
+    #ifdef CLOUDS_SCREENING
+    cout << "HAS QUESTIONS REMAINING??? " << (rgbdVisualSystem->hasQuestionsRemaining() ? "YES" : "NO") << endl;
+	if(!rgbdVisualSystem->hasQuestionsRemaining() && showedClusterMapNavigation){
 		forceCredits = true;
 	}
 	#endif
+    
     if(!storyEngine.getPresetIDForInterlude(run, interludePreset, forceCredits)){        
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";
 		if(!storyEngine.getRandomInterlude(run, interludePreset)){

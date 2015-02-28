@@ -42,13 +42,12 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	
 	fontLoadWidth = 0;
 
-	subtitle2DOffsetLowerThirds = .70;
-	subtitle2DOffsetVisualSystem = .85;
+	subtitle2DOffsetLowerThirds = .72;
+	subtitle2DOffsetVisualSystem = .72;
 
 	englishSubtitleKerning = .5;
 	japaneseSubtitleKerning = .4;
 
-//		if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 	nextPlayer    = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 
@@ -64,12 +63,14 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	currentSubtitles->lineHeight = .5;
 	nextSubtitles->lineHeight = .5;
 #else
-	subtitleFontSize = 20;
+	subtitleFontSize = 21;
 	currentSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);
     nextSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);;
 	currentSubtitles->lineHeight = .8;
 	nextSubtitles->lineHeight = .8;
 #endif
+	currentSubtitles->forceUpperCase = false;
+	nextSubtitles->forceUpperCase = false;
 
 	currentClipHasSubtitles = nextClipHasSubtitles = false;
 }
@@ -121,7 +122,6 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 #else
     // No need to use a thread, just call this function directly.
     threadedFunction();
-
     return bLoadResult;
 #endif
 }
@@ -513,8 +513,10 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     if (strstr(path.data(), "Higa") != NULL) {
         fps = 30;
     }
+    
 	nextSubtitles->setFramesPerSecond(fps);
-
+	return nextSubtitles->load(path);
+    
     /*
 	if(fontLoadWidth != CloudsVisualSystem::getStaticRenderTarget().getWidth()){
 		int fontSize = 50;
@@ -557,9 +559,9 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 	    return true;
 	}
 	else{
-		*/
-		return nextSubtitles->load(path);
+//		return nextSubtitles->load(path);
 	//}
+     */
 
 }
 

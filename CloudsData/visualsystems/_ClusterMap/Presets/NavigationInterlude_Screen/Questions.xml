@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>Questions</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>415.000000000</XPosition>
-    <YPosition>162.000000000</YPosition>
+    <XPosition>630.000000000</XPosition>
+    <YPosition>237.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTION SCALE</Name>
-    <Value>0.201970443</Value>
+    <Value>0.197044328</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>6</Kind>
     <Name>QUESTION TUG DISTANCE</Name>
-    <HighValue>172.857147217</HighValue>
+    <HighValue>244.285720825</HighValue>
     <LowValue>27.733989716</LowValue>
 </Widget>
 <Widget>
@@ -39,7 +39,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>FONT SIZE</Name>
-    <Value>24</Value>
+    <Value>20</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

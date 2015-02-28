@@ -32,7 +32,7 @@ void CloudsVisualSystemAutomata::selfSetupGui()
     customGui->addSlider("FG BRI 2", 0.0f, 1.0f, &fgParams2[2]);
 
     customGui->addSpacer();
-    customGui->addSlider("FADE", 0.0, 0.5, &fade);  // Fucks up if I go up to 1.0, don't know why, don't care anymore...
+    customGui->addSlider("FADE", 0.0, 0.5, &fade);
     
     customGui->addSpacer();
     customGui->addLabel("SEED IMAGE");
@@ -104,35 +104,32 @@ void CloudsVisualSystemAutomata::selfSetup()
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::restart()
 {
+    float width = getSharedRenderTarget().getWidth();
+    float height = getSharedRenderTarget().getHeight();
     ofImage seedImage;
     if (selectedSeedIdx > -1) {
         seedImage.loadImage(seedDir.getPath(selectedSeedIdx));
+        seedImage.resize(width, height);
     }
     
-    float width = getSharedRenderTarget().getWidth();
-    float height = getSharedRenderTarget().getHeight();
     
     ofFbo::Settings fboSettings = ofFbo::Settings::Settings();
     fboSettings.width = width;
     fboSettings.height = height;
-    fboSettings.internalformat = GL_RGBA;
+    fboSettings.internalformat = GL_RGBA32F;
     fboSettings.minFilter = GL_NEAREST;
     fboSettings.maxFilter = GL_NEAREST;
     
     texFbo.allocate(fboSettings);
     texFbo.begin();
-    {
-        ofClear(0, 0);
-    }
+    ofClear(0, 0);
     texFbo.end();
 
     outFbo.allocate(fboSettings);
     outFbo.begin();
-    {
-        ofClear(0, 0);
-        if (seedImage.isAllocated()) {
-            seedImage.draw((width - seedImage.getWidth()) / 2, (height - seedImage.getHeight()) / 2);
-        }
+    ofClear(0, 0);
+    if (seedImage.isAllocated()) {
+        seedImage.draw((width - seedImage.getWidth()) / 2, (height - seedImage.getHeight()) / 2);
     }
     outFbo.end();
     

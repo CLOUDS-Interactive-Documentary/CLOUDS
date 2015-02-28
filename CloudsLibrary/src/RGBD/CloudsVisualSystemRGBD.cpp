@@ -1661,18 +1661,19 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
 
 void CloudsVisualSystemRGBD::speakerChanged(){
 
-	if(timeline!=NULL){
+	if(timeline != NULL){
        timeline->hide();
 	}
 	
-	//clearQuestions();
+    //only during screening
+    /*
 	if(portalToClear != NULL){
 		if(questions.size() != 0){
 			portalToClear->clip = questions[0].clip;
 			portalToClear->topic = questions[0].topic;
 			portalToClear->question = questions[0].question;
 			questions.erase( questions.begin() );
-			cout << "******ERASING QUESTIONS. SIZE IS NOE " << questions.size() << endl;
+			cout << "******ERASING QUESTIONS. SIZE IS NOW " << questions.size() << endl;
 		}
         else{
 			portalToClear->topic = "";
@@ -1680,7 +1681,8 @@ void CloudsVisualSystemRGBD::speakerChanged(){
         }
 		portalToClear = NULL;
 	}
-	
+	*/
+    
 	assignAvailableQuestion(leftPortal);
 	assignAvailableQuestion(rightPortal);
 }
@@ -2133,7 +2135,22 @@ void CloudsVisualSystemRGBD::selfBegin(){
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){
-	
+
+    if(portalToClear != NULL){
+		if(questions.size() != 0){
+			portalToClear->clip = questions[0].clip;
+			portalToClear->topic = questions[0].topic;
+			portalToClear->question = questions[0].question;
+			questions.erase( questions.begin() );
+			cout << "******ERASING QUESTIONS. SIZE IS NOW " << questions.size() << endl;
+		}
+        else{
+			portalToClear->topic = "";
+			portalToClear->question = "";
+        }
+		portalToClear = NULL;
+	}
+
 }
 
 bool CloudsVisualSystemRGBD::isQuestionSelectedAndClipDone(){
@@ -2155,7 +2172,7 @@ string CloudsVisualSystemRGBD::getQuestionText(){
 
 #ifdef CLOUDS_SCREENING
 bool CloudsVisualSystemRGBD::hasQuestionsRemaining(){
-	return questions.size() == 0 && leftPortal.question == "" && rightPortal.question == "";
+	return !(questions.size() == 0 && leftPortal.question == "" && rightPortal.question == "");
 }
 
 void CloudsVisualSystemRGBD::clearQuestionQueue(){
