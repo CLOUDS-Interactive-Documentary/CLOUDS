@@ -597,9 +597,11 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			float renderTargetMidpoint = CloudsVisualSystem::getStaticRenderTarget().getWidth()*.5;
 			float subtitleHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() * subtitleHudY;
 			ofPushStyle();
-
-			getRGBDVideoPlayer().drawSubtitles(650,subtitleHeight, questionSelectFade);
 			
+			if(GetLanguage() != "ENGLISH" || speakerFirstName == "Higa" || speakerFirstName == "Patricio"){
+				getRGBDVideoPlayer().drawSubtitles(650,subtitleHeight, questionSelectFade);
+			}	
+
 //			string speakerFullName = speakerFirstName + " " + speakerLastName;
 			if(getRGBDVideoPlayer().isPlaying()){
 				if(!subtitleNameFont.isLoaded()){
