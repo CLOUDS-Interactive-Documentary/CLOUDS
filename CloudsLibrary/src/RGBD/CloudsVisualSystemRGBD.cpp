@@ -255,7 +255,7 @@ void CloudsVisualSystemRGBD::playTestVideo(CloudsClip* clip){
 	getRGBDVideoPlayer().swapAndPlay();
 }
 
-void CloudsVisualSystemRGBD::playTestVideo(){
+void CloudsVisualSystemRGBD::playTestVideo(int videoIndex){
 
 
 	//string sourceFile = GetCloudsDataPath(true) + "VO/Intro_Computers.aif";
@@ -268,12 +268,22 @@ void CloudsVisualSystemRGBD::playTestVideo(){
 	//	ofSystemAlertDialog("Test Video " + sourceFile + " does not exist");
 	//}
 
+	string sourceFile, filePathMov,filePathXml, subtitlesPathSrt;
 
-	string sourceFile = GetCloudsDataPath(true) + "media/Jen_necessity_of_code_2";
-	string filePathMov = sourceFile+".mov";
-	string filePathXml = sourceFile+".xml";
-	string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Shiffman_nature_of_code_book.srt"; 
-	setupSpeaker("Jen", "Lowe","");
+	if(videoIndex == 0){
+		sourceFile = GetCloudsDataPath(true) + "media/Zach_at_a_festival";
+		filePathMov = sourceFile+".mov";
+		filePathXml = sourceFile+".xml";
+		subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Zach_at_a_festival.srt"; 
+		setupSpeaker("Zach", "Leiberman","");
+	}
+	else{
+		sourceFile = GetCloudsDataPath(true) + "media/Higa_committed_to_community";
+		filePathMov = sourceFile+".mov";
+		filePathXml = sourceFile+".xml";
+		subtitlesPathSrt = GetCloudsDataPath() + "language/ENGLISH/subtitles/Higa_committed_to_community.srt"; 
+		setupSpeaker("Zach", "Leiberman","");	
+	}
 	if(ofFile::doesFileExist(filePathMov)){
         getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);
 		getRGBDVideoPlayer().swapAndPlay();

@@ -15,7 +15,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
-	ofSetWindowPosition(0,0);
+	//ofSetWindowPosition(0,0);
 #ifdef OCULUS_RIFT
 	ofSetWindowShape(1920*2,1080);
 #else
@@ -49,6 +49,8 @@ void testApp::setup(){
 	//ofBufferToFile(GetCloudsDataPath() + "TRANSLATED_question_topics.txt", ofBuffer(questions.str()));
 	////////////////////////////////////////////////
 
+	testVideoIndex = 0;
+
 	rgbd.setup();
 	rgbd.setDrawToScreen(false);
 #ifdef OCULUS_RIFT
@@ -78,13 +80,18 @@ void testApp::update(){
 	if(shouldPlayTestVideo){
 		shouldPlayTestVideo = false;
 		cout << "**** playing test video" << endl;
-		rgbd.playTestVideo();
+		rgbd.playTestVideo(testVideoIndex);
 
 		CloudsClip* clip = new CloudsClip();
-		clip->person = "Jen";
+		if(testVideoIndex == 0){
+			clip->person = "Zach";
+		}
+		else{		
+			clip->person = "Higa";
+		}
 		hud.respondToClip(clip);
 		CloudsQuestionEventArgs args(clip, "WHAT'S YOUR QUESTION?", "topic");
-		hud.questionSelected(args);
+		//hud.questionSelected(args);
 	}
 }
 
@@ -128,8 +135,15 @@ void testApp::keyPressed(int key){
 		
 		CloudsClip clip;
 		clip.person = speakerKeys[curSpeaker];
-		hud.respondToClip(&clip);
-	
+		hud.respondToClip(&clip);	
+	}
+	else if(key == '1'){
+		testVideoIndex = 0;
+		shouldPlayTestVideo = true;
+	}
+	else if(key == '2'){
+		testVideoIndex = 1;
+		shouldPlayTestVideo = true;	
 	}
 }
 

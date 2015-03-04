@@ -171,7 +171,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     //////////TRANSITIONS
     
 	void playTestVideo(CloudsClip* clip);
-	void playTestVideo();
+	void playTestVideo(int index = 0);
     
     static CloudsVisualSystemEvents events;
     

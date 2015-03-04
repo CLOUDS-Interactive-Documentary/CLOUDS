@@ -30,7 +30,7 @@ class testApp : public ofBaseApp{
 	ofxFTGLFont font;
 	CloudsHUDController hud;
 	CloudsFCPParser parser;
-
+	int testVideoIndex;
 	bool shouldPlayTestVideo;
 	CloudsVisualSystemRGBD rgbd;
 	CloudsVisualSystem::RGBDTransitionType type;
