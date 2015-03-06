@@ -109,7 +109,7 @@ void CloudsVisualSystemAutomata::restart()
     ofImage seedImage;
     if (selectedSeedIdx > -1) {
         seedImage.loadImage(seedDir.getPath(selectedSeedIdx));
-        seedImage.resize(width, height);
+        seedImage.resize(width, height);	
     }
     
     

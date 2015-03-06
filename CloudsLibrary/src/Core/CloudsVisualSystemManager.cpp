@@ -27,7 +27,7 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemBalloons.h"
 
 #if !defined(OCULUS_RIFT) && defined(TARGET_OSX)
-#include "CloudsVisualSystemCandyMountains.h"
+//#include "CloudsVisualSystemCandyMountains.h"
 #endif
 
 #include "CloudsVisualSystemChromogram.h"
@@ -126,7 +126,7 @@ struct Mapping {
 	{ "BallDroppings",			&fCreate<CloudsVisualSystemBallDroppings> },
 	{ "Balloons",				&fCreate<CloudsVisualSystemBalloons> },
 #if !defined(OCULUS_RIFT) && defined(TARGET_OSX)
-	{ "CandyMountains",			&fCreate<CloudsVisualSystemCandyMountains> },
+//	{ "CandyMountains",			&fCreate<CloudsVisualSystemCandyMountains> },
 #endif
 	{ "Chromogram",				&fCreate<CloudsVisualSystemChromogram> },
 	{ "CirclePacking",			&fCreate<CloudsVisualSystemCirclePacking> },

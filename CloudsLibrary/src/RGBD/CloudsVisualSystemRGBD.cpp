@@ -271,18 +271,16 @@ void CloudsVisualSystemRGBD::playTestVideo(int videoIndex){
 	string sourceFile, filePathMov,filePathXml, subtitlesPathSrt;
 
 	if(videoIndex == 0){
-		sourceFile = GetCloudsDataPath(true) + "media/Zach_at_a_festival";
+		filePathXml = GetCloudsDataPath(true) + "media/Aaron_code,_story,_communication.xml";
+		sourceFile  = GetCloudsDataPath(true) + "media/Aaron_code,_story,_communication_2.5mbps";
 		filePathMov = sourceFile+".mov";
-		filePathXml = sourceFile+".xml";
-		subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Zach_at_a_festival.srt"; 
-		setupSpeaker("Zach", "Leiberman","");
+		setupSpeaker("Kyle", "McDonald","");
 	}
 	else{
-		sourceFile = GetCloudsDataPath(true) + "media/Higa_committed_to_community";
+		filePathXml = GetCloudsDataPath(true) + "media/Kyle_MC_folowing_the_finger.xml";
+		sourceFile  = GetCloudsDataPath(true) + "media/Kyle_MC_folowing_the_finger";
 		filePathMov = sourceFile+".mov";
-		filePathXml = sourceFile+".xml";
-		subtitlesPathSrt = GetCloudsDataPath() + "language/ENGLISH/subtitles/Higa_committed_to_community.srt"; 
-		setupSpeaker("Zach", "Leiberman","");	
+		setupSpeaker("Kyle", "McDonald","");
 	}
 	if(ofFile::doesFileExist(filePathMov)){
         getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);

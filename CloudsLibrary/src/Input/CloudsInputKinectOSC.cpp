@@ -843,7 +843,7 @@ void CloudsInputKinectOSC::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos
     else
         cursorSize = ofMap(pos.z, 2, -2, cursorUpSizeMin, cursorUpSizeMax, true);
     
-    cout << "DRAW CURSOR " << pos << " mode " << mode << " fade " << fadeOut << " size " << cursorSize << endl;
+    //cout << "DRAW CURSOR " << pos << " mode " << mode << " fade " << fadeOut << " size " << cursorSize << endl;
     fadeOut = 1.0;
     
     selfDrawCursorDefault(mode, pos, bDragged, focus, fadeOut, cursorSize);

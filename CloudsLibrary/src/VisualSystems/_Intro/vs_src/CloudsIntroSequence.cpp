@@ -938,7 +938,7 @@ void CloudsIntroSequence::drawHelperType(){
 			hoverTextWidth = helperFont.stringWidth(helpHoverText);
 			hoverTextWidth2 = helperFont.stringWidth(secondLine);
             
-            cout << "QUESTION " << helpHoverText << " " << secondLine << endl;
+//            cout << "QUESTION " << helpHoverText << " " << secondLine << endl;
 		}
 		else if(twoLines){
 			vector<string> pieces = ofSplitString(helpHoverText, " ", true,true);
@@ -972,18 +972,18 @@ void CloudsIntroSequence::drawHelperType(){
 		int yOffsetMult = (showAbove) ? -1 : 1;
 		//helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY - hoverTextHeight/2) );
         
-        cout << "helper text opacity " << helperTextOpacity << endl;
-        cout << "helper font y " << helperFontY << endl;
+//        cout << "helper text opacity " << helperTextOpacity << endl;
+//        cout << "helper font y " << helperFontY << endl;
 		if(twoLines){
             if(showAbove){
-                cout << "drawing " << helpHoverText << " w " << hoverTextWidth << " h " <<  helperFontY + hoverTextHeight*1.5 << endl;
-                cout << "drawing " << secondLine << " w " << hoverTextWidth << " h " << hoverTextHeight << endl;
+//                cout << "drawing " << helpHoverText << " w " << hoverTextWidth << " h " <<  helperFontY + hoverTextHeight*1.5 << endl;
+//                cout << "drawing " << secondLine << " w " << hoverTextWidth << " h " << hoverTextHeight << endl;
                 helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
                 helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
             }
             else{
-                cout << "drawing " << secondLine << " w " << hoverTextWidth << " h " <<  hoverTextHeight << endl;
-                cout << "drawing " << helpHoverText << " w " << hoverTextWidth << " h " << hoverTextHeight << endl;
+//                cout << "drawing " << secondLine << " w " << hoverTextWidth << " h " <<  hoverTextHeight << endl;
+//                cout << "drawing " << helpHoverText << " w " << hoverTextWidth << " h " << hoverTextHeight << endl;
                 helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
                 helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
             }
