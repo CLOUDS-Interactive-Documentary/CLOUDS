@@ -402,13 +402,15 @@ void CloudsIntroSequence::updateWaiting(){
 								  .5,1.5,
 								  0.0,1.0,true) *
 								  ofMap(currentTitleOpacity,titleTypeOpacity,.9,0.3,.7,true);
-		if(timeSinceMouse > 4.){
+        #ifdef TARGET_WIN32
+        if(timeSinceMouse > 4.){
 			clickToBeginAlpha *= ofMap(timeSinceMouse, 4.0, 5.0, 1.0, 0.0,true);
 			if(timeSinceMouse > 5.0){
 				clickTextActive = false;
 				glfwSetCursorPos( ofAppGLFWWindow::windowP, getCanvasWidth()/2, getCanvasHeight()/2);
 			}
 		}
+        #endif
 	}
 	#endif
 }

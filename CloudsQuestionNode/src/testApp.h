@@ -25,7 +25,7 @@ class testApp : public ofBaseApp{
 		
 	ofEasyCam easyCam;
 	CloudsPortal portal;
-    
+    ofFbo fbo;
 #ifdef OCULUS_RIFT
     ofxOculusRift oculusRift;
 #endif
