@@ -380,7 +380,6 @@
 		038033B21948167700AFD40C /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8251F18BEBD7000C1EB93 /* CloudsVisualSystemLia.cpp */; };
 		038033B31948167700AFD40C /* ControlTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A6A18BF099000C1EB93 /* ControlTrigger.cpp */; };
 		038033B41948167700AFD40C /* ofxUIMultiImageButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D58A1943F2AF00AA81C1 /* ofxUIMultiImageButton.cpp */; };
-		038033B51948167700AFD40C /* NetworkingUtilsWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA900189F362A006C9E4E /* NetworkingUtilsWin.cpp */; };
 		038033B61948167700AFD40C /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8228C18BEBD6E00C1EB93 /* CloudsAudioEvents.cpp */; };
 		038033B71948167700AFD40C /* ofxTLPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827B518BEBDCF00C1EB93 /* ofxTLPage.cpp */; };
 		038033B81948167700AFD40C /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA834189F3611006C9E4E /* ofxSQLiteUpdate.cpp */; };
@@ -590,7 +589,6 @@
 		038034851948167700AFD40C /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA909189F362A006C9E4E /* OscPrintReceivedElements.cpp */; };
 		038034861948167700AFD40C /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA122189F1CD4006C9E4E /* Clock.cpp */; };
 		038034871948167700AFD40C /* ofxMPMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82B3E18BF0AC200C1EB93 /* ofxMPMNode.cpp */; };
-		038034891948167700AFD40C /* UdpSocketWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA901189F362A006C9E4E /* UdpSocketWin.cpp */; };
 		0380348B1948167700AFD40C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D70519440E3000AA81C1 /* QuartzCore.framework */; };
 		0380348C1948167700AFD40C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D701194405C500AA81C1 /* libz.dylib */; };
 		0380348D1948167700AFD40C /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D6FF194405B600AA81C1 /* libc++.dylib */; };
@@ -1030,7 +1028,6 @@
 		03A0F61C1947A0850071CF4B /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8251F18BEBD7000C1EB93 /* CloudsVisualSystemLia.cpp */; };
 		03A0F61D1947A0850071CF4B /* ControlTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A6A18BF099000C1EB93 /* ControlTrigger.cpp */; };
 		03A0F61E1947A0850071CF4B /* ofxUIMultiImageButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D58A1943F2AF00AA81C1 /* ofxUIMultiImageButton.cpp */; };
-		03A0F61F1947A0850071CF4B /* NetworkingUtilsWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA900189F362A006C9E4E /* NetworkingUtilsWin.cpp */; };
 		03A0F6201947A0850071CF4B /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8228C18BEBD6E00C1EB93 /* CloudsAudioEvents.cpp */; };
 		03A0F6211947A0850071CF4B /* ofxTLPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827B518BEBDCF00C1EB93 /* ofxTLPage.cpp */; };
 		03A0F6221947A0850071CF4B /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA834189F3611006C9E4E /* ofxSQLiteUpdate.cpp */; };
@@ -1240,7 +1237,6 @@
 		03A0F6EF1947A0850071CF4B /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA909189F362A006C9E4E /* OscPrintReceivedElements.cpp */; };
 		03A0F6F01947A0850071CF4B /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA122189F1CD4006C9E4E /* Clock.cpp */; };
 		03A0F6F11947A0850071CF4B /* ofxMPMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82B3E18BF0AC200C1EB93 /* ofxMPMNode.cpp */; };
-		03A0F6F31947A0850071CF4B /* UdpSocketWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA901189F362A006C9E4E /* UdpSocketWin.cpp */; };
 		03A0F6F51947A0850071CF4B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D70519440E3000AA81C1 /* QuartzCore.framework */; };
 		03A0F6F61947A0850071CF4B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D701194405C500AA81C1 /* libz.dylib */; };
 		03A0F6F71947A0850071CF4B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D6FF194405B600AA81C1 /* libc++.dylib */; };
@@ -1477,8 +1473,6 @@
 		E73DA91C189F362A006C9E4E /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA8F6189F362A006C9E4E /* IpEndpointName.cpp */; };
 		E73DA91D189F362A006C9E4E /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA8FB189F362A006C9E4E /* NetworkingUtils.cpp */; };
 		E73DA91E189F362A006C9E4E /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA8FC189F362A006C9E4E /* UdpSocket.cpp */; };
-		E73DA91F189F362A006C9E4E /* NetworkingUtilsWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA900189F362A006C9E4E /* NetworkingUtilsWin.cpp */; };
-		E73DA920189F362A006C9E4E /* UdpSocketWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA901189F362A006C9E4E /* UdpSocketWin.cpp */; };
 		E73DA921189F362A006C9E4E /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA906189F362A006C9E4E /* OscOutboundPacketStream.cpp */; };
 		E73DA922189F362A006C9E4E /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA909189F362A006C9E4E /* OscPrintReceivedElements.cpp */; };
 		E73DA923189F362A006C9E4E /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA90B189F362A006C9E4E /* OscReceivedElements.cpp */; };
@@ -2367,7 +2361,6 @@
 		E7DDC231194437EC00E61D75 /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8251F18BEBD7000C1EB93 /* CloudsVisualSystemLia.cpp */; };
 		E7DDC232194437EC00E61D75 /* ControlTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A6A18BF099000C1EB93 /* ControlTrigger.cpp */; };
 		E7DDC233194437EC00E61D75 /* ofxUIMultiImageButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D58A1943F2AF00AA81C1 /* ofxUIMultiImageButton.cpp */; };
-		E7DDC234194437EC00E61D75 /* NetworkingUtilsWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA900189F362A006C9E4E /* NetworkingUtilsWin.cpp */; };
 		E7DDC235194437EC00E61D75 /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8228C18BEBD6E00C1EB93 /* CloudsAudioEvents.cpp */; };
 		E7DDC236194437EC00E61D75 /* ofxTLPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827B518BEBDCF00C1EB93 /* ofxTLPage.cpp */; };
 		E7DDC237194437EC00E61D75 /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA834189F3611006C9E4E /* ofxSQLiteUpdate.cpp */; };
@@ -2577,7 +2570,6 @@
 		E7DDC304194437EC00E61D75 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA909189F362A006C9E4E /* OscPrintReceivedElements.cpp */; };
 		E7DDC305194437EC00E61D75 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA122189F1CD4006C9E4E /* Clock.cpp */; };
 		E7DDC306194437EC00E61D75 /* ofxMPMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82B3E18BF0AC200C1EB93 /* ofxMPMNode.cpp */; };
-		E7DDC308194437EC00E61D75 /* UdpSocketWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA901189F362A006C9E4E /* UdpSocketWin.cpp */; };
 		E7DDC30A194437EC00E61D75 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D70519440E3000AA81C1 /* QuartzCore.framework */; };
 		E7DDC30B194437EC00E61D75 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D701194405C500AA81C1 /* libz.dylib */; };
 		E7DDC30C194437EC00E61D75 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D6FF194405B600AA81C1 /* libc++.dylib */; };
@@ -3066,8 +3058,6 @@
 		E73DA8FC189F362A006C9E4E /* UdpSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UdpSocket.cpp; sourceTree = "<group>"; };
 		E73DA8FD189F362A006C9E4E /* TimerListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerListener.h; sourceTree = "<group>"; };
 		E73DA8FE189F362A006C9E4E /* UdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdpSocket.h; sourceTree = "<group>"; };
-		E73DA900189F362A006C9E4E /* NetworkingUtilsWin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkingUtilsWin.cpp; sourceTree = "<group>"; };
-		E73DA901189F362A006C9E4E /* UdpSocketWin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UdpSocketWin.cpp; sourceTree = "<group>"; };
 		E73DA903189F362A006C9E4E /* MessageMappingOscPacketListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageMappingOscPacketListener.h; sourceTree = "<group>"; };
 		E73DA904189F362A006C9E4E /* OscException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscException.h; sourceTree = "<group>"; };
 		E73DA905189F362A006C9E4E /* OscHostEndianness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscHostEndianness.h; sourceTree = "<group>"; };
@@ -4850,6 +4840,7 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				035F4F981A9DA6A0003726D9 /* libovr.a */,
 				E755D701194405C500AA81C1 /* libz.dylib */,
 				E755D6FF194405B600AA81C1 /* libc++.dylib */,
 				E79BFA7619492CAC00A0A83E /* AudioUnit.framework */,
@@ -4905,7 +4896,6 @@
 			isa = PBXGroup;
 			children = (
 				033BCA411AAA562900BC1FEC /* CLOUDS.icns */,
-				035F4F981A9DA6A0003726D9 /* libovr.a */,
 				E73DA0B2189F1C56006C9E4E /* CLOUDS.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -5688,7 +5678,6 @@
 				E73DA8FA189F362A006C9E4E /* posix */,
 				E73DA8FD189F362A006C9E4E /* TimerListener.h */,
 				E73DA8FE189F362A006C9E4E /* UdpSocket.h */,
-				E73DA8FF189F362A006C9E4E /* win32 */,
 			);
 			path = ip;
 			sourceTree = "<group>";
@@ -5700,15 +5689,6 @@
 				E73DA8FC189F362A006C9E4E /* UdpSocket.cpp */,
 			);
 			path = posix;
-			sourceTree = "<group>";
-		};
-		E73DA8FF189F362A006C9E4E /* win32 */ = {
-			isa = PBXGroup;
-			children = (
-				E73DA900189F362A006C9E4E /* NetworkingUtilsWin.cpp */,
-				E73DA901189F362A006C9E4E /* UdpSocketWin.cpp */,
-			);
-			path = win32;
 			sourceTree = "<group>";
 		};
 		E73DA902189F362A006C9E4E /* osc */ = {
@@ -10183,7 +10163,6 @@
 				038033B21948167700AFD40C /* CloudsVisualSystemLia.cpp in Sources */,
 				038033B31948167700AFD40C /* ControlTrigger.cpp in Sources */,
 				038033B41948167700AFD40C /* ofxUIMultiImageButton.cpp in Sources */,
-				038033B51948167700AFD40C /* NetworkingUtilsWin.cpp in Sources */,
 				038033B61948167700AFD40C /* CloudsAudioEvents.cpp in Sources */,
 				038033B71948167700AFD40C /* ofxTLPage.cpp in Sources */,
 				038033B81948167700AFD40C /* ofxSQLiteUpdate.cpp in Sources */,
@@ -10396,7 +10375,6 @@
 				038034851948167700AFD40C /* OscPrintReceivedElements.cpp in Sources */,
 				038034861948167700AFD40C /* Clock.cpp in Sources */,
 				038034871948167700AFD40C /* ofxMPMNode.cpp in Sources */,
-				038034891948167700AFD40C /* UdpSocketWin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10781,7 +10759,6 @@
 				03A0F61C1947A0850071CF4B /* CloudsVisualSystemLia.cpp in Sources */,
 				03A0F61D1947A0850071CF4B /* ControlTrigger.cpp in Sources */,
 				03A0F61E1947A0850071CF4B /* ofxUIMultiImageButton.cpp in Sources */,
-				03A0F61F1947A0850071CF4B /* NetworkingUtilsWin.cpp in Sources */,
 				03A0F6201947A0850071CF4B /* CloudsAudioEvents.cpp in Sources */,
 				03A0F6211947A0850071CF4B /* ofxTLPage.cpp in Sources */,
 				03A0F6221947A0850071CF4B /* ofxSQLiteUpdate.cpp in Sources */,
@@ -10994,7 +10971,6 @@
 				03A0F6EF1947A0850071CF4B /* OscPrintReceivedElements.cpp in Sources */,
 				03A0F6F01947A0850071CF4B /* Clock.cpp in Sources */,
 				03A0F6F11947A0850071CF4B /* ofxMPMNode.cpp in Sources */,
-				03A0F6F31947A0850071CF4B /* UdpSocketWin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11379,7 +11355,6 @@
 				E7D8263118BEBD7000C1EB93 /* CloudsVisualSystemLia.cpp in Sources */,
 				E7D82AC918BF099000C1EB93 /* ControlTrigger.cpp in Sources */,
 				E755D6031943F2AF00AA81C1 /* ofxUIMultiImageButton.cpp in Sources */,
-				E73DA91F189F362A006C9E4E /* NetworkingUtilsWin.cpp in Sources */,
 				E7D8255318BEBD7000C1EB93 /* CloudsAudioEvents.cpp in Sources */,
 				E7D827FD18BEBDCF00C1EB93 /* ofxTLPage.cpp in Sources */,
 				E73DA85B189F3611006C9E4E /* ofxSQLiteUpdate.cpp in Sources */,
@@ -11592,7 +11567,6 @@
 				E73DA922189F362A006C9E4E /* OscPrintReceivedElements.cpp in Sources */,
 				E73DA6B1189F1CEA006C9E4E /* Clock.cpp in Sources */,
 				E7D82B4718BF0AC200C1EB93 /* ofxMPMNode.cpp in Sources */,
-				E73DA920189F362A006C9E4E /* UdpSocketWin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11981,7 +11955,6 @@
 				03E28DB61A9D767D005AA181 /* CloudsVisualSystemManager.cpp in Sources */,
 				E7DDC232194437EC00E61D75 /* ControlTrigger.cpp in Sources */,
 				E7DDC233194437EC00E61D75 /* ofxUIMultiImageButton.cpp in Sources */,
-				E7DDC234194437EC00E61D75 /* NetworkingUtilsWin.cpp in Sources */,
 				E7DDC235194437EC00E61D75 /* CloudsAudioEvents.cpp in Sources */,
 				E7DDC236194437EC00E61D75 /* ofxTLPage.cpp in Sources */,
 				E7DDC237194437EC00E61D75 /* ofxSQLiteUpdate.cpp in Sources */,
@@ -12193,7 +12166,6 @@
 				E7DDC304194437EC00E61D75 /* OscPrintReceivedElements.cpp in Sources */,
 				E7DDC305194437EC00E61D75 /* Clock.cpp in Sources */,
 				E7DDC306194437EC00E61D75 /* ofxMPMNode.cpp in Sources */,
-				E7DDC308194437EC00E61D75 /* UdpSocketWin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

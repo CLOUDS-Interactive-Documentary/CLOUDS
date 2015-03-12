@@ -45,24 +45,28 @@ CloudsMixer::~CloudsMixer()
 
 void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuffers)
 {
-    size_t size = nChannels*bufferSize*sizeof(float);
+    size_t size = nChannels * bufferSize * sizeof(float);
     
     musicArgs.buffer = (float*)malloc(size);
     musicArgs.bufferSize = bufferSize;
     musicArgs.nChannels = nChannels;
+    //memset(musicArgs.buffer, 0, size);
+    
     diageticArgs.buffer = (float*)malloc(size);
     diageticArgs.bufferSize = bufferSize;
     diageticArgs.nChannels = nChannels;
+    //memset(diageticArgs.buffer, 0, size);
     
     size = nChannels*44100*sizeof(float); // 1 second delay line
     delayLine.buffer = (float*)malloc(size);
     delayLine.bufferSize = 44100;
     delayLine.nChannels = nChannels;
     delptr = 0;
-
+    //memset(delayLine.buffer, 0, size);
+    
     // initialize OF audio streaming
-    ofSoundStreamSetup(nChannels, 0, this, sampleRate, bufferSize, nBuffers);
-    ofSoundStreamStart();
+    //ofSoundStreamSetup(nChannels, 0, this, sampleRate, bufferSize, nBuffers);
+    //ofSoundStreamStart();
     
     ofAddListener(GetCloudsAudioEvents()->fadeAudioDown, this, &CloudsMixer::fadeDown);
     ofAddListener(GetCloudsAudioEvents()->fadeAudioUp, this, &CloudsMixer::fadeUp);
@@ -97,6 +101,7 @@ void CloudsMixer::fadeUp(float& time){
 void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
 {
     GetCloudsAudioEvents()->dopull = GetCloudsAudioEvents()->fadeValue > 0;
+    size_t size = nChannels*bufferSize*sizeof(float);
     // check for buffer size mismatch
     if (bufferSize != musicArgs.bufferSize ||
         bufferSize != diageticArgs.bufferSize) {
@@ -110,7 +115,6 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
         return;
     }
     
-    size_t size = nChannels*bufferSize*sizeof(float);
     // fill music buffer
     memset(musicArgs.buffer, 0, size);
 	ofNotifyEvent(GetCloudsAudioEvents()->musicAudioRequested, musicArgs, this);
@@ -197,7 +201,7 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
         }
     }
 
-    
+
     /*
     if(showCompressor) {
         for(float i = 0;i<0.5;i=i+0.01)
