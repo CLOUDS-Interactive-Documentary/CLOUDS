@@ -102,7 +102,9 @@ void CloudsVisualSystemVision::selfSetup()
     loadCurrentMovie();
 
     // sound
+    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth() * mainGain);
+    #endif
 }
 
 void CloudsVisualSystemVision::selfSetupGui()
@@ -834,6 +836,7 @@ void CloudsVisualSystemVision::guiRenderEvent(ofxUIEventArgs &e)
     
 }
 
+#ifdef TONIC_SOUNDS
 Tonic::Generator CloudsVisualSystemVision::buildSynth()
 {
     string strDir = GetCloudsDataPath(true) + "sound/textures/";
@@ -856,10 +859,13 @@ Tonic::Generator CloudsVisualSystemVision::buildSynth()
     return sampleGen[0] * 1.0f +
         sampleGen[1] * 1.0f;
 }
+#endif
 
 void CloudsVisualSystemVision::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
 
 

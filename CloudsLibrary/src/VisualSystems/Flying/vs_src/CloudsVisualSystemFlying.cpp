@@ -63,12 +63,16 @@ void CloudsVisualSystemFlying::selfSetup()
     generate();
     
     // sound
+    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth());
+    #endif
 }
+
 void CloudsVisualSystemFlying::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
+
 void CloudsVisualSystemFlying::generate()
 {
     plantMeshes.clear();
@@ -468,7 +472,7 @@ void CloudsVisualSystemFlying::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
-
+#ifdef TONIC_SOUNDS
 Generator CloudsVisualSystemFlying::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
@@ -476,12 +480,6 @@ Generator CloudsVisualSystemFlying::buildSynth()
     
     SampleTable samples[3];
     
-//    int nSounds = sizeof(soundFiles) / sizeof(string);
-//    for (int i=0; i<nSounds; i++)
-//    {
-//        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
-//        samples[i] = loadAudioFile(strAbsPath);
-//    }
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = loadAudioFile(strAbsPath);
@@ -493,10 +491,14 @@ Generator CloudsVisualSystemFlying::buildSynth()
     
     return (sampleGen1 * 1.0f + sampleGen2 * 0.35f + sampleGen3 * 0.6f) * volumeControl;
 }
+#endif
 
 void CloudsVisualSystemFlying::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
+
 
 

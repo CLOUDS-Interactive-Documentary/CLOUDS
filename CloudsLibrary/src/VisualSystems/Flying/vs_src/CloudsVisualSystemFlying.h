@@ -166,12 +166,6 @@ protected:
     
 	// Sound
     vector<TonicSample> tonicSamples;
-//    string soundFiles[3] = {"SriLankaForest.aif",
-//        "FOREST.aif",
-//        "organ_slower.aif"};
-//    float sampleVolume[3] = {0};
-//    bool playSample[3] = {false};
-//    ControlTrigger soundTriggers[3];
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);

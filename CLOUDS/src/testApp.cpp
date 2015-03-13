@@ -5,6 +5,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
+    
 #if defined(OCULUS_RIFT) && defined(TARGET_WIN32)
 	ofSetWindowPosition(0,0);
 	ofSetWindowShape(1920*2,1080);
@@ -46,11 +47,16 @@ void testApp::update(){
 		player.setup();
 		shouldSetupPlayer = false;
 		playerSetup = true;
+ 
 	}
 	else if(firstFrame){
 		shouldSetupPlayer = true;
 	}
 
+    if(ofGetFrameNum() == 100){
+//        cout<< "SET UP MIXER" << endl;
+//        player.mixer.setup();
+    }
 }
 
 //--------------------------------------------------------------

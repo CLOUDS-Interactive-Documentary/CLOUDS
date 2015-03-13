@@ -76,9 +76,11 @@ void CloudsVisualSystemOpenP5Machine::selfSetup(){
     color2HSB.b = 90;
 
     // sound
-    gain = 0; 
-    synth.setOutputGen(buildSynth());
+    gain = 0;
     
+    #ifdef TONIC_SOUNDS
+    synth.setOutputGen(buildSynth());
+    #endif
 }
 
 
@@ -229,6 +231,7 @@ void CloudsVisualSystemOpenP5Machine::selfMousePressed(int x, int y, int button)
 void CloudsVisualSystemOpenP5Machine::selfMouseReleased(int x, int y, int button){
 }
 
+#ifdef TONIC_SOUNDS
 Generator CloudsVisualSystemOpenP5Machine::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures";
@@ -240,10 +243,13 @@ Generator CloudsVisualSystemOpenP5Machine::buildSynth()
     
     return sampleGen * volumeControl;
 }
+#endif
 
 void CloudsVisualSystemOpenP5Machine::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS    
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
 
 

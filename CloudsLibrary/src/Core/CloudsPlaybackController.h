@@ -80,13 +80,13 @@ class CloudsPlaybackController : public ofThread {
 	bool loadFinished;
 
 	void threadedFunction();
+	CloudsMixer mixer;
   protected:
 	vector<CloudsClip*> startingNodes;
 	//*** CORE CLOUDS STUFF
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
 	CloudsStoryEngine storyEngine;
-	CloudsMixer mixer;
 	CloudsSound sound;
 	CloudsSecondaryDisplayOSCSender oscSender;
 	CloudsHUDController hud;

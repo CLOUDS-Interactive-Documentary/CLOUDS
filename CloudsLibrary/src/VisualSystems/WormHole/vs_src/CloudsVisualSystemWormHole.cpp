@@ -465,7 +465,9 @@ void CloudsVisualSystemWormHole::selfSetup()
     // sound
     fMainGain = 0;
     mainGain.value(0);
+    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth() * mainGain);
+    #endif
 }
 
 void CloudsVisualSystemWormHole::selfBegin(){
@@ -814,7 +816,7 @@ void CloudsVisualSystemWormHole::facetMesh( ofMesh& smoothedMesh, ofMesh& target
 	cout << "faceted mesh in "<< ofToString((ofGetElapsedTimeMillis() - startTime)) << " milli seconds" << endl;
 }
 
-
+#ifdef TONIC_SOUNDS
 Tonic::Generator CloudsVisualSystemWormHole::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
@@ -839,10 +841,13 @@ Tonic::Generator CloudsVisualSystemWormHole::buildSynth()
         sampleGen[2] * 1.0f +
         sampleGen[3] * 1.0f;
 }
+#endif
 
 void CloudsVisualSystemWormHole::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
 
 

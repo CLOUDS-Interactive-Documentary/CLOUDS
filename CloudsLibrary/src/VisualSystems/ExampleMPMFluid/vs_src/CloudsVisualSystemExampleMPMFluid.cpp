@@ -129,7 +129,9 @@ void CloudsVisualSystemExampleMPMFluid::selfSetup()
     // sound
     fMainGain = 0;
     mainGain.value(0);
+    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth() * mainGain);
+    #endif
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -361,6 +363,7 @@ void CloudsVisualSystemExampleMPMFluid::selfMouseReleased(ofMouseEventArgs& data
 	
 }
 
+#ifdef TONIC_SOUNDS
 Tonic::Generator CloudsVisualSystemExampleMPMFluid::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
@@ -385,9 +388,11 @@ Tonic::Generator CloudsVisualSystemExampleMPMFluid::buildSynth()
             highElec3 * volumeControl[2] +
             highElec1 * volumeControl[3];
 }
+#endif
 
 void CloudsVisualSystemExampleMPMFluid::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
-

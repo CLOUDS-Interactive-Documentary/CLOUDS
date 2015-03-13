@@ -499,12 +499,12 @@ bool CloudsRGBDVideoPlayer::isDone(){
 bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     
     if (path == "") {
-		ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Subtitle path is blank";
+		ofLogWarning("CloudsRGBDVideoPlayer::loadSubtitles") << "Subtitle path is blank";
         return false;
     }
 
     if (!ofFile(path).exists()) {
-		ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Subtitle path doesn't exist " << path;
+		ofLogWarning("CloudsRGBDVideoPlayer::loadSubtitles") << "Subtitle path doesn't exist " << path;
         return false;
     }
     

@@ -71,7 +71,9 @@ void CloudsVisualSystemVectorFlow::selfSetup(){
     // sound
     fMainGain = 0;
     mainGain.value(0);
+    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth() * mainGain);
+    #endif
 }
 
 void CloudsVisualSystemVectorFlow::selfSetupGuis(){
@@ -462,7 +464,8 @@ void CloudsVisualSystemVectorFlow::initBlurFilter()
     fboInitial.end();
 }
 
-Generator CloudsVisualSystemVectorFlow::buildSynth()
+#ifdef TONIC_SOUNDS
+Tonic::Generator CloudsVisualSystemVectorFlow::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
     
@@ -485,10 +488,13 @@ Generator CloudsVisualSystemVectorFlow::buildSynth()
     
     return (sampleGen2 * .1) + (sampleGen >> filter);
 }
+#endif
 
 void CloudsVisualSystemVectorFlow::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
 
 

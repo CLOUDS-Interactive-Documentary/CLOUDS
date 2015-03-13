@@ -21,7 +21,9 @@ CloudsMixer::CloudsMixer()
     thresh = 0.2; // set lower for a quieter squish point
     ratio = 3.; // set higher for more squish
 
-    showCompressor = false;
+    musicArgs.buffer = NULL;
+    diageticArgs.buffer = NULL;
+    delayLine.buffer = NULL;
     
     fsig = 0; // no fade
     GetCloudsAudioEvents()->fadeValue = 1.0; // normal gain
@@ -65,8 +67,10 @@ void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuff
     //memset(delayLine.buffer, 0, size);
     
     // initialize OF audio streaming
-    //ofSoundStreamSetup(nChannels, 0, this, sampleRate, bufferSize, nBuffers);
-    //ofSoundStreamStart();
+    //ofSoundStreamStop();
+    //ofSoundStreamClose();
+    ofSoundStreamSetup(nChannels, 0, this, sampleRate, bufferSize, nBuffers);
+    ofSoundStreamStart();
     
     ofAddListener(GetCloudsAudioEvents()->fadeAudioDown, this, &CloudsMixer::fadeDown);
     ofAddListener(GetCloudsAudioEvents()->fadeAudioUp, this, &CloudsMixer::fadeUp);
@@ -116,12 +120,15 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
     }
     
     // fill music buffer
+    #ifdef RTCMIX
     memset(musicArgs.buffer, 0, size);
 	ofNotifyEvent(GetCloudsAudioEvents()->musicAudioRequested, musicArgs, this);
+    #endif
     
     // fill diagetic buffer
     memset(diageticArgs.buffer, 0, size);
 	ofNotifyEvent(GetCloudsAudioEvents()->diageticAudioRequested, diageticArgs, this);
+    
     
     // mix
     for (int i=0; i<bufferSize*nChannels; i++)

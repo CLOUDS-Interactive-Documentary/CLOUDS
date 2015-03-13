@@ -174,7 +174,7 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(){
-	
+    
 	loading = true;
     //interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-MEDIUM.ttf", 15);
 	interludeInterfaceFont.loadFont(GetMediumFontPath(), 14);
@@ -270,11 +270,12 @@ void CloudsPlaybackController::threadedFunction(){
 	
 	if(!isThreadRunning()) return;
 	
-	///SOUND
+//	///SOUND
 	cout << "*****LOAD STEP SOUND" << endl;
+#ifdef TONIC_SOUNDS
 	mixer.setup();
+#endif
 	sound.setup(storyEngine);
-
 	sound.enterTunnel();
 	
 	if(!isThreadRunning()) return;
@@ -1484,11 +1485,13 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath, clip->getSubtitlesPath());
 	}
 	else{
-		//string subtitlesPath = GetCloudsDataPath() + "language/" + GetLanguage() + "/subtitles/"+ clip->getSubtitlesPath();
-
+		string subtitlesPath = clip->getSubtitlesPath();
+        if(GetLanguage() == "ENGLISH" && clip->getLanguage() == "ENGLISH"){
+            subtitlesPath = ""; //for now don't show english on english subtitles
+        }
 		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip->combinedVideoPath,
 																					clip->combinedCalibrationXMLPath,
-																					clip->getSubtitlesPath(),
+																					subtitlesPath,
 																					1.0, clip->getSpeakerVolume());
 	}
     

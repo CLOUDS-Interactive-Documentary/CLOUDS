@@ -1132,15 +1132,15 @@
 		2ACA6BF718725B0D0029603B /* CloudsMixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMixer.cpp; sourceTree = "<group>"; };
 		2ACA6BF818725B0D0029603B /* CloudsMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMixer.h; sourceTree = "<group>"; };
 		642CF4AD18318AA8007394FF /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
-		642CF55218327E5D007394FF /* RipplesOculusDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RipplesOculusDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		642CF55218327E5D007394FF /* Ripples32OculusDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripples32OculusDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642CF5DC18327ED2007394FF /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		642CF5DD18327ED2007394FF /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
-		64A8180818E0F218006C8AF9 /* RipplesTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RipplesTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64A8180818E0F218006C8AF9 /* Ripples32Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripples32Touch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64A8180A18E0F257006C8AF9 /* CloudsInputTouchOSC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputTouchOSC.cpp; sourceTree = "<group>"; };
 		64A8180B18E0F257006C8AF9 /* CloudsInputTouchOSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputTouchOSC.h; sourceTree = "<group>"; };
 		859B6DEE182C59EA007A321A /* CloudsVisualSystemRipples.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRipples.cpp; sourceTree = "<group>"; };
 		859B6DEF182C59EA007A321A /* CloudsVisualSystemRipples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRipples.h; sourceTree = "<group>"; };
-		AEA300211880AE8D00799DB7 /* RipplesKinect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RipplesKinect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEA300211880AE8D00799DB7 /* Ripples32Kinect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripples32Kinect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB14CFA187DB02C00C5284D /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		AEB14CFB187DB02C00C5284D /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1154,7 +1154,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* RipplesDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RipplesDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* Ripples32Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripples32Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -1976,10 +1976,10 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* RipplesDebug.app */,
-				642CF55218327E5D007394FF /* RipplesOculusDebug.app */,
-				AEA300211880AE8D00799DB7 /* RipplesKinect.app */,
-				64A8180818E0F218006C8AF9 /* RipplesTouch.app */,
+				E4B69B5B0A3A1756003C02F2 /* Ripples32Debug.app */,
+				642CF55218327E5D007394FF /* Ripples32OculusDebug.app */,
+				AEA300211880AE8D00799DB7 /* Ripples32Kinect.app */,
+				64A8180818E0F218006C8AF9 /* Ripples32Touch.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2652,9 +2652,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		642CF4C018327E5D007394FF /* RipplesOculus */ = {
+		642CF4C018327E5D007394FF /* Ripples32Oculus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 642CF54F18327E5D007394FF /* Build configuration list for PBXNativeTarget "RipplesOculus" */;
+			buildConfigurationList = 642CF54F18327E5D007394FF /* Build configuration list for PBXNativeTarget "Ripples32Oculus" */;
 			buildPhases = (
 				642CF4C318327E5D007394FF /* Sources */,
 				642CF53918327E5D007394FF /* Frameworks */,
@@ -2666,14 +2666,14 @@
 			dependencies = (
 				642CF4C118327E5D007394FF /* PBXTargetDependency */,
 			);
-			name = RipplesOculus;
+			name = Ripples32Oculus;
 			productName = myOFApp;
-			productReference = 642CF55218327E5D007394FF /* RipplesOculusDebug.app */;
+			productReference = 642CF55218327E5D007394FF /* Ripples32OculusDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
-		64A8172C18E0F218006C8AF9 /* RipplesTouch */ = {
+		64A8172C18E0F218006C8AF9 /* Ripples32Touch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64A8180518E0F218006C8AF9 /* Build configuration list for PBXNativeTarget "RipplesTouch" */;
+			buildConfigurationList = 64A8180518E0F218006C8AF9 /* Build configuration list for PBXNativeTarget "Ripples32Touch" */;
 			buildPhases = (
 				64A8172F18E0F218006C8AF9 /* Sources */,
 				64A817EF18E0F218006C8AF9 /* Frameworks */,
@@ -2685,14 +2685,14 @@
 			dependencies = (
 				64A8172D18E0F218006C8AF9 /* PBXTargetDependency */,
 			);
-			name = RipplesTouch;
+			name = Ripples32Touch;
 			productName = myOFApp;
-			productReference = 64A8180818E0F218006C8AF9 /* RipplesTouch.app */;
+			productReference = 64A8180818E0F218006C8AF9 /* Ripples32Touch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AEA3FF431880AE8D00799DB7 /* RipplesKinect */ = {
+		AEA3FF431880AE8D00799DB7 /* Ripples32Kinect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEA3001E1880AE8D00799DB7 /* Build configuration list for PBXNativeTarget "RipplesKinect" */;
+			buildConfigurationList = AEA3001E1880AE8D00799DB7 /* Build configuration list for PBXNativeTarget "Ripples32Kinect" */;
 			buildPhases = (
 				AEA3FF461880AE8D00799DB7 /* Sources */,
 				AEA300081880AE8D00799DB7 /* Frameworks */,
@@ -2704,14 +2704,14 @@
 			dependencies = (
 				AEA3FF441880AE8D00799DB7 /* PBXTargetDependency */,
 			);
-			name = RipplesKinect;
+			name = Ripples32Kinect;
 			productName = myOFApp;
-			productReference = AEA300211880AE8D00799DB7 /* RipplesKinect.app */;
+			productReference = AEA300211880AE8D00799DB7 /* Ripples32Kinect.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E4B69B5A0A3A1756003C02F2 /* Ripples */ = {
+		E4B69B5A0A3A1756003C02F2 /* Ripples32 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Ripples" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Ripples32" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -2723,9 +2723,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = Ripples;
+			name = Ripples32;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* RipplesDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* Ripples32Debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2735,7 +2735,7 @@
 			isa = PBXProject;
 			attributes = {
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Ripples" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Ripples32" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2756,10 +2756,10 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* Ripples */,
-				642CF4C018327E5D007394FF /* RipplesOculus */,
-				AEA3FF431880AE8D00799DB7 /* RipplesKinect */,
-				64A8172C18E0F218006C8AF9 /* RipplesTouch */,
+				E4B69B5A0A3A1756003C02F2 /* Ripples32 */,
+				642CF4C018327E5D007394FF /* Ripples32Oculus */,
+				AEA3FF431880AE8D00799DB7 /* Ripples32Kinect */,
+				64A8172C18E0F218006C8AF9 /* Ripples32Touch */,
 			);
 		};
 /* End PBXProject section */
@@ -3736,7 +3736,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				PRODUCT_NAME = Ripples32OculusDebug;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3851,7 +3851,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ripples32Oculus;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3952,7 +3952,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ripples32Touch;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4052,7 +4052,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ripples32Touch;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4153,7 +4153,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ripples32Kinect;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4253,7 +4253,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ripples32Kinect;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4422,7 +4422,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				PRODUCT_NAME = Ripples32Debug;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4521,7 +4521,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ripples32;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4530,7 +4530,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		642CF54F18327E5D007394FF /* Build configuration list for PBXNativeTarget "RipplesOculus" */ = {
+		642CF54F18327E5D007394FF /* Build configuration list for PBXNativeTarget "Ripples32Oculus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				642CF55018327E5D007394FF /* Debug */,
@@ -4539,7 +4539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64A8180518E0F218006C8AF9 /* Build configuration list for PBXNativeTarget "RipplesTouch" */ = {
+		64A8180518E0F218006C8AF9 /* Build configuration list for PBXNativeTarget "Ripples32Touch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64A8180618E0F218006C8AF9 /* Debug */,
@@ -4548,7 +4548,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AEA3001E1880AE8D00799DB7 /* Build configuration list for PBXNativeTarget "RipplesKinect" */ = {
+		AEA3001E1880AE8D00799DB7 /* Build configuration list for PBXNativeTarget "Ripples32Kinect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEA3001F1880AE8D00799DB7 /* Debug */,
@@ -4557,7 +4557,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Ripples" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Ripples32" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -4566,7 +4566,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Ripples" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Ripples32" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,

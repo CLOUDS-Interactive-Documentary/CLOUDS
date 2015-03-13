@@ -191,11 +191,6 @@ protected:
     Tonic::ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
     vector<TonicSample> tonicSamples;
-//    int nSamples = 2;
-//    string soundFiles[2] = {"distorted_drones.aif",
-//        "slowgrains_short.aif"};
-//    bool playSample[2];
-//    ControlTrigger soundTriggers[2];
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);

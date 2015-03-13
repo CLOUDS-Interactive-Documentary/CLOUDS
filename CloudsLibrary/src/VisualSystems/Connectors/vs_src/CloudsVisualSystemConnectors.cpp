@@ -97,9 +97,9 @@ void CloudsVisualSystemConnectors::selfSetup(){
 //	generator.setBounds(ofVec3f(-500,-500,-500), ofVec3f(500,500,500), 5);
     
     // sound
-
+    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth());
-
+    #endif
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -207,6 +207,7 @@ void CloudsVisualSystemConnectors::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
+#ifdef TONIC_SOUNDS
 Tonic::Generator CloudsVisualSystemConnectors::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures";
@@ -221,10 +222,14 @@ Tonic::Generator CloudsVisualSystemConnectors::buildSynth()
     
     return sampleGen1 * volumeControl;
 }
+#endif
 
 void CloudsVisualSystemConnectors::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
+
 
 

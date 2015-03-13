@@ -54,6 +54,9 @@ void testApp::setup(){
 	intro.setDrawToScreen(false);
 	intro.playSystem();
 	//////////////SHOW INTRO
+    
+    ofHideCursor();
+    ofToggleFullscreen();
 }
 
 //--------------------------------------------------------------------

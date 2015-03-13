@@ -10,8 +10,10 @@ void CloudsVisualSystemReplicator::selfSetup(){
 
     tonicSamples.push_back(TonicSample("organ_slower.aif"));
     tonicSamples.push_back(TonicSample("EchoVortex.aif"));
-    gain = 0; 
+    gain = 0;
+    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth());
+    #endif
 }
 
 void CloudsVisualSystemReplicator::selfSetupGuis(){
@@ -237,6 +239,7 @@ void CloudsVisualSystemReplicator::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
+#ifdef TONIC_SOUNDS
 Tonic::Generator CloudsVisualSystemReplicator::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
@@ -244,12 +247,6 @@ Tonic::Generator CloudsVisualSystemReplicator::buildSynth()
     
     Tonic::SampleTable samples[2];
     
-//    int nSounds = sizeof(soundFiles) / sizeof(string);
-//    for (int i=0; i<nSounds; i++)
-//    {
-//        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
-//        samples[i] = loadAudioFile(strAbsPath);
-//    }
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = Tonic::loadAudioFile(strAbsPath);
@@ -260,10 +257,13 @@ Tonic::Generator CloudsVisualSystemReplicator::buildSynth()
     
     return (sampleGen1 * 0.7f + sampleGen2 * 1.0f) * volumeControl;
 }
+#endif
 
 void CloudsVisualSystemReplicator::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
 
 
