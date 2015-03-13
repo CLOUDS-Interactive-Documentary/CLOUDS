@@ -23,7 +23,6 @@ void testApp::setup(){
 
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();
-	//for set at yebizo
 #endif
 		
 	firstFrame = true;

@@ -1294,8 +1294,8 @@ void CloudsPlaybackController::drawRenderTarget(){
         ofEnableAlphaBlending();
         
 #ifndef OCULUS_RIFT
-		hud.draw();
         CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
+		hud.draw();
 #endif
 
 #ifdef MOUSE_INPUT
@@ -1480,15 +1480,17 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 		return;
 	}
 	
+    string subtitlesPath = clip->getSubtitlesPath();
+    if(GetLanguage() == "ENGLISH" && clip->getLanguage() == "ENGLISH"){
+        subtitlesPath = ""; //for now don't show english on english subtitles
+    }
+    
 	bool clipLoadSuccessfullyLoaded = false;
 	if(clip->voiceOverAudio){
-		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath, clip->getSubtitlesPath());
+		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath,
+                                                                                      subtitlesPath);
 	}
 	else{
-		string subtitlesPath = clip->getSubtitlesPath();
-        if(GetLanguage() == "ENGLISH" && clip->getLanguage() == "ENGLISH"){
-            subtitlesPath = ""; //for now don't show english on english subtitles
-        }
 		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip->combinedVideoPath,
 																					clip->combinedCalibrationXMLPath,
 																					subtitlesPath,

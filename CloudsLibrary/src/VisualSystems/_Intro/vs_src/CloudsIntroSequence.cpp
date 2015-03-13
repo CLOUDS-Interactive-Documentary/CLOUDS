@@ -875,9 +875,9 @@ void CloudsIntroSequence::drawHelperType(){
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
 		//helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 #ifdef OCULUS_RIFT
-		helperFont.loadFont(GetFontPath(), helperFontSize-5	); //hack!
+		helperFont.loadFont(GetFontPath(), helperFontSize-2	); //hack!
 #else
-		helperFont.loadFont(GetFontPath(), helperFontSize-3	); //hack!
+		helperFont.loadFont(GetFontPath(), helperFontSize	); //hack!
 #endif		
 		currentHelperFontSize = helperFontSize;
 	}

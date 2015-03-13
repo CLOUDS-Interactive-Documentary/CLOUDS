@@ -35,6 +35,7 @@ class CloudsHUDLabel {
     void instantOut();
     
     bool isVisible();
+    bool clearTextOnAnimateOut;
     
     bool caps;
     
@@ -43,7 +44,6 @@ class CloudsHUDLabel {
     string type;
     
     ofRange animationClamp;
-    
     float baseAnimationSpeed;
     float animationSpeed;
     float fadeOutSpeed;
@@ -54,4 +54,5 @@ class CloudsHUDLabel {
     
     bool bIsAnimatingIn, bIsAnimatingOut;
     bool bIsVisible;
+
 };

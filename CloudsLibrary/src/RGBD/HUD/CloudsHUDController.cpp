@@ -11,9 +11,9 @@
 #include "CloudsInput.h"
 #include "CloudsClip.h"
 #include "CloudsSpeaker.h"
-//#ifdef OCULUS_RIFT
 #include "CloudsVisualSystem.h"
-//#endif
+#include "CloudsLocalization.h"
+
 
 CloudsHUDController::CloudsHUDController(){
 	hudGui = NULL;
@@ -63,7 +63,6 @@ CloudsHUDController::CloudsHUDController(){
 #endif
 }
 
-#include "CloudsLocalization.h"
 void CloudsHUDController::setup(){
 	
 	buildLayerSets();
@@ -76,6 +75,7 @@ void CloudsHUDController::setup(){
 #endif
 
 	hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("RESET"));
+    hudLabelMap["ResetButtonTextBox"]->clearTextOnAnimateOut = false;
 
 	home.setup();
     
@@ -427,6 +427,9 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer(const string& layerN
             newLabel->setup( newLayout, textMesh->bounds );
             hudLabelMap[layerName] = newLabel;
             
+            if(layerName == "ResetButtonTextBox"){
+                cout << "RESET FONT IS " << fontSize << endl;
+            }
             return newLayout;
         }
     }
@@ -539,13 +542,17 @@ void CloudsHUDController::update(){
 		hudLabelMap["QuestionTextBox"]->animateIn();
 	}
 
+    cout << "IS RESET VISIBLE "    << (hudLabelMap["ResetButtonTextBox"]->isVisible() ? "YES" : "NO") << endl;
+    cout << "IS RESET LAYOUT " << (hudLabelMap["ResetButtonTextBox"]->layout == NULL ? "NULL" : "SET") << endl;
+    cout << "IS RESET TEXT  "     << hudLabelMap["ResetButtonTextBox"]->getText() << endl;
+    
 //	cout << "CURRENT QUESTION " << hudLabelMap["QuestionTextBox"]->getText() << " VISIBLE? " << (hudLabelMap["QuestionTextBox"]->isVisible() ? "YES" : "NO") << endl;
 
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
 	}
-	float scaleToWidth  = CloudsVisualSystem::getStaticRenderTarget().getWidth();
-	float scaleToHeight = CloudsVisualSystem::getStaticRenderTarget().getWidth();
+	float scaleToWidth  = CloudsVisualSystem::getStaticRenderTarget().getWidth()  - 20; //20 for hardcoded bleed
+	float scaleToHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() - 20;
 	float xScale = scaleToWidth/hudBounds.width;
 	float yScale = scaleToHeight/hudBounds.height;
     
@@ -586,6 +593,8 @@ void CloudsHUDController::update(){
 
 void CloudsHUDController::updateReset(){
 	ofRectangle resetRect = layerSets[CLOUDS_HUD_LOWER_THIRD][0]->svg.getMeshByID("ResetButtonBacking")->bounds;
+    
+    
 	scaledResetRect.x = resetRect.x * scaleAmt + scaleOffset.x;
 	scaledResetRect.y = resetRect.y * scaleAmt + scaleOffset.y;
 	scaledResetRect.width = resetRect.width * scaleAmt;
@@ -597,6 +606,9 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
 	bool orig = bResetIsHovered;
 	bResetIsHovered = hudOpenMap[CLOUDS_HUD_LOWER_THIRD] && scaledResetRect.inside(args.x,args.y);
+    
+    //cout << "RESET HOVERED? " << (bResetIsHovered ? "YES" : "NO") << endl;
+    
 	if(orig != bResetIsHovered){
 		resetHoverChangedTime = ofGetElapsedTimef();
 	}
@@ -698,8 +710,11 @@ void CloudsHUDController::draw(){
 
 	ofPushStyle();
 	ofEnableAlphaBlending();
+    
+    
 	float resetHoverAlpha = ofMap(ofGetElapsedTimef() - resetHoverChangedTime, 0, .5, 0.0, 1.0, true);
 	if(!bResetIsHovered) resetHoverAlpha = 1.0 - resetHoverAlpha;
+    
 	ofFill();
 	ofSetColor(200,30,0, 255*resetHoverAlpha*.3);
 	ofRect(scaledResetRect);
