@@ -542,9 +542,9 @@ void CloudsHUDController::update(){
 		hudLabelMap["QuestionTextBox"]->animateIn();
 	}
 
-    cout << "IS RESET VISIBLE "    << (hudLabelMap["ResetButtonTextBox"]->isVisible() ? "YES" : "NO") << endl;
-    cout << "IS RESET LAYOUT " << (hudLabelMap["ResetButtonTextBox"]->layout == NULL ? "NULL" : "SET") << endl;
-    cout << "IS RESET TEXT  "     << hudLabelMap["ResetButtonTextBox"]->getText() << endl;
+    //cout << "IS RESET VISIBLE "    << (hudLabelMap["ResetButtonTextBox"]->isVisible() ? "YES" : "NO") << endl;
+    //cout << "IS RESET LAYOUT " << (hudLabelMap["ResetButtonTextBox"]->layout == NULL ? "NULL" : "SET") << endl;
+    //cout << "IS RESET TEXT  "     << hudLabelMap["ResetButtonTextBox"]->getText() << endl;
     
 //	cout << "CURRENT QUESTION " << hudLabelMap["QuestionTextBox"]->getText() << " VISIBLE? " << (hudLabelMap["QuestionTextBox"]->isVisible() ? "YES" : "NO") << endl;
 
