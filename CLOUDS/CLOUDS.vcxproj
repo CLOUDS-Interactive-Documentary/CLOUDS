@@ -1339,6 +1339,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_Intro\vs_src\CloudsIntroSequence.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>
@@ -1374,6 +1375,12 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\addons\ofxRegex\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="CLOUDS.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

@@ -3023,6 +3023,7 @@
     <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h">
       <Filter>addons\ofxLocalization\src</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_internalarray.inl">
@@ -3057,5 +3058,11 @@
     <Text Include="..\..\..\addons\ofxRegex\readme.txt">
       <Filter>addons\ofxRegex</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="CLOUDS.ico" />
   </ItemGroup>
 </Project>
