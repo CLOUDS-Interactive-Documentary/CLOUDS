@@ -920,6 +920,14 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 	reloadShaders();
 }
 
+ofVboMesh& CloudsVisualSystemClusterMap::getNodeMesh(){
+    return nodeMesh;
+}
+
+ofVboMesh& CloudsVisualSystemClusterMap::getNetworkMesh(){
+    return networkMesh;
+}
+
 void CloudsVisualSystemClusterMap::reloadShaders(){
 	
 	cout << "reload shader" << endl;
