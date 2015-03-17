@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031E27A91AA164EB00424146 /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27951AA164EB00424146 /* ofxSubtitles.cpp */; };
+		031E27AA1AA164EB00424146 /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27971AA164EB00424146 /* ofxSubtitleUnit.cpp */; };
+		031E27B61AA164F200424146 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27B41AA164F200424146 /* ofxLocalization.cpp */; };
+		031E27C01AA1652200424146 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27B81AA1652200424146 /* CloudsCalibrationNode.cpp */; };
+		031E27C71AA1653900424146 /* CloudsGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27C41AA1653900424146 /* CloudsGlobal.cpp */; };
+		031E27C81AA1653900424146 /* CloudsLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27C51AA1653900424146 /* CloudsLocalization.cpp */; };
 		03D5936D19469D0400FCFF7B /* BalloonCredit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D5936919469D0300FCFF7B /* BalloonCredit.cpp */; };
 		03D5936E19469D0400FCFF7B /* CloudsVisualSystemBalloons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D5936B19469D0300FCFF7B /* CloudsVisualSystemBalloons.cpp */; };
 		03D593F419469D4000FCFF7B /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D593D819469D4000FCFF7B /* libftgl.a */; };
@@ -193,6 +199,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		031E27951AA164EB00424146 /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
+		031E27961AA164EB00424146 /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
+		031E27971AA164EB00424146 /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
+		031E27981AA164EB00424146 /* ofxSubtitleUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitleUnit.h; sourceTree = "<group>"; };
+		031E27B41AA164F200424146 /* ofxLocalization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLocalization.cpp; sourceTree = "<group>"; };
+		031E27B51AA164F200424146 /* ofxLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLocalization.h; sourceTree = "<group>"; };
+		031E27B81AA1652200424146 /* CloudsCalibrationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCalibrationNode.cpp; sourceTree = "<group>"; };
+		031E27B91AA1652200424146 /* CloudsCalibrationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCalibrationNode.h; sourceTree = "<group>"; };
+		031E27C41AA1653900424146 /* CloudsGlobal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsGlobal.cpp; path = ../CloudsLibrary/src/CloudsGlobal.cpp; sourceTree = "<group>"; };
+		031E27C51AA1653900424146 /* CloudsLocalization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsLocalization.cpp; path = ../CloudsLibrary/src/CloudsLocalization.cpp; sourceTree = "<group>"; };
+		031E27C61AA1653900424146 /* CloudsLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsLocalization.h; path = ../CloudsLibrary/src/CloudsLocalization.h; sourceTree = "<group>"; };
 		03D5936919469D0300FCFF7B /* BalloonCredit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BalloonCredit.cpp; sourceTree = "<group>"; };
 		03D5936A19469D0300FCFF7B /* BalloonCredit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalloonCredit.h; sourceTree = "<group>"; };
 		03D5936B19469D0300FCFF7B /* CloudsVisualSystemBalloons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemBalloons.cpp; sourceTree = "<group>"; };
@@ -569,6 +586,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		031E278E1AA164EB00424146 /* ofxSubtitles */ = {
+			isa = PBXGroup;
+			children = (
+				031E27941AA164EB00424146 /* src */,
+			);
+			name = ofxSubtitles;
+			path = ../../../addons/ofxSubtitles;
+			sourceTree = "<group>";
+		};
+		031E27941AA164EB00424146 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				031E27951AA164EB00424146 /* ofxSubtitles.cpp */,
+				031E27961AA164EB00424146 /* ofxSubtitles.h */,
+				031E27971AA164EB00424146 /* ofxSubtitleUnit.cpp */,
+				031E27981AA164EB00424146 /* ofxSubtitleUnit.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		031E27B01AA164F200424146 /* ofxLocalization */ = {
+			isa = PBXGroup;
+			children = (
+				031E27B31AA164F200424146 /* src */,
+			);
+			name = ofxLocalization;
+			path = ../../../addons/ofxLocalization;
+			sourceTree = "<group>";
+		};
+		031E27B31AA164F200424146 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				031E27B41AA164F200424146 /* ofxLocalization.cpp */,
+				031E27B51AA164F200424146 /* ofxLocalization.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		031E27B71AA1652200424146 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				031E27B81AA1652200424146 /* CloudsCalibrationNode.cpp */,
+				031E27B91AA1652200424146 /* CloudsCalibrationNode.h */,
+			);
+			name = Core;
+			path = ../CloudsLibrary/src/Core;
+			sourceTree = "<group>";
+		};
 		03D5936719469D0300FCFF7B /* Balloons */ = {
 			isa = PBXGroup;
 			children = (
@@ -721,6 +786,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				031E27B01AA164F200424146 /* ofxLocalization */,
+				031E278E1AA164EB00424146 /* ofxSubtitles */,
 				03D5940719469DC400FCFF7B /* ofxObjLoader */,
 				03D5936F19469D4000FCFF7B /* ofxFTGL */,
 				E755D712194422ED00AA81C1 /* ofxUI */,
@@ -794,6 +861,10 @@
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E7211CE318A285BB0063EF97 /* CloudsGlobal.h */,
+				031E27C41AA1653900424146 /* CloudsGlobal.cpp */,
+				031E27C51AA1653900424146 /* CloudsLocalization.cpp */,
+				031E27C61AA1653900424146 /* CloudsLocalization.h */,
+				031E27B71AA1652200424146 /* Core */,
 				03D5936719469D0300FCFF7B /* Balloons */,
 				E7211CD518A285970063EF97 /* Input */,
 				E7211CC518A2858F0063EF97 /* VisualSystemsLibrary */,
@@ -1475,6 +1546,7 @@
 				E755D9881944230C00AA81C1 /* ofxUIRadio.cpp in Sources */,
 				E7211BBE18A2843F0063EF97 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7211C5918A284400063EF97 /* tinyxmlerror.cpp in Sources */,
+				031E27B61AA164F200424146 /* ofxLocalization.cpp in Sources */,
 				E755D97D1944230C00AA81C1 /* ofxUIImageSampler.cpp in Sources */,
 				E7211C0E18A284400063EF97 /* ofxTLPage.cpp in Sources */,
 				03D593F919469D4000FCFF7B /* ofxFTGLFont.cpp in Sources */,
@@ -1486,6 +1558,7 @@
 				E7211C2618A284400063EF97 /* ofxEasingQuart.cpp in Sources */,
 				E7211BFE18A284400063EF97 /* ofxTimeline.cpp in Sources */,
 				E755D9791944230C00AA81C1 /* ofxUIFPS.cpp in Sources */,
+				031E27AA1AA164EB00424146 /* ofxSubtitleUnit.cpp in Sources */,
 				E7211BC418A2843F0063EF97 /* ofxLorentzBehavior.cpp in Sources */,
 				E7211BCE18A2843F0063EF97 /* ofxVortexBehavior.cpp in Sources */,
 				E755D9991944230C00AA81C1 /* ofxUIWidget.cpp in Sources */,
@@ -1529,6 +1602,7 @@
 				E7211BC118A2843F0063EF97 /* ofxElectroStaticBehavior.cpp in Sources */,
 				E7211C0B18A284400063EF97 /* ofxTLInOut.cpp in Sources */,
 				03D593FA19469D4000FCFF7B /* ofxFTGLSimpleLayout.cpp in Sources */,
+				031E27C01AA1652200424146 /* CloudsCalibrationNode.cpp in Sources */,
 				E7211C1318A284400063EF97 /* ofxTLTrackHeader.cpp in Sources */,
 				E7211C5B18A284400063EF97 /* ofxXmlSettings.cpp in Sources */,
 				E755D9761944230C00AA81C1 /* ofxUIDragableLabelButton.cpp in Sources */,
@@ -1548,6 +1622,7 @@
 				E755D9771944230C00AA81C1 /* ofxUIDropDownList.cpp in Sources */,
 				E7211C0718A284400063EF97 /* ofxTLFlags.cpp in Sources */,
 				E7211BBF18A2843F0063EF97 /* ofxDamperBehavior.cpp in Sources */,
+				031E27A91AA164EB00424146 /* ofxSubtitles.cpp in Sources */,
 				E7211BF418A284400063EF97 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E7211BC318A2843F0063EF97 /* ofxHomingBehavior.cpp in Sources */,
 				E7211C2018A284400063EF97 /* ofxEasingCirc.cpp in Sources */,
@@ -1557,6 +1632,7 @@
 				03D5936D19469D0400FCFF7B /* BalloonCredit.cpp in Sources */,
 				E7211BC018A2843F0063EF97 /* ofxDistorterBehavior.cpp in Sources */,
 				E7211BFF18A284400063EF97 /* ofxTLAudioTrack.cpp in Sources */,
+				031E27C81AA1653900424146 /* CloudsLocalization.cpp in Sources */,
 				E7211BC918A2843F0063EF97 /* ofxRParticleSystem.cpp in Sources */,
 				E7211C0D18A284400063EF97 /* ofxTLLFO.cpp in Sources */,
 				E7211C0918A284400063EF97 /* ofxTLImageSequenceFrame.cpp in Sources */,
@@ -1583,6 +1659,7 @@
 				E7211C2718A284400063EF97 /* ofxEasingQuint.cpp in Sources */,
 				E7211C0218A284400063EF97 /* ofxTLColors.cpp in Sources */,
 				E7211CD318A2858F0063EF97 /* CloudsVisualSystem.cpp in Sources */,
+				031E27C71AA1653900424146 /* CloudsGlobal.cpp in Sources */,
 				E755D9851944230C00AA81C1 /* ofxUIMultiImageButton.cpp in Sources */,
 				E7211C2218A284400063EF97 /* ofxEasingElastic.cpp in Sources */,
 				E7211CD118A2858F0063EF97 /* CloudsRGBDCamera.cpp in Sources */,

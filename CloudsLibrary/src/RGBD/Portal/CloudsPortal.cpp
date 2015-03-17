@@ -10,6 +10,7 @@
 #include "CloudsPortal.h"
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
+#include "CloudsLocalization.h"
 
 ofShader CloudsPortal::shader = ofShader();
 
@@ -222,7 +223,8 @@ void CloudsPortal::drawOverlay(bool anchorToScreen){
 		float secondsToWriteQuestion = question.size() / charsPerSecond;
 		int charactersToType = ofMap(ofGetElapsedTimef() - hoverStartTime, 0, secondsToWriteQuestion, 0, question.size(), true);
 		
-		string substring = question.substr(0, charactersToType);
+		//string substring = question.substr(0, charactersToType);
+		string substring = utf8_substr(question, charactersToType);
         font->drawString(substring, textPosition.x+10, textPosition.y);
         font->drawString(substring, textPosition.x+10, textPosition.y);
 		

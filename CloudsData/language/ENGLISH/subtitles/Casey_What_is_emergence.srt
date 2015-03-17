@@ -1,0 +1,20 @@
+﻿1
+00:00:00:28 --> 00:00:06:13
+I think the most simple like visual example is birds flocking or fish schooling
+
+2
+00:00:06:16 --> 00:00:10:19
+where each fish is its own autonomous sort of animal
+
+3
+00:00:10:22 --> 00:00:17:05
+and they have a few basic sort of guidelines that they follow where they try and stay away from others,
+
+4
+00:00:17:08 --> 00:00:22:27
+they try and move in the same direction, and as a result of all of that, these basic behaviors of these creatures,
+
+5
+00:00:23:00 --> 00:00:29:10
+you see these extraordinary sort of secondary forms. The flock from the individuals begin to emerge.
+

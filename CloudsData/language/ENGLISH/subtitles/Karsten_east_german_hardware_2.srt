@@ -1,0 +1,52 @@
+﻿1
+00:00:00:00 --> 00:00:00:27
+That was it. 
+
+2
+00:00:01:00 --> 00:00:04:03
+So we had like an afternoon course in school 
+
+3
+00:00:04:06 --> 00:00:05:23
+ when I was 13, 
+
+4
+00:00:05:26 --> 00:00:09:06
+and the task was basically to write our own game, 
+
+5
+00:00:09:09 --> 00:00:14:04
+and we had the whole school year time and we did it as a group,
+
+6
+00:00:14:07 --> 00:00:19:09
+ and this was I think the best school I ever had.  It was the hardest school I ever had.
+
+7
+00:00:19:14 --> 00:00:23:29
+ We were having one computer, I had 1 hour of computer time a week. 
+
+8
+00:00:24:02 --> 00:00:26:26
+ Everything else had to happen with pencil and paper.  
+
+9
+00:00:26:29 --> 00:00:31:10
+We had the instruction table of all the CPU commands and you basically 
+
+10
+00:00:31:13 --> 00:00:36:23
+had to as a 13-year-old break down something you didn’t even understand in practice
+
+11
+00:00:37:07 --> 00:00:40:28
+and had to in a way encode it as numbers and then have
+
+12
+00:00:41:01 --> 00:00:44:26
+ that 1 hour to hack it all in and if you had one typo, that was it,
+
+13
+00:00:44:29 --> 00:00:46:09
+ that week was gone
+

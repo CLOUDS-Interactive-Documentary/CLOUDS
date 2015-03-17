@@ -3,11 +3,13 @@
 //
 
 #include "CloudsVisualSystemExampleOpenSteer.h"
+#undef size_t
 
 #include "Flocking.h"
 #include "PathFollowing.h"
 #include "ObstacleAvoidance.h"
 #include "PursuitAndEvade.h"
+
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemExampleOpenSteer::selfSetupGui(){

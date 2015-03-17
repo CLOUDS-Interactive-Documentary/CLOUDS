@@ -1,0 +1,70 @@
+﻿1
+00:00:00:00 --> 00:00:03:17
+Yeah, it’s a little bit intangible in a way.  I mean, I think
+
+2
+00:00:03:20 --> 00:00:06:06
+ people say, oh, I'm a visual thinker or I'm a designer, I'm an artist, I do visual things so
+
+3
+00:00:06:09 --> 00:00:10:09
+ it makes sense for me to learn code that way,
+
+4
+00:00:10:12 --> 00:00:13:23
+ that’s not really I think for me what happened.  I don’t know exactly what happened, because
+
+5
+00:00:13:26 --> 00:00:18:02
+ I don’t think of myself as a visual designer.
+
+6
+00:00:18:10 --> 00:00:22:23
+ I don’t think of myself as particularly　visually talented.  I think most of the things
+
+7
+00:00:22:26 --> 00:00:26:08
+if you ask me to draw or design something, it would
+come out rather ugly, 
+
+8
+00:00:26:11 --> 00:00:30:01
+but I do think that, the
+
+9
+00:00:30:11 --> 00:00:36:06
+the, the, sort of the realization, there’s like a certain realization that happens
+
+10
+00:00:36:11 --> 00:00:40:12
+ when you start to write your own software and you start to manipulate pixels, you 
+
+11
+00:00:40:15 --> 00:00:45:29
+know this mysterious computer that you buy and you unpack and you put it on your desk and
+
+12
+00:00:46:02 --> 00:00:48:09
+  it’s loaded with all this software and you use it to use all the stuff,
+
+13
+00:00:48:12 --> 00:00:52:29
+ the moment that you realize that
+it’s not magic, it’s not - 
+
+14
+00:00:53:03 --> 00:00:56:29
+ you could just write all that software yourself, you can manipulate the pixels, you can draw,
+
+15
+00:00:57:02 --> 00:01:01:15
+ you don’t need Photoshop. Photoshop is a wonderful piece of software for many reasons, 
+
+16
+00:01:01:18 --> 00:01:07:11
+but I think for me that the visual nature of programming and drawing graphics, 
+
+17
+00:01:07:14 --> 00:01:12:01
+it just opened up a world of possibilities that maybe didn’t exist….
+

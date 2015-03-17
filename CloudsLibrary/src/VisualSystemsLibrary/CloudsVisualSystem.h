@@ -14,13 +14,13 @@
 #include "CloudsPortal.h"
 #endif
 
-#ifdef CLOUDS_INTERLUDE_NAV
+//#ifdef CLOUDS_INTERLUDE_NAV
 #include "ofxFTGL.h"
 #include "CloudsCalibrationNode.h"
-#endif
+//#endif
 
 #ifdef OCULUS_RIFT
-#include "ofxOculusRift.h"
+#include "ofxOculusDK2.h"
 	#ifdef CLOUDS_HUD
 		#include "CloudsHUDController.h"
 	#endif
@@ -79,7 +79,7 @@ class CloudsVisualSystem {
 	static ofSoundPlayer* getSelectLow();
 
 #ifdef OCULUS_RIFT
-	static ofxOculusRift& getOculusRift();
+	static ofxOculusDK2& getOculusRift();
 #endif
 	ofFbo& getSharedRenderTarget();
 	ofImage& getCursor();
@@ -200,7 +200,7 @@ class CloudsVisualSystem {
     void drawBackground();
 	void drawBackgroundGradient();
     void draw2dSystemPlane();
-    void ofLayerGradient(const ofColor& start, const ofColor& end);
+    //void ofLayerGradient(const ofColor& start, const ofColor& end);
     
     virtual void drawCursors();
 	
@@ -327,12 +327,12 @@ class CloudsVisualSystem {
 	bool updateInterludeInterface();
 	void drawInterludeInterface();
 	
-#ifdef CLOUDS_INTERLUDE_NAV
+//#ifdef CLOUDS_INTERLUDE_NAV
 	CalibrationNode resetNode;
 	CalibrationNode continueNode;
 	ofxFTGLFont interludeFont;
-#endif
-	
+//#endif
+
 	float interludeNodeSize;
 	ofRange interludeActivationRange;
 	float interludeNodeHoldTime;
@@ -345,6 +345,18 @@ class CloudsVisualSystem {
 	float interludeTypeTracking;
 	
 	bool bPromptForInteraction;
+
+	void draw3DCursor();
+
+	//3D Subtitles
+	void drawSubtitles3D();
+	float subtitle3DBasePosX;
+	float subtitle3DBasePosY;
+	float subtitle3DBasePosZ;
+	float subtitle3DScale;
+
+	float subtitleHudZ;
+	float subtitleHudY;
 
   protected:
 		
@@ -503,6 +515,8 @@ class CloudsVisualSystem {
     
 	ofVec2f interactiveCameraRot, previousinteractiveCameraRot;
     
+	float questionSelectFade; //only used on Oculus in RGBD system
+
     //POST FX
     bool bEnablePostFX;
     float postChromaDist;

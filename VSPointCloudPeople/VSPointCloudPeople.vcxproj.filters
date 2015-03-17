@@ -7,9 +7,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp">
-      <Filter>addons\ofxOculusRift\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp">
       <Filter>addons\ofxFTGL\src</Filter>
     </ClCompile>
@@ -106,9 +103,6 @@
     <ClCompile Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.cpp">
       <Filter>addons\ofxGameCamera\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\GPUParticles\Controller.cpp">
       <Filter>CloudsLibrary\src\RGBD\GPUParticles</Filter>
     </ClCompile>
@@ -172,6 +166,21 @@
     <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp">
       <Filter>addons\ofxSubtitles\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsTransitionController.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
+      <Filter>addons\ofxLocalization\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -179,12 +188,6 @@
     </Filter>
     <Filter Include="addons">
       <UniqueIdentifier>{014ab87c-b1ee-4040-b3e5-4168bea9bf0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOculusRift">
-      <UniqueIdentifier>{599ff151-b55e-4f90-811c-ddc762158741}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOculusRift\src">
-      <UniqueIdentifier>{63afbfed-3fa9-423b-a6a5-72803b5300b1}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxFTGL">
       <UniqueIdentifier>{f6f83f01-142d-486b-945e-d50972bd9aab}</UniqueIdentifier>
@@ -255,13 +258,19 @@
     <Filter Include="addons\ofxSubtitles\src">
       <UniqueIdentifier>{21f42385-3810-4e2e-b247-9742f08a99c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CloudsLibrary\src\Core">
+      <UniqueIdentifier>{06999b93-b933-4fb2-b906-e0d98fa9d3d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization">
+      <UniqueIdentifier>{b72d23d1-7463-420b-99fd-20919ab5f654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization\src">
+      <UniqueIdentifier>{48fc443f-31ea-4067-84c2-fc22b57a0a78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testApp.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h">
-      <Filter>addons\ofxOculusRift\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h">
       <Filter>addons\ofxFTGL\src</Filter>
@@ -422,9 +431,6 @@
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClInclude>
@@ -506,8 +512,31 @@
     <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h">
       <Filter>addons\ofxSubtitles\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsTransitionController.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h">
+      <Filter>addons\ofxLocalization\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\CloudsData\language\JAPANESE\bio\people.xml">
+      <Filter>src</Filter>
+    </Xml>
+    <Xml Include="..\CloudsData\language\JAPANESE\bio\projects.xml">
+      <Filter>src</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

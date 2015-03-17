@@ -1,0 +1,44 @@
+﻿1
+00:00:00:27 --> 00:00:05:23
+And one of the things that I remember really vividly from that time, from those days was kind of 
+
+2
+00:00:05:26 --> 00:00:11:09
+fighting with the administration in my department about programming 
+
+3
+00:00:11:12 --> 00:00:13:22
+and especially something like C++, 
+
+4
+00:00:13:25 --> 00:00:18:04
+which was a computer science type of language, 
+
+5
+00:00:18:07 --> 00:00:20:28
+and I had already arguments with them where it was like, 
+
+6
+00:00:21:01 --> 00:00:25:09
+artist don’t want to learn C++ and artists don’t want to learn how to code,
+
+7
+00:00:25:12 --> 00:00:27:04
+but 
+
+8
+00:00:28:14 --> 00:00:31:05
+the way that I countered that argument was by 
+
+9
+00:00:31:08 --> 00:00:34:20
+creating this tool or helping create this tool 
+
+10
+00:00:34:23 --> 00:00:39:19
+and working with students and the work that they were making was so amazing that 
+
+11
+00:00:39:22 --> 00:00:43:08
+within a year or two there was no argument anymore.
+

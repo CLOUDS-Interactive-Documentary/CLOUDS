@@ -1,0 +1,68 @@
+﻿1
+00:00:00:12 --> 00:00:03:17
+Sure, so there are couple of boundary conditions with visualization.
+
+2
+00:00:03:20 --> 00:00:06:08
+One of them is just the number of pixels on the screen
+
+3
+00:00:06:11 --> 00:00:10:24
+like just to get round numbers, let’s say, we have a 1000 pixels by 1000 pixels,
+
+4
+00:00:10:27 --> 00:00:15:00
+each one of those pixels has maybe 24 bits of color that you can see
+
+5
+00:00:15:03 --> 00:00:19:06
+and for a static image if you think about it, that’s not that much,
+
+6
+00:00:19:09 --> 00:00:22:07
+that is maybe 3 megabytes of information, right,
+
+7
+00:00:22:10 --> 00:00:25:28
+and many, many databases are gigabytes.
+
+8
+00:00:26:01 --> 00:00:29:13
+Now, we can get around that in a couple of ways.  You can animate,
+
+9
+00:00:29:16 --> 00:00:34:02
+so you can show things moving and that gives you more information over time,
+
+10
+00:00:34:05 --> 00:00:38:05
+but even then you really start to think about, okay, what can your eye perceive
+
+11
+00:00:38:08 --> 00:00:41:28
+and if you start to think about the bandwidth of your eye, it’s not just that high
+
+12
+00:00:42:01 --> 00:00:45:28
+and it’s not really absorbing that much from movement.
+
+13
+00:00:46:01 --> 00:00:49:29
+Another thing you can do is add interaction and that’s really what you have to do
+
+14
+00:00:50:02 --> 00:00:55:10
+to see large databases at least a part,but in the end, you are never going to see the whole database,
+
+15
+00:00:55:13 --> 00:01:00:18
+ like there is just not enough bandwidth from the screen to your eyes and
+
+16
+00:01:00:21 --> 00:01:04:08
+ there is not really enough bandwidth from your eyes to your brain to get gigabytes in,
+
+17
+00:01:04:11 --> 00:01:09:00
+and probably your brain is not smart enough to think about gigabytes in any fast manner.
+

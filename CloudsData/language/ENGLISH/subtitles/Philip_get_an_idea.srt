@@ -1,0 +1,32 @@
+﻿1
+00:00:01:05 --> 00:00:02:10
+Very often 
+
+2
+00:00:02:19 --> 00:00:06:10
+I don’t have a clear idea what I would want to do, 
+
+3
+00:00:06:13 --> 00:00:08:08
+usually it’s 
+
+4
+00:00:08:21 --> 00:00:12:08
+I don’t know stumble upon this library or this technique and then
+
+5
+00:00:12:11 --> 00:00:15:21
+just think, yeah, we could try that and then it’s somehow 
+
+6
+00:00:16:12 --> 00:00:20:11
+somewhere in between, you get an idea, yeah, I could go into this direction 
+
+7
+00:00:20:22 --> 00:00:22:02
+and then 
+
+8
+00:00:22:26 --> 00:00:27:18
+at the end, you tweak it until it looks nice and somehow you end up with something.
+

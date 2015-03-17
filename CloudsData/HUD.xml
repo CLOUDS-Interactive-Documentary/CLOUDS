@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>HUD</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>428.000000000</XPosition>
-    <YPosition>137.000000000</YPosition>
+    <XPosition>921.000000000</XPosition>
+    <YPosition>82.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -18,17 +18,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTION ROT V</Name>
-    <Value>-2.216751099</Value>
+    <Value>-2.216749191</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BB Q NONE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BB Q CAMERA</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,17 +38,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LOWER 3RD DIST</Name>
-    <Value>628.571411133</Value>
+    <Value>910.571411133</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LOWER 3RD ROT H</Name>
-    <Value>4.876846313</Value>
+    <Value>0.443347692</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LOWER 3RD ROT V</Name>
-    <Value>-27.931030273</Value>
+    <Value>-34.137931824</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

@@ -1,0 +1,32 @@
+﻿1
+00:00:00:00 --> 00:00:07:00
+My goal is to learn all things about data visualization
+and interactive visuals
+
+2
+00:00:07:00 --> 00:00:10:00
+so I really need to know the technical stuff first
+
+3
+00:00:10:00 --> 00:00:15:00
+yeah programming is a super power!
+it’s great, you can do so many things with it
+
+4
+00:00:15:00 --> 00:00:17:00
+you know it’s a little bit intangible in a way, I think
+
+5
+00:00:17:00 --> 00:00:23:00
+there’s a certain realization that happens when you 
+start to write your own software and manipulate pixels
+
+6
+00:00:23:00 --> 00:00:30:00
+it just opened up a world of possibilities that I could 
+just sit and tweak the numbers forever
+
+7
+00:00:30:00 --> 00:00:32:00
+to just watch slightly different things happen 
+

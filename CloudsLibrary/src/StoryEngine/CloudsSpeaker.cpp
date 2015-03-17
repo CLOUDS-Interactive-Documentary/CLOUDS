@@ -15,11 +15,10 @@ map<string,CloudsSpeaker> CloudsSpeaker::speakers = map<string,CloudsSpeaker>();
 void CloudsSpeaker::populateSpeakers(){
 	
 	speakers.clear();
-
 	
 	//parse speaker xml
 	ofxXmlSettings speakerxml;
-	if(!speakerxml.loadFile(GetCloudsDataPath()+"secondaryDisplay/web/xml/people.xml")){
+	if(!speakerxml.loadFile(GetCloudsDataPath() + "language/" + GetLanguage()+ "/bio/people.xml")){
 		ofLogError("CloudsSpeaker::populateSpeakers") << "People XML failed to load";
 		return;
 	}

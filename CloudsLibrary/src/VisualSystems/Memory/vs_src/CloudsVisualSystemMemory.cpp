@@ -21,7 +21,9 @@ void CloudsVisualSystemMemory::selfSetup()
     // sound
     fMainGain = 0;
     mainGain.value(0);
+    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth() * mainGain);
+    #endif
 }
 
 void CloudsVisualSystemMemory::selfSetDefaults(){
@@ -466,7 +468,7 @@ void CloudsVisualSystemMemory::selfDrawBackground()
 	outlineMesh.draw();
 }
 
-
+#ifdef TONIC_SOUNDS
 Tonic::Generator CloudsVisualSystemMemory::buildSynth()
 {
     string strDir = GetCloudsDataPath(true) + "sound/textures/";
@@ -479,10 +481,13 @@ Tonic::Generator CloudsVisualSystemMemory::buildSynth()
     
     return sampleGen * 5;
 }
+#endif
 
 void CloudsVisualSystemMemory::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
 
 void CloudsVisualSystemMemory::selfSetupGuis()

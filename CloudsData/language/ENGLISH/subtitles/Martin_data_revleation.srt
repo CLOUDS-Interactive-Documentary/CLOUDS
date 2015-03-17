@@ -1,0 +1,72 @@
+﻿1
+00:00:00:26 --> 00:00:05:21
+If you see something that is showing you something you didn’t know it was there
+
+2
+00:00:05:24 --> 00:00:09:00
+ to begin with, you see complexity that wasn’t there.
+
+3
+00:00:09:03 --> 00:00:12:04
+An example of this for me is
+
+4
+00:00:12:07 --> 00:00:15:16
+when I created a map of the wind with Fernanda Viegas,
+
+5
+00:00:15:19 --> 00:00:19:26
+and I had this image in my mind of wind
+
+6
+00:00:19:29 --> 00:00:21:28
+just flowing from west to east basically,
+
+7
+00:00:22:01 --> 00:00:26:12
+ and I was like it can’t be quite that simple, but I am sure that’s what happens ultimately, 
+
+8
+00:00:26:15 --> 00:00:30:03
+and the first time that we actually created visualizations that let us see 
+
+9
+00:00:30:06 --> 00:00:33:15
+the full flow of the wind for the US, I was shocked. 
+
+10
+00:00:33:18 --> 00:00:37:18
+ I had no idea that it traveled in so many different directions and 
+
+11
+00:00:37:21 --> 00:00:40:25
+similarly when we ended up doing a couple of 
+
+12
+00:00:40:28 --> 00:00:43:12
+trial visualizations of wind across the world,
+
+13
+00:00:43:15 --> 00:00:48:21
+that was also really interesting, because I realized oh, it goes west to east in some places, east to west in other places.
+
+14
+00:00:48:24 --> 00:00:54:14
+I immediately remembered, oh, yeah, I learned all about navigation in the 1500s
+
+15
+00:00:54:17 --> 00:00:56:27
+and how boats would use these winds
+
+16
+00:00:57:00 --> 00:01:01:13
+ and suddenly everything came together for me, and I was like aha, I see it now, I get it,
+
+17
+00:01:01:16 --> 00:01:05:09
+and that gave me a framework I think to help me understand
+
+18
+00:01:05:12 --> 00:01:09:08
+how the wind works in general, and it helped me understand the details.
+

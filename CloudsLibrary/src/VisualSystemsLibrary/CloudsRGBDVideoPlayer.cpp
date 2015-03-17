@@ -7,10 +7,8 @@
 //
 
 #include "CloudsRGBDVideoPlayer.h"
-
-#ifdef SHOW_SUBTITLES
-  #include "CloudsVisualSystem.h"
-#endif
+#include "CloudsVisualSystem.h"
+#include "CloudsLocalization.h"
 
 //---------------------------------------------------------------
 CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
@@ -18,7 +16,8 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	nearClip    = 1.0f;
 	edgeClip    = 50.0f;
 	farClip     = 6000.0f;
-	
+	playingVideo = false;
+
 	fadeOutValue = fadeInValue = 0.0;
 
 	minDepth = 400;
@@ -39,16 +38,39 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
     nextClipVolume = 0;
     bLoadResult = false;
 	bPlayWhenReady = false;
+	showingLowerThirds = false;
+	
+	fontLoadWidth = 0;
+
+	subtitle2DOffsetLowerThirds = .72;
+	subtitle2DOffsetVisualSystem = .72;
+
+	englishSubtitleKerning = .5;
+	japaneseSubtitleKerning = .4;
 
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 	nextPlayer    = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 
 	currentVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 	nextVoiceoverPlayer    = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
-#ifdef SHOW_SUBTITLES
+
 	currentSubtitles = ofPtr<ofxSubtitles>( new ofxSubtitles() );
 	nextSubtitles    = ofPtr<ofxSubtitles>( new ofxSubtitles() );
+#ifdef OCULUS_RIFT
+	subtitleFontSize = 20;
+	currentSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);
+    nextSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);;
+	currentSubtitles->lineHeight = .5;
+	nextSubtitles->lineHeight = .5;
+#else
+	subtitleFontSize = 21;
+	currentSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);
+    nextSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);;
+	currentSubtitles->lineHeight = .8;
+	nextSubtitles->lineHeight = .8;
 #endif
+	currentSubtitles->forceUpperCase = false;
+	nextSubtitles->forceUpperCase = false;
 
 	currentClipHasSubtitles = nextClipHasSubtitles = false;
 }
@@ -100,7 +122,6 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 #else
     // No need to use a thread, just call this function directly.
     threadedFunction();
-
     return bLoadResult;
 #endif
 }
@@ -129,7 +150,7 @@ void CloudsRGBDVideoPlayer::threadedFunction(){
     bLoadResult = true;
 }
 
-bool CloudsRGBDVideoPlayer::setupVO(string audioPath){
+bool CloudsRGBDVideoPlayer::setupVO(string audioPath, string subtitlesPath){
 	
 	if(!nextVoiceoverPlayer->loadSound(audioPath)){
 		ofLogError("CloudsRGBDVideoPlayer::setupVO") << "Audio path " << audioPath << " failed to load";
@@ -137,7 +158,15 @@ bool CloudsRGBDVideoPlayer::setupVO(string audioPath){
 		clipPrerolled = false;
 		return false;
 	}
-	
+
+   if(!bEventRegistered){
+		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
+		bEventRegistered = true;
+	}
+
+	nextSubtitlesPath = subtitlesPath;
+    nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
+
 	clipPrerolled = true;
 	nextClipIsVO = true;
 	bLoadResult = true;
@@ -281,9 +310,8 @@ void CloudsRGBDVideoPlayer::startPlayer(){
     
 	swap(currentPlayer,nextPlayer);
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
-#ifdef SHOW_SUBTITLES
     swap(currentSubtitles, nextSubtitles);
-#endif
+
 	currentClipHasSubtitles = nextClipHasSubtitles;
 	if(nextClipIsVO){
 		currentVoiceoverPlayer->play();
@@ -295,6 +323,7 @@ void CloudsRGBDVideoPlayer::startPlayer(){
 	}
 	
 	playingVO = nextClipIsVO;
+	playingVideo = !nextClipIsVO;
 	clipPrerolled = false;
 
 //	cout << "swapped and played clip " << endl;
@@ -354,21 +383,38 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 	shader.setUniform1f("flowPosition", flowPosition);
 }
 
-//--------------------------------------------------------------- ACTIONS
+//--------------------------------------------------------------- 
 ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 	return *currentPlayer;
 }
 
+//--------------------------------------------------------------- 
 ofTexture& CloudsRGBDVideoPlayer::getTextureReference(){
 	return getPlayer().getTextureReference();
 }
 
+//--------------------------------------------------------------- 
+ofPtr<ofxSubtitles> CloudsRGBDVideoPlayer::getSubtitles(){
+	return currentSubtitles;
+}
+    
+//--------------------------------------------------------------- 
+float CloudsRGBDVideoPlayer::getFadeIn(){
+	return fadeInValue;
+}
+
+//--------------------------------------------------------------- 
+float CloudsRGBDVideoPlayer::getFadeOut(){
+	return fadeOutValue;
+}
+
+//--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::stop(){
     getPlayer().stop();
     currentVoiceoverPlayer->stop();
 }
     
-//--------------------------------------------------------------- ACTIONS
+//--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
 	if(!playingVO){
@@ -388,7 +434,11 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
     float audioVolume =  maxVolume * currentClipVolumeAdjustment;
 
 	if(playingVO){
-		currentVoiceoverPlayer->setVolume(audioVolume);
+		//JG: audio volume bug 
+		//currentVoiceoverPlayer->setVolume(audioVolume);
+        if (currentClipHasSubtitles) {
+			currentSubtitles->setTimeInSeconds(currentVoiceoverPlayer->getPositionMS()/1000.);
+        }
 	}
 	else{
 		float position = getPlayer().getPosition()*getPlayer().getDuration();
@@ -409,7 +459,6 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         fadeInValue  = powf(ofMap(fadeInValue,  1.0, 1.5, 0.0, 1.0, true), 2.0);
         fadeOutValue = powf(ofMap(fadeOutValue, .5, 1.0, 0.0, 1.0, true), 2.0);
 		
-
 		float fadeInStartTime = 1.0;
 		float fadeInEndTime = 1.4;
 		float fadeOutStartTime = duration - 1.3 ;
@@ -422,7 +471,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		}
 
 //		cout << "/*/*/*/*/*/***** FADIN VALUE " << fadeInValue << " FADE OUT VALUE " << fadeOutValue << " AUDIO VOLUME " << audioVolume << endl;
-		
+//		cout << "is playing? " << (isPlaying() ? "YES" : "NO") << endl;
 		getPlayer().setVolume(audioVolume);
 
 		if(forceStop && position > duration - .04){
@@ -431,29 +480,31 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         
         /* Subtitles */
         if (currentClipHasSubtitles) {
-#ifdef SHOW_SUBTITLES
 			currentSubtitles->setTimeInSeconds(getPlayer().getPosition()*getPlayer().getDuration());
-#endif
         }
 	}
 }
 
+//--------------------------------------------------------------- 
 bool CloudsRGBDVideoPlayer::isPlaying(){
 	return playingVO ? currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && getPlayer().isPlaying());
 }
 
+//--------------------------------------------------------------- 
 bool CloudsRGBDVideoPlayer::isDone(){
 	return playingVO ? !currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && !getPlayer().isPlaying());
 }
 
-#ifdef SHOW_SUBTITLES
+//--------------------------------------------------------------- 
 bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     
     if (path == "") {
+		ofLogWarning("CloudsRGBDVideoPlayer::loadSubtitles") << "Subtitle path is blank";
         return false;
     }
 
     if (!ofFile(path).exists()) {
+		ofLogWarning("CloudsRGBDVideoPlayer::loadSubtitles") << "Subtitle path doesn't exist " << path;
         return false;
     }
     
@@ -463,79 +514,87 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
         fps = 30;
     }
     
-	//////OLD WAY
-    int fontSize = 36;
-	string fontPath = GetCloudsDataPath() + "font/Blender-BOOK.ttf";;
-    if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
-        return false;
-    }
+	nextSubtitles->setFramesPerSecond(fps);
+	return nextSubtitles->load(path);
     
-    // find font size based on 85% canvas width and a predefined maximum string
-    float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
-	if(requiredWidth == 0){
-		requiredWidth = 1920* .85;
-	}
-    string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
-    float curStringWidth = nextSubtitles->font.stringWidth(maxStr);
-    
-    // loop here until you find the right font size
-    while (curStringWidth > requiredWidth && fontSize > 0) {
-		nextSubtitles->font.setSize(--fontSize);
-        curStringWidth = nextSubtitles->font.stringWidth(maxStr);
-    }
+    /*
+	if(fontLoadWidth != CloudsVisualSystem::getStaticRenderTarget().getWidth()){
+		int fontSize = 50;
+		string fontPath = GetFontPath();
 
-	if(fontSize == 0){
-		ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Font size went to 0, failed to load titles";
-		return false;
-	}
-
-	/*
-    int fontSize = 36;
-    // find font size based on 85% canvas width and a predefined maximum string
-    float requiredWidth = CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
-    string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
-    ofRectangle bounds;//= nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
-    
-    // loop here until you find the right font size
-    do {
-		fontSize--;
-		if(!nextSubtitles->setup(path, GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
+#ifdef OCULUS_RIFT
+		if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_LEFT)) {
+#else
+		if(!nextSubtitles->setup(path, fontPath, fontSize, fps, TEXT_JUSTIFICATION_CENTER)) {
+#endif
+			ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Failed to set up subtitles at path " << path;
 			return false;
 		}
-        bounds = nextSubtitles->font.getStringBoundingBox(maxStr, 0, 0);
-    }while(bounds.width > requiredWidth);
-	*/
-	cout << "SUBTITLE FONT SIZE IS " << fontSize << endl;
-    return true;
-}
+		nextSubtitles->font.setLetterSpacing(japaneseSubtitleKerning);
+		// find font size based on 85% canvas width and a predefined maximum string
+#ifdef OCULUS_RIFT
+		float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth() * .65;
 #else
-bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
-    return false;
-}
+		float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth() * .85;
 #endif
+		if(requiredWidth == 0){
+			requiredWidth = 1920*.85;
+		}
+		string maxStr = "If I'd have to choose from something interesting. Something else";
+		float curStringWidth = nextSubtitles->font.stringWidth(maxStr);
+    
+		// loop here until you find the right font size
+		while (curStringWidth > requiredWidth && fontSize > 0) {
+			nextSubtitles->font.setSize(--fontSize);
+			curStringWidth = nextSubtitles->font.stringWidth(maxStr);
+		}
 
-void CloudsRGBDVideoPlayer::drawSubtitles()
-{
-#ifdef SHOW_SUBTITLES
-    if (hasSubtitles()) {
-        int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
-        int y = CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.7;
+		cout << "SUBTITLE FONT SIZE IS " << fontSize << endl;
+		if(fontSize == 0){
+			ofLogError("CloudsRGBDVideoPlayer::loadSubtitles") << "Font size went to 0, failed to load titles";
+			return false;
+		}
+		fontLoadWidth = fontSize;
+
+	    return true;
+	}
+	else{
+//		return nextSubtitles->load(path);
+	//}
+     */
+
+}
+
+//--------------------------------------------------------------- 
+void CloudsRGBDVideoPlayer::drawSubtitles(){
+#ifdef OCULUS_RIFT
+	int x = 650;
+#else
+	int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
+#endif
+    int y = CloudsVisualSystem::getStaticRenderTarget().getHeight();
+	y *= showingLowerThirds ? subtitle2DOffsetLowerThirds : subtitle2DOffsetVisualSystem;
+	drawSubtitles(x,y);
+}
+
+//--------------------------------------------------------------- 
+void CloudsRGBDVideoPlayer::drawSubtitles(int x, int y, float fade){
+	bool playing = isPlaying() ;
+	if( hasSubtitles() && playing) {
         ofPushStyle();
-		//glDisable(GL_CULL_FACE);
 		ofDisableLighting();
 		ofEnableAlphaBlending();
-        ofSetColor(0, 200);
-        currentSubtitles->draw(x+3, y-2);
-        ofSetColor(255);
+        ofSetColor(0, 200*fade);
+        currentSubtitles->draw(x+2, y+2);
+        ofSetColor(255,255*fade);
         currentSubtitles->draw(x, y);
 		ofDisableAlphaBlending();
         ofPopStyle();
     }
-#endif
 }
     
-bool CloudsRGBDVideoPlayer::hasSubtitles()
-{
+//--------------------------------------------------------------- 
+bool CloudsRGBDVideoPlayer::hasSubtitles(){
     return currentClipHasSubtitles;
 }
     

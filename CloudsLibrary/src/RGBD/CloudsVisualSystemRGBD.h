@@ -4,7 +4,6 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsPortal.h"
 #include "CloudsEvents.h"
-//#include "GPUParticles/Controller.h"
 
 #ifdef HAS_GAMECAM
 #include "ofxGameCamera.h"
@@ -93,6 +92,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
     bool isQuestionSelectedAndClipDone();
 	bool isQuestionSelected();
+	bool isResetSelected();
+
     CloudsPortal* getSelectedQuestion();
     string getQuestionText();
     vector<QuestionQueue>& getQuestionQueue();
@@ -106,7 +107,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	float getRGBDTransitionValue();
 	float visualSystemFadeValue;
-	float questionSelectFade;
+//	float questionSelectFade;
     int questionToReplace;
     
 	ofCamera& getCameraRef(){
@@ -130,6 +131,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofNode transitionInStart;
 	ofNode transitionOutLeft;
 	ofNode transitionOutRight;
+	ofNode transitionOutReset;
+
 	ofVec3f transitionEndPosition;
 	ofQuaternion transitionEndRotation;
 	
@@ -168,7 +171,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     //////////TRANSITIONS
     
 	void playTestVideo(CloudsClip* clip);
-	void playTestVideo();
+	void playTestVideo(int index = 0);
     
     static CloudsVisualSystemEvents events;
     
@@ -301,12 +304,13 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float minDistanceToQuestion;
 	bool bPortalDebugOn;
 	ofVec3f portalBaseHover;
+	ofVec3f resetHoverPosition;
 
 	CloudsPortal leftPortal;
 	CloudsPortal rightPortal;
 	CloudsPortal* portalToClear; //clears when started
+	CloudsPortal resetPortal;
 	string questionText;
-
 	
 	ofxFTGLFont questionFont;
 	int questionFontSize;

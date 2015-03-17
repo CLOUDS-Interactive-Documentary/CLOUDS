@@ -1,0 +1,16 @@
+﻿1
+00:00:00:27 --> 00:00:03:27
+I really believe this is more of the future in terms of
+
+2
+00:00:04:02 --> 00:00:07:18
+ being prepared for multicore architectures and 
+
+3
+00:00:07:21 --> 00:00:12:16
+cloud computing and all of that stuff where it really matters to be able to parallelize
+
+4
+00:00:12:25 --> 00:00:16:02
+ your process onto a number of machines or processors.
+

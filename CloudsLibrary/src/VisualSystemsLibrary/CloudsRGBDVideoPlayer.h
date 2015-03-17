@@ -12,10 +12,7 @@
 #include "ofxXmlSettings.h"
 #include "ofRange.h"
 #include "CloudsGlobal.h"
-
-#ifdef SHOW_SUBTITLES
-    #include "ofxSubtitles.h"
-#endif
+#include "ofxSubtitles.h"
 
 // Secondary threads are only used to preload videos on Windows.
 // (This is done automatically on Mac with the AVFVideoPlayer)
@@ -25,10 +22,8 @@ public:
     CloudsRGBDVideoPlayer();
     ~CloudsRGBDVideoPlayer();
 	
-    //  SET
-    //
-	bool setup(string videoPath, string calibrationXMLPath, string subtitlesPath = "", float offsetTime = 0, float clipVolume =1);
-	bool setupVO(string audioPath);
+	bool setup(string videoPath, string calibrationXMLPath, string subtitlesPath = "", float offsetTime = 0, float clipVolume = 1);
+	bool setupVO(string audioPath, string subtitlePath = "");
 	void swapAndPlay();
 
     void threadedFunction();
@@ -50,12 +45,8 @@ public:
 	bool isDone();
 	bool forceStop; //default to true when playin in clouds
     
-	float getFadeIn(){
-		return fadeInValue;
-	};
-	float getFadeOut(){
-		return fadeOutValue;
-	};
+	float getFadeIn();
+	float getFadeOut();
 
 	ofVideoPlayer& getPlayer();
 	ofTexture& getTextureReference();
@@ -76,6 +67,7 @@ public:
 	float nearClip;
 	
 	bool playingVO;
+	bool playingVideo;
 
 	float maxVolume;
     
@@ -84,13 +76,21 @@ public:
     float currentMaxVolume;
 	
 	bool hasSubtitles();
-    void drawSubtitles();
+	ofPtr<ofxSubtitles> getSubtitles();
 
-	#ifdef SHOW_SUBTITLES
-	ofPtr<ofxSubtitles> getSubtitles(){
-		return currentSubtitles;
-	}
-	#endif
+    void drawSubtitles();
+	void drawSubtitles(int x, int y, float fade = 1.0);
+
+	//subtitle 2D params
+	float subtitle2DOffsetLowerThirds;
+	float subtitle2DOffsetVisualSystem;
+	bool showingLowerThirds;
+	int subtitleFontSize;
+	//type
+	float englishSubtitleKerning;
+	float japaneseSubtitleKerning;
+	int fontLoadWidth;
+
   protected:
 
 	//  UPDATE
@@ -152,9 +152,7 @@ public:
     bool currentClipHasSubtitles;
     bool nextClipHasSubtitles;
     
-#ifdef SHOW_SUBTITLES
     ofPtr<ofxSubtitles> currentSubtitles;
     ofPtr<ofxSubtitles> nextSubtitles;
-#endif
  
 };

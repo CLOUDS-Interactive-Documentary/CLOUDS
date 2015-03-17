@@ -37,6 +37,5 @@ void main()
     
     gl_FragColor = vec4(sum, 1.0);
     //gl_FragColor = texture2DRect(tex0, st);
-
-    // gl_FragColor = vec4(st, 0.0, 1.0);
+    //gl_FragColor = vec4(st, 0.0, 1.0);
 }

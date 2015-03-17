@@ -3,6 +3,7 @@
 
 uniform sampler2DRect tex;
 uniform float fade;
+const float Epsilon = 0.0001;
 
 void main(void) 
 {
@@ -12,17 +13,17 @@ void main(void)
     vec4 currColor = texture2DRect(tex, st);
     vec4 liveColor = vec4(1.0, 1.0, 1.0, 1.0);
     vec4 deadColor = vec4(0.0, 0.0, 0.0, fade);
-    
-    if (texture2DRect(tex, st + vec2(-1.0, -1.0)) == liveColor) ++sum;
-    if (texture2DRect(tex, st + vec2( 0.0, -1.0)) == liveColor) ++sum;
-    if (texture2DRect(tex, st + vec2( 1.0, -1.0)) == liveColor) ++sum;
+
+    if ( abs(texture2DRect(tex, st + vec2(-1.0, -1.0)) - liveColor).r < Epsilon) ++sum;
+    if ( abs(texture2DRect(tex, st + vec2( 0.0, -1.0)) - liveColor).r < Epsilon) ++sum;
+    if ( abs(texture2DRect(tex, st + vec2( 1.0, -1.0)) - liveColor).r < Epsilon) ++sum;
  
-    if (texture2DRect(tex, st + vec2(-1.0,  0.0)) == liveColor) ++sum;
-    if (texture2DRect(tex, st + vec2( 1.0,  0.0)) == liveColor) ++sum;
+    if ( abs(texture2DRect(tex, st + vec2(-1.0,  0.0)) - liveColor).r < Epsilon) ++sum;
+    if ( abs(texture2DRect(tex, st + vec2( 1.0,  0.0)) - liveColor).r < Epsilon) ++sum;
  
-    if (texture2DRect(tex, st + vec2(-1.0,  1.0)) == liveColor) ++sum;
-    if (texture2DRect(tex, st + vec2( 0.0,  1.0)) == liveColor) ++sum;
-    if (texture2DRect(tex, st + vec2( 1.0,  1.0)) == liveColor) ++sum;
+    if ( abs(texture2DRect(tex, st + vec2(-1.0,  1.0)) - liveColor).r < Epsilon) ++sum;
+    if ( abs(texture2DRect(tex, st + vec2( 0.0,  1.0)) - liveColor).r < Epsilon) ++sum;
+    if ( abs(texture2DRect(tex, st + vec2( 1.0,  1.0)) - liveColor).r < Epsilon) ++sum;
 
     vec4 outColor;
     if (sum < 2 || sum > 3) outColor = deadColor;  // dead

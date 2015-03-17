@@ -1,0 +1,20 @@
+﻿1
+00:00:01:04 --> 00:00:04:25
+Casey Rees says code is great at doing five or six things.
+
+2
+00:00:04:28 --> 00:00:09:06
+They’re like: simulation, replication, recursion. 
+
+3
+00:00:09:09 --> 00:00:14:24
+ Okay, you can’t really do a lot of simulation with a fountain pen, kinda, you know, 
+
+4
+00:00:14:27 --> 00:00:17:25
+you can draw somebody’s pictures,　but it doesn’t do anything. 
+
+5
+00:00:17:28 --> 00:00:22:01
+ It doesn’t actually behave in the way that another system behaves.
+

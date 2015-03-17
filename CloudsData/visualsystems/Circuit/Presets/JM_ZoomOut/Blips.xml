@@ -2,18 +2,18 @@
     <Kind>40</Kind>
     <Name>Blips</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>459.000000000</XPosition>
+    <XPosition>334.000000000</XPosition>
     <YPosition>110.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>BLIP SPEED</Name>
-    <Value>4.285714149</Value>
+    <Value>0.492610812</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BLIP SIZE</Name>
-    <HighValue>0.588374376</HighValue>
+    <HighValue>2.000000000</HighValue>
     <LowValue>0.127635449</LowValue>
 </Widget>
 <Widget>

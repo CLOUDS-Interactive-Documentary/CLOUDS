@@ -110,9 +110,6 @@ protected:
 	// Sound
     ofxUISuperCanvas* soundGui;
     vector<TonicSample> tonicSamples;
-//    string soundFiles[1] = {"WindChimes1.aif"};
-//    bool playSample[1];
-//    ControlTrigger soundTriggers[1];
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);

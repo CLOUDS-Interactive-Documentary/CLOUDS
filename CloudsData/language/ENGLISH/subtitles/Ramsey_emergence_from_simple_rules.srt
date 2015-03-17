@@ -1,0 +1,44 @@
+﻿1
+00:00:00:04 --> 00:00:05:10
+And when I learned how that algorithm worked  in college, 
+
+2
+00:00:05:13 --> 00:00:10:28
+it for me was a reflection on the  universe that we live in.  
+
+3
+00:00:11:17 --> 00:00:14:26
+Given some initial  configuration and given a set of 
+
+4
+00:00:15:18 --> 00:00:18:09
+four basic  rules, the rules of physics, 
+
+5
+00:00:19:04 --> 00:00:23:11
+electromagnetism,  gravity, 
+
+6
+00:00:23:14 --> 00:00:26:11
+the strong and weak nuclear forces,  
+
+7
+00:00:28:15 --> 00:00:33:19
+given the simple set of rules and initial  configuration you have this impossibly complex  universe, 
+
+8
+00:00:34:00 --> 00:00:38:24
+and Conway’s Game of Life was sort  of a reflection on that 
+
+9
+00:00:38:27 --> 00:00:43:08
+incredibly elegant  structure, right, and like how you can get  profound complexity 
+
+10
+00:00:43:11 --> 00:00:46:26
+not by starting with  complexity and just getting more complexity, 
+
+11
+00:00:46:29 --> 00:00:52:07
+but by starting with something that can be  described in a paragraph and just emerging  from that.
+

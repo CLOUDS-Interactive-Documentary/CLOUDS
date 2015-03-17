@@ -36,7 +36,9 @@ void CloudsVisualSystemOcean::selfSetup(){
 
     // sound
     gain = 0;
+    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth());
+    #endif
 }
 void CloudsVisualSystemOcean::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_CAMERA;
@@ -364,19 +366,14 @@ void CloudsVisualSystemOcean::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-Generator CloudsVisualSystemOcean::buildSynth()
+#ifdef TONIC_SOUNDS
+Tonic::Generator CloudsVisualSystemOcean::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
     
     SampleTable samples[2];
     
-//    int nSounds = sizeof(soundFiles) / sizeof(string);
-//    for (int i=0; i<nSounds; i++)
-//    {
-//        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
-//        samples[i] = loadAudioFile(strAbsPath);
-//    }
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
         samples[i] = loadAudioFile(strAbsPath);
@@ -387,10 +384,13 @@ Generator CloudsVisualSystemOcean::buildSynth()
     
     return (sampleGen1 * 1.0f + sampleGen2 * 1.0f) * volumeControl;
 }
+#endif
 
 void CloudsVisualSystemOcean::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
 
 

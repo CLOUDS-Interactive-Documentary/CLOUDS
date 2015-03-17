@@ -1,0 +1,24 @@
+﻿1
+00:00:00:28 --> 00:00:06:12
+We were interested in understanding how people were working together
+
+2
+00:00:06:15 --> 00:00:11:05
+on Wikipedia to create these very sophisticated articles, 
+
+3
+00:00:11:08 --> 00:00:15:20
+and we were interested in patterns of collaboration,
+
+4
+00:00:15:23 --> 00:00:21:14
+ so for instance, were people fighting, and if they were fighting, how were they resolving their fights?
+
+5
+00:00:21:17 --> 00:00:25:14
+how were people deciding what piece of content
+
+6
+00:00:25:17 --> 00:00:29:00
+belonged in a certain page or in a different page?
+

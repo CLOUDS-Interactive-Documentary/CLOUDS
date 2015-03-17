@@ -14,16 +14,43 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	
+
+	//ofSetWindowPosition(0,0);
+#ifdef OCULUS_RIFT
+	ofSetWindowShape(1920*2,1080);
+#else
+	ofSetWindowShape(1920,1080);
+#endif
 	ofSetVerticalSync(true);
 	shouldPlayTestVideo = false;
 	ofSetLogLevel(OF_LOG_NOTICE);
     
 	CloudsSpeaker::populateSpeakers();
+	map<string,CloudsSpeaker>::iterator it;
+	for(it = CloudsSpeaker::speakers.begin(); it != CloudsSpeaker::speakers.end(); it++){
+		speakerKeys.push_back(it->first);
+	}
+	curSpeaker = 0;
 
 	parser.loadFromFiles();
 	hud.setup();
-	//parser.loadMediaAssets();
+	
+	////////////////////////////////////////////////
+	//stringstream questions;
+	//for(int i = 0; i < parser.getAllClips().size(); i++){
+	//	CloudsClip* clip = parser.getAllClips()[i];
+	//	if(clip->isLanguageCompatible() && clip->hasQuestion()){
+	//		map<string,string>::iterator it;
+	//		for( it = clip->getAllQuestionTopicPairs().begin(); it != clip->getAllQuestionTopicPairs().end(); it++){
+	//			questions << clip->getLinkName() << "	" << it->first << "	" << it->second << "	" << (clip->hasSpecialKeyword("#oculus") || clip->hasSpecialKeyword("#start") ? "YES" : "NO") << endl;
+	//		}
+	//	}
+	//}
+	//ofBufferToFile(GetCloudsDataPath() + "TRANSLATED_question_topics.txt", ofBuffer(questions.str()));
+	////////////////////////////////////////////////
+
+	testVideoIndex = 0;
+
 	rgbd.setup();
 	rgbd.setDrawToScreen(false);
 #ifdef OCULUS_RIFT
@@ -31,9 +58,9 @@ void testApp::setup(){
     rgbd.hud = &hud;
     rgbd.setupHUDGui();
 #endif
+	CloudsVisualSystem::getRGBDVideoPlayer().showingLowerThirds = true;
 
 	//rgbd.forceScreenResolution(1920*2,1080*2);
-	//rgbd.setDrawToScreen(false);
 	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
 
@@ -44,20 +71,29 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
+
+	if(ofGetFrameNum() == 10){
+		ofToggleFullscreen();
+	}
 	//updateTransitions();
 	hud.update();
 	if(shouldPlayTestVideo){
 		shouldPlayTestVideo = false;
 		cout << "**** playing test video" << endl;
-		rgbd.playTestVideo();
+		rgbd.playTestVideo(testVideoIndex);
+
 		CloudsClip* clip = new CloudsClip();
-		clip->person = "Jen";
+		if(testVideoIndex == 0){
+			clip->person = "Zach";
+		}
+		else{		
+			clip->person = "Higa";
+		}
 		hud.respondToClip(clip);
 		CloudsQuestionEventArgs args(clip, "WHAT'S YOUR QUESTION?", "topic");
-		hud.questionSelected(args);
+		//hud.questionSelected(args);
 	}
 }
-
 
 //--------------------------------------------------------------
 void testApp::draw(){
@@ -65,12 +101,15 @@ void testApp::draw(){
 	ofDisableDepthTest();
 	ofEnableAlphaBlending();
 	rgbd.selfPostDraw();
-#ifndef OCULUS_RIFT
 	ofSetColor(255);
+
+#ifndef OCULUS_RIFT
 	hud.draw();
-	//ofDisableAlphaBlending();
 	CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
 #endif
+
+	ofDisableDepthTest();
+	//rgbd.getRGBDVideoPlayer().getPlayer().draw(0,0);
 }
 
 //--------------------------------------------------------------
@@ -82,6 +121,29 @@ void testApp::keyPressed(int key){
 	if(key == 'I'){
 		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToInterview(1.0, 1.0);
+	}
+
+	if(key == OF_KEY_LEFT){
+		curSpeaker = (curSpeaker + 1) % speakerKeys.size();
+		CloudsClip clip;
+		clip.person = speakerKeys[curSpeaker];
+		hud.respondToClip(&clip);
+	}
+	else if(key == OF_KEY_RIGHT){
+		curSpeaker--;
+		if(curSpeaker < 0) curSpeaker += speakerKeys.size();
+		
+		CloudsClip clip;
+		clip.person = speakerKeys[curSpeaker];
+		hud.respondToClip(&clip);	
+	}
+	else if(key == '1'){
+		testVideoIndex = 0;
+		shouldPlayTestVideo = true;
+	}
+	else if(key == '2'){
+		testVideoIndex = 1;
+		shouldPlayTestVideo = true;	
 	}
 }
 

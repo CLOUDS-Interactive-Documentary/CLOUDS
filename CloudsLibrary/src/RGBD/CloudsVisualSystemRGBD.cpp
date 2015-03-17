@@ -2,6 +2,7 @@
 #include "CloudsVisualSystemRGBD.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
+#include "CloudsLocalization.h"
 
 CloudsVisualSystemEvents CloudsVisualSystemRGBD::events;
 
@@ -9,7 +10,6 @@ CloudsVisualSystemEvents CloudsVisualSystemRGBD::events;
 CloudsVisualSystemRGBD::CloudsVisualSystemRGBD(){
 
 	visualSystemFadeValue = 0.0;
-	questionSelectFade = 0.0;
     questionToReplace = 0;	
 	transitionTarget = NULL;
 	bTransitionIn = bTransitionOut = false;
@@ -209,46 +209,41 @@ void CloudsVisualSystemRGBD::selfSetup(){
     
 	portals.push_back(&leftPortal);
 	portals.push_back(&rightPortal);
-	
+	//portals.push_back(&resetPortal);
+
 	leftPortal.setup();
 	rightPortal.setup();
-//	resetPortal.setup();
+	//resetPortal.setup();
 	
 	leftPortal.cam = &cloudsCamera;
 	rightPortal.cam = &cloudsCamera;
-//	resetPortal.cam = &cloudsCamera;
+	//resetPortal.cam = &cloudsCamera;
 	
 	leftPortal.bLookAtCamera = true;
 	rightPortal.bLookAtCamera = true;
-//	resetPortal.bLookAtCamera = true;
+	//resetPortal.bLookAtCamera = true;
 	
+	//resetPortal.question = "RESET";
+
 	loadShader();
 	
-	cout << "*** LOADING POINT LAYERS" << endl;
     pointLayer1.pointShader = &pointShader;
     pointLayer2.pointShader = &pointShader;
 
-	cout << "*** LOAD GENERATE LINES" << endl;
 	generateLines();
-	cout << "*** LOAD GENERATE MESH" << endl;
 	generateMesh();
 		
-	//particulateController.setParticleCount(2000);
-	//particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-	//particulateController.setup();
 	voxelMesh.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
 			
-//	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
 #ifdef HAS_GAMECAM
 	transitionCam.setup();
 	transitionCam.applyTranslation = true;
 	transitionCam.applyRotation = true;
 #endif
 	
-//    rebuildCaptionFont();
 	
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
@@ -260,24 +255,33 @@ void CloudsVisualSystemRGBD::playTestVideo(CloudsClip* clip){
 	getRGBDVideoPlayer().swapAndPlay();
 }
 
-void CloudsVisualSystemRGBD::playTestVideo(){
+void CloudsVisualSystemRGBD::playTestVideo(int videoIndex){
 
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Shiffman_programming_the_universe";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Shantell_Coding_gesturally";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Golan_yellow_tail";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Casey_emergence";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Kevin_Getting_smarter_together";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_networked_creativity";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Aaron_dreaming_together";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Fernanda_Social_dynamics";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Fernanda_What_people_are_thinking";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Lauren_sentiment_anaylsis";
-	//string sourceFile = "E:\\CLOUDS_MEDIA\\Jen_a_different_mathematics";
-//	string sourceFile = GetCloudsDataPath(true) + "media/Jen_a_different_mathematics";
-	string sourceFile = GetCloudsDataPath(true) + "media/Patricio_Alchemy_3";
-	string filePathMov = sourceFile+".mov";
-	string filePathXml = sourceFile+".xml";
-	string subtitlesPathSrt = GetCloudsDataPath() + "subtitles/Patricio_Alchemy_3.srt"; 
+
+	//string sourceFile = GetCloudsDataPath(true) + "VO/Intro_Computers.aif";
+	//string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Intro_Computers.srt"; 
+	//if(ofFile::doesFileExist(sourceFile)){
+ //       getRGBDVideoPlayer().setupVO(sourceFile, subtitlesPathSrt);
+	//	getRGBDVideoPlayer().swapAndPlay();
+	//}
+	//else{
+	//	ofSystemAlertDialog("Test Video " + sourceFile + " does not exist");
+	//}
+
+	string sourceFile, filePathMov,filePathXml, subtitlesPathSrt;
+
+	if(videoIndex == 0){
+		filePathXml = GetCloudsDataPath(true) + "media/Aaron_code,_story,_communication.xml";
+		sourceFile  = GetCloudsDataPath(true) + "media/Aaron_code,_story,_communication_2.5mbps";
+		filePathMov = sourceFile+".mov";
+		setupSpeaker("Kyle", "McDonald","");
+	}
+	else{
+		filePathXml = GetCloudsDataPath(true) + "media/Kyle_MC_folowing_the_finger.xml";
+		sourceFile  = GetCloudsDataPath(true) + "media/Kyle_MC_folowing_the_finger";
+		filePathMov = sourceFile+".mov";
+		setupSpeaker("Kyle", "McDonald","");
+	}
 	if(ofFile::doesFileExist(filePathMov)){
         getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);
 		getRGBDVideoPlayer().swapAndPlay();
@@ -289,13 +293,21 @@ void CloudsVisualSystemRGBD::playTestVideo(){
 
 void CloudsVisualSystemRGBD::loadShader(){
 	cout << "loading point shader " << endl;
-	pointShader.load(getVisualSystemDataPath() + "shaders/rgbdPoints");
+	if(!pointShader.load(getVisualSystemDataPath() + "shaders/rgbdPoints")){
+		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
+	}
 	cout << "loading line shader " << endl;
-	lineShader.load( getVisualSystemDataPath() + "shaders/rgbdLines");
+	if(!lineShader.load( getVisualSystemDataPath() + "shaders/rgbdLines")){
+		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
+	}
 	cout << "loading mesh shader " << endl;
-	meshShader.load( getVisualSystemDataPath() + "shaders/rgbdMesh");
+	if(!meshShader.load( getVisualSystemDataPath() + "shaders/rgbdMesh")){
+		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
+	}
     cout << "loading occlusion shader " << endl;
-    occlusionShader.load( getVisualSystemDataPath() + "shaders/rgbdOcclusion");
+    if(!occlusionShader.load( getVisualSystemDataPath() + "shaders/rgbdOcclusion")){
+		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
+	}
 }
 
 void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
@@ -305,17 +317,15 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 	ofQuaternion q;
 	
 	//just in case... maybe this fails a little more gracefully
-	if(transitionMap[type].find( option ) != transitionMap[type].end())
-	{
+	if(transitionMap[type].find( option ) != transitionMap[type].end()){
 		ti = transitionMap[type][option];
-	}else{
+	}
+	else{
 		ti = transitionMap[type]["default"];
 	}
 	
-	if(type == "QUESTION")
-	{
+	if(type == "QUESTION") {
 		q.set( getCameraRef().getOrientationQuat() );
-		
 		
 		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
 		transitionInStart.setOrientation( q );
@@ -330,9 +340,12 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 		
 		transitionOutRight.setPosition(leftPortal.hoverPosition + rightExtraFlying);
 		transitionOutRight.setOrientation( q );
+
+		transitionOutReset.setPosition(resetPortal.hoverPosition);
+		transitionOutReset.setOrientation( q );
+
 	}
-	else if(transitionMap.find(type) != transitionMap.end())
-	{	
+	else if(transitionMap.find(type) != transitionMap.end()){	
 		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
 		q.set( ti.inQuat );
 		transitionInStart.setOrientation( q );
@@ -655,8 +668,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	questionGui->addSlider("QUESTION FONT SPLIT WIDTH", 100, 500.0, &questionFontSplitWidth);
 	
 #ifdef OCULUS_RIFT
-//	questionGui->addSlider("RESET Y", -300, 300, &resetHoverPosition.y);
-//	questionGui->addSlider("RESET Z", -500, 500, &resetHoverPosition.z);
+	questionGui->addSlider("RESET Y", -300, 300, &resetHoverPosition.y);
+	questionGui->addSlider("RESET Z", -500, 500, &resetHoverPosition.z);
 #endif
 	
 	guis.push_back(questionGui);
@@ -680,6 +693,9 @@ void CloudsVisualSystemRGBD::selfUpdate(){
     questionSelectFade = 1.0;
 #endif
     
+	float transitionValue = getRGBDTransitionValue();
+	//cout << "TRANSITION IS " << transitionValue << endl;
+
 	pointLayer1.visualSystemFadeValue = getRGBDTransitionValue();
     pointLayer2.visualSystemFadeValue = getRGBDTransitionValue();
     pointLayer1.update();
@@ -698,26 +714,6 @@ void CloudsVisualSystemRGBD::selfUpdate(){
     }
     
 	lineFlowPosition += powf(lineFlowSpeed,2.0);
-    //TODO FLOW POINTS
-//	pointFlowPosition += powf(pointFlowSpeed,2.0);
-	/*
-	if(drawParticulate){
-		
-//        if(particulateController.getNumParticles() != particleCount){
-//            particulateController.setParticleCount(particleCount);
-//            particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-//            particulateController.setup();
-//        }
-        
-		particulateController.birthPlace = translatedHeadPosition;
-		glDisable(GL_LIGHTING);
-		glDisable(GL_DEPTH_TEST);
-		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
-		particulateController.getPoints().color.a = pointColor.w;
-		particulateController.update();
-	
-	}
-	*/
 
 	voxelMesh.center = cloudsCamera.lookTarget;
 	voxelMesh.update();
@@ -791,7 +787,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 
 	}
 	else {
-        //this stops the camera from drifting around as you move closer tothe question
+        //this stops the camera from drifting around as you move closer to the question
 		//cloudsCamera.driftNoiseSpeed = caughtPortal ? 0 : attenuatedCameraDrift;
 		if( portalTugDistance.max != portalTugDistance.center() ){
 			float cameraDriftDamp = powf(ofMap(minDistanceToQuestion, portalTugDistance.max, portalTugDistance.center(),
@@ -1223,11 +1219,15 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 	
 	leftPortal.hoverPosition  = portalBaseHover + translatedHeadPosition;
 	rightPortal.hoverPosition = portalBaseHover*ofVec3f(-1,0,0) + translatedHeadPosition;
+	//resetPortal.hoverPosition = resetHoverPosition + translatedHeadPosition;
 
-	leftPortal.scale = portalScale;
+	leftPortal.scale  = portalScale;
 	rightPortal.scale = portalScale;
-	leftPortal.lookTarget = cloudsCamera.getPosition();
+	//resetPortal.scale = portalScale;
+
+	leftPortal.lookTarget  = cloudsCamera.getPosition();
 	rightPortal.lookTarget = cloudsCamera.getPosition();
+	//resetPortal.lookTarget = cloudsCamera.getPosition();
     
     //default to far away
     minDistanceToQuestion = portalTugDistance.max;
@@ -1279,15 +1279,7 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			//let it go
 			else if(distanceToQuestion > portalTugDistance.max){
 				caughtPortal->stopHovering();
-                /////NEW QUESTION WAY
-//                caughtPortal->question = "";
-                /////NEW QUESTION WAY
-				caughtPortal = NULL;
-//                CloudsPortalEventArgs args(*portals[i], getQuestionText());
-				//JG QUESTION SWITCH TEXT
-//                CloudsPortalEventArgs args(getQuestionText());
-//                ofNotifyEvent(events.portalHoverEnded, args);
-				
+				caughtPortal = NULL;				
 			}
 		}
         minDistanceToQuestion = MIN(distanceToQuestion, minDistanceToQuestion);
@@ -1326,11 +1318,13 @@ void CloudsVisualSystemRGBD::startCurrentTransitionOut()
 {
 	if(currentTransitionType == "QUESTION")
 	{
-		transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
 		transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
-		
+		transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
+		transitionOutReset.setOrientation( getCameraRef().getOrientationQuat() );
+
 		transitionOutRight.setPosition(leftPortal.hoverPosition);
 		transitionOutLeft.setPosition(rightPortal.hoverPosition);
+		//transitionOutReset.setPosition(resetPortal.hoverPosition);
 	}
 	
 	//transition to the left or right based on relative posiiton
@@ -1353,27 +1347,27 @@ void CloudsVisualSystemRGBD::startCurrentTransitionIn()
 	cloudsCamera.setTransitionTargetNode( &cloudsCamera.mouseBasedNode );
 }
 
-void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option)
-{
-	//I think this'll happen in setTransitionNodes
-	//if( transitionType == QUESTION)
-	//{
-	//	transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
-	//	transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
-	//}
+void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option){
 	
 	//set the in/out nodes
 	setTransitionNodes( transitionType, option );
 	
 	//transition to the left or right based on relative posiiton
-	setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
+	setOutOption( (cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
 	
 	//transitionEase = ofxTween::easeOut;
 	transitionEase = ofxTween::easeIn;
 	transitioning = true;
 	
-	cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
-	cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
+	if(isResetSelected()){
+		cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
+		cloudsCamera.setTransitionTargetNode( &transitionOutReset );
+	
+	}
+	else{
+		cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
+		cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
+	}
 }
 
 void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType, string option)
@@ -1507,6 +1501,8 @@ void CloudsVisualSystemRGBD::generateLines(){
 	lines.setMesh(m, GL_STATIC_DRAW);
 	lineVertexCount = m.getNumVertices();
     
+	cout << "GENERATED LINES " << lineVertexCount << endl;
+
 	refreshLines = false;
 }
 
@@ -1588,6 +1584,8 @@ void CloudsVisualSystemRGBD::generateMesh(){
     mesh.setMesh(m, GL_STATIC_DRAW);
 	//m.setMode(OF_PRIMITIVE_TRIANGLES);
 	refreshMesh = false;
+
+	cout << "GENERATED MESH " << meshVertexCount << endl;
 }
 
 
@@ -1666,22 +1664,24 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
     occlusion.setMesh(m, GL_STATIC_DRAW);
     refreshOcclusion = false;
     
+	cout << "GENERATED OCCLUSION " << occlusionVertexCount << endl;
 }
 
 void CloudsVisualSystemRGBD::speakerChanged(){
 
-	if(timeline!=NULL){
+	if(timeline != NULL){
        timeline->hide();
 	}
 	
-	//clearQuestions();
+    //only during screening
+    /*
 	if(portalToClear != NULL){
 		if(questions.size() != 0){
 			portalToClear->clip = questions[0].clip;
 			portalToClear->topic = questions[0].topic;
 			portalToClear->question = questions[0].question;
 			questions.erase( questions.begin() );
-			cout << "******ERASING QUESTIONS. SIZE IS NOE " << questions.size() << endl;
+			cout << "******ERASING QUESTIONS. SIZE IS NOW " << questions.size() << endl;
 		}
         else{
 			portalToClear->topic = "";
@@ -1689,7 +1689,8 @@ void CloudsVisualSystemRGBD::speakerChanged(){
         }
 		portalToClear = NULL;
 	}
-	
+	*/
+    
 	assignAvailableQuestion(leftPortal);
 	assignAvailableQuestion(rightPortal);
 }
@@ -1702,7 +1703,6 @@ void CloudsVisualSystemRGBD::assignAvailableQuestion(CloudsPortal& portal){
 	}
 	
 #ifndef CLOUDS_SCREENING
-//#else
 	if(&portal != caughtPortal && &portal != selectedPortal){
 		portal.clip = questions.back().clip;
 		portal.topic = questions.back().topic;
@@ -1765,7 +1765,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
             }
 			
 			glEnable(GL_CULL_FACE);
-//            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
             glCullFace(cullFace);
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
@@ -1949,14 +1948,16 @@ float CloudsVisualSystemRGBD::getRGBDTransitionValue(){
 
 void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     
-    glPushMatrix();
+	ofPushMatrix();
     if(!drawOcclusionDebug){
-        
-        ofTranslate(0, 0, 5.44);
-        
-        glEnable(GL_DEPTH_TEST);  // We want depth test !
+        float occludeZOffset = 5.44;
+		//occludeZOffset = ofMap(ofGetMouseX(), 0, 500, -50,50, true);
+		//cout << " Z occlude " << occludeZOffset << endl;
+        ofTranslate(0, 0, occludeZOffset);
+		glClear(GL_DEPTH_BUFFER_BIT);
+		glEnable(GL_DEPTH_TEST);  // We want depth test !
         glDepthFunc(GL_LESS);     // We want to get the nearest pixels
-        glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
+        glColorMask(0,0,0,0);     // Disable color, we only want depth.
         glDepthMask(GL_TRUE);     // Ask z writing
     }
     
@@ -1974,13 +1975,15 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     occlusionShader.end();
     
     if(!drawOcclusionDebug){
-        glEnable(GL_DEPTH_TEST);  // We still want depth test
+		glEnable(GL_DEPTH_TEST);  // We still want depth test
         glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
         glColorMask(1,1,1,1);     // We want color this time
+		//#ifndef OCULUS_RIFT
         glDepthMask(GL_FALSE);
+		//#endif
     }
     
-    glPopMatrix();
+	ofPopMatrix();
 }
 
 void CloudsVisualSystemRGBD::drawQuestions(){
@@ -1995,9 +1998,7 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 		rightPortal.draw();
 	}
 	CloudsPortal::shader.end();
-//#ifdef OCULUS_RIFT
 	drawQuestionType();
-//#endif
 	glEnable(GL_DEPTH_TEST);
 
 }
@@ -2005,7 +2006,8 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 //called either in draw for rift, or draw overlay for normal
 void CloudsVisualSystemRGBD::drawQuestionType(){
 	if(!questionFont.isLoaded() || currentQuestionFontSize != questionFontSize){
-		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+//		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+		questionFont.loadFont(GetFontPath(), questionFontSize);
 		currentQuestionFontSize = questionFontSize;
 	}
 	
@@ -2013,16 +2015,24 @@ void CloudsVisualSystemRGBD::drawQuestionType(){
 	if(questionText == "" || (caughtPortal == NULL && selectedPortal == NULL) ){
 		return;
 	}
-
+	//cout << "Question Text " << questionText << endl;
 	ofVec3f basePosition = caughtPortal != NULL ? caughtPortal->hoverPosition : selectedPortal->hoverPosition;
 	float textOpacity = 1.0;
-	questionFont.setTracking(questionFontTracking);
+	questionFont.setLetterSpacing(questionFontTracking);
 		
 	float questionTextWidth = questionFont.stringWidth(questionText);
 	float questionTextWidth2,questionTextHeight2;
 	string secondLine;
 	bool twoLines = questionTextWidth > questionFontSplitWidth;
-	if(twoLines){
+	if(questionText.find("\n") != string::npos){
+		twoLines = true;
+		vector<string> split = ofSplitString(questionText, "\n", true,true);
+		questionText = split[0];
+		secondLine = split[1];
+		questionTextWidth  = questionFont.stringWidth(questionText);
+		questionTextWidth2 = questionFont.stringWidth(secondLine);
+	}
+	else if(twoLines){
 		vector<string> pieces = ofSplitString(questionText, " ", true,true);
 		vector<string> firstHalf;
 		vector<string> secondHalf;
@@ -2133,7 +2143,22 @@ void CloudsVisualSystemRGBD::selfBegin(){
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){
-	
+
+    if(portalToClear != NULL){
+		if(questions.size() != 0){
+			portalToClear->clip = questions[0].clip;
+			portalToClear->topic = questions[0].topic;
+			portalToClear->question = questions[0].question;
+			questions.erase( questions.begin() );
+			cout << "******ERASING QUESTIONS. SIZE IS NOW " << questions.size() << endl;
+		}
+        else{
+			portalToClear->topic = "";
+			portalToClear->question = "";
+        }
+		portalToClear = NULL;
+	}
+
 }
 
 bool CloudsVisualSystemRGBD::isQuestionSelectedAndClipDone(){
@@ -2145,17 +2170,17 @@ string CloudsVisualSystemRGBD::getQuestionText(){
         return "WHAT DOES IT FEEL LIKE TO CODE?";
     }
     else if(caughtPortal != NULL){
-        return ofToUpper(caughtPortal->question);
+        return GetTranslationForString( ofToUpper(caughtPortal->question) );
     }
     else if(selectedPortal != NULL){
-        return ofToUpper(selectedPortal->question);
+        return GetTranslationForString( ofToUpper(selectedPortal->question) );
     }
     return "";
 }
 
 #ifdef CLOUDS_SCREENING
 bool CloudsVisualSystemRGBD::hasQuestionsRemaining(){
-	return questions.size() == 0 && leftPortal.question == "" && rightPortal.question == "";
+	return !(questions.size() == 0 && leftPortal.question == "" && rightPortal.question == "");
 }
 
 void CloudsVisualSystemRGBD::clearQuestionQueue(){
@@ -2181,13 +2206,16 @@ void CloudsVisualSystemRGBD::removeQuestionFromQueue(CloudsClip* clip){
     ofLogError("CloudsVisualSystemRGBD::removeQuestionFromQueue") << "Failed to remove clip " << clip->getLinkName() << " from queue";
 }
 
-
 bool CloudsVisualSystemRGBD::isQuestionSelected(){
-	return selectedPortal != NULL;
+	return selectedPortal != NULL && selectedPortal != &resetPortal;
 }
 
 CloudsPortal* CloudsVisualSystemRGBD::getSelectedQuestion(){
    return selectedPortal;
+}
+
+bool CloudsVisualSystemRGBD::isResetSelected(){
+	return selectedPortal == &resetPortal;
 }
 
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
@@ -2196,9 +2224,6 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 		loadShader();
 		voxelMesh.reloadShaders();
 		
-//		particulateController.reloadShaders();
-//		CloudsQuestion::reloadShader();
-//		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
     
     if(args.key == 'P'){
@@ -2206,7 +2231,7 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
     }
 }
 
-void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs & args){
+void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs& args){
 
 }
 
@@ -2470,4 +2495,3 @@ void CloudsVisualSystemRGBD::selfSetupRenderGui(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::guiRenderEvent(ofxUIEventArgs &e){
 }
-

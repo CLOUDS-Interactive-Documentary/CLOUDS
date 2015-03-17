@@ -301,13 +301,7 @@
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp">
       <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.cpp">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.cpp">
@@ -1036,9 +1030,6 @@
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsStoryEngine.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemManager.cpp">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClCompile>
@@ -1141,9 +1132,6 @@
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsSoundFuncs.cpp">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.cpp">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
@@ -1155,6 +1143,27 @@
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesTimer.cpp">
       <Filter>addons\ofxAnimationPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsPlaybackController.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsTransitionController.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsVisualSystemManager.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
+      <Filter>addons\ofxLocalization\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1376,6 +1385,15 @@
     </Filter>
     <Filter Include="addons\ofxBinaryMesh\src">
       <UniqueIdentifier>{11ce0b07-6ae0-4426-8d5d-85163dad0340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Core">
+      <UniqueIdentifier>{c662ab59-fb13-4962-a5af-7eb49e66602b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization">
+      <UniqueIdentifier>{1148e1e1-0d89-40a0-bf15-8fc8ccff0461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization\src">
+      <UniqueIdentifier>{8c128525-8ed1-48a4-961c-8fcd2d7a12d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1931,13 +1949,7 @@
     <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h">
       <Filter>addons\ofxOsc\libs\oscpack\ip</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsPlaybackController.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsRGBDPointLayer.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsTransitionController.h">
       <Filter>CloudsLibrary\src\RGBD</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsVisualSystemRGBD.h">
@@ -2747,9 +2759,6 @@
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsEvents.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
@@ -2769,9 +2778,6 @@
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsStoryEngine.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemManager.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVisualSystemPreset.h">
@@ -2960,9 +2966,6 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Paradox\vs_src\CloudsVisualSystemParadox.h">
       <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsCalibrationNode.h">
-      <Filter>CloudsLibrary\src\RGBD</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClInclude>
@@ -2999,6 +3002,28 @@
     <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesTimer.h">
       <Filter>addons\ofxAnimationPrimitives</Filter>
     </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsPlaybackController.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsTransitionController.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsVisualSystemManager.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h">
+      <Filter>addons\ofxLocalization\src</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_internalarray.inl">
@@ -3033,5 +3058,11 @@
     <Text Include="..\..\..\addons\ofxRegex\readme.txt">
       <Filter>addons\ofxRegex</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="CLOUDS.ico" />
   </ItemGroup>
 </Project>

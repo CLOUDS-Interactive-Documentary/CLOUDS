@@ -1,0 +1,48 @@
+﻿1
+00:00:00:00 --> 00:00:05:02
+And so I was spending every night running a system in Python.  
+
+2
+00:00:06:09 --> 00:00:10:05
+I just wanted to learn things.  I always found myself like 4 years behind my grad students,
+
+3
+00:00:10:08 --> 00:00:13:25
+so I thought I would catch up and it sounds like in a system and
+
+4
+00:00:14:04 --> 00:00:18:14
+ I wanted to make a system that wasn’t just about computation,
+
+5
+00:00:19:02 --> 00:00:23:16
+ it was more about hand gestures 
+
+6
+00:00:23:19 --> 00:00:27:17
+ like drawings, and so I made a system that would encode my drawings 
+
+7
+00:00:27:20 --> 00:00:31:14
+and gestures and colors that I like and it’s important to [Unclear] 
+
+8
+00:00:32:03 --> 00:00:35:19
+and worked with that.  Those series of 
+
+9
+00:00:35:22 --> 00:00:40:06
+pieces, there are seven of them, they are not on the webs.  You can’t see them actually. 
+
+10
+00:00:42:08 --> 00:00:45:29
+Those things were all examples of a different technique I developed 
+
+11
+00:00:46:02 --> 00:00:48:29
+to make more human view 
+
+12
+00:00:49:02 --> 00:00:52:00
+ of what computation looks like and feels like and…
+

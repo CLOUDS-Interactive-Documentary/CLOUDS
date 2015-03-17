@@ -11,9 +11,9 @@
 #include "CloudsInput.h"
 #include "CloudsClip.h"
 #include "CloudsSpeaker.h"
-#ifdef OCULUS_RIFT
 #include "CloudsVisualSystem.h"
-#endif
+#include "CloudsLocalization.h"
+
 
 CloudsHUDController::CloudsHUDController(){
 	hudGui = NULL;
@@ -74,7 +74,8 @@ void CloudsHUDController::setup(){
 	ofAddListener(ofEvents().mouseReleased,this, &CloudsHUDController::mouseReleased);
 #endif
 
-	hudLabelMap["ResetButtonTextBox"]->setText("RESET");
+	hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("RESET"));
+    hudLabelMap["ResetButtonTextBox"]->clearTextOnAnimateOut = false;
 
 	home.setup();
     
@@ -143,6 +144,7 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
 	    
 	//LOWER THIRD
     //update lower third, but only if the speaker has changed
+#ifndef OCULUS_RIFT
     if(speaker.fcpID != CloudsSpeaker::speakers[ clip->person ].fcpID){
         speaker = CloudsSpeaker::speakers[ clip->person ];
         populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, false );
@@ -159,7 +161,6 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
     }
     
 // PROJECT EXAMPLE
-#ifndef OCULUS_RIFT
 	if(clip->hasProjectExample && clip->projectExample.exampleVideos.size() ){
 		CloudsProjectExample example = clip->projectExample;
         string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
@@ -358,9 +359,11 @@ void CloudsHUDController::calculateFontSizes(){
     int minFontSize = 1;
     int maxFontSize = 70;
     #ifdef OCULUS_RIFT
-	string fontPath = GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
+	//string fontPath = GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
+	string fontPath = GetMediumFontPath();
 	#else
-	string fontPath = GetCloudsDataPath() + "font/Blender-THIN.ttf";
+	//string fontPath = GetCloudsDataPath() + "font/Blender-THIN.ttf";
+	string fontPath = GetThinFontPath();
 	#endif
 
     for(int i = minFontSize; i < maxFontSize; i++){
@@ -424,6 +427,9 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer(const string& layerN
             newLabel->setup( newLayout, textMesh->bounds );
             hudLabelMap[layerName] = newLabel;
             
+            if(layerName == "ResetButtonTextBox"){
+                cout << "RESET FONT IS " << fontSize << endl;
+            }
             return newLayout;
         }
     }
@@ -482,7 +488,7 @@ ofxFTGLFont* CloudsHUDController::getFontForLayer(const string& layerName, const
             
             // make a layout
             ofxFTGLFont *newFont = new ofxFTGLFont();
-            newFont->setTracking(kerning * .08);
+			newFont->setLetterSpacing(kerning * .08);
             newFont->loadFont( fontPath, fontSize );
            // newLayout->setLineLength( 999 );
             
@@ -536,20 +542,25 @@ void CloudsHUDController::update(){
 		hudLabelMap["QuestionTextBox"]->animateIn();
 	}
 
+    //cout << "IS RESET VISIBLE "    << (hudLabelMap["ResetButtonTextBox"]->isVisible() ? "YES" : "NO") << endl;
+    //cout << "IS RESET LAYOUT " << (hudLabelMap["ResetButtonTextBox"]->layout == NULL ? "NULL" : "SET") << endl;
+    //cout << "IS RESET TEXT  "     << hudLabelMap["ResetButtonTextBox"]->getText() << endl;
+    
 //	cout << "CURRENT QUESTION " << hudLabelMap["QuestionTextBox"]->getText() << " VISIBLE? " << (hudLabelMap["QuestionTextBox"]->isVisible() ? "YES" : "NO") << endl;
 
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
 	}
-    
-    float xScale = ofGetWindowWidth()/hudBounds.width;
-    float yScale = ofGetWindowHeight()/hudBounds.height;
+	float scaleToWidth  = CloudsVisualSystem::getStaticRenderTarget().getWidth()  - 20; //20 for hardcoded bleed
+	float scaleToHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() - 20;
+	float xScale = scaleToWidth/hudBounds.width;
+	float yScale = scaleToHeight/hudBounds.height;
     
 	bool xDominantScale = xScale < yScale;
     scaleAmt	= xDominantScale ? xScale : yScale;
 	scaleOffset = xDominantScale ? 
-		ofVec2f(0, ofGetWindowHeight()- hudBounds.height*scaleAmt)*.5 :
-		ofVec2f(ofGetWindowWidth() - hudBounds.width*scaleAmt, 0)*.5;
+		ofVec2f(0, scaleToHeight- hudBounds.height*scaleAmt)*.5 :
+		ofVec2f(scaleToWidth - hudBounds.width*scaleAmt, 0)*.5;
 
    if( isPlaying){
 	   	if(! videoPlayer.isPlaying()){
@@ -582,6 +593,8 @@ void CloudsHUDController::update(){
 
 void CloudsHUDController::updateReset(){
 	ofRectangle resetRect = layerSets[CLOUDS_HUD_LOWER_THIRD][0]->svg.getMeshByID("ResetButtonBacking")->bounds;
+    
+    
 	scaledResetRect.x = resetRect.x * scaleAmt + scaleOffset.x;
 	scaledResetRect.y = resetRect.y * scaleAmt + scaleOffset.y;
 	scaledResetRect.width = resetRect.width * scaleAmt;
@@ -593,6 +606,9 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
 	bool orig = bResetIsHovered;
 	bResetIsHovered = hudOpenMap[CLOUDS_HUD_LOWER_THIRD] && scaledResetRect.inside(args.x,args.y);
+    
+    //cout << "RESET HOVERED? " << (bResetIsHovered ? "YES" : "NO") << endl;
+    
 	if(orig != bResetIsHovered){
 		resetHoverChangedTime = ofGetElapsedTimef();
 	}
@@ -694,8 +710,11 @@ void CloudsHUDController::draw(){
 
 	ofPushStyle();
 	ofEnableAlphaBlending();
+    
+    
 	float resetHoverAlpha = ofMap(ofGetElapsedTimef() - resetHoverChangedTime, 0, .5, 0.0, 1.0, true);
 	if(!bResetIsHovered) resetHoverAlpha = 1.0 - resetHoverAlpha;
+    
 	ofFill();
 	ofSetColor(200,30,0, 255*resetHoverAlpha*.3);
 	ofRect(scaledResetRect);
@@ -770,15 +789,16 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, of
     ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
     ofTranslate(layerPos);
 
-    if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
-        // Billboard rotation using the Oculus orientation.
-        float angle;
-        ofVec3f axis;
-        CloudsVisualSystem::getOculusRift().getOrientationQuat().getRotate(angle, axis);
-        ofRotate(angle, axis.x, axis.y, axis.z);
-        ofScale(-1, 1, 1);
-    }
-    else if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_CAMERA) {
+	//JG Yebizo Festival -- Commenting out other billboard modes for now
+    //if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
+    //    // Billboard rotation using the Oculus orientation.
+    //    float angle;
+    //    ofVec3f axis;
+    //    CloudsVisualSystem::getOculusRift().getOrientationQuat().getRotate(angle, axis);
+    //    ofRotate(angle, axis.x, axis.y, axis.z);
+    //    ofScale(-1, 1, 1);
+    //}
+//    else if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_CAMERA) {
         // Billboard rotation using the camera.
         ofNode node;
         node.setPosition(layerPos);
@@ -787,12 +807,12 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, of
         float angle;
         node.getOrientationQuat().getRotate(angle, axis);
         ofRotate(angle, axis.x, axis.y, axis.z);
-    }
-    else {
-//        ofRotateY(layerRotationH[layer]);
-//        ofRotateX(layerRotationV[layer]);
-        ofScale(-1, 1, 1);
-    }
+//    }
+//    else {
+////        ofRotateY(layerRotationH[layer]);
+////        ofRotateX(layerRotationV[layer]);
+//        ofScale(-1, 1, 1);
+//    }
     
     // Debug circle.
 //    ofSetColor(255);
@@ -861,7 +881,9 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
         hudLabelMap["BylineTopicTextBoxTop"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxBottom"]->animateIn( true );
         hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
+#ifndef OCULUS_RIFT
 		hudLabelMap["ResetButtonTextBox"]->animateIn( true );
+#endif
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
 //JG TEMP
@@ -948,7 +970,9 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
         hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
         hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
+#ifndef OCULUS_RIFT
         hudLabelMap["ResetButtonTextBox"]->animateOut();
+#endif
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
         hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();

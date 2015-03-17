@@ -131,6 +131,9 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 		}
 		return easyCamera;
 	}
+    
+	ofVboMesh& getNodeMesh();
+	ofVboMesh& getNetworkMesh();
 
 	void reloadShaders();
 	bool autoTraversePoints;

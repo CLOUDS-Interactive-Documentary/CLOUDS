@@ -9,6 +9,8 @@ void testApp::setup(){
 	portal.cam = &easyCam;
 	portal.setup();
     
+    fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA, 4);
+    
 #ifdef OCULUS_RIFT
     oculusRift.baseCamera = &easyCam;
     oculusRift.setup();
@@ -43,6 +45,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    
     glDisable(GL_DEPTH_TEST);
 
 #ifdef OCULUS_RIFT
@@ -66,16 +69,20 @@ void testApp::draw(){
     
     oculusRift.draw();
 #else
+    fbo.begin();
+    ofClear(0,0,0,0);
 	easyCam.begin();
 	CloudsPortal::shader.begin();
 	portal.draw();
 	CloudsPortal::shader.end();
 	easyCam.end();
     
-    ofPushStyle();
-	ofSetColor(portal.hovering ? ofColor::yellow : ofColor::white);
-	ofCircle(portal.screenPosition, 10);
-	ofPopStyle();
+//    ofPushStyle();
+//	ofSetColor(portal.hovering ? ofColor::yellow : ofColor::white);
+//	ofCircle(portal.screenPosition, 10);
+//	ofPopStyle();
+    fbo.end();
+    fbo.draw(0,0);
 #endif
 }
 
@@ -87,11 +94,15 @@ void testApp::keyPressed(int key){
     else if(key == 'f'){
         ofToggleFullscreen();
     }
-#ifdef OCULUS_RIFT
     else if(key == ' '){
+#ifdef OCULUS_RIFT
         oculusRift.reset();
-    }
+#else
+        ofPixels p;
+        fbo.readToPixels(p);
+        ofSaveImage(p, "SAVEFRAME.png");
 #endif
+    }
 }
 
 //--------------------------------------------------------------
@@ -125,7 +136,7 @@ void testApp::mouseReleased(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::windowResized(int w, int h){
-
+    fbo.allocate(w, h, GL_RGB, 4);
 }
 
 //--------------------------------------------------------------

@@ -7,7 +7,6 @@
 #include "CloudsEvents.h"
 #include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
-#include "CloudsVisualSystemManager.h"
 #include "CloudsRun.h"
 #include "CloudsDichotomy.h"
 
@@ -45,6 +44,7 @@ typedef struct {
 } CloudsStoryState;
 
 class CloudsAct;
+class CloudsVisualSystemManager;
 class CloudsStoryEngine {
   public:
 	CloudsStoryEngine();
@@ -64,6 +64,8 @@ class CloudsStoryEngine {
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed, string topic, bool playSeed = true);
 	bool getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset, bool forceCredits = false);
+	bool getRandomInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset);
+
     void initGui();
     void saveGuiSettings();
     void toggleGuis(bool actOnly = false);

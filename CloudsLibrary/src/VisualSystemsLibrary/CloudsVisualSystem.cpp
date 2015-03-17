@@ -3,6 +3,7 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
+#include "CloudsLocalization.h"
 
 #if defined(MOUSE_INPUT)
 #include "CloudsInputMouse.h"
@@ -14,11 +15,6 @@
 
 #ifdef TARGET_OSX
 #include "ofxSystemTextbox.h"
-#endif
-
-#ifdef MOUSE_INPUT
-//#include "ofAppGLFWWindow.h"
-//#include <GLFW/glfw3.h>
 #endif
 
 static ofFbo staticRenderTarget;
@@ -35,11 +31,19 @@ static ofImage backgroundGradientWash;
 static bool screenResolutionForced = false;
 static int forcedScreenWidth;
 static int forcedScreenHeight;
+
+#ifdef OCULUS_RIFT
+static int numSamples = 0;
+#else
 static int numSamples = 4;
+#endif
 static ofSoundPlayer* click = NULL;
 static ofSoundPlayer* selectHigh = NULL;
 static ofSoundPlayer* selectMid = NULL;
 static ofSoundPlayer* selectLow = NULL;
+
+static ofxFTGLFont subtitleNameFont;
+static int subtitleNameFontSize = 24;
 
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
@@ -174,19 +178,24 @@ void CloudsVisualSystem::get2dMesh(ofMesh& mesh, float width, float height){
 
 #ifdef OCULUS_RIFT
 #include "OVR.h"
-static ofxOculusRift oculusRift;
-ofxOculusRift& CloudsVisualSystem::getOculusRift(){
+static ofxOculusDK2 oculusRift;
+static ofFbo oculusTarget;
+ofxOculusDK2& CloudsVisualSystem::getOculusRift(){
 	if(!oculusRift.isSetup()){
 
 		ofFbo::Settings renderSettings;
 		renderSettings.useDepth = true;
-		renderSettings.numSamples = 4;
+		//renderSettings.numSamples = 4;
+		renderSettings.numSamples = 0;
 		renderSettings.depthStencilInternalFormat = GL_DEPTH_COMPONENT32F;
 		renderSettings.internalformat = GL_RGB;
 
         checkOpenGLError("PRE SETUP OCULUS");
 		oculusRift.setup(renderSettings);
         checkOpenGLError("POST SETUP OCULUS");
+
+		//JG OCULUS TARGET HACK
+		//oculusTarget.allocate(1920,1080,GL_RGB);
 	}
 
 	return oculusRift;
@@ -217,6 +226,13 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	   
 	pointcloudOffsetZ = 0.0;
 
+	subtitle3DBasePosX = 0;
+	subtitle3DBasePosY = 0;
+	subtitle3DBasePosZ = 0;
+	subtitle3DScale = 1.0;
+	subtitleHudZ = -300;
+	subtitleHudY = .5;
+
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 	hudGui = NULL;	
@@ -231,17 +247,19 @@ CloudsVisualSystem::CloudsVisualSystem(){
 
 CloudsVisualSystem::~CloudsVisualSystem(){
 
-	//can't save guis because the virtual subclass members return the wrong data
-//    saveGUIS();
 }
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
 	ofFbo& renderTarget = getStaticRenderTarget();  
+#ifdef OCULUS_RIFT
+	int targetWidth  = 1920;
+	int targetHeight = 1080;
+#else
 	int targetWidth  = ofGetWidth();
 	int targetHeight = ofGetHeight();
-    
-	float computedWidth, computedHeight; 
+#endif    
+	int computedWidth, computedHeight; 
 	if(screenResolutionForced){
 		computedWidth = forcedScreenWidth;
 		computedHeight = forcedScreenHeight;
@@ -257,11 +275,12 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	}
 
 	bool reallocateTarget = !renderTarget.isAllocated() ||
-							 renderTarget.getWidth()  != computedWidth ||
-							 renderTarget.getHeight() != computedHeight;
+							 (int)renderTarget.getWidth()  != computedWidth ||
+							 (int)renderTarget.getHeight() != computedHeight;
 
 
 	if(reallocateTarget){
+		cout << "REALLOCATING RENDER TARGET" << endl;
 		renderTarget.allocate(computedWidth, computedHeight, GL_RGB, numSamples);
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -310,9 +329,11 @@ void CloudsVisualSystem::setup(){
     postGrainDist = 0.f;
     //POST PROCESSING BLEED AMNT
     bleed  = 20;
-    
+   	questionSelectFade = 1.0;
+
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
-	
+
+
 	//ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
 	if(!backgroundShaderLoaded){
 		loadBackgroundShader();
@@ -523,7 +544,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 
 bool CloudsVisualSystem::updateInterludeInterface(){
 
-#ifdef CLOUDS_INTERLUDE_NAV
+//#ifdef CLOUDS_INTERLUDE_NAV
 	resetNode.multiplier	= -1;
 	continueNode.multiplier = 1;
 	CalibrationNode* n[2] = { &resetNode, &continueNode };
@@ -544,7 +565,7 @@ bool CloudsVisualSystem::updateInterludeInterface(){
 	continueNode.update();
 	
 //	cout << "Reset node position " << resetNode.worldPosition << " cam pos " << getCameraRef().getPosition() << endl;
-#endif
+//#endif
 	return false;
 
 }
@@ -569,9 +590,33 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             getOculusRift().endBackground();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
-			getOculusRift().beginOverlay(-230, 640,480);
+			//JG removing this before Yebizo festival, no visual systems use overlay in the rift
+			getOculusRift().beginOverlay(subtitleHudZ, 1920,1080);
 			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
-			selfDrawOverlay();
+
+			float renderTargetMidpoint = CloudsVisualSystem::getStaticRenderTarget().getWidth()*.5;
+			float subtitleHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() * subtitleHudY;
+			ofPushStyle();
+			
+			if(GetLanguage() != "ENGLISH" || speakerFirstName == "Higa" || speakerFirstName == "Patricio"){
+				getRGBDVideoPlayer().drawSubtitles(650,subtitleHeight, questionSelectFade);
+			}	
+
+//			string speakerFullName = speakerFirstName + " " + speakerLastName;
+			if(getRGBDVideoPlayer().isPlaying()){
+				if(!subtitleNameFont.isLoaded()){
+					subtitleNameFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", subtitleNameFontSize);
+				}
+
+				string speakerFullName = speakerFirstName + " " + speakerLastName;
+				float speakerNameWidth = subtitleNameFont.stringWidth(speakerFullName);
+				ofPushStyle();
+				ofSetColor(0,255*questionSelectFade);
+				subtitleNameFont.drawString(speakerFullName, 650+2, subtitleHeight - 54+2); 
+				ofSetColor(255,255*questionSelectFade);
+				subtitleNameFont.drawString(speakerFullName, 650, subtitleHeight - 54); 
+				ofPopStyle();
+			}
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
 			getOculusRift().endOverlay();
 			
@@ -763,6 +808,7 @@ void CloudsVisualSystem::drawScene(){
 	ofPushStyle();
 	ofSetLineWidth(1);
 	selfDraw();
+	
 	checkOpenGLError(getSystemName() + ":: DRAW");
 	ofPopStyle();
 	
@@ -776,9 +822,94 @@ void CloudsVisualSystem::drawScene(){
 	if(isInterlude){
 		drawInterludeInterface();
 	}
+	//drawSubtitles3D();
+	draw3DCursor();
+#endif
 	
-    // EZ: Only draw cursor on _Intro for now
-    if(primaryCursorMode > CURSOR_MODE_NONE && getSystemName() == "_Intro"){
+}
+
+void CloudsVisualSystem::drawInterludeInterface(){
+	
+#if defined(OCULUS_RIFT)
+
+	ofPushStyle();
+	ofDisableDepthTest();
+	ofDisableLighting();
+	ofEnableAlphaBlending();
+	ofSetColor(255);
+	
+	if(!interludeFont.isLoaded() || currentInterludeFontSize != interludeFontSize){
+		//interludeFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", interludeFontSize);
+		interludeFont.loadFont(GetFontPath(), interludeFontSize);
+		currentInterludeFontSize = interludeFontSize;
+	}
+
+	resetNode.draw();
+	continueNode.draw();
+	string resetTranslation = GetTranslationForString("RESET");
+	string continueTranslation = GetTranslationForString("CONTINUE");
+
+	interludeFont.setLetterSpacing(interludeTypeTracking);
+	float hoverTextWidth  = interludeFont.stringWidth(resetTranslation);
+	float hoverTextHeight = interludeFont.stringHeight(resetTranslation);
+
+	ofPushMatrix();
+	getOculusRift().multBillboardMatrix( resetNode.worldPosition, getCameraRef().getUpDir() );
+	ofRotate(180,0,0,1);
+	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
+	interludeFont.drawString( resetTranslation, -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	ofPopMatrix();
+	
+	interludeFont.setLetterSpacing(interludeTypeTracking*.5);
+	hoverTextWidth  = interludeFont.stringWidth(continueTranslation);
+	hoverTextHeight = interludeFont.stringHeight(continueTranslation);
+	
+	ofPushMatrix();
+	getOculusRift().multBillboardMatrix( continueNode.worldPosition, getCameraRef().getUpDir() );
+	ofRotate(180,0,0,1);
+	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
+	interludeFont.drawString(continueTranslation, -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
+	ofPopMatrix();
+	
+	ofPopStyle();
+#endif
+}
+
+void CloudsVisualSystem::drawSubtitles3D(){
+#ifdef OCULUS_RIFT
+
+	//cout << "SUB 3D **: DRAWING SUBTITLES" << endl;
+	
+	ofVec3f subtitleWorldPosition;
+	subtitleWorldPosition = ofVec3f(0, -subtitle3DBasePosY, subtitle3DBasePosZ);
+	subtitleWorldPosition  = getCameraRef().getOrientationQuat() * subtitleWorldPosition;
+	subtitleWorldPosition += getCameraRef().getPosition();
+
+	ofPushMatrix();
+
+	getOculusRift().multBillboardMatrix( subtitleWorldPosition, getCameraRef().getUpDir() );
+	ofRotate(180,0,0,1);
+	ofScale(subtitle3DScale,subtitle3DScale,subtitle3DScale);
+	getRGBDVideoPlayer().drawSubtitles(0,0);
+	
+	//TEST
+	//ofPushStyle();
+	//ofSetColor(255,0,0);
+	//ofSetRectMode(OF_RECTMODE_CENTER);	
+	//ofRect(0,0,500,75);
+	//ofPopStyle();
+	//TEST
+
+	ofPopMatrix();
+#endif
+}
+
+void CloudsVisualSystem::draw3DCursor(){
+#ifdef OCULUS_RIFT
+
+	// EZ: Only draw cursor on _Intro for now
+	// JG: Also draw during interlude
+    if(getSystemName() == "_Intro" || isInterlude){
         ofPushStyle();
         ofPushMatrix();
         glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -805,55 +936,8 @@ void CloudsVisualSystem::drawScene(){
         ofPopStyle();
     }
 #endif
-	
+
 }
-
-
-void CloudsVisualSystem::drawInterludeInterface(){
-	
-#if defined(CLOUDS_INTERLUDE_NAV)
-
-	ofPushStyle();
-	ofDisableDepthTest();
-	ofDisableLighting();
-	ofEnableAlphaBlending();
-	ofSetColor(255);
-	
-	if(!interludeFont.isLoaded() || currentInterludeFontSize != interludeFontSize){
-		interludeFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", interludeFontSize);
-		currentInterludeFontSize = interludeFontSize;
-	}
-
-	resetNode.draw();
-	continueNode.draw();
-	
-	interludeFont.setTracking(interludeTypeTracking);
-	float hoverTextWidth  = interludeFont.stringWidth("RESET");
-	float hoverTextHeight = interludeFont.stringHeight("RESET");
-
-	ofPushMatrix();
-	getOculusRift().multBillboardMatrix( resetNode.worldPosition, getCameraRef().getUpDir() );
-	ofRotate(180,0,0,1);
-	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
-	interludeFont.drawString("RESET", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
-	ofPopMatrix();
-	
-	interludeFont.setTracking(interludeTypeTracking*.5);
-	hoverTextWidth  = interludeFont.stringWidth("CONTINUE");
-	hoverTextHeight = interludeFont.stringHeight("CONTINUE");
-	
-	ofPushMatrix();
-	getOculusRift().multBillboardMatrix( continueNode.worldPosition, getCameraRef().getUpDir() );
-	ofRotate(180,0,0,1);
-	ofScale(interludeTypeScale,interludeTypeScale,interludeTypeScale);
-	interludeFont.drawString("CONTINUE", -hoverTextWidth/2, interludeTypeYOffset - hoverTextHeight/2);
-	ofPopMatrix();
-	
-	ofPopStyle();
-#endif
-}
-
-
 
 void CloudsVisualSystem::setupRGBDTransforms(){
 	ofTranslate(0,0,pointcloudOffsetZ);
@@ -1094,6 +1178,8 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             
 #ifdef OCULUS_RIFT
         case OF_KEY_BACKSPACE:
+			ofExit();
+		case 320:
 		case '0':
 			oculusRift.reset();
 			break;
@@ -3199,7 +3285,15 @@ void CloudsVisualSystem::setupOculusGui()
 	oculusGui->addSlider("INTERLUDE TYPE SCALE",    0, 1.0, &interludeTypeScale);
 	oculusGui->addSlider("INTERLUDE TYPE OFFSET",   1, 200, &interludeTypeYOffset);
 	oculusGui->addSlider("INTERLUDE TYPE TRACKING", 1, 20, &interludeTypeTracking);
-	
+	//SUBTITLES
+	//oculusGui->addSlider("SUBTITLE X POS", 0,  10, &subtitle3DBasePosX);
+	oculusGui->addSlider("SUBTITLE Y POS", 1, 200, &subtitle3DBasePosY);
+	oculusGui->addSlider("SUBTITLE Z POS", 0, -100, &subtitle3DBasePosZ);
+	oculusGui->addSlider("SUBTITLE SCALE", 0,  1.0, &subtitle3DScale);
+	oculusGui->addSpacer();
+	oculusGui->addSlider("SUBTITLE HUD Z", 0, -700, &subtitleHudZ);
+	oculusGui->addSlider("SUBTITLE HUD Y", 0,  1.0, &subtitleHudY);
+
     oculusGui->autoSizeToFitWidgets();
     ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
     guis.push_back(oculusGui);
@@ -3226,14 +3320,13 @@ void CloudsVisualSystem::setupHUDGui()
     hudGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
 	ofxUIButton *button;
-	/*
-    *button = hudGui->addButton("SAVE", false);
+	
+    button = hudGui->addButton("SAVE", false);
     button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
     hudGui->resetPlacer();
     hudGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
     hudGui->addWidgetToHeader(button);
-    */
-
+    
     hudGui->addSpacer();
     hudGui->addSlider("QUESTION DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_QUESTION]);
     hudGui->addSlider("QUESTION ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_QUESTION]);
@@ -3284,8 +3377,8 @@ void CloudsVisualSystem::setupHUDGui()
     guimap[hudGui->getName()] = hudGui;
     
     // load initial settings
-//	string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
-//    hudGui->loadSettings(hudFileName);
+	string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
+    hudGui->loadSettings(hudFileName);
 
     // sync visibility with others
     hudGui->setVisible(gui->isVisible());
@@ -3294,10 +3387,10 @@ void CloudsVisualSystem::setupHUDGui()
 void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
 {
     string name = e.getName();
-//    if (name == "SAVE") {
-//		string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
-//       hudGui->saveSettings(hudFileName);
-//    }
+    if (name == "SAVE") {
+		string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
+		hudGui->saveSettings(hudFileName);
+    }
 
     if (name == "BB Q NONE") {
         hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_NONE;
@@ -3377,7 +3470,9 @@ void CloudsVisualSystem::loadGUIS()
 #endif
 #ifdef OCULUS_RIFT
         if (guis[i] == oculusGui) continue;
+#ifdef CLOUDS_HUD
         if (guis[i] == hudGui) continue;
+#endif
 #endif
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
 		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
@@ -3391,14 +3486,22 @@ void CloudsVisualSystem::loadGUIS()
     oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
 #ifdef CLOUDS_HUD
     if (hudGui != NULL) {
-        hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+		string hudFileName = GetCloudsDataPath() + hudGui->getName() + (getOculusRift().isHD()? "" : "_SD")+".xml";
+		hudGui->loadSettings(hudFileName);
     }
 #endif
 #endif
     
     cam.reset();
     ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/ofEasyCamSettings");
-    resetTimeline();
+	#ifdef OCULUS_RIFT
+	ofVec3f pos = cam.getPosition();
+	ofQuaternion rot = cam.getOrientationQuat();
+	cam.reset();
+	cam.setPosition(pos);
+	cam.setOrientation(rot);	
+	#endif
+	resetTimeline();
     
     loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
     timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
@@ -3460,6 +3563,9 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 #endif
 #ifdef OCULUS_RIFT
         if (guis[i] == oculusGui) continue;
+	#ifdef CLOUDS_HUD
+		if (guis[i] == hudGui) continue;
+	#endif
 #endif
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
@@ -3469,8 +3575,14 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	string easyCamPath = presetPath+"/ofEasyCamSettings";
 	if(ofFile(easyCamPath).exists()){
 		ofxLoadCamera(cam, easyCamPath);
+		#ifdef OCULUS_RIFT
+		ofVec3f pos = cam.getPosition();
+		ofQuaternion rot = cam.getOrientationQuat();
+		cam.reset();
+		cam.setPosition(pos);
+		cam.setOrientation(rot);
+		#endif
 	}
-	
     loadTimelineUIMappings(presetPath+"/UITimelineMappings.xml");
 	timeline->setName( ofFilePath::getBaseName( presetPath ) );
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
@@ -3581,11 +3693,11 @@ void CloudsVisualSystem::deleteGUIS()
 #endif
 #ifdef OCULUS_RIFT
     ofRemoveListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
-#ifdef CLOUDS_HUD
+	#ifdef CLOUDS_HUD
     if (hudGui != NULL) {
         ofRemoveListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
     }
-#endif
+	#endif
 #endif
 	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
@@ -3789,31 +3901,31 @@ void CloudsVisualSystem::drawBackgroundGradient(){
 	}
 	ofPopStyle();
 }
-
-void CloudsVisualSystem::ofLayerGradient(const ofColor& start, const ofColor& end)
-{
-    float w = cam.getDistance()*bgAspectRatio;
-    float h = cam.getDistance()*bgAspectRatio;
-    ofMesh mesh;
-    mesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
-    // this could be optimized by building a single mesh once, then copying
-    // it and just adding the colors whenever the function is called.
-    ofVec2f center(0.0,0.0);
-    mesh.addVertex(center);
-    mesh.addColor(start);
-    int n = 32; // circular gradient resolution
-    float angleBisector = TWO_PI / (n * 2);
-    float smallRadius = ofDist(0, 0, w / 2, h / 2);
-    float bigRadius = smallRadius / cos(angleBisector);
-    for(int i = 0; i <= n; i++) {
-        float theta = i * TWO_PI / n;
-        mesh.addVertex(center + ofVec2f(sin(theta), cos(theta)) * bigRadius);
-        mesh.addColor(end);
-    }
-    glDepthMask(false);
-    mesh.draw();
-    glDepthMask(true);
-}
+//
+//void CloudsVisualSystem::ofLayerGradient(const ofColor& start, const ofColor& end)
+//{
+//    float w = cam.getDistance()*bgAspectRatio;
+//    float h = cam.getDistance()*bgAspectRatio;
+//    ofMesh mesh;
+//    mesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
+//    // this could be optimized by building a single mesh once, then copying
+//    // it and just adding the colors whenever the function is called.
+//    ofVec2f center(0.0,0.0);
+//    mesh.addVertex(center);
+//    mesh.addColor(start);
+//    int n = 32; // circular gradient resolution
+//    float angleBisector = TWO_PI / (n * 2);
+//    float smallRadius = ofDist(0, 0, w / 2, h / 2);
+//    float bigRadius = smallRadius / cos(angleBisector);
+//    for(int i = 0; i <= n; i++) {
+//        float theta = i * TWO_PI / n;
+//        mesh.addVertex(center + ofVec2f(sin(theta), cos(theta)) * bigRadius);
+//        mesh.addColor(end);
+//    }
+//    glDepthMask(GL_FALSE);
+//    mesh.draw();
+//    glDepthMask(GL_TRUE);
+//}
 
 void CloudsVisualSystem::selfSetDefaults(){
 	
@@ -3880,9 +3992,64 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	ofDisableLighting();
 
 #ifdef OCULUS_RIFT
-    oculusRift.draw();
-#else
 
+	//THIS WAY TO JUST DRAW
+	//oculusRift.draw();
+
+	
+	//THIS WAY TO DRAW FOR FANCY DK2 MIRRORING
+	
+	//oculusTarget.begin();
+	getSharedRenderTarget().begin();
+	oculusRift.draw();
+	getSharedRenderTarget().end();
+	//oculusTarget.end();
+	
+	ofMesh oculusTargetMesh1;
+	oculusTargetMesh1.addVertex(ofVec3f(0,0,0));
+	oculusTargetMesh1.addTexCoord(ofVec2f(0,1080));
+
+	oculusTargetMesh1.addVertex(ofVec3f(1920,0,0));
+	oculusTargetMesh1.addTexCoord(ofVec2f(1920,1080));
+
+	oculusTargetMesh1.addVertex(ofVec3f(0,1080,0));
+	oculusTargetMesh1.addTexCoord(ofVec2f(0,0));
+
+	oculusTargetMesh1.addVertex(ofVec3f(1920,1080,0));
+	oculusTargetMesh1.addTexCoord(ofVec2f(1920,0));
+
+	/////////////////////////////////////////
+	/////////////////////////////////////////
+	//SIDEWAYS:
+	/*
+	ofMesh oculusTargetMesh2;
+
+	oculusTargetMesh2.addVertex(ofVec3f(1920+1080,0,0));
+	oculusTargetMesh2.addTexCoord(ofVec2f(0,1080));
+
+	oculusTargetMesh2.addVertex(ofVec3f(1920+1080,1920,0));
+	oculusTargetMesh2.addTexCoord(ofVec2f(1920,1080));
+
+	oculusTargetMesh2.addVertex(ofVec3f(1920,0,0));
+	oculusTargetMesh2.addTexCoord(ofVec2f(0,0));
+
+	oculusTargetMesh2.addVertex(ofVec3f(1920,1920,0));
+	oculusTargetMesh2.addTexCoord(ofVec2f(1920,0));
+	*/
+
+	ofMesh oculusTargetMesh2 = oculusTargetMesh1;
+	for(int i = 0; i < oculusTargetMesh2.getNumVertices(); i++){
+		oculusTargetMesh2.getVertices()[i].x += 1920;
+	}
+	oculusTargetMesh1.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	oculusTargetMesh2.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+
+	getSharedRenderTarget().getTextureReference().bind();
+	oculusTargetMesh1.draw();
+	oculusTargetMesh2.draw();
+	getSharedRenderTarget().getTextureReference().unbind();
+	
+#else
     int offset;
     if(bEnablePostFX){
         cloudsPostShader.begin();

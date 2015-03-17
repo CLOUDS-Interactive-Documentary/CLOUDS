@@ -6,6 +6,7 @@
 #include "CloudsStoryEngine.h"
 #include "CloudsAct.h"
 #include "CloudsFCPParser.h"
+#include "CloudsVisualSystemManager.h"
 
 class testApp : public ofBaseApp {
   public:

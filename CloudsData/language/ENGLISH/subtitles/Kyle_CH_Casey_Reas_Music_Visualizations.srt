@@ -1,0 +1,36 @@
+﻿1
+00:00:00:04 --> 00:00:05:16
+So, I think about if I see something like Casey Rees’ music visualizations where 
+
+2
+00:00:05:25 --> 00:00:07:13
+it’s a generative program 
+
+3
+00:00:07:16 --> 00:00:12:06
+that develops these really intricate colorful abstractions
+
+4
+00:00:12:09 --> 00:00:17:05
+ both from a set of parameters that he developed and from the sound that’s being 
+
+5
+00:00:17:08 --> 00:00:19:21
+played sometimes live by an orchestra, 
+
+6
+00:00:20:16 --> 00:00:24:13
+I can describe how certain sounds develop certain 
+
+7
+00:00:24:16 --> 00:00:28:29
+angular expressions on the canvas which happens to be a building maybe. 
+
+8
+00:00:29:02 --> 00:00:34:03
+ I can describe how as the sound elevates where the volume becomes louder,
+
+9
+00:00:34:06 --> 00:00:39:11
+the perspective shifts and the forms become more complex.
+

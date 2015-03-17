@@ -6,7 +6,7 @@ void testApp::setup(){
 	ofBackground(0);
 	
 	ofSetVerticalSync(true);
-	
+
 	//////////////SHOW INTRO
     parser.loadFromFiles();
 	vector<CloudsClip*> startingNodes = parser.getClipsWithKeyword("#start");
@@ -54,6 +54,9 @@ void testApp::setup(){
 	intro.setDrawToScreen(false);
 	intro.playSystem();
 	//////////////SHOW INTRO
+    
+    ofHideCursor();
+    ofToggleFullscreen();
 }
 
 //--------------------------------------------------------------------

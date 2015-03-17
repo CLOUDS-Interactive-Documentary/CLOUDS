@@ -335,7 +335,7 @@ void CloudsVisualSystemCode::selfUpdate(){
 		currentFontSize = fontSize;
 	}
 	
-	sharedFont.setTracking(typeTracking);
+	sharedFont.setLetterSpacing(typeTracking);
 	
 	if(regeneratePanels ||
 	   getCanvasWidth() != generatedPanelWidth ||

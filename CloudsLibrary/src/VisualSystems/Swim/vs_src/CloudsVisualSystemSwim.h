@@ -143,10 +143,7 @@ protected:
 	// Sound
     ofxUISuperCanvas* soundGui;
     vector<TonicSample> tonicSamples;
-//    string soundFiles[2] = {"underwater_stretch.aif",
-//        "Underwater.aif"};
-//    bool playSample[2] = {false};
-//    ControlTrigger soundTriggers[2];
+
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
     Tonic::ControlParameter volumeControl;

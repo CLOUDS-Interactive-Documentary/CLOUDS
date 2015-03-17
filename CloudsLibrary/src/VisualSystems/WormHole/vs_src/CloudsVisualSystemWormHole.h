@@ -181,4 +181,5 @@ protected:
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
+    
 };

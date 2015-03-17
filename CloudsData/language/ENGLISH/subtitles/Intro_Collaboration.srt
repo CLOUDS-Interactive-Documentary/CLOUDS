@@ -1,0 +1,38 @@
+﻿1
+00:00:00:00 --> 00:00:05:00
+All of us are based in different
+places, different countries
+
+2
+00:00:05:00 --> 00:00:10:00
+So most of the work, we all upload to GitHub or something similar
+
+3
+00:00:10:00 --> 00:00:12:00
+So everyone has access to 
+the code we’re working on
+
+4
+00:00:12:00 --> 00:00:18:00
+New work requires new tools, those new tools 
+then go back into the toolset and
+
+5
+00:00:18:00 --> 00:00:24:00
+and then the next person doesn’t have to think 
+about that stuff they can think about the next problem
+
+6
+00:00:24:00 --> 00:00:31:00
+I think the nature of this work because it is so 
+technically complex, it has to be collaborative
+
+7
+00:00:31:00 --> 00:00:38:00
+In a way, the most valuable thing the computer 
+has done is to network human intelligence 
+
+8
+00:00:38:00 --> 00:00:42:00
+we are all getting smarter through each other
+

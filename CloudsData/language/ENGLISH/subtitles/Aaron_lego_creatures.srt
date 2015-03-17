@@ -1,0 +1,20 @@
+﻿1
+00:00:01:07 --> 00:00:05:15
+So, this project was really kind of a lucid dream.  You are moving from one world to another 
+
+2
+00:00:05:18 --> 00:00:08:10
+and eventually you enter this landscape that 
+
+3
+00:00:08:13 --> 00:00:12:05
+is inhabited by all these strange creations created from people across the planet. 
+
+4
+00:00:12:08 --> 00:00:16:11
+ There is a voxel creator which is basically like legos in 3D 
+
+5
+00:00:16:14 --> 00:00:20:10
+and people are building their own models that then get cast into this desert landscape.
+

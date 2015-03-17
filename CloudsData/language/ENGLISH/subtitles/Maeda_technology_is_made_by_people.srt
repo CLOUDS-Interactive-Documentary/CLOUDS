@@ -1,0 +1,48 @@
+﻿1
+00:00:00:00 --> 00:00:01:02
+…still that 
+
+2
+00:00:01:16 --> 00:00:05:14
+technology is made by people and there are assumptions built in.
+
+3
+00:00:05:28 --> 00:00:08:13
+Code libraries are built by people.
+
+4
+00:00:08:20 --> 00:00:12:10
+ Code limitations exist because library limitation exist.
+
+5
+00:00:12:16 --> 00:00:15:25
+Why is it that making something in a Macintosh
+
+6
+00:00:15:28 --> 00:00:18:23
+ graphically was easier than making in Windows, 
+
+7
+00:00:18:26 --> 00:00:22:19
+because QuickDraw on the Mac was a superior API 
+
+8
+00:00:22:22 --> 00:00:25:13
+by people who made a better API. 
+
+9
+00:00:25:22 --> 00:00:30:08
+ So, I began to think how APIs really would limitation for expression. 
+
+10
+00:00:31:21 --> 00:00:35:12
+ People think they are coding raw, but they are not. 
+
+11
+00:00:35:21 --> 00:00:38:19
+They have libraries that support them.  
+
+12
+00:00:39:16 --> 00:00:42:21
+Where is the control point began to become a question?
+

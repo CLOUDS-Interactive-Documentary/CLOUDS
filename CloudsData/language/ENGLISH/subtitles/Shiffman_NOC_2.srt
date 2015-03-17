@@ -1,0 +1,24 @@
+﻿1
+00:00:00:00 --> 00:00:03:16
+We live in this world, there are things like 
+
+2
+00:00:03:19 --> 00:00:08:17
+gravity,there are things like plants and trees,
+  there’s waves, there’s all sorts of stuffs.
+
+3
+00:00:08:20 --> 00:00:13:08
+Anything that we see in the world around us, 
+what would it mean to try to simulate that in code.
+what would it mean to try to simulate that in code.  Whether that means
+
+4
+00:00:13:11 --> 00:00:19:20
+ Whether that means, here is the actual mathematical formula and translate that 
+ into code we can run in Processing,
+
+5
+00:00:19:23 --> 00:00:25:18
+ or here is this tricky goofy openGL like blending effect that kind of looks like clouds.
+

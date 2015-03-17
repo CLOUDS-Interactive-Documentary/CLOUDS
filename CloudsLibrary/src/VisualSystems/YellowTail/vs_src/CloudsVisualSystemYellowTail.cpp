@@ -143,9 +143,9 @@ void CloudsVisualSystemYellowTail::selfEnd(){
 void CloudsVisualSystemYellowTail::selfDrawCursor(ofVec3f& pos, bool bDragged, CloudsCursorMode mode, float focus, float fadeOut){
     
 #ifdef OCULUS_RIFT
-    GetCloudsInput()->drawCursorDefault(mode, pos, bDragged, focus, fadeOut);
-    return;
-    
+
+    return;    
+
 #else
     ofPushStyle();
     

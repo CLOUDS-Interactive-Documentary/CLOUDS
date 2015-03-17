@@ -6,6 +6,7 @@
 #include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
 #include "CloudsAct.h"
+#include "CloudsLocalization.h"
 
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	run = NULL;
@@ -919,6 +920,14 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 	reloadShaders();
 }
 
+ofVboMesh& CloudsVisualSystemClusterMap::getNodeMesh(){
+    return nodeMesh;
+}
+
+ofVboMesh& CloudsVisualSystemClusterMap::getNetworkMesh(){
+    return networkMesh;
+}
+
 void CloudsVisualSystemClusterMap::reloadShaders(){
 	
 	cout << "reload shader" << endl;
@@ -1125,7 +1134,8 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 		topicFont.resize(typeSizeRange.span());
 		int fontIndex = 0;
 		for(int i = typeSizeRange.min; i < typeSizeRange.max; i++){
-			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
+//			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
+			topicFont[fontIndex++].loadFont( GetFontPath(), i);
 		}
 		currentTypeSizeRange = typeSizeRange;
 	}
@@ -1394,7 +1404,8 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 	ofDisableLighting();
     
 	if(!questionFont.isLoaded() || currentQuestionFontSize != questionFontSize){
-		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+		//questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
+		questionFont.loadFont(GetFontPath(), questionFontSize);
 		currentQuestionFontSize = questionFontSize;
 	}
 	string questionText;
@@ -1408,15 +1419,23 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 		questionTextOpacity = ofMap(caughtQuestion->hoverPercentComplete, 0.0, .05, 0.0, 1.0, true);
 		
 		scaleModifier = .5;
-		questionFont.setTracking(questionFontTracking*.1);
+		questionFont.setLetterSpacing(questionFontTracking*.1);
 		
-		questionText = ofToUpper(questionText);
+		questionText = GetTranslationForString( ofToUpper(questionText) );
 		
 		float questionTextWidth = questionFont.stringWidth(questionText);
 		float questionTextWidth2, questionTextHeight2;
 		string secondLine;
 		bool twoLines = questionTextWidth > 500;
-		if(twoLines){
+        if(questionText.find("\n") != string::npos){
+            twoLines = true;
+            vector<string> split = ofSplitString(questionText, "\n", true,true);
+            questionText = split[0];
+            secondLine = split[1];
+            questionTextWidth  = questionFont.stringWidth(questionText);
+            questionTextWidth2 = questionFont.stringWidth(secondLine);
+        }
+        else if(twoLines){
 			vector<string> pieces = ofSplitString(questionText, " ", true,true);
 			vector<string> firstHalf;
 			vector<string> secondHalf;
@@ -1428,7 +1447,7 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 			questionTextWidth  = questionFont.stringWidth(questionText);
 			questionTextWidth2 = questionFont.stringWidth(secondLine);
 		}
-		float questionTextHeight = questionFont.stringHeight(questionText);
+ 		float questionTextHeight = questionFont.stringHeight(questionText);
 		
         ofPushMatrix();
 		ofPushStyle();
@@ -1548,7 +1567,8 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	
     if(drawAssociation){
         if(!associationFont.isLoaded() || associationFontSize != currentAssociationFont){
-            associationFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", associationFontSize);
+            //associationFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", associationFontSize);
+			associationFont.loadFont( GetFontPath(), associationFontSize);
             currentAssociationFont = associationFontSize;
         }
         

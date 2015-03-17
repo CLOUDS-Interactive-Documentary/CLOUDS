@@ -35,7 +35,9 @@ void CloudsVisualSystemColony::selfSetup()
 	loadShaders();
     
     // sound
+    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth());
+    #endif
 }
 
 void CloudsVisualSystemColony::selfSetDefaults(){
@@ -357,15 +359,7 @@ void CloudsVisualSystemColony::selfBegin()
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemColony::audioRequested);
     
-    for (int i=0; i<3; i++)
-    {
-        //        if (playSample[i]) {
-        //            soundTriggers[i].trigger();
-        //        }
-        
-    }
-    
-    for(int i=0; i<tonicSamples.size();i++){
+    for(int i = 0; i < tonicSamples.size(); i++){
         if(tonicSamples[i].playSample){
             tonicSamples[i].soundTrigger.trigger();
         }
@@ -501,20 +495,13 @@ void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
     
 }
 
+#ifdef TONIC_SOUNDS
 Tonic::Generator CloudsVisualSystemColony::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
     
     SampleTable samples[3];
-    
-    //    int nSounds = sizeof(soundFiles) / sizeof(string);
-    //    for (int i=0; i<nSounds; i++)
-    //    {
-    //
-    //        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
-    //        samples[i] = loadAudioFile(strAbsPath);
-    //    }
     
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
@@ -528,8 +515,12 @@ Tonic::Generator CloudsVisualSystemColony::buildSynth()
     
     return (sampleGen1 * 0.8f + sampleGen2 * 0.8f + sampleGen3 * 0.4f) * volumeControl;
 }
+#endif
 
 void CloudsVisualSystemColony::audioRequested(ofAudioEventArgs& args)
 {
+    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    #endif
 }
+

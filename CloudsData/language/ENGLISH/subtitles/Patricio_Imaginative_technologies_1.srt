@@ -1,0 +1,50 @@
+﻿1
+00:00:00:29 --> 00:00:04:06
+One of the fantastic things about code
+
+
+2
+00:00:04:13 --> 00:00:08:10
+ is the ability to　because you're in such an abstract environment
+
+3
+00:00:08:14 --> 00:00:13:10
+it's the most direct way
+
+4
+00:00:13:13 --> 00:00:16:14
+to translate an idea
+
+5
+00:00:16:17 --> 00:00:17:27
+(qual lo que esta)
+
+
+6
+00:00:18:19 --> 00:00:22:07
+ from your imagination into a form that can be shared
+
+7
+00:00:24:11 --> 00:00:27:27
+It could be a simple Processing sketch
+
+8
+00:00:29:01 --> 00:00:33:25
+or an application that takes you longer to make in openFrameworks
+
+9
+00:00:34:02 --> 00:00:39:08
+But in the end you have something tangible to show
+
+10
+00:00:39:15 --> 00:00:45:08
+Something that talks about a process or about an idea that starts
+
+11
+00:00:45:11 --> 00:00:49:13
+to develop from nowhere, an algorithm, a pattern that repeats, 
+
+12
+00:00:49:16 --> 00:00:52:07
+something that has motion
+

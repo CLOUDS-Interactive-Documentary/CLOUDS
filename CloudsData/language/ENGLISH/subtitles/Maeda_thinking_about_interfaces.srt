@@ -1,0 +1,44 @@
+﻿1
+00:00:00:29 --> 00:00:04:08
+Why do we use a keyboard, why do we use a mouse, 
+
+2
+00:00:04:11 --> 00:00:08:22
+why is there a microphone attached to a computer?  It can take a video. 
+
+3
+00:00:09:22 --> 00:00:14:16
+ What do you assume we do with them, what happens if you erase all the letters on the keyboard 
+
+4
+00:00:14:19 --> 00:00:16:21
+becomes a tactile surface. 
+
+5
+00:00:17:05 --> 00:00:20:27
+ What happens if you take the mouse and look at the optical sensor and 
+
+6
+00:00:21:00 --> 00:00:24:10
+shine it different places and what is that device?  
+
+7
+00:00:24:27 --> 00:00:28:23
+What is the microphone that you don’t use to record voice but to just pick of sounds? 
+
+8
+00:00:28:26 --> 00:00:32:09
+ What is the video when it’s just about intensity seeking, searching, 
+
+9
+00:00:32:20 --> 00:00:36:16
+what can you make with it?  Why can’t you make it as a rectangular screen
+
+10
+00:00:36:19 --> 00:00:40:08
+and defy it, making polar coordinates, make it 3D. 
+
+11
+00:00:40:23 --> 00:00:42:08
+ I was just playing around with that.
+

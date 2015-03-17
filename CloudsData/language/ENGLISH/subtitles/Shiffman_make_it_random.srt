@@ -1,0 +1,21 @@
+﻿1
+00:00:00:00 --> 00:00:03:18
+When you first learn to program, and let’s say you are first learning in Processing, 
+
+2
+00:00:03:21 --> 00:00:08:22
+you open up Processing and you learn here, I can draw a rectangle and I can draw a circle and I can draw a line
+
+3
+00:00:08:25 --> 00:00:12:01
+ and I give them XY locations and I give them colors. 
+
+4
+00:00:12:04 --> 00:00:18:02
+Okay, well, I want to do something more with that, but I have just started to learn, what's the next logical step? Well, make a lot of them,
+what’s the next logical step?  Well, make a lot of them, 
+
+5
+00:00:18:05 --> 00:00:21:17
+and I will just make them all random, all random positions, all random colors.
+

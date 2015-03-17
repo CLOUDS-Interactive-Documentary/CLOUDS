@@ -1,0 +1,61 @@
+﻿1
+00:00:00:00 --> 00:00:04:08
+That’s certainly the most profound ,  certainly the most profound computer science  experience I ever had 
+
+2
+00:00:04:11 --> 00:00:08:29
+and one of the most  profound life experiences that I ever had was  learning how that algorithm worked.  
+
+3
+00:00:10:16 --> 00:00:14:28
+Conway’s  Game of Life is what’s called a zero player  game.
+
+4
+00:00:15:12 --> 00:00:18:26
+The way it works is it divides the  universe into a grid, 
+
+5
+00:00:19:00 --> 00:00:23:15
+a two-dimensional grid  of cells that are either filled or not filled  
+
+6
+00:00:23:29 --> 00:00:29:11
+and as a player, you create an initial  configuration of cells that are filled and not  filled, 
+
+7
+00:00:29:23 --> 00:00:32:26
+and then the algorithm runs over 
+
+8
+00:00:33:12 --> 00:00:36:27
+that  the entire universe of cells 
+
+9
+00:00:37:07 --> 00:00:41:17
+and implements a  set of very simple rules. 
+
+10
+00:00:42:13 --> 00:00:48:13
+If an unfilled cell  has three filled cells around it, it becomes  filled.
+
+
+11
+00:00:48:27 --> 00:00:53:10
+If a filled cell has more than three  filled cells around it, it becomes unfilled,  
+
+12
+00:00:54:05 --> 00:00:56:21
+things like that, three rules like that. 
+
+13
+00:00:57:17 --> 00:01:03:18
+Given  an initial configuration and those simple  rules, 
+
+14
+00:01:04:13 --> 00:01:09:04
+the kind of profound complexity that  you can derive 
+
+15
+00:01:09:08 --> 00:01:12:07
+is mind blowing.
+

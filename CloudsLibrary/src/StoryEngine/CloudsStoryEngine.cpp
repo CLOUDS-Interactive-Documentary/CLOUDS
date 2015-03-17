@@ -8,6 +8,7 @@
 
 #include "CloudsStoryEngine.h"
 #include "CloudsAct.h"
+#include "CloudsVisualSystemManager.h"
 
 bool logsort(pair<float,string> a, pair<float,string> b ){
     return a.first > b.first;
@@ -17,12 +18,14 @@ bool score_sort(pair<string,int> a, pair<string,int>b ){
     return a.second > b.second;
 }
 
-
 CloudsStoryEngine::CloudsStoryEngine(){
     parser = NULL;
     visualSystems = NULL;
     customAct = NULL;
 	
+	gui = NULL;
+	clipGui = NULL;
+
 	shouldGotoCredits = false;
     showOnlyStartQuestions = false;
 	
@@ -78,8 +81,12 @@ CloudsStoryEngine::CloudsStoryEngine(){
 }
 
 CloudsStoryEngine::~CloudsStoryEngine(){
-    delete gui;
-    delete clipGui;
+	if(gui != NULL){
+	    delete gui;
+	}
+	else if(clipGui != NULL){
+	    delete clipGui;
+	}
 }
 
 void CloudsStoryEngine::setup(){
@@ -286,6 +293,10 @@ vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
             ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i]->getID() << " has no media asset, removing.";
             startingNodes.erase(startingNodes.begin() + i);
         }
+		else if(!startingNodes[i]->isLanguageCompatible()){
+            ofLogError("CloudsStoryEngine::getStartingQuestions") << "Clip " << startingNodes[i]->getID() << " is not language comatible, removing.";
+            startingNodes.erase(startingNodes.begin() + i);
+		}
     }
     cout << "returning " << startingNodes.size() << " nodes!" << endl;
     return startingNodes;
@@ -293,19 +304,18 @@ vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
 
 bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset, bool forceCredits){
     
+    #ifdef CLOUDS_SCREENING
+	if(forceCredits){
+        preset = visualSystems->getPresetForSystem("Balloons", "CREDITS_FINAL");
+        return true;
+	}
+    #endif
+    
     if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
         ofLogError("CloudsStoryEngine::buildAct") << " no topics for next act!";
         return false;
     }
     
-#ifdef CLOUDS_SCREENING
-//	if(run.questionsAsked >= screeningQuestionClips.size()-1 || forceCredits){
-	if(forceCredits){
-        preset = visualSystems->getPresetForSystem("Balloons", "CREDITS_FINAL");
-        return true;
-	}
-#endif
-	
     map<string, int>::iterator it;
     vector<string> topics;
     for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
@@ -315,7 +325,7 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     vector< pair<string,int> > potentialPresets;
     vector<CloudsVisualSystemPreset> currentSelection = visualSystems->getPresetsForKeywords(topics,"",true);
 	
-	for (int i =0 ; i < currentSelection.size(); i++) {
+	for (int i = 0; i < currentSelection.size(); i++) {
 		if( ofContains(run.presetHistory, currentSelection[i].getID() )){
 			cout<<currentSelection[i].getID()<<" already in history so not selecting"<<endl;
 			continue;
@@ -333,7 +343,7 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
 		vector<string> presetTopics = visualSystems->keywordsForPreset(currentSelection[i]);
 		int presetScore = 0;
 		
-		for (int k =0 ; k< presetTopics.size(); k++) {
+		for (int k = 0; k < presetTopics.size(); k++) {
 			if (ofContains(run.topicHistory, presetTopics[k])) {
 				presetScore++;
 			}
@@ -347,13 +357,41 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
         cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
 		run.presetHistory.push_back(potentialPresets[0].first);
         preset = visualSystems->getPresetWithID(potentialPresets[0].first);
-        return  true;
+        return true;
     }
     else{
         ofLogError("CloudsStoryEngine::getPresetForInterlude") << "Defaulting to cluster map because we found no topics from the last act";
         return false;
     }
+}
 
+bool CloudsStoryEngine::getRandomInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset){
+	vector<CloudsVisualSystemPreset> validInterludes = visualSystems->getAllInterludes();
+	
+	for (int i = validInterludes.size()-1; i >= 0; i--) {
+		bool valid = true;
+		if( ofContains(run.presetHistory, validInterludes[i].getID() )){
+			valid = false;
+		}
+#ifdef OCULUS_RIFT
+		if(!validInterludes[i].enabledOculus){
+			valid = false;
+		}
+#else
+		if(!validInterludes[i].enabledScreen){
+			valid = false;
+		}
+#endif
+		if(!valid){
+			validInterludes.erase(validInterludes.begin() + i);
+		}
+	}
+
+	if(validInterludes.size() > 0){
+		preset = validInterludes[ (int)ofRandom(validInterludes.size()) ];
+		return true;
+	}
+	return false;
 }
 
 #pragma mark INIT ACT
@@ -605,17 +643,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
 			shouldAddScreeningQuestionsToAct = false;
 		}
 #else
-//		if(state.act->getAllVisualSystemPresets().size() > 1){
-            //if(showOnlyStartQuestions){
-            //    if(startingQuestions.size() > 0){
-            //        addQuestions(state, startingQuestions);
-            //        startingQuestions.clear();
-            //    }
-            //}
-            //else {
-                addQuestions(state, questionClips);
-//            }
- //       }
+		addQuestions(state, questionClips);
 #endif
         /////////////////
 		
@@ -948,7 +976,10 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 	
 	//select next questions
 	for(int k = 0; k < nextOptions.size(); k++){
-		if(nextOptions[k]->hasQuestion() && nextOptions[k]->getID() != winningClip->getID()){
+		if( nextOptions[k]->hasQuestion() &&
+			nextOptions[k]->currentScore > 0 &&
+			nextOptions[k]->getID() != winningClip->getID())
+		{
 			questionClips.push_back(nextOptions[k]);
 		}
 	}
@@ -998,7 +1029,6 @@ CloudsVisualSystemPreset CloudsStoryEngine::selectVisualSystem(CloudsStoryState&
 	return preset;
 }
 
-//TODO: Add to main logger
 float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVisualSystemPreset& potentialNextPreset)
 {
     
@@ -1219,13 +1249,21 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip \"" << potentialNextClip->getLinkName() << "\" no combined video file" << endl;
         return 0;
     }
-        
+
+	//reject any clips that don't match the current language and are without a subtitle file
+	if(!potentialNextClip->isLanguageCompatible() ){
+	//if(potentialNextClip->getLanguage() != GetLanguage() && !potentialNextClip->hasSubtitleFile() ){
+		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": language is " << potentialNextClip->getLanguage() << " and no subtitles" << endl;
+        return 0;
+	}
+
     bool link = parser->clipLinksTo( state.clip->getLinkName(), potentialNextClip->getLinkName() );
     if(!link && potentialNextClip->person == state.clip->person){
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": same person" << endl;
         return 0;
     }
     
+
     //reject any nodes we've seen already
     if(historyContainsClip(potentialNextClip, state.clipHistory)){
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": already visited" << endl;
@@ -1263,14 +1301,14 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         return 0;
     }
 	
-	if(potentialNextClip->getSpeakerFirstName() == "Satoru" || potentialNextClip->getSpeakerFirstName() == "Patricio"){
-		string subtitleFilePath = GetCloudsDataPath() + "subtitles/"+potentialNextClip->getSubtitlesPath();
-		if(! ofFile(subtitleFilePath).exists() ){
-			cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: this clip should have subtitles but they cant be found"<<endl;
-			return 0;
-		}
-		
-	}
+	//if(potentialNextClip->getSpeakerFirstName() == "Satoru" || potentialNextClip->getSpeakerFirstName() == "Patricio"){
+	//	string subtitleFilePath = GetCloudsDataPath() + "subtitles/"+potentialNextClip->getSubtitlesPath();
+	//	if(! ofFile(subtitleFilePath).exists() ){
+	//		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: this clip should have subtitles but they cant be found"<<endl;
+	//		return 0;
+	//	}
+	//	
+	//}
     
 	
     //  can't get a #hard clip until the topic has been heard 2 times by any clip
@@ -1308,12 +1346,12 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
 		return 0;
 	}
-#ifdef OCULUS_RIFT
-	if(ofToLower(potentialNextClip->person) == "higa" || ofToLower(potentialNextClip->person) == "patricio"){
-        cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
-		return 0;
-	}
-#endif
+//#ifdef OCULUS_RIFT
+	//if(ofToLower(potentialNextClip->person) == "higa" || ofToLower(potentialNextClip->person) == "patricio"){
+ //       cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
+	//	return 0;
+	//}
+//#endif
     //Base score
     float totalScore = 0;
     float offTopicScore = 0; //negative if this is a link & off topic
@@ -1469,7 +1507,7 @@ bool CloudsStoryEngine::historyContainsClip(CloudsClip* m, vector<CloudsClip*>& 
 int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip*>& history){
     int occurrences = 0;
     int startPoint = history.size() - MIN(stepsBack, history.size() );
-    for(int i = startPoint; i < history.size()-1; i++){ // -1 because the current clip is part of history
+    for(int i = startPoint; i < int(history.size())-1; i++){ // -1 because the current clip is part of history
         if(history[i]->person == person){
             occurrences++;
         }
@@ -1520,9 +1558,6 @@ void CloudsStoryEngine::populateScreeningQuestionsPart1(){
     linkName = "Casey - emergence";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
-    linkName = "Ramsey - a hundred million";
-    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-
     linkName = "JTNimoy - Cortex";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
@@ -1535,18 +1570,29 @@ void CloudsStoryEngine::populateScreeningQuestionsPart2(){
 	screeningQuestionClips.clear();
 
 	string linkName;
-	linkName = "Kyle_MC - new aesthetic 1";
+    //machine vision
+//	linkName = "Kyle_MC - new aesthetic 1";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Ramsey - a hundred million";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
-    linkName = "Jer - lives being documented through data";
+    //virtual reality
+    linkName = "Intro - VirtualReality";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+ 
+ 
+//    linkName = "Jer - lives being documented through data";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 	
-    linkName = "Julia - Who owns the internet?";
+//    linkName = "Julia - Who owns the internet?";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    //OPEN SOURCE
+    linkName = "Intro - Collaboration";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
-    linkName = "Shiffman - sharing";
-    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-    
+    //WHERE DOES THE STORY END
     linkName = "Karsten - infinite conversation";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 

@@ -16,6 +16,8 @@ void CloudsVisualSystemTunnelDrawing::selfSetDefaults(){
 #endif
     primaryCursorMode = CURSOR_MODE_DRAW;
     secondaryCursorMode = CURSOR_MODE_DRAW;
+
+
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -83,6 +85,9 @@ void CloudsVisualSystemTunnelDrawing::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemTunnelDrawing::selfSetup(){
 	colorShader.load(getVisualSystemDataPath() + "shaders/ribbon");
+   	camera.begin( ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()) );
+	camera.end();
+ 
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -107,10 +112,11 @@ void CloudsVisualSystemTunnelDrawing::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemTunnelDrawing::selfUpdate(){
-    
+
 #ifndef MOUSE_INPUT
 	map<int, CloudsInteractionEventArgs>::iterator init;
 	for(init = GetCloudsInputPoints().begin(); init != GetCloudsInputPoints().end(); init++){
+		//cout << "adding interaction point " << init->second.position << endl;
 		addInteractionPoint(init->second);
 	}
 #endif
@@ -275,7 +281,8 @@ void CloudsVisualSystemTunnelDrawing::selfInteractionMoved(CloudsInteractionEven
 void CloudsVisualSystemTunnelDrawing::addInteractionPoint(CloudsInteractionEventArgs& args){
 	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(args.position.x,
 													   args.position.y,
-													   screenSpaceProjectDistance) );
+													   screenSpaceProjectDistance),
+													   ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()));
     if (currentTrails[args.playerId].points.empty() ||
         currentTrails[args.playerId].points.back().distance(mousePoint) > 10.0) {
         currentTrails[args.playerId].points.push_back(mousePoint);

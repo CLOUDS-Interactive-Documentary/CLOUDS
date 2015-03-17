@@ -1,0 +1,26 @@
+﻿1
+00:00:00:00 --> 00:00:05:04
+Thinking about the game Spore and the Sims and
+ all these games that are sort of all these games that are sort of
+
+2
+00:00:05:07 --> 00:00:10:14
+where these autonomous agents are living in a world and they operate with these simple rules and
+
+3
+00:00:10:17 --> 00:00:14:22
+  just thinking about Starcraft and there is a lot of that types of elements, and interestingly enough
+
+4
+00:00:14:25 --> 00:00:21:00
+ I wasn’t really thinking about games
+ in making these examples or making the book, 
+
+5
+00:00:21:03 --> 00:00:24:22
+but it is really my hope that some of these concepts could help people 
+
+6
+00:00:24:25 --> 00:00:28:22
+in game programming for sure.
+

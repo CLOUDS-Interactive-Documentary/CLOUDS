@@ -10,65 +10,16 @@
 
 #include "ofMain.h"
 
-static bool confirmedDataPath = false;
-static bool usingDevelopmentFolder = false;
-
 //--------------------------------------------------------------------
-static string GetCloudsDataPath(bool ignored = false)
-{
-	if(!confirmedDataPath){
-		usingDevelopmentFolder = ofDirectory("../../../CloudsData/").exists();
-		if(!usingDevelopmentFolder){
-			ofDirectory("CloudsData/").create();
-		}
-		confirmedDataPath = true;
-	}
-    return string(usingDevelopmentFolder ? "../../../" : "") + "CloudsData"  + (ignored ? "_ignored" : "") + "/";
-}
-
-static string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder = false){
-	//  building from src project file
-	string datapath;
-	if(ofDirectory("../../../CloudsData/").exists()){
-		datapath = string("../../../CloudsData") + (ignoredFolder ? "_ignored" : "") + "/visualsystems/" + systemName + "/";
-	}
-	//  stand alone full app
-	else if(ofDirectory("CloudsData/").exists()){
-		datapath =  string("CloudsData") + (ignoredFolder ? "_ignored" : "") + "/visualsystems/" + systemName + "/";
-	}
-	//  stand alone single app
-	else{
-		datapath =  "../../../data/";
-	}
-	
-	return datapath;
-}
-
+string GetCloudsDataPath(bool ignored = false);
 //--------------------------------------------------------------------
-static string relinkFilePath(string filePath){
-	
-	vector<string> drives;
-	
-	drives.push_back("Seance");
-	drives.push_back("Nebula");
-	drives.push_back("Supernova");
-	drives.push_back("WhiteDwarf");
-    
-	if( !ofFile(filePath).exists() ){
-		for(int i = 0; i < drives.size(); i++){
-			if(ofFile::doesFileExist("/Volumes/"+ drives[i]+"/")){
-				for(int j = 0; j < drives.size(); j++){
-					if(j != i){
-						ofStringReplace(filePath, drives[j], drives[i]);
-					}
-				}
-				break;
-			}
-		}
-	}
-	
-	return filePath;
-}
+string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder = false);
+//--------------------------------------------------------------------
+string GetLanguage();
+//--------------------------------------------------------------------
+void SetLanguage(string language);
+//--------------------------------------------------------------------
+string relinkFilePath(string filePath);
 
 //--------------------------------------
 static inline std::string &ltrim(std::string &s) {

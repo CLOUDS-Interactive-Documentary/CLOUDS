@@ -47,6 +47,16 @@ string CloudsClip::getSpeakerGender(){
 	return CloudsSpeaker::speakers[person].gender;
 }
 
+string CloudsClip::getLanguage(){
+	if(person == "Higa"){
+		return "JAPANESE";
+	}
+	else if(person == "Patricio"){
+		return "SPANISH";
+	}
+	return "ENGLISH";
+}
+
 float CloudsClip::getDuration(){
 	return (endFrame - startFrame) / (is30FPS() ? 29.97 : 23.976); //TODO: HigaSan was recorded @ 30.0, need to compensate
 }
@@ -118,7 +128,23 @@ string CloudsClip::getCombinedCalibrationXML(){
 	return getID() + ".xml";
 }
 
+bool CloudsClip::hasSubtitleFile(){
+	return ofFile(getSubtitlesPath()).exists();
+}
+
+bool CloudsClip::isLanguageCompatible(){
+	return getLanguage() == GetLanguage() || hasSubtitleFile();
+}
+
 string CloudsClip::getSubtitlesPath() {
+	//for Higa-san, return english subtitles
+	if(getLanguage() == "JAPANESE" && GetLanguage() == "JAPANESE"){
+		return GetCloudsDataPath() + "language/ENGLISH/subtitles/" + getSubtitlesFilename();
+	}
+	return GetCloudsDataPath() + "language/" + GetLanguage() + "/subtitles/" + getSubtitlesFilename();
+}
+
+string CloudsClip::getSubtitlesFilename() {
     return getID() + ".srt";
 }
 

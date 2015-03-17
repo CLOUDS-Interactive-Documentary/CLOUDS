@@ -1,0 +1,26 @@
+1
+00:00:01.2 - 00:00:05.1 
+I prefer a very simple drawing style in general
+
+2
+00:00:05.1 - 00:00:09.9
+Commercial software tends to omit the 
+simple functions I like 
+
+3
+00:00:09.9 - 00:00:21.1
+And it's often quicker to make it myself 
+than learning a new piece of software 
+
+4
+00:00:21.1 - 00:00:24.6
+As said before, I much prefer this 
+simple approach to drawing.  
+
+00:00:24.6 - 00:00:29.7 
+So, it's faster to use code  
+
+
+
+
+

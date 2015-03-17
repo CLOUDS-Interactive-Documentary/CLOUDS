@@ -1,0 +1,75 @@
+﻿1
+00:00:01:00 --> 00:00:05:26
+ if you look at where we are with our tools that we have available,
+
+2
+00:00:06:01 --> 00:00:09:16
+we have got the basic needs covered
+
+3
+00:00:10:06 --> 00:00:12:11
+the basic input, output interactions
+
+4
+00:00:12:14 --> 00:00:14:15
+the basic input, output interactions rendering, that’s done. 
+
+5
+00:00:14:20 --> 00:00:17:27
+People don’t predict big advances there.
+
+6
+00:00:18:01 --> 00:00:22:02
+The limit of our physical senses is kind of
+
+7
+00:00:22:07 --> 00:00:27:23
+- the limit of where real and virtual kind of overlaps and meets
+
+8
+00:00:27:26 --> 00:00:30:15
+ - that’s visible, I mean,
+
+9
+00:00:30:19 --> 00:00:34:25
+Tim Sweeney from Epic Games says that in 2020 basically. 
+
+10
+00:00:35:02 --> 00:00:41:07
+At that point in time, we will have graphics card produccing
+and 3D games engines producing
+
+11
+00:00:41:10 --> 00:00:46:10
+visuals that can fool our eyes
+believably enough,
+
+12
+00:00:46:20 --> 00:00:50:08
+and so all this extra computation power from then on 
+
+13
+00:00:50:13 --> 00:00:55:12
+hopefully will be spent on
+developing deeper knowledge systems
+
+14
+00:00:56:05 --> 00:00:59:21
+that can do something like modeling consciousness 
+
+15
+00:01:01:01 --> 00:01:04:14
+or create more complex, deeper interactions
+
+16
+00:01:04:19 --> 00:01:09:04
+ and I think that’s where I would love cinema to go to
+
+17
+00:01:09:07 --> 00:01:13:20
+where we can play with these virtual actors and we can interact with them
+
+18
+00:01:13:23 --> 00:01:17:17
+on a believable deeper human level.
+

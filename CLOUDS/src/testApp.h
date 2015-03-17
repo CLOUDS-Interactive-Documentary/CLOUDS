@@ -1,8 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-//#include "CloudsStoryEngine.h"
-//#include "CloudsFCPParser.h"
 #include "CloudsPlaybackController.h"
 
 class testApp : public ofBaseApp{

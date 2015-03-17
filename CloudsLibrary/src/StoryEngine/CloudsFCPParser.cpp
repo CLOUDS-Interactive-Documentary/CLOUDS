@@ -32,7 +32,7 @@ void CloudsFCPParser::loadFromFiles(){
     parseSpeakersVolume();
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
-	parseProjectExamples(GetCloudsDataPath() + "secondaryDisplay/web/xml/projects.xml");
+	parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
 	
 }
 
@@ -1216,6 +1216,7 @@ void CloudsFCPParser::loadMediaAssets(){
 		ofLogError("CloudsFCPParser::loadMediaAssets") << "default directory " << defaultFilePath << " does not exist";
 	}
 }
+
 void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
 	hasMediaAssetIndeces.clear();
 	hasMediaAssetAndQuestionIndeces.clear();

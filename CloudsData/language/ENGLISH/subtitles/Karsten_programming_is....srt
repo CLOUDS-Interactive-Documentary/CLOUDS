@@ -1,0 +1,24 @@
+﻿1
+00:00:00:07 --> 00:00:03:11
+And actually programming for me is always about, 
+
+2
+00:00:03:16 --> 00:00:06:16
+more than it is talking to a machine, it is about 
+
+3
+00:00:06:25 --> 00:00:10:23
+figuring out how to break down a complex concept or system 
+
+4
+00:00:10:26 --> 00:00:15:09
+into such small components that it can actually be explained to a machine,
+
+5
+00:00:15:13 --> 00:00:18:12
+ and this is purely an analytical skill 
+
+6
+00:00:18:15 --> 00:00:21:04
+and analytics can be applied to anything.
+

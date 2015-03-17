@@ -1,40 +1,61 @@
 #include "testApp.h"
 #include "CloudsGlobal.h"
+#include "CloudsIntroSequence.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
 	
+    
+#if defined(OCULUS_RIFT) && defined(TARGET_WIN32)
+	ofSetWindowPosition(0,0);
+	ofSetWindowShape(1920*2,1080);
+#else
+	#ifdef CLOUDS_RELEASE
+		//ofSetWindowPosition(1920 + 1920*.5,1080*.5);
+    	ofSetWindowPosition(0,0);
+	#endif
+	ofSetWindowShape(1920,1080);
+#endif
 	ofSetVerticalSync(true);
-	ofSetFrameRate(60);
+	//ofSetFrameRate(60);
 	ofBackground(0);
-	ofToggleFullscreen();
+	//ofToggleFullscreen();
 
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();
 #endif
-
+		
 	firstFrame = true;
 	playerSetup = false;
 	shouldSetupPlayer = false;
 #ifdef OCULUS_RIFT
-	loader.loadImage("OCULUS_BG_HD.png");
+	loader.loadImage("CLOUDS_HD_BG_DOUBLE.png");
 #else
 	loader.loadImage("SCREEN_BG.png");
 #endif
+
 
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+	if(ofGetFrameNum() == 10){
+		ofToggleFullscreen();
+	}
 	if(shouldSetupPlayer){
 		player.setup();
 		shouldSetupPlayer = false;
 		playerSetup = true;
+ 
 	}
 	else if(firstFrame){
 		shouldSetupPlayer = true;
 	}
 
+    if(ofGetFrameNum() == 100){
+//        cout<< "SET UP MIXER" << endl;
+//        player.mixer.setup();
+    }
 }
 
 //--------------------------------------------------------------

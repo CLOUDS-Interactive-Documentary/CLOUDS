@@ -1,0 +1,28 @@
+﻿1
+00:00:01:05 --> 00:00:04:26
+When I first started writing with code, I was making things that were very architectural
+
+2
+00:00:04:29 --> 00:00:10:05
+and so every single element on the screen was put there because I wrote a line of code to do it,
+
+3
+00:00:10:08 --> 00:00:16:10
+and then there was a time where I have been fascinated with artificial life and artificial intelligence for many years,
+
+4
+00:00:16:13 --> 00:00:20:17
+and I have been reading sort of semi-professionally in those areas,
+
+5
+00:00:20:20 --> 00:00:25:07
+and I started writing codes that’s built on emergence where you have a few simple rules
+
+6
+00:00:25:10 --> 00:00:30:02
+and then the form builds as a result of these rules sort of acting themselves out.
+
+7
+00:00:30:05 --> 00:00:36:12
+So I got really interested in general systems theory and cybernetics and started to try and bring those ideas into the software that I was writing.
+

@@ -1,0 +1,8 @@
+﻿1
+00:00:01:09 --> 00:00:05:00
+I want to say ‘create a fluid,’ I want to say ‘add a force at this position,’ 
+
+2
+00:00:05:03 --> 00:00:10:21
+I want to say ‘get force at this position,’ or ‘get velocity,’ I want to say ‘add colour at this position.’
+

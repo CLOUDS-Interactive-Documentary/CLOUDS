@@ -1,0 +1,52 @@
+﻿1
+00:00:00:22 --> 00:00:04:09
+It’s very hard though to get it right, and certainly
+
+2
+00:00:04:12 --> 00:00:08:04
+if you are working at a company
+
+3
+00:00:08:07 --> 00:00:13:22
+and want to create things that are actually useful to people, you want to be on the useful edge.
+
+4
+00:00:13:25 --> 00:00:18:19
+I think for me actually one of the trickiest places to be often is the
+
+5
+00:00:18:22 --> 00:00:21:08
+ useful and interesting, but not beautiful,
+
+6
+00:00:21:11 --> 00:00:25:16
+and I have actually had a couple of experiences of creating tools internally
+
+7
+00:00:25:19 --> 00:00:30:27
+for business needs that I feel like are not really that aesthetically pleasing. 
+
+8
+00:00:31:00 --> 00:00:37:02
+You would never put them in a museum,  you never look at them and to say, oh, wow, that’s cool,
+
+9
+00:00:37:05 --> 00:00:43:04
+but for the people who are using that data, it’s the best possible way to present the data,
+
+10
+00:00:43:07 --> 00:00:48:26
+and that often is a little bit tricky if you are sort of a standard creative coder type
+
+11
+00:00:48:29 --> 00:00:54:18
+because you really want the output of what you do to be gorgeous.  You want people to think it’s cool at some level.
+
+12
+00:00:55:10 --> 00:00:59:11
+At the end of the day, it’s like if all people want is to get things done,
+
+13
+00:00:59:14 --> 00:01:04:07
+there are times when you just want to make it useful and you have to kind of reign yourself in.
+

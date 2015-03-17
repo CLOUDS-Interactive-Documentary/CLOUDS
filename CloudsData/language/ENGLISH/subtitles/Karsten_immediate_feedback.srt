@@ -1,0 +1,24 @@
+﻿1
+00:00:00:11 --> 00:00:06:04
+Because it’s really you can see the visual feedback. You can actually get immediate results, 
+
+2
+00:00:06:07 --> 00:00:11:09
+which are interesting to our eyes and interesting to people who are absolutely new to this field,
+
+3
+00:00:11:12 --> 00:00:16:23
+and I think this is also one of the reasons why, for instance, Processing really became that popular, 
+
+4
+00:00:16:26 --> 00:00:21:03
+ because it gives you that semi-immediate feedback, you know?
+
+5
+00:00:21:06 --> 00:00:24:03
+ By now, there are already much better tools which give you 
+
+6
+00:00:24:06 --> 00:00:29:20
+really immediate feedback.  You type one line of code, you press enter, and there’s your result.
+

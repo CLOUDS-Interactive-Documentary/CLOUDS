@@ -1,0 +1,12 @@
+﻿1
+00:00:01:01 --> 00:00:03:24
+You know if I have a huge dataset and I want to visualize it,
+
+2
+00:00:03:27 --> 00:00:08:12
+ I am not going to draw something by hand, I'm going to 
+
+3
+00:00:08:17 --> 00:00:11:01
+put them in the computer and do something with code.
+

@@ -1,0 +1,8 @@
+﻿1
+00:00:01:07 --> 00:00:05:28
+So what happens is, you get these pulses, and then those pulses are in sync, 
+
+2
+00:00:06:01 --> 00:00:10:12
+and then they go out of sync, and then they come back into sync.
+
