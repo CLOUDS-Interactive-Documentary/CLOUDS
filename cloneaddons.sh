@@ -74,6 +74,7 @@ ${NEWPREFIX}ofxTween
 ${NEWPREFIX}ofxMSAInteractiveObject
 ${NEWPREFIX}ofxFTGL
 ${NEWPREFIX}ofxMPMFluid
+${NEWPREFIX}ofxDelaunay
 
 ${NEWPREFIX}ofxAudioUnit
 ${NEWPREFIX}ofxAudioFeatures
