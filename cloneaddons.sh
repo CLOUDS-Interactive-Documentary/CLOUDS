@@ -85,8 +85,8 @@ git checkout -b develop --track origin/develop
 git pull origin develop
 cd ..
 
-${NEWPREFIX}ofxDepthKit
-cd ofxDepthKit
+${NEWPREFIX}ofxRGBDepth
+cd ofxRGBDepth
 git checkout -b develop --track origin/develop
 git pull origin develop
 cd ..
