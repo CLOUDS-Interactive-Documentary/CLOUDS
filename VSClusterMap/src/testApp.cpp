@@ -1,5 +1,5 @@
 #include "testApp.h"
-
+#include "ofxObjLoader.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -80,6 +80,11 @@ void testApp::keyPressed(int key){
 //    ofPixels p;
 //    clusterMap.getSharedRenderTarget().readToPixels(p);
 //    ofSaveImage(p, "CLUSTER_BACKGROUND.png");
+    
+    if(key == 'O'){
+        ofxObjLoader::save("SAVE_ClusterNodes.obj", clusterMap.getNodeMesh());
+        ofxObjLoader::save("SAVE_NetworkPaths.obj", clusterMap.getNetworkMesh());
+    }
 }
 
 //--------------------------------------------------------------
