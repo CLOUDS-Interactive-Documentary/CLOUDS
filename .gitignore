@@ -379,3 +379,4 @@ SCREENSHOT_*
 CloudsData/language/MASTER/output/*
 CloudsData/language/MASTER/utf8_converted/*
 *.xlsm
+*.db
