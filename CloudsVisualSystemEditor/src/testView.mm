@@ -22,12 +22,33 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 {
     ofBackground(0);
     ofSetVerticalSync(true);
+    
     goToNext = false;
 	currentVisualSystem = NULL;
 	selectedPreset = NULL;
+   
 
-    ofSetDataPathRoot("../../");
-	
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+    char path[PATH_MAX];
+    CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX);
+    CFRelease(resourcesURL);
+    chdir(path);
+    
+    long size;
+    char *buf;
+    char *ptr;
+    
+    size = pathconf(".", _PC_PATH_MAX);
+    if ((buf = (char *)malloc((size_t)size)) != NULL){
+        ptr = getcwd(buf, (size_t)size);
+    }
+    cout << ptr << endl;
+    
+	//ofEnableDataPath();
+    //ofSetDataPathRoot("../../");
+	//ofDisableDataPath();
+    
     parser.loadFromFiles();
 
 	
@@ -36,7 +57,15 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
         cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
 	}
 	else{
-		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
+        string defaultFilePath = GetCloudsDataPath(true) + "media/";
+		if(ofFile::doesFileExist(defaultFilePath)){
+			parser.setCombinedVideoDirectory(defaultFilePath);
+		}
+		else{
+			ofSystemAlertDialog("Could not find movie file path. \
+								Create a file called CloudsMovieDirectory.txt \
+								that contains one line, the path to your movies folder");
+		}
 	}
 	
 	visualSystems.loadPresets();
@@ -86,7 +115,7 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 //		cout << "*** SYSTEM TEST " << systems[i]->getSystemName() << endl;
 //	}
 	
-    mixer.setup();
+//    mixer.setup();
     mixer.setDiageticVolume(1);
 
 }

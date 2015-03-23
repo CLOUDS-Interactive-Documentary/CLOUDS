@@ -1595,10 +1595,6 @@
 		E755D702194405C500AA81C1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D701194405C500AA81C1 /* libz.dylib */; };
 		E755D70619440E3000AA81C1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D70519440E3000AA81C1 /* QuartzCore.framework */; };
 		E755D70A1944159000AA81C1 /* libassimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D7091944159000AA81C1 /* libassimp.a */; };
-		E79BF963194927E900A0A83E /* ofxMeshUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF961194927E900A0A83E /* ofxMeshUtils.cpp */; };
-		E79BF964194927E900A0A83E /* ofxMeshUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF961194927E900A0A83E /* ofxMeshUtils.cpp */; };
-		E79BF965194927E900A0A83E /* ofxMeshUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF961194927E900A0A83E /* ofxMeshUtils.cpp */; };
-		E79BF966194927E900A0A83E /* ofxMeshUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79BF961194927E900A0A83E /* ofxMeshUtils.cpp */; };
 		E79BFA7719492CB900A0A83E /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79BFA7619492CAC00A0A83E /* AudioUnit.framework */; };
 		E79BFA7819492CC600A0A83E /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79BFA7619492CAC00A0A83E /* AudioUnit.framework */; };
 		E79BFA7919492CCE00A0A83E /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79BFA7619492CAC00A0A83E /* AudioUnit.framework */; };
@@ -3450,9 +3446,6 @@
 		E755D701194405C500AA81C1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E755D70519440E3000AA81C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E755D7091944159000AA81C1 /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libassimp.a; sourceTree = "<group>"; };
-		E79BF95F194927E900A0A83E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		E79BF961194927E900A0A83E /* ofxMeshUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMeshUtils.cpp; sourceTree = "<group>"; };
-		E79BF962194927E900A0A83E /* ofxMeshUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMeshUtils.h; sourceTree = "<group>"; };
 		E79BFA7619492CAC00A0A83E /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		E7D821A518BEBCC300C1EB93 /* ofxTimecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimecode.cpp; sourceTree = "<group>"; };
 		E7D821A618BEBCC300C1EB93 /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
@@ -4810,7 +4803,6 @@
 				E73DA3A2189F1CDE006C9E4E /* ofxMSACore */,
 				E73DA3AE189F1CDE006C9E4E /* ofxMSAObjCPointer */,
 				E7D82B0C18BF0ABA00C1EB93 /* ofxMSAPhysics */,
-				E79BF95E194927E900A0A83E /* ofxMeshUtils */,
 				E7D8281E18BEBE0200C1EB93 /* ofxMSATimer */,
 				E7D82B5318BF0BC000C1EB93 /* ofxNearestNeighbour */,
 				E7D8290918BEBE8000C1EB93 /* ofxObjLoader */,
@@ -6538,25 +6530,6 @@
 				E755D6FA1943F6CC00AA81C1 /* CloudsVisualSystemParadox.h */,
 			);
 			path = vs_src;
-			sourceTree = "<group>";
-		};
-		E79BF95E194927E900A0A83E /* ofxMeshUtils */ = {
-			isa = PBXGroup;
-			children = (
-				E79BF95F194927E900A0A83E /* README.md */,
-				E79BF960194927E900A0A83E /* src */,
-			);
-			name = ofxMeshUtils;
-			path = ../../../addons/ofxMeshUtils;
-			sourceTree = "<group>";
-		};
-		E79BF960194927E900A0A83E /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E79BF961194927E900A0A83E /* ofxMeshUtils.cpp */,
-				E79BF962194927E900A0A83E /* ofxMeshUtils.h */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		E7D8201D18BEBC7100C1EB93 /* opencv */ = {
@@ -10117,7 +10090,6 @@
 				038033851948167700AFD40C /* testApp.cpp in Sources */,
 				038033861948167700AFD40C /* Maze.cpp in Sources */,
 				038033871948167700AFD40C /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
-				E79BF966194927E900A0A83E /* ofxMeshUtils.cpp in Sources */,
 				038033881948167700AFD40C /* CloudsVisualSystemSwim.cpp in Sources */,
 				038033891948167700AFD40C /* MazeCamera.cpp in Sources */,
 				0380338A1948167700AFD40C /* Vec3.cpp in Sources */,
@@ -10713,7 +10685,6 @@
 				03A0F5EF1947A0850071CF4B /* testApp.cpp in Sources */,
 				03A0F5F01947A0850071CF4B /* Maze.cpp in Sources */,
 				03A0F5F11947A0850071CF4B /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
-				E79BF965194927E900A0A83E /* ofxMeshUtils.cpp in Sources */,
 				03A0F5F21947A0850071CF4B /* CloudsVisualSystemSwim.cpp in Sources */,
 				03A0F5F31947A0850071CF4B /* MazeCamera.cpp in Sources */,
 				03A0F5F41947A0850071CF4B /* Vec3.cpp in Sources */,
@@ -11309,7 +11280,6 @@
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				E755D6ED1943F56F00AA81C1 /* Maze.cpp in Sources */,
 				E7D827E318BEBDCF00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
-				E79BF963194927E900A0A83E /* ofxMeshUtils.cpp in Sources */,
 				E7D825F818BEBD7000C1EB93 /* CloudsVisualSystemSwim.cpp in Sources */,
 				E755D6EE1943F56F00AA81C1 /* MazeCamera.cpp in Sources */,
 				E73DA6C2189F1CEA006C9E4E /* Vec3.cpp in Sources */,
@@ -12027,7 +11997,6 @@
 				E7DDC27B194437EC00E61D75 /* CubeAction.cpp in Sources */,
 				E7DDC27C194437EC00E61D75 /* ofxBox2dBaseShape.cpp in Sources */,
 				E7DDC27D194437EC00E61D75 /* Branch.cpp in Sources */,
-				E79BF964194927E900A0A83E /* ofxMeshUtils.cpp in Sources */,
 				E7DDC27E194437EC00E61D75 /* ofxUISpacer.cpp in Sources */,
 				E7DDC27F194437EC00E61D75 /* ControlSwitcher.cpp in Sources */,
 				E7DDC280194437EC00E61D75 /* ZoomBlurPass.cpp in Sources */,
@@ -12707,7 +12676,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -12751,7 +12720,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
