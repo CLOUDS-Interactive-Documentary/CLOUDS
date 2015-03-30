@@ -379,3 +379,6 @@ SCREENSHOT_*
 CloudsData/language/MASTER/output/*
 CloudsData/language/MASTER/utf8_converted/*
 *.xlsm
+VSClusterMap/bin/data/SAVE_NetworkPaths.obj
+
+VSClusterMap/bin/data/SAVE_ClusterNodes.obj

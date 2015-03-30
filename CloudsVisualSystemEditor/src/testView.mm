@@ -115,6 +115,9 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 //		cout << "*** SYSTEM TEST " << systems[i]->getSystemName() << endl;
 //	}
 	
+    
+    
+    ///MIXER IS BROKEN
 //    mixer.setup();
     mixer.setDiageticVolume(1);
 
@@ -210,8 +213,10 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[ self.selectedPresetIndex ].systemName );
 		
 		///SCREENCAPTURE MODE
-//		currentVisualSystem->setNumSamples(4);
-//		currentVisualSystem->forceScreenResolution(1920, 1080);
+		currentVisualSystem->setNumSamples(4);
+        //for print size
+//		currentVisualSystem->forceScreenResolution(1920*2, 1080*2);
+		currentVisualSystem->forceScreenResolution(152*30, 109*30);
 		currentVisualSystem->setDrawToScreen(false);
 		/////
 		
@@ -323,19 +328,18 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 		}
 		
 		//SAVE SYSTEM
-//		saveFbo.begin();
-//		ofClear(0,0,0);
-//		currentVisualSystem->selfPostDraw();
-//		saveFbo.end();
-//		saveFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
-		///
-		
-//		currentVisualSystem->getSharedRenderTarget().draw();
-        
-
-
-//        cout<<ss.str()<<endl;
+		saveFbo.begin();
+		ofClear(0,0,0);
 		currentVisualSystem->selfPostDraw();
+		saveFbo.end();
+        
+        ofRectangle drawRect(0, 0, ofGetWidth(), ofGetHeight());
+        ofRectangle videoRect(0, 0, saveFbo.getWidth(), saveFbo.getHeight());
+        videoRect.scaleTo(drawRect);
+		saveFbo.draw(videoRect);
+		///
+        
+//		currentVisualSystem->selfPostDraw();
         
         if(runningTest){
             stringstream ss;
@@ -375,13 +379,13 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
         ofShowCursor();
     }
 
-	if(key == ' ' && currentVisualSystem != NULL){
+	if(key == '\\' && currentVisualSystem != NULL){
 		ofPixels p;
 		saveFbo.readToPixels(p);
 		
 		char screenshot[1024];
 		
-		sprintf(screenshot, "screencapture_%s_%d_%d_%d_%d.png",
+		sprintf(screenshot, "SCREENSHOTS/screencapture_%s_%d_%d_%d_%d.png",
 				currentVisualSystem->getSystemName().c_str(), ofGetDay(), ofGetHours(), ofGetMinutes(), ofGetSeconds());
 		ofSaveImage(p, screenshot);
 	}
