@@ -74,6 +74,7 @@ ${NEWPREFIX}ofxTween
 ${NEWPREFIX}ofxMSAInteractiveObject
 ${NEWPREFIX}ofxFTGL
 ${NEWPREFIX}ofxMPMFluid
+${NEWPREFIX}ofxDelaunay
 
 ${NEWPREFIX}ofxAudioUnit
 ${NEWPREFIX}ofxAudioFeatures
@@ -85,8 +86,8 @@ git checkout -b develop --track origin/develop
 git pull origin develop
 cd ..
 
-${NEWPREFIX}ofxDepthKit
-cd ofxDepthKit
+${NEWPREFIX}ofxRGBDepth
+cd ofxRGBDepth
 git checkout -b develop --track origin/develop
 git pull origin develop
 cd ..

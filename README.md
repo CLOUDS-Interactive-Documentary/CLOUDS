@@ -9,7 +9,7 @@ Not everything is going to work out of the box, but we'll be adding components a
 
 ### Set Up
 
-1. Download the `feature-64bit` branch of openFrameworks from [here](https://github.com/CLOUDS-Interactive-Documentary/openframeworks/tree/feature-64bit).
+1. Download the `CLOUDS` branch of openFrameworks from [here](https://github.com/CLOUDS-Interactive-Documentary/openframeworks/tree/CLOUDS).
 1. Clone CLOUDS into the `OF/apps` directory.
 1. Run the `cloneaddons.sh` script to pull all required addons in the appropriate location. Run the following commands in your Terminal:
 
@@ -17,7 +17,7 @@ Not everything is going to work out of the box, but we'll be adding components a
     cd OF/apps/CLOUDS
     cloneaddons.sh
     ```
-1. That's it!
+1. While we fix a few things with the open source version, you'll also need to follow the few extra fixes listed here: https://github.com/CLOUDS-Interactive-Documentary/CLOUDS/issues/41
 
 ### Structure
 
