@@ -1023,7 +1023,8 @@ void CloudsIntroSequence::drawHelperType(){
             float questionHoldAlpha = ofMap(caughtQuestion->hoverPercentComplete, .2, .3, 0.0, .2, true);
             ofSetColor(255, 255*questionHoldAlpha);
 #ifdef MOUSE_INPUT
-			string textPrompt = GetTranslationForString("CLICK TO SELECT");
+//			string textPrompt = GetTranslationForString("CLICK TO SELECT");
+            string textPrompt = GetTranslationForString("");
 #else
 			string textPrompt = GetTranslationForString("HOLD TO SELECT");
 #endif
@@ -1107,7 +1108,8 @@ void CloudsIntroSequence::selfDrawOverlay(){
 #if defined(MOUSE_INPUT)
 	
 	ofPushStyle();
-	string helpHoverText = GetTranslationForString("CLICK TO BEGIN");
+//	string helpHoverText = GetTranslationForString("CLICK TO BEGIN");
+	string helpHoverText = GetTranslationForString("");
 	float helperTextOpacity = clickToBeginAlpha;
 	ofSetColor(255,helperTextOpacity*255);
 	helperFont.setLetterSpacing(titleTypeTracking*.7);
