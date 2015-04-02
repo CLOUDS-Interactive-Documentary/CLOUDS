@@ -271,15 +271,15 @@ void CloudsVisualSystemRGBD::playTestVideo(int videoIndex){
 	string sourceFile, filePathMov,filePathXml, subtitlesPathSrt;
 
 	if(videoIndex == 0){
-		filePathXml = GetCloudsDataPath(true) + "media/Aaron_code,_story,_communication.xml";
-		sourceFile  = GetCloudsDataPath(true) + "media/Aaron_code,_story,_communication_2.5mbps";
-		filePathMov = sourceFile+".mov";
+		filePathXml = GetCloudsDataPath(true) + "media/Aaron_collaboration.xml";
+		sourceFile  = GetCloudsDataPath(true) + "media/1pass_1M";
+		filePathMov = sourceFile+".mp4";
 		setupSpeaker("Kyle", "McDonald","");
 	}
 	else{
-		filePathXml = GetCloudsDataPath(true) + "media/Kyle_MC_folowing_the_finger.xml";
-		sourceFile  = GetCloudsDataPath(true) + "media/Kyle_MC_folowing_the_finger";
-		filePathMov = sourceFile+".mov";
+		filePathXml = GetCloudsDataPath(true) + "media/Aaron_collaboration.xml";
+		sourceFile  = GetCloudsDataPath(true) + "media/2pass_1M";
+		filePathMov = sourceFile+".mp4";
 		setupSpeaker("Kyle", "McDonald","");
 	}
 	if(ofFile::doesFileExist(filePathMov)){

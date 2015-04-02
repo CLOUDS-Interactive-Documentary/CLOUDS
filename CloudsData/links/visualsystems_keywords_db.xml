@@ -16268,7 +16268,7 @@
 <system name="ExampleOpenSteer_Pursuit_gray">
     <keywords>emergence|artificial life|rules|games</keywords>
     <links>
-        <clip>Casey - emergence</clip>        
+        <clip>Casey - emergence</clip>
     </links>
     <suppressions>
         <clip>Andres - soft systems 1</clip>
@@ -23936,8 +23936,7 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>0
-    </enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>1</sound_allow_vo>
@@ -32680,7 +32679,7 @@
     <keywords>network|information|the cloud|spirituality</keywords>
     <links>
         <clip>Higa - collaboration with machines 1</clip>
-        <clip>Higa - collaboration with machines 2</clip>        
+        <clip>Higa - collaboration with machines 2</clip>
     </links>
     <suppressions>
         <clip>Aaron - collaboration</clip>
@@ -35361,7 +35360,7 @@
         <clip>Bruce - Fractal graphics</clip>
     </links>
     <suppressions>
-        <clip>Casey - emergence</clip>        
+        <clip>Casey - emergence</clip>
         <clip>Memo_master - Psychedelic Pong</clip>
         <clip>LIA - LTree</clip>
         <clip>Philip - all the points can flush</clip>
@@ -37491,7 +37490,7 @@
         <clip>Andres - examples of the impossible</clip>
         <clip>Bruce - Gardening 2</clip>
         <clip>Bruce - Volition</clip>
-        <clip>Casey - emergence</clip>         
+        <clip>Casey - emergence</clip>
         <clip>Casey - People would pop up</clip>
         <clip>Casey - Processing, what is it?</clip>
         <clip>Casey - Processing addons</clip>
@@ -37598,7 +37597,7 @@
         <clip>Binx - frustrated about visualization</clip>
         <clip>Casey - Birth of processing</clip>
         <clip>Casey - Computer as collaborator</clip>
-        <clip>Casey - emergence</clip>        
+        <clip>Casey - emergence</clip>
         <clip>Casey - Design by numbers to processing</clip>
         <clip>Casey - People would pop up</clip>
         <clip>Casey - Processing addons</clip>
@@ -37689,7 +37688,7 @@
     <links></links>
     <suppressions>
         <clip>Bruce - Volition</clip>
-        <clip>Casey - emergence</clip>         
+        <clip>Casey - emergence</clip>
         <clip>Elliot_UK - limitations 2</clip>
         <clip>Golan - make a mark</clip>
         <clip>Golan - would be boring</clip>

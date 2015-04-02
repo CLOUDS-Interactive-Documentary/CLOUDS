@@ -22,12 +22,33 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 {
     ofBackground(0);
     ofSetVerticalSync(true);
+    
     goToNext = false;
 	currentVisualSystem = NULL;
 	selectedPreset = NULL;
+   
 
-    ofSetDataPathRoot("../../");
-	
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+    char path[PATH_MAX];
+    CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX);
+    CFRelease(resourcesURL);
+    chdir(path);
+    
+    long size;
+    char *buf;
+    char *ptr;
+    
+    size = pathconf(".", _PC_PATH_MAX);
+    if ((buf = (char *)malloc((size_t)size)) != NULL){
+        ptr = getcwd(buf, (size_t)size);
+    }
+    cout << ptr << endl;
+    
+	//ofEnableDataPath();
+    //ofSetDataPathRoot("../../");
+	//ofDisableDataPath();
+    
     parser.loadFromFiles();
 
 	
@@ -36,7 +57,15 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
         cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
 	}
 	else{
-		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
+        string defaultFilePath = GetCloudsDataPath(true) + "media/";
+		if(ofFile::doesFileExist(defaultFilePath)){
+			parser.setCombinedVideoDirectory(defaultFilePath);
+		}
+		else{
+			ofSystemAlertDialog("Could not find movie file path. \
+								Create a file called CloudsMovieDirectory.txt \
+								that contains one line, the path to your movies folder");
+		}
 	}
 	
 	visualSystems.loadPresets();
@@ -86,7 +115,10 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 //		cout << "*** SYSTEM TEST " << systems[i]->getSystemName() << endl;
 //	}
 	
-    mixer.setup();
+    
+    
+    ///MIXER IS BROKEN
+//    mixer.setup();
     mixer.setDiageticVolume(1);
 
 }
@@ -181,8 +213,10 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[ self.selectedPresetIndex ].systemName );
 		
 		///SCREENCAPTURE MODE
-//		currentVisualSystem->setNumSamples(4);
-//		currentVisualSystem->forceScreenResolution(1920, 1080);
+		currentVisualSystem->setNumSamples(4);
+        //for print size
+//		currentVisualSystem->forceScreenResolution(1920*2, 1080*2);
+		currentVisualSystem->forceScreenResolution(152*30, 109*30);
 		currentVisualSystem->setDrawToScreen(false);
 		/////
 		
@@ -294,19 +328,18 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 		}
 		
 		//SAVE SYSTEM
-//		saveFbo.begin();
-//		ofClear(0,0,0);
-//		currentVisualSystem->selfPostDraw();
-//		saveFbo.end();
-//		saveFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
-		///
-		
-//		currentVisualSystem->getSharedRenderTarget().draw();
-        
-
-
-//        cout<<ss.str()<<endl;
+		saveFbo.begin();
+		ofClear(0,0,0);
 		currentVisualSystem->selfPostDraw();
+		saveFbo.end();
+        
+        ofRectangle drawRect(0, 0, ofGetWidth(), ofGetHeight());
+        ofRectangle videoRect(0, 0, saveFbo.getWidth(), saveFbo.getHeight());
+        videoRect.scaleTo(drawRect);
+		saveFbo.draw(videoRect);
+		///
+        
+//		currentVisualSystem->selfPostDraw();
         
         if(runningTest){
             stringstream ss;
@@ -346,13 +379,13 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
         ofShowCursor();
     }
 
-	if(key == ' ' && currentVisualSystem != NULL){
+	if(key == '\\' && currentVisualSystem != NULL){
 		ofPixels p;
 		saveFbo.readToPixels(p);
 		
 		char screenshot[1024];
 		
-		sprintf(screenshot, "screencapture_%s_%d_%d_%d_%d.png",
+		sprintf(screenshot, "SCREENSHOTS/screencapture_%s_%d_%d_%d_%d.png",
 				currentVisualSystem->getSystemName().c_str(), ofGetDay(), ofGetHours(), ofGetMinutes(), ofGetSeconds());
 		ofSaveImage(p, screenshot);
 	}

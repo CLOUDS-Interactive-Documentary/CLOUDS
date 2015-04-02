@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03291D751AC49F53008DC9F0 /* CloudsRGBDCombinedExporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03291D731AC49F53008DC9F0 /* CloudsRGBDCombinedExporter.cpp */; };
+		03291D761AC49F53008DC9F0 /* CloudsRGBDCombinedExporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03291D731AC49F53008DC9F0 /* CloudsRGBDCombinedExporter.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -29,7 +31,6 @@
 		A6CCC60B1853D91800B19C1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
 		A6CCC60C1853D91800B19C1A /* testView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 609133861652CB3E00B523AD /* testView.mm */; };
 		A6CCC60D1853D91800B19C1A /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
-		A6CCC60E1853D91800B19C1A /* CloudsRGBDCombinedExporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D65417401845006B9650 /* CloudsRGBDCombinedExporter.cpp */; };
 		A6CCC60F1853D91800B19C1A /* ofxDepthHoleFiller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D72817401886006B9650 /* ofxDepthHoleFiller.cpp */; };
 		A6CCC6101853D91800B19C1A /* ofxDepthImageCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D72A17401886006B9650 /* ofxDepthImageCompressor.cpp */; };
 		A6CCC6111853D91800B19C1A /* ofxDepthImageProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D72C17401886006B9650 /* ofxDepthImageProvider.cpp */; };
@@ -149,7 +150,6 @@
 		E7318F2A17403F13006B9650 /* ofxPCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7318DB317403F12006B9650 /* ofxPCL.cpp */; };
 		E7318F2B17403F13006B9650 /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7318DB717403F12006B9650 /* Utility.cpp */; };
 		E7318F4317405037006B9650 /* CloudsClipExportManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7318F4117405037006B9650 /* CloudsClipExportManager.cpp */; };
-		E731D66F17401845006B9650 /* CloudsRGBDCombinedExporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D65417401845006B9650 /* CloudsRGBDCombinedExporter.cpp */; };
 		E731D7AA17401886006B9650 /* ofxDepthHoleFiller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D72817401886006B9650 /* ofxDepthHoleFiller.cpp */; };
 		E731D7AB17401886006B9650 /* ofxDepthImageCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D72A17401886006B9650 /* ofxDepthImageCompressor.cpp */; };
 		E731D7AC17401886006B9650 /* ofxDepthImageProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D72C17401886006B9650 /* ofxDepthImageProvider.cpp */; };
@@ -223,6 +223,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03291D731AC49F53008DC9F0 /* CloudsRGBDCombinedExporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDCombinedExporter.cpp; path = ../Exporters/CloudsRGBDCombinedExporter.cpp; sourceTree = "<group>"; };
+		03291D741AC49F53008DC9F0 /* CloudsRGBDCombinedExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCombinedExporter.h; path = ../Exporters/CloudsRGBDCombinedExporter.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -471,8 +473,6 @@
 		E7318DB817403F12006B9650 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		E7318F4117405037006B9650 /* CloudsClipExportManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClipExportManager.cpp; sourceTree = "<group>"; };
 		E7318F4217405037006B9650 /* CloudsClipExportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClipExportManager.h; sourceTree = "<group>"; };
-		E731D65417401845006B9650 /* CloudsRGBDCombinedExporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedExporter.cpp; sourceTree = "<group>"; };
-		E731D65517401845006B9650 /* CloudsRGBDCombinedExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedExporter.h; sourceTree = "<group>"; };
 		E731D67D17401884006B9650 /* ofRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofRange.h; sourceTree = "<group>"; };
 		E731D72817401886006B9650 /* ofxDepthHoleFiller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDepthHoleFiller.cpp; sourceTree = "<group>"; };
 		E731D72917401886006B9650 /* ofxDepthHoleFiller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDepthHoleFiller.h; sourceTree = "<group>"; };
@@ -1329,8 +1329,8 @@
 		E731D65117401845006B9650 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				E731D65517401845006B9650 /* CloudsRGBDCombinedExporter.h */,
-				E731D65417401845006B9650 /* CloudsRGBDCombinedExporter.cpp */,
+				03291D731AC49F53008DC9F0 /* CloudsRGBDCombinedExporter.cpp */,
+				03291D741AC49F53008DC9F0 /* CloudsRGBDCombinedExporter.h */,
 			);
 			path = RGBD;
 			sourceTree = "<group>";
@@ -1595,6 +1595,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsRGBDExporter" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1691,7 +1693,6 @@
 				A6CCC60B1853D91800B19C1A /* main.m in Sources */,
 				A6CCC60C1853D91800B19C1A /* testView.mm in Sources */,
 				A6CCC60D1853D91800B19C1A /* ofxCocoaGLView.mm in Sources */,
-				A6CCC60E1853D91800B19C1A /* CloudsRGBDCombinedExporter.cpp in Sources */,
 				A6CCC60F1853D91800B19C1A /* ofxDepthHoleFiller.cpp in Sources */,
 				A6CCC6101853D91800B19C1A /* ofxDepthImageCompressor.cpp in Sources */,
 				A6CCC6111853D91800B19C1A /* ofxDepthImageProvider.cpp in Sources */,
@@ -1701,6 +1702,7 @@
 				A6CCC6151853D91800B19C1A /* ofxRGBDRenderer.cpp in Sources */,
 				A6CCC6161853D91800B19C1A /* ofxRGBDScene.cpp in Sources */,
 				A6CCC6171853D91800B19C1A /* ofxRGBDVideoDepthSequence.cpp in Sources */,
+				03291D761AC49F53008DC9F0 /* CloudsRGBDCombinedExporter.cpp in Sources */,
 				A6CCC6181853D91800B19C1A /* ofxTimecode.cpp in Sources */,
 				A6CCC6191853D91800B19C1A /* tinyxml.cpp in Sources */,
 				A6CCC61A1853D91800B19C1A /* tinyxmlerror.cpp in Sources */,
@@ -1741,7 +1743,6 @@
 				6091337E1652C9C900B523AD /* main.m in Sources */,
 				609133871652CB3E00B523AD /* testView.mm in Sources */,
 				608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */,
-				E731D66F17401845006B9650 /* CloudsRGBDCombinedExporter.cpp in Sources */,
 				E731D7AA17401886006B9650 /* ofxDepthHoleFiller.cpp in Sources */,
 				E731D7AB17401886006B9650 /* ofxDepthImageCompressor.cpp in Sources */,
 				E731D7AC17401886006B9650 /* ofxDepthImageProvider.cpp in Sources */,
@@ -1751,6 +1752,7 @@
 				E731D7B317401886006B9650 /* ofxRGBDRenderer.cpp in Sources */,
 				E731D7B417401886006B9650 /* ofxRGBDScene.cpp in Sources */,
 				E731D7B517401886006B9650 /* ofxRGBDVideoDepthSequence.cpp in Sources */,
+				03291D751AC49F53008DC9F0 /* CloudsRGBDCombinedExporter.cpp in Sources */,
 				E731D7DD17401890006B9650 /* ofxTimecode.cpp in Sources */,
 				E731D7EA17401895006B9650 /* tinyxml.cpp in Sources */,
 				E731D7EB17401895006B9650 /* tinyxmlerror.cpp in Sources */,
