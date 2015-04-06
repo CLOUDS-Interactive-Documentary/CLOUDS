@@ -272,14 +272,14 @@ void CloudsVisualSystemRGBD::playTestVideo(int videoIndex){
 
 	if(videoIndex == 0){
 		filePathXml = GetCloudsDataPath(true) + "media/Aaron_collaboration.xml";
-		sourceFile  = GetCloudsDataPath(true) + "media/1pass_1M";
-		filePathMov = sourceFile+".mp4";
+		sourceFile  = GetCloudsDataPath(true) + "media/Aaron_code,_story,_communication";
+		filePathMov = sourceFile+".mov";
 		setupSpeaker("Kyle", "McDonald","");
 	}
 	else{
 		filePathXml = GetCloudsDataPath(true) + "media/Aaron_collaboration.xml";
-		sourceFile  = GetCloudsDataPath(true) + "media/2pass_1M";
-		filePathMov = sourceFile+".mp4";
+		sourceFile  = GetCloudsDataPath(true) + "media/Maeda_do_not_resuscitate";
+		filePathMov = sourceFile+".mov";
 		setupSpeaker("Kyle", "McDonald","");
 	}
 	if(ofFile::doesFileExist(filePathMov)){

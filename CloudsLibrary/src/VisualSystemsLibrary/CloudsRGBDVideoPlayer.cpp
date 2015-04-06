@@ -111,19 +111,19 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 
     nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
 
-#ifdef TARGET_WIN32
-    nextPlayer->setUseTexture(false);
-	bLoadResult = false;
-	
-	cout << "*** SETTING UP CLIP STARTING THREAD" << endl;
-    startThread(true);
-
-    return true;
-#else
+//#ifdef TARGET_WIN32
+//    nextPlayer->setUseTexture(false);
+//	bLoadResult = false;
+//	
+//	cout << "*** SETTING UP CLIP STARTING THREAD" << endl;
+//    startThread(true);
+//
+//    return true;
+//#else
     // No need to use a thread, just call this function directly.
     threadedFunction();
     return bLoadResult;
-#endif
+//#endif
 }
 
 //---------------------------------------------------------------
@@ -138,7 +138,10 @@ void CloudsRGBDVideoPlayer::threadedFunction(){
         return;
     }
 
+	/*
+	//TODO may be causing problems with async videos
 	nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
+	*/
 
 	cout << "prerolled clip " << nextVideoPath << " to time " << (nextOffsetTime / nextPlayer->getDuration()) << endl;
 
