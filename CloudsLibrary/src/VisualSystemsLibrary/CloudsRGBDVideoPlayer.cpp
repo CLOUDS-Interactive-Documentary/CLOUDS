@@ -84,10 +84,10 @@ CloudsRGBDVideoPlayer::~CloudsRGBDVideoPlayer(){
 bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume){
 
 	cout << "*** SETTING UP CLIP " << calibrationXMLPath << endl;
-    if (!ofFile::doesFileExist(videoPath)){
-    	ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
-        return false;
-    }
+    //if (!ofFile::doesFileExist(videoPath)){
+    //	ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
+    //    return false;
+    //}
 
 	if(!ofFile::doesFileExist(calibrationXMLPath)){
     	ofLogError("CloudsRGBDVideoPlayer::setup") << "XML path " << calibrationXMLPath << " failed to load";
