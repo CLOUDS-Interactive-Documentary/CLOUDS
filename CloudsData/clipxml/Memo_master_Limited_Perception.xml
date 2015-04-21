@@ -1,0 +1,78 @@
+<depthIntrinsics>
+    <ppx>320.000000000</ppx>
+    <ppy>240.000000000</ppy>
+    <fovx>570.342224121</fovx>
+    <fovy>570.342224121</fovy>
+    <width>640.000000000</width>
+    <height>480.000000000</height>
+</depthIntrinsics>
+<colorIntrinsics>
+    <ppx>960.244689941</ppx>
+    <ppy>548.097290039</ppy>
+    <fovx>1311.599365234</fovx>
+    <fovy>1307.401611328</fovy>
+    <width>1920.000000000</width>
+    <height>1080.000000000</height>
+    <dK>
+        <k0>-0.077012144</k0>
+        <k1>0.113882780</k1>
+        <k2>-0.071127325</k2>
+    </dK>
+    <dP>
+        <p0>0.002503168</p0>
+        <p1>0.000138110</p1>
+    </dP>
+</colorIntrinsics>
+<extrinsics>
+    <rotation>
+        <r0>0.999978662</r0>
+        <r1>0.005917851</r1>
+        <r2>-0.002770833</r2>
+        <r3>-0.005671536</r3>
+        <r4>0.996636271</r4>
+        <r5>0.081755616</r5>
+        <r6>0.003245330</r6>
+        <r7>-0.081738152</r7>
+        <r8>0.996648550</r8>
+    </rotation>
+    <translation>
+        <t0>1.646331787</t0>
+        <t1>60.225360870</t1>
+        <t2>16.271375656</t2>
+    </translation>
+</extrinsics>
+<adjustment>
+    <translate>
+        <x>0.000000000</x>
+        <y>0.000000000</y>
+        <z>0.000000000</z>
+    </translate>
+    <rotate>
+        <x>0.625000000</x>
+        <y>-0.208333492</y>
+        <z>0.000000000</z>
+    </rotate>
+    <scale>
+        <x>1.000000000</x>
+        <y>1.000000000</y>
+    </scale>
+    <depth>
+        <min>555.000000000</min>
+        <max>1309.000000000</max>
+    </depth>
+</adjustment>
+<skin>
+    <targetR>0.623529434</targetR>
+    <targetG>0.482352972</targetG>
+    <targetB>0.407843173</targetB>
+    <hueWeight>0.833333313</hueWeight>
+    <satWeight>0.244791672</satWeight>
+    <brightWeight>0.572916687</brightWeight>
+    <lowerThreshold>0.109375000</lowerThreshold>
+    <upperThreshold>0.338541657</upperThreshold>
+</skin>
+<face>
+    <x>-84.081771851</x>
+    <y>-151.598815918</y>
+    <z>1087.000000000</z>
+</face>
