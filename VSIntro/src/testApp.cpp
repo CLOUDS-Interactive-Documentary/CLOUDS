@@ -84,7 +84,12 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    if(key == 'H'){
+        ofHideCursor();
+    }
+    else if(key == 'S'){
+        ofShowCursor();
+    }
 }
 
 //--------------------------------------------------------------
