@@ -331,7 +331,6 @@
 		0300E85E1AE6A92A0008F7BB /* CloudsRGBDVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDVideoPlayer.h; sourceTree = "<group>"; };
 		0300E8601AE6A93D0008F7BB /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		0300E8611AE6A93D0008F7BB /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
-		186B68AC17EA1E6C0020C952 /* CloudsRGBDVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDVideoPlayer.h; path = VisualSystemsLibrary/CloudsRGBDVideoPlayer.h; sourceTree = "<group>"; };
 		18731D2E178628D200E22F84 /* CloudsAct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAct.cpp; sourceTree = "<group>"; };
 		18731D2F178628D200E22F84 /* CloudsAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAct.h; sourceTree = "<group>"; };
 		1877A9F9178F417A006DAA37 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
@@ -1145,8 +1144,8 @@
 			children = (
 				0300E54E1AE6A7BC0008F7BB /* CloudsEvents.h */,
 				0300E54F1AE6A7BC0008F7BB /* CloudsGlobal.cpp */,
-				0300E5501AE6A7BC0008F7BB /* CloudsLocalization.cpp */,
 				0300E5511AE6A7BC0008F7BB /* CloudsLocalization.h */,
+				0300E5501AE6A7BC0008F7BB /* CloudsLocalization.cpp */,
 				E745F6CA1720FE0E00B86D7E /* src */,
 			);
 			name = CloudsLibrary;
@@ -1158,7 +1157,6 @@
 			children = (
 				E77BA14B18F862F3007C1937 /* CloudsAudioEvents.cpp */,
 				E77BA14C18F862F3007C1937 /* CloudsAudioEvents.h */,
-				186B68AC17EA1E6C0020C952 /* CloudsRGBDVideoPlayer.h */,
 				1877A9F9178F417A006DAA37 /* CloudsGlobal.h */,
 				0300E5681AE6A82F0008F7BB /* VisualSystemsLibrary */,
 				0300E55B1AE6A8030008F7BB /* Core */,

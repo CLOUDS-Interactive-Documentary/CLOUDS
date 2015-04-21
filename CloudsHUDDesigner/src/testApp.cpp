@@ -77,19 +77,23 @@ void testApp::keyPressed(int key){
 	}
     
     if(key == '1'){
-		hud.animateOn(CLOUDS_HUD_LOWER_THIRD);
+		hud.animateOn(CLOUDS_HUD_HOME);
 	}
     
     if(key == '2'){
-		hud.animateOn(CLOUDS_HUD_QUESTION);
+		hud.animateOn(CLOUDS_HUD_LOWER_THIRD);
 	}
     
     if(key == '3'){
-		hud.animateOn(CLOUDS_HUD_MAP);
+		hud.animateOn(CLOUDS_HUD_QUESTION);
 	}
     
     if(key == '4'){
 		hud.animateOn(CLOUDS_HUD_PROJECT_EXAMPLE);
+	}
+    
+    if(key == '5'){
+		hud.animateOn(CLOUDS_HUD_PAUSE);
 	}
 
     if(key == '9'){

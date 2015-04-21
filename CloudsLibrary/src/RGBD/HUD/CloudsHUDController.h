@@ -19,13 +19,14 @@
 #include "CloudsSpeaker.h"
 
 typedef enum {
-	CLOUDS_HUD_QUESTION        = 0x0001,
-	CLOUDS_HUD_LOWER_THIRD     = 0x0010,
-	CLOUDS_HUD_PROJECT_EXAMPLE = 0x0100,
-	CLOUDS_HUD_MAP             = 0x1000,
+	CLOUDS_HUD_HOME            = 0x00001,
+	CLOUDS_HUD_QUESTION        = 0x00010,
+	CLOUDS_HUD_LOWER_THIRD     = 0x00100,
+	CLOUDS_HUD_PROJECT_EXAMPLE = 0x01000,
+	CLOUDS_HUD_PAUSE           = 0x10000,
     
-	CLOUDS_HUD_FULL            = 0x1111,
-    CLOUDS_HUD_LAYER_COUNT     = 4
+	CLOUDS_HUD_FULL            = 0x11111,
+    CLOUDS_HUD_LAYER_COUNT     = 5
 } CloudsHUDLayerSet;
 
 #ifdef OCULUS_RIFT
@@ -112,7 +113,7 @@ class CloudsHUDController {
     void populateLowerThird(const string& firstName="", const string& lastName="", const string& title="", const string& location="", const string& textbox="", bool forceOn=false );
     void populateProjectExample(const string& videoPath="", const string& textLeft="", const string& textRight="", const string& textTop="", bool forceOn=false);
     void populateQuestion(const string& question="", bool forceOn=false, bool animate = true);
-    void populateMap(const string& leftBox="", const string& rightBox="", bool forceOn=false);
+    //void populateMap(const string& leftBox="", const string& rightBox="", bool forceOn=false);
     
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
