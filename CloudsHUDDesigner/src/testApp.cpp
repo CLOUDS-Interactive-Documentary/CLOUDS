@@ -3,22 +3,27 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
+	ofBackground(0);
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	
-	//ofToggleFullscreen();
-    //ofEnableSmoothing();
-	ofBackground(0);
-
+    
+    //sets the HUD
+    
 	parser.loadFromFiles();
 
 	hud.setup();
+
+    empty.setup();
+    empty.playSystem();
+    empty.setDrawToScreen(false);
+
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 	hud.update();
-
+    
 	if(hud.isResetHit()){
 		cout << "RESET!!!" << endl;
 	}
@@ -87,14 +92,14 @@ void testApp::keyPressed(int key){
 		hud.animateOn(CLOUDS_HUD_PROJECT_EXAMPLE);
 	}
 
+    if(key == '9'){
+        hud.animateOff();
+    }
+    
     if(key == 'h'){
 		hud.toggleGuis();
-//        storyEngine.toggleGuis();
     }
 	
-    else if(key =='f'){
-        ofToggleFullscreen();
-    }
 }
 
 //--------------------------------------------------------------

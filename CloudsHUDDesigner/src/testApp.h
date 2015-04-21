@@ -4,6 +4,8 @@
 #include "ofxUI.h"
 #include "CloudsHUDController.h"
 #include "CloudsFCPParser.h"
+#include "CloudsVisualSystemEmpty.h"
+
 
 class testApp : public ofBaseApp{
   public:
@@ -22,6 +24,8 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	
+    CloudsVisualSystemEmpty empty;
+ 
 	CloudsHUDController hud;
 	CloudsFCPParser parser;
     void guiEvent(ofxUIEventArgs &e);
