@@ -584,17 +584,24 @@ void CloudsHUDController::update(){
         videoPlayer.update();
     }
 	
-	/////////////////JG Barbican Disable HOME
-    //home.hudScale = scaleAmt;
-	//home.update();    
-    //if( home.wasHomeOpened() ){
-    //    if( !bIsHudOpen ){
-    //       animateOn( CLOUDS_HUD_FULL );
-    //    }else{
-    //        animateOff();
-    //    }
-    //}
-	/////////////////////////////////
+    ///////////////JG Barbican Disable HOME
+//    home.hudScale = scaleAmt;
+    
+    home.interactiveBounds.x = home.bounds.x * scaleAmt + scaleOffset.x;
+	home.interactiveBounds.y = home.bounds.y * scaleAmt + scaleOffset.y;
+	home.interactiveBounds.width  = home.bounds.width  * scaleAmt;
+	home.interactiveBounds.height = home.bounds.height * scaleAmt;
+
+    home.update();
+    if( home.wasHomeOpened() ){
+        if( !bIsHudOpen ){
+            animateOn( CLOUDS_HUD_PAUSE );
+        }
+        else{
+            animateOff();
+        }
+    }
+    ///////////////////////////////
 
 	updateReset();
 }
@@ -694,6 +701,7 @@ void CloudsHUDController::draw(){
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
 	drawLayer(CLOUDS_HUD_PAUSE);
 	
+
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->draw();
     }

@@ -41,7 +41,8 @@ class CloudsHUDHomeButton {
     }
     
     ofRectangle bounds;
-    float hudScale;
+    ofRectangle interactiveBounds;
+//    float hudScale;
 
   protected:
     void rollover();

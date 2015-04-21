@@ -14,7 +14,7 @@ CloudsHUDHomeButton::CloudsHUDHomeButton(){
 	maxHoverTime = 10.;
     targetFps = 24.;
     playhead = 0;
-    hudScale = 1.0;
+//    hudScale = 1.0;
     hoverStartTime = ofGetElapsedTimef();
     
     buttonSize.set(200, 200);
@@ -70,10 +70,8 @@ void CloudsHUDHomeButton::update(){
     }
     bIsHovering = hit;
     
-    
-    
-    
     if( bIsHovering ){
+        cout << "hovering!" << endl;
         float elapsed = ofGetElapsedTimef() - hoverStartTime;
         float elapsedFrames = targetFps * elapsed;
         playhead = elapsedFrames;
@@ -123,7 +121,8 @@ void CloudsHUDHomeButton::rollout(){
 }
 
 bool CloudsHUDHomeButton::hitTest(float xPos, float yPos){
-    return bounds.inside( xPos * hudScale, yPos * hudScale );
+//    cout << "Bounds are " << ofVec4f(bounds.x, bounds.y, bounds.width, bounds.height) << " scale is " << hudScale << " : test " << ofVec2f(xPos * hudScale,yPos * hudScale) << endl;
+    return interactiveBounds.inside( xPos, yPos );
 }
 
 bool CloudsHUDHomeButton::hitTest(ofPoint mousePos){
