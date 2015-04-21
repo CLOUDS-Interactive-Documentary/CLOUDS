@@ -40,6 +40,7 @@ ${NEWPREFIX}ofxBillboard
 ${NEWPREFIX}ofxRegex
 ${NEWPREFIX}ofxAnimationPrimitives
 ${NEWPREFIX}ofxBox2d
+${NEWPREFIX}ofxLocalization
 
 ${NEWPREFIX}ofxOpenSteer
 cd ofxOpenSteer
