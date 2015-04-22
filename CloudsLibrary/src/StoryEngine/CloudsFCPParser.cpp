@@ -33,7 +33,9 @@ void CloudsFCPParser::loadFromFiles(){
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
 	parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
+#ifdef VHX_MEDIA
 	parseVHXIds(GetCloudsDataPath() + "vhx/clip_ids.csv");
+#endif
 }
 
 void CloudsFCPParser::setup(const string& directory){
@@ -328,6 +330,7 @@ void CloudsFCPParser::parseClusterNetwork(const string& fileName){
     disperseUnpositionedClips();
 }
 
+#ifdef VHX_MEDIA
 void CloudsFCPParser::parseVHXIds(const string& path){
     ofBuffer idbuf = ofBufferFromFile(path);
     map<string, string> idHashMap;
@@ -377,6 +380,7 @@ void CloudsFCPParser::trimVHXId(string& str){
     ofStringReplace(str, "%3C", "");
     ofStringReplace(str, "%3F", "");
 }
+#endif
 
 void CloudsFCPParser::parseProjectExamples(const string& filename){
 	

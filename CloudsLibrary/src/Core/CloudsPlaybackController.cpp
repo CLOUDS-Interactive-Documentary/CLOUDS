@@ -394,10 +394,12 @@ void CloudsPlaybackController::loadCurrentAct(){
 	
 	currentPresetIndex = 0;
 	loadingAct = true;
-    
+
+#ifdef VHX_MEDIA
     if(currentAct != NULL){
         currentAct->fetchClipVhxUrls();
     }
+#endif
 }
 
 //--------------------------------------------------------------------
@@ -1495,14 +1497,25 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
                                                                                       subtitlesPath);
 	}
 	else{
+#ifdef VHX_MEDIA
+        clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip->vhxSourceVideoUrl,
+                                                                                    clip->combinedCalibrationXMLPath,
+                                                                                    subtitlesPath,
+                                                                                    1.0, clip->getSpeakerVolume());
+#else
 		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip->combinedVideoPath,
 																					clip->combinedCalibrationXMLPath,
 																					subtitlesPath,
 																					1.0, clip->getSpeakerVolume());
+#endif
 	}
     
 	if(!clipLoadSuccessfullyLoaded){
+#ifdef VHX_MEDIA
+        ofLogError("CloudsPlaybackController::prerollClip") << "Error loading clip " << clip->getLinkName() << " file url " << clip->vhxSourceVideoUrl;
+#else
 		ofLogError("CloudsPlaybackController::prerollClip") << "Error loading clip " << clip->getLinkName() << " file path " << clip->combinedVideoPath;
+#endif
 		return;
 	}
     

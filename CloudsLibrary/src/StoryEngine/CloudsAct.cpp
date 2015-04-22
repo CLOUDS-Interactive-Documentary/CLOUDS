@@ -8,7 +8,9 @@
 
 #include "CloudsAct.h"
 #include "CloudsAudioEvents.h"
+#ifdef VHX_MEDIA
 #include "CloudsVHXRequest.h"
+#endif
 
 bool delta_sort(pair<string,float> a, pair<string,float> b){
 	return a.second > b.second;
@@ -595,13 +597,13 @@ void CloudsAct::setTopicForClip(string topic, string clipName){
     topicMap[clipName] = topic;
 }
 
+#ifdef VHX_MEDIA
 void CloudsAct::fetchClipVhxUrls(){
     for (int i = 0; i < clips.size(); ++i) {
-        //CloudsVHXRequest *request = CloudsVHXRequest::GetReusableRequest();
-        //request->fetchSourceUrl(clips[i]);
         clips[i]->fetchVhxSourceUrl();
     }
 }
+#endif
 
 void CloudsAct::clear(){
     clips.clear();

@@ -4,7 +4,9 @@
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 #include "CloudsProjectExample.h"
+#ifdef VHX_MEDIA
 #include "CloudsVHXRequest.h"
+#endif
 
 class CloudsClip {
   public:
@@ -25,12 +27,14 @@ class CloudsClip {
 	string fcpFileId;
     string sourceVideoFilePath;
 	
+#ifdef VHX_MEDIA
     void fetchVhxSourceUrl();
     void vhxRequestComplete(CloudsVHXEventArgs& args);
     CloudsVHXRequest *vhxRequest;
     string vhxId;
     string vhxSourceVideoUrl;
     unsigned long long vhxTimestamp;
+#endif
 
 	ofVec3f networkPosition;
 	ofVec2f networkPosition2d; //populated by gephi graph

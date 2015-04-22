@@ -103,7 +103,9 @@ class CloudsAct{
     void setTopicForClip(string topic, string clipName);
     string getTopicForClip(CloudsClip* clip);
     
+#ifdef VHX_MEDIA
     void fetchClipVhxUrls();
+#endif
 	
 	ofxTimeline& getTimeline(){ return timeline; }
     
