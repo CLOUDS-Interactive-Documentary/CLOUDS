@@ -52,6 +52,7 @@ class CloudsHUDController {
 
 	void setHomeEnabled(bool enable);
     bool isHomeEnabled();
+    
     void setHudEnabled(bool enable);
     bool isHudEnabled();
 	
@@ -70,6 +71,8 @@ class CloudsHUDController {
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void respondToClip(CloudsClip* clip);
+	void respondToSystem(const CloudsVisualSystemPreset& preset);
+    
     void playCued();
 	
 	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
@@ -87,6 +90,7 @@ class CloudsHUDController {
 	void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);
 	void clipBegan(CloudsClipEventArgs& args);
+    void clipEnded(); //not called by event system
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
 	void questionProposed(CloudsQuestionEventArgs& args);
@@ -110,10 +114,26 @@ class CloudsHUDController {
 
   protected:
 	
-    void populateLowerThird(const string& firstName="", const string& lastName="", const string& title="", const string& location="", const string& textbox="", bool forceOn=false );
-    void populateProjectExample(const string& videoPath="", const string& textLeft="", const string& textRight="", const string& textTop="", bool forceOn=false);
-    void populateQuestion(const string& question="", bool forceOn=false, bool animate = true);
-    //void populateMap(const string& leftBox="", const string& rightBox="", bool forceOn=false);
+    void populateLowerThird(const string& firstName,
+                            const string& lastName,
+                            const string& title,
+                            const string& location,
+                            const string& textbox,
+                            bool forceOn = false );
+    
+    void populateVisualSystem(const string& creatorsName,
+                              const string& systemName,
+                              bool forceOn = false );
+    
+    void populateProjectExample(const string& videoPath,
+                                const string& textLeft,
+                                const string& textRight,
+                                const string& textTop,
+                                bool forceOn = false);
+    
+    void populateQuestion(const string& question,
+                          bool forceOn=false,
+                          bool animate = true);
     
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;

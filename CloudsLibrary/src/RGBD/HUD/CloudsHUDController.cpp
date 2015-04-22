@@ -106,19 +106,23 @@ void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
 	respondToClip(args.chosenClip);
 }
 
+void CloudsHUDController::clipEnded(){
+    //TODO mark this speaker gone.
+}
+
 void CloudsHUDController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
-	bDrawHud = false;
-//    animateOff();
+//	bDrawHud = false;
+    respondToSystem(args.preset);
     bVisualSystemDisplayed = true;
 }
 
 void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
-	bDrawHud = true;
+//	bDrawHud = true;
     bVisualSystemDisplayed = false;
 }
 
 void CloudsHUDController::questionProposed(CloudsQuestionEventArgs& args){
-//    populateQuestion( args.question, true);
+
 }
 
 void CloudsHUDController::questionSelected(CloudsQuestionEventArgs& args){
@@ -126,10 +130,10 @@ void CloudsHUDController::questionSelected(CloudsQuestionEventArgs& args){
 }
 
 void CloudsHUDController::topicChanged(CloudsTopicEventArgs& args){
-	if(!bActJustStarted){
-		animateOff( CLOUDS_HUD_QUESTION );
-	}
-	bActJustStarted = false;
+//	if(!bActJustStarted){
+//		animateOff( CLOUDS_HUD_QUESTION );
+//	}
+//	bActJustStarted = false;
 }
 
 void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
@@ -170,6 +174,14 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
         animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
     }
 #endif
+}
+
+void CloudsHUDController::respondToSystem(const CloudsVisualSystemPreset& preset){
+    
+    populateVisualSystem(preset.credits.creator, preset.credits.name, false );
+
+    animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
+
 }
 
 void CloudsHUDController::questionHoverOn(const string& question,bool animate){
@@ -217,7 +229,13 @@ void CloudsHUDController::populateQuestion(const string& question, bool forceOn,
 }
 
 //BIO
-void CloudsHUDController::populateLowerThird(const string& firstName, const string& lastName, const string& title, const string& location, const string& textbox, bool forceOn) {
+void CloudsHUDController::populateLowerThird(const string& firstName,
+                                             const string& lastName,
+                                             const string& title,
+                                             const string& location,
+                                             const string& textbox,
+                                             bool forceOn)
+{
     
     CloudsHUDLabel* firstNameLabel  = hudLabelMap["BylineFirstNameTextBox_1_"];
     CloudsHUDLabel* lastNameLabel  = hudLabelMap["BylineLastNameTextBox"];
@@ -271,6 +289,68 @@ void CloudsHUDController::populateLowerThird(const string& firstName, const stri
     if( forceOn ){
         animateOn( CLOUDS_HUD_LOWER_THIRD );
     }
+}
+
+void CloudsHUDController::populateVisualSystem(const string& creatorsName,
+                                               const string& systemName,
+                                               bool forceOn )
+{
+    
+    CloudsHUDLabel* creatorsNameBox  = hudLabelMap["BylineFirstNameTextBox_1_"];
+    CloudsHUDLabel* systemNameBox  = hudLabelMap["BylineLastNameTextBox"];
+    
+    creatorsNameBox->setText( creatorsName, forceOn );
+    systemNameBox->setText( systemName, forceOn );
+    
+    int firstNameRight = creatorsNameBox->getRightEdge();
+    int lastNameRight = systemNameBox->getRightEdge();
+    int rightEdge = 0;
+    
+    if(firstNameRight > lastNameRight){
+        rightEdge = firstNameRight;
+    }
+	else{
+        rightEdge = lastNameRight;
+	}
+    
+    //    cout<< "right edge: " << rightEdge << endl;
+    
+    //move these over to float left of name
+    CloudsHUDLabel* locationLabel = hudLabelMap["BylineTopicTextBoxTop"];
+    CloudsHUDLabel* titleLabel = hudLabelMap["BylineTopicTextBoxBottom"];
+    locationLabel->bounds.x = rightEdge + margin;
+    titleLabel->bounds.x = rightEdge + margin;
+    
+    //TODO: do we want to add things into this local
+    locationLabel->setText( "", forceOn );
+    titleLabel->setText( "", forceOn );
+    
+    //description
+    ////reset to default
+    CloudsHUDLabel* descLabel = hudLabelMap["BylineBodyCopyTextBox"];
+    descLabel->bounds = defaultBioBounds;
+    descLabel->layout->setLineLength(defaultBioBounds.width);
+    int descLeftEdge = descLabel->bounds.getLeft();
+    
+    if(locationLabel->getRightEdge() > titleLabel->getRightEdge()){
+        rightEdge = locationLabel->getRightEdge();
+	}
+	else{
+        rightEdge = titleLabel->getRightEdge();
+	}
+    
+    if(rightEdge + margin >= descLeftEdge){
+        descLabel->bounds.x = rightEdge+margin;
+        descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
+    }
+    
+    //TODO: do we want bio text
+    descLabel->setText( "", forceOn );
+    
+    if( forceOn ){
+        animateOn( CLOUDS_HUD_LOWER_THIRD );
+    }
+    
 }
 
 void CloudsHUDController::populateProjectExample(const string& videoPath, const string& textLeft, const string& textRight, const string& textTop, bool forceOn) {
@@ -584,8 +664,6 @@ void CloudsHUDController::update(){
         videoPlayer.update();
     }
 	
-    ///////////////JG Barbican Disable HOME
-//    home.hudScale = scaleAmt;
     
     home.interactiveBounds.x = home.bounds.x * scaleAmt + scaleOffset.x;
 	home.interactiveBounds.y = home.bounds.y * scaleAmt + scaleOffset.y;

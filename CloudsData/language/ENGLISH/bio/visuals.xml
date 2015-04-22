@@ -1,0 +1,769 @@
+<visuals>
+	<!-- TODO: figure out how to deal with these -->
+	<system id="2DVideo" enabled="false">
+		<creator>
+		</creator>
+		<name>
+		</name>
+	</system>
+
+	<!-- -->
+	<system id="3DModelLoader" enabled="false">
+		<creator>
+		</creator>
+		<name>
+		</name>
+	</system>
+
+	<!-- -->
+	<system id="Astrolabe" enabled="true">
+		<creator>
+			Lars Berg
+		</creator>
+		<name>
+			Astrolabe
+		</name>
+	</system>
+
+	<!-- -->
+	<system id="Automata" enabled="true">
+		<creator>
+			Patricio Gonzalez Vivo &amp; Elie Zananiri
+		</creator>
+		<name>
+			Cellular Automota
+		</name>
+	</system>
+
+	<!-- -->
+	<system id="BallDroppings" enabled="true">
+		<creator>
+			Josh Nimoy
+		</creator>
+		<name>
+			Ball Droppings
+		</name>
+	</system>
+
+	<!-- -->
+	<system id="Balloons" enabled="true">
+		<creator>
+			Lars Berg
+		</creator>
+		<name>
+			Balloons
+		</name>
+	</system>
+
+	<!-- -->
+	<system id="CandyMountains" enabled="false">
+		<creator>
+			Jason Levine
+		</creator>
+		<name>
+			Candy Mountains
+		</name>
+	</system>	
+
+	<!-- -->
+	<system id="Chromogram" enabled="false">
+		<creator>
+			Jonathan Minard
+		</creator>
+		<name>
+			Inspired by the work of Fernanda Viegas
+		</name>
+	</system>	
+	<!-- -->
+	<system id="CirclePacking" enabled="true">
+		<creator>
+			Jonathan Minard, Gal Sassoon, James George
+		</creator>
+		<name>
+			Circle Packing
+		</name>
+	</system>	
+	<!-- -->
+	<system id="Circuit" enabled="true">
+		<creator>
+			James George
+		</creator>
+		<name>
+			Circuit
+		</name>
+	</system>	
+	<!-- -->
+	<system id="Cities" enabled="true">
+		<creator>
+			Patricio Gonzalez Vivo
+		</creator>
+		<name>
+			Cities
+		</name>
+	</system>	
+	<!-- -->
+	<system id="Code" enabled="true">
+		<creator>
+			James George
+		</creator>
+		<name>
+			Code Visualization
+		</name>
+	</system>	
+	<!-- -->
+	<system id="Colony" enabled="true">
+		<creator>
+			Omer Shapira
+		</creator>
+		<name>
+			Colony
+		</name>
+	</system>	
+	<!-- -->
+	<system id="Connectors" enabled="true">
+		<creator>
+			James George
+		</creator>
+		<name>
+			Connectors
+		</name>
+	</system>	
+	<!-- -->
+	<system id="Cosmic" enabled="true">
+		<creator>
+			Reza Ali
+		</creator>
+		<name>
+			Cosmic
+		</name>
+	</system>	
+	<!-- -->
+	<system id="CubeCraft" enabled="true">
+		<creator>
+			Lars Berg
+		</creator>
+		<name>
+			Cube Craft
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="DataCascade" enabled="true">
+		<creator>
+			James George
+		</creator>
+		<name>
+			Data Cascade
+		</name>
+	</system>	
+
+	<!-- -->
+	<system id="DrawnLine" enabled="true">
+		<creator>
+			Shantell Martin &amp; Zach Lieberman
+		</creator>
+		<name>
+			Drawn Line
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Empty" enabled="false">
+		<creator>
+
+		</creator>
+		<name>
+
+		</name>
+	</system>	
+	<!-- -->
+	<system id="ExampleBox2D" enabled="true">
+		<creator>
+			Gal Sassoon, Inspired by Philip Whitfield
+		</creator>
+		<name>
+			Box2D Engine by Erin Catto
+		</name>
+	</system>	
+	<!-- -->
+	<system id="ExampleMPMFluid" enabled="true">
+		<creator>
+			Grant Kot, port by Golan Levin
+		</creator>
+		<name>
+			Material Point Method Fluid Simulation
+		</name>
+	</system>	
+	<!-- -->
+	<system id="ExampleOpenSteer" enabled="true">
+		<creator>
+			Philip Whitfield &and; Jeff Crouse
+		</creator>
+		<name>
+			Craig Reynolds' Flocking Simulation "OpenSteer"
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="ExampleVectorMath" enabled="true">
+		<creator>
+			Jeff Crouse 
+		</creator>
+		<name>
+			Inspired by Zach Lieberman's "Rhonda"
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Fireworks" enabled="true">
+		<creator>
+			Lars Berg
+		</creator>
+		<name>
+			Fireworks
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Flocking" enabled="false">
+		<creator>
+		</creator>
+		<name>
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Flying" enabled="true">
+		<creator>
+			Neil Mendoza
+		</creator>
+		<name>
+			Flying
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="ForkingPaths" enabled="false">
+		<creator>
+		</creator>
+		<name>
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="GesturePaint" enabled="true">
+		<creator>
+			James George
+		</creator>
+		<name>
+			Gesture Paint
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Histogram" enabled="true">
+		<creator>
+			Jonathan Minard &amp; Elie Zananiri
+		</creator>
+		<name>
+			Histogram
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="LIA" enabled="true">
+		<creator>
+			LIA
+		</creator>
+		<name>
+			CLOUDS Commission
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="LSystem" enabled="true">
+		<creator>
+			Patricio Gonzalez Vivo
+		</creator>
+		<name>
+			L-System
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="LaplacianTunnel" enabled="true">
+		<creator>
+			Nervous System
+		</creator>
+		<name>
+			Laplacian Tunnel
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Mandala" enabled="true">
+		<creator>
+			Lars Berg
+		</creator>
+		<name>
+			Mandala
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="MarchingCubes" enabled="true">
+		<creator>
+			Lars Berg
+		</creator>
+		<name>
+			Marching Cubes
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="MazeGenerator" enabled="true">
+		<creator>
+			Gal Sassoon
+		</creator>
+		<name>
+			Maze Generator
+		</name>
+	</system>	
+    
+	<!-- -->
+	<system id="MazeGenerator2" enabled="true">
+		<creator>
+			Gal Sassoon
+		</creator>
+		<name>
+			Maze Generator
+		</name>
+	</system>    
+	
+	<!-- -->
+	<system id="Memory" enabled="true">
+		<creator>
+			Patricio Gonzalez Vivo
+		</creator>
+		<name>
+			Memory
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Neurons" enabled="true">
+		<creator>
+			JT Nimoy
+		</creator>
+		<name>
+			Neurons
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Ocean" enabled="true">
+		<creator>
+			James George
+		</creator>
+		<name>
+			Ocean
+		</name>
+	</system>	
+
+	<!-- -->
+	<system id="OpenP5Caustics" enabled="false">
+		<creator>
+		</creator>
+		<name>
+		</name>
+	</system>	
+	<!-- -->
+	<system id="OpenP5DrawingMachine10" enabled="false">
+		<creator>
+		</creator>
+		<name>
+		</name>
+	</system>	
+	<!-- -->
+	<system id="OpenP5Fifteen" enabled="false">
+		<creator>
+		</creator>
+		<name>
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5Hackpact" enabled="true">
+		<creator>
+			Martin Zumaya Hernandez, ported by James George
+		</creator>
+		<name>
+			Processing Hackpact Sketch
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5Machine" enabled="true">
+		<creator>
+			Matt Schroeter, port by Jonathan Minard
+		</creator>
+		<name>
+			Nebula Machine
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5NoiseSphere" enabled="true">
+		<creator>
+			David Pena, port by James George
+		</creator>
+		<name>
+			Noise Sphere
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5SeaOfLines" enabled="true">
+		<creator>
+			Jean-no, port by Elie Zananiri
+		</creator>
+		<name>
+			Sea of Lines
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5Sixteen" enabled="false">
+		<creator>
+		</creator>
+		<name>
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5SpaceJunk" enabled="true">
+		<creator>
+			Jörg Reuter, port by Jonathan Minard &amp; James George
+		</creator>
+		<name>
+			Space Junk
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5Spaghetti" enabled="true">
+		<creator>
+			Teodor Michalski, port by Jonathan Minard
+		</creator>
+		<name>
+			Spaghetti
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5SpinningSolids" enabled="true">
+		<creator>
+			openFrameworks Example, adapted by Jonathan Minard
+		</creator>
+		<name>
+			Spinning Solids
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5TextUniverse" enabled="true">
+		<creator>
+			Jonathan Minard &amp; Elie Zananiri
+		</creator>
+		<name>
+			Text Universe
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Orbit" enabled="true">
+		<creator>
+			Neil Mendoza
+		</creator>
+		<name>
+			Orbit
+		</name>
+	</system>	
+	<!-- -->
+	<system id="Oscillations" enabled="true">
+		<creator>
+			Omer Shapira
+		</creator>
+		<name>
+			Oscillations
+		</name>
+	</system>	
+	<!-- -->
+	<system id="Paradox" enabled="true">
+		<creator>
+			James George
+		</creator>
+		<name>
+			Paradox
+		</name>
+	</system>	
+	<!-- -->
+	<system id="Pages" enabled="true">
+		<creator>
+			Elie Zananiri
+		</creator>
+		<name>
+			Pages
+		</name>
+	</system>	
+	<!-- -->
+	<system id="PhotoGlitch" enabled="true">
+		<creator>
+			Surya Mattu
+		</creator>
+		<name>
+			Photo Glitch, inspired by Kyle McDonald's "Rose Heading"
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Process11" enabled="true">
+		<creator>
+			Casey Reas
+		</creator>
+		<name>
+			Process 11
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Process18" enabled="true">
+		<creator>
+			Casey Reas
+		</creator>
+		<name>
+			Process 18
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="RGBDVideo" enabled="true">
+		<creator>
+			James George
+		</creator>
+		<name>
+			RGBD Video Vignettes
+		</name>
+	</system>	
+    
+	<!-- -->
+	<system id="RandomDigits2" enabled="true">
+		<creator>
+			Jonathan Minard &amp; Gal Sassoon
+		</creator>
+		<name>
+			Random Digits
+		</name>
+	</system>    
+	
+	<!-- -->
+	<system id="Replicator" enabled="true">
+		<creator>
+			Satoru Higa
+		</creator>
+		<name>
+			Replicator
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Ripples" enabled="true">
+		<creator>
+			Elie Zananiri
+		</creator>
+		<name>
+			Ripples
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Rulez" enabled="true">
+		<creator>
+			Neil Mendoza
+		</creator>
+		<name>
+			Rulez
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Satoruhiga" enabled="true">
+		<creator>
+			Satoru Higa
+		</creator>
+		<name>
+			Replicator
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Scrape" enabled="false">
+		<creator>
+			Elie Zananiri
+		</creator>
+		<name>
+			Scrape
+		</name>
+	</system>	
+    
+   	<!-- -->
+	<system id="Schlabberbox" enabled="true">
+		<creator>
+			Philip Whitfield
+		</creator>
+		<name>
+			Schlabberbox
+		</name>
+	</system> 
+	
+	<!-- -->
+	<system id="Swim" enabled="true">
+		<creator>
+			Neil Mendoza
+		</creator>
+		<name>
+			Swim
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Terrain" enabled="true">
+		<creator>
+			Patricio Gonzalez Vivo &amp; Mike Allison
+		</creator>
+		<name>
+			Reaction Diffusion Terrain
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="ThingsInTheDark" enabled="false">
+		<creator>
+			Karolina Sobecka
+		</creator>
+		<name>
+			Things in the Dark
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="TunnelDrawing" enabled="true">
+		<creator>
+			James George
+		</creator>
+		<name>
+			Tunnel Drawing
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Twitter" enabled="true">
+		<creator>
+			Surya Mattu &amp; Jonathan Minard
+		</creator>
+		<name>
+			CLOUDS Network Twitter Visualization
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="VectorFlow" enabled="true">
+		<creator>
+			James George
+		</creator>
+		<name>
+			Vector Flow
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="VerletForm" enabled="true">
+		<creator>
+			Marius Watz
+		</creator>
+		<name>
+			Verlet Form
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Vision" enabled="true">
+		<creator>
+			Surya Mattu
+		</creator>
+		<name>
+			Computer Vision
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Voro" enabled="true">
+		<creator>
+			Patricio Gonzalez Vivo
+		</creator>
+		<name>
+			Voro
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="WebHistory" enabled="true">
+		<creator>
+			Elie Zananiri
+		</creator>
+		<name>
+			Web History
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="World" enabled="true">
+		<creator>
+			Patricio Gonzalez Vivo
+		</creator>
+		<name>
+			World
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="WormHole" enabled="true">
+		<creator>
+			Lars Berg, Jonathan Minard, Bradley G Munkowitz
+		</creator>
+		<name>
+			Wormhole
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="Xstatic" enabled="true">
+		<creator>
+			Jonathan Minard
+		</creator>
+		<name>
+			XStatic
+		</name>
+	</system>	
+	
+	<!-- -->
+	<system id="YellowTail" enabled="true">
+		<creator>
+			Golan Levin
+		</creator>
+		<name>
+			YellowTail
+		</name>
+	</system>	
+
+</visuals>

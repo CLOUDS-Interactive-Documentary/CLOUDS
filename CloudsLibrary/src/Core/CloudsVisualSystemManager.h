@@ -12,6 +12,8 @@
 #include "CloudsVisualSystemPreset.h"
 #include <set>
 
+
+
 class CloudsVisualSystemManager {
   public:
 	CloudsVisualSystemManager();
@@ -23,7 +25,6 @@ class CloudsVisualSystemManager {
     static void DeallocateSystems();
     ///VSF
     
-	void populateVisualSystems();
     void populateEnabledSystemIndeces();
 	CloudsVisualSystemPreset getRandomVisualSystem();
 	CloudsVisualSystemPreset& getPresetWithID(const string& presetID);
@@ -73,37 +74,34 @@ class CloudsVisualSystemManager {
     void loadCachedDataForSystems();
 	set<string> getAllKeywords();	
     CloudsVisualSystemPreset getRandomEnabledPreset();
-//  	void exportStandalonePresets();
     
   protected:
 
 	CloudsVisualSystemPreset dummyPreset;
-//    vector<CloudsVisualSystemPreset> getPresetsForSystem(string systemName);
     vector<int> getPresetIndicesForSystem(const string& systemName);
-//	vector< ofPtr<CloudsVisualSystem> > systems;
-//	map<string, ofPtr<CloudsVisualSystem> > nameToVisualSystem;
-
     vector<int> enabledPresetsIndex;
 	
     int indexForPreset(const string& presetID);
     
 	//preset ID to list of clip link names
-	map<string, vector<string> > linkedClips;
-    map<string, vector<string> > suppressedClips;
-	map<string, vector<string> > keywords;
+	map< string, vector<string> > linkedClips;
+    map< string, vector<string> > suppressedClips;
+	map< string, vector<string> > keywords;
 	
+    map< string, CloudsVisualSystemCredit> visualSystemCredits;
+    
 	//computed after linkedClips is populated
 	void updateClipPresetLinks();
 	map<string, vector<string> > clipToPresetLinks;
 	
 	string getKeywordFilePath();
+    string getCreditsFilePath();
 
 	void addDefaultPresetForSystem(const string& systemName);
-	
+    
+    void parseVisualSystemCredits();
 
 	bool allSystemsPopulated;
-	//this instantiates and registers all the visual systems, called once at setup
-//	void registerVisualSystem(ofPtr<CloudsVisualSystem> system);
 	float lastBackupTime;
 	float backupTimeInterval;
 

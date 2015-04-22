@@ -71,7 +71,6 @@ void CloudsHUDHomeButton::update(){
     bIsHovering = hit;
     
     if( bIsHovering ){
-        cout << "hovering!" << endl;
         float elapsed = ofGetElapsedTimef() - hoverStartTime;
         float elapsedFrames = targetFps * elapsed;
         playhead = elapsedFrames;
@@ -99,7 +98,6 @@ void CloudsHUDHomeButton::update(){
                 hoverStartTime = ofGetElapsedTimef();
             }
         }
-        
         
 //        playhead = (int)elapsedFrames;
 //        
