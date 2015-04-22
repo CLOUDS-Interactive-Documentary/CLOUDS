@@ -1335,6 +1335,36 @@
 		2E8074591820B7EC00A003A0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8074571820B7D500A003A0 /* AVFoundation.framework */; };
 		2E80745F1820B8B600A003A0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		64CDB66E194500EC00C56A13 /* ofxBinaryMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */; };
+		64D023F11AE6C4670008D018 /* CloudsVHXRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */; };
+		64D024451AE6C7B40008D018 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */; };
+		64D024461AE6C7B40008D018 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */; };
+		64D024471AE6C7B40008D018 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */; };
+		64D024481AE6C7B40008D018 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */; };
+		64D0244D1AE6C7CB0008D018 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D0244C1AE6C7CB0008D018 /* libcurl.dylib */; };
+		64D025211AE6D6560008D018 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024A91AE6D6560008D018 /* json_internalarray.inl */; };
+		64D025221AE6D6560008D018 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024A91AE6D6560008D018 /* json_internalarray.inl */; };
+		64D025231AE6D6560008D018 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AA1AE6D6560008D018 /* json_internalmap.inl */; };
+		64D025241AE6D6560008D018 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AA1AE6D6560008D018 /* json_internalmap.inl */; };
+		64D025251AE6D6560008D018 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AB1AE6D6560008D018 /* json_reader.cpp */; };
+		64D025261AE6D6560008D018 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AB1AE6D6560008D018 /* json_reader.cpp */; };
+		64D025271AE6D6560008D018 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AB1AE6D6560008D018 /* json_reader.cpp */; };
+		64D025281AE6D6560008D018 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AB1AE6D6560008D018 /* json_reader.cpp */; };
+		64D025291AE6D6560008D018 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AD1AE6D6560008D018 /* json_value.cpp */; };
+		64D0252A1AE6D6560008D018 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AD1AE6D6560008D018 /* json_value.cpp */; };
+		64D0252B1AE6D6560008D018 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AD1AE6D6560008D018 /* json_value.cpp */; };
+		64D0252C1AE6D6560008D018 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AD1AE6D6560008D018 /* json_value.cpp */; };
+		64D0252D1AE6D6560008D018 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AE1AE6D6560008D018 /* json_valueiterator.inl */; };
+		64D0252E1AE6D6560008D018 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AE1AE6D6560008D018 /* json_valueiterator.inl */; };
+		64D0252F1AE6D6560008D018 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AF1AE6D6560008D018 /* json_writer.cpp */; };
+		64D025301AE6D6560008D018 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AF1AE6D6560008D018 /* json_writer.cpp */; };
+		64D025311AE6D6560008D018 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AF1AE6D6560008D018 /* json_writer.cpp */; };
+		64D025321AE6D6560008D018 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AF1AE6D6560008D018 /* json_writer.cpp */; };
+		64D025331AE6D6560008D018 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 64D024B01AE6D6560008D018 /* sconscript */; };
+		64D025341AE6D6560008D018 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 64D024B01AE6D6560008D018 /* sconscript */; };
+		64D025391AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
+		64D0253A1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
+		64D0253B1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
+		64D0253C1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C15DCFD91AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
 		C15DCFDA1AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
@@ -2743,6 +2773,30 @@
 		2E80745D1820B8AB00A003A0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBinaryMesh.cpp; sourceTree = "<group>"; };
 		64CDB66A194500EC00C56A13 /* ofxBinaryMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBinaryMesh.h; sourceTree = "<group>"; };
+		64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVHXRequest.cpp; sourceTree = "<group>"; };
+		64D023F01AE6C4670008D018 /* CloudsVHXRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVHXRequest.h; sourceTree = "<group>"; };
+		64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSSL.cpp; sourceTree = "<group>"; };
+		64D0241C1AE6C7B40008D018 /* ofxSSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSSL.h; sourceTree = "<group>"; };
+		64D0244C1AE6C7CB0008D018 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
+		64D0249F1AE6D6560008D018 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
+		64D024A01AE6D6560008D018 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		64D024A11AE6D6560008D018 /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = features.h; sourceTree = "<group>"; };
+		64D024A21AE6D6560008D018 /* forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forwards.h; sourceTree = "<group>"; };
+		64D024A31AE6D6560008D018 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		64D024A41AE6D6560008D018 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		64D024A51AE6D6560008D018 /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
+		64D024A61AE6D6560008D018 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		64D024A81AE6D6560008D018 /* json_batchallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_batchallocator.h; sourceTree = "<group>"; };
+		64D024A91AE6D6560008D018 /* json_internalarray.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalarray.inl; sourceTree = "<group>"; };
+		64D024AA1AE6D6560008D018 /* json_internalmap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalmap.inl; sourceTree = "<group>"; };
+		64D024AB1AE6D6560008D018 /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_reader.cpp; sourceTree = "<group>"; };
+		64D024AC1AE6D6560008D018 /* json_tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_tool.h; sourceTree = "<group>"; };
+		64D024AD1AE6D6560008D018 /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_value.cpp; sourceTree = "<group>"; };
+		64D024AE1AE6D6560008D018 /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_valueiterator.inl; sourceTree = "<group>"; };
+		64D024AF1AE6D6560008D018 /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_writer.cpp; sourceTree = "<group>"; };
+		64D024B01AE6D6560008D018 /* sconscript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sconscript; sourceTree = "<group>"; };
+		64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
+		64D024B41AE6D6560008D018 /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C15DCF881AB7956C007D1F44 /* Composition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Composition.h; sourceTree = "<group>"; };
 		C15DCF891AB7956C007D1F44 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -4509,6 +4563,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D0244D1AE6C7CB0008D018 /* libcurl.dylib in Frameworks */,
 				C15DCFEA1AB79689007D1F44 /* OpenAL.framework in Frameworks */,
 				E755D70619440E3000AA81C1 /* QuartzCore.framework in Frameworks */,
 				E755D702194405C500AA81C1 /* libz.dylib in Frameworks */,
@@ -4727,6 +4782,99 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		64D023F21AE6C7B30008D018 /* ofxSSL */ = {
+			isa = PBXGroup;
+			children = (
+				64D0241A1AE6C7B40008D018 /* src */,
+			);
+			name = ofxSSL;
+			path = ../../../addons/ofxSSL;
+			sourceTree = "<group>";
+		};
+		64D0241A1AE6C7B40008D018 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */,
+				64D0241C1AE6C7B40008D018 /* ofxSSL.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		64D0244E1AE6D6550008D018 /* ofxJSON */ = {
+			isa = PBXGroup;
+			children = (
+				64D0249B1AE6D6560008D018 /* libs */,
+				64D024B21AE6D6560008D018 /* src */,
+			);
+			name = ofxJSON;
+			path = ../../../addons/ofxJSON;
+			sourceTree = "<group>";
+		};
+		64D0249B1AE6D6560008D018 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				64D0249C1AE6D6560008D018 /* jsoncpp */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		64D0249C1AE6D6560008D018 /* jsoncpp */ = {
+			isa = PBXGroup;
+			children = (
+				64D0249D1AE6D6560008D018 /* include */,
+				64D024A71AE6D6560008D018 /* src */,
+			);
+			path = jsoncpp;
+			sourceTree = "<group>";
+		};
+		64D0249D1AE6D6560008D018 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				64D0249E1AE6D6560008D018 /* json */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		64D0249E1AE6D6560008D018 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				64D0249F1AE6D6560008D018 /* autolink.h */,
+				64D024A01AE6D6560008D018 /* config.h */,
+				64D024A11AE6D6560008D018 /* features.h */,
+				64D024A21AE6D6560008D018 /* forwards.h */,
+				64D024A31AE6D6560008D018 /* json.h */,
+				64D024A41AE6D6560008D018 /* reader.h */,
+				64D024A51AE6D6560008D018 /* value.h */,
+				64D024A61AE6D6560008D018 /* writer.h */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		64D024A71AE6D6560008D018 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64D024A81AE6D6560008D018 /* json_batchallocator.h */,
+				64D024A91AE6D6560008D018 /* json_internalarray.inl */,
+				64D024AA1AE6D6560008D018 /* json_internalmap.inl */,
+				64D024AB1AE6D6560008D018 /* json_reader.cpp */,
+				64D024AC1AE6D6560008D018 /* json_tool.h */,
+				64D024AD1AE6D6560008D018 /* json_value.cpp */,
+				64D024AE1AE6D6560008D018 /* json_valueiterator.inl */,
+				64D024AF1AE6D6560008D018 /* json_writer.cpp */,
+				64D024B01AE6D6560008D018 /* sconscript */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		64D024B21AE6D6560008D018 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */,
+				64D024B41AE6D6560008D018 /* ofxJSONElement.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -4746,6 +4894,7 @@
 				E7D82AEF18BF0A5200C1EB93 /* ofxGameCamera */,
 				E7D828BA18BEBE6D00C1EB93 /* ofxGenerative */,
 				E7D82BA418BF0C4100C1EB93 /* ofxGpuParticles */,
+				64D0244E1AE6D6550008D018 /* ofxJSON */,
 				E73DA357189F1CDD006C9E4E /* ofxMarchingCubes */,
 				E7D82B2818BF0AC100C1EB93 /* ofxMPMFluid */,
 				E73DA3A2189F1CDE006C9E4E /* ofxMSACore */,
@@ -4764,6 +4913,7 @@
 				E73DA0B4189F1CD3006C9E4E /* ofxSimpleSurface */,
 				E73DA0CC189F1CD4006C9E4E /* ofxSimpleSpline */,
 				E73DA817189F3610006C9E4E /* ofxSQLite */,
+				64D023F21AE6C7B30008D018 /* ofxSSL */,
 				E73DA837189F3611006C9E4E /* ofxSubtitles */,
 				E7D828A318BEBE5500C1EB93 /* ofxTextInputField */,
 				E73DA2EC189F1CDB006C9E4E /* ofxTextWriter */,
@@ -4881,6 +5031,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				64D0244C1AE6C7CB0008D018 /* libcurl.dylib */,
 				C15DCFE91AB79689007D1F44 /* OpenAL.framework */,
 				033BCA411AAA562900BC1FEC /* CLOUDS.icns */,
 				E73DA0B2189F1C56006C9E4E /* CLOUDS.plist */,
@@ -6814,6 +6965,8 @@
 				E7D822B018BEBD6E00C1EB93 /* CloudsSpeaker.h */,
 				E7D822B118BEBD6E00C1EB93 /* CloudsStoryEngine.cpp */,
 				E7D822B218BEBD6E00C1EB93 /* CloudsStoryEngine.h */,
+				64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */,
+				64D023F01AE6C4670008D018 /* CloudsVHXRequest.h */,
 				E7D822B518BEBD6E00C1EB93 /* CloudsVisualSystemPreset.cpp */,
 				E7D822B618BEBD6E00C1EB93 /* CloudsVisualSystemPreset.h */,
 			);
@@ -9662,6 +9815,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D025341AE6D6560008D018 /* sconscript in Resources */,
+				64D0252E1AE6D6560008D018 /* json_valueiterator.inl in Resources */,
+				64D025221AE6D6560008D018 /* json_internalarray.inl in Resources */,
+				64D025241AE6D6560008D018 /* json_internalmap.inl in Resources */,
 				03F0DFDD1AAA581E00204E00 /* CLOUDS.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9670,6 +9827,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D025331AE6D6560008D018 /* sconscript in Resources */,
+				64D0252D1AE6D6560008D018 /* json_valueiterator.inl in Resources */,
+				64D025211AE6D6560008D018 /* json_internalarray.inl in Resources */,
+				64D025231AE6D6560008D018 /* json_internalmap.inl in Resources */,
 				03F0DFDF1AAA586900204E00 /* CLOUDS.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9747,6 +9908,7 @@
 				038032461948167700AFD40C /* ParamManager.cpp in Sources */,
 				038032471948167700AFD40C /* ParticleConnector.cpp in Sources */,
 				038032491948167700AFD40C /* Walker.cpp in Sources */,
+				64D025281AE6D6560008D018 /* json_reader.cpp in Sources */,
 				0380324A1948167700AFD40C /* del_impl.cpp in Sources */,
 				0380324B1948167700AFD40C /* TubeAction.cpp in Sources */,
 				0380324C1948167700AFD40C /* gCell.cpp in Sources */,
@@ -9848,6 +10010,7 @@
 				038032A91948167700AFD40C /* ofxBox2dJoint.cpp in Sources */,
 				038032AA1948167700AFD40C /* CloudsVisualSystemExampleVectorMath.cpp in Sources */,
 				038032AB1948167700AFD40C /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
+				64D0253C1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */,
 				038032AC1948167700AFD40C /* ofxTLBangs.cpp in Sources */,
 				038032AD1948167700AFD40C /* b2CollideCircle.cpp in Sources */,
 				038032AE1948167700AFD40C /* ofxAssimpModelLoader.cpp in Sources */,
@@ -10143,6 +10306,7 @@
 				038033D21948167700AFD40C /* MazeCell.cpp in Sources */,
 				038033D31948167700AFD40C /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */,
 				038033D41948167700AFD40C /* SineWave.cpp in Sources */,
+				64D024481AE6C7B40008D018 /* ofxSSL.cpp in Sources */,
 				038033D51948167700AFD40C /* CloudsVisualSystemFireworks.cpp in Sources */,
 				038033D61948167700AFD40C /* b2Collision.cpp in Sources */,
 				038033D71948167700AFD40C /* ofxSimpleSurface.cpp in Sources */,
@@ -10176,6 +10340,7 @@
 				038033F21948167700AFD40C /* PathPoint.cpp in Sources */,
 				038033F31948167700AFD40C /* CloudsVisualSystemColony.cpp in Sources */,
 				038033F41948167700AFD40C /* ofxTLImageSequence.cpp in Sources */,
+				64D0252C1AE6D6560008D018 /* json_value.cpp in Sources */,
 				038033F51948167700AFD40C /* CloudsVisualSystemRulez.cpp in Sources */,
 				038033F61948167700AFD40C /* ofxUIRangeSlider.cpp in Sources */,
 				038033F71948167700AFD40C /* PointAction.cpp in Sources */,
@@ -10183,6 +10348,7 @@
 				038033F91948167700AFD40C /* ofxUIMinimalSlider.cpp in Sources */,
 				038033FA1948167700AFD40C /* ParamManager2.cpp in Sources */,
 				038033FB1948167700AFD40C /* ofxUIMultiImageToggle.cpp in Sources */,
+				64D025321AE6D6560008D018 /* json_writer.cpp in Sources */,
 				038033FC1948167700AFD40C /* CubeAction.cpp in Sources */,
 				038033FD1948167700AFD40C /* ofxBox2dBaseShape.cpp in Sources */,
 				038033FE1948167700AFD40C /* Branch.cpp in Sources */,
@@ -10341,6 +10507,7 @@
 				03A0F4B01947A0850071CF4B /* ParamManager.cpp in Sources */,
 				03A0F4B11947A0850071CF4B /* ParticleConnector.cpp in Sources */,
 				03A0F4B31947A0850071CF4B /* Walker.cpp in Sources */,
+				64D025271AE6D6560008D018 /* json_reader.cpp in Sources */,
 				03A0F4B41947A0850071CF4B /* del_impl.cpp in Sources */,
 				03A0F4B51947A0850071CF4B /* TubeAction.cpp in Sources */,
 				03A0F4B61947A0850071CF4B /* gCell.cpp in Sources */,
@@ -10442,6 +10609,7 @@
 				03A0F5131947A0850071CF4B /* ofxBox2dJoint.cpp in Sources */,
 				03A0F5141947A0850071CF4B /* CloudsVisualSystemExampleVectorMath.cpp in Sources */,
 				03A0F5151947A0850071CF4B /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
+				64D0253B1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */,
 				03A0F5161947A0850071CF4B /* ofxTLBangs.cpp in Sources */,
 				03A0F5171947A0850071CF4B /* b2CollideCircle.cpp in Sources */,
 				03A0F5181947A0850071CF4B /* ofxAssimpModelLoader.cpp in Sources */,
@@ -10737,6 +10905,7 @@
 				03A0F63C1947A0850071CF4B /* MazeCell.cpp in Sources */,
 				03A0F63D1947A0850071CF4B /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */,
 				03A0F63E1947A0850071CF4B /* SineWave.cpp in Sources */,
+				64D024471AE6C7B40008D018 /* ofxSSL.cpp in Sources */,
 				03A0F63F1947A0850071CF4B /* CloudsVisualSystemFireworks.cpp in Sources */,
 				03A0F6401947A0850071CF4B /* b2Collision.cpp in Sources */,
 				03A0F6411947A0850071CF4B /* ofxSimpleSurface.cpp in Sources */,
@@ -10770,6 +10939,7 @@
 				03A0F65C1947A0850071CF4B /* PathPoint.cpp in Sources */,
 				03A0F65D1947A0850071CF4B /* CloudsVisualSystemColony.cpp in Sources */,
 				03A0F65E1947A0850071CF4B /* ofxTLImageSequence.cpp in Sources */,
+				64D0252B1AE6D6560008D018 /* json_value.cpp in Sources */,
 				03A0F65F1947A0850071CF4B /* CloudsVisualSystemRulez.cpp in Sources */,
 				03A0F6601947A0850071CF4B /* ofxUIRangeSlider.cpp in Sources */,
 				03A0F6611947A0850071CF4B /* PointAction.cpp in Sources */,
@@ -10777,6 +10947,7 @@
 				03A0F6631947A0850071CF4B /* ofxUIMinimalSlider.cpp in Sources */,
 				03A0F6641947A0850071CF4B /* ParamManager2.cpp in Sources */,
 				03A0F6651947A0850071CF4B /* ofxUIMultiImageToggle.cpp in Sources */,
+				64D025311AE6D6560008D018 /* json_writer.cpp in Sources */,
 				03A0F6661947A0850071CF4B /* CubeAction.cpp in Sources */,
 				03A0F6671947A0850071CF4B /* ofxBox2dBaseShape.cpp in Sources */,
 				03A0F6681947A0850071CF4B /* Branch.cpp in Sources */,
@@ -10989,6 +11160,7 @@
 				E7D8289C18BEBE3A00C1EB93 /* ofxTween.cpp in Sources */,
 				E7D828B618BEBE5500C1EB93 /* ofxTextInputField.cpp in Sources */,
 				E73DA8DF189F3622006C9E4E /* RenderPass.cpp in Sources */,
+				64D0252F1AE6D6560008D018 /* json_writer.cpp in Sources */,
 				E7D8253A18BEBD7000C1EB93 /* CloudsInputOculus.cpp in Sources */,
 				E73DA707189F1CEA006C9E4E /* b2RevoluteJoint.cpp in Sources */,
 				E7D8260018BEBD7000C1EB93 /* MeshUtils.cpp in Sources */,
@@ -11026,6 +11198,7 @@
 				E7D8262218BEBD7000C1EB93 /* wSatellite.cpp in Sources */,
 				E7D82AC218BF099000C1EB93 /* ControlPrinter.cpp in Sources */,
 				E7D825B118BEBD7000C1EB93 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
+				64D023F11AE6C4670008D018 /* CloudsVHXRequest.cpp in Sources */,
 				E7D82AE118BF099000C1EB93 /* TableLookupOsc.cpp in Sources */,
 				03E28DCD1A9D9389005AA181 /* ofxLocalization.cpp in Sources */,
 				E7D8255718BEBD7000C1EB93 /* CloudsSoundFuncs.cpp in Sources */,
@@ -11251,6 +11424,7 @@
 				E73DA8D7189F3622006C9E4E /* GodRaysPass.cpp in Sources */,
 				E7D8259D18BEBD7000C1EB93 /* CloudsVisualSystemGesturePaint.cpp in Sources */,
 				E7D8262A18BEBD7000C1EB93 /* GestureRenderer.cpp in Sources */,
+				64D025251AE6D6560008D018 /* json_reader.cpp in Sources */,
 				E73DABFB189F3645006C9E4E /* RunningBackground.cpp in Sources */,
 				E7D827FF18BEBDCF00C1EB93 /* ofxTLSwitches.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
@@ -11307,6 +11481,7 @@
 				E73DA700189F1CEA006C9E4E /* b2FrictionJoint.cpp in Sources */,
 				E7D825E618BEBD7000C1EB93 /* IcosphereAction.cpp in Sources */,
 				E755D6151943F2AF00AA81C1 /* ofxUIValuePlotter.cpp in Sources */,
+				64D025291AE6D6560008D018 /* json_value.cpp in Sources */,
 				E73DA70E189F1CEA006C9E4E /* ofxBox2dPolygon.cpp in Sources */,
 				E7D825D918BEBD7000C1EB93 /* CloudsVisualSystemPhotoGlitch.cpp in Sources */,
 				E755D5F71943F2AF00AA81C1 /* ofxUIFPS.cpp in Sources */,
@@ -11385,6 +11560,7 @@
 				E7D825FF18BEBD7000C1EB93 /* CircularFormula.cpp in Sources */,
 				E73DA856189F3611006C9E4E /* ofxSQLiteDelete.cpp in Sources */,
 				E7D8258C18BEBD7000C1EB93 /* CloudsVisualSystemCubeCraft.cpp in Sources */,
+				64D025391AE6D6560008D018 /* ofxJSONElement.cpp in Sources */,
 				E7D821A918BEBCC300C1EB93 /* ofxTimecode.cpp in Sources */,
 				E755D6001943F2AF00AA81C1 /* ofxUILabelToggle.cpp in Sources */,
 				E73DA719189F1CEA006C9E4E /* ofxTextWriter.cpp in Sources */,
@@ -11432,6 +11608,7 @@
 				E7D82AAA18BF099000C1EB93 /* ofxTonicSynth.cpp in Sources */,
 				E73DA6F8189F1CEA006C9E4E /* b2WorldCallbacks.cpp in Sources */,
 				E7D8263218BEBD7000C1EB93 /* ColorPalette.cpp in Sources */,
+				64D024451AE6C7B40008D018 /* ofxSSL.cpp in Sources */,
 				E73DA8D8189F3622006C9E4E /* HorizontalTiltShifPass.cpp in Sources */,
 				E7D8289718BEBE3A00C1EB93 /* ofxEasingLinear.cpp in Sources */,
 				E7D825C518BEBD7000C1EB93 /* fftOctaveAnalyzer.cpp in Sources */,
@@ -11716,6 +11893,7 @@
 				E7DDC17E194437EC00E61D75 /* CloudsFCPParser.cpp in Sources */,
 				E7DDC17F194437EC00E61D75 /* VoroParticle.cpp in Sources */,
 				E7DDC180194437EC00E61D75 /* ofxEasingQuad.cpp in Sources */,
+				64D025261AE6D6560008D018 /* json_reader.cpp in Sources */,
 				E7DDC181194437EC00E61D75 /* ofxUIDragableLabelButton.cpp in Sources */,
 				E7DDC183194437EC00E61D75 /* ofxTLColorTrack.cpp in Sources */,
 				E7DDC184194437EC00E61D75 /* ofxTLCurves.cpp in Sources */,
@@ -11886,6 +12064,7 @@
 				E7DDC225194437EC00E61D75 /* CloudsVisualSystemAutomata.cpp in Sources */,
 				E7DDC226194437EC00E61D75 /* ControlPulse.cpp in Sources */,
 				E7DDC227194437EC00E61D75 /* DSPUtils.cpp in Sources */,
+				64D0253A1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */,
 				E7DDC228194437EC00E61D75 /* ofxUITextInput.cpp in Sources */,
 				E7DDC229194437EC00E61D75 /* ofxTLAudioTrack.cpp in Sources */,
 				E7DDC22A194437EC00E61D75 /* wParticle.cpp in Sources */,
@@ -11976,6 +12155,7 @@
 				E7DDC280194437EC00E61D75 /* ZoomBlurPass.cpp in Sources */,
 				E7DDC281194437EC00E61D75 /* StereoDelay.cpp in Sources */,
 				E7DDC282194437EC00E61D75 /* ofxOpenSteerPlugin.cpp in Sources */,
+				64D0252A1AE6D6560008D018 /* json_value.cpp in Sources */,
 				E7DDC283194437EC00E61D75 /* c_loops.cpp in Sources */,
 				E7DDC284194437EC00E61D75 /* ofxTimeline.cpp in Sources */,
 				E7DDC285194437EC00E61D75 /* CircularFormula.cpp in Sources */,
@@ -12047,6 +12227,7 @@
 				E7DDC2C8194437EC00E61D75 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
 				E7DDC2C9194437EC00E61D75 /* TUOrbital.cpp in Sources */,
 				E7DDC2CA194437EC00E61D75 /* Pathway.cpp in Sources */,
+				64D024461AE6C7B40008D018 /* ofxSSL.cpp in Sources */,
 				E7DDC2CB194437EC00E61D75 /* FxaaPass.cpp in Sources */,
 				E7DDC2CC194437EC00E61D75 /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E7DDC2CD194437EC00E61D75 /* b2DistanceJoint.cpp in Sources */,
@@ -12101,6 +12282,7 @@
 				E7DDC2FD194437EC00E61D75 /* ofxOcean.cpp in Sources */,
 				E7DDC2FE194437EC00E61D75 /* CloudsSVGMesh.cpp in Sources */,
 				E7DDC2FF194437EC00E61D75 /* SphereAction.cpp in Sources */,
+				64D025301AE6D6560008D018 /* json_writer.cpp in Sources */,
 				E7DDC300194437EC00E61D75 /* CloudsVisualSystemYellowTail.cpp in Sources */,
 				E7DDC301194437EC00E61D75 /* ControlDbToLinear.cpp in Sources */,
 				E7DDC302194437EC00E61D75 /* fdog.cpp in Sources */,
@@ -12245,6 +12427,7 @@
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
+					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -12364,6 +12547,7 @@
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
+					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -12482,6 +12666,7 @@
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
+					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -12600,6 +12785,7 @@
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
+					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -13039,6 +13225,7 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug",
 					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release,
+					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -13158,6 +13345,7 @@
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release",
 					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release,
+					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
