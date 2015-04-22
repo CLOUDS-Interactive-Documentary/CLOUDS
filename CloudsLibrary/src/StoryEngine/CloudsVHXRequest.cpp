@@ -74,11 +74,11 @@ void CloudsVHXRequest::threadedFunction()
             args.result = element["_links"]["source"]["href"].asString();
         }
         else {
-            ofLogError("CloudsVHXRequest::threadedFunction") << "Unexpected JSON format " << response;
+            ofLogError("CloudsVHXRequest::threadedFunction") << "Unexpected JSON format:" << endl << response;
         }
     }
     else {
-        ofLogError("CloudsVHXRequest::threadedFunction") << "Unable to parse JSON " << response;
+        ofLogError("CloudsVHXRequest::threadedFunction") << "Unable to parse JSON:" << endl << response;
     }
     
     ssl.clear();
