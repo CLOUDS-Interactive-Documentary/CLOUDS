@@ -149,7 +149,7 @@ class CloudsHUDController {
 	void	updateReset();
 
 //	bool	bDrawHome;
-    bool    bIsHudOpen;
+//    bool    bIsHudOpen;
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     bool	bActJustStarted;

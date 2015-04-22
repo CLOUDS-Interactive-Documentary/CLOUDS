@@ -28,41 +28,35 @@ class CloudsHUDHomeButton {
 	
 	void draw();
 	
-	bool isActive();
     bool hitTest( float xPos, float yPos );
     bool hitTest( ofPoint mousePos );
     
-    bool wasHomeOpened(){
-        if( bWasOpened ){
-            bWasOpened = false;
-            return true;
-        }
-        return false;
-    }
+    void activate();
+
+    bool wasActivated();
     
     ofRectangle bounds;
     ofRectangle interactiveBounds;
-//    float hudScale;
 
   protected:
     void rollover();
     void rollout();
     
-    vector<ofTexture*>  loadFramesDir( string dirPath );
-    
-    ofVec2f     buttonSize;
+    void loadFramesDir( string dirPath, vector<ofPixels>& pixels );
     
     float   playhead;
     float   targetFps;
-    float   lastFrameTime;
     
     CloudsHUDHomeState  currentState;
     
+    bool    bShowIdle;
     bool    bIsHovering;
-    bool    bWasOpened;
+    bool    bWasActivated;
     
 	float maxHoverTime;
 	float hoverStartTime;
+    ofImage currentImage;
+    //map<CloudsHUDHomeState, vector<ofTexture*> >    rolloverTextures;
+    map<CloudsHUDHomeState, vector<ofPixels> >    rolloverPix;
     
-    map<CloudsHUDHomeState, vector<ofTexture*> >    rolloverTextures;
 };
