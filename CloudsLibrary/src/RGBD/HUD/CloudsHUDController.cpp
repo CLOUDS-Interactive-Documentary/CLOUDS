@@ -20,7 +20,7 @@ CloudsHUDController::CloudsHUDController(){
     bIsHudOpen = false;
     bSkipAVideoFrame = false;
     bDrawHud = true;
-    bDrawHome = true;
+//    bDrawHome = true;
 
 
     bActJustStarted = false;
@@ -92,10 +92,16 @@ void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 	bDrawHud = true;
 	bActJustStarted = true;
 	animateOn( CLOUDS_HUD_QUESTION );
+    animateOn( CLOUDS_HUD_HOME );
+ 
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
-	animateOff( CLOUDS_HUD_FULL );
+    //Keep the home button on
+	animateOff( CLOUDS_HUD_LOWER_THIRD );
+ 	animateOff( CLOUDS_HUD_QUESTION );
+	animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
+	animateOff( CLOUDS_HUD_PAUSE );
 }
 
 void CloudsHUDController::clearQuestion(){
@@ -113,6 +119,7 @@ void CloudsHUDController::clipEnded(){
 void CloudsHUDController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
 //	bDrawHud = false;
     respondToSystem(args.preset);
+
     bVisualSystemDisplayed = true;
 }
 
@@ -178,7 +185,7 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
 
 void CloudsHUDController::respondToSystem(const CloudsVisualSystemPreset& preset){
     
-    populateVisualSystem(preset.credits.creator, preset.credits.name, false );
+    populateVisualSystem(preset.credits.creator, preset.credits.name, true );
 
     animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
 
@@ -736,13 +743,13 @@ bool CloudsHUDController::isResetHit(){
 	return b;
 }
 
-void CloudsHUDController::setHomeEnabled(bool enable){
-	bDrawHome = enable;
-}
-
-bool CloudsHUDController::isHomeEnabled(){
-    return bDrawHome;
-}
+//void CloudsHUDController::setHomeEnabled(bool enable){
+//	bDrawHome = enable;
+//}
+//
+//bool CloudsHUDController::isHomeEnabled(){
+//    return bDrawHome;
+//}
 
 void CloudsHUDController::setHudEnabled(bool enable){
 	bDrawHud = enable;
@@ -784,7 +791,7 @@ void CloudsHUDController::draw(){
         (it->second)->draw();
     }
     
-	if (bDrawHome && hudOpenMap[CLOUDS_HUD_HOME]){
+	if (hudOpenMap[CLOUDS_HUD_HOME]){
 		home.draw();
     }
 
@@ -923,7 +930,7 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, of
     drawLayer(layer);
     
     // Draw the home button if we're on the right layer.
-    if (layer == CLOUDS_HUD_LOWER_THIRD && bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) {
+    if (layer == CLOUDS_HUD_LOWER_THIRD && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) {
         home.draw();
     }
     
@@ -995,46 +1002,7 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         videoPlayer.close();
     }
 
-	
-    
-    // EZ: CODE BELOW IS FOR INSTANT OUT (TEMP!!!)
-	// JG: BARBICAN PUTTIN BACK IN
-	/*
-    for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
-        if ((layer & it->first) != 0) {
-            hudOpenMap[it->first] = false;
-            for (int i = 0; i < it->second.size(); i++) {
-                it->second[i]->close(false);
-            }
-        }
-    }
-    
-    // instant out text, this is sub-optimal
-    if( layer == CLOUDS_HUD_FULL ){
-        for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
-            (it->second)->instantOut();
-        }
-    }
-    else if( (layer & CLOUDS_HUD_LOWER_THIRD) != 0 ){
-        hudLabelMap["BylineFirstNameTextBox_1_"]->instantOut();
-        hudLabelMap["BylineLastNameTextBox"]->instantOut();
-        hudLabelMap["BylineTopicTextBoxTop"]->instantOut();
-        hudLabelMap["BylineTopicTextBoxBottom"]->instantOut();
-        hudLabelMap["BylineBodyCopyTextBox"]->instantOut();
-    }
-    else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
-        hudLabelMap["ProjectExampleTextboxLeft"]->instantOut();
-        hudLabelMap["ProjectExampleTextboxRight"]->instantOut();
-        hudLabelMap["ProjectExampleTextBoxTop"]->instantOut();
-    }
-    else if( (layer & CLOUDS_HUD_MAP) != 0 ){
-    
-    }
-    else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
-        hudLabelMap["QuestionTextBox"]->instantOut();
-    }
-*/    
-    // EZ: CODE BELOW IS FOR ANIMATING, LET'S JUST INSTANT OUT FOR NOW
+	 
     for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
         if ((layer & it->first) != 0) {
             hudOpenMap[it->first] = false;

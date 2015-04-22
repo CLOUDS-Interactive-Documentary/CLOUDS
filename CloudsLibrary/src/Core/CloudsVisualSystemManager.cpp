@@ -532,7 +532,7 @@ void CloudsVisualSystemManager::loadPresets(){
 
 void CloudsVisualSystemManager::parseVisualSystemCredits(){
 	ofxXmlSettings creditsXml;
-	string creditsFile = getKeywordFilePath();
+	string creditsFile = getCreditsFilePath();
 	if(!creditsXml.loadFile( creditsFile )){
 		ofLogError("CloudsVisualSystemManager::parseVisualSystemCredits") << "Unable to load credits file " << creditsFile;
 		return;
@@ -542,7 +542,7 @@ void CloudsVisualSystemManager::parseVisualSystemCredits(){
     creditsXml.pushTag("visuals");
     int numSystems = creditsXml.getNumTags("system");
     for(int i = 0; i < numSystems; i++){
-        string systemId = creditsXml.getAttribute("system", "id", "");
+        string systemId = creditsXml.getAttribute("system", "id", "", i);
         creditsXml.pushTag("system", i);
         visualSystemCredits[systemId].creator = creditsXml.getValue("creator", "");
         visualSystemCredits[systemId].name    = creditsXml.getValue("name", "");

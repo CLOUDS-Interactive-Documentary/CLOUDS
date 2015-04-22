@@ -50,8 +50,8 @@ class CloudsHUDController {
     void draw3D(ofCamera* cam, ofVec2f offset = ofVec2f::zero());
 #endif
 
-	void setHomeEnabled(bool enable);
-    bool isHomeEnabled();
+//	void setHomeEnabled(bool enable);
+//    bool isHomeEnabled();
     
     void setHudEnabled(bool enable);
     bool isHudEnabled();
@@ -148,7 +148,7 @@ class CloudsHUDController {
 
 	void	updateReset();
 
-	bool	bDrawHome;
+//	bool	bDrawHome;
     bool    bIsHudOpen;
     bool    bDrawHud;
     bool    bSkipAVideoFrame;

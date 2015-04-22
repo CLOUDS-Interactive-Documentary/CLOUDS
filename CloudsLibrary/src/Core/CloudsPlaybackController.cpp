@@ -385,7 +385,7 @@ void CloudsPlaybackController::showIntro(){
     oscSender.reset();
     
     hud.clearQuestion();
-	hud.setHomeEnabled(false);
+//	hud.setHomeEnabled(false);
 	hud.animateOff();
 }
 
@@ -721,11 +721,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	}
 	//////////////BAD IDLE
 
+    hud.update();
 
 	if(!showingIntro && !showingClusterMap && !showingInterlude){
 		
-		hud.update();
-
 		if(currentVisualSystem == rgbdVisualSystem){
 			if( (hud.isResetHit() || rgbdVisualSystem->isResetSelected() ) && !userReset){
 				userReset = true;
@@ -791,7 +790,7 @@ void CloudsPlaybackController::updateTransition(){
                     rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
 				}
                 
-                hud.animateOff(CLOUDS_HUD_FULL);
+                //hud.animateOff(CLOUDS_HUD_FULL);
                 break;
                 
             case TRANSITION_INTRO_OUT:
@@ -884,7 +883,7 @@ void CloudsPlaybackController::updateTransition(){
                     hideVisualSystem();
                 }
 				
-				hud.setHomeEnabled(false);
+				//hud.animateOn(CLOUDS_HUD_HOME);
                 
                 showInterlude();
                 
@@ -1377,7 +1376,8 @@ void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
-	
+
+
 	if(!returnToIntro && !pauseAct){
 		shouldClearAct = true;
 		
@@ -1674,7 +1674,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 	
 	rgbdVisualSystem->playSystem();
 	
-	hud.setHomeEnabled(false);
+	//hud.setHomeEnabled(false);
 	
 	currentVisualSystem = rgbdVisualSystem;
 }
