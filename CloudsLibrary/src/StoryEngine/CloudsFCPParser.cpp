@@ -1282,10 +1282,15 @@ void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
         
 
 		allClips[i]->combinedVideoPath = directory + "/" + allClips[i]->getCombinedMovieFile();
-		allClips[i]->combinedCalibrationXMLPath = directory + "/" + allClips[i]->getCombinedCalibrationXML();
+		allClips[i]->combinedCalibrationXMLPath = GetCloudsDataPath() + "clipxml/" + allClips[i]->getCombinedCalibrationXML();
+#ifdef VHX_MEDIA
+        allClips[i]->hasMediaAsset = allClips[i]->voiceOverAudio ||
+                                     (allClips[i]->vhxId.size() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
+#else
 		allClips[i]->hasMediaAsset = allClips[i]->voiceOverAudio ||
                                     (ofFile(allClips[i]->combinedVideoPath).exists() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
         //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
+#endif
         
 		if(allClips[i]->hasMediaAsset){
 			hasMediaAssetIndeces.push_back(i);

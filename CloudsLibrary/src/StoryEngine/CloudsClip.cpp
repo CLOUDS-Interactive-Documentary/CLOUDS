@@ -567,6 +567,13 @@ void CloudsClip::fetchVhxSourceUrl(){
     // If the VHX url is already set and is recent...
     if (vhxSourceVideoUrl.size() && (ofGetElapsedTimeMillis() - vhxTimestamp) < CloudsVHXUrlTimeLimit) {
         // ...just re-use it.
+        hasMediaAsset = true;
+        return;
+    }
+    
+    if (vhxId.empty()) {
+        // No ID :(
+        hasMediaAsset = false;
         return;
     }
     
@@ -584,6 +591,7 @@ void CloudsClip::vhxRequestComplete(CloudsVHXEventArgs& args){
         vhxRequest = NULL;
     }
     if (args.success) {
+        hasMediaAsset = true;
         vhxSourceVideoUrl = args.result;
         vhxTimestamp = ofGetElapsedTimeMillis();
         ofLogVerbose("CloudsClip::vhxRequestComplete") << "Got source video URL " << vhxSourceVideoUrl;
