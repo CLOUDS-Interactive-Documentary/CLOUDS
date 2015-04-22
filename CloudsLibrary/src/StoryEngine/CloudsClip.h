@@ -24,6 +24,7 @@ class CloudsClip {
 	string fcpFileId;
     string sourceVideoFilePath;
 	
+    string vhxId;
 	ofVec3f networkPosition;
 	ofVec2f networkPosition2d; //populated by gephi graph
 

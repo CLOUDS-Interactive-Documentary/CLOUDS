@@ -25,6 +25,8 @@ CloudsClip::CloudsClip(){
 	networkPosition = ofVec3f(-1,-1,-1);
 	hasProjectExample = false;
     speakerVolume = 1.0;
+    
+    vhxId = "";
 }
 
 string CloudsClip::getLinkName(){
