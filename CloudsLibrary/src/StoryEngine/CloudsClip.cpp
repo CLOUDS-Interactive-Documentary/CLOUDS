@@ -26,7 +26,9 @@ CloudsClip::CloudsClip(){
 	hasProjectExample = false;
     speakerVolume = 1.0;
     
+    vhxRequest = NULL;
     vhxId = "";
+    sourceVideoVhxUrl = "";
 }
 
 string CloudsClip::getLinkName(){
@@ -557,3 +559,22 @@ string CloudsClip::getSceneFolder(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory(relinkFilePath(sourceVideoFilePath)));
 }
 
+void CloudsClip::fetchVhxSourceUrl(){
+    if (vhxRequest == NULL) {
+        vhxRequest = new CloudsVHXRequest();
+        ofAddListener(vhxRequest->completeEvent, this, &CloudsClip::vhxRequestComplete);
+    }
+    vhxRequest->fetchSourceUrl(vhxId);
+}
+
+void CloudsClip::vhxRequestComplete(CloudsVHXEventArgs& args){
+    if (vhxRequest) {
+        ofRemoveListener(vhxRequest->completeEvent, this, &CloudsClip::vhxRequestComplete);
+        delete vhxRequest;
+        vhxRequest = NULL;
+    }
+    if (args.success) {
+        sourceVideoVhxUrl = args.result;
+        ofLogVerbose("CloudsClip::vhxRequestComplete") << "Got source video URL " << sourceVideoVhxUrl;
+    }
+}

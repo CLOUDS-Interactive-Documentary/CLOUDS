@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 #include "CloudsProjectExample.h"
+#include "CloudsVHXRequest.h"
 
 class CloudsClip {
   public:
@@ -13,7 +14,7 @@ class CloudsClip {
 	string name;
     string person;
     string clip;
-
+    
 	string getSpeakerLastName();
 	string getSpeakerFirstName();
     string getSpeakerFullName();
@@ -24,7 +25,12 @@ class CloudsClip {
 	string fcpFileId;
     string sourceVideoFilePath;
 	
+    void fetchVhxSourceUrl();
+    void vhxRequestComplete(CloudsVHXEventArgs& args);
+    CloudsVHXRequest *vhxRequest;
     string vhxId;
+    string sourceVideoVhxUrl;
+
 	ofVec3f networkPosition;
 	ofVec2f networkPosition2d; //populated by gephi graph
 

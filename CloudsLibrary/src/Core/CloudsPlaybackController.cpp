@@ -394,6 +394,10 @@ void CloudsPlaybackController::loadCurrentAct(){
 	
 	currentPresetIndex = 0;
 	loadingAct = true;
+    
+    if(currentAct != NULL){
+        currentAct->fetchClipVhxUrls();
+    }
 }
 
 //--------------------------------------------------------------------
