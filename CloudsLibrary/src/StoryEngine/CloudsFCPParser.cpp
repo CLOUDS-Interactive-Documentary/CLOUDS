@@ -1288,7 +1288,7 @@ void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
                                      (allClips[i]->vhxId.size() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
 #else
 		allClips[i]->hasMediaAsset = allClips[i]->voiceOverAudio ||
-                                    (ofFile(allClips[i]->combinedVideoPath).exists() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
+                                     (ofFile(allClips[i]->combinedVideoPath).exists() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
         //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
 #endif
         
