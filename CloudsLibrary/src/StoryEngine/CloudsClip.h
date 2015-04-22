@@ -29,7 +29,8 @@ class CloudsClip {
     void vhxRequestComplete(CloudsVHXEventArgs& args);
     CloudsVHXRequest *vhxRequest;
     string vhxId;
-    string sourceVideoVhxUrl;
+    string vhxSourceVideoUrl;
+    unsigned long long vhxTimestamp;
 
 	ofVec3f networkPosition;
 	ofVec2f networkPosition2d; //populated by gephi graph

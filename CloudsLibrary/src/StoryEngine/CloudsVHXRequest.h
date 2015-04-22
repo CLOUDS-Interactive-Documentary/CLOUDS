@@ -11,6 +11,8 @@
 #include "ofMain.h"
 #include "ofxSSL.h"
 
+extern unsigned long long CloudsVHXUrlTimeLimit;
+
 class CloudsVHXEventArgs
     : ofEventArgs
 {

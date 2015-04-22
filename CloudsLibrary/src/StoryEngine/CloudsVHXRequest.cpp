@@ -12,6 +12,8 @@
 #include "CloudsGlobal.h"
 #include "CloudsClip.h"
 
+unsigned long long CloudsVHXUrlTimeLimit = 10 * 60 * 1000;  // 10 mins
+
 string CloudsVHXRequest::userpwd = "";
 
 CloudsVHXRequest::CloudsVHXRequest()

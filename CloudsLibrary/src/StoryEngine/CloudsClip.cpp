@@ -28,7 +28,8 @@ CloudsClip::CloudsClip(){
     
     vhxRequest = NULL;
     vhxId = "";
-    sourceVideoVhxUrl = "";
+    vhxSourceVideoUrl = "";
+    vhxTimestamp = 0;
 }
 
 string CloudsClip::getLinkName(){
@@ -560,6 +561,12 @@ string CloudsClip::getSceneFolder(){
 }
 
 void CloudsClip::fetchVhxSourceUrl(){
+    // If the VHX url is already set and is recent...
+    if (vhxSourceVideoUrl.size() && (ofGetElapsedTimeMillis() - vhxTimestamp) < CloudsVHXUrlTimeLimit) {
+        // ...just re-use it.
+        return;
+    }
+    
     if (vhxRequest == NULL) {
         vhxRequest = new CloudsVHXRequest();
         ofAddListener(vhxRequest->completeEvent, this, &CloudsClip::vhxRequestComplete);
@@ -574,7 +581,8 @@ void CloudsClip::vhxRequestComplete(CloudsVHXEventArgs& args){
         vhxRequest = NULL;
     }
     if (args.success) {
-        sourceVideoVhxUrl = args.result;
-        ofLogVerbose("CloudsClip::vhxRequestComplete") << "Got source video URL " << sourceVideoVhxUrl;
+        vhxSourceVideoUrl = args.result;
+        vhxTimestamp = ofGetElapsedTimeMillis();
+        ofLogVerbose("CloudsClip::vhxRequestComplete") << "Got source video URL " << vhxSourceVideoUrl;
     }
 }
