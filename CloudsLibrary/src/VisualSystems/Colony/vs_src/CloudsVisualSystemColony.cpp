@@ -1,5 +1,6 @@
+#include "ofxAudioDecoderTonic.h"
+
 #include "CloudsVisualSystemColony.h"
-#include "CloudsAudioUtils.h"
 
 using namespace Tonic;
 
@@ -503,7 +504,7 @@ Tonic::Generator CloudsVisualSystemColony::buildSynth()
     
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = CloudsAudioLoadMp3File(    strAbsPath);
+        samples[i] = ofxAudioDecoderTonic(strAbsPath);
     }
     
     

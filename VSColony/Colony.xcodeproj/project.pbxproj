@@ -198,7 +198,6 @@
 		642728541AE86A7400A13289 /* CloudsGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728531AE86A7400A13289 /* CloudsGlobal.cpp */; };
 		642728761AE87EF100A13289 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6427286E1AE87EF100A13289 /* audiodecoderbase.cpp */; };
 		642728771AE87EF100A13289 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6427286F1AE87EF100A13289 /* audiodecodercoreaudio.cpp */; };
-		6427287F1AE87F6700A13289 /* CloudsAudioUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6427287D1AE87F6700A13289 /* CloudsAudioUtils.cpp */; };
 		852D022C181DF3CC00436018 /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 852D0228181DF3CC00436018 /* CloudsVisualSystemColony.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -713,8 +712,7 @@
 		6427286E1AE87EF100A13289 /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
 		6427286F1AE87EF100A13289 /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
 		642728731AE87EF100A13289 /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
-		6427287D1AE87F6700A13289 /* CloudsAudioUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAudioUtils.cpp; sourceTree = "<group>"; };
-		6427287E1AE87F6700A13289 /* CloudsAudioUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAudioUtils.h; sourceTree = "<group>"; };
+		642728831AE9846300A13289 /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxAudioDecoderTonic.h; path = couples/ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
 		852D0228181DF3CC00436018 /* CloudsVisualSystemColony.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemColony.cpp; sourceTree = "<group>"; };
 		852D0229181DF3CC00436018 /* CloudsVisualSystemColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemColony.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -991,8 +989,6 @@
 			children = (
 				2AC995181874C3BA00492009 /* CloudsAudioEvents.cpp */,
 				2AC995191874C3BA00492009 /* CloudsAudioEvents.h */,
-				6427287D1AE87F6700A13289 /* CloudsAudioUtils.cpp */,
-				6427287E1AE87F6700A13289 /* CloudsAudioUtils.h */,
 				2AC9951A1874C3BA00492009 /* CloudsMixer.cpp */,
 				2AC9951B1874C3BA00492009 /* CloudsMixer.h */,
 				2AC995201874C3BA00492009 /* RTCMix */,
@@ -1719,6 +1715,7 @@
 		642728551AE87EF100A13289 /* ofxAudioDecoder */ = {
 			isa = PBXGroup;
 			children = (
+				642728811AE9841D00A13289 /* couples */,
 				642728651AE87EF100A13289 /* lib */,
 				642728721AE87EF100A13289 /* src */,
 			);
@@ -1770,6 +1767,14 @@
 				642728731AE87EF100A13289 /* ofxAudioDecoder.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		642728811AE9841D00A13289 /* couples */ = {
+			isa = PBXGroup;
+			children = (
+				642728831AE9846300A13289 /* ofxAudioDecoderTonic.h */,
+			);
+			name = couples;
 			sourceTree = "<group>";
 		};
 		852D01FD181DF3CC00436018 /* Colony */ = {
@@ -2211,7 +2216,6 @@
 				4695E35517529F8B003001E2 /* ofxTLKeyframes.cpp in Sources */,
 				642728411AE869F400A13289 /* ofxUISuperCanvas.cpp in Sources */,
 				642728541AE86A7400A13289 /* CloudsGlobal.cpp in Sources */,
-				6427287F1AE87F6700A13289 /* CloudsAudioUtils.cpp in Sources */,
 				642728291AE869F400A13289 /* ofxUIFPS.cpp in Sources */,
 				4695E35617529F8B003001E2 /* ofxTLLFO.cpp in Sources */,
 				2AC995311874C3BA00492009 /* lukeFuncs.cpp in Sources */,
