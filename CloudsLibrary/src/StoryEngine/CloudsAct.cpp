@@ -20,6 +20,7 @@ CloudsAct::CloudsAct(){
 	defaulPrerollDuration = 2.0;
     defaultAudioFade = 2.0;
 	incrementalQuesitonTime = 0.0;
+    paused = false;
 }
 
 CloudsAct::~CloudsAct(){
@@ -58,7 +59,6 @@ void CloudsAct::populateTime(){
     topicsTrack = timeline.addFlags("Topics");
     visualSystemsTrack = timeline.addFlags("Visual Systems");
 	
-//    vsGapsTrack = timeline.addFlags("VS Gap");
     clipsTrack = timeline.addFlags("Clips");
 	notesTrack = timeline.addFlags("Notes");
 	
@@ -322,6 +322,22 @@ void CloudsAct::populateTime(){
 	timeline.setCurrentPage(0);
 }
 
+
+void CloudsAct::pause(){
+    if(!paused){
+        paused = true;
+        timeline.stop();
+    }
+}
+
+void CloudsAct::unpause(){
+    if(paused){
+        paused = false;
+        timeline.play();
+    }
+    
+}
+
 bool CloudsAct::startsWithVisualSystem(){
     return visualSystems.size() > 0 && visualSystemItems[visualSystems[0].getID() ].startTime == 0;
 }
@@ -384,8 +400,10 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
 }
 
 void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
-	CloudsActEventArgs args(this);
-    ofNotifyEvent(events.actEnded, args);
+    if(!paused){
+        CloudsActEventArgs args(this);
+        ofNotifyEvent(events.actEnded, args);
+    }
 }
 
 float CloudsAct::getActDuration(){

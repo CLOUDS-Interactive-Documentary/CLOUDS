@@ -425,10 +425,10 @@ void CloudsRGBDVideoPlayer::stop(){
 void CloudsRGBDVideoPlayer::pause(){
     if(isPlaying()){
         if(playingVO){
-            currentVoiceoverPlayer->stop();
+            currentVoiceoverPlayer->setPaused(true);
         }
         else{
-            currentPlayer->stop();
+            currentPlayer->setPaused(true);
         }
         playerPaused = true;
     }
@@ -441,10 +441,10 @@ void CloudsRGBDVideoPlayer::pause(){
 void CloudsRGBDVideoPlayer::unpause(){
     if(playerPaused){
         if(playingVO){
-            currentVoiceoverPlayer->play();
+            currentVoiceoverPlayer->setPaused(false);
         }
         else{
-            currentPlayer->play();
+            currentPlayer->setPaused(false);
         }
     }
     playerPaused = false;

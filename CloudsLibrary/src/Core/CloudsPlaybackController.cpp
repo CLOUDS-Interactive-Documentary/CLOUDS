@@ -732,7 +732,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     if(hud.didPause()){
         if(currentAct != NULL){
-            currentAct->getTimeline().stop();
+            currentAct->pause();
         }
         if(currentVisualSystem != NULL){
             currentVisualSystem->getTimeline()->stop();
@@ -741,7 +741,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     }
     else if(hud.didUnpause()){
         if(currentAct != NULL){
-            currentAct->getTimeline().play();
+            currentAct->unpause();
         }
         if(currentVisualSystem != NULL){
             currentVisualSystem->getTimeline()->stop();

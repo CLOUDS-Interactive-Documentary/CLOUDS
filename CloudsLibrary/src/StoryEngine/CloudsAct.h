@@ -74,6 +74,10 @@ class CloudsAct{
 	
     void populateTime();
     void play();
+    
+    void pause();
+    void unpause();
+    
     void clear();
     
     vector<CloudsClip*>& getAllClips();
@@ -132,7 +136,7 @@ class CloudsAct{
 	
     ActItemType itemType;
     
-	
+	bool paused;
 	bool timelinePopulated;
     string currentTopic;
     CloudsStoryEvents events;
