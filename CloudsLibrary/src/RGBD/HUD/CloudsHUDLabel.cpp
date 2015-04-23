@@ -109,8 +109,10 @@ void CloudsHUDLabel::draw(){
 void CloudsHUDLabel::setText(const string& newText, bool forceOn){
     text = newText;
     
-    if(caps)
+    if(caps){
         text = ofToUpper(newText);
+    }
+    
     playhead = 0;
     
     if( text != "" ){
@@ -120,6 +122,7 @@ void CloudsHUDLabel::setText(const string& newText, bool forceOn){
             animateIn(true);
         }
     }
+ 
 }
 
 int CloudsHUDLabel::getRightEdge(){

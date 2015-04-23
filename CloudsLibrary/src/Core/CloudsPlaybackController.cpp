@@ -708,7 +708,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		if(badIdle && ofGetElapsedTimef() - badIdleStartTime > 20){
 			ofLogError("BAD IDLE") << "Started Bad ENDED BAD IDLE BY RETURNING TO INTRO";
 			badIdle = false;
-			returnToIntro = true;
+            ///JG: New HUD integration -- DISABLING BAD IDLE
+			//returnToIntro = true;
+            //////////////
 		}
 		else if(!badIdle){
 			ofLogError("BAD IDLE") << "Started Bad Idle";
@@ -721,8 +723,34 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	}
 	//////////////BAD IDLE
 
+    ////////// HUD UPDATE AND PAUSE
+    if(rgbdVisualSystem->getRGBDVideoPlayer().clipJustFinished()){
+        hud.clipEnded();
+    }
+    
     hud.update();
-
+    
+    if(hud.didPause()){
+        if(currentAct != NULL){
+            currentAct->getTimeline().stop();
+        }
+        if(currentVisualSystem != NULL){
+            currentVisualSystem->getTimeline()->stop();
+        }
+        rgbdVisualSystem->getRGBDVideoPlayer().pause();
+    }
+    else if(hud.didUnpause()){
+        if(currentAct != NULL){
+            currentAct->getTimeline().play();
+        }
+        if(currentVisualSystem != NULL){
+            currentVisualSystem->getTimeline()->stop();
+        }
+        rgbdVisualSystem->getRGBDVideoPlayer().unpause();
+    }
+    /////////////////// END HUD UPDATE
+    
+    
 	if(!showingIntro && !showingClusterMap && !showingInterlude){
 		
 		if(currentVisualSystem == rgbdVisualSystem){
@@ -1248,7 +1276,6 @@ void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string 
 #ifdef KINECT_INPUT
 //--------------------------------------------------------------------
 void CloudsPlaybackController::drawKinectFeedback(){
-    
     ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
     kinectInput->draw();
 }
@@ -1310,11 +1337,7 @@ void CloudsPlaybackController::drawRenderTarget(){
 		ofPopStyle();
 	}
     else{
-#ifdef CLOUDS_APP
 		ofBackground(0, 0, 0);
-#else
-        ofBackground(0, 0, 255);
-#endif
     }
 }
 
@@ -1334,8 +1357,6 @@ void CloudsPlaybackController::drawDebugOverlay(){
 	else{
 		currentAct->getTimeline().disableEvents();
 	}
-	
-
 	
 }
 
@@ -1358,14 +1379,11 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 		shouldLoadAct = true;
 		shouldPlayAct = false;
 	}
-	
-	cout << "***** ORDER OF OPERATIONS: ACT CREATED CONTROLLER " << args.act << endl;
 
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
-    cout << "***** ORDER OF OPERATIONS: ACT BEGAN CONTROLLER " << args.act << endl;
 	
 	resetInterludeVariables();
 	
@@ -1377,13 +1395,10 @@ void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 
-
 	if(!returnToIntro && !pauseAct){
 		shouldClearAct = true;
 		
-		cout << "ACT ENDED TRIGGERED" << endl;
 		if(!bQuestionAsked){
-			cout << "Transitioning to interlude/clustermap" << endl;
 			transitionController.transitionToInterlude(1.0,1.0);
 		}
 	}
@@ -1452,6 +1467,7 @@ void CloudsPlaybackController::questionProposed(CloudsQuestionEventArgs& args){
 	}
 }
 
+//--------------------------------------------------------------------
 void CloudsPlaybackController::questionSelected(CloudsQuestionEventArgs& args){
     
 }
@@ -1508,6 +1524,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip* clip){
     
+
 	numClipsPlayed++;
 	
 	cout << "**** CLIP BEGAN" << endl;

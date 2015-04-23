@@ -68,6 +68,10 @@ class CloudsHUDController {
     void calculateFontSizes();
     int getFontSizeForMesh( SVGMesh* textMesh );
 	
+    bool didPause();
+    bool didUnpause();    
+    bool isPaused();
+    
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void respondToClip(CloudsClip* clip);
@@ -148,13 +152,14 @@ class CloudsHUDController {
 
 	void	updateReset();
 
-//	bool	bDrawHome;
-//    bool    bIsHudOpen;
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     bool	bActJustStarted;
     bool    bLowerThirdCued;
     bool    bVisualSystemDisplayed;
+    bool    bJustPaused;
+    bool    bJustUnpaused;
+    
     float   cuedClipEndTime;
 	
     void drawLayer(CloudsHUDLayerSet layer);
@@ -189,9 +194,10 @@ class CloudsHUDController {
     ofVec2f scaleOffset;
     int margin;
     
-    ofRectangle             defaultBioBounds;
-    
-    CloudsSpeaker           speaker;
+    ofRectangle     defaultBioBounds;
+
+    CloudsClip*     currentClip;
+    CloudsSpeaker   currentSpeaker;
 };
 
 

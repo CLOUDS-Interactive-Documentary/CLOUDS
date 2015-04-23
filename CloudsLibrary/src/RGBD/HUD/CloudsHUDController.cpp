@@ -20,9 +20,9 @@ CloudsHUDController::CloudsHUDController(){
 
     bSkipAVideoFrame = false;
     bDrawHud = true;
-//    bDrawHome = true;
-
-
+    
+    bJustPaused = false;
+    bJustUnpaused = false;
     bActJustStarted = false;
 	cuedClipEndTime = 0;
     bVisualSystemDisplayed = false;
@@ -34,7 +34,7 @@ CloudsHUDController::CloudsHUDController(){
 	bResetIsClicked = false;
 
 	isPlaying = false;
-
+    
     scaleAmt = 1.0;
     margin = 40;
     
@@ -110,10 +110,12 @@ void CloudsHUDController::clearQuestion(){
 
 void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
 	respondToClip(args.chosenClip);
+    
 }
 
 void CloudsHUDController::clipEnded(){
     //TODO mark this speaker gone.
+    currentClip = NULL;
 }
 
 void CloudsHUDController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
@@ -126,6 +128,12 @@ void CloudsHUDController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
 void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 //	bDrawHud = true;
     bVisualSystemDisplayed = false;
+    if(currentClip != NULL){
+        respondToClip(currentClip);
+    }
+    else{
+        animateOff(CLOUDS_HUD_LOWER_THIRD);
+    }
 }
 
 void CloudsHUDController::questionProposed(CloudsQuestionEventArgs& args){
@@ -137,10 +145,7 @@ void CloudsHUDController::questionSelected(CloudsQuestionEventArgs& args){
 }
 
 void CloudsHUDController::topicChanged(CloudsTopicEventArgs& args){
-//	if(!bActJustStarted){
-//		animateOff( CLOUDS_HUD_QUESTION );
-//	}
-//	bActJustStarted = false;
+
 }
 
 void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
@@ -152,13 +157,13 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
 //	cout << "ID's on clip " << clip.name << " and fcp id? " << clip.fcpFileId << endl;
 //	cout << "Clip is " <<  clip.getLinkName() << endl;
 //	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
-	    
+    
 	//LOWER THIRD
     //update lower third, but only if the speaker has changed
-#ifndef OCULUS_RIFT
-    if(speaker.fcpID != CloudsSpeaker::speakers[ clip->person ].fcpID){
-        speaker = CloudsSpeaker::speakers[ clip->person ];
-        populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, false );
+
+//#ifndef OCULUS_RIFT
+//    if(currentSpeaker.fcpID != CloudsSpeaker::speakers[ clip->person ].fcpID){
+        currentSpeaker = CloudsSpeaker::speakers[ clip->person ];
         
         if (bVisualSystemDisplayed) {
             // cue up the lower third until the visual system is done
@@ -166,12 +171,13 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
             cuedClipEndTime = ofGetElapsedTimef() + clip->getDuration();
         }
         else {
+            populateLowerThird(currentSpeaker.firstName, currentSpeaker.lastName, currentSpeaker.location2, currentSpeaker.title, currentSpeaker.byline1, false );
             // display the lower third right away
             animateOn(CLOUDS_HUD_LOWER_THIRD);
         }
-    }
+//    }
     
-// PROJECT EXAMPLE
+    //PROJECT EXAMPLE
 	if(clip->hasProjectExample && clip->projectExample.exampleVideos.size() ){
 		CloudsProjectExample example = clip->projectExample;
         string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
@@ -180,7 +186,9 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
 	else{
         animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
     }
-#endif
+//#endif
+    currentClip = clip;
+ 
 }
 
 void CloudsHUDController::respondToSystem(const CloudsVisualSystemPreset& preset){
@@ -188,7 +196,6 @@ void CloudsHUDController::respondToSystem(const CloudsVisualSystemPreset& preset
     populateVisualSystem(preset.credits.creator, preset.credits.name, true );
 
     animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
-
 }
 
 void CloudsHUDController::questionHoverOn(const string& question,bool animate){
@@ -208,15 +215,6 @@ void CloudsHUDController::playCued(){
         bLowerThirdCued = false;
     }
 }
-
-//void CloudsHUDController::populateMap(const string& leftBox, const string& rightBox, bool forceOn){
-//    hudLabelMap["TopicTextBoxLeft"]->setText( leftBox, forceOn );
-//    hudLabelMap["TopicTextBoxRight"]->setText( rightBox, forceOn );
-//    
-//    if( forceOn ){
-//        animateOn( CLOUDS_HUD_MAP );
-//    }
-//}
 
 void CloudsHUDController::populateQuestion(const string& question, bool forceOn, bool animate){
     if(question == ""){
@@ -241,7 +239,7 @@ void CloudsHUDController::populateLowerThird(const string& firstName,
                                              const string& title,
                                              const string& location,
                                              const string& textbox,
-                                             bool forceOn)
+                                             bool  forceOn)
 {
     
     CloudsHUDLabel* firstNameLabel  = hudLabelMap["BylineFirstNameTextBox_1_"];
@@ -677,6 +675,8 @@ void CloudsHUDController::update(){
     home.update();
     if( home.wasActivated() ){
         if( !hudOpenMap[CLOUDS_HUD_PAUSE] ){
+            bJustPaused = true;
+            bJustUnpaused = false;
             animateOn( CLOUDS_HUD_PAUSE );
         }
         else{
@@ -684,6 +684,8 @@ void CloudsHUDController::update(){
             animateOff( CLOUDS_HUD_PAUSE );
             animateOff( CLOUDS_HUD_QUESTION );
             animateOff( CLOUDS_HUD_LOWER_THIRD );
+            bJustUnpaused = true;
+            bJustPaused = false;
         }
     }
     ///////////////////////////////
@@ -750,6 +752,22 @@ void CloudsHUDController::setHudEnabled(bool enable){
 
 bool CloudsHUDController::isHudEnabled(){
     return bDrawHud;
+}
+
+bool CloudsHUDController::isPaused(){
+    return hudOpenMap[CLOUDS_HUD_PAUSE];
+}
+
+bool CloudsHUDController::didPause(){
+    bool ret = bJustPaused;
+    bJustPaused = false;
+    return ret;
+}
+
+bool CloudsHUDController::didUnpause(){
+    bool ret = bJustUnpaused;
+    bJustUnpaused = false;
+    return ret;
 }
 
 void CloudsHUDController::draw(){
@@ -985,7 +1003,6 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
 }
 
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
-	//bIsHudOpen = false;
     
     if (isPlaying) {
 		isPlaying = false;
@@ -1015,9 +1032,7 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
         hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
         hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
-//#ifndef OCULUS_RIFT
         hudLabelMap["ResetButtonTextBox"]->animateOut();
-//#endif
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
         hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();
