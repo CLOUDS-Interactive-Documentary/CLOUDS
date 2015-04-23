@@ -1498,6 +1498,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 	}
 	else{
 #ifdef VHX_MEDIA
+        cout << "PREROLL LOADING URL " << clip->vhxSourceVideoUrl << endl;
         clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip->vhxSourceVideoUrl,
                                                                                     clip->combinedCalibrationXMLPath,
                                                                                     subtitlesPath,

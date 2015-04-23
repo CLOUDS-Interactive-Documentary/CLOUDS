@@ -1,4 +1,5 @@
 #include "CloudsVisualSystemColony.h"
+#include "CloudsAudioUtils.h"
 
 using namespace Tonic;
 
@@ -10,9 +11,9 @@ string CloudsVisualSystemColony::getSystemName()
 void CloudsVisualSystemColony::selfSetup()
 {
     
-    tonicSamples.push_back(TonicSample("granular_water2.aif"));
-    tonicSamples.push_back(TonicSample("granular_water2_slow.aif"));
-    tonicSamples.push_back(TonicSample("Grains1_slow_low.aif"));
+    tonicSamples.push_back(TonicSample("granular_water2.mp3"));
+    tonicSamples.push_back(TonicSample("granular_water2_slow.mp3"));
+    tonicSamples.push_back(TonicSample("Grains1_slow_low.mp3"));
     
     ofDirectory textureDir(getVisualSystemDataPath() + "textures");
     textureDir.listDir();
@@ -502,7 +503,7 @@ Tonic::Generator CloudsVisualSystemColony::buildSynth()
     
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = loadAudioFile(strAbsPath);
+        samples[i] = CloudsAudioLoadMp3File(    strAbsPath);
     }
     
     
