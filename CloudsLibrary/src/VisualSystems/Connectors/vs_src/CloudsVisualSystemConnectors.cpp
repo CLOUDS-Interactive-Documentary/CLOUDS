@@ -2,6 +2,7 @@
 //  CloudsVisualSystemConnectors.cpp
 //
 
+#include "ofxAudioDecoderTonic.h"
 #include "CloudsVisualSystemConnectors.h"
 #include "CloudsRGBDVideoPlayer.h"
 
@@ -91,7 +92,7 @@ void CloudsVisualSystemConnectors::selfSetup(){
     
     
     gain = 0;
-    tonicSamples.push_back(TonicSample("WindChimes1.aif"));    
+    tonicSamples.push_back(TonicSample("WindChimes1.mp3"));
 	generator.setup();
 
 //	generator.setBounds(ofVec3f(-500,-500,-500), ofVec3f(500,500,500), 5);
@@ -215,7 +216,7 @@ Tonic::Generator CloudsVisualSystemConnectors::buildSynth()
     Tonic::SampleTable samples[1];
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = Tonic::loadAudioFile(strAbsPath);
+        samples[i] = ofxAudioDecoderTonic(strAbsPath);
     }
     
     Tonic::Generator sampleGen1 = Tonic::BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
