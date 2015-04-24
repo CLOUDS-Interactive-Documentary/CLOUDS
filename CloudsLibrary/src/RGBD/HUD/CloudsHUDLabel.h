@@ -27,7 +27,10 @@ class CloudsHUDLabel {
     ofxFTGLSimpleLayout *layout;
     ofxFTGLFont *font;
     ofRectangle bounds;
-    
+
+    ofRectangle baseInteractiveBounds;
+    ofRectangle scaledInteractiveBounds;
+
     void animateIn(bool force = false);
     void animateOut(bool force = false);
     
@@ -35,9 +38,15 @@ class CloudsHUDLabel {
     void instantOut();
     
     bool isVisible();
+    bool isClicked();
     bool clearTextOnAnimateOut;
     
     bool caps;
+    
+    
+	void mouseMoved(ofVec2f mouse);
+	void mousePressed(ofVec2f mouse);
+	void mouseReleased(ofVec2f mouse);
     
   protected:
 	string  text;
@@ -54,5 +63,10 @@ class CloudsHUDLabel {
     
     bool bIsAnimatingIn, bIsAnimatingOut;
     bool bIsVisible;
+    
+    bool bIsHovered;
+    bool bIsPressed;
+    bool bIsClicked;
+
 
 };

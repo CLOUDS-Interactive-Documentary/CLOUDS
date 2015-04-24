@@ -1102,8 +1102,8 @@
 				E703CD1C185D419700547738 /* CloudsHUDLayer.cpp */,
 				E703CD21185D6B3100547738 /* CloudsHUDHomeButton.cpp */,
 				E703CD22185D6B3200547738 /* CloudsHUDHomeButton.h */,
-				E703CD18185D187800547738 /* CloudsHUDController.cpp */,
 				E703CD19185D187800547738 /* CloudsHUDController.h */,
+				E703CD18185D187800547738 /* CloudsHUDController.cpp */,
 			);
 			name = HUD;
 			path = RGBD/HUD;
@@ -2058,7 +2058,10 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
-				GCC_PREPROCESSOR_DEFINITIONS = "CLOUDS_NO_VS=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"CLOUDS_NO_VS=1",
+					"MOUSE_INPUT=1",
+				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -2173,7 +2176,10 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
-				GCC_PREPROCESSOR_DEFINITIONS = "CLOUDS_NO_VS=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"CLOUDS_NO_VS=1",
+					"MOUSE_INPUT=1",
+				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (

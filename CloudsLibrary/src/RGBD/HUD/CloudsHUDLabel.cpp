@@ -15,12 +15,16 @@ CloudsHUDLabel::CloudsHUDLabel(){
     bIsAnimatingIn = false;
     bIsAnimatingOut = false;
     bIsVisible = false;
+    bIsClicked = false;
+    
+    bIsHovered = false;
+    bIsPressed = false;
+    
     clearTextOnAnimateOut = true;
     caps = true;
     
     animationClamp.min = 0.3;
     animationClamp.max = 3.0;
-    
     fadeOutSpeed = 0.3;
     
     beginTime = 0.;
@@ -42,8 +46,6 @@ void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
     bounds = textBounds;
     type = "FONT";
 }
-
-
 
 void CloudsHUDLabel::draw(){
     
@@ -135,6 +137,22 @@ int CloudsHUDLabel::getRightEdge(){
 	return 0;
 }
 
+void CloudsHUDLabel::mouseMoved(ofVec2f mouse){
+
+	bIsPressed = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
+}
+
+void CloudsHUDLabel::mousePressed(ofVec2f mouse){
+
+	bIsPressed = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
+}
+
+void CloudsHUDLabel::mouseReleased(ofVec2f mouse){
+    
+    bIsClicked = bIsPressed && scaledInteractiveBounds.inside(mouse.x,mouse.y);
+    
+}
+
 string CloudsHUDLabel::getText(){
 	return text;
 }
@@ -177,4 +195,10 @@ void CloudsHUDLabel::instantOut() {
 
 bool CloudsHUDLabel::isVisible() {
     return bIsVisible;
+}
+
+bool CloudsHUDLabel::isClicked(){
+    bool ret = bIsClicked;
+    bIsClicked = false;
+    return ret;
 }

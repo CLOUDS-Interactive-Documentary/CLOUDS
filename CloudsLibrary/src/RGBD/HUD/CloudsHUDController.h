@@ -50,9 +50,6 @@ class CloudsHUDController {
     void draw3D(ofCamera* cam, ofVec2f offset = ofVec2f::zero());
 #endif
 
-//	void setHomeEnabled(bool enable);
-//    bool isHomeEnabled();
-    
     void setHudEnabled(bool enable);
     bool isHudEnabled();
 	
@@ -79,11 +76,13 @@ class CloudsHUDController {
     
     void playCued();
 	
-	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
+	//map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
+	map<CloudsHUDLayerSet, CloudsHUDLayer* > layers;
+    
 	vector<CloudsHUDLayer*> allLayers;
 	
-	void saveGuiSettings();
-	void toggleGuis();
+//	void saveGuiSettings();
+//	void toggleGuis();
 	
 	void questionHoverOn(const string& question, bool animate = true);
 	void questionHoverOff();
@@ -139,6 +138,9 @@ class CloudsHUDController {
                           bool forceOn=false,
                           bool animate = true);
     
+    void pause();
+    void unpause();
+    
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
 
@@ -151,7 +153,7 @@ class CloudsHUDController {
 	float	resetHoverChangedTime;
 
 	void	updateReset();
-
+    
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     bool	bActJustStarted;
@@ -185,7 +187,11 @@ class CloudsHUDController {
                             *TopicTextBoxRight,
                             *ProjectExampleTextboxLeft,
                             *ProjectExampleTextboxRight,
-                            *ProjectExampleTextBoxTop;
+                            *ProjectExampleTextBoxTop,
+                            *ExploreTextBox,
+                            *SeeMoreTextBox,
+                            *NextButtonTextBox;
+
 	
     map<CloudsHUDLayerSet,bool>		hudOpenMap;
     map<string, CloudsHUDLabel*>    hudLabelMap;
@@ -194,6 +200,7 @@ class CloudsHUDController {
     ofVec2f scaleOffset;
     int margin;
     
+    ofRectangle     getScaledRectangle(const ofRectangle& rect);
     ofRectangle     defaultBioBounds;
 
     CloudsClip*     currentClip;

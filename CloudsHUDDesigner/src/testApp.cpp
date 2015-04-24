@@ -43,7 +43,7 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::exit(){
-	hud.saveGuiSettings();
+//	hud.saveGuiSettings();
 }
 
 //--------------------------------------------------------------
@@ -94,6 +94,7 @@ void testApp::keyPressed(int key){
     
     if(key == '5'){
 		hud.animateOn(CLOUDS_HUD_PAUSE);
+        //hud.pause();
 	}
 
     if(key == '9'){
@@ -101,7 +102,7 @@ void testApp::keyPressed(int key){
     }
     
     if(key == 'h'){
-		hud.toggleGuis();
+//		hud.toggleGuis();
     }
 	
 }
