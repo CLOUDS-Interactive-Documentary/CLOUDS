@@ -1,0 +1,8 @@
+machine : 2.1 NVIDIA-8.26.28 310.40.55b01 : NVIDIA Corporation : NVIDIA GeForce GT 650M OpenGL Engine : display monitor
+visual system,preset,loadtime,fps
+World,SpaceJunkOC,1.32797,26.9135
+Replicator,Replicator,0.240662,27.9084
+Voro,crystal1,0.220268,57.0068
+OpenP5SpaceJunk,DynamicLighting,0.192039,57.4354
+Xstatic,BigPong3_yellow,0.215225,57.9761
+CubeCraft,Tetris,0.423927,57.6753

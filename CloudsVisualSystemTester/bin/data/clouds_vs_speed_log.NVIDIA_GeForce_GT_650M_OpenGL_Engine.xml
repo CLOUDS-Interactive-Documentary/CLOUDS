@@ -1,0 +1,42 @@
+<machine>
+    <version>2.1 NVIDIA-8.26.28 310.40.55b01</version>
+    <vendor>NVIDIA Corporation</vendor>
+    <card>NVIDIA GeForce GT 650M OpenGL Engine</card>
+    <display>monitor</display>
+</machine>
+<visual_system name="World">
+    <preset name="SpaceJunkOC">
+        <loadtime>1.327974916</loadtime>
+        <fps>26.913503647</fps>
+    </preset>
+</visual_system>
+<visual_system name="Replicator">
+    <preset name="Replicator">
+        <loadtime>0.240661621</loadtime>
+        <fps>27.908441544</fps>
+    </preset>
+</visual_system>
+<visual_system name="Voro">
+    <preset name="crystal1">
+        <loadtime>0.220268250</loadtime>
+        <fps>57.006843567</fps>
+    </preset>
+</visual_system>
+<visual_system name="OpenP5SpaceJunk">
+    <preset name="DynamicLighting">
+        <loadtime>0.192039490</loadtime>
+        <fps>57.435382843</fps>
+    </preset>
+</visual_system>
+<visual_system name="Xstatic">
+    <preset name="BigPong3_yellow">
+        <loadtime>0.215225220</loadtime>
+        <fps>57.976116180</fps>
+    </preset>
+</visual_system>
+<visual_system name="CubeCraft">
+    <preset name="Tetris">
+        <loadtime>0.423927307</loadtime>
+        <fps>57.675258636</fps>
+    </preset>
+</visual_system>
