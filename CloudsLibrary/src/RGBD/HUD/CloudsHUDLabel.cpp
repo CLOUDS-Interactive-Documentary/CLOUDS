@@ -223,6 +223,10 @@ bool CloudsHUDLabel::isVisible() {
     return bIsVisible;
 }
 
+bool CloudsHUDLabel::isHovered() {
+    return bIsHovered;
+}
+
 bool CloudsHUDLabel::isClicked(){
     bool ret = bIsClicked;
     bIsClicked = false;

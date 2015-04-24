@@ -28,10 +28,10 @@ CloudsHUDController::CloudsHUDController(){
     bVisualSystemDisplayed = false;
     bLowerThirdCued = false;
 
-	resetHoverChangedTime = 0;
-	bResetIsHovered = false;
-	bResetIsPressed = false;
-	bResetIsClicked = false;
+//	resetHoverChangedTime = 0;
+//	bResetIsHovered = false;
+//	bResetIsPressed = false;
+//	bResetIsClicked = false;
 
 	isPlaying = false;
     
@@ -494,10 +494,6 @@ void CloudsHUDController::calculateFontSizes(){
     }
     tempFontList.clear();
     
-    hudLabelMap["ResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonBacking")->bounds;
-    hudLabelMap["ExploreTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreBackingHover")->bounds;
-    hudLabelMap["SeeMoreTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("SeeMoreBackingHover")->bounds;
-    hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("NextButtonBacking")->bounds;
 }
 
 ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer(const string& layerName, const string& fontPath) {
@@ -677,10 +673,6 @@ void CloudsHUDController::update(){
         videoPlayer.update();
     }
 	
-    hudLabelMap["ResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ResetButtonTextBox"]->baseInteractiveBounds);
-    hudLabelMap["ExploreTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ExploreTextBox"]->baseInteractiveBounds);
-    hudLabelMap["SeeMoreTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["SeeMoreTextBox"]->baseInteractiveBounds);
-    hudLabelMap["NextButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds);
     
     //  home.interactiveBounds.x = home.bounds.x * scaleAmt + scaleOffset.x;
     //	home.interactiveBounds.y = home.bounds.y * scaleAmt + scaleOffset.y;
@@ -699,38 +691,67 @@ void CloudsHUDController::update(){
     
     ///////////////////////////////
 
-    if(hudOpenMap[CLOUDS_HUD_PAUSE] ){
-        if(hudLabelMap["ResetButtonTextBox"]->isClicked()){
-            cout << "CLICKED RESET" << endl;
-        }
-        if(hudLabelMap["ExploreTextBox"]->isClicked()){
-            cout << "CLICKED EXPLORE" << endl;
-        }
-        if(hudLabelMap["SeeMoreTextBox"]->isClicked()){
-            cout << "CLICKED SEE MORE" << endl;
-        }
-        if(hudLabelMap["NextButtonTextBox"]->isClicked()){
-            cout << "CLICKED NEXT" << endl;
-        }
-    }
+//    if(hudOpenMap[CLOUDS_HUD_PAUSE] ){
+//        if(hudLabelMap["ResetButtonTextBox"]->isClicked()){
+////            cout << "CLICKED RESET" << endl;
+//        }
+//        if(hudLabelMap["ExploreTextBox"]->isClicked()){
+////            cout << "CLICKED EXPLORE" << endl;
+//        }
+//        if(hudLabelMap["SeeMoreTextBox"]->isClicked()){
+////            cout << "CLICKED SEE MORE" << endl;
+//        }
+//        if(hudLabelMap["NextButtonTextBox"]->isClicked()){
+////            cout << "CLICKED NEXT" << endl;
+//        }
+//    }
     
-//	updateReset();
 }
 
 
 void CloudsHUDController::pause(){
     //TODO: save the current HUD state before pause
+
+ 
+    hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("RESET"));
+    hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"));
+    hudLabelMap["ExploreTextBox"]->setText(GetTranslationForString("EXPLORE THE MAP"));
+    hudLabelMap["SeeMoreTextBox"]->setText(GetTranslationForString("SEE MORE OF THIS PERSON")); //todo dynmic name
+    
+    //set up the sizing
+    ofRectangle backingBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreBackingHover")->bounds;
+    float textRightEdge = hudLabelMap["ExploreTextBox"]->getRightEdge();
+    float exploreMapWidth = (textRightEdge - backingBounds.x) + margin;
+    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreBackingHover")->bounds.width = exploreMapWidth;
+    float seeMoreX = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreBackingHover")->bounds.getMaxX();
+    float seeMoreMaxX  = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("SeeMoreBackingHover")->bounds.getMaxX();
+    float seeMoreWidth = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("SeeMoreBackingHover")->bounds.getWidth();
+    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("SeeMoreBackingHover")->bounds.x = seeMoreX;
+    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("SeeMoreBackingHover")->bounds.width = (seeMoreMaxX - seeMoreX);
+
+    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreTitleDivide")->mesh.getVertices()[0].x = seeMoreX;
+    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreTitleDivide")->mesh.getVertices()[1].x = seeMoreX;
+    
+//    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreBackingNoHover")->bounds.width = exploreMapWidth;
+    hudLabelMap["SeeMoreTextBox"]->bounds.x = seeMoreX + margin;
+
+    hudLabelMap["ResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonBacking")->bounds;
+    hudLabelMap["ExploreTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreBackingHover")->bounds;
+    hudLabelMap["SeeMoreTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("SeeMoreBackingHover")->bounds;
+    hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("NextButtonBacking")->bounds;
+    
+    //set the interaction regions
+    hudLabelMap["ResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ResetButtonTextBox"]->baseInteractiveBounds);
+    hudLabelMap["ExploreTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ExploreTextBox"]->baseInteractiveBounds);
+    hudLabelMap["SeeMoreTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["SeeMoreTextBox"]->baseInteractiveBounds);
+    hudLabelMap["NextButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds);
+ 
+    animateOff( CLOUDS_HUD_QUESTION );
+    animateOn( CLOUDS_HUD_PAUSE );
+
     bJustPaused = true;
     bJustUnpaused = false;
 
-    hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("RESET"));
-    hudLabelMap["ExploreTextBox"]->setText(GetTranslationForString("EXPLORE THE MAP"));
-    //TODO: make position dynamic
-    hudLabelMap["SeeMoreTextBox"]->setText(GetTranslationForString("SEE MORE OF THIS PERSON"));
-    hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"));
- 
-    animateOn( CLOUDS_HUD_PAUSE );
-    
 }
 
 void CloudsHUDController::unpause(){
@@ -740,7 +761,6 @@ void CloudsHUDController::unpause(){
 
     bJustUnpaused = true;
     bJustPaused = false;
-    
     
 }
 
@@ -761,15 +781,13 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
         (it->second)->mouseMoved(ofVec2f(args.x,args.y));
     }
     
-	bool orig = bResetIsHovered;
-	bResetIsHovered = hudOpenMap[CLOUDS_HUD_PAUSE] && scaledResetRect.inside(args.x,args.y);
-
- 
-    //cout << "RESET HOVERED? " << (bResetIsHovered ? "YES" : "NO") << endl;
-    
-	if(orig != bResetIsHovered){
-		resetHoverChangedTime = ofGetElapsedTimef();
-	}
+//	bool orig = bResetIsHovered;
+//	bResetIsHovered = hudOpenMap[CLOUDS_HUD_PAUSE] && scaledResetRect.inside(args.x,args.y);
+//    //cout << "RESET HOVERED? " << (bResetIsHovered ? "YES" : "NO") << endl;
+//    
+//	if(orig != bResetIsHovered){
+//		resetHoverChangedTime = ofGetElapsedTimef();
+//	}
 }
 
 void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
@@ -795,19 +813,26 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
         (it->second)->mouseReleased(ofVec2f(args.x,args.y));
     }
  
-	if(hudOpenMap[CLOUDS_HUD_PAUSE]){
-		bResetIsClicked = bResetIsPressed &&  scaledResetRect.inside(args.x,args.y);
-	}
-	bResetIsPressed = false;
+//	if(hudOpenMap[CLOUDS_HUD_PAUSE]){
+//		bResetIsClicked = bResetIsPressed &&  scaledResetRect.inside(args.x,args.y);
+//	}
+//	bResetIsPressed = false;
 }
 
 bool CloudsHUDController::isResetHit(){
+    return hudLabelMap["ResetButtonTextBox"]->isClicked();
+}
 
-	if(hudOpenMap[CLOUDS_HUD_PAUSE]) return false;
+bool CloudsHUDController::isNextHit(){
+    return hudLabelMap["NextButtonTextBox"]->isClicked();
+}
 
-	bool b = bResetIsClicked && hudLabelMap["ResetButtonTextBox"]->isVisible();
-	bResetIsClicked = false;
-	return b;
+bool CloudsHUDController::isExploreMapHit(){
+    return hudLabelMap["ExploreTextBox"]->isClicked();
+}
+
+bool CloudsHUDController::isSeeMorePersonHit(){
+    return hudLabelMap["SeeMoreTextBox"]->isClicked();
 }
 
 void CloudsHUDController::setHudEnabled(bool enable){
@@ -870,7 +895,7 @@ void CloudsHUDController::draw(){
 		home.draw();
     }
 
-	if(bResetIsPressed){
+	if(hudLabelMap["ResetButtonTextBox"]->isClicked()){
 		ofSetColor(200,30,0,200);
 		resetTriangle.draw();
 	}

@@ -55,6 +55,10 @@ class CloudsHUDController {
 	
 	//mouse for clicking reset
 	bool isResetHit();
+	bool isNextHit();
+	bool isExploreMapHit();
+	bool isSeeMorePersonHit();
+    
 	void mouseMoved(ofMouseEventArgs& args);
 	void mousePressed(ofMouseEventArgs& args);
 	void mouseReleased(ofMouseEventArgs& args);
@@ -76,13 +80,9 @@ class CloudsHUDController {
     
     void playCued();
 	
-	//map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
 	map<CloudsHUDLayerSet, CloudsHUDLayer* > layers;
     
 	vector<CloudsHUDLayer*> allLayers;
-	
-//	void saveGuiSettings();
-//	void toggleGuis();
 	
 	void questionHoverOn(const string& question, bool animate = true);
 	void questionHoverOff();
@@ -145,14 +145,7 @@ class CloudsHUDController {
     ofRectangle   svgVideoBounds, videoBounds;
 
 	//reset stuff
-	ofRectangle	  scaledResetRect;
 	ofMesh resetTriangle;
-	bool	bResetIsPressed;
-	bool	bResetIsHovered;
-	bool	bResetIsClicked;
-	float	resetHoverChangedTime;
-
-//	void	updateReset();
     
     bool    bDrawHud;
     bool    bSkipAVideoFrame;

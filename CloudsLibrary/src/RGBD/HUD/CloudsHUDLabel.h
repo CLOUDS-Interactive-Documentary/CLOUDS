@@ -38,7 +38,9 @@ class CloudsHUDLabel {
     void instantOut();
     
     bool isVisible();
+    bool isHovered();
     bool isClicked();
+    
     bool clearTextOnAnimateOut;
     
     bool caps;
