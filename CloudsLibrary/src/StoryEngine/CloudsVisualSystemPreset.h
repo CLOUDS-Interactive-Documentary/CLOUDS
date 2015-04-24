@@ -21,6 +21,7 @@ class CloudsVisualSystemPreset {
 	void eraseFiles();
 	void checkHasFiles();
     bool hasSound();
+    bool isHeavy();
     
 	bool hasFiles;
 	
@@ -30,6 +31,7 @@ class CloudsVisualSystemPreset {
     
 	bool enabledScreen;
 	bool enabledOculus;
+    bool bIsHeavy;
     bool enabled();
     
     bool soundExcludeVO;

@@ -13,7 +13,7 @@
 
 bool confirmedDataPath = false;
 bool usingDevelopmentFolder = false;
-CloudsVisualLevel visualLevel = PRETTY;
+CloudsVisualLevel visualLevel = FAST;
 
 //--------------------------------------------------------------------
 string GetCloudsDataPath(bool ignored)

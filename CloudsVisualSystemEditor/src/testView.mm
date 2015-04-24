@@ -476,6 +476,7 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 		[self updateAssociatedClips];
 		
 		selectedPreset->enabledScreen = (enabledBox.state == NSOnState);
+        selectedPreset->bIsHeavy      = (heavyBox.state == NSOnState);
 		selectedPreset->enabledOculus = (oculusBox.state == NSOnState);
 		selectedPreset->soundAllowVO   = (soundAllowVOBox.state == NSOnState);
         selectedPreset->soundExcludeVO = (soundExcludeVOBox.state == NSOnState);
@@ -794,6 +795,7 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 			grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
 			enabledBox.state = (selectedPreset->enabledScreen ? NSOnState : NSOffState);
 			oculusBox.state = (selectedPreset->enabledOculus ? NSOnState : NSOffState);
+            heavyBox.state = (selectedPreset->bIsHeavy ? NSOnState : NSOffState);
 //			soundBox.state = (selectedPreset->hasSound ? NSOnState : NSOffState);
             soundAllowVOBox.state = (selectedPreset->soundAllowVO ? NSOnState : NSOffState);
             soundExcludeVOBox.state = (selectedPreset->soundExcludeVO ? NSOnState : NSOffState);
@@ -805,6 +807,7 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 			grade.stringValue = @"";
 			enabledBox.state = NSOnState;
 			oculusBox.state = NSOffState;
+            heavyBox.state = NSOffState;
 		}
 	}
 	else if(aNotification.object == allClipTable){

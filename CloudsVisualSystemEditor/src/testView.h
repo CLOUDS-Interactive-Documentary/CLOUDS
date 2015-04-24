@@ -26,6 +26,7 @@
 	IBOutlet NSComboBox* grade;
 	IBOutlet NSButton* enabledBox;
 	IBOutlet NSButton* oculusBox;
+    IBOutlet NSButton* heavyBox;
 	IBOutlet NSButton* soundAllowVOBox;
 	IBOutlet NSButton* soundExcludeVOBox;
 	IBOutlet NSButton* interludeBox;
