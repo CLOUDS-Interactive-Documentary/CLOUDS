@@ -18,6 +18,13 @@ void testApp::setup(){
     vendor = reinterpret_cast<const char*>(glGetString(GL_VENDOR));
     card = reinterpret_cast<const char*>(glGetString(GL_RENDERER));
     
+    vsFrameCount = 0;
+    vsLoadTime = 0.;
+    vsStartTime = 0.;
+    vsAvgFPS = 0.;
+    vsLastSampleFrame = 0;
+    vsFPSLastSampleTime = 0.;
+    
 #ifdef OCULUS_RIFT
     
     speedLogFilenameXML = "clouds_vs_speed_log.oculus."+replaceAll(card, " ", "_")+".xml";

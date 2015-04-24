@@ -1602,10 +1602,10 @@ void CloudsPlaybackController::showClusterMap(){
     if(!showingClusterMapNavigation){
         #ifdef OCULUS_RIFT
         switch (getVisualLevel()) {
-            case CloudsVisualLevel::FAST:
+            case FAST:
                 clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD_fast");
                 break;
-            case CloudsVisualLevel::PRETTY:
+            case PRETTY:
                 clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD_pretty");
                 break;
         }

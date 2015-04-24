@@ -58,13 +58,13 @@ class testApp : public ofBaseApp{
     
     bool     bEnableSpeedLog = true;
     
-    int      vsFrameCount = 0;
+    int      vsFrameCount;
     std::string version, card, vendor, speedLogFilenameXML, speedLogFilenameCSV;
     bool     prevLoadedSpeedLog = false;
-    float    vsLoadTime = 0.;
-    float    vsStartTime = 0.;
-    float    vsAvgFPS = 0.;
-    float    vsLastSampleFrame = 0, vsFPSLastSampleTime = 0.;
+    float    vsLoadTime;
+    float    vsStartTime;
+    float    vsAvgFPS;
+    float    vsLastSampleFrame, vsFPSLastSampleTime;
     
 	vector< std::pair<string,string> > blackList;
     vector<VS> vs;
