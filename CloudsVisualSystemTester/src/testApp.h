@@ -35,6 +35,6 @@ class testApp : public ofBaseApp{
 	char logFilename[1024];
 	float startTime;
 	bool bForward;
-	vector<std::pair<string,string>> blackList;
+	vector< std::pair<string,string> > blackList;
 
 };

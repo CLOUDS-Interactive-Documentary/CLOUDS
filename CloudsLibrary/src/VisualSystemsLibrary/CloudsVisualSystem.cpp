@@ -251,6 +251,16 @@ CloudsVisualSystem::~CloudsVisualSystem(){
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
+    //ensure multisample off for FAST visual level
+    switch (getVisualLevel()) {
+        case FAST:
+            numSamples = 0;
+            bEnablePostFX = false;
+            break;
+        default:
+            break;
+    }
+    
 	ofFbo& renderTarget = getStaticRenderTarget();  
 #ifdef OCULUS_RIFT
 	int targetWidth  = 1920;
@@ -3990,6 +4000,15 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	
 	//glDisable(GL_LIGHTING);
 	ofDisableLighting();
+    
+    //ensure post effects follow visual level
+    switch (getVisualLevel()) {
+        case FAST:
+            bEnablePostFX = false;
+            break;
+        default:
+            break;
+    }
 
 #ifdef OCULUS_RIFT
 

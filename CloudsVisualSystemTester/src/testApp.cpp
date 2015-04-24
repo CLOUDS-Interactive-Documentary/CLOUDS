@@ -122,20 +122,20 @@ void testApp::advanceSystem(){
 				toLog("------------------------------------------ \n");
 				toLog( currentSystem->getSystemName() + " beginning stop -- " );
 				currentSystem->stopSystem();
-				toLog( "success " + to_string(elapsedTime(shortStartTime))  + "ms \n");
+				toLog( "success " + ofToString(elapsedTime(shortStartTime))  + "ms \n");
 				toLog( "beginning exit -- ");
 				shortStartTime =  ofGetElapsedTimef();
 				currentSystem->exit();
-				toLog( "success " + to_string(elapsedTime(shortStartTime))  + "ms \n");
+				toLog( "success " + ofToString(elapsedTime(shortStartTime))  + "ms \n");
 				toLog( "beginning deallocation -- ");
 				shortStartTime =  ofGetElapsedTimef();
 				CloudsVisualSystemManager::DeallocateSystems();
-				toLog( "success " + to_string(elapsedTime(shortStartTime))  + "ms \n");
+				toLog( "success " + ofToString(elapsedTime(shortStartTime))  + "ms \n");
 				toLog("------------------------------------------ \n");
 			}
 
 			toLog("============================================================== \n");
-			toLog( "Advancing Visual System -- current index: " +  to_string(currentSystemIndex) + "\n" );
+			toLog( "Advancing Visual System -- current index: " +  ofToString(currentSystemIndex) + "\n" );
 			toLog("System: " + preset.systemName + " Preset: " + preset.presetName + "  \n");
 			toLog("Instantiating system -- ");
 			currentSystem = CloudsVisualSystemManager::InstantiateSystem(preset.systemName);
@@ -151,11 +151,11 @@ void testApp::advanceSystem(){
 			toLog( "beginning setup -- ");
 			shortStartTime =  ofGetElapsedTimef();
 			currentSystem->setup();
-			toLog( "success " + to_string(elapsedTime(shortStartTime))  + "ms \n");
+			toLog( "success " + ofToString(elapsedTime(shortStartTime))  + "ms \n");
 			toLog( "beginning loadPreSetGUI -- ");
 			shortStartTime =  ofGetElapsedTimef();
 			currentSystem->loadPresetGUISFromName(preset.presetName);
-			toLog( "success " + to_string(elapsedTime(shortStartTime))  + "ms \n");
+			toLog( "success " + ofToString(elapsedTime(shortStartTime))  + "ms \n");
 			toLog( "beginning setDrawToScreen -- ");
 			currentSystem->setDrawToScreen(false);
 			currentSystem->setNumSamples(4);
@@ -163,8 +163,8 @@ void testApp::advanceSystem(){
 			toLog( "beginning playSystem -- ");
 			shortStartTime =  ofGetElapsedTimef();
 			currentSystem->playSystem();
-			toLog( "success " + to_string(elapsedTime(shortStartTime))  + "ms \n");
-			toLog( "Complete time to advance system: " + to_string(elapsedTime(totalStartTime))  + "ms \n" );
+			toLog( "success " + ofToString(elapsedTime(shortStartTime))  + "ms \n");
+			toLog( "Complete time to advance system: " + ofToString(elapsedTime(totalStartTime))  + "ms \n" );
 			lastSystemChangedTime = ofGetElapsedTimef();
 			toLog("============================================================== \n");
 
