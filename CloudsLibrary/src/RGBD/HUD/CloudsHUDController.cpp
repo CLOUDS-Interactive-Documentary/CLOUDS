@@ -494,8 +494,10 @@ void CloudsHUDController::calculateFontSizes(){
     }
     tempFontList.clear();
     
-    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonBacking")->bounds;
-
+    hudLabelMap["ResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonBacking")->bounds;
+    hudLabelMap["ExploreTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreBackingHover")->bounds;
+    hudLabelMap["SeeMoreTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("SeeMoreBackingHover")->bounds;
+    hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("NextButtonBacking")->bounds;
 }
 
 ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer(const string& layerName, const string& fontPath) {
@@ -675,8 +677,6 @@ void CloudsHUDController::update(){
         videoPlayer.update();
     }
 	
-    
-    
     hudLabelMap["ResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ResetButtonTextBox"]->baseInteractiveBounds);
     hudLabelMap["ExploreTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ExploreTextBox"]->baseInteractiveBounds);
     hudLabelMap["SeeMoreTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["SeeMoreTextBox"]->baseInteractiveBounds);
@@ -696,9 +696,25 @@ void CloudsHUDController::update(){
             unpause();
         }
     }
+    
     ///////////////////////////////
 
-	updateReset();
+    if(hudOpenMap[CLOUDS_HUD_PAUSE] ){
+        if(hudLabelMap["ResetButtonTextBox"]->isClicked()){
+            cout << "CLICKED RESET" << endl;
+        }
+        if(hudLabelMap["ExploreTextBox"]->isClicked()){
+            cout << "CLICKED EXPLORE" << endl;
+        }
+        if(hudLabelMap["SeeMoreTextBox"]->isClicked()){
+            cout << "CLICKED SEE MORE" << endl;
+        }
+        if(hudLabelMap["NextButtonTextBox"]->isClicked()){
+            cout << "CLICKED NEXT" << endl;
+        }
+    }
+    
+//	updateReset();
 }
 
 
@@ -706,13 +722,14 @@ void CloudsHUDController::pause(){
     //TODO: save the current HUD state before pause
     bJustPaused = true;
     bJustUnpaused = false;
-    animateOn( CLOUDS_HUD_PAUSE );
-    
-    hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("RESET"), true);
-    hudLabelMap["ExploreTextBox"]->setText(GetTranslationForString("EXPLORE THE MAP"), true);
+
+    hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("RESET"));
+    hudLabelMap["ExploreTextBox"]->setText(GetTranslationForString("EXPLORE THE MAP"));
     //TODO: make position dynamic
-    hudLabelMap["SeeMoreTextBox"]->setText(GetTranslationForString("SEE MORE OF THIS PERSON"), true);
-    hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"), true);
+    hudLabelMap["SeeMoreTextBox"]->setText(GetTranslationForString("SEE MORE OF THIS PERSON"));
+    hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"));
+ 
+    animateOn( CLOUDS_HUD_PAUSE );
     
 }
 
@@ -720,21 +737,23 @@ void CloudsHUDController::unpause(){
     animateOff( CLOUDS_HUD_PAUSE );
     animateOff( CLOUDS_HUD_QUESTION );
     animateOff( CLOUDS_HUD_LOWER_THIRD );
+
     bJustUnpaused = true;
     bJustPaused = false;
     
+    
 }
 
-void CloudsHUDController::updateReset(){
-	ofRectangle resetRect = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonBacking")->bounds;
-    
-    
-	scaledResetRect.x = resetRect.x * scaleAmt + scaleOffset.x;
-	scaledResetRect.y = resetRect.y * scaleAmt + scaleOffset.y;
-	scaledResetRect.width = resetRect.width * scaleAmt;
-	scaledResetRect.height = resetRect.height * scaleAmt;
-	//cout << "Reset Rect is " << tempScaledResetRect.x << " " << tempScaledResetRect.y << endl; 
-}
+//void CloudsHUDController::updateReset(){
+//	ofRectangle resetRect = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonBacking")->bounds;
+//    
+//    
+//	scaledResetRect.x = resetRect.x * scaleAmt + scaleOffset.x;
+//	scaledResetRect.y = resetRect.y * scaleAmt + scaleOffset.y;
+//	scaledResetRect.width = resetRect.width * scaleAmt;
+//	scaledResetRect.height = resetRect.height * scaleAmt;
+//	//cout << "Reset Rect is " << tempScaledResetRect.x << " " << tempScaledResetRect.y << endl; 
+//}
 
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
@@ -859,20 +878,18 @@ void CloudsHUDController::draw(){
 	ofPopMatrix();
 	ofPopStyle();
 
-	ofPushStyle();
-	ofEnableAlphaBlending();
-    
-    
-	float resetHoverAlpha = ofMap(ofGetElapsedTimef() - resetHoverChangedTime, 0, .5, 0.0, 1.0, true);
-	if(!bResetIsHovered) resetHoverAlpha = 1.0 - resetHoverAlpha;
-    
-	ofFill();
-	ofSetColor(200,30,0, 255*resetHoverAlpha*.3);
-	ofRect(scaledResetRect);
-	ofNoFill();
-	ofSetColor(200,30,0, 255*resetHoverAlpha*.7);
-	ofRect(scaledResetRect);
-	ofPopStyle();
+//	ofPushStyle();
+//	ofEnableAlphaBlending();
+//	float resetHoverAlpha = ofMap(ofGetElapsedTimef() - resetHoverChangedTime, 0, .5, 0.0, 1.0, true);
+//	if(!bResetIsHovered) resetHoverAlpha = 1.0 - resetHoverAlpha;
+//    
+//	ofFill();
+//	ofSetColor(200,30,0, 255*resetHoverAlpha*.3);
+//	ofRect(scaledResetRect);
+//	ofNoFill();
+//	ofSetColor(200,30,0, 255*resetHoverAlpha*.7);
+//	ofRect(scaledResetRect);
+//	ofPopStyle();
 
 }
 

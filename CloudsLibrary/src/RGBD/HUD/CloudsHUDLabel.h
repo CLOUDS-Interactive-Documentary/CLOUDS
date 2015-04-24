@@ -67,6 +67,6 @@ class CloudsHUDLabel {
     bool bIsHovered;
     bool bIsPressed;
     bool bIsClicked;
-
+    float hoverChangedTime;
 
 };

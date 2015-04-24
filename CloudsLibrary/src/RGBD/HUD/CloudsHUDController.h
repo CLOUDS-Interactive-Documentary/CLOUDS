@@ -152,7 +152,7 @@ class CloudsHUDController {
 	bool	bResetIsClicked;
 	float	resetHoverChangedTime;
 
-	void	updateReset();
+//	void	updateReset();
     
     bool    bDrawHud;
     bool    bSkipAVideoFrame;

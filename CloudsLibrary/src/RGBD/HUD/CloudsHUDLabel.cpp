@@ -27,6 +27,8 @@ CloudsHUDLabel::CloudsHUDLabel(){
     animationClamp.max = 3.0;
     fadeOutSpeed = 0.3;
     
+    hoverChangedTime = 0.;
+    
     beginTime = 0.;
     baseAnimationSpeed = 0.5;   // mess with this one to change animation speed
     animationSpeed = 0.0;
@@ -48,6 +50,22 @@ void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
 }
 
 void CloudsHUDLabel::draw(){
+    
+    if(bIsHovered){
+        ofPushStyle();
+        
+        float hoverAlpha = ofMap(ofGetElapsedTimef() - hoverChangedTime, 0, .5, 0.0, 1.0, true);
+        
+        //TODO: Change color to design
+        ofFill();
+        ofSetColor(200,30,0, 255*hoverAlpha*.3);
+        ofRect(baseInteractiveBounds);
+        ofNoFill();
+        ofSetColor(200,30,0, 255*hoverAlpha*.7);
+        ofRect(baseInteractiveBounds);
+        ofPopStyle();
+        
+    }
     
 	if( bIsAnimatingIn ){
         if(animationSpeed != 0){
@@ -81,6 +99,7 @@ void CloudsHUDLabel::draw(){
         }
     }
     
+    
     if(type == "LAYOUT"){
         if( layout ){
             ofPushStyle();{
@@ -106,6 +125,8 @@ void CloudsHUDLabel::draw(){
             font->drawString( t, bounds.x, bounds.y + font->getStringBoundingBox("W", 0, 0).height );
         }ofPopStyle();
     }
+    
+
 }
 
 void CloudsHUDLabel::setText(const string& newText, bool forceOn){
@@ -138,13 +159,18 @@ int CloudsHUDLabel::getRightEdge(){
 }
 
 void CloudsHUDLabel::mouseMoved(ofVec2f mouse){
+    bool wasHovered = bIsHovered;
+	bIsHovered = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
+    if(wasHovered != bIsHovered){
+		hoverChangedTime = ofGetElapsedTimef();
+	}
 
-	bIsPressed = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
 }
 
 void CloudsHUDLabel::mousePressed(ofVec2f mouse){
 
 	bIsPressed = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
+    
 }
 
 void CloudsHUDLabel::mouseReleased(ofVec2f mouse){
