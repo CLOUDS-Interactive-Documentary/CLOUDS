@@ -13,6 +13,7 @@
 
 bool confirmedDataPath = false;
 bool usingDevelopmentFolder = false;
+CloudsVisualLevel visualLevel = FAST;
 
 //--------------------------------------------------------------------
 string GetCloudsDataPath(bool ignored)
@@ -89,4 +90,9 @@ string relinkFilePath(string filePath){
 		}
 	}
 	return filePath;
+}
+
+//--------------------------------------------------------------------
+CloudsVisualLevel getVisualLevel(){
+    return visualLevel;
 }

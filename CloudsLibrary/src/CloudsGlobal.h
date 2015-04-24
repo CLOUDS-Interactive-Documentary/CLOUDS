@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 
+enum CloudsVisualLevel { FAST, PRETTY };
 //--------------------------------------------------------------------
 string GetCloudsDataPath(bool ignored = false);
 //--------------------------------------------------------------------
@@ -20,6 +21,8 @@ string GetLanguage();
 void SetLanguage(string language);
 //--------------------------------------------------------------------
 string relinkFilePath(string filePath);
+//--------------------------------------------------------------------
+CloudsVisualLevel getVisualLevel();
 
 //--------------------------------------
 static inline std::string &ltrim(std::string &s) {

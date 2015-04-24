@@ -313,32 +313,74 @@ void CloudsPlaybackController::finishSetup(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::populateRGBDPresets(){
 #ifdef OCULUS_RIFT
-	if(CloudsVisualSystem::getOculusRift().isHD()){
-		basePreset = "RGBD_OC_BASE";
-	}
-	else{
-		basePreset = "RGBD_OC_BASE_SD";
-	}
-
-	backgroundPresets.push_back("RGBD_OC_ACT1");
-	pointcloudPresets.push_back("RGBD_OC_ACT1");
-	
-	backgroundPresets.push_back("RGBD_OC_ACT2");
-	pointcloudPresets.push_back("RGBD_OC_ACT2");
-	
-	backgroundPresets.push_back("RGBD_OC_ACT3");
-	pointcloudPresets.push_back("RGBD_OC_ACT3");
+    
+    switch (getVisualLevel()) {
+        case FAST:
+    
+            basePreset = "RGBD_OC_BASE_fast";
+            
+            backgroundPresets.push_back("RGBD_OC_ACT1_fast");
+            pointcloudPresets.push_back("RGBD_OC_ACT1_fast");
+            
+            backgroundPresets.push_back("RGBD_OC_ACT2_fast");
+            pointcloudPresets.push_back("RGBD_OC_ACT2_fast");
+            
+            backgroundPresets.push_back("RGBD_OC_ACT3_fast");
+            pointcloudPresets.push_back("RGBD_OC_ACT3_fast");
+            
+            break;
+            
+        case PRETTY:
+            
+            basePreset = "RGBD_OC_BASE_pretty";
+            
+            backgroundPresets.push_back("RGBD_OC_ACT1_pretty");
+            pointcloudPresets.push_back("RGBD_OC_ACT1_pretty");
+            
+            backgroundPresets.push_back("RGBD_OC_ACT2_pretty");
+            pointcloudPresets.push_back("RGBD_OC_ACT2_pretty");
+            
+            backgroundPresets.push_back("RGBD_OC_ACT3_pretty");
+            pointcloudPresets.push_back("RGBD_OC_ACT3_pretty");
+            
+            break;
+            
+    }
+    
 #else
-	basePreset = "RGBD_BASE";
-	
-	backgroundPresets.push_back("RGBD_ACT1");
-	pointcloudPresets.push_back("RGBD_ACT1");
-	
-	backgroundPresets.push_back("RGBD_ACT2");
-	pointcloudPresets.push_back("RGBD_ACT2");
-	
-	backgroundPresets.push_back("RGBD_ACT3");
-	pointcloudPresets.push_back("RGBD_ACT3");
+    
+    switch (getVisualLevel()) {
+            
+        case FAST:
+            
+            basePreset = "RGBD_BASE_fast";
+            
+            backgroundPresets.push_back("RGBD_ACT1_fast");
+            pointcloudPresets.push_back("RGBD_ACT1_fast");
+            
+            backgroundPresets.push_back("RGBD_ACT2_fast");
+            pointcloudPresets.push_back("RGBD_ACT2_fast");
+            
+            backgroundPresets.push_back("RGBD_ACT3_fast");
+            pointcloudPresets.push_back("RGBD_ACT3_fast");
+            
+            break;
+            
+        case PRETTY:
+            
+            basePreset = "RGBD_BASE_pretty";
+            
+            backgroundPresets.push_back("RGBD_ACT1_pretty");
+            pointcloudPresets.push_back("RGBD_ACT1_pretty");
+            
+            backgroundPresets.push_back("RGBD_ACT2_pretty");
+            pointcloudPresets.push_back("RGBD_ACT2_pretty");
+            
+            backgroundPresets.push_back("RGBD_ACT3_pretty");
+            pointcloudPresets.push_back("RGBD_ACT3_pretty");
+            
+            break;
+    }
 #endif
 
 }
@@ -358,14 +400,26 @@ void CloudsPlaybackController::showIntro(){
 	userReset = false;
 	
 #ifdef OCULUS_RIFT
-    if (CloudsVisualSystem::getOculusRift().isHD()) {
-	    introSequence->loadPresetGUISFromName("Oculus");
+
+    switch (getVisualLevel()) {
+        case FAST:
+            introSequence->loadPresetGUISFromName("Oculus_fast");
+            break;
+            
+        case PRETTY:
+            introSequence->loadPresetGUISFromName("Oculus_pretty");
+            break;
     }
-    else {
-        introSequence->loadPresetGUISFromName("OculusSD");
-    }
+    
 #else
-	introSequence->loadPresetGUISFromName("TunnelWarp");
+    switch (getVisualLevel()) {
+        case FAST:
+            introSequence->loadPresetGUISFromName("TunnelWarp_fast");
+        break;
+        case PRETTY:
+            introSequence->loadPresetGUISFromName("TunnelWarp_pretty");
+        break;
+    }
 #endif
 	introSequence->playSystem();
 	
@@ -1547,14 +1601,26 @@ void CloudsPlaybackController::showClusterMap(){
     
     if(!showingClusterMapNavigation){
         #ifdef OCULUS_RIFT
-        if(CloudsVisualSystem::getOculusRift().isHD()){
-            clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD");
+        switch (getVisualLevel()) {
+            case CloudsVisualLevel::FAST:
+                clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD_fast");
+                break;
+            case CloudsVisualLevel::PRETTY:
+                clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD_pretty");
+                break;
         }
-        else{
-            clusterMap->loadPresetGUISFromName("FollowTraverse_OculusSD");
-        }
+        
         #else
-        clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
+        
+        switch (getVisualLevel()) {
+            case FAST:
+                clusterMap->loadPresetGUISFromName("FollowTraverse_Screen_fast");
+                break;
+            case PRETTY:
+                clusterMap->loadPresetGUISFromName("FollowTraverse_Screen_pretty");
+                break;
+                
+        }
         #endif
     }
     
