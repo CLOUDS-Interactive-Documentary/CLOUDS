@@ -49,7 +49,6 @@ CloudsPlaybackController::CloudsPlaybackController(){
 
 	userReset = false;
 	returnToIntro = false;
-	pauseAct = false;
 
 	badIdle = false;
 	badIdleStartTime = false;
@@ -85,7 +84,6 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	loading = false;
 	loadPercent = 0.0;
 	
-    returnToIntro = false;
     cachedTransition = false;
     showedClusterMapNavigation = false;
 
@@ -471,22 +469,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
             currentAct->getTimeline().stop();
         }
 	}
-    
-	//if(args.key == '/'){
 
-	//	if(currentAct != NULL){
-	//		if(!pauseAct){
-	//			pauseAct = true;
-	//			CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().setSpeed(0);
-	//			currentAct->getTimeline().stop();
-	//		}
-	//		else{
-	//			pauseAct = false;
-	//			CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().setSpeed(1.0);
-	//			currentAct->getTimeline().play();			
-	//		}
-	//	}
-	//}
 
 #ifdef OCULUS_RIFT
     if(args.key == OF_KEY_RETURN){
@@ -751,21 +734,22 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     /////////////////// END HUD UPDATE
     
     
-	if(!showingIntro && !showingClusterMap && !showingInterlude){
+	if(!showingIntro && !showingClusterMap){
 		
-		if(currentVisualSystem == rgbdVisualSystem){
-			if( (hud.isResetHit() || rgbdVisualSystem->isResetSelected() ) && !userReset){
-				userReset = true;
-			    returnToIntro = true;
+//		if(currentVisualSystem == rgbdVisualSystem){
+        if( (hud.isResetHit() || rgbdVisualSystem->isResetSelected() ) && !userReset){
+            userReset = true;
+            returnToIntro = true;
 #ifdef OCULUS_RIFT
-				transitionController.transitionWithQuestion(2.0, 0.1);
+            transitionController.transitionWithQuestion(2.0, 0.1);
 #else
-		        CloudsVisualSystem::getRGBDVideoPlayer().stop();
-	            currentAct->getTimeline().stop();
+            CloudsVisualSystem::getRGBDVideoPlayer().stop();
+//            currentAct->getTimeline().stop();
+            currentAct->terminateAct();
 #endif
-			}
-		}
-	}
+        }
+    }
+//	}
 
     if(returnToIntro){
         returnToIntro = false;
@@ -818,7 +802,6 @@ void CloudsPlaybackController::updateTransition(){
                     rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
 				}
                 
-                //hud.animateOff(CLOUDS_HUD_FULL);
                 break;
                 
             case TRANSITION_INTRO_OUT:
@@ -835,13 +818,18 @@ void CloudsPlaybackController::updateTransition(){
 					rgbdVisualSystem->transtionFinished();
                     rgbdVisualSystem->stopSystem();
 				}
-				
+                else {
+                    //if you reset from the intro
+                    hideVisualSystem();
+                }
+                
                 if(introSequence != NULL){
                     delete introSequence;
                 }
 
 				clusterMap->clearTraversal();
 				
+                //TODO: This needs to change with saving state
                 run.clear();
                 
                 introSequence = new CloudsIntroSequence();
@@ -1395,7 +1383,7 @@ void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 
-	if(!returnToIntro && !pauseAct){
+	if(!returnToIntro){
 		shouldClearAct = true;
 		
 		if(!bQuestionAsked){

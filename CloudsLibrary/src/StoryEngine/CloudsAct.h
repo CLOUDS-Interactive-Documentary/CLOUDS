@@ -74,6 +74,7 @@ class CloudsAct{
 	
     void populateTime();
     void play();
+    void terminateAct();
     
     void pause();
     void unpause();

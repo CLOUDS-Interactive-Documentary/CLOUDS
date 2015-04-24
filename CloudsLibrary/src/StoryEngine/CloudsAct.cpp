@@ -335,7 +335,6 @@ void CloudsAct::unpause(){
         paused = false;
         timeline.play();
     }
-    
 }
 
 bool CloudsAct::startsWithVisualSystem(){
@@ -397,6 +396,11 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
             ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, defaultAudioFade);
         }
     }
+}
+
+void CloudsAct::terminateAct(){
+    CloudsActEventArgs args(this);
+    ofNotifyEvent(events.actEnded, args);
 }
 
 void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
