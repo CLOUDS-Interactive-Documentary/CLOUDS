@@ -18,6 +18,8 @@ void testApp::setup(){
     vendor = reinterpret_cast<const char*>(glGetString(GL_VENDOR));
     card = reinterpret_cast<const char*>(glGetString(GL_RENDERER));
     
+    bEnableSpeedLog = true;
+    prevLoadedSpeedLog = false;
     vsFrameCount = 0;
     vsLoadTime = 0.;
     vsStartTime = 0.;

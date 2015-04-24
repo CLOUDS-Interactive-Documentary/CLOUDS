@@ -56,11 +56,11 @@ class testApp : public ofBaseApp{
 	float    startTime;
 	bool     bForward;
     
-    bool     bEnableSpeedLog = true;
+    bool     bEnableSpeedLog;
     
     int      vsFrameCount;
     std::string version, card, vendor, speedLogFilenameXML, speedLogFilenameCSV;
-    bool     prevLoadedSpeedLog = false;
+    bool     prevLoadedSpeedLog;
     float    vsLoadTime;
     float    vsStartTime;
     float    vsAvgFPS;
