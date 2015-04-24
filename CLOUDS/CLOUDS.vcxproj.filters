@@ -1165,6 +1165,12 @@
     <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
       <Filter>addons\ofxLocalization\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxAudioDecoder\libs\audiodecoder\src\audiodecoderbase.cpp">
+      <Filter>addons\ofxAudioDecoder\libs\audiodecoder\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxAudioDecoder\libs\audiodecoder\src\audiodecodermediafoundation.cpp">
+      <Filter>addons\ofxAudioDecoder\libs\audiodecoder\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1394,6 +1400,48 @@
     </Filter>
     <Filter Include="addons\ofxLocalization\src">
       <UniqueIdentifier>{8c128525-8ed1-48a4-961c-8fcd2d7a12d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAudioDecoder">
+      <UniqueIdentifier>{bf95fe69-627b-4219-878c-97ea3d50e15b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAudioDecoder\src">
+      <UniqueIdentifier>{ee181ee3-40e8-47ea-bb3b-1d68c5a8c7e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAudioDecoder\couples">
+      <UniqueIdentifier>{5265e571-db63-4708-b0ef-d834abc2f9ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSSL">
+      <UniqueIdentifier>{635a3648-9ad4-4cee-9959-b14d9595a4d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSSL\src">
+      <UniqueIdentifier>{bf8695ec-99f4-4133-8e3f-abb304f1e241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSSL\libs">
+      <UniqueIdentifier>{64fb0fea-b168-4da7-af4e-6730e39534c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSSL\libs\libcurl">
+      <UniqueIdentifier>{94dbb62f-fd6b-4ddd-bccb-92eb504f808d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSSL\libs\msinttypes">
+      <UniqueIdentifier>{6f7bac52-eb40-49fc-91f6-42f28a366de3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSSL\libs\libcurl\include">
+      <UniqueIdentifier>{19e32f67-41aa-45cb-bc35-6dd59becfcb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSSL\libs\libcurl\include\curl">
+      <UniqueIdentifier>{78dc7959-39f8-47ec-88b2-6d4442e904f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAudioDecoder\libs">
+      <UniqueIdentifier>{568bb886-154e-480d-ac34-0c24721a0b71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAudioDecoder\libs\audiodecoder">
+      <UniqueIdentifier>{e84fdafb-def4-4cd4-be08-8d7bc2ce975c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAudioDecoder\libs\audiodecoder\src">
+      <UniqueIdentifier>{21db794c-6814-432f-8ae9-40082b12059c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAudioDecoder\libs\audiodecoder\include">
+      <UniqueIdentifier>{f3a5be3b-386a-4246-be71-caf6ee5a6094}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3024,6 +3072,51 @@
       <Filter>addons\ofxLocalization\src</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="..\..\..\addons\ofxAudioDecoder\src\ofxAudioDecoder.h">
+      <Filter>addons\ofxAudioDecoder\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAudioDecoder\couples\ofxAudioDecoderTonic.h">
+      <Filter>addons\ofxAudioDecoder\couples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\libs\msinttypes\inttypes.h">
+      <Filter>addons\ofxSSL\libs\msinttypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\libs\msinttypes\stdint.h">
+      <Filter>addons\ofxSSL\libs\msinttypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\libs\libcurl\include\curl\curl.h">
+      <Filter>addons\ofxSSL\libs\libcurl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\libs\libcurl\include\curl\curlrules.h">
+      <Filter>addons\ofxSSL\libs\libcurl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\libs\libcurl\include\curl\curlver.h">
+      <Filter>addons\ofxSSL\libs\libcurl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\libs\libcurl\include\curl\easy.h">
+      <Filter>addons\ofxSSL\libs\libcurl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\libs\libcurl\include\curl\mprintf.h">
+      <Filter>addons\ofxSSL\libs\libcurl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\libs\libcurl\include\curl\multi.h">
+      <Filter>addons\ofxSSL\libs\libcurl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\libs\libcurl\include\curl\stdcheaders.h">
+      <Filter>addons\ofxSSL\libs\libcurl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\libs\libcurl\include\curl\typecheck-gcc.h">
+      <Filter>addons\ofxSSL\libs\libcurl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAudioDecoder\libs\audiodecoder\include\audiodecoder.h">
+      <Filter>addons\ofxAudioDecoder\libs\audiodecoder\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAudioDecoder\libs\audiodecoder\include\audiodecoderbase.h">
+      <Filter>addons\ofxAudioDecoder\libs\audiodecoder\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAudioDecoder\libs\audiodecoder\include\audiodecodermediafoundation.h">
+      <Filter>addons\ofxAudioDecoder\libs\audiodecoder\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\json_internalarray.inl">
