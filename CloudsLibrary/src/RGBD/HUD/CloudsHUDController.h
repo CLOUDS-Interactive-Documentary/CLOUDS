@@ -114,6 +114,8 @@ class CloudsHUDController {
     map<CloudsHUDLayerSet, CloudsHUDBillboard> layerBillboard;
 #endif
 
+    void pause();
+    void unpause();
 
   protected:
 	
@@ -138,8 +140,6 @@ class CloudsHUDController {
                           bool forceOn=false,
                           bool animate = true);
     
-    void pause();
-    void unpause();
     
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;

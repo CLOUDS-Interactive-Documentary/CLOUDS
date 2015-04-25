@@ -764,17 +764,6 @@ void CloudsHUDController::unpause(){
     
 }
 
-//void CloudsHUDController::updateReset(){
-//	ofRectangle resetRect = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonBacking")->bounds;
-//    
-//    
-//	scaledResetRect.x = resetRect.x * scaleAmt + scaleOffset.x;
-//	scaledResetRect.y = resetRect.y * scaleAmt + scaleOffset.y;
-//	scaledResetRect.width = resetRect.width * scaleAmt;
-//	scaledResetRect.height = resetRect.height * scaleAmt;
-//	//cout << "Reset Rect is " << tempScaledResetRect.x << " " << tempScaledResetRect.y << endl; 
-//}
-
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){

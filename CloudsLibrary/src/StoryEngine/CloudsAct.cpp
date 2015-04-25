@@ -410,6 +410,20 @@ void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
     }
 }
 
+void CloudsAct::next(){
+    int currentClipIndex = -1;
+    getClipAtTime(timeline.getCurrentTime(), currentClipIndex);
+    if(currentClipIndex >= 0 && currentClipIndex+1 < clips.size()){
+        ActTimeItem nextClip = getItemForClip(clips[currentClipIndex+1]);
+        timeline.setCurrentTimeSeconds(nextClip.startTime);
+        unpause();
+    }
+    else{
+        CloudsActEventArgs args(this);
+        ofNotifyEvent(events.actEnded, args);
+    }
+}
+
 float CloudsAct::getActDuration(){
     return duration;
 }
@@ -443,9 +457,15 @@ CloudsClip* CloudsAct::getClip(int index){
 }
 
 CloudsClip* CloudsAct::getClipAtTime(float time){
+    int dummy;
+    return getClipAtTime(time,dummy);
+}
+
+CloudsClip* CloudsAct::getClipAtTime(float time, int& index){
     for(int i=0; i< clips.size(); i++){
         ActTimeItem item = getItemForClip(clips[i]);
         if(time >= item.startTime && time <= item.endTime){
+            index = i;
             return clips[i];
         }
     }

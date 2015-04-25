@@ -78,6 +78,7 @@ class CloudsAct{
     
     void pause();
     void unpause();
+    void next();
     
     void clear();
     
@@ -92,7 +93,8 @@ class CloudsAct{
 	
     CloudsClip* getClip(int index);
     CloudsClip* getClipAtTime(float time);
-
+    CloudsClip* getClipAtTime(float time, int& index);
+    
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     float addClip(CloudsClip* clip, string topic, float startTime);
     float addClip(CloudsClip* clip, string topic, float startTime, vector<CloudsDichotomy> currentDichotomiesBalance);

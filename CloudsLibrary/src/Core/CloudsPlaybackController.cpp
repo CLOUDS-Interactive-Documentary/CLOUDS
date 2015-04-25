@@ -727,30 +727,43 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             currentAct->unpause();
         }
         if(currentVisualSystem != NULL){
-            currentVisualSystem->getTimeline()->stop();
+            currentVisualSystem->getTimeline()->play();
         }
         rgbdVisualSystem->getRGBDVideoPlayer().unpause();
     }
     /////////////////// END HUD UPDATE
     
     
-	if(!showingIntro && !showingClusterMap){
-		
-//		if(currentVisualSystem == rgbdVisualSystem){
-        if( (hud.isResetHit() || rgbdVisualSystem->isResetSelected() ) && !userReset){
-            userReset = true;
-            returnToIntro = true;
+    if(!showingIntro && !showingClusterMap && !userReset &&
+       (hud.isResetHit() || rgbdVisualSystem->isResetSelected()) )
+    {
+        userReset = true;
+        returnToIntro = true;
 #ifdef OCULUS_RIFT
-            transitionController.transitionWithQuestion(2.0, 0.1);
+        transitionController.transitionWithQuestion(2.0, 0.1);
 #else
-            CloudsVisualSystem::getRGBDVideoPlayer().stop();
-//            currentAct->getTimeline().stop();
-            currentAct->terminateAct();
+        CloudsVisualSystem::getRGBDVideoPlayer().stop();
+        currentAct->terminateAct();
 #endif
-        }
     }
-//	}
-
+    
+    if(hud.isNextHit()){
+        CloudsVisualSystem::getRGBDVideoPlayer().stop();
+        if(showingInterlude){
+            //continue from interlude
+        }
+        else if(currentAct != NULL){
+            currentAct->next();
+            //TODO: if this is VO we need to not exit the system
+            if(showingVisualSystem){
+                float fadeDuration = 1;
+                transitionController.transitionToInterview(fadeDuration, 1.0);
+            }
+        }
+        
+        hud.unpause();
+    }
+    
     if(returnToIntro){
         returnToIntro = false;
         transitionController.transitionToIntro(1.0);
