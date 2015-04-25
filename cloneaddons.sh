@@ -50,7 +50,7 @@ ${NEWPREFIX}ofxMSATimer
 ${NEWPREFIX}ofxNearestNeighbour
 ${NEWPREFIX}ofxObjLoader	
 ${NEWPREFIX}ofxOcean
-${NEWPREFIX}ofxOculusRift
+${NEWPREFIX}ofxOculusDK2
 
 ${NEWPREFIX}ofxOpenSteer
 cd ofxOpenSteer
