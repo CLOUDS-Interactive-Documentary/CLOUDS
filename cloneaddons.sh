@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Dependencies for RGBDToolkit
-
-#make sure you are in the RGBDToolkit project when you run this script
-
-
 cd ../../addons
 echo existing addons
 ls -1a
@@ -81,7 +76,7 @@ ${NEWPREFIX}ofxSimpleSurface
 ${NEWPREFIX}ofxSQLite
 ${NEWPREFIX}ofxSSL
 ${NEWPREFIX}ofxSubtitles
-
+${NEWPREFIX}ofxJSON
 ${NEWPREFIX}ofxTextInputField
 cd ofxTextInputField
 git checkout -b develop --track origin/develop
