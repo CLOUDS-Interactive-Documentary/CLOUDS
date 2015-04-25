@@ -589,7 +589,7 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
 
 void CloudsVisualSystemClusterMap::populateAssociations(){
     associations.clear();
-    set<string> topicset;
+    topicset.clear();
     ofBuffer topicAssociations = ofBufferFromFile(GetCloudsDataPath() + "logs/TopicAssociations.txt");
     while(!topicAssociations.isLastLine()){
         
@@ -618,10 +618,14 @@ void CloudsVisualSystemClusterMap::populateAssociations(){
 //        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
     }
     
-    for(set<string>::iterator it = topicset.begin(); it != topicset.end(); it++){
-        cout << *it << endl;
-    }
+//    for(set<string>::iterator it = topicset.begin(); it != topicset.end(); it++){
+//        cout << *it << endl;
+//    }
     return;
+}
+
+set<string>& CloudsVisualSystemClusterMap::getTopicSet(){
+    return topicset;
 }
 
 void CloudsVisualSystemClusterMap::allocateFlickerTexture(){

@@ -21,6 +21,9 @@ CloudsHUDController::CloudsHUDController(){
     bSkipAVideoFrame = false;
     bDrawHud = true;
     
+    scrollPosition = 0;
+    totalScrollHeight = 0;
+
     bJustPaused = false;
     bJustUnpaused = false;
     bActJustStarted = false;
@@ -28,11 +31,8 @@ CloudsHUDController::CloudsHUDController(){
     bVisualSystemDisplayed = false;
     bLowerThirdCued = false;
 
-//	resetHoverChangedTime = 0;
-//	bResetIsHovered = false;
-//	bResetIsPressed = false;
-//	bResetIsClicked = false;
-
+    currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
+    
 	isPlaying = false;
     
     scaleAmt = 1.0;
@@ -442,11 +442,10 @@ void CloudsHUDController::buildLayerSets(){
     
     svgVideoBounds = projectExampleLayer->svg.getMeshByID("ProjectExampleFrame")->bounds;
 	videoBounds = svgVideoBounds;
-    
-    
+    researchScrollBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListBacking")->bounds;
+
     hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
-	
 //	cout << "HUD BOUNDS " << hudBounds.width << " / " << hudBounds.height << endl;
 //  cout << "SCREEN " << ofGetScreenWidth() << " / " << ofGetScreenHeight() << endl;
 }
@@ -494,7 +493,9 @@ void CloudsHUDController::calculateFontSizes(){
     NextButtonTextBox           = getLayoutForLayer("NextButtonTextBox", fontPath);
     
     ResetButtonTextBox          = getLayoutForLayer("ResetButtonTextBox", fontPath);
-    
+    //research stuff
+    ResearchTopicListFont       = getFontForLayer("ListPeopleTextBox", fontPath, 35);
+
     // cleanup!
     for( int i=0; i<tempFontList.size(); i++ ){
         delete tempFontList[i];
@@ -751,6 +752,17 @@ void CloudsHUDController::unpause(){
     
 }
 
+void CloudsHUDController::setTopics(const set<string>& topics){
+    topicButtons.clear();
+    topicButtons.resize(topics.size());
+    int i = 0;
+    for(set<string>::iterator it = topics.begin(); it != topics.end(); it++){
+        topicButtons[i].top = i * ( hudLabelMap["ListPeopleTextBox"]->bounds.height * 1.5 ); //1.5 is an arbirtary margine
+        topicButtons[i].topic = *it;
+        i++;
+    }
+}
+
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
@@ -848,6 +860,23 @@ void CloudsHUDController::draw(){
 	drawLayer(CLOUDS_HUD_RESEARCH_LIST);
 	drawLayer(CLOUDS_HUD_RESEARCH_NAV);
 
+    if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
+        
+        beginListStencil();
+        
+        if( currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS ){
+            drawTopicsList();
+        }
+        else if( currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
+            drawPeopleList();
+        }
+        else{
+            draweVisualList();
+        }
+        
+        endListStencil();
+    }
+
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->draw();
     }
@@ -864,26 +893,69 @@ void CloudsHUDController::draw(){
 	ofPopMatrix();
 	ofPopStyle();
 
-//	ofPushStyle();
-//	ofEnableAlphaBlending();
-//	float resetHoverAlpha = ofMap(ofGetElapsedTimef() - resetHoverChangedTime, 0, .5, 0.0, 1.0, true);
-//	if(!bResetIsHovered) resetHoverAlpha = 1.0 - resetHoverAlpha;
-//    
-//	ofFill();
-//	ofSetColor(200,30,0, 255*resetHoverAlpha*.3);
-//	ofRect(scaledResetRect);
-//	ofNoFill();
-//	ofSetColor(200,30,0, 255*resetHoverAlpha*.7);
-//	ofRect(scaledResetRect);
-//	ofPopStyle();
 
 }
 
 void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
-//	for(int i = 0; i < layerSets[layer].size(); i++){
-//		layerSets[layer][i]->draw();
-//	}
     layers[layer]->draw();
+}
+
+void CloudsHUDController::beginListStencil(){
+
+    /*
+    ofPushStyle();
+    glEnable(GL_STENCIL_TEST);
+	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+	glStencilFunc(GL_NEVER, 1, 0xFF);
+	glStencilOp(GL_REPLACE, GL_KEEP, GL_KEEP);  // draw 1s on test fail (always)
+    
+	// draw stencil pattern
+	glStencilMask(0xFF);
+	glClear(GL_STENCIL_BUFFER_BIT);  // needs mask=0xFF
+    
+	ofSetColor(255);
+    ofFill();
+	ofRect(researchScrollBounds);
+    
+	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+	glStencilMask(0x00);
+	glStencilFunc(GL_EQUAL, 1, 0xFF);
+	*/
+	
+
+    glEnable(GL_SCISSOR_TEST);
+    ofRectangle scissorRect = getScaledRectangle(researchScrollBounds);
+    glScissor(scissorRect.x, ofGetHeight() - ( scissorRect.y + scissorRect.height) , scissorRect.width, scissorRect.height);
+    
+    ofPushMatrix();
+//    ofTranslate(0, -scrollPosition);
+    ofTranslate(0, -ofGetMouseX());
+    
+    
+}
+
+void CloudsHUDController::endListStencil(){
+    
+    ofPopMatrix();
+	glDisable(GL_SCISSOR_TEST);
+    //ofPopStyle();
+    
+}
+
+void CloudsHUDController::drawTopicsList(){
+    for(int i = 0; i < topicButtons.size(); i++){
+        ResearchTopicListFont->drawString(topicButtons[i].topic,
+                                          hudLabelMap["ListPeopleTextBox"]->bounds.x,
+                                          hudLabelMap["ListPeopleTextBox"]->bounds.y + topicButtons[i].top);
+    }
+}
+
+void CloudsHUDController::drawPeopleList(){
+    
+}
+
+void CloudsHUDController::draweVisualList(){
+    
 }
 
 #ifdef OCULUS_RIFT

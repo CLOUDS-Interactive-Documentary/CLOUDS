@@ -11,9 +11,13 @@ void testApp::setup(){
     //sets the HUD
     
 	parser.loadFromFiles();
+    
+    std::set<string> topics(parser.getAllKeywords().begin(),
+                            parser.getAllKeywords().end() );
 
 	hud.setup();
-
+    hud.setTopics(topics);
+    
     empty.setup();
     empty.playSystem();
     empty.setDrawToScreen(false);
@@ -73,7 +77,7 @@ void testApp::keyPressed(int key){
 	}
 	
 	if(key == ' '){
-		hud.animateOn(CLOUDS_HUD_FULL);
+		hud.animateOn(CLOUDS_HUD_ALL);
 	}
     
     if(key == '1'){
@@ -94,6 +98,13 @@ void testApp::keyPressed(int key){
     
     if(key == '5'){
 		hud.animateOn(CLOUDS_HUD_PAUSE);
+        //hud.pause();
+	}
+    
+    if(key == '6'){
+
+		hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
+		hud.animateOn(CLOUDS_HUD_RESEARCH_NAV);
         //hud.pause();
 	}
 

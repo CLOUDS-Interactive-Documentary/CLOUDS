@@ -134,6 +134,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     
 	ofVboMesh& getNodeMesh();
 	ofVboMesh& getNetworkMesh();
+    set<string>& getTopicSet(); //all user facing topics
 
 	void reloadShaders();
 	bool autoTraversePoints;
@@ -290,6 +291,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
     void populateAssociations();
     map<string,string> associations;
+    set<string> topicset; //all user facing topics
+    
     bool drawAssociation;
     int associationFontSize;
     int currentAssociationFont;

@@ -281,8 +281,9 @@
 		<text transform="matrix(1 0 0 1 71.6599 803.1958)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
 	</g>
 </g>
-<g id="ListPeopleTextBoxes">
+<g id="ListPeopleTextBox">
 	<rect x="69.59" y="57.901" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
+	<!--
 	<rect x="69.59" y="85.045" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
 	<rect x="69.59" y="112.19" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
 	<rect x="69.59" y="139.334" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
@@ -310,6 +311,7 @@
 	<rect x="69.59" y="736.513" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
 	<rect x="69.59" y="763.658" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
 	<rect x="69.59" y="790.802" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
+-->
 </g>
 <g id="ListVSTop" display="none">
 	<g display="inline">
@@ -461,13 +463,13 @@
 <g id="ListScrollUpStatic" display="none">
 	<polygon display="inline" opacity="0.26" fill="#FFFFFF" points="189.792,50.108 202.358,50.108 196.075,43.825 	"/>
 </g>
-<g id="ListScrollDownActive">
+<g id="ListScrollDownActive" display="none">
 	<polygon opacity="0.69" fill="#FFFFFF" points="202.358,815.506 189.792,815.506 196.075,821.788 	"/>
 </g>
-<g id="ListScrollConnectActive">
+<g id="ListScrollConnectActive"  display="none">
 	<line opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="324.499" y1="50.108" x2="324.499" y2="488.6"/>
 </g>
-<g id="ListScrollMarkerTick">
+<g id="ListScrollMarkerTick" display="none">
 	<rect x="322.499" y="484.6" opacity="0.69" fill="#FFFFFF" width="4" height="4"/>
 </g>
 <g id="ListScrollUpActive">

@@ -287,7 +287,8 @@ void CloudsPlaybackController::threadedFunction(){
 #endif
 	
 	clusterMap->buildEntireCluster(parser);
-	
+    hud.setTopics(clusterMap->getTopicSet());
+
 	populateRGBDPresets();
 	
 	//END THREADED

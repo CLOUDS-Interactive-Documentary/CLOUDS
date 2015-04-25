@@ -30,6 +30,17 @@ typedef enum {
     CLOUDS_HUD_ALL
 } CloudsHUDLayerSet;
 
+typedef enum{
+    CLOUDS_HUD_RESEARCH_TAB_TOPICS = 0,
+    CLOUDS_HUD_RESEARCH_TAB_PEOPLE,
+    CLOUDS_HUD_RESEARCH_TAB_VISUALS,
+} CloudsHUDResearchTab;
+
+typedef struct{
+    float top;
+    string topic;
+} TopicButton;
+
 #ifdef OCULUS_RIFT
 typedef enum {
 	CLOUDS_HUD_BILLBOARD_NONE = 0,
@@ -37,6 +48,7 @@ typedef enum {
 	CLOUDS_HUD_BILLBOARD_OCULUS
 } CloudsHUDBillboard;
 #endif
+
 
 class CloudsClip;
 class CloudsHUDController {
@@ -118,7 +130,8 @@ class CloudsHUDController {
 
     void pause();
     void unpause();
-
+    void setTopics(const set<string>& topics);
+    
   protected:
 	
     void populateLowerThird(const string& firstName,
@@ -145,7 +158,8 @@ class CloudsHUDController {
     
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
-
+    ofRectangle   researchScrollBounds;
+    
 	//reset stuff
 	ofMesh resetTriangle;
     
@@ -163,6 +177,15 @@ class CloudsHUDController {
 #ifdef OCULUS_RIFT
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
 #endif
+    
+    CloudsHUDResearchTab currentTab;
+    void beginListStencil();
+    void endListStencil();
+    
+    void drawTopicsList();
+    void drawPeopleList();
+    void draweVisualList();
+
     ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath);
     ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath, bool caps);
     ofxFTGLFont*            getFontForLayer(const string& layerName, const string& fontPath, int kerning);
@@ -173,7 +196,8 @@ class CloudsHUDController {
     ofxFTGLFont             *BylineFirstNameTextBox,
                             *BylineLastNameTextBox,
                             *BylineTopicTextBoxBottom,
-                            *BylineTopicTextBoxTop;
+                            *BylineTopicTextBoxTop,
+                            *ResearchTopicListFont;
     
     ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
                             *ResetButtonTextBox,
@@ -187,6 +211,7 @@ class CloudsHUDController {
                             *SeeMoreTextBox,
                             *NextButtonTextBox;
 
+
 	
     map<CloudsHUDLayerSet,bool>		hudOpenMap;
     map<string, CloudsHUDLabel*>    hudLabelMap;
@@ -194,6 +219,11 @@ class CloudsHUDController {
     float scaleAmt;
     ofVec2f scaleOffset;
     int margin;
+    
+    float scrollPosition;
+    float totalScrollHeight;
+    
+    vector<TopicButton> topicButtons;
     
     ofRectangle     getScaledRectangle(const ofRectangle& rect);
     ofRectangle     defaultBioBounds;
