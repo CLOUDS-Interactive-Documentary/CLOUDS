@@ -62,7 +62,13 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
 
 	// Sound
     ofxUISuperCanvas* soundGui;
-
+    
+//    ofVboMesh vboRect;
+//    ofShader instanceShader;
+//    int matsLoc;
+//    
+//    ofTexture dataTex;
+//    
     vector<TonicSample> tonicSamples;
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();

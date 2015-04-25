@@ -11443,7 +11443,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -11616,7 +11616,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -12906,7 +12906,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
@@ -13030,7 +13030,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -13121,7 +13121,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -13974,7 +13974,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -14045,7 +14045,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
@@ -14101,7 +14101,7 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -16553,7 +16553,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -16612,7 +16612,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -20624,7 +20624,7 @@
     <grade></grade>
     <enabled>0</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -23818,7 +23818,7 @@
     <grade></grade>
     <enabled>0</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -25326,7 +25326,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -25494,7 +25494,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -25566,7 +25566,7 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
@@ -26440,7 +26440,7 @@
     <grade>B</grade>
     <enabled>0</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -26582,7 +26582,7 @@
     <grade></grade>
     <enabled>0</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -29589,7 +29589,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -30756,7 +30756,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -37038,7 +37038,7 @@
     <grade></grade>
     <enabled>0</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -37356,7 +37356,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -37513,7 +37513,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -40495,7 +40495,7 @@
     <grade>C</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -40741,7 +40741,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -40798,7 +40798,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -40855,7 +40855,7 @@
     <grade>B</grade>
     <enabled>0</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -40885,7 +40885,7 @@
     <grade></grade>
     <enabled>0</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -41034,7 +41034,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
@@ -41457,7 +41457,7 @@
     <grade></grade>
     <enabled>0</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -41545,7 +41545,7 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <heavy>0</heavy>
+    <heavy>1</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>

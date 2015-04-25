@@ -1,0 +1,788 @@
+<machine>
+    <version>2.1 NVIDIA-8.26.28 310.40.55b01</version>
+    <vendor>NVIDIA Corporation</vendor>
+    <card>NVIDIA GeForce GT 650M OpenGL Engine</card>
+    <display>oculusHD</display>
+</machine>
+<visual_system name="LaplacianTunnel">
+    <preset name="LaplacianGray">
+        <loadtime>1.508056641</loadtime>
+        <fps>46.188098907</fps>
+    </preset>
+    <preset name="LaplacianBlack">
+        <loadtime>1.997802734</loadtime>
+        <fps>54.277797699</fps>
+    </preset>
+</visual_system>
+<visual_system name="WormHole">
+    <preset name="lightAndFog_2">
+        <loadtime>0.661865234</loadtime>
+        <fps>57.536449432</fps>
+    </preset>
+    <preset name="lightAndFog">
+        <loadtime>0.407745361</loadtime>
+        <fps>57.871074677</fps>
+    </preset>
+    <preset name="gTunnelv3_03_white">
+        <loadtime>1.404541016</loadtime>
+        <fps>58.001678467</fps>
+    </preset>
+    <preset name="gTunnelv2_05_xrayGray">
+        <loadtime>0.556884766</loadtime>
+        <fps>58.200733185</fps>
+    </preset>
+    <preset name="Aminos_3a">
+        <loadtime>0.930297852</loadtime>
+        <fps>57.585262299</fps>
+    </preset>
+    <preset name="gTunnelv2_03_BrownXray">
+        <loadtime>0.596069336</loadtime>
+        <fps>58.078346252</fps>
+    </preset>
+    <preset name="gTunnelOrganix_10_xray">
+        <loadtime>0.340881348</loadtime>
+        <fps>58.057418823</fps>
+    </preset>
+    <preset name="gTunnelv2_04_white">
+        <loadtime>0.623413086</loadtime>
+        <fps>58.085327148</fps>
+    </preset>
+    <preset name="Aminos_2">
+        <loadtime>0.428466797</loadtime>
+        <fps>58.365898132</fps>
+    </preset>
+    <preset name="gTunnelv2_06_transparent_blue">
+        <loadtime>0.590209961</loadtime>
+        <fps>57.711162567</fps>
+    </preset>
+    <preset name="OrganicTunnel_2_slow">
+        <loadtime>0.590087891</loadtime>
+        <fps>58.078346252</fps>
+    </preset>
+    <preset name="gTunnelv2_01_white">
+        <loadtime>0.658203125</loadtime>
+        <fps>58.849140167</fps>
+    </preset>
+    <preset name="OrganicTunnel_2_White">
+        <loadtime>0.567871094</loadtime>
+        <fps>57.648143768</fps>
+    </preset>
+    <preset name="OrganicTunnel_2_medium">
+        <loadtime>0.235107422</loadtime>
+        <fps>57.508594513</fps>
+    </preset>
+    <preset name="OrganicTunnel_2_fast">
+        <loadtime>0.498535156</loadtime>
+        <fps>56.271873474</fps>
+    </preset>
+    <preset name="OrganicTunnel_2_White_Faster">
+        <loadtime>0.342773438</loadtime>
+        <fps>57.634159088</fps>
+    </preset>
+</visual_system>
+<visual_system name="Ocean">
+    <preset name="g_epicLines_01OC">
+        <loadtime>0.422363281</loadtime>
+        <fps>11.997071266</fps>
+    </preset>
+    <preset name="g_FIN_02_Monochrome">
+        <loadtime>0.438537598</loadtime>
+        <fps>56.166957855</fps>
+    </preset>
+    <preset name="Exoplanet_dusk_walkOC">
+        <loadtime>0.311035156</loadtime>
+        <fps>57.827056885</fps>
+    </preset>
+    <preset name="ChoppyBlueOcean">
+        <loadtime>0.479248047</loadtime>
+        <fps>58.204238892</fps>
+    </preset>
+    <preset name="g_flatRadicalOC">
+        <loadtime>0.158447266</loadtime>
+        <fps>58.302532196</fps>
+    </preset>
+    <preset name="DunesAtNightOC">
+        <loadtime>0.302856445</loadtime>
+        <fps>58.253345490</fps>
+    </preset>
+    <preset name="StormyOceanOC">
+        <loadtime>0.221679688</loadtime>
+        <fps>58.372947693</fps>
+    </preset>
+    <preset name="DuskOcean_JG">
+        <loadtime>0.443115234</loadtime>
+        <fps>58.422336578</fps>
+    </preset>
+    <preset name="NightOcean_SND">
+        <loadtime>0.477050781</loadtime>
+        <fps>57.697147369</fps>
+    </preset>
+    <preset name="g_FIN_01_Epic">
+        <loadtime>0.432739258</loadtime>
+        <fps>3.695916891</fps>
+    </preset>
+    <preset name="DunesAtNight">
+        <loadtime>0.435058594</loadtime>
+        <fps>53.599811554</fps>
+    </preset>
+</visual_system>
+<visual_system name="Cosmic">
+    <preset name="EG_CosmicCornea">
+        <loadtime>0.770160675</loadtime>
+        <fps>58.163089752</fps>
+    </preset>
+    <preset name="nBody">
+        <loadtime>0.467041016</loadtime>
+        <fps>59.233551025</fps>
+    </preset>
+</visual_system>
+<visual_system name="VerletForm">
+    <preset name="JG_does_marius3OC">
+        <loadtime>0.561489105</loadtime>
+        <fps>57.981422424</fps>
+    </preset>
+    <preset name="JG_does_marius3">
+        <loadtime>0.466400146</loadtime>
+        <fps>58.092308044</fps>
+    </preset>
+    <preset name="MWLORES_OC">
+        <loadtime>0.408386230</loadtime>
+        <fps>58.471813202</fps>
+    </preset>
+    <preset name="JG_does_marius2">
+        <loadtime>0.465393066</loadtime>
+        <fps>57.918693542</fps>
+    </preset>
+    <preset name="JG_does_marius">
+        <loadtime>0.416870117</loadtime>
+        <fps>57.655139923</fps>
+    </preset>
+    <preset name="MWDarkOC">
+        <loadtime>0.450195312</loadtime>
+        <fps>57.564331055</fps>
+    </preset>
+</visual_system>
+<visual_system name="Histogram">
+    <preset name="DataHistogram4">
+        <loadtime>0.421966553</loadtime>
+        <fps>57.950481415</fps>
+    </preset>
+    <preset name="DataHistogram3">
+        <loadtime>0.476440430</loadtime>
+        <fps>58.610076904</fps>
+    </preset>
+    <preset name="Waveform1">
+        <loadtime>0.258422852</loadtime>
+        <fps>58.507202148</fps>
+    </preset>
+    <preset name="Waveform3">
+        <loadtime>0.521850586</loadtime>
+        <fps>57.978767395</fps>
+    </preset>
+    <preset name="Waveform3_GTNonStop">
+        <loadtime>0.508544922</loadtime>
+        <fps>57.816501617</fps>
+    </preset>
+    <preset name="Waveform1_Happen">
+        <loadtime>0.419921875</loadtime>
+        <fps>57.830574036</fps>
+    </preset>
+</visual_system>
+<visual_system name="Circuit">
+    <preset name="JG_AggregiousSweep">
+        <loadtime>1.092628479</loadtime>
+        <fps>58.725799561</fps>
+    </preset>
+    <preset name="JM_ZoomOut">
+        <loadtime>0.676025391</loadtime>
+        <fps>16.129718781</fps>
+    </preset>
+    <preset name="JM_LongSweep">
+        <loadtime>0.657348633</loadtime>
+        <fps>29.591812134</fps>
+    </preset>
+    <preset name="JM_ZoomOutIn">
+        <loadtime>0.788085938</loadtime>
+        <fps>15.044995308</fps>
+    </preset>
+</visual_system>
+<visual_system name="OpenP5NoiseSphere">
+    <preset name="CoolEscalation">
+        <loadtime>0.576850891</loadtime>
+        <fps>58.243690491</fps>
+    </preset>
+    <preset name="jm_02aSun_things1OC">
+        <loadtime>0.306640625</loadtime>
+        <fps>58.064392090</fps>
+    </preset>
+    <preset name="jm_03a_things2OC">
+        <loadtime>0.348632812</loadtime>
+        <fps>58.727581024</fps>
+    </preset>
+    <preset name="gx_work_04a">
+        <loadtime>0.528686523</loadtime>
+        <fps>57.978767395</fps>
+    </preset>
+    <preset name="Nervous_ColorsOC">
+        <loadtime>0.493652344</loadtime>
+        <fps>57.929286957</fps>
+    </preset>
+</visual_system>
+<visual_system name="RGBDVideo">
+    <preset name="ITP_3OC">
+        <loadtime>0.514549255</loadtime>
+        <fps>30.848430634</fps>
+    </preset>
+    <preset name="ITP_4">
+        <loadtime>0.404907227</loadtime>
+        <fps>57.083679199</fps>
+    </preset>
+    <preset name="ITP_2_omerOC">
+        <loadtime>0.218139648</loadtime>
+        <fps>44.803112030</fps>
+    </preset>
+    <preset name="ITP_5">
+        <loadtime>0.342041016</loadtime>
+        <fps>29.118482590</fps>
+    </preset>
+    <preset name="KoblinSubway_medium">
+        <loadtime>0.538330078</loadtime>
+        <fps>26.381679535</fps>
+    </preset>
+    <preset name="ITP_1OC">
+        <loadtime>0.459716797</loadtime>
+        <fps>43.957073212</fps>
+    </preset>
+</visual_system>
+<visual_system name="Voro">
+    <preset name="crystal1">
+        <loadtime>0.274429321</loadtime>
+        <fps>58.207744598</fps>
+    </preset>
+    <preset name="Dream_Crystal1">
+        <loadtime>0.595825195</loadtime>
+        <fps>49.355342865</fps>
+    </preset>
+</visual_system>
+<visual_system name="OpenP5Spaghetti">
+    <preset name="SmoothScribblesOC">
+        <loadtime>0.461502075</loadtime>
+        <fps>58.142097473</fps>
+    </preset>
+    <preset name="Fuzzy_galaxyOC">
+        <loadtime>0.459350586</loadtime>
+        <fps>58.411746979</fps>
+    </preset>
+    <preset name="scribbles">
+        <loadtime>0.193481445</loadtime>
+        <fps>58.464740753</fps>
+    </preset>
+    <preset name="Green_Lidar2OC">
+        <loadtime>0.732910156</loadtime>
+        <fps>9.078014374</fps>
+    </preset>
+    <preset name="VioletBlue_Nebula">
+        <loadtime>0.718505859</loadtime>
+        <fps>10.937250137</fps>
+    </preset>
+</visual_system>
+<visual_system name="Terrain">
+    <preset name="J_BlackMountains">
+        <loadtime>0.564804077</loadtime>
+        <fps>58.357089996</fps>
+    </preset>
+    <preset name="JM_DrawGoo_rotation">
+        <loadtime>0.710540771</loadtime>
+        <fps>58.146469116</fps>
+    </preset>
+    <preset name="M_DrawGoo">
+        <loadtime>0.508789062</loadtime>
+        <fps>58.521369934</fps>
+    </preset>
+    <preset name="GraySandbox">
+        <loadtime>0.922454834</loadtime>
+        <fps>58.019084930</fps>
+    </preset>
+    <preset name="JM_Terraformer">
+        <loadtime>0.345336914</loadtime>
+        <fps>58.478885651</fps>
+    </preset>
+    <preset name="M_LandscapeTV">
+        <loadtime>0.338012695</loadtime>
+        <fps>58.330677032</fps>
+    </preset>
+    <preset name="M_LiquidTerrain_rotation">
+        <loadtime>0.306152344</loadtime>
+        <fps>58.330677032</fps>
+    </preset>
+    <preset name="M_Terraformer">
+        <loadtime>0.572875977</loadtime>
+        <fps>57.585262299</fps>
+    </preset>
+    <preset name="PurpleSandbox">
+        <loadtime>0.204833984</loadtime>
+        <fps>58.022567749</fps>
+    </preset>
+</visual_system>
+<visual_system name="OpenP5SpaceJunk">
+    <preset name="FallingCubes">
+        <loadtime>0.233367920</loadtime>
+        <fps>57.999114990</fps>
+    </preset>
+    <preset name="gx_work_01a">
+        <loadtime>0.196014404</loadtime>
+        <fps>57.973461151</fps>
+    </preset>
+    <preset name="JM_Sweep_Enormous">
+        <loadtime>0.412719727</loadtime>
+        <fps>58.120250702</fps>
+    </preset>
+    <preset name="jm_work_03a">
+        <loadtime>0.464965820</loadtime>
+        <fps>57.964622498</fps>
+    </preset>
+    <preset name="StarkCubes">
+        <loadtime>0.581787109</loadtime>
+        <fps>56.923564911</fps>
+    </preset>
+    <preset name="DynamicLighting">
+        <loadtime>0.424804688</loadtime>
+        <fps>31.931962967</fps>
+    </preset>
+</visual_system>
+<visual_system name="World">
+    <preset name="Atomic2">
+        <loadtime>1.347579956</loadtime>
+        <fps>26.871252060</fps>
+    </preset>
+    <preset name="SpaceJunkOC">
+        <loadtime>0.895080566</loadtime>
+        <fps>15.476679802</fps>
+    </preset>
+    <preset name="Social_NetworkOC">
+        <loadtime>1.062072754</loadtime>
+        <fps>27.432397842</fps>
+    </preset>
+    <preset name="Arcs2">
+        <loadtime>0.981689453</loadtime>
+        <fps>42.558414459</fps>
+    </preset>
+    <preset name="AtomicOC">
+        <loadtime>1.389770508</loadtime>
+        <fps>24.274030685</fps>
+    </preset>
+    <preset name="g_Intro_03">
+        <loadtime>1.074340820</loadtime>
+        <fps>21.088695526</fps>
+    </preset>
+    <preset name="Arcs">
+        <loadtime>1.031738281</loadtime>
+        <fps>42.287635803</fps>
+    </preset>
+    <preset name="DataWorld1">
+        <loadtime>0.930908203</loadtime>
+        <fps>56.380584717</fps>
+    </preset>
+    <preset name="Data_globe2">
+        <loadtime>1.014160156</loadtime>
+        <fps>26.188018799</fps>
+    </preset>
+</visual_system>
+<visual_system name="Oscillations">
+    <preset name="Progressive_wormhole_1">
+        <loadtime>0.234634399</loadtime>
+        <fps>58.134231567</fps>
+    </preset>
+    <preset name="g_waveForm">
+        <loadtime>0.243072510</loadtime>
+        <fps>57.827056885</fps>
+    </preset>
+</visual_system>
+<visual_system name="RandomDigits2">
+    <preset name="Matrix_3_slower">
+        <loadtime>0.210922241</loadtime>
+        <fps>58.451480865</fps>
+    </preset>
+    <preset name="Matrix_4_dense">
+        <loadtime>0.450439453</loadtime>
+        <fps>58.109767914</fps>
+    </preset>
+    <preset name="NoiseField">
+        <loadtime>0.165466309</loadtime>
+        <fps>58.120250702</fps>
+    </preset>
+    <preset name="Matrix_5_dense">
+        <loadtime>0.576416016</loadtime>
+        <fps>39.868598938</fps>
+    </preset>
+</visual_system>
+<visual_system name="CubeCraft">
+    <preset name="j_05_blue">
+        <loadtime>0.791702271</loadtime>
+        <fps>57.607952118</fps>
+    </preset>
+    <preset name="MC_shadows">
+        <loadtime>0.603576660</loadtime>
+        <fps>28.855230331</fps>
+    </preset>
+    <preset name="j_work_05a_bluegreen">
+        <loadtime>0.416503906</loadtime>
+        <fps>58.471813202</fps>
+    </preset>
+    <preset name="Tetris">
+        <loadtime>0.595336914</loadtime>
+        <fps>57.950481415</fps>
+    </preset>
+    <preset name="MC_desert3">
+        <loadtime>0.705688477</loadtime>
+        <fps>40.682170868</fps>
+    </preset>
+    <preset name="g_work_02a">
+        <loadtime>0.747192383</loadtime>
+        <fps>57.176414490</fps>
+    </preset>
+    <preset name="j_FIN_01">
+        <loadtime>0.766479492</loadtime>
+        <fps>58.099288940</fps>
+    </preset>
+    <preset name="MC_shadows_1">
+        <loadtime>0.487915039</loadtime>
+        <fps>34.383018494</fps>
+    </preset>
+    <preset name="g_FIN_02">
+        <loadtime>0.290405273</loadtime>
+        <fps>57.992919922</fps>
+    </preset>
+    <preset name="MC_infinite">
+        <loadtime>0.347900391</loadtime>
+        <fps>35.861808777</fps>
+    </preset>
+    <preset name="MC_desert2">
+        <loadtime>0.669921875</loadtime>
+        <fps>42.440483093</fps>
+    </preset>
+</visual_system>
+<visual_system name="Xstatic">
+    <preset name="Neutrinos_1">
+        <loadtime>0.630859375</loadtime>
+        <fps>57.978767395</fps>
+    </preset>
+    <preset name="Neutrinos_2">
+        <loadtime>0.475128174</loadtime>
+        <fps>58.204238892</fps>
+    </preset>
+    <preset name="BouncingBalls">
+        <loadtime>0.590484619</loadtime>
+        <fps>58.146469116</fps>
+    </preset>
+    <preset name="FastPhysics2_TumblingBoxOC">
+        <loadtime>0.437225342</loadtime>
+        <fps>58.346523285</fps>
+    </preset>
+    <preset name="BigPong3_yellow">
+        <loadtime>0.453552246</loadtime>
+        <fps>53.397068024</fps>
+    </preset>
+    <preset name="BigPong3_lavendar">
+        <loadtime>0.514282227</loadtime>
+        <fps>58.099288940</fps>
+    </preset>
+    <preset name="FastPhysics_TumblingBox">
+        <loadtime>0.503051758</loadtime>
+        <fps>57.964622498</fps>
+    </preset>
+    <preset name="BouncingBalls_TumblingBox">
+        <loadtime>0.416503906</loadtime>
+        <fps>56.764404297</fps>
+    </preset>
+</visual_system>
+<visual_system name="OpenP5TextUniverse">
+    <preset name="twitterOC">
+        <loadtime>0.558624268</loadtime>
+        <fps>58.001678467</fps>
+    </preset>
+    <preset name="Borges_randomOC">
+        <loadtime>0.188842773</loadtime>
+        <fps>58.295501709</fps>
+    </preset>
+    <preset name="Borges_random">
+        <loadtime>0.581298828</loadtime>
+        <fps>57.369716644</fps>
+    </preset>
+</visual_system>
+<visual_system name="Mandala">
+    <preset name="PureFormEvolving_OC">
+        <loadtime>1.196441650</loadtime>
+        <fps>57.844654083</fps>
+    </preset>
+    <preset name="JM_AlienFusionReactor">
+        <loadtime>1.197631836</loadtime>
+        <fps>57.746231079</fps>
+    </preset>
+    <preset name="JM_pulse1OC">
+        <loadtime>1.294555664</loadtime>
+        <fps>57.473812103</fps>
+    </preset>
+    <preset name="PureFormOC">
+        <loadtime>0.718750000</loadtime>
+        <fps>57.494674683</fps>
+    </preset>
+    <preset name="DinoSkinPlanetOC">
+        <loadtime>1.167724609</loadtime>
+        <fps>57.522518158</fps>
+    </preset>
+    <preset name="JM_AlienFusionReactor2OC">
+        <loadtime>1.404052734</loadtime>
+        <fps>57.732200623</fps>
+    </preset>
+    <preset name="JM_AlienFusionReactor2">
+        <loadtime>1.335449219</loadtime>
+        <fps>58.500122070</fps>
+    </preset>
+</visual_system>
+<visual_system name="Neurons">
+    <preset name="Brain_wide_OC">
+        <loadtime>0.536560059</loadtime>
+        <fps>15.123110771</fps>
+    </preset>
+    <preset name="MezzyNeurons_Q">
+        <loadtime>0.137390137</loadtime>
+        <fps>46.343765259</fps>
+    </preset>
+    <preset name="XmasDendrites_OC">
+        <loadtime>0.255004883</loadtime>
+        <fps>36.748786926</fps>
+    </preset>
+    <preset name="MezzyNeuronsOC">
+        <loadtime>0.427124023</loadtime>
+        <fps>26.356529236</fps>
+    </preset>
+    <preset name="VeryNervousSystem_OC">
+        <loadtime>0.449462891</loadtime>
+        <fps>48.561336517</fps>
+    </preset>
+</visual_system>
+<visual_system name="Replicator">
+    <preset name="ReplicatorOC">
+        <loadtime>0.624176025</loadtime>
+        <fps>12.699639320</fps>
+    </preset>
+    <preset name="Replicator_organ">
+        <loadtime>0.457458496</loadtime>
+        <fps>14.982168198</fps>
+    </preset>
+    <preset name="Replicator_echoVortex">
+        <loadtime>0.150024414</loadtime>
+        <fps>15.442035675</fps>
+    </preset>
+    <preset name="Replicator">
+        <loadtime>0.214843750</loadtime>
+        <fps>15.637317657</fps>
+    </preset>
+</visual_system>
+<visual_system name="Flying">
+    <preset name="lush">
+        <loadtime>1.196105957</loadtime>
+        <fps>58.253345490</fps>
+    </preset>
+    <preset name="DenseForest_1">
+        <loadtime>0.940063477</loadtime>
+        <fps>58.242813110</fps>
+    </preset>
+    <preset name="DenseForest_SND">
+        <loadtime>1.270019531</loadtime>
+        <fps>57.648143768</fps>
+    </preset>
+</visual_system>
+<visual_system name="Astrolabe">
+    <preset name="Clock2_ZoomIn">
+        <loadtime>0.541259766</loadtime>
+        <fps>58.071369171</fps>
+    </preset>
+    <preset name="notTick">
+        <loadtime>0.190490723</loadtime>
+        <fps>58.109767914</fps>
+    </preset>
+    <preset name="variedSpeed">
+        <loadtime>0.226989746</loadtime>
+        <fps>57.791885376</fps>
+    </preset>
+    <preset name="BigDial_ZoomIn">
+        <loadtime>0.267211914</loadtime>
+        <fps>57.992919922</fps>
+    </preset>
+    <preset name="Clock3_ZoomOut">
+        <loadtime>0.500732422</loadtime>
+        <fps>58.120250702</fps>
+    </preset>
+    <preset name="BigDial_Linear_ZoomIn">
+        <loadtime>0.424438477</loadtime>
+        <fps>58.043472290</fps>
+    </preset>
+    <preset name="DreamEggs1">
+        <loadtime>0.209838867</loadtime>
+        <fps>43.521854401</fps>
+    </preset>
+    <preset name="BigDial_PanZoomout">
+        <loadtime>0.315063477</loadtime>
+        <fps>57.901046753</fps>
+    </preset>
+    <preset name="BigBlueDial">
+        <loadtime>0.147460938</loadtime>
+        <fps>57.746231079</fps>
+    </preset>
+</visual_system>
+<visual_system name="ExampleOpenSteer">
+    <preset name="Pursuit_gray">
+        <loadtime>0.527038574</loadtime>
+        <fps>42.320659637</fps>
+    </preset>
+    <preset name="Fish_purple">
+        <loadtime>0.287414551</loadtime>
+        <fps>33.695621490</fps>
+    </preset>
+    <preset name="Streamers_purple">
+        <loadtime>0.488281250</loadtime>
+        <fps>58.134231567</fps>
+    </preset>
+</visual_system>
+<visual_system name="MarchingCubes">
+    <preset name="MetaMarch_2OC">
+        <loadtime>0.608276367</loadtime>
+        <fps>58.763282776</fps>
+    </preset>
+    <preset name="SineWire1">
+        <loadtime>0.561035156</loadtime>
+        <fps>58.029537201</fps>
+    </preset>
+    <preset name="MetaMarch_1OC">
+        <loadtime>0.203857422</loadtime>
+        <fps>57.872837067</fps>
+    </preset>
+    <preset name="MetaMarch_3OC">
+        <loadtime>0.257080078</loadtime>
+        <fps>58.190223694</fps>
+    </preset>
+</visual_system>
+<visual_system name="Cities">
+    <preset name="gx_work_02a-1">
+        <loadtime>0.911743164</loadtime>
+        <fps>44.794944763</fps>
+    </preset>
+    <preset name="gx_FIN_02">
+        <loadtime>1.031250000</loadtime>
+        <fps>57.985843658</fps>
+    </preset>
+    <preset name="realistic2">
+        <loadtime>1.041259766</loadtime>
+        <fps>57.879886627</fps>
+    </preset>
+    <preset name="Sprawl_aerial1">
+        <loadtime>1.510375977</loadtime>
+        <fps>58.253345490</fps>
+    </preset>
+    <preset name="Archiving6">
+        <loadtime>0.869750977</loadtime>
+        <fps>58.323638916</fps>
+    </preset>
+    <preset name="ThinSkyscrapers1">
+        <loadtime>0.989990234</loadtime>
+        <fps>57.971694946</fps>
+    </preset>
+    <preset name="gx_FIN_01">
+        <loadtime>0.692382812</loadtime>
+        <fps>58.727581024</fps>
+    </preset>
+</visual_system>
+<visual_system name="TunnelDrawing">
+    <preset name="Ink_2">
+        <loadtime>0.286987305</loadtime>
+        <fps>58.127239227</fps>
+    </preset>
+    <preset name="BlueWireframe">
+        <loadtime>0.155151367</loadtime>
+        <fps>57.820018768</fps>
+    </preset>
+    <preset name="Ink_1">
+        <loadtime>0.437744141</loadtime>
+        <fps>57.802433014</fps>
+    </preset>
+</visual_system>
+<visual_system name="Connectors">
+    <preset name="g_work_02a">
+        <loadtime>0.231628418</loadtime>
+        <fps>58.415275574</fps>
+    </preset>
+    <preset name="Rotating_Box">
+        <loadtime>0.455078125</loadtime>
+        <fps>58.071369171</fps>
+    </preset>
+    <preset name="Rotating_Box_slow">
+        <loadtime>0.397705078</loadtime>
+        <fps>58.372947693</fps>
+    </preset>
+    <preset name="Rotating_Box_SND">
+        <loadtime>0.515625000</loadtime>
+        <fps>57.957550049</fps>
+    </preset>
+</visual_system>
+<visual_system name="Twitter">
+    <preset name="CLOUDS">
+        <loadtime>2.468994141</loadtime>
+        <fps>57.943412781</fps>
+    </preset>
+    <preset name="JM_TheCloud_d">
+        <loadtime>5.728271484</loadtime>
+        <fps>30.413414001</fps>
+    </preset>
+    <preset name="JM_TheCloud_b">
+        <loadtime>1.988525391</loadtime>
+        <fps>57.272903442</fps>
+    </preset>
+</visual_system>
+<visual_system name="MazeGenerator">
+    <preset name="flyover_near">
+        <loadtime>0.954833984</loadtime>
+        <fps>57.936347961</fps>
+    </preset>
+    <preset name="gal2">
+        <loadtime>1.367797852</loadtime>
+        <fps>58.106273651</fps>
+    </preset>
+    <preset name="JM_groundcam">
+        <loadtime>0.697143555</loadtime>
+        <fps>57.121421814</fps>
+    </preset>
+    <preset name="gal2OC">
+        <loadtime>0.709472656</loadtime>
+        <fps>49.112709045</fps>
+    </preset>
+</visual_system>
+<visual_system name="Pages">
+    <preset name="DriftOC">
+        <loadtime>0.488281250</loadtime>
+        <fps>57.915164948</fps>
+    </preset>
+</visual_system>
+<visual_system name="OpenP5Hackpact">
+    <preset name="JM_1_bluer">
+        <loadtime>0.442016602</loadtime>
+        <fps>27.996582031</fps>
+    </preset>
+</visual_system>
+<visual_system name="DataCascade">
+    <preset name="DoubleTunnel2">
+        <loadtime>0.572143555</loadtime>
+        <fps>57.795402527</fps>
+    </preset>
+</visual_system>
+<visual_system name="OpenP5Machine">
+    <preset name="JM_clockworkOC">
+        <loadtime>0.441772461</loadtime>
+        <fps>10.144320488</fps>
+    </preset>
+    <preset name="JM_Machine2">
+        <loadtime>0.406982422</loadtime>
+        <fps>10.131773949</fps>
+    </preset>
+</visual_system>
