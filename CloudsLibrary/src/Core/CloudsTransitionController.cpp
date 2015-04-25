@@ -98,6 +98,7 @@ void CloudsTransitionController::transitionToIntro(float inDuration){
 	startTransition();
 }
 
+
 void CloudsTransitionController::transitionToFirstVisualSystem(float duration){
 
 	confirmEmpty("transitionToFirstVisualSystem");
@@ -159,6 +160,24 @@ void CloudsTransitionController::transitionToInterlude(float inDuration,float ou
 		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
         queueState(TRANSITION_INTERLUDE_IN, inDuration);
 	}
+	
+	startTransition();
+}
+
+void CloudsTransitionController::transitionToExploreMap(float inDuration,float outDuration){
+	
+	confirmEmpty("transitionToExploreMap");
+	
+	//we are in a visual system
+	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
+		queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
+	}
+	//we are in an interview
+	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
+		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
+	}
+    
+    queueState(TRANSITION_EXPLORE_MAP_IN, inDuration);
 	
 	startTransition();
 }

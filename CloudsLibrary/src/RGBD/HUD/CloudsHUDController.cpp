@@ -634,10 +634,10 @@ ofVec2f CloudsHUDController::getCenter(bool bScaled){
 }
 
 void CloudsHUDController::update(){
-	//HACK TO KEEP QUESTION ON after asked
-	if(hudLabelMap["QuestionTextBox"]->getText() != "" && !hudLabelMap["QuestionTextBox"]->isVisible()){
-		hudLabelMap["QuestionTextBox"]->animateIn();
-	}
+
+//	if(hudLabelMap["QuestionTextBox"]->getText() != "" && !hudLabelMap["QuestionTextBox"]->isVisible()){
+//		hudLabelMap["QuestionTextBox"]->animateIn();
+//	}
 
     //cout << "IS RESET VISIBLE "    << (hudLabelMap["ResetButtonTextBox"]->isVisible() ? "YES" : "NO") << endl;
     //cout << "IS RESET LAYOUT " << (hudLabelMap["ResetButtonTextBox"]->layout == NULL ? "NULL" : "SET") << endl;
@@ -1092,14 +1092,10 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
     }
 
 	 
-//    for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
     for (map<CloudsHUDLayerSet, CloudsHUDLayer* >::iterator it = layers.begin(); it != layers.end(); ++it) {
         if ((layer & it->first) != 0) {
             hudOpenMap[it->first] = false;
             it->second->close();
-//            for (int i = 0; i < it->second.size(); i++) {
-//                it->second[i]->close();
-//            }
         }
     }
     

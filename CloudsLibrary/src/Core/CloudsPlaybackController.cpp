@@ -59,7 +59,10 @@ CloudsPlaybackController::CloudsPlaybackController(){
     showingInterlude = false;
     exitedInterlude = false;
 	
-
+    showingExploreMap = false;
+    showingExplorePeople = false;
+    showingExploreVisuals = false;
+ 
 	bQuestionAsked = false;
 	interludeExitBarWidth = 0.0;
 	interludeHoveringContinue = false;
@@ -748,11 +751,12 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     }
     
     if(hud.isNextHit()){
-        CloudsVisualSystem::getRGBDVideoPlayer().stop();
         if(showingInterlude){
-            //continue from interlude
+            sound.stopMusic();
+            transitionController.transitionFromInterlude(1.0);
         }
         else if(currentAct != NULL){
+            CloudsVisualSystem::getRGBDVideoPlayer().stop();
             currentAct->next();
             //TODO: if this is VO we need to not exit the system
             if(showingVisualSystem){
@@ -760,8 +764,17 @@ void CloudsPlaybackController::update(ofEventArgs & args){
                 transitionController.transitionToInterview(fadeDuration, 1.0);
             }
         }
+        else{
+            //some stuck state, go to interlude
+            transitionController.transitionToInterlude(1.0, 1.0);
+        }
         
         hud.unpause();
+    }
+    
+    if(hud.isExploreMapHit()){
+        hud.animateOff();
+        transitionController.transitionToExploreMap(1.0, 2.0);
     }
     
     if(returnToIntro){
@@ -877,9 +890,7 @@ void CloudsPlaybackController::updateTransition(){
             case TRANSITION_VISUALSYSTEM_OUT:
                 
                 // no need to do anything special, the crossfade value will take care of this
-                
-                //hud.animateOff(CLOUDS_HUD_FULL);
-                
+
                 break;
                 
             case TRANSITION_INTERVIEW_IN:
@@ -919,7 +930,26 @@ void CloudsPlaybackController::updateTransition(){
 				createInterludeSoundQueue();
                 
                 break;
+            
+            case TRANSITION_EXPLORE_MAP_IN:
+                if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
+                    rgbdVisualSystem->transtionFinished();
+                    rgbdVisualSystem->stopSystem();
+                }
+                else if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
+                    hideVisualSystem();
+                }
                 
+                showExploreMap(); //TODO: focus on current topic
+                
+                break;
+                
+            case TRANSITION_EXPLORE_MAP_OUT:
+                
+                //TODO:
+                //here is where we actually kill the current act if they chose something
+                
+                break;
     //////////////////
     ////////IDLE CASES
     ///////////////////
@@ -962,8 +992,9 @@ void CloudsPlaybackController::updateTransition(){
 						
 						//build the next act
                         storyEngine.buildAct(run,
-											 clusterMap->getSelectedQuestion()->clip,
-											 clusterMap->getSelectedQuestion()->topic, true);
+                                             clusterMap->getSelectedQuestion()->clip,
+                                             clusterMap->getSelectedQuestion()->topic,
+                                             true);
                     }
                     
 					break;
@@ -1658,6 +1689,24 @@ void CloudsPlaybackController::cleanupInterlude(){
 }
 
 //--------------------------------------------------------------------
+void CloudsPlaybackController::showExploreMap(){
+
+    //Just show the clustermap for now
+    clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
+
+    clusterMap->playSystem();
+    clusterMap->clearTraversal();
+    
+    clusterMap->autoTraversePoints = false;
+    
+    currentVisualSystem = clusterMap;
+    
+    showingVisualSystem = true;
+    showingExploreMap = true;
+
+}
+
+//--------------------------------------------------------------------
 void CloudsPlaybackController::hideVisualSystem() {
 	if(showingVisualSystem){
 		currentVisualSystem->stopSystem();
@@ -1665,6 +1714,7 @@ void CloudsPlaybackController::hideVisualSystem() {
 	}
 }
 
+//--------------------------------------------------------------------
 void CloudsPlaybackController::showRGBDVisualSystem(){
 
 	rgbdVisualSystem->loadPresetGUISFromName(basePreset);
@@ -1697,6 +1747,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 	currentVisualSystem = rgbdVisualSystem;
 }
 
+//--------------------------------------------------------------------
 void CloudsPlaybackController::playNextVisualSystem()
 {
 	if(nextVisualSystemPreset.system != NULL){

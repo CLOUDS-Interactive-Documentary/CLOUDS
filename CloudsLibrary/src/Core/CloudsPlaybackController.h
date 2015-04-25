@@ -131,6 +131,11 @@ class CloudsPlaybackController : public ofThread {
 	CloudsIntroSequence* introSequence;
 	CloudsVisualSystemClusterMap* clusterMap;
 	CloudsVisualSystem* interludeSystem;
+    
+    //TODO: add these guys too!
+    //CloudsVisualSystemTwitter* peopleMap;
+    //CloudsVisualSystemSystems* visualsMap;
+    
     float interludeStartTime;
 	
 	CloudsVisualSystemPreset nextVisualSystemPreset;	
@@ -168,7 +173,7 @@ class CloudsPlaybackController : public ofThread {
 	//VISUAL SYSTEMS
 	//
 	void showIntro();
-
+    
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
@@ -176,6 +181,10 @@ class CloudsPlaybackController : public ofThread {
     bool showedClusterMapNavigation;
     bool showingInterlude;
     bool exitedInterlude;
+    bool showingExploreMap;
+    bool showingExplorePeople;
+    bool showingExploreVisuals;
+    
 	bool bQuestionAsked;
 	bool forceCredits;
 	
@@ -188,6 +197,8 @@ class CloudsPlaybackController : public ofThread {
     void showClusterMap();
     void showInterlude();
     void cleanupInterlude();
+    
+    void showExploreMap();
 
     //INTERLUDE INTERFACE
 	void resetInterludeVariables();
