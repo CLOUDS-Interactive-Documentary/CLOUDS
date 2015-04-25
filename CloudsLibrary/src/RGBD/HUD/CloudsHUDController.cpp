@@ -410,9 +410,20 @@ void CloudsHUDController::buildLayerSets(){
     projectExampleLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_PROJECT_EXAMPLE");
     layers[CLOUDS_HUD_PROJECT_EXAMPLE] = projectExampleLayer;
     allLayers.push_back( projectExampleLayer );
-    
-    for( int i=0; i<allLayers.size(); i++ ){
 
+    CloudsHUDLayer* researchListLayer = new CloudsHUDLayer();
+    researchListLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_LIST");
+    layers[CLOUDS_HUD_RESEARCH_LIST] = researchListLayer;
+    allLayers.push_back( researchListLayer );
+    
+    CloudsHUDLayer* researchNavLayer = new CloudsHUDLayer();
+    researchNavLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_NAV");
+    layers[CLOUDS_HUD_RESEARCH_NAV] = researchNavLayer;
+    allLayers.push_back( researchNavLayer );
+    
+    for( int i = 0; i < allLayers.size(); i++ ){
+
+        //TODO: filled meshes shouldn't be done this way
 		for( int s = 0; s < allLayers[i]->svg.getMeshes().size(); s++){
 			ofVboMesh& m = allLayers[i]->svg.getMeshes()[s].mesh;
 			for(int v = 0; v < m.getNumVertices(); v++){
@@ -473,10 +484,6 @@ void CloudsHUDController::calculateFontSizes(){
     
     QuestionTextBox             = getLayoutForLayer("QuestionTextBox", fontPath);
 
-//  were used for map
-//    TopicTextBoxLeft            = getLayoutForLayer("TopicTextBoxLeft", fontPath);
-//    TopicTextBoxRight           = getLayoutForLayer("TopicTextBoxRight", fontPath);
-    
     ProjectExampleTextboxLeft   = getLayoutForLayer("ProjectExampleTextboxLeft", fontPath);
     ProjectExampleTextboxRight  = getLayoutForLayer("ProjectExampleTextboxRight", fontPath);
     ProjectExampleTextBoxTop    = getLayoutForLayer("ProjectExampleTextBoxTop", fontPath);
@@ -674,10 +681,6 @@ void CloudsHUDController::update(){
     }
 	
     
-    //  home.interactiveBounds.x = home.bounds.x * scaleAmt + scaleOffset.x;
-    //	home.interactiveBounds.y = home.bounds.y * scaleAmt + scaleOffset.y;
-    //	home.interactiveBounds.width  = home.bounds.width  * scaleAmt;
-    //	home.interactiveBounds.height = home.bounds.height * scaleAmt;
     home.interactiveBounds = getScaledRectangle(home.bounds);
     home.update();
     if( home.wasActivated() ){
@@ -691,21 +694,6 @@ void CloudsHUDController::update(){
     
     ///////////////////////////////
 
-//    if(hudOpenMap[CLOUDS_HUD_PAUSE] ){
-//        if(hudLabelMap["ResetButtonTextBox"]->isClicked()){
-////            cout << "CLICKED RESET" << endl;
-//        }
-//        if(hudLabelMap["ExploreTextBox"]->isClicked()){
-////            cout << "CLICKED EXPLORE" << endl;
-//        }
-//        if(hudLabelMap["SeeMoreTextBox"]->isClicked()){
-////            cout << "CLICKED SEE MORE" << endl;
-//        }
-//        if(hudLabelMap["NextButtonTextBox"]->isClicked()){
-////            cout << "CLICKED NEXT" << endl;
-//        }
-//    }
-    
 }
 
 
@@ -732,7 +720,6 @@ void CloudsHUDController::pause(){
     layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreTitleDivide")->mesh.getVertices()[0].x = seeMoreX;
     layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreTitleDivide")->mesh.getVertices()[1].x = seeMoreX;
     
-//    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreBackingNoHover")->bounds.width = exploreMapWidth;
     hudLabelMap["SeeMoreTextBox"]->bounds.x = seeMoreX + margin;
 
     hudLabelMap["ResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonBacking")->bounds;
@@ -770,22 +757,10 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
         (it->second)->mouseMoved(ofVec2f(args.x,args.y));
     }
     
-//	bool orig = bResetIsHovered;
-//	bResetIsHovered = hudOpenMap[CLOUDS_HUD_PAUSE] && scaledResetRect.inside(args.x,args.y);
-//    //cout << "RESET HOVERED? " << (bResetIsHovered ? "YES" : "NO") << endl;
-//    
-//	if(orig != bResetIsHovered){
-//		resetHoverChangedTime = ofGetElapsedTimef();
-//	}
 }
 
 void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
 	
-//	bResetIsPressed = false;
-//    
-//	if(scaledResetRect.inside(args.x,args.y) && hudOpenMap[CLOUDS_HUD_PAUSE]){
-//		bResetIsPressed  = true;
-//    }
 
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->mousePressed(ofVec2f(args.x,args.y));
@@ -802,10 +777,6 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
         (it->second)->mouseReleased(ofVec2f(args.x,args.y));
     }
  
-//	if(hudOpenMap[CLOUDS_HUD_PAUSE]){
-//		bResetIsClicked = bResetIsPressed &&  scaledResetRect.inside(args.x,args.y);
-//	}
-//	bResetIsPressed = false;
 }
 
 bool CloudsHUDController::isResetHit(){
@@ -874,7 +845,8 @@ void CloudsHUDController::draw(){
 	drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
 	drawLayer(CLOUDS_HUD_PAUSE);
-	
+	drawLayer(CLOUDS_HUD_RESEARCH_LIST);
+	drawLayer(CLOUDS_HUD_RESEARCH_NAV);
 
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->draw();
@@ -1041,46 +1013,45 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, of
 #endif
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
-    //bIsHudOpen = true;
 	
     for (map<CloudsHUDLayerSet, CloudsHUDLayer* >::iterator it = layers.begin(); it != layers.end(); ++it) {
-        if ((layer & it->first) != 0 /*&& it->first != CLOUDS_HUD_QUESTION*/) {
+        if (layer == it->first || layer == CLOUDS_HUD_ALL) {
             hudOpenMap[it->first] = true;
-//            for (int i = 0; i < it->second.size(); i++) {
-//                it->second[i]->start();
-//            }
             it->second->start();
         }
     }
     
     // animate in text, this is sub-optimal
-    if( layer == CLOUDS_HUD_FULL ){
+    if( layer == CLOUDS_HUD_ALL ){
         for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
             (it->second)->animateIn( true );
         }
     }
-    else if( (layer & CLOUDS_HUD_LOWER_THIRD) != 0 ){
+    else if( layer == CLOUDS_HUD_LOWER_THIRD ){
         hudLabelMap["BylineFirstNameTextBox_1_"]->animateIn( true );
         hudLabelMap["BylineLastNameTextBox"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxTop"]->animateIn( true );
         hudLabelMap["BylineTopicTextBoxBottom"]->animateIn( true );
         hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
-//		hudLabelMap["ResetButtonTextBox"]->animateIn( true );
     }
-    else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
+    else if( layer == CLOUDS_HUD_PROJECT_EXAMPLE ){
         hudLabelMap["ProjectExampleTextboxLeft"]->animateIn( true );
         hudLabelMap["ProjectExampleTextboxRight"]->animateIn( true );
         hudLabelMap["ProjectExampleTextBoxTop"]->animateIn( true );
     }
-    else if( (layer & CLOUDS_HUD_PAUSE) != 0 ){
+    else if( layer == CLOUDS_HUD_PAUSE ){
 		hudLabelMap["ResetButtonTextBox"]->animateIn( true );
         hudLabelMap["ExploreTextBox"]->animateIn( true );
         hudLabelMap["SeeMoreTextBox"]->animateIn( true );
         hudLabelMap["NextButtonTextBox"]->animateIn( true );
     }
-    else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
+    else if( layer == CLOUDS_HUD_QUESTION ){
         hudLabelMap["QuestionTextBox"]->animateIn( true );
     }
+}
+
+void CloudsHUDController::animateOff(){
+    animateOff(CLOUDS_HUD_ALL);
 }
 
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
@@ -1091,36 +1062,35 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         videoPlayer.close();
     }
 
-	 
     for (map<CloudsHUDLayerSet, CloudsHUDLayer* >::iterator it = layers.begin(); it != layers.end(); ++it) {
-        if ((layer & it->first) != 0) {
+        if (layer == it->first || layer == CLOUDS_HUD_ALL) {
             hudOpenMap[it->first] = false;
             it->second->close();
         }
     }
     
     // animate out text, this is sub-optimal
-    if( layer == CLOUDS_HUD_FULL ){
+    if( layer == CLOUDS_HUD_ALL ){
         for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
             (it->second)->animateOut();
         }
     }
-    else if( (layer & CLOUDS_HUD_LOWER_THIRD) != 0 ){
+    else if( layer == CLOUDS_HUD_LOWER_THIRD ){
         hudLabelMap["BylineFirstNameTextBox_1_"]->animateOut();
         hudLabelMap["BylineLastNameTextBox"]->animateOut();
         hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
         hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
         hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
     }
-    else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
+    else if( layer == CLOUDS_HUD_PROJECT_EXAMPLE ){
         hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();
         hudLabelMap["ProjectExampleTextboxRight"]->animateOut();
         hudLabelMap["ProjectExampleTextBoxTop"]->animateOut();
     }
-    else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
+    else if( layer == CLOUDS_HUD_QUESTION ){
         hudLabelMap["QuestionTextBox"]->animateOut();
     }
-    else if( (layer & CLOUDS_HUD_PAUSE) != 0 ){
+    else if( layer == CLOUDS_HUD_PAUSE ){
 		hudLabelMap["ResetButtonTextBox"]->animateOut();
         hudLabelMap["ExploreTextBox"]->animateOut();
         hudLabelMap["SeeMoreTextBox"]->animateOut();

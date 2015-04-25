@@ -777,6 +777,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         transitionController.transitionToExploreMap(1.0, 2.0);
     }
     
+    if(hud.isSeeMorePersonHit()){
+        hud.animateOff();
+        //....
+    }
+    
     if(returnToIntro){
         returnToIntro = false;
         transitionController.transitionToIntro(1.0);
@@ -1691,7 +1696,10 @@ void CloudsPlaybackController::cleanupInterlude(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showExploreMap(){
 
-    //Just show the clustermap for now
+    hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
+//    hud.animateOn(CLOUDS_HUD_RESEARCH_NAV);
+    
+    //TODO fix the preset
     clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
 
     clusterMap->playSystem();

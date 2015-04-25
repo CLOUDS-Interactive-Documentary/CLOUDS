@@ -19,14 +19,15 @@
 #include "CloudsSpeaker.h"
 
 typedef enum {
-	CLOUDS_HUD_HOME            = 0x00001,
-	CLOUDS_HUD_QUESTION        = 0x00010,
-	CLOUDS_HUD_LOWER_THIRD     = 0x00100,
-	CLOUDS_HUD_PROJECT_EXAMPLE = 0x01000,
-	CLOUDS_HUD_PAUSE           = 0x10000,
-    
-	CLOUDS_HUD_FULL            = 0x11111,
-    CLOUDS_HUD_LAYER_COUNT     = 5
+	CLOUDS_HUD_HOME = 0,
+	CLOUDS_HUD_QUESTION,
+	CLOUDS_HUD_LOWER_THIRD,
+	CLOUDS_HUD_PROJECT_EXAMPLE,
+	CLOUDS_HUD_PAUSE,
+	CLOUDS_HUD_RESEARCH_LIST,
+	CLOUDS_HUD_RESEARCH_NAV,
+	
+    CLOUDS_HUD_ALL
 } CloudsHUDLayerSet;
 
 #ifdef OCULUS_RIFT
@@ -73,8 +74,9 @@ class CloudsHUDController {
     bool didUnpause();    
     bool isPaused();
     
-	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
-	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
+	void animateOn(CloudsHUDLayerSet layer);
+	void animateOff(CloudsHUDLayerSet layer);
+    void animateOff();
 	void respondToClip(CloudsClip* clip);
 	void respondToSystem(const CloudsVisualSystemPreset& preset);
     
