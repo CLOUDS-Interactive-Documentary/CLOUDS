@@ -158,7 +158,26 @@ class CloudsHUDController {
     
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
+    
+    
+    /////////////// SCROLL VARIABLES
+    //////////////
     ofRectangle   researchScrollBounds;
+    ofRectangle   scrollUpBounds;
+    ofRectangle   scrollDownBounds;
+    bool          bIsScrollUpHover;
+    bool          bIsScrollDownHover;
+    bool          bIsScrollUpPressed;
+    bool          bIsScrollDownPressed;
+    bool          bIsHoldScrolling;
+    float         scrollPressedTime;
+    
+    float         scrollPosition;
+    float         totalScrollHeight;
+    float         scrollIncrement;
+    
+    void          updateScroll();
+    //////////////
     
 	//reset stuff
 	ofMesh resetTriangle;
@@ -220,8 +239,6 @@ class CloudsHUDController {
     ofVec2f scaleOffset;
     int margin;
     
-    float scrollPosition;
-    float totalScrollHeight;
     
     vector<TopicButton> topicButtons;
     

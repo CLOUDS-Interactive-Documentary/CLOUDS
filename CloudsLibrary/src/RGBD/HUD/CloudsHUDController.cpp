@@ -21,8 +21,6 @@ CloudsHUDController::CloudsHUDController(){
     bSkipAVideoFrame = false;
     bDrawHud = true;
     
-    scrollPosition = 0;
-    totalScrollHeight = 0;
 
     bJustPaused = false;
     bJustUnpaused = false;
@@ -32,6 +30,14 @@ CloudsHUDController::CloudsHUDController(){
     bLowerThirdCued = false;
 
     currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
+    bIsScrollUpHover = false;
+    bIsScrollDownHover = false;
+    bIsScrollUpPressed = false;
+    bIsScrollDownPressed = false;
+    bIsHoldScrolling = false;
+    scrollPosition = 0;
+    totalScrollHeight = 0;
+    scrollPressedTime = 0;
     
 	isPlaying = false;
     
@@ -444,6 +450,9 @@ void CloudsHUDController::buildLayerSets(){
 	videoBounds = svgVideoBounds;
     researchScrollBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListBacking")->bounds;
 
+    scrollUpBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.y,researchScrollBounds.width,30);
+    scrollDownBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.getMaxY()-30,researchScrollBounds.width,30);
+
     hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
 //	cout << "HUD BOUNDS " << hudBounds.width << " / " << hudBounds.height << endl;
@@ -496,6 +505,8 @@ void CloudsHUDController::calculateFontSizes(){
     //research stuff
     ResearchTopicListFont       = getFontForLayer("ListPeopleTextBox", fontPath, 35);
 
+    scrollIncrement             = hudLabelMap["ListPeopleTextBox"]->bounds.height * 1.5;
+ 
     // cleanup!
     for( int i=0; i<tempFontList.size(); i++ ){
         delete tempFontList[i];
@@ -643,16 +654,6 @@ ofVec2f CloudsHUDController::getCenter(bool bScaled){
 
 void CloudsHUDController::update(){
 
-//	if(hudLabelMap["QuestionTextBox"]->getText() != "" && !hudLabelMap["QuestionTextBox"]->isVisible()){
-//		hudLabelMap["QuestionTextBox"]->animateIn();
-//	}
-
-    //cout << "IS RESET VISIBLE "    << (hudLabelMap["ResetButtonTextBox"]->isVisible() ? "YES" : "NO") << endl;
-    //cout << "IS RESET LAYOUT " << (hudLabelMap["ResetButtonTextBox"]->layout == NULL ? "NULL" : "SET") << endl;
-    //cout << "IS RESET TEXT  "     << hudLabelMap["ResetButtonTextBox"]->getText() << endl;
-    
-//	cout << "CURRENT QUESTION " << hudLabelMap["QuestionTextBox"]->getText() << " VISIBLE? " << (hudLabelMap["QuestionTextBox"]->isVisible() ? "YES" : "NO") << endl;
-
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
 	}
@@ -693,15 +694,30 @@ void CloudsHUDController::update(){
         }
     }
     
+    if( hudOpenMap[CLOUDS_HUD_RESEARCH_LIST] ){
+        updateScroll();
+    }
+    
     ///////////////////////////////
 
 }
 
+void CloudsHUDController::updateScroll(){
+    if(bIsScrollDownPressed || bIsScrollUpPressed){
+        float timeSincePress = ofGetElapsedTimef() - scrollPressedTime;
+        bool scrolled = (bIsHoldScrolling && timeSincePress > .5) || (!bIsHoldScrolling && timeSincePress > 1.5);
+        if(scrolled){
+            float newScrollPosition = scrollPosition + scrollIncrement * (bIsScrollUpPressed ? -1 : 1);
+            scrollPosition = ofClamp(newScrollPosition, 0, totalScrollHeight - researchScrollBounds.height);
+            bIsHoldScrolling = true;
+        }
+    }
+}
 
 void CloudsHUDController::pause(){
+
     //TODO: save the current HUD state before pause
 
- 
     hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("RESET"));
     hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"));
     hudLabelMap["ExploreTextBox"]->setText(GetTranslationForString("EXPLORE THE MAP"));
@@ -757,10 +773,12 @@ void CloudsHUDController::setTopics(const set<string>& topics){
     topicButtons.resize(topics.size());
     int i = 0;
     for(set<string>::iterator it = topics.begin(); it != topics.end(); it++){
-        topicButtons[i].top = i * ( hudLabelMap["ListPeopleTextBox"]->bounds.height * 1.5 ); //1.5 is an arbirtary margine
+        topicButtons[i].top = i * scrollIncrement; //1.5 is an arbirtary margine
         topicButtons[i].topic = *it;
         i++;
     }
+    
+    totalScrollHeight = topicButtons.back().top + scrollIncrement;
 }
 
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
@@ -769,18 +787,29 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
         (it->second)->mouseMoved(ofVec2f(args.x,args.y));
     }
     
+    if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
+        bIsScrollUpHover = scrollUpBounds.inside(args.x, args.y);
+        bIsScrollDownHover = scrollDownBounds.inside(args.x, args.y);
+    }
 }
 
 void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
 	
-
-    for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
+    for(map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->mousePressed(ofVec2f(args.x,args.y));
     }
 
     if( hudOpenMap[CLOUDS_HUD_HOME] && home.hitTest(args.x, args.y) ){
         home.activate();
     }
+    
+    if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
+        bIsScrollUpPressed = scrollUpBounds.inside(args.x, args.y);
+        bIsScrollDownPressed = scrollDownBounds.inside(args.x, args.y);
+        
+        scrollPressedTime = ofGetElapsedTimef();
+    }
+    
 }
 
 void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
@@ -788,7 +817,19 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->mouseReleased(ofVec2f(args.x,args.y));
     }
- 
+    
+    if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
+        if(bIsScrollUpPressed && scrollUpBounds.inside(args.x, args.y)){
+            float newScrollPosition = scrollPosition - scrollIncrement;
+            scrollPosition = ofClamp(newScrollPosition, 0, totalScrollHeight - researchScrollBounds.height);
+        }
+        if(bIsScrollDownPressed && scrollDownBounds.inside(args.x, args.y)){
+            float newScrollPosition = scrollPosition + scrollIncrement;
+            scrollPosition = ofClamp(newScrollPosition, 0, totalScrollHeight - researchScrollBounds.height);
+        }        
+        bIsHoldScrolling = false;
+    }
+
 }
 
 bool CloudsHUDController::isResetHit(){
@@ -862,6 +903,11 @@ void CloudsHUDController::draw(){
 
     if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
         
+        ofSetColor(255, 0, 0);
+        ofRect(scrollUpBounds);
+        ofRect(scrollDownBounds);
+        ofSetColor(255);
+        
         beginListStencil();
         
         if( currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS ){
@@ -877,14 +923,16 @@ void CloudsHUDController::draw(){
         endListStencil();
     }
 
-    for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
-        (it->second)->draw();
-    }
     
 	if (hudOpenMap[CLOUDS_HUD_HOME]){
 		home.draw();
     }
-
+    
+    for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
+        (it->second)->draw();
+    }
+    
+    
 	if(hudLabelMap["ResetButtonTextBox"]->isClicked()){
 		ofSetColor(200,30,0,200);
 		resetTriangle.draw();
@@ -902,35 +950,12 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 
 void CloudsHUDController::beginListStencil(){
 
-    /*
-    ofPushStyle();
-    glEnable(GL_STENCIL_TEST);
-	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-	glStencilFunc(GL_NEVER, 1, 0xFF);
-	glStencilOp(GL_REPLACE, GL_KEEP, GL_KEEP);  // draw 1s on test fail (always)
-    
-	// draw stencil pattern
-	glStencilMask(0xFF);
-	glClear(GL_STENCIL_BUFFER_BIT);  // needs mask=0xFF
-    
-	ofSetColor(255);
-    ofFill();
-	ofRect(researchScrollBounds);
-    
-	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-	glStencilMask(0x00);
-	glStencilFunc(GL_EQUAL, 1, 0xFF);
-	*/
-	
-
     glEnable(GL_SCISSOR_TEST);
     ofRectangle scissorRect = getScaledRectangle(researchScrollBounds);
     glScissor(scissorRect.x, ofGetHeight() - ( scissorRect.y + scissorRect.height) , scissorRect.width, scissorRect.height);
     
     ofPushMatrix();
-//    ofTranslate(0, -scrollPosition);
-    ofTranslate(0, -ofGetMouseX());
-    
+    ofTranslate(0, -scrollPosition);
     
 }
 
