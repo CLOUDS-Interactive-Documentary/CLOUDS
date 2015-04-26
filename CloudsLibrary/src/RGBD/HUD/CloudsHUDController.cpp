@@ -450,8 +450,8 @@ void CloudsHUDController::buildLayerSets(){
 	videoBounds = svgVideoBounds;
     researchScrollBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListBacking")->bounds;
 
-    scrollUpBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.y,researchScrollBounds.width,30);
-    scrollDownBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.getMaxY()-30,researchScrollBounds.width,30);
+    scrollUpBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.y,researchScrollBounds.width,20);
+    scrollDownBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.getMaxY()-20,researchScrollBounds.width,20);
 
     hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
@@ -714,6 +714,42 @@ void CloudsHUDController::updateScroll(){
             bIsHoldScrolling = true;
         }
     }
+    
+    if( currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS ){
+        for(int i = 0; i < topicButtons.size(); i++){
+            TopicButton& b = topicButtons[i];
+            b.visible = b.top > scrollPosition && b.top < scrollPosition + totalScrollHeight;
+            if(b.visible){
+                b.selectRect = getScaledRectangle( ofRectangle(researchScrollBounds.x,
+                                                               b.top - scrollPosition + hudLabelMap["ListPeopleTextBox"]->bounds.x,
+                                                               researchScrollBounds.width, 15) );
+            }
+        }
+    }
+    else if( currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
+        //TODO:
+    }
+    else{
+        //TDOO:
+    }
+}
+
+bool CloudsHUDController::isTopicSelected(){
+    for(int i = 0; i < topicButtons.size(); i++){
+        if(topicButtons[i].clicked){
+            return true;
+        }
+    }
+    return false;
+}
+
+string CloudsHUDController::getSelectedTopic(){
+    for(int i = 0; i < topicButtons.size(); i++){
+        if(topicButtons[i].clicked){
+            return topicButtons[i].topic;
+        }
+    }
+    return "";
 }
 
 void CloudsHUDController::pause(){
@@ -792,6 +828,14 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
     if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
         bIsScrollUpHover = scrollUpBoundsScaled.inside(args.x, args.y);
         bIsScrollDownHover = scrollDownBoundsScaled.inside(args.x, args.y);
+        
+        if(researchScrollBounds.inside(args.x, args.y)){
+            for(int i = 0; i < topicButtons.size(); i++){
+                if(topicButtons[i].visible){
+                    topicButtons[i].hovered = topicButtons[i].selectRect.inside(args.x, args.y);
+                }
+            }
+        }
     }
 }
 
@@ -810,8 +854,15 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
         bIsScrollDownPressed = scrollDownBoundsScaled.inside(args.x, args.y);
         
         scrollPressedTime = ofGetElapsedTimef();
+        if(researchScrollBounds.inside(args.x, args.y)){
+            for(int i = 0; i < topicButtons.size(); i++){
+                topicButtons[i].clicked = false;
+                if(topicButtons[i].visible){
+                    topicButtons[i].pressed = topicButtons[i].selectRect.inside(args.x, args.y);
+                }
+            }
+        }
     }
-    
 }
 
 void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
@@ -830,8 +881,13 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
             scrollPosition = ofClamp(newScrollPosition, 0, totalScrollHeight - researchScrollBounds.height);
         }        
         bIsHoldScrolling = false;
+        
+        for(int i = 0; i < topicButtons.size(); i++){
+            if(topicButtons[i].visible){
+                topicButtons[i].clicked = topicButtons[i].pressed && topicButtons[i].selectRect.inside(args.x, args.y);
+            }
+        }
     }
-
 }
 
 bool CloudsHUDController::isResetHit(){
@@ -970,11 +1026,29 @@ void CloudsHUDController::endListStencil(){
 }
 
 void CloudsHUDController::drawTopicsList(){
+    ofPushStyle();
     for(int i = 0; i < topicButtons.size(); i++){
-        ResearchTopicListFont->drawString(topicButtons[i].topic,
-                                          hudLabelMap["ListPeopleTextBox"]->bounds.x,
-                                          hudLabelMap["ListPeopleTextBox"]->bounds.y + topicButtons[i].top);
+        if(topicButtons[i].visible){
+            //TODO: better coloring system
+            if(topicButtons[i].clicked){
+                ofSetColor(255, 180, 0);
+            }
+            else if(topicButtons[i].pressed){
+                ofSetColor(255, 180, 0, 200);
+            
+            }
+            else if(topicButtons[i].hovered){
+                ofSetColor(255);
+            }
+            else{
+                ofSetColor(255, 200);
+            }
+            ResearchTopicListFont->drawString(topicButtons[i].topic,
+                                              hudLabelMap["ListPeopleTextBox"]->bounds.x,
+                                              hudLabelMap["ListPeopleTextBox"]->bounds.y + topicButtons[i].top);
+        }
     }
+    ofPopStyle();
 }
 
 void CloudsHUDController::drawPeopleList(){

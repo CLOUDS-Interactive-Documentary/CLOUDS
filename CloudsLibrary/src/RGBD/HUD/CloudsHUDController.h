@@ -36,10 +36,24 @@ typedef enum{
     CLOUDS_HUD_RESEARCH_TAB_VISUALS,
 } CloudsHUDResearchTab;
 
-typedef struct{
+class TopicButton {
+  public:
+    TopicButton(){
+        top = 0;
+        visible = false;
+        hovered = false;
+        pressed = false;
+        clicked = false;
+    }
+    
     float top;
+    bool visible;
+    bool hovered;
+    bool pressed;
+    bool clicked;
+    ofRectangle selectRect;
     string topic;
-} TopicButton;
+} ;
 
 #ifdef OCULUS_RIFT
 typedef enum {
@@ -130,7 +144,10 @@ class CloudsHUDController {
 
     void pause();
     void unpause();
+    
     void setTopics(const set<string>& topics);
+    bool isTopicSelected();
+    string getSelectedTopic();
     
   protected:
 	
