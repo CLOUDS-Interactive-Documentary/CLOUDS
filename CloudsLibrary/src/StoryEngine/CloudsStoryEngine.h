@@ -31,6 +31,7 @@ typedef struct {
 	bool freeTopic;
 	
 	float duration;
+    int clipNum;
 	int topicNum;
 	int timesOnCurrentTopic;
 
@@ -39,9 +40,19 @@ typedef struct {
 	float visualSystemEndTime;	
 	int moreMenThanWomen;
 	
-	stringstream log; //....
+	stringstream log;
 	
 } CloudsStoryState;
+
+typedef struct {
+    
+    CloudsRun* run;
+    CloudsClip* seed;
+    string topic;
+    bool playSeed;
+    bool forceTopic;
+    bool allowVisuals;
+} CloudsActSettings;
 
 class CloudsAct;
 class CloudsVisualSystemManager;
@@ -55,14 +66,15 @@ class CloudsStoryEngine {
 
 	void setup();
 	
-	//will send this act instead of generating one when buildAct is called
-	void setCustomAct(CloudsAct* customAct);
-
     vector<CloudsClip*> getStartingQuestions();
     
 	CloudsAct* buildAct(CloudsRun& run);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed, string topic, bool playSeed = true);
+    CloudsAct* buildAct(CloudsRun& run, string forceTopic);
+    
+    CloudsAct* buildAct(CloudsActSettings settings);
+
 	bool getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset, bool forceCredits = false);
 	bool getRandomInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset);
 
@@ -125,7 +137,7 @@ class CloudsStoryEngine {
     CloudsVisualSystemPreset selectVisualSystem(CloudsStoryState& currentState, bool allowSound);
 	float scoreForVisualSystem(CloudsStoryState& currentState, CloudsVisualSystemPreset& potentialNextPreset);
 
-	CloudsClip* selectClip(CloudsStoryState& currentState, vector<CloudsClip*>& questionClips);
+	CloudsClip* selectClip(CloudsStoryState& currentState, vector<CloudsClip*>& questionClips, bool forceTopic);
     float scoreForClip(CloudsStoryState& currentState, CloudsClip* potentialNextClip, stringstream& cliplog);
     
 	bool historyContainsClip(CloudsClip* m, vector<CloudsClip*>& history);
@@ -166,7 +178,8 @@ class CloudsStoryEngine {
 	//TIMING PARAMS
 	int maxTopicsPerAct;
 	int maxTimesOnTopic;
-
+	int maxClipsPerAct;
+    
     //Story engine decision making parameters
     float topicsInCommonMultiplier;
     float topicsinCommonWithPreviousMultiplier;

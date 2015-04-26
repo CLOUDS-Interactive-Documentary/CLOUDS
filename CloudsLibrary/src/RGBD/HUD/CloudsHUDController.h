@@ -147,6 +147,7 @@ class CloudsHUDController {
     
     void setTopics(const set<string>& topics);
     bool isTopicSelected();
+    bool isTopicConfirmed();
     string getSelectedTopic();
     
   protected:

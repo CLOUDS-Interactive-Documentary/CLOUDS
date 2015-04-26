@@ -281,7 +281,7 @@ void CloudsPlaybackController::threadedFunction(){
 	
 	if(!isThreadRunning()) return;
 	
-#ifndef  OCULUS_RIFT
+#ifndef OCULUS_RIFT
 	////COMMUNICATION
 	oscSender.setup();
 #endif
@@ -589,9 +589,6 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(ofEventArgs & args){
 
-	///TESTING HACK
-//	updateInterludeInterface();
-	/////
 
     GetCloudsInput()->bUserBegan = (!showingIntro) || (showingIntro && introSequence->userHasBegun());
 
@@ -684,30 +681,29 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	getSharedVideoPlayer().showingLowerThirds = currentVisualSystem == rgbdVisualSystem;
 
 
-	//sanity check
 	//////////////BAD IDLE
 	/// acts are getting stuck at the end without going to interlude
-	if(currentVisualSystem == rgbdVisualSystem && 
-		(currentAct == NULL || !currentAct->getTimeline().getIsPlaying()) && 
-		!transitionController.isTransitioning() &&
-		!shouldLoadAct && !loadingAct && !shouldPlayAct)
-	{
-		if(badIdle && ofGetElapsedTimef() - badIdleStartTime > 20){
-			ofLogError("BAD IDLE") << "Started Bad ENDED BAD IDLE BY RETURNING TO INTRO";
-			badIdle = false;
-            ///JG: New HUD integration -- DISABLING BAD IDLE
-			//returnToIntro = true;
-            //////////////
-		}
-		else if(!badIdle){
-			ofLogError("BAD IDLE") << "Started Bad Idle";
-			badIdle = true;
-			badIdleStartTime = ofGetElapsedTimef();
-		}
-	}
-	else{
-		badIdle = false;
-	}
+//	if(currentVisualSystem == rgbdVisualSystem && 
+//		(currentAct == NULL || !currentAct->getTimeline().getIsPlaying()) && 
+//		!transitionController.isTransitioning() &&
+//		!shouldLoadAct && !loadingAct && !shouldPlayAct)
+//	{
+//		if(badIdle && ofGetElapsedTimef() - badIdleStartTime > 20){
+//			ofLogError("BAD IDLE") << "Started Bad ENDED BAD IDLE BY RETURNING TO INTRO";
+//			badIdle = false;
+//            ///JG: New HUD integration -- DISABLING BAD IDLE
+//			//returnToIntro = true;
+//            //////////////
+//		}
+//		else if(!badIdle){
+//			ofLogError("BAD IDLE") << "Started Bad Idle";
+//			badIdle = true;
+//			badIdleStartTime = ofGetElapsedTimef();
+//		}
+//	}
+//	else{
+//		badIdle = false;
+//	}
 	//////////////BAD IDLE
 
     ////////// HUD UPDATE AND PAUSE
@@ -738,6 +734,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     /////////////////// END HUD UPDATE
     
     
+    //////////// WAS RESET HIT?
     if(!showingIntro && !showingClusterMap && !userReset &&
        (hud.isResetHit() || rgbdVisualSystem->isResetSelected()) )
     {
@@ -751,6 +748,12 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 #endif
     }
     
+    if(returnToIntro){
+        returnToIntro = false;
+        transitionController.transitionToIntro(1.0);
+    }
+    
+    //////////// WAS NEXT HIT?
     if(hud.isNextHit()){
         if(showingInterlude){
             sound.stopMusic();
@@ -773,21 +776,36 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         hud.unpause();
     }
     
+    //////////// GO TO EXPLORE THE MAP?
     if(hud.isExploreMapHit()){
         hud.animateOff();
         transitionController.transitionToExploreMap(1.0, 2.0);
     }
     
+    if(showingExploreMap){
+        string selectedTopic = hud.getSelectedTopic();
+        if(selectedTopic != ""){
+            
+            ///TODO!!
+            //clusterMap->highlightTopic(selectedTopic);
+
+            if(hud.isTopicConfirmed()){
+                hud.animateOff();
+                exploreMapSelectedTopic = selectedTopic;
+                //Transition into new act based on topic
+                transitionController.transitionFromExploreMap(1.0);
+            }
+        }
+
+    }
+    /////////////// EXPLORE MAP
+    
+    //////////// SEE MORE OF THIS PERSON
     if(hud.isSeeMorePersonHit()){
         hud.animateOff();
         //....
     }
     
-    if(returnToIntro){
-        returnToIntro = false;
-        transitionController.transitionToIntro(1.0);
-    }
-
 	if(shouldLoadAct){
 		loadCurrentAct();
 		shouldLoadAct = false;
@@ -950,12 +968,6 @@ void CloudsPlaybackController::updateTransition(){
                 
                 break;
                 
-            case TRANSITION_EXPLORE_MAP_OUT:
-                
-                //TODO:
-                //here is where we actually kill the current act if they chose something
-                
-                break;
     //////////////////
     ////////IDLE CASES
     ///////////////////
@@ -1029,6 +1041,14 @@ void CloudsPlaybackController::updateTransition(){
 					
                     cout << "IDLE POST TRANSITION INTERLUDE OUT" << endl;
                 }
+                else if(transitionController.getPreviousState() == TRANSITION_EXPLORE_MAP_OUT){
+                    
+                    showingExploreMap = false;
+                    
+                    storyEngine.buildAct(run, exploreMapSelectedTopic);
+
+                }
+                //TODO: more research mode transitions
 				else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
 
 					if(bQuestionAsked){
@@ -1053,7 +1073,6 @@ void CloudsPlaybackController::updateTransition(){
                         bQuestionAsked = false;
                     }
 				}
-				
                 //we just finished fading out of the interview
                 else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_IN){
                     rgbdVisualSystem->transtionFinished();

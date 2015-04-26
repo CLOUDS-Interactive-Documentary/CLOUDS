@@ -23,6 +23,10 @@ CloudsTransitionController::CloudsTransitionController(){
     fadeOutStates.push_back(TRANSITION_INTERLUDE_OUT);
 	fadeOutStates.push_back(TRANSITION_QUESTION_OUT);
 	fadeOutStates.push_back(TRANSITION_CLUSTERMAP_OUT);
+	fadeOutStates.push_back(TRANSITION_CLUSTERMAP_OUT);
+	fadeOutStates.push_back(TRANSITION_EXPLORE_MAP_OUT);
+	fadeOutStates.push_back(TRANSITION_EXPLORE_PEOPLE_OUT);
+	fadeOutStates.push_back(TRANSITION_EXPLORE_VISUALS_OUT);
 	
 	fadeInStates.push_back(TRANSITION_VISUALSYSTEM_IN);
 	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
@@ -30,6 +34,9 @@ CloudsTransitionController::CloudsTransitionController(){
 	fadeInStates.push_back(TRANSITION_QUESTION_IN);
 	fadeInStates.push_back(TRANSITION_INTRO_IN);
 	fadeInStates.push_back(TRANSITION_CLUSTERMAP_IN);
+	fadeInStates.push_back(TRANSITION_EXPLORE_MAP_IN);
+	fadeInStates.push_back(TRANSITION_EXPLORE_PEOPLE_IN);
+	fadeInStates.push_back(TRANSITION_EXPLORE_VISUALS_IN);
 }
 
 void CloudsTransitionController::confirmEmpty(string transitionName){
@@ -180,6 +187,16 @@ void CloudsTransitionController::transitionToExploreMap(float inDuration,float o
     queueState(TRANSITION_EXPLORE_MAP_IN, inDuration);
 	
 	startTransition();
+}
+
+void CloudsTransitionController::transitionFromExploreMap(float inDuration){
+
+    confirmEmpty("transitionFromExploreMap");
+    
+    queueState(TRANSITION_EXPLORE_MAP_OUT, inDuration);
+	
+    startTransition();
+    
 }
 
 void CloudsTransitionController::transitionFromInterlude(float inDuration){

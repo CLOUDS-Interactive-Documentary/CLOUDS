@@ -81,6 +81,7 @@ class CloudsPlaybackController : public ofThread {
 
 	void threadedFunction();
 	CloudsMixer mixer;
+    
   protected:
 	vector<CloudsClip*> startingNodes;
 	//*** CORE CLOUDS STUFF
@@ -90,6 +91,7 @@ class CloudsPlaybackController : public ofThread {
 	CloudsSound sound;
 	CloudsSecondaryDisplayOSCSender oscSender;
 	CloudsHUDController hud;
+	CloudsTransitionController transitionController;
 
 	//STATE STUFF
 	CloudsRun run;
@@ -134,18 +136,19 @@ class CloudsPlaybackController : public ofThread {
     
     //TODO: add these guys too!
     //CloudsVisualSystemTwitter* peopleMap;
-    //CloudsVisualSystemSystems* visualsMap;
+    //CloudsVisualSystemVisuals* visualsMap;
     
     float interludeStartTime;
 	
 	CloudsVisualSystemPreset nextVisualSystemPreset;	
 	CloudsVisualSystemPreset currentVisualSystemPreset;
-		
-	CloudsTransitionController transitionController;
+    
+    //TODO: Kill these soon
 	void updateTransition();
 	bool updateInterludeInterface(); //true if we should stop interlude
 	void updateCompletedInterlude(); //after one option has been selected;
 	bool forceInterludeReset;
+    ///////////////
     
 	//loader screen
 	bool loadingAct;
@@ -188,6 +191,7 @@ class CloudsPlaybackController : public ofThread {
 	bool bQuestionAsked;
 	bool forceCredits;
 	
+    string exploreMapSelectedTopic;
 	void clearAct();
     
 	//remove the current visual system

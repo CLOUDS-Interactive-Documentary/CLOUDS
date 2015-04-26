@@ -743,6 +743,15 @@ bool CloudsHUDController::isTopicSelected(){
     return false;
 }
 
+bool CloudsHUDController::isTopicConfirmed(){
+    //TODO: User needs to click on topic in the map, just return true for now
+    for(int i = 0; i < topicButtons.size(); i++){
+        topicButtons[i].clicked = false;
+    }
+    
+    return true;
+}
+
 string CloudsHUDController::getSelectedTopic(){
     for(int i = 0; i < topicButtons.size(); i++){
         if(topicButtons[i].clicked){

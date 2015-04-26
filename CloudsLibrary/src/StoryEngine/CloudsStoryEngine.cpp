@@ -21,7 +21,6 @@ bool score_sort(pair<string,int> a, pair<string,int>b ){
 CloudsStoryEngine::CloudsStoryEngine(){
     parser = NULL;
     visualSystems = NULL;
-    customAct = NULL;
 	
 	gui = NULL;
 	clipGui = NULL;
@@ -38,6 +37,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	
 	
     maxTimesOnTopic = 4;
+    maxClipsPerAct = 10;
     voClipGapTime = 1.0;
 	clipGapTime = .4;
 	
@@ -159,6 +159,7 @@ void CloudsStoryEngine::initGui(){
 	
     gui->addSpacer();
 	gui->addIntSlider("MAX TOPICS PER ACT", 2, 5, &maxTopicsPerAct);
+	gui->addIntSlider("MAX CLIPS PER ACT",  5, 15, &maxClipsPerAct);
 	gui->addIntSlider("MIN TIMES ON TOPIC", 0, 7, &minTimesOnTopic);
     gui->addIntSlider("MAX TIMES ON TOPIC", 0, 7, &maxTimesOnTopic);
 	gui->addSpacer();
@@ -271,10 +272,6 @@ void CloudsStoryEngine::toggleGuis(bool actOnly){
         runGui->toggleVisible();
 		logGui->toggleVisible();
     }
-}
-
-void CloudsStoryEngine::setCustomAct(CloudsAct* act){
-	customAct = act;
 }
 
 vector<CloudsClip*> CloudsStoryEngine::getStartingQuestions(){
@@ -395,7 +392,7 @@ bool CloudsStoryEngine::getRandomInterlude(CloudsRun& run, CloudsVisualSystemPre
 }
 
 #pragma mark INIT ACT
-//if we are just given a run, build a topic from a new
+//if we are just given a run, build an act from the beginning
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run){
     if(run.clipHistory.size() == 0){
         ofLogError("CloudsStoryEngine::buildAct") << " building an act with no clip history!";
@@ -450,16 +447,36 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed){
     return buildAct(run, seed, seed->getKeywords()[ ofRandom(seed->getKeywords().size()) ]);
 }
 
+CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, string forceTopic){
+
+    CloudsActSettings settings;
+    settings.run = &run;
+    settings.topic = forceTopic;
+    settings.seed = NULL;
+    settings.playSeed = false;
+    settings.forceTopic = true;
+    settings.allowVisuals = false;
+
+    buildAct(settings);
+}
+
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string seedTopic, bool playSeed){
+    
+    CloudsActSettings settings;
+    settings.run = &run;
+    settings.topic = seedTopic;
+    settings.seed = seed;
+    settings.playSeed = playSeed;
+    settings.forceTopic = false;
+    settings.allowVisuals = true;
+    
+    buildAct(settings);
+}
+
+CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 	
-	//this hack let's us inject custom apps 
-	if(customAct != NULL){
-		CloudsActEventArgs args(customAct);
-		ofNotifyEvent(events.actCreated, args);
-		customAct = NULL;
-		return NULL;
-	}
-	
+    CloudsRun& run = *settings.run;
+
     bLogClipDetails = true;
     
     vector<string> hardIntros;
@@ -471,9 +488,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
     hardIntros.push_back("big data"); 
     hardIntros.push_back("videogames");
     hardIntros.push_back("clouds");
-    
     int firstActNum = 0;
-    if(run.actCount == 0 && ofContains(hardIntros, seedTopic)){
+    if(run.actCount == 0 && ofContains(hardIntros, settings.topic)){
         run.actCount = 1; //force
 		firstActNum = 1;
     }
@@ -505,14 +521,15 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
 	CloudsStoryState state;
     state.act = new CloudsAct();
 	state.act->defaulPrerollDuration = preRollDuration;
-    state.clip = seed;
-	state.topic = seedTopic;
+    state.clip = settings.seed;
+	state.topic = settings.topic;
 	state.clipHistory = run.clipHistory;
     state.presetHistory = run.presetHistory;
     state.topicHistory = run.topicHistory;
 	state.moreMenThanWomen = 0;
 	state.run = run.actCount;
 	state.topicNum = 1;
+    state.clipNum = 0;
 	state.visualSystemRunning = false;
     state.visualSystemStartTime = 0;
     state.visualSystemEndTime = 0;
@@ -522,13 +539,17 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
 
 //    state.run = 2; //RIGGED TO ACT TWO
 
-	state.log << "SEED TOPIC:  " << seedTopic << endl << "SEED CLIP: " << seed->getLinkName() << endl;
-	state.topicHistory.push_back(seedTopic);
+	state.log << "SEED TOPIC:  " << settings.topic << endl;
+    if(settings.seed != NULL){
+        state.log << "SEED CLIP: " << settings.seed->getLinkName() << endl;
+    }
+	state.topicHistory.push_back(settings.topic);
 	
     //PLAY FIRST CLIP
-	if(playSeed){
+	if(settings.playSeed && state.clip != NULL){
 		state.log << state.duration << "\tPlaying seed" << endl;
 		state.duration = state.act->addClip(state.clip, state.topic, 0, dichotomies);
+        state.clipNum++;
 		state.clipHistory.push_back(state.clip);
 		state.timesOnCurrentTopic++;
         
@@ -540,7 +561,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
         if(!state.preset.randomlySelected){
             state.log << state.duration << "\tFirst visual system preset is selected : " <<
             state.preset.getID() << " for topic : " <<
-            seedTopic << " and clip " <<
+            settings.topic << " and clip " <<
             state.clip->getLinkName() << endl;
             
             state.presetHistory.push_back(state.preset.getID());
@@ -568,13 +589,13 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
     //The run now listens to act events and is updated via them
 	state.freeTopic = false;
 	int failedTopicStreak = 0;
-    while(state.topicNum <= maxTopicsPerAct){
+    while(state.topicNum <= maxTopicsPerAct && state.clipNum <= maxClipsPerAct){
 		
 		///At this point in the loop we have just added a new clip and updated the duration
 		//we may have been forced into a new topic area from the last part
 		//we might have a visual system running also
 		
-		if(state.freeTopic){
+		if(state.freeTopic && !settings.forceTopic){
 			
 			//TODO: Need to make sure we dont' get stuck in some topicless death loop
 			if(state.timesOnCurrentTopic > 0){
@@ -596,8 +617,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
 
 			string newTopic;
 			if(state.topicNum == maxTopicsPerAct){
-				if(bLogTopicDetails) state.log << state.duration << "\t\tgoing back to seed topic " << seedTopic << endl;
-				newTopic = seedTopic;
+				if(bLogTopicDetails) state.log << state.duration << "\t\tgoing back to seed topic " << settings.topic << endl;
+				newTopic = settings.topic;
 			}
 			else{
 				//let's pick a new topic based on the current topic
@@ -623,15 +644,35 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
 		state.log << state.duration << "\tCHOOSING NEW CLIP " << endl;
 		//PICK A CLIP
 		vector<CloudsClip*> questionClips; //possible questions this clip raises (ie other adjascent clips)
-		CloudsClip* nextClip = selectClip(state, questionClips);
-		
+        CloudsClip* nextClip = selectClip(state, questionClips, settings.forceTopic);
+        
 		//Reject if we are the same clip as before
-		if( nextClip->getID() == state.clip->getID()){
-			state.log << state.duration << "\t\tERROR: Failed to find a new clip, freeing topic" << endl;			
-			state.freeTopic = true;
-			continue;
+		if(nextClip == state.clip){
+            if(settings.forceTopic){
+                //we are done in this case, there are no more clips for this topic
+                state.log << state.duration << "\t\tERROR: Failed to find a new clip, finishing act" << endl;
+                break;
+            }
+            else{
+                state.log << state.duration << "\t\tERROR: Failed to find a new clip, freeing topic" << endl;
+                state.freeTopic = true;
+                continue;
+            }
 		}
 		
+		//If we chose a digressing clip, through a link that didn't share our topic
+		//play the clip but free the topic for the next round
+		if(!nextClip->hasKeyword(state.topic) ){
+            if(settings.forceTopic){
+                state.log << state.duration << "\t\t\tERROR: We took a digression! Finishing act." << endl;
+                break;
+            }
+            else{
+                state.log << state.duration << "\t\t\tERROR: We took a digression! Freeing topic" << endl;
+                state.freeTopic = true;
+            }
+		}
+        
 		//accept the next clip
 		state.clip = nextClip;
 		
@@ -660,17 +701,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
 		}
 		state.timesOnCurrentTopic++;
 		
-		state.log << state.duration << "\t\tChose Clip \"" << nextClip->getLinkName() << "\" for topic \"" << state.topic << "\" ("<< state.timesOnCurrentTopic << "/" << maxTimesOnTopic << ")" << endl;
+		state.log << state.duration << "\t\tChose Clip \"" << state.clip->getLinkName() << "\" for topic \"" << state.topic << "\" ("<< state.timesOnCurrentTopic << "/" << maxTimesOnTopic << ")" << endl;
 		
-		//If we chose a digressing clip, through a link that didn't share our topic
-		//play the clip but free the topic for the next round
-		if(!state.clip->hasKeyword(state.topic) ){
-			state.log << state.duration << "\t\t\tERROR: We took a digression! Freeing topic" << endl;
-			state.freeTopic = true;
-		}
 		
 		//Topic change if we reach max
-		if(state.timesOnCurrentTopic == maxTimesOnTopic){
+		if(state.timesOnCurrentTopic == maxTimesOnTopic && !settings.forceTopic){
 			state.log << state.duration << "\t\t\tLast clip in topic! Freeing topic" << endl;
 			state.freeTopic = true;
 		}
@@ -683,168 +718,173 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
                                             clipStartTime,
 											dichotomies);
 		state.clipHistory.push_back(state.clip);
-		      
+        state.clipNum++;
+        
 		// BASED ON CURRENT CLIP, DECIDE VS
 		// consider if we are at the end of topic
 		float clipFadePad = 2.0;
         
-		//TODO: START A MANDATORY VS IF WE ARE IN FREE TOPIC
-		if(state.visualSystemRunning){
-			if(bLogVisualSystemDetails) state.log << state.duration << "\tVISUALS Currently running \"" << state.preset.getID() << "\" time [" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] " << (state.preset.indefinite ? "indefinite" : "definite") << endl;
+        if(settings.allowVisuals){
+            if(state.visualSystemRunning){
+                if(bLogVisualSystemDetails) state.log << state.duration << "\tVISUALS Currently running \"" << state.preset.getID() << "\" time [" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] " << (state.preset.indefinite ? "indefinite" : "definite") << endl;
 
-			///should the preset end in this clip?
-			//	if so commit the preset during the clip
-			//	if not keep going
-			//the current duration is BEFORE the new clip has been committed
+                ///should the preset end in this clip?
+                //	if so commit the preset during the clip
+                //	if not keep going
+                //the current duration is BEFORE the new clip has been committed
 
-			if(state.duration + clipFadePad > state.visualSystemEndTime){
-				if(bLogVisualSystemDetails) state.log << state.duration << "\t\tPassed predicted time " << state.visualSystemEndTime;
-								
-				//if this clip freed the topic extend our visuals out over the end of the clip a ways
-				if(state.freeTopic){
+                if(state.duration + clipFadePad > state.visualSystemEndTime){
+                    if(bLogVisualSystemDetails) state.log << state.duration << "\t\tPassed predicted time " << state.visualSystemEndTime;
+                                    
+                    //if this clip freed the topic extend our visuals out over the end of the clip a ways
+                    if(state.freeTopic){
 
-					if(state.preset.indefinite){
-						state.visualSystemEndTime = state.duration + visualSystemTopicEndExtend;
-					}
-					else {
-						state.visualSystemEndTime = MIN(state.duration + visualSystemTopicEndExtend,
-                                                        state.visualSystemStartTime + state.preset.duration);
-					}
-					
-					state.act->addNote("Extend VS Start", state.visualSystemStartTime);
-					state.act->addNote("Extend VS End", state.visualSystemEndTime);
-					
-                    cout << "Extending VS, current duration is " << state.duration << endl;
-					state.duration = state.act->addVisualSystem(state.preset,
-                                                                state.visualSystemStartTime,
-                                                                state.visualSystemEndTime);
-					
-                    cout << "extended vs brought our duration to " << state.duration << endl;
-					state.presetHistory.push_back(state.preset.getID());
-					
-					if(bLogVisualSystemDetails) state.log << " - FREE TOPIC Extending VS end time to " << state.visualSystemEndTime << " past the end of " << state.clip->getLinkName() << endl;
-
-				}
-				//else correct the end time to fit with the clip we just added
-				else {
-					//VO should be entirely covered. This may cause a rare problem with definite clips that don't cover the whole VO,
-                    //but not sure what to do otherwise
-					if(state.clip->voiceOverAudio){
-						state.visualSystemEndTime = state.duration + clipFadePad;
-						if(bLogVisualSystemDetails) state.log << state.duration << "- moving end time over top of VO " << state.clip->getLinkName() << endl;
-					}
-					//end within the clip
-					else{
-                        //Also the first clip of an act should be covered
-                        float midAlignedEnd    = state.duration - state.clip->getDuration() / 2. + clipFadePad;
-                        float startAlignedEnd  = state.duration - state.clip->getDuration()      - clipFadePad;
-						//JG right before Tribeca I'm removing the mid aligned ends because they cause vs to be way too long
-//                        if(state.visualSystemStartTime > 0 &&
-//                           abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd - state.visualSystemEndTime) )
-//                        {
-//                            state.visualSystemEndTime = midAlignedEnd;
-//                        }
-//                        else {
-						state.visualSystemEndTime = startAlignedEnd;
-//                        }
-                        
-                        
-						if(bLogVisualSystemDetails)
-                            state.log << " - moving end time to middle of " << state.clip->getLinkName() << ", time " << state.visualSystemEndTime << endl;
-					}
-                    
-                    //make sure indefinite presets don't get cut too short
-                    if(state.preset.indefinite){
-                        state.visualSystemEndTime = MAX(state.visualSystemEndTime, state.visualSystemStartTime + minVisualSystemRunTime);
-                    }
-                    //fix any definite preset spillage on definite systems
-                    else {
-                        state.visualSystemEndTime = MIN(state.visualSystemEndTime, state.visualSystemStartTime + state.preset.duration);
-                    }
-					state.act->addVisualSystem(state.preset,
-                                               state.visualSystemStartTime,
-                                               state.visualSystemEndTime);
-                    
-					state.presetHistory.push_back( state.preset.getID() );
-				}
-				
-				state.visualSystemRunning = false;
-			}
-
-			//still going, extend the visual out for longer over the clip
-		}
-		else {
-            
-			if(bLogVisualSystemDetails) state.log << state.duration << "\tVISUALS Not run in " << state.duration - state.visualSystemEndTime << " seconds" << endl;
-
-			//Have we waited long enough to see a visual?
-			// if so do we have a good visual for this clip?
-			//	  if so start it up!
-			//	  if it has sound, cue the sound to end and start the visual at the end of the clip, push the duration forward
-			//    otherwise start it inside of our clip and keep going
-			
-			if(state.duration - state.visualSystemEndTime > maxVisualSystemGapTime || state.visualSystemEndTime == 0){
-				CloudsVisualSystemPreset nextPreset = selectVisualSystem(state, true);
-				if(!nextPreset.randomlySelected){
-						
-					state.preset = nextPreset;
-					
-					//if we have sound schedule this at the end of the clip and add it immediately to ensure no VO comes in
-					//COMPUTE START TIME
-					//step back into the clip
-					if(state.preset.soundExcludeVO){
-						state.visualSystemStartTime = state.duration + clipFadePad;
-					}
-                    //don't move the start clip to the center
-					else if(state.visualSystemEndTime != 0){
-                        //random choice between mid align and end align
-                        if(ofRandomuf()){
-                            state.visualSystemStartTime = state.duration - state.clip->getDuration() / 2.0;
+                        if(state.preset.indefinite){
+                            state.visualSystemEndTime = state.duration + visualSystemTopicEndExtend;
                         }
-                        else{
-                            state.visualSystemStartTime = state.duration + 1.0;
+                        else {
+                            state.visualSystemEndTime = MIN(state.duration + visualSystemTopicEndExtend,
+                                                            state.visualSystemStartTime + state.preset.duration);
                         }
-					}
-					
-					//COMPUTE END TIME
-					if(nextPreset.indefinite){
-						state.visualSystemEndTime = state.visualSystemStartTime + maxVisualSystemRunTime;
-					}
-					else {
-						state.visualSystemEndTime =
-							state.visualSystemStartTime + MIN(maxVisualSystemRunTime, state.preset.duration);
-					}
-					//TODO: RESPECT HAS SOUND
-					if(state.preset.soundExcludeVO){
-						//commit the visual system
-						//setting the current duration here ensures the next clip starts after this one is over
-						state.act->addNote("Sound VS Start", state.duration);
-						state.duration = state.act->addVisualSystem(state.preset,
+                        
+                        state.act->addNote("Extend VS Start", state.visualSystemStartTime);
+                        state.act->addNote("Extend VS End", state.visualSystemEndTime);
+                        
+                        cout << "Extending VS, current duration is " << state.duration << endl;
+                        state.duration = state.act->addVisualSystem(state.preset,
                                                                     state.visualSystemStartTime,
                                                                     state.visualSystemEndTime);
-						state.act->addNote("Sound VS End", state.duration);
-						state.presetHistory.push_back(state.preset.getID());
-						state.log << state.duration << "\t\tChose new AUDIO Preset " << state.preset.getID() << "[" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] - Pushing All clips forward" << endl;
-					}
-					//run it indefinitely with clips underneath
-					else {
                         
-						state.visualSystemRunning = true;
-						
-						if(bLogVisualSystemDetails)state.log << state.duration << "\t\tChose new Preset " << state.preset.getID() << " time [" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] " << (state.preset.indefinite ? "indefinite" : "definite") << endl;
-					}
-				}
-				else{
-                    //update the end time so when a VS is found it doesn't drag out
-                    state.visualSystemEndTime = state.duration - maxVisualSystemGapTime;
-					state.act->addNote("Failed VS", state.duration - state.clip->getDuration());
-					if(bLogVisualSystemDetails) state.log << state.duration << "\t\tERROR Failed to find preset on current topic " << state.topic << " with clip " << state.clip->getLinkName() << endl;
-				}
-			}
-		}		
+                        cout << "extended vs brought our duration to " << state.duration << endl;
+                        state.presetHistory.push_back(state.preset.getID());
+                        
+                        if(bLogVisualSystemDetails) state.log << " - FREE TOPIC Extending VS end time to " << state.visualSystemEndTime << " past the end of " << state.clip->getLinkName() << endl;
+
+                    }
+                    //else correct the end time to fit with the clip we just added
+                    else {
+                        //VO should be entirely covered. This may cause a rare problem with definite clips that don't cover the whole VO,
+                        //but not sure what to do otherwise
+                        if(state.clip->voiceOverAudio){
+                            state.visualSystemEndTime = state.duration + clipFadePad;
+                            if(bLogVisualSystemDetails) state.log << state.duration << "- moving end time over top of VO " << state.clip->getLinkName() << endl;
+                        }
+                        //end within the clip
+                        else{
+                            //Also the first clip of an act should be covered
+                            float midAlignedEnd    = state.duration - state.clip->getDuration() / 2. + clipFadePad;
+                            float startAlignedEnd  = state.duration - state.clip->getDuration()      - clipFadePad;
+                            //JG right before Tribeca I'm removing the mid aligned ends because they cause vs to be way too long
+    //                        if(state.visualSystemStartTime > 0 &&
+    //                           abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd - state.visualSystemEndTime) )
+    //                        {
+    //                            state.visualSystemEndTime = midAlignedEnd;
+    //                        }
+    //                        else {
+                            state.visualSystemEndTime = startAlignedEnd;
+    //                        }
+                            
+                            
+                            if(bLogVisualSystemDetails)
+                                state.log << " - moving end time to middle of " << state.clip->getLinkName() << ", time " << state.visualSystemEndTime << endl;
+                        }
+                        
+                        //make sure indefinite presets don't get cut too short
+                        if(state.preset.indefinite){
+                            state.visualSystemEndTime = MAX(state.visualSystemEndTime, state.visualSystemStartTime + minVisualSystemRunTime);
+                        }
+                        //fix any definite preset spillage on definite systems
+                        else {
+                            state.visualSystemEndTime = MIN(state.visualSystemEndTime, state.visualSystemStartTime + state.preset.duration);
+                        }
+                        state.act->addVisualSystem(state.preset,
+                                                   state.visualSystemStartTime,
+                                                   state.visualSystemEndTime);
+                        
+                        state.presetHistory.push_back( state.preset.getID() );
+                    }
+                    
+                    state.visualSystemRunning = false;
+                }
+
+                //still going, extend the visual out for longer over the clip
+            }
+            else {
+                
+                if(bLogVisualSystemDetails) state.log << state.duration << "\tVISUALS Not run in " << state.duration - state.visualSystemEndTime << " seconds" << endl;
+
+                //Have we waited long enough to see a visual?
+                // if so do we have a good visual for this clip?
+                //	  if so start it up!
+                //	  if it has sound, cue the sound to end and start the visual at the end of the clip, push the duration forward
+                //    otherwise start it inside of our clip and keep going
+                
+                if(state.duration - state.visualSystemEndTime > maxVisualSystemGapTime || state.visualSystemEndTime == 0){
+                    CloudsVisualSystemPreset nextPreset = selectVisualSystem(state, true);
+                    if(!nextPreset.randomlySelected){
+                            
+                        state.preset = nextPreset;
+                        
+                        //if we have sound schedule this at the end of the clip and add it immediately to ensure no VO comes in
+                        //COMPUTE START TIME
+                        //step back into the clip
+                        if(state.preset.soundExcludeVO){
+                            state.visualSystemStartTime = state.duration + clipFadePad;
+                        }
+                        //don't move the start clip to the center
+                        else if(state.visualSystemEndTime != 0){
+                            //random choice between mid align and end align
+                            if(ofRandomuf()){
+                                state.visualSystemStartTime = state.duration - state.clip->getDuration() / 2.0;
+                            }
+                            else{
+                                state.visualSystemStartTime = state.duration + 1.0;
+                            }
+                        }
+                        
+                        //COMPUTE END TIME
+                        if(nextPreset.indefinite){
+                            state.visualSystemEndTime = state.visualSystemStartTime + maxVisualSystemRunTime;
+                        }
+                        else {
+                            state.visualSystemEndTime =
+                                state.visualSystemStartTime + MIN(maxVisualSystemRunTime, state.preset.duration);
+                        }
+                        //TODO: RESPECT HAS SOUND
+                        if(state.preset.soundExcludeVO){
+                            //commit the visual system
+                            //setting the current duration here ensures the next clip starts after this one is over
+                            state.act->addNote("Sound VS Start", state.duration);
+                            state.duration = state.act->addVisualSystem(state.preset,
+                                                                        state.visualSystemStartTime,
+                                                                        state.visualSystemEndTime);
+                            state.act->addNote("Sound VS End", state.duration);
+                            state.presetHistory.push_back(state.preset.getID());
+                            state.log << state.duration << "\t\tChose new AUDIO Preset " << state.preset.getID() << "[" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] - Pushing All clips forward" << endl;
+                        }
+                        //run it indefinitely with clips underneath
+                        else {
+                            
+                            state.visualSystemRunning = true;
+                            
+                            if(bLogVisualSystemDetails)state.log << state.duration << "\t\tChose new Preset " << state.preset.getID() << " time [" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] " << (state.preset.indefinite ? "indefinite" : "definite") << endl;
+                        }
+                    }
+                    else{
+                        //update the end time so when a VS is found it doesn't drag out
+                        state.visualSystemEndTime = state.duration - maxVisualSystemGapTime;
+                        state.act->addNote("Failed VS", state.duration - state.clip->getDuration());
+                        if(bLogVisualSystemDetails) state.log << state.duration << "\t\tERROR Failed to find preset on current topic " << state.topic << " with clip " << state.clip->getLinkName() << endl;
+                    }
+                }
+            }
+        }
 	}
-	
-	state.log << state.duration << "\tACT ENDED on clip " << state.clip->getLinkName() << " explored topics " << state.topicNum << "/" << maxTopicsPerAct << " with " << state.timesOnCurrentTopic << " clips on final topic \"" << state.topic << "\"" << endl;
+    
+	if(state.clip != NULL){
+        state.log << state.duration << "\tACT ENDED on clip " << state.clip->getLinkName() << " explored topics " << state.topicNum << "/" << maxTopicsPerAct << " with " << state.timesOnCurrentTopic << " clips on final topic \"" << state.topic << "\"" << endl;
+        
+    }
 	
 	if(state.visualSystemRunning){
         if(state.preset.indefinite){
@@ -877,10 +917,10 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
     return state.act;
 }
 
-CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<CloudsClip*>& questionClips){
+CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<CloudsClip*>& questionClips, bool forceTopic){
 	vector<CloudsClip*> nextOptions;
-	//conclusion clips if we are on the last topic
-	if(state.topicNum == maxTopicsPerAct){
+
+	if(state.clip == NULL || state.topicNum == maxTopicsPerAct || forceTopic){
 		nextOptions = parser->getClipsWithKeyword(state.topic);
 		if(bLogClipDetails) state.log << state.duration << "\t\tConclusion of \"" << state.topic << "\", selecting from " << nextOptions.size() << " clips " << endl;
 	}
@@ -888,33 +928,39 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 		nextOptions = parser->getClipsWithKeyword(state.clip->getKeywords());
 	}
 	
-	vector<CloudsLink>& links = parser->getLinksForClip( state.clip );
-	for(int i = 0; i < links.size(); i++){
-		bool valid = true;
-		for(int c = 0; c < nextOptions.size(); c++){
-			if(nextOptions[c]->getLinkName() == links[i].targetName){
-				//don't add clips that are already included
-				valid = false;
-				break;
-			}
-		}
-		
-		if(valid){
-			nextOptions.push_back( parser->getClipWithLinkName(links[i].targetName) );
-		}
-	}
-
+    if(!forceTopic && state.clip != NULL){
+        vector<CloudsLink>& links = parser->getLinksForClip( state.clip );
+        for(int i = 0; i < links.size(); i++){
+            bool valid = true;
+            for(int c = 0; c < nextOptions.size(); c++){
+                if(nextOptions[c]->getLinkName() == links[i].targetName){
+                    //don't add clips that are already included
+                    valid = false;
+                    break;
+                }
+            }
+            
+            if(valid){
+                nextOptions.push_back( parser->getClipWithLinkName(links[i].targetName) );
+            }
+        }
+    }
+    
 	//remove suppressions
-	vector<CloudsLink>& suppressions = parser->getSuppressionsForClip( state.clip );
-	for(int i = 0; i < suppressions.size(); i++){
-		for(int nt = nextOptions.size()-1; nt >= 0; nt--){
-			if(nextOptions[nt]->getLinkName() == suppressions[i].targetName){
-				nextOptions.erase(nextOptions.begin() + nt);
-			}
-		}
-	}
+    if(state.clip != NULL){
+        vector<CloudsLink>& suppressions = parser->getSuppressionsForClip( state.clip );
+        for(int i = 0; i < suppressions.size(); i++){
+            for(int nt = nextOptions.size()-1; nt >= 0; nt--){
+                if(nextOptions[nt]->getLinkName() == suppressions[i].targetName){
+                    nextOptions.erase(nextOptions.begin() + nt);
+                }
+            }
+        }
+    }
 	
-	if(bLogClipDetails)state.log << state.duration << "\t\tCurrent clip " << state.clip->getLinkName() << " has " << state.clip->getKeywords().size() << "\" keywords, selecting a new clip from " << nextOptions.size() << " related options" << endl;
+	if(bLogClipDetails)state.log << state.duration << "\t\tCurrent clip " <<
+                    (state.clip == NULL ? "NULL" : (state.clip->getLinkName() + " has " + ofToString(state.clip->getKeywords().size()) + "\" keywords.") ) <<
+                    " selecting a new clip from " << nextOptions.size() << " related options" << endl;
 
 	/////////////////SELECTION
 	float topScore = 0;
@@ -927,14 +973,6 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 		stringstream cliplog;
 		cliplog << state.duration << "\t\t\t" << nextClipOption->getLinkName() << endl;
 		float score = scoreForClip(state, nextClipOption, cliplog);
-//        if(score > topScore){
-//            secondTopScore = topScore;
-//            topScore = score;
-//        }
-//        else if(score > secondTopScore){
-//            secondTopScore = score;
-//        }
-//		topScore = MAX(topScore, score);
 		cliplogs.push_back(make_pair(score, cliplog.str()));
 		nextClipOption->currentScore = score;
 	}
@@ -1256,13 +1294,14 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": language is " << potentialNextClip->getLanguage() << " and no subtitles" << endl;
         return 0;
 	}
-
-    bool link = parser->clipLinksTo( state.clip->getLinkName(), potentialNextClip->getLinkName() );
-    if(!link && potentialNextClip->person == state.clip->person){
-		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": same person" << endl;
-        return 0;
-    }
     
+    if(state.clip != NULL){
+        bool link = parser->clipLinksTo( state.clip->getLinkName(), potentialNextClip->getLinkName() );
+        if(!link && potentialNextClip->person == state.clip->person){
+            cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": same person" << endl;
+            return 0;
+        }
+    }
 
     //reject any nodes we've seen already
     if(historyContainsClip(potentialNextClip, state.clipHistory)){
@@ -1300,22 +1339,6 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: this clip has been marked with the #dud keyword"<<endl;
         return 0;
     }
-	
-	//if(potentialNextClip->getSpeakerFirstName() == "Satoru" || potentialNextClip->getSpeakerFirstName() == "Patricio"){
-	//	string subtitleFilePath = GetCloudsDataPath() + "subtitles/"+potentialNextClip->getSubtitlesPath();
-	//	if(! ofFile(subtitleFilePath).exists() ){
-	//		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: this clip should have subtitles but they cant be found"<<endl;
-	//		return 0;
-	//	}
-	//	
-	//}
-    
-	
-    //  can't get a #hard clip until the topic has been heard 2 times by any clip
-	//TODO: RE ADD RULE?
-//    if (numTopicHistoryOccurrences < 2 && potentialNextClip.hasSpecialKeyword("#hard")  ) {
-//		return 0;
-//    }
     
     if(!ofContains(potentialNextClip->getKeywords(), state.topic) &&
 	   state.timesOnCurrentTopic < minTimesOnTopic)
@@ -1346,12 +1369,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
 		return 0;
 	}
-//#ifdef OCULUS_RIFT
-	//if(ofToLower(potentialNextClip->person) == "higa" || ofToLower(potentialNextClip->person) == "patricio"){
- //       cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
-	//	return 0;
-	//}
-//#endif
+    
     //Base score
     float totalScore = 0;
     float offTopicScore = 0; //negative if this is a link & off topic
@@ -1368,9 +1386,12 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
     float easyClipScore = 0;
     float seriesBoostScore = 0;
 	
+    int topicsInCommon = 0;
     //need to consider discouraging clips with a lot of topics
-    float topicsInCommon = parser->getSharedKeywords(state.clip, potentialNextClip).size();
-    topicsInCommonScore += topicsInCommon * topicsInCommonMultiplier;
+    if(state.clip != NULL){
+        topicsInCommon = parser->getSharedKeywords(state.clip, potentialNextClip).size();
+        topicsInCommonScore += topicsInCommon * topicsInCommonMultiplier;
+    }
     
     if(state.clipHistory.size() > 1){
 		CloudsClip* twoClipsAgo = state.clipHistory[state.clipHistory.size()-2];
@@ -1388,7 +1409,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
     }
     
     //penalize for the person occurring again after they have gone away, unless they are on a run
-	if(state.clip->person != potentialNextClip->person){
+	if(state.clip != NULL && state.clip->person != potentialNextClip->person){
 		samePersonOccuranceScore = -occurrences * samePersonOccurrenceSuppressionFactor;
 	}
     
@@ -1428,7 +1449,9 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
     genderBalanceScore = (potentialNextClip->getSpeakerGender() == "male" ? -1 : 1 ) * genderBalanceFactor * state.moreMenThanWomen;
     
     //discourage distant clips
-    distantClipSuppressionScore = -state.clip->networkPosition.distance( potentialNextClip->networkPosition ) * distantClipSuppressionFactor;
+    if(state.clip != NULL){
+        distantClipSuppressionScore = -state.clip->networkPosition.distance( potentialNextClip->networkPosition ) * distantClipSuppressionFactor;
+    }
     
     //gold clip score
     goldClipScore = (potentialNextClip->hasSpecialKeyword("#gold") ? goldClipFactor : 0);
@@ -1438,7 +1461,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         easyClipScore  = easyClipScoreFactor;
     }
 	
-	if(potentialNextClip->isPartOfSeries() && state.clip->isPartOfSeries() && link){
+	if(state.clip != NULL && potentialNextClip->isPartOfSeries() && state.clip->isPartOfSeries() && link){
 		seriesBoostScore += MIN(state.run,4) * seriesBoostFactor;
 	}
 	

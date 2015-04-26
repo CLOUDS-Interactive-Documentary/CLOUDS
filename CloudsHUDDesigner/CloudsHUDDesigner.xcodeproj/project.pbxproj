@@ -710,9 +710,8 @@
 		0300E5681AE6A82F0008F7BB /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				0300E5991AE6A89A0008F7BB /* Empty */,
-				0300E8601AE6A93D0008F7BB /* CloudsRGBDCamera.cpp */,
 				0300E8611AE6A93D0008F7BB /* CloudsRGBDCamera.h */,
+				0300E8601AE6A93D0008F7BB /* CloudsRGBDCamera.cpp */,
 				0300E85D1AE6A92A0008F7BB /* CloudsRGBDVideoPlayer.cpp */,
 				0300E85E1AE6A92A0008F7BB /* CloudsRGBDVideoPlayer.h */,
 				0300E56E1AE6A82F0008F7BB /* CloudsVisualSystem.h */,
@@ -750,7 +749,7 @@
 				0300E59A1AE6A89A0008F7BB /* vs_src */,
 			);
 			name = Empty;
-			path = ../VisualSystems/Empty;
+			path = VisualSystems/Empty;
 			sourceTree = "<group>";
 		};
 		0300E59A1AE6A89A0008F7BB /* vs_src */ = {
@@ -1158,6 +1157,7 @@
 				E77BA14B18F862F3007C1937 /* CloudsAudioEvents.cpp */,
 				E77BA14C18F862F3007C1937 /* CloudsAudioEvents.h */,
 				1877A9F9178F417A006DAA37 /* CloudsGlobal.h */,
+				0300E5991AE6A89A0008F7BB /* Empty */,
 				0300E5681AE6A82F0008F7BB /* VisualSystemsLibrary */,
 				0300E55B1AE6A8030008F7BB /* Core */,
 				E703CD24185D6B9000547738 /* Input */,

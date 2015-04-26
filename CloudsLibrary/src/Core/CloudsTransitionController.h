@@ -63,6 +63,7 @@ class CloudsTransitionController {
 	void transitionWithQuestion(float outDuration, float portalDuration);
 
    	void transitionToExploreMap(float inDuration, float outDuration);
+   	void transitionFromExploreMap(float inDuration);
  
 	void update();
 	
