@@ -17,6 +17,16 @@
 #include "CloudsPortalEvents.h"
 #include "CloudsCalibrationNode.h"
 
+
+typedef struct{
+    ofRectangle bounds;
+    string label;
+    bool visible;
+    bool hovered;
+    bool pressed;
+    bool clicked;
+} CloudsMenuItem;
+
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
 	CloudsIntroSequence();
@@ -87,6 +97,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofxUISuperCanvas* typeGui;
 	ofxUISuperCanvas* introGui;
 	ofxUISuperCanvas* helperTextGui;
+	ofxUISuperCanvas* menuGui;
 	
 	bool showingQuestions;
 	float questionWrapDistance;
@@ -175,7 +186,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void drawTunnel();
 	void drawPortals();
     void drawCursors();
-	
+    void drawMenu();
+    
 	void updateIntroNodePosition(CalibrationNode& node);
 	void updateIntroNodeInteraction(CalibrationNode& node);
 	
@@ -205,11 +217,32 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float clickTextActiveTime;
 	float clickToBeginAlpha;
 	float mouseLastMovedTime;
-
+    
+    //menu stuff
+    int menuFontSize;
+    int currentMenuFontSize;
+    int menuToolTipFontSize;
+    int currentMenuToolTipFontSize;
+    
+    float menuYOffset;
+    float menuWidth;
+    float newResumeSpace;
+	ofxFTGLFont menuFont;
+	ofxFTGLFont menuToolTipFont;
+    CloudsMenuItem researchMenuItem;
+    CloudsMenuItem playMenuItem;
+    CloudsMenuItem aboutMenuItem;
+    CloudsMenuItem newMenuItem;
+    CloudsMenuItem resumeMenuItem;
+    
+    vector<CloudsMenuItem*> menuItems;
+    
+    
 	void updateCamera();
 	void updateWaiting();
 	void updateTitle();
 	void updateQuestions();
+    void updateMenu();
 	
 	//intro state machien stuff
 	bool startedOnclick;
@@ -239,6 +272,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
     ofVec3f cursor;
     ofVec3f stickyCursor;
+    
     
 #ifdef OCULUS_RIFT
     bool bCursorInCenter;

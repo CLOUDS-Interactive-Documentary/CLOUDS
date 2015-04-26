@@ -21,7 +21,6 @@
 #include "ofAppGLFWWindow.h"
 #endif
 
-//JG REMOVING THIS
 CloudsVisualSystemEvents CloudsIntroSequence::events;
 
 string CloudsIntroSequence::getSystemName(){
@@ -33,6 +32,19 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	getSelectMid();
 	getSelectHigh();
 	getClick();
+    
+    menuItems.push_back(&researchMenuItem);
+    menuItems.push_back(&playMenuItem);
+    menuItems.push_back(&aboutMenuItem);
+    menuItems.push_back(&newMenuItem);
+    menuItems.push_back(&resumeMenuItem);
+    for(int i = 0; i < menuItems.size(); i++){
+        menuItems[i]->visible = false;
+        menuItems[i]->hovered = false;
+        menuItems[i]->pressed = false;
+        menuItems[i]->clicked = false;
+    }
+
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
@@ -67,6 +79,12 @@ void CloudsIntroSequence::selfSetDefaults(){
 	
 	hintCursorEndPoint = ofVec2f(320,240);
 
+    menuFontSize = currentMenuFontSize = 1;
+    menuToolTipFontSize = currentMenuToolTipFontSize = 1;
+    
+    menuYOffset = 0;
+    menuWidth = 500;
+ 
 	promptTime = 0.0;
 	promptShown = false;
 	
@@ -76,7 +94,8 @@ void CloudsIntroSequence::selfSetDefaults(){
 	questionZStopRange.min = 50;
 	questionZStopRange.max = 300;
 	perlinOffset = 0;
-	
+	newResumeSpace = 0;
+    
 	clickTextActive = false;
 	clickTextActiveTime = 0;
 	clickToBeginAlpha = 0;
@@ -269,6 +288,22 @@ void CloudsIntroSequence::selfSetupGuis(){
 	guis.push_back(helperTextGui);
 	guimap[helperTextGui->getName()] = helperTextGui;
 
+    
+	menuGui = new ofxUISuperCanvas("MENU", gui);
+	menuGui->copyCanvasStyle(gui);
+	menuGui->copyCanvasProperties(gui);
+	menuGui->setName("Menu");
+	menuGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+	menuGui->addIntSlider("FONT SIZE", 5, 20, &menuFontSize);
+	menuGui->addIntSlider("TOOLTIP FONT SIZE", 5, 20, &menuToolTipFontSize);
+	menuGui->addSlider("Y OFFSET", 0, 300, &menuYOffset);
+	menuGui->addSlider("TOTAL WIDTH", 200, 1000, &menuWidth);
+	menuGui->addSlider("NEW RESUME SPACE", 0, 200, &newResumeSpace);
+
+	guis.push_back(menuGui);
+	guimap[menuGui->getName()] = menuGui;
+    
 }
 
 void CloudsIntroSequence::selfPresetLoaded(string presetPath){
@@ -294,6 +329,7 @@ void CloudsIntroSequence::selfUpdate(){
 	updateWaiting();
 	updateQuestions();
 	updateTitle();
+    updateMenu();
 }
 
 void CloudsIntroSequence::updateCamera(){
@@ -447,6 +483,7 @@ void CloudsIntroSequence::updateTitle(){
 	{
 		currentFontSize = titleFontExtrude;
 		currentFontExtrusion = titleFontExtrude;
+        //TODO replace with geo
 		extrudedTitleText.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
 	}
 	
@@ -468,6 +505,53 @@ void CloudsIntroSequence::updateTitle(){
 	}
 	
 	currentTitleOpacity += (hoverTitleOpacity-currentTitleOpacity)*.05;
+}
+
+void CloudsIntroSequence::updateMenu(){
+    
+	if(!menuFont.isLoaded() || currentMenuFontSize != menuFontSize){
+		menuFont.loadFont(GetFontPath(), menuFontSize	);
+        currentMenuFontSize = menuFontSize;
+    }
+	if(!menuToolTipFont.isLoaded() || currentMenuToolTipFontSize != menuToolTipFontSize){
+		menuToolTipFont.loadFont(GetFontPath(), menuFontSize	);
+        currentMenuToolTipFontSize = menuToolTipFontSize;
+    }
+    
+    float menuHeight    = menuFont.stringHeight("W");
+    float researchWidth = menuFont.stringWidth( GetTranslationForString("RESEARCH") );
+    float playWidth     = menuFont.stringWidth( GetTranslationForString("PLAY") );
+    float aboutWidth    = menuFont.stringWidth( GetTranslationForString("ABOUT") );
+    float newWidth      = menuFont.stringWidth( GetTranslationForString("NEW") );
+    float resumeWidth   = menuFont.stringWidth( GetTranslationForString("RESUME") );
+    
+    float menuTop = getCanvasHeight() / 2 + menuYOffset;
+    researchMenuItem.bounds.x = getCanvasWidth() / 2 - menuWidth / 2;
+    researchMenuItem.bounds.y = menuTop;
+    researchMenuItem.bounds.width = researchWidth;
+    researchMenuItem.bounds.height = menuHeight;
+
+    playMenuItem.bounds.x = getCanvasWidth() / 2 - playWidth / 2;
+    playMenuItem.bounds.y = menuTop;
+    playMenuItem.bounds.width = playWidth;
+    playMenuItem.bounds.height = menuHeight;
+
+    aboutMenuItem.bounds.x = getCanvasWidth() / 2 + menuWidth/ 2 - aboutWidth;
+    aboutMenuItem.bounds.y = menuTop;
+    aboutMenuItem.bounds.width = aboutWidth;
+    aboutMenuItem.bounds.height = menuHeight;
+    
+    float newResumeWidth = newWidth + resumeWidth + newResumeSpace;
+    newMenuItem.bounds.x = getCanvasWidth() / 2 - newResumeWidth / 2;
+    newMenuItem.bounds.y = menuTop;
+    newMenuItem.bounds.width = newWidth;
+    newMenuItem.bounds.height = menuHeight;
+    
+    resumeMenuItem.bounds.x = getCanvasWidth() / 2 + newResumeWidth/2 - resumeWidth;
+    resumeMenuItem.bounds.y = menuTop;
+    resumeMenuItem.bounds.width = researchWidth;
+    resumeMenuItem.bounds.height = menuHeight;
+
 }
 
 void CloudsIntroSequence::updateQuestions(){
@@ -1023,8 +1107,8 @@ void CloudsIntroSequence::drawHelperType(){
             float questionHoldAlpha = ofMap(caughtQuestion->hoverPercentComplete, .2, .3, 0.0, .2, true);
             ofSetColor(255, 255*questionHoldAlpha);
 #ifdef MOUSE_INPUT
-//			string textPrompt = GetTranslationForString("CLICK TO SELECT");
-            string textPrompt = GetTranslationForString("");
+			string textPrompt = GetTranslationForString("CLICK TO SELECT");
+//            string textPrompt = GetTranslationForString("");
 #else
 			string textPrompt = GetTranslationForString("HOLD TO SELECT");
 #endif
@@ -1107,22 +1191,40 @@ void CloudsIntroSequence::selfDrawOverlay(){
 
 #if defined(MOUSE_INPUT)
 	
-	ofPushStyle();
-//	string helpHoverText = GetTranslationForString("CLICK TO BEGIN");
-	string helpHoverText = GetTranslationForString("");
-	float helperTextOpacity = clickToBeginAlpha;
-	ofSetColor(255,helperTextOpacity*255);
-	helperFont.setLetterSpacing(titleTypeTracking*.7);
-	float centerX = ofGetWidth()/2  - helperFont.stringWidth(helpHoverText)/2;
-	float centerY = ofGetHeight()/2 - helperFont.stringHeight(helpHoverText)/2;
-	helperFont.drawString(helpHoverText, centerX, centerY + helperFont.stringHeight(helpHoverText)*10);
-	ofPopStyle();
+    drawMenu();
+    
+//	ofPushStyle();
+////	string helpHoverText = GetTranslationForString("CLICK TO BEGIN");
+//	string helpHoverText = GetTranslationForString("");
+//	float helperTextOpacity = clickToBeginAlpha;
+//	ofSetColor(255,helperTextOpacity*255);
+//	helperFont.setLetterSpacing(titleTypeTracking*.7);
+//	float centerX = ofGetWidth()/2  - helperFont.stringWidth(helpHoverText)/2;
+//	float centerY = ofGetHeight()/2 - helperFont.stringHeight(helpHoverText)/2;
+//	helperFont.drawString(helpHoverText, centerX, centerY + helperFont.stringHeight(helpHoverText)*10);
+//	ofPopStyle();
+    
+    
 #elif defined(OCULUS_RIFT)
 	//no overlay
 #else
-	//standard mode and kinect mode
+	//kinect mode
 	drawIntroNodes();
 #endif
+    
+}
+
+void CloudsIntroSequence::drawMenu(){
+
+    ofPushStyle();
+    
+    ofSetColor(255);
+
+    menuFont.drawString(GetTranslationForString("RESEARCH"), researchMenuItem.bounds.x, researchMenuItem.bounds.y);
+    menuFont.drawString(GetTranslationForString("PLAY"),     playMenuItem.bounds.x, playMenuItem.bounds.y);
+    menuFont.drawString(GetTranslationForString("ABOUT"),    aboutMenuItem.bounds.x, aboutMenuItem.bounds.y);
+    
+    ofPopStyle();
     
 }
 
@@ -1197,7 +1299,7 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 #if defined(MOUSE_INPUT)
 	if(!startedOnclick && startQuestions.size() > 0){
-		startedOnclick  = true;
+		//startedOnclick  = true;
 		timeline->play();		
 	}
 	else{
