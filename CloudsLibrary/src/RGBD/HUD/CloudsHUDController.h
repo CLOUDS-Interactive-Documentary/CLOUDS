@@ -165,6 +165,8 @@ class CloudsHUDController {
     ofRectangle   researchScrollBounds;
     ofRectangle   scrollUpBounds;
     ofRectangle   scrollDownBounds;
+    ofRectangle   scrollUpBoundsScaled;
+    ofRectangle   scrollDownBoundsScaled;
     bool          bIsScrollUpHover;
     bool          bIsScrollDownHover;
     bool          bIsScrollUpPressed;

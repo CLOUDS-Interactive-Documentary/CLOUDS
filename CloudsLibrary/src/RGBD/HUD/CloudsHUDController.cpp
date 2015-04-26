@@ -682,7 +682,9 @@ void CloudsHUDController::update(){
         videoPlayer.update();
     }
 	
-    
+    scrollUpBoundsScaled = getScaledRectangle(scrollUpBounds);
+    scrollDownBoundsScaled = getScaledRectangle(scrollDownBounds);
+
     home.interactiveBounds = getScaledRectangle(home.bounds);
     home.update();
     if( home.wasActivated() ){
@@ -705,7 +707,7 @@ void CloudsHUDController::update(){
 void CloudsHUDController::updateScroll(){
     if(bIsScrollDownPressed || bIsScrollUpPressed){
         float timeSincePress = ofGetElapsedTimef() - scrollPressedTime;
-        bool scrolled = (bIsHoldScrolling && timeSincePress > .5) || (!bIsHoldScrolling && timeSincePress > 1.5);
+        bool scrolled = ofGetMousePressed() && ( ( bIsHoldScrolling && timeSincePress > .5) || (!bIsHoldScrolling && timeSincePress > .75) );
         if(scrolled){
             float newScrollPosition = scrollPosition + scrollIncrement * (bIsScrollUpPressed ? -1 : 1);
             scrollPosition = ofClamp(newScrollPosition, 0, totalScrollHeight - researchScrollBounds.height);
@@ -788,8 +790,8 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
     }
     
     if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
-        bIsScrollUpHover = scrollUpBounds.inside(args.x, args.y);
-        bIsScrollDownHover = scrollDownBounds.inside(args.x, args.y);
+        bIsScrollUpHover = scrollUpBoundsScaled.inside(args.x, args.y);
+        bIsScrollDownHover = scrollDownBoundsScaled.inside(args.x, args.y);
     }
 }
 
@@ -804,8 +806,8 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
     }
     
     if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
-        bIsScrollUpPressed = scrollUpBounds.inside(args.x, args.y);
-        bIsScrollDownPressed = scrollDownBounds.inside(args.x, args.y);
+        bIsScrollUpPressed = scrollUpBoundsScaled.inside(args.x, args.y);
+        bIsScrollDownPressed = scrollDownBoundsScaled.inside(args.x, args.y);
         
         scrollPressedTime = ofGetElapsedTimef();
     }
@@ -819,11 +821,11 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
     }
     
     if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
-        if(bIsScrollUpPressed && scrollUpBounds.inside(args.x, args.y)){
+        if(bIsScrollUpPressed && scrollUpBoundsScaled.inside(args.x, args.y)){
             float newScrollPosition = scrollPosition - scrollIncrement;
             scrollPosition = ofClamp(newScrollPosition, 0, totalScrollHeight - researchScrollBounds.height);
         }
-        if(bIsScrollDownPressed && scrollDownBounds.inside(args.x, args.y)){
+        if(bIsScrollDownPressed && scrollDownBoundsScaled.inside(args.x, args.y)){
             float newScrollPosition = scrollPosition + scrollIncrement;
             scrollPosition = ofClamp(newScrollPosition, 0, totalScrollHeight - researchScrollBounds.height);
         }        
