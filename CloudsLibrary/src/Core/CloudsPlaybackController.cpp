@@ -18,7 +18,6 @@ bool listsort(pair<int,string> a, pair<int,string> b){
 CloudsPlaybackController::CloudsPlaybackController(){
 	
 	loading = false;
-	loadPercent = 0.0;
 	loadFinished = false;
 	currentAct = NULL;
 	currentClip = NULL;
@@ -85,8 +84,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	shouldPlayClusterMap = false;
 	
 	loading = false;
-	loadPercent = 0.0;
-	
+	showingResearchMode = false;
+    
     cachedTransition = false;
     showedClusterMapNavigation = false;
 
@@ -206,7 +205,7 @@ void CloudsPlaybackController::setup(){
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
-	
+    
 	cout << "*****LOAD STEP*** STARTING RGBD" << endl;
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
@@ -239,14 +238,14 @@ void CloudsPlaybackController::setup(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::threadedFunction(){
-	
-	loadPercent = 0.0;
+    introSequence->percentLoaded = 0.0;
 	
 	cout << "*****LOAD STEP PARSER" << endl;
 
 	///START THREADED
 	parser.loadFromFiles();
 	if(!isThreadRunning()) return;
+    introSequence->percentLoaded = 0.2;
 	
 	cout << "*****LOAD STEP MEDIA" << endl;
 	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
@@ -264,10 +263,13 @@ void CloudsPlaybackController::threadedFunction(){
 		}
 	}
 
+    introSequence->percentLoaded = 0.3;
+
 	if(!isThreadRunning()) return;
 	
 	visualSystems.loadPresets();
 	visualSystems.loadCachedDataForSystems();
+    introSequence->percentLoaded = 0.5;
 	
 	if(!isThreadRunning()) return;
 	
@@ -280,6 +282,7 @@ void CloudsPlaybackController::threadedFunction(){
 	sound.enterTunnel();
 	
 	if(!isThreadRunning()) return;
+    introSequence->percentLoaded = 0.6;
 	
 #ifndef OCULUS_RIFT
 	////COMMUNICATION
@@ -287,9 +290,14 @@ void CloudsPlaybackController::threadedFunction(){
 #endif
 	
 	clusterMap->buildEntireCluster(parser);
+    introSequence->percentLoaded = 0.7;
+    
     hud.setTopics(clusterMap->getTopicSet());
+    introSequence->percentLoaded = 0.8;
 
 	populateRGBDPresets();
+    
+    introSequence->percentLoaded = .9;
 	
 	//END THREADED
 	loading = false;
@@ -309,6 +317,7 @@ void CloudsPlaybackController::finishSetup(){
 	
 	startingNodes = storyEngine.getStartingQuestions();
 	introSequence->setStartQuestions(startingNodes);
+    introSequence->loadingFinished();
 
 }
 
@@ -353,10 +362,12 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showIntro(){
 	
+    
     float ftime = 0.1;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 
 	resetInterludeVariables();
+    showingResearchMode = false;
 	userReset = false;
 	
 #ifdef OCULUS_RIFT
@@ -372,13 +383,7 @@ void CloudsPlaybackController::showIntro(){
 	introSequence->playSystem();
 	
 	currentVisualSystem = introSequence;
-	
-	//HACCCK!
-//	currentVisualSystem->isInterlude = true;
-//	interludeSystem = currentVisualSystem;
-//	interludeStartTime = ofGetElapsedTimef();
-	//////////
-	
+		
 	numActsCreated = 0;
     
 	showingVisualSystem = true;
@@ -590,7 +595,7 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 void CloudsPlaybackController::update(ofEventArgs & args){
 
 
-    GetCloudsInput()->bUserBegan = (!showingIntro) || (showingIntro && introSequence->userHasBegun());
+    GetCloudsInput()->bUserBegan = !showingIntro || (showingIntro && introSequence->userHasBegun());
 
 	if(loading){
 		return;
@@ -611,8 +616,12 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	//INTRO
 	if(showingIntro){
     
-		if(introSequence->isStartQuestionSelected()){
-			
+        if(introSequence->isResearchModeSelected()){
+            transitionController.transitionToExploreMap(1.0, 3.0);
+            showingResearchMode = true;
+        }
+		else if(introSequence->isStartQuestionSelected()){
+			         
 			CloudsPortal* q = introSequence->getSelectedQuestion();
 			CloudsClip* clip = q->clip;
 			
@@ -885,6 +894,7 @@ void CloudsPlaybackController::updateTransition(){
                 introSequence = new CloudsIntroSequence();
                 introSequence->setup();
 				introSequence->setStartQuestions(startingNodes);
+                introSequence->loadingFinished();
 #ifdef OCULUS_RIFT
                 introSequence->hud = &hud;
                 introSequence->setupHUDGui();
@@ -963,8 +973,12 @@ void CloudsPlaybackController::updateTransition(){
                 else if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
                     hideVisualSystem();
                 }
+                else if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
+                    introSequence->stopSystem();
+					introSequence->exit();
+                }
                 
-                showExploreMap(); //TODO: focus on current topic
+                showExploreMap();
                 
                 break;
                 
@@ -1452,13 +1466,20 @@ void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 
-	if(!returnToIntro){
+    //not sure why acts shouldn't be cleared on return to intro
+//	if(!returnToIntro){
 		shouldClearAct = true;
 		
 		if(!bQuestionAsked){
-			transitionController.transitionToInterlude(1.0,1.0);
+            if(showingResearchMode){
+                //TODO: need to save the location of wherever we were before
+                transitionController.transitionToExploreMap(1.0,1.0);
+            }
+            else{
+                transitionController.transitionToInterlude(1.0,1.0);
+            }
 		}
-	}
+//	}
 
 }
 
@@ -1717,7 +1738,9 @@ void CloudsPlaybackController::cleanupInterlude(){
 void CloudsPlaybackController::showExploreMap(){
 
     hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
-//    hud.animateOn(CLOUDS_HUD_RESEARCH_NAV);
+    if(showingResearchMode){ //from research mode--
+        hud.animateOn(CLOUDS_HUD_RESEARCH_NAV);
+    }
     
     //TODO fix the preset
     clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");

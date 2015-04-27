@@ -100,7 +100,8 @@ void CloudsIntroSequence::selfSetDefaults(){
  
 	promptTime = 0.0;
 	promptShown = false;
-	
+	researchSelected = false;
+    
 	// Set question defaults.
 	questionScale = 0.1f;
 	helperFontSize = 14;
@@ -376,15 +377,6 @@ void CloudsIntroSequence::updateCamera(){
 
 void CloudsIntroSequence::updateWaiting(){
 	
-    // Trigger start manually
-//    if (startedOnclick) {
-//		nodeAlphaAttenuate = MAX(0,nodeAlphaAttenuate-0.02);
-//		clickToBeginAlpha *= .99;
-//		clickToBeginAlpha -= .001;
-//		clickToBeginAlpha = MAX(0,clickToBeginAlpha);
-//		return;
-//	}
-
     #ifndef MOUSE_INPUT
 	for(int i = 0; i < introNodes.size(); i++){
 		updateIntroNodePosition(*introNodes[i]);
@@ -505,6 +497,9 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
         case CLOUDS_INTRO_RESUMING:
             break;
         case CLOUDS_INTRO_RESEARCH:
+            timeline->play();
+            researchSelected = true;
+            researchMenuItem.attenuation = .03;
             break;
         case CLOUDS_INTRO_NO_MEDIA:
             break;
@@ -883,6 +878,12 @@ bool CloudsIntroSequence::userHasBegun(){
     return currentState == CLOUDS_INTRO_PLAYING  ||
            currentState == CLOUDS_INTRO_RESEARCH ||
            currentState == CLOUDS_INTRO_RESUMING;
+}
+
+bool CloudsIntroSequence::isResearchModeSelected(){
+    bool selected = researchSelected;
+    researchSelected = false;
+    return selected;
 }
 
 bool CloudsIntroSequence::isStartQuestionSelected(){

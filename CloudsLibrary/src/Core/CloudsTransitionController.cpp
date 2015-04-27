@@ -14,7 +14,7 @@ CloudsTransitionController::CloudsTransitionController(){
 	triggeredMidpoint = false;
 	newState = false;
     
-	previousState = TRANSITION_IDLE;
+	previousState = TRANSITION_INTRO_IN;
 	currentState = TRANSITION_IDLE;
 	
 	fadeOutStates.push_back(TRANSITION_INTERVIEW_OUT);
@@ -183,7 +183,9 @@ void CloudsTransitionController::transitionToExploreMap(float inDuration,float o
 	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
 		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
 	}
-    
+	else if(getPreviousState() == TRANSITION_INTRO_IN){
+        queueState(TRANSITION_INTRO_OUT, outDuration);
+    }
     queueState(TRANSITION_EXPLORE_MAP_IN, inDuration);
 	
 	startTransition();
@@ -380,6 +382,18 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
 			return "TransitionClusterMapIn";
 		case TRANSITION_CLUSTERMAP_OUT:
 			return "TransitionClusterMapOut";
+        case TRANSITION_EXPLORE_MAP_IN:
+			return "TransitionExploreMapIn";
+        case TRANSITION_EXPLORE_MAP_OUT:
+			return "TransitionCExploreMapOut";
+        case TRANSITION_EXPLORE_PEOPLE_IN:
+			return "TransitionExplorePeopleIn";
+        case TRANSITION_EXPLORE_PEOPLE_OUT:
+			return "TransitionExplorePeopleOut";
+        case TRANSITION_EXPLORE_VISUALS_IN:
+			return "TransitionExploreVisualsIn";
+        case TRANSITION_EXPLORE_VISUALS_OUT:
+			return "TransitionExploreVisualsOut";
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
 	}

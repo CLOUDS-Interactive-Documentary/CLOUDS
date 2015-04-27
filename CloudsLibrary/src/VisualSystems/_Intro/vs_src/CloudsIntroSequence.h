@@ -88,6 +88,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	void setStartQuestions(vector<CloudsClip*>& possibleStartQuestions);
 
+    bool isResearchModeSelected();
 	bool isStartQuestionSelected();
 	bool istStartQuestionHovering();
 	
@@ -232,9 +233,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float kinectHelperAlpha;
 	float kinectHelperTargetAlpha;
 
-//	bool clickTextActive;
-//	float clickTextActiveTime;
-//	float clickToBeginAlpha;
 	float mouseLastMovedTime;
     
     //menu stuff
@@ -260,6 +258,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     CloudsMenuItem aboutMenuItem;
     CloudsMenuItem newMenuItem;
     CloudsMenuItem resumeMenuItem;
+    bool researchSelected;
     
     vector<CloudsMenuItem*> menuItems;
     

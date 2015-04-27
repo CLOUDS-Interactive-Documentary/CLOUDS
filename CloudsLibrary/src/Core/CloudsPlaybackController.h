@@ -76,7 +76,6 @@ class CloudsPlaybackController : public ofThread {
 	
 	void finishSetup(); //called at the end of the threaded function
 	bool loading;
-	float loadPercent;
 	bool loadFinished;
 
 	void threadedFunction();
@@ -187,6 +186,7 @@ class CloudsPlaybackController : public ofThread {
     bool showingExploreMap;
     bool showingExplorePeople;
     bool showingExploreVisuals;
+    bool showingResearchMode;
     
 	bool bQuestionAsked;
 	bool forceCredits;
