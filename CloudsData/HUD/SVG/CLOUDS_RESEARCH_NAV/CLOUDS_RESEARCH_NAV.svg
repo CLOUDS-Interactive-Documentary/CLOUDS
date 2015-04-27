@@ -50,8 +50,8 @@
 <g id="VisualsTextBox">
 	<rect x="1067.891" y="837.426" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="87.599" height="15.398"/>
 </g>
-<g id="MapHoverBacking" display="none">
-	<rect x="341.313" y="828.984" display="inline" opacity="0.26" fill="#FFFFFF" width="308.515" height="33.032"/>
+<g id="MapHoverBacking">
+	<rect x="341.313" y="828.984" display="inline" opacity="0.0" fill="#FFFFFF" width="308.515" height="33.032"/>
 </g>
 <g id="MapHoverAltWhite" display="none">
 	<rect x="341.313" y="828.984" display="inline" opacity="0.69" fill="#FFFFFF" width="308.515" height="33.032"/>
@@ -60,21 +60,21 @@
 	</g>
 </g>
 <g id="MapHoverAltColor" display="none">
-	<rect x="341.313" y="828.984" display="inline" opacity="0.69" fill="#034C89" width="308.515" height="33.032"/>
+	<rect x="341.313" y="828.984" display="inline" opacity="0.0" fill="#034C89" width="308.515" height="33.032"/>
 	<g display="inline">
 		
 			<text transform="matrix(1 0 0 1 474.2663 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">MAP</text>
 	</g>
 </g>
-<g id="VSHoverAltColor" display="none">
-	<rect x="959.295" y="828.984" display="inline" opacity="0.69" fill="#034C89" width="308.515" height="33.032"/>
+<g id="VSHoverAltColor">
+	<rect x="959.295" y="828.984" display="inline" opacity="0.0" fill="#034C89" width="308.515" height="33.032"/>
 	<g display="inline">
 		
 			<text transform="matrix(1 0 0 1 1070.5701 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">VISUALS</text>
 	</g>
 </g>
-<g id="PeopleHoverAltColor" display="none">
-	<rect x="650.781" y="828.984" display="inline" opacity="0.69" fill="#034C89" width="308.515" height="33.032"/>
+<g id="PeopleHoverAltColor">
+	<rect x="650.781" y="828.984" display="inline" opacity="0.0" fill="#034C89" width="308.515" height="33.032"/>
 	<g display="inline">
 		
 			<text transform="matrix(1 0 0 1 766.8859 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">PEOPLE</text>
@@ -481,10 +481,10 @@
 <g id="ResetButtonArrow">
 	<rect x="1393.853" y="841.1" fill="#FFFFFF" width="9" height="9"/>
 </g>
-<g id="ResetButtonBacking">
+<g id="ResearchResetButtonBacking">
 	<rect x="1268.734" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="115.158" height="34"/>
 </g>
-<g id="ResetButtonTextBox">
+<g id="ResearchResetButtonTextBox">
 	<rect x="1298.599" y="837.426" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="67.314" height="16.147"/>
 </g>
 <g id="ResetButtonTypography" display="none">

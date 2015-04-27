@@ -504,8 +504,23 @@ void CloudsHUDController::calculateFontSizes(){
     ResetButtonTextBox          = getLayoutForLayer("ResetButtonTextBox", fontPath);
     //research stuff
     ResearchTopicListFont       = getFontForLayer("ListPeopleTextBox", fontPath, 35);
-
+    
+    //research navigation
+    ResearchMapTabFont          = getFontForLayer("MapTextBox", fontPath, 35);
+    ResearchPeopleTabFont       = getFontForLayer("PeopleTextBox", fontPath, 35);
+    ResearchVisualsTabFont      = getFontForLayer("VisualsTextBox", fontPath, 35);
+    ResearchResetButtonFont     = getFontForLayer("ResearchResetButtonTextBox", fontPath, 35);
+    
     scrollIncrement             = hudLabelMap["ListPeopleTextBox"]->bounds.height * 1.5;
+ 
+    hudLabelMap["MapTextBox"]->setText(GetTranslationForString("MAP"), false);
+    hudLabelMap["MapTextBox"]->clearTextOnAnimateOut = false;
+    hudLabelMap["PeopleTextBox"]->setText(GetTranslationForString("PEOPLE"), false);
+    hudLabelMap["PeopleTextBox"]->clearTextOnAnimateOut = false;
+    hudLabelMap["VisualsTextBox"]->setText(GetTranslationForString("VISUALS"), false);
+    hudLabelMap["VisualsTextBox"]->clearTextOnAnimateOut = false;
+    hudLabelMap["ResearchResetButtonTextBox"]->setText(GetTranslationForString("RESET"), false); //this one may change...
+    hudLabelMap["ResearchResetButtonTextBox"]->clearTextOnAnimateOut = false;
  
     // cleanup!
     for( int i=0; i<tempFontList.size(); i++ ){
@@ -700,6 +715,9 @@ void CloudsHUDController::update(){
         updateScroll();
     }
     
+    if( hudOpenMap[CLOUDS_HUD_RESEARCH_NAV]){
+        updateResearchNavigation();
+    }
     ///////////////////////////////
 
 }
@@ -761,6 +779,21 @@ string CloudsHUDController::getSelectedTopic(){
     return "";
 }
 
+void CloudsHUDController::updateResearchNavigation(){
+
+    //get the backing
+    hudLabelMap["MapTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_RESEARCH_NAV]->svg.getMeshByID("MapHoverBacking")->bounds;
+    hudLabelMap["PeopleTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_RESEARCH_NAV]->svg.getMeshByID("PeopleHoverAltColor")->bounds;
+    hudLabelMap["VisualsTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_RESEARCH_NAV]->svg.getMeshByID("VSHoverAltColor")->bounds;
+    hudLabelMap["ResearchResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_RESEARCH_NAV]->svg.getMeshByID("ResearchResetButtonBacking")->bounds;
+    
+    //set the interaction regions
+    hudLabelMap["MapTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["MapTextBox"]->baseInteractiveBounds);
+    hudLabelMap["PeopleTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["PeopleTextBox"]->baseInteractiveBounds);
+    hudLabelMap["VisualsTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["VisualsTextBox"]->baseInteractiveBounds);
+    hudLabelMap["ResearchResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ResearchResetButtonTextBox"]->baseInteractiveBounds);
+    
+}
 void CloudsHUDController::pause(){
 
     //TODO: save the current HUD state before pause
@@ -1230,6 +1263,12 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
     else if( layer == CLOUDS_HUD_QUESTION ){
         hudLabelMap["QuestionTextBox"]->animateIn( true );
     }
+    else if( layer == CLOUDS_HUD_RESEARCH_NAV){
+        hudLabelMap["MapTextBox"]->animateIn( true );
+        hudLabelMap["PeopleTextBox"]->animateIn( true );
+        hudLabelMap["VisualsTextBox"]->animateIn( true );
+        hudLabelMap["ResearchResetButtonTextBox"]->animateIn( true );
+    }
 }
 
 void CloudsHUDController::animateOff(){
@@ -1278,6 +1317,13 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         hudLabelMap["SeeMoreTextBox"]->animateOut();
         hudLabelMap["NextButtonTextBox"]->animateOut();
     }
+    else if( layer == CLOUDS_HUD_RESEARCH_NAV){
+        hudLabelMap["MapTextBox"]->animateOut();
+        hudLabelMap["PeopleTextBox"]->animateOut();
+        hudLabelMap["VisualsTextBox"]->animateOut();
+        hudLabelMap["ResearchResetButtonTextBox"]->animateOut();
+    }
+    
 }
 
 ofRectangle CloudsHUDController::getScaledRectangle(const ofRectangle& rect){

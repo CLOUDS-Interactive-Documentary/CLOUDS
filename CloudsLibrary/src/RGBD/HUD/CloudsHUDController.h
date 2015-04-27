@@ -199,6 +199,8 @@ class CloudsHUDController {
     void          updateScroll();
     //////////////
     
+    void updateResearchNavigation();
+    
 	//reset stuff
 	ofMesh resetTriangle;
     
@@ -236,8 +238,11 @@ class CloudsHUDController {
                             *BylineLastNameTextBox,
                             *BylineTopicTextBoxBottom,
                             *BylineTopicTextBoxTop,
-                            *ResearchTopicListFont;
-    
+                            *ResearchTopicListFont,
+                            *ResearchMapTabFont,
+                            *ResearchPeopleTabFont,
+                            *ResearchVisualsTabFont,
+                            *ResearchResetButtonFont;
     ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
                             *ResetButtonTextBox,
                             *QuestionTextBox,
