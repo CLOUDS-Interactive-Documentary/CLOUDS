@@ -667,9 +667,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
                 transitionController.transitionFromInterlude(1.0);
             }
             else{
-				//TEMP FOR DURATIONAL TESTING
-				//transitionController.transitionFromInterlude(1.0);
-				//REPLCE WITH RETURN TO INTRO
                 transitionController.transitionToIntro(1.0);
             }
             
@@ -805,8 +802,20 @@ void CloudsPlaybackController::update(ofEventArgs & args){
                 transitionController.transitionFromExploreMap(1.0);
             }
         }
-
     }
+    
+    if(hud.selectedMapTab()){
+        transitionController.transitionToExploreMap(1.0, 1.0);
+    }
+    
+    if(hud.selectedPeopleTab()){
+//        transitionController.transitionToExplorePeople(1.0, 1.0);
+    }
+    
+    if(hud.selectedVisualsTab()){
+//        transitionController.transitionToExploreVisuals(1.0, 1.0);
+    }
+    
     /////////////// EXPLORE MAP
     
     //////////// SEE MORE OF THIS PERSON

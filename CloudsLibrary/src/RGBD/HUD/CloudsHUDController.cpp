@@ -793,6 +793,11 @@ void CloudsHUDController::updateResearchNavigation(){
     hudLabelMap["VisualsTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["VisualsTextBox"]->baseInteractiveBounds);
     hudLabelMap["ResearchResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ResearchResetButtonTextBox"]->baseInteractiveBounds);
     
+
+    
+    //TODO:
+    //hudLabelMap["ResearchResetButtonTextBox"]
+    
 }
 void CloudsHUDController::pause(){
 
@@ -948,6 +953,18 @@ bool CloudsHUDController::isSeeMorePersonHit(){
     return hudLabelMap["SeeMoreTextBox"]->isClicked();
 }
 
+bool CloudsHUDController::selectedMapTab(){
+    return hudLabelMap["MapTextBox"]->isClicked();
+}
+
+bool CloudsHUDController::selectedPeopleTab(){
+    return hudLabelMap["PeopleTextBox"]->isClicked();
+}
+
+bool CloudsHUDController::selectedVisualsTab(){
+    return hudLabelMap["VisualsTextBox"]->isClicked();
+}
+    
 void CloudsHUDController::setHudEnabled(bool enable){
 	bDrawHud = enable;
 }

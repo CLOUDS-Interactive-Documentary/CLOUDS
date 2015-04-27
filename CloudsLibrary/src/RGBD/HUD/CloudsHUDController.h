@@ -86,6 +86,10 @@ class CloudsHUDController {
 	bool isExploreMapHit();
 	bool isSeeMorePersonHit();
     
+    bool selectedMapTab();
+    bool selectedPeopleTab();
+    bool selectedVisualsTab();
+    
 	void mouseMoved(ofMouseEventArgs& args);
 	void mousePressed(ofMouseEventArgs& args);
 	void mouseReleased(ofMouseEventArgs& args);
