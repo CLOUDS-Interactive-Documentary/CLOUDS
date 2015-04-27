@@ -18,14 +18,30 @@
 #include "CloudsCalibrationNode.h"
 
 
-typedef struct{
+typedef struct {
     ofRectangle bounds;
     string label;
     bool visible;
     bool hovered;
     bool pressed;
     bool clicked;
+    float attenuation;
+    float baseAlpha;
+    float targetAlpha;
 } CloudsMenuItem;
+
+typedef enum {
+    
+    CLOUDS_INTRO_LOADING = 0,
+    CLOUDS_INTRO_MENU,
+    CLOUDS_INTRO_MENU_NEW_RESUME,
+    CLOUDS_INTRO_PLAYING,
+    CLOUDS_INTRO_RESUMING,
+    CLOUDS_INTRO_RESEARCH,
+    CLOUDS_INTRO_NO_MEDIA,
+    CLOUDS_INTRO_ABOUT
+    
+} CloudsIntroState;
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
@@ -85,6 +101,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     float introNodeChangeTime;
     
     static CloudsVisualSystemEvents events;
+    
+    void loadingFinished();    
+    float percentLoaded;
     
 	ofCamera& getCameraRef(){
 		return warpCamera;
@@ -181,7 +200,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofRange distanceRange;
 	
 	void drawCloudsType();
-    void drawIntroNodes();//rift only
+    void drawIntroNodes(); //rift only
 	void drawHelperType();
 	void drawTunnel();
 	void drawPortals();
@@ -213,17 +232,24 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float kinectHelperAlpha;
 	float kinectHelperTargetAlpha;
 
-	bool clickTextActive;
-	float clickTextActiveTime;
-	float clickToBeginAlpha;
+//	bool clickTextActive;
+//	float clickTextActiveTime;
+//	float clickToBeginAlpha;
 	float mouseLastMovedTime;
     
     //menu stuff
+    //intro state machine stuff
+    CloudsIntroState currentState;
+    void changeState(CloudsIntroState newState);
+    float stateChangedTime;
+    
+
     int menuFontSize;
     int currentMenuFontSize;
     int menuToolTipFontSize;
     int currentMenuToolTipFontSize;
-    
+    float menuButtonPad;
+    float loadingCompleteTime;
     float menuYOffset;
     float menuWidth;
     float newResumeSpace;
@@ -244,8 +270,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void updateQuestions();
     void updateMenu();
 	
-	//intro state machien stuff
-	bool startedOnclick;
 	float perlinAmplitude;
 	float perlinDensity;
 	float perlinSpeed;

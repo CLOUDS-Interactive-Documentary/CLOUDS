@@ -28,6 +28,7 @@ string CloudsIntroSequence::getSystemName(){
 }
 
 CloudsIntroSequence::CloudsIntroSequence(){
+    
 	getSelectLow();
 	getSelectMid();
 	getSelectHigh();
@@ -38,13 +39,22 @@ CloudsIntroSequence::CloudsIntroSequence(){
     menuItems.push_back(&aboutMenuItem);
     menuItems.push_back(&newMenuItem);
     menuItems.push_back(&resumeMenuItem);
+    
+    researchMenuItem.label  = GetTranslationForString("RESEARCH");
+    playMenuItem.label      = GetTranslationForString("PLAY");
+    aboutMenuItem.label     = GetTranslationForString("ABOUT");
+    newMenuItem.label       = GetTranslationForString("NEW");
+    resumeMenuItem.label    = GetTranslationForString("RESUME");
+    
     for(int i = 0; i < menuItems.size(); i++){
         menuItems[i]->visible = false;
         menuItems[i]->hovered = false;
         menuItems[i]->pressed = false;
         menuItems[i]->clicked = false;
+        menuItems[i]->attenuation = .05;
+        menuItems[i]->baseAlpha = 0;
+        menuItems[i]->targetAlpha = 0;
     }
-
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
@@ -54,7 +64,9 @@ void CloudsIntroSequence::selfSetDefaults(){
 	paused = false;
 	currentFontSize = -1;
 	currentFontExtrusion = -1;
-	startedOnclick = false;
+
+    percentLoaded = 0;
+    loadingCompleteTime = 0;
 	caughtQuestion = NULL;
 	titleNoisePosition = 0;
 	titleNoiseSpeed = 0;
@@ -62,6 +74,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	currentTitleOpacity = 0;
 	bQuestionDebug = false;
 	firstQuestionStopped = false;
+    menuButtonPad = 20;
     
     introNodeChangeTime = 0;
     introNodesShown = true;
@@ -96,9 +109,9 @@ void CloudsIntroSequence::selfSetDefaults(){
 	perlinOffset = 0;
 	newResumeSpace = 0;
     
-	clickTextActive = false;
-	clickTextActiveTime = 0;
-	clickToBeginAlpha = 0;
+//	clickTextActive = false;
+//	clickTextActiveTime = 0;
+//	clickToBeginAlpha = 0;
 	mouseLastMovedTime = 0;
 
 	cameraSwingDamp = 0.0;
@@ -112,6 +125,8 @@ void CloudsIntroSequence::selfSetDefaults(){
 	questionChannels.resize(4);
 	channelPauseTime.resize(4);
 	
+    changeState(CLOUDS_INTRO_LOADING);
+
 #ifdef OCULUS_RIFT
     bCursorInCenter = false;
     startTimeCursorInCenter = 0;
@@ -300,7 +315,9 @@ void CloudsIntroSequence::selfSetupGuis(){
 	menuGui->addSlider("Y OFFSET", 0, 300, &menuYOffset);
 	menuGui->addSlider("TOTAL WIDTH", 200, 1000, &menuWidth);
 	menuGui->addSlider("NEW RESUME SPACE", 0, 200, &newResumeSpace);
+	menuGui->addSlider("MENU BUTTON PAD", 0, 50, &menuButtonPad);
 
+    
 	guis.push_back(menuGui);
 	guimap[menuGui->getName()] = menuGui;
     
@@ -321,15 +338,15 @@ void CloudsIntroSequence::reloadShaders(){
 
 void CloudsIntroSequence::selfUpdate(){
 	
-	if(!startedOnclick && timeline->getIsPlaying()){
-		timeline->stop();
-	}
+//	if(!startedOnclick && timeline->getIsPlaying()){
+//		timeline->stop();
+//	}
 	
 	updateCamera();
+    updateMenu();
 	updateWaiting();
 	updateQuestions();
 	updateTitle();
-    updateMenu();
 }
 
 void CloudsIntroSequence::updateCamera(){
@@ -360,14 +377,15 @@ void CloudsIntroSequence::updateCamera(){
 void CloudsIntroSequence::updateWaiting(){
 	
     // Trigger start manually
-    if (startedOnclick) {
-		nodeAlphaAttenuate = MAX(0,nodeAlphaAttenuate-0.02);
-		clickToBeginAlpha *= .99;
-		clickToBeginAlpha -= .001;
-		clickToBeginAlpha = MAX(0,clickToBeginAlpha);
-		return;
-	}
+//    if (startedOnclick) {
+//		nodeAlphaAttenuate = MAX(0,nodeAlphaAttenuate-0.02);
+//		clickToBeginAlpha *= .99;
+//		clickToBeginAlpha -= .001;
+//		clickToBeginAlpha = MAX(0,clickToBeginAlpha);
+//		return;
+//	}
 
+    #ifndef MOUSE_INPUT
 	for(int i = 0; i < introNodes.size(); i++){
 		updateIntroNodePosition(*introNodes[i]);
 	}
@@ -384,7 +402,7 @@ void CloudsIntroSequence::updateWaiting(){
 		startedOnclick = true;
 		timeline->play();
 	}
-
+    #endif
 	#ifdef OCULUS_RIFT
 	
 	#elif defined(KINECT_INPUT)
@@ -415,8 +433,6 @@ void CloudsIntroSequence::updateWaiting(){
 	#else
 	if(startQuestions.size() > 0){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 10){
-//			CloudsPortalEventArgs args("CLICK TO BEGIN");
-//			ofNotifyEvent(events.portalHoverBegan, args);
 			timeSinceLastPrompt = ofGetElapsedTimef();
 			promptShown = true;
 
@@ -431,26 +447,74 @@ void CloudsIntroSequence::updateWaiting(){
 	#endif
 	
 	#ifdef MOUSE_INPUT
-	if(clickTextActive){
-		float timeSinceActive = ofGetElapsedTimef() - clickTextActiveTime;
-		float timeSinceMouse = ofGetElapsedTimef() - mouseLastMovedTime;
-		clickToBeginAlpha = ofMap(timeSinceActive,
-								  .5,1.5,
-								  0.0,1.0,true) *
-								  ofMap(currentTitleOpacity,titleTypeOpacity,.9,0.3,.7,true);
-        #ifdef TARGET_WIN32
-        if(timeSinceMouse > 4.){
-			clickToBeginAlpha *= ofMap(timeSinceMouse, 4.0, 5.0, 1.0, 0.0,true);
-			if(timeSinceMouse > 5.0){
-				clickTextActive = false;
-				glfwSetCursorPos( ofAppGLFWWindow::windowP, getCanvasWidth()/2, getCanvasHeight()/2);
-			}
-		}
-        #endif
-	}
+    //THis code puts the mouse back to the middle
+//	if(clickTextActive){
+//		float timeSinceActive = ofGetElapsedTimef() - clickTextActiveTime;
+//		float timeSinceMouse = ofGetElapsedTimef() - mouseLastMovedTime;
+//		clickToBeginAlpha = ofMap(timeSinceActive,
+//								  .5,1.5,
+//								  0.0,1.0,true) *
+//								  ofMap(currentTitleOpacity,titleTypeOpacity,.9,0.3,.7,true);
+//        #ifdef TARGET_WIN32
+//        if(timeSinceMouse > 4.){
+//			clickToBeginAlpha *= ofMap(timeSinceMouse, 4.0, 5.0, 1.0, 0.0,true);
+//			if(timeSinceMouse > 5.0){
+//				clickTextActive = false;
+//				glfwSetCursorPos( ofAppGLFWWindow::windowP, getCanvasWidth()/2, getCanvasHeight()/2);
+//			}
+//		}
+//        #endif
+//	}
 	#endif
 }
 
+void CloudsIntroSequence::loadingFinished(){
+    if(currentState == CLOUDS_INTRO_LOADING){
+        changeState(CLOUDS_INTRO_MENU);
+    }
+}
+
+void CloudsIntroSequence::changeState(CloudsIntroState newState){
+    currentState = newState;
+    stateChangedTime = ofGetElapsedTimef();
+    
+    for(int i = 0; i < menuItems.size(); i++){
+        menuItems[i]->visible = false;
+        menuItems[i]->hovered = false;
+        menuItems[i]->pressed = false;
+        menuItems[i]->clicked = false;
+        menuItems[i]->attenuation = .1;
+    }
+    
+    switch (newState) {
+        case CLOUDS_INTRO_LOADING:
+            break;
+        case CLOUDS_INTRO_MENU:
+            researchMenuItem.visible = true;
+            playMenuItem.visible = true;
+            aboutMenuItem.visible = true;
+            break;
+        case CLOUDS_INTRO_MENU_NEW_RESUME:
+            resumeMenuItem.visible = true;
+            newMenuItem.visible = true;
+            break;
+        case CLOUDS_INTRO_PLAYING:
+            timeline->play();
+            playMenuItem.attenuation = .03;
+            break;
+        case CLOUDS_INTRO_RESUMING:
+            break;
+        case CLOUDS_INTRO_RESEARCH:
+            break;
+        case CLOUDS_INTRO_NO_MEDIA:
+            break;
+        case CLOUDS_INTRO_ABOUT:
+            break;
+        default:
+            break;
+    }
+ 
+}
 
 void CloudsIntroSequence::updateIntroNodePosition(CalibrationNode& node){
 	
@@ -497,7 +561,7 @@ void CloudsIntroSequence::updateTitle(){
 	
 	titleNoisePosition += titleNoiseSpeed;
 	float hoverTitleOpacity;
-	if(hoveringTitle || (startedOnclick && timeline->getIsPlaying()) ){
+	if(hoveringTitle || (currentState == CLOUDS_INTRO_PLAYING && timeline->getIsPlaying()) ){
 		hoverTitleOpacity = .9;
 	}
 	else{
@@ -519,23 +583,23 @@ void CloudsIntroSequence::updateMenu(){
     }
     
     float menuHeight    = menuFont.stringHeight("W");
-    float researchWidth = menuFont.stringWidth( GetTranslationForString("RESEARCH") );
-    float playWidth     = menuFont.stringWidth( GetTranslationForString("PLAY") );
-    float aboutWidth    = menuFont.stringWidth( GetTranslationForString("ABOUT") );
-    float newWidth      = menuFont.stringWidth( GetTranslationForString("NEW") );
-    float resumeWidth   = menuFont.stringWidth( GetTranslationForString("RESUME") );
+    float researchWidth = menuFont.stringWidth( researchMenuItem.label );
+    float playWidth     = menuFont.stringWidth( playMenuItem.label );
+    float aboutWidth    = menuFont.stringWidth( aboutMenuItem.label );
+    float newWidth      = menuFont.stringWidth( newMenuItem.label );
+    float resumeWidth   = menuFont.stringWidth( resumeMenuItem.label );
     
     float menuTop = getCanvasHeight() / 2 + menuYOffset;
     researchMenuItem.bounds.x = getCanvasWidth() / 2 - menuWidth / 2;
     researchMenuItem.bounds.y = menuTop;
     researchMenuItem.bounds.width = researchWidth;
     researchMenuItem.bounds.height = menuHeight;
-
+    
     playMenuItem.bounds.x = getCanvasWidth() / 2 - playWidth / 2;
     playMenuItem.bounds.y = menuTop;
     playMenuItem.bounds.width = playWidth;
     playMenuItem.bounds.height = menuHeight;
-
+    
     aboutMenuItem.bounds.x = getCanvasWidth() / 2 + menuWidth/ 2 - aboutWidth;
     aboutMenuItem.bounds.y = menuTop;
     aboutMenuItem.bounds.width = aboutWidth;
@@ -551,7 +615,44 @@ void CloudsIntroSequence::updateMenu(){
     resumeMenuItem.bounds.y = menuTop;
     resumeMenuItem.bounds.width = researchWidth;
     resumeMenuItem.bounds.height = menuHeight;
+    
+    for(int i = 0; i < menuItems.size(); i++){
 
+        //pad the buttons
+        menuItems[i]->bounds.x -= menuButtonPad;
+        menuItems[i]->bounds.y -= menuButtonPad;
+        menuItems[i]->bounds.width  += menuButtonPad*2;
+        menuItems[i]->bounds.height += menuButtonPad*2;
+        
+        if(!menuItems[i]->visible){
+            menuItems[i]->targetAlpha = .0;
+        }
+        else if(menuItems[i]->pressed){
+            menuItems[i]->targetAlpha = 1.0;
+        }
+        else if(menuItems[i]->hovered){
+            menuItems[i]->targetAlpha = .8;
+        }
+        else{
+            menuItems[i]->targetAlpha = .5;
+        }
+        menuItems[i]->baseAlpha += (menuItems[i]->targetAlpha - menuItems[i]->baseAlpha) * menuItems[i]->attenuation;
+    }
+    
+    if(currentState == CLOUDS_INTRO_MENU){
+        if(researchMenuItem.clicked){
+            changeState(CLOUDS_INTRO_RESEARCH);
+        }
+        else if(playMenuItem.clicked){
+            //TODO: switch if we have a saved run
+            //changeState(CLOUDS_INTRO_MENU_NEW_RESUME);
+            changeState(CLOUDS_INTRO_PLAYING);
+        }
+        else if(aboutMenuItem.clicked){
+            //TODO: show about menu
+        }
+    }
+    
 }
 
 void CloudsIntroSequence::updateQuestions(){
@@ -669,7 +770,6 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip*>& possibleStartQu
 		CloudsPortal q;
 		q.cam = &warpCamera;
 		q.bLookAtCamera = true;
-//		q.font = &questionFont;
 		q.clip = possibleStartQuestions[i];
 		q.topic = q.clip->getAllTopicsWithQuestion()[0];
 		q.question = q.clip->getQuestionForTopic(q.topic);
@@ -678,6 +778,7 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip*>& possibleStartQu
 		
 		startQuestions.push_back(q);
 	}
+    
 	timeSinceLastPrompt = ofGetElapsedTimef();
 	positionStartQuestions();
 }
@@ -779,7 +880,9 @@ string CloudsIntroSequence::getQuestionText(){
 }
 
 bool CloudsIntroSequence::userHasBegun(){
-    return startedOnclick;
+    return currentState == CLOUDS_INTRO_PLAYING  ||
+           currentState == CLOUDS_INTRO_RESEARCH ||
+           currentState == CLOUDS_INTRO_RESUMING;
 }
 
 bool CloudsIntroSequence::isStartQuestionSelected(){
@@ -1172,9 +1275,9 @@ void CloudsIntroSequence::drawIntroNodes(){
 
 void CloudsIntroSequence::drawCursors(){
 	cursorAlpha = 1.0;
-	if(!startedOnclick){
-		cursorAlpha = ofMap(clickToBeginAlpha, 0, .3, 0.0, 1.0, true);
-	}
+//	if(!startedOnclick){
+//		cursorAlpha = ofMap(clickToBeginAlpha, 0, .3, 0.0, 1.0, true);
+//	}
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
         if (it->second.primary) {
@@ -1194,7 +1297,7 @@ void CloudsIntroSequence::selfDrawOverlay(){
     drawMenu();
     
 //	ofPushStyle();
-////	string helpHoverText = GetTranslationForString("CLICK TO BEGIN");
+//  string helpHoverText = GetTranslationForString("CLICK TO BEGIN");
 //	string helpHoverText = GetTranslationForString("");
 //	float helperTextOpacity = clickToBeginAlpha;
 //	ofSetColor(255,helperTextOpacity*255);
@@ -1217,16 +1320,53 @@ void CloudsIntroSequence::selfDrawOverlay(){
 void CloudsIntroSequence::drawMenu(){
 
     ofPushStyle();
-    
-    ofSetColor(255);
 
-    menuFont.drawString(GetTranslationForString("RESEARCH"), researchMenuItem.bounds.x, researchMenuItem.bounds.y);
-    menuFont.drawString(GetTranslationForString("PLAY"),     playMenuItem.bounds.x, playMenuItem.bounds.y);
-    menuFont.drawString(GetTranslationForString("ABOUT"),    aboutMenuItem.bounds.x, aboutMenuItem.bounds.y);
-    
+    //draw loading bar
+    if(currentState == CLOUDS_INTRO_LOADING){
+        
+        ofSetColor(255);
+        ofSetRectMode(OF_RECTMODE_CENTER);
+        ofVec2f leftSide(getCanvasWidth()/2 - menuWidth/2,
+                         getCanvasHeight() / 2 + menuYOffset);
+        ofVec2f rightSide(getCanvasWidth()/2 + menuWidth/2,
+                          getCanvasHeight() / 2 + menuYOffset);
+        ofRect(leftSide.x, leftSide.y,  4, 4);
+        ofRect(rightSide.x,rightSide.y, 4, 4);
+        ofVec2f percentDone = leftSide.getInterpolated(rightSide, percentLoaded);
+        
+        ofSetColor(255, 30);
+        ofLine(leftSide, rightSide);
+        ofSetColor(255, 100);
+        ofLine(leftSide, percentDone);
+        
+        ofSetRectMode(OF_RECTMODE_CORNER);
+    }
+//    else if(currentState == CLOUDS_INTRO_MENU){
+//    float fadeAttenuate = ofMap(ofGetElapsedTimef(), stateChangedTime, stateChangedTime+.5, 0, 1.0, true);
+
+    float wordHeight = menuFont.stringHeight("W");
+    for(int i = 0; i < menuItems.size(); i++){
+        
+        ofColor color;
+        color = menuItems[i]->pressed ? ofColor::lightBlue : ofColor::white;
+        ofSetColor(color, 255 * menuItems[i]->baseAlpha);
+        menuFont.drawString(menuItems[i]->label,
+                            menuItems[i]->bounds.x + menuButtonPad,
+                            menuItems[i]->bounds.y + wordHeight + menuButtonPad);
+
+    }
+
+    //debug
+//    for(int i = 0; i < menuItems.size(); i++){
+//        ofNoFill();
+//        if(menuItems[i]->visible){
+//            ofRect(menuItems[i]->bounds);
+//        }
+//    }
     ofPopStyle();
     
 }
+
 
 void CloudsIntroSequence::selfPostDraw(){
 	
@@ -1245,7 +1385,8 @@ void CloudsIntroSequence::selfPostDraw(){
 
 void CloudsIntroSequence::selfBegin(){
 	timeline->stop();
-	startedOnclick = false;
+    changeState(CLOUDS_INTRO_LOADING);
+//	startedOnclick = false;
 	selectedQuestion = NULL;
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].stopHovering();
@@ -1289,18 +1430,28 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
     cursor.set(GetCloudsInput()->getPosition());
 	mouseLastMovedTime = ofGetElapsedTimef();
 #ifdef MOUSE_INPUT
-	if(!clickTextActive && startQuestions.size() > 0){
-		clickTextActive = true;
-		clickTextActiveTime = mouseLastMovedTime;
-	}
+    if(currentState == CLOUDS_INTRO_MENU){
+        researchMenuItem.hovered = researchMenuItem.bounds.inside(data.x, data.y);
+        playMenuItem.hovered     = playMenuItem.bounds.inside(data.x, data.y);
+        aboutMenuItem.hovered    = aboutMenuItem.bounds.inside(data.x, data.y);
+    }
+    //TODO: hover menu buttons
+//	if(!clickTextActive && startQuestions.size() > 0){
+//		clickTextActive = true;
+//		clickTextActiveTime = mouseLastMovedTime;
+//	}
 #endif
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 #if defined(MOUSE_INPUT)
-	if(!startedOnclick && startQuestions.size() > 0){
-		//startedOnclick  = true;
-		timeline->play();		
+	if(currentState == CLOUDS_INTRO_MENU){
+        researchMenuItem.pressed = researchMenuItem.bounds.inside(data.x, data.y);
+        playMenuItem.pressed     = playMenuItem.bounds.inside(data.x, data.y);
+        aboutMenuItem.pressed    = aboutMenuItem.bounds.inside(data.x, data.y);
+    
+		//startedOnclick  = true; //temp
+//		timeline->play();
 	}
 	else{
 		for(int i = 0; i < startQuestions.size(); i++){
@@ -1311,7 +1462,17 @@ void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 }
 
 void CloudsIntroSequence::selfMouseReleased(ofMouseEventArgs& data){
-	
+    #if defined(MOUSE_INPUT)
+    if(currentState == CLOUDS_INTRO_MENU){
+        researchMenuItem.clicked = researchMenuItem.pressed && researchMenuItem.bounds.inside(data.x, data.y);
+        playMenuItem.clicked     = playMenuItem.pressed && playMenuItem.bounds.inside(data.x, data.y);
+        aboutMenuItem.clicked    = aboutMenuItem.pressed && aboutMenuItem.bounds.inside(data.x, data.y);
+    }
+    for(int i = 0; i < menuItems.size(); i++){
+        menuItems[i]->pressed = false;
+    }
+    
+    #endif
 }
 
 
