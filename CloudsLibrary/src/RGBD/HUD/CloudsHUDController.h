@@ -36,9 +36,10 @@ typedef enum{
     CLOUDS_HUD_RESEARCH_TAB_VISUALS,
 } CloudsHUDResearchTab;
 
-class TopicButton {
+
+class CloudsHUDResearchButton {
   public:
-    TopicButton(){
+    CloudsHUDResearchButton(){
         top = 0;
         visible = false;
         hovered = false;
@@ -52,8 +53,15 @@ class TopicButton {
     bool pressed;
     bool clicked;
     ofRectangle selectRect;
-    string topic;
-} ;
+    string item;
+};
+
+class CloudsHUDResearchList{
+ public:
+    vector<CloudsHUDResearchButton> buttons;
+    float totalScrollHeight;
+    float scrollPosition;
+};
 
 #ifdef OCULUS_RIFT
 typedef enum {
@@ -150,10 +158,11 @@ class CloudsHUDController {
     void unpause();
     
     void setTopics(const set<string>& topics);
-    bool isTopicSelected();
-    bool isTopicConfirmed();
-    string getSelectedTopic();
+    bool isItemSelected();
+    bool isItemConfirmed();
+    string getSelectedItem();
     
+    void populateSpeakers();
   protected:
 	
     void populateLowerThird(const string& firstName,
@@ -196,8 +205,8 @@ class CloudsHUDController {
     bool          bIsHoldScrolling;
     float         scrollPressedTime;
     
-    float         scrollPosition;
-    float         totalScrollHeight;
+//    float         scrollPosition;
+//    float         totalScrollHeight;
     float         scrollIncrement;
     
     void          updateScroll();
@@ -268,8 +277,9 @@ class CloudsHUDController {
     ofVec2f scaleOffset;
     int margin;
     
-    
-    vector<TopicButton> topicButtons;
+    map<CloudsHUDResearchTab, CloudsHUDResearchList> researchLists;
+    //vector<TopicButton> topicButtons;
+    CloudsHUDResearchList* currentResearchList;
     
     ofRectangle     getScaledRectangle(const ofRectangle& rect);
     ofRectangle     defaultBioBounds;

@@ -782,20 +782,26 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         hud.unpause();
     }
     
-    //////////// GO TO EXPLORE THE MAP?
+    //////////// GO TO EXPLORE THE MAP FROM INTERVIEW?
     if(hud.isExploreMapHit()){
         hud.animateOff();
         transitionController.transitionToExploreMap(1.0, 2.0);
     }
     
+    if(hud.isSeeMorePersonHit()){
+        hud.animateOff();
+        transitionController.transitionToExplorePeople(1.0, 2.0);
+    }
+    /////////////////////////////////
+    
     if(showingExploreMap){
-        string selectedTopic = hud.getSelectedTopic();
+        string selectedTopic = hud.getSelectedItem();
         if(selectedTopic != ""){
             
             ///TODO!!
             //clusterMap->highlightTopic(selectedTopic);
 
-            if(hud.isTopicConfirmed()){
+            if(hud.isItemConfirmed()){
                 hud.animateOff();
                 exploreMapSelectedTopic = selectedTopic;
                 //Transition into new act based on topic
@@ -809,7 +815,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     }
     
     if(hud.selectedPeopleTab()){
-//        transitionController.transitionToExplorePeople(1.0, 1.0);
+        transitionController.transitionToExplorePeople(1.0, 1.0);
     }
     
     if(hud.selectedVisualsTab()){

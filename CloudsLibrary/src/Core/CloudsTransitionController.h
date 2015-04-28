@@ -64,7 +64,10 @@ class CloudsTransitionController {
 
    	void transitionToExploreMap(float inDuration, float outDuration);
    	void transitionFromExploreMap(float inDuration);
- 
+
+   	void transitionToExplorePeople(float inDuration, float outDuration);
+   	void transitionFromExplorePeople(float inDuration);
+    
 	void update();
 	
     bool isTransitioning();
@@ -103,6 +106,10 @@ class CloudsTransitionController {
 	vector<CloudsTransitionState> fadeOutStates;
 	vector<CloudsTransitionState> fadeInStates;
 	
+    void queueReciprocal(CloudsTransitionState state, float duration);
+    
+    map<CloudsTransitionState,CloudsTransitionState> reciprocalTransitions;
+    
 	CloudsTransitionState currentState;
 	CloudsTransitionState previousState;
 	CloudsTransitionState pendingState;

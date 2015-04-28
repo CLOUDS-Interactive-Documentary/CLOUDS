@@ -37,6 +37,29 @@ CloudsTransitionController::CloudsTransitionController(){
 	fadeInStates.push_back(TRANSITION_EXPLORE_MAP_IN);
 	fadeInStates.push_back(TRANSITION_EXPLORE_PEOPLE_IN);
 	fadeInStates.push_back(TRANSITION_EXPLORE_VISUALS_IN);
+    
+    
+	reciprocalTransitions[TRANSITION_INTRO_IN] = TRANSITION_INTRO_OUT;
+	reciprocalTransitions[TRANSITION_INTRO_OUT] = TRANSITION_INTRO_IN;
+	reciprocalTransitions[TRANSITION_INTERVIEW_IN] =TRANSITION_INTERVIEW_OUT;
+	reciprocalTransitions[TRANSITION_INTERVIEW_OUT] =TRANSITION_INTERVIEW_IN;
+	reciprocalTransitions[TRANSITION_VISUALSYSTEM_IN] = TRANSITION_VISUALSYSTEM_OUT;
+	reciprocalTransitions[TRANSITION_VISUALSYSTEM_OUT] = TRANSITION_VISUALSYSTEM_IN;
+ 	reciprocalTransitions[TRANSITION_QUESTION_IN] = TRANSITION_QUESTION_OUT;
+	reciprocalTransitions[TRANSITION_QUESTION_OUT] = TRANSITION_QUESTION_IN;
+    reciprocalTransitions[TRANSITION_INTERLUDE_IN] = TRANSITION_INTERLUDE_OUT;
+    reciprocalTransitions[TRANSITION_INTERLUDE_OUT] = TRANSITION_INTERLUDE_IN;
+	reciprocalTransitions[TRANSITION_CLUSTERMAP_IN] = TRANSITION_CLUSTERMAP_OUT;
+	reciprocalTransitions[TRANSITION_CLUSTERMAP_OUT] = TRANSITION_CLUSTERMAP_IN;
+	reciprocalTransitions[TRANSITION_EXPLORE_MAP_IN] = TRANSITION_EXPLORE_MAP_OUT;
+	reciprocalTransitions[TRANSITION_EXPLORE_MAP_OUT] = TRANSITION_EXPLORE_MAP_IN;
+	reciprocalTransitions[TRANSITION_EXPLORE_PEOPLE_IN] = TRANSITION_EXPLORE_PEOPLE_OUT;
+	reciprocalTransitions[TRANSITION_EXPLORE_PEOPLE_OUT] = TRANSITION_EXPLORE_PEOPLE_IN;
+	reciprocalTransitions[TRANSITION_EXPLORE_VISUALS_IN] = TRANSITION_EXPLORE_VISUALS_OUT;
+	reciprocalTransitions[TRANSITION_EXPLORE_VISUALS_OUT] = TRANSITION_EXPLORE_VISUALS_IN;
+    //FAIL safe
+    reciprocalTransitions[TRANSITION_IDLE] = TRANSITION_IDLE;
+
 }
 
 void CloudsTransitionController::confirmEmpty(string transitionName){
@@ -90,15 +113,16 @@ void CloudsTransitionController::transitionToIntro(float inDuration){
 	
 	confirmEmpty("transitionToIntro");
 
-    if(previousState == TRANSITION_INTERLUDE_IN){
-        queueState(TRANSITION_INTERLUDE_OUT, inDuration);
-    }
-    else if(previousState == TRANSITION_INTERVIEW_IN){
-        queueState(TRANSITION_INTERVIEW_OUT, inDuration);
-    }
-    else if(previousState == TRANSITION_VISUALSYSTEM_IN){
-        queueState(TRANSITION_VISUALSYSTEM_OUT, inDuration);
-    }
+//    if(getPreviousState() == TRANSITION_INTERLUDE_IN){
+//        queueState(TRANSITION_INTERLUDE_OUT, inDuration);
+//    }
+//    else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
+//        queueState(TRANSITION_INTERVIEW_OUT, inDuration);
+//    }
+//    else if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
+//        queueState(TRANSITION_VISUALSYSTEM_OUT, inDuration);
+//    }
+    queueReciprocal(getPreviousState(), inDuration);
     
 	queueState(TRANSITION_INTRO_IN, inDuration);
 	
@@ -129,7 +153,7 @@ void CloudsTransitionController::transitionToVisualSystem(float outDuration, flo
 
 	confirmEmpty("transitionToVisualSystem");
 	
-	cout << "TRANSITION POINTCLOUD --> VISUAL SYSTEM" << endl;
+//	cout << "TRANSITION POINTCLOUD --> VISUAL SYSTEM" << endl;
 	
 	queueState(TRANSITION_INTERVIEW_OUT, outDuration);
 	queueState(TRANSITION_VISUALSYSTEM_IN, inDuration);
@@ -141,7 +165,7 @@ void CloudsTransitionController::transitionToInterview(float outDuration, float 
 
 	confirmEmpty("transitionToInterview");
 	
-	cout << "TRANSITION VISUAL SYSTEM --> POINTCLOUD" << endl;
+//	cout << "TRANSITION VISUAL SYSTEM --> POINTCLOUD" << endl;
 	
 	queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
 	queueState(TRANSITION_INTERVIEW_IN, inDuration);
@@ -154,19 +178,37 @@ void CloudsTransitionController::transitionToInterlude(float inDuration,float ou
 	
 	confirmEmpty("transitionToInterlude");
 	
-	//we are in a visual system
-	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
-        cout<<"VISUAL SYSTEM --> INTERLUDE MAP"<<endl;
-		currentState = TRANSITION_VISUALSYSTEM_IN;
-		queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
-        queueState(TRANSITION_INTERLUDE_IN, inDuration);
-	}
-	//we are in an interview
-	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
-        cout<<"INTERVIEW --> INTERLUDE MAP"<<endl;
-		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
-        queueState(TRANSITION_INTERLUDE_IN, inDuration);
-	}
+//	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
+////		currentState = TRANSITION_VISUALSYSTEM_IN; //JG why is this here
+//		queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
+//	}
+//	//we are in an interview
+//	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
+//		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
+//	}
+    
+    queueReciprocal(getPreviousState(), outDuration);
+	
+    queueState(TRANSITION_INTERLUDE_IN, inDuration);
+    
+	startTransition();
+}
+
+void CloudsTransitionController::transitionFromInterlude(float inDuration){
+    
+    confirmEmpty("transitionFromInterlude");
+    
+    queueState(TRANSITION_INTERLUDE_OUT, inDuration);
+	
+    startTransition();
+    
+}
+
+void CloudsTransitionController::transitionWithQuestion(float outDuration, float portalDuration){
+	
+	confirmEmpty("transitionWithQuestion");
+	
+	queueState(TRANSITION_INTERVIEW_OUT, outDuration);
 	
 	startTransition();
 }
@@ -175,17 +217,20 @@ void CloudsTransitionController::transitionToExploreMap(float inDuration,float o
 	
 	confirmEmpty("transitionToExploreMap");
 	
-	//we are in a visual system
-	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
-		queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
-	}
-	//we are in an interview
-	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
-		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
-	}
-	else if(getPreviousState() == TRANSITION_INTRO_IN){
-        queueState(TRANSITION_INTRO_OUT, outDuration);
-    }
+//	//we are in a visual system
+//	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
+//		queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
+//	}
+//	//we are in an interview
+//	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
+//		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
+//	}
+//	else if(getPreviousState() == TRANSITION_INTRO_IN){
+//        queueState(TRANSITION_INTRO_OUT, outDuration);
+//    }
+    
+    queueReciprocal(getPreviousState(), outDuration);
+        
     queueState(TRANSITION_EXPLORE_MAP_IN, inDuration);
 	
 	startTransition();
@@ -201,25 +246,29 @@ void CloudsTransitionController::transitionFromExploreMap(float inDuration){
     
 }
 
-void CloudsTransitionController::transitionFromInterlude(float inDuration){
 
-    confirmEmpty("transitionFromInterlude");
+void CloudsTransitionController::transitionToExplorePeople(float inDuration, float outDuration){
 
-    queueState(TRANSITION_INTERLUDE_OUT, inDuration);
-	
-    startTransition();
-
-}
-
-void CloudsTransitionController::transitionWithQuestion(float outDuration, float portalDuration){
-	
-	confirmEmpty("transitionWithQuestion");
-	
-	queueState(TRANSITION_INTERVIEW_OUT, outDuration);
-	
-	//queueState(TRANSITION_QUESTION_IN, portalDuration);
+    confirmEmpty("transitionToExplorePeople");
+    
+    queueReciprocal(getPreviousState(), outDuration);
+    
+    queueState(TRANSITION_EXPLORE_PEOPLE_IN, inDuration);
 	
 	startTransition();
+}
+
+void CloudsTransitionController::transitionFromExplorePeople(float inDuration){
+    
+    confirmEmpty("transitionFromExplorePeople");
+
+    queueState(TRANSITION_EXPLORE_PEOPLE_OUT, inDuration);
+	
+    startTransition();
+}
+
+void CloudsTransitionController::queueReciprocal(CloudsTransitionState state, float duration){
+    queueState(reciprocalTransitions[state], duration);
 }
 
 void CloudsTransitionController::startTransition(){
