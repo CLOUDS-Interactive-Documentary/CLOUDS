@@ -823,6 +823,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             //clusterMap->highlightTopic(selectedTopic);
 
             if(hud.isItemConfirmed()){
+                showingExploreMap = false;
                 hud.animateOff();
                 exploreMapSelectedTopic = selectedTopic;
                 //Transition into new act based on topic
@@ -839,6 +840,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             //peopleMap->highlightPerson(selectedTopic);
             
             if(hud.isItemConfirmed()){
+                showingExplorePeople = false;
                 hud.animateOff();
                 explorePeopleSelectedSpeakerID = selectedSpeakerID;
                 //Transition into new act based on topic
@@ -981,10 +983,11 @@ void CloudsPlaybackController::updateTransition(){
                 
             case TRANSITION_EXPLORE_MAP_OUT:
                 
-                showingExploreMap = false;
+                //showingExploreMap = false;
                 clusterMap->stopSystem();
                 
                 if(hud.isItemConfirmed()){
+                    hud.clearSelection();
                     storyEngine.buildActWithTopic(run, exploreMapSelectedTopic);
                 }
                     
@@ -992,10 +995,11 @@ void CloudsPlaybackController::updateTransition(){
                 
             case TRANSITION_EXPLORE_PEOPLE_OUT:
                     
-                showingExplorePeople = false;
+                //showingExplorePeople = false;
                 peopleMap->stopSystem();
                 
                 if(hud.isItemConfirmed()){
+                    hud.clearSelection();
                     storyEngine.buildActWithPerson(run, explorePeopleSelectedSpeakerID);
                 }
                 break;

@@ -46,6 +46,10 @@ CloudsHUDController::CloudsHUDController(){
  
     scrollPressedTime = 0;
     
+    fakeConfirmHovered = false;
+    fakeConfirmPressed = false;
+    fakeConfirmClicked = false;
+
 	isPlaying = false;
     
     scaleAmt = 1.0;
@@ -719,6 +723,12 @@ void CloudsHUDController::update(){
     
     if( hudOpenMap[CLOUDS_HUD_RESEARCH_LIST] ){
         updateScroll();
+        
+        /////TEMP
+        fakeConfirmSelectionBounds.x = ofGetWidth()/2 - 150;
+        fakeConfirmSelectionBounds.y = ofGetHeight()/2 - 75;
+        fakeConfirmSelectionBounds.width = 300;
+        fakeConfirmSelectionBounds.height = 150;
     }
     
     if( hudOpenMap[CLOUDS_HUD_RESEARCH_NAV]){
@@ -781,17 +791,6 @@ bool CloudsHUDController::isItemSelected(){
     return false;
 }
 
-bool CloudsHUDController::isItemConfirmed(){
-    
-    //TODO: User needs to click on topic in the map, just return true for now
-    bool isSelected = isItemSelected();
-    for(int i = 0; i < currentResearchList->buttons.size(); i++){
-        currentResearchList->buttons[i].clicked = false;
-    }
-    
-    return isSelected;
-}
-
 string CloudsHUDController::getSelectedItem(){
     for(int i = 0; i < currentResearchList->buttons.size(); i++){
         if(currentResearchList->buttons[i].clicked){
@@ -799,6 +798,15 @@ string CloudsHUDController::getSelectedItem(){
         }
     }
     return "";
+}
+
+bool CloudsHUDController::isItemConfirmed(){
+    
+    return fakeConfirmClicked;
+}
+
+void CloudsHUDController::clearSelection(){
+    fakeConfirmClicked = false;    
 }
 
 void CloudsHUDController::updateResearchNavigation(){
@@ -927,7 +935,11 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
                 }
             }
         }
+        
+        //TEMP
+        fakeConfirmHovered = fakeConfirmSelectionBounds.inside(args.x, args.y);
     }
+
 }
 
 void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
@@ -953,6 +965,10 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
                 }
             }
         }
+        
+        //TEMP
+        fakeConfirmPressed = fakeConfirmSelectionBounds.inside(args.x, args.y);
+
     }
 }
 
@@ -973,12 +989,20 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
         }        
         bIsHoldScrolling = false;
         
-        for(int i = 0; i < currentResearchList->buttons.size(); i++){
-            if(currentResearchList->buttons[i].visible){
-               currentResearchList->buttons[i].clicked = currentResearchList->buttons[i].pressed &&
-                                                         currentResearchList->buttons[i].selectRect.inside(args.x, args.y);
+        if(researchScrollBounds.inside(args.x, args.y)){
+
+            for(int i = 0; i < currentResearchList->buttons.size(); i++){
+                if(currentResearchList->buttons[i].visible){
+                   currentResearchList->buttons[i].clicked = currentResearchList->buttons[i].pressed &&
+                                                             currentResearchList->buttons[i].selectRect.inside(args.x, args.y);
+                    currentResearchList->buttons[i].pressed = false;
+                }
             }
         }
+        
+        //TEMP
+        fakeConfirmClicked = fakeConfirmPressed && fakeConfirmSelectionBounds.inside(args.x, args.y);
+        fakeConfirmPressed = false;
     }
 }
 
@@ -1091,15 +1115,38 @@ void CloudsHUDController::draw(){
 
     if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
         
+        ofPushStyle();
         //test to see bound locations
         ofSetColor(255, 0, 0);
         ofRect(scrollUpBounds);
         ofRect(scrollDownBounds);
-        ofSetColor(255);
+        
+        
+        //begin test for fake confirm
+        if(isItemSelected()){
+            if(fakeConfirmClicked){
+                ofSetColor(255, 0, 0, 50);
+            }
+            else if(fakeConfirmPressed){
+                ofSetColor(255, 200, 0, 50);
+            }
+            else if(fakeConfirmHovered) {
+                ofSetColor(255, 20, 255, 50);
+            }
+            else{
+                ofNoFill();
+                ofSetColor(255,255,255,50);
+            }
+            ofRect(fakeConfirmSelectionBounds);
+            
+        }
+        
+        ofPopStyle();
         ///end test
         
         beginListStencil();
         drawList();
+        
         
 //        if( currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS ){
 //            drawTopicsList();

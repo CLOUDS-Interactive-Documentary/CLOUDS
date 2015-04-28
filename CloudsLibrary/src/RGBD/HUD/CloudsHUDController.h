@@ -161,6 +161,8 @@ class CloudsHUDController {
     void setTopics(const set<string>& topics);
     bool isItemSelected();
     bool isItemConfirmed();
+    void clearSelection();
+    
     string getSelectedItem();
     
     void populateSpeakers();
@@ -215,6 +217,14 @@ class CloudsHUDController {
     
     void updateResearchNavigation();
     
+    //temporary way to confirm selection in research mode
+    ofRectangle fakeConfirmSelectionBounds;
+    bool fakeConfirmHovered;
+    bool fakeConfirmPressed;
+    bool fakeConfirmClicked;
+    ////////////////////
+    
+    
 	//reset stuff
 	ofMesh resetTriangle;
     
@@ -238,8 +248,6 @@ class CloudsHUDController {
     void endListStencil();
     
     void drawList();
-//    void drawPeopleList();
-//    void draweVisualList();
 
     ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath);
     ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath, bool caps);
