@@ -333,16 +333,17 @@ void CloudsRGBDVideoPlayer::startPlayer(){
 }
 
 //--------------------------------------------------------------- ACTIONS
-void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
+void CloudsRGBDVideoPlayer::begin(ofShader& shader){
     
 	if(!getPlayer().isLoaded() || !getTextureReference().isAllocated()){
-		//ofLogWarning() << " CloudsRGBDVideoPlayer::setupProjectionUniforms -- player is not ready";
 		return;
 	}
 	
 	if(playingVO){
 		return;
 	}
+
+	getPlayer().bind();
 
     shader.setUniformTexture("rgbdTexture", getTextureReference(), 1);
     shader.setUniform2f("textureSize",  getPlayer().getWidth(), getPlayer().getHeight());
@@ -384,6 +385,19 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 	shader.setUniform3f("headPosition",headPosition.x,-headPosition.y,headPosition.z);
 	
 	shader.setUniform1f("flowPosition", flowPosition);
+}
+
+//--------------------------------------------------------------- 
+void CloudsRGBDVideoPlayer::end(){
+	if(!getPlayer().isLoaded() || !getTextureReference().isAllocated()){
+		return;
+	}
+	
+	if(playingVO){
+		return;
+	}
+
+	getPlayer().unbind();
 }
 
 //--------------------------------------------------------------- 
