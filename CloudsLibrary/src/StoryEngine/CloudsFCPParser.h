@@ -124,7 +124,8 @@ class CloudsFCPParser {
     vector<CloudsClip*> getClipsWithKeyword(const vector<string>& filter);
 	vector<CloudsClip*> getClipsWithKeyword(const vector<string>& filter, vector<CloudsClip*>& searchClips);
     vector<CloudsClip*> getClipsWithQuestionsForTopic(const string&  topic);
-	
+	vector<CloudsClip*> getClipsForPerson(string person);
+    
     set<string> getRelatedKeywords(const string&  filterWord);
 	int getNumberOfSharedKeywords(CloudsClip* a, CloudsClip* b);
 	
@@ -143,6 +144,8 @@ class CloudsFCPParser {
 	
     void saveInterventions(const string&  interventionsFile);
 	void saveSpeakersVolume(const string&  speakerVolFile);
+    
+    
     
 #pragma mark key themes
 	string closestKeyThemeToTag(const string&  searchTag);

@@ -1473,6 +1473,17 @@ vector<CloudsClip*> CloudsFCPParser::getClipsWithQuestionsForTopic(const string&
     return clips;
 }
 
+vector<CloudsClip*> CloudsFCPParser::getClipsForPerson(string person){
+    vector<CloudsClip*> clips;
+    //TODO: accomodate for multiple people
+    for(int i = 0; i < allClips.size(); i++){
+        if(allClips[i]->person == person){
+            clips.push_back(allClips[i]);
+        }
+    }
+    return clips;
+}
+
 set<string> CloudsFCPParser::getRelatedKeywords(const string& filterWord){
 	set<string> relatedKeywords;
 	vector<CloudsClip*> relatedClips = getClipsWithKeyword(filterWord);

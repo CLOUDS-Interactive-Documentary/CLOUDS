@@ -801,7 +801,6 @@ string CloudsHUDController::getSelectedItem(){
 }
 
 bool CloudsHUDController::isItemConfirmed(){
-    
     return fakeConfirmClicked;
 }
 

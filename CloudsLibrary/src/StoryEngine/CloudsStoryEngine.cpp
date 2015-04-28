@@ -446,6 +446,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed){
     return buildAct(run, seed, seed->getKeywords()[ ofRandom(seed->getKeywords().size()) ]);
 }
 
+//TODO: add seed clip from where we left off
 CloudsAct* CloudsStoryEngine::buildActWithTopic(CloudsRun& run, string forceTopic){
 
     CloudsActSettings settings;
@@ -457,21 +458,35 @@ CloudsAct* CloudsStoryEngine::buildActWithTopic(CloudsRun& run, string forceTopi
     settings.forceSpeaker = false;
     settings.allowVisuals = false;
 
-    buildAct(settings);
+    return buildAct(settings);
 }
 
+//TODO: add seed clip from where we left off
 CloudsAct* CloudsStoryEngine::buildActWithPerson(CloudsRun& run, string speakerId){
 
+    vector<CloudsClip*> clips = parser->getClipsForPerson(speakerId);
+    for(int i = clips.size()-1; i >= 0; i--){
+        if(run.historyContainsClip(clips[i])){
+            clips.erase(clips.begin()+i);
+        }
+    }
+    
+    //no more people left!
+    if(clips.size() == 0){
+        return NULL;
+    }
+    
     CloudsActSettings settings;
     settings.run = &run;
     settings.person = speakerId;
-    settings.seed = NULL;
-    settings.playSeed = false;
+    settings.seed = clips[ (int)(ofRandom(clips.size())) ];
+    settings.topic = settings.seed->getKeywords()[0];
+    settings.playSeed = true;
     settings.forceTopic = false;
     settings.forceSpeaker = true;
     settings.allowVisuals = false;
     
-    buildAct(settings);
+    return buildAct(settings);
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string seedTopic, bool playSeed){
@@ -485,7 +500,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
     settings.forceSpeaker = false;
     settings.allowVisuals = true;
     
-    buildAct(settings);
+    return buildAct(settings);
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
@@ -521,11 +536,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 	//  if topic is last topic, revert to original topic -- promote conclusions + gold (last clip?)
 
     //we keep a local copy of these for seeding with start level questions.
-    
+
     //rigs
-//    showOnlyStartQuestions = true;
+//  showOnlyStartQuestions = true;
 	showOnlyStartQuestions = false;
-    //    bLogClipDetails = false;
+    //bLogClipDetails = false;
     startingQuestions = getStartingQuestions();
 
     run.accumuluatedTopics.clear();
@@ -551,7 +566,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 	state.duration = 0;
 	state.timesOnCurrentTopic = 0;
 	state.freeTopic = false;
-
+    state.forcingPerson = settings.forceSpeaker;
+    state.forcingTopic = settings.forceTopic;
+    
 //    state.run = 2; //RIGGED TO ACT TWO
 
 	state.log << "SEED TOPIC:  " << settings.topic << endl;
@@ -569,42 +586,44 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 		state.timesOnCurrentTopic++;
         
         //FIND MATCHING VISUAL SYSTEM
-        state.log << state.duration << "\tSELECTING VISUAL SYSTEM" << endl;
-        state.preset = selectVisualSystem(state, false);
-        state.visualSystemStartTime = 0;
-        
-        if(!state.preset.randomlySelected){
-            state.log << state.duration << "\tFirst visual system preset is selected : " <<
-            state.preset.getID() << " for topic : " <<
-            settings.topic << " and clip " <<
-            state.clip->getLinkName() << endl;
+        if(settings.allowVisuals){
+            state.log << state.duration << "\tSELECTING VISUAL SYSTEM" << endl;
+            state.preset = selectVisualSystem(state, false);
+            state.visualSystemStartTime = 0;
             
-            state.presetHistory.push_back(state.preset.getID());
-            
-            if (!state.preset.indefinite) {
-                //definite time that this preset must end
-                //TODO: CONFIRM PRESET IS NOT TOO SHORT FOR VO CLIP!
-                if(state.preset.duration < state.clip->getDuration()){
-                    state.log << "ERROR: Definite Preset " << state.preset.getID() << " too short for clip " << state.clip->getID() << endl;
+            if(!state.preset.randomlySelected){
+                state.log << state.duration << "\tFirst visual system preset is selected : " <<
+                state.preset.getID() << " for topic : " <<
+                settings.topic << " and clip " <<
+                state.clip->getLinkName() << endl;
+                
+                state.presetHistory.push_back(state.preset.getID());
+                
+                if (!state.preset.indefinite) {
+                    //definite time that this preset must end
+                    //TODO: CONFIRM PRESET IS NOT TOO SHORT FOR VO CLIP!
+                    if(state.preset.duration < state.clip->getDuration()){
+                        state.log << "ERROR: Definite Preset " << state.preset.getID() << " too short for clip " << state.clip->getID() << endl;
+                    }
+                    state.visualSystemEndTime = MIN(state.preset.duration,maxVisualSystemRunTime);
                 }
-                state.visualSystemEndTime = MIN(state.preset.duration,maxVisualSystemRunTime);
+                else{
+                    state.visualSystemEndTime = maxVisualSystemRunTime;
+                }
+                state.visualSystemRunning = true;
+                
             }
-            else{
-                state.visualSystemEndTime = maxVisualSystemRunTime;
+            else {
+                state.log << "ERROR: No preset found for intro clip " << state.clip->getLinkName() << endl;
+                ofLogError("CloudsStoryEngine::buildAct") << "No preset found for intro clip " << state.clip->getLinkName();
             }
-            state.visualSystemRunning = true;
-            
-        }
-        else {
-            state.log << "ERROR: No preset found for intro clip " << state.clip->getLinkName() << endl;
-            ofLogError("CloudsStoryEngine::buildAct") << "No preset found for intro clip " << state.clip->getLinkName();
         }
 	}
-	
+
     //The run now listens to act events and is updated via them
 	state.freeTopic = false;
 	int failedTopicStreak = 0;
-    while(state.topicNum <= maxTopicsPerAct && state.clipNum <= maxClipsPerAct){
+    while( (state.topicNum <= maxTopicsPerAct || settings.forceSpeaker) && state.clipNum <= maxClipsPerAct){
 		
 		///At this point in the loop we have just added a new clip and updated the duration
 		//we may have been forced into a new topic area from the last part
@@ -614,7 +633,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 			
 			//TODO: Need to make sure we dont' get stuck in some topicless death loop
 			if(state.timesOnCurrentTopic > 0){
-				if(state.topicNum == maxTopicsPerAct){
+				if(state.topicNum == maxTopicsPerAct && !settings.forceSpeaker){
 					break;
 				}
 				failedTopicStreak = 0;
@@ -659,7 +678,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 		state.log << state.duration << "\tCHOOSING NEW CLIP " << endl;
 		//PICK A CLIP
 		vector<CloudsClip*> questionClips; //possible questions this clip raises (ie other adjascent clips)
-        CloudsClip* nextClip = selectClip(state, questionClips, settings.forceTopic);
+        CloudsClip* nextClip = selectClip(state, questionClips);
         
 		//Reject if we are the same clip as before
 		if(nextClip == state.clip){
@@ -675,6 +694,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
             }
 		}
 		
+        //AT THIS POINT CLIP IS NON NULL
+        
+//        if(settings.forceSpeaker && nextClip->person != state.clip->person){
+//            state.log << state.duration << "\t\tERROR: Failed to find a same person, freeing topic to try again" << endl;
+//            state.freeTopic = true;
+//            continue;
+//            
+//        }
 		//If we chose a digressing clip, through a link that didn't share our topic
 		//play the clip but free the topic for the next round
 		if(!nextClip->hasKeyword(state.topic) ){
@@ -932,10 +959,12 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
     return state.act;
 }
 
-CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<CloudsClip*>& questionClips, bool forceTopic){
+CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<CloudsClip*>& questionClips){
 	vector<CloudsClip*> nextOptions;
-
-	if(state.clip == NULL || state.topicNum == maxTopicsPerAct || forceTopic){
+    if(state.forcingPerson){
+        nextOptions = parser->getClipsForPerson(state.clip->person);
+    }
+    else if(state.clip == NULL || state.topicNum == maxTopicsPerAct || state.forcingTopic){
 		nextOptions = parser->getClipsWithKeyword(state.topic);
 		if(bLogClipDetails) state.log << state.duration << "\t\tConclusion of \"" << state.topic << "\", selecting from " << nextOptions.size() << " clips " << endl;
 	}
@@ -943,7 +972,7 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
 		nextOptions = parser->getClipsWithKeyword(state.clip->getKeywords());
 	}
 	
-    if(!forceTopic && state.clip != NULL){
+    if(!state.forcingPerson && !state.forcingTopic && state.clip != NULL){
         vector<CloudsLink>& links = parser->getLinksForClip( state.clip );
         for(int i = 0; i < links.size(); i++){
             bool valid = true;
@@ -1297,6 +1326,11 @@ float CloudsStoryEngine::scoreForTopic(CloudsStoryState& state, string potential
 #pragma mark CLIP SCORES
 float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* potentialNextClip, stringstream& cliplog){
     
+    if(state.clip == potentialNextClip){
+		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip \"" << potentialNextClip->getLinkName() << "\" same clip" << endl;
+        return 0;
+    }
+    
     //rejection criteria -- flat out reject clips on some basis
     if(combinedClipsOnly && !potentialNextClip->hasMediaAsset){
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip \"" << potentialNextClip->getLinkName() << "\" no combined video file" << endl;
@@ -1310,7 +1344,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         return 0;
 	}
     
-    if(state.clip != NULL){
+    if(state.clip != NULL && !state.forcingPerson){
         bool link = parser->clipLinksTo( state.clip->getLinkName(), potentialNextClip->getLinkName() );
         if(!link && potentialNextClip->person == state.clip->person){
             cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": same person" << endl;
@@ -1324,9 +1358,8 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         return 0;
     }
     
-    //TODO: make this smarter
     int occurrences = occurrencesOfPerson(potentialNextClip->person, 20, state.clipHistory);
-    if(occurrences > 4){
+    if(occurrences > 4 && !state.forcingPerson){
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": person appeared more than 4 times in the last 20 clips" << endl; 
         return 0;
     }
@@ -1355,7 +1388,8 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         return 0;
     }
     
-    if(!ofContains(potentialNextClip->getKeywords(), state.topic) &&
+    if(!state.forcingPerson &&
+       !ofContains(potentialNextClip->getKeywords(), state.topic) &&
 	   state.timesOnCurrentTopic < minTimesOnTopic)
 	{
         cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: this clip (topics " << ofJoinString(potentialNextClip->getKeywords(),", ") << " is a premature digression from topic " << state.topic << ". We are clip " << state.timesOnCurrentTopic << " of " << minTimesOnTopic << endl;
@@ -1424,7 +1458,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
     }
     
     //penalize for the person occurring again after they have gone away, unless they are on a run
-	if(state.clip != NULL && state.clip->person != potentialNextClip->person){
+	if(!state.forcingPerson && state.clip != NULL && state.clip->person != potentialNextClip->person){
 		samePersonOccuranceScore = -occurrences * samePersonOccurrenceSuppressionFactor;
 	}
     
@@ -1460,8 +1494,10 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         voiceOverScore = 15;
     }
     
-    //gender balance scorec
-    genderBalanceScore = (potentialNextClip->getSpeakerGender() == "male" ? -1 : 1 ) * genderBalanceFactor * state.moreMenThanWomen;
+    //gender balance score
+    if(!state.forcingPerson){
+        genderBalanceScore = (potentialNextClip->getSpeakerGender() == "male" ? -1 : 1 ) * genderBalanceFactor * state.moreMenThanWomen;
+    }
     
     //discourage distant clips
     if(state.clip != NULL){

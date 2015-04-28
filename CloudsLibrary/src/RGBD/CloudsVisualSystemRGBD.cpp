@@ -358,7 +358,7 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 		q.set( ti.outRightQuat );
 		transitionOutRight.setOrientation( q );
 		
-		cout << "transitions set to: " + type + " : "+ option << endl;
+//		cout << "transitions set to: " + type + " : "+ option << endl;
 		return;
 	}
 	
@@ -1401,7 +1401,7 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::transtionFinished()
 {
-	cout << "transtionFinished()" <<endl;
+//	cout << "transtionFinished()" <<endl;
 	
 	cloudsCamera.targetNode = NULL;
 	cloudsCamera.startNode = NULL;
@@ -1413,12 +1413,12 @@ void CloudsVisualSystemRGBD::setOutOption( OutOption outOption )
 {
 	switch (outOption) {
 		case OutLeft:
-			cout << "setOutOption: OutLeft" << endl;
+//			cout << "setOutOption: OutLeft" << endl;
 			transitionOutOption = OutLeft;
 			break;
 			
 		case OutRight:
-			cout << "setOutOption: OutRight" << endl;
+//			cout << "setOutOption: OutRight" << endl;
 			transitionOutOption = OutRight;
 			break;
 			

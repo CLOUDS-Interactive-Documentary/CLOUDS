@@ -434,7 +434,7 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
         case TRANSITION_EXPLORE_MAP_IN:
 			return "TransitionExploreMapIn";
         case TRANSITION_EXPLORE_MAP_OUT:
-			return "TransitionCExploreMapOut";
+			return "TransitionExploreMapOut";
         case TRANSITION_EXPLORE_PEOPLE_IN:
 			return "TransitionExplorePeopleIn";
         case TRANSITION_EXPLORE_PEOPLE_OUT:

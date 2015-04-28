@@ -838,7 +838,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             
             ///TODO:
             //peopleMap->highlightPerson(selectedTopic);
-            
+            cout << "selected speaker id " << selectedSpeakerID << endl;
             if(hud.isItemConfirmed()){
                 showingExplorePeople = false;
                 hud.animateOff();
@@ -983,7 +983,7 @@ void CloudsPlaybackController::updateTransition(){
                 
             case TRANSITION_EXPLORE_MAP_OUT:
                 
-                //showingExploreMap = false;
+                showingExploreMap = false;
                 clusterMap->stopSystem();
                 
                 if(hud.isItemConfirmed()){
@@ -995,7 +995,7 @@ void CloudsPlaybackController::updateTransition(){
                 
             case TRANSITION_EXPLORE_PEOPLE_OUT:
                     
-                //showingExplorePeople = false;
+                showingExplorePeople = false;
                 peopleMap->stopSystem();
                 
                 if(hud.isItemConfirmed()){

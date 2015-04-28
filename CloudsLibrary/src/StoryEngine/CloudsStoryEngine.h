@@ -40,6 +40,9 @@ typedef struct {
 	float visualSystemEndTime;	
 	int moreMenThanWomen;
 	
+    bool forcingTopic;
+    bool forcingPerson;
+    
 	stringstream log;
 	
 } CloudsStoryState;
@@ -140,7 +143,7 @@ class CloudsStoryEngine {
     CloudsVisualSystemPreset selectVisualSystem(CloudsStoryState& currentState, bool allowSound);
 	float scoreForVisualSystem(CloudsStoryState& currentState, CloudsVisualSystemPreset& potentialNextPreset);
 
-	CloudsClip* selectClip(CloudsStoryState& currentState, vector<CloudsClip*>& questionClips, bool forceTopic);
+	CloudsClip* selectClip(CloudsStoryState& currentState, vector<CloudsClip*>& questionClips);
     float scoreForClip(CloudsStoryState& currentState, CloudsClip* potentialNextClip, stringstream& cliplog);
     
 	bool historyContainsClip(CloudsClip* m, vector<CloudsClip*>& history);
