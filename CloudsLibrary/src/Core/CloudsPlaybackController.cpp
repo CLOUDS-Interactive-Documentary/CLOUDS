@@ -176,7 +176,7 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 void CloudsPlaybackController::setup(){
     
 	loading = true;
-    //interludeInterfaceFont.loadFont(GetCloudsDataPath()+"font/Blender-MEDIUM.ttf", 15);
+
 	interludeInterfaceFont.loadFont(GetMediumFontPath(), 14);
 
 
@@ -293,6 +293,8 @@ void CloudsPlaybackController::threadedFunction(){
     introSequence->percentLoaded = 0.7;
     
     hud.setTopics(clusterMap->getTopicSet());
+    hud.populateSpeakers();
+    
     introSequence->percentLoaded = 0.8;
 
 	populateRGBDPresets();
@@ -656,7 +658,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     ////////////////////
 	//INTERLUDE
 	else if(showingInterlude){
-
+    #ifdef OCULUS_RIFT
 		bool stopInterlude = updateInterludeInterface();
 		
         if(stopInterlude){
@@ -672,6 +674,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             
             showingInterlude = false;
         }
+    #endif
     }
     
 	////////////////////
@@ -782,7 +785,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         hud.unpause();
     }
     
-    //////////// GO TO EXPLORE THE MAP FROM INTERVIEW?
+    //////////// GO TO EXPLORE THE MAP FROM INTERVIEW
     if(hud.isExploreMapHit()){
         hud.animateOff();
         transitionController.transitionToExploreMap(1.0, 2.0);
@@ -1172,6 +1175,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	}
 	return false;
 #else
+    /*
 	#ifdef CLOUDS_SCREENING
     if( currentVisualSystem->getSystemName() == "Balloons" ){
         hud.clearQuestion();
@@ -1238,6 +1242,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	}
     
 	return false;
+     */
 #endif
 	
 }
@@ -1247,6 +1252,7 @@ void CloudsPlaybackController::updateCompletedInterlude(){
 
 }
 
+/*
 //--------------------------------------------------------------------
 void CloudsPlaybackController::drawInterludeInterface(){
     
@@ -1284,7 +1290,9 @@ void CloudsPlaybackController::drawInterludeInterface(){
 	ofDisableAlphaBlending();
 	ofPopStyle();
 }
+*/
 
+/*
 void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string promptType, bool hovering, int tracking ){
 
 	ofPushStyle();
@@ -1358,6 +1366,7 @@ void CloudsPlaybackController::drawInterludePanel(ofRectangle hoverRect, string 
 	
 	ofPopStyle();
 }
+*/
 
 #ifdef KINECT_INPUT
 //--------------------------------------------------------------------
@@ -1377,7 +1386,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	
     drawRenderTarget();
     
-    drawInterludeInterface();
+    //drawInterludeInterface();
     
 #ifdef KINECT_INPUT
     drawKinectFeedback();

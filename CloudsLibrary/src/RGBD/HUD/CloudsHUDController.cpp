@@ -879,18 +879,31 @@ void CloudsHUDController::setTopics(const set<string>& topics){
     topicList.buttons.resize(topics.size());
     int i = 0;
     for(set<string>::iterator it = topics.begin(); it != topics.end(); it++){
-        topicList.buttons[i].top = i * scrollIncrement; //1.5 is an arbirtary margine
+        topicList.buttons[i].top = i * scrollIncrement;
         topicList.buttons[i].item = *it;
         i++;
     }
     
-    topicList.totalScrollHeight = currentResearchList->buttons.back().top + scrollIncrement;
+    topicList.totalScrollHeight = topicList.buttons.back().top + scrollIncrement;
     topicList.scrollPosition = 0;
 }
 
 void CloudsHUDController::populateSpeakers(){
+    CloudsHUDResearchList& peopleList = researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
+    peopleList.buttons.clear();
+    peopleList.buttons.resize(CloudsSpeaker::speakers.size());
+    int i = 0;
+    for(map<string,CloudsSpeaker>::iterator it = CloudsSpeaker::speakers.begin(); it != CloudsSpeaker::speakers.end(); it++){
+        peopleList.buttons[i].top = i * scrollIncrement;
+        peopleList.buttons[i].item = it->second.firstName + " " + it->second.lastName;
+        i++;
+    }
     
+    peopleList.totalScrollHeight = peopleList.buttons.back().top + scrollIncrement;
+    peopleList.scrollPosition = 0;
 }
+
+//TODO: visuals
 
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
@@ -974,17 +987,28 @@ bool CloudsHUDController::isNextHit(){
 }
 
 bool CloudsHUDController::isExploreMapHit(){
-    return hudLabelMap["ExploreTextBox"]->isClicked();
+    bool selected = hudLabelMap["ExploreTextBox"]->isClicked();
+    if(selected) {
+        currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
+        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
+    }
+    return selected;
 }
 
 bool CloudsHUDController::isSeeMorePersonHit(){
-    return hudLabelMap["SeeMoreTextBox"]->isClicked();
+    bool selected = hudLabelMap["SeeMoreTextBox"]->isClicked();
+    if(selected) {
+        currentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
+        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
+    }
+    return selected;
 }
 
 bool CloudsHUDController::selectedMapTab(){
     bool selected = hudLabelMap["MapTextBox"]->isClicked();
     if(selected) {
         currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
+        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
     }
     return selected;
 }
@@ -993,6 +1017,7 @@ bool CloudsHUDController::selectedPeopleTab(){
     bool selected = hudLabelMap["PeopleTextBox"]->isClicked();
     if(selected) {
         currentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
+        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
     }
     return selected;
 }
@@ -1001,6 +1026,8 @@ bool CloudsHUDController::selectedVisualsTab(){
     bool selected = hudLabelMap["VisualsTextBox"]->isClicked();
     if(selected) {
         currentTab = CLOUDS_HUD_RESEARCH_TAB_VISUALS;
+        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS];
+        
     }
     return selected;
 }
@@ -1068,16 +1095,17 @@ void CloudsHUDController::draw(){
         ///end test
         
         beginListStencil();
+        drawList();
         
-        if( currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS ){
-            drawTopicsList();
-        }
-        else if( currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
-            drawPeopleList();
-        }
-        else if( currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS ){
-            draweVisualList();
-        }
+//        if( currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS ){
+//            drawTopicsList();
+//        }
+//        else if( currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
+//            drawPeopleList();
+//        }
+//        else if( currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS ){
+//            draweVisualList();
+//        }
         
         endListStencil();
     }
@@ -1126,7 +1154,7 @@ void CloudsHUDController::endListStencil(){
     
 }
 
-void CloudsHUDController::drawTopicsList(){
+void CloudsHUDController::drawList(){
     ofPushStyle();
     for(int i = 0; i < currentResearchList->buttons.size(); i++){
         if(currentResearchList->buttons[i].visible){
@@ -1153,13 +1181,13 @@ void CloudsHUDController::drawTopicsList(){
     ofPopStyle();
 }
 
-void CloudsHUDController::drawPeopleList(){
-    
-}
-
-void CloudsHUDController::draweVisualList(){
-    
-}
+//void CloudsHUDController::drawPeopleList(){
+//    
+//}
+//
+//void CloudsHUDController::draweVisualList(){
+//    
+//}
 
 #ifdef OCULUS_RIFT
 void CloudsHUDController::draw3D(ofCamera* cam, ofVec2f offset){

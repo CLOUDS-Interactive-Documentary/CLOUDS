@@ -236,9 +236,9 @@ class CloudsHUDController {
     void beginListStencil();
     void endListStencil();
     
-    void drawTopicsList();
-    void drawPeopleList();
-    void draweVisualList();
+    void drawList();
+//    void drawPeopleList();
+//    void draweVisualList();
 
     ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath);
     ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath, bool caps);
