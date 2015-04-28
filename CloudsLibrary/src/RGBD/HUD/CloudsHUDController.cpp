@@ -782,12 +782,14 @@ bool CloudsHUDController::isItemSelected(){
 }
 
 bool CloudsHUDController::isItemConfirmed(){
+    
     //TODO: User needs to click on topic in the map, just return true for now
+    bool isSelected = isItemSelected();
     for(int i = 0; i < currentResearchList->buttons.size(); i++){
         currentResearchList->buttons[i].clicked = false;
     }
     
-    return true;
+    return isSelected;
 }
 
 string CloudsHUDController::getSelectedItem(){

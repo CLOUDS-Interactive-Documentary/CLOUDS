@@ -888,7 +888,153 @@ void CloudsPlaybackController::updateTransition(){
             clearAct();
         }
         
-        switch (transitionController.getCurrentState()) {
+        CloudsTransitionState lastState = transitionController.getPreviousState();
+        CloudsTransitionState newState  = transitionController.getCurrentState();
+        //first clean up the state that just finished
+        switch (lastState) {
+
+            case TRANSITION_INTRO_IN:
+                sound.enterTunnel();
+                break;
+                
+            case TRANSITION_INTRO_OUT:
+                if(introSequence->isStartQuestionSelected()){
+                    selectedQuestion = introSequence->getSelectedQuestion();
+                    selectedQuestionClip = selectedQuestion->clip;
+                    
+                    showingVisualSystem = false;
+                    clearRenderTarget();
+                    
+                    shouldPlayClusterMap = true;
+                    
+                    introSequence->stopSystem();
+                    introSequence->exit();
+                    
+                    storyEngine.buildAct(run, selectedQuestionClip, selectedQuestion->topic, true);
+                }
+                
+                break;
+                
+            case TRANSITION_INTERVIEW_IN:
+                rgbdVisualSystem->transtionFinished();
+                break;
+                
+            case TRANSITION_INTERVIEW_OUT:
+                    
+                if(bQuestionAsked){
+                    
+                    selectedQuestion = rgbdVisualSystem->getSelectedQuestion();
+                    selectedQuestionClip = selectedQuestion->clip;
+                    topic = selectedQuestion->topic;
+                    
+                    rgbdVisualSystem->transtionFinished();
+                    rgbdVisualSystem->clearQuestions();
+                    rgbdVisualSystem->stopSystem();
+                    
+                    CloudsVisualSystem::getRGBDVideoPlayer().stop();
+                    CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = 1.0;
+                    
+                    crossfadeValue = 0;
+                    
+                    shouldPlayClusterMap = run.questionsAsked % 3 == 2;
+                    
+                    storyEngine.buildAct(run, selectedQuestionClip, topic);
+                    
+                    bQuestionAsked = false;
+                }
+                break;
+                
+            case TRANSITION_VISUALSYSTEM_IN:
+                
+                if(currentVisualSystem == clusterMap){
+                    playNextVisualSystem();
+                    ofLogError("TRANSITIONED WITHOUT SYSTEM STARTING");
+                }
+                
+                break;
+                
+            case TRANSITION_CLUSTERMAP_OUT:
+                    
+                shouldLoadAct = true;
+                shouldPlayAct = false;
+                
+                showingVisualSystem = false;
+                clusterMap->stopSystem();
+                clearRenderTarget();
+                
+                if(showingClusterMapNavigation){
+                    showingClusterMapNavigation = false;
+                    vector<CloudsClip*>& screeningQueue = storyEngine.screeningQuestionClips;
+                    CloudsClip* interludeExitClip = clusterMap->getSelectedQuestion()->clip;
+                    if(ofContains(screeningQueue,interludeExitClip)){
+                        storyEngine.screeningQuestionClips.erase(screeningQueue.begin() + ofFind(screeningQueue, interludeExitClip));
+                    }
+                    
+                    //build the next act
+                    storyEngine.buildAct(run,
+                                         clusterMap->getSelectedQuestion()->clip,
+                                         clusterMap->getSelectedQuestion()->topic,
+                                         true);
+                }
+                
+                break;
+                
+            case TRANSITION_EXPLORE_MAP_OUT:
+                
+                showingExploreMap = false;
+                clusterMap->stopSystem();
+                
+                if(hud.isItemConfirmed()){
+                    storyEngine.buildActWithTopic(run, exploreMapSelectedTopic);
+                }
+                    
+                break;
+                
+            case TRANSITION_EXPLORE_PEOPLE_OUT:
+                    
+                showingExplorePeople = false;
+                peopleMap->stopSystem();
+                
+                if(hud.isItemConfirmed()){
+                    storyEngine.buildActWithPerson(run, explorePeopleSelectedSpeakerID);
+                }
+                break;
+                
+            case TRANSITION_EXPLORE_VISUALS_OUT:
+                break;
+                
+            case TRANSITION_INTERLUDE_OUT:
+                
+                if(interludeSystem == NULL){
+                    ofLogError("CloudsPlaybackController::updateTransition") << "Transitioning out of NULL interlude";
+                }
+                else{
+                    cachedTransition = true;
+                    cachedTransitionType = interludeSystem->getTransitionType();
+                    
+                    cleanupInterlude();
+                }
+                
+                //build the next clip based on the history
+#ifdef CLOUDS_SCREENING
+                if(run.questionsAsked > 2 && !showedClusterMapNavigation){
+                    createInterludeSoundQueue();
+                    shouldPlayClusterMap = true;
+                    showingClusterMapNavigation = true;
+                }
+                else{
+                    storyEngine.buildAct(run);
+                }
+#else
+                storyEngine.buildAct(run);
+#endif
+                break;
+                
+            default:
+                break;
+        }
+        
+        switch (newState) {
                 
             case TRANSITION_INTERVIEW_OUT:
 				if(bQuestionAsked || rgbdVisualSystem->isResetSelected()){
@@ -928,6 +1074,7 @@ void CloudsPlaybackController::updateTransition(){
 				
                 //TODO: This needs to change with saving state
                 run.clear();
+                ///////////////
                 
                 introSequence = new CloudsIntroSequence();
                 introSequence->setup();
@@ -1031,134 +1178,6 @@ void CloudsPlaybackController::updateTransition(){
                 
                 showExplorePeople();
                 
-                break;
-    //////////////////
-    ////////IDLE CASES
-    ///////////////////
-            case TRANSITION_IDLE:
-
-                if(transitionController.getPreviousState() == TRANSITION_INTRO_IN){
-                    sound.enterTunnel();
-                }
-				else if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
-
-					selectedQuestion = introSequence->getSelectedQuestion();
-                    selectedQuestionClip = selectedQuestion->clip;
-                    
-                    showingVisualSystem = false;
-					clearRenderTarget();
-
-                    shouldPlayClusterMap = true;
-					
-                    introSequence->stopSystem();
-					introSequence->exit();
-                    
-                    storyEngine.buildAct(run, selectedQuestionClip, selectedQuestion->topic, true);
-                }
-                else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_IN){
-                    rgbdVisualSystem->transtionFinished();
-                }
-				else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
-                    
-					if(bQuestionAsked){
-                        
-                        selectedQuestion = rgbdVisualSystem->getSelectedQuestion();
-                        selectedQuestionClip = selectedQuestion->clip;
-                        topic = selectedQuestion->topic;
-                        
-                        rgbdVisualSystem->transtionFinished();
-                        rgbdVisualSystem->clearQuestions();
-                        rgbdVisualSystem->stopSystem();
-                        
-                        CloudsVisualSystem::getRGBDVideoPlayer().stop();
-                        CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = 1.0;
-                        
-                        crossfadeValue = 0;
-                        
-                        shouldPlayClusterMap = run.questionsAsked % 3 == 2;
-                        
-                        storyEngine.buildAct(run, selectedQuestionClip, topic);
-                        
-                        bQuestionAsked = false;
-                    }
-				}
-				else if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
-					if(currentVisualSystem == clusterMap){
-						playNextVisualSystem();
-						ofLogError("TRANSITIONED WITHOUT SYSTEM STARTING");
-					}
-                }
-				else if(transitionController.getPreviousState() == TRANSITION_CLUSTERMAP_OUT){
-				
-					shouldLoadAct = true;
-					shouldPlayAct = false;
-
-					showingVisualSystem = false;
-					clusterMap->stopSystem();
-					clearRenderTarget();
-					
-                    if(showingClusterMapNavigation){
-                        showingClusterMapNavigation = false;
-						vector<CloudsClip*>& screeningQueue = storyEngine.screeningQuestionClips;
-						CloudsClip* interludeExitClip = clusterMap->getSelectedQuestion()->clip;
-						if(ofContains(screeningQueue,interludeExitClip)){
-							storyEngine.screeningQuestionClips.erase(screeningQueue.begin() + ofFind(screeningQueue, interludeExitClip));
-						}
-						
-						//build the next act
-                        storyEngine.buildAct(run,
-                                             clusterMap->getSelectedQuestion()->clip,
-                                             clusterMap->getSelectedQuestion()->topic,
-                                             true);
-                    }
-                    
-				}
-
-                else if(transitionController.getPreviousState() == TRANSITION_EXPLORE_MAP_OUT){
-                    
-                    showingExploreMap = false;
-                    clusterMap->stopSystem();
-
-                    if(hud.isItemConfirmed()){
-                        storyEngine.buildActWithTopic(run, exploreMapSelectedTopic);
-                    }
-
-                }
-                else if(transitionController.getPreviousState() == TRANSITION_EXPLORE_PEOPLE_OUT){
-                    
-                    showingExplorePeople = false;
-                    peopleMap->stopSystem();
-                    
-                    if(hud.isItemConfirmed()){
-                        storyEngine.buildActWithPerson(run, explorePeopleSelectedSpeakerID);
-                    }
-                    
-                }
-                else if(transitionController.getPreviousState() == TRANSITION_EXPLORE_VISUALS_OUT){
-                    //TODO:
-                }
-                else if(transitionController.getPreviousState() == TRANSITION_INTERLUDE_OUT){
-                    
-                    cachedTransition = true;
-                    cachedTransitionType = interludeSystem->getTransitionType();
-                    
-                    cleanupInterlude();
-                    
-                    //build the next clip based on the history
-#ifdef CLOUDS_SCREENING
-                    if(run.questionsAsked > 2 && !showedClusterMapNavigation){
-						createInterludeSoundQueue();
-						shouldPlayClusterMap = true;
-                        showingClusterMapNavigation = true;
-                    }
-                    else{
-                        storyEngine.buildAct(run);
-                    }
-#else
-					storyEngine.buildAct(run);
-#endif
-                }
-            
                 break;
 				
             default:
@@ -1834,7 +1853,7 @@ void CloudsPlaybackController::showExplorePeople(){
     
     peopleMap->playSystem();
 
-    currentVisualSystem = clusterMap;
+    currentVisualSystem = peopleMap;
     
     showingVisualSystem = true;
     showingExplorePeople = true;
