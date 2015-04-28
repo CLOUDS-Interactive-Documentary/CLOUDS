@@ -793,7 +793,7 @@ bool CloudsHUDController::isItemConfirmed(){
 string CloudsHUDController::getSelectedItem(){
     for(int i = 0; i < currentResearchList->buttons.size(); i++){
         if(currentResearchList->buttons[i].clicked){
-            return currentResearchList->buttons[i].item;
+            return currentResearchList->buttons[i].tag;
         }
     }
     return "";
@@ -880,7 +880,8 @@ void CloudsHUDController::setTopics(const set<string>& topics){
     int i = 0;
     for(set<string>::iterator it = topics.begin(); it != topics.end(); it++){
         topicList.buttons[i].top = i * scrollIncrement;
-        topicList.buttons[i].item = *it;
+        topicList.buttons[i].tag = *it;
+        topicList.buttons[i].label = *it;
         i++;
     }
     
@@ -895,7 +896,8 @@ void CloudsHUDController::populateSpeakers(){
     int i = 0;
     for(map<string,CloudsSpeaker>::iterator it = CloudsSpeaker::speakers.begin(); it != CloudsSpeaker::speakers.end(); it++){
         peopleList.buttons[i].top = i * scrollIncrement;
-        peopleList.buttons[i].item = it->second.firstName + " " + it->second.lastName;
+        peopleList.buttons[i].tag = it->first;
+        peopleList.buttons[i].label = it->second.firstName + " " + it->second.lastName;
         i++;
     }
     
@@ -1173,7 +1175,7 @@ void CloudsHUDController::drawList(){
                 ofSetColor(255, 200);
             }
             //TODO: maybe different styles for different
-            ResearchTopicListFont->drawString(currentResearchList->buttons[i].item,
+            ResearchTopicListFont->drawString(currentResearchList->buttons[i].label,
                                               hudLabelMap["ListPeopleTextBox"]->bounds.x,
                                               hudLabelMap["ListPeopleTextBox"]->bounds.y + currentResearchList->buttons[i].top);
         }

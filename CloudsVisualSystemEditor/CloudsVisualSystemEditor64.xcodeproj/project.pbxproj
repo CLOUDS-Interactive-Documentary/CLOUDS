@@ -9438,6 +9438,7 @@
 					"CLOUDS_APP=1",
 					"SHOW_SUBTITLES=1",
 					"CLOUDS_HUD=1",
+					"MOUSE_INPUT=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
@@ -9554,6 +9555,7 @@
 					"CLOUDS_APP=1",
 					"SHOW_SUBTITLES=1",
 					"CLOUDS_HUD=1",
+					"MOUSE_INPUT=1",
 					"CLOUDS_RELEASE=1",
 				);
 				HEADER_SEARCH_PATHS = (

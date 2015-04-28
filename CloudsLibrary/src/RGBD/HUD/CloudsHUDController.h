@@ -53,7 +53,8 @@ class CloudsHUDResearchButton {
     bool pressed;
     bool clicked;
     ofRectangle selectRect;
-    string item;
+    string tag;
+    string label;
 };
 
 class CloudsHUDResearchList{

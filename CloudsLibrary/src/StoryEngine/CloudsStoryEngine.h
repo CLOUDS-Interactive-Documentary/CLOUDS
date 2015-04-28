@@ -49,8 +49,10 @@ typedef struct {
     CloudsRun* run;
     CloudsClip* seed;
     string topic;
+    string person;
     bool playSeed;
     bool forceTopic;
+    bool forceSpeaker;
     bool allowVisuals;
 } CloudsActSettings;
 
@@ -71,8 +73,9 @@ class CloudsStoryEngine {
 	CloudsAct* buildAct(CloudsRun& run);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed, string topic, bool playSeed = true);
-    CloudsAct* buildAct(CloudsRun& run, string forceTopic);
-    
+    CloudsAct* buildActWithTopic(CloudsRun& run, string forceTopic);
+    CloudsAct* buildActWithPerson(CloudsRun& run, string speakerId);
+
     CloudsAct* buildAct(CloudsActSettings settings);
 
 	bool getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset, bool forceCredits = false);

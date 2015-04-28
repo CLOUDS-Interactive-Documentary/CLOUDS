@@ -1,6 +1,5 @@
 //
 //  CloudsStoryEngine.cpp
-//  CloudsFCPParser
 //
 //  Created by James George on 3/17/13.
 //
@@ -447,7 +446,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed){
     return buildAct(run, seed, seed->getKeywords()[ ofRandom(seed->getKeywords().size()) ]);
 }
 
-CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, string forceTopic){
+CloudsAct* CloudsStoryEngine::buildActWithTopic(CloudsRun& run, string forceTopic){
 
     CloudsActSettings settings;
     settings.run = &run;
@@ -455,8 +454,23 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, string forceTopic){
     settings.seed = NULL;
     settings.playSeed = false;
     settings.forceTopic = true;
+    settings.forceSpeaker = false;
     settings.allowVisuals = false;
 
+    buildAct(settings);
+}
+
+CloudsAct* CloudsStoryEngine::buildActWithPerson(CloudsRun& run, string speakerId){
+
+    CloudsActSettings settings;
+    settings.run = &run;
+    settings.person = speakerId;
+    settings.seed = NULL;
+    settings.playSeed = false;
+    settings.forceTopic = false;
+    settings.forceSpeaker = true;
+    settings.allowVisuals = false;
+    
     buildAct(settings);
 }
 
@@ -468,6 +482,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
     settings.seed = seed;
     settings.playSeed = playSeed;
     settings.forceTopic = false;
+    settings.forceSpeaker = false;
     settings.allowVisuals = true;
     
     buildAct(settings);

@@ -12,6 +12,7 @@
 #include "CloudsIntroSequence.h"
 #include "CloudsVisualSystemClusterMap.h"
 #include "CloudsVisualSystemRGBD.h"
+#include "CloudsVisualSystemTwitter.h"
 #include "CloudsVisualSystemManager.h"
 
 #include "CloudsHUDController.h"
@@ -131,10 +132,11 @@ class CloudsPlaybackController : public ofThread {
 	//if there is a system playing this wil be non-null
 	CloudsIntroSequence* introSequence;
 	CloudsVisualSystemClusterMap* clusterMap;
+    CloudsVisualSystemTwitter* peopleMap;
 	CloudsVisualSystem* interludeSystem;
     
-    //TODO: add these guys too!
-    //CloudsVisualSystemTwitter* peopleMap;
+    
+   //TODO: add these guys too!
     //CloudsVisualSystemVisuals* visualsMap;
     
     float interludeStartTime;
@@ -192,6 +194,7 @@ class CloudsPlaybackController : public ofThread {
 	bool forceCredits;
 	
     string exploreMapSelectedTopic;
+    string explorePeopleSelectedSpeakerID;
 	void clearAct();
     
 	//remove the current visual system
@@ -203,7 +206,8 @@ class CloudsPlaybackController : public ofThread {
     void cleanupInterlude();
     
     void showExploreMap();
-
+    void showExplorePeople();
+    
     //INTERLUDE INTERFACE
 	void resetInterludeVariables();
     ofxFTGLSimpleLayout interludeInterfaceFont;
