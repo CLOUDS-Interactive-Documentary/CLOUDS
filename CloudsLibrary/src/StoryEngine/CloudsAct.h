@@ -136,9 +136,7 @@ class CloudsAct{
     ofxTLFlags* difficultyTrack;
     ofxTLFlags* silenceTrack;
     ofxTLFlags* notesTrack;
-	
-    ActItemType itemType;
-    
+	   
 	bool paused;
 	bool timelinePopulated;
     string currentTopic;

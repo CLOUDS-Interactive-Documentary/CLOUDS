@@ -359,7 +359,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         presetId = ofSplitString(bang.flag, ":");
         if(presetId.size() > 1){
 			CloudsVisualSystemEventArgs args(visualSystems[ visualSystemIndeces[presetId[1]] ]);
-			if(presetId[0] == "start " ){
+			if(presetId[0] == "start "  && visualSystemItems[ presetId[1] ].endTime > timeline.getCurrentTime() ){
 				cout<<"Starting Visual System " << visualSystems[ visualSystemIndeces[presetId[1]] ].getID() << endl;
 				ofNotifyEvent(events.visualSystemBegan, args);
 			}
@@ -486,7 +486,7 @@ float CloudsAct::getClipEndTime(CloudsClip* clip){
 
 ActTimeItem& CloudsAct::getItemForClip(CloudsClip* clip){
     if(clipMap.find(clip->getLinkName()) == clipMap.end()){
-        ofLogError() << "Couldn't find Act Item for cilp " << clip->getLinkName();
+        ofLogError("CloudsAct::getItemForClip") << "Couldn't find Act Item for cilp " << clip->getLinkName();
         return dummy;
     }
     return clipItems[clip->getLinkName()];
@@ -494,7 +494,7 @@ ActTimeItem& CloudsAct::getItemForClip(CloudsClip* clip){
 
 ActTimeItem& CloudsAct::getItemForVisualSystem(CloudsVisualSystemPreset& preset){
     if(visualSystemItems.find(preset.getID()) == visualSystemItems.end()){
-        ofLogError()<<"Can't find Act item for Visual System"<<endl;
+        ofLogError("CloudsAct::getItemForVisualSystem")<<"Can't find Act item for Visual System " << preset.getID() << endl;
     }
     return visualSystemItems[preset.getID()];
 }

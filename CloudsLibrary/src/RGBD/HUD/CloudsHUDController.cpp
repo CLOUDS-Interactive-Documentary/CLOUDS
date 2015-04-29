@@ -382,7 +382,8 @@ void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 //////////TODO: these need to animate out
 void CloudsHUDController::clearQuestion(){
 	hudLabelMap["QuestionTextBox_1_"]->setText("", false);
-    
+    animateOff(CLOUDS_HUD_QUESTION);
+
     bQuestionDisplayed = false;
 }
 

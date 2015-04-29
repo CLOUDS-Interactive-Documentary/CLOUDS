@@ -1675,12 +1675,11 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 //--------------------------------------------------------------------
 void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 	if(showingVisualSystem){
-		float fadeDuration = 1;
-		transitionController.transitionToInterview(fadeDuration, 1.0);
+		transitionController.transitionToInterview(1.0, 1.0);
 	}
-	else {
-		ofLogError("CloudsPlaybackController::visualSystemEnded") << "Hiding visual system while none is showing";
-	}
+//	else {
+//		ofLogError("CloudsPlaybackController::visualSystemEnded") << "Hiding visual system while none is showing";
+//	}
 }
 
 //--------------------------------------------------------------------
@@ -1857,7 +1856,7 @@ void CloudsPlaybackController::showInterlude(){
 	interludeSystem->isInterlude = true;
     
     hud.clearQuestion();
-
+    
 	currentVisualSystem = interludeSystem;
         
 	showingInterlude = true;
@@ -1881,6 +1880,8 @@ void CloudsPlaybackController::cleanupInterlude(){
 		currentVisualSystem = NULL;
         
 		hud.clearQuestion();
+        hud.animateOff(CLOUDS_HUD_NEXT);
+        
         exitedInterlude = true;
     }
     else {
