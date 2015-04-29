@@ -147,7 +147,7 @@ class CloudsPlaybackController : public ofThread {
     //TODO: Kill these soon
 	void updateTransition();
 	bool updateInterludeInterface(); //true if we should stop interlude
-	void updateCompletedInterlude(); //after one option has been selected;
+//	void updateCompletedInterlude(); //after one option has been selected;
 	bool forceInterludeReset;
     ///////////////
     

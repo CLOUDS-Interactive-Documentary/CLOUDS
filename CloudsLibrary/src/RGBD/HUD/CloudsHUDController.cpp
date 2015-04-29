@@ -20,6 +20,7 @@ CloudsHUDController::CloudsHUDController(){
 
     bSkipAVideoFrame = false;
     bDrawHud = true;
+    bProjectExampleDisplayed = false;
     
     bQuestionDisplayed = false;
     bJustPaused = false;
@@ -367,19 +368,18 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 	bDrawHud = true;
 	bActJustStarted = true;
-	animateOn( CLOUDS_HUD_QUESTION );
-    animateOn( CLOUDS_HUD_HOME );
- 
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
-    //Keep the home button on
+
+    animateOff( CLOUDS_HUD_HOME );
 	animateOff( CLOUDS_HUD_LOWER_THIRD );
- 	animateOff( CLOUDS_HUD_QUESTION );
+// 	animateOff( CLOUDS_HUD_QUESTION );
 	animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
 	animateOff( CLOUDS_HUD_PAUSE );
+    
 }
-
+//////////TODO: these need to animate out
 void CloudsHUDController::clearQuestion(){
 	hudLabelMap["QuestionTextBox_1_"]->setText("", false);
     
@@ -398,6 +398,7 @@ void CloudsHUDController::clearClip(){
         animateOff(CLOUDS_HUD_LOWER_THIRD);
     }
 }
+////////////////////
 
 void CloudsHUDController::clearVisualSystem(){
 
@@ -426,6 +427,10 @@ void CloudsHUDController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
 void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 
     clearVisualSystem();
+    if(bActJustStarted && bClipIsPlaying){
+        animateOn(CLOUDS_HUD_LOWER_THIRD);
+    }
+    bActJustStarted = false;
     
 }
 
@@ -447,25 +452,38 @@ void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
 
 void CloudsHUDController::respondToClip(CloudsClip* clip){
 	
-
+    if(!bVisualSystemDisplayed){
+        bActJustStarted = false;
+    }
+    
     currentSpeaker = CloudsSpeaker::speakers[ clip->person ];
     
     populateLowerThird(currentSpeaker.firstName, currentSpeaker.lastName, currentSpeaker.location2, currentSpeaker.title, currentSpeaker.byline1 );
     
-    if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD] ){
-        animateOn( CLOUDS_HUD_LOWER_THIRD );
+    if(!bActJustStarted){
+        if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD] ){
+            animateOn( CLOUDS_HUD_LOWER_THIRD );
+        }
+        
+        if(!hudOpenMap[CLOUDS_HUD_HOME]){
+            animateOn( CLOUDS_HUD_HOME );
+        }
+        
+        if( !hudOpenMap[CLOUDS_HUD_NEXT] ){
+            animateOn( CLOUDS_HUD_NEXT );
+        }
     }
     
     //PROJECT EXAMPLE
-    if(!bVisualSystemDisplayed){
-        if(clip->hasProjectExample && clip->projectExample.exampleVideos.size() ){
-            CloudsProjectExample example = clip->projectExample;
-            string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
-            populateProjectExample( videoPath, example.creatorName, "", example.title, true );
-        }
-        else{
-            animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
-        }
+    if(!bVisualSystemDisplayed && clip->hasProjectExample && clip->projectExample.exampleVideos.size() ){
+        CloudsProjectExample example = clip->projectExample;
+        string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
+        populateProjectExample( videoPath, example.creatorName, "", example.title, true );
+        bProjectExampleDisplayed = true;
+    }
+    else{
+        animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
+        bProjectExampleDisplayed = false;
     }
     
     bClipIsPlaying = true;
@@ -476,7 +494,7 @@ void CloudsHUDController::respondToSystem(const CloudsVisualSystemPreset& preset
     
     populateVisualSystem(preset.credits.line1, preset.credits.line2 );
     
-    if( !hudOpenMap[CLOUDS_HUD_LOWER_THIRD]  ){
+    if(!bActJustStarted && !hudOpenMap[CLOUDS_HUD_LOWER_THIRD] ){
         animateOn( CLOUDS_HUD_LOWER_THIRD );
     }
     
@@ -488,9 +506,9 @@ void CloudsHUDController::questionHoverOn(const string& question,bool animate){
 	populateQuestion(question, true, animate);
 }
 
-void CloudsHUDController::questionHoverOff(){
-	animateOff( CLOUDS_HUD_QUESTION );
-}
+//void CloudsHUDController::questionHoverOff(){
+//	animateOff( CLOUDS_HUD_QUESTION );
+//}
 
 void CloudsHUDController::populateQuestion(const string& question, bool forceOn, bool animate){
     if(question == ""){
@@ -519,7 +537,6 @@ void CloudsHUDController::populateLowerThird(const string& firstName,
                                              const string& textbox)
 {
  
-    
     CloudsHUDLabel* firstNameLabel  = hudLabelMap["BylineFirstNameTextBox_1_"];
     CloudsHUDLabel* lastNameLabel  = hudLabelMap["BylineLastNameTextBox"];
     
@@ -637,8 +654,6 @@ void CloudsHUDController::populateVisualSystem(const string& creditLine1,
     
 }
 
-
-
 ofVec2f CloudsHUDController::getSize(bool bScaled){
     return ofVec2f(hudBounds.width, hudBounds.height) * (bScaled? scaleAmt : 1.0);
 }
@@ -676,7 +691,10 @@ void CloudsHUDController::update(){
 
         videoPlayer.update();
     }
-	
+
+    hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_NEXT]->svg.getMeshByID("NextButtonBacking")->bounds;
+    hudLabelMap["NextButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds);
+ 	
     scrollUpBoundsScaled = getScaledRectangle(scrollUpBounds);
     scrollDownBoundsScaled = getScaledRectangle(scrollDownBounds);
 
@@ -806,16 +824,18 @@ void CloudsHUDController::pause(){
     hudLabelMap["ResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonBacking")->bounds;
     hudLabelMap["ExploreTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreBackingHover")->bounds;
     hudLabelMap["SeeMoreTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("SeeMoreBackingHover")->bounds;
-    hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_NEXT]->svg.getMeshByID("NextButtonBacking")->bounds;
     
     //set the interaction regions
     hudLabelMap["ResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ResetButtonTextBox"]->baseInteractiveBounds);
     hudLabelMap["ExploreTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ExploreTextBox"]->baseInteractiveBounds);
     hudLabelMap["SeeMoreTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["SeeMoreTextBox"]->baseInteractiveBounds);
-    hudLabelMap["NextButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds);
  
     animateOff( CLOUDS_HUD_QUESTION );
     animateOff( CLOUDS_HUD_NEXT );
+    if(bProjectExampleDisplayed){
+        animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
+    }
+
     animateOn( CLOUDS_HUD_PAUSE );
 
     bJustPaused = true;
@@ -828,12 +848,15 @@ void CloudsHUDController::unpause(){
     if(bQuestionDisplayed){
         animateOn( CLOUDS_HUD_QUESTION );
     }
-    if(!bClipIsPlaying && !bVisualSystemDisplayed){
-        animateOff( CLOUDS_HUD_LOWER_THIRD );
+//    if(!bClipIsPlaying && !bVisualSystemDisplayed){
+//        animateOff( CLOUDS_HUD_LOWER_THIRD );
+//    }
+    if(bProjectExampleDisplayed){
+        animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
     }
     
     //if(bClipIsPlaying){
-        animateOn( CLOUDS_HUD_NEXT );
+    animateOn( CLOUDS_HUD_NEXT );
     //}
     bJustUnpaused = true;
     bJustPaused = false;
@@ -1321,7 +1344,6 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
             hudLayerLabels[layer][i]->animateIn( true );
         }
     }
-
 }
 
 void CloudsHUDController::animateOff(){
@@ -1329,6 +1351,14 @@ void CloudsHUDController::animateOff(){
 }
 
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
+    
+    if(layer == CLOUDS_HUD_LOWER_THIRD){
+        cout << "ANIMATING OUT LOWER THIRDS" << endl;
+    }
+    
+    if(layer == CLOUDS_HUD_QUESTION){
+        cout << "ANIMATING OUT QUESTION" << endl;
+    }
     
     if (isPlaying) {
 		isPlaying = false;

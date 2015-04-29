@@ -116,7 +116,8 @@ public:
     
 	float fadeInValue;
 	float fadeOutValue;
-    float currentAudioVolume;
+    //float currentAudioVolume;
+    bool wasPlayingLastFrame;
     /* Subtitles */
     bool loadSubtitles(string path);
     bool currentClipHasSubtitles;

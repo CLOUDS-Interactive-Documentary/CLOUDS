@@ -18,9 +18,10 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	farClip     = 6000.0f;
 	playingVideo = false;
     playerPaused = false;
+    wasPlayingLastFrame = false;
     
 	fadeOutValue = fadeInValue = 0.0;
-    currentAudioVolume = 0;
+    //currentAudioVolume = 0;
     
 	minDepth = 400;
 	maxDepth = 2000;
@@ -466,14 +467,14 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		bPlayWhenReady = false;
 	}
 
-    float lastAudioVolume = currentAudioVolume;
-    currentAudioVolume =  maxVolume * currentClipVolumeAdjustment;
-
+//    float lastAudioVolume = currentAudioVolume;
+    float currentAudioVolume =  maxVolume * currentClipVolumeAdjustment;
+    
 	if(playingVO){
 		//JG: audio volume bug 
 		//currentVoiceoverPlayer->setVolume(audioVolume);
         if (currentClipHasSubtitles) {
-			currentSubtitles->setTimeInSeconds(currentVoiceoverPlayer->getPositionMS()/1000.);
+			currentSubtitles->setTimeInSeconds( currentVoiceoverPlayer->getPositionMS()/1000. );
         }
 	}
 	else{
@@ -510,10 +511,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 //		cout << "is playing? " << (isPlaying() ? "YES" : "NO") << endl;
 		getPlayer().setVolume(currentAudioVolume);
 
-        if(currentAudioVolume == 0.0 && lastAudioVolume > 0.0){
-            bClipJustFinished = true;
-        }
-        
+
 //		if(forceStop && position > duration - .04 && getPlayer().isPlaying()){
 //			getPlayer().stop();
 //            bClipJustFinished = true;
@@ -524,9 +522,15 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 			currentSubtitles->setTimeInSeconds(getPlayer().getPosition()*getPlayer().getDuration());
         }
 	}
+    
+    if(!playerPaused && !isPlaying() && wasPlayingLastFrame){
+        bClipJustFinished = true;
+    }
+    wasPlayingLastFrame = isPlaying();
+ 
 }
 
-//--------------------------------------------------------------- 
+//---------------------------------------------------------------
 bool CloudsRGBDVideoPlayer::isPlaying(){
 	return playingVO ? currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && getPlayer().isPlaying());
 }

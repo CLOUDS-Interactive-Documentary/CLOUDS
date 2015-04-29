@@ -413,10 +413,9 @@ void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
 void CloudsAct::next(){
     int currentClipIndex = -1;
     getClipAtTime(timeline.getCurrentTime(), currentClipIndex);
-    if(currentClipIndex >= 0 && currentClipIndex+1 < clips.size()){
-        ActTimeItem nextClip = getItemForClip(clips[currentClipIndex+1]);
-        timeline.setCurrentTimeSeconds(nextClip.startTime);
-        unpause();
+    if(currentClipIndex >= 0 && currentClipIndex < clips.size()-1){
+        ActTimeItem nextClip = getItemForClip(clips[currentClipIndex]);
+        timeline.setCurrentTimeSeconds( getItemForClip(clips[currentClipIndex+1]).startTime - .5 );
     }
     else{
         CloudsActEventArgs args(this);

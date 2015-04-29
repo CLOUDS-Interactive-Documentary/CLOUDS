@@ -120,6 +120,7 @@ class CloudsHUDController {
 	void animateOn(CloudsHUDLayerSet layer);
 	void animateOff(CloudsHUDLayerSet layer);
     void animateOff();
+    
 	void respondToClip(CloudsClip* clip);
 	void respondToSystem(const CloudsVisualSystemPreset& preset);
 	
@@ -128,7 +129,7 @@ class CloudsHUDController {
 	vector<CloudsHUDLayer*> allLayers;
 	
 	void questionHoverOn(const string& question, bool animate = true);
-	void questionHoverOff();
+	//void questionHoverOff();
 	
 	ofxUISuperCanvas *hudGui;
 	CloudsHUDHomeButton home;
@@ -211,6 +212,7 @@ class CloudsHUDController {
     bool          bIsScrollUpPressed;
     bool          bIsScrollDownPressed;
     bool          bIsHoldScrolling;
+
     float         scrollPressedTime;
     
     float         scrollIncrement;
@@ -240,6 +242,7 @@ class CloudsHUDController {
     bool    bJustPaused;
     bool    bJustUnpaused;
     bool    bQuestionDisplayed;
+    bool    bProjectExampleDisplayed;
     
     void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT
