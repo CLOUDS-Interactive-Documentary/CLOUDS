@@ -631,6 +631,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             transitionController.transitionToExploreMap(1.0, 3.0);
             showingResearchMode = true;
         }
+        else if(introSequence->isAboutScreenSelected()){
+            hud.showAbout();
+            //TODO: hide about
+        }
 		else if(introSequence->isStartQuestionSelected()){
 			         
 			CloudsPortal* q = introSequence->getSelectedQuestion();

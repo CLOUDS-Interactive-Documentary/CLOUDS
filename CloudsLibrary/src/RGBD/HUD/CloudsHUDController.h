@@ -28,6 +28,7 @@ typedef enum {
 	CLOUDS_HUD_RESEARCH_LIST,
 	CLOUDS_HUD_RESEARCH_NAV,
 	CLOUDS_HUD_RESEARCH_SHUFFLE,
+	CLOUDS_HUD_ABOUT,
 
     CLOUDS_HUD_ALL
 } CloudsHUDLayerSet;
@@ -113,13 +114,14 @@ class CloudsHUDController {
     bool didUnpause();    
     bool isPaused();
     
+    void showAbout();
+    void hideAbout();
+    
 	void animateOn(CloudsHUDLayerSet layer);
 	void animateOff(CloudsHUDLayerSet layer);
     void animateOff();
 	void respondToClip(CloudsClip* clip);
 	void respondToSystem(const CloudsVisualSystemPreset& preset);
-    
-//    void playCued();
 	
 	map<CloudsHUDLayerSet, CloudsHUDLayer* > layers;
     
@@ -166,6 +168,7 @@ class CloudsHUDController {
     string getSelectedItem();
     
     void populateSpeakers();
+    
   protected:
 	
     void populateLowerThird(const string& firstName,
@@ -250,36 +253,10 @@ class CloudsHUDController {
     void drawList();
     
     CloudsHUDLabel*    getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);
-//    ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath);
-//    ofxFTGLFont*            getFontForLayer(const string& layerName, const string& fontPath, int kerning = 35);
 
     
     vector<ofxFTGLFont*>    tempFontList;
     CloudsHUDLabel* ResearchTopicListLabel;
-    
-//    CloudsHUDLabel          *BylineFirstNameTextBox,
-//                            *BylineLastNameTextBox,
-//                            *BylineTopicTextBoxBottom,
-//                            *BylineTopicTextBoxTop,
-//                            *VisualSystemCreditTop,
-//                            *VisualSystemCreditBottom,
-//                            *ResearchTopicListFont,
-//                            *ResearchMapTabFont,
-//                            *ResearchPeopleTabFont,
-//                            *ResearchVisualsTabFont,
-//                            *ResearchResetButtonFont,
-//                            *ResearshShuffleAllFont,
-//                            *BylineBodyCopyTextBox,
-//                            *ResetButtonTextBox,
-//                            *QuestionTextBox,
-//                            *TopicTextBoxLeft,
-//                            *TopicTextBoxRight,
-//                            *ProjectExampleTextboxLeft,
-//                            *ProjectExampleTextboxRight,
-//                            *ProjectExampleTextBoxTop,
-//                            *ExploreTextBox,
-//                            *SeeMoreTextBox,
-//                            *NextButtonTextBox;
 	
     map<CloudsHUDLayerSet,bool>		hudOpenMap;
     map<string, CloudsHUDLabel*>    hudLabelMap;
@@ -292,7 +269,6 @@ class CloudsHUDController {
     int margin;
     
     map<CloudsHUDResearchTab, CloudsHUDResearchList> researchLists;
-    //vector<TopicButton> topicButtons;
     CloudsHUDResearchList* currentResearchList;
     
     ofRectangle     getScaledRectangle(const ofRectangle& rect);

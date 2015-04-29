@@ -173,6 +173,12 @@ void CloudsHUDController::buildLayerSets(){
     layers[CLOUDS_HUD_RESEARCH_SHUFFLE] = researchShuffleLayer;
     allLayers.push_back( researchShuffleLayer );
     
+    CloudsHUDLayer* aboutLayer = new CloudsHUDLayer();
+    aboutLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_ABOUT");
+    layers[CLOUDS_HUD_ABOUT] = aboutLayer;
+    allLayers.push_back( aboutLayer );
+    
+    
     for( int i = 0; i < allLayers.size(); i++ ){
         
         //TODO: filled meshes shouldn't be done this way
@@ -243,7 +249,6 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("ProjectExampleTextboxRight", fontPath);
     getLabelForLayer("ProjectExampleTextBoxTop", fontPath);
     
-    
     //pause
     getLabelForLayer("ExploreTextBox", fontPath);
     getLabelForLayer("SeeMoreTextBox", fontPath);
@@ -287,7 +292,6 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["BioTitleTextBox"]->setText(GetTranslationForString("BIO"), false);
     
     hudLabelMap["BioTextBox"]->layout->setLineLength(hudLabelMap["BioTextBox"]->bounds.width);
-    
     
 }
 
@@ -768,9 +772,16 @@ void CloudsHUDController::updateResearchNavigation(){
     hudLabelMap["PeopleTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["PeopleTextBox"]->baseInteractiveBounds);
     hudLabelMap["VisualsTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["VisualsTextBox"]->baseInteractiveBounds);
     hudLabelMap["RSResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds);
-    
-    
 }
+
+void CloudsHUDController::showAbout(){
+    animateOn(CLOUDS_HUD_ABOUT);
+}
+
+void CloudsHUDController::hideAbout(){
+    animateOff(CLOUDS_HUD_ABOUT);
+}
+
 void CloudsHUDController::pause(){
 
     //TODO: save the current HUD state before pause

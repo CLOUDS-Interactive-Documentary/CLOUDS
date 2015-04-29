@@ -101,6 +101,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	promptTime = 0.0;
 	promptShown = false;
 	researchSelected = false;
+    aboutSelected = false;
     
 	// Set question defaults.
 	questionScale = 0.1f;
@@ -501,9 +502,11 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
             researchSelected = true;
             researchMenuItem.attenuation = .03;
             break;
-        case CLOUDS_INTRO_NO_MEDIA:
-            break;
         case CLOUDS_INTRO_ABOUT:
+            aboutSelected = true;
+            aboutMenuItem.attenuation = .03;
+            break;
+        case CLOUDS_INTRO_NO_MEDIA:
             break;
         default:
             break;
@@ -645,6 +648,7 @@ void CloudsIntroSequence::updateMenu(){
         }
         else if(aboutMenuItem.clicked){
             //TODO: show about menu
+            changeState(CLOUDS_INTRO_ABOUT);
         }
     }
     
@@ -883,6 +887,12 @@ bool CloudsIntroSequence::userHasBegun(){
 bool CloudsIntroSequence::isResearchModeSelected(){
     bool selected = researchSelected;
     researchSelected = false;
+    return selected;
+}
+
+bool CloudsIntroSequence::isAboutScreenSelected(){
+    bool selected = aboutSelected;
+    aboutSelected = false;
     return selected;
 }
 

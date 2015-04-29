@@ -89,6 +89,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void setStartQuestions(vector<CloudsClip*>& possibleStartQuestions);
 
     bool isResearchModeSelected();
+    bool isAboutScreenSelected();
+    
 	bool isStartQuestionSelected();
 	bool istStartQuestionHovering();
 	
@@ -259,6 +261,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     CloudsMenuItem newMenuItem;
     CloudsMenuItem resumeMenuItem;
     bool researchSelected;
+    bool aboutSelected;
     
     vector<CloudsMenuItem*> menuItems;
     
