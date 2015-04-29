@@ -35,7 +35,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofBackground(255);
+    ofBackground(0);
     
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 20,20);
 	hud.draw();

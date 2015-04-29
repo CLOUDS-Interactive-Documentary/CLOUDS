@@ -1128,9 +1128,9 @@ void CloudsPlaybackController::updateTransition(){
                 hideVisualSystem();
                 showRGBDVisualSystem();
                 
-                if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
-                    hud.playCued();
-                }
+//                if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
+//                    hud.playCued();
+//                }
                 
                 break;
                 

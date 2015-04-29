@@ -21,14 +21,13 @@ CloudsHUDController::CloudsHUDController(){
     bSkipAVideoFrame = false;
     bDrawHud = true;
     
-    
+    bQuestionDisplayed = false;
     bJustPaused = false;
     bJustUnpaused = false;
     bActJustStarted = false;
-	cuedClipEndTime = 0;
     bVisualSystemDisplayed = false;
-    bLowerThirdCued = false;
-
+    bClipIsPlaying = false;
+    
     currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
     bIsScrollUpHover = false;
     bIsScrollDownHover = false;
@@ -120,34 +119,51 @@ void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 
 void CloudsHUDController::clearQuestion(){
 	hudLabelMap["QuestionTextBox_1_"]->setText("", false);
+    
+    bQuestionDisplayed = false;
+}
+
+void CloudsHUDController::clearClip(){
+    hudLabelMap["BylineFirstNameTextBox_1_"]->setText("", false);
+    hudLabelMap["BylineLastNameTextBox"]->setText("", false);
+    hudLabelMap["BylineTopicTextBoxBottom"]->setText("", false);
+    hudLabelMap["BylineTopicTextBoxTop"]->setText("", false);
+    hudLabelMap["BioTextBox"]->setText("", false);
+
+    bClipIsPlaying = false;
+    if(!bClipIsPlaying && !bVisualSystemDisplayed){
+        animateOff(CLOUDS_HUD_LOWER_THIRD);
+    }
+}
+
+void CloudsHUDController::clearVisualSystem(){
+
+    hudLabelMap["VSCreditsTextBoxTop"]->setText("", false);
+    hudLabelMap["VSCreditsTextBoxBottom"]->setText("", false);
+
+    bVisualSystemDisplayed = false;
+
+    if(!bClipIsPlaying && !bVisualSystemDisplayed){
+        animateOff(CLOUDS_HUD_LOWER_THIRD);
+    }
 }
 
 void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
 	respondToClip(args.chosenClip);
-    
 }
 
 void CloudsHUDController::clipEnded(){
-    //TODO mark this speaker gone.
-    currentClip = NULL;
+    clearClip();
 }
 
 void CloudsHUDController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
-//	bDrawHud = false;
     respondToSystem(args.preset);
-
-    bVisualSystemDisplayed = true;
 }
 
 void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
-//	bDrawHud = true;
-    bVisualSystemDisplayed = false;
-    if(currentClip != NULL){
-        respondToClip(currentClip);
-    }
-    else{
-        animateOff(CLOUDS_HUD_LOWER_THIRD);
-    }
+
+    clearVisualSystem();
+    
 }
 
 void CloudsHUDController::questionProposed(CloudsQuestionEventArgs& args){
@@ -168,47 +184,40 @@ void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
 
 void CloudsHUDController::respondToClip(CloudsClip* clip){
 	
-//	cout << "ID's on clip " << clip.name << " and fcp id? " << clip.fcpFileId << endl;
-//	cout << "Clip is " <<  clip.getLinkName() << endl;
-//	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
-    
-	//LOWER THIRD
-    //update lower third, but only if the speaker has changed
 
-//#ifndef OCULUS_RIFT
-//    if(currentSpeaker.fcpID != CloudsSpeaker::speakers[ clip->person ].fcpID){
-        currentSpeaker = CloudsSpeaker::speakers[ clip->person ];
-        
-        if (bVisualSystemDisplayed) {
-            // cue up the lower third until the visual system is done
-            bLowerThirdCued = true;
-            cuedClipEndTime = ofGetElapsedTimef() + clip->getDuration();
-        }
-        else {
-            populateLowerThird(currentSpeaker.firstName, currentSpeaker.lastName, currentSpeaker.location2, currentSpeaker.title, currentSpeaker.byline1, false );
-            // display the lower third right away
-            animateOn(CLOUDS_HUD_LOWER_THIRD);
-        }
-//    }
+    currentSpeaker = CloudsSpeaker::speakers[ clip->person ];
+    
+    populateLowerThird(currentSpeaker.firstName, currentSpeaker.lastName, currentSpeaker.location2, currentSpeaker.title, currentSpeaker.byline1 );
+    
+    if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD] ){
+        animateOn( CLOUDS_HUD_LOWER_THIRD );
+    }
     
     //PROJECT EXAMPLE
-	if(clip->hasProjectExample && clip->projectExample.exampleVideos.size() ){
-		CloudsProjectExample example = clip->projectExample;
-        string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
-        populateProjectExample( videoPath, example.creatorName, "", example.title, true );
-	}
-	else{
-        animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
+    if(!bVisualSystemDisplayed){
+        if(clip->hasProjectExample && clip->projectExample.exampleVideos.size() ){
+            CloudsProjectExample example = clip->projectExample;
+            string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
+            populateProjectExample( videoPath, example.creatorName, "", example.title, true );
+        }
+        else{
+            animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
+        }
     }
-//#endif
-    currentClip = clip;
+    
+    bClipIsPlaying = true;
  
 }
 
 void CloudsHUDController::respondToSystem(const CloudsVisualSystemPreset& preset){
     
-    populateVisualSystem(preset.credits.line1, preset.credits.line2, true );
-
+    populateVisualSystem(preset.credits.line1, preset.credits.line2 );
+    
+    if( !hudOpenMap[CLOUDS_HUD_LOWER_THIRD]  ){
+        animateOn( CLOUDS_HUD_LOWER_THIRD );
+    }
+    
+    bVisualSystemDisplayed = true;
     animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
 }
 
@@ -220,19 +229,10 @@ void CloudsHUDController::questionHoverOff(){
 	animateOff( CLOUDS_HUD_QUESTION );
 }
 
-void CloudsHUDController::playCued(){
-    if (bLowerThirdCued) {
-        // display the lower third if the cued clip is still running
-        if (ofGetElapsedTimef() < cuedClipEndTime) {
-            animateOn(CLOUDS_HUD_LOWER_THIRD);
-        }
-        bLowerThirdCued = false;
-    }
-}
-
 void CloudsHUDController::populateQuestion(const string& question, bool forceOn, bool animate){
     if(question == ""){
-		animateOff( CLOUDS_HUD_QUESTION );
+//		animateOff( CLOUDS_HUD_QUESTION );
+        clearQuestion();
 	}
 	else{
 		hudLabelMap["QuestionTextBox_1_"]->setText( question, forceOn );
@@ -244,6 +244,7 @@ void CloudsHUDController::populateQuestion(const string& question, bool forceOn,
 				hudLabelMap["QuestionTextBox_1_"]->instantIn();
 			}
 		}
+        bQuestionDisplayed = true;
 	}
 }
 
@@ -252,13 +253,14 @@ void CloudsHUDController::populateLowerThird(const string& firstName,
                                              const string& lastName,
                                              const string& title,
                                              const string& location,
-                                             const string& textbox,
-                                             bool  forceOn)
+                                             const string& textbox)
 {
+ 
     
     CloudsHUDLabel* firstNameLabel  = hudLabelMap["BylineFirstNameTextBox_1_"];
     CloudsHUDLabel* lastNameLabel  = hudLabelMap["BylineLastNameTextBox"];
     
+    bool forceOn = hudOpenMap[CLOUDS_HUD_LOWER_THIRD];
     firstNameLabel->setText( firstName, forceOn );
     lastNameLabel->setText( lastName, forceOn );
     
@@ -309,19 +311,18 @@ void CloudsHUDController::populateLowerThird(const string& firstName,
 //    
 //    descLabel->setText( textbox, forceOn );
     
-    if( forceOn ){
-        animateOn( CLOUDS_HUD_LOWER_THIRD );
-    }
+
 }
 
 void CloudsHUDController::populateVisualSystem(const string& creditLine1,
-                                               const string& creditLine2,
-                                               bool forceOn )
+                                               const string& creditLine2)
 {
     
     CloudsHUDLabel* topBox  = hudLabelMap["VSCreditsTextBoxTop"];
     CloudsHUDLabel* bottomBox  = hudLabelMap["VSCreditsTextBoxBottom"];
-    
+
+    //if the HUD is open, force the text on
+    bool forceOn = hudOpenMap[CLOUDS_HUD_LOWER_THIRD];
     topBox->setText( creditLine1, forceOn );
     bottomBox->setText( creditLine2, forceOn );
     
@@ -369,10 +370,7 @@ void CloudsHUDController::populateVisualSystem(const string& creditLine1,
 //    
 //    //TODO: do we want bio text
 //    descLabel->setText( "", forceOn );
-    
-    if( forceOn ){
-        animateOn( CLOUDS_HUD_LOWER_THIRD );
-    }
+
     
 }
 
@@ -638,7 +636,7 @@ CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
         // make a layout
         if(layerName == "BioTextBox"){
             ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
-            newLayout->loadFont( fontPath, 10 );
+            newLayout->loadFont( fontPath, 12 );
             newLayout->setLineLength( 999 );
             newLabel->setup( newLayout, textMesh->bounds );
         }
@@ -803,26 +801,7 @@ void CloudsHUDController::updateScroll(){
                                                            researchScrollBounds.width, 15) );
         }
     }
-    
-    /*
-    if( currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS ){
-        for(int i = 0; i < topicButtons.size(); i++){
-            TopicButton& b = topicButtons[i];
-            b.visible = b.top > scrollPosition && b.top < scrollPosition + totalScrollHeight;
-            if(b.visible){
-                b.selectRect = getScaledRectangle( ofRectangle(researchScrollBounds.x,
-                                                               b.top - scrollPosition + hudLabelMap["ListPeopleTextBox"]->bounds.x,
-                                                               researchScrollBounds.width, 15) );
-            }
-        }
-    }
-    else if( currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
-        //TODO:
-    }
-    else{
-        //TDOO:
-    }
-     */
+
 }
 
 bool CloudsHUDController::isItemSelected(){
@@ -910,9 +889,16 @@ void CloudsHUDController::pause(){
 
 void CloudsHUDController::unpause(){
     animateOff( CLOUDS_HUD_PAUSE );
-    animateOff( CLOUDS_HUD_QUESTION );
-    animateOff( CLOUDS_HUD_LOWER_THIRD );
-
+    if(bQuestionDisplayed){
+        animateOn( CLOUDS_HUD_QUESTION );
+    }
+    if(!bClipIsPlaying && !bVisualSystemDisplayed){
+        animateOff( CLOUDS_HUD_LOWER_THIRD );
+    }
+    
+    //if(bClipIsPlaying){
+        animateOn( CLOUDS_HUD_NEXT );
+    //}
     bJustUnpaused = true;
     bJustPaused = false;
     
@@ -1143,15 +1129,14 @@ void CloudsHUDController::draw(){
     for(int i = 0; i < CLOUDS_HUD_ALL; i++){
         drawLayer(CloudsHUDLayerSet(i));
     }
-//	drawLayer(CLOUDS_HUD_HOME);
-//	drawLayer(CLOUDS_HUD_QUESTION);
-//	drawLayer(CLOUDS_HUD_LOWER_THIRD);
-//	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
-//	drawLayer(CLOUDS_HUD_PAUSE);
-//	drawLayer(CLOUDS_HUD_NEXT);
-//	drawLayer(CLOUDS_HUD_RESEARCH_LIST);
-//	drawLayer(CLOUDS_HUD_RESEARCH_NAV);
-//	drawLayer(CLOUDS_HUD_RESEARCH_SHUFFLE);
+
+	if (hudOpenMap[CLOUDS_HUD_HOME]){
+		home.draw();
+    }
+    
+    for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
+        (it->second)->draw();
+    }
 
     if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
         
@@ -1189,17 +1174,9 @@ void CloudsHUDController::draw(){
         
         endListStencil();
     }
+ 
 
-    
-	if (hudOpenMap[CLOUDS_HUD_HOME]){
-		home.draw();
-    }
-    
-    for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
-        (it->second)->draw();
-    }
-    
-    
+    //TODO: intelligent widgets
 	if(hudLabelMap["ResetButtonTextBox"]->isClicked()){
 		ofSetColor(200,30,0,200);
 		resetTriangle.draw();
@@ -1408,39 +1385,7 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
             hudLayerLabels[layer][i]->animateIn( true );
         }
     }
-    /*
-    else if( layer == CLOUDS_HUD_LOWER_THIRD ){
-        hudLabelMap["BylineFirstNameTextBox_1_"]->animateIn( true );
-        hudLabelMap["BylineLastNameTextBox"]->animateIn( true );
-        hudLabelMap["BylineTopicTextBoxTop"]->animateIn( true );
-        hudLabelMap["BylineTopicTextBoxBottom"]->animateIn( true );
-//        hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
-    }
-    else if( layer == CLOUDS_HUD_PROJECT_EXAMPLE ){
-        hudLabelMap["ProjectExampleTextboxLeft"]->animateIn( true );
-        hudLabelMap["ProjectExampleTextboxRight"]->animateIn( true );
-        hudLabelMap["ProjectExampleTextBoxTop"]->animateIn( true );
-    }
-    else if( layer == CLOUDS_HUD_PAUSE ){
-		hudLabelMap["ResetButtonTextBox"]->animateIn( true );
-        hudLabelMap["ExploreTextBox"]->animateIn( true );
-        hudLabelMap["SeeMoreTextBox"]->animateIn( true );
-    }
-    else if( layer == CLOUDS_HUD_NEXT){
-        hudLabelMap["NextButtonTextBox"]->animateIn( true );
-    }
-    else if( layer == CLOUDS_HUD_QUESTION ){
-        hudLabelMap["QuestionTextBox_1_"]->animateIn( true );
-    }
-    else if( layer == CLOUDS_HUD_RESEARCH_LIST){
-        hudLabelMap["RSResetButtonTextBox"]->animateIn( true );
-    }
-    else if( layer == CLOUDS_HUD_RESEARCH_NAV){
-        hudLabelMap["MapTextBox"]->animateIn( true );
-        hudLabelMap["PeopleTextBox"]->animateIn( true );
-        hudLabelMap["VisualsTextBox"]->animateIn( true );
-    }
-    */
+
 }
 
 void CloudsHUDController::animateOff(){
@@ -1474,39 +1419,6 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         }
     }
     
-    /*
-    else if( layer == CLOUDS_HUD_LOWER_THIRD ){
-        hudLabelMap["BylineFirstNameTextBox_1_"]->animateOut();
-        hudLabelMap["BylineLastNameTextBox"]->animateOut();
-        hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
-        hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
-//        hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
-    }
-    else if( layer == CLOUDS_HUD_PROJECT_EXAMPLE ){
-        hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();
-        hudLabelMap["ProjectExampleTextboxRight"]->animateOut();
-        hudLabelMap["ProjectExampleTextBoxTop"]->animateOut();
-    }
-    else if( layer == CLOUDS_HUD_QUESTION ){
-        hudLabelMap["QuestionTextBox_1_"]->animateOut();
-    }
-    else if( layer == CLOUDS_HUD_PAUSE ){
-		hudLabelMap["ResetButtonTextBox"]->animateOut();
-        hudLabelMap["ExploreTextBox"]->animateOut();
-        hudLabelMap["SeeMoreTextBox"]->animateOut();
-    }
-    else if( layer == CLOUDS_HUD_NEXT){
-        hudLabelMap["NextButtonTextBox"]->animateOut();
-    }
-    else if( layer == CLOUDS_HUD_RESEARCH_LIST){
-        hudLabelMap["RSResetButtonTextBox"]->animateOut();
-    }
-    else if( layer == CLOUDS_HUD_RESEARCH_NAV){
-        hudLabelMap["MapTextBox"]->animateOut();
-        hudLabelMap["PeopleTextBox"]->animateOut();
-        hudLabelMap["VisualsTextBox"]->animateOut();
-    }
-     */
     
 }
 

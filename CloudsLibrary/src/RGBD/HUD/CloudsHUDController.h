@@ -106,11 +106,9 @@ class CloudsHUDController {
 	void mouseReleased(ofMouseEventArgs& args);
 
 	void clearQuestion();
-	
-	void buildLayerSets();
-    void calculateFontSizes();
-    int getFontSizeForMesh( SVGMesh* textMesh );
-	
+    void clearClip();
+    void clearVisualSystem();
+    
     bool didPause();
     bool didUnpause();    
     bool isPaused();
@@ -121,7 +119,7 @@ class CloudsHUDController {
 	void respondToClip(CloudsClip* clip);
 	void respondToSystem(const CloudsVisualSystemPreset& preset);
     
-    void playCued();
+//    void playCued();
 	
 	map<CloudsHUDLayerSet, CloudsHUDLayer* > layers;
     
@@ -174,12 +172,10 @@ class CloudsHUDController {
                             const string& lastName,
                             const string& title,
                             const string& location,
-                            const string& textbox,
-                            bool forceOn = false );
+                            const string& textbox);
     
     void populateVisualSystem(const string& creatorsName,
-                              const string& systemName,
-                              bool forceOn = false );
+                              const string& systemName);
     
     void populateProjectExample(const string& videoPath,
                                 const string& textLeft,
@@ -192,6 +188,10 @@ class CloudsHUDController {
                           bool animate = true);
     
     
+   	void buildLayerSets();
+    void calculateFontSizes();
+    int getFontSizeForMesh( SVGMesh* textMesh );
+ 
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
     
@@ -231,13 +231,13 @@ class CloudsHUDController {
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     bool	bActJustStarted;
-    bool    bLowerThirdCued;
+    
     bool    bVisualSystemDisplayed;
+    bool    bClipIsPlaying;
     bool    bJustPaused;
     bool    bJustUnpaused;
+    bool    bQuestionDisplayed;
     
-    float   cuedClipEndTime;
-	
     void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
@@ -248,9 +248,9 @@ class CloudsHUDController {
     void endListStencil();
     
     void drawList();
-
-//    ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath);
+    
     CloudsHUDLabel*    getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);
+//    ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath);
 //    ofxFTGLFont*            getFontForLayer(const string& layerName, const string& fontPath, int kerning = 35);
 
     
