@@ -2711,6 +2711,8 @@
 		A60F27111AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E41AF136B400A1C863 /* audiodecodercoreaudio.cpp */; };
 		A60F27281AF1422B00A1C863 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D0244C1AE6C7CB0008D018 /* libcurl.dylib */; };
 		A60F27291AF1423000A1C863 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15DCFE91AB79689007D1F44 /* OpenAL.framework */; };
+		A60F272A1AF14C8700A1C863 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D0244C1AE6C7CB0008D018 /* libcurl.dylib */; };
+		A60F272B1AF14C9500A1C863 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15DCFE91AB79689007D1F44 /* OpenAL.framework */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C15DCFD91AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
 		C15DCFDA1AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
@@ -6175,6 +6177,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A60F272B1AF14C9500A1C863 /* OpenAL.framework in Frameworks */,
+				A60F272A1AF14C8700A1C863 /* libcurl.dylib in Frameworks */,
 				E79BFA7719492CB900A0A83E /* AudioUnit.framework in Frameworks */,
 				E7DDC30A194437EC00E61D75 /* QuartzCore.framework in Frameworks */,
 				E7DDC30B194437EC00E61D75 /* libz.dylib in Frameworks */,
