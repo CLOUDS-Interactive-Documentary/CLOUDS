@@ -812,6 +812,8 @@
 	
 		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1354.813" y1="685.007" x2="1354.806" y2="702.5"/>
 </g>
+<g id="QuestionBacking" display="none">
+</g>
 <g id="QuestionTextBox_1_" display="none">
 	
 		<rect x="116.013" y="65.559" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="120.077" height="11.424"/>
@@ -843,7 +845,7 @@
 		114.355,773.193 	"/>
 </g>
 <g id="HomeButtonBacking" display="none">
-	<rect x="59.323" y="702.5" display="inline" opacity="0.16" width="113.999" height="108"/>
+	<rect x="59.323" y="702.5" display="inline" opacity="0.16" fill="#101010" width="113.999" height="108"/>
 </g>
 <g id="HomeButtonFrame" display="none">
 	
@@ -856,7 +858,7 @@
 	<rect x="57.412" y="809.099" display="inline" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
 </g>
 <g id="BylineBacking" display="none">
-	<rect x="174.352" y="702.5" display="inline" opacity="0.16" width="1208.884" height="108"/>
+	<rect x="174.352" y="702.5" display="inline" opacity="0.16" fill="#101010" width="1208.884" height="108"/>
 </g>
 <g id="BylineInsideBorder" display="none">
 	
@@ -895,7 +897,7 @@
 <g id="VSCreditsBackingBottom" display="none">
 	<rect x="740.813" y="761" display="inline" opacity="0.36" fill="#101010" width="202" height="30.557"/>
 </g>
-<g id="VSCreditsBackingTop_copy" display="none">
+<g id="VSCreditsBackingTop" display="none">
 	<rect x="740.813" y="719.5" display="inline" opacity="0.36" fill="#101010" width="230" height="29.5"/>
 </g>
 <g id="VSCreditsTextBoxBottom" display="none">
@@ -913,10 +915,6 @@
 <g id="BylineFirstNameTextBox_1_" display="none">
 	
 		<rect x="200.813" y="719.021" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="80.314" height="26.147"/>
-</g>
-<g id="BylineBodyCopyTextBox" display="none">
-	
-		<rect x="741.999" y="725.021" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="583.814" height="63.34"/>
 </g>
 <g id="BylineTypography" display="none">
 	<g display="inline">
@@ -946,7 +944,7 @@
 	<rect x="172.412" y="809.099" display="inline" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
 </g>
 <g id="ResetButtonBacking">
-	<rect x="1311.276" y="828.5" opacity="0.36" fill="#101010" width="101.537" height="34"/>
+	<rect x="1335.802" y="828.5" opacity="0.36" fill="#101010" width="77.011" height="34"/>
 </g>
 <g id="ResetButtonArrow" display="none">
 	<rect x="1393.853" y="841.1" display="inline" fill="#FFFFFF" width="9" height="9"/>
@@ -955,19 +953,19 @@
 	<rect x="1393.853" y="841.1" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="9" height="9"/>
 </g>
 <g id="ResetButtonFrame">
-	<rect x="1311.236" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="101.579" height="34"/>
+	<rect x="1335.772" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="77.042" height="34"/>
 </g>
 <g id="ResetButtonTextBox">
-	<rect x="1326.794" y="840" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="55.181" height="11.424"/>
+	<rect x="1346.093" y="840" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="35.882" height="11.424"/>
 </g>
 <g id="ResetButtonTypography" display="none">
 	<g display="inline">
 		
-			<text transform="matrix(1 0 0 1 1326.7102 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">RESET</text>
+			<text transform="matrix(1 0 0 1 1345.6204 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">EXIT</text>
 	</g>
 </g>
 <g id="GridBacking">
-	<rect x="30.313" y="19" opacity="0.16" width="1381.929" height="809"/>
+	<rect x="30.313" y="19" opacity="0.16" fill="#101010" width="1381.929" height="809"/>
 </g>
 <g id="Grid">
 	<rect x="29.813" y="18.5" opacity="0.03" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="29" height="18"/>
@@ -3132,7 +3130,7 @@
 	<rect x="1383.813" y="810.5" opacity="0.03" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="29" height="18"/>
 </g>
 <g id="ExploreSeeMoreVisualBacking">
-	<rect x="88.36" y="88.985" opacity="0.16" width="660.969" height="504.989"/>
+	<rect x="88.36" y="88.985" opacity="0.16" fill="#101010" width="660.969" height="504.989"/>
 </g>
 <g id="ExploreSeeMoreVisualFrame">
 	<path opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M87.313,136.5"/>
@@ -3190,7 +3188,7 @@
 	<rect x="622.58" y="67.018" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.728" height="6.364"/>
 </g>
 <g id="BioBacking">
-	<rect x="865.313" y="89" opacity="0.16" width="489.012" height="504.975"/>
+	<rect x="865.313" y="89" opacity="0.16" fill="#101010" width="489.012" height="504.975"/>
 </g>
 <g id="BioFrame">
 	<rect x="864.813" y="88.583" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="490" height="505.876"/>
@@ -3203,10 +3201,10 @@
 	<rect x="893.797" y="108.754" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="432.27" height="467.8"/>
 </g>
 <g id="BioTitleBacking">
-	<rect x="865.313" y="55" opacity="0.56" fill="#101010" width="403" height="34"/>
+	<rect x="865.313" y="55" opacity="0.56" fill="#101010" width="489" height="34"/>
 </g>
 <g id="BioTitleFrame">
-	<rect x="864.787" y="54.63" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="404.047" height="34"/>
+	<rect x="864.787" y="54.63" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="490.062" height="34"/>
 </g>
 <g id="BioTitleTypography" display="none">
 	<g display="inline">
@@ -3236,7 +3234,7 @@
 </g>
 <g id="NextButtonTypography" display="none">
 	
-		<text transform="matrix(1 0 0 1 1282.7815 77.4414)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">NEXT</text>
+		<text transform="matrix(1 0 0 1 1282.781 77.4414)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">NEXT</text>
 </g>
 <g id="InsideFrame">
 	<g opacity="0.26">

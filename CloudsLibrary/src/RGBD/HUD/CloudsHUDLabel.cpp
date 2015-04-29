@@ -20,7 +20,7 @@ CloudsHUDLabel::CloudsHUDLabel(){
     bIsHovered = false;
     bIsPressed = false;
     
-    clearTextOnAnimateOut = true;
+    //clearTextOnAnimateOut = true;
     caps = true;
     
     animationClamp.min = 0.3;
@@ -92,9 +92,9 @@ void CloudsHUDLabel::draw(){
         pct = ofMap( ofGetElapsedTimef(), beginTime, beginTime+fadeOutSpeed, 1., 0., true );
         textAlpha = floor( 255. * pct );
         if(textAlpha <= 0.0){
-            if(clearTextOnAnimateOut){
-                text = "";
-            }
+//            if(clearTextOnAnimateOut){
+//                text = "";
+//            }
             bIsAnimatingOut = false;
         }
     }

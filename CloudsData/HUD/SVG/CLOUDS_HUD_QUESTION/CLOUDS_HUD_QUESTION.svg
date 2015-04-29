@@ -812,16 +812,11 @@
 	
 		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1354.813" y1="685.007" x2="1354.806" y2="702.5"/>
 </g>
+<g id="QuestionBacking">
+	<rect x="88.313" y="54.995" opacity="0.56" fill="#101010" width="189.5" height="32.996"/>
+</g>
 <g id="QuestionTextBox_1_">
 	<rect x="116.013" y="65.559" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="120.077" height="11.424"/>
-</g>
-<g id="_x5F_OutsideFrameTicks" display="none">
-	<rect x="1411.804" y="17.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="28.804" y="17.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="28.804" y="827.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="1411.804" y="827.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="1411.804" y="683.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="28.804" y="683.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
 </g>
 <g id="HomeButton" display="none">
 	<g display="inline">
@@ -850,7 +845,7 @@
 		114.355,773.193 	"/>
 </g>
 <g id="HomeButtonBacking" display="none">
-	<rect x="59.323" y="702.5" display="inline" opacity="0.16" width="113.999" height="108"/>
+	<rect x="59.323" y="702.5" display="inline" opacity="0.16" fill="#101010" width="113.999" height="108"/>
 </g>
 <g id="HomeButtonFrame" display="none">
 	
@@ -863,7 +858,7 @@
 	<rect x="57.412" y="809.099" display="inline" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
 </g>
 <g id="BylineBacking" display="none">
-	<rect x="174.352" y="702.5" display="inline" opacity="0.16" width="1208.884" height="108"/>
+	<rect x="174.352" y="702.5" display="inline" opacity="0.16" fill="#101010" width="1208.884" height="108"/>
 </g>
 <g id="BylineInsideBorder" display="none">
 	
@@ -902,7 +897,7 @@
 <g id="VSCreditsBackingBottom" display="none">
 	<rect x="740.813" y="761" display="inline" opacity="0.36" fill="#101010" width="202" height="30.557"/>
 </g>
-<g id="VSCreditsBackingTop_copy" display="none">
+<g id="VSCreditsBackingTop" display="none">
 	<rect x="740.813" y="719.5" display="inline" opacity="0.36" fill="#101010" width="230" height="29.5"/>
 </g>
 <g id="VSCreditsTextBoxBottom" display="none">
@@ -920,10 +915,6 @@
 <g id="BylineFirstNameTextBox_1_" display="none">
 	
 		<rect x="200.813" y="719.021" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="80.314" height="26.147"/>
-</g>
-<g id="BylineBodyCopyTextBox" display="none">
-	
-		<rect x="741.999" y="725.021" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="583.814" height="63.34"/>
 </g>
 <g id="BylineTypography" display="none">
 	<g display="inline">
@@ -953,11 +944,7 @@
 	<rect x="172.412" y="809.099" display="inline" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
 </g>
 <g id="ResetButtonBacking" display="none">
-	<rect x="1268.734" y="828.5" display="inline" opacity="0.36" fill="#101010" width="144.079" height="34"/>
-</g>
-<g id="ResetButtonArrowFrame" display="none">
-	
-		<rect x="1383.892" y="828.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="28.921" height="34"/>
+	<rect x="1335.802" y="828.5" display="inline" opacity="0.36" fill="#101010" width="77.011" height="34"/>
 </g>
 <g id="ResetButtonArrow" display="none">
 	<rect x="1393.853" y="841.1" display="inline" fill="#FFFFFF" width="9" height="9"/>
@@ -967,19 +954,20 @@
 </g>
 <g id="ResetButtonFrame" display="none">
 	
-		<rect x="1268.734" y="828.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="115.158" height="34"/>
+		<rect x="1335.772" y="828.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="77.042" height="34"/>
 </g>
 <g id="ResetButtonTextBox" display="none">
-	<rect x="1300.16" y="840" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="55.181" height="11.424"/>
+	
+		<rect x="1346.093" y="840" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="35.882" height="11.424"/>
 </g>
 <g id="ResetButtonTypography" display="none">
 	<g display="inline">
 		
-			<text transform="matrix(1 0 0 1 1300.0769 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">RESET</text>
+			<text transform="matrix(1 0 0 1 1345.6204 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">EXIT</text>
 	</g>
 </g>
 <g id="GridBacking" display="none">
-	<rect x="30.313" y="19" display="inline" opacity="0.16" width="1381.929" height="809"/>
+	<rect x="30.313" y="19" display="inline" opacity="0.16" fill="#101010" width="1381.929" height="809"/>
 </g>
 <g id="Grid" display="none">
 	
@@ -5303,35 +5291,8 @@
 	
 		<rect x="1383.813" y="810.5" display="inline" opacity="0.03" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="29" height="18"/>
 </g>
-<g id="SeeMoreVisual" display="none">
-	<g display="inline" opacity="0.7">
-		<defs>
-			<rect id="SVGID_5_" x="96.313" y="117" opacity="0.7" width="645" height="458"/>
-		</defs>
-		<clipPath id="SVGID_6_">
-			<use xlink:href="#SVGID_5_"  overflow="visible"/>
-		</clipPath>
-		<g transform="matrix(1 0 0 1 0 7.629395e-06)" clip-path="url(#SVGID_6_)">
-			
-				<image overflow="visible" width="1920" height="1080" xlink:href="C6250C15A30652E6.jpg"  transform="matrix(0.4418 0 0 0.4624 -2.4856 96.7847)">
-			</image>
-		</g>
-	</g>
-</g>
-<g id="ExploreVisual" display="none">
-	<g display="inline" opacity="0.7">
-		<defs>
-			<rect id="SVGID_7_" x="96.313" y="117" opacity="0.7" width="645" height="459"/>
-		</defs>
-		<clipPath id="SVGID_8_">
-			<use xlink:href="#SVGID_7_"  overflow="visible"/>
-		</clipPath>
-		<g transform="matrix(1 0 0 1 7.629395e-06 0)" clip-path="url(#SVGID_8_)">
-			
-				<image overflow="visible" width="1920" height="1080" xlink:href="C6250C15A30652E4.jpg"  transform="matrix(0.5297 0 0 0.5504 -88.0486 47.8643)">
-			</image>
-		</g>
-	</g>
+<g id="ExploreSeeMoreVisualBacking" display="none">
+	<rect x="88.36" y="88.985" display="inline" opacity="0.16" fill="#101010" width="660.969" height="504.989"/>
 </g>
 <g id="ExploreSeeMoreVisualFrame" display="none">
 	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M87.313,136.5"/>
@@ -5339,26 +5300,15 @@
 	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M749.313,583.5"/>
 	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M87.313,611.5"/>
 	
-		<line display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="87.313" y1="584.5" x2="749.313" y2="584.5"/>
+		<line display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="87.313" y1="594.5" x2="749.313" y2="594.5"/>
 	
-		<line display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="87.813" y1="89" x2="87.813" y2="585"/>
+		<line display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="87.813" y1="89" x2="87.813" y2="595"/>
 	
-		<line display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="749.813" y1="585" x2="749.813" y2="89"/>
+		<line display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="749.813" y1="595" x2="749.813" y2="89"/>
 	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M519.313,116.5"/>
 	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M741.813,117"/>
 	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M741.313,575.5"/>
-	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="95.813" y1="96" x2="95.813" y2="576"/>
-	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="95.313" y1="575.5" x2="742.313" y2="575.5"/>
-	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="741.813" y1="576" x2="741.813" y2="96"/>
-	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="742.313" y1="96.5" x2="95.313" y2="96.5"/>
 	<path display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" d="M91.5,112"/>
-</g>
-<g id="ExploreSeeMoreBackingNoHover" display="none">
-	<rect x="87.313" y="54.56" display="inline" opacity="0.16" width="662" height="54.001"/>
 </g>
 <g id="ExploreBackingHover" display="none">
 	<rect x="88.313" y="54.995" display="inline" opacity="0.56" fill="#101010" width="189.5" height="32.996"/>
@@ -5412,28 +5362,26 @@
 		<rect x="622.58" y="67.018" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.728" height="6.364"/>
 </g>
 <g id="BioBacking" display="none">
-	<rect x="865.313" y="55" display="inline" opacity="0.16" width="489.012" height="520.002"/>
+	<rect x="865.313" y="89" display="inline" opacity="0.16" fill="#101010" width="489.012" height="504.975"/>
 </g>
 <g id="BioFrame" display="none">
 	
-		<rect x="864.813" y="54.5" display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="490" height="521"/>
-	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="864.313" y1="583.5" x2="1354.313" y2="583.5"/>
-	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1354.813" y1="548" x2="1354.813" y2="583"/>
-	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="864.813" y1="576" x2="864.813" y2="583"/>
-	<rect x="865.313" y="55" display="inline" opacity="0.26" fill="#101010" width="404" height="34"/>
+		<rect x="864.813" y="88.583" display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="490" height="505.876"/>
 </g>
 <g id="BioTypography" display="none">
 	<rect x="891.653" y="116.5" display="inline" fill="none" width="436.378" height="355.25"/>
-	<text transform="matrix(1 0 0 1 891.6531 126.1636)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Freelance writer who covers digital media art, internet </tspan><tspan x="0" y="23" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">culture, and commerce for publications including the new </tspan><tspan x="0" y="46" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">yorker and the new republic. He has also curated exhibitions </tspan><tspan x="0" y="69" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">at Garis &amp; Hahn gallery and moving image art fair in New York </tspan><tspan x="0" y="92" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">and London. Freelance writer who covers digital media art, </tspan><tspan x="0" y="115" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">internet culture, and commerce for publications including the </tspan><tspan x="0" y="138" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">new yorker and the new republic. He has also curated </tspan><tspan x="0" y="161" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">exhibitions at Garis &amp; Hahn gallery and moving image art fair </tspan><tspan x="0" y="184" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">in New York and London. Freelance writer who covers digital </tspan><tspan x="0" y="207" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">media art, internet culture, and commerce for publications </tspan><tspan x="0" y="230" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">including the new yorker and the new republic. He has also </tspan><tspan x="0" y="253" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">curated exhibitions at Garis &amp; Hahn gallery and moving image </tspan><tspan x="0" y="276" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">art fair in New York and London.</tspan></text>
+	<text transform="matrix(1 0 0 1 891.6531 126.1641)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Freelance writer who covers digital media art, internet </tspan><tspan x="0" y="23" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">culture, and commerce for publications including the new </tspan><tspan x="0" y="46" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">yorker and the new republic. He has also curated exhibitions </tspan><tspan x="0" y="69" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">at Garis &amp; Hahn gallery and moving image art fair in New York </tspan><tspan x="0" y="92" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">and London. Freelance writer who covers digital media art, </tspan><tspan x="0" y="115" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">internet culture, and commerce for publications including the </tspan><tspan x="0" y="138" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">new yorker and the new republic. He has also curated </tspan><tspan x="0" y="161" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">exhibitions at Garis &amp; Hahn gallery and moving image art fair </tspan><tspan x="0" y="184" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">in New York and London. Freelance writer who covers digital </tspan><tspan x="0" y="207" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">media art, internet culture, and commerce for publications </tspan><tspan x="0" y="230" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">including the new yorker and the new republic. He has also </tspan><tspan x="0" y="253" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">curated exhibitions at Garis &amp; Hahn gallery and moving image </tspan><tspan x="0" y="276" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">art fair in New York and London.</tspan></text>
 </g>
 <g id="BioTextBox" display="none">
 	
-		<rect x="892.114" y="116.5" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="437.814" height="296.551"/>
+		<rect x="893.797" y="108.754" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="432.27" height="467.8"/>
 </g>
 <g id="BioTitleBacking" display="none">
+	<rect x="865.313" y="55" display="inline" opacity="0.56" fill="#101010" width="489" height="34"/>
+</g>
+<g id="BioTitleFrame" display="none">
+	
+		<rect x="864.787" y="54.63" display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="490.062" height="34"/>
 </g>
 <g id="BioTitleTypography" display="none">
 	<g display="inline">
@@ -5445,30 +5393,26 @@
 		<rect x="892.23" y="66.034" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="24.178" height="11.424"/>
 </g>
 <g id="NextButtonBacking" display="none">
-	<rect x="1269.719" y="54.5" display="inline" opacity="0.36" fill="#101010" width="114.094" height="34"/>
-</g>
-<g id="NextButtonArrowFrame" display="none">
-	
-		<rect x="1354.813" y="54.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="29" height="34"/>
+	<rect x="1268.88" y="55" display="inline" opacity="0.36" fill="#101010" width="85.896" height="34"/>
 </g>
 <g id="NextButtonArrow" display="none">
-	<polygon display="inline" fill="#FFFFFF" points="1365.487,66.218 1365.487,78.783 1371.769,72.5 	"/>
+	<polygon display="inline" fill="#FFFFFF" points="1336.424,66.218 1336.424,78.783 1342.706,72.5 	"/>
 </g>
 <g id="NextButtonArrowSpace" display="none">
 	
-		<rect x="1365.487" y="66.218" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
+		<rect x="1336.424" y="66.218" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
 </g>
 <g id="NextButtonFrame" display="none">
 	
-		<rect x="1269.719" y="54.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="85.094" height="34"/>
+		<rect x="1268.88" y="54.63" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="85.97" height="34"/>
 </g>
 <g id="NextButtonTextBox" display="none">
 	
-		<rect x="1284.1" y="66.034" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="42.345" height="11.424"/>
+		<rect x="1283.261" y="66.034" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="42.345" height="11.424"/>
 </g>
 <g id="NextButtonTypography" display="none">
 	
-		<text transform="matrix(1 0 0 1 1283.6208 77.4414)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">NEXT</text>
+		<text transform="matrix(1 0 0 1 1282.781 77.4414)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">NEXT</text>
 </g>
 <g id="InsideFrame" display="none">
 	<g display="inline" opacity="0.26">
@@ -5500,6 +5444,14 @@
 		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1413.313" y1="18.5" x2="29.313" y2="18.5"/>
 	
 		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.813" y1="19" x2="29.813" y2="829"/>
+</g>
+<g id="_x5F_OutsideFrameTicks" display="none">
+	<rect x="1411.804" y="17.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="28.804" y="17.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="28.804" y="827.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="1411.804" y="827.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="1411.804" y="683.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="28.804" y="683.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
 </g>
 <g id="_x2F__x2F_Instructions" display="none">
 </g>

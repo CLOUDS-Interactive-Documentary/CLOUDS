@@ -284,7 +284,7 @@ void CloudsHUDController::populateLowerThird(const string& firstName,
     locationLabel->setText( location, forceOn );
     titleLabel->setText( title, forceOn );
     
-    hudLabelMap["BioTextBox"]->setText(textbox);
+    hudLabelMap["BioTextBox"]->setText(textbox, false);
 
     
     //description
@@ -548,30 +548,30 @@ void CloudsHUDController::calculateFontSizes(){
     scrollIncrement = hudLabelMap["ListTextBoxes"]->bounds.height * 1.5;
  
     hudLabelMap["MapTextBox"]->setText(GetTranslationForString("MAP"), false);
-    hudLabelMap["MapTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["MapTextBox"]->clearTextOnAnimateOut = false;
     hudLabelMap["PeopleTextBox"]->setText(GetTranslationForString("PEOPLE"), false);
-    hudLabelMap["PeopleTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["PeopleTextBox"]->clearTextOnAnimateOut = false;
     hudLabelMap["VisualsTextBox"]->setText(GetTranslationForString("VISUALS"), false);
-    hudLabelMap["VisualsTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["VisualsTextBox"]->clearTextOnAnimateOut = false;
     hudLabelMap["RSResetButtonTextBox"]->setText(GetTranslationForString("EXIT"), false); //this one may change...
-    hudLabelMap["RSResetButtonTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["RSResetButtonTextBox"]->clearTextOnAnimateOut = false;
  
     hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("EXIT"), false);
-    hudLabelMap["ResetButtonTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["ResetButtonTextBox"]->clearTextOnAnimateOut = false;
     hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"), false);
-    hudLabelMap["NextButtonTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["NextButtonTextBox"]->clearTextOnAnimateOut = false;
     hudLabelMap["ExploreTextBox"]->setText(GetTranslationForString("EXPLORE THE MAP"), false);
-    hudLabelMap["ExploreTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["ExploreTextBox"]->clearTextOnAnimateOut = false;
     hudLabelMap["SeeMoreTextBox"]->setText(GetTranslationForString("SEE MORE OF THIS PERSON"), false); //todo dynmic name
-    hudLabelMap["SeeMoreTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["SeeMoreTextBox"]->clearTextOnAnimateOut = false;
 
     hudLabelMap["ShuffleButtonTextBox"]->setText(GetTranslationForString("SHUFFLE ALL"), false); //todo dynmic name
-    hudLabelMap["ShuffleButtonTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["ShuffleButtonTextBox"]->clearTextOnAnimateOut = false;
     
     hudLabelMap["BioTitleTextBox"]->setText(GetTranslationForString("BIO"), false);
-    hudLabelMap["BioTitleTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["BioTitleTextBox"]->clearTextOnAnimateOut = false;
     
-    hudLabelMap["BioTextBox"]->clearTextOnAnimateOut = false;
+//    hudLabelMap["BioTextBox"]->clearTextOnAnimateOut = false;
     hudLabelMap["BioTextBox"]->layout->setLineLength(hudLabelMap["BioTextBox"]->bounds.width);
 
     
@@ -900,8 +900,8 @@ void CloudsHUDController::pause(){
     hudLabelMap["NextButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds);
  
     animateOff( CLOUDS_HUD_QUESTION );
+    animateOff( CLOUDS_HUD_NEXT );
     animateOn( CLOUDS_HUD_PAUSE );
-    animateOn( CLOUDS_HUD_NEXT );
 
     bJustPaused = true;
     bJustUnpaused = false;
@@ -1186,17 +1186,6 @@ void CloudsHUDController::draw(){
         
         beginListStencil();
         drawList();
-        
-        
-//        if( currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS ){
-//            drawTopicsList();
-//        }
-//        else if( currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
-//            drawPeopleList();
-//        }
-//        else if( currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS ){
-//            draweVisualList();
-//        }
         
         endListStencil();
     }

@@ -41,7 +41,7 @@ class CloudsHUDLabel {
     bool isHovered();
     bool isClicked();
     
-    bool clearTextOnAnimateOut;
+    //bool clearTextOnAnimateOut;
     
     bool caps;
     
