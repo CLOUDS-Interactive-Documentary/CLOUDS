@@ -1171,6 +1171,12 @@
     <ClCompile Include="..\..\..\addons\ofxAudioDecoder\libs\audiodecoder\src\audiodecodermediafoundation.cpp">
       <Filter>addons\ofxAudioDecoder\libs\audiodecoder\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsVHXRequest.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSSL\src\ofxSSL.cpp">
+      <Filter>addons\ofxSSL\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -3116,6 +3122,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxAudioDecoder\libs\audiodecoder\include\audiodecodermediafoundation.h">
       <Filter>addons\ofxAudioDecoder\libs\audiodecoder\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsVHXRequest.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSSL\src\ofxSSL.h">
+      <Filter>addons\ofxSSL\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
