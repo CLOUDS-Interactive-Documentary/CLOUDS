@@ -1100,18 +1100,10 @@ void CloudsPlaybackController::updateTransition(){
                 //starting
 			case TRANSITION_INTRO_IN:
                 
-                //starting
-//                if(currentVisualSystem == interludeSystem){
-//                    cleanupInterlude();
-//                }
                 if(currentVisualSystem == rgbdVisualSystem){
 					rgbdVisualSystem->transtionFinished();
                     rgbdVisualSystem->stopSystem();
 				}
-//                else {
-//                    //if you reset from the intro
-//                    hideVisualSystem();
-//                }
                 
 				clusterMap->clearTraversal();
                 
@@ -1148,10 +1140,6 @@ void CloudsPlaybackController::updateTransition(){
 
                 //starting
             case TRANSITION_VISUALSYSTEM_IN:
-                
-//                if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
-//                    rgbdVisualSystem->transtionFinished();
-//                }
                 
                 playNextVisualSystem();
                 break;

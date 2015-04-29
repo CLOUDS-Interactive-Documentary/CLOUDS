@@ -368,6 +368,7 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 	bDrawHud = true;
 	bActJustStarted = true;
+    bVisualSystemDisplayed = false;
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
@@ -377,6 +378,8 @@ void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 // 	animateOff( CLOUDS_HUD_QUESTION );
 	animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
 	animateOff( CLOUDS_HUD_PAUSE );
+    
+    bVisualSystemDisplayed = false;
     
 }
 //////////TODO: these need to animate out
@@ -430,6 +433,8 @@ void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
     clearVisualSystem();
     if(bActJustStarted && bClipIsPlaying){
         animateOn(CLOUDS_HUD_LOWER_THIRD);
+        animateOn(CLOUDS_HUD_HOME);
+        animateOn(CLOUDS_HUD_NEXT);
     }
     bActJustStarted = false;
     
