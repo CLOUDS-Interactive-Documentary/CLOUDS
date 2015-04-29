@@ -56,6 +56,7 @@ class CloudsHUDResearchButton {
     bool pressed;
     bool clicked;
     ofRectangle selectRect;
+    ofRectangle selectRectScaled;
     string tag;
     string label;
 };
@@ -129,7 +130,6 @@ class CloudsHUDController {
 	vector<CloudsHUDLayer*> allLayers;
 	
 	void questionHoverOn(const string& question, bool animate = true);
-	//void questionHoverOff();
 	
 	ofxUISuperCanvas *hudGui;
 	CloudsHUDHomeButton home;
@@ -203,10 +203,11 @@ class CloudsHUDController {
     /////////////// SCROLL VARIABLES
     //////////////
     ofRectangle   researchScrollBounds;
-    ofRectangle   scrollUpBounds;
-    ofRectangle   scrollDownBounds;
-    ofRectangle   scrollUpBoundsScaled;
-    ofRectangle   scrollDownBoundsScaled;
+    ofRectangle   researchScrollBoundsScaled;
+    ofRectangle   researchScrollUpBounds;
+    ofRectangle   researchScrollDownBounds;
+    ofRectangle   researchScrollUpBoundsScaled;
+    ofRectangle   researchScrollDownBoundsScaled;
     bool          bIsScrollUpHover;
     bool          bIsScrollDownHover;
     bool          bIsScrollUpPressed;
@@ -230,7 +231,6 @@ class CloudsHUDController {
     ////////////////////
     
     
-	//reset stuff
 	ofMesh resetTriangle;
     
     bool    bDrawHud;

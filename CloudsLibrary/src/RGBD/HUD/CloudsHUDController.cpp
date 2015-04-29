@@ -203,10 +203,10 @@ void CloudsHUDController::buildLayerSets(){
     
     svgVideoBounds = projectExampleLayer->svg.getMeshByID("ProjectExampleFrame")->bounds;
 	videoBounds = svgVideoBounds;
-    researchScrollBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListBacking")->bounds;
     
-    scrollUpBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.y,researchScrollBounds.width,20);
-    scrollDownBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.getMaxY()-20,researchScrollBounds.width,20);
+    researchScrollBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListBacking")->bounds;
+    researchScrollUpBounds   = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListScrollUpBacking")->bounds;
+    researchScrollDownBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListScrollDownBacking")->bounds;
     
     hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
@@ -325,6 +325,10 @@ CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
         }
         else{
             int fontSize = getFontSizeForMesh( textMesh );
+            if( layerName == "ListTextBoxes"){
+                fontSize -= 2;
+            }
+            
             ofxFTGLFont *newFont = new ofxFTGLFont();
             newFont->setLetterSpacing(kerning * .08);
             newFont->loadFont( fontPath, fontSize );
@@ -384,18 +388,18 @@ void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 }
 //////////TODO: these need to animate out
 void CloudsHUDController::clearQuestion(){
-	hudLabelMap["QuestionTextBox_1_"]->setText("", false);
+	hudLabelMap["QuestionTextBox_1_"]->animateOut(true);
     animateOff(CLOUDS_HUD_QUESTION);
 
     bQuestionDisplayed = false;
 }
 
 void CloudsHUDController::clearClip(){
-    hudLabelMap["BylineFirstNameTextBox_1_"]->setText("", false);
-    hudLabelMap["BylineLastNameTextBox"]->setText("", false);
-    hudLabelMap["BylineTopicTextBoxBottom"]->setText("", false);
-    hudLabelMap["BylineTopicTextBoxTop"]->setText("", false);
-    hudLabelMap["BioTextBox"]->setText("", false);
+    hudLabelMap["BylineFirstNameTextBox_1_"]->animateOut(true);
+    hudLabelMap["BylineLastNameTextBox"]->animateOut(true);
+    hudLabelMap["BylineTopicTextBoxBottom"]->animateOut(true);
+    hudLabelMap["BylineTopicTextBoxTop"]->animateOut(true);
+    hudLabelMap["BioTextBox"]->animateOut(true);
 
     bClipIsPlaying = false;
     if(!bClipIsPlaying && !bVisualSystemDisplayed){
@@ -406,8 +410,8 @@ void CloudsHUDController::clearClip(){
 
 void CloudsHUDController::clearVisualSystem(){
 
-    hudLabelMap["VSCreditsTextBoxTop"]->setText("", false);
-    hudLabelMap["VSCreditsTextBoxBottom"]->setText("", false);
+    hudLabelMap["VSCreditsTextBoxTop"]->animateOut(true);
+    hudLabelMap["VSCreditsTextBoxBottom"]->animateOut(true);
 
     bVisualSystemDisplayed = false;
 
@@ -673,8 +677,11 @@ void CloudsHUDController::update(){
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
 	}
-	float scaleToWidth  = CloudsVisualSystem::getStaticRenderTarget().getWidth()  - 20; //20 for hardcoded bleed
-	float scaleToHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() - 20;
+//	float scaleToWidth  = CloudsVisualSystem::getStaticRenderTarget().getWidth()  - 20; //20 for hardcoded bleed
+//	float scaleToHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() - 20;
+	float scaleToWidth  = ofGetWidth();
+	float scaleToHeight = ofGetHeight();
+    
 	float xScale = scaleToWidth/hudBounds.width;
 	float yScale = scaleToHeight/hudBounds.height;
     
@@ -701,9 +708,10 @@ void CloudsHUDController::update(){
     hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_NEXT]->svg.getMeshByID("NextButtonBacking")->bounds;
     hudLabelMap["NextButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds);
  	
-    scrollUpBoundsScaled = getScaledRectangle(scrollUpBounds);
-    scrollDownBoundsScaled = getScaledRectangle(scrollDownBounds);
-
+    researchScrollUpBoundsScaled   = getScaledRectangle(researchScrollUpBounds);
+    researchScrollDownBoundsScaled = getScaledRectangle(researchScrollDownBounds);
+    researchScrollBoundsScaled = getScaledRectangle(researchScrollBounds);
+    
     home.interactiveBounds = getScaledRectangle(home.bounds);
     home.update();
     if( home.wasActivated() ){
@@ -723,6 +731,7 @@ void CloudsHUDController::update(){
         fakeConfirmSelectionBounds.y = ofGetHeight()/2 - 75;
         fakeConfirmSelectionBounds.width = 300;
         fakeConfirmSelectionBounds.height = 150;
+        fakeConfirmSelectionBounds = getScaledRectangle(fakeConfirmSelectionBounds);
     }
     
     if( hudOpenMap[CLOUDS_HUD_RESEARCH_NAV]){
@@ -746,12 +755,15 @@ void CloudsHUDController::updateScroll(){
     
     for(int i = 0; i < currentResearchList->buttons.size(); i++){
         CloudsHUDResearchButton& b = currentResearchList->buttons[i];
-        b.visible = b.top > currentResearchList->scrollPosition &&
-                    b.top < currentResearchList->scrollPosition + currentResearchList->totalScrollHeight;
+        b.visible = b.top >= currentResearchList->scrollPosition + scrollIncrement * .5 &&
+                    b.top < currentResearchList->scrollPosition + researchScrollBounds.height - scrollIncrement;
+        //cout << "button top is " << b.top << " list scroll is " << currentResearchList->scrollPosition << " with height " << currentResearchList->totalScrollHeight << endl;
         if(b.visible){
-            b.selectRect = getScaledRectangle( ofRectangle(researchScrollBounds.x,
-                                                           b.top - currentResearchList->scrollPosition + hudLabelMap["ListTextBoxes"]->bounds.x,
-                                                           researchScrollBounds.width, 15) );
+            b.selectRect = ofRectangle(researchScrollBounds.x,
+                                       researchScrollBounds.y + b.top - currentResearchList->scrollPosition,
+                                       researchScrollBounds.width, 15);
+
+            b.selectRectScaled = getScaledRectangle( b.selectRect );
         }
     }
 
@@ -910,14 +922,14 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
     }
     
     if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
-        bIsScrollUpHover = scrollUpBoundsScaled.inside(args.x, args.y);
-        bIsScrollDownHover = scrollDownBoundsScaled.inside(args.x, args.y);
+        bIsScrollUpHover = researchScrollUpBoundsScaled.inside(args.x, args.y);
+        bIsScrollDownHover = researchScrollDownBoundsScaled.inside(args.x, args.y);
         
-        if(researchScrollBounds.inside(args.x, args.y)){
+        if(researchScrollBoundsScaled.inside(args.x, args.y)){
             
             for(int i = 0; i < currentResearchList->buttons.size(); i++){
                 if(currentResearchList->buttons[i].visible){
-                    currentResearchList->buttons[i].hovered = currentResearchList->buttons[i].selectRect.inside(args.x, args.y);
+                    currentResearchList->buttons[i].hovered = currentResearchList->buttons[i].selectRectScaled.inside(args.x, args.y);
                 }
             }
         }
@@ -939,15 +951,15 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
     }
     
     if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
-        bIsScrollUpPressed = scrollUpBoundsScaled.inside(args.x, args.y);
-        bIsScrollDownPressed = scrollDownBoundsScaled.inside(args.x, args.y);
+        bIsScrollUpPressed = researchScrollUpBoundsScaled.inside(args.x, args.y);
+        bIsScrollDownPressed = researchScrollDownBoundsScaled.inside(args.x, args.y);
         
         scrollPressedTime = ofGetElapsedTimef();
-        if(researchScrollBounds.inside(args.x, args.y)){
+        if(researchScrollBoundsScaled.inside(args.x, args.y)){
             for(int i = 0; i < currentResearchList->buttons.size(); i++){
                 currentResearchList->buttons[i].clicked = false;
                 if(currentResearchList->buttons[i].visible){
-                    currentResearchList->buttons[i].pressed = currentResearchList->buttons[i].selectRect.inside(args.x, args.y);
+                    currentResearchList->buttons[i].pressed = currentResearchList->buttons[i].selectRectScaled.inside(args.x, args.y);
                 }
             }
         }
@@ -965,22 +977,22 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
     }
     
     if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
-        if(bIsScrollUpPressed && scrollUpBoundsScaled.inside(args.x, args.y)){
+        if(bIsScrollUpPressed && researchScrollUpBoundsScaled.inside(args.x, args.y)){
             float newScrollPosition = currentResearchList->scrollPosition - scrollIncrement;
             currentResearchList->scrollPosition = ofClamp(newScrollPosition, 0, currentResearchList->totalScrollHeight - researchScrollBounds.height);
         }
-        if(bIsScrollDownPressed && scrollDownBoundsScaled.inside(args.x, args.y)){
+        if(bIsScrollDownPressed && researchScrollDownBoundsScaled.inside(args.x, args.y)){
             float newScrollPosition = currentResearchList->scrollPosition + scrollIncrement;
             currentResearchList->scrollPosition = ofClamp(newScrollPosition, 0, currentResearchList->totalScrollHeight - researchScrollBounds.height);
         }        
         bIsHoldScrolling = false;
         
-        if(researchScrollBounds.inside(args.x, args.y)){
+        if(researchScrollBoundsScaled.inside(args.x, args.y)){
 
             for(int i = 0; i < currentResearchList->buttons.size(); i++){
                 if(currentResearchList->buttons[i].visible){
                    currentResearchList->buttons[i].clicked = currentResearchList->buttons[i].pressed &&
-                                                             currentResearchList->buttons[i].selectRect.inside(args.x, args.y);
+                                                             currentResearchList->buttons[i].selectRectScaled.inside(args.x, args.y);
                     currentResearchList->buttons[i].pressed = false;
                 }
             }
@@ -1108,8 +1120,8 @@ void CloudsHUDController::draw(){
         ofPushStyle();
         //test to see bound locations
         ofSetColor(255, 0, 0);
-        ofRect(scrollUpBounds);
-        ofRect(scrollDownBounds);
+        ofRect(researchScrollUpBounds);
+        ofRect(researchScrollDownBounds);
         
         
         //begin test for fake confirm
@@ -1159,9 +1171,9 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 
 void CloudsHUDController::beginListStencil(){
 
-    glEnable(GL_SCISSOR_TEST);
-    ofRectangle scissorRect = getScaledRectangle(researchScrollBounds);
-    glScissor(scissorRect.x, ofGetHeight() - ( scissorRect.y + scissorRect.height) , scissorRect.width, scissorRect.height);
+//    glEnable(GL_SCISSOR_TEST);
+//    ofRectangle scissorRect = researchScrollBoundsScaled;
+//    glScissor(scissorRect.x, ofGetHeight() - ( scissorRect.y + scissorRect.height) , scissorRect.width, scissorRect.height);
     
     ofPushMatrix();
     ofTranslate(0, -currentResearchList->scrollPosition);
@@ -1171,7 +1183,7 @@ void CloudsHUDController::beginListStencil(){
 void CloudsHUDController::endListStencil(){
     
     ofPopMatrix();
-	glDisable(GL_SCISSOR_TEST);
+//	glDisable(GL_SCISSOR_TEST);
     //ofPopStyle();
     
 }
@@ -1196,9 +1208,12 @@ void CloudsHUDController::drawList(){
             }
             
             //TODO: maybe different styles for different
-            ResearchTopicListLabel->font-> drawString(currentResearchList->buttons[i].label,
+            ResearchTopicListLabel->font->drawString(currentResearchList->buttons[i].label,
                                               hudLabelMap["ListTextBoxes"]->bounds.x,
-                                              hudLabelMap["ListTextBoxes"]->bounds.y + currentResearchList->buttons[i].top);
+                                              researchScrollBounds.y + currentResearchList->buttons[i].top + scrollIncrement * .5);
+//            ofNoFill();
+//            ofRect(currentResearchList->buttons[i].selectRect);
+            
         }
     }
     ofPopStyle();

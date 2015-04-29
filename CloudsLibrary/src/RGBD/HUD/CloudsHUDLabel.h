@@ -32,7 +32,7 @@ class CloudsHUDLabel {
     ofRectangle scaledInteractiveBounds;
 
     void animateIn(bool force = false);
-    void animateOut(bool force = false);
+    void animateOut(bool clear = false);
     
     void instantIn();
     void instantOut();
@@ -41,7 +41,6 @@ class CloudsHUDLabel {
     bool isHovered();
     bool isClicked();
     
-    //bool clearTextOnAnimateOut;
     
     bool caps;
     
@@ -54,6 +53,8 @@ class CloudsHUDLabel {
 	string  text;
     string type;
     
+    bool clearTextOnAnimateOut;
+
     ofRange animationClamp;
     float baseAnimationSpeed;
     float animationSpeed;
