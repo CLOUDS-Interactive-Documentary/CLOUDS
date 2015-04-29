@@ -101,6 +101,265 @@ void CloudsHUDController::setup(){
 	 
 }
 
+void CloudsHUDController::populateProjectExample(const string& videoPath, const string& textLeft, const string& textRight, const string& textTop, bool forceOn) {
+	if( isPlaying){
+        videoPlayer.stop();
+    }
+    
+    if( ofFile(videoPath).exists() ){
+        isPlaying =  videoPlayer.loadMovie(videoPath);
+        videoPlayer.play();
+        
+        bSkipAVideoFrame = true;
+        
+        hudLabelMap["ProjectExampleTextboxLeft"]->setText( textLeft, forceOn );
+        hudLabelMap["ProjectExampleTextboxRight"]->setText( textRight, forceOn );
+        hudLabelMap["ProjectExampleTextBoxTop"]->setText( textTop, forceOn );
+        
+        if( forceOn ){
+            animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
+        }
+    }else{
+        cout << "CloudsHUDController :: Project example video does not exist: " << videoPath << endl;
+    }
+}
+
+void CloudsHUDController::buildLayerSets(){
+	
+	//configure layers
+    
+    CloudsHUDLayer* homeLayer = new CloudsHUDLayer();
+    homeLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_HOME");
+    layers[CLOUDS_HUD_HOME] = homeLayer;
+    allLayers.push_back( homeLayer );
+    
+    CloudsHUDLayer* lowerThirdLayer = new CloudsHUDLayer();
+    lowerThirdLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_LOWER_THIRD");
+    layers[CLOUDS_HUD_LOWER_THIRD] = lowerThirdLayer ;
+    allLayers.push_back( lowerThirdLayer );
+    
+    CloudsHUDLayer* questionLayer = new CloudsHUDLayer();
+    questionLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_QUESTION");
+    layers[CLOUDS_HUD_QUESTION] = questionLayer;
+    allLayers.push_back( questionLayer );
+    
+    CloudsHUDLayer* pauseLayer = new CloudsHUDLayer();
+    pauseLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_PAUSE");
+    layers[CLOUDS_HUD_PAUSE] = pauseLayer;
+    allLayers.push_back( pauseLayer );
+    
+    CloudsHUDLayer* projectExampleLayer = new CloudsHUDLayer();
+    projectExampleLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_PROJECT_EXAMPLE");
+    layers[CLOUDS_HUD_PROJECT_EXAMPLE] = projectExampleLayer;
+    allLayers.push_back( projectExampleLayer );
+    
+    CloudsHUDLayer* nextLayer = new CloudsHUDLayer();
+    nextLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_NEXT");
+    layers[CLOUDS_HUD_NEXT] = nextLayer;
+    allLayers.push_back( nextLayer );
+    
+    CloudsHUDLayer* researchListLayer = new CloudsHUDLayer();
+    researchListLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_LIST");
+    layers[CLOUDS_HUD_RESEARCH_LIST] = researchListLayer;
+    allLayers.push_back( researchListLayer );
+    
+    CloudsHUDLayer* researchNavLayer = new CloudsHUDLayer();
+    researchNavLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_NAV");
+    layers[CLOUDS_HUD_RESEARCH_NAV] = researchNavLayer;
+    allLayers.push_back( researchNavLayer );
+    
+    CloudsHUDLayer* researchShuffleLayer = new CloudsHUDLayer();
+    researchShuffleLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_SHUFFLE");
+    layers[CLOUDS_HUD_RESEARCH_SHUFFLE] = researchShuffleLayer;
+    allLayers.push_back( researchShuffleLayer );
+    
+    for( int i = 0; i < allLayers.size(); i++ ){
+        
+        //TODO: filled meshes shouldn't be done this way
+		for( int s = 0; s < allLayers[i]->svg.getMeshes().size(); s++){
+			ofVboMesh& m = allLayers[i]->svg.getMeshes()[s].mesh;
+			for(int v = 0; v < m.getNumVertices(); v++){
+				m.addNormal(ofVec3f(ofRandomuf(),0,0));
+			}
+		}
+        
+        allLayers[i]->duration = 1.5;
+        allLayers[i]->delayTime = 0;
+        allLayers[i]->startPoint = ofVec2f(allLayers[i]->svg.getWidth(),0);
+        allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
+    }
+    
+    home.bounds = homeLayer->svg.getMeshByID("HomeButtonFrame")->bounds;
+    home.bounds.scaleFromCenter(1.5);
+    
+    bioBounds = pauseLayer->svg.getMeshByID("BioFrame")->bounds;
+    
+    svgVideoBounds = projectExampleLayer->svg.getMeshByID("ProjectExampleFrame")->bounds;
+	videoBounds = svgVideoBounds;
+    researchScrollBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListBacking")->bounds;
+    
+    scrollUpBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.y,researchScrollBounds.width,20);
+    scrollDownBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.getMaxY()-20,researchScrollBounds.width,20);
+    
+    hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
+    
+    //	cout << "HUD BOUNDS " << hudBounds.width << " / " << hudBounds.height << endl;
+    //  cout << "SCREEN " << ofGetScreenWidth() << " / " << ofGetScreenHeight() << endl;
+}
+
+void CloudsHUDController::calculateFontSizes(){
+    // temporary allocate
+    int minFontSize = 1;
+    int maxFontSize = 70;
+#ifdef OCULUS_RIFT
+	//string fontPath = GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
+	string fontPath = GetMediumFontPath();
+#else
+	//string fontPath = GetCloudsDataPath() + "font/Blender-THIN.ttf";
+	string fontPath = GetThinFontPath();
+#endif
+    
+    
+    for(int i = minFontSize; i < maxFontSize; i++){
+        ofxFTGLFont *tmp = new ofxFTGLFont();
+        tmp->loadFont(fontPath , i );
+        tempFontList.push_back( tmp );
+    }
+    
+    //BIO
+    ////first name
+    getLabelForLayer("BylineFirstNameTextBox_1_", fontPath, 50);
+    ////last name
+    getLabelForLayer("BylineLastNameTextBox", fontPath, 50);
+    ////title
+    getLabelForLayer("BylineTopicTextBoxBottom", fontPath);
+    ////location
+    getLabelForLayer("BylineTopicTextBoxTop", fontPath);
+    getLabelForLayer("VSCreditsTextBoxTop", fontPath);
+    getLabelForLayer("VSCreditsTextBoxBottom", fontPath);
+    getLabelForLayer("QuestionTextBox_1_", fontPath);
+    
+    getLabelForLayer("ProjectExampleTextboxLeft", fontPath);
+    getLabelForLayer("ProjectExampleTextboxRight", fontPath);
+    getLabelForLayer("ProjectExampleTextBoxTop", fontPath);
+    
+    
+    //pause
+    getLabelForLayer("ExploreTextBox", fontPath);
+    getLabelForLayer("SeeMoreTextBox", fontPath);
+    getLabelForLayer("NextButtonTextBox", fontPath);
+    getLabelForLayer("BioTitleTextBox", fontPath);
+    getLabelForLayer("BioTextBox", fontPath); //use layout
+    
+    
+    getLabelForLayer("ResetButtonTextBox", fontPath);
+    //research stuff
+    ResearchTopicListLabel = getLabelForLayer("ListTextBoxes", fontPath);
+    
+    //research navigation
+    getLabelForLayer("MapTextBox", fontPath);
+    getLabelForLayer("PeopleTextBox", fontPath);
+    getLabelForLayer("VisualsTextBox", fontPath);
+    getLabelForLayer("RSResetButtonTextBox", fontPath);
+    getLabelForLayer("ShuffleButtonTextBox", fontPath);
+    
+    // cleanup!
+    for( int i=0; i<tempFontList.size(); i++ ){
+        delete tempFontList[i];
+    }
+    tempFontList.clear();
+    
+    
+    scrollIncrement = hudLabelMap["ListTextBoxes"]->bounds.height * 1.5;
+    
+    hudLabelMap["MapTextBox"]->setText(GetTranslationForString("MAP"), false);
+    hudLabelMap["PeopleTextBox"]->setText(GetTranslationForString("PEOPLE"), false);
+    hudLabelMap["VisualsTextBox"]->setText(GetTranslationForString("VISUALS"), false);
+    hudLabelMap["RSResetButtonTextBox"]->setText(GetTranslationForString("EXIT"), false); //this one may change...
+    
+    hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("EXIT"), false);
+    hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"), false);
+    hudLabelMap["ExploreTextBox"]->setText(GetTranslationForString("EXPLORE THE MAP"), false);
+    hudLabelMap["SeeMoreTextBox"]->setText(GetTranslationForString("SEE MORE OF THIS PERSON"), false); //todo dynmic name
+    
+    hudLabelMap["ShuffleButtonTextBox"]->setText(GetTranslationForString("SHUFFLE ALL"), false); //todo dynmic name
+    
+    hudLabelMap["BioTitleTextBox"]->setText(GetTranslationForString("BIO"), false);
+    
+    hudLabelMap["BioTextBox"]->layout->setLineLength(hudLabelMap["BioTextBox"]->bounds.width);
+    
+    
+}
+
+CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
+                                                      const string& fontPath,
+                                                      int kerning,
+                                                      bool caps,
+                                                      bool useLayout)
+{
+    
+    for( int i = 0; i < CLOUDS_HUD_ALL; i++ ){
+        
+        SVGMesh* textMesh = layers[(CloudsHUDLayerSet)i]->svg.getMeshByID( layerName );
+        
+        if( textMesh == NULL ){
+            continue;
+        }
+        
+        textMesh->visible = false;
+        
+        float maxHeight = textMesh->bounds.height;
+        
+        CloudsHUDLabel *newLabel = new CloudsHUDLabel();
+        // make a layout
+        if(layerName == "BioTextBox"){
+            ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
+            newLayout->loadFont( fontPath, 12 );
+            newLayout->setLineLength( 999 );
+            newLabel->setup( newLayout, textMesh->bounds );
+        }
+        else{
+            int fontSize = getFontSizeForMesh( textMesh );
+            ofxFTGLFont *newFont = new ofxFTGLFont();
+            newFont->setLetterSpacing(kerning * .08);
+            newFont->loadFont( fontPath, fontSize );
+            newLabel->setup( newFont, textMesh->bounds );
+        }
+        // make a label
+        newLabel->caps = caps;
+        
+        hudLabelMap[layerName] = newLabel;
+        hudLayerLabels[(CloudsHUDLayerSet)i].push_back(newLabel);
+        
+        return newLabel;
+        
+    }
+    
+    ofLogError("CloudsHUDController::getLayoutForLayer") << "Mesh not found " << layerName;
+    
+    return NULL;
+    
+}
+
+int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
+    if( !textMesh ){
+        ofLogError("CloudsHUDController::getFontSizeForMesh") << "Text box not found";
+        return 0;
+    }
+    
+    int fontSize = 0;
+    float textBoxHeight = textMesh->bounds.height;
+    
+    for( int k=0; k<tempFontList.size()-1; k++){
+        if( tempFontList[k]->getStringBoundingBox("W",0,0).height <= textBoxHeight && tempFontList[k+1]->getStringBoundingBox("W",0,0).height > textBoxHeight ){
+            fontSize = 1 + k;
+            break;
+        }
+    }
+    
+    return fontSize;
+}
+
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 	bDrawHud = true;
 	bActJustStarted = true;
@@ -374,341 +633,7 @@ void CloudsHUDController::populateVisualSystem(const string& creditLine1,
     
 }
 
-void CloudsHUDController::populateProjectExample(const string& videoPath, const string& textLeft, const string& textRight, const string& textTop, bool forceOn) {
-	if( isPlaying){
-        videoPlayer.stop();
-    }
-    
-    if( ofFile(videoPath).exists() ){
-       isPlaying =  videoPlayer.loadMovie(videoPath);
-	   videoPlayer.play();
-        
-        bSkipAVideoFrame = true;
-        
-        hudLabelMap["ProjectExampleTextboxLeft"]->setText( textLeft, forceOn );
-        hudLabelMap["ProjectExampleTextboxRight"]->setText( textRight, forceOn );
-        hudLabelMap["ProjectExampleTextBoxTop"]->setText( textTop, forceOn );
-        
-        if( forceOn ){
-            animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
-        }
-    }else{
-        cout << "CloudsHUDController :: Project example video does not exist: " << videoPath << endl;
-    }
-}
 
-void CloudsHUDController::buildLayerSets(){
-	
-	//configure layers
-
-    CloudsHUDLayer* homeLayer = new CloudsHUDLayer();
-    homeLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_HOME");
-    layers[CLOUDS_HUD_HOME] = homeLayer;
-    allLayers.push_back( homeLayer );
-
-    CloudsHUDLayer* lowerThirdLayer = new CloudsHUDLayer();
-    lowerThirdLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_LOWER_THIRD");
-    layers[CLOUDS_HUD_LOWER_THIRD] = lowerThirdLayer ;
-    allLayers.push_back( lowerThirdLayer );
-    
-    CloudsHUDLayer* questionLayer = new CloudsHUDLayer();
-    questionLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_QUESTION");
-    layers[CLOUDS_HUD_QUESTION] = questionLayer;
-    allLayers.push_back( questionLayer );
-    
-    CloudsHUDLayer* pauseLayer = new CloudsHUDLayer();
-    pauseLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_PAUSE");
-    layers[CLOUDS_HUD_PAUSE] = pauseLayer;
-    allLayers.push_back( pauseLayer );
-    
-    CloudsHUDLayer* projectExampleLayer = new CloudsHUDLayer();
-    projectExampleLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_PROJECT_EXAMPLE");
-    layers[CLOUDS_HUD_PROJECT_EXAMPLE] = projectExampleLayer;
-    allLayers.push_back( projectExampleLayer );
-
-    CloudsHUDLayer* nextLayer = new CloudsHUDLayer();
-    nextLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_NEXT");
-    layers[CLOUDS_HUD_NEXT] = nextLayer;
-    allLayers.push_back( nextLayer );
-
-    CloudsHUDLayer* researchListLayer = new CloudsHUDLayer();
-    researchListLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_LIST");
-    layers[CLOUDS_HUD_RESEARCH_LIST] = researchListLayer;
-    allLayers.push_back( researchListLayer );
-    
-    CloudsHUDLayer* researchNavLayer = new CloudsHUDLayer();
-    researchNavLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_NAV");
-    layers[CLOUDS_HUD_RESEARCH_NAV] = researchNavLayer;
-    allLayers.push_back( researchNavLayer );
-    
-    CloudsHUDLayer* researchShuffleLayer = new CloudsHUDLayer();
-    researchShuffleLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_SHUFFLE");
-    layers[CLOUDS_HUD_RESEARCH_SHUFFLE] = researchShuffleLayer;
-    allLayers.push_back( researchShuffleLayer );
-    
-    for( int i = 0; i < allLayers.size(); i++ ){
-
-        //TODO: filled meshes shouldn't be done this way
-		for( int s = 0; s < allLayers[i]->svg.getMeshes().size(); s++){
-			ofVboMesh& m = allLayers[i]->svg.getMeshes()[s].mesh;
-			for(int v = 0; v < m.getNumVertices(); v++){
-				m.addNormal(ofVec3f(ofRandomuf(),0,0));
-			}
-		}
-
-        allLayers[i]->duration = 1.5;
-        allLayers[i]->delayTime = 0;
-        allLayers[i]->startPoint = ofVec2f(allLayers[i]->svg.getWidth(),0);
-        allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
-    }
-    
-    home.bounds = homeLayer->svg.getMeshByID("HomeButtonFrame")->bounds;
-    home.bounds.scaleFromCenter(1.5);
-    
-    bioBounds = pauseLayer->svg.getMeshByID("BioFrame")->bounds;
-    
-    svgVideoBounds = projectExampleLayer->svg.getMeshByID("ProjectExampleFrame")->bounds;
-	videoBounds = svgVideoBounds;
-    researchScrollBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListBacking")->bounds;
-
-    scrollUpBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.y,researchScrollBounds.width,20);
-    scrollDownBounds = ofRectangle(researchScrollBounds.x,researchScrollBounds.getMaxY()-20,researchScrollBounds.width,20);
-
-    hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
-    
-//	cout << "HUD BOUNDS " << hudBounds.width << " / " << hudBounds.height << endl;
-//  cout << "SCREEN " << ofGetScreenWidth() << " / " << ofGetScreenHeight() << endl;
-}
-
-void CloudsHUDController::calculateFontSizes(){
-    // temporary allocate
-    int minFontSize = 1;
-    int maxFontSize = 70;
-    #ifdef OCULUS_RIFT
-	//string fontPath = GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
-	string fontPath = GetMediumFontPath();
-	#else
-	//string fontPath = GetCloudsDataPath() + "font/Blender-THIN.ttf";
-	string fontPath = GetThinFontPath();
-	#endif
-
-    
-    for(int i = minFontSize; i < maxFontSize; i++){
-        ofxFTGLFont *tmp = new ofxFTGLFont();
-        tmp->loadFont(fontPath , i );
-        tempFontList.push_back( tmp );
-    }
-
-    //BIO
-    ////first name
-    getLabelForLayer("BylineFirstNameTextBox_1_", fontPath, 50);
-    ////last name
-    getLabelForLayer("BylineLastNameTextBox", fontPath, 50);
-    ////title
-    getLabelForLayer("BylineTopicTextBoxBottom", fontPath);
-    ////location
-    getLabelForLayer("BylineTopicTextBoxTop", fontPath);
-    getLabelForLayer("VSCreditsTextBoxTop", fontPath);
-    getLabelForLayer("VSCreditsTextBoxBottom", fontPath);
-    getLabelForLayer("QuestionTextBox_1_", fontPath);
-
-    getLabelForLayer("ProjectExampleTextboxLeft", fontPath);
-    getLabelForLayer("ProjectExampleTextboxRight", fontPath);
-    getLabelForLayer("ProjectExampleTextBoxTop", fontPath);
-    
-    
-    //pause
-    getLabelForLayer("ExploreTextBox", fontPath);
-    getLabelForLayer("SeeMoreTextBox", fontPath);
-    getLabelForLayer("NextButtonTextBox", fontPath);
-    getLabelForLayer("BioTitleTextBox", fontPath);
-    getLabelForLayer("BioTextBox", fontPath); //use layout
-
-    
-    getLabelForLayer("ResetButtonTextBox", fontPath);
-    //research stuff
-    ResearchTopicListLabel = getLabelForLayer("ListTextBoxes", fontPath);
-    
-    //research navigation
-    getLabelForLayer("MapTextBox", fontPath);
-    getLabelForLayer("PeopleTextBox", fontPath);
-    getLabelForLayer("VisualsTextBox", fontPath);
-    getLabelForLayer("RSResetButtonTextBox", fontPath);
-    getLabelForLayer("ShuffleButtonTextBox", fontPath);
-    
-    // cleanup!
-    for( int i=0; i<tempFontList.size(); i++ ){
-        delete tempFontList[i];
-    }
-    tempFontList.clear();
-    
- 
-    scrollIncrement = hudLabelMap["ListTextBoxes"]->bounds.height * 1.5;
- 
-    hudLabelMap["MapTextBox"]->setText(GetTranslationForString("MAP"), false);
-//    hudLabelMap["MapTextBox"]->clearTextOnAnimateOut = false;
-    hudLabelMap["PeopleTextBox"]->setText(GetTranslationForString("PEOPLE"), false);
-//    hudLabelMap["PeopleTextBox"]->clearTextOnAnimateOut = false;
-    hudLabelMap["VisualsTextBox"]->setText(GetTranslationForString("VISUALS"), false);
-//    hudLabelMap["VisualsTextBox"]->clearTextOnAnimateOut = false;
-    hudLabelMap["RSResetButtonTextBox"]->setText(GetTranslationForString("EXIT"), false); //this one may change...
-//    hudLabelMap["RSResetButtonTextBox"]->clearTextOnAnimateOut = false;
- 
-    hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("EXIT"), false);
-//    hudLabelMap["ResetButtonTextBox"]->clearTextOnAnimateOut = false;
-    hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"), false);
-//    hudLabelMap["NextButtonTextBox"]->clearTextOnAnimateOut = false;
-    hudLabelMap["ExploreTextBox"]->setText(GetTranslationForString("EXPLORE THE MAP"), false);
-//    hudLabelMap["ExploreTextBox"]->clearTextOnAnimateOut = false;
-    hudLabelMap["SeeMoreTextBox"]->setText(GetTranslationForString("SEE MORE OF THIS PERSON"), false); //todo dynmic name
-//    hudLabelMap["SeeMoreTextBox"]->clearTextOnAnimateOut = false;
-
-    hudLabelMap["ShuffleButtonTextBox"]->setText(GetTranslationForString("SHUFFLE ALL"), false); //todo dynmic name
-//    hudLabelMap["ShuffleButtonTextBox"]->clearTextOnAnimateOut = false;
-    
-    hudLabelMap["BioTitleTextBox"]->setText(GetTranslationForString("BIO"), false);
-//    hudLabelMap["BioTitleTextBox"]->clearTextOnAnimateOut = false;
-    
-//    hudLabelMap["BioTextBox"]->clearTextOnAnimateOut = false;
-    hudLabelMap["BioTextBox"]->layout->setLineLength(hudLabelMap["BioTextBox"]->bounds.width);
-
-    
-    
-}
-
-//ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer(const string& layerName, const string& fontPath) {
-//    
-//    for( int i=0; i<allLayers.size(); i++ ){
-//        SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
-//        
-//        if( textMesh != NULL ){
-//            textMesh->visible = false;
-//            
-//            float maxHeight = textMesh->bounds.height;
-//            int fontSize = getFontSizeForMesh( textMesh );
-//            
-////            cout << "The correct font size is " << fontSize << " << endl;
-//            
-//            // make a layout
-//            ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
-//            newLayout->loadFont( fontPath, fontSize );
-//            newLayout->setLineLength( 999 );
-//            
-////            if( layerName == "BylineBodyCopyTextBox" ){         // this is the main body copy in the lower thirds
-////                newLayout->loadFont( fontPath, floor(fontSize/4.5) );
-////                newLayout->setLineLength( textMesh->bounds.width );
-////            }
-//            
-//            // make a label
-//            CloudsHUDLabel *newLabel = new CloudsHUDLabel();
-//            newLabel->setup( newLayout, textMesh->bounds );
-//            hudLabelMap[layerName] = newLabel;
-//            
-//            return newLayout;
-//        }
-//    }
-//    
-//    ofLogError("CloudsHUDController::getLayoutForLayer") << "Mesh not found " << layerName;
-//    
-//    return NULL;
-//}
-
-CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
-                                                           const string& fontPath,
-                                                           int kerning,
-                                                           bool caps,
-                                                           bool useLayout)
-{
-
-      for( int i = 0; i < CLOUDS_HUD_ALL; i++ ){
-        
-        SVGMesh* textMesh = layers[(CloudsHUDLayerSet)i]->svg.getMeshByID( layerName );
-        
-        if( textMesh == NULL ){
-            continue;
-        }
-          
-        textMesh->visible = false;
-        
-        float maxHeight = textMesh->bounds.height;
-        
-        CloudsHUDLabel *newLabel = new CloudsHUDLabel();
-        // make a layout
-        if(layerName == "BioTextBox"){
-            ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
-            newLayout->loadFont( fontPath, 12 );
-            newLayout->setLineLength( 999 );
-            newLabel->setup( newLayout, textMesh->bounds );
-        }
-        else{
-            int fontSize = getFontSizeForMesh( textMesh );
-            ofxFTGLFont *newFont = new ofxFTGLFont();
-            newFont->setLetterSpacing(kerning * .08);
-            newFont->loadFont( fontPath, fontSize );
-            newLabel->setup( newFont, textMesh->bounds );
-        }
-        // make a label
-        newLabel->caps = caps;
-          
-        hudLabelMap[layerName] = newLabel;
-        hudLayerLabels[(CloudsHUDLayerSet)i].push_back(newLabel);
-        
-        return newLabel;
-          
-    }
-
-    ofLogError("CloudsHUDController::getLayoutForLayer") << "Mesh not found " << layerName;
-
-    return NULL;
-    
-}
-
-/*
-ofxFTGLFont* CloudsHUDController::getFontForLayer(const string& layerName, const string& fontPath, int kerning) {
-
-    for( int i=0; i<allLayers.size(); i++ ){
-        SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
-        
-        
-        if( textMesh != NULL ){
-            textMesh->visible = false;
-            
-            float maxHeight = textMesh->bounds.height;
-            int fontSize = getFontSizeForMesh( textMesh );
-            
-            //            cout << "The correct font size is " << fontSize << " << endl;
-            
-            // make a layout
-            
-            // make a label
-            CloudsHUDLabel *newLabel = new CloudsHUDLabel();
-            newLabel->setup( newFont, textMesh->bounds );
-            hudLabelMap[layerName] = newLabel;
-            
-            return newFont;
-        }
-    }
-    return NULL;
-}
-*/
-int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
-    if( !textMesh ){
-        ofLogError("CloudsHUDController::getFontSizeForMesh") << "Text box not found";
-        return 0;
-    }
-    
-    int fontSize = 0;
-    float textBoxHeight = textMesh->bounds.height;
-    
-    for( int k=0; k<tempFontList.size()-1; k++){
-        if( tempFontList[k]->getStringBoundingBox("W",0,0).height <= textBoxHeight && tempFontList[k+1]->getStringBoundingBox("W",0,0).height > textBoxHeight ){
-            fontSize = 1 + k;
-            break;
-        }
-    }
-    
-    return fontSize;
-}
 
 ofVec2f CloudsHUDController::getSize(bool bScaled){
     return ofVec2f(hudBounds.width, hudBounds.height) * (bScaled? scaleAmt : 1.0);
