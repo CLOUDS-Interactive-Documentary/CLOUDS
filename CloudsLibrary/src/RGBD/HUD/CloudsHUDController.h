@@ -24,9 +24,11 @@ typedef enum {
 	CLOUDS_HUD_LOWER_THIRD,
 	CLOUDS_HUD_PROJECT_EXAMPLE,
 	CLOUDS_HUD_PAUSE,
+	CLOUDS_HUD_NEXT,
 	CLOUDS_HUD_RESEARCH_LIST,
 	CLOUDS_HUD_RESEARCH_NAV,
-	
+	CLOUDS_HUD_RESEARCH_SHUFFLE,
+
     CLOUDS_HUD_ALL
 } CloudsHUDLayerSet;
 
@@ -208,8 +210,6 @@ class CloudsHUDController {
     bool          bIsHoldScrolling;
     float         scrollPressedTime;
     
-//    float         scrollPosition;
-//    float         totalScrollHeight;
     float         scrollIncrement;
     
     void          updateScroll();
@@ -249,38 +249,43 @@ class CloudsHUDController {
     
     void drawList();
 
-    ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath);
-    ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath, bool caps);
-    ofxFTGLFont*            getFontForLayer(const string& layerName, const string& fontPath, int kerning);
+//    ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath);
+    CloudsHUDLabel*    getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);
+//    ofxFTGLFont*            getFontForLayer(const string& layerName, const string& fontPath, int kerning = 35);
 
     
     vector<ofxFTGLFont*>    tempFontList;
+    CloudsHUDLabel* ResearchTopicListLabel;
     
-    ofxFTGLFont             *BylineFirstNameTextBox,
-                            *BylineLastNameTextBox,
-                            *BylineTopicTextBoxBottom,
-                            *BylineTopicTextBoxTop,
-                            *ResearchTopicListFont,
-                            *ResearchMapTabFont,
-                            *ResearchPeopleTabFont,
-                            *ResearchVisualsTabFont,
-                            *ResearchResetButtonFont;
-    ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
-                            *ResetButtonTextBox,
-                            *QuestionTextBox,
-                            *TopicTextBoxLeft,
-                            *TopicTextBoxRight,
-                            *ProjectExampleTextboxLeft,
-                            *ProjectExampleTextboxRight,
-                            *ProjectExampleTextBoxTop,
-                            *ExploreTextBox,
-                            *SeeMoreTextBox,
-                            *NextButtonTextBox;
-
-
+//    CloudsHUDLabel          *BylineFirstNameTextBox,
+//                            *BylineLastNameTextBox,
+//                            *BylineTopicTextBoxBottom,
+//                            *BylineTopicTextBoxTop,
+//                            *VisualSystemCreditTop,
+//                            *VisualSystemCreditBottom,
+//                            *ResearchTopicListFont,
+//                            *ResearchMapTabFont,
+//                            *ResearchPeopleTabFont,
+//                            *ResearchVisualsTabFont,
+//                            *ResearchResetButtonFont,
+//                            *ResearshShuffleAllFont,
+//                            *BylineBodyCopyTextBox,
+//                            *ResetButtonTextBox,
+//                            *QuestionTextBox,
+//                            *TopicTextBoxLeft,
+//                            *TopicTextBoxRight,
+//                            *ProjectExampleTextboxLeft,
+//                            *ProjectExampleTextboxRight,
+//                            *ProjectExampleTextBoxTop,
+//                            *ExploreTextBox,
+//                            *SeeMoreTextBox,
+//                            *NextButtonTextBox;
 	
     map<CloudsHUDLayerSet,bool>		hudOpenMap;
     map<string, CloudsHUDLabel*>    hudLabelMap;
+    map<CloudsHUDLayerSet, vector<CloudsHUDLabel*> > hudLayerLabels;
+
+    ofRectangle bioBounds;
     ofRectangle hudBounds;
     float scaleAmt;
     ofVec2f scaleOffset;

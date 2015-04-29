@@ -105,6 +105,7 @@ void testApp::keyPressed(int key){
 
 		hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
 		hud.animateOn(CLOUDS_HUD_RESEARCH_NAV);
+		hud.animateOn(CLOUDS_HUD_RESEARCH_SHUFFLE);
         //hud.pause();
 	}
 

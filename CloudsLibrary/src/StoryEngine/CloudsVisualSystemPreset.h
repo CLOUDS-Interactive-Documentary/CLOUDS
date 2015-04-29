@@ -2,8 +2,8 @@
 
 #include "ofMain.h"
 typedef struct{
-    string creator;
-    string name;
+    string line1;
+    string line2;
 } CloudsVisualSystemCredit;
 
 class CloudsVisualSystem;

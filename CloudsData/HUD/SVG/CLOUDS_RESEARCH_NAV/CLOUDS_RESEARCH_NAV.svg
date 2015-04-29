@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1440 900" enable-background="new 0 0 1440 900" xml:space="preserve">
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1440px"
+	 height="900px" viewBox="0 0 1440 900" enable-background="new 0 0 1440 900" xml:space="preserve">
 <g id="_x2F__x2F_Background" display="none">
-	<rect x="0" display="inline" fill="#090A0A" width="1440" height="900"/>
+	<rect x="0" display="inline" opacity="0.6" fill="#090A0A" width="1440" height="900"/>
 </g>
 <g id="_x2F__x2F_ImagePlane" display="none">
 	<g display="inline">
@@ -15,534 +16,162 @@
 		</clipPath>
 		<g clip-path="url(#SVGID_2_)">
 			
-				<image overflow="visible" width="1920" height="1080" xlink:href="E566162161D788A7.jpg"  transform="matrix(-0.8394 0 0 0.8394 1448.9421 -5.0229)">
+				<image overflow="visible" width="1920" height="1080" xlink:href="1BD3C318C2CD7CF.jpg"  transform="matrix(-0.8394 0 0 0.8394 1448.9421 -5.0229)">
 			</image>
 		</g>
 	</g>
 </g>
-<g id="NavBacking">
-	<rect x="341.313" y="829.1" opacity="0.6" fill="#101010" width="926.973" height="33.032"/>
+<g id="MapHoverBacking">
+	<rect x="342.32" y="828.961" opacity="0.6" fill="#101010" width="322.149" height="33.032"/>
+</g>
+<g id="PeopleHoverBacking">
+	<rect x="665.437" y="828.961" opacity="0.6" fill="#101010" width="322.163" height="33.032"/>
+</g>
+<g id="VSHoverBacking">
+	<rect x="988.625" y="828.984" opacity="0.6" fill="#101010" width="322.712" height="33.032"/>
 </g>
 <g id="NavDivisions">
-	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="650.304" y1="828" x2="650.304" y2="863"/>
-	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="959.295" y1="828" x2="959.295" y2="863"/>
+	<line opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="664.959" y1="828" x2="664.959" y2="863"/>
+	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="341.798" y1="827.984" x2="341.798" y2="863.016"/>
+	<line opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="988.12" y1="828.008" x2="988.12" y2="863.015"/>
+	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="341.319" y1="828.5" x2="1311.276" y2="828.5"/>
 </g>
 <g id="NavTypography" display="none">
 	<g display="inline">
 		
-			<text transform="matrix(1 0 0 1 766.3923 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">PEOPLE</text>
+			<text transform="matrix(1 0 0 1 793.4333 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">PEOPLE</text>
 	</g>
 	<g display="inline">
 		
-			<text transform="matrix(1 0 0 1 1070.5701 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">VISUALS</text>
+			<text transform="matrix(1 0 0 1 1112.5452 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">VISUALS</text>
 	</g>
 	<g display="inline">
 		
-			<text transform="matrix(1 0 0 1 474.2663 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">MAP</text>
+			<text transform="matrix(1 0 0 1 485.7908 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">MAP</text>
 	</g>
 </g>
 <g id="MapTextBox">
-	<rect x="471.876" y="837.426" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="43.596" height="15.398"/>
+	<rect x="486.341" y="840.035" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="34.107" height="11.494"/>
 </g>
 <g id="PeopleTextBox">
-	<rect x="764.673" y="837.426" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="76.614" height="15.398"/>
+	<rect x="793.897" y="840.035" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="65.243" height="11.494"/>
 </g>
 <g id="VisualsTextBox">
-	<rect x="1067.891" y="837.426" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="87.599" height="15.398"/>
-</g>
-<g id="MapHoverBacking">
-	<rect x="341.313" y="828.984" display="inline" opacity="0.0" fill="#FFFFFF" width="308.515" height="33.032"/>
-</g>
-<g id="MapHoverAltWhite" display="none">
-	<rect x="341.313" y="828.984" display="inline" opacity="0.69" fill="#FFFFFF" width="308.515" height="33.032"/>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 474.2663 851.4414)" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">MAP</text>
-	</g>
-</g>
-<g id="MapHoverAltColor" display="none">
-	<rect x="341.313" y="828.984" display="inline" opacity="0.0" fill="#034C89" width="308.515" height="33.032"/>
-	<g display="inline">
-		
-			<text transform="matrix(1 0 0 1 474.2663 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">MAP</text>
-	</g>
-</g>
-<g id="VSHoverAltColor">
-	<rect x="959.295" y="828.984" display="inline" opacity="0.0" fill="#034C89" width="308.515" height="33.032"/>
-	<g display="inline">
-		
-			<text transform="matrix(1 0 0 1 1070.5701 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">VISUALS</text>
-	</g>
-</g>
-<g id="PeopleHoverAltColor">
-	<rect x="650.781" y="828.984" display="inline" opacity="0.0" fill="#034C89" width="308.515" height="33.032"/>
-	<g display="inline">
-		
-			<text transform="matrix(1 0 0 1 766.8859 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">PEOPLE</text>
-	</g>
-</g>
-<g id="NavHoverDivisions" display="none">
-	
-		<line display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="650.304" y1="828" x2="650.304" y2="863"/>
-	
-		<line display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="340.84" y1="828" x2="340.84" y2="863"/>
-	
-		<line display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="340.344" y1="828.5" x2="650.808" y2="828.5"/>
-	
-		<line display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="340.344" y1="862.5" x2="650.808" y2="862.5"/>
+	<rect x="1112.642" y="840.035" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="74.679" height="11.494"/>
 </g>
 <g id="ListBacking" display="none">
-	<rect x="59.361" y="37.016" display="inline" opacity="0.6" fill="#101010" width="281.952" height="790.954"/>
+	<rect x="59.329" y="54.996" display="inline" opacity="0.6" fill="#101010" width="282" height="772.988"/>
 </g>
-<g id="ListTopicTop" display="none">
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 70.0894)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">KYLE CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 124.394)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">VISUAL SYSTEM</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.82 151.5454)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 97.2417)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Video Games</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 178.6978)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 233.0015)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 287.3062)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.82 260.1538)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 205.8491)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 314.4585)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 368.7622)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 450.2183)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.82 395.9136)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 341.6108)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 477.3706)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 585.979)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.82 531.6753)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 423.0659)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 640.2827)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 694.5874)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 504.5229)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 613.1304)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 721.7393)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.82 667.4351)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 558.8267)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 748.8916)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 776.0435)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 803.1958)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<defs>
-			<rect id="SVGID_3_" x="71.66" y="819.621" width="142.79" height="8.349"/>
-		</defs>
-		<clipPath id="SVGID_4_">
-			<use xlink:href="#SVGID_3_"  overflow="visible"/>
-		</clipPath>
-		<g clip-path="url(#SVGID_4_)">
-			<text transform="matrix(1 0 0 1 72.5407 830.3477)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-		</g>
-	</g>
-</g>
-<g id="ListPeopleTop" display="none">
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 70.0894)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">KYLE CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 124.394)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">VISUAL SYSTEM</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.82 151.5454)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 97.2417)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Video Games</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 178.6978)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 233.0015)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 287.3062)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.82 260.1538)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 205.8491)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 314.4585)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 368.7622)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 450.2183)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.82 395.9136)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 341.6108)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 477.3706)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 585.979)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.82 531.6753)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 423.0659)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 640.2827)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 694.5874)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 504.5229)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 613.1304)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 721.7393)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.82 667.4351)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 558.8267)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 748.8916)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 776.0435)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 803.1958)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-</g>
-<g id="ListVSTop" display="none">
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 70.0894)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OPENSTEER FLOCKING SIMULATION</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: multiple</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 121.972)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 173.8547)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 225.7375)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 277.6201)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 329.5027)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 381.3854)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 433.2681)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 485.1508)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 537.0333)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 588.916)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 640.7989)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 692.6816)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 744.564)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 71.6599 796.4467)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">OpenSteer Flocking Simulation</tspan><tspan x="0" y="19.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">creator: MULTIPLE</tspan></text>
-	</g>
-</g>
-<g id="ListBottom" display="none">
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 118.6841)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">VISUAL SYSTEM</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 145.8354)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 91.5327)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Video Games</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 172.9878)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 227.2925)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 281.5972)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 254.4448)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 200.1401)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 308.7485)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 363.0522)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 444.5093)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 390.2046)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 335.9009)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 471.6616)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 580.269)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 525.9653)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 417.3569)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 634.5737)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 688.8779)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 498.814)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 607.4214)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Diederick HUIJBERS</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 716.0298)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 661.7256)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Jessica ROSENKRANTZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 553.1167)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 743.1821)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Kyle CHAYKA</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 770.334)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<text transform="matrix(1 0 0 1 89.6511 797.4863)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Patricio GONZALEZ</text>
-	</g>
-	<g display="inline">
-		<defs>
-			<rect id="SVGID_5_" x="88.564" y="60.19" width="99.985" height="17.65"/>
-		</defs>
-		<clipPath id="SVGID_6_">
-			<use xlink:href="#SVGID_5_"  overflow="visible"/>
-		</clipPath>
-		<g clip-path="url(#SVGID_6_)">
-			<text transform="matrix(1 0 0 1 89.6511 64.3804)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">KYLE CHAYKA</text>
-		</g>
-	</g>
-</g>
-<g id="ListScrollDownStatic" display="none">
-	<polygon display="inline" opacity="0.26" fill="#FFFFFF" points="202.358,815.506 189.792,815.506 196.075,821.788 	"/>
+<g id="ListTextBoxes" display="none">
+	
+		<rect x="69.59" y="69.151" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
 </g>
 <g id="ListScrollConnectStatic" display="none">
 	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="324.499" y1="50.108" x2="324.499" y2="815.451"/>
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="324.499" y1="69.148" x2="324.499" y2="813.837"/>
 </g>
-<g id="ListScrollUpStatic" display="none">
-	<polygon display="inline" opacity="0.26" fill="#FFFFFF" points="189.792,50.108 202.358,50.108 196.075,43.825 	"/>
+<g id="ListScrollDownBacking" display="none">
+	<rect x="59.326" y="829.014" display="inline" opacity="0" fill="#101010" width="281.971" height="32.97"/>
 </g>
-<g id="ListScrollDownActive" display="none">
-	<polygon display="inline" opacity="0.69" fill="#FFFFFF" points="202.358,815.506 189.792,815.506 196.075,821.788 	"/>
+<g id="ListScrollDownArrow" display="none">
+	<polygon display="inline" opacity="0.69" fill="#FFFFFF" points="206.588,842.475 194.022,842.475 200.305,848.757 	"/>
 </g>
-<g id="ListScrollConnectActive" display="none">
+<g id="ListScrollDownArrowSpace" display="none">
 	
-		<line display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="324.499" y1="50.108" x2="324.499" y2="488.6"/>
+		<rect x="194.005" y="842.469" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.623" height="6.234"/>
 </g>
-<g id="ListScrollMarkerTick" display="none">
-	<rect x="322.499" y="484.6" display="inline" opacity="0.69" fill="#FFFFFF" width="4" height="4"/>
+<g id="ListScrollUpBacking" display="none">
+	<rect x="59.4" y="19.024" display="inline" opacity="0" fill="#101010" width="281.897" height="34.961"/>
 </g>
-<g id="ListScrollUpActive" display="none">
-	<polygon display="inline" opacity="0.69" fill="#FFFFFF" points="189.792,50.108 202.358,50.108 196.075,43.825 	"/>
+<g id="ListScrollUpArrow" display="none">
+	<polygon display="inline" opacity="0.69" fill="#FFFFFF" points="194.022,39.632 206.588,39.632 200.305,33.35 	"/>
 </g>
-<g id="ListItemHoverTick" display="none">
-	<rect x="76.282" y="281.393" display="inline" opacity="0.69" fill="#FFFFFF" width="4" height="4"/>
-</g>
-<g id="ListItemPeopleSelect" display="none">
-	<text transform="matrix(1 0 0 1 71.6599 450.2183)" display="inline" fill="#034C89" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-</g>
-<g id="HoverItemSnippetBacking" display="none">
+<g id="ListScrollUpArrowSpace" display="none">
 	
-		<rect x="813.99" y="354.238" display="inline" opacity="0.6" fill="#101010" stroke="#FFFFFF" stroke-miterlimit="10" width="164.239" height="31.22"/>
+		<rect x="194.057" y="33.404" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.623" height="6.234"/>
 </g>
-<g id="HoverItemSnippetTypography" display="none">
-	<g display="inline">
-		<rect x="824.382" y="366.113" fill="none" width="153.846" height="10.576"/>
-		<text transform="matrix(1 0 0 1 824.3825 375.7769)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<rect x="803.717" y="345.158" display="inline" opacity="0.69" fill="#FFFFFF" width="4" height="4"/>
-</g>
-<g id="SelectItemSnippetBacking" display="none">
-	
-		<rect x="813.99" y="354.238" display="inline" opacity="0.6" fill="#101010" stroke="#FFFFFF" stroke-miterlimit="10" width="276.014" height="51.295"/>
-</g>
-<g id="SelectItemSnippetTypography" display="none">
-	<g display="inline">
-		<rect x="824.382" y="366.113" fill="none" width="153.846" height="10.576"/>
-		<text transform="matrix(1 0 0 1 824.3825 375.7769)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Martin WATTENBERG</text>
-	</g>
-	<g display="inline">
-		<rect x="1003.301" y="366.167" fill="none" width="76.923" height="10.467"/>
-		<text transform="matrix(1 0 0 1 1003.301 375.831)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">PLAY ALL</text>
-	</g>
-	<polygon display="inline" fill="#FFFFFF" points="1073.942,365.119 1073.942,377.684 1080.224,371.401 	"/>
-	<rect x="803.717" y="345.158" display="inline" opacity="0.69" fill="#FFFFFF" width="4" height="4"/>
-	
-		<text transform="matrix(1 0 0 1 822.4019 395.1879)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Data Artist</text>
-</g>
-<g id="ResetButtonArrowBacking">
-	<rect x="1383.892" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="28.921" height="34"/>
-</g>
-<g id="ResetButtonArrow">
-	<rect x="1393.853" y="841.1" fill="#FFFFFF" width="9" height="9"/>
-</g>
-<g id="ResearchResetButtonBacking">
-	<rect x="1268.734" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="115.158" height="34"/>
-</g>
-<g id="ResearchResetButtonTextBox">
-	<rect x="1298.599" y="837.426" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="67.314" height="16.147"/>
-</g>
-<g id="ResetButtonTypography" display="none">
-	
-		<text transform="matrix(1 0 0 1 1300.0769 851.4414)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">RESET</text>
-</g>
-<g id="NextButtonArrowBacking" display="none">
-	
-		<rect x="1383.813" y="54.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="29.047" height="34"/>
-</g>
-<g id="NextButtonArrow" display="none">
-	<polygon display="inline" fill="#DD4B39" points="1394.533,66.218 1394.533,78.783 1400.816,72.501 	"/>
-</g>
-<g id="NextButtonBacking" display="none">
-	
-		<rect x="1298.766" y="54.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="85.047" height="34"/>
-</g>
-<g id="NextButtonTextBox" display="none">
-	
-		<rect x="1282.813" y="63.426" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="67.314" height="16.147"/>
-</g>
-<g id="NextButtonTypography" display="none">
-	
-		<text transform="matrix(1 0 0 1 1312.6677 77.4414)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="21" letter-spacing="2">NEXT</text>
-</g>
-<g id="InsideFrame" display="none">
+<g id="ListFrame" display="none">
 	<g display="inline" opacity="0.26">
 		<path fill="none" stroke="#FFFFFF" stroke-width="0.25" stroke-miterlimit="10" d="M641.126,37.054"/>
 	</g>
 	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M58.873,37.016"/>
 	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1383.813,36.5"/>
 	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.865" y1="36.031" x2="58.814" y2="829"/>
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.865" y1="18.062" x2="58.814" y2="863.092"/>
 	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="340.866" y1="36.031" x2="340.813" y2="829.1"/>
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="341.865" y1="18.062" x2="341.814" y2="863.036"/>
 	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="341.313" y1="36.5" x2="58.313" y2="36.5"/>
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="341.313" y1="54.5" x2="58.313" y2="54.5"/>
+	
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.313" y1="828.5" x2="341.313" y2="828.5"/>
 </g>
-<g id="OutsideFrame">
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.813,685"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,18.5"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.813,19"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.813,883"/>
-	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1412.813" y1="829" x2="1412.813" y2="19"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,882.5"/>
-	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.313" y1="828.5" x2="1412.313" y2="828.5"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.813,829"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,18.5"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.313,18.5"/>
-	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1413.313" y1="18.5" x2="29.313" y2="18.5"/>
-	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.813" y1="19" x2="29.813" y2="829"/>
-	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="340.866" y1="827.97" x2="340.813" y2="863"/>
-	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="340.256" y1="862.5" x2="1269.289" y2="862.5"/>
+<g id="RSResetButtonBacking" display="none">
+	<rect x="1311.276" y="828.5" display="inline" opacity="0.36" fill="#101010" width="101.537" height="34"/>
 </g>
-<g id="OutsideFrameTicks">
-	<rect x="1411.804" y="17.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="28.804" y="17.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="28.804" y="827.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="1411.804" y="827.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+<g id="RSResetButtonArrow" display="none">
+	<rect x="1393.853" y="841.1" display="inline" fill="#FFFFFF" width="9" height="9"/>
+</g>
+<g id="RSResetButtonArrowSpace" display="none">
+	<rect x="1393.853" y="841.1" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="9" height="9"/>
+</g>
+<g id="RSResetButtonFrame" display="none">
+	
+		<rect x="1311.236" y="828.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="101.579" height="34"/>
+</g>
+<g id="RSResetButtonTextBox" display="none">
+	
+		<rect x="1326.794" y="840" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="55.181" height="11.424"/>
+</g>
+<g id="RSResetButtonTypography" display="none">
+	<g display="inline">
+		
+			<text transform="matrix(1 0 0 1 1326.7102 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">RESET</text>
+	</g>
+</g>
+<g id="ShuffleButtonBacking" display="none">
+	<rect x="1252.499" y="18.524" display="inline" opacity="0.36" fill="#101010" width="160.319" height="35.721"/>
+</g>
+<g id="ShuffleButtonArrow" display="none">
+	<polygon display="inline" fill="#DD4B39" points="1394.298,30.242 1394.298,42.808 1400.58,36.525 	"/>
+</g>
+<g id="ShuffleButtonArrowSpace" display="none">
+	
+		<rect x="1394.425" y="30.242" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
+</g>
+<g id="ShuffleButtonFrame" display="none">
+	
+		<rect x="1252.499" y="18.524" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="160.345" height="35.721"/>
+</g>
+<g id="ShuffleButtonTextBox" display="none">
+	
+		<rect x="1264.77" y="30.058" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="118.577" height="11.424"/>
+</g>
+<g id="ShuffleButtonTypography" display="none">
+	
+		<text transform="matrix(1 0 0 1 1264.5535 41.4658)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">SHUFFLE ALL</text>
+</g>
+<g id="OutsideFrame" display="none">
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.813,685"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,18.5"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.813,19"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.813,883"/>
+	
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1412.813" y1="829" x2="1412.813" y2="19"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,882.5"/>
+	
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.313" y1="862.5" x2="1412.313" y2="862.5"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.813,829"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,18.5"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.313,18.5"/>
+	
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1413.313" y1="18.5" x2="29.313" y2="18.5"/>
+	
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.813" y1="19" x2="29.813" y2="863"/>
+</g>
+<g id="OutsideFrameTicks" display="none">
+	<rect x="1411.804" y="17.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="28.804" y="17.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="28.804" y="861.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="1411.804" y="827.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
 </g>
 </svg>

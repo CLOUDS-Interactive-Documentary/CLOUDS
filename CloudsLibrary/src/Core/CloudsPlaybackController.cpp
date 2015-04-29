@@ -62,6 +62,10 @@ CloudsPlaybackController::CloudsPlaybackController(){
     showingExplorePeople = false;
     showingExploreVisuals = false;
  
+    researchModeTopic  = false;
+    researchModePerson = false;
+    researchModeVisual = false;
+
 	bQuestionAsked = false;
 	interludeExitBarWidth = 0.0;
 	interludeHoveringContinue = false;
@@ -1038,6 +1042,9 @@ void CloudsPlaybackController::updateTransition(){
                 break;
         }
         
+        ///////////////////////
+        /////////////NEW STATE
+        //////////////////////
         switch (newState) {
                 
             case TRANSITION_INTERVIEW_OUT:
@@ -1166,7 +1173,7 @@ void CloudsPlaybackController::updateTransition(){
                     introSequence->stopSystem();
 					introSequence->exit();
                 }
-                
+
                 showExploreMap();
                 
                 break;
@@ -1564,7 +1571,20 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 		if(!bQuestionAsked){
             if(showingResearchMode){
                 //TODO: need to save the location of wherever we were before
-                transitionController.transitionToExploreMap(1.0,1.0);
+                if(researchModeTopic){
+                    transitionController.transitionToExploreMap(1.0,1.0);
+                }
+                else if(researchModePerson){
+                    transitionController.transitionToExplorePeople(1.0,1.0);
+                }
+                else if(researchModeVisual){
+                    //TODO:
+//                    transitionController.transitionToExploreVisuals(1.0,1.0);
+                }
+                else{
+                    ofLogError("CloudsPlaybackController::actEnded") << "Act ended from research mode without any of the three views set";
+                }
+
             }
             else{
                 transitionController.transitionToInterlude(1.0,1.0);
@@ -1831,8 +1851,12 @@ void CloudsPlaybackController::showExploreMap(){
     hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
     if(showingResearchMode){ //from research mode--
         hud.animateOn(CLOUDS_HUD_RESEARCH_NAV);
+        researchModeTopic  = true;
+        researchModePerson = false;
+        researchModeVisual = false;
     }
-    
+
+
     //TODO fix the preset
     clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
 
@@ -1852,6 +1876,12 @@ void CloudsPlaybackController::showExploreMap(){
 void CloudsPlaybackController::showExplorePeople(){
     hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
     
+    if(showingResearchMode){
+        researchModeTopic  = false;
+        researchModePerson = true;
+        researchModeVisual = false;
+    }
+    
     //TODO: pick a better preset
     peopleMap->loadPresetGUISFromName("nameCloudsWithLinesFlickering");
     
@@ -1863,6 +1893,8 @@ void CloudsPlaybackController::showExplorePeople(){
     showingExplorePeople = true;
     
 }
+
+//TODO: visuals
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::hideVisualSystem() {

@@ -544,8 +544,8 @@ void CloudsVisualSystemManager::parseVisualSystemCredits(){
     for(int i = 0; i < numSystems; i++){
         string systemId = creditsXml.getAttribute("system", "id", "", i);
         creditsXml.pushTag("system", i);
-        visualSystemCredits[systemId].creator = creditsXml.getValue("creator", "");
-        visualSystemCredits[systemId].name    = creditsXml.getValue("name", "");
+        visualSystemCredits[systemId].line1 = creditsXml.getValue("line1", "");
+        visualSystemCredits[systemId].line2 = creditsXml.getValue("line2", "");
         creditsXml.popTag(); //system
 
     }

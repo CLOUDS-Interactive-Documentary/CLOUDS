@@ -189,6 +189,9 @@ class CloudsPlaybackController : public ofThread {
     bool showingExplorePeople;
     bool showingExploreVisuals;
     bool showingResearchMode;
+    bool researchModeTopic;
+    bool researchModePerson;
+    bool researchModeVisual;
     
 	bool bQuestionAsked;
 	bool forceCredits;
