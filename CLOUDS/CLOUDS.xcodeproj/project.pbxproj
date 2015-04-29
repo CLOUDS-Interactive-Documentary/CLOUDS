@@ -2667,18 +2667,6 @@
 		642726BE1AE81EAF00A13289 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AA1AE6D6560008D018 /* json_internalmap.inl */; };
 		642726BF1AE81EAF00A13289 /* CLOUDS.icns in Resources */ = {isa = PBXBuildFile; fileRef = 033BCA411AAA562900BC1FEC /* CLOUDS.icns */; };
 		642726C51AE81EF500A13289 /* CloudsVHXRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */; };
-		642728C71AE98D5500A13289 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A11AE98D5500A13289 /* audiodecoderbase.cpp */; };
-		642728C81AE98D5500A13289 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A11AE98D5500A13289 /* audiodecoderbase.cpp */; };
-		642728C91AE98D5500A13289 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A11AE98D5500A13289 /* audiodecoderbase.cpp */; };
-		642728CA1AE98D5500A13289 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A11AE98D5500A13289 /* audiodecoderbase.cpp */; };
-		642728CB1AE98D5500A13289 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A11AE98D5500A13289 /* audiodecoderbase.cpp */; };
-		642728CC1AE98D5500A13289 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A11AE98D5500A13289 /* audiodecoderbase.cpp */; };
-		642728CD1AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A21AE98D5500A13289 /* audiodecodercoreaudio.cpp */; };
-		642728CE1AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A21AE98D5500A13289 /* audiodecodercoreaudio.cpp */; };
-		642728CF1AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A21AE98D5500A13289 /* audiodecodercoreaudio.cpp */; };
-		642728D01AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A21AE98D5500A13289 /* audiodecodercoreaudio.cpp */; };
-		642728D11AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A21AE98D5500A13289 /* audiodecodercoreaudio.cpp */; };
-		642728D21AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728A21AE98D5500A13289 /* audiodecodercoreaudio.cpp */; };
 		64CDB66E194500EC00C56A13 /* ofxBinaryMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */; };
 		64D024451AE6C7B40008D018 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */; };
 		64D024461AE6C7B40008D018 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */; };
@@ -2709,6 +2697,20 @@
 		64D0253A1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
 		64D0253B1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
 		64D0253C1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
+		A60F27061AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
+		A60F27071AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
+		A60F27081AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
+		A60F27091AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
+		A60F270A1AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
+		A60F270B1AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
+		A60F270C1AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E41AF136B400A1C863 /* audiodecodercoreaudio.cpp */; };
+		A60F270D1AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E41AF136B400A1C863 /* audiodecodercoreaudio.cpp */; };
+		A60F270E1AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E41AF136B400A1C863 /* audiodecodercoreaudio.cpp */; };
+		A60F270F1AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E41AF136B400A1C863 /* audiodecodercoreaudio.cpp */; };
+		A60F27101AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E41AF136B400A1C863 /* audiodecodercoreaudio.cpp */; };
+		A60F27111AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E41AF136B400A1C863 /* audiodecodercoreaudio.cpp */; };
+		A60F27281AF1422B00A1C863 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D0244C1AE6C7CB0008D018 /* libcurl.dylib */; };
+		A60F27291AF1423000A1C863 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15DCFE91AB79689007D1F44 /* OpenAL.framework */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C15DCFD91AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
 		C15DCFDA1AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
@@ -4149,18 +4151,7 @@
 		2E8074571820B7D500A003A0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2E80745D1820B8AB00A003A0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		642724191AE81E5200A13289 /* CLOUDS_VHX_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_VHX_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6427241A1AE81E5200A13289 /* CLOUDS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CLOUDS copy-Info.plist"; path = "/Users/elias/Workspace/CLOUDS/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS copy-Info.plist"; sourceTree = "<absolute>"; };
 		642726C31AE81EAF00A13289 /* CLOUDS_VHX_OCULUS_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_VHX_OCULUS_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		642726C41AE81EB000A13289 /* CLOUDS_OCULUS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CLOUDS_OCULUS copy-Info.plist"; path = "/Users/elias/Workspace/CLOUDS/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS_OCULUS copy-Info.plist"; sourceTree = "<absolute>"; };
-		642728881AE98D5500A13289 /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
-		6427289B1AE98D5500A13289 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
-		6427289C1AE98D5500A13289 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
-		6427289D1AE98D5500A13289 /* audiodecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
-		6427289E1AE98D5500A13289 /* audiodecoderbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoderbase.h; sourceTree = "<group>"; };
-		6427289F1AE98D5500A13289 /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodercoreaudio.h; sourceTree = "<group>"; };
-		642728A11AE98D5500A13289 /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
-		642728A21AE98D5500A13289 /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
-		642728A61AE98D5500A13289 /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
 		64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBinaryMesh.cpp; sourceTree = "<group>"; };
 		64CDB66A194500EC00C56A13 /* ofxBinaryMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBinaryMesh.h; sourceTree = "<group>"; };
 		64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVHXRequest.cpp; sourceTree = "<group>"; };
@@ -4187,6 +4178,16 @@
 		64D024B01AE6D6560008D018 /* sconscript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sconscript; sourceTree = "<group>"; };
 		64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
 		64D024B41AE6D6560008D018 /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
+		A60F26C91AF136B400A1C863 /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
+		A60F26DC1AF136B400A1C863 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		A60F26DD1AF136B400A1C863 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		A60F26DE1AF136B400A1C863 /* audiodecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
+		A60F26DF1AF136B400A1C863 /* audiodecoderbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoderbase.h; sourceTree = "<group>"; };
+		A60F26E01AF136B400A1C863 /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodercoreaudio.h; sourceTree = "<group>"; };
+		A60F26E11AF136B400A1C863 /* audiodecodermediafoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodermediafoundation.h; sourceTree = "<group>"; };
+		A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
+		A60F26E41AF136B400A1C863 /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
+		A60F26E91AF136B400A1C863 /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C15DCF881AB7956C007D1F44 /* Composition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Composition.h; sourceTree = "<group>"; };
 		C15DCF891AB7956C007D1F44 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -6024,6 +6025,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A60F27291AF1423000A1C863 /* OpenAL.framework in Frameworks */,
+				A60F27281AF1422B00A1C863 /* libcurl.dylib in Frameworks */,
 				642726731AE81EAF00A13289 /* AudioUnit.framework in Frameworks */,
 				642726741AE81EAF00A13289 /* QuartzCore.framework in Frameworks */,
 				642726751AE81EAF00A13289 /* libz.dylib in Frameworks */,
@@ -6298,71 +6301,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		642728851AE98D5500A13289 /* ofxAudioDecoder */ = {
-			isa = PBXGroup;
-			children = (
-				642728871AE98D5500A13289 /* couples */,
-				642728981AE98D5500A13289 /* lib */,
-				642728A51AE98D5500A13289 /* src */,
-			);
-			name = ofxAudioDecoder;
-			path = ../../../addons/ofxAudioDecoder;
-			sourceTree = "<group>";
-		};
-		642728871AE98D5500A13289 /* couples */ = {
-			isa = PBXGroup;
-			children = (
-				642728881AE98D5500A13289 /* ofxAudioDecoderTonic.h */,
-			);
-			path = couples;
-			sourceTree = "<group>";
-		};
-		642728981AE98D5500A13289 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				642728991AE98D5500A13289 /* include */,
-				642728A01AE98D5500A13289 /* src */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		642728991AE98D5500A13289 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				6427289A1AE98D5500A13289 /* apple */,
-				6427289D1AE98D5500A13289 /* audiodecoder.h */,
-				6427289E1AE98D5500A13289 /* audiodecoderbase.h */,
-				6427289F1AE98D5500A13289 /* audiodecodercoreaudio.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		6427289A1AE98D5500A13289 /* apple */ = {
-			isa = PBXGroup;
-			children = (
-				6427289B1AE98D5500A13289 /* CADebugMacros.h */,
-				6427289C1AE98D5500A13289 /* CAStreamBasicDescription.h */,
-			);
-			path = apple;
-			sourceTree = "<group>";
-		};
-		642728A01AE98D5500A13289 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				642728A11AE98D5500A13289 /* audiodecoderbase.cpp */,
-				642728A21AE98D5500A13289 /* audiodecodercoreaudio.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		642728A51AE98D5500A13289 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				642728A61AE98D5500A13289 /* ofxAudioDecoder.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		64CDB650194500EC00C56A13 /* ofxBinaryMesh */ = {
 			isa = PBXGroup;
 			children = (
@@ -6474,14 +6412,88 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		A60F26C61AF136B400A1C863 /* ofxAudioDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				A60F26C81AF136B400A1C863 /* couples */,
+				A60F26D81AF136B400A1C863 /* libs */,
+				A60F26E81AF136B400A1C863 /* src */,
+			);
+			name = ofxAudioDecoder;
+			path = ../../../addons/ofxAudioDecoder;
+			sourceTree = "<group>";
+		};
+		A60F26C81AF136B400A1C863 /* couples */ = {
+			isa = PBXGroup;
+			children = (
+				A60F26C91AF136B400A1C863 /* ofxAudioDecoderTonic.h */,
+			);
+			path = couples;
+			sourceTree = "<group>";
+		};
+		A60F26D81AF136B400A1C863 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				A60F26D91AF136B400A1C863 /* audiodecoder */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		A60F26D91AF136B400A1C863 /* audiodecoder */ = {
+			isa = PBXGroup;
+			children = (
+				A60F26DA1AF136B400A1C863 /* include */,
+				A60F26E21AF136B400A1C863 /* src */,
+			);
+			path = audiodecoder;
+			sourceTree = "<group>";
+		};
+		A60F26DA1AF136B400A1C863 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A60F26DB1AF136B400A1C863 /* apple */,
+				A60F26DE1AF136B400A1C863 /* audiodecoder.h */,
+				A60F26DF1AF136B400A1C863 /* audiodecoderbase.h */,
+				A60F26E01AF136B400A1C863 /* audiodecodercoreaudio.h */,
+				A60F26E11AF136B400A1C863 /* audiodecodermediafoundation.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		A60F26DB1AF136B400A1C863 /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				A60F26DC1AF136B400A1C863 /* CADebugMacros.h */,
+				A60F26DD1AF136B400A1C863 /* CAStreamBasicDescription.h */,
+			);
+			path = apple;
+			sourceTree = "<group>";
+		};
+		A60F26E21AF136B400A1C863 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */,
+				A60F26E41AF136B400A1C863 /* audiodecodercoreaudio.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		A60F26E81AF136B400A1C863 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A60F26E91AF136B400A1C863 /* ofxAudioDecoder.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
 				C15DCF481AB7956B007D1F44 /* ofxAnimationPrimitives */,
 				E7D82BC918BF0CEC00C1EB93 /* ofxAssimpModelLoader */,
-				642728851AE98D5500A13289 /* ofxAudioDecoder */,
 				E73DA332189F1CDC006C9E4E /* ofxAutoReloadedShader */,
 				E73DA2D4189F1CDA006C9E4E /* ofxBillboard */,
+				A60F26C61AF136B400A1C863 /* ofxAudioDecoder */,
 				64CDB650194500EC00C56A13 /* ofxBinaryMesh */,
 				E73DA144189F1CD5006C9E4E /* ofxBox2d */,
 				E73DA38D189F1CDD006C9E4E /* ofxCameraSaveLoad */,
@@ -6644,9 +6656,7 @@
 				03A0F73D1947A0850071CF4B /* CLOUDS_KINECT_Debug.app */,
 				038034D31948167700AFD40C /* CLOUDS_SCREENING_Debug.app */,
 				642724191AE81E5200A13289 /* CLOUDS_VHX_Debug.app */,
-				6427241A1AE81E5200A13289 /* CLOUDS copy-Info.plist */,
 				642726C31AE81EAF00A13289 /* CLOUDS_VHX_OCULUS_Debug.app */,
-				642726C41AE81EB000A13289 /* CLOUDS_OCULUS copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -12159,7 +12169,7 @@
 				0380346C1948167700AFD40C /* CloudsSoundFilesSamplesDatabases.cpp in Sources */,
 				0380346D1948167700AFD40C /* CloudsPathCamera.cpp in Sources */,
 				0380346E1948167700AFD40C /* lukeFileFuncs.cpp in Sources */,
-				642728CA1AE98D5500A13289 /* audiodecoderbase.cpp in Sources */,
+				A60F27091AF136B400A1C863 /* audiodecoderbase.cpp in Sources */,
 				0380346F1948167700AFD40C /* CloudsMixer.cpp in Sources */,
 				038034701948167700AFD40C /* ofxSwarmBehavior.cpp in Sources */,
 				038034711948167700AFD40C /* ofxEasingBack.cpp in Sources */,
@@ -12179,7 +12189,7 @@
 				0380347F1948167700AFD40C /* CloudsSVGMesh.cpp in Sources */,
 				038034801948167700AFD40C /* SphereAction.cpp in Sources */,
 				038034811948167700AFD40C /* CloudsVisualSystemYellowTail.cpp in Sources */,
-				642728D01AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */,
+				A60F270F1AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */,
 				038034821948167700AFD40C /* ControlDbToLinear.cpp in Sources */,
 				038034831948167700AFD40C /* fdog.cpp in Sources */,
 				038034841948167700AFD40C /* Astrolabe.cpp in Sources */,
@@ -12760,7 +12770,7 @@
 				03A0F6D61947A0850071CF4B /* CloudsSoundFilesSamplesDatabases.cpp in Sources */,
 				03A0F6D71947A0850071CF4B /* CloudsPathCamera.cpp in Sources */,
 				03A0F6D81947A0850071CF4B /* lukeFileFuncs.cpp in Sources */,
-				642728C91AE98D5500A13289 /* audiodecoderbase.cpp in Sources */,
+				A60F27081AF136B400A1C863 /* audiodecoderbase.cpp in Sources */,
 				03A0F6D91947A0850071CF4B /* CloudsMixer.cpp in Sources */,
 				03A0F6DA1947A0850071CF4B /* ofxSwarmBehavior.cpp in Sources */,
 				03A0F6DB1947A0850071CF4B /* ofxEasingBack.cpp in Sources */,
@@ -12780,7 +12790,7 @@
 				03A0F6E91947A0850071CF4B /* CloudsSVGMesh.cpp in Sources */,
 				03A0F6EA1947A0850071CF4B /* SphereAction.cpp in Sources */,
 				03A0F6EB1947A0850071CF4B /* CloudsVisualSystemYellowTail.cpp in Sources */,
-				642728CF1AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */,
+				A60F270E1AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */,
 				03A0F6EC1947A0850071CF4B /* ControlDbToLinear.cpp in Sources */,
 				03A0F6ED1947A0850071CF4B /* fdog.cpp in Sources */,
 				03A0F6EE1947A0850071CF4B /* Astrolabe.cpp in Sources */,
@@ -13227,7 +13237,7 @@
 				642723261AE81E5200A13289 /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */,
 				642723271AE81E5200A13289 /* ControlArithmetic.cpp in Sources */,
 				642723281AE81E5200A13289 /* ofxVerletSolver.cpp in Sources */,
-				642728D11AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */,
+				A60F27101AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */,
 				642723291AE81E5200A13289 /* ofxOceanRenderer.cpp in Sources */,
 				6427232A1AE81E5200A13289 /* ofxMarchingCubes.cpp in Sources */,
 				6427232B1AE81E5200A13289 /* CloudsInputMouse.cpp in Sources */,
@@ -13262,7 +13272,7 @@
 				642723481AE81E5200A13289 /* CloudsVisualSystemCubeCraft.cpp in Sources */,
 				642723491AE81E5200A13289 /* ofxJSONElement.cpp in Sources */,
 				6427234A1AE81E5200A13289 /* ofxTimecode.cpp in Sources */,
-				642728CB1AE98D5500A13289 /* audiodecoderbase.cpp in Sources */,
+				A60F270A1AF136B400A1C863 /* audiodecoderbase.cpp in Sources */,
 				6427234B1AE81E5200A13289 /* ofxUILabelToggle.cpp in Sources */,
 				6427234C1AE81E5200A13289 /* ofxTextWriter.cpp in Sources */,
 				6427234D1AE81E5200A13289 /* ofxUILabel.cpp in Sources */,
@@ -13841,7 +13851,7 @@
 				642725D81AE81EAF00A13289 /* CloudsVisualSystemRandomDigits2.cpp in Sources */,
 				642725D91AE81EAF00A13289 /* PathPoint.cpp in Sources */,
 				642725DA1AE81EAF00A13289 /* CloudsVisualSystemColony.cpp in Sources */,
-				642728CC1AE98D5500A13289 /* audiodecoderbase.cpp in Sources */,
+				A60F270B1AF136B400A1C863 /* audiodecoderbase.cpp in Sources */,
 				642725DB1AE81EAF00A13289 /* ofxTLImageSequence.cpp in Sources */,
 				642725DC1AE81EAF00A13289 /* CloudsVisualSystemRulez.cpp in Sources */,
 				642725DD1AE81EAF00A13289 /* ofxUIRangeSlider.cpp in Sources */,
@@ -13975,7 +13985,7 @@
 				6427265D1AE81EAF00A13289 /* CloudsVisualSystemParadox.cpp in Sources */,
 				6427265E1AE81EAF00A13289 /* E2.cpp in Sources */,
 				6427265F1AE81EAF00A13289 /* GpuParticles.cpp in Sources */,
-				642728D21AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */,
+				A60F27111AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */,
 				642726601AE81EAF00A13289 /* ControlMetroDivider.cpp in Sources */,
 				642726611AE81EAF00A13289 /* Force.cpp in Sources */,
 				642726621AE81EAF00A13289 /* ofxEasingElastic.cpp in Sources */,
@@ -14568,7 +14578,7 @@
 				E7D8255618BEBD7000C1EB93 /* CloudsSoundFilesSamplesDatabases.cpp in Sources */,
 				E7D8262418BEBD7000C1EB93 /* CloudsPathCamera.cpp in Sources */,
 				E7D8255918BEBD7000C1EB93 /* lukeFileFuncs.cpp in Sources */,
-				642728C71AE98D5500A13289 /* audiodecoderbase.cpp in Sources */,
+				A60F27061AF136B400A1C863 /* audiodecoderbase.cpp in Sources */,
 				E7D8255418BEBD7000C1EB93 /* CloudsMixer.cpp in Sources */,
 				E7D8290618BEBE6D00C1EB93 /* ofxSwarmBehavior.cpp in Sources */,
 				E7D8289118BEBE3A00C1EB93 /* ofxEasingBack.cpp in Sources */,
@@ -14588,7 +14598,7 @@
 				E7D8254D18BEBD7000C1EB93 /* CloudsSVGMesh.cpp in Sources */,
 				E7D825EA18BEBD7000C1EB93 /* SphereAction.cpp in Sources */,
 				E7D8262818BEBD7000C1EB93 /* CloudsVisualSystemYellowTail.cpp in Sources */,
-				642728CD1AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */,
+				A60F270C1AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */,
 				E7D82ABA18BF099000C1EB93 /* ControlDbToLinear.cpp in Sources */,
 				E73DABF4189F3645006C9E4E /* fdog.cpp in Sources */,
 				E7D8256D18BEBD7000C1EB93 /* Astrolabe.cpp in Sources */,
@@ -14752,7 +14762,7 @@
 				E7DDC150194437EC00E61D75 /* ofxSQLiteInsert.cpp in Sources */,
 				E7DDC151194437EC00E61D75 /* ControlStepper.cpp in Sources */,
 				E7DDC152194437EC00E61D75 /* LUTPass.cpp in Sources */,
-				642728CE1AE98D5500A13289 /* audiodecodercoreaudio.cpp in Sources */,
+				A60F270D1AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */,
 				E7DDC153194437EC00E61D75 /* ofxSQLiteAbstract.cpp in Sources */,
 				E7DDC154194437EC00E61D75 /* PixelatePass.cpp in Sources */,
 				E7DDC155194437EC00E61D75 /* ParticleConnectionGenerator.cpp in Sources */,
@@ -15087,7 +15097,7 @@
 				E7DDC298194437EC00E61D75 /* ofxElectroStaticBehavior.cpp in Sources */,
 				E7DDC299194437EC00E61D75 /* ofxTLInOut.cpp in Sources */,
 				E7DDC29A194437EC00E61D75 /* b2BroadPhase.cpp in Sources */,
-				642728C81AE98D5500A13289 /* audiodecoderbase.cpp in Sources */,
+				A60F27071AF136B400A1C863 /* audiodecoderbase.cpp in Sources */,
 				E7DDC29B194437EC00E61D75 /* EdgePass.cpp in Sources */,
 				E7DDC29C194437EC00E61D75 /* ofxUIImageSlider.cpp in Sources */,
 				E7DDC29D194437EC00E61D75 /* ofxBox2d.cpp in Sources */,
@@ -15817,7 +15827,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug",
+					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
@@ -15826,7 +15836,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
+					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)_Debug";
 				WRAPPER_EXTENSION = app;
@@ -15935,7 +15945,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release",
+					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
@@ -15944,7 +15954,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
+					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -16059,12 +16069,12 @@
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug",
-					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release,
-					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
+					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release",
+					"$(OF_PATH)/addons/ofxSSL/libs/libcurl/lib/osx",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
+					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)_Debug";
 				WRAPPER_EXTENSION = app;
@@ -16180,8 +16190,8 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release",
-					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release,
-					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
+					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release",
+					"$(OF_PATH)/addons/ofxSSL/libs/libcurl/lib/osx",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -16296,6 +16306,7 @@
 					"MOUSE_INPUT=1",
 					"CLOUDS_APP=1",
 					"CLOUDS_HUD=1",
+					"HAVE_NO_GLUT=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
@@ -16309,7 +16320,6 @@
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src/ip",
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -16380,17 +16390,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
-				OTHER_LDFLAGS = (
-					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
-				);
+				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PRODUCT_NAME = "$(TARGET_NAME)_Debug";
 				WRAPPER_EXTENSION = app;
 			};
@@ -16413,6 +16419,7 @@
 					"CLOUDS_APP=1",
 					"CLOUDS_HUD=1",
 					"CLOUDS_RELEASE=1",
+					"HAVE_NO_GLUT=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
@@ -16426,7 +16433,6 @@
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src/ip",
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -16497,17 +16503,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release",
-					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
-				OTHER_LDFLAGS = (
-					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
-				);
+				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -16620,12 +16621,12 @@
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug",
-					/Users/Winslow/Documents/of_64_clouds/openFrameworks/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release,
-					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
+					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release",
+					"$(OF_PATH)/addons/ofxSSL/libs/libcurl/lib/osx",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
+					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)_Debug";
 				WRAPPER_EXTENSION = app;
