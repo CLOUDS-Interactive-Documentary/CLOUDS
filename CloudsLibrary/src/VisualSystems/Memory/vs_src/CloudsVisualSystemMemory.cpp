@@ -6,6 +6,8 @@
 //
 //
 
+#include "ofxAudioDecoderTonic.h"
+
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsGlobal.h"
 
@@ -473,9 +475,9 @@ Tonic::Generator CloudsVisualSystemMemory::buildSynth()
 {
     string strDir = GetCloudsDataPath(true) + "sound/textures/";
     ofDirectory sdir(strDir);
-    string strAbsPath = ofToDataPath(strDir + "/CPUBeepsFastDrone_.aif", true);
+    string strAbsPath = ofToDataPath(strDir + "/CPUBeepsFastDrone_.mp3", true);
 
-    Tonic::SampleTable sample = Tonic::loadAudioFile(strAbsPath);
+    Tonic::SampleTable sample = ofxAudioDecoderTonic(strAbsPath);
     
     Tonic::Generator sampleGen = Tonic::BufferPlayer().setBuffer(sample).trigger(1).loop(1);
     

@@ -2,6 +2,8 @@
 //  CloudsVisualSystemWormHole.cpp
 //
 
+#include "ofxAudioDecoderTonic.h"
+
 #include "CloudsVisualSystemWormHole.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include <map>
@@ -420,10 +422,10 @@ void CloudsVisualSystemWormHole::selfSetup()
 {
 	currentShader = NULL;
 
-	tonicSamples.push_back(TonicSample("EchoVortex.aif"));
-	tonicSamples.push_back(TonicSample("wormholeZoom.aif"));
-	tonicSamples.push_back(TonicSample("wormholeZoom2.aif"));
-	tonicSamples.push_back(TonicSample("slowgrains_short.aif"));
+	tonicSamples.push_back(TonicSample("EchoVortex.mp3"));
+	tonicSamples.push_back(TonicSample("wormholeZoom.mp3"));
+	tonicSamples.push_back(TonicSample("wormholeZoom2.mp3"));
+	tonicSamples.push_back(TonicSample("slowgrains_short.mp3"));
 	//meshes
 	modelPath = getVisualSystemDataPath(true) + "models_binary/";
 	cameraPathPath = getVisualSystemDataPath() + "cameraPaths/";
@@ -827,7 +829,7 @@ Tonic::Generator CloudsVisualSystemWormHole::buildSynth()
     for (int i=0; i<tonicSamples.size(); i++)
     {
        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = Tonic::loadAudioFile(strAbsPath);
+        samples[i] = ofxAudioDecoderTonic(strAbsPath);
     }
     
     Tonic::Generator sampleGen[4];

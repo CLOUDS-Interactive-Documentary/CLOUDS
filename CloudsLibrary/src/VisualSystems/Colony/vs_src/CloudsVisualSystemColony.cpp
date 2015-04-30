@@ -1,3 +1,5 @@
+#include "ofxAudioDecoderTonic.h"
+
 #include "CloudsVisualSystemColony.h"
 
 using namespace Tonic;
@@ -10,9 +12,9 @@ string CloudsVisualSystemColony::getSystemName()
 void CloudsVisualSystemColony::selfSetup()
 {
     
-    tonicSamples.push_back(TonicSample("granular_water2.aif"));
-    tonicSamples.push_back(TonicSample("granular_water2_slow.aif"));
-    tonicSamples.push_back(TonicSample("Grains1_slow_low.aif"));
+    tonicSamples.push_back(TonicSample("granular_water2.mp3"));
+    tonicSamples.push_back(TonicSample("granular_water2_slow.mp3"));
+    tonicSamples.push_back(TonicSample("Grains1_slow_low.mp3"));
     
     ofDirectory textureDir(getVisualSystemDataPath() + "textures");
     textureDir.listDir();
@@ -35,9 +37,7 @@ void CloudsVisualSystemColony::selfSetup()
 	loadShaders();
     
     // sound
-    #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth());
-    #endif
 }
 
 void CloudsVisualSystemColony::selfSetDefaults(){
@@ -389,9 +389,9 @@ void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){
 }
 
 void CloudsVisualSystemColony::clear(){
-    //    for (int i = cells.size()-1; i >= 0; i--){
-    //        cells.erase(cells.begin()+i);
-    //    }
+//    for (int i = cells.size()-1; i >= 0; i--){
+//        cells.erase(cells.begin()+i);
+//    }
     cells.clear();
     vbo.clear();
 }
@@ -463,16 +463,16 @@ void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
     string parent = (e.widget->getParent())->getName();
     
     if (parent == "COLONY Sound"){
-        for (int i=0; i<3; i++)
-        {
-            //            if (e.widget->getName() == soundFiles[i]) {
-            //                ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            //                playSample[i] = toggle->getValue();
-            //                if (toggle->getValue() == true) {
-            //                    soundTriggers[i].trigger();
-            //                }
-            //            }
-        }
+//        for (int i=0; i<3; i++)
+//        {
+//            if (e.widget->getName() == soundFiles[i]) {
+//                ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+//                playSample[i] = toggle->getValue();
+//                if (toggle->getValue() == true) {
+//                    soundTriggers[i].trigger();
+//                }
+//            }
+//        }
         
         for(int i=0; i<tonicSamples.size();i++){
             if (e.widget->getName() == tonicSamples[i].soundFile) {
@@ -495,7 +495,6 @@ void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
     
 }
 
-#ifdef TONIC_SOUNDS
 Tonic::Generator CloudsVisualSystemColony::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
@@ -505,7 +504,7 @@ Tonic::Generator CloudsVisualSystemColony::buildSynth()
     
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = loadAudioFile(strAbsPath);
+        samples[i] = ofxAudioDecoderTonic(strAbsPath);
     }
     
     
@@ -515,12 +514,9 @@ Tonic::Generator CloudsVisualSystemColony::buildSynth()
     
     return (sampleGen1 * 0.8f + sampleGen2 * 0.8f + sampleGen3 * 0.4f) * volumeControl;
 }
-#endif
 
 void CloudsVisualSystemColony::audioRequested(ofAudioEventArgs& args)
 {
-    #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
-    #endif
 }
 

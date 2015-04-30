@@ -35,7 +35,8 @@ public:
     bool bLoadResult;
 	bool bPlayWhenReady;
 
-	void setupProjectionUniforms(ofShader& shader);
+	void begin(ofShader& shader);
+	void end();
     
 	//  CYCLE
 	//

@@ -40,6 +40,10 @@ class CloudsFCPParser {
     void parseLinks(const string& linkFile);
 	void parseClusterNetwork(const string& fileName);
 	void parseProjectExamples(const string& filename);
+#ifdef VHX_MEDIA
+    void parseVHXIds(const string& filename);
+#endif
+    
 	vector<CloudsProjectExample>& getProjectExamples();
 	CloudsProjectExample& getProjectExampleWithTitle(const string& title);
 	
@@ -156,6 +160,9 @@ class CloudsFCPParser {
     float getDistanceFromAdjacentKeywords(const string&  keyword1, const string&  keyword2);
     
   protected:
+#ifdef VHX_MEDIA
+    void trimVHXId(string& str);
+#endif
     
     void reciprocateSuppressions(CloudsClip* clip );
     

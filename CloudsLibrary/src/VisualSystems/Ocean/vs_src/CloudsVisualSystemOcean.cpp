@@ -6,6 +6,8 @@
 //
 //
 
+#include "ofxAudioDecoderTonic.h"
+
 #include "CloudsVisualSystemOcean.h"
 
 using namespace Tonic;
@@ -31,8 +33,8 @@ string CloudsVisualSystemOcean::getSystemName(){
 void CloudsVisualSystemOcean::selfSetup(){
 	needsRegenerate = true;
     
-    tonicSamples.push_back(TonicSample("Vocal_harmonic_high_shorter.aif"));
-    tonicSamples.push_back(TonicSample("vocal_harmony_bass.aif"));
+    tonicSamples.push_back(TonicSample("Vocal_harmonic_high_shorter.mp3"));
+    tonicSamples.push_back(TonicSample("vocal_harmony_bass.mp3"));
 
     // sound
     gain = 0;
@@ -376,7 +378,7 @@ Tonic::Generator CloudsVisualSystemOcean::buildSynth()
     
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = loadAudioFile(strAbsPath);
+        samples[i] = ofxAudioDecoderTonic(strAbsPath);
     }
     
     Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);

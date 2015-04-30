@@ -2,6 +2,8 @@
 //  CloudsVisualSystemSwim.cpp
 //
 
+#include "ofxAudioDecoderTonic.h"
+
 #include "CloudsVisualSystemSwim.h"
 #include "CloudsRGBDVideoPlayer.h"
 
@@ -18,8 +20,8 @@ CloudsVisualSystemSwim::CloudsVisualSystemSwim() :
 // geometry should be loaded here
 void CloudsVisualSystemSwim::selfSetup()
 {
-    tonicSamples.push_back(TonicSample("underwater_stretch.aif"));
-    tonicSamples.push_back(TonicSample("Underwater.aif"));
+    tonicSamples.push_back(TonicSample("underwater_stretch.mp3"));
+    tonicSamples.push_back(TonicSample("Underwater.mp3"));
 
     snow.init(getVisualSystemDataPath());
     //bubbles.init(getVisualSystemDataPath());
@@ -419,7 +421,7 @@ Tonic::Generator CloudsVisualSystemSwim::buildSynth()
     
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = Tonic::loadAudioFile(strAbsPath);
+        samples[i] = ofxAudioDecoderTonic(strAbsPath);
     }
     
     Tonic::Generator sampleGen1 = Tonic::BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);

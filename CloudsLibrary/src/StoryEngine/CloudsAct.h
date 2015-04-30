@@ -13,7 +13,6 @@
 #include "ofxTimeline.h"
 #include "CloudsDichotomy.h"
 
-
 typedef enum {
     Clip = 0,
     VS,
@@ -110,6 +109,10 @@ class CloudsAct{
     
     void setTopicForClip(string topic, string clipName);
     string getTopicForClip(CloudsClip* clip);
+    
+#ifdef VHX_MEDIA
+    void fetchClipVhxUrls();
+#endif
 	
 	ofxTimeline& getTimeline(){ return timeline; }
     
@@ -143,7 +146,7 @@ class CloudsAct{
     CloudsStoryEvents events;
     vector<CloudsClip*> clips;
     vector<CloudsVisualSystemPreset> visualSystems;
-	
+    
     vector<ActTimeItem> actItems;
     map<string,ActTimeItem> actItemsMap;
 

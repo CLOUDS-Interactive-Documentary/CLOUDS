@@ -166,7 +166,7 @@ void CloudsVisualSystemDataCascade::selfDraw(){
 
 //JG VIDEO HACK
 #ifdef TARGET_OSX
-		getRGBDVideoPlayer().setupProjectionUniforms(drawShader);
+		getRGBDVideoPlayer().begin(drawShader);
 #endif	
 
 	}
@@ -217,6 +217,15 @@ void CloudsVisualSystemDataCascade::selfDraw(){
 	
 	glPopAttrib();
 	ofPopStyle();
+
+	if(doRGBD){
+
+//JG VIDEO HACK
+#ifdef TARGET_OSX
+		getRGBDVideoPlayer().end();
+#endif	
+
+	}
 	
 	drawShader.end();
 	

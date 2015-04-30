@@ -33,7 +33,9 @@ void CloudsFCPParser::loadFromFiles(){
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
 	parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
-	
+#ifdef VHX_MEDIA
+	parseVHXIds(GetCloudsDataPath() + "vhx/clip_ids.csv");
+#endif
 }
 
 void CloudsFCPParser::setup(const string& directory){
@@ -327,6 +329,58 @@ void CloudsFCPParser::parseClusterNetwork(const string& fileName){
 	calculateKeywordFamilies();
     disperseUnpositionedClips();
 }
+
+#ifdef VHX_MEDIA
+void CloudsFCPParser::parseVHXIds(const string& path){
+    ofBuffer idbuf = ofBufferFromFile(path);
+    map<string, string> idHashMap;
+    
+    while(!idbuf.isLastLine()){
+        
+        string line = idbuf.getNextLine();
+        if(line == ""){
+            continue;
+        }
+        
+        vector<string> split = ofSplitString(line,",", true,true);
+        string idstring = split[0];
+        split.erase(split.begin());
+        
+        string key = ofJoinString(split, "");
+        trimVHXId(key);
+        
+        idHashMap[key] = idstring;
+    }
+
+    for(int i = 0; i < allClips.size(); i++){
+        string key = allClips[i]->person + allClips[i]->name;
+        trimVHXId(key);
+        
+        if(idHashMap.find(key) != idHashMap.end()){
+            allClips[i]->vhxId = idHashMap[ key ];
+        }
+        else {
+            ofLogError("CloudsFCPParser::parseVHXIds") << "No VHX ID for clip " << allClips[i]->getLinkName() << " hash: " << key;
+        }
+    }
+    
+}
+
+void CloudsFCPParser::trimVHXId(string& str){
+    ofStringReplace(str, " ", "");
+    ofStringReplace(str, "-", "");
+    ofStringReplace(str, "_", "");
+    ofStringReplace(str, "+", "");
+    ofStringReplace(str, ",", "");
+    ofStringReplace(str, "?", "");
+    ofStringReplace(str, "'", "");
+    ofStringReplace(str, "\"", "");
+    ofStringReplace(str, ".mov", "");
+    ofStringReplace(str, "%2B", "");
+    ofStringReplace(str, "%3C", "");
+    ofStringReplace(str, "%3F", "");
+}
+#endif
 
 void CloudsFCPParser::parseProjectExamples(const string& filename){
 	
@@ -1228,10 +1282,15 @@ void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
         
 
 		allClips[i]->combinedVideoPath = directory + "/" + allClips[i]->getCombinedMovieFile();
-		allClips[i]->combinedCalibrationXMLPath = directory + "/" + allClips[i]->getCombinedCalibrationXML();
+		allClips[i]->combinedCalibrationXMLPath = GetCloudsDataPath() + "clipxml/" + allClips[i]->getCombinedCalibrationXML();
+#ifdef VHX_MEDIA
+        allClips[i]->hasMediaAsset = allClips[i]->voiceOverAudio ||
+                                     (allClips[i]->vhxId.size() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
+#else
 		allClips[i]->hasMediaAsset = allClips[i]->voiceOverAudio ||
-                                    (ofFile(allClips[i]->combinedVideoPath).exists() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
+                                     (ofFile(allClips[i]->combinedVideoPath).exists() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
         //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
+#endif
         
 		if(allClips[i]->hasMediaAsset){
 			hasMediaAssetIndeces.push_back(i);

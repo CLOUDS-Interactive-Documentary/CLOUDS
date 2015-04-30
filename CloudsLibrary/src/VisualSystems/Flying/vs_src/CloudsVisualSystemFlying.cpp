@@ -2,6 +2,8 @@
 //  CloudsVisualSystemFlying.cpp
 //
 
+#include "ofxAudioDecoderTonic.h"
+
 #include "CloudsVisualSystemFlying.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsInput.h"
@@ -35,9 +37,9 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
 void CloudsVisualSystemFlying::selfSetup()
 {
 
-    tonicSamples.push_back(TonicSample("SriLankaForest.aif"));
-    tonicSamples.push_back(TonicSample("FOREST.aif"));
-    tonicSamples.push_back(TonicSample("organ_slower.aif"));
+    tonicSamples.push_back(TonicSample("SriLankaForest.mp3"));
+    tonicSamples.push_back(TonicSample("FOREST.mp3"));
+    tonicSamples.push_back(TonicSample("organ_slower.mp3"));
     
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     post.init(getCanvasWidth(), getCanvasHeight(), true);
@@ -482,7 +484,7 @@ Generator CloudsVisualSystemFlying::buildSynth()
     
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = loadAudioFile(strAbsPath);
+        samples[i] = ofxAudioDecoderTonic(strAbsPath);
     }
     
     Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);

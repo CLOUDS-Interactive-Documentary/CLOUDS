@@ -1,5 +1,6 @@
-#include "CloudsVisualSystemReplicator.h"
+#include "ofxAudioDecoderTonic.h"
 
+#include "CloudsVisualSystemReplicator.h"
 
 string CloudsVisualSystemReplicator::getSystemName(){
 	return "Replicator";
@@ -8,8 +9,8 @@ string CloudsVisualSystemReplicator::getSystemName(){
 void CloudsVisualSystemReplicator::selfSetup(){
 	local_time = ofGetElapsedTimef() + ofRandom(10000);
 
-    tonicSamples.push_back(TonicSample("organ_slower.aif"));
-    tonicSamples.push_back(TonicSample("EchoVortex.aif"));
+    tonicSamples.push_back(TonicSample("organ_slower.mp3"));
+    tonicSamples.push_back(TonicSample("EchoVortex.mp3"));
     gain = 0;
     #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth());
@@ -249,7 +250,7 @@ Tonic::Generator CloudsVisualSystemReplicator::buildSynth()
     
     for(int i=0; i<tonicSamples.size();i++){
         string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = Tonic::loadAudioFile(strAbsPath);
+        samples[i] = ofxAudioDecoderTonic(strAbsPath);
     }
     
     Tonic::Generator sampleGen1 = Tonic::BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
