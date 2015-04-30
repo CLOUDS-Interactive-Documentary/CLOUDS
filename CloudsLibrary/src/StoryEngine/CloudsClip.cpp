@@ -573,6 +573,7 @@ void CloudsClip::fetchVhxSourceUrl(){
     
     if (vhxId.empty()) {
         // No ID :(
+        ofLogError("CloudsClip::fetchVhxSourceUrl") << "This shouldn't happen!";
         hasMediaAsset = false;
         return;
     }
@@ -595,6 +596,9 @@ void CloudsClip::vhxRequestComplete(CloudsVHXEventArgs& args){
         vhxSourceVideoUrl = args.result;
         vhxTimestamp = ofGetElapsedTimeMillis();
         ofLogVerbose("CloudsClip::vhxRequestComplete") << "Got source video URL " << vhxSourceVideoUrl;
+    }
+    else{
+        ofLogError("CloudsClip::vhxRequestComplete") << "Error returned from vhx request";
     }
 }
 #endif
