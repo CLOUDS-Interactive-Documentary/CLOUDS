@@ -246,7 +246,6 @@ void CloudsTransitionController::transitionFromExploreMap(float inDuration){
     
 }
 
-
 void CloudsTransitionController::transitionToExplorePeople(float inDuration, float outDuration){
 
     confirmEmpty("transitionToExplorePeople");
@@ -266,6 +265,21 @@ void CloudsTransitionController::transitionFromExplorePeople(float inDuration){
 	
     startTransition();
 }
+
+////////////
+///////////
+// NOT IMPLEMENTED
+void CloudsTransitionController::transitionBackToAct(float inDuration, float outDuration){
+
+    confirmEmpty("transitionBackToAct");
+    
+    queueReciprocal(getPreviousState(), outDuration);
+    
+	startTransition();
+    
+}
+////////////
+///////////
 
 void CloudsTransitionController::queueReciprocal(CloudsTransitionState state, float duration){
     queueState(reciprocalTransitions[state], duration);

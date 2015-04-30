@@ -1004,8 +1004,13 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
     }
 }
 
+
 bool CloudsHUDController::isResetHit(){
     return hudLabelMap["ResetButtonTextBox"]->isClicked();
+}
+
+bool CloudsHUDController::isResearchResetHit(){
+    return hudLabelMap["RSResetButtonTextBox"]->isClicked();
 }
 
 bool CloudsHUDController::isNextHit(){

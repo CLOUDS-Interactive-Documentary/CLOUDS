@@ -95,6 +95,7 @@ class CloudsHUDController {
 	
 	//mouse for clicking reset
 	bool isResetHit();
+	bool isResearchResetHit();
 	bool isNextHit();
 	bool isExploreMapHit();
 	bool isSeeMorePersonHit();

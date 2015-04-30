@@ -65,7 +65,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
     researchModeTopic  = false;
     researchModePerson = false;
     researchModeVisual = false;
-
+    showingResearchScreen = false;
+    
 	bQuestionAsked = false;
 	interludeExitBarWidth = 0.0;
 	interludeHoveringContinue = false;
@@ -92,6 +93,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
     cachedTransition = false;
     showedClusterMapNavigation = false;
 
+    canReturnToAct = false;
+    
 	resetInterludeVariables();
 	
 
@@ -121,6 +124,14 @@ void CloudsPlaybackController::clearAct(){
 	if(currentAct == NULL){
 		return;
 	}
+    
+    //This is in the case we selected to explore map from a story
+    //and 
+    if(canReturnToAct){
+        hideVisualSystem();
+        canReturnToAct = false;
+    }
+
 
 	CloudsVisualSystem::getRGBDVideoPlayer().stop();
 	
@@ -141,10 +152,7 @@ void CloudsPlaybackController::clearAct(){
     currentAct = NULL;
 	clusterMap->setAct(NULL);
     
-	//hack to clear frame buffer
-	CloudsVisualSystem::getStaticRenderTarget().begin();
-	ofClear(0,0,0);
-	CloudsVisualSystem::getStaticRenderTarget().end();
+    clearRenderTarget();
 	
     numActsCreated++;
 }
@@ -329,7 +337,6 @@ void CloudsPlaybackController::finishSetup(){
 	startingNodes = storyEngine.getStartingQuestions();
 	introSequence->setStartQuestions(startingNodes);
     introSequence->loadingFinished();
-
 }
 
 //--------------------------------------------------------------------
@@ -633,7 +640,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         }
         else if(introSequence->isAboutScreenSelected()){
             hud.showAbout();
-            //TODO: hide about
+            //TODO: way to hide about...
         }
 		else if(introSequence->isStartQuestionSelected()){
 			         
@@ -780,11 +787,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     //////////// GO TO EXPLORE THE MAP FROM INTERVIEW
     if(hud.isExploreMapHit()){
+        canReturnToAct = true;
         hud.animateOff();
         transitionController.transitionToExploreMap(1.0, 2.0);
     }
     
     if(hud.isSeeMorePersonHit()){
+        canReturnToAct = true;
         hud.animateOff();
         transitionController.transitionToExplorePeople(1.0, 2.0);
     }
@@ -804,18 +813,33 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     }
     /////////////////////////////////
     
+    
+//    if(){
+//        if(showingResearchMode){
+//            hud.animateOff();
+//            returnToIntro = true;
+//        }
+//        else{
+//            transitionController.transitionBackToAct(1.0, 1.0);
+//        }
+//    }
+    
     //////////// WAS RESET HIT?
     if(!showingIntro && !showingClusterMap && !userReset &&
-       (hud.isResetHit() || rgbdVisualSystem->isResetSelected()) )
+       (hud.isResearchResetHit() || hud.isResetHit() || rgbdVisualSystem->isResetSelected()) )
     {
+        hud.animateOff();
         userReset = true;
         returnToIntro = true;
-#ifdef OCULUS_RIFT
+        #ifdef OCULUS_RIFT
         transitionController.transitionWithQuestion(2.0, 0.1);
-#else
-        CloudsVisualSystem::getRGBDVideoPlayer().stop();
-        currentAct->terminateAct();
-#endif
+        #else
+        if(currentAct != NULL){
+            CloudsVisualSystem::getRGBDVideoPlayer().stop();
+            currentAct->terminateAct();
+        }
+        #endif
+        
     }
     
     if(returnToIntro){
@@ -847,7 +871,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             
             ///TODO:
             //peopleMap->highlightPerson(selectedTopic);
-            cout << "selected speaker id " << selectedSpeakerID << endl;
+            
             if(hud.isItemConfirmed()){
                 showingExplorePeople = false;
                 hud.animateOff();
@@ -911,6 +935,10 @@ void CloudsPlaybackController::updateTransition(){
                 
             ///LEAVING
             case TRANSITION_INTRO_OUT:
+                
+                introSequence->stopSystem();
+                introSequence->exit();
+                
                 if(introSequence->isStartQuestionSelected()){
                     
                     selectedQuestion = introSequence->getSelectedQuestion();
@@ -921,8 +949,6 @@ void CloudsPlaybackController::updateTransition(){
                     
                     shouldPlayClusterMap = true;
                     
-                    introSequence->stopSystem();
-                    introSequence->exit();
                     
                     storyEngine.buildAct(run, selectedQuestionClip, selectedQuestion->topic, true);
                 }
@@ -1003,7 +1029,9 @@ void CloudsPlaybackController::updateTransition(){
                 
                 ///LEAVING
             case TRANSITION_VISUALSYSTEM_OUT:
-                hideVisualSystem();
+                if(!canReturnToAct){
+                    hideVisualSystem();
+                }
                 break;
                 
                 ///LEAVING
@@ -1592,35 +1620,37 @@ void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 
     //not sure why acts shouldn't be cleared on return to intro
-//	if(!returnToIntro){
-		shouldClearAct = true;
-		
-		if(!bQuestionAsked){
-            if(showingResearchMode){
-                //TODO: need to save the location of wherever we were before
-                if(researchModeTopic){
-                    transitionController.transitionToExploreMap(1.0,1.0);
-                }
-                else if(researchModePerson){
-                    transitionController.transitionToExplorePeople(1.0,1.0);
-                }
-                else if(researchModeVisual){
-                    //TODO:
-//                    transitionController.transitionToExploreVisuals(1.0,1.0);
-                }
-                else{
-                    ofLogError("CloudsPlaybackController::actEnded") << "Act ended from research mode without any of the three views set";
-                }
-
-            }
-            else{
-                transitionController.transitionToInterlude(1.0,1.0);
-            }
-		}
-//	}
-
+    shouldClearAct = true;
+    
+    if(!bQuestionAsked && !returnToIntro) {
+        if(showingResearchMode){
+            transitionBackToResearch();
+        }
+        else{
+            transitionController.transitionToInterlude(1.0,1.0);
+        }
+    }
 }
 
+void CloudsPlaybackController::transitionBackToResearch(){
+    
+    hud.animateOff();
+    if(researchModeTopic){
+        transitionController.transitionToExploreMap(1.0,1.0);
+    }
+    else if(researchModePerson){
+        transitionController.transitionToExplorePeople(1.0,1.0);
+    }
+    else if(researchModeVisual){
+        //TODO:
+//      transitionController.transitionToExploreVisuals(1.0,1.0);
+    }
+    else{
+        ofLogError("CloudsPlaybackController::actEnded") << "Act ended from research mode without any of the three views set";
+    }
+    
+}
+    
 //--------------------------------------------------------------------
 void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args){
 	playClip(args.chosenClip);
