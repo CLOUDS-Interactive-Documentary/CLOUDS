@@ -264,20 +264,23 @@ void CloudsPlaybackController::threadedFunction(){
     introSequence->percentLoaded = 0.2;
 	
 	cout << "*****LOAD STEP MEDIA" << endl;
-	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-	}
-	else{
-		string defaultFilePath = GetCloudsDataPath(true) + "media/";
-		if(ofFile::doesFileExist(defaultFilePath)){
-			parser.setCombinedVideoDirectory(defaultFilePath);
-		}
-		else{
-			ofSystemAlertDialog("Could not find movie file path. \
-								Create a file called CloudsMovieDirectory.txt \
-								that contains one line, the path to your movies folder");	
-		}
-	}
+
+    parser.loadMediaAssets();// (ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+    
+//	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
+//		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+//	}
+//	else{
+//		string defaultFilePath = GetCloudsDataPath(true) + "media/";
+//		if(ofFile::doesFileExist(defaultFilePath)){
+//			parser.setCombinedVideoDirectory(defaultFilePath);
+//		}
+//		else{
+//			ofSystemAlertDialog("Could not find movie file path. \
+//								Create a file called CloudsMovieDirectory.txt \
+//								that contains one line, the path to your movies folder");	
+//		}
+//	}
 
     introSequence->percentLoaded = 0.3;
 

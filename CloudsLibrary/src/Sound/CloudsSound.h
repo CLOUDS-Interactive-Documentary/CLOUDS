@@ -55,8 +55,8 @@ class CloudsSound : public ofThread {
     // new callbacks
     void enterTunnel();
     void exitTunnel();
-    void enterClusterMap();
-    void exitClusterMap();
+//    void enterClusterMap();
+//    void exitClusterMap();
 	
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	

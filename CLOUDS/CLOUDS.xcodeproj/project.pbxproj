@@ -1440,7 +1440,7 @@
 		642721ED1AE81E5200A13289 /* SSAOPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA8A1189F3622006C9E4E /* SSAOPass.cpp */; };
 		642721EE1AE81E5200A13289 /* ControlFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A5018BF099000C1EB93 /* ControlFloor.cpp */; };
 		642721EF1AE81E5200A13289 /* TonicFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A9E18BF099000C1EB93 /* TonicFrames.cpp */; };
-		642721F01AE81E5200A13289 /* ForceSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226818BEBD6E00C1EB93 /* ForceSet.cpp */; };
+		642721F01AE81E5200A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642721F11AE81E5200A13289 /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8288618BEBE3A00C1EB93 /* ofxEasingSine.cpp */; };
 		642721F21AE81E5200A13289 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA914189F362A006C9E4E /* ofxOscMessage.cpp */; };
 		642721F31AE81E5200A13289 /* Calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DAB91189F3644006C9E4E /* Calibration.cpp */; };
@@ -1555,7 +1555,7 @@
 		642722601AE81E5200A13289 /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824F118BEBD6F00C1EB93 /* wStar.cpp */; };
 		642722611AE81E5200A13289 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8221C18BEBCEF00C1EB93 /* ofxFTGLFont.cpp */; };
 		642722621AE81E5200A13289 /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822C518BEBD6E00C1EB93 /* CloudsClusterNode.cpp */; };
-		642722631AE81E5200A13289 /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226C18BEBD6E00C1EB93 /* Points.cpp */; };
+		642722631AE81E5200A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642722641AE81E5200A13289 /* Generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A7E18BF099000C1EB93 /* Generator.cpp */; };
 		642722651AE81E5200A13289 /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8224B18BEBD6E00C1EB93 /* CloudsInputKinectOSC.cpp */; };
 		642722661AE81E5200A13289 /* ofxUICircleSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D5691943F2AF00AA81C1 /* ofxUICircleSlider.cpp */; };
@@ -1606,7 +1606,7 @@
 		642722931AE81E5200A13289 /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA3BD189F1CDE006C9E4E /* MSAObjCPointer.cpp */; };
 		642722941AE81E5200A13289 /* ofxField2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D828CC18BEBE6D00C1EB93 /* ofxField2D.cpp */; };
 		642722951AE81E5200A13289 /* RampedValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A8818BF099000C1EB93 /* RampedValue.cpp */; };
-		642722961AE81E5200A13289 /* Gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226A18BEBD6E00C1EB93 /* Gravity.cpp */; };
+		642722961AE81E5200A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642722971AE81E5200A13289 /* CloudsVisualSystemWebHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824E118BEBD6F00C1EB93 /* CloudsVisualSystemWebHistory.cpp */; };
 		642722981AE81E5200A13289 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8230318BEBD6E00C1EB93 /* Panel.cpp */; };
 		642722991AE81E5200A13289 /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D38D1943F19200AA81C1 /* VoxelMesh.cpp */; };
@@ -1738,7 +1738,7 @@
 		642723171AE81E5200A13289 /* OpenSteerDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA128189F1CD4006C9E4E /* OpenSteerDemo.cpp */; };
 		642723181AE81E5200A13289 /* CloudsVisualSystemOpenP5Caustics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D823CD18BEBD6E00C1EB93 /* CloudsVisualSystemOpenP5Caustics.cpp */; };
 		642723191AE81E5200A13289 /* container_prd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824CA18BEBD6F00C1EB93 /* container_prd.cpp */; };
-		6427231A1AE81E5200A13289 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226418BEBD6E00C1EB93 /* Controller.cpp */; };
+		6427231A1AE81E5200A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6427231B1AE81E5200A13289 /* ofxTLVideoThumb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827C118BEBDCF00C1EB93 /* ofxTLVideoThumb.cpp */; };
 		6427231C1AE81E5200A13289 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8244A18BEBD6F00C1EB93 /* Action.cpp */; };
 		6427231D1AE81E5200A13289 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8284218BEBE2100C1EB93 /* tinyxmlerror.cpp */; };
@@ -1746,7 +1746,7 @@
 		6427231F1AE81E5200A13289 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82B0418BF0A5300C1EB93 /* ofxGameCamera.cpp */; };
 		642723201AE81E5200A13289 /* ofxAssimpAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82C0618BF0CEC00C1EB93 /* ofxAssimpAnimation.cpp */; };
 		642723211AE81E5200A13289 /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8231818BEBD6E00C1EB93 /* CloudsVisualSystemConnectors.cpp */; };
-		642723221AE81E5200A13289 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226E18BEBD6E00C1EB93 /* State.cpp */; };
+		642723221AE81E5200A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642723231AE81E5200A13289 /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA51A9D767D005AA181 /* CloudsTransitionController.cpp */; };
 		642723241AE81E5200A13289 /* Synth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A9918BF099000C1EB93 /* Synth.cpp */; };
 		642723251AE81E5200A13289 /* SurfacePoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8238F18BEBD6E00C1EB93 /* SurfacePoint.cpp */; };
@@ -1897,7 +1897,7 @@
 		642723B61AE81E5200A13289 /* E2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8252D18BEBD7000C1EB93 /* E2.cpp */; };
 		642723B71AE81E5200A13289 /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82BBC18BF0C4100C1EB93 /* GpuParticles.cpp */; };
 		642723B81AE81E5200A13289 /* ControlMetroDivider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A5618BF099000C1EB93 /* ControlMetroDivider.cpp */; };
-		642723B91AE81E5200A13289 /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226618BEBD6E00C1EB93 /* Force.cpp */; };
+		642723B91AE81E5200A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642723BA1AE81E5200A13289 /* ofxEasingElastic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8287A18BEBE3A00C1EB93 /* ofxEasingElastic.cpp */; };
 		642723BB1AE81E5200A13289 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA330189F1CDC006C9E4E /* ofxDelaunay.cpp */; };
 		642723BC1AE81E5200A13289 /* ofxRParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D828E518BEBE6D00C1EB93 /* ofxRParticleSystem.cpp */; };
@@ -2102,7 +2102,7 @@
 		642724901AE81EAF00A13289 /* SSAOPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA8A1189F3622006C9E4E /* SSAOPass.cpp */; };
 		642724911AE81EAF00A13289 /* ControlFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A5018BF099000C1EB93 /* ControlFloor.cpp */; };
 		642724921AE81EAF00A13289 /* TonicFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A9E18BF099000C1EB93 /* TonicFrames.cpp */; };
-		642724931AE81EAF00A13289 /* ForceSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226818BEBD6E00C1EB93 /* ForceSet.cpp */; };
+		642724931AE81EAF00A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642724941AE81EAF00A13289 /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8288618BEBE3A00C1EB93 /* ofxEasingSine.cpp */; };
 		642724951AE81EAF00A13289 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA914189F362A006C9E4E /* ofxOscMessage.cpp */; };
 		642724961AE81EAF00A13289 /* Calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DAB91189F3644006C9E4E /* Calibration.cpp */; };
@@ -2217,7 +2217,7 @@
 		642725031AE81EAF00A13289 /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824F118BEBD6F00C1EB93 /* wStar.cpp */; };
 		642725041AE81EAF00A13289 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8221C18BEBCEF00C1EB93 /* ofxFTGLFont.cpp */; };
 		642725051AE81EAF00A13289 /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822C518BEBD6E00C1EB93 /* CloudsClusterNode.cpp */; };
-		642725061AE81EAF00A13289 /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226C18BEBD6E00C1EB93 /* Points.cpp */; };
+		642725061AE81EAF00A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642725071AE81EAF00A13289 /* Generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A7E18BF099000C1EB93 /* Generator.cpp */; };
 		642725081AE81EAF00A13289 /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8224B18BEBD6E00C1EB93 /* CloudsInputKinectOSC.cpp */; };
 		642725091AE81EAF00A13289 /* ofxUICircleSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D5691943F2AF00AA81C1 /* ofxUICircleSlider.cpp */; };
@@ -2271,7 +2271,7 @@
 		642725391AE81EAF00A13289 /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA3BD189F1CDE006C9E4E /* MSAObjCPointer.cpp */; };
 		6427253A1AE81EAF00A13289 /* ofxField2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D828CC18BEBE6D00C1EB93 /* ofxField2D.cpp */; };
 		6427253B1AE81EAF00A13289 /* RampedValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A8818BF099000C1EB93 /* RampedValue.cpp */; };
-		6427253C1AE81EAF00A13289 /* Gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226A18BEBD6E00C1EB93 /* Gravity.cpp */; };
+		6427253C1AE81EAF00A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6427253D1AE81EAF00A13289 /* CloudsVisualSystemWebHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824E118BEBD6F00C1EB93 /* CloudsVisualSystemWebHistory.cpp */; };
 		6427253E1AE81EAF00A13289 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8230318BEBD6E00C1EB93 /* Panel.cpp */; };
 		6427253F1AE81EAF00A13289 /* VoxelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D38D1943F19200AA81C1 /* VoxelMesh.cpp */; };
@@ -2406,7 +2406,7 @@
 		642725C01AE81EAF00A13289 /* OpenSteerDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA128189F1CD4006C9E4E /* OpenSteerDemo.cpp */; };
 		642725C11AE81EAF00A13289 /* CloudsVisualSystemOpenP5Caustics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D823CD18BEBD6E00C1EB93 /* CloudsVisualSystemOpenP5Caustics.cpp */; };
 		642725C21AE81EAF00A13289 /* container_prd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824CA18BEBD6F00C1EB93 /* container_prd.cpp */; };
-		642725C31AE81EAF00A13289 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226418BEBD6E00C1EB93 /* Controller.cpp */; };
+		642725C31AE81EAF00A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642725C41AE81EAF00A13289 /* ofxTLVideoThumb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827C118BEBDCF00C1EB93 /* ofxTLVideoThumb.cpp */; };
 		642725C51AE81EAF00A13289 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8244A18BEBD6F00C1EB93 /* Action.cpp */; };
 		642725C61AE81EAF00A13289 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8284218BEBE2100C1EB93 /* tinyxmlerror.cpp */; };
@@ -2414,7 +2414,7 @@
 		642725C81AE81EAF00A13289 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82B0418BF0A5300C1EB93 /* ofxGameCamera.cpp */; };
 		642725C91AE81EAF00A13289 /* ofxAssimpAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82C0618BF0CEC00C1EB93 /* ofxAssimpAnimation.cpp */; };
 		642725CA1AE81EAF00A13289 /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8231818BEBD6E00C1EB93 /* CloudsVisualSystemConnectors.cpp */; };
-		642725CB1AE81EAF00A13289 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226E18BEBD6E00C1EB93 /* State.cpp */; };
+		642725CB1AE81EAF00A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642725CC1AE81EAF00A13289 /* Synth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A9918BF099000C1EB93 /* Synth.cpp */; };
 		642725CD1AE81EAF00A13289 /* SurfacePoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8238F18BEBD6E00C1EB93 /* SurfacePoint.cpp */; };
 		642725CE1AE81EAF00A13289 /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D823F518BEBD6E00C1EB93 /* CloudsVisualSystemOpenP5Spaghetti.cpp */; };
@@ -2564,7 +2564,7 @@
 		6427265E1AE81EAF00A13289 /* E2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8252D18BEBD7000C1EB93 /* E2.cpp */; };
 		6427265F1AE81EAF00A13289 /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82BBC18BF0C4100C1EB93 /* GpuParticles.cpp */; };
 		642726601AE81EAF00A13289 /* ControlMetroDivider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A5618BF099000C1EB93 /* ControlMetroDivider.cpp */; };
-		642726611AE81EAF00A13289 /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8226618BEBD6E00C1EB93 /* Force.cpp */; };
+		642726611AE81EAF00A13289 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642726621AE81EAF00A13289 /* ofxEasingElastic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8287A18BEBE3A00C1EB93 /* ofxEasingElastic.cpp */; };
 		642726631AE81EAF00A13289 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA330189F1CDC006C9E4E /* ofxDelaunay.cpp */; };
 		642726641AE81EAF00A13289 /* ofxRParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D828E518BEBE6D00C1EB93 /* ofxRParticleSystem.cpp */; };
@@ -12860,7 +12860,7 @@
 				642721ED1AE81E5200A13289 /* SSAOPass.cpp in Sources */,
 				642721EE1AE81E5200A13289 /* ControlFloor.cpp in Sources */,
 				642721EF1AE81E5200A13289 /* TonicFrames.cpp in Sources */,
-				642721F01AE81E5200A13289 /* ForceSet.cpp in Sources */,
+				642721F01AE81E5200A13289 /* (null) in Sources */,
 				642721F11AE81E5200A13289 /* ofxEasingSine.cpp in Sources */,
 				642721F21AE81E5200A13289 /* ofxOscMessage.cpp in Sources */,
 				642721F31AE81E5200A13289 /* Calibration.cpp in Sources */,
@@ -12975,7 +12975,7 @@
 				642722601AE81E5200A13289 /* wStar.cpp in Sources */,
 				642722611AE81E5200A13289 /* ofxFTGLFont.cpp in Sources */,
 				642722621AE81E5200A13289 /* CloudsClusterNode.cpp in Sources */,
-				642722631AE81E5200A13289 /* Points.cpp in Sources */,
+				642722631AE81E5200A13289 /* (null) in Sources */,
 				642722641AE81E5200A13289 /* Generator.cpp in Sources */,
 				642722651AE81E5200A13289 /* CloudsInputKinectOSC.cpp in Sources */,
 				642722661AE81E5200A13289 /* ofxUICircleSlider.cpp in Sources */,
@@ -13026,7 +13026,7 @@
 				642722931AE81E5200A13289 /* MSAObjCPointer.cpp in Sources */,
 				642722941AE81E5200A13289 /* ofxField2D.cpp in Sources */,
 				642722951AE81E5200A13289 /* RampedValue.cpp in Sources */,
-				642722961AE81E5200A13289 /* Gravity.cpp in Sources */,
+				642722961AE81E5200A13289 /* (null) in Sources */,
 				642722971AE81E5200A13289 /* CloudsVisualSystemWebHistory.cpp in Sources */,
 				642722981AE81E5200A13289 /* Panel.cpp in Sources */,
 				642722991AE81E5200A13289 /* VoxelMesh.cpp in Sources */,
@@ -13158,7 +13158,7 @@
 				642723171AE81E5200A13289 /* OpenSteerDemo.cpp in Sources */,
 				642723181AE81E5200A13289 /* CloudsVisualSystemOpenP5Caustics.cpp in Sources */,
 				642723191AE81E5200A13289 /* container_prd.cpp in Sources */,
-				6427231A1AE81E5200A13289 /* Controller.cpp in Sources */,
+				6427231A1AE81E5200A13289 /* (null) in Sources */,
 				6427231B1AE81E5200A13289 /* ofxTLVideoThumb.cpp in Sources */,
 				6427231C1AE81E5200A13289 /* Action.cpp in Sources */,
 				6427231D1AE81E5200A13289 /* tinyxmlerror.cpp in Sources */,
@@ -13166,7 +13166,7 @@
 				6427231F1AE81E5200A13289 /* ofxGameCamera.cpp in Sources */,
 				642723201AE81E5200A13289 /* ofxAssimpAnimation.cpp in Sources */,
 				642723211AE81E5200A13289 /* CloudsVisualSystemConnectors.cpp in Sources */,
-				642723221AE81E5200A13289 /* State.cpp in Sources */,
+				642723221AE81E5200A13289 /* (null) in Sources */,
 				642723231AE81E5200A13289 /* CloudsTransitionController.cpp in Sources */,
 				642723241AE81E5200A13289 /* Synth.cpp in Sources */,
 				642723251AE81E5200A13289 /* SurfacePoint.cpp in Sources */,
@@ -13319,7 +13319,7 @@
 				642723B61AE81E5200A13289 /* E2.cpp in Sources */,
 				642723B71AE81E5200A13289 /* GpuParticles.cpp in Sources */,
 				642723B81AE81E5200A13289 /* ControlMetroDivider.cpp in Sources */,
-				642723B91AE81E5200A13289 /* Force.cpp in Sources */,
+				642723B91AE81E5200A13289 /* (null) in Sources */,
 				642723BA1AE81E5200A13289 /* ofxEasingElastic.cpp in Sources */,
 				642723BB1AE81E5200A13289 /* ofxDelaunay.cpp in Sources */,
 				642723BC1AE81E5200A13289 /* ofxRParticleSystem.cpp in Sources */,
@@ -13459,7 +13459,7 @@
 				642724901AE81EAF00A13289 /* SSAOPass.cpp in Sources */,
 				642724911AE81EAF00A13289 /* ControlFloor.cpp in Sources */,
 				642724921AE81EAF00A13289 /* TonicFrames.cpp in Sources */,
-				642724931AE81EAF00A13289 /* ForceSet.cpp in Sources */,
+				642724931AE81EAF00A13289 /* (null) in Sources */,
 				642724941AE81EAF00A13289 /* ofxEasingSine.cpp in Sources */,
 				642724951AE81EAF00A13289 /* ofxOscMessage.cpp in Sources */,
 				642724961AE81EAF00A13289 /* Calibration.cpp in Sources */,
@@ -13574,7 +13574,7 @@
 				642725031AE81EAF00A13289 /* wStar.cpp in Sources */,
 				642725041AE81EAF00A13289 /* ofxFTGLFont.cpp in Sources */,
 				642725051AE81EAF00A13289 /* CloudsClusterNode.cpp in Sources */,
-				642725061AE81EAF00A13289 /* Points.cpp in Sources */,
+				642725061AE81EAF00A13289 /* (null) in Sources */,
 				642725071AE81EAF00A13289 /* Generator.cpp in Sources */,
 				642725081AE81EAF00A13289 /* CloudsInputKinectOSC.cpp in Sources */,
 				642725091AE81EAF00A13289 /* ofxUICircleSlider.cpp in Sources */,
@@ -13628,7 +13628,7 @@
 				642725391AE81EAF00A13289 /* MSAObjCPointer.cpp in Sources */,
 				6427253A1AE81EAF00A13289 /* ofxField2D.cpp in Sources */,
 				6427253B1AE81EAF00A13289 /* RampedValue.cpp in Sources */,
-				6427253C1AE81EAF00A13289 /* Gravity.cpp in Sources */,
+				6427253C1AE81EAF00A13289 /* (null) in Sources */,
 				6427253D1AE81EAF00A13289 /* CloudsVisualSystemWebHistory.cpp in Sources */,
 				6427253E1AE81EAF00A13289 /* Panel.cpp in Sources */,
 				6427253F1AE81EAF00A13289 /* VoxelMesh.cpp in Sources */,
@@ -13763,7 +13763,7 @@
 				642725C01AE81EAF00A13289 /* OpenSteerDemo.cpp in Sources */,
 				642725C11AE81EAF00A13289 /* CloudsVisualSystemOpenP5Caustics.cpp in Sources */,
 				642725C21AE81EAF00A13289 /* container_prd.cpp in Sources */,
-				642725C31AE81EAF00A13289 /* Controller.cpp in Sources */,
+				642725C31AE81EAF00A13289 /* (null) in Sources */,
 				642725C41AE81EAF00A13289 /* ofxTLVideoThumb.cpp in Sources */,
 				642725C51AE81EAF00A13289 /* Action.cpp in Sources */,
 				642725C61AE81EAF00A13289 /* tinyxmlerror.cpp in Sources */,
@@ -13771,7 +13771,7 @@
 				642725C81AE81EAF00A13289 /* ofxGameCamera.cpp in Sources */,
 				642725C91AE81EAF00A13289 /* ofxAssimpAnimation.cpp in Sources */,
 				642725CA1AE81EAF00A13289 /* CloudsVisualSystemConnectors.cpp in Sources */,
-				642725CB1AE81EAF00A13289 /* State.cpp in Sources */,
+				642725CB1AE81EAF00A13289 /* (null) in Sources */,
 				642725CC1AE81EAF00A13289 /* Synth.cpp in Sources */,
 				642725CD1AE81EAF00A13289 /* SurfacePoint.cpp in Sources */,
 				642725CE1AE81EAF00A13289 /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */,
@@ -13923,7 +13923,7 @@
 				6427265F1AE81EAF00A13289 /* GpuParticles.cpp in Sources */,
 				A60F27111AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */,
 				642726601AE81EAF00A13289 /* ControlMetroDivider.cpp in Sources */,
-				642726611AE81EAF00A13289 /* Force.cpp in Sources */,
+				642726611AE81EAF00A13289 /* (null) in Sources */,
 				642726621AE81EAF00A13289 /* ofxEasingElastic.cpp in Sources */,
 				642726631AE81EAF00A13289 /* ofxDelaunay.cpp in Sources */,
 				642726641AE81EAF00A13289 /* ofxRParticleSystem.cpp in Sources */,
@@ -15783,8 +15783,8 @@
 					"MOUSE_INPUT=1",
 					"CLOUDS_APP=1",
 					"CLOUDS_HUD=1",
-					"CLOUDS_RELEASE=1",
 					"VHX_MEDIA=1",
+					"CLOUDS_RELEASE=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",

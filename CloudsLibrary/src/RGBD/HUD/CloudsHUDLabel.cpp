@@ -186,6 +186,11 @@ string CloudsHUDLabel::getText(){
 
 void CloudsHUDLabel::animateIn(bool force) {
     if (!force && bIsVisible) return;
+    //if we animate on again when its animating off
+    if(bIsAnimatingOut && clearTextOnAnimateOut){
+        text = "";
+        clearTextOnAnimateOut = false;
+    }
     bIsVisible = true;
     
     beginTime = ofGetElapsedTimef();

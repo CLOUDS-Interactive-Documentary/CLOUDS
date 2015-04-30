@@ -15,6 +15,24 @@ void CloudsVisualSystemReplicator::selfSetup(){
     #ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth());
     #endif
+    
+//    instanceShader.setupShaderFromSource(GL_VERTEX_SHADER, string(instanced_vert));
+//    instanceShader.setupShaderFromSource(GL_FRAGMENT_SHADER, string(instanced_frag));
+//    
+//    vboRect.setUsage(GL_STATIC_DRAW);
+//    vboRect.setMode(OF_PRIMITIVE_LINE_LOOP);
+//    vboRect.addVertex( ofVec3f(0,0,0) );
+//    vboRect.addVertex( ofVec3f(0,1,0) );
+//    vboRect.addVertex( ofVec3f(1,1,0) );
+//    vboRect.addVertex( ofVec3f(1,0,0) );
+//    vboRect.addIndex(0);
+//    vboRect.addIndex(1);
+//    vboRect.addIndex(2);
+//    vboRect.addIndex(3);
+//
+//    dataTex.allocate(1600,100, GL_RGBA32F, GL_RGBA, GL_FLOAT);
+//    dataTex.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+
 }
 
 void CloudsVisualSystemReplicator::selfSetupGuis(){
@@ -93,6 +111,7 @@ void CloudsVisualSystemReplicator::selfDraw(){
 	ofPushMatrix();
 	
 	ofPushStyle();
+    
 
 	ofNoFill();
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -112,32 +131,47 @@ void CloudsVisualSystemReplicator::selfDraw(){
 	
 	ofTranslate(0, 0, ofSignedNoise(local_time * 0.05) * 300);
 	
+    vector<ofMatrix4x4> mats;
+    
 	for (int i = 0; i < repl.size(); i++)
 	{
+        
 		Replicator::Node &n = repl[i];
+//        ofMatrix4x4 m;
+//        m *= ofMatrix4x4::newScaleMatrix(ofVec3f(n.param.w, n.param.h, 1.));
+//        m *= ofMatrix4x4::newRotationMatrix(n.param.rx, ofVec3f(1,0,0), n.param.ry, ofVec3f(0,1,0), 0, ofVec3f(0,0,1));
+//        m *= n.m;
+//        
+//        mats.push_back(m);
+        
 		n.beginTransform();
 		
 		ofRotateX(n.param.rx);
 		ofRotateY(n.param.ry);
 		
+        ofScale(n.param.w, n.param.h);
+        
 		ofRect(0, 0, n.param.w, n.param.h);
-
+        
 		n.endTransform();
 	}
-	
+    
 	ofSetLineWidth(1);
 	ofSetColor(255, 40);
-	
-	glBegin(GL_LINES);
-	for (int i = 0; i < repl.size(); i++)
+    
+	for (int i = 0; i < repl.size(); i+=2)
 	{
 		Replicator::Node &n = repl[i];
 		ofVec3f v(0);
 		v = v * n.m;
-		glVertex3fv(v.getPtr());
+        
+        Replicator::Node &n2 = repl[i+1];
+        ofVec3f v2(0);
+        v2 = v2 * n2.m;
+        
+        ofLine(v, v2);
 	}
-	glEnd();
-	
+//
 	ofPopStyle();
 	
 	ofPopMatrix();

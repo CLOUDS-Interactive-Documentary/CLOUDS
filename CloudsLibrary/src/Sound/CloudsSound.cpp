@@ -119,7 +119,8 @@ void CloudsSound::setup(){
 		}
 		
 		//load all rendered tracks
-		ofDirectory dir(GetCloudsDataPath(true) + "sound/renders/");
+//		ofDirectory dir(GetCloudsDataPath(true) + "sound/renders/");
+		ofDirectory dir(GetCloudsMediaPath() + "sound/renders/");
 		dir.allowExt("wav");
 		dir.allowExt("aiff");
 		dir.allowExt("mp3");
@@ -176,7 +177,7 @@ void CloudsSound::threadedFunction(){
 				frontMixLevel = track.mixLevel;
 			}
 			else{
-				frontPlayer->loadSound(GetCloudsDataPath(true) + "sound/renders/1.mp3");
+				frontPlayer->loadSound(GetCloudsMediaPath() + "sound/renders/1.mp3");
 				frontMixAttenuate = 1.0;
 				ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << track.trackPath;
 			}
@@ -466,7 +467,8 @@ void CloudsSound::enterTunnel()
 	QueuedTrack t;
 	t.mixLevel = 1.0;
 	t.startTime = ofGetElapsedTimef();
-	t.trackPath = GetCloudsDataPath(true) + "sound/renders/tunnel.mp3";
+    //JG: THE TUNNEL SOUND IS NOT STORED IN MEDIA PATH so it *always* works
+	t.trackPath = GetCloudsDataPath(true) + "sound/tunnel.mp3";
 	lock();
 	queuedTracks.push_back(t);
 	unlock();
@@ -488,6 +490,7 @@ void CloudsSound::exitTunnel()
     in_tunnel = false;
 }
 
+/*
 void CloudsSound::enterClusterMap()
 {
     string soundfile;
@@ -517,6 +520,7 @@ void CloudsSound::enterClusterMap()
     float ftime = 0.1;
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioUp, ftime);
 }
+ */
 
 void CloudsSound::playImmediately(string trackPath){
 	QueuedTrack t;
@@ -529,14 +533,14 @@ void CloudsSound::playImmediately(string trackPath){
 	
 }
 
-void CloudsSound::exitClusterMap()
-{
-    if(LUKEDEBUG) cout << "sound: exitClusterMap()" << endl;
-    
-    stopMusic();
-    // PFIELD_SCHED(0., fd, PF_CLUSTERMAP_BUS, "ramp_10");
-    whichdream = (whichdream+1)%3;
-}
+//void CloudsSound::exitClusterMap()
+//{
+//    if(LUKEDEBUG) cout << "sound: exitClusterMap()" << endl;
+//    
+//    stopMusic();
+//    // PFIELD_SCHED(0., fd, PF_CLUSTERMAP_BUS, "ramp_10");
+//    whichdream = (whichdream+1)%3;
+//}
 
 
 void CloudsSound::visualSystemBegan(CloudsVisualSystemEventArgs& args){

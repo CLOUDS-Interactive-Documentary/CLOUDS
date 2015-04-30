@@ -11,20 +11,12 @@
 #include "ofMain.h"
 #include "CloudsGlobal.h"
 #include "Poco/Environment.h"
-bool confirmedDataPath = false;
-bool usingDevelopmentFolder = false;
-CloudsVisualLevel visualLevel = FAST;
+
+CloudsVisualLevel visualLevel = PRETTY;
+
 string dataRootPath = "";
+string dataRootPathIgnored = "";
 string mediaRootPath = "";
-//--------------------------------------------------------------------
-string GetCloudsDataPath(bool ignored)
-{
-    if(!ignored){
-        return GetCloudsDataRootPath();
-    }else{
-        return GetCloudsMediaPath();
-    }
-}
 
 string GetEnvVar( string  key ) {
     string val;
@@ -39,46 +31,69 @@ string GetEnvVar( string  key ) {
     return val;
 }
 
-string GetCloudsMediaPath(){
+//--------------------------------------------------------------------
+string GetCloudsDataPath(bool ignored)
+{
+
+    if(dataRootPath == ""){
+        //Prioritize development build over media roots so we don't confuse ourselves if CLOUDS is installed on development machine
+        if(ofDirectory("../../../CloudsData").exists()){
+            dataRootPath = "../../../CloudsData/";
+            dataRootPathIgnored = "../../../CloudsDataIgnored/";
+        }
+        //temporary build folder
+        else if(ofDirectory("data/CloudsData").exists()){
+            dataRootPath = "CloudsData/";
+            dataRootPathIgnored = "CloudsDataIgnored/";
+        }
+        //installed
+        #ifdef TARGET_OSX
+        else if(ofFile("/Library/Application Support/CLOUDS/dataRoot.txt").exists()){
+            //JG TO DM: Note thate these are teh same. Let's combine ignored data into the main data folder for release.
+            dataRootPath = ofBufferFromFile("/Library/Application Support/CLOUDS/dataRoot.txt").getFirstLine();
+            dataRootPathIgnored = dataRootPath;
+        }
+        #else
+        //TODO: Windows data path
+        #endif
+    }
     
-    string path;
-    if(mediaRootPath == "" && ofFile::doesFileExist("/Library/Application Support/CLOUDS/mediaRoot.txt")){
-        ofFile file;
-        file.open("/Library/Application Support/CLOUDS/mediaRoot.txt", ofFile::ReadOnly);
-        ofBuffer buff = file.readToBuffer();
-        mediaRootPath = buff.getFirstLine();
-       
-    }
-    if(ofDirectory::doesDirectoryExist("../../../CloudsData_ignored/")){
-        mediaRootPath ="../../../CloudsData_ignored/";
-        return mediaRootPath;
-        
-    }
-    ofLog(OF_LOG_VERBOSE)<<mediaRootPath<<endl;
-    return mediaRootPath;
+    return ignored ? dataRootPathIgnored : dataRootPath;
 }
 
-string GetCloudsDataRootPath(){
+string GetCloudsMediaPath(){
+#ifdef VHX_MEDIA
+    ofLogError("GetCloudsMediaPath") << "VHX Should never use Media Path!";
+#else
+    if(mediaRootPath == ""){
+        //Prioritize development build over media roots so we don't confuse ourselves if CLOUDS is installed on development machine
+        if(ofDirectory("../../../CloudsDataMedia").exists()){
+            mediaRootPath = "../../../CloudsDataMedia/";
+        }
+        //temporary build folder
+        else if(ofDirectory("CloudsDataMedia/").exists()){
+            mediaRootPath = "CloudsDataMedia/";
+        }
+        else if(ofFile("/Library/Application Support/CLOUDS/mediaRoot.txt").exists()){
+            mediaRootPath = ofBufferFromFile("/Library/Application Support/CLOUDS/mediaRoot.txt").getFirstLine();
+        }
+    }
     
-    string path;
-    if(dataRootPath == "" && ofFile::doesFileExist("/Library/Application Support/CLOUDS/dataRoot.txt")){
-        ofFile file;
-        file.open("/Library/Application Support/CLOUDS/dataRoot.txt", ofFile::ReadOnly);
-        ofBuffer buff = file.readToBuffer();
-        dataRootPath = buff.getFirstLine();
-    }
-    if(ofDirectory::doesDirectoryExist("../../../CloudsData")){
-        dataRootPath = "../../../CloudsData/";
-        
-    }
-    ofLog(OF_LOG_VERBOSE)<<dataRootPath<<endl;
-    return dataRootPath;
+    ofLogVerbose("GetCloudsMediaPath") << mediaRootPath <<endl;
+    
+    return mediaRootPath;
+#endif
 }
+
+//string GetCloudsDataRootPath(bool ignored){
+//    
+//
+//}
 
 //--------------------------------------------------------------------
 string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder){
     //  building from src project file
-    string datapath;
+    //string datapath;
     //	if(ofDirectory("../../../CloudsData/").exists()){
     //		datapath = string("../../../CloudsData") + (ignoredFolder ? "_ignored" : "") + "/visualsystems/" + systemName + "/";
     //	}
@@ -91,10 +106,7 @@ string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder){
     //		datapath =  "../../../data/";
     //	}
     
-    
-    
-    return GetCloudsDataPath(ignoredFolder)+"visualsystems/" + systemName + "/";
-    
+    return GetCloudsDataPath(ignoredFolder) + "visualsystems/" + systemName + "/";
 }
 
 //--------------------------------------------------------------------

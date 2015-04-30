@@ -3,6 +3,8 @@
 #include "CloudsInputKinectOSC.h"
 
 
+//#define SCREENSHOT_MODE 1
+
 struct sortObject {
 	CloudsFCPParser* parser;
 	bool operator() (pair<int,string> keyA, pair<int,string> keyB) {
@@ -212,13 +214,12 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
         visualSystems.DeallocateSystems();
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[ self.selectedPresetIndex ].systemName );
 		
-		///SCREENCAPTURE MODE
+    #ifdef SCREENSHOT_MODE
 		currentVisualSystem->setNumSamples(4);
         //for print size
-//		currentVisualSystem->forceScreenResolution(1920*2, 1080*2);
 		currentVisualSystem->forceScreenResolution(152*30, 109*30);
 		currentVisualSystem->setDrawToScreen(false);
-		/////
+    #endif
 		
 		if(currentVisualSystem != NULL){
 			currentVisualSystem->setup();
@@ -319,6 +320,8 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 {
 	if(currentVisualSystem != NULL){
 		
+
+    #ifdef  SCREENSHOT_MODE
 		if(saveFbo.getWidth()  != currentVisualSystem->getSharedRenderTarget().getWidth() ||
 		   saveFbo.getHeight() != currentVisualSystem->getSharedRenderTarget().getHeight() )
 		{
@@ -337,9 +340,11 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
         ofRectangle videoRect(0, 0, saveFbo.getWidth(), saveFbo.getHeight());
         videoRect.scaleTo(drawRect);
 		saveFbo.draw(videoRect);
-		///
+    #else
+		currentVisualSystem->selfPostDraw();
+    #endif
         
-//		currentVisualSystem->selfPostDraw();
+
         
         if(runningTest){
             stringstream ss;
