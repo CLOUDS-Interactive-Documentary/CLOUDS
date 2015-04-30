@@ -14,6 +14,7 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 
 	enabledScreen = false;
 	enabledOculus = false;
+    bIsHeavy = false;
 	indefinite = false;
 	
 	defaultedToFamily = false;
@@ -33,6 +34,10 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	outroDuration = 0;
 	
 	hasFiles = false;
+}
+
+bool CloudsVisualSystemPreset::isHeavy(){
+    return bIsHeavy;
 }
 
 string CloudsVisualSystemPreset::getID(){

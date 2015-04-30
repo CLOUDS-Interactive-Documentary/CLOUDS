@@ -2,6 +2,23 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystemManager.h"
+#include "ofxXmlSettings.h"
+
+struct VS_PRESET {
+    
+    std::string name;
+    float fps;
+    float loadtime;
+    
+};
+
+struct VS {
+    
+    std::string name;
+    std::vector<VS_PRESET> presets;
+    
+};
+
 
 class testApp : public ofBaseApp{
   public:
@@ -22,7 +39,9 @@ class testApp : public ofBaseApp{
 	void shuffleSystemIndices();
 	void toLog( const std::string& to_log );
 	void logEnd();
-
+    void toSpeedLog( const std::string& vs_name, const std::string& preset, float loadtime, float avg_fps );
+    void writeSpeedLog();
+    
 	float elapsedTime( float& start_time );
 
 	CloudsVisualSystemManager systemManager;
@@ -32,9 +51,22 @@ class testApp : public ofBaseApp{
 	float lastSystemChangedTime;
 
 	ofBuffer log;
-	char logFilename[1024];
-	float startTime;
-	bool bForward;
-	vector<std::pair<string,string>> blackList;
+        
+	char     logFilename[1024];
+	float    startTime;
+	bool     bForward;
+    
+    bool     bEnableSpeedLog;
+    
+    int      vsFrameCount;
+    std::string version, card, vendor, speedLogFilenameXML, speedLogFilenameCSV;
+    bool     prevLoadedSpeedLog;
+    float    vsLoadTime;
+    float    vsStartTime;
+    float    vsAvgFPS;
+    float    vsLastSampleFrame, vsFPSLastSampleTime;
+    
+	vector< std::pair<string,string> > blackList;
+    vector<VS> vs;
 
 };

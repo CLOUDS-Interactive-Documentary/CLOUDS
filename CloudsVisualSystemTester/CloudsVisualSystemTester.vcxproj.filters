@@ -1153,6 +1153,21 @@
     <ClCompile Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesTimer.cpp">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
+      <Filter>addons\ofxLocalization\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsVisualSystemManager.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1376,6 +1391,15 @@
     </Filter>
     <Filter Include="addons\ofxAnimationPrimitives\src">
       <UniqueIdentifier>{12070dcd-23c0-492a-b6c4-a777b4a53767}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Core">
+      <UniqueIdentifier>{3e263008-7c63-4a17-a47d-dc3dd8f27b5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization">
+      <UniqueIdentifier>{77566d73-f3a6-4773-9549-35bf4e2306db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization\src">
+      <UniqueIdentifier>{65e8bdf6-38fa-4132-a6b3-d6089da162c2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2744,9 +2768,6 @@
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsEvents.h">
-      <Filter>CloudsLibrary\src\StoryEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClInclude>
@@ -2995,6 +3016,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxAnimationPrimitives\src\ofxAnimationPrimitivesTimer.h">
       <Filter>addons\ofxAnimationPrimitives\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h">
+      <Filter>addons\ofxLocalization\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsVisualSystemManager.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
+      <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

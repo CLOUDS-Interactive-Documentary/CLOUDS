@@ -335,6 +335,9 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
 			continue;
 		}
 #endif
+        if( getVisualLevel() == FAST && currentSelection[i].isHeavy() ){
+            continue;
+        }
 		
 		vector<string> presetTopics = visualSystems->keywordsForPreset(currentSelection[i]);
 		int presetScore = 0;
@@ -378,6 +381,11 @@ bool CloudsStoryEngine::getRandomInterlude(CloudsRun& run, CloudsVisualSystemPre
 			valid = false;
 		}
 #endif
+        
+        if( getVisualLevel() == FAST && validInterludes[i].isHeavy() ){
+            valid = false;
+        }
+        
 		if(!valid){
 			validInterludes.erase(validInterludes.begin() + i);
 		}
@@ -1132,6 +1140,9 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
     //	}
 #endif
     
+    if( getVisualLevel() == FAST && potentialNextPreset.isHeavy() ){
+        return 0;
+    }
     
     if(visualSystems->isClipSuppressed(potentialNextPreset.getID(), state.clip->getLinkName())){
         state.log << state.duration << "\t\t\t\tREJECTED  because the system is suppressed for this clip" << endl;
