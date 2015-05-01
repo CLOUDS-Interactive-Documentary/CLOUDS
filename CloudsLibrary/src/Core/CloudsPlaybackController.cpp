@@ -89,6 +89,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     cachedTransition = false;
     showedClusterMapNavigation = false;
 
+    getVisualLevel();
 	resetInterludeVariables();
 	
 

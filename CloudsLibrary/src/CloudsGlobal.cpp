@@ -13,8 +13,8 @@
 
 bool confirmedDataPath = false;
 bool usingDevelopmentFolder = false;
-CloudsVisualLevel visualLevel = PRETTY;
-
+static CloudsVisualLevel visualLevel = PRETTY;
+static bool loadedVisualLevel = false;
 //--------------------------------------------------------------------
 string GetCloudsDataPath(bool ignored)
 {
@@ -93,6 +93,24 @@ string relinkFilePath(string filePath){
 }
 
 //--------------------------------------------------------------------
+
+
+
 CloudsVisualLevel getVisualLevel(){
+    if(!loadedVisualLevel){
+        
+        auto visualConfig = ofFile( GetCloudsDataPath()+"/visual_quality_config.txt" );
+        auto quality = visualConfig.readToBuffer().getText();
+        
+        if( quality == "FAST"){
+            visualLevel = FAST;
+        }else if( quality == "PRETTY" ){
+            visualLevel = PRETTY;
+        }else{
+            visualLevel = PRETTY;
+        }
+        
+        loadedVisualLevel = true;
+    }
     return visualLevel;
 }
