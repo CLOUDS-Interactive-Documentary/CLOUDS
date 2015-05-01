@@ -24,10 +24,11 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	numClipsPlayed = 0;
 	
 	shouldLoadAct = shouldPlayAct = shouldClearAct = shouldPlayClusterMap = showingClusterMapNavigation = false;
-	selectedQuestion = NULL;
-	selectedQuestionClip = NULL;
+	//selectedQuestion = NULL;
+	//selectedQuestionClip = NULL;
 	forceCredits = false;
-	
+	resumingActFromIntro = false;
+    
     numActsCreated = 0;
     
     cachedTransition = false;
@@ -714,16 +715,24 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         }
 		else if(introSequence->isStartQuestionSelected()){
 			         
-			CloudsPortal* q = introSequence->getSelectedQuestion();
-			CloudsClip* clip = q->clip;
-			
-			map<string,string> questionsAndTopics = clip->getAllQuestionTopicPairs();
-			if(questionsAndTopics.size() > 0){
-				transitionController.transitionFromIntro(1.0);
-			}
-			else{
-				ofLogError("CloudsPlaybackController::update") << "Somehow selected an intro question with no topics " << clip->getLinkName();
-			}
+//			CloudsPortal* q = introSequence->getSelectedQuestion();
+//			CloudsClip* clip = q->clip;
+//			if(clip == NULL){
+//                //this means we are resuming
+//                clip = run.clipHistory.back();
+//                resumingActFromIntro = true;
+//                
+//                if(clip == NULL){
+//                    ofLogError("CLIP HISTORY IS NULL ON RESUME");
+//                }
+//            }
+//			map<string,string> questionsAndTopics = clip->getAllQuestionTopicPairs();
+//			if(questionsAndTopics.size() > 0){
+            transitionController.transitionFromIntro(1.0);
+//			}
+//			else{
+//				ofLogError("CloudsPlaybackController::update") << "Somehow selected an intro question with no topics " << clip->getLinkName();
+//			}
 		}
 	}
 	
@@ -993,8 +1002,11 @@ void CloudsPlaybackController::updateTransition(){
             clearAct();
         }
         
+        CloudsClip* selectedQuestionClip = NULL;
+        CloudsPortal* selectedQuestion = NULL;
         CloudsTransitionState lastState = transitionController.getPreviousState();
         CloudsTransitionState newState  = transitionController.getCurrentState();
+        
         //first clean up the state that just finished
         switch (lastState) {
 
@@ -1008,24 +1020,30 @@ void CloudsPlaybackController::updateTransition(){
                 
                 introSequence->stopSystem();
                 introSequence->exit();
+
+                showingVisualSystem = false;
                 
+                clearRenderTarget();
+
                 if(introSequence->isStartQuestionSelected()){
                     
-                    if(introSequence->shouldArchiveAct){
-                        run.archive();
-                        run.clear();
-                    }
+                    shouldPlayClusterMap = true;
                     
                     selectedQuestion = introSequence->getSelectedQuestion();
                     selectedQuestionClip = selectedQuestion->clip;
                     
-                    showingVisualSystem = false;
-                    clearRenderTarget();
-                    
-                    shouldPlayClusterMap = true;
-                    
-                    
-                    storyEngine.buildAct(run, selectedQuestionClip, selectedQuestion->topic, true);
+                    //resume
+                    if(selectedQuestionClip == NULL){
+                        storyEngine.buildAct(run, run.clipHistory.back(), run.topicHistory.back(), true);
+                    }
+                    //new
+                    else{
+                        if(introSequence->shouldArchiveAct){
+                            run.archive();
+                            run.clear();
+                        }
+                        storyEngine.buildAct(run, selectedQuestionClip, selectedQuestion->topic, true);
+                    }
                 }
                 
                 break;

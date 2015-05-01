@@ -104,6 +104,7 @@ class CloudsPlaybackController : public ofThread {
 	bool shouldPlayAct;
     bool shouldClearAct;
     bool shouldPlayClusterMap;
+    bool resumingActFromIntro;
 
     void drawRenderTarget();
     void drawInterludeInterface();
@@ -112,8 +113,8 @@ class CloudsPlaybackController : public ofThread {
     void drawKinectFeedback();
 #endif
 	//transition
-	CloudsPortal* selectedQuestion;
-	CloudsClip* selectedQuestionClip;
+	//CloudsPortal* selectedQuestion;
+	//CloudsClip* selectedQuestionClip;
 
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
@@ -134,7 +135,6 @@ class CloudsPlaybackController : public ofThread {
 	CloudsVisualSystemClusterMap* clusterMap;
     CloudsVisualSystemTwitter* peopleMap;
 	CloudsVisualSystem* interludeSystem;
-    
     
    //TODO: add these guys too!
     //CloudsVisualSystemVisuals* visualsMap;

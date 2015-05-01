@@ -500,6 +500,9 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
             newMenuItem.attenuation = .03;
             break;
         case CLOUDS_INTRO_RESUMING:
+            startQuestions.clear();
+            startQuestions.push_back(resumePortal);
+            timeline->play();
             resumeMenuItem.attenuation = .03;
             break;
         case CLOUDS_INTRO_RESEARCH:
@@ -794,6 +797,12 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip*>& possibleStartQu
 		startQuestions.push_back(q);
 	}
     
+    resumePortal.question = "RESUME THE STORY";
+    resumePortal.bLookAtCamera = true;
+    resumePortal.cam = &warpCamera;
+    resumePortal.clip = NULL;
+    resumePortal.setup();
+    
 	timeSinceLastPrompt = ofGetElapsedTimef();
 	positionStartQuestions();
 }
@@ -878,6 +887,8 @@ void CloudsIntroSequence::positionStartQuestions(){
 		startQuestions[i].hoverPosition.rotate(i%4 * .25 * 360, ofVec3f(0,0,1));
 		startQuestions[i].hoverPosition.z = 200 + tunnelMax.z*.25 + i * (1.0*questionWrapDistance / startQuestions.size() );
 	}
+    
+    resumePortal.hoverPosition = ofVec3f(0, 0, 200 + tunnelMax.z*.25);
 }
 
 bool CloudsIntroSequence::istStartQuestionHovering(){
@@ -1044,10 +1055,14 @@ void CloudsIntroSequence::drawPortals(){
 	CloudsPortal::shader.setUniform1f("maxDistance", questionAttenuateDistance.max);
 	
     ofSetColor(255);
-	for(int i = 0; i < startQuestions.size(); i++){
-		startQuestions[i].draw();
-	}
-	
+//    if(currentState == CLOUDS_INTRO_PLAYING){
+    for(int i = 0; i < startQuestions.size(); i++){
+        startQuestions[i].draw();
+    }
+//    }
+//    else if(currentState == CLOUDS_INTRO_RESUMING){
+//        resumePortal.draw();
+//    }
 	CloudsPortal::shader.end();
 	
 	ofPopStyle();

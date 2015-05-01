@@ -171,6 +171,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     float firstQuestionStoppedTime;
     
 	vector<CloudsPortal> startQuestions;
+    CloudsPortal resumePortal;
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;
 	float selectedQuestionTime;
