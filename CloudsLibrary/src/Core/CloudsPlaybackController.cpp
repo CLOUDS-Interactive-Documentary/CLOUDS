@@ -245,7 +245,6 @@ void CloudsPlaybackController::setup(){
 #endif
 	
 	cout << "*****LOAD STEP*** SHOWING INTRO" << endl;
-
 	showIntro();
 
 	cout << "*****LOAD STEP*** STARTING THREAD" << endl;
@@ -255,7 +254,8 @@ void CloudsPlaybackController::setup(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::threadedFunction(){
     introSequence->percentLoaded = 0.0;
-	
+
+    
 	cout << "*****LOAD STEP PARSER" << endl;
 
 	///START THREADED
@@ -281,6 +281,14 @@ void CloudsPlaybackController::threadedFunction(){
 //								that contains one line, the path to your movies folder");	
 //		}
 //	}
+    
+    cout << "******* LOAD STEP RUN" << endl;
+    if(run.load(&parser)){
+        introSequence->firstPlay = false;
+    }
+    else{
+        introSequence->firstPlay = true;
+    }
 
     introSequence->percentLoaded = 0.3;
 
@@ -434,7 +442,6 @@ void CloudsPlaybackController::showIntro(){
 	userReset = false;
 	
 #ifdef OCULUS_RIFT
-
     switch (getVisualLevel()) {
         case FAST:
             introSequence->loadPresetGUISFromName("Oculus_fast");
@@ -1004,6 +1011,11 @@ void CloudsPlaybackController::updateTransition(){
                 
                 if(introSequence->isStartQuestionSelected()){
                     
+                    if(introSequence->shouldArchiveAct){
+                        run.archive();
+                        run.clear();
+                    }
+                    
                     selectedQuestion = introSequence->getSelectedQuestion();
                     selectedQuestionClip = selectedQuestion->clip;
                     
@@ -1191,24 +1203,21 @@ void CloudsPlaybackController::updateTransition(){
                 //starting
 			case TRANSITION_INTRO_IN:
                 
-                if(currentVisualSystem == rgbdVisualSystem){
-					rgbdVisualSystem->transtionFinished();
-                    rgbdVisualSystem->stopSystem();
-				}
+//                if(currentVisualSystem == rgbdVisualSystem){
+//					rgbdVisualSystem->transtionFinished();
+//                    rgbdVisualSystem->stopSystem();
+//				}
                 
 				clusterMap->clearTraversal();
                 
                 if(introSequence != NULL){
                     delete introSequence;
                 }
-
-                //TODO: This needs to change with saving state
-                run.clear();
-                ///////////////
                 
                 introSequence = new CloudsIntroSequence();
                 introSequence->setup();
 				introSequence->setStartQuestions(startingNodes);
+                introSequence->firstPlay = false;
                 
 #ifdef OCULUS_RIFT
                 introSequence->hud = &hud;

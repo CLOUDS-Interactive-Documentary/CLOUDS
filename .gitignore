@@ -390,3 +390,5 @@ VSClusterMap/bin/data/SAVE_ClusterNodes.obj
 CloudsData/font/AxisStd-Regular.otf
 
 CloudsData/vhx/userpwd.txt
+
+CloudsData/runs/*.xml

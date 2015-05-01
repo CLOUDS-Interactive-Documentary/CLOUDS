@@ -107,6 +107,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     
     void loadingFinished();    
     float percentLoaded;
+    bool firstPlay;
+    bool shouldArchiveAct;
     
 	ofCamera& getCameraRef(){
 		return warpCamera;

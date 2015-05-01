@@ -55,6 +55,9 @@ CloudsIntroSequence::CloudsIntroSequence(){
         menuItems[i]->baseAlpha = 0;
         menuItems[i]->targetAlpha = 0;
     }
+    
+    firstPlay = false;
+    shouldArchiveAct = false;
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
@@ -64,7 +67,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	paused = false;
 	currentFontSize = -1;
 	currentFontExtrusion = -1;
-
+    
     percentLoaded = 0;
     loadingCompleteTime = 0;
 	caughtQuestion = NULL;
@@ -494,8 +497,10 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
         case CLOUDS_INTRO_PLAYING:
             timeline->play();
             playMenuItem.attenuation = .03;
+            newMenuItem.attenuation = .03;
             break;
         case CLOUDS_INTRO_RESUMING:
+            resumeMenuItem.attenuation = .03;
             break;
         case CLOUDS_INTRO_RESEARCH:
             timeline->play();
@@ -642,16 +647,27 @@ void CloudsIntroSequence::updateMenu(){
             changeState(CLOUDS_INTRO_RESEARCH);
         }
         else if(playMenuItem.clicked){
-            //TODO: switch if we have a saved run
-            //changeState(CLOUDS_INTRO_MENU_NEW_RESUME);
-            changeState(CLOUDS_INTRO_PLAYING);
+            if(firstPlay){
+                changeState(CLOUDS_INTRO_PLAYING);
+            }
+            else{
+                changeState(CLOUDS_INTRO_MENU_NEW_RESUME);
+            }
         }
         else if(aboutMenuItem.clicked){
-            //TODO: show about menu
             changeState(CLOUDS_INTRO_ABOUT);
         }
     }
-    
+    else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
+        if(newMenuItem.clicked){
+            shouldArchiveAct = true; // forces to clear run
+            changeState(CLOUDS_INTRO_PLAYING);
+        }
+        else if(resumeMenuItem.clicked){
+            //TODO: handle resume only portal
+            changeState(CLOUDS_INTRO_RESUMING);
+        }
+    }
 }
 
 void CloudsIntroSequence::updateQuestions(){
@@ -1446,11 +1462,10 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
         playMenuItem.hovered     = playMenuItem.bounds.inside(data.x, data.y);
         aboutMenuItem.hovered    = aboutMenuItem.bounds.inside(data.x, data.y);
     }
-    //TODO: hover menu buttons
-//	if(!clickTextActive && startQuestions.size() > 0){
-//		clickTextActive = true;
-//		clickTextActiveTime = mouseLastMovedTime;
-//	}
+    else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
+        newMenuItem.hovered      = newMenuItem.bounds.inside(data.x, data.y);
+        resumeMenuItem.hovered   = resumeMenuItem.bounds.inside(data.x, data.y);
+    }
 #endif
 }
 
@@ -1460,10 +1475,11 @@ void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
         researchMenuItem.pressed = researchMenuItem.bounds.inside(data.x, data.y);
         playMenuItem.pressed     = playMenuItem.bounds.inside(data.x, data.y);
         aboutMenuItem.pressed    = aboutMenuItem.bounds.inside(data.x, data.y);
-    
-		//startedOnclick  = true; //temp
-//		timeline->play();
 	}
+    else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
+        newMenuItem.pressed      = newMenuItem.bounds.inside(data.x, data.y);
+        resumeMenuItem.pressed   = resumeMenuItem.bounds.inside(data.x, data.y);
+    }
 	else{
 		for(int i = 0; i < startQuestions.size(); i++){
 			startQuestions[i].mousePressed(data);
@@ -1479,6 +1495,11 @@ void CloudsIntroSequence::selfMouseReleased(ofMouseEventArgs& data){
         playMenuItem.clicked     = playMenuItem.pressed && playMenuItem.bounds.inside(data.x, data.y);
         aboutMenuItem.clicked    = aboutMenuItem.pressed && aboutMenuItem.bounds.inside(data.x, data.y);
     }
+    else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
+        newMenuItem.clicked      = newMenuItem.pressed && newMenuItem.bounds.inside(data.x, data.y);
+        resumeMenuItem.clicked   = resumeMenuItem.pressed && resumeMenuItem.bounds.inside(data.x, data.y);
+    }
+    
     for(int i = 0; i < menuItems.size(); i++){
         menuItems[i]->pressed = false;
     }
