@@ -74,9 +74,13 @@ string GetCloudsMediaPath(){
         else if(ofDirectory("CloudsDataMedia/").exists()){
             mediaRootPath = "CloudsDataMedia/";
         }
+#ifdef TARGET_OSX
         else if(ofFile("/Library/Application Support/CLOUDS/mediaRoot.txt").exists()){
             mediaRootPath = ofBufferFromFile("/Library/Application Support/CLOUDS/mediaRoot.txt").getFirstLine();
         }
+#else
+        //TODO Windows Media Path Root
+#endif
     }
     
     ofLogVerbose("GetCloudsMediaPath") << mediaRootPath <<endl;
