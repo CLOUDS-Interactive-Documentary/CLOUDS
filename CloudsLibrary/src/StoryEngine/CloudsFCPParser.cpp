@@ -28,14 +28,14 @@ CloudsFCPParser::CloudsFCPParser(){
 
 void CloudsFCPParser::loadFromFiles(){
     setup(GetCloudsDataPath() + "fcpxml");
-	parseVOClips();
+#ifdef VHX_MEDIA
+    mapVHXMedia();
+#endif
+    parseVOClips();
     parseSpeakersVolume();
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
 	parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
-#ifdef VHX_MEDIA
-	parseVHXIds(GetCloudsDataPath() + "vhx/clip_ids.csv");
-#endif
 }
 
 void CloudsFCPParser::setup(const string& directory){
@@ -334,13 +334,12 @@ void CloudsFCPParser::parseClusterNetwork(const string& fileName){
 }
 
 #ifdef VHX_MEDIA
-void CloudsFCPParser::parseVHXIds(const string& path){
-    ofBuffer idbuf = ofBufferFromFile(path);
-    map<string, string> idHashMap;
-    
-    while(!idbuf.isLastLine()){
+void CloudsFCPParser::parseVHXIds(const string& path, map<string, string>& idMap){
+    ofBuffer buffer = ofBufferFromFile(path);
+
+    while(!buffer.isLastLine()){
         
-        string line = idbuf.getNextLine();
+        string line = buffer.getNextLine();
         if(line == ""){
             continue;
         }
@@ -352,24 +351,35 @@ void CloudsFCPParser::parseVHXIds(const string& path){
         string key = ofJoinString(split, "");
         trimVHXId(key);
         
-        idHashMap[key] = idstring;
+        idMap[key] = idstring;
     }
+}
 
+void CloudsFCPParser::mapVHXMedia(){
+    map<string, string> idMap;
+    parseVHXIds(GetCloudsDataPath() + "vhx/media.csv", idMap);
+    
     for(int i = 0; i < allClips.size(); i++){
         string key = allClips[i]->person + allClips[i]->name;
         trimVHXId(key);
         
-        if(idHashMap.find(key) != idHashMap.end()){
-            allClips[i]->vhxId = idHashMap[ key ];
+        if(idMap.find(key) != idMap.end()){
+            allClips[i]->vhxId = idMap[ key ];
         }
         else {
-            ofLogError("CloudsFCPParser::parseVHXIds") << "No VHX ID for clip " << allClips[i]->getLinkName() << " hash: " << key;
+            ofLogError("CloudsFCPParser::mapVHXMedia") << "No VHX ID for clip " << allClips[i]->getLinkName() << " hash: " << key;
         }
     }
     
 }
 
 void CloudsFCPParser::trimVHXId(string& str){
+    ofStringReplace(str, ".mov", "");
+    ofStringReplace(str, ".mp3", "");
+    ofStringReplace(str, ".mp4", "");
+    ofStringReplace(str, "%2B", "");
+    ofStringReplace(str, "%3C", "");
+    ofStringReplace(str, "%3F", "");
     ofStringReplace(str, " ", "");
     ofStringReplace(str, "-", "");
     ofStringReplace(str, "_", "");
@@ -378,10 +388,6 @@ void CloudsFCPParser::trimVHXId(string& str){
     ofStringReplace(str, "?", "");
     ofStringReplace(str, "'", "");
     ofStringReplace(str, "\"", "");
-    ofStringReplace(str, ".mov", "");
-    ofStringReplace(str, "%2B", "");
-    ofStringReplace(str, "%3C", "");
-    ofStringReplace(str, "%3F", "");
 }
 #endif
 
@@ -1267,12 +1273,13 @@ void CloudsFCPParser::loadMediaAssets(){
 	hasMediaAssetIndeces.clear();
 	hasMediaAssetAndQuestionIndeces.clear();
     hasCombinedAndIsStartingClipIndeces.clear();
-    #ifndef VHX_MEDIA
+
+#ifndef VHX_MEDIA
 	combinedVideoDirectory = GetCloudsMediaPath() + "media";
     if(!ofDirectory(combinedVideoDirectory).exists()){
         //TODO: TRIGGER USB KEY NOT PLUGGED IN MESSAGE!
     }
-    #endif
+#endif
     
     //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
