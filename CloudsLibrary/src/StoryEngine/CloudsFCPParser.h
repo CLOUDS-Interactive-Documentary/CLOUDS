@@ -144,7 +144,7 @@ class CloudsFCPParser {
     bool operator()(const string& a, const string& b);
     vector<string>& getContentKeywords();
 	vector<string>& getKeywordFamily(const string&  keyword);
-	ofVec2f getKeywordCentroid(const string&  keyword);
+	ofVec3f getKeywordCentroid(const string&  keyword);
 	
     void saveInterventions(const string&  interventionsFile);
 	void saveSpeakersVolume(const string&  speakerVolFile);

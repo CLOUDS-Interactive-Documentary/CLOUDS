@@ -721,11 +721,11 @@ void CloudsFCPParser::calculateCohesionMedianForKeywords(){
 
 }
 
-ofVec2f CloudsFCPParser::getKeywordCentroid(const string& keyword){
+ofVec3f CloudsFCPParser::getKeywordCentroid(const string& keyword){
     int index = getCentroidMapIndex(keyword);
     if(index == -1){
 		ofLogError("CloudsFCPParser::getKeywordCentroid") << "No centroid found for keyword: " << keyword << endl;
-		return ofVec2f(-1, -1);
+		return ofVec3f(-1, -1, -1);
     }
 	return keywordCentroids[index].second;
 }

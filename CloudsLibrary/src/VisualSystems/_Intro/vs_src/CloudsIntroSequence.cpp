@@ -1059,14 +1059,9 @@ void CloudsIntroSequence::drawPortals(){
 	CloudsPortal::shader.setUniform1f("maxDistance", questionAttenuateDistance.max);
 	
     ofSetColor(255);
-//    if(currentState == CLOUDS_INTRO_PLAYING){
     for(int i = 0; i < startQuestions.size(); i++){
         startQuestions[i].draw();
     }
-//    }
-//    else if(currentState == CLOUDS_INTRO_RESUMING){
-//        resumePortal.draw();
-//    }
 	CloudsPortal::shader.end();
 	
 	ofPopStyle();

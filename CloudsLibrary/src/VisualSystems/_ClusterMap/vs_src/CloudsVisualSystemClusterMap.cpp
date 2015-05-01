@@ -77,6 +77,7 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
     currentAssociationFont = 0;
     numTraversed = 0;
 	curQuestionCamRotation = 0;
+    displayQuestions = false;
 	///END INIT
 }
 
@@ -151,6 +152,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	followCamGui->setName("FollowCam");
 	followCamGui->addSlider("CAMERA DISTANCE", 10, 400, &traversCameraDistance);
 	followCamGui->addToggle("LOCK AXIS", &lockCameraAxis);
+	followCamGui->addToggle("USE TOPIC CAM", &useTopicCam);
 	followCamGui->addSlider("FOV", 4, 90, &traverseCamFOV);
 	followCamGui->addToggle("HIDE CURSOR", &hideCursors);
 
@@ -335,14 +337,19 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	questionGui->copyCanvasProperties(gui);
 	questionGui->setName("Questions");
 	questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-
+	toggle = questionGui->addToggle("ENABLE", &displayQuestions);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    questionGui->resetPlacer();
+    questionGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    questionGui->addWidgetToHeader(toggle);
+    
+    
     questionGui->addToggle("QUESTION CAM", &useQuestionCam);
 	questionGui->addSlider("QUESTION SCALE", 0, 1.0, &questionScale);
 	questionGui->addSlider("QUESTION CAM DIST", 0, 100, &questionCameraDistance);
 	questionGui->addRangeSlider("QUESTION TUG DISTANCE", 10, 300, &questionTugDistance.min, &questionTugDistance.max);
     questionGui->addSlider("QUESTCAM SPIN", .0, 1.0, &questionCameraSpinSpeed);
     questionGui->addSlider("QUESTCAM AXIS DIST", 0.0, 100.0, &questionCameraAxisDist);
-	
 	questionGui->addLabel("QUESTION TYPE");
 	questionGui->addIntSlider("FONT SIZE", 4, 100, &questionFontSize);
 	questionGui->addSlider("FONT SCALE", 0, 1.0, &questionFontScale);
@@ -897,7 +904,23 @@ void CloudsVisualSystemClusterMap::clearTraversal(){
 
 void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     currentTopic = topic;
+
+    bool positionFound = false;
+    for(int i = 0; i < topicPoints.size(); i++){
+        if(topicPoints[i].keyword == topic){
+            targetTopicPosition = topicPoints[i].position * meshExpansion;
+
+            targetCameraPosition = targetTopicPosition + targetTopicPosition.normalize() * traversCameraDistance;
+            positionFound = true;
+            break;
+        }
+    }
+    
+    if(!positionFound){
+        ofLogError("CloudsVisualSystemClusterMap::setCurrentTopic") << "Couldn't find position for topic " << topic;
+    }
 }
+
 
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemClusterMap::selfSetupSystemGui(){
@@ -979,8 +1002,6 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	if(!traverseNextFrame && autoTraversePoints && (firstClip || percentTraversed >= 1.0) ){
 		//traverseNextFrame = true;
 		traverse();
-//		cout << "Traversing! " << endl;
-	//	percentTraversed = 0.0;
 	}
 
 #ifdef OCULUS_RIFT
@@ -991,7 +1012,6 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	percentTraversed = ofMap(ofGetElapsedTimef(),
 							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
 							 0, 1.0, true);
-//	cout << "percentTraversed " << percentTraversed << endl;
 	if(autoTraversePoints) {
 		percentOptionsRevealed = 0.0;
 	}
@@ -1004,7 +1024,6 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 
 	
 	//UPDATE CAMERA
-//	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
 	if(cursorIsOverGUI()){
 		easyCamera.disableMouseInput();
 	}
@@ -1083,7 +1102,16 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
             questionCam.setPosition(selectQuestionStartPos.interpolate(selectedQuestion->hoverPosition, percentZoomed));
         }
     }
-
+    else if(useTopicCam){
+        //zone in on the topic;
+        topicNavCam.setPosition( topicNavCam.getPosition() + (targetCameraPosition - topicNavCam.getPosition())*.05 );
+        ofNode n = topicNavCam;
+        n.lookAt(targetTopicPosition);
+        ofQuaternion q;
+        q.slerp(.05, topicNavCam.getOrientationQuat(), n.getOrientationQuat());
+        topicNavCam.setOrientation(q);
+    }
+    
 	/////UPDATE COLOR
 	if(matchLineColor){
 		lineEdgeColorHSV = lineNodeColorHSV;
@@ -1387,7 +1415,7 @@ void CloudsVisualSystemClusterMap::updateQuestions(){
 }
 
 void CloudsVisualSystemClusterMap::drawQuestions(){
-    if(questions.size() == 0){
+    if(questions.size() == 0 || !displayQuestions){
         return;
     }
     
@@ -1554,7 +1582,7 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	//turn the background refresh off
 	if(drawType){
 		ofDisableLighting();
-		ofRectangle screenRect(0,0,getCanvasWidth(), getCanvasHeight());
+		ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());
 		for(int i = 0; i < topicPoints.size(); i++){
 
 			TopicPoint& p = topicPoints[i];
