@@ -18,17 +18,20 @@ string CloudsVHXRequest::userpwd = "";
 
 CloudsVHXRequest::CloudsVHXRequest()
     : ofThread()
+    , bNotifyComplete(false)
 {
     if (userpwd.size() == 0) {
         // Load and decrypt the user password from file.
         ofBuffer buffer = ofBufferFromFile(GetCloudsDataPath() + "vhx/userpwd.txt");
         userpwd = buffer.getFirstLine();
     }
+    
+    ofAddListener(ofEvents().update, this, &CloudsVHXRequest::update);
 }
 
 CloudsVHXRequest::~CloudsVHXRequest()
 {
-    
+    ofRemoveListener(ofEvents().update, this, &CloudsVHXRequest::update);
 }
 
 void CloudsVHXRequest::fetchSourceUrl(const string& vhxId)
@@ -45,7 +48,16 @@ void CloudsVHXRequest::fetchSourceUrl(const string& vhxId)
     
     url = "https://api.vhx.tv/videos/" + vhxId + "/files";
     
+    bNotifyComplete = false;
     startThread();
+}
+
+void CloudsVHXRequest::update(ofEventArgs& args)
+{
+    if (bNotifyComplete) {
+        ofNotifyEvent(completeEvent, completeArgs);
+        bNotifyComplete = false;
+    }
 }
 
 void CloudsVHXRequest::threadedFunction()
@@ -63,15 +75,14 @@ void CloudsVHXRequest::threadedFunction()
     string response = ssl.getResponseBody();
     ofLogVerbose("CloudsVHXRequest::threadedFunction") << "Response:" << endl << response;
     
-    CloudsVHXEventArgs args;
-    args.success = false;
+    completeArgs.success = false;
     
     ofxJSONElement json;
     if (json.parse(response) && json.isArray()) {
         const ofxJSONElement& element = json[0];
         if (!element.isNull() && element.isMember("_links")) {
-            args.success = true;
-            args.result = element["_links"]["source"]["href"].asString();
+            completeArgs.success = true;
+            completeArgs.result = element["_links"]["source"]["href"].asString();
         }
         else {
             ofLogError("CloudsVHXRequest::threadedFunction") << "Unexpected JSON format:" << endl << response;
@@ -83,5 +94,5 @@ void CloudsVHXRequest::threadedFunction()
     
     ssl.clear();
 
-    ofNotifyEvent(completeEvent, args);
+    bNotifyComplete = true;
 }

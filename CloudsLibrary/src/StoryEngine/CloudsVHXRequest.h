@@ -37,10 +37,14 @@ public:
     ofEvent<CloudsVHXEventArgs> completeEvent;
     
 protected:
+    void update(ofEventArgs& args);
     void threadedFunction();
 
     ofxSSL ssl;
     string url;
+    
+    CloudsVHXEventArgs completeArgs;
+    bool bNotifyComplete;
 
 private:
     static string userpwd;
