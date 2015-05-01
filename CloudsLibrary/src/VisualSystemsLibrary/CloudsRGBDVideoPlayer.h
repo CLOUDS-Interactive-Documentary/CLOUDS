@@ -106,9 +106,7 @@ public:
 
 	ofPtr<ofVideoPlayer> currentPlayer;
 	ofPtr<ofVideoPlayer> nextPlayer;
-
-	ofPtr<ofSoundPlayer> currentVoiceoverPlayer;
-	ofPtr<ofSoundPlayer> nextVoiceoverPlayer;
+    
 	bool nextClipIsVO;
     bool clipPrerolled;
 	bool playerPaused;
