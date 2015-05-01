@@ -360,8 +360,8 @@ void CloudsIntroSequence::updateCamera(){
 		ofVec2f wobble = ofVec2f(ofSignedNoise(100 + ofGetElapsedTimef()*camWobbleSpeed),
 								 ofSignedNoise(200 + ofGetElapsedTimef()*camWobbleSpeed)) * camWobbleRange;
 		if(!paused){
-			warpCamera.dolly(-cameraForwardSpeed);
-			warpCamera.setPosition(wobble.x, wobble.y, warpCamera.getPosition().z);
+			//warpCamera.dolly(-);
+			warpCamera.setPosition(wobble.x, wobble.y, warpCamera.getPosition().z + cameraForwardSpeed);
 		}
 		else{
 			warpCamera.setPosition(wobble.x, wobble.y, 0);
@@ -714,8 +714,11 @@ void CloudsIntroSequence::updateQuestions(){
 			}
 		}
 		
-		if(&curQuestion == caughtQuestion){
-			slowDownFactor = 1.0;
+		if(&curQuestion == caughtQuestion ||
+           (firstQuestionStopped && currentState == CLOUDS_INTRO_RESUMING) ||
+           (caughtQuestion != NULL && curQuestion.tunnelQuadrantIndex == caughtQuestion->tunnelQuadrantIndex) )
+        {
+			slowDownFactor = 1.0;  //question fully hovers
 		}
 		
 		curQuestion.hoverPosition.z += cameraForwardSpeed * slowDownFactor;
@@ -889,6 +892,7 @@ void CloudsIntroSequence::positionStartQuestions(){
 	}
     
     resumePortal.hoverPosition = ofVec3f(0, 0, 200 + tunnelMax.z*.25);
+    resumePortal.tunnelQuadrantIndex = 0;
 }
 
 bool CloudsIntroSequence::istStartQuestionHovering(){
@@ -1142,7 +1146,50 @@ void CloudsIntroSequence::drawHelperType(){
 	}
 
 	#endif
-	
+
+    if(firstQuestionStopped && currentState != CLOUDS_INTRO_RESUMING){
+        ofPushMatrix();
+        
+        float questionhintAlpha = ofMap(ofGetElapsedTimef(),
+                                        firstQuestionStoppedTime, firstQuestionStoppedTime+2,
+                                        0.0, .2, true) * (1.0-helperTextOpacity);
+        
+        string hintText = GetTranslationForString("SELECT A QUESTION");
+        //string hintText = GetTranslationForString("CLICK TO SELECT");
+        
+        float hintTextWidth  = helperFont.stringWidth(hintText);
+		float hintTextHeight = helperFont.stringHeight(hintText);
+		basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
+#ifdef OCULUS_RIFT
+		getOculusRift().multBillboardMatrix( basePosition );
+#else
+		ofTranslate(basePosition);
+#endif
+		ofRotate(180, 0, 0, 1); //flip around
+		ofScale(helperFontScale*.8,
+				helperFontScale*.8,
+				helperFontScale*.8);
+        
+        if(caughtQuestion == NULL){
+            ofSetColor(255, 255*questionhintAlpha);
+            helperFont.drawString(hintText, -hintTextWidth*.5, hintTextHeight*.5 );
+        }
+        else{
+            float questionHoldAlpha = ofMap(caughtQuestion->hoverPercentComplete, .2, .3, 0.0, .2, true);
+            ofSetColor(255, 255*questionHoldAlpha);
+#ifdef MOUSE_INPUT
+			string textPrompt = GetTranslationForString("CLICK TO SELECT");
+#else
+			string textPrompt = GetTranslationForString("HOLD TO SELECT");
+#endif
+            hintTextWidth = helperFont.stringWidth(textPrompt);
+            hintTextHeight = helperFont.stringHeight(textPrompt);
+            helperFont.drawString(textPrompt, -hintTextWidth*.5, hintTextHeight*.5 );
+        }
+        
+        ofPopMatrix();
+    }
+    
 	if(caughtQuestion != NULL){
 		basePosition = caughtQuestion->hoverPosition;
 		helpHoverText = GetTranslationForString( caughtQuestion->question );
@@ -1201,20 +1248,13 @@ void CloudsIntroSequence::drawHelperType(){
 		
         bool showAbove = !bUseOculusRift && caughtQuestion != NULL && caughtQuestion->tunnelQuadrantIndex == 2;
 		int yOffsetMult = (showAbove) ? -1 : 1;
-		//helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY - hoverTextHeight/2) );
         
-//        cout << "helper text opacity " << helperTextOpacity << endl;
-//        cout << "helper font y " << helperFontY << endl;
 		if(twoLines){
             if(showAbove){
-//                cout << "drawing " << helpHoverText << " w " << hoverTextWidth << " h " <<  helperFontY + hoverTextHeight*1.5 << endl;
-//                cout << "drawing " << secondLine << " w " << hoverTextWidth << " h " << hoverTextHeight << endl;
                 helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
                 helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
             }
             else{
-//                cout << "drawing " << secondLine << " w " << hoverTextWidth << " h " <<  hoverTextHeight << endl;
-//                cout << "drawing " << helpHoverText << " w " << hoverTextWidth << " h " << hoverTextHeight << endl;
                 helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
                 helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
             }
@@ -1224,46 +1264,6 @@ void CloudsIntroSequence::drawHelperType(){
         }
 		ofPopMatrix();
 	}
-    
-    if(firstQuestionStopped){
-        ofPushMatrix();
-        
-        float questionhintAlpha = ofMap(ofGetElapsedTimef(),
-                                        firstQuestionStoppedTime, firstQuestionStoppedTime+2,
-                                        0.0, .2, true) * (1.0-helperTextOpacity);
-        
-        float hintTextWidth  = helperFont.stringWidth(GetTranslationForString("SELECT A QUESTION"));
-		float hintTextHeight = helperFont.stringHeight(GetTranslationForString("SELECT A QUESTION"));
-		basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
-#ifdef OCULUS_RIFT
-		getOculusRift().multBillboardMatrix( basePosition );
-#else
-		ofTranslate(basePosition);
-#endif
-		ofRotate(180, 0, 0, 1); //flip around
-		ofScale(helperFontScale*.8,
-				helperFontScale*.8,
-				helperFontScale*.8);
-        
-        ofSetColor(255, 255*questionhintAlpha);
-		helperFont.drawString(GetTranslationForString("SELECT A QUESTION"), -hintTextWidth*.5, hintTextHeight*.5 );
-
-        if(caughtQuestion != NULL){
-            float questionHoldAlpha = ofMap(caughtQuestion->hoverPercentComplete, .2, .3, 0.0, .2, true);
-            ofSetColor(255, 255*questionHoldAlpha);
-#ifdef MOUSE_INPUT
-			string textPrompt = GetTranslationForString("CLICK TO SELECT");
-//            string textPrompt = GetTranslationForString("");
-#else
-			string textPrompt = GetTranslationForString("HOLD TO SELECT");
-#endif
-            hintTextWidth = helperFont.stringWidth(textPrompt);
-            hintTextHeight = helperFont.stringWidth(textPrompt);
-            helperFont.drawString(textPrompt, -hintTextWidth*.5, hintTextHeight*.5 );
-        }
-        
-        ofPopMatrix();
-    }
 
     ofEnableLighting();
 	glEnable(GL_DEPTH_TEST);
