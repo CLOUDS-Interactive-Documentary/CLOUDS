@@ -1811,9 +1811,14 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
     
 	bool clipLoadSuccessfullyLoaded = false;
 	if(clip->voiceOverAudio){
-		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath,
+#ifdef VHX_MEDIA
+		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->vhxSourceVideoUrl,
                                                                                       subtitlesPath);
-	}
+#else
+        clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath,
+                                                                                      subtitlesPath);
+#endif
+    }
 	else{
 #ifdef VHX_MEDIA
         cout << "PREROLL LOADING URL " << clip->vhxSourceVideoUrl << endl;

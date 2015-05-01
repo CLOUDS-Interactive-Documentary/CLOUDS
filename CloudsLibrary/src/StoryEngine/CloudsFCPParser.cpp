@@ -93,8 +93,12 @@ void CloudsFCPParser::parseVOClips(){
 		}
 	}
 
+#ifdef VHX_MEDIA
+    map<string, string> idMap;
+    parseVHXIds(GetCloudsDataPath() + "vhx/vo.csv", idMap);
+#endif
 
-	ofBuffer voiceOverData = ofBufferFromFile(GetCloudsDataPath() + "VO/_voiceover_data.txt");
+    ofBuffer voiceOverData = ofBufferFromFile(GetCloudsDataPath() + "VO/_voiceover_data.txt");
 	
 	while(!voiceOverData.isLastLine()){
 		string line = voiceOverData.getNextLine();
@@ -115,7 +119,18 @@ void CloudsFCPParser::parseVOClips(){
 		CloudsClip* clip = new CloudsClip();
 		clip->voiceOverAudio = true;
 		//clip->voiceOverAudioPath = GetCloudsDataPath(true) + "VO/" + fileName;
-#ifndef VHX_MEDIA
+#ifdef VHX_MEDIA
+        string key = fileName;
+        trimVHXId(key);
+        if(idMap.find(key) != idMap.end()){
+            clip->vhxId = idMap[ key ];
+            clip->hasMediaAsset = true;
+        }
+        else {
+            ofLogError("CloudsFCPParser::parseVOClips") << "No VHX ID for clip " << fileName << " hash: " << key;
+            clip->hasMediaAsset = false;
+        }
+#else
 		clip->voiceOverAudioPath = GetCloudsMediaPath() + "VO/" + fileName;
 		clip->hasMediaAsset = ofFile(clip->voiceOverAudioPath).exists();
 		clip->sourceVideoFilePath = clip->voiceOverAudioPath;
@@ -126,7 +141,7 @@ void CloudsFCPParser::parseVOClips(){
 		else {
 			clip->startFrame = 0;
 			if(voCacheExists){
-				clip->endFrame = voiceoverDuration[ ofFilePath::getBaseName(clip->voiceOverAudioPath) ] * 24.;
+				clip->endFrame = voiceoverDuration[ ofFilePath::getBaseName(fileName) ] * 24.;
 				if(clip->endFrame == 0){
 					ofLogError("CloudsFCPParser::parseVOClips") << "Voiceover duration not found for " << fileName;
 				}
@@ -374,6 +389,7 @@ void CloudsFCPParser::mapVHXMedia(){
 }
 
 void CloudsFCPParser::trimVHXId(string& str){
+    ofStringReplace(str, "VO-", "");
     ofStringReplace(str, ".mov", "");
     ofStringReplace(str, ".mp3", "");
     ofStringReplace(str, ".mp4", "");
@@ -1278,22 +1294,25 @@ void CloudsFCPParser::loadMediaAssets(){
 	combinedVideoDirectory = GetCloudsMediaPath() + "media";
     if(!ofDirectory(combinedVideoDirectory).exists()){
         //TODO: TRIGGER USB KEY NOT PLUGGED IN MESSAGE!
+        cout << combinedVideoDirectory << endl;
+        
     }
 #endif
     
     //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
         
-        #ifdef VHX_MEDIA
-        allClips[i]->hasMediaAsset = allClips[i]->voiceOverAudio ||
-                                     (allClips[i]->vhxId.size() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
-        #else
-		allClips[i]->combinedVideoPath = combinedVideoDirectory + "/" + allClips[i]->getCombinedMovieFile();
-		allClips[i]->combinedCalibrationXMLPath = GetCloudsDataPath() + "clipxml/" + allClips[i]->getCombinedCalibrationXML();
-		allClips[i]->hasMediaAsset = allClips[i]->voiceOverAudio ||
-                                     (ofFile(allClips[i]->combinedVideoPath).exists() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
+        // voiceOverAudio clips already have hasMediaAsset set from parseVOClips()
+        if (!allClips[i]->voiceOverAudio) {
+            allClips[i]->combinedCalibrationXMLPath = GetCloudsDataPath() + "clipxml/" + allClips[i]->getCombinedCalibrationXML();
+#ifdef VHX_MEDIA
+            allClips[i]->hasMediaAsset = (allClips[i]->vhxId.size() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
+#else
+            allClips[i]->combinedVideoPath = combinedVideoDirectory + "/" + allClips[i]->getCombinedMovieFile();
+            allClips[i]->hasMediaAsset = (ofFile(allClips[i]->combinedVideoPath).exists() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
         //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
-        #endif
+#endif
+        }
         
 		if(allClips[i]->hasMediaAsset){
 			hasMediaAssetIndeces.push_back(i);
