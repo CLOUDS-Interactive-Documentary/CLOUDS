@@ -932,7 +932,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(selectedTopic != ""){
             
             ///TODO!!
-            //clusterMap->highlightTopic(selectedTopic);
+            clusterMap->setCurrentTopic(selectedTopic);
 
             if(hud.isItemConfirmed()){
                 showingExploreMap = false;
@@ -2033,8 +2033,8 @@ void CloudsPlaybackController::showExploreMap(){
     }
 
 
-    //TODO fix the preset
-    clusterMap->loadPresetGUISFromName("FollowTraverse_Screen");
+    //TODO fix the preset for fast
+    clusterMap->loadPresetGUISFromName("TopicResearch_pretty");
 
     clusterMap->playSystem();
     clusterMap->clearTraversal();
