@@ -3,17 +3,12 @@ if ! [ -d "/Library/Application Support/CLOUDS" ]; then
 mkdir /Library/Application\ Support/CLOUDS;
 fi
 
-if ! [ -d "/Library/Application Support/CLOUDS/data" ]; then 
-mkdir /Library/Application\ Support/CLOUDS/data;
+if [ -d "/Library/Application Support/CLOUDS" ]; then
+mv $DSTROOT/CloudsData /Library/Application\ Support/CLOUDS;
+rm -rf $DSTROOT/CloudsData;
 fi
 
-if [ -d "/Library/Application Support/CLOUDS/data" ]; then
-rm -rf /Library/Application\ Support/CLOUDS/data/*;
-mv /Applications/CloudsData/* /Library/Application\ Support/CLOUDS/data;
-rm -rf /Applications/CloudsData/;
-fi
-
-mv /Applications/dataRoot.txt /Library/Application\ Support/CLOUDS;
-mv /Applications/mediaRoot.txt /Library/Application\ Support/CLOUDS;
+mv $DSTROOT/dataRoot.txt /Library/Application\ Support/CLOUDS;
+mv $DSTROOT/mediaRoot.txt /Library/Application\ Support/CLOUDS;
 
 exit 0
