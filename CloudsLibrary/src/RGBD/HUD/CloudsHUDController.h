@@ -19,14 +19,54 @@
 #include "CloudsSpeaker.h"
 
 typedef enum {
-	CLOUDS_HUD_QUESTION        = 0x0001,
-	CLOUDS_HUD_LOWER_THIRD     = 0x0010,
-	CLOUDS_HUD_PROJECT_EXAMPLE = 0x0100,
-	CLOUDS_HUD_MAP             = 0x1000,
-    
-	CLOUDS_HUD_FULL            = 0x1111,
-    CLOUDS_HUD_LAYER_COUNT     = 4
+	CLOUDS_HUD_HOME = 0,
+	CLOUDS_HUD_QUESTION,
+	CLOUDS_HUD_LOWER_THIRD,
+	CLOUDS_HUD_PROJECT_EXAMPLE,
+	CLOUDS_HUD_PAUSE,
+	CLOUDS_HUD_NEXT,
+	CLOUDS_HUD_RESEARCH_LIST,
+	CLOUDS_HUD_RESEARCH_NAV,
+	CLOUDS_HUD_RESEARCH_SHUFFLE,
+	CLOUDS_HUD_ABOUT,
+
+    CLOUDS_HUD_ALL
 } CloudsHUDLayerSet;
+
+typedef enum{
+    CLOUDS_HUD_RESEARCH_TAB_TOPICS = 0,
+    CLOUDS_HUD_RESEARCH_TAB_PEOPLE,
+    CLOUDS_HUD_RESEARCH_TAB_VISUALS,
+} CloudsHUDResearchTab;
+
+
+class CloudsHUDResearchButton {
+  public:
+    CloudsHUDResearchButton(){
+        top = 0;
+        visible = false;
+        hovered = false;
+        pressed = false;
+        clicked = false;
+    }
+    
+    float top;
+    bool visible;
+    bool hovered;
+    bool pressed;
+    bool clicked;
+    ofRectangle selectRect;
+    ofRectangle selectRectScaled;
+    string tag;
+    string label;
+};
+
+class CloudsHUDResearchList{
+ public:
+    vector<CloudsHUDResearchButton> buttons;
+    float totalScrollHeight;
+    float scrollPosition;
+};
 
 #ifdef OCULUS_RIFT
 typedef enum {
@@ -35,6 +75,7 @@ typedef enum {
 	CLOUDS_HUD_BILLBOARD_OCULUS
 } CloudsHUDBillboard;
 #endif
+
 
 class CloudsClip;
 class CloudsHUDController {
@@ -49,36 +90,47 @@ class CloudsHUDController {
     void draw3D(ofCamera* cam, ofVec2f offset = ofVec2f::zero());
 #endif
 
-	void setHomeEnabled(bool enable);
-    bool isHomeEnabled();
     void setHudEnabled(bool enable);
     bool isHudEnabled();
 	
 	//mouse for clicking reset
 	bool isResetHit();
+	bool isResearchResetHit();
+	bool isNextHit();
+	bool isExploreMapHit();
+	bool isSeeMorePersonHit();
+    
+    bool selectedMapTab();
+    bool selectedPeopleTab();
+    bool selectedVisualsTab();
+    
 	void mouseMoved(ofMouseEventArgs& args);
 	void mousePressed(ofMouseEventArgs& args);
 	void mouseReleased(ofMouseEventArgs& args);
 
 	void clearQuestion();
-	
-	void buildLayerSets();
-    void calculateFontSizes();
-    int getFontSizeForMesh( SVGMesh* textMesh );
-	
-	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
-	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
+    void clearClip();
+    void clearVisualSystem();
+    
+    bool didPause();
+    bool didUnpause();    
+    bool isPaused();
+    
+    void showAbout();
+    void hideAbout();
+    
+	void animateOn(CloudsHUDLayerSet layer);
+	void animateOff(CloudsHUDLayerSet layer);
+    void animateOff();
+    
 	void respondToClip(CloudsClip* clip);
-    void playCued();
+	void respondToSystem(const CloudsVisualSystemPreset& preset);
 	
-	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
+	map<CloudsHUDLayerSet, CloudsHUDLayer* > layers;
+    
 	vector<CloudsHUDLayer*> allLayers;
 	
-	void saveGuiSettings();
-	void toggleGuis();
-	
 	void questionHoverOn(const string& question, bool animate = true);
-	void questionHoverOff();
 	
 	ofxUISuperCanvas *hudGui;
 	CloudsHUDHomeButton home;
@@ -86,6 +138,7 @@ class CloudsHUDController {
 	void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);
 	void clipBegan(CloudsClipEventArgs& args);
+    void clipEnded(); //not called by event system
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
 	void questionProposed(CloudsQuestionEventArgs& args);
@@ -106,71 +159,124 @@ class CloudsHUDController {
     map<CloudsHUDLayerSet, CloudsHUDBillboard> layerBillboard;
 #endif
 
-
+    void pause();
+    void unpause();
+    
+    void setTopics(const set<string>& topics);
+    bool isItemSelected();
+    bool isItemConfirmed();
+    void clearSelection();
+    
+    string getSelectedItem();
+    
+    void populateSpeakers();
+    
   protected:
 	
-    void populateLowerThird(const string& firstName="", const string& lastName="", const string& title="", const string& location="", const string& textbox="", bool forceOn=false );
-    void populateProjectExample(const string& videoPath="", const string& textLeft="", const string& textRight="", const string& textTop="", bool forceOn=false);
-    void populateQuestion(const string& question="", bool forceOn=false, bool animate = true);
-    void populateMap(const string& leftBox="", const string& rightBox="", bool forceOn=false);
+    void populateLowerThird(const string& firstName,
+                            const string& lastName,
+                            const string& title,
+                            const string& location,
+                            const string& textbox);
     
+    void populateVisualSystem(const string& creatorsName,
+                              const string& systemName);
+    
+    void populateProjectExample(const string& videoPath,
+                                const string& textLeft,
+                                const string& textRight,
+                                const string& textTop,
+                                bool forceOn = false);
+    
+    void populateQuestion(const string& question,
+                          bool forceOn=false,
+                          bool animate = true);
+    
+    
+   	void buildLayerSets();
+    void calculateFontSizes();
+    int getFontSizeForMesh( SVGMesh* textMesh );
+ 
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
+    
+    
+    /////////////// SCROLL VARIABLES
+    //////////////
+    ofRectangle   researchScrollBounds;
+    ofRectangle   researchScrollBoundsScaled;
+    ofRectangle   researchScrollUpBounds;
+    ofRectangle   researchScrollDownBounds;
+    ofRectangle   researchScrollUpBoundsScaled;
+    ofRectangle   researchScrollDownBoundsScaled;
+    bool          bIsScrollUpHover;
+    bool          bIsScrollDownHover;
+    bool          bIsScrollUpPressed;
+    bool          bIsScrollDownPressed;
+    bool          bIsHoldScrolling;
 
-	//reset stuff
-	ofRectangle	  scaledResetRect;
+    float         scrollPressedTime;
+    
+    float         scrollIncrement;
+    
+    void          updateScroll();
+    //////////////
+    
+    void updateResearchNavigation();
+    
+    //temporary way to confirm selection in research mode
+    ofRectangle fakeConfirmSelectionBounds;
+    bool fakeConfirmHovered;
+    bool fakeConfirmPressed;
+    bool fakeConfirmClicked;
+    ////////////////////
+    
+    
 	ofMesh resetTriangle;
-	bool	bResetIsPressed;
-	bool	bResetIsHovered;
-	bool	bResetIsClicked;
-	float	resetHoverChangedTime;
-
-	void	updateReset();
-
-	bool	bDrawHome;
-    bool    bIsHudOpen;
+    
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     bool	bActJustStarted;
-    bool    bLowerThirdCued;
+    
     bool    bVisualSystemDisplayed;
-    float   cuedClipEndTime;
-	
+    bool    bClipIsPlaying;
+    bool    bJustPaused;
+    bool    bJustUnpaused;
+    bool    bQuestionDisplayed;
+    bool    bProjectExampleDisplayed;
+    
     void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
 #endif
-    ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath);
-    ofxFTGLSimpleLayout*    getLayoutForLayer(const string& layerName, const string& fontPath, bool caps);
-    ofxFTGLFont*            getFontForLayer(const string& layerName, const string& fontPath, int kerning);
+    
+    CloudsHUDResearchTab currentTab;
+    void drawList();
+    
+    CloudsHUDLabel* getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);
 
     
     vector<ofxFTGLFont*>    tempFontList;
-    
-    ofxFTGLFont             *BylineFirstNameTextBox,
-                            *BylineLastNameTextBox,
-                            *BylineTopicTextBoxBottom,
-                            *BylineTopicTextBoxTop;
-    
-    ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
-                            *ResetButtonTextBox,
-                            *QuestionTextBox,
-                            *TopicTextBoxLeft,
-                            *TopicTextBoxRight,
-                            *ProjectExampleTextboxLeft,
-                            *ProjectExampleTextboxRight,
-                            *ProjectExampleTextBoxTop;
+    CloudsHUDLabel* ResearchTopicListLabel;
 	
     map<CloudsHUDLayerSet,bool>		hudOpenMap;
     map<string, CloudsHUDLabel*>    hudLabelMap;
+    map<CloudsHUDLayerSet, vector<CloudsHUDLabel*> > hudLayerLabels;
+
+    ofRectangle bioBounds;
     ofRectangle hudBounds;
     float scaleAmt;
     ofVec2f scaleOffset;
     int margin;
     
-    ofRectangle             defaultBioBounds;
+    map<CloudsHUDResearchTab, CloudsHUDResearchList> researchLists;
+    CloudsHUDResearchList* currentResearchList;
     
-    CloudsSpeaker           speaker;
+    ofRectangle     getScaledRectangle(const ofRectangle& rect);
+    ofRectangle     defaultBioBounds;
+
+    CloudsClip*     currentClip;
+    CloudsSpeaker   currentSpeaker;
 };
 
 

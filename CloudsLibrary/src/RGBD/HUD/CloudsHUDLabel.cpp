@@ -15,13 +15,19 @@ CloudsHUDLabel::CloudsHUDLabel(){
     bIsAnimatingIn = false;
     bIsAnimatingOut = false;
     bIsVisible = false;
-    clearTextOnAnimateOut = true;
+    bIsClicked = false;
+    
+    bIsHovered = false;
+    bIsPressed = false;
+    
+    clearTextOnAnimateOut = false;
     caps = true;
     
     animationClamp.min = 0.3;
     animationClamp.max = 3.0;
-    
     fadeOutSpeed = 0.3;
+    
+    hoverChangedTime = 0.;
     
     beginTime = 0.;
     baseAnimationSpeed = 0.5;   // mess with this one to change animation speed
@@ -43,9 +49,23 @@ void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
     type = "FONT";
 }
 
-
-
 void CloudsHUDLabel::draw(){
+    
+    if(bIsHovered){
+        ofPushStyle();
+        
+        float hoverAlpha = ofMap(ofGetElapsedTimef() - hoverChangedTime, 0, .5, 0.0, 1.0, true);
+        
+        //TODO: Change color to design
+        ofFill();
+        ofSetColor(200,30,0, 255*hoverAlpha*.3);
+        ofRect(baseInteractiveBounds);
+        ofNoFill();
+        ofSetColor(200,30,0, 255*hoverAlpha*.7);
+        ofRect(baseInteractiveBounds);
+        ofPopStyle();
+        
+    }
     
 	if( bIsAnimatingIn ){
         if(animationSpeed != 0){
@@ -74,10 +94,12 @@ void CloudsHUDLabel::draw(){
         if(textAlpha <= 0.0){
             if(clearTextOnAnimateOut){
                 text = "";
+                clearTextOnAnimateOut = false;
             }
             bIsAnimatingOut = false;
         }
     }
+    
     
     if(type == "LAYOUT"){
         if( layout ){
@@ -104,13 +126,17 @@ void CloudsHUDLabel::draw(){
             font->drawString( t, bounds.x, bounds.y + font->getStringBoundingBox("W", 0, 0).height );
         }ofPopStyle();
     }
+    
+
 }
 
 void CloudsHUDLabel::setText(const string& newText, bool forceOn){
     text = newText;
     
-    if(caps)
+    if(caps){
         text = ofToUpper(newText);
+    }
+    
     playhead = 0;
     
     if( text != "" ){
@@ -120,6 +146,7 @@ void CloudsHUDLabel::setText(const string& newText, bool forceOn){
             animateIn(true);
         }
     }
+ 
 }
 
 int CloudsHUDLabel::getRightEdge(){
@@ -132,12 +159,38 @@ int CloudsHUDLabel::getRightEdge(){
 	return 0;
 }
 
+void CloudsHUDLabel::mouseMoved(ofVec2f mouse){
+    bool wasHovered = bIsHovered;
+	bIsHovered = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
+    if(wasHovered != bIsHovered){
+		hoverChangedTime = ofGetElapsedTimef();
+	}
+
+}
+
+void CloudsHUDLabel::mousePressed(ofVec2f mouse){
+
+	bIsPressed = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
+    
+}
+
+void CloudsHUDLabel::mouseReleased(ofVec2f mouse){
+    
+    bIsClicked = bIsPressed && scaledInteractiveBounds.inside(mouse.x,mouse.y);
+    
+}
+
 string CloudsHUDLabel::getText(){
 	return text;
 }
 
 void CloudsHUDLabel::animateIn(bool force) {
     if (!force && bIsVisible) return;
+    //if we animate on again when its animating off
+    if(bIsAnimatingOut && clearTextOnAnimateOut){
+        text = "";
+        clearTextOnAnimateOut = false;
+    }
     bIsVisible = true;
     
     beginTime = ofGetElapsedTimef();
@@ -146,8 +199,10 @@ void CloudsHUDLabel::animateIn(bool force) {
     textAlpha = 255;
 }
 
-void CloudsHUDLabel::animateOut(bool force) {
-    if (!force && !bIsVisible) return;
+void CloudsHUDLabel::animateOut(bool clear) {
+    if (!bIsVisible) return;
+    
+    clearTextOnAnimateOut = clear;
     bIsVisible = false;
     
     beginTime = ofGetElapsedTimef();
@@ -174,4 +229,14 @@ void CloudsHUDLabel::instantOut() {
 
 bool CloudsHUDLabel::isVisible() {
     return bIsVisible;
+}
+
+bool CloudsHUDLabel::isHovered() {
+    return bIsHovered;
+}
+
+bool CloudsHUDLabel::isClicked(){
+    bool ret = bIsClicked;
+    bIsClicked = false;
+    return ret;
 }

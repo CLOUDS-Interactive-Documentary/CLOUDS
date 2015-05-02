@@ -12,7 +12,13 @@
 
 enum CloudsVisualLevel { FAST, PRETTY };
 //--------------------------------------------------------------------
+string GetEnvVar( string key );
+//--------------------------------------------------------------------
 string GetCloudsDataPath(bool ignored = false);
+//--------------------------------------------------------------------
+string GetCloudsMediaPath();
+//--------------------------------------------------------------------
+string GetCloudsDataRootPath();
 //--------------------------------------------------------------------
 string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder = false);
 //--------------------------------------------------------------------

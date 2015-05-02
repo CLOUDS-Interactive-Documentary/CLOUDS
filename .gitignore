@@ -73,7 +73,8 @@ CloudsMovieDirectory_remote.txt
 
 /CloudsData/visualsystems_ignored
 /CloudsData_ignored
-
+/CloudsDataIgnored
+/CloudsDataMedia
 
 /CLOUDSStandAlone/
 /CloudsData/CloudsMovieDirectory_nebula.txt
@@ -379,11 +380,11 @@ SCREENSHOT_*
 CloudsData/language/MASTER/output/*
 CloudsData/language/MASTER/utf8_converted/*
 *.xlsm
-<<<<<<< HEAD
 VSClusterMap/bin/data/SAVE_NetworkPaths.obj
-
 VSClusterMap/bin/data/SAVE_ClusterNodes.obj
-=======
 *.db
->>>>>>> 22e772819792be3cc2d647258fc82240a17b8b1a
 CloudsData/font/AxisStd-Regular.otf
+
+CloudsData/vhx/userpwd.txt
+
+CloudsData/runs/*.xml

@@ -172,7 +172,7 @@ void CloudsRGBDPointLayer::draw(){
     
     CloudsVisualSystem::getRGBDVideoPlayer().flowPosition = pointFlowPosition * (pointsFlowUp?-1:1);
     
-    CloudsVisualSystem::getRGBDVideoPlayer().setupProjectionUniforms(*pointShader);
+    CloudsVisualSystem::getRGBDVideoPlayer().begin(*pointShader);
 
     pointShader->setUniform1f("headMinRadius", pointFaceMinRadius);
     pointShader->setUniform1f("headFalloff", pointFaceFalloff);
@@ -197,6 +197,8 @@ void CloudsRGBDPointLayer::draw(){
 	pointShader->setUniform1f("normalExtend", normalExtend);
 
     points.draw();
+
+	CloudsVisualSystem::getRGBDVideoPlayer().end();
 
     pointShader->end();
 }

@@ -1,0 +1,9 @@
+A generation of artists and hackers have emerged on the internet using open source technologies for experiments in art and design.
+
+CLOUDS is an interactive documentary and a portrait of this community of digital pioneers, explored through the lens of code. The project asks questions about the future of creativity at a time when algorithms play an important role in shaping culture.
+
+People featured in the film include 40 artists, designers and hackers who participate in the co-creation of free tools for creative expression: Processing and openFrameworks. Reflecting the story of these online communities, the software behind CLOUDS was built in C++ using openFrameworks, and includes real-time interactive visualizations by the artists featured in the documentary.
+
+In its revolutionary hybrid format, somewhere between a documentary, a videogame, and data visualization, CLOUDS allows viewers to navigate a web of ideas. It uses a data-driven Story Engine to present an endless ever-changing conversation, where artists co-exist with their code, presented through real-time interactive visual systems and lush 3D environments.
+
+The project has been presented at prestigious film festivals and museum exhibitions as both an installation and a cinematic experience for a live audience. It’s now available as a software application for audiences at home to download and explore on their personal computers, OS X or PC, with the option of viewing in Oculus VR. The techniques explored in CLOUDS suggest a possible future of storytelling that brings interactive graphics, visual effects and cinema closer together.

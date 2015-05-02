@@ -27,13 +27,8 @@ void testApp::setup(){
 	
 	cout << "Starting with " << startingNodes.size() << endl;
 	
-
-//	hud.setup();
-
 #ifdef OCULUS_RIFT
-    // TODO: Re-enable the HUD
-    //intro.hud = &hud;
-    //intro.setupHUDGui();
+    
 #endif
 	intro.setStartQuestions(startingNodes);
 	ofAddListener(intro.events.portalHoverBegan, this, &testApp::portalHoverBegan);
@@ -72,7 +67,13 @@ void testApp::portalHoverEnded(CloudsPortalEventArgs &args){
 
 //--------------------------------------------------------------
 void testApp::update(){
-
+    if(ofGetFrameNum() == 100){
+        intro.percentLoaded = 1.;
+        intro.loadingFinished();
+    }
+    else{
+        intro.percentLoaded = ofGetFrameNum() / 100.;
+    }
 }
 
 

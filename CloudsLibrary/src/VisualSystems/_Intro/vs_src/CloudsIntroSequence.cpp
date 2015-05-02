@@ -21,7 +21,6 @@
 #include "ofAppGLFWWindow.h"
 #endif
 
-//JG REMOVING THIS
 CloudsVisualSystemEvents CloudsIntroSequence::events;
 
 string CloudsIntroSequence::getSystemName(){
@@ -29,10 +28,36 @@ string CloudsIntroSequence::getSystemName(){
 }
 
 CloudsIntroSequence::CloudsIntroSequence(){
+    
 	getSelectLow();
 	getSelectMid();
 	getSelectHigh();
 	getClick();
+    
+    menuItems.push_back(&researchMenuItem);
+    menuItems.push_back(&playMenuItem);
+    menuItems.push_back(&aboutMenuItem);
+    menuItems.push_back(&newMenuItem);
+    menuItems.push_back(&resumeMenuItem);
+    
+    researchMenuItem.label  = GetTranslationForString("RESEARCH");
+    playMenuItem.label      = GetTranslationForString("PLAY");
+    aboutMenuItem.label     = GetTranslationForString("ABOUT");
+    newMenuItem.label       = GetTranslationForString("NEW");
+    resumeMenuItem.label    = GetTranslationForString("RESUME");
+    
+    for(int i = 0; i < menuItems.size(); i++){
+        menuItems[i]->visible = false;
+        menuItems[i]->hovered = false;
+        menuItems[i]->pressed = false;
+        menuItems[i]->clicked = false;
+        menuItems[i]->attenuation = .05;
+        menuItems[i]->baseAlpha = 0;
+        menuItems[i]->targetAlpha = 0;
+    }
+    
+    firstPlay = false;
+    shouldArchiveAct = false;
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
@@ -42,7 +67,9 @@ void CloudsIntroSequence::selfSetDefaults(){
 	paused = false;
 	currentFontSize = -1;
 	currentFontExtrusion = -1;
-	startedOnclick = false;
+    
+    percentLoaded = 0;
+    loadingCompleteTime = 0;
 	caughtQuestion = NULL;
 	titleNoisePosition = 0;
 	titleNoiseSpeed = 0;
@@ -50,6 +77,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	currentTitleOpacity = 0;
 	bQuestionDebug = false;
 	firstQuestionStopped = false;
+    menuButtonPad = 20;
     
     introNodeChangeTime = 0;
     introNodesShown = true;
@@ -67,19 +95,28 @@ void CloudsIntroSequence::selfSetDefaults(){
 	
 	hintCursorEndPoint = ofVec2f(320,240);
 
+    menuFontSize = currentMenuFontSize = 1;
+    menuToolTipFontSize = currentMenuToolTipFontSize = 1;
+    
+    menuYOffset = 0;
+    menuWidth = 500;
+ 
 	promptTime = 0.0;
 	promptShown = false;
-	
+	researchSelected = false;
+    aboutSelected = false;
+    
 	// Set question defaults.
 	questionScale = 0.1f;
 	helperFontSize = 14;
 	questionZStopRange.min = 50;
 	questionZStopRange.max = 300;
 	perlinOffset = 0;
-	
-	clickTextActive = false;
-	clickTextActiveTime = 0;
-	clickToBeginAlpha = 0;
+	newResumeSpace = 0;
+    
+//	clickTextActive = false;
+//	clickTextActiveTime = 0;
+//	clickToBeginAlpha = 0;
 	mouseLastMovedTime = 0;
 
 	cameraSwingDamp = 0.0;
@@ -93,6 +130,8 @@ void CloudsIntroSequence::selfSetDefaults(){
 	questionChannels.resize(4);
 	channelPauseTime.resize(4);
 	
+    changeState(CLOUDS_INTRO_LOADING);
+
 #ifdef OCULUS_RIFT
     bCursorInCenter = false;
     startTimeCursorInCenter = 0;
@@ -269,6 +308,24 @@ void CloudsIntroSequence::selfSetupGuis(){
 	guis.push_back(helperTextGui);
 	guimap[helperTextGui->getName()] = helperTextGui;
 
+    
+	menuGui = new ofxUISuperCanvas("MENU", gui);
+	menuGui->copyCanvasStyle(gui);
+	menuGui->copyCanvasProperties(gui);
+	menuGui->setName("Menu");
+	menuGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+	menuGui->addIntSlider("FONT SIZE", 5, 20, &menuFontSize);
+	menuGui->addIntSlider("TOOLTIP FONT SIZE", 5, 20, &menuToolTipFontSize);
+	menuGui->addSlider("Y OFFSET", 0, 300, &menuYOffset);
+	menuGui->addSlider("TOTAL WIDTH", 200, 1000, &menuWidth);
+	menuGui->addSlider("NEW RESUME SPACE", 0, 200, &newResumeSpace);
+	menuGui->addSlider("MENU BUTTON PAD", 0, 50, &menuButtonPad);
+
+    
+	guis.push_back(menuGui);
+	guimap[menuGui->getName()] = menuGui;
+    
 }
 
 void CloudsIntroSequence::selfPresetLoaded(string presetPath){
@@ -286,11 +343,12 @@ void CloudsIntroSequence::reloadShaders(){
 
 void CloudsIntroSequence::selfUpdate(){
 	
-	if(!startedOnclick && timeline->getIsPlaying()){
-		timeline->stop();
-	}
+//	if(!startedOnclick && timeline->getIsPlaying()){
+//		timeline->stop();
+//	}
 	
 	updateCamera();
+    updateMenu();
 	updateWaiting();
 	updateQuestions();
 	updateTitle();
@@ -302,8 +360,8 @@ void CloudsIntroSequence::updateCamera(){
 		ofVec2f wobble = ofVec2f(ofSignedNoise(100 + ofGetElapsedTimef()*camWobbleSpeed),
 								 ofSignedNoise(200 + ofGetElapsedTimef()*camWobbleSpeed)) * camWobbleRange;
 		if(!paused){
-			warpCamera.dolly(-cameraForwardSpeed);
-			warpCamera.setPosition(wobble.x, wobble.y, warpCamera.getPosition().z);
+			//warpCamera.dolly(-);
+			warpCamera.setPosition(wobble.x, wobble.y, warpCamera.getPosition().z + cameraForwardSpeed);
 		}
 		else{
 			warpCamera.setPosition(wobble.x, wobble.y, 0);
@@ -323,15 +381,7 @@ void CloudsIntroSequence::updateCamera(){
 
 void CloudsIntroSequence::updateWaiting(){
 	
-    // Trigger start manually
-    if (startedOnclick) {
-		nodeAlphaAttenuate = MAX(0,nodeAlphaAttenuate-0.02);
-		clickToBeginAlpha *= .99;
-		clickToBeginAlpha -= .001;
-		clickToBeginAlpha = MAX(0,clickToBeginAlpha);
-		return;
-	}
-
+    #ifndef MOUSE_INPUT
 	for(int i = 0; i < introNodes.size(); i++){
 		updateIntroNodePosition(*introNodes[i]);
 	}
@@ -348,7 +398,7 @@ void CloudsIntroSequence::updateWaiting(){
 		startedOnclick = true;
 		timeline->play();
 	}
-
+    #endif
 	#ifdef OCULUS_RIFT
 	
 	#elif defined(KINECT_INPUT)
@@ -379,8 +429,6 @@ void CloudsIntroSequence::updateWaiting(){
 	#else
 	if(startQuestions.size() > 0){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 10){
-//			CloudsPortalEventArgs args("CLICK TO BEGIN");
-//			ofNotifyEvent(events.portalHoverBegan, args);
 			timeSinceLastPrompt = ofGetElapsedTimef();
 			promptShown = true;
 
@@ -395,26 +443,84 @@ void CloudsIntroSequence::updateWaiting(){
 	#endif
 	
 	#ifdef MOUSE_INPUT
-	if(clickTextActive){
-		float timeSinceActive = ofGetElapsedTimef() - clickTextActiveTime;
-		float timeSinceMouse = ofGetElapsedTimef() - mouseLastMovedTime;
-		clickToBeginAlpha = ofMap(timeSinceActive,
-								  .5,1.5,
-								  0.0,1.0,true) *
-								  ofMap(currentTitleOpacity,titleTypeOpacity,.9,0.3,.7,true);
-        #ifdef TARGET_WIN32
-        if(timeSinceMouse > 4.){
-			clickToBeginAlpha *= ofMap(timeSinceMouse, 4.0, 5.0, 1.0, 0.0,true);
-			if(timeSinceMouse > 5.0){
-				clickTextActive = false;
-				glfwSetCursorPos( ofAppGLFWWindow::windowP, getCanvasWidth()/2, getCanvasHeight()/2);
-			}
-		}
-        #endif
-	}
+    //THis code puts the mouse back to the middle
+//	if(clickTextActive){
+//		float timeSinceActive = ofGetElapsedTimef() - clickTextActiveTime;
+//		float timeSinceMouse = ofGetElapsedTimef() - mouseLastMovedTime;
+//		clickToBeginAlpha = ofMap(timeSinceActive,
+//								  .5,1.5,
+//								  0.0,1.0,true) *
+//								  ofMap(currentTitleOpacity,titleTypeOpacity,.9,0.3,.7,true);
+//        #ifdef TARGET_WIN32
+//        if(timeSinceMouse > 4.){
+//			clickToBeginAlpha *= ofMap(timeSinceMouse, 4.0, 5.0, 1.0, 0.0,true);
+//			if(timeSinceMouse > 5.0){
+//				clickTextActive = false;
+//				glfwSetCursorPos( ofAppGLFWWindow::windowP, getCanvasWidth()/2, getCanvasHeight()/2);
+//			}
+//		}
+//        #endif
+//	}
 	#endif
 }
 
+void CloudsIntroSequence::loadingFinished(){
+    if(currentState == CLOUDS_INTRO_LOADING){
+        changeState(CLOUDS_INTRO_MENU);
+    }
+}
+
+void CloudsIntroSequence::changeState(CloudsIntroState newState){
+    currentState = newState;
+    stateChangedTime = ofGetElapsedTimef();
+    
+    for(int i = 0; i < menuItems.size(); i++){
+        menuItems[i]->visible = false;
+        menuItems[i]->hovered = false;
+        menuItems[i]->pressed = false;
+        menuItems[i]->clicked = false;
+        menuItems[i]->attenuation = .1;
+    }
+    
+    switch (newState) {
+        case CLOUDS_INTRO_LOADING:
+            break;
+        case CLOUDS_INTRO_MENU:
+            researchMenuItem.visible = true;
+            playMenuItem.visible = true;
+            aboutMenuItem.visible = true;
+            break;
+        case CLOUDS_INTRO_MENU_NEW_RESUME:
+            resumeMenuItem.visible = true;
+            newMenuItem.visible = true;
+            break;
+        case CLOUDS_INTRO_PLAYING:
+            timeline->play();
+            playMenuItem.attenuation = .03;
+            newMenuItem.attenuation = .03;
+            break;
+        case CLOUDS_INTRO_RESUMING:
+            startQuestions.clear();
+            startQuestions.push_back(resumePortal);
+            timeline->play();
+            resumeMenuItem.attenuation = .03;
+            break;
+        case CLOUDS_INTRO_RESEARCH:
+            timeline->play();
+            researchSelected = true;
+            researchMenuItem.attenuation = .03;
+            break;
+        case CLOUDS_INTRO_ABOUT:
+            aboutSelected = true;
+            aboutMenuItem.attenuation = .03;
+            break;
+        case CLOUDS_INTRO_NO_MEDIA:
+            break;
+        default:
+            break;
+    }
+ 
+}
 
 void CloudsIntroSequence::updateIntroNodePosition(CalibrationNode& node){
 	
@@ -447,6 +553,7 @@ void CloudsIntroSequence::updateTitle(){
 	{
 		currentFontSize = titleFontExtrude;
 		currentFontExtrusion = titleFontExtrude;
+        //TODO replace with geo
 		extrudedTitleText.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
 	}
 	
@@ -460,7 +567,7 @@ void CloudsIntroSequence::updateTitle(){
 	
 	titleNoisePosition += titleNoiseSpeed;
 	float hoverTitleOpacity;
-	if(hoveringTitle || (startedOnclick && timeline->getIsPlaying()) ){
+	if(hoveringTitle || (currentState == CLOUDS_INTRO_PLAYING && timeline->getIsPlaying()) ){
 		hoverTitleOpacity = .9;
 	}
 	else{
@@ -468,6 +575,102 @@ void CloudsIntroSequence::updateTitle(){
 	}
 	
 	currentTitleOpacity += (hoverTitleOpacity-currentTitleOpacity)*.05;
+}
+
+void CloudsIntroSequence::updateMenu(){
+    
+	if(!menuFont.isLoaded() || currentMenuFontSize != menuFontSize){
+		menuFont.loadFont(GetFontPath(), menuFontSize	);
+        currentMenuFontSize = menuFontSize;
+    }
+	if(!menuToolTipFont.isLoaded() || currentMenuToolTipFontSize != menuToolTipFontSize){
+		menuToolTipFont.loadFont(GetFontPath(), menuFontSize	);
+        currentMenuToolTipFontSize = menuToolTipFontSize;
+    }
+    
+    float menuHeight    = menuFont.stringHeight("W");
+    float researchWidth = menuFont.stringWidth( researchMenuItem.label );
+    float playWidth     = menuFont.stringWidth( playMenuItem.label );
+    float aboutWidth    = menuFont.stringWidth( aboutMenuItem.label );
+    float newWidth      = menuFont.stringWidth( newMenuItem.label );
+    float resumeWidth   = menuFont.stringWidth( resumeMenuItem.label );
+    
+    float menuTop = getCanvasHeight() / 2 + menuYOffset;
+    researchMenuItem.bounds.x = getCanvasWidth() / 2 - menuWidth / 2;
+    researchMenuItem.bounds.y = menuTop;
+    researchMenuItem.bounds.width = researchWidth;
+    researchMenuItem.bounds.height = menuHeight;
+    
+    playMenuItem.bounds.x = getCanvasWidth() / 2 - playWidth / 2;
+    playMenuItem.bounds.y = menuTop;
+    playMenuItem.bounds.width = playWidth;
+    playMenuItem.bounds.height = menuHeight;
+    
+    aboutMenuItem.bounds.x = getCanvasWidth() / 2 + menuWidth/ 2 - aboutWidth;
+    aboutMenuItem.bounds.y = menuTop;
+    aboutMenuItem.bounds.width = aboutWidth;
+    aboutMenuItem.bounds.height = menuHeight;
+    
+    float newResumeWidth = newWidth + resumeWidth + newResumeSpace;
+    newMenuItem.bounds.x = getCanvasWidth() / 2 - newResumeWidth / 2;
+    newMenuItem.bounds.y = menuTop;
+    newMenuItem.bounds.width = newWidth;
+    newMenuItem.bounds.height = menuHeight;
+    
+    resumeMenuItem.bounds.x = getCanvasWidth() / 2 + newResumeWidth/2 - resumeWidth;
+    resumeMenuItem.bounds.y = menuTop;
+    resumeMenuItem.bounds.width = researchWidth;
+    resumeMenuItem.bounds.height = menuHeight;
+    
+    for(int i = 0; i < menuItems.size(); i++){
+
+        //pad the buttons
+        menuItems[i]->bounds.x -= menuButtonPad;
+        menuItems[i]->bounds.y -= menuButtonPad;
+        menuItems[i]->bounds.width  += menuButtonPad*2;
+        menuItems[i]->bounds.height += menuButtonPad*2;
+        
+        if(!menuItems[i]->visible){
+            menuItems[i]->targetAlpha = .0;
+        }
+        else if(menuItems[i]->pressed){
+            menuItems[i]->targetAlpha = 1.0;
+        }
+        else if(menuItems[i]->hovered){
+            menuItems[i]->targetAlpha = .8;
+        }
+        else{
+            menuItems[i]->targetAlpha = .5;
+        }
+        menuItems[i]->baseAlpha += (menuItems[i]->targetAlpha - menuItems[i]->baseAlpha) * menuItems[i]->attenuation;
+    }
+    
+    if(currentState == CLOUDS_INTRO_MENU){
+        if(researchMenuItem.clicked){
+            changeState(CLOUDS_INTRO_RESEARCH);
+        }
+        else if(playMenuItem.clicked){
+            if(firstPlay){
+                changeState(CLOUDS_INTRO_PLAYING);
+            }
+            else{
+                changeState(CLOUDS_INTRO_MENU_NEW_RESUME);
+            }
+        }
+        else if(aboutMenuItem.clicked){
+            changeState(CLOUDS_INTRO_ABOUT);
+        }
+    }
+    else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
+        if(newMenuItem.clicked){
+            shouldArchiveAct = true; // forces to clear run
+            changeState(CLOUDS_INTRO_PLAYING);
+        }
+        else if(resumeMenuItem.clicked){
+            //TODO: handle resume only portal
+            changeState(CLOUDS_INTRO_RESUMING);
+        }
+    }
 }
 
 void CloudsIntroSequence::updateQuestions(){
@@ -511,8 +714,11 @@ void CloudsIntroSequence::updateQuestions(){
 			}
 		}
 		
-		if(&curQuestion == caughtQuestion){
-			slowDownFactor = 1.0;
+		if(&curQuestion == caughtQuestion ||
+           (firstQuestionStopped && currentState == CLOUDS_INTRO_RESUMING) ||
+           (caughtQuestion != NULL && curQuestion.tunnelQuadrantIndex == caughtQuestion->tunnelQuadrantIndex) )
+        {
+			slowDownFactor = 1.0;  //question fully hovers
 		}
 		
 		curQuestion.hoverPosition.z += cameraForwardSpeed * slowDownFactor;
@@ -585,7 +791,6 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip*>& possibleStartQu
 		CloudsPortal q;
 		q.cam = &warpCamera;
 		q.bLookAtCamera = true;
-//		q.font = &questionFont;
 		q.clip = possibleStartQuestions[i];
 		q.topic = q.clip->getAllTopicsWithQuestion()[0];
 		q.question = q.clip->getQuestionForTopic(q.topic);
@@ -594,6 +799,13 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip*>& possibleStartQu
 		
 		startQuestions.push_back(q);
 	}
+    
+    resumePortal.question = "RESUME THE STORY";
+    resumePortal.bLookAtCamera = true;
+    resumePortal.cam = &warpCamera;
+    resumePortal.clip = NULL;
+    resumePortal.setup();
+    
 	timeSinceLastPrompt = ofGetElapsedTimef();
 	positionStartQuestions();
 }
@@ -678,6 +890,9 @@ void CloudsIntroSequence::positionStartQuestions(){
 		startQuestions[i].hoverPosition.rotate(i%4 * .25 * 360, ofVec3f(0,0,1));
 		startQuestions[i].hoverPosition.z = 200 + tunnelMax.z*.25 + i * (1.0*questionWrapDistance / startQuestions.size() );
 	}
+    
+    resumePortal.hoverPosition = ofVec3f(0, 0, 200 + tunnelMax.z*.25);
+    resumePortal.tunnelQuadrantIndex = 0;
 }
 
 bool CloudsIntroSequence::istStartQuestionHovering(){
@@ -695,7 +910,21 @@ string CloudsIntroSequence::getQuestionText(){
 }
 
 bool CloudsIntroSequence::userHasBegun(){
-    return startedOnclick;
+    return currentState == CLOUDS_INTRO_PLAYING  ||
+           currentState == CLOUDS_INTRO_RESEARCH ||
+           currentState == CLOUDS_INTRO_RESUMING;
+}
+
+bool CloudsIntroSequence::isResearchModeSelected(){
+    bool selected = researchSelected;
+    researchSelected = false;
+    return selected;
+}
+
+bool CloudsIntroSequence::isAboutScreenSelected(){
+    bool selected = aboutSelected;
+    aboutSelected = false;
+    return selected;
 }
 
 bool CloudsIntroSequence::isStartQuestionSelected(){
@@ -830,10 +1059,9 @@ void CloudsIntroSequence::drawPortals(){
 	CloudsPortal::shader.setUniform1f("maxDistance", questionAttenuateDistance.max);
 	
     ofSetColor(255);
-	for(int i = 0; i < startQuestions.size(); i++){
-		startQuestions[i].draw();
-	}
-	
+    for(int i = 0; i < startQuestions.size(); i++){
+        startQuestions[i].draw();
+    }
 	CloudsPortal::shader.end();
 	
 	ofPopStyle();
@@ -913,7 +1141,50 @@ void CloudsIntroSequence::drawHelperType(){
 	}
 
 	#endif
-	
+
+    if(firstQuestionStopped && currentState != CLOUDS_INTRO_RESUMING){
+        ofPushMatrix();
+        
+        float questionhintAlpha = ofMap(ofGetElapsedTimef(),
+                                        firstQuestionStoppedTime, firstQuestionStoppedTime+2,
+                                        0.0, .2, true) * (1.0-helperTextOpacity);
+        
+        string hintText = GetTranslationForString("SELECT A QUESTION");
+        //string hintText = GetTranslationForString("CLICK TO SELECT");
+        
+        float hintTextWidth  = helperFont.stringWidth(hintText);
+		float hintTextHeight = helperFont.stringHeight(hintText);
+		basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
+#ifdef OCULUS_RIFT
+		getOculusRift().multBillboardMatrix( basePosition );
+#else
+		ofTranslate(basePosition);
+#endif
+		ofRotate(180, 0, 0, 1); //flip around
+		ofScale(helperFontScale*.8,
+				helperFontScale*.8,
+				helperFontScale*.8);
+        
+        if(caughtQuestion == NULL){
+            ofSetColor(255, 255*questionhintAlpha);
+            helperFont.drawString(hintText, -hintTextWidth*.5, hintTextHeight*.5 );
+        }
+        else{
+            float questionHoldAlpha = ofMap(caughtQuestion->hoverPercentComplete, .2, .3, 0.0, .2, true);
+            ofSetColor(255, 255*questionHoldAlpha);
+#ifdef MOUSE_INPUT
+			string textPrompt = GetTranslationForString("CLICK TO SELECT");
+#else
+			string textPrompt = GetTranslationForString("HOLD TO SELECT");
+#endif
+            hintTextWidth = helperFont.stringWidth(textPrompt);
+            hintTextHeight = helperFont.stringHeight(textPrompt);
+            helperFont.drawString(textPrompt, -hintTextWidth*.5, hintTextHeight*.5 );
+        }
+        
+        ofPopMatrix();
+    }
+    
 	if(caughtQuestion != NULL){
 		basePosition = caughtQuestion->hoverPosition;
 		helpHoverText = GetTranslationForString( caughtQuestion->question );
@@ -972,20 +1243,13 @@ void CloudsIntroSequence::drawHelperType(){
 		
         bool showAbove = !bUseOculusRift && caughtQuestion != NULL && caughtQuestion->tunnelQuadrantIndex == 2;
 		int yOffsetMult = (showAbove) ? -1 : 1;
-		//helperFont.drawString(helpHoverText, -hoverTextWidth/2, yOffsetMult * (helperFontY - hoverTextHeight/2) );
         
-//        cout << "helper text opacity " << helperTextOpacity << endl;
-//        cout << "helper font y " << helperFontY << endl;
 		if(twoLines){
             if(showAbove){
-//                cout << "drawing " << helpHoverText << " w " << hoverTextWidth << " h " <<  helperFontY + hoverTextHeight*1.5 << endl;
-//                cout << "drawing " << secondLine << " w " << hoverTextWidth << " h " << hoverTextHeight << endl;
                 helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
                 helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
             }
             else{
-//                cout << "drawing " << secondLine << " w " << hoverTextWidth << " h " <<  hoverTextHeight << endl;
-//                cout << "drawing " << helpHoverText << " w " << hoverTextWidth << " h " << hoverTextHeight << endl;
                 helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
                 helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
             }
@@ -995,46 +1259,6 @@ void CloudsIntroSequence::drawHelperType(){
         }
 		ofPopMatrix();
 	}
-    
-    if(firstQuestionStopped){
-        ofPushMatrix();
-        
-        float questionhintAlpha = ofMap(ofGetElapsedTimef(),
-                                        firstQuestionStoppedTime, firstQuestionStoppedTime+2,
-                                        0.0, .2, true) * (1.0-helperTextOpacity);
-        
-        float hintTextWidth  = helperFont.stringWidth(GetTranslationForString("SELECT A QUESTION"));
-		float hintTextHeight = helperFont.stringHeight(GetTranslationForString("SELECT A QUESTION"));
-		basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
-#ifdef OCULUS_RIFT
-		getOculusRift().multBillboardMatrix( basePosition );
-#else
-		ofTranslate(basePosition);
-#endif
-		ofRotate(180, 0, 0, 1); //flip around
-		ofScale(helperFontScale*.8,
-				helperFontScale*.8,
-				helperFontScale*.8);
-        
-        ofSetColor(255, 255*questionhintAlpha);
-		helperFont.drawString(GetTranslationForString("SELECT A QUESTION"), -hintTextWidth*.5, hintTextHeight*.5 );
-
-        if(caughtQuestion != NULL){
-            float questionHoldAlpha = ofMap(caughtQuestion->hoverPercentComplete, .2, .3, 0.0, .2, true);
-            ofSetColor(255, 255*questionHoldAlpha);
-#ifdef MOUSE_INPUT
-//			string textPrompt = GetTranslationForString("CLICK TO SELECT");
-            string textPrompt = GetTranslationForString("");
-#else
-			string textPrompt = GetTranslationForString("HOLD TO SELECT");
-#endif
-            hintTextWidth = helperFont.stringWidth(textPrompt);
-            hintTextHeight = helperFont.stringWidth(textPrompt);
-            helperFont.drawString(textPrompt, -hintTextWidth*.5, hintTextHeight*.5 );
-        }
-        
-        ofPopMatrix();
-    }
 
     ofEnableLighting();
 	glEnable(GL_DEPTH_TEST);
@@ -1088,9 +1312,9 @@ void CloudsIntroSequence::drawIntroNodes(){
 
 void CloudsIntroSequence::drawCursors(){
 	cursorAlpha = 1.0;
-	if(!startedOnclick){
-		cursorAlpha = ofMap(clickToBeginAlpha, 0, .3, 0.0, 1.0, true);
-	}
+//	if(!startedOnclick){
+//		cursorAlpha = ofMap(clickToBeginAlpha, 0, .3, 0.0, 1.0, true);
+//	}
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
         if (it->second.primary) {
@@ -1107,24 +1331,79 @@ void CloudsIntroSequence::selfDrawOverlay(){
 
 #if defined(MOUSE_INPUT)
 	
-	ofPushStyle();
-//	string helpHoverText = GetTranslationForString("CLICK TO BEGIN");
-	string helpHoverText = GetTranslationForString("");
-	float helperTextOpacity = clickToBeginAlpha;
-	ofSetColor(255,helperTextOpacity*255);
-	helperFont.setLetterSpacing(titleTypeTracking*.7);
-	float centerX = ofGetWidth()/2  - helperFont.stringWidth(helpHoverText)/2;
-	float centerY = ofGetHeight()/2 - helperFont.stringHeight(helpHoverText)/2;
-	helperFont.drawString(helpHoverText, centerX, centerY + helperFont.stringHeight(helpHoverText)*10);
-	ofPopStyle();
+    drawMenu();
+    
+//	ofPushStyle();
+//  string helpHoverText = GetTranslationForString("CLICK TO BEGIN");
+//	string helpHoverText = GetTranslationForString("");
+//	float helperTextOpacity = clickToBeginAlpha;
+//	ofSetColor(255,helperTextOpacity*255);
+//	helperFont.setLetterSpacing(titleTypeTracking*.7);
+//	float centerX = ofGetWidth()/2  - helperFont.stringWidth(helpHoverText)/2;
+//	float centerY = ofGetHeight()/2 - helperFont.stringHeight(helpHoverText)/2;
+//	helperFont.drawString(helpHoverText, centerX, centerY + helperFont.stringHeight(helpHoverText)*10);
+//	ofPopStyle();
+    
+    
 #elif defined(OCULUS_RIFT)
 	//no overlay
 #else
-	//standard mode and kinect mode
+	//kinect mode
 	drawIntroNodes();
 #endif
     
 }
+
+void CloudsIntroSequence::drawMenu(){
+
+    ofPushStyle();
+
+    //draw loading bar
+    if(currentState == CLOUDS_INTRO_LOADING){
+        
+        ofSetColor(255);
+        ofSetRectMode(OF_RECTMODE_CENTER);
+        ofVec2f leftSide(getCanvasWidth()/2 - menuWidth/2,
+                         getCanvasHeight() / 2 + menuYOffset);
+        ofVec2f rightSide(getCanvasWidth()/2 + menuWidth/2,
+                          getCanvasHeight() / 2 + menuYOffset);
+        ofRect(leftSide.x, leftSide.y,  4, 4);
+        ofRect(rightSide.x,rightSide.y, 4, 4);
+        ofVec2f percentDone = leftSide.getInterpolated(rightSide, percentLoaded);
+        
+        ofSetColor(255, 30);
+        ofLine(leftSide, rightSide);
+        ofSetColor(255, 100);
+        ofLine(leftSide, percentDone);
+        
+        ofSetRectMode(OF_RECTMODE_CORNER);
+    }
+//    else if(currentState == CLOUDS_INTRO_MENU){
+//    float fadeAttenuate = ofMap(ofGetElapsedTimef(), stateChangedTime, stateChangedTime+.5, 0, 1.0, true);
+
+    float wordHeight = menuFont.stringHeight("W");
+    for(int i = 0; i < menuItems.size(); i++){
+        
+        ofColor color;
+        color = menuItems[i]->pressed ? ofColor::lightBlue : ofColor::white;
+        ofSetColor(color, 255 * menuItems[i]->baseAlpha);
+        menuFont.drawString(menuItems[i]->label,
+                            menuItems[i]->bounds.x + menuButtonPad,
+                            menuItems[i]->bounds.y + wordHeight + menuButtonPad);
+
+    }
+
+    //debug
+//    for(int i = 0; i < menuItems.size(); i++){
+//        ofNoFill();
+//        if(menuItems[i]->visible){
+//            ofRect(menuItems[i]->bounds);
+//        }
+//    }
+    ofPopStyle();
+    
+}
+
 
 void CloudsIntroSequence::selfPostDraw(){
 	
@@ -1143,7 +1422,8 @@ void CloudsIntroSequence::selfPostDraw(){
 
 void CloudsIntroSequence::selfBegin(){
 	timeline->stop();
-	startedOnclick = false;
+    changeState(CLOUDS_INTRO_LOADING);
+//	startedOnclick = false;
 	selectedQuestion = NULL;
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].stopHovering();
@@ -1187,19 +1467,29 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
     cursor.set(GetCloudsInput()->getPosition());
 	mouseLastMovedTime = ofGetElapsedTimef();
 #ifdef MOUSE_INPUT
-	if(!clickTextActive && startQuestions.size() > 0){
-		clickTextActive = true;
-		clickTextActiveTime = mouseLastMovedTime;
-	}
+    if(currentState == CLOUDS_INTRO_MENU){
+        researchMenuItem.hovered = researchMenuItem.bounds.inside(data.x, data.y);
+        playMenuItem.hovered     = playMenuItem.bounds.inside(data.x, data.y);
+        aboutMenuItem.hovered    = aboutMenuItem.bounds.inside(data.x, data.y);
+    }
+    else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
+        newMenuItem.hovered      = newMenuItem.bounds.inside(data.x, data.y);
+        resumeMenuItem.hovered   = resumeMenuItem.bounds.inside(data.x, data.y);
+    }
 #endif
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 #if defined(MOUSE_INPUT)
-	if(!startedOnclick && startQuestions.size() > 0){
-		startedOnclick  = true;
-		timeline->play();		
+	if(currentState == CLOUDS_INTRO_MENU){
+        researchMenuItem.pressed = researchMenuItem.bounds.inside(data.x, data.y);
+        playMenuItem.pressed     = playMenuItem.bounds.inside(data.x, data.y);
+        aboutMenuItem.pressed    = aboutMenuItem.bounds.inside(data.x, data.y);
 	}
+    else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
+        newMenuItem.pressed      = newMenuItem.bounds.inside(data.x, data.y);
+        resumeMenuItem.pressed   = resumeMenuItem.bounds.inside(data.x, data.y);
+    }
 	else{
 		for(int i = 0; i < startQuestions.size(); i++){
 			startQuestions[i].mousePressed(data);
@@ -1209,7 +1499,22 @@ void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 }
 
 void CloudsIntroSequence::selfMouseReleased(ofMouseEventArgs& data){
-	
+    #if defined(MOUSE_INPUT)
+    if(currentState == CLOUDS_INTRO_MENU){
+        researchMenuItem.clicked = researchMenuItem.pressed && researchMenuItem.bounds.inside(data.x, data.y);
+        playMenuItem.clicked     = playMenuItem.pressed && playMenuItem.bounds.inside(data.x, data.y);
+        aboutMenuItem.clicked    = aboutMenuItem.pressed && aboutMenuItem.bounds.inside(data.x, data.y);
+    }
+    else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
+        newMenuItem.clicked      = newMenuItem.pressed && newMenuItem.bounds.inside(data.x, data.y);
+        resumeMenuItem.clicked   = resumeMenuItem.pressed && resumeMenuItem.bounds.inside(data.x, data.y);
+    }
+    
+    for(int i = 0; i < menuItems.size(); i++){
+        menuItems[i]->pressed = false;
+    }
+    
+    #endif
 }
 
 

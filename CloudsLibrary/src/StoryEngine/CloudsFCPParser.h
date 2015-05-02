@@ -23,7 +23,7 @@ class CloudsFCPParser {
     void setup(const string& directory);
     void refreshXML();
 	void loadMediaAssets();//default combine directory
-	void setCombinedVideoDirectory(const string& directory);
+	//void setCombinedVideoDirectory(const string& directory);
 	bool printErrors;
 
 #pragma mark Clips
@@ -40,6 +40,10 @@ class CloudsFCPParser {
     void parseLinks(const string& linkFile);
 	void parseClusterNetwork(const string& fileName);
 	void parseProjectExamples(const string& filename);
+#ifdef VHX_MEDIA
+    void parseVHXIds(const string& filename);
+#endif
+    
 	vector<CloudsProjectExample>& getProjectExamples();
 	CloudsProjectExample& getProjectExampleWithTitle(const string& title);
 	
@@ -124,7 +128,8 @@ class CloudsFCPParser {
     vector<CloudsClip*> getClipsWithKeyword(const vector<string>& filter);
 	vector<CloudsClip*> getClipsWithKeyword(const vector<string>& filter, vector<CloudsClip*>& searchClips);
     vector<CloudsClip*> getClipsWithQuestionsForTopic(const string&  topic);
-	
+	vector<CloudsClip*> getClipsForPerson(string person);
+    
     set<string> getRelatedKeywords(const string&  filterWord);
 	int getNumberOfSharedKeywords(CloudsClip* a, CloudsClip* b);
 	
@@ -139,10 +144,12 @@ class CloudsFCPParser {
     bool operator()(const string& a, const string& b);
     vector<string>& getContentKeywords();
 	vector<string>& getKeywordFamily(const string&  keyword);
-	ofVec2f getKeywordCentroid(const string&  keyword);
+	ofVec3f getKeywordCentroid(const string&  keyword);
 	
     void saveInterventions(const string&  interventionsFile);
 	void saveSpeakersVolume(const string&  speakerVolFile);
+    
+    
     
 #pragma mark key themes
 	string closestKeyThemeToTag(const string&  searchTag);
@@ -153,6 +160,9 @@ class CloudsFCPParser {
     float getDistanceFromAdjacentKeywords(const string&  keyword1, const string&  keyword2);
     
   protected:
+#ifdef VHX_MEDIA
+    void trimVHXId(string& str);
+#endif
     
     void reciprocateSuppressions(CloudsClip* clip );
     

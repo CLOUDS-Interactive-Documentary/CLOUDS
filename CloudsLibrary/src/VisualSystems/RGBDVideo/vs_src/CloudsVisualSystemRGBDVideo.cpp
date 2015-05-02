@@ -578,10 +578,10 @@ bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 		return false;
 	}
 	
-	filePath = getVisualSystemDataPath(true) + "videos/" + filePath;
-	
+	filePath = GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos/" + filePath;
+
 	if(!ofFile(filePath).exists() ) {
-		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "File does not exist" << endl;
+		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "File does not exist " << filePath << endl;
 		return false;
 	}
 	

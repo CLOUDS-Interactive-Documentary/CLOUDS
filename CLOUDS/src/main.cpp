@@ -3,12 +3,12 @@
 //--------------------------------------------------------------
 int main(){
 
-#ifdef OCULUS_RIFT
 	ofAppGLFWWindow window;
+#ifdef OCULUS_RIFT
 	window.setMultiDisplayFullscreen(true);
-	ofSetupOpenGL(&window, 1024, 768, OF_WINDOW);
+	ofSetupOpenGL(&window, 1920, 1080, OF_WINDOW);
 #else
-	ofSetupOpenGL(1024, 768, OF_WINDOW);
+	ofSetupOpenGL(&window, 1920, 1080, OF_WINDOW);
 #endif
 	ofRunApp(new testApp()); // start the app
 

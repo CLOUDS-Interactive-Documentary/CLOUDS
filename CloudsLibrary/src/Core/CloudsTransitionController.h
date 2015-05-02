@@ -12,19 +12,26 @@
 #include "ofRange.h"
 
 typedef enum {
-	TRANSITION_IDLE = 0,
-	TRANSITION_INTRO_IN = 1,
-	TRANSITION_INTRO_OUT = 2,
-	TRANSITION_INTERVIEW_IN = 3,
-	TRANSITION_INTERVIEW_OUT = 4,
-	TRANSITION_VISUALSYSTEM_IN = 5,
+	TRANSITION_IDLE             = 0,
+	TRANSITION_INTRO_IN         = 1,
+	TRANSITION_INTRO_OUT        = 2,
+	TRANSITION_INTERVIEW_IN     = 3,
+	TRANSITION_INTERVIEW_OUT    = 4,
+	TRANSITION_VISUALSYSTEM_IN  = 5,
 	TRANSITION_VISUALSYSTEM_OUT = 6,
-	TRANSITION_QUESTION_IN = 7,
-	TRANSITION_QUESTION_OUT = 8,
-    TRANSITION_INTERLUDE_IN = 9,
-    TRANSITION_INTERLUDE_OUT = 10,
-	TRANSITION_CLUSTERMAP_IN = 11,
-	TRANSITION_CLUSTERMAP_OUT = 12
+	TRANSITION_QUESTION_IN      = 7,
+	TRANSITION_QUESTION_OUT     = 8,
+    TRANSITION_INTERLUDE_IN     = 9,
+    TRANSITION_INTERLUDE_OUT    = 10,
+	TRANSITION_CLUSTERMAP_IN    = 11,
+	TRANSITION_CLUSTERMAP_OUT   = 12,
+	TRANSITION_EXPLORE_MAP_IN   = 13,
+	TRANSITION_EXPLORE_MAP_OUT  = 14,
+	TRANSITION_EXPLORE_PEOPLE_IN    = 15,
+	TRANSITION_EXPLORE_PEOPLE_OUT   = 16,
+	TRANSITION_EXPLORE_VISUALS_IN   = 17,
+	TRANSITION_EXPLORE_VISUALS_OUT  = 18
+    
 } CloudsTransitionState;
 
 typedef struct {
@@ -55,7 +62,14 @@ class CloudsTransitionController {
     
 	void transitionWithQuestion(float outDuration, float portalDuration);
 
-	
+   	void transitionToExploreMap(float inDuration, float outDuration);
+   	void transitionFromExploreMap(float inDuration);
+
+   	void transitionToExplorePeople(float inDuration, float outDuration);
+   	void transitionFromExplorePeople(float inDuration);
+    
+    void transitionBackToAct(float inDuration, float outDuration);
+    
 	void update();
 	
     bool isTransitioning();
@@ -94,6 +108,10 @@ class CloudsTransitionController {
 	vector<CloudsTransitionState> fadeOutStates;
 	vector<CloudsTransitionState> fadeInStates;
 	
+    void queueReciprocal(CloudsTransitionState state, float duration);
+    
+    map<CloudsTransitionState,CloudsTransitionState> reciprocalTransitions;
+    
 	CloudsTransitionState currentState;
 	CloudsTransitionState previousState;
 	CloudsTransitionState pendingState;

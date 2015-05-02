@@ -173,11 +173,11 @@ void CloudsRGBDCamera::setPositionFromMouse(){
 }
 
 void CloudsRGBDCamera::setTransitionStartNode( ofNode* _startNode ){
-	cout << "CloudsRGBDCamera::setStartNode: " << endl;
+//	cout << "CloudsRGBDCamera::setStartNode: " << endl;
 	startNode = _startNode;
 }
 void CloudsRGBDCamera::setTransitionTargetNode( ofNode* _targetNode ){
-	cout << "CloudsRGBDCamera::setTargetNode: " << endl;
+//	cout << "CloudsRGBDCamera::setTargetNode: " << endl;
 	targetNode = _targetNode;
 }
 

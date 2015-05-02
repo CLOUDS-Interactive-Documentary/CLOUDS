@@ -3,22 +3,31 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
+	ofBackground(0);
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	
-	//ofToggleFullscreen();
-    //ofEnableSmoothing();
-	ofBackground(0);
-
+    
+    //sets the HUD
+    
 	parser.loadFromFiles();
+    
+    std::set<string> topics(parser.getAllKeywords().begin(),
+                            parser.getAllKeywords().end() );
 
 	hud.setup();
+    hud.setTopics(topics);
+    
+    empty.setup();
+    empty.playSystem();
+    empty.setDrawToScreen(false);
+
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 	hud.update();
-
+    
 	if(hud.isResetHit()){
 		cout << "RESET!!!" << endl;
 	}
@@ -26,7 +35,8 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
+    ofBackground(0);
+    
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 20,20);
 	hud.draw();
 
@@ -38,7 +48,7 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::exit(){
-	hud.saveGuiSettings();
+//	hud.saveGuiSettings();
 }
 
 //--------------------------------------------------------------
@@ -68,33 +78,50 @@ void testApp::keyPressed(int key){
 	}
 	
 	if(key == ' '){
-		hud.animateOn(CLOUDS_HUD_FULL);
+		hud.animateOn(CLOUDS_HUD_ALL);
 	}
     
     if(key == '1'){
-		hud.animateOn(CLOUDS_HUD_LOWER_THIRD);
+		hud.animateOn(CLOUDS_HUD_HOME);
 	}
     
     if(key == '2'){
-		hud.animateOn(CLOUDS_HUD_QUESTION);
+		hud.animateOn(CLOUDS_HUD_LOWER_THIRD);
 	}
     
     if(key == '3'){
-		hud.animateOn(CLOUDS_HUD_MAP);
+		hud.animateOn(CLOUDS_HUD_QUESTION);
 	}
     
     if(key == '4'){
 		hud.animateOn(CLOUDS_HUD_PROJECT_EXAMPLE);
 	}
+    
+    if(key == '5'){
+		hud.animateOn(CLOUDS_HUD_PAUSE);
+        //hud.pause();
+	}
+    
+    if(key == '6'){
 
+		hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
+		hud.animateOn(CLOUDS_HUD_RESEARCH_NAV);
+		hud.animateOn(CLOUDS_HUD_RESEARCH_SHUFFLE);
+        //hud.pause();
+	}
+    
+    if(key == '7'){
+        hud.animateOn(CLOUDS_HUD_ABOUT);
+    }
+
+    if(key == '9'){
+        hud.animateOff();
+    }
+    
     if(key == 'h'){
-		hud.toggleGuis();
-//        storyEngine.toggleGuis();
+//		hud.toggleGuis();
     }
 	
-    else if(key =='f'){
-        ofToggleFullscreen();
-    }
 }
 
 //--------------------------------------------------------------

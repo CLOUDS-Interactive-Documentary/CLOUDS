@@ -1,3 +1,4 @@
+#include "ofxAudioDecoderTonic.h"
 
 #include "CloudsVisualSystemExampleMPMFluid.h"
 #include "CloudsRGBDVideoPlayer.h"
@@ -368,9 +369,9 @@ Tonic::Generator CloudsVisualSystemExampleMPMFluid::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
     ofDirectory sdir(strDir);
-    string strAbsPath = ofToDataPath( strDir + "/slowchimes.aif", true);
+    string strAbsPath = ofToDataPath( strDir + "/slowchimes.mp3", true);
                                      
-    Tonic::SampleTable sample = Tonic::loadAudioFile(strAbsPath);
+    Tonic::SampleTable sample = ofxAudioDecoderTonic(strAbsPath);
     
     Tonic::Generator low = Tonic::SineWave().freq(70) * 0.2;
     Tonic::Generator sampPlayer = Tonic::BufferPlayer().setBuffer(sample).loop(1).trigger(1);

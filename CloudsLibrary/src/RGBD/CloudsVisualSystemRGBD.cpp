@@ -358,7 +358,7 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 		q.set( ti.outRightQuat );
 		transitionOutRight.setOrientation( q );
 		
-		cout << "transitions set to: " + type + " : "+ option << endl;
+//		cout << "transitions set to: " + type + " : "+ option << endl;
 		return;
 	}
 	
@@ -1401,7 +1401,7 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::transtionFinished()
 {
-	cout << "transtionFinished()" <<endl;
+//	cout << "transtionFinished()" <<endl;
 	
 	cloudsCamera.targetNode = NULL;
 	cloudsCamera.startNode = NULL;
@@ -1413,12 +1413,12 @@ void CloudsVisualSystemRGBD::setOutOption( OutOption outOption )
 {
 	switch (outOption) {
 		case OutLeft:
-			cout << "setOutOption: OutLeft" << endl;
+//			cout << "setOutOption: OutLeft" << endl;
 			transitionOutOption = OutLeft;
 			break;
 			
 		case OutRight:
-			cout << "setOutOption: OutRight" << endl;
+//			cout << "setOutOption: OutRight" << endl;
 			transitionOutOption = OutRight;
 			break;
 			
@@ -1767,7 +1767,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			glEnable(GL_CULL_FACE);
             glCullFace(cullFace);
 			meshShader.begin();
-			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
+			getRGBDVideoPlayer().begin(meshShader);
             
 			meshShader.setUniform1f("meshAlpha", fillAlpha);
 			meshShader.setUniform1f("triangleExtend",
@@ -1786,6 +1786,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
             mesh.draw(GL_TRIANGLES, 0, meshVertexCount);
 			
 			meshShader.end();
+			getRGBDVideoPlayer().end();
 			glDisable(GL_CULL_FACE);
         }
         
@@ -1803,7 +1804,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
             glCullFace(cullFace);
             
 			meshShader.begin();
-			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
+			getRGBDVideoPlayer().begin(meshShader);
 		
 			meshShader.setUniform1f("meshAlpha", meshAlpha);
 			meshShader.setUniform1f("triangleExtend",
@@ -1827,6 +1828,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
             mesh.draw(GL_TRIANGLES, 0, meshVertexCount);
 			
 			meshShader.end();
+			getRGBDVideoPlayer().end();
 			glDisable(GL_CULL_FACE);
 		}
 		
@@ -1849,7 +1851,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			
             getRGBDVideoPlayer().flowPosition = lineFlowPosition * (linesFlowUp?-1:1);
             
-			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
+			getRGBDVideoPlayer().begin(lineShader);
 			
 			lineShader.setUniform1f("lineExtend", getRGBDTransitionValue());
             lineShader.setUniform1f("headMinRadius", meshFaceMinRadius);
@@ -1870,6 +1872,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
             lines.draw( ofGetGLPrimitiveMode(OF_PRIMITIVE_LINES), 0, lineVertexCount);
 			
 			lineShader.end();
+			getRGBDVideoPlayer().end();
 		}
 		
         
@@ -1963,7 +1966,7 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     
     occlusionShader.begin();
     
-    getRGBDVideoPlayer().setupProjectionUniforms(occlusionShader);
+    getRGBDVideoPlayer().begin(occlusionShader);
     
     occlusionShader.setUniform1f("triangleExtend", getRGBDTransitionValue());
     occlusionShader.setUniform1f("meshRetractionFalloff",occlusionMeshRetractionFalloff);
@@ -1972,6 +1975,8 @@ void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     
     occlusion.draw(GL_TRIANGLES, 0, occlusionVertexCount);
     
+	getRGBDVideoPlayer().end();
+
     occlusionShader.end();
     
     if(!drawOcclusionDebug){

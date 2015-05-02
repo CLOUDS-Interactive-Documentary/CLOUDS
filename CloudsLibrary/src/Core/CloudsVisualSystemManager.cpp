@@ -427,22 +427,14 @@ void CloudsVisualSystemManager::deletePreset(int i){
 }
 
 //--------------------------------------------------------------------
-//void CloudsVisualSystemManager::registerVisualSystem(ofPtr<CloudsVisualSystem> system){
-//#ifndef CLOUDS_NO_VS
-//	nameToVisualSystem[system->getSystemName()] = system;
-//#endif
-//	systems.push_back( system );
-//}
-
-//--------------------------------------------------------------------
 void CloudsVisualSystemManager::loadPresets(){
 	cout << "Loading presets " << endl;
 	presets.clear();
-//	nameToPresets.clear();
-//  nameToPresetsIndex.clear();
 	keywords.clear();
 	suppressedClips.clear();
 	
+    parseVisualSystemCredits();
+
 	ofxXmlSettings keywordXml;
 	string keywordsFile = getKeywordFilePath();
 	if(!keywordXml.loadFile( keywordsFile )){
@@ -508,6 +500,7 @@ void CloudsVisualSystemManager::loadPresets(){
         preset->interlude = keywordXml.getValue("interlude", false );
 		preset->checkHasFiles();
 		preset->systemIsRegistered = false;
+        preset->credits = visualSystemCredits[systemName];
 #ifndef CLOUDS_NO_VS
 		preset->systemIsRegistered = constructors.find(systemName) != constructors.end();
 #endif
@@ -520,9 +513,7 @@ void CloudsVisualSystemManager::loadPresets(){
 			}
 		}
 		else{
-//			nameToPresetsIndex[preset->systemName].insert(presets.size());
 			presets.push_back(*preset);
-//			nameToPresets[preset->systemName].push_back(*preset);
 		}
         keywordXml.popTag(); //system
 	}
@@ -533,9 +524,34 @@ void CloudsVisualSystemManager::loadPresets(){
 	}
 #endif
 	sort(presets.begin(), presets.end(), preset_sort);
-	updateClipPresetLinks();
+	
+    updateClipPresetLinks();
 	populateEnabledSystemIndeces();
+    
     cout << "** LOADED PRESETS " << presets.size() << endl;
+}
+
+void CloudsVisualSystemManager::parseVisualSystemCredits(){
+	ofxXmlSettings creditsXml;
+	string creditsFile = getCreditsFilePath();
+	if(!creditsXml.loadFile( creditsFile )){
+		ofLogError("CloudsVisualSystemManager::parseVisualSystemCredits") << "Unable to load credits file " << creditsFile;
+		return;
+	}
+    
+    visualSystemCredits.clear();
+    creditsXml.pushTag("visuals");
+    int numSystems = creditsXml.getNumTags("system");
+    for(int i = 0; i < numSystems; i++){
+        string systemId = creditsXml.getAttribute("system", "id", "", i);
+        creditsXml.pushTag("system", i);
+        visualSystemCredits[systemId].line1 = creditsXml.getValue("line1", "");
+        visualSystemCredits[systemId].line2 = creditsXml.getValue("line2", "");
+        creditsXml.popTag(); //system
+
+    }
+    
+    creditsXml.popTag(); //visuals
 }
 
 void CloudsVisualSystemManager::addDefaultPresetForSystem(const string& systemName){
@@ -546,8 +562,6 @@ void CloudsVisualSystemManager::addDefaultPresetForSystem(const string& systemNa
     newPreset.enabledScreen = false;
 	newPreset.enabledOculus = false;
     newPreset.bIsHeavy      = false;
-//	nameToPresets[newPreset.systemName].push_back(newPreset);
-//    nameToPresetsIndex[newPreset.systemName].push_back(presets.size());
 	presets.push_back(newPreset);
 
 	CloudsVisualSystemPreset currentState;
@@ -555,8 +569,6 @@ void CloudsVisualSystemManager::addDefaultPresetForSystem(const string& systemNa
 	currentState.presetName = "+Current State";
     currentState.enabledScreen = false;
 	currentState.enabledOculus = false;
-//	nameToPresets[currentState.systemName].push_back(currentState);
-//    nameToPresetsIndex[currentState.systemName].push_back(presets.size());
 	presets.push_back(currentState);
 }
 
@@ -825,6 +837,10 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 //--------------------------------------------------------------------
 string CloudsVisualSystemManager::getKeywordFilePath(){
 	return GetCloudsDataPath() + "links/visualsystems_keywords_db.xml";
+}
+//--------------------------------------------------------------------
+string CloudsVisualSystemManager::getCreditsFilePath(){
+	return GetCloudsDataPath() + "language/" + GetLanguage() +"/bio/visuals.xml";
 }
 
 //--------------------------------------------------------------------

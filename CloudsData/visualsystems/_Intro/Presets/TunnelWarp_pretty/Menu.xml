@@ -1,0 +1,37 @@
+<Canvas>
+    <Kind>40</Kind>
+    <Name>Menu</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>476.000000000</XPosition>
+    <YPosition>316.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>42</Kind>
+    <Name>FONT SIZE</Name>
+    <Value>12</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>TOOLTIP FONT SIZE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Y OFFSET</Name>
+    <Value>105.288459778</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TOTAL WIDTH</Name>
+    <Value>476.923095703</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NEW RESUME SPACE</Name>
+    <Value>81.730773926</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MENU BUTTON PAD</Name>
+    <Value>33.894233704</Value>
+</Widget>

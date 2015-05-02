@@ -1,0 +1,769 @@
+<visuals>
+	<!-- TODO: figure out how to deal with these -->
+	<system id="2DVideo" enabled="false">
+		<creator>
+		</creator>
+		<name>
+		</name>
+	</system>
+
+	<!-- -->
+	<system id="3DModelLoader" enabled="false">
+		<creator>
+		</creator>
+		<name>
+		</name>
+	</system>
+
+		<system id="Astrolabe" enabled="true">
+		<line1>
+			Astrolabe by Lars Berg
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>
+
+	<!-- -->
+	<system id="Automata" enabled="true">
+		<line1>
+			Cellular Automata by Walter Perdan and Elie Zananiri	
+		</line1>
+		<line2>
+			Implementation of Conway’s Game of Life
+		</line2>
+	</system>
+
+	<!-- -->
+	<system id="BallDroppings" enabled="true">
+		<line1>
+			Ball Droppings by Josh Nimoy
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>
+
+	<!-- -->
+	<system id="Balloons" enabled="true">
+		<line1>
+			Balloons by Lars Berg
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>
+
+	<!-- -->
+	<system id="CandyMountains" enabled="false">
+		<line1>
+			Candy Mountains by Jason Levine
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+
+	<!-- -->
+	<system id="Chromogram" enabled="false">
+		<line1>
+			Chromogram by Jonathan Minard
+		</line1>
+		<line2>
+			Inspired by Fernanda Viegas
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="CirclePacking" enabled="true">
+		<line1>
+			Circle Packing by Jonathan Minard, Gal Sassoon, James George
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="Circuit" enabled="true">
+		<line1>
+			Circuit by James George
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="Cities" enabled="true">
+		<line1>
+			Cities by Patricio Gonzalez Vivo
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="Code" enabled="true">
+		<line1>
+			Code by James George
+			
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="Colony" enabled="true">
+		<line1>
+			Colony by Omer Shapira and Jonathan Minard
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="Connectors" enabled="true">
+		<line1>
+			Connectors by James George
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="Cosmic" enabled="true">
+		<line1>
+			Cosmic by Reza Ali
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="CubeCraft" enabled="true">
+		<line1>
+			Cubecraft by Lars Berg
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="DataCascade" enabled="true">
+		<line1>
+			Data Cascade by James George
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+
+	<!-- -->
+	<system id="DrawnLine" enabled="true">
+		<line1>
+			Drawn Line by Shantell Martin and Zach Lieberman
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Empty" enabled="false">
+		<line1>
+
+		</line1>
+		<line2>
+
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="ExampleBox2D" enabled="true">
+		<line1>
+			Boxes by Gal Sassoon
+		</line1>
+		<line2>
+			Implementation of Box2D by Erin Catto
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="ExampleMPMFluid" enabled="true">
+		<line1>
+			Fluid Simulation by Golan Levin	
+		</line1>
+		<line2>
+			Implementation of MPM Fluid by Grant Kot
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="ExampleOpenSteer" enabled="true">
+		<line1>
+			Flocking by Philip Whitfield and Jeff Crouse
+		</line1>
+		<line2>
+			Based on OpenSteer by Craig Reynolds
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="ExampleVectorMath" enabled="true">
+		<line1>
+			3D Drawing Jeff Crouse 
+		</line1>
+		<line2>
+			Based on of VectorMath Example by Zach Lieberman
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Fireworks" enabled="true">
+		<line1>
+			Fireworks by Lars Berg
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Flocking" enabled="false">
+		<line1>
+		</line1>
+		<line2>
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Flying" enabled="true">
+		<line1>
+			Flying by Neil Mendoza
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="ForkingPaths" enabled="false">
+		<line1>
+		</line1>
+		<line2>
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="GesturePaint" enabled="true">
+		<line1>
+			Gesture Paint by James George
+		</line1>
+		<line2>
+			Inspired by Watercolors by Kynd
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Histogram" enabled="true">
+		<line1>
+			Histogram by Jonathan Minard and Elie Zananiri
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="LIA" enabled="true">
+		<line1>
+			Untitled by LIA
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="LSystem" enabled="true">
+		<line1>
+			L-Circuit by Patricio Gonzalez Vivo
+		</line1>
+		<line2>
+			Implemenetation of L-Systems by Lindenmayer 
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="LaplacianTunnel" enabled="true">
+		<line1>
+			Laplacian Tunnel by Nervous System
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Mandala" enabled="true">
+		<line1>
+			Mandala by Lars Berg
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="MarchingCubes" enabled="true">
+		<line1>
+			Marching Cubes by Lars Berg
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="MazeGenerator" enabled="true">
+		<line1>
+			Maze Generator by Gal Sassoon
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+    
+	<!-- -->
+	<system id="MazeGenerator2" enabled="true">
+		<line1>
+			Maze Generator by Gal Sassoon
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>    
+	
+	<!-- -->
+	<system id="Memory" enabled="true">
+		<line1>
+			Memory by Patricio Gonzalez Vivo
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Neurons" enabled="true">
+		<line1>
+			Neurons by JT Nimoy
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Ocean" enabled="true">
+		<line1>
+			Ocean by James George
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+
+	<!-- -->
+	<system id="OpenP5Caustics" enabled="false">
+		<line1>
+		</line1>
+		<line2>
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="OpenP5DrawingMachine10" enabled="false">
+		<line1>
+		</line1>
+		<line2>
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="OpenP5Fifteen" enabled="false">
+		<line1>
+		</line1>
+		<line2>
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5Hackpact" enabled="true">
+		<line1>
+			 Hackpackt by Martin Zumaya Hernandez,
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5Machine" enabled="true">
+		<line1>
+			Machine by Jonathan Minard
+		</line1>
+		<line2>
+			Implementation of Nebula by Matt Schroeter
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5NoiseSphere" enabled="true">
+		<line1>
+			NoiseSphere by James George
+		</line1>
+		<line2>
+			Inspired by NoiseSphere by David Pena
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5SeaOfLines" enabled="true">
+		<line1>
+			Geometric Lines by Elie Zananiri
+		</line1>
+		<line2>
+			Implementation of Sea of Lines by Jean-no
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5Sixteen" enabled="false">
+		<line1>
+		</line1>
+		<line2>
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5SpaceJunk" enabled="true">
+		<line1>
+			Space Junk by Jonathan Minard and James George
+		</line1>
+		<line2>
+			Implementation of Space Junk by Jörg Reuter
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5Spaghetti" enabled="true">
+		<line1>
+			Teodor Michalski, port by Jonathan Minard
+		</line1>
+		<line2>
+			 
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5SpinningSolids" enabled="true">
+		<line1>
+			Tetrahedra by Jonathan Minard
+		</line1>
+		<line2>
+			Inspired by oF Spinning Solids
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="OpenP5TextUniverse" enabled="true">
+		<line1>
+			Text Universe by Jonathan Minard and Elie Zananiri
+		</line1>
+		<line2>
+			Implementation of Text Universe
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Orbit" enabled="true">
+		<line1>
+			Orbit by Neil Mendoza
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="Oscillations" enabled="true">
+		<line1>
+			Oscillations by Omer Shapira
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="Paradox" enabled="true">
+		<line1>
+			Paradox by James George
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="Pages" enabled="true">
+		<line1>
+			Pages by Elie Zananiri
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	<!-- -->
+	<system id="PhotoGlitch" enabled="true">
+		<line1>
+			Photo Glitch by Surya Mattu
+		</line1>
+		<line2>
+			Inspired by Kyle McDonald's Rose Heading
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Process11" enabled="true">
+		<line1>
+			Process 11 by Casey Reas
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Process18" enabled="true">
+		<line1>
+			Process 18 by Casey Reas
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="RGBDVideo" enabled="true">
+		<line1>
+			RGBD Vignettes by James George
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+    
+	<!-- -->
+	<system id="RandomDigits2" enabled="true">
+		<line1>
+			Random Digits by Jonathan Minard and Gal Sassoon
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>    
+	
+	<!-- -->
+	<system id="Replicator" enabled="true">
+		<line1>
+			Replicator by Satoru Higa
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Ripples" enabled="true">
+		<line1>
+			Ripples by Elie Zananiri
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Rulez" enabled="true">
+		<line1>
+			Rulez by Neil Mendoza
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Satoruhiga" enabled="true">
+		<line1>
+			Replicator by Satoru Higa
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Scrape" enabled="false">
+		<line1>
+			Scrape by Elie Zananiri
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+    
+   	<!-- -->
+	<system id="Schlabberbox" enabled="true">
+		<line1>
+			Schlabberbox by Philip Whitfield
+		</line1>
+		<line2>
+			
+		</line2>
+	</system> 
+	
+	<!-- -->
+	<system id="Swim" enabled="true">
+		<line1>
+			Swim by Neil Mendoza
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Terrain" enabled="true">
+		<line1>
+			Reaction Diffusion Terrain by Patricio Gonzalez Vivo &amp; Mike Allison
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="ThingsInTheDark" enabled="false">
+		<line1>
+			Things in the Dark by Karolina Sobecka
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="TunnelDrawing" enabled="true">
+		<line1>
+			Tunnel Drawing by James George
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Twitter" enabled="true">
+		<line1>
+			Twitter Visualization by Surya Mattu and Jonathan Minard
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="VectorFlow" enabled="true">
+		<line1>
+			Vector Flow by James George
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="VerletForm" enabled="true">
+		<line1>
+			Verlet Form by Marius Watz
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Vision" enabled="true">
+		<line1>
+			Computer Vision by Surya Mattu
+		</line1>
+		<line2>
+			Built with Kyle McDonald's OpenCV Wrapper
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Voro" enabled="true">
+		<line1>
+			Voro by Patricio Gonzalez Vivo
+		</line1>
+		<line2>
+			Implementation of 3D Voronoi
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="WebHistory" enabled="true">
+		<line1>
+			Web History by Elie Zananiri
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="World" enabled="true">
+		<line1>
+			World by Patricio Gonzalez Vivo
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="WormHole" enabled="true">
+		<line1>
+			Wormhole by Lars Berg, Jonathan Minard, Bradley G Munkowitz
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="Xstatic" enabled="true">
+		<line1>
+			XStatic by Jonathan Minard
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+	
+	<!-- -->
+	<system id="YellowTail" enabled="true">
+		<line1>
+			YellowTail by Golan Levin
+		</line1>
+		<line2>
+			
+		</line2>
+	</system>	
+
+</visuals>

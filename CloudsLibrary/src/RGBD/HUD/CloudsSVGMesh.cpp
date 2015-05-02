@@ -233,7 +233,7 @@ vector<SVGMesh>& CloudsSVGMesh::getMeshes(){
 //return a pointer to the mesh with the matching ID
 SVGMesh* CloudsSVGMesh::getMeshByID(const string& meshId){
 	if(meshIdIndex.find(meshId) == meshIdIndex.end()){
-//		ofLogError("CloudsSVGMesh::getMeshByID") << "Couldn't find mesh: " << meshId;
+		//ofLogError("CloudsSVGMesh::getMeshByID") << "Couldn't find mesh: " << meshId;
 		return NULL;
 	}
 	return &meshes[ meshIdIndex[meshId] ];

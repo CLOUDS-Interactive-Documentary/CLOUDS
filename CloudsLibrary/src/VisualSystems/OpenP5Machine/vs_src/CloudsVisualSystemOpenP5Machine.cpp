@@ -2,6 +2,8 @@
 //  CloudsVisualSystemOpenP5Machine.cpp
 //
 
+#include "ofxAudioDecoderTonic.h"
+
 #include "CloudsVisualSystemOpenP5Machine.h"
 
 using namespace Tonic;
@@ -236,8 +238,8 @@ Generator CloudsVisualSystemOpenP5Machine::buildSynth()
 {
     string strDir = GetCloudsDataPath(true)+"sound/textures";
     ofDirectory sdir(strDir);
-    string strAbsPath = ofToDataPath(strDir + "/Machine.aif");
-    SampleTable sample = loadAudioFile(strAbsPath);
+    string strAbsPath = ofToDataPath(strDir + "/Machine.mp3");
+    SampleTable sample = ofxAudioDecoderTonic(strAbsPath);
     
     Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);
     

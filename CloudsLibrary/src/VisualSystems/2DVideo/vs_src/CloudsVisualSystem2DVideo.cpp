@@ -3,6 +3,7 @@
 //
 
 #include "CloudsVisualSystem2DVideo.h"
+#include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfSetupGui()
@@ -64,10 +65,9 @@ void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index, bool reset){
     }
     player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
 	loadedMoviePath = movieStrings[index];
-    if(player->loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
-
-
-		
+    if(player->loadMovie(GetCloudsMediaPath()+"visualsystems/"+getSystemName()+"/videos/"+ movieStrings[index])){
+//    if(player->loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
+        
         player->play();
         bFileLoaded = false;
 		

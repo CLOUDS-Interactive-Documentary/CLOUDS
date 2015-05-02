@@ -31,6 +31,7 @@ typedef struct {
 	bool freeTopic;
 	
 	float duration;
+    int clipNum;
 	int topicNum;
 	int timesOnCurrentTopic;
 
@@ -39,9 +40,24 @@ typedef struct {
 	float visualSystemEndTime;	
 	int moreMenThanWomen;
 	
-	stringstream log; //....
+    bool forcingTopic;
+    bool forcingPerson;
+    
+	stringstream log;
 	
 } CloudsStoryState;
+
+typedef struct {
+    
+    CloudsRun* run;
+    CloudsClip* seed;
+    string topic;
+    string person;
+    bool playSeed;
+    bool forceTopic;
+    bool forceSpeaker;
+    bool allowVisuals;
+} CloudsActSettings;
 
 class CloudsAct;
 class CloudsVisualSystemManager;
@@ -55,14 +71,16 @@ class CloudsStoryEngine {
 
 	void setup();
 	
-	//will send this act instead of generating one when buildAct is called
-	void setCustomAct(CloudsAct* customAct);
-
     vector<CloudsClip*> getStartingQuestions();
     
 	CloudsAct* buildAct(CloudsRun& run);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed, string topic, bool playSeed = true);
+    CloudsAct* buildActWithTopic(CloudsRun& run, string forceTopic);
+    CloudsAct* buildActWithPerson(CloudsRun& run, string speakerId);
+
+    CloudsAct* buildAct(CloudsActSettings settings);
+
 	bool getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset, bool forceCredits = false);
 	bool getRandomInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset);
 
@@ -166,7 +184,8 @@ class CloudsStoryEngine {
 	//TIMING PARAMS
 	int maxTopicsPerAct;
 	int maxTimesOnTopic;
-
+	int maxClipsPerAct;
+    
     //Story engine decision making parameters
     float topicsInCommonMultiplier;
     float topicsinCommonWithPreviousMultiplier;

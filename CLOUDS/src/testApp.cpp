@@ -7,14 +7,14 @@ void testApp::setup(){
 	
     
 #if defined(OCULUS_RIFT) && defined(TARGET_WIN32)
-	ofSetWindowPosition(0,0);
-	ofSetWindowShape(1920*2,1080);
+//	ofSetWindowPosition(0,0);
+//	ofSetWindowShape(1920*2,1080);
 #else
 	#ifdef CLOUDS_RELEASE
 		//ofSetWindowPosition(1920 + 1920*.5,1080*.5);
-    	ofSetWindowPosition(0,0);
+//    	ofSetWindowPosition(0,0);
 	#endif
-	ofSetWindowShape(1920,1080);
+//	ofSetWindowShape(1920,1080);
 #endif
 	ofSetVerticalSync(true);
 	//ofSetFrameRate(60);

@@ -17,6 +17,32 @@
 #include "CloudsPortalEvents.h"
 #include "CloudsCalibrationNode.h"
 
+
+typedef struct {
+    ofRectangle bounds;
+    string label;
+    bool visible;
+    bool hovered;
+    bool pressed;
+    bool clicked;
+    float attenuation;
+    float baseAlpha;
+    float targetAlpha;
+} CloudsMenuItem;
+
+typedef enum {
+    
+    CLOUDS_INTRO_LOADING = 0,
+    CLOUDS_INTRO_MENU,
+    CLOUDS_INTRO_MENU_NEW_RESUME,
+    CLOUDS_INTRO_PLAYING,
+    CLOUDS_INTRO_RESUMING,
+    CLOUDS_INTRO_RESEARCH,
+    CLOUDS_INTRO_NO_MEDIA,
+    CLOUDS_INTRO_ABOUT
+    
+} CloudsIntroState;
+
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
 	CloudsIntroSequence();
@@ -62,6 +88,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	void setStartQuestions(vector<CloudsClip*>& possibleStartQuestions);
 
+    bool isResearchModeSelected();
+    bool isAboutScreenSelected();
+    
 	bool isStartQuestionSelected();
 	bool istStartQuestionHovering();
 	
@@ -76,6 +105,11 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     
     static CloudsVisualSystemEvents events;
     
+    void loadingFinished();    
+    float percentLoaded;
+    bool firstPlay;
+    bool shouldArchiveAct;
+    
 	ofCamera& getCameraRef(){
 		return warpCamera;
 	}
@@ -87,6 +121,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofxUISuperCanvas* typeGui;
 	ofxUISuperCanvas* introGui;
 	ofxUISuperCanvas* helperTextGui;
+	ofxUISuperCanvas* menuGui;
 	
 	bool showingQuestions;
 	float questionWrapDistance;
@@ -136,6 +171,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     float firstQuestionStoppedTime;
     
 	vector<CloudsPortal> startQuestions;
+    CloudsPortal resumePortal;
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;
 	float selectedQuestionTime;
@@ -170,12 +206,13 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofRange distanceRange;
 	
 	void drawCloudsType();
-    void drawIntroNodes();//rift only
+    void drawIntroNodes(); //rift only
 	void drawHelperType();
 	void drawTunnel();
 	void drawPortals();
     void drawCursors();
-	
+    void drawMenu();
+    
 	void updateIntroNodePosition(CalibrationNode& node);
 	void updateIntroNodeInteraction(CalibrationNode& node);
 	
@@ -201,18 +238,43 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float kinectHelperAlpha;
 	float kinectHelperTargetAlpha;
 
-	bool clickTextActive;
-	float clickTextActiveTime;
-	float clickToBeginAlpha;
 	float mouseLastMovedTime;
+    
+    //menu stuff
+    //intro state machine stuff
+    CloudsIntroState currentState;
+    void changeState(CloudsIntroState newState);
+    float stateChangedTime;
+    
 
+    int menuFontSize;
+    int currentMenuFontSize;
+    int menuToolTipFontSize;
+    int currentMenuToolTipFontSize;
+    float menuButtonPad;
+    float loadingCompleteTime;
+    float menuYOffset;
+    float menuWidth;
+    float newResumeSpace;
+	ofxFTGLFont menuFont;
+	ofxFTGLFont menuToolTipFont;
+    CloudsMenuItem researchMenuItem;
+    CloudsMenuItem playMenuItem;
+    CloudsMenuItem aboutMenuItem;
+    CloudsMenuItem newMenuItem;
+    CloudsMenuItem resumeMenuItem;
+    bool researchSelected;
+    bool aboutSelected;
+    
+    vector<CloudsMenuItem*> menuItems;
+    
+    
 	void updateCamera();
 	void updateWaiting();
 	void updateTitle();
 	void updateQuestions();
+    void updateMenu();
 	
-	//intro state machien stuff
-	bool startedOnclick;
 	float perlinAmplitude;
 	float perlinDensity;
 	float perlinSpeed;
@@ -239,6 +301,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
     ofVec3f cursor;
     ofVec3f stickyCursor;
+    
     
 #ifdef OCULUS_RIFT
     bool bCursorInCenter;

@@ -1,6 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
+typedef struct{
+    string line1;
+    string line2;
+} CloudsVisualSystemCredit;
 
 class CloudsVisualSystem;
 class CloudsVisualSystemPreset {
@@ -9,7 +13,8 @@ class CloudsVisualSystemPreset {
 	CloudsVisualSystemPreset();
 	string presetName;
 	string systemName;
-	//ofPtr<CloudsVisualSystem> system;
+    CloudsVisualSystemCredit credits;
+    
 	CloudsVisualSystem* system;
 	float introDuration;
 	float outroDuration;
@@ -46,4 +51,6 @@ class CloudsVisualSystemPreset {
 	
 	bool stillPresent;
 	float currentScore;
+    
+
 };

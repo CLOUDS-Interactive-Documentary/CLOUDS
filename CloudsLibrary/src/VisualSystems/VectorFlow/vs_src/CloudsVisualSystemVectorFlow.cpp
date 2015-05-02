@@ -1,3 +1,4 @@
+#include "ofxAudioDecoderTonic.h"
 
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsGlobal.h"
@@ -470,12 +471,12 @@ Tonic::Generator CloudsVisualSystemVectorFlow::buildSynth()
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
     
     ofDirectory sdir(strDir);
-    string strAbsPath = ofToDataPath(strDir + "/Wind 2.aif", true);
+    string strAbsPath = ofToDataPath(strDir + "/Wind 2.mp3", true);
     
-    SampleTable sample = loadAudioFile(strAbsPath);
+    SampleTable sample = ofxAudioDecoderTonic(strAbsPath);
     
-    string strAbsPath2 = ofToDataPath(strDir + "/" +"slowgrains_short.aif", true);
-    SampleTable sample2 = loadAudioFile(strAbsPath2);
+    string strAbsPath2 = ofToDataPath(strDir + "/" +"slowgrains_short.mp3", true);
+    SampleTable sample2 = ofxAudioDecoderTonic(strAbsPath2);
     
     lpfCutoff = synth.addParameter("cutoff_freq", 50).displayName("Cutoff Freq").min(50).max(8000);
     volume = synth.addParameter("volume", 0.0).displayName("Cutoff Freq").min(0.0).max(1);

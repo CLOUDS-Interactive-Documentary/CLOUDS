@@ -13,7 +13,6 @@
 #include "ofxTimeline.h"
 #include "CloudsDichotomy.h"
 
-
 typedef enum {
     Clip = 0,
     VS,
@@ -74,6 +73,12 @@ class CloudsAct{
 	
     void populateTime();
     void play();
+    void terminateAct();
+    
+    void pause();
+    void unpause();
+    void next();
+    
     void clear();
     
     vector<CloudsClip*>& getAllClips();
@@ -87,7 +92,8 @@ class CloudsAct{
 	
     CloudsClip* getClip(int index);
     CloudsClip* getClipAtTime(float time);
-
+    CloudsClip* getClipAtTime(float time, int& index);
+    
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     float addClip(CloudsClip* clip, string topic, float startTime);
     float addClip(CloudsClip* clip, string topic, float startTime, vector<CloudsDichotomy> currentDichotomiesBalance);
@@ -103,6 +109,10 @@ class CloudsAct{
     
     void setTopicForClip(string topic, string clipName);
     string getTopicForClip(CloudsClip* clip);
+    
+#ifdef VHX_MEDIA
+    void fetchClipVhxUrls();
+#endif
 	
 	ofxTimeline& getTimeline(){ return timeline; }
     
@@ -129,16 +139,14 @@ class CloudsAct{
     ofxTLFlags* difficultyTrack;
     ofxTLFlags* silenceTrack;
     ofxTLFlags* notesTrack;
-	
-    ActItemType itemType;
-    
-	
+	   
+	bool paused;
 	bool timelinePopulated;
     string currentTopic;
     CloudsStoryEvents events;
     vector<CloudsClip*> clips;
     vector<CloudsVisualSystemPreset> visualSystems;
-	
+    
     vector<ActTimeItem> actItems;
     map<string,ActTimeItem> actItemsMap;
 

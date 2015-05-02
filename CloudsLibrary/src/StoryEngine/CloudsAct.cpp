@@ -8,6 +8,9 @@
 
 #include "CloudsAct.h"
 #include "CloudsAudioEvents.h"
+#ifdef VHX_MEDIA
+#include "CloudsVHXRequest.h"
+#endif
 
 bool delta_sort(pair<string,float> a, pair<string,float> b){
 	return a.second > b.second;
@@ -20,6 +23,7 @@ CloudsAct::CloudsAct(){
 	defaulPrerollDuration = 2.0;
     defaultAudioFade = 2.0;
 	incrementalQuesitonTime = 0.0;
+    paused = false;
 }
 
 CloudsAct::~CloudsAct(){
@@ -58,7 +62,6 @@ void CloudsAct::populateTime(){
     topicsTrack = timeline.addFlags("Topics");
     visualSystemsTrack = timeline.addFlags("Visual Systems");
 	
-//    vsGapsTrack = timeline.addFlags("VS Gap");
     clipsTrack = timeline.addFlags("Clips");
 	notesTrack = timeline.addFlags("Notes");
 	
@@ -322,6 +325,21 @@ void CloudsAct::populateTime(){
 	timeline.setCurrentPage(0);
 }
 
+
+void CloudsAct::pause(){
+    if(!paused){
+        paused = true;
+        timeline.stop();
+    }
+}
+
+void CloudsAct::unpause(){
+    if(paused){
+        paused = false;
+        timeline.play();
+    }
+}
+
 bool CloudsAct::startsWithVisualSystem(){
     return visualSystems.size() > 0 && visualSystemItems[visualSystems[0].getID() ].startTime == 0;
 }
@@ -344,7 +362,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         presetId = ofSplitString(bang.flag, ":");
         if(presetId.size() > 1){
 			CloudsVisualSystemEventArgs args(visualSystems[ visualSystemIndeces[presetId[1]] ]);
-			if(presetId[0] == "start " ){
+			if(presetId[0] == "start "  && visualSystemItems[ presetId[1] ].endTime > timeline.getCurrentTime() ){
 				cout<<"Starting Visual System " << visualSystems[ visualSystemIndeces[presetId[1]] ].getID() << endl;
 				ofNotifyEvent(events.visualSystemBegan, args);
 			}
@@ -383,9 +401,29 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     }
 }
 
-void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
-	CloudsActEventArgs args(this);
+void CloudsAct::terminateAct(){
+    CloudsActEventArgs args(this);
     ofNotifyEvent(events.actEnded, args);
+}
+
+void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
+    if(!paused){
+        CloudsActEventArgs args(this);
+        ofNotifyEvent(events.actEnded, args);
+    }
+}
+
+void CloudsAct::next(){
+    int currentClipIndex = -1;
+    getClipAtTime(timeline.getCurrentTime(), currentClipIndex);
+    if(currentClipIndex >= 0 && currentClipIndex < clips.size()-1){
+        ActTimeItem nextClip = getItemForClip(clips[currentClipIndex]);
+        timeline.setCurrentTimeSeconds( getItemForClip(clips[currentClipIndex+1]).startTime - .5 );
+    }
+    else{
+        CloudsActEventArgs args(this);
+        ofNotifyEvent(events.actEnded, args);
+    }
 }
 
 float CloudsAct::getActDuration(){
@@ -421,9 +459,15 @@ CloudsClip* CloudsAct::getClip(int index){
 }
 
 CloudsClip* CloudsAct::getClipAtTime(float time){
+    int dummy;
+    return getClipAtTime(time,dummy);
+}
+
+CloudsClip* CloudsAct::getClipAtTime(float time, int& index){
     for(int i=0; i< clips.size(); i++){
         ActTimeItem item = getItemForClip(clips[i]);
         if(time >= item.startTime && time <= item.endTime){
+            index = i;
             return clips[i];
         }
     }
@@ -445,7 +489,7 @@ float CloudsAct::getClipEndTime(CloudsClip* clip){
 
 ActTimeItem& CloudsAct::getItemForClip(CloudsClip* clip){
     if(clipMap.find(clip->getLinkName()) == clipMap.end()){
-        ofLogError() << "Couldn't find Act Item for cilp " << clip->getLinkName();
+        ofLogError("CloudsAct::getItemForClip") << "Couldn't find Act Item for cilp " << clip->getLinkName();
         return dummy;
     }
     return clipItems[clip->getLinkName()];
@@ -453,7 +497,7 @@ ActTimeItem& CloudsAct::getItemForClip(CloudsClip* clip){
 
 ActTimeItem& CloudsAct::getItemForVisualSystem(CloudsVisualSystemPreset& preset){
     if(visualSystemItems.find(preset.getID()) == visualSystemItems.end()){
-        ofLogError()<<"Can't find Act item for Visual System"<<endl;
+        ofLogError("CloudsAct::getItemForVisualSystem")<<"Can't find Act item for Visual System " << preset.getID() << endl;
     }
     return visualSystemItems[preset.getID()];
 }
@@ -593,6 +637,14 @@ vector<string>& CloudsAct::getAllTopics(){
 void CloudsAct::setTopicForClip(string topic, string clipName){
     topicMap[clipName] = topic;
 }
+
+#ifdef VHX_MEDIA
+void CloudsAct::fetchClipVhxUrls(){
+    for (int i = 0; i < clips.size(); ++i) {
+        clips[i]->fetchVhxSourceUrl();
+    }
+}
+#endif
 
 void CloudsAct::clear(){
     clips.clear();

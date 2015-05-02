@@ -33,7 +33,9 @@ void CloudsFCPParser::loadFromFiles(){
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
 	parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
-	
+#ifdef VHX_MEDIA
+	parseVHXIds(GetCloudsDataPath() + "vhx/clip_ids.csv");
+#endif
 }
 
 void CloudsFCPParser::setup(const string& directory){
@@ -112,9 +114,12 @@ void CloudsFCPParser::parseVOClips(){
 		string fileName = components[0];
 		CloudsClip* clip = new CloudsClip();
 		clip->voiceOverAudio = true;
-		clip->voiceOverAudioPath = GetCloudsDataPath(true) + "VO/" + fileName;
-		clip->sourceVideoFilePath = clip->voiceOverAudioPath;
+		//clip->voiceOverAudioPath = GetCloudsDataPath(true) + "VO/" + fileName;
+#ifndef VHX_MEDIA
+		clip->voiceOverAudioPath = GetCloudsMediaPath() + "VO/" + fileName;
 		clip->hasMediaAsset = ofFile(clip->voiceOverAudioPath).exists();
+		clip->sourceVideoFilePath = clip->voiceOverAudioPath;
+#endif
 		if (!clip->hasMediaAsset) {
 			ofLogError("CloudsFCPParser::parseVOClips") << "Missing voiceover file " << fileName;
 		}
@@ -328,6 +333,58 @@ void CloudsFCPParser::parseClusterNetwork(const string& fileName){
     disperseUnpositionedClips();
 }
 
+#ifdef VHX_MEDIA
+void CloudsFCPParser::parseVHXIds(const string& path){
+    ofBuffer idbuf = ofBufferFromFile(path);
+    map<string, string> idHashMap;
+    
+    while(!idbuf.isLastLine()){
+        
+        string line = idbuf.getNextLine();
+        if(line == ""){
+            continue;
+        }
+        
+        vector<string> split = ofSplitString(line,",", true,true);
+        string idstring = split[0];
+        split.erase(split.begin());
+        
+        string key = ofJoinString(split, "");
+        trimVHXId(key);
+        
+        idHashMap[key] = idstring;
+    }
+
+    for(int i = 0; i < allClips.size(); i++){
+        string key = allClips[i]->person + allClips[i]->name;
+        trimVHXId(key);
+        
+        if(idHashMap.find(key) != idHashMap.end()){
+            allClips[i]->vhxId = idHashMap[ key ];
+        }
+        else {
+            ofLogError("CloudsFCPParser::parseVHXIds") << "No VHX ID for clip " << allClips[i]->getLinkName() << " hash: " << key;
+        }
+    }
+    
+}
+
+void CloudsFCPParser::trimVHXId(string& str){
+    ofStringReplace(str, " ", "");
+    ofStringReplace(str, "-", "");
+    ofStringReplace(str, "_", "");
+    ofStringReplace(str, "+", "");
+    ofStringReplace(str, ",", "");
+    ofStringReplace(str, "?", "");
+    ofStringReplace(str, "'", "");
+    ofStringReplace(str, "\"", "");
+    ofStringReplace(str, ".mov", "");
+    ofStringReplace(str, "%2B", "");
+    ofStringReplace(str, "%3C", "");
+    ofStringReplace(str, "%3F", "");
+}
+#endif
+
 void CloudsFCPParser::parseProjectExamples(const string& filename){
 	
 	clipIdToProjectExample.clear();
@@ -339,23 +396,18 @@ void CloudsFCPParser::parseProjectExamples(const string& filename){
 		return;
 	}
 	
-	//find video file path
+    //TODO: Elie please connect secondary videos to VHX
+#ifndef VHX_MEDIA
 	string videoFilePathPrefix = "";
 	bool hasVideoDataPath = false;
-	string videoFilePathTxt = GetCloudsDataPath() + "CloudsSecondaryDirectory.txt";
-	
-	if(ofFile(videoFilePathTxt).exists()){
-		videoFilePathPrefix = ofFilePath::addTrailingSlash(ofBufferFromFile(videoFilePathTxt).getText());
-	}
-	else{
-		videoFilePathPrefix = GetCloudsDataPath(true) + "secondary/";		
-	}
+    videoFilePathPrefix = GetCloudsMediaPath() + "secondary/";
 	hasVideoDataPath = ofFile(videoFilePathPrefix).exists();
-
 	if(!hasVideoDataPath){
 		ofLogError("CloudsFCPParser::parseProjectExamples") << "Couldn't find data path for videos";
 	}
-	
+#endif
+
+
 	projectExamplesXML.pushTag("clouds");
 	int numProjectExamples = projectExamplesXML.getNumTags("project");
 	for(int i = 0; i < numProjectExamples; i++){
@@ -378,10 +430,12 @@ void CloudsFCPParser::parseProjectExamples(const string& filename){
 			if(numVideos == 0){
 				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have any <file> tags in <videos>";
 			}
-			
+            //TODO: How to handle on VHX?
+            #ifndef VHX_MEDIA
 			for(int f = 0; f < numVideos; f++){
 				example.exampleVideos.push_back(videoFilePathPrefix + projectExamplesXML.getValue("file","",f));
 			}
+            #endif
 			projectExamplesXML.popTag(); //videos
 		}
 		else{
@@ -667,11 +721,11 @@ void CloudsFCPParser::calculateCohesionMedianForKeywords(){
 
 }
 
-ofVec2f CloudsFCPParser::getKeywordCentroid(const string& keyword){
+ofVec3f CloudsFCPParser::getKeywordCentroid(const string& keyword){
     int index = getCentroidMapIndex(keyword);
     if(index == -1){
 		ofLogError("CloudsFCPParser::getKeywordCentroid") << "No centroid found for keyword: " << keyword << endl;
-		return ofVec2f(-1, -1);
+		return ofVec3f(-1, -1, -1);
     }
 	return keywordCentroids[index].second;
 }
@@ -1208,30 +1262,31 @@ void CloudsFCPParser::refreshAllKeywords(){
 }
 
 void CloudsFCPParser::loadMediaAssets(){
-	string defaultFilePath = GetCloudsDataPath(true) + "media/";
-	if(ofFile::doesFileExist(defaultFilePath)){
-		setCombinedVideoDirectory(defaultFilePath);
-	}
-	else{
-		ofLogError("CloudsFCPParser::loadMediaAssets") << "default directory " << defaultFilePath << " does not exist";
-	}
-}
 
-void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
+//void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
 	hasMediaAssetIndeces.clear();
 	hasMediaAssetAndQuestionIndeces.clear();
     hasCombinedAndIsStartingClipIndeces.clear();
+    #ifndef VHX_MEDIA
+	combinedVideoDirectory = GetCloudsMediaPath() + "media";
+    if(!ofDirectory(combinedVideoDirectory).exists()){
+        //TODO: TRIGGER USB KEY NOT PLUGGED IN MESSAGE!
+    }
+    #endif
     
-	combinedVideoDirectory = directory;
     //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
         
-
-		allClips[i]->combinedVideoPath = directory + "/" + allClips[i]->getCombinedMovieFile();
-		allClips[i]->combinedCalibrationXMLPath = directory + "/" + allClips[i]->getCombinedCalibrationXML();
+        #ifdef VHX_MEDIA
+        allClips[i]->hasMediaAsset = allClips[i]->voiceOverAudio ||
+                                     (allClips[i]->vhxId.size() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
+        #else
+		allClips[i]->combinedVideoPath = combinedVideoDirectory + "/" + allClips[i]->getCombinedMovieFile();
+		allClips[i]->combinedCalibrationXMLPath = GetCloudsDataPath() + "clipxml/" + allClips[i]->getCombinedCalibrationXML();
 		allClips[i]->hasMediaAsset = allClips[i]->voiceOverAudio ||
-                                    (ofFile(allClips[i]->combinedVideoPath).exists() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
+                                     (ofFile(allClips[i]->combinedVideoPath).exists() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
         //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
+        #endif
         
 		if(allClips[i]->hasMediaAsset){
 			hasMediaAssetIndeces.push_back(i);
@@ -1242,12 +1297,9 @@ void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
 				}				
 			}
 		}
-        
-        /* Subtitles */
-        //allClips[i]->subtitlePath = directory + "/" + allClips[i]->getSubtitlePath();
 	}
 	
-	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasMediaAssetAndQuestionIndeces.size() << " items with questions & combined " << endl;
+	ofLogNotice("CloudsFCPParser::loadMediaAssets") << "there are " << hasMediaAssetAndQuestionIndeces.size() << " items with questions & combined " << endl;
 }
 
 CloudsClip* CloudsFCPParser::getRandomClip(bool hasMediaAsset,
@@ -1470,6 +1522,17 @@ vector<CloudsClip*> CloudsFCPParser::getClipsWithQuestionsForTopic(const string&
         }
     }
     
+    return clips;
+}
+
+vector<CloudsClip*> CloudsFCPParser::getClipsForPerson(string person){
+    vector<CloudsClip*> clips;
+    //TODO: accomodate for multiple people
+    for(int i = 0; i < allClips.size(); i++){
+        if(allClips[i]->person == person){
+            clips.push_back(allClips[i]);
+        }
+    }
     return clips;
 }
 

@@ -35,7 +35,8 @@ public:
     bool bLoadResult;
 	bool bPlayWhenReady;
 
-	void setupProjectionUniforms(ofShader& shader);
+	void begin(ofShader& shader);
+	void end();
     
 	//  CYCLE
 	//
@@ -43,11 +44,15 @@ public:
     
 	bool isPlaying();
 	bool isDone();
+    bool clipJustFinished();
+    
+    void pause();
+    void unpause();
 	bool forceStop; //default to true when playin in clouds
     
 	float getFadeIn();
 	float getFadeOut();
-
+    
 	ofVideoPlayer& getPlayer();
 	ofTexture& getTextureReference();
 
@@ -90,7 +95,7 @@ public:
 	float englishSubtitleKerning;
 	float japaneseSubtitleKerning;
 	int fontLoadWidth;
-
+    
   protected:
 
 	//  UPDATE
@@ -98,7 +103,7 @@ public:
 	bool bEventRegistered;
     void update(ofEventArgs& args);
 	
-	void startPlayer(); //
+	void startPlayer();
 
 	ofPtr<ofVideoPlayer> currentPlayer;
 	ofPtr<ofVideoPlayer> nextPlayer;
@@ -106,7 +111,22 @@ public:
 	ofPtr<ofSoundPlayer> currentVoiceoverPlayer;
 	ofPtr<ofSoundPlayer> nextVoiceoverPlayer;
 	bool nextClipIsVO;
-	
+    bool clipPrerolled;
+	bool playerPaused;
+    bool bClipJustFinished;
+    
+	float fadeInValue;
+	float fadeOutValue;
+    //float currentAudioVolume;
+    bool wasPlayingLastFrame;
+    /* Subtitles */
+    bool loadSubtitles(string path);
+    bool currentClipHasSubtitles;
+    bool nextClipHasSubtitles;
+    
+    ofPtr<ofxSubtitles> currentSubtitles;
+    ofPtr<ofxSubtitles> nextSubtitles;
+
     //  RGB
     //
 	ofRectangle colorRect;
@@ -141,18 +161,7 @@ public:
 	string nextCalibrationXML;
 	bool hasSkinSettings;
 	bool useFaces;
+
 	
-	bool clipPrerolled;
-	
-	float fadeInValue;
-	float fadeOutValue;
-    
-    /* Subtitles */
-    bool loadSubtitles(string path);
-    bool currentClipHasSubtitles;
-    bool nextClipHasSubtitles;
-    
-    ofPtr<ofxSubtitles> currentSubtitles;
-    ofPtr<ofxSubtitles> nextSubtitles;
  
 };

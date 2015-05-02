@@ -9,6 +9,7 @@
 #include <set>
 
 // the long game
+class CloudsFCPParser;
 class CloudsRun
 {
   public:
@@ -17,6 +18,12 @@ class CloudsRun
 		questionsAsked = 0;
 	};
 
+
+	bool load(CloudsFCPParser* parser);
+	void save();
+	void saveAs(string filePath);
+    void archive();
+    
 	int actCount;
     int questionsAsked;
     vector<CloudsClip*> clipHistory;
@@ -40,7 +47,4 @@ class CloudsRun
 	void topicChanged(CloudsTopicEventArgs& args);
     void preRollRequested(CloudsPreRollEventArgs& args);
 
-	//TODO: acts can be persisted
-//	void save();
-//	void load();
 };

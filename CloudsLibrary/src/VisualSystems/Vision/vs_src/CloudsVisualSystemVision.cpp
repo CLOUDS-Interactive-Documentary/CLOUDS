@@ -93,7 +93,8 @@ void CloudsVisualSystemVision::selfSetup()
     //	app
     movieIndex = 0;
 
-    videosDir.listDir(getVisualSystemDataPath(true) + "videos" );
+//    videosDir.listDir(getVisualSystemDataPath(true) + "videos" );
+    videosDir.listDir( GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos" );
     videosDir.sort();
     for (int i = 0; i < videosDir.size(); i++) {
         movieStrings.push_back(videosDir.getName(i));

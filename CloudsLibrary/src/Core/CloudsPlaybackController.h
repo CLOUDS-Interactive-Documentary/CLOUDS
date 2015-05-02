@@ -12,6 +12,7 @@
 #include "CloudsIntroSequence.h"
 #include "CloudsVisualSystemClusterMap.h"
 #include "CloudsVisualSystemRGBD.h"
+#include "CloudsVisualSystemTwitter.h"
 #include "CloudsVisualSystemManager.h"
 
 #include "CloudsHUDController.h"
@@ -76,11 +77,11 @@ class CloudsPlaybackController : public ofThread {
 	
 	void finishSetup(); //called at the end of the threaded function
 	bool loading;
-	float loadPercent;
 	bool loadFinished;
 
 	void threadedFunction();
 	CloudsMixer mixer;
+    
   protected:
 	vector<CloudsClip*> startingNodes;
 	//*** CORE CLOUDS STUFF
@@ -90,6 +91,7 @@ class CloudsPlaybackController : public ofThread {
 	CloudsSound sound;
 	CloudsSecondaryDisplayOSCSender oscSender;
 	CloudsHUDController hud;
+	CloudsTransitionController transitionController;
 
 	//STATE STUFF
 	CloudsRun run;
@@ -102,7 +104,8 @@ class CloudsPlaybackController : public ofThread {
 	bool shouldPlayAct;
     bool shouldClearAct;
     bool shouldPlayClusterMap;
-    
+    bool resumingActFromIntro;
+
     void drawRenderTarget();
     void drawInterludeInterface();
 	void drawInterludePanel(ofRectangle rect, string promptText, bool hovering, int tracking );
@@ -110,8 +113,8 @@ class CloudsPlaybackController : public ofThread {
     void drawKinectFeedback();
 #endif
 	//transition
-	CloudsPortal* selectedQuestion;
-	CloudsClip* selectedQuestionClip;
+	//CloudsPortal* selectedQuestion;
+	//CloudsClip* selectedQuestionClip;
 
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
@@ -130,17 +133,23 @@ class CloudsPlaybackController : public ofThread {
 	//if there is a system playing this wil be non-null
 	CloudsIntroSequence* introSequence;
 	CloudsVisualSystemClusterMap* clusterMap;
+    CloudsVisualSystemTwitter* peopleMap;
 	CloudsVisualSystem* interludeSystem;
+    
+   //TODO: add these guys too!
+    //CloudsVisualSystemVisuals* visualsMap;
+    
     float interludeStartTime;
 	
 	CloudsVisualSystemPreset nextVisualSystemPreset;	
 	CloudsVisualSystemPreset currentVisualSystemPreset;
-		
-	CloudsTransitionController transitionController;
+    
+    //TODO: Kill these soon
 	void updateTransition();
 	bool updateInterludeInterface(); //true if we should stop interlude
-	void updateCompletedInterlude(); //after one option has been selected;
+//	void updateCompletedInterlude(); //after one option has been selected;
 	bool forceInterludeReset;
+    ///////////////
     
 	//loader screen
 	bool loadingAct;
@@ -156,7 +165,6 @@ class CloudsPlaybackController : public ofThread {
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
 	bool returnToIntro;
-	bool pauseAct;
 
 	bool badIdle;
 	float badIdleStartTime;
@@ -169,7 +177,7 @@ class CloudsPlaybackController : public ofThread {
 	//VISUAL SYSTEMS
 	//
 	void showIntro();
-
+    
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
@@ -177,9 +185,19 @@ class CloudsPlaybackController : public ofThread {
     bool showedClusterMapNavigation;
     bool showingInterlude;
     bool exitedInterlude;
+    bool showingExploreMap;
+    bool showingExplorePeople;
+    bool showingExploreVisuals;
+    bool showingResearchMode;
+    bool researchModeTopic;
+    bool researchModePerson;
+    bool researchModeVisual;
+    
 	bool bQuestionAsked;
 	bool forceCredits;
 	
+    string exploreMapSelectedTopic;
+    string explorePeopleSelectedSpeakerID;
 	void clearAct();
     
 	//remove the current visual system
@@ -189,7 +207,14 @@ class CloudsPlaybackController : public ofThread {
     void showClusterMap();
     void showInterlude();
     void cleanupInterlude();
-
+    void transitionBackToResearch();
+    
+    void showExploreMap();
+    void showExplorePeople();
+    //bool inResearchContext(); //came through research not story mode
+    bool showingResearchScreen;
+    bool canReturnToAct;
+    
     //INTERLUDE INTERFACE
 	void resetInterludeVariables();
     ofxFTGLSimpleLayout interludeInterfaceFont;
