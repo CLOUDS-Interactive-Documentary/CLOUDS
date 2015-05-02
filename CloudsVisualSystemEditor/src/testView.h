@@ -31,6 +31,8 @@
 	IBOutlet NSButton* soundExcludeVOBox;
 	IBOutlet NSButton* interludeBox;
     
+    IBOutlet NSButton* generateCopyScript;
+    
 	IBOutlet NSButton* filterEnabledBox;
 	IBOutlet NSButton* filterOculusBox;
 	IBOutlet NSButton* filterGradeABox;
@@ -123,6 +125,7 @@
 
 - (void)playDoubleClickedRow:(id)sender;
 - (IBAction)loadClipFromTable:(id)sender;
+- (void)handleGenerateCopyScript:(id)sender;
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField
 completionsForSubstring:(NSString *)substring

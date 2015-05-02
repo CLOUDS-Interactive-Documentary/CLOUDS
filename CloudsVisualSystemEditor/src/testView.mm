@@ -1,7 +1,7 @@
 #import "testView.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsInputKinectOSC.h"
-
+#include "CloudsVisualSystemManager.h"
 
 //#define SCREENSHOT_MODE 1
 
@@ -91,7 +91,11 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 	filterEnabledBox.state = NSOffState;
 	filterOculusBox.state  = NSOffState;
 	filterGradeABox.state  = NSOffState;
-	
+    
+    
+    [generateCopyScript setTarget:self];
+    [generateCopyScript setAction:@selector(handleGenerateCopyScript:)];
+    
 	[self updateFilters:self];
     
     [clipTable setTarget:self];
@@ -981,6 +985,11 @@ completionsForSubstring:(NSString *)substring
 - (void)playDoubleClickedRow:(id)sender
 {
     shouldPlaySelectedRow = true;
+}
+
+- (void)handleGenerateCopyScript:(id)sender
+{
+    CloudsVisualSystemManager::generateCloudsDataCopyScript();
 }
 
 ////void testView::audioRequested(float *output, int bufferSize, int nChannels)
