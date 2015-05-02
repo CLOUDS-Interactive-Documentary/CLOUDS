@@ -6,6 +6,7 @@ uniform float maxSize;
 uniform float minSize;
 varying float activityValue;
 uniform bool animateSpriteSize;
+varying float vDiscard;
 
 float map(float value, float inputMin, float  inputMax, float  outputMin,float  outputMax ){
     float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
@@ -24,5 +25,13 @@ void main(void){
     activityValue = gl_Normal.y;
 
 	gl_TexCoord[0] = gl_MultiTexCoord0;
+    
+    vDiscard = 0.;
+    if( length(gl_Vertex) < 2.01 )
+    {
+        vDiscard = 1.;
+    }
+
+    
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
 }

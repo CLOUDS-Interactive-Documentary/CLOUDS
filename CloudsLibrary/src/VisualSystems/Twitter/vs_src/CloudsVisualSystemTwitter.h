@@ -161,7 +161,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     int maxUserLinks;
     ofColor listColor;
-    vector<Tweeter*> tweeters;
+    static vector<Tweeter*> tweeters;
+    static bool tweetersLoaded;
     float sizeMultiplier;
     float maxAlphaTweetFeed;
     float lineAlpha;
