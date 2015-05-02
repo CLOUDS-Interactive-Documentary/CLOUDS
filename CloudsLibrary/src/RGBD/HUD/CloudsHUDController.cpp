@@ -1158,9 +1158,9 @@ void CloudsHUDController::draw(){
         
         ofPushStyle();
         //test to see bound locations
-        ofSetColor(255, 0, 0);
-        ofRect(researchScrollUpBounds);
-        ofRect(researchScrollDownBounds);
+//        ofSetColor(255, 0, 0);
+//        ofRect(researchScrollUpBounds);
+//        ofRect(researchScrollDownBounds);
         
         
         //begin test for fake confirm
