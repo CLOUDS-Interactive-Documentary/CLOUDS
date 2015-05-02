@@ -932,7 +932,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         string selectedTopic = hud.getSelectedItem();
         if(selectedTopic != ""){
             
-            ///TODO!!
             clusterMap->setCurrentTopic(selectedTopic);
 
             if(hud.isItemConfirmed()){
@@ -949,8 +948,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         string selectedSpeakerID = hud.getSelectedItem();
         if(selectedSpeakerID != ""){
             
-            ///TODO:
-            //peopleMap->highlightPerson(selectedTopic);
+            peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].firstName + " " + CloudsSpeaker::speakers[selectedSpeakerID].lastName);
             
             if(hud.isItemConfirmed()){
                 showingExplorePeople = false;
@@ -2059,8 +2057,8 @@ void CloudsPlaybackController::showExplorePeople(){
         researchModeVisual = false;
     }
     
-    //TODO: pick a better preset
-    peopleMap->loadPresetGUISFromName("nameCloudsWithLinesFlickering");
+    //TODO: make fast version
+    peopleMap->loadPresetGUISFromName("ResearchPeople_pretty");
     
     peopleMap->playSystem();
 
