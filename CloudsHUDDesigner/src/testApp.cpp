@@ -109,6 +109,10 @@ void testApp::keyPressed(int key){
 		hud.animateOn(CLOUDS_HUD_RESEARCH_SHUFFLE);
         //hud.pause();
 	}
+    
+    if(key == '7'){
+        hud.animateOn(CLOUDS_HUD_ABOUT);
+    }
 
     if(key == '9'){
         hud.animateOff();

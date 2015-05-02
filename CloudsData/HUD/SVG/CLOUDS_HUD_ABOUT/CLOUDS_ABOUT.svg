@@ -89,9 +89,13 @@
 	
 		<text transform="matrix(1 0 0 1 687.7842 231.1196)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="30" letter-spacing="3">CAST</text>
 </g>
-<g id="CastListTextBoxes">
+<g id="CastList1TextBox">
 	<rect x="382.205" y="310.493" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="221.455" height="302.041"/>
+</g>
+<g id="CastList2TextBox">
 	<rect x="603.66" y="310.493" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.142" height="302.041"/>
+</g>
+<g id="CastList3TextBox">
 	<rect x="867.802" y="310.493" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="192.62" height="302.041"/>
 </g>
 <g id="CastTitleTextBox">
@@ -106,12 +110,14 @@
 	
 		<text transform="matrix(1 0 0 1 663.6106 143.0215)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="30" letter-spacing="3">CREDITS</text>
 </g>
-<g id="CreditsListTextBoxes">
-	<g>
-		<rect x="292.84" y="222.395" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="323.969" height="488.105"/>
-		<rect x="616.81" y="222.395" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="280.77" height="488.105"/>
-		<rect x="897.579" y="222.395" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="252.207" height="488.105"/>
-	</g>
+<g id="CreditsList1TextBox">
+	<rect x="292.84" y="222.395" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="323.969" height="488.105"/>
+</g>
+<g id="CreditsList2TextBox">
+	<rect x="616.81" y="222.395" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="280.77" height="488.105"/>
+</g>
+<g id="CreditsList3TextBox">
+	<rect x="897.579" y="222.395" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="252.207" height="488.105"/>
 </g>
 <g id="CreditsTitleTextBox">
 	<rect x="663.611" y="124.902" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="115.405" height="18.306"/>
@@ -143,9 +149,13 @@
 		</g>
 	</g>
 </g>
-<g id="BackersListTextBoxes">
+<g id="BackersList1TextBox">
 	<rect x="321.09" y="214.895" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.815" height="525.605"/>
+</g>
+<g id="BackersList2TextBox">
 	<rect x="585.905" y="214.895" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.815" height="525.605"/>
+</g>
+<g id="BackersList3TextBox">
 	<rect x="850.72" y="214.895" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.815" height="525.605"/>
 </g>
 <g id="BackersScrollDownBacking">

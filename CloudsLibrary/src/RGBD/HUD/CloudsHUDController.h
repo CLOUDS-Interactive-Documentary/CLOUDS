@@ -251,12 +251,9 @@ class CloudsHUDController {
 #endif
     
     CloudsHUDResearchTab currentTab;
-    void beginListStencil();
-    void endListStencil();
-    
     void drawList();
     
-    CloudsHUDLabel*    getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);
+    CloudsHUDLabel* getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);
 
     
     vector<ofxFTGLFont*>    tempFontList;

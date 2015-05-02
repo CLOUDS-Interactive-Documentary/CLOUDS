@@ -235,9 +235,9 @@ void CloudsHUDController::calculateFontSizes(){
     
     //BIO
     ////first name
-    getLabelForLayer("BylineFirstNameTextBox_1_", fontPath, 50);
+    getLabelForLayer("BylineFirstNameTextBox_1_", fontPath, 50, true);
     ////last name
-    getLabelForLayer("BylineLastNameTextBox", fontPath, 50);
+    getLabelForLayer("BylineLastNameTextBox", fontPath, 50, true);
     ////title
     getLabelForLayer("BylineTopicTextBoxBottom", fontPath);
     ////location
@@ -255,7 +255,7 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("SeeMoreTextBox", fontPath);
     getLabelForLayer("NextButtonTextBox", fontPath);
     getLabelForLayer("BioTitleTextBox", fontPath);
-    getLabelForLayer("BioTextBox", fontPath); //use layout
+    getLabelForLayer("BioTextBox", fontPath,35,false,true); //use layout
     
     
     getLabelForLayer("ResetButtonTextBox", fontPath);
@@ -268,6 +268,21 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("VisualsTextBox", fontPath);
     getLabelForLayer("RSResetButtonTextBox", fontPath);
     getLabelForLayer("ShuffleButtonTextBox", fontPath);
+
+    //about text boxes
+    getLabelForLayer("AboutTextBox", fontPath);
+    
+    getLabelForLayer("CreditsList1TextBox", fontPath, 35,false,true);
+    getLabelForLayer("CreditsList2TextBox", fontPath, 35,false,true);
+    getLabelForLayer("CreditsList3TextBox", fontPath, 35,false,true);
+
+    getLabelForLayer("CastList1TextBox", fontPath, 35,false,true);
+    getLabelForLayer("CastList2TextBox", fontPath, 35,false,true);
+    getLabelForLayer("CastList3TextBox", fontPath, 35,false,true);
+
+    getLabelForLayer("BackersList1TextBox", fontPath, 35,false,true);
+    getLabelForLayer("BackersList2TextBox", fontPath, 35,false,true);
+    getLabelForLayer("BackersList3TextBox", fontPath, 35,false,true);
     
     // cleanup!
     for( int i=0; i<tempFontList.size(); i++ ){
@@ -294,6 +309,25 @@ void CloudsHUDController::calculateFontSizes(){
     
     hudLabelMap["BioTextBox"]->layout->setLineLength(hudLabelMap["BioTextBox"]->bounds.width);
     
+    hudLabelMap["CreditsList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits1.txt").getText(), false);
+    hudLabelMap["CreditsList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits2.txt").getText(), false);
+    hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
+
+    hudLabelMap["CastList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast1.txt").getText(), false);
+    hudLabelMap["CastList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast2.txt").getText(), false);
+    hudLabelMap["CastList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast3.txt").getText(), false);
+    
+    ofBuffer backers = ofBufferFromFile(GetCloudsDataPath() + "about/backers.txt");
+    int i = 0;
+    string columns[3];
+    while(!backers.isLastLine()){
+        columns[i++ % 3 ] += backers.getNextLine() +"\n";
+    }
+    
+    hudLabelMap["BackersList1TextBox"]->setText(columns[0], false);
+    hudLabelMap["BackersList2TextBox"]->setText(columns[1], false);
+    hudLabelMap["BackersList3TextBox"]->setText(columns[2], false);
+    
 }
 
 CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
@@ -317,7 +351,7 @@ CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
         
         CloudsHUDLabel *newLabel = new CloudsHUDLabel();
         // make a layout
-        if(layerName == "BioTextBox"){
+        if(useLayout){
             ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
             newLayout->loadFont( fontPath, 12 );
             newLayout->setLineLength( 999 );
@@ -1151,10 +1185,8 @@ void CloudsHUDController::draw(){
         ofPopStyle();
         ///end test
         
-        beginListStencil();
         drawList();
         
-        endListStencil();
     }
  
 
@@ -1174,26 +1206,10 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
     layers[layer]->draw();
 }
 
-void CloudsHUDController::beginListStencil(){
-
-//    glEnable(GL_SCISSOR_TEST);
-//    ofRectangle scissorRect = researchScrollBoundsScaled;
-//    glScissor(scissorRect.x, ofGetHeight() - ( scissorRect.y + scissorRect.height) , scissorRect.width, scissorRect.height);
-    
+void CloudsHUDController::drawList(){
     ofPushMatrix();
     ofTranslate(0, -currentResearchList->scrollPosition);
-    
-}
-
-void CloudsHUDController::endListStencil(){
-    
-    ofPopMatrix();
-//	glDisable(GL_SCISSOR_TEST);
-    //ofPopStyle();
-    
-}
-
-void CloudsHUDController::drawList(){
+ 
     ofPushStyle();
     for(int i = 0; i < currentResearchList->buttons.size(); i++){
         if(currentResearchList->buttons[i].visible){
@@ -1216,12 +1232,12 @@ void CloudsHUDController::drawList(){
             ResearchTopicListLabel->font->drawString(currentResearchList->buttons[i].label,
                                               hudLabelMap["ListTextBoxes"]->bounds.x,
                                               researchScrollBounds.y + currentResearchList->buttons[i].top + scrollIncrement * .5);
-//            ofNoFill();
-//            ofRect(currentResearchList->buttons[i].selectRect);
             
         }
     }
     ofPopStyle();
+    
+    ofPopMatrix();
 }
 
 #ifdef OCULUS_RIFT
