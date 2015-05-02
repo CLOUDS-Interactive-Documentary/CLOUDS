@@ -63,7 +63,7 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
 	// Sound
     ofxUISuperCanvas* soundGui;
     
-//    ofVboMesh vboRect;
+    ofVboMesh vboRect, vboLines;
 //    ofShader instanceShader;
 //    int matsLoc;
 //    

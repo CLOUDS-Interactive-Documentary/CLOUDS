@@ -43,7 +43,15 @@ namespace jtn{
 		float r,g,b,a;
 		ofPoint rot;
 		int generation;
+        float lineWidth;
 		static vector<TreeNode*> all;
+        
+        //static ofVboMesh quads;
+        static bool sInitMesh;
+        
+        int indexOffset;
+        int numIndices;
+        
 		int age;
 		bool isTerminal();
 		static GLuint drawMode;
@@ -54,6 +62,7 @@ namespace jtn{
         ofVec3f screenSpace;
         bool isPartOfCamPath;
         static void clearPathFlags();
+        int vertexID;
 	};
 
 //--------------------------------------------------------
@@ -159,14 +168,16 @@ class _C:public CloudsVisualSystem{
     static float alpha;
     static float sway;
     static int nodeMax;
+    static int prevMax;
     static int rootCount;
     static float danceAmp;
     static float danceFreq;
     static float danceOffset;
-    
-    
+        
     static float colorMix;
     static bool renderCamPath;
+    
+    //ofShader lines;
     
     void selfGuiEvent(ofxUIEventArgs &e);
    // void guiCameraEvent(ofxUIEventArgs &e);

@@ -8,6 +8,10 @@
 static map<string,int> userNameIdMap;
 static vector<Date> dateIndex;
 
+vector<Tweeter*> CloudsVisualSystemTwitter::tweeters;
+bool CloudsVisualSystemTwitter::tweetersLoaded = false;
+
+
 bool dateSorter(Date const& lhs, Date const& rhs) {
     if (lhs.year != rhs.year)
         return lhs.year < rhs.year;
@@ -522,6 +526,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             int id = ofToInt(components[0]);
             
             Tweeter* tweeter = getTweeterByID(id);
+            tweeter->linksById.clear();
             
 			int numcomp = components.size();
             max = ofVec3f(0,0,0);
@@ -538,6 +543,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 
             //428 4 8 9 11 15 17 18
             Tweeter* tweeter = getTweeterByID(id);
+            tweeter->linksById.clear();
 
             if(tweeter->name == " "){
 				ofLogError("CloudsVisualSystemTwitter::parseClusterNetwork") << tweeter->name << "  : " << tweeter->ID << " not found ";
@@ -906,7 +912,10 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
 
     clearData();
     
-    loadCSVData();
+    if(!tweetersLoaded){
+        loadCSVData();
+        tweetersLoaded = true;
+    }
     
     cout<<"Time taken to parse CSV : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
     cout<<" Tweeters size "<<tweeters.size()<<endl;
@@ -920,6 +929,8 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     
     loadAvatars();
     cout<<"Time taken to load avatars : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+    
+    for(auto&t:tweeters)t->linksById.clear();
     
     startTime = ofGetElapsedTimeMillis();
     parseClusterNetwork(filePath);
@@ -1103,9 +1114,13 @@ void CloudsVisualSystemTwitter::selfDraw()
 
 		pointsShader.begin();
 		
-		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
-		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
-		glEnable(GL_POINT_SMOOTH);
+        if(getVisualLevel() == PRETTY){
+            glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+            glEnable(GL_POINT_SMOOTH);
+        }
+        
+        glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
+
         
         pointsShader.setUniformTexture("tex", sprite, 1);
 		pointsShader.setUniformTexture("activityMap", activityMap, 2);
@@ -1459,10 +1474,10 @@ void CloudsVisualSystemTwitter::selfEnd()
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemTwitter::selfExit()
 {
-    for(int i = 0; i < tweeters.size(); i++){
-		delete tweeters[i];
-	}
-	tweeters.clear();
+//    for(int i = 0; i < tweeters.size(); i++){
+//		delete tweeters[i];
+//	}
+//	tweeters.clear();
 }
 
 void CloudsVisualSystemTwitter::reloadShaders(){

@@ -10,11 +10,15 @@
 
 //statics
 
+static ofVboMesh quads;
+static ofShader lines;
+
 float _C::dotSize = 0.1;
 float _C::axonThickness = 0;
 float _C::alpha = 0;
 float _C::sway = 0;
 int _C::nodeMax = 0;
+int _C::prevMax = 0;
 int _C::rootCount = 4;
 float _C::danceAmp = 0;
 float _C::danceFreq = 0;
@@ -35,6 +39,8 @@ void _C::selfSetup(){
 	rx = 0;
 	ry = 0;
 	doSpinCamera = false;
+    
+    lines.load( getVisualSystemDataPath() + "shaders/lines.vs", getVisualSystemDataPath() + "shaders/lines.fs" );
 
 }
 
@@ -129,7 +135,41 @@ void _C::selfUpdate(){
     danceFreq = danceFreqSlider->getScaledValue();
     danceOffset = danceOffsetSlider->getScaledValue();
     
-    
+    if( jtn::TreeNode::all.size() != _C::prevMax ){
+        
+        quads.clear();
+        
+        quads.setUsage(GL_DYNAMIC_DRAW);
+        quads.setMode(OF_PRIMITIVE_TRIANGLES);
+        
+        auto& a = jtn::TreeNode::all;
+        
+        int runningIndexCount = 0;
+        for( int i = 0; i< jtn::TreeNode::all.size(); i++ ){
+            
+            a[i]->vertexID = quads.getNumVertices();
+            
+            quads.addVertex(ofVec3f(0,0,0));
+            quads.addVertex(ofVec3f(0,0,0));
+            quads.addColor(ofFloatColor(0.,0.,0.,0.));
+            quads.addColor(ofFloatColor(0.,0.,0.,0.));
+            quads.addTexCoord(ofVec2f(0,0));
+            quads.addTexCoord(ofVec2f(0,0));
+            quads.addNormal(ofVec3f(0,0,0));
+            quads.addNormal(ofVec3f(0,0,0));
+
+            int numIndices = a[i]->children.size()*6 + 6;
+            a[i]->numIndices = numIndices;
+            a[i]->indexOffset = runningIndexCount;
+            runningIndexCount += numIndices;
+            
+            for( int j =0;j< numIndices;j++ ){
+                quads.addIndex(0);
+            }
+            
+        }
+        _C::prevMax = jtn::TreeNode::all.size();
+    }
 }
 
 void _C::updateBoundingBox(){
@@ -166,6 +206,7 @@ void _C::reset(bool createRootNodes){
         int stepsPhi = sqrt(rootCount);
         float incTheta = (PI*2)/(float)stepsTheta;
         float incPhi = (PI)/(float)stepsPhi;
+        int ind = 0;
         for(int j=0;j<stepsPhi+1;j++){
             for(int i=0;i<stepsTheta;i++){
                 
@@ -184,7 +225,9 @@ void _C::reset(bool createRootNodes){
                 n->future.y = n->y = y * 50;
                 n->future.z = n->z = z * 50;
                 n->direction = ofPoint(-x,-y,-z);
+                //n->vertexID = ind;
                 rootNodes.push_back(n);
+                ind++;
             }
         }
     }
@@ -516,12 +559,17 @@ void _C::selfDraw(){
         
     }
 
+    lines.begin();
+    quads.draw();
+    lines.end();
+
 	ofPopMatrix();
 	
     ofSetColor(255);
 	
 	ofPopStyle();
 	glPopAttrib();
+    
     
 }
 
@@ -531,6 +579,7 @@ void _C::selfDraw(){
 vector<jtn::TreeNode*> jtn::TreeNode::all;
 vector<jtn::TreeNode*> jtn::TreeNode::terminals;
 GLuint jtn::TreeNode::drawMode = 0;
+bool   jtn::TreeNode::sInitMesh = false;
 
 int jtn::TreeNode::maxDepth = 0;
 
@@ -543,7 +592,7 @@ void jtn::TreeNode::updateScreenSpace(ofCamera &cam){
 
 void jtn::TreeNode::update(){
 
-    
+
     
     int n = ofGetFrameNum();
     
@@ -568,7 +617,7 @@ void jtn::TreeNode::update(){
 		(*it)->update();
 	}
 	
-    
+    auto nmax = _C::nodeMax;
     // branching rules
 	if( jtn::TreeNode::all.size() < _C::nodeMax
 			&& (
@@ -625,6 +674,7 @@ void jtn::TreeNode::update(){
 			n->b += ( average - n->b ) * 0.01f;
 			n->generation = generation + 1;
             n->updateMaxDepth();
+            
 		}
 		children.push_back( n );
 	}
@@ -645,60 +695,121 @@ bool jtn::TreeNode::isTerminal(){
 	return children.size()==0 || (children.size()==1 && children[0]->age<1);
 }
 
+
 void jtn::TreeNode::draw(){
 	
 	
 	//TODO: remove immediate mode calls, replace with persistent meshes
 	vector<jtn::TreeNode*>::iterator that;
+    
+    
 	   
     jtn::PointD worldNormPos = _C::boundingBox.getNormalized( screenSpace );
     
+    int c = 0;
 	for(that=children.begin(); that!=children.end();that++){
 		
-		ofPushStyle();
+		//ofPushStyle();
 		
-        if(isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
-			ofSetColor(255,0,0,255);
-        }else{
-            ofSetColor(ofFloatColor(ofLerp(worldNormPos.x, r, _C::colorMix),
-									ofLerp(worldNormPos.y, g, _C::colorMix),
-									ofLerp(worldNormPos.z, b, _C::colorMix),
-									_C::alpha));
-        }
+//        if(isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
+//			ofSetColor(255,0,0,255);
+//        }else{
+            auto color = ofFloatColor(ofLerp(worldNormPos.x, r, _C::colorMix),
+                                      ofLerp(worldNormPos.y, g, _C::colorMix),
+                                      ofLerp(worldNormPos.z, b, _C::colorMix),
+                                      _C::alpha);
+            //ofSetColor(color);
+            quads.setColor(vertexID, color);
+            quads.setColor(vertexID+1, color);
+            
+        //}
 
         
-        if(drawMode==GL_LINES){
-            ofSetLineWidth( ( 1 - (generation+1) / (float)maxDepth) * _C::axonThickness );
-            glBegin(GL_LINES);
-        }
         
-		if( !(drawMode==GL_POINTS && isTerminal()) )
-			glVertex3f(x,y,z);
+        //if(drawMode==GL_LINES){
+            auto lwidth = ( 1 - (generation+2) / (float)maxDepth) * _C::axonThickness;
+            if(lwidth < .01)lwidth = .01;
+        
+     
+            lineWidth = lwidth;
+            
+            //ofSetLineWidth( lwidth );
+            //glBegin(GL_LINES);
+       // }
+        
+        //if( !(drawMode==GL_POINTS && isTerminal()) ){
+			//glVertex3f(x,y,z);
+            
+            quads.setVertex(vertexID, ofVec3f( x, y, z ) ); //up half line width
+            quads.setVertex(vertexID+1, ofVec3f( x, y, z ) ); //down half line width
+            quads.setTexCoord(vertexID, ofVec2f( -ofClamp( lineWidth/8., 0., 1.), 1. ) );
+            quads.setTexCoord(vertexID+1, ofVec2f( ofClamp( lineWidth/8., 0., 1.), 0. ) );
+
+        //}
 		
-		jtn::TreeNode *t = *that;
+            jtn::TreeNode *t = *that;
         
-        if(t->isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
-            ofSetColor(255,0,0,255);
-        }else{
-            jtn::PointD worldNormPos2 = _C::boundingBox.getNormalized( t->screenSpace );
-            ofSetColor(ofFloatColor(ofLerp(worldNormPos2.x, t->r, _C::colorMix),
-									ofLerp(worldNormPos2.y, t->g, _C::colorMix),
-									ofLerp(worldNormPos2.z, t->b, _C::colorMix),
-									_C::alpha));
-        }
+            ofVec3f dirToFriend = ofVec3f(t->x, t->y, t->z) - ofVec3f(x,y,z);
+            dirToFriend.normalize();
+            quads.setNormal(vertexID, dirToFriend);
+            quads.setNormal(vertexID+1, dirToFriend);
+        
         
 
-		
-		if( !(drawMode == GL_POINTS && t->isTerminal()) )
-			glVertex3f(t->x,t->y,t->z);
         
-        if(drawMode==GL_LINES){
-            glEnd();
+//        if(t->isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
+//            ofSetColor(255,0,0,255);
+//        }else{
+//            jtn::PointD worldNormPos2 = _C::boundingBox.getNormalized( t->screenSpace );
+//            
+//            auto color2 = ofFloatColor(ofLerp(worldNormPos2.x, t->r, _C::colorMix),
+//                                      ofLerp(worldNormPos2.y, t->g, _C::colorMix),
+//                                      ofLerp(worldNormPos2.z, t->b, _C::colorMix),
+//                                      _C::alpha);
+        
+            //ofSetColor(color);
+            
+//            quads.setColor(t->vertexID, color2);
+//            quads.setColor(t->vertexID+1, color2);
+        
+        //}
+//        auto twidth = ( 1 - (t->generation+1) / (float)t->maxDepth) * _C::axonThickness;
+//        if(twidth < .01)twidth = .01;
+//        
+//			//glVertex3f(t->x,t->y,t->z);
+//            quads.setVertex(t->vertexID, ofVec3f( t->x, t->y + (t->t/2.), t->z ) ); //up half line width
+//            quads.setVertex(t->vertexID+1, ofVec3f( t->x, t->y - (t->lineWidth/2.), t->z ) ); //down half line width
+        
+        
+        if( !t->isTerminal() ){
+
+            int localoffset = 6*c;
+            int myOffset = indexOffset + localoffset;
+            
+            int TL = vertexID;
+            int BL = vertexID+1;
+            
+            int TR = t->vertexID;
+            int BR = t->vertexID+1;
+            
+            quads.setIndex(myOffset, vertexID);
+            quads.setIndex(myOffset+1, vertexID+1);
+            quads.setIndex(myOffset+2, t->vertexID);
+            
+            quads.setIndex(myOffset+3, vertexID+1);
+            quads.setIndex(myOffset+4, t->vertexID+1);
+            quads.setIndex(myOffset+5, t->vertexID);
+
         }
-		
+        
+        //if(drawMode==GL_LINES){
+          //  glEnd();
+        //}
+		        
 		(*that)->draw();
 		
-		ofPopStyle();
+	//	ofPopStyle();
+        c++;
 	}
 	
 }
@@ -707,6 +818,7 @@ jtn::TreeNode::TreeNode(){
 	ident = all.size();
 	all.push_back(this);
 	parent = NULL;
+    vertexID = all.size()-1;
 	r = DEFAULT_RED;
 	g = DEFAULT_GREEN;
 	b = DEFAULT_BLUE;
@@ -715,6 +827,8 @@ jtn::TreeNode::TreeNode(){
 	age = 0;
     screenSpace = ofVec3f(0,0,0);
     isPartOfCamPath = false;
+    indexOffset = 0;
+    numIndices = 0;
 }
 
 jtn::TreeNode::TreeNode(ifstream &fin){

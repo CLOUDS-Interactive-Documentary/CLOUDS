@@ -95,6 +95,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     showedClusterMapNavigation = false;
 
     canReturnToAct = false;
+    getVisualLevel();
     
 	resetInterludeVariables();
 	

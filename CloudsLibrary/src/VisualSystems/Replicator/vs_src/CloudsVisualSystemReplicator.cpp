@@ -16,22 +16,40 @@ void CloudsVisualSystemReplicator::selfSetup(){
     synth.setOutputGen(buildSynth());
     #endif
     
-//    instanceShader.setupShaderFromSource(GL_VERTEX_SHADER, string(instanced_vert));
-//    instanceShader.setupShaderFromSource(GL_FRAGMENT_SHADER, string(instanced_frag));
-//    
-//    vboRect.setUsage(GL_STATIC_DRAW);
-//    vboRect.setMode(OF_PRIMITIVE_LINE_LOOP);
-//    vboRect.addVertex( ofVec3f(0,0,0) );
-//    vboRect.addVertex( ofVec3f(0,1,0) );
-//    vboRect.addVertex( ofVec3f(1,1,0) );
-//    vboRect.addVertex( ofVec3f(1,0,0) );
-//    vboRect.addIndex(0);
-//    vboRect.addIndex(1);
-//    vboRect.addIndex(2);
-//    vboRect.addIndex(3);
-//
-//    dataTex.allocate(1600,100, GL_RGBA32F, GL_RGBA, GL_FLOAT);
-//    dataTex.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+    vboRect.setUsage(GL_DYNAMIC_DRAW);
+    vboRect.setMode(OF_PRIMITIVE_LINE_STRIP);
+    
+    vboLines.setMode(OF_PRIMITIVE_LINES);
+    vboLines.setUsage(GL_DYNAMIC_DRAW);
+    
+    glDisable(GL_LINE_SMOOTH);
+
+    for( int i = 0; i < 100*100; i++ ){
+        
+        vboRect.addVertex( ofVec3f(0,0,0) );
+        vboRect.addColor(ofFloatColor( 1.,0. ));
+        vboRect.addVertex( ofVec3f(0,0,0) );
+        vboRect.addColor(ofFloatColor( 1.,70./255. ));
+        vboRect.addVertex( ofVec3f(0,1,0) );
+        vboRect.addColor(ofFloatColor( 1., 70./255. ));
+        vboRect.addVertex( ofVec3f(1,1,0) );
+        vboRect.addColor(ofFloatColor( 1.,70./255. ));
+        vboRect.addVertex( ofVec3f(1,0,0) );
+        vboRect.addColor(ofFloatColor( 1.,70./255. ));
+        vboRect.addVertex( ofVec3f(0,0,0) );
+        vboRect.addColor(ofFloatColor( 1.,70./255. ));
+        vboRect.addVertex( ofVec3f(0,0,0) );
+        vboRect.addColor(ofFloatColor( 1.,0. ));
+        
+        if( i%2 == 0 ){
+            vboLines.addVertex( ofVec3f(.5,.5,0) );
+            vboLines.addColor(ofFloatColor( 1., 40./255. ));
+            vboLines.addVertex( ofVec3f(.5,.5,0) );
+            vboLines.addColor(ofFloatColor( 1.,40./255. ));
+        }
+        
+    }
+    
 
 }
 
@@ -41,8 +59,8 @@ void CloudsVisualSystemReplicator::selfSetupGuis(){
 
 void CloudsVisualSystemReplicator::selfUpdate(){
     volumeControl.value(gain);
-	Replicator::Grid2D(100, 100, 2000, 2000).apply(repl);
-	
+    Replicator::Grid2D(100, 100, 2000, 2000).apply(repl);
+
 	// centering
 	for (int i = 0; i < repl.size(); i++)
 	{
@@ -111,12 +129,11 @@ void CloudsVisualSystemReplicator::selfDraw(){
 	ofPushMatrix();
 	
 	ofPushStyle();
-    
 
 	ofNoFill();
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
-	ofSetLineWidth(2);
+	ofSetLineWidth(1);
 	ofSetColor(255, 70);
 	
 	ofSetRectMode(OF_RECTMODE_CENTER);
@@ -131,47 +148,65 @@ void CloudsVisualSystemReplicator::selfDraw(){
 	
 	ofTranslate(0, 0, ofSignedNoise(local_time * 0.05) * 300);
 	
-    vector<ofMatrix4x4> mats;
-    
 	for (int i = 0; i < repl.size(); i++)
 	{
         
 		Replicator::Node &n = repl[i];
-//        ofMatrix4x4 m;
-//        m *= ofMatrix4x4::newScaleMatrix(ofVec3f(n.param.w, n.param.h, 1.));
-//        m *= ofMatrix4x4::newRotationMatrix(n.param.rx, ofVec3f(1,0,0), n.param.ry, ofVec3f(0,1,0), 0, ofVec3f(0,0,1));
-//        m *= n.m;
-//        
-//        mats.push_back(m);
         
-		n.beginTransform();
-		
-		ofRotateX(n.param.rx);
-		ofRotateY(n.param.ry);
-		
-        ofScale(n.param.w, n.param.h);
+        ofMatrix4x4 transform;
+        ofMatrix4x4 rotate;
+        transform.scale(n.param.w, n.param.h, 1.);
+        rotate.rotate(n.param.rx,1,0,0);
+        rotate.rotate(n.param.ry,0,1,0);
+        transform *= rotate;
+        transform.translate(n.m.getTranslation());
         
-		ofRect(0, 0, n.param.w, n.param.h);
+        ofVec3f TL = transform.preMult( ofVec3f(-.5,-.5,0) );
+        ofVec3f BL = transform.preMult( ofVec3f(-.5,.5,0) );
+        ofVec3f BR = transform.preMult( ofVec3f(.5,.5,0) );
+        ofVec3f TR = transform.preMult( ofVec3f(.5,-.5,0) );
+
+        vboRect.setVertex(i*7, TL);
+        vboRect.setVertex(i*7+1, TL);
+        vboRect.setVertex(i*7+2, BL);
+        vboRect.setVertex(i*7+3, BR);
+        vboRect.setVertex(i*7+4, TR);
+        vboRect.setVertex(i*7+5, TL);
+        vboRect.setVertex(i*7+6, TL);
         
-		n.endTransform();
-	}
+    }
     
-	ofSetLineWidth(1);
-	ofSetColor(255, 40);
-    
-	for (int i = 0; i < repl.size(); i+=2)
-	{
-		Replicator::Node &n = repl[i];
-		ofVec3f v(0);
-		v = v * n.m;
-        
+    for (int i = 0; i < repl.size(); i+=2)
+    {
+        Replicator::Node &n = repl[i];
         Replicator::Node &n2 = repl[i+1];
-        ofVec3f v2(0);
-        v2 = v2 * n2.m;
+            
+        ofVec3f LS = n.m.preMult(ofVec3f(0,0,0));
+        ofVec3f LE = n2.m.preMult(ofVec3f(0,0,0));
+        vboLines.setVertex(i, LS);
+        vboLines.setVertex(i+1, LE);
         
-        ofLine(v, v2);
 	}
-//
+    
+    vboRect.draw();
+    vboLines.draw();
+    
+//	ofSetLineWidth(2);
+//	ofSetColor(255, 0, 0, 40);
+//    
+//	for (int i = 0; i < repl.size(); i+=2)
+//	{
+//		Replicator::Node &n = repl[i];
+//		ofVec3f v(0);
+//		v = v * n.m;
+//        
+//        Replicator::Node &n2 = repl[i+1];
+//        ofVec3f v2(0);
+//        v2 = v2 * n2.m;
+//        
+//        ofLine(v, v2);
+//	}
+
 	ofPopStyle();
 	
 	ofPopMatrix();
