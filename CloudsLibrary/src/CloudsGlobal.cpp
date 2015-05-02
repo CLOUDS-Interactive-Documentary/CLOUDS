@@ -32,7 +32,6 @@ string GetEnvVar( string  key ) {
     return val;
 }
 
-
 //--------------------------------------------------------------------
 string GetCloudsDataPath(bool ignored)
 {

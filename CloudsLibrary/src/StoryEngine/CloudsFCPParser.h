@@ -23,7 +23,7 @@ class CloudsFCPParser {
     void setup(const string& directory);
     void refreshXML();
 	void loadMediaAssets();//default combine directory
-	void setCombinedVideoDirectory(const string& directory);
+	//void setCombinedVideoDirectory(const string& directory);
 	bool printErrors;
 
 #pragma mark Clips

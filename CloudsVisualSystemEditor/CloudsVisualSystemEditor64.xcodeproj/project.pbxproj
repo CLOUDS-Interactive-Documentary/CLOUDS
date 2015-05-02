@@ -33,6 +33,28 @@
 		03E5EEF61AB65BF500781171 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E5EEEF1AB65BF500781171 /* ofxLocalization.cpp */; };
 		2E8074591820B7EC00A003A0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8074571820B7D500A003A0 /* AVFoundation.framework */; };
 		2E80745F1820B8B600A003A0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
+		4F1D83C31AF541BE00FDAA6B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D83761AF541BE00FDAA6B /* .gitignore */; };
+		4F1D83C41AF541BE00FDAA6B /* curlbuild.h.cmake in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D83791AF541BE00FDAA6B /* curlbuild.h.cmake */; };
+		4F1D83C51AF541BE00FDAA6B /* curlbuild.h.in in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D837A1AF541BE00FDAA6B /* curlbuild.h.in */; };
+		4F1D83C61AF541BE00FDAA6B /* Makefile.am in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D837E1AF541BE00FDAA6B /* Makefile.am */; };
+		4F1D83C71AF541BE00FDAA6B /* libcurl.x64.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D83851AF541BE00FDAA6B /* libcurl.x64.lib */; };
+		4F1D83C81AF541BE00FDAA6B /* libcurl.x64d.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D83861AF541BE00FDAA6B /* libcurl.x64d.lib */; };
+		4F1D83C91AF541BE00FDAA6B /* libssh2.x64.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D83871AF541BE00FDAA6B /* libssh2.x64.lib */; };
+		4F1D83CA1AF541BE00FDAA6B /* libssh2.x64d.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D83881AF541BE00FDAA6B /* libssh2.x64d.lib */; };
+		4F1D83CB1AF541BE00FDAA6B /* openssl.x64.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D83891AF541BE00FDAA6B /* openssl.x64.lib */; };
+		4F1D83CC1AF541BE00FDAA6B /* openssl.x64d.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D838A1AF541BE00FDAA6B /* openssl.x64d.lib */; };
+		4F1D83CD1AF541BE00FDAA6B /* zlib.x64.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D838B1AF541BE00FDAA6B /* zlib.x64.lib */; };
+		4F1D83CE1AF541BE00FDAA6B /* zlib.x64d.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D838C1AF541BE00FDAA6B /* zlib.x64d.lib */; };
+		4F1D83CF1AF541BE00FDAA6B /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D839B1AF541BE00FDAA6B /* libcurl.a */; };
+		4F1D83D01AF541BE00FDAA6B /* libcurl.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D839D1AF541BE00FDAA6B /* libcurl.lib */; };
+		4F1D83D11AF541BE00FDAA6B /* libcurld.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D839E1AF541BE00FDAA6B /* libcurld.lib */; };
+		4F1D83D31AF541BE00FDAA6B /* ofxSSLDebug.x64.props in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D83A41AF541BE00FDAA6B /* ofxSSLDebug.x64.props */; };
+		4F1D83D41AF541BE00FDAA6B /* ofxSSLLib.vcxproj in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D83A51AF541BE00FDAA6B /* ofxSSLLib.vcxproj */; };
+		4F1D83D51AF541BE00FDAA6B /* ofxSSLLib.vcxproj.filters in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D83A61AF541BE00FDAA6B /* ofxSSLLib.vcxproj.filters */; };
+		4F1D83D61AF541BE00FDAA6B /* ofxSSLRelease.x64.props in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D83A71AF541BE00FDAA6B /* ofxSSLRelease.x64.props */; };
+		4F1D83D81AF541BE00FDAA6B /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F1D83AA1AF541BE00FDAA6B /* ofxSSL.cpp */; };
+		4F1D84061AF5420C00FDAA6B /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F1D83F91AF5420C00FDAA6B /* audiodecoderbase.cpp */; };
+		4F1D84071AF5420C00FDAA6B /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F1D83FA1AF5420C00FDAA6B /* audiodecodercoreaudio.cpp */; };
 		64CDB66E194500EC00C56A13 /* ofxBinaryMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -1398,6 +1420,54 @@
 		03E5EEF01AB65BF500781171 /* ofxLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLocalization.h; sourceTree = "<group>"; };
 		2E8074571820B7D500A003A0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2E80745D1820B8AB00A003A0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		4F1D83761AF541BE00FDAA6B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4F1D83771AF541BE00FDAA6B /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
+		4F1D83781AF541BE00FDAA6B /* curlbuild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlbuild.h; sourceTree = "<group>"; };
+		4F1D83791AF541BE00FDAA6B /* curlbuild.h.cmake */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = curlbuild.h.cmake; sourceTree = "<group>"; };
+		4F1D837A1AF541BE00FDAA6B /* curlbuild.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = curlbuild.h.in; sourceTree = "<group>"; };
+		4F1D837B1AF541BE00FDAA6B /* curlrules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlrules.h; sourceTree = "<group>"; };
+		4F1D837C1AF541BE00FDAA6B /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
+		4F1D837D1AF541BE00FDAA6B /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
+		4F1D837E1AF541BE00FDAA6B /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.am; sourceTree = "<group>"; };
+		4F1D837F1AF541BE00FDAA6B /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
+		4F1D83801AF541BE00FDAA6B /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
+		4F1D83811AF541BE00FDAA6B /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
+		4F1D83821AF541BE00FDAA6B /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
+		4F1D83851AF541BE00FDAA6B /* libcurl.x64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.x64.lib; sourceTree = "<group>"; };
+		4F1D83861AF541BE00FDAA6B /* libcurl.x64d.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.x64d.lib; sourceTree = "<group>"; };
+		4F1D83871AF541BE00FDAA6B /* libssh2.x64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssh2.x64.lib; sourceTree = "<group>"; };
+		4F1D83881AF541BE00FDAA6B /* libssh2.x64d.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssh2.x64d.lib; sourceTree = "<group>"; };
+		4F1D83891AF541BE00FDAA6B /* openssl.x64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = openssl.x64.lib; sourceTree = "<group>"; };
+		4F1D838A1AF541BE00FDAA6B /* openssl.x64d.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = openssl.x64d.lib; sourceTree = "<group>"; };
+		4F1D838B1AF541BE00FDAA6B /* zlib.x64.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = zlib.x64.lib; sourceTree = "<group>"; };
+		4F1D838C1AF541BE00FDAA6B /* zlib.x64d.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = zlib.x64d.lib; sourceTree = "<group>"; };
+		4F1D83901AF541BE00FDAA6B /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
+		4F1D83911AF541BE00FDAA6B /* curlbuild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlbuild.h; sourceTree = "<group>"; };
+		4F1D83921AF541BE00FDAA6B /* curlrules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlrules.h; sourceTree = "<group>"; };
+		4F1D83931AF541BE00FDAA6B /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
+		4F1D83941AF541BE00FDAA6B /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
+		4F1D83951AF541BE00FDAA6B /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
+		4F1D83961AF541BE00FDAA6B /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
+		4F1D83971AF541BE00FDAA6B /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
+		4F1D83981AF541BE00FDAA6B /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
+		4F1D839B1AF541BE00FDAA6B /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
+		4F1D839D1AF541BE00FDAA6B /* libcurl.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.lib; sourceTree = "<group>"; };
+		4F1D839E1AF541BE00FDAA6B /* libcurld.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurld.lib; sourceTree = "<group>"; };
+		4F1D83A41AF541BE00FDAA6B /* ofxSSLDebug.x64.props */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ofxSSLDebug.x64.props; sourceTree = "<group>"; };
+		4F1D83A51AF541BE00FDAA6B /* ofxSSLLib.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ofxSSLLib.vcxproj; sourceTree = "<group>"; };
+		4F1D83A61AF541BE00FDAA6B /* ofxSSLLib.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ofxSSLLib.vcxproj.filters; sourceTree = "<group>"; };
+		4F1D83A71AF541BE00FDAA6B /* ofxSSLRelease.x64.props */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ofxSSLRelease.x64.props; sourceTree = "<group>"; };
+		4F1D83AA1AF541BE00FDAA6B /* ofxSSL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSSL.cpp; sourceTree = "<group>"; };
+		4F1D83AB1AF541BE00FDAA6B /* ofxSSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSSL.h; sourceTree = "<group>"; };
+		4F1D83DF1AF5420C00FDAA6B /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
+		4F1D83F21AF5420C00FDAA6B /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		4F1D83F31AF5420C00FDAA6B /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		4F1D83F41AF5420C00FDAA6B /* audiodecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
+		4F1D83F51AF5420C00FDAA6B /* audiodecoderbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoderbase.h; sourceTree = "<group>"; };
+		4F1D83F61AF5420C00FDAA6B /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodercoreaudio.h; sourceTree = "<group>"; };
+		4F1D83F91AF5420C00FDAA6B /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
+		4F1D83FA1AF5420C00FDAA6B /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
+		4F1D83FF1AF5420C00FDAA6B /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
 		64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBinaryMesh.cpp; sourceTree = "<group>"; };
 		64CDB66A194500EC00C56A13 /* ofxBinaryMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBinaryMesh.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -3005,6 +3075,7 @@
 				E755D3041943EDC300AA81C1 /* libopencv_stitching.a in Frameworks */,
 				E755D3121943EDC300AA81C1 /* libopencv_imgproc.a in Frameworks */,
 				E755D3101943EDC300AA81C1 /* libopencv_haartraining_engine.a in Frameworks */,
+				4F1D83D01AF541BE00FDAA6B /* libcurl.lib in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
@@ -3013,6 +3084,7 @@
 				E755D30B1943EDC300AA81C1 /* libopencv_contrib.a in Frameworks */,
 				E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */,
 				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
+				4F1D83D11AF541BE00FDAA6B /* libcurld.lib in Frameworks */,
 				E755D30F1943EDC300AA81C1 /* libopencv_gpu.a in Frameworks */,
 				E755D2FA1943EDC300AA81C1 /* libopencv_gpu.a in Frameworks */,
 				E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */,
@@ -3021,8 +3093,10 @@
 				E755D3141943EDC300AA81C1 /* libopencv_ml.a in Frameworks */,
 				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
 				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
+				4F1D83CA1AF541BE00FDAA6B /* libssh2.x64d.lib in Frameworks */,
 				E755D2FD1943EDC300AA81C1 /* libopencv_imgproc.a in Frameworks */,
 				E755D31D1943EDC300AA81C1 /* libopencv_videostab.a in Frameworks */,
+				4F1D83C81AF541BE00FDAA6B /* libcurl.x64d.lib in Frameworks */,
 				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
 				E755D30D1943EDC300AA81C1 /* libopencv_features2d.a in Frameworks */,
@@ -3044,17 +3118,24 @@
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
 				E755D3131943EDC300AA81C1 /* libopencv_legacy.a in Frameworks */,
 				E755D2FC1943EDC300AA81C1 /* libopencv_highgui.a in Frameworks */,
+				4F1D83CB1AF541BE00FDAA6B /* openssl.x64.lib in Frameworks */,
 				E755D3191943EDC300AA81C1 /* libopencv_stitching.a in Frameworks */,
 				E755D2FF1943EDC300AA81C1 /* libopencv_ml.a in Frameworks */,
+				4F1D83C91AF541BE00FDAA6B /* libssh2.x64.lib in Frameworks */,
 				E755D3181943EDC300AA81C1 /* libopencv_photo.a in Frameworks */,
+				4F1D83CF1AF541BE00FDAA6B /* libcurl.a in Frameworks */,
 				E755D2F81943EDC300AA81C1 /* libopencv_features2d.a in Frameworks */,
+				4F1D83CC1AF541BE00FDAA6B /* openssl.x64d.lib in Frameworks */,
 				E7D8222F18BEBCEF00C1EB93 /* libftgl.a in Frameworks */,
 				E755D30A1943EDC300AA81C1 /* libopencv_calib3d.a in Frameworks */,
+				4F1D83CE1AF541BE00FDAA6B /* zlib.x64d.lib in Frameworks */,
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
 				E755D70A1944159000AA81C1 /* libassimp.a in Frameworks */,
 				E755D3001943EDC300AA81C1 /* libopencv_nonfree.a in Frameworks */,
 				2E8074591820B7EC00A003A0 /* AVFoundation.framework in Frameworks */,
 				E755D3021943EDC300AA81C1 /* libopencv_ocl.a in Frameworks */,
+				4F1D83CD1AF541BE00FDAA6B /* zlib.x64.lib in Frameworks */,
+				4F1D83C71AF541BE00FDAA6B /* libcurl.x64.lib in Frameworks */,
 				2E80745F1820B8B600A003A0 /* CoreMedia.framework in Frameworks */,
 				E755D3171943EDC300AA81C1 /* libopencv_ocl.a in Frameworks */,
 			);
@@ -3213,6 +3294,238 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		4F1D834E1AF541BE00FDAA6B /* ofxSSL */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83721AF541BE00FDAA6B /* libs */,
+				4F1D83A31AF541BE00FDAA6B /* ofxSSLLib */,
+				4F1D83A91AF541BE00FDAA6B /* src */,
+			);
+			name = ofxSSL;
+			path = ../../../addons/ofxSSL;
+			sourceTree = "<group>";
+		};
+		4F1D83721AF541BE00FDAA6B /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83731AF541BE00FDAA6B /* libcurl */,
+				4F1D838D1AF541BE00FDAA6B /* libcurl_old */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		4F1D83731AF541BE00FDAA6B /* libcurl */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83741AF541BE00FDAA6B /* include */,
+				4F1D83831AF541BE00FDAA6B /* lib */,
+			);
+			path = libcurl;
+			sourceTree = "<group>";
+		};
+		4F1D83741AF541BE00FDAA6B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83751AF541BE00FDAA6B /* curl */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		4F1D83751AF541BE00FDAA6B /* curl */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83761AF541BE00FDAA6B /* .gitignore */,
+				4F1D83771AF541BE00FDAA6B /* curl.h */,
+				4F1D83781AF541BE00FDAA6B /* curlbuild.h */,
+				4F1D83791AF541BE00FDAA6B /* curlbuild.h.cmake */,
+				4F1D837A1AF541BE00FDAA6B /* curlbuild.h.in */,
+				4F1D837B1AF541BE00FDAA6B /* curlrules.h */,
+				4F1D837C1AF541BE00FDAA6B /* curlver.h */,
+				4F1D837D1AF541BE00FDAA6B /* easy.h */,
+				4F1D837E1AF541BE00FDAA6B /* Makefile.am */,
+				4F1D837F1AF541BE00FDAA6B /* mprintf.h */,
+				4F1D83801AF541BE00FDAA6B /* multi.h */,
+				4F1D83811AF541BE00FDAA6B /* stdcheaders.h */,
+				4F1D83821AF541BE00FDAA6B /* typecheck-gcc.h */,
+			);
+			path = curl;
+			sourceTree = "<group>";
+		};
+		4F1D83831AF541BE00FDAA6B /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83841AF541BE00FDAA6B /* vs64 */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		4F1D83841AF541BE00FDAA6B /* vs64 */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83851AF541BE00FDAA6B /* libcurl.x64.lib */,
+				4F1D83861AF541BE00FDAA6B /* libcurl.x64d.lib */,
+				4F1D83871AF541BE00FDAA6B /* libssh2.x64.lib */,
+				4F1D83881AF541BE00FDAA6B /* libssh2.x64d.lib */,
+				4F1D83891AF541BE00FDAA6B /* openssl.x64.lib */,
+				4F1D838A1AF541BE00FDAA6B /* openssl.x64d.lib */,
+				4F1D838B1AF541BE00FDAA6B /* zlib.x64.lib */,
+				4F1D838C1AF541BE00FDAA6B /* zlib.x64d.lib */,
+			);
+			path = vs64;
+			sourceTree = "<group>";
+		};
+		4F1D838D1AF541BE00FDAA6B /* libcurl_old */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D838E1AF541BE00FDAA6B /* includes */,
+				4F1D83991AF541BE00FDAA6B /* lib */,
+			);
+			path = libcurl_old;
+			sourceTree = "<group>";
+		};
+		4F1D838E1AF541BE00FDAA6B /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D838F1AF541BE00FDAA6B /* curl */,
+			);
+			path = includes;
+			sourceTree = "<group>";
+		};
+		4F1D838F1AF541BE00FDAA6B /* curl */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83901AF541BE00FDAA6B /* curl.h */,
+				4F1D83911AF541BE00FDAA6B /* curlbuild.h */,
+				4F1D83921AF541BE00FDAA6B /* curlrules.h */,
+				4F1D83931AF541BE00FDAA6B /* curlver.h */,
+				4F1D83941AF541BE00FDAA6B /* easy.h */,
+				4F1D83951AF541BE00FDAA6B /* mprintf.h */,
+				4F1D83961AF541BE00FDAA6B /* multi.h */,
+				4F1D83971AF541BE00FDAA6B /* stdcheaders.h */,
+				4F1D83981AF541BE00FDAA6B /* typecheck-gcc.h */,
+			);
+			path = curl;
+			sourceTree = "<group>";
+		};
+		4F1D83991AF541BE00FDAA6B /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D839A1AF541BE00FDAA6B /* osx */,
+				4F1D839C1AF541BE00FDAA6B /* vs64 */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		4F1D839A1AF541BE00FDAA6B /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D839B1AF541BE00FDAA6B /* libcurl.a */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
+		4F1D839C1AF541BE00FDAA6B /* vs64 */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D839D1AF541BE00FDAA6B /* libcurl.lib */,
+				4F1D839E1AF541BE00FDAA6B /* libcurld.lib */,
+			);
+			path = vs64;
+			sourceTree = "<group>";
+		};
+		4F1D83A31AF541BE00FDAA6B /* ofxSSLLib */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83A41AF541BE00FDAA6B /* ofxSSLDebug.x64.props */,
+				4F1D83A51AF541BE00FDAA6B /* ofxSSLLib.vcxproj */,
+				4F1D83A61AF541BE00FDAA6B /* ofxSSLLib.vcxproj.filters */,
+				4F1D83A71AF541BE00FDAA6B /* ofxSSLRelease.x64.props */,
+			);
+			path = ofxSSLLib;
+			sourceTree = "<group>";
+		};
+		4F1D83A91AF541BE00FDAA6B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83AA1AF541BE00FDAA6B /* ofxSSL.cpp */,
+				4F1D83AB1AF541BE00FDAA6B /* ofxSSL.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		4F1D83DC1AF5420C00FDAA6B /* ofxAudioDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83DE1AF5420C00FDAA6B /* couples */,
+				4F1D83EE1AF5420C00FDAA6B /* libs */,
+				4F1D83FE1AF5420C00FDAA6B /* src */,
+			);
+			name = ofxAudioDecoder;
+			path = ../../../addons/ofxAudioDecoder;
+			sourceTree = "<group>";
+		};
+		4F1D83DE1AF5420C00FDAA6B /* couples */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83DF1AF5420C00FDAA6B /* ofxAudioDecoderTonic.h */,
+			);
+			path = couples;
+			sourceTree = "<group>";
+		};
+		4F1D83EE1AF5420C00FDAA6B /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83EF1AF5420C00FDAA6B /* audiodecoder */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		4F1D83EF1AF5420C00FDAA6B /* audiodecoder */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83F01AF5420C00FDAA6B /* include */,
+				4F1D83F81AF5420C00FDAA6B /* src */,
+			);
+			path = audiodecoder;
+			sourceTree = "<group>";
+		};
+		4F1D83F01AF5420C00FDAA6B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83F11AF5420C00FDAA6B /* apple */,
+				4F1D83F41AF5420C00FDAA6B /* audiodecoder.h */,
+				4F1D83F51AF5420C00FDAA6B /* audiodecoderbase.h */,
+				4F1D83F61AF5420C00FDAA6B /* audiodecodercoreaudio.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		4F1D83F11AF5420C00FDAA6B /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83F21AF5420C00FDAA6B /* CADebugMacros.h */,
+				4F1D83F31AF5420C00FDAA6B /* CAStreamBasicDescription.h */,
+			);
+			path = apple;
+			sourceTree = "<group>";
+		};
+		4F1D83F81AF5420C00FDAA6B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83F91AF5420C00FDAA6B /* audiodecoderbase.cpp */,
+				4F1D83FA1AF5420C00FDAA6B /* audiodecodercoreaudio.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		4F1D83FE1AF5420C00FDAA6B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D83FF1AF5420C00FDAA6B /* ofxAudioDecoder.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		64CDB650194500EC00C56A13 /* ofxBinaryMesh */ = {
 			isa = PBXGroup;
 			children = (
@@ -3234,6 +3547,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				4F1D83DC1AF5420C00FDAA6B /* ofxAudioDecoder */,
+				4F1D834E1AF541BE00FDAA6B /* ofxSSL */,
 				03E5EEEB1AB65BF500781171 /* ofxLocalization */,
 				03C07959194605FE0081ED9B /* ofxAnimationPrimitives */,
 				E7D82BC918BF0CEC00C1EB93 /* ofxAssimpModelLoader */,
@@ -8093,9 +8408,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F1D83D31AF541BE00FDAA6B /* ofxSSLDebug.x64.props in Resources */,
+				4F1D83C41AF541BE00FDAA6B /* curlbuild.h.cmake in Resources */,
+				4F1D83C61AF541BE00FDAA6B /* Makefile.am in Resources */,
+				4F1D83C31AF541BE00FDAA6B /* .gitignore in Resources */,
+				4F1D83D41AF541BE00FDAA6B /* ofxSSLLib.vcxproj in Resources */,
 				03E5EEF31AB65BF500781171 /* README.md in Resources */,
 				03E5EEF11AB65BF500781171 /* .gitignore in Resources */,
+				4F1D83D61AF541BE00FDAA6B /* ofxSSLRelease.x64.props in Resources */,
+				4F1D83D51AF541BE00FDAA6B /* ofxSSLLib.vcxproj.filters in Resources */,
 				03D58F341946151600FCFF7B /* MainMenu.xib in Resources */,
+				4F1D83C51AF541BE00FDAA6B /* curlbuild.h.in in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8422,6 +8745,7 @@
 				E755D6081943F2AF00AA81C1 /* ofxUIRectangle.cpp in Sources */,
 				E7D827EC18BEBDCF00C1EB93 /* ofxRemoveCocoaMenu.mm in Sources */,
 				E73DA6EF189F1CEA006C9E4E /* b2BlockAllocator.cpp in Sources */,
+				4F1D83D81AF541BE00FDAA6B /* ofxSSL.cpp in Sources */,
 				E7D825E018BEBD7000C1EB93 /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
 				E7D8259C18BEBD7000C1EB93 /* CloudsVisualSystemForkingPaths.cpp in Sources */,
 				E73DA742189F1CEA006C9E4E /* MSAObjCPointer.cpp in Sources */,
@@ -8454,6 +8778,7 @@
 				E7D825F418BEBD7000C1EB93 /* GridFluid.cpp in Sources */,
 				E7D825CC18BEBD7000C1EB93 /* Tetra.cpp in Sources */,
 				E73DA8D9189F3622006C9E4E /* KaleidoscopePass.cpp in Sources */,
+				4F1D84071AF5420C00FDAA6B /* audiodecodercoreaudio.cpp in Sources */,
 				E7D82AB618BF099000C1EB93 /* ControlChangeNotifier.cpp in Sources */,
 				E7D825D618BEBD7000C1EB93 /* CloudsVisualSystemPaintBrush.cpp in Sources */,
 				E7D82BA118BF0BEE00C1EB93 /* ofxOceanCamera.cpp in Sources */,
@@ -8649,6 +8974,7 @@
 				E7D82AAA18BF099000C1EB93 /* ofxTonicSynth.cpp in Sources */,
 				E73DA6F8189F1CEA006C9E4E /* b2WorldCallbacks.cpp in Sources */,
 				E7D8263218BEBD7000C1EB93 /* ColorPalette.cpp in Sources */,
+				4F1D84061AF5420C00FDAA6B /* audiodecoderbase.cpp in Sources */,
 				E73DA8D8189F3622006C9E4E /* HorizontalTiltShifPass.cpp in Sources */,
 				E7D8289718BEBE3A00C1EB93 /* ofxEasingLinear.cpp in Sources */,
 				E7D825C518BEBD7000C1EB93 /* fftOctaveAnalyzer.cpp in Sources */,
@@ -9529,6 +9855,9 @@
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
+					/Volumes/CLOUDS_Exports/of_Clouds_64/addons/ofxSSL/libs/libcurl/lib/vs64,
+					/Volumes/CLOUDS_Exports/of_Clouds_64/addons/ofxSSL/libs/libcurl_old/lib/osx,
+					/Volumes/CLOUDS_Exports/of_Clouds_64/addons/ofxSSL/libs/libcurl_old/lib/vs64,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -9647,6 +9976,9 @@
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
+					/Volumes/CLOUDS_Exports/of_Clouds_64/addons/ofxSSL/libs/libcurl/lib/vs64,
+					/Volumes/CLOUDS_Exports/of_Clouds_64/addons/ofxSSL/libs/libcurl_old/lib/osx,
+					/Volumes/CLOUDS_Exports/of_Clouds_64/addons/ofxSSL/libs/libcurl_old/lib/vs64,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",

@@ -60,12 +60,12 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void drawFeed();
     void updateCurrentSelection(int index,bool firstTime );
     
-    //i/o stuff
+    //FCP id from parser, highlights a person's name
+    void selectPerson(string person);
 
-//    void addUsersFromMentions(ofVec2f& curActivityMapCoord, int activityMapWidth );
+    //i/o stuff
     void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
-//    void createNewGraph(string outputFileName, string inputDataFolder);
     
     //data stuff
     int getUserIdByName(string name);
@@ -148,10 +148,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bStaticNameDraw;
     bool bOldData;
     
-    //static void loadJSONData(string folderName, vector<Tweeter>& curTweeters);
-    //static vector<Tweeter>& getOldTweeterData();
-    //static vector<Tweeter>& getNewTweeterData();
-    static string getDateAsString(Date d);    
+    static string getDateAsString(Date d);
 
     void allocateActivityMap();
   protected:
@@ -252,7 +249,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float rotationAmount;
 
     ofRectangle tweetFeedRect;
-    
+    ofCamera personHighlightCam;
     Tweeter dummyTweet;
 	
 };
