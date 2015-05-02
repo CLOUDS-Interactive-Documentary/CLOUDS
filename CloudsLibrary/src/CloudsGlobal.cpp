@@ -90,27 +90,9 @@ string GetCloudsMediaPath(){
 #endif //end VHX
 }
 
-//string GetCloudsDataRootPath(bool ignored){
-//    
-//
-//}
 
 //--------------------------------------------------------------------
 string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder){
-    //  building from src project file
-    //string datapath;
-    //	if(ofDirectory("../../../CloudsData/").exists()){
-    //		datapath = string("../../../CloudsData") + (ignoredFolder ? "_ignored" : "") + "/visualsystems/" + systemName + "/";
-    //	}
-    //	//  stand alone full app
-    //	else if(ofDirectory("CloudsData/").exists()){
-    //		datapath =  string("CloudsData") + (ignoredFolder ? "_ignored" : "") + "/visualsystems/" + systemName + "/";
-    //	}
-    //	//  stand alone single app
-    //	else{
-    //		datapath =  "../../../data/";
-    //	}
-    
     return GetCloudsDataPath(ignoredFolder) + "visualsystems/" + systemName + "/";
 }
 

@@ -71,6 +71,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     int getUserIdByName(string name);
     vector<Tweeter*> getTweetersForDate(int index);
     Tweeter* getTweeterByID(int _id );
+    Tweeter* getTweeterByName(string name );
+    
     void drawTweetsForDate(int index);
     void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
@@ -122,7 +124,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void loadMesh();
     void updateActiveTweeters(int index);
     void setActiveTweeters(int index );
-    Tweet* csvParseTweet(vector<string>& line, Tweeter* curTweeter);
+    static Tweet* csvParseTweet(vector<string>& line, Tweeter* curTweeter);
     void updateMesh();
     void drawText(string text, ofVec3f pos, float alpha);
     void drawText2D(string text, ofVec2f pos);
@@ -131,7 +133,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     set<pair<int,int> > links;
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
 
-    Date getDateFromString(const string& dString);
+    static Date getDateFromString(const string& dString);
 
     int currentDateIndex;
     float dateIndexMin, dateIndexMax;
@@ -151,6 +153,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     static string getDateAsString(Date d);
 
     void allocateActivityMap();
+    
+	virtual ofCamera& getCameraRef();    
   protected:
     ofDirectory meshDir;
     vector<string> meshStrings;
@@ -204,13 +208,13 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     vector<Tweeter*> activeTweeters;
     vector<string*> activeTweets;
-    vector<pair<string*, string*> >  activeTweetPairs;
+    vector<pair<string*, string*> > activeTweetPairs;
     vector<pair<string*, string*> > currentSelection;
     
     map<string, ofImage> avatars;
 
     void loadAvatars();
-    void loadCSVData();
+    static void loadCSVData();
     void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
     map< ofFloatColor*, ofxUILabel*> labelColors;
 	map< string, Date> dateMap;
@@ -249,7 +253,19 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float rotationAmount;
 
     ofRectangle tweetFeedRect;
-    ofCamera personHighlightCam;
     Tweeter dummyTweet;
-	
+
+    bool bUseNameCam;
+    ofCamera nameHighlightCam;
+    ofVec3f targetPersonPosition;
+    ofVec3f targetCameraPosition;
+    float nameTargetDistance;
+    float nameCameraRot;
+    bool bDrawFullNames;
+    static map<string,string> handleToNameMap;
+    static map<string,string> nameToHandleMap;
+    static map<string,int> userNameIdMap;
+    static vector<Date> dateIndex;
+
+    
 };

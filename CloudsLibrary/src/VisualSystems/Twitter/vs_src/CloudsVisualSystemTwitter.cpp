@@ -5,10 +5,14 @@
 #include "CloudsVisualSystemTwitter.h"
 #include "CloudsGlobal.h"
 
-static map<string,int> userNameIdMap;
-static vector<Date> dateIndex;
+map<string,int> CloudsVisualSystemTwitter::userNameIdMap;
+vector<Date> CloudsVisualSystemTwitter::dateIndex;
 
 vector<Tweeter*> CloudsVisualSystemTwitter::tweeters;
+map<string,string> CloudsVisualSystemTwitter::handleToNameMap;
+map<string,string> CloudsVisualSystemTwitter::nameToHandleMap;
+
+
 bool CloudsVisualSystemTwitter::tweetersLoaded = false;
 
 
@@ -42,6 +46,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     bRenderText = false;
     stringWidth = 10;
 
+    nameTargetDistance = 50;
     avatarSize = 10;
     
     tweetFeedRect = ofRectangle (0, 0,  getCanvasWidth()/2, getCanvasHeight());
@@ -85,7 +90,8 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     tweetDeckColorHSV  = ofFloatColor(128,128,128);
     bOldData = false;
     bRenderFeed = false;
-
+    bDrawFullNames = false;
+    
 	theme = 0;
 	currentTweetFeedIndex = 0;
 
@@ -94,6 +100,8 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
 
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
+    
+
 }
 
 void CloudsVisualSystemTwitter::selfSetup()
@@ -191,10 +199,15 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->setName("text");
     textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     textGui->addToggle("RENDER TEXT", &bRenderText);
-    textGui->addToggle("DRAW SPEAKER NAMES ", &bStaticNameDraw);
+    textGui->addToggle("DRAW SPEAKER NAMES", &bStaticNameDraw);
+    textGui->addToggle("DRAW FULL NAMES", &bDrawFullNames);
     textGui->addSpacer();
     addColorToGui(textGui,"TEXT ",textColorHSV,true);
     addColorToGui(textGui,"TWEET ",tweetDeckColorHSV,true);
+    textGui->addSpacer();
+    textGui->addToggle("USE NAME CAMERA", &bUseNameCam);
+    textGui->addSlider("NAME CAMERA DISTANCe", 10, 200, &nameTargetDistance);
+    textGui->addSlider("NAME CAMERA ROT", .01, 10, &nameCameraRot);
 
     textGui->addSpacer();
     textGui->addMinimalSlider("STRING WIDTH", 1, 2000, &stringWidth);
@@ -251,8 +264,16 @@ void CloudsVisualSystemTwitter::loadCSVData(){
 	}
 	tweeters.clear();
 
+    ofBuffer realNames = ofBufferFromFile(GetCloudsVisualSystemDataPath("Twitter") + "twitternames.txt");
+    while(!realNames.isLastLine()){
+        vector<string> components = ofSplitString(realNames.getNextLine(), ":", true, true);
+        if(components.size() != 2) continue;
+        nameToHandleMap[components[0]] = components[1];
+        handleToNameMap[components[1]] = components[0];
+    }
+    
     int tweeterID = 0;
-	string filePath = getVisualSystemDataPath(true) + "twitter.csv";
+	string filePath = GetCloudsVisualSystemDataPath("Twitter",true) + "twitter.csv";
     //cout<<"File Path : "<<filePath<<endl;
 	if(! ofFile::doesFileExist(filePath)){
 	  ofLogError()<<"[ VS Twitter ]"<<" Load file error, check to see if twitter.csv is in the vs ignored data folder"<<endl;
@@ -274,7 +295,10 @@ void CloudsVisualSystemTwitter::loadCSVData(){
 
     if(l.size() > 1){
 	    Tweeter* twtr = new Tweeter();
-        twtr->name = "@" + trim(l[0]);
+        string handle = trim(l[0]);
+        twtr->name = "@" + handle;
+        twtr->fullName = handleToNameMap[ ofToLower(handle) ];
+        cout << "Tweeter name is " << twtr->name << " Full Name " << twtr->fullName << endl;
         Tweet* t = csvParseTweet(l, twtr);
         twtr->tweets.push_back(t);
         twtr->addTweetsToDate(t);
@@ -316,8 +340,10 @@ void CloudsVisualSystemTwitter::loadCSVData(){
         if(! alreadyExists){
 			
             Tweeter* twtr = new Tweeter();
-            twtr->name = "@" + trim(line[0]);
-
+            string handle = trim(line[0]);
+            twtr->name = "@" + handle;
+            twtr->fullName = handleToNameMap[ofToLower(handle)];
+            
 			Tweet* t = csvParseTweet(line, twtr);
             twtr->tweets.push_back(t);
             twtr->addTweetsToDate(t);
@@ -447,6 +473,15 @@ void CloudsVisualSystemTwitter::allocateActivityMap(){
     activityMap.allocate(activityMapCoordWidth, tweeters[tweeters.size() - 1]->activityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
 	activityMap.getPixelsRef().set(0);
 	activityMap.update();
+}
+
+ofCamera& CloudsVisualSystemTwitter::getCameraRef(){
+    if(bUseNameCam){
+        return nameHighlightCam;
+    }
+    else{
+        return CloudsVisualSystem::getCameraRef();
+    }
 }
 
 void CloudsVisualSystemTwitter::loadAvatars(){
@@ -852,6 +887,17 @@ Tweeter* CloudsVisualSystemTwitter::getTweeterByID(int _id ){
     return &dummyTweet;
 }
 
+Tweeter* CloudsVisualSystemTwitter::getTweeterByName(string name ){
+    name = ofToLower(name);
+    for(int i = 0; i< tweeters.size(); i++){
+        if(ofToLower(tweeters[i]->fullName) == name){
+            return tweeters[i];
+        }
+    }
+    
+    return &dummyTweet;
+}
+
 void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
     
 }
@@ -1070,6 +1116,23 @@ void CloudsVisualSystemTwitter::selfUpdate()
 		activityMap.getPixels()[i] *= activityMapDamping;
 	}
 	activityMap.update();
+    
+    if(bUseNameCam){
+        float distFromTarget = nameHighlightCam.getPosition().distance(targetCameraPosition);
+        //targetCameraPosition.rotate(nameCameraRot, targetPersonPosition, nameHighlightCam.getUpDir());
+        ofVec3f targetPos = targetCameraPosition.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 45, -45,true), targetPersonPosition, ofVec3f(0,1,0));
+        targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -45, 45,true), targetPersonPosition, ofVec3f(1,0,0));
+        
+        ofNode n = nameHighlightCam;
+        n.lookAt(targetPersonPosition.getInterpolated(ofVec3f(0,0,0), ofMap(distFromTarget, nameTargetDistance, nameTargetDistance*10, .0, 1.0, true) ) );
+        nameHighlightCam.setPosition( nameHighlightCam.getPosition() + (targetPos - nameHighlightCam.getPosition())*.05 );
+        
+        ofQuaternion q;
+        q.slerp(.15, nameHighlightCam.getOrientationQuat(), n.getOrientationQuat());
+        nameHighlightCam.setOrientation(q);
+        
+        
+    }
 }
 
 ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor& hsv){
@@ -1188,16 +1251,20 @@ void CloudsVisualSystemTwitter::selfDraw()
     }
     
     if(bRenderText) {
-        for(int i = 0; i < activeTweeters.size(); i++){
-            if(activeTweeters[i]->position != ofVec3f(-1,-1,-1)){
-                drawText(activeTweeters[i]->name,activeTweeters[i]->position,activeTweeters[i]->textDecayRate);                
+
+        if (bStaticNameDraw) {
+            for (int i= 0 ; i < tweeters.size(); i++) {
+                if(tweeters[i]->tweets.size() > 0){
+                    drawText(bDrawFullNames ? tweeters[i]->fullName : tweeters[i]->name,
+                             tweeters[i]->position,1.0);
+                }
             }
         }
-        
-        if (bStaticNameDraw) {
-            for (int i= 0 ; i<tweeters.size(); i++) {
-                if(tweeters[i]->tweets.size() > 0){
-                    drawText(tweeters[i]->name,tweeters[i]->position,1.0);
+        else{
+            for(int i = 0; i < activeTweeters.size(); i++){
+                if(activeTweeters[i]->position != ofVec3f(-1,-1,-1)){
+                    drawText(bDrawFullNames ? activeTweeters[i]->fullName : activeTweeters[i]->name,
+                             activeTweeters[i]->position,activeTweeters[i]->textDecayRate);
                 }
             }
         }
@@ -1309,6 +1376,19 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
     animationLerpAmt = 0;
     bAnimateFeed = true;
 }
+
+//FCP id from parser, highlights a person's name
+void CloudsVisualSystemTwitter::selectPerson(string person){
+    person = ofToLower(person);
+//    if(nameToHandleMap.find(person) == nameToHandleMap.end()){
+//        ofLogError("CloudsVisualSystemTwitter::selectPerson") << "Person " << person << " not found in twitter map";
+//    }
+    
+    Tweeter* targetTweeter = getTweeterByName(person);
+    targetPersonPosition = targetTweeter->position;
+    targetCameraPosition = targetTweeter->position + targetTweeter->position.normalized() * nameTargetDistance;
+    
+ }
 
 void CloudsVisualSystemTwitter::drawFeed(){
     ofFloatColor col = getRGBfromHSV(tweetDeckColorHSV);
@@ -1528,7 +1608,7 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos, float alpha){
     ofSetColor(col);
     ofScale(0.01,-0.01,0.01);
     ofTranslate(pos.x,pos.y,pos.z);
-    font.drawString(ofToUpper(text),0,0);
+    font.drawString(ofToUpper(text),-font.stringWidth(text)/2.0,font.stringHeight(text)/2.0);
     ofPopStyle();
     ofxBillboardEnd();
 }
