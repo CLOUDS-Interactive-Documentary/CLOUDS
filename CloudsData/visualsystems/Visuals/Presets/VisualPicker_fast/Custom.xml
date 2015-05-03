@@ -2,26 +2,31 @@
     <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>271.000000000</XPosition>
-    <YPosition>319.000000000</YPosition>
+    <XPosition>311.000000000</XPosition>
+    <YPosition>255.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>42</Kind>
-    <Name>ROWS</Name>
-    <Value>6</Value>
+    <Name>CELLS WIDE</Name>
+    <Value>5</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
-    <Name>COLUMNS</Name>
-    <Value>6</Value>
+    <Name>CELLS TALL</Name>
+    <Value>5</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>354.679779053</Value>
+    <Value>226.600982666</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROW HEIGHT</Name>
-    <Value>500.000000000</Value>
+    <Value>263.546783447</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>IMAGE SCALE</Name>
+    <Value>0.137931034</Value>
 </Widget>

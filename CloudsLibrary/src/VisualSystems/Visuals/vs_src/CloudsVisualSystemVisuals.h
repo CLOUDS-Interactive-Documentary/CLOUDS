@@ -15,6 +15,7 @@ typedef struct{
     ofVec3f pos;
     float rotation;
     ofVboMesh mesh;
+    ofVec3f normal;
 } VisualThumb;
 
 class CloudsVisualSystemVisuals : public CloudsVisualSystem {
@@ -92,11 +93,16 @@ class CloudsVisualSystemVisuals : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+    void selectSystem(string systemName);
+    
     map<string, VisualThumb> thumbs;
     
-//    ofCamera& getCameraRef(){
-//        return selectCamera;
-//    }
+    ofCamera& getCameraRef(){
+        if(bFreeCam){
+            return CloudsVisualSystem::getCameraRef();
+        }
+        return selectCamera;
+    }
     
 protected:
     
@@ -109,5 +115,12 @@ protected:
     float rowHeight;
     float imageScale;
     void layoutThumbnails();
+    bool bFreeCam;
+    float cameraBackupDistance;
+    
+    ofVec3f camTargetPos;
+    ofVec3f camLookPos;
+    string selectedSystem;
+    
     ofCamera selectCamera;
 };

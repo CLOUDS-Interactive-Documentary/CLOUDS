@@ -19,7 +19,15 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    if(key == '1'){
+        vs.selectSystem("LaplacianTunnel");
+    }
+    else if(key == '2'){
+        vs.selectSystem("Replicator");
+    }
+    else if(key == '3'){
+        vs.selectSystem("Swim");
+    }
 }
 
 //--------------------------------------------------------------

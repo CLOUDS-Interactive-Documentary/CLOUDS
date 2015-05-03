@@ -13,6 +13,8 @@ void CloudsVisualSystemVisuals::selfSetDefaults(){
     cylRadius = 0;
     rowHeight = 0;
     imageScale = 1.0;
+    bFreeCam = false;
+    cameraBackupDistance = 10;
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -24,12 +26,14 @@ void CloudsVisualSystemVisuals::selfSetupGui(){
 	cylinderGui->setName("Custom");
 	cylinderGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
+    cylinderGui->addToggle("FREE CAM", &bFreeCam);
 	cylinderGui->addIntSlider("CELLS WIDE", 1, 15, &cylinderCellsWide);
 	cylinderGui->addIntSlider("CELLS TALL", 1, 15, &cylinderCellsTall);
 	cylinderGui->addSlider("RADIUS", 0, 500, &cylRadius);
 	cylinderGui->addSlider("ROW HEIGHT", 0, 500, &rowHeight);
 	cylinderGui->addSlider("IMAGE SCALE", 0, 1.0, &imageScale);
-
+    cylinderGui->addSlider("CAMERA BACKUP DIST", 0, 500, &cameraBackupDistance);
+    
 	ofAddListener(cylinderGui->newGUIEvent, this, &CloudsVisualSystemVisuals::selfGuiEvent);
 	guis.push_back(cylinderGui);
 	guimap[cylinderGui->getName()] = cylinderGui;
@@ -92,14 +96,40 @@ void CloudsVisualSystemVisuals::layoutThumbnails(){
         ofVec3f centerPos = pos;
         centerPos.z = centerPos.x = 0;
         ofNode n;
-        
-        n.lookAt(centerPos);
+        n.setPosition(pos);
+        n.lookAt(centerPos, ofVec3f(0,1,0));
         it->second.mesh.clear();
+        
+        it->second.mesh.addVertex(n.getPosition() + n.getSideDir() * .5 * 1920 * imageScale + n.getUpDir() * 1080 * .5 * imageScale ); //top left
+        it->second.mesh.addVertex(n.getPosition() - n.getSideDir() * .5 * 1920 * imageScale + n.getUpDir() * 1080 * .5 * imageScale ); //top right
+        it->second.mesh.addVertex(n.getPosition() + n.getSideDir() * .5 * 1920 * imageScale - n.getUpDir() * 1080 * .5 * imageScale ); //bottom left
+        it->second.mesh.addVertex(n.getPosition() - n.getSideDir() * .5 * 1920 * imageScale - n.getUpDir() * 1080 * .5 * imageScale ); //bottom right
+        
+        it->second.mesh.addTexCoord(ofVec2f(0,0));
+        it->second.mesh.addTexCoord(ofVec2f(1920,0));
+        it->second.mesh.addTexCoord(ofVec2f(0,1080));
+        it->second.mesh.addTexCoord(ofVec2f(1920,1080));
+        it->second.mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+        
+        it->second.normal = (pos - centerPos).normalize();
+        
         it->second.pos = pos;
         it->second.rotation = arcPoint;
         
         curInt++;
     }
+}
+
+void CloudsVisualSystemVisuals::selectSystem(string systemName){
+
+    if(thumbs.find(systemName) == thumbs.end()){
+        ofLogError("CloudsVisualSystemVisuals::selectSystem") << "System not found: " << systemName;
+        return;
+    }
+    
+    camTargetPos = thumbs[systemName].pos - thumbs[systemName].normal * cameraBackupDistance;
+    camLookPos = thumbs[systemName].pos;
+    selectedSystem = systemName;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -124,7 +154,21 @@ void CloudsVisualSystemVisuals::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemVisuals::selfUpdate(){
-
+    
+    float distFromTarget = selectCamera.getPosition().distance(camTargetPos);
+    //targetCameraPosition.rotate(nameCameraRot, targetPersonPosition, nameHighlightCam.getUpDir());
+//    ofVec3f targetPos = camTargetPos.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 45, -45,true), camLookPos, ofVec3f(0,1,0));
+//    targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -45, 45,true), camLookPos, ofVec3f(1,0,0));
+    ofVec3f targetPos = camTargetPos;
+    
+    ofNode n = selectCamera;
+    n.lookAt(camLookPos.getInterpolated(camTargetPos, ofMap(distFromTarget, cameraBackupDistance, cameraBackupDistance*2, .0, 1.0, true) ), ofVec3f(0,1,0) );
+    selectCamera.setPosition( selectCamera.getPosition() + (targetPos - selectCamera.getPosition())*.03 );
+    
+    ofQuaternion q;
+    q.slerp(.03, selectCamera.getOrientationQuat(), n.getOrientationQuat());
+    selectCamera.setOrientation(q);
+    
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -132,17 +176,20 @@ void CloudsVisualSystemVisuals::selfUpdate(){
 void CloudsVisualSystemVisuals::selfDraw(){
     map<string, VisualThumb>::iterator it;
     for(it = thumbs.begin(); it != thumbs.end(); it++){
-//        ofPushMatrix();
-//        ofRotate(it->second.rotation, 0, 1, 0);
-//        ofTranslate(it->second.pos);
-//        it->second.image.draw(-1920*imageScale*.5,
-//                              -1080*imageScale*.5,
-//                              1920*imageScale,
-//                              1080*imageScale);
-//        ofSetColor(255);
-//        ofDrawSphere( 0, 0, 0, 20);
-//        ofPopMatrix();
+        it->second.image.bind();
+        it->second.mesh.draw();
+        it->second.image.unbind();
     }
+    
+    ofPushStyle();
+//    ofNode n;
+//    n.setPosition(camLookPos);
+//    n.lookAt(camTargetPos);
+//    n.draw();
+//    n.setPosition(camTargetPos);
+//    n.lookAt(camLookPos);
+//    n.draw();
+    ofPopStyle();
 }
 
 // draw any debug stuff here

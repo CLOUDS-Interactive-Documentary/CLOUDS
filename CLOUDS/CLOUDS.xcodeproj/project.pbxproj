@@ -647,6 +647,12 @@
 		038034CB1948167700AFD40C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		038034CC1948167700AFD40C /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
 		038034CF1948167700AFD40C /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		0385CDB81AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */; };
+		0385CDB91AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */; };
+		0385CDBA1AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */; };
+		0385CDBB1AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */; };
+		0385CDBC1AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */; };
+		0385CDBD1AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */; };
 		03A0F4A81947A0850071CF4B /* Distance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DAB93189F3644006C9E4E /* Distance.cpp */; };
 		03A0F4A91947A0850071CF4B /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8231A18BEBD6E00C1EB93 /* ParticleConnection.cpp */; };
 		03A0F4AA1947A0850071CF4B /* MovingBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D6EA1943F56F00AA81C1 /* MovingBall.cpp */; };
@@ -4106,6 +4112,8 @@
 		033BCA411AAA562900BC1FEC /* CLOUDS.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CLOUDS.icns; sourceTree = "<group>"; };
 		035F4F981A9DA6A0003726D9 /* libovr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libovr.a; path = ../../../addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release/libovr.a; sourceTree = "<group>"; };
 		038034D31948167700AFD40C /* CLOUDS_SCREENING_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_SCREENING_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVisuals.cpp; sourceTree = "<group>"; };
+		0385CDB71AF5B8D8000553F2 /* CloudsVisualSystemVisuals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVisuals.h; sourceTree = "<group>"; };
 		03A0F73D1947A0850071CF4B /* CLOUDS_KINECT_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_KINECT_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCalibrationNode.cpp; sourceTree = "<group>"; };
 		03E28DA21A9D767D005AA181 /* CloudsCalibrationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCalibrationNode.h; sourceTree = "<group>"; };
@@ -6216,6 +6224,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0385CDB41AF5B8D8000553F2 /* Visuals */ = {
+			isa = PBXGroup;
+			children = (
+				0385CDB51AF5B8D8000553F2 /* vs_src */,
+			);
+			path = Visuals;
+			sourceTree = "<group>";
+		};
+		0385CDB51AF5B8D8000553F2 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */,
+				0385CDB71AF5B8D8000553F2 /* CloudsVisualSystemVisuals.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		03E28DA01A9D767D005AA181 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -8537,6 +8562,7 @@
 		E7D822B718BEBD6E00C1EB93 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				0385CDB41AF5B8D8000553F2 /* Visuals */,
 				E755D6F71943F6CC00AA81C1 /* Paradox */,
 				E7D822B818BEBD6E00C1EB93 /* 2DVideo */,
 				E7D822BC18BEBD6E00C1EB93 /* 3DModelLoader */,
@@ -11908,6 +11934,7 @@
 				038033A01948167700AFD40C /* CloudsVisualSystemBalloons.cpp in Sources */,
 				038033A11948167700AFD40C /* CloudsVisualSystemGPUParticles.cpp in Sources */,
 				038033A21948167700AFD40C /* LimbDarkeningPass.cpp in Sources */,
+				0385CDBB1AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */,
 				038033A31948167700AFD40C /* b2Distance.cpp in Sources */,
 				038033A41948167700AFD40C /* Brush.cpp in Sources */,
 				038033A51948167700AFD40C /* ofxUISortableList.cpp in Sources */,
@@ -12503,6 +12530,7 @@
 				03A0F60A1947A0850071CF4B /* CloudsVisualSystemBalloons.cpp in Sources */,
 				03A0F60B1947A0850071CF4B /* CloudsVisualSystemGPUParticles.cpp in Sources */,
 				03A0F60C1947A0850071CF4B /* LimbDarkeningPass.cpp in Sources */,
+				0385CDBA1AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */,
 				03A0F60D1947A0850071CF4B /* b2Distance.cpp in Sources */,
 				03A0F60E1947A0850071CF4B /* Brush.cpp in Sources */,
 				03A0F60F1947A0850071CF4B /* ofxUISortableList.cpp in Sources */,
@@ -12832,6 +12860,7 @@
 				642721D11AE81E5200A13289 /* b2Island.cpp in Sources */,
 				642721D21AE81E5200A13289 /* ofxUIImage.cpp in Sources */,
 				642721D31AE81E5200A13289 /* kiss_fftr.c in Sources */,
+				0385CDBC1AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */,
 				642721D41AE81E5200A13289 /* CloudsVisualSystemScrape.cpp in Sources */,
 				642721D51AE81E5200A13289 /* Creature.cpp in Sources */,
 				642721D61AE81E5200A13289 /* b2World.cpp in Sources */,
@@ -13556,6 +13585,7 @@
 				642724F11AE81EAF00A13289 /* Camera.cpp in Sources */,
 				642724F21AE81EAF00A13289 /* CloudsVisualSystem2DVideo.cpp in Sources */,
 				642724F31AE81EAF00A13289 /* ofxUIBiLabelSlider.cpp in Sources */,
+				0385CDBD1AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */,
 				642724F41AE81EAF00A13289 /* SegmentedPath.cpp in Sources */,
 				642724F51AE81EAF00A13289 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
 				642724F61AE81EAF00A13289 /* StopAction.cpp in Sources */,
@@ -14305,6 +14335,7 @@
 				E755D6DD1943F50E00AA81C1 /* CloudsVisualSystemBalloons.cpp in Sources */,
 				E7D8259E18BEBD7000C1EB93 /* CloudsVisualSystemGPUParticles.cpp in Sources */,
 				E73DA8DA189F3622006C9E4E /* LimbDarkeningPass.cpp in Sources */,
+				0385CDB81AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */,
 				E73DA6EA189F1CEA006C9E4E /* b2Distance.cpp in Sources */,
 				E7D825D518BEBD7000C1EB93 /* Brush.cpp in Sources */,
 				E755D60C1943F2AF00AA81C1 /* ofxUISortableList.cpp in Sources */,
@@ -14982,6 +15013,7 @@
 				E7DDC270194437EC00E61D75 /* CloudsVisualSystemRandomDigits2.cpp in Sources */,
 				E7DDC271194437EC00E61D75 /* PathPoint.cpp in Sources */,
 				E7DDC272194437EC00E61D75 /* CloudsVisualSystemColony.cpp in Sources */,
+				0385CDB91AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */,
 				E7DDC273194437EC00E61D75 /* ofxTLImageSequence.cpp in Sources */,
 				E7DDC274194437EC00E61D75 /* CloudsVisualSystemRulez.cpp in Sources */,
 				E7DDC275194437EC00E61D75 /* ofxUIRangeSlider.cpp in Sources */,
