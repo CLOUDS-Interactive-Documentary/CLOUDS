@@ -104,6 +104,7 @@ class CloudsVisualSystemVisuals : public CloudsVisualSystem {
         return selectCamera;
     }
     
+    vector<string> getAvailableSystems();
 protected:
     
 	

@@ -163,13 +163,16 @@ class CloudsHUDController {
     void unpause();
     
     void setTopics(const set<string>& topics);
+    void populateSpeakers();
+    void setVisuals(vector<string> visuals);
+    
+    
     bool isItemSelected();
     bool isItemConfirmed();
     void clearSelection();
     
     string getSelectedItem();
     
-    void populateSpeakers();
     
   protected:
 	

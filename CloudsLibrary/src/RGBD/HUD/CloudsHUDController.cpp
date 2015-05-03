@@ -947,7 +947,19 @@ void CloudsHUDController::populateSpeakers(){
     peopleList.scrollPosition = 0;
 }
 
-//TODO: visuals
+void CloudsHUDController::setVisuals(vector<string> visuals){
+    CloudsHUDResearchList& visualsList = researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS];
+    visualsList.buttons.clear();
+    visualsList.buttons.resize(visuals.size());
+    for(int i = 0; i < visuals.size(); i++){
+        visualsList.buttons[i].top = i * scrollIncrement;
+        visualsList.buttons[i].tag = visuals[i];
+        visualsList.buttons[i].label = visuals[i];
+    }
+    
+    visualsList.totalScrollHeight = visualsList.buttons.back().top + scrollIncrement;
+    visualsList.scrollPosition = 0;
+}
 
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
@@ -1092,7 +1104,6 @@ bool CloudsHUDController::selectedVisualsTab(){
     if(selected) {
         currentTab = CLOUDS_HUD_RESEARCH_TAB_VISUALS;
         currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS];
-        
     }
     return selected;
 }

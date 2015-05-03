@@ -84,8 +84,8 @@ void CloudsVisualSystemVisuals::selfSetup(){
 
 void CloudsVisualSystemVisuals::layoutThumbnails(){
     int curInt = 0;
-    map<string, VisualThumb>::iterator it;
     float totalheight = (thumbs.size() / cylinderCellsTall) * rowHeight;
+    map<string, VisualThumb>::iterator it;
     for(it = thumbs.begin(); it != thumbs.end(); it++){
         int x = curInt % cylinderCellsWide;
         int y = curInt / cylinderCellsWide;
@@ -118,6 +118,16 @@ void CloudsVisualSystemVisuals::layoutThumbnails(){
         
         curInt++;
     }
+}
+
+vector<string> CloudsVisualSystemVisuals::getAvailableSystems(){
+    map<string, VisualThumb>::iterator it;
+    vector<string> visuals;
+    for(it = thumbs.begin(); it != thumbs.end(); it++){
+        visuals.push_back(it->first);
+        cout << "ADDED VISUAL " << it->first << endl;
+    }
+    return visuals;
 }
 
 void CloudsVisualSystemVisuals::selectSystem(string systemName){
@@ -191,6 +201,7 @@ void CloudsVisualSystemVisuals::selfDraw(){
 //    n.draw();
     ofPopStyle();
 }
+
 
 // draw any debug stuff here
 void CloudsVisualSystemVisuals::selfDrawDebug(){

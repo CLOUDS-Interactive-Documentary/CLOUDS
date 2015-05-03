@@ -143,7 +143,6 @@ void CloudsPlaybackController::clearAct(){
         canReturnToAct = false;
     }
 
-
 	CloudsVisualSystem::getRGBDVideoPlayer().stop();
 	
 	vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
@@ -337,6 +336,7 @@ void CloudsPlaybackController::threadedFunction(){
     
     hud.setTopics(clusterMap->getTopicSet());
     hud.populateSpeakers();
+    hud.setVisuals(visualsMap->getAvailableSystems());
     
     introSequence->percentLoaded = 0.8;
 
