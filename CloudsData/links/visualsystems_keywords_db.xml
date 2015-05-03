@@ -147,19 +147,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="2DVideo_D3_Cord">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="2DVideo_D3_Dial">
     <keywords>data visualization|information|statistics</keywords>
     <links>
@@ -6934,7 +6921,7 @@
     </suppressions>
     <comments></comments>
     <grade>C</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -7091,7 +7078,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -7887,7 +7874,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -10118,49 +10105,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="CandyMountains_Phasing">
-    <keywords>audiovisualization|synaesthesia</keywords>
-    <links>
-        <clip>Memo_master - Pulses</clip>
-        <clip>Memo_master - Sonifying</clip>
-        <clip>Memo_master - Harmonic 1</clip>
-        <clip>Memo_master - Complexity 2</clip>
-    </links>
-    <suppressions>
-        <clip>Golan - playable image</clip>
-        <clip>Kyle_CH - Casey Reas Music Visualizations</clip>
-        <clip>Maeda - reactive square</clip>
-        <clip>Marcus - skating to coding</clip>
-        <clip>Marcus - electronic music influence</clip>
-        <clip>Memo_master - Sound design</clip>
-        <clip>Memo_master - Synaesthesia 1</clip>
-        <clip>Memo_master - Synaesthesia 2</clip>
-        <clip>Memo_master - Synaesthesia 3</clip>
-        <clip>Shantell - drawing with noise</clip>
-        <clip>Shantell - Live performance,</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>1</sound_allow_vo>
-    <interlude>1</interlude>
-</system>
-<system name="CandyMountains_first_timeline">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Chromogram_AllColors1">
     <keywords></keywords>
     <links></links>
@@ -11500,32 +11444,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Cities_Lars_Doing_a_Jonathan">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Cities_Lars_debug">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Cities_LightCity">
     <keywords></keywords>
     <links></links>
@@ -12237,51 +12155,6 @@
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
-</system>
-<system name="Code_JM_BlueCascade">
-    <keywords>dysfunction|error</keywords>
-    <links>
-        <clip>Marius - Aesthetic with no references,</clip>
-        <clip>Jen - necessity of code 2</clip>
-        <clip>Jen - to program or not to program</clip>
-        <clip>Jen - necessity of code 1</clip>
-    </links>
-    <suppressions>
-        <clip>Marius - We&apos;ve embraced Dystopia</clip>
-        <clip>Kevin - algo trading 2</clip>
-        <clip>Kevin - algo trading 4</clip>
-        <clip>Kevin - algo trading 5</clip>
-        <clip>Kevin - algo trading 6</clip>
-        <clip>Bruce - 7 year lifespan of novelty</clip>
-        <clip>Bruce - Art history vs Trendspotting</clip>
-        <clip>Casey - ideas of art history</clip>
-        <clip>Golan - raytraced spheres</clip>
-        <clip>Greg - AI 2</clip>
-        <clip>Kevin - algo culture 2</clip>
-        <clip>Kevin - algo stories 3</clip>
-        <clip>Kevin - algo stories 4</clip>
-        <clip>Kevin - autonomous machines crash</clip>
-        <clip>Kevin - crash and burn</clip>
-        <clip>Kyle_CH - Cory Arcangel</clip>
-        <clip>LIA - ExplanatoryText1</clip>
-        <clip>Martin - limits of computation</clip>
-        <clip>Ramsey - fluxus</clip>
-        <clip>Theo - eyebeam R&amp;D</clip>
-        <clip>Higa - language barriers</clip>
-        <clip>Higa - thick wall</clip>
-        <clip>JTNimoy - Unplugging</clip>
-        <clip>Kevin - learning to code</clip>
-        <clip>LIA - Formulas</clip>
-        <clip>Shantell - drawing with computers</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>1</interlude>
 </system>
 <system name="Code_JM_BlueCascade2">
     <keywords>dysfunction|error</keywords>
@@ -31015,19 +30888,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Oscillations_laser_blast_rotation">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Pages_Drift">
     <keywords>storytelling</keywords>
     <links>
@@ -33805,19 +33665,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Ripples_Bloom1">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Ripples_Dusk">
     <keywords></keywords>
     <links></links>
@@ -34473,32 +34320,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Rulez_X-Ray_Plant">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Rulez_X-Ray_Plant_rotation">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Satoruhiga_basic1">
     <keywords>beautiful exhuberance|aesthetic experience</keywords>
     <links>
@@ -34971,36 +34792,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Scrape_BIG_STACKS">
-    <keywords></keywords>
-    <links></links>
-    <suppressions>
-        <clip>Aaron - digital trace</clip>
-        <clip>Binx - trips</clip>
-        <clip>Binx - meaningful shape1</clip>
-        <clip>Fernanda - Personal data</clip>
-        <clip>Jer - Thought it was boring</clip>
-        <clip>Karsten - preserving history</clip>
-        <clip>Kyle_CH - old server farms</clip>
-        <clip>Kyle_CH - Future life storage</clip>
-        <clip>Ramsey - cloud 2</clip>
-        <clip>Fernanda - email storytelling</clip>
-        <clip>Jen - Personal archive 2</clip>
-        <clip>Jen - keeping pictures</clip>
-        <clip>Jen - data autobiography</clip>
-        <clip>Jen - data truth</clip>
-        <clip>Jen - life chapters</clip>
-        <clip>Karsten - atari emulation</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Scrape_DataDeathStar">
     <keywords>memory</keywords>
     <links></links>
@@ -35024,19 +34815,6 @@
     <interlude>0</interlude>
 </system>
 <system name="Scrape_GRANULAR">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Scrape_IN_YOUR_FACE">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -40903,19 +40681,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="World_Big_Brother">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="World_DataWorld1">
     <keywords>social media|network|communication|facebook|big data</keywords>
     <links></links>
@@ -43521,19 +43286,6 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Xstatic_FastPhysics2">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
     <enabled>0</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>
