@@ -70,7 +70,7 @@ void CloudsVisualSystemVisuals::selfSetup(){
     ofBuffer systemsFiles = ofBufferFromFile(getVisualSystemDataPath() + "visualslist.txt");
     while(!systemsFiles.isLastLine()){
         string systemName = systemsFiles.getNextLine();
-        string imageFileName = getVisualSystemDataPath() + "thumbs/" + systemName + ".png";
+        string imageFileName = getVisualSystemDataPath() + "thumbs/" + systemName + ".jpg";
         if(ofFile(imageFileName).exists()){
             thumbs[systemName].image.loadImage(imageFileName);
         }
