@@ -26,6 +26,9 @@ class CloudsSVGMesh
 	bool loadDirectory(string file);
 	bool load(string file);
 	void draw();
+    void drawFills();
+    void drawStrokes();
+    
 	ofRectangle getBounds();
     
 	string sourceFileName;
@@ -40,6 +43,7 @@ class CloudsSVGMesh
     
     float alpha;
 	
+    
   protected:
 	//void recurseSVGTag(ofxXmlSettings& xml, const string& parentId, float parentOpacity);
 	void recurseSVGTag(ofxXmlSettings& xml, const string& parentId, float parentOpacity);

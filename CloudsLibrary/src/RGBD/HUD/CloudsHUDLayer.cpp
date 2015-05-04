@@ -13,19 +13,29 @@
 ofShader CloudsHUDLayer::lineShader;
 
 CloudsHUDLayer::CloudsHUDLayer(){
-	startTime = 0;
+	
+    fadeStartTime = 0;
+    hoverStartTime = 0;
+
 	duration = 0;
-	delayTime = 0;
-	percentComplete = ofVec2f(0,0);
-	animating = false;
+	//delayTime = 0;
+	//percentComplete = ofVec2f(0,0);
+   	animateOnPercentComplete = 0;
+    hoverOnPercentComplete = 0;
+ 
+	animatingFade = false;
+    animatingHover = false;
     bIsOpen = false;
-	maxUpdateInterval = 1./60.;
-	lastUpdateTime = 0;
-	startPercent.x = .8;
-	startPercent.y = .0;
+    bIsHovering = false;
+    bForceHover = false;
+    
+	//maxUpdateInterval = 1./60.;
+	//lastUpdateTime = 0;
+	//startPercent.x = .8;
+	//startPercent.y = .0;
 }
 
-void CloudsHUDLayer::parse(string svgFilePath){
+void CloudsHUDLayer::load(string svgFilePath){
 
 	svg.load(svgFilePath);
 	
@@ -33,42 +43,35 @@ void CloudsHUDLayer::parse(string svgFilePath){
 	for(int i = 0; i < svg.getMeshes().size(); i++){
 		if( ofToLower(svg.getMeshes()[i].id).find("textbox") != string::npos ) {
 			textBoxIds.push_back(svg.getMeshes()[i].id);
-            
 //			cout << svg.sourceFileName <<  " has text box: " << svg.getMeshes()[i].id << " with bounds " << svg.getMeshes()[i].bounds.x << " " << svg.getMeshes()[i].bounds.y << " " << svg.getMeshes()[i].bounds.width << " " << svg.getMeshes()[i].bounds.height << endl;
 		}
 	}
 }
 
-void CloudsHUDLayer::parseDirectory(string svgDirectoryPath){
-//    cout << "Loading SVG directory :: " << svgDirectoryPath << endl;
-    
-    svg.loadDirectory(svgDirectoryPath);
-    
-    //find text boxes
-	for(int i = 0; i < svg.getMeshes().size(); i++){
-		if( ofToLower(svg.getMeshes()[i].id).find("textbox") != string::npos ) {
-			textBoxIds.push_back(svg.getMeshes()[i].id);
-		}
-	}
-}
+
+//void CloudsHUDLayer::parseDirectory(string svgDirectoryPath){
+////    cout << "Loading SVG directory :: " << svgDirectoryPath << endl;
+//    
+//    svg.loadDirectory(svgDirectoryPath);
+//    
+//    //find text boxes
+//	for(int i = 0; i < svg.getMeshes().size(); i++){
+//		if( ofToLower(svg.getMeshes()[i].id).find("textbox") != string::npos ) {
+//			textBoxIds.push_back(svg.getMeshes()[i].id);
+//		}
+//	}
+//}
 
 void CloudsHUDLayer::start(bool animate){
     if( bIsOpen ){
         return;
     }
+    
     bIsOpen = true;
     
-    //////
-//    endPoint = ofVec2f(ofGetWidth(), ofGetHeight());
-    //////
-    
     if (animate) {
-        startTime = ofGetElapsedTimef();
-        animating = true;
-    }
-    else {
-        drawRect.set(startPoint.x, startPoint.y, 0, 0);
-        drawRect.growToInclude(endPoint);
+        fadeStartTime = ofGetElapsedTimef();
+        animatingFade = true;
     }
 }
 
@@ -78,68 +81,107 @@ void CloudsHUDLayer::close(bool animate) {
     }
     bIsOpen = false;
     
+    hoverOff();
+    
     if (animate) {
-        startTime = ofGetElapsedTimef();
-        animating = true;
-    }
-    else {
-        drawRect.set(startPoint.x, startPoint.y, 0, 0);
+        fadeStartTime = ofGetElapsedTimef();
+        animatingFade = true;
     }
 }
 
+void CloudsHUDLayer::hoverOn(){
+    if( bIsHovering ){
+        return;
+    }
+    
+    bIsHovering = true;
+    
+    hoverStartTime = ofGetElapsedTimef();
+    animatingHover = true;
+    
+}
+
+void CloudsHUDLayer::hoverOff(){
+    if( !bIsHovering ){
+        return;
+    }
+    
+    bIsHovering = false;
+    
+    hoverStartTime = ofGetElapsedTimef();
+    animatingHover = true;
+}
+
+
+//void CloudsHUDLayer::mouseMoved(ofVec2f pos){
+//    if(bIsOpen){
+//        if(svg.getBounds().inside(pos)){
+//            hoverOn();
+////            cout << "HOVER ON!!" << endl;
+//        }
+//        else{
+//            hoverOff();
+////            cout << "HOVER OFF!!" << endl;
+//        }
+//    }
+//}
+
 void CloudsHUDLayer::update(){
 	float time = ofGetElapsedTimef();
-	if(animating && time - lastUpdateTime > maxUpdateInterval){
-		float totalpercent = ofxTween::map(time,
-										   delayTime+startTime,
-										   delayTime+startTime+duration,
+	if(animatingFade){
+		animateOnPercentComplete = ofxTween::map(time,
+										   fadeStartTime,
+										   fadeStartTime+duration,
 										   0.,1.0,true,ofxEasingExpo(),
 										   ofxTween::easeOut );
-		
-		percentComplete.x = ofMap(totalpercent,startPercent.x,1.,0,1.0,true);
-		percentComplete.y = ofMap(totalpercent,startPercent.y,1.,0,1.0,true);
-        
+    
+        animatingFade = animateOnPercentComplete != 1.0;
         if( !bIsOpen ){
-            percentComplete.x = 1.0 - percentComplete.x;
-            percentComplete.y = 1.0 - percentComplete.y;
+            animateOnPercentComplete = 1.0 - animateOnPercentComplete;
         }
-
-		drawRect = ofRectangle(startPoint.x,startPoint.y,0,0);
-		ofVec2f p;
-		p.x = ofLerp(startPoint.x, endPoint.x, percentComplete.x);
-		p.y = ofLerp(startPoint.y, endPoint.y, percentComplete.y);
-		
-		drawRect.growToInclude(p);
-        if( bIsOpen ){
-            animating = percentComplete.x != 1.0 || percentComplete.y != 1.0;
-        }else{
-            animating = percentComplete.x != 0.0 || percentComplete.y != 0.0;
-        }
-		lastUpdateTime = time;
 	}
+    
+    
+    if(animatingHover){
+        hoverOnPercentComplete = ofxTween::map(time,
+                                               hoverStartTime,
+                                               hoverStartTime+duration,
+                                               0.,1.0,true,ofxEasingExpo(),
+                                               ofxTween::easeOut );
+        
+        animatingHover = hoverOnPercentComplete != 1.0;
+        if(!bIsHovering){
+            hoverOnPercentComplete = 1.0 - hoverOnPercentComplete;
+        }
+    }
 }
 
 void CloudsHUDLayer::draw(){
 	
-	ofPushStyle();
-	ofSetColor(255, 0, 0, 10);
+//	ofSetColor(255, 0, 0, 10);
 	if(!lineShader.isLoaded()){
 		lineShader.load(GetCloudsDataPath() + "shaders/secondaryDisplay");
 	}
-
+    
+	ofPushStyle();
 	lineShader.begin();
-	lineShader.setUniform1f("alphaAmt", percentComplete.x);
+    lineShader.setUniform1i("lineWork", 0);
+	lineShader.setUniform1f("alphaAmt", animateOnPercentComplete);
 
-//	glEnable(GL_SCISSOR_TEST);
-	//invert and flip
-//	float screenHeight = ofGetHeight();
-//	glScissor(drawRect.x, screenHeight - drawRect.y - drawRect.height,
-//			  drawRect.width*2., drawRect.height);
-	svg.draw();
+    svg.drawFills();
+    
+    lineShader.setUniform1i("lineWork", 1);
+	lineShader.setUniform1f("alphaAmt", hoverOnPercentComplete);
+
+	svg.drawStrokes();
 
 	lineShader.end();
-//    glDisable(GL_SCISSOR_TEST);
+
+//    ofNoFill();
+//    ofRect(svg.getBounds());
+    
 	ofPopStyle();
+    
 
 }
 

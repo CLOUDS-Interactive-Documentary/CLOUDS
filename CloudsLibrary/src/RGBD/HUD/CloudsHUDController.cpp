@@ -128,7 +128,15 @@ void CloudsHUDController::populateProjectExample(const string& videoPath, const 
 void CloudsHUDController::buildLayerSets(){
 	
 	//configure layers
-    
+    for(int i = 0; i < CLOUDS_HUD_ALL; i++){
+        CloudsHUDLayerSet layerSet = CloudsHUDLayerSet(i);
+        CloudsHUDLayer* layer = new CloudsHUDLayer();
+        layer->load(GetCloudsDataPath() + "HUD/SVG/" + filenameForLayer(layerSet));
+        layers[layerSet] = layer;
+        allLayers.push_back( layer );
+    }
+                    
+    /*
     CloudsHUDLayer* homeLayer = new CloudsHUDLayer();
     homeLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_HOME");
     layers[CLOUDS_HUD_HOME] = homeLayer;
@@ -178,7 +186,7 @@ void CloudsHUDController::buildLayerSets(){
     aboutLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_ABOUT");
     layers[CLOUDS_HUD_ABOUT] = aboutLayer;
     allLayers.push_back( aboutLayer );
-    
+    */
     
     for( int i = 0; i < allLayers.size(); i++ ){
         
@@ -191,27 +199,68 @@ void CloudsHUDController::buildLayerSets(){
 		}
         
         allLayers[i]->duration = 1.5;
-        allLayers[i]->delayTime = 0;
-        allLayers[i]->startPoint = ofVec2f(allLayers[i]->svg.getWidth(),0);
-        allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
+//        allLayers[i]->delayTime = 0;
+//        allLayers[i]->startPoint = ofVec2f(allLayers[i]->svg.getWidth(),0);
+//        allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
     }
     
-    home.bounds = homeLayer->svg.getMeshByID("HomeButtonFrame")->bounds;
+    home.bounds = layers[CLOUDS_HUD_HOME]->svg.getMeshByID("HomeButtonFrame")->bounds;
     home.bounds.scaleFromCenter(1.5);
     
-    bioBounds = pauseLayer->svg.getMeshByID("BioFrame")->bounds;
+    bioBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("BioFrame")->bounds;
     
-    svgVideoBounds = projectExampleLayer->svg.getMeshByID("ProjectExampleFrame")->bounds;
+    svgVideoBounds = layers[CLOUDS_HUD_PROJECT_EXAMPLE]->svg.getMeshByID("ProjectExampleFrame")->bounds;
 	videoBounds = svgVideoBounds;
     
-    researchScrollBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListBacking")->bounds;
-    researchScrollUpBounds   = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListScrollUpBacking")->bounds;
-    researchScrollDownBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("ListScrollDownBacking")->bounds;
+    researchScrollBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListBacking")->bounds;
+    researchScrollUpBounds   = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollUpBacking")->bounds;
+    researchScrollDownBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollDownBacking")->bounds;
     
     hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
     //	cout << "HUD BOUNDS " << hudBounds.width << " / " << hudBounds.height << endl;
     //  cout << "SCREEN " << ofGetScreenWidth() << " / " << ofGetScreenHeight() << endl;
+}
+
+
+string CloudsHUDController::filenameForLayer(CloudsHUDLayerSet layer){
+    switch (layer) {
+        case CLOUDS_HUD_HOME:
+            return "CLOUDS_HUD_HOME.svg";
+        case CLOUDS_HUD_QUESTION:
+            return "CLOUDS_HUD_QUESTION.svg";
+        case CLOUDS_HUD_LOWER_THIRD:
+            return "CLOUDS_HUD_LOWER_THIRD.svg";
+        case CLOUDS_HUD_PROJECT_EXAMPLE:
+            return "CLOUDS_HUD_PROJECT_EXAMPLE.svg";
+        case CLOUDS_HUD_PAUSE:
+            return "CLOUDS_HUD_PAUSE.svg";
+        case CLOUDS_HUD_NEXT:
+            return "CLOUDS_HUD_NEXT.svg";
+        case CLOUDS_RESEARCH:
+            return "CLOUDS_RESEARCH.svg";
+        case CLOUDS_RESEARCH_SHUFFLE:
+            return "CLOUDS_RESEARCH_SHUFFLE.svg";
+        case CLOUDS_RESEARCH_RESUME:
+            return "CLOUDS_RESEARCH_RESUME.svg";
+        case CLOUDS_ABOUT_BACKERS:
+            return "CLOUDS_ABOUT_BACKERS.svg";
+        case CLOUDS_ABOUT_CAST:
+            return "CLOUDS_ABOUT_CAST.svg";
+        case CLOUDS_ABOUT_CREDITS:
+            return "CLOUDS_ABOUT_CREDITS.svg";
+        case CLOUDS_ABOUT_INFO:
+            return "CLOUDS_ABOUT_INFO.svg";
+        case CLOUDS_ABOUT_MAIN:
+            return "CLOUDS_ABOUT_MAIN.svg";
+        case CLOUDS_ABOUT_SETTINGS:
+            return "CLOUDS_ABOUT_SETTINGS.svg";
+        default:
+            break;
+    }
+    
+    ofLogError("CloudsHUDController::filenameForLayer") << "No filename for layer " << layer;
+    return "ERROR!";
 }
 
 void CloudsHUDController::calculateFontSizes(){
@@ -309,13 +358,13 @@ void CloudsHUDController::calculateFontSizes(){
     
     hudLabelMap["BioTextBox"]->layout->setLineLength(hudLabelMap["BioTextBox"]->bounds.width);
     
-    hudLabelMap["CreditsList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits1.txt").getText(), false);
-    hudLabelMap["CreditsList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits2.txt").getText(), false);
-    hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
+//    hudLabelMap["CreditsList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits1.txt").getText(), false);
+//    hudLabelMap["CreditsList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits2.txt").getText(), false);
+//    hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
 
-    hudLabelMap["CastList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast1.txt").getText(), false);
-    hudLabelMap["CastList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast2.txt").getText(), false);
-    hudLabelMap["CastList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast3.txt").getText(), false);
+//    hudLabelMap["CastList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast1.txt").getText(), false);
+//    hudLabelMap["CastList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast2.txt").getText(), false);
+//    hudLabelMap["CastList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast3.txt").getText(), false);
     
     ofBuffer backers = ofBufferFromFile(GetCloudsDataPath() + "about/backers.txt");
     int i = 0;
@@ -324,9 +373,9 @@ void CloudsHUDController::calculateFontSizes(){
         columns[i++ % 3 ] += backers.getNextLine() +"\n";
     }
     
-    hudLabelMap["BackersList1TextBox"]->setText(columns[0], false);
-    hudLabelMap["BackersList2TextBox"]->setText(columns[1], false);
-    hudLabelMap["BackersList3TextBox"]->setText(columns[2], false);
+//    hudLabelMap["BackersList1TextBox"]->setText(columns[0], false);
+//    hudLabelMap["BackersList2TextBox"]->setText(columns[1], false);
+//    hudLabelMap["BackersList3TextBox"]->setText(columns[2], false);
     
 }
 
@@ -757,7 +806,7 @@ void CloudsHUDController::update(){
         }
     }
     
-    if( hudOpenMap[CLOUDS_HUD_RESEARCH_LIST] ){
+    if( hudOpenMap[CLOUDS_RESEARCH] ){
         updateScroll();
         
         /////TEMP
@@ -766,9 +815,7 @@ void CloudsHUDController::update(){
         fakeConfirmSelectionBounds.width = 300;
         fakeConfirmSelectionBounds.height = 150;
         fakeConfirmSelectionBounds = getScaledRectangle(fakeConfirmSelectionBounds);
-    }
-    
-    if( hudOpenMap[CLOUDS_HUD_RESEARCH_NAV]){
+        
         updateResearchNavigation();
     }
     ///////////////////////////////
@@ -832,10 +879,10 @@ void CloudsHUDController::clearSelection(){
 void CloudsHUDController::updateResearchNavigation(){
 
     //get the backing
-    hudLabelMap["MapTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_RESEARCH_NAV]->svg.getMeshByID("MapHoverBacking")->bounds;
-    hudLabelMap["PeopleTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_RESEARCH_NAV]->svg.getMeshByID("PeopleHoverBacking")->bounds;
-    hudLabelMap["VisualsTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_RESEARCH_NAV]->svg.getMeshByID("VSHoverBacking")->bounds;
-    hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_RESEARCH_LIST]->svg.getMeshByID("RSResetButtonBacking")->bounds;
+    hudLabelMap["MapTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("MapHoverBacking")->bounds;
+    hudLabelMap["PeopleTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("PeopleHoverBacking")->bounds;
+    hudLabelMap["VisualsTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("VSHoverBacking")->bounds;
+    hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("RSResetButtonBacking")->bounds;
     
     //set the interaction regions
     hudLabelMap["MapTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["MapTextBox"]->baseInteractiveBounds);
@@ -845,11 +892,13 @@ void CloudsHUDController::updateResearchNavigation(){
 }
 
 void CloudsHUDController::showAbout(){
-    animateOn(CLOUDS_HUD_ABOUT);
+    //TODO: !!
+    //animateOn(CLOUDS_HUD_ABOUT);
 }
 
 void CloudsHUDController::hideAbout(){
-    animateOff(CLOUDS_HUD_ABOUT);
+    //TODO: !!
+    //animateOff(CLOUDS_HUD_ABOUT);
 }
 
 void CloudsHUDController::pause(){
@@ -963,11 +1012,22 @@ void CloudsHUDController::setVisuals(vector<string> visuals){
 
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
 
-    for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
-        (it->second)->mouseMoved(ofVec2f(args.x,args.y));
+    for (map<string, CloudsHUDLabel*>::iterator it = hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
+        it->second->mouseMoved(ofVec2f(args.x,args.y));
     }
     
-    if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
+    for(map<CloudsHUDLayerSet, CloudsHUDLayer*>::iterator it = layers.begin(); it != layers.end(); it++){
+        if(it->second->isOpen()){
+            if(getScaledRectangle( it->second->svg.getBounds()).inside(args.x,args.y)){
+                it->second->hoverOn();
+            }
+            else {
+                it->second->hoverOff();
+            }
+        }
+    }
+ 
+    if(hudOpenMap[CLOUDS_RESEARCH]){
         bIsScrollUpHover = researchScrollUpBoundsScaled.inside(args.x, args.y);
         bIsScrollDownHover = researchScrollDownBoundsScaled.inside(args.x, args.y);
         
@@ -996,7 +1056,7 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
         home.activate();
     }
     
-    if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
+    if(hudOpenMap[CLOUDS_RESEARCH]){
         bIsScrollUpPressed = researchScrollUpBoundsScaled.inside(args.x, args.y);
         bIsScrollDownPressed = researchScrollDownBoundsScaled.inside(args.x, args.y);
         
@@ -1022,7 +1082,7 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
         (it->second)->mouseReleased(ofVec2f(args.x,args.y));
     }
     
-    if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
+    if(hudOpenMap[CLOUDS_RESEARCH]){
         if(bIsScrollUpPressed && researchScrollUpBoundsScaled.inside(args.x, args.y)){
             float newScrollPosition = currentResearchList->scrollPosition - scrollIncrement;
             currentResearchList->scrollPosition = ofClamp(newScrollPosition, 0, currentResearchList->totalScrollHeight - researchScrollBounds.height);
@@ -1153,19 +1213,20 @@ void CloudsHUDController::draw(){
         ofSetColor(255, 255, 255, 255);
     }
 
-    for(int i = 0; i < CLOUDS_HUD_ALL; i++){
-        drawLayer(CloudsHUDLayerSet(i));
-    }
-
-	if (hudOpenMap[CLOUDS_HUD_HOME]){
-		home.draw();
+    for(map<CloudsHUDLayerSet, CloudsHUDLayer*>::iterator it = layers.begin(); it != layers.end(); it++){
+//        drawLayer(CloudsHUDLayerSet(i));
+        drawLayer(it->first);
     }
     
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->draw();
     }
 
-    if(hudOpenMap[CLOUDS_HUD_RESEARCH_LIST]){
+	if (hudOpenMap[CLOUDS_HUD_HOME]){
+		home.draw();
+    }
+    
+    if(hudOpenMap[CLOUDS_RESEARCH]){
         
         ofPushStyle();
         //test to see bound locations

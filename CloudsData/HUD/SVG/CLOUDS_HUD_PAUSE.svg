@@ -16,7 +16,7 @@
 		</clipPath>
 		<g id="_x37_yIXRl_17_" clip-path="url(#SVGID_2_)">
 			
-				<image overflow="visible" width="1920" height="1080" id="_x37_yIXRl_18_" xlink:href="4FA1B78699453C4C.jpg"  transform="matrix(-0.8392 0 0 0.8392 1587.6624 -2.6606)">
+				<image overflow="visible" width="1920" height="1080" id="_x37_yIXRl_18_" xlink:href="EC91F4C70B19CAB0.jpg"  transform="matrix(-0.8392 0 0 0.8392 1587.6624 -2.6606)">
 			</image>
 		</g>
 	</g>
@@ -29,14 +29,14 @@
 		</clipPath>
 		<g id="_x37_yIXRl_1_" clip-path="url(#SVGID_4_)">
 			
-				<image overflow="visible" width="1920" height="1080" id="_x37_yIXRl_2_" xlink:href="4FA1B78699453C4D.jpg"  transform="matrix(-0.8476 0 0 0.8476 1596.3191 -6.7793)">
+				<image overflow="visible" width="1920" height="1080" id="_x37_yIXRl_2_" xlink:href="EC91F4C70B19CAB1.jpg"  transform="matrix(-0.8476 0 0 0.8476 1596.3191 -6.7793)">
 			</image>
 		</g>
 	</g>
 </g>
 <g id="clouds_screenshot" display="none">
 	
-		<image display="inline" overflow="visible" width="1920" height="1069" xlink:href="4FA1B78699453C4B.jpg"  transform="matrix(0.8513 0 0 0.8513 -99.3286 9.7095)">
+		<image display="inline" overflow="visible" width="1920" height="1069" xlink:href="EC91F4C70B19CAB7.jpg"  transform="matrix(0.8513 0 0 0.8513 -99.3286 9.7095)">
 	</image>
 </g>
 <g id="_x5F_TopicMapDetail" display="none">
@@ -763,56 +763,57 @@
 </g>
 <g id="_x5F_ProjectExampleFrame" display="none">
 	
-		<rect x="864.813" y="54.5" display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="490" height="324"/>
+		<rect x="864.813" y="88.5" display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="490" height="324"/>
 	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="864.313" y1="414.5" x2="1354.313" y2="414.5"/>
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="864.313" y1="448.5" x2="1355.313" y2="448.5"/>
 	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1354.813" y1="379" x2="1354.813" y2="414"/>
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1354.813" y1="412" x2="1354.813" y2="448"/>
 	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="864.813" y1="379" x2="864.813" y2="414"/>
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="864.813" y1="412" x2="864.813" y2="449"/>
 </g>
 <g id="_x5F_ProjectExampleBacking" display="none">
-	<rect x="866.313" y="56" display="inline" opacity="0.26" fill="#101010" width="373" height="34"/>
-	<rect x="1296.813" y="379.5" display="inline" opacity="0.49" fill="#161616" width="57.5" height="34.479"/>
-	<rect x="865.313" y="379.5" display="inline" opacity="0.26" fill="#101010" width="431.5" height="34.479"/>
+	<rect x="866.313" y="89" display="inline" opacity="0.26" fill="#101010" width="373" height="34"/>
+	<rect x="1296.813" y="413.046" display="inline" opacity="0.49" fill="#161616" width="57.5" height="34.917"/>
+	<rect x="865.313" y="413.046" display="inline" opacity="0.26" fill="#101010" width="431.5" height="34.917"/>
 </g>
 <g id="_x5F_ProjectExampleTextboxLeft" display="none">
 	
-		<rect x="875.406" y="388.5" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="318.814" height="15.34"/>
+		<rect x="875.406" y="422.5" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="318.814" height="15.34"/>
 </g>
 <g id="_x5F_ProjectExampleTextboxRight" display="none">
 	
-		<rect x="1305.186" y="388.5" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="40.127" height="15.34"/>
+		<rect x="1305.186" y="422.5" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="40.127" height="15.34"/>
 </g>
 <g id="_x5F_ProjectExampleTextBoxTop" display="none">
-	<rect x="875.406" y="63.5" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="158.5" height="15.34"/>
+	<rect x="875.406" y="96.5" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="158.5" height="15.34"/>
 </g>
 <g id="_x5F_ProjectExampleTypography" display="none">
 	<g display="inline">
 		
-			<text transform="matrix(1 0 0 1 877.7678 401.873)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">LAURA McCARTHY + KYLE McDONALD</text>
+			<text transform="matrix(1 0 0 1 877.7678 435.873)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">LAURA McCARTHY + KYLE McDONALD</text>
 	</g>
 	<g display="inline">
-		<text transform="matrix(1 0 0 1 1305.4241 401.873)"><tspan x="0" y="0" fill="#A7A9AC" font-family="'Blender-BOOK'" font-size="19">20</tspan><tspan x="20.862" y="0" fill="#A7A9AC" font-family="'Blender-BOOK'" font-size="19">0</tspan><tspan x="30.913" y="0" fill="#A7A9AC" font-family="'Blender-BOOK'" font-size="19">7</tspan></text>
+		<text transform="matrix(1 0 0 1 1305.4241 435.873)"><tspan x="0" y="0" fill="#A7A9AC" font-family="'Blender-BOOK'" font-size="19">20</tspan><tspan x="20.862" y="0" fill="#A7A9AC" font-family="'Blender-BOOK'" font-size="19">0</tspan><tspan x="30.913" y="0" fill="#A7A9AC" font-family="'Blender-BOOK'" font-size="19">7</tspan></text>
 	</g>
 	<g display="inline">
-		<text transform="matrix(1 0 0 1 875.4792 76.9663)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19">“SOC</tspan><tspan x="41.686" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">IA</tspan><tspan x="58.557" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19">L TURKERS”</tspan></text>
+		<text transform="matrix(1 0 0 1 875.4792 109.9663)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19">“SOC</tspan><tspan x="41.686" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">IA</tspan><tspan x="58.557" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19">L TURKERS”</tspan></text>
 	</g>
 </g>
 <g id="_x5F_ProjectExampleConnectorLines" display="none">
 	
-		<line display="inline" opacity="0.08" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1239.813" y1="54" x2="1239.813" y2="703"/>
+		<line display="inline" opacity="0.08" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1239.813" y1="88" x2="1239.813" y2="685"/>
 	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M87.813,612"/>
 	
-		<line display="inline" opacity="0.08" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1296.813" y1="54" x2="1296.813" y2="703"/>
+		<line display="inline" opacity="0.08" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1296.813" y1="88" x2="1296.813" y2="703"/>
 	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1354.813" y1="414" x2="1354.813" y2="684"/>
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1354.813" y1="412" x2="1354.813" y2="684"/>
 	
 		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1354.813" y1="810.5" x2="1354.806" y2="827.993"/>
 	
 		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1354.813" y1="685.007" x2="1354.806" y2="702.5"/>
 </g>
 <g id="QuestionBacking" display="none">
+	<rect x="88.313" y="54.995" display="inline" opacity="0.56" fill="#101010" width="189.5" height="32.996"/>
 </g>
 <g id="QuestionTextBox_1_" display="none">
 	
@@ -857,64 +858,50 @@
 	<rect x="57.412" y="701.1" display="inline" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
 	<rect x="57.412" y="809.099" display="inline" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
 </g>
-<g id="BylineBacking" display="none">
-	<rect x="174.352" y="702.5" display="inline" opacity="0.16" fill="#101010" width="1208.884" height="108"/>
+<g id="BylineBacking">
+	<rect x="174.352" y="702.5" opacity="0.16" fill="#101010" width="1208.884" height="108"/>
 </g>
-<g id="BylineInsideBorder" display="none">
-	
-		<line display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1384.313" y1="702.5" x2="174.313" y2="702.5"/>
-	
-		<line display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="174.313" y1="810.5" x2="1384.313" y2="810.5"/>
-	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1383.813" y1="702" x2="1383.813" y2="811"/>
-	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="173.813" y1="702" x2="173.813" y2="811"/>
+<g id="BylineInsideBorder">
+	<line opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1384.313" y1="702.5" x2="174.313" y2="702.5"/>
+	<line opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="174.313" y1="810.5" x2="1384.313" y2="810.5"/>
+	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1383.813" y1="702" x2="1383.813" y2="811"/>
+	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="173.813" y1="702" x2="173.813" y2="811"/>
 </g>
-<g id="BylineOutsideBorder" display="none">
-	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1413.313" y1="684.5" x2="29.313" y2="684.5"/>
-	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.813" y1="684" x2="29.813" y2="829"/>
-	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1412.313" y1="828.5" x2="30.313" y2="828.5"/>
-	
-		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1412.813" y1="829" x2="1412.813" y2="684"/>
+<g id="BylineOutsideBorder">
+	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1413.313" y1="684.5" x2="29.313" y2="684.5"/>
+	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.813" y1="684" x2="29.813" y2="829"/>
+	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1412.313" y1="828.5" x2="30.313" y2="828.5"/>
+	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1412.813" y1="829" x2="1412.813" y2="684"/>
 </g>
-<g id="BylineTopicBackingBottom" display="none">
-	<rect x="490.813" y="761" display="inline" opacity="0.36" fill="#101010" width="202" height="30.557"/>
+<g id="BylineTopicBackingBottom">
+	<rect x="490.813" y="761" opacity="0.36" fill="#101010" width="202" height="30.557"/>
 </g>
-<g id="BylineTopicBackingTop" display="none">
-	<rect x="490.813" y="719.5" display="inline" opacity="0.36" fill="#101010" width="230" height="29.5"/>
+<g id="BylineTopicBackingTop">
+	<rect x="490.813" y="719.5" opacity="0.36" fill="#101010" width="230" height="29.5"/>
 </g>
-<g id="BylineTopicTextBoxBottom" display="none">
-	
-		<rect x="498.656" y="770.521" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="146.314" height="13.147"/>
+<g id="BylineTopicTextBoxBottom">
+	<rect x="498.656" y="770.521" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="146.314" height="13.147"/>
 </g>
-<g id="BylineTopicTextBoxTop" display="none">
-	
-		<rect x="498.656" y="728.676" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="182.314" height="13.147"/>
+<g id="BylineTopicTextBoxTop">
+	<rect x="498.656" y="728.676" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="182.314" height="13.147"/>
 </g>
-<g id="VSCreditsBackingBottom" display="none">
-	<rect x="740.813" y="761" display="inline" opacity="0.36" fill="#101010" width="202" height="30.557"/>
+<g id="VSCreditsBackingBottom">
+	<rect x="740.813" y="761" opacity="0.36" fill="#101010" width="202" height="30.557"/>
 </g>
-<g id="VSCreditsBackingTop" display="none">
-	<rect x="740.813" y="719.5" display="inline" opacity="0.36" fill="#101010" width="230" height="29.5"/>
+<g id="VSCreditsBackingTop">
+	<rect x="740.813" y="719.5" opacity="0.36" fill="#101010" width="230" height="29.5"/>
 </g>
-<g id="VSCreditsTextBoxBottom" display="none">
-	
-		<rect x="748.656" y="770.521" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="146.314" height="13.147"/>
+<g id="VSCreditsTextBoxBottom">
+	<rect x="748.656" y="770.521" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="146.314" height="13.147"/>
 </g>
-<g id="VSCreditsTextBoxTop" display="none">
-	
-		<rect x="748.656" y="728.676" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="182.314" height="13.147"/>
+<g id="VSCreditsTextBoxTop">
+	<rect x="748.656" y="728.676" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="182.314" height="13.147"/>
 </g>
-<g id="BylineLastNameTextBox" display="none">
-	
-		<rect x="200.813" y="754.021" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="278.314" height="37.147"/>
+<g id="BylineLastNameTextBox">
+	<rect x="200.813" y="754.021" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="278.314" height="37.147"/>
 </g>
-<g id="BylineFirstNameTextBox_1_" display="none">
-	
-		<rect x="200.813" y="719.021" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="80.314" height="26.147"/>
+<g id="BylineFirstNameTextBox_1_">
+	<rect x="200.813" y="719.021" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="80.314" height="26.147"/>
 </g>
 <g id="BylineTypography" display="none">
 	<g display="inline">
@@ -937,31 +924,31 @@
 	<rect x="745.313" y="727.415" display="inline" fill="none" width="576.184" height="69"/>
 	<text transform="matrix(1 0 0 1 745.3132 737.0781)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">Freelance writer who covers digital media art, internet culture, and commerce </tspan><tspan x="0" y="23" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">for publications including the new yorker and the new republic. He has also cu</tspan><tspan x="550.499" y="23" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">-</tspan><tspan x="0" y="46" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="16">rated exhibitions at Garis &amp; Hahn gallery and moving image art fair in New York </tspan></text>
 </g>
-<g id="BylineTicks" display="none">
-	<rect x="1382.371" y="701.099" display="inline" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
-	<rect x="1382.453" y="809.099" display="inline" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
-	<rect x="172.412" y="701.099" display="inline" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
-	<rect x="172.412" y="809.099" display="inline" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
+<g id="BylineTicks">
+	<rect x="1382.371" y="701.099" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
+	<rect x="1382.453" y="809.099" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
+	<rect x="172.412" y="701.099" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
+	<rect x="172.412" y="809.099" opacity="0.69" fill="#FFFFFF" width="2.802" height="2.802"/>
 </g>
 <g id="ResetButtonBacking">
-	<rect x="1335.802" y="828.5" opacity="0.36" fill="#101010" width="77.011" height="34"/>
+	<rect x="58.883" y="828.5" opacity="0.36" fill="#101010" width="77.011" height="34"/>
 </g>
 <g id="ResetButtonArrow" display="none">
-	<rect x="1393.853" y="841.1" display="inline" fill="#FFFFFF" width="9" height="9"/>
+	<rect x="116.933" y="841.1" display="inline" fill="#FFFFFF" width="9" height="9"/>
 </g>
 <g id="ResetButtonSpace">
-	<rect x="1393.853" y="841.1" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="9" height="9"/>
+	<rect x="116.933" y="841.1" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="9" height="9"/>
 </g>
 <g id="ResetButtonFrame">
-	<rect x="1335.772" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="77.042" height="34"/>
+	<rect x="58.852" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="77.042" height="34"/>
 </g>
 <g id="ResetButtonTextBox">
-	<rect x="1346.093" y="840" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="35.882" height="11.424"/>
+	<rect x="69.173" y="840" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="35.882" height="11.424"/>
 </g>
 <g id="ResetButtonTypography" display="none">
 	<g display="inline">
 		
-			<text transform="matrix(1 0 0 1 1345.6204 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">EXIT</text>
+			<text transform="matrix(1 0 0 1 68.7004 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">EXIT</text>
 	</g>
 </g>
 <g id="GridBacking">
@@ -3214,27 +3201,24 @@
 <g id="BioTitleTextBox">
 	<rect x="892.23" y="66.034" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="24.178" height="11.424"/>
 </g>
-<g id="NextButtonBacking" display="none">
-	<rect x="1268.88" y="55" display="inline" opacity="0.36" fill="#101010" width="85.896" height="34"/>
+<g id="NextButtonBacking">
+	<rect x="1268.843" y="55.007" opacity="0.36" fill="#101010" width="85.896" height="32.993"/>
 </g>
 <g id="NextButtonArrow" display="none">
-	<polygon display="inline" fill="#FFFFFF" points="1336.424,66.218 1336.424,78.783 1342.706,72.5 	"/>
+	<polygon display="inline" fill="#FFFFFF" points="1336.387,66.181 1336.387,78.746 1342.669,72.463 	"/>
 </g>
-<g id="NextButtonArrowSpace" display="none">
-	
-		<rect x="1336.424" y="66.218" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
+<g id="NextButtonArrowSpace">
+	<rect x="1336.387" y="66.181" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
 </g>
-<g id="NextButtonFrame" display="none">
-	
-		<rect x="1268.88" y="54.63" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="85.97" height="34"/>
+<g id="NextButtonFrame">
+	<rect x="1268.843" y="54.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="85.97" height="34"/>
 </g>
-<g id="NextButtonTextBox" display="none">
-	
-		<rect x="1283.261" y="66.034" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="42.345" height="11.424"/>
+<g id="NextButtonTextBox">
+	<rect x="1283.224" y="65.997" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="42.345" height="11.424"/>
 </g>
 <g id="NextButtonTypography" display="none">
 	
-		<text transform="matrix(1 0 0 1 1282.781 77.4414)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">NEXT</text>
+		<text transform="matrix(1 0 0 1 1282.7439 77.4043)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">NEXT</text>
 </g>
 <g id="InsideFrame">
 	<g opacity="0.26">
