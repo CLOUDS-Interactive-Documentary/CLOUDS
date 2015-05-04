@@ -903,7 +903,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     }
     
     if(hud.selectedVisualsTab()){
-      transitionController.transitionToExploreVisuals(1.0, 1.0);
+        transitionController.transitionToExploreVisuals(1.0, 1.0);
     }
     
     /////////////////////////////////
@@ -2017,9 +2017,11 @@ void CloudsPlaybackController::cleanupInterlude(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showExploreMap(){
 
-    hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
+    hud.animateOn(CLOUDS_RESEARCH);
+    if(canReturnToAct){
+        hud.animateOn(CLOUDS_RESEARCH_RESUME);
+    }
     if(showingResearchMode){ //from research mode--
-        hud.animateOn(CLOUDS_HUD_RESEARCH_NAV);
         researchModeTopic  = true;
         researchModePerson = false;
         researchModeVisual = false;
@@ -2042,8 +2044,11 @@ void CloudsPlaybackController::showExploreMap(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showExplorePeople(){
-    hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
-    
+    hud.animateOn(CLOUDS_RESEARCH);
+    if(canReturnToAct){
+        hud.animateOn(CLOUDS_RESEARCH_RESUME);
+    }
+
     if(showingResearchMode){
         researchModeTopic  = false;
         researchModePerson = true;
@@ -2064,8 +2069,11 @@ void CloudsPlaybackController::showExplorePeople(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showExploreVisuals(){
-    hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
-    
+    hud.animateOn(CLOUDS_RESEARCH);
+    if(canReturnToAct){
+        hud.animateOn(CLOUDS_RESEARCH_RESUME);
+    }
+
     if(showingResearchMode){
         researchModeTopic  = false;
         researchModePerson = false;

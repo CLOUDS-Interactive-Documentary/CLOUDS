@@ -10,6 +10,12 @@
 
 #include "ofMain.h"
 
+static ofColor CloudsColorDeselected = ofColor::fromHex(0x5583AE);
+static ofColor CloudsColorStatic     = ofColor::fromHex(0xFFFFFF);
+static ofColor CloudsColorHover      = ofColor::fromHex(0x439CED);
+static ofColor CloudsColorActive     = ofColor::fromHex(0xA3CEF7);
+static ofColor CloudsColorSelected   = ofColor::fromHex(0x034C89);
+
 enum CloudsVisualLevel { FAST, PRETTY };
 //--------------------------------------------------------------------
 string GetEnvVar( string key );
@@ -29,6 +35,8 @@ void SetLanguage(string language);
 string relinkFilePath(string filePath);
 //--------------------------------------------------------------------
 CloudsVisualLevel getVisualLevel();
+
+
 
 //--------------------------------------
 static inline std::string &ltrim(std::string &s) {

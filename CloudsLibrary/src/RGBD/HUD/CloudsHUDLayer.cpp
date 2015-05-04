@@ -141,8 +141,10 @@ void CloudsHUDLayer::update(){
         }
 	}
     
-    
-    if(animatingHover){
+    if(bForceHover){
+        hoverOnPercentComplete = animateOnPercentComplete;
+    }
+    else if(animatingHover){
         hoverOnPercentComplete = ofxTween::map(time,
                                                hoverStartTime,
                                                hoverStartTime+duration,
@@ -187,4 +189,8 @@ void CloudsHUDLayer::draw(){
 
 bool CloudsHUDLayer::isOpen(){
     return bIsOpen;
+}
+
+bool CloudsHUDLayer::isHovering(){
+    return bIsHovering;
 }

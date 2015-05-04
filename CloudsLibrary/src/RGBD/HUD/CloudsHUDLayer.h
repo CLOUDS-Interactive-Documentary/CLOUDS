@@ -33,6 +33,7 @@ class CloudsHUDLayer
     bool bForceHover;
     void hoverOn();
     void hoverOff();
+    bool isHovering();
     
 	void update();
 	void draw();

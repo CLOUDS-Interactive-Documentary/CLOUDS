@@ -207,6 +207,7 @@ void CloudsHUDController::buildLayerSets(){
     home.bounds = layers[CLOUDS_HUD_HOME]->svg.getMeshByID("HomeButtonFrame")->bounds;
     home.bounds.scaleFromCenter(1.5);
     
+    
     bioBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("BioFrame")->bounds;
     
     svgVideoBounds = layers[CLOUDS_HUD_PROJECT_EXAMPLE]->svg.getMeshByID("ProjectExampleFrame")->bounds;
@@ -218,8 +219,12 @@ void CloudsHUDController::buildLayerSets(){
     
     hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
-    //	cout << "HUD BOUNDS " << hudBounds.width << " / " << hudBounds.height << endl;
-    //  cout << "SCREEN " << ofGetScreenWidth() << " / " << ofGetScreenHeight() << endl;
+    layers[CLOUDS_HUD_HOME]->bForceHover = true;
+    layers[CLOUDS_HUD_PAUSE]->bForceHover = true;
+    layers[CLOUDS_HUD_PROJECT_EXAMPLE]->bForceHover = true;
+    layers[CLOUDS_HUD_HOME]->bForceHover = true;
+    layers[CLOUDS_RESEARCH_RESUME]->bForceHover = true;
+
 }
 
 
@@ -358,13 +363,13 @@ void CloudsHUDController::calculateFontSizes(){
     
     hudLabelMap["BioTextBox"]->layout->setLineLength(hudLabelMap["BioTextBox"]->bounds.width);
     
-//    hudLabelMap["CreditsList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits1.txt").getText(), false);
-//    hudLabelMap["CreditsList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits2.txt").getText(), false);
-//    hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
+    hudLabelMap["CreditsList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits1.txt").getText(), false);
+    hudLabelMap["CreditsList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits2.txt").getText(), false);
+    hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
 
-//    hudLabelMap["CastList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast1.txt").getText(), false);
-//    hudLabelMap["CastList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast2.txt").getText(), false);
-//    hudLabelMap["CastList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast3.txt").getText(), false);
+    hudLabelMap["CastList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast1.txt").getText(), false);
+    hudLabelMap["CastList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast2.txt").getText(), false);
+    hudLabelMap["CastList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast3.txt").getText(), false);
     
     ofBuffer backers = ofBufferFromFile(GetCloudsDataPath() + "about/backers.txt");
     int i = 0;
@@ -373,9 +378,9 @@ void CloudsHUDController::calculateFontSizes(){
         columns[i++ % 3 ] += backers.getNextLine() +"\n";
     }
     
-//    hudLabelMap["BackersList1TextBox"]->setText(columns[0], false);
-//    hudLabelMap["BackersList2TextBox"]->setText(columns[1], false);
-//    hudLabelMap["BackersList3TextBox"]->setText(columns[2], false);
+    hudLabelMap["BackersList1TextBox"]->setText(columns[0], false);
+    hudLabelMap["BackersList2TextBox"]->setText(columns[1], false);
+    hudLabelMap["BackersList3TextBox"]->setText(columns[2], false);
     
 }
 
@@ -795,6 +800,9 @@ void CloudsHUDController::update(){
     researchScrollDownBoundsScaled = getScaledRectangle(researchScrollDownBounds);
     researchScrollBoundsScaled = getScaledRectangle(researchScrollBounds);
     
+    home.bAnimateHoverRadar = layers[CLOUDS_HUD_LOWER_THIRD]->isHovering();
+    home.animatedHoverStartTime = layers[CLOUDS_HUD_LOWER_THIRD]->hoverStartTime;
+
     home.interactiveBounds = getScaledRectangle(home.bounds);
     home.update();
     if( home.wasActivated() ){
@@ -892,8 +900,14 @@ void CloudsHUDController::updateResearchNavigation(){
 }
 
 void CloudsHUDController::showAbout(){
-    //TODO: !!
-    //animateOn(CLOUDS_HUD_ABOUT);
+
+    animateOn(CLOUDS_ABOUT_MAIN);
+    animateOn(CLOUDS_ABOUT_BACKERS);
+    animateOn(CLOUDS_ABOUT_CAST);
+    animateOn(CLOUDS_ABOUT_CREDITS);
+    animateOn(CLOUDS_ABOUT_INFO);
+    animateOn(CLOUDS_ABOUT_SETTINGS);
+    
 }
 
 void CloudsHUDController::hideAbout(){
@@ -902,8 +916,6 @@ void CloudsHUDController::hideAbout(){
 }
 
 void CloudsHUDController::pause(){
-
-    //TODO: save the current HUD state before pause
 
     
     //set up the sizing
@@ -938,7 +950,9 @@ void CloudsHUDController::pause(){
     }
 
     animateOn( CLOUDS_HUD_PAUSE );
-
+    
+    layers[CLOUDS_HUD_LOWER_THIRD]->bForceHover = true;
+    
     bJustPaused = true;
     bJustUnpaused = false;
 
@@ -956,9 +970,10 @@ void CloudsHUDController::unpause(){
         animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
     }
     
-    //if(bClipIsPlaying){
+    layers[CLOUDS_HUD_LOWER_THIRD]->bForceHover = false;
+    
     animateOn( CLOUDS_HUD_NEXT );
-    //}
+    
     bJustUnpaused = true;
     bJustPaused = false;
     
@@ -1498,8 +1513,6 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
             hudLayerLabels[layer][i]->animateOut();
         }
     }
-    
-    
 }
 
 ofRectangle CloudsHUDController::getScaledRectangle(const ofRectangle& rect){

@@ -98,24 +98,19 @@ void testApp::keyPressed(int key){
     
     if(key == '5'){
 		hud.animateOn(CLOUDS_HUD_PAUSE);
-        //hud.pause();
 	}
     
     if(key == '6'){
 		hud.animateOn(CLOUDS_HUD_NEXT);
-        //hud.pause();
 	}
     
     if(key == '7'){
-
-//		hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
 		hud.animateOn(CLOUDS_RESEARCH);
 		hud.animateOn(CLOUDS_RESEARCH_RESUME);
-        //hud.pause();
 	}
     
     if(key == '8'){
-//        hud.animateOn(CLOUDS_HUD_ABOUT);
+        hud.showAbout();
     }
 
     if(key == '9'){

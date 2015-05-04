@@ -16,7 +16,7 @@
 		</clipPath>
 		<g transform="matrix(1 0 0 1 -7.629395e-06 -1.907349e-06)" clip-path="url(#SVGID_2_)">
 			
-				<image overflow="visible" width="2034" height="1194" xlink:href="30FCB148C07CE736.png"  transform="matrix(0.838 0 0 0.838 -104.6868 -30.0605)">
+				<image overflow="visible" width="2034" height="1194" xlink:href="61644D3A79059972.png"  transform="matrix(0.838 0 0 0.838 -104.6868 -30.0605)">
 			</image>
 		</g>
 	</g>
@@ -46,7 +46,7 @@
 	</g>
 	<g display="inline">
 		
-			<text transform="matrix(1 0 0 1 531.8801 799.3979)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CAST</text>
+			<text transform="matrix(1 0 0 1 531.8796 799.3979)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CAST</text>
 	</g>
 	<g display="inline">
 		
@@ -103,11 +103,15 @@
 	
 		<text transform="matrix(1 0 0 1 687.792 200.6196)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="30" letter-spacing="3">CAST</text>
 </g>
-<g id="CastListTextBox" display="none">
+<g id="CastList1TextBox" display="none">
 	
 		<rect x="382.213" y="279.993" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="221.455" height="302.041"/>
+</g>
+<g id="CastList2TextBox" display="none">
 	
 		<rect x="603.668" y="279.993" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.142" height="302.041"/>
+</g>
+<g id="CastList3TextBox_copy" display="none">
 	
 		<rect x="867.809" y="279.993" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="192.62" height="302.041"/>
 </g>
@@ -124,12 +128,17 @@
 	
 		<text transform="matrix(1 0 0 1 663.6187 122.916)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="30" letter-spacing="3">CREDITS</text>
 </g>
-<g id="CreditsListTextBox" display="none">
-	<g display="inline">
-		<rect x="292.848" y="202.289" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="323.969" height="488.105"/>
-		<rect x="616.818" y="202.289" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="280.77" height="488.105"/>
-		<rect x="897.587" y="202.289" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="252.207" height="488.105"/>
-	</g>
+<g id="CreditsList1TextBox" display="none">
+	
+		<rect x="292.848" y="202.289" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="323.969" height="488.105"/>
+</g>
+<g id="CreditsList2TextBox" display="none">
+	
+		<rect x="616.818" y="202.289" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="280.77" height="488.105"/>
+</g>
+<g id="CreditsList3TextBox" display="none">
+	
+		<rect x="897.587" y="202.289" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="252.207" height="488.105"/>
 </g>
 <g id="CreditsTitleTextBox" display="none">
 	
@@ -162,11 +171,15 @@
 		</g>
 	</g>
 </g>
-<g id="BackersListTextBox" display="none">
+<g id="BackersList1TextBox" display="none">
 	
 		<rect x="313.266" y="165.574" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.815" height="525.605"/>
+</g>
+<g id="BackersList2TextBox" display="none">
 	
 		<rect x="578.082" y="165.574" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.815" height="525.605"/>
+</g>
+<g id="BackersList3TextBox" display="none">
 	
 		<rect x="842.897" y="165.574" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.815" height="525.605"/>
 </g>
