@@ -573,7 +573,7 @@ void CloudsClip::fetchVhxSourceUrl(){
     
     if (vhxId.empty()) {
         // No ID :(
-        ofLogError("CloudsClip::fetchVhxSourceUrl") << "This shouldn't happen!";
+        ofLogError("CloudsClip::fetchVhxSourceUrl") << "VHX ID not set! This shouldn't happen!";
         hasMediaAsset = false;
         return;
     }
@@ -586,11 +586,6 @@ void CloudsClip::fetchVhxSourceUrl(){
 }
 
 void CloudsClip::vhxRequestComplete(CloudsVHXEventArgs& args){
-    if (vhxRequest) {
-        ofRemoveListener(vhxRequest->completeEvent, this, &CloudsClip::vhxRequestComplete);
-        delete vhxRequest;
-        vhxRequest = NULL;
-    }
     if (args.success) {
         hasMediaAsset = true;
         vhxSourceVideoUrl = args.result;
@@ -599,6 +594,12 @@ void CloudsClip::vhxRequestComplete(CloudsVHXEventArgs& args){
     }
     else{
         ofLogError("CloudsClip::vhxRequestComplete") << "Error returned from vhx request";
+    }
+    
+    if (vhxRequest) {
+        ofRemoveListener(vhxRequest->completeEvent, this, &CloudsClip::vhxRequestComplete);
+        delete vhxRequest;
+        vhxRequest = NULL;
     }
 }
 #endif
