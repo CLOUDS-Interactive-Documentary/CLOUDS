@@ -219,10 +219,11 @@ void CloudsHUDController::buildLayerSets(){
     
     hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
+    //ensure the lines are always up
     layers[CLOUDS_HUD_HOME]->bForceHover = true;
     layers[CLOUDS_HUD_PAUSE]->bForceHover = true;
     layers[CLOUDS_HUD_PROJECT_EXAMPLE]->bForceHover = true;
-    layers[CLOUDS_HUD_HOME]->bForceHover = true;
+    layers[CLOUDS_RESEARCH]->bForceHover = true;
     layers[CLOUDS_RESEARCH_RESUME]->bForceHover = true;
 
 }
@@ -816,13 +817,14 @@ void CloudsHUDController::update(){
     
     if( hudOpenMap[CLOUDS_RESEARCH] ){
         updateScroll();
-        
-        /////TEMP
-        fakeConfirmSelectionBounds.x = ofGetWidth()/2 - 150;
-        fakeConfirmSelectionBounds.y = ofGetHeight()/2 - 75;
-        fakeConfirmSelectionBounds.width = 300;
-        fakeConfirmSelectionBounds.height = 150;
-        fakeConfirmSelectionBounds = getScaledRectangle(fakeConfirmSelectionBounds);
+        researchClickRect = ofRectangle(researchClickAnchor.x - 20, researchClickAnchor.y - 20, 400, 200);
+//        fakeConfirmSelectionBounds.x
+//        /////TEMP
+//        fakeConfirmSelectionBounds.x = ofGetWidth()/2  - 150;
+//        fakeConfirmSelectionBounds.y = ofGetHeight()/2 - 75;
+//        fakeConfirmSelectionBounds.width = 300;
+//        fakeConfirmSelectionBounds.height = 150;
+//        fakeConfirmSelectionBounds = getScaledRectangle(fakeConfirmSelectionBounds);
         
         updateResearchNavigation();
     }
@@ -1213,6 +1215,7 @@ void CloudsHUDController::draw(){
         return;
 	}
 	
+    
 	ofPushStyle();
 	ofPushMatrix();
 	ofEnableAlphaBlending();
@@ -1283,9 +1286,14 @@ void CloudsHUDController::draw(){
 		resetTriangle.draw();
 	}
 
+   
 	ofPopMatrix();
 	ofPopStyle();
 
+    ofPushStyle();
+    ofNoFill();
+    ofRect(researchClickRect);
+    ofPopStyle();
 
 }
 

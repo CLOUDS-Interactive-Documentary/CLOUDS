@@ -62,7 +62,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //FCP id from parser, highlights a person's name
     void selectPerson(string person);
-
+    ofVec2f getSelectedPersonScreenPosition();
+    
     //i/o stuff
     void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);

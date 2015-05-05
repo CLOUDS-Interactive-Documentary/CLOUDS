@@ -1130,8 +1130,6 @@ void CloudsVisualSystemTwitter::selfUpdate()
         ofQuaternion q;
         q.slerp(.15, nameHighlightCam.getOrientationQuat(), n.getOrientationQuat());
         nameHighlightCam.setOrientation(q);
-        
-        
     }
 }
 
@@ -1388,7 +1386,11 @@ void CloudsVisualSystemTwitter::selectPerson(string person){
     targetPersonPosition = targetTweeter->position;
     targetCameraPosition = targetTweeter->position + targetTweeter->position.normalized() * nameTargetDistance;
     
- }
+}
+
+ofVec2f CloudsVisualSystemTwitter::getSelectedPersonScreenPosition(){
+    return getCameraRef().worldToScreen(targetPersonPosition);
+}
 
 void CloudsVisualSystemTwitter::drawFeed(){
     ofFloatColor col = getRGBfromHSV(tweetDeckColorHSV);
@@ -1603,14 +1605,20 @@ void CloudsVisualSystemTwitter::drawText2D(string text, ofVec2f pos){
 void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos, float alpha){
     ofFloatColor  col = getRGBfromHSV(textColorHSV);
     col.a = alpha;
-    ofxBillboardBeginSphericalCheat(pos);
     ofPushStyle();
     ofSetColor(col);
-    ofScale(0.01,-0.01,0.01);
-    ofTranslate(pos.x,pos.y,pos.z);
-    font.drawString(ofToUpper(text),-font.stringWidth(text)/2.0,font.stringHeight(text)/2.0);
+    
+    ofNode n;
+    n.setPosition(pos);
+    n.lookAt(getCameraRef(), getCameraRef().getUpDir());
+    ofPushMatrix();
+    ofMultMatrix(n.getGlobalTransformMatrix());
+    
+    ofScale(-0.01,-0.01,0.01);
+    font.drawString(ofToUpper(text),25,font.stringHeight(text));
+    ofPopMatrix();
+    
     ofPopStyle();
-    ofxBillboardEnd();
 }
 
 void CloudsVisualSystemTwitter::selfKeyReleased(ofKeyEventArgs & args){

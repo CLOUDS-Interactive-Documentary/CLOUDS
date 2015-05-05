@@ -117,8 +117,6 @@ void CloudsHUDHomeButton::update(){
         currentImage.setFromPixels(rolloverPix[currentState][playhead]);
         currentImage.update();
     }
-    
-
 }
 
 void CloudsHUDHomeButton::queueState(CloudsHUDHomeState newState){

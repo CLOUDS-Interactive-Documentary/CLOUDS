@@ -729,25 +729,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             //TODO: way to hide about...
         }
 		else if(introSequence->isStartQuestionSelected()){
-			         
-//			CloudsPortal* q = introSequence->getSelectedQuestion();
-//			CloudsClip* clip = q->clip;
-//			if(clip == NULL){
-//                //this means we are resuming
-//                clip = run.clipHistory.back();
-//                resumingActFromIntro = true;
-//                
-//                if(clip == NULL){
-//                    ofLogError("CLIP HISTORY IS NULL ON RESUME");
-//                }
-//            }
-//			map<string,string> questionsAndTopics = clip->getAllQuestionTopicPairs();
-//			if(questionsAndTopics.size() > 0){
             transitionController.transitionFromIntro(1.0);
-//			}
-//			else{
-//				ofLogError("CloudsPlaybackController::update") << "Somehow selected an intro question with no topics " << clip->getLinkName();
-//			}
 		}
 	}
 	
@@ -803,32 +785,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 
 	getSharedVideoPlayer().showingLowerThirds = currentVisualSystem == rgbdVisualSystem;
 
-
-	//////////////BAD IDLE
-	/// acts are getting stuck at the end without going to interlude
-//	if(currentVisualSystem == rgbdVisualSystem && 
-//		(currentAct == NULL || !currentAct->getTimeline().getIsPlaying()) && 
-//		!transitionController.isTransitioning() &&
-//		!shouldLoadAct && !loadingAct && !shouldPlayAct)
-//	{
-//		if(badIdle && ofGetElapsedTimef() - badIdleStartTime > 20){
-//			ofLogError("BAD IDLE") << "Started Bad ENDED BAD IDLE BY RETURNING TO INTRO";
-//			badIdle = false;
-//            ///JG: New HUD integration -- DISABLING BAD IDLE
-//			//returnToIntro = true;
-//            //////////////
-//		}
-//		else if(!badIdle){
-//			ofLogError("BAD IDLE") << "Started Bad Idle";
-//			badIdle = true;
-//			badIdleStartTime = ofGetElapsedTimef();
-//		}
-//	}
-//	else{
-//		badIdle = false;
-//	}
-	//////////////BAD IDLE
-
     ////////// HUD UPDATE AND PAUSE
     if(rgbdVisualSystem->getRGBDVideoPlayer().clipJustFinished()){
         hud.clipEnded();
@@ -866,17 +822,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             hud.clipEnded();
             CloudsVisualSystem::getRGBDVideoPlayer().stop();
             currentAct->next();
-            //TODO: if this is VO we need to not exit the system
-//            if(showingVisualSystem){
-//                transitionController.transitionToInterview(1.0, 1.0);
-//            }
         }
         else{
             //some stuck state, go to interlude
             transitionController.transitionToInterlude(1.0, 1.0);
         }
-        
-        //hud.unpause();
     }
     
     //////////// GO TO EXPLORE THE MAP FROM INTERVIEW
@@ -938,6 +888,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(selectedTopic != ""){
             
             clusterMap->setCurrentTopic(selectedTopic);
+            hud.researchClickAnchor = clusterMap->getTopicScreenLocation();
 
             if(hud.isItemConfirmed()){
                 showingExploreMap = false;
@@ -954,7 +905,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(selectedSpeakerID != ""){
             
             peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].firstName + " " + CloudsSpeaker::speakers[selectedSpeakerID].lastName);
-            
+            hud.researchClickAnchor = peopleMap->getSelectedPersonScreenPosition();
+
             if(hud.isItemConfirmed()){
                 showingExplorePeople = false;
                 hud.animateOff();

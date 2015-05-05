@@ -137,6 +137,10 @@ class CloudsHUDController {
 	
 	void questionHoverOn(const string& question, bool animate = true);
 	
+    //where the researched item may be clicked
+    ofVec2f researchClickAnchor;
+    ofRectangle researchClickRect;
+    
 	ofxUISuperCanvas *hudGui;
 	CloudsHUDHomeButton home;
 	

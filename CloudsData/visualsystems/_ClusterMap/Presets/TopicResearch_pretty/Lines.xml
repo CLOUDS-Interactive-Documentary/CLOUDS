@@ -18,27 +18,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FOCAL DISTANCE</Name>
-    <Value>14.175726891</Value>
+    <Value>14.954613686</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOCAL RANGE</Name>
-    <Value>18.381711960</Value>
+    <Value>19.939483643</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLICKER FREQUENCY</Name>
-    <Value>44.137931824</Value>
+    <Value>21.970441818</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLICKER INTENSITY</Name>
-    <Value>8.650246620</Value>
+    <Value>9.561575890</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLICKER DAMPENING</Name>
-    <Value>0.147783250</Value>
+    <Value>0.118226603</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -83,17 +83,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LE_A</Name>
-    <Value>0.083743840</Value>
+    <Value>0.137931034</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>COLOR MIX EXPONENT</Name>
-    <Value>4.433497429</Value>
+    <Value>2.758620739</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LINE WIDTH</Name>
-    <Value>1.657635450</Value>
+    <Value>2.248768568</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

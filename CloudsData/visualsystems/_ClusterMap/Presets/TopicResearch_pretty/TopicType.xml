@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>TopicType</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>269.000000000</XPosition>
-    <YPosition>174.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>122.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,27 +13,37 @@
 <Widget>
     <Kind>42</Kind>
     <Name>SIZE MIN</Name>
-    <Value>5</Value>
+    <Value>13</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>SIZE MAX</Name>
-    <Value>14</Value>
-</Widget>
-<Widget>
-    <Kind>42</Kind>
-    <Name>MIN CLIP NUM</Name>
     <Value>20</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
+    <Name>MIN CLIP NUM</Name>
+    <Value>12</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
     <Name>MAX CLIP SCALE</Name>
-    <Value>40</Value>
+    <Value>31</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW ASSOCIATION</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW 3D</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>3D TYPE SCALE</Name>
+    <Value>0.078275859</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>

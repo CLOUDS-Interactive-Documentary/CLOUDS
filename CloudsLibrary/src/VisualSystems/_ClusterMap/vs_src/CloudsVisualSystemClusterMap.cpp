@@ -70,6 +70,7 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	percentTraversed = 0;
 	percentOptionsRevealed = 0;
 	drawType = false;
+    drawType3D = false;
 	baseFontSize = 0;
 	
     drawAssociation = false;
@@ -105,7 +106,6 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	typeSizeRange.min = 5;
 	typeSizeRange.max = 14;
 	lineDensity = 200;
-
 	
 	lineFlickerIntensity = 7.;
 	lineFlickerFrequency = 100;
@@ -129,6 +129,7 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     useQuestionCam = false;
     selectedQuestion = NULL;
     caughtQuestion = NULL;
+    type3DScale = 1.0;
     
 	questionScale = 0.1f;
 	questionFontScale = 14;
@@ -325,6 +326,8 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	
     typeGui->addSpacer();
     typeGui->addToggle("DRAW ASSOCIATION", &drawAssociation);
+    typeGui->addToggle("DRAW 3D", &drawType3D);
+    typeGui->addSlider("3D TYPE SCALE", .01, 1.0, &type3DScale);
     typeGui->addIntSlider("ASSOCATION SIZE", 5, 30, &associationFontSize);
     
 	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
@@ -901,7 +904,6 @@ void CloudsVisualSystemClusterMap::clearTraversal(){
     
 }
 
-
 void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     currentTopic = topic;
 
@@ -909,8 +911,7 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     for(int i = 0; i < topicPoints.size(); i++){
         if(topicPoints[i].keyword == topic){
             targetTopicPosition = topicPoints[i].position * meshExpansion;
-
-            targetCameraPosition = targetTopicPosition + targetTopicPosition.normalize() * traversCameraDistance;
+            targetCameraPosition = targetTopicPosition + targetTopicPosition.normalized() * traversCameraDistance;
             positionFound = true;
             break;
         }
@@ -919,6 +920,10 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     if(!positionFound){
         ofLogError("CloudsVisualSystemClusterMap::setCurrentTopic") << "Couldn't find position for topic " << topic;
     }
+}
+
+ofVec2f CloudsVisualSystemClusterMap::getTopicScreenLocation(){
+    return getCameraRef().worldToScreen(targetTopicPosition);
 }
 
 
@@ -930,6 +935,7 @@ void CloudsVisualSystemClusterMap::selfSetupSystemGui(){
 void CloudsVisualSystemClusterMap::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
+
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemClusterMap::selfSetupRenderGui(){
 
@@ -1334,13 +1340,52 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	}
 	/////END OPTIONS
 	
-	
+
+    
 	ofPopMatrix();
 	ofPopStyle();
 	glPopAttrib();
     
+    
     drawQuestions();
 
+	if(drawType3D){
+        
+        ofDisableLighting();
+        
+		for(int i = 0; i < topicPoints.size(); i++){
+            
+			TopicPoint& p = topicPoints[i];
+			if(p.numClips >= clipsShowTopic.min){
+				int fontIndex = ofMap(p.numClips, clipsShowTopic.min, clipsShowTopic.max,
+									  0, topicFont.size()-1,true);
+				if(fontIndex > 0 && fontIndex < topicFont.size()){
+                    
+					ofPushMatrix();
+                    ofNode n;
+                    n.setPosition(topicPoints[i].position * meshExpansion);
+                    n.lookAt(getCameraRef(), getCameraRef().getUpDir());
+                    ofMultMatrix(n.getGlobalTransformMatrix());
+                    ofScale(-type3DScale,-type3DScale, type3DScale);
+                    
+					ofxFTGLFont& font = topicFont[ fontIndex ];
+					font.drawString( ofToUpper(p.keyword), 0, 0);
+					
+                    ofPopMatrix();
+				}
+			}
+		}
+		ofEnableLighting();
+        
+    }
+    
+//    ofNode n;
+//    n.setPosition(targetCameraPosition);
+//    n.lookAt(targetTopicPosition);
+//    n.draw();
+//    n.setPosition(targetTopicPosition);
+//    n.lookAt(targetCameraPosition);
+//    n.draw();
 }
 
 
@@ -1580,8 +1625,9 @@ void CloudsVisualSystemClusterMap::selfDrawBackground(){
 
 void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	//turn the background refresh off
-	if(drawType){
-		ofDisableLighting();
+	if(drawType && !drawType3D){
+		
+        ofDisableLighting();
 		ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());
 		for(int i = 0; i < topicPoints.size(); i++){
 
@@ -1603,7 +1649,7 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 		ofEnableLighting();
 	}
 	
-    if(drawAssociation){
+    if(drawAssociation && !drawType3D){
         if(!associationFont.isLoaded() || associationFontSize != currentAssociationFont){
             //associationFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", associationFontSize);
 			associationFont.loadFont( GetFontPath(), associationFontSize);
