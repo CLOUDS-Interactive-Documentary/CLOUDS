@@ -136,11 +136,7 @@ class CloudsHUDController {
 	vector<CloudsHUDLayer*> allLayers;
 	
 	void questionHoverOn(const string& question, bool animate = true);
-	
-    //where the researched item may be clicked
-    ofVec2f researchClickAnchor;
-    ofRectangle researchClickRect;
-    
+	   
 	ofxUISuperCanvas *hudGui;
 	CloudsHUDHomeButton home;
 	
@@ -175,6 +171,8 @@ class CloudsHUDController {
     void populateSpeakers();
     void setVisuals(vector<string> visuals);
     
+    //where the researched item may be clicked
+    ofVec2f setResearchClickAnchor(ofVec2f anchor);
     
     bool isItemSelected();
     bool isItemConfirmed();
@@ -236,14 +234,20 @@ class CloudsHUDController {
     
     void updateResearchNavigation();
     
-    //temporary way to confirm selection in research mode
-    ofRectangle fakeConfirmSelectionBounds;
-    bool fakeConfirmHovered;
-    bool fakeConfirmPressed;
-    bool fakeConfirmClicked;
     ////////////////////
+    ofVec2f researchClickAnchor;
+    ofRectangle researchRectangle;
+    bool hasResearchRectangle;
+    bool researchConfirmHovered;
+    bool researchConfirmPressed;
+    bool researchConfirmClicked;
+
+    void selectButton(const CloudsHUDResearchButton& button);
+    string bioText;
+    ofxFTGLSimpleLayout researchBio;
+    ofxFTGLFont playAllFont;
     
-    
+    //TODO All symbols triangles need to fit this way
 	ofMesh resetTriangle;
     
     bool    bDrawHud;

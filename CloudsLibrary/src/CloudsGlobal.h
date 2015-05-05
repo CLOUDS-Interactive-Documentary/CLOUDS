@@ -10,11 +10,22 @@
 
 #include "ofMain.h"
 
-static ofColor CloudsColorDeselected = ofColor::fromHex(0x5583AE);
-static ofColor CloudsColorStatic     = ofColor::fromHex(0xFFFFFF);
-static ofColor CloudsColorHover      = ofColor::fromHex(0x439CED);
-static ofColor CloudsColorActive     = ofColor::fromHex(0xA3CEF7);
-static ofColor CloudsColorSelected   = ofColor::fromHex(0x034C89);
+static ofColor CloudsColorTextDeactivated = ofColor::fromHex(0x5583AE, 255 * .5);
+static ofColor CloudsColorTextStatic      = ofColor::fromHex(0xFFFFFF);
+static ofColor CloudsColorTextHover       = ofColor::fromHex(0x439CED);
+static ofColor CloudsColorTextActive      = ofColor::fromHex(0xA3CEF7);
+static ofColor CloudsColorTextSelected    = ofColor::fromHex(0x034C89);
+
+static ofColor CloudsColorTabFillStatic       = ofColor::fromHex(0x101010, 255 * .6);
+static ofColor CloudsColorTabFillHover        = ofColor::fromHex(0x439CED, 255 * .5);
+static ofColor CloudsColorTabFillActive       = ofColor::fromHex(0x034C89, 255 * .7);
+static ofColor CloudsColorTabFillSelectd      = ofColor::fromHex(0x034C89, 255 * .7);
+static ofColor CloudsColorTabStrokeSelectd    = ofColor::fromHex(0xFFFFFF, 255 * .7);
+
+static ofColor CloudsColorButtonFillStatic = ofColor::fromHex(0x101010, 255 * .6);
+static ofColor CloudsColorButtonFillHover  = ofColor::fromHex(0xFFFFFF, 255);
+static ofColor CloudsColorButtonFillActive = ofColor::fromHex(0xFFFFFF, 255);
+
 
 enum CloudsVisualLevel { FAST, PRETTY };
 //--------------------------------------------------------------------

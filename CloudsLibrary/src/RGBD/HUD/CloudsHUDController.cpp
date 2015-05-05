@@ -46,9 +46,10 @@ CloudsHUDController::CloudsHUDController(){
  
     scrollPressedTime = 0;
     
-    fakeConfirmHovered = false;
-    fakeConfirmPressed = false;
-    fakeConfirmClicked = false;
+    hasResearchRectangle = false;
+    researchConfirmHovered = false;
+    researchConfirmPressed = false;
+    researchConfirmClicked = false;
 
 	isPlaying = false;
     
@@ -93,6 +94,9 @@ void CloudsHUDController::setup(){
 
 	home.setup();
     
+    researchBio.loadFont(GetFontPath(), 12);
+    playAllFont.loadFont(GetFontPath(), 12);
+    
 	//manually load reset triangle
 	resetTriangle.addVertex(ofVec3f(1366.857,839.217));
 	resetTriangle.addVertex(ofVec3f(1366.857,851.783));
@@ -136,61 +140,8 @@ void CloudsHUDController::buildLayerSets(){
         allLayers.push_back( layer );
     }
                     
-    /*
-    CloudsHUDLayer* homeLayer = new CloudsHUDLayer();
-    homeLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_HOME");
-    layers[CLOUDS_HUD_HOME] = homeLayer;
-    allLayers.push_back( homeLayer );
-    
-    CloudsHUDLayer* lowerThirdLayer = new CloudsHUDLayer();
-    lowerThirdLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_LOWER_THIRD");
-    layers[CLOUDS_HUD_LOWER_THIRD] = lowerThirdLayer ;
-    allLayers.push_back( lowerThirdLayer );
-    
-    CloudsHUDLayer* questionLayer = new CloudsHUDLayer();
-    questionLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_QUESTION");
-    layers[CLOUDS_HUD_QUESTION] = questionLayer;
-    allLayers.push_back( questionLayer );
-    
-    CloudsHUDLayer* pauseLayer = new CloudsHUDLayer();
-    pauseLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_PAUSE");
-    layers[CLOUDS_HUD_PAUSE] = pauseLayer;
-    allLayers.push_back( pauseLayer );
-    
-    CloudsHUDLayer* projectExampleLayer = new CloudsHUDLayer();
-    projectExampleLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_PROJECT_EXAMPLE");
-    layers[CLOUDS_HUD_PROJECT_EXAMPLE] = projectExampleLayer;
-    allLayers.push_back( projectExampleLayer );
-    
-    CloudsHUDLayer* nextLayer = new CloudsHUDLayer();
-    nextLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_NEXT");
-    layers[CLOUDS_HUD_NEXT] = nextLayer;
-    allLayers.push_back( nextLayer );
-    
-    CloudsHUDLayer* researchListLayer = new CloudsHUDLayer();
-    researchListLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_LIST");
-    layers[CLOUDS_HUD_RESEARCH_LIST] = researchListLayer;
-    allLayers.push_back( researchListLayer );
-    
-    CloudsHUDLayer* researchNavLayer = new CloudsHUDLayer();
-    researchNavLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_NAV");
-    layers[CLOUDS_HUD_RESEARCH_NAV] = researchNavLayer;
-    allLayers.push_back( researchNavLayer );
-    
-    CloudsHUDLayer* researchShuffleLayer = new CloudsHUDLayer();
-    researchShuffleLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_RESEARCH_SHUFFLE");
-    layers[CLOUDS_HUD_RESEARCH_SHUFFLE] = researchShuffleLayer;
-    allLayers.push_back( researchShuffleLayer );
-    
-    CloudsHUDLayer* aboutLayer = new CloudsHUDLayer();
-    aboutLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_ABOUT");
-    layers[CLOUDS_HUD_ABOUT] = aboutLayer;
-    allLayers.push_back( aboutLayer );
-    */
-    
     for( int i = 0; i < allLayers.size(); i++ ){
-        
-        //TODO: filled meshes shouldn't be done this way
+
 		for( int s = 0; s < allLayers[i]->svg.getMeshes().size(); s++){
 			ofVboMesh& m = allLayers[i]->svg.getMeshes()[s].mesh;
 			for(int v = 0; v < m.getNumVertices(); v++){
@@ -199,14 +150,10 @@ void CloudsHUDController::buildLayerSets(){
 		}
         
         allLayers[i]->duration = 1.5;
-//        allLayers[i]->delayTime = 0;
-//        allLayers[i]->startPoint = ofVec2f(allLayers[i]->svg.getWidth(),0);
-//        allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
     }
     
     home.bounds = layers[CLOUDS_HUD_HOME]->svg.getMeshByID("HomeButtonFrame")->bounds;
     home.bounds.scaleFromCenter(1.5);
-    
     
     bioBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("BioFrame")->bounds;
     
@@ -468,7 +415,6 @@ void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 
     animateOff( CLOUDS_HUD_HOME );
 	animateOff( CLOUDS_HUD_LOWER_THIRD );
-// 	animateOff( CLOUDS_HUD_QUESTION );
 	animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
 	animateOff( CLOUDS_HUD_PAUSE );
     
@@ -605,13 +551,13 @@ void CloudsHUDController::questionHoverOn(const string& question,bool animate){
 	populateQuestion(question, true, animate);
 }
 
-//void CloudsHUDController::questionHoverOff(){
-//	animateOff( CLOUDS_HUD_QUESTION );
-//}
 
 void CloudsHUDController::populateQuestion(const string& question, bool forceOn, bool animate){
+    if(question == "RESUME THE STORY"){
+        return;
+    }
+    
     if(question == ""){
-//		animateOff( CLOUDS_HUD_QUESTION );
         clearQuestion();
 	}
 	else{
@@ -753,6 +699,21 @@ void CloudsHUDController::populateVisualSystem(const string& creditLine1,
     
 }
 
+ofVec2f CloudsHUDController::setResearchClickAnchor(ofVec2f anchor){
+    hasResearchRectangle = true;
+    researchClickAnchor = anchor;
+    //TODO: Do we make this dynamic w/h?
+    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
+        researchRectangle = ofRectangle(researchClickAnchor.x - 20, researchClickAnchor.y - 20, 450, 220);
+    }
+    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
+        researchRectangle = ofRectangle(researchClickAnchor.x - 20, researchClickAnchor.y - 20, 400, 80);
+    }
+    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS){
+        
+    }
+}
+
 ofVec2f CloudsHUDController::getSize(bool bScaled){
     return ofVec2f(hudBounds.width, hudBounds.height) * (bScaled? scaleAmt : 1.0);
 }
@@ -817,15 +778,6 @@ void CloudsHUDController::update(){
     
     if( hudOpenMap[CLOUDS_RESEARCH] ){
         updateScroll();
-        researchClickRect = ofRectangle(researchClickAnchor.x - 20, researchClickAnchor.y - 20, 400, 200);
-//        fakeConfirmSelectionBounds.x
-//        /////TEMP
-//        fakeConfirmSelectionBounds.x = ofGetWidth()/2  - 150;
-//        fakeConfirmSelectionBounds.y = ofGetHeight()/2 - 75;
-//        fakeConfirmSelectionBounds.width = 300;
-//        fakeConfirmSelectionBounds.height = 150;
-//        fakeConfirmSelectionBounds = getScaledRectangle(fakeConfirmSelectionBounds);
-        
         updateResearchNavigation();
     }
     ///////////////////////////////
@@ -879,11 +831,12 @@ string CloudsHUDController::getSelectedItem(){
 }
 
 bool CloudsHUDController::isItemConfirmed(){
-    return fakeConfirmClicked;
+    return researchConfirmClicked;
 }
 
 void CloudsHUDController::clearSelection(){
-    fakeConfirmClicked = false;    
+    researchConfirmClicked = false;
+    hasResearchRectangle = false;
 }
 
 void CloudsHUDController::updateResearchNavigation(){
@@ -965,9 +918,6 @@ void CloudsHUDController::unpause(){
     if(bQuestionDisplayed){
         animateOn( CLOUDS_HUD_QUESTION );
     }
-//    if(!bClipIsPlaying && !bVisualSystemDisplayed){
-//        animateOff( CLOUDS_HUD_LOWER_THIRD );
-//    }
     if(bProjectExampleDisplayed){
         animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
     }
@@ -1057,8 +1007,8 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
             }
         }
         
-        //TEMP
-        fakeConfirmHovered = fakeConfirmSelectionBounds.inside(args.x, args.y);
+
+        researchConfirmHovered = researchRectangle.inside(args.x, args.y);
     }
 
 }
@@ -1088,14 +1038,14 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
         }
         
         //TEMP
-        fakeConfirmPressed = fakeConfirmSelectionBounds.inside(args.x, args.y);
+        researchConfirmPressed = researchRectangle.inside(args.x, args.y);
 
     }
 }
 
 void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 
-    if(bActJustStarted && (bVisualSystemDisplayed || bClipIsPlaying) && !hudOpenMap[CLOUDS_HUD_HOME]) {
+    if(bActJustStarted && !hudOpenMap[CLOUDS_HUD_HOME] && (bVisualSystemDisplayed || bClipIsPlaying)) {
         bActJustStarted = false;
         animateOn(CLOUDS_HUD_LOWER_THIRD);
         animateOn(CLOUDS_HUD_HOME);
@@ -1122,16 +1072,24 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 
             for(int i = 0; i < currentResearchList->buttons.size(); i++){
                 if(currentResearchList->buttons[i].visible){
-                   currentResearchList->buttons[i].clicked = currentResearchList->buttons[i].pressed &&
-                                                             currentResearchList->buttons[i].selectRectScaled.inside(args.x, args.y);
+                    currentResearchList->buttons[i].clicked = currentResearchList->buttons[i].pressed &&
+                                                              currentResearchList->buttons[i].selectRectScaled.inside(args.x, args.y);
                     currentResearchList->buttons[i].pressed = false;
+                    if(currentResearchList->buttons[i].clicked){
+                        selectButton(currentResearchList->buttons[i]);
+                    }
                 }
             }
         }
         
-        //TEMP
-        fakeConfirmClicked = fakeConfirmPressed && fakeConfirmSelectionBounds.inside(args.x, args.y);
-        fakeConfirmPressed = false;
+        researchConfirmClicked = researchConfirmPressed && researchRectangle.inside(args.x, args.y);
+        researchConfirmPressed = false;
+    }
+}
+
+void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
+    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
+        bioText = CloudsSpeaker::speakers[button.tag].byline1;
     }
 }
 
@@ -1253,38 +1211,7 @@ void CloudsHUDController::draw(){
     }
     
     if(hudOpenMap[CLOUDS_RESEARCH]){
-        
-        ofPushStyle();
-        //test to see bound locations
-//        ofSetColor(255, 0, 0);
-//        ofRect(researchScrollUpBounds);
-//        ofRect(researchScrollDownBounds);
-        
-        
-        //begin test for fake confirm
-        if(isItemSelected()){
-            if(fakeConfirmClicked){
-                ofSetColor(255, 0, 0, 50);
-            }
-            else if(fakeConfirmPressed){
-                ofSetColor(255, 200, 0, 50);
-            }
-            else if(fakeConfirmHovered) {
-                ofSetColor(255, 20, 255, 50);
-            }
-            else{
-                ofNoFill();
-                ofSetColor(255,255,255,50);
-            }
-            ofRect(fakeConfirmSelectionBounds);
-            
-        }
-        
-        ofPopStyle();
-        ///end test
-        
         drawList();
-        
     }
  
 
@@ -1298,11 +1225,53 @@ void CloudsHUDController::draw(){
 	ofPopMatrix();
 	ofPopStyle();
 
-    ofPushStyle();
-    ofNoFill();
-    ofRect(researchClickRect);
-    ofPopStyle();
-
+    if(hudOpenMap[CLOUDS_RESEARCH] & isItemSelected()){
+        
+        ofColor fillColor;
+        ofColor textColor;
+        ofPushStyle();
+        if(researchConfirmClicked){
+            fillColor = CloudsColorTabFillSelectd;
+            textColor = CloudsColorTextSelected;
+        }
+        else if(researchConfirmPressed){
+            fillColor = CloudsColorTabFillActive;
+            textColor = CloudsColorTextActive;
+        }
+        else if(researchConfirmHovered) {
+            fillColor = CloudsColorTabFillHover;
+            textColor = CloudsColorTextHover;
+        }
+        else{
+            fillColor = CloudsColorTabFillStatic;
+            textColor = CloudsColorTextStatic;
+        }
+        
+        //dont' mix button/tab text colors
+        textColor = ofColor::white;
+        ofSetColor(fillColor);
+        ofRect(researchRectangle);
+        if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE && isItemSelected() && bioText != ""){
+            researchBio.setLineLength(researchRectangle.width - 20);
+            ofSetColor(textColor);
+            researchBio.drawString(bioText, researchClickAnchor.x + 10, researchClickAnchor.y + 50);
+            string playText = "PLAY >";
+            float playWidth  = playAllFont.stringWidth(playText);
+            float playHeight = playAllFont.stringHeight(playText);
+            
+            playAllFont.drawString(playText, researchRectangle.getMaxX() - playWidth - 15, researchRectangle.y + playHeight + 15);
+        }
+        
+        if(researchConfirmPressed){
+            ofNoFill();
+            ofSetColor(CloudsColorTabStrokeSelectd);
+            ofRect(researchRectangle);
+        }
+        
+        
+        
+        ofPopStyle();
+    }
 }
 
 void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
@@ -1318,17 +1287,17 @@ void CloudsHUDController::drawList(){
         if(currentResearchList->buttons[i].visible){
             //TODO: better coloring system
             if(currentResearchList->buttons[i].clicked){
-                ofSetColor(255, 180, 0);
+                ofSetColor(CloudsColorTextActive);
             }
             else if(currentResearchList->buttons[i].pressed){
-                ofSetColor(255, 180, 0, 200);
+                ofSetColor(CloudsColorTextSelected);
             
             }
             else if(currentResearchList->buttons[i].hovered){
-                ofSetColor(255);
+                ofSetColor(CloudsColorTextHover);
             }
             else{
-                ofSetColor(255, 200);
+                ofSetColor(CloudsColorTextStatic);
             }
             
             //TODO: maybe different styles for different
@@ -1505,12 +1474,16 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         cout << "ANIMATING OUT QUESTION" << endl;
     }
     
-    if (isPlaying) {
+    if (isPlaying && (layer == CLOUDS_HUD_PROJECT_EXAMPLE  || layer == CLOUDS_HUD_ALL)) {
 		isPlaying = false;
         videoPlayer.stop();
         videoPlayer.close();
     }
 
+    if(layer == CLOUDS_HUD_HOME || layer == CLOUDS_HUD_ALL){
+        home.deactivate();
+    }
+    
     for (map<CloudsHUDLayerSet, CloudsHUDLayer* >::iterator it = layers.begin(); it != layers.end(); ++it) {
         if (layer == it->first || layer == CLOUDS_HUD_ALL) {
             hudOpenMap[it->first] = false;

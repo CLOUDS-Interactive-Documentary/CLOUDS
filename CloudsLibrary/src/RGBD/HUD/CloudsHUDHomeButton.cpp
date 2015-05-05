@@ -134,6 +134,10 @@ void CloudsHUDHomeButton::changeState(CloudsHUDHomeState newState){
     playhead = 0;
 }
 
+void CloudsHUDHomeButton::deactivate(){
+    changeState(CLOUDS_HOME_IDLE);
+}
+
 void CloudsHUDHomeButton::activate(){
     if(currentState == CLOUDS_HOME_IDLE ||
        currentState == CLOUDS_HOME_HOVER_ON ||
@@ -194,7 +198,7 @@ void CloudsHUDHomeButton::draw(){
         ofEnableAlphaBlending();
         if(currentState == CLOUDS_HOME_IDLE){
             ofNoFill();
-            ofSetColor(CloudsColorHover, 255 * bleepAlpha * .49 );
+            ofSetColor(CloudsColorTextHover, 255 * bleepAlpha * .49 );
             ofCircle(bounds.getCenter(), bounds.width * .25 * bleepExpand);
         }
         else{
@@ -203,7 +207,7 @@ void CloudsHUDHomeButton::draw(){
         }
         
         ofFill();
-        ofSetColor(CloudsColorActive, 255 * bleepAlpha * .37);
+        ofSetColor(CloudsColorTextHover, 255 * bleepAlpha * .37);
         ofCircle(bounds.getCenter(), bounds.width * .25  * bleepExpand);
 
         ofPopStyle();

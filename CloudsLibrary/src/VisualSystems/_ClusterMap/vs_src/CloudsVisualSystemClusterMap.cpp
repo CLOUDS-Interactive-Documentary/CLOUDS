@@ -130,7 +130,8 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     selectedQuestion = NULL;
     caughtQuestion = NULL;
     type3DScale = 1.0;
-    
+    drawType3D = false;
+
 	questionScale = 0.1f;
 	questionFontScale = 14;
 	currentQuestionFontSize = 10;

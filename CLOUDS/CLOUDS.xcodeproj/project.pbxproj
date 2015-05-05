@@ -4125,7 +4125,6 @@
 		03E28DA81A9D767D005AA181 /* CloudsVisualSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemManager.h; sourceTree = "<group>"; };
 		03E28DB91A9D7690005AA181 /* CloudsEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsEvents.h; sourceTree = "<group>"; };
 		03E28DBA1A9D7690005AA181 /* CloudsGlobal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsGlobal.cpp; sourceTree = "<group>"; };
-		03E28DBB1A9D7690005AA181 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		03E28DBC1A9D7690005AA181 /* CloudsLocalization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsLocalization.cpp; sourceTree = "<group>"; };
 		03E28DBD1A9D7690005AA181 /* CloudsLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsLocalization.h; sourceTree = "<group>"; };
 		03E28DC81A9D9389005AA181 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -8400,11 +8399,10 @@
 			isa = PBXGroup;
 			children = (
 				03E28DB91A9D7690005AA181 /* CloudsEvents.h */,
+				E7D8224318BEBD6E00C1EB93 /* CloudsGlobal.h */,
 				03E28DBA1A9D7690005AA181 /* CloudsGlobal.cpp */,
-				03E28DBB1A9D7690005AA181 /* CloudsGlobal.h */,
 				03E28DBC1A9D7690005AA181 /* CloudsLocalization.cpp */,
 				03E28DBD1A9D7690005AA181 /* CloudsLocalization.h */,
-				E7D8224318BEBD6E00C1EB93 /* CloudsGlobal.h */,
 				03E28DA01A9D767D005AA181 /* Core */,
 				E7D8224718BEBD6E00C1EB93 /* Input */,
 				E7D8225118BEBD6E00C1EB93 /* RGBD */,

@@ -830,13 +830,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     //////////// GO TO EXPLORE THE MAP FROM INTERVIEW
     if(hud.isExploreMapHit()){
-        canReturnToAct = true;
+        //canReturnToAct = true;
         hud.animateOff();
         transitionController.transitionToExploreMap(1.0, 2.0);
     }
     
     if(hud.isSeeMorePersonHit()){
-        canReturnToAct = true;
+        //canReturnToAct = true;
         hud.animateOff();
         transitionController.transitionToExplorePeople(1.0, 2.0);
     }
@@ -887,7 +887,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(selectedTopic != ""){
             
             clusterMap->setCurrentTopic(selectedTopic);
-            hud.researchClickAnchor = clusterMap->getTopicScreenLocation();
+            hud.setResearchClickAnchor( clusterMap->getTopicScreenLocation() );
 
             if(hud.isItemConfirmed()){
                 showingExploreMap = false;
@@ -904,7 +904,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(selectedSpeakerID != ""){
             
             peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].firstName + " " + CloudsSpeaker::speakers[selectedSpeakerID].lastName);
-            hud.researchClickAnchor = peopleMap->getSelectedPersonScreenPosition();
+            hud.setResearchClickAnchor( peopleMap->getSelectedPersonScreenPosition() );
 
             if(hud.isItemConfirmed()){
                 showingExplorePeople = false;

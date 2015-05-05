@@ -3,7 +3,7 @@
     <Name>Presets</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>356.000000000</YPosition>
+    <YPosition>360.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -17,18 +17,23 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FollowTraverse_OculusHD</Name>
+    <Name>FollowTraverse_OculusHD_fast</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FollowTraverse_OculusSD</Name>
+    <Name>FollowTraverse_OculusHD_pretty</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FollowTraverse_Screen</Name>
+    <Name>FollowTraverse_Screen_fast</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FollowTraverse_Screen_pretty</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -37,6 +42,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>NewPreset</Name>
+    <Name>TopicResearch_fast</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TopicResearch_pretty</Name>
     <Value>0</Value>
 </Widget>

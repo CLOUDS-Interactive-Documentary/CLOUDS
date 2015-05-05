@@ -33,6 +33,7 @@ class CloudsHUDHomeButton {
     bool hitTest( ofPoint mousePos );
     
     void activate();
+    void deactivate();
     bool wasActivated();
     
     ofRectangle bounds;
