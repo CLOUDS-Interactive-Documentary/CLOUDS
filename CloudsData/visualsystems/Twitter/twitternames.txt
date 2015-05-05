@@ -1,12 +1,12 @@
 Aaron Koblin : aaronkoblin
 Andres Colubri : codeanticode
 Bruce Sterling : bruces
-Casey Reas : REAS
+Casey Reas : reas
 Chris Sugrue : chrissugrue
 Damian Stewart : damian0815
 Daniel Shiffman : shiffman
 Diederick Huijbers : roxlu
-Elliot Woods : ElliotWoods
+Elliot Woods : elliotwoods
 Fernanda Viegas : viegasf
 Golan Levin : golan
 Greg Borenstein : atduskgreg
@@ -22,21 +22,23 @@ Julia Kaganskiy  : juliaxgulia
 Julian Oliver : julian0liver
 Karolina Sobecka  : ksobecka
 Karsten Schmidt  : toxi
-Kevin Slavin  : slavin
+Kevin Slavin  : slavin_fpo
 Kyle Chayka  : chaykak
 Kyle McDonald : kcimc
 Lauren McCarthy  : laurmccarthy
 LIA : liasomething
 Lindsay Howard  : lindsay_howard
+Satoru Higa : satoruhiga
 Marcus Wendt : marcuswendt
 Marius Watz : mariuswatz
 Martin Wattenberg  : wattenberg
+Memo Akten : memotv
 Paola Antonelli  : curiousoctopus
-Patricio Gonzales Vivo  : patriciogv
+Patricio Gonzalez Vivo  : patriciogv
 Philip Whitfield  : underdoeg
-Rachel Binx : RachelBinx
-Ramsey Nasser  : ra
-Regine Debatty  : wmmna
+Rachel Binx : rachelbinx
+Ramsey Nasser : ra
+Regine Debatty : wmmna
 Shantell Martin  : shantell_martin
 Sofy Yuditskaya : horusvacui
 Theo Watson  : theowatson

@@ -903,7 +903,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         string selectedSpeakerID = hud.getSelectedItem();
         if(selectedSpeakerID != ""){
             
-            peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].firstName + " " + CloudsSpeaker::speakers[selectedSpeakerID].lastName);
+            peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].twitterHandle);
             hud.setResearchClickAnchor( peopleMap->getSelectedPersonScreenPosition() );
 
             if(hud.isItemConfirmed()){

@@ -810,8 +810,8 @@ void CloudsHUDController::updateScroll(){
     
     for(int i = 0; i < currentResearchList->buttons.size(); i++){
         CloudsHUDResearchButton& b = currentResearchList->buttons[i];
-        b.visible = b.top >= currentResearchList->scrollPosition + scrollIncrement * .5 &&
-                    b.top < currentResearchList->scrollPosition + researchScrollBounds.height - scrollIncrement;
+        b.visible = b.top >= currentResearchList->scrollPosition &&
+                    b.top <= currentResearchList->scrollPosition + researchScrollBounds.height - scrollIncrement;
         //cout << "button top is " << b.top << " list scroll is " << currentResearchList->scrollPosition << " with height " << currentResearchList->totalScrollHeight << endl;
         if(b.visible){
             b.selectRect = ofRectangle(researchScrollBounds.x,
@@ -966,9 +966,13 @@ void CloudsHUDController::setTopics(const set<string>& topics){
 void CloudsHUDController::populateSpeakers(){
     CloudsHUDResearchList& peopleList = researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
     peopleList.buttons.clear();
-    peopleList.buttons.resize(CloudsSpeaker::speakers.size());
+    //peopleList.buttons.resize(CloudsSpeaker::speakers.size());
     int i = 0;
     for(map<string,CloudsSpeaker>::iterator it = CloudsSpeaker::speakers.begin(); it != CloudsSpeaker::speakers.end(); it++){
+        if(it->second.voiceOverOnly){
+            continue;
+        }
+        peopleList.buttons.push_back(CloudsHUDResearchButton());
         peopleList.buttons[i].top = i * scrollIncrement;
         peopleList.buttons[i].tag = it->first;
         peopleList.buttons[i].label = it->second.firstName + " " + it->second.lastName;
@@ -1206,7 +1210,6 @@ void CloudsHUDController::draw(){
         return;
 	}
 	
-    
 	ofPushStyle();
 	ofPushMatrix();
 	ofEnableAlphaBlending();

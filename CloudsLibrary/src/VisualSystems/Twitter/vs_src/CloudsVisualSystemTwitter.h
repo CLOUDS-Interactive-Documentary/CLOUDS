@@ -72,10 +72,11 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     int getUserIdByName(string name);
     vector<Tweeter*> getTweetersForDate(int index);
     Tweeter* getTweeterByID(int _id );
+    Tweeter* getTweeterByHandle(string handle);
     Tweeter* getTweeterByName(string name );
     
     void drawTweetsForDate(int index);
-    void CompareDates(Date d1,Date d2);
+//    void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
     void sortTweetsByDate();

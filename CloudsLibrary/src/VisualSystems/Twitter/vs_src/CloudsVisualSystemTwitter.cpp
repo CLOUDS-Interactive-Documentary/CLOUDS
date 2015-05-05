@@ -270,6 +270,7 @@ void CloudsVisualSystemTwitter::loadCSVData(){
         if(components.size() != 2) continue;
         nameToHandleMap[components[0]] = components[1];
         handleToNameMap[components[1]] = components[0];
+        cout << "HANDLE IS " << components[0] << " " << components[1] << endl;
     }
     
     int tweeterID = 0;
@@ -298,7 +299,7 @@ void CloudsVisualSystemTwitter::loadCSVData(){
         string handle = trim(l[0]);
         twtr->name = "@" + handle;
         twtr->fullName = handleToNameMap[ ofToLower(handle) ];
-        cout << "Tweeter name is " << twtr->name << " Full Name " << twtr->fullName << endl;
+
         Tweet* t = csvParseTweet(l, twtr);
         twtr->tweets.push_back(t);
         twtr->addTweetsToDate(t);
@@ -866,16 +867,16 @@ void CloudsVisualSystemTwitter::drawTweetsForDate(int index){
     }
 }
 
+//--------------------------------------------------------------
 string CloudsVisualSystemTwitter::getDateAsString(Date d){
     string dateString;
-//    cout<<d.month<<endl;
     dateString += ofToString(d.day) + " - ";
     dateString += ofToString(d.month) + " - ";
     dateString += ofToString(d.year);
     return dateString;
 }
 
-
+//--------------------------------------------------------------
 Tweeter* CloudsVisualSystemTwitter::getTweeterByID(int _id ){
     
     for(int i = 0; i< tweeters.size(); i++){
@@ -887,6 +888,21 @@ Tweeter* CloudsVisualSystemTwitter::getTweeterByID(int _id ){
     return &dummyTweet;
 }
 
+//--------------------------------------------------------------
+Tweeter* CloudsVisualSystemTwitter::getTweeterByHandle(string handle){
+    handle = ofToLower(handle);
+    for(int i = 0; i< tweeters.size(); i++){
+        if(ofToLower(tweeters[i]->name) == handle){
+            return tweeters[i];
+        }
+    }
+    
+    ofLogError("CloudsVisualSystemTwitter::getTweeterByHandle") << "Name not found " << handle;
+    
+    return &dummyTweet;
+}
+
+//--------------------------------------------------------------
 Tweeter* CloudsVisualSystemTwitter::getTweeterByName(string name ){
     name = ofToLower(name);
     for(int i = 0; i< tweeters.size(); i++){
@@ -895,12 +911,14 @@ Tweeter* CloudsVisualSystemTwitter::getTweeterByName(string name ){
         }
     }
     
+    ofLogError("CloudsVisualSystemTwitter::getTweeterByName") << "Name not found " << name;
+    
     return &dummyTweet;
 }
 
-void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
-    
-}
+//void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
+//    
+//}
 
 //--------------------------------------------------------------
 void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
@@ -1129,7 +1147,8 @@ void CloudsVisualSystemTwitter::selfUpdate()
         
         ofQuaternion q;
         q.slerp(.15, nameHighlightCam.getOrientationQuat(), n.getOrientationQuat());
-        nameHighlightCam.setOrientation(q);    }
+        nameHighlightCam.setOrientation(q);
+    }
 }
 
 ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor& hsv){
@@ -1381,10 +1400,9 @@ void CloudsVisualSystemTwitter::selectPerson(string person){
 //        ofLogError("CloudsVisualSystemTwitter::selectPerson") << "Person " << person << " not found in twitter map";
 //    }
     
-    Tweeter* targetTweeter = getTweeterByName(person);
+    Tweeter* targetTweeter = getTweeterByHandle(person);
     targetPersonPosition = targetTweeter->position;
     targetCameraPosition = targetTweeter->position + targetTweeter->position.normalized() * nameTargetDistance;
-    
 }
 
 ofVec2f CloudsVisualSystemTwitter::getSelectedPersonScreenPosition(){
