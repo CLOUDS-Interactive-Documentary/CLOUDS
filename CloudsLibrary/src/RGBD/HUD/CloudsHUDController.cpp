@@ -1135,6 +1135,7 @@ void CloudsHUDController::selectTopic(string topic){
         if(topicList.buttons[i].tag == topic){
             topicList.buttons[i].clicked = true;
             topicList.scrollPosition = topicList.buttons[i].top;
+            selectButton(topicList.buttons[i]);
             return;
         }
     }
@@ -1149,6 +1150,7 @@ void CloudsHUDController::selectPerson(string personID){
         if(peopleList.buttons[i].tag == personID){
             peopleList.buttons[i].clicked = true;
             peopleList.scrollPosition = peopleList.buttons[i].top;
+            selectButton(peopleList.buttons[i]);
             return;
         }
     }
