@@ -37,8 +37,8 @@ void CloudsSound::setup(){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 	
-		frontPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
-		backPlayer  = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
+		frontPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
+		backPlayer  = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 
         // load data files
         loadRTcmixFiles();
@@ -166,28 +166,32 @@ void CloudsSound::threadedFunction(){
 			
 			//		string filename = GetCloudsDataPath(true) + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
 			if(ofFile(track.trackPath).exists()){
-				frontPlayer->loadSound(track.trackPath);
+				frontPlayer->loadMovie(track.trackPath);
 				currentTrackKey = ofFilePath::getBaseName(track.trackPath);
 				frontMixAttenuate = mixVolumeForTrack(track.trackPath);
 				frontMixLevel = track.mixLevel;
 			}
 			else{
-				frontPlayer->loadSound(GetCloudsMediaPath() + "sound/renders/1.mp3");
+				frontPlayer->loadMovie(GetCloudsMediaPath() + "sound/renders/1.mp3");
 				frontMixAttenuate = 1.0;
 				ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << track.trackPath;
 			}
 
-			frontPlayer->setLoop(true);
+            frontPlayer->setLoopState(OF_LOOP_NORMAL);
 			frontPlayer->play();
 //			frontPlayer->setVolume(frontMixAttenuate);
 			
 		}
 		
-		if(frontPlayer != NULL && frontPlayer->isLoaded()){
+    frontPlayer->update();
+    	if(frontPlayer->isLoaded()){
 			frontPlayer->setVolume(GetCloudsAudioEvents()->fadeValue*frontMixAttenuate*frontMixLevel);
 //			cout << "Front player volume is " << GetCloudsAudioEvents()->fadeValue << " Mix " << frontMixAttenuate << " at pos " << frontPlayer->getPosition() << endl;
 		}
-		if(backPlayer != NULL && backPlayer->isLoaded()){
+    
+    backPlayer->update();
+    if(backPlayer->isLoaded()){
+            
 			float newVolume = ofMap(ofGetElapsedTimef(),
 									playerSwapTime, playerSwapTime+playerFadeDuration,
 									backMixLevel*backMixAttenuate*GetCloudsAudioEvents()->fadeValue, 0.0, true);

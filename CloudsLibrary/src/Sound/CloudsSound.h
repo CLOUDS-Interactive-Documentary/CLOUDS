@@ -91,8 +91,8 @@ class CloudsSound {
 	CloudsAct* currentAct;
 
 	//only used in non RTCMIX context
-	ofPtr<ofSoundPlayer> frontPlayer;
-	ofPtr<ofSoundPlayer> backPlayer;
+	ofPtr<ofVideoPlayer> frontPlayer;
+	ofPtr<ofVideoPlayer> backPlayer;
 	
 	string currentTrackKey;
 	bool eventsRegistered;
