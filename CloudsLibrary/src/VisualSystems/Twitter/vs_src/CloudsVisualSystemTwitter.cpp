@@ -1129,8 +1129,7 @@ void CloudsVisualSystemTwitter::selfUpdate()
         
         ofQuaternion q;
         q.slerp(.15, nameHighlightCam.getOrientationQuat(), n.getOrientationQuat());
-        nameHighlightCam.setOrientation(q);
-    }
+        nameHighlightCam.setOrientation(q);    }
 }
 
 ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor& hsv){

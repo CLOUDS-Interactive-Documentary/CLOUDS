@@ -1095,6 +1095,14 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
 
 void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 
+    if(bActJustStarted && (bVisualSystemDisplayed || bClipIsPlaying) && !hudOpenMap[CLOUDS_HUD_HOME]) {
+        bActJustStarted = false;
+        animateOn(CLOUDS_HUD_LOWER_THIRD);
+        animateOn(CLOUDS_HUD_HOME);
+        animateOn(CLOUDS_HUD_NEXT);
+        
+    }
+ 
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->mouseReleased(ofVec2f(args.x,args.y));
     }

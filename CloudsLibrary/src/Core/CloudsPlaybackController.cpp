@@ -688,7 +688,6 @@ void CloudsPlaybackController::mouseMoved(ofMouseEventArgs & args){
 void CloudsPlaybackController::mousePressed(ofMouseEventArgs & args){
 #ifdef MOUSE_INPUT
 #endif
-
 }
 
 void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){

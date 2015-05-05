@@ -200,7 +200,12 @@ void CloudsHUDLabel::animateIn(bool force) {
 }
 
 void CloudsHUDLabel::animateOut(bool clear) {
-    if (!bIsVisible) return;
+    if (!bIsVisible){
+        if(clear){
+            text = "";
+        }
+        return;
+    }
     
     clearTextOnAnimateOut = clear;
     bIsVisible = false;
