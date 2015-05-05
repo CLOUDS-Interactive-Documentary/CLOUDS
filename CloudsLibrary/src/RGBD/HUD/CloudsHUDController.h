@@ -261,7 +261,6 @@ class CloudsHUDController {
     bool    bQuestionDisplayed;
     bool    bProjectExampleDisplayed;
     
-    void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
 #endif
@@ -285,6 +284,8 @@ class CloudsHUDController {
     ofVec2f scaleOffset;
     int margin;
     
+    ofImage topicMapPreview;
+    ofImage peopleMapPreview;
     map<CloudsHUDResearchTab, CloudsHUDResearchList> researchLists;
     CloudsHUDResearchList* currentResearchList;
     
