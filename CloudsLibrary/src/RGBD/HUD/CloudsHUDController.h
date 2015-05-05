@@ -170,7 +170,11 @@ class CloudsHUDController {
     void setTopics(const set<string>& topics);
     void populateSpeakers();
     void setVisuals(vector<string> visuals);
-    
+
+    void setSeeMoreName(string name);
+    void selectTopic(string topic);
+    void selectPerson(string personID);
+
     //where the researched item may be clicked
     ofVec2f setResearchClickAnchor(ofVec2f anchor);
     
@@ -179,7 +183,6 @@ class CloudsHUDController {
     void clearSelection();
     
     string getSelectedItem();
-    
     
   protected:
 	

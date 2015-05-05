@@ -831,12 +831,24 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     //////////// GO TO EXPLORE THE MAP FROM INTERVIEW
     if(hud.isExploreMapHit()){
         //canReturnToAct = true;
+        
+        if(currentClip != NULL){
+            hud.selectPerson(currentClip->person);
+        }
+        hud.selectTopic(currentTopic);
+        
         hud.animateOff();
         transitionController.transitionToExploreMap(1.0, 2.0);
     }
     
     if(hud.isSeeMorePersonHit()){
         //canReturnToAct = true;
+        
+        if(currentClip != NULL){
+            hud.selectPerson(currentClip->person);
+        }
+        hud.selectTopic(currentTopic);
+        
         hud.animateOff();
         transitionController.transitionToExplorePeople(1.0, 2.0);
     }
@@ -1271,7 +1283,6 @@ void CloudsPlaybackController::updateTransition(){
             
             case TRANSITION_EXPLORE_MAP_IN:
                 showExploreMap();
-                
                 break;
                 
             case TRANSITION_EXPLORE_PEOPLE_IN:
@@ -1814,7 +1825,6 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip* clip){
-    
 
 	numClipsPlayed++;
 	
@@ -1833,6 +1843,9 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 	prerolledClipID = "";
 	currentClip = clip;
 	currentClipName = clip->getID();
+    
+    //TODO: disable for VO?
+    hud.setSeeMoreName( CloudsSpeaker::speakers[clip->person].firstName + " " + CloudsSpeaker::speakers[clip->person].lastName );
     
 	cout << "**** SWAPPING IN FROM CLIP BEGAN" << endl;
 	rgbdVisualSystem->getRGBDVideoPlayer().swapAndPlay();
@@ -1921,7 +1934,8 @@ void CloudsPlaybackController::showInterlude(){
 
     interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
 	if(interludeSystem == NULL){
-		returnToIntro = true;	
+		returnToIntro = true;
+        ofLogError("CloudsPlaybackController::showInterlude") << "Interlude system null, returning to intro";
 		return;
 	}
 
@@ -1972,6 +1986,9 @@ void CloudsPlaybackController::showExploreMap(){
     if(canReturnToAct){
         hud.animateOn(CLOUDS_RESEARCH_RESUME);
     }
+    
+    
+    
     if(showingResearchMode){ //from research mode--
         researchModeTopic  = true;
         researchModePerson = false;
@@ -1999,6 +2016,7 @@ void CloudsPlaybackController::showExplorePeople(){
     if(canReturnToAct){
         hud.animateOn(CLOUDS_RESEARCH_RESUME);
     }
+
 
     if(showingResearchMode){
         researchModeTopic  = false;
@@ -2078,35 +2096,31 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
     }
 	
 	rgbdVisualSystem->playSystem();
-	
-	//hud.setHomeEnabled(false);
-	
 	currentVisualSystem = rgbdVisualSystem;
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playNextVisualSystem()
 {
-	if(nextVisualSystemPreset.system != NULL){
-		
-		if(rgbdVisualSystem->isPlaying()){
-			rgbdVisualSystem->stopSystem();
-		}
-		
-		nextVisualSystemPreset.system->setDrawToScreen( false );
-		nextVisualSystemPreset.system->loadPresetGUISFromName( nextVisualSystemPreset.presetName );
-		nextVisualSystemPreset.system->playSystem();
-		
-		currentVisualSystemPreset = nextVisualSystemPreset;
-		currentVisualSystem = nextVisualSystemPreset.system;
-		
-        cachedTransition = false;
-        
-		showingVisualSystem = true;
-	}
-	else{
+	if(nextVisualSystemPreset.system == NULL){
 		ofLogError("CloudsPlaybackController::playNextVisualSystem") << "nextVisualSystemPreset == NULL";
+        return;
 	}
+ 
+    if(rgbdVisualSystem->isPlaying()){
+        rgbdVisualSystem->stopSystem();
+    }
+    
+    nextVisualSystemPreset.system->setDrawToScreen( false );
+    nextVisualSystemPreset.system->loadPresetGUISFromName( nextVisualSystemPreset.presetName );
+    nextVisualSystemPreset.system->playSystem();
+    
+    currentVisualSystemPreset = nextVisualSystemPreset;
+    currentVisualSystem = nextVisualSystemPreset.system;
+    
+    cachedTransition = false;
+    
+    showingVisualSystem = true;
 }
 
 #pragma mark - Visual System Event Callbacks

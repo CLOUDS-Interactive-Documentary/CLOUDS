@@ -821,7 +821,6 @@ void CloudsHUDController::updateScroll(){
             b.selectRectScaled = getScaledRectangle( b.selectRect );
         }
     }
-
 }
 
 bool CloudsHUDController::isItemSelected(){
@@ -1113,7 +1112,6 @@ void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
     }
 }
 
-
 bool CloudsHUDController::isResetHit(){
     return hudLabelMap["ResetButtonTextBox"]->isClicked();
 }
@@ -1124,6 +1122,37 @@ bool CloudsHUDController::isResearchResetHit(){
 
 bool CloudsHUDController::isNextHit(){
     return hudLabelMap["NextButtonTextBox"]->isClicked();
+}
+
+void CloudsHUDController::setSeeMoreName(string name){
+    hudLabelMap["SeeMoreTextBox"]->setText("SEE MORE OF " + ofToUpper(name), false);
+}
+
+void CloudsHUDController::selectTopic(string topic){
+    CloudsHUDResearchList& topicList = researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
+    
+    for(int i = 0; i < topicList.buttons.size(); i++){
+        if(topicList.buttons[i].tag == topic){
+            topicList.buttons[i].clicked = true;
+            topicList.scrollPosition = topicList.buttons[i].top;
+            return;
+        }
+    }
+    
+    ofLogError("CloudsHUDController::selectTopic") << "Didn't find selected topic " << topic;
+}
+
+void CloudsHUDController::selectPerson(string personID){
+    
+    CloudsHUDResearchList& peopleList = researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
+    for(int i = 0; i < peopleList.buttons.size(); i++){
+        if(peopleList.buttons[i].tag == personID){
+            peopleList.buttons[i].clicked = true;
+            peopleList.scrollPosition = peopleList.buttons[i].top;
+            return;
+        }
+    }
+    ofLogError("CloudsHUDController::selectPerson") << "Didn't find selected name " << personID;
 }
 
 bool CloudsHUDController::isExploreMapHit(){
