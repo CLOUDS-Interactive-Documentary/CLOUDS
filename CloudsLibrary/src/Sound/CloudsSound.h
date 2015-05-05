@@ -21,7 +21,7 @@ typedef struct{
 	float mixLevel;
 } QueuedTrack;
 
-class CloudsSound : public ofThread {
+class CloudsSound {
   public:
 	CloudsSound();
 	void setup();

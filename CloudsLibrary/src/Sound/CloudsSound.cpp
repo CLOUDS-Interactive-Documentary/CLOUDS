@@ -131,8 +131,6 @@ void CloudsSound::setup(){
 		}
 
 		currentAct = NULL;
-
-		startThread(true);
 	}
 }
 
@@ -147,19 +145,16 @@ void CloudsSound::saveMixLevels(){
 
 void CloudsSound::threadedFunction(){
 
-#ifndef RTCMIX
-	while(isThreadRunning()){
+
 		//
 		bool trackToPlay = false;
 		QueuedTrack track;
 		
-		lock();
 		if(queuedTracks.size() > 0 && ofGetElapsedTimef() > queuedTracks.front().startTime){
 			trackToPlay = true;
 			track = queuedTracks.front();
 			queuedTracks.erase(queuedTracks.begin());
 		}
-		unlock();
 		
 		if(trackToPlay){
 			if(frontPlayer->isLoaded()){
@@ -202,11 +197,7 @@ void CloudsSound::threadedFunction(){
 				backPlayer->stop();
 			}
 		}
-		
-		ofSleepMillis(10);
-	}
-#endif
-	
+
 }
 
 //--------------------------------------------------------------------
@@ -230,8 +221,6 @@ float CloudsSound::mixVolumeForTrack(string trackPath){
 
 //--------------------------------------------------------------------
 void CloudsSound::exit(ofEventArgs & args){
-
-	waitForThread(true);
 
 	if(eventsRegistered){
 		
@@ -260,6 +249,8 @@ void CloudsSound::update(ofEventArgs & args){
 
 void CloudsSound::update(){
 	
+    threadedFunction();
+    
 	return;
 
     if(GetCloudsAudioEvents()->doflush)
@@ -350,9 +341,7 @@ void CloudsSound::playCurrentCues(){
     float pad = 5.0; // padding for FX chain
     currentCuesTotalDuration += pad; // pad the total
     
-	lock();
 	queuedTracks.clear();
-	unlock();
 	
     if(LUKEDEBUG) cout << "TOTAL DURATION: " << currentCuesTotalDuration << endl;
     else cout << "SOUND: MUSIC STARTED." << endl;
@@ -469,9 +458,7 @@ void CloudsSound::enterTunnel()
 	t.startTime = ofGetElapsedTimef();
     //JG: THE TUNNEL SOUND IS NOT STORED IN MEDIA PATH so it *always* works
 	t.trackPath = GetCloudsDataPath(true) + "sound/tunnel.mp3";
-	lock();
 	queuedTracks.push_back(t);
-	unlock();
 
 #endif
     in_tunnel = true;
@@ -527,9 +514,7 @@ void CloudsSound::playImmediately(string trackPath){
 	t.mixLevel = 1.0;
 	t.startTime = ofGetElapsedTimef();
 	t.trackPath = trackPath;
-	lock();
 	queuedTracks.push_back(t);
-	unlock();
 	
 }
 
