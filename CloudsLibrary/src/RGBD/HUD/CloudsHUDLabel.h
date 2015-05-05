@@ -40,10 +40,12 @@ class CloudsHUDLabel {
     bool isVisible();
     bool isHovered();
     bool isClicked();
+    void deselect();
     
-    
+    bool tab; //dont' deselect on other click
+    bool tabSelected;
     bool caps;
-    
+    float hoverAlpha;
     
 	void mouseMoved(ofVec2f mouse);
 	void mousePressed(ofVec2f mouse);

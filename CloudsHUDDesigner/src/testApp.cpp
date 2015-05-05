@@ -35,14 +35,13 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofBackground(0);
+    ofBackground(128);
     
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 20,20);
 	hud.draw();
 
 	ofEnableAlphaBlending();
 	ofSetColor(255,0,0,100);
-	//ofRect(hud.scaledResetRect);
 	ofSetColor(255);
 }
 
@@ -99,19 +98,19 @@ void testApp::keyPressed(int key){
     
     if(key == '5'){
 		hud.animateOn(CLOUDS_HUD_PAUSE);
-        //hud.pause();
 	}
     
     if(key == '6'){
-
-		hud.animateOn(CLOUDS_HUD_RESEARCH_LIST);
-		hud.animateOn(CLOUDS_HUD_RESEARCH_NAV);
-		hud.animateOn(CLOUDS_HUD_RESEARCH_SHUFFLE);
-        //hud.pause();
+		hud.animateOn(CLOUDS_HUD_NEXT);
 	}
     
     if(key == '7'){
-        hud.animateOn(CLOUDS_HUD_ABOUT);
+		hud.animateOn(CLOUDS_RESEARCH);
+		hud.animateOn(CLOUDS_RESEARCH_RESUME);
+	}
+    
+    if(key == '8'){
+        hud.showAbout();
     }
 
     if(key == '9'){

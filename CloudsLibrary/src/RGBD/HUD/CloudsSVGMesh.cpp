@@ -215,13 +215,26 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, const string& parentId, f
 	}
 }
 
-
-
 void CloudsSVGMesh::draw(){
 	for(int i = 0; i < meshes.size(); i++){
         if(meshes[i].visible){
-            ofMesh& m = meshes[i].mesh;
-            m.draw();
+            meshes[i].mesh.draw();
+        }
+	}
+}
+
+void CloudsSVGMesh::drawStrokes(){
+	for(int i = 0; i < meshes.size(); i++){
+        if(meshes[i].visible && !meshes[i].fill){
+            meshes[i].mesh.draw();
+        }
+	}
+}
+
+void CloudsSVGMesh::drawFills(){
+	for(int i = 0; i < meshes.size(); i++){
+        if(meshes[i].visible && meshes[i].fill){
+            meshes[i].mesh.draw();
         }
 	}
 }

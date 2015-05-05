@@ -35,9 +35,9 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	void setAct(CloudsAct* newAct);
 	void allocateFlickerTexture();
 
-    void setCurrentTopic(string topic); //for secondary display
-    void setTargetTopic(string topic);  //for research mode navigation
-
+    void setCurrentTopic(string topic); //for secondary display && research mode navigation
+    ofVec2f getTopicScreenLocation();
+    
 	//will add the latest state of the run to the traversal
     void startTraverse();
 	void traverse();
@@ -289,7 +289,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	vector<TopicPoint> topicPoints;
 	vector<ofxFTGLFont> topicFont;
 	bool drawType;
+	bool drawType3D;
+    float type3DScale;
 	int baseFontSize;
+    
 	ofIntRange clipsShowTopic;
 	ofRange clipCountRange;
 	ofRange typeDistanceRange;

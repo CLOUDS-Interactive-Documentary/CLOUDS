@@ -44,35 +44,15 @@ void CloudsSpeaker::populateSpeakers(){
 		
 		speaker.byline1 = speakerxml.getValue("byline1", "");
 		speaker.byline2 = speakerxml.getValue("byline2", "");
-		
+		speaker.voiceOverOnly = speakerxml.getValue("voiceover", "false") == "true";
+        
 		speakerxml.popTag();//Person
 		
 		speakers[speaker.fcpID] = speaker;
-
-//		speaker.printInfo();
 	}
 	
 	speakerxml.popTag();//clouds
-	//clouds
-//	<person id="Aaron">
-//	<first>Aaron</first>
-//	<last>Koblin</last>
-//	<title>Digital Media Artist</title>
-//	<twitter>@aaronkoblin</twitter>
-//	<location1>Santa Monica, California</location1>
-//	<location2>San Francisco, California</location2>
-//	<byline1>As Creative Director of the Data Arts Team at Google, Aaron Koblin develops innovative uses of data visualization, crowdsourcing, and web-based storytelling. </byline1>
-//	<byline2>He works with community generated data to reflect on cultural trends and the changing relationship between humans and the systems they create.
-//	</byline2>
-//	<resume> ... </resume>
-//	</person>
-	//all people
-//	map<string,CloudsSpeaker>::iterator it;
-//	for(it = speakers.begin(); it != speakers.end(); it++){
-//		cout << it->second.firstName + " "  + it->second.lastName << endl;
-//	}
-	
-	//export xml template
+
 	
 }
 
@@ -108,7 +88,7 @@ void CloudsSpeaker::exportSpeakerXMLTemplate(){
 		xmltemplate.addValue("twitter", "");
 		xmltemplate.addValue("byline1", "");
 		xmltemplate.addValue("byline2", "");
-		xmltemplate.addValue("resume", "");
+		xmltemplate.addValue("voiceover", "");
 
 		xmltemplate.popTag();//person;
 		personnum++;

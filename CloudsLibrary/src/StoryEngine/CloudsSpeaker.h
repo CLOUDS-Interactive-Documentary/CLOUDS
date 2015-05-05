@@ -11,10 +11,13 @@
 
 class CloudsSpeaker {
   public:
-	CloudsSpeaker(){};
-	CloudsSpeaker(string fcpID,string firstName,string lastName,string gender)
-		:fcpID(fcpID),firstName(firstName),lastName(lastName),gender(gender)
-	{}
+	CloudsSpeaker(){
+        voiceOverOnly = false;
+    };
+//	CloudsSpeaker(string fcpID,string firstName,string lastName,string gender)
+//		:fcpID(fcpID),firstName(firstName),lastName(lastName),gender(gender)
+//	{
+//    }
 	
 	void printInfo();
 	
@@ -30,6 +33,8 @@ class CloudsSpeaker {
 	string twitterHandle;
 	string title;
 	
+    bool voiceOverOnly;
+    
 	string location1; // Santa Monica, California
 	string location2; // San Francisco, California
 	
