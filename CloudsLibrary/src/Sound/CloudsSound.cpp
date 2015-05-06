@@ -121,9 +121,7 @@ void CloudsSound::setup(){
 		//load all rendered tracks
 //		ofDirectory dir(GetCloudsDataPath(true) + "sound/renders/");
 		ofDirectory dir(GetCloudsMediaPath() + "sound/renders/");
-		dir.allowExt("wav");
-		dir.allowExt("aiff");
-		dir.allowExt("mp3");
+		dir.allowExt("mp4");
 		dir.sort();
 		dir.listDir();
 		for(int i = 0; i < dir.numFiles(); i++){
@@ -172,7 +170,7 @@ void CloudsSound::threadedFunction(){
 				frontMixLevel = track.mixLevel;
 			}
 			else{
-				frontPlayer->loadMovie(GetCloudsMediaPath() + "sound/renders/1.mp3");
+				frontPlayer->loadMovie(GetCloudsMediaPath() + "sound/renders/1.mp4");
 				frontMixAttenuate = 1.0;
 				ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << track.trackPath;
 			}
