@@ -6800,7 +6800,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
@@ -7694,50 +7694,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="2DVideo_PeopleStaring">
-    <keywords>new aesthetic</keywords>
-    <links>
-        <clip>Kyle_MC - People staring at screens 1</clip>
-        <clip>Kyle_MC - People staring at screens 2</clip>
-        <clip>Kyle_MC - People staring at screens 3</clip>
-        <clip>Kyle_MC - People staring at screens 4</clip>
-    </links>
-    <suppressions>
-        <clip>Aaron - curiosity</clip>
-        <clip>Bruce - Anthropomorphism</clip>
-        <clip>Bruce - camera technician vs explorer</clip>
-        <clip>Bruce - digital status quo</clip>
-        <clip>Bruce - future of the new aesthetic</clip>
-        <clip>Damion - OOO</clip>
-        <clip>Elliot_UK - aesthetic of error</clip>
-        <clip>Elliot_UK - limitations 2</clip>
-        <clip>Greg - AI 1</clip>
-        <clip>Greg - AI 2</clip>
-        <clip>Greg - Object Oriented Ontology 2</clip>
-        <clip>Greg - object oriented ontology 1</clip>
-        <clip>Kevin - algo culture 2</clip>
-        <clip>Kyle_CH - new aesthetic 1</clip>
-        <clip>Kyle_CH - new aesthetic 2</clip>
-        <clip>Kyle_MC - Debug screen</clip>
-        <clip>Kyle_MC - box on your face</clip>
-        <clip>Kyle_MC - new aesthetic confession</clip>
-        <clip>Marius - Aesthetic with no references,</clip>
-        <clip>Marius - Machines change the way we see</clip>
-        <clip>Marius - New Aesthetic</clip>
-        <clip>Marius - artificial creativity</clip>
-        <clip>Marius - new tools change perception</clip>
-        <clip>Philip - system in your head</clip>
-        <clip>Theo - eyebeam R&amp;D</clip>
-    </suppressions>
-    <comments></comments>
-    <grade>A</grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="2DVideo_Reas_Process13">
     <keywords>processing</keywords>
     <links></links>
@@ -7851,30 +7807,6 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="2DVideo_USMap">
-    <keywords>maps</keywords>
-    <links>
-        <clip>Martin - short attention span</clip>
-    </links>
-    <suppressions>
-        <clip>Binx - geodata</clip>
-        <clip>Binx - making a map</clip>
-        <clip>Elliot_UK - Laying claim on ideas</clip>
-        <clip>Jer - Research at Open Paths</clip>
-        <clip>Jer - open paths 1</clip>
-        <clip>Jer - open paths 2</clip>
-        <clip>Jer - open paths 3</clip>
-        <clip>Jer - opportunistic sensors for apple</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -39216,19 +39148,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Vision_AppleStore2_short">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Vision_BridgePreset">
     <keywords></keywords>
     <links></links>
@@ -39236,32 +39155,6 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Vision_CV_DISCO">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Vision_GreenPoint_Contour">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -39349,19 +39242,6 @@
     <interlude>0</interlude>
 </system>
 <system name="Vision_GreenPoint_flow2">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Vision_JG_AppleStoreTest">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -39502,34 +39382,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Vision_Tokyo1_boxes">
-    <keywords>surveillance|cities</keywords>
-    <links></links>
-    <suppressions>
-        <clip>Bruce - Augmented Ubiquity</clip>
-        <clip>Bruce - Hand dryer</clip>
-        <clip>Javier - Drones can help</clip>
-        <clip>Javier - Hummingbird drone</clip>
-        <clip>Julian - Transparency grenade</clip>
-        <clip>Kyle_MC - People staring at screens 1</clip>
-        <clip>Kyle_MC - People staring at screens 3</clip>
-        <clip>Kyle_MC - People staring at screens 4</clip>
-        <clip>Kyle_MC - eyetracking everywhere</clip>
-        <clip>Lauren - swapping perspectives 1</clip>
-        <clip>Lauren - swapping perspectives 2</clip>
-        <clip>Martin - birds eye view</clip>
-        <clip>Ramsey - social computer</clip>
-        <clip>Bruce - future city 2</clip>
-    </suppressions>
-    <comments></comments>
-    <grade>A</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Vision_TokyoCrossing_flow">
     <keywords>machine vision|surveillance|new aesthetic</keywords>
     <links></links>
@@ -39660,63 +39512,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
 </system>
-<system name="Vision_TokyoEscalator_flow1">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Vision_UnionFlow_JG">
-    <keywords>vision|machine aesthetics|new aesthetic|machine vision</keywords>
-    <links></links>
-    <suppressions>
-        <clip>Aaron - curiosity</clip>
-        <clip>Andres - seeing molecules</clip>
-        <clip>Bruce - Anthropomorphism</clip>
-        <clip>Bruce - new aesthetic 2</clip>
-        <clip>Bruce - new aesthetic artists</clip>
-        <clip>Damion - HumanChemicalMachine</clip>
-        <clip>Damion - OOO</clip>
-        <clip>Elliot_UK - 2D vision in a 3D world</clip>
-        <clip>Elliot_UK - limitations 2</clip>
-        <clip>Fernanda - seeing patterns 2</clip>
-        <clip>Greg - AI 1</clip>
-        <clip>Greg - AI 2</clip>
-        <clip>Greg - Gaze tracking</clip>
-        <clip>Greg - Object Oriented Ontology 2</clip>
-        <clip>Greg - object oriented ontology 1</clip>
-        <clip>Greg - ubiquitous computing</clip>
-        <clip>Kyle_CH - RGBD</clip>
-        <clip>Kyle_CH - face OSC</clip>
-        <clip>Kyle_MC - box on your face</clip>
-        <clip>Kyle_MC - eyetracking everywhere</clip>
-        <clip>Kyle_MC - faceOSC 2</clip>
-        <clip>Kyle_MC - face algos</clip>
-        <clip>Marius - Aesthetic with no references,</clip>
-        <clip>Marius - artificial creativity</clip>
-        <clip>Marius - new tools change perception</clip>
-        <clip>Philip - system in your head</clip>
-        <clip>Shantell - Drawing with machines</clip>
-        <clip>Sophy - made of photons</clip>
-        <clip>Theo - eyebeam R&amp;D</clip>
-        <clip>Zach - Open CV</clip>
-    </suppressions>
-    <comments></comments>
-    <grade>C</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Vision_UnionSqGhost">
     <keywords>new aesthetic|surveillance|machine vision</keywords>
     <links></links>
@@ -39814,19 +39609,6 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Vision_unionsq3_diff_contours">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>

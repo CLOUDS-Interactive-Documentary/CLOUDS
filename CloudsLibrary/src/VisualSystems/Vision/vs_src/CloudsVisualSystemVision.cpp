@@ -385,11 +385,11 @@ void CloudsVisualSystemVision::updateCVParameters(){
 void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
 
 	ofxUIDropDownList* d = (ofxUIDropDownList*)rdrGui->getWidget("VIDEO");
-    cout<<"IM in self preset loaded"<<endl;
+//    cout<<"IM in self preset loaded"<<endl;
     vector<ofxUILabelToggle*> t =  d->getToggles();
     for (int i =0; i<t.size(); i++) {
         if (t[i]->getValue()) {
-            cout<<"LOADING MOVIE : "<<t[i]->getName()<<endl;
+//            cout<<"LOADING MOVIE : "<<t[i]->getName()<<endl;
             loadMovieWithName( t[i]->getName() );
         }
     }
