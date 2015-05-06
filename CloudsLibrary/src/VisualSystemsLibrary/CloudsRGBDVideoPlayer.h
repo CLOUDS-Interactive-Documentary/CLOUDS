@@ -41,6 +41,7 @@ public:
 	//
 	void stop();
     
+    bool isBuffering();
 	bool isPlaying();
 	bool isDone();
     bool clipJustFinished();

@@ -506,6 +506,11 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 }
 
 //---------------------------------------------------------------
+bool CloudsRGBDVideoPlayer::isBuffering(){
+    return (getPlayer().isLoaded() && getPlayer().isBuffering());
+}
+
+//---------------------------------------------------------------
 bool CloudsRGBDVideoPlayer::isPlaying(){
 	return (getPlayer().isLoaded() && getPlayer().isPlaying());
 }
@@ -515,6 +520,7 @@ bool CloudsRGBDVideoPlayer::isDone(){
 	return (getPlayer().isLoaded() && !getPlayer().isPlaying());
 }
 
+//---------------------------------------------------------------
 bool CloudsRGBDVideoPlayer::clipJustFinished(){
     bool ret = bClipJustFinished;
     bClipJustFinished = false;
