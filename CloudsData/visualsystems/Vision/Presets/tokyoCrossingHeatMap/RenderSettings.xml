@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>453.000000000</XPosition>
-    <YPosition>289.000000000</YPosition>
+    <XPosition>323.000000000</XPosition>
+    <YPosition>93.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -51,6 +51,11 @@
     <Value>0.940886676</Value>
 </Widget>
 <Widget>
+    <Kind>22</Kind>
+    <Name>VIDEO</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
     <Kind>17</Kind>
     <Name>AppleStore1_short.mov</Name>
     <Value>0</Value>
@@ -72,11 +77,6 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Nightwalk.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
     <Name>Soho2_short.mov</Name>
     <Value>0</Value>
 </Widget>
@@ -87,17 +87,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Street_Slow1_BWCrop.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
     <Name>Swarm_EindhovenTest_Watec_two-visitors.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>Swarm_EindhovenTest_Watec_two-visitors_Crop(2).mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -113,7 +103,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Tokyo2.mov</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -122,27 +112,32 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>bridge.MOV</Name>
+    <Name>YouTubeDancer.mp4</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>dancing1.MOV</Name>
+    <Name>bridge.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>dancing2.MOV</Name>
+    <Name>dancing1.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>dancing3.MOV</Name>
+    <Name>dancing2.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>dancing4Feet.MOV</Name>
+    <Name>dancing3.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>dancing4Feet.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -168,11 +163,6 @@
 <Widget>
     <Kind>17</Kind>
     <Name>unionsq3_short.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>unionsq_1 - Wi-Fi_Crop.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

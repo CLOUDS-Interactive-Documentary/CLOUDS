@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>OP FLOW</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>504.000000000</XPosition>
+    <YPosition>88.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,12 +13,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW FLOW WINDOW</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW TINT</Name>
-    <Value>0.000000000</Value>
+    <Value>255.000000000</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -33,17 +33,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW WIDTH</Name>
-    <Value>0.315270931</Value>
+    <Value>0.576354682</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW HEIGHT</Name>
-    <Value>0.295566499</Value>
+    <Value>0.591132998</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE LENGTH</Name>
-    <Value>3.899014950</Value>
+    <Value>4.674876690</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -78,12 +78,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ITERATIONS</Name>
-    <Value>2.000000000</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>POLYN</Name>
-    <Value>7.000000000</Value>
+    <Value>5.729063988</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

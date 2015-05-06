@@ -6800,7 +6800,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
@@ -7731,7 +7731,7 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -39653,50 +39653,6 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <heavy>0</heavy>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Vision_UnionFlow_JG">
-    <keywords>vision|machine aesthetics|new aesthetic|machine vision</keywords>
-    <links></links>
-    <suppressions>
-        <clip>Aaron - curiosity</clip>
-        <clip>Andres - seeing molecules</clip>
-        <clip>Bruce - Anthropomorphism</clip>
-        <clip>Bruce - new aesthetic 2</clip>
-        <clip>Bruce - new aesthetic artists</clip>
-        <clip>Damion - HumanChemicalMachine</clip>
-        <clip>Damion - OOO</clip>
-        <clip>Elliot_UK - 2D vision in a 3D world</clip>
-        <clip>Elliot_UK - limitations 2</clip>
-        <clip>Fernanda - seeing patterns 2</clip>
-        <clip>Greg - AI 1</clip>
-        <clip>Greg - AI 2</clip>
-        <clip>Greg - Gaze tracking</clip>
-        <clip>Greg - Object Oriented Ontology 2</clip>
-        <clip>Greg - object oriented ontology 1</clip>
-        <clip>Greg - ubiquitous computing</clip>
-        <clip>Kyle_CH - RGBD</clip>
-        <clip>Kyle_CH - face OSC</clip>
-        <clip>Kyle_MC - box on your face</clip>
-        <clip>Kyle_MC - eyetracking everywhere</clip>
-        <clip>Kyle_MC - faceOSC 2</clip>
-        <clip>Kyle_MC - face algos</clip>
-        <clip>Marius - Aesthetic with no references,</clip>
-        <clip>Marius - artificial creativity</clip>
-        <clip>Marius - new tools change perception</clip>
-        <clip>Philip - system in your head</clip>
-        <clip>Shantell - Drawing with machines</clip>
-        <clip>Sophy - made of photons</clip>
-        <clip>Theo - eyebeam R&amp;D</clip>
-        <clip>Zach - Open CV</clip>
-    </suppressions>
-    <comments></comments>
-    <grade>C</grade>
     <enabled>0</enabled>
     <oculus>0</oculus>
     <heavy>0</heavy>

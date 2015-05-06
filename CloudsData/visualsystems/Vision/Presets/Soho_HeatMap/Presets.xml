@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1553.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>400.000000000</XPosition>
+    <YPosition>150.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -62,6 +62,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Tokyo1_Blob</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Tokyo1_boxes</Name>
     <Value>0</Value>
 </Widget>
@@ -88,11 +93,6 @@
 <Widget>
     <Kind>2</Kind>
     <Name>TokyoEscalatorFlow</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>UnionFlow_JG</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
