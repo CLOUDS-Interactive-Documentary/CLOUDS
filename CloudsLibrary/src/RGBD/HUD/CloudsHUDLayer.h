@@ -18,37 +18,37 @@ class CloudsHUDLayer
   public:
 	
 	CloudsHUDLayer();
+    void load(string svgPath);
 	
-	void parse(string svgFilePath);
-    void parseDirectory(string svgDirectoryPath);
+//	void parse(string svgFilePath);
+//    void parseDirectory(string svgDirectoryPath);
 	
 	vector<string> textBoxIds;
 	CloudsSVGMesh svg;
 	
 	void start(bool animate = true);
     void close(bool animate = true);
+    bool isOpen();
+
+    bool bForceHover;
+    void hoverOn();
+    void hoverOff();
+    bool isHovering();
     
 	void update();
 	void draw();
-	
-    bool isOpen();
-    
-	bool animating;
-	float delayTime;
-	float startTime;
+	   
+	bool animatingFade;
+    bool animatingHover;
+	float fadeStartTime;
+    float hoverStartTime;
 	float duration;
 	
-	float maxUpdateInterval;
-	float lastUpdateTime;
-	
-	ofVec2f startPercent;
-	
-	ofVec2f percentComplete;
-	float xlag;
-	ofRectangle drawRect;
-	ofVec2f startPoint;
-	ofVec2f endPoint;
+	float animateOnPercentComplete;
+    float hoverOnPercentComplete;
     
   protected:
+
     bool bIsOpen;
+    bool bIsHovering;
 };

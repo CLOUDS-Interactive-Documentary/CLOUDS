@@ -21,7 +21,15 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    if(key == '1'){
+        vs.selectPerson("AARON KOBLIN");
+    }
+    else if(key == '2'){
+        vs.selectPerson("KAROLINA SOBECKA");
+    }
+    else if(key == '3'){
+        vs.selectPerson("FERNANDA VIEGAS");
+    }
 }
 
 //--------------------------------------------------------------

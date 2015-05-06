@@ -8,25 +8,40 @@
 
 #include "CloudsHUDHomeButton.h"
 #include "CloudsGlobal.h"
+#include "ofxTween.h"
 
 CloudsHUDHomeButton::CloudsHUDHomeButton(){
-    currentState = CLOUDS_HUD_HOVER_IDLE;
-	maxHoverTime = 10.;
+    currentState = CLOUDS_HOME_IDLE;
+	//maxHoverTime = 10.;
     targetFps = 24.;
     playhead = 0;
-    hoverStartTime = ofGetElapsedTimef();
+    //hoverStartTime = ofGetElapsedTimef();
     bShowIdle = false;
+    bleepAlpha = 0;
+    bHasNextState = false;
+    stateChangedTime = 0;
     
+    animatedHoverStartTime = 0;
+    bAnimateHoverRadar = true;
     bIsHovering = false;
     bWasActivated = false;
 }
 
 void CloudsHUDHomeButton::setup(){
-    loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/01_IntroHover/", rolloverPix[CLOUDS_HUD_HOVER_ROLLOVER] );
-    loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/02a_IntroLoopBack/", rolloverPix[CLOUDS_HUD_HOVER_OUTRO]  );
-    loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/02b_IntroToActive/", rolloverPix[CLOUDS_HUD_HOVER_ACTIVE_INTRO]  );
-    loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/03_Active/", rolloverPix[CLOUDS_HUD_HOVER_ACTIVE_LOOP] );
-    update();
+    loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/00_Idle/", rolloverPix[CLOUDS_HOME_IDLE] );
+    loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/01_IntroHover/", rolloverPix[CLOUDS_HOME_HOVER_ON] );
+    loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/02a_IntroLoopBack/", rolloverPix[CLOUDS_HOME_HOVER_LOOP_BACK]  );
+    loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/02b_IntroToActive/", rolloverPix[CLOUDS_HOME_ACTIVATING]  );
+    loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/03_Active/", rolloverPix[CLOUDS_HOME_ACTIVE] );
+    loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/04_LoopOut/", rolloverPix[CLOUDS_HOME_DEACTIVATING] );
+    
+    currentImage.setFromPixels(rolloverPix[currentState][0]);
+    
+    currentState = CLOUDS_HOME_IDLE;
+
+    //changeState(CLOUDS_HOME_IDLE);
+    
+    //update();
 
 }
 
@@ -52,58 +67,87 @@ void CloudsHUDHomeButton::update(){
     }
     bIsHovering = hit;
     
-    if( bIsHovering ){
-        float elapsed = ofGetElapsedTimef() - hoverStartTime;
-        float elapsedFrames = targetFps * elapsed;
-        int lastPlayhead = playhead;
-        
-        playhead = elapsedFrames;
-        
-//        cout << "playhead :: " << floor(playhead) << " - " << (int)currentState << endl;
-        
-        if( currentState == CLOUDS_HUD_HOVER_ROLLOVER ){
-            if( playhead >= rolloverPix[CLOUDS_HUD_HOVER_ROLLOVER].size() ){
-                currentState = CLOUDS_HUD_HOVER_ACTIVE_INTRO;
-                hoverStartTime = ofGetElapsedTimef();
-                playhead = 0;
+    float elapsedSeconds = ofGetElapsedTimef() - stateChangedTime;
+    int elapsedFrames = targetFps * elapsedSeconds;
+    int lastPlayhead = playhead;
+    
+    lastState = currentState;
+    playhead = elapsedFrames;
+    //cout << "playhead " << playhead << " / " << rolloverPix[currentState].size() << endl;
+    //cout << "time since state change " << stateChangedTime << endl;
+    if(elapsedFrames >= rolloverPix[currentState].size()){
+        //generic next state
+        if(bHasNextState){
+            changeState(nextState);
+        }
+        //specific next states
+        else if(currentState == CLOUDS_HOME_HOVER_ON){
+            changeState(CLOUDS_HOME_HOVER_LOOP_BACK);
+        }
+        else if(currentState == CLOUDS_HOME_HOVER_LOOP_BACK){
+            if(bIsHovering){
+                changeState(CLOUDS_HOME_HOVER_ON);
+            }
+            else{
+                changeState(CLOUDS_HOME_IDLE);
             }
         }
-        else if( currentState == CLOUDS_HUD_HOVER_OUTRO ){
-            
+        else if(currentState == CLOUDS_HOME_ACTIVATING){
+            changeState(CLOUDS_HOME_ACTIVE);
         }
-        else if( currentState == CLOUDS_HUD_HOVER_ACTIVE_INTRO ){
-            if( playhead >= rolloverPix[CLOUDS_HUD_HOVER_ACTIVE_INTRO].size() ){
-                currentState = CLOUDS_HUD_HOVER_ACTIVE_LOOP;
-                hoverStartTime = ofGetElapsedTimef();
-                playhead = 0;
-                //Hover activate disabled
-//                bWasActivated = true;
+        else if(currentState == CLOUDS_HOME_DEACTIVATING){
+            if(bIsHovering){
+                changeState(CLOUDS_HOME_HOVER_LOOP_BACK);
+            }
+            else{
+                changeState(CLOUDS_HOME_IDLE);
             }
         }
-        else if( currentState == CLOUDS_HUD_HOVER_ACTIVE_LOOP ){
-            if( playhead >= rolloverPix[CLOUDS_HUD_HOVER_ACTIVE_LOOP].size() ){
-                hoverStartTime = ofGetElapsedTimef();
-            }
-        }
-        else{
-            playhead = ofClamp( playhead, 0, rolloverPix[currentState].size()-1);
- 
-        }
-        
-        if(lastPlayhead != playhead){
-            currentImage.setFromPixels(rolloverPix[currentState][floor(playhead)]);
-            currentImage.update();
-            
+        //loop
+        else {
+//            queueState(currentState);
+            playhead = elapsedFrames % rolloverPix[currentState].size();
+            stateChangedTime = ofGetLastFrameTime();
         }
     }
-    else{
-        currentImage.setFromPixels(rolloverPix[CLOUDS_HUD_HOVER_ROLLOVER][0]);
+    
+    //cout << currentState << ": ph " << playhead << " elapsed frames " << elapsedFrames << " / " << rolloverPix[currentState].size() << endl;
+    
+    if(lastState != currentState || lastPlayhead != playhead){
+        currentImage.setFromPixels(rolloverPix[currentState][playhead]);
         currentImage.update();
     }
 }
 
+void CloudsHUDHomeButton::queueState(CloudsHUDHomeState newState){
+//    cout << "QUEUE STATE " << newState << endl;
+
+    bHasNextState = true;
+    nextState = newState;
+}
+
+void CloudsHUDHomeButton::changeState(CloudsHUDHomeState newState){
+//    cout << "CHANGE STATE " << newState << endl;
+    bHasNextState = false;
+    currentState = newState;
+    stateChangedTime = ofGetElapsedTimef();
+    playhead = 0;
+}
+
+void CloudsHUDHomeButton::deactivate(){
+    changeState(CLOUDS_HOME_IDLE);
+}
+
 void CloudsHUDHomeButton::activate(){
-    
+    if(currentState == CLOUDS_HOME_IDLE ||
+       currentState == CLOUDS_HOME_HOVER_ON ||
+       currentState == CLOUDS_HOME_HOVER_LOOP_BACK)
+    {
+        queueState(CLOUDS_HOME_ACTIVATING);
+    }
+    else{
+        queueState(CLOUDS_HOME_DEACTIVATING);
+    }
     bWasActivated = true;
 }
 
@@ -114,17 +158,19 @@ bool CloudsHUDHomeButton::wasActivated(){
 }
 
 void CloudsHUDHomeButton::rollover(){
-    currentState = CLOUDS_HUD_HOVER_ROLLOVER;
-    hoverStartTime = ofGetElapsedTimef();
+    if(currentState == CLOUDS_HOME_IDLE){
+        queueState(CLOUDS_HOME_HOVER_ON);
+    }
+
 }
 
 void CloudsHUDHomeButton::rollout(){
-    currentState = CLOUDS_HUD_HOVER_IDLE;
-    playhead = 0;
+//    if(currentState == CLOUDS_HOME_HOVER_LOOP_BACK || currentState == CLOUDS_HOME_HOVER_ON){
+//        queueState(CLOUDS_HOME_IDLE);
+//    }
 }
 
 bool CloudsHUDHomeButton::hitTest(float xPos, float yPos){
-//    cout << "Bounds are " << ofVec4f(bounds.x, bounds.y, bounds.width, bounds.height) << " scale is " << hudScale << " : test " << ofVec2f(xPos * hudScale,yPos * hudScale) << endl;
     return interactiveBounds.inside( xPos, yPos );
 }
 
@@ -133,7 +179,42 @@ bool CloudsHUDHomeButton::hitTest(ofPoint mousePos){
 }
 
 void CloudsHUDHomeButton::draw(){
+    if(bAnimateHoverRadar){
+        float bleepTime = 2.0;
+        float bleepPosition = fmod(ofGetElapsedTimef() - animatedHoverStartTime, bleepTime)/bleepTime;
+        
+        float bleepPercent = ofxTween::map(bleepPosition, 0, 1.0, 0, 1, true, ofxEasingQuad(), ofxTween::easeOut);
+        float alpha = bleepPercent * ofxTween::map(bleepPercent, .9, 1.0, 1.0, 0.0, true, ofxEasingQuad(), ofxTween::easeIn);
+        bleepExpand = bleepPercent;
+        bleepAlpha = alpha;
+    }
+    else{
+        bleepAlpha *= .9;
+    }
+    
+    if(bleepAlpha > 0.01){
+        ofPushStyle();
+        ofSetCircleResolution(50);
+        ofEnableAlphaBlending();
+        if(currentState == CLOUDS_HOME_IDLE){
+            ofNoFill();
+            ofSetColor(CloudsColorTextHover, 255 * bleepAlpha * .49 );
+            ofCircle(bounds.getCenter(), bounds.width * .25 * bleepExpand);
+        }
+        else{
+            //don't grow the circle
+            bleepExpand = 1.0;
+        }
+        
+        ofFill();
+        ofSetColor(CloudsColorTextHover, 255 * bleepAlpha * .37);
+        ofCircle(bounds.getCenter(), bounds.width * .25  * bleepExpand);
+
+        ofPopStyle();
+    }
+    
     if(currentImage.isAllocated()){
         currentImage.draw(bounds);
     }
+    
 }

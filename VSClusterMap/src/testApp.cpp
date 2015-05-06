@@ -57,7 +57,7 @@ void testApp::setup(){
 	}
 #else
 //	clusterMap.loadPresetGUISFromName("FollowTraverse_Screen");
-    clusterMap.loadPresetGUISFromName("NavigationInterlude_Screen");
+    clusterMap.loadPresetGUISFromName("TopicResearch_pretty");
 #endif
 
 	clusterMap.setRun(run);
@@ -95,6 +95,13 @@ void testApp::keyPressed(int key){
     if(key == 'O'){
         ofxObjLoader::save("SAVE_ClusterNodes.obj", clusterMap.getNodeMesh());
         ofxObjLoader::save("SAVE_NetworkPaths.obj", clusterMap.getNetworkMesh());
+    }
+    
+    if(key == '1'){
+        clusterMap.setCurrentTopic("community");
+    }
+    else if(key == '2'){
+        clusterMap.setCurrentTopic("bugs");
     }
 }
 

@@ -60,19 +60,23 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void drawFeed();
     void updateCurrentSelection(int index,bool firstTime );
     
+    //FCP id from parser, highlights a person's name
+    void selectPerson(string person);
+    ofVec2f getSelectedPersonScreenPosition();
+    
     //i/o stuff
-
-//    void addUsersFromMentions(ofVec2f& curActivityMapCoord, int activityMapWidth );
     void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
-//    void createNewGraph(string outputFileName, string inputDataFolder);
     
     //data stuff
     int getUserIdByName(string name);
     vector<Tweeter*> getTweetersForDate(int index);
     Tweeter* getTweeterByID(int _id );
+    Tweeter* getTweeterByHandle(string handle);
+    Tweeter* getTweeterByName(string name );
+    
     void drawTweetsForDate(int index);
-    void CompareDates(Date d1,Date d2);
+//    void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
     void sortTweetsByDate();
@@ -122,7 +126,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void loadMesh();
     void updateActiveTweeters(int index);
     void setActiveTweeters(int index );
-    Tweet* csvParseTweet(vector<string>& line, Tweeter* curTweeter);
+    static Tweet* csvParseTweet(vector<string>& line, Tweeter* curTweeter);
     void updateMesh();
     void drawText(string text, ofVec3f pos, float alpha);
     void drawText2D(string text, ofVec2f pos);
@@ -131,7 +135,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     set<pair<int,int> > links;
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
 
-    Date getDateFromString(const string& dString);
+    static Date getDateFromString(const string& dString);
 
     int currentDateIndex;
     float dateIndexMin, dateIndexMax;
@@ -148,12 +152,11 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bStaticNameDraw;
     bool bOldData;
     
-    //static void loadJSONData(string folderName, vector<Tweeter>& curTweeters);
-    //static vector<Tweeter>& getOldTweeterData();
-    //static vector<Tweeter>& getNewTweeterData();
-    static string getDateAsString(Date d);    
+    static string getDateAsString(Date d);
 
     void allocateActivityMap();
+    
+	virtual ofCamera& getCameraRef();    
   protected:
     ofDirectory meshDir;
     vector<string> meshStrings;
@@ -161,7 +164,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     int maxUserLinks;
     ofColor listColor;
-    vector<Tweeter*> tweeters;
+    static vector<Tweeter*> tweeters;
+    static bool tweetersLoaded;
     float sizeMultiplier;
     float maxAlphaTweetFeed;
     float lineAlpha;
@@ -206,13 +210,13 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     vector<Tweeter*> activeTweeters;
     vector<string*> activeTweets;
-    vector<pair<string*, string*> >  activeTweetPairs;
+    vector<pair<string*, string*> > activeTweetPairs;
     vector<pair<string*, string*> > currentSelection;
     
     map<string, ofImage> avatars;
 
     void loadAvatars();
-    void loadCSVData();
+    static void loadCSVData();
     void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
     map< ofFloatColor*, ofxUILabel*> labelColors;
 	map< string, Date> dateMap;
@@ -251,7 +255,19 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float rotationAmount;
 
     ofRectangle tweetFeedRect;
-    
     Tweeter dummyTweet;
-	
+
+    bool bUseNameCam;
+    ofCamera nameHighlightCam;
+    ofVec3f targetPersonPosition;
+    ofVec3f targetCameraPosition;
+    float nameTargetDistance;
+    float nameCameraRot;
+    bool bDrawFullNames;
+    static map<string,string> handleToNameMap;
+    static map<string,string> nameToHandleMap;
+    static map<string,int> userNameIdMap;
+    static vector<Date> dateIndex;
+
+    
 };

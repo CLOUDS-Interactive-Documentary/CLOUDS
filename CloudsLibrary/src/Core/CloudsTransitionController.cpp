@@ -266,6 +266,27 @@ void CloudsTransitionController::transitionFromExplorePeople(float inDuration){
     startTransition();
 }
 
+void CloudsTransitionController::transitionToExploreVisuals(float inDuration, float outDuration){
+
+    confirmEmpty("transitionToExploreVisuals");
+    
+    queueReciprocal(getPreviousState(), outDuration);
+    
+    queueState(TRANSITION_EXPLORE_VISUALS_IN, inDuration);
+	
+	startTransition();
+    
+}
+
+void CloudsTransitionController::transitionFromExploreVisuals(float inDuration){
+    
+    confirmEmpty("transitionFromExploreVisuals");
+    
+    queueState(TRANSITION_EXPLORE_VISUALS_OUT, inDuration);
+	
+    startTransition();
+}
+
 ////////////
 ///////////
 // NOT IMPLEMENTED

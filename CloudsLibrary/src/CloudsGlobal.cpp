@@ -12,7 +12,8 @@
 #include "CloudsGlobal.h"
 #include "Poco/Environment.h"
 
-CloudsVisualLevel visualLevel = PRETTY;
+static CloudsVisualLevel visualLevel = PRETTY;
+static bool loadedVisualLevel = false;
 
 string dataRootPath = "";
 string dataRootPathIgnored = "";
@@ -50,7 +51,7 @@ string GetCloudsDataPath(bool ignored)
         #ifdef TARGET_OSX
         else if(ofFile("/Library/Application Support/CLOUDS/dataRoot.txt").exists()){
             //JG TO DM: Note thate these are teh same. Let's combine ignored data into the main data folder for release.
-            dataRootPath = ofBufferFromFile("/Library/Application Support/CLOUDS/dataRoot.txt").getFirstLine();
+            dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/dataRoot.txt").getFirstLine() );
             dataRootPathIgnored = dataRootPath;
         }
         #else
@@ -74,38 +75,24 @@ string GetCloudsMediaPath(){
         else if(ofDirectory("CloudsDataMedia/").exists()){
             mediaRootPath = "CloudsDataMedia/";
         }
+#ifdef TARGET_OSX
         else if(ofFile("/Library/Application Support/CLOUDS/mediaRoot.txt").exists()){
-            mediaRootPath = ofBufferFromFile("/Library/Application Support/CLOUDS/mediaRoot.txt").getFirstLine();
+            mediaRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/mediaRoot.txt").getFirstLine() );
         }
+#else
+        //TODO Windows Media Path Root
+#endif
     }
     
     ofLogVerbose("GetCloudsMediaPath") << mediaRootPath <<endl;
     
     return mediaRootPath;
-#endif
+#endif //end VHX
 }
 
-//string GetCloudsDataRootPath(bool ignored){
-//    
-//
-//}
 
 //--------------------------------------------------------------------
 string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder){
-    //  building from src project file
-    //string datapath;
-    //	if(ofDirectory("../../../CloudsData/").exists()){
-    //		datapath = string("../../../CloudsData") + (ignoredFolder ? "_ignored" : "") + "/visualsystems/" + systemName + "/";
-    //	}
-    //	//  stand alone full app
-    //	else if(ofDirectory("CloudsData/").exists()){
-    //		datapath =  string("CloudsData") + (ignoredFolder ? "_ignored" : "") + "/visualsystems/" + systemName + "/";
-    //	}
-    //	//  stand alone single app
-    //	else{
-    //		datapath =  "../../../data/";
-    //	}
-    
     return GetCloudsDataPath(ignoredFolder) + "visualsystems/" + systemName + "/";
 }
 
@@ -155,6 +142,24 @@ string relinkFilePath(string filePath){
 }
 
 //--------------------------------------------------------------------
+
+
+
 CloudsVisualLevel getVisualLevel(){
+    if(!loadedVisualLevel){
+        
+        auto visualConfig = ofFile( GetCloudsDataPath()+"/visual_quality_config.txt" );
+        auto quality = visualConfig.readToBuffer().getText();
+        
+        if( quality == "FAST"){
+            visualLevel = FAST;
+        }else if( quality == "PRETTY" ){
+            visualLevel = PRETTY;
+        }else{
+            visualLevel = PRETTY;
+        }
+        
+        loadedVisualLevel = true;
+    }
     return visualLevel;
 }

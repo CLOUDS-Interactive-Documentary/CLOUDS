@@ -578,10 +578,10 @@ bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 		return false;
 	}
 	
-	filePath = GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "videos/" + filePath;
+	filePath = GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos/" + filePath;
 
 	if(!ofFile(filePath).exists() ) {
-		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "File does not exist" << endl;
+		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "File does not exist " << filePath << endl;
 		return false;
 	}
 	
@@ -591,7 +591,7 @@ bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 	}
 	
 	ofxXmlSettings intrinsicsXml;
-	string xmlFilePath = ofFilePath::removeExt(filePath) + ".xml";
+    string xmlFilePath = getVisualSystemDataPath() + "xml/"+ ofFilePath::removeExt(ofFilePath::getFileName(filePath)) + ".xml";
 	if(!intrinsicsXml.loadFile(xmlFilePath)){
 		ofLogError("CloudsVisualSystemRGBDVideo::selfPresetLoaded") << "XML File " << xmlFilePath << " Failed to load";
 		return false;

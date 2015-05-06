@@ -1267,6 +1267,8 @@ string CloudsStoryEngine::selectTopic(CloudsStoryState& state){
 		if(bLogTopicDetails) state.log << state.duration << "\t\tERROR TOPIC DEAD END Trying family of " << state.topic << " with " <<  topicFamilies.size() << " topics" << endl;
 		for(int i = 0; i < topicFamilies.size(); i++){
 			topicScores[i] = scoreForTopic(state, topicFamilies[i]);
+
+
 			state.log << state.duration << "\t\t\tScore for family member	" << topicFamilies[i] << " : " <<  topicScores[i] << endl;
 			topicHighScore = MAX(topicHighScore,topicScores[i]);
 		}
@@ -1328,8 +1330,11 @@ float CloudsStoryEngine::scoreForTopic(CloudsStoryState& state, string potential
 //    float cohesionIndexForKeywords = parser->getCohesionIndexForKeyword(newTopic);
 //    float cohesionScore = 0; //TODO:Add cohesion score to favor nearby topics
     
-    score  = lastClipCommonality + twoClipsAgoCommonality + relevancyScore;//  +   cohesionScore;
-
+    score = lastClipCommonality + twoClipsAgoCommonality + relevancyScore;//  +   cohesionScore;
+    if( isnan(score)){
+        ofLogError("CloudsStoryEngine::scoreForTopic") << "Score for topic NAN " << score;
+        score = 0;
+    }
     return score;
 }
 

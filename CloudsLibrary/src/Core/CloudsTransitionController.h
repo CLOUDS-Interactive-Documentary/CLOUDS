@@ -68,6 +68,9 @@ class CloudsTransitionController {
    	void transitionToExplorePeople(float inDuration, float outDuration);
    	void transitionFromExplorePeople(float inDuration);
     
+   	void transitionToExploreVisuals(float inDuration, float outDuration);
+    void transitionFromExploreVisuals(float inDuration);
+    
     void transitionBackToAct(float inDuration, float outDuration);
     
 	void update();

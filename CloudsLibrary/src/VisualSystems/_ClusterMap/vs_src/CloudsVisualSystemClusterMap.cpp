@@ -70,6 +70,7 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	percentTraversed = 0;
 	percentOptionsRevealed = 0;
 	drawType = false;
+    drawType3D = false;
 	baseFontSize = 0;
 	
     drawAssociation = false;
@@ -77,6 +78,7 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
     currentAssociationFont = 0;
     numTraversed = 0;
 	curQuestionCamRotation = 0;
+    displayQuestions = false;
 	///END INIT
 }
 
@@ -104,7 +106,6 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	typeSizeRange.min = 5;
 	typeSizeRange.max = 14;
 	lineDensity = 200;
-
 	
 	lineFlickerIntensity = 7.;
 	lineFlickerFrequency = 100;
@@ -128,7 +129,9 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     useQuestionCam = false;
     selectedQuestion = NULL;
     caughtQuestion = NULL;
-    
+    type3DScale = 1.0;
+    drawType3D = false;
+
 	questionScale = 0.1f;
 	questionFontScale = 14;
 	currentQuestionFontSize = 10;
@@ -151,6 +154,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	followCamGui->setName("FollowCam");
 	followCamGui->addSlider("CAMERA DISTANCE", 10, 400, &traversCameraDistance);
 	followCamGui->addToggle("LOCK AXIS", &lockCameraAxis);
+	followCamGui->addToggle("USE TOPIC CAM", &useTopicCam);
 	followCamGui->addSlider("FOV", 4, 90, &traverseCamFOV);
 	followCamGui->addToggle("HIDE CURSOR", &hideCursors);
 
@@ -323,6 +327,8 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	
     typeGui->addSpacer();
     typeGui->addToggle("DRAW ASSOCIATION", &drawAssociation);
+    typeGui->addToggle("DRAW 3D", &drawType3D);
+    typeGui->addSlider("3D TYPE SCALE", .01, 1.0, &type3DScale);
     typeGui->addIntSlider("ASSOCATION SIZE", 5, 30, &associationFontSize);
     
 	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
@@ -335,14 +341,19 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	questionGui->copyCanvasProperties(gui);
 	questionGui->setName("Questions");
 	questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-
+	toggle = questionGui->addToggle("ENABLE", &displayQuestions);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    questionGui->resetPlacer();
+    questionGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    questionGui->addWidgetToHeader(toggle);
+    
+    
     questionGui->addToggle("QUESTION CAM", &useQuestionCam);
 	questionGui->addSlider("QUESTION SCALE", 0, 1.0, &questionScale);
 	questionGui->addSlider("QUESTION CAM DIST", 0, 100, &questionCameraDistance);
 	questionGui->addRangeSlider("QUESTION TUG DISTANCE", 10, 300, &questionTugDistance.min, &questionTugDistance.max);
     questionGui->addSlider("QUESTCAM SPIN", .0, 1.0, &questionCameraSpinSpeed);
     questionGui->addSlider("QUESTCAM AXIS DIST", 0.0, 100.0, &questionCameraAxisDist);
-	
 	questionGui->addLabel("QUESTION TYPE");
 	questionGui->addIntSlider("FONT SIZE", 4, 100, &questionFontSize);
 	questionGui->addSlider("FONT SCALE", 0, 1.0, &questionFontScale);
@@ -894,10 +905,28 @@ void CloudsVisualSystemClusterMap::clearTraversal(){
     
 }
 
-
 void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     currentTopic = topic;
+
+    bool positionFound = false;
+    for(int i = 0; i < topicPoints.size(); i++){
+        if(topicPoints[i].keyword == topic){
+            targetTopicPosition = topicPoints[i].position * meshExpansion;
+            targetCameraPosition = targetTopicPosition + targetTopicPosition.normalized() * traversCameraDistance;
+            positionFound = true;
+            break;
+        }
+    }
+    
+    if(!positionFound){
+        ofLogError("CloudsVisualSystemClusterMap::setCurrentTopic") << "Couldn't find position for topic " << topic;
+    }
 }
+
+ofVec2f CloudsVisualSystemClusterMap::getTopicScreenLocation(){
+    return getCameraRef().worldToScreen(targetTopicPosition);
+}
+
 
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemClusterMap::selfSetupSystemGui(){
@@ -907,6 +936,7 @@ void CloudsVisualSystemClusterMap::selfSetupSystemGui(){
 void CloudsVisualSystemClusterMap::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
+
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemClusterMap::selfSetupRenderGui(){
 
@@ -979,8 +1009,6 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	if(!traverseNextFrame && autoTraversePoints && (firstClip || percentTraversed >= 1.0) ){
 		//traverseNextFrame = true;
 		traverse();
-//		cout << "Traversing! " << endl;
-	//	percentTraversed = 0.0;
 	}
 
 #ifdef OCULUS_RIFT
@@ -991,7 +1019,6 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	percentTraversed = ofMap(ofGetElapsedTimef(),
 							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
 							 0, 1.0, true);
-//	cout << "percentTraversed " << percentTraversed << endl;
 	if(autoTraversePoints) {
 		percentOptionsRevealed = 0.0;
 	}
@@ -1004,7 +1031,6 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 
 	
 	//UPDATE CAMERA
-//	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
 	if(cursorIsOverGUI()){
 		easyCamera.disableMouseInput();
 	}
@@ -1083,7 +1109,16 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
             questionCam.setPosition(selectQuestionStartPos.interpolate(selectedQuestion->hoverPosition, percentZoomed));
         }
     }
-
+    else if(useTopicCam){
+        //zone in on the topic;
+        topicNavCam.setPosition( topicNavCam.getPosition() + (targetCameraPosition - topicNavCam.getPosition())*.05 );
+        ofNode n = topicNavCam;
+        n.lookAt(targetTopicPosition);
+        ofQuaternion q;
+        q.slerp(.05, topicNavCam.getOrientationQuat(), n.getOrientationQuat());
+        topicNavCam.setOrientation(q);
+    }
+    
 	/////UPDATE COLOR
 	if(matchLineColor){
 		lineEdgeColorHSV = lineNodeColorHSV;
@@ -1306,13 +1341,52 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	}
 	/////END OPTIONS
 	
-	
+
+    
 	ofPopMatrix();
 	ofPopStyle();
 	glPopAttrib();
     
+    
     drawQuestions();
 
+	if(drawType3D){
+        
+        ofDisableLighting();
+        
+		for(int i = 0; i < topicPoints.size(); i++){
+            
+			TopicPoint& p = topicPoints[i];
+			if(p.numClips >= clipsShowTopic.min){
+				int fontIndex = ofMap(p.numClips, clipsShowTopic.min, clipsShowTopic.max,
+									  0, topicFont.size()-1,true);
+				if(fontIndex > 0 && fontIndex < topicFont.size()){
+                    
+					ofPushMatrix();
+                    ofNode n;
+                    n.setPosition(topicPoints[i].position * meshExpansion);
+                    n.lookAt(getCameraRef(), getCameraRef().getUpDir());
+                    ofMultMatrix(n.getGlobalTransformMatrix());
+                    ofScale(-type3DScale,-type3DScale, type3DScale);
+                    
+					ofxFTGLFont& font = topicFont[ fontIndex ];
+					font.drawString( ofToUpper(p.keyword), 0, 0);
+					
+                    ofPopMatrix();
+				}
+			}
+		}
+		ofEnableLighting();
+        
+    }
+    
+//    ofNode n;
+//    n.setPosition(targetCameraPosition);
+//    n.lookAt(targetTopicPosition);
+//    n.draw();
+//    n.setPosition(targetTopicPosition);
+//    n.lookAt(targetCameraPosition);
+//    n.draw();
 }
 
 
@@ -1387,7 +1461,7 @@ void CloudsVisualSystemClusterMap::updateQuestions(){
 }
 
 void CloudsVisualSystemClusterMap::drawQuestions(){
-    if(questions.size() == 0){
+    if(questions.size() == 0 || !displayQuestions){
         return;
     }
     
@@ -1552,9 +1626,10 @@ void CloudsVisualSystemClusterMap::selfDrawBackground(){
 
 void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	//turn the background refresh off
-	if(drawType){
-		ofDisableLighting();
-		ofRectangle screenRect(0,0,getCanvasWidth(), getCanvasHeight());
+	if(drawType && !drawType3D){
+		
+        ofDisableLighting();
+		ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());
 		for(int i = 0; i < topicPoints.size(); i++){
 
 			TopicPoint& p = topicPoints[i];
@@ -1575,7 +1650,7 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 		ofEnableLighting();
 	}
 	
-    if(drawAssociation){
+    if(drawAssociation && !drawType3D){
         if(!associationFont.isLoaded() || associationFontSize != currentAssociationFont){
             //associationFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", associationFontSize);
 			associationFont.loadFont( GetFontPath(), associationFontSize);

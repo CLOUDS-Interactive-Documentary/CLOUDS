@@ -35,7 +35,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	void setAct(CloudsAct* newAct);
 	void allocateFlickerTexture();
 
-    void setCurrentTopic(string topic);
+    void setCurrentTopic(string topic); //for secondary display && research mode navigation
+    ofVec2f getTopicScreenLocation();
     
 	//will add the latest state of the run to the traversal
     void startTraverse();
@@ -129,8 +130,12 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 		else if(lockCameraAxis){
 			return axisCamera;
 		}
+        else if(useTopicCam){
+            return topicNavCam;
+        }
 		return easyCamera;
 	}
+    
     
 	ofVboMesh& getNodeMesh();
 	ofVboMesh& getNetworkMesh();
@@ -163,6 +168,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofEasyCam easyCamera;
 	ofCamera axisCamera;
     ofCamera questionCam;
+    ofCamera topicNavCam;
 	CloudsAct* act;
 	
 	ofVec2f flickerCoord;
@@ -222,6 +228,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	bool drawTraversalPoints;
 	bool lockCameraAxis;
     bool useQuestionCam;
+    bool useTopicCam;
 	float traverseCamFOV;
 	float traversCameraDistance;
 	float traversedNodeSize;
@@ -282,7 +289,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	vector<TopicPoint> topicPoints;
 	vector<ofxFTGLFont> topicFont;
 	bool drawType;
+	bool drawType3D;
+    float type3DScale;
 	int baseFontSize;
+    
 	ofIntRange clipsShowTopic;
 	ofRange clipCountRange;
 	ofRange typeDistanceRange;
@@ -297,6 +307,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     int associationFontSize;
     int currentAssociationFont;
     string currentTopic;
+    ofVec3f targetTopicPosition;
+    ofVec3f targetCameraPosition;
     ofVec2f trailheadScreenPos;
     ofxFTGLFont associationFont;
     
@@ -320,6 +332,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     ofVec3f cursor; //for question selection
     ofVec3f stickyCursor;
     
+    bool displayQuestions;
     float questionCameraSpinSpeed;
     float questionSpinAttenuate;
     float questionCameraAxisDist;

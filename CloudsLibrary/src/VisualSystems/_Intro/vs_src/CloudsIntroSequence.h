@@ -107,6 +107,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     
     void loadingFinished();    
     float percentLoaded;
+    bool firstPlay;
+    bool shouldArchiveAct;
     
 	ofCamera& getCameraRef(){
 		return warpCamera;
@@ -169,6 +171,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     float firstQuestionStoppedTime;
     
 	vector<CloudsPortal> startQuestions;
+    CloudsPortal resumePortal;
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;
 	float selectedQuestionTime;

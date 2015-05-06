@@ -5,8 +5,16 @@
 #include "CloudsVisualSystemTwitter.h"
 #include "CloudsGlobal.h"
 
-static map<string,int> userNameIdMap;
-static vector<Date> dateIndex;
+map<string,int> CloudsVisualSystemTwitter::userNameIdMap;
+vector<Date> CloudsVisualSystemTwitter::dateIndex;
+
+vector<Tweeter*> CloudsVisualSystemTwitter::tweeters;
+map<string,string> CloudsVisualSystemTwitter::handleToNameMap;
+map<string,string> CloudsVisualSystemTwitter::nameToHandleMap;
+
+
+bool CloudsVisualSystemTwitter::tweetersLoaded = false;
+
 
 bool dateSorter(Date const& lhs, Date const& rhs) {
     if (lhs.year != rhs.year)
@@ -38,6 +46,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     bRenderText = false;
     stringWidth = 10;
 
+    nameTargetDistance = 50;
     avatarSize = 10;
     
     tweetFeedRect = ofRectangle (0, 0,  getCanvasWidth()/2, getCanvasHeight());
@@ -81,7 +90,8 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     tweetDeckColorHSV  = ofFloatColor(128,128,128);
     bOldData = false;
     bRenderFeed = false;
-
+    bDrawFullNames = false;
+    
 	theme = 0;
 	currentTweetFeedIndex = 0;
 
@@ -90,6 +100,8 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
 
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
+    
+
 }
 
 void CloudsVisualSystemTwitter::selfSetup()
@@ -187,10 +199,15 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->setName("text");
     textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     textGui->addToggle("RENDER TEXT", &bRenderText);
-    textGui->addToggle("DRAW SPEAKER NAMES ", &bStaticNameDraw);
+    textGui->addToggle("DRAW SPEAKER NAMES", &bStaticNameDraw);
+    textGui->addToggle("DRAW FULL NAMES", &bDrawFullNames);
     textGui->addSpacer();
     addColorToGui(textGui,"TEXT ",textColorHSV,true);
     addColorToGui(textGui,"TWEET ",tweetDeckColorHSV,true);
+    textGui->addSpacer();
+    textGui->addToggle("USE NAME CAMERA", &bUseNameCam);
+    textGui->addSlider("NAME CAMERA DISTANCe", 10, 200, &nameTargetDistance);
+    textGui->addSlider("NAME CAMERA ROT", .01, 10, &nameCameraRot);
 
     textGui->addSpacer();
     textGui->addMinimalSlider("STRING WIDTH", 1, 2000, &stringWidth);
@@ -234,6 +251,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->addMinimalSlider("MAX ALPHA",0.1,1.0,&maxAlphaTweetFeed);
     twitterFeedGui->addMinimalSlider("LINE ALPHA", 0, 1, &lineAlpha);
     twitterFeedGui->addMinimalSlider("AVATAR ALPHA", 0, 1, &avatarAlpha);
+    
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
 	guimap[textGui->getName()] = twitterFeedGui;
@@ -246,8 +264,17 @@ void CloudsVisualSystemTwitter::loadCSVData(){
 	}
 	tweeters.clear();
 
+    ofBuffer realNames = ofBufferFromFile(GetCloudsVisualSystemDataPath("Twitter") + "twitternames.txt");
+    while(!realNames.isLastLine()){
+        vector<string> components = ofSplitString(realNames.getNextLine(), ":", true, true);
+        if(components.size() != 2) continue;
+        nameToHandleMap[components[0]] = components[1];
+        handleToNameMap[components[1]] = components[0];
+        cout << "HANDLE IS " << components[0] << " " << components[1] << endl;
+    }
+    
     int tweeterID = 0;
-	string filePath = getVisualSystemDataPath(true) + "twitter.csv";
+	string filePath = GetCloudsVisualSystemDataPath("Twitter",true) + "twitter.csv";
     //cout<<"File Path : "<<filePath<<endl;
 	if(! ofFile::doesFileExist(filePath)){
 	  ofLogError()<<"[ VS Twitter ]"<<" Load file error, check to see if twitter.csv is in the vs ignored data folder"<<endl;
@@ -269,7 +296,10 @@ void CloudsVisualSystemTwitter::loadCSVData(){
 
     if(l.size() > 1){
 	    Tweeter* twtr = new Tweeter();
-        twtr->name = "@" + trim(l[0]);
+        string handle = trim(l[0]);
+        twtr->name = "@" + handle;
+        twtr->fullName = handleToNameMap[ ofToLower(handle) ];
+
         Tweet* t = csvParseTweet(l, twtr);
         twtr->tweets.push_back(t);
         twtr->addTweetsToDate(t);
@@ -311,8 +341,10 @@ void CloudsVisualSystemTwitter::loadCSVData(){
         if(! alreadyExists){
 			
             Tweeter* twtr = new Tweeter();
-            twtr->name = "@" + trim(line[0]);
-
+            string handle = trim(line[0]);
+            twtr->name = "@" + handle;
+            twtr->fullName = handleToNameMap[ofToLower(handle)];
+            
 			Tweet* t = csvParseTweet(line, twtr);
             twtr->tweets.push_back(t);
             twtr->addTweetsToDate(t);
@@ -444,6 +476,15 @@ void CloudsVisualSystemTwitter::allocateActivityMap(){
 	activityMap.update();
 }
 
+ofCamera& CloudsVisualSystemTwitter::getCameraRef(){
+    if(bUseNameCam){
+        return nameHighlightCam;
+    }
+    else{
+        return CloudsVisualSystem::getCameraRef();
+    }
+}
+
 void CloudsVisualSystemTwitter::loadAvatars(){
     ofFile f = ofFile();
     
@@ -522,6 +563,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             int id = ofToInt(components[0]);
             
             Tweeter* tweeter = getTweeterByID(id);
+            tweeter->linksById.clear();
             
 			int numcomp = components.size();
             max = ofVec3f(0,0,0);
@@ -538,6 +580,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 
             //428 4 8 9 11 15 17 18
             Tweeter* tweeter = getTweeterByID(id);
+            tweeter->linksById.clear();
 
             if(tweeter->name == " "){
 				ofLogError("CloudsVisualSystemTwitter::parseClusterNetwork") << tweeter->name << "  : " << tweeter->ID << " not found ";
@@ -824,16 +867,16 @@ void CloudsVisualSystemTwitter::drawTweetsForDate(int index){
     }
 }
 
+//--------------------------------------------------------------
 string CloudsVisualSystemTwitter::getDateAsString(Date d){
     string dateString;
-//    cout<<d.month<<endl;
     dateString += ofToString(d.day) + " - ";
     dateString += ofToString(d.month) + " - ";
     dateString += ofToString(d.year);
     return dateString;
 }
 
-
+//--------------------------------------------------------------
 Tweeter* CloudsVisualSystemTwitter::getTweeterByID(int _id ){
     
     for(int i = 0; i< tweeters.size(); i++){
@@ -845,9 +888,37 @@ Tweeter* CloudsVisualSystemTwitter::getTweeterByID(int _id ){
     return &dummyTweet;
 }
 
-void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
+//--------------------------------------------------------------
+Tweeter* CloudsVisualSystemTwitter::getTweeterByHandle(string handle){
+    handle = ofToLower(handle);
+    for(int i = 0; i< tweeters.size(); i++){
+        if(ofToLower(tweeters[i]->name) == handle){
+            return tweeters[i];
+        }
+    }
     
+    ofLogError("CloudsVisualSystemTwitter::getTweeterByHandle") << "Name not found " << handle;
+    
+    return &dummyTweet;
 }
+
+//--------------------------------------------------------------
+Tweeter* CloudsVisualSystemTwitter::getTweeterByName(string name ){
+    name = ofToLower(name);
+    for(int i = 0; i< tweeters.size(); i++){
+        if(ofToLower(tweeters[i]->fullName) == name){
+            return tweeters[i];
+        }
+    }
+    
+    ofLogError("CloudsVisualSystemTwitter::getTweeterByName") << "Name not found " << name;
+    
+    return &dummyTweet;
+}
+
+//void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
+//    
+//}
 
 //--------------------------------------------------------------
 void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
@@ -906,7 +977,10 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
 
     clearData();
     
-    loadCSVData();
+    if(!tweetersLoaded){
+        loadCSVData();
+        tweetersLoaded = true;
+    }
     
     cout<<"Time taken to parse CSV : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
     cout<<" Tweeters size "<<tweeters.size()<<endl;
@@ -920,6 +994,8 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     
     loadAvatars();
     cout<<"Time taken to load avatars : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+    
+    for(auto&t:tweeters)t->linksById.clear();
     
     startTime = ofGetElapsedTimeMillis();
     parseClusterNetwork(filePath);
@@ -1058,6 +1134,21 @@ void CloudsVisualSystemTwitter::selfUpdate()
 		activityMap.getPixels()[i] *= activityMapDamping;
 	}
 	activityMap.update();
+    
+    if(bUseNameCam){
+        float distFromTarget = nameHighlightCam.getPosition().distance(targetCameraPosition);
+        //targetCameraPosition.rotate(nameCameraRot, targetPersonPosition, nameHighlightCam.getUpDir());
+        ofVec3f targetPos = targetCameraPosition.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 45, -45,true), targetPersonPosition, ofVec3f(0,1,0));
+        targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -45, 45,true), targetPersonPosition, ofVec3f(1,0,0));
+        
+        ofNode n = nameHighlightCam;
+        n.lookAt(targetPersonPosition.getInterpolated(ofVec3f(0,0,0), ofMap(distFromTarget, nameTargetDistance, nameTargetDistance*10, .0, 1.0, true) ) );
+        nameHighlightCam.setPosition( nameHighlightCam.getPosition() + (targetPos - nameHighlightCam.getPosition())*.05 );
+        
+        ofQuaternion q;
+        q.slerp(.15, nameHighlightCam.getOrientationQuat(), n.getOrientationQuat());
+        nameHighlightCam.setOrientation(q);
+    }
 }
 
 ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor& hsv){
@@ -1103,9 +1194,13 @@ void CloudsVisualSystemTwitter::selfDraw()
 
 		pointsShader.begin();
 		
-		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
-		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
-		glEnable(GL_POINT_SMOOTH);
+        if(getVisualLevel() == PRETTY){
+            glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+            glEnable(GL_POINT_SMOOTH);
+        }
+        
+        glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
+
         
         pointsShader.setUniformTexture("tex", sprite, 1);
 		pointsShader.setUniformTexture("activityMap", activityMap, 2);
@@ -1172,16 +1267,20 @@ void CloudsVisualSystemTwitter::selfDraw()
     }
     
     if(bRenderText) {
-        for(int i = 0; i < activeTweeters.size(); i++){
-            if(activeTweeters[i]->position != ofVec3f(-1,-1,-1)){
-                drawText(activeTweeters[i]->name,activeTweeters[i]->position,activeTweeters[i]->textDecayRate);                
+
+        if (bStaticNameDraw) {
+            for (int i= 0 ; i < tweeters.size(); i++) {
+                if(tweeters[i]->tweets.size() > 0){
+                    drawText(bDrawFullNames ? tweeters[i]->fullName : tweeters[i]->name,
+                             tweeters[i]->position,1.0);
+                }
             }
         }
-        
-        if (bStaticNameDraw) {
-            for (int i= 0 ; i<tweeters.size(); i++) {
-                if(tweeters[i]->tweets.size() > 0){
-                    drawText(tweeters[i]->name,tweeters[i]->position,1.0);
+        else{
+            for(int i = 0; i < activeTweeters.size(); i++){
+                if(activeTweeters[i]->position != ofVec3f(-1,-1,-1)){
+                    drawText(bDrawFullNames ? activeTweeters[i]->fullName : activeTweeters[i]->name,
+                             activeTweeters[i]->position,activeTweeters[i]->textDecayRate);
                 }
             }
         }
@@ -1292,6 +1391,22 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
 
     animationLerpAmt = 0;
     bAnimateFeed = true;
+}
+
+//FCP id from parser, highlights a person's name
+void CloudsVisualSystemTwitter::selectPerson(string person){
+    person = ofToLower(person);
+//    if(nameToHandleMap.find(person) == nameToHandleMap.end()){
+//        ofLogError("CloudsVisualSystemTwitter::selectPerson") << "Person " << person << " not found in twitter map";
+//    }
+    
+    Tweeter* targetTweeter = getTweeterByHandle(person);
+    targetPersonPosition = targetTweeter->position;
+    targetCameraPosition = targetTweeter->position + targetTweeter->position.normalized() * nameTargetDistance;
+}
+
+ofVec2f CloudsVisualSystemTwitter::getSelectedPersonScreenPosition(){
+    return getCameraRef().worldToScreen(targetPersonPosition);
 }
 
 void CloudsVisualSystemTwitter::drawFeed(){
@@ -1459,10 +1574,10 @@ void CloudsVisualSystemTwitter::selfEnd()
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemTwitter::selfExit()
 {
-    for(int i = 0; i < tweeters.size(); i++){
-		delete tweeters[i];
-	}
-	tweeters.clear();
+//    for(int i = 0; i < tweeters.size(); i++){
+//		delete tweeters[i];
+//	}
+//	tweeters.clear();
 }
 
 void CloudsVisualSystemTwitter::reloadShaders(){
@@ -1507,14 +1622,20 @@ void CloudsVisualSystemTwitter::drawText2D(string text, ofVec2f pos){
 void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos, float alpha){
     ofFloatColor  col = getRGBfromHSV(textColorHSV);
     col.a = alpha;
-    ofxBillboardBeginSphericalCheat(pos);
     ofPushStyle();
     ofSetColor(col);
-    ofScale(0.01,-0.01,0.01);
-    ofTranslate(pos.x,pos.y,pos.z);
-    font.drawString(ofToUpper(text),0,0);
+    
+    ofNode n;
+    n.setPosition(pos);
+    n.lookAt(getCameraRef(), getCameraRef().getUpDir());
+    ofPushMatrix();
+    ofMultMatrix(n.getGlobalTransformMatrix());
+    
+    ofScale(-0.01,-0.01,0.01);
+    font.drawString(ofToUpper(text),25,font.stringHeight(text));
+    ofPopMatrix();
+    
     ofPopStyle();
-    ofxBillboardEnd();
 }
 
 void CloudsVisualSystemTwitter::selfKeyReleased(ofKeyEventArgs & args){

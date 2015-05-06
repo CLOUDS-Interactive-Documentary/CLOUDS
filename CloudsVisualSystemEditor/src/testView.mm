@@ -54,22 +54,23 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
     parser.loadFromFiles();
 
 	
-	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
-	}
-	else{
-        string defaultFilePath = GetCloudsDataPath(true) + "media/";
-		if(ofFile::doesFileExist(defaultFilePath)){
-			parser.setCombinedVideoDirectory(defaultFilePath);
-		}
-		else{
-			ofSystemAlertDialog("Could not find movie file path. \
-								Create a file called CloudsMovieDirectory.txt \
-								that contains one line, the path to your movies folder");
-		}
-	}
-	
+//	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
+//		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+//        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
+//	}
+//	else{
+//        string defaultFilePath = GetCloudsDataPath(true) + "media/";
+//		if(ofFile::doesFileExist(defaultFilePath)){
+//			parser.setCombinedVideoDirectory(defaultFilePath);
+//		}
+//		else{
+//			ofSystemAlertDialog("Could not find movie file path. \
+//								Create a file called CloudsMovieDirectory.txt \
+//								that contains one line, the path to your movies folder");
+//		}
+//	}
+    
+    parser.loadMediaAssets();
 	visualSystems.loadPresets();
     visualSystems.loadCachedDataForSystems();
 	

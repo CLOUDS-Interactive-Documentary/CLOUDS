@@ -33,7 +33,9 @@ class Tweeter
     Tweeter(const string& _name, int _id);
     ~Tweeter();
 
-    string name;
+    string name; //twitter handle: like @kcimc
+    string fullName; //real name: like Kyle McDonald
+    
     int ID;
     ofVec3f position;
     int nodeVertexIndex;

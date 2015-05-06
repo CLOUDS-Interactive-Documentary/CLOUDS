@@ -1,0 +1,24 @@
+DIRECTORS
+Jonathan Minard
+James George
+
+EXECUTIVE PRODUCER
+Golan Levin
+
+PRODUCER
+Winslow Porter
+
+DESIGN DIRECTOR
+Bradley G Munkowitz
+
+MUSIC
+R. Luke DuBois
+
+LEAD INTERACTION DEVELOPER
+Elie Zananiri
+
+LEAD VISUAL SYSTEMS DEVELOPER
+Lars Berg
+
+STORY ENGINE DEVELOPER
+Surya Mattu

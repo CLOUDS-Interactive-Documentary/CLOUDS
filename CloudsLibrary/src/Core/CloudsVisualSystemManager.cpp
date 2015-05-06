@@ -26,9 +26,9 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemBallDroppings.h"
 #include "CloudsVisualSystemBalloons.h"
 
-#if !defined(OCULUS_RIFT) && defined(TARGET_OSX)
+//#if !defined(OCULUS_RIFT) && defined(TARGET_OSX)
 //#include "CloudsVisualSystemCandyMountains.h"
-#endif
+//#endif
 
 #include "CloudsVisualSystemChromogram.h"
 #include "CloudsVisualSystemCirclePacking.h"
