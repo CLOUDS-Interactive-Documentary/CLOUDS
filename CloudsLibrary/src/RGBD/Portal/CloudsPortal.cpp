@@ -190,7 +190,11 @@ void CloudsPortal::draw(){
 	shader.setUniform1i("selected", selected ? 1 : 0);
 	shader.setUniform1f("maxRingPosition", ringCount);
 	shader.setUniform1f("rotate", ofGetElapsedTimef()*2.);
+#ifdef OCULUS_RIFT
 	shader.setUniform1f("hoverPercent", hoverPercentComplete);
+#else
+	shader.setUniform1f("hoverPercent", hovering ? 1.0 : 0.0);
+#endif
 	shader.setUniform1f("selectionAnimationPercent", selectedPercentComplete);
 	shader.setUniform1i("drawingTimer", 0);
 	portalGeo.draw();
