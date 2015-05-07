@@ -27,6 +27,7 @@ ${NEWPREFIX}ofxBox2d
 ${NEWPREFIX}ofxCameraSaveLoad
 ${NEWPREFIX}ofxCocoaGLView
 ${NEWPREFIX}ofxColorPalettes
+${NEWPREFIX}ofxCrypto
 ${NEWPREFIX}ofxCv
 ${NEWPREFIX}ofxDelaunay
 ${NEWPREFIX}ofxFTGL
