@@ -4153,6 +4153,7 @@
 		64BDD5A31AFAE679002AEAEB /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
 		64BDD5BE1AFAEB5B002AEAEB /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
 		64BDD5BF1AFAEB5B002AEAEB /* ofxCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCrypto.h; sourceTree = "<group>"; };
+		64BDD6A31AFB0734002AEAEB /* CloudsCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsCrypto.h; sourceTree = "<group>"; };
 		64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBinaryMesh.cpp; sourceTree = "<group>"; };
 		64CDB66A194500EC00C56A13 /* ofxBinaryMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBinaryMesh.h; sourceTree = "<group>"; };
 		64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVHXRequest.cpp; sourceTree = "<group>"; };
@@ -8433,6 +8434,7 @@
 		E7D8224218BEBD6E00C1EB93 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				64BDD6A31AFB0734002AEAEB /* CloudsCrypto.h */,
 				03E28DB91A9D7690005AA181 /* CloudsEvents.h */,
 				E7D8224318BEBD6E00C1EB93 /* CloudsGlobal.h */,
 				03E28DBA1A9D7690005AA181 /* CloudsGlobal.cpp */,

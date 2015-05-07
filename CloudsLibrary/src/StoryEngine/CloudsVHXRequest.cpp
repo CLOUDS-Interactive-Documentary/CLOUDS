@@ -9,6 +9,7 @@
 #include "ofxCrypto.h"
 #include "ofxJSONElement.h"
 
+#include "CloudsCrypto.h"
 #include "CloudsVHXRequest.h"
 #include "CloudsGlobal.h"
 #include "CloudsClip.h"
@@ -23,7 +24,7 @@ CloudsVHXRequest::CloudsVHXRequest()
 {
     if (userpwd.size() == 0) {
         // Load and decrypt the user password from file.
-        string path = GetCloudsDataPath() + "vhx/usrpwd.bin";
+        string path = GetCloudsDataPath(true) + "vhx/usrpwd.bin";
         ofFile file(path, ofFile::ReadOnly, true);
         if (!file.exists()) {
             ofLogError("CloudsVHXRequest::CloudsVHXRequest") << "Cannot open file at " << path;
@@ -38,9 +39,8 @@ CloudsVHXRequest::CloudsVHXRequest()
             string encoded;
             encoded.assign(chars, numChars);
             string decoded = ofxCrypto::base64_decode(encoded);
-            string salt = "cr0ndS";
-            int pos = decoded.find(salt);
-            userpwd = decoded.substr(0, pos-1) + decoded.substr(pos + salt.size());
+            int pos = decoded.find(CloudsSalt);
+            userpwd = decoded.substr(0, pos) + decoded.substr(pos + CloudsSalt.size());
         }
     }
     
@@ -84,7 +84,7 @@ void CloudsVHXRequest::threadedFunction()
     
     ssl.setup();
     ssl.setURL(url);
-    ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath() + "vhx/cacert.pem"));
+    ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath(true) + "vhx/cacert.pem"));
     ssl.setOpt(CURLOPT_USERPWD, userpwd);
     ssl.setOpt(CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
     
