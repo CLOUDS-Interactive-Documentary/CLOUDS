@@ -388,3 +388,4 @@ CloudsData/font/AxisStd-Regular.otf
 CloudsData/vhx/userpwd.txt
 
 CloudsData/runs/*.xml
+*.bin
