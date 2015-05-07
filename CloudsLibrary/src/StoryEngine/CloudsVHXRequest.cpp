@@ -6,6 +6,7 @@
 //
 //
 
+#include "ofxCrypto.h"
 #include "ofxJSONElement.h"
 
 #include "CloudsVHXRequest.h"
@@ -22,8 +23,25 @@ CloudsVHXRequest::CloudsVHXRequest()
 {
     if (userpwd.size() == 0) {
         // Load and decrypt the user password from file.
-        ofBuffer buffer = ofBufferFromFile(GetCloudsDataPath() + "vhx/userpwd.txt");
-        userpwd = buffer.getFirstLine();
+        string path = GetCloudsDataPath() + "vhx/usrpwd.bin";
+        ofFile file(path, ofFile::ReadOnly, true);
+        if (!file.exists()) {
+            ofLogError("CloudsVHXRequest::CloudsVHXRequest") << "Cannot open file at " << path;
+            return false;
+        }
+        
+        int numChars = 0;
+        file.read((char *)(&numChars), sizeof(int));
+        if (numChars > 0) {
+            char chars[numChars];
+            file.read(&chars[0], sizeof(char) * numChars);
+            string encoded;
+            encoded.assign(chars, numChars);
+            string decoded = ofxCrypto::base64_decode(encoded);
+            string salt = "cr0ndS";
+            int pos = decoded.find(salt);
+            userpwd = decoded.substr(0, pos-1) + decoded.substr(pos + salt.size());
+        }
     }
     
     ofAddListener(ofEvents().update, this, &CloudsVHXRequest::update);
