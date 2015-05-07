@@ -23,12 +23,7 @@ CloudsMedia::CloudsMedia(){
 
 #ifdef VHX_MEDIA
 void CloudsMedia::fetchVhxSourceUrl(){
-    // If the VHX url is already set and is recent...
-    if (vhxSourceVideoUrl.size() && (ofGetElapsedTimeMillis() - vhxTimestamp) < CloudsVHXUrlTimeLimit) {
-        // ...just re-use it.
-        hasMediaAsset = true;
-        return;
-    }
+
     
     if (vhxId.empty()) {
         // No ID :(
@@ -37,10 +32,19 @@ void CloudsMedia::fetchVhxSourceUrl(){
         return;
     }
     
+    // If the VHX url is already set and is recent...
+    if (vhxSourceVideoUrl.size() && (ofGetElapsedTimeMillis() - vhxTimestamp) < CloudsVHXUrlTimeLimit) {
+        // ...just re-use it.
+        hasMediaAsset = true;
+        return;
+    }
+    
     if (vhxRequest == NULL) {
         vhxRequest = new CloudsVHXRequest();
         ofAddListener(vhxRequest->completeEvent, this, &CloudsMedia::vhxRequestComplete);
     }
+    
+    vhxSourceVideoUrl = "";
     vhxRequest->fetchSourceUrl(vhxId);
 }
 

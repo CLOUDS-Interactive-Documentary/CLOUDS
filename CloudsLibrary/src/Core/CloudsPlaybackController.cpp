@@ -500,11 +500,6 @@ void CloudsPlaybackController::loadCurrentAct(){
 	currentPresetIndex = 0;
 	loadingAct = true;
 
-#ifdef VHX_MEDIA
-    if(currentAct != NULL){
-        currentAct->fetchClipVhxUrls();
-    }
-#endif
 }
 
 //--------------------------------------------------------------------
@@ -955,12 +950,20 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	if(loadingAct){
 		updateLoadingAct();
 	}
+    
 
+#ifdef VHX_MEDIA
+	if(shouldPlayAct && currentAct->getAllClips()[0]->vhxSourceVideoUrl != ""){
+		playCurrentAct();
+		shouldPlayAct = false;
+	}
+#else
 	if(shouldPlayAct){
 		playCurrentAct();
 		shouldPlayAct = false;
 	}
-	
+#endif
+    
 	updateTransition();
     
 }
@@ -1642,6 +1645,13 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 	
 	numClipsPlayed = 0;
 	currentAct = args.act;
+    
+#ifdef VHX_MEDIA
+    if(currentAct != NULL){
+        currentAct->fetchClipVhxUrls();
+    }
+#endif
+    
 	if(shouldPlayClusterMap){
 		clusterMap->setAct(currentAct);
 	}
@@ -1794,11 +1804,9 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 	bool clipLoadSuccessfullyLoaded = false;
 	if(clip->voiceOverAudio){
 #ifdef VHX_MEDIA
-		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->vhxSourceVideoUrl,
-                                                                                      subtitlesPath);
+		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->vhxSourceVideoUrl, subtitlesPath);
 #else
-        clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath,
-                                                                                      subtitlesPath);
+        clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip->voiceOverAudioPath, subtitlesPath);
 #endif
     }
 	else{

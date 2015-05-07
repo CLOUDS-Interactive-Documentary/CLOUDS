@@ -20,7 +20,7 @@ CloudsAct::CloudsAct(){
     
 	timelinePopulated = false;
     duration = 0;
-	defaulPrerollDuration = 2.0;
+	defaulPrerollDuration = 5.0;
     defaultAudioFade = 2.0;
 	incrementalQuesitonTime = 0.0;
     paused = false;

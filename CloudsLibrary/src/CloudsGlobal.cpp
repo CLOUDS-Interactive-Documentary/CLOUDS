@@ -65,7 +65,8 @@ string GetCloudsDataPath(bool ignored)
 string GetCloudsMediaPath(){
 #ifdef VHX_MEDIA
     ofLogError("GetCloudsMediaPath") << "VHX Should never use Media Path!";
-#else
+#endif
+    
     if(mediaRootPath == ""){
         //Prioritize development build over media roots so we don't confuse ourselves if CLOUDS is installed on development machine
         if(ofDirectory("../../../CloudsDataMedia").exists()){
@@ -87,7 +88,7 @@ string GetCloudsMediaPath(){
     ofLogVerbose("GetCloudsMediaPath") << mediaRootPath <<endl;
     
     return mediaRootPath;
-#endif //end VHX
+//#endif //end VHX
 }
 
 

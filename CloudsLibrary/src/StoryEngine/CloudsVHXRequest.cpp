@@ -22,6 +22,8 @@ CloudsVHXRequest::CloudsVHXRequest()
     : ofThread()
     , bNotifyComplete(false)
 {
+    ofxSSL::appendData = true;
+    
     if (userpwd.size() == 0) {
         // Load and decrypt the user password from file.
         string path = GetCloudsDataPath(true) + "vhx/usrpwd.bin";

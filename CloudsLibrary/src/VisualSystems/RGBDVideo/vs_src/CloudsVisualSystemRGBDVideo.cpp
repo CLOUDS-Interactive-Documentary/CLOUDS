@@ -577,7 +577,7 @@ bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "Path is blank" << endl;
 		return false;
 	}
-	
+    
 	filePath = GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos/" + filePath;
 
 	if(!ofFile(filePath).exists() ) {

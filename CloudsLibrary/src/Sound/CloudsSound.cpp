@@ -251,7 +251,7 @@ void CloudsSound::update(ofEventArgs & args){
 
 void CloudsSound::update(){
 	
-    threadedFunction();
+    //threadedFunction();
     
 	return;
 
