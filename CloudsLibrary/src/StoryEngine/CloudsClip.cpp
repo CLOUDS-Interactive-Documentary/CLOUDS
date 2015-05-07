@@ -12,12 +12,11 @@
 
 //#define FRAME_PADDING 24
 
-CloudsClip::CloudsClip(){
+CloudsClip::CloudsClip() : CloudsMedia(){
 	currentScore = 0;
 	startFrame = 0;
     endFrame = 0;
 	voiceOverAudio = false;
-	hasMediaAsset = false;
 	adjustmentLoaded = false;
 	minDepth = 400;
 	maxDepth = 1200;
@@ -25,13 +24,6 @@ CloudsClip::CloudsClip(){
 	networkPosition = ofVec3f(-1,-1,-1);
 	hasProjectExample = false;
     speakerVolume = 1.0;
-    
-#ifdef VHX_MEDIA
-    vhxRequest = NULL;
-    vhxId = "";
-    vhxSourceVideoUrl = "";
-    vhxTimestamp = 0;
-#endif
 }
 
 string CloudsClip::getLinkName(){
@@ -561,45 +553,3 @@ void CloudsClip::saveAdjustmentToXML(){
 string CloudsClip::getSceneFolder(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory(relinkFilePath(sourceVideoFilePath)));
 }
-
-#ifdef VHX_MEDIA
-void CloudsClip::fetchVhxSourceUrl(){
-    // If the VHX url is already set and is recent...
-    if (vhxSourceVideoUrl.size() && (ofGetElapsedTimeMillis() - vhxTimestamp) < CloudsVHXUrlTimeLimit) {
-        // ...just re-use it.
-        hasMediaAsset = true;
-        return;
-    }
-    
-    if (vhxId.empty()) {
-        // No ID :(
-        ofLogError("CloudsClip::fetchVhxSourceUrl") << "VHX ID not set! This shouldn't happen!";
-        hasMediaAsset = false;
-        return;
-    }
-    
-    if (vhxRequest == NULL) {
-        vhxRequest = new CloudsVHXRequest();
-        ofAddListener(vhxRequest->completeEvent, this, &CloudsClip::vhxRequestComplete);
-    }
-    vhxRequest->fetchSourceUrl(vhxId);
-}
-
-void CloudsClip::vhxRequestComplete(CloudsVHXEventArgs& args){
-    if (args.success) {
-        hasMediaAsset = true;
-        vhxSourceVideoUrl = args.result;
-        vhxTimestamp = ofGetElapsedTimeMillis();
-        ofLogVerbose("CloudsClip::vhxRequestComplete") << "Got source video URL " << vhxSourceVideoUrl;
-    }
-    else{
-        ofLogError("CloudsClip::vhxRequestComplete") << "Error returned from vhx request";
-    }
-    
-    if (vhxRequest) {
-        ofRemoveListener(vhxRequest->completeEvent, this, &CloudsClip::vhxRequestComplete);
-        delete vhxRequest;
-        vhxRequest = NULL;
-    }
-}
-#endif
