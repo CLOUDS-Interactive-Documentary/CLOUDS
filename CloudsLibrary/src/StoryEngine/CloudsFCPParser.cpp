@@ -359,11 +359,13 @@ void CloudsFCPParser::parseTopicAssociations(const string& filename){
 //            cout << "line " << line << " has more than one tab"<<endl;
             continue;
         }
-
+        
         string associatedKeyword = association[1];
         string subtopic = ofSplitString(association[0],"\t",true,true)[1];
         masterTopicAssociations[subtopic] = associatedKeyword;
+        masterTopicClipCount[associatedKeyword] += ofToInt(clipcount[0]);
         masterTopicSet.insert(associatedKeyword);
+        
 //        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
     }
 

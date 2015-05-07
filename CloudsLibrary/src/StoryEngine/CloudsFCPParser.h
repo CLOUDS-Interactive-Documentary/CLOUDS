@@ -195,6 +195,7 @@ class CloudsFCPParser {
     map<string, int> contentKeywords;
 
     map<string,string> masterTopicAssociations;
+    map<string, int> masterTopicClipCount;
     set<string> masterTopicSet; //all user facing topics
 
     vector<string> keywordVector;
