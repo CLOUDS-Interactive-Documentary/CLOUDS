@@ -206,7 +206,6 @@ void CloudsPortal::draw(){
 
 void CloudsPortal::drawOverlay(bool anchorToScreen){
 
-	//TODO MOVE TO HUDD
 	if(hovering){
 		
         ofPushStyle();

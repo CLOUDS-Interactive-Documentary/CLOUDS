@@ -571,7 +571,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
     kdtree.buildIndex( nodeMesh.getVertices() );
     
 	populateTopicPoints();
-    populateAssociations();
+    //populateAssociations();
     
 }
 
@@ -579,18 +579,20 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
 	
     topicPoints.clear();
     
-	vector<string>& keywords = parser->getContentKeywords();
-	int numClips = parser->getNumberOfClipsWithKeyword(keywords[0]);
+	//vector<string>& keywords = parser->getContentKeywords();
+    set<string>& masterTopics = parser->getMasterTopics();
+	int numClips = parser->getNumberOfClipsWithKeyword(*masterTopics.begin());
 	clipCountRange = ofRange(numClips,numClips);
-	for(int i = 0; i < keywords.size(); i++){
+    //int i = 0;
+    for (set<string>::iterator it = masterTopics.begin(); it != masterTopics.end(); it++) {
 		TopicPoint tp;
-		tp.keyword  = keywords[i];
-		tp.position = parser->getKeywordCentroid(keywords[i]);
-		tp.numClips = parser->getNumberOfClipsWithKeyword(keywords[i]);
+		tp.keyword  = *it;
+		tp.position = parser->getKeywordCentroid(tp.keyword);
+		tp.numClips = parser->getNumberOfClipsWithKeyword(tp.keyword);
 		clipCountRange.growToInclude(tp.numClips);
 //		cout << "num clips " << tp.numClips << " current range " << clipCountRange << endl;
 		topicPoints.push_back( tp );
-	}
+    }
     
 	for(int i = 0; i < topicPoints.size(); i++){
 		topicPoints[i].normalizedTopicScale =  clipCountRange.getNormalized(topicPoints[i].numClips);
@@ -598,46 +600,45 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
 
 }
 
-void CloudsVisualSystemClusterMap::populateAssociations(){
-    associations.clear();
-    topicset.clear();
-    ofBuffer topicAssociations = ofBufferFromFile(GetCloudsDataPath() + "logs/TopicAssociations.txt");
-    while(!topicAssociations.isLastLine()){
-        
-        string line = topicAssociations.getNextLine();
-        if(line.find(":") == string::npos){
-//            cout << "Skipping line " << line << endl;
-            continue;
-        }
-        
-        vector<string> association = ofSplitString(line, ":", true, true);
-        if(association.size() != 2){
-//            cout << "line " << line << " has more than one :"<<endl;
-            continue;
-        }
-        
-        vector<string> clipcount = ofSplitString(line, "\t",true,true);
-        if(clipcount.size() != 2){
-//            cout << "line " << line << " has more than one tab"<<endl;
-            continue;
-        }
-        
-        string associatedKeyword = association[1];
-        string subtopic = ofSplitString(association[0],"\t",true,true)[1];
-        associations[subtopic] = associatedKeyword;
-        topicset.insert(associatedKeyword);
-//        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
-    }
-    
-//    for(set<string>::iterator it = topicset.begin(); it != topicset.end(); it++){
-//        cout << *it << endl;
+//void CloudsVisualSystemClusterMap::populateAssociations(){
+//    associations.clear();
+//    topicset.clear();
+//    ofBuffer topicAssociations = ofBufferFromFile(GetCloudsDataPath() + "storyEngineParameters/TopicAssociations.txt");
+//    while(!topicAssociations.isLastLine()){
+//        
+//        string line = topicAssociations.getNextLine();
+//        if(line.find(":") == string::npos){
+////            cout << "Skipping line " << line << endl;
+//            continue;
+//        }
+//        
+//        vector<string> association = ofSplitString(line, ":", true, true);
+//        if(association.size() != 2){
+////            cout << "line " << line << " has more than one :"<<endl;
+//            continue;
+//        }
+//        
+//        vector<string> clipcount = ofSplitString(line, "\t",true,true);
+//        if(clipcount.size() != 2){
+////            cout << "line " << line << " has more than one tab"<<endl;
+//            continue;
+//        }
+//        
+//        string associatedKeyword = association[1];
+//        string subtopic = ofSplitString(association[0],"\t",true,true)[1];
+//        associations[subtopic] = associatedKeyword;
+//        topicset.insert(associatedKeyword);
+////        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
 //    }
-    return;
-}
+//    
+////    for(set<string>::iterator it = topicset.begin(); it != topicset.end(); it++){
+////        cout << *it << endl;
+////    }
+//}
 
-set<string>& CloudsVisualSystemClusterMap::getTopicSet(){
-    return topicset;
-}
+//set<string>& CloudsVisualSystemClusterMap::getTopicSet(){
+//    return topicset;
+//}
 
 void CloudsVisualSystemClusterMap::allocateFlickerTexture(){
 
@@ -1658,8 +1659,9 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
         }
         
         float associationTypeOn = ofMap(percentOptionsRevealed*percentTraversed, 0, .2,0,1.0,true);
-        if(associations.find(currentTopic) != associations.end()){
-            string associatedTopic = associations[currentTopic];
+        if( parser->hasMasterTopicAssociation(currentTopic)){
+        //if(associations.find(currentTopic) != associations.end()){
+            string associatedTopic = parser->getMasterKeyword(currentTopic);
             int numChars = associatedTopic.size() * associationTypeOn;
             if(numChars%2 == 1) numChars = MIN(numChars+1,associatedTopic.size());
             string partialString = associatedTopic.substr(0, numChars);

@@ -40,6 +40,7 @@ class CloudsFCPParser {
     void parseLinks(const string& linkFile);
 	void parseClusterNetwork(const string& fileName);
 	void parseProjectExamples(const string& filename);
+    void parseTopicAssociations(const string& filename);
 #ifdef VHX_MEDIA
     void parseVHXIds(const string& filename);
 #endif
@@ -140,16 +141,21 @@ class CloudsFCPParser {
 	vector<CloudsClip*> getMetaDataConnections(CloudsClip* source);
 	int getNumMetaDataConnections(CloudsClip* source);
 	
-    int occurrencesOfKeyword(const string& keyword);
     bool operator()(const string& a, const string& b);
+    
+    int occurrencesOfKeyword(const string& keyword);
     vector<string>& getContentKeywords();
 	vector<string>& getKeywordFamily(const string&  keyword);
-	ofVec3f getKeywordCentroid(const string&  keyword);
-	
+	ofVec3f getKeywordCentroid(const string& keyword);
+    
+    //master topics are fit to be shown to viwers and contain many keywords as subtopics
+	set<string>& getMasterTopics();
+    bool isMasterKeyword(const string& keyword);
+    bool hasMasterTopicAssociation(const string& keyword);
+    string getMasterKeyword(const string& keyword);
+    
     void saveInterventions(const string&  interventionsFile);
 	void saveSpeakersVolume(const string&  speakerVolFile);
-    
-    
     
 #pragma mark key themes
 	string closestKeyThemeToTag(const string&  searchTag);
@@ -187,7 +193,10 @@ class CloudsFCPParser {
     
     map<string, int> allKeywords;
     map<string, int> contentKeywords;
-    
+
+    map<string,string> masterTopicAssociations;
+    set<string> masterTopicSet; //all user facing topics
+
     vector<string> keywordVector;
     vector<string> contentKeywordVector;
 	

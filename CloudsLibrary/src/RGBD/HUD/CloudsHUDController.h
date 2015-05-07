@@ -235,6 +235,8 @@ class CloudsHUDController {
     void          updateScroll();
     //////////////
     
+    bool bPaused;
+
     void updateResearchNavigation();
     
     ////////////////////
@@ -286,6 +288,7 @@ class CloudsHUDController {
     float scaleAmt;
     ofVec2f scaleOffset;
     int margin;
+    
     
     ofImage topicMapPreview;
     ofImage peopleMapPreview;

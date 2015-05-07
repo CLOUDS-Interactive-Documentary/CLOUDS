@@ -55,6 +55,7 @@ CloudsHUDController::CloudsHUDController(){
     
     scaleAmt = 1.0;
     margin = 40;
+    bPaused = false;
     
 #ifdef OCULUS_RIFT
     // set defaults
@@ -307,9 +308,9 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["MapTextBox"]->setText(GetTranslationForString("MAP"), false);
     hudLabelMap["PeopleTextBox"]->setText(GetTranslationForString("PEOPLE"), false);
     hudLabelMap["VisualsTextBox"]->setText(GetTranslationForString("VISUALS"), false);
-    hudLabelMap["RSResetButtonTextBox"]->setText(GetTranslationForString("EXIT"), false); //this one may change...
+    hudLabelMap["RSResetButtonTextBox"]->setText(GetTranslationForString("QUIT"), false); //this one may change...
     
-    hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("EXIT"), false);
+    hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("QUIT"), false);
     hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"), false);
     hudLabelMap["ExploreTextBox"]->setText(GetTranslationForString("EXPLORE THE MAP"), false);
     hudLabelMap["SeeMoreTextBox"]->setText(GetTranslationForString("SEE MORE OF THIS PERSON"), false); //todo dynmic name
@@ -886,7 +887,10 @@ void CloudsHUDController::hideAbout(){
 }
 
 void CloudsHUDController::pause(){
-
+    if(bPaused){
+        return;
+    }
+    bPaused = true;
     
     //set up the sizing
     ofRectangle backingBounds = layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreBackingHover")->bounds;
@@ -929,6 +933,11 @@ void CloudsHUDController::pause(){
 }
 
 void CloudsHUDController::unpause(){
+    if( !bPaused ){
+        return;
+    }
+    bPaused = false;
+
     animateOff( CLOUDS_HUD_PAUSE );
     if(bQuestionDisplayed){
         animateOn( CLOUDS_HUD_QUESTION );
@@ -1038,7 +1047,9 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
         (it->second)->mousePressed(ofVec2f(args.x,args.y));
     }
 
-    if( hudOpenMap[CLOUDS_HUD_HOME] && home.hitTest(args.x, args.y) ){
+    if(( hudOpenMap[CLOUDS_HUD_HOME] && home.hitTest(args.x, args.y) ) ||
+       ( hudOpenMap[CLOUDS_HUD_LOWER_THIRD] && getScaledRectangle( layers[CLOUDS_HUD_LOWER_THIRD]->svg.getBounds()).inside(args.x, args.y)) )
+    {
         home.activate();
     }
     
@@ -1534,13 +1545,13 @@ void CloudsHUDController::animateOff(){
 
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
     
-    if(layer == CLOUDS_HUD_LOWER_THIRD){
-        cout << "ANIMATING OUT LOWER THIRDS" << endl;
-    }
+//    if(layer == CLOUDS_HUD_LOWER_THIRD){
+//        cout << "ANIMATING OUT LOWER THIRDS" << endl;
+//    }
     
-    if(layer == CLOUDS_HUD_QUESTION){
-        cout << "ANIMATING OUT QUESTION" << endl;
-    }
+//    if(layer == CLOUDS_HUD_QUESTION){
+//        cout << "ANIMATING OUT QUESTION" << endl;
+//    }
     
     if (isPlaying && (layer == CLOUDS_HUD_PROJECT_EXAMPLE  || layer == CLOUDS_HUD_ALL)) {
 		isPlaying = false;

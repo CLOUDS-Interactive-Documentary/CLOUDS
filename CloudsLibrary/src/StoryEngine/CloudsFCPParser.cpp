@@ -33,6 +33,7 @@ void CloudsFCPParser::loadFromFiles(){
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
 	parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
+    parseTopicAssociations(GetCloudsDataPath() + "storyEngineParameters/TopicAssociations.txt");
 #ifdef VHX_MEDIA
 	parseVHXIds(GetCloudsDataPath() + "vhx/clip_ids.csv");
 #endif
@@ -331,6 +332,43 @@ void CloudsFCPParser::parseClusterNetwork(const string& fileName){
 //	calculateKeywordAdjascency();
 	calculateKeywordFamilies();
     disperseUnpositionedClips();
+}
+
+void CloudsFCPParser::parseTopicAssociations(const string& filename){
+
+    masterTopicAssociations.clear();
+    masterTopicSet.clear();
+
+    ofBuffer topicAssociations = ofBufferFromFile(filename);
+    while(!topicAssociations.isLastLine()){
+
+        string line = topicAssociations.getNextLine();
+        if(line.find(":") == string::npos){
+//            cout << "Skipping line " << line << endl;
+            continue;
+        }
+
+        vector<string> association = ofSplitString(line, ":", true, true);
+        if(association.size() != 2){
+//            cout << "line " << line << " has more than one :"<<endl;
+            continue;
+        }
+
+        vector<string> clipcount = ofSplitString(line, "\t",true,true);
+        if(clipcount.size() != 2){
+//            cout << "line " << line << " has more than one tab"<<endl;
+            continue;
+        }
+
+        string associatedKeyword = association[1];
+        string subtopic = ofSplitString(association[0],"\t",true,true)[1];
+        masterTopicAssociations[subtopic] = associatedKeyword;
+        masterTopicSet.insert(associatedKeyword);
+//        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
+    }
+
+    //TODO: create associations for all unassociated topics
+    
 }
 
 #ifdef VHX_MEDIA
@@ -736,6 +774,26 @@ int CloudsFCPParser::getCentroidMapIndex(const string& keyword){
     }
     ofLogError("CloudsFCPParser::getCentroidMapIndex")<<" Couldnt find  index for keyword: "<<keyword<<endl;
 	return -1;
+}
+
+set<string>& CloudsFCPParser::getMasterTopics(){
+    return masterTopicSet;
+}
+
+bool CloudsFCPParser::isMasterKeyword(const string& keyword){
+    return masterTopicSet.find(keyword) != masterTopicSet.end();
+}
+
+bool CloudsFCPParser::hasMasterTopicAssociation(const string& keyword){
+    return masterTopicAssociations.find(keyword) != masterTopicAssociations.end();
+}
+
+string CloudsFCPParser::getMasterKeyword(const string& keyword){
+    if(!hasMasterTopicAssociation(keyword)){
+        ofLogError("CloudsFCPParser::isMasterKeyword") << "Couldn't find master topic for keyword " << keyword;
+        return keyword;
+    }
+    return masterTopicAssociations[keyword];
 }
 
 void CloudsFCPParser::saveLinks(){

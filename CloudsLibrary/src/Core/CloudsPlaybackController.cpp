@@ -334,7 +334,8 @@ void CloudsPlaybackController::threadedFunction(){
 	clusterMap->buildEntireCluster(parser);
     introSequence->percentLoaded = 0.7;
     
-    hud.setTopics(clusterMap->getTopicSet());
+    //hud.setTopics(clusterMap->getTopicSet());
+    hud.setTopics(parser.getMasterTopics());
     hud.populateSpeakers();
     hud.setVisuals(visualsMap->getAvailableSystems());
     
@@ -775,7 +776,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	////////////////////
 	// RGBD SYSTEM
     if(currentVisualSystem == rgbdVisualSystem){
-        if(!transitionController.isTransitioning() && !bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
+        if(!transitionController.isTransitioning() &&
+           !bQuestionAsked &&
+           rgbdVisualSystem->isQuestionSelected())
+        {
+            currentAct->pause();
             bQuestionAsked = true;
             run.questionsAsked++;
             transitionController.transitionWithQuestion(2.0, 0.1);
@@ -874,7 +879,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     if(!showingIntro && !showingClusterMap && !userReset &&
        (hud.isResearchResetHit() || hud.isResetHit() || rgbdVisualSystem->isResetSelected()) )
     {
+        hud.unpause();
         hud.animateOff();
+        
         userReset = true;
         returnToIntro = true;
         #ifdef OCULUS_RIFT
@@ -1032,7 +1039,7 @@ void CloudsPlaybackController::updateTransition(){
             case TRANSITION_INTERVIEW_IN:
                 break;
                 
-                ///LEAVING
+            ///LEAVING
             case TRANSITION_INTERVIEW_OUT:
                     
                 if(bQuestionAsked){
@@ -1185,7 +1192,7 @@ void CloudsPlaybackController::updateTransition(){
                 //starting
             case TRANSITION_INTERVIEW_OUT:
 				if(bQuestionAsked || rgbdVisualSystem->isResetSelected()){
-                    //currentAct->getTimeline().stop();
+                    
                     currentAct->terminateAct();
                     hud.animateOff(CLOUDS_HUD_NEXT);
                     hud.animateOff(CLOUDS_HUD_HOME);

@@ -266,7 +266,7 @@
 7	inexactitude : details
 7	robots : robots
 7	humanism : humanism
-7	github : gt hub
+7	github : github
 7	gender : gender
 7	focus : focus
 7	form : form
@@ -477,7 +477,6 @@
 2	brain : mind
 2	data mining : data
 2	data collection : data
-2	#pe?Cascade
 2	computers : computers
 2	c++ : C++
 2	visual effects 
@@ -491,7 +490,6 @@
 2	zach lieberman
 2	design process : design process
 2	atmosphere
-2	#pe?Meshu
 2	ambiguity
 2	demo scene : demo scene 
 2	authorship
@@ -508,8 +506,6 @@
 1	novelty
 1	old history : history 
 1	number : math 
-1	#pe?Laser Tag
-1	#pe?Listening Post
 1	ocd 
 1	unknown
 1	intimacy
@@ -523,8 +519,6 @@
 1	work and life
 1	wizardry
 1	leadership
-1	#pe
-1	#pe?Calendars
 1	line
 1	visual thinking : thinking 
 1	live
