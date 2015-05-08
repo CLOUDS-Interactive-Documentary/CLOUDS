@@ -53,10 +53,12 @@ string GetCloudsDataPath(bool ignored)
             //JG TO DM: Note thate these are teh same. Let's combine ignored data into the main data folder for release.
             dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/dataRoot.txt").getFirstLine() );
             dataRootPathIgnored = dataRootPath;
-        }
+		}
         #else
-        //TODO: Windows data path
-        #endif
+		else if(ofFile("C:/Program Files (x86)/CLOUDS/dataRoot.txt").exists()){
+            mediaRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/mediaRoot.txt").getFirstLine() );
+        }
+		#endif
     }
     
     return ignored ? dataRootPathIgnored : dataRootPath;
@@ -80,7 +82,9 @@ string GetCloudsMediaPath(){
             mediaRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/mediaRoot.txt").getFirstLine() );
         }
 #else
-        //TODO Windows Media Path Root
+         else if(ofFile("C:/Program Files (x86)/CLOUDS/MediaRoot.txt").exists()){
+            mediaRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/mediaRoot.txt").getFirstLine() );
+        }
 #endif
     }
     
