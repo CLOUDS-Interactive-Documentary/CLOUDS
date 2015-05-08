@@ -303,7 +303,6 @@
 5	wearables : wearables
 5	military technology : military technology
 5	reading 
-5	r&d : research and development 
 5	boring 
 5	light 
 5	evaluation
@@ -332,7 +331,6 @@
 4	prediction
 4	nostalgia
 4	objects
-4	metaphor : metaphors
 4	virus : viruses
 4	statistics : statistics
 4	funny
@@ -356,7 +354,6 @@
 4	location
 4	branching
 4	mastery
-4	meaning : poetics 
 4	efficiency
 4	anonymous
 4	art and experience
@@ -373,7 +370,6 @@
 3	guru : gurus
 3	mysticism
 3	serious
-3	hallucination : visions
 3	motion
 3	change
 3	text
@@ -408,7 +404,6 @@
 3	disaster
 3	avatar
 3	kill the master
-3	alone together : anti-social 
 3	journalism
 3	audience
 3	writing
@@ -432,7 +427,7 @@
 2	ego
 2	electronic music : electronic music 
 2	skill
-2	synergy : syergy 
+2	synergy : synergy 
 2	space
 2	eyeo
 2	psychology
@@ -446,7 +441,7 @@
 2	inventor : invention 
 2	interesting
 2	intelligence : intelligence 
-2	innovation : innovaation 
+2	innovation : innovation 
 2	information overload : information overload 
 2	laughter
 2	infinite conversation 
@@ -498,7 +493,6 @@
 1	operating system
 1	veterans
 1	multimedia : multimedia
-1	mutlisensory : multisensory experience
 1	uture
 1	nano : nano 
 1	noninteractivity : interactivity 
@@ -515,15 +509,12 @@
 1	iphone
 1	jewelry
 1	julian oliver
-1	 how did people learn to code?
 1	work and life
 1	wizardry
 1	leadership
 1	line
 1	visual thinking : thinking 
 1	live
-1	maker : makers 
-1	making things : makers 
 1	malevich
 1	manufacturing
 1	mentorship
@@ -538,7 +529,6 @@
 1	the digital divide : digital divide
 1	self reflection : knowledge 
 1	self : self expression 
-1	the future : futures
 1	sadness
 1	robert hodgin
 1	the gift
@@ -580,7 +570,6 @@
 1	tron
 1	tweaking
 1	public/private
-1	thinkerer : tinkering
 1	project examples
 1	problem of newness : newness 
 1	presentation
@@ -610,7 +599,6 @@
 1	foraging
 1	forums
 1	frontier : frontier 
-1	generative : generativity 
 1	gesture recognition
 1	give everything away
 1	golan levin
@@ -657,6 +645,5 @@
 1	images : images
 1	ignorance
 1	insight
-1	infinite game : infinite games
 1	internet culture
 

@@ -146,13 +146,14 @@ class CloudsFCPParser {
     int occurrencesOfKeyword(const string& keyword);
     vector<string>& getContentKeywords();
 	vector<string>& getKeywordFamily(const string&  keyword);
-	ofVec3f getKeywordCentroid(const string& keyword);
+	//ofVec3f getKeywordCentroid(const string& keyword);
     
     //master topics are fit to be shown to viwers and contain many keywords as subtopics
 	set<string>& getMasterTopics();
     bool isMasterKeyword(const string& keyword);
     bool hasMasterTopicAssociation(const string& keyword);
     string getMasterKeyword(const string& keyword);
+	ofVec3f getMasterTopicPosition(const string& keyword);
     
     void saveInterventions(const string&  interventionsFile);
 	void saveSpeakersVolume(const string&  speakerVolFile);
@@ -162,8 +163,8 @@ class CloudsFCPParser {
 	
 	set<string> clusterMapColors;
     vector<string> getAdjacentKeywords(const string&  currentKeyword, int numOfDesiredKeywords);
-    float getCohesionIndexForKeyword(const string&  keyword);
-    float getDistanceFromAdjacentKeywords(const string&  keyword1, const string&  keyword2);
+    //float getCohesionIndexForKeyword(const string&  keyword);
+    //float getDistanceFromAdjacentKeywords(const string&  keyword1, const string&  keyword2);
     
   protected:
 #ifdef VHX_MEDIA
@@ -198,6 +199,7 @@ class CloudsFCPParser {
     map<string,vector<string> > masterTopicList; //go from master topic -> list of subtopics
     map<string, int> masterTopicClipCount;
     set<string> masterTopicSet; //all user facing topics
+    map<string, ofVec3f> masterTopicCentroids;
 
     vector<string> keywordVector;
     vector<string> contentKeywordVector;
@@ -219,15 +221,14 @@ class CloudsFCPParser {
 	map<string,int> clipIdToProjectExample;
 	
 	//KEYWORDS + CLUSTER NETWORK
-    vector<pair<string, ofVec3f> > keywordCentroids;
-	map<string, vector<string> > keywordAdjacency;
+	//map<string, vector<string> > keywordAdjacency;
 	map<string, vector<string> > keywordFamilies;
-    map<string, int> keywordCentroidIndex;
-    map<string, float> keywordCohesionMap;
+    //map< string, int> keywordCentroidIndex;
+    //map<string, float> keywordCohesionMap;
     void populateKeywordCentroids();
-    void calculateCohesionMedianForKeywords();
-    int getCentroidMapIndex(const string&  keyword);
-	void calculateKeywordAdjascency();
+    //void calculateCohesionMedianForKeywords();
+    //int getCentroidMapIndex(const string&  keyword);
+	//void calculateKeywordAdjascency();
 	void calculateKeywordFamilies();
     void disperseUnpositionedClips();
     

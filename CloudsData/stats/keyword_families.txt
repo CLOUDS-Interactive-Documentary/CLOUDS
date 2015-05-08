@@ -1,672 +1,683 @@
-(Alb),english,arabic,globalization,language
-3d printing,architecture,digital meets physical,design process,product,organic,objects,sculpture,growth,design,toys
+(Alb),arabic,english,globalization,language
+3d printing,sculpture,digital meets physical,architecture,design process,product,organic,design,objects,growth,toys
 DNA,art and science,biology
-abstraction,logic,art history,math,art and tech,arabic,representation,energy,generative art,malevich,new media old media
-accessibility,zach lieberman,eyewriter,fun,processing,toolkits,assistive technology,installation,education,software,teaching
-acu,aesthetics and computation,open frameworks,media lab,teaching,toolkit,open source,sharing
-addiction,hacker,eyewriter,nerd,invention,programming,coding,beginnings,hackers,process
+RGBD,kinect,clouds,machine vision,camera
+abstraction,math,logic,arabic,art history,energy,malevich,art and tech,epiphany,multiverse,imaginary
+accessibility,zach lieberman,eyewriter,processing,fun,toolkits,assistive technology,education,software,installation,teaching
+acu,aesthetics and computation,open frameworks,media lab,teaching,open source,toolkit,sharing
+addiction,hacker,eyewriter,nerd,programming,coding,hackathon,invention,beginnings,hackers,process
 advertising,commercialism,software,originality,open source
-aesthetic experience,energy,epiphany,sensation,wonder,feeling,visual cortex,beauty,style,abstraction,critique
-aesthetics,beauty,taste,design,critique,subjectivity,communication,style,abstraction,representation,visual culture
-aesthetics and computation,media lab,john maeda,acu,art and code,open frameworks,teaching,hybridity,beginnings,education,toolkit
+aesthetic experience,sensation,energy,wonder,epiphany,visual cortex,feeling,art and experience,evaluation,subjectivity,embodiment
+aesthetics,beauty,subjectivity,taste,design,critique,communication,style,visual culture,evolution,consumer
+aesthetics and computation,media lab,john maeda,acu,art and code,open frameworks,teaching,hybridity,education,beginnings,design by numbers
 afterlife,death,quantified self,personal data,archiving
-algorithm,genetics,cellular automata,bots,infinity,rules,artificial life,evolution,games,cosmogeny,stock market
-algorithms,stock market,error,bots,chaos,dysfunction,experience design,artificial intelligence,reality,stories,internet culture
-alone together,connectivity,noosphere,information overload,balance,focus,the cloud,distraction,relationships,embodiment,interconnectedness
-ambiguity,presentation,understanding,struggle with technology,story,frustration,art,cognition,thinking with code,language
-animation,tree,branching,collaboration,storytelling
+algorithm,genetics,math,cellular automata,rules,artificial life,games,world building,evolution,cosmogeny,infinity
+algorithms,stock market,bots,error,dysfunction,artificial intelligence,chaos,man vs machine,control,experience design,new aesthetic
+ambiguity,presentation,understanding,struggle with technology,frustration,story,thinking with code,cognition,art,language
+animation,character,behavior,synaesthesia,anthropomorphism,kids,flocking,narrative,tree,influence,branching
 anonymous,snarky,authorship,network security,crowdsourcing,criticality,hackers,transparency,control,power,identity
 anthropology,curation,memes,ideas,originality,tribe,collaboration,sharing,community
+anthropomorphism,character,animation,narrative,emergence,emotion,storytelling
 antihuman,digital,machine aesthetics,cyberpunk,artificiality,cyborg,new aesthetic
-apocalypse,survival,death,obsolescence,future,weird,preservation,critical engineering,archiving,dystopia,criticality
-apple,gadget,google,devices,facebook,technology,users,power
+apocalypse,survival,future,dystopia,death,obsolescence,weird,singularity,preservation,archiving,critical engineering
+apple,gadget,seamlessness,google,devices,opacity,facebook,transparency,technology,users,power
 apporopriation,ideas,originality,newness
-apps,fluxus,performance art,performance,technoptimism,solutions,datatelling,real and virtual,critical engineering,criticality,social
-arabic,english,globalization, (Alb),(Alb),abstraction,math,language,algorithm,visual culture,generative art
-architecture,organic,growth,interdisciplinary,3d printing,projection,data mining,product,light,immersion,discovery
-archiving,memory,preservation,personal data,death,old media,history,data,lifetracking,museums,apocalypse
+apps,fluxus,performance art,performance,technoptimism,solutions,augmented reality,datatelling,critical engineering,criticality,social
+arabic,english,globalization,(Alb),abstraction,language,math,algorithm,visual culture,generative art,pattern
+architecture,organic,growth,interdisciplinary,3d printing,data mining,projection,product,immersion,light,discovery
+archiving,memory,preservation,personal data,old media,history,death,data,lifetracking,library,museums
 ars electronica,generations,mentors,new media,beginnings,collaboration
-art,art and tech,poetry,journey,tech-demo,meaning,culture,curation,art history,useless,cultural value
-art and code,expression,aesthetics and computation,self expression,hybridity,media lab,creative coders,interdisciplinary,thinking with code,generative art,coding
-art and experience,heuristics,branching,touch,everyday,media,intuition,feedback,experience,mind and hand,gesture
-art and science,DNA,virus,biology,dna,emergence,simulation
-art and security,julian oliver,public/private,r&d,network security,control,security,power,privacy,surveillance,users
-art and tech,creative coding,new media,art,abstraction,technology,toolkits,experience design,techpositive,open frameworks,new media old media
-art history,malevich,fluxus,trendspotting,abstraction,performance art,art,experience design,style,art and tech,algorithms
-art vs engineering,useful,process,thinking with code,career,tech-demo,meaning,evaluation,inexactitude,poetry,art
-art world,thinkerer,maker,how did you get into working with code?,graphic design,concept,video art,design and art,new media,cultural value,style
-artificial intelligence,man vs machine,consciousness,cognition,limitations,new aesthetic,algorithms,uncanny,artificiality,collaboration with machines,computation
-artificial life,cellular automata,emergence,evolution,cosmogeny,infinity,synthetic biology,world building,biology,games,algorithm
-artificiality,mind,machine aesthetics,utopia,consciousness,uture,new aesthetic,digital,antihuman,coevolution,debugging
-assistive technology,eyewriter,psychology,prosthetic,gesture recognition,zach lieberman,sensors,ubiquity,accessibility,embodiment,fantasy technology
-atmosphere,flow,prediction,revelation,gestalt,phenomena,pattern,chaos,complexity,perception,systems
-attention,distraction,focus,staring at screens,embodiment,net.art,zen,real and virtual,improvization,mirror,conviction
+art,art and tech,journey,art vs engineering,poetry,art world,culture,creativity,critique,creative process,experience
+art and code,aesthetics and computation,expression,self expression,creative coders,media lab,hybridity,interdisciplinary,art vs engineering,thinking with code,public
+art and experience,touch,everyday,media,subjectivity,aesthetic experience,experience,feedback,intuition,gesture,improvization
+art and science,DNA,inspiration,viruses,biology,phenomena,dna,installation,art and tech,physicality,nature
+art and security,julian oliver,public/private,research and development,network security,security,control,power,privacy,surveillance,users
+art and tech,creative coding,new media,toolkits,technology,art history,art,experience design,abstraction,perception,open frameworks
+art history,malevich,fluxus,abstraction,art and tech,trendspotting,obsolescence,history,performance art,experience design,newness
+art vs engineering,useful,thinking with code,process,career,art and code,tech-demo,art,evaluation,inexactitude,problem solving
+art world,design and art,graphic design,concept,video art,makers,critique,new media,art,form,cultural value
+artificial intelligence,man vs machine,consciousness,robots,algorithms,cognition,new aesthetic,limitations,singularity,science fiction,uncanny
+artificial life,cellular automata,emergence,biology,evolution,synthetic biology,cosmogeny,games,world building,algorithm,dna
+artificiality,machine aesthetics,utopia,mind,antihuman,uture,coevolution,digital,consciousness,new aesthetic,debugging
+assistive technology,eyewriter,gesture recognition,zach lieberman,psychology,sensors,prosthetic,ubiquity,accessibility,embodiment,fantasy technology
+atmosphere,flow,prediction,revelation,chaos,gestalt,phenomena,pattern,complexity,systems
+attention,distraction,focus,staring at screens,embodiment,net.art,zen,conviction,mirror,improvization,real and virtual
 audience,live,digital divide,cultural value,embodiment,fantasy technology,gesture,improvization,science fiction,new media,future of cinema
-audiovisualization,music,sound,liveness,synesthesia,kids,noise,systems,behavior,collaboration,interactivity
-augmented reality,interfaces,ubiquity,mobile,fantasy,sensors,real and virtual,videogames,cities,devices,staring at screens
-authorship,anonymous,gardening,randomness,discovery,generative art,control,emergence,algorithm,process
-avatar,identity,privacy,world building,facebook,representation,control,reality,videogames,personal data,virtual
+audiovisualization,music,sound,synaesthesia,liveness,synesthesia,pattern,animation,behavior,children,systems
+augmented reality,interfaces,ubiquity,mobile,fantasy,fiction,fluxus,sensors,performance,videogames,apps
+authorship,oral tradition,anonymous,gardening,randomness,memes,discovery,originality,control,generative art,emergence
+avatar,identity,privacy,representation,facebook,world building,control,reality,videogames,virtual,personal data
 awkward,performance art,physicality,history
-balance,information overload,alone together,connectivity,work,focus,distraction,embodiment,zen,attention,simplicity
-beautiful exhuberance,limits of the computer,taste,formalism,beauty,critique,visual culture,originality,aesthetics,old media,math
-beauty,aesthetics,truth,beautiful exhuberance,critique,form,elegance,visual culture,taste,aesthetic experience,subjectivity
-beginnings,learning,programming,media lab,aesthetics and computation,nerd,videogames,john maeda,history,code,art and code
-behavior,uncanny,equilibrium,text,synesthesia,representation,story,audiovisualization,interactivity,physics,simulation
+background,engineering,hybridity,beginnings
+balance,information overload,connectivity,work,focus,distraction,embodiment,attention,teaching,simplicity,zen
+beautiful exhuberance,limits of the computer,taste,formalism,beauty,visual culture,critique,aesthetics,originality,old media,newness
+beauty,aesthetics,truth,beautiful exhuberance,critique,form,visual culture,elegance,taste,formalism,subjectivity
+beginnings,learning,programming,videogames,media lab,nerd,aesthetics and computation,history,john maeda,computer,generations
+behavior,animation,character,uncanny,equilibrium,kids,story,flocking,representation,text,synesthesia
 being,gratitude,journey,career
-big data,data,facebook,data ownership,security,privacy,prediction,futurism,pattern,social media,signals
-biology,biology and code,dna,art and science,synthetic biology,artificial life,emergence,nature,organic,growth,systems
-biology and code,dna,biology,synthetic biology,genetics,order,messiness,code is messy,evolution,metaphor,algorithm
+big data,facebook,data ownership,data,security,privacy,prediction,futurism,signals,social media,pattern
+biology,biology and code,dna,artificial life,synthetic biology,art and science,emergence,nature,organic,growth,systems
+biology and code,dna,biology,synthetic biology,genetics,order,messiness,code is messy,evolution,metaphors,infinity
 birth,interesting,creation,evolution,process
 book,motion,knowledge,teaching,story,logic,open frameworks,cosmogeny,sharing,community
-boring,staring at screens,focus,struggle with technology,distraction,embodiment,frustration,economics,attention,programming,pattern
-bots,stock market,chaos,dystopia,algorithms,security,dysfunction,algorithm,man vs machine,economics,power
-branching,heuristics,mind and hand,art and experience,animation,tree,skill,intuition,mastery,feedback,distraction
+boring,staring at screens,focus,struggle with technology,distraction,embodiment,frustration,installation,economics,attention,programming
+bots,stock market,algorithms,chaos,dystopia,man vs machine,security,error,dysfunction,power,economics
+brain,mind,prosthetic,debugging,understanding,visualization,physics,imagination,cognition,perception,programming
+branching,mind and hand,skill,tree,mastery,animation,intuition,distraction,thinking by doing,creativity,process
+branding,marketing,name,identity,career,beginnings
 bravado,paul rand,humor,generations,mentors,design
 brogrammers,gender,nerd,tribe
-bugs,dysfunction,error,debugging,failure,things breaking,stress,confusion,challenge,glitch,system
-business,jewelry,organizations,passion,product,cultural value,social dynamics,career,commercialism,art vs engineering,art
-c++,operating system,challenge,understanding,engineering,language,programming,systems
-camera,machine vision,kinect,sensor,ubiquitous computing,ubiquity,future of cinema,fantasy technology,creative misuse,surveillance,object recognition
-cameras,cities,sensor,machine vision,kinect,surveillance,immersion,power,camera,interactivity,future
-career,money,journey,life,commercialism,generations,art vs engineering,teaching,passing the baton,work,business
-carl sims,evolution: How does the computer simulate accelerated evolution?,genetics,evolution,collaboration with machines,dna,artificial life,aesthetics,new aesthetic,beauty,artificial intelligence
-cellular automata,artificial life,infinity,world building,games,cosmogeny,universe,rules,algorithm,efficiency,emergence
-challenge,stress,c++,uncertainty,understanding,bugs,dreams,frustration,dysfunction,solutions,language
-challenges,rhetoric,dichotomy,critique,struggle,questions,coding for humanity,humanism,useless,struggle with technology,videogames
-chance,probability,luck,randomness,noise,serendipity,gift,random,number,organic,algorithm
-change,hope,technoptimism,interconnectedness,invention,utopia,imagination,problem solving,progress,math,computation
-chaos,stock market,bots,prediction,algorithms,dysfunction,error,atmosphere,systems,noise,pattern
-children,play,interactivity,gesture,imagination,success,fun,life,instrument,mastery,possibility
+bugs,dysfunction,error,debugging,things breaking,stress,failure,challenge,confusion,glitch,uncertainty
+business,jewelry,organizations,passion,product,cultural value,social dynamics,career,commercialism,art vs engineering,design
+c++,operating system,engineering,systems,language,programming
+camera,machine vision,sensor,kinect,ubiquitous computing,ubiquity,fantasy technology,creative misuse,future of cinema,surveillance,object recognition
+cameras,cities,vision,sensor,machine vision,surveillance,camera,kinect,immersion,physics,power
+career,money,journey,life,generations,art vs engineering,teaching,passing the baton,commercialism,work,success
+carl sims,genetics,evolution,collaboration with machines,dna,artificial life,aesthetics,new aesthetic,beauty,artificial intelligence,code
+cellular automata,artificial life,games,world building,rules,cosmogeny,universe,efficiency,algorithm,genetics,emergence
+challenge,stress,uncertainty,bugs,frustration,dreams,solutions,dysfunction
+challenges,rhetoric,dichotomy,critique,struggle,coding for humanity,questions,useless,humanism,struggle with technology,videogames
+chance,probability,luck,randomness,noise,serendipity,gift,number,organic,games,algorithm
+change,hope,technoptimism,interconnectedness,utopia,invention,imagination,problem solving,progress,computation,society
+chaos,stock market,prediction,bots,algorithms,error,dysfunction,atmosphere,noise,systems,probability
+character,animation,anthropomorphism,kids,behavior,influence,synaesthesia,humor,narrative,children,audiovisualization
+childhood,legos,beginnings,learning
+children,play,interactivity,gesture,kids,success,character,imagination,mastery,life,fun
 choices,own the tool,post-digital,program or be programmed,limitations,learning
 chrome,net.art,videogames,virtual
-cinema,narrative,tragedy,serious,future of cinema,storytelling,immersion,games,experience,clouds,videogames
-cities,infrastructure,sublime,cameras,open paths,perspective,network security,society,zoom,ubiquity,revelation
+cinema,narrative,filmmaking,tragedy,virtual reality,future of cinema,serious,storytelling,immersion,games,world building
+cities,infrastructure,sublime,open paths,cameras,network security,society,zoom,ubiquity,revelation,perspective
 clock,time,computer
-clouds,future of cinema,narrative,dialogue,immersion,storytelling,science fiction,recursion,noosphere,meta,diy
-clouds has that quality of being approached from different angles....a romantic would say clouds is made of principles very similar to dreams,
-code,language,programming,computer,computation,thinking with code,beginnings,logic,beauty,sharing,art vs engineering
-code is messy,parameters,constraints,biology and code,dna,serendipity,elegance,physics,biology,process,nature
-coding,programming,tradition,thinking with code,magic,learning,engineering,sketching,virtuosity,god,dysfunction
-coding for humanity,survival,problem solving,solutions,digital divide,useless,challenges,humanity,dystopia,future,progress
-coevolution,artificiality,symbiosis,new aesthetic,thinking with code,man vs machine,perception
-cognition,thinking,thinking with code,artificial intelligence,symbiosis,man vs machine,virtuosity,tools,language,computation,invention
-collaboration,hackathon,collective intelligence,community,sharing,open source,github,crowdsourcing,liveness,music,network
-collaboration with machines,thinking by doing,process,intuition,drawing,line,rules,world building,carl sims,improvization,system
-collective intelligence,network,wikipedia,internet,collaboration,progress,the cloud,ideas,twitter,communication,learning
-commercial art,commercialism,work and life,uncertainty,money,zen,consumer,creative control,taste,time,struggle
-commercialism,commercial art,advertising,money,software,career,economics,open source,originality,passion,work and life
-communication,data visualization,internet,language,social media,globalization,information,aesthetics,mobile,society,simplicity
-community,sharing,tribe,open source,collaboration,open frameworks,social media,processing,thanks,people,github
-completion,infinite game,infinite conversation,evaluation,art vs engineering
-complexity,pattern,data visualization,emergence,systems,perception,simplicity,gestalt,limitations,data,nature
-computation,computer,logic,limitations,math,code,rules,thinking through code,systems,artificial intelligence,nature
+clouds,future of cinema,dialogue,camera,kinect,narrative,recursion,meta,diy,RGBD,infinite conversation
+code,language,computer,programming,computation,logic,thinking with code,beauty,learning,sharing,art vs engineering
+code is messy,parameters,constraints,biology and code,dna,serendipity,physics,improvization,elegance,dysfunction,old media
+coding,programming,thinking with code,virtuosity,tradition,sketching,magic,learning,engineering,creative coding,creativity
+coding for humanity,survival,solutions,digital divide,problem solving,useless,challenges,humanity,dystopia,future,progress
+coevolution,artificiality,symbiosis,thinking with code,new aesthetic,man vs machine
+cognition,thinking,thinking with code,artificial intelligence,symbiosis,reality,man vs machine,virtuosity,thinking through code,language,computation
+collaboration,hackathon,collective intelligence,community,sharing,open source,github,crowdsourcing,liveness,network,connections
+collaboration with machines,thinking by doing,intuition,drawing,process,line,rules,carl sims,improvization,machine aesthetics,system
+collective intelligence,network,collaboration,wikipedia,internet,networks,progress,robots,github,the cloud,twitter
+commands,learning to code,tools,language,learning
+commercial art,commercialism,uncertainty,money,work and life,consumer,creative control,taste,zen,struggle,surprise
+commercialism,commercial art,advertising,money,software,economics,career,open source,passion,originality,business
+communication,data visualization,internet,social media,language,globalization,information,aesthetics,mobile,society,visualization
+community,sharing,tribe,collaboration,open source,open frameworks,social media,processing,thanks,people,github
+completion,infinite conversation,evaluation,art vs engineering
+complexity,pattern,data visualization,emergence,simplicity,systems,limitations,gestalt,data,nature,perception
+computation,computer,logic,limitations,code,math,rules,thinking through code,robots,systems,artificial intelligence
 computational power,computers,futurism,limitations,learning,technological progress
-computer,computation,code,logic,math,time,art vs engineering,limitations,thinking,abstraction,discovery
-computers,computational power,limitations,computation,creativity,coding,learning
-concept,maker,thinkerer,art world,career
-confusion,public,glitch,debugging,bugs,opacity,social engagment,dysfunction,error,visualization,complexity
-connections,synergy,zach lieberman,performance,working with others,drawing,hackathon,thinking by doing,collaboration,digital meets physical
-connectivity,alone together,information overload,balance,networks,focus,distraction,embodiment,interconnectedness,relationships,zen
-consciousness,mind,singularity,artificiality,artificial intelligence,uture,utopia,cyborg,science fiction,identity,poetry
-constraints,parameters,code is messy,physics,teaching,limitations,nature,simulation
+computer,computation,code,limitations,logic,math,time,art vs engineering,thinking,symbiosis,beginnings
+computers,computational power,symbiosis,limitations,computation,computer,learning,creativity,man vs machine,tools,coding
+concept,makers,art world,career
+confusion,public,glitch,debugging,bugs,social engagment,opacity,visualization,error,dysfunction,education
+connections,synergy,zach lieberman,performance,working with others,mind,drawing,hackathon,thinking by doing,collaboration,pattern
+connectivity,information overload,balance,networks,focus,distraction,embodiment,interconnectedness,relationships,attention,zen
+consciousness,mind,artificial intelligence,artificiality,science fiction,singularity,uture,utopia,transcendence,cyborg,identity
+constraints,parameters,code is messy,teaching,physics,limitations,nature,simulation
 consumer,taste,commercial art,aesthetics,design,beauty
-control,gardening,power,art and security,generative art,network security,error,man vs machine,randomness,privacy,algorithms
-conviction,focus,zen,attention,simplicity,drawing
-corporate,gadget,google,dystopia,users,devices,money,transparency,engineering,man vs machine,data ownership
-cosmogeny,god mode,world building,simulation,universe,god,cellular automata,artificial life,rules,nature,emergence
+control,gardening,power,surprise,man vs machine,generative art,randomness,process,art and security,algorithms,error
+conviction,focus,attention,simplicity,zen,drawing
+corporate,gadget,google,seamlessness,dystopia,users,devices,money,transparency,man vs machine,data ownership
+cosmogeny,world building,god mode,simulation,god,universe,cellular automata,artificial life,rules,nature,emergence
 counterculture,esoteric,hacker,nerd,criticality,tribe
-creation,birth,interesting,creative coders,god mode,world building,representation,process,art and code,evolution,cosmogeny
-creative coders,knowledge,interdisciplinary,hybridity,creation,virtuosity,tribe,system,creative coding,art and code,architecture
-creative coding,art and tech,creative coders,new media,generative art,design by numbers,coding,hybridity,dialogue,virtuosity,tribe
-creative control,uncertainty,commercial art,surprise,error,new aesthetic
-creative exploration,expression,mind and hand,self expression,process,physicality,archiving,programming
-creative misuse,program or be programmed,critical engineering,obsolescence,opacity,users,transparency,diy,gesture recognition,subversion,openness
-creativity,imagination,intuition,journey,sketching,coding,branching,art,thinking with code,mind and hand,career
-critical engineering,transparency,criticality,dystopia,program or be programmed,opacity,openness,open software,literacy,creative misuse,symbiosis
-criticality,critical engineering,transparency,critique,hackers,tech-demo,meaning,trendspotting,anonymous,network security,the cloud
-critique,meaning,rhetoric,tech-demo,criticality,poetry,beauty,aesthetics,challenges,new media,insight
-crowdsourcing,love,sex,snarky,anonymous,collaboration,net.art,creativity,money,economics,commercialism
-cultural value,jewelry,problem of newness,product,audience,business,curation,funny,evaluation,culture,museums
-culture,society,cultural value,art,algorithms,problem solving,telepathy,popular culture,man versus machine,invisibility,everyday
-curation,anthropology,homogeneity,memes,ideas,museums,cultural value,originality,net.art,art,visual culture
-curiosity,questions,research,science
+creation,birth,interesting,god mode,creative coders,representation,art and code,process,world building,evolution,cosmogeny
+creative coders,tribe,knowledge,art and code,interdisciplinary,hybridity,nerd,creation,creative coding,virtuosity,system
+creative coding,art and tech,processing,creative coders,coding,tribe,new media,programmers,critical engineering,design by numbers,generative art
+creative control,uncertainty,commercial art,error,surprise,new aesthetic
+creative exploration,mind and hand,expression,self expression,physicality,process,archiving,programming
+creative misuse,program or be programmed,critical engineering,obsolescence,users,opacity,diy,gesture recognition,transparency,subversion,openness
+creative process,art,generative art
+creativity,imagination,process,sketching,intuition,journey,coding,thinking by doing,art,cosmogeny,branching
+critical engineering,transparency,criticality,program or be programmed,dystopia,creative misuse,openness,open software,opacity,literacy,future
+criticality,critical engineering,critique,transparency,hackers,tech-demo,anonymous,network security,trendspotting,the cloud,power
+critique,criticality,poetry,rhetoric,tech-demo,beauty,aesthetics,challenges,art world,art,new media
+crowdsourcing,love,sex,snarky,anonymous,collaboration,net.art,money,creativity,economics,commercialism
+cultural value,jewelry,problem of newness,audience,business,product,funny,curation,evaluation,culture,museums
+culture,society,cultural value,art,algorithms,man vs machine,telepathy,popular culture,invisibility,everyday,youtube
+curation,anthropology,homogeneity,memes,museums,cultural value,ideas,net.art,originality,art,visual culture
+curiosity,questions,research,science,universe,hybridity
 cyberpunk,antihuman,digital,internet culture,science fiction,digital culture,gadgets,cyborg,futurism,machine aesthetics,google
-cyborg,wearables,gadgets,singularity,cyberpunk,consciousness,devices,science fiction,antihuman,prosthetic,digital
+cyborg,wearables,singularity,gadgets,cyberpunk,devices,consciousness,progress,science fiction,digital,posthuman
 darpa,drones,military technology,surveillance,camera,personal data,future of cinema
-data,data visualization,memory,big data,personal data,datatelling,complexity,truth,archiving,information,gps
+data,data visualization,memory,big data,datatelling,personal data,truth,information,complexity,archiving,gps
 data collection,sensor,nature,camera,data
 data mining,architecture,intuition,exploration,futurism,immersion,discovery,power,data,network
 data ownership,gps,privacy,maps,big data,personal data,location,users,security,memory,facebook
-data visualization,complexity,data,communication,perception,pattern,legibility,social,simplicity,humanity,social media
+data visualization,complexity,data,communication,pattern,legibility,social,humanity,simplicity,social media,microscope
 datatelling,journalism,storytelling,data,writing,open paths,nytimes,location,apps,subjectivity,memory
-death,obsolescence,afterlife,archiving,apocalypse,quantified self,old media,creative misuse,futurism,personal data,ideas
-debug screen,interfaces,machine vision,new aesthetic,algorithm,artificial intelligence
-debugging,bugs,confusion,glitch,imagination,understanding,artificiality,visualization,opacity,physics,dysfunction
-demo,demo scene,hackers,computer,videogames,history,beginnings
+death,afterlife,obsolescence,archiving,quantified self,apocalypse,old media,creative misuse,futurism,personal data,ideas
+debug screen,algorithms,interfaces,machine vision,new aesthetic,artificial intelligence
+debugging,brain,bugs,confusion,glitch,visualization,understanding,mind,imagination,artificiality,opacity
+demo,demo scene,meme,library,toolmakers,originality,toolkit,hackers,computer,videogames,open source
 demo scene,demo,history,hackers,computer,videogames,beginnings
-design,scale,useful,aesthetics,design process,product,objects,3d printing,problem solving,post-digital,generative art
-design and art,questions,why?,art world,media lab,aesthetics and computation,problem solving,design,interactivity
-design by numbers,toolkits,processing,aesthetics and computation,art and tech,creative coding,open frameworks,aesthetics,design,education,tools
+design,scale,perspective,3d printing,aesthetics,useful,design process,product,objects,problem solving,generative art
+design and art,questions,art world,why?,media lab,aesthetics and computation,critique,problem solving,criticality,design,art
+design by numbers,toolkits,processing,aesthetics and computation,art and tech,open frameworks,creative coding,aesthetics,design,education,tools
 design fiction,science fiction,tools
 design process,objects,product,3d printing,design,digital meets physical
-devices,sensors,wearables,cyborg,surveillance,gadgets,corporate,apple,interfaces,gadget,google
-dialogue,the future,clouds,social engagment,futurism,creative coding,hybridity,criticality,tribe,collective intelligence,society
+devices,sensors,wearables,seamlessness,surveillance,cyborg,transparency,gadgets,apple,corporate,gadget
+dialogue,clouds,social engagment,futurism,creative coding,criticality,hybridity,tribe,society,collective intelligence,future
 dichotomy,humanism,struggle with technology,challenges,engineering,technology
 digital,antihuman,machine aesthetics,cyberpunk,artificiality,cyborg,new aesthetic
 digital art,museums,preservation,archiving
-digital culture,self reflection,digital natives,sadness,internet culture,cyberpunk,google,stock market,staring at screens,embodiment,utopia
-digital divide,audience,coding for humanity,gesture,post-digital,critical engineering,improvization,sketching,problem solving,devices,criticality
-digital meets physical,physicality,3d printing,post-digital,objects,light,installation,embodiment,sketching,projection,design process
+digital culture,digital natives,self reflection,sadness,internet culture,cyberpunk,google,stock market,staring at screens,embodiment,utopia
+digital divide,audience,coding for humanity,gesture,improvization,post-digital,sketching,critical engineering,devices,problem solving,criticality
+digital meets physical,physicality,3d printing,post-digital,objects,light,embodiment,installation,sketching,real and virtual,design process
 digital natives,sadness,self reflection,digital culture,staring at screens,embodiment,emotion,digital meets physical
 disaster,mobile,social dynamics
-discovery,exploration,immersion,gardening,architecture,intuition,serendipity,information,frontier,surprise,control
-distraction,attention,focus,embodiment,net.art,the present,present shock,skill,information overload,real and virtual,connectivity
+discovery,exploration,immersion,ideas,gardening,architecture,intuition,systems,serendipity,randomness,invention
+distraction,attention,focus,embodiment,net.art,the present,skill,present shock,information overload,balance,connectivity
 diy,creative misuse,clouds,camera
-dna,biology and code,genetics,biology,evolution,evolution: How does the computer simulate accelerated evolution?,algorithm,artificial life,carl sims,art and science,code is messy
+dna,biology and code,genetics,biology,evolution,artificial life,carl sims,algorithm,code is messy,efficiency,art and science
 documentation,human life,quantified self,narrative,personal data,archiving,data
 doing with others,tools,learning,sharing
-dont like projects that try to replace social skills that we should develop,
-drawing,sketching,zen,liveness,mind and hand,collaboration with machines,thinking by doing,gesture,failure,process,improvization
-dreams,fantasy,sex,interconnectedness,weird,utopia,nano,emotion,hallucination,challenge,imagination
+drawing,sketching,liveness,mind and hand,zen,collaboration with machines,thinking by doing,gesture,failure,process,physicality
+dreams,fantasy,imagination,emotion,interconnectedness,sex,weird,utopia,nano,challenge,psychology
 drones,darpa,military technology,surveillance,camera,personal data,future of cinema
-dysfunction,error,bugs,tradition,engineering,bots,chaos,system,algorithms,failure,stock market
-dystopia,google,bots,critical engineering,security,man vs machine,users,corporate,future,gadget,power
-economics,money,stock market,thanks,bots,sharing,open source,software,manufacturing,internet culture,dystopia
-education,processing,teaching,tools,open source,mentors,media lab,aesthetics and computation,humanity,sharing,passing the baton
-efficiency,genetics,visual effects,rendering,iteration,cellular automata,evolution,sex,rules,dna,kinect
+drugs,visions,psychedelic,transcendence,perception,mysticism,subjectivity,mind,weird,gestalt,fantasy
+dysfunction,error,bugs,tradition,engineering,algorithms,chaos,stock market,bots,system,failure
+dystopia,google,security,bots,man vs machine,critical engineering,users,corporate,power,future,gadget
+economics,money,stock market,thanks,bots,software,sharing,open source,manufacturing,internet culture,toxi
+education,processing,teaching,tools,open source,media lab,mentors,aesthetics and computation,learning,humanity,passing the baton
+efficiency,genetics,visual effects,rendering,cellular automata,iteration,evolution,sex,rules,dna,visualization
 ego,ideas,sharing,open source,tools
-electronic music,music
-elegance,messiness,order,truth,logic,simplicity,science,infinity,rules,beauty,ocd
-embodiment,focus,attention,staring at screens,distraction,self reflection,sadness,mutlisensory,mirror,live,gesture recognition
-emergence,systems,artificial life,rules,complexity,games,universe,simulation,world building,process,cellular automata
-emotion,empathy,sex,experience design,dreams,sentiment analysis,laughter,visual cortex,love,people,embodiment
-empathy,experience design,emotion,project examples,sentiment analysis,feeling,humanism,god mode,social,fantasy technology,interconnectedness
+electronic music,techno,sensation,synesthesia,synaesthesia,music,mind,physicality,perception,beginnings
+elegance,simplicity,truth,order,messiness,logic,legibility,rules,visualization,science,beauty
+embodiment,focus,attention,staring at screens,distraction,live,gesture recognition,mirror,digital natives,sadness,self reflection
+emergence,rules,complexity,systems,artificial life,games,universe,simulation,cellular automata,process,world building
+emotion,empathy,sex,dreams,love,experience design,laughter,sentiment analysis,experience,narrative,animation
+empathy,experience design,emotion,project examples,sentiment analysis,feeling,humanism,god mode,social,interconnectedness,fantasy technology
 energy,epiphany,aesthetic experience,style,abstraction
-engineering,tradition,dysfunction,symbiosis,operating systems,improvement,opacity,coding,learning,software,transparency
-english,globalization,arabic, (Alb),(Alb),language,communication,data visualization
+engineering,tradition,dysfunction,symbiosis,operating systems,improvement,software,coding,opacity,learning,transparency
+english,globalization,arabic,language,(Alb),poetry,communication,beginnings,programming,data visualization
 epiphany,energy,aesthetic experience,style,abstraction,artificial life,discovery,cosmogeny,surprise,emergence,systems
 equilibrium,behavior,physics,simulation
-error,dysfunction,bugs,algorithms,stock market,glitch,chaos,opacity,limitations,system,control
+error,dysfunction,bugs,algorithms,stock market,glitch,chaos,bots,opacity,limitations,system
 esoteric,counterculture,hacker,nerd,criticality,tribe
-evaluation,completion,infinite game,infinite conversation,visual cortex,funny,cultural value,useful,art vs engineering,embodiment,exploration
+evaluation,completion,infinite conversation,sensation,funny,aesthetic experience,cultural value,useful,art vs engineering,embodiment,exploration
 everyday,media,art and experience,culture,experience
-evolution,genetics,dna,artificial life,carl sims,old media,efficiency,cellular automata,algorithm,invention,biology and code
-evolution: How does the computer simulate accelerated evolution?,carl sims,genetics,dna,evolution,aesthetics,beauty,code
+evolution,genetics,dna,artificial life,carl sims,efficiency,old media,cellular automata,algorithm,progress,biology and code
 existence,philsophy,internet of things,things,machine aesthetics,funny,philosophy,humanity,god mode,new aesthetic,man vs machine
-experience,experience design,seamlessness,gesture,art and experience,perception,embodiment,reality,improvization,algorithms,magic
-experience design,experience,empathy,reality,emotion,algorithms,feeling,art and tech,art history,perception,humanism
-exploration,intuition,discovery,immersion,possibility,useful,journey,zen,iterative,how does the work feed into itself?,generative art
-expression,self expression,painting,art and code,creative exploration,feeling,instrument,mind and hand,exploration,abstraction,physicality
-eyebeam,video art,r&d,old media,new aesthetic,history
+experience,experience design,gesture,art and experience,seamlessness,perception,embodiment,emotion,reality,art,improvization
+experience design,experience,empathy,reality,feeling,algorithms,art and tech,emotion,perception,humanism,art history
+exploration,intuition,discovery,immersion,possibility,useful,journey,work and life,zen,parameter space,data mining
+expression,self expression,painting,art and code,creative exploration,feeling,virtuosity,instrument,mind and hand,toolmakers,exploration
+eyebeam,video art,research and development,old media,new aesthetic,history
 eyeo,gender,career,community
-eyewriter,prosthetic,zach lieberman,assistive technology,addiction,accessibility,cyborg,humanity,drawing,people
+eyewriter,zach lieberman,assistive technology,prosthetic,addiction,accessibility,cyborg,humanity,drawing,people
 face tracking,machine vision,military technology,realness,social engagment,camera,surveillance,open frameworks,power,new aesthetic,algorithm
-facebook,twitter,social media,security,relationships,big data,privacy,identity,twitter videogames,data ownership,apple
-failure,success,zen,bugs,spiritual,life,drawing,dysfunction,error,collaboration with machines,children
-fantasy,dreams,augmented reality,nano,hallucination,world building,weird,real and virtual,videogames,interfaces,legos
-fantasy technology,recursion,meta,live,science fiction,laughter,improvization,sensors,writing,audience,future
+facebook,twitter,social media,security,relationships,big data,privacy,identity,data ownership,minecraft,avatar
+failure,success,bugs,zen,spiritual,oversimplification,drawing,life,error,dysfunction,collaboration with machines
+fantasy,dreams,fiction,augmented reality,nano,weird,psychology,visions,interfaces,videogames,world building
+fantasy technology,recursion,meta,live,science fiction,laughter,writing,sensors,particles,improvization,audience
 fat,prank,street art,statistics,hack,humor,net.art,solutions,tribe,collaboration,data visualization
 fate,education
-feedback,tweaking,iterative,intuition,how does the work feed into itself?,visual cortex,thinking by doing,heuristics,art and experience,improvization,branching
+feedback,intuition,tweaking,flocking,thinking by doing,visual cortex,art and experience,improvization,sketching,instrument,animation
 feeling,wonder,aesthetic experience,expression,empathy,self expression,experience design,experience,emotion,beauty,language
+fiction,fantasy,augmented reality,interfaces,world building,narrative,time,reality,videogames,virtual
+filmmaking,virtual reality,cinema,world building,future of cinema,storytelling
 flash,nerd,tribe,beginnings,community
-flocking,artificial life,emergence,complexity
-flow,atmosphere,revelation,gestalt,phenomena,pattern,perception,complexity,data visualization
+flocking,instrument,animation,behavior,feedback,story,artificial life,narrative,control,emergence,emotion
+flow,atmosphere,revelation,gestalt,phenomena,pattern,complexity,data visualization
 fluency,struggle with technology,frustration,language,programming
-fluxus,performance,performance art,apps,art history,real and virtual,art,social,algorithm
-focus,attention,distraction,net.art,embodiment,mirror,conviction,staring at screens,information overload,zen,connectivity
-food,meaning,philsophy,why,funny,weird,immersion,experience,virtual
+fluid,particles,psychedelic,installation,toolmakers,kinect,world building,interactivity,toolkit,weird,videogames
+fluxus,performance,performance art,apps,art history,augmented reality,social,algorithm,art
+focus,attention,distraction,net.art,embodiment,conviction,mirror,staring at screens,information overload,balance,connectivity
+food,funny,philsophy,why,weird,poetry,immersion,experience,virtual
 foraging,gardening,beauty
-form,iterative,how does the work feed into itself?,projection,multiverse,imaginary,light,iteration,generative art,beauty,feedback
-formalism,beautiful exhuberance,light,sculpture,installation,art and code,generative art,math,creativity,beauty,digital meets physical
+form,iteration,imaginary,multiverse,projection,light,beauty,gardening,intuition,feedback,generative art
+formalism,minimalism,beautiful exhuberance,sculpture,light,generative art,visualization,installation,beauty,art and code,elegance
 forums,teaching,processing,sharing,community
-frontier,maps,ideas,discovery,originality,newness
-frustration,struggle with technology,stress,fluency,programming,ambiguity,challenge,boring,struggle,uncertainty,language
-fun,motivational,toolkits,accessibility,children,art and tech,magic,open frameworks,processing,power,play
-funny,weird,food,existence,evaluation,philosophy,cultural value,nerd,old media,tribe,new media
-future,science fiction,technological progress,survival,dystopia,apocalypse,fantasy technology,futurism,consciousness,algorithm,cyborg
-future of cinema,storytelling,narrative,clouds,story,simulation,camera,cinema,kinect,virtual,visualization
-futurism,prediction,cyberpunk,science fiction,technological progress,future,the future,computational power,data mining,big data,trendspotting
-gadget,google,corporate,apple,dystopia,users,devices,transparency,facebook,man vs machine,critique
-gadgets,cyborg,wearables,cyberpunk,google,devices,progress,social engagment,critical engineering,man vs machine,dystopia
-games,cellular automata,emergence,videogames,world building,artificial life,possibility,algorithm,cosmogeny,probability,simulation
-gardening,generative art,control,foraging,authorship,randomness,iteration,discovery,process,form,systems
+fractals,psychedelic,nostalgia,tree,system,nature of code,surprise,limitations,pattern,old media,complexity
+frontier,maps,discovery,ideas,originality,newness
+frustration,struggle with technology,stress,fluency,ambiguity,challenge,programming,uncertainty,struggle,boring,mind and hand
+fun,posthuman,motivational,toolkits,accessibility,singularity,play,children,cyborg,open frameworks,art and tech
+funny,food,existence,evaluation,weird,philosophy,cultural value,old media,new media,history,collaboration
+future,science fiction,technological progress,survival,apocalypse,dystopia,futurism,critical engineering,singularity,consciousness,fantasy technology
+future of cinema,storytelling,narrative,clouds,cinema,story,camera,virtual,real and virtual,simulation,kinect
+futurism,prediction,cyberpunk,future,science fiction,technological progress,computational power,data mining,big data,dialogue,trendspotting
+gadget,google,corporate,apple,seamlessness,dystopia,users,devices,facebook,transparency,man vs machine
+gadgets,wearables,cyberpunk,cyborg,google,devices,progress,social engagment,man vs machine,dystopia,interfaces
+games,cellular automata,emergence,videogames,artificial life,possibility,real and virtual,probability,world building,algorithm,cosmogeny
+gardening,randomness,control,generative art,foraging,authorship,iteration,discovery,form,process,infinity
 gender,brogrammers,texting,eyeo,relationships,sex,nerd,tribe,virtual,community
 generations,mentors,kill the master,ars electronica,veterans,bravado,shifts,paul rand,heroes,responsibility,passing the baton
-generative,parameter space,possibility,randomness,serendipity,surprise
-generative art,gardening,randomness,feedback,form,control,emergence,serendipity,exploration,abstraction,art and code
-generosity,the gift,interconnectedness,progress,sharing,society,network,community,open source
-genetics,efficiency,dna,evolution,evolution: How does the computer simulate accelerated evolution?,carl sims,biology and code,algorithm,cellular automata,sex,infinity
-geometry,particles,motion,storytelling
-gestalt,pattern,zoom,revelation,perception,phenomena,sublime,atmosphere,flow,complexity,perspective
-gesture,improvization,mastery,liveness,magic,drawing,experience,embodiment,interactivity,children,play
+generative art,gardening,randomness,control,serendipity,process,parameter space,formalism,possibility,iteration,surprise
+generosity,the gift,interconnectedness,github,progress,sharing,society,network,community,open source
+genetics,dna,efficiency,evolution,carl sims,biology and code,algorithm,cellular automata,infinity,sex,rules
+geometry,motion,particles,math,nature,storytelling
+gestalt,pattern,zoom,revelation,perspective,phenomena,sublime,perception,flow,atmosphere,scale
+gesture,improvization,mastery,liveness,drawing,experience,magic,embodiment,children,play,interactivity
 gesture recognition,assistive technology,embodiment,creative misuse,kinect
-gift,participation,luck,social engagment,heroes,chance,randomness,serendipity,kill the master,people,homogeneity
-github,improvement,wikipedia,collaboration,open source,community,code,sharing,collective intelligence,archiving,coding
+gift,participation,luck,social engagment,heroes,chance,serendipity,kill the master,randomness,people,homogeneity
+github,generosity,improvement,wikipedia,open source,collaboration,collective intelligence,sharing,community,code,people
 give everything away,education,sharing
-glitch,confusion,debugging,error,bugs,opacity,limitations,kinect,camera,control,dysfunction
-globalization,english,arabic,politics, (Alb),(Alb),language,humanity,communication,education,society
-god,god mode,cosmogeny,magic,coding,rules,world building,simulation,reality,digital meets physical,nature
-god mode,cosmogeny,god,simulation,visual effects,world building,creation,mysticism,physics,philsophy,existence
+glitch,confusion,debugging,error,bugs,limitations,opacity,kinect,camera,dysfunction,clouds
+globalization,english,arabic,politics,(Alb),language,humanity,communication,education,society,visualization
+god,cosmogeny,virtual reality,world building,nature of code,magic,god mode,rules,simulation,real and virtual,coding
+god mode,cosmogeny,world building,programmers,visual effects,creation,philsophy,existence,simulation,physics,mysticism
 golan levin,beginnings,learning
-google,gadget,corporate,dystopia,internet culture,apple,gadgets,digital culture,wearables,cyberpunk,research
+google,gadget,corporate,dystopia,internet culture,apple,gadgets,digital culture,wearables,seamlessness,research
 gps,maps,location,data ownership,open paths,personal data,trace of your life,infrastructure,data,cities,memory
-graphic design,how did you get into working with code?,art world,beginnings
+graphic design,art world,beginnings
 gratitude,being,journey,career
 growth,organic,architecture,media,product,improvement,3d printing,biology,newness,digital meets physical,new media
-gui,inversion,keyboard,mouse,think different,subversion,why?,hacking,interfaces,sketching,users
-guru,knowledge,mentors,learning,sharing
-hack,prank,surveillance,fat,privacy,humor,information as weapon,network security,net.art,staring at screens,transparency
-hackathon,collaboration,synergy,working with others,connections,tribe,creativity,community,kinect,abstraction,creative coding
-hacker,addiction,nerd,counterculture,esoteric,social,tribe,beginnings,programming,criticality,weird
-hackers,hacking,criticality,transparency,anonymous,virus,information as weapon,elegance,coding,control,users
-hacking,think different,mouse,keyboard,gui,inversion,subversion,street art,inventor,why?,infrastructure
-hallucination,nano,subjectivity,fantasy,dreams,imagination,weird,art,science fiction,future
+gui,inversion,think different,subversion,why?,hacking,interfaces,sketching,users,play
+guru,toxi,teachers,mentors,thanks,knowledge,economics,teaching,education,sharing,learning
+hack,prank,surveillance,fat,privacy,information as weapon,humor,network security,net.art,staring at screens,information
+hackathon,collaboration,synergy,working with others,connections,addiction,tribe,creativity,community,kinect,abstraction
+hacker,nerd,addiction,counterculture,esoteric,social,tribe,beginnings,weird,criticality,programming
+hackers,hacking,criticality,transparency,viruses,anonymous,information as weapon,seamlessness,elegance,coding,users
+hacking,hackers,think different,inversion,gui,street art,subversion,inventor,infrastructure,why?,information as weapon
 heroes,kill the master,gift,generations,mentors,sharing,community
-heuristics,art and experience,branching,touch,intuition,feedback,mind and hand,gesture,improvization,process,imagination
-history,old media,preservation,archiving,beginnings,videogames,newness,demo scene,memory,art history,computer
-homogeneity,originality,tech-demo,influence,curation,meaning,ideas,visual culture,poetry,gift,new media
+history,old media,archiving,preservation,newness,obsolescence,art history,videogames,beginnings,new media,demo scene
+homogeneity,originality,tech-demo,curation,influence,visual culture,ideas,gift,new media,poetry,style
 hope,limits of the computer,change,technoptimism,utopia,problem solving,progress,limitations,society,future,complexity
-how did you get into working with code?,graphic design,art world,beginnings
-how does the work feed into itself?,iterative,feedback,form,intuition,journey,exploration,generative art,design,creativity
 human life,documentation,quantified self,narrative,personal data,archiving,data
-humanism,post-digital,dichotomy,own the tool,social engagment,mastery,people,struggle with technology,empathy,staring at screens,challenges
-humanity,politics,people,internet of things,things,society,philsophy,existence,machine aesthetics,participation,social
-humor,serious,bravado,paul rand,prank,fat,hack,net.art,useful,generations,mentors
-hybridity,interdisciplinary,art and code,knowledge,tribe,creative coders,aesthetics and computation,nerd,toolmakers,architecture,science
-ideas,originality,memes,curation,homogeneity,visual culture,frontier,anthropology,apporopriation,ego,influence
+humanism,dichotomy,post-digital,own the tool,social engagment,mastery,people,struggle with technology,empathy,staring at screens,challenges
+humanity,politics,people,internet of things,things,society,existence,philsophy,machine aesthetics,participation,social
+humor,serious,prank,bravado,paul rand,kids,character,fat,influence,synaesthesia,hack
+hybridity,interdisciplinary,art and code,knowledge,tribe,creative coders,science,nerd,aesthetics and computation,architecture,music
+ideas,originality,memes,curation,homogeneity,discovery,invention,visual culture,frontier,anthropology,apporopriation
 identity,personal data,consciousness,privacy,facebook,social media,avatar,quantified self,performance art,social,cyborg
 ignorance,network security,the cloud,program or be programmed,users,criticality,complexity
 illusion,project example,liveness,gesture,magic,drawing,play
 image,noninteractivity,post-digital,design,interactivity
 images,pleasure,subjectivity,aesthetics,beauty
 imaginary,teleportation,multiverse,form,utopia,abstraction,science fiction,virtual,future
-imagination,creativity,debugging,play,dreams,children,universe,nano,surprise,cosmogeny,hallucination
-immersion,zen,exploration,reading,discovery,architecture,information,time,interfaces,seamlessness,data mining
-improvement,operating systems,growth,engineering,github,opacity,software,technology,dysfunction,error,coding
-improvization,gesture,thinking through code,sketching,feedback,surprise,intuition,collaboration with machines,fantasy technology,embodiment,thinking by doing
-in a sense are you running through an evolutionary process?,
-inexactitude,truth,playfulness,noise,memory,probability,chaos,art vs engineering,chance,data,play
-infinite conversation,completion,infinite game,evaluation,art vs engineering,clouds,future of cinema
-infinite game,completion,infinite conversation,evaluation,art vs engineering
-infinite in all directions,why,post-digital,design,history,technological progress
-infinity,cellular automata,universe,artificial life,algorithm,world building,emergence,elegance,games,cosmogeny,philosophy
-influence,interestingness,homogeneity,style,visual culture,interdisciplinary,music,ideas,culture,originality,hybridity
-influences,research,science,biology,process
-information,library,reading,serendipity,communication,data,immersion,discovery,problem solving,information overload,hack
-information as weapon,virus,transparency,hack,network security,wikipedia,hacking,security,hackers,memes,surveillance
-information overload,library,alone together,balance,connectivity,focus,distraction,embodiment,zen,attention,information
-infrastructure,cities,open paths,network security,hacking,symbiosis,gps,power,transparency,society,critical engineering
+imagination,dreams,creativity,debugging,play,cosmogeny,children,visualization,universe,nano,process
+immersion,exploration,reading,zen,discovery,architecture,information,real and virtual,interfaces,data mining,food
+improvement,operating systems,growth,engineering,github,software,opacity,technology,error,dysfunction,coding
+improvization,gesture,surprise,sketching,thinking through code,intuition,feedback,collaboration with machines,embodiment,fantasy technology,process
+inexactitude,playfulness,truth,noise,memory,probability,chaos,art vs engineering,chance,play,opacity
+infinite conversation,completion,evaluation,clouds,art vs engineering,future of cinema
+infinity,universe,genetics,algorithm,cellular automata,philosophy,scale,gardening,emergence,chance,biology and code
+influence,interestingness,kids,character,synaesthesia,homogeneity,style,animation,humor,visual culture,interdisciplinary
+information,reading,library,serendipity,data,communication,immersion,information overload,discovery,problem solving,hack
+information as weapon,viruses,hack,transparency,network security,wikipedia,hacking,security,hackers,surveillance,memes
+information overload,balance,connectivity,library,focus,distraction,embodiment,attention,information,zen,memory
+infrastructure,cities,open paths,network security,hacking,symbiosis,gps,power,society,transparency,engineering
 innovation,generations,evolution,originality,old media,newness,history
-insight,meaning,critique,emotion
-installation,light,projection,interactivity,formalism,sculpture,digital meets physical,form,accessibility,phenomena,architecture
-instrument,mastery,play,expression,mind and hand,children,thinking by doing,exploration,gesture,interactivity,tools
+insight,poetry,critique,emotion
+inspiration,art and science,art and tech,generative art,nature
+installation,light,projection,interactivity,particles,magic,digital meets physical,fluid,sculpture,art and science,boring
+instrument,flocking,mastery,animation,play,mind and hand,expression,behavior,feedback,interactivity,story
 intelligence,thinking,solutions,cognition,collective intelligence,internet,collaboration,technological progress,data visualization
-interactivity,play,installation,children,gesture,liveness,immersion,interfaces,instrument,participation,behavior
-interconnectedness,generosity,dreams,network,progress,invisibility,noosphere,the gift,utopia,internet,connectivity
-interdisciplinary,hybridity,knowledge,architecture,creative coders,multimedia,interestingness,influence,art and code,learning,music
+interactivity,installation,play,children,gesture,magic,instrument,behavior,liveness,immersion,interfaces
+interconnectedness,generosity,network,utopia,the gift,progress,noosphere,invisibility,dreams,internet,change
+interdisciplinary,hybridity,knowledge,architecture,multimedia,creative coders,interestingness,influence,art and code,learning,aesthetics and computation
 interesting,birth,creation,useful,evolution,beauty,process
-interestingness,influence,interdisciplinary,music,style,visual culture,culture,hybridity,progress,new aesthetic,newness
-interface,seamlessness,ubiquitous computing,sensor,technology,interfaces,experience,devices
-interfaces,augmented reality,ubiquity,seamlessness,wearables,fantasy,devices,cyborg,real and virtual,immersion,mouse
+interestingness,influence,interdisciplinary,style,visual culture,culture,progress,hybridity,music,new aesthetic,newness
+interface,piano,tool,toolmakers,simplicity,complexity
+interfaces,augmented reality,seamlessness,ubiquity,wearables,devices,fantasy,cyborg,immersion,technology,debug screen
 internet,network,collective intelligence,communication,social media,interconnectedness,power,network security,focus,the cloud,net.art
 internet culture,digital culture,cyberpunk,google,stock market,utopia,economics,algorithms,dystopia,science fiction
 internet of things,things,existence,philsophy,machine aesthetics,humanity,new aesthetic,man vs machine
-intuition,heuristics,art and experience,branching,thinking by doing,feedback,exploration,collaboration with machines,iterative,how does the work feed into itself?,rules
-invention,toolmakers,inventor,change,evolution,addiction,tools,hybridity,old media,cognition,hacking
-inventor,toolmakers,invention,hacking,hybridity,art vs engineering,tools
-inversion,gui,keyboard,mouse,think different,subversion,why?,hacking,interfaces,sketching,users
-invisibility,metaphor,interconnectedness,culture,visualization,scale,systems,complexity
+intimacy,love,sex,physicality,emotion
+intuition,thinking by doing,exploration,feedback,collaboration with machines,rules,data mining,art and experience,branching,process,improvization
+invention,toolmakers,inventor,change,ideas,discovery,evolution,tools,addiction,hybridity,old media
+inventor,invention,toolmakers,hacking,art vs engineering,hybridity,tools
+inversion,gui,think different,subversion,why?,hacking,interfaces,sketching,users,play
+invisibility,metaphors,interconnectedness,visualization,culture,scale,systems,complexity
 iphone,devices,network,internet
-iteration,rendering,efficiency,form,gardening,thinking,randomness,time,sketching,physicality,generative art
-iterative,how does the work feed into itself?,feedback,form,intuition,journey,exploration,generative art,design,creativity
+iteration,form,rendering,efficiency,sculpture,gardening,thinking,intuition,feedback,journey,generative art
 jewelry,business,product,cultural value,design
-john maeda,media lab,aesthetics and computation,beginnings,art and code,hybridity,processing,learning,design,career,new media
-journalism,nytimes,datatelling,virality,algorithms,twitter,data,storytelling,artificial intelligence,sharing
-journey,career,being,iterative,mortality,how does the work feed into itself?,gratitude,art,exploration,life,luck
-julian oliver,art and security,network security,control,users,power,internet
-keyboard,gui,inversion,mouse,think different,subversion,why?,hacking,interfaces,sketching,users
-kids,audiovisualization,interactivity
-kill the master,heroes,passing the baton,mentors,generations,gift,teaching,career,education,sharing,community
-kinect,camera,microsoft,gesture recognition,visual effects,cameras,glitch,future of cinema,efficiency,research,sensor
-knowledge,interdisciplinary,creative coders,guru,book,motion,hybridity,r&d,research,architecture,learning
+john maeda,media lab,aesthetics and computation,beginnings,art and code,processing,hybridity,design,learning,career,new media
+journalism,nytimes,datatelling,virality,twitter,algorithms,data,storytelling,artificial intelligence,sharing
+journey,career,being,mortality,gratitude,exploration,work,luck,life,art,creativity
+julian oliver,art and security,network security,users,control,power,internet
+kids,character,influence,synaesthesia,animation,humor,behavior,children,audiovisualization,music
+kill the master,heroes,passing the baton,mentors,generations,gift,teaching,education,career,sharing,community
+kinect,camera,microsoft,gesture recognition,RGBD,visual effects,particles,glitch,fluid,cameras,clouds
+knowledge,interdisciplinary,book,creative coders,motion,guru,hybridity,research and development,research,architecture,learning
 language,english,code,globalization,programming,communication,arabic,thinking with code,struggle with technology,cognition,frustration
 laughter,fantasy technology,emotion,weird
 leadership,social engineering,social dynamics
-learning,beginnings,programming,tradition,coding,engineering,dysfunction,knowledge,sharing,education,hybridity
-legibility,nytimes,data visualization,social,information,simplicity,complexity,communication,social media,scale,design
-legos,minecraft,toolkit,world building,possibility,fantasy,program or be programmed,opacity,dreams,games,open source
-library,information overload,reading,information,immersion,archiving
-life,mortality,success,work,career,failure,generations,journey,children,money,time
-lifetracking,quantified self,performance art,memory,relationships,twitter,archiving,personal data,social media
-light,projection,installation,formalism,sculpture,form,architecture,digital meets physical,virtual
-limitations,computation,artificial intelligence,error,complexity,computers,glitch,man vs machine,poetry,systems,computer
+learning,beginnings,programming,tradition,coding,education,engineering,dysfunction,knowledge,sharing,open source
+learning to code,commands,tools,language,learning
+legibility,nytimes,elegance,data visualization,social,frustration,information,complexity,simplicity,social media,communication
+legos,childhood,minecraft,toolkit,possibility,world building,thinking through code,program or be programmed,fantasy,videogames,liveness
+library,reading,information overload,writing,demo,information,fantasy technology,immersion,archiving,toolkit,memory
+life,mortality,success,work,career,failure,generations,journey,money,children,simplicity
+lifetracking,quantified self,performance art,relationships,memory,twitter,archiving,personal data,social media
+light,projection,installation,formalism,sculpture,form,vision,architecture,digital meets physical,zen,magic
+limitations,computation,error,artificial intelligence,man vs machine,complexity,computer,glitch,computers,systems,poetry
 limits of the computer,hope,beautiful exhuberance,visual culture,originality,limitations,old media,newness,beauty,new media,future
-line,mind and hand,collaboration with machines,thinking by doing,drawing,process,tools
-literacy,openness,critical engineering,symbiosis,opacity,transparency,program or be programmed,users,criticality,computer,man vs machine
-live,audience,embodiment,fantasy technology,gesture,improvization,science fiction,interactivity,future
-liveness,audiovisualization,sound,gesture,drawing,thinking through code,music,magic,zen,spiritual,illusion
+line,mind and hand,collaboration with machines,thinking by doing,drawing,tools,process
+literacy,openness,symbiosis,critical engineering,opacity,transparency,program or be programmed,users,criticality,computer,man vs machine
+live,audience,embodiment,fantasy technology,gesture,improvization,science fiction,interactivity
+liveness,sound,gesture,audiovisualization,drawing,thinking through code,magic,music,spiritual,slow,illusion
 location,open paths,gps,maps,data ownership,personal data,datatelling,privacy,memory,drawing,archiving
-logic,math,elegance,abstraction,computation,computer,syntax,ocd,book,order,messiness
-love,sex,relationships,crowdsourcing,virtuosity,tradition,emotion,datatelling,cyborg,virtual,privacy
-luck,chance,gift,serendipity,randomness,journey,art,sharing
+logic,computation,math,ocd,abstraction,thinking through code,elegance,code,problem solving,computer,syntax
+love,sex,relationships,crowdsourcing,intimacy,physicality,emotion,tradition,virtuosity,datatelling,virtual
+luck,chance,gift,serendipity,randomness,journey,sharing,art
+machine,old media,computer,videogames,beginnings,learning
 machine aesthetics,internet of things,things,existence,philsophy,antihuman,digital,artificiality,new aesthetic,cyberpunk,humanity
-machine vision,camera,new aesthetic,ubiquitous computing,face tracking,sensor,surveillance,object recognition,cameras,ubiquity,interfaces
-magic,liveness,god,gesture,coding,drawing,zen,time,spiritual,slow,motivational
-maker,concept,thinkerer,art world,career
-making things,3d printing,physicality
+machine vision,camera,new aesthetic,ubiquitous computing,face tracking,sensor,surveillance,object recognition,cameras,ubiquity,open frameworks
+magic,installation,liveness,gesture,god,coding,zen,drawing,interactivity,post-digital,experience
+makers,concept,art world,physicality,3d printing,career
 malevich,art history,abstraction,emotion
-man versus machine,utopia,culture,society,future,technological progress
-man vs machine,symbiosis,dystopia,artificial intelligence,bots,power,cognition,machine aesthetics,google,control,users
+man versus machine,singularity,consciousness,science fiction,utopia,culture,artificial intelligence,cognition,society,future,technological progress
+man vs machine,symbiosis,artificial intelligence,dystopia,bots,control,power,limitations,new aesthetic,algorithms,machine aesthetics
 manufacturing,economics,devices
 maps,gps,data ownership,location,frontier,trace of your life,personal data,open paths,data,privacy,data visualization
-mastery,skill,gesture,instrument,branching,humanism,mind and hand,distraction,children,liveness,post-digital
-math,logic,abstraction,computation,arabic,computer,algorithm,bots,struggle with technology,reality,infinity
-meaning,tech-demo,insight,poetry,critique,food,why,philsophy,homogeneity,criticality,art vs engineering
+marketing,branding,name,identity,career,beginnings
+mastery,skill,gesture,branching,instrument,mind and hand,humanism,distraction,children,liveness,post-digital
+math,logic,algorithm,abstraction,computation,arabic,nature,computer,systems,language,nature of code
 media,everyday,art and experience,growth,culture,experience,newness,new media,technological progress
-media lab,aesthetics and computation,john maeda,acu,art and code,beginnings,education,teaching,open frameworks,working with others,hybridity
-memes,virality,visual culture,originality,youtube,curation,ideas,style,anthropology,virus,homogeneity
+media lab,aesthetics and computation,john maeda,acu,art and code,education,teaching,open frameworks,beginnings,working with others,processing
+meme,demo,virality,originality,open source
+memes,originality,virality,visual culture,youtube,curation,ideas,style,oral tradition,anthropology,authorship
 memory,archiving,personal data,data,preservation,inexactitude,truth,data ownership,lifetracking,the cloud,gps
-mentors,generations,kill the master,teachers,passing the baton,veterans,shifts,paul rand,paul burke,mentorship,heroes
-mentorship,passing the baton,mentors,career,education
+mentors,generations,kill the master,guru,teachers,passing the baton,education,veterans,toxi,shifts,paul rand
+mentorship,passing the baton,mentors,education,career
 messiness,order,elegance,biology and code,logic,systems,biology
-meta,recursion,fantasy technology,improvization,visualization,clouds,future of cinema
-metaphor,invisibility,space,synthetic biology,scale,interconnectedness,biology and code,universe,artificial life,culture,visualization
-microscope,vision,revelation,zoom,scale,representation,data visualization,big data,social,camera,nature
+meta,recursion,fantasy technology,improvization,clouds,future of cinema
+metaphors,invisibility,space,synthetic biology,scale,interconnectedness,biology and code,story,visualization,universe,artificial life
+microscope,vision,zoom,revelation,scale,representation,data visualization,big data,social,camera,nature
 microsoft,research,kinect
-military technology,surveillance,darpa,drones,face tracking,ubiquity,security,power,camera,critical engineering,data ownership
-mind,uture,artificiality,consciousness,utopia,artificial intelligence,simulation,future of cinema,future
-mind and hand,branching,thinking by doing,line,drawing,skill,creative exploration,heuristics,art and experience,mastery,instrument
-minecraft,legos,world building,cosmogeny,toolkit,open source
+military technology,surveillance,darpa,drones,face tracking,ubiquity,security,power,camera,data ownership,dystopia
+mind,brain,prosthetic,consciousness,artificiality,uture,transcendence,techno,utopia,perception,electronic music
+mind and hand,branching,thinking by doing,line,skill,creative exploration,drawing,mastery,instrument,expression,process
+minecraft,legos,facebook,world building,cosmogeny,toolkit,identity,videogames,virtual,open source
+minimalism,formalism,visualization,elegance,audiovisualization,generative art,music,beauty,complexity
 mirror,focus,performance art,staring at screens,embodiment,surveillance,attention
-mobile,disaster,social dynamics,augmented reality,fantasy,communication,staring at screens,experience design,facebook,real and virtual,immersion
+mobile,disaster,social dynamics,augmented reality,communication,staring at screens,fantasy,experience design,representation,facebook,immersion
 money,economics,commercialism,career,commercial art,software,work and life,corporate,success,life,struggle
-mortality,life,work,journey,time,career
-motion,geometry,particles,book,story,knowledge,logic,teaching,cosmogeny,storytelling
-motivation,visualization,future of cinema
+mortality,work,life,journey,time,career
+motion,book,geometry,particles,story,knowledge,teaching,logic,cosmogeny,storytelling
+motivation,future of cinema
 motivational,fun,magic,power,programming
-mouse,gui,inversion,keyboard,think different,subversion,why?,hacking,interfaces,sketching,users
 multimedia,interdisciplinary,3d printing,hybridity,process
 multiverse,imaginary,form,phenomena,utopia,abstraction,virtual,nature,simulation
 museums,preservation,digital art,curation,focus,cultural value,net.art,distraction,attention,immersion,archiving
-music,audiovisualization,synesthesia,sound,liveness,techno,subliminal,electronic music,sensation,influence,interestingness
-mutlisensory,embodiment,gesture,improvization,physicality,experience,perception
-mysticism,god mode,intuition,cosmogeny,clouds,science fiction,computer,reality,creativity,virtual,artificial intelligence
-nano,hallucination,fantasy,dreams,imagination,weird,science fiction,future
-narrative,cinema,future of cinema,storytelling,clouds,human life,documentation,singularity,quantified self,consciousness,data
-nature,universe,simulation,physics,phenomena,cosmogeny,scale,emergence,systems,biology,complexity
-nature of code,computer,math,computation,nature
-nature?: What has the greatest influence on your work?,art,emotion,beauty,nature
-nerd,tribe,hacker,addiction,hybridity,beginnings,brogrammers,counterculture,flash,esoteric,own the tool
-net.art,focus,attention,distraction,chrome,prank,fat,curation,hack,humor,museums
+music,audiovisualization,synaesthesia,sound,electronic music,synesthesia,pattern,liveness,techno,influence,hybridity
+mysticism,spirituality,philosophy,drugs,god mode,intuition,phenomena,science,zen,magic,cosmogeny
+name,branding,marketing,identity,career,beginnings
+nano,visions,fantasy,dreams,imagination,weird,future
+narrative,future of cinema,storytelling,cinema,story,animation,character,behavior,fantasy,emotion,clouds
+nature,universe,simulation,nature of code,physics,phenomena,cosmogeny,scale,emergence,math,systems
+nature of code,tree,nature,fractals,system,god,simulation,rules,algorithm,representation,math
+nerd,tribe,hacker,addiction,creative coders,hybridity,flash,esoteric,counterculture,brogrammers,beginnings
+net.art,focus,attention,distraction,prank,chrome,fat,curation,hack,humor,museums
 network,internet,collective intelligence,the cloud,interconnectedness,twitter,social media,collaboration,social,security,relationships
-network security,julian oliver,ignorance,art and security,infrastructure,anonymous,power,hack,information as weapon,cities,control
-networks,connectivity,interconnectedness,collaboration,social,collective intelligence,network,perception,internet
-new aesthetic,machine vision,machine aesthetics,artificiality,artificial intelligence,video art,things,internet of things,man vs machine,philsophy,existence
-new media,newness,art and tech,old media,homogeneity,originality,cultural value,art world,critique,creative coding,evaluation
-new media old media,abstraction,art and tech,old media,history
-newness,originality,new media,technological progress,generations,old media,history,obsolescence,style,ideas,discovery
-noise,organic,chance,randomness,sound,inexactitude,probability,chaos,audiovisualization,liveness,critique
+network security,julian oliver,ignorance,art and security,infrastructure,anonymous,power,hack,information as weapon,cities,the cloud
+networks,connectivity,interconnectedness,collective intelligence,collaboration,social,network,perception,internet,community
+new aesthetic,machine vision,machine aesthetics,artificiality,artificial intelligence,things,trendspotting,man vs machine,algorithms,video art,internet of things
+new media,newness,art and tech,old media,homogeneity,originality,cultural value,art world,critique,creative coding,history
+newness,new media,originality,technological progress,old media,generations,history,obsolescence,art history,style,visual culture
+noise,organic,chance,randomness,sound,inexactitude,probability,chaos,liveness,critique,audiovisualization
 noninteractivity,image,post-digital,design,interactivity
-noosphere,alone together,the cloud,interconnectedness,clouds,network,digital meets physical,internet,systems
-nostalgia,travel,artificiality,old media,world building,data ownership,memory,emotion,newness,videogames,new media
+noosphere,the cloud,interconnectedness,digital meets physical,network,internet,systems
+nostalgia,travel,fractals,psychedelic,artificiality,old media,data ownership,world building,memory,newness,emotion
 novelty,newness,technological progress
-number,random,probability,chance,randomness,math,algorithm
+number,probability,chance,randomness,algorithm,math
 nytimes,journalism,legibility,datatelling,complexity,data visualization,data
 object recognition,ubiquitous computing,sensor,machine vision,camera,technological progress
-objects,design process,product,3d printing,digital meets physical,design,post-digital,teaching,physicality,learning
-obsolescence,death,old media,creative misuse,apocalypse,devices,newness,history,creative coding,weird,career
-ocd,syntax,logic,elegance
-old history,archiving,history
-old media,history,obsolescence,preservation,evolution,new media,archiving,newness,nostalgia,death,cultural value
-opacity,critical engineering,program or be programmed,error,creative misuse,confusion,operating systems,openness,literacy,technology,engineering
-open frameworks,toolkit,toolkits,acu,aesthetics and computation,teaching,open source,community,media lab,sharing,art and tech
+objects,design process,product,things,3d printing,digital meets physical,design,teaching,physicality,post-digital,new aesthetic
+obsolescence,old media,death,creative misuse,apocalypse,art history,devices,history,newness,archiving,creative coding
+ocd,syntax,logic,engineering,elegance,problem solving,beginnings,programming
+old history,history,archiving
+old media,history,obsolescence,preservation,new media,archiving,newness,evolution,nostalgia,death,cultural value
+opacity,technology,users,error,program or be programmed,critical engineering,creative misuse,transparency,openness,operating systems,playfulness
+open frameworks,toolkit,acu,toolkits,aesthetics and computation,teaching,open source,community,media lab,sharing,art and tech
 open paths,location,infrastructure,gps,cities,maps,datatelling,personal data,memory,drawing,society
-open software,transparency,critical engineering,program or be programmed,creative misuse,tools,future,technological progress
-open source,sharing,toolkit,community,education,open frameworks,economics,tools,collaboration,money,engineering
-openness,literacy,toolkits,critical engineering,program or be programmed,opacity,creative misuse,transparency,power,programming
+open software,transparency,program or be programmed,critical engineering,creative misuse,tools,future,technological progress
+open source,sharing,toolkit,community,education,open frameworks,economics,collaboration,github,tools,money
+openness,literacy,toolkits,program or be programmed,critical engineering,creative misuse,opacity,transparency,power,programming
 operating system,c++,engineering,systems,language,programming
-operating systems,improvement,engineering,opacity,software,technology,dysfunction,error
+operating systems,improvement,engineering,software,opacity,technology,error,dysfunction
+oral tradition,authorship,memes,originality
 order,messiness,elegance,biology and code,logic,systems,biology
 organic,growth,architecture,product,noise,3d printing,chance,biology,randomness,emergence,digital meets physical
-organizations,business,social dynamics,career,people
-originality,ideas,visual culture,homogeneity,memes,newness,style,curation,new media,commercialism,apporopriation
-overview,space,perspective,zoom
-own the tool,choices,humanism,program or be programmed,post-digital,nerd,hybridity,limitations,people,learning
-painting,expression,drawing,children,thinking by doing,new media,simplicity,gesture,improvization,art and code,sketching
-paola antonelli,
-parameter space,generative,possibility,randomness,serendipity,surprise,exploration,generative art
-parameters,code is messy,constraints,physics,nature,simulation
-participation,gift,social engagment,people,humanity,tools,social,interactivity,interfaces,storytelling,personal data
-particles,geometry,motion,storytelling
+organizations,business,social dynamics,people,career,collaboration
+originality,memes,visual culture,homogeneity,ideas,newness,style,curation,new media,commercialism,oral tradition
+oversimplification,failure,simplicity
+overview,space,zoom,perspective
+own the tool,choices,humanism,program or be programmed,nerd,post-digital,limitations,hybridity,people,learning
+painting,expression,drawing,thinking by doing,new media,children,gesture,improvization,art and code,simplicity,sketching
+parameter space,possibility,randomness,serendipity,surprise,generative art,exploration
+parameters,constraints,code is messy,physics,nature,simulation
+participation,gift,social engagment,people,humanity,tools,social,toolmakers,interfaces,interactivity,storytelling
+particles,geometry,fluid,motion,installation,fantasy technology,kinect,magic,interactivity,play,storytelling
 partnership,teams,processing,collaboration
-passing the baton,mentorship,kill the master,mentors,generations,career,education
-passion,business,commercialism,art vs engineering,art,career
-pattern,gestalt,perception,complexity,phenomena,atmosphere,flow,data visualization,prediction,perspective,zoom
+passing the baton,mentorship,kill the master,mentors,generations,education,career
+passion,business,commercialism,art vs engineering,career,art
+pattern,gestalt,complexity,perception,phenomena,audiovisualization,music,perspective,data visualization,scale,atmosphere
 paul burke,mentors,learning,sharing
 paul rand,bravado,humor,generations,mentors,design
 people,participation,social,humanity,relationships,social engagment,humanism,social media,gift,twitter,storytelling
-perception,pattern,gestalt,scale,complexity,reality,data visualization,visual cortex,vision,experience,man vs machine
-performance,fluxus,zach lieberman,connections,apps,performance art,liveness,real and virtual,collaboration,drawing,social
-performance art,fluxus,apps,awkward,mirror,performance,lifetracking,art history,quantified self,focus,art
+perception,pattern,reality,scale,vision,drugs,mind,gestalt,psychedelic,zen,experience
+performance,fluxus,zach lieberman,connections,apps,performance art,augmented reality,liveness,collaboration,drawing,social
+performance art,fluxus,apps,mirror,awkward,performance,lifetracking,quantified self,focus,art history,augmented reality
 personal data,memory,archiving,identity,privacy,gps,quantified self,data ownership,maps,data,location
-perspective,zoom,overview,signals,sublime,phenomena,space,cities,revelation,pattern,gestalt
-phenomena,perspective,pattern,zoom,gestalt,sublime,atmosphere,multiverse,flow,nature,prediction
-philosophy,existence,funny,uncanny,chance,infinity,truth,logic,time,progress,weird
-philsophy,existence,internet of things,things,machine aesthetics,food,meaning,why,humanity,god mode,new aesthetic
-physicality,post-digital,digital meets physical,uncertainty,sex,embodiment,drawing,sketching,the digital divide,techno,tangibility
-physics,vision,simulation,nature,reality,visualization,god mode,science,universe,parameters,equilibrium
-play,children,interactivity,thinking by doing,instrument,imagination,gesture,systems,emergence,intuition,collaboration with machines
-playfulness,inexactitude,art vs engineering,play,process
+perspective,zoom,scale,gestalt,overview,signals,phenomena,sublime,space,pattern,design
+phenomena,zoom,perspective,pattern,gestalt,transcendence,spirituality,sublime,nature,multiverse,flow
+philosophy,spirituality,existence,funny,mysticism,uncanny,infinity,phenomena,chance,truth,reality
+philsophy,existence,internet of things,things,machine aesthetics,food,why,humanity,god mode,poetry,new aesthetic
+physicality,post-digital,digital meets physical,uncertainty,love,sex,embodiment,drawing,sketching,tangibility,awkward
+physics,vision,simulation,nature,reality,god mode,universe,science,perception,parameters,visual thinking
+piano,interface,tool,toolmakers,simplicity,complexity
+play,children,interactivity,thinking by doing,instrument,imagination,gesture,playfulness,fun,inexactitude,systems
+playfulness,inexactitude,opacity,play,technology,art vs engineering,process,interactivity
 pleasure,images,subjectivity,aesthetics,beauty
-poetry,tech-demo,meaning,art,critique,homogeneity,art vs engineering,criticality,limitations,consciousness,infinity
-policy,statistics,technoptimism,transparency,society,data ownership,problem solving,solutions,devices,personal data,data
-politics,globalization,humanity,society,education,dystopia,solutions,communication,visualization,data visualization,perception
+poetry,tech-demo,critique,insight,food,art,why,philsophy,homogeneity,weird,limitations
+policy,statistics,technoptimism,society,transparency,data ownership,solutions,devices,problem solving,personal data,data
+politics,globalization,humanity,society,education,visualization,dystopia,communication,solutions,data visualization
 popular culture,social engagment,visual culture,culture,social
-possibility,parameter space,surprise,generative,randomness,serendipity,exploration,legos,games,emergence,children
-post-digital,physicality,humanism,digital meets physical,infinite in all directions,image,the digital divide,noninteractivity,choices,tangibility,sketching
-power,security,control,transparency,network security,dystopia,bots,man vs machine,critical engineering,infrastructure,art and security
+possibility,parameter space,surprise,randomness,serendipity,exploration,games,legos,generative art,emergence,children
+post-digital,physicality,humanism,digital meets physical,sketching,image,tangibility,choices,the digital divide,noninteractivity,magic
+posthuman,fun,singularity,cyborg,evolution,progress,play,technological progress
+power,security,control,transparency,network security,dystopia,bots,man vs machine,art and security,infrastructure,society
 prank,fat,hack,humor,net.art
-prediction,atmosphere,chaos,futurism,pattern,phenomena,big data,3d printing,complexity,systems,data
+prediction,atmosphere,chaos,futurism,big data,phenomena,pattern,3d printing,complexity,systems,data
 present shock,the present,toys,technoptimism,distraction,relationships,3d printing,newness,internet,communication,social media
 presentation,ambiguity,understanding,story,art
 preservation,archiving,museums,memory,old media,digital art,history,apocalypse,videogames,newness,digital meets physical
 privacy,security,data ownership,personal data,surveillance,hack,facebook,big data,relationships,identity,public/private
-probability,chance,randomness,random,number,noise,games,inexactitude,stock market,chaos,algorithm
+probability,chance,randomness,number,noise,games,inexactitude,stock market,chaos,dna,algorithm
 problem of newness,cultural value,old media,history
-problem solving,society,solutions,useful,coding for humanity,progress,program or be programmed,design,creative misuse,education,information
-process,collaboration with machines,emergence,art vs engineering,thinking by doing,serendipity,drawing,systems,gardening,mind and hand,intuition
-processing,education,toolkits,accessibility,tools,design by numbers,teaching,sketching,thinking by doing,media lab,aesthetics and computation
-product,jewelry,design process,business,objects,organic,growth,3d printing,architecture,cultural value,design
-program or be programmed,creative misuse,users,critical engineering,opacity,own the tool,openness,open software,transparency,legos,problem solving
-programming,coding,learning,code,language,frustration,beginnings,staring at screens,improvization,boring,addiction
-progress,problem solving,society,interconnectedness,gadgets,cyborg,utopia,collective intelligence,man vs machine,interfaces,technological progress
-project example,illusion,liveness,gesture,magic,emotion,drawing,play,social media
+problem solving,society,solutions,useful,progress,coding for humanity,logic,program or be programmed,programming,art vs engineering,design
+process,creativity,collaboration with machines,thinking by doing,emergence,intuition,surprise,control,generative art,art vs engineering,serendipity
+processing,education,toolkits,accessibility,sketching,tools,design by numbers,teaching,creative coding,media lab,thinking by doing
+product,jewelry,design process,business,organic,growth,objects,architecture,cultural value,3d printing,design
+program or be programmed,creative misuse,users,critical engineering,own the tool,openness,open software,opacity,transparency,legos,problem solving
+programmers,god mode,creative coding,world building,cosmogeny,creativity
+programming,coding,learning,language,code,beginnings,frustration,addiction,problem solving,staring at screens,thinking with code
+progress,society,problem solving,interconnectedness,cyborg,gadgets,evolution,technological progress,utopia,collective intelligence,man vs machine
+project example,illusion,liveness,gesture,magic,drawing,play,emotion,social media
 project examples,empathy,emotion,new media,data visualization
-projection,light,installation,form,architecture,digital meets physical,virtual
-prosthetic,eyewriter,assistive technology,cyborg,drawing
-psychology,assistive technology,interactivity
-public,confusion,social engagment,art and code,visualization,art vs engineering,social,thinking with code,education,communication,complexity
-public/private,art and security,r&d,security,privacy,surveillance,machine vision
+projection,light,installation,form,architecture,digital meets physical,zen,magic,perception,virtual
+prosthetic,brain,mind,eyewriter,assistive technology,cyborg,real and virtual,time,drawing,cognition,reality
+psychedelic,fractals,drugs,fluid,nostalgia,perception,surprise,scale,weird,pattern,old media
+psychology,assistive technology,fantasy,dreams,narrative,emotion,interactivity,storytelling
+public,confusion,social engagment,visualization,art and code,art vs engineering,social,thinking with code,education,communication,complexity
+public/private,art and security,research and development,security,privacy,surveillance,machine vision
 quantified self,lifetracking,afterlife,documentation,human life,personal data,death,the cloud,performance art,relationships,identity
-questions,design and art,curiosity,science,why?,struggle,research,challenges,post-digital,problem solving,hybridity
-r&d,eyebeam,public/private,video art,art and security,research,knowledge,struggle with technology,security,creative misuse,algorithm
-random,number,probability,chance,randomness,math,algorithm
-randomness,chance,probability,serendipity,parameter space,luck,noise,possibility,generative art,gardening,gift
-reading,library,writing,information,immersion,understanding,fantasy technology,zen,simplicity,exploration,attention
-real,reality,virtual
-real and virtual,virtual,realness,videogames,representation,reality,fantasy,augmented reality,distraction,world building,attention
+questions,design and art,curiosity,why?,science,struggle,research,challenges,post-digital,clouds,problem solving
+randomness,chance,serendipity,probability,gardening,parameter space,luck,noise,possibility,generative art,gift
+reading,library,writing,information,immersion,understanding,fantasy technology,attention,exploration,simplicity,zen
+real,real and virtual,reality,virtual
+real and virtual,virtual,reality,realness,videogames,representation,games,distraction,future of cinema,attention,immersion
 real world,experience,social,people
-reality,virtual,representation,perception,experience design,real and virtual,vision,physics,realness,simulation,algorithms
-realness,visual thinking,real and virtual,vision,uncertainty,face tracking,reality,distraction,embodiment,social engagment,digital meets physical
+reality,virtual,real and virtual,perception,experience design,truth,representation,physics,realness,vision,cognition
+realness,visual thinking,real and virtual,uncertainty,face tracking,vision,reality,distraction,embodiment,social engagment,digital meets physical
 realworld,uncertainty,physicality
-recursion,meta,fantasy technology,improvization,visualization,clouds,future of cinema
-relationships,love,facebook,twitter,people,the present,privacy,present shock,connectivity,alone together,lifetracking
-rendering,rgbd,efficiency,iteration,sketching,visualization,clouds,computation,technological progress
-representation,reality,real and virtual,virtual,behavior,simulation,world building,videogames,abstraction,games,aesthetics
-research,curiosity,influences,microsoft,science,r&d,google,questions,knowledge,kinect,technology
+recursion,meta,fantasy technology,improvization,clouds,future of cinema
+relationships,love,facebook,twitter,people,the present,privacy,present shock,connectivity,lifetracking,quantified self
+rendering,rgbd,efficiency,iteration,visualization,sketching,clouds,computation,technological progress
+representation,real and virtual,behavior,reality,simulation,virtual,videogames,games,world building,avatar,text
+research,microsoft,curiosity,science,research and development,google,questions,knowledge,toolmakers,kinect,technology
+research and development,eyebeam,public/private,video art,art and security,research,knowledge,struggle with technology,security,creative misuse,surveillance
 responsibility,generations,teaching,design,career,society
-revelation,gestalt,sublime,atmosphere,flow,perspective,microscope,pattern,cities,zoom,phenomena
-rgbd,rendering,physics,visualization,clouds,camera,future of cinema,simulation
+revelation,sublime,gestalt,atmosphere,timeless,flow,microscope,zoom,cities,perspective,pattern
+rgbd,rendering,physics,clouds,camera,future of cinema,simulation
 rhetoric,challenges,critique,data visualization
+rhythm,sync,techno,audiovisualization,pattern,music
 robert hodgin,processing,community
-rules,emergence,world building,cellular automata,intuition,cosmogeny,collaboration with machines,algorithm,thinking by doing,systems,computation
+robots,artificial intelligence,wearables,uncanny,the cloud,singularity,bots,computation,consciousness,collective intelligence,cyborg
+rules,emergence,cellular automata,world building,intuition,collaboration with machines,cosmogeny,algorithm,thinking by doing,computation,systems
 sadness,digital natives,self reflection,digital culture,staring at screens,embodiment,emotion,digital meets physical
-scale,zoom,perception,universe,design,nature,perspective,metaphor,pattern,microscope,gestalt
-science,research,questions,truth,curiosity,influences,simplicity,elegance,physics,understanding,hybridity
-science fiction,future,cyberpunk,singularity,dystopia,consciousness,fantasy technology,cyborg,futurism,ubiquity,dreams
-sculpture,tree,formalism,light,3d printing,installation,exploration,digital meets physical,evolution,nature
-seamlessness,interface,ubiquitous computing,interfaces,sensor,experience,immersion,technology,devices,interactivity
-security,power,privacy,dystopia,facebook,bots,big data,public/private,art and security,data ownership,r&d
+scale,perspective,zoom,universe,perception,design,gestalt,nature,pattern,microscope,metaphors
+science,curiosity,questions,research,hybridity,truth,universe,spirituality,physics,simplicity,elegance
+science fiction,future,singularity,cyberpunk,consciousness,dystopia,fantasy technology,futurism,cyborg,artificial intelligence,man versus machine
+sculpture,3d printing,tree,formalism,light,iteration,installation,digital meets physical,exploration,evolution,process
+seamlessness,apple,corporate,interfaces,gadget,devices,ubiquitous computing,transparency,google,sensor,experience
+security,power,privacy,dystopia,facebook,big data,bots,public/private,art and security,data ownership,research and development
 self,identity
-self expression,expression,art and code,creative exploration,why?,feeling,coding,mind and hand,thinking with code,process,style
+self expression,expression,art and code,creative exploration,why?,feeling,virtuosity,mind and hand,coding,thinking with code,style
 self reflection,digital natives,sadness,digital culture,staring at screens,embodiment,emotion,digital meets physical
-sensation,subliminal,techno,visual cortex,aesthetic experience,synesthesia,music,physicality,perception,visualization,videogames
-sensor,ubiquitous computing,data collection,object recognition,camera,interface,seamlessness,cameras,machine vision,kinect,technological progress
+sensation,aesthetic experience,techno,electronic music,visual cortex,synesthesia,evaluation,mind,embodiment,perception,physicality
+sensor,ubiquitous computing,data collection,object recognition,camera,machine vision,cameras,seamlessness,kinect,technological progress,technology
 sensors,ubiquity,wearables,surveillance,devices,assistive technology,augmented reality,fantasy technology,interfaces,camera,future
 sentiment analysis,empathy,emotion,limitations,artificial intelligence,language
-serendipity,luck,randomness,surprise,parameter space,chance,possibility,gift,process,information,generative
-serious,humor,tragedy,cinema,useful,data visualization,data,storytelling
-sex,love,crowdsourcing,dreams,texting,sex and tech,emotion,algorithm,physicality,efficiency,visualization
+serendipity,luck,randomness,surprise,parameter space,chance,possibility,gift,generative art,process,information
+serious,tragedy,humor,cinema,useful,data visualization,data,storytelling
+sex,love,crowdsourcing,emotion,texting,sex and tech,intimacy,dreams,physicality,efficiency,algorithm
 sex and tech,sex,devices
-sharing,community,open source,economics,tools,collaboration,education,teaching,open frameworks,toolkit,thanks
+sharing,open source,community,economics,tools,collaboration,education,teaching,open frameworks,thanks,toolkit
 shifts,veterans,generations,mentors,newness
-signals,perspective,pattern,big data,visualization,scale,perception
-simplicity,truth,elegance,complexity,science,conviction,stories,balance,statistics,communication,reading
-simulation,cosmogeny,nature,physics,world building,emergence,god mode,representation,virtual,games,future of cinema
-singularity,consciousness,cyborg,wearables,science fiction,narrative,dystopia,artificial intelligence,future,clouds,memory
-sketching,drawing,thinking by doing,improvization,feedback,processing,coding,gesture,post-digital,creativity,digital meets physical
-skill,wonder,mastery,branching,mind and hand,distraction,technology,discovery,magic,progress,drawing
-slow,zen,liveness,gesture,magic,time,emotion,drawing,storytelling
+signals,perspective,visualization,big data,scale,pattern
+simplicity,complexity,elegance,truth,toolmakers,science,piano,stories,interface,conviction,tool
+simulation,cosmogeny,nature,world building,physics,emergence,representation,nature of code,god mode,games,algorithm
+singularity,science fiction,cyborg,consciousness,posthuman,man versus machine,artificial intelligence,fun,wearables,cities,robots
+sketching,drawing,thinking by doing,processing,improvization,coding,creativity,feedback,gesture,digital meets physical,post-digital
+skill,wonder,branching,mastery,mind and hand,distraction,technology,discovery,magic,progress,drawing
+slow,liveness,gesture,zen,magic,time,drawing,emotion,storytelling
 snarky,anonymous,crowdsourcing,identity,creativity,collaboration,community
-social,people,social media,humanity,hacker,participation,legibility,empathy,identity,data visualization,relationships
-social dynamics,disaster,mobile,leadership,organizations,social engineering,business,society,cities,creative coders,people
-social engagment,participation,gift,humanism,people,society,popular culture,confusion,public,gadgets,dialogue
+social,people,social media,humanity,participation,hacker,legibility,empathy,identity,data visualization,relationships
+social dynamics,disaster,mobile,social engineering,leadership,organizations,business,society,cities,people,interconnectedness
+social engagment,participation,gift,humanism,people,society,popular culture,public,confusion,gadgets,dialogue
 social engineering,leadership,social dynamics
-social media,twitter,facebook,social,internet,people,communication,network,identity,virality,distraction
+social media,twitter,facebook,social,people,internet,communication,network,identity,virality,distraction
 society,problem solving,solutions,progress,humanity,culture,social engagment,politics,cities,social dynamics,power
-software,commercialism,money,economics,engineering,operating systems,advertising,improvement,thinking through code,toolkits,open source
-solutions,problem solving,society,coding for humanity,apps,dystopia,technoptimism,survival,program or be programmed,street art,progress
-sound,audiovisualization,synesthesia,liveness,music,noise,visual culture,collaboration,perception,systems
-space,overview,metaphor,perspective,zoom,universe,scale,nature
-spiritual,failure,zen,liveness,magic,time,emotion,drawing,communication,storytelling
-staring at screens,attention,boring,embodiment,focus,mirror,self reflection,digital natives,sadness,surveillance,digital culture
-statistics,policy,street art,fat,truth,simplicity,representation,humanity,problem solving,solutions,data
-stock market,algorithms,bots,chaos,error,economics,stories,internet culture,digital culture,dystopia,algorithm
+software,commercialism,money,economics,operating systems,engineering,advertising,improvement,thinking through code,accessibility,open source
+solutions,problem solving,society,coding for humanity,apps,dystopia,technoptimism,survival,program or be programmed,policy,challenge
+song,story,narrative,music
+sound,synesthesia,audiovisualization,liveness,music,noise,synaesthesia,animation,visual culture,collaboration,systems
+space,overview,metaphors,zoom,perspective,universe,scale,nature
+spiritual,failure,liveness,zen,magic,time,drawing,emotion,communication,storytelling
+spirituality,mysticism,philosophy,phenomena,science,zen
+staring at screens,attention,embodiment,boring,focus,mirror,self reflection,digital natives,sadness,surveillance,digital culture
+statistics,policy,street art,fat,truth,representation,humanity,simplicity,solutions,problem solving,data
+stock market,algorithms,bots,chaos,error,economics,internet culture,stories,dysfunction,digital culture,dystopia
 storage,memory,archiving,data
-stories,stock market,simplicity,algorithms,data visualization
-story,motion,storytelling,presentation,ambiguity,book,future of cinema,behavior,understanding,knowledge,simulation
-storytelling,future of cinema,narrative,story,datatelling,cinema,simulation,people,videogames,representation,data
+stories,stock market,algorithms,simplicity,data visualization
+story,motion,narrative,storytelling,behavior,future of cinema,presentation,song,flocking,timeless,book
+storytelling,future of cinema,narrative,datatelling,story,cinema,people,emotion,videogames,representation,communication
 street art,fat,statistics,hacking,solutions,programming,data visualization
 stress,challenge,uncertainty,bugs,frustration,dysfunction
-struggle,work and life,struggle with technology,questions,challenges,commercial art,frustration,money,exploration,program or be programmed,art vs engineering
-struggle with technology,frustration,struggle,dichotomy,fluency,ambiguity,boring,r&d,toolkit,humanism,language
-style,trendspotting,visual culture,influence,tribe,originality,memes,energy,epiphany,interestingness,aesthetics
-subjectivity,images,pleasure,hallucination,aesthetics,truth,datatelling,beauty,representation,time,art
-sublime,perspective,cities,revelation,zoom,gestalt,phenomena,scale,nature
-subliminal,techno,sensation,synesthesia,music,physicality,perception
-subversion,gui,inversion,keyboard,mouse,think different,why?,system,hacking,creative misuse,interfaces
-success,failure,life,children,money,career,zen,drawing,storytelling
-surprise,possibility,serendipity,systems,randomness,parameter space,emergence,improvization,uncertainty,commercial art,exploration
+struggle,work and life,struggle with technology,questions,challenges,commercial art,frustration,money,exploration,program or be programmed,clouds
+struggle with technology,frustration,struggle,dichotomy,fluency,ambiguity,research and development,boring,humanism,toolkit,language
+style,visual culture,trendspotting,influence,tribe,originality,memes,energy,epiphany,aesthetics,interestingness
+subjectivity,pleasure,images,visions,aesthetics,art and experience,aesthetic experience,drugs,datatelling,truth,beauty
+sublime,timeless,revelation,cities,zoom,perspective,gestalt,phenomena,zen,scale,perception
+subversion,gui,inversion,think different,why?,system,hacking,creative misuse,interfaces,sketching,error
+success,failure,life,money,career,children,zen,drawing,storytelling
+surprise,possibility,serendipity,control,improvization,systems,randomness,parameter space,process,emergence,uncertainty
 surveillance,military technology,hack,ubiquity,sensors,privacy,staring at screens,devices,machine vision,public/private,mirror
 survival,apocalypse,coding for humanity,future,dystopia,solutions,weird,critical engineering,criticality,technological progress
-symbiosis,man vs machine,engineering,cognition,coevolution,infrastructure,literacy,tools,critical engineering,artificiality,criticality
+symbiosis,man vs machine,engineering,coevolution,computers,literacy,infrastructure,tools,cognition,critical engineering,artificiality
+synaesthesia,animation,kids,audiovisualization,character,electronic music,music,influence,humor,sound,behavior
+sync,rhythm,techno,audiovisualization,pattern,music
 synergy,working with others,connections,hackathon,collaboration
-synesthesia,sound,subliminal,techno,audiovisualization,music,sensation,behavior,liveness,physicality,systems
+synesthesia,sound,techno,electronic music,sensation,audiovisualization,music,mind,behavior,liveness,physicality
 syntax,ocd,logic,elegance
-synthetic biology,metaphor,biology and code,artificial life,biology,emergence,science fiction,complexity
-system,things breaking,subversion,bugs,creative coders,dysfunction,error,collaboration with machines,creative misuse,art and code,generative art
-systems,emergence,complexity,surprise,chaos,process,rules,nature,artificial life,games,gardening
-tangibility,the digital divide,post-digital,physicality,digital meets physical
+synthetic biology,biology and code,metaphors,artificial life,biology,science fiction,emergence,complexity
+system,things breaking,subversion,fractals,tree,nature of code,error,bugs,dysfunction,collaboration with machines,creative coders
+systems,emergence,complexity,surprise,chaos,rules,process,nature,games,discovery,gardening
+tangibility,the digital divide,physicality,post-digital,digital meets physical
 taste,consumer,beautiful exhuberance,aesthetics,commercial art,beauty,critique,design,communication
-teachers,mentors,learning
-teaching,education,book,aesthetics and computation,open frameworks,toolkit,processing,mentors,career,media lab,sharing
+teachers,guru,mentors,learning
+teaching,education,book,aesthetics and computation,open frameworks,toolkit,processing,media lab,mentors,career,sharing
 teams,partnership,processing,collaboration
-tech-demo,meaning,poetry,homogeneity,critique,art vs engineering,criticality,art,aesthetics,newness,new media
-techno,subliminal,sensation,synesthesia,music,physicality,perception
-technological progress,future,newness,utopia,technology,futurism,technoptimism,engineering,users,progress,machine vision
-technology,art and tech,technological progress,opacity,engineering,techpositive,interface,dichotomy,wonder,skill,seamlessness
+tech-demo,poetry,homogeneity,critique,criticality,art vs engineering,art,aesthetics,newness,new media,interactivity
+techno,rhythm,sync,electronic music,sensation,synesthesia,mind,music,physicality,audiovisualization,pattern
+technological progress,future,newness,utopia,technology,futurism,critical engineering,technoptimism,progress,singularity,engineering
+technology,opacity,art and tech,technological progress,engineering,interfaces,techpositive,dichotomy,wonder,skill,playfulness
 technoptimism,toys,present shock,hope,policy,change,utopia,apps,solutions,technological progress,society
-techpositive,technology,art and tech,newness,new media
+techpositive,art and tech,technology,newness,new media
 telepathy,twitter,culture,collective intelligence,internet,social media
 teleportation,imaginary,science fiction,future
-text,writing,behavior,representation,twitter,clouds,data,communication,language,social media,storytelling
+text,writing,behavior,representation,twitter,data,communication,social media,language,storytelling,simulation
 texting,gender,sex,virtual
-thanks,economics,education,mentors,sharing,teaching,open frameworks,community,toolkit,open source
-the cloud,transience,noosphere,ignorance,network,alone together,quantified self,network security,criticality,memory,security
-the digital divide,tangibility,post-digital,physicality,digital meets physical
-the format of clouds makes me think about a dreams.,
-the future,dialogue,futurism,clouds,collective intelligence
+thanks,toxi,guru,economics,education,mentors,sharing,teaching,open frameworks,community,toolkit
+the cloud,transience,ignorance,noosphere,network,quantified self,network security,robots,criticality,memory,security
+the digital divide,tangibility,physicality,post-digital,digital meets physical
 the gift,generosity,interconnectedness,progress,society,sharing,community
 the present,present shock,distraction,relationships,internet,communication,social media
-things,internet of things,existence,philsophy,machine aesthetics,humanity,new aesthetic,man vs machine
-things breaking,system,bugs,dysfunction,error
-think different,gui,inversion,keyboard,mouse,subversion,why?,hacking,interfaces,sketching,users
-thinkerer,concept,maker,art world,career
-thinking,cognition,intelligence,thinking with code,time,iteration,computer,computation,algorithm,code,future
-thinking by doing,mind and hand,intuition,collaboration with machines,thinking with code,feedback,play,drawing,sketching,process,rules
-thinking through code,liveness,improvization,computation,logic,software,attention,computer,videogames,coding,code
-thinking with code,cognition,thinking by doing,coding,thinking,art vs engineering,language,code,art and code,virtuosity,creative coders
-time,zen,thinking,commercial art,computer,liveness,immersion,magic,spiritual,slow,clock
-toolkit,open frameworks,open source,legos,teaching,struggle with technology,sharing,aesthetics and computation,program or be programmed,minecraft,processing
-toolkits,open frameworks,openness,design by numbers,fun,processing,art and tech,accessibility,opacity,creative misuse,software
-toolmakers,invention,inventor,hacking,hybridity,tools,art vs engineering,beginnings
-tools,education,symbiosis,processing,sharing,man vs machine,toolmakers,participation,open source,gift,cognition
-touch,heuristics,art and experience,drawing,process
+things,internet of things,existence,philsophy,machine aesthetics,objects,humanity,new aesthetic,man vs machine
+things breaking,system,bugs,error,dysfunction
+think different,gui,inversion,subversion,why?,hacking,interfaces,sketching,users,play
+thinking,cognition,intelligence,thinking with code,iteration,thinking through code,time,computation,computer,algorithm,visualization
+thinking by doing,mind and hand,intuition,collaboration with machines,sketching,thinking with code,drawing,play,process,feedback,rules
+thinking through code,liveness,virtuosity,thinking with code,logic,improvization,legos,thinking,computation,cognition,software
+thinking with code,cognition,thinking by doing,virtuosity,thinking through code,coding,thinking,art vs engineering,language,code,art and code
+time,zen,thinking,commercial art,computer,liveness,immersion,magic,interactivity,future,generative art
+timeless,sublime,revelation,zen,story,narrative,perception,future of cinema,storytelling
+tool,interface,piano,toolmakers,simplicity,complexity
+toolkit,open frameworks,open source,legos,toolmakers,teaching,struggle with technology,sharing,aesthetics and computation,world building,program or be programmed
+toolkits,design by numbers,openness,open frameworks,fun,processing,art and tech,accessibility,creative misuse,opacity,aesthetics and computation
+toolmakers,invention,tools,inventor,toolkit,interface,tool,piano,simplicity,fluid,demo
+tools,toolmakers,education,symbiosis,processing,sharing,participation,man vs machine,gift,open source,social engagment
+touch,art and experience,drawing,creativity,process
+toxi,guru,thanks,economics,mentors,teaching,education,sharing
 toys,present shock,technoptimism,3d printing,newness,future,technological progress
 trace of your life,maps,gps,data,data visualization
-tradition,engineering,dysfunction,virtuosity,coding,learning,love,open source,technological progress,community
-tragedy,serious,cinema,storytelling,data visualization
+tradition,engineering,dysfunction,virtuosity,coding,learning,love,open source,critical engineering,technological progress,community
+tragedy,serious,cinema,data visualization,storytelling
+transcendence,drugs,mind,phenomena,consciousness,perception
 transience,the cloud,data ownership,memory,archiving
-transparency,critical engineering,open software,information as weapon,criticality,power,program or be programmed,hackers,creative misuse,engineering,policy
+transparency,critical engineering,open software,information as weapon,seamlessness,power,criticality,program or be programmed,devices,hackers,creative misuse
 travel,nostalgia,data ownership,memory,emotion,personal data
-tree,animation,sculpture,branching,evolution,nature,collaboration,storytelling
-trendspotting,style,art history,criticality,new aesthetic,futurism,history
-tribe,nerd,community,hybridity,style,creative coders,hacker,hackathon,visual culture,creative coding,beginnings
+tree,nature of code,fractals,branching,system,sculpture,animation,algorithm,imagination,evolution,nature
+trendspotting,style,new aesthetic,art history,criticality,futurism,algorithms,culture,control,pattern,power
+tribe,nerd,community,creative coders,style,hybridity,creative coding,hacker,beginnings,hackathon,visual culture
 tron,aesthetics,simulation
-truth,inexactitude,simplicity,elegance,science,beauty,memory,data,statistics,subjectivity,philosophy
-tweaking,feedback,thinking by doing,generative art,sketching,learning
+truth,inexactitude,simplicity,elegance,reality,beauty,data,memory,science,statistics,understanding
+tweaking,feedback,thinking by doing,sketching,generative art,learning
 twitter,social media,facebook,relationships,network,virality,people,telepathy,writing,text,journalism
-twitter videogames,facebook,identity,virtual
-ubiquitous computing,sensor,object recognition,interface,seamlessness,machine vision,camera,ubiquity,technology,technological progress,interfaces
+ubiquitous computing,sensor,object recognition,machine vision,camera,seamlessness,ubiquity,technology,technological progress,interfaces,experience
 ubiquity,sensors,augmented reality,surveillance,interfaces,ubiquitous computing,military technology,camera,cities,assistive technology,devices
-uncanny,behavior,philosophy,artificial intelligence,reality,logic,representation,artificial life,magic,machine vision,math
-uncertainty,realworld,stress,creative control,challenge,commercial art,realness,physicality,surprise,bugs,frustration
-understanding,presentation,ambiguity,c++,challenge,debugging,reading,story,science,truth,simplicity
-universe,nature,cosmogeny,infinity,cellular automata,scale,emergence,world building,space,artificial life,physics
-unknown,scale,network,perception,internet
-useful,problem solving,useless,interesting,art vs engineering,design,exploration,serious,evaluation,humor,beauty
-useless,useful,why,coding for humanity,art,challenges,career,money,humanity,time,data visualization
-users,program or be programmed,dystopia,creative misuse,corporate,gadget,data ownership,network security,google,man vs machine,devices
-utopia,artificiality,mind,technoptimism,consciousness,interconnectedness,dreams,technological progress,internet culture,uture,man versus machine
-uture,mind,artificiality,consciousness,utopia,artificial intelligence,simulation
+uncanny,behavior,philosophy,robots,artificial intelligence,new aesthetic,reality,representation,abstraction,artificial life,logic
+uncertainty,realworld,stress,challenge,creative control,commercial art,realness,physicality,bugs,surprise,frustration
+understanding,presentation,ambiguity,brain,debugging,reading,mind,truth,story,visualization,science
+universe,nature,cosmogeny,scale,cellular automata,emergence,infinity,science,artificial life,space,physics
+unknown,scale,network,internet
+useful,useless,problem solving,interesting,art vs engineering,serious,exploration,design,evaluation,humor,beauty
+useless,useful,why,coding for humanity,challenges,career,money,visualization,art,humanity,data visualization
+users,program or be programmed,opacity,dystopia,creative misuse,corporate,gadget,data ownership,seamlessness,google,network security
+utopia,artificiality,technoptimism,mind,interconnectedness,consciousness,technological progress,uture,internet culture,dreams,hope
+uture,artificiality,mind,consciousness,utopia,artificial intelligence,simulation
 veterans,shifts,generations,mentors,newness
-video art,eyebeam,r&d,art world,new aesthetic,machine vision,old media,history
-videogames,real and virtual,virtual,games,world building,fantasy,augmented reality,beginnings,representation,history,storytelling
-virality,youtube,memes,journalism,visual cortex,virus,twitter,feedback,social media,software,visual culture
-virtual,real and virtual,reality,videogames,representation,simulation,games,future of cinema,realness,love,relationships
-virtual reality,clouds,digital meets physical
-virtuosity,tradition,creative coders,love,coding,cognition,thinking with code,real and virtual,elegance,engineering,creative coding
-virus,art and science,information as weapon,virality,hackers,memes,emergence,biology,computation,communication
-vision,visual thinking,physics,microscope,realness,reality,gestalt,perception,camera,representation,algorithms
-visual cortex,sensation,aesthetic experience,evaluation,feedback,virality,embodiment,perception,emotion,experience,visualization
-visual culture,originality,memes,style,influence,homogeneity,ideas,beauty,popular culture,limits of the computer,aesthetics
-visual effects,efficiency,god mode,kinect,physics,visualization,camera,process,future of cinema,nature,simulation
-visual thinking,vision,realness,physics,reality,perception
-visualization,debugging,physics,perception,dreams,sex,imagination,future of cinema,complexity,communication,signals
-wearables,cyborg,gadgets,sensors,devices,singularity,google,interfaces,surveillance,man vs machine,critical engineering
-weird,funny,food,fantasy,dreams,apocalypse,survival,memes,nerd,future,scale
-why,infinite in all directions,food,meaning,philsophy,useless,post-digital,experience,weird,art,design
-why?,gui,inversion,keyboard,mouse,think different,subversion,design and art,questions,hacking,self expression
-wikipedia,collective intelligence,information as weapon,github,transparency,collaboration,hackers,sharing,data visualization
+video art,eyebeam,research and development,art world,new aesthetic,machine vision,old media,history
+videogames,virtual,real and virtual,games,world building,beginnings,augmented reality,fantasy,representation,history,storytelling
+virality,youtube,memes,meme,visual cortex,journalism,twitter,viruses,social media,feedback,software
+virtual,real and virtual,reality,videogames,representation,simulation,future of cinema,games,realness,love,experience design
+virtual reality,filmmaking,god,cinema,world building,cosmogeny,creativity,future of cinema,storytelling,simulation
+virtuosity,tradition,thinking with code,thinking through code,coding,expression,love,self expression,creative coders,cognition,engineering
+viruses,art and science,information as weapon,virality,hackers,memes,computation,biology,emergence,communication
+vision,visual thinking,physics,visual cortex,perception,cameras,microscope,light,realness,reality,gestalt
+visions,nano,drugs,subjectivity,gestalt,fantasy,dreams,zen,imagination,time,weird
+visual cortex,sensation,aesthetic experience,vision,feedback,virality,cyborg,perception,emotion,videogames,interactivity
+visual culture,memes,style,originality,influence,homogeneity,beauty,popular culture,ideas,aesthetics,limits of the computer
+visual effects,efficiency,god mode,kinect,physics,camera,process,future of cinema,nature,simulation
+visual thinking,realness,vision,physics,reality,perception
+visualization,debugging,signals,invisibility,rendering,brain,public,minimalism,confusion,imagination,elegance
+wearables,cyborg,gadgets,sensors,devices,google,interfaces,robots,singularity,surveillance,man vs machine
+weird,food,funny,fantasy,dreams,survival,apocalypse,drugs,poetry,memes,future
+why,food,philsophy,useless,poetry,post-digital,experience,weird,design,art,history
+why?,gui,inversion,think different,subversion,design and art,questions,hacking,self expression,interfaces,sketching
+wikipedia,collective intelligence,information as weapon,github,transparency,collaboration,hackers,data visualization,sharing
 wizardry,magic,coding
 wonder,skill,feeling,aesthetic experience,technology,magic,beauty,nature,collaboration
 work,mortality,balance,life,journey,career,teaching,time,art vs engineering,identity
-work and life,struggle,commercial art,money,exploration,commercialism,career
+work and life,struggle,commercial art,money,exploration
 working with others,synergy,connections,hackathon,media lab,aesthetics and computation,collaboration,beginnings,programming,learning
-world building,cosmogeny,cellular automata,rules,legos,simulation,emergence,artificial life,games,fantasy,videogames
-writing,text,reading,fantasy technology,datatelling,twitter,data,communication,language,big data,storytelling
+world building,cosmogeny,simulation,god,cellular automata,god mode,virtual reality,rules,artificial life,emergence,games
+writing,text,library,reading,datatelling,fantasy technology,twitter,communication,language,data,storytelling
 youtube,virality,memes,culture,social media
-zach lieberman,connections,eyewriter,performance,accessibility,assistive technology,humanity,drawing,people,collaboration
-zen,time,failure,drawing,attention,immersion,focus,commercial art,liveness,exploration,spiritual
-zoom,perspective,scale,gestalt,phenomena,sublime,overview,space,microscope,pattern,cities
+zach lieberman,eyewriter,performance,connections,accessibility,assistive technology,humanity,drawing,people,collaboration
+zen,time,drawing,failure,timeless,attention,immersion,focus,magic,perception,commercial art
+zoom,perspective,scale,gestalt,overview,phenomena,sublime,space,microscope,cities,revelation

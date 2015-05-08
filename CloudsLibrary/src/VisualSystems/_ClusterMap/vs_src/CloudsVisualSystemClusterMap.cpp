@@ -587,7 +587,7 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
     for (set<string>::iterator it = masterTopics.begin(); it != masterTopics.end(); it++) {
 		TopicPoint tp;
 		tp.keyword  = *it;
-		tp.position = parser->getKeywordCentroid(tp.keyword);
+		tp.position = parser->getMasterTopicPosition(tp.keyword);
 		tp.numClips = parser->getNumberOfClipsWithKeyword(tp.keyword);
 		clipCountRange.growToInclude(tp.numClips);
 //		cout << "num clips " << tp.numClips << " current range " << clipCountRange << endl;
