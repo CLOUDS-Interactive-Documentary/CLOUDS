@@ -712,15 +712,15 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 //        }
 		//If we chose a digressing clip, through a link that didn't share our topic
 		//play the clip but free the topic for the next round
-		if(!nextClip->hasKeyword(state.topic) ){
-            if(settings.forceTopic){
-                state.log << state.duration << "\t\t\tERROR: We took a digression! Finishing act." << endl;
-                break;
-            }
-            else{
+		if(!nextClip->hasKeyword(state.topic) && !settings.forceTopic ){
+//            if(settings.forceTopic){
+//                state.log << state.duration << "\t\t\tERROR: We took a digression! Finishing act." << endl;
+//                break;
+//            }
+//            else{
                 state.log << state.duration << "\t\t\tERROR: We took a digression! Freeing topic" << endl;
                 state.freeTopic = true;
-            }
+//            }
 		}
         
 		//accept the next clip
@@ -973,7 +973,7 @@ CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<Clouds
         nextOptions = parser->getClipsForPerson(state.clip->person);
     }
     else if(state.clip == NULL || state.topicNum == maxTopicsPerAct || state.forcingTopic){
-		nextOptions = parser->getClipsWithKeyword(state.topic);
+		nextOptions = parser->getClipsWithKeyword(state.topic, true);
 		if(bLogClipDetails) state.log << state.duration << "\t\tConclusion of \"" << state.topic << "\", selecting from " << nextOptions.size() << " clips " << endl;
 	}
 	else{
@@ -1403,7 +1403,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         return 0;
     }
     
-    if(!state.forcingPerson &&
+    if(!state.forcingPerson && !state.forcingTopic && //this digression won't happen on topic because we only have toipc oriented clips
        !ofContains(potentialNextClip->getKeywords(), state.topic) &&
 	   state.timesOnCurrentTopic < minTimesOnTopic)
 	{

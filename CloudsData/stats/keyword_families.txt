@@ -1,4 +1,3 @@
- (Alb),english,arabic,globalization,language
 (Alb),english,arabic,globalization,language
 3d printing,architecture,digital meets physical,design process,product,organic,objects,sculpture,growth,design,toys
 DNA,art and science,biology

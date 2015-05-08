@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0385CDD01AFC3C3E000553F2 /* CloudsGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDCE1AFC3C3E000553F2 /* CloudsGlobal.cpp */; };
 		03D58F31194614B500FCFF7B /* CloudsExporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D58F2D194614B500FCFF7B /* CloudsExporter.cpp */; };
 		03D58F32194614B500FCFF7B /* CloudsSVGParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D58F2F194614B500FCFF7B /* CloudsSVGParser.cpp */; };
 		03D58F3B1946189900FCFF7B /* ClipSelector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03D58F3A1946189900FCFF7B /* ClipSelector.mm */; };
@@ -195,6 +196,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0385CDCE1AFC3C3E000553F2 /* CloudsGlobal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsGlobal.cpp; path = ../CloudsLibrary/src/CloudsGlobal.cpp; sourceTree = "<group>"; };
+		0385CDCF1AFC3C3E000553F2 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
 		03D58F2D194614B500FCFF7B /* CloudsExporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsExporter.cpp; sourceTree = "<group>"; };
 		03D58F2E194614B500FCFF7B /* CloudsExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsExporter.h; sourceTree = "<group>"; };
 		03D58F2F194614B500FCFF7B /* CloudsSVGParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSVGParser.cpp; sourceTree = "<group>"; };
@@ -576,6 +579,8 @@
 		03D58F29194612F200FCFF7B /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				0385CDCE1AFC3C3E000553F2 /* CloudsGlobal.cpp */,
+				0385CDCF1AFC3C3E000553F2 /* CloudsGlobal.h */,
 				03D58F2C194614B500FCFF7B /* Exporters */,
 				E7DDC46119458EF100E61D75 /* StoryEngine */,
 			);
@@ -1518,6 +1523,7 @@
 				E7211BC518A2843F0063EF97 /* ofxPerlinBehavior.cpp in Sources */,
 				E7211C2418A284400063EF97 /* ofxEasingLinear.cpp in Sources */,
 				E755D98D1944230C00AA81C1 /* ofxUISlider.cpp in Sources */,
+				0385CDD01AFC3C3E000553F2 /* CloudsGlobal.cpp in Sources */,
 				E755D9721944230C00AA81C1 /* ofxUIBiLabelSlider.cpp in Sources */,
 				E7211C0818A284400063EF97 /* ofxTLImageSequence.cpp in Sources */,
 				E755D9821944230C00AA81C1 /* ofxUILabelToggle.cpp in Sources */,
@@ -1641,7 +1647,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -1676,7 +1682,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};

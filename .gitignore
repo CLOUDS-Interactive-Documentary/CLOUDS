@@ -388,3 +388,5 @@ CloudsData/font/AxisStd-Regular.otf
 CloudsData/vhx/userpwd.txt
 
 CloudsData/runs/*.xml
+
+CloudsLibrary/src/CloudsCrypto.h

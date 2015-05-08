@@ -124,8 +124,8 @@ class CloudsFCPParser {
 							  bool hasQuestion = false,
 							  bool hasStartQuestion = false);
 	int getNumberOfClipsWithKeyword(const string& filterWord);
-	vector<CloudsClip*> getClipsWithKeyword(const string& filterWord);
-	vector<CloudsClip*> getClipsWithKeyword(const string& filterWord, vector<CloudsClip*>& searchClips);
+	vector<CloudsClip*> getClipsWithKeyword(const string& filterWord, bool useMasterTopics = false);
+	vector<CloudsClip*> getClipsWithKeyword(const string& filterWord, vector<CloudsClip*>& searchClips, bool useMasterTopics = false);
     vector<CloudsClip*> getClipsWithKeyword(const vector<string>& filter);
 	vector<CloudsClip*> getClipsWithKeyword(const vector<string>& filter, vector<CloudsClip*>& searchClips);
     vector<CloudsClip*> getClipsWithQuestionsForTopic(const string&  topic);
@@ -194,7 +194,8 @@ class CloudsFCPParser {
     map<string, int> allKeywords;
     map<string, int> contentKeywords;
 
-    map<string,string> masterTopicAssociations;
+    map<string,string> masterTopicAssociations; //go from subtopic -> master topic
+    map<string,vector<string> > masterTopicList; //go from master topic -> list of subtopics
     map<string, int> masterTopicClipCount;
     set<string> masterTopicSet; //all user facing topics
 

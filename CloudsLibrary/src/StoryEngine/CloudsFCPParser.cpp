@@ -363,14 +363,81 @@ void CloudsFCPParser::parseTopicAssociations(const string& filename){
         string associatedKeyword = association[1];
         string subtopic = ofSplitString(association[0],"\t",true,true)[1];
         masterTopicAssociations[subtopic] = associatedKeyword;
-        masterTopicClipCount[associatedKeyword] += ofToInt(clipcount[0]);
+        masterTopicList[associatedKeyword].push_back(subtopic);
+        masterTopicClipCount[associatedKeyword] += getNumberOfClipsWithKeyword(subtopic);
         masterTopicSet.insert(associatedKeyword);
         
 //        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
     }
 
-    //TODO: create associations for all unassociated topics
     
+    //create associations for all unassociated topics
+    for(int i = 0; i < contentKeywordVector.size(); i++){
+        string& keyword = contentKeywordVector[i];
+        if(masterTopicAssociations.find(keyword) == masterTopicAssociations.end()){
+            vector<string>& family = getKeywordFamily( keyword );
+            if(family.size() == 0){
+                ofLogError("CloudsFCPParser::parseTopicAssociations") << "No topic family for keyword " << keyword;
+                continue;
+            }
+            
+            for(int f = 0; f < family.size(); f++){
+                if(masterTopicSet.find(family[f]) != masterTopicSet.end()){
+                    masterTopicAssociations[keyword] = family[f];
+                    masterTopicList[family[f]].push_back(keyword);
+                    masterTopicClipCount[family[f]] += getNumberOfClipsWithKeyword(keyword);
+
+                    break;
+                }
+            }
+        }
+    }
+    
+    //combine small master topic sets
+    set<string> sparseTopics;
+    for(set<string>::iterator it = masterTopicSet.begin(); it != masterTopicSet.end(); it++){
+        if(masterTopicClipCount[*it] <= 5){
+            vector<string>& family = getKeywordFamily( *it );
+            sparseTopics.insert(*it);
+            if(family.size() == 0){
+                ofLogError("CloudsFCPParser::parseTopicAssociations") << "Sparse master topic " << *it << " " << masterTopicClipCount[*it] << " with no family";
+                continue;
+            }
+            
+            for(int f = 0; f < family.size(); f++){
+                if(masterTopicSet.find(family[f]) != masterTopicSet.end()){
+                    masterTopicAssociations[*it] = family[f];
+                    masterTopicClipCount[family[f]] += getNumberOfClipsWithKeyword(*it);
+                    masterTopicList[family[f]].push_back(*it);
+                    break;
+                }
+            }
+        }
+    }
+    
+    set<string> result;
+    set_difference(masterTopicSet.begin(), masterTopicSet.end(), sparseTopics.begin(), sparseTopics.end(), std::inserter(result, result.end()));
+    masterTopicSet = result;
+
+    //reciprocate master set topics into look up
+    for(set<string>::iterator it = masterTopicSet.begin(); it != masterTopicSet.end(); it++){
+        if(masterTopicAssociations.find(*it) == masterTopicAssociations.end()){
+            masterTopicAssociations[*it] = *it;
+            masterTopicClipCount[*it] += getNumberOfClipsWithKeyword(*it);
+            masterTopicList[*it].push_back(*it);
+        }
+    }
+    
+    cout << "FINAL MASTER LIST" << endl;
+    for(set<string>::iterator it = masterTopicSet.begin(); it != masterTopicSet.end(); it++){
+        cout << "   " << *it << ": " << masterTopicClipCount[*it] << endl;
+    }
+    cout << "FINAL ASSOCIATIONS" << endl;
+    for(map<string,string>::iterator it = masterTopicAssociations.begin(); it != masterTopicAssociations.end(); it++){
+        cout << it->first << " --> " << it->second << endl;
+    }
+    //COMBINE SMALLER NUMBERS
+    cout << "FINISHED COMPUTING MASTER LIST" << endl;
 }
 
 #ifdef VHX_MEDIA
@@ -764,7 +831,7 @@ void CloudsFCPParser::calculateCohesionMedianForKeywords(){
 ofVec3f CloudsFCPParser::getKeywordCentroid(const string& keyword){
     int index = getCentroidMapIndex(keyword);
     if(index == -1){
-		ofLogError("CloudsFCPParser::getKeywordCentroid") << "No centroid found for keyword: " << keyword << endl;
+		ofLogError("CloudsFCPParser::getKeywordCentroid") << "No centroid found for keyword: " << keyword;
 		return ofVec3f(-1, -1, -1);
     }
 	return keywordCentroids[index].second;
@@ -774,7 +841,7 @@ int CloudsFCPParser::getCentroidMapIndex(const string& keyword){
     if(keywordCentroidIndex.find(keyword) != keywordCentroidIndex.end()){
         return keywordCentroidIndex[keyword];
     }
-    ofLogError("CloudsFCPParser::getCentroidMapIndex")<<" Couldnt find  index for keyword: "<<keyword<<endl;
+    ofLogError("CloudsFCPParser::getCentroidMapIndex")<<" Couldnt find  index for keyword: " << keyword;
 	return -1;
 }
 
@@ -1145,8 +1212,8 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, const string& curren
 			cm->sourceVideoFilePath = clipFilePath;
 			
 			if( markerLinkNames.find(cm->getLinkName()) != markerLinkNames.end() ){
-				delete cm;
 				ofLogError("CloudsFCPParser::parseClipItem") << "DUPLICATE CLIP " << cm->getLinkName() << " " << cm->getMetaInfo();
+				delete cm;
 			}
 			else{
 				markerLinkNames.insert( cm->getLinkName() );
@@ -1536,13 +1603,18 @@ int CloudsFCPParser::getNumberOfClipsWithKeyword(const string& filterWord){
 	return keywordsFound;
 }
 
-vector<CloudsClip*> CloudsFCPParser::getClipsWithKeyword(const string& filterWord){
-	return getClipsWithKeyword(filterWord, getAllClips());
+vector<CloudsClip*> CloudsFCPParser::getClipsWithKeyword(const string& filterWord, bool useMasterTopics){
+	return getClipsWithKeyword(filterWord, getAllClips(), useMasterTopics);
 }
 
-vector<CloudsClip*> CloudsFCPParser::getClipsWithKeyword(const string& filterWord, vector<CloudsClip*>& searchClips){
+vector<CloudsClip*> CloudsFCPParser::getClipsWithKeyword(const string& filterWord, vector<CloudsClip*>& searchClips, bool useMasterTopics){
 	vector<string> filter;
-	filter.push_back(filterWord);
+    if(useMasterTopics && masterTopicAssociations.find(filterWord) != masterTopicAssociations.end()){
+        filter = masterTopicList[ masterTopicAssociations[filterWord] ];
+    }
+    else {
+        filter.push_back(filterWord);
+    }
 	return getClipsWithKeyword(filter, searchClips);
 }
 
