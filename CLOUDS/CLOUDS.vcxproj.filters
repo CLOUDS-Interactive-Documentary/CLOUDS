@@ -1177,6 +1177,9 @@
     <ClCompile Include="..\..\..\addons\ofxSSL\src\ofxSSL.cpp">
       <Filter>addons\ofxSSL\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Visuals\vs_src\CloudsVisualSystemVisuals.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -3128,6 +3131,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxSSL\src\ofxSSL.h">
       <Filter>addons\ofxSSL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Visuals\vs_src\CloudsVisualSystemVisuals.h">
+      <Filter>CloudsLibrary\src\VisualSystems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
