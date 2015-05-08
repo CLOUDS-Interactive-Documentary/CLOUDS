@@ -1390,7 +1390,6 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeResetSelected = true;
 		return true;
 	}
-	return false;
 #else
     /*
 	#ifdef CLOUDS_SCREENING
@@ -1461,6 +1460,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 	return false;
      */
 #endif
+	return false;
 	
 }
 

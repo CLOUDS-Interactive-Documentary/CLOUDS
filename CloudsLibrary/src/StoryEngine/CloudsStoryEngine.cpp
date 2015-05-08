@@ -497,25 +497,25 @@ CloudsAct* CloudsStoryEngine::buildActWithPerson(CloudsRun& run, string speakerI
     return buildAct(settings);
 }
 
-CloudsAct* CloudsStoryEngine::buildActWithVisual(CloudsRun& run, string visualSystemID){
-    vector<int> presetIndeces = visualSystems->getFilteredPresetIndeces(true, false, false, visualSystemID);
-    for(int i = 0; i < presetIndeces.size(); i++){
-        cout << "PRESET " << visualSystems->getPresets()[ presetIndeces[i] ].getID() << endl;
-    }
-
-//    CloudsActSettings settings;
-//    settings.run = &run;
-//    settings.person = speakerId;
-//    settings.seed = clips[ (int)(ofRandom(clips.size())) ];
-//    settings.topic = settings.seed->getKeywords()[0];
-//    settings.playSeed = true;
-//    settings.forceTopic = false;
-//    settings.forceSpeaker = true;
-//    settings.allowVisuals = false;
-//    
-//    return buildAct(settings);
-
-}
+//CloudsAct* CloudsStoryEngine::buildActWithVisual(CloudsRun& run, string visualSystemID){
+//    vector<int> presetIndeces = visualSystems->getFilteredPresetIndeces(true, false, false, visualSystemID);
+//    for(int i = 0; i < presetIndeces.size(); i++){
+//        cout << "PRESET " << visualSystems->getPresets()[ presetIndeces[i] ].getID() << endl;
+//    }
+//
+////    CloudsActSettings settings;
+////    settings.run = &run;
+////    settings.person = speakerId;
+////    settings.seed = clips[ (int)(ofRandom(clips.size())) ];
+////    settings.topic = settings.seed->getKeywords()[0];
+////    settings.playSeed = true;
+////    settings.forceTopic = false;
+////    settings.forceSpeaker = true;
+////    settings.allowVisuals = false;
+////    
+////    return buildAct(settings);
+//	return 
+//}
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string seedTopic, bool playSeed){
     
@@ -1366,9 +1366,10 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
 		cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": language is " << potentialNextClip->getLanguage() << " and no subtitles" << endl;
         return 0;
 	}
-    
+
+    bool link = false;
     if(state.clip != NULL && !state.forcingPerson){
-        bool link = parser->clipLinksTo( state.clip->getLinkName(), potentialNextClip->getLinkName() );
+        link = parser->clipLinksTo( state.clip->getLinkName(), potentialNextClip->getLinkName() );
         if(!link && potentialNextClip->person == state.clip->person){
             cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": same person" << endl;
             return 0;
