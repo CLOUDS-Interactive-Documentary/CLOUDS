@@ -62,7 +62,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //FCP id from parser, highlights a person's name
     void selectPerson(string person);
-
+    ofVec2f getSelectedPersonScreenPosition();
+    
     //i/o stuff
     void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
@@ -71,10 +72,11 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     int getUserIdByName(string name);
     vector<Tweeter*> getTweetersForDate(int index);
     Tweeter* getTweeterByID(int _id );
+    Tweeter* getTweeterByHandle(string handle);
     Tweeter* getTweeterByName(string name );
     
     void drawTweetsForDate(int index);
-    void CompareDates(Date d1,Date d2);
+//    void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
     void sortTweetsByDate();

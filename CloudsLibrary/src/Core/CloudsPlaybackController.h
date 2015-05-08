@@ -3,16 +3,17 @@
 
 #include "ofMain.h"
 #include "CloudsEvents.h"
+#include "CloudsPortalEvents.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsAct.h"
-#include "ofxUI.h"
 
-#include "CloudsIntroSequence.h"
-#include "CloudsVisualSystemClusterMap.h"
-#include "CloudsVisualSystemRGBD.h"
-#include "CloudsVisualSystemTwitter.h"
+//#include "CloudsVisualSystemVisuals.h"
+//#include "CloudsIntroSequence.h"
+//#include "CloudsVisualSystemClusterMap.h"
+//#include "CloudsVisualSystemRGBD.h"
+//#include "CloudsVisualSystemTwitter.h"
 #include "CloudsVisualSystemManager.h"
 
 #include "CloudsHUDController.h"
@@ -25,6 +26,12 @@
 
 #include "CloudsPortal.h"
 
+
+class CloudsIntroSequence;
+class CloudsVisualSystemRGBD;
+class CloudsVisualSystemTwitter;
+class CloudsVisualSystemClusterMap;
+class CloudsVisualSystemVisuals;
 
 /**
  * This class controls playback of RGBD sequences
@@ -83,6 +90,7 @@ class CloudsPlaybackController : public ofThread {
 	CloudsMixer mixer;
     
   protected:
+    
 	vector<CloudsClip*> startingNodes;
 	//*** CORE CLOUDS STUFF
 	CloudsFCPParser parser;
@@ -93,6 +101,13 @@ class CloudsPlaybackController : public ofThread {
 	CloudsHUDController hud;
 	CloudsTransitionController transitionController;
 
+	//if there is a system playing this wil be non-null
+	CloudsIntroSequence* introSequence;
+	CloudsVisualSystemClusterMap* clusterMap;
+    CloudsVisualSystemTwitter* peopleMap;
+	CloudsVisualSystem* interludeSystem;
+    CloudsVisualSystemVisuals* visualsMap;
+    
 	//STATE STUFF
 	CloudsRun run;
 	CloudsAct* currentAct;
@@ -112,9 +127,6 @@ class CloudsPlaybackController : public ofThread {
 #ifdef KINECT_INPUT
     void drawKinectFeedback();
 #endif
-	//transition
-	//CloudsPortal* selectedQuestion;
-	//CloudsClip* selectedQuestionClip;
 
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
@@ -130,24 +142,13 @@ class CloudsPlaybackController : public ofThread {
 	string basePreset;
 	void populateRGBDPresets();
 	
-	//if there is a system playing this wil be non-null
-	CloudsIntroSequence* introSequence;
-	CloudsVisualSystemClusterMap* clusterMap;
-    CloudsVisualSystemTwitter* peopleMap;
-	CloudsVisualSystem* interludeSystem;
-    
-   //TODO: add these guys too!
-    //CloudsVisualSystemVisuals* visualsMap;
-    
     float interludeStartTime;
 	
 	CloudsVisualSystemPreset nextVisualSystemPreset;	
 	CloudsVisualSystemPreset currentVisualSystemPreset;
     
-    //TODO: Kill these soon
 	void updateTransition();
 	bool updateInterludeInterface(); //true if we should stop interlude
-//	void updateCompletedInterlude(); //after one option has been selected;
 	bool forceInterludeReset;
     ///////////////
     
@@ -184,7 +185,9 @@ class CloudsPlaybackController : public ofThread {
     bool showingClusterMapNavigation;
     bool showedClusterMapNavigation;
     bool showingInterlude;
-    bool exitedInterlude;
+    bool showingVisualLoop;
+    bool actJustBegan;
+//    bool exitedInterlude;
     bool showingExploreMap;
     bool showingExplorePeople;
     bool showingExploreVisuals;
@@ -195,9 +198,10 @@ class CloudsPlaybackController : public ofThread {
     
 	bool bQuestionAsked;
 	bool forceCredits;
-	
+	    
     string exploreMapSelectedTopic;
     string explorePeopleSelectedSpeakerID;
+    string exploreVisualsSelectedSystem;
 	void clearAct();
     
 	//remove the current visual system
@@ -211,14 +215,14 @@ class CloudsPlaybackController : public ofThread {
     
     void showExploreMap();
     void showExplorePeople();
-    //bool inResearchContext(); //came through research not story mode
+    void showExploreVisuals();
+
     bool showingResearchScreen;
     bool canReturnToAct;
     
     //INTERLUDE INTERFACE
 	void resetInterludeVariables();
     ofxFTGLSimpleLayout interludeInterfaceFont;
-//	ofxFTGLFont interludeInterfaceFont;
 	float interludeExitBarWidth;
 	bool interludeHoveringContinue;
 	bool interludeHoveringReset;

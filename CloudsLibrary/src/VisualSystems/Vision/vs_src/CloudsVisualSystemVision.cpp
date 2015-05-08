@@ -93,12 +93,36 @@ void CloudsVisualSystemVision::selfSetup()
     //	app
     movieIndex = 0;
 
-//    videosDir.listDir(getVisualSystemDataPath(true) + "videos" );
-    videosDir.listDir( GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos" );
-    videosDir.sort();
-    for (int i = 0; i < videosDir.size(); i++) {
-        movieStrings.push_back(videosDir.getName(i));
-    }
+    movieStrings.push_back("AppleStore1_short.mov");
+    movieStrings.push_back("AppleStore2_short.mov");
+    movieStrings.push_back("AppleStore3_short.mov");
+    movieStrings.push_back("GreenPoint_bike_crop.mov");
+    movieStrings.push_back("Soho2_short.mov");
+    movieStrings.push_back("Soho3_short1.mov");
+    movieStrings.push_back("Swarm_EindhovenTest_Watec_two-visitors.mov");
+    movieStrings.push_back("Swarm_EindhovenTest_Watec_two-visitors_Crop.mov");
+    movieStrings.push_back("Tokyo1.mov");
+    movieStrings.push_back("Tokyo2.mov");
+    movieStrings.push_back("TokyoEscalator.mov");
+    movieStrings.push_back("YouTubeDancer.mp4");
+    movieStrings.push_back("bridge.mov");
+    movieStrings.push_back("dancing1.mov");
+    movieStrings.push_back("dancing2.mov");
+    movieStrings.push_back("dancing3.mov");
+    movieStrings.push_back("dancing4Feet.mov");
+    movieStrings.push_back("indianTrafficCrop.mov");
+    movieStrings.push_back("union_square_crop.mov");
+    movieStrings.push_back("unionsq1_short.mov");
+    movieStrings.push_back("unionsq2_short.mov");
+    movieStrings.push_back("unionsq3_short.mov");
+    movieStrings.push_back("unionsq_1-Wi-Fi_Crop.mov");
+    
+//    videosDir.listDir( GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos" );
+//    videosDir.sort();
+//    for (int i = 0; i < videosDir.size(); i++) {
+//        movieStrings.push_back(videosDir.getName(i));
+//    }
+    
     frameIsNew = false;
     loadCurrentMovie();
 
@@ -361,11 +385,11 @@ void CloudsVisualSystemVision::updateCVParameters(){
 void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
 
 	ofxUIDropDownList* d = (ofxUIDropDownList*)rdrGui->getWidget("VIDEO");
-    cout<<"IM in self preset loaded"<<endl;
+//    cout<<"IM in self preset loaded"<<endl;
     vector<ofxUILabelToggle*> t =  d->getToggles();
     for (int i =0; i<t.size(); i++) {
         if (t[i]->getValue()) {
-            cout<<"LOADING MOVIE : "<<t[i]->getName()<<endl;
+//            cout<<"LOADING MOVIE : "<<t[i]->getName()<<endl;
             loadMovieWithName( t[i]->getName() );
         }
     }
@@ -797,7 +821,7 @@ void CloudsVisualSystemVision::loadCurrentMovie(){
 void CloudsVisualSystemVision::loadMovieWithName(string name){
 
 	for(int i = 0; i < movieStrings.size(); i++){
-		if (movieStrings[i] == name) {
+		if (ofToLower(movieStrings[i]) == ofToLower(name)) {
 			cout << "Loading movie from GUI " << movieStrings[i] <<" : "<<name<< endl;
 			loadMovieAtIndex(i);
 			break;
@@ -814,8 +838,8 @@ void CloudsVisualSystemVision::loadMovieAtIndex(int index){
     movieIndex = index;
 
     player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
-//	player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
-    if(player->loadMovie(getVisualSystemDataPath(true)+"videos/" + movieStrings[ movieIndex ])){
+    string moviePath = GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos/" + movieStrings[ movieIndex ];
+    if(player->loadMovie(moviePath)){
         player->play();
     }
     else{

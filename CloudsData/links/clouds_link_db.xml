@@ -3181,7 +3181,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#tech,#emotional,#sincere</additionalKeywords>
+    <revokedKeywords>making things</revokedKeywords>
+    <additionalKeywords>makers,#sincere,#emotional,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - frustrated about visualization</name>
@@ -5055,7 +5056,8 @@
 </clip>
 <clip>
     <name>Bruce - fanciful metaphors 1</name>
-    <additionalKeywords>#ironic,#surreal,#mindblowing,#hard</additionalKeywords>
+    <revokedKeywords>metaphor</revokedKeywords>
+    <additionalKeywords>metaphors,#hard,#mindblowing,#surreal,#ironic</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - beauty of code 1</name>
@@ -7689,8 +7691,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <revokedKeywords>metaphors,life and code</revokedKeywords>
-    <additionalKeywords>biology and code,biology,metaphor,#tech,#mindblowing,#logical,#hard</additionalKeywords>
+    <revokedKeywords>life and code</revokedKeywords>
+    <additionalKeywords>biology and code,biology,#hard,#logical,#mindblowing,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Birth of processing</name>
@@ -14615,8 +14617,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <revokedKeywords>link:kyle_mc - grab them asap</revokedKeywords>
-    <additionalKeywords>#tech,#logical,#discouraging</additionalKeywords>
+    <revokedKeywords>r&amp;d,link:kyle_mc - grab them asap</revokedKeywords>
+    <additionalKeywords>research and development,#discouraging,#logical,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - engage with research</name>
@@ -14753,7 +14755,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#mundane,#serious,#tech</additionalKeywords>
+    <revokedKeywords>r&amp;d</revokedKeywords>
+    <additionalKeywords>research and development,#tech,#serious,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - community</name>
@@ -14951,8 +14954,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>link:greg - makematics2</revokedKeywords>
-    <additionalKeywords>#obstacle,#hard,#tech,#logical</additionalKeywords>
+    <revokedKeywords>r&amp;d,link:greg - makematics2</revokedKeywords>
+    <additionalKeywords>research and development,#logical,#tech,#hard,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Higa - difficult question</name>
@@ -22163,7 +22166,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#sincere</additionalKeywords>
+    <revokedKeywords>paola antonelli</revokedKeywords>
+    <additionalKeywords>mentors,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Julia - community</name>
@@ -24617,7 +24621,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>scale,#vo</additionalKeywords>
+    <revokedKeywords>metaphor</revokedKeywords>
+    <additionalKeywords>metaphors,scale,#vo</additionalKeywords>
 </clip>
 <clip>
     <name>Karolina - Everything</name>
@@ -25895,8 +25900,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <revokedKeywords>computational power</revokedKeywords>
-    <additionalKeywords>computation,#hard</additionalKeywords>
+    <revokedKeywords>virus,computational power</revokedKeywords>
+    <additionalKeywords>viruses,computation,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - why don&apos;t we learn?</name>
@@ -26236,7 +26241,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,#tech,#rational,#mindblowing,?hackers: Do hackers pose a real threat?,#question</additionalKeywords>
+    <revokedKeywords>virus</revokedKeywords>
+    <additionalKeywords>viruses,#question,?hackers: Do hackers pose a real threat?,#mindblowing,#rational,#tech,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - literacy issues&apos;</name>
@@ -32408,7 +32414,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <revokedKeywords>art versus engineering</revokedKeywords>
+    <revokedKeywords>infinite game,art versus engineering</revokedKeywords>
     <additionalKeywords>art vs engineering</additionalKeywords>
 </clip>
 <clip>
@@ -32473,7 +32479,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>collective intelligence,?collective intelligence: Who has the answer?,#hard,#inspiring,#fun,#question</additionalKeywords>
+    <revokedKeywords>the future</revokedKeywords>
+    <additionalKeywords>future,collective intelligence,#question,#fun,#inspiring,#hard,?collective intelligence: Who has the answer?</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - box on your face</name>
@@ -32752,8 +32759,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>link:julia - better tools,link:greg - engage with research</revokedKeywords>
-    <additionalKeywords>open source,creative misuse,#conclusion,critical engineering</additionalKeywords>
+    <revokedKeywords>r&amp;d,link:julia - better tools,link:greg - engage with research</revokedKeywords>
+    <additionalKeywords>research and development,open source,creative misuse,critical engineering,#conclusion</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - eyetracking everywhere</name>
@@ -33517,7 +33524,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>people,?connectivity: Are we alone together?,#sincere,#hard,#emotional,#question</additionalKeywords>
+    <revokedKeywords>alone together</revokedKeywords>
+    <additionalKeywords>people,#question,#emotional,#hard,#sincere,?connectivity: Are we alone together?</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - desire to get together</name>
@@ -33830,7 +33838,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>storyteling</revokedKeywords>
-    <additionalKeywords>storytelling,#mindblowing,#logical,metaphor</additionalKeywords>
+    <additionalKeywords>storytelling,metaphors,#logical,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - Beginning art and tech</name>
@@ -35021,8 +35029,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>meme</revokedKeywords>
-    <additionalKeywords>memes,#sincere,#fun,#hard</additionalKeywords>
+    <revokedKeywords>virus,meme</revokedKeywords>
+    <additionalKeywords>viruses,memes,#hard,#fun,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Lindsay - hackers</name>
@@ -35621,8 +35629,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>mood: epiphany</revokedKeywords>
-    <additionalKeywords>?meaning: Does meaning transcend medium?,#art,#serious,#discouraging,#question</additionalKeywords>
+    <revokedKeywords>meaning,mood: epiphany</revokedKeywords>
+    <additionalKeywords>poetry,?meaning: Does meaning transcend medium?,#art,#serious,#discouraging,#question</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Inexactitude,</name>
@@ -37220,8 +37228,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <revokedKeywords>how do you manage distraction?,how do you find balance?</revokedKeywords>
-    <additionalKeywords>attention,#hard,#fun,#ironic,?connectivity: Do we suffer from being constantly connected?,#question</additionalKeywords>
+    <revokedKeywords>how do you manage distraction?,how do you find balance?,alone together</revokedKeywords>
+    <additionalKeywords>attention,#question,?connectivity: Do we suffer from being constantly connected?,#ironic,#fun,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Design in the foreground</name>
@@ -39852,8 +39860,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>beginning</revokedKeywords>
-    <additionalKeywords>beginnings,#tech,#easy</additionalKeywords>
+    <revokedKeywords>how did you get into working with code?,beginning</revokedKeywords>
+    <additionalKeywords>beginnings,#easy,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - these things are in my head</name>
@@ -40027,8 +40035,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>iterative,feedback loops</revokedKeywords>
-    <additionalKeywords>feedback,journey,#art,#easy,?generative art: Is an artwork ever done?,iteration,#question</additionalKeywords>
+    <revokedKeywords>how does the work feed into itself?,iterative,feedback loops</revokedKeywords>
+    <additionalKeywords>feedback,journey,iteration,#question,?generative art: Is an artwork ever done?,#easy,#art</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - jumping from medium to medium</name>
@@ -42870,7 +42878,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#mindblowing,#inspiring,#easy</additionalKeywords>
+    <revokedKeywords>metaphor</revokedKeywords>
+    <additionalKeywords>metaphors,#easy,#inspiring,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Martin - evolution of interfaces</name>
@@ -44416,7 +44425,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical,#tech,#rational,emergence</additionalKeywords>
+    <revokedKeywords>virus</revokedKeywords>
+    <additionalKeywords>viruses,emergence,#rational,#tech,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - Design process 2</name>
@@ -47121,7 +47131,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>taking something abstract to something physical</revokedKeywords>
-    <additionalKeywords>?3D printing: How does code become tangible?, 3d printing,creativity,imagination,#question</additionalKeywords>
+    <additionalKeywords>creativity,imagination,#question,?3D printing: How does code become tangible?,3d printing</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Magic Spells 1</name>
@@ -47869,7 +47879,7 @@
 <clip>
     <name>Patricio - CLOUDS 4</name>
     <revokedKeywords>clouds has that quality of being approached from different angles....a romantic would say clouds is made of principles very similar to dreams</revokedKeywords>
-    <additionalKeywords></additionalKeywords>
+    <additionalKeywords>#dud</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Dream of eggs</name>
@@ -54022,8 +54032,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>improvisation</revokedKeywords>
-    <additionalKeywords>improvization,?gesture: How does music influence the image?,#question</additionalKeywords>
+    <revokedKeywords>mutlisensory,improvisation</revokedKeywords>
+    <additionalKeywords>improvization,#question,?gesture: How does music influence the image?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - Maybe I&apos;d like that</name>
@@ -54963,7 +54973,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>galapagos,link:marius - artificial life,coding aesthetics</revokedKeywords>
-    <additionalKeywords>code,dna,evolution: How do computer programs simulate evolution?,#example,#pe?Galapagos</additionalKeywords>
+    <additionalKeywords>code,dna,#pe?Galapagos,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - evolution</name>
@@ -55701,7 +55711,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#surreal,#art,drugs</additionalKeywords>
+    <revokedKeywords>hallucination</revokedKeywords>
+    <additionalKeywords>visions,drugs,#art,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>Sophy - everyday media</name>
@@ -55877,8 +55888,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>science fiction</revokedKeywords>
-    <additionalKeywords>#surreal</additionalKeywords>
+    <revokedKeywords>hallucination,science fiction</revokedKeywords>
+    <additionalKeywords>visions,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>Sophy - nonlinearity</name>
@@ -56018,6 +56029,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <revokedKeywords>meaning</revokedKeywords>
+    <additionalKeywords>poetry</additionalKeywords>
 </clip>
 <clip>
     <name>Sophy - Strange cultures</name>
@@ -56134,7 +56147,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>clouds</revokedKeywords>
+    <revokedKeywords>alone together,clouds</revokedKeywords>
     <additionalKeywords>interconnectedness</additionalKeywords>
 </clip>
 <clip>
@@ -56307,7 +56320,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>beauty,nature?: What inspires your work?,#easy,#sincere,#mindblowing,#emotional</additionalKeywords>
+    <additionalKeywords>beauty,#emotional,#mindblowing,#sincere,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - funky forest</name>
@@ -57100,7 +57113,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>history,old media,new aesthetic</additionalKeywords>
+    <revokedKeywords>r&amp;d</revokedKeywords>
+    <additionalKeywords>research and development,history,old media,new aesthetic</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - approach to art</name>
@@ -57124,7 +57138,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#art,#rational,?career: What is a new media artist?,#question</additionalKeywords>
+    <revokedKeywords>maker,thinkerer</revokedKeywords>
+    <additionalKeywords>makers,#art,#rational,?career: What is a new media artist?,#question</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - FFFFAT</name>
@@ -58506,7 +58521,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical,#tech,?open source: Before the internet existed, how did people learn to code?,#question</additionalKeywords>
+    <additionalKeywords>#question,?open source: Before the internet existed,#tech,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - less demo</name>
@@ -58560,7 +58575,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>art versus engineering</revokedKeywords>
+    <revokedKeywords>meaning,art versus engineering</revokedKeywords>
     <additionalKeywords>homogeneity,new media,art vs engineering,#discouraging,#obstacle,?tech-demo: When does code become poetry?,#question</additionalKeywords>
 </clip>
 <clip>
@@ -59116,7 +59131,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>art versus engineering</revokedKeywords>
+    <revokedKeywords>meaning,art versus engineering</revokedKeywords>
     <additionalKeywords>aesthetics,interactivity,art vs engineering,#question,?tech-demo: When does an experiment become an artwork?,#gold,#serious,#art,#inspiring,#sincere</additionalKeywords>
 </clip>
 <clip>
@@ -59505,8 +59520,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <revokedKeywords>generative</revokedKeywords>
-    <additionalKeywords>generative art,#gold,?generative art: When is an artwork done?</additionalKeywords>
+    <revokedKeywords>is an artwork ever done?,generative</revokedKeywords>
+    <additionalKeywords>generative art,?generative art: When is an artwork done?,#gold</additionalKeywords>
 </clip>
 <clip>
     <name>Memo_master - Deadline 2</name>
@@ -61011,7 +61026,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>time,perception,gestalt,zen,#mindblowing,drugs,hallucination</additionalKeywords>
+    <additionalKeywords>time,perception,gestalt,zen,drugs,visions,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Damion - CodingAndCommunication</name>

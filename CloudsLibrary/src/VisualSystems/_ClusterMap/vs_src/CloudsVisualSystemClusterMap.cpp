@@ -70,6 +70,7 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	percentTraversed = 0;
 	percentOptionsRevealed = 0;
 	drawType = false;
+    drawType3D = false;
 	baseFontSize = 0;
 	
     drawAssociation = false;
@@ -105,7 +106,6 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	typeSizeRange.min = 5;
 	typeSizeRange.max = 14;
 	lineDensity = 200;
-
 	
 	lineFlickerIntensity = 7.;
 	lineFlickerFrequency = 100;
@@ -129,7 +129,9 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     useQuestionCam = false;
     selectedQuestion = NULL;
     caughtQuestion = NULL;
-    
+    type3DScale = 1.0;
+    drawType3D = false;
+
 	questionScale = 0.1f;
 	questionFontScale = 14;
 	currentQuestionFontSize = 10;
@@ -325,6 +327,8 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	
     typeGui->addSpacer();
     typeGui->addToggle("DRAW ASSOCIATION", &drawAssociation);
+    typeGui->addToggle("DRAW 3D", &drawType3D);
+    typeGui->addSlider("3D TYPE SCALE", .01, 1.0, &type3DScale);
     typeGui->addIntSlider("ASSOCATION SIZE", 5, 30, &associationFontSize);
     
 	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
@@ -567,7 +571,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
     kdtree.buildIndex( nodeMesh.getVertices() );
     
 	populateTopicPoints();
-    populateAssociations();
+    //populateAssociations();
     
 }
 
@@ -575,18 +579,20 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
 	
     topicPoints.clear();
     
-	vector<string>& keywords = parser->getContentKeywords();
-	int numClips = parser->getNumberOfClipsWithKeyword(keywords[0]);
+	//vector<string>& keywords = parser->getContentKeywords();
+    set<string>& masterTopics = parser->getMasterTopics();
+	int numClips = parser->getNumberOfClipsWithKeyword(*masterTopics.begin());
 	clipCountRange = ofRange(numClips,numClips);
-	for(int i = 0; i < keywords.size(); i++){
+    //int i = 0;
+    for (set<string>::iterator it = masterTopics.begin(); it != masterTopics.end(); it++) {
 		TopicPoint tp;
-		tp.keyword  = keywords[i];
-		tp.position = parser->getKeywordCentroid(keywords[i]);
-		tp.numClips = parser->getNumberOfClipsWithKeyword(keywords[i]);
+		tp.keyword  = *it;
+		tp.position = parser->getMasterTopicPosition(tp.keyword);
+		tp.numClips = parser->getNumberOfClipsWithKeyword(tp.keyword);
 		clipCountRange.growToInclude(tp.numClips);
 //		cout << "num clips " << tp.numClips << " current range " << clipCountRange << endl;
 		topicPoints.push_back( tp );
-	}
+    }
     
 	for(int i = 0; i < topicPoints.size(); i++){
 		topicPoints[i].normalizedTopicScale =  clipCountRange.getNormalized(topicPoints[i].numClips);
@@ -594,46 +600,45 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
 
 }
 
-void CloudsVisualSystemClusterMap::populateAssociations(){
-    associations.clear();
-    topicset.clear();
-    ofBuffer topicAssociations = ofBufferFromFile(GetCloudsDataPath() + "logs/TopicAssociations.txt");
-    while(!topicAssociations.isLastLine()){
-        
-        string line = topicAssociations.getNextLine();
-        if(line.find(":") == string::npos){
-//            cout << "Skipping line " << line << endl;
-            continue;
-        }
-        
-        vector<string> association = ofSplitString(line, ":", true, true);
-        if(association.size() != 2){
-//            cout << "line " << line << " has more than one :"<<endl;
-            continue;
-        }
-        
-        vector<string> clipcount = ofSplitString(line, "\t",true,true);
-        if(clipcount.size() != 2){
-//            cout << "line " << line << " has more than one tab"<<endl;
-            continue;
-        }
-        
-        string associatedKeyword = association[1];
-        string subtopic = ofSplitString(association[0],"\t",true,true)[1];
-        associations[subtopic] = associatedKeyword;
-        topicset.insert(associatedKeyword);
-//        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
-    }
-    
-//    for(set<string>::iterator it = topicset.begin(); it != topicset.end(); it++){
-//        cout << *it << endl;
+//void CloudsVisualSystemClusterMap::populateAssociations(){
+//    associations.clear();
+//    topicset.clear();
+//    ofBuffer topicAssociations = ofBufferFromFile(GetCloudsDataPath() + "storyEngineParameters/TopicAssociations.txt");
+//    while(!topicAssociations.isLastLine()){
+//        
+//        string line = topicAssociations.getNextLine();
+//        if(line.find(":") == string::npos){
+////            cout << "Skipping line " << line << endl;
+//            continue;
+//        }
+//        
+//        vector<string> association = ofSplitString(line, ":", true, true);
+//        if(association.size() != 2){
+////            cout << "line " << line << " has more than one :"<<endl;
+//            continue;
+//        }
+//        
+//        vector<string> clipcount = ofSplitString(line, "\t",true,true);
+//        if(clipcount.size() != 2){
+////            cout << "line " << line << " has more than one tab"<<endl;
+//            continue;
+//        }
+//        
+//        string associatedKeyword = association[1];
+//        string subtopic = ofSplitString(association[0],"\t",true,true)[1];
+//        associations[subtopic] = associatedKeyword;
+//        topicset.insert(associatedKeyword);
+////        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
 //    }
-    return;
-}
+//    
+////    for(set<string>::iterator it = topicset.begin(); it != topicset.end(); it++){
+////        cout << *it << endl;
+////    }
+//}
 
-set<string>& CloudsVisualSystemClusterMap::getTopicSet(){
-    return topicset;
-}
+//set<string>& CloudsVisualSystemClusterMap::getTopicSet(){
+//    return topicset;
+//}
 
 void CloudsVisualSystemClusterMap::allocateFlickerTexture(){
 
@@ -901,7 +906,6 @@ void CloudsVisualSystemClusterMap::clearTraversal(){
     
 }
 
-
 void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     currentTopic = topic;
 
@@ -909,8 +913,7 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     for(int i = 0; i < topicPoints.size(); i++){
         if(topicPoints[i].keyword == topic){
             targetTopicPosition = topicPoints[i].position * meshExpansion;
-
-            targetCameraPosition = targetTopicPosition + targetTopicPosition.normalize() * traversCameraDistance;
+            targetCameraPosition = targetTopicPosition + targetTopicPosition.normalized() * traversCameraDistance;
             positionFound = true;
             break;
         }
@@ -919,6 +922,10 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     if(!positionFound){
         ofLogError("CloudsVisualSystemClusterMap::setCurrentTopic") << "Couldn't find position for topic " << topic;
     }
+}
+
+ofVec2f CloudsVisualSystemClusterMap::getTopicScreenLocation(){
+    return getCameraRef().worldToScreen(targetTopicPosition);
 }
 
 
@@ -930,6 +937,7 @@ void CloudsVisualSystemClusterMap::selfSetupSystemGui(){
 void CloudsVisualSystemClusterMap::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
+
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemClusterMap::selfSetupRenderGui(){
 
@@ -1334,13 +1342,52 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	}
 	/////END OPTIONS
 	
-	
+
+    
 	ofPopMatrix();
 	ofPopStyle();
 	glPopAttrib();
     
+    
     drawQuestions();
 
+	if(drawType3D){
+        
+        ofDisableLighting();
+        
+		for(int i = 0; i < topicPoints.size(); i++){
+            
+			TopicPoint& p = topicPoints[i];
+			if(p.numClips >= clipsShowTopic.min){
+				int fontIndex = ofMap(p.numClips, clipsShowTopic.min, clipsShowTopic.max,
+									  0, topicFont.size()-1,true);
+				if(fontIndex > 0 && fontIndex < topicFont.size()){
+                    
+					ofPushMatrix();
+                    ofNode n;
+                    n.setPosition(topicPoints[i].position * meshExpansion);
+                    n.lookAt(getCameraRef(), getCameraRef().getUpDir());
+                    ofMultMatrix(n.getGlobalTransformMatrix());
+                    ofScale(-type3DScale,-type3DScale, type3DScale);
+                    
+					ofxFTGLFont& font = topicFont[ fontIndex ];
+					font.drawString( ofToUpper(p.keyword), 0, 0);
+					
+                    ofPopMatrix();
+				}
+			}
+		}
+		ofEnableLighting();
+        
+    }
+    
+//    ofNode n;
+//    n.setPosition(targetCameraPosition);
+//    n.lookAt(targetTopicPosition);
+//    n.draw();
+//    n.setPosition(targetTopicPosition);
+//    n.lookAt(targetCameraPosition);
+//    n.draw();
 }
 
 
@@ -1580,8 +1627,9 @@ void CloudsVisualSystemClusterMap::selfDrawBackground(){
 
 void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	//turn the background refresh off
-	if(drawType){
-		ofDisableLighting();
+	if(drawType && !drawType3D){
+		
+        ofDisableLighting();
 		ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());
 		for(int i = 0; i < topicPoints.size(); i++){
 
@@ -1603,7 +1651,7 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 		ofEnableLighting();
 	}
 	
-    if(drawAssociation){
+    if(drawAssociation && !drawType3D){
         if(!associationFont.isLoaded() || associationFontSize != currentAssociationFont){
             //associationFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", associationFontSize);
 			associationFont.loadFont( GetFontPath(), associationFontSize);
@@ -1611,8 +1659,9 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
         }
         
         float associationTypeOn = ofMap(percentOptionsRevealed*percentTraversed, 0, .2,0,1.0,true);
-        if(associations.find(currentTopic) != associations.end()){
-            string associatedTopic = associations[currentTopic];
+        if( parser->hasMasterTopicAssociation(currentTopic)){
+        //if(associations.find(currentTopic) != associations.end()){
+            string associatedTopic = parser->getMasterKeyword(currentTopic);
             int numChars = associatedTopic.size() * associationTypeOn;
             if(numChars%2 == 1) numChars = MIN(numChars+1,associatedTopic.size());
             string partialString = associatedTopic.substr(0, numChars);

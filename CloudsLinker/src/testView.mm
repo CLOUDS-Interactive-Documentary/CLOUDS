@@ -18,7 +18,23 @@
 	
 	movieSuccessfullyLoaded = false;
     
-    ofSetDataPathRoot("../../");
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+    char path[PATH_MAX];
+    CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX);
+    CFRelease(resourcesURL);
+    chdir(path);
+    
+    long size;
+    char *buf;
+    char *ptr;
+    
+    size = pathconf(".", _PC_PATH_MAX);
+    if ((buf = (char *)malloc((size_t)size)) != NULL){
+        ptr = getcwd(buf, (size_t)size);
+    }
+    cout << ptr << endl;
+    
     
 	parser.loadFromFiles();
     clipEndFrame = 0;
@@ -42,13 +58,14 @@
 	}
 	
     
-	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-		ofSystemAlertDialog("Could not find movie file path. \
-							Create a file called CloudsMovieDirectory.txt \
-							that contains one line, the path to your movies folder");
-	}
+//	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
+//		ofSystemAlertDialog("Could not find movie file path. \
+//							Create a file called CloudsMovieDirectory.txt \
+//							that contains one line, the path to your movies folder");
+//	}
 	
-	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+	//parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+    //parser.loadFromFiles();
     
 	CloudsExporter::saveGephiCSV(parser);
 	CloudsExporter::savePajekNetwork(parser);

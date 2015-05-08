@@ -28,11 +28,28 @@ CloudsFCPParser::CloudsFCPParser(){
 
 void CloudsFCPParser::loadFromFiles(){
     setup(GetCloudsDataPath() + "fcpxml");
+
 	parseVOClips();
+    
     parseSpeakersVolume();
+    
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
-	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
-	parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
+	
+    parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
+    
+    calculateKeywordFamilies();
+
+    parseTopicAssociations(GetCloudsDataPath() + "storyEngineParameters/TopicAssociations.txt");
+
+    populateKeywordCentroids();
+    
+    //	calculateCohesionMedianForKeywords();
+    
+    //	calculateKeywordAdjascency();
+	
+	
+    parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
+    
 #ifdef VHX_MEDIA
 	parseVHXIds(GetCloudsDataPath() + "vhx/clip_ids.csv");
 #endif
@@ -326,11 +343,144 @@ void CloudsFCPParser::parseClusterNetwork(const string& fileName){
 		}
 	}
 	
-	populateKeywordCentroids();
-//	calculateCohesionMedianForKeywords();
-//	calculateKeywordAdjascency();
-	calculateKeywordFamilies();
     disperseUnpositionedClips();
+
+}
+
+void CloudsFCPParser::disperseUnpositionedClips(){
+    ofVec3f minBounds = allClips[0]->networkPosition;
+    ofVec3f maxBounds = allClips[0]->networkPosition;
+    for(int i = 1; i < allClips.size(); i++){
+        ofVec3f pos = allClips[i]->networkPosition;
+        if(pos != ofVec3f(-1,-1,-1)){
+            minBounds.x = MIN(minBounds.x, pos.x);
+            minBounds.y = MIN(minBounds.y, pos.y);
+            minBounds.z = MIN(minBounds.z, pos.z);
+            
+            maxBounds.x = MAX(maxBounds.x, pos.x);
+            maxBounds.y = MAX(maxBounds.y, pos.y);
+            maxBounds.z = MAX(maxBounds.z, pos.z);
+        }
+    }
+    
+    ofVec3f center = minBounds.getInterpolated(maxBounds, .5);
+    ofVec3f minBoundsHalf = minBounds.getInterpolated(center, .5);
+    ofVec3f maxBoundsHalf = maxBounds.getInterpolated(center, .5);
+    
+    for(int i = 1; i < allClips.size(); i++){
+        ofVec3f pos = allClips[i]->networkPosition;
+        if(pos == ofVec3f(-1,-1,-1)){
+            allClips[i]->networkPosition.x = ofRandom(minBoundsHalf.x, maxBoundsHalf.x);
+            allClips[i]->networkPosition.y = ofRandom(minBoundsHalf.y, maxBoundsHalf.y);
+            allClips[i]->networkPosition.z = ofRandom(minBoundsHalf.z, maxBoundsHalf.z);
+        }
+    }
+}
+
+void CloudsFCPParser::parseTopicAssociations(const string& filename){
+
+    masterTopicAssociations.clear();
+    masterTopicSet.clear();
+
+    ofBuffer topicAssociations = ofBufferFromFile(filename);
+    while(!topicAssociations.isLastLine()){
+
+        string line = topicAssociations.getNextLine();
+        if(line.find(":") == string::npos){
+//            cout << "Skipping line " << line << endl;
+            continue;
+        }
+
+        vector<string> association = ofSplitString(line, ":", true, true);
+        if(association.size() != 2){
+//            cout << "line " << line << " has more than one :"<<endl;
+            continue;
+        }
+
+        vector<string> clipcount = ofSplitString(line, "\t",true,true);
+        if(clipcount.size() != 2){
+//            cout << "line " << line << " has more than one tab"<<endl;
+            continue;
+        }
+        
+        string associatedKeyword = association[1];
+        string subtopic = ofSplitString(association[0],"\t",true,true)[1];
+        masterTopicAssociations[subtopic] = associatedKeyword;
+        masterTopicList[associatedKeyword].push_back(subtopic);
+        masterTopicClipCount[associatedKeyword] += getNumberOfClipsWithKeyword(subtopic);
+        masterTopicSet.insert(associatedKeyword);
+        
+//        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
+    }
+
+    
+    //create associations for all unassociated topics
+    for(int i = 0; i < contentKeywordVector.size(); i++){
+        string& keyword = contentKeywordVector[i];
+        if(masterTopicAssociations.find(keyword) == masterTopicAssociations.end()){
+            vector<string>& family = getKeywordFamily( keyword );
+            if(family.size() == 0){
+                ofLogError("CloudsFCPParser::parseTopicAssociations") << "No topic family for keyword " << keyword;
+                continue;
+            }
+            
+            for(int f = 0; f < family.size(); f++){
+                if(masterTopicSet.find(family[f]) != masterTopicSet.end()){
+                    masterTopicAssociations[keyword] = family[f];
+                    masterTopicList[family[f]].push_back(keyword);
+                    masterTopicClipCount[family[f]] += getNumberOfClipsWithKeyword(keyword);
+
+                    break;
+                }
+            }
+        }
+    }
+    
+    //combine small master topic sets
+    set<string> sparseTopics;
+    for(set<string>::iterator it = masterTopicSet.begin(); it != masterTopicSet.end(); it++){
+        if(masterTopicClipCount[*it] <= 5){
+            vector<string>& family = getKeywordFamily( ofToLower(*it) );
+            sparseTopics.insert(*it);
+            if(family.size() == 0){
+                ofLogError("CloudsFCPParser::parseTopicAssociations") << "Sparse master topic " << *it << " " << masterTopicClipCount[*it] << " with no family";
+                continue;
+            }
+            
+            for(int f = 0; f < family.size(); f++){
+                if(masterTopicSet.find(family[f]) != masterTopicSet.end()){
+                    masterTopicAssociations[*it] = family[f];
+                    masterTopicClipCount[family[f]] += getNumberOfClipsWithKeyword(*it);
+                    masterTopicList[family[f]].push_back(*it);
+                    break;
+                }
+            }
+        }
+    }
+    
+    set<string> result;
+    set_difference(masterTopicSet.begin(), masterTopicSet.end(), sparseTopics.begin(), sparseTopics.end(), std::inserter(result, result.end()));
+    masterTopicSet = result;
+
+    //reciprocate master set topics into look up
+    for(set<string>::iterator it = masterTopicSet.begin(); it != masterTopicSet.end(); it++){
+        if(masterTopicAssociations.find(*it) == masterTopicAssociations.end()){
+            masterTopicAssociations[*it] = *it;
+            masterTopicClipCount[*it] += getNumberOfClipsWithKeyword(*it);
+            masterTopicList[*it].push_back(*it);
+        }
+    }
+    
+    cout << "FINAL MASTER LIST" << endl;
+    for(set<string>::iterator it = masterTopicSet.begin(); it != masterTopicSet.end(); it++){
+        cout << "   " << *it << ": " << masterTopicClipCount[*it] << endl;
+    }
+    cout << "FINAL ASSOCIATIONS" << endl;
+    for(map<string,string>::iterator it = masterTopicAssociations.begin(); it != masterTopicAssociations.end(); it++){
+        cout << it->first << " --> " << it->second << endl;
+    }
+    //COMBINE SMALLER NUMBERS
+    cout << "FINISHED COMPUTING MASTER LIST" << endl;
 }
 
 #ifdef VHX_MEDIA
@@ -471,14 +621,14 @@ CloudsProjectExample& CloudsFCPParser::getProjectExampleWithTitle(const string& 
 
 void CloudsFCPParser::populateKeywordCentroids(){
 
-	keywordCentroids.clear();
-	keywordCentroidIndex.clear();
+	masterTopicCentroids.clear();
+	//keywordCentroidIndex.clear();
 	
 	ofBuffer keywordCentroidBuffer;
 	string keywordCentroidPath = GetCloudsDataPath() + "pajek/keyword_centroids.txt";
 	
 	//look for keyword centroid cache
-	if( ofFile(keywordCentroidPath).exists() ){
+	if(ofFile(keywordCentroidPath).exists() ){
 		keywordCentroidBuffer = ofBufferFromFile(keywordCentroidPath);
 		while(!keywordCentroidBuffer.isLastLine()){
 			string line  = keywordCentroidBuffer.getNextLine();
@@ -492,18 +642,20 @@ void CloudsFCPParser::populateKeywordCentroids(){
 				continue;
 			}
 			string keyword = components[0];
-			keywordCentroidIndex[keyword] = keywordCentroids.size();
-
-			keywordCentroids.push_back(make_pair(keyword, ofVec3f(ofToFloat(vecComponents[0]),
-																  ofToFloat(vecComponents[1]),
-																  ofToFloat(vecComponents[2]))));
+            
+			//keywordCentroidIndex[keyword] = keywordCentroids.size();
+			masterTopicCentroids[keyword] = ofVec3f(ofToFloat(vecComponents[0]),
+                                                    ofToFloat(vecComponents[1]),
+													ofToFloat(vecComponents[2]));
 		}
 	}
 	//create centroid cache
 	else{
-		vector<string>& keywords = getContentKeywords();
-		for(int k = 0; k < keywords.size(); k++){
-			vector<CloudsClip*> clips = getClipsWithKeyword(keywords[k]);
+		//vector<string>& keywords = getContentKeywords();
+        
+		//for(int k = 0; k < keywords.size(); k++){
+        for(set<string>::iterator it = masterTopicSet.begin(); it != masterTopicSet.end(); it++){
+			vector<CloudsClip*> clips = getClipsWithKeyword(*it, true);
 			
 			float numClips = 0;
 			ofVec3f centroid(0,0,0);
@@ -516,10 +668,10 @@ void CloudsFCPParser::populateKeywordCentroids(){
 			
 			centroid /= numClips;
 			
-			keywordCentroids.push_back( make_pair(keywords[k], centroid) );
-			keywordCentroidIndex[keywords[k]] = k;
+			masterTopicCentroids[*it] = centroid;
+			//keywordCentroidIndex[keywords[k]] = k;
 			
-			keywordCentroidBuffer.append(keywords[k] + "|" +
+			keywordCentroidBuffer.append(*it + "|" +
 										 ofToString(centroid.x,10) + "," +
 										 ofToString(centroid.y,10) + "," +
 										 ofToString(centroid.z,10) + "\n");
@@ -529,72 +681,42 @@ void CloudsFCPParser::populateKeywordCentroids(){
 	}
 }
 
-void CloudsFCPParser::calculateKeywordAdjascency(){
-	keywordAdjacency.clear();
-	vector<string>& keywords = getContentKeywords();
-	for(int i = 0; i < keywords.size(); i++){
-		keywordAdjacency[keywords[i]] = getAdjacentKeywords(keywords[i], 10);
-	}
-}
-
-void CloudsFCPParser::disperseUnpositionedClips(){
-    ofVec3f minBounds = allClips[0]->networkPosition;
-    ofVec3f maxBounds = allClips[0]->networkPosition;
-    for(int i = 1; i < allClips.size(); i++){
-        ofVec3f pos = allClips[i]->networkPosition;
-        if(pos != ofVec3f(-1,-1,-1)){
-            minBounds.x = MIN(minBounds.x, pos.x);
-            minBounds.y = MIN(minBounds.y, pos.y);
-            minBounds.z = MIN(minBounds.z, pos.z);
-
-            maxBounds.x = MAX(maxBounds.x, pos.x);
-            maxBounds.y = MAX(maxBounds.y, pos.y);
-            maxBounds.z = MAX(maxBounds.z, pos.z);
-        }
-    }
-    
-    ofVec3f center = minBounds.getInterpolated(maxBounds, .5);
-    ofVec3f minBoundsHalf = minBounds.getInterpolated(center, .5);
-    ofVec3f maxBoundsHalf = maxBounds.getInterpolated(center, .5);
-    
-    for(int i = 1; i < allClips.size(); i++){
-        ofVec3f pos = allClips[i]->networkPosition;
-        if(pos == ofVec3f(-1,-1,-1)){
-            allClips[i]->networkPosition.x = ofRandom(minBoundsHalf.x, maxBoundsHalf.x);
-            allClips[i]->networkPosition.y = ofRandom(minBoundsHalf.y, maxBoundsHalf.y);
-            allClips[i]->networkPosition.z = ofRandom(minBoundsHalf.z, maxBoundsHalf.z);
-        }
-    }
-}
-
-//returns keywords that are close to the given keyword on the cluster map
-vector<string> CloudsFCPParser::getAdjacentKeywords( const string& currentKeyword , int numOfDesiredKeywords){
-    string keyword = "";
-    ofVec2f centroid;
-    vector<pair<string, float> > distancePair;
-    
-    centroid = getKeywordCentroid(currentKeyword);
-    
-    for (int j=0; j < keywordCentroids.size(); j++) {
-        if(keywordCentroids[j].first != currentKeyword){
-			float distance = centroid.distance(keywordCentroids[j].second);
-			distancePair.push_back(make_pair(keywordCentroids[j].first, distance));
-		}
-    }
-    
-    sort(distancePair.begin(), distancePair.end(), distanceSort);
-    
-    vector<string> adjacentKeywords;
-    numOfDesiredKeywords = MIN(distancePair.size(),numOfDesiredKeywords);
-
-//	cout << "keyword " << currentKeyword << endl;
-    for (int k = 0; k < numOfDesiredKeywords; k++) {
-//		cout << "	" << distancePair[k].first << " " <<distancePair[k].second << endl;
-        adjacentKeywords.push_back(distancePair[k].first);
-    }
-    
-    return adjacentKeywords;
-}
+//void CloudsFCPParser::calculateKeywordAdjascency(){
+//	keywordAdjacency.clear();
+//	vector<string>& keywords = getContentKeywords();
+//	for(int i = 0; i < keywords.size(); i++){
+//		keywordAdjacency[keywords[i]] = getAdjacentKeywords(keywords[i], 10);
+//	}
+//}
+//
+////returns keywords that are close to the given keyword on the cluster map
+//vector<string> CloudsFCPParser::getAdjacentKeywords( const string& currentKeyword , int numOfDesiredKeywords){
+//    string keyword = "";
+//    ofVec2f centroid;
+//    vector<pair<string, float> > distancePair;
+//    
+//    centroid = getKeywordCentroid(currentKeyword);
+//    
+//    for (int j=0; j < keywordCentroids.size(); j++) {
+//        if(keywordCentroids[j].first != currentKeyword){
+//			float distance = centroid.distance(keywordCentroids[j].second);
+//			distancePair.push_back(make_pair(keywordCentroids[j].first, distance));
+//		}
+//    }
+//    
+//    sort(distancePair.begin(), distancePair.end(), distanceSort);
+//    
+//    vector<string> adjacentKeywords;
+//    numOfDesiredKeywords = MIN(distancePair.size(),numOfDesiredKeywords);
+//
+////	cout << "keyword " << currentKeyword << endl;
+//    for (int k = 0; k < numOfDesiredKeywords; k++) {
+////		cout << "	" << distancePair[k].first << " " <<distancePair[k].second << endl;
+//        adjacentKeywords.push_back(distancePair[k].first);
+//    }
+//    
+//    return adjacentKeywords;
+//}
 
 void CloudsFCPParser::calculateKeywordFamilies(){
 	keywordFamilies.clear();
@@ -603,7 +725,7 @@ void CloudsFCPParser::calculateKeywordFamilies(){
 	string keywordFamilyPath = GetCloudsDataPath() + "stats/keyword_families.txt";
 
 	//look for keyword family cache
-	if( ofFile(keywordFamilyPath).exists() ){
+	if(ofFile(keywordFamilyPath).exists() ){
 		keywordFamilyBuffer = ofBufferFromFile(keywordFamilyPath);
 		while(!keywordFamilyBuffer.isLastLine()){
 			string line = keywordFamilyBuffer.getNextLine();
@@ -664,78 +786,97 @@ vector<string>& CloudsFCPParser::getKeywordFamily(const string& keyword){
 	return keywordFamilies[keyword];
 }
 
-float CloudsFCPParser::getDistanceFromAdjacentKeywords(const string& keyword1, const string& keyword2){    
-    return getKeywordCentroid(keyword1).distance(getKeywordCentroid(keyword2));
-}
+//float CloudsFCPParser::getDistanceFromAdjacentKeywords(const string& keyword1, const string& keyword2){    
+//    return getKeywordCentroid(keyword1).distance(getKeywordCentroid(keyword2));
+//}
 
-float CloudsFCPParser::getCohesionIndexForKeyword(const string& keyword){
-    if(keywordCohesionMap.find(keyword) != keywordCohesionMap.end()){
-        return keywordCohesionMap[keyword];
-    }
-    return 0;
-}
+//float CloudsFCPParser::getCohesionIndexForKeyword(const string& keyword){
+//    if(keywordCohesionMap.find(keyword) != keywordCohesionMap.end()){
+//        return keywordCohesionMap[keyword];
+//    }
+//    return 0;
+//}
 
-void CloudsFCPParser::calculateCohesionMedianForKeywords(){
-	
-	vector< pair<string, float> > topicCohesionPairs;
-	vector<string>& keywords = getContentKeywords();
-    for( int i=0; i< keywords.size(); i++){
-        string currentKeyword = keywords[i];
-        ofVec2f keywordCentroid = getKeywordCentroid(currentKeyword);
-        vector<CloudsClip*> clips = getClipsWithKeyword(currentKeyword);
-        
-        vector<float> distancesPerClip;
-        float maxDistance = 0;
-        float minDistance = INT_MAX;
-        float numClips  =0;
-        float totalDistance = 0;
-        
-        for (int k = 0; k < clips.size(); k++) {
-            if(clips[k]->networkPosition != ofVec3f(-1,-1,-1)){
-                float distance = keywordCentroid.distance(clips[k]->networkPosition);
-                totalDistance += distance;
-                distancesPerClip.push_back(distance);
-                maxDistance = MAX(maxDistance,distance);
-                minDistance = MIN(minDistance,distance);
-                numClips++;
-            }
-        }
-		
-		float avgDistance = totalDistance / numClips;
+//void CloudsFCPParser::calculateCohesionMedianForKeywords(){
+//	
+//	vector< pair<string, float> > topicCohesionPairs;
+//	vector<string>& keywords = getContentKeywords();
+//    for( int i=0; i< keywords.size(); i++){
+//        string currentKeyword = keywords[i];
+//        ofVec2f keywordCentroid = getKeywordCentroid(currentKeyword);
+//        vector<CloudsClip*> clips = getClipsWithKeyword(currentKeyword);
+//        
+//        vector<float> distancesPerClip;
+//        float maxDistance = 0;
+//        float minDistance = INT_MAX;
+//        float numClips  =0;
+//        float totalDistance = 0;
+//        
+//        for (int k = 0; k < clips.size(); k++) {
+//            if(clips[k]->networkPosition != ofVec3f(-1,-1,-1)){
+//                float distance = keywordCentroid.distance(clips[k]->networkPosition);
+//                totalDistance += distance;
+//                distancesPerClip.push_back(distance);
+//                maxDistance = MAX(maxDistance,distance);
+//                minDistance = MIN(minDistance,distance);
+//                numClips++;
+//            }
+//        }
+//		
+//		float avgDistance = totalDistance / numClips;
+//
+//		if(distancesPerClip.size() != 0 && maxDistance != 0){
+//			std::sort(distancesPerClip.begin(), distancesPerClip.end());
+//			float medianValue = distancesPerClip[distancesPerClip.size()/2];
+//			keywordCohesionMap[currentKeyword] = medianValue / maxDistance;
+//			topicCohesionPairs.push_back(make_pair(currentKeyword, keywordCohesionMap[currentKeyword]));
+////			cout << "**** Keyword " << currentKeyword << " has an average distance of " << avgDistance << " from " << numClips << " has cohesion score " << medianValue << "/" << maxDistance << "		" << medianValue / maxDistance << endl;
+//		}
+//		
+//    }
+//	
+////	sort(topicCohesionPairs.begin(), topicCohesionPairs.end(), distanceSort);
+////	cout << "COHESION:" << endl;
+////	for(int i = 0; i < topicCohesionPairs.size(); i++){
+////		cout << "	" << topicCohesionPairs[i].first << " " << topicCohesionPairs[i].second << endl;
+////	}
+//
+//}
 
-		if(distancesPerClip.size() != 0 && maxDistance != 0){
-			std::sort(distancesPerClip.begin(), distancesPerClip.end());
-			float medianValue = distancesPerClip[distancesPerClip.size()/2];
-			keywordCohesionMap[currentKeyword] = medianValue / maxDistance;
-			topicCohesionPairs.push_back(make_pair(currentKeyword, keywordCohesionMap[currentKeyword]));
-//			cout << "**** Keyword " << currentKeyword << " has an average distance of " << avgDistance << " from " << numClips << " has cohesion score " << medianValue << "/" << maxDistance << "		" << medianValue / maxDistance << endl;
-		}
-		
-    }
-	
-//	sort(topicCohesionPairs.begin(), topicCohesionPairs.end(), distanceSort);
-//	cout << "COHESION:" << endl;
-//	for(int i = 0; i < topicCohesionPairs.size(); i++){
-//		cout << "	" << topicCohesionPairs[i].first << " " << topicCohesionPairs[i].second << endl;
-//	}
-
-}
-
-ofVec3f CloudsFCPParser::getKeywordCentroid(const string& keyword){
-    int index = getCentroidMapIndex(keyword);
-    if(index == -1){
-		ofLogError("CloudsFCPParser::getKeywordCentroid") << "No centroid found for keyword: " << keyword << endl;
+ofVec3f CloudsFCPParser::getMasterTopicPosition(const string& keyword){
+    if(masterTopicCentroids.find(keyword) == masterTopicCentroids.end()){
+		ofLogError("CloudsFCPParser::getMasterTopicPosition") << "No centroid found for keyword: " << keyword;
 		return ofVec3f(-1, -1, -1);
     }
-	return keywordCentroids[index].second;
+	return masterTopicCentroids[keyword];
 }
 
-int CloudsFCPParser::getCentroidMapIndex(const string& keyword){
-    if(keywordCentroidIndex.find(keyword) != keywordCentroidIndex.end()){
-        return keywordCentroidIndex[keyword];
+//int CloudsFCPParser::getCentroidMapIndex(const string& keyword){
+//    if(keywordCentroidIndex.find(keyword) != keywordCentroidIndex.end()){
+//        return keywordCentroidIndex[keyword];
+//    }
+//    ofLogError("CloudsFCPParser::getCentroidMapIndex")<<" Couldnt find  index for keyword: " << keyword;
+//	return -1;
+//}
+
+set<string>& CloudsFCPParser::getMasterTopics(){
+    return masterTopicSet;
+}
+
+bool CloudsFCPParser::isMasterKeyword(const string& keyword){
+    return masterTopicSet.find(keyword) != masterTopicSet.end();
+}
+
+bool CloudsFCPParser::hasMasterTopicAssociation(const string& keyword){
+    return masterTopicAssociations.find(keyword) != masterTopicAssociations.end();
+}
+
+string CloudsFCPParser::getMasterKeyword(const string& keyword){
+    if(!hasMasterTopicAssociation(keyword)){
+        ofLogError("CloudsFCPParser::isMasterKeyword") << "Couldn't find master topic for keyword " << keyword;
+        return keyword;
     }
-    ofLogError("CloudsFCPParser::getCentroidMapIndex")<<" Couldnt find  index for keyword: "<<keyword<<endl;
-	return -1;
+    return masterTopicAssociations[keyword];
 }
 
 void CloudsFCPParser::saveLinks(){
@@ -1085,8 +1226,8 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, const string& curren
 			cm->sourceVideoFilePath = clipFilePath;
 			
 			if( markerLinkNames.find(cm->getLinkName()) != markerLinkNames.end() ){
-				delete cm;
 				ofLogError("CloudsFCPParser::parseClipItem") << "DUPLICATE CLIP " << cm->getLinkName() << " " << cm->getMetaInfo();
+				delete cm;
 			}
 			else{
 				markerLinkNames.insert( cm->getLinkName() );
@@ -1476,13 +1617,18 @@ int CloudsFCPParser::getNumberOfClipsWithKeyword(const string& filterWord){
 	return keywordsFound;
 }
 
-vector<CloudsClip*> CloudsFCPParser::getClipsWithKeyword(const string& filterWord){
-	return getClipsWithKeyword(filterWord, getAllClips());
+vector<CloudsClip*> CloudsFCPParser::getClipsWithKeyword(const string& filterWord, bool useMasterTopics){
+	return getClipsWithKeyword(filterWord, getAllClips(), useMasterTopics);
 }
 
-vector<CloudsClip*> CloudsFCPParser::getClipsWithKeyword(const string& filterWord, vector<CloudsClip*>& searchClips){
+vector<CloudsClip*> CloudsFCPParser::getClipsWithKeyword(const string& filterWord, vector<CloudsClip*>& searchClips, bool useMasterTopics){
 	vector<string> filter;
-	filter.push_back(filterWord);
+    if(useMasterTopics && masterTopicAssociations.find(filterWord) != masterTopicAssociations.end()){
+        filter = masterTopicList[ masterTopicAssociations[filterWord] ];
+    }
+    else {
+        filter.push_back(filterWord);
+    }
 	return getClipsWithKeyword(filter, searchClips);
 }
 

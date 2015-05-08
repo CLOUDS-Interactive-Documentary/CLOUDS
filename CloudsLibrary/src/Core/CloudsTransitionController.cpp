@@ -27,7 +27,8 @@ CloudsTransitionController::CloudsTransitionController(){
 	fadeOutStates.push_back(TRANSITION_EXPLORE_MAP_OUT);
 	fadeOutStates.push_back(TRANSITION_EXPLORE_PEOPLE_OUT);
 	fadeOutStates.push_back(TRANSITION_EXPLORE_VISUALS_OUT);
-	
+	fadeOutStates.push_back(TRANSITION_VISUAL_LOOP_OUT);
+    
 	fadeInStates.push_back(TRANSITION_VISUALSYSTEM_IN);
 	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
     fadeInStates.push_back(TRANSITION_INTERLUDE_IN);
@@ -37,7 +38,7 @@ CloudsTransitionController::CloudsTransitionController(){
 	fadeInStates.push_back(TRANSITION_EXPLORE_MAP_IN);
 	fadeInStates.push_back(TRANSITION_EXPLORE_PEOPLE_IN);
 	fadeInStates.push_back(TRANSITION_EXPLORE_VISUALS_IN);
-    
+	fadeInStates.push_back(TRANSITION_VISUAL_LOOP_IN);
     
 	reciprocalTransitions[TRANSITION_INTRO_IN] = TRANSITION_INTRO_OUT;
 	reciprocalTransitions[TRANSITION_INTRO_OUT] = TRANSITION_INTRO_IN;
@@ -57,6 +58,9 @@ CloudsTransitionController::CloudsTransitionController(){
 	reciprocalTransitions[TRANSITION_EXPLORE_PEOPLE_OUT] = TRANSITION_EXPLORE_PEOPLE_IN;
 	reciprocalTransitions[TRANSITION_EXPLORE_VISUALS_IN] = TRANSITION_EXPLORE_VISUALS_OUT;
 	reciprocalTransitions[TRANSITION_EXPLORE_VISUALS_OUT] = TRANSITION_EXPLORE_VISUALS_IN;
+	reciprocalTransitions[TRANSITION_VISUAL_LOOP_IN] = TRANSITION_VISUAL_LOOP_OUT;
+	reciprocalTransitions[TRANSITION_VISUAL_LOOP_OUT] = TRANSITION_VISUAL_LOOP_IN;
+    
     //FAIL safe
     reciprocalTransitions[TRANSITION_IDLE] = TRANSITION_IDLE;
 
@@ -113,15 +117,6 @@ void CloudsTransitionController::transitionToIntro(float inDuration){
 	
 	confirmEmpty("transitionToIntro");
 
-//    if(getPreviousState() == TRANSITION_INTERLUDE_IN){
-//        queueState(TRANSITION_INTERLUDE_OUT, inDuration);
-//    }
-//    else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
-//        queueState(TRANSITION_INTERVIEW_OUT, inDuration);
-//    }
-//    else if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
-//        queueState(TRANSITION_VISUALSYSTEM_OUT, inDuration);
-//    }
     queueReciprocal(getPreviousState(), inDuration);
     
 	queueState(TRANSITION_INTRO_IN, inDuration);
@@ -178,15 +173,6 @@ void CloudsTransitionController::transitionToInterlude(float inDuration,float ou
 	
 	confirmEmpty("transitionToInterlude");
 	
-//	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
-////		currentState = TRANSITION_VISUALSYSTEM_IN; //JG why is this here
-//		queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
-//	}
-//	//we are in an interview
-//	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
-//		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
-//	}
-    
     queueReciprocal(getPreviousState(), outDuration);
 	
     queueState(TRANSITION_INTERLUDE_IN, inDuration);
@@ -264,6 +250,51 @@ void CloudsTransitionController::transitionFromExplorePeople(float inDuration){
     queueState(TRANSITION_EXPLORE_PEOPLE_OUT, inDuration);
 	
     startTransition();
+}
+
+void CloudsTransitionController::transitionToExploreVisuals(float inDuration, float outDuration){
+
+    confirmEmpty("transitionToExploreVisuals");
+    
+    queueReciprocal(getPreviousState(), outDuration);
+    
+    queueState(TRANSITION_EXPLORE_VISUALS_IN, inDuration);
+	
+	startTransition();
+    
+}
+
+void CloudsTransitionController::transitionFromExploreVisuals(float inDuration){
+    
+    confirmEmpty("transitionFromExploreVisuals");
+    
+    queueState(TRANSITION_EXPLORE_VISUALS_OUT, inDuration);
+	
+    startTransition();
+}
+
+void CloudsTransitionController::transitionToVisualLoop(float inDuration, float outDuration){
+
+    confirmEmpty("transitionToVisualLoop");
+
+    queueState(TRANSITION_EXPLORE_VISUALS_OUT, inDuration);
+
+    queueState(TRANSITION_VISUAL_LOOP_IN, inDuration);
+	
+    startTransition();
+    
+}
+
+void CloudsTransitionController::transitionFromVisualLoop(float inDuration, float outDuration){
+
+    confirmEmpty("transitionFromVisualLooop");
+    
+    queueState(TRANSITION_VISUAL_LOOP_OUT, inDuration);
+    
+    queueState(TRANSITION_EXPLORE_VISUALS_IN, inDuration);
+	
+    startTransition();
+
 }
 
 ////////////
@@ -456,6 +487,10 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
         case TRANSITION_EXPLORE_VISUALS_IN:
 			return "TransitionExploreVisualsIn";
         case TRANSITION_EXPLORE_VISUALS_OUT:
+			return "TransitionExploreVisualsOut";
+        case TRANSITION_VISUAL_LOOP_IN:
+			return "TransitionExploreVisualsOut";
+        case TRANSITION_VISUAL_LOOP_OUT:
 			return "TransitionExploreVisualsOut";
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));

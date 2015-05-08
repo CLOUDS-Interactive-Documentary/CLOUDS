@@ -634,6 +634,7 @@ Binx - making a map,Martin - Inflation not that interesting
 Binx - face data,JTNimoy - performance1
 Binx - face data,Karsten - infinite conversation
 Binx - face data,Maeda - Clouds
+Binx - face data,Marcus - code for storytelling
 Binx - face data,Memo_master - Story unfolds
 Binx - hackathon,Golan - hackathon
 Binx - hackathon,Golan - hackathons2
@@ -778,7 +779,6 @@ Binx - Background,Karsten - east german hardware 2
 Binx - Background,Kevin - from code to magazines to code
 Binx - Background,Kyle_MC - they all wear the same glasses
 Binx - Background,Maeda - Artist coders coder artists
-Binx - Background,Marcus - skating to coding
 Binx - Background,Marcus - new tricks
 Binx - Background,Marius - jumping from medium to medium
 Binx - Background,Marius - cross discplines
@@ -872,7 +872,6 @@ Bruce - Tidepools,Higa - only meets pure geeks
 Bruce - Tidepools,Jer - Desire to get together
 Bruce - Tidepools,Julia - community
 Bruce - Tidepools,Lindsay - memes 2
-Bruce - Tidepools,Marcus - skating to coding
 Bruce - Tidepools,Marcus - community styles
 Bruce - Tidepools,Marcus - new tricks
 Bruce - Tidepools,Vera - What I like about this field
@@ -1139,6 +1138,7 @@ Bruce - Fax machine,Shiffman - what do you archive?
 Bruce - Fax machine,Theo - eyebeam R&D
 Bruce - Fax machine,LIA - VeryFirstArtworks
 Bruce - Infinity in a grain of sand,Martin - language and infinity
+Bruce - Infinity in a grain of sand,Sophy - Where's the best hamburger?
 Bruce - Fractal graphics,Golan - raytraced spheres
 Bruce - Fractal graphics,Memo_master - Fractals
 Bruce - Fractal graphics,LIA - Formulas
@@ -1240,6 +1240,7 @@ Bruce - Future camera 1,Casey - understanding future
 Bruce - Future camera 1,Julian - journey to the moon
 Bruce - Future camera 1,Marius - Predicting the internet
 Bruce - Future camera 1,Regine - imagining the future
+Bruce - lashup 1,Elliot_UK - limitations 2
 Bruce - lashup 1,Kyle_CH - tribe of New media
 Bruce - lashup 1,Kyle_CH - RGBD
 Bruce - lashup 2,Kyle_CH - tribe of New media
@@ -1279,6 +1280,7 @@ Bruce - not one cyberpunk idea,Casey - futurist
 Bruce - not one cyberpunk idea,Julian - science fiction
 Bruce - not one cyberpunk idea,Kevin - cognition vs computation 1
 Bruce - not one cyberpunk idea,Kyle_CH - Future life storage
+Bruce - not one cyberpunk idea,Kyle_MC - the comment thread
 Bruce - not one cyberpunk idea,Marius - cyperpunk history
 Bruce - not one cyberpunk idea,Marius - We've embraced Dystopia
 Bruce - not one cyberpunk idea,Paola - teleportation
@@ -1465,6 +1467,7 @@ Bruce - networks vs robots,Martin - Are we getting smarter 2
 Bruce - networks vs robots,Ramsey - cloud 1
 Bruce - networks vs robots,Regine - twitter, future
 Bruce - past and future,Casey - futurist
+Bruce - past and future,Kyle_MC - the comment thread
 Bruce - past and future,Marius - Predicting the internet
 Bruce - past and future,Regine - imagining the future
 Bruce - atemporality,Higa - not sharing its a backup
@@ -1557,7 +1560,6 @@ Bruce - Fountain pen,Kyle_CH - Polygons
 Bruce - Fountain pen,Marcus - simulation to stories
 Bruce - Fountain pen,Marcus - energy flow
 Bruce - Fountain pen,Marcus - energy flow_riot
-Bruce - Fountain pen,Marcus - code for storytelling
 Bruce - Fountain pen,Shiffman - NOC 1
 Bruce - Fountain pen,Memo_master - Emotional lines
 Bruce - small fuzzy things,Fernanda - zooming in
@@ -1659,6 +1661,7 @@ Casey - pseudo-science,Shiffman - NOC 3
 Casey - pseudo-science,Shiffman - Constraints,
 Casey - futurist,Bruce - not one cyberpunk idea
 Casey - futurist,Bruce - past and future
+Casey - futurist,Kyle_MC - the comment thread
 Casey - futurist,Regine - imagining the future
 Casey - understanding future,Bruce - Future camera 1
 Casey - understanding future,Julian - change the way we see tech
@@ -2118,6 +2121,7 @@ Elliot_UK - limitation 1,Kevin - machines crash
 Elliot_UK - limitation 1,Kevin - crash and burn
 Elliot_UK - limitation 1,Nervous_Jesse - understanding to control 3
 Elliot_UK - limitations 2,Bruce - camera technician vs explorer
+Elliot_UK - limitations 2,Bruce - lashup 1
 Elliot_UK - limitations 2,Kevin - algo culture 2
 Elliot_UK - limitations 2,Kevin - machines crash
 Elliot_UK - limitations 2,Kevin - crash and burn
@@ -2878,7 +2882,6 @@ Golan - formalism,Maeda - Isn't it supposed to be new?
 Golan - formalism,Paola - beauty in exile
 Golan - formalism,Memo_master - Maximalist
 Golan - audiovisual concept,Higa - sound and video
-Golan - audiovisual concept,Kyle_CH - Casey Reas Music Visualizations
 Golan - audiovisual concept,Memo_master - Synaesthesia 2
 Golan - easy beauty,Bruce - Don't care about design
 Golan - easy beauty,Julia - aesthetic value
@@ -3413,7 +3416,6 @@ Higa - collaboration with machines 2,Intro - interactivity1
 Higa - collaboration with machines 2,LIA - IdeaToCode
 Higa - sound and video,Bruce - Eno 2
 Higa - sound and video,Golan - audiovisual concept
-Higa - sound and video,Kyle_CH - Casey Reas Music Visualizations
 Higa - sound and video,Marcus - Audiovisual glue
 Higa - sound and video,Marcus - electronic music influence
 Higa - sound and video,Marius - reach your visual cortex
@@ -4069,6 +4071,7 @@ Jen - in the movie,JTNimoy - performance1
 Jen - in the movie,JTNimoy - immersion2
 Jen - in the movie,Karsten - infinite conversation
 Jen - in the movie,Maeda - Clouds
+Jen - in the movie,Marcus - code for storytelling
 Jen - in the movie,Memo_master - Story unfolds
 Jen - in the movie,Memo_master - Filmmaker aspirations
 Jen - museum immersion,Aaron - exquisite forest 2
@@ -4107,6 +4110,7 @@ Jen - data essay 1,Kevin - storytelling human to human
 Jen - data essay 1,Kevin - algo stories 3
 Jen - data essay 2,Bruce - lashup 1
 Jen - data essay 2,Bruce - Pointcloud world
+Jen - data essay 2,Elliot_UK - limitations 2
 Jen - data essay 2,Higa - difficult question
 Jen - data essay 2,JTNimoy - performance1
 Jen - data essay 2,Julia - what clouds is about
@@ -4117,6 +4121,7 @@ Jen - data essay 2,Kyle_CH - Future life storage
 Jen - data essay 2,Kyle_MC - the comment thread
 Jen - data essay 2,Kyle_MC - imagining your pointcloud
 Jen - data essay 2,Maeda - Clouds
+Jen - data essay 2,Marcus - code for storytelling
 Jen - data essay 2,Patricio - CLOUDS
 Jen - data essay 2,Patricio - CLOUDS 2
 Jen - data essay 2,Patricio - CLOUDS 3
@@ -4703,6 +4708,7 @@ JTNimoy - performance1,Binx - face data
 JTNimoy - performance1,Jen - in the movie
 JTNimoy - performance1,Karsten - infinite conversation
 JTNimoy - performance1,Maeda - Clouds
+JTNimoy - performance1,Marcus - code for storytelling
 JTNimoy - performance1,Shantell - group improvisation
 JTNimoy - performance1,Memo_master - Story unfolds
 JTNimoy - evolution,Casey - Software is what i love the most
@@ -5493,7 +5499,6 @@ Karolina - suspension of disbelief,Kevin - Race to versimilitude
 Karolina - suspension of disbelief,Kevin - Acknolwedgement of artifice
 Karolina - suspension of disbelief,Kyle_CH - storytelling
 Karolina - suspension of disbelief,Kyle_CH - Polygons
-Karolina - suspension of disbelief,Marcus - code for storytelling
 Karolina - suspension of disbelief,Philip - bits and bytes
 Karolina - suspension of disbelief,Shiffman - NOC 1
 Karolina - suspension of disbelief,Shiffman - NOC 2
@@ -5940,6 +5945,7 @@ Karsten - infinite conversation,Binx - face data
 Karsten - infinite conversation,Jen - in the movie
 Karsten - infinite conversation,JTNimoy - performance1
 Karsten - infinite conversation,Maeda - Clouds
+Karsten - infinite conversation,Marcus - code for storytelling
 Karsten - infinite conversation,Memo_master - Story unfolds
 Karsten - new media,Bruce - It's an old thing
 Karsten - new media,Bruce - Fax machine
@@ -6883,23 +6889,6 @@ Kyle_CH - fun accessible art,Regine - doesn't matter as long as it's good
 Kyle_CH - fun accessible art,Shiffman - advanced environment
 Kyle_CH - fun accessible art,Theo - art world
 Kyle_CH - fun accessible art,Zach - processing, publishing
-Kyle_CH - Casey Reas Music Visualizations,Golan - audiovisual concept
-Kyle_CH - Casey Reas Music Visualizations,Higa - sound and video
-Kyle_CH - Casey Reas Music Visualizations,Marcus - Audiovisual glue
-Kyle_CH - Casey Reas Music Visualizations,Marcus - electronic music influence
-Kyle_CH - Casey Reas Music Visualizations,Philip - audiovisual gigs
-Kyle_CH - Casey Reas Music Visualizations,Shantell - Live performance,
-Kyle_CH - Casey Reas Music Visualizations,Memo_master - Harmonic 1
-Kyle_CH - Casey Reas Music Visualizations,Memo_master - Harmonic 3
-Kyle_CH - Casey Reas Music Visualizations,Memo_master - Sonifying
-Kyle_CH - Casey Reas Music Visualizations,Memo_master - Harmonic 2
-Kyle_CH - Casey Reas Music Visualizations,Memo_master - Pulses
-Kyle_CH - Casey Reas Music Visualizations,Memo_master - Synaesthesia 1
-Kyle_CH - Casey Reas Music Visualizations,Memo_master - Synaesthesia 2
-Kyle_CH - Casey Reas Music Visualizations,Memo_master - Synaesthesia 3
-Kyle_CH - Casey Reas Music Visualizations,Elliot - Audiovisuals
-Kyle_CH - Casey Reas Music Visualizations,Intro - AudioVisualization
-Kyle_CH - Casey Reas Music Visualizations,LIA - audiovisualization
 Kyle_CH - Sentience of digital art,Bruce - Anthropomorphism
 Kyle_CH - Sentience of digital art,Casey - Computer as collaborator
 Kyle_CH - Sentience of digital art,Kyle_MC - uncanny
@@ -7048,10 +7037,12 @@ Kyle_CH - Future life storage,Julian - science fiction
 Kyle_CH - Future life storage,Karsten - archiving
 Kyle_CH - Future life storage,Karsten - preserving history
 Kyle_CH - Future life storage,Kevin - cognition vs computation 1
+Kyle_CH - Future life storage,Kyle_MC - the comment thread
 Kyle_CH - Future life storage,Lauren - digital afterlife
 Kyle_CH - Future life storage,Lauren - inheriting digital property
 Kyle_CH - Future life storage,Lauren - digital memory
 Kyle_CH - Future life storage,Marcus - global conversation
+Kyle_CH - Future life storage,Marcus - code for storytelling
 Kyle_CH - Future life storage,Patricio - Information 1
 Kyle_CH - Future life storage,Patricio - Information 3
 Kyle_CH - Future life storage,Patricio - Library of Babel
@@ -7309,7 +7300,13 @@ Kyle_MC - art versus engineering 2,Memo_master - just problem solving
 Kyle_MC - folowing the finger,Javier - Hummingbird drone
 Kyle_MC - folowing the finger,JTNimoy - Describe the Kinect
 Kyle_MC - folowing the finger,JTNimoy - increased the bandwidth
+Kyle_MC - the comment thread,Bruce - not one cyberpunk idea
+Kyle_MC - the comment thread,Bruce - past and future
+Kyle_MC - the comment thread,Casey - futurist
 Kyle_MC - the comment thread,Karolina - Panel discussion
+Kyle_MC - the comment thread,Kyle_CH - Future life storage
+Kyle_MC - the comment thread,Regine - twitter, future
+Kyle_MC - the comment thread,Regine - imagining the future
 Kyle_MC - box on your face,Bruce - new aesthetic 1
 Kyle_MC - box on your face,Bruce - new aesthetic artists
 Kyle_MC - box on your face,Greg - AI 1
@@ -7512,7 +7509,6 @@ Lauren - desires to connect,Julia - human in tech
 Lauren - desires to connect,Julia - million facebook
 Lauren - desires to connect,Julia - strength of weak ties
 Lauren - desires to connect,Julia - net friends
-Lauren - desires to connect,Maeda - distraction and focus
 Lauren - desires to connect,Maeda - People you're meeting,
 Lauren - desire to get together,Fernanda - had to explain that the web was social
 Lauren - desire to get together,Fernanda - Social dynamics
@@ -7562,7 +7558,6 @@ Lauren - Beginning art and tech,Julia - CLOUDS
 Lauren - Beginning art and tech,Kyle_CH - history of computational art
 Lauren - Beginning art and tech,Kyle_CH - open source
 Lauren - Beginning art and tech,Kyle_CH - new generation
-Lauren - Beginning art and tech,Regine - digital technology
 Lauren - languages as tools,Jen - new toolkits
 Lauren - languages as tools,Memo_master - 10yearsOld 3
 Lauren - using tools in unexpected ways,Andres - sharing code
@@ -8043,7 +8038,6 @@ Maeda - distraction and focus,Jen - immersion of reading
 Maeda - distraction and focus,Kyle_MC - People staring at screens 1
 Maeda - distraction and focus,Lauren - Virtual tension 1
 Maeda - distraction and focus,Lauren - Virtual tension 2
-Maeda - distraction and focus,Lauren - desires to connect
 Maeda - distraction and focus,Lauren - modern distraction
 Maeda - distraction and focus,Martin - Net art
 Maeda - distraction and focus,Martin - looking at art
@@ -8142,15 +8136,12 @@ Maeda - Clouds,Binx - face data
 Maeda - Clouds,Jen - in the movie
 Maeda - Clouds,JTNimoy - performance1
 Maeda - Clouds,Karsten - infinite conversation
+Maeda - Clouds,Marcus - code for storytelling
 Maeda - Clouds,Memo_master - Story unfolds
 Maeda - recording appalachian music,Jer - spoken word
 Maeda - Coding for humanity,Higa - working all night
 Maeda - Coding for humanity,Julia - human in tech
 Maeda - Coding for humanity,Julia - what is it doing to us
-Marcus - skating to coding,Binx - Background
-Marcus - skating to coding,Bruce - Tidepools
-Marcus - skating to coding,Zach - nerd art center
-Marcus - skating to coding,Memo_master - Synaesthesia 3
 Marcus - community styles,Bruce - All of a sudden...
 Marcus - community styles,Bruce - Tidepools
 Marcus - community styles,Bruce - Trendier than thou
@@ -8166,7 +8157,6 @@ Marcus - community styles,LIA - helldotcom
 Marcus - Audiovisual glue,Bruce - Eno 2
 Marcus - Audiovisual glue,Golan - playable image
 Marcus - Audiovisual glue,Higa - sound and video
-Marcus - Audiovisual glue,Kyle_CH - Casey Reas Music Visualizations
 Marcus - Audiovisual glue,Marius - reach your visual cortex
 Marcus - Audiovisual glue,Philip - what we do
 Marcus - Audiovisual glue,Philip - audiovisual gigs
@@ -8364,7 +8354,6 @@ Marcus - economics question,Diederick - worldwillbecomebetter
 Marcus - economics question,LIA - Sandcastles
 Marcus - economics question,LIA - SkepticismAboutOpenSource
 Marcus - electronic music influence,Higa - sound and video
-Marcus - electronic music influence,Kyle_CH - Casey Reas Music Visualizations
 Marcus - electronic music influence,Philip - audiovisual gigs
 Marcus - electronic music influence,Shantell - Live performance,
 Marcus - electronic music influence,Memo_master - Harmonic 1
@@ -8417,20 +8406,25 @@ Marcus - code for storytelling,Aaron - mini-brains 2
 Marcus - code for storytelling,Aaron - story medium
 Marcus - code for storytelling,Aaron - autonomous storytellers
 Marcus - code for storytelling,Aaron - exquisite forest
-Marcus - code for storytelling,Bruce - Fountain pen
+Marcus - code for storytelling,Binx - face data
 Marcus - code for storytelling,Casey - Tree of Life
 Marcus - code for storytelling,Casey - It's not cinema not a game
 Marcus - code for storytelling,Casey - Something new, totally engrossing
 Marcus - code for storytelling,Jen - telling stories to engage
+Marcus - code for storytelling,Jen - in the movie
+Marcus - code for storytelling,Jen - data essay 2
+Marcus - code for storytelling,JTNimoy - performance1
 Marcus - code for storytelling,Karolina - motion story,
 Marcus - code for storytelling,Karolina - interactive tableau
-Marcus - code for storytelling,Karolina - suspension of disbelief
 Marcus - code for storytelling,Karolina - Journey
+Marcus - code for storytelling,Karsten - infinite conversation
 Marcus - code for storytelling,Kevin - Acknolwedgement of artifice
 Marcus - code for storytelling,Kevin - algo stories 1
 Marcus - code for storytelling,Kevin - algo stories 2
 Marcus - code for storytelling,Kyle_CH - storytelling
+Marcus - code for storytelling,Kyle_CH - Future life storage
 Marcus - code for storytelling,Lauren - Metaphors
+Marcus - code for storytelling,Maeda - Clouds
 Marcus - code for storytelling,Patricio - Playlist 1
 Marcus - code for storytelling,Patricio - Playlist 2
 Marcus - code for storytelling,Sophy - nonlinearity
@@ -9835,7 +9829,6 @@ Philip - what we do,Shantell - Live performance,
 Philip - audiovisual gigs,Bruce - Eno 2
 Philip - audiovisual gigs,Golan - playable image
 Philip - audiovisual gigs,Higa - sound and video
-Philip - audiovisual gigs,Kyle_CH - Casey Reas Music Visualizations
 Philip - audiovisual gigs,Marcus - Audiovisual glue
 Philip - audiovisual gigs,Marcus - electronic music influence
 Philip - audiovisual gigs,Shantell - Live performance,
@@ -10831,7 +10824,6 @@ Ramsey - trapese 2,Shantell - drawing with computers
 Ramsey - trapese 2,Theo - struggle with technology
 Ramsey - videogame development,Karsten - east german hardware 2
 Ramsey - operating system biases,Karsten - always improved
-Regine - digital technology,Lauren - Beginning art and tech
 Regine - making a living,Binx - art for money
 Regine - making a living,Binx - work for hire
 Regine - making a living,Golan - wide open field
@@ -10900,6 +10892,7 @@ Regine - twitter, future,Karsten - parallel processing
 Regine - twitter, future,Kevin - Networked intelligence
 Regine - twitter, future,Kevin - Getting smarter together
 Regine - twitter, future,Kevin - collaboration with machines
+Regine - twitter, future,Kyle_MC - the comment thread
 Regine - twitter, future,Marius - Predicting the internet
 Regine - twitter, future,Martin - Are we getting smarter?
 Regine - twitter, future,Martin - Are we getting smarter 2
@@ -10921,6 +10914,7 @@ Regine - imagining the future,Julian - science fiction
 Regine - imagining the future,Karsten - parallel processing
 Regine - imagining the future,Kevin - collaboration with machines
 Regine - imagining the future,Kyle_MC - Transparent tech 2
+Regine - imagining the future,Kyle_MC - the comment thread
 Regine - imagining the future,Kyle_MC - shaping the direction
 Regine - imagining the future,Marius - Living in a state of newness since age 10
 Regine - imagining the future,Marius - Thoroughly enjoying it at the moment
@@ -11117,7 +11111,6 @@ Shantell - ,Kevin - Distributable perceptual model
 Shantell - ,Patricio - Seduced by Play 1
 Shantell - Live performance,,Golan - playable image
 Shantell - Live performance,,Higa - sound and video
-Shantell - Live performance,,Kyle_CH - Casey Reas Music Visualizations
 Shantell - Live performance,,Marcus - electronic music influence
 Shantell - Live performance,,Philip - what we do
 Shantell - Live performance,,Philip - audiovisual gigs
@@ -11756,6 +11749,7 @@ Sophy - distributed culture,Regine - twitter, future
 Sophy - distributed culture,Regine - imagining the future
 Sophy - distributed culture,Regine - elitist and their gadgets
 Sophy - distributed culture,Regine - looking forward to problems
+Sophy - Where's the best hamburger?,Bruce - Infinity in a grain of sand
 Sophy - Where's the best hamburger?,JTNimoy - immersion
 Sophy - Where's the best hamburger?,Maeda - Slurpies and pizza
 Sophy - Strange cultures,Fernanda - What people are thinking
@@ -12218,7 +12212,6 @@ Zach - nerd art center,JTNimoy - I addicted myself
 Zach - nerd art center,JTNimoy - geek culture
 Zach - nerd art center,Julia - community
 Zach - nerd art center,Kyle_MC - they all wear the same glasses
-Zach - nerd art center,Marcus - skating to coding
 Zach - nerd art center,Marcus - community styles
 Zach - nerd art center,Marcus - new tricks
 Zach - nerd art center,Marius - I hate the word nerd
@@ -12455,7 +12448,6 @@ Memo_master - Complexity 2,Ramsey - elegant system
 Memo_master - Complexity 2,Shiffman - Games
 Memo_master - Complexity 2,Shiffman - NOC 2
 Memo_master - Harmonic 1,Higa - sound and video
-Memo_master - Harmonic 1,Kyle_CH - Casey Reas Music Visualizations
 Memo_master - Harmonic 1,Marcus - Audiovisual glue
 Memo_master - Harmonic 1,Marcus - electronic music influence
 Memo_master - Harmonic 1,Philip - audiovisual gigs
@@ -12464,7 +12456,6 @@ Memo_master - Harmonic 1,Elliot - Audiovisuals
 Memo_master - Harmonic 1,Intro - AudioVisualization
 Memo_master - Harmonic 1,LIA - audiovisualization
 Memo_master - Harmonic 3,Higa - sound and video
-Memo_master - Harmonic 3,Kyle_CH - Casey Reas Music Visualizations
 Memo_master - Harmonic 3,Marcus - Audiovisual glue
 Memo_master - Harmonic 3,Marcus - electronic music influence
 Memo_master - Harmonic 3,Philip - audiovisual gigs
@@ -12474,7 +12465,6 @@ Memo_master - Harmonic 3,Intro - AudioVisualization
 Memo_master - Harmonic 3,LIA - audiovisualization
 Memo_master - Sonifying,Fernanda - beautiful evidence 1
 Memo_master - Sonifying,Higa - sound and video
-Memo_master - Sonifying,Kyle_CH - Casey Reas Music Visualizations
 Memo_master - Sonifying,Marcus - Audiovisual glue
 Memo_master - Sonifying,Marcus - electronic music influence
 Memo_master - Sonifying,Philip - audiovisual gigs
@@ -12483,7 +12473,6 @@ Memo_master - Sonifying,Elliot - Audiovisuals
 Memo_master - Sonifying,Intro - AudioVisualization
 Memo_master - Sonifying,LIA - audiovisualization
 Memo_master - Harmonic 2,Higa - sound and video
-Memo_master - Harmonic 2,Kyle_CH - Casey Reas Music Visualizations
 Memo_master - Harmonic 2,Marcus - Audiovisual glue
 Memo_master - Harmonic 2,Marcus - electronic music influence
 Memo_master - Harmonic 2,Philip - audiovisual gigs
@@ -12519,7 +12508,6 @@ Memo_master - Story unfolds,Vera - Energy Flow2
 Memo_master - Story unfolds,Vera - having a protagonist
 Memo_master - Story unfolds,Vera - Accessibility through strories
 Memo_master - Pulses,Higa - sound and video
-Memo_master - Pulses,Kyle_CH - Casey Reas Music Visualizations
 Memo_master - Pulses,Marcus - Audiovisual glue
 Memo_master - Pulses,Marcus - electronic music influence
 Memo_master - Pulses,Marius - reach your visual cortex
@@ -12716,7 +12704,6 @@ Memo_master - Synaesthesia 1,Andres - soft systems 2
 Memo_master - Synaesthesia 1,Fernanda - seeing patterns 1
 Memo_master - Synaesthesia 1,Fernanda - seeing patterns 2
 Memo_master - Synaesthesia 1,Higa - sound and video
-Memo_master - Synaesthesia 1,Kyle_CH - Casey Reas Music Visualizations
 Memo_master - Synaesthesia 1,Marcus - Audiovisual glue
 Memo_master - Synaesthesia 1,Marcus - electronic music influence
 Memo_master - Synaesthesia 1,Marius - reach your visual cortex
@@ -12758,7 +12745,6 @@ Memo_master - Sound and vision,Marius - reach your visual cortex
 Memo_master - Synaesthesia 2,Casey - Borrowing from culture
 Memo_master - Synaesthesia 2,Golan - audiovisual concept
 Memo_master - Synaesthesia 2,Higa - sound and video
-Memo_master - Synaesthesia 2,Kyle_CH - Casey Reas Music Visualizations
 Memo_master - Synaesthesia 2,Maeda - reactive square
 Memo_master - Synaesthesia 2,Marcus - Audiovisual glue
 Memo_master - Synaesthesia 2,Marcus - electronic music influence
@@ -12774,8 +12760,6 @@ Memo_master - Sound design,Shantell - drawing with noise
 Memo_master - Synaesthesia 3,Golan - my mother the abstract painter
 Memo_master - Synaesthesia 3,Higa - sound and video
 Memo_master - Synaesthesia 3,Julian - sci-fi and electronic music
-Memo_master - Synaesthesia 3,Kyle_CH - Casey Reas Music Visualizations
-Memo_master - Synaesthesia 3,Marcus - skating to coding
 Memo_master - Synaesthesia 3,Marcus - Audiovisual glue
 Memo_master - Synaesthesia 3,Marcus - electronic music influence
 Memo_master - Synaesthesia 3,Philip - audiovisual gigs
@@ -13192,7 +13176,6 @@ Diederick - worldwillbecomebetter,Chris - EthicOfSharing
 Diederick - worldwillbecomebetter,LIA - Sandcastles
 Diederick - worldwillbecomebetter,LIA - SkepticismAboutOpenSource
 Elliot - Audiovisuals,Higa - sound and video
-Elliot - Audiovisuals,Kyle_CH - Casey Reas Music Visualizations
 Elliot - Audiovisuals,Marcus - Audiovisual glue
 Elliot - Audiovisuals,Marcus - electronic music influence
 Elliot - Audiovisuals,Philip - audiovisual gigs
@@ -13246,7 +13229,6 @@ Elliot - Wiremap1,Memo_master - Magic 1
 Elliot - Wiremap1,Memo_master - looking at the ocean
 Elliot - Wiremap1,Damion - loseSenseofTime
 Intro - AudioVisualization,Higa - sound and video
-Intro - AudioVisualization,Kyle_CH - Casey Reas Music Visualizations
 Intro - AudioVisualization,Marcus - Audiovisual glue
 Intro - AudioVisualization,Marcus - electronic music influence
 Intro - AudioVisualization,Philip - audiovisual gigs
@@ -13841,7 +13823,6 @@ LIA - VisualizeAnIdea,Memo_master - FictionalUniverse 1
 LIA - VisualizeAnIdea,Memo_master - Fractals
 LIA - VisualizeAnIdea,Memo_master - MSAFluid 3
 LIA - audiovisualization,Higa - sound and video
-LIA - audiovisualization,Kyle_CH - Casey Reas Music Visualizations
 LIA - audiovisualization,Marcus - Audiovisual glue
 LIA - audiovisualization,Marcus - electronic music influence
 LIA - audiovisualization,Marius - reach your visual cortex

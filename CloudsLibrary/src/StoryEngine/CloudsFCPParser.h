@@ -40,6 +40,7 @@ class CloudsFCPParser {
     void parseLinks(const string& linkFile);
 	void parseClusterNetwork(const string& fileName);
 	void parseProjectExamples(const string& filename);
+    void parseTopicAssociations(const string& filename);
 #ifdef VHX_MEDIA
     void parseVHXIds(const string& filename);
 #endif
@@ -123,8 +124,8 @@ class CloudsFCPParser {
 							  bool hasQuestion = false,
 							  bool hasStartQuestion = false);
 	int getNumberOfClipsWithKeyword(const string& filterWord);
-	vector<CloudsClip*> getClipsWithKeyword(const string& filterWord);
-	vector<CloudsClip*> getClipsWithKeyword(const string& filterWord, vector<CloudsClip*>& searchClips);
+	vector<CloudsClip*> getClipsWithKeyword(const string& filterWord, bool useMasterTopics = false);
+	vector<CloudsClip*> getClipsWithKeyword(const string& filterWord, vector<CloudsClip*>& searchClips, bool useMasterTopics = false);
     vector<CloudsClip*> getClipsWithKeyword(const vector<string>& filter);
 	vector<CloudsClip*> getClipsWithKeyword(const vector<string>& filter, vector<CloudsClip*>& searchClips);
     vector<CloudsClip*> getClipsWithQuestionsForTopic(const string&  topic);
@@ -140,24 +141,30 @@ class CloudsFCPParser {
 	vector<CloudsClip*> getMetaDataConnections(CloudsClip* source);
 	int getNumMetaDataConnections(CloudsClip* source);
 	
-    int occurrencesOfKeyword(const string& keyword);
     bool operator()(const string& a, const string& b);
+    
+    int occurrencesOfKeyword(const string& keyword);
     vector<string>& getContentKeywords();
 	vector<string>& getKeywordFamily(const string&  keyword);
-	ofVec3f getKeywordCentroid(const string&  keyword);
-	
+	//ofVec3f getKeywordCentroid(const string& keyword);
+    
+    //master topics are fit to be shown to viwers and contain many keywords as subtopics
+	set<string>& getMasterTopics();
+    bool isMasterKeyword(const string& keyword);
+    bool hasMasterTopicAssociation(const string& keyword);
+    string getMasterKeyword(const string& keyword);
+	ofVec3f getMasterTopicPosition(const string& keyword);
+    
     void saveInterventions(const string&  interventionsFile);
 	void saveSpeakersVolume(const string&  speakerVolFile);
-    
-    
     
 #pragma mark key themes
 	string closestKeyThemeToTag(const string&  searchTag);
 	
 	set<string> clusterMapColors;
     vector<string> getAdjacentKeywords(const string&  currentKeyword, int numOfDesiredKeywords);
-    float getCohesionIndexForKeyword(const string&  keyword);
-    float getDistanceFromAdjacentKeywords(const string&  keyword1, const string&  keyword2);
+    //float getCohesionIndexForKeyword(const string&  keyword);
+    //float getDistanceFromAdjacentKeywords(const string&  keyword1, const string&  keyword2);
     
   protected:
 #ifdef VHX_MEDIA
@@ -187,7 +194,13 @@ class CloudsFCPParser {
     
     map<string, int> allKeywords;
     map<string, int> contentKeywords;
-    
+
+    map<string,string> masterTopicAssociations; //go from subtopic -> master topic
+    map<string,vector<string> > masterTopicList; //go from master topic -> list of subtopics
+    map<string, int> masterTopicClipCount;
+    set<string> masterTopicSet; //all user facing topics
+    map<string, ofVec3f> masterTopicCentroids;
+
     vector<string> keywordVector;
     vector<string> contentKeywordVector;
 	
@@ -208,15 +221,14 @@ class CloudsFCPParser {
 	map<string,int> clipIdToProjectExample;
 	
 	//KEYWORDS + CLUSTER NETWORK
-    vector<pair<string, ofVec3f> > keywordCentroids;
-	map<string, vector<string> > keywordAdjacency;
+	//map<string, vector<string> > keywordAdjacency;
 	map<string, vector<string> > keywordFamilies;
-    map<string, int> keywordCentroidIndex;
-    map<string, float> keywordCohesionMap;
+    //map< string, int> keywordCentroidIndex;
+    //map<string, float> keywordCohesionMap;
     void populateKeywordCentroids();
-    void calculateCohesionMedianForKeywords();
-    int getCentroidMapIndex(const string&  keyword);
-	void calculateKeywordAdjascency();
+    //void calculateCohesionMedianForKeywords();
+    //int getCentroidMapIndex(const string&  keyword);
+	//void calculateKeywordAdjascency();
 	void calculateKeywordFamilies();
     void disperseUnpositionedClips();
     

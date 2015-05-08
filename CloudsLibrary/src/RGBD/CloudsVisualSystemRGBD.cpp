@@ -292,19 +292,19 @@ void CloudsVisualSystemRGBD::playTestVideo(int videoIndex){
 }
 
 void CloudsVisualSystemRGBD::loadShader(){
-	cout << "loading point shader " << endl;
+//	cout << "loading point shader " << endl;
 	if(!pointShader.load(getVisualSystemDataPath() + "shaders/rgbdPoints")){
 		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
 	}
-	cout << "loading line shader " << endl;
+//	cout << "loading line shader " << endl;
 	if(!lineShader.load( getVisualSystemDataPath() + "shaders/rgbdLines")){
 		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
 	}
-	cout << "loading mesh shader " << endl;
+//	cout << "loading mesh shader " << endl;
 	if(!meshShader.load( getVisualSystemDataPath() + "shaders/rgbdMesh")){
 		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
 	}
-    cout << "loading occlusion shader " << endl;
+//    cout << "loading occlusion shader " << endl;
     if(!occlusionShader.load( getVisualSystemDataPath() + "shaders/rgbdOcclusion")){
 		ofLogError("CloudsVisualSystemRGBD::loadShader") << "Points failed";
 	}

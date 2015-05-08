@@ -25,10 +25,15 @@ typedef enum {
 	CLOUDS_HUD_PROJECT_EXAMPLE,
 	CLOUDS_HUD_PAUSE,
 	CLOUDS_HUD_NEXT,
-	CLOUDS_HUD_RESEARCH_LIST,
-	CLOUDS_HUD_RESEARCH_NAV,
-	CLOUDS_HUD_RESEARCH_SHUFFLE,
-	CLOUDS_HUD_ABOUT,
+	CLOUDS_RESEARCH,
+	CLOUDS_RESEARCH_SHUFFLE,
+	CLOUDS_RESEARCH_RESUME,
+    CLOUDS_ABOUT_BACKERS,
+    CLOUDS_ABOUT_CAST,
+    CLOUDS_ABOUT_CREDITS,
+    CLOUDS_ABOUT_INFO,
+    CLOUDS_ABOUT_MAIN,
+    CLOUDS_ABOUT_SETTINGS,
 
     CLOUDS_HUD_ALL
 } CloudsHUDLayerSet;
@@ -131,7 +136,7 @@ class CloudsHUDController {
 	vector<CloudsHUDLayer*> allLayers;
 	
 	void questionHoverOn(const string& question, bool animate = true);
-	
+	   
 	ofxUISuperCanvas *hudGui;
 	CloudsHUDHomeButton home;
 	
@@ -163,13 +168,21 @@ class CloudsHUDController {
     void unpause();
     
     void setTopics(const set<string>& topics);
+    void populateSpeakers();
+    void setVisuals(vector<string> visuals);
+
+    void setSeeMoreName(string name);
+    void selectTopic(string topic);
+    void selectPerson(string personID);
+
+    //where the researched item may be clicked
+    ofVec2f setResearchClickAnchor(ofVec2f anchor);
+    
     bool isItemSelected();
     bool isItemConfirmed();
     void clearSelection();
     
     string getSelectedItem();
-    
-    void populateSpeakers();
     
   protected:
 	
@@ -222,16 +235,24 @@ class CloudsHUDController {
     void          updateScroll();
     //////////////
     
+    bool bPaused;
+
     void updateResearchNavigation();
     
-    //temporary way to confirm selection in research mode
-    ofRectangle fakeConfirmSelectionBounds;
-    bool fakeConfirmHovered;
-    bool fakeConfirmPressed;
-    bool fakeConfirmClicked;
     ////////////////////
+    ofVec2f researchClickAnchor;
+    ofRectangle researchRectangle;
+    bool hasResearchRectangle;
+    bool researchConfirmHovered;
+    bool researchConfirmPressed;
+    bool researchConfirmClicked;
+
+    void selectButton(const CloudsHUDResearchButton& button);
+    string bioText;
+    ofxFTGLSimpleLayout researchBio;
+    ofxFTGLFont playAllFont;
     
-    
+    //TODO All symbols triangles need to fit this way
 	ofMesh resetTriangle;
     
     bool    bDrawHud;
@@ -245,7 +266,6 @@ class CloudsHUDController {
     bool    bQuestionDisplayed;
     bool    bProjectExampleDisplayed;
     
-    void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
 #endif
@@ -269,6 +289,9 @@ class CloudsHUDController {
     ofVec2f scaleOffset;
     int margin;
     
+    
+    ofImage topicMapPreview;
+    ofImage peopleMapPreview;
     map<CloudsHUDResearchTab, CloudsHUDResearchList> researchLists;
     CloudsHUDResearchList* currentResearchList;
     
@@ -277,6 +300,8 @@ class CloudsHUDController {
 
     CloudsClip*     currentClip;
     CloudsSpeaker   currentSpeaker;
+    
+    string filenameForLayer(CloudsHUDLayerSet layer);
 };
 
 
