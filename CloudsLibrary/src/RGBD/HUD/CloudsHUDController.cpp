@@ -432,6 +432,9 @@ void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 	animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
 	animateOff( CLOUDS_HUD_PAUSE );
     
+    bPaused = false;
+    layers[CLOUDS_HUD_LOWER_THIRD]->bForceHover = false;
+    
     bVisualSystemDisplayed = false;
     
 }
