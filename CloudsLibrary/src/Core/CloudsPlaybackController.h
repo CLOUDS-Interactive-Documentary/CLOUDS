@@ -185,7 +185,9 @@ class CloudsPlaybackController : public ofThread {
     bool showingClusterMapNavigation;
     bool showedClusterMapNavigation;
     bool showingInterlude;
-    bool exitedInterlude;
+    bool showingVisualLoop;
+    bool actJustBegan;
+//    bool exitedInterlude;
     bool showingExploreMap;
     bool showingExplorePeople;
     bool showingExploreVisuals;

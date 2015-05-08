@@ -474,7 +474,7 @@ CloudsAct* CloudsStoryEngine::buildActWithPerson(CloudsRun& run, string speakerI
 
     vector<CloudsClip*> clips = parser->getClipsForPerson(speakerId);
     for(int i = clips.size()-1; i >= 0; i--){
-        if(run.historyContainsClip(clips[i])){
+        if(run.historyContainsClip(clips[i]) || !clips[i]->hasMediaAsset){
             clips.erase(clips.begin()+i);
         }
     }
@@ -495,6 +495,26 @@ CloudsAct* CloudsStoryEngine::buildActWithPerson(CloudsRun& run, string speakerI
     settings.allowVisuals = false;
     
     return buildAct(settings);
+}
+
+CloudsAct* CloudsStoryEngine::buildActWithVisual(CloudsRun& run, string visualSystemID){
+    vector<int> presetIndeces = visualSystems->getFilteredPresetIndeces(true, false, false, visualSystemID);
+    for(int i = 0; i < presetIndeces.size(); i++){
+        cout << "PRESET " << visualSystems->getPresets()[ presetIndeces[i] ].getID() << endl;
+    }
+
+//    CloudsActSettings settings;
+//    settings.run = &run;
+//    settings.person = speakerId;
+//    settings.seed = clips[ (int)(ofRandom(clips.size())) ];
+//    settings.topic = settings.seed->getKeywords()[0];
+//    settings.playSeed = true;
+//    settings.forceTopic = false;
+//    settings.forceSpeaker = true;
+//    settings.allowVisuals = false;
+//    
+//    return buildAct(settings);
+
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string seedTopic, bool playSeed){
@@ -704,23 +724,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 		
         //AT THIS POINT CLIP IS NON NULL
         
-//        if(settings.forceSpeaker && nextClip->person != state.clip->person){
-//            state.log << state.duration << "\t\tERROR: Failed to find a same person, freeing topic to try again" << endl;
-//            state.freeTopic = true;
-//            continue;
-//            
-//        }
 		//If we chose a digressing clip, through a link that didn't share our topic
 		//play the clip but free the topic for the next round
 		if(!nextClip->hasKeyword(state.topic) && !settings.forceTopic ){
-//            if(settings.forceTopic){
-//                state.log << state.duration << "\t\t\tERROR: We took a digression! Finishing act." << endl;
-//                break;
-//            }
-//            else{
-                state.log << state.duration << "\t\t\tERROR: We took a digression! Freeing topic" << endl;
-                state.freeTopic = true;
-//            }
+            state.log << state.duration << "\t\t\tERROR: We took a digression! Freeing topic" << endl;
+            state.freeTopic = true;
 		}
         
 		//accept the next clip

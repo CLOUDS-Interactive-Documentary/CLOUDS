@@ -818,9 +818,9 @@ set<string> CloudsVisualSystemManager::getAllKeywords(){
 vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabledScreen, bool enabledOculus, bool gradeA, string systemName){
 	vector<int> filtered;
 	for(int i = 0; i < presets.size(); i++){
-		if((!enabledScreen || (enabledScreen && presets[i].enabledScreen)) &&
-		   (!enabledOculus || (enabledOculus  && presets[i].enabledOculus)) &&
-		   (!gradeA  || (gradeA  && presets[i].grade == "A")) &&
+		if((!enabledScreen   || (enabledScreen && presets[i].enabledScreen)) &&
+		   (!enabledOculus   || (enabledOculus  && presets[i].enabledOculus)) &&
+		   (!gradeA          || (gradeA  && presets[i].grade == "A")) &&
            (systemName == "" || (systemName == presets[i].systemName)))
 		{
 			filtered.push_back( i );
@@ -838,6 +838,7 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 string CloudsVisualSystemManager::getKeywordFilePath(){
 	return GetCloudsDataPath() + "links/visualsystems_keywords_db.xml";
 }
+
 //--------------------------------------------------------------------
 string CloudsVisualSystemManager::getCreditsFilePath(){
 	return GetCloudsDataPath() + "language/" + GetLanguage() +"/bio/visuals.xml";

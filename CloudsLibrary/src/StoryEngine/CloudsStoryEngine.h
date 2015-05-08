@@ -78,6 +78,7 @@ class CloudsStoryEngine {
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip* seed, string topic, bool playSeed = true);
     CloudsAct* buildActWithTopic(CloudsRun& run, string forceTopic);
     CloudsAct* buildActWithPerson(CloudsRun& run, string speakerId);
+    CloudsAct* buildActWithVisual(CloudsRun& run, string visualSystemID);
 
     CloudsAct* buildAct(CloudsActSettings settings);
 

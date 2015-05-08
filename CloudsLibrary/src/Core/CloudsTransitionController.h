@@ -12,6 +12,7 @@
 #include "ofRange.h"
 
 typedef enum {
+    
 	TRANSITION_IDLE             = 0,
 	TRANSITION_INTRO_IN         = 1,
 	TRANSITION_INTRO_OUT        = 2,
@@ -30,7 +31,9 @@ typedef enum {
 	TRANSITION_EXPLORE_PEOPLE_IN    = 15,
 	TRANSITION_EXPLORE_PEOPLE_OUT   = 16,
 	TRANSITION_EXPLORE_VISUALS_IN   = 17,
-	TRANSITION_EXPLORE_VISUALS_OUT  = 18
+	TRANSITION_EXPLORE_VISUALS_OUT  = 18,
+	TRANSITION_VISUAL_LOOP_IN       = 19,
+	TRANSITION_VISUAL_LOOP_OUT      = 20
     
 } CloudsTransitionState;
 
@@ -70,6 +73,10 @@ class CloudsTransitionController {
     
    	void transitionToExploreVisuals(float inDuration, float outDuration);
     void transitionFromExploreVisuals(float inDuration);
+    
+    //from research visuals --> into visual
+    void transitionToVisualLoop(float inDuration, float outDuration);
+    void transitionFromVisualLoop(float inDuration, float outDuration);
     
     void transitionBackToAct(float inDuration, float outDuration);
     
