@@ -921,6 +921,9 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
         if(topicPoints[i].keyword == topic){
             targetTopicPosition = topicPoints[i].position * meshExpansion;
             targetCameraPosition = targetTopicPosition + targetTopicPosition.normalized() * traversCameraDistance;
+            targetCameraSideDir = targetTopicPosition.normalized().getCrossed( ofVec3f(0,1,0) );
+            targetCameraUpDir   = targetTopicPosition.normalized().getCrossed( targetCameraSideDir );
+            
             positionFound = true;
             break;
         }
@@ -1128,13 +1131,22 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
         }
     }
     else if(useTopicCam){
-        //zone in on the topic;
-        topicNavCam.setPosition( topicNavCam.getPosition() + (targetCameraPosition - topicNavCam.getPosition())*.05 );
+        
+        currentCameraSideDir += (targetCameraSideDir - currentCameraSideDir) * .03;
+        currentCameraUpDir   += (targetCameraUpDir - currentCameraUpDir) * .03;
+        float distFromTarget = topicNavCam.getPosition().distance(targetCameraPosition);
+        //targetCameraPosition.rotate(nameCameraRot, targetPersonPosition, nameHighlightCam.getUpDir());
+        ofVec3f targetPos = targetCameraPosition.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 45, -45,true), targetTopicPosition, currentCameraUpDir);
+        targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 45, -45,true), targetTopicPosition, currentCameraSideDir);
+        
         ofNode n = topicNavCam;
-        n.lookAt(targetTopicPosition);
+        n.lookAt(targetTopicPosition.getInterpolated(ofVec3f(0,0,0), ofMap(distFromTarget, traversCameraDistance*2, traversCameraDistance*5, .0, 1.0, true) ), currentCameraUpDir );
+        topicNavCam.setPosition( topicNavCam.getPosition() + (targetPos - topicNavCam.getPosition())*.03 );
+        
         ofQuaternion q;
-        q.slerp(.05, topicNavCam.getOrientationQuat(), n.getOrientationQuat());
+        q.slerp(.07, topicNavCam.getOrientationQuat(), n.getOrientationQuat());
         topicNavCam.setOrientation(q);
+        
     }
     
 	/////UPDATE COLOR
@@ -1237,10 +1249,10 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
                 p.attenuation *= ofMap(zDistFromCamera, -typeClipDistance*2, -typeClipDistance, .7, 0.0, true);
                 
                 if(p.hovered){
-                    topicPoints[i].attenuation = ofMap(ofGetElapsedTimef(), p.hoverChangeTime, p.hoverChangeTime + .25, p.attenuation, 1.0, true);
+                    p.attenuation = ofMap(ofGetElapsedTimef(), p.hoverChangeTime, p.hoverChangeTime + .25, p.attenuation, 1.0, true);
                 }
                 else{
-                    topicPoints[i].attenuation = ofMap(ofGetElapsedTimef(), p.hoverChangeTime, p.hoverChangeTime + .25, 1.0, p.attenuation, true);
+                    p.attenuation = ofMap(ofGetElapsedTimef(), p.hoverChangeTime, p.hoverChangeTime + .25, 1.0, p.attenuation, true);
                 }
 
                 float padding = 15;
@@ -1802,7 +1814,7 @@ void CloudsVisualSystemClusterMap::selfMouseDragged(ofMouseEventArgs& data){
 void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
     cursor.set(GetCloudsInput()->getPosition());
 
-    //TODO: Occlusion
+
     TopicPoint* hoveredPoint = NULL;
     ofVec3f camPos = getCameraRef().getPosition();
     ofVec2f mousePos(data.x + bleed, data.y + bleed);

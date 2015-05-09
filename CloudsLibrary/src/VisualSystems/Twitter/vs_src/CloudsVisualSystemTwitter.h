@@ -63,7 +63,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     //FCP id from parser, highlights a person's name
     void selectPerson(string person);
     ofVec2f getSelectedPersonScreenPosition();
-    
+    string getSelectedPerson();
+    bool selectionChanged();
+
     //i/o stuff
     void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
@@ -128,7 +130,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void setActiveTweeters(int index );
     static Tweet* csvParseTweet(vector<string>& line, Tweeter* curTweeter);
     void updateMesh();
-    void drawText(string text, ofVec3f pos, float alpha);
+    void drawText(string text, ofMatrix4x4 billboard, float alpha);
     void drawText2D(string text, ofVec2f pos);
 
     //helpers
@@ -261,9 +263,19 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofCamera nameHighlightCam;
     ofVec3f targetPersonPosition;
     ofVec3f targetCameraPosition;
+    ofVec3f targetCameraSideDir;
+    ofVec3f targetCameraUpDir;
+    ofVec3f currentCameraUpDir;
+    ofVec3f currentCameraSideDir;
+    
     float nameTargetDistance;
     float nameCameraRot;
     bool bDrawFullNames;
+    float typeClipDistance;
+    float minTypeAttenuateDistance;
+    float maxTypeAttenuateDistance;
+    bool selectedPersonChanged;
+    string selectedPerson;
     static map<string,string> handleToNameMap;
     static map<string,string> nameToHandleMap;
     static map<string,int> userNameIdMap;

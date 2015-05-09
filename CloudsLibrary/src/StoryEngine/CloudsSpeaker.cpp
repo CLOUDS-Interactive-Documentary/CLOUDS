@@ -11,6 +11,7 @@
 #include "CloudsGlobal.h"
 
 map<string,CloudsSpeaker> CloudsSpeaker::speakers = map<string,CloudsSpeaker>();
+map<string,CloudsSpeaker> CloudsSpeaker::twitterHandleToSpeaker = map<string,CloudsSpeaker>();
 
 void CloudsSpeaker::populateSpeakers(){
 	
@@ -49,6 +50,7 @@ void CloudsSpeaker::populateSpeakers(){
 		speakerxml.popTag();//Person
 		
 		speakers[speaker.fcpID] = speaker;
+        twitterHandleToSpeaker[ofToLower(speaker.twitterHandle)] = speaker;
 	}
 	
 	speakerxml.popTag();//clouds

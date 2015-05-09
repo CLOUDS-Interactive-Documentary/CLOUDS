@@ -7,6 +7,7 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	
 	vs.setup();
+    vs.loadPresetGUISFromName("ResearchPeople_pretty");
 	vs.playSystem();
 }
 
@@ -22,13 +23,13 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     if(key == '1'){
-        vs.selectPerson("AARON KOBLIN");
+        vs.selectPerson("@aaronkoblin");
     }
     else if(key == '2'){
-        vs.selectPerson("KAROLINA SOBECKA");
+        vs.selectPerson("@ksobecka");
     }
     else if(key == '3'){
-        vs.selectPerson("FERNANDA VIEGAS");
+        vs.selectPerson("@reas");
     }
 }
 

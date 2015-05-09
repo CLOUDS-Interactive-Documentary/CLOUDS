@@ -33,11 +33,20 @@ class Tweeter
     Tweeter(const string& _name, int _id);
     ~Tweeter();
 
+    int ID;
     string name; //twitter handle: like @kcimc
     string fullName; //real name: like Kyle McDonald
     
-    int ID;
+    ///// draw commands
     ofVec3f position;
+    ofRectangle screenRectangle;
+    bool onScreen;
+    bool hovered;
+    float hoverChangedTime;
+    float attenuation;
+    ofMatrix4x4 billboardMat;
+    /////////
+    
     int nodeVertexIndex;
     int edgeVertexIndex;
 	int refreshNum;
@@ -45,9 +54,6 @@ class Tweeter
 	
     bool hasTweetOnDate(const string& tweetDate);
     vector<Tweet*>& getTweetsByDate(const string& t);
-
-    //vector<Tweet*> sortTweetsByDate(Date& d);
-    //void indexTweetsByDate(const vector<Date>& dates);
 
     string getDateAsString(const Date& d);
     Date getDateFromString(const string& dString);

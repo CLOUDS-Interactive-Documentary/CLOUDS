@@ -932,6 +932,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     if(showingExplorePeople){
         string selectedSpeakerID = hud.getSelectedItem();
+        
+        if(peopleMap->selectionChanged()){
+            string selectedTwitterID = peopleMap->getSelectedPerson();
+            cout << "SELECTED TWITTER ID " << selectedTwitterID << endl;
+            hud.selectPerson(CloudsSpeaker::twitterHandleToSpeaker[selectedTwitterID].fcpID);
+        }
+        
         if(selectedSpeakerID != ""){
             
             peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].twitterHandle);

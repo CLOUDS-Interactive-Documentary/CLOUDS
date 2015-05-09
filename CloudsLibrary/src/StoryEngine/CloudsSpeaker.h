@@ -22,7 +22,8 @@ class CloudsSpeaker {
 	void printInfo();
 	
 	static map<string,CloudsSpeaker> speakers;
-	
+	static map<string,CloudsSpeaker> twitterHandleToSpeaker;
+    
 	static void populateSpeakers();
 	static void exportSpeakerXMLTemplate();
 	

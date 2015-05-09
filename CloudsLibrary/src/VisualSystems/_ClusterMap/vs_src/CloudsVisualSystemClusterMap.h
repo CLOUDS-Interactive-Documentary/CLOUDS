@@ -318,6 +318,11 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     string currentTopic;
     ofVec3f targetTopicPosition;
     ofVec3f targetCameraPosition;
+    ofVec3f targetCameraSideDir;
+    ofVec3f targetCameraUpDir;
+    ofVec3f currentCameraUpDir;
+    ofVec3f currentCameraSideDir;
+
     ofVec2f trailheadScreenPos;
     ofxFTGLFont associationFont;
     

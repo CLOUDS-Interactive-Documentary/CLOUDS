@@ -1163,12 +1163,18 @@ void CloudsHUDController::selectTopic(string topic){
 }
 
 void CloudsHUDController::selectPerson(string personID){
-    
     CloudsHUDResearchList& peopleList = researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
+    for(int i = 0; i < peopleList.buttons.size(); i++){
+        peopleList.buttons[i].clicked = false;
+        peopleList.buttons[i].hovered = false;
+    }
+
     for(int i = 0; i < peopleList.buttons.size(); i++){
         if(peopleList.buttons[i].tag == personID){
             peopleList.buttons[i].clicked = true;
-            peopleList.scrollPosition = peopleList.buttons[i].top;
+            if(!peopleList.buttons[i].visible){
+                peopleList.scrollPosition = MIN(peopleList.buttons[i].top, peopleList.totalScrollHeight - researchScrollBounds.height);
+            }
             selectButton(peopleList.buttons[i]);
             return;
         }

@@ -57,7 +57,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     ofxFTGLTextAlignment alignment;
     
     if( ! tweetDeckMenu.loadImage(getVisualSystemDataPath() + "tweetDeckMenu.png")){
-        cout<<"Couldnt load tweet deck image "<<endl;
+        ofLogError() << "Couldnt load tweet deck image ";
     }
     tweetDeckHeight = tweetDeckMenu.height;
     tweetDeckWidth = tweetDeckMenu.width;
@@ -100,7 +100,10 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
 
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
-    
+    typeClipDistance = 10;
+    minTypeAttenuateDistance = 100;
+    maxTypeAttenuateDistance = 200;
+    selectedPersonChanged = false;
 
 }
 
@@ -208,6 +211,8 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->addToggle("USE NAME CAMERA", &bUseNameCam);
     textGui->addSlider("NAME CAMERA DISTANCe", 10, 200, &nameTargetDistance);
     textGui->addSlider("NAME CAMERA ROT", .01, 10, &nameCameraRot);
+	textGui->addRangeSlider("TYPE 3D ATTENUATION", 0, 500, &minTypeAttenuateDistance, &maxTypeAttenuateDistance);
+    textGui->addSlider("TYPE 3D CLIP", 0, 100, &typeClipDistance);
 
     textGui->addSpacer();
     textGui->addMinimalSlider("STRING WIDTH", 1, 2000, &stringWidth);
@@ -1135,18 +1140,69 @@ void CloudsVisualSystemTwitter::selfUpdate()
 	}
 	activityMap.update();
     
+    for(int i = 0; i < tweeters.size(); i++){
+        Tweeter& t = *tweeters[i];
+        if(t.fullName == ""){
+            continue;
+        }
+        ofRectangle screenRect(0,0,getCanvasWidth(),getCanvasHeight());
+        ofVec3f expandedPos = t.position;
+        //project the type's point onto the camera's look direction plane
+        //http://stackoverflow.com/questions/9605556/how-to-project-a-3d-point-to-a-3d-plane
+        ofVec3f v = expandedPos - getCameraRef().getPosition();
+        float dist = v.dot(getCameraRef().getLookAtDir());
+        ofVec3f lookAtPoint = expandedPos - dist*getCameraRef().getLookAtDir();
+        
+        //make the type node look at that projected point to billboard it
+        ofNode n;
+        n.setPosition(expandedPos);
+        n.lookAt(lookAtPoint, getCameraRef().getUpDir());
+        t.billboardMat = n.getGlobalTransformMatrix();
+        
+        float wordWidth  = font.stringWidth( ofToUpper(bDrawFullNames ? t.fullName : t.name)) * .01;
+        float wordHeight = font.stringHeight(ofToUpper(bDrawFullNames ? t.fullName : t.name)) * .01;
+        ofVec3f screenLeft  = getCameraRef().worldToScreen(expandedPos, screenRect);
+        ofVec3f screenRight = getCameraRef().worldToScreen(expandedPos - n.getSideDir() * wordWidth, screenRect);
+        ofVec3f screenTop   = getCameraRef().worldToScreen(expandedPos + n.getUpDir() * wordHeight, screenRect);
+        
+        float zDistFromCamera = getCameraRef().getGlobalTransformMatrix().getInverse().preMult( expandedPos ).z;
+        t.onScreen = zDistFromCamera < -typeClipDistance && zDistFromCamera > -maxTypeAttenuateDistance;
+        if(t.onScreen){
+            t.attenuation  = ofMap(zDistFromCamera, -maxTypeAttenuateDistance, -minTypeAttenuateDistance, .0, .7, true);
+            t.attenuation *= ofMap(zDistFromCamera, -typeClipDistance*2, -typeClipDistance, .7, 0.0, true);
+            
+            if(t.hovered){
+                t.attenuation = ofMap(ofGetElapsedTimef(), t.hoverChangedTime, t.hoverChangedTime + .25, t.attenuation, 1.0, true);
+            }
+            else{
+                t.attenuation = ofMap(ofGetElapsedTimef(), t.hoverChangedTime, t.hoverChangedTime + .25, 1.0, t.attenuation, true);
+            }
+            
+            float padding = 15;
+            t.screenRectangle.x = screenTop.x - padding;
+            t.screenRectangle.y = screenTop.y - padding;
+            t.screenRectangle.width = screenRight.x - screenLeft.x + padding*2;
+            t.screenRectangle.height = screenLeft.y - screenTop.y + padding*2;
+        }
+    }
+    
+
     if(bUseNameCam){
+        
+        currentCameraSideDir += (targetCameraSideDir - currentCameraSideDir) * .03;
+        currentCameraUpDir   += (targetCameraUpDir - currentCameraUpDir) * .03;
+        
         float distFromTarget = nameHighlightCam.getPosition().distance(targetCameraPosition);
         //targetCameraPosition.rotate(nameCameraRot, targetPersonPosition, nameHighlightCam.getUpDir());
-        ofVec3f targetPos = targetCameraPosition.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 45, -45,true), targetPersonPosition, ofVec3f(0,1,0));
-        targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -45, 45,true), targetPersonPosition, ofVec3f(1,0,0));
+        ofVec3f targetPos = targetCameraPosition.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 45, -45,true), targetPersonPosition, currentCameraUpDir);
+        targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 45, -45,true), targetPersonPosition, currentCameraSideDir);
         
         ofNode n = nameHighlightCam;
-        n.lookAt(targetPersonPosition.getInterpolated(ofVec3f(0,0,0), ofMap(distFromTarget, nameTargetDistance, nameTargetDistance*10, .0, 1.0, true) ) );
-        nameHighlightCam.setPosition( nameHighlightCam.getPosition() + (targetPos - nameHighlightCam.getPosition())*.05 );
+        n.lookAt(targetPersonPosition.getInterpolated(ofVec3f(0,0,0), ofMap(distFromTarget, nameTargetDistance, nameTargetDistance*10, .0, 1.0, true) ), currentCameraUpDir );
+        nameHighlightCam.setPosition( nameHighlightCam.getPosition() + (targetPos - nameHighlightCam.getPosition())*.03 );
         
         ofQuaternion q;
-        q.slerp(.15, nameHighlightCam.getOrientationQuat(), n.getOrientationQuat());
+        q.slerp(.05, nameHighlightCam.getOrientationQuat(), n.getOrientationQuat());
         nameHighlightCam.setOrientation(q);
     }
 }
@@ -1272,7 +1328,7 @@ void CloudsVisualSystemTwitter::selfDraw()
             for (int i= 0 ; i < tweeters.size(); i++) {
                 if(tweeters[i]->tweets.size() > 0){
                     drawText(bDrawFullNames ? tweeters[i]->fullName : tweeters[i]->name,
-                             tweeters[i]->position,1.0);
+                             tweeters[i]->billboardMat,tweeters[i]->attenuation);
                 }
             }
         }
@@ -1280,7 +1336,7 @@ void CloudsVisualSystemTwitter::selfDraw()
             for(int i = 0; i < activeTweeters.size(); i++){
                 if(activeTweeters[i]->position != ofVec3f(-1,-1,-1)){
                     drawText(bDrawFullNames ? activeTweeters[i]->fullName : activeTweeters[i]->name,
-                             activeTweeters[i]->position,activeTweeters[i]->textDecayRate);
+                             activeTweeters[i]->billboardMat,activeTweeters[i]->textDecayRate);
                 }
             }
         }
@@ -1395,6 +1451,9 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
 
 //FCP id from parser, highlights a person's name
 void CloudsVisualSystemTwitter::selectPerson(string person){
+    if(person == selectedPerson){
+        return;
+    }
     person = ofToLower(person);
 //    if(nameToHandleMap.find(person) == nameToHandleMap.end()){
 //        ofLogError("CloudsVisualSystemTwitter::selectPerson") << "Person " << person << " not found in twitter map";
@@ -1403,6 +1462,20 @@ void CloudsVisualSystemTwitter::selectPerson(string person){
     Tweeter* targetTweeter = getTweeterByHandle(person);
     targetPersonPosition = targetTweeter->position;
     targetCameraPosition = targetTweeter->position + targetTweeter->position.normalized() * nameTargetDistance;
+    targetCameraSideDir = targetPersonPosition.normalized().getCrossed( ofVec3f(0,1,0) );
+    targetCameraUpDir   = targetPersonPosition.normalized().getCrossed( targetCameraSideDir );
+    selectedPerson = person;
+
+}
+
+bool CloudsVisualSystemTwitter::selectionChanged(){
+    bool ret = selectedPersonChanged;
+    selectedPersonChanged = false;
+    return ret;
+}
+
+string CloudsVisualSystemTwitter::getSelectedPerson(){
+    return selectedPerson;
 }
 
 ofVec2f CloudsVisualSystemTwitter::getSelectedPersonScreenPosition(){
@@ -1619,18 +1692,18 @@ void CloudsVisualSystemTwitter::drawText2D(string text, ofVec2f pos){
     ofPopStyle();
 }
 
-void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos, float alpha){
+void CloudsVisualSystemTwitter::drawText(string text, ofMatrix4x4 billboard, float alpha){
     ofFloatColor  col = getRGBfromHSV(textColorHSV);
     col.a = alpha;
     ofPushStyle();
     ofSetColor(col);
     
-    ofNode n;
-    n.setPosition(pos);
-    n.lookAt(getCameraRef(), getCameraRef().getUpDir());
+//    ofNode n;
+//    n.setPosition(pos);
+//    n.lookAt(getCameraRef(), getCameraRef().getUpDir());
     ofPushMatrix();
-    ofMultMatrix(n.getGlobalTransformMatrix());
-    
+//    ofMultMatrix(n.getGlobalTransformMatrix());
+    ofMultMatrix(billboard);
     ofScale(-0.01,-0.01,0.01);
     font.drawString(ofToUpper(text),25,font.stringHeight(text));
     ofPopMatrix();
@@ -1649,13 +1722,59 @@ void CloudsVisualSystemTwitter::selfMouseDragged(ofMouseEventArgs& data)
 }
 
 void CloudsVisualSystemTwitter::selfMouseMoved(ofMouseEventArgs& data){
-	
+    if(bDrawFullNames){
+        Tweeter* hoveredPoint = NULL;
+        ofVec3f camPos = getCameraRef().getPosition();
+        ofVec2f mousePos(data.x + bleed, data.y + bleed);
+
+        for(int i = 0; i < tweeters.size(); i++){
+            Tweeter* t = tweeters[i];
+            
+            if(!t->onScreen || t->fullName == "") continue;
+            
+            bool inside = t->screenRectangle.inside(mousePos);
+            //if this one is closer
+            if(inside && (hoveredPoint == NULL || (hoveredPoint->position*meshExpansion).distance(camPos) > (t->position*meshExpansion).distance(camPos))){
+                hoveredPoint = t;
+            }
+        }
+        
+        //hover
+        if(hoveredPoint != NULL && !hoveredPoint->hovered){
+            hoveredPoint->hovered = true;
+            hoveredPoint->hoverChangedTime = ofGetElapsedTimef();
+        }
+        
+        //un hover
+        for(int i = 0; i < tweeters.size(); i++){
+            Tweeter* t = tweeters[i];
+            
+            if(!t->onScreen || t->fullName == "") continue;
+            
+            bool inside = t->screenRectangle.inside(mousePos);
+            if(t->hovered &&
+               (!inside || (hoveredPoint != NULL && (hoveredPoint->position*meshExpansion).distance(camPos) < (t->position*meshExpansion).distance(camPos))) )
+            {
+                t->hovered = false;
+                t->hoverChangedTime = ofGetElapsedTimef();
+            }
+        }
+    }
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemTwitter::selfMousePressed(ofMouseEventArgs& data)
 {
-    
+    if(bDrawFullNames){
+        for(int i = 0; i < tweeters.size(); i++){
+
+            if(tweeters[i]->hovered){
+                selectedPersonChanged = true;
+                selectPerson(tweeters[i]->name);
+                break;
+            }
+        }
+    }
 }
 
 void CloudsVisualSystemTwitter::selfMouseReleased(ofMouseEventArgs& data){
