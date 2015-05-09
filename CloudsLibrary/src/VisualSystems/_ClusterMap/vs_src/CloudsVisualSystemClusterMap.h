@@ -15,13 +15,16 @@ typedef struct{
 } TraversalSegment;
 
 typedef struct{
-    int numSubTopics;
-    vector<ofVec3f> subTopicPositions;
+
 	string keyword;
 	ofVec3f position;
-	ofVec2f screenPosition;
+    ofMatrix4x4 billboardMatrix;
+    ofRectangle screenRectangle;
+    
+    int fontIndex;
+    bool onScreen;
+    float attenuation;
 	int numClips;
-	float normalizedTopicScale;
 } TopicPoint;
 
 class CloudsFCPParser;
@@ -291,7 +294,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	bool drawType3D;
     float type3DScale;
 	int baseFontSize;
-    
+    float typeClipDistance;
+    float minTypeAttenuateDistance;
+    float maxTypeAttenuateDistance;
+
 	ofIntRange clipsShowTopic;
 	ofRange clipCountRange;
 	ofRange typeDistanceRange;

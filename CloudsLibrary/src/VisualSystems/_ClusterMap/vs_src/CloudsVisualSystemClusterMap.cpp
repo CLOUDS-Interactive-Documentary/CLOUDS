@@ -131,7 +131,10 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     caughtQuestion = NULL;
     type3DScale = 1.0;
     drawType3D = false;
-
+    maxTypeAttenuateDistance = 50;
+    minTypeAttenuateDistance = 300;
+    typeClipDistance = 20;
+    
 	questionScale = 0.1f;
 	questionFontScale = 14;
 	currentQuestionFontSize = 10;
@@ -330,7 +333,8 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     typeGui->addToggle("DRAW 3D", &drawType3D);
     typeGui->addSlider("3D TYPE SCALE", .01, 1.0, &type3DScale);
     typeGui->addIntSlider("ASSOCATION SIZE", 5, 30, &associationFontSize);
-    
+	typeGui->addRangeSlider("TYPE 3D ATTENUATION", 0, 500, &minTypeAttenuateDistance, &maxTypeAttenuateDistance);
+    typeGui->addSlider("TYPE 3D CLIP", 0, 100, &typeClipDistance);
 	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(typeGui);
 	guimap[typeGui->getName()] = typeGui;
@@ -594,9 +598,9 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
 		topicPoints.push_back( tp );
     }
     
-	for(int i = 0; i < topicPoints.size(); i++){
-		topicPoints[i].normalizedTopicScale =  clipCountRange.getNormalized(topicPoints[i].numClips);
-	}
+//	for(int i = 0; i < topicPoints.size(); i++){
+//		topicPoints[i].normalizedTopicScale =  clipCountRange.getNormalized(topicPoints[i].numClips);
+//	}
 
 }
 
@@ -1187,12 +1191,46 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	}
 	
 	if(drawType){
+        
 		for(int i = 0; i < topicPoints.size(); i++){
-			if(topicPoints[i].numClips >= clipsShowTopic.min){
-				topicPoints[i].screenPosition = getCameraRef().worldToScreen(topicPoints[i].position*meshExpansion,
-																			 ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()));
-			}
+            
+            TopicPoint& p = topicPoints[i];
+            ofRectangle screenRect(0,0,getCanvasWidth(),getCanvasHeight());
+            ofVec3f expandedPos = p.position * meshExpansion;
+            //project the type's point onto the camera's look direction plane
+            //http://stackoverflow.com/questions/9605556/how-to-project-a-3d-point-to-a-3d-plane
+            ofVec3f v = expandedPos - getCameraRef().getPosition();
+            float dist = v.dot(getCameraRef().getLookAtDir());
+            ofVec3f lookAtPoint = expandedPos - dist*getCameraRef().getLookAtDir();
+            
+            //make the type node look at that projected point to billboard it
+            ofNode n;
+            n.setPosition(expandedPos);
+            n.lookAt(lookAtPoint, getCameraRef().getUpDir());
+            p.billboardMatrix = n.getGlobalTransformMatrix();
+            
+            p.fontIndex = ofMap(p.numClips, clipsShowTopic.min, clipsShowTopic.max, 0, topicFont.size()-1,true);
+            
+            float wordWidth  = topicFont[p.fontIndex].stringWidth(ofToUpper(p.keyword)) * type3DScale;
+            float wordHeight = topicFont[p.fontIndex].stringHeight(ofToUpper(p.keyword)) * type3DScale;
+            ofVec3f screenLeft  = getCameraRef().worldToScreen(expandedPos, screenRect);
+            ofVec3f screenRight = getCameraRef().worldToScreen(expandedPos - n.getSideDir() * wordWidth, screenRect);
+            ofVec3f screenTop   = getCameraRef().worldToScreen(expandedPos + n.getUpDir() * wordHeight, screenRect);
+            
+            float zDistFromCamera = getCameraRef().getGlobalTransformMatrix().getInverse().preMult( expandedPos ).z;
+            
+            topicPoints[i].attenuation  = ofMap(zDistFromCamera, -maxTypeAttenuateDistance, -minTypeAttenuateDistance, .0, 1.0, true);
+            topicPoints[i].attenuation *= ofMap(zDistFromCamera, -typeClipDistance*2, -typeClipDistance, 1.0, 0.0, true);
+            topicPoints[i].onScreen = zDistFromCamera < -typeClipDistance && zDistFromCamera > -maxTypeAttenuateDistance;
+            if(topicPoints[i].onScreen){
+                float padding = 15;
+                topicPoints[i].screenRectangle.x = screenTop.x - padding;
+                topicPoints[i].screenRectangle.y = screenTop.y - padding;
+                topicPoints[i].screenRectangle.width = screenRight.x - screenLeft.x + padding*2;
+                topicPoints[i].screenRectangle.height = screenLeft.y - screenTop.y + padding*2;
+            }
 		}
+        
 	}
     
     if(drawAssociation){
@@ -1358,36 +1396,32 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 		for(int i = 0; i < topicPoints.size(); i++){
             
 			TopicPoint& p = topicPoints[i];
-			if(p.numClips >= clipsShowTopic.min){
-				int fontIndex = ofMap(p.numClips, clipsShowTopic.min, clipsShowTopic.max,
-									  0, topicFont.size()-1,true);
-				if(fontIndex > 0 && fontIndex < topicFont.size()){
-                    
-					ofPushMatrix();
-                    ofNode n;
-                    n.setPosition(topicPoints[i].position * meshExpansion);
-                    n.lookAt(getCameraRef(), getCameraRef().getUpDir());
-                    ofMultMatrix(n.getGlobalTransformMatrix());
-                    ofScale(-type3DScale,-type3DScale, type3DScale);
-                    
-					ofxFTGLFont& font = topicFont[ fontIndex ];
-					font.drawString( ofToUpper(p.keyword), 0, 0);
-					
-                    ofPopMatrix();
-				}
-			}
+			if(p.numClips < clipsShowTopic.min){
+                continue;
+            }
+            if(!p.onScreen){
+                continue;
+            }
+            
+
+            ofPushStyle();
+            ofSetColor(255, p.attenuation*255);
+            
+            ofPushMatrix();
+            ofMultMatrix(p.billboardMatrix);
+            ofScale(-type3DScale,-type3DScale, type3DScale);
+            
+            ofxFTGLFont& font = topicFont[ p.fontIndex ];
+            font.drawString( ofToUpper(p.keyword), 0, 0);
+            
+            ofPopMatrix();
+            ofPopStyle();
+
 		}
 		ofEnableLighting();
         
     }
-    
-//    ofNode n;
-//    n.setPosition(targetCameraPosition);
-//    n.lookAt(targetTopicPosition);
-//    n.draw();
-//    n.setPosition(targetTopicPosition);
-//    n.lookAt(targetCameraPosition);
-//    n.draw();
+
 }
 
 
@@ -1399,6 +1433,10 @@ void CloudsVisualSystemClusterMap::drawCursors(){
 
 void CloudsVisualSystemClusterMap::updateQuestions(){
 
+    if(!displayQuestions){
+        return;
+    }
+    
 	for(int i = 0; i < questions.size(); i++){
 		CloudsPortal& curQuestion = questions[i];
         curQuestion.cam = &getCameraRef();
@@ -1641,7 +1679,7 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 //				cout << "Font index is " << fontIndex << " from " << topicFont.size() << endl;
 				if(fontIndex > 0 && fontIndex < topicFont.size()){
 					ofPushMatrix();
-					ofTranslate(p.screenPosition.x,p.screenPosition.y);
+					ofTranslate(p.screenRectangle.x,p.screenRectangle.y);
 					ofxFTGLFont& font = topicFont[ fontIndex ];
 					font.drawString( ofToUpper(p.keyword), 0, 0);
 					ofPopMatrix();
@@ -1681,6 +1719,19 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	if(drawLineFlickerDebug){
 		flickerNoise.draw(0,0,getCanvasWidth(),getCanvasHeight());
 	}
+    
+    ofPushStyle();
+    ofNoFill();
+    ofSetColor(ofColor::red);
+    for(int i = 0; i < topicPoints.size(); i++){
+
+        TopicPoint& p = topicPoints[i];
+        if(p.onScreen){
+            ofRect(p.screenRectangle);
+        }
+    }
+    
+    ofPopStyle();
 }
 
 // this is called when your system is no longer drawing.
