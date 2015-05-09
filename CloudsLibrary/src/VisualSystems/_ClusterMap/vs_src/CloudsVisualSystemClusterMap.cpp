@@ -1135,7 +1135,6 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
         currentCameraSideDir += (targetCameraSideDir - currentCameraSideDir) * .03;
         currentCameraUpDir   += (targetCameraUpDir - currentCameraUpDir) * .03;
         float distFromTarget = topicNavCam.getPosition().distance(targetCameraPosition);
-        //targetCameraPosition.rotate(nameCameraRot, targetPersonPosition, nameHighlightCam.getUpDir());
         ofVec3f targetPos = targetCameraPosition.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 45, -45,true), targetTopicPosition, currentCameraUpDir);
         targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 45, -45,true), targetTopicPosition, currentCameraSideDir);
         

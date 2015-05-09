@@ -14,8 +14,11 @@ typedef struct{
     ofImage image;
     ofVec3f pos;
     float rotation;
+    ofPolyline screenPoly;
     ofVboMesh mesh;
     ofVec3f normal;
+    bool onScreen;
+    bool hovered;
 } VisualThumb;
 
 class CloudsVisualSystemVisuals : public CloudsVisualSystem {
@@ -76,6 +79,7 @@ class CloudsVisualSystemVisuals : public CloudsVisualSystem {
 	// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 	void selfDrawBackground();
 
+    void selfDrawOverlay();
 	// this is called when your system is no longer drawing.
 	// Right after this selfUpdate() and selfDraw() won't be called any more
 	void selfEnd();

@@ -115,7 +115,8 @@ void CloudsVisualSystemVisuals::layoutThumbnails(){
         
         it->second.pos = pos;
         it->second.rotation = arcPoint;
-        
+        it->second.onScreen = false;
+        it->second.hovered = false;
         curInt++;
     }
 }
@@ -165,20 +166,58 @@ void CloudsVisualSystemVisuals::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemVisuals::selfUpdate(){
     
+    
     float distFromTarget = selectCamera.getPosition().distance(camTargetPos);
-    //targetCameraPosition.rotate(nameCameraRot, targetPersonPosition, nameHighlightCam.getUpDir());
-//    ofVec3f targetPos = camTargetPos.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 45, -45,true), camLookPos, ofVec3f(0,1,0));
-//    targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -45, 45,true), camLookPos, ofVec3f(1,0,0));
-    ofVec3f targetPos = camTargetPos;
+    //ofVec3f targetPos = camTargetPos;
+    ofVec3f rotAxis = camLookPos;
+    rotAxis.x = 0;
+    rotAxis.z = 0;
+    ofVec3f targetPos = camTargetPos.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 25, -25,true), rotAxis, ofVec3f(0,1,0));
+    targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 25, -25,true), rotAxis, ofVec3f(1,0,0));
     
     ofNode n = selectCamera;
-    n.lookAt(camLookPos.getInterpolated(camTargetPos, ofMap(distFromTarget, cameraBackupDistance, cameraBackupDistance*2, .0, 1.0, true) ), ofVec3f(0,1,0) );
+    n.lookAt(camLookPos.getInterpolated(targetPos, ofMap(distFromTarget, cameraBackupDistance, cameraBackupDistance*2, .0, 1.0, true) ), ofVec3f(0,1,0) );
     selectCamera.setPosition( selectCamera.getPosition() + (targetPos - selectCamera.getPosition())*.03 );
     
     ofQuaternion q;
     q.slerp(.03, selectCamera.getOrientationQuat(), n.getOrientationQuat());
     selectCamera.setOrientation(q);
     
+    ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());
+    for(map<string, VisualThumb>::iterator it = thumbs.begin(); it != thumbs.end(); it++){
+        it->second.screenPoly.clear();
+
+        ofVec3f a = it->second.mesh.getVertex(0);
+        ofVec3f b = it->second.mesh.getVertex(1);
+        ofVec3f c = it->second.mesh.getVertex(3);
+        ofVec3f d = it->second.mesh.getVertex(2);
+        float az = getCameraRef().getGlobalTransformMatrix().getInverse().preMult( a ).z;
+        float bz = getCameraRef().getGlobalTransformMatrix().getInverse().preMult( b ).z;
+        float cz = getCameraRef().getGlobalTransformMatrix().getInverse().preMult( c ).z;
+        float dz = getCameraRef().getGlobalTransformMatrix().getInverse().preMult( d ).z;
+        
+        it->second.onScreen = az < 0 && bz < 0 && cz < 0 && dz < 0;
+        if(!it->second.onScreen){
+            continue;
+        }
+        
+        ofVec2f sa = getCameraRef().worldToScreen(a);
+        ofVec2f sb = getCameraRef().worldToScreen(b);
+        ofVec2f sc = getCameraRef().worldToScreen(c);
+        ofVec2f sd = getCameraRef().worldToScreen(d);
+        
+        it->second.onScreen = screenRect.inside(sa) || screenRect.inside(sb) || screenRect.inside(sc) || screenRect.inside(sd);
+        if(!it->second.onScreen){
+            continue;
+        }
+        
+        it->second.screenPoly.addVertex( sa );
+        it->second.screenPoly.addVertex( sb );
+        it->second.screenPoly.addVertex( sc );
+        it->second.screenPoly.addVertex( sd );
+        it->second.screenPoly.addVertex( sa );
+
+    }
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -209,9 +248,25 @@ void CloudsVisualSystemVisuals::selfDrawDebug(){
 }
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemVisuals::selfDrawBackground(){
-
 	
 }
+
+void CloudsVisualSystemVisuals::selfDrawOverlay(){
+    map<string, VisualThumb>::iterator it;
+    for(it = thumbs.begin(); it != thumbs.end(); it++){
+        if(it->second.onScreen){
+            if(it->second.hovered){
+                ofSetColor(ofColor::red);
+            }
+            else{
+                ofSetColor(ofColor::white);
+            }
+            
+            it->second.screenPoly.draw();
+        }
+    }
+}
+
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemVisuals::selfEnd(){	
@@ -236,10 +291,21 @@ void CloudsVisualSystemVisuals::selfMouseDragged(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemVisuals::selfMouseMoved(ofMouseEventArgs& data){
-	
+    ofVec2f mousePos(data.x + bleed, data.y + bleed);
+    map<string, VisualThumb>::iterator it;
+    for(it = thumbs.begin(); it != thumbs.end(); it++){
+        it->second.hovered = it->second.onScreen && it->second.screenPoly.inside(mousePos);
+    }
 }
 
 void CloudsVisualSystemVisuals::selfMousePressed(ofMouseEventArgs& data){
+    ofVec2f mousePos(data.x + bleed, data.y + bleed);
+    map<string, VisualThumb>::iterator it;
+    for(it = thumbs.begin(); it != thumbs.end(); it++){
+        if(it->second.hovered){
+            selectSystem(it->first);
+        }
+    }
 	
 }
 
