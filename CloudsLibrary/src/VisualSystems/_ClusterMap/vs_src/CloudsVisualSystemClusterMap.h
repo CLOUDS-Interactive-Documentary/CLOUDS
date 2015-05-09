@@ -42,7 +42,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	void allocateFlickerTexture();
 
     void setCurrentTopic(string topic); //for secondary display && research mode navigation
+    bool selectionChanged();
     ofVec2f getTopicScreenLocation();
+    string getSelectedKeyword();
+    
     
 	//will add the latest state of the run to the traversal
     void startTraverse();
@@ -159,6 +162,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     CloudsPortal* getSelectedQuestion(){
         return selectedQuestion;
     }
+    
     
   protected:
 
@@ -300,17 +304,14 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     float typeClipDistance;
     float minTypeAttenuateDistance;
     float maxTypeAttenuateDistance;
-
+    bool selectedTopicChanged;
+    
 	ofIntRange clipsShowTopic;
 	ofRange clipCountRange;
 	ofRange typeDistanceRange;
 	ofIntRange typeSizeRange;
 	ofIntRange currentTypeSizeRange;
 	
-//    void populateAssociations();
-//    map<string,string> associations;
-//    set<string> topicset; //all user facing topics
-    
     bool drawAssociation;
     int associationFontSize;
     int currentAssociationFont;

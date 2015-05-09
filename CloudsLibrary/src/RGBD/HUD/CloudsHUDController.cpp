@@ -1144,12 +1144,17 @@ void CloudsHUDController::setSeeMoreName(string name){
 
 void CloudsHUDController::selectTopic(string topic){
     CloudsHUDResearchList& topicList = researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
+    for(int i = 0; i < topicList.buttons.size(); i++){
+        topicList.buttons[i].clicked = false;
+    }
     
     for(int i = 0; i < topicList.buttons.size(); i++){
         if(topicList.buttons[i].tag == topic){
-            topicList.buttons[i].clicked = true;
-            topicList.scrollPosition = topicList.buttons[i].top;
             selectButton(topicList.buttons[i]);
+            topicList.buttons[i].clicked = true;
+            if(!topicList.buttons[i].visible){
+                topicList.scrollPosition = MIN(topicList.buttons[i].top, topicList.totalScrollHeight - researchScrollBounds.height);
+            }
             return;
         }
     }

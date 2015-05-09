@@ -879,10 +879,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     if(hud.selectedVisualsTab()){
         transitionController.transitionToExploreVisuals(1.0, 1.0);
     }
-    
     /////////////////////////////////
     
-        
+    
     //////////// WAS RESET HIT?
     if(!showingIntro && !showingClusterMap && !userReset &&
        (hud.isResearchResetHit() || hud.isResetHit() || rgbdVisualSystem->isResetSelected()) )
@@ -910,6 +909,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     /////////////// RESEARCH MODE
     if(showingExploreMap){
+        
+        if(clusterMap->selectionChanged()){
+            hud.selectTopic(clusterMap->getSelectedKeyword());
+        }
+        
         string selectedTopic = hud.getSelectedItem();
         if(selectedTopic != ""){
             
@@ -1345,7 +1349,6 @@ void CloudsPlaybackController::updateTransition(){
     
     crossfadeValue = transitionController.getFadeValue();
 
-    //if(bQuestionAsked || shouldLoadAct || loadingAct){
 	if(bQuestionAsked){	
         CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = crossfadeValue;
         //don't start fading out right away
@@ -1367,11 +1370,6 @@ void CloudsPlaybackController::clearRenderTarget(){
 
 //--------------------------------------------------------------------
 bool CloudsPlaybackController::updateInterludeInterface(){
-	//hack
-//	if(interludeSystem == NULL){
-//		interludeSystem = currentVisualSystem;
-//	}
-	//hack
 	
 #ifdef OCULUS_RIFT
 

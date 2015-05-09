@@ -72,7 +72,8 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	drawType = false;
     drawType3D = false;
 	baseFontSize = 0;
-	
+	selectedTopicChanged = false;
+    
     drawAssociation = false;
     associationFontSize = 0;
     currentAssociationFont = 0;
@@ -928,6 +929,16 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     if(!positionFound){
         ofLogError("CloudsVisualSystemClusterMap::setCurrentTopic") << "Couldn't find position for topic " << topic;
     }
+}
+
+bool CloudsVisualSystemClusterMap::selectionChanged(){
+    bool ret = selectedTopicChanged;
+    selectedTopicChanged = false;
+    return ret;
+}
+
+string CloudsVisualSystemClusterMap::getSelectedKeyword(){
+    return currentTopic;
 }
 
 ofVec2f CloudsVisualSystemClusterMap::getTopicScreenLocation(){
@@ -1795,9 +1806,10 @@ void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
     TopicPoint* hoveredPoint = NULL;
     ofVec3f camPos = getCameraRef().getPosition();
     ofVec2f mousePos(data.x + bleed, data.y + bleed);
-    if(drawType){
+    if(drawType3D){
         for(int i = 0; i < topicPoints.size(); i++){
             TopicPoint& p = topicPoints[i];
+            if(!p.onScreen) continue;
             bool inside = p.screenRectangle.inside(mousePos);
             //if this one is closer
             if(inside && (hoveredPoint == NULL || (hoveredPoint->position*meshExpansion).distance(camPos) > (p.position*meshExpansion).distance(camPos))){
@@ -1814,6 +1826,9 @@ void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
         //un hover
         for(int i = 0; i < topicPoints.size(); i++){
             TopicPoint& p = topicPoints[i];
+            
+            if(!p.onScreen) continue;
+            
             bool inside = p.screenRectangle.inside(mousePos);
             if(p.hovered &&
                (!inside || (hoveredPoint != NULL && (hoveredPoint->position*meshExpansion).distance(camPos) < (p.position*meshExpansion).distance(camPos))) )
@@ -1827,6 +1842,16 @@ void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemClusterMap::selfMousePressed(ofMouseEventArgs& data){
+    if(drawType3D){
+        for(int i = 0; i < topicPoints.size(); i++){
+            TopicPoint& p = topicPoints[i];
+            if(p.hovered){
+                selectedTopicChanged = true;
+                setCurrentTopic(p.keyword);
+                break;
+            }
+        }
+    }
 }
 
 void CloudsVisualSystemClusterMap::selfMouseReleased(ofMouseEventArgs& data){
