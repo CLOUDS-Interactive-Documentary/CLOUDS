@@ -594,6 +594,8 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
 		tp.position = parser->getMasterTopicPosition(tp.keyword);
 		tp.numClips = parser->getNumberOfClipsWithKeyword(tp.keyword);
 		clipCountRange.growToInclude(tp.numClips);
+        tp.hoverChangeTime = 0;
+        tp.hovered = false;
 //		cout << "num clips " << tp.numClips << " current range " << clipCountRange << endl;
 		topicPoints.push_back( tp );
     }
@@ -1218,16 +1220,23 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
             ofVec3f screenTop   = getCameraRef().worldToScreen(expandedPos + n.getUpDir() * wordHeight, screenRect);
             
             float zDistFromCamera = getCameraRef().getGlobalTransformMatrix().getInverse().preMult( expandedPos ).z;
-            
-            topicPoints[i].attenuation  = ofMap(zDistFromCamera, -maxTypeAttenuateDistance, -minTypeAttenuateDistance, .0, 1.0, true);
-            topicPoints[i].attenuation *= ofMap(zDistFromCamera, -typeClipDistance*2, -typeClipDistance, 1.0, 0.0, true);
-            topicPoints[i].onScreen = zDistFromCamera < -typeClipDistance && zDistFromCamera > -maxTypeAttenuateDistance;
-            if(topicPoints[i].onScreen){
+            p.onScreen = zDistFromCamera < -typeClipDistance && zDistFromCamera > -maxTypeAttenuateDistance;
+            if(p.onScreen){
+                p.attenuation  = ofMap(zDistFromCamera, -maxTypeAttenuateDistance, -minTypeAttenuateDistance, .0, .7, true);
+                p.attenuation *= ofMap(zDistFromCamera, -typeClipDistance*2, -typeClipDistance, .7, 0.0, true);
+                
+                if(p.hovered){
+                    topicPoints[i].attenuation = ofMap(ofGetElapsedTimef(), p.hoverChangeTime, p.hoverChangeTime + .25, p.attenuation, 1.0, true);
+                }
+                else{
+                    topicPoints[i].attenuation = ofMap(ofGetElapsedTimef(), p.hoverChangeTime, p.hoverChangeTime + .25, 1.0, p.attenuation, true);
+                }
+
                 float padding = 15;
-                topicPoints[i].screenRectangle.x = screenTop.x - padding;
-                topicPoints[i].screenRectangle.y = screenTop.y - padding;
-                topicPoints[i].screenRectangle.width = screenRight.x - screenLeft.x + padding*2;
-                topicPoints[i].screenRectangle.height = screenLeft.y - screenTop.y + padding*2;
+                p.screenRectangle.x = screenTop.x - padding;
+                p.screenRectangle.y = screenTop.y - padding;
+                p.screenRectangle.width = screenRight.x - screenLeft.x + padding*2;
+                p.screenRectangle.height = screenLeft.y - screenTop.y + padding*2;
             }
 		}
         
@@ -1392,18 +1401,14 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	if(drawType3D){
         
         ofDisableLighting();
-        
+        ofDisableDepthTest();
 		for(int i = 0; i < topicPoints.size(); i++){
             
 			TopicPoint& p = topicPoints[i];
-			if(p.numClips < clipsShowTopic.min){
-                continue;
-            }
             if(!p.onScreen){
                 continue;
             }
             
-
             ofPushStyle();
             ofSetColor(255, p.attenuation*255);
             
@@ -1418,6 +1423,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
             ofPopStyle();
 
 		}
+        ofEnableDepthTest();
 		ofEnableLighting();
         
     }
@@ -1720,18 +1726,23 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 		flickerNoise.draw(0,0,getCanvasWidth(),getCanvasHeight());
 	}
     
-    ofPushStyle();
-    ofNoFill();
-    ofSetColor(ofColor::red);
-    for(int i = 0; i < topicPoints.size(); i++){
-
-        TopicPoint& p = topicPoints[i];
-        if(p.onScreen){
-            ofRect(p.screenRectangle);
-        }
-    }
-    
-    ofPopStyle();
+//    ofPushStyle();
+//    ofNoFill();
+//    for(int i = 0; i < topicPoints.size(); i++){
+//
+//        TopicPoint& p = topicPoints[i];
+//        if(p.onScreen){
+//            if(p.hovered){
+//                ofSetColor(ofColor::red);
+//            }
+//            else{
+//                ofSetColor(ofColor::white);
+//            }
+//            ofRect(p.screenRectangle);
+//        }
+//    }
+//    
+//    ofPopStyle();
 }
 
 // this is called when your system is no longer drawing.
@@ -1778,11 +1789,44 @@ void CloudsVisualSystemClusterMap::selfMouseDragged(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
-    cursor.set(GetCloudsInput()->getPosition());	
+    cursor.set(GetCloudsInput()->getPosition());
+
+    //TODO: Occlusion
+    TopicPoint* hoveredPoint = NULL;
+    ofVec3f camPos = getCameraRef().getPosition();
+    ofVec2f mousePos(data.x + bleed, data.y + bleed);
+    if(drawType){
+        for(int i = 0; i < topicPoints.size(); i++){
+            TopicPoint& p = topicPoints[i];
+            bool inside = p.screenRectangle.inside(mousePos);
+            //if this one is closer
+            if(inside && (hoveredPoint == NULL || (hoveredPoint->position*meshExpansion).distance(camPos) > (p.position*meshExpansion).distance(camPos))){
+                hoveredPoint = &p;
+            }
+        }
+    
+        //hover
+        if(hoveredPoint != NULL && !hoveredPoint->hovered){
+            hoveredPoint->hovered = true;
+            hoveredPoint->hoverChangeTime = ofGetElapsedTimef();
+        }
+        
+        //un hover
+        for(int i = 0; i < topicPoints.size(); i++){
+            TopicPoint& p = topicPoints[i];
+            bool inside = p.screenRectangle.inside(mousePos);
+            if(p.hovered &&
+               (!inside || (hoveredPoint != NULL && (hoveredPoint->position*meshExpansion).distance(camPos) < (p.position*meshExpansion).distance(camPos))) )
+            {
+                p.hovered = false;
+                p.hoverChangeTime = ofGetElapsedTimef();
+            }
+        }
+
+    }
 }
 
 void CloudsVisualSystemClusterMap::selfMousePressed(ofMouseEventArgs& data){
-	
 }
 
 void CloudsVisualSystemClusterMap::selfMouseReleased(ofMouseEventArgs& data){

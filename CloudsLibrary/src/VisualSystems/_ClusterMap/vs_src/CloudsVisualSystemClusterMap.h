@@ -25,6 +25,9 @@ typedef struct{
     bool onScreen;
     float attenuation;
 	int numClips;
+    bool hovered;
+    float hoverChangeTime;
+    
 } TopicPoint;
 
 class CloudsFCPParser;
