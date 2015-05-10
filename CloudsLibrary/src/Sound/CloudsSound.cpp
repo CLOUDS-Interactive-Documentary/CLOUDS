@@ -37,8 +37,8 @@ void CloudsSound::setup(){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 	
-		frontPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
-		backPlayer  = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
+		frontPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
+		backPlayer  = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 
         // load data files
         loadRTcmixFiles();
@@ -121,9 +121,7 @@ void CloudsSound::setup(){
 		//load all rendered tracks
 //		ofDirectory dir(GetCloudsDataPath(true) + "sound/renders/");
 		ofDirectory dir(GetCloudsMediaPath() + "sound/renders/");
-		dir.allowExt("wav");
-		dir.allowExt("aiff");
-		dir.allowExt("mp3");
+		dir.allowExt("mp4");
 		dir.sort();
 		dir.listDir();
 		for(int i = 0; i < dir.numFiles(); i++){
@@ -131,8 +129,6 @@ void CloudsSound::setup(){
 		}
 
 		currentAct = NULL;
-
-		startThread(true);
 	}
 }
 
@@ -147,19 +143,16 @@ void CloudsSound::saveMixLevels(){
 
 void CloudsSound::threadedFunction(){
 
-#ifndef RTCMIX
-	while(isThreadRunning()){
+
 		//
 		bool trackToPlay = false;
 		QueuedTrack track;
 		
-		lock();
 		if(queuedTracks.size() > 0 && ofGetElapsedTimef() > queuedTracks.front().startTime){
 			trackToPlay = true;
 			track = queuedTracks.front();
 			queuedTracks.erase(queuedTracks.begin());
 		}
-		unlock();
 		
 		if(trackToPlay){
 			if(frontPlayer->isLoaded()){
@@ -171,28 +164,32 @@ void CloudsSound::threadedFunction(){
 			
 			//		string filename = GetCloudsDataPath(true) + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
 			if(ofFile(track.trackPath).exists()){
-				frontPlayer->loadSound(track.trackPath);
+				frontPlayer->loadMovie(track.trackPath);
 				currentTrackKey = ofFilePath::getBaseName(track.trackPath);
 				frontMixAttenuate = mixVolumeForTrack(track.trackPath);
 				frontMixLevel = track.mixLevel;
 			}
 			else{
-				frontPlayer->loadSound(GetCloudsMediaPath() + "sound/renders/1.mp3");
+				frontPlayer->loadMovie(GetCloudsMediaPath() + "sound/renders/1.mp4");
 				frontMixAttenuate = 1.0;
 				ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << track.trackPath;
 			}
 
-			frontPlayer->setLoop(true);
+            frontPlayer->setLoopState(OF_LOOP_NORMAL);
 			frontPlayer->play();
 //			frontPlayer->setVolume(frontMixAttenuate);
 			
 		}
 		
-		if(frontPlayer != NULL && frontPlayer->isLoaded()){
+    frontPlayer->update();
+    	if(frontPlayer->isLoaded()){
 			frontPlayer->setVolume(GetCloudsAudioEvents()->fadeValue*frontMixAttenuate*frontMixLevel);
 //			cout << "Front player volume is " << GetCloudsAudioEvents()->fadeValue << " Mix " << frontMixAttenuate << " at pos " << frontPlayer->getPosition() << endl;
 		}
-		if(backPlayer != NULL && backPlayer->isLoaded()){
+    
+    backPlayer->update();
+    if(backPlayer->isLoaded()){
+            
 			float newVolume = ofMap(ofGetElapsedTimef(),
 									playerSwapTime, playerSwapTime+playerFadeDuration,
 									backMixLevel*backMixAttenuate*GetCloudsAudioEvents()->fadeValue, 0.0, true);
@@ -202,11 +199,7 @@ void CloudsSound::threadedFunction(){
 				backPlayer->stop();
 			}
 		}
-		
-		ofSleepMillis(10);
-	}
-#endif
-	
+
 }
 
 //--------------------------------------------------------------------
@@ -230,8 +223,6 @@ float CloudsSound::mixVolumeForTrack(string trackPath){
 
 //--------------------------------------------------------------------
 void CloudsSound::exit(ofEventArgs & args){
-
-	waitForThread(true);
 
 	if(eventsRegistered){
 		
@@ -260,6 +251,8 @@ void CloudsSound::update(ofEventArgs & args){
 
 void CloudsSound::update(){
 	
+    //threadedFunction();
+    
 	return;
 
     if(GetCloudsAudioEvents()->doflush)
@@ -350,9 +343,7 @@ void CloudsSound::playCurrentCues(){
     float pad = 5.0; // padding for FX chain
     currentCuesTotalDuration += pad; // pad the total
     
-	lock();
 	queuedTracks.clear();
-	unlock();
 	
     if(LUKEDEBUG) cout << "TOTAL DURATION: " << currentCuesTotalDuration << endl;
     else cout << "SOUND: MUSIC STARTED." << endl;
@@ -469,9 +460,7 @@ void CloudsSound::enterTunnel()
 	t.startTime = ofGetElapsedTimef();
     //JG: THE TUNNEL SOUND IS NOT STORED IN MEDIA PATH so it *always* works
 	t.trackPath = GetCloudsDataPath(true) + "sound/tunnel.mp3";
-	lock();
 	queuedTracks.push_back(t);
-	unlock();
 
 #endif
     in_tunnel = true;
@@ -527,9 +516,7 @@ void CloudsSound::playImmediately(string trackPath){
 	t.mixLevel = 1.0;
 	t.startTime = ofGetElapsedTimef();
 	t.trackPath = trackPath;
-	lock();
 	queuedTracks.push_back(t);
-	unlock();
 	
 }
 

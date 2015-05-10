@@ -16,7 +16,7 @@
 
 // Secondary threads are only used to preload videos on Windows.
 // (This is done automatically on Mac with the AVFVideoPlayer)
-class CloudsRGBDVideoPlayer : public ofThread {
+class CloudsRGBDVideoPlayer {
 public:
     
     CloudsRGBDVideoPlayer();
@@ -26,7 +26,6 @@ public:
 	bool setupVO(string audioPath, string subtitlePath = "");
 	void swapAndPlay();
 
-    void threadedFunction();
     string nextVideoPath;
     string nextCalibrationXMLPath;
     string nextSubtitlesPath;
@@ -42,6 +41,7 @@ public:
 	//
 	void stop();
     
+    bool isBuffering();
 	bool isPlaying();
 	bool isDone();
     bool clipJustFinished();
@@ -107,9 +107,7 @@ public:
 
 	ofPtr<ofVideoPlayer> currentPlayer;
 	ofPtr<ofVideoPlayer> nextPlayer;
-
-	ofPtr<ofSoundPlayer> currentVoiceoverPlayer;
-	ofPtr<ofSoundPlayer> nextVoiceoverPlayer;
+    
 	bool nextClipIsVO;
     bool clipPrerolled;
 	bool playerPaused;

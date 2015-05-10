@@ -42,7 +42,8 @@ class CloudsFCPParser {
 	void parseProjectExamples(const string& filename);
     void parseTopicAssociations(const string& filename);
 #ifdef VHX_MEDIA
-    void parseVHXIds(const string& filename);
+    void parseVHXIds(const string& filename, map<string, string>& idMap);
+    void mapVHXMedia();
 #endif
     
 	vector<CloudsProjectExample>& getProjectExamples();

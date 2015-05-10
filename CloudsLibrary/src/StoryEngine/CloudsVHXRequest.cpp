@@ -6,8 +6,10 @@
 //
 //
 
+#include "ofxCrypto.h"
 #include "ofxJSONElement.h"
 
+#include "CloudsCrypto.h"
 #include "CloudsVHXRequest.h"
 #include "CloudsGlobal.h"
 #include "CloudsClip.h"
@@ -18,17 +20,38 @@ string CloudsVHXRequest::userpwd = "";
 
 CloudsVHXRequest::CloudsVHXRequest()
     : ofThread()
+    , bNotifyComplete(false)
 {
+    ofxSSL::appendData = true;
+    
     if (userpwd.size() == 0) {
         // Load and decrypt the user password from file.
-        ofBuffer buffer = ofBufferFromFile(GetCloudsDataPath() + "vhx/userpwd.txt");
-        userpwd = buffer.getFirstLine();
+        string path = GetCloudsDataPath(true) + "vhx/usrpwd.bin";
+        ofFile file(path, ofFile::ReadOnly, true);
+        if (!file.exists()) {
+            ofLogError("CloudsVHXRequest::CloudsVHXRequest") << "Cannot open file at " << path;
+            return false;
+        }
+        
+        int numChars = 0;
+        file.read((char *)(&numChars), sizeof(int));
+        if (numChars > 0) {
+            char chars[numChars];
+            file.read(&chars[0], sizeof(char) * numChars);
+            string encoded;
+            encoded.assign(chars, numChars);
+            string decoded = ofxCrypto::base64_decode(encoded);
+            int pos = decoded.find(CloudsSalt);
+            userpwd = decoded.substr(0, pos) + decoded.substr(pos + CloudsSalt.size());
+        }
     }
+    
+    ofAddListener(ofEvents().update, this, &CloudsVHXRequest::update);
 }
 
 CloudsVHXRequest::~CloudsVHXRequest()
 {
-    
+    ofRemoveListener(ofEvents().update, this, &CloudsVHXRequest::update);
 }
 
 void CloudsVHXRequest::fetchSourceUrl(const string& vhxId)
@@ -45,7 +68,16 @@ void CloudsVHXRequest::fetchSourceUrl(const string& vhxId)
     
     url = "https://api.vhx.tv/videos/" + vhxId + "/files";
     
+    bNotifyComplete = false;
     startThread();
+}
+
+void CloudsVHXRequest::update(ofEventArgs& args)
+{
+    if (bNotifyComplete) {
+        ofNotifyEvent(completeEvent, completeArgs);
+        bNotifyComplete = false;
+    }
 }
 
 void CloudsVHXRequest::threadedFunction()
@@ -54,7 +86,7 @@ void CloudsVHXRequest::threadedFunction()
     
     ssl.setup();
     ssl.setURL(url);
-    ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath() + "vhx/cacert.pem"));
+    ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath(true) + "vhx/cacert.pem"));
     ssl.setOpt(CURLOPT_USERPWD, userpwd);
     ssl.setOpt(CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
     
@@ -63,15 +95,14 @@ void CloudsVHXRequest::threadedFunction()
     string response = ssl.getResponseBody();
     ofLogVerbose("CloudsVHXRequest::threadedFunction") << "Response:" << endl << response;
     
-    CloudsVHXEventArgs args;
-    args.success = false;
+    completeArgs.success = false;
     
     ofxJSONElement json;
     if (json.parse(response) && json.isArray()) {
         const ofxJSONElement& element = json[0];
         if (!element.isNull() && element.isMember("_links")) {
-            args.success = true;
-            args.result = element["_links"]["source"]["href"].asString();
+            completeArgs.success = true;
+            completeArgs.result = element["_links"]["source"]["href"].asString();
         }
         else {
             ofLogError("CloudsVHXRequest::threadedFunction") << "Unexpected JSON format:" << endl << response;
@@ -83,5 +114,5 @@ void CloudsVHXRequest::threadedFunction()
     
     ssl.clear();
 
-    ofNotifyEvent(completeEvent, args);
+    bNotifyComplete = true;
 }
