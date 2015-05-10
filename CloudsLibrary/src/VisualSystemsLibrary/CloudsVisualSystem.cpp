@@ -290,7 +290,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 
 
 	if(reallocateTarget){
-		cout << "REALLOCATING RENDER TARGET" << endl;
+		//cout << "REALLOCATING RENDER TARGET" << endl;
 		renderTarget.allocate(computedWidth, computedHeight, GL_RGB, numSamples);
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -438,6 +438,8 @@ void CloudsVisualSystem::playSystem(){
 		getSharedRenderTarget().begin();
 		ofClear(0.0,0.0,0.0,1.0);
 		getSharedRenderTarget().end();
+        //JG 5/10/15 -- added this from preset loaded
+        timeline->play();
 		selfBegin();
 
 		cloudsCamera.setup();
@@ -3626,7 +3628,8 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     }
     
 	timeline->setCurrentTimeMillis(0);
-	timeline->play();
+    //JG 5/10/15 State machine fixes, play should never have been inside of
+	//timeline->play();
 	
 	mat->updateColors();
 	light->updateColors();

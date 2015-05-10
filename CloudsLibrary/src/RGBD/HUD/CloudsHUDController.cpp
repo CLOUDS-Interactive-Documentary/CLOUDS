@@ -269,7 +269,6 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("BioTitleTextBox", fontPath);
     getLabelForLayer("BioTextBox", fontPath,35,false,true); //use layout
     
-    
     getLabelForLayer("ResetButtonTextBox", fontPath);
     //research stuff
     ResearchTopicListLabel = getLabelForLayer("ListTextBoxes", fontPath);
@@ -280,6 +279,7 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("VisualsTextBox", fontPath);
     getLabelForLayer("RSResetButtonTextBox", fontPath);
     getLabelForLayer("ShuffleButtonTextBox", fontPath);
+    getLabelForLayer("ResumeButtonTextBox", fontPath);
 
     //about text boxes
     getLabelForLayer("AboutTextBox", fontPath);
@@ -297,7 +297,7 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("BackersList3TextBox", fontPath, 35,false,true);
     
     // cleanup!
-    for( int i=0; i<tempFontList.size(); i++ ){
+    for(int i = 0; i < tempFontList.size(); i++){
         delete tempFontList[i];
     }
     tempFontList.clear();
@@ -309,6 +309,7 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["PeopleTextBox"]->setText(GetTranslationForString("PEOPLE"), false);
     hudLabelMap["VisualsTextBox"]->setText(GetTranslationForString("VISUALS"), false);
     hudLabelMap["RSResetButtonTextBox"]->setText(GetTranslationForString("QUIT"), false); //this one may change...
+    hudLabelMap["ResumeButtonTextBox"]->setText(GetTranslationForString("RESUME"), false); //this one may change...
     
     hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("QUIT"), false);
     hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"), false);
@@ -861,12 +862,14 @@ void CloudsHUDController::updateResearchNavigation(){
     hudLabelMap["PeopleTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("PeopleHoverBacking")->bounds;
     hudLabelMap["VisualsTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("VSHoverBacking")->bounds;
     hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("RSResetButtonBacking")->bounds;
+    hudLabelMap["ResumeButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH_RESUME]->svg.getMeshByID("ResumeButtonBacking")->bounds;
     
     //set the interaction regions
     hudLabelMap["MapTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["MapTextBox"]->baseInteractiveBounds);
     hudLabelMap["PeopleTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["PeopleTextBox"]->baseInteractiveBounds);
     hudLabelMap["VisualsTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["VisualsTextBox"]->baseInteractiveBounds);
     hudLabelMap["RSResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds);
+    hudLabelMap["ResumeButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ResumeButtonTextBox"]->baseInteractiveBounds);
     
     hudLabelMap["MapTextBox"]->tabSelected = currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS;
     hudLabelMap["PeopleTextBox"]->tabSelected = currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
@@ -926,8 +929,10 @@ void CloudsHUDController::pause(){
         animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
     }
 
+    home.forceActive();
+    animateOn( CLOUDS_HUD_HOME );
     animateOn( CLOUDS_HUD_PAUSE );
-    
+    animateOn( CLOUDS_HUD_LOWER_THIRD );
     layers[CLOUDS_HUD_LOWER_THIRD]->bForceHover = true;
     
     bJustPaused = true;
@@ -952,7 +957,7 @@ void CloudsHUDController::unpause(){
     layers[CLOUDS_HUD_LOWER_THIRD]->bForceHover = false;
     
     animateOn( CLOUDS_HUD_NEXT );
-    
+
     bJustUnpaused = true;
     bJustPaused = false;
     
@@ -1136,6 +1141,10 @@ bool CloudsHUDController::isResearchResetHit(){
 
 bool CloudsHUDController::isNextHit(){
     return hudLabelMap["NextButtonTextBox"]->isClicked();
+}
+
+bool CloudsHUDController::isResumeActHit(){
+    return hudLabelMap["ResumeButtonTextBox"]->isClicked();
 }
 
 void CloudsHUDController::setSeeMoreName(string name){
@@ -1575,6 +1584,11 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
 
     if(layer == CLOUDS_HUD_HOME || layer == CLOUDS_HUD_ALL){
         home.deactivate();
+    }
+    
+    if(layer == CLOUDS_HUD_ALL){
+        bPaused = false;
+        layers[CLOUDS_HUD_LOWER_THIRD]->bForceHover = false;
     }
     
     for (map<CloudsHUDLayerSet, CloudsHUDLayer* >::iterator it = layers.begin(); it != layers.end(); ++it) {

@@ -470,17 +470,17 @@ void CloudsFCPParser::parseTopicAssociations(const string& filename){
             masterTopicList[*it].push_back(*it);
         }
     }
-    
-    cout << "FINAL MASTER LIST" << endl;
-    for(set<string>::iterator it = masterTopicSet.begin(); it != masterTopicSet.end(); it++){
-        cout << "   " << *it << ": " << masterTopicClipCount[*it] << endl;
-    }
-    cout << "FINAL ASSOCIATIONS" << endl;
-    for(map<string,string>::iterator it = masterTopicAssociations.begin(); it != masterTopicAssociations.end(); it++){
-        cout << it->first << " --> " << it->second << endl;
-    }
-    //COMBINE SMALLER NUMBERS
-    cout << "FINISHED COMPUTING MASTER LIST" << endl;
+//    
+//    cout << "FINAL MASTER LIST" << endl;
+//    for(set<string>::iterator it = masterTopicSet.begin(); it != masterTopicSet.end(); it++){
+//        cout << "   " << *it << ": " << masterTopicClipCount[*it] << endl;
+//    }
+//    cout << "FINAL ASSOCIATIONS" << endl;
+//    for(map<string,string>::iterator it = masterTopicAssociations.begin(); it != masterTopicAssociations.end(); it++){
+//        cout << it->first << " --> " << it->second << endl;
+//    }
+//    //COMBINE SMALLER NUMBERS
+//    cout << "FINISHED COMPUTING MASTER LIST" << endl;
 }
 
 #ifdef VHX_MEDIA

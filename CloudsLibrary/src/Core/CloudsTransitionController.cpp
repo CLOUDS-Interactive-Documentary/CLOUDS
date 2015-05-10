@@ -297,20 +297,17 @@ void CloudsTransitionController::transitionFromVisualLoop(float inDuration, floa
 
 }
 
-////////////
-///////////
-// NOT IMPLEMENTED
 void CloudsTransitionController::transitionBackToAct(float inDuration, float outDuration){
 
     confirmEmpty("transitionBackToAct");
     
     queueReciprocal(getPreviousState(), outDuration);
     
+    queueReciprocal(queueHistory[queueHistory.size()-2].state, inDuration);
+    
 	startTransition();
     
 }
-////////////
-///////////
 
 void CloudsTransitionController::queueReciprocal(CloudsTransitionState state, float duration){
     queueState(reciprocalTransitions[state], duration);

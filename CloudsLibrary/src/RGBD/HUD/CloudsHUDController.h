@@ -104,6 +104,7 @@ class CloudsHUDController {
 	bool isNextHit();
 	bool isExploreMapHit();
 	bool isSeeMorePersonHit();
+    bool isResumeActHit();
     
     bool selectedMapTab();
     bool selectedPeopleTab();

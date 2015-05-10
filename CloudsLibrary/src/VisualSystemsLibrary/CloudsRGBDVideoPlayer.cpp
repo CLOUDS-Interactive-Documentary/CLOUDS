@@ -309,7 +309,6 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::startPlayer(){
 
-
 	currentVoiceoverPlayer->stop();
 	currentPlayer->stop();
 	currentClipVolumeAdjustment = nextClipVolumeAdjustment;
@@ -333,6 +332,7 @@ void CloudsRGBDVideoPlayer::startPlayer(){
 	playingVO = nextClipIsVO;
 	playingVideo = !nextClipIsVO;
 	clipPrerolled = false;
+    playerPaused = false;
 
 //	cout << "swapped and played clip " << endl;
 }
@@ -434,10 +434,15 @@ float CloudsRGBDVideoPlayer::getFadeOut(){
 void CloudsRGBDVideoPlayer::stop(){
     getPlayer().stop();
     currentVoiceoverPlayer->stop();
+    playerPaused = false;
 }
 
 //---------------------------------------------------------------
 void CloudsRGBDVideoPlayer::pause(){
+    if(playerPaused){
+        return;
+    }
+    
     if(isPlaying()){
         if(playingVO){
             currentVoiceoverPlayer->setPaused(true);

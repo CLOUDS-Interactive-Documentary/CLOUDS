@@ -275,7 +275,7 @@ void CloudsVisualSystemTwitter::loadCSVData(){
         if(components.size() != 2) continue;
         nameToHandleMap[components[0]] = components[1];
         handleToNameMap[components[1]] = components[0];
-        cout << "HANDLE IS " << components[0] << " " << components[1] << endl;
+//        cout << "HANDLE IS " << components[0] << " " << components[1] << endl;
     }
     
     int tweeterID = 0;
@@ -791,7 +791,7 @@ void CloudsVisualSystemTwitter::loadMesh(){
     edgeMeshVbo.setMesh(m, GL_STATIC_DRAW);
     edgeMeshNumVertices = m.getNumVertices();
     edgeMeshVbo.setNormalData(&edgeMeshNormals[0], edgeMeshNormals.size(), GL_STATIC_DRAW);
-    cout<<"No of vertices in edges "<< edgeMeshNumVertices<<endl;
+//    cout<<"No of vertices in edges "<< edgeMeshNumVertices<<endl;
     
     currentIndex = 0;
     for(int j=0; j<tweeters.size(); j++){
@@ -806,13 +806,13 @@ void CloudsVisualSystemTwitter::loadMesh(){
     nodeMeshVbo.setMesh(m1, GL_STATIC_DRAW);
     nodeMeshNumVertices = m1.getNumVertices();
     nodeMeshVbo.setNormalData(&nodeMeshNormals[0], nodeMeshNormals.size(), GL_STATIC_DRAW);
-    cout<<"No of vertices in node "<<  nodeMeshNumVertices<<endl;
+//    cout<<"No of vertices in node "<<  nodeMeshNumVertices<<endl;
 }
 
 void CloudsVisualSystemTwitter::createPajekNetwork(string outputFileName){
 
 	stringstream ss;
-    cout<<"Creating paejk file"<<endl;
+//    cout<<"Creating paejk file"<<endl;
     ss<<"*Vertices "<<tweeters.size()<<endl;
     
     for (int i= 0; i < tweeters.size(); i++) {
@@ -987,8 +987,8 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
         tweetersLoaded = true;
     }
     
-    cout<<"Time taken to parse CSV : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
-    cout<<" Tweeters size "<<tweeters.size()<<endl;
+//    cout<<"Time taken to parse CSV : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+//    cout<<" Tweeters size "<<tweeters.size()<<endl;
     
 	allocateActivityMap();
     
@@ -998,13 +998,13 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     zScale = 100;
     
     loadAvatars();
-    cout<<"Time taken to load avatars : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+//    cout<<"Time taken to load avatars : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
     
     for(auto&t:tweeters)t->linksById.clear();
     
     startTime = ofGetElapsedTimeMillis();
     parseClusterNetwork(filePath);
-    cout<<"Time taken to parse pajek : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
+//    cout<<"Time taken to parse pajek : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
     startTime = ofGetElapsedTimeMillis();
     
     loadMesh();

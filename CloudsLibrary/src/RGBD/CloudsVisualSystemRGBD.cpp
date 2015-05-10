@@ -1072,7 +1072,7 @@ void CloudsVisualSystemRGBD::clearTransitionMap()
 
 void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 {
-	cout << "addTransitionGui: " << guiName<< endl;
+//	cout << "addTransitionGui: " << guiName<< endl;
 	
 //	return;
 
@@ -1501,7 +1501,7 @@ void CloudsVisualSystemRGBD::generateLines(){
 	lines.setMesh(m, GL_STATIC_DRAW);
 	lineVertexCount = m.getNumVertices();
     
-	cout << "GENERATED LINES " << lineVertexCount << endl;
+//	cout << "GENERATED LINES " << lineVertexCount << endl;
 
 	refreshLines = false;
 }
@@ -1585,7 +1585,7 @@ void CloudsVisualSystemRGBD::generateMesh(){
 	//m.setMode(OF_PRIMITIVE_TRIANGLES);
 	refreshMesh = false;
 
-	cout << "GENERATED MESH " << meshVertexCount << endl;
+//	cout << "GENERATED MESH " << meshVertexCount << endl;
 }
 
 

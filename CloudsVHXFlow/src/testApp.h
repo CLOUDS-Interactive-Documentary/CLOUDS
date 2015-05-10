@@ -1,12 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVisualSystemRGBD.h"
-#include "CloudsTransitionController.h"
-#include "CloudsHUDController.h"
-#include "CloudsFCPParser.h"
-
+#include "CloudsVHXAuthorization.h"
 #include "ofxFTGLFont.h"
+
 
 class testApp : public ofBaseApp{
   public:
@@ -24,17 +21,7 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	void exit();
+    
+    CloudsVHXAuthorization auth;
 	
-	void updateTransitions();
-	
-	ofxFTGLFont font;
-	CloudsHUDController hud;
-	CloudsFCPParser parser;
-	int testVideoIndex;
-	bool shouldPlayTestVideo;
-	CloudsVisualSystemRGBD rgbd;
-	CloudsVisualSystem::RGBDTransitionType type;
-	CloudsTransitionController transitionController;
-	vector<string> speakerKeys;
-	int curSpeaker;
 };

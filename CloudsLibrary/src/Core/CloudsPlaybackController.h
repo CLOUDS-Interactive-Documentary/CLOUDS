@@ -129,6 +129,7 @@ class CloudsPlaybackController : public ofThread {
 #endif
 
     CloudsVisualSystem* currentVisualSystem;
+    CloudsVisualSystem* resumeVisualSystem;
     void createInterludeSoundQueue();
     int numActsCreated;
     
@@ -187,7 +188,6 @@ class CloudsPlaybackController : public ofThread {
     bool showingInterlude;
     bool showingVisualLoop;
     bool actJustBegan;
-//    bool exitedInterlude;
     bool showingExploreMap;
     bool showingExplorePeople;
     bool showingExploreVisuals;
@@ -212,6 +212,7 @@ class CloudsPlaybackController : public ofThread {
     void showInterlude();
     void cleanupInterlude();
     void transitionBackToResearch();
+    //void resumeAct();
     
     void showExploreMap();
     void showExplorePeople();
@@ -219,6 +220,7 @@ class CloudsPlaybackController : public ofThread {
 
     bool showingResearchScreen;
     bool canReturnToAct;
+    bool resumingAct;
     
     //INTERLUDE INTERFACE
 	void resetInterludeVariables();

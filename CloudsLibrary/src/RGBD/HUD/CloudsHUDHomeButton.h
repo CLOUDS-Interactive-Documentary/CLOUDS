@@ -34,7 +34,11 @@ class CloudsHUDHomeButton {
     
     void activate();
     void deactivate();
+    bool isActive();
+    
     bool wasActivated();
+    
+    bool forceActive();
     
     ofRectangle bounds;
     ofRectangle interactiveBounds;

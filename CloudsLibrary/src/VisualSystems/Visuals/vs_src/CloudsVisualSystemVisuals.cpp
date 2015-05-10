@@ -126,7 +126,7 @@ vector<string> CloudsVisualSystemVisuals::getAvailableSystems(){
     vector<string> visuals;
     for(it = thumbs.begin(); it != thumbs.end(); it++){
         visuals.push_back(it->first);
-        cout << "ADDED VISUAL " << it->first << endl;
+        //cout << "ADDED VISUAL " << it->first << endl;
     }
     return visuals;
 }

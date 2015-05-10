@@ -157,11 +157,20 @@ bool CloudsHUDHomeButton::wasActivated(){
     return ret;
 }
 
+bool CloudsHUDHomeButton::isActive(){
+    return currentState == CLOUDS_HOME_ACTIVATING || currentState == CLOUDS_HOME_ACTIVE;
+}
+
+bool CloudsHUDHomeButton::forceActive(){
+    if(!isActive()){
+        queueState(CLOUDS_HOME_ACTIVATING);
+    }
+}
+
 void CloudsHUDHomeButton::rollover(){
     if(currentState == CLOUDS_HOME_IDLE){
         queueState(CLOUDS_HOME_HOVER_ON);
     }
-
 }
 
 void CloudsHUDHomeButton::rollout(){

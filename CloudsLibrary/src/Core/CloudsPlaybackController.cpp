@@ -45,6 +45,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	interludeSystem = NULL;
     visualsMap = NULL;
     peopleMap = NULL;
+    resumeVisualSystem = NULL;
     
     interludeStartTime = 0.0;
 	
@@ -107,6 +108,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     showedClusterMapNavigation = false;
 
     canReturnToAct = false;
+    resumingAct = false;
     getVisualLevel();
     
 	resetInterludeVariables();
@@ -139,13 +141,7 @@ void CloudsPlaybackController::clearAct(){
 		return;
 	}
     
-    //This is in the case we selected to explore map from a story
-    //and 
-    if(canReturnToAct){
-        hideVisualSystem();
-        canReturnToAct = false;
-    }
-
+    
 	CloudsVisualSystem::getRGBDVideoPlayer().stop();
 	
 	vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
@@ -154,7 +150,7 @@ void CloudsPlaybackController::clearAct(){
     }
     showingVisualSystem = false;
     
-    visualSystems.DeallocateSystems();
+    CloudsVisualSystemManager::DeallocateSystems();
     
 	currentAct->unregisterEvents(this);
 	currentAct->unregisterEvents(&run);
@@ -164,6 +160,10 @@ void CloudsPlaybackController::clearAct(){
     delete currentAct;
     currentAct = NULL;
 	clusterMap->setAct(NULL);
+    
+    //This is in the case we selected to explore map from a story
+    canReturnToAct = false;
+    resumeVisualSystem = NULL;
     
     clearRenderTarget();
 	
@@ -843,26 +843,26 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     //////////// GO TO EXPLORE THE MAP FROM INTERVIEW
     if(hud.isExploreMapHit()){
-        //canReturnToAct = true;
-        
+        canReturnToAct = true;
+        resumeVisualSystem = currentVisualSystem;
         if(currentClip != NULL){
             hud.selectPerson(currentClip->person);
         }
         hud.selectTopic(currentTopic);
-        
         hud.animateOff();
+        
         transitionController.transitionToExploreMap(1.0, 2.0);
     }
     
     if(hud.isSeeMorePersonHit()){
-        //canReturnToAct = true;
-        
+        canReturnToAct = true;
+        resumeVisualSystem = currentVisualSystem;
         if(currentClip != NULL){
             hud.selectPerson(currentClip->person);
         }
         hud.selectTopic(currentTopic);
-        
         hud.animateOff();
+        
         transitionController.transitionToExplorePeople(1.0, 2.0);
     }
     
@@ -878,6 +878,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     if(hud.selectedVisualsTab()){
         transitionController.transitionToExploreVisuals(1.0, 1.0);
+    }
+    
+    if(hud.isResumeActHit() && canReturnToAct){
+        canReturnToAct = false;
+        resumingAct = true;
+        hud.animateOff();        
+        transitionController.transitionBackToAct(1.0, 1.0);
     }
     /////////////////////////////////
     
@@ -993,10 +1000,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 void CloudsPlaybackController::updateTransition(){
 	
 	transitionController.update();
-    
-//	if(transitionController.getCurrentState() != TRANSITION_IDLE && ofGetFrameNum() % 5 == 0){
-//        cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
-//    }
     
 	string topic;
 
@@ -1126,9 +1129,9 @@ void CloudsPlaybackController::updateTransition(){
                 
                 ///LEAVING
             case TRANSITION_VISUALSYSTEM_OUT:
-                if(!canReturnToAct){
-                    hideVisualSystem();
-                }
+                //if(!canReturnToAct){
+                hideVisualSystem();
+                //}
                 break;
                 
                 ///LEAVING
@@ -1163,7 +1166,8 @@ void CloudsPlaybackController::updateTransition(){
             case TRANSITION_EXPLORE_MAP_OUT:
                 
                 showingExploreMap = false;
-                clusterMap->stopSystem();
+                hideVisualSystem();
+                //clusterMap->stopSystem();
                 
                 if(hud.isItemConfirmed()){
                     hud.clearSelection();
@@ -1176,7 +1180,8 @@ void CloudsPlaybackController::updateTransition(){
             case TRANSITION_EXPLORE_PEOPLE_OUT:
                     
                 showingExplorePeople = false;
-                peopleMap->stopSystem();
+                hideVisualSystem();
+                //peopleMap->stopSystem();
                 
                 if(hud.isItemConfirmed()){
                     hud.clearSelection();
@@ -1186,11 +1191,11 @@ void CloudsPlaybackController::updateTransition(){
                 
                 ///LEAVING
             case TRANSITION_EXPLORE_VISUALS_OUT:
-                //TODO: start act on selected VS
+
                 showingExploreVisuals = false;
+                hideVisualSystem();
+                //visualsMap->stopSystem();
                 
-                visualsMap->stopSystem();
- 
                 break;
                 
                 ///LEAVING
@@ -1237,12 +1242,7 @@ void CloudsPlaybackController::updateTransition(){
                 
                 //starting
 			case TRANSITION_INTRO_IN:
-                
-//                if(currentVisualSystem == rgbdVisualSystem){
-//					rgbdVisualSystem->transtionFinished();
-//                    rgbdVisualSystem->stopSystem();
-//				}
-                
+                                
 				clusterMap->clearTraversal();
                 
                 if(introSequence != NULL){
@@ -1746,7 +1746,23 @@ void CloudsPlaybackController::transitionBackToResearch(){
     }
     
 }
-    
+
+//--------------------------------------------------------------------
+//void CloudsPlaybackController::resumeAct(){
+//    if(!canReturnToAct || resumeVisualSystem == NULL){
+//        ofLogError("CloudsPlaybackController::resumeAct") << "Resume act failed!";
+//    }
+//    
+//    hud.pause();
+//    
+//    if(resumeVisualSystem == rgbdVisualSystem){
+//        transitionController.transitionToFirstInterview(1.0);
+//    }
+//    else{
+//        transitionController.transitionToFirstVisualSystem(1.0);
+//    }
+//}
+
 //--------------------------------------------------------------------
 void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args){
 	playClip(args.chosenClip);
@@ -1979,7 +1995,7 @@ void CloudsPlaybackController::showInterlude(){
     
         vector<int> presetIndeces = visualSystems.getFilteredPresetIndeces(true, false, false, exploreVisualsSelectedSystem);
         if(presetIndeces.size() == 0){
-            ofLogError("CloudsPlaybackController::updateTransition") << "No visual systems presets found for system " << exploreVisualsSelectedSystem;
+            ofLogError("CloudsPlaybackController::showInterlude") << "No visual systems presets found for system " << exploreVisualsSelectedSystem;
             return;
         }
 
@@ -2055,8 +2071,6 @@ void CloudsPlaybackController::showExploreMap(){
         hud.animateOn(CLOUDS_RESEARCH_RESUME);
     }
     
-    
-    
     if(showingResearchMode){ //from research mode--
         researchModeTopic  = true;
         researchModePerson = false;
@@ -2084,7 +2098,6 @@ void CloudsPlaybackController::showExplorePeople(){
     if(canReturnToAct){
         hud.animateOn(CLOUDS_RESEARCH_RESUME);
     }
-
 
     if(showingResearchMode){
         researchModeTopic  = false;
@@ -2135,6 +2148,9 @@ void CloudsPlaybackController::hideVisualSystem() {
 		currentVisualSystem->stopSystem();
 		showingVisualSystem = false;
 	}
+    if(resumingAct){
+        hud.pause();
+    }
 }
 
 //--------------------------------------------------------------------
@@ -2162,9 +2178,10 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
             rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
         }
     }
-	
+
 	rgbdVisualSystem->playSystem();
 	currentVisualSystem = rgbdVisualSystem;
+    resumingAct = false;
 }
 
 //--------------------------------------------------------------------
@@ -2180,14 +2197,17 @@ void CloudsPlaybackController::playNextVisualSystem()
     }
     
     nextVisualSystemPreset.system->setDrawToScreen( false );
-    nextVisualSystemPreset.system->loadPresetGUISFromName( nextVisualSystemPreset.presetName );
+    if(!canReturnToAct){
+        nextVisualSystemPreset.system->loadPresetGUISFromName( nextVisualSystemPreset.presetName );
+    }
     nextVisualSystemPreset.system->playSystem();
-    
+
     currentVisualSystemPreset = nextVisualSystemPreset;
     currentVisualSystem = nextVisualSystemPreset.system;
     
     cachedTransition = false;
-    
+    //in case this was a resume
+    resumingAct = false;
     showingVisualSystem = true;
 }
 
