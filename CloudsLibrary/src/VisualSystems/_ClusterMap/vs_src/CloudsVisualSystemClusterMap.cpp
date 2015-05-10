@@ -1438,7 +1438,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
             ofMultMatrix(p.billboardMatrix);
             ofScale(-type3DScale,-type3DScale, type3DScale);
             
-            ofxFTGLFont& font = topicFont[ p.fontIndex ];
+            ofxFTGLFont& font = topicFont[ ofClamp(p.fontIndex, 0, topicFont.size()-1) ];
             font.drawString( ofToUpper(p.keyword), 0, 0);
             
             ofPopMatrix();
@@ -1700,7 +1700,7 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 		for(int i = 0; i < topicPoints.size(); i++){
 
 			TopicPoint& p = topicPoints[i];
-			if(p.numClips >= clipsShowTopic.min){
+//			if(p.numClips >= clipsShowTopic.min){
 //				int fontIndex = p.normalizedTopicScale * topicFont.size();
 				int fontIndex = ofMap(p.numClips, clipsShowTopic.min, clipsShowTopic.max,
 									  0, topicFont.size()-1,true);
