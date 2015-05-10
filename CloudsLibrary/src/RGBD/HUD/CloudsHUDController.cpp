@@ -424,6 +424,9 @@ void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 	bDrawHud = true;
 	bActJustStarted = true;
     bVisualSystemDisplayed = false;
+    hudLabelMap["VSCreditsTextBoxTop"]->setText("", false);
+    hudLabelMap["VSCreditsTextBoxBottom"]->setText("", false);
+
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
@@ -457,6 +460,10 @@ void CloudsHUDController::clearClip(){
     bClipIsPlaying = false;
     if(!bClipIsPlaying && !bVisualSystemDisplayed){
         animateOff(CLOUDS_HUD_LOWER_THIRD);
+    }
+    if(bProjectExampleDisplayed){
+        videoPlayer.stop();
+        videoPlayer.close();
     }
 }
 ////////////////////
@@ -562,6 +569,7 @@ void CloudsHUDController::respondToSystem(const CloudsVisualSystemPreset& preset
     }
     
     bVisualSystemDisplayed = true;
+    bProjectExampleDisplayed = false;
     animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
 }
 
@@ -1282,7 +1290,7 @@ void CloudsHUDController::draw(){
     ofTranslate( (ofGetWindowSize() - getSize() ) * 0.5 );
     ofScale( scaleAmt, scaleAmt );
     
-    if( videoPlayer.isPlaying() && !bSkipAVideoFrame ){
+    if( videoPlayer.isPlaying() && !bSkipAVideoFrame && hudOpenMap[CLOUDS_HUD_PROJECT_EXAMPLE] ){
         ofPushStyle();
         ofSetColor(255, 255, 255, 255*0.7);
         videoPlayer.draw( videoBounds );
@@ -1578,8 +1586,6 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
     
     if (isPlaying && (layer == CLOUDS_HUD_PROJECT_EXAMPLE  || layer == CLOUDS_HUD_ALL)) {
 		isPlaying = false;
-        videoPlayer.stop();
-        videoPlayer.close();
     }
 
     if(layer == CLOUDS_HUD_HOME || layer == CLOUDS_HUD_ALL){

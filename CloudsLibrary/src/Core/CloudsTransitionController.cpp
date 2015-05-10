@@ -297,13 +297,13 @@ void CloudsTransitionController::transitionFromVisualLoop(float inDuration, floa
 
 }
 
-void CloudsTransitionController::transitionBackToAct(float inDuration, float outDuration){
+void CloudsTransitionController::transitionBackToAct(float inDuration, float outDuration, CloudsTransitionState returnState){
 
     confirmEmpty("transitionBackToAct");
     
     queueReciprocal(getPreviousState(), outDuration);
     
-    queueReciprocal(queueHistory[queueHistory.size()-2].state, inDuration);
+    queueState(returnState, inDuration);
     
 	startTransition();
     

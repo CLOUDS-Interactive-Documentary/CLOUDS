@@ -45,7 +45,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	interludeSystem = NULL;
     visualsMap = NULL;
     peopleMap = NULL;
-    resumeVisualSystem = NULL;
+
     
     interludeStartTime = 0.0;
 	
@@ -163,7 +163,6 @@ void CloudsPlaybackController::clearAct(){
     
     //This is in the case we selected to explore map from a story
     canReturnToAct = false;
-    resumeVisualSystem = NULL;
     
     clearRenderTarget();
 	
@@ -201,7 +200,6 @@ void CloudsPlaybackController::setup(){
     
 	loading = true;
 
-	interludeInterfaceFont.loadFont(GetMediumFontPath(), 14);
 
 
     if(!eventsRegistered){
@@ -225,6 +223,8 @@ void CloudsPlaybackController::setup(){
         
 	}
 	
+    interludeInterfaceFont.loadFont(GetMediumFontPath(), 14);
+
 	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
@@ -283,22 +283,7 @@ void CloudsPlaybackController::threadedFunction(){
 	
 	cout << "*****LOAD STEP MEDIA" << endl;
 
-    parser.loadMediaAssets();// (ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-    
-//	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-//		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-//	}
-//	else{
-//		string defaultFilePath = GetCloudsDataPath(true) + "media/";
-//		if(ofFile::doesFileExist(defaultFilePath)){
-//			parser.setCombinedVideoDirectory(defaultFilePath);
-//		}
-//		else{
-//			ofSystemAlertDialog("Could not find movie file path. \
-//								Create a file called CloudsMovieDirectory.txt \
-//								that contains one line, the path to your movies folder");	
-//		}
-//	}
+    parser.loadMediaAssets();
     
     cout << "******* LOAD STEP RUN" << endl;
     if(run.load(&parser)){
@@ -337,7 +322,6 @@ void CloudsPlaybackController::threadedFunction(){
 	clusterMap->buildEntireCluster(parser);
     introSequence->percentLoaded = 0.7;
     
-    //hud.setTopics(clusterMap->getTopicSet());
     hud.setTopics(parser.getMasterTopics());
     hud.populateSpeakers();
     hud.setVisuals(visualsMap->getAvailableSystems());
@@ -352,7 +336,6 @@ void CloudsPlaybackController::threadedFunction(){
 	loading = false;
 	loadFinished = true;
 }
-
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::finishSetup(){
@@ -494,7 +477,6 @@ void CloudsPlaybackController::showIntro(){
     oscSender.reset();
     
     hud.clearQuestion();
-//	hud.setHomeEnabled(false);
 	hud.animateOff();
 }
 
@@ -844,7 +826,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     //////////// GO TO EXPLORE THE MAP FROM INTERVIEW
     if(hud.isExploreMapHit()){
         canReturnToAct = true;
-        resumeVisualSystem = currentVisualSystem;
+        resumeState = currentVisualSystem == rgbdVisualSystem ? TRANSITION_INTERVIEW_IN : TRANSITION_VISUALSYSTEM_IN;
         if(currentClip != NULL){
             hud.selectPerson(currentClip->person);
         }
@@ -856,7 +838,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     if(hud.isSeeMorePersonHit()){
         canReturnToAct = true;
-        resumeVisualSystem = currentVisualSystem;
+        resumeState = currentVisualSystem == rgbdVisualSystem ? TRANSITION_INTERVIEW_IN : TRANSITION_VISUALSYSTEM_IN;
         if(currentClip != NULL){
             hud.selectPerson(currentClip->person);
         }
@@ -883,8 +865,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     if(hud.isResumeActHit() && canReturnToAct){
         canReturnToAct = false;
         resumingAct = true;
-        hud.animateOff();        
-        transitionController.transitionBackToAct(1.0, 1.0);
+        hud.animateOff();
+        transitionController.transitionBackToAct(1.0, 1.0, resumeState);
     }
     /////////////////////////////////
     

@@ -78,7 +78,7 @@ class CloudsTransitionController {
     void transitionToVisualLoop(float inDuration, float outDuration);
     void transitionFromVisualLoop(float inDuration, float outDuration);
     
-    void transitionBackToAct(float inDuration, float outDuration);
+    void transitionBackToAct(float inDuration, float outDuration, CloudsTransitionState returnState);
     
 	void update();
 	

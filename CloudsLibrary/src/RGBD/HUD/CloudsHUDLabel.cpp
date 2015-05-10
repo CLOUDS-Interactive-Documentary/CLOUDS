@@ -192,14 +192,22 @@ void CloudsHUDLabel::mousePressed(ofVec2f mouse){
 
 void CloudsHUDLabel::mouseReleased(ofVec2f mouse){
     
-    if(bIsPressed && scaledInteractiveBounds.inside(mouse.x,mouse.y)){
+    bool releasedInBounds = scaledInteractiveBounds.inside(mouse.x,mouse.y);
+    if(bIsPressed && releasedInBounds){
         bIsClicked = true;
     }
     else if(!tab){
         bIsClicked = false;
     }
     
-    //bIsPressed = false;
+    if(!releasedInBounds){
+        if(bIsHovered){
+            hoverChangedTime = ofGetElapsedTimef();
+        }
+        bIsHovered = false;
+        bIsPressed = false;
+    }
+
 }
 
 string CloudsHUDLabel::getText(){
