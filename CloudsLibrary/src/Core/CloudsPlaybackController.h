@@ -149,6 +149,7 @@ class CloudsPlaybackController : public ofThread {
 	CloudsVisualSystemPreset currentVisualSystemPreset;
     
 	void updateTransition();
+    void updateHUD();
 	bool updateInterludeInterface(); //true if we should stop interlude
 	bool forceInterludeReset;
     ///////////////

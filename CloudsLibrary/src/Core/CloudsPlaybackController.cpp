@@ -775,12 +775,105 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 
 	getSharedVideoPlayer().showingLowerThirds = currentVisualSystem == rgbdVisualSystem;
 
-    ////////// HUD UPDATE AND PAUSE
     if(rgbdVisualSystem->getRGBDVideoPlayer().clipJustFinished()){
         hud.clipEnded();
     }
     
+    ////////// HUD UPDATE AND PAUSE
     hud.update();
+    if(!transitionController.isTransitioning()){
+        updateHUD();
+    }
+    
+    if(returnToIntro){
+        returnToIntro = false;
+        transitionController.transitionToIntro(1.0);
+    }
+    
+    /////////////// RESEARCH MODE
+    if(showingExploreMap){
+        
+        if(clusterMap->selectionChanged()){
+            hud.selectTopic(clusterMap->getSelectedKeyword());
+        }
+        
+        string selectedTopic = hud.getSelectedItem();
+        if(selectedTopic != ""){
+            
+            clusterMap->setCurrentTopic(selectedTopic);
+            hud.setResearchClickAnchor( clusterMap->getTopicScreenLocation() );
+
+            if(hud.isItemConfirmed()){
+                showingExploreMap = false;
+                hud.animateOff();
+                exploreMapSelectedTopic = selectedTopic;
+                //Transition into new act based on topic
+                transitionController.transitionFromExploreMap(1.0);
+            }
+        }
+    }
+    
+    if(showingExplorePeople){
+        string selectedSpeakerID = hud.getSelectedItem();
+        
+        if(peopleMap->selectionChanged()){
+            string selectedTwitterID = peopleMap->getSelectedPerson();
+            cout << "SELECTED TWITTER ID " << selectedTwitterID << endl;
+            hud.selectPerson(CloudsSpeaker::twitterHandleToSpeaker[selectedTwitterID].fcpID);
+        }
+        
+        if(selectedSpeakerID != ""){
+            
+            peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].twitterHandle);
+            hud.setResearchClickAnchor( peopleMap->getSelectedPersonScreenPosition() );
+
+            if(hud.isItemConfirmed()){
+                showingExplorePeople = false;
+                hud.animateOff();
+                explorePeopleSelectedSpeakerID = selectedSpeakerID;
+                //Transition into new act based on topic
+                transitionController.transitionFromExplorePeople(1.0);
+            }
+        }
+    }
+    
+    if(showingExploreVisuals){
+        string selectedVisualSystem = hud.getSelectedItem();
+        if(selectedVisualSystem != ""){
+            
+            visualsMap->selectSystem(selectedVisualSystem);
+            
+            if(hud.isItemConfirmed()){
+                showingExploreVisuals = false;
+                hud.animateOff();
+                exploreVisualsSelectedSystem = selectedVisualSystem;
+                transitionController.transitionToVisualLoop(1.0, 1.0);
+            }
+        }
+    }
+    /////////////// RESEARCH MODE
+    
+    
+	if(shouldLoadAct){
+		loadCurrentAct();
+		shouldLoadAct = false;
+	}
+
+	if(loadingAct){
+		updateLoadingAct();
+	}
+
+	if(shouldPlayAct){
+		playCurrentAct();
+		shouldPlayAct = false;
+	}
+	
+	updateTransition();
+    
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::updateHUD(){
     
     if(hud.didPause()){
         if(currentAct != NULL){
@@ -869,8 +962,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         transitionController.transitionBackToAct(1.0, 1.0, resumeState);
     }
     /////////////////////////////////
-    
-    
+ 
     //////////// WAS RESET HIT?
     if(!showingIntro && !showingClusterMap && !userReset &&
        (hud.isResearchResetHit() || hud.isResetHit() || rgbdVisualSystem->isResetSelected()) )
@@ -880,102 +972,16 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         
         userReset = true;
         returnToIntro = true;
-        #ifdef OCULUS_RIFT
+#ifdef OCULUS_RIFT
         transitionController.transitionWithQuestion(2.0, 0.1);
-        #else
+#else
         if(currentAct != NULL){
             CloudsVisualSystem::getRGBDVideoPlayer().stop();
             currentAct->terminateAct();
         }
-        #endif
+#endif
         
     }
-    
-    if(returnToIntro){
-        returnToIntro = false;
-        transitionController.transitionToIntro(1.0);
-    }
-    
-    /////////////// RESEARCH MODE
-    if(showingExploreMap){
-        
-        if(clusterMap->selectionChanged()){
-            hud.selectTopic(clusterMap->getSelectedKeyword());
-        }
-        
-        string selectedTopic = hud.getSelectedItem();
-        if(selectedTopic != ""){
-            
-            clusterMap->setCurrentTopic(selectedTopic);
-            hud.setResearchClickAnchor( clusterMap->getTopicScreenLocation() );
-
-            if(hud.isItemConfirmed()){
-                showingExploreMap = false;
-                hud.animateOff();
-                exploreMapSelectedTopic = selectedTopic;
-                //Transition into new act based on topic
-                transitionController.transitionFromExploreMap(1.0);
-            }
-        }
-    }
-    
-    if(showingExplorePeople){
-        string selectedSpeakerID = hud.getSelectedItem();
-        
-        if(peopleMap->selectionChanged()){
-            string selectedTwitterID = peopleMap->getSelectedPerson();
-            cout << "SELECTED TWITTER ID " << selectedTwitterID << endl;
-            hud.selectPerson(CloudsSpeaker::twitterHandleToSpeaker[selectedTwitterID].fcpID);
-        }
-        
-        if(selectedSpeakerID != ""){
-            
-            peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].twitterHandle);
-            hud.setResearchClickAnchor( peopleMap->getSelectedPersonScreenPosition() );
-
-            if(hud.isItemConfirmed()){
-                showingExplorePeople = false;
-                hud.animateOff();
-                explorePeopleSelectedSpeakerID = selectedSpeakerID;
-                //Transition into new act based on topic
-                transitionController.transitionFromExplorePeople(1.0);
-            }
-        }
-    }
-    
-    if(showingExploreVisuals){
-        string selectedVisualSystem = hud.getSelectedItem();
-        if(selectedVisualSystem != ""){
-            
-            visualsMap->selectSystem(selectedVisualSystem);
-            
-            if(hud.isItemConfirmed()){
-                showingExploreVisuals = false;
-                hud.animateOff();
-                exploreVisualsSelectedSystem = selectedVisualSystem;
-                transitionController.transitionToVisualLoop(1.0, 1.0);
-            }
-        }
-    }
-    /////////////// RESEARCH MODE
-    
-    
-	if(shouldLoadAct){
-		loadCurrentAct();
-		shouldLoadAct = false;
-	}
-
-	if(loadingAct){
-		updateLoadingAct();
-	}
-
-	if(shouldPlayAct){
-		playCurrentAct();
-		shouldPlayAct = false;
-	}
-	
-	updateTransition();
-    
 }
 
 //--------------------------------------------------------------------
