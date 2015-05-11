@@ -1697,22 +1697,16 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 		
         ofDisableLighting();
 		ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());
-		for(int i = 0; i < topicPoints.size(); i++){
+		for(int i = 0; i < topicPoints.size(); i++) {
 
 			TopicPoint& p = topicPoints[i];
-//			if(p.numClips >= clipsShowTopic.min){
-//				int fontIndex = p.normalizedTopicScale * topicFont.size();
-				int fontIndex = ofMap(p.numClips, clipsShowTopic.min, clipsShowTopic.max,
-									  0, topicFont.size()-1,true);
-//				cout << "Font index is " << fontIndex << " from " << topicFont.size() << endl;
-				if(fontIndex > 0 && fontIndex < topicFont.size()){
-					ofPushMatrix();
-					ofTranslate(p.screenRectangle.x,p.screenRectangle.y);
-					ofxFTGLFont& font = topicFont[ fontIndex ];
-					font.drawString( ofToUpper(p.keyword), 0, 0);
-					ofPopMatrix();
-				}
-			}
+
+            ofPushMatrix();
+            ofTranslate(p.screenRectangle.x,p.screenRectangle.y);
+            ofxFTGLFont& font = topicFont[ ofClamp(p.fontIndex, 0, topicFont.size()-1) ];
+            font.drawString( ofToUpper(p.keyword), 0, 0);
+            
+            ofPopMatrix();
 		}
 		ofEnableLighting();
 	}
@@ -1744,10 +1738,10 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
     
 //    cout << trailheadScreenPos << endl;
     
-	if(drawLineFlickerDebug){
-		flickerNoise.draw(0,0,getCanvasWidth(),getCanvasHeight());
-	}
-    
+//	if(drawLineFlickerDebug){
+//		flickerNoise.draw(0,0,getCanvasWidth(),getCanvasHeight());
+//	}
+
 //    ofPushStyle();
 //    ofNoFill();
 //    for(int i = 0; i < topicPoints.size(); i++){
