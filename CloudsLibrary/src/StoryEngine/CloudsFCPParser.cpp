@@ -28,18 +28,16 @@ CloudsFCPParser::CloudsFCPParser(){
 
 void CloudsFCPParser::loadFromFiles(){
     setup(GetCloudsDataPath() + "fcpxml");
-
-	parseVOClips();
     
 #ifdef VHX_MEDIA
     mapVHXMedia();
 #endif
+    
     parseVOClips();
     
     parseSpeakersVolume();
     
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
-
 	
     parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
     
@@ -52,7 +50,6 @@ void CloudsFCPParser::loadFromFiles(){
     //	calculateCohesionMedianForKeywords();
     
     //	calculateKeywordAdjascency();
-	
 	
     parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
 
