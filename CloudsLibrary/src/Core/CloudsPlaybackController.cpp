@@ -113,73 +113,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
     
 	resetInterludeVariables();
 	
-#ifdef VHX_MEDIA
-    ofAddListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
-    ofAddListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
-    ofAddListener(vhxAuth.requestCodeComplete, this, &CloudsPlaybackController::requestCodeComplete);
-    ofAddListener(vhxAuth.linkCodeComplete, this, &CloudsPlaybackController::linkCodeComplete);
-    ofAddListener(vhxAuth.verifyPackageComplete, this, &CloudsPlaybackController::verifyPackageComplete);
-    
-    // If tokens are saved to disk, they will be loaded automatically and the package
-    // will be verified. When that's done, the verifyPackageComplete() callback will
-    // get triggered, make sure args.result is either "purchase" or "rental" to proceed.
-    //
-    // If no tokens are found, you'll need to get a code and verify it in a browser by
-    // calling requestCode() on CloudsVHXAuth. Once you get the code, call linkCode()
-    // to open a browser window and link it to your account.
-    if (!vhxAuth.setup()) {
-        vhxAuth.requestCode();
-    }
-#endif
 
 }
-
-#ifdef VHX_MEDIA
-//--------------------------------------------------------------
-void CloudsPlaybackController::requestTokenComplete(CloudsVHXEventArgs& args){
-    ofLogNotice("CloudsPlaybackController::requestTokenComplete") << "Success? " << args.success << ", Token " << args.result;
-    // TODO: You probably won't need to do anything here, these are automatically saved to disk.
-}
-
-//--------------------------------------------------------------
-void CloudsPlaybackController::refreshTokenComplete(CloudsVHXEventArgs& args){
-    ofLogNotice("CloudsPlaybackController::refreshTokenComplete") << "Success? " << args.success << ", Token " << args.result;
-    // TODO: You probably won't need to do anything here, these are automatically saved to disk.
-}
-
-//--------------------------------------------------------------
-void CloudsPlaybackController::requestCodeComplete(CloudsVHXEventArgs& args){
-    ofLogNotice("CloudsPlaybackController::requestCodeComplete") << "Success? " << args.success << ", Code " << args.result;
-    // TODO: Call linkCode() to open a browser window and link it to your account.
-//    vhxAuth.linkCode();
-}
-
-//--------------------------------------------------------------
-void CloudsPlaybackController::linkCodeComplete(CloudsVHXEventArgs& args){
-    ofLogNotice("CloudsPlaybackController::linkCodeComplete") << "Success? " << args.success << ", Token " << args.result;
-    // TODO: Call verifyPackage() to ensure you've got the CLOUDS package in your account.
-//    vhxAuth.verifyPackage();
-}
-
-//--------------------------------------------------------------
-void CloudsPlaybackController::verifyPackageComplete(CloudsVHXEventArgs& args){
-    ofLogNotice("CloudsPlaybackController::verifyPackageComplete") << "Success? " << args.success << ", State " << args.result;
-    // TODO: Make sure args.result is either "purchase" or "rental" to proceed.
-}
-
-//--------------------------------------------------------------
-void CloudsPlaybackController::codeExpired(CloudsVHXEventArgs& args){
-    ofLogNotice("CloudsPlaybackController::codeExpired");
-    // TODO: You probably won't need to do anything here, but you can pre-emptively request a new code if you want.
-//    vhxAuth.requestCode();
-}
-
-//--------------------------------------------------------------
-void CloudsPlaybackController::packageExpired(CloudsVHXEventArgs& args){
-    ofLogNotice("CloudsPlaybackController::packageExpired");
-    // TODO: Stop playing CLOUDS! We need more money to continue.
-}
-#endif
 
 void CloudsPlaybackController::resetInterludeVariables(){
 	
@@ -257,6 +192,15 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
         
         ofRemoveListener(CloudsVisualSystemRGBD::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
         ofRemoveListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
+        
+#ifdef VHX_MEDIA
+        ofRemoveListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
+        ofRemoveListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
+        ofRemoveListener(vhxAuth.requestCodeComplete, this, &CloudsPlaybackController::requestCodeComplete);
+        ofRemoveListener(vhxAuth.linkCodeComplete, this, &CloudsPlaybackController::linkCodeComplete);
+        ofRemoveListener(vhxAuth.verifyPackageComplete, this, &CloudsPlaybackController::verifyPackageComplete);
+#endif
+        
 	}
 }
 
@@ -264,8 +208,6 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 void CloudsPlaybackController::setup(){
     
 	loading = true;
-
-
 
     if(!eventsRegistered){
 		
@@ -286,8 +228,15 @@ void CloudsPlaybackController::setup(){
         ofAddListener(CloudsVisualSystemRGBD::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
         ofAddListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
         
+        #ifdef VHX_MEDIA
+        ofAddListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
+        ofAddListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
+        ofAddListener(vhxAuth.requestCodeComplete, this, &CloudsPlaybackController::requestCodeComplete);
+        ofAddListener(vhxAuth.linkCodeComplete, this, &CloudsPlaybackController::linkCodeComplete);
+        ofAddListener(vhxAuth.verifyPackageComplete, this, &CloudsPlaybackController::verifyPackageComplete);
+        #endif
+        
 	}
-	
     interludeInterfaceFont.loadFont(GetMediumFontPath(), 14);
 
 	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
@@ -338,6 +287,22 @@ void CloudsPlaybackController::setup(){
 void CloudsPlaybackController::threadedFunction(){
     introSequence->percentLoaded = 0.0;
 
+    
+    #ifdef VHX_MEDIA
+    // If tokens are saved to disk, they will be loaded automatically and the package
+    // will be verified. When that's done, the verifyPackageComplete() callback will
+    // get triggered, make sure args.result is either "purchase" or "rental" to proceed.
+    //
+    // If no tokens are found, you'll need to get a code and verify it in a browser by
+    // calling requestCode() on CloudsVHXAuth. Once you get the code, call linkCode()
+    // to open a browser window and link it to your account.
+    
+    if (!vhxAuth.setup()) {
+        vhxAuth.requestCode();
+    }
+    
+    #endif
+    
     
 	cout << "*****LOAD STEP PARSER" << endl;
 
@@ -417,6 +382,55 @@ void CloudsPlaybackController::finishSetup(){
 	introSequence->setStartQuestions(startingNodes);
     introSequence->loadingFinished();
 }
+
+#ifdef VHX_MEDIA
+//--------------------------------------------------------------
+void CloudsPlaybackController::requestTokenComplete(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::requestTokenComplete") << "Success? " << args.success << ", Token " << args.result;
+    // TODO: You probably won't need to do anything here, these are automatically saved to disk.
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::refreshTokenComplete(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::refreshTokenComplete") << "Success? " << args.success << ", Token " << args.result;
+    // TODO: You probably won't need to do anything here, these are automatically saved to disk.
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::requestCodeComplete(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::requestCodeComplete") << "Success? " << args.success << ", Code " << args.result;
+    // TODO: Call linkCode() to open a browser window and link it to your account.
+    //    vhxAuth.linkCode();
+    
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::linkCodeComplete(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::linkCodeComplete") << "Success? " << args.success << ", Token " << args.result;
+    // TODO: Call verifyPackage() to ensure you've got the CLOUDS package in your account.
+    //vhxAuth.verifyPackage();
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::verifyPackageComplete(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::verifyPackageComplete") << "Success? " << args.success << ", State " << args.result;
+    // TODO: Make sure args.result is either "purchase" or "rental" to proceed.
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::codeExpired(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::codeExpired");
+    // TODO: You probably won't need to do anything here, but you can pre-emptively request a new code if you want.
+    //    vhxAuth.requestCode();
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::packageExpired(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::packageExpired");
+    // TODO: Stop playing CLOUDS! We need more money to continue.
+}
+#endif
+
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::populateRGBDPresets(){

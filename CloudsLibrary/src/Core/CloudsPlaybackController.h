@@ -114,20 +114,30 @@ class CloudsPlaybackController : public ofThread {
 	CloudsSecondaryDisplayOSCSender oscSender;
 	CloudsHUDController hud;
 	CloudsTransitionController transitionController;
+    #ifdef VHX_MEDIA
+    CloudsVHXAuth vhxAuth;
+    #endif
 
-	//if there is a system playing this wil be non-null
-	CloudsIntroSequence* introSequence;
-	CloudsVisualSystemClusterMap* clusterMap;
-    CloudsVisualSystemTwitter* peopleMap;
-	CloudsVisualSystem* interludeSystem;
-    CloudsVisualSystemVisuals* visualsMap;
-    
+
 	//STATE STUFF
 	CloudsRun run;
 	CloudsAct* currentAct;
 	CloudsClip* currentClip;
+    
+	//if there is a system playing this wil be non-null
+	CloudsIntroSequence* introSequence;
+	CloudsVisualSystemClusterMap* clusterMap;
+    CloudsVisualSystemTwitter* peopleMap;
+    CloudsVisualSystemVisuals* visualsMap;
+	CloudsVisualSystem* interludeSystem;
+    CloudsVisualSystem* currentVisualSystem;
+    
+	CloudsVisualSystemPreset nextVisualSystemPreset;
+	CloudsVisualSystemPreset currentVisualSystemPreset;
+    
 	int numClipsPlayed;
-	string currentTopic;
+    int numActsCreated;
+    string currentTopic;
 	
 	bool shouldLoadAct;
 	bool shouldPlayAct;
@@ -142,29 +152,19 @@ class CloudsPlaybackController : public ofThread {
     void drawKinectFeedback();
 #endif
 
-    CloudsVisualSystem* currentVisualSystem;
-
     void createInterludeSoundQueue();
-    int numActsCreated;
     
-    bool cachedTransition;
-    CloudsVisualSystem::RGBDTransitionType cachedTransitionType;
-    
-#ifdef VHX_MEDIA
-    CloudsVHXAuth vhxAuth;
-#endif
     
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;
+    bool cachedTransition;
+    CloudsVisualSystem::RGBDTransitionType cachedTransitionType;
 	vector<string> backgroundPresets;
 	vector<string> pointcloudPresets;
 	string basePreset;
 	void populateRGBDPresets();
 	
     float interludeStartTime;
-	
-	CloudsVisualSystemPreset nextVisualSystemPreset;	
-	CloudsVisualSystemPreset currentVisualSystemPreset;
     
 	void updateTransition();
     void updateHUD();

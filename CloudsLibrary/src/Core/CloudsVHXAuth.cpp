@@ -42,7 +42,7 @@ CloudsVHXAuth::CloudsVHXAuth()
 //--------------------------------------------------------------
 CloudsVHXAuth::~CloudsVHXAuth()
 {
-    waitForThread();
+    waitForThread(true);
     exit();
 }
 
@@ -515,4 +515,7 @@ void CloudsVHXAuth::threadedFunction()
     else {
         ofLogError("CloudsVHXAuth::threadedFunction") << "Mode " << mode << " is unrecongized!";
     }
+    
+    ofSleepMillis(10);
+    
 }

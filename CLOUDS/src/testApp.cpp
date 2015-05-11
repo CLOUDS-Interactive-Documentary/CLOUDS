@@ -5,22 +5,25 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
+	ofSetVerticalSync(true);
+	ofBackground(0);
     
 #if defined(OCULUS_RIFT) && defined(TARGET_WIN32)
-//	ofSetWindowPosition(0,0);
-//	ofSetWindowShape(1920*2,1080);
+//    ofSetWindowPosition(0,0);
+//    ofSetWindowShape(1920*2,1080);
 #else
 	#ifdef CLOUDS_RELEASE
-		//ofSetWindowPosition(1920 + 1920*.5,1080*.5);
-//    	ofSetWindowPosition(0,0);
+//    ofSetWindowPosition(1920 + 1920*.5,1080*.5);
+//    ofSetWindowPosition(0,0);
 	#endif
-//	ofSetWindowShape(1920,1080);
+//    ofSetWindowShape(1920,1080);
 #endif
-	ofSetVerticalSync(true);
-	//ofSetFrameRate(60);
-	ofBackground(0);
-	//ofToggleFullscreen();
 
+#ifdef VHX_MEDIA
+    ofSetWindowShape(1280, 720);
+    ofSetWindowPosition(ofGetScreenWidth()/2 - 1280/2, ofGetScreenHeight()/2 - 720/2);
+#endif
+    
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();
 #endif
@@ -40,13 +43,15 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 	if(ofGetFrameNum() == 10){
+        #ifndef VHX_MEDIA
 		ofToggleFullscreen();
+        #endif
 	}
+    
 	if(shouldSetupPlayer){
 		player.setup();
 		shouldSetupPlayer = false;
 		playerSetup = true;
- 
 	}
 	else if(firstFrame){
 		shouldSetupPlayer = true;
@@ -61,7 +66,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	if(loader.isAllocated() && !playerSetup){
-		loader.draw(0,0);
+		loader.draw(0,0, ofGetWidth(), ofGetHeight());
 	}
 	firstFrame = false;
 }
