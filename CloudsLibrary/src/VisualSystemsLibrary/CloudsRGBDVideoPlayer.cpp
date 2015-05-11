@@ -466,15 +466,15 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
     ofAVFoundationPlayer * curPimple = (ofAVFoundationPlayer *)currentPlayer->getPlayer().get();
     ofAVFoundationPlayer * nextPimple = (ofAVFoundationPlayer *)currentPlayer->getPlayer().get();
     
-    cout << "cur player position  " << currentPlayer->getPosition() << endl;
-    cout << "cur player buffering " << currentPlayer->getBufferProgress() << endl;
+//    cout << "cur player position  " << currentPlayer->getPosition() << endl;
+//    cout << "cur player buffering " << currentPlayer->getBufferProgress() << endl;
 //    cout << "cur player ready     " << (curPimple != NULL ? ofToString(curPimple->isLikelyToKeepUp()) : " NULL") << endl;
-    cout << endl;
-    cout << "nxt player buffering " << nextPlayer->getBufferProgress() << endl;
-    cout << "nxt player position  " << nextPlayer->getPosition() << endl;
+//    cout << endl;
+//    cout << "nxt player buffering " << nextPlayer->getBufferProgress() << endl;
+//    cout << "nxt player position  " << nextPlayer->getPosition() << endl;
 //    cout << "nxt player ready     " << (nextPimple != NULL ? ofToString(nextPimple->isLikelyToKeepUp()) : " NULL") << endl;
-    cout << endl;
-    cout << endl;
+//    cout << endl;
+//    cout << endl;
     
 	if(playingVO){
         getPlayer().setVolume(1.0);

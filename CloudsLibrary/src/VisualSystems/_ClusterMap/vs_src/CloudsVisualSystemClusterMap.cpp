@@ -1142,10 +1142,15 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
         n.lookAt(targetTopicPosition.getInterpolated(ofVec3f(0,0,0), ofMap(distFromTarget, traversCameraDistance*2, traversCameraDistance*5, .0, 1.0, true) ), currentCameraUpDir );
         topicNavCam.setPosition( topicNavCam.getPosition() + (targetPos - topicNavCam.getPosition())*.03 );
         
-        ofQuaternion q;
-        q.slerp(.07, topicNavCam.getOrientationQuat(), n.getOrientationQuat());
-        topicNavCam.setOrientation(q);
-        
+        //NAN CHECK
+        if(topicNavCam.getOrientationQuat().x() != topicNavCam.getOrientationQuat().x()){
+            topicNavCam.setOrientation(n.getOrientationQuat()   );
+        }
+        else{
+            ofQuaternion q;
+            q.slerp(.07, topicNavCam.getOrientationQuat(), n.getOrientationQuat());
+            topicNavCam.setOrientation(q);
+        }
     }
     
 	/////UPDATE COLOR
