@@ -23,6 +23,8 @@ CloudsVHXAuth::CloudsVHXAuth()
 : ofThread()
 , mode(WAITING)
 , state(INACTIVE)
+, _keysPath("")
+, _tokensPath("")
 , _clientId("")
 , _clientSecret("")
 , _packageId("")
@@ -46,27 +48,46 @@ CloudsVHXAuth::~CloudsVHXAuth()
 }
 
 //--------------------------------------------------------------
-void CloudsVHXAuth::setup()
+void CloudsVHXAuth::setup(const string& keysPath, const string& tokensPath)
 {
+    _keysPath = keysPath;
+    _tokensPath = tokensPath;
+    
     // Load and decrypt the info from files on disk.
     //string path = GetCloudsDataPath() + "vhx/client.bin";
-    string path = "client.bin";
-    if (CloudsCryptoLoadKeys(_clientId, _clientSecret, _packageId, path)) {
+    if (CloudsCryptoLoadKeys(_clientId, _clientSecret, _packageId, _keysPath)) {
         ofLogNotice("CloudsVHXAuth::setup") << "Loaded keys successfully:\n"
         << "\tClient ID: " << _clientId << "\n"
         << "\tClient Secret: " << _clientSecret << "\n"
         << "\tPackage ID: " << _packageId;
     }
     else {
-        ofLogError("CloudsVHXAuth::setup") << "Cannot open file at " << path;
+        ofLogError("CloudsVHXAuth::setup") << "Cannot open file at " << _keysPath;
     }
     
-    _tokenExpiry = 0;
+    if (CloudsCryptoLoadTokens(_accessToken, _refreshToken, _tokenExpiry, _tokensPath)) {
+        ofLogNotice("CloudsVHXAuth::setup") << "Loaded tokens successfully:\n"
+        << "\tAccess Token: " << _clientId << "\n"
+        << "\tRefresh Token: " << _clientSecret << "\n"
+        << "\tToken Expiry: " << _tokenExpiry;
+        
+        state = INACTIVE;
+    }
+    else {
+        ofLogError("CloudsVHXAuth::setup") << "Cannot open file at " << _tokensPath;
+        
+        _tokenExpiry = 0;
+        state = INACTIVE;
+    }
     
     mode = WAITING;
-    state = INACTIVE;
     bNotifyComplete = false;
     ofAddListener(ofEvents().update, this, &CloudsVHXAuth::update);
+    
+    if (_packageId.size() && _accessToken.size()) {
+        // Try to verify the package immediately.
+        verifyPackage();
+    }
 }
 
 //--------------------------------------------------------------
@@ -215,6 +236,10 @@ void CloudsVHXAuth::verifyPackage()
         ofLogError("CloudsVHXAuth::verifyPackage") << "No package ID set!";
         return;
     }
+    if (_accessToken.empty()) {
+        ofLogError("CloudsVHXAuth::verifyPackage") << "No access token set!";
+        return;
+    }
 
     mode = VERIFY_PACKAGE;
     startThread();
@@ -249,6 +274,9 @@ void CloudsVHXAuth::threadedFunction()
                 _accessToken = json["access_token"].asString();
                 _refreshToken = json["refresh_token"].asString();
                 _tokenExpiry = (ofGetSystemTime() / 1000.f) + json["expires_in"].asFloat();
+                
+                // Save the tokens to disk.
+                CloudsCryptoSaveTokens(_accessToken, _refreshToken, _tokenExpiry, _tokensPath);
                 
                 completeArgs.success = true;
                 completeArgs.result = _accessToken;
@@ -330,6 +358,9 @@ void CloudsVHXAuth::threadedFunction()
                     _refreshToken = json["refresh_token"].asString();
                     _tokenExpiry = ofGetElapsedTimef() + json["expires_in"].asFloat();
                     
+                    // Save the tokens to disk.
+                    CloudsCryptoSaveTokens(_accessToken, _refreshToken, _tokenExpiry, _tokensPath);
+                    
                     completeArgs.success = true;
                     completeArgs.result = _accessToken;
 
@@ -385,18 +416,6 @@ void CloudsVHXAuth::threadedFunction()
                                         state = PURCHASE;
                                         completeArgs.success = true;
                                         completeArgs.result = "purchase";
-                                        
-                                        // Parse the purchase date for funsies.
-                                        Poco::DateTime dt;
-                                        int tzd;
-                                        if (Poco::DateTimeParser::tryParse(element["purchased_at"].asString(), dt, tzd)) {
-                                            Poco::LocalDateTime ldt(tzd, dt);
-                                            Poco::Timestamp purchaseTime = ldt.timestamp();
-                                            
-                                            cout << "purchaseTime " << ldt.year() << "-" << ldt.month() << "-" << ldt.day() << " " << ldt.hour() << ":" << ldt.minute() << ":" << ldt.second() << " " << ldt.tzd() << endl;
-                                            cout << "epoch time " << purchaseTime.epochTime() << " vs " << (ofGetSystemTime() / 1000) << endl;
-                                        }
-                                        
                                         break;
                                     }
                                     else if (purchaseType == "rental") {

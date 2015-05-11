@@ -48,7 +48,7 @@ public:
     CloudsVHXAuth();
     ~CloudsVHXAuth();
     
-    void setup();
+    void setup(const string& keysPath = "client.bin", const string& tokensPath = "tokens.bin");
     void exit();
     
     void update(ofEventArgs& args);
@@ -78,6 +78,9 @@ protected:
     bool bNotifyComplete;
     
 private:
+    string _keysPath;
+    string _tokensPath;
+    
     ofxSSL _ssl;
     string _clientId;
     string _clientSecret;
