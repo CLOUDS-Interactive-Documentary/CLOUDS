@@ -11,6 +11,7 @@
 #include "ofMain.h"
 #include "ofxSSL.h"
 
+//--------------------------------------------------------------
 class CloudsVHXEventArgs
 : ofEventArgs
 {
@@ -23,6 +24,7 @@ public:
     string result;
 };
 
+//--------------------------------------------------------------
 class CloudsVHXAuth
 : public ofThread
 {
@@ -33,6 +35,14 @@ public:
         REFRESH_TOKEN,
         REQUEST_CODE,
         LINK_CODE,
+        VERIFY_PACKAGE
+    };
+    
+    enum State {
+        INACTIVE,
+        PURCHASE,
+        RENTAL,
+        EXPIRED
     };
     
     CloudsVHXAuth();
@@ -47,16 +57,23 @@ public:
     void refreshToken();
     void requestCode();
     void linkCode();
+    void verifyPackage();
     
     ofEvent<CloudsVHXEventArgs> requestTokenComplete;
     ofEvent<CloudsVHXEventArgs> refreshTokenComplete;
     ofEvent<CloudsVHXEventArgs> requestCodeComplete;
     ofEvent<CloudsVHXEventArgs> linkCodeComplete;
+    ofEvent<CloudsVHXEventArgs> verifyPackageComplete;
+    
+    ofEvent<CloudsVHXEventArgs> codeExpired;
+    ofEvent<CloudsVHXEventArgs> packageExpired;
+    
+    Mode mode;
+    State state;
     
 protected:
     void threadedFunction();
     
-    Mode mode;
     CloudsVHXEventArgs completeArgs;
     bool bNotifyComplete;
     
@@ -64,10 +81,15 @@ private:
     ofxSSL _ssl;
     string _clientId;
     string _clientSecret;
+
+    string _packageId;
+    time_t _packageExpiry;
     
     string _accessToken;
     string _refreshToken;
-    float _tokenExpiry;
+    time_t _tokenExpiry;
+    
     string _code;
-    float _codeExpiry;
+    time_t _codeExpiry;
+    
 };
