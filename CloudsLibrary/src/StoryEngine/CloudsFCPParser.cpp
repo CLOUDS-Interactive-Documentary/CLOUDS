@@ -55,10 +55,6 @@ void CloudsFCPParser::loadFromFiles(){
 	
 	
     parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
-    
-#ifdef VHX_MEDIA
-	parseVHXIds(GetCloudsDataPath() + "vhx/clip_ids.csv");
-#endif
 
 }
 
