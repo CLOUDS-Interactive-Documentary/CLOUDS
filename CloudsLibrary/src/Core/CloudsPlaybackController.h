@@ -26,6 +26,9 @@
 
 #include "CloudsPortal.h"
 
+#ifdef VHX_MEDIA
+#include "CloudsVHXAuth.h"
+#endif
 
 class CloudsIntroSequence;
 class CloudsVisualSystemRGBD;
@@ -62,6 +65,17 @@ class CloudsPlaybackController : public ofThread {
 	void mouseMoved(ofMouseEventArgs & args);
 	void mousePressed(ofMouseEventArgs & args);
 	void mouseReleased(ofMouseEventArgs & args);
+    
+#ifdef VHX_MEDIA
+    void requestTokenComplete(CloudsVHXEventArgs& args);
+    void refreshTokenComplete(CloudsVHXEventArgs& args);
+    void requestCodeComplete(CloudsVHXEventArgs& args);
+    void linkCodeComplete(CloudsVHXEventArgs& args);
+    void verifyPackageComplete(CloudsVHXEventArgs& args);
+    
+    void codeExpired(CloudsVHXEventArgs& args);
+    void packageExpired(CloudsVHXEventArgs& args);
+#endif
 	
 	void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);
@@ -135,6 +149,10 @@ class CloudsPlaybackController : public ofThread {
     
     bool cachedTransition;
     CloudsVisualSystem::RGBDTransitionType cachedTransitionType;
+    
+#ifdef VHX_MEDIA
+    CloudsVHXAuth vhxAuth;
+#endif
     
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;

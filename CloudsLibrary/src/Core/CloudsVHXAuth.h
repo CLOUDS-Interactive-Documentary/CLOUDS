@@ -11,18 +11,7 @@
 #include "ofMain.h"
 #include "ofxSSL.h"
 
-//--------------------------------------------------------------
-class CloudsVHXEventArgs
-: ofEventArgs
-{
-public:
-    CloudsVHXEventArgs()
-    : ofEventArgs(), success(false), result("")
-    {}
-    
-    bool success;
-    string result;
-};
+#include "CloudsVHXEventArgs.h"
 
 //--------------------------------------------------------------
 class CloudsVHXAuth
@@ -48,7 +37,7 @@ public:
     CloudsVHXAuth();
     ~CloudsVHXAuth();
     
-    void setup(const string& keysPath = "client.bin", const string& tokensPath = "tokens.bin");
+    bool setup();
     void exit();
     
     void update(ofEventArgs& args);

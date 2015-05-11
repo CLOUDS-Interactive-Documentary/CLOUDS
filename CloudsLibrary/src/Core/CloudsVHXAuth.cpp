@@ -8,6 +8,7 @@
 
 #include "CloudsVHXAuth.h"
 #include "CloudsCrypto.h"
+#include "CloudsGlobal.h"
 
 #include "ofxCrypto.h"
 #include "ofxJSONElement.h"
@@ -36,8 +37,6 @@ CloudsVHXAuth::CloudsVHXAuth()
 , _codeExpiry(0)
 {
     ofxSSL::appendData = true;
-
-    setup();
 }
 
 //--------------------------------------------------------------
@@ -48,10 +47,10 @@ CloudsVHXAuth::~CloudsVHXAuth()
 }
 
 //--------------------------------------------------------------
-void CloudsVHXAuth::setup(const string& keysPath, const string& tokensPath)
+bool CloudsVHXAuth::setup()
 {
-    _keysPath = keysPath;
-    _tokensPath = tokensPath;
+    _keysPath = GetCloudsDataPath(true) + "vhx/client.bin";
+    _tokensPath = GetCloudsDataPath(true) + "vhx/tokens.bin";
     
     // Load and decrypt the info from files on disk.
     //string path = GetCloudsDataPath() + "vhx/client.bin";
@@ -87,7 +86,10 @@ void CloudsVHXAuth::setup(const string& keysPath, const string& tokensPath)
     if (_packageId.size() && _accessToken.size()) {
         // Try to verify the package immediately.
         verifyPackage();
+        return true;
     }
+    
+    return false;
 }
 
 //--------------------------------------------------------------
@@ -250,6 +252,7 @@ void CloudsVHXAuth::threadedFunction()
 {
     if (mode == REQUEST_TOKEN || mode == REFRESH_TOKEN) {
         _ssl.setup();
+        _ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath(true) + "vhx/cacert.pem"));
         _ssl.setURL("https://api.vhx.tv/oauth/token");
         if (mode == REQUEST_TOKEN) {
             _ssl.addFormField("client_id", _clientId);
@@ -295,6 +298,7 @@ void CloudsVHXAuth::threadedFunction()
     }
     else if (mode == REQUEST_CODE) {
         _ssl.setup();
+        _ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath(true) + "vhx/cacert.pem"));
         _ssl.setURL("https://api.vhx.tv/oauth/codes");
         _ssl.addFormField("client_id", _clientId);
         _ssl.addFormField("client_secret", _clientSecret);
@@ -339,13 +343,14 @@ void CloudsVHXAuth::threadedFunction()
         ss << "?client_id=" << _clientId;
         ss << "&client_secret=" << _clientSecret;
         
+        _ssl.setup();
+        _ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath(true) + "vhx/cacert.pem"));
+        _ssl.setURL(ss.str());
+        
         completeArgs.success = false;
 
         bool bWaitForLink = true;
         while (bWaitForLink) {
-            _ssl.setup();
-            _ssl.setURL(ss.str());
-            
             _ssl.perform();
             
             string response = _ssl.getResponseBody();
@@ -388,6 +393,7 @@ void CloudsVHXAuth::threadedFunction()
         ss << "Authorization: Bearer " << _accessToken;
         
         _ssl.setup();
+        _ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath(true) + "vhx/cacert.pem"));
         _ssl.setURL("https://api.vhx.tv/me");
         _ssl.addHeader(ss.str());
         

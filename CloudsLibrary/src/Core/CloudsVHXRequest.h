@@ -11,20 +11,11 @@
 #include "ofMain.h"
 #include "ofxSSL.h"
 
+#include "CloudsVHXEventArgs.h"
+
 extern unsigned long long CloudsVHXUrlTimeLimit;
 
-class CloudsVHXEventArgs
-    : ofEventArgs
-{
-public:
-    CloudsVHXEventArgs()
-        : ofEventArgs(), success(false), result("")
-    {}
-    
-    bool success;
-    string result;
-};
-
+//--------------------------------------------------------------
 class CloudsVHXRequest
     : public ofThread
 {
