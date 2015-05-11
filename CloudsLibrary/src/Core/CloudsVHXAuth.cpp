@@ -515,6 +515,4 @@ void CloudsVHXAuth::threadedFunction()
     else {
         ofLogError("CloudsVHXAuth::threadedFunction") << "Mode " << mode << " is unrecongized!";
     }
-    
-
 }

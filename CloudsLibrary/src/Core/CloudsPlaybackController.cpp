@@ -199,6 +199,8 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
         ofRemoveListener(vhxAuth.requestCodeComplete, this, &CloudsPlaybackController::requestCodeComplete);
         ofRemoveListener(vhxAuth.linkCodeComplete, this, &CloudsPlaybackController::linkCodeComplete);
         ofRemoveListener(vhxAuth.verifyPackageComplete, this, &CloudsPlaybackController::verifyPackageComplete);
+        ofRemoveListener(vhxAuth.codeExpired, this, &CloudsPlaybackController::codeExpired);
+        ofRemoveListener(vhxAuth.packageExpired, this, &CloudsPlaybackController::packageExpired);
 #endif
         
 	}
@@ -234,6 +236,8 @@ void CloudsPlaybackController::setup(){
         ofAddListener(vhxAuth.requestCodeComplete, this, &CloudsPlaybackController::requestCodeComplete);
         ofAddListener(vhxAuth.linkCodeComplete, this, &CloudsPlaybackController::linkCodeComplete);
         ofAddListener(vhxAuth.verifyPackageComplete, this, &CloudsPlaybackController::verifyPackageComplete);
+        ofAddListener(vhxAuth.codeExpired, this, &CloudsPlaybackController::codeExpired);
+        ofAddListener(vhxAuth.packageExpired, this, &CloudsPlaybackController::packageExpired);
         #endif
         
 	}
