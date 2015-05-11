@@ -1429,7 +1429,6 @@
 		642721DC1AE81E5200A13289 /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824EF18BEBD6F00C1EB93 /* wSatellite.cpp */; };
 		642721DD1AE81E5200A13289 /* ControlPrinter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A5C18BF099000C1EB93 /* ControlPrinter.cpp */; };
 		642721DE1AE81E5200A13289 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D823A518BEBD6E00C1EB93 /* CloudsVisualSystemMazeGenerator2.cpp */; };
-		642721DF1AE81E5200A13289 /* CloudsVHXRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */; };
 		642721E01AE81E5200A13289 /* TableLookupOsc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A9B18BF099000C1EB93 /* TableLookupOsc.cpp */; };
 		642721E11AE81E5200A13289 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */; };
 		642721E21AE81E5200A13289 /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8229318BEBD6E00C1EB93 /* CloudsSoundFuncs.cpp */; };
@@ -2660,7 +2659,10 @@
 		642726BD1AE81EAF00A13289 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024A91AE6D6560008D018 /* json_internalarray.inl */; };
 		642726BE1AE81EAF00A13289 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AA1AE6D6560008D018 /* json_internalmap.inl */; };
 		642726BF1AE81EAF00A13289 /* CLOUDS.icns in Resources */ = {isa = PBXBuildFile; fileRef = 033BCA411AAA562900BC1FEC /* CLOUDS.icns */; };
-		642726C51AE81EF500A13289 /* CloudsVHXRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */; };
+		64574BD11B00560700C1BC77 /* CloudsVHXAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574BCD1B00560700C1BC77 /* CloudsVHXAuth.cpp */; };
+		64574BD21B00560700C1BC77 /* CloudsVHXAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574BCD1B00560700C1BC77 /* CloudsVHXAuth.cpp */; };
+		64574BD31B00560700C1BC77 /* CloudsVHXRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574BCF1B00560700C1BC77 /* CloudsVHXRequest.cpp */; };
+		64574BD41B00560700C1BC77 /* CloudsVHXRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574BCF1B00560700C1BC77 /* CloudsVHXRequest.cpp */; };
 		64BDD5A41AFAE679002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
 		64BDD5A51AFAE8BE002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
 		64BDD5A61AFAE8BF002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
@@ -4149,6 +4151,10 @@
 		2E80745D1820B8AB00A003A0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		642724191AE81E5200A13289 /* CLOUDS_VHX_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_VHX_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642726C31AE81EAF00A13289 /* CLOUDS_VHX_OCULUS_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_VHX_OCULUS_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64574BCD1B00560700C1BC77 /* CloudsVHXAuth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVHXAuth.cpp; sourceTree = "<group>"; };
+		64574BCE1B00560700C1BC77 /* CloudsVHXAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVHXAuth.h; sourceTree = "<group>"; };
+		64574BCF1B00560700C1BC77 /* CloudsVHXRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVHXRequest.cpp; sourceTree = "<group>"; };
+		64574BD01B00560700C1BC77 /* CloudsVHXRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVHXRequest.h; sourceTree = "<group>"; };
 		64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMedia.cpp; sourceTree = "<group>"; };
 		64BDD5A31AFAE679002AEAEB /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
 		64BDD5BE1AFAEB5B002AEAEB /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
@@ -4156,8 +4162,6 @@
 		64BDD6A31AFB0734002AEAEB /* CloudsCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsCrypto.h; sourceTree = "<group>"; };
 		64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBinaryMesh.cpp; sourceTree = "<group>"; };
 		64CDB66A194500EC00C56A13 /* ofxBinaryMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBinaryMesh.h; sourceTree = "<group>"; };
-		64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVHXRequest.cpp; sourceTree = "<group>"; };
-		64D023F01AE6C4670008D018 /* CloudsVHXRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVHXRequest.h; sourceTree = "<group>"; };
 		64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSSL.cpp; sourceTree = "<group>"; };
 		64D0241C1AE6C7B40008D018 /* ofxSSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSSL.h; sourceTree = "<group>"; };
 		64D0244C1AE6C7CB0008D018 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
@@ -6266,6 +6270,10 @@
 				03E28DA41A9D767D005AA181 /* CloudsPlaybackController.h */,
 				03E28DA51A9D767D005AA181 /* CloudsTransitionController.cpp */,
 				03E28DA61A9D767D005AA181 /* CloudsTransitionController.h */,
+				64574BCD1B00560700C1BC77 /* CloudsVHXAuth.cpp */,
+				64574BCE1B00560700C1BC77 /* CloudsVHXAuth.h */,
+				64574BCF1B00560700C1BC77 /* CloudsVHXRequest.cpp */,
+				64574BD01B00560700C1BC77 /* CloudsVHXRequest.h */,
 				03E28DA71A9D767D005AA181 /* CloudsVisualSystemManager.cpp */,
 				03E28DA81A9D767D005AA181 /* CloudsVisualSystemManager.h */,
 			);
@@ -8588,8 +8596,6 @@
 				E7D822B018BEBD6E00C1EB93 /* CloudsSpeaker.h */,
 				E7D822B118BEBD6E00C1EB93 /* CloudsStoryEngine.cpp */,
 				E7D822B218BEBD6E00C1EB93 /* CloudsStoryEngine.h */,
-				64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */,
-				64D023F01AE6C4670008D018 /* CloudsVHXRequest.h */,
 				E7D822B518BEBD6E00C1EB93 /* CloudsVisualSystemPreset.cpp */,
 				E7D822B618BEBD6E00C1EB93 /* CloudsVisualSystemPreset.h */,
 			);
@@ -12913,7 +12919,6 @@
 				642721DC1AE81E5200A13289 /* wSatellite.cpp in Sources */,
 				642721DD1AE81E5200A13289 /* ControlPrinter.cpp in Sources */,
 				642721DE1AE81E5200A13289 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
-				642721DF1AE81E5200A13289 /* CloudsVHXRequest.cpp in Sources */,
 				642721E01AE81E5200A13289 /* TableLookupOsc.cpp in Sources */,
 				642721E11AE81E5200A13289 /* ofxLocalization.cpp in Sources */,
 				642721E21AE81E5200A13289 /* CloudsSoundFuncs.cpp in Sources */,
@@ -13303,6 +13308,7 @@
 				6427235E1AE81E5200A13289 /* ofxBox2d.cpp in Sources */,
 				6427235F1AE81E5200A13289 /* CastManager.cpp in Sources */,
 				642723601AE81E5200A13289 /* TerrainRayTest.cpp in Sources */,
+				64574BD11B00560700C1BC77 /* CloudsVHXAuth.cpp in Sources */,
 				642723611AE81E5200A13289 /* ofxUIDropDownList.cpp in Sources */,
 				642723621AE81E5200A13289 /* FileUtils.cpp in Sources */,
 				642723631AE81E5200A13289 /* Particle.cpp in Sources */,
@@ -13342,6 +13348,7 @@
 				642723851AE81E5200A13289 /* Noise.cpp in Sources */,
 				642723861AE81E5200A13289 /* CloudsIntervention.cpp in Sources */,
 				642723871AE81E5200A13289 /* ControlValue.cpp in Sources */,
+				64574BD31B00560700C1BC77 /* CloudsVHXRequest.cpp in Sources */,
 				642723881AE81E5200A13289 /* RectWave.cpp in Sources */,
 				642723891AE81E5200A13289 /* ofxObjLoader.cpp in Sources */,
 				6427238A1AE81E5200A13289 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
@@ -13504,7 +13511,6 @@
 				642724761AE81EAF00A13289 /* b2Island.cpp in Sources */,
 				642724771AE81EAF00A13289 /* ofxUIImage.cpp in Sources */,
 				642724781AE81EAF00A13289 /* kiss_fftr.c in Sources */,
-				642726C51AE81EF500A13289 /* CloudsVHXRequest.cpp in Sources */,
 				642724791AE81EAF00A13289 /* CloudsVisualSystemScrape.cpp in Sources */,
 				6427247A1AE81EAF00A13289 /* Creature.cpp in Sources */,
 				6427247B1AE81EAF00A13289 /* b2World.cpp in Sources */,
@@ -13698,6 +13704,7 @@
 				642725361AE81EAF00A13289 /* b2BlockAllocator.cpp in Sources */,
 				642725371AE81EAF00A13289 /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
 				642725381AE81EAF00A13289 /* CloudsVisualSystemForkingPaths.cpp in Sources */,
+				64574BD21B00560700C1BC77 /* CloudsVHXAuth.cpp in Sources */,
 				642725391AE81EAF00A13289 /* MSAObjCPointer.cpp in Sources */,
 				6427253A1AE81EAF00A13289 /* ofxField2D.cpp in Sources */,
 				6427253B1AE81EAF00A13289 /* RampedValue.cpp in Sources */,
@@ -13776,6 +13783,7 @@
 				642725841AE81EAF00A13289 /* ToonPass.cpp in Sources */,
 				642725851AE81EAF00A13289 /* CloudsVisualSystemTwitter.cpp in Sources */,
 				642725861AE81EAF00A13289 /* CloudsVisualSystemBalloons.cpp in Sources */,
+				64574BD41B00560700C1BC77 /* CloudsVHXRequest.cpp in Sources */,
 				642725871AE81EAF00A13289 /* CloudsVisualSystemGPUParticles.cpp in Sources */,
 				642725881AE81EAF00A13289 /* LimbDarkeningPass.cpp in Sources */,
 				642725891AE81EAF00A13289 /* (null) in Sources */,
