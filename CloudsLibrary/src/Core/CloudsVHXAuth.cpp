@@ -350,7 +350,7 @@ void CloudsVHXAuth::threadedFunction()
         completeArgs.success = false;
 
         bool bWaitForLink = true;
-        while (bWaitForLink) {
+        while (bWaitForLink && isThreadRunning()) {
             _ssl.perform();
             
             string response = _ssl.getResponseBody();
@@ -516,6 +516,5 @@ void CloudsVHXAuth::threadedFunction()
         ofLogError("CloudsVHXAuth::threadedFunction") << "Mode " << mode << " is unrecongized!";
     }
     
-    ofSleepMillis(10);
-    
+
 }

@@ -400,15 +400,14 @@ void CloudsPlaybackController::refreshTokenComplete(CloudsVHXEventArgs& args){
 void CloudsPlaybackController::requestCodeComplete(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::requestCodeComplete") << "Success? " << args.success << ", Code " << args.result;
     // TODO: Call linkCode() to open a browser window and link it to your account.
-    //    vhxAuth.linkCode();
-    
+    vhxAuth.linkCode();
 }
 
 //--------------------------------------------------------------
 void CloudsPlaybackController::linkCodeComplete(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::linkCodeComplete") << "Success? " << args.success << ", Token " << args.result;
     // TODO: Call verifyPackage() to ensure you've got the CLOUDS package in your account.
-    //vhxAuth.verifyPackage();
+    vhxAuth.verifyPackage();
 }
 
 //--------------------------------------------------------------
@@ -421,7 +420,7 @@ void CloudsPlaybackController::verifyPackageComplete(CloudsVHXEventArgs& args){
 void CloudsPlaybackController::codeExpired(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::codeExpired");
     // TODO: You probably won't need to do anything here, but you can pre-emptively request a new code if you want.
-    //    vhxAuth.requestCode();
+    //vhxAuth.requestCode();
 }
 
 //--------------------------------------------------------------
