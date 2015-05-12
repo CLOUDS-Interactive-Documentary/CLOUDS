@@ -27,7 +27,7 @@ static ofColor CloudsColorTabStrokeSelectd    = ofColor::fromHex(0xFFFFFF, 255 *
 
 enum CloudsVisualLevel { FAST, PRETTY };
 //--------------------------------------------------------------------
-string GetEnvVar( string key );
+//string GetEnvVar( string key );
 //--------------------------------------------------------------------
 string GetCloudsDataPath(bool ignored = false);
 //--------------------------------------------------------------------
@@ -45,7 +45,8 @@ string relinkFilePath(string filePath);
 //--------------------------------------------------------------------
 CloudsVisualLevel getVisualLevel();
 
-
+bool CheckForUpdates();
+string FindCloudsThumbDrive();
 
 //--------------------------------------
 static inline std::string &ltrim(std::string &s) {
