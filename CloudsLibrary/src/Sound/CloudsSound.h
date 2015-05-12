@@ -15,8 +15,11 @@
 #define PF_MAINACT_BUS_START 6
 #define PF_NUMBUSES 100
 
+#define TUNNEL_TRACK_KEY "tunnel"
+#define TUNNEL_TRACK_PATH (GetCloudsDataPath(true) + "sound/tunnel.mp3")
+
 typedef struct{
-	string trackPath;
+    string trackKey;
 	float startTime;
 	float mixLevel;
 } QueuedTrack;
@@ -76,10 +79,10 @@ class CloudsSound {
     // public data structures
     vector<lukePreset> presets;
 	
-	vector<string> renderedTracks;
-	float mixVolumeForTrack(string trackPath);
+    map<string, CloudsMedia *> renders;
+    float mixVolumeForTrack(string trackPath);
 	void setMixVolumeForTrack(string trackPath, float level);
-	void playImmediately(string trackPath);
+	void playImmediately(string trackKey);
 
 	void saveMixLevels();
 	float frontMixLevel;

@@ -22,12 +22,17 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
         startMusic(outskip, p.instruments[j], p.arg_a[j], p.arg_b[j], p.harmony, p.rhythm, dur, p.tempo, p.m_amp[j]*a, p.m_rev[j], j+(orchstep*5), p.env[j]);
     }
 #else
+
+    string key = ofToString(p.slotnumber);
+    CloudsMedia *media = renders[key];
+#ifdef VHX_MEDIA
+    media->fetchVhxSourceUrl();
+#endif
     
 	QueuedTrack t;
 	t.mixLevel = mixlevel;
 	t.startTime = ofGetElapsedTimef() + outskip;
-//	t.trackPath = GetCloudsDataPath(true) + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
-	t.trackPath = GetCloudsMediaPath() + "sound/renders/" + ofToString(p.slotnumber) + ".mp4";
+    t.trackKey = key;
 	queuedTracks.push_back(t);
 #endif
 }

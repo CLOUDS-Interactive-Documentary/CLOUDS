@@ -117,16 +117,6 @@ void CloudsSound::setup(){
 				perTrackMix[ split[0] ] = ofToFloat( split[1] );
 			}
 		}
-		
-		//load all rendered tracks
-//		ofDirectory dir(GetCloudsDataPath(true) + "sound/renders/");
-		ofDirectory dir(GetCloudsMediaPath() + "sound/renders/");
-		dir.allowExt("mp4");
-		dir.sort();
-		dir.listDir();
-		for(int i = 0; i < dir.numFiles(); i++){
-			renderedTracks.push_back(dir.getPath(i));
-		}
 
 		currentAct = NULL;
 	}
@@ -162,18 +152,37 @@ void CloudsSound::threadedFunction(){
 				backMixLevel = frontMixLevel;
 			}
 			
-			//		string filename = GetCloudsDataPath(true) + "sound/renders/" + ofToString(p.slotnumber) + ".mp3";
-			if(ofFile(track.trackPath).exists()){
-				frontPlayer->loadMovie(track.trackPath);
-				currentTrackKey = ofFilePath::getBaseName(track.trackPath);
-				frontMixAttenuate = mixVolumeForTrack(track.trackPath);
-				frontMixLevel = track.mixLevel;
-			}
-			else{
-				frontPlayer->loadMovie(GetCloudsMediaPath() + "sound/renders/1.mp4");
-				frontMixAttenuate = 1.0;
-				ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << track.trackPath;
-			}
+            if (track.trackKey == TUNNEL_TRACK_KEY) {
+                // Special case, always local.
+                frontPlayer->loadMovie(TUNNEL_TRACK_PATH);
+                currentTrackKey = TUNNEL_TRACK_KEY;
+                frontMixAttenuate = mixVolumeForTrack(TUNNEL_TRACK_KEY);
+                frontMixLevel = track.mixLevel;
+            }
+            else {
+                CloudsMedia *soundToPlay = renders[track.trackKey];
+#ifdef VHX_MEDIA
+                if(soundToPlay && soundToPlay->vhxSourceVideoUrl.size()){
+                    frontPlayer->loadMovie(soundToPlay->vhxSourceVideoUrl);
+#else
+                if(soundToPlay && ofFile(soundToPlay->sourceVideoFilePath).exists()){
+                    frontPlayer->loadMovie(soundToPlay->sourceVideoFilePath);
+#endif
+                    currentTrackKey = track.trackKey;
+                    frontMixAttenuate = mixVolumeForTrack(track.trackKey);
+                    frontMixLevel = track.mixLevel;
+                }
+                else{
+                    soundToPlay = renders.begin()->second;
+#ifdef VHX_MEDIA
+                    frontPlayer->loadMovie(soundToPlay->vhxSourceVideoUrl);
+#else
+                    frontPlayer->loadMovie(soundToPlay->sourceVideoFilePath);
+#endif
+                    frontMixAttenuate = 1.0;
+                    ofLogError("CloudsSound::schedulePreset") << "Failed to load preset: " << track.trackKey;
+                }
+            }
 
             frontPlayer->setLoopState(OF_LOOP_NORMAL);
 			frontPlayer->play();
@@ -251,7 +260,7 @@ void CloudsSound::update(ofEventArgs & args){
 
 void CloudsSound::update(){
 	
-    //threadedFunction();
+    threadedFunction();
     
 	return;
 
@@ -459,7 +468,7 @@ void CloudsSound::enterTunnel()
 	t.mixLevel = 1.0;
 	t.startTime = ofGetElapsedTimef();
     //JG: THE TUNNEL SOUND IS NOT STORED IN MEDIA PATH so it *always* works
-	t.trackPath = GetCloudsDataPath(true) + "sound/tunnel.mp3";
+    t.trackKey = TUNNEL_TRACK_KEY;
 	queuedTracks.push_back(t);
 
 #endif
@@ -511,11 +520,11 @@ void CloudsSound::enterClusterMap()
 }
  */
 
-void CloudsSound::playImmediately(string trackPath){
+void CloudsSound::playImmediately(string trackKey){
 	QueuedTrack t;
 	t.mixLevel = 1.0;
 	t.startTime = ofGetElapsedTimef();
-	t.trackPath = trackPath;
+	t.trackKey = trackKey;
 	queuedTracks.push_back(t);
 	
 }

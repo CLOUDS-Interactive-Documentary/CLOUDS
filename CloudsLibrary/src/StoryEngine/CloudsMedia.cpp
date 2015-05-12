@@ -23,8 +23,6 @@ CloudsMedia::CloudsMedia(){
 
 #ifdef VHX_MEDIA
 void CloudsMedia::fetchVhxSourceUrl(){
-
-    
     if (vhxId.empty()) {
         // No ID :(
         ofLogError("CloudsClip::fetchVhxSourceUrl") << "VHX ID not set! This shouldn't happen!";

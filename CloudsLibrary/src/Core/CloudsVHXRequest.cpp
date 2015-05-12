@@ -27,7 +27,7 @@ CloudsVHXRequest::CloudsVHXRequest()
     
     if (userpwd.size() == 0) {
         // Load and decrypt the user password from file.
-        string path = GetCloudsDataPath(true) + "vhx/usrpwd.bin";
+        string path = GetCloudsDataPath(true) + "vhx/user.bin";
         if (!CloudsCryptoLoadUser(userpwd, path)) {
             ofLogError("CloudsVHXRequest::CloudsVHXRequest") << "Cannot open file at " << path;
             return;
