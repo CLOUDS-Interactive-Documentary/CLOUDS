@@ -305,31 +305,32 @@ void CloudsSound::actCreated(CloudsActEventArgs& args){
 //	}
 	currentAct = args.act;
 	currentAct->registerEvents(this);
-}
-
-//--------------------------------------------------------------------
-void CloudsSound::actBegan(CloudsActEventArgs& args){
-	//Happens at the very beginning of a sequence
+    
+    //Happens at the very beginning of a sequence
     ofxTimeline& actTimeLine = currentAct->getTimeline();
     
     actTimeLine.addPage("sound",true);
     presetFlags = actTimeLine.addFlags("Presets");
-
-	//vector<CloudsSoundCue>& thecues = args.act->getSoundCues(); // copy the cues
-	
+    
+    //vector<CloudsSoundCue>& thecues = args.act->getSoundCues(); // copy the cues
+    
     currentCuesTotalDuration = args.act->getTimeline().getDurationInSeconds(); // how long
-	currentCues = args.act->getSoundCues();
-	cueFlagsAdded = false;
-	
-	cout << "***** ORDER OF OPERATIONS: ACT BEGAN SOUND " << args.act << endl;
-	
-	playCurrentCues();
-	
+    currentCues = args.act->getSoundCues();
+    cueFlagsAdded = false;
+    
+    cout << "***** ORDER OF OPERATIONS: ACT BEGAN SOUND " << args.act << endl;
+    
+    playCurrentCues();
+    
     actTimeLine.setCurrentPage(0);
     if(LUKEDEBUG) cout << "====================" << endl;
     if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
     if(LUKEDEBUG) cout << "====================" << endl;
+}
 
+//--------------------------------------------------------------------
+void CloudsSound::actBegan(CloudsActEventArgs& args){
+	
 }
 
 void CloudsSound::playCurrentCues(){
