@@ -463,16 +463,14 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         return;
     }
     
-    ofAVFoundationPlayer * curPimple = (ofAVFoundationPlayer *)currentPlayer->getPlayer().get();
-    ofAVFoundationPlayer * nextPimple = (ofAVFoundationPlayer *)currentPlayer->getPlayer().get();
-    
+    // EZ: Remove this once we've got buffering working.
     cout << "cur player position  " << currentPlayer->getPosition() << endl;
     cout << "cur player buffering " << currentPlayer->getBufferProgress() << endl;
-//    cout << "cur player ready     " << (curPimple != NULL ? ofToString(curPimple->isLikelyToKeepUp()) : " NULL") << endl;
+    cout << "cur player ready     " << currentPlayer->isBufferLikelyToKeepUp() << endl;
     cout << endl;
-    cout << "nxt player buffering " << nextPlayer->getBufferProgress() << endl;
     cout << "nxt player position  " << nextPlayer->getPosition() << endl;
-//    cout << "nxt player ready     " << (nextPimple != NULL ? ofToString(nextPimple->isLikelyToKeepUp()) : " NULL") << endl;
+    cout << "nxt player buffering " << nextPlayer->getBufferProgress() << endl;
+    cout << "nxt player ready     " << nextPlayer->isBufferLikelyToKeepUp() << endl;
     cout << endl;
     cout << endl;
     
@@ -526,8 +524,8 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 }
 
 //---------------------------------------------------------------
-bool CloudsRGBDVideoPlayer::isBuffering(){
-    return (getPlayer().isLoaded() && getPlayer().isBuffering());
+bool CloudsRGBDVideoPlayer::isBufferLikelyToKeepUp(){
+    return (getPlayer().isLoaded() && getPlayer().isBufferLikelyToKeepUp());
 }
 
 //---------------------------------------------------------------
