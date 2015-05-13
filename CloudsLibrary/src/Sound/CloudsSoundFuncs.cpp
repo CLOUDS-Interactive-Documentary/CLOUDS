@@ -25,6 +25,10 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
 
     string key = ofToString(p.slotnumber);
     CloudsMedia *media = renders[key];
+    if(media == NULL){
+        ofLogError("CloudsSound::schedulePreset") << "No sound media for key " << key;
+        return;
+    }
 #ifdef VHX_MEDIA
     media->fetchVhxSourceUrl();
 #endif

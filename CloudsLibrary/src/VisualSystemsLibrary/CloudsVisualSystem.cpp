@@ -255,6 +255,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
     switch (getVisualLevel()) {
         case FAST:
             numSamples = 0;
+            bleed = 0;
             bEnablePostFX = false;
             break;
         default:
@@ -4020,12 +4021,9 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 
 	
 	//THIS WAY TO DRAW FOR FANCY DK2 MIRRORING
-	
-	//oculusTarget.begin();
 	getSharedRenderTarget().begin();
 	oculusRift.draw();
 	getSharedRenderTarget().end();
-	//oculusTarget.end();
 	
 	ofMesh oculusTargetMesh1;
 	oculusTargetMesh1.addVertex(ofVec3f(0,0,0));
@@ -4039,25 +4037,6 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 
 	oculusTargetMesh1.addVertex(ofVec3f(1920,1080,0));
 	oculusTargetMesh1.addTexCoord(ofVec2f(1920,0));
-
-	/////////////////////////////////////////
-	/////////////////////////////////////////
-	//SIDEWAYS:
-	/*
-	ofMesh oculusTargetMesh2;
-
-	oculusTargetMesh2.addVertex(ofVec3f(1920+1080,0,0));
-	oculusTargetMesh2.addTexCoord(ofVec2f(0,1080));
-
-	oculusTargetMesh2.addVertex(ofVec3f(1920+1080,1920,0));
-	oculusTargetMesh2.addTexCoord(ofVec2f(1920,1080));
-
-	oculusTargetMesh2.addVertex(ofVec3f(1920,0,0));
-	oculusTargetMesh2.addTexCoord(ofVec2f(0,0));
-
-	oculusTargetMesh2.addVertex(ofVec3f(1920,1920,0));
-	oculusTargetMesh2.addTexCoord(ofVec2f(1920,0));
-	*/
 
 	ofMesh oculusTargetMesh2 = oculusTargetMesh1;
 	for(int i = 0; i < oculusTargetMesh2.getNumVertices(); i++){
