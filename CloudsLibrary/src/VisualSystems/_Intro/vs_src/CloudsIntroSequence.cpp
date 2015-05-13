@@ -1,6 +1,5 @@
 //
 //  IntroSequence.cpp
-//  ComputerTicker
 //
 //  Created by James George on 5/26/13.
 //
@@ -502,6 +501,7 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
             break;
         case CLOUDS_INTRO_VHX_WAITING_CODE:
             showVHXPrompt = true;
+            vhxPromptScreen = "Activating";
             break;
         case CLOUDS_INTRO_VHX_SHOWING_CODE:
             showVHXPrompt = true;
@@ -519,7 +519,10 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
             vhxPromptScreen = "Activated!";
             showVHXPrompt = true;
             break;
-            
+        case CLOUDS_INTRO_VHX_ERROR:
+            showVHXPrompt = true;
+            vhxPromptScreen = "Error contacting VHX - Check your internet connection and restart";
+            break;
         case CLOUDS_INTRO_MENU:
             researchMenuItem.visible = true;
             playMenuItem.visible = true;
@@ -955,7 +958,7 @@ void CloudsIntroSequence::vhxNotPurchase(){
     changeState(CLOUDS_INTRO_VHX_NO_PURCHASE);
 }
 
-void CloudsIntroSequence::vxhRentalExpired(){
+void CloudsIntroSequence::vhxRentalExpired(){
     successfullyPurchased = false;
     changeState(CLOUDS_INTRO_VHX_RENTAL_EXPIRED);
 }
@@ -968,6 +971,11 @@ void CloudsIntroSequence::vhxAuthenticated(){
     else{
         changeState(CLOUDS_INTRO_LOADING);
     }
+    ofToggleFullscreen();
+}
+
+void CloudsIntroSequence::vhxError(){
+    changeState(CLOUDS_INTRO_VHX_ERROR);
 }
 
 bool CloudsIntroSequence::userHasBegun(){
@@ -1419,6 +1427,14 @@ void CloudsIntroSequence::drawMenu(){
 
     ofPushStyle();
 
+    if(showVHXPrompt){
+        float stringWidth = menuFont.stringWidth(vhxPromptScreen);
+        
+        ofVec2f promptPos(getCanvasWidth()/2 - stringWidth/2,
+                          getCanvasHeight() / 2 + menuYOffset);
+        menuFont.drawString(vhxPromptScreen, promptPos.x, promptPos.y);
+    }
+    
     //draw loading bar
     if(currentState == CLOUDS_INTRO_LOADING){
         

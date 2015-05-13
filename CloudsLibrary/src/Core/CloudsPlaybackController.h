@@ -217,7 +217,8 @@ class CloudsPlaybackController : public ofThread {
     
 	bool bQuestionAsked;
 	bool forceCredits;
-	    
+    bool bVHXRentalExpired;
+    
     string exploreMapSelectedTopic;
     string explorePeopleSelectedSpeakerID;
     string exploreVisualsSelectedSystem;
