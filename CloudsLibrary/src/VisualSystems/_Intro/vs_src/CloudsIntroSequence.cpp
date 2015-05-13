@@ -58,6 +58,14 @@ CloudsIntroSequence::CloudsIntroSequence(){
     
     firstPlay = false;
     shouldArchiveAct = false;
+    loadDidFinish = false;
+    
+#ifdef VHX_MEDIA
+    successfullyPurchased = false;
+#else
+    successfullyPurchased = true;
+#endif
+
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
@@ -114,29 +122,31 @@ void CloudsIntroSequence::selfSetDefaults(){
 	perlinOffset = 0;
 	newResumeSpace = 0;
     
-//	clickTextActive = false;
-//	clickTextActiveTime = 0;
-//	clickToBeginAlpha = 0;
 	mouseLastMovedTime = 0;
-
 	cameraSwingDamp = 0.0;
-
     warpCamera.setNearClip(.01);
-	
 	timeSinceLastPrompt = 0;
-	
 	cursorAlpha = 1.0;
 
 	questionChannels.resize(4);
 	channelPauseTime.resize(4);
 	
-    changeState(CLOUDS_INTRO_LOADING);
-
+    loadDidFinish = false;
+    showVHXPrompt = false;
+    
 #ifdef OCULUS_RIFT
     bCursorInCenter = false;
     startTimeCursorInCenter = 0;
 #endif
-
+    
+#ifdef VHX_MEDIA
+    successfullyPurchased = false;
+    changeState(CLOUDS_INTRO_VHX_WAITING_CODE);
+#else
+    successfullyPurchased = true;
+    changeState(CLOUDS_INTRO_LOADING);
+#endif
+    
 }
 
 void CloudsIntroSequence::selfSetup(){
@@ -465,7 +475,9 @@ void CloudsIntroSequence::updateWaiting(){
 }
 
 void CloudsIntroSequence::loadingFinished(){
-    if(currentState == CLOUDS_INTRO_LOADING){
+    loadDidFinish = true;
+    
+    if(currentState == CLOUDS_INTRO_LOADING && successfullyPurchased){
         changeState(CLOUDS_INTRO_MENU);
     }
 }
@@ -474,6 +486,9 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
     currentState = newState;
     stateChangedTime = ofGetElapsedTimef();
     
+    showVHXPrompt = false;
+    vhxPromptScreen = "";
+
     for(int i = 0; i < menuItems.size(); i++){
         menuItems[i]->visible = false;
         menuItems[i]->hovered = false;
@@ -485,6 +500,26 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
     switch (newState) {
         case CLOUDS_INTRO_LOADING:
             break;
+        case CLOUDS_INTRO_VHX_WAITING_CODE:
+            showVHXPrompt = true;
+            break;
+        case CLOUDS_INTRO_VHX_SHOWING_CODE:
+            showVHXPrompt = true;
+            vhxPromptScreen = "Enter "+currentAuthCode+" on vhx.tv/activate/clouds to activate";
+            break;
+        case CLOUDS_INTRO_VHX_NO_PURCHASE:
+            showVHXPrompt = true;
+            vhxPromptScreen = "Purchase on VHX.";
+            break;
+        case CLOUDS_INTRO_VHX_RENTAL_EXPIRED:
+            vhxPromptScreen = "Rental Expired! Please reactivate.";
+            showVHXPrompt = true;
+            break;
+        case CLOUDS_INTRO_VHX_PACKAGE_VALIDATED:
+            vhxPromptScreen = "Activated!";
+            showVHXPrompt = true;
+            break;
+            
         case CLOUDS_INTRO_MENU:
             researchMenuItem.visible = true;
             playMenuItem.visible = true;
@@ -907,6 +942,32 @@ string CloudsIntroSequence::getQuestionText(){
 		return caughtQuestion->question;
 	}
 	return "";
+}
+
+//vhx stuff
+void CloudsIntroSequence::vhxSetAuthCode(string code){
+    currentAuthCode = code;
+    changeState(CLOUDS_INTRO_VHX_SHOWING_CODE);
+}
+
+void CloudsIntroSequence::vhxNotPurchase(){
+    successfullyPurchased = false;
+    changeState(CLOUDS_INTRO_VHX_NO_PURCHASE);
+}
+
+void CloudsIntroSequence::vxhRentalExpired(){
+    successfullyPurchased = false;
+    changeState(CLOUDS_INTRO_VHX_RENTAL_EXPIRED);
+}
+
+void CloudsIntroSequence::vhxAuthenticated(){
+    successfullyPurchased = true;
+    if(loadDidFinish){
+        changeState(CLOUDS_INTRO_MENU);
+    }
+    else{
+        changeState(CLOUDS_INTRO_LOADING);
+    }
 }
 
 bool CloudsIntroSequence::userHasBegun(){
