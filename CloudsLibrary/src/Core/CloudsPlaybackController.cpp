@@ -343,6 +343,7 @@ void CloudsPlaybackController::threadedFunction(){
 	mixer.setup();
 #endif
 	sound.setup(storyEngine);
+    parser.parseSounds(sound.renders);
 	sound.enterTunnel();
 	
 	if(!isThreadRunning()) return;
