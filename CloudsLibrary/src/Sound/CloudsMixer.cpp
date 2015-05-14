@@ -52,19 +52,19 @@ void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuff
     musicArgs.buffer = (float*)malloc(size);
     musicArgs.bufferSize = bufferSize;
     musicArgs.nChannels = nChannels;
-    //memset(musicArgs.buffer, 0, size);
+    memset(musicArgs.buffer, 0, size);
     
     diageticArgs.buffer = (float*)malloc(size);
     diageticArgs.bufferSize = bufferSize;
     diageticArgs.nChannels = nChannels;
-    //memset(diageticArgs.buffer, 0, size);
+    memset(diageticArgs.buffer, 0, size);
     
     size = nChannels*44100*sizeof(float); // 1 second delay line
     delayLine.buffer = (float*)malloc(size);
     delayLine.bufferSize = 44100;
     delayLine.nChannels = nChannels;
     delptr = 0;
-    //memset(delayLine.buffer, 0, size);
+    memset(delayLine.buffer, 0, size);
     
     // initialize OF audio streaming
     //ofSoundStreamStop();
@@ -119,6 +119,7 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
         return;
     }
     
+    
     // fill music buffer
     #ifdef RTCMIX
     memset(musicArgs.buffer, 0, size);
@@ -129,6 +130,7 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
     memset(diageticArgs.buffer, 0, size);
 	ofNotifyEvent(GetCloudsAudioEvents()->diageticAudioRequested, diageticArgs, this);
     
+
     
     // mix
     for (int i=0; i<bufferSize*nChannels; i++)
@@ -166,7 +168,10 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
         else if (output[i] < -1) {
             output[i] = -1;
         }
+//        output[i]  = 0;
     }
+
+
     
     // figure out when delay turns off
     if(GetCloudsAudioEvents()->dodelay)
@@ -181,6 +186,7 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
             dval = 0.;
         }
     }
+    
     
     // adjust fade
     if(fsig==1) // fading up
@@ -207,6 +213,7 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
             }
         }
     }
+
 
 
     /*

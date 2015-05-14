@@ -17,6 +17,7 @@
 
 class CloudsAudioEvents {
 public:
+    CloudsAudioEvents();
     ofEvent<ofAudioEventArgs>   musicAudioRequested;
     ofEvent<ofAudioEventArgs>   diageticAudioRequested;
     ofEvent<float>   fadeAudioDown;
