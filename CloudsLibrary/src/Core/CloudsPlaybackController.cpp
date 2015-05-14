@@ -296,7 +296,7 @@ void CloudsPlaybackController::setup(){
 #endif
     
 #ifdef VHX_MEDIA
-    availability.setPingAddress("www.vhx.tv");
+    //availability.setPingAddress("www.vhx.tv");
     availability.setup();
 #endif
 	
@@ -360,7 +360,7 @@ void CloudsPlaybackController::threadedFunction(){
 //	///SOUND
 	cout << "*****LOAD STEP SOUND" << endl;
 #ifdef TONIC_SOUNDS
-	mixer.setup();
+//	mixer.setup();
 #endif
 	sound.setup(storyEngine);
     parser.parseSounds(sound.renders);
@@ -412,11 +412,24 @@ void CloudsPlaybackController::finishSetup(){
 //--------------------------------------------------------------
 void CloudsPlaybackController::networkConnected(){
     ofLogNotice("CloudsPlaybackController::networkConnected");
+//    hud.hideNetworkDisconnected();
+    if(bShowingAct){
+        currentAct->unpause();
+        getSharedVideoPlayer().unpause();
+ 
+    }
 }
 
 //--------------------------------------------------------------
 void CloudsPlaybackController::networkDisconnected(){
     ofLogNotice("CloudsPlaybackController::networkDisconnected");
+//    hud.showNetworkDisconnected();
+    if(bShowingAct){
+        currentAct->pause();
+        getSharedVideoPlayer().pause();
+        
+    }
+
 }
 
 //--------------------------------------------------------------
