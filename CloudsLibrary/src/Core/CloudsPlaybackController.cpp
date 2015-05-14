@@ -247,11 +247,12 @@ void CloudsPlaybackController::setup(){
 	}
     interludeInterfaceFont.loadFont(GetMediumFontPath(), 14);
 
+
 	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
-    
+
 	cout << "*****LOAD STEP*** STARTING RGBD" << endl;
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();

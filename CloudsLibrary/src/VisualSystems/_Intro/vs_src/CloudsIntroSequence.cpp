@@ -64,7 +64,8 @@ CloudsIntroSequence::CloudsIntroSequence(){
 #else
     successfullyPurchased = true;
 #endif
-
+    
+    
 }
 
 void CloudsIntroSequence::selfSetDefaults(){

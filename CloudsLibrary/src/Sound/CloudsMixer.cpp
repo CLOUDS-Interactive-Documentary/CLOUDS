@@ -67,10 +67,8 @@ void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuff
     memset(delayLine.buffer, 0, size);
     
     // initialize OF audio streaming
-    //ofSoundStreamStop();
-    //ofSoundStreamClose();
     ofSoundStreamSetup(nChannels, 0, this, sampleRate, bufferSize, nBuffers);
-    ofSoundStreamStart();
+    //ofSoundStreamStart();
     
     ofAddListener(GetCloudsAudioEvents()->fadeAudioDown, this, &CloudsMixer::fadeDown);
     ofAddListener(GetCloudsAudioEvents()->fadeAudioUp, this, &CloudsMixer::fadeUp);
@@ -81,10 +79,10 @@ void CloudsMixer::setMusicVolume(float vol)
 	musicVol = vol;
 }
 
-void CloudsMixer::setDiageticVolume(float vol)
-{
-    diageticVol = vol;
-}
+//void CloudsMixer::setDiageticVolume(float vol)
+//{
+//    diageticVol = vol;
+//}
 
 ///LUKE STUBBS
 void CloudsMixer::fadeDown(float& time){
@@ -119,6 +117,8 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
         return;
     }
     
+    /////JG 5/14/2015 test no delay
+    GetCloudsAudioEvents()->dodelay = false;
     
     // fill music buffer
     #ifdef RTCMIX
@@ -131,7 +131,7 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
 	ofNotifyEvent(GetCloudsAudioEvents()->diageticAudioRequested, diageticArgs, this);
     
 
-    
+
     // mix
     for (int i=0; i<bufferSize*nChannels; i++)
     {

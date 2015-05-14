@@ -7,10 +7,6 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofBackground(0);
     
-//#ifdef TONIC_SOUNDS
-//    mixer.setup();
-//#endif
-
 #if defined(OCULUS_RIFT) && defined(TARGET_WIN32)
 //    ofSetWindowPosition(0,0);
 //    ofSetWindowShape(1920*2,1080);

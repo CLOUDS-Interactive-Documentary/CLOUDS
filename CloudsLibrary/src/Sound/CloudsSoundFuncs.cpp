@@ -1344,6 +1344,4 @@ void CloudsSound::stopMusic()
     ofNotifyEvent(GetCloudsAudioEvents()->fadeAudioDown, ftime);
     //RTcmixParseScoreFile("cmixclear.sco");
 	
-	//TEMP: should fade obvioz
-//	frontPlayer->stop();
 }

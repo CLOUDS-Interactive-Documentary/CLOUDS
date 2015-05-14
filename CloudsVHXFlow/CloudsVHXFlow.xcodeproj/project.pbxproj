@@ -12,7 +12,6 @@
 		031E27B61AA164F200424146 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27B41AA164F200424146 /* ofxLocalization.cpp */; };
 		031E27C71AA1653900424146 /* CloudsGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27C41AA1653900424146 /* CloudsGlobal.cpp */; };
 		031E27C81AA1653900424146 /* CloudsLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27C51AA1653900424146 /* CloudsLocalization.cpp */; };
-		0385CDDA1AFFE315000553F2 /* CloudsVHXAuthorization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDD81AFFE315000553F2 /* CloudsVHXAuthorization.cpp */; };
 		0385CE4A1AFFE5B4000553F2 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CE381AFFE5B4000553F2 /* ofxSSL.cpp */; };
 		0385CE4F1AFFE5D7000553F2 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0385CE4E1AFFE5D7000553F2 /* libcurl.dylib */; };
 		03D593F419469D4000FCFF7B /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D593D819469D4000FCFF7B /* libftgl.a */; };
@@ -202,8 +201,6 @@
 		031E27C41AA1653900424146 /* CloudsGlobal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsGlobal.cpp; path = ../CloudsLibrary/src/CloudsGlobal.cpp; sourceTree = "<group>"; };
 		031E27C51AA1653900424146 /* CloudsLocalization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsLocalization.cpp; path = ../CloudsLibrary/src/CloudsLocalization.cpp; sourceTree = "<group>"; };
 		031E27C61AA1653900424146 /* CloudsLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsLocalization.h; path = ../CloudsLibrary/src/CloudsLocalization.h; sourceTree = "<group>"; };
-		0385CDD81AFFE315000553F2 /* CloudsVHXAuthorization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVHXAuthorization.cpp; sourceTree = "<group>"; };
-		0385CDD91AFFE315000553F2 /* CloudsVHXAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVHXAuthorization.h; sourceTree = "<group>"; };
 		0385CDDB1AFFE33C000553F2 /* CloudsCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CloudsCrypto.h; path = ../CloudsLibrary/src/CloudsCrypto.h; sourceTree = "<group>"; };
 		0385CE041AFFE5B4000553F2 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0385CE051AFFE5B4000553F2 /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
@@ -621,8 +618,6 @@
 		031E27B71AA1652200424146 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				0385CDD91AFFE315000553F2 /* CloudsVHXAuthorization.h */,
-				0385CDD81AFFE315000553F2 /* CloudsVHXAuthorization.cpp */,
 			);
 			name = Core;
 			path = ../CloudsLibrary/src/Core;
@@ -1546,7 +1541,6 @@
 				E7211C0418A284400063EF97 /* ofxTLCurves.cpp in Sources */,
 				E7211BC718A2843F0063EF97 /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E7211BCA18A2843F0063EF97 /* ofxSolver.cpp in Sources */,
-				0385CDDA1AFFE315000553F2 /* CloudsVHXAuthorization.cpp in Sources */,
 				E7211C0318A284400063EF97 /* ofxTLColorTrack.cpp in Sources */,
 				03D5943619469DC500FCFF7B /* ofxObjLoader.cpp in Sources */,
 				E755D9951944230C00AA81C1 /* ofxUIToggle.cpp in Sources */,

@@ -1,8 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVHXAuthorization.h"
-#include "ofxFTGLFont.h"
 
 
 class testApp : public ofBaseApp{
@@ -22,6 +20,6 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
     
-    CloudsVHXAuthorization auth;
+
 	
 };
