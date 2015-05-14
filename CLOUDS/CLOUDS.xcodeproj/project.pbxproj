@@ -2659,6 +2659,8 @@
 		64574CEC1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
 		64574CED1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
 		64574CEE1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
+		64A9AD481B0523AD002FD9FB /* ofxAvailability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */; };
+		64A9AD491B0523AD002FD9FB /* ofxAvailability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */; };
 		64BDD5A41AFAE679002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
 		64BDD5A51AFAE8BE002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
 		64BDD5A61AFAE8BF002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
@@ -4134,6 +4136,8 @@
 		64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
 		64574C441B012B6300C1BC77 /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
 		64574CFB1B012FD500C1BC77 /* CloudsVHXEventArgs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsVHXEventArgs.h; sourceTree = "<group>"; };
+		64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAvailability.cpp; sourceTree = "<group>"; };
+		64A9AD391B0523AD002FD9FB /* ofxAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAvailability.h; sourceTree = "<group>"; };
 		64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMedia.cpp; sourceTree = "<group>"; };
 		64BDD5A31AFAE679002AEAEB /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
 		64BDD5BE1AFAEB5B002AEAEB /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
@@ -6341,6 +6345,24 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		64A9AD271B0523AC002FD9FB /* ofxAvailability */ = {
+			isa = PBXGroup;
+			children = (
+				64A9AD371B0523AD002FD9FB /* src */,
+			);
+			name = ofxAvailability;
+			path = ../../../addons/ofxAvailability;
+			sourceTree = "<group>";
+		};
+		64A9AD371B0523AD002FD9FB /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */,
+				64A9AD391B0523AD002FD9FB /* ofxAvailability.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		64BDD5AA1AFAEB5B002AEAEB /* ofxCrypto */ = {
 			isa = PBXGroup;
 			children = (
@@ -6475,6 +6497,7 @@
 				C15DCF481AB7956B007D1F44 /* ofxAnimationPrimitives */,
 				E7D82BC918BF0CEC00C1EB93 /* ofxAssimpModelLoader */,
 				E73DA332189F1CDC006C9E4E /* ofxAutoReloadedShader */,
+				64A9AD271B0523AC002FD9FB /* ofxAvailability */,
 				E73DA2D4189F1CDA006C9E4E /* ofxBillboard */,
 				A60F26C61AF136B400A1C863 /* ofxAudioDecoder */,
 				64CDB650194500EC00C56A13 /* ofxBinaryMesh */,
@@ -12939,6 +12962,7 @@
 				642722391AE81E5200A13289 /* CloudsSecondaryDisplayOSCSender.cpp in Sources */,
 				6427223A1AE81E5200A13289 /* CloudsLink.cpp in Sources */,
 				6427223B1AE81E5200A13289 /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */,
+				64A9AD481B0523AD002FD9FB /* ofxAvailability.cpp in Sources */,
 				6427223C1AE81E5200A13289 /* ControlParameter.cpp in Sources */,
 				6427223D1AE81E5200A13289 /* b2Body.cpp in Sources */,
 				6427223E1AE81E5200A13289 /* CloudsFCPParser.cpp in Sources */,
@@ -13767,6 +13791,7 @@
 				642725BD1AE81EAF00A13289 /* b2Collision.cpp in Sources */,
 				642725BE1AE81EAF00A13289 /* ofxSimpleSurface.cpp in Sources */,
 				64BDD5EF1AFAEB5B002AEAEB /* ofxCrypto.cpp in Sources */,
+				64A9AD491B0523AD002FD9FB /* ofxAvailability.cpp in Sources */,
 				642725BF1AE81EAF00A13289 /* CloudsHUDLabel.cpp in Sources */,
 				642725C01AE81EAF00A13289 /* OpenSteerDemo.cpp in Sources */,
 				642725C11AE81EAF00A13289 /* CloudsVisualSystemOpenP5Caustics.cpp in Sources */,

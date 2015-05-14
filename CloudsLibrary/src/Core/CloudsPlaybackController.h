@@ -27,6 +27,7 @@
 #include "CloudsPortal.h"
 
 #ifdef VHX_MEDIA
+#include "ofxAvailability.h"
 #include "CloudsVHXAuth.h"
 #endif
 
@@ -67,6 +68,9 @@ class CloudsPlaybackController : public ofThread {
 	void mouseReleased(ofMouseEventArgs & args);
     
 #ifdef VHX_MEDIA
+    void networkConnected();
+    void networkDisconnected();
+    
     void requestTokenComplete(CloudsVHXEventArgs& args);
     void refreshTokenComplete(CloudsVHXEventArgs& args);
     void requestCodeComplete(CloudsVHXEventArgs& args);
@@ -115,6 +119,7 @@ class CloudsPlaybackController : public ofThread {
 	CloudsHUDController hud;
 	CloudsTransitionController transitionController;
     #ifdef VHX_MEDIA
+    ofxAvailability availability;
     CloudsVHXAuth vhxAuth;
     #endif
 

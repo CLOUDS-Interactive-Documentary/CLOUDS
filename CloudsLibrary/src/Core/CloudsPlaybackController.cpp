@@ -195,6 +195,9 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
         ofRemoveListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
         
 #ifdef VHX_MEDIA
+        ofRemoveListener(ofxAvailability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
+        ofRemoveListener(ofxAvailability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
+        
         ofRemoveListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
         ofRemoveListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
         ofRemoveListener(vhxAuth.requestCodeComplete, this, &CloudsPlaybackController::requestCodeComplete);
@@ -205,6 +208,10 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 #endif
         
 	}
+    
+#ifdef VHX_MEDIA
+    availability.exit();
+#endif
 }
 
 //--------------------------------------------------------------------
@@ -232,6 +239,9 @@ void CloudsPlaybackController::setup(){
         ofAddListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
         
         #ifdef VHX_MEDIA
+        ofAddListener(ofxAvailability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
+        ofAddListener(ofxAvailability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
+        
         ofAddListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
         ofAddListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
         ofAddListener(vhxAuth.requestCodeComplete, this, &CloudsPlaybackController::requestCodeComplete);
@@ -279,6 +289,10 @@ void CloudsPlaybackController::setup(){
     
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
+#endif
+    
+#ifdef VHX_MEDIA
+    availability.setup();
 #endif
 	
 	cout << "*****LOAD STEP*** SHOWING INTRO" << endl;
@@ -390,6 +404,16 @@ void CloudsPlaybackController::finishSetup(){
 }
 
 #ifdef VHX_MEDIA
+//--------------------------------------------------------------
+void CloudsPlaybackController::networkConnected(){
+    ofLogNotice("CloudsPlaybackController::networkConnected");
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::networkDisconnected(){
+    ofLogNotice("CloudsPlaybackController::networkDisconnected");
+}
+
 //--------------------------------------------------------------
 void CloudsPlaybackController::requestTokenComplete(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::requestTokenComplete") << "Success? " << args.success << ", Token " << args.result;
