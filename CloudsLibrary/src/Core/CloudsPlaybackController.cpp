@@ -105,6 +105,9 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	loading = false;
 	showingResearchMode = false;
     
+    bShowingAct = false;
+    bBufferingVideo = false;
+
     cachedTransition = false;
     showedClusterMapNavigation = false;
 
@@ -840,7 +843,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		transitionController.transitionToClusterMap(1.0);
 	}
 	else if(showingClusterMap){
-        if( (showingClusterMapNavigation && clusterMap->isQuestionSelected() ) ||
+        if( ( showingClusterMapNavigation && clusterMap->isQuestionSelected() ) ||
             (!showingClusterMapNavigation && clusterMap->finishedTraversing) )
         {
             if(showingClusterMapNavigation){
@@ -889,8 +892,30 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 
 	getSharedVideoPlayer().showingLowerThirds = currentVisualSystem == rgbdVisualSystem;
 
-    if(rgbdVisualSystem->getRGBDVideoPlayer().clipJustFinished()){
-        hud.clipEnded();
+    if(bShowingAct){
+        if(rgbdVisualSystem->getRGBDVideoPlayer().clipJustFinished()){
+            hud.clipEnded();
+        }
+        if(getSharedVideoPlayer().isPlaying()){
+            
+            if(!bBufferingVideo && !getSharedVideoPlayer().isBufferLikelyToKeepUp()){
+                //pause
+                bBufferingVideo = true;
+                currentAct->pause();
+                getSharedVideoPlayer().pause();
+                //TODO:
+                //hud.showBuffering();
+            }
+            else if(bBufferingVideo && getSharedVideoPlayer().isBufferLikelyToKeepUp()){
+                //resume
+                currentAct->unpause();
+                bBufferingVideo = false;
+                getSharedVideoPlayer().unpause();
+                
+                //TODO:
+                //hud.hideBuffering();
+            }
+        }
     }
     
     ////////// HUD UPDATE AND PAUSE
@@ -900,6 +925,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     }
     
     if(returnToIntro){
+        bShowingAct = false;
         returnToIntro = false;
         transitionController.transitionToIntro(1.0);
     }
@@ -1040,6 +1066,8 @@ void CloudsPlaybackController::updateHUD(){
     //////////// GO TO EXPLORE THE MAP FROM INTERVIEW
     if(hud.isExploreMapHit()){
         canReturnToAct = true;
+        bShowingAct = false;
+        
         resumeState = currentVisualSystem == rgbdVisualSystem ? TRANSITION_INTERVIEW_IN : TRANSITION_VISUALSYSTEM_IN;
         if(currentClip != NULL){
             hud.selectPerson(currentClip->person);
@@ -1052,6 +1080,8 @@ void CloudsPlaybackController::updateHUD(){
     
     if(hud.isSeeMorePersonHit()){
         canReturnToAct = true;
+        bShowingAct = false;
+        
         resumeState = currentVisualSystem == rgbdVisualSystem ? TRANSITION_INTERVIEW_IN : TRANSITION_VISUALSYSTEM_IN;
         if(currentClip != NULL){
             hud.selectPerson(currentClip->person);
@@ -1079,6 +1109,7 @@ void CloudsPlaybackController::updateHUD(){
     if(hud.isResumeActHit() && canReturnToAct){
         canReturnToAct = false;
         resumingAct = true;
+        
         hud.animateOff();
         transitionController.transitionBackToAct(1.0, 1.0, resumeState);
     }
@@ -1238,9 +1269,9 @@ void CloudsPlaybackController::updateTransition(){
                 
                 ///LEAVING
             case TRANSITION_VISUALSYSTEM_OUT:
-                //if(!canReturnToAct){
+
                 hideVisualSystem();
-                //}
+
                 break;
                 
                 ///LEAVING
@@ -1785,11 +1816,30 @@ void CloudsPlaybackController::drawDebugOverlay(){
 	if(ofGetKeyPressed('-')){
 		currentAct->getTimeline().enableEvents();
 		currentAct->drawDebug();
+        drawVideoStatus();
 	}
 	else{
 		currentAct->getTimeline().disableEvents();
 	}
 	
+}
+
+void CloudsPlaybackController::drawVideoStatus(){
+    ofPushStyle();
+    
+    string statusString = "";
+    statusString += string("LOADED:   ") + (getSharedVideoPlayer().getPlayer().isLoaded() ? "YES" : "NO") + "\n";
+    statusString += string("PLAYING:  ") + (getSharedVideoPlayer().getPlayer().isPlaying() ? "YES" : "NO") + "\n";
+    statusString += string("PAUSED:   ") + (getSharedVideoPlayer().getPlayer().isPaused() ? "YES" : "NO") + "\n";
+    statusString += string("WILLPLAY: ") + (getSharedVideoPlayer().getPlayer().isBufferLikelyToKeepUp() ? "YES" : "NO") + "\n";
+    statusString += string("PERCENT:  ") + ofToString(getSharedVideoPlayer().getPlayer().getBufferProgress(), 5) + "\n";
+
+    ofSetColor(0);
+    ofRectangle(20,20, 200, 200);
+    ofSetColor(255);
+    ofDrawBitmapString(statusString, 30, 30);
+    
+    ofPopStyle();
 }
 
 #pragma story engine events
@@ -1825,6 +1875,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 	
 	resetInterludeVariables();
+    bShowingAct = true;
     
     if(args.act->startsWithVisualSystem()){
         actJustBegan = true;
@@ -2154,7 +2205,9 @@ void CloudsPlaybackController::showInterlude(){
     hud.clearQuestion();
     
 	currentVisualSystem = interludeSystem;
-        
+    
+    bShowingAct = false;
+    
 	showingInterlude = true;
 
 }
@@ -2307,6 +2360,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 	rgbdVisualSystem->playSystem();
 	currentVisualSystem = rgbdVisualSystem;
     resumingAct = false;
+    bShowingAct = true;
 }
 
 //--------------------------------------------------------------------

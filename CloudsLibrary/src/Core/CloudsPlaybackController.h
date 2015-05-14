@@ -218,6 +218,10 @@ class CloudsPlaybackController : public ofThread {
 	bool bQuestionAsked;
 	bool forceCredits;
     bool bVHXRentalExpired;
+    bool bShowingAct;
+    bool bBufferingVideo;
+    
+    void drawVideoStatus();
     
     string exploreMapSelectedTopic;
     string explorePeopleSelectedSpeakerID;
