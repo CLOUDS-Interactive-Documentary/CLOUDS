@@ -38,6 +38,7 @@ typedef enum {
     CLOUDS_INTRO_VHX_NO_PURCHASE,
     CLOUDS_INTRO_VHX_RENTAL_EXPIRED,
     CLOUDS_INTRO_VHX_PACKAGE_VALIDATED,
+    CLOUDS_INTRO_VHX_ERROR,
     
     CLOUDS_INTRO_MENU,
     CLOUDS_INTRO_MENU_NEW_RESUME,
@@ -123,9 +124,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     //vhx stuff
     void vhxSetAuthCode(string code);
     void vhxNotPurchase();
-    void vxhRentalExpired();
+    void vhxRentalExpired();
     void vhxAuthenticated();
-    
+    void vhxError();
+         
   protected:
 		
 	ofxUISuperCanvas* questionGui;

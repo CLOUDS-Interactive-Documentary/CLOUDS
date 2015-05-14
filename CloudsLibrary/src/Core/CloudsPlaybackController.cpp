@@ -100,7 +100,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
     crossfadeValue = 0;
     loadingAct = false;
 	shouldLoadAct = false;
-	
+    bVHXRentalExpired = false;
+    
 	loading = false;
 	showingResearchMode = false;
     
@@ -393,25 +394,45 @@ void CloudsPlaybackController::finishSetup(){
 void CloudsPlaybackController::requestTokenComplete(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::requestTokenComplete") << "Success? " << args.success << ", Token " << args.result;
     // TODO: You probably won't need to do anything here, these are automatically saved to disk.
+    if(!args.success){
+        introSequence->vhxError();
+        return;
+    }
+    
 }
 
 //--------------------------------------------------------------
 void CloudsPlaybackController::refreshTokenComplete(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::refreshTokenComplete") << "Success? " << args.success << ", Token " << args.result;
     // TODO: You probably won't need to do anything here, these are automatically saved to disk.
+    if(!args.success){
+        introSequence->vhxError();
+        return;
+    }
+    
 }
 
 //--------------------------------------------------------------
 void CloudsPlaybackController::requestCodeComplete(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::requestCodeComplete") << "Success? " << args.success << ", Code " << args.result;
     // TODO: Call linkCode() to open a browser window and link it to your account.
+    if(!args.success){
+        introSequence->vhxError();
+        return;
+    }
+    introSequence->vhxSetAuthCode(args.result);
     vhxAuth.linkCode();
+
 }
 
 //--------------------------------------------------------------
 void CloudsPlaybackController::linkCodeComplete(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::linkCodeComplete") << "Success? " << args.success << ", Token " << args.result;
-    // TODO: Call verifyPackage() to ensure you've got the CLOUDS package in your account.
+    if(!args.success){
+        introSequence->vhxError();
+        return;
+    }
+
     vhxAuth.verifyPackage();
 }
 
@@ -419,19 +440,34 @@ void CloudsPlaybackController::linkCodeComplete(CloudsVHXEventArgs& args){
 void CloudsPlaybackController::verifyPackageComplete(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::verifyPackageComplete") << "Success? " << args.success << ", State " << args.result;
     // TODO: Make sure args.result is either "purchase" or "rental" to proceed.
+    if(!args.success){
+        introSequence->vhxError();
+        return;
+    }
+    if(args.result == "purchase" || args.result == "rental"){
+        introSequence->vhxAuthenticated();
+    }
+    else if(args.result == "expired"){
+        introSequence->vhxRentalExpired();
+    }
+    else if(args.result == "inactive"){
+        introSequence->vhxNotPurchase();
+    }
 }
 
 //--------------------------------------------------------------
 void CloudsPlaybackController::codeExpired(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::codeExpired");
-    // TODO: You probably won't need to do anything here, but you can pre-emptively request a new code if you want.
+    // You probably won't need to do anything here, but you can pre-emptively request a new code if you want.
     //vhxAuth.requestCode();
 }
 
 //--------------------------------------------------------------
 void CloudsPlaybackController::packageExpired(CloudsVHXEventArgs& args){
     ofLogNotice("CloudsPlaybackController::packageExpired");
-    // TODO: Stop playing CLOUDS! We need more money to continue.
+    // Stop playing CLOUDS! We need more money to continue.
+    returnToIntro = true;
+    bVHXRentalExpired = true;
 }
 #endif
 
@@ -1326,7 +1362,6 @@ void CloudsPlaybackController::updateTransition(){
                 introSequence->setup();
 				introSequence->setStartQuestions(startingNodes);
                 introSequence->firstPlay = false;
-                
 #ifdef OCULUS_RIFT
                 introSequence->hud = &hud;
                 introSequence->setupHUDGui();
@@ -1335,9 +1370,16 @@ void CloudsPlaybackController::updateTransition(){
                 
                 hud.setHudEnabled(true);
                 
-                showIntro();
+
                 introSequence->loadingFinished();
- 
+                if(bVHXRentalExpired){
+                    introSequence->vhxRentalExpired();
+                    bVHXRentalExpired = false;
+                }
+                else{
+                    introSequence->vhxAuthenticated();
+                }
+                showIntro();
                 break;
                 
                 //starting

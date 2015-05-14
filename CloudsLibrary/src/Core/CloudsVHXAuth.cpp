@@ -102,22 +102,24 @@ void CloudsVHXAuth::exit()
 void CloudsVHXAuth::update(ofEventArgs& args)
 {
     if (bNotifyComplete) {
-        if (mode == REQUEST_TOKEN) {
+        Mode completedMode = mode;
+        mode = WAITING;
+        if (completedMode == REQUEST_TOKEN) {
             ofNotifyEvent(requestTokenComplete, completeArgs);
         }
-        else if (mode == REFRESH_TOKEN) {
+        else if (completedMode == REFRESH_TOKEN) {
             ofNotifyEvent(refreshTokenComplete, completeArgs);
         }
-        else if (mode == REQUEST_CODE) {
+        else if (completedMode == REQUEST_CODE) {
             ofNotifyEvent(requestCodeComplete, completeArgs);
         }
-        else if (mode == LINK_CODE) {
+        else if (completedMode == LINK_CODE) {
             ofNotifyEvent(linkCodeComplete, completeArgs);
         }
-        else if (mode == VERIFY_PACKAGE) {
+        else if (completedMode == VERIFY_PACKAGE) {
             ofNotifyEvent(verifyPackageComplete, completeArgs);
         }
-        mode = WAITING;
+
         bNotifyComplete = false;
     }
     
@@ -250,6 +252,9 @@ void CloudsVHXAuth::verifyPackage()
 //--------------------------------------------------------------
 void CloudsVHXAuth::threadedFunction()
 {
+    completeArgs.success = false;
+    completeArgs.result = "";
+    
     if (mode == REQUEST_TOKEN || mode == REFRESH_TOKEN) {
         _ssl.setup();
         _ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath(true) + "vhx/cacert.pem"));
@@ -343,19 +348,19 @@ void CloudsVHXAuth::threadedFunction()
         ss << "?client_id=" << _clientId;
         ss << "&client_secret=" << _clientSecret;
         
-        _ssl.setup();
-        _ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath(true) + "vhx/cacert.pem"));
-        _ssl.setURL(ss.str());
-        
         completeArgs.success = false;
 
         bool bWaitForLink = true;
         while (bWaitForLink && isThreadRunning()) {
+            
+            _ssl.setup();
+            _ssl.setOpt(CURLOPT_CAINFO, ofToDataPath(GetCloudsDataPath(true) + "vhx/cacert.pem"));
+            _ssl.setURL(ss.str());
             _ssl.perform();
             
             string response = _ssl.getResponseBody();
             ofLogVerbose("CloudsVHXAuth::threadedFunction") << "Response:" << endl << response;
-            
+
             ofxJSONElement json;
             if (json.parse(response)) {
                 if (json.isMember("access_token")) {
@@ -383,7 +388,7 @@ void CloudsVHXAuth::threadedFunction()
             
             _ssl.clear();
             
-            sleep(10);
+            ofSleepMillis(500);
         }
         
         bNotifyComplete = true;
@@ -401,6 +406,7 @@ void CloudsVHXAuth::threadedFunction()
         
         string response = _ssl.getResponseBody();
         ofLogVerbose("CloudsVHXAuth::threadedFunction") << "Response:" << endl << response;
+        cout << "RESPONSE " << response << endl;
         
         completeArgs.success = false;
 
@@ -410,92 +416,99 @@ void CloudsVHXAuth::threadedFunction()
                 const ofxJSONElement& embedded = json["_embedded"];
                 if (embedded.isMember("packages")) {
                     const ofxJSONElement& packages = embedded["packages"];
-                    for (int i = 0; i < packages.size(); ++i) {
-                        const ofxJSONElement& element = packages[i];
-                        if (element.isMember("id")) {
-                            string packageId = element["id"].asString();
-                            if (packageId == _packageId) {
-                                // Found matching package, check that purchase is valid.
-                                if (element.isMember("purchase_type")) {
-                                    string purchaseType = element["purchase_type"].asString();
-                                    if (purchaseType == "purchase") {
-                                        state = PURCHASE;
-                                        completeArgs.success = true;
-                                        completeArgs.result = "purchase";
-                                        break;
-                                    }
-                                    else if (purchaseType == "rental") {
-                                        if (element.isMember("expires_at")) {
-                                            if (element["expires_at"].isNull()) {
-                                                // No expiry, assume we're good.
-                                                state = RENTAL;
-                                                completeArgs.success = true;
-                                                completeArgs.result = "rental";
-                                                break;
-                                            }
-                                            else {
-                                                // Parse the expiry date.
-                                                Poco::DateTime dt;
-                                                int tzd;
-                                                if (Poco::DateTimeParser::tryParse(element["expires_at"].asString(), dt, tzd)) {
-                                                    Poco::LocalDateTime ldt(tzd, dt);
-                                                    Poco::Timestamp expiryTime = ldt.timestamp();
-                                                    Poco::Timestamp nowTime;
-                                                    
-                                                    // Make sure the rental is valid.
-                                                    if (nowTime > expiryTime) {
-                                                        // Expires in the future, we're good.
-                                                        _packageExpiry = expiryTime.epochTime();
+                    if(packages.size() > 0){
+                        for (int i = 0; i < packages.size(); ++i) {
+                            const ofxJSONElement& element = packages[i];
+                            if (element.isMember("id")) {
+                                string packageId = element["id"].asString();
+                                if (packageId == _packageId) {
+                                    // Found matching package, check that purchase is valid.
+                                    if (element.isMember("purchase_type")) {
+                                        string purchaseType = element["purchase_type"].asString();
+                                        if (purchaseType == "purchase") {
+                                            state = PURCHASE;
+                                            completeArgs.success = true;
+                                            completeArgs.result = "purchase";
+                                            break;
+                                        }
+                                        else if (purchaseType == "rental") {
+                                            if (element.isMember("expires_at")) {
+                                                if (element["expires_at"].isNull()) {
+                                                    // No expiry, assume we're good.
+                                                    state = RENTAL;
+                                                    completeArgs.success = true;
+                                                    completeArgs.result = "rental";
+                                                    break;
+                                                }
+                                                else {
+                                                    // Parse the expiry date.
+                                                    Poco::DateTime dt;
+                                                    int tzd;
+                                                    if (Poco::DateTimeParser::tryParse(element["expires_at"].asString(), dt, tzd)) {
+                                                        Poco::LocalDateTime ldt(tzd, dt);
+                                                        Poco::Timestamp expiryTime = ldt.timestamp();
+                                                        Poco::Timestamp nowTime;
                                                         
-                                                        state = RENTAL;
-                                                        completeArgs.success = true;
-                                                        completeArgs.result = "rental";
-                                                        break;
+                                                        // Make sure the rental is valid.
+                                                        if (nowTime > expiryTime) {
+                                                            // Expires in the future, we're good.
+                                                            _packageExpiry = expiryTime.epochTime();
+                                                            
+                                                            state = RENTAL;
+                                                            completeArgs.success = true;
+                                                            completeArgs.result = "rental";
+                                                            break;
+                                                        }
+                                                        else {
+                                                            // Expired, no good.
+                                                            state = EXPIRED;
+                                                            completeArgs.success = true;
+                                                            completeArgs.result = "expired";
+                                                            break;
+                                                        }
                                                     }
                                                     else {
-                                                        // Expired, no good.
+                                                        // Could not parse expiry, assume no good.
                                                         state = EXPIRED;
                                                         completeArgs.success = true;
                                                         completeArgs.result = "expired";
                                                         break;
                                                     }
                                                 }
-                                                else {
-                                                    // Could not parse expiry, assume no good.
-                                                    state = EXPIRED;
-                                                    completeArgs.success = true;
-                                                    completeArgs.result = "expired";
-                                                    break;
-                                                }
+                                            }
+                                            else {
+                                                // No expiry, assume we're good.
+                                                state = RENTAL;
+                                                completeArgs.success = true;
+                                                completeArgs.result = "rental";
+                                                break;
                                             }
                                         }
                                         else {
-                                            // No expiry, assume we're good.
-                                            state = RENTAL;
+                                            // Not a rental or purchase, assume no good.
+                                            state = INACTIVE;
                                             completeArgs.success = true;
-                                            completeArgs.result = "rental";
+                                            completeArgs.result = "inactive";
                                             break;
                                         }
                                     }
                                     else {
-                                        // Not a rental or purchase, assume no good.
-                                        state = INACTIVE;
-                                        completeArgs.success = true;
-                                        completeArgs.result = "inactive";
-                                        break;
+                                        ofLogError("CloudsVHXAuth::threadedFunction") << "Unexpected JSON result, 'purchase_type' not found:" << endl << response;
                                     }
                                 }
                                 else {
-                                    ofLogError("CloudsVHXAuth::threadedFunction") << "Unexpected JSON result, 'purchase_type' not found:" << endl << response;
+                                    ofLogNotice("CloudsVHXAuth::threadedFunction") << "Skipping package " << packageId;
                                 }
                             }
                             else {
-                                ofLogNotice("CloudsVHXAuth::threadedFunction") << "Skipping package " << packageId;
+                                ofLogError("CloudsVHXAuth::threadedFunction") << "Unexpected JSON result, 'id' not found:" << endl << response;
                             }
                         }
-                        else {
-                            ofLogError("CloudsVHXAuth::threadedFunction") << "Unexpected JSON result, 'id' not found:" << endl << response;
-                        }
+                    }
+                    else {
+                        state = INACTIVE;
+                        completeArgs.success = true;
+                        completeArgs.result = "inactive";
                     }
                 }
                 else {
@@ -509,7 +522,8 @@ void CloudsVHXAuth::threadedFunction()
         else {
             ofLogError("CloudsVHXAuth::threadedFunction") << "Unable to parse JSON:" << endl << response;
         }
-
+        
+        _ssl.clear();
         bNotifyComplete = true;
     }
     else {

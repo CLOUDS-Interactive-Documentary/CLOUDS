@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsPlaybackController.h"
+//#include "CloudsMixer.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -20,7 +21,8 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	
 	CloudsPlaybackController player;
-
+    //CloudsMixer mixer;
+    
 	bool firstFrame;
 	bool playerSetup;
 	bool shouldSetupPlayer;
