@@ -347,11 +347,21 @@ void CloudsHUDController::calculateFontSizes(){
     
     //dynamic backings
     //
-    hudLabelMap["QuestionTextBox_1_"]->bDynamicBacking = true;
-    hudLabelMap["QuestionTextBox_1_"]->dynamicBackingMesh = &layers[CLOUDS_HUD_QUESTION]->svg.getMeshByID("QuestionBacking")->mesh;
-    hudLabelMap["QuestionTextBox_1_"]->dynamicBackingBounds = layers[CLOUDS_HUD_QUESTION]->svg.getMeshByID("QuestionBacking")->bounds;
+    setupBacking("QuestionTextBox_1_", CLOUDS_HUD_QUESTION, "QuestionBacking");
+    setupBacking("BylineTopicTextBoxBottom", CLOUDS_HUD_LOWER_THIRD, "BylineTopicBackingBottom");
+    setupBacking("BylineTopicTextBoxTop", CLOUDS_HUD_LOWER_THIRD, "BylineTopicBackingTop");
+
+    setupBacking("VSCreditsTextBoxTop", CLOUDS_HUD_LOWER_THIRD, "VSCreditsBackingTop");
+    setupBacking("VSCreditsTextBoxBottom", CLOUDS_HUD_LOWER_THIRD, "VSCreditsTextBoxBottom");
     
-    
+}
+
+void CloudsHUDController::setupBacking(string labelName, CloudsHUDLayerSet layer, string backingName){
+    hudLabelMap[labelName]->bDynamicBacking = true;
+    hudLabelMap[labelName]->dynamicBackingMesh = &layers[layer]->svg.getMeshByID(backingName)->mesh;
+    hudLabelMap[labelName]->dynamicBackingBounds =  layers[layer]->svg.getMeshByID(backingName)->bounds;
+ 
+
 }
 
 CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,

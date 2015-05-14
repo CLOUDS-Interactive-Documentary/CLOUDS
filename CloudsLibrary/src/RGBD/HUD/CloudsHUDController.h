@@ -210,7 +210,8 @@ class CloudsHUDController {
    	void buildLayerSets();
     void calculateFontSizes();
     int getFontSizeForMesh( SVGMesh* textMesh );
- 
+    void setupBacking(string labelName, CloudsHUDLayerSet layer, string backingName);
+    
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
     

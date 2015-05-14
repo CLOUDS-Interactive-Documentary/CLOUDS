@@ -167,6 +167,7 @@ void CloudsHUDLabel::setText(const string& newText, bool forceOn){
     }
     
 
+    //TODO: what to do if text is nothing?
     if(bDynamicBacking && dynamicBackingMesh != NULL && dynamicBackingMesh->getNumVertices() >= 4){
         
         //sample the layout to get a margin to apply to the right edge also
