@@ -292,6 +292,7 @@ void CloudsPlaybackController::setup(){
 #endif
     
 #ifdef VHX_MEDIA
+    availability.setPingAddress("www.vhx.tv");
     availability.setup();
 #endif
 	
