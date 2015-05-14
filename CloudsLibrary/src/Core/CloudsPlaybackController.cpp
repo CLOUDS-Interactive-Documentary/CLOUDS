@@ -896,25 +896,23 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(rgbdVisualSystem->getRGBDVideoPlayer().clipJustFinished()){
             hud.clipEnded();
         }
-        if(getSharedVideoPlayer().isPlaying()){
+        
+        if(getSharedVideoPlayer().isPlaying() && !bBufferingVideo && !getSharedVideoPlayer().isBufferLikelyToKeepUp()){
+            //pause
+            bBufferingVideo = true;
+            currentAct->pause();
+            getSharedVideoPlayer().pause();
+            //TODO:
+            //hud.showBuffering();
+        }
+        else if(bBufferingVideo && getSharedVideoPlayer().isBufferLikelyToKeepUp()){
+            //resume
+            currentAct->unpause();
+            bBufferingVideo = false;
+            getSharedVideoPlayer().unpause();
             
-            if(!bBufferingVideo && !getSharedVideoPlayer().isBufferLikelyToKeepUp()){
-                //pause
-                bBufferingVideo = true;
-                currentAct->pause();
-                getSharedVideoPlayer().pause();
-                //TODO:
-                //hud.showBuffering();
-            }
-            else if(bBufferingVideo && getSharedVideoPlayer().isBufferLikelyToKeepUp()){
-                //resume
-                currentAct->unpause();
-                bBufferingVideo = false;
-                getSharedVideoPlayer().unpause();
-                
-                //TODO:
-                //hud.hideBuffering();
-            }
+            //TODO:
+            //hud.hideBuffering();
         }
     }
     
