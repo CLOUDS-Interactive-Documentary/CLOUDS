@@ -20,6 +20,7 @@ ${NEWPREFIX}ofxAudioDecoder
 ${NEWPREFIX}ofxAudioFeatures
 ${NEWPREFIX}ofxAudioUnit
 ${NEWPREFIX}ofxAutoReloadedShader
+${NEWPREFIX}ofxAvailability
 ${NEWPREFIX}ofxAVFVideoPlayer
 ${NEWPREFIX}ofxBillboard
 ${NEWPREFIX}ofxBinaryMesh

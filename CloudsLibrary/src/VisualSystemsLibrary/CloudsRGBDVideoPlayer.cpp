@@ -85,14 +85,17 @@ CloudsRGBDVideoPlayer::~CloudsRGBDVideoPlayer(){
 bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume){
 
 	cout << "*** SETTING UP CLIP " << calibrationXMLPath << endl;
-    //if (!ofFile::doesFileExist(videoPath)){
-    //	ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
-    //    return false;
-    //}
-
+#ifndef VHX_MEDIA
+    if (!ofFile::doesFileExist(videoPath)){
+    	ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
+        return false;
+    }
+#endif
+    
 	if(!ofFile::doesFileExist(calibrationXMLPath)){
     	ofLogError("CloudsRGBDVideoPlayer::setup") << "XML path " << calibrationXMLPath << " failed to load";
-		return false;
+        bLoadResult = false;
+		return bLoadResult;
 	}
 
 	cout << "*** SETTING UP CLIP FILES ARE PRESENT " << endl;
@@ -108,7 +111,6 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
     nextOffsetTime = offsetTime;
     nextClipVolume = clipVolume;
 
-	clipPrerolled = true;
 
     nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
 
@@ -117,12 +119,13 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
         ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << nextVideoPath << " failed to load";
         bLoadResult = false;
         clipPrerolled = false;
-        return;
+        return bLoadResult;
     }
     
+    clipPrerolled = true;
     
     //TODO may be causing problems with async videos
-    nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
+    //nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
     
     cout << "prerolled clip " << nextVideoPath << " to time " << (nextOffsetTime / nextPlayer->getDuration()) << endl;
     
@@ -463,18 +466,20 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         return;
     }
     
-    ofAVFoundationPlayer * curPimple = (ofAVFoundationPlayer *)currentPlayer->getPlayer().get();
-    ofAVFoundationPlayer * nextPimple = (ofAVFoundationPlayer *)currentPlayer->getPlayer().get();
     
-//    cout << "cur player position  " << currentPlayer->getPosition() << endl;
-//    cout << "cur player buffering " << currentPlayer->getBufferProgress() << endl;
-//    cout << "cur player ready     " << (curPimple != NULL ? ofToString(curPimple->isLikelyToKeepUp()) : " NULL") << endl;
-//    cout << endl;
-//    cout << "nxt player buffering " << nextPlayer->getBufferProgress() << endl;
-//    cout << "nxt player position  " << nextPlayer->getPosition() << endl;
-//    cout << "nxt player ready     " << (nextPimple != NULL ? ofToString(nextPimple->isLikelyToKeepUp()) : " NULL") << endl;
-//    cout << endl;
-//    cout << endl;
+    // EZ: Remove this once we've got buffering working.
+//    if(currentPlayer->getBufferProgress() < 1.0){
+//        cout << "cur player position  " << currentPlayer->getPosition() << endl;
+//        cout << "cur player buffering " << currentPlayer->getBufferProgress() << endl;
+//        cout << "cur player ready     " << currentPlayer->isBufferLikelyToKeepUp() << endl;
+//    }
+//    if(clipPrerolled && nextPlayer->getBufferProgress() < 1.0){
+//        cout << "nxt player position  " << nextPlayer->getPosition() << endl;
+//        cout << "nxt player buffering " << nextPlayer->getBufferProgress() << endl;
+//        cout << "nxt player ready     " << nextPlayer->isBufferLikelyToKeepUp() << endl;
+//        cout << endl;
+//    }
+
     
 	if(playingVO){
         getPlayer().setVolume(1.0);
@@ -526,8 +531,8 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 }
 
 //---------------------------------------------------------------
-bool CloudsRGBDVideoPlayer::isBuffering(){
-    return (getPlayer().isLoaded() && getPlayer().isBuffering());
+bool CloudsRGBDVideoPlayer::isBufferLikelyToKeepUp(){
+    return (getPlayer().isLoaded() && getPlayer().isBufferLikelyToKeepUp());
 }
 
 //---------------------------------------------------------------

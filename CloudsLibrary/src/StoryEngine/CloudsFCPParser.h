@@ -41,7 +41,9 @@ class CloudsFCPParser {
 	void parseClusterNetwork(const string& fileName);
 	void parseProjectExamples(const string& filename);
     void parseTopicAssociations(const string& filename);
+    
 #ifdef VHX_MEDIA
+    void trimVHXId(string& str);
     void parseVHXIds(const string& filename, map<string, string>& idMap);
     void mapVHXMedia();
 #endif
@@ -167,11 +169,10 @@ class CloudsFCPParser {
     //float getCohesionIndexForKeyword(const string&  keyword);
     //float getDistanceFromAdjacentKeywords(const string&  keyword1, const string&  keyword2);
     
-  protected:
-#ifdef VHX_MEDIA
-    void trimVHXId(string& str);
-#endif
+#pragma mark Sound
+    void parseSounds(map<string, CloudsMedia *>& sounds);
     
+  protected:
     void reciprocateSuppressions(CloudsClip* clip );
     
     string xmlDirectory;
@@ -204,7 +205,7 @@ class CloudsFCPParser {
 
     vector<string> keywordVector;
     vector<string> contentKeywordVector;
-	
+    
 	vector<int> questionIndeces;
 	vector<int> startQuestionIndeces;
 	vector<int> hasMediaAssetIndeces;

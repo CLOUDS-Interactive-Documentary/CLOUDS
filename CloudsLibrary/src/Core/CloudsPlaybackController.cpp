@@ -1,4 +1,4 @@
-
+    
 #include "CloudsPlaybackController.h"
 
 #include "CloudsLocalization.h"
@@ -100,10 +100,14 @@ CloudsPlaybackController::CloudsPlaybackController(){
     crossfadeValue = 0;
     loadingAct = false;
 	shouldLoadAct = false;
-	
+    bVHXRentalExpired = false;
+    
 	loading = false;
 	showingResearchMode = false;
     
+    bShowingAct = false;
+    bBufferingVideo = false;
+
     cachedTransition = false;
     showedClusterMapNavigation = false;
 
@@ -192,15 +196,31 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
         
         ofRemoveListener(CloudsVisualSystemRGBD::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
         ofRemoveListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
+        
+#ifdef VHX_MEDIA
+        ofRemoveListener(ofxAvailability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
+        ofRemoveListener(ofxAvailability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
+        
+        ofRemoveListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
+        ofRemoveListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
+        ofRemoveListener(vhxAuth.requestCodeComplete, this, &CloudsPlaybackController::requestCodeComplete);
+        ofRemoveListener(vhxAuth.linkCodeComplete, this, &CloudsPlaybackController::linkCodeComplete);
+        ofRemoveListener(vhxAuth.verifyPackageComplete, this, &CloudsPlaybackController::verifyPackageComplete);
+        ofRemoveListener(vhxAuth.codeExpired, this, &CloudsPlaybackController::codeExpired);
+        ofRemoveListener(vhxAuth.packageExpired, this, &CloudsPlaybackController::packageExpired);
+#endif
+        
 	}
+    
+#ifdef VHX_MEDIA
+    availability.exit();
+#endif
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(){
     
 	loading = true;
-
-
 
     if(!eventsRegistered){
 		
@@ -221,15 +241,28 @@ void CloudsPlaybackController::setup(){
         ofAddListener(CloudsVisualSystemRGBD::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
         ofAddListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
         
+        #ifdef VHX_MEDIA
+        ofAddListener(ofxAvailability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
+        ofAddListener(ofxAvailability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
+        
+        ofAddListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
+        ofAddListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
+        ofAddListener(vhxAuth.requestCodeComplete, this, &CloudsPlaybackController::requestCodeComplete);
+        ofAddListener(vhxAuth.linkCodeComplete, this, &CloudsPlaybackController::linkCodeComplete);
+        ofAddListener(vhxAuth.verifyPackageComplete, this, &CloudsPlaybackController::verifyPackageComplete);
+        ofAddListener(vhxAuth.codeExpired, this, &CloudsPlaybackController::codeExpired);
+        ofAddListener(vhxAuth.packageExpired, this, &CloudsPlaybackController::packageExpired);
+        #endif
+        
 	}
-	
     interludeInterfaceFont.loadFont(GetMediumFontPath(), 14);
+
 
 	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
-    
+
 	cout << "*****LOAD STEP*** STARTING RGBD" << endl;
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
@@ -261,6 +294,11 @@ void CloudsPlaybackController::setup(){
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
+    
+#ifdef VHX_MEDIA
+    //availability.setPingAddress("www.vhx.tv");
+    availability.setup();
+#endif
 	
 	cout << "*****LOAD STEP*** SHOWING INTRO" << endl;
 	showIntro();
@@ -273,6 +311,22 @@ void CloudsPlaybackController::setup(){
 void CloudsPlaybackController::threadedFunction(){
     introSequence->percentLoaded = 0.0;
 
+    
+    #ifdef VHX_MEDIA
+    // If tokens are saved to disk, they will be loaded automatically and the package
+    // will be verified. When that's done, the verifyPackageComplete() callback will
+    // get triggered, make sure args.result is either "purchase" or "rental" to proceed.
+    //
+    // If no tokens are found, you'll need to get a code and verify it in a browser by
+    // calling requestCode() on CloudsVHXAuth. Once you get the code, call linkCode()
+    // to open a browser window and link it to your account.
+    
+    if (!vhxAuth.setup()) {
+        vhxAuth.requestCode();
+    }
+    
+    #endif
+    
     
 	cout << "*****LOAD STEP PARSER" << endl;
 
@@ -309,6 +363,7 @@ void CloudsPlaybackController::threadedFunction(){
 	mixer.setup();
 #endif
 	sound.setup(storyEngine);
+    parser.parseSounds(sound.renders);
 	sound.enterTunnel();
 	
 	if(!isThreadRunning()) return;
@@ -352,6 +407,112 @@ void CloudsPlaybackController::finishSetup(){
 	introSequence->setStartQuestions(startingNodes);
     introSequence->loadingFinished();
 }
+
+#ifdef VHX_MEDIA
+//--------------------------------------------------------------
+void CloudsPlaybackController::networkConnected(){
+    ofLogNotice("CloudsPlaybackController::networkConnected");
+//    hud.hideNetworkDisconnected();
+    if(bShowingAct){
+        currentAct->unpause();
+        getSharedVideoPlayer().unpause();
+ 
+    }
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::networkDisconnected(){
+    ofLogNotice("CloudsPlaybackController::networkDisconnected");
+//    hud.showNetworkDisconnected();
+    if(bShowingAct){
+        currentAct->pause();
+        getSharedVideoPlayer().pause();
+        
+    }
+
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::requestTokenComplete(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::requestTokenComplete") << "Success? " << args.success << ", Token " << args.result;
+    // TODO: You probably won't need to do anything here, these are automatically saved to disk.
+    if(!args.success){
+        introSequence->vhxError();
+        return;
+    }
+    
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::refreshTokenComplete(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::refreshTokenComplete") << "Success? " << args.success << ", Token " << args.result;
+    // TODO: You probably won't need to do anything here, these are automatically saved to disk.
+    if(!args.success){
+        introSequence->vhxError();
+        return;
+    }
+    
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::requestCodeComplete(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::requestCodeComplete") << "Success? " << args.success << ", Code " << args.result;
+    // TODO: Call linkCode() to open a browser window and link it to your account.
+    if(!args.success){
+        introSequence->vhxError();
+        return;
+    }
+    introSequence->vhxSetAuthCode(args.result);
+    vhxAuth.linkCode();
+
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::linkCodeComplete(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::linkCodeComplete") << "Success? " << args.success << ", Token " << args.result;
+    if(!args.success){
+        introSequence->vhxError();
+        return;
+    }
+
+    vhxAuth.verifyPackage();
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::verifyPackageComplete(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::verifyPackageComplete") << "Success? " << args.success << ", State " << args.result;
+    // TODO: Make sure args.result is either "purchase" or "rental" to proceed.
+    if(!args.success){
+        introSequence->vhxError();
+        return;
+    }
+    if(args.result == "purchase" || args.result == "rental"){
+        introSequence->vhxAuthenticated();
+    }
+    else if(args.result == "expired"){
+        introSequence->vhxRentalExpired();
+    }
+    else if(args.result == "inactive"){
+        introSequence->vhxNotPurchase();
+    }
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::codeExpired(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::codeExpired");
+    // You probably won't need to do anything here, but you can pre-emptively request a new code if you want.
+    //vhxAuth.requestCode();
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::packageExpired(CloudsVHXEventArgs& args){
+    ofLogNotice("CloudsPlaybackController::packageExpired");
+    // Stop playing CLOUDS! We need more money to continue.
+    returnToIntro = true;
+    bVHXRentalExpired = true;
+}
+#endif
+
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::populateRGBDPresets(){
@@ -721,7 +882,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		transitionController.transitionToClusterMap(1.0);
 	}
 	else if(showingClusterMap){
-        if( (showingClusterMapNavigation && clusterMap->isQuestionSelected() ) ||
+        if( ( showingClusterMapNavigation && clusterMap->isQuestionSelected() ) ||
             (!showingClusterMapNavigation && clusterMap->finishedTraversing) )
         {
             if(showingClusterMapNavigation){
@@ -770,8 +931,28 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 
 	getSharedVideoPlayer().showingLowerThirds = currentVisualSystem == rgbdVisualSystem;
 
-    if(rgbdVisualSystem->getRGBDVideoPlayer().clipJustFinished()){
-        hud.clipEnded();
+    if(bShowingAct){
+        if(rgbdVisualSystem->getRGBDVideoPlayer().clipJustFinished()){
+            hud.clipEnded();
+        }
+        
+        if(getSharedVideoPlayer().isPlaying() && !bBufferingVideo && !getSharedVideoPlayer().isBufferLikelyToKeepUp()){
+            //pause
+            bBufferingVideo = true;
+            currentAct->pause();
+            getSharedVideoPlayer().pause();
+            //TODO:
+            //hud.showBuffering();
+        }
+        else if(bBufferingVideo && getSharedVideoPlayer().isBufferLikelyToKeepUp()){
+            //resume
+            currentAct->unpause();
+            bBufferingVideo = false;
+            getSharedVideoPlayer().unpause();
+            
+            //TODO:
+            //hud.hideBuffering();
+        }
     }
     
     ////////// HUD UPDATE AND PAUSE
@@ -781,6 +962,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     }
     
     if(returnToIntro){
+        bShowingAct = false;
         returnToIntro = false;
         transitionController.transitionToIntro(1.0);
     }
@@ -921,6 +1103,8 @@ void CloudsPlaybackController::updateHUD(){
     //////////// GO TO EXPLORE THE MAP FROM INTERVIEW
     if(hud.isExploreMapHit()){
         canReturnToAct = true;
+        bShowingAct = false;
+        
         resumeState = currentVisualSystem == rgbdVisualSystem ? TRANSITION_INTERVIEW_IN : TRANSITION_VISUALSYSTEM_IN;
         if(currentClip != NULL){
             hud.selectPerson(currentClip->person);
@@ -933,6 +1117,8 @@ void CloudsPlaybackController::updateHUD(){
     
     if(hud.isSeeMorePersonHit()){
         canReturnToAct = true;
+        bShowingAct = false;
+        
         resumeState = currentVisualSystem == rgbdVisualSystem ? TRANSITION_INTERVIEW_IN : TRANSITION_VISUALSYSTEM_IN;
         if(currentClip != NULL){
             hud.selectPerson(currentClip->person);
@@ -960,6 +1146,7 @@ void CloudsPlaybackController::updateHUD(){
     if(hud.isResumeActHit() && canReturnToAct){
         canReturnToAct = false;
         resumingAct = true;
+        
         hud.animateOff();
         transitionController.transitionBackToAct(1.0, 1.0, resumeState);
     }
@@ -1119,9 +1306,9 @@ void CloudsPlaybackController::updateTransition(){
                 
                 ///LEAVING
             case TRANSITION_VISUALSYSTEM_OUT:
-                //if(!canReturnToAct){
+
                 hideVisualSystem();
-                //}
+
                 break;
                 
                 ///LEAVING
@@ -1243,7 +1430,6 @@ void CloudsPlaybackController::updateTransition(){
                 introSequence->setup();
 				introSequence->setStartQuestions(startingNodes);
                 introSequence->firstPlay = false;
-                
 #ifdef OCULUS_RIFT
                 introSequence->hud = &hud;
                 introSequence->setupHUDGui();
@@ -1252,9 +1438,16 @@ void CloudsPlaybackController::updateTransition(){
                 
                 hud.setHudEnabled(true);
                 
-                showIntro();
+
                 introSequence->loadingFinished();
- 
+                if(bVHXRentalExpired){
+                    introSequence->vhxRentalExpired();
+                    bVHXRentalExpired = false;
+                }
+                else{
+                    introSequence->vhxAuthenticated();
+                }
+                showIntro();
                 break;
                 
                 //starting
@@ -1660,11 +1853,30 @@ void CloudsPlaybackController::drawDebugOverlay(){
 	if(ofGetKeyPressed('-')){
 		currentAct->getTimeline().enableEvents();
 		currentAct->drawDebug();
+        drawVideoStatus();
 	}
 	else{
 		currentAct->getTimeline().disableEvents();
 	}
 	
+}
+
+void CloudsPlaybackController::drawVideoStatus(){
+    ofPushStyle();
+    
+    string statusString = "";
+    statusString += string("LOADED:   ") + (getSharedVideoPlayer().getPlayer().isLoaded() ? "YES" : "NO") + "\n";
+    statusString += string("PLAYING:  ") + (getSharedVideoPlayer().getPlayer().isPlaying() ? "YES" : "NO") + "\n";
+    statusString += string("PAUSED:   ") + (getSharedVideoPlayer().getPlayer().isPaused() ? "YES" : "NO") + "\n";
+    statusString += string("WILLPLAY: ") + (getSharedVideoPlayer().getPlayer().isBufferLikelyToKeepUp() ? "YES" : "NO") + "\n";
+    statusString += string("PERCENT:  ") + ofToString(getSharedVideoPlayer().getPlayer().getBufferProgress(), 5) + "\n";
+
+    ofSetColor(0);
+    ofRectangle(20,20, 200, 200);
+    ofSetColor(255);
+    ofDrawBitmapString(statusString, 30, 30);
+    
+    ofPopStyle();
 }
 
 #pragma story engine events
@@ -1700,6 +1912,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 	
 	resetInterludeVariables();
+    bShowingAct = true;
     
     if(args.act->startsWithVisualSystem()){
         actJustBegan = true;
@@ -2029,7 +2242,9 @@ void CloudsPlaybackController::showInterlude(){
     hud.clearQuestion();
     
 	currentVisualSystem = interludeSystem;
-        
+    
+    bShowingAct = false;
+    
 	showingInterlude = true;
 
 }
@@ -2182,6 +2397,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 	rgbdVisualSystem->playSystem();
 	currentVisualSystem = rgbdVisualSystem;
     resumingAct = false;
+    bShowingAct = true;
 }
 
 //--------------------------------------------------------------------

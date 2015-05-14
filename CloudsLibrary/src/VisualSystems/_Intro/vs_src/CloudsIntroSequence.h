@@ -33,6 +33,13 @@ typedef struct {
 typedef enum {
     
     CLOUDS_INTRO_LOADING = 0,
+    CLOUDS_INTRO_VHX_WAITING_CODE,
+    CLOUDS_INTRO_VHX_SHOWING_CODE,
+    CLOUDS_INTRO_VHX_NO_PURCHASE,
+    CLOUDS_INTRO_VHX_RENTAL_EXPIRED,
+    CLOUDS_INTRO_VHX_PACKAGE_VALIDATED,
+    CLOUDS_INTRO_VHX_ERROR,
+    
     CLOUDS_INTRO_MENU,
     CLOUDS_INTRO_MENU_NEW_RESUME,
     CLOUDS_INTRO_PLAYING,
@@ -114,6 +121,13 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 		return warpCamera;
 	}
 
+    //vhx stuff
+    void vhxSetAuthCode(string code);
+    void vhxNotPurchase();
+    void vhxRentalExpired();
+    void vhxAuthenticated();
+    void vhxError();
+         
   protected:
 		
 	ofxUISuperCanvas* questionGui;
@@ -301,7 +315,11 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
     ofVec3f cursor;
     ofVec3f stickyCursor;
-    
+    bool successfullyPurchased;
+    bool loadDidFinish;
+    string currentAuthCode;
+    bool showVHXPrompt;
+    string vhxPromptScreen;
     
 #ifdef OCULUS_RIFT
     bool bCursorInCenter;

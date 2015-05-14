@@ -86,6 +86,10 @@ void CloudsInputMouse::mouseReleased(ofMouseEventArgs& data){
 }
 
 void CloudsInputMouse::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float fadeOut){
+    if(mode == CURSOR_MODE_NONE){
+        //always show cursor on mouse mode
+        mode = CURSOR_MODE_DRAW;
+    }
     selfDrawCursorDefault(mode, pos, bDragged, focus, fadeOut, bDragged? cursorDownSize:cursorUpSize);
 }
 

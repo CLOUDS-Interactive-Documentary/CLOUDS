@@ -28,18 +28,16 @@ CloudsFCPParser::CloudsFCPParser(){
 
 void CloudsFCPParser::loadFromFiles(){
     setup(GetCloudsDataPath() + "fcpxml");
-
-	parseVOClips();
     
 #ifdef VHX_MEDIA
     mapVHXMedia();
 #endif
+    
     parseVOClips();
     
     parseSpeakersVolume();
     
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
-
 	
     parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
     
@@ -53,13 +51,8 @@ void CloudsFCPParser::loadFromFiles(){
     
     //	calculateKeywordAdjascency();
 	
-	
     parseProjectExamples(GetCloudsDataPath() + "language/" + GetLanguage() + "/bio/projects.xml");
     
-#ifdef VHX_MEDIA
-	parseVHXIds(GetCloudsDataPath() + "vhx/clip_ids.csv");
-#endif
-
 }
 
 void CloudsFCPParser::setup(const string& directory){
@@ -1960,4 +1953,47 @@ void CloudsFCPParser::saveInterventions(const string& interventionsFile){
     if(! linksXML.saveFile(interventionsFile) ){
 		if(printErrors) ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
 	}
+}
+
+#pragma mark Sound
+
+void CloudsFCPParser::parseSounds(map<string, CloudsMedia *>& sounds){
+    // First clean up any old sounds.
+    if (!sounds.empty()) {
+        for (map<string, CloudsMedia *>::iterator it = sounds.begin(); it != sounds.end(); ++it) {
+            delete it->second;
+        }
+        sounds.clear();
+    }
+    
+#ifdef VHX_MEDIA
+    map<string, string> idMap;
+    parseVHXIds(GetCloudsDataPath() + "vhx/sound.csv", idMap);
+    
+    for (map<string, string>::iterator it = idMap.begin(); it != idMap.end(); ++it) {
+        CloudsMedia *sound = new CloudsMedia();
+        sound->vhxId = it->second;
+        sound->hasMediaAsset = true;
+     
+        // Make sure the first URL is ready to go.
+        if (sounds.empty()) {
+            sound->fetchVhxSourceUrl();
+        }
+        
+        sounds[it->first] = sound;
+    }
+#else
+    ofDirectory dir(GetCloudsMediaPath() + "sound/renders/");
+    dir.allowExt("mp4");
+    dir.sort();
+    dir.listDir();
+    for(int i = 0; i < dir.numFiles(); i++){
+        CloudsMedia *sound = new CloudsMedia();
+        sound->sourceVideoFilePath = dir.getPath(i);
+        sound->hasMediaAsset = true;
+        
+        string key = dir.getFile(i).getBaseName();
+        sounds[key] = sound;
+    }
+#endif
 }

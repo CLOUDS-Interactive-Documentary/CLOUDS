@@ -148,8 +148,6 @@ void CloudsTransitionController::transitionToVisualSystem(float outDuration, flo
 
 	confirmEmpty("transitionToVisualSystem");
 	
-//	cout << "TRANSITION POINTCLOUD --> VISUAL SYSTEM" << endl;
-	
 	queueState(TRANSITION_INTERVIEW_OUT, outDuration);
 	queueState(TRANSITION_VISUALSYSTEM_IN, inDuration);
 
@@ -203,18 +201,6 @@ void CloudsTransitionController::transitionToExploreMap(float inDuration,float o
 	
 	confirmEmpty("transitionToExploreMap");
 	
-//	//we are in a visual system
-//	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
-//		queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
-//	}
-//	//we are in an interview
-//	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
-//		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
-//	}
-//	else if(getPreviousState() == TRANSITION_INTRO_IN){
-//        queueState(TRANSITION_INTRO_OUT, outDuration);
-//    }
-    
     queueReciprocal(getPreviousState(), outDuration);
         
     queueState(TRANSITION_EXPLORE_MAP_IN, inDuration);

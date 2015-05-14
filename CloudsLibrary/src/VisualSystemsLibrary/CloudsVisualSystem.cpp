@@ -37,10 +37,10 @@ static int numSamples = 0;
 #else
 static int numSamples = 4;
 #endif
-static ofSoundPlayer* click = NULL;
-static ofSoundPlayer* selectHigh = NULL;
-static ofSoundPlayer* selectMid = NULL;
-static ofSoundPlayer* selectLow = NULL;
+static ofVideoPlayer* click = NULL;
+static ofVideoPlayer* selectHigh = NULL;
+static ofVideoPlayer* selectMid = NULL;
+static ofVideoPlayer* selectLow = NULL;
 
 static ofxFTGLFont subtitleNameFont;
 static int subtitleNameFontSize = 24;
@@ -96,41 +96,53 @@ void CloudsVisualSystem::loadPostShader(){
     postShaderLoaded = true;
 }
 
-ofSoundPlayer* CloudsVisualSystem::getClick(){
+ofVideoPlayer* CloudsVisualSystem::getClick(){
+    
+    //return NULL;
+    
 	if(click == NULL){
-		click = new ofSoundPlayer();
-		click->setLoop(false);
-		click->loadSound(GetCloudsDataPath() + "sound/interface/click.aif");
+		click = new ofVideoPlayer();
+		click->loadMovie(GetCloudsDataPath() + "sound/interface/click.mp4");
+		click->setLoopState(OF_LOOP_NONE);
 		click->setVolume(.4);
 	}
 	return click;
 }
 
-ofSoundPlayer* CloudsVisualSystem::getSelectHigh(){
+ofVideoPlayer* CloudsVisualSystem::getSelectHigh(){
+    
+    //return NULL;
+    
 	if(selectHigh == NULL){
-		selectHigh = new ofSoundPlayer();
-		selectHigh->loadSound(GetCloudsDataPath() + "sound/interface/select_high.wav");
-		selectHigh->setLoop(false);
+		selectHigh = new ofVideoPlayer();
+		selectHigh->loadMovie(GetCloudsDataPath() + "sound/interface/select_high.mp4");
+		selectHigh->setLoopState(OF_LOOP_NONE);
 		selectHigh->setVolume(.4);
 	}
 	return selectHigh;
 }
 
-ofSoundPlayer* CloudsVisualSystem::getSelectMid(){
+ofVideoPlayer* CloudsVisualSystem::getSelectMid(){
+    
+    //return NULL;
+    
 	if(selectMid == NULL){
-		selectMid = new ofSoundPlayer();
-		selectMid->loadSound(GetCloudsDataPath() + "sound/interface/select_mid.aif");
-		selectMid->setLoop(false);
+		selectMid = new ofVideoPlayer();
+		selectMid->loadMovie(GetCloudsDataPath() + "sound/interface/select_mid.mp4");
+		selectMid->setLoopState(OF_LOOP_NONE);
 		selectMid->setVolume(.4);
 	}
 	return selectMid;
 }
 
-ofSoundPlayer* CloudsVisualSystem::getSelectLow(){
+ofVideoPlayer* CloudsVisualSystem::getSelectLow(){
+    
+    //return NULL;
+    
 	if(selectLow == NULL){
-		selectLow = new ofSoundPlayer();
-		selectLow->loadSound(GetCloudsDataPath() + "sound/interface/select_low.aif");
-		selectLow->setLoop(false);
+		selectLow = new ofVideoPlayer();
+		selectLow->loadMovie(GetCloudsDataPath() + "sound/interface/select_low.mp4");
+		selectLow->setLoopState(OF_LOOP_NONE);
 		selectLow->setVolume(.4);
 	}
 	return selectLow;
@@ -255,6 +267,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
     switch (getVisualLevel()) {
         case FAST:
             numSamples = 0;
+            bleed = 0;
             bEnablePostFX = false;
             break;
         default:
@@ -521,6 +534,11 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	translatedHeadPosition += (newHeadPosition - translatedHeadPosition) * .1;
 	cloudsCamera.lookTarget = translatedHeadPosition;
 	
+    getClick()->update();
+    getSelectHigh()->update();
+    getSelectMid()->update();
+    getSelectLow()->update();
+    
 	selfUpdate();
 	
 	if(isInterlude){
@@ -4020,12 +4038,9 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 
 	
 	//THIS WAY TO DRAW FOR FANCY DK2 MIRRORING
-	
-	//oculusTarget.begin();
 	getSharedRenderTarget().begin();
 	oculusRift.draw();
 	getSharedRenderTarget().end();
-	//oculusTarget.end();
 	
 	ofMesh oculusTargetMesh1;
 	oculusTargetMesh1.addVertex(ofVec3f(0,0,0));
@@ -4039,25 +4054,6 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 
 	oculusTargetMesh1.addVertex(ofVec3f(1920,1080,0));
 	oculusTargetMesh1.addTexCoord(ofVec2f(1920,0));
-
-	/////////////////////////////////////////
-	/////////////////////////////////////////
-	//SIDEWAYS:
-	/*
-	ofMesh oculusTargetMesh2;
-
-	oculusTargetMesh2.addVertex(ofVec3f(1920+1080,0,0));
-	oculusTargetMesh2.addTexCoord(ofVec2f(0,1080));
-
-	oculusTargetMesh2.addVertex(ofVec3f(1920+1080,1920,0));
-	oculusTargetMesh2.addTexCoord(ofVec2f(1920,1080));
-
-	oculusTargetMesh2.addVertex(ofVec3f(1920,0,0));
-	oculusTargetMesh2.addTexCoord(ofVec2f(0,0));
-
-	oculusTargetMesh2.addVertex(ofVec3f(1920,1920,0));
-	oculusTargetMesh2.addTexCoord(ofVec2f(1920,0));
-	*/
 
 	ofMesh oculusTargetMesh2 = oculusTargetMesh1;
 	for(int i = 0; i < oculusTargetMesh2.getNumVertices(); i++){

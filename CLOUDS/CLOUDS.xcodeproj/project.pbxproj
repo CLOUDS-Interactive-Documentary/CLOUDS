@@ -1391,7 +1391,6 @@
 		642721B61AE81E5200A13289 /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8288818BEBE3A00C1EB93 /* ofxTween.cpp */; };
 		642721B71AE81E5200A13289 /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D828B218BEBE5500C1EB93 /* ofxTextInputField.cpp */; };
 		642721B81AE81E5200A13289 /* RenderPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA89B189F3622006C9E4E /* RenderPass.cpp */; };
-		642721B91AE81E5200A13289 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AF1AE6D6560008D018 /* json_writer.cpp */; };
 		642721BA1AE81E5200A13289 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8224F18BEBD6E00C1EB93 /* CloudsInputOculus.cpp */; };
 		642721BB1AE81E5200A13289 /* b2RevoluteJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA295189F1CD9006C9E4E /* b2RevoluteJoint.cpp */; };
 		642721BC1AE81E5200A13289 /* MeshUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8248F18BEBD6F00C1EB93 /* MeshUtils.cpp */; };
@@ -1429,7 +1428,6 @@
 		642721DC1AE81E5200A13289 /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824EF18BEBD6F00C1EB93 /* wSatellite.cpp */; };
 		642721DD1AE81E5200A13289 /* ControlPrinter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A5C18BF099000C1EB93 /* ControlPrinter.cpp */; };
 		642721DE1AE81E5200A13289 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D823A518BEBD6E00C1EB93 /* CloudsVisualSystemMazeGenerator2.cpp */; };
-		642721DF1AE81E5200A13289 /* CloudsVHXRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */; };
 		642721E01AE81E5200A13289 /* TableLookupOsc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A9B18BF099000C1EB93 /* TableLookupOsc.cpp */; };
 		642721E11AE81E5200A13289 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */; };
 		642721E21AE81E5200A13289 /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8229318BEBD6E00C1EB93 /* CloudsSoundFuncs.cpp */; };
@@ -1655,7 +1653,6 @@
 		642722BE1AE81E5200A13289 /* GodRaysPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA88A189F3622006C9E4E /* GodRaysPass.cpp */; };
 		642722BF1AE81E5200A13289 /* CloudsVisualSystemGesturePaint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8236718BEBD6E00C1EB93 /* CloudsVisualSystemGesturePaint.cpp */; };
 		642722C01AE81E5200A13289 /* GestureRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8250618BEBD6F00C1EB93 /* GestureRenderer.cpp */; };
-		642722C11AE81E5200A13289 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AB1AE6D6560008D018 /* json_reader.cpp */; };
 		642722C21AE81E5200A13289 /* RunningBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DAB97189F3644006C9E4E /* RunningBackground.cpp */; };
 		642722C31AE81E5200A13289 /* ofxTLSwitches.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827B918BEBDCF00C1EB93 /* ofxTLSwitches.cpp */; };
 		642722C41AE81E5200A13289 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
@@ -1712,7 +1709,6 @@
 		642722F71AE81E5200A13289 /* b2FrictionJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA287189F1CD9006C9E4E /* b2FrictionJoint.cpp */; };
 		642722F81AE81E5200A13289 /* IcosphereAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8245018BEBD6F00C1EB93 /* IcosphereAction.cpp */; };
 		642722F91AE81E5200A13289 /* ofxUIValuePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D5B01943F2AF00AA81C1 /* ofxUIValuePlotter.cpp */; };
-		642722FA1AE81E5200A13289 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AD1AE6D6560008D018 /* json_value.cpp */; };
 		642722FB1AE81E5200A13289 /* ofxBox2dPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA2AD189F1CDA006C9E4E /* ofxBox2dPolygon.cpp */; };
 		642722FC1AE81E5200A13289 /* CloudsVisualSystemPhotoGlitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8242418BEBD6F00C1EB93 /* CloudsVisualSystemPhotoGlitch.cpp */; };
 		642722FD1AE81E5200A13289 /* ofxUIFPS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D5721943F2AF00AA81C1 /* ofxUIFPS.cpp */; };
@@ -1791,7 +1787,6 @@
 		642723461AE81E5200A13289 /* CircularFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8248D18BEBD6F00C1EB93 /* CircularFormula.cpp */; };
 		642723471AE81E5200A13289 /* ofxSQLiteDelete.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA827189F3610006C9E4E /* ofxSQLiteDelete.cpp */; };
 		642723481AE81E5200A13289 /* CloudsVisualSystemCubeCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8232818BEBD6E00C1EB93 /* CloudsVisualSystemCubeCraft.cpp */; };
-		642723491AE81E5200A13289 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
 		6427234A1AE81E5200A13289 /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D821A518BEBCC300C1EB93 /* ofxTimecode.cpp */; };
 		6427234B1AE81E5200A13289 /* ofxUILabelToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D5841943F2AF00AA81C1 /* ofxUILabelToggle.cpp */; };
 		6427234C1AE81E5200A13289 /* ofxTextWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA2FB189F1CDB006C9E4E /* ofxTextWriter.cpp */; };
@@ -1987,10 +1982,6 @@
 		6427240B1AE81E5200A13289 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		6427240C1AE81E5200A13289 /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
 		6427240F1AE81E5200A13289 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		642724111AE81E5200A13289 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 64D024B01AE6D6560008D018 /* sconscript */; };
-		642724121AE81E5200A13289 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AE1AE6D6560008D018 /* json_valueiterator.inl */; };
-		642724131AE81E5200A13289 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024A91AE6D6560008D018 /* json_internalarray.inl */; };
-		642724141AE81E5200A13289 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AA1AE6D6560008D018 /* json_internalmap.inl */; };
 		642724151AE81E5200A13289 /* CLOUDS.icns in Resources */ = {isa = PBXBuildFile; fileRef = 033BCA411AAA562900BC1FEC /* CLOUDS.icns */; };
 		6427241F1AE81EAF00A13289 /* Distance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DAB93189F3644006C9E4E /* Distance.cpp */; };
 		642724201AE81EAF00A13289 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8231A18BEBD6E00C1EB93 /* ParticleConnection.cpp */; };
@@ -2190,7 +2181,6 @@
 		642724E21AE81EAF00A13289 /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822A618BEBD6E00C1EB93 /* CloudsFCPParser.cpp */; };
 		642724E31AE81EAF00A13289 /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824DB18BEBD6F00C1EB93 /* VoroParticle.cpp */; };
 		642724E41AE81EAF00A13289 /* ofxEasingQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8288018BEBE3A00C1EB93 /* ofxEasingQuad.cpp */; };
-		642724E51AE81EAF00A13289 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AB1AE6D6560008D018 /* json_reader.cpp */; };
 		642724E61AE81EAF00A13289 /* ofxUIDragableLabelButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D56C1943F2AF00AA81C1 /* ofxUIDragableLabelButton.cpp */; };
 		642724E71AE81EAF00A13289 /* ofxTLColorTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279E18BEBDCF00C1EB93 /* ofxTLColorTrack.cpp */; };
 		642724E81AE81EAF00A13289 /* ofxTLCurves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827A018BEBDCF00C1EB93 /* ofxTLCurves.cpp */; };
@@ -2361,7 +2351,6 @@
 		6427258D1AE81EAF00A13289 /* CloudsVisualSystemAutomata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D822D618BEBD6E00C1EB93 /* CloudsVisualSystemAutomata.cpp */; };
 		6427258E1AE81EAF00A13289 /* ControlPulse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A5E18BF099000C1EB93 /* ControlPulse.cpp */; };
 		6427258F1AE81EAF00A13289 /* DSPUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A7418BF099000C1EB93 /* DSPUtils.cpp */; };
-		642725901AE81EAF00A13289 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
 		642725911AE81EAF00A13289 /* ofxUITextInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D5A91943F2AF00AA81C1 /* ofxUITextInput.cpp */; };
 		642725921AE81EAF00A13289 /* ofxTLAudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279618BEBDCF00C1EB93 /* ofxTLAudioTrack.cpp */; };
 		642725931AE81EAF00A13289 /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824ED18BEBD6F00C1EB93 /* wParticle.cpp */; };
@@ -2452,7 +2441,6 @@
 		642725E81AE81EAF00A13289 /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA8A7189F3622006C9E4E /* ZoomBlurPass.cpp */; };
 		642725E91AE81EAF00A13289 /* StereoDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A9718BF099000C1EB93 /* StereoDelay.cpp */; };
 		642725EA1AE81EAF00A13289 /* ofxOpenSteerPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA13E189F1CD5006C9E4E /* ofxOpenSteerPlugin.cpp */; };
-		642725EB1AE81EAF00A13289 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AD1AE6D6560008D018 /* json_value.cpp */; };
 		642725EC1AE81EAF00A13289 /* c_loops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824C118BEBD6F00C1EB93 /* c_loops.cpp */; };
 		642725ED1AE81EAF00A13289 /* ofxTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279418BEBDCF00C1EB93 /* ofxTimeline.cpp */; };
 		642725EE1AE81EAF00A13289 /* CircularFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8248D18BEBD6F00C1EB93 /* CircularFormula.cpp */; };
@@ -2579,7 +2567,6 @@
 		642726671AE81EAF00A13289 /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82B9518BF0BEE00C1EB93 /* ofxOcean.cpp */; };
 		642726681AE81EAF00A13289 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8227918BEBD6E00C1EB93 /* CloudsSVGMesh.cpp */; };
 		642726691AE81EAF00A13289 /* SphereAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8245818BEBD6F00C1EB93 /* SphereAction.cpp */; };
-		6427266A1AE81EAF00A13289 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AF1AE6D6560008D018 /* json_writer.cpp */; };
 		6427266B1AE81EAF00A13289 /* CloudsVisualSystemYellowTail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8250118BEBD6F00C1EB93 /* CloudsVisualSystemYellowTail.cpp */; };
 		6427266C1AE81EAF00A13289 /* ControlDbToLinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A4C18BF099000C1EB93 /* ControlDbToLinear.cpp */; };
 		6427266D1AE81EAF00A13289 /* fdog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DAB82189F3644006C9E4E /* fdog.cpp */; };
@@ -2655,12 +2642,25 @@
 		642726B51AE81EAF00A13289 /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
 		642726B61AE81EAF00A13289 /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 035F4F981A9DA6A0003726D9 /* libovr.a */; };
 		642726B91AE81EAF00A13289 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		642726BB1AE81EAF00A13289 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 64D024B01AE6D6560008D018 /* sconscript */; };
-		642726BC1AE81EAF00A13289 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AE1AE6D6560008D018 /* json_valueiterator.inl */; };
-		642726BD1AE81EAF00A13289 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024A91AE6D6560008D018 /* json_internalarray.inl */; };
-		642726BE1AE81EAF00A13289 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AA1AE6D6560008D018 /* json_internalmap.inl */; };
 		642726BF1AE81EAF00A13289 /* CLOUDS.icns in Resources */ = {isa = PBXBuildFile; fileRef = 033BCA411AAA562900BC1FEC /* CLOUDS.icns */; };
-		642726C51AE81EF500A13289 /* CloudsVHXRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */; };
+		64574BD11B00560700C1BC77 /* CloudsVHXAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574BCD1B00560700C1BC77 /* CloudsVHXAuth.cpp */; };
+		64574BD21B00560700C1BC77 /* CloudsVHXAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574BCD1B00560700C1BC77 /* CloudsVHXAuth.cpp */; };
+		64574BD31B00560700C1BC77 /* CloudsVHXRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574BCF1B00560700C1BC77 /* CloudsVHXRequest.cpp */; };
+		64574BD41B00560700C1BC77 /* CloudsVHXRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574BCF1B00560700C1BC77 /* CloudsVHXRequest.cpp */; };
+		64574CDD1B012B6300C1BC77 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C3F1B012B6300C1BC77 /* jsoncpp.cpp */; };
+		64574CDE1B012B6300C1BC77 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C3F1B012B6300C1BC77 /* jsoncpp.cpp */; };
+		64574CDF1B012B6300C1BC77 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C3F1B012B6300C1BC77 /* jsoncpp.cpp */; };
+		64574CE01B012B6300C1BC77 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C3F1B012B6300C1BC77 /* jsoncpp.cpp */; };
+		64574CE11B012B6300C1BC77 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C3F1B012B6300C1BC77 /* jsoncpp.cpp */; };
+		64574CE21B012B6300C1BC77 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C3F1B012B6300C1BC77 /* jsoncpp.cpp */; };
+		64574CE91B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
+		64574CEA1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
+		64574CEB1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
+		64574CEC1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
+		64574CED1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
+		64574CEE1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
+		64A9AD481B0523AD002FD9FB /* ofxAvailability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */; };
+		64A9AD491B0523AD002FD9FB /* ofxAvailability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */; };
 		64BDD5A41AFAE679002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
 		64BDD5A51AFAE8BE002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
 		64BDD5A61AFAE8BF002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
@@ -2679,30 +2679,6 @@
 		64D024471AE6C7B40008D018 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */; };
 		64D024481AE6C7B40008D018 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */; };
 		64D0244D1AE6C7CB0008D018 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D0244C1AE6C7CB0008D018 /* libcurl.dylib */; };
-		64D025211AE6D6560008D018 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024A91AE6D6560008D018 /* json_internalarray.inl */; };
-		64D025221AE6D6560008D018 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024A91AE6D6560008D018 /* json_internalarray.inl */; };
-		64D025231AE6D6560008D018 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AA1AE6D6560008D018 /* json_internalmap.inl */; };
-		64D025241AE6D6560008D018 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AA1AE6D6560008D018 /* json_internalmap.inl */; };
-		64D025251AE6D6560008D018 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AB1AE6D6560008D018 /* json_reader.cpp */; };
-		64D025261AE6D6560008D018 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AB1AE6D6560008D018 /* json_reader.cpp */; };
-		64D025271AE6D6560008D018 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AB1AE6D6560008D018 /* json_reader.cpp */; };
-		64D025281AE6D6560008D018 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AB1AE6D6560008D018 /* json_reader.cpp */; };
-		64D025291AE6D6560008D018 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AD1AE6D6560008D018 /* json_value.cpp */; };
-		64D0252A1AE6D6560008D018 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AD1AE6D6560008D018 /* json_value.cpp */; };
-		64D0252B1AE6D6560008D018 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AD1AE6D6560008D018 /* json_value.cpp */; };
-		64D0252C1AE6D6560008D018 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AD1AE6D6560008D018 /* json_value.cpp */; };
-		64D0252D1AE6D6560008D018 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AE1AE6D6560008D018 /* json_valueiterator.inl */; };
-		64D0252E1AE6D6560008D018 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 64D024AE1AE6D6560008D018 /* json_valueiterator.inl */; };
-		64D0252F1AE6D6560008D018 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AF1AE6D6560008D018 /* json_writer.cpp */; };
-		64D025301AE6D6560008D018 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AF1AE6D6560008D018 /* json_writer.cpp */; };
-		64D025311AE6D6560008D018 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AF1AE6D6560008D018 /* json_writer.cpp */; };
-		64D025321AE6D6560008D018 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024AF1AE6D6560008D018 /* json_writer.cpp */; };
-		64D025331AE6D6560008D018 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 64D024B01AE6D6560008D018 /* sconscript */; };
-		64D025341AE6D6560008D018 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 64D024B01AE6D6560008D018 /* sconscript */; };
-		64D025391AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
-		64D0253A1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
-		64D0253B1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
-		64D0253C1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */; };
 		A60F27061AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
 		A60F27071AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
 		A60F27081AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
@@ -4149,6 +4125,19 @@
 		2E80745D1820B8AB00A003A0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		642724191AE81E5200A13289 /* CLOUDS_VHX_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_VHX_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642726C31AE81EAF00A13289 /* CLOUDS_VHX_OCULUS_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_VHX_OCULUS_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64574BCD1B00560700C1BC77 /* CloudsVHXAuth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVHXAuth.cpp; sourceTree = "<group>"; };
+		64574BCE1B00560700C1BC77 /* CloudsVHXAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVHXAuth.h; sourceTree = "<group>"; };
+		64574BCF1B00560700C1BC77 /* CloudsVHXRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVHXRequest.cpp; sourceTree = "<group>"; };
+		64574BD01B00560700C1BC77 /* CloudsVHXRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVHXRequest.h; sourceTree = "<group>"; };
+		64574C3C1B012B6300C1BC77 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
+		64574C3D1B012B6300C1BC77 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		64574C3F1B012B6300C1BC77 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
+		64574C421B012B6300C1BC77 /* ofxJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSON.h; sourceTree = "<group>"; };
+		64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
+		64574C441B012B6300C1BC77 /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
+		64574CFB1B012FD500C1BC77 /* CloudsVHXEventArgs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsVHXEventArgs.h; sourceTree = "<group>"; };
+		64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAvailability.cpp; sourceTree = "<group>"; };
+		64A9AD391B0523AD002FD9FB /* ofxAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAvailability.h; sourceTree = "<group>"; };
 		64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMedia.cpp; sourceTree = "<group>"; };
 		64BDD5A31AFAE679002AEAEB /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
 		64BDD5BE1AFAEB5B002AEAEB /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
@@ -4156,30 +4145,9 @@
 		64BDD6A31AFB0734002AEAEB /* CloudsCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsCrypto.h; sourceTree = "<group>"; };
 		64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBinaryMesh.cpp; sourceTree = "<group>"; };
 		64CDB66A194500EC00C56A13 /* ofxBinaryMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBinaryMesh.h; sourceTree = "<group>"; };
-		64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVHXRequest.cpp; sourceTree = "<group>"; };
-		64D023F01AE6C4670008D018 /* CloudsVHXRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVHXRequest.h; sourceTree = "<group>"; };
 		64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSSL.cpp; sourceTree = "<group>"; };
 		64D0241C1AE6C7B40008D018 /* ofxSSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSSL.h; sourceTree = "<group>"; };
 		64D0244C1AE6C7CB0008D018 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
-		64D0249F1AE6D6560008D018 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
-		64D024A01AE6D6560008D018 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		64D024A11AE6D6560008D018 /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = features.h; sourceTree = "<group>"; };
-		64D024A21AE6D6560008D018 /* forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forwards.h; sourceTree = "<group>"; };
-		64D024A31AE6D6560008D018 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
-		64D024A41AE6D6560008D018 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
-		64D024A51AE6D6560008D018 /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
-		64D024A61AE6D6560008D018 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
-		64D024A81AE6D6560008D018 /* json_batchallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_batchallocator.h; sourceTree = "<group>"; };
-		64D024A91AE6D6560008D018 /* json_internalarray.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalarray.inl; sourceTree = "<group>"; };
-		64D024AA1AE6D6560008D018 /* json_internalmap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalmap.inl; sourceTree = "<group>"; };
-		64D024AB1AE6D6560008D018 /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_reader.cpp; sourceTree = "<group>"; };
-		64D024AC1AE6D6560008D018 /* json_tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_tool.h; sourceTree = "<group>"; };
-		64D024AD1AE6D6560008D018 /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_value.cpp; sourceTree = "<group>"; };
-		64D024AE1AE6D6560008D018 /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_valueiterator.inl; sourceTree = "<group>"; };
-		64D024AF1AE6D6560008D018 /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_writer.cpp; sourceTree = "<group>"; };
-		64D024B01AE6D6560008D018 /* sconscript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sconscript; sourceTree = "<group>"; };
-		64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
-		64D024B41AE6D6560008D018 /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
 		A60F26C91AF136B400A1C863 /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
 		A60F26DC1AF136B400A1C863 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
 		A60F26DD1AF136B400A1C863 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
@@ -6266,6 +6234,11 @@
 				03E28DA41A9D767D005AA181 /* CloudsPlaybackController.h */,
 				03E28DA51A9D767D005AA181 /* CloudsTransitionController.cpp */,
 				03E28DA61A9D767D005AA181 /* CloudsTransitionController.h */,
+				64574BCD1B00560700C1BC77 /* CloudsVHXAuth.cpp */,
+				64574BCE1B00560700C1BC77 /* CloudsVHXAuth.h */,
+				64574CFB1B012FD500C1BC77 /* CloudsVHXEventArgs.h */,
+				64574BCF1B00560700C1BC77 /* CloudsVHXRequest.cpp */,
+				64574BD01B00560700C1BC77 /* CloudsVHXRequest.h */,
 				03E28DA71A9D767D005AA181 /* CloudsVisualSystemManager.cpp */,
 				03E28DA81A9D767D005AA181 /* CloudsVisualSystemManager.h */,
 			);
@@ -6306,6 +6279,86 @@
 			children = (
 				03E28ED91A9D9AAC005AA181 /* ofxOculusDK2.cpp */,
 				03E28EDA1A9D9AAC005AA181 /* ofxOculusDK2.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		64574BE51B012B6200C1BC77 /* ofxJSON */ = {
+			isa = PBXGroup;
+			children = (
+				64574C381B012B6300C1BC77 /* libs */,
+				64574C411B012B6300C1BC77 /* src */,
+			);
+			name = ofxJSON;
+			path = ../../../addons/ofxJSON;
+			sourceTree = "<group>";
+		};
+		64574C381B012B6300C1BC77 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				64574C391B012B6300C1BC77 /* jsoncpp */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		64574C391B012B6300C1BC77 /* jsoncpp */ = {
+			isa = PBXGroup;
+			children = (
+				64574C3A1B012B6300C1BC77 /* include */,
+				64574C3E1B012B6300C1BC77 /* src */,
+			);
+			path = jsoncpp;
+			sourceTree = "<group>";
+		};
+		64574C3A1B012B6300C1BC77 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				64574C3B1B012B6300C1BC77 /* json */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		64574C3B1B012B6300C1BC77 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				64574C3C1B012B6300C1BC77 /* json-forwards.h */,
+				64574C3D1B012B6300C1BC77 /* json.h */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		64574C3E1B012B6300C1BC77 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64574C3F1B012B6300C1BC77 /* jsoncpp.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		64574C411B012B6300C1BC77 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64574C421B012B6300C1BC77 /* ofxJSON.h */,
+				64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */,
+				64574C441B012B6300C1BC77 /* ofxJSONElement.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		64A9AD271B0523AC002FD9FB /* ofxAvailability */ = {
+			isa = PBXGroup;
+			children = (
+				64A9AD371B0523AD002FD9FB /* src */,
+			);
+			name = ofxAvailability;
+			path = ../../../addons/ofxAvailability;
+			sourceTree = "<group>";
+		};
+		64A9AD371B0523AD002FD9FB /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */,
+				64A9AD391B0523AD002FD9FB /* ofxAvailability.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -6360,81 +6413,6 @@
 			children = (
 				64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */,
 				64D0241C1AE6C7B40008D018 /* ofxSSL.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		64D0244E1AE6D6550008D018 /* ofxJSON */ = {
-			isa = PBXGroup;
-			children = (
-				64D0249B1AE6D6560008D018 /* libs */,
-				64D024B21AE6D6560008D018 /* src */,
-			);
-			name = ofxJSON;
-			path = ../../../addons/ofxJSON;
-			sourceTree = "<group>";
-		};
-		64D0249B1AE6D6560008D018 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				64D0249C1AE6D6560008D018 /* jsoncpp */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		64D0249C1AE6D6560008D018 /* jsoncpp */ = {
-			isa = PBXGroup;
-			children = (
-				64D0249D1AE6D6560008D018 /* include */,
-				64D024A71AE6D6560008D018 /* src */,
-			);
-			path = jsoncpp;
-			sourceTree = "<group>";
-		};
-		64D0249D1AE6D6560008D018 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				64D0249E1AE6D6560008D018 /* json */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		64D0249E1AE6D6560008D018 /* json */ = {
-			isa = PBXGroup;
-			children = (
-				64D0249F1AE6D6560008D018 /* autolink.h */,
-				64D024A01AE6D6560008D018 /* config.h */,
-				64D024A11AE6D6560008D018 /* features.h */,
-				64D024A21AE6D6560008D018 /* forwards.h */,
-				64D024A31AE6D6560008D018 /* json.h */,
-				64D024A41AE6D6560008D018 /* reader.h */,
-				64D024A51AE6D6560008D018 /* value.h */,
-				64D024A61AE6D6560008D018 /* writer.h */,
-			);
-			path = json;
-			sourceTree = "<group>";
-		};
-		64D024A71AE6D6560008D018 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				64D024A81AE6D6560008D018 /* json_batchallocator.h */,
-				64D024A91AE6D6560008D018 /* json_internalarray.inl */,
-				64D024AA1AE6D6560008D018 /* json_internalmap.inl */,
-				64D024AB1AE6D6560008D018 /* json_reader.cpp */,
-				64D024AC1AE6D6560008D018 /* json_tool.h */,
-				64D024AD1AE6D6560008D018 /* json_value.cpp */,
-				64D024AE1AE6D6560008D018 /* json_valueiterator.inl */,
-				64D024AF1AE6D6560008D018 /* json_writer.cpp */,
-				64D024B01AE6D6560008D018 /* sconscript */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		64D024B21AE6D6560008D018 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				64D024B31AE6D6560008D018 /* ofxJSONElement.cpp */,
-				64D024B41AE6D6560008D018 /* ofxJSONElement.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -6519,6 +6497,7 @@
 				C15DCF481AB7956B007D1F44 /* ofxAnimationPrimitives */,
 				E7D82BC918BF0CEC00C1EB93 /* ofxAssimpModelLoader */,
 				E73DA332189F1CDC006C9E4E /* ofxAutoReloadedShader */,
+				64A9AD271B0523AC002FD9FB /* ofxAvailability */,
 				E73DA2D4189F1CDA006C9E4E /* ofxBillboard */,
 				A60F26C61AF136B400A1C863 /* ofxAudioDecoder */,
 				64CDB650194500EC00C56A13 /* ofxBinaryMesh */,
@@ -6532,7 +6511,7 @@
 				E7D82AEF18BF0A5200C1EB93 /* ofxGameCamera */,
 				E7D828BA18BEBE6D00C1EB93 /* ofxGenerative */,
 				E7D82BA418BF0C4100C1EB93 /* ofxGpuParticles */,
-				64D0244E1AE6D6550008D018 /* ofxJSON */,
+				64574BE51B012B6200C1BC77 /* ofxJSON */,
 				03E28DC71A9D9389005AA181 /* ofxLocalization */,
 				E73DA357189F1CDD006C9E4E /* ofxMarchingCubes */,
 				E7D82B2818BF0AC100C1EB93 /* ofxMPMFluid */,
@@ -8438,8 +8417,8 @@
 				03E28DB91A9D7690005AA181 /* CloudsEvents.h */,
 				E7D8224318BEBD6E00C1EB93 /* CloudsGlobal.h */,
 				03E28DBA1A9D7690005AA181 /* CloudsGlobal.cpp */,
-				03E28DBC1A9D7690005AA181 /* CloudsLocalization.cpp */,
 				03E28DBD1A9D7690005AA181 /* CloudsLocalization.h */,
+				03E28DBC1A9D7690005AA181 /* CloudsLocalization.cpp */,
 				03E28DA01A9D767D005AA181 /* Core */,
 				E7D8224718BEBD6E00C1EB93 /* Input */,
 				E7D8225118BEBD6E00C1EB93 /* RGBD */,
@@ -8588,8 +8567,6 @@
 				E7D822B018BEBD6E00C1EB93 /* CloudsSpeaker.h */,
 				E7D822B118BEBD6E00C1EB93 /* CloudsStoryEngine.cpp */,
 				E7D822B218BEBD6E00C1EB93 /* CloudsStoryEngine.h */,
-				64D023EF1AE6C4670008D018 /* CloudsVHXRequest.cpp */,
-				64D023F01AE6C4670008D018 /* CloudsVHXRequest.h */,
 				E7D822B518BEBD6E00C1EB93 /* CloudsVisualSystemPreset.cpp */,
 				E7D822B618BEBD6E00C1EB93 /* CloudsVisualSystemPreset.h */,
 			);
@@ -11481,10 +11458,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64D025341AE6D6560008D018 /* sconscript in Resources */,
-				64D0252E1AE6D6560008D018 /* json_valueiterator.inl in Resources */,
-				64D025221AE6D6560008D018 /* json_internalarray.inl in Resources */,
-				64D025241AE6D6560008D018 /* json_internalmap.inl in Resources */,
 				03F0DFDD1AAA581E00204E00 /* CLOUDS.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -11493,10 +11466,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64D025331AE6D6560008D018 /* sconscript in Resources */,
-				64D0252D1AE6D6560008D018 /* json_valueiterator.inl in Resources */,
-				64D025211AE6D6560008D018 /* json_internalarray.inl in Resources */,
-				64D025231AE6D6560008D018 /* json_internalmap.inl in Resources */,
 				03F0DFDF1AAA586900204E00 /* CLOUDS.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -11505,10 +11474,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				642724111AE81E5200A13289 /* sconscript in Resources */,
-				642724121AE81E5200A13289 /* json_valueiterator.inl in Resources */,
-				642724131AE81E5200A13289 /* json_internalarray.inl in Resources */,
-				642724141AE81E5200A13289 /* json_internalmap.inl in Resources */,
 				642724151AE81E5200A13289 /* CLOUDS.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -11517,10 +11482,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				642726BB1AE81EAF00A13289 /* sconscript in Resources */,
-				642726BC1AE81EAF00A13289 /* json_valueiterator.inl in Resources */,
-				642726BD1AE81EAF00A13289 /* json_internalarray.inl in Resources */,
-				642726BE1AE81EAF00A13289 /* json_internalmap.inl in Resources */,
 				642726BF1AE81EAF00A13289 /* CLOUDS.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -11624,7 +11585,6 @@
 				038032461948167700AFD40C /* ParamManager.cpp in Sources */,
 				038032471948167700AFD40C /* ParticleConnector.cpp in Sources */,
 				038032491948167700AFD40C /* Walker.cpp in Sources */,
-				64D025281AE6D6560008D018 /* json_reader.cpp in Sources */,
 				0380324A1948167700AFD40C /* del_impl.cpp in Sources */,
 				0380324B1948167700AFD40C /* TubeAction.cpp in Sources */,
 				0380324C1948167700AFD40C /* gCell.cpp in Sources */,
@@ -11717,6 +11677,7 @@
 				038032A11948167700AFD40C /* ControlPrinter.cpp in Sources */,
 				038032A21948167700AFD40C /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				038032A31948167700AFD40C /* TableLookupOsc.cpp in Sources */,
+				64574CE01B012B6300C1BC77 /* jsoncpp.cpp in Sources */,
 				03E28DD01A9D9389005AA181 /* ofxLocalization.cpp in Sources */,
 				038032A41948167700AFD40C /* CloudsSoundFuncs.cpp in Sources */,
 				038032A51948167700AFD40C /* Rand.cpp in Sources */,
@@ -11726,7 +11687,6 @@
 				038032A91948167700AFD40C /* ofxBox2dJoint.cpp in Sources */,
 				038032AA1948167700AFD40C /* CloudsVisualSystemExampleVectorMath.cpp in Sources */,
 				038032AB1948167700AFD40C /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
-				64D0253C1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */,
 				038032AC1948167700AFD40C /* ofxTLBangs.cpp in Sources */,
 				038032AD1948167700AFD40C /* b2CollideCircle.cpp in Sources */,
 				038032AE1948167700AFD40C /* ofxAssimpModelLoader.cpp in Sources */,
@@ -12054,7 +12014,6 @@
 				038033F21948167700AFD40C /* PathPoint.cpp in Sources */,
 				038033F31948167700AFD40C /* CloudsVisualSystemColony.cpp in Sources */,
 				038033F41948167700AFD40C /* ofxTLImageSequence.cpp in Sources */,
-				64D0252C1AE6D6560008D018 /* json_value.cpp in Sources */,
 				038033F51948167700AFD40C /* CloudsVisualSystemRulez.cpp in Sources */,
 				038033F61948167700AFD40C /* ofxUIRangeSlider.cpp in Sources */,
 				038033F71948167700AFD40C /* PointAction.cpp in Sources */,
@@ -12062,7 +12021,6 @@
 				038033F91948167700AFD40C /* ofxUIMinimalSlider.cpp in Sources */,
 				038033FA1948167700AFD40C /* ParamManager2.cpp in Sources */,
 				038033FB1948167700AFD40C /* ofxUIMultiImageToggle.cpp in Sources */,
-				64D025321AE6D6560008D018 /* json_writer.cpp in Sources */,
 				038033FC1948167700AFD40C /* CubeAction.cpp in Sources */,
 				038033FD1948167700AFD40C /* ofxBox2dBaseShape.cpp in Sources */,
 				038033FE1948167700AFD40C /* Branch.cpp in Sources */,
@@ -12133,6 +12091,7 @@
 				038034401948167700AFD40C /* Utilities.cpp in Sources */,
 				038034411948167700AFD40C /* LinkedListItem.cpp in Sources */,
 				038034421948167700AFD40C /* ofxBufferEffectorBehavior.cpp in Sources */,
+				64574CEC1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */,
 				038034431948167700AFD40C /* ofxEasingBounce.cpp in Sources */,
 				038034441948167700AFD40C /* ofxEasingCirc.cpp in Sources */,
 				038034451948167700AFD40C /* Noise.cpp in Sources */,
@@ -12222,7 +12181,6 @@
 				03A0F4B01947A0850071CF4B /* ParamManager.cpp in Sources */,
 				03A0F4B11947A0850071CF4B /* ParticleConnector.cpp in Sources */,
 				03A0F4B31947A0850071CF4B /* Walker.cpp in Sources */,
-				64D025271AE6D6560008D018 /* json_reader.cpp in Sources */,
 				03A0F4B41947A0850071CF4B /* del_impl.cpp in Sources */,
 				03A0F4B51947A0850071CF4B /* TubeAction.cpp in Sources */,
 				03A0F4B61947A0850071CF4B /* gCell.cpp in Sources */,
@@ -12315,6 +12273,7 @@
 				03A0F50B1947A0850071CF4B /* ControlPrinter.cpp in Sources */,
 				03A0F50C1947A0850071CF4B /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				03A0F50D1947A0850071CF4B /* TableLookupOsc.cpp in Sources */,
+				64574CDF1B012B6300C1BC77 /* jsoncpp.cpp in Sources */,
 				03E28DCF1A9D9389005AA181 /* ofxLocalization.cpp in Sources */,
 				03A0F50E1947A0850071CF4B /* CloudsSoundFuncs.cpp in Sources */,
 				03A0F50F1947A0850071CF4B /* Rand.cpp in Sources */,
@@ -12324,7 +12283,6 @@
 				03A0F5131947A0850071CF4B /* ofxBox2dJoint.cpp in Sources */,
 				03A0F5141947A0850071CF4B /* CloudsVisualSystemExampleVectorMath.cpp in Sources */,
 				03A0F5151947A0850071CF4B /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
-				64D0253B1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */,
 				03A0F5161947A0850071CF4B /* ofxTLBangs.cpp in Sources */,
 				03A0F5171947A0850071CF4B /* b2CollideCircle.cpp in Sources */,
 				03A0F5181947A0850071CF4B /* ofxAssimpModelLoader.cpp in Sources */,
@@ -12652,7 +12610,6 @@
 				03A0F65C1947A0850071CF4B /* PathPoint.cpp in Sources */,
 				03A0F65D1947A0850071CF4B /* CloudsVisualSystemColony.cpp in Sources */,
 				03A0F65E1947A0850071CF4B /* ofxTLImageSequence.cpp in Sources */,
-				64D0252B1AE6D6560008D018 /* json_value.cpp in Sources */,
 				03A0F65F1947A0850071CF4B /* CloudsVisualSystemRulez.cpp in Sources */,
 				03A0F6601947A0850071CF4B /* ofxUIRangeSlider.cpp in Sources */,
 				03A0F6611947A0850071CF4B /* PointAction.cpp in Sources */,
@@ -12660,7 +12617,6 @@
 				03A0F6631947A0850071CF4B /* ofxUIMinimalSlider.cpp in Sources */,
 				03A0F6641947A0850071CF4B /* ParamManager2.cpp in Sources */,
 				03A0F6651947A0850071CF4B /* ofxUIMultiImageToggle.cpp in Sources */,
-				64D025311AE6D6560008D018 /* json_writer.cpp in Sources */,
 				03A0F6661947A0850071CF4B /* CubeAction.cpp in Sources */,
 				03A0F6671947A0850071CF4B /* ofxBox2dBaseShape.cpp in Sources */,
 				03A0F6681947A0850071CF4B /* Branch.cpp in Sources */,
@@ -12731,6 +12687,7 @@
 				03A0F6AA1947A0850071CF4B /* Utilities.cpp in Sources */,
 				03A0F6AB1947A0850071CF4B /* LinkedListItem.cpp in Sources */,
 				03A0F6AC1947A0850071CF4B /* ofxBufferEffectorBehavior.cpp in Sources */,
+				64574CEB1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */,
 				03A0F6AD1947A0850071CF4B /* ofxEasingBounce.cpp in Sources */,
 				03A0F6AE1947A0850071CF4B /* ofxEasingCirc.cpp in Sources */,
 				03A0F6AF1947A0850071CF4B /* Noise.cpp in Sources */,
@@ -12863,6 +12820,7 @@
 				642721AB1AE81E5200A13289 /* ParticleConnectorBin.cpp in Sources */,
 				642721AC1AE81E5200A13289 /* v_base.cpp in Sources */,
 				642721AD1AE81E5200A13289 /* CloudsVisualSystemOpenP5TextUniverse.cpp in Sources */,
+				64574CE11B012B6300C1BC77 /* jsoncpp.cpp in Sources */,
 				642721AE1AE81E5200A13289 /* CloudsStoryEngine.cpp in Sources */,
 				642721AF1AE81E5200A13289 /* ParallelTransportFrames.cpp in Sources */,
 				642721B01AE81E5200A13289 /* ofxOscReceiver.cpp in Sources */,
@@ -12874,7 +12832,6 @@
 				642721B61AE81E5200A13289 /* ofxTween.cpp in Sources */,
 				642721B71AE81E5200A13289 /* ofxTextInputField.cpp in Sources */,
 				642721B81AE81E5200A13289 /* RenderPass.cpp in Sources */,
-				642721B91AE81E5200A13289 /* json_writer.cpp in Sources */,
 				642721BA1AE81E5200A13289 /* CloudsInputOculus.cpp in Sources */,
 				642721BB1AE81E5200A13289 /* b2RevoluteJoint.cpp in Sources */,
 				642721BC1AE81E5200A13289 /* MeshUtils.cpp in Sources */,
@@ -12913,7 +12870,6 @@
 				642721DC1AE81E5200A13289 /* wSatellite.cpp in Sources */,
 				642721DD1AE81E5200A13289 /* ControlPrinter.cpp in Sources */,
 				642721DE1AE81E5200A13289 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
-				642721DF1AE81E5200A13289 /* CloudsVHXRequest.cpp in Sources */,
 				642721E01AE81E5200A13289 /* TableLookupOsc.cpp in Sources */,
 				642721E11AE81E5200A13289 /* ofxLocalization.cpp in Sources */,
 				642721E21AE81E5200A13289 /* CloudsSoundFuncs.cpp in Sources */,
@@ -13006,6 +12962,7 @@
 				642722391AE81E5200A13289 /* CloudsSecondaryDisplayOSCSender.cpp in Sources */,
 				6427223A1AE81E5200A13289 /* CloudsLink.cpp in Sources */,
 				6427223B1AE81E5200A13289 /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */,
+				64A9AD481B0523AD002FD9FB /* ofxAvailability.cpp in Sources */,
 				6427223C1AE81E5200A13289 /* ControlParameter.cpp in Sources */,
 				6427223D1AE81E5200A13289 /* b2Body.cpp in Sources */,
 				6427223E1AE81E5200A13289 /* CloudsFCPParser.cpp in Sources */,
@@ -13055,6 +13012,7 @@
 				6427226A1AE81E5200A13289 /* lukeMusicFuncs.cpp in Sources */,
 				6427226B1AE81E5200A13289 /* tinyxmlparser.cpp in Sources */,
 				6427226C1AE81E5200A13289 /* Caster.cpp in Sources */,
+				64574CED1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */,
 				6427226D1AE81E5200A13289 /* CloudsIntroSequence.cpp in Sources */,
 				6427226E1AE81E5200A13289 /* ofxOscParameterSync.cpp in Sources */,
 				6427226F1AE81E5200A13289 /* ofxUI2DGraph.cpp in Sources */,
@@ -13139,7 +13097,6 @@
 				642722BE1AE81E5200A13289 /* GodRaysPass.cpp in Sources */,
 				642722BF1AE81E5200A13289 /* CloudsVisualSystemGesturePaint.cpp in Sources */,
 				642722C01AE81E5200A13289 /* GestureRenderer.cpp in Sources */,
-				642722C11AE81E5200A13289 /* json_reader.cpp in Sources */,
 				64BDD5EE1AFAEB5B002AEAEB /* ofxCrypto.cpp in Sources */,
 				642722C21AE81E5200A13289 /* RunningBackground.cpp in Sources */,
 				642722C31AE81E5200A13289 /* ofxTLSwitches.cpp in Sources */,
@@ -13197,7 +13154,6 @@
 				642722F71AE81E5200A13289 /* b2FrictionJoint.cpp in Sources */,
 				642722F81AE81E5200A13289 /* IcosphereAction.cpp in Sources */,
 				642722F91AE81E5200A13289 /* ofxUIValuePlotter.cpp in Sources */,
-				642722FA1AE81E5200A13289 /* json_value.cpp in Sources */,
 				642722FB1AE81E5200A13289 /* ofxBox2dPolygon.cpp in Sources */,
 				642722FC1AE81E5200A13289 /* CloudsVisualSystemPhotoGlitch.cpp in Sources */,
 				642722FD1AE81E5200A13289 /* ofxUIFPS.cpp in Sources */,
@@ -13278,7 +13234,6 @@
 				642723461AE81E5200A13289 /* CircularFormula.cpp in Sources */,
 				642723471AE81E5200A13289 /* ofxSQLiteDelete.cpp in Sources */,
 				642723481AE81E5200A13289 /* CloudsVisualSystemCubeCraft.cpp in Sources */,
-				642723491AE81E5200A13289 /* ofxJSONElement.cpp in Sources */,
 				6427234A1AE81E5200A13289 /* ofxTimecode.cpp in Sources */,
 				A60F270A1AF136B400A1C863 /* audiodecoderbase.cpp in Sources */,
 				6427234B1AE81E5200A13289 /* ofxUILabelToggle.cpp in Sources */,
@@ -13303,6 +13258,7 @@
 				6427235E1AE81E5200A13289 /* ofxBox2d.cpp in Sources */,
 				6427235F1AE81E5200A13289 /* CastManager.cpp in Sources */,
 				642723601AE81E5200A13289 /* TerrainRayTest.cpp in Sources */,
+				64574BD11B00560700C1BC77 /* CloudsVHXAuth.cpp in Sources */,
 				642723611AE81E5200A13289 /* ofxUIDropDownList.cpp in Sources */,
 				642723621AE81E5200A13289 /* FileUtils.cpp in Sources */,
 				642723631AE81E5200A13289 /* Particle.cpp in Sources */,
@@ -13342,6 +13298,7 @@
 				642723851AE81E5200A13289 /* Noise.cpp in Sources */,
 				642723861AE81E5200A13289 /* CloudsIntervention.cpp in Sources */,
 				642723871AE81E5200A13289 /* ControlValue.cpp in Sources */,
+				64574BD31B00560700C1BC77 /* CloudsVHXRequest.cpp in Sources */,
 				642723881AE81E5200A13289 /* RectWave.cpp in Sources */,
 				642723891AE81E5200A13289 /* ofxObjLoader.cpp in Sources */,
 				6427238A1AE81E5200A13289 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
@@ -13504,7 +13461,6 @@
 				642724761AE81EAF00A13289 /* b2Island.cpp in Sources */,
 				642724771AE81EAF00A13289 /* ofxUIImage.cpp in Sources */,
 				642724781AE81EAF00A13289 /* kiss_fftr.c in Sources */,
-				642726C51AE81EF500A13289 /* CloudsVHXRequest.cpp in Sources */,
 				642724791AE81EAF00A13289 /* CloudsVisualSystemScrape.cpp in Sources */,
 				6427247A1AE81EAF00A13289 /* Creature.cpp in Sources */,
 				6427247B1AE81EAF00A13289 /* b2World.cpp in Sources */,
@@ -13515,6 +13471,7 @@
 				642724801AE81EAF00A13289 /* ofxTLEmptyKeyframes.cpp in Sources */,
 				642724811AE81EAF00A13289 /* wSatellite.cpp in Sources */,
 				642724821AE81EAF00A13289 /* ControlPrinter.cpp in Sources */,
+				64574CE21B012B6300C1BC77 /* jsoncpp.cpp in Sources */,
 				642724831AE81EAF00A13289 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				642724841AE81EAF00A13289 /* TableLookupOsc.cpp in Sources */,
 				642724851AE81EAF00A13289 /* CloudsSoundFuncs.cpp in Sources */,
@@ -13613,7 +13570,6 @@
 				642724E21AE81EAF00A13289 /* CloudsFCPParser.cpp in Sources */,
 				642724E31AE81EAF00A13289 /* VoroParticle.cpp in Sources */,
 				642724E41AE81EAF00A13289 /* ofxEasingQuad.cpp in Sources */,
-				642724E51AE81EAF00A13289 /* json_reader.cpp in Sources */,
 				642724E61AE81EAF00A13289 /* ofxUIDragableLabelButton.cpp in Sources */,
 				642724E71AE81EAF00A13289 /* ofxTLColorTrack.cpp in Sources */,
 				642724E81AE81EAF00A13289 /* ofxTLCurves.cpp in Sources */,
@@ -13698,6 +13654,8 @@
 				642725361AE81EAF00A13289 /* b2BlockAllocator.cpp in Sources */,
 				642725371AE81EAF00A13289 /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
 				642725381AE81EAF00A13289 /* CloudsVisualSystemForkingPaths.cpp in Sources */,
+				64574CEE1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */,
+				64574BD21B00560700C1BC77 /* CloudsVHXAuth.cpp in Sources */,
 				642725391AE81EAF00A13289 /* MSAObjCPointer.cpp in Sources */,
 				6427253A1AE81EAF00A13289 /* ofxField2D.cpp in Sources */,
 				6427253B1AE81EAF00A13289 /* RampedValue.cpp in Sources */,
@@ -13776,6 +13734,7 @@
 				642725841AE81EAF00A13289 /* ToonPass.cpp in Sources */,
 				642725851AE81EAF00A13289 /* CloudsVisualSystemTwitter.cpp in Sources */,
 				642725861AE81EAF00A13289 /* CloudsVisualSystemBalloons.cpp in Sources */,
+				64574BD41B00560700C1BC77 /* CloudsVHXRequest.cpp in Sources */,
 				642725871AE81EAF00A13289 /* CloudsVisualSystemGPUParticles.cpp in Sources */,
 				642725881AE81EAF00A13289 /* LimbDarkeningPass.cpp in Sources */,
 				642725891AE81EAF00A13289 /* (null) in Sources */,
@@ -13785,7 +13744,6 @@
 				6427258D1AE81EAF00A13289 /* CloudsVisualSystemAutomata.cpp in Sources */,
 				6427258E1AE81EAF00A13289 /* ControlPulse.cpp in Sources */,
 				6427258F1AE81EAF00A13289 /* DSPUtils.cpp in Sources */,
-				642725901AE81EAF00A13289 /* ofxJSONElement.cpp in Sources */,
 				642725911AE81EAF00A13289 /* ofxUITextInput.cpp in Sources */,
 				642725921AE81EAF00A13289 /* ofxTLAudioTrack.cpp in Sources */,
 				642725931AE81EAF00A13289 /* wParticle.cpp in Sources */,
@@ -13833,6 +13791,7 @@
 				642725BD1AE81EAF00A13289 /* b2Collision.cpp in Sources */,
 				642725BE1AE81EAF00A13289 /* ofxSimpleSurface.cpp in Sources */,
 				64BDD5EF1AFAEB5B002AEAEB /* ofxCrypto.cpp in Sources */,
+				64A9AD491B0523AD002FD9FB /* ofxAvailability.cpp in Sources */,
 				642725BF1AE81EAF00A13289 /* CloudsHUDLabel.cpp in Sources */,
 				642725C01AE81EAF00A13289 /* OpenSteerDemo.cpp in Sources */,
 				642725C11AE81EAF00A13289 /* CloudsVisualSystemOpenP5Caustics.cpp in Sources */,
@@ -13878,7 +13837,6 @@
 				642725E81AE81EAF00A13289 /* ZoomBlurPass.cpp in Sources */,
 				642725E91AE81EAF00A13289 /* StereoDelay.cpp in Sources */,
 				642725EA1AE81EAF00A13289 /* ofxOpenSteerPlugin.cpp in Sources */,
-				642725EB1AE81EAF00A13289 /* json_value.cpp in Sources */,
 				642725EC1AE81EAF00A13289 /* c_loops.cpp in Sources */,
 				642725ED1AE81EAF00A13289 /* ofxTimeline.cpp in Sources */,
 				642725EE1AE81EAF00A13289 /* CircularFormula.cpp in Sources */,
@@ -14006,7 +13964,6 @@
 				642726671AE81EAF00A13289 /* ofxOcean.cpp in Sources */,
 				642726681AE81EAF00A13289 /* CloudsSVGMesh.cpp in Sources */,
 				642726691AE81EAF00A13289 /* SphereAction.cpp in Sources */,
-				6427266A1AE81EAF00A13289 /* json_writer.cpp in Sources */,
 				6427266B1AE81EAF00A13289 /* CloudsVisualSystemYellowTail.cpp in Sources */,
 				6427266C1AE81EAF00A13289 /* ControlDbToLinear.cpp in Sources */,
 				64BDD5A91AFAE8C0002AEAEB /* CloudsMedia.cpp in Sources */,
@@ -14087,7 +14044,6 @@
 				E7D8289C18BEBE3A00C1EB93 /* ofxTween.cpp in Sources */,
 				E7D828B618BEBE5500C1EB93 /* ofxTextInputField.cpp in Sources */,
 				E73DA8DF189F3622006C9E4E /* RenderPass.cpp in Sources */,
-				64D0252F1AE6D6560008D018 /* json_writer.cpp in Sources */,
 				E7D8253A18BEBD7000C1EB93 /* CloudsInputOculus.cpp in Sources */,
 				E73DA707189F1CEA006C9E4E /* b2RevoluteJoint.cpp in Sources */,
 				E7D8260018BEBD7000C1EB93 /* MeshUtils.cpp in Sources */,
@@ -14126,6 +14082,7 @@
 				E7D82AC218BF099000C1EB93 /* ControlPrinter.cpp in Sources */,
 				E7D825B118BEBD7000C1EB93 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				E7D82AE118BF099000C1EB93 /* TableLookupOsc.cpp in Sources */,
+				64574CDD1B012B6300C1BC77 /* jsoncpp.cpp in Sources */,
 				03E28DCD1A9D9389005AA181 /* ofxLocalization.cpp in Sources */,
 				E7D8255718BEBD7000C1EB93 /* CloudsSoundFuncs.cpp in Sources */,
 				E7D825DD18BEBD7000C1EB93 /* Rand.cpp in Sources */,
@@ -14348,7 +14305,6 @@
 				E73DA8D7189F3622006C9E4E /* GodRaysPass.cpp in Sources */,
 				E7D8259D18BEBD7000C1EB93 /* CloudsVisualSystemGesturePaint.cpp in Sources */,
 				E7D8262A18BEBD7000C1EB93 /* GestureRenderer.cpp in Sources */,
-				64D025251AE6D6560008D018 /* json_reader.cpp in Sources */,
 				E73DABFB189F3645006C9E4E /* RunningBackground.cpp in Sources */,
 				E7D827FF18BEBDCF00C1EB93 /* ofxTLSwitches.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
@@ -14406,7 +14362,6 @@
 				E73DA700189F1CEA006C9E4E /* b2FrictionJoint.cpp in Sources */,
 				E7D825E618BEBD7000C1EB93 /* IcosphereAction.cpp in Sources */,
 				E755D6151943F2AF00AA81C1 /* ofxUIValuePlotter.cpp in Sources */,
-				64D025291AE6D6560008D018 /* json_value.cpp in Sources */,
 				E73DA70E189F1CEA006C9E4E /* ofxBox2dPolygon.cpp in Sources */,
 				E7D825D918BEBD7000C1EB93 /* CloudsVisualSystemPhotoGlitch.cpp in Sources */,
 				E755D5F71943F2AF00AA81C1 /* ofxUIFPS.cpp in Sources */,
@@ -14484,7 +14439,6 @@
 				E7D825FF18BEBD7000C1EB93 /* CircularFormula.cpp in Sources */,
 				E73DA856189F3611006C9E4E /* ofxSQLiteDelete.cpp in Sources */,
 				E7D8258C18BEBD7000C1EB93 /* CloudsVisualSystemCubeCraft.cpp in Sources */,
-				64D025391AE6D6560008D018 /* ofxJSONElement.cpp in Sources */,
 				E7D821A918BEBCC300C1EB93 /* ofxTimecode.cpp in Sources */,
 				E755D6001943F2AF00AA81C1 /* ofxUILabelToggle.cpp in Sources */,
 				E73DA719189F1CEA006C9E4E /* ofxTextWriter.cpp in Sources */,
@@ -14542,6 +14496,7 @@
 				E73DABFD189F3645006C9E4E /* Utilities.cpp in Sources */,
 				E7D8257518BEBD7000C1EB93 /* LinkedListItem.cpp in Sources */,
 				E7D828F818BEBE6D00C1EB93 /* ofxBufferEffectorBehavior.cpp in Sources */,
+				64574CE91B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */,
 				E7D8289218BEBE3A00C1EB93 /* ofxEasingBounce.cpp in Sources */,
 				E7D8289318BEBE3A00C1EB93 /* ofxEasingCirc.cpp in Sources */,
 				E7D82AD718BF099000C1EB93 /* Noise.cpp in Sources */,
@@ -14703,6 +14658,7 @@
 				E7DDC10D194437EC00E61D75 /* ControlTriggerFilter.cpp in Sources */,
 				E7DDC10E194437EC00E61D75 /* NoiseWarpPass.cpp in Sources */,
 				E7DDC10F194437EC00E61D75 /* b2LineJoint.cpp in Sources */,
+				64574CEA1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */,
 				E7DDC110194437EC00E61D75 /* ofxMtlBoxFitting.cpp in Sources */,
 				E7DDC111194437EC00E61D75 /* OscTypes.cpp in Sources */,
 				E7DDC112194437EC00E61D75 /* ofxEasingCubic.cpp in Sources */,
@@ -14770,6 +14726,7 @@
 				E7DDC150194437EC00E61D75 /* ofxSQLiteInsert.cpp in Sources */,
 				E7DDC151194437EC00E61D75 /* ControlStepper.cpp in Sources */,
 				E7DDC152194437EC00E61D75 /* LUTPass.cpp in Sources */,
+				64574CDE1B012B6300C1BC77 /* jsoncpp.cpp in Sources */,
 				A60F270D1AF136B400A1C863 /* audiodecodercoreaudio.cpp in Sources */,
 				E7DDC153194437EC00E61D75 /* ofxSQLiteAbstract.cpp in Sources */,
 				E7DDC154194437EC00E61D75 /* PixelatePass.cpp in Sources */,
@@ -14819,7 +14776,6 @@
 				E7DDC17E194437EC00E61D75 /* CloudsFCPParser.cpp in Sources */,
 				E7DDC17F194437EC00E61D75 /* VoroParticle.cpp in Sources */,
 				E7DDC180194437EC00E61D75 /* ofxEasingQuad.cpp in Sources */,
-				64D025261AE6D6560008D018 /* json_reader.cpp in Sources */,
 				E7DDC181194437EC00E61D75 /* ofxUIDragableLabelButton.cpp in Sources */,
 				E7DDC183194437EC00E61D75 /* ofxTLColorTrack.cpp in Sources */,
 				E7DDC184194437EC00E61D75 /* ofxTLCurves.cpp in Sources */,
@@ -14989,7 +14945,6 @@
 				E7DDC225194437EC00E61D75 /* CloudsVisualSystemAutomata.cpp in Sources */,
 				E7DDC226194437EC00E61D75 /* ControlPulse.cpp in Sources */,
 				E7DDC227194437EC00E61D75 /* DSPUtils.cpp in Sources */,
-				64D0253A1AE6D6560008D018 /* ofxJSONElement.cpp in Sources */,
 				E7DDC228194437EC00E61D75 /* ofxUITextInput.cpp in Sources */,
 				E7DDC229194437EC00E61D75 /* ofxTLAudioTrack.cpp in Sources */,
 				E7DDC22A194437EC00E61D75 /* wParticle.cpp in Sources */,
@@ -15079,7 +15034,6 @@
 				E7DDC280194437EC00E61D75 /* ZoomBlurPass.cpp in Sources */,
 				E7DDC281194437EC00E61D75 /* StereoDelay.cpp in Sources */,
 				E7DDC282194437EC00E61D75 /* ofxOpenSteerPlugin.cpp in Sources */,
-				64D0252A1AE6D6560008D018 /* json_value.cpp in Sources */,
 				E7DDC283194437EC00E61D75 /* c_loops.cpp in Sources */,
 				E7DDC284194437EC00E61D75 /* ofxTimeline.cpp in Sources */,
 				E7DDC285194437EC00E61D75 /* CircularFormula.cpp in Sources */,
@@ -15206,7 +15160,6 @@
 				E7DDC2FD194437EC00E61D75 /* ofxOcean.cpp in Sources */,
 				E7DDC2FE194437EC00E61D75 /* CloudsSVGMesh.cpp in Sources */,
 				E7DDC2FF194437EC00E61D75 /* SphereAction.cpp in Sources */,
-				64D025301AE6D6560008D018 /* json_writer.cpp in Sources */,
 				E7DDC300194437EC00E61D75 /* CloudsVisualSystemYellowTail.cpp in Sources */,
 				E7DDC301194437EC00E61D75 /* ControlDbToLinear.cpp in Sources */,
 				E7DDC302194437EC00E61D75 /* fdog.cpp in Sources */,
@@ -15748,6 +15701,7 @@
 					"CLOUDS_APP=1",
 					"CLOUDS_HUD=1",
 					"VHX_MEDIA=1",
+					"TONIC_SOUNDS=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
@@ -15865,6 +15819,7 @@
 					"CLOUDS_APP=1",
 					"CLOUDS_HUD=1",
 					"VHX_MEDIA=1",
+					"TONIC_SOUNDS=1",
 					"CLOUDS_RELEASE=1",
 				);
 				HEADER_SEARCH_PATHS = (
@@ -16220,6 +16175,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
@@ -16263,6 +16219,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;

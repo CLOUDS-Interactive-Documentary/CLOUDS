@@ -18,6 +18,7 @@ unsigned long long CloudsVHXUrlTimeLimit = 10 * 60 * 1000;  // 10 mins
 
 string CloudsVHXRequest::userpwd = "";
 
+//--------------------------------------------------------------
 CloudsVHXRequest::CloudsVHXRequest()
     : ofThread()
     , bNotifyComplete(false)
@@ -26,34 +27,23 @@ CloudsVHXRequest::CloudsVHXRequest()
     
     if (userpwd.size() == 0) {
         // Load and decrypt the user password from file.
-        string path = GetCloudsDataPath(true) + "vhx/usrpwd.bin";
-        ofFile file(path, ofFile::ReadOnly, true);
-        if (!file.exists()) {
+        string path = GetCloudsDataPath(true) + "vhx/user.bin";
+        if (!CloudsCryptoLoadUser(userpwd, path)) {
             ofLogError("CloudsVHXRequest::CloudsVHXRequest") << "Cannot open file at " << path;
-            return false;
-        }
-        
-        int numChars = 0;
-        file.read((char *)(&numChars), sizeof(int));
-        if (numChars > 0) {
-            char chars[numChars];
-            file.read(&chars[0], sizeof(char) * numChars);
-            string encoded;
-            encoded.assign(chars, numChars);
-            string decoded = ofxCrypto::base64_decode(encoded);
-            int pos = decoded.find(CloudsSalt);
-            userpwd = decoded.substr(0, pos) + decoded.substr(pos + CloudsSalt.size());
+            return;
         }
     }
     
     ofAddListener(ofEvents().update, this, &CloudsVHXRequest::update);
 }
 
+//--------------------------------------------------------------
 CloudsVHXRequest::~CloudsVHXRequest()
 {
     ofRemoveListener(ofEvents().update, this, &CloudsVHXRequest::update);
 }
 
+//--------------------------------------------------------------
 void CloudsVHXRequest::fetchSourceUrl(const string& vhxId)
 {
     if (isThreadRunning()) {
@@ -72,6 +62,7 @@ void CloudsVHXRequest::fetchSourceUrl(const string& vhxId)
     startThread();
 }
 
+//--------------------------------------------------------------
 void CloudsVHXRequest::update(ofEventArgs& args)
 {
     if (bNotifyComplete) {
@@ -80,6 +71,7 @@ void CloudsVHXRequest::update(ofEventArgs& args)
     }
 }
 
+//--------------------------------------------------------------
 void CloudsVHXRequest::threadedFunction()
 {
     ofLogVerbose("CloudsVHXRequest::threadedFunction") << "Fetching package video with url " << url;

@@ -196,8 +196,8 @@
 		642728501AE86A3700A13289 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6427284F1AE86A3700A13289 /* QuartzCore.framework */; };
 		642728521AE86A4D00A13289 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 642728511AE86A4D00A13289 /* libz.1.2.5.dylib */; };
 		642728541AE86A7400A13289 /* CloudsGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642728531AE86A7400A13289 /* CloudsGlobal.cpp */; };
-		642728761AE87EF100A13289 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6427286E1AE87EF100A13289 /* audiodecoderbase.cpp */; };
-		642728771AE87EF100A13289 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6427286F1AE87EF100A13289 /* audiodecodercoreaudio.cpp */; };
+		64ACD5551B04F1D400283F3C /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64ACD5521B04F1D400283F3C /* audiodecoderbase.cpp */; };
+		64ACD5561B04F1D400283F3C /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64ACD5531B04F1D400283F3C /* audiodecodercoreaudio.cpp */; };
 		852D022C181DF3CC00436018 /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 852D0228181DF3CC00436018 /* CloudsVisualSystemColony.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -704,15 +704,16 @@
 		6427284F1AE86A3700A13289 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		642728511AE86A4D00A13289 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		642728531AE86A7400A13289 /* CloudsGlobal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsGlobal.cpp; path = ../../CloudsLibrary/src/CloudsGlobal.cpp; sourceTree = "<group>"; };
-		642728681AE87EF100A13289 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
-		642728691AE87EF100A13289 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
-		6427286A1AE87EF100A13289 /* audiodecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
-		6427286B1AE87EF100A13289 /* audiodecoderbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoderbase.h; sourceTree = "<group>"; };
-		6427286C1AE87EF100A13289 /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodercoreaudio.h; sourceTree = "<group>"; };
-		6427286E1AE87EF100A13289 /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
-		6427286F1AE87EF100A13289 /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
 		642728731AE87EF100A13289 /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
 		642728831AE9846300A13289 /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxAudioDecoderTonic.h; path = couples/ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
+		64ACD54B1B04F1D400283F3C /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		64ACD54C1B04F1D400283F3C /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		64ACD54D1B04F1D400283F3C /* audiodecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
+		64ACD54E1B04F1D400283F3C /* audiodecoderbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoderbase.h; sourceTree = "<group>"; };
+		64ACD54F1B04F1D400283F3C /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodercoreaudio.h; sourceTree = "<group>"; };
+		64ACD5521B04F1D400283F3C /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
+		64ACD5531B04F1D400283F3C /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
+		64ACD5591B04FB8A00283F3C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		852D0228181DF3CC00436018 /* CloudsVisualSystemColony.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemColony.cpp; sourceTree = "<group>"; };
 		852D0229181DF3CC00436018 /* CloudsVisualSystemColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemColony.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1716,49 +1717,11 @@
 			isa = PBXGroup;
 			children = (
 				642728811AE9841D00A13289 /* couples */,
-				642728651AE87EF100A13289 /* lib */,
+				64ACD5471B04F1D400283F3C /* libs */,
 				642728721AE87EF100A13289 /* src */,
 			);
 			name = ofxAudioDecoder;
 			path = ../../../addons/ofxAudioDecoder;
-			sourceTree = "<group>";
-		};
-		642728651AE87EF100A13289 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				642728661AE87EF100A13289 /* include */,
-				6427286D1AE87EF100A13289 /* src */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		642728661AE87EF100A13289 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				642728671AE87EF100A13289 /* apple */,
-				6427286A1AE87EF100A13289 /* audiodecoder.h */,
-				6427286B1AE87EF100A13289 /* audiodecoderbase.h */,
-				6427286C1AE87EF100A13289 /* audiodecodercoreaudio.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		642728671AE87EF100A13289 /* apple */ = {
-			isa = PBXGroup;
-			children = (
-				642728681AE87EF100A13289 /* CADebugMacros.h */,
-				642728691AE87EF100A13289 /* CAStreamBasicDescription.h */,
-			);
-			path = apple;
-			sourceTree = "<group>";
-		};
-		6427286D1AE87EF100A13289 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				6427286E1AE87EF100A13289 /* audiodecoderbase.cpp */,
-				6427286F1AE87EF100A13289 /* audiodecodercoreaudio.cpp */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		642728721AE87EF100A13289 /* src */ = {
@@ -1775,6 +1738,52 @@
 				642728831AE9846300A13289 /* ofxAudioDecoderTonic.h */,
 			);
 			name = couples;
+			sourceTree = "<group>";
+		};
+		64ACD5471B04F1D400283F3C /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				64ACD5481B04F1D400283F3C /* audiodecoder */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		64ACD5481B04F1D400283F3C /* audiodecoder */ = {
+			isa = PBXGroup;
+			children = (
+				64ACD5491B04F1D400283F3C /* include */,
+				64ACD5511B04F1D400283F3C /* src */,
+			);
+			path = audiodecoder;
+			sourceTree = "<group>";
+		};
+		64ACD5491B04F1D400283F3C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				64ACD54A1B04F1D400283F3C /* apple */,
+				64ACD54D1B04F1D400283F3C /* audiodecoder.h */,
+				64ACD54E1B04F1D400283F3C /* audiodecoderbase.h */,
+				64ACD54F1B04F1D400283F3C /* audiodecodercoreaudio.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		64ACD54A1B04F1D400283F3C /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				64ACD54B1B04F1D400283F3C /* CADebugMacros.h */,
+				64ACD54C1B04F1D400283F3C /* CAStreamBasicDescription.h */,
+			);
+			path = apple;
+			sourceTree = "<group>";
+		};
+		64ACD5511B04F1D400283F3C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64ACD5521B04F1D400283F3C /* audiodecoderbase.cpp */,
+				64ACD5531B04F1D400283F3C /* audiodecodercoreaudio.cpp */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		852D01FD181DF3CC00436018 /* Colony */ = {
@@ -1879,6 +1888,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				64ACD5591B04FB8A00283F3C /* libstdc++.dylib */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -2149,7 +2159,7 @@
 				2AC995091874C38900492009 /* TableLookupOsc.cpp in Sources */,
 				642728471AE869F400A13289 /* ofxUIValuePlotter.cpp in Sources */,
 				2AC994E91874C38900492009 /* ControlParameter.cpp in Sources */,
-				642728771AE87EF100A13289 /* audiodecodercoreaudio.cpp in Sources */,
+				64ACD5561B04F1D400283F3C /* audiodecodercoreaudio.cpp in Sources */,
 				642728371AE869F400A13289 /* ofxUINumberDialer.cpp in Sources */,
 				2AC995071874C38900492009 /* StereoDelay.cpp in Sources */,
 				4695E2B817512E45003001E2 /* ofxRParticleGlowieRenderer.cpp in Sources */,
@@ -2189,7 +2199,7 @@
 				4695E34B17529F8B003001E2 /* ofxTLColors.cpp in Sources */,
 				642727941AE8693C00A13289 /* CloudsLocalization.cpp in Sources */,
 				2AC994ED1874C38900492009 /* ControlRecorder.cpp in Sources */,
-				642728761AE87EF100A13289 /* audiodecoderbase.cpp in Sources */,
+				64ACD5551B04F1D400283F3C /* audiodecoderbase.cpp in Sources */,
 				642728401AE869F400A13289 /* ofxUISpectrum.cpp in Sources */,
 				642728451AE869F400A13289 /* ofxUIToggle.cpp in Sources */,
 				642728491AE869F400A13289 /* ofxUIWidget.cpp in Sources */,

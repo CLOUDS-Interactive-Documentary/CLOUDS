@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "CloudsPlaybackController.h"
 
+
 class testApp : public ofBaseApp{
   public:
 	void setup();
@@ -20,7 +21,8 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	
 	CloudsPlaybackController player;
-
+    
+    
 	bool firstFrame;
 	bool playerSetup;
 	bool shouldSetupPlayer;

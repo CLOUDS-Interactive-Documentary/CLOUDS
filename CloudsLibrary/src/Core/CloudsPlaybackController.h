@@ -26,6 +26,10 @@
 
 #include "CloudsPortal.h"
 
+#ifdef VHX_MEDIA
+#include "ofxAvailability.h"
+#include "CloudsVHXAuth.h"
+#endif
 
 class CloudsIntroSequence;
 class CloudsVisualSystemRGBD;
@@ -62,6 +66,20 @@ class CloudsPlaybackController : public ofThread {
 	void mouseMoved(ofMouseEventArgs & args);
 	void mousePressed(ofMouseEventArgs & args);
 	void mouseReleased(ofMouseEventArgs & args);
+    
+#ifdef VHX_MEDIA
+    void networkConnected();
+    void networkDisconnected();
+    
+    void requestTokenComplete(CloudsVHXEventArgs& args);
+    void refreshTokenComplete(CloudsVHXEventArgs& args);
+    void requestCodeComplete(CloudsVHXEventArgs& args);
+    void linkCodeComplete(CloudsVHXEventArgs& args);
+    void verifyPackageComplete(CloudsVHXEventArgs& args);
+    
+    void codeExpired(CloudsVHXEventArgs& args);
+    void packageExpired(CloudsVHXEventArgs& args);
+#endif
 	
 	void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);
@@ -100,20 +118,31 @@ class CloudsPlaybackController : public ofThread {
 	CloudsSecondaryDisplayOSCSender oscSender;
 	CloudsHUDController hud;
 	CloudsTransitionController transitionController;
+    #ifdef VHX_MEDIA
+    ofxAvailability availability;
+    CloudsVHXAuth vhxAuth;
+    #endif
 
-	//if there is a system playing this wil be non-null
-	CloudsIntroSequence* introSequence;
-	CloudsVisualSystemClusterMap* clusterMap;
-    CloudsVisualSystemTwitter* peopleMap;
-	CloudsVisualSystem* interludeSystem;
-    CloudsVisualSystemVisuals* visualsMap;
-    
+
 	//STATE STUFF
 	CloudsRun run;
 	CloudsAct* currentAct;
 	CloudsClip* currentClip;
+    
+	//if there is a system playing this wil be non-null
+	CloudsIntroSequence* introSequence;
+	CloudsVisualSystemClusterMap* clusterMap;
+    CloudsVisualSystemTwitter* peopleMap;
+    CloudsVisualSystemVisuals* visualsMap;
+	CloudsVisualSystem* interludeSystem;
+    CloudsVisualSystem* currentVisualSystem;
+    
+	CloudsVisualSystemPreset nextVisualSystemPreset;
+	CloudsVisualSystemPreset currentVisualSystemPreset;
+    
 	int numClipsPlayed;
-	string currentTopic;
+    int numActsCreated;
+    string currentTopic;
 	
 	bool shouldLoadAct;
 	bool shouldPlayAct;
@@ -128,25 +157,19 @@ class CloudsPlaybackController : public ofThread {
     void drawKinectFeedback();
 #endif
 
-    CloudsVisualSystem* currentVisualSystem;
-
     void createInterludeSoundQueue();
-    int numActsCreated;
     
-    bool cachedTransition;
-    CloudsVisualSystem::RGBDTransitionType cachedTransitionType;
     
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;
+    bool cachedTransition;
+    CloudsVisualSystem::RGBDTransitionType cachedTransitionType;
 	vector<string> backgroundPresets;
 	vector<string> pointcloudPresets;
 	string basePreset;
 	void populateRGBDPresets();
 	
     float interludeStartTime;
-	
-	CloudsVisualSystemPreset nextVisualSystemPreset;	
-	CloudsVisualSystemPreset currentVisualSystemPreset;
     
 	void updateTransition();
     void updateHUD();
@@ -199,7 +222,12 @@ class CloudsPlaybackController : public ofThread {
     
 	bool bQuestionAsked;
 	bool forceCredits;
-	    
+    bool bVHXRentalExpired;
+    bool bShowingAct;
+    bool bBufferingVideo;
+    
+    void drawVideoStatus();
+    
     string exploreMapSelectedTopic;
     string explorePeopleSelectedSpeakerID;
     string exploreVisualsSelectedSystem;

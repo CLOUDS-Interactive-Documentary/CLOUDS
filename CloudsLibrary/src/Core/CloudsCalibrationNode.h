@@ -23,8 +23,8 @@ class CalibrationNode{
 	float gazePercent;
 	int multiplier;
 	
-	ofSoundPlayer* clickSound;
-	ofSoundPlayer* selectSound;
+	ofVideoPlayer* clickSound;
+	ofVideoPlayer* selectSound;
 	
 	//SET ON EACH UPDATE
 	ofVec3f baseOffset;
