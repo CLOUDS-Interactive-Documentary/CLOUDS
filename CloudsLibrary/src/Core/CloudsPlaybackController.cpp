@@ -360,7 +360,7 @@ void CloudsPlaybackController::threadedFunction(){
 //	///SOUND
 	cout << "*****LOAD STEP SOUND" << endl;
 #ifdef TONIC_SOUNDS
-//	mixer.setup();
+	mixer.setup();
 #endif
 	sound.setup(storyEngine);
     parser.parseSounds(sound.renders);
