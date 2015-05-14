@@ -15,6 +15,9 @@ CloudsHUDLabel::CloudsHUDLabel(){
     
     layout = NULL;
     font   = NULL;
+    dynamicBackingMesh = NULL;
+    bDynamicBacking = false;
+    
     tab = false;
     tabSelected = false;
     
@@ -162,17 +165,52 @@ void CloudsHUDLabel::setText(const string& newText, bool forceOn){
             animateIn(true);
         }
     }
+    
+
+    if(bDynamicBacking && dynamicBackingMesh != NULL && dynamicBackingMesh->getNumVertices() >= 4){
+        
+        //sample the layout to get a margin to apply to the right edge also
+        float backingMargin = bounds.getLeft() - dynamicBackingBounds.getLeft();
+
+        if(usesFont()){
+            dynamicBackingBounds.width = font->stringWidth(text) + backingMargin*2;
+        }
+        else if(usesLayout()){
+            dynamicBackingBounds.width = layout->stringWidth(text) + backingMargin*2;
+        }
+        
+        ofVec3f a = dynamicBackingBounds.getTopLeft();
+        ofVec3f b = dynamicBackingBounds.getTopRight();
+        ofVec3f c = dynamicBackingBounds.getBottomRight();
+        ofVec3f d = dynamicBackingBounds.getBottomLeft();
+        
+        dynamicBackingMesh->getVertices()[0] = a;
+        dynamicBackingMesh->getVertices()[1] = b;
+        dynamicBackingMesh->getVertices()[2] = d;
+        
+        dynamicBackingMesh->getVertices()[3] = b;
+        dynamicBackingMesh->getVertices()[4] = d;
+        dynamicBackingMesh->getVertices()[5] = c;
+    }
  
 }
 
 int CloudsHUDLabel::getRightEdge(){
-    if(type == "LAYOUT"){
+    if(usesLayout()){
         return layout->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
 	}
-    else if (type == "FONT"){
+    else if (usesFont()){
         return font->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
 	}
 	return 0;
+}
+
+bool CloudsHUDLabel::usesLayout(){
+    return type == "LAYOUT" && layout != NULL;
+}
+
+bool CloudsHUDLabel::usesFont(){
+    return type == "FONT" && font != NULL;
 }
 
 void CloudsHUDLabel::mouseMoved(ofVec2f mouse){

@@ -345,6 +345,13 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["PeopleTextBox"]->tab = true;
     hudLabelMap["VisualsTextBox"]->tab = true;
     
+    //dynamic backings
+    //
+    hudLabelMap["QuestionTextBox_1_"]->bDynamicBacking = true;
+    hudLabelMap["QuestionTextBox_1_"]->dynamicBackingMesh = &layers[CLOUDS_HUD_QUESTION]->svg.getMeshByID("QuestionBacking")->mesh;
+    hudLabelMap["QuestionTextBox_1_"]->dynamicBackingBounds = layers[CLOUDS_HUD_QUESTION]->svg.getMeshByID("QuestionBacking")->bounds;
+    
+    
 }
 
 CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,

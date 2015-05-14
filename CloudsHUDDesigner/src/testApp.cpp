@@ -121,6 +121,14 @@ void testApp::keyPressed(int key){
 //		hud.toggleGuis();
     }
 	
+    if(key == 'q'){
+        hud.questionHoverOn("SOME SMALL QUESTION?");
+    }
+    if(key == 'Q'){
+        hud.questionHoverOn("OR ANOTHER MUCH LARGER QUESTION?");
+
+    }
+    
 }
 
 //--------------------------------------------------------------

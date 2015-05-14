@@ -30,6 +30,11 @@ class CloudsHUDLabel {
 
     ofRectangle baseInteractiveBounds;
     ofRectangle scaledInteractiveBounds;
+    
+    //for dynamic backing text
+    bool bDynamicBacking;
+    ofRectangle dynamicBackingBounds;
+    ofMesh* dynamicBackingMesh;
 
     void animateIn(bool force = false);
     void animateOut(bool clear = false);
@@ -51,9 +56,13 @@ class CloudsHUDLabel {
 	void mousePressed(ofVec2f mouse);
 	void mouseReleased(ofVec2f mouse);
     
+    
   protected:
 	string  text;
     string type;
+
+    bool usesLayout();
+    bool usesFont();
     
     bool clearTextOnAnimateOut;
 
