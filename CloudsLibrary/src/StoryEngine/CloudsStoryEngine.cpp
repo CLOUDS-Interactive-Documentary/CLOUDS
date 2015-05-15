@@ -515,6 +515,7 @@ CloudsAct* CloudsStoryEngine::buildActWithVisual(CloudsRun& run, string visualSy
 //    
 //    return buildAct(settings);
 
+	return NULL;
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string seedTopic, bool playSeed){
@@ -1367,8 +1368,9 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip* poten
         return 0;
 	}
     
+	bool link = false;
     if(state.clip != NULL && !state.forcingPerson){
-        bool link = parser->clipLinksTo( state.clip->getLinkName(), potentialNextClip->getLinkName() );
+        link = parser->clipLinksTo( state.clip->getLinkName(), potentialNextClip->getLinkName() );
         if(!link && potentialNextClip->person == state.clip->person){
             cliplog << state.duration << "\t\t\t\t\tREJECTED Clip " << potentialNextClip->getLinkName() << ": same person" << endl;
             return 0;
