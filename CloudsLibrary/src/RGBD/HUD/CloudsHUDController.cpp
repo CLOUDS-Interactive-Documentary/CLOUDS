@@ -724,7 +724,7 @@ void CloudsHUDController::populateVisualSystem(const string& creditLine1,
     
 }
 
-ofVec2f CloudsHUDController::setResearchClickAnchor(ofVec2f anchor){
+void CloudsHUDController::setResearchClickAnchor(ofVec2f anchor){
     hasResearchRectangle = true;
     researchClickAnchor = anchor;
     //TODO: Do we make this dynamic w/h?

@@ -177,7 +177,7 @@ class CloudsHUDController {
     void selectPerson(string personID);
 
     //where the researched item may be clicked
-    ofVec2f setResearchClickAnchor(ofVec2f anchor);
+    void setResearchClickAnchor(ofVec2f anchor);
     
     bool isItemSelected();
     bool isItemConfirmed();

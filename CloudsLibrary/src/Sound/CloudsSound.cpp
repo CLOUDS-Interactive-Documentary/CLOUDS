@@ -271,7 +271,7 @@ void CloudsSound::update(){
 #ifdef RTCMIX
         flush_sched();
 #endif
-        sleep(1);
+        //sleep(1);
         // zero output buffer (AHA!)
 
         memset(s_audio_outbuf, 0, nchans*framesize*sizeof(short));
@@ -285,7 +285,7 @@ void CloudsSound::update(){
 #ifdef RTCMIX
         flush_sched();
 #endif
-        sleep(1);
+        //sleep(1);
         // zero output buffer (AHA!)
         memcpy((void *) s_audio_outbuf, 0, nchans*framesize*sizeof(short));
         GetCloudsAudioEvents()->respawn = false;

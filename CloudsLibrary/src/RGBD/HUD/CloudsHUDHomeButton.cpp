@@ -161,7 +161,7 @@ bool CloudsHUDHomeButton::isActive(){
     return currentState == CLOUDS_HOME_ACTIVATING || currentState == CLOUDS_HOME_ACTIVE;
 }
 
-bool CloudsHUDHomeButton::forceActive(){
+void CloudsHUDHomeButton::forceActive(){
     if(!isActive()){
         queueState(CLOUDS_HOME_ACTIVATING);
     }

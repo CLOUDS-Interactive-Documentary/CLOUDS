@@ -1645,9 +1645,9 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeResetSelected = true;
 		return true;
 	}
-    
+     */    
 	return false;
-     */
+
 #endif
 	
 }
