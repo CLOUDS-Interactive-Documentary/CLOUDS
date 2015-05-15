@@ -268,6 +268,7 @@ class CloudsHUDController {
     bool    bQuestionDisplayed;
     bool    bProjectExampleDisplayed;
     
+    
 #ifdef OCULUS_RIFT
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
 #endif

@@ -53,6 +53,7 @@ CloudsHUDController::CloudsHUDController(){
 
 	isPlaying = false;
     
+    
     scaleAmt = 1.0;
     margin = 40;
     bPaused = false;
@@ -352,7 +353,8 @@ void CloudsHUDController::calculateFontSizes(){
     setupBacking("BylineTopicTextBoxTop", CLOUDS_HUD_LOWER_THIRD, "BylineTopicBackingTop");
 
     setupBacking("VSCreditsTextBoxTop", CLOUDS_HUD_LOWER_THIRD, "VSCreditsBackingTop");
-    setupBacking("VSCreditsTextBoxBottom", CLOUDS_HUD_LOWER_THIRD, "VSCreditsTextBoxBottom");
+    setupBacking("VSCreditsTextBoxBottom", CLOUDS_HUD_LOWER_THIRD, "VSCreditsBackingBottom");
+
     
 }
 
@@ -360,8 +362,8 @@ void CloudsHUDController::setupBacking(string labelName, CloudsHUDLayerSet layer
     hudLabelMap[labelName]->bDynamicBacking = true;
     hudLabelMap[labelName]->dynamicBackingMesh = &layers[layer]->svg.getMeshByID(backingName)->mesh;
     hudLabelMap[labelName]->dynamicBackingBounds =  layers[layer]->svg.getMeshByID(backingName)->bounds;
- 
-
+    
+    hudLabelMap[labelName]->setDynamicMargin();
 }
 
 CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
@@ -631,19 +633,8 @@ void CloudsHUDController::populateLowerThird(const string& firstName,
     firstNameLabel->setText( firstName, forceOn );
     lastNameLabel->setText( lastName, forceOn );
     
-    int firstNameRight = firstNameLabel->getRightEdge();
-    int lastNameRight = lastNameLabel->getRightEdge();
-    int rightEdge = 0;
-    
-    if(firstNameRight > lastNameRight){
-        rightEdge = firstNameRight;
-    }
-	else{
-        rightEdge = lastNameRight;
-	}
+    int rightEdge = MAX(firstNameLabel->getRightEdge(), lastNameLabel->getRightEdge());
 
-//    cout<< "right edge: " << rightEdge << endl;
-    
     //move these over to float left of name
     CloudsHUDLabel* locationLabel = hudLabelMap["BylineTopicTextBoxTop"];
     CloudsHUDLabel* titleLabel = hudLabelMap["BylineTopicTextBoxBottom"];
@@ -652,32 +643,18 @@ void CloudsHUDController::populateLowerThird(const string& firstName,
     
     locationLabel->setText( location, forceOn );
     titleLabel->setText( title, forceOn );
+
+    CloudsHUDLabel* vsTopBox  = hudLabelMap["VSCreditsTextBoxTop"];
+    CloudsHUDLabel* vsBottomBox  = hudLabelMap["VSCreditsTextBoxBottom"];
+ 
+    rightEdge = MAX(locationLabel->getRightEdge(), titleLabel->getRightEdge());
+    vsTopBox->bounds.x = rightEdge + margin;
+    vsBottomBox->bounds.x = rightEdge + margin;
+    
+    vsTopBox->updateDynamicSize();
+    vsBottomBox->updateDynamicSize();
     
     hudLabelMap["BioTextBox"]->setText(textbox, false);
-
-    
-    //description
-    ////reset to default
-    //get rid of this for now
-//    CloudsHUDLabel* descLabel = hudLabelMap["BylineBodyCopyTextBox"];
-//    descLabel->bounds = defaultBioBounds;
-//    descLabel->layout->setLineLength(defaultBioBounds.width);
-//    int descLeftEdge = descLabel->bounds.getLeft();
-    
-//    if(locationLabel->getRightEdge() > titleLabel->getRightEdge()){
-//        rightEdge = locationLabel->getRightEdge();
-//	}
-//	else{
-//        rightEdge = titleLabel->getRightEdge();
-//	}
-//
-//    if(rightEdge + margin >= descLeftEdge){
-//        descLabel->bounds.x = rightEdge+margin;
-//        descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
-//    }
-//    
-//    descLabel->setText( textbox, forceOn );
-    
 
 }
 
@@ -693,52 +670,7 @@ void CloudsHUDController::populateVisualSystem(const string& creditLine1,
     topBox->setText( creditLine1, forceOn );
     bottomBox->setText( creditLine2, forceOn );
     
-//    int topLineRight = topBox->getRightEdge();
-//    int bottomLineRight  = bottomBox->getRightEdge();
-//    int rightEdge = 0;
-//    
-//    if(firstNameRight > lastNameRight){
-//        rightEdge = firstNameRight;
-//    }
-//	else{
-//        rightEdge = lastNameRight;
-//	}
-//    
-    //    cout<< "right edge: " << rightEdge << endl;
-    
-    //move these over to float left of name
-//    CloudsHUDLabel* locationLabel = hudLabelMap["VSCreditsTextBoxTop"];
-//    CloudsHUDLabel* titleLabel = hudLabelMap["VSCreditsTextBoxBottom"];
-//    locationLabel->bounds.x = rightEdge + margin;
-//    titleLabel->bounds.x = rightEdge + margin;
-    
-//    //TODO: do we want to add things into this local
-//    locationLabel->setText( "", forceOn );
-//    titleLabel->setText( "", forceOn );
-    
-//    //description
-//    ////reset to default
-//    CloudsHUDLabel* descLabel = hudLabelMap["BylineBodyCopyTextBox"];
-//    descLabel->bounds = defaultBioBounds;
-//    descLabel->layout->setLineLength(defaultBioBounds.width);
-//    int descLeftEdge = descLabel->bounds.getLeft();
-//    
-//    if(locationLabel->getRightEdge() > titleLabel->getRightEdge()){
-//        rightEdge = locationLabel->getRightEdge();
-//	}
-//	else{
-//        rightEdge = titleLabel->getRightEdge();
-//	}
-//    
-//    if(rightEdge + margin >= descLeftEdge){
-//        descLabel->bounds.x = rightEdge+margin;
-//        descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
-//    }
-//    
-//    //TODO: do we want bio text
-//    descLabel->setText( "", forceOn );
 
-    
 }
 
 ofVec2f CloudsHUDController::setResearchClickAnchor(ofVec2f anchor){

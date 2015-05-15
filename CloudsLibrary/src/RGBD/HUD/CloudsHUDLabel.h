@@ -16,7 +16,9 @@ class CloudsHUDLabel {
     CloudsHUDLabel();
     void setup( ofxFTGLSimpleLayout *textLayout, ofRectangle textBounds );
     void setup( ofxFTGLFont *textFont, ofRectangle textBounds );
-
+    void setDynamicMargin();
+    void updateDynamicSize();
+    
     void draw();
     
     void setText(const string& newText, bool forceOn = true);
@@ -73,6 +75,8 @@ class CloudsHUDLabel {
     float beginTime;
     float pct;
     float textAlpha;
+    float dynamicBackingMargin;
+    
     int playhead;
     
     bool bIsAnimatingIn, bIsAnimatingOut;

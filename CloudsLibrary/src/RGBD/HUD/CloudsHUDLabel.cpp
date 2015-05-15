@@ -44,6 +44,7 @@ CloudsHUDLabel::CloudsHUDLabel(){
     pct = 0.;
     playhead = 0;
     textAlpha = 255;
+    dynamicBackingMargin = 0;
 }
 
 void CloudsHUDLabel::setup( ofxFTGLSimpleLayout *textLayout, ofRectangle textBounds ){
@@ -58,6 +59,10 @@ void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
     type = "FONT";
 }
 
+void CloudsHUDLabel::setDynamicMargin(){
+    dynamicBackingMargin = bounds.getLeft() - dynamicBackingBounds.getLeft();
+
+}
 void CloudsHUDLabel::draw(){
     
     if(!bIsVisible && !bIsAnimatingOut){
@@ -166,18 +171,22 @@ void CloudsHUDLabel::setText(const string& newText, bool forceOn){
         }
     }
     
+    updateDynamicSize();
+}
 
-    //TODO: what to do if text is nothing?
+void CloudsHUDLabel::updateDynamicSize(){
+    
     if(bDynamicBacking && dynamicBackingMesh != NULL && dynamicBackingMesh->getNumVertices() >= 4){
         
         //sample the layout to get a margin to apply to the right edge also
-        float backingMargin = bounds.getLeft() - dynamicBackingBounds.getLeft();
-
+        
+        dynamicBackingBounds.x = bounds.getLeft() - dynamicBackingMargin;
+        
         if(usesFont()){
-            dynamicBackingBounds.width = font->stringWidth(text) + backingMargin*2;
+            dynamicBackingBounds.width = font->stringWidth(text) + dynamicBackingMargin*2;
         }
         else if(usesLayout()){
-            dynamicBackingBounds.width = layout->stringWidth(text) + backingMargin*2;
+            dynamicBackingBounds.width = layout->stringWidth(text) + dynamicBackingMargin*2;
         }
         
         ofVec3f a = dynamicBackingBounds.getTopLeft();
@@ -193,11 +202,14 @@ void CloudsHUDLabel::setText(const string& newText, bool forceOn){
         dynamicBackingMesh->getVertices()[4] = d;
         dynamicBackingMesh->getVertices()[5] = c;
     }
- 
 }
 
 int CloudsHUDLabel::getRightEdge(){
-    if(usesLayout()){
+    
+    if(bDynamicBacking){
+        return dynamicBackingBounds.getRight();
+    }
+    else if(usesLayout()){
         return layout->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
 	}
     else if (usesFont()){

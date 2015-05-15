@@ -67,7 +67,6 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	showingVisualSystem = false;
 	showingClusterMap = false;
     showingInterlude = false;
-    //exitedInterlude = false;
     actJustBegan = false;
     
     showingVisualLoop = false;
