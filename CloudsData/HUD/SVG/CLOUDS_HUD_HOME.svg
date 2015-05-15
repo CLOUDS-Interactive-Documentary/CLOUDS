@@ -846,7 +846,7 @@
 		114.355,773.193 	"/>
 </g>
 <g id="HomeButtonBacking">
-	<rect x="59.323" y="702.5" opacity="0.16" fill="#101010" width="113.999" height="108"/>
+	<rect x="59.323" y="702.5" opacity="0.49" fill="#101010" width="113.999" height="108"/>
 </g>
 <g id="HomeButtonFrame">
 	<rect x="58.813" y="702.5" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="115" height="108"/>

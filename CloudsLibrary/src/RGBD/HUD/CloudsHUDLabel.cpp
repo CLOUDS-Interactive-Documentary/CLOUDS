@@ -171,6 +171,7 @@ void CloudsHUDLabel::setText(const string& newText, bool forceOn){
         }
     }
     
+    //todo: what if "" == text??
     updateDynamicSize();
 }
 
