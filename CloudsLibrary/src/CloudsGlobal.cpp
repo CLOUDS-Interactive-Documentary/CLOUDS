@@ -82,6 +82,7 @@ string GetCloudsMediaPath(){
         }
 #else
         //TODO Windows Media Path Root
+		mediaRootPath = "D:\\CLOUDS\\CloudsDataMedia\\";
 #endif
     }
     
