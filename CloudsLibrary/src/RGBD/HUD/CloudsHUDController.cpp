@@ -185,6 +185,11 @@ void CloudsHUDController::buildLayerSets(){
     layers[CLOUDS_HUD_PROJECT_EXAMPLE]->bForceHover = true;
     layers[CLOUDS_RESEARCH]->bForceHover = true;
     layers[CLOUDS_RESEARCH_RESUME]->bForceHover = true;
+    
+    layers[CLOUDS_RESEARCH_TOPIC]->bForceHover = true;
+    layers[CLOUDS_RESEARCH_PPL]->bForceHover = true;
+    layers[CLOUDS_RESEARCH_VS]->bForceHover = true;
+    
 }
 
 string CloudsHUDController::filenameForLayer(CloudsHUDLayerSet layer){
@@ -207,6 +212,12 @@ string CloudsHUDController::filenameForLayer(CloudsHUDLayerSet layer){
             return "CLOUDS_RESEARCH_SHUFFLE.svg";
         case CLOUDS_RESEARCH_RESUME:
             return "CLOUDS_RESEARCH_RESUME.svg";
+        case CLOUDS_RESEARCH_TOPIC:
+            return "CLOUDS_RESEARCH_TOPIC.svg";
+        case CLOUDS_RESEARCH_PPL:
+            return "CLOUDS_RESEARCH_PPL.svg";
+        case CLOUDS_RESEARCH_VS:
+            return "CLOUDS_RESEARCH_VS.svg";
         case CLOUDS_ABOUT_BACKERS:
             return "CLOUDS_ABOUT_BACKERS.svg";
         case CLOUDS_ABOUT_CAST:
@@ -232,10 +243,8 @@ void CloudsHUDController::calculateFontSizes(){
     int minFontSize = 1;
     int maxFontSize = 70;
 #ifdef OCULUS_RIFT
-	//string fontPath = GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
 	string fontPath = GetMediumFontPath();
 #else
-	//string fontPath = GetCloudsDataPath() + "font/Blender-THIN.ttf";
 	string fontPath = GetThinFontPath();
 #endif
     
@@ -282,6 +291,14 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("ShuffleButtonTextBox", fontPath);
     getLabelForLayer("ResumeButtonTextBox", fontPath);
 
+    //research floating hovers
+    getLabelForLayer("PeopleSelectBylineTextBox", fontPath, 35,false,true);
+    getLabelForLayer("PeopleSelectPlayTextBox", fontPath);
+    getLabelForLayer("PeopleSelectNameTextBox", fontPath);
+    
+    getLabelForLayer("TopicSelectTextBox", fontPath);
+    getLabelForLayer("TopicSelectPlayTextBox", fontPath);
+    
     //about text boxes
     getLabelForLayer("AboutTextBox", fontPath);
     
@@ -309,20 +326,23 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["MapTextBox"]->setText(GetTranslationForString("MAP"), false);
     hudLabelMap["PeopleTextBox"]->setText(GetTranslationForString("PEOPLE"), false);
     hudLabelMap["VisualsTextBox"]->setText(GetTranslationForString("VISUALS"), false);
-    hudLabelMap["RSResetButtonTextBox"]->setText(GetTranslationForString("QUIT"), false); //this one may change...
-    hudLabelMap["ResumeButtonTextBox"]->setText(GetTranslationForString("BACK"), false); //this one may change...
+    hudLabelMap["RSResetButtonTextBox"]->setText(GetTranslationForString("QUIT"), false);
+    hudLabelMap["ResumeButtonTextBox"]->setText(GetTranslationForString("BACK"), false); 
     
     hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("QUIT"), false);
     hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"), false);
     hudLabelMap["ExploreTextBox"]->setText(GetTranslationForString("EXPLORE THE MAP"), false);
     hudLabelMap["SeeMoreTextBox"]->setText(GetTranslationForString("SEE MORE OF THIS PERSON"), false); //todo dynmic name
+
+    hudLabelMap["TopicSelectPlayTextBox"]->setText(GetTranslationForString("PLAY"), false);
+    hudLabelMap["PeopleSelectPlayTextBox"]->setText(GetTranslationForString("PLAY"), false);
     
     hudLabelMap["ShuffleButtonTextBox"]->setText(GetTranslationForString("SHUFFLE ALL"), false); //todo dynmic name
-    
     hudLabelMap["BioTitleTextBox"]->setText(GetTranslationForString("BIO"), false);
-    
     hudLabelMap["BioTextBox"]->layout->setLineLength(hudLabelMap["BioTextBox"]->bounds.width);
     
+    hudLabelMap["PeopleSelectBylineTextBox"]->layout->setLineLength(hudLabelMap["PeopleSelectBylineTextBox"]->bounds.width);
+
     hudLabelMap["CreditsList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits1.txt").getText(), false);
     hudLabelMap["CreditsList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits2.txt").getText(), false);
     hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
@@ -430,7 +450,9 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
     float textBoxHeight = textMesh->bounds.height;
     
     for( int k=0; k<tempFontList.size()-1; k++){
-        if( tempFontList[k]->getStringBoundingBox("W",0,0).height <= textBoxHeight && tempFontList[k+1]->getStringBoundingBox("W",0,0).height > textBoxHeight ){
+        if(tempFontList[k]->getStringBoundingBox("W",0,0).height <= textBoxHeight &&
+           tempFontList[k+1]->getStringBoundingBox("W",0,0).height > textBoxHeight )
+        {
             fontSize = 1 + k;
             break;
         }
@@ -445,7 +467,6 @@ void CloudsHUDController::actBegan(CloudsActEventArgs& args){
     bVisualSystemDisplayed = false;
     hudLabelMap["VSCreditsTextBoxTop"]->setText("", false);
     hudLabelMap["VSCreditsTextBoxBottom"]->setText("", false);
-
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
@@ -1083,8 +1104,18 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 }
 
 void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
-    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
-        bioText = CloudsSpeaker::speakers[button.tag].byline1;
+    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
+        hudLabelMap["TopicSelectTextBox"]->setText(button.label);
+        animateOn(CLOUDS_RESEARCH_TOPIC);
+    }
+    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
+        hudLabelMap["PeopleSelectNameTextBox"]->setText(CloudsSpeaker::speakers[button.tag].firstName + " " +
+                                                        CloudsSpeaker::speakers[button.tag].lastName);
+        hudLabelMap["PeopleSelectBylineTextBox"]->setText(CloudsSpeaker::speakers[button.tag].byline1);
+        animateOn(CLOUDS_RESEARCH_PPL);
+    }
+    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS){
+        animateOn(CLOUDS_RESEARCH_VS);
     }
 }
 
@@ -1151,6 +1182,7 @@ void CloudsHUDController::selectPerson(string personID){
 bool CloudsHUDController::isExploreMapHit(){
     bool selected = hudLabelMap["ExploreTextBox"]->isClicked();
     if(selected) {
+        
         currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
         currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
     }
@@ -1172,6 +1204,10 @@ bool CloudsHUDController::selectedMapTab(){
     
     bool selected = hudLabelMap["MapTextBox"]->isClicked();
     if(selected) {
+        animateOff(CLOUDS_RESEARCH_TOPIC);
+        animateOff(CLOUDS_RESEARCH_PPL);
+        animateOff(CLOUDS_RESEARCH_VS);
+        
         currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
         currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
     }
@@ -1184,6 +1220,10 @@ bool CloudsHUDController::selectedPeopleTab(){
  
     bool selected = hudLabelMap["PeopleTextBox"]->isClicked();
     if(selected) {
+        animateOff(CLOUDS_RESEARCH_TOPIC);
+        animateOff(CLOUDS_RESEARCH_PPL);
+        animateOff(CLOUDS_RESEARCH_VS);
+        
         currentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
         currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
     }
@@ -1196,6 +1236,10 @@ bool CloudsHUDController::selectedVisualsTab(){
     
     bool selected = hudLabelMap["VisualsTextBox"]->isClicked();
     if(selected) {
+        animateOff(CLOUDS_RESEARCH_TOPIC);
+        animateOff(CLOUDS_RESEARCH_PPL);
+        animateOff(CLOUDS_RESEARCH_VS);
+        
         currentTab = CLOUDS_HUD_RESEARCH_TAB_VISUALS;
         currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS];
     }
@@ -1287,53 +1331,53 @@ void CloudsHUDController::draw(){
 	ofPopMatrix();
 	ofPopStyle();
 
-    if(hudOpenMap[CLOUDS_RESEARCH] & isItemSelected()){
+//    if(hudOpenMap[CLOUDS_RESEARCH] & isItemSelected()){
         
-        //TODO: this should somehow go into a HUD Label & layer
-        
-        ofColor fillColor;
-        ofColor textColor;
-        ofPushStyle();
-        if(researchConfirmClicked){
-            fillColor = CloudsColorTabFillSelectd;
-            textColor = CloudsColorTextSelected;
-        }
-        else if(researchConfirmPressed){
-            fillColor = CloudsColorTabFillActive;
-            textColor = CloudsColorTextActive;
-        }
-        else if(researchConfirmHovered) {
-            fillColor = CloudsColorTabFillHover;
-            textColor = CloudsColorTextHover;
-        }
-        else{
-            fillColor = CloudsColorTabFillStatic;
-            textColor = CloudsColorTextStatic;
-        }
-        
-        //dont' mix button/tab text colors
-        textColor = ofColor::white;
-        ofSetColor(fillColor);
-        ofRect(researchRectangle);
-        if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE && isItemSelected() && bioText != ""){
-            researchBio.setLineLength(researchRectangle.width - 40);
-            ofSetColor(textColor);
-            researchBio.drawString(bioText, researchClickAnchor.x + 10, researchClickAnchor.y + 50);
-            string playText = "PLAY >";
-            float playWidth  = playAllFont.stringWidth(playText);
-            float playHeight = playAllFont.stringHeight(playText);
-            
-            playAllFont.drawString(playText, researchRectangle.getMaxX() - playWidth - 15, researchRectangle.y + playHeight + 15);
-        }
-        
-        if(researchConfirmPressed){
-            ofNoFill();
-            ofSetColor(CloudsColorTabStrokeSelectd);
-            ofRect(researchRectangle);
-        }
-        
-        ofPopStyle();
-    }
+//        //TODO: this should somehow go into a HUD Label & layer
+//        
+//        ofColor fillColor;
+//        ofColor textColor;
+//        ofPushStyle();
+//        if(researchConfirmClicked){
+//            fillColor = CloudsColorTabFillSelectd;
+//            textColor = CloudsColorTextSelected;
+//        }
+//        else if(researchConfirmPressed){
+//            fillColor = CloudsColorTabFillActive;
+//            textColor = CloudsColorTextActive;
+//        }
+//        else if(researchConfirmHovered) {
+//            fillColor = CloudsColorTabFillHover;
+//            textColor = CloudsColorTextHover;
+//        }
+//        else{
+//            fillColor = CloudsColorTabFillStatic;
+//            textColor = CloudsColorTextStatic;
+//        }
+//        
+//        //dont' mix button/tab text colors
+//        textColor = ofColor::white;
+//        ofSetColor(fillColor);
+//        ofRect(researchRectangle);
+//        if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE && isItemSelected() && bioText != ""){
+//            researchBio.setLineLength(researchRectangle.width - 40);
+//            ofSetColor(textColor);
+//            researchBio.drawString(bioText, researchClickAnchor.x + 10, researchClickAnchor.y + 50);
+//            string playText = "PLAY >";
+//            float playWidth  = playAllFont.stringWidth(playText);
+//            float playHeight = playAllFont.stringHeight(playText);
+//            
+//            playAllFont.drawString(playText, researchRectangle.getMaxX() - playWidth - 15, researchRectangle.y + playHeight + 15);
+//        }
+//        
+//        if(researchConfirmPressed){
+//            ofNoFill();
+//            ofSetColor(CloudsColorTabStrokeSelectd);
+//            ofRect(researchRectangle);
+//        }
+//        
+//        ofPopStyle();
+//    }
 }
 
 

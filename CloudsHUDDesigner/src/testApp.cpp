@@ -116,6 +116,15 @@ void testApp::keyPressed(int key){
     if(key == '9'){
         hud.animateOff();
     }
+    if(key == 'q'){
+        hud.animateOn(CLOUDS_RESEARCH_TOPIC);
+    }
+    if(key == 'w'){
+        hud.animateOn(CLOUDS_RESEARCH_PPL);
+    }
+    if(key == 'e'){
+        hud.animateOn(CLOUDS_RESEARCH_VS);
+    }
     
     if(key == 'h'){
 //		hud.toggleGuis();
