@@ -66,6 +66,7 @@
 		18731D30178628D200E22F84 /* CloudsAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D2E178628D200E22F84 /* CloudsAct.cpp */; };
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
 		A65830761B055B8F00E425FF /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830741B055B8F00E425FF /* CloudsMedia.cpp */; };
+		A65830901B07EE6000E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A658308E1B07EE6000E425FF /* CloudsHUDScroller.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		CB5019DE1870FBD60057E844 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5019C31870FBD60057E844 /* libftgl.a */; };
 		CB5019E21870FBD60057E844 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB5019CC1870FBD60057E844 /* ofxFTGLFont.cpp */; };
@@ -339,6 +340,8 @@
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		A65830741B055B8F00E425FF /* CloudsMedia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMedia.cpp; sourceTree = "<group>"; };
 		A65830751B055B8F00E425FF /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
+		A658308E1B07EE6000E425FF /* CloudsHUDScroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDScroller.cpp; sourceTree = "<group>"; };
+		A658308F1B07EE6000E425FF /* CloudsHUDScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDScroller.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		CB5019A61870FBD60057E844 /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
 		CB5019A71870FBD60057E844 /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
@@ -1104,6 +1107,8 @@
 				E703CD1C185D419700547738 /* CloudsHUDLayer.cpp */,
 				E703CD21185D6B3100547738 /* CloudsHUDHomeButton.cpp */,
 				E703CD22185D6B3200547738 /* CloudsHUDHomeButton.h */,
+				A658308E1B07EE6000E425FF /* CloudsHUDScroller.cpp */,
+				A658308F1B07EE6000E425FF /* CloudsHUDScroller.h */,
 				E703CD19185D187800547738 /* CloudsHUDController.h */,
 				E703CD18185D187800547738 /* CloudsHUDController.cpp */,
 			);
@@ -1794,6 +1799,7 @@
 				E745F6ED1720FE9400B86D7E /* tinyxmlerror.cpp in Sources */,
 				E745F6EE1720FE9400B86D7E /* tinyxmlparser.cpp in Sources */,
 				E745F6EF1720FE9400B86D7E /* ofxXmlSettings.cpp in Sources */,
+				A65830901B07EE6000E425FF /* CloudsHUDScroller.cpp in Sources */,
 				0300E8211AE6A8D70008F7BB /* ofxUIToggle.cpp in Sources */,
 				E7637D4C1734DE68008ADC62 /* CloudsClip.cpp in Sources */,
 				E7637D4D1734DE68008ADC62 /* CloudsFCPParser.cpp in Sources */,

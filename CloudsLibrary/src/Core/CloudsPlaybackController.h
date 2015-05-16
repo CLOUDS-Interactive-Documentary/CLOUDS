@@ -66,6 +66,7 @@ class CloudsPlaybackController : public ofThread {
 	void mouseMoved(ofMouseEventArgs & args);
 	void mousePressed(ofMouseEventArgs & args);
 	void mouseReleased(ofMouseEventArgs & args);
+    void mouseScrolled(ofMouseEventArgs & args);
     
 #ifdef VHX_MEDIA
     void networkConnected();

@@ -17,9 +17,12 @@ CloudsHUDScroller::CloudsHUDScroller(){
     bIsHoldScrolling = false;
     scrollPressedTime = 0;
     scrollIncrement = 0;
-    
     scrollPosition = 0;
-
+    
+    
+    bScrollBarHover = false;
+    bScrollBarPressed = false;
+    scrollBarAnchor = 0;
 }
 
 void CloudsHUDScroller::update(){
@@ -62,5 +65,13 @@ void CloudsHUDScroller::mouseReleased(ofVec2f pos){
         scrollPosition = ofClamp(newScrollPosition, 0, totalScrollHeight - scrollBounds.height);
     }
     bIsHoldScrolling = false;
+}
+
+void CloudsHUDScroller::mouseScrolled(float scroll){
+    if(scrollBoundsScaled.inside(ofGetMouseX(), ofGetMouseY())){
+        float newScrollPosition = scrollPosition + scrollIncrement * scroll;
+       scrollPosition = ofClamp(newScrollPosition, 0, totalScrollHeight - scrollBounds.height);
+    }
+
 }
 

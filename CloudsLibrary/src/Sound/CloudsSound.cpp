@@ -675,3 +675,7 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
 void CloudsSound::mouseReleased(ofMouseEventArgs & args){
 	
 }
+    
+void CloudsSound::mouseScrolled(ofMouseEventArgs & args){
+    
+}

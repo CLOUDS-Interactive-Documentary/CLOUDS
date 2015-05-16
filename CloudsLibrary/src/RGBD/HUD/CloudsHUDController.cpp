@@ -94,6 +94,7 @@ void CloudsHUDController::setup(){
 	ofAddListener(ofEvents().mouseMoved,this, &CloudsHUDController::mouseMoved, OF_EVENT_ORDER_BEFORE_APP);
 	ofAddListener(ofEvents().mousePressed,this, &CloudsHUDController::mousePressed, OF_EVENT_ORDER_BEFORE_APP);
 	ofAddListener(ofEvents().mouseReleased,this, &CloudsHUDController::mouseReleased, OF_EVENT_ORDER_BEFORE_APP);
+    ofAddListener(ofEvents().mouseScrolled,this, &CloudsHUDController::mouseScrolled, OF_EVENT_ORDER_BEFORE_APP);
 #endif
 
 	home.setup();
@@ -179,6 +180,10 @@ void CloudsHUDController::buildLayerSets(){
     researchScroller.scrollUpBounds   = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollUpBacking")->bounds;
     researchScroller.scrollDownBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollDownBacking")->bounds;
     
+    //TODO: scroll bar
+//    researchScroller.scrollBarTop     = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollConnectStatic")->mesh.getVertices()[0];
+//    researchScroller.scrollBarBottom  = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollConnectStatic")->mesh.getVertices()[1];
+
     hudBounds.set(0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
     //ensure the lines are always up
@@ -1117,6 +1122,12 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
     }
 }
 
+void CloudsHUDController::mouseScrolled(ofMouseEventArgs& args){
+//    cout << "MOUSE SCROLLED " << args.x << " " << args.y << endl;
+    researchScroller.mouseScrolled(args.y);
+}
+
+
 void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
     if(button.parentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
         bool forceOn = hudOpenMap[CLOUDS_RESEARCH_TOPIC];
@@ -1203,9 +1214,6 @@ bool CloudsHUDController::isExploreMapHit(){
     if(selected) {
         bResearchTransitioning = true;
         nextTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
-        
-//        currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
-//        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
     }
     return selected;
 }
@@ -1214,10 +1222,7 @@ bool CloudsHUDController::isSeeMorePersonHit(){
     bool selected = hudLabelMap["SeeMoreTextBox"]->isClicked();
     if(selected) {
         bResearchTransitioning = true;
-        nextTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
-        
-//        currentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
-//        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
+        nextTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;        
     }
     return selected;
 }

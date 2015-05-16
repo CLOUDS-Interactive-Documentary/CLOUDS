@@ -827,20 +827,18 @@ void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsPlaybackController::mouseDragged(ofMouseEventArgs & args){
-	
 }
 
 void CloudsPlaybackController::mouseMoved(ofMouseEventArgs & args){
-    //	cursorMovedTime = ofGetElapsedTimef();
 }
 
 void CloudsPlaybackController::mousePressed(ofMouseEventArgs & args){
-#ifdef MOUSE_INPUT
-#endif
 }
 
 void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
-	
+}
+
+void CloudsPlaybackController::mouseScrolled(ofMouseEventArgs & args){    
 }
 
 //--------------------------------------------------------------------
@@ -1165,6 +1163,7 @@ void CloudsPlaybackController::updateHUD(){
         resumingAct = true;
         
         hud.animateOff();
+        hud.animateOn(CLOUDS_HUD_QUESTION);
         transitionController.transitionBackToAct(1.0, 1.0, resumeState);
     }
     /////////////////////////////////
@@ -1982,7 +1981,8 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 }
 
 void CloudsPlaybackController::transitionBackToResearch(){
-    
+
+    hud.clearQuestion();
     hud.animateOff();
     if(researchModeTopic){
         transitionController.transitionToExploreMap(1.0,1.0);
@@ -1991,7 +1991,7 @@ void CloudsPlaybackController::transitionBackToResearch(){
         transitionController.transitionToExplorePeople(1.0,1.0);
     }
     else if(researchModeVisual){
-      transitionController.transitionToExploreVisuals(1.0,1.0);
+        transitionController.transitionToExploreVisuals(1.0,1.0);
     }
     else{
         ofLogError("CloudsPlaybackController::actEnded") << "Act ended from research mode without any of the three views set";

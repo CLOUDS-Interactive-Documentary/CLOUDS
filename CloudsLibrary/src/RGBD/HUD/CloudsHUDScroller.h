@@ -27,7 +27,7 @@ class CloudsHUDScroller {
     ofRectangle   scrollDownBounds;
     ofRectangle   scrollUpBoundsScaled;
     ofRectangle   scrollDownBoundsScaled;
-    
+
     bool          bIsScrollUpHover;
     bool          bIsScrollDownHover;
     bool          bIsScrollUpPressed;
@@ -41,5 +41,13 @@ class CloudsHUDScroller {
     bool          mousePressed(ofVec2f pos);
     void          mouseDragged(ofVec2f pos);
     void          mouseReleased(ofVec2f pos);
+    void          mouseScrolled(float scroll);
+    
+    ofVec2f       scrollBarTop;
+    ofVec2f       scrollBarBottom;
+    bool          bScrollBarHover;
+    bool          bScrollBarPressed;
+    float         scrollBarAnchor;
+    
     
 };
