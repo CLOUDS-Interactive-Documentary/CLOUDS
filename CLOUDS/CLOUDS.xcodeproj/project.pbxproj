@@ -2695,6 +2695,12 @@
 		A60F27291AF1423000A1C863 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15DCFE91AB79689007D1F44 /* OpenAL.framework */; };
 		A60F272A1AF14C8700A1C863 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D0244C1AE6C7CB0008D018 /* libcurl.dylib */; };
 		A60F272B1AF14C9500A1C863 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15DCFE91AB79689007D1F44 /* OpenAL.framework */; };
+		A65830871B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */; };
+		A65830881B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */; };
+		A65830891B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */; };
+		A658308A1B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */; };
+		A658308B1B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */; };
+		A658308C1B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C15DCFD91AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
 		C15DCFDA1AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
@@ -4158,6 +4164,8 @@
 		A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
 		A60F26E41AF136B400A1C863 /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
 		A60F26E91AF136B400A1C863 /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
+		A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDScroller.cpp; sourceTree = "<group>"; };
+		A65830861B07C91D00E425FF /* CloudsHUDScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDScroller.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C15DCF881AB7956C007D1F44 /* Composition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Composition.h; sourceTree = "<group>"; };
 		C15DCF891AB7956C007D1F44 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -8473,6 +8481,8 @@
 				E7D8227618BEBD6E00C1EB93 /* CloudsHUDLabel.h */,
 				E7D8227718BEBD6E00C1EB93 /* CloudsHUDLayer.cpp */,
 				E7D8227818BEBD6E00C1EB93 /* CloudsHUDLayer.h */,
+				A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */,
+				A65830861B07C91D00E425FF /* CloudsHUDScroller.h */,
 				E7D8227918BEBD6E00C1EB93 /* CloudsSVGMesh.cpp */,
 				E7D8227A18BEBD6E00C1EB93 /* CloudsSVGMesh.h */,
 			);
@@ -11631,6 +11641,7 @@
 				038032741948167700AFD40C /* CloudsStoryEngine.cpp in Sources */,
 				038032751948167700AFD40C /* ParallelTransportFrames.cpp in Sources */,
 				038032761948167700AFD40C /* ofxOscReceiver.cpp in Sources */,
+				A658308A1B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */,
 				038032771948167700AFD40C /* CloudsVisualSystemVoro.cpp in Sources */,
 				038032781948167700AFD40C /* CloudsVisualSystemOpenP5SeaOfLines.cpp in Sources */,
 				038032791948167700AFD40C /* CloudsVisualSystemLinePoem.cpp in Sources */,
@@ -12227,6 +12238,7 @@
 				03A0F4DE1947A0850071CF4B /* CloudsStoryEngine.cpp in Sources */,
 				03A0F4DF1947A0850071CF4B /* ParallelTransportFrames.cpp in Sources */,
 				03A0F4E01947A0850071CF4B /* ofxOscReceiver.cpp in Sources */,
+				A65830891B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */,
 				03A0F4E11947A0850071CF4B /* CloudsVisualSystemVoro.cpp in Sources */,
 				03A0F4E21947A0850071CF4B /* CloudsVisualSystemOpenP5SeaOfLines.cpp in Sources */,
 				03A0F4E31947A0850071CF4B /* CloudsVisualSystemLinePoem.cpp in Sources */,
@@ -13105,6 +13117,7 @@
 				642722C61AE81E5200A13289 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				642722C71AE81E5200A13289 /* CloudsVisualSystemSwim.cpp in Sources */,
 				642722C81AE81E5200A13289 /* MazeCamera.cpp in Sources */,
+				A658308B1B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */,
 				642722C91AE81E5200A13289 /* Vec3.cpp in Sources */,
 				642722CA1AE81E5200A13289 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				642722CB1AE81E5200A13289 /* Spring.cpp in Sources */,
@@ -13906,6 +13919,7 @@
 				6427262E1AE81EAF00A13289 /* RectWave.cpp in Sources */,
 				6427262F1AE81EAF00A13289 /* ofxObjLoader.cpp in Sources */,
 				642726301AE81EAF00A13289 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
+				A658308C1B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */,
 				642726311AE81EAF00A13289 /* TUOrbital.cpp in Sources */,
 				642726321AE81EAF00A13289 /* Pathway.cpp in Sources */,
 				642726331AE81EAF00A13289 /* ofxSSL.cpp in Sources */,
@@ -14036,6 +14050,7 @@
 				E7D8256418BEBD7000C1EB93 /* CloudsStoryEngine.cpp in Sources */,
 				E73DA8E9189F3622006C9E4E /* ParallelTransportFrames.cpp in Sources */,
 				E73DA928189F362A006C9E4E /* ofxOscReceiver.cpp in Sources */,
+				A65830871B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */,
 				E7D8260E18BEBD7000C1EB93 /* CloudsVisualSystemVoro.cpp in Sources */,
 				E7D825C618BEBD7000C1EB93 /* CloudsVisualSystemOpenP5SeaOfLines.cpp in Sources */,
 				E7D825A218BEBD7000C1EB93 /* CloudsVisualSystemLinePoem.cpp in Sources */,
@@ -14661,6 +14676,7 @@
 				64574CEA1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */,
 				E7DDC110194437EC00E61D75 /* ofxMtlBoxFitting.cpp in Sources */,
 				E7DDC111194437EC00E61D75 /* OscTypes.cpp in Sources */,
+				A65830881B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */,
 				E7DDC112194437EC00E61D75 /* ofxEasingCubic.cpp in Sources */,
 				E7DDC113194437EC00E61D75 /* V3.cpp in Sources */,
 				E7DDC114194437EC00E61D75 /* b2Island.cpp in Sources */,

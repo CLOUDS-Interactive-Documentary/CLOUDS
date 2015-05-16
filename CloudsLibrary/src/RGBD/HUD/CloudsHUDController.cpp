@@ -32,11 +32,11 @@ CloudsHUDController::CloudsHUDController(){
     bResearchTransitioning = false;
     
     currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
-    bIsScrollUpHover = false;
-    bIsScrollDownHover = false;
-    bIsScrollUpPressed = false;
-    bIsScrollDownPressed = false;
-    bIsHoldScrolling = false;
+//    bIsScrollUpHover = false;
+//    bIsScrollDownHover = false;
+//    bIsScrollUpPressed = false;
+//    bIsScrollDownPressed = false;
+//    bIsHoldScrolling = false;
     researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS].scrollPosition = 0;
     researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS].totalScrollHeight = 0;
     researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE].scrollPosition = 0;
@@ -46,7 +46,7 @@ CloudsHUDController::CloudsHUDController(){
     
     currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
  
-    scrollPressedTime = 0;
+//    scrollPressedTime = 0;
     
 //    hasResearchRectangle = false;
 //    researchConfirmHovered = false;
@@ -164,7 +164,7 @@ void CloudsHUDController::buildLayerSets(){
 			}
 		}
         
-        allLayers[i]->duration = 1.5;
+        allLayers[i]->duration = 1.;
     }
     
     home.bounds = layers[CLOUDS_HUD_HOME]->svg.getMeshByID("HomeButtonFrame")->bounds;
@@ -175,9 +175,9 @@ void CloudsHUDController::buildLayerSets(){
     svgVideoBounds = layers[CLOUDS_HUD_PROJECT_EXAMPLE]->svg.getMeshByID("ProjectExampleFrame")->bounds;
 	videoBounds = svgVideoBounds;
     
-    researchScrollBounds     = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListBacking")->bounds;
-    researchScrollUpBounds   = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollUpBacking")->bounds;
-    researchScrollDownBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollDownBacking")->bounds;
+    researchScroller.scrollBounds     = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListBacking")->bounds;
+    researchScroller.scrollUpBounds   = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollUpBacking")->bounds;
+    researchScroller.scrollDownBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollDownBacking")->bounds;
     
     hudBounds.set(0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
@@ -323,7 +323,7 @@ void CloudsHUDController::calculateFontSizes(){
     tempFontList.clear();
     
     
-    scrollIncrement = hudLabelMap["ListTextBoxes"]->bounds.height * 1.5;
+    researchScroller.scrollIncrement = hudLabelMap["ListTextBoxes"]->bounds.height * 1.5;
     
     hudLabelMap["MapTextBox"]->setText(GetTranslationForString("MAP"), false);
     hudLabelMap["PeopleTextBox"]->setText(GetTranslationForString("PEOPLE"), false);
@@ -709,18 +709,7 @@ void CloudsHUDController::populateVisualSystem(const string& title,
 }
 
 ofVec2f CloudsHUDController::setResearchClickAnchor(ofVec2f anchor){
-//    hasResearchRectangle = true;
-//    researchClickAnchor = anchor;
-//    //TODO: Do we make this dynamic w/h?
-//    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
-//        researchRectangle = ofRectangle(researchClickAnchor.x - 20, researchClickAnchor.y - 20, 450, 220);
-//    }
-//    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
-//        researchRectangle = ofRectangle(researchClickAnchor.x - 20, researchClickAnchor.y - 20, 400, 80);
-//    }
-//    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS){
-//        
-//    }
+    //TODO if we want to know where the target is on screen
 }
 
 ofVec2f CloudsHUDController::getSize(bool bScaled){
@@ -766,9 +755,9 @@ void CloudsHUDController::update(){
     hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_NEXT]->svg.getMeshByID("NextButtonBacking")->bounds;
     hudLabelMap["NextButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds);
  	
-    researchScrollUpBoundsScaled   = getScaledRectangle(researchScrollUpBounds);
-    researchScrollDownBoundsScaled = getScaledRectangle(researchScrollDownBounds);
-    researchScrollBoundsScaled = getScaledRectangle(researchScrollBounds);
+    researchScroller.scrollUpBoundsScaled   = getScaledRectangle(researchScroller.scrollUpBounds);
+    researchScroller.scrollDownBoundsScaled = getScaledRectangle(researchScroller.scrollDownBounds);
+    researchScroller.scrollBoundsScaled     = getScaledRectangle(researchScroller.scrollBounds);
     
     home.bAnimateHoverRadar = layers[CLOUDS_HUD_LOWER_THIRD]->isHovering();
     home.animatedHoverStartTime = layers[CLOUDS_HUD_LOWER_THIRD]->hoverStartTime;
@@ -793,27 +782,20 @@ void CloudsHUDController::update(){
 }
 
 void CloudsHUDController::updateScroll(){
-    if(bIsScrollDownPressed || bIsScrollUpPressed){
-        float timeSincePress = ofGetElapsedTimef() - scrollPressedTime;
-        bool scrolled = ofGetMousePressed() && ( ( bIsHoldScrolling && timeSincePress > .5) || (!bIsHoldScrolling && timeSincePress > .75) );
-        if(scrolled){
-            float newScrollPosition = currentResearchList->scrollPosition + scrollIncrement * (bIsScrollUpPressed ? -1 : 1);
-            currentResearchList->scrollPosition = ofClamp(newScrollPosition, 0, currentResearchList->totalScrollHeight - researchScrollBounds.height);
-            bIsHoldScrolling = true;
-        }
-    }
     
+    researchScroller.update();
+    currentResearchList->scrollPosition = researchScroller.scrollPosition;
     
     for(int i = 0; i < currentResearchList->buttons.size(); i++){
         CloudsHUDResearchButton& b = currentResearchList->buttons[i];
         b.visible = b.top >= currentResearchList->scrollPosition &&
-                    b.top <= currentResearchList->scrollPosition + researchScrollBounds.height - scrollIncrement;
-        //cout << "button top is " << b.top << " list scroll is " << currentResearchList->scrollPosition << " with height " << currentResearchList->totalScrollHeight << endl;
+        b.top <= currentResearchList->scrollPosition + researchScroller.scrollBounds.height - researchScroller.scrollIncrement;
+        
         if(b.visible){
-            b.selectRect = ofRectangle(researchScrollBounds.x,
-                                       researchScrollBounds.y + b.top - currentResearchList->scrollPosition,
-                                       researchScrollBounds.width, 15);
-
+            b.selectRect = ofRectangle(researchScroller.scrollBounds.x,
+                                       researchScroller.scrollBounds.y + b.top - currentResearchList->scrollPosition,
+                                       researchScroller.scrollBounds.width, 15);
+            
             b.selectRectScaled = getScaledRectangle( b.selectRect );
         }
     }
@@ -984,14 +966,14 @@ void CloudsHUDController::setTopics(const set<string>& topics){
     
     int i = 0;
     for(set<string>::iterator it = topics.begin(); it != topics.end(); it++){
-        topicList.buttons[i].top = i * scrollIncrement;
+        topicList.buttons[i].top = i * researchScroller.scrollIncrement;
         topicList.buttons[i].tag = *it;
         topicList.buttons[i].label = ofToUpper(*it);
         topicList.buttons[i].parentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
         i++;
     }
     
-    topicList.totalScrollHeight = topicList.buttons.back().top + scrollIncrement;
+    topicList.totalScrollHeight = topicList.buttons.back().top + researchScroller.scrollIncrement;
     topicList.scrollPosition = 0;
 }
 
@@ -1005,14 +987,14 @@ void CloudsHUDController::populateSpeakers(){
             continue;
         }
         peopleList.buttons.push_back(CloudsHUDResearchButton());
-        peopleList.buttons[i].top = i * scrollIncrement;
+        peopleList.buttons[i].top = i * researchScroller.scrollIncrement;
         peopleList.buttons[i].tag = it->first;
         peopleList.buttons[i].label = it->second.firstName + " " + it->second.lastName;
         peopleList.buttons[i].parentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
         i++;
     }
     
-    peopleList.totalScrollHeight = peopleList.buttons.back().top + scrollIncrement;
+    peopleList.totalScrollHeight = peopleList.buttons.back().top + researchScroller.scrollIncrement;
     peopleList.scrollPosition = 0;
 }
 
@@ -1023,14 +1005,14 @@ void CloudsHUDController::setVisuals(map<string, CloudsVisualSystemCredit>& visu
 
     int i = 0;
     for(map<string, CloudsVisualSystemCredit>::iterator it = visuals.begin(); it != visuals.end(); it++){
-        visualsList.buttons[i].top = i * scrollIncrement;
+        visualsList.buttons[i].top = i * researchScroller.scrollIncrement;
         visualsList.buttons[i].tag = it->first;
         visualsList.buttons[i].label = ofToUpper(it->second.title);
         visualsList.buttons[i].parentTab = CLOUDS_HUD_RESEARCH_TAB_VISUALS;
         i++;
     }
     
-    visualsList.totalScrollHeight = visualsList.buttons.back().top + scrollIncrement;
+    visualsList.totalScrollHeight = visualsList.buttons.back().top + researchScroller.scrollIncrement;
     visualsList.scrollPosition = 0;
 }
 
@@ -1053,10 +1035,10 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
     }
  
     if(hudOpenMap[CLOUDS_RESEARCH]){
-        bIsScrollUpHover = researchScrollUpBoundsScaled.inside(args.x, args.y);
-        bIsScrollDownHover = researchScrollDownBoundsScaled.inside(args.x, args.y);
         
-        if(researchScrollBoundsScaled.inside(args.x, args.y)){
+        args.canceled |= researchScroller.mousePressed(ofVec2f(args.x,args.y));
+        
+        if(researchScroller.scrollBoundsScaled.inside(args.x, args.y)){
             args.canceled = true;
             for(int i = 0; i < currentResearchList->buttons.size(); i++){
                 if(currentResearchList->buttons[i].visible){
@@ -1082,11 +1064,10 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
     }
     
     if(hudOpenMap[CLOUDS_RESEARCH]){
-        bIsScrollUpPressed = researchScrollUpBoundsScaled.inside(args.x, args.y);
-        bIsScrollDownPressed = researchScrollDownBoundsScaled.inside(args.x, args.y);
         
-        scrollPressedTime = ofGetElapsedTimef();
-        if(researchScrollBoundsScaled.inside(args.x, args.y)){
+        args.canceled |= researchScroller.mousePressed(ofVec2f(args.x,args.y));
+        
+        if(researchScroller.scrollBoundsScaled.inside(args.x, args.y)){
             args.canceled = true;
             for(int i = 0; i < currentResearchList->buttons.size(); i++){
                 currentResearchList->buttons[i].clicked = false;
@@ -1115,17 +1096,10 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
     }
     
     if(hudOpenMap[CLOUDS_RESEARCH]){
-        if(bIsScrollUpPressed && researchScrollUpBoundsScaled.inside(args.x, args.y)){
-            float newScrollPosition = currentResearchList->scrollPosition - scrollIncrement;
-            currentResearchList->scrollPosition = ofClamp(newScrollPosition, 0, currentResearchList->totalScrollHeight - researchScrollBounds.height);
-        }
-        if(bIsScrollDownPressed && researchScrollDownBoundsScaled.inside(args.x, args.y)){
-            float newScrollPosition = currentResearchList->scrollPosition + scrollIncrement;
-            currentResearchList->scrollPosition = ofClamp(newScrollPosition, 0, currentResearchList->totalScrollHeight - researchScrollBounds.height);
-        }        
-        bIsHoldScrolling = false;
         
-        if(researchScrollBoundsScaled.inside(args.x, args.y)){
+        researchScroller.mouseReleased(ofVec2f(args.x,args.y));
+        
+        if(researchScroller.scrollBoundsScaled.inside(args.x, args.y)){
             
             args.canceled = true;
             
@@ -1145,15 +1119,17 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 
 void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
     if(button.parentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
-        hudLabelMap["TopicSelectTextBox"]->setText(button.label);
+        bool forceOn = hudOpenMap[CLOUDS_RESEARCH_TOPIC];
+        hudLabelMap["TopicSelectTextBox"]->setText(button.label, forceOn);
         if(currentTab == button.parentTab && !bResearchTransitioning){
             animateOn(CLOUDS_RESEARCH_TOPIC);
         }
     }
     else if(button.parentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
+        bool forceOn = hudOpenMap[CLOUDS_RESEARCH_PPL];
         hudLabelMap["PeopleSelectNameTextBox"]->setText(CloudsSpeaker::speakers[button.tag].firstName + " " +
-                                                        CloudsSpeaker::speakers[button.tag].lastName);
-        hudLabelMap["PeopleSelectBylineTextBox"]->setText(CloudsSpeaker::speakers[button.tag].byline1);
+                                                        CloudsSpeaker::speakers[button.tag].lastName, forceOn);
+        hudLabelMap["PeopleSelectBylineTextBox"]->setText(CloudsSpeaker::speakers[button.tag].byline1, forceOn);
         if(currentTab == button.parentTab && !bResearchTransitioning){
             animateOn(CLOUDS_RESEARCH_PPL);
         }
@@ -1191,7 +1167,6 @@ void CloudsHUDController::selectPerson(string personID){
     selectItem(CLOUDS_HUD_RESEARCH_TAB_PEOPLE, personID);
 }
 
-
 void CloudsHUDController::selectVisual(string visualName){
     selectItem(CLOUDS_HUD_RESEARCH_TAB_VISUALS, visualName);
 }
@@ -1202,12 +1177,19 @@ void CloudsHUDController::selectItem(CloudsHUDResearchTab tab, string itemID){
         list.buttons[i].clicked = false;
         list.buttons[i].hovered = false;
     }
-    
+
+    //select top item
+    if(itemID == ""){
+        list.scrollPosition = MIN(list.buttons[0].top, list.totalScrollHeight - researchScroller.scrollBounds.height);
+        selectButton(list.buttons[0]);
+        return;
+    }
+
     for(int i = 0; i < list.buttons.size(); i++){
         if(list.buttons[i].tag == itemID){
             list.buttons[i].clicked = true;
             if(!list.buttons[i].visible){
-                list.scrollPosition = MIN(list.buttons[i].top, list.totalScrollHeight - researchScrollBounds.height);
+                list.scrollPosition = MIN(list.buttons[i].top, list.totalScrollHeight - researchScroller.scrollBounds.height);
             }
             selectButton(list.buttons[i]);
             return;
@@ -1238,6 +1220,11 @@ bool CloudsHUDController::isSeeMorePersonHit(){
 //        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
     }
     return selected;
+}
+
+void CloudsHUDController::preselectMap(){
+    bResearchTransitioning = true;
+    nextTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
 }
 
 bool CloudsHUDController::selectedMapTab(){
@@ -1284,6 +1271,12 @@ void CloudsHUDController::researchTransitionFinished(){
         currentTab = nextTab;
         currentResearchList = &researchLists[currentTab];
         bResearchTransitioning = false;
+        researchScroller.scrollPosition = currentResearchList->scrollPosition;
+        researchScroller.totalScrollHeight = currentResearchList->totalScrollHeight;
+        if(!isItemSelected()){
+            //default to top
+            selectItem(currentTab, "");
+        }
     }
 }
 
@@ -1396,10 +1389,12 @@ void CloudsHUDController::drawList(){
             textColor.a *= transitionFade;
             
             ofSetColor(textColor);
-
-            ResearchTopicListLabel->font->drawString(currentResearchList->buttons[i].label,
-                                              hudLabelMap["ListTextBoxes"]->bounds.x,
-                                              researchScrollBounds.y + currentResearchList->buttons[i].top + scrollIncrement * .5);
+            float drawXPos = hudLabelMap["ListTextBoxes"]->bounds.x;
+            float drawYPos = researchScroller.scrollBounds.y +
+                             currentResearchList->buttons[i].top +
+                             researchScroller.scrollIncrement * .5;
+            
+            ResearchTopicListLabel->font->drawString(currentResearchList->buttons[i].label, drawXPos, drawYPos);
             
         }
     }
@@ -1536,6 +1531,9 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayer layer, ofCamera* cam, ofVec
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
 	
+//    if(layer == CLOUDS_RESEARCH_PPL){
+//        cout << "animating on ppl" << endl;
+//    }
     for (map<CloudsHUDLayerSet, CloudsHUDLayer* >::iterator it = layers.begin(); it != layers.end(); ++it) {
         if (layer == it->first || layer == CLOUDS_HUD_ALL) {
             hudOpenMap[it->first] = true;

@@ -17,6 +17,7 @@
 #include "CloudsHUDLabel.h"
 #include "CloudsEvents.h"
 #include "CloudsSpeaker.h"
+#include "CloudsHUDScroller.h"
 
 typedef enum {
     //main layers
@@ -116,7 +117,8 @@ class CloudsHUDController {
 	bool isExploreMapHit();
 	bool isSeeMorePersonHit();
     bool isResumeActHit();
-    
+
+    void preselectMap();
     bool selectedMapTab();
     bool selectedPeopleTab();
     bool selectedVisualsTab();
@@ -234,23 +236,26 @@ class CloudsHUDController {
     
     /////////////// SCROLL VARIABLES
     //////////////
-    ofRectangle   researchScrollBounds;
-    ofRectangle   researchScrollBoundsScaled;
-    ofRectangle   researchScrollUpBounds;
-    ofRectangle   researchScrollDownBounds;
-    ofRectangle   researchScrollUpBoundsScaled;
-    ofRectangle   researchScrollDownBoundsScaled;
-    bool          bIsScrollUpHover;
-    bool          bIsScrollDownHover;
-    bool          bIsScrollUpPressed;
-    bool          bIsScrollDownPressed;
-    bool          bIsHoldScrolling;
+    CloudsHUDScroller researchScroller;
+    CloudsHUDScroller aboutScroller;
+    void          updateScroll();    
+//    ofRectangle   researchScrollBounds;
+//    ofRectangle   researchScrollBoundsScaled;
+//    ofRectangle   researchScrollUpBounds;
+//    ofRectangle   researchScrollDownBounds;
+//    ofRectangle   researchScrollUpBoundsScaled;
+//    ofRectangle   researchScrollDownBoundsScaled;
+//    bool          bIsScrollUpHover;
+//    bool          bIsScrollDownHover;
+//    bool          bIsScrollUpPressed;
+//    bool          bIsScrollDownPressed;
+//    bool          bIsHoldScrolling;
+//
+//    float         scrollPressedTime;
+//    
+//    float         scrollIncrement;
+//    
 
-    float         scrollPressedTime;
-    
-    float         scrollIncrement;
-    
-    void          updateScroll();
     //////////////
     
     bool bPaused;

@@ -151,6 +151,7 @@ void CloudsPlaybackController::clearAct(){
     if( CloudsVisualSystemManager::HasSystemRegistered(currentVisualSystem) ){
         currentVisualSystem = NULL;
     }
+    
     if(showingVisualSystem){
         ofLogError("CloudsPlaybackController::clearAct") << "Clearing act with visual system still showing";
     }
@@ -868,6 +869,21 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	if(showingIntro){
     
         if(introSequence->isResearchModeSelected()){
+            
+            //starts the transition to research
+            hud.preselectMap();
+            
+            //populate current selections based on history
+            if(run.clipHistory.size() > 0){
+                hud.selectPerson(run.clipHistory.back()->person);
+            }
+            if(run.topicHistory.size() > 0){
+                hud.selectTopic( parser.getMasterKeyword(run.topicHistory.back()) );
+            }
+            if(run.presetHistory.size() > 0){
+                hud.selectVisual( visualSystems.getPresetWithID( run.presetHistory.back()).systemName );
+            }
+            
             transitionController.transitionToExploreMap(1.0, 3.0);
             showingResearchMode = true;
         }
@@ -1118,30 +1134,12 @@ void CloudsPlaybackController::updateHUD(){
     
     //////////// GO TO EXPLORE THE MAP FROM INTERVIEW
     if(hud.isExploreMapHit()){
-        canReturnToAct = true;
-        bShowingAct = false;
-        
-        resumeState = currentVisualSystem == rgbdVisualSystem ? TRANSITION_INTERVIEW_IN : TRANSITION_VISUALSYSTEM_IN;
-        if(currentClip != NULL){
-            hud.selectPerson(currentClip->person);
-        }
-        hud.selectTopic( parser.getMasterKeyword(currentTopic) );
-        hud.animateOff();
-
+        prepareHUDForMapTransition();
         transitionController.transitionToExploreMap(1.0, 2.0);
     }
     
     if(hud.isSeeMorePersonHit()){
-        canReturnToAct = true;
-        bShowingAct = false;
-        
-        resumeState = currentVisualSystem == rgbdVisualSystem ? TRANSITION_INTERVIEW_IN : TRANSITION_VISUALSYSTEM_IN;
-        if(currentClip != NULL){
-            hud.selectPerson(currentClip->person);
-        }
-        hud.selectTopic( parser.getMasterKeyword(currentTopic) );
-        hud.animateOff();
-        
+        prepareHUDForMapTransition();
         transitionController.transitionToExplorePeople(1.0, 2.0);
     }
     
@@ -1184,6 +1182,26 @@ void CloudsPlaybackController::updateHUD(){
 #endif
         
     }
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::prepareHUDForMapTransition(){
+    
+    canReturnToAct = true;
+    bShowingAct = false;
+    resumeState = currentVisualSystem == rgbdVisualSystem ? TRANSITION_INTERVIEW_IN : TRANSITION_VISUALSYSTEM_IN;
+    
+    if(currentClip != NULL){
+        hud.selectPerson(currentClip->person);
+    }
+    if(currentTopic != ""){
+        hud.selectTopic( parser.getMasterKeyword(currentTopic) );
+    }
+    if(nextVisualSystemPreset.systemName != ""){
+        hud.selectVisual(nextVisualSystemPreset.systemName);
+    }
+    
+    hud.animateOff();
 }
 
 //--------------------------------------------------------------------

@@ -828,7 +828,7 @@
 	<!-- -->
 	<system id="Terrain" enabled="true">
 		<title>
-			Reaction Diffusion
+			Terrain
 		</title>
 		<line1>
 			Patricio Gonzalez Vivo and Mike Allison

@@ -18,10 +18,10 @@ void testApp::setup(){
 //    ofSetWindowShape(1920,1080);
 #endif
 
-#ifdef VHX_MEDIA
+
     ofSetWindowShape(1280, 720);
     ofSetWindowPosition(ofGetScreenWidth()/2 - 1280/2, ofGetScreenHeight()/2 - 720/2);
-#endif
+
     
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();
