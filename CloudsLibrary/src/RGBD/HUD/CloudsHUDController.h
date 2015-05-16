@@ -56,6 +56,14 @@ typedef enum{
 } CloudsHUDResearchTab;
 
 
+typedef enum{
+    CLOUDS_HUD_TRIANGLE_UP = 0,
+    CLOUDS_HUD_TRIANGLE_RIGHT,
+    CLOUDS_HUD_TRIANGLE_DOWN,
+    CLOUDS_HUD_TRIANGLE_LEFT,
+    CLOUDS_HUD_TRIANGLE_X
+} CloudsHUDTriangleDirection;
+
 class CloudsHUDResearchButton {
   public:
     CloudsHUDResearchButton(){
@@ -239,24 +247,7 @@ class CloudsHUDController {
     //////////////
     CloudsHUDScroller researchScroller;
     CloudsHUDScroller aboutScroller;
-    void          updateScroll();    
-//    ofRectangle   researchScrollBounds;
-//    ofRectangle   researchScrollBoundsScaled;
-//    ofRectangle   researchScrollUpBounds;
-//    ofRectangle   researchScrollDownBounds;
-//    ofRectangle   researchScrollUpBoundsScaled;
-//    ofRectangle   researchScrollDownBoundsScaled;
-//    bool          bIsScrollUpHover;
-//    bool          bIsScrollDownHover;
-//    bool          bIsScrollUpPressed;
-//    bool          bIsScrollDownPressed;
-//    bool          bIsHoldScrolling;
-//
-//    float         scrollPressedTime;
-//    
-//    float         scrollIncrement;
-//    
-
+    void updateScroll();
     //////////////
     
     bool bPaused;
@@ -294,7 +285,8 @@ class CloudsHUDController {
     void drawList();
     
     CloudsHUDLabel* getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);
-
+    
+    void attachTriangleToLabel(CloudsHUDLabel* label, CloudsHUDLayerSet layer, string triangleLayerName, CloudsHUDTriangleDirection direction);
     
     vector<ofxFTGLFont*>    tempFontList;
     CloudsHUDLabel* ResearchTopicListLabel;

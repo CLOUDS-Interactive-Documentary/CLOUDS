@@ -29,6 +29,8 @@ CloudsHUDLabel::CloudsHUDLabel(){
     bIsHovered = false;
     bIsPressed = false;
     
+    hasTriangle = false;
+    
     clearTextOnAnimateOut = false;
     caps = true;
     
@@ -150,6 +152,10 @@ void CloudsHUDLabel::draw(){
         font->drawString( t, bounds.x, bounds.y + font->getStringBoundingBox("W", 0, 0).height );
     }
     
+    if(hasTriangle){
+        triangleMesh.draw();
+    }
+    
     ofPopStyle();
 
 }
@@ -171,7 +177,6 @@ void CloudsHUDLabel::setText(const string& newText, bool forceOn){
         }
     }
     
-    //todo: what if "" == text??
     updateDynamicSize();
 }
 
@@ -180,14 +185,18 @@ void CloudsHUDLabel::updateDynamicSize(){
     if(bDynamicBacking && dynamicBackingMesh != NULL && dynamicBackingMesh->getNumVertices() >= 4){
         
         //sample the layout to get a margin to apply to the right edge also
-        
-        dynamicBackingBounds.x = bounds.getLeft() - dynamicBackingMargin;
-        
-        if(usesFont()){
-            dynamicBackingBounds.width = font->stringWidth(text) + dynamicBackingMargin*2;
+        if(text == ""){
+            dynamicBackingBounds.width = 0;
         }
-        else if(usesLayout()){
-            dynamicBackingBounds.width = layout->stringWidth(text) + dynamicBackingMargin*2;
+        else{
+            dynamicBackingBounds.x = bounds.getLeft() - dynamicBackingMargin;
+            
+            if(usesFont()){
+                dynamicBackingBounds.width = font->stringWidth(text) + dynamicBackingMargin*2;
+            }
+            else if(usesLayout()){
+                dynamicBackingBounds.width = layout->stringWidth(text) + dynamicBackingMargin*2;
+            }
         }
         
         ofVec3f a = dynamicBackingBounds.getTopLeft();

@@ -54,6 +54,9 @@ class CloudsHUDLabel {
     bool caps;
     float hoverAlpha;
     
+    bool hasTriangle;
+    ofMesh triangleMesh;
+    
 	bool mouseMoved(ofVec2f mouse);
 	bool mousePressed(ofVec2f mouse);
 	bool mouseReleased(ofVec2f mouse);

@@ -321,6 +321,28 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("BackersList2TextBox", fontPath, 35,false,true);
     getLabelForLayer("BackersList3TextBox", fontPath, 35,false,true);
     
+    
+    //cheat for scroll
+    getLabelForLayer("ListScrollUpArrowSpace", fontPath);
+    getLabelForLayer("ListScrollDownArrowSpace", fontPath);
+
+    
+    attachTriangleToLabel(hudLabelMap["NextButtonTextBox"], CLOUDS_HUD_NEXT, "NextButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    
+    attachTriangleToLabel(hudLabelMap["ExploreTextBox"], CLOUDS_HUD_PAUSE, "ExploreButtonArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
+    attachTriangleToLabel(hudLabelMap["SeeMoreTextBox"], CLOUDS_HUD_PAUSE, "SeeMoreButtonArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
+    attachTriangleToLabel(hudLabelMap["ResetButtonTextBox"], CLOUDS_HUD_PAUSE, "ResetButtonSpace", CLOUDS_HUD_TRIANGLE_X);
+
+    attachTriangleToLabel(hudLabelMap["RSResetButtonTextBox"], CLOUDS_RESEARCH, "RSResetButtonArrowSpace", CLOUDS_HUD_TRIANGLE_X);
+    attachTriangleToLabel(hudLabelMap["ResumeButtonTextBox"], CLOUDS_RESEARCH_RESUME, "ResumeButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    
+    attachTriangleToLabel(hudLabelMap["TopicSelectPlayTextBox"], CLOUDS_RESEARCH_TOPIC, "TopicSelectPlayArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    attachTriangleToLabel(hudLabelMap["PeopleSelectPlayTextBox"], CLOUDS_RESEARCH_PPL, "PeopleSelectPlayArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    
+    attachTriangleToLabel(hudLabelMap["ListScrollUpArrowSpace"], CLOUDS_RESEARCH, "ListScrollUpArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
+    attachTriangleToLabel(hudLabelMap["ListScrollDownArrowSpace"], CLOUDS_RESEARCH, "ListScrollDownArrowSpace", CLOUDS_HUD_TRIANGLE_DOWN);
+    
+
     // cleanup!
     for(int i = 0; i < tempFontList.size(); i++){
         delete tempFontList[i];
@@ -466,6 +488,72 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
     }
     
     return fontSize;
+}
+
+void CloudsHUDController::attachTriangleToLabel(CloudsHUDLabel* label,
+                                                CloudsHUDLayerSet layer,
+                                                string triangleLayerName,
+                                                CloudsHUDTriangleDirection direction)
+{
+    SVGMesh* triangleMesh = layers[layer]->svg.getMeshByID( triangleLayerName );
+    if(triangleMesh == NULL){
+        ofLogError("CloudsHUDController::attachTriangleToLabel") << "Couldn't find traingle " << triangleLayerName << " on layer " << filenameForLayer(layer);
+        return;
+    }
+
+    triangleMesh->visible = false;
+    label->hasTriangle = true;
+    
+    ofVec2f a = triangleMesh->bounds.getTopLeft();
+    ofVec2f b = triangleMesh->bounds.getTopRight();
+    ofVec2f c = triangleMesh->bounds.getBottomRight();
+    ofVec2f d = triangleMesh->bounds.getBottomLeft();
+
+    ofVec2f ab = a.getInterpolated(b, .5);
+    ofVec2f bc = b.getInterpolated(c, .5);
+    ofVec2f cd = c.getInterpolated(d, .5);
+    ofVec2f da = d.getInterpolated(a, .5);
+    
+    switch(direction){
+        case CLOUDS_HUD_TRIANGLE_UP:
+            label->triangleMesh.addVertex(ab);
+            label->triangleMesh.addVertex(c);
+            label->triangleMesh.addVertex(d);
+            label->triangleMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+            break;
+        case CLOUDS_HUD_TRIANGLE_RIGHT:
+            label->triangleMesh.addVertex(bc);
+            label->triangleMesh.addVertex(d);
+            label->triangleMesh.addVertex(a);
+            label->triangleMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+            break;
+        case CLOUDS_HUD_TRIANGLE_DOWN:
+            label->triangleMesh.addVertex(cd);
+            label->triangleMesh.addVertex(a);
+            label->triangleMesh.addVertex(b);
+            label->triangleMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+            break;
+        case CLOUDS_HUD_TRIANGLE_LEFT:
+            label->triangleMesh.addVertex(da);
+            label->triangleMesh.addVertex(b);
+            label->triangleMesh.addVertex(c);
+            label->triangleMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+            break;
+        case CLOUDS_HUD_TRIANGLE_X:
+            label->triangleMesh.addVertex(a);
+            label->triangleMesh.addVertex(c);
+            label->triangleMesh.addVertex(b);
+            label->triangleMesh.addVertex(d);
+            label->triangleMesh.setMode(OF_PRIMITIVE_LINES);
+
+        default:
+            break;
+    }
+    
+    
+//    label->triangleMesh.addColor(ofFloatColor::white);
+//    label->triangleMesh.addColor(ofFloatColor::white);
+//    label->triangleMesh.addColor(ofFloatColor::white);
 }
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
@@ -860,6 +948,12 @@ void CloudsHUDController::updateResearchNavigation(){
     
     hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("RSResetButtonBacking")->bounds;
     hudLabelMap["RSResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds);
+
+    hudLabelMap["ListScrollUpArrowSpace"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollUpBacking")->bounds;
+    hudLabelMap["ListScrollUpArrowSpace"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ListScrollUpArrowSpace"]->baseInteractiveBounds);
+    
+    hudLabelMap["ListScrollDownArrowSpace"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollDownBacking")->bounds;
+    hudLabelMap["ListScrollDownArrowSpace"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ListScrollDownArrowSpace"]->baseInteractiveBounds);
     
     hudLabelMap["ResumeButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH_RESUME]->svg.getMeshByID("ResumeButtonBacking")->bounds;
     hudLabelMap["ResumeButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ResumeButtonTextBox"]->baseInteractiveBounds);
@@ -869,7 +963,8 @@ void CloudsHUDController::updateResearchNavigation(){
 
     hudLabelMap["PeopleSelectPlayTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH_PPL]->svg.getMeshByID("PeopleSelectBacking")->bounds;
     hudLabelMap["PeopleSelectPlayTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["PeopleSelectPlayTextBox"]->baseInteractiveBounds);
-        
+    
+    
     hudLabelMap["MapTextBox"]->tabSelected = currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS;
     hudLabelMap["PeopleTextBox"]->tabSelected = currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
     hudLabelMap["VisualsTextBox"]->tabSelected = currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS;
