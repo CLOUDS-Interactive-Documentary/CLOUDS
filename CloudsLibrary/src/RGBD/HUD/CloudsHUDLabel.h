@@ -54,9 +54,9 @@ class CloudsHUDLabel {
     bool caps;
     float hoverAlpha;
     
-	void mouseMoved(ofVec2f mouse);
-	void mousePressed(ofVec2f mouse);
-	void mouseReleased(ofVec2f mouse);
+	bool mouseMoved(ofVec2f mouse);
+	bool mousePressed(ofVec2f mouse);
+	bool mouseReleased(ofVec2f mouse);
     
     
   protected:

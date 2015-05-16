@@ -89,9 +89,9 @@ void CloudsHUDController::setup(){
     calculateFontSizes();
 
 #ifdef MOUSE_INPUT
-	ofAddListener(ofEvents().mouseMoved,this, &CloudsHUDController::mouseMoved);
-	ofAddListener(ofEvents().mousePressed,this, &CloudsHUDController::mousePressed);
-	ofAddListener(ofEvents().mouseReleased,this, &CloudsHUDController::mouseReleased);
+	ofAddListener(ofEvents().mouseMoved,this, &CloudsHUDController::mouseMoved, OF_EVENT_ORDER_BEFORE_APP);
+	ofAddListener(ofEvents().mousePressed,this, &CloudsHUDController::mousePressed, OF_EVENT_ORDER_BEFORE_APP);
+	ofAddListener(ofEvents().mouseReleased,this, &CloudsHUDController::mouseReleased, OF_EVENT_ORDER_BEFORE_APP);
 #endif
 
 	home.setup();
@@ -186,9 +186,9 @@ void CloudsHUDController::buildLayerSets(){
     layers[CLOUDS_RESEARCH]->bForceHover = true;
     layers[CLOUDS_RESEARCH_RESUME]->bForceHover = true;
     
-//    layers[CLOUDS_RESEARCH_TOPIC]->bForceHover = true;
-//    layers[CLOUDS_RESEARCH_PPL]->bForceHover = true;
-//    layers[CLOUDS_RESEARCH_VS]->bForceHover = true;
+    layers[CLOUDS_RESEARCH_TOPIC]->bForceHover = true;
+    layers[CLOUDS_RESEARCH_PPL]->bForceHover = true;
+    layers[CLOUDS_RESEARCH_VS]->bForceHover = true;
     
 }
 
@@ -877,6 +877,7 @@ void CloudsHUDController::updateResearchNavigation(){
 
 void CloudsHUDController::showAbout(){
 
+    //TODO: not all at once!...
     animateOn(CLOUDS_ABOUT_MAIN);
     animateOn(CLOUDS_ABOUT_BACKERS);
     animateOn(CLOUDS_ABOUT_CAST);
@@ -970,7 +971,7 @@ void CloudsHUDController::setTopics(const set<string>& topics){
     for(set<string>::iterator it = topics.begin(); it != topics.end(); it++){
         topicList.buttons[i].top = i * scrollIncrement;
         topicList.buttons[i].tag = *it;
-        topicList.buttons[i].label = *it;
+        topicList.buttons[i].label = ofToUpper(*it);
         i++;
     }
     
@@ -1013,9 +1014,10 @@ void CloudsHUDController::setVisuals(vector<string> visuals){
 }
 
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
-
+    args.canceled = false;
+    
     for (map<string, CloudsHUDLabel*>::iterator it = hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
-        it->second->mouseMoved(ofVec2f(args.x,args.y));
+        args.canceled |= it->second->mouseMoved(ofVec2f(args.x,args.y));
     }
     
     for(map<CloudsHUDLayerSet, CloudsHUDLayer*>::iterator it = layers.begin(); it != layers.end(); it++){
@@ -1034,22 +1036,22 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
         bIsScrollDownHover = researchScrollDownBoundsScaled.inside(args.x, args.y);
         
         if(researchScrollBoundsScaled.inside(args.x, args.y)){
-            
+            args.canceled = true;
             for(int i = 0; i < currentResearchList->buttons.size(); i++){
                 if(currentResearchList->buttons[i].visible){
                     currentResearchList->buttons[i].hovered = currentResearchList->buttons[i].selectRectScaled.inside(args.x, args.y);
                 }
             }
         }
-     
     }
-
 }
 
 void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
-	
+
+    args.canceled = false;
+
     for(map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
-        (it->second)->mousePressed(ofVec2f(args.x,args.y));
+        args.canceled |= (it->second)->mousePressed(ofVec2f(args.x,args.y));
     }
 
     if(( hudOpenMap[CLOUDS_HUD_HOME] && home.hitTest(args.x, args.y) ) ||
@@ -1064,6 +1066,7 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
         
         scrollPressedTime = ofGetElapsedTimef();
         if(researchScrollBoundsScaled.inside(args.x, args.y)){
+            args.canceled = true;
             for(int i = 0; i < currentResearchList->buttons.size(); i++){
                 currentResearchList->buttons[i].clicked = false;
                 if(currentResearchList->buttons[i].visible){
@@ -1076,6 +1079,8 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
 
 void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 
+    args.canceled = false;
+
     if(bActJustStarted && !hudOpenMap[CLOUDS_HUD_HOME] && (bVisualSystemDisplayed || bClipIsPlaying)) {
         bActJustStarted = false;
         animateOn(CLOUDS_HUD_LOWER_THIRD);
@@ -1085,7 +1090,7 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
     }
  
     for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
-        (it->second)->mouseReleased(ofVec2f(args.x,args.y));
+        args.canceled |= (it->second)->mouseReleased(ofVec2f(args.x,args.y));
     }
     
     if(hudOpenMap[CLOUDS_RESEARCH]){
@@ -1100,7 +1105,9 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
         bIsHoldScrolling = false;
         
         if(researchScrollBoundsScaled.inside(args.x, args.y)){
-
+            
+            args.canceled = true;
+            
             for(int i = 0; i < currentResearchList->buttons.size(); i++){
                 if(currentResearchList->buttons[i].visible){
                     currentResearchList->buttons[i].clicked = currentResearchList->buttons[i].pressed &&
@@ -1112,7 +1119,6 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
                 }
             }
         }
-        
     }
 }
 
@@ -1556,7 +1562,7 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
         }
     }
     
-    // animate in text, this is sub-optimal
+    // animate in text
     if( layer == CLOUDS_HUD_ALL ){
         for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
             (it->second)->animateIn( true );

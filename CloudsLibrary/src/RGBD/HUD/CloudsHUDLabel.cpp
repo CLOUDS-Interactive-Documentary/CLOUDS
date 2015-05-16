@@ -227,22 +227,22 @@ bool CloudsHUDLabel::usesFont(){
     return type == "FONT" && font != NULL;
 }
 
-void CloudsHUDLabel::mouseMoved(ofVec2f mouse){
+bool CloudsHUDLabel::mouseMoved(ofVec2f mouse){
     bool wasHovered = bIsHovered;
 	bIsHovered = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
     if(wasHovered != bIsHovered){
 		hoverChangedTime = ofGetElapsedTimef();
 	}
-
+    return bIsHovered;
 }
 
-void CloudsHUDLabel::mousePressed(ofVec2f mouse){
+bool CloudsHUDLabel::mousePressed(ofVec2f mouse){
 
 	bIsPressed = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
-    
+    return bIsPressed;
 }
 
-void CloudsHUDLabel::mouseReleased(ofVec2f mouse){
+bool CloudsHUDLabel::mouseReleased(ofVec2f mouse){
     
     bool releasedInBounds = scaledInteractiveBounds.inside(mouse.x,mouse.y);
     if(bIsPressed && releasedInBounds){
@@ -259,7 +259,7 @@ void CloudsHUDLabel::mouseReleased(ofVec2f mouse){
         bIsHovered = false;
         bIsPressed = false;
     }
-
+    return bIsClicked;
 }
 
 string CloudsHUDLabel::getText(){

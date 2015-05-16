@@ -250,14 +250,7 @@ class CloudsHUDController {
     bool bPaused;
 
     void updateResearchNavigation();
-    
-    ////////////////////
-    //ofVec2f researchClickAnchor;
-    //ofRectangle researchRectangle;
-//    bool hasResearchRectangle;
-//    bool researchConfirmHovered;
-//    bool researchConfirmPressed;
-//    bool researchConfirmClicked;
+    vector<ofRectangle> clickThroughRectangles;
     
     void selectButton(const CloudsHUDResearchButton& button);
     //string bioText;

@@ -1,4 +1,4 @@
-    
+
 #include "CloudsPlaybackController.h"
 
 #include "CloudsLocalization.h"
@@ -968,6 +968,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     /////////////// RESEARCH MODE
     if(showingExploreMap){
+        
         if(clusterMap->selectionChanged()){
             hud.selectTopic(clusterMap->getSelectedKeyword());
         }
@@ -976,12 +977,12 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(selectedTopic != ""){
             
             clusterMap->setCurrentTopic(selectedTopic);
-            hud.setResearchClickAnchor( clusterMap->getTopicScreenLocation() );
+            //hud.setResearchClickAnchor( clusterMap->getTopicScreenLocation() );
             
             if(hud.isItemConfirmed()){
                 showingExploreMap = false;
                 hud.animateOff();
-                hud.questionHoverOn("WATCHING: " + selectedTopic);
+                hud.questionHoverOn("WATCHING " + ofToUpper(selectedTopic));
                 exploreMapSelectedTopic = selectedTopic;
                 //Transition into new act based on topic
                 transitionController.transitionFromExploreMap(1.0);
@@ -999,14 +1000,14 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(selectedSpeakerID != ""){
             
             peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].twitterHandle);
-            hud.setResearchClickAnchor( peopleMap->getSelectedPersonScreenPosition() );
+            //hud.setResearchClickAnchor( peopleMap->getSelectedPersonScreenPosition() );
 
             if(hud.isItemConfirmed()){
                 showingExplorePeople = false;
                 hud.animateOff();
                 string displayName = ofToUpper(CloudsSpeaker::speakers[selectedSpeakerID].firstName + " " +
                                                CloudsSpeaker::speakers[selectedSpeakerID].lastName);
-                hud.questionHoverOn("WATCHING: " + displayName);
+                hud.questionHoverOn("WATCHING " + ofToUpper(displayName));
 
                 explorePeopleSelectedSpeakerID = selectedSpeakerID;
                 //Transition into new act based on topic
@@ -1110,9 +1111,9 @@ void CloudsPlaybackController::updateHUD(){
         if(currentClip != NULL){
             hud.selectPerson(currentClip->person);
         }
-        hud.selectTopic(currentTopic);
+        hud.selectTopic( parser.getMasterKeyword(currentTopic) );
         hud.animateOff();
-        
+
         transitionController.transitionToExploreMap(1.0, 2.0);
     }
     
@@ -1124,7 +1125,7 @@ void CloudsPlaybackController::updateHUD(){
         if(currentClip != NULL){
             hud.selectPerson(currentClip->person);
         }
-        hud.selectTopic(currentTopic);
+        hud.selectTopic( parser.getMasterKeyword(currentTopic) );
         hud.animateOff();
         
         transitionController.transitionToExplorePeople(1.0, 2.0);
@@ -2283,6 +2284,9 @@ void CloudsPlaybackController::cleanupInterlude(){
 void CloudsPlaybackController::showExploreMap(){
 
     hud.animateOn(CLOUDS_RESEARCH);
+    if(hud.isItemSelected()){
+        hud.animateOn(CLOUDS_RESEARCH_TOPIC);
+    }
     if(canReturnToAct){
         hud.animateOn(CLOUDS_RESEARCH_RESUME);
     }
@@ -2311,6 +2315,10 @@ void CloudsPlaybackController::showExploreMap(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showExplorePeople(){
     hud.animateOn(CLOUDS_RESEARCH);
+    if(hud.isItemSelected()){
+        hud.animateOn(CLOUDS_RESEARCH_PPL);
+    }
+    
     if(canReturnToAct){
         hud.animateOn(CLOUDS_RESEARCH_RESUME);
     }

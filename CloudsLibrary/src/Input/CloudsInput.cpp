@@ -37,26 +37,30 @@ map<int, CloudsInteractionEventArgs>& CloudsInput::getInputPoints(){
     return inputPoints;
 }
 
-void CloudsInput::interactionMoved(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+void CloudsInput::interactionMoved(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus, bool canceled){
 	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
+    args.canceled = canceled;
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionMoved, args, this);	
 }
 
-void CloudsInput::interactionStarted(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+void CloudsInput::interactionStarted(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus, bool canceled){
 	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
+    args.canceled = canceled;
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionStarted, args, this);
 }
 
-void CloudsInput::interactionDragged(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+void CloudsInput::interactionDragged(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus, bool canceled){
 	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
+    args.canceled = canceled;
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionDragged, args, this);
 }
 
-void CloudsInput::interactionEnded(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus){
+void CloudsInput::interactionEnded(ofVec3f pos, bool primary, bool dragged, int actionType, int playerId, float focus, bool canceled){
 	CloudsInteractionEventArgs args(pos+bleedOffset, primary, dragged, actionType, playerId, focus);
+    args.canceled = canceled;
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionEnded, args, this);
 }

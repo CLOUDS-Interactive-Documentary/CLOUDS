@@ -919,10 +919,10 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     bool positionFound = false;
     for(int i = 0; i < topicPoints.size(); i++){
         if(topicPoints[i].keyword == topic){
-            targetTopicPosition = topicPoints[i].position * meshExpansion;
+            targetTopicPosition  = topicPoints[i].position * meshExpansion;
             targetCameraPosition = targetTopicPosition + targetTopicPosition.normalized() * traversCameraDistance;
-            targetCameraSideDir = targetTopicPosition.normalized().getCrossed( ofVec3f(0,1,0) );
-            targetCameraUpDir   = targetTopicPosition.normalized().getCrossed( targetCameraSideDir );
+            targetCameraSideDir  = targetTopicPosition.normalized().getCrossed( ofVec3f(0,1,0) );
+            targetCameraUpDir    = targetTopicPosition.normalized().getCrossed( targetCameraSideDir );
             
             positionFound = true;
             break;
@@ -1435,7 +1435,10 @@ void CloudsVisualSystemClusterMap::selfDraw(){
             if(!p.onScreen){
                 continue;
             }
-            
+            //HUD will take care of topic drawing
+            if(p.keyword == currentTopic){
+                continue;
+            }
             ofPushStyle();
             ofSetColor(255, p.attenuation*255);
             
@@ -1810,9 +1813,10 @@ void CloudsVisualSystemClusterMap::selfMouseDragged(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
+
     cursor.set(GetCloudsInput()->getPosition());
 
-
+    
     TopicPoint* hoveredPoint = NULL;
     ofVec3f camPos = getCameraRef().getPosition();
     ofVec2f mousePos(data.x + bleed, data.y + bleed);
@@ -1820,6 +1824,7 @@ void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
         for(int i = 0; i < topicPoints.size(); i++){
             TopicPoint& p = topicPoints[i];
             if(!p.onScreen) continue;
+            if(data.canceled) continue;
             bool inside = p.screenRectangle.inside(mousePos);
             //if this one is closer
             if(inside && (hoveredPoint == NULL || (hoveredPoint->position*meshExpansion).distance(camPos) > (p.position*meshExpansion).distance(camPos))){
@@ -1841,7 +1846,9 @@ void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
             
             bool inside = p.screenRectangle.inside(mousePos);
             if(p.hovered &&
-               (!inside || (hoveredPoint != NULL && (hoveredPoint->position*meshExpansion).distance(camPos) < (p.position*meshExpansion).distance(camPos))) )
+               (data.canceled ||
+                !inside ||
+                (hoveredPoint != NULL && (hoveredPoint->position*meshExpansion).distance(camPos) < (p.position*meshExpansion).distance(camPos))) )
             {
                 p.hovered = false;
                 p.hoverChangeTime = ofGetElapsedTimef();
@@ -1852,7 +1859,7 @@ void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemClusterMap::selfMousePressed(ofMouseEventArgs& data){
-    if(drawType3D){
+    if(drawType3D && !data.canceled){
         for(int i = 0; i < topicPoints.size(); i++){
             TopicPoint& p = topicPoints[i];
             if(p.hovered){
