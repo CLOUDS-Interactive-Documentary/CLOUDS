@@ -39,14 +39,14 @@ typedef enum {
     CLOUDS_INTRO_VHX_RENTAL_EXPIRED,
     CLOUDS_INTRO_VHX_PACKAGE_VALIDATED,
     CLOUDS_INTRO_VHX_ERROR,
+    CLOUDS_INTRO_NO_MEDIA,
+    CLOUDS_INTRO_ABOUT,
     
     CLOUDS_INTRO_MENU,
     CLOUDS_INTRO_MENU_NEW_RESUME,
     CLOUDS_INTRO_PLAYING,
     CLOUDS_INTRO_RESUMING,
-    CLOUDS_INTRO_RESEARCH,
-    CLOUDS_INTRO_NO_MEDIA,
-    CLOUDS_INTRO_ABOUT
+    CLOUDS_INTRO_RESEARCH
     
 } CloudsIntroState;
 
@@ -191,7 +191,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float selectedQuestionTime;
 	ofVec3f selectQuestionStartPos;
 	ofQuaternion selectQuestionStartRot;
-		
+	bool inMovingThroughTunnelState();
+    
 	vector<bool> questionChannels; //0-3 for the four qeustion slots
 	vector<float> channelPauseTime;
 	
@@ -320,6 +321,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     string currentAuthCode;
     bool showVHXPrompt;
     string vhxPromptScreen;
+    
     
 #ifdef OCULUS_RIFT
     bool bCursorInCenter;

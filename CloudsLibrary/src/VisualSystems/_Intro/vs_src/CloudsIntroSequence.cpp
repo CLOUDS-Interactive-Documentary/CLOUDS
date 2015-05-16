@@ -69,13 +69,68 @@ CloudsIntroSequence::CloudsIntroSequence(){
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
-
-	selectedQuestion = NULL;
+    questionGui = NULL;
+    tunnelGui = NULL;
+    typeGui = NULL;
+    introGui = NULL;
+    helperTextGui = NULL;
+    menuGui = NULL;
+    
+    questionWrapDistance = 0;
+    cameraForwardSpeed = 0;
+    titleTypeOpacity = 0;
+    titleFontSize = 0;
+    titleFontExtrude = 0;
+    titleTypeTracking = 0;
+    titleTypeOffset = 0;
+    titleNoiseDensity = 0;
+    titleMaxGlow = 0;
+    titleMinGlow = 0;
+    titleRectWidth = 0;
+    titleRectHeight = 0;
+    
+    currentHelperFontSize = 0;
+    helperFontTracking = 0;
+    helperFontY = 0;
+    helperFontScale = 0;
+    
+    questionPauseDuration = 0;
+    questionLineLength = 0;
+    questionLineSpacing = 0;
+    questionTunnelInnerRadius = 0;
+    
+    firstQuestionStoppedTime = 0;
+    selectedQuestionTime = 0;
+    wireframeAlpha = 0;
+    
+    camWobbleRange = 0;
+    camWobbleSpeed = 0;
+    
+    introNodeSize = 0;
+    introNodeMinDistance = 0;
+    introNodeHoldTime = 0;
+    introNodeYAdjust = 0;
+    nodeActivatedTime = 0;
+    
+    kinectHelperTargetAlpha = 0;
+    stateChangedTime = 0;
+    
+    perlinAmplitude = 0;
+    perlinDensity = 0;
+    perlinSpeed = 0;
+    
+    tunnelDistance = 0;
+    tunnelStartZ = 0;
+    regenerateTunnel = false;
+    looseTunnelResolutionX = 0;
+    looseTunnelResolutionZ = 0;
+	
+    selectedQuestion = NULL;
 	showingQuestions = false;
 	paused = false;
-	currentFontSize = -1;
+	
+    currentFontSize = -1;
 	currentFontExtrusion = -1;
-    
     percentLoaded = 0;
     loadingCompleteTime = 0;
 	caughtQuestion = NULL;
@@ -122,7 +177,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	perlinOffset = 0;
 	newResumeSpace = 0;
     
-	mouseLastMovedTime = 0;
+
 	cameraSwingDamp = 0.0;
     warpCamera.setNearClip(.01);
 	timeSinceLastPrompt = 0;
@@ -352,16 +407,22 @@ void CloudsIntroSequence::reloadShaders(){
 }
 
 void CloudsIntroSequence::selfUpdate(){
-	
-//	if(!startedOnclick && timeline->getIsPlaying()){
-//		timeline->stop();
-//	}
+
+	if(!inMovingThroughTunnelState() && timeline->getIsPlaying()){
+		timeline->stop();
+	}
 	
 	updateCamera();
     updateMenu();
 	updateWaiting();
 	updateQuestions();
 	updateTitle();
+}
+
+bool CloudsIntroSequence::inMovingThroughTunnelState(){
+    return currentState == CLOUDS_INTRO_PLAYING ||
+           currentState == CLOUDS_INTRO_RESUMING ||
+           currentState == CLOUDS_INTRO_RESEARCH;
 }
 
 void CloudsIntroSequence::updateCamera(){

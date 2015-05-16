@@ -65,6 +65,7 @@ class CloudsHUDResearchButton {
         clicked = false;
     }
     
+    CloudsHUDResearchTab parentTab;
     float top;
     bool visible;
     bool hovered;
@@ -167,6 +168,8 @@ class CloudsHUDController {
 
 	int videoFrameCounter;
 	bool isPlaying;
+    float transitionFade;
+    void researchTransitionFinished();
     
 #ifdef OCULUS_RIFT
     map<CloudsHUDLayerSet, float> layerDistance;
@@ -186,7 +189,8 @@ class CloudsHUDController {
     void selectTopic(string topic);
     void selectPerson(string personID);
     void selectVisual(string visualName);
-    
+    void selectItem(CloudsHUDResearchTab tab, string itemID);
+
     //where the researched item may be clicked
     ofVec2f setResearchClickAnchor(ofVec2f anchor);
     
@@ -253,6 +257,7 @@ class CloudsHUDController {
 
     void updateResearchNavigation();
     vector<ofRectangle> clickThroughRectangles;
+    bool bResearchTransitioning;
     
     void selectButton(const CloudsHUDResearchButton& button);
     //string bioText;
@@ -279,6 +284,7 @@ class CloudsHUDController {
 #endif
     
     CloudsHUDResearchTab currentTab;
+    CloudsHUDResearchTab nextTab;
     void drawList();
     
     CloudsHUDLabel* getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);

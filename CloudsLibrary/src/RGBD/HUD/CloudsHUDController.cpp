@@ -21,6 +21,7 @@ CloudsHUDController::CloudsHUDController(){
     bSkipAVideoFrame = false;
     bDrawHud = true;
     bProjectExampleDisplayed = false;
+    transitionFade = 0.0;
     
     bQuestionDisplayed = false;
     bJustPaused = false;
@@ -28,6 +29,7 @@ CloudsHUDController::CloudsHUDController(){
     bActJustStarted = false;
     bVisualSystemDisplayed = false;
     bClipIsPlaying = false;
+    bResearchTransitioning = false;
     
     currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
     bIsScrollUpHover = false;
@@ -979,11 +981,13 @@ void CloudsHUDController::setTopics(const set<string>& topics){
     CloudsHUDResearchList& topicList = researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
     topicList.buttons.clear();
     topicList.buttons.resize(topics.size());
+    
     int i = 0;
     for(set<string>::iterator it = topics.begin(); it != topics.end(); it++){
         topicList.buttons[i].top = i * scrollIncrement;
         topicList.buttons[i].tag = *it;
         topicList.buttons[i].label = ofToUpper(*it);
+        topicList.buttons[i].parentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
         i++;
     }
     
@@ -994,7 +998,7 @@ void CloudsHUDController::setTopics(const set<string>& topics){
 void CloudsHUDController::populateSpeakers(){
     CloudsHUDResearchList& peopleList = researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
     peopleList.buttons.clear();
-    //peopleList.buttons.resize(CloudsSpeaker::speakers.size());
+
     int i = 0;
     for(map<string,CloudsSpeaker>::iterator it = CloudsSpeaker::speakers.begin(); it != CloudsSpeaker::speakers.end(); it++){
         if(it->second.voiceOverOnly){
@@ -1004,6 +1008,7 @@ void CloudsHUDController::populateSpeakers(){
         peopleList.buttons[i].top = i * scrollIncrement;
         peopleList.buttons[i].tag = it->first;
         peopleList.buttons[i].label = it->second.firstName + " " + it->second.lastName;
+        peopleList.buttons[i].parentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
         i++;
     }
     
@@ -1015,12 +1020,13 @@ void CloudsHUDController::setVisuals(map<string, CloudsVisualSystemCredit>& visu
     CloudsHUDResearchList& visualsList = researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS];
     visualsList.buttons.clear();
     visualsList.buttons.resize(visuals.size());
-    //for(int i = 0; i < visuals.size(); i++){
+
     int i = 0;
     for(map<string, CloudsVisualSystemCredit>::iterator it = visuals.begin(); it != visuals.end(); it++){
         visualsList.buttons[i].top = i * scrollIncrement;
         visualsList.buttons[i].tag = it->first;
         visualsList.buttons[i].label = ofToUpper(it->second.title);
+        visualsList.buttons[i].parentTab = CLOUDS_HUD_RESEARCH_TAB_VISUALS;
         i++;
     }
     
@@ -1138,18 +1144,22 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 }
 
 void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
-    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
+    if(button.parentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
         hudLabelMap["TopicSelectTextBox"]->setText(button.label);
-        animateOn(CLOUDS_RESEARCH_TOPIC);
+        if(currentTab == button.parentTab){
+            animateOn(CLOUDS_RESEARCH_TOPIC);
+        }
     }
-    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
+    else if(button.parentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
         hudLabelMap["PeopleSelectNameTextBox"]->setText(CloudsSpeaker::speakers[button.tag].firstName + " " +
                                                         CloudsSpeaker::speakers[button.tag].lastName);
         hudLabelMap["PeopleSelectBylineTextBox"]->setText(CloudsSpeaker::speakers[button.tag].byline1);
-        animateOn(CLOUDS_RESEARCH_PPL);
+        if(currentTab == button.parentTab){
+            animateOn(CLOUDS_RESEARCH_PPL);
+        }
     }
-    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS){
-        //animateOn(CLOUDS_RESEARCH_VS);
+    else if(button.parentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS){
+        //taken care of in the vidual system
     }
 }
 
@@ -1174,63 +1184,55 @@ void CloudsHUDController::setSeeMoreName(string name){
 }
 
 void CloudsHUDController::selectTopic(string topic){
-    CloudsHUDResearchList& topicList = researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
-    for(int i = 0; i < topicList.buttons.size(); i++){
-        topicList.buttons[i].clicked = false;
-    }
-    
-    for(int i = 0; i < topicList.buttons.size(); i++){
-        if(topicList.buttons[i].tag == topic){
-            selectButton(topicList.buttons[i]);
-            topicList.buttons[i].clicked = true;
-            if(!topicList.buttons[i].visible){
-                topicList.scrollPosition = MIN(topicList.buttons[i].top, topicList.totalScrollHeight - researchScrollBounds.height);
-            }
-            return;
-        }
-    }
-    
-    ofLogError("CloudsHUDController::selectTopic") << "Didn't find selected topic " << topic;
+    selectItem(CLOUDS_HUD_RESEARCH_TAB_TOPICS, topic);
 }
 
 void CloudsHUDController::selectPerson(string personID){
-    CloudsHUDResearchList& peopleList = researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
-    for(int i = 0; i < peopleList.buttons.size(); i++){
-        peopleList.buttons[i].clicked = false;
-        peopleList.buttons[i].hovered = false;
-    }
-
-    for(int i = 0; i < peopleList.buttons.size(); i++){
-        if(peopleList.buttons[i].tag == personID){
-            peopleList.buttons[i].clicked = true;
-            if(!peopleList.buttons[i].visible){
-                peopleList.scrollPosition = MIN(peopleList.buttons[i].top, peopleList.totalScrollHeight - researchScrollBounds.height);
-            }
-            selectButton(peopleList.buttons[i]);
-            return;
-        }
-    }
-    ofLogError("CloudsHUDController::selectPerson") << "Didn't find selected name " << personID;
+    selectItem(CLOUDS_HUD_RESEARCH_TAB_PEOPLE, personID);
 }
 
+
 void CloudsHUDController::selectVisual(string visualName){
-    CloudsHUDResearchList& visualList = researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS];
-    for(int i = 0; i < visualList.buttons.size(); i++){
-        visualList.buttons[i].clicked = false;
-        visualList.buttons[i].hovered = false;
+    
+    selectItem(CLOUDS_HUD_RESEARCH_TAB_VISUALS, visualName);
+    
+//    CloudsHUDResearchList& visualList = researchLists[];
+//    for(int i = 0; i < visualList.buttons.size(); i++){
+//        visualList.buttons[i].clicked = false;
+//        visualList.buttons[i].hovered = false;
+//    }
+//    
+//    for(int i = 0; i < visualList.buttons.size(); i++){
+//        if(visualList.buttons[i].tag == visualName){
+//            visualList.buttons[i].clicked = true;
+//            if(!visualList.buttons[i].visible){
+//                visualList.scrollPosition = MIN(visualList.buttons[i].top, visualList.totalScrollHeight - researchScrollBounds.height);
+//            }
+//            selectButton(visualList.buttons[i]);
+//            return;
+//        }
+//    }
+//    ofLogError("CloudsHUDController::selectVisual") << "Didn't find selected name " << visualName;
+}
+
+void CloudsHUDController::selectItem(CloudsHUDResearchTab tab, string itemID){
+    CloudsHUDResearchList& list = researchLists[tab];
+    for(int i = 0; i < list.buttons.size(); i++){
+        list.buttons[i].clicked = false;
+        list.buttons[i].hovered = false;
     }
     
-    for(int i = 0; i < visualList.buttons.size(); i++){
-        if(visualList.buttons[i].tag == visualName){
-            visualList.buttons[i].clicked = true;
-            if(!visualList.buttons[i].visible){
-                visualList.scrollPosition = MIN(visualList.buttons[i].top, visualList.totalScrollHeight - researchScrollBounds.height);
+    for(int i = 0; i < list.buttons.size(); i++){
+        if(list.buttons[i].tag == itemID){
+            list.buttons[i].clicked = true;
+            if(!list.buttons[i].visible){
+                list.scrollPosition = MIN(list.buttons[i].top, list.totalScrollHeight - researchScrollBounds.height);
             }
-            selectButton(visualList.buttons[i]);
+            selectButton(list.buttons[i]);
             return;
         }
     }
-    ofLogError("CloudsHUDController::selectVisual") << "Didn't find selected name " << visualName;
+    ofLogError("CloudsHUDController::selectItem") << "Didn't find selected name " << itemID;
 }
 
 bool CloudsHUDController::isExploreMapHit(){
@@ -1254,45 +1256,49 @@ bool CloudsHUDController::isSeeMorePersonHit(){
 
 bool CloudsHUDController::selectedMapTab(){
 
-    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS) return false;
+    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS || bResearchTransitioning) return false;
     
     bool selected = hudLabelMap["MapTextBox"]->isClicked();
     if(selected) {
-        clearSelection();        
-        currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
-        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
+        clearSelection();
+        bResearchTransitioning = true;
+        nextTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
     }
     return selected;
 }
 
 bool CloudsHUDController::selectedPeopleTab(){
 
-    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE) return false;
+    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE || bResearchTransitioning) return false;
  
     bool selected = hudLabelMap["PeopleTextBox"]->isClicked();
     if(selected) {
         clearSelection();
-        currentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
-        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
+        bResearchTransitioning = true;
+        nextTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
     }
     return selected;
 }
 
 bool CloudsHUDController::selectedVisualsTab(){
     
-    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS) return false;
+    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS || bResearchTransitioning) return false;
     
     bool selected = hudLabelMap["VisualsTextBox"]->isClicked();
     if(selected) {
-
         clearSelection();
-        
-        currentTab = CLOUDS_HUD_RESEARCH_TAB_VISUALS;
-        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS];
+        bResearchTransitioning = true;
+        nextTab = CLOUDS_HUD_RESEARCH_TAB_VISUALS;
     }
     return selected;
 }
-    
+
+void CloudsHUDController::researchTransitionFinished(){
+    currentTab = nextTab;
+    currentResearchList = &researchLists[currentTab];
+    bResearchTransitioning = false;
+}
+
 void CloudsHUDController::setHudEnabled(bool enable){
 	bDrawHud = enable;
 }
@@ -1369,62 +1375,11 @@ void CloudsHUDController::draw(){
         }
     }
     
-    //TODO: intelligent shape widgets
-//	if(hudLabelMap["ResetButtonTextBox"]->isClicked()){
-//		ofSetColor(200,30,0,200);
-//		resetTriangle.draw();
-//	}
-    
+
 	ofPopMatrix();
 	ofPopStyle();
 
-//    if(hudOpenMap[CLOUDS_RESEARCH] & isItemSelected()){
-        
-//        //TODO: this should somehow go into a HUD Label & layer
-//        
-//        ofColor fillColor;
-//        ofColor textColor;
-//        ofPushStyle();
-//        if(researchConfirmClicked){
-//            fillColor = CloudsColorTabFillSelectd;
-//            textColor = CloudsColorTextSelected;
-//        }
-//        else if(researchConfirmPressed){
-//            fillColor = CloudsColorTabFillActive;
-//            textColor = CloudsColorTextActive;
-//        }
-//        else if(researchConfirmHovered) {
-//            fillColor = CloudsColorTabFillHover;
-//            textColor = CloudsColorTextHover;
-//        }
-//        else{
-//            fillColor = CloudsColorTabFillStatic;
-//            textColor = CloudsColorTextStatic;
-//        }
-//        
-//        //dont' mix button/tab text colors
-//        textColor = ofColor::white;
-//        ofSetColor(fillColor);
-//        ofRect(researchRectangle);
-//        if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE && isItemSelected() && bioText != ""){
-//            researchBio.setLineLength(researchRectangle.width - 40);
-//            ofSetColor(textColor);
-//            researchBio.drawString(bioText, researchClickAnchor.x + 10, researchClickAnchor.y + 50);
-//            string playText = "PLAY >";
-//            float playWidth  = playAllFont.stringWidth(playText);
-//            float playHeight = playAllFont.stringHeight(playText);
-//            
-//            playAllFont.drawString(playText, researchRectangle.getMaxX() - playWidth - 15, researchRectangle.y + playHeight + 15);
-//        }
-//        
-//        if(researchConfirmPressed){
-//            ofNoFill();
-//            ofSetColor(CloudsColorTabStrokeSelectd);
-//            ofRect(researchRectangle);
-//        }
-//        
-//        ofPopStyle();
-//    }
+
 }
 
 
@@ -1435,22 +1390,25 @@ void CloudsHUDController::drawList(){
     ofPushStyle();
     for(int i = 0; i < currentResearchList->buttons.size(); i++){
         if(currentResearchList->buttons[i].visible){
-            //TODO: better coloring system
+
+            ofColor textColor;
             if(currentResearchList->buttons[i].clicked){
-                ofSetColor(CloudsColorTextActive);
+                textColor = CloudsColorTextActive;
             }
             else if(currentResearchList->buttons[i].pressed){
-                ofSetColor(CloudsColorTextSelected);
-            
+                textColor = CloudsColorTextSelected;
             }
             else if(currentResearchList->buttons[i].hovered){
-                ofSetColor(CloudsColorTextHover);
+                textColor = CloudsColorTextHover;
             }
             else{
-                ofSetColor(CloudsColorTextStatic);
+                textColor = CloudsColorTextStatic;
             }
             
-            //TODO: maybe different styles for different
+            textColor.a *= transitionFade;
+            
+            ofSetColor(textColor);
+
             ResearchTopicListLabel->font->drawString(currentResearchList->buttons[i].label,
                                               hudLabelMap["ListTextBoxes"]->bounds.x,
                                               researchScrollBounds.y + currentResearchList->buttons[i].top + scrollIncrement * .5);

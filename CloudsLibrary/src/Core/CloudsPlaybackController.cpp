@@ -1353,7 +1353,8 @@ void CloudsPlaybackController::updateTransition(){
                 
                 showingExploreMap = false;
                 hideVisualSystem();
-
+                hud.researchTransitionFinished();
+                
                 if(exploreMapSelectedTopic != ""){
                     hud.clearSelection();
                     storyEngine.buildActWithTopic(run, exploreMapSelectedTopic);
@@ -1366,6 +1367,7 @@ void CloudsPlaybackController::updateTransition(){
                     
                 showingExplorePeople = false;
                 hideVisualSystem();
+                hud.researchTransitionFinished();
                 
                 if(explorePeopleSelectedSpeakerID != ""){
                     hud.clearSelection();
@@ -1379,7 +1381,7 @@ void CloudsPlaybackController::updateTransition(){
 
                 showingExploreVisuals = false;
                 hideVisualSystem();
-                
+                hud.researchTransitionFinished();
                 //Transition to interlude takes care of the rest
                 
                 break;
@@ -1407,7 +1409,6 @@ void CloudsPlaybackController::updateTransition(){
                 //starting
             case TRANSITION_INTERVIEW_OUT:
 				if(bQuestionAsked || rgbdVisualSystem->isResetSelected()){
-                    
                     currentAct->terminateAct();
                     hud.animateOff(CLOUDS_HUD_NEXT);
                     hud.animateOff(CLOUDS_HUD_HOME);
@@ -1547,7 +1548,8 @@ void CloudsPlaybackController::updateTransition(){
 	}
     
     crossfadeValue = transitionController.getFadeValue();
-
+    hud.transitionFade = crossfadeValue;
+    
 	if(bQuestionAsked){	
         CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = crossfadeValue;
         //don't start fading out right away

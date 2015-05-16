@@ -20,6 +20,7 @@ void CloudsVisualSystemVisuals::selfSetDefaults(){
     bSelectionConfirmed = false;
     fontSize = 20;
     typeScale = .5;
+    bMouseEventCanceled = false;
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -85,8 +86,11 @@ void CloudsVisualSystemVisuals::setVisuals(map<string, CloudsVisualSystemCredit>
         string systemName = it->first;
         string imageFileName = getVisualSystemDataPath() + "thumbs/" + systemName + ".jpg";
         if(ofFile(imageFileName).exists()){
+            
             thumbs[systemName].image.setUseTexture(false);
             thumbs[systemName].image.loadImage(imageFileName);
+            thumbs[systemName].title = it->second.title;
+            thumbs[systemName].byLine = it->second.line1;
         }
         else{
             ofLogError("CloudsVisualSystemVisuals::selfSetup") << "Missing thumbnail for " << imageFileName;
@@ -202,23 +206,29 @@ void CloudsVisualSystemVisuals::selfUpdate(){
         currentFontSize = fontSize;
     }
     
+    ofVec2f mousePos( GetCloudsInputX(), GetCloudsInputY() );
+    map<string, VisualThumb>::iterator it;
+    for(it = thumbs.begin(); it != thumbs.end(); it++){
+        it->second.hovered = !bMouseEventCanceled && it->second.onScreen && it->second.screenPoly.inside(mousePos);
+    }
+
     currentCameraSideDir += (targetCameraSideDir - currentCameraSideDir) * .03;
     currentCameraUpDir   += (targetCameraUpDir - currentCameraUpDir) * .03;
     
     float distFromTarget = selectCamera.getPosition().distance(camTargetPos);
     //ofVec3f targetPos = camTargetPos;
-    ofVec3f rotAxis = camLookPos;
-    rotAxis.x = 0;
-    rotAxis.z = 0;
+    ofVec3f rotAxis = camLookPos.getInterpolated(camTargetPos, .75);
+//    rotAxis.x = 0;
+//    rotAxis.z = 0;
     ofVec3f targetPos = camTargetPos.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 50, -50,true), rotAxis, currentCameraUpDir);
-    targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -50, 50,true), rotAxis, currentCameraSideDir);
+    targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -90, 90,true), rotAxis, currentCameraSideDir);
     
     ofNode n = selectCamera;
     n.lookAt(camLookPos.getInterpolated(targetPos, ofMap(distFromTarget, cameraBackupDistance, cameraBackupDistance*2, .0, 1.0, true) ), ofVec3f(0,1,0) );
     selectCamera.setPosition( selectCamera.getPosition() + (targetPos - selectCamera.getPosition())*.03 );
     
     ofQuaternion q;
-    q.slerp(.07, selectCamera.getOrientationQuat(), n.getOrientationQuat());
+    q.slerp(.04, selectCamera.getOrientationQuat(), n.getOrientationQuat());
     selectCamera.setOrientation(q);
     
     ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());
@@ -276,12 +286,12 @@ void CloudsVisualSystemVisuals::selfDraw(){
             ofPushMatrix();
             ofMultMatrix(n.getGlobalTransformMatrix());
             ofScale(typeScale, -typeScale, typeScale);
-            visualFont.drawString(it->first, 0, 0);
+            visualFont.drawString(it->second.title + " by " + it->second.byLine, 0, 0);
             ofPopMatrix();
         }
     }
     
-    ofPushStyle();
+//    ofPushStyle();
 //    ofNode n;
 //    n.setPosition(camLookPos);
 //    n.lookAt(camTargetPos);
@@ -289,7 +299,7 @@ void CloudsVisualSystemVisuals::selfDraw(){
 //    n.setPosition(camTargetPos);
 //    n.lookAt(camLookPos);
 //    n.draw();
-    ofPopStyle();
+//    ofPopStyle();
 }
 
 
@@ -345,11 +355,7 @@ void CloudsVisualSystemVisuals::selfMouseDragged(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemVisuals::selfMouseMoved(ofMouseEventArgs& data){
-    ofVec2f mousePos(data.x + bleed, data.y + bleed);
-    map<string, VisualThumb>::iterator it;
-    for(it = thumbs.begin(); it != thumbs.end(); it++){
-        it->second.hovered = !data.canceled && it->second.onScreen && it->second.screenPoly.inside(mousePos);
-    }
+    bMouseEventCanceled = data.canceled;
 }
 
 void CloudsVisualSystemVisuals::selfMousePressed(ofMouseEventArgs& data){

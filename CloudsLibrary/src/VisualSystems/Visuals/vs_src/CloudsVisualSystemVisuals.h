@@ -12,6 +12,9 @@
 #include "CloudsVisualSystemPreset.h"
 
 typedef struct{
+    string title;
+    string byLine;
+    
     ofImage image;
     ofVec3f pos;
     float rotation;
@@ -149,6 +152,6 @@ protected:
     bool bSelectionChanged;
     bool bSelectionConfirmed;
     float typeScale;
-    
+    bool bMouseEventCanceled;
     ofCamera selectCamera;
 };
