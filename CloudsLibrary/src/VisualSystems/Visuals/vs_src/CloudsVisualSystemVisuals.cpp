@@ -16,6 +16,7 @@ void CloudsVisualSystemVisuals::selfSetDefaults(){
     bFreeCam = false;
     cameraBackupDistance = 10;
     bSelectionChanged = false;
+    bSelectionConfirmed = false;
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -311,8 +312,13 @@ void CloudsVisualSystemVisuals::selfMousePressed(ofMouseEventArgs& data){
     map<string, VisualThumb>::iterator it;
     for(it = thumbs.begin(); it != thumbs.end(); it++){
         if(it->second.hovered){
-            selectSystem(it->first);
-            bSelectionChanged = true;
+            if(selectedSystem == it->first){
+                bSelectionConfirmed = true;
+            }
+            else{
+                selectSystem(it->first);
+                bSelectionChanged = true;
+            }
         }
     }
 }
@@ -320,6 +326,12 @@ void CloudsVisualSystemVisuals::selfMousePressed(ofMouseEventArgs& data){
 bool CloudsVisualSystemVisuals::selectionChanged(){
     bool ret = bSelectionChanged;
     bSelectionChanged = false;
+    return ret;
+}
+
+bool CloudsVisualSystemVisuals::selectionConfirmed(){
+    bool ret = bSelectionConfirmed;
+    bSelectionConfirmed = false;
     return ret;
 }
 

@@ -99,6 +99,7 @@ class CloudsVisualSystemVisuals : public CloudsVisualSystem {
 	
     void selectSystem(string systemName);
     bool selectionChanged();
+    bool selectionConfirmed();
     string getSelectedSystem();
     
     ofCamera& getCameraRef(){
@@ -129,6 +130,7 @@ protected:
     ofVec3f camLookPos;
     string selectedSystem;
     bool bSelectionChanged;
+    bool bSelectionConfirmed;
     
     ofCamera selectCamera;
 };

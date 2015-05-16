@@ -1027,7 +1027,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             
             visualsMap->selectSystem(selectedVisualSystem);
             
-            if(hud.isItemConfirmed()){
+            if(visualsMap->selectionConfirmed()){
                 showingExploreVisuals = false;
                 hud.animateOff();
                 exploreVisualsSelectedSystem = selectedVisualSystem;
