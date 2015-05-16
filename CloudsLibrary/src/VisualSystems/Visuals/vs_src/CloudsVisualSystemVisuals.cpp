@@ -3,6 +3,7 @@
 //
 
 #include "CloudsVisualSystemVisuals.h"
+#include "CloudsLocalization.h"
 
 //This is called whenever a new preset is loaded, before selfSetup()
 //use it to ensure all your simple variables are initialized to an
@@ -17,6 +18,8 @@ void CloudsVisualSystemVisuals::selfSetDefaults(){
     cameraBackupDistance = 10;
     bSelectionChanged = false;
     bSelectionConfirmed = false;
+    fontSize = 20;
+    typeScale = .5;
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -35,6 +38,10 @@ void CloudsVisualSystemVisuals::selfSetupGui(){
 	cylinderGui->addSlider("ROW HEIGHT", 0, 500, &rowHeight);
 	cylinderGui->addSlider("IMAGE SCALE", 0, 1.0, &imageScale);
     cylinderGui->addSlider("CAMERA BACKUP DIST", 0, 500, &cameraBackupDistance);
+    cylinderGui->addIntSlider("FONT SIZE", 4, 30, &fontSize);
+    cylinderGui->addSlider("FONT SCALE", 0, 1.0, &typeScale);
+    cylinderGui->addSlider("TYPE OFFSET X", 0, 250.0, &typeOffset.x);
+    cylinderGui->addSlider("TYPE OFFSET Y", 0, 250.0, &typeOffset.y);
     
 	ofAddListener(cylinderGui->newGUIEvent, this, &CloudsVisualSystemVisuals::selfGuiEvent);
 	guis.push_back(cylinderGui);
@@ -93,7 +100,7 @@ void CloudsVisualSystemVisuals::layoutThumbnails(){
         int y = curInt / cylinderCellsWide;
         float arcPoint = ofMap(x, 0, cylinderCellsWide, 0, 360);
         
-        ofVec3f pos(0,y*rowHeight - totalheight/2, cylRadius);
+        ofVec3f pos(0, -y * rowHeight + totalheight/2, cylRadius);
         pos.rotate(arcPoint, ofVec3f(0,1,0));
         ofVec3f centerPos = pos;
         centerPos.z = centerPos.x = 0;
@@ -172,6 +179,10 @@ void CloudsVisualSystemVisuals::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemVisuals::selfUpdate(){
     
+    if(currentFontSize != fontSize || !visualFont.isLoaded()){
+        visualFont.loadFont(GetFontPath(), fontSize);
+        currentFontSize = fontSize;
+    }
     
     float distFromTarget = selectCamera.getPosition().distance(camTargetPos);
     //ofVec3f targetPos = camTargetPos;
@@ -234,6 +245,19 @@ void CloudsVisualSystemVisuals::selfDraw(){
         it->second.image.bind();
         it->second.mesh.draw();
         it->second.image.unbind();
+        if(it->first == selectedSystem){
+            ofNode n;
+            n.setPosition(it->second.pos);
+            n.lookAt(it->second.pos + it->second.normal, ofVec3f(0,1,0));
+            n.setPosition(n.getPosition() -
+                          n.getSideDir()  * typeOffset.x -
+                          n.getUpDir()    * typeOffset.y);
+            ofPushMatrix();
+            ofMultMatrix(n.getGlobalTransformMatrix());
+            ofScale(typeScale, -typeScale, typeScale);
+            visualFont.drawString(it->first, 0, 0);
+            ofPopMatrix();
+        }
     }
     
     ofPushStyle();
@@ -258,6 +282,9 @@ void CloudsVisualSystemVisuals::selfDrawBackground(){
 }
 
 void CloudsVisualSystemVisuals::selfDrawOverlay(){
+    
+    //TODO Proper highlight
+    
     map<string, VisualThumb>::iterator it;
     for(it = thumbs.begin(); it != thumbs.end(); it++){
         if(it->second.onScreen){

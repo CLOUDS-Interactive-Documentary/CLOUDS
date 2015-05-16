@@ -123,14 +123,21 @@ protected:
     void layoutThumbnails();
     bool bFreeCam;
     float cameraBackupDistance;
+    int fontSize;
+    int currentFontSize;
+    ofVec2f typeOffset;
+    
+    ofxFTGLFont visualFont;
+    
     
     map<string, VisualThumb> thumbs;
-
+    
     ofVec3f camTargetPos;
     ofVec3f camLookPos;
     string selectedSystem;
     bool bSelectionChanged;
     bool bSelectionConfirmed;
+    float typeScale;
     
     ofCamera selectCamera;
 };
