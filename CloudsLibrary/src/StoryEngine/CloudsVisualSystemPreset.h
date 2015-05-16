@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 typedef struct{
+    string title;
     string line1;
     string line2;
 } CloudsVisualSystemCredit;

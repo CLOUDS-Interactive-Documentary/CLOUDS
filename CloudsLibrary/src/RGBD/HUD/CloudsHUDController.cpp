@@ -602,7 +602,7 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
 
 void CloudsHUDController::respondToSystem(const CloudsVisualSystemPreset& preset){
     
-    populateVisualSystem(preset.credits.line1, preset.credits.line2 );
+    populateVisualSystem(preset.credits.title, preset.credits.line1, preset.credits.line2 );
     
     if(!bActJustStarted && !hudOpenMap[CLOUDS_HUD_LOWER_THIRD] ){
         animateOn( CLOUDS_HUD_LOWER_THIRD );
@@ -679,7 +679,8 @@ void CloudsHUDController::populateLowerThird(const string& firstName,
 
 }
 
-void CloudsHUDController::populateVisualSystem(const string& creditLine1,
+void CloudsHUDController::populateVisualSystem(const string& title,
+                                               const string& creditLine1,
                                                const string& creditLine2)
 {
     
@@ -688,9 +689,22 @@ void CloudsHUDController::populateVisualSystem(const string& creditLine1,
 
     //if the HUD is open, force the text on
     bool forceOn = hudOpenMap[CLOUDS_HUD_LOWER_THIRD];
-    topBox->setText( creditLine1, forceOn );
-    bottomBox->setText( creditLine2, forceOn );
-    
+    //no title, clear it...
+    if(title == ""){
+        topBox->setText("");
+        bottomBox->setText("");
+    }
+    //split the title and bylien to 2 lines
+    else if(creditLine2 == ""){
+        topBox->setText("Visuals: " + title, forceOn );
+        bottomBox->setText("by " + creditLine1, forceOn );
+    }
+    //put the byline on the top with the name
+    else{
+        topBox->setText("Visuals: " + title + " by " + creditLine1, forceOn );
+        bottomBox->setText(creditLine2, forceOn );
+        
+    }
 
 }
 

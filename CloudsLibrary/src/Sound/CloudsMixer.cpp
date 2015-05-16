@@ -103,6 +103,7 @@ void CloudsMixer::fadeUp(float& time){
 void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
 {
     GetCloudsAudioEvents()->dopull = GetCloudsAudioEvents()->fadeValue > 0;
+    
     size_t size = nChannels*bufferSize*sizeof(float);
     // check for buffer size mismatch
     if (bufferSize != musicArgs.bufferSize ||
@@ -131,7 +132,9 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
 	ofNotifyEvent(GetCloudsAudioEvents()->diageticAudioRequested, diageticArgs, this);
     
 
+    memcpy(output, diageticArgs.buffer, size);
 
+    return;
     // mix
     for (int i=0; i<bufferSize*nChannels; i++)
     {

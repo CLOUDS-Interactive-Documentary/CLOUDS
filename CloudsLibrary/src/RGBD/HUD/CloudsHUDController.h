@@ -204,8 +204,9 @@ class CloudsHUDController {
                             const string& location,
                             const string& textbox);
     
-    void populateVisualSystem(const string& creatorsName,
-                              const string& systemName);
+    void populateVisualSystem(const string& title,
+                              const string& line1,
+                              const string& line2);
     
     void populateProjectExample(const string& videoPath,
                                 const string& textLeft,
