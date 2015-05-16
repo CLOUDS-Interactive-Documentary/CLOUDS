@@ -703,9 +703,7 @@ void CloudsHUDController::populateVisualSystem(const string& title,
     else{
         topBox->setText("Visuals: " + title + " by " + creditLine1, forceOn );
         bottomBox->setText(creditLine2, forceOn );
-        
     }
-
 }
 
 ofVec2f CloudsHUDController::setResearchClickAnchor(ofVec2f anchor){
@@ -1013,14 +1011,17 @@ void CloudsHUDController::populateSpeakers(){
     peopleList.scrollPosition = 0;
 }
 
-void CloudsHUDController::setVisuals(vector<string> visuals){
+void CloudsHUDController::setVisuals(map<string, CloudsVisualSystemCredit>& visuals){
     CloudsHUDResearchList& visualsList = researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS];
     visualsList.buttons.clear();
     visualsList.buttons.resize(visuals.size());
-    for(int i = 0; i < visuals.size(); i++){
+    //for(int i = 0; i < visuals.size(); i++){
+    int i = 0;
+    for(map<string, CloudsVisualSystemCredit>::iterator it = visuals.begin(); it != visuals.end(); it++){
         visualsList.buttons[i].top = i * scrollIncrement;
-        visualsList.buttons[i].tag = visuals[i];
-        visualsList.buttons[i].label = visuals[i];
+        visualsList.buttons[i].tag = it->first;
+        visualsList.buttons[i].label = ofToUpper(it->second.title);
+        i++;
     }
     
     visualsList.totalScrollHeight = visualsList.buttons.back().top + scrollIncrement;

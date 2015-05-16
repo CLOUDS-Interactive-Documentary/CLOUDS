@@ -76,11 +76,16 @@ void CloudsVisualSystemVisuals::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemVisuals::selfSetup(){
-    ofBuffer systemsFiles = ofBufferFromFile(getVisualSystemDataPath() + "visualslist.txt");
-    while(!systemsFiles.isLastLine()){
-        string systemName = systemsFiles.getNextLine();
+
+}
+
+void CloudsVisualSystemVisuals::setVisuals(map<string, CloudsVisualSystemCredit>& visuals){
+
+    for(map<string, CloudsVisualSystemCredit>::iterator it = visuals.begin(); it != visuals.end(); it++){
+        string systemName = it->first;
         string imageFileName = getVisualSystemDataPath() + "thumbs/" + systemName + ".jpg";
         if(ofFile(imageFileName).exists()){
+            thumbs[systemName].image.setUseTexture(false);
             thumbs[systemName].image.loadImage(imageFileName);
         }
         else{
@@ -89,6 +94,14 @@ void CloudsVisualSystemVisuals::selfSetup(){
     }
     
     layoutThumbnails();
+}
+
+void CloudsVisualSystemVisuals::pushTextures(){
+    map<string, VisualThumb>::iterator it;
+    for(it = thumbs.begin(); it != thumbs.end(); it++){
+        it->second.image.setUseTexture(true);
+        it->second.image.update();
+    }
 }
 
 void CloudsVisualSystemVisuals::layoutThumbnails(){
@@ -135,7 +148,6 @@ vector<string> CloudsVisualSystemVisuals::getAvailableSystems(){
     vector<string> visuals;
     for(it = thumbs.begin(); it != thumbs.end(); it++){
         visuals.push_back(it->first);
-        //cout << "ADDED VISUAL " << it->first << endl;
     }
     return visuals;
 }
@@ -145,6 +157,8 @@ void CloudsVisualSystemVisuals::selectSystem(string systemName){
     if(systemName == selectedSystem){
         return;
     }
+
+    selectedSystem = systemName;
     
     if(thumbs.find(systemName) == thumbs.end()){
         ofLogError("CloudsVisualSystemVisuals::selectSystem") << "System not found: " << systemName;
@@ -157,7 +171,7 @@ void CloudsVisualSystemVisuals::selectSystem(string systemName){
     targetCameraSideDir = camLookPos.normalized().getCrossed( ofVec3f(0,-1,0) );
     targetCameraUpDir   = camLookPos.normalized().getCrossed( targetCameraSideDir );
 
-    selectedSystem = systemName;
+
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -372,7 +386,6 @@ bool CloudsVisualSystemVisuals::selectionConfirmed(){
 string CloudsVisualSystemVisuals::getSelectedSystem(){
     return selectedSystem;
 }
-
 
 void CloudsVisualSystemVisuals::selfMouseReleased(ofMouseEventArgs& data){
 	

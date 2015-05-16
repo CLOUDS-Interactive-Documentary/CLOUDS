@@ -9,6 +9,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "CloudsVisualSystemPreset.h"
 
 typedef struct{
     ofImage image;
@@ -101,6 +102,11 @@ class CloudsVisualSystemVisuals : public CloudsVisualSystem {
     bool selectionChanged();
     bool selectionConfirmed();
     string getSelectedSystem();
+    
+    //can be done on thread
+    void setVisuals(map<string, CloudsVisualSystemCredit>& visuals);
+    //done after load
+    void pushTextures();
     
     ofCamera& getCameraRef(){
         if(bFreeCam){

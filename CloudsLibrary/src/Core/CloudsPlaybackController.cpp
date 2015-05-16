@@ -281,7 +281,7 @@ void CloudsPlaybackController::setup(){
     visualsMap = new CloudsVisualSystemVisuals();
     visualsMap->setup();
     visualsMap->setDrawToScreen(false);
-    
+
 	cout << "*****LOAD STEP*** STARTING HUD" << endl;
 	hud.setup();
 
@@ -378,9 +378,10 @@ void CloudsPlaybackController::threadedFunction(){
     
     hud.setTopics(parser.getMasterTopics());
     hud.populateSpeakers();
-    hud.setVisuals(visualsMap->getAvailableSystems());
-    
+    hud.setVisuals(visualSystems.getVisualSystemCredits());
+
     introSequence->percentLoaded = 0.8;
+    visualsMap->setVisuals(visualSystems.getVisualSystemCredits());
 
 	populateRGBDPresets();
     
@@ -395,7 +396,8 @@ void CloudsPlaybackController::threadedFunction(){
 void CloudsPlaybackController::finishSetup(){
 	
 	clusterMap->allocateFlickerTexture();
-	
+    visualsMap->pushTextures();
+    
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	storyEngine.printDecisions = false;

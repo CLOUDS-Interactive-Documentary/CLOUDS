@@ -500,7 +500,9 @@ void CloudsVisualSystemManager::loadPresets(){
         preset->interlude = keywordXml.getValue("interlude", false );
 		preset->checkHasFiles();
 		preset->systemIsRegistered = false;
-        preset->credits = visualSystemCredits[systemName];
+        if(visualSystemCredits.find(systemName) != visualSystemCredits.end()){
+            preset->credits = visualSystemCredits[systemName];
+        }
 #ifndef CLOUDS_NO_VS
 		preset->systemIsRegistered = constructors.find(systemName) != constructors.end();
 #endif
@@ -543,8 +545,14 @@ void CloudsVisualSystemManager::parseVisualSystemCredits(){
     creditsXml.pushTag("visuals");
     int numSystems = creditsXml.getNumTags("system");
     for(int i = 0; i < numSystems; i++){
+        
+        if(creditsXml.getAttribute("system", "enabled", "false", i) == "false"){
+            continue;
+        }
+        
         string systemId = creditsXml.getAttribute("system", "id", "", i);
         creditsXml.pushTag("system", i);
+        visualSystemCredits[systemId].systemName = systemId;
         visualSystemCredits[systemId].title = creditsXml.getValue("title", "");
         visualSystemCredits[systemId].line1 = creditsXml.getValue("line1", "");
         visualSystemCredits[systemId].line2 = creditsXml.getValue("line2", "");
@@ -682,6 +690,11 @@ CloudsVisualSystemPreset CloudsVisualSystemManager::getRandomVisualSystem(){
         return dummyPreset;
     }
 	return presets[ ofRandom(presets.size()) ];
+}
+
+//--------------------------------------------------------------------
+map<string, CloudsVisualSystemCredit>& CloudsVisualSystemManager::getVisualSystemCredits(){
+    return visualSystemCredits;
 }
 
 //--------------------------------------------------------------------

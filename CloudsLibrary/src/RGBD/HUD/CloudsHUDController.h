@@ -180,7 +180,7 @@ class CloudsHUDController {
     
     void setTopics(const set<string>& topics);
     void populateSpeakers();
-    void setVisuals(vector<string> visuals);
+    void setVisuals(map<string, CloudsVisualSystemCredit>& visuals);
 
     void setSeeMoreName(string name);
     void selectTopic(string topic);
