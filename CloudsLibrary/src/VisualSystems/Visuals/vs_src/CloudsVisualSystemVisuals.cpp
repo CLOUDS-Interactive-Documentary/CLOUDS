@@ -15,6 +15,7 @@ void CloudsVisualSystemVisuals::selfSetDefaults(){
     imageScale = 1.0;
     bFreeCam = false;
     cameraBackupDistance = 10;
+    bSelectionChanged = false;
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -133,6 +134,10 @@ vector<string> CloudsVisualSystemVisuals::getAvailableSystems(){
 
 void CloudsVisualSystemVisuals::selectSystem(string systemName){
 
+    if(systemName == selectedSystem){
+        return;
+    }
+    
     if(thumbs.find(systemName) == thumbs.end()){
         ofLogError("CloudsVisualSystemVisuals::selectSystem") << "System not found: " << systemName;
         return;
@@ -294,20 +299,34 @@ void CloudsVisualSystemVisuals::selfMouseMoved(ofMouseEventArgs& data){
     ofVec2f mousePos(data.x + bleed, data.y + bleed);
     map<string, VisualThumb>::iterator it;
     for(it = thumbs.begin(); it != thumbs.end(); it++){
-        it->second.hovered = it->second.onScreen && it->second.screenPoly.inside(mousePos);
+        it->second.hovered = !data.canceled && it->second.onScreen && it->second.screenPoly.inside(mousePos);
     }
 }
 
 void CloudsVisualSystemVisuals::selfMousePressed(ofMouseEventArgs& data){
+    
+    if(data.canceled) return;
+    
     ofVec2f mousePos(data.x + bleed, data.y + bleed);
     map<string, VisualThumb>::iterator it;
     for(it = thumbs.begin(); it != thumbs.end(); it++){
         if(it->second.hovered){
             selectSystem(it->first);
+            bSelectionChanged = true;
         }
     }
-	
 }
+
+bool CloudsVisualSystemVisuals::selectionChanged(){
+    bool ret = bSelectionChanged;
+    bSelectionChanged = false;
+    return ret;
+}
+
+string CloudsVisualSystemVisuals::getSelectedSystem(){
+    return selectedSystem;
+}
+
 
 void CloudsVisualSystemVisuals::selfMouseReleased(ofMouseEventArgs& data){
 	

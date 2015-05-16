@@ -185,7 +185,8 @@ class CloudsHUDController {
     void setSeeMoreName(string name);
     void selectTopic(string topic);
     void selectPerson(string personID);
-
+    void selectVisual(string visualName);
+    
     //where the researched item may be clicked
     ofVec2f setResearchClickAnchor(ofVec2f anchor);
     

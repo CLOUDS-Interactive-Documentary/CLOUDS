@@ -1198,6 +1198,26 @@ void CloudsHUDController::selectPerson(string personID){
     ofLogError("CloudsHUDController::selectPerson") << "Didn't find selected name " << personID;
 }
 
+void CloudsHUDController::selectVisual(string visualName){
+    CloudsHUDResearchList& visualList = researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS];
+    for(int i = 0; i < visualList.buttons.size(); i++){
+        visualList.buttons[i].clicked = false;
+        visualList.buttons[i].hovered = false;
+    }
+    
+    for(int i = 0; i < visualList.buttons.size(); i++){
+        if(visualList.buttons[i].tag == visualName){
+            visualList.buttons[i].clicked = true;
+            if(!visualList.buttons[i].visible){
+                visualList.scrollPosition = MIN(visualList.buttons[i].top, visualList.totalScrollHeight - researchScrollBounds.height);
+            }
+            selectButton(visualList.buttons[i]);
+            return;
+        }
+    }
+    ofLogError("CloudsHUDController::selectVisual") << "Didn't find selected name " << visualName;
+}
+
 bool CloudsHUDController::isExploreMapHit(){
     bool selected = hudLabelMap["ExploreTextBox"]->isClicked();
     if(selected) {

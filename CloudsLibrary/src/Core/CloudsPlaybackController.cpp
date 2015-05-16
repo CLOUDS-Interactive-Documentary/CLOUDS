@@ -977,7 +977,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(selectedTopic != ""){
             
             clusterMap->setCurrentTopic(selectedTopic);
-            //hud.setResearchClickAnchor( clusterMap->getTopicScreenLocation() );
+            hud.setResearchClickAnchor( clusterMap->getTopicScreenLocation() );
             
             if(hud.isItemConfirmed()){
                 showingExploreMap = false;
@@ -1000,7 +1000,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(selectedSpeakerID != ""){
             
             peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].twitterHandle);
-            //hud.setResearchClickAnchor( peopleMap->getSelectedPersonScreenPosition() );
+            hud.setResearchClickAnchor( peopleMap->getSelectedPersonScreenPosition() );
 
             if(hud.isItemConfirmed()){
                 showingExplorePeople = false;
@@ -1017,6 +1017,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     }
     
     if(showingExploreVisuals){
+        
+        if(visualsMap->selectionChanged()){
+            hud.selectVisual(visualsMap->getSelectedSystem());
+        }
+        
         string selectedVisualSystem = hud.getSelectedItem();
         if(selectedVisualSystem != ""){
             

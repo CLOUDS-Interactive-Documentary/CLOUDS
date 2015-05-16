@@ -98,8 +98,8 @@ class CloudsVisualSystemVisuals : public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
     void selectSystem(string systemName);
-    
-    map<string, VisualThumb> thumbs;
+    bool selectionChanged();
+    string getSelectedSystem();
     
     ofCamera& getCameraRef(){
         if(bFreeCam){
@@ -123,9 +123,12 @@ protected:
     bool bFreeCam;
     float cameraBackupDistance;
     
+    map<string, VisualThumb> thumbs;
+
     ofVec3f camTargetPos;
     ofVec3f camLookPos;
     string selectedSystem;
+    bool bSelectionChanged;
     
     ofCamera selectCamera;
 };
