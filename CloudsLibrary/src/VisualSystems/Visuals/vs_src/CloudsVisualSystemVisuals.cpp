@@ -153,6 +153,10 @@ void CloudsVisualSystemVisuals::selectSystem(string systemName){
     
     camTargetPos = thumbs[systemName].pos - thumbs[systemName].normal * cameraBackupDistance;
     camLookPos = thumbs[systemName].pos;
+    
+    targetCameraSideDir = camLookPos.normalized().getCrossed( ofVec3f(0,-1,0) );
+    targetCameraUpDir   = camLookPos.normalized().getCrossed( targetCameraSideDir );
+
     selectedSystem = systemName;
 }
 
@@ -184,20 +188,23 @@ void CloudsVisualSystemVisuals::selfUpdate(){
         currentFontSize = fontSize;
     }
     
+    currentCameraSideDir += (targetCameraSideDir - currentCameraSideDir) * .03;
+    currentCameraUpDir   += (targetCameraUpDir - currentCameraUpDir) * .03;
+    
     float distFromTarget = selectCamera.getPosition().distance(camTargetPos);
     //ofVec3f targetPos = camTargetPos;
     ofVec3f rotAxis = camLookPos;
     rotAxis.x = 0;
     rotAxis.z = 0;
-    ofVec3f targetPos = camTargetPos.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 25, -25,true), rotAxis, ofVec3f(0,1,0));
-    targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 25, -25,true), rotAxis, ofVec3f(1,0,0));
+    ofVec3f targetPos = camTargetPos.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 50, -50,true), rotAxis, currentCameraUpDir);
+    targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -50, 50,true), rotAxis, currentCameraSideDir);
     
     ofNode n = selectCamera;
     n.lookAt(camLookPos.getInterpolated(targetPos, ofMap(distFromTarget, cameraBackupDistance, cameraBackupDistance*2, .0, 1.0, true) ), ofVec3f(0,1,0) );
     selectCamera.setPosition( selectCamera.getPosition() + (targetPos - selectCamera.getPosition())*.03 );
     
     ofQuaternion q;
-    q.slerp(.03, selectCamera.getOrientationQuat(), n.getOrientationQuat());
+    q.slerp(.07, selectCamera.getOrientationQuat(), n.getOrientationQuat());
     selectCamera.setOrientation(q);
     
     ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());

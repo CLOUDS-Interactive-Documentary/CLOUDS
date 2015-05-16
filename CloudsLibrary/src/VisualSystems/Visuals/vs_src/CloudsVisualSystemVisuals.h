@@ -127,6 +127,11 @@ protected:
     int currentFontSize;
     ofVec2f typeOffset;
     
+    ofVec3f targetCameraSideDir;
+    ofVec3f targetCameraUpDir;
+    ofVec3f currentCameraUpDir;
+    ofVec3f currentCameraSideDir;
+
     ofxFTGLFont visualFont;
     
     
