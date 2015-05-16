@@ -323,6 +323,8 @@ bool CloudsHUDLabel::isHovered() {
 
 bool CloudsHUDLabel::isClicked(){
     bool ret = bIsClicked;
+    if(ret) bIsPressed = false;
+
     bIsClicked = false;
     return ret;
 }

@@ -46,10 +46,10 @@ CloudsHUDController::CloudsHUDController(){
  
     scrollPressedTime = 0;
     
-    hasResearchRectangle = false;
-    researchConfirmHovered = false;
-    researchConfirmPressed = false;
-    researchConfirmClicked = false;
+//    hasResearchRectangle = false;
+//    researchConfirmHovered = false;
+//    researchConfirmPressed = false;
+//    researchConfirmClicked = false;
 
 	isPlaying = false;
     
@@ -186,9 +186,9 @@ void CloudsHUDController::buildLayerSets(){
     layers[CLOUDS_RESEARCH]->bForceHover = true;
     layers[CLOUDS_RESEARCH_RESUME]->bForceHover = true;
     
-    layers[CLOUDS_RESEARCH_TOPIC]->bForceHover = true;
-    layers[CLOUDS_RESEARCH_PPL]->bForceHover = true;
-    layers[CLOUDS_RESEARCH_VS]->bForceHover = true;
+//    layers[CLOUDS_RESEARCH_TOPIC]->bForceHover = true;
+//    layers[CLOUDS_RESEARCH_PPL]->bForceHover = true;
+//    layers[CLOUDS_RESEARCH_VS]->bForceHover = true;
     
 }
 
@@ -695,18 +695,18 @@ void CloudsHUDController::populateVisualSystem(const string& creditLine1,
 }
 
 ofVec2f CloudsHUDController::setResearchClickAnchor(ofVec2f anchor){
-    hasResearchRectangle = true;
-    researchClickAnchor = anchor;
-    //TODO: Do we make this dynamic w/h?
-    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
-        researchRectangle = ofRectangle(researchClickAnchor.x - 20, researchClickAnchor.y - 20, 450, 220);
-    }
-    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
-        researchRectangle = ofRectangle(researchClickAnchor.x - 20, researchClickAnchor.y - 20, 400, 80);
-    }
-    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS){
-        
-    }
+//    hasResearchRectangle = true;
+//    researchClickAnchor = anchor;
+//    //TODO: Do we make this dynamic w/h?
+//    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
+//        researchRectangle = ofRectangle(researchClickAnchor.x - 20, researchClickAnchor.y - 20, 450, 220);
+//    }
+//    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
+//        researchRectangle = ofRectangle(researchClickAnchor.x - 20, researchClickAnchor.y - 20, 400, 80);
+//    }
+//    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS){
+//        
+//    }
 }
 
 ofVec2f CloudsHUDController::getSize(bool bScaled){
@@ -752,7 +752,6 @@ void CloudsHUDController::update(){
     hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_HUD_NEXT]->svg.getMeshByID("NextButtonBacking")->bounds;
     hudLabelMap["NextButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NextButtonTextBox"]->baseInteractiveBounds);
  	
-    
     researchScrollUpBoundsScaled   = getScaledRectangle(researchScrollUpBounds);
     researchScrollDownBoundsScaled = getScaledRectangle(researchScrollDownBounds);
     researchScrollBoundsScaled = getScaledRectangle(researchScrollBounds);
@@ -825,34 +824,56 @@ string CloudsHUDController::getSelectedItem(){
 }
 
 bool CloudsHUDController::isItemConfirmed(){
-    return researchConfirmClicked;
+    if(currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
+        return hudLabelMap["TopicSelectTextBox"]->isClicked();
+    }
+    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE){
+        return hudLabelMap["PeopleSelectPlayTextBox"]->isClicked();
+    }
+    else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS){
+        return false; // TODO;
+    }
+    
+    return false;
 }
 
+
 void CloudsHUDController::clearSelection(){
-    researchConfirmClicked = false;
-    hasResearchRectangle = false;
+    animateOff(CLOUDS_RESEARCH_TOPIC);
+    animateOff(CLOUDS_RESEARCH_PPL);
+    animateOff(CLOUDS_RESEARCH_VS);
 }
 
 void CloudsHUDController::updateResearchNavigation(){
 
-    //get the backing
-    hudLabelMap["MapTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("MapHoverBacking")->bounds;
-    hudLabelMap["PeopleTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("PeopleHoverBacking")->bounds;
-    hudLabelMap["VisualsTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("VSHoverBacking")->bounds;
-    hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("RSResetButtonBacking")->bounds;
-    hudLabelMap["ResumeButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH_RESUME]->svg.getMeshByID("ResumeButtonBacking")->bounds;
     
     //set the interaction regions
+    hudLabelMap["MapTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("MapHoverBacking")->bounds;
     hudLabelMap["MapTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["MapTextBox"]->baseInteractiveBounds);
-    hudLabelMap["PeopleTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["PeopleTextBox"]->baseInteractiveBounds);
-    hudLabelMap["VisualsTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["VisualsTextBox"]->baseInteractiveBounds);
-    hudLabelMap["RSResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds);
-    hudLabelMap["ResumeButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ResumeButtonTextBox"]->baseInteractiveBounds);
     
+    hudLabelMap["PeopleTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("PeopleHoverBacking")->bounds;
+    hudLabelMap["PeopleTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["PeopleTextBox"]->baseInteractiveBounds);
+    
+    hudLabelMap["VisualsTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("VSHoverBacking")->bounds;
+    hudLabelMap["VisualsTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["VisualsTextBox"]->baseInteractiveBounds);
+    
+    hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH]->svg.getMeshByID("RSResetButtonBacking")->bounds;
+    hudLabelMap["RSResetButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["RSResetButtonTextBox"]->baseInteractiveBounds);
+    
+    hudLabelMap["ResumeButtonTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH_RESUME]->svg.getMeshByID("ResumeButtonBacking")->bounds;
+    hudLabelMap["ResumeButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ResumeButtonTextBox"]->baseInteractiveBounds);
+
+    hudLabelMap["TopicSelectTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH_TOPIC]->svg.getMeshByID("TopicSelectBacking")->bounds;
+    hudLabelMap["TopicSelectTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["TopicSelectTextBox"]->baseInteractiveBounds);
+
+    hudLabelMap["PeopleSelectPlayTextBox"]->baseInteractiveBounds = layers[CLOUDS_RESEARCH_PPL]->svg.getMeshByID("PeopleSelectBacking")->bounds;
+    hudLabelMap["PeopleSelectPlayTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["PeopleSelectPlayTextBox"]->baseInteractiveBounds);
+        
     hudLabelMap["MapTextBox"]->tabSelected = currentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS;
     hudLabelMap["PeopleTextBox"]->tabSelected = currentTab == CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
     hudLabelMap["VisualsTextBox"]->tabSelected = currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS;
 }
+
 
 void CloudsHUDController::showAbout(){
 
@@ -1020,9 +1041,7 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
                 }
             }
         }
-        
-
-        researchConfirmHovered = researchRectangle.inside(args.x, args.y);
+     
     }
 
 }
@@ -1052,10 +1071,6 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
                 }
             }
         }
-        
-        //TEMP
-        researchConfirmPressed = researchRectangle.inside(args.x, args.y);
-
     }
 }
 
@@ -1098,8 +1113,6 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
             }
         }
         
-        researchConfirmClicked = researchConfirmPressed && researchRectangle.inside(args.x, args.y);
-        researchConfirmPressed = false;
     }
 }
 
@@ -1115,7 +1128,7 @@ void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
         animateOn(CLOUDS_RESEARCH_PPL);
     }
     else if(currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS){
-        animateOn(CLOUDS_RESEARCH_VS);
+        //animateOn(CLOUDS_RESEARCH_VS);
     }
 }
 
@@ -1204,10 +1217,7 @@ bool CloudsHUDController::selectedMapTab(){
     
     bool selected = hudLabelMap["MapTextBox"]->isClicked();
     if(selected) {
-        animateOff(CLOUDS_RESEARCH_TOPIC);
-        animateOff(CLOUDS_RESEARCH_PPL);
-        animateOff(CLOUDS_RESEARCH_VS);
-        
+        clearSelection();        
         currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
         currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
     }
@@ -1220,10 +1230,7 @@ bool CloudsHUDController::selectedPeopleTab(){
  
     bool selected = hudLabelMap["PeopleTextBox"]->isClicked();
     if(selected) {
-        animateOff(CLOUDS_RESEARCH_TOPIC);
-        animateOff(CLOUDS_RESEARCH_PPL);
-        animateOff(CLOUDS_RESEARCH_VS);
-        
+        clearSelection();
         currentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
         currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
     }
@@ -1236,9 +1243,8 @@ bool CloudsHUDController::selectedVisualsTab(){
     
     bool selected = hudLabelMap["VisualsTextBox"]->isClicked();
     if(selected) {
-        animateOff(CLOUDS_RESEARCH_TOPIC);
-        animateOff(CLOUDS_RESEARCH_PPL);
-        animateOff(CLOUDS_RESEARCH_VS);
+
+        clearSelection();
         
         currentTab = CLOUDS_HUD_RESEARCH_TAB_VISUALS;
         currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS];

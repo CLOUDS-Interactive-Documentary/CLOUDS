@@ -619,10 +619,10 @@ void CloudsPlaybackController::showIntro(){
     switch (getVisualLevel()) {
         case FAST:
             introSequence->loadPresetGUISFromName("TunnelWarp_fast");
-        break;
+            break;
         case PRETTY:
             introSequence->loadPresetGUISFromName("TunnelWarp_pretty");
-        break;
+            break;
     }
 #endif
 	introSequence->playSystem();
@@ -968,7 +968,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     /////////////// RESEARCH MODE
     if(showingExploreMap){
-        
         if(clusterMap->selectionChanged()){
             hud.selectTopic(clusterMap->getSelectedKeyword());
         }
@@ -978,10 +977,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             
             clusterMap->setCurrentTopic(selectedTopic);
             hud.setResearchClickAnchor( clusterMap->getTopicScreenLocation() );
-
+            
             if(hud.isItemConfirmed()){
                 showingExploreMap = false;
                 hud.animateOff();
+                hud.questionHoverOn("WATCHING: " + selectedTopic);
                 exploreMapSelectedTopic = selectedTopic;
                 //Transition into new act based on topic
                 transitionController.transitionFromExploreMap(1.0);
@@ -991,10 +991,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     if(showingExplorePeople){
         string selectedSpeakerID = hud.getSelectedItem();
-        
         if(peopleMap->selectionChanged()){
             string selectedTwitterID = peopleMap->getSelectedPerson();
-            cout << "SELECTED TWITTER ID " << selectedTwitterID << endl;
             hud.selectPerson(CloudsSpeaker::twitterHandleToSpeaker[selectedTwitterID].fcpID);
         }
         
@@ -1006,6 +1004,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             if(hud.isItemConfirmed()){
                 showingExplorePeople = false;
                 hud.animateOff();
+                string displayName = ofToUpper(CloudsSpeaker::speakers[selectedSpeakerID].firstName + " " +
+                                               CloudsSpeaker::speakers[selectedSpeakerID].lastName);
+                hud.questionHoverOn("WATCHING: " + displayName);
+
                 explorePeopleSelectedSpeakerID = selectedSpeakerID;
                 //Transition into new act based on topic
                 transitionController.transitionFromExplorePeople(1.0);
@@ -1343,13 +1345,12 @@ void CloudsPlaybackController::updateTransition(){
                 
                 showingExploreMap = false;
                 hideVisualSystem();
-                //clusterMap->stopSystem();
-                
-                if(hud.isItemConfirmed()){
+
+                if(exploreMapSelectedTopic != ""){
                     hud.clearSelection();
                     storyEngine.buildActWithTopic(run, exploreMapSelectedTopic);
+                    exploreMapSelectedTopic = "";
                 }
-                    
                 break;
                 
                 ///LEAVING
@@ -1357,11 +1358,11 @@ void CloudsPlaybackController::updateTransition(){
                     
                 showingExplorePeople = false;
                 hideVisualSystem();
-                //peopleMap->stopSystem();
                 
-                if(hud.isItemConfirmed()){
+                if(explorePeopleSelectedSpeakerID != ""){
                     hud.clearSelection();
                     storyEngine.buildActWithPerson(run, explorePeopleSelectedSpeakerID);
+                    explorePeopleSelectedSpeakerID = "";
                 }
                 break;
                 
@@ -1370,7 +1371,8 @@ void CloudsPlaybackController::updateTransition(){
 
                 showingExploreVisuals = false;
                 hideVisualSystem();
-                //visualsMap->stopSystem();
+                
+                //Transition to interlude takes care of the rest
                 
                 break;
                 

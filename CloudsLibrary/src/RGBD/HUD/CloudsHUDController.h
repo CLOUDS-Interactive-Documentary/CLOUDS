@@ -252,15 +252,15 @@ class CloudsHUDController {
     void updateResearchNavigation();
     
     ////////////////////
-    ofVec2f researchClickAnchor;
-    ofRectangle researchRectangle;
-    bool hasResearchRectangle;
-    bool researchConfirmHovered;
-    bool researchConfirmPressed;
-    bool researchConfirmClicked;
-
+    //ofVec2f researchClickAnchor;
+    //ofRectangle researchRectangle;
+//    bool hasResearchRectangle;
+//    bool researchConfirmHovered;
+//    bool researchConfirmPressed;
+//    bool researchConfirmClicked;
+    
     void selectButton(const CloudsHUDResearchButton& button);
-    string bioText;
+    //string bioText;
     ofxFTGLSimpleLayout researchBio;
     ofxFTGLFont playAllFont;
     
