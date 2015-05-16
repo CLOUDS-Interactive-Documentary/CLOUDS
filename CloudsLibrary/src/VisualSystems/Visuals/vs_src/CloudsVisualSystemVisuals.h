@@ -27,7 +27,7 @@ typedef struct{
 
 class CloudsVisualSystemVisuals : public CloudsVisualSystem {
   public:
-    
+    CloudsVisualSystemVisuals();
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
@@ -110,6 +110,7 @@ class CloudsVisualSystemVisuals : public CloudsVisualSystem {
     void setVisuals(map<string, CloudsVisualSystemCredit>& visuals);
     //done after load
     void pushTextures();
+    void skipNextCameraSweep();
     
     ofCamera& getCameraRef(){
         if(bFreeCam){
@@ -142,7 +143,7 @@ protected:
     ofVec3f currentCameraSideDir;
 
     ofxFTGLFont visualFont;
-    
+    bool skipCameraSweep;
     
     map<string, VisualThumb> thumbs;
     

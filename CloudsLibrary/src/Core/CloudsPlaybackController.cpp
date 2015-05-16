@@ -884,6 +884,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
                 hud.selectVisual( visualSystems.getPresetWithID( run.presetHistory.back()).systemName );
             }
             
+            clusterMap->skipNextCameraSweep();
+            peopleMap->skipNextCameraSweep();
+            visualsMap->skipNextCameraSweep();
+            
             transitionController.transitionToExploreMap(1.0, 3.0);
             showingResearchMode = true;
         }
@@ -1049,11 +1053,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         
         string selectedVisualSystem = hud.getSelectedItem();
         if(selectedVisualSystem != ""){
-            
+
             visualsMap->selectSystem(selectedVisualSystem);
             
             if(visualsMap->selectionConfirmed()){
-                showingExploreVisuals = false;
                 hud.animateOff();
                 exploreVisualsSelectedSystem = selectedVisualSystem;
                 transitionController.transitionToVisualLoop(1.0, 1.0);
@@ -1200,6 +1203,10 @@ void CloudsPlaybackController::prepareHUDForMapTransition(){
     if(nextVisualSystemPreset.systemName != ""){
         hud.selectVisual(nextVisualSystemPreset.systemName);
     }
+    
+    clusterMap->skipNextCameraSweep();
+    peopleMap->skipNextCameraSweep();
+    visualsMap->skipNextCameraSweep();
     
     hud.animateOff();
 }

@@ -5,6 +5,9 @@
 #include "CloudsVisualSystemVisuals.h"
 #include "CloudsLocalization.h"
 
+CloudsVisualSystemVisuals::CloudsVisualSystemVisuals(){
+    skipCameraSweep = false;
+}
 //This is called whenever a new preset is loaded, before selfSetup()
 //use it to ensure all your simple variables are initialized to an
 //acceptable default state
@@ -21,6 +24,7 @@ void CloudsVisualSystemVisuals::selfSetDefaults(){
     fontSize = 20;
     typeScale = .5;
     bMouseEventCanceled = false;
+
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -38,6 +42,7 @@ void CloudsVisualSystemVisuals::selfSetupGui(){
 	cylinderGui->addSlider("RADIUS", 0, 500, &cylRadius);
 	cylinderGui->addSlider("ROW HEIGHT", 0, 500, &rowHeight);
 	cylinderGui->addSlider("IMAGE SCALE", 0, 1.0, &imageScale);
+    
     cylinderGui->addSlider("CAMERA BACKUP DIST", 0, 500, &cameraBackupDistance);
     cylinderGui->addIntSlider("FONT SIZE", 4, 30, &fontSize);
     cylinderGui->addSlider("FONT SCALE", 0, 1.0, &typeScale);
@@ -50,10 +55,11 @@ void CloudsVisualSystemVisuals::selfSetupGui(){
 }
 
 void CloudsVisualSystemVisuals::selfGuiEvent(ofxUIEventArgs &e){
-//	if(e.widget->getName() == "Custom Button"){
-//		cout << "Button pressed!" << endl;
-    layoutThumbnails();
-//	}
+
+}
+
+void CloudsVisualSystemVisuals::skipNextCameraSweep(){
+    skipCameraSweep = true;
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -175,6 +181,14 @@ void CloudsVisualSystemVisuals::selectSystem(string systemName){
     targetCameraSideDir = camLookPos.normalized().getCrossed( ofVec3f(0,-1,0) );
     targetCameraUpDir   = camLookPos.normalized().getCrossed( targetCameraSideDir );
 
+    if(skipCameraSweep){
+        currentCameraUpDir = targetCameraUpDir;
+        currentCameraSideDir = targetCameraUpDir;
+        
+        selectCamera.setPosition(camTargetPos);
+        selectCamera.lookAt(camTargetPos);
+        skipCameraSweep = false;
+    }
 
 }
 
@@ -182,14 +196,14 @@ void CloudsVisualSystemVisuals::selectSystem(string systemName){
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemVisuals::selfPresetLoaded(string presetPath){
-	layoutThumbnails();
+//	layoutThumbnails();
 }
 
 // selfBegin is called when the system is ready to be shown
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemVisuals::selfBegin(){
-	
+    layoutThumbnails();	
 }
 
 //do things like ofRotate/ofTranslate here

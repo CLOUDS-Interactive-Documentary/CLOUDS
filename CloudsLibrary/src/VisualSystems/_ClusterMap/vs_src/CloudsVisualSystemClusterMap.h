@@ -43,6 +43,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 
     void setCurrentTopic(string topic); //for secondary display && research mode navigation
     bool selectionChanged();
+    void skipNextCameraSweep();
     ofVec2f getTopicScreenLocation();
     string getSelectedKeyword();
     
@@ -162,7 +163,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     CloudsPortal* getSelectedQuestion(){
         return selectedQuestion;
     }
-    
+
     
   protected:
 
@@ -322,7 +323,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     ofVec3f targetCameraUpDir;
     ofVec3f currentCameraUpDir;
     ofVec3f currentCameraSideDir;
-
+    bool skipCameraSweep;
+    
     ofVec2f trailheadScreenPos;
     ofxFTGLFont associationFont;
     

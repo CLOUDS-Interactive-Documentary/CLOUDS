@@ -109,6 +109,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
 
 void CloudsVisualSystemTwitter::selfSetup()
 {
+    skipCameraSweep = false;
     
     meshDir.listDir(getVisualSystemDataPath() + "graphs" );
     meshDir.sort();
@@ -1460,7 +1461,17 @@ void CloudsVisualSystemTwitter::selectPerson(string person){
     targetCameraSideDir = targetPersonPosition.normalized().getCrossed( ofVec3f(0,1,0) );
     targetCameraUpDir   = targetPersonPosition.normalized().getCrossed( targetCameraSideDir );
     selectedPerson = person;
+    if(skipCameraSweep){
+        nameHighlightCam.setPosition(targetCameraPosition);
+        nameHighlightCam.lookAt(targetPersonPosition, targetCameraUpDir);
+        currentCameraUpDir = targetCameraUpDir;
+        currentCameraSideDir = targetCameraSideDir;
+        skipCameraSweep = false;
+    }
+}
 
+void CloudsVisualSystemTwitter::skipNextCameraSweep(){
+    skipCameraSweep = true;
 }
 
 bool CloudsVisualSystemTwitter::selectionChanged(){

@@ -80,6 +80,7 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
     numTraversed = 0;
 	curQuestionCamRotation = 0;
     displayQuestions = false;
+    skipCameraSweep = false;
 	///END INIT
 }
 
@@ -923,7 +924,13 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
             targetCameraPosition = targetTopicPosition + targetTopicPosition.normalized() * traversCameraDistance;
             targetCameraSideDir  = targetTopicPosition.normalized().getCrossed( ofVec3f(0,1,0) );
             targetCameraUpDir    = targetTopicPosition.normalized().getCrossed( targetCameraSideDir );
-            
+            if(skipCameraSweep){
+                topicNavCam.setPosition(targetCameraPosition);
+                topicNavCam.lookAt(targetTopicPosition, targetCameraUpDir);
+                currentCameraSideDir = targetCameraSideDir;
+                currentCameraUpDir = targetCameraUpDir;
+                skipCameraSweep = false;
+            }
             positionFound = true;
             break;
         }
@@ -932,6 +939,10 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     if(!positionFound){
         ofLogError("CloudsVisualSystemClusterMap::setCurrentTopic") << "Couldn't find position for topic " << topic;
     }
+}
+
+void CloudsVisualSystemClusterMap::skipNextCameraSweep(){
+    skipCameraSweep = true;
 }
 
 bool CloudsVisualSystemClusterMap::selectionChanged(){
@@ -1857,6 +1868,7 @@ void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
 
     }
 }
+
 
 void CloudsVisualSystemClusterMap::selfMousePressed(ofMouseEventArgs& data){
     if(drawType3D && !data.canceled){
