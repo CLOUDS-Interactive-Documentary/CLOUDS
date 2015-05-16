@@ -47,6 +47,10 @@ CloudsHUDLabel::CloudsHUDLabel(){
     playhead = 0;
     textAlpha = 255;
     dynamicBackingMargin = 0;
+    
+    arrowPositionDynamic = false;
+    arrowBaseRightEdge = 0;
+
 }
 
 void CloudsHUDLabel::setup( ofxFTGLSimpleLayout *textLayout, ofRectangle textBounds ){
@@ -63,8 +67,13 @@ void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
 
 void CloudsHUDLabel::setDynamicMargin(){
     dynamicBackingMargin = bounds.getLeft() - dynamicBackingBounds.getLeft();
-
 }
+
+void CloudsHUDLabel::makeArrowPositionDynamic(){
+    arrowPositionDynamic = true;
+    arrowBaseRightEdge = bounds.getRight();
+}
+
 void CloudsHUDLabel::draw(){
     
     if(!bIsVisible && !bIsAnimatingOut){
@@ -153,7 +162,15 @@ void CloudsHUDLabel::draw(){
     }
     
     if(hasTriangle){
+        if(arrowPositionDynamic){
+            ofPushMatrix();
+            ofTranslate(getRightEdge() - arrowBaseRightEdge, 0);
+        }
         triangleMesh.draw();
+        if(arrowPositionDynamic){
+            ofPopMatrix();
+        }
+        
     }
     
     ofPopStyle();

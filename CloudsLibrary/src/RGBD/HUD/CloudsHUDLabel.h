@@ -18,6 +18,7 @@ class CloudsHUDLabel {
     void setup( ofxFTGLFont *textFont, ofRectangle textBounds );
     void setDynamicMargin();
     void updateDynamicSize();
+    void makeArrowPositionDynamic();
     
     void draw();
     
@@ -69,6 +70,7 @@ class CloudsHUDLabel {
     bool usesLayout();
     bool usesFont();
     
+    
     bool clearTextOnAnimateOut;
 
     ofRange animationClamp;
@@ -79,6 +81,9 @@ class CloudsHUDLabel {
     float pct;
     float textAlpha;
     float dynamicBackingMargin;
+    
+    bool arrowPositionDynamic;
+    float arrowBaseRightEdge;
     
     int playhead;
     

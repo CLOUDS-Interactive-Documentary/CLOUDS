@@ -343,6 +343,9 @@ void CloudsHUDController::calculateFontSizes(){
     attachTriangleToLabel(hudLabelMap["ListScrollDownArrowSpace"], CLOUDS_RESEARCH, "ListScrollDownArrowSpace", CLOUDS_HUD_TRIANGLE_DOWN);
     
 
+    hudLabelMap["ExploreTextBox"]->makeArrowPositionDynamic();
+    hudLabelMap["SeeMoreTextBox"]->makeArrowPositionDynamic();
+
     // cleanup!
     for(int i = 0; i < tempFontList.size(); i++){
         delete tempFontList[i];
