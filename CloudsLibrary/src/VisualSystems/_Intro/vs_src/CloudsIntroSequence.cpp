@@ -69,12 +69,6 @@ CloudsIntroSequence::CloudsIntroSequence(){
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
-    questionGui = NULL;
-    tunnelGui = NULL;
-    typeGui = NULL;
-    introGui = NULL;
-    helperTextGui = NULL;
-    menuGui = NULL;
     
     questionWrapDistance = 0;
     cameraForwardSpeed = 0;
@@ -186,22 +180,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	questionChannels.resize(4);
 	channelPauseTime.resize(4);
 	
-    loadDidFinish = false;
     showVHXPrompt = false;
-    
-#ifdef OCULUS_RIFT
-    bCursorInCenter = false;
-    startTimeCursorInCenter = 0;
-#endif
-    
-#ifdef VHX_MEDIA
-    successfullyPurchased = false;
-    changeState(CLOUDS_INTRO_VHX_WAITING_CODE);
-#else
-    successfullyPurchased = true;
-    changeState(CLOUDS_INTRO_LOADING);
-#endif
-    
 }
 
 void CloudsIntroSequence::selfSetup(){
@@ -398,6 +377,8 @@ void CloudsIntroSequence::selfPresetLoaded(string presetPath){
 	warpCamera.setPosition(0, 0, 0);
 	warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
 	positionStartQuestions();
+    
+    
 }
 
 void CloudsIntroSequence::reloadShaders(){
@@ -1145,6 +1126,13 @@ void CloudsIntroSequence::selfDraw(){
 void CloudsIntroSequence::drawTunnel(){
 	ofPushStyle();
 	
+    if(distanceRange.min == distanceRange.max){
+        distanceRange.max = distanceRange.min+1;
+    }
+    if(pointSize.min == pointSize.max){
+        pointSize.max = pointSize.min +1;
+    }
+    
 	tunnelShader.begin();
 	tunnelShader.setUniform1f("minPointSize", pointSize.min);
 	tunnelShader.setUniform1f("maxPointSize", pointSize.max);
@@ -1561,8 +1549,28 @@ void CloudsIntroSequence::selfPostDraw(){
 
 void CloudsIntroSequence::selfBegin(){
 	timeline->stop();
-    changeState(CLOUDS_INTRO_LOADING);
-//	startedOnclick = false;
+    
+#ifdef VHX_MEDIA
+    if(successfullyPurchased){
+        if(loadDidFinish){
+            changeState(CLOUDS_INTRO_MENU);
+        }
+        else{
+            changeState(CLOUDS_INTRO_LOADING);
+        }
+    }
+    else{
+        changeState(CLOUDS_INTRO_VHX_WAITING_CODE);
+    }
+#else
+    if(loadDidFinish){
+        changeState(CLOUDS_INTRO_MENU);
+    }
+    else{
+        changeState(CLOUDS_INTRO_LOADING);
+    }
+#endif
+    
 	selectedQuestion = NULL;
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].stopHovering();

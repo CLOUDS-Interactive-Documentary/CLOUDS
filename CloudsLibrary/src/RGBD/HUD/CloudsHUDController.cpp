@@ -1146,7 +1146,7 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
 void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
     if(button.parentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
         hudLabelMap["TopicSelectTextBox"]->setText(button.label);
-        if(currentTab == button.parentTab){
+        if(currentTab == button.parentTab && !bResearchTransitioning){
             animateOn(CLOUDS_RESEARCH_TOPIC);
         }
     }
@@ -1154,7 +1154,7 @@ void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
         hudLabelMap["PeopleSelectNameTextBox"]->setText(CloudsSpeaker::speakers[button.tag].firstName + " " +
                                                         CloudsSpeaker::speakers[button.tag].lastName);
         hudLabelMap["PeopleSelectBylineTextBox"]->setText(CloudsSpeaker::speakers[button.tag].byline1);
-        if(currentTab == button.parentTab){
+        if(currentTab == button.parentTab && !bResearchTransitioning){
             animateOn(CLOUDS_RESEARCH_PPL);
         }
     }
@@ -1193,26 +1193,7 @@ void CloudsHUDController::selectPerson(string personID){
 
 
 void CloudsHUDController::selectVisual(string visualName){
-    
     selectItem(CLOUDS_HUD_RESEARCH_TAB_VISUALS, visualName);
-    
-//    CloudsHUDResearchList& visualList = researchLists[];
-//    for(int i = 0; i < visualList.buttons.size(); i++){
-//        visualList.buttons[i].clicked = false;
-//        visualList.buttons[i].hovered = false;
-//    }
-//    
-//    for(int i = 0; i < visualList.buttons.size(); i++){
-//        if(visualList.buttons[i].tag == visualName){
-//            visualList.buttons[i].clicked = true;
-//            if(!visualList.buttons[i].visible){
-//                visualList.scrollPosition = MIN(visualList.buttons[i].top, visualList.totalScrollHeight - researchScrollBounds.height);
-//            }
-//            selectButton(visualList.buttons[i]);
-//            return;
-//        }
-//    }
-//    ofLogError("CloudsHUDController::selectVisual") << "Didn't find selected name " << visualName;
 }
 
 void CloudsHUDController::selectItem(CloudsHUDResearchTab tab, string itemID){
@@ -1238,9 +1219,11 @@ void CloudsHUDController::selectItem(CloudsHUDResearchTab tab, string itemID){
 bool CloudsHUDController::isExploreMapHit(){
     bool selected = hudLabelMap["ExploreTextBox"]->isClicked();
     if(selected) {
+        bResearchTransitioning = true;
+        nextTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
         
-        currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
-        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
+//        currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
+//        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];
     }
     return selected;
 }
@@ -1248,8 +1231,11 @@ bool CloudsHUDController::isExploreMapHit(){
 bool CloudsHUDController::isSeeMorePersonHit(){
     bool selected = hudLabelMap["SeeMoreTextBox"]->isClicked();
     if(selected) {
-        currentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
-        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
+        bResearchTransitioning = true;
+        nextTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
+        
+//        currentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
+//        currentResearchList = &researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE];
     }
     return selected;
 }
@@ -1294,9 +1280,11 @@ bool CloudsHUDController::selectedVisualsTab(){
 }
 
 void CloudsHUDController::researchTransitionFinished(){
-    currentTab = nextTab;
-    currentResearchList = &researchLists[currentTab];
-    bResearchTransitioning = false;
+    if(bResearchTransitioning){
+        currentTab = nextTab;
+        currentResearchList = &researchLists[currentTab];
+        bResearchTransitioning = false;
+    }
 }
 
 void CloudsHUDController::setHudEnabled(bool enable){

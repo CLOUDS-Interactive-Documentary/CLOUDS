@@ -151,6 +151,10 @@ void CloudsPlaybackController::clearAct(){
     if( CloudsVisualSystemManager::HasSystemRegistered(currentVisualSystem) ){
         currentVisualSystem = NULL;
     }
+    if(showingVisualSystem){
+        ofLogError("CloudsPlaybackController::clearAct") << "Clearing act with visual system still showing";
+    }
+    
     showingVisualSystem = false;
     
     CloudsVisualSystemManager::DeallocateSystems();
@@ -964,6 +968,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     if(returnToIntro){
         bShowingAct = false;
+        if(currentAct != NULL){
+            currentAct->terminateAct();
+        }
         returnToIntro = false;
         transitionController.transitionToIntro(1.0);
     }
@@ -1173,10 +1180,7 @@ void CloudsPlaybackController::updateHUD(){
 #ifdef OCULUS_RIFT
         transitionController.transitionWithQuestion(2.0, 0.1);
 #else
-        if(currentAct != NULL){
-            CloudsVisualSystem::getRGBDVideoPlayer().stop();
-            currentAct->terminateAct();
-        }
+        CloudsVisualSystem::getRGBDVideoPlayer().stop();
 #endif
         
     }
@@ -1190,11 +1194,6 @@ void CloudsPlaybackController::updateTransition(){
 	string topic;
 
 	if(transitionController.isStateNew()){
-        
-        if(transitionController.fadedOut() && shouldClearAct){
-            shouldClearAct = false;
-            clearAct();
-        }
         
         CloudsClip* selectedQuestionClip = NULL;
         CloudsPortal* selectedQuestion = NULL;
@@ -1213,7 +1212,7 @@ void CloudsPlaybackController::updateTransition(){
             case TRANSITION_INTRO_OUT:
                 
                 introSequence->stopSystem();
-                introSequence->exit();
+                //introSequence->exit();
 
                 showingVisualSystem = false;
                 
@@ -1382,8 +1381,6 @@ void CloudsPlaybackController::updateTransition(){
                 showingExploreVisuals = false;
                 hideVisualSystem();
                 hud.researchTransitionFinished();
-                //Transition to interlude takes care of the rest
-                
                 break;
                 
                 ///LEAVING
@@ -1399,6 +1396,15 @@ void CloudsPlaybackController::updateTransition(){
                 
             default:
                 break;
+        }
+
+        //clean up acts in between these states
+        if(transitionController.fadedOut()){
+            clearRenderTarget();
+            if(shouldClearAct){
+                shouldClearAct = false;
+                clearAct();
+            }
         }
         
         ///////////////////////
@@ -1429,34 +1435,32 @@ void CloudsPlaybackController::updateTransition(){
                 
                 //starting
 			case TRANSITION_INTRO_IN:
-                                
+                
 				clusterMap->clearTraversal();
                 
-                if(introSequence != NULL){
-                    delete introSequence;
-                }
-                
-                introSequence = new CloudsIntroSequence();
-                introSequence->setup();
-				introSequence->setStartQuestions(startingNodes);
+//                if(introSequence != NULL){
+//                    delete introSequence;
+//                }
+//                
+//                introSequence = new CloudsIntroSequence();
+//                introSequence->setup();
+//				introSequence->setStartQuestions(startingNodes);
                 introSequence->firstPlay = false;
 #ifdef OCULUS_RIFT
                 introSequence->hud = &hud;
                 introSequence->setupHUDGui();
 #endif
-                introSequence->setDrawToScreen(false);
-                
+//                introSequence->setDrawToScreen(false);
                 hud.setHudEnabled(true);
-                
 
                 introSequence->loadingFinished();
                 if(bVHXRentalExpired){
                     introSequence->vhxRentalExpired();
                     bVHXRentalExpired = false;
                 }
-                else{
-                    introSequence->vhxAuthenticated();
-                }
+//                else{
+//                    introSequence->vhxAuthenticated();
+//                }
                 showIntro();
                 break;
                 
@@ -1508,17 +1512,20 @@ void CloudsPlaybackController::updateTransition(){
                 //starting
             case TRANSITION_EXPLORE_MAP_IN:
                 showExploreMap();
+                hud.researchTransitionFinished();
                 break;
                 
                 //starting
             case TRANSITION_EXPLORE_PEOPLE_IN:
                 showExplorePeople();
+                hud.researchTransitionFinished();
                 break;
                 
                 //starting
             case TRANSITION_EXPLORE_VISUALS_IN:
                 showExploreVisuals();
-				break;
+                hud.researchTransitionFinished();
+                break;
                 
                 //starting
             case TRANSITION_VISUAL_LOOP_IN:
@@ -1542,9 +1549,6 @@ void CloudsPlaybackController::updateTransition(){
                 break;
         }
 
-		if(transitionController.fadedOut()){
-			clearRenderTarget();
-		}
 	}
     
     crossfadeValue = transitionController.getFadeValue();
@@ -1941,9 +1945,11 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
     shouldClearAct = true;
     
     if(!bQuestionAsked && !returnToIntro) {
+        //if we entered this act through research mode, return to the research screen
         if(showingResearchMode){
             transitionBackToResearch();
         }
+        //otherwise we are in story mode and we should go to an interlude
         else{
             transitionController.transitionToInterlude(1.0,1.0);
         }
