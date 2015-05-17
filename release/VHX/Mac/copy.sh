@@ -9,6 +9,5 @@ rm -rf $DSTROOT/CloudsData;
 fi
 
 mv $DSTROOT/dataRoot.txt /Library/Application\ Support/CLOUDS;
-mv $DSTROOT/mediaRoot.txt /Library/Application\ Support/CLOUDS;
 
 exit 0
