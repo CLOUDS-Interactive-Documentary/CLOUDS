@@ -314,17 +314,19 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("NavCreditsTextBox", fontPath);
     getLabelForLayer("NavBackersTextBox", fontPath);
     
+    getLabelForLayer("ExitButtonTextBox", fontPath);
+    
     getLabelForLayer("CastList1TextBox", fontPath, 35,false,true);
     getLabelForLayer("CastList2TextBox", fontPath, 35,false,true);
     getLabelForLayer("CastList3TextBox", fontPath, 35,false,true);
 
-    getLabelForLayer("CreditsList1TextBox", fontPath, 35,false,true, 10);
-    getLabelForLayer("CreditsList2TextBox", fontPath, 35,false,true, 10);
-    getLabelForLayer("CreditsList3TextBox", fontPath, 35,false,true, 10);
+    getLabelForLayer("CreditsList1TextBox", fontPath, 35, false,true, 10);
+    getLabelForLayer("CreditsList2TextBox", fontPath, 35, false,true, 10);
+    getLabelForLayer("CreditsList3TextBox", fontPath, 35, false,true, 10);
     
-    getLabelForLayer("BackersList1TextBox", fontPath, 35,false,true, 10);
-    getLabelForLayer("BackersList2TextBox", fontPath, 35,false,true, 10);
-    getLabelForLayer("BackersList3TextBox", fontPath, 35,false,true, 10);
+    getLabelForLayer("BackersList1TextBox", fontPath, 35, false,true, 10);
+    getLabelForLayer("BackersList2TextBox", fontPath, 35, false,true, 10);
+    getLabelForLayer("BackersList3TextBox", fontPath, 35, false,true, 10);
     
     
     //cheat for scroll
@@ -365,6 +367,8 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["NavCastTextBox"]->setText(GetTranslationForString("CAST"), false);
     hudLabelMap["NavCreditsTextBox"]->setText(GetTranslationForString("CREDITS"), false);
     hudLabelMap["NavBackersTextBox"]->setText(GetTranslationForString("BACKERS"), false);
+    
+    hudLabelMap["ExitButtonTextBox"]->setText(GetTranslationForString("CLOSE"), false);
     
     hudLabelMap["CastList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast1.txt").getText(), false);
     hudLabelMap["CastList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast2.txt").getText(), false);
@@ -419,6 +423,7 @@ void CloudsHUDController::calculateFontSizes(){
     attachTriangleToLabel(hudLabelMap["ListScrollUpArrowSpace"], CLOUDS_RESEARCH, "ListScrollUpArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
     attachTriangleToLabel(hudLabelMap["ListScrollDownArrowSpace"], CLOUDS_RESEARCH, "ListScrollDownArrowSpace", CLOUDS_HUD_TRIANGLE_DOWN);
     
+    attachTriangleToLabel(hudLabelMap["ExitButtonTextBox"], CLOUDS_ABOUT_MAIN, "ExitButtonArrowSpace", CLOUDS_HUD_TRIANGLE_X);
     
     hudLabelMap["ExploreTextBox"]->makeArrowPositionDynamic();
     hudLabelMap["SeeMoreTextBox"]->makeArrowPositionDynamic();
@@ -1021,6 +1026,10 @@ void CloudsHUDController::hideAbout(){
 
 void CloudsHUDController::updateAboutNavigation(){
 
+    if(hudLabelMap["ExitButtonTextBox"]->isClicked()){
+        hideAbout();
+    }
+    
     if(hudLabelMap["NavAboutTextBox"]->isClicked()){
         currentAboutTab = CLOUDS_HUD_ABOUT_TAB_INFO;
         animateOn(CLOUDS_ABOUT_INFO);
@@ -1051,20 +1060,23 @@ void CloudsHUDController::updateAboutNavigation(){
     }
 
     
-    hudLabelMap["NavAboutTextBox"]->baseInteractiveBounds = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("AboutHoverBacking")->bounds;
+    hudLabelMap["NavAboutTextBox"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("AboutHoverBacking")->bounds;
     hudLabelMap["NavAboutTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NavAboutTextBox"]->baseInteractiveBounds);
 
-    hudLabelMap["NavCastTextBox"]->baseInteractiveBounds = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("NavCastHoverBacking")->bounds;
+    hudLabelMap["NavCastTextBox"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("NavCastHoverBacking")->bounds;
     hudLabelMap["NavCastTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NavCastTextBox"]->baseInteractiveBounds);
 
-    hudLabelMap["NavCreditsTextBox"]->baseInteractiveBounds = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("NavCreditsHoverBacking")->bounds;
+    hudLabelMap["NavCreditsTextBox"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("NavCreditsHoverBacking")->bounds;
     hudLabelMap["NavCreditsTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NavCreditsTextBox"]->baseInteractiveBounds);
 
-    hudLabelMap["NavBackersTextBox"]->baseInteractiveBounds = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("NavBackersHoverBacking")->bounds;
+    hudLabelMap["NavBackersTextBox"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("NavBackersHoverBacking")->bounds;
     hudLabelMap["NavBackersTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NavBackersTextBox"]->baseInteractiveBounds);
     
-    hudLabelMap["NavAboutTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_INFO;
-    hudLabelMap["NavCastTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_CAST;
+    hudLabelMap["ExitButtonTextBox"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("ExitButtonBacking")->bounds;
+    hudLabelMap["ExitButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ExitButtonTextBox"]->baseInteractiveBounds);
+    
+    hudLabelMap["NavAboutTextBox"]->tabSelected = currentAboutTab   == CLOUDS_HUD_ABOUT_TAB_INFO;
+    hudLabelMap["NavCastTextBox"]->tabSelected = currentAboutTab    == CLOUDS_HUD_ABOUT_TAB_CAST;
     hudLabelMap["NavCreditsTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_CREDITS;
     hudLabelMap["NavBackersTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_BACKERS;
     
