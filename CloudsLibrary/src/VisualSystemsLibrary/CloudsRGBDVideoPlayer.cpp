@@ -321,14 +321,19 @@ void CloudsRGBDVideoPlayer::startPlayer(){
 
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::begin(ofShader& shader){
+
+    if(playingVO){
+        return;
+    }
     
-	if(!getPlayer().isLoaded() || !getTextureReference().isAllocated()){
+	if(!getPlayer().isLoaded() ){
 		return;
 	}
 	
-	if(playingVO){
-		return;
-	}
+    if(!getTextureReference().isAllocated()){
+        return;
+    }
+    
 
 	getPlayer().bind();
 

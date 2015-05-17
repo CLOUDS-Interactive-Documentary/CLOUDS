@@ -1284,6 +1284,7 @@ void CloudsPlaybackController::updateTransition(){
                     selectedQuestion = rgbdVisualSystem->getSelectedQuestion();
                     selectedQuestionClip = selectedQuestion->clip;
                     topic = selectedQuestion->topic;
+                    showingResearchMode = false;
                     
                     rgbdVisualSystem->transtionFinished();
                     rgbdVisualSystem->clearQuestions();
