@@ -850,7 +850,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     GetCloudsInput()->bUserBegan = !showingIntro || (showingIntro && introSequence->userHasBegun());
 
 	if(loading){
-//        updateTransition();
         return;
 	}
 	
@@ -869,6 +868,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	//INTRO
 	if(showingIntro){
     
+        if(introSequence->isAboutScreenSelected()){
+            hud.showAbout();
+        }
         if(hud.aboutClosed()){
             introSequence->aboutClosed();
         }
@@ -895,10 +897,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             
             transitionController.transitionToExploreMap(1.0, 3.0);
             showingResearchMode = true;
-        }
-        else if(introSequence->isAboutScreenSelected()){
-            hud.showAbout();
-            //TODO: way to hide about...
         }
 		else if(introSequence->isStartQuestionSelected()){
             transitionController.transitionFromIntro(1.0);
@@ -958,6 +956,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             currentAct->terminateAct();
             transitionController.transitionWithQuestion(2.0, 0.1);
         }
+        rgbdVisualSystem->paused = hud.isPaused() || transitionController.isTransitioning();
     }
 
 	getSharedVideoPlayer().showingLowerThirds = currentVisualSystem == rgbdVisualSystem;
@@ -1245,7 +1244,6 @@ void CloudsPlaybackController::updateTransition(){
             case TRANSITION_INTRO_OUT:
                 
                 introSequence->stopSystem();
-                //introSequence->exit();
 
                 showingVisualSystem = false;
                 
@@ -1282,7 +1280,9 @@ void CloudsPlaybackController::updateTransition(){
                 
             ///LEAVING
             case TRANSITION_INTERVIEW_OUT:
-                    
+                
+                rgbdVisualSystem->transtionFinished();
+                
                 if(bQuestionAsked){
                     
                     if(shouldClearAct){
@@ -1293,7 +1293,6 @@ void CloudsPlaybackController::updateTransition(){
                     selectedQuestion = rgbdVisualSystem->getSelectedQuestion();
                     selectedQuestionClip = selectedQuestion->clip;
                     topic = selectedQuestion->topic;
-                    showingResearchMode = false;
                     
                     rgbdVisualSystem->clearQuestions();
                     rgbdVisualSystem->stopSystem();
@@ -1309,9 +1308,9 @@ void CloudsPlaybackController::updateTransition(){
                     
                     bQuestionAsked = false;
                 }
-                
-                rgbdVisualSystem->transtionFinished();
-                rgbdVisualSystem->stopSystem();
+                else{
+                    rgbdVisualSystem->stopSystem();
+                }
                 
                 break;
                 
@@ -2014,22 +2013,6 @@ void CloudsPlaybackController::transitionBackToResearch(){
 }
 
 //--------------------------------------------------------------------
-//void CloudsPlaybackController::resumeAct(){
-//    if(!canReturnToAct || resumeVisualSystem == NULL){
-//        ofLogError("CloudsPlaybackController::resumeAct") << "Resume act failed!";
-//    }
-//    
-//    hud.pause();
-//    
-//    if(resumeVisualSystem == rgbdVisualSystem){
-//        transitionController.transitionToFirstInterview(1.0);
-//    }
-//    else{
-//        transitionController.transitionToFirstVisualSystem(1.0);
-//    }
-//}
-
-//--------------------------------------------------------------------
 void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args){
 	playClip(args.chosenClip);
 }
@@ -2318,7 +2301,9 @@ void CloudsPlaybackController::cleanupInterlude(){
         interludeSystem->stopSystem();
         interludeSystem->exit();
 		
-        visualSystems.DeallocateSystems();
+        if(!canReturnToAct){
+            visualSystems.DeallocateSystems();
+        }
         
         showingInterlude = false;
 		interludeSystem = NULL;

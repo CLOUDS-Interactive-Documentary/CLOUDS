@@ -107,7 +107,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	float getRGBDTransitionValue();
 	float visualSystemFadeValue;
-//	float questionSelectFade;
     int questionToReplace;
     
 	ofCamera& getCameraRef(){
@@ -175,6 +174,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     
     static CloudsVisualSystemEvents events;
     
+    bool paused;
   protected:
 	
 	//TRANSITIONS
@@ -254,7 +254,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float fillFaceFalloff;
 	float fillRetractionFalloff;
     float fillFaceMinRadius;
-//	float fillForceGeoRetraction;
 
     ///OCCLUSION
 	ofxUISuperCanvas *occlusionGui;
@@ -286,7 +285,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void loadShader();
 
 	ofxUISuperCanvas *cameraGui;
-//	ofxUISuperCanvas *particleGui;
 	ofxUISuperCanvas *backgroundMeshGui;
 	ofxUISuperCanvas *questionGui;
     ofxUISuperCanvas *actuatorGui;
@@ -294,7 +292,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool drawParticulate;
 	float attenuatedCameraDrift;
 	VoxelMesh voxelMesh;
-	//GPUParticles::Controller particulateController;
     float particleCount;
     ofVec4f pointColor;
     

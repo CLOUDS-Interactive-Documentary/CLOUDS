@@ -563,7 +563,7 @@ void CloudsHUDController::attachTriangleToLabel(CloudsHUDLabel* label,
     ofVec2f bc = b.getInterpolated(c, .5);
     ofVec2f cd = c.getInterpolated(d, .5);
     ofVec2f da = d.getInterpolated(a, .5);
-    
+    float width = b.x - a.x;
     label->triangleMesh.clear();
     
     switch(direction){
@@ -573,31 +573,47 @@ void CloudsHUDController::attachTriangleToLabel(CloudsHUDLabel* label,
             label->triangleMesh.addVertex(d);
             label->triangleMesh.setMode(OF_PRIMITIVE_TRIANGLES);
             break;
+            
         case CLOUDS_HUD_TRIANGLE_RIGHT:
             label->triangleMesh.addVertex(bc);
             label->triangleMesh.addVertex(d);
             label->triangleMesh.addVertex(a);
             label->triangleMesh.setMode(OF_PRIMITIVE_TRIANGLES);
             break;
+            
         case CLOUDS_HUD_TRIANGLE_DOWN:
             label->triangleMesh.addVertex(cd);
             label->triangleMesh.addVertex(a);
             label->triangleMesh.addVertex(b);
             label->triangleMesh.setMode(OF_PRIMITIVE_TRIANGLES);
             break;
+            
         case CLOUDS_HUD_TRIANGLE_LEFT:
             label->triangleMesh.addVertex(da);
             label->triangleMesh.addVertex(b);
             label->triangleMesh.addVertex(c);
             label->triangleMesh.setMode(OF_PRIMITIVE_TRIANGLES);
             break;
+            
         case CLOUDS_HUD_TRIANGLE_X:
             label->triangleMesh.addVertex(a);
             label->triangleMesh.addVertex(c);
             label->triangleMesh.addVertex(b);
             label->triangleMesh.addVertex(d);
             label->triangleMesh.setMode(OF_PRIMITIVE_LINES);
-
+            break;
+            
+        case CLOUDS_HUD_TRIANGLE_SQUARE:
+            label->triangleMesh.addVertex(da - ofVec2f(0,width));
+            label->triangleMesh.addVertex(bc - ofVec2f(0,width));
+            label->triangleMesh.addVertex(da + ofVec2f(0,width));
+            
+            label->triangleMesh.addVertex(bc - ofVec2f(0,width));
+            label->triangleMesh.addVertex(bc + ofVec2f(0,width));
+            label->triangleMesh.addVertex(da + ofVec2f(0,width));
+            label->triangleMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+            break;
+            
         default:
             break;
     }
@@ -1194,7 +1210,7 @@ void CloudsHUDController::unpause(){
 
 void CloudsHUDController::enteringVisuals(){
     hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("STOP"), false);
-    attachTriangleToLabel(hudLabelMap["NextButtonTextBox"], CLOUDS_HUD_NEXT, "NextButtonArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
+    attachTriangleToLabel(hudLabelMap["NextButtonTextBox"], CLOUDS_HUD_NEXT, "NextButtonArrowSpace", CLOUDS_HUD_TRIANGLE_SQUARE);
 
 }
 
@@ -1203,7 +1219,6 @@ void CloudsHUDController::exitingVisuals(){
     attachTriangleToLabel(hudLabelMap["NextButtonTextBox"], CLOUDS_HUD_NEXT, "NextButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
     
 }
-
 
 void CloudsHUDController::setTopics(const set<string>& topics){
     CloudsHUDResearchList& topicList = researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];

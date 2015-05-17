@@ -89,6 +89,7 @@ CloudsVisualSystemRGBD::CloudsVisualSystemRGBD(){
 	transitionType = TWO_DIMENSIONAL;
 	
 	transitionVal = 0.0;
+    paused = false;
 }
 
 //--------------------------------------------------------------
@@ -257,16 +258,6 @@ void CloudsVisualSystemRGBD::playTestVideo(CloudsClip* clip){
 
 void CloudsVisualSystemRGBD::playTestVideo(int videoIndex){
 
-
-	//string sourceFile = GetCloudsDataPath(true) + "VO/Intro_Computers.aif";
-	//string subtitlesPathSrt = GetCloudsDataPath() + "language/JAPANESE/subtitles/Intro_Computers.srt"; 
-	//if(ofFile::doesFileExist(sourceFile)){
- //       getRGBDVideoPlayer().setupVO(sourceFile, subtitlesPathSrt);
-	//	getRGBDVideoPlayer().swapAndPlay();
-	//}
-	//else{
-	//	ofSystemAlertDialog("Test Video " + sourceFile + " does not exist");
-	//}
 
 	string sourceFile, filePathMov,filePathXml, subtitlesPathSrt;
 
@@ -579,37 +570,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 
 	guis.push_back(cameraGui);
 	guimap[cameraGui->getName()] = cameraGui;
-	
-    ////////////////// BACKGROUND PARTICLES
-	/*
-	particleGui = new ofxUISuperCanvas("PARTICLE", gui);
-	particleGui->copyCanvasStyle(gui);
-	particleGui->copyCanvasProperties(gui);
-	particleGui->setName("Particle");
-	particleGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	toggle = particleGui->addToggle("ENABLE", &drawParticulate);
-	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
-	particleGui->resetPlacer();
-	particleGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
-	particleGui->addWidgetToHeader(toggle);
-	
-//    particleGui->addSlider("NUM PARTICLES", 10, 10000, &particleCount);
-	
-	particleGui->addSlider("BIRTH RATE", 0, .01, &particulateController.birthRate);
-	particleGui->addSlider("BIRTH SPREAD", 10, 10000, &particulateController.birthSpread);
-	particleGui->addSlider("POINT SIZE THRESHOLD", 0, .01, &particulateController.getPoints().sizeThreshold);
-	particleGui->addSlider("POINT COLOR H", 0, 1.0, &pointColor.x);
-	particleGui->addSlider("POINT COLOR S", 0, 1.0, &pointColor.y);
-	particleGui->addSlider("POINT COLOR V", 0, 1.0, &pointColor.z);
-	particleGui->addSlider("POINT COLOR A", 0, 1.0, &pointColor.w);
-	
-	guis.push_back(particleGui);
-	guimap[particleGui->getName()] = particleGui;
-	backgroundGuis.push_back(particleGui);
-	*/
-    //////////////////
-	
+		
 	////////////////// BACKGROUND PARTICLES
 	backgroundMeshGui = new ofxUISuperCanvas("BACKGROUNDMESH", gui);
 	backgroundMeshGui->copyCanvasStyle(gui);
@@ -719,7 +680,9 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	voxelMesh.update();
 
 	updateActuators();
-	updateQuestions();
+    if(!paused){
+        updateQuestions();
+    }
 	
 	if( placingTransitionNodes )
 	{
@@ -1072,9 +1035,7 @@ void CloudsVisualSystemRGBD::clearTransitionMap()
 
 void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 {
-//	cout << "addTransitionGui: " << guiName<< endl;
-	
-//	return;
+
 
 	//get out transition info
 	map<string, TransitionInfo>* ti = &transitionMap[guiName];
@@ -1147,15 +1108,6 @@ void CloudsVisualSystemRGBD::loadPointcloudGUISFromName(string presetName){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip* questionClip, string topic, string question){
     
-
-//#ifdef CLOUDS_SCREENING
-//	QuestionQueue q;
-//	q.clip  = questionClip;
-//	q.topic = topic;
-//	q.question = question;
-//	questions.push_back(q);
-//	cout << "ADDING QUESTIONS. SIZE IS NOW " << questions.size() << endl;
-//#else
     //////////////QUEUE WAY
     CloudsPortal* testportal = NULL;
     if(leftPortal.question == ""){
@@ -1177,26 +1129,7 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip* questionClip, string topic,
         q.question = question;
         questions.push_back(q);
     }
-//#endif
-	
-    //////////////QUEUE WAY
-    
-    /////////////////////OLD WAY
-	/*
-	CloudsPortal* testportal = (questionToReplace++ % 2 == 0) ? &leftPortal : &rightPortal;
-	if(testportal->question != "" || testportal == caughtPortal){
-		//swap and override for certain so we keep the newest!
-		testportal = (testportal == &leftPortal) ? &rightPortal : &leftPortal;
-	}
-		//replaces a question
-	if(testportal != caughtPortal){
 
-        testportal->question = question;
-        testportal->topic = topic;
-        testportal->clip = questionClip;
-    }
-	 */
-    /////////////////////OLD WAY
 }
 
 //--------------------------------------------------------------
@@ -1939,7 +1872,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 	
-	drawQuestions();
+    if(!paused){
+        drawQuestions();
+    }
 }
 
 float CloudsVisualSystemRGBD::getRGBDTransitionValue(){

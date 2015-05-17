@@ -458,10 +458,18 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed){
 CloudsAct* CloudsStoryEngine::buildActWithTopic(CloudsRun& run, string forceTopic){
 
     CloudsActSettings settings;
+    
+    if(run.clipHistory.size() > 0 && ofContains(run.clipHistory.back()->getKeywords(), forceTopic) ){
+        settings.seed = run.clipHistory.back();
+        settings.playSeed = true;
+    }
+    else{
+        settings.seed = NULL;
+        settings.playSeed = false;
+    }
+    
     settings.run = &run;
     settings.topic = forceTopic;
-    settings.seed = NULL;
-    settings.playSeed = false;
     settings.forceTopic = true;
     settings.forceSpeaker = false;
     settings.allowVisuals = true;
