@@ -183,7 +183,7 @@
 <g id="ResumeButtonArrow" display="none">
 	<polygon fill="#FFFFFF" points="1364.852,839.217 1364.852,851.783 1371.134,845.5 	"/>
 </g>
-<g id="ResumeButtonArrowSpace">
+<g id="ResumeButtonArrowSpace" display="none">
 	<rect x="1364.852" y="839.317" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
 </g>
 <g id="ResumeButtonFrame" display="none">

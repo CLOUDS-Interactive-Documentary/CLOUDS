@@ -1239,6 +1239,24 @@ void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
         hudLabelMap["PeopleSelectNameTextBox"]->setText(CloudsSpeaker::speakers[button.tag].firstName + " " +
                                                         CloudsSpeaker::speakers[button.tag].lastName, forceOn);
         hudLabelMap["PeopleSelectBylineTextBox"]->setText(CloudsSpeaker::speakers[button.tag].byline1, forceOn);
+
+        //resize the bottom box
+        float stringHeight = hudLabelMap["PeopleSelectBylineTextBox"]->layout->stringHeight(CloudsSpeaker::speakers[button.tag].byline1);
+        SVGMesh* frameMesh = layers[CLOUDS_RESEARCH_PPL]->svg.getMeshByID("PeopleSelectFrame");
+        SVGMesh* backingMesh = layers[CLOUDS_RESEARCH_PPL]->svg.getMeshByID("PeopleSelectBacking");
+        
+        float frameMargin = hudLabelMap["PeopleSelectNameTextBox"]->bounds.y - frameMesh->bounds.y;
+        float newFrameY = hudLabelMap["PeopleSelectBylineTextBox"]->bounds.y + stringHeight + frameMargin;
+        frameMesh->mesh.getVertices()[3].y = newFrameY;
+        frameMesh->mesh.getVertices()[4].y = newFrameY;
+        frameMesh->mesh.getVertices()[5].y = newFrameY;
+        frameMesh->mesh.getVertices()[6].y = newFrameY;
+        
+        backingMesh->mesh.getVertices()[2].y = newFrameY;
+        backingMesh->mesh.getVertices()[4].y = newFrameY;
+        backingMesh->mesh.getVertices()[5].y = newFrameY;
+        backingMesh->bounds.height = newFrameY - backingMesh->bounds.y;
+        
         if(currentTab == button.parentTab && !bResearchTransitioning){
             animateOn(CLOUDS_RESEARCH_PPL);
         }
