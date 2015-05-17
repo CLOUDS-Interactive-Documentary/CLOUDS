@@ -471,21 +471,6 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         return;
     }
     
-    
-    // EZ: Remove this once we've got buffering working.
-//    if(currentPlayer->getBufferProgress() < 1.0){
-//        cout << "cur player position  " << currentPlayer->getPosition() << endl;
-//        cout << "cur player buffering " << currentPlayer->getBufferProgress() << endl;
-//        cout << "cur player ready     " << currentPlayer->isBufferLikelyToKeepUp() << endl;
-//    }
-//    if(clipPrerolled && nextPlayer->getBufferProgress() < 1.0){
-//        cout << "nxt player position  " << nextPlayer->getPosition() << endl;
-//        cout << "nxt player buffering " << nextPlayer->getBufferProgress() << endl;
-//        cout << "nxt player ready     " << nextPlayer->isBufferLikelyToKeepUp() << endl;
-//        cout << endl;
-//    }
-
-    
 	if(playingVO){
         getPlayer().setVolume(1.0);
 	}
@@ -507,10 +492,10 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		float fadeOutStartTime = duration - 1.3 ;
 		float fadeOutEndTime = duration - 1.0;
 		if(position < 1.0){
-			currentAudioVolume = ofMap(position, fadeInStartTime, fadeInEndTime, 0., maxVolume, true);
+			currentAudioVolume = ofMap(position, fadeInStartTime, fadeInEndTime, 0., currentAudioVolume, true);
 		}
 		else if(position > fadeOutStartTime){
-			currentAudioVolume = ofMap(position, fadeOutStartTime, fadeOutEndTime, maxVolume, 0.0, true);
+			currentAudioVolume = ofMap(position, fadeOutStartTime, fadeOutEndTime, currentAudioVolume, 0.0, true);
 		}
         
 //		cout << "/*/*/*/*/*/***** FADIN VALUE " << fadeInValue << " FADE OUT VALUE " << fadeOutValue << " AUDIO VOLUME " << audioVolume << endl;
