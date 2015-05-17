@@ -69,7 +69,7 @@ void CloudsHUDScroller::mouseReleased(ofVec2f pos){
 
 void CloudsHUDScroller::mouseScrolled(float scroll){
     if(scrollBoundsScaled.inside(ofGetMouseX(), ofGetMouseY())){
-        float newScrollPosition = scrollPosition + scrollIncrement * scroll;
+        float newScrollPosition = scrollPosition - scrollIncrement * scroll;
        scrollPosition = ofClamp(newScrollPosition, 0, totalScrollHeight - scrollBounds.height);
     }
 
