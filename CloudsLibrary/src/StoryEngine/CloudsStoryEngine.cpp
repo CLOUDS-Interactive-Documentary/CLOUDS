@@ -494,6 +494,7 @@ CloudsAct* CloudsStoryEngine::buildActWithPerson(CloudsRun& run, string speakerI
         }
         
         if(clips.size() != 0){
+            //TODO: find clip that has the current topic
             seed = clips[ (int)(ofRandom(clips.size())) ];
         }
         else{
