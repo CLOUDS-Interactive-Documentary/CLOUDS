@@ -56,7 +56,7 @@ typedef enum{
 } CloudsHUDResearchTab;
 
 typedef enum{
-    CLOUDS_HUD_ABOUT_TAB_ABOUT = 0,
+    CLOUDS_HUD_ABOUT_TAB_INFO = 0,
     CLOUDS_HUD_ABOUT_TAB_CAST,
     CLOUDS_HUD_ABOUT_TAB_CREDITS,
     CLOUDS_HUD_ABOUT_TAB_BACKERS,
@@ -295,7 +295,12 @@ class CloudsHUDController {
     
     void drawList();
     
-    CloudsHUDLabel* getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);
+    CloudsHUDLabel* getLabelForLayer(const string& layerName,
+                                     const string& fontPath,
+                                     int kerning = 35,
+                                     bool caps = false,
+                                     bool useLayout = false,
+                                     int layoutFontSize = 12);
     
     void attachTriangleToLabel(CloudsHUDLabel* label, CloudsHUDLayerSet layer, string triangleLayerName, CloudsHUDTriangleDirection direction);
     

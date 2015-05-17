@@ -314,17 +314,17 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("NavCreditsTextBox", fontPath);
     getLabelForLayer("NavBackersTextBox", fontPath);
     
-    getLabelForLayer("CreditsList1TextBox", fontPath, 35,false,true);
-    getLabelForLayer("CreditsList2TextBox", fontPath, 35,false,true);
-    getLabelForLayer("CreditsList3TextBox", fontPath, 35,false,true);
-
     getLabelForLayer("CastList1TextBox", fontPath, 35,false,true);
     getLabelForLayer("CastList2TextBox", fontPath, 35,false,true);
     getLabelForLayer("CastList3TextBox", fontPath, 35,false,true);
 
-    getLabelForLayer("BackersList1TextBox", fontPath, 35,false,true);
-    getLabelForLayer("BackersList2TextBox", fontPath, 35,false,true);
-    getLabelForLayer("BackersList3TextBox", fontPath, 35,false,true);
+    getLabelForLayer("CreditsList1TextBox", fontPath, 35,false,true, 10);
+    getLabelForLayer("CreditsList2TextBox", fontPath, 35,false,true, 10);
+    getLabelForLayer("CreditsList3TextBox", fontPath, 35,false,true, 10);
+    
+    getLabelForLayer("BackersList1TextBox", fontPath, 35,false,true, 10);
+    getLabelForLayer("BackersList2TextBox", fontPath, 35,false,true, 10);
+    getLabelForLayer("BackersList3TextBox", fontPath, 35,false,true, 10);
     
     
     //cheat for scroll
@@ -366,14 +366,14 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["NavCreditsTextBox"]->setText(GetTranslationForString("CREDITS"), false);
     hudLabelMap["NavBackersTextBox"]->setText(GetTranslationForString("BACKERS"), false);
     
-    hudLabelMap["CreditsList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits1.txt").getText(), false);
-    hudLabelMap["CreditsList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits2.txt").getText(), false);
-    hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
-
     hudLabelMap["CastList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast1.txt").getText(), false);
     hudLabelMap["CastList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast2.txt").getText(), false);
     hudLabelMap["CastList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast3.txt").getText(), false);
     
+    hudLabelMap["CreditsList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits1.txt").getText(), false);
+    hudLabelMap["CreditsList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits2.txt").getText(), false);
+    hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
+ 
     ofBuffer backers = ofBufferFromFile(GetCloudsDataPath() + "about/backers.txt");
     int i = 0;
     string columns[3];
@@ -437,7 +437,8 @@ CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
                                                       const string& fontPath,
                                                       int kerning,
                                                       bool caps,
-                                                      bool useLayout)
+                                                      bool useLayout,
+                                                      int layoutFontSize)
 {
     
     for( int i = 0; i < CLOUDS_HUD_ALL; i++ ){
@@ -456,7 +457,7 @@ CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
         // make a layout
         if(useLayout){
             ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
-            newLayout->loadFont( fontPath, 12 );
+            newLayout->loadFont( fontPath, layoutFontSize);
             newLayout->setLineLength( 999 );
             newLabel->setup( newLayout, textMesh->bounds );
         }
@@ -567,11 +568,11 @@ void CloudsHUDController::attachTriangleToLabel(CloudsHUDLabel* label,
         default:
             break;
     }
-    
-    
+
 //    label->triangleMesh.addColor(ofFloatColor::white);
 //    label->triangleMesh.addColor(ofFloatColor::white);
 //    label->triangleMesh.addColor(ofFloatColor::white);
+
 }
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
@@ -999,31 +1000,53 @@ void CloudsHUDController::showAbout(){
 
 
     animateOn(CLOUDS_ABOUT_MAIN);
-//    animateOn(CLOUDS_ABOUT_BACKERS);
-//    animateOn(CLOUDS_ABOUT_CAST);
-//    animateOn(CLOUDS_ABOUT_CREDITS);
-//    animateOn(CLOUDS_ABOUT_INFO);
-//    animateOn(CLOUDS_ABOUT_SETTINGS);
     
+    //TOOD: maybe save the last tab ...
+    currentAboutTab = CLOUDS_HUD_ABOUT_TAB_INFO;
+    animateOn(CLOUDS_ABOUT_INFO);
+    animateOff(CLOUDS_ABOUT_CAST);
+    animateOff(CLOUDS_ABOUT_CREDITS);
+    animateOff(CLOUDS_ABOUT_BACKERS);
 }
 
 void CloudsHUDController::hideAbout(){
-    //TODO: !!
-    //animateOff(CLOUDS_HUD_ABOUT);
+    animateOff(CLOUDS_ABOUT_MAIN);
+    animateOff(CLOUDS_ABOUT_INFO);
+    animateOff(CLOUDS_ABOUT_CAST);
+    animateOff(CLOUDS_ABOUT_CREDITS);
+    animateOff(CLOUDS_ABOUT_BACKERS);
+    animateOff(CLOUDS_ABOUT_SETTINGS);
+
 }
 
 void CloudsHUDController::updateAboutNavigation(){
 
     if(hudLabelMap["NavAboutTextBox"]->isClicked()){
-        currentAboutTab = CLOUDS_HUD_ABOUT_TAB_ABOUT;
+        currentAboutTab = CLOUDS_HUD_ABOUT_TAB_INFO;
+        animateOn(CLOUDS_ABOUT_INFO);
+        animateOff(CLOUDS_ABOUT_CAST);
+        animateOff(CLOUDS_ABOUT_CREDITS);
+        animateOff(CLOUDS_ABOUT_BACKERS);
     }
     else if(hudLabelMap["NavCastTextBox"]->isClicked()){
+        animateOff(CLOUDS_ABOUT_INFO);
+        animateOn(CLOUDS_ABOUT_CAST);
+        animateOff(CLOUDS_ABOUT_CREDITS);
+        animateOff(CLOUDS_ABOUT_BACKERS);
         currentAboutTab = CLOUDS_HUD_ABOUT_TAB_CAST;
     }
     else if(hudLabelMap["NavCreditsTextBox"]->isClicked()){
+        animateOff(CLOUDS_ABOUT_INFO);
+        animateOff(CLOUDS_ABOUT_CAST);
+        animateOn(CLOUDS_ABOUT_CREDITS);
+        animateOff(CLOUDS_ABOUT_BACKERS);
         currentAboutTab = CLOUDS_HUD_ABOUT_TAB_CREDITS;
     }
     else if(hudLabelMap["NavBackersTextBox"]->isClicked()){
+        animateOff(CLOUDS_ABOUT_INFO);
+        animateOff(CLOUDS_ABOUT_CAST);
+        animateOff(CLOUDS_ABOUT_CREDITS);
+        animateOn(CLOUDS_ABOUT_BACKERS);
         currentAboutTab = CLOUDS_HUD_ABOUT_TAB_BACKERS;
     }
 
@@ -1040,7 +1063,7 @@ void CloudsHUDController::updateAboutNavigation(){
     hudLabelMap["NavBackersTextBox"]->baseInteractiveBounds = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("NavBackersHoverBacking")->bounds;
     hudLabelMap["NavBackersTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NavBackersTextBox"]->baseInteractiveBounds);
     
-    hudLabelMap["NavAboutTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_ABOUT;
+    hudLabelMap["NavAboutTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_INFO;
     hudLabelMap["NavCastTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_CAST;
     hudLabelMap["NavCreditsTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_CREDITS;
     hudLabelMap["NavBackersTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_BACKERS;
