@@ -44,6 +44,8 @@ class CloudsVisualSystemManager {
 	vector<CloudsVisualSystemPreset> getPresetsForKeyword(const string& keyword);
 	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords, string clipName = "", bool isInterlude = false);
 	vector<CloudsVisualSystemPreset> getAllInterludes();
+    
+    static bool generateCloudsDataCopyScript();
 
 	CloudsVisualSystem* getEmptySystem(const string& mainKeyword, vector<string> keywords);
 	

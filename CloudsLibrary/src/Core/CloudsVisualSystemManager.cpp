@@ -1004,6 +1004,207 @@ void CloudsVisualSystemManager::setKeywordsForPreset(CloudsVisualSystemPreset& p
 }
 
 //--------------------------------------------------------------------
+
+bool CloudsVisualSystemManager::generateCloudsDataCopyScript(){
+    
+    
+    ofDirectory cloudsDataVS( GetCloudsDataPath()+"visualsystems/" );
+    ofDirectory cloudsDataIgnoredVS( GetCloudsDataPath(true)+"visualsystems/" );
+    
+    cloudsDataVS.listDir();
+    cloudsDataIgnoredVS.listDir();
+    
+    string newDataPath = "../../";
+
+    ofBuffer bash;
+    bash.append( "#!/bin/bash\n" );
+    bash.append( "copyLocation="+newDataPath+"CloudsData/visualsystems\n" );
+    bash.append( "cloudsdata="+newDataPath+"CloudsData\n" );
+    bash.append( "if [ ! -d $cloudsdata ]; then\nmkdir $cloudsdata\nmkdir $copyLocation\n fi\n" );
+    
+    ofDirectory cloudsData( GetCloudsDataPath() );
+    ofDirectory cloudsDataIgnored( GetCloudsDataPath(true) );
+    cloudsData.listDir();
+    cloudsDataIgnored.listDir();
+    
+    for( int i = 0; i < cloudsData.size(); i++ ){
+        
+        auto curName = cloudsData.getName(i);
+        if( curName != "visualsystems" ){
+            
+            ofDirectory d( cloudsData.getPath(i) );
+            if(d.isDirectory()){
+                
+                auto path = cloudsData.getPath(i);
+                path = path.substr(6);
+                
+               // bash.append( "mkdir "+newDataPath+"CloudsData/"+cloudsData.getName(i)+"\n" );
+                bash.append( "cp -r "+path+" "+newDataPath+"CloudsData/\n" );
+
+            }else{
+                
+                auto path = cloudsData.getPath(i);
+                path = path.substr(6);
+                
+                bash.append( "cp "+path+" "+newDataPath+"CloudsData/"+cloudsData.getName(i)+"\n" );
+                
+            }
+        
+        }
+        
+    }
+    
+    
+    for( int i = 0; i < cloudsDataIgnored.size(); i++ ){
+        
+        auto curName = cloudsDataIgnored.getName(i);
+        if( curName != "visualsystems" ){
+            
+            ofDirectory d( cloudsDataIgnored.getPath(i) );
+            if(d.isDirectory()){
+                
+                auto path = cloudsDataIgnored.getPath(i);
+                path = path.substr(6);
+                //bash.append( "mkdir "+newDataPath+"CloudsData/"+cloudsData.getName(i)+"\n" );
+                bash.append( "cp -r "+path+" "+newDataPath+"CloudsData/\n" );
+                
+            }else{
+                auto path = cloudsDataIgnored.getPath(i);
+                path = path.substr(6);
+                bash.append( "cp "+path+" "+newDataPath+"CloudsData/"+cloudsDataIgnored.getName(i)+"\n" );
+                
+            }
+        
+        }
+        
+    }
+    
+    
+    for( int i = 0; i < cloudsDataVS.size(); i++ ){
+        
+        ofDirectory vs( cloudsDataVS.getPath(i) );
+        vs.listDir();
+        
+        auto vsPath = newDataPath+"CloudsData/visualsystems/"+cloudsDataVS.getName(i);
+        
+        bash.append( "mkdir "+vsPath+"\n" );
+        bash.append( "mkdir "+vsPath+"/Presets\n" );
+        
+        auto vsName = cloudsDataVS.getName(i);
+        
+        for( int j = 0; j < vs.size(); j++ ){
+            
+            if( vs.getName(j) == "Presets" ){
+                ///find enabled presets
+                
+                ofDirectory preset_dir( vs.getPath(j) );
+                preset_dir.listDir();
+                
+                for( int p = 0; p < presets.size(); p++ ){
+                    
+                    if( presets[p].enabled() ){
+                        
+                        
+                        for( int pp = 0; pp < preset_dir.size(); pp++ ){
+                            
+                            auto checkName = preset_dir.getName(pp);
+                            auto presetName = presets[p].presetName;
+                            
+                            if( checkName == presetName ){
+                                
+                                //bash.append( "mkdir "+vsPath+"/Presets/"+preset_dir.getName(pp)+"\n" );
+                                
+                                auto path = preset_dir.getPath(pp);
+                                path = path.substr(6);
+                                
+                                bash.append( "cp -r "+path+" $copyLocation/"+cloudsDataVS.getName(i)+"/Presets/\n" );
+                                
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+            }else{
+                ///copy the other stuff
+                auto path = vs.getPath(j);
+                bash.append( "cp -r "+path.substr(6)+" $copyLocation/"+cloudsDataVS.getName(i)+"/"+vs.getName(j)+"\n" );
+            }
+            
+        }
+        
+    
+        for( int ii = 0; ii < cloudsDataIgnoredVS.size(); ii++  ){
+            
+            if( cloudsDataIgnoredVS.getName(ii) == vsName ){
+                
+                ofDirectory vs( cloudsDataIgnoredVS.getPath(ii) );
+                vs.listDir();
+                
+                for( int j = 0; j < vs.size(); j++ ){
+                    auto path = vs.getPath(j);
+                    bash.append( "cp -r "+path.substr(6)+" $copyLocation/"+vsName+"/"+vs.getName(j)+"\n" );
+                    
+                }
+            }
+
+        }
+        
+    }
+    
+    ///BESPOKE PRESETS TO COPY
+    ///CLUSTER MAP
+    
+    bash.append( "cp -r ../CloudsData/visualsystems/_ClusterMap/Presets/FollowTraverse_OculusHD_fast "+newDataPath+"CloudsData/visualsystems/_ClusterMap/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/_ClusterMap/Presets/FollowTraverse_OculusHD_pretty "+newDataPath+"CloudsData/visualsystems/_ClusterMap/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/_ClusterMap/Presets/FollowTraverse_Screen_fast "+newDataPath+"CloudsData/visualsystems/_ClusterMap/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/_ClusterMap/Presets/FollowTraverse_Screen_pretty "+newDataPath+"CloudsData/visualsystems/_ClusterMap/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/_ClusterMap/Presets/NavigationInterlude_Screen "+newDataPath+"CloudsData/visualsystems/_ClusterMap/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/_ClusterMap/Presets/TopicResearch_fast "+newDataPath+"CloudsData/visualsystems/_ClusterMap/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/_ClusterMap/Presets/TopicResearch_pretty "+newDataPath+"CloudsData/visualsystems/_ClusterMap/Presets\n" );
+
+    
+    ///INTRO
+    bash.append( "cp -r ../CloudsData/visualsystems/_Intro/Presets/TunnelWarp_pretty "+newDataPath+"CloudsData/visualsystems/_Intro/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/_Intro/Presets/TunnelWarp_fast "+newDataPath+"CloudsData/visualsystems/_Intro/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/_Intro/Presets/Oculus_pretty "+newDataPath+"CloudsData/visualsystems/_Intro/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/_Intro/Presets/Oculus_fast "+newDataPath+"CloudsData/visualsystems/_Intro/Presets\n" );
+
+    ///RGBD
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_ACT1_fast "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_ACT1_pretty "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_ACT2_fast "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_ACT2_pretty "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_ACT3_fast "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_ACT3_pretty "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_BASE_fast "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_BASE_pretty "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_OC_ACT1_fast "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_OC_ACT1_pretty "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_OC_ACT2_fast "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_OC_ACT2_pretty "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_OC_ACT3_fast "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_OC_ACT3_pretty "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_OC_BASE_fast "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/RGBD/Presets/RGBD_OC_BASE_pretty "+newDataPath+"CloudsData/visualsystems/RGBD/Presets\n" );
+    
+    ///TWITTER
+    bash.append( "cp -r ../CloudsData/visualsystems/Twitter/Presets/ResearchPeople_pretty "+newDataPath+"CloudsData/visualsystems/Twitter/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/Twitter/Presets/ResearchPeople_fast "+newDataPath+"CloudsData/visualsystems/Twitter/Presets\n" );
+    
+    ///VISUALS
+    bash.append( "cp -r ../CloudsData/visualsystems/Visuals/Presets/VisualPicker_pretty "+newDataPath+"CloudsData/visualsystems/Visuals/Presets\n" );
+    bash.append( "cp -r ../CloudsData/visualsystems/Visuals/Presets/VisualPicker_fast "+newDataPath+"CloudsData/visualsystems/Visuals/Presets\n" );
+
+    auto path = GetCloudsDataPath()+"../scripts/copy_clouds_data.sh";
+    
+    return ofBufferToFile( path, bash);
+}
+
+//--------------------------------------------------------------------
 //void CloudsVisualSystemManager::exportStandalonePresets(){
 //	string standaloneExportFolder = GetCloudsDataPath() + "standalonePresets/";
 //	ofDirectory(standaloneExportFolder).create();
