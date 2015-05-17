@@ -50,6 +50,11 @@ class CloudsHUDLabel {
     bool isClicked();
     void deselect();
     
+    void forceHover();
+    void forcePress();
+    void forceClick();
+    void unforceHover();
+    
     bool tab; //dont' deselect on other click
     bool tabSelected;
     bool caps;
@@ -89,10 +94,11 @@ class CloudsHUDLabel {
     
     bool bIsAnimatingIn, bIsAnimatingOut;
     bool bIsVisible;
-    
     bool bIsHovered;
+    bool bIsForceHovered;
     bool bIsPressed;
     bool bIsClicked;
     float hoverChangedTime;
+    float hoverChangeAlpha;
 
 };

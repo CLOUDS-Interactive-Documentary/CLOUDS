@@ -324,7 +324,8 @@ class CloudsHUDController {
     ofVec2f scaleOffset;
     int margin;
     
-    
+    ofImage* currentPreviewImage;
+    CloudsHUDLabel* currentPreviewSelection;
     ofImage topicMapPreview;
     ofImage peopleMapPreview;
     map<CloudsHUDResearchTab, CloudsHUDResearchList> researchLists;

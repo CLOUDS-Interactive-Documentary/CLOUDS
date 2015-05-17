@@ -31,6 +31,7 @@ CloudsHUDController::CloudsHUDController(){
     bClipIsPlaying = false;
     bResearchTransitioning = false;
     
+    currentPreviewImage = &topicMapPreview;
     currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
 
     researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS].scrollPosition = 0;
@@ -452,6 +453,9 @@ void CloudsHUDController::calculateFontSizes(){
     
     hudLabelMap["ExploreTextBox"]->makeArrowPositionDynamic();
     hudLabelMap["SeeMoreTextBox"]->makeArrowPositionDynamic();
+    
+    currentPreviewSelection = hudLabelMap["ExploreTextBox"];
+
     
 }
 
@@ -941,6 +945,18 @@ void CloudsHUDController::update(){
         }
     }
     
+    if( hudOpenMap[CLOUDS_HUD_PAUSE]){
+        if(hudLabelMap["ExploreTextBox"]->isHovered()){
+            currentPreviewImage = &topicMapPreview;
+            currentPreviewSelection = hudLabelMap["ExploreTextBox"];
+        }
+        else if(hudLabelMap["SeeMoreTextBox"]->isHovered()){
+            currentPreviewImage = &peopleMapPreview;        
+            currentPreviewSelection = hudLabelMap["SeeMoreTextBox"];
+        }
+        
+    }
+    
     if( hudOpenMap[CLOUDS_RESEARCH] ){
         updateScroll();
         updateResearchNavigation();
@@ -1295,6 +1311,15 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
         }
     }
  
+    if(hudOpenMap[CLOUDS_HUD_PAUSE]){
+        if(getScaledRectangle( layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds).inside(args.x,args.y) ){
+            currentPreviewSelection->forceHover();
+        }
+        else{
+            currentPreviewSelection->unforceHover();
+        }
+    }
+    
     if(hudOpenMap[CLOUDS_RESEARCH]){
         
         args.canceled |= researchScroller.mouseMoved(ofVec2f(args.x,args.y));
@@ -1331,6 +1356,12 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
        ( hudOpenMap[CLOUDS_HUD_LOWER_THIRD] && getScaledRectangle( layers[CLOUDS_HUD_LOWER_THIRD]->svg.getBounds()).inside(args.x, args.y)) )
     {
         home.activate();
+    }
+    
+    if(hudOpenMap[CLOUDS_HUD_PAUSE]){
+        if(getScaledRectangle( layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds).inside(args.x,args.y) ){
+            currentPreviewSelection->forcePress();
+        }
     }
     
     if(hudOpenMap[CLOUDS_RESEARCH]){
@@ -1387,6 +1418,12 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
                     }
                 }
             }
+        }
+    }
+    
+    if(hudOpenMap[CLOUDS_HUD_PAUSE]){
+        if(getScaledRectangle( layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds).inside(args.x,args.y) ){
+            currentPreviewSelection->forceClick();
         }
     }
     
@@ -1659,28 +1696,35 @@ void CloudsHUDController::draw(){
     }
  
     if (hudOpenMap[CLOUDS_HUD_PAUSE]) {
-        
-        if(hudLabelMap["ExploreTextBox"]->hoverAlpha > 0){
-            ofPushStyle();
-            ofSetColor(255, hudLabelMap["ExploreTextBox"]->hoverAlpha * 255 * .6);
+
+        ofPushStyle();
+        if(currentPreviewSelection != NULL && currentPreviewImage != NULL){
+            ofSetColor(255, ofMap(currentPreviewSelection->hoverAlpha, 0, 1.0, .3, 1.0, true) * 255 * .6);
+            currentPreviewImage->draw(layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds);
+        }
+        else{
+            ofSetColor(255, 255 * .3);
             topicMapPreview.draw(layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds);
-            ofPopStyle();
         }
-        if(hudLabelMap["SeeMoreTextBox"]->hoverAlpha > 0){
-            ofPushStyle();
-            ofSetColor(255, hudLabelMap["SeeMoreTextBox"]->hoverAlpha * 255 * .6);
-            peopleMapPreview.draw(layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds);
-            ofPopStyle();
-        }
+        ofPopStyle();
+        
+//        if(hudLabelMap["ExploreTextBox"]->hoverAlpha > 0){
+//            ofPushStyle();
+//            ofSetColor(255, hudLabelMap["ExploreTextBox"]->hoverAlpha * 255 * .6);
+//            topicMapPreview.draw(layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds);
+//            ofPopStyle();
+//        }
+//        if(hudLabelMap["SeeMoreTextBox"]->hoverAlpha > 0){
+//            ofPushStyle();
+//            ofSetColor(255, hudLabelMap["SeeMoreTextBox"]->hoverAlpha * 255 * .6);
+//            peopleMapPreview.draw(layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds);
+//            ofPopStyle();
+//        }
     }
-    
 
 	ofPopMatrix();
 	ofPopStyle();
-
-
 }
-
 
 void CloudsHUDController::drawList(){
     ofPushMatrix();
