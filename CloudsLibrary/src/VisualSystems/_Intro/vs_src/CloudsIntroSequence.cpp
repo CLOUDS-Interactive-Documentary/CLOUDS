@@ -1626,12 +1626,15 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
-#if defined(MOUSE_INPUT)
+#ifdef MOUSE_INPUT
 	if(currentState == CLOUDS_INTRO_MENU){
         researchMenuItem.pressed = researchMenuItem.bounds.inside(data.x, data.y);
         playMenuItem.pressed     = playMenuItem.bounds.inside(data.x, data.y);
         aboutMenuItem.pressed    = aboutMenuItem.bounds.inside(data.x, data.y);
 	}
+    else if(currentState == CLOUDS_INTRO_VHX_NO_PURCHASE || currentState == CLOUDS_INTRO_VHX_RENTAL_EXPIRED){
+        ofLaunchBrowser("https://clouds.vhx.tv/buy/clouds");
+    }
     else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
         newMenuItem.pressed      = newMenuItem.bounds.inside(data.x, data.y);
         resumeMenuItem.pressed   = resumeMenuItem.bounds.inside(data.x, data.y);

@@ -1307,6 +1307,11 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
                 }
             }
         }
+        else{
+            for(int i = 0; i < currentResearchList->buttons.size(); i++){
+                currentResearchList->buttons[i].hovered = false;
+            }
+        }
     }
     
     if(hudOpenMap[CLOUDS_ABOUT_BACKERS]){
