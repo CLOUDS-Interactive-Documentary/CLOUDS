@@ -187,6 +187,8 @@ void CloudsHUDController::buildLayerSets(){
     hudBounds.set(0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
     //ensure the lines are always up
+    layers[CLOUDS_ABOUT_MAIN]->bForceHover = true;
+    
     layers[CLOUDS_HUD_HOME]->bForceHover = true;
     layers[CLOUDS_HUD_PAUSE]->bForceHover = true;
     layers[CLOUDS_HUD_PROJECT_EXAMPLE]->bForceHover = true;
@@ -307,7 +309,10 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("TopicSelectPlayTextBox", fontPath);
     
     //about text boxes
-    getLabelForLayer("AboutTextBox", fontPath);
+    getLabelForLayer("NavAboutTextBox", fontPath);
+    getLabelForLayer("NavCastTextBox", fontPath);
+    getLabelForLayer("NavCreditsTextBox", fontPath);
+    getLabelForLayer("NavBackersTextBox", fontPath);
     
     getLabelForLayer("CreditsList1TextBox", fontPath, 35,false,true);
     getLabelForLayer("CreditsList2TextBox", fontPath, 35,false,true);
@@ -326,25 +331,6 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("ListScrollUpArrowSpace", fontPath);
     getLabelForLayer("ListScrollDownArrowSpace", fontPath);
 
-    
-    attachTriangleToLabel(hudLabelMap["NextButtonTextBox"], CLOUDS_HUD_NEXT, "NextButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
-    
-    attachTriangleToLabel(hudLabelMap["ExploreTextBox"], CLOUDS_HUD_PAUSE, "ExploreButtonArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
-    attachTriangleToLabel(hudLabelMap["SeeMoreTextBox"], CLOUDS_HUD_PAUSE, "SeeMoreButtonArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
-    attachTriangleToLabel(hudLabelMap["ResetButtonTextBox"], CLOUDS_HUD_PAUSE, "ResetButtonSpace", CLOUDS_HUD_TRIANGLE_X);
-
-    attachTriangleToLabel(hudLabelMap["RSResetButtonTextBox"], CLOUDS_RESEARCH, "RSResetButtonArrowSpace", CLOUDS_HUD_TRIANGLE_X);
-    attachTriangleToLabel(hudLabelMap["ResumeButtonTextBox"], CLOUDS_RESEARCH_RESUME, "ResumeButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
-    
-    attachTriangleToLabel(hudLabelMap["TopicSelectPlayTextBox"], CLOUDS_RESEARCH_TOPIC, "TopicSelectPlayArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
-    attachTriangleToLabel(hudLabelMap["PeopleSelectPlayTextBox"], CLOUDS_RESEARCH_PPL, "PeopleSelectPlayArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
-    
-    attachTriangleToLabel(hudLabelMap["ListScrollUpArrowSpace"], CLOUDS_RESEARCH, "ListScrollUpArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
-    attachTriangleToLabel(hudLabelMap["ListScrollDownArrowSpace"], CLOUDS_RESEARCH, "ListScrollDownArrowSpace", CLOUDS_HUD_TRIANGLE_DOWN);
-    
-
-    hudLabelMap["ExploreTextBox"]->makeArrowPositionDynamic();
-    hudLabelMap["SeeMoreTextBox"]->makeArrowPositionDynamic();
 
     // cleanup!
     for(int i = 0; i < tempFontList.size(); i++){
@@ -375,6 +361,11 @@ void CloudsHUDController::calculateFontSizes(){
     
     hudLabelMap["PeopleSelectBylineTextBox"]->layout->setLineLength(hudLabelMap["PeopleSelectBylineTextBox"]->bounds.width);
 
+    hudLabelMap["NavAboutTextBox"]->setText(GetTranslationForString("ABOUT"), false);
+    hudLabelMap["NavCastTextBox"]->setText(GetTranslationForString("CAST"), false);
+    hudLabelMap["NavCreditsTextBox"]->setText(GetTranslationForString("CREDITS"), false);
+    hudLabelMap["NavBackersTextBox"]->setText(GetTranslationForString("BACKERS"), false);
+    
     hudLabelMap["CreditsList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits1.txt").getText(), false);
     hudLabelMap["CreditsList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits2.txt").getText(), false);
     hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
@@ -398,6 +389,11 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["PeopleTextBox"]->tab = true;
     hudLabelMap["VisualsTextBox"]->tab = true;
     
+    hudLabelMap["NavAboutTextBox"]->tab   = true;
+    hudLabelMap["NavCastTextBox"]->tab    = true;
+    hudLabelMap["NavCreditsTextBox"]->tab = true;
+    hudLabelMap["NavBackersTextBox"]->tab = true;
+    
     //dynamic backings
     //
     setupBacking("QuestionTextBox_1_", CLOUDS_HUD_QUESTION, "QuestionBacking");
@@ -407,6 +403,25 @@ void CloudsHUDController::calculateFontSizes(){
     setupBacking("VSCreditsTextBoxTop", CLOUDS_HUD_LOWER_THIRD, "VSCreditsBackingTop");
     setupBacking("VSCreditsTextBoxBottom", CLOUDS_HUD_LOWER_THIRD, "VSCreditsBackingBottom");
 
+    //triangle ticks
+    attachTriangleToLabel(hudLabelMap["NextButtonTextBox"], CLOUDS_HUD_NEXT, "NextButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    
+    attachTriangleToLabel(hudLabelMap["ExploreTextBox"], CLOUDS_HUD_PAUSE, "ExploreButtonArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
+    attachTriangleToLabel(hudLabelMap["SeeMoreTextBox"], CLOUDS_HUD_PAUSE, "SeeMoreButtonArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
+    attachTriangleToLabel(hudLabelMap["ResetButtonTextBox"], CLOUDS_HUD_PAUSE, "ResetButtonSpace", CLOUDS_HUD_TRIANGLE_X);
+    
+    attachTriangleToLabel(hudLabelMap["RSResetButtonTextBox"], CLOUDS_RESEARCH, "RSResetButtonArrowSpace", CLOUDS_HUD_TRIANGLE_X);
+    attachTriangleToLabel(hudLabelMap["ResumeButtonTextBox"], CLOUDS_RESEARCH_RESUME, "ResumeButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    
+    attachTriangleToLabel(hudLabelMap["TopicSelectPlayTextBox"], CLOUDS_RESEARCH_TOPIC, "TopicSelectPlayArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    attachTriangleToLabel(hudLabelMap["PeopleSelectPlayTextBox"], CLOUDS_RESEARCH_PPL, "PeopleSelectPlayArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    
+    attachTriangleToLabel(hudLabelMap["ListScrollUpArrowSpace"], CLOUDS_RESEARCH, "ListScrollUpArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
+    attachTriangleToLabel(hudLabelMap["ListScrollDownArrowSpace"], CLOUDS_RESEARCH, "ListScrollDownArrowSpace", CLOUDS_HUD_TRIANGLE_DOWN);
+    
+    
+    hudLabelMap["ExploreTextBox"]->makeArrowPositionDynamic();
+    hudLabelMap["SeeMoreTextBox"]->makeArrowPositionDynamic();
     
 }
 
@@ -873,6 +888,11 @@ void CloudsHUDController::update(){
         updateScroll();
         updateResearchNavigation();
     }
+    
+    if( hudOpenMap[CLOUDS_ABOUT_MAIN] ){
+        updateAboutNavigation();
+    }
+    
     ///////////////////////////////
 
 }
@@ -974,21 +994,57 @@ void CloudsHUDController::updateResearchNavigation(){
 }
 
 
+
 void CloudsHUDController::showAbout(){
 
-    //TODO: not all at once!...
+
     animateOn(CLOUDS_ABOUT_MAIN);
-    animateOn(CLOUDS_ABOUT_BACKERS);
-    animateOn(CLOUDS_ABOUT_CAST);
-    animateOn(CLOUDS_ABOUT_CREDITS);
-    animateOn(CLOUDS_ABOUT_INFO);
-    animateOn(CLOUDS_ABOUT_SETTINGS);
+//    animateOn(CLOUDS_ABOUT_BACKERS);
+//    animateOn(CLOUDS_ABOUT_CAST);
+//    animateOn(CLOUDS_ABOUT_CREDITS);
+//    animateOn(CLOUDS_ABOUT_INFO);
+//    animateOn(CLOUDS_ABOUT_SETTINGS);
     
 }
 
 void CloudsHUDController::hideAbout(){
     //TODO: !!
     //animateOff(CLOUDS_HUD_ABOUT);
+}
+
+void CloudsHUDController::updateAboutNavigation(){
+
+    if(hudLabelMap["NavAboutTextBox"]->isClicked()){
+        currentAboutTab = CLOUDS_HUD_ABOUT_TAB_ABOUT;
+    }
+    else if(hudLabelMap["NavCastTextBox"]->isClicked()){
+        currentAboutTab = CLOUDS_HUD_ABOUT_TAB_CAST;
+    }
+    else if(hudLabelMap["NavCreditsTextBox"]->isClicked()){
+        currentAboutTab = CLOUDS_HUD_ABOUT_TAB_CREDITS;
+    }
+    else if(hudLabelMap["NavBackersTextBox"]->isClicked()){
+        currentAboutTab = CLOUDS_HUD_ABOUT_TAB_BACKERS;
+    }
+
+    
+    hudLabelMap["NavAboutTextBox"]->baseInteractiveBounds = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("AboutHoverBacking")->bounds;
+    hudLabelMap["NavAboutTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NavAboutTextBox"]->baseInteractiveBounds);
+
+    hudLabelMap["NavCastTextBox"]->baseInteractiveBounds = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("NavCastHoverBacking")->bounds;
+    hudLabelMap["NavCastTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NavCastTextBox"]->baseInteractiveBounds);
+
+    hudLabelMap["NavCreditsTextBox"]->baseInteractiveBounds = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("NavCreditsHoverBacking")->bounds;
+    hudLabelMap["NavCreditsTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NavCreditsTextBox"]->baseInteractiveBounds);
+
+    hudLabelMap["NavBackersTextBox"]->baseInteractiveBounds = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("NavBackersHoverBacking")->bounds;
+    hudLabelMap["NavBackersTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NavBackersTextBox"]->baseInteractiveBounds);
+    
+    hudLabelMap["NavAboutTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_ABOUT;
+    hudLabelMap["NavCastTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_CAST;
+    hudLabelMap["NavCreditsTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_CREDITS;
+    hudLabelMap["NavBackersTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_BACKERS;
+    
 }
 
 void CloudsHUDController::pause(){

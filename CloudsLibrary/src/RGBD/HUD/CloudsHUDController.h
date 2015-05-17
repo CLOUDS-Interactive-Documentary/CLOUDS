@@ -55,6 +55,12 @@ typedef enum{
     CLOUDS_HUD_RESEARCH_TAB_VISUALS,
 } CloudsHUDResearchTab;
 
+typedef enum{
+    CLOUDS_HUD_ABOUT_TAB_ABOUT = 0,
+    CLOUDS_HUD_ABOUT_TAB_CAST,
+    CLOUDS_HUD_ABOUT_TAB_CREDITS,
+    CLOUDS_HUD_ABOUT_TAB_BACKERS,
+} CloudsHUDAboutTab;
 
 typedef enum{
     CLOUDS_HUD_TRIANGLE_UP = 0,
@@ -253,7 +259,8 @@ class CloudsHUDController {
     bool bPaused;
 
     void updateResearchNavigation();
-    vector<ofRectangle> clickThroughRectangles;
+    void updateAboutNavigation();
+
     bool bResearchTransitioning;
     
     void selectButton(const CloudsHUDResearchButton& button);
@@ -282,6 +289,10 @@ class CloudsHUDController {
     
     CloudsHUDResearchTab currentTab;
     CloudsHUDResearchTab nextTab;
+
+    CloudsHUDAboutTab currentAboutTab;
+    //CloudsHUDAboutTab nextTab;
+    
     void drawList();
     
     CloudsHUDLabel* getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);
