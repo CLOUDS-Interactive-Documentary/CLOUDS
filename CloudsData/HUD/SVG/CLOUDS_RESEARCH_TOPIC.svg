@@ -206,7 +206,7 @@
 <g id="ResumeButtonBacking" display="none">
 	<rect x="1267.86" y="828.5" display="inline" opacity="0.36" fill="#101010" width="115.952" height="34"/>
 </g>
-<g id="ResumeButtonArrow">
+<g id="ResumeButtonArrow" display="none">
 	<polygon fill="#FFFFFF" points="1364.852,839.217 1364.852,851.783 1371.134,845.5 	"/>
 </g>
 <g id="ResumeButtonArrowSpace">

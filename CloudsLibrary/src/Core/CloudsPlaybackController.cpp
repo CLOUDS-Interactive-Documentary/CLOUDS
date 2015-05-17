@@ -152,11 +152,11 @@ void CloudsPlaybackController::clearAct(){
         currentVisualSystem = NULL;
     }
     
-    if(showingVisualSystem){
-        ofLogError("CloudsPlaybackController::clearAct") << "Clearing act with visual system still showing";
-    }
+    hideVisualSystem();
     
-    showingVisualSystem = false;
+//    if(showingVisualSystem){
+//        ofLogError("CloudsPlaybackController::clearAct") << "Clearing act with visual system still showing";
+//    }
     
     CloudsVisualSystemManager::DeallocateSystems();
     
@@ -945,9 +945,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
            !bQuestionAsked &&
            rgbdVisualSystem->isQuestionSelected())
         {
-            currentAct->pause();
             bQuestionAsked = true;
             run.questionsAsked++;
+            currentAct->pause();
+            currentAct->terminateAct();
             transitionController.transitionWithQuestion(2.0, 0.1);
         }
     }
@@ -987,6 +988,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     if(returnToIntro){
         bShowingAct = false;
         if(currentAct != NULL){
+            currentAct->pause();
             currentAct->terminateAct();
         }
         returnToIntro = false;
@@ -1274,6 +1276,11 @@ void CloudsPlaybackController::updateTransition(){
                     
                 if(bQuestionAsked){
                     
+                    if(shouldClearAct){
+                        shouldClearAct = false;
+                        clearAct();
+                    }
+
                     selectedQuestion = rgbdVisualSystem->getSelectedQuestion();
                     selectedQuestionClip = selectedQuestion->clip;
                     topic = selectedQuestion->topic;
@@ -1422,6 +1429,7 @@ void CloudsPlaybackController::updateTransition(){
                 break;
         }
 
+        
         //clean up acts in between these states
         if(transitionController.fadedOut()){
             clearRenderTarget();
@@ -1439,7 +1447,6 @@ void CloudsPlaybackController::updateTransition(){
                 //starting
             case TRANSITION_INTERVIEW_OUT:
 				if(bQuestionAsked || rgbdVisualSystem->isResetSelected()){
-                    currentAct->terminateAct();
                     hud.animateOff(CLOUDS_HUD_NEXT);
                     hud.animateOff(CLOUDS_HUD_HOME);
                     hud.animateOff(CLOUDS_HUD_LOWER_THIRD);
