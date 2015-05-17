@@ -98,7 +98,7 @@ void CloudsRGBDCamera::update(ofEventArgs& args){
 
 void CloudsRGBDCamera::jumpToPosition(){
 	mouseBasedNode.setPosition(currentPosition);
-	mouseBasedNode.lookAt(currentLookTarget);	
+	mouseBasedNode.lookAt(currentLookTarget, ofVec3f(0,1,0));
 }
 
 void CloudsRGBDCamera::setCanvasWidthHeight(float width, float height ){
@@ -156,7 +156,7 @@ void CloudsRGBDCamera::setPositionFromMouse(){
 	}
 	
 	mouseBasedNode.setPosition(driftPosition);
-	mouseBasedNode.lookAt(currentLookTarget);
+	mouseBasedNode.lookAt(currentLookTarget, ofVec3f(0,1,0));
 	
 	//Compute new FOV
 	bool onEdge = GetCloudsInputX() < 20 || GetCloudsInputX() > canvasWidth - 40 ||

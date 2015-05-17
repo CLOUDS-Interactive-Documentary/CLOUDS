@@ -448,7 +448,7 @@ void CloudsHUDController::calculateFontSizes(){
     attachTriangleToLabel(hudLabelMap["BackersScrollUpSpace"], CLOUDS_ABOUT_BACKERS, "BackersScrollUpSpace", CLOUDS_HUD_TRIANGLE_UP);
     attachTriangleToLabel(hudLabelMap["BackersScrollDownSpace"],CLOUDS_ABOUT_BACKERS, "BackersScrollDownSpace", CLOUDS_HUD_TRIANGLE_DOWN);
 
-    attachTriangleToLabel(hudLabelMap["ExitButtonTextBox"], CLOUDS_ABOUT_MAIN, "ExitButtonArrowSpace", CLOUDS_HUD_TRIANGLE_X);
+    attachTriangleToLabel(hudLabelMap["ExitButtonTextBox"], CLOUDS_ABOUT_MAIN, "ExitButtonArrowSpace", CLOUDS_HUD_TRIANGLE_NONE);
     
     hudLabelMap["ExploreTextBox"]->makeArrowPositionDynamic();
     hudLabelMap["SeeMoreTextBox"]->makeArrowPositionDynamic();
@@ -459,7 +459,7 @@ void CloudsHUDController::setupBacking(string labelName, CloudsHUDLayerSet layer
     
     hudLabelMap[labelName]->bDynamicBacking = true;
     hudLabelMap[labelName]->dynamicBackingMesh = &layers[layer]->svg.getMeshByID(backingName)->mesh;
-    hudLabelMap[labelName]->dynamicBackingBounds =  layers[layer]->svg.getMeshByID(backingName)->bounds;
+    hudLabelMap[labelName]->dynamicBackingBounds = layers[layer]->svg.getMeshByID(backingName)->bounds;
     
     hudLabelMap[labelName]->setDynamicMargin();
 }
@@ -564,6 +564,8 @@ void CloudsHUDController::attachTriangleToLabel(CloudsHUDLabel* label,
     ofVec2f cd = c.getInterpolated(d, .5);
     ofVec2f da = d.getInterpolated(a, .5);
     
+    label->triangleMesh.clear();
+    
     switch(direction){
         case CLOUDS_HUD_TRIANGLE_UP:
             label->triangleMesh.addVertex(ab);
@@ -616,7 +618,6 @@ void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 
-    
     animateOff( CLOUDS_HUD_HOME );
 	animateOff( CLOUDS_HUD_LOWER_THIRD );
 	animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
@@ -1190,6 +1191,19 @@ void CloudsHUDController::unpause(){
     bJustPaused = false;
     
 }
+
+void CloudsHUDController::enteringVisuals(){
+    hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("STOP"), false);
+    attachTriangleToLabel(hudLabelMap["NextButtonTextBox"], CLOUDS_HUD_NEXT, "NextButtonArrowSpace", CLOUDS_HUD_TRIANGLE_UP);
+
+}
+
+void CloudsHUDController::exitingVisuals(){
+    hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"), false);
+    attachTriangleToLabel(hudLabelMap["NextButtonTextBox"], CLOUDS_HUD_NEXT, "NextButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    
+}
+
 
 void CloudsHUDController::setTopics(const set<string>& topics){
     CloudsHUDResearchList& topicList = researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS];

@@ -67,7 +67,8 @@ typedef enum{
     CLOUDS_HUD_TRIANGLE_RIGHT,
     CLOUDS_HUD_TRIANGLE_DOWN,
     CLOUDS_HUD_TRIANGLE_LEFT,
-    CLOUDS_HUD_TRIANGLE_X
+    CLOUDS_HUD_TRIANGLE_X,
+    CLOUDS_HUD_TRIANGLE_NONE
 } CloudsHUDTriangleDirection;
 
 class CloudsHUDResearchButton {
@@ -154,6 +155,9 @@ class CloudsHUDController {
     
     void showAbout();
     void hideAbout();
+    
+    void enteringVisuals();
+    void exitingVisuals();
     
 	void animateOn(CloudsHUDLayerSet layer);
 	void animateOff(CloudsHUDLayerSet layer);

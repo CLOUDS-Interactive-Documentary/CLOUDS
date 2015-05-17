@@ -186,7 +186,7 @@ void CloudsVisualSystemVisuals::selectSystem(string systemName){
         currentCameraSideDir = targetCameraUpDir;
         
         selectCamera.setPosition(camTargetPos);
-        selectCamera.lookAt(camTargetPos);
+        selectCamera.lookAt(camLookPos);
         skipCameraSweep = false;
     }
 

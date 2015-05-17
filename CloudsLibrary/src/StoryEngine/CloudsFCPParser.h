@@ -165,7 +165,7 @@ class CloudsFCPParser {
 	string closestKeyThemeToTag(const string&  searchTag);
 	
 	set<string> clusterMapColors;
-    vector<string> getAdjacentKeywords(const string&  currentKeyword, int numOfDesiredKeywords);
+    //vector<string> getAdjacentKeywords(const string&  currentKeyword, int numOfDesiredKeywords);
     //float getCohesionIndexForKeyword(const string&  keyword);
     //float getDistanceFromAdjacentKeywords(const string&  keyword1, const string&  keyword2);
     

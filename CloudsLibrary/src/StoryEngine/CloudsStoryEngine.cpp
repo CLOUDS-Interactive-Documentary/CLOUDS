@@ -472,32 +472,60 @@ CloudsAct* CloudsStoryEngine::buildActWithTopic(CloudsRun& run, string forceTopi
 //TODO: add seed clip from where we left off
 CloudsAct* CloudsStoryEngine::buildActWithPerson(CloudsRun& run, string speakerId){
 
-    vector<CloudsClip*> clips = parser->getClipsForPerson(speakerId);
-    for(int i = clips.size()-1; i >= 0; i--){
-        if(run.historyContainsClip(clips[i]) || !clips[i]->hasMediaAsset){
-            clips.erase(clips.begin()+i);
-        }
+    CloudsClip* seed;
+
+    if(run.clipHistory.size() > 0 && run.clipHistory.back()->person == speakerId){
+        seed = run.clipHistory.back();
     }
-    
-    //no more people left!
-    if(clips.size() == 0){
-        return NULL;
+    else {
+        vector<CloudsClip*> clips = parser->getClipsForPerson(speakerId);
+        for(int i = clips.size()-1; i >= 0; i--){
+            if(run.historyContainsClip(clips[i]) || !clips[i]->hasMediaAsset){
+                clips.erase(clips.begin()+i);
+            }
+        }
+        
+        if(clips.size() != 0){
+            seed = clips[ (int)(ofRandom(clips.size())) ];
+        }
+        else{
+            //no more people left!
+            seed = NULL;
+            ofLogError("CloudsStoryEngine::buildActWithPerson") << "No clips left for person " << speakerId;
+        }
     }
     
     CloudsActSettings settings;
     settings.run = &run;
     settings.person = speakerId;
-    settings.seed = clips[ (int)(ofRandom(clips.size())) ];
-    settings.topic = settings.seed->getKeywords()[0];
-    settings.playSeed = true;
+    if(seed != NULL){
+        settings.seed = seed;
+        settings.playSeed = true;
+        if(run.topicHistory.size() > 0 && ofContains(seed->getKeywords(), run.topicHistory.back())){
+            settings.topic = run.topicHistory.back();
+        }
+        else{
+            settings.topic = seed->getKeywords()[0];
+        }
+    }
+    else{
+        settings.seed = NULL;
+        settings.playSeed = false;
+        if(run.topicHistory.size() > 0){
+           settings.topic = run.topicHistory.back();
+        }
+        else{
+            ofLogError("CloudsStoryEngine::buildActWithPerson") << "No topic and no seed, weird!";
+        }
+        
+    }
+
     settings.forceTopic = false;
     settings.forceSpeaker = true;
     settings.allowVisuals = false;
     
     return buildAct(settings);
 }
-
-
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string seedTopic, bool playSeed){
     

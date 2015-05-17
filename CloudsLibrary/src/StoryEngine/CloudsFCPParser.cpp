@@ -805,6 +805,11 @@ void CloudsFCPParser::calculateKeywordFamilies(){
 }
 
 vector<string>& CloudsFCPParser::getKeywordFamily(const string& keyword){
+    if(keywordFamilies.find(keyword) == keywordFamilies.end()){
+        //just make a family for it by itself, so that way there is always at least one keyword returned
+        keywordFamilies[keyword].push_back(keyword);
+        ofLogError("CloudsFCPParser::getKeywordFamily") << "No family for keyword " << keyword;
+    }
 	return keywordFamilies[keyword];
 }
 

@@ -1276,6 +1276,8 @@ void CloudsPlaybackController::updateTransition(){
                 
             ///LEAVING
             case TRANSITION_INTERVIEW_IN:
+                rgbdVisualSystem->transtionFinished();
+
                 break;
                 
             ///LEAVING
@@ -1293,7 +1295,6 @@ void CloudsPlaybackController::updateTransition(){
                     topic = selectedQuestion->topic;
                     showingResearchMode = false;
                     
-                    rgbdVisualSystem->transtionFinished();
                     rgbdVisualSystem->clearQuestions();
                     rgbdVisualSystem->stopSystem();
                     
@@ -1425,6 +1426,7 @@ void CloudsPlaybackController::updateTransition(){
                 ///LEAVING
             case TRANSITION_VISUAL_LOOP_OUT:
                 
+
                 showingVisualLoop = false;
                 
                 if(interludeSystem == NULL){
@@ -1432,6 +1434,7 @@ void CloudsPlaybackController::updateTransition(){
                 }
 
                 cleanupInterlude();
+                hud.exitingVisuals();
                 
             default:
                 break;
@@ -1440,6 +1443,8 @@ void CloudsPlaybackController::updateTransition(){
         
         //clean up acts in between these states
         if(transitionController.fadedOut()){
+            //rgbdVisualSystem->transtionFinished();
+
             clearRenderTarget();
             if(shouldClearAct){
                 shouldClearAct = false;
@@ -1570,6 +1575,8 @@ void CloudsPlaybackController::updateTransition(){
                 
                 createInterludeSoundQueue();
                 
+                hud.enteringVisuals();
+
                 break;
                 
             default:
