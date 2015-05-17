@@ -956,7 +956,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             currentAct->terminateAct();
             transitionController.transitionWithQuestion(2.0, 0.1);
         }
-        rgbdVisualSystem->paused = hud.isPaused() || transitionController.isTransitioning();
+        rgbdVisualSystem->paused = hud.isPaused() || (transitionController.isTransitioning() && !bQuestionAsked);
     }
 
 	getSharedVideoPlayer().showingLowerThirds = currentVisualSystem == rgbdVisualSystem;
@@ -1017,7 +1017,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             if(hud.isItemConfirmed()){
                 showingExploreMap = false;
                 hud.animateOff();
-                hud.questionHoverOn("WATCHING " + ofToUpper(selectedTopic));
+                hud.questionHoverOn(ofToUpper(selectedTopic));
                 exploreMapSelectedTopic = selectedTopic;
                 //Transition into new act based on topic
                 transitionController.transitionFromExploreMap(1.0);
