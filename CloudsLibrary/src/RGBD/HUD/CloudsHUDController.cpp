@@ -377,7 +377,7 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["NavCreditsTextBox"]->setText(GetTranslationForString("CREDITS"), false);
     hudLabelMap["NavBackersTextBox"]->setText(GetTranslationForString("BACKERS"), false);
     
-    hudLabelMap["ExitButtonTextBox"]->setText(GetTranslationForString("EXIT"), false);
+    hudLabelMap["ExitButtonTextBox"]->setText(GetTranslationForString("DONE"), false);
 
     ///////////////////////////
     hudLabelMap["AboutTextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/about.txt").getText(), false);
@@ -472,7 +472,7 @@ CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
                                                       int layoutFontSize)
 {
     
-    for( int i = 0; i < CLOUDS_HUD_ALL; i++ ){
+    for(int i = 0; i < CLOUDS_HUD_ALL; i++ ){
         
         SVGMesh* textMesh = layers[(CloudsHUDLayerSet)i]->svg.getMeshByID( layerName );
         
@@ -616,6 +616,7 @@ void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 
+    
     animateOff( CLOUDS_HUD_HOME );
 	animateOff( CLOUDS_HUD_LOWER_THIRD );
 	animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
@@ -625,6 +626,8 @@ void CloudsHUDController::actEnded(CloudsActEventArgs& args){
     layers[CLOUDS_HUD_LOWER_THIRD]->bForceHover = false;
     
     bVisualSystemDisplayed = false;
+    bActJustStarted = false;
+    bClipIsPlaying = false;
     
 }
 //////////TODO: these need to animate out
@@ -1057,10 +1060,6 @@ void CloudsHUDController::hideAbout(){
 }
 
 void CloudsHUDController::updateAboutNavigation(){
-
-    if(hudLabelMap["ExitButtonTextBox"]->isClicked()){
-        hideAbout();
-    }
     
     if(hudLabelMap["NavAboutTextBox"]->isClicked()){
         currentAboutTab = CLOUDS_HUD_ABOUT_TAB_INFO;
@@ -1548,6 +1547,14 @@ void CloudsHUDController::researchTransitionFinished(){
     }
 }
 
+bool CloudsHUDController::aboutClosed(){
+    bool closed = hudLabelMap["ExitButtonTextBox"]->isClicked();
+    if(closed){
+        hideAbout();
+    }
+    return closed;
+
+}
 void CloudsHUDController::setHudEnabled(bool enable){
 	bDrawHud = enable;
 }

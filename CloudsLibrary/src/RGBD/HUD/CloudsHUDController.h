@@ -137,6 +137,8 @@ class CloudsHUDController {
     bool selectedPeopleTab();
     bool selectedVisualsTab();
     
+    bool aboutClosed();
+    
 	void mouseMoved(ofMouseEventArgs& args);
 	void mousePressed(ofMouseEventArgs& args);
 	void mouseReleased(ofMouseEventArgs& args);

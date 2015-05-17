@@ -106,6 +106,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void autoSelectQuestion();
 	CloudsPortal* getSelectedQuestion();
     
+    void aboutClosed();
     bool userHasBegun();
     bool introNodesShown;
     float introNodeChangeTime;
@@ -191,7 +192,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float selectedQuestionTime;
 	ofVec3f selectQuestionStartPos;
 	ofQuaternion selectQuestionStartRot;
-	bool inMovingThroughTunnelState();
     
 	vector<bool> questionChannels; //0-3 for the four qeustion slots
 	vector<float> channelPauseTime;

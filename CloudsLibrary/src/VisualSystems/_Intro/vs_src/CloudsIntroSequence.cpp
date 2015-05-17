@@ -389,7 +389,7 @@ void CloudsIntroSequence::reloadShaders(){
 
 void CloudsIntroSequence::selfUpdate(){
 
-	if(!inMovingThroughTunnelState() && timeline->getIsPlaying()){
+	if(!userHasBegun() && timeline->getIsPlaying()){
 		timeline->stop();
 	}
 	
@@ -398,12 +398,6 @@ void CloudsIntroSequence::selfUpdate(){
 	updateWaiting();
 	updateQuestions();
 	updateTitle();
-}
-
-bool CloudsIntroSequence::inMovingThroughTunnelState(){
-    return currentState == CLOUDS_INTRO_PLAYING ||
-           currentState == CLOUDS_INTRO_RESUMING ||
-           currentState == CLOUDS_INTRO_RESEARCH;
 }
 
 void CloudsIntroSequence::updateCamera(){
@@ -648,7 +642,10 @@ void CloudsIntroSequence::updateTitle(){
 	
 	titleNoisePosition += titleNoiseSpeed;
 	float hoverTitleOpacity;
-	if(hoveringTitle || (currentState == CLOUDS_INTRO_PLAYING && timeline->getIsPlaying()) ){
+    if(currentState == CLOUDS_INTRO_ABOUT){
+        hoverTitleOpacity = .9;
+    }
+	else if(hoveringTitle || (currentState == CLOUDS_INTRO_PLAYING && timeline->getIsPlaying()) ){
 		hoverTitleOpacity = .9;
 	}
 	else{
@@ -1021,6 +1018,10 @@ void CloudsIntroSequence::vhxError(){
     changeState(CLOUDS_INTRO_VHX_ERROR);
 }
 
+void CloudsIntroSequence::aboutClosed(){
+    changeState(CLOUDS_INTRO_MENU);
+}
+
 bool CloudsIntroSequence::userHasBegun(){
     return currentState == CLOUDS_INTRO_PLAYING  ||
            currentState == CLOUDS_INTRO_RESEARCH ||
@@ -1125,20 +1126,15 @@ void CloudsIntroSequence::selfDraw(){
 
 void CloudsIntroSequence::drawTunnel(){
 	ofPushStyle();
-	
-    if(distanceRange.min == distanceRange.max){
-        distanceRange.max = distanceRange.min+1;
-    }
-    if(pointSize.min == pointSize.max){
-        pointSize.max = pointSize.min +1;
-    }
+
     
 	tunnelShader.begin();
 	tunnelShader.setUniform1f("minPointSize", pointSize.min);
 	tunnelShader.setUniform1f("maxPointSize", pointSize.max);
-	tunnelShader.setUniform1f("minDistance", distanceRange.min);
-	
-	tunnelShader.setUniform1f("maxDistance", distanceRange.max + MAX(1.0 - cursorAlpha, currentTitleOpacity) * 120.);
+    
+    float max = MAX(distanceRange.min + .01, distanceRange.max + MAX(1.0 - cursorAlpha, currentTitleOpacity) * 120.);
+    tunnelShader.setUniform1f("minDistance", distanceRange.min);
+	tunnelShader.setUniform1f("maxDistance", max);
 	
 	tunnelShader.setUniform1f("cameraZ", warpCamera.getPosition().z);
 	tunnelShader.setUniform1f("tunnelDepth", tunnelMax.z);
@@ -1187,11 +1183,14 @@ void CloudsIntroSequence::drawPortals(){
 }
 
 void CloudsIntroSequence::drawCloudsType(){
+    if(currentState == CLOUDS_INTRO_ABOUT){
+        return;
+    }
 	ofPushMatrix();
 	ofPushStyle();
 	
 	ofRotate(180, 0, 0, 1);
-	
+
 	ofEnableAlphaBlending();
 	ofSetColor(255, currentTitleOpacity*255);
 	ofTranslate(0, 0, titleTypeOffset );
@@ -1636,6 +1635,9 @@ void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
     else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
         newMenuItem.pressed      = newMenuItem.bounds.inside(data.x, data.y);
         resumeMenuItem.pressed   = resumeMenuItem.bounds.inside(data.x, data.y);
+        if(!newMenuItem.pressed && !resumeMenuItem.pressed){
+            changeState(CLOUDS_INTRO_MENU);
+        }
     }
 	else{
 		for(int i = 0; i < startQuestions.size(); i++){

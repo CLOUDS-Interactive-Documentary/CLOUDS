@@ -59,9 +59,10 @@ CloudsPlaybackController::CloudsPlaybackController(){
 
 	userReset = false;
 	returnToIntro = false;
-
-	badIdle = false;
-	badIdleStartTime = false;
+    justOpened = true;
+    
+//	badIdle = false;
+//	badIdleStartTime = false;
 
 	showingIntro = false;
 	showingVisualSystem = false;
@@ -305,6 +306,7 @@ void CloudsPlaybackController::setup(){
 #endif
 	
 	cout << "*****LOAD STEP*** SHOWING INTRO" << endl;
+    //transitionController.transitionToIntro(1.0);
 	showIntro();
 
 	cout << "*****LOAD STEP*** STARTING THREAD" << endl;
@@ -848,7 +850,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     GetCloudsInput()->bUserBegan = !showingIntro || (showingIntro && introSequence->userHasBegun());
 
 	if(loading){
-		return;
+//        updateTransition();
+        return;
 	}
 	
 	if(loadFinished){
@@ -866,6 +869,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	//INTRO
 	if(showingIntro){
     
+        if(hud.aboutClosed()){
+            introSequence->aboutClosed();
+        }
+        
         if(introSequence->isResearchModeSelected()){
             
             //starts the transition to research
@@ -1468,31 +1475,19 @@ void CloudsPlaybackController::updateTransition(){
                 //starting
 			case TRANSITION_INTRO_IN:
                 
-				clusterMap->clearTraversal();
+                if(!justOpened){
+                    justOpened = false;
+                    clusterMap->clearTraversal();
                 
-//                if(introSequence != NULL){
-//                    delete introSequence;
-//                }
-//                
-//                introSequence = new CloudsIntroSequence();
-//                introSequence->setup();
-//				introSequence->setStartQuestions(startingNodes);
-                introSequence->firstPlay = false;
-#ifdef OCULUS_RIFT
-                introSequence->hud = &hud;
-                introSequence->setupHUDGui();
-#endif
-//                introSequence->setDrawToScreen(false);
-                hud.setHudEnabled(true);
-
-                introSequence->loadingFinished();
-                if(bVHXRentalExpired){
-                    introSequence->vhxRentalExpired();
-                    bVHXRentalExpired = false;
+                    introSequence->firstPlay = false;
+                    introSequence->loadingFinished();
+                    if(bVHXRentalExpired){
+                        introSequence->vhxRentalExpired();
+                        bVHXRentalExpired = false;
+                    }
                 }
-//                else{
-//                    introSequence->vhxAuthenticated();
-//                }
+                
+                hud.setHudEnabled(true);
                 showIntro();
                 break;
                 
