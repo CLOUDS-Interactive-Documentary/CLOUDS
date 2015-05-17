@@ -364,7 +364,7 @@ void CloudsPlaybackController::threadedFunction(){
 //	///SOUND
 	cout << "*****LOAD STEP SOUND" << endl;
 #ifdef TONIC_SOUNDS
-	mixer.setup();
+//	mixer.setup();
 #endif
 	sound.setup(storyEngine);
     parser.parseSounds(sound.renders);
@@ -1076,7 +1076,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	}
 
 #ifdef VHX_MEDIA
-    if(shouldPlayAct && currentAct->getAllClips()[0]->vhxSourceVideoUrl != ""){
+    if(shouldPlayAct && currentAct->clipURLsLoaded() ){
         playCurrentAct();
         shouldPlayAct = false;
     }
@@ -1934,15 +1934,19 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
         clearAct();
     }
     
+//    if(args.act->getAllClips().size() == 0){
+//        ofLogError("CloudsPlaybackController::actCreated") << "No clips in act!";
+//        args.act->terminateAct();
+//        returnToIntro = true;
+//        return;
+//    }
 	rgbdVisualSystem->clearQuestions();
 	
 	numClipsPlayed = 0;
 	currentAct = args.act;
     
 #ifdef VHX_MEDIA
-    if(currentAct != NULL){
-        currentAct->fetchClipVhxUrls();
-    }
+    currentAct->fetchClipVhxUrls();
 #endif
     
 	if(shouldPlayClusterMap){
