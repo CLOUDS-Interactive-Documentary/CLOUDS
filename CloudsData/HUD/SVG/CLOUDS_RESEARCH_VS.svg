@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1440px"
+	 height="900px" viewBox="0 0 1440 900" enable-background="new 0 0 1440 900" xml:space="preserve">
+<g id="_x2F__x2F_Background" display="none">
+	<rect x="0" display="inline" fill="#090A0A" width="1440" height="900"/>
+</g>
+<g id="_x2F__x2F_ImagePlane" display="none">
+	<g display="inline">
+		<defs>
+			<rect id="SVGID_1_" x="1.969" width="1439.998" height="900"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#SVGID_2_)">
+			
+				<image overflow="visible" width="1920" height="1080" xlink:href="70D1089922C96097.jpg"  transform="matrix(-0.8394 0 0 0.8394 1448.9421 -5.0229)">
+			</image>
+		</g>
+	</g>
+</g>
+<g id="VisualSys" display="none">
+	
+		<image display="inline" overflow="visible" width="1552" height="985" xlink:href="../../../../../../../Desktop/0.png"  transform="matrix(1.0578 0 0 1.0578 -99.0208 -56.3477)">
+	</image>
+</g>
+<g id="MapHoverBacking" display="none">
+	<rect x="342.307" y="776.695" display="inline" opacity="0.6" fill="#101010" width="347.227" height="33.353"/>
+</g>
+<g id="PeopleHoverBacking" display="none">
+	<rect x="689.534" y="776.695" display="inline" opacity="0.6" fill="#101010" width="347.669" height="33.316"/>
+</g>
+<g id="VSHoverBacking" display="none">
+	<rect x="1037.204" y="776.718" display="inline" opacity="0.6" fill="#101010" width="346.17" height="33.282"/>
+</g>
+<g id="NavDivisions" display="none">
+	
+		<line display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="689.534" y1="775.734" x2="689.534" y2="810.734"/>
+	
+		<line display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1037.204" y1="775.758" x2="1037.204" y2="810.765"/>
+	
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="341.319" y1="776.234" x2="1384.326" y2="776.234"/>
+</g>
+<g id="NavTypography" display="none">
+	<g display="inline">
+		
+			<text transform="matrix(1 0 0 1 830.7478 799.2632)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">PEOPLE</text>
+	</g>
+	<g display="inline">
+		
+			<text transform="matrix(1 0 0 1 1170.9402 799.1758)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">VISUALS</text>
+	</g>
+	<g display="inline">
+		
+			<text transform="matrix(1 0 0 1 496.6453 799.1758)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">MAP</text>
+	</g>
+</g>
+<g id="MapTextBox" display="none">
+	
+		<rect x="498.867" y="787.769" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="34.107" height="11.494"/>
+</g>
+<g id="PeopleTextBox" display="none">
+	
+		<rect x="830.748" y="787.77" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="65.243" height="11.494"/>
+</g>
+<g id="VisualsTextBox" display="none">
+	
+		<rect x="1172.949" y="787.77" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="74.679" height="11.494"/>
+</g>
+<g id="ListBacking" display="none">
+	<rect x="59.329" y="71.466" display="inline" opacity="0.6" fill="#101010" width="282" height="704.519"/>
+</g>
+<g id="ListTextBoxes" display="none">
+	
+		<rect x="69.59" y="85.621" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
+</g>
+<g id="ListScrollConnectStatic" display="none">
+	
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="324.499" y1="85.618" x2="324.499" y2="775.984"/>
+</g>
+<g id="ListScrollDownBacking" display="none">
+	<rect x="59.326" y="775.984" display="inline" opacity="0" fill="#101010" width="281.971" height="34.516"/>
+</g>
+<g id="ListScrollDownArrow" display="none">
+	<polygon display="inline" opacity="0.69" fill="#FFFFFF" points="206.588,790.991 194.022,790.991 200.305,797.273 	"/>
+</g>
+<g id="ListScrollDownArrowSpace" display="none">
+	
+		<rect x="194.005" y="790.984" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.623" height="6.234"/>
+</g>
+<g id="ListScrollUpBacking" display="none">
+	<rect x="59.4" y="36.505" display="inline" opacity="0" fill="#101010" width="281.897" height="34.961"/>
+</g>
+<g id="ListScrollUpArrow" display="none">
+	<polygon display="inline" opacity="0.69" fill="#FFFFFF" points="194.022,57.113 206.588,57.113 200.305,50.831 	"/>
+</g>
+<g id="ListScrollUpArrowSpace" display="none">
+	
+		<rect x="194.057" y="50.884" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.623" height="6.234"/>
+</g>
+<g id="ListFrame" display="none">
+	<g display="inline" opacity="0.26">
+		<path fill="none" stroke="#FFFFFF" stroke-width="0.25" stroke-miterlimit="10" d="M641.126,37.054"/>
+	</g>
+	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M58.873,37.016"/>
+	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1383.813,36.5"/>
+	
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="341.865" y1="36" x2="341.814" y2="811.013"/>
+</g>
+<g id="VSTitleBottomTextBox_copy">
+	<rect x="463.476" y="610.11" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
+</g>
+<g id="VSTitleTopTextBox">
+	<rect x="463.476" y="279.755" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
+</g>
+<g id="RSBioBacking" display="none">
+	<rect x="627.307" y="348.729" display="inline" opacity="0.16" fill="#101010" width="489.012" height="189.615"/>
+</g>
+<g id="RSBioFrame" display="none">
+	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M341.313,83.5"/>
+	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1003.813,56"/>
+	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M674.313,432.5"/>
+	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M773.313,63.5"/>
+	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M995.813,64"/>
+	<path display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" d="M345.5,59"/>
+	
+		<rect x="626.813" y="348.729" display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="490" height="189.615"/>
+</g>
+<g id="RSBioTypography" display="none">
+	<g display="inline">
+		
+			<text transform="matrix(1 0 0 1 642.5891 392.9463)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="32" letter-spacing="3">JAMES GEORGE</text>
+	</g>
+	<g display="inline">
+		<text transform="matrix(1 0 0 1 642.5891 434.2603)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">Makes goat sounds in his studio in Brooklyn, NY.</tspan><tspan x="0" y="22.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">Made a thing called CLOUDS. This is the third</tspan><tspan x="0" y="45.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">sentence in his bio. There could be a fourth if</tspan><tspan x="0" y="68.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">we need to fit more information.</tspan></text>
+	</g>
+	<g display="inline">
+		
+			<text transform="matrix(1 0 0 1 1042.7009 388.9639)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">PLAY</text>
+	</g>
+	<polygon display="inline" fill="#FFFFFF" points="1097.313,376.398 1097.313,388.964 1103.595,382.681 	"/>
+</g>
+<g id="RSResetButtonBacking" display="none">
+	<rect x="58.844" y="828.5" display="inline" opacity="0.36" fill="#101010" width="77.011" height="34"/>
+</g>
+<g id="RSResetButtonArrow" display="none">
+	<rect x="116.894" y="841.1" display="inline" fill="#FFFFFF" width="9" height="9"/>
+</g>
+<g id="RSResetButtonArrowSpace" display="none">
+	<rect x="116.894" y="841.1" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="9" height="9"/>
+</g>
+<g id="RSResetButtonFrame" display="none">
+	
+		<rect x="58.813" y="828.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="77.042" height="34"/>
+</g>
+<g id="RSResetButtonTextBox" display="none">
+	<rect x="69.134" y="840" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="35.882" height="11.424"/>
+</g>
+<g id="RSResetButtonTypography" display="none">
+	<g display="inline">
+		
+			<text transform="matrix(1 0 0 1 68.572 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">EXIT</text>
+	</g>
+</g>
+<g id="ResumeButtonBacking" display="none">
+	<rect x="1267.86" y="828.5" display="inline" opacity="0.36" fill="#101010" width="115.952" height="34"/>
+</g>
+<g id="ResumeButtonArrow" display="none">
+	<polygon display="inline" fill="#FFFFFF" points="1364.852,839.217 1364.852,851.783 1371.134,845.5 	"/>
+</g>
+<g id="ResumeButtonArrowSpace" display="none">
+	
+		<rect x="1364.852" y="839.317" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
+</g>
+<g id="ResumeButtonFrame" display="none">
+	
+		<rect x="1267.813" y="828.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="116" height="34"/>
+</g>
+<g id="ResumeButtonTextBox" display="none">
+	
+		<rect x="1283.353" y="840" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="69.704" height="11.424"/>
+</g>
+<g id="ResumeButtonTypography" display="none">
+	<g display="inline">
+		
+			<text transform="matrix(1 0 0 1 1282.4587 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">RESUME</text>
+	</g>
+</g>
+<g id="ClearButtonBacking" display="none">
+	<rect x="1116.436" y="36.996" display="inline" opacity="0.36" fill="#101010" width="266.892" height="33.019"/>
+</g>
+<g id="ClearButtonArrow" display="none">
+	<polygon display="inline" fill="#DD4B39" points="1371.254,49.575 1358.689,49.575 1364.971,55.857 	"/>
+</g>
+<g id="ClearButtonArrowSpace" display="none">
+	
+		<rect x="1358.689" y="49.702" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.565" height="6.282"/>
+</g>
+<g id="ClearButtonFrame" display="none">
+	
+		<rect x="1115.913" y="36.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="267.908" height="34"/>
+</g>
+<g id="ClearButtonFrameExpanded" display="none">
+	
+		<rect x="1188.514" y="36.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="195.299" height="124.074"/>
+</g>
+<g id="ClearButtonTextBox" display="none">
+	
+		<rect x="1204.054" y="46.313" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="141.134" height="11.424"/>
+</g>
+<g id="ClearHelperTextBox" display="none">
+	
+		<rect x="1204.054" y="71.64" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="167.2" height="27.962"/>
+</g>
+<g id="ClearDivision" display="none">
+	
+		<line display="inline" opacity="0.69" fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" x1="1292.813" y1="114" x2="1292.813" y2="145"/>
+</g>
+<g id="ClearCancelTextBox" display="none">
+	
+		<rect x="1213.407" y="123.788" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="67.334" height="11.424"/>
+</g>
+<g id="ClearCancelBacking" display="none">
+	<rect x="1204.054" y="114" display="inline" opacity="0" fill="#DD4B39" width="88.266" height="31"/>
+</g>
+<g id="ClearConfirmBacking" display="none">
+	<rect x="1293.24" y="114" display="inline" opacity="0" fill="#DD4B39" width="55.468" height="31"/>
+</g>
+<g id="ClearConfirmTextBox" display="none">
+	
+		<rect x="1311.314" y="124.594" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="21.581" height="11.424"/>
+</g>
+<g id="ClearButtonTypography" display="none">
+	
+		<text transform="matrix(1 0 0 1 1204.0544 57.7207)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CLEAR HISTORY</text>
+	
+		<text transform="matrix(1 0 0 1 1213.407 135.2129)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CANCEL</text>
+	
+		<text transform="matrix(1 0 0 1 1311.3132 136.0176)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">OK</text>
+	<g display="inline" opacity="0.69">
+		<text transform="matrix(1 0 0 1 1204.0535 80.689)"><tspan x="0" y="0" fill="#439CED" font-family="'Blender-BOOK'" font-size="14">This will allow you to watch</tspan><tspan x="0" y="16.8" fill="#439CED" font-family="'Blender-BOOK'" font-size="14">previously viewed clips.</tspan></text>
+	</g>
+</g>
+<g id="OutsideFrame" display="none">
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.813,685"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,18.5"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.813,19"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.813,883"/>
+	
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1412.813" y1="829" x2="1412.813" y2="19"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,882.5"/>
+	
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.313" y1="828.5" x2="1412.313" y2="828.5"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.813,829"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,18.5"/>
+	<path display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.313,18.5"/>
+	
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1413.313" y1="18.5" x2="29.313" y2="18.5"/>
+	
+		<line display="inline" opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.813" y1="19" x2="29.813" y2="829"/>
+</g>
+<g id="InsideFrame" display="none">
+	
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1383.813" y1="811" x2="1383.813" y2="36"/>
+	
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="59.313" y1="810.5" x2="1384.313" y2="810.5"/>
+	
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.313" y1="36.5" x2="1384.313" y2="36.5"/>
+	
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.813" y1="36" x2="58.813" y2="811"/>
+</g>
+<g id="OutsideFrameTicks" display="none">
+	<rect x="1411.804" y="17.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="28.804" y="17.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="28.804" y="827.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+	<rect x="1411.804" y="827.491" display="inline" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
+</g>
+</svg>

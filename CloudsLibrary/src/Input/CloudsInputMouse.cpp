@@ -56,7 +56,7 @@ void CloudsInputMouse::mouseMoved(ofMouseEventArgs& data){
 		
 	lastPosition = currentPosition;
     currentPosition = ofVec3f(data.x, data.y, 0);
-	interactionMoved(currentPosition, true, dragging, data.button);
+	interactionMoved(currentPosition, true, dragging, data.button, 0, 1.0, data.canceled);
 }
 
 void CloudsInputMouse::mousePressed(ofMouseEventArgs& data){
@@ -65,7 +65,7 @@ void CloudsInputMouse::mousePressed(ofMouseEventArgs& data){
 	
 	currentPosition = ofVec3f(data.x, data.y, 0);
     dragging = true;
-	interactionStarted(currentPosition, true, dragging, data.button);
+	interactionStarted(currentPosition, true, dragging, data.button, 0, 1.0, data.canceled);
 }
 
 void CloudsInputMouse::mouseDragged(ofMouseEventArgs& data){
@@ -73,7 +73,7 @@ void CloudsInputMouse::mouseDragged(ofMouseEventArgs& data){
     viewerState = ViewerState_Interacting;
 	
 	currentPosition = ofVec3f(data.x, data.y, 0);
-	interactionDragged(currentPosition, true, dragging, data.button);
+	interactionDragged(currentPosition, true, dragging, data.button, 0, 1.0, data.canceled);
 }
 
 void CloudsInputMouse::mouseReleased(ofMouseEventArgs& data){
@@ -82,7 +82,11 @@ void CloudsInputMouse::mouseReleased(ofMouseEventArgs& data){
 	
 	dragging = false;
     currentPosition = ofVec3f(data.x, data.y, 0);
-	interactionEnded(currentPosition, true, dragging, data.button);
+	interactionEnded(currentPosition, true, dragging, data.button, 0, 1.0, data.canceled);
+}
+
+void CloudsInputMouse::mouseScrolled(ofMouseEventArgs& data){
+    //nothin...
 }
 
 void CloudsInputMouse::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float fadeOut){

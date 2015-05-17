@@ -80,6 +80,7 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
     numTraversed = 0;
 	curQuestionCamRotation = 0;
     displayQuestions = false;
+    skipCameraSweep = false;
 	///END INIT
 }
 
@@ -919,11 +920,17 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     bool positionFound = false;
     for(int i = 0; i < topicPoints.size(); i++){
         if(topicPoints[i].keyword == topic){
-            targetTopicPosition = topicPoints[i].position * meshExpansion;
+            targetTopicPosition  = topicPoints[i].position * meshExpansion;
             targetCameraPosition = targetTopicPosition + targetTopicPosition.normalized() * traversCameraDistance;
-            targetCameraSideDir = targetTopicPosition.normalized().getCrossed( ofVec3f(0,1,0) );
-            targetCameraUpDir   = targetTopicPosition.normalized().getCrossed( targetCameraSideDir );
-            
+            targetCameraSideDir  = targetTopicPosition.normalized().getCrossed( ofVec3f(0,1,0) );
+            targetCameraUpDir    = targetTopicPosition.normalized().getCrossed( targetCameraSideDir );
+            if(skipCameraSweep){
+                topicNavCam.setPosition(targetCameraPosition);
+                topicNavCam.lookAt(targetTopicPosition, targetCameraUpDir);
+                currentCameraSideDir = targetCameraSideDir;
+                currentCameraUpDir = targetCameraUpDir;
+                skipCameraSweep = false;
+            }
             positionFound = true;
             break;
         }
@@ -932,6 +939,10 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     if(!positionFound){
         ofLogError("CloudsVisualSystemClusterMap::setCurrentTopic") << "Couldn't find position for topic " << topic;
     }
+}
+
+void CloudsVisualSystemClusterMap::skipNextCameraSweep(){
+    skipCameraSweep = true;
 }
 
 bool CloudsVisualSystemClusterMap::selectionChanged(){
@@ -1142,10 +1153,15 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
         n.lookAt(targetTopicPosition.getInterpolated(ofVec3f(0,0,0), ofMap(distFromTarget, traversCameraDistance*2, traversCameraDistance*5, .0, 1.0, true) ), currentCameraUpDir );
         topicNavCam.setPosition( topicNavCam.getPosition() + (targetPos - topicNavCam.getPosition())*.03 );
         
-        ofQuaternion q;
-        q.slerp(.07, topicNavCam.getOrientationQuat(), n.getOrientationQuat());
-        topicNavCam.setOrientation(q);
-        
+        //NAN CHECK
+        if(topicNavCam.getOrientationQuat().x() != topicNavCam.getOrientationQuat().x()){
+            topicNavCam.setOrientation(n.getOrientationQuat()   );
+        }
+        else{
+            ofQuaternion q;
+            q.slerp(.07, topicNavCam.getOrientationQuat(), n.getOrientationQuat());
+            topicNavCam.setOrientation(q);
+        }
     }
     
 	/////UPDATE COLOR
@@ -1430,7 +1446,10 @@ void CloudsVisualSystemClusterMap::selfDraw(){
             if(!p.onScreen){
                 continue;
             }
-            
+            //HUD will take care of topic drawing
+            if(p.keyword == currentTopic){
+                continue;
+            }
             ofPushStyle();
             ofSetColor(255, p.attenuation*255);
             
@@ -1805,9 +1824,10 @@ void CloudsVisualSystemClusterMap::selfMouseDragged(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
+
     cursor.set(GetCloudsInput()->getPosition());
 
-
+    
     TopicPoint* hoveredPoint = NULL;
     ofVec3f camPos = getCameraRef().getPosition();
     ofVec2f mousePos(data.x + bleed, data.y + bleed);
@@ -1815,6 +1835,7 @@ void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
         for(int i = 0; i < topicPoints.size(); i++){
             TopicPoint& p = topicPoints[i];
             if(!p.onScreen) continue;
+            if(data.canceled) continue;
             bool inside = p.screenRectangle.inside(mousePos);
             //if this one is closer
             if(inside && (hoveredPoint == NULL || (hoveredPoint->position*meshExpansion).distance(camPos) > (p.position*meshExpansion).distance(camPos))){
@@ -1836,7 +1857,9 @@ void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
             
             bool inside = p.screenRectangle.inside(mousePos);
             if(p.hovered &&
-               (!inside || (hoveredPoint != NULL && (hoveredPoint->position*meshExpansion).distance(camPos) < (p.position*meshExpansion).distance(camPos))) )
+               (data.canceled ||
+                !inside ||
+                (hoveredPoint != NULL && (hoveredPoint->position*meshExpansion).distance(camPos) < (p.position*meshExpansion).distance(camPos))) )
             {
                 p.hovered = false;
                 p.hoverChangeTime = ofGetElapsedTimef();
@@ -1846,8 +1869,9 @@ void CloudsVisualSystemClusterMap::selfMouseMoved(ofMouseEventArgs& data){
     }
 }
 
+
 void CloudsVisualSystemClusterMap::selfMousePressed(ofMouseEventArgs& data){
-    if(drawType3D){
+    if(drawType3D && !data.canceled){
         for(int i = 0; i < topicPoints.size(); i++){
             TopicPoint& p = topicPoints[i];
             if(p.hovered){

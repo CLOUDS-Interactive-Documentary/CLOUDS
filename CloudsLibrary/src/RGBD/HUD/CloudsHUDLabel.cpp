@@ -15,6 +15,9 @@ CloudsHUDLabel::CloudsHUDLabel(){
     
     layout = NULL;
     font   = NULL;
+    dynamicBackingMesh = NULL;
+    bDynamicBacking = false;
+    
     tab = false;
     tabSelected = false;
     
@@ -25,6 +28,8 @@ CloudsHUDLabel::CloudsHUDLabel(){
     
     bIsHovered = false;
     bIsPressed = false;
+    
+    hasTriangle = false;
     
     clearTextOnAnimateOut = false;
     caps = true;
@@ -41,6 +46,11 @@ CloudsHUDLabel::CloudsHUDLabel(){
     pct = 0.;
     playhead = 0;
     textAlpha = 255;
+    dynamicBackingMargin = 0;
+    
+    arrowPositionDynamic = false;
+    arrowBaseRightEdge = 0;
+
 }
 
 void CloudsHUDLabel::setup( ofxFTGLSimpleLayout *textLayout, ofRectangle textBounds ){
@@ -53,6 +63,15 @@ void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
     font = textFont;
     bounds = textBounds;
     type = "FONT";
+}
+
+void CloudsHUDLabel::setDynamicMargin(){
+    dynamicBackingMargin = bounds.getLeft() - dynamicBackingBounds.getLeft();
+}
+
+void CloudsHUDLabel::makeArrowPositionDynamic(){
+    arrowPositionDynamic = true;
+    arrowBaseRightEdge = bounds.getRight();
 }
 
 void CloudsHUDLabel::draw(){
@@ -142,6 +161,18 @@ void CloudsHUDLabel::draw(){
         font->drawString( t, bounds.x, bounds.y + font->getStringBoundingBox("W", 0, 0).height );
     }
     
+    if(hasTriangle){
+        if(arrowPositionDynamic){
+            ofPushMatrix();
+            ofTranslate(getRightEdge() - arrowBaseRightEdge, 0);
+        }
+        triangleMesh.draw();
+        if(arrowPositionDynamic){
+            ofPopMatrix();
+        }
+        
+    }
+    
     ofPopStyle();
 
 }
@@ -162,35 +193,82 @@ void CloudsHUDLabel::setText(const string& newText, bool forceOn){
             animateIn(true);
         }
     }
- 
+    
+    updateDynamicSize();
+}
+
+void CloudsHUDLabel::updateDynamicSize(){
+    
+    if(bDynamicBacking && dynamicBackingMesh != NULL && dynamicBackingMesh->getNumVertices() >= 4){
+        
+        //sample the layout to get a margin to apply to the right edge also
+        if(text == ""){
+            dynamicBackingBounds.width = 0;
+        }
+        else{
+            dynamicBackingBounds.x = bounds.getLeft() - dynamicBackingMargin;
+            
+            if(usesFont()){
+                dynamicBackingBounds.width = font->stringWidth(text) + dynamicBackingMargin*2;
+            }
+            else if(usesLayout()){
+                dynamicBackingBounds.width = layout->stringWidth(text) + dynamicBackingMargin*2;
+            }
+        }
+        
+        ofVec3f a = dynamicBackingBounds.getTopLeft();
+        ofVec3f b = dynamicBackingBounds.getTopRight();
+        ofVec3f c = dynamicBackingBounds.getBottomRight();
+        ofVec3f d = dynamicBackingBounds.getBottomLeft();
+        
+        dynamicBackingMesh->getVertices()[0] = a;
+        dynamicBackingMesh->getVertices()[1] = b;
+        dynamicBackingMesh->getVertices()[2] = d;
+        
+        dynamicBackingMesh->getVertices()[3] = b;
+        dynamicBackingMesh->getVertices()[4] = d;
+        dynamicBackingMesh->getVertices()[5] = c;
+    }
 }
 
 int CloudsHUDLabel::getRightEdge(){
-    if(type == "LAYOUT"){
+    
+    if(bDynamicBacking){
+        return dynamicBackingBounds.getRight();
+    }
+    else if(usesLayout()){
         return layout->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
 	}
-    else if (type == "FONT"){
+    else if (usesFont()){
         return font->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
 	}
 	return 0;
 }
 
-void CloudsHUDLabel::mouseMoved(ofVec2f mouse){
+bool CloudsHUDLabel::usesLayout(){
+    return type == "LAYOUT" && layout != NULL;
+}
+
+bool CloudsHUDLabel::usesFont(){
+    return type == "FONT" && font != NULL;
+}
+
+bool CloudsHUDLabel::mouseMoved(ofVec2f mouse){
     bool wasHovered = bIsHovered;
 	bIsHovered = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
     if(wasHovered != bIsHovered){
 		hoverChangedTime = ofGetElapsedTimef();
 	}
-
+    return bIsHovered;
 }
 
-void CloudsHUDLabel::mousePressed(ofVec2f mouse){
+bool CloudsHUDLabel::mousePressed(ofVec2f mouse){
 
 	bIsPressed = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
-    
+    return bIsPressed;
 }
 
-void CloudsHUDLabel::mouseReleased(ofVec2f mouse){
+bool CloudsHUDLabel::mouseReleased(ofVec2f mouse){
     
     bool releasedInBounds = scaledInteractiveBounds.inside(mouse.x,mouse.y);
     if(bIsPressed && releasedInBounds){
@@ -207,7 +285,7 @@ void CloudsHUDLabel::mouseReleased(ofVec2f mouse){
         bIsHovered = false;
         bIsPressed = false;
     }
-
+    return bIsClicked;
 }
 
 string CloudsHUDLabel::getText(){
@@ -271,6 +349,8 @@ bool CloudsHUDLabel::isHovered() {
 
 bool CloudsHUDLabel::isClicked(){
     bool ret = bIsClicked;
+    if(ret) bIsPressed = false;
+
     bIsClicked = false;
     return ret;
 }

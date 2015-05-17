@@ -69,13 +69,62 @@ CloudsIntroSequence::CloudsIntroSequence(){
 }
 
 void CloudsIntroSequence::selfSetDefaults(){
-
-	selectedQuestion = NULL;
+    
+    questionWrapDistance = 0;
+    cameraForwardSpeed = 0;
+    titleTypeOpacity = 0;
+    titleFontSize = 0;
+    titleFontExtrude = 0;
+    titleTypeTracking = 0;
+    titleTypeOffset = 0;
+    titleNoiseDensity = 0;
+    titleMaxGlow = 0;
+    titleMinGlow = 0;
+    titleRectWidth = 0;
+    titleRectHeight = 0;
+    
+    currentHelperFontSize = 0;
+    helperFontTracking = 0;
+    helperFontY = 0;
+    helperFontScale = 0;
+    
+    questionPauseDuration = 0;
+    questionLineLength = 0;
+    questionLineSpacing = 0;
+    questionTunnelInnerRadius = 0;
+    
+    firstQuestionStoppedTime = 0;
+    selectedQuestionTime = 0;
+    wireframeAlpha = 0;
+    
+    camWobbleRange = 0;
+    camWobbleSpeed = 0;
+    
+    introNodeSize = 0;
+    introNodeMinDistance = 0;
+    introNodeHoldTime = 0;
+    introNodeYAdjust = 0;
+    nodeActivatedTime = 0;
+    
+    kinectHelperTargetAlpha = 0;
+    stateChangedTime = 0;
+    
+    perlinAmplitude = 0;
+    perlinDensity = 0;
+    perlinSpeed = 0;
+    
+    tunnelDistance = 0;
+    tunnelStartZ = 0;
+    regenerateTunnel = false;
+    looseTunnelResolutionX = 0;
+    looseTunnelResolutionZ = 0;
+	
+    selectedQuestion = NULL;
 	showingQuestions = false;
 	paused = false;
-	currentFontSize = -1;
+	
+    currentFontSize = -1;
 	currentFontExtrusion = -1;
-    
     percentLoaded = 0;
     loadingCompleteTime = 0;
 	caughtQuestion = NULL;
@@ -122,7 +171,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	perlinOffset = 0;
 	newResumeSpace = 0;
     
-	mouseLastMovedTime = 0;
+
 	cameraSwingDamp = 0.0;
     warpCamera.setNearClip(.01);
 	timeSinceLastPrompt = 0;
@@ -131,22 +180,7 @@ void CloudsIntroSequence::selfSetDefaults(){
 	questionChannels.resize(4);
 	channelPauseTime.resize(4);
 	
-    loadDidFinish = false;
     showVHXPrompt = false;
-    
-#ifdef OCULUS_RIFT
-    bCursorInCenter = false;
-    startTimeCursorInCenter = 0;
-#endif
-    
-#ifdef VHX_MEDIA
-    successfullyPurchased = false;
-    changeState(CLOUDS_INTRO_VHX_WAITING_CODE);
-#else
-    successfullyPurchased = true;
-    changeState(CLOUDS_INTRO_LOADING);
-#endif
-    
 }
 
 void CloudsIntroSequence::selfSetup(){
@@ -343,6 +377,8 @@ void CloudsIntroSequence::selfPresetLoaded(string presetPath){
 	warpCamera.setPosition(0, 0, 0);
 	warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
 	positionStartQuestions();
+    
+    
 }
 
 void CloudsIntroSequence::reloadShaders(){
@@ -352,10 +388,10 @@ void CloudsIntroSequence::reloadShaders(){
 }
 
 void CloudsIntroSequence::selfUpdate(){
-	
-//	if(!startedOnclick && timeline->getIsPlaying()){
-//		timeline->stop();
-//	}
+
+	if(!userHasBegun() && timeline->getIsPlaying()){
+		timeline->stop();
+	}
 	
 	updateCamera();
     updateMenu();
@@ -606,7 +642,10 @@ void CloudsIntroSequence::updateTitle(){
 	
 	titleNoisePosition += titleNoiseSpeed;
 	float hoverTitleOpacity;
-	if(hoveringTitle || (currentState == CLOUDS_INTRO_PLAYING && timeline->getIsPlaying()) ){
+    if(currentState == CLOUDS_INTRO_ABOUT){
+        hoverTitleOpacity = .9;
+    }
+	else if(hoveringTitle || (currentState == CLOUDS_INTRO_PLAYING && timeline->getIsPlaying()) ){
 		hoverTitleOpacity = .9;
 	}
 	else{
@@ -979,6 +1018,10 @@ void CloudsIntroSequence::vhxError(){
     changeState(CLOUDS_INTRO_VHX_ERROR);
 }
 
+void CloudsIntroSequence::aboutClosed(){
+    changeState(CLOUDS_INTRO_MENU);
+}
+
 bool CloudsIntroSequence::userHasBegun(){
     return currentState == CLOUDS_INTRO_PLAYING  ||
            currentState == CLOUDS_INTRO_RESEARCH ||
@@ -1083,13 +1126,15 @@ void CloudsIntroSequence::selfDraw(){
 
 void CloudsIntroSequence::drawTunnel(){
 	ofPushStyle();
-	
+
+    
 	tunnelShader.begin();
 	tunnelShader.setUniform1f("minPointSize", pointSize.min);
 	tunnelShader.setUniform1f("maxPointSize", pointSize.max);
-	tunnelShader.setUniform1f("minDistance", distanceRange.min);
-	
-	tunnelShader.setUniform1f("maxDistance", distanceRange.max + MAX(1.0 - cursorAlpha, currentTitleOpacity) * 120.);
+    
+    float max = MAX(distanceRange.min + .01, distanceRange.max + MAX(1.0 - cursorAlpha, currentTitleOpacity) * 120.);
+    tunnelShader.setUniform1f("minDistance", distanceRange.min);
+	tunnelShader.setUniform1f("maxDistance", max);
 	
 	tunnelShader.setUniform1f("cameraZ", warpCamera.getPosition().z);
 	tunnelShader.setUniform1f("tunnelDepth", tunnelMax.z);
@@ -1138,11 +1183,14 @@ void CloudsIntroSequence::drawPortals(){
 }
 
 void CloudsIntroSequence::drawCloudsType(){
+    if(currentState == CLOUDS_INTRO_ABOUT){
+        return;
+    }
 	ofPushMatrix();
 	ofPushStyle();
 	
 	ofRotate(180, 0, 0, 1);
-	
+
 	ofEnableAlphaBlending();
 	ofSetColor(255, currentTitleOpacity*255);
 	ofTranslate(0, 0, titleTypeOffset );
@@ -1500,8 +1548,28 @@ void CloudsIntroSequence::selfPostDraw(){
 
 void CloudsIntroSequence::selfBegin(){
 	timeline->stop();
-    changeState(CLOUDS_INTRO_LOADING);
-//	startedOnclick = false;
+    
+#ifdef VHX_MEDIA
+    if(successfullyPurchased){
+        if(loadDidFinish){
+            changeState(CLOUDS_INTRO_MENU);
+        }
+        else{
+            changeState(CLOUDS_INTRO_LOADING);
+        }
+    }
+    else{
+        changeState(CLOUDS_INTRO_VHX_WAITING_CODE);
+    }
+#else
+    if(loadDidFinish){
+        changeState(CLOUDS_INTRO_MENU);
+    }
+    else{
+        changeState(CLOUDS_INTRO_LOADING);
+    }
+#endif
+    
 	selectedQuestion = NULL;
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].stopHovering();
@@ -1567,6 +1635,9 @@ void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
     else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
         newMenuItem.pressed      = newMenuItem.bounds.inside(data.x, data.y);
         resumeMenuItem.pressed   = resumeMenuItem.bounds.inside(data.x, data.y);
+        if(!newMenuItem.pressed && !resumeMenuItem.pressed){
+            changeState(CLOUDS_INTRO_MENU);
+        }
     }
 	else{
 		for(int i = 0; i < startQuestions.size(); i++){

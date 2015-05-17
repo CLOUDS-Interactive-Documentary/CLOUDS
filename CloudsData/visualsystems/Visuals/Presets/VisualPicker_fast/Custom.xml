@@ -2,9 +2,14 @@
     <Kind>40</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>311.000000000</XPosition>
-    <YPosition>255.000000000</YPosition>
+    <XPosition>524.000000000</XPosition>
+    <YPosition>243.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FREE CAM</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>CELLS WIDE</Name>
@@ -18,15 +23,40 @@
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>226.600982666</Value>
+    <Value>211.822662354</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROW HEIGHT</Name>
-    <Value>263.546783447</Value>
+    <Value>179.802947998</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>IMAGE SCALE</Name>
     <Value>0.137931034</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAMERA BACKUP DIST</Name>
+    <Value>396.551727295</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>FONT SIZE</Name>
+    <Value>20</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FONT SCALE</Name>
+    <Value>0.325123161</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TYPE OFFSET X</Name>
+    <Value>133.004913330</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TYPE OFFSET Y</Name>
+    <Value>86.206901550</Value>
 </Widget>

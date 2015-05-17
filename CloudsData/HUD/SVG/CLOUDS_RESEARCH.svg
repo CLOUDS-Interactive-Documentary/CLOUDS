@@ -65,7 +65,7 @@
 <g id="ListTextBoxes">
 	<rect x="69.59" y="85.621" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
 </g>
-<g id="ListScrollConnectStatic">
+<g id="ListScrollConnectStatic" display="none">
 	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="324.499" y1="85.618" x2="324.499" y2="775.984"/>
 </g>
 <g id="ListScrollDownBacking">

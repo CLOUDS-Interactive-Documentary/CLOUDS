@@ -65,6 +65,8 @@
 		0300E8621AE6A93D0008F7BB /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0300E8601AE6A93D0008F7BB /* CloudsRGBDCamera.cpp */; };
 		18731D30178628D200E22F84 /* CloudsAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D2E178628D200E22F84 /* CloudsAct.cpp */; };
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
+		A65830761B055B8F00E425FF /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830741B055B8F00E425FF /* CloudsMedia.cpp */; };
+		A65830901B07EE6000E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A658308E1B07EE6000E425FF /* CloudsHUDScroller.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		CB5019DE1870FBD60057E844 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5019C31870FBD60057E844 /* libftgl.a */; };
 		CB5019E21870FBD60057E844 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB5019CC1870FBD60057E844 /* ofxFTGLFont.cpp */; };
@@ -336,6 +338,10 @@
 		1877A9F9178F417A006DAA37 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
+		A65830741B055B8F00E425FF /* CloudsMedia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMedia.cpp; sourceTree = "<group>"; };
+		A65830751B055B8F00E425FF /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
+		A658308E1B07EE6000E425FF /* CloudsHUDScroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDScroller.cpp; sourceTree = "<group>"; };
+		A658308F1B07EE6000E425FF /* CloudsHUDScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDScroller.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		CB5019A61870FBD60057E844 /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
 		CB5019A71870FBD60057E844 /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
@@ -1101,6 +1107,8 @@
 				E703CD1C185D419700547738 /* CloudsHUDLayer.cpp */,
 				E703CD21185D6B3100547738 /* CloudsHUDHomeButton.cpp */,
 				E703CD22185D6B3200547738 /* CloudsHUDHomeButton.h */,
+				A658308E1B07EE6000E425FF /* CloudsHUDScroller.cpp */,
+				A658308F1B07EE6000E425FF /* CloudsHUDScroller.h */,
 				E703CD19185D187800547738 /* CloudsHUDController.h */,
 				E703CD18185D187800547738 /* CloudsHUDController.cpp */,
 			);
@@ -1200,6 +1208,8 @@
 		E7637D401734DE68008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				A65830751B055B8F00E425FF /* CloudsMedia.h */,
+				A65830741B055B8F00E425FF /* CloudsMedia.cpp */,
 				E703C708185BB2A400547738 /* CloudsProjectExample.h */,
 				E7F7773917734B0B0096AEF7 /* CloudsVisualSystemPreset.h */,
 				E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */,
@@ -1789,6 +1799,7 @@
 				E745F6ED1720FE9400B86D7E /* tinyxmlerror.cpp in Sources */,
 				E745F6EE1720FE9400B86D7E /* tinyxmlparser.cpp in Sources */,
 				E745F6EF1720FE9400B86D7E /* ofxXmlSettings.cpp in Sources */,
+				A65830901B07EE6000E425FF /* CloudsHUDScroller.cpp in Sources */,
 				0300E8211AE6A8D70008F7BB /* ofxUIToggle.cpp in Sources */,
 				E7637D4C1734DE68008ADC62 /* CloudsClip.cpp in Sources */,
 				E7637D4D1734DE68008ADC62 /* CloudsFCPParser.cpp in Sources */,
@@ -1926,6 +1937,7 @@
 				E703CD23185D6B3200547738 /* CloudsHUDHomeButton.cpp in Sources */,
 				E703CD2C185D6B9100547738 /* CloudsInput.cpp in Sources */,
 				E703CD2E185D6B9100547738 /* CloudsInputMouse.cpp in Sources */,
+				A65830761B055B8F00E425FF /* CloudsMedia.cpp in Sources */,
 				E7A4DC2B186A272A002F5371 /* CloudsSVGMesh.cpp in Sources */,
 				0300E81A1AE6A8D70008F7BB /* ofxUISortableList.cpp in Sources */,
 				E7F051681873690E00017521 /* ofxAVFVideoPlayer.mm in Sources */,
@@ -1968,12 +1980,6 @@
 					"$(OF_CORE_HEADERS)",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
 					"$(OF_PATH)/addons/ofxCv/libs/**",
-					"$(OF_PATH)/addons/ofxLibwebsockets/src",
-					"$(OF_PATH)/addons/ofxLibwebsockets/src",
-					"$(OF_PATH)/addons/ofxLibwebsockets/libs/openssl/openssl",
-					"$(OF_PATH)/addons/ofxLibwebsockets/libs/ofxLibwebsockets/**",
-					"$(OF_PATH)/addons/ofxLibwebsockets/libs/ofxLibwebsockets/include/ofxLibwebsockets",
-					"$(OF_PATH)/addons/ofxLibwebsockets/libs/jsoncpp/**",
 					src,
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 				);
@@ -1983,12 +1989,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				OTHER_LDFLAGS = (
-					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx/libwebsockets.a",
-					../../../addons/ofxLibwebsockets/libs/openssl/lib/osx/libcrypto.a,
-					../../../addons/ofxLibwebsockets/libs/openssl/lib/osx/libssl.a,
-				);
+				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -2017,12 +2018,6 @@
 					"$(OF_CORE_HEADERS)",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
 					"$(OF_PATH)/addons/ofxCv/libs/**",
-					"$(OF_PATH)/addons/ofxLibwebsockets/src",
-					"$(OF_PATH)/addons/ofxLibwebsockets/src",
-					"$(OF_PATH)/addons/ofxLibwebsockets/libs/openssl/openssl",
-					"$(OF_PATH)/addons/ofxLibwebsockets/libs/ofxLibwebsockets/**",
-					"$(OF_PATH)/addons/ofxLibwebsockets/libs/ofxLibwebsockets/include/ofxLibwebsockets",
-					"$(OF_PATH)/addons/ofxLibwebsockets/libs/jsoncpp/**",
 					src,
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 				);
@@ -2032,12 +2027,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				OTHER_LDFLAGS = (
-					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx/libwebsockets.a",
-					../../../addons/ofxLibwebsockets/libs/openssl/lib/osx/libcrypto.a,
-					../../../addons/ofxLibwebsockets/libs/openssl/lib/osx/libssl.a,
-				);
+				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -2061,6 +2051,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"CLOUDS_NO_VS=1",
 					"MOUSE_INPUT=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
+					"$(OF_PATH)/addons/ofxCv/libs/**",
+					src,
+					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -2154,6 +2151,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsHUDDesignerDebug;
 				SDKROOT = macosx10.9;
@@ -2179,6 +2177,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"CLOUDS_NO_VS=1",
 					"MOUSE_INPUT=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
+					"$(OF_PATH)/addons/ofxCv/libs/**",
+					src,
+					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -2272,6 +2277,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsHUDDesigner;
 				SDKROOT = macosx10.9;

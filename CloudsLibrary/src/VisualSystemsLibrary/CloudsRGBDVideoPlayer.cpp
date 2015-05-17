@@ -321,14 +321,19 @@ void CloudsRGBDVideoPlayer::startPlayer(){
 
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::begin(ofShader& shader){
+
+    if(playingVO){
+        return;
+    }
     
-	if(!getPlayer().isLoaded() || !getTextureReference().isAllocated()){
+	if(!getPlayer().isLoaded() ){
 		return;
 	}
 	
-	if(playingVO){
-		return;
-	}
+    if(!getTextureReference().isAllocated()){
+        return;
+    }
+    
 
 	getPlayer().bind();
 
@@ -466,6 +471,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         return;
     }
     
+    
     // EZ: Remove this once we've got buffering working.
 //    if(currentPlayer->getBufferProgress() < 1.0){
 //        cout << "cur player position  " << currentPlayer->getPosition() << endl;
@@ -478,6 +484,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 //        cout << "nxt player ready     " << nextPlayer->isBufferLikelyToKeepUp() << endl;
 //        cout << endl;
 //    }
+
     
 	if(playingVO){
         getPlayer().setVolume(1.0);

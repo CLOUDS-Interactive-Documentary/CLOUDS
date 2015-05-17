@@ -464,7 +464,7 @@ CloudsAct* CloudsStoryEngine::buildActWithTopic(CloudsRun& run, string forceTopi
     settings.playSeed = false;
     settings.forceTopic = true;
     settings.forceSpeaker = false;
-    settings.allowVisuals = false;
+    settings.allowVisuals = true;
 
     return buildAct(settings);
 }

@@ -120,7 +120,7 @@ Invisible College
 Colin Raffel
 Craig Protzel
 Creation Theory
-Cristian Geicu - Romania
+Cristian Geicu 
 Dan Hill
 Dan Moore
 Danfung Dennis
@@ -176,7 +176,7 @@ Erin Jo Richey
 Ernesto Provencio
 Eva
 Everardo Reyes-Garcia
-Fabrizio D'Amico AKA VJHASH
+Fabrizio "VJHASH" D'Amico 
 VideoHackSpace
 Federico Weber
 Fernando Fernandes
@@ -299,7 +299,7 @@ Joyce Chou
 JRC313
 JUDGEWORKS
 Julia Kaganskiy
-Just-Fab.london: Vegi-talian Street Food
+Just-Fab
 Justin Blinder
 Justin Boyce
 Justin Pierce
@@ -411,8 +411,6 @@ Monica Schaeffer Gorochow
 Morgan Fraser
 Moritz Stefaner
 Moudy
-n/a
-n/a
 nardove
 Natalie Sun
 Nathan Koch
@@ -471,10 +469,10 @@ Rob Auten
 Rob Shearing
 Robert S Sweitzer II
 Robertus
-Robin Layfield / UltraSimplified
+Robin Layfield
 Rodrigo
 Rodrigo M Terra
-Rodrigo Torres (Xumerio)
+Rodrigo "Xumerio" Torres 
 Roger Palà Núñez
 roitsch
 Roland Tanglao
@@ -517,7 +515,7 @@ Shaun Mcwhinnie
 Sherry Kennedy
 Simon Geilfus
 Simon King
-Simone Perra - Janas'House Studio
+Simone Perra
 smallfly
 Sophie Weiner
 Soyoung Shin
@@ -542,7 +540,7 @@ Teal Rogers
 Tecné Collective
 Tellef Møllerup Åmdal
 Tharit Firm Reed Tothong
-The IMC Lab + Gallery (Attn: James Tunick)
+The IMC Lab
 Thomas H. Sturgill
 Thomas Van Doren
 Thomas Van Ta
@@ -572,7 +570,6 @@ Vincent Deloso
 W. Evan Sheehan
 Waldemar
 Warren Ali
-What Name Should We Use For The "Thank You Backers" Credits Section Of Clouds?
 William Comfort Anderson
 Wonyong So
 Wray Bowling

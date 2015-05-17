@@ -65,7 +65,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofVec2f getSelectedPersonScreenPosition();
     string getSelectedPerson();
     bool selectionChanged();
-
+    void skipNextCameraSweep();
+    
     //i/o stuff
     void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
@@ -267,6 +268,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofVec3f targetCameraUpDir;
     ofVec3f currentCameraUpDir;
     ofVec3f currentCameraSideDir;
+    bool skipCameraSweep;
     
     float nameTargetDistance;
     float nameCameraRot;

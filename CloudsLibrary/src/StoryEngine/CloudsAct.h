@@ -112,6 +112,7 @@ class CloudsAct{
     
 #ifdef VHX_MEDIA
     void fetchClipVhxUrls();
+    bool clipURLsLoaded();
 #endif
 	
 	ofxTimeline& getTimeline(){ return timeline; }

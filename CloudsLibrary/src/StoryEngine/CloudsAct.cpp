@@ -644,6 +644,11 @@ void CloudsAct::fetchClipVhxUrls(){
         clips[i]->fetchVhxSourceUrl();
     }
 }
+
+bool CloudsAct::clipURLsLoaded(){
+    return clips.size() == 0 || clips[0]->vhxSourceVideoUrl != "";
+}
+
 #endif
 
 void CloudsAct::clear(){

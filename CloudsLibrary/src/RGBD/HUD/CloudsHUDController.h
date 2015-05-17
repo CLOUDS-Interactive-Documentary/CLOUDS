@@ -17,17 +17,28 @@
 #include "CloudsHUDLabel.h"
 #include "CloudsEvents.h"
 #include "CloudsSpeaker.h"
+#include "CloudsHUDScroller.h"
 
 typedef enum {
+    //main layers
 	CLOUDS_HUD_HOME = 0,
 	CLOUDS_HUD_QUESTION,
 	CLOUDS_HUD_LOWER_THIRD,
 	CLOUDS_HUD_PROJECT_EXAMPLE,
 	CLOUDS_HUD_PAUSE,
 	CLOUDS_HUD_NEXT,
+    
+    //research
 	CLOUDS_RESEARCH,
 	CLOUDS_RESEARCH_SHUFFLE,
 	CLOUDS_RESEARCH_RESUME,
+
+    //mobile research info ones
+    CLOUDS_RESEARCH_TOPIC,
+    CLOUDS_RESEARCH_PPL,
+    CLOUDS_RESEARCH_VS,
+    
+    //about
     CLOUDS_ABOUT_BACKERS,
     CLOUDS_ABOUT_CAST,
     CLOUDS_ABOUT_CREDITS,
@@ -44,6 +55,20 @@ typedef enum{
     CLOUDS_HUD_RESEARCH_TAB_VISUALS,
 } CloudsHUDResearchTab;
 
+typedef enum{
+    CLOUDS_HUD_ABOUT_TAB_INFO = 0,
+    CLOUDS_HUD_ABOUT_TAB_CAST,
+    CLOUDS_HUD_ABOUT_TAB_CREDITS,
+    CLOUDS_HUD_ABOUT_TAB_BACKERS,
+} CloudsHUDAboutTab;
+
+typedef enum{
+    CLOUDS_HUD_TRIANGLE_UP = 0,
+    CLOUDS_HUD_TRIANGLE_RIGHT,
+    CLOUDS_HUD_TRIANGLE_DOWN,
+    CLOUDS_HUD_TRIANGLE_LEFT,
+    CLOUDS_HUD_TRIANGLE_X
+} CloudsHUDTriangleDirection;
 
 class CloudsHUDResearchButton {
   public:
@@ -55,6 +80,7 @@ class CloudsHUDResearchButton {
         clicked = false;
     }
     
+    CloudsHUDResearchTab parentTab;
     float top;
     bool visible;
     bool hovered;
@@ -105,15 +131,19 @@ class CloudsHUDController {
 	bool isExploreMapHit();
 	bool isSeeMorePersonHit();
     bool isResumeActHit();
-    
+
+    void preselectMap();
     bool selectedMapTab();
     bool selectedPeopleTab();
     bool selectedVisualsTab();
     
+    bool aboutClosed();
+    
 	void mouseMoved(ofMouseEventArgs& args);
 	void mousePressed(ofMouseEventArgs& args);
 	void mouseReleased(ofMouseEventArgs& args);
-
+	void mouseScrolled(ofMouseEventArgs& args);
+    
 	void clearQuestion();
     void clearClip();
     void clearVisualSystem();
@@ -157,6 +187,8 @@ class CloudsHUDController {
 
 	int videoFrameCounter;
 	bool isPlaying;
+    float transitionFade;
+    void researchTransitionFinished();
     
 #ifdef OCULUS_RIFT
     map<CloudsHUDLayerSet, float> layerDistance;
@@ -170,11 +202,13 @@ class CloudsHUDController {
     
     void setTopics(const set<string>& topics);
     void populateSpeakers();
-    void setVisuals(vector<string> visuals);
+    void setVisuals(map<string, CloudsVisualSystemCredit>& visuals);
 
     void setSeeMoreName(string name);
     void selectTopic(string topic);
     void selectPerson(string personID);
+    void selectVisual(string visualName);
+    void selectItem(CloudsHUDResearchTab tab, string itemID);
 
     //where the researched item may be clicked
     void setResearchClickAnchor(ofVec2f anchor);
@@ -193,8 +227,9 @@ class CloudsHUDController {
                             const string& location,
                             const string& textbox);
     
-    void populateVisualSystem(const string& creatorsName,
-                              const string& systemName);
+    void populateVisualSystem(const string& title,
+                              const string& line1,
+                              const string& line2);
     
     void populateProjectExample(const string& videoPath,
                                 const string& textLeft,
@@ -210,46 +245,28 @@ class CloudsHUDController {
    	void buildLayerSets();
     void calculateFontSizes();
     int getFontSizeForMesh( SVGMesh* textMesh );
- 
+    void setupBacking(string labelName, CloudsHUDLayerSet layer, string backingName);
+    
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
     
     
     /////////////// SCROLL VARIABLES
     //////////////
-    ofRectangle   researchScrollBounds;
-    ofRectangle   researchScrollBoundsScaled;
-    ofRectangle   researchScrollUpBounds;
-    ofRectangle   researchScrollDownBounds;
-    ofRectangle   researchScrollUpBoundsScaled;
-    ofRectangle   researchScrollDownBoundsScaled;
-    bool          bIsScrollUpHover;
-    bool          bIsScrollDownHover;
-    bool          bIsScrollUpPressed;
-    bool          bIsScrollDownPressed;
-    bool          bIsHoldScrolling;
-
-    float         scrollPressedTime;
-    
-    float         scrollIncrement;
-    
-    void          updateScroll();
+    CloudsHUDScroller researchScroller;
+    CloudsHUDScroller aboutScroller;
+    void updateScroll();
     //////////////
     
     bool bPaused;
 
     void updateResearchNavigation();
-    
-    ////////////////////
-    ofVec2f researchClickAnchor;
-    ofRectangle researchRectangle;
-    bool hasResearchRectangle;
-    bool researchConfirmHovered;
-    bool researchConfirmPressed;
-    bool researchConfirmClicked;
+    void updateAboutNavigation();
 
+    bool bResearchTransitioning;
+    
     void selectButton(const CloudsHUDResearchButton& button);
-    string bioText;
+    //string bioText;
     ofxFTGLSimpleLayout researchBio;
     ofxFTGLFont playAllFont;
     
@@ -267,15 +284,27 @@ class CloudsHUDController {
     bool    bQuestionDisplayed;
     bool    bProjectExampleDisplayed;
     
+    
 #ifdef OCULUS_RIFT
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
 #endif
     
     CloudsHUDResearchTab currentTab;
+    CloudsHUDResearchTab nextTab;
+
+    CloudsHUDAboutTab currentAboutTab;
+    //CloudsHUDAboutTab nextTab;
+    
     void drawList();
     
-    CloudsHUDLabel* getLabelForLayer(const string& layerName, const string& fontPath, int kerning = 35, bool caps = false,  bool useLayout = false);
-
+    CloudsHUDLabel* getLabelForLayer(const string& layerName,
+                                     const string& fontPath,
+                                     int kerning = 35,
+                                     bool caps = false,
+                                     bool useLayout = false,
+                                     int layoutFontSize = 12);
+    
+    void attachTriangleToLabel(CloudsHUDLabel* label, CloudsHUDLayerSet layer, string triangleLayerName, CloudsHUDTriangleDirection direction);
     
     vector<ofxFTGLFont*>    tempFontList;
     CloudsHUDLabel* ResearchTopicListLabel;

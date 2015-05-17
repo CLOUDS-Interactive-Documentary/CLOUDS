@@ -109,6 +109,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
 
 void CloudsVisualSystemTwitter::selfSetup()
 {
+    skipCameraSweep = false;
     
     meshDir.listDir(getVisualSystemDataPath() + "graphs" );
     meshDir.sort();
@@ -987,9 +988,6 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
         tweetersLoaded = true;
     }
     
-//    cout<<"Time taken to parse CSV : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
-//    cout<<" Tweeters size "<<tweeters.size()<<endl;
-    
 	allocateActivityMap();
     
     startTime = ofGetElapsedTimeMillis();
@@ -1020,12 +1018,6 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     
     cout<<"Time taken to load mesh : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
 }
-    
-//void CloudsVisualSystemTwitter::createNewGraph(string outputFileName, string inputDataFolder){
-//    clearData();
-//    loadJSONData(inputDataFolder);
-//    createPajekNetwork(outputFileName);
-//}
 
 void CloudsVisualSystemTwitter::loadGraphFromPath(string filePath){
     cout<<filePath<<endl;
@@ -1178,7 +1170,7 @@ void CloudsVisualSystemTwitter::selfUpdate()
                 t.attenuation = ofMap(ofGetElapsedTimef(), t.hoverChangedTime, t.hoverChangedTime + .25, 1.0, t.attenuation, true);
             }
             
-            float padding = 15;
+            float padding = 30;
             t.screenRectangle.x = screenTop.x - padding;
             t.screenRectangle.y = screenTop.y - padding;
             t.screenRectangle.width = screenRight.x - screenLeft.x + padding*2;
@@ -1323,10 +1315,13 @@ void CloudsVisualSystemTwitter::selfDraw()
     }
     
     if(bRenderText) {
-
+        string lowCaseSelect = ofToLower(selectedPerson);
         if (bStaticNameDraw) {
             for (int i= 0 ; i < tweeters.size(); i++) {
                 if(tweeters[i]->tweets.size() > 0){
+                    if(ofToLower(tweeters[i]->name) == lowCaseSelect){
+                        continue;
+                    }
                     drawText(bDrawFullNames ? tweeters[i]->fullName : tweeters[i]->name,
                              tweeters[i]->billboardMat,tweeters[i]->attenuation);
                 }
@@ -1454,6 +1449,7 @@ void CloudsVisualSystemTwitter::selectPerson(string person){
     if(person == selectedPerson){
         return;
     }
+    
     person = ofToLower(person);
 //    if(nameToHandleMap.find(person) == nameToHandleMap.end()){
 //        ofLogError("CloudsVisualSystemTwitter::selectPerson") << "Person " << person << " not found in twitter map";
@@ -1465,7 +1461,17 @@ void CloudsVisualSystemTwitter::selectPerson(string person){
     targetCameraSideDir = targetPersonPosition.normalized().getCrossed( ofVec3f(0,1,0) );
     targetCameraUpDir   = targetPersonPosition.normalized().getCrossed( targetCameraSideDir );
     selectedPerson = person;
+    if(skipCameraSweep){
+        nameHighlightCam.setPosition(targetCameraPosition);
+        nameHighlightCam.lookAt(targetPersonPosition, targetCameraUpDir);
+        currentCameraUpDir = targetCameraUpDir;
+        currentCameraSideDir = targetCameraSideDir;
+        skipCameraSweep = false;
+    }
+}
 
+void CloudsVisualSystemTwitter::skipNextCameraSweep(){
+    skipCameraSweep = true;
 }
 
 bool CloudsVisualSystemTwitter::selectionChanged(){
@@ -1698,11 +1704,7 @@ void CloudsVisualSystemTwitter::drawText(string text, ofMatrix4x4 billboard, flo
     ofPushStyle();
     ofSetColor(col);
     
-//    ofNode n;
-//    n.setPosition(pos);
-//    n.lookAt(getCameraRef(), getCameraRef().getUpDir());
     ofPushMatrix();
-//    ofMultMatrix(n.getGlobalTransformMatrix());
     ofMultMatrix(billboard);
     ofScale(-0.01,-0.01,0.01);
     font.drawString(ofToUpper(text),25,font.stringHeight(text));
@@ -1730,7 +1732,7 @@ void CloudsVisualSystemTwitter::selfMouseMoved(ofMouseEventArgs& data){
         for(int i = 0; i < tweeters.size(); i++){
             Tweeter* t = tweeters[i];
             
-            if(!t->onScreen || t->fullName == "") continue;
+            if(!t->onScreen || t->fullName == "" || data.canceled) continue;
             
             bool inside = t->screenRectangle.inside(mousePos);
             //if this one is closer
@@ -1753,7 +1755,9 @@ void CloudsVisualSystemTwitter::selfMouseMoved(ofMouseEventArgs& data){
             
             bool inside = t->screenRectangle.inside(mousePos);
             if(t->hovered &&
-               (!inside || (hoveredPoint != NULL && (hoveredPoint->position*meshExpansion).distance(camPos) < (t->position*meshExpansion).distance(camPos))) )
+               (!inside ||
+                data.canceled ||
+                (hoveredPoint != NULL && (hoveredPoint->position*meshExpansion).distance(camPos) < (t->position*meshExpansion).distance(camPos))) )
             {
                 t->hovered = false;
                 t->hoverChangedTime = ofGetElapsedTimef();
@@ -1765,7 +1769,7 @@ void CloudsVisualSystemTwitter::selfMouseMoved(ofMouseEventArgs& data){
 //--------------------------------------------------------------
 void CloudsVisualSystemTwitter::selfMousePressed(ofMouseEventArgs& data)
 {
-    if(bDrawFullNames){
+    if(bDrawFullNames && !data.canceled){
         for(int i = 0; i < tweeters.size(); i++){
 
             if(tweeters[i]->hovered){

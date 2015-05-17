@@ -35,6 +35,7 @@ class CloudsInputMouse : public CloudsInput
 	void mousePressed(ofMouseEventArgs& data);
 	void mouseDragged(ofMouseEventArgs& data);
 	void mouseReleased(ofMouseEventArgs& data);
+    void mouseScrolled(ofMouseEventArgs& data);
 
 	void drawFeedback(float width, float height, bool drawBrightText);
 	float feedbackAlpha;

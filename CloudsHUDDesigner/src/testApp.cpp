@@ -35,7 +35,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofBackground(128);
+    ofBackground(ofMap(mouseX, 0, ofGetWidth(), 0, 255, true));
     
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 20,20);
 	hud.draw();
@@ -116,11 +116,28 @@ void testApp::keyPressed(int key){
     if(key == '9'){
         hud.animateOff();
     }
+    if(key == 'q'){
+        hud.animateOn(CLOUDS_RESEARCH_TOPIC);
+    }
+    if(key == 'w'){
+        hud.animateOn(CLOUDS_RESEARCH_PPL);
+    }
+    if(key == 'e'){
+        hud.animateOn(CLOUDS_RESEARCH_VS);
+    }
     
     if(key == 'h'){
 //		hud.toggleGuis();
     }
 	
+    if(key == 'q'){
+        hud.questionHoverOn("SOME SMALL QUESTION?");
+    }
+    if(key == 'Q'){
+        hud.questionHoverOn("OR ANOTHER MUCH LARGER QUESTION?");
+
+    }
+    
 }
 
 //--------------------------------------------------------------

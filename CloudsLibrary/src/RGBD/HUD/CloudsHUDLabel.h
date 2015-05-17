@@ -16,7 +16,10 @@ class CloudsHUDLabel {
     CloudsHUDLabel();
     void setup( ofxFTGLSimpleLayout *textLayout, ofRectangle textBounds );
     void setup( ofxFTGLFont *textFont, ofRectangle textBounds );
-
+    void setDynamicMargin();
+    void updateDynamicSize();
+    void makeArrowPositionDynamic();
+    
     void draw();
     
     void setText(const string& newText, bool forceOn = true);
@@ -30,6 +33,11 @@ class CloudsHUDLabel {
 
     ofRectangle baseInteractiveBounds;
     ofRectangle scaledInteractiveBounds;
+    
+    //for dynamic backing text
+    bool bDynamicBacking;
+    ofRectangle dynamicBackingBounds;
+    ofMesh* dynamicBackingMesh;
 
     void animateIn(bool force = false);
     void animateOut(bool clear = false);
@@ -47,13 +55,21 @@ class CloudsHUDLabel {
     bool caps;
     float hoverAlpha;
     
-	void mouseMoved(ofVec2f mouse);
-	void mousePressed(ofVec2f mouse);
-	void mouseReleased(ofVec2f mouse);
+    bool hasTriangle;
+    ofMesh triangleMesh;
+    
+	bool mouseMoved(ofVec2f mouse);
+	bool mousePressed(ofVec2f mouse);
+	bool mouseReleased(ofVec2f mouse);
+    
     
   protected:
 	string  text;
     string type;
+
+    bool usesLayout();
+    bool usesFont();
+    
     
     bool clearTextOnAnimateOut;
 
@@ -64,6 +80,11 @@ class CloudsHUDLabel {
     float beginTime;
     float pct;
     float textAlpha;
+    float dynamicBackingMargin;
+    
+    bool arrowPositionDynamic;
+    float arrowBaseRightEdge;
+    
     int playhead;
     
     bool bIsAnimatingIn, bIsAnimatingOut;

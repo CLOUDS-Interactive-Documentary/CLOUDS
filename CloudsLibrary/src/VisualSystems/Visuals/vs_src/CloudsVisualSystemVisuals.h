@@ -9,8 +9,12 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "CloudsVisualSystemPreset.h"
 
 typedef struct{
+    string title;
+    string byLine;
+    
     ofImage image;
     ofVec3f pos;
     float rotation;
@@ -23,7 +27,7 @@ typedef struct{
 
 class CloudsVisualSystemVisuals : public CloudsVisualSystem {
   public:
-    
+    CloudsVisualSystemVisuals();
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
@@ -98,8 +102,15 @@ class CloudsVisualSystemVisuals : public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
     void selectSystem(string systemName);
+    bool selectionChanged();
+    bool selectionConfirmed();
+    string getSelectedSystem();
     
-    map<string, VisualThumb> thumbs;
+    //can be done on thread
+    void setVisuals(map<string, CloudsVisualSystemCredit>& visuals);
+    //done after load
+    void pushTextures();
+    void skipNextCameraSweep();
     
     ofCamera& getCameraRef(){
         if(bFreeCam){
@@ -122,10 +133,26 @@ protected:
     void layoutThumbnails();
     bool bFreeCam;
     float cameraBackupDistance;
+    int fontSize;
+    int currentFontSize;
+    ofVec2f typeOffset;
+    
+    ofVec3f targetCameraSideDir;
+    ofVec3f targetCameraUpDir;
+    ofVec3f currentCameraUpDir;
+    ofVec3f currentCameraSideDir;
+
+    ofxFTGLFont visualFont;
+    bool skipCameraSweep;
+    
+    map<string, VisualThumb> thumbs;
     
     ofVec3f camTargetPos;
     ofVec3f camLookPos;
     string selectedSystem;
-    
+    bool bSelectionChanged;
+    bool bSelectionConfirmed;
+    float typeScale;
+    bool bMouseEventCanceled;
     ofCamera selectCamera;
 };

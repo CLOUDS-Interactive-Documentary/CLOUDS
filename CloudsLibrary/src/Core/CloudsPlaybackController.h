@@ -66,6 +66,7 @@ class CloudsPlaybackController : public ofThread {
 	void mouseMoved(ofMouseEventArgs & args);
 	void mousePressed(ofMouseEventArgs & args);
 	void mouseReleased(ofMouseEventArgs & args);
+    void mouseScrolled(ofMouseEventArgs & args);
     
 #ifdef VHX_MEDIA
     void networkConnected();
@@ -158,7 +159,7 @@ class CloudsPlaybackController : public ofThread {
 #endif
 
     void createInterludeSoundQueue();
-    
+    void prepareHUDForMapTransition();
     
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;
@@ -179,6 +180,7 @@ class CloudsPlaybackController : public ofThread {
     
 	//loader screen
 	bool loadingAct;
+    bool justOpened;
 	int currentPresetIndex;
 	
     string currentClipName;
@@ -192,10 +194,10 @@ class CloudsPlaybackController : public ofThread {
 	void actCreated(CloudsActEventArgs& args);
 	bool returnToIntro;
 
-	bool badIdle;
-	float badIdleStartTime;
+//	bool badIdle;
+//	float badIdleStartTime;
     bool userReset;
-
+    
 	string prerolledClipID;
 	void prerollClip(CloudsClip* clip, float toTime);
 	void playClip(CloudsClip* clip);

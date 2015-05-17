@@ -1270,6 +1270,7 @@ void CloudsVisualSystem::interactionMoved(CloudsInteractionEventArgs& args){
         fakeArgs.x = args.position.x;
         fakeArgs.y = args.position.y;
         fakeArgs.button = args.actionType;
+        fakeArgs.canceled = args.canceled;        
         mouseMoved(fakeArgs);
     }
 	selfInteractionMoved(args);
@@ -1281,6 +1282,7 @@ void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
         fakeArgs.x = args.position.x;
         fakeArgs.y = args.position.y;
         fakeArgs.button = args.actionType;
+        fakeArgs.canceled = args.canceled;
         mousePressed(fakeArgs);
     }
 	selfInteractionStarted(args);
@@ -1292,6 +1294,7 @@ void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
         fakeArgs.x = args.position.x;
         fakeArgs.y = args.position.y;
         fakeArgs.button = args.actionType;
+        fakeArgs.canceled = args.canceled;
         mouseDragged(fakeArgs);
     }
 	selfInteractionDragged(args);
@@ -1303,6 +1306,7 @@ void CloudsVisualSystem::interactionEnded(CloudsInteractionEventArgs& args){
         fakeArgs.x = args.position.x;
         fakeArgs.y = args.position.y;
         fakeArgs.button = args.actionType;
+        fakeArgs.canceled = args.canceled;
         mouseReleased(fakeArgs);
     }
 	selfInteractionEnded(args);
