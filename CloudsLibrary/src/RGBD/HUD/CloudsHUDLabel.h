@@ -54,6 +54,7 @@ class CloudsHUDLabel {
     void forcePress();
     void forceClick();
     void unforceHover();
+    void unforcePress();
     
     bool tab; //dont' deselect on other click
     bool tabSelected;
@@ -97,6 +98,7 @@ class CloudsHUDLabel {
     bool bIsHovered;
     bool bIsForceHovered;
     bool bIsPressed;
+    bool bIsForcePressed;
     bool bIsClicked;
     float hoverChangedTime;
     float hoverChangeAlpha;

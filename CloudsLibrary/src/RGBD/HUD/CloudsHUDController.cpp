@@ -1362,6 +1362,9 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
         if(getScaledRectangle( layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds).inside(args.x,args.y) ){
             currentPreviewSelection->forcePress();
         }
+        else{
+            currentPreviewSelection->unforcePress();
+        }
     }
     
     if(hudOpenMap[CLOUDS_RESEARCH]){
@@ -1699,7 +1702,7 @@ void CloudsHUDController::draw(){
 
         ofPushStyle();
         if(currentPreviewSelection != NULL && currentPreviewImage != NULL){
-            ofSetColor(255, ofMap(currentPreviewSelection->hoverAlpha, 0, 1.0, .3, 1.0, true) * 255 * .6);
+            ofSetColor(255, ofMap(currentPreviewSelection->hoverAlpha, 0, 1.0, .3, 1.0, true) * 255 * .8);
             currentPreviewImage->draw(layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds);
         }
         else{

@@ -680,9 +680,8 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	voxelMesh.update();
 
 	updateActuators();
-    if(!paused){
-        updateQuestions();
-    }
+    updateQuestions();
+    
 	
 	if( placingTransitionNodes )
 	{
@@ -1150,6 +1149,11 @@ void CloudsVisualSystemRGBD::updateActuators(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::updateQuestions(){
 	
+    if(paused){
+        stickyCursor.interpolate(cursor, 0.5f);
+        return;
+    }
+    
 	leftPortal.hoverPosition  = portalBaseHover + translatedHeadPosition;
 	rightPortal.hoverPosition = portalBaseHover*ofVec3f(-1,0,0) + translatedHeadPosition;
 	//resetPortal.hoverPosition = resetHoverPosition + translatedHeadPosition;

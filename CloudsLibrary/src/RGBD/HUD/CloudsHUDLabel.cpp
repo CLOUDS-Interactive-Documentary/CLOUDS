@@ -38,6 +38,7 @@ CloudsHUDLabel::CloudsHUDLabel(){
     animationClamp.max = 3.0;
     fadeOutSpeed = 0.3;
     bIsForceHovered = false;
+    bIsForcePressed = false;
     
     hoverChangedTime = 0.;
     hoverChangeAlpha = 0;
@@ -258,7 +259,7 @@ bool CloudsHUDLabel::usesFont(){
 bool CloudsHUDLabel::mouseMoved(ofVec2f mouse){
     
     bool wasHovered = bIsHovered;
-	bIsHovered = bIsForceHovered || (isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y));
+	bIsHovered = isVisible() && (bIsForceHovered || scaledInteractiveBounds.inside(mouse.x,mouse.y));
     if(wasHovered != bIsHovered){
 		hoverChangedTime = ofGetElapsedTimef();
         hoverChangeAlpha =  hoverAlpha;
@@ -267,7 +268,7 @@ bool CloudsHUDLabel::mouseMoved(ofVec2f mouse){
 }
 
 bool CloudsHUDLabel::mousePressed(ofVec2f mouse){
-	bIsPressed = isVisible() && scaledInteractiveBounds.inside(mouse.x,mouse.y);
+	bIsPressed = isVisible() && (bIsForcePressed || scaledInteractiveBounds.inside(mouse.x,mouse.y));
     return bIsPressed;
 }
 
@@ -275,6 +276,8 @@ bool CloudsHUDLabel::mouseReleased(ofVec2f mouse){
     
     bool releasedInBounds = scaledInteractiveBounds.inside(mouse.x,mouse.y);
     if(bIsPressed && releasedInBounds){
+        bIsPressed = false;
+        bIsForcePressed = false;
         bIsClicked = true;
     }
     else if(!tab){
@@ -307,12 +310,15 @@ void CloudsHUDLabel::unforceHover(){
 
 void CloudsHUDLabel::forcePress(){
     bIsPressed = true;
+    bIsForcePressed = true;
+}
+
+void CloudsHUDLabel::unforcePress(){
+    bIsForcePressed = false;
 }
 
 void CloudsHUDLabel::forceClick(){
-    if(bIsPressed){
-        bIsClicked = true;
-    }
+    bIsClicked = true;
 }
 
 string CloudsHUDLabel::getText(){
