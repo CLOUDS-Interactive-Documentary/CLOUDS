@@ -632,6 +632,7 @@ void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 	bDrawHud = true;
 	bActJustStarted = true;
     bVisualSystemDisplayed = false;
+    home.deactivate();
     hudLabelMap["VSCreditsTextBoxTop"]->setText("", false);
     hudLabelMap["VSCreditsTextBoxBottom"]->setText("", false);
 }
@@ -1188,6 +1189,7 @@ void CloudsHUDController::pause(){
     animateOff( CLOUDS_HUD_NEXT );
     if(bProjectExampleDisplayed){
         animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
+        isPlaying = true;
     }
 
     home.forceActive();
@@ -1315,9 +1317,9 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
         if(getScaledRectangle( layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds).inside(args.x,args.y) ){
             currentPreviewSelection->forceHover();
         }
-        else{
-            currentPreviewSelection->unforceHover();
-        }
+    }
+    else{
+        currentPreviewSelection->unforceHover();
     }
     
     if(hudOpenMap[CLOUDS_RESEARCH]){
@@ -1362,9 +1364,9 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
         if(getScaledRectangle( layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds).inside(args.x,args.y) ){
             currentPreviewSelection->forcePress();
         }
-        else{
-            currentPreviewSelection->unforcePress();
-        }
+    }
+    else{
+        currentPreviewSelection->unforcePress();
     }
     
     if(hudOpenMap[CLOUDS_RESEARCH]){
