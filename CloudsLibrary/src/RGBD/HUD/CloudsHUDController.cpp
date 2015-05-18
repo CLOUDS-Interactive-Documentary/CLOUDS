@@ -88,8 +88,7 @@ void CloudsHUDController::setup(){
 
 	home.setup();
     
-    researchBio.loadFont(GetFontPath(), 12);
-    playAllFont.loadFont(GetFontPath(), 12);
+    backersFont.loadFont(GetFontPath(), 10);
     
     topicMapPreview.loadImage(GetCloudsDataPath() + "HUD/TopicMapPreview.jpg");
     peopleMapPreview.loadImage(GetCloudsDataPath() + "HUD/PeopleMapPreview.jpg");
@@ -257,7 +256,6 @@ void CloudsHUDController::calculateFontSizes(){
 	string fontPath = GetThinFontPath();
 #endif
     
-    
     for(int i = minFontSize; i < maxFontSize; i++){
         ofxFTGLFont *tmp = new ofxFTGLFont();
         tmp->loadFont(fontPath , i );
@@ -290,7 +288,7 @@ void CloudsHUDController::calculateFontSizes(){
     
     getLabelForLayer("ResetButtonTextBox", fontPath);
     //research stuff
-    ResearchTopicListLabel = getLabelForLayer("ListTextBoxes", fontPath);
+    ResearchTopicListLabel = getLabelForLayer("ListTextBoxes", GetFontPath());
     
     //research navigation
     getLabelForLayer("MapTextBox", fontPath);
@@ -316,23 +314,23 @@ void CloudsHUDController::calculateFontSizes(){
     
     getLabelForLayer("ExitButtonTextBox", fontPath);
     
-    getLabelForLayer("AboutTextBox", fontPath, 35, false,true, 12);
+    getLabelForLayer("AboutTextBox", GetFontPath(), 35, false,true, 12);
     getLabelForLayer("AboutTitleTextBox", fontPath);
     
     getLabelForLayer("CastTitleTextBox", fontPath);
-    getLabelForLayer("CastList1TextBox", fontPath, 35,false,true);
-    getLabelForLayer("CastList2TextBox", fontPath, 35,false,true);
-    getLabelForLayer("CastList3TextBox", fontPath, 35,false,true);
+    getLabelForLayer("CastList1TextBox", GetFontPath(), 35,false,true);
+    getLabelForLayer("CastList2TextBox", GetFontPath(), 35,false,true);
+    getLabelForLayer("CastList3TextBox", GetFontPath(), 35,false,true);
 
     getLabelForLayer("CreditsTitleTextBox", fontPath);
-    getLabelForLayer("CreditsList1TextBox", fontPath, 35, false,true, 10);
-    getLabelForLayer("CreditsList2TextBox", fontPath, 35, false,true, 10);
-    getLabelForLayer("CreditsList3TextBox", fontPath, 35, false,true, 10);
+    getLabelForLayer("CreditsList1TextBox", GetFontPath(), 35, false,true, 10);
+    getLabelForLayer("CreditsList2TextBox", GetFontPath(), 35, false,true, 10);
+    getLabelForLayer("CreditsList3TextBox", GetFontPath(), 35, false,true, 10);
     
     getLabelForLayer("BackersCopyTextBox", fontPath);
-    getLabelForLayer("BackersList1TextBox", fontPath, 35, false,true, 10);
-    getLabelForLayer("BackersList2TextBox", fontPath, 35, false,true, 10);
-    getLabelForLayer("BackersList3TextBox", fontPath, 35, false,true, 10);
+    getLabelForLayer("BackersList1TextBox", GetFontPath(), 35, false,true, 10);
+    getLabelForLayer("BackersList2TextBox", GetFontPath(), 35, false,true, 10);
+    getLabelForLayer("BackersList3TextBox", GetFontPath(), 35, false,true, 10);
 
     
     getLabelForLayer("BackersScrollUpSpace", fontPath);
@@ -396,21 +394,38 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
     ///////////////////////////
     
-    ofBuffer backers = ofBufferFromFile(GetCloudsDataPath() + "about/backers.txt");
-    int i = 0;
+    ofBuffer backersFile = ofBufferFromFile(GetCloudsDataPath() + "about/backers.txt");
     string columns[3];
-    while(!backers.isLastLine()){
-        columns[i++ % 3 ] += backers.getNextLine() +"\n";
+    float leftPos[3];
+    
+    leftPos[0] = hudLabelMap["BackersList1TextBox"]->bounds.x;
+    leftPos[1] = hudLabelMap["BackersList2TextBox"]->bounds.x;
+    leftPos[2] = hudLabelMap["BackersList3TextBox"]->bounds.x;
+    float top  = hudLabelMap["BackersList1TextBox"]->bounds.y;
+
+    int i = 0;
+
+    while(!backersFile.isLastLine()){
+        CloudsHUDBacker b;
+        b.pos.x   = leftPos[ i % 3 ];
+        b.pos.y   = top + (i/3) * aboutScroller.scrollIncrement;
+        b.visible = false;
+        b.backer  = backersFile.getNextLine();
+        backers.push_back(b);
+        i++;
     }
     
-//    hudLabelMap["BackersCopyTextBox"]->setText(GetTranslationForString("BACKERS"), false);
-    hudLabelMap["BackersList1TextBox"]->setText(columns[0], false);
-    hudLabelMap["BackersList2TextBox"]->setText(columns[1], false);
-    hudLabelMap["BackersList3TextBox"]->setText(columns[2], false);
+    aboutScroller.totalScrollHeight = (backers.size() / 3) * aboutScroller.scrollIncrement + aboutScroller.scrollIncrement;
+    //TODO: what goes here?
+    //hudLabelMap["BackersCopyTextBox"]->setText(GetTranslationForString("BACKERS"), false);
     
-    aboutScroller.totalScrollHeight = MAX(MAX(hudLabelMap["BackersList1TextBox"]->layout->stringHeight(columns[0]),
-                                              hudLabelMap["BackersList2TextBox"]->layout->stringHeight(columns[1])),
-                                              hudLabelMap["BackersList3TextBox"]->layout->stringHeight(columns[2]));
+//    hudLabelMap["BackersList1TextBox"]->setText(columns[0], false);
+//    hudLabelMap["BackersList2TextBox"]->setText(columns[1], false);
+//    hudLabelMap["BackersList3TextBox"]->setText(columns[2], false);
+    
+//    aboutScroller.totalScrollHeight = MAX(MAX(hudLabelMap["BackersList1TextBox"]->layout->stringHeight(columns[0]),
+//                                              hudLabelMap["BackersList2TextBox"]->layout->stringHeight(columns[1])),
+//                                              hudLabelMap["BackersList3TextBox"]->layout->stringHeight(columns[2]));
     
     hudLabelMap["MapTextBox"]->tab = true;
     hudLabelMap["PeopleTextBox"]->tab = true;
@@ -981,7 +996,7 @@ void CloudsHUDController::updateScroll(){
     for(int i = 0; i < currentResearchList->buttons.size(); i++){
         CloudsHUDResearchButton& b = currentResearchList->buttons[i];
         b.visible = b.top >= currentResearchList->scrollPosition &&
-        b.top <= currentResearchList->scrollPosition + researchScroller.scrollBounds.height - researchScroller.scrollIncrement;
+                    b.top <= currentResearchList->scrollPosition + researchScroller.scrollBounds.height - researchScroller.scrollIncrement;
         
         if(b.visible){
             b.selectRect = ofRectangle(researchScroller.scrollBounds.x,
@@ -1151,6 +1166,11 @@ void CloudsHUDController::updateAboutNavigation(){
     hudLabelMap["NavCastTextBox"]->tabSelected = currentAboutTab    == CLOUDS_HUD_ABOUT_TAB_CAST;
     hudLabelMap["NavCreditsTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_CREDITS;
     hudLabelMap["NavBackersTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_BACKERS;
+    
+    for(int i = 0; i < backers.size(); i++){
+        backers[i].visible = backers[i].pos.y >= aboutScroller.scrollBounds.y + aboutScroller.scrollPosition &&
+                             backers[i].pos.y <= aboutScroller.scrollBounds.y + aboutScroller.scrollPosition + aboutScroller.scrollBounds.height;
+    }
     
 }
 
@@ -1681,15 +1701,15 @@ void CloudsHUDController::draw(){
     }
     
     for(map<string, CloudsHUDLabel*>::iterator it = hudLabelMap.begin(); it != hudLabelMap.end(); ++it){
-        ofPushMatrix();
-        if(it->second == hudLabelMap["BackersList1TextBox"] ||
-           it->second == hudLabelMap["BackersList2TextBox"] ||
-           it->second == hudLabelMap["BackersList3TextBox"])
-        {
-            ofTranslate(0, -aboutScroller.scrollPosition);
-        }
+//        ofPushMatrix();
+//        if(it->second == hudLabelMap["BackersList1TextBox"] ||
+//           it->second == hudLabelMap["BackersList2TextBox"] ||
+//           it->second == hudLabelMap["BackersList3TextBox"])
+//        {
+//            ofTranslate(0, -aboutScroller.scrollPosition);
+//        }
         it->second->draw();
-        ofPopMatrix();
+//        ofPopMatrix();
     }
 
 	if(hudOpenMap[CLOUDS_HUD_HOME]){
@@ -1699,7 +1719,9 @@ void CloudsHUDController::draw(){
     if(hudOpenMap[CLOUDS_RESEARCH]){
         drawList();
     }
- 
+    if(hudOpenMap[CLOUDS_ABOUT_BACKERS]){
+        drawBackersList();
+    }
     if (hudOpenMap[CLOUDS_HUD_PAUSE]) {
 
         ofPushStyle();
@@ -1712,19 +1734,6 @@ void CloudsHUDController::draw(){
             topicMapPreview.draw(layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds);
         }
         ofPopStyle();
-        
-//        if(hudLabelMap["ExploreTextBox"]->hoverAlpha > 0){
-//            ofPushStyle();
-//            ofSetColor(255, hudLabelMap["ExploreTextBox"]->hoverAlpha * 255 * .6);
-//            topicMapPreview.draw(layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds);
-//            ofPopStyle();
-//        }
-//        if(hudLabelMap["SeeMoreTextBox"]->hoverAlpha > 0){
-//            ofPushStyle();
-//            ofSetColor(255, hudLabelMap["SeeMoreTextBox"]->hoverAlpha * 255 * .6);
-//            peopleMapPreview.draw(layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds);
-//            ofPopStyle();
-//        }
     }
 
 	ofPopMatrix();
@@ -1767,6 +1776,18 @@ void CloudsHUDController::drawList(){
     }
     ofPopStyle();
     
+    ofPopMatrix();
+}
+
+void CloudsHUDController::drawBackersList(){
+    ofPushMatrix();
+    ofTranslate(0, -aboutScroller.scrollPosition);
+
+    for(int i = 0; i < backers.size(); i++){
+        if(backers[i].visible){
+            backersFont.drawString(backers[i].backer, backers[i].pos.x, backers[i].pos.y);
+        }
+    }
     ofPopMatrix();
 }
 

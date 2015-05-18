@@ -72,6 +72,12 @@ typedef enum{
     CLOUDS_HUD_TRIANGLE_NONE
 } CloudsHUDTriangleDirection;
 
+typedef struct{
+    bool visible;
+    ofVec2f pos;
+    string backer;
+} CloudsHUDBacker;
+
 class CloudsHUDResearchButton {
   public:
     CloudsHUDResearchButton(){
@@ -255,7 +261,7 @@ class CloudsHUDController {
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
     
-    
+    vector<CloudsHUDBacker> backers;
     /////////////// SCROLL VARIABLES
     //////////////
     CloudsHUDScroller researchScroller;
@@ -272,8 +278,7 @@ class CloudsHUDController {
     
     void selectButton(const CloudsHUDResearchButton& button);
     //string bioText;
-    ofxFTGLSimpleLayout researchBio;
-    ofxFTGLFont playAllFont;
+    ofxFTGLFont backersFont;
     
     //TODO All symbols triangles need to fit this way
 	ofMesh resetTriangle;
@@ -301,6 +306,7 @@ class CloudsHUDController {
     //CloudsHUDAboutTab nextTab;
     
     void drawList();
+    void drawBackersList();
     
     CloudsHUDLabel* getLabelForLayer(const string& layerName,
                                      const string& fontPath,

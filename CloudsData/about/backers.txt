@@ -149,7 +149,8 @@ Dom Badger
 Douglas Dankel
 Dr. Malcolm Webber
 Dr. Sib
-Drew Bregel & Jenny Kam
+Drew Bregel 
+Jenny Kam
 Dru Woods
 ean Callinan
 Eddie Codel
@@ -176,7 +177,7 @@ Erin Jo Richey
 Ernesto Provencio
 Eva
 Everardo Reyes-Garcia
-Fabrizio "VJHASH" D'Amico 
+Fabrizio D'Amico 
 VideoHackSpace
 Federico Weber
 Fernando Fernandes
@@ -307,7 +308,7 @@ Justin Sheehy
 JustinChung.com
 Kaethe Burt-O'Dea
 Kamen Dimitrov
-Karam Byun (a.k.a. crzikrn)
+Karam "crzikrn" Byun
 Kari 'Zael' Alatalo
 Karl Ringman
 Kate Hollenbach
@@ -407,7 +408,7 @@ Mike Wilson
 mikeymacgyver
 Milan Janosik
 mimobase
-Monica Schaeffer Gorochow
+Monica Gorochow
 Morgan Fraser
 Moritz Stefaner
 Moudy
@@ -570,7 +571,7 @@ Vincent Deloso
 W. Evan Sheehan
 Waldemar
 Warren Ali
-William Comfort Anderson
+William Anderson
 Wonyong So
 Wray Bowling
 Wylie Robinson
