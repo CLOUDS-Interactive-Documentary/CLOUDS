@@ -1479,10 +1479,10 @@ void CloudsPlaybackController::updateTransition(){
                 //starting
 			case TRANSITION_INTRO_IN:
                 
-                if(!justOpened){
+                if(justOpened){
                     justOpened = false;
                     clusterMap->clearTraversal();
-                
+                    introSequence->setStartQuestions(startingNodes);
                     introSequence->firstPlay = false;
                     introSequence->loadingFinished();
                     if(bVHXRentalExpired){

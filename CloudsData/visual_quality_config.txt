@@ -1,1 +1,1 @@
-PRETTY
+FAST

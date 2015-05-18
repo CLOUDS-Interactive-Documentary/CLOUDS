@@ -862,8 +862,10 @@ void CloudsIntroSequence::updateQuestions(){
 void CloudsIntroSequence::setStartQuestions(vector<CloudsClip*>& possibleStartQuestions){
 
 	selectedQuestion = NULL;
-	startQuestions.clear();
-	
+    caughtQuestion = NULL;
+    startQuestions.clear();
+
+    
 	for(int i = 0; i < possibleStartQuestions.size(); i++){
 		
 		CloudsPortal q;
