@@ -355,7 +355,7 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["PeopleTextBox"]->setText(GetTranslationForString("PEOPLE"), false);
     hudLabelMap["VisualsTextBox"]->setText(GetTranslationForString("VISUALS"), false);
     hudLabelMap["RSResetButtonTextBox"]->setText(GetTranslationForString("QUIT"), false);
-    hudLabelMap["ResumeButtonTextBox"]->setText(GetTranslationForString("BACK"), false); 
+    hudLabelMap["ResumeButtonTextBox"]->setText(GetTranslationForString("RESUME"), false); 
     
     hudLabelMap["ResetButtonTextBox"]->setText(GetTranslationForString("QUIT"), false);
     hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"), false);
@@ -636,10 +636,6 @@ void CloudsHUDController::attachTriangleToLabel(CloudsHUDLabel* label,
         default:
             break;
     }
-
-//    label->triangleMesh.addColor(ofFloatColor::white);
-//    label->triangleMesh.addColor(ofFloatColor::white);
-//    label->triangleMesh.addColor(ofFloatColor::white);
 
 }
 
@@ -1223,8 +1219,8 @@ void CloudsHUDController::pause(){
 
 }
 
-void CloudsHUDController::unpause(){
-    if( !bPaused ){
+void CloudsHUDController::unpause(bool force){
+    if( !force && !bPaused ){
         return;
     }
     bPaused = false;
@@ -1235,6 +1231,13 @@ void CloudsHUDController::unpause(){
     }
     if(bProjectExampleDisplayed){
         animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
+    }
+    
+    //if(!hudOpenMap[CLOUDS_HUD_HOME]){
+    
+    animateOn(CLOUDS_HUD_HOME);
+    if(bClipIsPlaying || bVisualSystemDisplayed){
+        animateOn(CLOUDS_HUD_LOWER_THIRD);
     }
     
     layers[CLOUDS_HUD_LOWER_THIRD]->bForceHover = false;
@@ -1333,10 +1336,10 @@ void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
         }
     }
  
-    if(hudOpenMap[CLOUDS_HUD_PAUSE]){
-        if(getScaledRectangle( layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds).inside(args.x,args.y) ){
-            currentPreviewSelection->forceHover();
-        }
+    if(hudOpenMap[CLOUDS_HUD_PAUSE] &&
+       getScaledRectangle( layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds).inside(args.x,args.y) )
+    {
+        currentPreviewSelection->forceHover();
     }
     else{
         currentPreviewSelection->unforceHover();
@@ -1380,10 +1383,10 @@ void CloudsHUDController::mousePressed(ofMouseEventArgs& args){
         home.activate();
     }
     
-    if(hudOpenMap[CLOUDS_HUD_PAUSE]){
-        if(getScaledRectangle( layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds).inside(args.x,args.y) ){
-            currentPreviewSelection->forcePress();
-        }
+    if(hudOpenMap[CLOUDS_HUD_PAUSE] &&
+       getScaledRectangle( layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds).inside(args.x,args.y) )
+    {
+        currentPreviewSelection->forcePress();
     }
     else{
         currentPreviewSelection->unforcePress();

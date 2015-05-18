@@ -1442,8 +1442,6 @@ void CloudsPlaybackController::updateTransition(){
         
         //clean up acts in between these states
         if(transitionController.fadedOut()){
-            //rgbdVisualSystem->transtionFinished();
-
             clearRenderTarget();
             if(shouldClearAct){
                 shouldClearAct = false;
@@ -1580,6 +1578,12 @@ void CloudsPlaybackController::updateTransition(){
                 
             default:
                 break;
+        }
+        
+        //if we came back from an act, force the HUD to display and move everything along.
+        if(transitionController.fadedOut() && resumingAct){
+            hud.unpause(true);
+            resumingAct = false;
         }
 
 	}
@@ -2279,6 +2283,7 @@ void CloudsPlaybackController::showInterlude(){
 	interludeSystem->isInterlude = true;
     
     hud.clearQuestion();
+    hud.animateOn(CLOUDS_HUD_NEXT);
     
 	currentVisualSystem = interludeSystem;
     
@@ -2411,9 +2416,9 @@ void CloudsPlaybackController::hideVisualSystem() {
 		currentVisualSystem->stopSystem();
 		showingVisualSystem = false;
 	}
-    if(resumingAct){
-        hud.pause();
-    }
+//    if(resumingAct){
+//        rgbdVisualSystem->getRGBDVideoPlayer().unpause();
+//    }
 }
 
 //--------------------------------------------------------------------
@@ -2444,7 +2449,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 
 	rgbdVisualSystem->playSystem();
 	currentVisualSystem = rgbdVisualSystem;
-    resumingAct = false;
+    //resumingAct = false;
     bShowingAct = true;
 }
 
@@ -2461,17 +2466,21 @@ void CloudsPlaybackController::playNextVisualSystem()
     }
     
     nextVisualSystemPreset.system->setDrawToScreen( false );
-    if(!canReturnToAct){
+    if(!resumingAct){
         nextVisualSystemPreset.system->loadPresetGUISFromName( nextVisualSystemPreset.presetName );
     }
     nextVisualSystemPreset.system->playSystem();
+    
+//    if(currentVisualSystem != NULL){
+//        currentVisualSystem->getTimeline()->play();
+//    }
 
     currentVisualSystemPreset = nextVisualSystemPreset;
     currentVisualSystem = nextVisualSystemPreset.system;
     
     cachedTransition = false;
     //in case this was a resume
-    resumingAct = false;
+    //resumingAct = false;
     showingVisualSystem = true;
 }
 

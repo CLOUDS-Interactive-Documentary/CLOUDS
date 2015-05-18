@@ -29,6 +29,9 @@ CloudsHUDLabel::CloudsHUDLabel(){
     bIsHovered = false;
     bIsPressed = false;
     
+    bIsForceHovered = false;
+    bIsForcePressed = false;
+    
     hasTriangle = false;
     
     clearTextOnAnimateOut = false;
@@ -37,8 +40,6 @@ CloudsHUDLabel::CloudsHUDLabel(){
     animationClamp.min = 0.3;
     animationClamp.max = 3.0;
     fadeOutSpeed = 0.3;
-    bIsForceHovered = false;
-    bIsForcePressed = false;
     
     hoverChangedTime = 0.;
     hoverChangeAlpha = 0;

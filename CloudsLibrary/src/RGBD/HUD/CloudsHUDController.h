@@ -156,6 +156,8 @@ class CloudsHUDController {
     void clearClip();
     void clearVisualSystem();
     
+    void pause();
+    void unpause(bool force = false);
     bool didPause();
     bool didUnpause();    
     bool isPaused();
@@ -208,8 +210,6 @@ class CloudsHUDController {
     map<CloudsHUDLayerSet, CloudsHUDBillboard> layerBillboard;
 #endif
 
-    void pause();
-    void unpause();
     
     void setTopics(const set<string>& topics);
     void populateSpeakers();
