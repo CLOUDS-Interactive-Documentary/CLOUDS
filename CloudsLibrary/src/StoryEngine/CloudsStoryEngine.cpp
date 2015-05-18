@@ -802,19 +802,21 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 		float clipFadePad = 2.0;
         
         if(settings.allowVisuals){
-            if(state.visualSystemRunning){
+            if(state.visualSystemRunning) {
+                
+                state.visualSystemNumClips++;
+                
                 if(bLogVisualSystemDetails) state.log << state.duration << "\tVISUALS Currently running \"" << state.preset.getID() << "\" time [" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] " << (state.preset.indefinite ? "indefinite" : "definite") << endl;
 
                 ///should the preset end in this clip?
                 //	if so commit the preset during the clip
                 //	if not keep going
                 //the current duration is BEFORE the new clip has been committed
-
                 if(state.duration + clipFadePad > state.visualSystemEndTime){
                     if(bLogVisualSystemDetails) state.log << state.duration << "\t\tPassed predicted time " << state.visualSystemEndTime;
                                     
                     //if this clip freed the topic extend our visuals out over the end of the clip a ways
-                    if(state.freeTopic){
+                    if(state.freeTopic && state.clipHistory.size() > 1){
 
                         if(state.preset.indefinite){
                             state.visualSystemEndTime = state.duration + visualSystemTopicEndExtend;
@@ -840,33 +842,22 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
                     }
                     //else correct the end time to fit with the clip we just added
                     else {
-                        //VO should be entirely covered. This may cause a rare problem with definite clips that don't cover the whole VO,
-                        //but not sure what to do otherwise
-                        if(state.clip->voiceOverAudio){
+                        //VO or single clip visuals should be entirely covered.
+                        //This may cause a rare problem with definite clips that don't cover the whole VO,
+                        //but not sure what to do otherwise...
+                        if(state.clip->voiceOverAudio || state.visualSystemNumClips == 1){
                             state.visualSystemEndTime = state.duration + clipFadePad;
                             if(bLogVisualSystemDetails) state.log << state.duration << "- moving end time over top of VO " << state.clip->getLinkName() << endl;
                         }
-                        //end within the clip
+                        //end at beginning of last clip
                         else{
-                            //Also the first clip of an act should be covered
-                            float midAlignedEnd    = state.duration - state.clip->getDuration() / 2. + clipFadePad;
-                            float startAlignedEnd  = state.duration - state.clip->getDuration()      - clipFadePad;
-                            //JG right before Tribeca I'm removing the mid aligned ends because they cause vs to be way too long
-    //                        if(state.visualSystemStartTime > 0 &&
-    //                           abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd - state.visualSystemEndTime) )
-    //                        {
-    //                            state.visualSystemEndTime = midAlignedEnd;
-    //                        }
-    //                        else {
-                            state.visualSystemEndTime = startAlignedEnd;
-    //                        }
-                            
+                            state.visualSystemEndTime = state.duration - state.clip->getDuration() - clipFadePad;;
                             
                             if(bLogVisualSystemDetails)
                                 state.log << " - moving end time to middle of " << state.clip->getLinkName() << ", time " << state.visualSystemEndTime << endl;
                         }
                         
-                        //make sure indefinite presets don't get cut too short
+                        //don't cut presets too short
                         if(state.preset.indefinite){
                             state.visualSystemEndTime = MAX(state.visualSystemEndTime, state.visualSystemStartTime + minVisualSystemRunTime);
                         }
@@ -874,6 +865,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
                         else {
                             state.visualSystemEndTime = MIN(state.visualSystemEndTime, state.visualSystemStartTime + state.preset.duration);
                         }
+                        
+                        //commit the visuals
                         state.act->addVisualSystem(state.preset,
                                                    state.visualSystemStartTime,
                                                    state.visualSystemEndTime);
@@ -911,23 +904,25 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
                         //don't move the start clip to the center
                         else if(state.visualSystemEndTime != 0){
                             //random choice between mid align and end align
-                            if(ofRandomuf()){
+                            if(ofRandomuf() > .5){
                                 state.visualSystemStartTime = state.duration - state.clip->getDuration() / 2.0;
                             }
                             else{
                                 state.visualSystemStartTime = state.duration + 1.0;
                             }
                         }
+                        else{
+                            state.visualSystemStartTime = 0;
+                        }
                         
                         //COMPUTE END TIME
-                        if(nextPreset.indefinite){
+                        if(state.preset.indefinite){
                             state.visualSystemEndTime = state.visualSystemStartTime + maxVisualSystemRunTime;
                         }
                         else {
-                            state.visualSystemEndTime =
-                                state.visualSystemStartTime + MIN(maxVisualSystemRunTime, state.preset.duration);
+                            state.visualSystemEndTime = state.visualSystemStartTime + MIN(maxVisualSystemRunTime, state.preset.duration);
                         }
-                        //TODO: RESPECT HAS SOUND
+
                         if(state.preset.soundExcludeVO){
                             //commit the visual system
                             //setting the current duration here ensures the next clip starts after this one is over
@@ -943,6 +938,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
                         else {
                             
                             state.visualSystemRunning = true;
+                            state.visualSystemNumClips = 0;
                             
                             if(bLogVisualSystemDetails)state.log << state.duration << "\t\tChose new Preset " << state.preset.getID() << " time [" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] " << (state.preset.indefinite ? "indefinite" : "definite") << endl;
                         }
@@ -978,7 +974,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 
 		if(bLogVisualSystemDetails) state.log << state.duration << " Commiting final preset " << state.preset.getID() << " at the end of the act " <<endl;
 	}
-
+    else{
+        state.duration += 2;//pad out 
+    }
 	char logpath[1024];
 	sprintf(logpath, "%slogs/acts/ACT_%d_%d_%d_%d.txt", GetCloudsDataPath().c_str(), ofGetMonth(), ofGetDay(), ofGetMinutes(), ofGetSeconds() );
 	ofBuffer logbuf(state.log.str());

@@ -38,20 +38,20 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MAX VS RUNTIME</Name>
-    <Value>39.310344696</Value>
+    <Value>30.310344696</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>MIN VS RUNTIME</Name>
-    <Value>19.802955627</Value>
+    <Value>10.802955627</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>MAX VS GAPTIME</Name>
-    <Value>7.684729099</Value>
+    <Value>5.684729099</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>TOPIC END VISUAL EXTEND</Name>
-    <Value>21.354679108</Value>
+    <Value>5.354679108</Value>
 </Widget>
