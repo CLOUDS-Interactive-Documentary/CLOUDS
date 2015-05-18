@@ -893,19 +893,20 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             hud.preselectMap();
             
             //populate current selections based on history
-            if(run.clipHistory.size() > 0){
-                hud.selectPerson(run.clipHistory.back()->person);
-            }
             if(run.topicHistory.size() > 0){
-                hud.selectTopic( parser.getMasterKeyword(run.topicHistory.back()) );
+                //hud.selectTopic( parser.getMasterKeyword(run.topicHistory.back()) );
+                clusterMap->skipNextCameraSweep();
+                clusterMap->moveToTopic(parser.getMasterKeyword(run.topicHistory.back()) );
+            }
+            if(run.clipHistory.size() > 0){
+                //hud.selectPerson(run.clipHistory.back()->person);
+                peopleMap->skipNextCameraSweep();
+                peopleMap->moveToPerson( CloudsSpeaker::speakers[run.clipHistory.back()->person].twitterHandle);
             }
             if(run.presetHistory.size() > 0){
+                visualsMap->skipNextCameraSweep();
                 hud.selectVisual( visualSystems.getPresetWithID( run.presetHistory.back()).systemName );
             }
-            
-            clusterMap->skipNextCameraSweep();
-            peopleMap->skipNextCameraSweep();
-            visualsMap->skipNextCameraSweep();
             
             transitionController.transitionToExploreMap(1.0, 3.0);
             showingResearchMode = true;
@@ -1023,7 +1024,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         string selectedTopic = hud.getSelectedItem();
         if(selectedTopic != ""){
             
-            clusterMap->setCurrentTopic(selectedTopic);
+            clusterMap->moveToTopic(selectedTopic);
             hud.setResearchClickAnchor( clusterMap->getTopicScreenLocation() );
             
             if(hud.isItemConfirmed()){
@@ -1038,15 +1039,16 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     }
     
     if(showingExplorePeople){
-        string selectedSpeakerID = hud.getSelectedItem();
+        
         if(peopleMap->selectionChanged()){
             string selectedTwitterID = peopleMap->getSelectedPerson();
             hud.selectPerson(CloudsSpeaker::twitterHandleToSpeaker[selectedTwitterID].fcpID);
         }
         
+        string selectedSpeakerID = hud.getSelectedItem();
         if(selectedSpeakerID != ""){
             
-            peopleMap->selectPerson(CloudsSpeaker::speakers[selectedSpeakerID].twitterHandle);
+            peopleMap->moveToPerson(CloudsSpeaker::speakers[selectedSpeakerID].twitterHandle);
             hud.setResearchClickAnchor( peopleMap->getSelectedPersonScreenPosition() );
 
             if(hud.isItemConfirmed()){
@@ -1213,19 +1215,30 @@ void CloudsPlaybackController::prepareHUDForMapTransition(){
     bShowingAct = false;
     resumeState = currentVisualSystem == rgbdVisualSystem ? TRANSITION_INTERVIEW_IN : TRANSITION_VISUALSYSTEM_IN;
     
-    if(currentClip != NULL){
-        hud.selectPerson(currentClip->person);
-    }
     if(currentTopic != ""){
-        hud.selectTopic( parser.getMasterKeyword(currentTopic) );
+        string newTopic = parser.getMasterKeyword(currentTopic) ;
+        //hud.selectTopic(newTopic);
+        if(newTopic != clusterMap->getSelectedKeyword()){
+            clusterMap->skipNextCameraSweep();
+        }
+        clusterMap->moveToTopic(newTopic);
     }
+    
+    if(currentClip != NULL){
+        //hud.selectPerson(currentClip->person);
+        if(currentClip->person != peopleMap->getSelectedPerson()){
+            peopleMap->skipNextCameraSweep();
+        }
+        peopleMap->moveToPerson(CloudsSpeaker::speakers[currentClip->person].twitterHandle);
+    }
+    
     if(nextVisualSystemPreset.systemName != ""){
+        if(nextVisualSystemPreset.systemName != visualsMap->getSelectedSystem() ){
+            visualsMap->skipNextCameraSweep();
+        }
         hud.selectVisual(nextVisualSystemPreset.systemName);
     }
     
-    clusterMap->skipNextCameraSweep();
-    peopleMap->skipNextCameraSweep();
-    visualsMap->skipNextCameraSweep();
     
     hud.animateOff();
 }

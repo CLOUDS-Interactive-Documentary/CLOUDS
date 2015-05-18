@@ -285,6 +285,8 @@ class CloudsHUDController {
     bool bResearchTransitioning;
     
     void selectButton(const CloudsHUDResearchButton& button);
+    void unselectButtons();
+    
     //string bioText;
     ofxFTGLFont backersFont;
     

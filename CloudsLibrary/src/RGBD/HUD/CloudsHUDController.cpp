@@ -1487,6 +1487,11 @@ void CloudsHUDController::mouseScrolled(ofMouseEventArgs& args){
 }
 
 
+void CloudsHUDController::unselectButtons(){
+    animateOff(CLOUDS_RESEARCH_PPL);
+    animateOff(CLOUDS_RESEARCH_TOPIC);
+}
+
 void CloudsHUDController::selectButton(const CloudsHUDResearchButton& button){
     if(button.parentTab == CLOUDS_HUD_RESEARCH_TAB_TOPICS){
         bool forceOn = hudOpenMap[CLOUDS_RESEARCH_TOPIC];
@@ -1568,8 +1573,9 @@ void CloudsHUDController::selectItem(CloudsHUDResearchTab tab, string itemID){
 
     //select top item
     if(itemID == ""){
-        list.scrollPosition = MIN(list.buttons[0].top, list.totalScrollHeight - researchScroller.scrollBounds.height);
-        selectButton(list.buttons[0]);
+//        list.scrollPosition = MIN(list.buttons[0].top, list.totalScrollHeight - researchScroller.scrollBounds.height);
+//        selectButton(list.buttons[0]);
+        unselectButtons();
         return;
     }
 
@@ -1577,7 +1583,8 @@ void CloudsHUDController::selectItem(CloudsHUDResearchTab tab, string itemID){
         if(list.buttons[i].tag == itemID){
             list.buttons[i].clicked = true;
             if(!list.buttons[i].visible){
-                list.scrollPosition = MIN(list.buttons[i].top, list.totalScrollHeight - researchScroller.scrollBounds.height);
+                researchScroller.scrollPosition = list.scrollPosition =
+                    MIN(list.buttons[i].top, list.totalScrollHeight - researchScroller.scrollBounds.height);
             }
             selectButton(list.buttons[i]);
             return;

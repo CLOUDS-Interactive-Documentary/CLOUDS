@@ -1204,6 +1204,11 @@ void CloudsVisualSystemTwitter::selfUpdate()
         ofQuaternion q;
         q.slerp(.05, nameHighlightCam.getOrientationQuat(), n.getOrientationQuat());
         nameHighlightCam.setOrientation(q);
+        
+        if(distFromTarget < nameTargetDistance*1.5 && movingToPerson != ""){
+            selectPerson(movingToPerson);
+            //selectedPersonChanged = true;
+        }
     }
 }
 
@@ -1453,22 +1458,24 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
 }
 
 //FCP id from parser, highlights a person's name
-void CloudsVisualSystemTwitter::selectPerson(string person){
-    if(person == selectedPerson){
+void CloudsVisualSystemTwitter::moveToPerson(string person){
+    person = ofToLower(person);
+
+    if(person == selectedPerson || person == movingToPerson){
         return;
     }
     
-    person = ofToLower(person);
-//    if(nameToHandleMap.find(person) == nameToHandleMap.end()){
-//        ofLogError("CloudsVisualSystemTwitter::selectPerson") << "Person " << person << " not found in twitter map";
-//    }
+    movingToPerson = person;
+    selectPerson("");
+//    selectedPerson = "";
+//     = true;
     
     Tweeter* targetTweeter = getTweeterByHandle(person);
     targetPersonPosition = targetTweeter->position;
     targetCameraPosition = targetTweeter->position + targetTweeter->position.normalized() * nameTargetDistance;
     targetCameraSideDir = targetPersonPosition.normalized().getCrossed( ofVec3f(0,1,0) );
     targetCameraUpDir   = targetPersonPosition.normalized().getCrossed( targetCameraSideDir );
-    selectedPerson = person;
+    
     if(skipCameraSweep){
         nameHighlightCam.setPosition(targetCameraPosition);
         nameHighlightCam.lookAt(targetPersonPosition, targetCameraUpDir);
@@ -1476,6 +1483,17 @@ void CloudsVisualSystemTwitter::selectPerson(string person){
         currentCameraSideDir = targetCameraSideDir;
         skipCameraSweep = false;
     }
+}
+
+void CloudsVisualSystemTwitter::selectPerson(string person){
+    person = ofToLower(person);
+    if(person == selectedPerson){
+        return;
+    }
+    
+    selectedPersonChanged = true;
+    selectedPerson = person;
+    //movingToPerson = "";
 }
 
 void CloudsVisualSystemTwitter::skipNextCameraSweep(){
@@ -1781,8 +1799,11 @@ void CloudsVisualSystemTwitter::selfMousePressed(ofMouseEventArgs& data)
         for(int i = 0; i < tweeters.size(); i++){
 
             if(tweeters[i]->hovered){
-                selectedPersonChanged = true;
-                selectPerson(tweeters[i]->name);
+                //selectedPersonChanged = true;
+                //selectPerson(tweeters[i]->name);
+//                selectedPersonChanged = true;
+//                selectedPerson = "";
+                moveToPerson(tweeters[i]->name);
                 break;
             }
         }
