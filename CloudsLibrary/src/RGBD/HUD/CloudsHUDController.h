@@ -216,8 +216,12 @@ class CloudsHUDController {
     void setTopics(const set<string>& topics);
     void populateSpeakers();
     void setVisuals(map<string, CloudsVisualSystemCredit>& visuals);
-
     
+    void setVisitedTopics(set<string> topics);
+    void setVisitedPeople(set<string> people);
+    void setVisitedVisuals(set<string> visuals);
+    
+    void updateVisited(CloudsHUDResearchList& list, set<string> set);
     
     void setSeeMoreName(string name);
     void selectTopic(string topic);

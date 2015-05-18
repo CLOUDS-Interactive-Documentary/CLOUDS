@@ -1318,6 +1318,21 @@ void CloudsHUDController::setVisuals(map<string, CloudsVisualSystemCredit>& visu
     visualsList.scrollPosition = 0;
 }
 
+void CloudsHUDController::setVisitedTopics(set<string> topics){
+    updateVisited(researchLists[CLOUDS_HUD_RESEARCH_TAB_TOPICS], topics);
+}
+void CloudsHUDController::setVisitedPeople(set<string> people){
+    updateVisited(researchLists[CLOUDS_HUD_RESEARCH_TAB_PEOPLE], people);
+}
+void CloudsHUDController::setVisitedVisuals(set<string> visuals){
+    updateVisited(researchLists[CLOUDS_HUD_RESEARCH_TAB_VISUALS], visuals);
+}
+void CloudsHUDController::updateVisited(CloudsHUDResearchList& list, set<string> s){
+    for(int i = 0; i < list.buttons.size(); i++){
+        list.buttons[i].visited = s.find(list.buttons[i].tag) != s.end();
+    }
+}
+
 void CloudsHUDController::mouseMoved(ofMouseEventArgs& args){
     args.canceled = false;
     
@@ -1760,6 +1775,9 @@ void CloudsHUDController::drawList(){
             }
             else if(currentResearchList->buttons[i].hovered){
                 textColor = CloudsColorTextHover;
+            }
+            else if(currentResearchList->buttons[i].visited){
+                textColor = CloudsColorTextDeactivated;
             }
             else{
                 textColor = CloudsColorTextStatic;

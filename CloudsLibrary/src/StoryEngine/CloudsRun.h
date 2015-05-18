@@ -30,9 +30,13 @@ class CloudsRun
     vector<string> presetHistory;
 	vector<string> topicHistory;
 
+    set<string> getVisitedTopics();
+    set<string> getVisitedPeople();
+    set<string> getVisitedVisuals();
+    
     bool historyContainsClip(CloudsClip* clip);
     
-    //only for the last run
+    //only for the last act
 	map<string, int> accumuluatedTopics;
     
     void clear();

@@ -2340,6 +2340,8 @@ void CloudsPlaybackController::showExploreMap(){
         researchModeVisual = false;
     }
 
+    hud.setVisitedTopics(run.getVisitedTopics());
+
     //TODO fix the preset for fast
     clusterMap->loadPresetGUISFromName("TopicResearch_pretty");
 
@@ -2372,6 +2374,8 @@ void CloudsPlaybackController::showExplorePeople(){
         researchModeVisual = false;
     }
     
+    hud.setVisitedPeople(run.getVisitedPeople());
+
     //TODO: make fast version
     peopleMap->loadPresetGUISFromName("ResearchPeople_pretty");
     
@@ -2397,6 +2401,8 @@ void CloudsPlaybackController::showExploreVisuals(){
         researchModeVisual = true;
     }
     
+    hud.setVisitedVisuals(run.getVisitedVisuals());
+                          
     //TODO: make fast version
     visualsMap->loadPresetGUISFromName("VisualPicker_pretty");
     
