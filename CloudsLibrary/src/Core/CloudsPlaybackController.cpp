@@ -382,12 +382,7 @@ void CloudsPlaybackController::threadedFunction(){
 	clusterMap->buildEntireCluster(parser);
     introSequence->percentLoaded = 0.7;
     
-    hud.setTopics(parser.getMasterTopics());
-    hud.populateSpeakers();
-    hud.setVisuals(visualSystems.getVisualSystemCredits());
-
-    introSequence->percentLoaded = 0.8;
-    visualsMap->setVisuals(visualSystems.getVisualSystemCredits());
+    populateResearch();
 
 	populateRGBDPresets();
     
@@ -594,6 +589,24 @@ void CloudsPlaybackController::populateRGBDPresets(){
     }
 #endif
 
+}
+
+void CloudsPlaybackController::populateResearch(){
+    
+    hud.setTopics(parser.getMasterTopics());
+    hud.populateSpeakers();
+    hud.setVisuals(visualSystems.getVisualSystemCredits());
+    
+    map<string,string> twitterHandleToPerson;
+    map<string, CloudsSpeaker>::iterator it;
+    for(it = CloudsSpeaker::speakers.begin(); it != CloudsSpeaker::speakers.end(); it++){
+        if(!it->second.voiceOverOnly){
+            twitterHandleToPerson[ofToLower(it->second.twitterHandle)] = it->second.firstName + " " + it->second.lastName;
+        }
+    }
+    peopleMap->setRealNames(twitterHandleToPerson);
+    visualsMap->setVisuals(visualSystems.getVisualSystemCredits());
+ 
 }
 
 //--------------------------------------------------------------------

@@ -155,6 +155,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bStaticNameDraw;
     bool bOldData;
     
+    void setRealNames(map<string,string>& twitterHandlesToNames);
     static string getDateAsString(Date d);
 
     void allocateActivityMap();
@@ -278,8 +279,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float maxTypeAttenuateDistance;
     bool selectedPersonChanged;
     string selectedPerson;
-    static map<string,string> handleToNameMap;
-    static map<string,string> nameToHandleMap;
+//    static map<string,string> handleToNameMap;
+//    static map<string,string> nameToHandleMap;
     static map<string,int> userNameIdMap;
     static vector<Date> dateIndex;
 

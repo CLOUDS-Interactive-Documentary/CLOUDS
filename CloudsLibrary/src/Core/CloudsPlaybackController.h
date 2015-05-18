@@ -169,7 +169,7 @@ class CloudsPlaybackController : public ofThread {
 	vector<string> pointcloudPresets;
 	string basePreset;
 	void populateRGBDPresets();
-	
+    void populateResearch();
     float interludeStartTime;
     
 	void updateTransition();

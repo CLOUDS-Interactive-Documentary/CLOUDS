@@ -50,7 +50,9 @@ void CloudsSpeaker::populateSpeakers(){
 		speakerxml.popTag();//Person
 		
 		speakers[speaker.fcpID] = speaker;
-        twitterHandleToSpeaker[ofToLower(speaker.twitterHandle)] = speaker;
+        if(!speaker.voiceOverOnly){
+            twitterHandleToSpeaker[ofToLower(speaker.twitterHandle)] = speaker;
+        }
 	}
 	
 	speakerxml.popTag();//clouds

@@ -9,8 +9,8 @@ map<string,int> CloudsVisualSystemTwitter::userNameIdMap;
 vector<Date> CloudsVisualSystemTwitter::dateIndex;
 
 vector<Tweeter*> CloudsVisualSystemTwitter::tweeters;
-map<string,string> CloudsVisualSystemTwitter::handleToNameMap;
-map<string,string> CloudsVisualSystemTwitter::nameToHandleMap;
+//map<string,string> CloudsVisualSystemTwitter::handleToNameMap;
+//map<string,string> CloudsVisualSystemTwitter::nameToHandleMap;
 
 
 bool CloudsVisualSystemTwitter::tweetersLoaded = false;
@@ -270,14 +270,14 @@ void CloudsVisualSystemTwitter::loadCSVData(){
 	}
 	tweeters.clear();
 
-    ofBuffer realNames = ofBufferFromFile(GetCloudsVisualSystemDataPath("Twitter") + "twitternames.txt");
-    while(!realNames.isLastLine()){
-        vector<string> components = ofSplitString(realNames.getNextLine(), ":", true, true);
-        if(components.size() != 2) continue;
-        nameToHandleMap[components[0]] = components[1];
-        handleToNameMap[components[1]] = components[0];
-//        cout << "HANDLE IS " << components[0] << " " << components[1] << endl;
-    }
+//    ofBuffer realNames = ofBufferFromFile(GetCloudsVisualSystemDataPath("Twitter") + "twitternames.txt");
+//    while(!realNames.isLastLine()){
+//        vector<string> components = ofSplitString(realNames.getNextLine(), ":", true, true);
+//        if(components.size() != 2) continue;
+//        nameToHandleMap[components[0]] = components[1];
+//        handleToNameMap[components[1]] = components[0];
+////        cout << "HANDLE IS " << components[0] << " " << components[1] << endl;
+//    }
     
     int tweeterID = 0;
 	string filePath = GetCloudsVisualSystemDataPath("Twitter",true) + "twitter.csv";
@@ -304,7 +304,7 @@ void CloudsVisualSystemTwitter::loadCSVData(){
 	    Tweeter* twtr = new Tweeter();
         string handle = trim(l[0]);
         twtr->name = "@" + handle;
-        twtr->fullName = handleToNameMap[ ofToLower(handle) ];
+        //twtr->fullName = handleToNameMap[ ofToLower(handle) ];
 
         Tweet* t = csvParseTweet(l, twtr);
         twtr->tweets.push_back(t);
@@ -349,7 +349,7 @@ void CloudsVisualSystemTwitter::loadCSVData(){
             Tweeter* twtr = new Tweeter();
             string handle = trim(line[0]);
             twtr->name = "@" + handle;
-            twtr->fullName = handleToNameMap[ofToLower(handle)];
+            //twtr->fullName = handleToNameMap[ofToLower(handle)];
             
 			Tweet* t = csvParseTweet(line, twtr);
             twtr->tweets.push_back(t);
@@ -473,6 +473,14 @@ Date CloudsVisualSystemTwitter::getDateFromString(const string& dString){
     d.month = ofToInt(ds[1]);
     d.year = ofToInt(ds[2]);
     return d;    
+}
+
+void CloudsVisualSystemTwitter::setRealNames(map<string,string>& twitterHandlesToNames){
+    for(int i = 0; i < tweeters.size(); i++){
+        if(twitterHandlesToNames.find( ofToLower(tweeters[i]->name) ) != twitterHandlesToNames.end()){
+            tweeters[i]->fullName = twitterHandlesToNames[ofToLower(tweeters[i]->name)];
+        }
+    }
 }
 
 void CloudsVisualSystemTwitter::allocateActivityMap(){
@@ -839,7 +847,7 @@ void CloudsVisualSystemTwitter::createPajekNetwork(string outputFileName){
     ofBufferToFile(getVisualSystemDataPath(true) + "/" +outputFileName,b);
 }
 
-int CloudsVisualSystemTwitter:: getUserIdByName(string name){
+int CloudsVisualSystemTwitter::getUserIdByName(string name){
     
     if(userNameIdMap.find(name) != userNameIdMap.end()){
         return userNameIdMap[name];
