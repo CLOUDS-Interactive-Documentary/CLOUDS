@@ -71,7 +71,7 @@ void CloudsHUDHomeButton::update(){
     int elapsedFrames = targetFps * elapsedSeconds;
     int lastPlayhead = playhead;
     
-    lastState = currentState;
+    //lastState = currentState;
     playhead = elapsedFrames;
     //cout << "playhead " << playhead << " / " << rolloverPix[currentState].size() << endl;
     //cout << "time since state change " << stateChangedTime << endl;
@@ -128,6 +128,7 @@ void CloudsHUDHomeButton::queueState(CloudsHUDHomeState newState){
 
 void CloudsHUDHomeButton::changeState(CloudsHUDHomeState newState){
 //    cout << "CHANGE STATE " << newState << endl;
+    lastState = currentState;
     bHasNextState = false;
     currentState = newState;
     stateChangedTime = ofGetElapsedTimef();

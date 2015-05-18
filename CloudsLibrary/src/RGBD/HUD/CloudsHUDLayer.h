@@ -48,7 +48,6 @@ class CloudsHUDLayer
     float hoverOnPercentComplete;
     
   protected:
-
     bool bIsOpen;
     bool bIsHovering;
 };

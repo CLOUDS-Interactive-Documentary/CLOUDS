@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>text</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>231.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>-7.000000000</XPosition>
+    <YPosition>433.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,23 +12,28 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>DRAW SPEAKER NAMES </Name>
+    <Name>DRAW SPEAKER NAMES</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW FULL NAMES</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T HUE</Name>
-    <Value>1.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T SAT</Name>
-    <Value>1.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T BRI</Name>
-    <Value>1.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -54,6 +59,32 @@
     <Kind>25</Kind>
     <Name>T ALPHA</Name>
     <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>USE NAME CAMERA</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NAME CAMERA DISTANCe</Name>
+    <Value>50.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NAME CAMERA ROT</Name>
+    <Value>0.995123088</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>TYPE 3D ATTENUATION</Name>
+    <HighValue>200.000000000</HighValue>
+    <LowValue>100.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TYPE 3D CLIP</Name>
+    <Value>10.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

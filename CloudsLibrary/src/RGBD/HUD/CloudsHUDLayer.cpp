@@ -112,20 +112,6 @@ void CloudsHUDLayer::hoverOff(){
     animatingHover = true;
 }
 
-
-//void CloudsHUDLayer::mouseMoved(ofVec2f pos){
-//    if(bIsOpen){
-//        if(svg.getBounds().inside(pos)){
-//            hoverOn();
-////            cout << "HOVER ON!!" << endl;
-//        }
-//        else{
-//            hoverOff();
-////            cout << "HOVER OFF!!" << endl;
-//        }
-//    }
-//}
-
 void CloudsHUDLayer::update(){
 	float time = ofGetElapsedTimef();
 	if(animatingFade){

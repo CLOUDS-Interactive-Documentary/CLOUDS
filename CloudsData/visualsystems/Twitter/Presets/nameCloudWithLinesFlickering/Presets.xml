@@ -1,13 +1,23 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1079.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>273.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>basicNameCloud</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLOUDS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLOUDS_2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -104,6 +114,16 @@
     <Kind>2</Kind>
     <Name>presetWithSprites</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ResearchPeople_fast</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ResearchPeople_pretty</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
