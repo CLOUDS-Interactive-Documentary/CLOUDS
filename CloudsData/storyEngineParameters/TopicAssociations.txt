@@ -231,7 +231,7 @@
 8	phenomena : phenomena
 8	artificiality : artificiality
 8	architecture : architecture
-8	assistive technology : assitive technology 
+8	assistive technology : assistive technology 
 8	mobile : mobile technology
 8	feedback : feedback
 8	obsolescence : obsolescence 
@@ -326,7 +326,7 @@
 5	system : systems
 5	genetics : genetics
 4	noise
-4	philsophy
+4	philsophy : philosophy
 4	why
 4	prediction
 4	nostalgia

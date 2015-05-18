@@ -86,6 +86,7 @@ class CloudsHUDResearchButton {
         hovered = false;
         pressed = false;
         clicked = false;
+        visited = false;
     }
     
     CloudsHUDResearchTab parentTab;
@@ -94,6 +95,7 @@ class CloudsHUDResearchButton {
     bool hovered;
     bool pressed;
     bool clicked;
+    bool visited; //has the viewer encountered this thing before
     ofRectangle selectRect;
     ofRectangle selectRectScaled;
     string tag;
@@ -215,6 +217,8 @@ class CloudsHUDController {
     void populateSpeakers();
     void setVisuals(map<string, CloudsVisualSystemCredit>& visuals);
 
+    
+    
     void setSeeMoreName(string name);
     void selectTopic(string topic);
     void selectPerson(string personID);

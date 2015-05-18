@@ -145,7 +145,6 @@ void CloudsPlaybackController::clearAct(){
 		return;
 	}
     
-    
 	CloudsVisualSystem::getRGBDVideoPlayer().stop();
 	
 	vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
