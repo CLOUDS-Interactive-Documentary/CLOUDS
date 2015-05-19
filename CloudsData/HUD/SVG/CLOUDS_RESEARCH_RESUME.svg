@@ -16,10 +16,15 @@
 		</clipPath>
 		<g clip-path="url(#SVGID_2_)">
 			
-				<image overflow="visible" width="1920" height="1080" xlink:href="D4537321EB8A1B0B.jpg"  transform="matrix(-0.8394 0 0 0.8394 1448.9421 -5.0229)">
+				<image overflow="visible" width="1920" height="1080" xlink:href="249762C558556627.jpg"  transform="matrix(-0.8394 0 0 0.8394 1448.9421 -5.0229)">
 			</image>
 		</g>
 	</g>
+</g>
+<g id="VisualSys" display="none">
+	
+		<image display="inline" overflow="visible" width="1552" height="985" xlink:href="249762C558556625.png"  transform="matrix(1.0578 0 0 1.0578 -99.021 -56.3477)">
+	</image>
 </g>
 <g id="MapHoverBacking" display="none">
 	<rect x="342.307" y="776.695" display="inline" opacity="0.6" fill="#101010" width="347.227" height="33.353"/>
@@ -102,7 +107,83 @@
 	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M58.873,37.016"/>
 	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1383.813,36.5"/>
 	
-		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="341.865" y1="36.5" x2="341.814" y2="811.013"/>
+		<line display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="341.865" y1="36" x2="341.814" y2="811.013"/>
+</g>
+<g id="VSTitleBottomTextBox_copy" display="none">
+	
+		<rect x="463.476" y="610.11" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
+</g>
+<g id="VSTitleTopTextBox" display="none">
+	
+		<rect x="463.476" y="279.755" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="161.899" height="14.954"/>
+</g>
+<g id="PeopleSelectBacking" display="none">
+	<rect x="627.307" y="348.729" display="inline" opacity="0.16" fill="#101010" width="489.012" height="189.615"/>
+</g>
+<g id="PeopleSelectFrame" display="none">
+	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M341.313,83.5"/>
+	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1003.813,56"/>
+	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M674.313,432.5"/>
+	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M773.313,63.5"/>
+	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M995.813,64"/>
+	<path display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" d="M345.5,59"/>
+	
+		<rect x="626.813" y="348.729" display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="490" height="189.615"/>
+</g>
+<g id="PeopleSelectTypography" display="none">
+	<g display="inline">
+		
+			<text transform="matrix(1 0 0 1 642.5891 392.9463)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="32" letter-spacing="3">INFORMATION OVERLOAD</text>
+	</g>
+	<g display="inline">
+		<text transform="matrix(1 0 0 1 642.5891 434.2603)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">Makes goat sounds in his studio in Brooklyn, NY.</tspan><tspan x="0" y="22.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">Made a thing called CLOUDS. This is the third</tspan><tspan x="0" y="45.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">sentence in his bio. There could be a fourth if</tspan><tspan x="0" y="68.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">we need to fit more information.</tspan></text>
+	</g>
+	<g display="inline">
+		
+			<text transform="matrix(1 0 0 1 1042.7009 388.9639)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">PLAY</text>
+	</g>
+	<polygon display="inline" fill="#FFFFFF" points="1097.313,376.398 1097.313,388.964 1103.595,382.681 	"/>
+</g>
+<g id="PeopleSelectBylineTextBox" display="none">
+	
+		<rect x="642.589" y="422.555" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="457.865" height="81.327"/>
+</g>
+<g id="PeopleSelectNameTextBox" display="none">
+	
+		<rect x="642.88" y="373.667" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="232.83" height="19.28"/>
+</g>
+<g id="PeopleSelectPlayTextBox" display="none">
+	
+		<rect x="1043.226" y="377.462" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="40.847" height="11.501"/>
+</g>
+<g id="PeopleSelectPlayArrowSpace" display="none">
+	
+		<rect x="1097.313" y="376.398" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
+</g>
+<g id="TopicSelectBacking" display="none">
+	<rect x="627.307" y="348.729" display="inline" opacity="0.16" fill="#101010" width="489.012" height="69.169"/>
+</g>
+<g id="TopicSelectFrame" display="none">
+	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M341.313,83.5"/>
+	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1003.813,56"/>
+	<path display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M674.313,432.5"/>
+	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M773.313,63.5"/>
+	<path display="inline" opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M995.813,64"/>
+	<path display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" d="M345.5,59"/>
+	
+		<rect x="626.813" y="348.729" display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="490" height="69.169"/>
+</g>
+<g id="TopicSelectTextBox" display="none">
+	
+		<rect x="642.88" y="373.667" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="232.83" height="19.28"/>
+</g>
+<g id="TopicSelectPlayTextBox" display="none">
+	
+		<rect x="1043.226" y="377.462" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="40.847" height="11.501"/>
+</g>
+<g id="TopicSelectPlayArrowSpace" display="none">
+	
+		<rect x="1097.313" y="376.398" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
 </g>
 <g id="RSResetButtonBacking" display="none">
 	<rect x="58.844" y="828.5" display="inline" opacity="0.36" fill="#101010" width="77.011" height="34"/>
@@ -123,32 +204,32 @@
 <g id="RSResetButtonTypography" display="none">
 	<g display="inline">
 		
-			<text transform="matrix(1 0 0 1 68.5715 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">EXIT</text>
+			<text transform="matrix(1 0 0 1 68.572 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">EXIT</text>
 	</g>
 </g>
 <g id="ResumeButtonBacking">
-	<rect x="1267.86" y="828.5" opacity="0.36" fill="#101010" width="115.952" height="34"/>
+	<rect x="135.904" y="828.5" opacity="0.36" fill="#101010" width="115.952" height="34"/>
 </g>
 <g id="ResumeButtonArrow" display="none">
-	<polygon display="inline" fill="#FFFFFF" points="1364.852,839.217 1364.852,851.783 1371.134,845.5 	"/>
+	<polygon display="inline" fill="#FFFFFF" points="232.894,839.217 232.894,851.783 239.177,845.5 	"/>
 </g>
 <g id="ResumeButtonArrowSpace">
-	<rect x="1364.852" y="839.317" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
+	<rect x="232.894" y="839.317" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="6.282" height="12.565"/>
 </g>
 <g id="ResumeButtonFrame">
-	<rect x="1267.813" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="116" height="34"/>
+	<rect x="135.856" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="116" height="34"/>
 </g>
 <g id="ResumeButtonTextBox">
-	<rect x="1283.353" y="840" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="69.704" height="11.424"/>
+	<rect x="151.396" y="840" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="69.704" height="11.424"/>
 </g>
 <g id="ResumeButtonTypography" display="none">
 	<g display="inline">
 		
-			<text transform="matrix(1 0 0 1 1282.4592 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">RESUME</text>
+			<text transform="matrix(1 0 0 1 150.5012 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">RESUME</text>
 	</g>
 </g>
 <g id="ClearButtonBacking" display="none">
-	<rect x="1189.054" y="36.996" display="inline" opacity="0.6" fill="#101010" width="194.274" height="33.019"/>
+	<rect x="1116.436" y="36.996" display="inline" opacity="0.36" fill="#101010" width="266.892" height="33.019"/>
 </g>
 <g id="ClearButtonArrow" display="none">
 	<polygon display="inline" fill="#DD4B39" points="1371.254,49.575 1358.689,49.575 1364.971,55.857 	"/>
@@ -193,13 +274,13 @@
 </g>
 <g id="ClearButtonTypography" display="none">
 	
-		<text transform="matrix(1 0 0 1 1204.054 57.7207)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CLEAR HISTORY</text>
+		<text transform="matrix(1 0 0 1 1204.0544 57.7207)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CLEAR HISTORY</text>
 	
-		<text transform="matrix(1 0 0 1 1213.407 135.2124)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CANCEL</text>
+		<text transform="matrix(1 0 0 1 1213.407 135.2129)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CANCEL</text>
 	
-		<text transform="matrix(1 0 0 1 1311.3132 136.0181)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">OK</text>
+		<text transform="matrix(1 0 0 1 1311.3132 136.0176)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">OK</text>
 	<g display="inline" opacity="0.69">
-		<text transform="matrix(1 0 0 1 1204.054 80.689)"><tspan x="0" y="0" fill="#439CED" font-family="'Blender-BOOK'" font-size="14">This will allow you to watch</tspan><tspan x="0" y="16.8" fill="#439CED" font-family="'Blender-BOOK'" font-size="14">previously viewed clips.</tspan></text>
+		<text transform="matrix(1 0 0 1 1204.0535 80.689)"><tspan x="0" y="0" fill="#439CED" font-family="'Blender-BOOK'" font-size="14">This will allow you to watch</tspan><tspan x="0" y="16.8" fill="#439CED" font-family="'Blender-BOOK'" font-size="14">previously viewed clips.</tspan></text>
 	</g>
 </g>
 <g id="OutsideFrame" display="none">

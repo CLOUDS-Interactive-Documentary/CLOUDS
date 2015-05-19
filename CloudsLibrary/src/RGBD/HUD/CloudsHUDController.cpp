@@ -30,6 +30,7 @@ CloudsHUDController::CloudsHUDController(){
     bVisualSystemDisplayed = false;
     bClipIsPlaying = false;
     bResearchTransitioning = false;
+    bItemSelectionChanged = false;
     
     currentPreviewImage = &topicMapPreview;
     currentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
@@ -1036,6 +1037,11 @@ bool CloudsHUDController::isItemConfirmed(){
     return false;
 }
 
+bool CloudsHUDController::didItemSelectionChange(){
+    bool ret = bItemSelectionChanged;
+    bItemSelectionChanged = false;
+    return ret;
+}
 
 void CloudsHUDController::clearSelection(){
     animateOff(CLOUDS_RESEARCH_TOPIC);
@@ -1458,6 +1464,7 @@ void CloudsHUDController::mouseReleased(ofMouseEventArgs& args){
                     currentResearchList->buttons[i].pressed = false;
                     if(currentResearchList->buttons[i].clicked){
                         selectButton(currentResearchList->buttons[i]);
+                        bItemSelectionChanged = true;
                     }
                 }
             }

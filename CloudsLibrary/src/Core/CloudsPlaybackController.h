@@ -159,7 +159,8 @@ class CloudsPlaybackController : public ofThread {
 #endif
 
     void createInterludeSoundQueue();
-    void prepareHUDForMapTransition();
+    void prepareForReturnableResearchTransition();
+    void populateResearchWithLatest();
     
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;

@@ -234,6 +234,7 @@ class CloudsHUDController {
     
     bool isItemSelected();
     bool isItemConfirmed();
+    bool didItemSelectionChange();
     void clearSelection();
     
     string getSelectedItem();
@@ -303,7 +304,7 @@ class CloudsHUDController {
     bool    bJustUnpaused;
     bool    bQuestionDisplayed;
     bool    bProjectExampleDisplayed;
-    
+    bool    bItemSelectionChanged;
     
 #ifdef OCULUS_RIFT
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
