@@ -16396,8 +16396,8 @@
 					"MOUSE_INPUT=1",
 					"CLOUDS_APP=1",
 					"CLOUDS_HUD=1",
-					"CLOUDS_RELEASE=1",
 					"HAVE_NO_GLUT=1",
+					"CLOUDS_RELEASE=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",

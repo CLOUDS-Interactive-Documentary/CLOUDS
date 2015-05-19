@@ -280,6 +280,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float minTypeAttenuateDistance;
     float maxTypeAttenuateDistance;
     bool selectedPersonChanged;
+    float selectedPersonChangedTime;
     string selectedPerson;
     string movingToPerson;
     

@@ -1228,7 +1228,6 @@ void CloudsPlaybackController::prepareForReturnableResearchTransition(){
 void CloudsPlaybackController::populateResearchWithLatest(){
     if(currentTopic != ""){
         string newTopic = parser.getMasterKeyword(currentTopic) ;
-        //hud.selectTopic(newTopic);
         if(newTopic != clusterMap->getSelectedKeyword()){
             hud.selectTopic("");
             clusterMap->skipNextCameraSweep();
@@ -1237,7 +1236,6 @@ void CloudsPlaybackController::populateResearchWithLatest(){
     }
 
     if(currentClip != NULL){
-        //hud.selectPerson(currentClip->person);
         if(currentClip->person != peopleMap->getSelectedPerson()){
             hud.selectPerson("");
             peopleMap->skipNextCameraSweep();

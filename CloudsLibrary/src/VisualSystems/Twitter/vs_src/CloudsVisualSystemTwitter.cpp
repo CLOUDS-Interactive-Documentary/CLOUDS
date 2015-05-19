@@ -25,6 +25,7 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
 }
 
 void CloudsVisualSystemTwitter::selfSetDefaults(){
+    selectedPersonChangedTime = 0.0;
     
     refreshRate = 1000;
     edgeDecayRate = 0.8;
@@ -1205,7 +1206,7 @@ void CloudsVisualSystemTwitter::selfUpdate()
         q.slerp(.05, nameHighlightCam.getOrientationQuat(), n.getOrientationQuat());
         nameHighlightCam.setOrientation(q);
         
-        if(distFromTarget < nameTargetDistance*1.5 && movingToPerson != ""){
+        if(distFromTarget < nameTargetDistance*.75 && movingToPerson != ""){
             selectPerson(movingToPerson);
             //selectedPersonChanged = true;
         }
@@ -1332,11 +1333,13 @@ void CloudsVisualSystemTwitter::selfDraw()
         if (bStaticNameDraw) {
             for (int i= 0 ; i < tweeters.size(); i++) {
                 if(tweeters[i]->tweets.size() > 0){
+                    float attenuate = 1.0;
                     if(ofToLower(tweeters[i]->name) == lowCaseSelect){
-                        continue;
+                        //continue;
+                        attenuate = ofMap(ofGetElapsedTimef(), selectedPersonChangedTime, selectedPersonChangedTime+.5, 1.0, .2);
                     }
                     drawText(bDrawFullNames ? tweeters[i]->fullName : tweeters[i]->name,
-                             tweeters[i]->billboardMat,tweeters[i]->attenuation);
+                             tweeters[i]->billboardMat,tweeters[i]->attenuation * attenuate);
                 }
             }
         }
@@ -1490,7 +1493,7 @@ void CloudsVisualSystemTwitter::selectPerson(string person){
     if(person == selectedPerson){
         return;
     }
-    
+    selectedPersonChangedTime = ofGetElapsedTimef();
     selectedPersonChanged = true;
     selectedPerson = person;
     //movingToPerson = "";
