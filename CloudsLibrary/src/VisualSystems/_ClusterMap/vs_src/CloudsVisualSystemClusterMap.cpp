@@ -81,6 +81,7 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	curQuestionCamRotation = 0;
     displayQuestions = false;
     skipCameraSweep = false;
+    selectedTopicChangedTime = 0;
 	///END INIT
 }
 
@@ -954,6 +955,7 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     }
     currentTopic = topic;
     selectedTopicChanged = true;
+    selectedTopicChangedTime = ofGetElapsedTimef();
 }
 
 void CloudsVisualSystemClusterMap::skipNextCameraSweep(){
@@ -1179,7 +1181,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
             topicNavCam.setOrientation(q);
         }
         
-        if(distFromTarget < traversCameraDistance * 1.25){
+        if(distFromTarget < traversCameraDistance * .75){
             setCurrentTopic(movingToTopic);
         }
     }
@@ -1466,12 +1468,14 @@ void CloudsVisualSystemClusterMap::selfDraw(){
             if(!p.onScreen){
                 continue;
             }
+            float attenuate = 1.0;
             //HUD will take care of topic drawing
             if(p.keyword == currentTopic){
-                continue;
+                //continue;
+                attenuate = ofMap(ofGetElapsedTimef(), selectedTopicChangedTime, selectedTopicChangedTime + .5, 1.0, .2, true);
             }
             ofPushStyle();
-            ofSetColor(255, p.attenuation*255);
+            ofSetColor(255, p.attenuation * attenuate * 255);
             
             ofPushMatrix();
             ofMultMatrix(p.billboardMatrix);

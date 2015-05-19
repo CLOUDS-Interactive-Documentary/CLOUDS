@@ -307,6 +307,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     float minTypeAttenuateDistance;
     float maxTypeAttenuateDistance;
     bool selectedTopicChanged;
+    float selectedTopicChangedTime;
     
 	ofIntRange clipsShowTopic;
 	ofRange clipCountRange;
