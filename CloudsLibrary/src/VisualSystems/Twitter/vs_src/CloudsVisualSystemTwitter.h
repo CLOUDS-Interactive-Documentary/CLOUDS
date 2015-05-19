@@ -62,6 +62,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //FCP id from parser, highlights a person's name
     void selectPerson(string person);
+    void moveToPerson(string person);
+    
     ofVec2f getSelectedPersonScreenPosition();
     string getSelectedPerson();
     bool selectionChanged();
@@ -155,6 +157,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bStaticNameDraw;
     bool bOldData;
     
+    void setRealNames(map<string,string>& twitterHandlesToNames);
     static string getDateAsString(Date d);
 
     void allocateActivityMap();
@@ -278,8 +281,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float maxTypeAttenuateDistance;
     bool selectedPersonChanged;
     string selectedPerson;
-    static map<string,string> handleToNameMap;
-    static map<string,string> nameToHandleMap;
+    string movingToPerson;
+    
     static map<string,int> userNameIdMap;
     static vector<Date> dateIndex;
 

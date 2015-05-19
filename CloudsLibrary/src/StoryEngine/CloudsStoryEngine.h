@@ -36,6 +36,7 @@ typedef struct {
 	int timesOnCurrentTopic;
 
 	bool visualSystemRunning;
+    int visualSystemNumClips;
 	float visualSystemStartTime;
 	float visualSystemEndTime;	
 	int moreMenThanWomen;

@@ -72,6 +72,12 @@ typedef enum{
     CLOUDS_HUD_TRIANGLE_NONE
 } CloudsHUDTriangleDirection;
 
+typedef struct{
+    bool visible;
+    ofVec2f pos;
+    string backer;
+} CloudsHUDBacker;
+
 class CloudsHUDResearchButton {
   public:
     CloudsHUDResearchButton(){
@@ -80,6 +86,7 @@ class CloudsHUDResearchButton {
         hovered = false;
         pressed = false;
         clicked = false;
+        visited = false;
     }
     
     CloudsHUDResearchTab parentTab;
@@ -88,6 +95,7 @@ class CloudsHUDResearchButton {
     bool hovered;
     bool pressed;
     bool clicked;
+    bool visited; //has the viewer encountered this thing before
     ofRectangle selectRect;
     ofRectangle selectRectScaled;
     string tag;
@@ -150,6 +158,8 @@ class CloudsHUDController {
     void clearClip();
     void clearVisualSystem();
     
+    void pause();
+    void unpause(bool force = false);
     bool didPause();
     bool didUnpause();    
     bool isPaused();
@@ -202,13 +212,17 @@ class CloudsHUDController {
     map<CloudsHUDLayerSet, CloudsHUDBillboard> layerBillboard;
 #endif
 
-    void pause();
-    void unpause();
     
     void setTopics(const set<string>& topics);
     void populateSpeakers();
     void setVisuals(map<string, CloudsVisualSystemCredit>& visuals);
-
+    
+    void setVisitedTopics(set<string> topics);
+    void setVisitedPeople(set<string> people);
+    void setVisitedVisuals(set<string> visuals);
+    
+    void updateVisited(CloudsHUDResearchList& list, set<string> set);
+    
     void setSeeMoreName(string name);
     void selectTopic(string topic);
     void selectPerson(string personID);
@@ -220,6 +234,7 @@ class CloudsHUDController {
     
     bool isItemSelected();
     bool isItemConfirmed();
+    bool didItemSelectionChange();
     void clearSelection();
     
     string getSelectedItem();
@@ -255,7 +270,7 @@ class CloudsHUDController {
 	ofVideoPlayer videoPlayer;
     ofRectangle   svgVideoBounds, videoBounds;
     
-    
+    vector<CloudsHUDBacker> backers;
     /////////////// SCROLL VARIABLES
     //////////////
     CloudsHUDScroller researchScroller;
@@ -271,9 +286,10 @@ class CloudsHUDController {
     bool bResearchTransitioning;
     
     void selectButton(const CloudsHUDResearchButton& button);
+    void unselectButtons();
+    
     //string bioText;
-    ofxFTGLSimpleLayout researchBio;
-    ofxFTGLFont playAllFont;
+    ofxFTGLFont backersFont;
     
     //TODO All symbols triangles need to fit this way
 	ofMesh resetTriangle;
@@ -288,7 +304,7 @@ class CloudsHUDController {
     bool    bJustUnpaused;
     bool    bQuestionDisplayed;
     bool    bProjectExampleDisplayed;
-    
+    bool    bItemSelectionChanged;
     
 #ifdef OCULUS_RIFT
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
@@ -301,6 +317,7 @@ class CloudsHUDController {
     //CloudsHUDAboutTab nextTab;
     
     void drawList();
+    void drawBackersList();
     
     CloudsHUDLabel* getLabelForLayer(const string& layerName,
                                      const string& fontPath,

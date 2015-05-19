@@ -148,6 +148,27 @@ void CloudsRun::topicChanged(CloudsTopicEventArgs& args){
     }
 }
 
+set<string> CloudsRun::getVisitedTopics(){
+    return set<string>(topicHistory.begin(), topicHistory.end());
+}
+
+set<string> CloudsRun::getVisitedPeople(){
+    set<string> peopleSet;
+    for(int i = 0; i < clipHistory.size(); i++){
+        peopleSet.insert(clipHistory[i]->person);
+    }
+    return peopleSet;
+}
+
+set<string> CloudsRun::getVisitedVisuals(){
+    set<string> visualset;
+    for(int i = 0; i < presetHistory.size(); i++){
+        visualset.insert(ofSplitString(presetHistory[i], "_",true,true)[0]);
+    }
+    return visualset;
+}
+
+
 bool CloudsRun::historyContainsClip(CloudsClip* clip){
     for(int i = 0; i < clipHistory.size(); i++){
         if(clip->getID() == clipHistory[i]->getID()){

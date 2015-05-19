@@ -11,7 +11,7 @@
 #include "ofMain.h"
 
 //TEXT WITH NO BACKING
-static ofColor CloudsColorTextDeactivated = ofColor::fromHex(0x5583AE, 255 * .5);
+static ofColor CloudsColorTextDeactivated = ofColor::fromHex(0x5583AE, 255 * .75);
 static ofColor CloudsColorTextStatic      = ofColor::fromHex(0xFFFFFF);
 static ofColor CloudsColorTextHover       = ofColor::fromHex(0x439CED);
 static ofColor CloudsColorTextActive      = ofColor::fromHex(0xA3CEF7);

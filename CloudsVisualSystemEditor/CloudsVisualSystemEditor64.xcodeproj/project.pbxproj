@@ -44,6 +44,8 @@
 		A672C90B1AF68DEF004483BF /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A672C8051AF68DEE004483BF /* libovr.a */; };
 		A672C90F1AF68DEF004483BF /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A672C8091AF68DEE004483BF /* libovr.a */; };
 		A672C9C91AF68DF0004483BF /* ofxOculusDK2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A672C8E21AF68DEF004483BF /* ofxOculusDK2.cpp */; };
+		A68554411B0B813C0066E0E0 /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A685543F1B0B813C0066E0E0 /* CloudsMedia.cpp */; };
+		A68554421B0B813C0066E0E0 /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A685543F1B0B813C0066E0E0 /* CloudsMedia.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -1439,6 +1441,9 @@
 		A672C9CE1AF68E56004483BF /* OVR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR.h; sourceTree = "<group>"; };
 		A672C9CF1AF68E56004483BF /* OVR_Kernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Kernel.h; sourceTree = "<group>"; };
 		A672C9D01AF68E56004483BF /* OVR_Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVR_Version.h; sourceTree = "<group>"; };
+		A685543E1B0B81320066E0E0 /* CloudsCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsCrypto.h; sourceTree = "<group>"; };
+		A685543F1B0B813C0066E0E0 /* CloudsMedia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMedia.cpp; sourceTree = "<group>"; };
+		A68554401B0B813C0066E0E0 /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -5374,6 +5379,7 @@
 		E7D8224218BEBD6E00C1EB93 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				A685543E1B0B81320066E0E0 /* CloudsCrypto.h */,
 				03E5EED11AB65B5E00781171 /* CloudsEvents.h */,
 				03E5EED31AB65B5E00781171 /* CloudsLocalization.cpp */,
 				03E5EED41AB65B5E00781171 /* CloudsLocalization.h */,
@@ -5506,6 +5512,8 @@
 		E7D8229E18BEBD6E00C1EB93 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				A685543F1B0B813C0066E0E0 /* CloudsMedia.cpp */,
+				A68554401B0B813C0066E0E0 /* CloudsMedia.h */,
 				E7D8229F18BEBD6E00C1EB93 /* CloudsAct.cpp */,
 				E7D822A018BEBD6E00C1EB93 /* CloudsAct.h */,
 				E7D822A118BEBD6E00C1EB93 /* CloudsClip.cpp */,
@@ -8532,6 +8540,7 @@
 				E7D827F818BEBDCF00C1EB93 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				E755D60E1943F2AF00AA81C1 /* ofxUISpectrum.cpp in Sources */,
 				E73DA6ED189F1CEA006C9E4E /* b2CircleShape.cpp in Sources */,
+				A68554411B0B813C0066E0E0 /* CloudsMedia.cpp in Sources */,
 				E7D825A418BEBD7000C1EB93 /* CloudsVisualSystemLSystem.cpp in Sources */,
 				E7D82AB118BF099000C1EB93 /* BufferPlayer.cpp in Sources */,
 				E73DA858189F3611006C9E4E /* ofxSQLiteInsert.cpp in Sources */,
@@ -9525,6 +9534,7 @@
 				E7DDC2DF194437EC00E61D75 /* Rule.cpp in Sources */,
 				E7DDC2E0194437EC00E61D75 /* CloudsVisualSystemAutomata.cpp in Sources */,
 				E7DDC2E1194437EC00E61D75 /* OldPathway.cpp in Sources */,
+				A68554421B0B813C0066E0E0 /* CloudsMedia.cpp in Sources */,
 				E7DDC2E2194437EC00E61D75 /* ContrastPass.cpp in Sources */,
 				E7DDC2E3194437EC00E61D75 /* sqlite3.c in Sources */,
 				E7DDC2E4194437EC00E61D75 /* ofxTLCameraTrack.cpp in Sources */,

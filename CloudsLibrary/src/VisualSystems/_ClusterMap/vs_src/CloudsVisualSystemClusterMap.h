@@ -41,6 +41,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	void setAct(CloudsAct* newAct);
 	void allocateFlickerTexture();
 
+    void moveToTopic(string topic);
     void setCurrentTopic(string topic); //for secondary display && research mode navigation
     bool selectionChanged();
     void skipNextCameraSweep();
@@ -317,6 +318,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     int associationFontSize;
     int currentAssociationFont;
     string currentTopic;
+    string movingToTopic;
+    
     ofVec3f targetTopicPosition;
     ofVec3f targetCameraPosition;
     ofVec3f targetCameraSideDir;

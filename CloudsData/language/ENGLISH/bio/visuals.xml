@@ -37,7 +37,7 @@
 			Cellular Automata
 		</title>
 		<line1>
-			Walter Perdan and Elie Zananiri	
+			Elie Zananiri	
 		</line1>
 		<line2>
 			Implementation of Conway’s Game of Life
@@ -101,7 +101,7 @@
 			Circle Packing 
 		</title>
 		<line1>
-			Jonathan Minard, Gal Sasson
+			Jonathan Minard and Gal Sasson
 		</line1>
 		<line2>
 			
@@ -257,7 +257,7 @@
 			Flocking
 		</title>
 		<line1>
-			Philip Whitfield and Jeff Crouse
+			Jeff Crouse
 		</line1>
 		<line2>
 			Based on OpenSteer by Craig Reynolds
@@ -575,10 +575,10 @@
 			Space Junk
 		</title>
 		<line1>
-			 Jonathan Minard and James George
+			 Jonathan Minard
 		</line1>
 		<line2>
-			Based on a sketch by Jörg Reuter
+			Based on sketch by Jörg Reuter
 		</line2>
 	</system>	
 	
@@ -596,7 +596,7 @@
 	</system>	
 	
 	<!-- -->
-	<system id="OpenP5SpinningSolids" enabled="true">
+	<system id="OpenP5SpinningSolids" enabled="false">
 		<title>
 			Tetrahedra
 		</title>
@@ -622,7 +622,7 @@
 	</system>	
 	
 	<!-- -->
-	<system id="Orbit" enabled="true">
+	<system id="Orbit" enabled="fales">
 		<title>
 			Orbit
 		</title>
@@ -958,7 +958,7 @@
 			Wormhole
 		</title>
 		<line1>
-			Lars Berg, Jonathan Minard, Bradley G Munkowitz
+			Lars Berg, Jonathan Minard, and Bradley G Munkowitz
 		</line1>
 		<line2>
 			

@@ -634,12 +634,12 @@ void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
     
     float aVel = e.a->GetBody()->GetLinearVelocity().Length();
     float bVel = e.b->GetBody()->GetLinearVelocity().Length();
-	if(e.a->GetBody()->GetUserData() == NULL){
+    int* type = (static_cast<int*>(e.a->GetBody()->GetUserData()));
+	if(type == NULL){
 		return;
 	}
 
-	int type = *(static_cast<int*>(e.a->GetBody()->GetUserData()));
-    int sIndex = type;
+    int sIndex = *type;
     
     float maxVel = max(aVel, bVel);
     if (maxVel > 6)

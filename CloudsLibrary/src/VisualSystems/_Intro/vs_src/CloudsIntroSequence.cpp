@@ -122,7 +122,8 @@ void CloudsIntroSequence::selfSetDefaults(){
     selectedQuestion = NULL;
 	showingQuestions = false;
 	paused = false;
-	
+    
+    curCameraSwing = ofVec2f(0,0);
     currentFontSize = -1;
 	currentFontExtrusion = -1;
     percentLoaded = 0;
@@ -412,7 +413,7 @@ void CloudsIntroSequence::updateCamera(){
 		else{
 			warpCamera.setPosition(wobble.x, wobble.y, 0);
 		}
-		ofVec2f camSwing = ofVec2f(ofMap(GetCloudsInputPosition().x, 0, getCanvasWidth(), cameraSwingRange.x, -cameraSwingRange.x, true ),
+		ofVec2f camSwing = ofVec2f(ofMap(GetCloudsInputPosition().x, 0, getCanvasWidth(),  cameraSwingRange.x, -cameraSwingRange.x, true ),
 								   ofMap(GetCloudsInputPosition().y, 0, getCanvasHeight(), cameraSwingRange.y, -cameraSwingRange.y, true));
 
 		curCameraSwing.interpolate(camSwing,powf(cameraSwingDamp, 2.0));
@@ -862,8 +863,10 @@ void CloudsIntroSequence::updateQuestions(){
 void CloudsIntroSequence::setStartQuestions(vector<CloudsClip*>& possibleStartQuestions){
 
 	selectedQuestion = NULL;
-	startQuestions.clear();
-	
+    caughtQuestion = NULL;
+    startQuestions.clear();
+
+    
 	for(int i = 0; i < possibleStartQuestions.size(); i++){
 		
 		CloudsPortal q;

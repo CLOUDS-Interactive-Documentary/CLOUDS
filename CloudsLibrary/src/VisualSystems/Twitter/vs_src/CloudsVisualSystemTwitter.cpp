@@ -9,8 +9,8 @@ map<string,int> CloudsVisualSystemTwitter::userNameIdMap;
 vector<Date> CloudsVisualSystemTwitter::dateIndex;
 
 vector<Tweeter*> CloudsVisualSystemTwitter::tweeters;
-map<string,string> CloudsVisualSystemTwitter::handleToNameMap;
-map<string,string> CloudsVisualSystemTwitter::nameToHandleMap;
+//map<string,string> CloudsVisualSystemTwitter::handleToNameMap;
+//map<string,string> CloudsVisualSystemTwitter::nameToHandleMap;
 
 
 bool CloudsVisualSystemTwitter::tweetersLoaded = false;
@@ -270,14 +270,14 @@ void CloudsVisualSystemTwitter::loadCSVData(){
 	}
 	tweeters.clear();
 
-    ofBuffer realNames = ofBufferFromFile(GetCloudsVisualSystemDataPath("Twitter") + "twitternames.txt");
-    while(!realNames.isLastLine()){
-        vector<string> components = ofSplitString(realNames.getNextLine(), ":", true, true);
-        if(components.size() != 2) continue;
-        nameToHandleMap[components[0]] = components[1];
-        handleToNameMap[components[1]] = components[0];
-//        cout << "HANDLE IS " << components[0] << " " << components[1] << endl;
-    }
+//    ofBuffer realNames = ofBufferFromFile(GetCloudsVisualSystemDataPath("Twitter") + "twitternames.txt");
+//    while(!realNames.isLastLine()){
+//        vector<string> components = ofSplitString(realNames.getNextLine(), ":", true, true);
+//        if(components.size() != 2) continue;
+//        nameToHandleMap[components[0]] = components[1];
+//        handleToNameMap[components[1]] = components[0];
+////        cout << "HANDLE IS " << components[0] << " " << components[1] << endl;
+//    }
     
     int tweeterID = 0;
 	string filePath = GetCloudsVisualSystemDataPath("Twitter",true) + "twitter.csv";
@@ -304,7 +304,7 @@ void CloudsVisualSystemTwitter::loadCSVData(){
 	    Tweeter* twtr = new Tweeter();
         string handle = trim(l[0]);
         twtr->name = "@" + handle;
-        twtr->fullName = handleToNameMap[ ofToLower(handle) ];
+        //twtr->fullName = handleToNameMap[ ofToLower(handle) ];
 
         Tweet* t = csvParseTweet(l, twtr);
         twtr->tweets.push_back(t);
@@ -349,7 +349,7 @@ void CloudsVisualSystemTwitter::loadCSVData(){
             Tweeter* twtr = new Tweeter();
             string handle = trim(line[0]);
             twtr->name = "@" + handle;
-            twtr->fullName = handleToNameMap[ofToLower(handle)];
+            //twtr->fullName = handleToNameMap[ofToLower(handle)];
             
 			Tweet* t = csvParseTweet(line, twtr);
             twtr->tweets.push_back(t);
@@ -473,6 +473,14 @@ Date CloudsVisualSystemTwitter::getDateFromString(const string& dString){
     d.month = ofToInt(ds[1]);
     d.year = ofToInt(ds[2]);
     return d;    
+}
+
+void CloudsVisualSystemTwitter::setRealNames(map<string,string>& twitterHandlesToNames){
+    for(int i = 0; i < tweeters.size(); i++){
+        if(twitterHandlesToNames.find( ofToLower(tweeters[i]->name) ) != twitterHandlesToNames.end()){
+            tweeters[i]->fullName = twitterHandlesToNames[ofToLower(tweeters[i]->name)];
+        }
+    }
 }
 
 void CloudsVisualSystemTwitter::allocateActivityMap(){
@@ -839,7 +847,7 @@ void CloudsVisualSystemTwitter::createPajekNetwork(string outputFileName){
     ofBufferToFile(getVisualSystemDataPath(true) + "/" +outputFileName,b);
 }
 
-int CloudsVisualSystemTwitter:: getUserIdByName(string name){
+int CloudsVisualSystemTwitter::getUserIdByName(string name){
     
     if(userNameIdMap.find(name) != userNameIdMap.end()){
         return userNameIdMap[name];
@@ -1196,6 +1204,11 @@ void CloudsVisualSystemTwitter::selfUpdate()
         ofQuaternion q;
         q.slerp(.05, nameHighlightCam.getOrientationQuat(), n.getOrientationQuat());
         nameHighlightCam.setOrientation(q);
+        
+        if(distFromTarget < nameTargetDistance*1.5 && movingToPerson != ""){
+            selectPerson(movingToPerson);
+            //selectedPersonChanged = true;
+        }
     }
 }
 
@@ -1445,22 +1458,24 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
 }
 
 //FCP id from parser, highlights a person's name
-void CloudsVisualSystemTwitter::selectPerson(string person){
-    if(person == selectedPerson){
+void CloudsVisualSystemTwitter::moveToPerson(string person){
+    person = ofToLower(person);
+
+    if(person == selectedPerson || person == movingToPerson){
         return;
     }
     
-    person = ofToLower(person);
-//    if(nameToHandleMap.find(person) == nameToHandleMap.end()){
-//        ofLogError("CloudsVisualSystemTwitter::selectPerson") << "Person " << person << " not found in twitter map";
-//    }
+    movingToPerson = person;
+    selectPerson("");
+//    selectedPerson = "";
+//     = true;
     
     Tweeter* targetTweeter = getTweeterByHandle(person);
     targetPersonPosition = targetTweeter->position;
     targetCameraPosition = targetTweeter->position + targetTweeter->position.normalized() * nameTargetDistance;
     targetCameraSideDir = targetPersonPosition.normalized().getCrossed( ofVec3f(0,1,0) );
     targetCameraUpDir   = targetPersonPosition.normalized().getCrossed( targetCameraSideDir );
-    selectedPerson = person;
+    
     if(skipCameraSweep){
         nameHighlightCam.setPosition(targetCameraPosition);
         nameHighlightCam.lookAt(targetPersonPosition, targetCameraUpDir);
@@ -1468,6 +1483,17 @@ void CloudsVisualSystemTwitter::selectPerson(string person){
         currentCameraSideDir = targetCameraSideDir;
         skipCameraSweep = false;
     }
+}
+
+void CloudsVisualSystemTwitter::selectPerson(string person){
+    person = ofToLower(person);
+    if(person == selectedPerson){
+        return;
+    }
+    
+    selectedPersonChanged = true;
+    selectedPerson = person;
+    //movingToPerson = "";
 }
 
 void CloudsVisualSystemTwitter::skipNextCameraSweep(){
@@ -1773,8 +1799,11 @@ void CloudsVisualSystemTwitter::selfMousePressed(ofMouseEventArgs& data)
         for(int i = 0; i < tweeters.size(); i++){
 
             if(tweeters[i]->hovered){
-                selectedPersonChanged = true;
-                selectPerson(tweeters[i]->name);
+                //selectedPersonChanged = true;
+                //selectPerson(tweeters[i]->name);
+//                selectedPersonChanged = true;
+//                selectedPerson = "";
+                moveToPerson(tweeters[i]->name);
                 break;
             }
         }

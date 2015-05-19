@@ -913,10 +913,15 @@ void CloudsVisualSystemClusterMap::clearTraversal(){
     startTraverseClip = 0;
     
 }
-
-void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
-    currentTopic = topic;
-
+void CloudsVisualSystemClusterMap::moveToTopic(string topic){
+    topic = ofToLower(topic);
+    if(topic == currentTopic || topic == movingToTopic){
+        return;
+    }
+    
+    movingToTopic = topic;
+    setCurrentTopic("");
+    
     bool positionFound = false;
     for(int i = 0; i < topicPoints.size(); i++){
         if(topicPoints[i].keyword == topic){
@@ -939,6 +944,16 @@ void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
     if(!positionFound){
         ofLogError("CloudsVisualSystemClusterMap::setCurrentTopic") << "Couldn't find position for topic " << topic;
     }
+    
+}
+
+void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
+    topic = ofToLower(topic);
+    if(topic == currentTopic){
+        return;
+    }
+    currentTopic = topic;
+    selectedTopicChanged = true;
 }
 
 void CloudsVisualSystemClusterMap::skipNextCameraSweep(){
@@ -1146,7 +1161,8 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
         currentCameraSideDir += (targetCameraSideDir - currentCameraSideDir) * .03;
         currentCameraUpDir   += (targetCameraUpDir - currentCameraUpDir) * .03;
         float distFromTarget = topicNavCam.getPosition().distance(targetCameraPosition);
-        ofVec3f targetPos = targetCameraPosition.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 45, -45,true), targetTopicPosition, currentCameraUpDir);
+        ofVec3f targetPos = targetCameraPosition.rotated(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 45, -45,true),
+                                                         targetTopicPosition, currentCameraUpDir);
         targetPos = targetPos.rotated(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 45, -45,true), targetTopicPosition, currentCameraSideDir);
         
         ofNode n = topicNavCam;
@@ -1161,6 +1177,10 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
             ofQuaternion q;
             q.slerp(.07, topicNavCam.getOrientationQuat(), n.getOrientationQuat());
             topicNavCam.setOrientation(q);
+        }
+        
+        if(distFromTarget < traversCameraDistance * 1.25){
+            setCurrentTopic(movingToTopic);
         }
     }
     
@@ -1875,8 +1895,9 @@ void CloudsVisualSystemClusterMap::selfMousePressed(ofMouseEventArgs& data){
         for(int i = 0; i < topicPoints.size(); i++){
             TopicPoint& p = topicPoints[i];
             if(p.hovered){
-                selectedTopicChanged = true;
-                setCurrentTopic(p.keyword);
+                moveToTopic(p.keyword);
+                //selectedTopicChanged = true;
+                //setCurrentTopic(p.keyword);
                 break;
             }
         }

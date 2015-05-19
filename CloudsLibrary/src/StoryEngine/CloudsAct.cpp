@@ -322,6 +322,7 @@ void CloudsAct::populateTime(){
         silenceTrack->addFlagAtTime("fade_up", silenceCues[i].max*1000);
     }
     
+    timeline.setDurationInSeconds(timeline.getDurationInSeconds()+1.);
 	timeline.setCurrentPage(0);
 }
 

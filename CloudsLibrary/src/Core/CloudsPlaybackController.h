@@ -159,7 +159,8 @@ class CloudsPlaybackController : public ofThread {
 #endif
 
     void createInterludeSoundQueue();
-    void prepareHUDForMapTransition();
+    void prepareForReturnableResearchTransition();
+    void populateResearchWithLatest();
     
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;
@@ -169,7 +170,7 @@ class CloudsPlaybackController : public ofThread {
 	vector<string> pointcloudPresets;
 	string basePreset;
 	void populateRGBDPresets();
-	
+    void populateResearch();
     float interludeStartTime;
     
 	void updateTransition();

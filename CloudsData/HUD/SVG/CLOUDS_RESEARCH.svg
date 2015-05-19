@@ -139,42 +139,42 @@
 			<text transform="matrix(1 0 0 1 1282.4592 851.4414)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">RESUME</text>
 	</g>
 </g>
-<g id="ClearButtonBacking">
+<g id="ClearButtonBacking" display="none">
 	<rect x="1189.054" y="36.996" opacity="0.6" fill="#101010" width="194.274" height="33.019"/>
 </g>
 <g id="ClearButtonArrow" display="none">
 	<polygon display="inline" fill="#DD4B39" points="1371.254,49.575 1358.689,49.575 1364.971,55.857 	"/>
 </g>
-<g id="ClearButtonArrowSpace">
+<g id="ClearButtonArrowSpace" display="none">
 	<rect x="1358.689" y="49.702" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.565" height="6.282"/>
 </g>
 <g id="ClearButtonFrame" display="none">
 	
 		<rect x="1115.913" y="36.5" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="267.908" height="34"/>
 </g>
-<g id="ClearButtonFrameExpanded">
+<g id="ClearButtonFrameExpanded" display="none">
 	
 		<rect x="1188.514" y="36.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="195.299" height="124.074"/>
 </g>
-<g id="ClearButtonTextBox">
+<g id="ClearButtonTextBox" display="none">
 	<rect x="1204.054" y="46.313" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="141.134" height="11.424"/>
 </g>
-<g id="ClearHelperTextBox">
+<g id="ClearHelperTextBox" display="none">
 	<rect x="1204.054" y="71.64" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="167.2" height="27.962"/>
 </g>
-<g id="ClearDivision">
+<g id="ClearDivision" display="none">
 	<line opacity="0.69" fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" x1="1292.813" y1="114" x2="1292.813" y2="145"/>
 </g>
-<g id="ClearCancelTextBox">
+<g id="ClearCancelTextBox" display="none">
 	<rect x="1213.407" y="123.788" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="67.334" height="11.424"/>
 </g>
-<g id="ClearCancelBacking">
+<g id="ClearCancelBacking" display="none">
 	<rect x="1204.054" y="114" opacity="0" fill="#DD4B39" width="88.266" height="31"/>
 </g>
-<g id="ClearConfirmBacking">
+<g id="ClearConfirmBacking" display="none">
 	<rect x="1293.24" y="114" opacity="0" fill="#DD4B39" width="55.468" height="31"/>
 </g>
-<g id="ClearConfirmTextBox">
+<g id="ClearConfirmTextBox" display="none">
 	<rect x="1311.314" y="124.594" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="21.581" height="11.424"/>
 </g>
 <g id="ClearButtonTypography" display="none">

@@ -3,15 +3,15 @@
 #include "CloudsInputKinectOSC.h"
 #include "CloudsVisualSystemManager.h"
 
-//#define SCREENSHOT_MODE 1
+#define SCREENSHOT_MODE 1
 
-struct sortObject {
-	CloudsFCPParser* parser;
-	bool operator() (pair<int,string> keyA, pair<int,string> keyB) {
-		return ( parser->getCohesionIndexForKeyword(keyA.second) > parser->getCohesionIndexForKeyword(keyB.second) );
-	}
-	
-} cohesionSort;
+//struct sortObject {
+//	CloudsFCPParser* parser;
+//	bool operator() (pair<int,string> keyA, pair<int,string> keyB) {
+//		return ( parser->getCohesionIndexForKeyword(keyA.second) > parser->getCohesionIndexForKeyword(keyB.second) );
+//	}
+//	
+//} cohesionSort;
 
 
 bool clipsort(CloudsClip* a, CloudsClip* b){
@@ -126,7 +126,7 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
     
     ///MIXER IS BROKEN
 //    mixer.setup();
-    mixer.setDiageticVolume(1);
+    //mixer.setDiageticVolume(1);
 
 }
 
@@ -222,7 +222,8 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
     #ifdef SCREENSHOT_MODE
 		currentVisualSystem->setNumSamples(4);
         //for print size
-		currentVisualSystem->forceScreenResolution(152*30, 109*30);
+		//currentVisualSystem->forceScreenResolution(152*30, 109*30);
+        currentVisualSystem->forceScreenResolution(1920, 1080);
 		currentVisualSystem->setDrawToScreen(false);
     #endif
 		
@@ -853,7 +854,7 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
 	
 	NSArray *newDescriptors = [tableView sortDescriptors];
     NSLog(@"sort descriptor %@", [newDescriptors objectAtIndex:0]);
-	cohesionSort.parser = &parser;
+	//cohesionSort.parser = &parser;
 
 //    if(tableView == allKeywordTable){
 //		sortedKeywordIndeces.clear();
