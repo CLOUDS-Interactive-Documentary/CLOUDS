@@ -1024,12 +1024,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(hud.didItemSelectionChange()){
             clusterMap->moveToTopic(hud.getSelectedItem());
         }
-        
-//        string selectedTopic = hud.getSelectedItem();
-//        if(selectedTopic != ""){
-        
-//            clusterMap->moveToTopic(selectedTopic);
-//            hud.setResearchClickAnchor( clusterMap->getTopicScreenLocation() );
+
         
         if(hud.isItemConfirmed()){
             exploreMapSelectedTopic = hud.getSelectedItem();
@@ -1236,7 +1231,7 @@ void CloudsPlaybackController::populateResearchWithLatest(){
     }
 
     if(currentClip != NULL){
-        if(currentClip->person != peopleMap->getSelectedPerson()){
+        if(currentClip->person != CloudsSpeaker::twitterHandleToSpeaker[peopleMap->getSelectedPerson()].fcpID){
             hud.selectPerson("");
             peopleMap->skipNextCameraSweep();
         }
@@ -2460,9 +2455,6 @@ void CloudsPlaybackController::hideVisualSystem() {
 		currentVisualSystem->stopSystem();
 		showingVisualSystem = false;
 	}
-//    if(resumingAct){
-//        rgbdVisualSystem->getRGBDVideoPlayer().unpause();
-//    }
 }
 
 //--------------------------------------------------------------------
