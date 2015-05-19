@@ -2,16 +2,16 @@
     <Bangs>
         <Mapping>
             <Widget>
-                <WidgetName>RESET</WidgetName>
-                <WidgetID>5</WidgetID>
+                <WidgetName>RANDOMIZE</WidgetName>
+                <WidgetID>7</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>RANDOMIZE</WidgetName>
-                <WidgetID>7</WidgetID>
+                <WidgetName>RESET</WidgetName>
+                <WidgetID>5</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -20,17 +20,9 @@
     <Switches>
         <Mapping>
             <Widget>
-                <WidgetName>ELE ACTIVE</WidgetName>
+                <WidgetName>SPH0 ACTIVE</WidgetName>
                 <WidgetID>2</WidgetID>
-                <WidgetCanvasParent>ELESettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>HMG ACTIVE</WidgetName>
-                <WidgetID>2</WidgetID>
-                <WidgetCanvasParent>HMGSettings</WidgetCanvasParent>
+                <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -44,17 +36,25 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>ART0 ACTIVE</WidgetName>
+                <WidgetName>HMG ACTIVE</WidgetName>
                 <WidgetID>2</WidgetID>
-                <WidgetCanvasParent>ART0Settings</WidgetCanvasParent>
+                <WidgetCanvasParent>HMGSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>ART2 ACTIVE</WidgetName>
+                <WidgetName>ELE ACTIVE</WidgetName>
                 <WidgetID>2</WidgetID>
-                <WidgetCanvasParent>ART2Settings</WidgetCanvasParent>
+                <WidgetCanvasParent>ELESettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>ART0 ACTIVE</WidgetName>
+                <WidgetID>2</WidgetID>
+                <WidgetCanvasParent>ART0Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -68,9 +68,9 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SPH0 ACTIVE</WidgetName>
+                <WidgetName>ART2 ACTIVE</WidgetName>
                 <WidgetID>2</WidgetID>
-                <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
+                <WidgetCanvasParent>ART2Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -78,64 +78,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>ELE LIMIT</WidgetName>
-                <WidgetID>5</WidgetID>
-                <WidgetCanvasParent>ELESettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>HMG LIMIT</WidgetName>
-                <WidgetID>5</WidgetID>
-                <WidgetCanvasParent>HMGSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SPH1 LIMIT</WidgetName>
-                <WidgetID>14</WidgetID>
-                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SPH1 RADIUS</WidgetName>
-                <WidgetID>12</WidgetID>
-                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SPH1 POS-Z</WidgetName>
+                <WidgetName>SPH0 POS-Z</WidgetName>
                 <WidgetID>9</WidgetID>
-                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
+                <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SPH1 POS-Y</WidgetName>
-                <WidgetID>7</WidgetID>
-                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SPH1 POS-X</WidgetName>
+                <WidgetName>SPH0 POS-X</WidgetName>
                 <WidgetID>5</WidgetID>
-                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SPH0 LIMIT</WidgetName>
-                <WidgetID>14</WidgetID>
                 <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -150,14 +102,6 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SPH0 POS-Z</WidgetName>
-                <WidgetID>9</WidgetID>
-                <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>SPH0 POS-Y</WidgetName>
                 <WidgetID>7</WidgetID>
                 <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
@@ -166,9 +110,65 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SPH0 POS-X</WidgetName>
-                <WidgetID>5</WidgetID>
+                <WidgetName>SPH0 LIMIT</WidgetName>
+                <WidgetID>14</WidgetID>
                 <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH1 POS-X</WidgetName>
+                <WidgetID>5</WidgetID>
+                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH1 POS-Y</WidgetName>
+                <WidgetID>7</WidgetID>
+                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH1 POS-Z</WidgetName>
+                <WidgetID>9</WidgetID>
+                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH1 RADIUS</WidgetName>
+                <WidgetID>12</WidgetID>
+                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH1 LIMIT</WidgetName>
+                <WidgetID>14</WidgetID>
+                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>HMG LIMIT</WidgetName>
+                <WidgetID>5</WidgetID>
+                <WidgetCanvasParent>HMGSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>ELE LIMIT</WidgetName>
+                <WidgetID>5</WidgetID>
+                <WidgetCanvasParent>ELESettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

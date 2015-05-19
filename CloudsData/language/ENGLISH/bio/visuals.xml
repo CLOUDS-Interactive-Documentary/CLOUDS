@@ -596,7 +596,7 @@
 	</system>	
 	
 	<!-- -->
-	<system id="OpenP5SpinningSolids" enabled="true">
+	<system id="OpenP5SpinningSolids" enabled="false">
 		<title>
 			Tetrahedra
 		</title>
@@ -622,7 +622,7 @@
 	</system>	
 	
 	<!-- -->
-	<system id="Orbit" enabled="true">
+	<system id="Orbit" enabled="fales">
 		<title>
 			Orbit
 		</title>
