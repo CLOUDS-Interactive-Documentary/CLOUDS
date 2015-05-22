@@ -126,7 +126,9 @@ void CloudsVisualSystem2DVideo::selfSetup()
     inTime = 0;
     outTime = 0;
     
+#ifdef VHX_MEDIA
     waitingMedia = NULL;
+#endif
     
 }
 
