@@ -366,7 +366,7 @@ void CloudsVHXAuth::threadedFunction()
                 if (json.isMember("access_token")) {
                     _accessToken = json["access_token"].asString();
                     _refreshToken = json["refresh_token"].asString();
-                    _tokenExpiry = ofGetElapsedTimef() + json["expires_in"].asFloat();
+                    _tokenExpiry = (ofGetSystemTime() / 1000.f) + json["expires_in"].asFloat();
                     
                     // Save the tokens to disk.
                     CloudsCryptoSaveTokens(_accessToken, _refreshToken, _tokenExpiry, _tokensPath);
