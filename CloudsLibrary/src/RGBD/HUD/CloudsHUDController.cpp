@@ -87,52 +87,70 @@ void CloudsHUDController::setup(){
     ofAddListener(ofEvents().mouseScrolled,this, &CloudsHUDController::mouseScrolled, OF_EVENT_ORDER_BEFORE_APP);
 #endif
 
-	home.setup();
+#ifdef VHX_MEDIA
+    parseVHXIds();
+#endif
     
+	home.setup();
     backersFont.loadFont(GetFontPath(), 10);
     
     topicMapPreview.loadImage(GetCloudsDataPath() + "HUD/TopicMapPreview.jpg");
     peopleMapPreview.loadImage(GetCloudsDataPath() + "HUD/PeopleMapPreview.jpg");
-
-	//manually load reset triangle
-	resetTriangle.addVertex(ofVec3f(1366.857,839.217));
-	resetTriangle.addVertex(ofVec3f(1366.857,851.783));
-	resetTriangle.addVertex(ofVec3f(1373.139,845.5));
-
-	resetTriangle.setMode(OF_PRIMITIVE_TRIANGLES);
 	 
 }
 
-void CloudsHUDController::populateProjectExample(const string& videoPath,
-                                                 const string& textLeft,
-                                                 const string& textRight,
-                                                 const string& textTop,
-                                                 bool forceOn)
+void CloudsHUDController::showProjectExample(const string& videoPath, bool forceOn)
 {
 	if(isPlaying){
         videoPlayer.stop();
     }
     
-    if( ofFile(videoPath).exists() ){
-        //TODO: VHX QUERY
-        isPlaying = videoPlayer.loadMovie(videoPath);
-        videoPlayer.setLoopState(OF_LOOP_NORMAL);
-        videoPlayer.play();
-        
-        bSkipAVideoFrame = true;
-        
-        hudLabelMap["ProjectExampleTextboxLeft"]->setText( textLeft, forceOn );
-        hudLabelMap["ProjectExampleTextboxRight"]->setText( textRight, forceOn );
-        hudLabelMap["ProjectExampleTextBoxTop"]->setText( textTop, forceOn );
-        
-        if( forceOn ){
-            animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
-        }
-    }
-    else{
-        ofLogError("CloudsHUDController::populateProjectExample") << "Project example video does not exist: " << videoPath;
+    //if( ofFile(videoPath).exists() ){
+    isPlaying = videoPlayer.loadMovie(videoPath);
+    videoPlayer.setLoopState(OF_LOOP_NORMAL);
+    videoPlayer.play();
+
+    bSkipAVideoFrame = true;
+
+    if( forceOn ){
+        animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
     }
 }
+
+#ifdef VHX_MEDIA
+void CloudsHUDController::parseVHXIds(){
+    if (!vhxProjectExampleIds.empty()) {
+        for (map<string, CloudsMedia *>::iterator it = vhxProjectExampleIds.begin(); it != vhxProjectExampleIds.end(); ++it) {
+            delete it->second;
+        }
+    }
+    vhxProjectExampleIds.clear();
+    
+    map<string, string> idMap;
+    ParseVHXIds(GetCloudsDataPath() + "vhx/examples.csv", idMap);
+    
+    for (map<string, string>::iterator it = idMap.begin(); it != idMap.end(); ++it) {
+        CloudsMedia *media = new CloudsMedia();
+        media->vhxId = it->second;
+        media->hasMediaAsset = true;
+        vhxProjectExampleIds[it->first] = media;
+    }
+    cout << "FOUND " << vhxProjectExampleIds.size() << " MEDIA IDs" << endl;
+}
+
+void CloudsHUDController::vhxRequestComplete(CloudsVHXEventArgs& args){
+    if(!args.success){
+        ofLogError("CloudsHUDController::vhxRequestComplete") << "VHX request failed";
+        return;
+    }
+    
+    ofRemoveListener(waitingMedia->completeEvent, this, &CloudsHUDController::vhxRequestComplete);
+    
+    showProjectExample(args.result, true);
+
+}
+#endif
+
 
 void CloudsHUDController::buildLayerSets(){
 	
@@ -255,6 +273,7 @@ void CloudsHUDController::calculateFontSizes(){
 	string fontPath = GetMediumFontPath();
 #else
 	string fontPath = GetThinFontPath();
+    string mediumFontPath = GetMediumFontPath();
 #endif
     
     for(int i = minFontSize; i < maxFontSize; i++){
@@ -269,25 +288,25 @@ void CloudsHUDController::calculateFontSizes(){
     ////last name
     getLabelForLayer("BylineLastNameTextBox", fontPath, 50, true);
     ////title
-    getLabelForLayer("BylineTopicTextBoxBottom", fontPath);
+    getLabelForLayer("BylineTopicTextBoxBottom", GetFontPath());
     ////location
-    getLabelForLayer("BylineTopicTextBoxTop", fontPath);
-    getLabelForLayer("VSCreditsTextBoxTop", fontPath);
-    getLabelForLayer("VSCreditsTextBoxBottom", fontPath);
-    getLabelForLayer("QuestionTextBox_1_", fontPath);
+    getLabelForLayer("BylineTopicTextBoxTop", GetFontPath());
+    getLabelForLayer("VSCreditsTextBoxTop", GetFontPath());
+    getLabelForLayer("VSCreditsTextBoxBottom", GetFontPath());
+    getLabelForLayer("QuestionTextBox_1_", GetFontPath());
     
     getLabelForLayer("ProjectExampleTextboxLeft", fontPath);
     getLabelForLayer("ProjectExampleTextboxRight", fontPath);
     getLabelForLayer("ProjectExampleTextBoxTop", fontPath);
     
     //pause
-    getLabelForLayer("ExploreTextBox", fontPath);
-    getLabelForLayer("SeeMoreTextBox", fontPath);
-    getLabelForLayer("NextButtonTextBox", fontPath);
-    getLabelForLayer("BioTitleTextBox", fontPath);
+    getLabelForLayer("ExploreTextBox", GetFontPath());
+    getLabelForLayer("SeeMoreTextBox", GetFontPath());
+    getLabelForLayer("NextButtonTextBox", GetFontPath());
+    getLabelForLayer("BioTitleTextBox", GetFontPath());
     getLabelForLayer("BioTextBox", fontPath,35,false,true); //use layout
     
-    getLabelForLayer("ResetButtonTextBox", fontPath);
+    getLabelForLayer("ResetButtonTextBox", GetFontPath());
     //research stuff
     ResearchTopicListLabel = getLabelForLayer("ListTextBoxes", GetFontPath());
     
@@ -308,12 +327,12 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("TopicSelectPlayTextBox", fontPath);
     
     //about text boxes
-    getLabelForLayer("NavAboutTextBox", fontPath);
-    getLabelForLayer("NavCastTextBox", fontPath);
-    getLabelForLayer("NavCreditsTextBox", fontPath);
-    getLabelForLayer("NavBackersTextBox", fontPath);
+    getLabelForLayer("NavAboutTextBox", GetFontPath());
+    getLabelForLayer("NavCastTextBox", GetFontPath());
+    getLabelForLayer("NavCreditsTextBox", GetFontPath());
+    getLabelForLayer("NavBackersTextBox", GetFontPath());
     
-    getLabelForLayer("ExitButtonTextBox", fontPath);
+    getLabelForLayer("ExitButtonTextBox", GetFontPath());
     
     getLabelForLayer("AboutTextBox", GetFontPath(), 35, false,true, 12);
     getLabelForLayer("AboutTitleTextBox", fontPath);
@@ -766,11 +785,37 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
         }
     }
     
+    if(clip->hasProjectExample){
+        cout << "LOADING PROJECT EXAMPLE" << endl;
+    }
     //PROJECT EXAMPLE
     if(!bVisualSystemDisplayed && clip->hasProjectExample && clip->projectExample.exampleVideos.size() ){
         CloudsProjectExample example = clip->projectExample;
         string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
-        populateProjectExample( videoPath, example.creatorName, "", example.title, true );
+        
+        hudLabelMap["ProjectExampleTextboxLeft"]->setText( example.creatorName, false );
+        //hudLabelMap["ProjectExampleTextboxRight"]->setText( textRight, forceOn );
+        hudLabelMap["ProjectExampleTextBoxTop"]->setText( example.title, false );
+
+#ifdef VHX_MEDIA
+        string mediaKey = videoPath;
+        TrimVHXId(mediaKey);
+        if(vhxProjectExampleIds.find(mediaKey) == vhxProjectExampleIds.end()){
+            ofLogError("CloudsHUDController::respondToClip") << "Couldn't find project example on VHX " << mediaKey;
+        }
+        else{
+            if(waitingMedia != NULL){
+                ofRemoveListener(waitingMedia->completeEvent, this, &CloudsHUDController::vhxRequestComplete);
+            }
+            
+            waitingMedia = vhxProjectExampleIds[mediaKey];
+            
+            ofAddListener(waitingMedia->completeEvent, this, &CloudsHUDController::vhxRequestComplete);
+            waitingMedia->fetchVhxSourceUrl();
+        }
+#else
+        showProjectExample( videoPath, true );
+#endif
         bProjectExampleDisplayed = true;
     }
     else{

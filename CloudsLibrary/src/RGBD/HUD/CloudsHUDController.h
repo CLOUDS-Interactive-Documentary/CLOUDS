@@ -251,11 +251,8 @@ class CloudsHUDController {
                               const string& line1,
                               const string& line2);
     
-    void populateProjectExample(const string& videoPath,
-                                const string& textLeft,
-                                const string& textRight,
-                                const string& textTop,
-                                bool forceOn = false);
+    void showProjectExample(const string& videoPath,
+                            bool forceOn = false);
     
     void populateQuestion(const string& question,
                           bool forceOn=false,
@@ -290,10 +287,7 @@ class CloudsHUDController {
     
     //string bioText;
     ofxFTGLFont backersFont;
-    
-    //TODO All symbols triangles need to fit this way
-	ofMesh resetTriangle;
-    
+        
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     bool	bActJustStarted;
@@ -355,6 +349,15 @@ class CloudsHUDController {
     CloudsSpeaker   currentSpeaker;
     
     string filenameForLayer(CloudsHUDLayerSet layer);
+#ifdef VHX_MEDIA
+    map<string, CloudsMedia*> vhxProjectExampleIds;
+    void parseVHXIds();
+
+    void vhxRequestComplete(CloudsVHXEventArgs& args);
+
+#endif
+    
+    CloudsMedia* waitingMedia;
 };
 
 

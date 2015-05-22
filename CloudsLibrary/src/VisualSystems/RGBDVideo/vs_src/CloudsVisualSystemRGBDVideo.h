@@ -131,8 +131,8 @@ public:
 	string loadMoviePath;
 	string movieBaseFileName;
     
-#ifdef VHX_MEDIA
     CloudsMedia* waitingMedia;
+#ifdef VHX_MEDIA
     void vhxRequestComplete(CloudsVHXEventArgs& args);
 #endif
     

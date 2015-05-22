@@ -586,12 +586,13 @@ void CloudsFCPParser::parseProjectExamples(const string& filename){
 			if(numVideos == 0){
 				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have any <file> tags in <videos>";
 			}
-            //TODO: How to handle on VHX?
-            #ifndef VHX_MEDIA
 			for(int f = 0; f < numVideos; f++){
+                #ifdef VHX_MEDIA
+                example.exampleVideos.push_back(projectExamplesXML.getValue("file","",f));
+                #else
 				example.exampleVideos.push_back(videoFilePathPrefix + projectExamplesXML.getValue("file","",f));
+                #endif
 			}
-            #endif
 			projectExamplesXML.popTag(); //videos
 		}
 		else{
