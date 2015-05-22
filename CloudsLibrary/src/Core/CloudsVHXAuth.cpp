@@ -69,23 +69,29 @@ bool CloudsVHXAuth::setup()
         << "\tAccess Token: " << _accessToken << "\n"
         << "\tRefresh Token: " << _refreshToken << "\n"
         << "\tToken Expiry: " << _tokenExpiry;
-        
-        state = INACTIVE;
     }
     else {
         ofLogError("CloudsVHXAuth::setup") << "Cannot open file at " << _tokensPath;
         
         _tokenExpiry = 0;
-        state = INACTIVE;
     }
     
+    state = INACTIVE;
     mode = WAITING;
     bNotifyComplete = false;
     ofAddListener(ofEvents().update, this, &CloudsVHXAuth::update);
     
     if (_packageId.size() && _accessToken.size()) {
-        // Try to verify the package immediately.
-        verifyPackage();
+        time_t nowTime = (ofGetSystemTime() / 1000.f);
+        if (_tokenExpiry > nowTime) {
+            // Try to verify the package immediately.
+            verifyPackage();
+        }
+        else {
+            // Refresh the token first, it's expired.
+            refreshToken();
+        }
+        
         return true;
     }
     

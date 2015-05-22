@@ -453,7 +453,10 @@ void CloudsPlaybackController::refreshTokenComplete(CloudsVHXEventArgs& args){
         introSequence->vhxError();
         return;
     }
-    
+    if (vhxAuth.state == CloudsVHXAuth::INACTIVE) {
+        // Try to verify the package with a fresh token.
+        vhxAuth.verifyPackage();
+    }
 }
 
 //--------------------------------------------------------------
