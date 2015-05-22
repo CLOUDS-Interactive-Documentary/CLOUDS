@@ -750,7 +750,7 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
     
     currentSpeaker = CloudsSpeaker::speakers[ clip->person ];
     
-    populateLowerThird(currentSpeaker.firstName, currentSpeaker.lastName, currentSpeaker.location2, currentSpeaker.title, currentSpeaker.byline1 );
+    populateLowerThird(currentSpeaker.firstName, currentSpeaker.lastName, currentSpeaker.location2, currentSpeaker.title, currentSpeaker.byline2 );
     
     if(!bActJustStarted){
         if(!hudOpenMap[CLOUDS_HUD_LOWER_THIRD] ){
