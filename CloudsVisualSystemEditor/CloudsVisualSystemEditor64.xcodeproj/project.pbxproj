@@ -15,6 +15,8 @@
 		03C079D819460DEF0081ED9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C079CF19460DEF0081ED9B /* main.m */; };
 		03C079D919460DEF0081ED9B /* testView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03C079D219460DEF0081ED9B /* testView.mm */; };
 		03C079DA19460DEF0081ED9B /* testView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03C079D219460DEF0081ED9B /* testView.mm */; };
+		03C08DC51B0FE7D3007C4DEE /* ofxCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03C08DB11B0FE7D3007C4DEE /* ofxCrypto.cpp */; };
+		03C08DC61B0FE7D3007C4DEE /* ofxCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03C08DB11B0FE7D3007C4DEE /* ofxCrypto.cpp */; };
 		03D58F341946151600FCFF7B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03C079D019460DEF0081ED9B /* MainMenu.xib */; };
 		03D58F361946153A00FCFF7B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03C079D019460DEF0081ED9B /* MainMenu.xib */; };
 		03E5EED51AB65B5E00781171 /* CloudsLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E5EED31AB65B5E00781171 /* CloudsLocalization.cpp */; };
@@ -25,10 +27,6 @@
 		03E5EEE41AB65B8C00781171 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E5EEDB1AB65B8C00781171 /* CloudsCalibrationNode.cpp */; };
 		03E5EEE91AB65B8C00781171 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E5EEE11AB65B8C00781171 /* CloudsVisualSystemManager.cpp */; };
 		03E5EEEA1AB65B8C00781171 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E5EEE11AB65B8C00781171 /* CloudsVisualSystemManager.cpp */; };
-		03E5EEF11AB65BF500781171 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 03E5EEEC1AB65BF500781171 /* .gitignore */; };
-		03E5EEF21AB65BF500781171 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 03E5EEEC1AB65BF500781171 /* .gitignore */; };
-		03E5EEF31AB65BF500781171 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03E5EEED1AB65BF500781171 /* README.md */; };
-		03E5EEF41AB65BF500781171 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03E5EEED1AB65BF500781171 /* README.md */; };
 		03E5EEF51AB65BF500781171 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E5EEEF1AB65BF500781171 /* ofxLocalization.cpp */; };
 		03E5EEF61AB65BF500781171 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E5EEEF1AB65BF500781171 /* ofxLocalization.cpp */; };
 		2E8074591820B7EC00A003A0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8074571820B7D500A003A0 /* AVFoundation.framework */; };
@@ -1394,6 +1392,8 @@
 		03C079D119460DEF0081ED9B /* testView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testView.h; sourceTree = "<group>"; };
 		03C079D219460DEF0081ED9B /* testView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testView.mm; sourceTree = "<group>"; };
 		03C079DB19460E280081ED9B /* CloudsVisualSystemEditor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CloudsVisualSystemEditor-Info.plist"; sourceTree = "<group>"; };
+		03C08DB11B0FE7D3007C4DEE /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
+		03C08DB21B0FE7D3007C4DEE /* ofxCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCrypto.h; sourceTree = "<group>"; };
 		03E5EED11AB65B5E00781171 /* CloudsEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsEvents.h; sourceTree = "<group>"; };
 		03E5EED31AB65B5E00781171 /* CloudsLocalization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsLocalization.cpp; sourceTree = "<group>"; };
 		03E5EED41AB65B5E00781171 /* CloudsLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsLocalization.h; sourceTree = "<group>"; };
@@ -1402,8 +1402,6 @@
 		03E5EEDC1AB65B8C00781171 /* CloudsCalibrationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCalibrationNode.h; sourceTree = "<group>"; };
 		03E5EEE11AB65B8C00781171 /* CloudsVisualSystemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemManager.cpp; sourceTree = "<group>"; };
 		03E5EEE21AB65B8C00781171 /* CloudsVisualSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemManager.h; sourceTree = "<group>"; };
-		03E5EEEC1AB65BF500781171 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		03E5EEED1AB65BF500781171 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		03E5EEEF1AB65BF500781171 /* ofxLocalization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLocalization.cpp; sourceTree = "<group>"; };
 		03E5EEF01AB65BF500781171 /* ofxLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLocalization.h; sourceTree = "<group>"; };
 		2E8074571820B7D500A003A0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -2972,7 +2970,6 @@
 		E7D82BBC18BF0C4100C1EB93 /* GpuParticles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GpuParticles.cpp; sourceTree = "<group>"; };
 		E7D82BBD18BF0C4100C1EB93 /* GpuParticles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpuParticles.h; sourceTree = "<group>"; };
 		E7D82BBE18BF0C4100C1EB93 /* ofxGpuParticles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGpuParticles.h; sourceTree = "<group>"; };
-		E7D82BCA18BF0CEC00C1EB93 /* addon_config.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addon_config.mk; sourceTree = "<group>"; };
 		E7D82BCE18BF0CEC00C1EB93 /* aiAnim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aiAnim.h; sourceTree = "<group>"; };
 		E7D82BCF18BF0CEC00C1EB93 /* aiAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aiAssert.h; sourceTree = "<group>"; };
 		E7D82BD018BF0CEC00C1EB93 /* aiCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aiCamera.h; sourceTree = "<group>"; };
@@ -3226,6 +3223,24 @@
 			path = detail;
 			sourceTree = "<group>";
 		};
+		03C08D9D1B0FE7D3007C4DEE /* ofxCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				03C08DB01B0FE7D3007C4DEE /* src */,
+			);
+			name = ofxCrypto;
+			path = ../../../addons/ofxCrypto;
+			sourceTree = "<group>";
+		};
+		03C08DB01B0FE7D3007C4DEE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				03C08DB11B0FE7D3007C4DEE /* ofxCrypto.cpp */,
+				03C08DB21B0FE7D3007C4DEE /* ofxCrypto.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		03E5EEDA1AB65B8C00781171 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -3240,8 +3255,6 @@
 		03E5EEEB1AB65BF500781171 /* ofxLocalization */ = {
 			isa = PBXGroup;
 			children = (
-				03E5EEEC1AB65BF500781171 /* .gitignore */,
-				03E5EEED1AB65BF500781171 /* README.md */,
 				03E5EEEE1AB65BF500781171 /* src */,
 			);
 			name = ofxLocalization;
@@ -3494,6 +3507,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				03C08D9D1B0FE7D3007C4DEE /* ofxCrypto */,
 				A672C7DA1AF68DED004483BF /* ofxOculusDK2 */,
 				4F1D83DC1AF5420C00FDAA6B /* ofxAudioDecoder */,
 				4F1D834E1AF541BE00FDAA6B /* ofxSSL */,
@@ -8122,7 +8136,6 @@
 		E7D82BC918BF0CEC00C1EB93 /* ofxAssimpModelLoader */ = {
 			isa = PBXGroup;
 			children = (
-				E7D82BCA18BF0CEC00C1EB93 /* addon_config.mk */,
 				E7D82BCB18BF0CEC00C1EB93 /* libs */,
 				E7D82C0518BF0CEC00C1EB93 /* src */,
 			);
@@ -8343,8 +8356,6 @@
 				4F1D83C41AF541BE00FDAA6B /* curlbuild.h.cmake in Resources */,
 				4F1D83C61AF541BE00FDAA6B /* Makefile.am in Resources */,
 				4F1D83C31AF541BE00FDAA6B /* .gitignore in Resources */,
-				03E5EEF31AB65BF500781171 /* README.md in Resources */,
-				03E5EEF11AB65BF500781171 /* .gitignore in Resources */,
 				03D58F341946151600FCFF7B /* MainMenu.xib in Resources */,
 				4F1D83C51AF541BE00FDAA6B /* curlbuild.h.in in Resources */,
 			);
@@ -8354,8 +8365,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03E5EEF41AB65BF500781171 /* README.md in Resources */,
-				03E5EEF21AB65BF500781171 /* .gitignore in Resources */,
 				03D58F361946153A00FCFF7B /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -8540,6 +8549,7 @@
 				E7D827F818BEBDCF00C1EB93 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				E755D60E1943F2AF00AA81C1 /* ofxUISpectrum.cpp in Sources */,
 				E73DA6ED189F1CEA006C9E4E /* b2CircleShape.cpp in Sources */,
+				03C08DC51B0FE7D3007C4DEE /* ofxCrypto.cpp in Sources */,
 				A68554411B0B813C0066E0E0 /* CloudsMedia.cpp in Sources */,
 				E7D825A418BEBD7000C1EB93 /* CloudsVisualSystemLSystem.cpp in Sources */,
 				E7D82AB118BF099000C1EB93 /* BufferPlayer.cpp in Sources */,
@@ -9369,6 +9379,7 @@
 				E7DDC23C194437EC00E61D75 /* ofxBox2dPolygon.cpp in Sources */,
 				E7DDC23D194437EC00E61D75 /* CloudsVisualSystemPhotoGlitch.cpp in Sources */,
 				E7DDC23E194437EC00E61D75 /* ofxUIFPS.cpp in Sources */,
+				03C08DC61B0FE7D3007C4DEE /* ofxCrypto.cpp in Sources */,
 				E7DDC23F194437EC00E61D75 /* LNode.cpp in Sources */,
 				03C079D819460DEF0081ED9B /* main.m in Sources */,
 				E7DDC240194437EC00E61D75 /* common.cpp in Sources */,

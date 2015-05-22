@@ -1,28 +1,28 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>WORMHOLE Sound</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>162.000000000</YPosition>
+    <YPosition>148.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>EchoVortex.aif</Name>
+    <Name>EchoVortex.mp3</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>wormholeZoom.aif</Name>
+    <Name>wormholeZoom.mp3</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>wormholeZoom2.aif</Name>
+    <Name>wormholeZoom2.mp3</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>slowgrains_short.aif</Name>
+    <Name>slowgrains_short.mp3</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

@@ -597,6 +597,13 @@ void CloudsVisualSystem3DModelLoader::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystem3DModelLoader::selfEnd()
 {
+	
+}
+
+// this is called when you should clear all the memory and delet anything you made in setup
+void CloudsVisualSystem3DModelLoader::selfExit()
+{
+
 	boundBoxVbo.clear();
 	modelMesh.clear();
 	grid.clear();
@@ -606,21 +613,15 @@ void CloudsVisualSystem3DModelLoader::selfEnd()
 	planCam.disableMouseInput();
 	frontCam.disableMouseInput();
 	perspCam.disableMouseInput();
-
+    
 	
-}
-
-// this is called when you should clear all the memory and delet anything you made in setup
-void CloudsVisualSystem3DModelLoader::selfExit()
-{
-	
-	ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
-	ofRemoveListener(transformGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
-	ofRemoveListener(gridGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
-	ofRemoveListener(fogGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
-	ofRemoveListener(modelUIGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
-	ofRemoveListener(cameraViewsGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
-	ofRemoveListener(cameraPathsGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+//	ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+//	ofRemoveListener(transformGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+//	ofRemoveListener(gridGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+//	ofRemoveListener(fogGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+//	ofRemoveListener(modelUIGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+//	ofRemoveListener(cameraViewsGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+//	ofRemoveListener(cameraPathsGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
 }
 
 //events are called when the system is active

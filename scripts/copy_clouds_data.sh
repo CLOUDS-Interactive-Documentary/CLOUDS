@@ -14,15 +14,9 @@ cp ../CloudsData/credits.xml ../../CloudsData/credits.xml
 cp ../CloudsData/credits_backup.xml ../../CloudsData/credits_backup.xml
 cp -r ../CloudsData/fcpxml ../../CloudsData/
 cp -r ../CloudsData/font ../../CloudsData/
-cp -r ../CloudsData/gephi ../../CloudsData/
-cp -r ../CloudsData/graph ../../CloudsData/
 cp -r ../CloudsData/HUD ../../CloudsData/
 cp ../CloudsData/HUD.xml ../../CloudsData/HUD.xml
-cp ../CloudsData/HUD_SD.xml ../../CloudsData/HUD_SD.xml
-cp -r ../CloudsData/images ../../CloudsData/
-cp -r ../CloudsData/input ../../CloudsData/
 cp ../CloudsData/Kinect.xml ../../CloudsData/Kinect.xml
-cp ../CloudsData/Kinect_EYEO.xml ../../CloudsData/Kinect_EYEO.xml
 cp -r ../CloudsData/language ../../CloudsData/
 cp ../CloudsData/language.txt ../../CloudsData/language.txt
 cp -r ../CloudsData/links ../../CloudsData/
@@ -36,11 +30,12 @@ cp -r ../CloudsData/sound ../../CloudsData/
 cp -r ../CloudsData/stats ../../CloudsData/
 cp -r ../CloudsData/storyEngineParameters ../../CloudsData/
 cp -r ../CloudsData/transitions ../../CloudsData/
-cp ../CloudsData/TRANSLATED_question_topics.txt ../../CloudsData/TRANSLATED_question_topics.txt
 cp -r ../CloudsData/vhx ../../CloudsData/
 cp ../CloudsData/visual_quality_config.txt ../../CloudsData/visual_quality_config.txt
 cp -r ../CloudsData/VO ../../CloudsData/
+cp -r ../CloudsDataIgnored/flaunt ../../CloudsData/
 cp -r ../CloudsDataIgnored/sound ../../CloudsData/
+cp -r ../CloudsDataIgnored/vhx ../../CloudsData/
 mkdir ../../CloudsData/visualsystems/2DVideo
 mkdir ../../CloudsData/visualsystems/2DVideo/Presets
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/Alice_TextArc $copyLocation/2DVideo/Presets/
@@ -54,9 +49,7 @@ cp -r ../CloudsData/visualsystems/2DVideo/Presets/FaceDebug_JapaneseCouple $copy
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/FaceDebug_Teens $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/FaceShift_noisy $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/FaceSubstitution $copyLocation/2DVideo/Presets/
-cp -r ../CloudsData/visualsystems/2DVideo/Presets/Flow1_gesture $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/Flow2_Blue $copyLocation/2DVideo/Presets/
-cp -r ../CloudsData/visualsystems/2DVideo/Presets/Flow3_Closeup $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/GitHubMap $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/Gource $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/Kittenstep $copyLocation/2DVideo/Presets/
@@ -65,11 +58,9 @@ cp -r ../CloudsData/visualsystems/2DVideo/Presets/Livecode2_networkgame $copyLoc
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/Logo1 $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/Logo2 $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/OpenPaths $copyLocation/2DVideo/Presets/
-cp -r ../CloudsData/visualsystems/2DVideo/Presets/PeopleStaring $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/Reas_Process13 $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/Reas_network1 $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/TweakMode $copyLocation/2DVideo/Presets/
-cp -r ../CloudsData/visualsystems/2DVideo/Presets/USMap $copyLocation/2DVideo/Presets/
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/Zipcode $copyLocation/2DVideo/Presets/
 mkdir ../../CloudsData/visualsystems/3DModelLoader
 mkdir ../../CloudsData/visualsystems/3DModelLoader/Presets
@@ -88,7 +79,6 @@ cp -r ../CloudsData/visualsystems/3DModelLoader/Presets/Toxi_AllinOne_Normals $c
 cp -r ../CloudsData/visualsystems/3DModelLoader/Presets/Toxi_Ellipsoid2 $copyLocation/3DModelLoader/Presets/
 cp -r ../CloudsData/visualsystems/3DModelLoader/Presets/Toxi_Megasphere $copyLocation/3DModelLoader/Presets/
 cp -r ../CloudsData/visualsystems/3DModelLoader/Presets/Toxi_Sphere1 $copyLocation/3DModelLoader/Presets/
-cp -r ../CloudsData/visualsystems/3DModelLoader/Presets/Transparency_Grenade $copyLocation/3DModelLoader/Presets/
 cp -r ../CloudsData/visualsystems/3DModelLoader/Presets/Virus1 $copyLocation/3DModelLoader/Presets/
 cp -r ../CloudsData/visualsystems/3DModelLoader/Presets/Vroi $copyLocation/3DModelLoader/Presets/
 cp -r ../CloudsData/visualsystems/3DModelLoader/Presets/voronoi $copyLocation/3DModelLoader/Presets/
@@ -102,9 +92,7 @@ cp -r ../CloudsData/visualsystems/_ClusterMap/shaders $copyLocation/_ClusterMap/
 mkdir ../../CloudsData/visualsystems/_Intro
 mkdir ../../CloudsData/visualsystems/_Intro/Presets
 cp -r ../CloudsData/visualsystems/_Intro/images $copyLocation/_Intro/images
-cp -r ../CloudsData/visualsystems/_Intro/OBJ $copyLocation/_Intro/OBJ
 cp -r ../CloudsData/visualsystems/_Intro/shaders $copyLocation/_Intro/shaders
-cp -r ../CloudsData/visualsystems/_Intro/snapshots $copyLocation/_Intro/snapshots
 mkdir ../../CloudsData/visualsystems/Astrolabe
 mkdir ../../CloudsData/visualsystems/Astrolabe/Presets
 cp -r ../CloudsData/visualsystems/Astrolabe/models $copyLocation/Astrolabe/models
@@ -223,7 +211,6 @@ cp -r ../CloudsData/visualsystems/Connectors/Presets/g_work_02a $copyLocation/Co
 cp -r ../CloudsData/visualsystems/Connectors/Presets/g_work_02a $copyLocation/Connectors/Presets/
 mkdir ../../CloudsData/visualsystems/Cosmic
 mkdir ../../CloudsData/visualsystems/Cosmic/Presets
-cp -r ../CloudsData/visualsystems/Cosmic/audio $copyLocation/Cosmic/audio
 cp -r ../CloudsData/visualsystems/Cosmic/colors $copyLocation/Cosmic/colors
 cp -r ../CloudsData/visualsystems/Cosmic/images $copyLocation/Cosmic/images
 cp -r ../CloudsData/visualsystems/Cosmic/noise.png $copyLocation/Cosmic/noise.png
@@ -272,7 +259,6 @@ cp -r ../CloudsData/visualsystems/DrawnLine/Presets/NarrativeLine $copyLocation/
 cp -r ../CloudsData/visualsystems/DrawnLine/shaders $copyLocation/DrawnLine/shaders
 mkdir ../../CloudsData/visualsystems/Empty
 mkdir ../../CloudsData/visualsystems/Empty/Presets
-cp -r ../CloudsData/visualsystems/Empty/snapshots $copyLocation/Empty/snapshots
 mkdir ../../CloudsData/visualsystems/ExampleBox2D
 mkdir ../../CloudsData/visualsystems/ExampleBox2D/Presets
 cp -r ../CloudsData/visualsystems/ExampleBox2D/Presets/JM1 $copyLocation/ExampleBox2D/Presets/
@@ -328,6 +314,7 @@ cp -r ../CloudsData/visualsystems/Fireworks/Presets/underwater $copyLocation/Fir
 cp -r ../CloudsData/visualsystems/Fireworks/shaders $copyLocation/Fireworks/shaders
 mkdir ../../CloudsData/visualsystems/Flocking
 mkdir ../../CloudsData/visualsystems/Flocking/Presets
+cp -r ../CloudsData/visualsystems/Flocking/images $copyLocation/Flocking/images
 cp -r ../CloudsData/visualsystems/Flocking/Presets/JM1 $copyLocation/Flocking/Presets/
 cp -r ../CloudsData/visualsystems/Flocking/Presets/JM2 $copyLocation/Flocking/Presets/
 cp -r ../CloudsData/visualsystems/Flocking/Presets/JM1 $copyLocation/Flocking/Presets/
@@ -398,7 +385,6 @@ mkdir ../../CloudsData/visualsystems/LinePoem/Presets
 cp -r ../CloudsData/visualsystems/LinePoem/allDrawings.dat $copyLocation/LinePoem/allDrawings.dat
 mkdir ../../CloudsData/visualsystems/LSystem
 mkdir ../../CloudsData/visualsystems/LSystem/Presets
-cp -r ../CloudsData/visualsystems/LSystem/images $copyLocation/LSystem/images
 cp -r ../CloudsData/visualsystems/LSystem/Presets/gx_work_02a $copyLocation/LSystem/Presets/
 cp -r ../CloudsData/visualsystems/LSystem/Presets/gx_work_01a $copyLocation/LSystem/Presets/
 cp -r ../CloudsData/visualsystems/LSystem/Presets/gx_work_02a $copyLocation/LSystem/Presets/
@@ -573,7 +559,6 @@ cp -r ../CloudsData/visualsystems/OpenP5NoiseSphere/Presets/gx_work_01a $copyLoc
 cp -r ../CloudsData/visualsystems/OpenP5NoiseSphere/Presets/jm_work_03a $copyLocation/OpenP5NoiseSphere/Presets/
 cp -r ../CloudsData/visualsystems/OpenP5NoiseSphere/Presets/gx_work_01a $copyLocation/OpenP5NoiseSphere/Presets/
 cp -r ../CloudsData/visualsystems/OpenP5NoiseSphere/shaders $copyLocation/OpenP5NoiseSphere/shaders
-cp -r ../CloudsData/visualsystems/OpenP5NoiseSphere/snapshots $copyLocation/OpenP5NoiseSphere/snapshots
 cp -r ../CloudsData/visualsystems/OpenP5NoiseSphere/sounds $copyLocation/OpenP5NoiseSphere/sounds
 mkdir ../../CloudsData/visualsystems/OpenP5SeaOfLines
 mkdir ../../CloudsData/visualsystems/OpenP5SeaOfLines/Presets
@@ -633,7 +618,6 @@ cp -r ../CloudsData/visualsystems/OpenP5TextUniverse/Presets/twitterOC $copyLoca
 cp -r ../CloudsData/visualsystems/OpenP5TextUniverse/textFiles $copyLocation/OpenP5TextUniverse/textFiles
 mkdir ../../CloudsData/visualsystems/Orbit
 mkdir ../../CloudsData/visualsystems/Orbit/Presets
-cp -r ../CloudsData/visualsystems/Orbit/Presets/Lorenz_Dolly $copyLocation/Orbit/Presets/
 cp -r ../CloudsData/visualsystems/Orbit/shaders $copyLocation/Orbit/shaders
 mkdir ../../CloudsData/visualsystems/Oscillations
 mkdir ../../CloudsData/visualsystems/Oscillations/Presets
@@ -673,11 +657,7 @@ cp -r ../CloudsData/visualsystems/PhotoGlitch/Presets/Friends_2 $copyLocation/Ph
 cp -r ../CloudsData/visualsystems/PhotoGlitch/Presets/LifeofNumbers_ZoomOut $copyLocation/PhotoGlitch/Presets/
 cp -r ../CloudsData/visualsystems/PhotoGlitch/Presets/catTest2 $copyLocation/PhotoGlitch/Presets/
 cp -r ../CloudsData/visualsystems/PhotoGlitch/Presets/glitchTest $copyLocation/PhotoGlitch/Presets/
-cp -r ../CloudsDataIgnored/visualsystems/PhotoGlitch/Composits $copyLocation/PhotoGlitch/Composits
-cp -r ../CloudsDataIgnored/visualsystems/PhotoGlitch/GLITCH_IMAGES $copyLocation/PhotoGlitch/GLITCH_IMAGES
-cp -r ../CloudsDataIgnored/visualsystems/PhotoGlitch/PeopleComposit.png $copyLocation/PhotoGlitch/PeopleComposit.png
 cp -r ../CloudsDataIgnored/visualsystems/PhotoGlitch/Presets $copyLocation/PhotoGlitch/Presets
-cp -r ../CloudsDataIgnored/visualsystems/PhotoGlitch/snapshots $copyLocation/PhotoGlitch/snapshots
 cp -r ../CloudsDataIgnored/visualsystems/PhotoGlitch/sourceImages $copyLocation/PhotoGlitch/sourceImages
 cp -r ../CloudsDataIgnored/visualsystems/PhotoGlitch/targetImages $copyLocation/PhotoGlitch/targetImages
 mkdir ../../CloudsData/visualsystems/Process11
@@ -710,7 +690,6 @@ cp -r ../CloudsData/visualsystems/Replicator/Presets/Replicator_organ $copyLocat
 mkdir ../../CloudsData/visualsystems/RGBD
 mkdir ../../CloudsData/visualsystems/RGBD/Presets
 cp -r ../CloudsData/visualsystems/RGBD/shaders $copyLocation/RGBD/shaders
-cp -r ../CloudsData/visualsystems/RGBD/snapshots $copyLocation/RGBD/snapshots
 mkdir ../../CloudsData/visualsystems/RGBDVideo
 mkdir ../../CloudsData/visualsystems/RGBDVideo/Presets
 cp -r ../CloudsData/visualsystems/RGBDVideo/Presets/AIC_Kids $copyLocation/RGBDVideo/Presets/
@@ -726,6 +705,7 @@ cp -r ../CloudsData/visualsystems/RGBDVideo/Presets/ITP_5 $copyLocation/RGBDVide
 cp -r ../CloudsData/visualsystems/RGBDVideo/Presets/KoblinSubway_medium $copyLocation/RGBDVideo/Presets/
 cp -r ../CloudsData/visualsystems/RGBDVideo/Presets/ShinyLab $copyLocation/RGBDVideo/Presets/
 cp -r ../CloudsData/visualsystems/RGBDVideo/shaders $copyLocation/RGBDVideo/shaders
+cp -r ../CloudsData/visualsystems/RGBDVideo/xml $copyLocation/RGBDVideo/xml
 mkdir ../../CloudsData/visualsystems/Ripples
 mkdir ../../CloudsData/visualsystems/Ripples/Presets
 cp -r ../CloudsData/visualsystems/Ripples/Presets/FilmNoir $copyLocation/Ripples/Presets/
@@ -805,7 +785,6 @@ cp -r ../CloudsData/visualsystems/Twitter/Presets/tweetDeck $copyLocation/Twitte
 cp -r ../CloudsData/visualsystems/Twitter/RockwellStd.otf $copyLocation/Twitter/RockwellStd.otf
 cp -r ../CloudsData/visualsystems/Twitter/shaders $copyLocation/Twitter/shaders
 cp -r ../CloudsData/visualsystems/Twitter/tweetDeckMenu.png $copyLocation/Twitter/tweetDeckMenu.png
-cp -r ../CloudsData/visualsystems/Twitter/twitternames.txt $copyLocation/Twitter/twitternames.txt
 cp -r ../CloudsData/visualsystems/Twitter/twitterVSNewData $copyLocation/Twitter/twitterVSNewData
 cp -r ../CloudsDataIgnored/visualsystems/Twitter/twitter.csv $copyLocation/Twitter/twitter.csv
 mkdir ../../CloudsData/visualsystems/Uextrude
@@ -854,6 +833,7 @@ cp -r ../CloudsData/visualsystems/Vision/Presets/flowDancer $copyLocation/Vision
 cp -r ../CloudsData/visualsystems/Vision/Presets/tokyoCrossingHeatMap $copyLocation/Vision/Presets/
 mkdir ../../CloudsData/visualsystems/Visuals
 mkdir ../../CloudsData/visualsystems/Visuals/Presets
+cp -r ../CloudsData/visualsystems/Visuals/thumbs $copyLocation/Visuals/thumbs
 cp -r ../CloudsData/visualsystems/Visuals/visualslist.txt $copyLocation/Visuals/visualslist.txt
 mkdir ../../CloudsData/visualsystems/Voro
 mkdir ../../CloudsData/visualsystems/Voro/Presets
@@ -874,7 +854,6 @@ cp -r ../CloudsData/visualsystems/WebHistory/Andale Mono.ttf $copyLocation/WebHi
 cp -r ../CloudsData/visualsystems/WebHistory/Presets/AutoSpiderShell $copyLocation/WebHistory/Presets/
 cp -r ../CloudsData/visualsystems/WebHistory/Presets/Hazy_wide $copyLocation/WebHistory/Presets/
 cp -r ../CloudsData/visualsystems/WebHistory/RockwellStd.otf $copyLocation/WebHistory/RockwellStd.otf
-cp -r ../CloudsData/visualsystems/WebHistory/SampleChromeHistory $copyLocation/WebHistory/SampleChromeHistory
 mkdir ../../CloudsData/visualsystems/World
 mkdir ../../CloudsData/visualsystems/World/Presets
 cp -r ../CloudsData/visualsystems/World/airports.txt $copyLocation/World/airports.txt
@@ -882,7 +861,6 @@ cp -r ../CloudsData/visualsystems/World/CamSettings_DIST.xml $copyLocation/World
 cp -r ../CloudsData/visualsystems/World/CamSettings_FOV.xml $copyLocation/World/CamSettings_FOV.xml
 cp -r ../CloudsData/visualsystems/World/cities.txt $copyLocation/World/cities.txt
 cp -r ../CloudsData/visualsystems/World/constelations.txt $copyLocation/World/constelations.txt
-cp -r ../CloudsData/visualsystems/World/images $copyLocation/World/images
 cp -r ../CloudsData/visualsystems/World/loc.txt $copyLocation/World/loc.txt
 cp -r ../CloudsData/visualsystems/World/Presets/Arcs $copyLocation/World/Presets/
 cp -r ../CloudsData/visualsystems/World/Presets/Arcs2 $copyLocation/World/Presets/
