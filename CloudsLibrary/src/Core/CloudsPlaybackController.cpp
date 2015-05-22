@@ -259,7 +259,7 @@ void CloudsPlaybackController::setup(){
         #endif
         
 	}
-    interludeInterfaceFont.loadFont(GetMediumFontPath(), 14);
+    interludeInterfaceFont.loadFont(GetMediumFontBuffer(), 14);
 
 
 	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
@@ -371,8 +371,10 @@ void CloudsPlaybackController::threadedFunction(){
     parser.parseSounds(sound.renders);
 	sound.enterTunnel();
     
+#ifdef VHX_MEDIA
     //videos for visual systems
     CloudsVisualSystem::mapVHXMediaIds();
+#endif
     
 	if(!isThreadRunning()) return;
     introSequence->percentLoaded = 0.6;

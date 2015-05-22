@@ -10,6 +10,7 @@
 
 #include "CloudsInput.h"
 
+#include "ofxFTGL.h"
 #include "ofxTween.h"
 
 // TODO: Merge this enum with the k4w::ViewerState
@@ -39,7 +40,7 @@ class CloudsInputMouse : public CloudsInput
 
 	void drawFeedback(float width, float height, bool drawBrightText);
 	float feedbackAlpha;
-    ofTrueTypeFont feedbackFont;
+    ofxFTGLFont feedbackFont;
     string feedbackPrompt;
     ofxTween feedbackTween;
     

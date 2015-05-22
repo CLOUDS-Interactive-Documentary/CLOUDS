@@ -216,7 +216,7 @@ void CloudsVisualSystemVisuals::selfSceneTransformation(){
 void CloudsVisualSystemVisuals::selfUpdate(){
     
     if(currentFontSize != fontSize || !visualFont.isLoaded()){
-        visualFont.loadFont(GetFontPath(), fontSize);
+        visualFont.loadFont(GetFontBuffer(), fontSize);
         currentFontSize = fontSize;
     }
     

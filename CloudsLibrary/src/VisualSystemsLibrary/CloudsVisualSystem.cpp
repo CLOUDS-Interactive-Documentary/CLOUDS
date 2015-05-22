@@ -4,6 +4,7 @@
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
 #include "CloudsLocalization.h"
+#include "CloudsCrypto.h"
 
 #if defined(MOUSE_INPUT)
 #include "CloudsInputMouse.h"
@@ -659,7 +660,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 //			string speakerFullName = speakerFirstName + " " + speakerLastName;
 			if(getRGBDVideoPlayer().isPlaying()){
 				if(!subtitleNameFont.isLoaded()){
-					subtitleNameFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", subtitleNameFontSize);
+//					subtitleNameFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", subtitleNameFontSize);
+                    subtitleNameFont.loadFont(CloudsCryptoGetFont("Blender-BOOK.ttf"), subtitleNameFontSize);
 				}
 
 				string speakerFullName = speakerFirstName + " " + speakerLastName;
@@ -894,7 +896,7 @@ void CloudsVisualSystem::drawInterludeInterface(){
 	
 	if(!interludeFont.isLoaded() || currentInterludeFontSize != interludeFontSize){
 		//interludeFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", interludeFontSize);
-		interludeFont.loadFont(GetFontPath(), interludeFontSize);
+		interludeFont.loadFont(GetFontBuffer(), interludeFontSize);
 		currentInterludeFontSize = interludeFontSize;
 	}
 

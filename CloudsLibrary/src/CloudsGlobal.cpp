@@ -70,8 +70,8 @@ string GetCloudsMediaPath(){
 		else if(ofDirectory("CloudsDataMedia/").exists()){
 			mediaRootPath = "CloudsDataMedia/";
 		}
-#ifdef CLOUDS_RELEASE
-		string thumbDrive = FindCloudsThumbDrive();
+
+        string thumbDrive = FindCloudsThumbDrive();
 
 #ifdef TARGET_OSX
 		if(thumbDrive == "" && ofFile("/Library/Application Support/CLOUDS/mediaRoot.txt").exists()){
@@ -85,7 +85,6 @@ string GetCloudsMediaPath(){
 		}else if(thumbDrive != ""){
 			mediaRootPath = thumbDrive;
 		}
-#endif
 #endif
 	}
 

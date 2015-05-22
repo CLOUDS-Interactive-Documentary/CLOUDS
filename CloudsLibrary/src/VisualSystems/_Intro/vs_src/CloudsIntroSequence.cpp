@@ -6,6 +6,7 @@
 //
 
 #include "CloudsIntroSequence.h"
+#include "CloudsCrypto.h"
 #include "CloudsGlobal.h"
 #include "CloudsEvents.h"
 #include "CloudsPortalEvents.h"
@@ -630,7 +631,8 @@ void CloudsIntroSequence::updateTitle(){
 		currentFontSize = titleFontExtrude;
 		currentFontExtrusion = titleFontExtrude;
         //TODO replace with geo
-		extrudedTitleText.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
+//		extrudedTitleText.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
+        extrudedTitleText.loadFont(CloudsCryptoGetFont("materiapro_light.ttf"), titleFontSize, currentFontExtrusion);
 	}
 	
 	titleRect = ofRectangle(0,0,titleRectWidth * getSharedRenderTarget().getWidth(),
@@ -659,11 +661,11 @@ void CloudsIntroSequence::updateTitle(){
 void CloudsIntroSequence::updateMenu(){
     
 	if(!menuFont.isLoaded() || currentMenuFontSize != menuFontSize){
-		menuFont.loadFont(GetFontPath(), menuFontSize	);
+		menuFont.loadFont(GetFontBuffer(), menuFontSize );
         currentMenuFontSize = menuFontSize;
     }
 	if(!menuToolTipFont.isLoaded() || currentMenuToolTipFontSize != menuToolTipFontSize){
-		menuToolTipFont.loadFont(GetFontPath(), menuFontSize	);
+		menuToolTipFont.loadFont(GetFontBuffer(), menuFontSize );
         currentMenuToolTipFontSize = menuToolTipFontSize;
     }
     
@@ -1224,9 +1226,9 @@ void CloudsIntroSequence::drawHelperType(){
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
 		//helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
 #ifdef OCULUS_RIFT
-		helperFont.loadFont(GetFontPath(), helperFontSize-2	); //hack!
+		helperFont.loadFont(GetFontBuffer(), helperFontSize-2	); //hack!
 #else
-		helperFont.loadFont(GetFontPath(), helperFontSize	); //hack!
+		helperFont.loadFont(GetFontBuffer(), helperFontSize	); //hack!
 #endif		
 		currentHelperFontSize = helperFontSize;
 	}

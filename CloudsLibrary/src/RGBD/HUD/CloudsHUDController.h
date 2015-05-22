@@ -314,7 +314,7 @@ class CloudsHUDController {
     void drawBackersList();
     
     CloudsHUDLabel* getLabelForLayer(const string& layerName,
-                                     const string& fontPath,
+                                     ofBuffer& fontBuffer,
                                      int kerning = 35,
                                      bool caps = false,
                                      bool useLayout = false,
