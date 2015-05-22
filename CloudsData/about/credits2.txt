@@ -7,8 +7,10 @@ Omer Shapira
 Michael Allison
 Quin Kennedy
  
-ADDITIONAL DESIGN
+INTERACTION DESIGN
 Sarah Hallacher
+ 
+ADDITIONAL DESIGN
 Erica Gorochow
  
 INTERFACE DEVELOPMENT
@@ -18,7 +20,4 @@ Charlie Whitney
  
 RELEASE ENGINEER
 Dan Moore
- 
-SCREENINGS PRODUCER
-Mei-Ling Wong
- 
+  
