@@ -129,7 +129,13 @@ public:
 	
 	bool playMovie(string path);
 	string loadMoviePath;
-	
+	string movieBaseFileName;
+    
+#ifdef VHX_MEDIA
+    CloudsMedia* waitingMedia;
+    void vhxRequestComplete(CloudsVHXEventArgs& args);
+#endif
+    
     float yLift;
 	bool movieLoaded;
 	

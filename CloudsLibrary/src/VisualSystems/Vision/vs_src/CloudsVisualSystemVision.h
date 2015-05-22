@@ -73,7 +73,7 @@ protected:
 	ofPtr<ofVideoPlayer> player;
 	ofPixels lastPixels;
 
-    int playerIndex;
+    //int playerIndex;
     int movieIndex;
     bool frameIsNew;
     bool bNewVideoLoaded;
@@ -141,6 +141,8 @@ protected:
     void loadCurrentMovie();
     void loadMovieAtIndex(int movieIndex);
 	void loadMovieWithName(string name);
+    void finishLoad();
+    
     void updateSettingsForNewVideo();
     
 //    void setMode(CVMode mode);
@@ -185,6 +187,12 @@ protected:
     float briShift;
     //SHADER
     ofShader shader;
+    
+    #ifdef VHX_MEDIA
+    CloudsMedia* waitingMedia;
+    void vhxRequestComplete(CloudsVHXEventArgs& args);
+    #endif
+    string moviePathToLoad;
     
     // Sound
     float fMainGain;
