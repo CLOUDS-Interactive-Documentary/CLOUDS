@@ -64,7 +64,7 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	currentSubtitles->lineHeight = .5;
 	nextSubtitles->lineHeight = .5;
 #else
-	subtitleFontSize = 21;
+	subtitleFontSize = 18;
 	currentSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);
     nextSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);;
 	currentSubtitles->lineHeight = .8;
