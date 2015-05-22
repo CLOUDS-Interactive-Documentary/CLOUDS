@@ -95,6 +95,46 @@ string GetCloudsMediaPath(){
 
 }
 
+void TrimVHXId(string& str){
+    ofStringReplace(str, "VO-", "");
+    ofStringReplace(str, ".mov", "");
+    ofStringReplace(str, ".mp3", "");
+    ofStringReplace(str, ".mp4", "");
+    ofStringReplace(str, "%2B", "");
+    ofStringReplace(str, "%3C", "");
+    ofStringReplace(str, "%3F", "");
+    ofStringReplace(str, " ", "");
+    ofStringReplace(str, "-", "");
+    ofStringReplace(str, "_", "");
+    ofStringReplace(str, "+", "");
+    ofStringReplace(str, ",", "");
+    ofStringReplace(str, "?", "");
+    ofStringReplace(str, "'", "");
+    ofStringReplace(str, "\"", "");
+}
+
+//--------------------------------------------------------------------
+void ParseVHXIds(const string& path, map<string, string>& idMap){
+    ofBuffer buffer = ofBufferFromFile(path);
+    
+    while(!buffer.isLastLine()){
+        
+        string line = buffer.getNextLine();
+        if(line == ""){
+            continue;
+        }
+        
+        vector<string> split = ofSplitString(line,",", true,true);
+        string idstring = split[0];
+        split.erase(split.begin());
+        
+        string key = ofJoinString(split, "");
+        TrimVHXId(key);
+        
+        idMap[key] = idstring;
+    }
+}
+
 
 //--------------------------------------------------------------------
 string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder){

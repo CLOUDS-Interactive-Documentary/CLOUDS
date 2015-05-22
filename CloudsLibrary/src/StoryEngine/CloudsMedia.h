@@ -19,10 +19,11 @@ public:
     CloudsMedia();
     
     bool hasMediaAsset;
-
     string sourceVideoFilePath;
     
 #ifdef VHX_MEDIA
+    //passes the complete event on
+    ofEvent<CloudsVHXEventArgs> completeEvent;
     void fetchVhxSourceUrl();
     void vhxRequestComplete(CloudsVHXEventArgs& args);
     CloudsVHXRequest *vhxRequest;

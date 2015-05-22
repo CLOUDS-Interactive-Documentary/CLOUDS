@@ -52,6 +52,9 @@ void CloudsMedia::vhxRequestComplete(CloudsVHXEventArgs& args){
         vhxSourceVideoUrl = args.result;
         vhxTimestamp = ofGetElapsedTimeMillis();
         ofLogVerbose("CloudsClip::vhxRequestComplete") << "Got source video URL " << vhxSourceVideoUrl;
+        
+        //pass along
+        ofNotifyEvent(completeEvent, args, this);
     }
     else{
         ofLogError("CloudsClip::vhxRequestComplete") << "Error returned from vhx request";

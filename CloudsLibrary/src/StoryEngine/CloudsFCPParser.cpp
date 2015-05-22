@@ -112,7 +112,7 @@ void CloudsFCPParser::parseVOClips(){
 
 #ifdef VHX_MEDIA
     map<string, string> idMap;
-    parseVHXIds(GetCloudsDataPath() + "vhx/vo.csv", idMap);
+    ParseVHXIds(GetCloudsDataPath() + "vhx/vo.csv", idMap);
 #endif
 
     ofBuffer voiceOverData = ofBufferFromFile(GetCloudsDataPath() + "VO/_voiceover_data.txt");
@@ -138,7 +138,7 @@ void CloudsFCPParser::parseVOClips(){
 		//clip->voiceOverAudioPath = GetCloudsDataPath(true) + "VO/" + fileName;
 #ifdef VHX_MEDIA
         string key = fileName;
-        trimVHXId(key);
+        TrimVHXId(key);
         if(idMap.find(key) != idMap.end()){
             clip->vhxId = idMap[ key ];
             clip->hasMediaAsset = true;
@@ -499,34 +499,34 @@ void CloudsFCPParser::parseTopicAssociations(const string& filename){
 }
 
 #ifdef VHX_MEDIA
-void CloudsFCPParser::parseVHXIds(const string& path, map<string, string>& idMap){
-    ofBuffer buffer = ofBufferFromFile(path);
-
-    while(!buffer.isLastLine()){
-        
-        string line = buffer.getNextLine();
-        if(line == ""){
-            continue;
-        }
-        
-        vector<string> split = ofSplitString(line,",", true,true);
-        string idstring = split[0];
-        split.erase(split.begin());
-        
-        string key = ofJoinString(split, "");
-        trimVHXId(key);
-        
-        idMap[key] = idstring;
-    }
-}
+//void CloudsFCPParser::parseVHXIds(const string& path, map<string, string>& idMap){
+//    ofBuffer buffer = ofBufferFromFile(path);
+//
+//    while(!buffer.isLastLine()){
+//        
+//        string line = buffer.getNextLine();
+//        if(line == ""){
+//            continue;
+//        }
+//        
+//        vector<string> split = ofSplitString(line,",", true,true);
+//        string idstring = split[0];
+//        split.erase(split.begin());
+//        
+//        string key = ofJoinString(split, "");
+//        trimVHXId(key);
+//        
+//        idMap[key] = idstring;
+//    }
+//}
 
 void CloudsFCPParser::mapVHXMedia(){
     map<string, string> idMap;
-    parseVHXIds(GetCloudsDataPath() + "vhx/media.csv", idMap);
+    ParseVHXIds(GetCloudsDataPath() + "vhx/media.csv", idMap);
     
     for(int i = 0; i < allClips.size(); i++){
         string key = allClips[i]->person + allClips[i]->name;
-        trimVHXId(key);
+        TrimVHXId(key);
         
         if(idMap.find(key) != idMap.end()){
             allClips[i]->vhxId = idMap[ key ];
@@ -538,23 +538,7 @@ void CloudsFCPParser::mapVHXMedia(){
     
 }
 
-void CloudsFCPParser::trimVHXId(string& str){
-    ofStringReplace(str, "VO-", "");
-    ofStringReplace(str, ".mov", "");
-    ofStringReplace(str, ".mp3", "");
-    ofStringReplace(str, ".mp4", "");
-    ofStringReplace(str, "%2B", "");
-    ofStringReplace(str, "%3C", "");
-    ofStringReplace(str, "%3F", "");
-    ofStringReplace(str, " ", "");
-    ofStringReplace(str, "-", "");
-    ofStringReplace(str, "_", "");
-    ofStringReplace(str, "+", "");
-    ofStringReplace(str, ",", "");
-    ofStringReplace(str, "?", "");
-    ofStringReplace(str, "'", "");
-    ofStringReplace(str, "\"", "");
-}
+
 #endif
 
 void CloudsFCPParser::parseProjectExamples(const string& filename){
@@ -1973,7 +1957,7 @@ void CloudsFCPParser::parseSounds(map<string, CloudsMedia *>& sounds){
     
 #ifdef VHX_MEDIA
     map<string, string> idMap;
-    parseVHXIds(GetCloudsDataPath() + "vhx/sound.csv", idMap);
+    ParseVHXIds(GetCloudsDataPath() + "vhx/sound.csv", idMap);
     
     for (map<string, string>::iterator it = idMap.begin(); it != idMap.end(); ++it) {
         CloudsMedia *sound = new CloudsMedia();

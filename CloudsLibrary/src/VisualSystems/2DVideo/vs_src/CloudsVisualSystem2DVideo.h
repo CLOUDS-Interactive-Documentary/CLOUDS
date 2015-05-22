@@ -11,8 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-//#include "ofxAVFVideoPlayer.h"
-//--------------------------------------------------------------
+
 //--------------------------------------------------------------
 class CloudsVisualSystem2DVideo : public CloudsVisualSystem
 {
@@ -42,7 +41,7 @@ class CloudsVisualSystem2DVideo : public CloudsVisualSystem
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-    void loadMovieAtIndex(int index, bool reset);
+    void loadMovieAtIndex(int index);
     void loadMovieWithName(string name);
     void selfSetDefaults();
     ofCamera& getCameraRef();
@@ -59,16 +58,25 @@ protected:
 
 	void loadMovieFromRadio();
 	bool receivedFrame;
-//    ofxAVFVideoPlayer player;
     ofPtr<ofVideoPlayer> player;
     vector<string> movieStrings;
+    void finishLoad();
+    
     int movieIndex;
 	string loadedMoviePath;
     ofRectangle screenRect;
     ofRectangle videoRect;
     ofMesh videoMesh;
     ofFbo videoFbo;
-    bool bFileLoaded;
+    bool bFileLoadCompleted;
+    
     float inTime, outTime;
     ofCamera  vidCam;
+    
+#ifdef VHX_MEDIA
+    CloudsMedia* waitingMedia;
+    void vhxRequestComplete(CloudsVHXEventArgs& args);
+#endif
+    bool bWaitForVHX;
+    
 };
