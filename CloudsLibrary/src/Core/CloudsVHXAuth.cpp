@@ -66,8 +66,8 @@ bool CloudsVHXAuth::setup()
     
     if (CloudsCryptoLoadTokens(_accessToken, _refreshToken, _tokenExpiry, _tokensPath)) {
         ofLogNotice("CloudsVHXAuth::setup") << "Loaded tokens successfully:\n"
-        << "\tAccess Token: " << _clientId << "\n"
-        << "\tRefresh Token: " << _clientSecret << "\n"
+        << "\tAccess Token: " << _accessToken << "\n"
+        << "\tRefresh Token: " << _refreshToken << "\n"
         << "\tToken Expiry: " << _tokenExpiry;
         
         state = INACTIVE;
