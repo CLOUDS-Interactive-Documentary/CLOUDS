@@ -142,7 +142,6 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     textGui->addSpacer();
     vector<string> fonts;
     fonts.push_back("HELVETICA");
-    fonts.push_back("MATERIA PRO");
     fonts.push_back("MUSEO 300");
     fonts.push_back("NEW MEDIA FETT");
     textGui->addRadio("FONT", fonts);
@@ -287,12 +286,6 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
     else if (e.widget->getName() == "HELVETICA") {
         if (((ofxUIToggle *)e.widget)->getValue()) {
             TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
-            rebuildFont();
-        }
-    }
-    else if (e.widget->getName() == "MATERIA PRO") {
-        if (((ofxUIToggle *)e.widget)->getValue()) {
-            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf";
             rebuildFont();
         }
     }
