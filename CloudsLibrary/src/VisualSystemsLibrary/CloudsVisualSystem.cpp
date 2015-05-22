@@ -45,6 +45,7 @@ static ofVideoPlayer* selectLow = NULL;
 static ofxFTGLFont subtitleNameFont;
 static int subtitleNameFontSize = 24;
 
+
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
@@ -98,8 +99,6 @@ void CloudsVisualSystem::loadPostShader(){
 
 ofVideoPlayer* CloudsVisualSystem::getClick(){
     
-    //return NULL;
-    
 	if(click == NULL){
 		click = new ofVideoPlayer();
 		click->loadMovie(GetCloudsDataPath() + "sound/interface/click.mp4");
@@ -110,9 +109,6 @@ ofVideoPlayer* CloudsVisualSystem::getClick(){
 }
 
 ofVideoPlayer* CloudsVisualSystem::getSelectHigh(){
-    
-    //return NULL;
-    
 	if(selectHigh == NULL){
 		selectHigh = new ofVideoPlayer();
 		selectHigh->loadMovie(GetCloudsDataPath() + "sound/interface/select_high.mp4");
@@ -123,9 +119,6 @@ ofVideoPlayer* CloudsVisualSystem::getSelectHigh(){
 }
 
 ofVideoPlayer* CloudsVisualSystem::getSelectMid(){
-    
-    //return NULL;
-    
 	if(selectMid == NULL){
 		selectMid = new ofVideoPlayer();
 		selectMid->loadMovie(GetCloudsDataPath() + "sound/interface/select_mid.mp4");
@@ -136,9 +129,6 @@ ofVideoPlayer* CloudsVisualSystem::getSelectMid(){
 }
 
 ofVideoPlayer* CloudsVisualSystem::getSelectLow(){
-    
-    //return NULL;
-    
 	if(selectLow == NULL){
 		selectLow = new ofVideoPlayer();
 		selectLow->loadMovie(GetCloudsDataPath() + "sound/interface/select_low.mp4");
@@ -186,6 +176,40 @@ void CloudsVisualSystem::get2dMesh(ofMesh& mesh, float width, float height){
 	
 	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 }
+
+#ifdef VHX_MEDIA
+static map<string, CloudsMedia*> vhxMedia;
+
+void CloudsVisualSystem::mapVHXMediaIds(){
+    if (!vhxMedia.empty()) {
+        for (map<string, CloudsMedia *>::iterator it = vhxMedia.begin(); it != vhxMedia.end(); ++it) {
+            delete it->second;
+        }
+    }
+    vhxMedia.clear();
+    
+    map<string, string> idMap;
+    ParseVHXIds(GetCloudsDataPath() + "vhx/visualsystem.csv", idMap);
+    
+    for (map<string, string>::iterator it = idMap.begin(); it != idMap.end(); ++it) {
+        CloudsMedia *media = new CloudsMedia();
+        media->vhxId = it->second;
+        media->hasMediaAsset = true;
+        vhxMedia[it->first] = media;
+    }
+    cout << "FOUND " << vhxMedia.size() << " MEDIA IDs" << endl;
+}
+
+CloudsMedia* CloudsVisualSystem::getVHXMedia(string movieKey){
+    TrimVHXId(movieKey);
+    if(vhxMedia.find(movieKey) == vhxMedia.end()){
+        ofLogError("CloudsVisualSystem::getMedia") << "Movie key " << movieKey;
+        return NULL;
+    }
+    
+    return vhxMedia[movieKey];
+}
+#endif
 
 
 #ifdef OCULUS_RIFT

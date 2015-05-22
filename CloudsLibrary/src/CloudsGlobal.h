@@ -24,10 +24,9 @@ static ofColor CloudsColorTabFillActive       = ofColor::fromHex(0x034C89, 255 *
 static ofColor CloudsColorTabFillSelectd      = ofColor::fromHex(0x034C89, 255 * .7);
 static ofColor CloudsColorTabStrokeSelectd    = ofColor::fromHex(0xFFFFFF, 255 * .7);
 
-
-enum CloudsVisualLevel { FAST, PRETTY };
 //--------------------------------------------------------------------
-//string GetEnvVar( string key );
+enum CloudsVisualLevel { FAST, PRETTY };
+
 //--------------------------------------------------------------------
 string GetCloudsDataPath(bool ignored = false);
 //--------------------------------------------------------------------
@@ -44,9 +43,14 @@ void SetLanguage(string language);
 string relinkFilePath(string filePath);
 //--------------------------------------------------------------------
 CloudsVisualLevel getVisualLevel();
-
+//--------------------------------------------------------------------
 bool CheckForUpdates();
+//--------------------------------------------------------------------
 string FindCloudsThumbDrive();
+//--------------------------------------------------------------------
+void ParseVHXIds(const string& path, map<string, string>& idMap);
+//--------------------------------------------------------------------
+void TrimVHXId(string& str);
 
 //--------------------------------------
 static inline std::string &ltrim(std::string &s) {

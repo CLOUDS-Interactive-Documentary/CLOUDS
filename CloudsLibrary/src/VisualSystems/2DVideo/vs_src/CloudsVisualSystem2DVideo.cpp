@@ -28,10 +28,15 @@ void CloudsVisualSystem2DVideo::selfSetupGui()
 	guimap[playerGui->getName()] = playerGui;
 }
 
-void CloudsVisualSystem2DVideo:: selfSetDefaults(){
+void CloudsVisualSystem2DVideo::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode =  CURSOR_MODE_INACTIVE;
 	rotationRange = ofVec2f(5,5);
+    inTime = 0;
+    outTime = 0;
+    bWaitForVHX = false;
+    bFileLoadCompleted = false;
+    
 }
 
 //--------------------------------------------------------------
@@ -56,33 +61,6 @@ void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
     
 }
 
-
-void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index, bool reset){
-
-
-    if( player != NULL && player->isPlaying()  ){
-        player->stop();
-    }
-    player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
-	loadedMoviePath = movieStrings[index];
-    if(player->loadMovie(GetCloudsMediaPath()+"visualsystems/"+getSystemName()+"/videos/"+ movieStrings[index])){
-//    if(player->loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
-        
-        player->play();
-        bFileLoaded = false;
-		
-		if(reset){
-			inTime = 0;
-			outTime = 0;
-		}
-    }
-    else{
-        ofLogError("CloudsVisualSystem2DVideo::loadMovieAtIndex") << "couldn't load the movie";
-    }
-	
-	receivedFrame = false;
-}
-
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystem2DVideo::selfSetupSystemGui(){
     
@@ -103,9 +81,8 @@ void CloudsVisualSystem2DVideo::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfSetup()
 {
-    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
     screenRect = ofRectangle(0,0, getCanvasWidth(), getCanvasHeight());
-    videoRect = ofRectangle(0,0, getCanvasWidth(), getCanvasHeight());
+    videoRect  = ofRectangle(0,0, getCanvasWidth(), getCanvasHeight());
     
     movieIndex = 0;
     
@@ -145,9 +122,10 @@ void CloudsVisualSystem2DVideo::selfSetup()
     movieStrings.push_back("Reas_network1.mov");
     movieStrings.push_back("Reas_Process13.mov");
     
-    
-    
-    loadMovieAtIndex(movieIndex, true);
+    //loadMovieAtIndex(movieIndex, true);
+    inTime = 0;
+    outTime = 0;
+
     
 }
 
@@ -160,18 +138,73 @@ void CloudsVisualSystem2DVideo::restart()
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfPresetLoaded(string presetPath)
 {   
-    
+    cout << "LOADING PRESET " << presetPath << endl;
 }
 
-
+//--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::loadMovieWithName(string name){
-	
 	for(int i = 0; i < movieStrings.size(); i++){
 		if (movieStrings[i] == name) {
-			loadMovieAtIndex(i, false);
+			loadMovieAtIndex(i);
 			break;
 		}
 	}
+}
+
+
+//--------------------------------------------------------------
+void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index){
+    
+    if( player != NULL && player->isPlaying() ){
+        player->stop();
+    }
+    player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
+    targetMovieName = movieStrings[index];
+    
+#ifdef VHX_MEDIA
+    if(waitingMedia != NULL){
+        ofRemoveListener(waitingMedia->completeEvent, this, &CloudsVisualSystem2DVideo::vhxRequestComplete);
+    }
+    waitingMedia = getVHXMedia(movieStrings[index]);
+    if(waitingMedia == NULL){
+        ofLogError("CloudsVisualSystem2DVideo::loadMovieAtIndex") << "Couldn't find VHX Media ID for clip " << movieStrings[index];
+        return;
+    }
+    ofAddListener(waitingMedia->completeEvent, this, &CloudsVisualSystem2DVideo::vhxRequestComplete);
+    waitingMedia->fetchVhxSourceUrl();
+#else
+	loadedMoviePath = GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos/" + movieStrings[index];
+    finishLoad();
+#endif
+    
+}
+
+#ifdef VHX_MEDIA
+
+void CloudsVisualSystem2DVideo::vhxRequestComplete(CloudsVHXEventArgs& args){
+    if(!args.success){
+        ofLogError("CloudsVisualSystem2DVideo::vhxRequestComplete") << "VHX request failed " << args.result;
+    }
+    
+    loadedMoviePath = args.result;
+    finishLoad();
+    
+    cout << "REQUEST COMPLETE " << args.result << endl;
+    
+    ofRemoveListener(waitingMedia->completeEvent, this, &CloudsVisualSystem2DVideo::vhxRequestComplete);
+    waitingMedia = NULL;
+}
+#endif
+
+void CloudsVisualSystem2DVideo::finishLoad() {
+    
+    player->loadMovie(loadedMoviePath);
+    player->play();
+    bFileLoadCompleted = false;
+	receivedFrame = false;
+    
+    cout << "FINISHED LOAD " << targetMovieName << endl;
+    
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -198,20 +231,16 @@ void CloudsVisualSystem2DVideo::selfUpdate()
         videoRect.y = 0;
         videoRect.width = player->getWidth();
         videoRect.height = player->getHeight();
-        //DONT NEED FOR 3D Drawing
-//        videoRect.scaleTo(screenRect);
         videoRect.setFromCenter(screenRect.width/2, screenRect.height/2, videoRect.width, videoRect.height);
     }
-    if (! bFileLoaded) {
-        if(player->getWidth() >0){
-            //this is to set the intime once the video has loaded
-            cout<<"setting player time to : "<<inTime<<endl;
-			player->setPosition(inTime / player->getDuration());
-            bFileLoaded = true;
-        }
-        
-    }
     
+    if (!bFileLoadCompleted && player->getWidth() > 0){
+        
+        //this is to set the intime once the video has loaded
+        player->setPosition(inTime / player->getDuration());
+        bFileLoadCompleted = true;
+    }
+
     player->update();
     receivedFrame |= player->isFrameNew();
 	
@@ -222,9 +251,9 @@ void CloudsVisualSystem2DVideo::selfUpdate()
 	}
 }
 
+//--------------------------------------------------------------
 ofCamera& CloudsVisualSystem2DVideo::getCameraRef(){
     return vidCam;
-    
 }
 
 //--------------------------------------------------------------
@@ -296,12 +325,7 @@ void CloudsVisualSystem2DVideo::selfDrawDebug(){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfDrawBackground()
 {
-	if(player->isLoaded() && receivedFrame){
-//		player->draw(videoRect.x, videoRect.y, videoRect.width, videoRect.height);
-	}
-	else {
-		ofLogError("CloudsVisualSystem2DVideo::selfDrawBackground") << "Video not loaded: " << loadedMoviePath;
-	}
+
 }
 
 //--------------------------------------------------------------
@@ -315,6 +339,7 @@ void CloudsVisualSystem2DVideo::render()
 void CloudsVisualSystem2DVideo::selfEnd(){
 	player->stop();
 }
+
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystem2DVideo::selfExit(){
  
@@ -325,11 +350,11 @@ void CloudsVisualSystem2DVideo::selfExit(){
 void CloudsVisualSystem2DVideo::selfKeyPressed(ofKeyEventArgs & args){
 	
     if(args.key == 'i' ){
-		cout<<"in time :"<<player->getPosition()*player->getDuration()<<endl;
+//		cout<<"in time :"<<player->getPosition()*player->getDuration()<<endl;
         inTime = player->getPosition()*player->getDuration();
 	}
     else if (args.key == 'o'){
-        cout<< "out time :"<<player->getPosition()*player->getDuration()<<endl;
+//        cout<< "out time :"<<player->getPosition()*player->getDuration()<<endl;
         outTime = player->getPosition()*player->getDuration();
     }
     else if (args.key == 'a'){
@@ -341,16 +366,7 @@ void CloudsVisualSystem2DVideo::selfKeyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystem2DVideo::selfMouseDragged(ofMouseEventArgs& data){
-//    float x = GetCloudsInputX();
-//    float y = GetCloudsInputY();
-//    
-//    
-//    ofVec2f mouse(x,y);
-//    ofQuaternion yRot((x-getCanvasWidth()/2)*.001, ofVec3f(0,1,0));
-//    ofQuaternion xRot((y-getCanvasHeight()/2    )*.001, ofVec3f(-1,0,0));
-////    ofQuaternion yRot((x-getCanvasHeight()/2)*.01, ofVec3f(0,1,0));
-////    ofQuaternion xRot((y-getCanvasWidth()/2)*.01, ofVec3f(-1,0,0));
-//    curRot *= yRot*xRot;
+
 }
 
 void CloudsVisualSystem2DVideo::selfMouseMoved(ofMouseEventArgs& data){

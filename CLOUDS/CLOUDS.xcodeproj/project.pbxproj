@@ -8433,8 +8433,8 @@
 				E7D8228118BEBD6E00C1EB93 /* SecondaryDisplay */,
 				E7D8228B18BEBD6E00C1EB93 /* Sound */,
 				E7D8229E18BEBD6E00C1EB93 /* StoryEngine */,
-				E7D822B718BEBD6E00C1EB93 /* VisualSystems */,
 				E7D8251018BEBD6F00C1EB93 /* VisualSystemsLibrary */,
+				E7D822B718BEBD6E00C1EB93 /* VisualSystems */,
 				E7D8251B18BEBD7000C1EB93 /* VisualSystemsPrivate */,
 			);
 			path = src;

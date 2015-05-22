@@ -370,7 +370,10 @@ void CloudsPlaybackController::threadedFunction(){
 	sound.setup(storyEngine);
     parser.parseSounds(sound.renders);
 	sound.enterTunnel();
-	
+    
+    //videos for visual systems
+    CloudsVisualSystem::mapVHXMediaIds();
+    
 	if(!isThreadRunning()) return;
     introSequence->percentLoaded = 0.6;
 	

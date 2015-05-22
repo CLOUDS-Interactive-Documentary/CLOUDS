@@ -14,6 +14,10 @@
 #include "CloudsPortal.h"
 #endif
 
+#ifdef VHX_MEDIA
+#include "CloudsMedia.h"
+#endif
+
 //#ifdef CLOUDS_INTERLUDE_NAV
 #include "ofxFTGL.h"
 #include "CloudsCalibrationNode.h"
@@ -78,6 +82,11 @@ class CloudsVisualSystem {
 	static ofVideoPlayer* getSelectMid();
 	static ofVideoPlayer* getSelectLow();
 
+#ifdef VHX_MEDIA
+    static void mapVHXMediaIds();
+    static CloudsMedia* getVHXMedia(string movieKey);
+#endif
+    
 #ifdef OCULUS_RIFT
 	static ofxOculusDK2& getOculusRift();
 #endif

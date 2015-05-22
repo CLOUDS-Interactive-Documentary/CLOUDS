@@ -2,6 +2,9 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+#ifdef VHX_MEDIA
+    CloudsVisualSystem::mapVHXMediaIds();
+#endif
     ofSetFrameRate(60);
 	videoSys.setup();
 	videoSys.playSystem();

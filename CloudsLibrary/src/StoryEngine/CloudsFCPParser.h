@@ -43,8 +43,8 @@ class CloudsFCPParser {
     void parseTopicAssociations(const string& filename);
     
 #ifdef VHX_MEDIA
-    void trimVHXId(string& str);
-    void parseVHXIds(const string& filename, map<string, string>& idMap);
+    //void trimVHXId(string& str);
+    //void parseVHXIds(const string& filename, map<string, string>& idMap);
     void mapVHXMedia();
 #endif
     
