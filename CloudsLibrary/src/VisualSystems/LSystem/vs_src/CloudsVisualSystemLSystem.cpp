@@ -28,8 +28,8 @@ void CloudsVisualSystemLSystem::selfSetup(){
     lsysOriginal.setMode(OF_PRIMITIVE_LINES);
     lsysGrowing.setMode(OF_PRIMITIVE_LINES);
     
-    postShader.load("",getVisualSystemDataPath()+"shaders/postprocess.fs");
-    ofLoadImage(postTexture, getVisualSystemDataPath()+"images/3.jpg");
+//    postShader.load("",getVisualSystemDataPath()+"shaders/postprocess.fs");
+//    ofLoadImage(postTexture, getVisualSystemDataPath()+"images/3.jpg");
 }
 
 void CloudsVisualSystemLSystem::selfSetupGuis(){
@@ -435,18 +435,18 @@ void CloudsVisualSystemLSystem::selfDraw(){
 }
 
 
-void CloudsVisualSystemLSystem::selfPostDraw(){
-	
-    postShader.begin();
-    postShader.setUniformTexture("tex1", postTexture, 1);
-    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-    postShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
-    postShader.setUniform2f("textureResolution", postTexture.getWidth(), postTexture.getHeight());
-    postShader.setUniform1f("chroma", postChromaDist);
-    postShader.setUniform1f("grain", postGrainDist);
-    CloudsVisualSystem::selfPostDraw();
-    postShader.end();
-}
+//void CloudsVisualSystemLSystem::selfPostDraw(){
+//	
+//    postShader.begin();
+//    postShader.setUniformTexture("tex1", postTexture, 1);
+//    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+//    postShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
+//    postShader.setUniform2f("textureResolution", postTexture.getWidth(), postTexture.getHeight());
+//    postShader.setUniform1f("chroma", postChromaDist);
+//    postShader.setUniform1f("grain", postGrainDist);
+//    CloudsVisualSystem::selfPostDraw();
+//    postShader.end();
+//}
 
 void CloudsVisualSystemLSystem::guiSystemEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();

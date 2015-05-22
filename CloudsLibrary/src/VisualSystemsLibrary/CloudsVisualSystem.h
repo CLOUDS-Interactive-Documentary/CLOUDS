@@ -91,7 +91,7 @@ class CloudsVisualSystem {
 	static ofxOculusDK2& getOculusRift();
 #endif
 	ofFbo& getSharedRenderTarget();
-	ofImage& getCursor();
+//	ofImage& getCursor();
 	int getCanvasWidth();
 	int getCanvasHeight();
 	

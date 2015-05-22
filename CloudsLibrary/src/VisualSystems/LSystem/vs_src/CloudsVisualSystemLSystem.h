@@ -29,7 +29,7 @@ public:
     void selfDrawDebug();
     void selfSceneTransformation();
     void selfDraw();
-    void selfPostDraw();
+    //void selfPostDraw();
     void selfExit();
     void selfBegin();
 	void selfEnd();
@@ -94,8 +94,8 @@ protected:
     
     //  Post
     //
-    ofShader    postShader;
-    ofTexture   postTexture;
+    //ofShader    postShader;
+    //ofTexture   postTexture;
     float       postChromaDist;
     float       postGrainDist;
     

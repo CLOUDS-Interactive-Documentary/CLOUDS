@@ -62,12 +62,12 @@ void CloudsVisualSystem::setNumSamples(int samples){
 	numSamples = samples;
 }
 
-ofImage& CloudsVisualSystem::getCursor(){
-	if(!sharedCursor.bAllocated()){
-		sharedCursor.loadImage( getVisualSystemDataPath() + "images/cursor.png");
-	}
-	return sharedCursor;
-}
+//ofImage& CloudsVisualSystem::getCursor(){
+//	if(!sharedCursor.bAllocated()){
+//		sharedCursor.loadImage( getVisualSystemDataPath() + "images/cursor.png");
+//	}
+//	return sharedCursor;
+//}
 
 int CloudsVisualSystem::getCanvasWidth(){
 	return getSharedRenderTarget().getWidth();
@@ -94,7 +94,7 @@ void CloudsVisualSystem::loadBackgroundShader(){
 
 void CloudsVisualSystem::loadPostShader(){
     cloudsPostShader.load("",GetCloudsDataPath() + "shaders/post.fs");
-    cloudsPostDistortionMap.loadImage( GetCloudsDataPath() + "images/7.jpg");
+    cloudsPostDistortionMap.loadImage( GetCloudsDataPath() + "backgrounds/distort.jpg");
     postShaderLoaded = true;
 }
 
