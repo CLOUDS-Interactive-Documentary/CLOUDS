@@ -564,12 +564,13 @@ void CloudsVisualSystemRGBDVideo::selfExit(){
 }
 
 void CloudsVisualSystemRGBDVideo::selfPresetLoaded(string presetPath){
+    string mediaFileName = videoPathField->getTextString();
+    movieBaseFileName = ofFilePath::removeExt(mediaFileName);
+
 #ifdef VHX_MEDIA
     if(waitingMedia != NULL){
         ofRemoveListener(waitingMedia->completeEvent, this, &CloudsVisualSystemRGBDVideo::vhxRequestComplete);
     }
-    string mediaFileName = videoPathField->getTextString();
-    movieBaseFileName = ofFilePath::removeExt(mediaFileName);
     
     waitingMedia = getVHXMedia(mediaFileName);
     if(waitingMedia == NULL){
@@ -623,14 +624,14 @@ bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 #endif
 	
     if(!player.loadMovie(filePath)){
-		ofLogError("CloudsVisualSystemRGBDVideo::selfPresetLoaded") << "Video File " << filePath << " Failed to load";
+		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "Video File " << filePath << " Failed to load";
 		return false;
 	}
 	
 	ofxXmlSettings intrinsicsXml;
     string xmlFilePath = getVisualSystemDataPath() + "xml/"+ movieBaseFileName + ".xml";
 	if(!intrinsicsXml.loadFile(xmlFilePath)){
-		ofLogError("CloudsVisualSystemRGBDVideo::selfPresetLoaded") << "XML File " << xmlFilePath << " Failed to load";
+		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "XML File " << xmlFilePath << " Failed to load";
 		return false;
 	}
 	

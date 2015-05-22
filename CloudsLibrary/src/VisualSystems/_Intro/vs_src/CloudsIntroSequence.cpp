@@ -630,8 +630,6 @@ void CloudsIntroSequence::updateTitle(){
 	{
 		currentFontSize = titleFontExtrude;
 		currentFontExtrusion = titleFontExtrude;
-        //TODO replace with geo
-//		extrudedTitleText.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
         extrudedTitleText.loadFont(CloudsCryptoGetFont("materiapro_light.ttf"), titleFontSize, currentFontExtrusion);
 	}
 	
@@ -1228,7 +1226,7 @@ void CloudsIntroSequence::drawHelperType(){
 #ifdef OCULUS_RIFT
 		helperFont.loadFont(GetFontBuffer(), helperFontSize-2	); //hack!
 #else
-		helperFont.loadFont(GetFontBuffer(), helperFontSize	); //hack!
+		helperFont.loadFont(GetMediumFontBuffer(), helperFontSize	); //hack!
 #endif		
 		currentHelperFontSize = helperFontSize;
 	}
