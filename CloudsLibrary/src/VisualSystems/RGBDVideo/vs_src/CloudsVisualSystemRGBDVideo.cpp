@@ -7,6 +7,7 @@
 CloudsVisualSystemRGBDVideo::CloudsVisualSystemRGBDVideo(){
 	videoPathField = NULL;
 	movieLoaded = false;
+    waitingMedia = NULL;
 }
 
 //--------------------------------------------------------------
@@ -25,7 +26,8 @@ void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
     occlusionVertexCount = 0;
     occlusionIndexCount = 0;
 	loadMoviePath = "";
-	
+	movieBaseFileName = "";
+    
 	movieLoaded = false;
     pointscale = .25;
     pointShift = ofVec3f(0,0,0);
@@ -562,36 +564,71 @@ void CloudsVisualSystemRGBDVideo::selfExit(){
 }
 
 void CloudsVisualSystemRGBDVideo::selfPresetLoaded(string presetPath){
-	loadMoviePath = videoPathField->getTextString();
+#ifdef VHX_MEDIA
+    if(waitingMedia != NULL){
+        ofRemoveListener(waitingMedia->completeEvent, this, &CloudsVisualSystemRGBDVideo::vhxRequestComplete);
+    }
+    string mediaFileName = videoPathField->getTextString();
+    movieBaseFileName = ofFilePath::removeExt(mediaFileName);
     
+    waitingMedia = getVHXMedia(mediaFileName);
+    if(waitingMedia == NULL){
+        ofLogError("CloudsVisualSystemRGBDVideo::loadMovieAtIndex") << "Couldn't find VHX Media ID for clip " << mediaFileName;
+        return;
+    }
+    ofAddListener(waitingMedia->completeEvent, this, &CloudsVisualSystemRGBDVideo::vhxRequestComplete);
+    waitingMedia->fetchVhxSourceUrl();
+#else
+	loadMoviePath = videoPathField->getTextString();
     refreshLines = true;
     refreshOcclusion = true;
     refreshPoints = true;
 	refreshMesh = true;
+#endif
+    
 }
+
+#ifdef VHX_MEDIA
+void CloudsVisualSystemRGBDVideo::vhxRequestComplete(CloudsVHXEventArgs& args){
+    if(!args.success){
+        ofLogError("CloudsVisualSystemRGBDVideo::vhxRequestComplete") << "VHX request failed " << args.result;
+        return;
+    }
+    
+    loadMoviePath = args.result;
+    refreshLines = true;
+    refreshOcclusion = true;
+    refreshPoints = true;
+	refreshMesh = true;
+    
+    ofRemoveListener(waitingMedia->completeEvent, this, &CloudsVisualSystemRGBDVideo::vhxRequestComplete);
+    waitingMedia = NULL;
+}
+#endif
 
 bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 	movieLoaded = false;
 	
-	if( filePath == ""){
+	if(filePath == ""){
 		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "Path is blank" << endl;
 		return false;
 	}
     
+#ifndef VHX_MEDIA
 	filePath = GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos/" + filePath;
-
 	if(!ofFile(filePath).exists() ) {
 		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "File does not exist " << filePath << endl;
 		return false;
 	}
+#endif
 	
-	if(!player.loadMovie(filePath)){
+    if(!player.loadMovie(filePath)){
 		ofLogError("CloudsVisualSystemRGBDVideo::selfPresetLoaded") << "Video File " << filePath << " Failed to load";
 		return false;
 	}
 	
 	ofxXmlSettings intrinsicsXml;
-    string xmlFilePath = getVisualSystemDataPath() + "xml/"+ ofFilePath::removeExt(ofFilePath::getFileName(filePath)) + ".xml";
+    string xmlFilePath = getVisualSystemDataPath() + "xml/"+ movieBaseFileName + ".xml";
 	if(!intrinsicsXml.loadFile(xmlFilePath)){
 		ofLogError("CloudsVisualSystemRGBDVideo::selfPresetLoaded") << "XML File " << xmlFilePath << " Failed to load";
 		return false;
@@ -601,6 +638,7 @@ bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 	videoIntrinsics.depthFOV.y = intrinsicsXml.getValue("depth:fovy", 0.);
 	videoIntrinsics.depthRange.min = intrinsicsXml.getValue("depth:minDepth", 0.);
 	videoIntrinsics.depthRange.max = intrinsicsXml.getValue("depth:maxDepth", 0.);
+    
     //TODO: read from xml
 	videoIntrinsics.depthPP.x = 320;
 	videoIntrinsics.depthPP.y = 240;

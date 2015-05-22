@@ -34,7 +34,7 @@ void CloudsVisualSystem2DVideo::selfSetDefaults(){
 	rotationRange = ofVec2f(5,5);
     inTime = 0;
     outTime = 0;
-    bWaitForVHX = false;
+
     bFileLoadCompleted = false;
     
 }
@@ -125,7 +125,8 @@ void CloudsVisualSystem2DVideo::selfSetup()
     //loadMovieAtIndex(movieIndex, true);
     inTime = 0;
     outTime = 0;
-
+    
+    waitingMedia = NULL;
     
 }
 
@@ -263,10 +264,10 @@ void CloudsVisualSystem2DVideo::selfDraw()
     if(player->isLoaded() && receivedFrame){
 
         
-        ofVec3f topLeft = vidCam.screenToWorld(videoRect.getTopLeft());
-        ofVec3f bottomLeft = vidCam.screenToWorld(videoRect.getBottomLeft());
-        ofVec3f topRight =vidCam.screenToWorld(videoRect.getTopRight());
-        ofVec3f bottomRight =vidCam.screenToWorld(videoRect.getBottomRight());
+        ofVec3f topLeft     = vidCam.screenToWorld(videoRect.getTopLeft());
+        ofVec3f bottomLeft  = vidCam.screenToWorld(videoRect.getBottomLeft());
+        ofVec3f topRight    = vidCam.screenToWorld(videoRect.getTopRight());
+        ofVec3f bottomRight = vidCam.screenToWorld(videoRect.getBottomRight());
         
         //create a mesh
         ofMesh mesh;

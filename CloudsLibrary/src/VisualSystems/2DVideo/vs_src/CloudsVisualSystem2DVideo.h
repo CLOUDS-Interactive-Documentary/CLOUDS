@@ -78,6 +78,5 @@ protected:
     CloudsMedia* waitingMedia;
     void vhxRequestComplete(CloudsVHXEventArgs& args);
 #endif
-    bool bWaitForVHX;
     
 };

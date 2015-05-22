@@ -86,6 +86,10 @@ void CloudsVisualSystemVision::selfSetDefaults(){
 void CloudsVisualSystemVision::selfSetup()
 {
 
+#ifdef VHX_MEDIA
+    waitingMedia = NULL;
+#endif
+    
     tonicSamples.push_back(TonicSample("distorted_drones.aif"));
     tonicSamples.push_back(TonicSample("slowgrains_short.aif"));
     shader.load(getVisualSystemDataPath() + "heatMapShader");
@@ -117,14 +121,8 @@ void CloudsVisualSystemVision::selfSetup()
     movieStrings.push_back("unionsq3_short.mov");
     movieStrings.push_back("unionsq_1-Wi-Fi_Crop.mov");
     
-//    videosDir.listDir( GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos" );
-//    videosDir.sort();
-//    for (int i = 0; i < videosDir.size(); i++) {
-//        movieStrings.push_back(videosDir.getName(i));
-//    }
-    
     frameIsNew = false;
-    loadCurrentMovie();
+    //loadCurrentMovie();
 
     // sound
     #ifdef TONIC_SOUNDS
@@ -256,9 +254,11 @@ void CloudsVisualSystemVision::selfSetupGui()
 
 
 void CloudsVisualSystemVision::updateImagesForNewVideo(){
-    imitate(previousHeatMap, player->getPixelsRef());
-    imitate(diff, player->getPixelsRef());
-    accumulation.allocate(player->getWidth(), player->getHeight(), OF_IMAGE_COLOR);
+    if(player != NULL){
+        imitate(previousHeatMap, player->getPixelsRef());
+        imitate(diff, player->getPixelsRef());
+        accumulation.allocate(player->getWidth(), player->getHeight(), OF_IMAGE_COLOR);
+    }
 }
 
 void CloudsVisualSystemVision::resetFlowField(){
@@ -272,8 +272,8 @@ void CloudsVisualSystemVision::resetFlowField(){
     
 	cout<<"resetting flow lines: "<<player->getWidth()<<" , "<<player->getHeight()<<endl;
 	
-    for( int j=0; j<player->getHeight() / opticalFlowScale; j += flowDensity){
-        for( int i=0; i<player->getWidth() / opticalFlowScale; i += flowDensity){
+    for(int j = 0; j < player->getHeight() / opticalFlowScale; j += flowDensity){
+        for(int i = 0; i < player->getWidth() / opticalFlowScale; i += flowDensity){
             flowMesh.addVertex(ofVec3f(i, j, 0));
             flowMesh.addVertex(ofVec3f(i, j, 0));
             flowMesh.addColor(ofColor::white);
@@ -478,14 +478,13 @@ void CloudsVisualSystemVision::selfUpdate(){
 		prev.loadData(lastPixels);
     }
 
-	if(bNewVideoLoaded && player->getPixelsRef().isAllocated() ){
+	if(bNewVideoLoaded && player->getWidth() > 0 ){
 		player->setLoopState(OF_LOOP_NORMAL);
 		updateSettingsForNewVideo();
 		bNewVideoLoaded = false;
 		opticalFlowPixels.allocate(player->getWidth()/opticalFlowScale,
-								player->getHeight()/opticalFlowScale,
-								OF_IMAGE_COLOR);
-		cout<<"UPDATED VIDEO SETTINGS"<<endl;
+                                   player->getHeight()/opticalFlowScale,
+                                   OF_IMAGE_COLOR);
 	}
 	else{
 			    
@@ -834,22 +833,52 @@ void CloudsVisualSystemVision::loadMovieAtIndex(int index){
 		ofLogError("CloudsVisualSystemVision::loadMovieAtIndex") << "No movies. Make sure you have a visualsystems_ignored/Vision/videos folder.";
 		return;
 	}
-
+    
     movieIndex = index;
 
-    player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
-    string moviePath = GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos/" + movieStrings[ movieIndex ];
-    if(player->loadMovie(moviePath)){
-        player->play();
+#ifdef VHX_MEDIA
+    if(waitingMedia != NULL){
+        ofRemoveListener(waitingMedia->completeEvent, this, &CloudsVisualSystemVision::vhxRequestComplete);
     }
-    else{
-        cout<<"Not Playing"<<endl;
+    
+    waitingMedia = getVHXMedia(movieStrings[index]);
+    
+    if(waitingMedia == NULL){
+        ofLogError("CloudsVisualSystemVision::loadMovieAtIndex") << "Couldn't find VHX Media ID for clip " << movieStrings[index];
+        return;
     }
+    ofAddListener(waitingMedia->completeEvent, this, &CloudsVisualSystemVision::vhxRequestComplete);
+    waitingMedia->fetchVhxSourceUrl();
+#else
+    moviePathToLoad = GetCloudsMediaPath() + "visualsystems/" + getSystemName() + "/videos/" + movieStrings[ index ];
+    finishLoad();
+#endif
+    
+}
 
-    bNewVideoLoaded = true; 
-    cout<<"Player dimensions (new) :"<< player->getWidth()<<" , "<<player->getHeight() <<endl;
+#ifdef VHX_MEDIA
+void CloudsVisualSystemVision::vhxRequestComplete(CloudsVHXEventArgs& args){
+    if(!args.success){
+        ofLogError("CloudsVisualSystemVision::vhxRequestComplete") << "VHX request failed " << args.result;
+        return;
+    }
+    moviePathToLoad = args.result;
+    
+    ofRemoveListener(waitingMedia->completeEvent, this, &CloudsVisualSystemVision::vhxRequestComplete);
+    waitingMedia = NULL;
+    finishLoad();
+}
+#endif
+
+void CloudsVisualSystemVision::finishLoad(){
+    
+    player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
+    player->loadMovie(moviePathToLoad);
+    player->play();
+    bNewVideoLoaded = true;
 
 }
+
 void CloudsVisualSystemVision::updateSettingsForNewVideo(){
     updateCVParameters();
     updateImagesForNewVideo();
