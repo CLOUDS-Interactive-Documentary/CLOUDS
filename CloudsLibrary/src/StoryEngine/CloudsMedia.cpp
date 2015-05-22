@@ -33,6 +33,12 @@ void CloudsMedia::fetchVhxSourceUrl(){
     // If the VHX url is already set and is recent...
     if (vhxSourceVideoUrl.size() && (ofGetElapsedTimeMillis() - vhxTimestamp) < CloudsVHXUrlTimeLimit) {
         // ...just re-use it.
+        //pass along
+        CloudsVHXEventArgs args;
+        args.success = true;
+        args.result = vhxSourceVideoUrl;
+        ofNotifyEvent(completeEvent, args, this);
+
         hasMediaAsset = true;
         return;
     }

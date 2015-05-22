@@ -63,6 +63,7 @@ protected:
     void finishLoad();
     
     int movieIndex;
+    string targetMovieName;
 	string loadedMoviePath;
     ofRectangle screenRect;
     ofRectangle videoRect;

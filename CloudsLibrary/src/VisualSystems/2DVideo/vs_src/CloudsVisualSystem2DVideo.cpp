@@ -28,7 +28,7 @@ void CloudsVisualSystem2DVideo::selfSetupGui()
 	guimap[playerGui->getName()] = playerGui;
 }
 
-void CloudsVisualSystem2DVideo:: selfSetDefaults(){
+void CloudsVisualSystem2DVideo::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode =  CURSOR_MODE_INACTIVE;
 	rotationRange = ofVec2f(5,5);
@@ -138,7 +138,7 @@ void CloudsVisualSystem2DVideo::restart()
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfPresetLoaded(string presetPath)
 {   
-    
+    cout << "LOADING PRESET " << presetPath << endl;
 }
 
 //--------------------------------------------------------------
@@ -159,6 +159,7 @@ void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index){
         player->stop();
     }
     player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
+    targetMovieName = movieStrings[index];
     
 #ifdef VHX_MEDIA
     if(waitingMedia != NULL){
@@ -188,6 +189,8 @@ void CloudsVisualSystem2DVideo::vhxRequestComplete(CloudsVHXEventArgs& args){
     loadedMoviePath = args.result;
     finishLoad();
     
+    cout << "REQUEST COMPLETE " << args.result << endl;
+    
     ofRemoveListener(waitingMedia->completeEvent, this, &CloudsVisualSystem2DVideo::vhxRequestComplete);
     waitingMedia = NULL;
 }
@@ -195,14 +198,13 @@ void CloudsVisualSystem2DVideo::vhxRequestComplete(CloudsVHXEventArgs& args){
 
 void CloudsVisualSystem2DVideo::finishLoad() {
     
-    if( player->loadMovie(loadedMoviePath) ){
-        player->play();
-        bFileLoadCompleted = false;
-    }
-    else{
-        ofLogError("CloudsVisualSystem2DVideo::loadMovieAtIndex") << "couldn't load the movie";
-    }
+    player->loadMovie(loadedMoviePath);
+    player->play();
+    bFileLoadCompleted = false;
 	receivedFrame = false;
+    
+    cout << "FINISHED LOAD " << targetMovieName << endl;
+    
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -238,7 +240,7 @@ void CloudsVisualSystem2DVideo::selfUpdate()
         player->setPosition(inTime / player->getDuration());
         bFileLoadCompleted = true;
     }
-    
+
     player->update();
     receivedFrame |= player->isFrameNew();
 	
