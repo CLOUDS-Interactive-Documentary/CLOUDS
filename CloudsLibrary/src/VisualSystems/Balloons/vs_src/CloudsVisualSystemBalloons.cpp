@@ -5,6 +5,7 @@
 #include "CloudsVisualSystemBalloons.h"
 #include "ofxObjLoader.h"
 #include "CloudsGlobal.h"
+#include "CloudsCrypto.h"
 
 CloudsVisualSystemBalloons::CloudsVisualSystemBalloons(){
 	releaseType = 0;
@@ -619,7 +620,8 @@ void CloudsVisualSystemBalloons::selfUpdate()
 	
 	if(!font.isLoaded() || currentFontSize != fontSize)
 	{
-		font.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize);
+//		font.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", fontSize);
+        font.loadFont(CloudsCryptoGetFont("Blender-BOOK.ttf"), fontSize);
 		currentFontSize = fontSize;
 	}
 	

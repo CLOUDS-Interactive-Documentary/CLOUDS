@@ -89,7 +89,7 @@ void CloudsHUDController::setup(){
 
 	home.setup();
     
-    backersFont.loadFont(GetFontPath(), 10);
+    backersFont.loadFont(GetFontBuffer(), 10);
     
     topicMapPreview.loadImage(GetCloudsDataPath() + "HUD/TopicMapPreview.jpg");
     peopleMapPreview.loadImage(GetCloudsDataPath() + "HUD/PeopleMapPreview.jpg");
@@ -252,94 +252,94 @@ void CloudsHUDController::calculateFontSizes(){
     int minFontSize = 1;
     int maxFontSize = 70;
 #ifdef OCULUS_RIFT
-	string fontPath = GetMediumFontPath();
+	ofBuffer fontBuffer = GetMediumFontBuffer();
 #else
-	string fontPath = GetThinFontPath();
+	ofBuffer fontBuffer = GetThinFontBuffer();
 #endif
     
     for(int i = minFontSize; i < maxFontSize; i++){
         ofxFTGLFont *tmp = new ofxFTGLFont();
-        tmp->loadFont(fontPath , i );
+        tmp->loadFont(fontBuffer , i );
         tempFontList.push_back( tmp );
     }
     
     //BIO
     ////first name
-    getLabelForLayer("BylineFirstNameTextBox_1_", fontPath, 50, true);
+    getLabelForLayer("BylineFirstNameTextBox_1_", fontBuffer, 50, true);
     ////last name
-    getLabelForLayer("BylineLastNameTextBox", fontPath, 50, true);
+    getLabelForLayer("BylineLastNameTextBox", fontBuffer, 50, true);
     ////title
-    getLabelForLayer("BylineTopicTextBoxBottom", fontPath);
+    getLabelForLayer("BylineTopicTextBoxBottom", fontBuffer);
     ////location
-    getLabelForLayer("BylineTopicTextBoxTop", fontPath);
-    getLabelForLayer("VSCreditsTextBoxTop", fontPath);
-    getLabelForLayer("VSCreditsTextBoxBottom", fontPath);
-    getLabelForLayer("QuestionTextBox_1_", fontPath);
+    getLabelForLayer("BylineTopicTextBoxTop", fontBuffer);
+    getLabelForLayer("VSCreditsTextBoxTop", fontBuffer);
+    getLabelForLayer("VSCreditsTextBoxBottom", fontBuffer);
+    getLabelForLayer("QuestionTextBox_1_", fontBuffer);
     
-    getLabelForLayer("ProjectExampleTextboxLeft", fontPath);
-    getLabelForLayer("ProjectExampleTextboxRight", fontPath);
-    getLabelForLayer("ProjectExampleTextBoxTop", fontPath);
+    getLabelForLayer("ProjectExampleTextboxLeft", fontBuffer);
+    getLabelForLayer("ProjectExampleTextboxRight", fontBuffer);
+    getLabelForLayer("ProjectExampleTextBoxTop", fontBuffer);
     
     //pause
-    getLabelForLayer("ExploreTextBox", fontPath);
-    getLabelForLayer("SeeMoreTextBox", fontPath);
-    getLabelForLayer("NextButtonTextBox", fontPath);
-    getLabelForLayer("BioTitleTextBox", fontPath);
-    getLabelForLayer("BioTextBox", fontPath,35,false,true); //use layout
+    getLabelForLayer("ExploreTextBox", fontBuffer);
+    getLabelForLayer("SeeMoreTextBox", fontBuffer);
+    getLabelForLayer("NextButtonTextBox", fontBuffer);
+    getLabelForLayer("BioTitleTextBox", fontBuffer);
+    getLabelForLayer("BioTextBox", fontBuffer,35,false,true); //use layout
     
-    getLabelForLayer("ResetButtonTextBox", fontPath);
+    getLabelForLayer("ResetButtonTextBox", fontBuffer);
     //research stuff
-    ResearchTopicListLabel = getLabelForLayer("ListTextBoxes", GetFontPath());
+    ResearchTopicListLabel = getLabelForLayer("ListTextBoxes", GetFontBuffer());
     
     //research navigation
-    getLabelForLayer("MapTextBox", fontPath);
-    getLabelForLayer("PeopleTextBox", fontPath);
-    getLabelForLayer("VisualsTextBox", fontPath);
-    getLabelForLayer("RSResetButtonTextBox", fontPath);
-    getLabelForLayer("ShuffleButtonTextBox", fontPath);
-    getLabelForLayer("ResumeButtonTextBox", fontPath);
+    getLabelForLayer("MapTextBox", fontBuffer);
+    getLabelForLayer("PeopleTextBox", fontBuffer);
+    getLabelForLayer("VisualsTextBox", fontBuffer);
+    getLabelForLayer("RSResetButtonTextBox", fontBuffer);
+    getLabelForLayer("ShuffleButtonTextBox", fontBuffer);
+    getLabelForLayer("ResumeButtonTextBox", fontBuffer);
 
     //research floating hovers
-    getLabelForLayer("PeopleSelectBylineTextBox", fontPath, 35,false,true);
-    getLabelForLayer("PeopleSelectPlayTextBox", fontPath);
-    getLabelForLayer("PeopleSelectNameTextBox", fontPath);
+    getLabelForLayer("PeopleSelectBylineTextBox", fontBuffer, 35,false,true);
+    getLabelForLayer("PeopleSelectPlayTextBox", fontBuffer);
+    getLabelForLayer("PeopleSelectNameTextBox", fontBuffer);
     
-    getLabelForLayer("TopicSelectTextBox", fontPath);
-    getLabelForLayer("TopicSelectPlayTextBox", fontPath);
+    getLabelForLayer("TopicSelectTextBox", fontBuffer);
+    getLabelForLayer("TopicSelectPlayTextBox", fontBuffer);
     
     //about text boxes
-    getLabelForLayer("NavAboutTextBox", fontPath);
-    getLabelForLayer("NavCastTextBox", fontPath);
-    getLabelForLayer("NavCreditsTextBox", fontPath);
-    getLabelForLayer("NavBackersTextBox", fontPath);
+    getLabelForLayer("NavAboutTextBox", fontBuffer);
+    getLabelForLayer("NavCastTextBox", fontBuffer);
+    getLabelForLayer("NavCreditsTextBox", fontBuffer);
+    getLabelForLayer("NavBackersTextBox", fontBuffer);
     
-    getLabelForLayer("ExitButtonTextBox", fontPath);
+    getLabelForLayer("ExitButtonTextBox", fontBuffer);
     
-    getLabelForLayer("AboutTextBox", GetFontPath(), 35, false,true, 12);
-    getLabelForLayer("AboutTitleTextBox", fontPath);
+    getLabelForLayer("AboutTextBox", GetFontBuffer(), 35, false,true, 12);
+    getLabelForLayer("AboutTitleTextBox", fontBuffer);
     
-    getLabelForLayer("CastTitleTextBox", fontPath);
-    getLabelForLayer("CastList1TextBox", GetFontPath(), 35,false,true);
-    getLabelForLayer("CastList2TextBox", GetFontPath(), 35,false,true);
-    getLabelForLayer("CastList3TextBox", GetFontPath(), 35,false,true);
+    getLabelForLayer("CastTitleTextBox", fontBuffer);
+    getLabelForLayer("CastList1TextBox", GetFontBuffer(), 35,false,true);
+    getLabelForLayer("CastList2TextBox", GetFontBuffer(), 35,false,true);
+    getLabelForLayer("CastList3TextBox", GetFontBuffer(), 35,false,true);
 
-    getLabelForLayer("CreditsTitleTextBox", fontPath);
-    getLabelForLayer("CreditsList1TextBox", GetFontPath(), 35, false,true, 10);
-    getLabelForLayer("CreditsList2TextBox", GetFontPath(), 35, false,true, 10);
-    getLabelForLayer("CreditsList3TextBox", GetFontPath(), 35, false,true, 10);
+    getLabelForLayer("CreditsTitleTextBox", fontBuffer);
+    getLabelForLayer("CreditsList1TextBox", GetFontBuffer(), 35, false,true, 10);
+    getLabelForLayer("CreditsList2TextBox", GetFontBuffer(), 35, false,true, 10);
+    getLabelForLayer("CreditsList3TextBox", GetFontBuffer(), 35, false,true, 10);
     
-    getLabelForLayer("BackersCopyTextBox", fontPath);
-    getLabelForLayer("BackersList1TextBox", GetFontPath(), 35, false,true, 10);
-    getLabelForLayer("BackersList2TextBox", GetFontPath(), 35, false,true, 10);
-    getLabelForLayer("BackersList3TextBox", GetFontPath(), 35, false,true, 10);
+    getLabelForLayer("BackersCopyTextBox", fontBuffer);
+    getLabelForLayer("BackersList1TextBox", GetFontBuffer(), 35, false,true, 10);
+    getLabelForLayer("BackersList2TextBox", GetFontBuffer(), 35, false,true, 10);
+    getLabelForLayer("BackersList3TextBox", GetFontBuffer(), 35, false,true, 10);
 
     
-    getLabelForLayer("BackersScrollUpSpace", fontPath);
-    getLabelForLayer("BackersScrollDownSpace", fontPath);
+    getLabelForLayer("BackersScrollUpSpace", fontBuffer);
+    getLabelForLayer("BackersScrollDownSpace", fontBuffer);
     
     //cheat for scroll
-    getLabelForLayer("ListScrollUpArrowSpace", fontPath);
-    getLabelForLayer("ListScrollDownArrowSpace", fontPath);
+    getLabelForLayer("ListScrollUpArrowSpace", fontBuffer);
+    getLabelForLayer("ListScrollDownArrowSpace", fontBuffer);
 
 
     // cleanup!
@@ -485,7 +485,7 @@ void CloudsHUDController::setupBacking(string labelName, CloudsHUDLayerSet layer
 }
 
 CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
-                                                      const string& fontPath,
+                                                      ofBuffer& fontBuffer,
                                                       int kerning,
                                                       bool caps,
                                                       bool useLayout,
@@ -508,7 +508,7 @@ CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
         // make a layout
         if(useLayout){
             ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
-            newLayout->loadFont( fontPath, layoutFontSize);
+            newLayout->loadFont( fontBuffer, layoutFontSize);
             newLayout->setLineLength( 999 );
             newLabel->setup( newLayout, textMesh->bounds );
         }
@@ -520,7 +520,7 @@ CloudsHUDLabel* CloudsHUDController::getLabelForLayer(const string& layerName,
             
             ofxFTGLFont *newFont = new ofxFTGLFont();
             newFont->setLetterSpacing(kerning * .08);
-            newFont->loadFont( fontPath, fontSize );
+            newFont->loadFont( fontBuffer, fontSize );
             newLabel->setup( newFont, textMesh->bounds );
         }
         // make a label

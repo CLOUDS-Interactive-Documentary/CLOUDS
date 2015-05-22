@@ -9,6 +9,7 @@
 #include "CloudsInputKinectOSC.h"
 #include "CloudsInputEvents.h"
 #include "CloudsGlobal.h"
+#include "CloudsLocalization.h"
 
 int kListenPort          = 12345;
 int kNumFramesForRemoval = 60;
@@ -45,7 +46,8 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , feedbackFade(1.0f)
 , feedbackPrompt("")
 {
-    feedbackFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", 15);
+//    feedbackFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", 15);
+    feedbackFont.loadFont(GetFontBuffer(), 15);
 }
 
 //--------------------------------------------------------------

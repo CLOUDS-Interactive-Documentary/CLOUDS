@@ -14,10 +14,10 @@ bool InitLocalization();
 //--------------------------------------
 string GetTranslationForString(string toTranslate);
 //--------------------------------------
-string GetFontPath();
+ofBuffer& GetFontBuffer();
 //--------------------------------------
-string GetMediumFontPath();
+ofBuffer& GetMediumFontBuffer();
 //--------------------------------------
-string GetThinFontPath();
+ofBuffer& GetThinFontBuffer();
 //--------------------------------------
 string utf8_substr(string originalString, int maxLength);

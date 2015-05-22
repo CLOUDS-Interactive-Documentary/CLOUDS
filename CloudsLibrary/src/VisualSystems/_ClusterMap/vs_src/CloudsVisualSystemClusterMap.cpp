@@ -1247,7 +1247,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 		int fontIndex = 0;
 		for(int i = typeSizeRange.min; i < typeSizeRange.max; i++){
 //			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
-			topicFont[fontIndex++].loadFont( GetFontPath(), i);
+			topicFont[fontIndex++].loadFont( GetFontBuffer(), i);
 		}
 		currentTypeSizeRange = typeSizeRange;
 	}
@@ -1599,7 +1599,7 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
     
 	if(!questionFont.isLoaded() || currentQuestionFontSize != questionFontSize){
 		//questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
-		questionFont.loadFont(GetFontPath(), questionFontSize);
+		questionFont.loadFont(GetFontBuffer(), questionFontSize);
 		currentQuestionFontSize = questionFontSize;
 	}
 	string questionText;
@@ -1757,7 +1757,7 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
     if(drawAssociation && !drawType3D){
         if(!associationFont.isLoaded() || associationFontSize != currentAssociationFont){
             //associationFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", associationFontSize);
-			associationFont.loadFont( GetFontPath(), associationFontSize);
+			associationFont.loadFont( GetFontBuffer(), associationFontSize);
             currentAssociationFont = associationFontSize;
         }
         

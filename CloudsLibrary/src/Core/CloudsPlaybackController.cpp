@@ -259,7 +259,7 @@ void CloudsPlaybackController::setup(){
         #endif
         
 	}
-    interludeInterfaceFont.loadFont(GetMediumFontPath(), 14);
+    interludeInterfaceFont.loadFont(GetMediumFontBuffer(), 14);
 
 
 	cout << "*****LOAD STEP*** STARTING INTRO" << endl;

@@ -1951,7 +1951,7 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 void CloudsVisualSystemRGBD::drawQuestionType(){
 	if(!questionFont.isLoaded() || currentQuestionFontSize != questionFontSize){
 //		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
-		questionFont.loadFont(GetFontPath(), questionFontSize);
+		questionFont.loadFont(GetFontBuffer(), questionFontSize);
 		currentQuestionFontSize = questionFontSize;
 	}
 	
