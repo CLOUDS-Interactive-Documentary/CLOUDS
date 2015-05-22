@@ -66,26 +66,32 @@ bool CloudsVHXAuth::setup()
     
     if (CloudsCryptoLoadTokens(_accessToken, _refreshToken, _tokenExpiry, _tokensPath)) {
         ofLogNotice("CloudsVHXAuth::setup") << "Loaded tokens successfully:\n"
-        << "\tAccess Token: " << _clientId << "\n"
-        << "\tRefresh Token: " << _clientSecret << "\n"
+        << "\tAccess Token: " << _accessToken << "\n"
+        << "\tRefresh Token: " << _refreshToken << "\n"
         << "\tToken Expiry: " << _tokenExpiry;
-        
-        state = INACTIVE;
     }
     else {
         ofLogError("CloudsVHXAuth::setup") << "Cannot open file at " << _tokensPath;
         
         _tokenExpiry = 0;
-        state = INACTIVE;
     }
     
+    state = INACTIVE;
     mode = WAITING;
     bNotifyComplete = false;
     ofAddListener(ofEvents().update, this, &CloudsVHXAuth::update);
     
     if (_packageId.size() && _accessToken.size()) {
-        // Try to verify the package immediately.
-        verifyPackage();
+        time_t nowTime = (ofGetSystemTime() / 1000.f);
+        if (_tokenExpiry > nowTime) {
+            // Try to verify the package immediately.
+            verifyPackage();
+        }
+        else {
+            // Refresh the token first, it's expired.
+            refreshToken();
+        }
+        
         return true;
     }
     
@@ -366,7 +372,7 @@ void CloudsVHXAuth::threadedFunction()
                 if (json.isMember("access_token")) {
                     _accessToken = json["access_token"].asString();
                     _refreshToken = json["refresh_token"].asString();
-                    _tokenExpiry = ofGetElapsedTimef() + json["expires_in"].asFloat();
+                    _tokenExpiry = (ofGetSystemTime() / 1000.f) + json["expires_in"].asFloat();
                     
                     // Save the tokens to disk.
                     CloudsCryptoSaveTokens(_accessToken, _refreshToken, _tokenExpiry, _tokensPath);
