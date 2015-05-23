@@ -31,9 +31,8 @@ string GetCloudsDataPath(bool ignored)
 			dataRootPathIgnored = "../../../CloudsDataIgnored/";
 		}
 		//installed
-#ifdef CLOUDS_RELEASE
 #ifdef TARGET_OSX
-		if(ofFile("/Library/Application Support/CLOUDS/CLOUDS/dataRoot.txt").exists()){
+		if(ofFile("/Library/Application Support/CLOUDS/dataRoot.txt").exists()){
 			//JG TO DM: Note thate these are teh same. Let's combine ignored data into the main data folder for release.
 			dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/dataRoot.txt").getFirstLine() );
 			dataRootPathIgnored = dataRootPath;
@@ -43,7 +42,6 @@ string GetCloudsDataPath(bool ignored)
 			dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("C:/Program Files (x86)/CLOUDS/dataRoot.txt").getFirstLine() );
 			dataRootPathIgnored = dataRootPath;
 		}
-#endif
 #endif
 	}
 
