@@ -10,4 +10,6 @@ fi
 
 mv $DSTROOT/dataRoot.txt /Library/Application\ Support/CLOUDS;
 
+open /Applications/CLOUDS.app
+
 exit 0

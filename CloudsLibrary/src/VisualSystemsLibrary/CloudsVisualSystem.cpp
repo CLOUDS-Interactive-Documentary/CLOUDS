@@ -2542,9 +2542,12 @@ void CloudsVisualSystem::setupTimeline()
     }
 	
 	timeline = new ofxTimeline();
+    timeline->setDefaultFontPath(GetCloudsDataPath() + "AppData/GUI/NewMedia Fett.ttf");
+    timeline->setDefaultColorPalettePath( GetCloudsDataPath() + "AppData/GUI/defaultColorPalette.png");
+
 	timeline->setName("Working");
 	timeline->setWorkingFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
-	
+
 	timeline->setup();
 	timeline->setShowInoutControl(true);
     timeline->setMinimalHeaders(true);

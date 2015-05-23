@@ -1,5 +1,4 @@
 #include "testApp.h"
-//#include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -27,13 +26,14 @@ void testApp::setup(){
 	ofHideCursor();
 #endif
 		
+    //ofSetDataPathRoot(GetCloudsDataPath() + "AppData/");
 	firstFrame = true;
 	playerSetup = false;
 	shouldSetupPlayer = false;
 #ifdef OCULUS_RIFT
 	loader.loadImage("CLOUDS_HD_BG_DOUBLE.png");
 #else
-	loader.loadImage("SCREEN_BG.png");
+	loader.loadImage(GetCloudsDataPath() + "AppData/SCREEN_BG.png");
 #endif
 
 

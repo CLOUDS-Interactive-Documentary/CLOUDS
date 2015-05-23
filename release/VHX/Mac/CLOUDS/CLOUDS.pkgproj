@@ -22,7 +22,7 @@
 									<key>GID</key>
 									<integer>80</integer>
 									<key>PATH</key>
-									<string>../../../../CLOUDS/bin/CLOUDS_VHX.app</string>
+									<string>../../../_Staging/VHX/CLOUDS.app</string>
 									<key>PATH_TYPE</key>
 									<integer>1</integer>
 									<key>PERMISSIONS</key>
@@ -38,11 +38,27 @@
 									<key>GID</key>
 									<integer>80</integer>
 									<key>PATH</key>
-									<string>../../../../CloudsData</string>
+									<string>../../../_Staging/VHX/CloudsData</string>
 									<key>PATH_TYPE</key>
 									<integer>1</integer>
 									<key>PERMISSIONS</key>
 									<integer>493</integer>
+									<key>TYPE</key>
+									<integer>3</integer>
+									<key>UID</key>
+									<integer>0</integer>
+								</dict>
+								<dict>
+									<key>CHILDREN</key>
+									<array/>
+									<key>GID</key>
+									<integer>0</integer>
+									<key>PATH</key>
+									<string>../dataRoot.txt</string>
+									<key>PATH_TYPE</key>
+									<integer>1</integer>
+									<key>PERMISSIONS</key>
+									<integer>420</integer>
 									<key>TYPE</key>
 									<integer>3</integer>
 									<key>UID</key>
@@ -75,22 +91,6 @@
 							<integer>509</integer>
 							<key>TYPE</key>
 							<integer>1</integer>
-							<key>UID</key>
-							<integer>0</integer>
-						</dict>
-						<dict>
-							<key>CHILDREN</key>
-							<array/>
-							<key>GID</key>
-							<integer>0</integer>
-							<key>PATH</key>
-							<string>../dataRoot.txt</string>
-							<key>PATH_TYPE</key>
-							<integer>1</integer>
-							<key>PERMISSIONS</key>
-							<integer>420</integer>
-							<key>TYPE</key>
-							<integer>3</integer>
 							<key>UID</key>
 							<integer>0</integer>
 						</dict>
@@ -522,9 +522,9 @@
 				<key>POSTINSTALL_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>/Volumes/250SSD/of_Clouds_64_FOR_MIKE/apps/CLOUDS/release/VHX/Mac/copy.sh</string>
+					<string>../copy.sh</string>
 					<key>PATH_TYPE</key>
-					<integer>0</integer>
+					<integer>1</integer>
 				</dict>
 				<key>RESOURCES</key>
 				<array/>
@@ -532,7 +532,7 @@
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
 				<key>AUTHENTICATION</key>
-				<integer>1</integer>
+				<true/>
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
@@ -544,7 +544,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>1.0</string>
+				<string>1.0.0</string>
 			</dict>
 			<key>UUID</key>
 			<string>34FC0E98-5BE5-42F0-9338-EE6CB5D4E6B1</string>
@@ -556,10 +556,159 @@
 		<dict>
 			<key>NOTES</key>
 			<data>
+			PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBIVE1M
+			IDQuMDEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvVFIvaHRtbDQv
+			c3RyaWN0LmR0ZCI+CjxodG1sPgo8aGVhZD4KPG1ldGEgaHR0cC1l
+			cXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7
+			IGNoYXJzZXQ9VVRGLTgiPgo8bWV0YSBodHRwLWVxdWl2PSJDb250
+			ZW50LVN0eWxlLVR5cGUiIGNvbnRlbnQ9InRleHQvY3NzIj4KPHRp
+			dGxlPjwvdGl0bGU+CjxtZXRhIG5hbWU9IkdlbmVyYXRvciIgY29u
+			dGVudD0iQ29jb2EgSFRNTCBXcml0ZXIiPgo8bWV0YSBuYW1lPSJD
+			b2NvYVZlcnNpb24iIGNvbnRlbnQ9IjEyNjUuMjEiPgo8c3R5bGUg
+			dHlwZT0idGV4dC9jc3MiPgo8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5
+			Pgo8L2JvZHk+CjwvaHRtbD4K
 			</data>
 		</dict>
 		<key>PROJECT_PRESENTATION</key>
 		<dict>
+			<key>BACKGROUND</key>
+			<dict>
+				<key>ALIGNMENT</key>
+				<integer>4</integer>
+				<key>BACKGROUND_PATH</key>
+				<dict>
+					<key>PATH</key>
+					<string>../../../images/InstallerBG.jpg</string>
+					<key>PATH_TYPE</key>
+					<integer>1</integer>
+				</dict>
+				<key>CUSTOM</key>
+				<true/>
+				<key>SCALING</key>
+				<integer>1</integer>
+			</dict>
+			<key>INSTALLATION TYPE</key>
+			<dict>
+				<key>HIERARCHIES</key>
+				<dict>
+					<key>INSTALLER</key>
+					<dict>
+						<key>LIST</key>
+						<array>
+							<dict>
+								<key>DESCRIPTION</key>
+								<array/>
+								<key>OPTIONS</key>
+								<dict>
+									<key>HIDDEN</key>
+									<false/>
+									<key>STATE</key>
+									<integer>1</integer>
+								</dict>
+								<key>PACKAGE_UUID</key>
+								<string>34FC0E98-5BE5-42F0-9338-EE6CB5D4E6B1</string>
+								<key>REQUIREMENTS</key>
+								<array/>
+								<key>TITLE</key>
+								<array/>
+								<key>TOOLTIP</key>
+								<array/>
+								<key>TYPE</key>
+								<integer>0</integer>
+								<key>UUID</key>
+								<string>B99BAF78-D5FC-491A-9698-045B07A7AE77</string>
+							</dict>
+						</array>
+						<key>REMOVED</key>
+						<dict/>
+					</dict>
+				</dict>
+				<key>INSTALLATION TYPE</key>
+				<integer>0</integer>
+			</dict>
+			<key>INSTALLATION_STEPS</key>
+			<array>
+				<dict>
+					<key>ICPRESENTATION_CHAPTER_VIEW_CONTROLLER_CLASS</key>
+					<string>ICPresentationViewIntroductionController</string>
+					<key>INSTALLER_PLUGIN</key>
+					<string>Introduction</string>
+					<key>LIST_TITLE_KEY</key>
+					<string>InstallerSectionTitle</string>
+				</dict>
+				<dict>
+					<key>ICPRESENTATION_CHAPTER_VIEW_CONTROLLER_CLASS</key>
+					<string>ICPresentationViewReadMeController</string>
+					<key>INSTALLER_PLUGIN</key>
+					<string>ReadMe</string>
+					<key>LIST_TITLE_KEY</key>
+					<string>InstallerSectionTitle</string>
+				</dict>
+				<dict>
+					<key>ICPRESENTATION_CHAPTER_VIEW_CONTROLLER_CLASS</key>
+					<string>ICPresentationViewLicenseController</string>
+					<key>INSTALLER_PLUGIN</key>
+					<string>License</string>
+					<key>LIST_TITLE_KEY</key>
+					<string>InstallerSectionTitle</string>
+				</dict>
+				<dict>
+					<key>ICPRESENTATION_CHAPTER_VIEW_CONTROLLER_CLASS</key>
+					<string>ICPresentationViewDestinationSelectController</string>
+					<key>INSTALLER_PLUGIN</key>
+					<string>TargetSelect</string>
+					<key>LIST_TITLE_KEY</key>
+					<string>InstallerSectionTitle</string>
+				</dict>
+				<dict>
+					<key>ICPRESENTATION_CHAPTER_VIEW_CONTROLLER_CLASS</key>
+					<string>ICPresentationViewInstallationTypeController</string>
+					<key>INSTALLER_PLUGIN</key>
+					<string>PackageSelection</string>
+					<key>LIST_TITLE_KEY</key>
+					<string>InstallerSectionTitle</string>
+				</dict>
+				<dict>
+					<key>ICPRESENTATION_CHAPTER_VIEW_CONTROLLER_CLASS</key>
+					<string>ICPresentationViewInstallationController</string>
+					<key>INSTALLER_PLUGIN</key>
+					<string>Install</string>
+					<key>LIST_TITLE_KEY</key>
+					<string>InstallerSectionTitle</string>
+				</dict>
+				<dict>
+					<key>ICPRESENTATION_CHAPTER_VIEW_CONTROLLER_CLASS</key>
+					<string>ICPresentationViewSummaryController</string>
+					<key>INSTALLER_PLUGIN</key>
+					<string>Summary</string>
+					<key>LIST_TITLE_KEY</key>
+					<string>InstallerSectionTitle</string>
+				</dict>
+			</array>
+			<key>INTRODUCTION</key>
+			<dict>
+				<key>LOCALIZATIONS</key>
+				<array/>
+			</dict>
+			<key>LICENSE</key>
+			<dict>
+				<key>KEYWORDS</key>
+				<dict/>
+				<key>LOCALIZATIONS</key>
+				<array/>
+				<key>MODE</key>
+				<integer>0</integer>
+			</dict>
+			<key>README</key>
+			<dict>
+				<key>LOCALIZATIONS</key>
+				<array/>
+			</dict>
+			<key>SUMMARY</key>
+			<dict>
+				<key>LOCALIZATIONS</key>
+				<array/>
+			</dict>
 			<key>TITLE</key>
 			<dict>
 				<key>LOCALIZATIONS</key>
@@ -573,6 +722,19 @@
 				</array>
 			</dict>
 		</dict>
+		<key>PROJECT_REQUIREMENTS</key>
+		<dict>
+			<key>LIST</key>
+			<array/>
+			<key>POSTINSTALL_PATH</key>
+			<dict/>
+			<key>PREINSTALL_PATH</key>
+			<dict/>
+			<key>RESOURCES</key>
+			<array/>
+			<key>ROOT_VOLUME_ONLY</key>
+			<false/>
+		</dict>
 		<key>PROJECT_SETTINGS</key>
 		<dict>
 			<key>ADVANCED_OPTIONS</key>
@@ -582,7 +744,7 @@
 			<key>BUILD_PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>build</string>
+				<string>../../../_Staging/VHX</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>

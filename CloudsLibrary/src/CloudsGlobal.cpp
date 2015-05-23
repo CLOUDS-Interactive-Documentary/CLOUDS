@@ -30,11 +30,6 @@ string GetCloudsDataPath(bool ignored)
 			dataRootPath = "../../../CloudsData/";
 			dataRootPathIgnored = "../../../CloudsDataIgnored/";
 		}
-		//temporary build folder
-		else if(ofDirectory("data/CloudsData").exists()){
-			dataRootPath = "CloudsData/";
-			dataRootPathIgnored = "CloudsDataIgnored/";
-		}
 		//installed
 #ifdef CLOUDS_RELEASE
 #ifdef TARGET_OSX
@@ -65,10 +60,6 @@ string GetCloudsMediaPath(){
 		//Prioritize development build over media roots so we don't confuse ourselves if CLOUDS is installed on development machine
 		if(ofDirectory("../../../CloudsDataMedia").exists()){
 			mediaRootPath = "../../../CloudsDataMedia/";
-		}
-		//temporary build folder
-		else if(ofDirectory("CloudsDataMedia/").exists()){
-			mediaRootPath = "CloudsDataMedia/";
 		}
 
         string thumbDrive = FindCloudsThumbDrive();

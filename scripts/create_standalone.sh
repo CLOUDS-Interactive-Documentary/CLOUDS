@@ -14,7 +14,7 @@ cp -r CLOUDS/bin/CLOUDS.app CLOUDSStandAlone/
 
 #copy data path
 #echo "copying all CloudsData assets"
-#cp -r CloudsData/* CLOUDSStandAlone/bin/data
+#cp -r CloudsData/* CLOUDSStandAlone/data/CloudsData
 
 #copy all presets
 echo "copy all presets"
@@ -29,7 +29,7 @@ for i in `ls .` ; do
 	echo "COPYING PRESETS FOR  $i"
 	mkdir "../../../CLOUDSStandAlone/data/CloudsData/VisualSystems/$i"
 	for f in `ls $i/bin/data/` ; do
-		cp -r "$i/bin/data/$f" "../../../CLOUDSStandAlone/data/CloudsData/VisualSystems/$i/"
+		cp -r "$i/bin/data/$f" "../../../CLOUDSStandAlone/data/CloudsData/visualsystems/$i/"
 	done
 
 done

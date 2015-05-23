@@ -8,6 +8,8 @@
 
 #include "CloudsAct.h"
 #include "CloudsAudioEvents.h"
+#include "CloudsGlobal.h"
+
 #ifdef VHX_MEDIA
 #include "CloudsVHXRequest.h"
 #endif
@@ -49,7 +51,9 @@ void CloudsAct::populateTime(){
 	
 	timeline.setSpacebarTogglePlay(false);
     timeline.setAutosave(false);
+    timeline.setDefaultFontPath(GetCloudsDataPath() + "AppData/GUI/NewMedia Fett.ttf");
     timeline.setup();
+
 	timeline.setMinimalHeaders(true);
 	timeline.disableEvents();
     timeline.clear();

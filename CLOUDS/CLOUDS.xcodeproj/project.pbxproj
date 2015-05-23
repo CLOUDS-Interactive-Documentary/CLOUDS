@@ -15717,7 +15717,6 @@
 					"CLOUDS_APP=1",
 					"CLOUDS_HUD=1",
 					"VHX_MEDIA=1",
-					"TONIC_SOUNDS=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
@@ -15835,7 +15834,6 @@
 					"CLOUDS_APP=1",
 					"CLOUDS_HUD=1",
 					"VHX_MEDIA=1",
-					"TONIC_SOUNDS=1",
 					"CLOUDS_RELEASE=1",
 				);
 				HEADER_SEARCH_PATHS = (
