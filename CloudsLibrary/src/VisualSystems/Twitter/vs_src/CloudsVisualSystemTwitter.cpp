@@ -982,11 +982,13 @@ void CloudsVisualSystemTwitter::updateLabelWithCurrentMeshName(string name){
 
 void CloudsVisualSystemTwitter::initSystem(string filePath){
 
-    vector<string> strs  = ofSplitString(filePath, "_");
-    vector<string> strs1 = ofSplitString(filePath, "/");
+//    vector<string> strs  = ofSplitString(filePath, "_");
+//    vector<string> strs1 = ofSplitString(filePath, "/");
+//	cout<<strs1[strs1.size()-1]<<" num user mentions = "<<strs[1] <<endl;
+    if(filePath == ""){
+        return;
+    }
     
-	cout<<strs1[strs1.size()-1]<<" num user mentions = "<<strs[1] <<endl;
-
     float startTime = ofGetElapsedTimeMillis();
     currentMeshFilePath = filePath;
 
