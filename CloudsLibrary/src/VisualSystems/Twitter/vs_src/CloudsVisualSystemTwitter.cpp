@@ -117,10 +117,18 @@ void CloudsVisualSystemTwitter::selfSetup()
     for (int i = 0; i < meshDir.size(); i++) {
         meshStrings.push_back(meshDir.getName(i));
     }
+    
     currentMeshIndex = 8;
-    ofLogNotice("CloudsVisualSystemTwitter::selfSetup");
-	initSystem(getVisualSystemDataPath() +"graphs/"+meshStrings[currentMeshIndex]);
+//    ofLogNotice("CloudsVisualSystemTwitter::selfSetup");
+//	initSystem(getVisualSystemDataPath() +"graphs/"+meshStrings[currentMeshIndex]);
     reloadShaders();
+    
+    if(!tweetersLoaded){
+        loadCSVData();
+        tweetersLoaded = true;
+    }
+    
+        
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
@@ -993,11 +1001,6 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     currentMeshFilePath = filePath;
 
     clearData();
-    
-    if(!tweetersLoaded){
-        loadCSVData();
-        tweetersLoaded = true;
-    }
     
 	allocateActivityMap();
     
