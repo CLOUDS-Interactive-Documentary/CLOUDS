@@ -1,0 +1,19 @@
+STEPS TO MAKE VHX BUILD
+
+Compile VHX binary
+Copy VHX binary into staging
+Run create standalone script
+
+Fix permissions with script
+Set CloudsData/run and CloudsData/vhx to writeable by all
+Create a Working twitter folder
+
+Open project file
+Build the package
+Replace the icon on the package
+Open the default CLOUDS.dmg in Disk Image
+Replace the package
+Unmount the CLOUDS disk image
+Right click and select “Convert CLOUDS.dmg” 
+Save as CLOUDS_1_x_x.dmg
+This is the new build!

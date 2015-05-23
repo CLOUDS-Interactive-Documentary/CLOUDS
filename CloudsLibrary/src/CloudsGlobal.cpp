@@ -19,34 +19,72 @@ string dataRootPath = "";
 string dataRootPathIgnored = "";
 string mediaRootPath = "";
 
+//#ifdef TARGET_OSX
+//#include <glob.h>
+////--------------------------------------------------------------------
+//char* CreatePathByExpandingTildePath(const char* path)
+//{
+//    glob_t globbuf;
+//    char **v;
+//    char *expandedPath = NULL, *result = NULL;
+//    
+//    assert(path != NULL);
+//    
+//    if (glob(path, GLOB_TILDE, NULL, &globbuf) == 0) //success
+//    {
+//        v = globbuf.gl_pathv; //list of matched pathnames
+//        expandedPath = v[0]; //number of matched pathnames, gl_pathc == 1
+//        
+//        result = (char*)calloc(1, strlen(expandedPath) + 1); //the extra char is for the null-termination
+//        if(result)
+//            strncpy(result, expandedPath, strlen(expandedPath) + 1); //copy the null-termination as well
+//        
+//        globfree(&globbuf);
+//    }
+//    
+//    return result;
+//}
 
+//#endif
+
+#ifdef TARGET_OSX
+#include <wordexp.h>
+#endif
 //--------------------------------------------------------------------
 string GetCloudsDataPath(bool ignored)
 {
-
 	if(dataRootPath == ""){
-		//Prioritize install build if present
-#ifdef TARGET_OSX
-        if(ofFile("/Library/Application Support/CLOUDS/dataRoot.txt").exists()){
-            //JG TO DM: Note thate these are teh same. Let's combine ignored data into the main data folder for release.
-            dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/dataRoot.txt").getFirstLine() );
+
+        if(ofDirectory("../../../CloudsData").exists()){
+            dataRootPath = "../../../CloudsData/";
+            dataRootPathIgnored = "../../../CloudsDataIgnored/";
+        }
+    }
+    
+	if(dataRootPath == ""){
+        #ifdef TARGET_OSX
+        wordexp_t exp_result;
+        wordexp("~/Library/Application\\ Support/CLOUDS/CloudsData/", &exp_result, 0);
+        string expandedPath = exp_result.we_wordv[0];
+        wordfree(&exp_result);
+        if(ofFile(expandedPath).exists()){
+            //old way
+            //dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/dataRoot.txt").getFirstLine() );
+            dataRootPath = expandedPath;
             dataRootPathIgnored = dataRootPath;
         }
-#else
+        #else
         if(ofFile("C:/Program Files (x86)/CLOUDS/dataRoot.txt").exists()){
             dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("C:/Program Files (x86)/CLOUDS/dataRoot.txt").getFirstLine() );
             dataRootPathIgnored = dataRootPath;
         }
-#endif
-		else if(ofDirectory("../../../CloudsData").exists()){
-			dataRootPath = "../../../CloudsData/";
-			dataRootPathIgnored = "../../../CloudsDataIgnored/";
-		}
-	
+        #endif
 	}
 
 	return ignored ? dataRootPathIgnored : dataRootPath;
 }
+
+
 
 string GetCloudsMediaPath(){
 
