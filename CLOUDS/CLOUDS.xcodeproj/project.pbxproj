@@ -15930,7 +15930,7 @@
 					"$(OF_CORE_LIBS)",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CLOUDS;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -16171,7 +16171,7 @@
 					"$(OF_CORE_LIBS)",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CLOUDS_OCULUS;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
