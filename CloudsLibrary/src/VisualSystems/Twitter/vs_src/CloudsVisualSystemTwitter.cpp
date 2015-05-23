@@ -284,7 +284,7 @@ void CloudsVisualSystemTwitter::loadCSVData(){
 	string filePath = GetCloudsVisualSystemDataPath("Twitter",true) + "twitter.csv";
     //cout<<"File Path : "<<filePath<<endl;
 	if(! ofFile::doesFileExist(filePath)){
-	  ofLogError()<<"[ VS Twitter ]"<<" Load file error, check to see if twitter.csv is in the vs ignored data folder"<<endl;
+        ofLogError()<<"[ VS Twitter ]"<<" Load file error, check to see if twitter.csv is in the vs ignored data folder"<<endl;
 	}
 	else{
 	  //ofLog()<<"[ VS Twitter ]"<<" Load file : twitter.csv"<<endl;

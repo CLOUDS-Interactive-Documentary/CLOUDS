@@ -25,24 +25,24 @@ string GetCloudsDataPath(bool ignored)
 {
 
 	if(dataRootPath == ""){
-		//Prioritize development build over media roots so we don't confuse ourselves if CLOUDS is installed on development machine
-		if(ofDirectory("../../../CloudsData").exists()){
+		//Prioritize install build if present
+#ifdef TARGET_OSX
+        if(ofFile("/Library/Application Support/CLOUDS/dataRoot.txt").exists()){
+            //JG TO DM: Note thate these are teh same. Let's combine ignored data into the main data folder for release.
+            dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/dataRoot.txt").getFirstLine() );
+            dataRootPathIgnored = dataRootPath;
+        }
+#else
+        if(ofFile("C:/Program Files (x86)/CLOUDS/dataRoot.txt").exists()){
+            dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("C:/Program Files (x86)/CLOUDS/dataRoot.txt").getFirstLine() );
+            dataRootPathIgnored = dataRootPath;
+        }
+#endif
+		else if(ofDirectory("../../../CloudsData").exists()){
 			dataRootPath = "../../../CloudsData/";
 			dataRootPathIgnored = "../../../CloudsDataIgnored/";
 		}
-		//installed
-#ifdef TARGET_OSX
-		if(ofFile("/Library/Application Support/CLOUDS/dataRoot.txt").exists()){
-			//JG TO DM: Note thate these are teh same. Let's combine ignored data into the main data folder for release.
-			dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/dataRoot.txt").getFirstLine() );
-			dataRootPathIgnored = dataRootPath;
-		}
-#else
-		if(ofFile("C:/Program Files (x86)/CLOUDS/dataRoot.txt").exists()){
-			dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("C:/Program Files (x86)/CLOUDS/dataRoot.txt").getFirstLine() );
-			dataRootPathIgnored = dataRootPath;
-		}
-#endif
+	
 	}
 
 	return ignored ? dataRootPathIgnored : dataRootPath;
