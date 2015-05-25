@@ -9,6 +9,21 @@
 #pragma once
 
 #include "ofMain.h"
+#define CLOUDS_VERSION "1.0.0"
+
+#ifdef TARGET_OSX
+    #ifdef VHX_MEDIA
+        #define CLOUDS_VERSION_KEY "mac.vhx"
+    #else
+        #define CLOUDS_VERSION_KEY "mac.usb"
+    #endif
+#else
+    #ifdef VHX_MEDIA
+        #define CLOUDS_VERSION_KEY "win.vhx"
+    #else
+        #define CLOUDS_VERSION_KEY "win.usb"
+    #endif
+#endif
 
 //TEXT WITH NO BACKING
 static ofColor CloudsColorTextDeactivated = ofColor::fromHex(0x5583AE, 255 * .75);
@@ -44,7 +59,7 @@ string relinkFilePath(string filePath);
 //--------------------------------------------------------------------
 CloudsVisualLevel getVisualLevel();
 //--------------------------------------------------------------------
-bool CheckForUpdates();
+//bool CheckForUpdates();
 //--------------------------------------------------------------------
 string FindCloudsThumbDrive();
 //--------------------------------------------------------------------

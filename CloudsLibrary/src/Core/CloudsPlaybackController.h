@@ -67,7 +67,8 @@ class CloudsPlaybackController : public ofThread {
 	void mousePressed(ofMouseEventArgs & args);
 	void mouseReleased(ofMouseEventArgs & args);
     void mouseScrolled(ofMouseEventArgs & args);
-    
+    void exit(ofEventArgs & args);
+
 #ifdef VHX_MEDIA
     void networkConnected();
     void networkDisconnected();
@@ -94,19 +95,15 @@ class CloudsPlaybackController : public ofThread {
     
     void portalHoverBegan(CloudsPortalEventArgs& args);
     void portalHoverEnded(CloudsPortalEventArgs& args);
-	
-	void drawContinueReset();
-	
-	void exit(ofEventArgs & args);
-	
-	vector<CloudsClip*> fakeQuestions;
-	
-	void finishSetup(); //called at the end of the threaded function
-	bool loading;
-	bool loadFinished;
 
-	void threadedFunction();
-	CloudsMixer mixer;
+    void finishSetup(); //called at the end of the threaded function
+    bool loading;
+    bool loadFinished;
+    
+    void threadedFunction();
+    
+	
+	
     
   protected:
     
@@ -119,6 +116,8 @@ class CloudsPlaybackController : public ofThread {
 	CloudsSecondaryDisplayOSCSender oscSender;
 	CloudsHUDController hud;
 	CloudsTransitionController transitionController;
+    CloudsMixer mixer;
+
     #ifdef VHX_MEDIA
     ofxAvailability availability;
     CloudsVHXAuth vhxAuth;
@@ -183,7 +182,12 @@ class CloudsPlaybackController : public ofThread {
 	bool loadingAct;
     bool justOpened;
 	int currentPresetIndex;
-	
+    void checkForUpdates();
+    void updateCheckCompleted(ofHttpResponse& response);
+    bool runningLatestVerion;
+    string newVersionDownloadURL;
+    map<string,string> versionMaps;
+    
     string currentClipName;
     float actCreatedTime;
 	float crossfadeValue;

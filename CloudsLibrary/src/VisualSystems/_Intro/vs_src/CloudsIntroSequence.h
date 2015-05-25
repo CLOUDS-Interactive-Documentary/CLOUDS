@@ -122,6 +122,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 		return warpCamera;
 	}
 
+    void alertNewVersion(string newVersionDownloadURL);
     //vhx stuff
     void vhxSetAuthCode(string code);
     void vhxNotPurchase();
@@ -321,5 +322,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     string currentAuthCode;
     bool showVHXPrompt;
     string vhxPromptScreen;
+    
+    string newVersionURL;
+    ofRectangle newVersionAlertBounds;
+    string newVersionPrompt;
+
 };
 

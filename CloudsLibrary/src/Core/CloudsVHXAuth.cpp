@@ -235,9 +235,15 @@ void CloudsVHXAuth::linkCode()
 void CloudsVHXAuth::verifyPackage()
 {
     if (isThreadRunning()) {
-        ofLogError("CloudsVHXAuth::verifyPackage") << "Thread is already running with mode " << mode;
-        return;
+        if(mode != WAITING){
+            ofLogError("CloudsVHXAuth::verifyPackage") << "Thread is already running with mode " << mode;
+            return;
+        }
+        else{
+            waitForThread(true);
+        }
     }
+    
     if (mode != WAITING) {
         ofLogError("CloudsVHXAuth::verifyPackage") << "Mode " << mode << " is still active";
         return;

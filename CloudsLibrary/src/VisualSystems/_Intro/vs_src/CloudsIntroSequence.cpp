@@ -739,6 +739,15 @@ void CloudsIntroSequence::updateMenu(){
         else if(aboutMenuItem.clicked){
             changeState(CLOUDS_INTRO_ABOUT);
         }
+        
+        if(newVersionURL != ""){
+            float newVersionWidth = menuFont.stringWidth(newVersionPrompt);
+            newVersionAlertBounds.x = getCanvasWidth() / 2 - newVersionWidth / 2;
+            newVersionAlertBounds.y = menuTop + menuHeight*5;
+            newVersionAlertBounds.width = newVersionWidth;
+            newVersionAlertBounds.height = menuHeight;
+        }
+        
     }
     else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
         if(newMenuItem.clicked){
@@ -750,6 +759,7 @@ void CloudsIntroSequence::updateMenu(){
             changeState(CLOUDS_INTRO_RESUMING);
         }
     }
+    
 }
 
 void CloudsIntroSequence::updateQuestions(){
@@ -988,6 +998,11 @@ string CloudsIntroSequence::getQuestionText(){
 		return caughtQuestion->question;
 	}
 	return "";
+}
+
+void CloudsIntroSequence::alertNewVersion(string newVersionDownloadURL){
+    newVersionURL = newVersionDownloadURL;
+    newVersionPrompt = "THERE IS AN UPDATE AVAILABLE! CLICK TO DOWNLOAD.";
 }
 
 //vhx stuff
@@ -1453,19 +1468,6 @@ void CloudsIntroSequence::selfDrawOverlay(){
 #if defined(MOUSE_INPUT)
 	
     drawMenu();
-    
-//	ofPushStyle();
-//  string helpHoverText = GetTranslationForString("CLICK TO BEGIN");
-//	string helpHoverText = GetTranslationForString("");
-//	float helperTextOpacity = clickToBeginAlpha;
-//	ofSetColor(255,helperTextOpacity*255);
-//	helperFont.setLetterSpacing(titleTypeTracking*.7);
-//	float centerX = ofGetWidth()/2  - helperFont.stringWidth(helpHoverText)/2;
-//	float centerY = ofGetHeight()/2 - helperFont.stringHeight(helpHoverText)/2;
-//	helperFont.drawString(helpHoverText, centerX, centerY + helperFont.stringHeight(helpHoverText)*10);
-//	ofPopStyle();
-    
-    
 #elif defined(OCULUS_RIFT)
 	//no overlay
 #else
@@ -1507,8 +1509,6 @@ void CloudsIntroSequence::drawMenu(){
         
         ofSetRectMode(OF_RECTMODE_CORNER);
     }
-//    else if(currentState == CLOUDS_INTRO_MENU){
-//    float fadeAttenuate = ofMap(ofGetElapsedTimef(), stateChangedTime, stateChangedTime+.5, 0, 1.0, true);
 
     float wordHeight = menuFont.stringHeight("W");
     for(int i = 0; i < menuItems.size(); i++){
@@ -1519,16 +1519,14 @@ void CloudsIntroSequence::drawMenu(){
         menuFont.drawString(menuItems[i]->label,
                             menuItems[i]->bounds.x + menuButtonPad,
                             menuItems[i]->bounds.y + wordHeight + menuButtonPad);
-
     }
-
-    //debug
-//    for(int i = 0; i < menuItems.size(); i++){
-//        ofNoFill();
-//        if(menuItems[i]->visible){
-//            ofRect(menuItems[i]->bounds);
-//        }
-//    }
+    
+    if(currentState == CLOUDS_INTRO_MENU && newVersionURL != ""){
+        ofPushStyle();
+        ofSetColor(255, ofMap(playMenuItem.baseAlpha, 0, .2, 0, 1.0, true) * 255);
+        menuFont.drawString(newVersionPrompt, newVersionAlertBounds.x, newVersionAlertBounds.y + newVersionAlertBounds.height);
+        ofPopStyle();
+    }
     ofPopStyle();
     
 }
@@ -1634,6 +1632,10 @@ void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
         researchMenuItem.pressed = researchMenuItem.bounds.inside(data.x, data.y);
         playMenuItem.pressed     = playMenuItem.bounds.inside(data.x, data.y);
         aboutMenuItem.pressed    = aboutMenuItem.bounds.inside(data.x, data.y);
+        
+        if(newVersionURL != "" && newVersionAlertBounds.inside(data.x + bleed, data.y + bleed)){
+            ofLaunchBrowser(newVersionURL);
+        }
 	}
     else if(currentState == CLOUDS_INTRO_VHX_NO_PURCHASE || currentState == CLOUDS_INTRO_VHX_RENTAL_EXPIRED){
         ofLaunchBrowser("https://clouds.vhx.tv/buy/clouds");

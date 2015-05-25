@@ -113,8 +113,9 @@ CloudsPlaybackController::CloudsPlaybackController(){
 
     canReturnToAct = false;
     resumingAct = false;
-    getVisualLevel();
+    runningLatestVerion = true; //assume yes
     
+    getVisualLevel();
 	resetInterludeVariables();
 	
 
@@ -200,6 +201,7 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
         
         ofRemoveListener(CloudsVisualSystemRGBD::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
         ofRemoveListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
+        ofRemoveListener(ofURLResponseEvent(), this, &CloudsPlaybackController::updateCheckCompleted);
         
 #ifdef VHX_MEDIA
         ofRemoveListener(ofxAvailability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
@@ -245,6 +247,7 @@ void CloudsPlaybackController::setup(){
         ofAddListener(CloudsVisualSystemRGBD::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
         ofAddListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
         
+        ofAddListener(ofURLResponseEvent(), this, &CloudsPlaybackController::updateCheckCompleted);
         #ifdef VHX_MEDIA
         ofAddListener(ofxAvailability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
         ofAddListener(ofxAvailability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
@@ -316,6 +319,7 @@ void CloudsPlaybackController::setup(){
 void CloudsPlaybackController::threadedFunction(){
     introSequence->percentLoaded = 0.0;
 
+    checkForUpdates();
     
     #ifdef VHX_MEDIA
     // If tokens are saved to disk, they will be loaded automatically and the package
@@ -413,6 +417,48 @@ void CloudsPlaybackController::finishSetup(){
 	startingNodes = storyEngine.getStartingQuestions();
 	introSequence->setStartQuestions(startingNodes);
     introSequence->loadingFinished();
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::checkForUpdates(){
+    ofLoadURLAsync("http://www.cloudsdocumentary.com/uploads/updatecheck.txt");
+}
+
+//--------------------------------------------------------------
+void CloudsPlaybackController::updateCheckCompleted(ofHttpResponse& response){
+    if(response.status <= 200){
+        // ...
+    }
+    
+    //version format
+    //version 1.0.1
+    //mac.vhx http://www.cloudsdocumentary.com/uploads/CLOUDS_1_0_1_vhx.dmg
+    //mac.usb http://www.cloudsdocumentary.com/uploads/CLOUDS_1_0_1_usb.dmg
+    //win.vhx http://www.cloudsdocumentary.com/uploads/CLOUDS_1_0_1_vhx.msi
+    //win.usb http://www.cloudsdocumentary.com/uploads/CLOUDS_1_0_1_usb.msi
+
+    bool latest = true;
+    while(!response.data.isLastLine()){
+        vector<string> line = ofSplitString(response.data.getNextLine(), " ");
+        if(line.size() != 2){
+            ofLogError("CloudsPlaybackController::updateCheckCompleted") << "Incorrectly formatted line";
+            continue;
+        }
+        if(line[0] == "version"){
+            latest = line[1] == CLOUDS_VERSION;
+        }
+        else{
+            //store the url
+            versionMaps[line[0]] = line[1];
+        }
+    }
+    if(!latest){
+        //cout << "UH OH NEW VERSION. Download at: " << versionMaps[CLOUDS_VERSION_KEY] << endl;
+        newVersionDownloadURL = versionMaps[CLOUDS_VERSION_KEY];
+        runningLatestVerion = false;
+    }
+    
+    cout << "RESPONSE FINISHED " << response.data << " " << response.status << " " << response.error << endl;
 }
 
 #ifdef VHX_MEDIA
@@ -867,17 +913,22 @@ void CloudsPlaybackController::mouseScrolled(ofMouseEventArgs & args){
 void CloudsPlaybackController::update(ofEventArgs & args){
 
 
+
     GetCloudsInput()->bUserBegan = !showingIntro || (showingIntro && introSequence->userHasBegun());
 
 	if(loading){
         return;
 	}
-	
+    
 	if(loadFinished){
 		finishSetup();
 		loadFinished = false;
 	}
 	
+    if(!runningLatestVerion){
+        introSequence->alertNewVersion(newVersionDownloadURL);
+        runningLatestVerion = true;
+    }
     ////////////////////
 	//OS CURSOR
 #ifdef CLOUDS_RELEASE

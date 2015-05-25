@@ -11,41 +11,13 @@
 #include "ofMain.h"
 #include "CloudsGlobal.h"
 #include "Poco/Environment.h"
-//#define CLOUDS_RELEASE
+
 static CloudsVisualLevel visualLevel = PRETTY;
 static bool loadedVisualLevel = false;
 
 string dataRootPath = "";
 string dataRootPathIgnored = "";
 string mediaRootPath = "";
-
-//#ifdef TARGET_OSX
-//#include <glob.h>
-////--------------------------------------------------------------------
-//char* CreatePathByExpandingTildePath(const char* path)
-//{
-//    glob_t globbuf;
-//    char **v;
-//    char *expandedPath = NULL, *result = NULL;
-//    
-//    assert(path != NULL);
-//    
-//    if (glob(path, GLOB_TILDE, NULL, &globbuf) == 0) //success
-//    {
-//        v = globbuf.gl_pathv; //list of matched pathnames
-//        expandedPath = v[0]; //number of matched pathnames, gl_pathc == 1
-//        
-//        result = (char*)calloc(1, strlen(expandedPath) + 1); //the extra char is for the null-termination
-//        if(result)
-//            strncpy(result, expandedPath, strlen(expandedPath) + 1); //copy the null-termination as well
-//        
-//        globfree(&globbuf);
-//    }
-//    
-//    return result;
-//}
-
-//#endif
 
 #ifdef TARGET_OSX
 #include <wordexp.h>
@@ -98,6 +70,10 @@ string GetCloudsMediaPath(){
 			mediaRootPath = "../../../CloudsDataMedia/";
 		}
 
+    }
+    
+    //not development ...
+    if(mediaRootPath == ""){
         string thumbDrive = FindCloudsThumbDrive();
 
 #ifdef TARGET_OSX
@@ -187,19 +163,19 @@ void SetLanguage(string newLanguage){
 	languageSet = true;
 }
 
-//#ifndef TARGET_OSX
+
 string FindCloudsThumbDrive(){
 
 #ifdef TARGET_OSX
 	ofDirectory dir("/Volumes");
+    dir.listDir();
 	for(int i = 0; i < dir.size(); i++){
 		if(dir.getFile(i).isDirectory()){
-			if(ofDirectory::doesDirectoryExist(dir.getPath(i)+"/CloudsDataMedia")){
+			if(ofDirectory::doesDirectoryExist(dir.getPath(i)+"/.cloudsmedia.noindex")){ //JG changed this for mac
 				return dir.getPath(i)+"/CloudsDataMedia";
 			}
 		}
 	}
-	return "";
 #else
 	const int BUFSIZE = MAX_PATH;
 	char buffer[ BUFSIZE ];
@@ -221,19 +197,23 @@ string FindCloudsThumbDrive(){
 			return drive_name+"/CloudsDataMedia/";
 		}
 	}
-	return "";
 #endif
+    
+    ofLogError("FindCloudsThumbDrive") << "Couldn't find thumb drive";
+    
+    return "";
+    
 }
-//#endif
 
-bool checkForUpdates(){
-	ofHttpResponse resp = ofLoadURL("http://www.cloudsdocumentary.com/images/winmacvr.png");
-	if(resp.status <= 200){
-		return false;
-	}else{
-		return true;
-	}
-}
+
+//bool CheckForUpdates(){
+//	ofHttpResponse resp = ofLoadURL("http://www.cloudsdocumentary.com/images/winmacvr.png");
+//	if(resp.status <= 200){
+//		return false;
+//	}else{
+//		return true;
+//	}
+//}
 
 //--------------------------------------------------------------------
 string relinkFilePath(string filePath){
