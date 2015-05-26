@@ -194,10 +194,6 @@ void CloudsHUDController::buildLayerSets(){
     aboutScroller.scrollUpBounds      = layers[CLOUDS_ABOUT_BACKERS]->svg.getMeshByID("BackersScrollUpBacking")->bounds;
     aboutScroller.scrollDownBounds    = layers[CLOUDS_ABOUT_BACKERS]->svg.getMeshByID("BackersScrollDownBacking")->bounds;
     
-    //TODO: scroll bar
-//    researchScroller.scrollBarTop     = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollConnectStatic")->mesh.getVertices()[0];
-//    researchScroller.scrollBarBottom  = layers[CLOUDS_RESEARCH]->svg.getMeshByID("ListScrollConnectStatic")->mesh.getVertices()[1];
-
     layers[CLOUDS_ABOUT_BACKERS]->svg.getMeshByID("BackersScrollUpBacking")->visible = false;
     layers[CLOUDS_ABOUT_BACKERS]->svg.getMeshByID("BackersScrollDownBacking")->visible = false;
 
@@ -216,7 +212,8 @@ void CloudsHUDController::buildLayerSets(){
     layers[CLOUDS_RESEARCH_TOPIC]->bForceHover = true;
     layers[CLOUDS_RESEARCH_PPL]->bForceHover = true;
     layers[CLOUDS_RESEARCH_VS]->bForceHover = true;
-    
+
+    layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->bForceHover = true;
 }
 
 string CloudsHUDController::filenameForLayer(CloudsHUDLayerSet layer){
@@ -365,6 +362,7 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("SettingsClearHistoryTextBox", bookFontBuffer);
     
     getLabelForLayer("SettingsHelperTextBox", bookFontBuffer, 35, false,true, 8);
+    getLabelForLayer("SettingsClearHelperTextBox", bookFontBuffer, 35, false,true, 8);
 
     //cheat for scroll
     getLabelForLayer("ListScrollUpArrowSpace", thinFontBuffer);
@@ -428,10 +426,12 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["SettingsTextBoxExpanded"]->setText(GetTranslationForString("SETTINGS"), false);
     hudLabelMap["SettingsFastTextBox"]->setText(GetTranslationForString("FAST"), false);
     hudLabelMap["SettingsPrettyTextBox"]->setText(GetTranslationForString("PRETTY"), false);
-    hudLabelMap["SettingsHelperTextBox"]->setText("Pretty for best graphics, Fast for quick framerates.", false);
+    hudLabelMap["SettingsHelperTextBox"]->setText("Fast for quick framerates, Pretty for best graphics.", false);
     hudLabelMap["SettingsHelperTextBox"]->layout->setLineLength(hudLabelMap["SettingsHelperTextBox"]->bounds.width);
     
     hudLabelMap["SettingsClearHistoryTextBox"]->setText(GetTranslationForString("CLEAR HISTORY"), false);
+    hudLabelMap["SettingsClearHelperTextBox"]->setText("Revisit clips you've already seen.", false);
+    hudLabelMap["SettingsClearHelperTextBox"]->layout->setLineLength(hudLabelMap["SettingsClearHelperTextBox"]->bounds.width);
 
     ///////////////////////////
     
@@ -501,6 +501,14 @@ void CloudsHUDController::calculateFontSizes(){
 
     attachTriangleToLabel(hudLabelMap["SettingsTextBoxExpanded"], CLOUDS_ABOUT_SETTINGS, "SettingsArrowFrame", CLOUDS_HUD_TRIANGLE_DOWN);
     
+    if(getVisualLevel() == PRETTY){
+        attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyCheckBox", CLOUDS_HUD_TRIANGLE_X);
+        attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastCheckBox", CLOUDS_HUD_TRIANGLE_NONE);
+    }
+    else{
+        attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyCheckBox", CLOUDS_HUD_TRIANGLE_NONE);
+        attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastCheckBox", CLOUDS_HUD_TRIANGLE_X);
+    }
     hudLabelMap["ExploreTextBox"]->makeArrowPositionDynamic();
     hudLabelMap["SeeMoreTextBox"]->makeArrowPositionDynamic();
     
@@ -1216,15 +1224,15 @@ void CloudsHUDController::updateAboutNavigation(){
     
     if(hudOpenMap[CLOUDS_ABOUT_SETTINGS_EXPANDED]){
         if(hudLabelMap["SettingsPrettyTextBox"]->isClicked()){
-            attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyBox", CLOUDS_HUD_TRIANGLE_X);
-            attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastBox", CLOUDS_HUD_TRIANGLE_NONE);
+            attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyCheckBox", CLOUDS_HUD_TRIANGLE_X);
+            attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastCheckBox", CLOUDS_HUD_TRIANGLE_NONE);
         }
         if(hudLabelMap["SettingsFastTextBox"]->isClicked()){
-            attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyBox", CLOUDS_HUD_TRIANGLE_NONE);
-            attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastBox", CLOUDS_HUD_TRIANGLE_X);
+            attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyCheckBox", CLOUDS_HUD_TRIANGLE_NONE);
+            attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastCheckBox", CLOUDS_HUD_TRIANGLE_X);
         }
         if(hudLabelMap["SettingsClearHistoryTextBox"]->isClicked()){
-            //tood...
+            //todo ...
         }
     }
     hudLabelMap["NavAboutTextBox"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("AboutHoverBacking")->bounds;
@@ -1253,17 +1261,17 @@ void CloudsHUDController::updateAboutNavigation(){
 
     if(hudOpenMap[CLOUDS_ABOUT_SETTINGS_EXPANDED]){
         hudLabelMap["SettingsFastTextBox"]->baseInteractiveBounds
-                    = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsFastTextBox")->bounds;
+                    = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsFastBacking")->bounds;
         hudLabelMap["SettingsFastTextBox"]->scaledInteractiveBounds
                     = getScaledRectangle(hudLabelMap["SettingsFastTextBox"]->baseInteractiveBounds);
 
         hudLabelMap["SettingsPrettyTextBox"]->baseInteractiveBounds
-                    = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsPrettyTextBox")->bounds;
+                    = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsPrettyBacking")->bounds;
         hudLabelMap["SettingsPrettyTextBox"]->scaledInteractiveBounds
                     = getScaledRectangle(hudLabelMap["SettingsPrettyTextBox"]->baseInteractiveBounds);
 
         hudLabelMap["SettingsClearHistoryTextBox"]->baseInteractiveBounds
-                    = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsClearHistoryTextBox")->bounds;
+                    = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsClearBacking")->bounds;
         hudLabelMap["SettingsClearHistoryTextBox"]->scaledInteractiveBounds
                     = getScaledRectangle(hudLabelMap["SettingsClearHistoryTextBox"]->baseInteractiveBounds);
         
