@@ -257,6 +257,8 @@ string CloudsHUDController::filenameForLayer(CloudsHUDLayerSet layer){
             return "CLOUDS_ABOUT_MAIN.svg";
         case CLOUDS_ABOUT_SETTINGS:
             return "CLOUDS_ABOUT_SETTINGS.svg";
+        case CLOUDS_ABOUT_SETTINGS_EXPANDED:
+            return "CLOUDS_ABOUT_SETTINGS_EXPANDED.svg";
         default:
             break;
     }
@@ -355,6 +357,15 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("BackersScrollUpSpace", thinFontBuffer);
     getLabelForLayer("BackersScrollDownSpace", thinFontBuffer);
     
+    //settings
+    //getLabelForLayer("SettingsTextBox", bookFontBuffer);
+    getLabelForLayer("SettingsTextBoxExpanded", bookFontBuffer);
+    getLabelForLayer("SettingsFastTextBox", bookFontBuffer);
+    getLabelForLayer("SettingsPrettyTextBox", bookFontBuffer);
+    getLabelForLayer("SettingsClearHistoryTextBox", bookFontBuffer);
+    
+    getLabelForLayer("SettingsHelperTextBox", bookFontBuffer, 35, false,true, 8);
+
     //cheat for scroll
     getLabelForLayer("ListScrollUpArrowSpace", thinFontBuffer);
     getLabelForLayer("ListScrollDownArrowSpace", thinFontBuffer);
@@ -402,6 +413,7 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["AboutTextBox"]->layout->setLineLength(hudLabelMap["AboutTextBox"]->bounds.width);
     hudLabelMap["AboutTitleTextBox"]->setText(GetTranslationForString("ABOUT"), false);
 
+    
     hudLabelMap["CastTitleTextBox"]->setText(GetTranslationForString("CAST"), false);
     hudLabelMap["CastList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast1.txt").getText(), false);
     hudLabelMap["CastList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/cast2.txt").getText(), false);
@@ -411,6 +423,16 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["CreditsList1TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits1.txt").getText(), false);
     hudLabelMap["CreditsList2TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits2.txt").getText(), false);
     hudLabelMap["CreditsList3TextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/credits3.txt").getText(), false);
+    
+    ///// SETTING ABOUT
+    hudLabelMap["SettingsTextBoxExpanded"]->setText(GetTranslationForString("SETTINGS"), false);
+    hudLabelMap["SettingsFastTextBox"]->setText(GetTranslationForString("FAST"), false);
+    hudLabelMap["SettingsPrettyTextBox"]->setText(GetTranslationForString("PRETTY"), false);
+    hudLabelMap["SettingsHelperTextBox"]->setText("Pretty for best graphics, Fast for quick framerates.", false);
+    hudLabelMap["SettingsHelperTextBox"]->layout->setLineLength(hudLabelMap["SettingsHelperTextBox"]->bounds.width);
+    
+    hudLabelMap["SettingsClearHistoryTextBox"]->setText(GetTranslationForString("CLEAR HISTORY"), false);
+
     ///////////////////////////
     
     ofBuffer backersFile = ofBufferFromFile(GetCloudsDataPath() + "about/backers.txt");
@@ -437,14 +459,6 @@ void CloudsHUDController::calculateFontSizes(){
     aboutScroller.totalScrollHeight = (backers.size() / 3) * aboutScroller.scrollIncrement + aboutScroller.scrollIncrement;
     //TODO: what goes here?
     //hudLabelMap["BackersCopyTextBox"]->setText(GetTranslationForString("BACKERS"), false);
-    
-//    hudLabelMap["BackersList1TextBox"]->setText(columns[0], false);
-//    hudLabelMap["BackersList2TextBox"]->setText(columns[1], false);
-//    hudLabelMap["BackersList3TextBox"]->setText(columns[2], false);
-    
-//    aboutScroller.totalScrollHeight = MAX(MAX(hudLabelMap["BackersList1TextBox"]->layout->stringHeight(columns[0]),
-//                                              hudLabelMap["BackersList2TextBox"]->layout->stringHeight(columns[1])),
-//                                              hudLabelMap["BackersList3TextBox"]->layout->stringHeight(columns[2]));
     
     hudLabelMap["MapTextBox"]->tab = true;
     hudLabelMap["PeopleTextBox"]->tab = true;
@@ -484,6 +498,8 @@ void CloudsHUDController::calculateFontSizes(){
     attachTriangleToLabel(hudLabelMap["BackersScrollDownSpace"],CLOUDS_ABOUT_BACKERS, "BackersScrollDownSpace", CLOUDS_HUD_TRIANGLE_DOWN);
 
     attachTriangleToLabel(hudLabelMap["ExitButtonTextBox"], CLOUDS_ABOUT_MAIN, "ExitButtonArrowSpace", CLOUDS_HUD_TRIANGLE_NONE);
+
+    attachTriangleToLabel(hudLabelMap["SettingsTextBoxExpanded"], CLOUDS_ABOUT_SETTINGS, "SettingsArrowFrame", CLOUDS_HUD_TRIANGLE_DOWN);
     
     hudLabelMap["ExploreTextBox"]->makeArrowPositionDynamic();
     hudLabelMap["SeeMoreTextBox"]->makeArrowPositionDynamic();
@@ -1131,12 +1147,10 @@ void CloudsHUDController::updateResearchNavigation(){
     hudLabelMap["VisualsTextBox"]->tabSelected = currentTab == CLOUDS_HUD_RESEARCH_TAB_VISUALS;
 }
 
-
-
 void CloudsHUDController::showAbout(){
 
-
     animateOn(CLOUDS_ABOUT_MAIN);
+    animateOn(CLOUDS_ABOUT_SETTINGS);
     
     //TOOD: maybe save the last tab ...
     currentAboutTab = CLOUDS_HUD_ABOUT_TAB_INFO;
@@ -1148,12 +1162,14 @@ void CloudsHUDController::showAbout(){
 
 void CloudsHUDController::hideAbout(){
     animateOff(CLOUDS_ABOUT_MAIN);
+    animateOff(CLOUDS_ABOUT_SETTINGS);
+    
     animateOff(CLOUDS_ABOUT_INFO);
     animateOff(CLOUDS_ABOUT_CAST);
     animateOff(CLOUDS_ABOUT_CREDITS);
     animateOff(CLOUDS_ABOUT_BACKERS);
     animateOff(CLOUDS_ABOUT_SETTINGS);
-
+    animateOff(CLOUDS_ABOUT_SETTINGS_EXPANDED);
 }
 
 void CloudsHUDController::updateAboutNavigation(){
@@ -1187,7 +1203,30 @@ void CloudsHUDController::updateAboutNavigation(){
         currentAboutTab = CLOUDS_HUD_ABOUT_TAB_BACKERS;
     }
 
+    if(hudLabelMap["SettingsTextBoxExpanded"]->isClicked()){
+        if(hudOpenMap[CLOUDS_ABOUT_SETTINGS_EXPANDED]){
+            animateOff(CLOUDS_ABOUT_SETTINGS_EXPANDED);
+            attachTriangleToLabel(hudLabelMap["SettingsTextBoxExpanded"], CLOUDS_ABOUT_SETTINGS, "SettingsArrowFrame", CLOUDS_HUD_TRIANGLE_DOWN);
+        }
+        else{
+            animateOn(CLOUDS_ABOUT_SETTINGS_EXPANDED);
+            attachTriangleToLabel(hudLabelMap["SettingsTextBoxExpanded"], CLOUDS_ABOUT_SETTINGS, "SettingsArrowFrame", CLOUDS_HUD_TRIANGLE_UP);
+        }
+    }
     
+    if(hudOpenMap[CLOUDS_ABOUT_SETTINGS_EXPANDED]){
+        if(hudLabelMap["SettingsPrettyTextBox"]->isClicked()){
+            attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyBox", CLOUDS_HUD_TRIANGLE_X);
+            attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastBox", CLOUDS_HUD_TRIANGLE_NONE);
+        }
+        if(hudLabelMap["SettingsFastTextBox"]->isClicked()){
+            attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyBox", CLOUDS_HUD_TRIANGLE_NONE);
+            attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastBox", CLOUDS_HUD_TRIANGLE_X);
+        }
+        if(hudLabelMap["SettingsClearHistoryTextBox"]->isClicked()){
+            //tood...
+        }
+    }
     hudLabelMap["NavAboutTextBox"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("AboutHoverBacking")->bounds;
     hudLabelMap["NavAboutTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["NavAboutTextBox"]->baseInteractiveBounds);
 
@@ -1208,7 +1247,29 @@ void CloudsHUDController::updateAboutNavigation(){
 
     hudLabelMap["BackersScrollDownSpace"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_BACKERS]->svg.getMeshByID("BackersScrollDownBacking")->bounds;
     hudLabelMap["BackersScrollDownSpace"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["BackersScrollDownSpace"]->baseInteractiveBounds);
+    
+    hudLabelMap["SettingsTextBoxExpanded"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_SETTINGS]->svg.getMeshByID("SettingsBackingExpanded")->bounds;
+    hudLabelMap["SettingsTextBoxExpanded"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["SettingsTextBoxExpanded"]->baseInteractiveBounds);
 
+    if(hudOpenMap[CLOUDS_ABOUT_SETTINGS_EXPANDED]){
+        hudLabelMap["SettingsFastTextBox"]->baseInteractiveBounds
+                    = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsFastTextBox")->bounds;
+        hudLabelMap["SettingsFastTextBox"]->scaledInteractiveBounds
+                    = getScaledRectangle(hudLabelMap["SettingsFastTextBox"]->baseInteractiveBounds);
+
+        hudLabelMap["SettingsPrettyTextBox"]->baseInteractiveBounds
+                    = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsPrettyTextBox")->bounds;
+        hudLabelMap["SettingsPrettyTextBox"]->scaledInteractiveBounds
+                    = getScaledRectangle(hudLabelMap["SettingsPrettyTextBox"]->baseInteractiveBounds);
+
+        hudLabelMap["SettingsClearHistoryTextBox"]->baseInteractiveBounds
+                    = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsClearHistoryTextBox")->bounds;
+        hudLabelMap["SettingsClearHistoryTextBox"]->scaledInteractiveBounds
+                    = getScaledRectangle(hudLabelMap["SettingsClearHistoryTextBox"]->baseInteractiveBounds);
+        
+        
+    }
+    
     hudLabelMap["NavAboutTextBox"]->tabSelected = currentAboutTab   == CLOUDS_HUD_ABOUT_TAB_INFO;
     hudLabelMap["NavCastTextBox"]->tabSelected = currentAboutTab    == CLOUDS_HUD_ABOUT_TAB_CAST;
     hudLabelMap["NavCreditsTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_CREDITS;

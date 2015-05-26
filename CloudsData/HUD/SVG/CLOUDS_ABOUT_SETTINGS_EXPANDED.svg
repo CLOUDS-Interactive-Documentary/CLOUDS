@@ -242,7 +242,7 @@
 <g id="SettingsArrow" display="none">
 	<polygon display="inline" fill="#FFFFFF" points="1403.722,33.244 1391.157,33.244 1397.44,39.526 	"/>
 </g>
-<g id="SettingsArrowFrame">
+<g id="SettingsArrowFrame" display="none">
 	
 		<rect x="1362.409" y="51.244" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.313" height="6.282"/>
 </g>
@@ -258,23 +258,22 @@
 	
 		<rect x="1264.804" y="48.058" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="85.727" height="11.424"/>
 </g>
-<g id="SettingsFastBox" display="none">
+<g id="SettingsFastBox">
 	<rect x="1192.847" y="89.062" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="9" height="9"/>
 </g>
-<g id="SettingsFastTextBox" display="none">
+<g id="SettingsFastTextBox">
 	<rect x="1211.147" y="88.759" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="42.167" height="11.424"/>
 </g>
-<g id="SettingsPrettyTextBox" display="none">
+<g id="SettingsPrettyTextBox">
 	<rect x="1308.447" y="88.759" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="65.175" height="11.424"/>
 </g>
-<g id="SettingsBackingExpanded">
+<g id="SettingsBackingExpanded" display="none">
 	<rect x="1180.313" y="36.524" opacity="0.36" fill="#101010" width="203.504" height="35.721"/>
 </g>
-<g id="SettingsFrameExpanded" display="none">
+<g id="SettingsFrameExpanded">
 	
 		<rect x="1180.313" y="36.524" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="203.531" height="174.016"/>
 </g>
-
 <g id="SettingsTypographyExpanded" display="none">
 	
 		<text transform="matrix(1 0 0 1 1210.5916 100.1836)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">FAST</text>
@@ -288,22 +287,22 @@
 	
 		<text transform="matrix(1 0 0 1 1210.5916 186.4883)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CLEAR HISTORY</text>
 </g>
-<g id="SettingsTextBoxExpanded">
+<g id="SettingsTextBoxExpanded" display="none">
 	<rect x="1192.847" y="48.058" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="85.727" height="11.424"/>
 </g>
-<g id="SettingsPrettyBox" display="none">
+<g id="SettingsPrettyBox">
 	<rect x="1290.309" y="89.062" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="9" height="9"/>
 </g>
-<g id="SettingsDivision" display="none">
+<g id="SettingsDivision">
 	<line opacity="0.69" fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" x1="1271.813" y1="78" x2="1271.813" y2="109"/>
 </g>
-<g id="SettingsHelperTextBox" display="none">
+<g id="SettingsHelperTextBox">
 	<rect x="1192.846" y="121.463" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="180.775" height="27.962"/>
 </g>
-<g id="SettingsClearHistoryBox" display="none">
+<g id="SettingsClearHistoryBox">
 	<rect x="1192.847" y="175.366" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="9" height="9"/>
 </g>
-<g id="SettingsClearHistoryTextBox" display="none">
+<g id="SettingsClearHistoryTextBox">
 	<rect x="1211.147" y="175.063" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="140.972" height="11.424"/>
 </g>
 <g id="InsideFrame" display="none">

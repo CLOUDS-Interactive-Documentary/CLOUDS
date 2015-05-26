@@ -65,6 +65,7 @@
 		0300E8621AE6A93D0008F7BB /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0300E8601AE6A93D0008F7BB /* CloudsRGBDCamera.cpp */; };
 		18731D30178628D200E22F84 /* CloudsAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D2E178628D200E22F84 /* CloudsAct.cpp */; };
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
+		A607E1351B13F1710021DC3F /* ofxCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A607E1301B13F1710021DC3F /* ofxCrypto.cpp */; };
 		A65830761B055B8F00E425FF /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830741B055B8F00E425FF /* CloudsMedia.cpp */; };
 		A65830901B07EE6000E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A658308E1B07EE6000E425FF /* CloudsHUDScroller.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -338,6 +339,8 @@
 		1877A9F9178F417A006DAA37 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
+		A607E1301B13F1710021DC3F /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
+		A607E1311B13F1710021DC3F /* ofxCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCrypto.h; sourceTree = "<group>"; };
 		A65830741B055B8F00E425FF /* CloudsMedia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMedia.cpp; sourceTree = "<group>"; };
 		A65830751B055B8F00E425FF /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
 		A658308E1B07EE6000E425FF /* CloudsHUDScroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDScroller.cpp; sourceTree = "<group>"; };
@@ -895,9 +898,28 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		A607E11C1B13F1710021DC3F /* ofxCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				A607E12F1B13F1710021DC3F /* src */,
+			);
+			name = ofxCrypto;
+			path = ../../../addons/ofxCrypto;
+			sourceTree = "<group>";
+		};
+		A607E12F1B13F1710021DC3F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A607E1301B13F1710021DC3F /* ofxCrypto.cpp */,
+				A607E1311B13F1710021DC3F /* ofxCrypto.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				A607E11C1B13F1710021DC3F /* ofxCrypto */,
 				0300E59E1AE6A8D50008F7BB /* ofxUI */,
 				0300E5771AE6A84F0008F7BB /* ofxSubtitles */,
 				0300E5541AE6A7E50008F7BB /* ofxLocalization */,
@@ -1804,6 +1826,7 @@
 				E7637D4C1734DE68008ADC62 /* CloudsClip.cpp in Sources */,
 				E7637D4D1734DE68008ADC62 /* CloudsFCPParser.cpp in Sources */,
 				0300E7FB1AE6A8D70008F7BB /* ofxUI2DGraph.cpp in Sources */,
+				A607E1351B13F1710021DC3F /* ofxCrypto.cpp in Sources */,
 				0300E8021AE6A8D70008F7BB /* ofxUIDragableLabelButton.cpp in Sources */,
 				E7637D4F1734DE68008ADC62 /* CloudsLink.cpp in Sources */,
 				0300E80F1AE6A8D70008F7BB /* ofxUIMinimalSlider.cpp in Sources */,
