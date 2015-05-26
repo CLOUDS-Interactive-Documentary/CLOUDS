@@ -9,18 +9,16 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsAct.h"
 
-//#include "CloudsVisualSystemVisuals.h"
-//#include "CloudsIntroSequence.h"
-//#include "CloudsVisualSystemClusterMap.h"
-//#include "CloudsVisualSystemRGBD.h"
-//#include "CloudsVisualSystemTwitter.h"
 #include "CloudsVisualSystemManager.h"
 
 #include "CloudsHUDController.h"
 
 #include "CloudsSound.h"
 #include "CloudsMixer.h"
+
+#ifdef CLOUDS_INSTALLATION
 #include "CloudsSecondaryDisplayOSCSender.h"
+#endif
 
 #include "CloudsTransitionController.h"
 
@@ -114,7 +112,9 @@ class CloudsPlaybackController : public ofThread {
 	CloudsVisualSystemManager visualSystems;
 	CloudsStoryEngine storyEngine;
 	CloudsSound sound;
+#ifdef CLOUDS_INSTALLATION
 	CloudsSecondaryDisplayOSCSender oscSender;
+#endif
 	CloudsHUDController hud;
 	CloudsTransitionController transitionController;
     CloudsMixer mixer;
