@@ -335,7 +335,7 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
 			continue;
 		}
 #endif
-        if( getVisualLevel() == FAST && currentSelection[i].isHeavy() ){
+        if( GetGraphicsQualityLevel() == FAST && currentSelection[i].isHeavy() ){
             continue;
         }
 		
@@ -382,7 +382,7 @@ bool CloudsStoryEngine::getRandomInterlude(CloudsRun& run, CloudsVisualSystemPre
 		}
 #endif
         
-        if( getVisualLevel() == FAST && validInterludes[i].isHeavy() ){
+        if( GetGraphicsQualityLevel() == FAST && validInterludes[i].isHeavy() ){
             valid = false;
         }
         
@@ -1159,13 +1159,10 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
         state.log << state.duration << "\t\t\t\tREJECTED because it's disabled" << endl;
         return 0;
     }
-    //	if(potentialNextPreset.oculusCompatible){
-    //        state.log << state.duration << "\t\t\t\tREJECTED because it is for the oculus"<<endl;
-    //        return 0;
-    //	}
 #endif
     
-    if( getVisualLevel() == FAST && potentialNextPreset.isHeavy() ){
+    if( GetGraphicsQualityLevel() == FAST && potentialNextPreset.isHeavy() ){
+        state.log << state.duration << "\t\t\t\tREJECTED because it's heavy and we are on FAST mode" << endl;
         return 0;
     }
     

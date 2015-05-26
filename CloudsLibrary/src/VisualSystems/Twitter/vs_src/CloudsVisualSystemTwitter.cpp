@@ -1258,10 +1258,10 @@ void CloudsVisualSystemTwitter::selfDraw()
         
 		pointsShader.begin();
 		
-        if(getVisualLevel() == PRETTY){
+//        if(GetGraphicsQualityLevel() == PRETTY){
             glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
             glEnable(GL_POINT_SMOOTH);
-        }
+//        }
         
         glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
         
@@ -1472,8 +1472,6 @@ void CloudsVisualSystemTwitter::moveToPerson(string person){
     
     movingToPerson = person;
     selectPerson("");
-    //    selectedPerson = "";
-    //     = true;
     
     Tweeter* targetTweeter = getTweeterByHandle(person);
     targetPersonPosition = targetTweeter->position;
@@ -1546,9 +1544,6 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 float sourceLineY = tweetFeedRect.y +(i -1)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset- tweetDeckLineOffset;
                 float targetLineY = tweetFeedRect.y +(i )*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset - tweetDeckLineOffset;
                 
-                //                float curYpos = tweetFeedRect.y +i*heightOffset + textHeightOffset;
-                //                float menuY = curYpos + heightOffset  - tweetDeckMenu.height + tweetDeckHeightOffset;
-                //                float lineY = curYpos + heightOffset - tweetDeckLineOffset;
                 //lerp them lines and text
                 float curTextY = ofLerp(sourceTextY, targetTextY, animationLerpAmt);
                 float curAvatarY = ofLerp(sourceAvatarY, targetAvatarY, animationLerpAmt);
@@ -1696,8 +1691,8 @@ void CloudsVisualSystemTwitter::reloadShaders(){
 	sprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
 	ofEnableArbTex();
     
-    lineShader.load(getVisualSystemDataPath() + "/shaders/linesShader");
-    pointsShader.load(getVisualSystemDataPath() + "/shaders/pointsShader");
+    lineShader.load(getVisualSystemDataPath() + "shaders/linesShader");
+    pointsShader.load(getVisualSystemDataPath() + "shaders/pointsShader");
 }
 
 //events are called when the system is active
@@ -1804,10 +1799,6 @@ void CloudsVisualSystemTwitter::selfMousePressed(ofMouseEventArgs& data)
         for(int i = 0; i < tweeters.size(); i++){
             
             if(tweeters[i]->hovered){
-                //selectedPersonChanged = true;
-                //selectPerson(tweeters[i]->name);
-                //                selectedPersonChanged = true;
-                //                selectedPerson = "";
                 moveToPerson(tweeters[i]->name);
                 break;
             }

@@ -1002,7 +1002,7 @@ string CloudsIntroSequence::getQuestionText(){
 
 void CloudsIntroSequence::alertNewVersion(string newVersionDownloadURL){
     newVersionURL = newVersionDownloadURL;
-    newVersionPrompt = "THERE IS AN UPDATE AVAILABLE! CLICK TO DOWNLOAD.";
+    newVersionPrompt = "There is an update avaiable! Click to download.";
 }
 
 //vhx stuff

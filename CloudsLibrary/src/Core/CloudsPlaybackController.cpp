@@ -59,7 +59,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 
 	userReset = false;
 	returnToIntro = false;
-    justOpened = true;
+    //justOpened = true;
     
 //	badIdle = false;
 //	badIdleStartTime = false;
@@ -115,7 +115,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     resumingAct = false;
     runningLatestVerion = true; //assume yes
     
-    getVisualLevel();
+    GetGraphicsQualityLevel();
 	resetInterludeVariables();
 	
 
@@ -356,6 +356,8 @@ void CloudsPlaybackController::threadedFunction(){
         introSequence->firstPlay = true;
     }
 
+    hud.setHasHistory(run.clipHistory.size() > 0);
+
     introSequence->percentLoaded = 0.3;
 
 	if(!isThreadRunning()) return;
@@ -543,6 +545,7 @@ void CloudsPlaybackController::verifyPackageComplete(CloudsVHXEventArgs& args){
         return;
     }
     if(args.result == "purchase" || args.result == "rental"){
+        bVHXRentalExpired = false;
         introSequence->vhxAuthenticated();
     }
     else if(args.result == "expired"){
@@ -574,7 +577,7 @@ void CloudsPlaybackController::packageExpired(CloudsVHXEventArgs& args){
 void CloudsPlaybackController::populateRGBDPresets(){
 #ifdef OCULUS_RIFT
     
-    switch (getVisualLevel()) {
+    switch (GetGraphicsQualityLevel()) {
         case FAST:
     
             basePreset = "RGBD_OC_BASE_fast";
@@ -609,7 +612,7 @@ void CloudsPlaybackController::populateRGBDPresets(){
     
 #else
     
-    switch (getVisualLevel()) {
+    switch (GetGraphicsQualityLevel()) {
             
         case FAST:
             
@@ -679,27 +682,8 @@ void CloudsPlaybackController::showIntro(){
     showingResearchMode = false;
 	userReset = false;
 	
-#ifdef OCULUS_RIFT
-    switch (getVisualLevel()) {
-        case FAST:
-            introSequence->loadPresetGUISFromName("Oculus_fast");
-            break;
-            
-        case PRETTY:
-            introSequence->loadPresetGUISFromName("Oculus_pretty");
-            break;
-    }
+    loadIntroPreset();
     
-#else
-    switch (getVisualLevel()) {
-        case FAST:
-            introSequence->loadPresetGUISFromName("TunnelWarp_fast");
-            break;
-        case PRETTY:
-            introSequence->loadPresetGUISFromName("TunnelWarp_pretty");
-            break;
-    }
-#endif
 	introSequence->playSystem();
 	
 	currentVisualSystem = introSequence;
@@ -715,6 +699,30 @@ void CloudsPlaybackController::showIntro(){
 	hud.animateOff();
 }
 
+//--------------------------------------------------------------------
+void CloudsPlaybackController::loadIntroPreset(){
+#ifdef OCULUS_RIFT
+    switch (GetGraphicsQualityLevel()) {
+        case FAST:
+            introSequence->loadPresetGUISFromName("Oculus_fast");
+            break;
+            
+        case PRETTY:
+            introSequence->loadPresetGUISFromName("Oculus_pretty");
+            break;
+    }
+    
+#else
+    switch (GetGraphicsQualityLevel()) {
+        case FAST:
+            introSequence->loadPresetGUISFromName("TunnelWarp_fast");
+            break;
+        case PRETTY:
+            introSequence->loadPresetGUISFromName("TunnelWarp_pretty");
+            break;
+    }
+#endif
+}
 //--------------------------------------------------------------------
 void CloudsPlaybackController::loadCurrentAct(){
 	
@@ -944,6 +952,23 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         }
         if(hud.aboutClosed()){
             introSequence->aboutClosed();
+        }
+        
+        if(hud.visualLevelDidChange()){
+            if(hud.setToPretty){
+                SetGraphicsQualityLevel(PRETTY);
+            }
+            else{
+                SetGraphicsQualityLevel(FAST);
+            }
+            loadIntroPreset();
+        }
+        
+        if(hud.requestClearHistory() && run.clipHistory.size() > 0){
+            run.archive();
+            run.clear();
+            run.save();
+            introSequence->firstPlay = true;
         }
         
         if(introSequence->isResearchModeSelected()){
@@ -1564,19 +1589,20 @@ void CloudsPlaybackController::updateTransition(){
                 //starting
 			case TRANSITION_INTRO_IN:
                 
-                if(justOpened){
-                    justOpened = false;
-                    clusterMap->clearTraversal();
-                    introSequence->setStartQuestions(startingNodes);
-                    introSequence->firstPlay = false;
-                    introSequence->loadingFinished();
-                    if(bVHXRentalExpired){
-                        introSequence->vhxRentalExpired();
-                        bVHXRentalExpired = false;
-                    }
+//                if(justOpened){
+//                    justOpened = false;
+                clusterMap->clearTraversal();
+                introSequence->setStartQuestions(startingNodes);
+                introSequence->firstPlay = false;
+                introSequence->loadingFinished();
+                if(bVHXRentalExpired){
+                    introSequence->vhxRentalExpired();
+                    //bVHXRentalExpired = false;
                 }
                 
                 hud.setHudEnabled(true);
+                hud.setHasHistory(true);
+                
                 showIntro();
                 break;
                 
@@ -2281,7 +2307,7 @@ void CloudsPlaybackController::showClusterMap(){
     
     if(!showingClusterMapNavigation){
         #ifdef OCULUS_RIFT
-        switch (getVisualLevel()) {
+        switch (GetGraphicsQualityLevel()) {
             case FAST:
                 clusterMap->loadPresetGUISFromName("FollowTraverse_OculusHD_fast");
                 break;
@@ -2292,7 +2318,7 @@ void CloudsPlaybackController::showClusterMap(){
         
         #else
         
-        switch (getVisualLevel()) {
+        switch (GetGraphicsQualityLevel()) {
             case FAST:
                 clusterMap->loadPresetGUISFromName("FollowTraverse_Screen_fast");
                 break;
@@ -2432,7 +2458,7 @@ void CloudsPlaybackController::showExploreMap(){
     }
 
     hud.setVisitedTopics(run.getVisitedTopics());
-
+    
     //TODO fix the preset for fast
     clusterMap->loadPresetGUISFromName("TopicResearch_pretty");
 

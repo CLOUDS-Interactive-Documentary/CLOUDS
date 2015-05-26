@@ -51,17 +51,17 @@ string GetCloudsDataRootPath();
 //--------------------------------------------------------------------
 string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder = false);
 //--------------------------------------------------------------------
+string FindCloudsThumbDrive();
+//--------------------------------------------------------------------
 string GetLanguage();
 //--------------------------------------------------------------------
 void SetLanguage(string language);
 //--------------------------------------------------------------------
 string relinkFilePath(string filePath);
 //--------------------------------------------------------------------
-CloudsVisualLevel getVisualLevel();
+CloudsVisualLevel GetGraphicsQualityLevel();
 //--------------------------------------------------------------------
-//bool CheckForUpdates();
-//--------------------------------------------------------------------
-string FindCloudsThumbDrive();
+void SetGraphicsQualityLevel(CloudsVisualLevel level);
 //--------------------------------------------------------------------
 void ParseVHXIds(const string& path, map<string, string>& idMap);
 //--------------------------------------------------------------------

@@ -7,21 +7,26 @@
 //
 
 #include "CloudsHUDController.h"
+
 #include "CloudsGlobal.h"
+#include "CloudsLocalization.h"
+
 #include "CloudsInput.h"
 #include "CloudsClip.h"
-#include "CloudsSpeaker.h"
+#include "CloudsHUDLayer.h"
 #include "CloudsVisualSystem.h"
-#include "CloudsLocalization.h"
 
 
 CloudsHUDController::CloudsHUDController(){
-	hudGui = NULL;
 
     bSkipAVideoFrame = false;
     bDrawHud = true;
     bProjectExampleDisplayed = false;
     transitionFade = 0.0;
+    
+    visualLevelChanged = false;
+    setToPretty = false;
+    historyCleared = false;
     
     bQuestionDisplayed = false;
     bJustPaused = false;
@@ -430,7 +435,7 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["SettingsHelperTextBox"]->layout->setLineLength(hudLabelMap["SettingsHelperTextBox"]->bounds.width);
     
     hudLabelMap["SettingsClearHistoryTextBox"]->setText(GetTranslationForString("CLEAR HISTORY"), false);
-    hudLabelMap["SettingsClearHelperTextBox"]->setText("Revisit clips you've already seen.", false);
+    hudLabelMap["SettingsClearHelperTextBox"]->setText("Start over at the beginning.", false);
     hudLabelMap["SettingsClearHelperTextBox"]->layout->setLineLength(hudLabelMap["SettingsClearHelperTextBox"]->bounds.width);
 
     ///////////////////////////
@@ -501,11 +506,13 @@ void CloudsHUDController::calculateFontSizes(){
 
     attachTriangleToLabel(hudLabelMap["SettingsTextBoxExpanded"], CLOUDS_ABOUT_SETTINGS, "SettingsArrowFrame", CLOUDS_HUD_TRIANGLE_DOWN);
     
-    if(getVisualLevel() == PRETTY){
+    if(GetGraphicsQualityLevel() == PRETTY){
+        setToPretty = true;
         attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyCheckBox", CLOUDS_HUD_TRIANGLE_X);
         attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastCheckBox", CLOUDS_HUD_TRIANGLE_NONE);
     }
     else{
+        setToPretty = false;
         attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyCheckBox", CLOUDS_HUD_TRIANGLE_NONE);
         attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastCheckBox", CLOUDS_HUD_TRIANGLE_X);
     }
@@ -667,13 +674,13 @@ void CloudsHUDController::attachTriangleToLabel(CloudsHUDLabel* label,
             break;
             
         case CLOUDS_HUD_TRIANGLE_SQUARE:
-            label->triangleMesh.addVertex(da - ofVec2f(0,width));
-            label->triangleMesh.addVertex(bc - ofVec2f(0,width));
-            label->triangleMesh.addVertex(da + ofVec2f(0,width));
+            label->triangleMesh.addVertex(da - ofVec2f(0,width*.5));
+            label->triangleMesh.addVertex(bc - ofVec2f(0,width*.5));
+            label->triangleMesh.addVertex(da + ofVec2f(0,width*.5));
             
-            label->triangleMesh.addVertex(bc - ofVec2f(0,width));
-            label->triangleMesh.addVertex(bc + ofVec2f(0,width));
-            label->triangleMesh.addVertex(da + ofVec2f(0,width));
+            label->triangleMesh.addVertex(bc - ofVec2f(0,width*.5));
+            label->triangleMesh.addVertex(bc + ofVec2f(0,width*.5));
+            label->triangleMesh.addVertex(da + ofVec2f(0,width*.5));
             label->triangleMesh.setMode(OF_PRIMITIVE_TRIANGLES);
             break;
             
@@ -1180,6 +1187,30 @@ void CloudsHUDController::hideAbout(){
     animateOff(CLOUDS_ABOUT_SETTINGS_EXPANDED);
 }
 
+bool CloudsHUDController::visualLevelDidChange(){
+    bool ret = visualLevelChanged;
+    visualLevelChanged = false;
+    return ret;
+}
+
+bool CloudsHUDController::requestClearHistory(){
+    bool ret = historyCleared;
+    historyCleared = false;
+    return ret;
+}
+
+void CloudsHUDController::setHasHistory(bool hasHistory){
+    if(hasHistory){
+        attachTriangleToLabel(hudLabelMap["SettingsClearHistoryTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED,
+                              "SettingsClearHistoryIndicatorBox", CLOUDS_HUD_TRIANGLE_SQUARE);
+    }
+    else{
+        attachTriangleToLabel(hudLabelMap["SettingsClearHistoryTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED,
+                              "SettingsClearHistoryIndicatorBox", CLOUDS_HUD_TRIANGLE_NONE);
+        
+    }
+}
+
 void CloudsHUDController::updateAboutNavigation(){
     
     if(hudLabelMap["NavAboutTextBox"]->isClicked()){
@@ -1223,16 +1254,21 @@ void CloudsHUDController::updateAboutNavigation(){
     }
     
     if(hudOpenMap[CLOUDS_ABOUT_SETTINGS_EXPANDED]){
-        if(hudLabelMap["SettingsPrettyTextBox"]->isClicked()){
+        if(hudLabelMap["SettingsPrettyTextBox"]->isClicked() && !setToPretty){
             attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyCheckBox", CLOUDS_HUD_TRIANGLE_X);
             attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastCheckBox", CLOUDS_HUD_TRIANGLE_NONE);
+            setToPretty = true;
+            visualLevelChanged = true;
         }
-        if(hudLabelMap["SettingsFastTextBox"]->isClicked()){
+        if(hudLabelMap["SettingsFastTextBox"]->isClicked() && setToPretty){
             attachTriangleToLabel(hudLabelMap["SettingsPrettyTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsPrettyCheckBox", CLOUDS_HUD_TRIANGLE_NONE);
             attachTriangleToLabel(hudLabelMap["SettingsFastTextBox"], CLOUDS_ABOUT_SETTINGS_EXPANDED, "SettingsFastCheckBox", CLOUDS_HUD_TRIANGLE_X);
+            setToPretty = false;
+            visualLevelChanged = true;
         }
         if(hudLabelMap["SettingsClearHistoryTextBox"]->isClicked()){
-            //todo ...
+            setHasHistory(false);
+            historyCleared = true;
         }
     }
     hudLabelMap["NavAboutTextBox"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_MAIN]->svg.getMeshByID("AboutHoverBacking")->bounds;

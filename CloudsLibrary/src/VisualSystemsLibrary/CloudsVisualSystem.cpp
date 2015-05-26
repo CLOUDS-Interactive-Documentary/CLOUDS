@@ -289,7 +289,7 @@ CloudsVisualSystem::~CloudsVisualSystem(){
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
     //ensure multisample off for FAST visual level
-    switch (getVisualLevel()) {
+    switch (GetGraphicsQualityLevel()) {
         case FAST:
             numSamples = 0;
             bleed = 0;
@@ -4056,7 +4056,7 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	ofDisableLighting();
     
     //ensure post effects follow visual level
-    switch (getVisualLevel()) {
+    switch (GetGraphicsQualityLevel()) {
         case FAST:
             bEnablePostFX = false;
             break;

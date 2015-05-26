@@ -108,6 +108,11 @@ void CloudsVHXAuth::exit()
 void CloudsVHXAuth::update(ofEventArgs& args)
 {
     if (bNotifyComplete) {
+        
+        //Wait to ensure the thread has stopped
+        //JG Added this... Elie please advise
+        waitForThread(true);
+        
         Mode completedMode = mode;
         mode = WAITING;
         if (completedMode == REQUEST_TOKEN) {
@@ -202,6 +207,7 @@ void CloudsVHXAuth::requestCode()
         ofLogError("CloudsVHXAuth::requestCode") << "Thread is already running with mode " << mode;
         return;
     }
+    
     if (mode != WAITING) {
         ofLogError("CloudsVHXAuth::requestCode") << "Mode " << mode << " is still active";
         return;
@@ -214,14 +220,17 @@ void CloudsVHXAuth::requestCode()
 //--------------------------------------------------------------
 void CloudsVHXAuth::linkCode()
 {
+
     if (isThreadRunning()) {
         ofLogError("CloudsVHXAuth::linkCode") << "Thread is already running with mode " << mode;
         return;
     }
+
     if (mode != WAITING) {
         ofLogError("CloudsVHXAuth::linkCode") << "Mode " << mode << " is still active";
         return;
     }
+    
     if (_code.empty()) {
         ofLogError("CloudsVHXAuth::linkCode") << "No code set!";
         return;
@@ -234,20 +243,17 @@ void CloudsVHXAuth::linkCode()
 //--------------------------------------------------------------
 void CloudsVHXAuth::verifyPackage()
 {
+ 
     if (isThreadRunning()) {
-        if(mode != WAITING){
-            ofLogError("CloudsVHXAuth::verifyPackage") << "Thread is already running with mode " << mode;
-            return;
-        }
-        else{
-            waitForThread(true);
-        }
+        ofLogError("CloudsVHXAuth::verifyPackage") << "Thread is already running with mode " << mode;
+        return;
     }
-    
+
     if (mode != WAITING) {
         ofLogError("CloudsVHXAuth::verifyPackage") << "Mode " << mode << " is still active";
         return;
     }
+    
     if (_packageId.empty()) {
         ofLogError("CloudsVHXAuth::verifyPackage") << "No package ID set!";
         return;

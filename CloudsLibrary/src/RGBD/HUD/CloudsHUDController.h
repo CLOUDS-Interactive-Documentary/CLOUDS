@@ -9,10 +9,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxUI.h"
 #include "ofxFTGL.h"
 
-#include "CloudsHUDLayer.h"
+
 #include "CloudsHUDHomeButton.h"
 #include "CloudsHUDLabel.h"
 #include "CloudsEvents.h"
@@ -118,8 +117,8 @@ typedef enum {
 } CloudsHUDBillboard;
 #endif
 
-
 class CloudsClip;
+class CloudsHUDLayer;
 class CloudsHUDController {
   public:
 	
@@ -183,8 +182,7 @@ class CloudsHUDController {
 	vector<CloudsHUDLayer*> allLayers;
 	
 	void questionHoverOn(const string& question, bool animate = true);
-	   
-	ofxUISuperCanvas *hudGui;
+    
 	CloudsHUDHomeButton home;
 	
 	void actBegan(CloudsActEventArgs& args);
@@ -212,7 +210,6 @@ class CloudsHUDController {
     map<CloudsHUDLayerSet, float> layerRotationV;
     map<CloudsHUDLayerSet, CloudsHUDBillboard> layerBillboard;
 #endif
-
     
     void setTopics(const set<string>& topics);
     void populateSpeakers();
@@ -239,6 +236,12 @@ class CloudsHUDController {
     void clearSelection();
     
     string getSelectedItem();
+    
+    bool visualLevelDidChange();
+    bool requestClearHistory();
+    
+    bool setToPretty;
+    void setHasHistory(bool hasHistory);
     
   protected:
 	
@@ -309,7 +312,8 @@ class CloudsHUDController {
     CloudsHUDResearchTab nextTab;
 
     CloudsHUDAboutTab currentAboutTab;
-    //CloudsHUDAboutTab nextTab;
+    bool visualLevelChanged;
+    bool historyCleared;
     
     void drawList();
     void drawBackersList();

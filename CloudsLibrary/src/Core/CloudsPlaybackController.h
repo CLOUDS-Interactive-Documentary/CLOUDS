@@ -180,7 +180,7 @@ class CloudsPlaybackController : public ofThread {
     
 	//loader screen
 	bool loadingAct;
-    bool justOpened;
+    //bool justOpened;
 	int currentPresetIndex;
     void checkForUpdates();
     void updateCheckCompleted(ofHttpResponse& response);
@@ -210,6 +210,7 @@ class CloudsPlaybackController : public ofThread {
 	//VISUAL SYSTEMS
 	//
 	void showIntro();
+    void loadIntroPreset();
     
 	bool showingIntro;
 	bool showingVisualSystem;

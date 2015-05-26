@@ -391,3 +391,5 @@ CloudsData/runs/*.xml
 
 
 CloudsCrypto.h
+
+CloudsData/visual_quality_config.txt

@@ -242,23 +242,32 @@ string relinkFilePath(string filePath){
 
 //--------------------------------------------------------------------
 
-
-
-CloudsVisualLevel getVisualLevel(){
+CloudsVisualLevel GetGraphicsQualityLevel(){
 	if(!loadedVisualLevel){
-
-		auto visualConfig = ofFile( GetCloudsDataPath()+"/visual_quality_config.txt" );
-		auto quality = visualConfig.readToBuffer().getText();
-
-		if( quality == "FAST"){
-			visualLevel = FAST;
-		}else if( quality == "PRETTY" ){
-			visualLevel = PRETTY;
-		}else{
-			visualLevel = PRETTY;
-		}
-
+        
+        string visualConfig = ofBufferFromFile( GetCloudsDataPath()+"/visual_quality_config.txt" ).getText();
+        trim(visualConfig);
+        
+        if( visualConfig == "FAST"){
+            visualLevel = FAST;
+        }else if( visualConfig == "PRETTY" ){
+            visualLevel = PRETTY;
+        }else{
+            visualLevel = PRETTY;
+        }
 		loadedVisualLevel = true;
 	}
 	return visualLevel;
 }
+
+//--------------------------------------------------------------------
+void SetGraphicsQualityLevel(CloudsVisualLevel level){
+
+    visualLevel = level;
+    
+    //save
+    ofBuffer savebuf = ofBuffer(level == PRETTY ? "PRETTY" : "FAST");
+    ofBufferToFile(GetCloudsDataPath()+"/visual_quality_config.txt",  savebuf);
+    
+}
+
