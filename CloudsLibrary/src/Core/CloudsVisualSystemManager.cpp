@@ -54,7 +54,9 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemHistogram.h"
 #include "CloudsVisualSystemLIA.h"
 #include "CloudsVisualSystemLSystem.h"
+#ifndef VHX_MEDIA
 #include "CloudsVisualSystemLaplacianTunnel.h"
+#endif
 #include "CloudsVisualSystemMandala.h"
 #include "CloudsVisualSystemMarchingCubes.h"
 #include "CloudsVisualSystemMazeGenerator.h"
@@ -152,7 +154,9 @@ struct Mapping {
 	{ "Histogram",				&fCreate<CloudsVisualSystemHistogram> },
 	{ "LIA",					&fCreate<CloudsVisualSystemLIA> },
 	{ "LSystem",				&fCreate<CloudsVisualSystemLSystem> },
+#ifndef VHX_MEDIA
 	{ "LaplacianTunnel",		&fCreate<CloudsVisualSystemLaplacianTunnel> },
+#endif
 	{ "Mandala",				&fCreate<CloudsVisualSystemMandala> },
 	{ "MarchingCubes",			&fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "MazeGenerator",			&fCreate<CloudsVisualSystemMazeGenerator> },
@@ -551,6 +555,12 @@ void CloudsVisualSystemManager::parseVisualSystemCredits(){
         }
         
         string systemId = creditsXml.getAttribute("system", "id", "", i);
+#ifdef VHX_MEDIA
+        if(systemId == "LaplacianTunnel"){
+            continue;
+        }
+#endif
+        
         creditsXml.pushTag("system", i);
         visualSystemCredits[systemId].systemName = systemId;
         visualSystemCredits[systemId].title = creditsXml.getValue("title", "");
@@ -593,6 +603,17 @@ void CloudsVisualSystemManager::populateEnabledSystemIndeces(){
         }
 #else
         if(presets[i].enabledScreen){
+            
+#ifdef VHX_MEDIA
+            //Laplacian tunnel is too big to distribute
+            if(presets[i].systemName == "LaplacianTunnel"){
+                continue;
+            }
+            //two of the tunnels are also too big to distribute
+            if(presets[i].systemName == "WormHole" && ofToLower(presets[i].presetName).find("organic") != string::npos ){
+                continue;
+            }
+#endif
             enabledPresetsIndex.push_back(i);
         }
 #endif

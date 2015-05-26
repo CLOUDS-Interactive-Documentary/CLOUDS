@@ -338,7 +338,17 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
         if( GetGraphicsQualityLevel() == FAST && currentSelection[i].isHeavy() ){
             continue;
         }
-		
+        
+#ifdef VHX_MEDIA
+        //Laplacian tunnel is too big to distribute
+        if(currentSelection[i].systemName == "LaplacianTunnel"){
+            continue;
+        }
+        //two of the tunnels are also too big to distribute
+        if(currentSelection[i].systemName == "WormHole" && ofToLower(currentSelection[i].presetName).find("organic") != string::npos ){
+            continue;
+        }
+#endif
 		vector<string> presetTopics = visualSystems->keywordsForPreset(currentSelection[i]);
 		int presetScore = 0;
 		
@@ -1157,6 +1167,19 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
 #else
     if(!potentialNextPreset.enabledScreen){
         state.log << state.duration << "\t\t\t\tREJECTED because it's disabled" << endl;
+        return 0;
+    }
+#endif
+    
+#ifdef VHX_MEDIA
+    //Laplacian tunnel is too big to distribute
+    if(potentialNextPreset.systemName == "LaplacianTunnel"){
+        state.log << state.duration << "\t\t\t\tREJECTED because Laplacian Tunnel is not distributed with VHX" << endl;
+        return 0;
+    }
+    //two of the tunnels are also too big to distribute
+    if(potentialNextPreset.systemName == "WormHole" && ofToLower(potentialNextPreset.presetName).find("organic") != string::npos ){
+        state.log << state.duration << "\t\t\t\tREJECTED because big wormhome presets are not distributed with VHX" << endl;
         return 0;
     }
 #endif
