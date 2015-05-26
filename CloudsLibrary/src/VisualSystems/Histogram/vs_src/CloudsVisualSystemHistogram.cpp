@@ -162,7 +162,8 @@ void CloudsVisualSystemHistogram::selfSetDefaults()
     numRows = 32;
     colsPerRow = 100;
     lineWidth = 1.0f;
-
+    
+    soundsDir.allowExt("mp3");
     soundsDir.listDir(getVisualSystemDataPath(true) + "sounds");
     soundsDir.sort();
     selectedSoundsIdx = 0;
