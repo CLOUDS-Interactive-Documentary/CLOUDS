@@ -58,29 +58,29 @@ CloudsHUDController::CloudsHUDController(){
     margin = 40;
     bPaused = false;
     
-#ifdef OCULUS_RIFT
-    // set defaults
-    // there might be a better way of doing this...
-    layerDistance[CLOUDS_HUD_QUESTION]         = 300;
-    layerDistance[CLOUDS_HUD_LOWER_THIRD]      = 300;
-    layerDistance[CLOUDS_HUD_PROJECT_EXAMPLE]  = 300;
-    layerDistance[CLOUDS_HUD_MAP]              = 300;
-    
-    layerRotationH[CLOUDS_HUD_QUESTION]        = 0;
-    layerRotationH[CLOUDS_HUD_LOWER_THIRD]     = 0;
-    layerRotationH[CLOUDS_HUD_PROJECT_EXAMPLE] = 0;
-    layerRotationH[CLOUDS_HUD_MAP]             = 0;
-    
-    layerRotationV[CLOUDS_HUD_QUESTION]        = 0;
-    layerRotationV[CLOUDS_HUD_LOWER_THIRD]     = 0;
-    layerRotationV[CLOUDS_HUD_PROJECT_EXAMPLE] = 0;
-    layerRotationV[CLOUDS_HUD_MAP]             = 0;
-    
-    layerBillboard[CLOUDS_HUD_QUESTION]        = CLOUDS_HUD_BILLBOARD_CAMERA;
-    layerBillboard[CLOUDS_HUD_LOWER_THIRD]     = CLOUDS_HUD_BILLBOARD_CAMERA;
-    layerBillboard[CLOUDS_HUD_PROJECT_EXAMPLE] = CLOUDS_HUD_BILLBOARD_CAMERA;
-    layerBillboard[CLOUDS_HUD_MAP]             = CLOUDS_HUD_BILLBOARD_CAMERA;
-#endif
+//#ifdef OCULUS_RIFT
+//    // set defaults
+//    // there might be a better way of doing this...
+//    layerDistance[CLOUDS_HUD_QUESTION]         = 300;
+//    layerDistance[CLOUDS_HUD_LOWER_THIRD]      = 300;
+//    layerDistance[CLOUDS_HUD_PROJECT_EXAMPLE]  = 300;
+//    layerDistance[CLOUDS_HUD_MAP]              = 300;
+//    
+//    layerRotationH[CLOUDS_HUD_QUESTION]        = 0;
+//    layerRotationH[CLOUDS_HUD_LOWER_THIRD]     = 0;
+//    layerRotationH[CLOUDS_HUD_PROJECT_EXAMPLE] = 0;
+//    layerRotationH[CLOUDS_HUD_MAP]             = 0;
+//    
+//    layerRotationV[CLOUDS_HUD_QUESTION]        = 0;
+//    layerRotationV[CLOUDS_HUD_LOWER_THIRD]     = 0;
+//    layerRotationV[CLOUDS_HUD_PROJECT_EXAMPLE] = 0;
+//    layerRotationV[CLOUDS_HUD_MAP]             = 0;
+//    
+//    layerBillboard[CLOUDS_HUD_QUESTION]        = CLOUDS_HUD_BILLBOARD_CAMERA;
+//    layerBillboard[CLOUDS_HUD_LOWER_THIRD]     = CLOUDS_HUD_BILLBOARD_CAMERA;
+//    layerBillboard[CLOUDS_HUD_PROJECT_EXAMPLE] = CLOUDS_HUD_BILLBOARD_CAMERA;
+//    layerBillboard[CLOUDS_HUD_MAP]             = CLOUDS_HUD_BILLBOARD_CAMERA;
+//#endif
 }
 
 void CloudsHUDController::setup(){
@@ -1986,131 +1986,131 @@ void CloudsHUDController::drawBackersList(){
     ofPopMatrix();
 }
 
-#ifdef OCULUS_RIFT
-void CloudsHUDController::draw3D(ofCamera* cam, ofVec2f offset){
-    
-    if( !bDrawHud ){
-        return;
-	}
-    
-	ofPushStyle();
-	ofPushMatrix();
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
- 
-	glDisable(GL_DEPTH_TEST);
-    glDisable(GL_LIGHTING);
-    ofEnableAlphaBlending();
-	ofSetLineWidth(1);
-
-    drawLayer3D(CLOUDS_HUD_QUESTION, cam, offset);
-    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam, offset);
-	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam, offset);
-	drawLayer3D(CLOUDS_HUD_MAP, cam, offset);
-	
-    glPopAttrib();
-    
-	ofPopMatrix();
-	ofPopStyle();
-}
-
-void CloudsHUDController::drawLayer3D(CloudsHUDLayer layer, ofCamera* cam, ofVec2f& offset){
-    ofPushMatrix();
-    
-    // Hook up to the camera to keep the layer steady.
-    ofMatrix4x4 baseRotation;
-    ofTranslate(cam->getPosition());
-    baseRotation.makeRotationMatrix(cam->getOrientationQuat());
-    ofMultMatrix(baseRotation);
-    
-    ofVec3f camPos = ofVec3f();  //cam->getPosition();
-    
-    // Calculate the base position.
-    static ofVec3f yAxis = ofVec3f(0.0, 1.0, 0.0);
-    static ofVec3f xAxis = ofVec3f(1.0, 0.0, 0.0);
-//    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
-//    ofVec3f basePos(0, 0, -layerDistance[layer]);
-    ofVec3f basePos(offset.x, offset.y, -layerDistance[layer]);
-    basePos.rotate(layerRotationH[layer], camPos, yAxis);
-    basePos.rotate(layerRotationV[layer], camPos, xAxis);
-    
-    // Get the total layer bounds.
-    ofRectangle layerBounds;
-	for(int i = 0; i < layerSets[layer].size(); i++){
-        if (i == 0) layerBounds = layerSets[layer][i]->svg.getBounds();
-        else layerBounds.growToInclude(layerSets[layer][i]->svg.getBounds());
-	}
-    
-    // Translate to the layer center pos.
-    ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
-    ofTranslate(layerPos);
-
-	//JG Yebizo Festival -- Commenting out other billboard modes for now
-    //if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
-    //    // Billboard rotation using the Oculus orientation.
-    //    float angle;
-    //    ofVec3f axis;
-    //    CloudsVisualSystem::getOculusRift().getOrientationQuat().getRotate(angle, axis);
-    //    ofRotate(angle, axis.x, axis.y, axis.z);
-    //    ofScale(-1, 1, 1);
-    //}
-//    else if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_CAMERA) {
-        // Billboard rotation using the camera.
-        ofNode node;
-        node.setPosition(layerPos);
-        node.lookAt(camPos);
-        ofVec3f axis;
-        float angle;
-        node.getOrientationQuat().getRotate(angle, axis);
-        ofRotate(angle, axis.x, axis.y, axis.z);
+//#ifdef OCULUS_RIFT
+//void CloudsHUDController::draw3D(ofCamera* cam, ofVec2f offset){
+//    
+//    if( !bDrawHud ){
+//        return;
+//	}
+//    
+//	ofPushStyle();
+//	ofPushMatrix();
+//    glPushAttrib(GL_ALL_ATTRIB_BITS);
+// 
+//	glDisable(GL_DEPTH_TEST);
+//    glDisable(GL_LIGHTING);
+//    ofEnableAlphaBlending();
+//	ofSetLineWidth(1);
+//
+//    drawLayer3D(CLOUDS_HUD_QUESTION, cam, offset);
+//    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam, offset);
+//	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam, offset);
+//	drawLayer3D(CLOUDS_HUD_MAP, cam, offset);
+//	
+//    glPopAttrib();
+//    
+//	ofPopMatrix();
+//	ofPopStyle();
+//}
+//
+//void CloudsHUDController::drawLayer3D(CloudsHUDLayer layer, ofCamera* cam, ofVec2f& offset){
+//    ofPushMatrix();
+//    
+//    // Hook up to the camera to keep the layer steady.
+//    ofMatrix4x4 baseRotation;
+//    ofTranslate(cam->getPosition());
+//    baseRotation.makeRotationMatrix(cam->getOrientationQuat());
+//    ofMultMatrix(baseRotation);
+//    
+//    ofVec3f camPos = ofVec3f();  //cam->getPosition();
+//    
+//    // Calculate the base position.
+//    static ofVec3f yAxis = ofVec3f(0.0, 1.0, 0.0);
+//    static ofVec3f xAxis = ofVec3f(1.0, 0.0, 0.0);
+////    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
+////    ofVec3f basePos(0, 0, -layerDistance[layer]);
+//    ofVec3f basePos(offset.x, offset.y, -layerDistance[layer]);
+//    basePos.rotate(layerRotationH[layer], camPos, yAxis);
+//    basePos.rotate(layerRotationV[layer], camPos, xAxis);
+//    
+//    // Get the total layer bounds.
+//    ofRectangle layerBounds;
+//	for(int i = 0; i < layerSets[layer].size(); i++){
+//        if (i == 0) layerBounds = layerSets[layer][i]->svg.getBounds();
+//        else layerBounds.growToInclude(layerSets[layer][i]->svg.getBounds());
+//	}
+//    
+//    // Translate to the layer center pos.
+//    ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
+//    ofTranslate(layerPos);
+//
+//	//JG Yebizo Festival -- Commenting out other billboard modes for now
+//    //if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
+//    //    // Billboard rotation using the Oculus orientation.
+//    //    float angle;
+//    //    ofVec3f axis;
+//    //    CloudsVisualSystem::getOculusRift().getOrientationQuat().getRotate(angle, axis);
+//    //    ofRotate(angle, axis.x, axis.y, axis.z);
+//    //    ofScale(-1, 1, 1);
+//    //}
+////    else if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_CAMERA) {
+//        // Billboard rotation using the camera.
+//        ofNode node;
+//        node.setPosition(layerPos);
+//        node.lookAt(camPos);
+//        ofVec3f axis;
+//        float angle;
+//        node.getOrientationQuat().getRotate(angle, axis);
+//        ofRotate(angle, axis.x, axis.y, axis.z);
+////    }
+////    else {
+//////        ofRotateY(layerRotationH[layer]);
+//////        ofRotateX(layerRotationV[layer]);
+////        ofScale(-1, 1, 1);
+////    }
+//    
+//    // Debug circle.
+////    ofSetColor(255);
+////    ofCircle(0, 0, 25);
+//    
+//    // Transform for rendering the layer.
+//    ofScale(-scaleAmt, -scaleAmt, 1);
+//    ofTranslate(-layerBounds.getCenter());
+//
+//    // Draw the video player if we're on the right layer.
+//    if (layer == CLOUDS_HUD_PROJECT_EXAMPLE && videoPlayer.isPlaying()) {
+//        ofSetColor(255, 255, 255, 255*0.7);
+//        if( !bSkipAVideoFrame ){
+////            videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
+//        }
 //    }
-//    else {
-////        ofRotateY(layerRotationH[layer]);
-////        ofRotateX(layerRotationV[layer]);
-//        ofScale(-1, 1, 1);
-//    }
-    
-    // Debug circle.
+//    
+//    // Draw the layer.
 //    ofSetColor(255);
-//    ofCircle(0, 0, 25);
-    
-    // Transform for rendering the layer.
-    ofScale(-scaleAmt, -scaleAmt, 1);
-    ofTranslate(-layerBounds.getCenter());
-
-    // Draw the video player if we're on the right layer.
-    if (layer == CLOUDS_HUD_PROJECT_EXAMPLE && videoPlayer.isPlaying()) {
-        ofSetColor(255, 255, 255, 255*0.7);
-        if( !bSkipAVideoFrame ){
-//            videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
-        }
-    }
-    
-    // Draw the layer.
-    ofSetColor(255);
-    drawLayer(layer);
-    
-    // Draw the home button if we're on the right layer.
-    if (layer == CLOUDS_HUD_LOWER_THIRD && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) {
-        home.draw();
-    }
-    
-    // Draw the associated text labels.
-    for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
-        bool bFound = false;
-        for(int i = 0; i < layerSets[layer].size(); i++){
-            if (layerSets[layer][i]->svg.getMeshByID(it->first) != NULL) {
-                bFound = true;
-                break;
-            }
-        }
-        if (bFound) {
-            (it->second)->draw();
-        }
-    }
-    
-    ofPopMatrix();
-}
-#endif
+//    drawLayer(layer);
+//    
+//    // Draw the home button if we're on the right layer.
+//    if (layer == CLOUDS_HUD_LOWER_THIRD && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) {
+//        home.draw();
+//    }
+//    
+//    // Draw the associated text labels.
+//    for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
+//        bool bFound = false;
+//        for(int i = 0; i < layerSets[layer].size(); i++){
+//            if (layerSets[layer][i]->svg.getMeshByID(it->first) != NULL) {
+//                bFound = true;
+//                break;
+//            }
+//        }
+//        if (bFound) {
+//            (it->second)->draw();
+//        }
+//    }
+//    
+//    ofPopMatrix();
+//}
+//#endif
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
 	

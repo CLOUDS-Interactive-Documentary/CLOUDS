@@ -60,7 +60,7 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 #ifdef OCULUS_RIFT
 	subtitleFontSize = 20;
 	currentSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);
-    nextSubtitles->setup(GetFontPath(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);;
+    nextSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);;
 	currentSubtitles->lineHeight = .5;
 	nextSubtitles->lineHeight = .5;
 #else

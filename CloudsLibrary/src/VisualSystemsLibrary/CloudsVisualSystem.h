@@ -274,11 +274,11 @@ class CloudsVisualSystem {
     void setupOculusGui();
 	void guiOculusEvent(ofxUIEventArgs &e);
     
-#ifdef CLOUDS_HUD
-    CloudsHUDController* hud;
-    void setupHUDGui();
-	void guiHUDEvent(ofxUIEventArgs &e);
-#endif
+//#ifdef CLOUDS_HUD
+//    CloudsHUDController* hud;
+//    void setupHUDGui();
+//	void guiHUDEvent(ofxUIEventArgs &e);
+//#endif
 	
 #endif
     
@@ -386,7 +386,7 @@ class CloudsVisualSystem {
     ofxUISuperCanvas *kinectGui;
 #elif defined(OCULUS_RIFT)
     ofxUISuperCanvas *oculusGui;
-    ofxUISuperCanvas *hudGui;
+//    ofxUISuperCanvas *hudGui;
 #endif
     
 	void stackGuiWindows();
