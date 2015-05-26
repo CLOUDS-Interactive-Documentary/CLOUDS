@@ -164,8 +164,9 @@ void CloudsPlaybackController::clearAct(){
 	currentAct->unregisterEvents(this);
 	currentAct->unregisterEvents(&run);
 	currentAct->unregisterEvents(&hud);
+	#ifdef CLOUDS_INSTALLATION
 	currentAct->unregisterEvents(&oscSender);
-	
+	#endif
     delete currentAct;
     currentAct = NULL;
 	clusterMap->setAct(NULL);
@@ -387,8 +388,7 @@ void CloudsPlaybackController::threadedFunction(){
 	if(!isThreadRunning()) return;
     introSequence->percentLoaded = 0.6;
 	
-#ifndef OCULUS_RIFT
-	////COMMUNICATION
+#ifdef CLOUDS_INSTALLATION
 	oscSender.setup();
 #endif
 	
@@ -694,9 +694,9 @@ void CloudsPlaybackController::showIntro(){
     
 	showingVisualSystem = true;
 	showingIntro = true;
-    
-    oscSender.reset();
-    
+#ifdef CLOUDS_INSTALLATION
+	oscSender.reset();
+#endif
     hud.clearQuestion();
 	hud.animateOff();
 }
@@ -767,8 +767,9 @@ void CloudsPlaybackController::playCurrentAct(){
 	currentAct->registerEvents(this);
     currentAct->registerEvents(&run);
 	currentAct->registerEvents(&hud);
+#ifdef CLOUDS_INSTALLATION
 	currentAct->registerEvents(&oscSender);
-	
+#endif
 	currentAct->play();
 }
 
@@ -832,10 +833,12 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 #endif
 	
-    if(args.key == 'R'){
+   #ifdef CLOUDS_INSTALLATION
+	if(args.key == 'R'){
         oscSender.reset();
     }
-	
+	#endif
+
 	if(args.key == 'B'){
 		GetCloudsAudioEvents()->respawn = true;
 	}
