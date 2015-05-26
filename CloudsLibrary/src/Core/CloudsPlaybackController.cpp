@@ -295,14 +295,14 @@ void CloudsPlaybackController::setup(){
 	cout << "*****LOAD STEP*** STARTING HUD" << endl;
 	hud.setup();
 
-#ifdef OCULUS_RIFT
-    // Link the HUD.
-    rgbdVisualSystem->hud = &hud;
-    rgbdVisualSystem->setupHUDGui();
-    
-    introSequence->hud = &hud;
-    introSequence->setupHUDGui();
-#endif
+//#ifdef OCULUS_RIFT
+//    // Link the HUD.
+//    rgbdVisualSystem->hud = &hud;
+//    rgbdVisualSystem->setupHUDGui();
+//    
+//    introSequence->hud = &hud;
+//    introSequence->setupHUDGui();
+//#endif
     
 #ifdef VHX_MEDIA
     //availability.setPingAddress("www.vhx.tv");

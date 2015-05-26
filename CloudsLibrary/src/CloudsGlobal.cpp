@@ -69,7 +69,6 @@ string GetCloudsMediaPath(){
 		if(ofDirectory("../../../CloudsDataMedia").exists()){
 			mediaRootPath = "../../../CloudsDataMedia/";
 		}
-
     }
     
     //not development ...

@@ -443,7 +443,8 @@ void CloudsIntroSequence::updateWaiting(){
 	}
 	
 	if(introNodeThree.finished){
-		startedOnclick = true;
+        //TODO: switch to state changes for Oculus Intro
+		//startedOnclick = true;
 		timeline->play();
 	}
     #endif
@@ -1253,28 +1254,29 @@ void CloudsIntroSequence::drawHelperType(){
 
 	
 	#ifdef OCULUS_RIFT
-	if(!startedOnclick){
-		if(introNodeThree.hover || introNodeTwo.finished){
-			helpHoverText = "< " + GetTranslationForString("LOOK CENTER");
-			basePosition = introNodeTwo.worldPosition;
-			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
-										   CalibrationNode::nodeActivatedTime,
-										   CalibrationNode::nodeActivatedTime+.8,0.0,.8,true), 2.) * (1.0 - introNodeThree.percentComplete);
-		}
-		else if(introNodeTwo.hover || introNodeOne.finished){
-			helpHoverText = GetTranslationForString("LOOK RIGHT") + " >";
-			basePosition = introNodeOne.worldPosition;
-			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
-										   CalibrationNode::nodeActivatedTime,
-										   CalibrationNode::nodeActivatedTime+.8,0.0,.8,true), 2.);
-		}
-		else {
-			helpHoverText = "< " + GetTranslationForString("LOOK LEFT");
-			basePosition = introNodeThree.worldPosition;
-			helperTextOpacity = (currentTitleOpacity - titleTypeOpacity) * (1.0 - introNodeOne.percentComplete);
-		}
-		helperFont.setLetterSpacing(helperFontTracking);
-	}
+    //TODO: REDO NODES FOR INTRO
+//	if(!startedOnclick){
+//		if(introNodeThree.hover || introNodeTwo.finished){
+//			helpHoverText = "< " + GetTranslationForString("LOOK CENTER");
+//			basePosition = introNodeTwo.worldPosition;
+//			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
+//										   CalibrationNode::nodeActivatedTime,
+//										   CalibrationNode::nodeActivatedTime+.8,0.0,.8,true), 2.) * (1.0 - introNodeThree.percentComplete);
+//		}
+//		else if(introNodeTwo.hover || introNodeOne.finished){
+//			helpHoverText = GetTranslationForString("LOOK RIGHT") + " >";
+//			basePosition = introNodeOne.worldPosition;
+//			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
+//										   CalibrationNode::nodeActivatedTime,
+//										   CalibrationNode::nodeActivatedTime+.8,0.0,.8,true), 2.);
+//		}
+//		else {
+//			helpHoverText = "< " + GetTranslationForString("LOOK LEFT");
+//			basePosition = introNodeThree.worldPosition;
+//			helperTextOpacity = (currentTitleOpacity - titleTypeOpacity) * (1.0 - introNodeOne.percentComplete);
+//		}
+//		helperFont.setLetterSpacing(helperFontTracking);
+//	}
 
 	#endif
 
