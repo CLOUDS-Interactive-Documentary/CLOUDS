@@ -16,6 +16,9 @@
 #include "CloudsHUDLayer.h"
 #include "CloudsVisualSystem.h"
 
+bool listSort(CloudsHUDResearchButton b, CloudsHUDResearchButton a){
+    return b.label < a.label;
+}
 
 CloudsHUDController::CloudsHUDController(){
 
@@ -1424,13 +1427,19 @@ void CloudsHUDController::setTopics(const set<string>& topics){
     
     int i = 0;
     for(set<string>::iterator it = topics.begin(); it != topics.end(); it++){
-        topicList.buttons[i].top = i * researchScroller.scrollIncrement;
         topicList.buttons[i].tag = *it;
         topicList.buttons[i].label = ofToUpper(*it);
         topicList.buttons[i].parentTab = CLOUDS_HUD_RESEARCH_TAB_TOPICS;
         i++;
     }
     
+    sort(topicList.buttons.begin(), topicList.buttons.end(), listSort);
+    
+    for(i = 0; i < topicList.buttons.size(); i++){
+        topicList.buttons[i].top = i * researchScroller.scrollIncrement;
+    }
+
+
     topicList.totalScrollHeight = topicList.buttons.back().top + researchScroller.scrollIncrement;
     topicList.scrollPosition = 0;
 }
@@ -1445,11 +1454,16 @@ void CloudsHUDController::populateSpeakers(){
             continue;
         }
         peopleList.buttons.push_back(CloudsHUDResearchButton());
-        peopleList.buttons[i].top = i * researchScroller.scrollIncrement;
         peopleList.buttons[i].tag = it->first;
         peopleList.buttons[i].label = it->second.firstName + " " + it->second.lastName;
         peopleList.buttons[i].parentTab = CLOUDS_HUD_RESEARCH_TAB_PEOPLE;
         i++;
+    }
+    
+    sort(peopleList.buttons.begin(), peopleList.buttons.end(), listSort);
+    
+    for(i = 0; i < peopleList.buttons.size(); i++){
+        peopleList.buttons[i].top = i * researchScroller.scrollIncrement;
     }
     
     peopleList.totalScrollHeight = peopleList.buttons.back().top + researchScroller.scrollIncrement;
@@ -1463,13 +1477,17 @@ void CloudsHUDController::setVisuals(map<string, CloudsVisualSystemCredit>& visu
 
     int i = 0;
     for(map<string, CloudsVisualSystemCredit>::iterator it = visuals.begin(); it != visuals.end(); it++){
-        visualsList.buttons[i].top = i * researchScroller.scrollIncrement;
         visualsList.buttons[i].tag = it->first;
         visualsList.buttons[i].label = ofToUpper(it->second.title);
         visualsList.buttons[i].parentTab = CLOUDS_HUD_RESEARCH_TAB_VISUALS;
         i++;
     }
     
+    sort(visualsList.buttons.begin(), visualsList.buttons.end(), listSort);
+    
+    for(i = 0; i < visualsList.buttons.size(); i++){
+        visualsList.buttons[i].top = i * researchScroller.scrollIncrement;
+    }
     visualsList.totalScrollHeight = visualsList.buttons.back().top + researchScroller.scrollIncrement;
     visualsList.scrollPosition = 0;
 }

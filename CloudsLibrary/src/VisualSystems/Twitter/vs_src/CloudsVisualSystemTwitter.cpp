@@ -1338,7 +1338,7 @@ void CloudsVisualSystemTwitter::selfDraw()
                     float attenuate = 1.0;
                     if(ofToLower(tweeters[i]->name) == lowCaseSelect){
                         //continue;
-                        attenuate = ofMap(ofGetElapsedTimef(), selectedPersonChangedTime, selectedPersonChangedTime+.5, 1.0, .2);
+                        attenuate = ofMap(ofGetElapsedTimef(), selectedPersonChangedTime, selectedPersonChangedTime+.5, 1.0, .2, true);
                     }
                     drawText(bDrawFullNames ? tweeters[i]->fullName : tweeters[i]->name,
                              tweeters[i]->billboardMat,tweeters[i]->attenuation * attenuate);
