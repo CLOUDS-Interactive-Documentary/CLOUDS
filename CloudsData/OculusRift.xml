@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>OculusRift</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>443.000000000</XPosition>
-    <YPosition>242.000000000</YPosition>
+    <XPosition>652.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -74,7 +74,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SUBTITLE HUD Z</Name>
-    <Value>-700.000000000</Value>
+    <Value>-1226.923095703</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

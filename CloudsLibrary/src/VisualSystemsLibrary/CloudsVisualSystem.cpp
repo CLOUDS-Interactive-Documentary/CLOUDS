@@ -45,7 +45,7 @@ static ofVideoPlayer* selectLow = NULL;
 
 static ofxFTGLFont subtitleNameFont;
 static int subtitleNameFontSize = 24;
-
+float CloudsVisualSystem::subtitleHudZ = -300;
 
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
@@ -267,7 +267,6 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	subtitle3DBasePosY = 0;
 	subtitle3DBasePosZ = 0;
 	subtitle3DScale = 1.0;
-	subtitleHudZ = -300;
 	subtitleHudY = .5;
 
 #ifdef OCULUS_RIFT
@@ -464,7 +463,7 @@ void CloudsVisualSystem::playSystem(){
 
 		ofRegisterKeyEvents(this);
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
-		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
+		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw, OF_EVENT_ORDER_APP);
 		
 		bIsPlaying = true;
 		
@@ -504,7 +503,7 @@ void CloudsVisualSystem::stopSystem(){
 		CloudsUnregisterInputEvents(this);
 		ofUnregisterKeyEvents(this);
 		ofRemoveListener(ofEvents().update, this, &CloudsVisualSystem::update);
-		ofRemoveListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
+		ofRemoveListener(ofEvents().draw, this, &CloudsVisualSystem::draw, OF_EVENT_ORDER_APP);
 			
 		timeline->stop();
 		cameraTrack->lockCameraToTrack = false;
@@ -628,6 +627,8 @@ bool CloudsVisualSystem::updateInterludeInterface(){
 void CloudsVisualSystem::draw(ofEventArgs & args)
 {
 
+//    cout << "SYSTEM DRAW " << ofGetElapsedTimef() << endl;
+    
 	if(!updateCyclced)
 		return;
 	
@@ -645,6 +646,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             getOculusRift().endBackground();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
+            /*
 			//JG removing this before Yebizo festival, no visual systems use overlay in the rift
 			getOculusRift().beginOverlay(subtitleHudZ, 1920,1080);
 			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
@@ -655,12 +657,10 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			if(GetLanguage() != "ENGLISH" || speakerFirstName == "Higa" || speakerFirstName == "Patricio"){
 				getRGBDVideoPlayer().drawSubtitles(650,subtitleHeight, questionSelectFade);
-			}	
-
-//			string speakerFullName = speakerFirstName + " " + speakerLastName;
+			}
+            
 			if(getRGBDVideoPlayer().isPlaying()){
 				if(!subtitleNameFont.isLoaded()){
-//					subtitleNameFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", subtitleNameFontSize);
                     subtitleNameFont.loadFont(CloudsCryptoGetFont("Blender-BOOK.ttf"), subtitleNameFontSize);
 				}
 
@@ -675,7 +675,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			}
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
 			getOculusRift().endOverlay();
-			
+			*/
+            
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();
                 if(bClearBackground){
@@ -3354,7 +3355,7 @@ void CloudsVisualSystem::setupOculusGui()
 	oculusGui->addSlider("SUBTITLE Z POS", 0, -100, &subtitle3DBasePosZ);
 	oculusGui->addSlider("SUBTITLE SCALE", 0,  1.0, &subtitle3DScale);
 	oculusGui->addSpacer();
-	oculusGui->addSlider("SUBTITLE HUD Z", 0, -700, &subtitleHudZ);
+	oculusGui->addSlider("SUBTITLE HUD Z", -500, -1700, &subtitleHudZ);
 	oculusGui->addSlider("SUBTITLE HUD Y", 0,  1.0, &subtitleHudY);
 
     oculusGui->autoSizeToFitWidgets();

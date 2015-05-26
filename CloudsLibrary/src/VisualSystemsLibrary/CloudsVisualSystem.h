@@ -364,7 +364,7 @@ class CloudsVisualSystem {
 	float subtitle3DBasePosZ;
 	float subtitle3DScale;
 
-	float subtitleHudZ;
+	static float subtitleHudZ;
 	float subtitleHudY;
 
   protected:

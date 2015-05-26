@@ -35,34 +35,21 @@ string GetTranslationForString(string toTranslate){
 }
 
 ofBuffer& GetThinFontBuffer(){
-//	if(GetLanguage() == "JAPANESE"){
-//		return GetCloudsDataPath() + "font/AxisStd-Regular.otf";
-//	}
-//	else{
-//		return GetCloudsDataPath() + "font/Blender-THIN.ttf";
-//	}
     return CloudsCryptoGetFont("Blender-THIN.ttf");
 }
 //--------------------------------------
 ofBuffer& GetMediumFontBuffer(){
-//	if(GetLanguage() == "JAPANESE"){
-//		return GetCloudsDataPath() + "font/AxisStd-Regular.otf";
-//	}
-//	else{
-//		return 	GetCloudsDataPath() + "font/Blender-MEDIUM.ttf";
-//	}
     return CloudsCryptoGetFont("Blender-MEDIUM.ttf");
 }
 
+ofBuffer& GetBoldFontBuffer(){
+    return CloudsCryptoGetFont("Blender-BOLD.ttf");
+}
+
 ofBuffer& GetFontBuffer(){
-//	if(GetLanguage() == "JAPANESE"){
-//		return GetCloudsDataPath() + "font/AxisStd-Regular.otf";
-//	}
-//	else{
-//		return 	GetCloudsDataPath() + "font/Blender-BOOK.ttf";
-//	}
     return CloudsCryptoGetFont("Blender-BOOK.ttf");
 }
+
 
 string utf8_substr(string originalString, int maxLength)
 {

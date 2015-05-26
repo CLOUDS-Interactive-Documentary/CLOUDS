@@ -163,6 +163,7 @@ class CloudsHUDController {
     bool didPause();
     bool didUnpause();    
     bool isPaused();
+    void togglePause();
     
     void showAbout();
     void hideAbout();

@@ -194,7 +194,8 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 		ofRemoveListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
         
 		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
-		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+        ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::preDraw, OF_EVENT_ORDER_BEFORE_APP);
+		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw, OF_EVENT_ORDER_AFTER_APP);
         
         ofRemoveListener(CloudsIntroSequence::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
         ofRemoveListener(CloudsIntroSequence::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
@@ -239,7 +240,8 @@ void CloudsPlaybackController::setup(){
         ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 		
 		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
-		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::preDraw, OF_EVENT_ORDER_BEFORE_APP);
+		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw, OF_EVENT_ORDER_AFTER_APP);
         
         ofAddListener(CloudsIntroSequence::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
         ofAddListener(CloudsIntroSequence::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
@@ -847,6 +849,10 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	if(args.key == 'J'){
 		SetLanguage("JAPANESE");
 	}
+    
+    if(args.key == ' ' && bShowingAct){
+        hud.togglePause();
+    }
 
 }
 
@@ -922,7 +928,7 @@ void CloudsPlaybackController::mouseScrolled(ofMouseEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(ofEventArgs & args){
 
-
+//    cout << "UPDATE " << ofGetElapsedTimef() << endl;
 
     GetCloudsInput()->bUserBegan = !showingIntro || (showingIntro && introSequence->userHasBegun());
 
@@ -1948,10 +1954,49 @@ void CloudsPlaybackController::drawKinectFeedback(){
 }
 #endif
 
+//--------------------------------------------------------------------
+void CloudsPlaybackController::preDraw(ofEventArgs& args){
+#ifdef OCULUS_RIFT
+//    cout << "PREDRAW " << ofGetElapsedTimef() << endl;
+    float hudDistance = CloudsVisualSystem::subtitleHudZ;
+    CloudsVisualSystem::getOculusRift().beginOverlay(hudDistance, 1920, 1080);
+    ofPushStyle();
+    
+//    ofSetColor(255, 9, 0);
+//    ofRect(0,0,1920,1080);
+    
+    ofPopStyle();
+    //TODO implement questions select fading on HUD
+    // CloudsVisualSystem:: ... questionSelectFade
+    CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
+    hud.draw();
+    
+//    if(CloudsVisualSystem::getRGBDVideoPlayer().isPlaying()){
+////        if(!subtitleNameFont.isLoaded()){
+////            subtitleNameFont.loadFont(CloudsCryptoGetFont("Blender-BOOK.ttf"), subtitleNameFontSize);
+////        }
+////        
+//        string speakerFullName = speakerFirstName + " " + speakerLastName;
+//        float speakerNameWidth = subtitleNameFont.stringWidth(speakerFullName);
+//        ofPushStyle();
+////        ofSetColor(0,255*questionSelectFade);
+////        subtitleNameFont.drawString(speakerFullName, 650+2, subtitleHeight - 54+2);
+////        ofSetColor(255,255*questionSelectFade);
+//        subtitleNameFont.drawString(speakerFullName, 650, subtitleHeight - 54);
+//        ofPopStyle();
+////    }
+    //checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
+    
+    CloudsVisualSystem::getOculusRift().endOverlay();
+#endif
+}
+
 //This is where everything in clouds is drawn
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
     
+//    cout << "DRAW " << ofGetElapsedTimef() << endl;
+
     ofBackground(0);
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable(GL_DEPTH_TEST);

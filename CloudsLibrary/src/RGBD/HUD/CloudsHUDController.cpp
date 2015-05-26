@@ -276,12 +276,13 @@ void CloudsHUDController::calculateFontSizes(){
     // temporary allocate
     int minFontSize = 1;
     int maxFontSize = 70;
-//#ifdef OCULUS_RIFT
-//	ofBuffer& fontBuffer = GetMediumFontBuffer();
-//#else
+#ifdef OCULUS_RIFT
+	ofBuffer& thinFontBuffer = GetMediumFontBuffer();
+	ofBuffer& bookFontBuffer = GetBoldFontBuffer();
+#else
 	ofBuffer& thinFontBuffer = GetThinFontBuffer();
     ofBuffer& bookFontBuffer = GetFontBuffer();
-//#endif
+#endif
     
     for(int i = minFontSize; i < maxFontSize; i++){
         ofxFTGLFont *tmp = new ofxFTGLFont();
@@ -311,8 +312,11 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("SeeMoreTextBox", bookFontBuffer);
     getLabelForLayer("NextButtonTextBox", bookFontBuffer);
     getLabelForLayer("BioTitleTextBox", bookFontBuffer);
+#ifdef OCULUS_RIFT
+    getLabelForLayer("BioTextBox", bookFontBuffer,35,false,true, 15); //use layout
+#else
     getLabelForLayer("BioTextBox", bookFontBuffer,35,false,true); //use layout
-    
+#endif
     getLabelForLayer("ResetButtonTextBox", bookFontBuffer);
     //research stuff
     ResearchTopicListLabel = getLabelForLayer("ListTextBoxes", bookFontBuffer);
@@ -609,7 +613,10 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
             break;
         }
     }
-    
+    //give it a boost!
+#ifdef OCULUS_RIFT
+    fontSize += 2;
+#endif
     return fontSize;
 }
 
@@ -986,8 +993,13 @@ void CloudsHUDController::update(){
 		allLayers[i]->update();
 	}
     
+#ifdef OCULUS_RIFT
+	float scaleToWidth  = 1920;
+	float scaleToHeight = 1080;
+#else
 	float scaleToWidth  = ofGetWidth();
 	float scaleToHeight = ofGetHeight();
+#endif
     
 	float xScale = scaleToWidth/hudBounds.width;
 	float yScale = scaleToHeight/hudBounds.height;
@@ -1864,6 +1876,15 @@ bool CloudsHUDController::isPaused(){
     return hudOpenMap[CLOUDS_HUD_PAUSE];
 }
 
+void CloudsHUDController::togglePause(){
+    if(isPaused()){
+        unpause();
+    }
+    else{
+        pause();
+    }
+}
+
 bool CloudsHUDController::didPause(){
     bool ret = bJustPaused;
     bJustPaused = false;
@@ -1886,7 +1907,9 @@ void CloudsHUDController::draw(){
 	ofPushMatrix();
 	ofEnableAlphaBlending();
 	ofSetLineWidth(1);
+#ifndef OCULUS_RIFT
     ofTranslate( (ofGetWindowSize() - getSize() ) * 0.5 );
+#endif
     ofScale( scaleAmt, scaleAmt );
     
     if( videoPlayer.isPlaying() && !bSkipAVideoFrame && hudOpenMap[CLOUDS_HUD_PROJECT_EXAMPLE] ){

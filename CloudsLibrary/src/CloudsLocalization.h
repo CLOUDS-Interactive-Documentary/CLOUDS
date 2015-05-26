@@ -16,6 +16,8 @@ string GetTranslationForString(string toTranslate);
 //--------------------------------------
 ofBuffer& GetFontBuffer();
 //--------------------------------------
+ofBuffer& GetBoldFontBuffer();
+//--------------------------------------
 ofBuffer& GetMediumFontBuffer();
 //--------------------------------------
 ofBuffer& GetThinFontBuffer();

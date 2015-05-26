@@ -57,6 +57,7 @@ class CloudsPlaybackController : public ofThread {
 	//update and draw to the screen, this will always
 	//show the main CLOUDS experience as pointclouds or visual systems
 	void update(ofEventArgs& args);
+	void preDraw(ofEventArgs& args);
 	void draw(ofEventArgs& args);
 	
 	void keyPressed(ofKeyEventArgs & args);
@@ -151,7 +152,7 @@ class CloudsPlaybackController : public ofThread {
     bool resumingActFromIntro;
 
     void drawRenderTarget();
-    void drawInterludeInterface();
+    //void drawInterludeInterface();
 	void drawInterludePanel(ofRectangle rect, string promptText, bool hovering, int tracking );
 #ifdef KINECT_INPUT
     void drawKinectFeedback();
