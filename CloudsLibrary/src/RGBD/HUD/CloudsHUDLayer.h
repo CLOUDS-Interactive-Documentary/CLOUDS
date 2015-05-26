@@ -47,4 +47,5 @@ class CloudsHUDLayer
   protected:
     bool bIsOpen;
     bool bIsHovering;
+    string fileName;
 };

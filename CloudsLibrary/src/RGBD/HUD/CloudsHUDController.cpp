@@ -277,7 +277,7 @@ void CloudsHUDController::calculateFontSizes(){
     int minFontSize = 1;
     int maxFontSize = 70;
 #ifdef OCULUS_RIFT
-	ofBuffer& thinFontBuffer = GetMediumFontBuffer();
+	ofBuffer& thinFontBuffer = GetFontBuffer();
 	ofBuffer& bookFontBuffer = GetBoldFontBuffer();
 #else
 	ofBuffer& thinFontBuffer = GetThinFontBuffer();
@@ -529,6 +529,18 @@ void CloudsHUDController::calculateFontSizes(){
     currentPreviewSelection = hudLabelMap["ExploreTextBox"];
 
     
+    //hide RESET
+#ifdef OCULUS_RIFT
+    hudLabelMap["ResetButtonTextBox"]->setText("", false);
+    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonBacking")->visible = false;
+    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ResetButtonFrame")->visible = false;
+    attachTriangleToLabel(hudLabelMap["ResetButtonTextBox"], CLOUDS_HUD_PAUSE, "ResetButtonSpace", CLOUDS_HUD_TRIANGLE_NONE);
+    attachTriangleToLabel(hudLabelMap["ExploreTextBox"], CLOUDS_HUD_PAUSE, "ExploreButtonArrowSpace", CLOUDS_HUD_TRIANGLE_NONE);
+    attachTriangleToLabel(hudLabelMap["SeeMoreTextBox"], CLOUDS_HUD_PAUSE, "SeeMoreButtonArrowSpace", CLOUDS_HUD_TRIANGLE_NONE);
+    hudLabelMap["ExploreTextBox"]->setText("", false);
+    hudLabelMap["SeeMoreTextBox"]->setText("", false);
+    layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreTitleDivide")->visible = false;
+#endif
 }
 
 void CloudsHUDController::setupBacking(string labelName, CloudsHUDLayerSet layer, string backingName){
@@ -615,7 +627,7 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
     }
     //give it a boost!
 #ifdef OCULUS_RIFT
-    fontSize += 2;
+    fontSize += 3;
 #endif
     return fontSize;
 }
@@ -1055,7 +1067,7 @@ void CloudsHUDController::update(){
             currentPreviewSelection = hudLabelMap["ExploreTextBox"];
         }
         else if(hudLabelMap["SeeMoreTextBox"]->isHovered()){
-            currentPreviewImage = &peopleMapPreview;        
+            currentPreviewImage = &peopleMapPreview;
             currentPreviewSelection = hudLabelMap["SeeMoreTextBox"];
         }
         
@@ -1372,7 +1384,9 @@ void CloudsHUDController::pause(){
     hudLabelMap["ExploreTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["ExploreTextBox"]->baseInteractiveBounds);
     hudLabelMap["SeeMoreTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["SeeMoreTextBox"]->baseInteractiveBounds);
  
+#ifndef OCULUS_RIFT
     animateOff( CLOUDS_HUD_QUESTION );
+#endif
     animateOff( CLOUDS_HUD_NEXT );
     if(bProjectExampleDisplayed){
         animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
@@ -1404,8 +1418,6 @@ void CloudsHUDController::unpause(bool force){
         animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
     }
     
-    //if(!hudOpenMap[CLOUDS_HUD_HOME]){
-    
     animateOn(CLOUDS_HUD_HOME);
     if(bClipIsPlaying || bVisualSystemDisplayed){
         animateOn(CLOUDS_HUD_LOWER_THIRD);
@@ -1423,13 +1435,11 @@ void CloudsHUDController::unpause(bool force){
 void CloudsHUDController::enteringVisuals(){
     hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("STOP"), false);
     attachTriangleToLabel(hudLabelMap["NextButtonTextBox"], CLOUDS_HUD_NEXT, "NextButtonArrowSpace", CLOUDS_HUD_TRIANGLE_SQUARE);
-
 }
 
 void CloudsHUDController::exitingVisuals(){
     hudLabelMap["NextButtonTextBox"]->setText(GetTranslationForString("NEXT"), false);
     attachTriangleToLabel(hudLabelMap["NextButtonTextBox"], CLOUDS_HUD_NEXT, "NextButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
-    
 }
 
 void CloudsHUDController::setTopics(const set<string>& topics){
@@ -1736,7 +1746,9 @@ bool CloudsHUDController::isResumeActHit(){
 }
 
 void CloudsHUDController::setSeeMoreName(string name){
+#ifndef OCULUS_RIFT
     hudLabelMap["SeeMoreTextBox"]->setText("SEE MORE OF " + ofToUpper(name), false);
+#endif
 }
 
 void CloudsHUDController::selectTopic(string topic){
@@ -1905,10 +1917,14 @@ void CloudsHUDController::draw(){
 	
 	ofPushStyle();
 	ofPushMatrix();
+    ofDisableLighting();
 	ofEnableAlphaBlending();
-	ofSetLineWidth(1);
-#ifndef OCULUS_RIFT
+#ifdef OCULUS_RIFT
+    ofSetLineWidth(4);
+#else
     ofTranslate( (ofGetWindowSize() - getSize() ) * 0.5 );
+    ofSetLineWidth(1);
+
 #endif
     ofScale( scaleAmt, scaleAmt );
     
@@ -1941,7 +1957,11 @@ void CloudsHUDController::draw(){
 
         ofPushStyle();
         if(currentPreviewSelection != NULL && currentPreviewImage != NULL){
+#ifdef OCULUS_RIFT
+            ofSetColor(255,255 * .8);
+#else
             ofSetColor(255, ofMap(currentPreviewSelection->hoverAlpha, 0, 1.0, .3, 1.0, true) * 255 * .8);
+#endif
             currentPreviewImage->draw(layers[CLOUDS_HUD_PAUSE]->svg.getMeshByID("ExploreSeeMoreVisualBacking")->bounds);
         }
         else{
@@ -1950,7 +1970,8 @@ void CloudsHUDController::draw(){
         }
         ofPopStyle();
     }
-
+    
+    ofEnableLighting();
 	ofPopMatrix();
 	ofPopStyle();
 }
@@ -2009,137 +2030,15 @@ void CloudsHUDController::drawBackersList(){
     ofPopMatrix();
 }
 
-//#ifdef OCULUS_RIFT
-//void CloudsHUDController::draw3D(ofCamera* cam, ofVec2f offset){
-//    
-//    if( !bDrawHud ){
-//        return;
-//	}
-//    
-//	ofPushStyle();
-//	ofPushMatrix();
-//    glPushAttrib(GL_ALL_ATTRIB_BITS);
-// 
-//	glDisable(GL_DEPTH_TEST);
-//    glDisable(GL_LIGHTING);
-//    ofEnableAlphaBlending();
-//	ofSetLineWidth(1);
-//
-//    drawLayer3D(CLOUDS_HUD_QUESTION, cam, offset);
-//    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam, offset);
-//	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam, offset);
-//	drawLayer3D(CLOUDS_HUD_MAP, cam, offset);
-//	
-//    glPopAttrib();
-//    
-//	ofPopMatrix();
-//	ofPopStyle();
-//}
-//
-//void CloudsHUDController::drawLayer3D(CloudsHUDLayer layer, ofCamera* cam, ofVec2f& offset){
-//    ofPushMatrix();
-//    
-//    // Hook up to the camera to keep the layer steady.
-//    ofMatrix4x4 baseRotation;
-//    ofTranslate(cam->getPosition());
-//    baseRotation.makeRotationMatrix(cam->getOrientationQuat());
-//    ofMultMatrix(baseRotation);
-//    
-//    ofVec3f camPos = ofVec3f();  //cam->getPosition();
-//    
-//    // Calculate the base position.
-//    static ofVec3f yAxis = ofVec3f(0.0, 1.0, 0.0);
-//    static ofVec3f xAxis = ofVec3f(1.0, 0.0, 0.0);
-////    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
-////    ofVec3f basePos(0, 0, -layerDistance[layer]);
-//    ofVec3f basePos(offset.x, offset.y, -layerDistance[layer]);
-//    basePos.rotate(layerRotationH[layer], camPos, yAxis);
-//    basePos.rotate(layerRotationV[layer], camPos, xAxis);
-//    
-//    // Get the total layer bounds.
-//    ofRectangle layerBounds;
-//	for(int i = 0; i < layerSets[layer].size(); i++){
-//        if (i == 0) layerBounds = layerSets[layer][i]->svg.getBounds();
-//        else layerBounds.growToInclude(layerSets[layer][i]->svg.getBounds());
-//	}
-//    
-//    // Translate to the layer center pos.
-//    ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
-//    ofTranslate(layerPos);
-//
-//	//JG Yebizo Festival -- Commenting out other billboard modes for now
-//    //if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
-//    //    // Billboard rotation using the Oculus orientation.
-//    //    float angle;
-//    //    ofVec3f axis;
-//    //    CloudsVisualSystem::getOculusRift().getOrientationQuat().getRotate(angle, axis);
-//    //    ofRotate(angle, axis.x, axis.y, axis.z);
-//    //    ofScale(-1, 1, 1);
-//    //}
-////    else if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_CAMERA) {
-//        // Billboard rotation using the camera.
-//        ofNode node;
-//        node.setPosition(layerPos);
-//        node.lookAt(camPos);
-//        ofVec3f axis;
-//        float angle;
-//        node.getOrientationQuat().getRotate(angle, axis);
-//        ofRotate(angle, axis.x, axis.y, axis.z);
-////    }
-////    else {
-//////        ofRotateY(layerRotationH[layer]);
-//////        ofRotateX(layerRotationV[layer]);
-////        ofScale(-1, 1, 1);
-////    }
-//    
-//    // Debug circle.
-////    ofSetColor(255);
-////    ofCircle(0, 0, 25);
-//    
-//    // Transform for rendering the layer.
-//    ofScale(-scaleAmt, -scaleAmt, 1);
-//    ofTranslate(-layerBounds.getCenter());
-//
-//    // Draw the video player if we're on the right layer.
-//    if (layer == CLOUDS_HUD_PROJECT_EXAMPLE && videoPlayer.isPlaying()) {
-//        ofSetColor(255, 255, 255, 255*0.7);
-//        if( !bSkipAVideoFrame ){
-////            videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
-//        }
-//    }
-//    
-//    // Draw the layer.
-//    ofSetColor(255);
-//    drawLayer(layer);
-//    
-//    // Draw the home button if we're on the right layer.
-//    if (layer == CLOUDS_HUD_LOWER_THIRD && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) {
-//        home.draw();
-//    }
-//    
-//    // Draw the associated text labels.
-//    for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
-//        bool bFound = false;
-//        for(int i = 0; i < layerSets[layer].size(); i++){
-//            if (layerSets[layer][i]->svg.getMeshByID(it->first) != NULL) {
-//                bFound = true;
-//                break;
-//            }
-//        }
-//        if (bFound) {
-//            (it->second)->draw();
-//        }
-//    }
-//    
-//    ofPopMatrix();
-//}
-//#endif
+
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
-	
-//    if(layer == CLOUDS_RESEARCH_PPL){
-//        cout << "animating on ppl" << endl;
-//    }
+#ifdef OCULUS_RIFT
+    if(layer == CLOUDS_HUD_NEXT){
+        return;
+    }
+#endif
+    
     for (map<CloudsHUDLayerSet, CloudsHUDLayer* >::iterator it = layers.begin(); it != layers.end(); ++it) {
         if (layer == it->first || layer == CLOUDS_HUD_ALL) {
             hudOpenMap[it->first] = true;
@@ -2165,14 +2064,6 @@ void CloudsHUDController::animateOff(){
 }
 
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
-    
-//    if(layer == CLOUDS_HUD_LOWER_THIRD){
-//        cout << "ANIMATING OUT LOWER THIRDS" << endl;
-//    }
-    
-//    if(layer == CLOUDS_HUD_QUESTION){
-//        cout << "ANIMATING OUT QUESTION" << endl;
-//    }
     
     if (isPlaying && (layer == CLOUDS_HUD_PROJECT_EXAMPLE  || layer == CLOUDS_HUD_ALL)) {
 		isPlaying = false;

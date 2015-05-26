@@ -18,8 +18,7 @@ CloudsHUDLayer::CloudsHUDLayer(){
     hoverStartTime = 0;
 
 	duration = 0;
-	//delayTime = 0;
-	//percentComplete = ofVec2f(0,0);
+
    	animateOnPercentComplete = 0;
     hoverOnPercentComplete = 0;
  
@@ -28,11 +27,7 @@ CloudsHUDLayer::CloudsHUDLayer(){
     bIsOpen = false;
     bIsHovering = false;
     bForceHover = false;
-    
-	//maxUpdateInterval = 1./60.;
-	//lastUpdateTime = 0;
-	//startPercent.x = .8;
-	//startPercent.y = .0;
+
 }
 
 void CloudsHUDLayer::load(string svgFilePath){
@@ -131,7 +126,10 @@ void CloudsHUDLayer::update(){
 
 void CloudsHUDLayer::draw(){
 	
-//	ofSetColor(255, 0, 0, 10);
+    if(!bIsOpen && !animatingFade){
+        return;
+    }
+    
 	if(!lineShader.isLoaded()){
 		lineShader.load(GetCloudsDataPath() + "shaders/secondaryDisplay");
 	}
@@ -149,13 +147,8 @@ void CloudsHUDLayer::draw(){
 	svg.drawStrokes();
 
 	lineShader.end();
-
-//    ofNoFill();
-//    ofRect(svg.getBounds());
     
 	ofPopStyle();
-    
-
 }
 
 bool CloudsHUDLayer::isOpen(){

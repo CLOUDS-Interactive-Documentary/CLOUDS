@@ -83,7 +83,7 @@ void CloudsHUDLabel::draw(){
     if(!bIsVisible && !bIsAnimatingOut){
         return;
     }
-    
+
     ofColor fillColor;
     if(bIsClicked || (tab && tabSelected) ){
         fillColor = CloudsColorTabFillSelectd;
