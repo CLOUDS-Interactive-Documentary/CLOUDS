@@ -115,7 +115,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     resumingAct = false;
     runningLatestVerion = true; //assume yes
     
-    GetGraphicsQualityLevel();
+
 	resetInterludeVariables();
 	
 
@@ -264,7 +264,8 @@ void CloudsPlaybackController::setup(){
 	}
     interludeInterfaceFont.loadFont(GetMediumFontBuffer(), 14);
 
-
+    GetGraphicsQualityLevel();
+    
 	cout << "*****LOAD STEP*** STARTING INTRO" << endl;
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();

@@ -245,17 +245,40 @@ string relinkFilePath(string filePath){
 CloudsVisualLevel GetGraphicsQualityLevel(){
 	if(!loadedVisualLevel){
         
-        string visualConfig = ofBufferFromFile( GetCloudsDataPath()+"/visual_quality_config.txt" ).getText();
-        trim(visualConfig);
-        
-        if( visualConfig == "FAST"){
-            visualLevel = FAST;
-        }else if( visualConfig == "PRETTY" ){
-            visualLevel = PRETTY;
-        }else{
-            visualLevel = PRETTY;
+        string qualityFilePath = GetCloudsDataPath(true)+"visual_quality_config.txt";
+        if(ofFile(qualityFilePath).exists()){
+            string visualConfig = ofBufferFromFile(qualityFilePath).getText();
+            trim(visualConfig);
+            
+            if( visualConfig == "FAST"){
+                visualLevel = FAST;
+            }
+            else if( visualConfig == "PRETTY" ){
+                visualLevel = PRETTY;
+            }
+            else{
+                ofLogError("GetGraphicsQualityLevel") << "Graphics Quality Level unrecognized: " << visualConfig;
+            }
         }
-		loadedVisualLevel = true;
+        else{
+            //auto detect based on card...
+            //TODO: this could be a lot more intelligent based on testing different graphics cards
+            string card     = reinterpret_cast<const char*>(glGetString(GL_RENDERER));
+            string vendor   = reinterpret_cast<const char*>(glGetString(GL_VENDOR));
+            string version  = reinterpret_cast<const char*>(glGetString(GL_VERSION));
+            
+            //cout << "GRAPHICS CARD IS " << card << " VENDOR IS " << vendor << " VERSION IS " << version << endl;
+            if( ofToLower(vendor).find("intel") != string::npos){
+                SetGraphicsQualityLevel(FAST);
+            }
+            else{
+                //assume nvidia or amd
+                SetGraphicsQualityLevel(PRETTY);
+            }
+            
+
+        }
+        loadedVisualLevel = true;
 	}
 	return visualLevel;
 }
@@ -267,7 +290,7 @@ void SetGraphicsQualityLevel(CloudsVisualLevel level){
     
     //save
     ofBuffer savebuf = ofBuffer(level == PRETTY ? "PRETTY" : "FAST");
-    ofBufferToFile(GetCloudsDataPath()+"/visual_quality_config.txt",  savebuf);
+    ofBufferToFile(GetCloudsDataPath(true)+"visual_quality_config.txt",  savebuf);
     
 }
 
