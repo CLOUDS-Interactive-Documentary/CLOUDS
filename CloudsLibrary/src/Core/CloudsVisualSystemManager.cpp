@@ -1060,13 +1060,14 @@ bool CloudsVisualSystemManager::generateCloudsDataCopyScript(){
                 path = path.substr(6);
                 
                // bash.append( "mkdir "+newDataPath+"CloudsData/"+cloudsData.getName(i)+"\n" );
+                bash.append( "echo copying: " +newDataPath+"CloudsData/\n" );
                 bash.append( "cp -r "+path+" "+newDataPath+"CloudsData/\n" );
 
             }else{
                 
                 auto path = cloudsData.getPath(i);
                 path = path.substr(6);
-                
+                bash.append( "echo copying: " +newDataPath+"CloudsData/"+cloudsData.getName(i)+"\n" );
                 bash.append( "cp "+path+" "+newDataPath+"CloudsData/"+cloudsData.getName(i)+"\n" );
                 
             }
@@ -1087,11 +1088,13 @@ bool CloudsVisualSystemManager::generateCloudsDataCopyScript(){
                 auto path = cloudsDataIgnored.getPath(i);
                 path = path.substr(6);
                 //bash.append( "mkdir "+newDataPath+"CloudsData/"+cloudsData.getName(i)+"\n" );
+                bash.append( "echo copying: " + newDataPath + "CloudsData/\n");
                 bash.append( "cp -r "+path+" "+newDataPath+"CloudsData/\n" );
                 
             }else{
                 auto path = cloudsDataIgnored.getPath(i);
                 path = path.substr(6);
+                bash.append( "echo copying: " + newDataPath+"CloudsData/"+cloudsDataIgnored.getName(i)+"\n");
                 bash.append( "cp "+path+" "+newDataPath+"CloudsData/"+cloudsDataIgnored.getName(i)+"\n" );
                 
             }
@@ -1107,7 +1110,7 @@ bool CloudsVisualSystemManager::generateCloudsDataCopyScript(){
         vs.listDir();
         
         auto vsPath = newDataPath+"CloudsData/visualsystems/"+cloudsDataVS.getName(i);
-        
+        bash.append( "echo creating: " +vsPath+"\n" );
         bash.append( "mkdir "+vsPath+"\n" );
         bash.append( "mkdir "+vsPath+"/Presets\n" );
         
@@ -1138,6 +1141,7 @@ bool CloudsVisualSystemManager::generateCloudsDataCopyScript(){
                                 auto path = preset_dir.getPath(pp);
                                 path = path.substr(6);
                                 
+                                bash.append( "echo copying presets: " + cloudsDataVS.getName(i) + "\n");
                                 bash.append( "cp -r "+path+" $copyLocation/"+cloudsDataVS.getName(i)+"/Presets/\n" );
                                 
                             }

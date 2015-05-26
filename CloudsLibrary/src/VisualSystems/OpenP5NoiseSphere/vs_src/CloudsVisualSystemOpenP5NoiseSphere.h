@@ -12,14 +12,14 @@
 
 #include "CloudsVisualSystem.h"
 
-#include "fft.h"
-#include "fftOctaveAnalyzer.h"
+//#include "fft.h"
+//#include "fftOctaveAnalyzer.h"
 
-#ifdef TARGET_OSX
-#include "ofAVFoundationPlayer.h"
-#endif
+//#ifdef TARGET_OSX
+//#include "ofAVFoundationPlayer.h"
+//#endif
 
-#define BUFFER_SIZE 512
+//#define BUFFER_SIZE 512
 
 class Hair {
   public:
@@ -88,11 +88,10 @@ class Hair {
 #endif
 };
 
-//TODO: rename this to your own visual system
+
 class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
   public:
     
-	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
@@ -170,12 +169,6 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
 
 	void reloadShader();
 	
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
 
 protected:
     ofxUISuperCanvas* customGui;
@@ -223,11 +216,11 @@ protected:
     
 	ofShader shader;
 
-#ifdef TARGET_OSX
-	bool bModeVideo;
-	bool videoPlayerReady;
-	ofAVFoundationPlayer videoPlayer;
-#endif
+//#ifdef TARGET_OSX
+//	bool bModeVideo;
+//	bool videoPlayerReady;
+//	ofAVFoundationPlayer videoPlayer;
+//#endif
     bool soundPlayerReady;
 	ofSoundPlayer soundPlayer;
     
