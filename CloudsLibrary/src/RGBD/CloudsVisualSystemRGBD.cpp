@@ -1668,11 +1668,11 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 void CloudsVisualSystemRGBD::selfDraw(){
 	
     #ifdef OCULUS_RIFT 
-	#ifdef CLOUDS_HUD
-    if (hud != NULL) {
-        hud->draw3D(getOculusRift().baseCamera);
-    }
-    #endif
+//	#ifdef CLOUDS_HUD
+//    if (hud != NULL) {
+//        hud->draw3D(getOculusRift().baseCamera);
+//    }
+//    #endif
     #endif
 	
 	ofPushStyle();
