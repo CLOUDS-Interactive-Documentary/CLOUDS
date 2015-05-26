@@ -1183,8 +1183,11 @@
     <ClCompile Include="..\..\..\addons\ofxAvailability\src\ofxAvailability.cpp">
       <Filter>addons\ofxAvailability\src</Filter>
     </ClCompile>
-    <ClCompile Include="E:\Users\elias\Workspace\CLOUDS\openFrameworks\apps\CLOUDS\CloudsLibrary\src\StoryEngine\CloudsMedia.cpp">
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsMedia.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDScroller.cpp">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3156,8 +3159,11 @@
     <ClInclude Include="..\CloudsLibrary\src\CloudsCrypto.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
-    <ClInclude Include="E:\Users\elias\Workspace\CLOUDS\openFrameworks\apps\CLOUDS\CloudsLibrary\src\StoryEngine\CloudsMedia.h">
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsMedia.h">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDScroller.h">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

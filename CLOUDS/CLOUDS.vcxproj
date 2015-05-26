@@ -581,6 +581,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDHomeButton.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDScroller.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalRing.cpp" />
@@ -599,6 +600,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsIntervention.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsMedia.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsStoryEngine.cpp" />
@@ -803,7 +805,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_Intro\vs_src\CloudsIntroSequence.cpp" />
-    <ClCompile Include="E:\Users\elias\Workspace\CLOUDS\openFrameworks\apps\CLOUDS\CloudsLibrary\src\StoryEngine\CloudsMedia.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
@@ -1121,6 +1122,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDHomeButton.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLayer.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDScroller.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortal.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\Portal\CloudsPortalEvents.h" />
@@ -1136,6 +1138,7 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsIntervention.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h" />
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsMedia.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsRun.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h" />
@@ -1363,7 +1366,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_Intro\vs_src\CloudsIntroSequence.h" />
-    <ClInclude Include="E:\Users\elias\Workspace\CLOUDS\openFrameworks\apps\CLOUDS\CloudsLibrary\src\StoryEngine\CloudsMedia.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
