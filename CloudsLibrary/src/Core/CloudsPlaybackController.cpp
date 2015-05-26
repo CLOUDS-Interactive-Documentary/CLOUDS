@@ -349,14 +349,15 @@ void CloudsPlaybackController::threadedFunction(){
     parser.loadMediaAssets();
     
     cout << "******* LOAD STEP RUN" << endl;
-    if(run.load(&parser)){
+    run.load(&parser);
+    if(run.clipHistory.size() > 0){
         introSequence->firstPlay = false;
+        hud.setHasHistory(true);
     }
     else{
         introSequence->firstPlay = true;
+        hud.setHasHistory(false);
     }
-
-    hud.setHasHistory(run.clipHistory.size() > 0);
 
     introSequence->percentLoaded = 0.3;
 
