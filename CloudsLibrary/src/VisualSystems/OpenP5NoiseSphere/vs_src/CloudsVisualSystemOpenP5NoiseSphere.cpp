@@ -309,7 +309,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
 
         soundPlayer.setVolume(fMainGain);
         
-        currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust * (1/fMainGain);
+        currLevel = soundPlayer.getSpectrum(1)[0] * levelAdjust * (1/fMainGain);
 //#ifdef TARGET_OSX
 //	}
 //#endif
@@ -496,7 +496,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::reloadSound()
 //    else {
 //        bModeVideo = false;
 //#endif
-    soundPlayer.loadSound( soundsDir.getPath(selectedSoundsIdx) );
+    soundPlayer.loadSound( ofToDataPath(soundsDir.getPath(selectedSoundsIdx), true) );
     soundPlayerReady = true;
 //#ifdef TARGET_OSX
 //    }
