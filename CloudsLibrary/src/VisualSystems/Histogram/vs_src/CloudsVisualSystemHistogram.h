@@ -11,7 +11,6 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofOpenALSoundPlayer_TimelineAdditions.h"
 
 enum HistogramMode
 {
@@ -127,7 +126,7 @@ protected:
     
     ofDirectory soundsDir;
     int selectedSoundsIdx;
-    ofOpenALSoundPlayer_TimelineAdditions soundPlayer;
+    ofOpenALSoundPlayer soundPlayer;
     float levelAdjust;
     
     ofMesh histoMesh;

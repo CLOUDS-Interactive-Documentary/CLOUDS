@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D5B95CB175308AE00F558AC /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9557175308AD00F558AC /* kiss_fft.c */; };
-		3D5B95CC175308AE00F558AC /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9558175308AD00F558AC /* kiss_fftr.c */; };
-		3D5B95CD175308AE00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B955B175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
-		3D5B95D1175308AE00F558AC /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5B9573175308AD00F558AC /* libsndfile.a */; };
 		3D5B95D3175308AE00F558AC /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B957C175308AD00F558AC /* ofxHotKeys_impl_linux.cpp */; };
 		3D5B95D4175308AE00F558AC /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B957D175308AD00F558AC /* ofxHotKeys_impl_mac.mm */; };
 		3D5B95D5175308AE00F558AC /* ofxHotKeys_impl_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B957E175308AD00F558AC /* ofxHotKeys_impl_win.cpp */; };
@@ -73,6 +69,12 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		64513F811B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64513F7F1B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
+		64513F821B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64513F7F1B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
+		64513FAE1B1572FC00F13A13 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64513FA31B1572FC00F13A13 /* audiodecoderbase.cpp */; };
+		64513FAF1B1572FC00F13A13 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64513FA31B1572FC00F13A13 /* audiodecoderbase.cpp */; };
+		64513FB01B1572FC00F13A13 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64513FA41B1572FC00F13A13 /* audiodecodercoreaudio.cpp */; };
+		64513FB11B1572FC00F13A13 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64513FA41B1572FC00F13A13 /* audiodecodercoreaudio.cpp */; };
 		6471CA811856C8A8000DC9AB /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6471CA801856C8A8000DC9AB /* OpenAL.framework */; };
 		6471CA821856C8AD000DC9AB /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6471CA801856C8A8000DC9AB /* OpenAL.framework */; };
 		6471CA8B1856D6FC000DC9AB /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6471CA841856D6FC000DC9AB /* CloudsInput.cpp */; };
@@ -235,9 +237,6 @@
 		E738FF8E183C86F50018AB96 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		E738FF8F183C86F50018AB96 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		E738FF90183C86F50018AB96 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
-		E738FF91183C86F50018AB96 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9557175308AD00F558AC /* kiss_fft.c */; };
-		E738FF92183C86F50018AB96 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9558175308AD00F558AC /* kiss_fftr.c */; };
-		E738FF93183C86F50018AB96 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B955B175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
 		E738FF94183C86F50018AB96 /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B957C175308AD00F558AC /* ofxHotKeys_impl_linux.cpp */; };
 		E738FF95183C86F50018AB96 /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B957D175308AD00F558AC /* ofxHotKeys_impl_mac.mm */; };
 		E738FF96183C86F50018AB96 /* ofxHotKeys_impl_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B957E175308AD00F558AC /* ofxHotKeys_impl_win.cpp */; };
@@ -303,7 +302,6 @@
 		E738FFD3183C86F50018AB96 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E738FFD4183C86F50018AB96 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E738FFD5183C86F50018AB96 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
-		E738FFD9183C86F50018AB96 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5B9573175308AD00F558AC /* libsndfile.a */; };
 		E738FFDD183C86F50018AB96 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
@@ -369,16 +367,6 @@
 		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
 		3D5B91B41751CF3E00F558AC /* ofxColorPalettes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalettes.h; sourceTree = "<group>"; };
-		3D5B9553175308AD00F558AC /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
-		3D5B9554175308AD00F558AC /* kiss_fftr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
-		3D5B9556175308AD00F558AC /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
-		3D5B9557175308AD00F558AC /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
-		3D5B9558175308AD00F558AC /* kiss_fftr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
-		3D5B955B175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofOpenALSoundPlayer_TimelineAdditions.cpp; sourceTree = "<group>"; };
-		3D5B955C175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofOpenALSoundPlayer_TimelineAdditions.h; sourceTree = "<group>"; };
-		3D5B956F175308AD00F558AC /* sndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sndfile.h; sourceTree = "<group>"; };
-		3D5B9570175308AD00F558AC /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sndfile.hh; sourceTree = "<group>"; };
-		3D5B9573175308AD00F558AC /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsndfile.a; sourceTree = "<group>"; };
 		3D5B957B175308AD00F558AC /* ofxHotKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxHotKeys.h; sourceTree = "<group>"; };
 		3D5B957C175308AD00F558AC /* ofxHotKeys_impl_linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxHotKeys_impl_linux.cpp; sourceTree = "<group>"; };
 		3D5B957D175308AD00F558AC /* ofxHotKeys_impl_mac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxHotKeys_impl_mac.mm; sourceTree = "<group>"; };
@@ -533,6 +521,18 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		64513F7F1B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofOpenALSoundPlayer_TimelineAdditions.cpp; sourceTree = "<group>"; };
+		64513F801B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofOpenALSoundPlayer_TimelineAdditions.h; sourceTree = "<group>"; };
+		64513F871B1572FC00F13A13 /* ofxAudioDecoderSndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoderSndfile.h; sourceTree = "<group>"; };
+		64513F881B1572FC00F13A13 /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
+		64513F9C1B1572FC00F13A13 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		64513F9D1B1572FC00F13A13 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		64513F9E1B1572FC00F13A13 /* audiodecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
+		64513F9F1B1572FC00F13A13 /* audiodecoderbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoderbase.h; sourceTree = "<group>"; };
+		64513FA01B1572FC00F13A13 /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodercoreaudio.h; sourceTree = "<group>"; };
+		64513FA31B1572FC00F13A13 /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
+		64513FA41B1572FC00F13A13 /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
+		64513FA91B1572FC00F13A13 /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
 		6471CA801856C8A8000DC9AB /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenAL.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		6471CA841856D6FC000DC9AB /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		6471CA851856D6FC000DC9AB /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
@@ -739,7 +739,6 @@
 				E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
-				3D5B95D1175308AE00F558AC /* libsndfile.a in Frameworks */,
 				64C18CF31B14E87F0014E0AA /* libftgl.a in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
@@ -781,7 +780,6 @@
 				E738FFD3183C86F50018AB96 /* Cocoa.framework in Frameworks */,
 				E738FFD4183C86F50018AB96 /* IOKit.framework in Frameworks */,
 				E738FFD5183C86F50018AB96 /* CoreVideo.framework in Frameworks */,
-				E738FFD9183C86F50018AB96 /* libsndfile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,100 +809,11 @@
 		3D5B9444175308AC00F558AC /* ofxTimeline */ = {
 			isa = PBXGroup;
 			children = (
-				3D5B9550175308AD00F558AC /* libs */,
+				64513F831B1572C900F13A13 /* libs */,
 				3D5B957A175308AD00F558AC /* src */,
 			);
 			name = ofxTimeline;
 			path = ../../../addons/ofxTimeline;
-			sourceTree = "<group>";
-		};
-		3D5B9550175308AD00F558AC /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B9551175308AD00F558AC /* kiss */,
-				3D5B9559175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions */,
-				3D5B956D175308AD00F558AC /* sndfile */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		3D5B9551175308AD00F558AC /* kiss */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B9552175308AD00F558AC /* include */,
-				3D5B9555175308AD00F558AC /* src */,
-			);
-			path = kiss;
-			sourceTree = "<group>";
-		};
-		3D5B9552175308AD00F558AC /* include */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B9553175308AD00F558AC /* kiss_fft.h */,
-				3D5B9554175308AD00F558AC /* kiss_fftr.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		3D5B9555175308AD00F558AC /* src */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B9556175308AD00F558AC /* _kiss_fft_guts.h */,
-				3D5B9557175308AD00F558AC /* kiss_fft.c */,
-				3D5B9558175308AD00F558AC /* kiss_fftr.c */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		3D5B9559175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B955A175308AD00F558AC /* src */,
-			);
-			path = ofOpenALSoundPlayer_TimelineAdditions;
-			sourceTree = "<group>";
-		};
-		3D5B955A175308AD00F558AC /* src */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B955B175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */,
-				3D5B955C175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		3D5B956D175308AD00F558AC /* sndfile */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B956E175308AD00F558AC /* include */,
-				3D5B9571175308AD00F558AC /* lib */,
-			);
-			path = sndfile;
-			sourceTree = "<group>";
-		};
-		3D5B956E175308AD00F558AC /* include */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B956F175308AD00F558AC /* sndfile.h */,
-				3D5B9570175308AD00F558AC /* sndfile.hh */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		3D5B9571175308AD00F558AC /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B9572175308AD00F558AC /* osx */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		3D5B9572175308AD00F558AC /* osx */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B9573175308AD00F558AC /* libsndfile.a */,
-			);
-			path = osx;
 			sourceTree = "<group>";
 		};
 		3D5B957A175308AD00F558AC /* src */ = {
@@ -1178,6 +1087,106 @@
 			);
 			name = ofxCameraSaveLoad;
 			path = ../../../addons/ofxCameraSaveLoad/src;
+			sourceTree = "<group>";
+		};
+		64513F7D1B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				64513F7E1B1572C600F13A13 /* src */,
+			);
+			name = ofOpenALSoundPlayer_TimelineAdditions;
+			path = libs/ofOpenALSoundPlayer_TimelineAdditions;
+			sourceTree = "<group>";
+		};
+		64513F7E1B1572C600F13A13 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64513F7F1B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */,
+				64513F801B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		64513F831B1572C900F13A13 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				64513F7D1B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		64513F841B1572FC00F13A13 /* ofxAudioDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				64513F861B1572FC00F13A13 /* couples */,
+				64513F981B1572FC00F13A13 /* libs */,
+				64513FA81B1572FC00F13A13 /* src */,
+			);
+			name = ofxAudioDecoder;
+			path = ../../../addons/ofxAudioDecoder;
+			sourceTree = "<group>";
+		};
+		64513F861B1572FC00F13A13 /* couples */ = {
+			isa = PBXGroup;
+			children = (
+				64513F871B1572FC00F13A13 /* ofxAudioDecoderSndfile.h */,
+				64513F881B1572FC00F13A13 /* ofxAudioDecoderTonic.h */,
+			);
+			path = couples;
+			sourceTree = "<group>";
+		};
+		64513F981B1572FC00F13A13 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				64513F991B1572FC00F13A13 /* audiodecoder */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		64513F991B1572FC00F13A13 /* audiodecoder */ = {
+			isa = PBXGroup;
+			children = (
+				64513F9A1B1572FC00F13A13 /* include */,
+				64513FA21B1572FC00F13A13 /* src */,
+			);
+			path = audiodecoder;
+			sourceTree = "<group>";
+		};
+		64513F9A1B1572FC00F13A13 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				64513F9B1B1572FC00F13A13 /* apple */,
+				64513F9E1B1572FC00F13A13 /* audiodecoder.h */,
+				64513F9F1B1572FC00F13A13 /* audiodecoderbase.h */,
+				64513FA01B1572FC00F13A13 /* audiodecodercoreaudio.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		64513F9B1B1572FC00F13A13 /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				64513F9C1B1572FC00F13A13 /* CADebugMacros.h */,
+				64513F9D1B1572FC00F13A13 /* CAStreamBasicDescription.h */,
+			);
+			path = apple;
+			sourceTree = "<group>";
+		};
+		64513FA21B1572FC00F13A13 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64513FA31B1572FC00F13A13 /* audiodecoderbase.cpp */,
+				64513FA41B1572FC00F13A13 /* audiodecodercoreaudio.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		64513FA81B1572FC00F13A13 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64513FA91B1572FC00F13A13 /* ofxAudioDecoder.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		6471CA831856D6FC000DC9AB /* Input */ = {
@@ -1481,6 +1490,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				64513F841B1572FC00F13A13 /* ofxAudioDecoder */,
 				64C18D691B14EDA00014E0AA /* ofxCrypto */,
 				E738FFE3183C87180018AB96 /* ofxOculusRift */,
 				3D5B9697175308FE00F558AC /* ofxTimecode */,
@@ -1686,7 +1696,6 @@
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
-				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
 				E4C2427710CC5ABF004149E2 /* CopyFiles */,
 			);
 			buildRules = (
@@ -1705,7 +1714,6 @@
 			buildPhases = (
 				E738FF79183C86F50018AB96 /* Sources */,
 				E738FFC4183C86F50018AB96 /* Frameworks */,
-				E738FFDB183C86F50018AB96 /* ShellScript */,
 				E738FFDC183C86F50018AB96 /* CopyFiles */,
 			);
 			buildRules = (
@@ -1762,35 +1770,6 @@
 		};
 /* End PBXReferenceProxy section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";";
-		};
-		E738FFDB183C86F50018AB96 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		E4B69B580A3A1756003C02F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1837,10 +1816,7 @@
 				64A4AC7B1949027D0092385A /* ofxUIBaseDraws.cpp in Sources */,
 				4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */,
 				4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */,
-				3D5B95CB175308AE00F558AC /* kiss_fft.c in Sources */,
 				64A4AC7D1949027D0092385A /* ofxUIBiLabelSlider.cpp in Sources */,
-				3D5B95CC175308AE00F558AC /* kiss_fftr.c in Sources */,
-				3D5B95CD175308AE00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				64A4AC831949027D0092385A /* ofxUICircleSlider.cpp in Sources */,
 				3D5B95D3175308AE00F558AC /* ofxHotKeys_impl_linux.cpp in Sources */,
 				3D5B95D4175308AE00F558AC /* ofxHotKeys_impl_mac.mm in Sources */,
@@ -1874,6 +1850,7 @@
 				64C18D561B14ED290014E0AA /* ofxSubtitleUnit.cpp in Sources */,
 				3D5B95E3175308AE00F558AC /* ofxTLImageTrack.cpp in Sources */,
 				64A4AC791949027D0092385A /* ofxUI2DPad.cpp in Sources */,
+				64513FAE1B1572FC00F13A13 /* audiodecoderbase.cpp in Sources */,
 				64A4ACC51949027D0092385A /* ofxUIToggleMatrix.cpp in Sources */,
 				3D5B95E4175308AE00F558AC /* ofxTLInOut.cpp in Sources */,
 				3D5B95E5175308AE00F558AC /* ofxTLKeyframes.cpp in Sources */,
@@ -1892,6 +1869,7 @@
 				3D5B95EE175308AE00F558AC /* ofxTLVideoTrack.cpp in Sources */,
 				3D5B95EF175308AE00F558AC /* ofxTLZoomer.cpp in Sources */,
 				3D5B9675175308D000F558AC /* ofxMSATimer.cpp in Sources */,
+				64513F811B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				64A4ACB11949027D0092385A /* ofxUIScrollableCanvas.cpp in Sources */,
 				64A4AC8F1949027D0092385A /* ofxUIImage.cpp in Sources */,
 				64A4AC891949027D0092385A /* ofxUIEventArgs.cpp in Sources */,
@@ -1916,6 +1894,7 @@
 				3D5B9688175308D000F558AC /* ofxEasingQuint.cpp in Sources */,
 				64A4AC8D1949027D0092385A /* ofxUIFPSSlider.cpp in Sources */,
 				3D5B9689175308D000F558AC /* ofxEasingSine.cpp in Sources */,
+				64513FB01B1572FC00F13A13 /* audiodecodercoreaudio.cpp in Sources */,
 				3D5B968A175308D000F558AC /* ofxTween.cpp in Sources */,
 				3D5B96AA175308FE00F558AC /* ofxTimecode.cpp in Sources */,
 				E7DD854717DBC0A500AFB2DD /* CloudsRGBDCamera.cpp in Sources */,
@@ -1978,12 +1957,9 @@
 				E738FF8E183C86F50018AB96 /* ofxSwarmBehavior.cpp in Sources */,
 				E738FF8F183C86F50018AB96 /* ofxVerletSolver.cpp in Sources */,
 				E738FF90183C86F50018AB96 /* ofxCameraSaveLoad.cpp in Sources */,
-				E738FF91183C86F50018AB96 /* kiss_fft.c in Sources */,
 				64A4AC861949027D0092385A /* ofxUIDragableLabelButton.cpp in Sources */,
 				64A4ACA01949027D0092385A /* ofxUIMinimalSlider.cpp in Sources */,
 				64A4AC961949027D0092385A /* ofxUIImageSlider.cpp in Sources */,
-				E738FF92183C86F50018AB96 /* kiss_fftr.c in Sources */,
-				E738FF93183C86F50018AB96 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E738FF94183C86F50018AB96 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				E738FF95183C86F50018AB96 /* ofxHotKeys_impl_mac.mm in Sources */,
 				E738FF96183C86F50018AB96 /* ofxHotKeys_impl_win.cpp in Sources */,
@@ -2032,11 +2008,14 @@
 				E738FFAE183C86F50018AB96 /* ofxTLVideoThumb.cpp in Sources */,
 				64A4ACCA1949027D0092385A /* ofxUIWaveform.cpp in Sources */,
 				E738FFAF183C86F50018AB96 /* ofxTLVideoTrack.cpp in Sources */,
+				64513F821B1572C600F13A13 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				64A4ACC41949027D0092385A /* ofxUIToggle.cpp in Sources */,
 				E738FFB0183C86F50018AB96 /* ofxTLZoomer.cpp in Sources */,
 				E738FFB1183C86F50018AB96 /* ofxMSATimer.cpp in Sources */,
+				64513FAF1B1572FC00F13A13 /* audiodecoderbase.cpp in Sources */,
 				64A4ACB21949027D0092385A /* ofxUIScrollableCanvas.cpp in Sources */,
 				64A4ACA41949027D0092385A /* ofxUIMultiImageButton.cpp in Sources */,
+				64513FB11B1572FC00F13A13 /* audiodecodercoreaudio.cpp in Sources */,
 				E738FFB2183C86F50018AB96 /* ofxTextInputField.cpp in Sources */,
 				64A4AC981949027D0092385A /* ofxUIImageToggle.cpp in Sources */,
 				64A4ACB81949027D0092385A /* ofxUISpacer.cpp in Sources */,
