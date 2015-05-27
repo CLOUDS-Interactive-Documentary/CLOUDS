@@ -222,7 +222,7 @@ protected:
 //	ofAVFoundationPlayer videoPlayer;
 //#endif
     bool soundPlayerReady;
-	ofOpenALSoundPlayer soundPlayer;
+	ofPtr<ofOpenALSoundPlayer> soundPlayer;
     
     float scrollY;
     float scrollSpeed;

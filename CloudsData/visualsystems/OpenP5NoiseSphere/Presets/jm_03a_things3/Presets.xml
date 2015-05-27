@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Presets</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>264.000000000</YPosition>
+    <YPosition>252.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,6 +28,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>CoolEscalation</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CoolEscalationOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -92,7 +97,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>InYourFaceOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>jm_02aSun_things1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jm_02aSun_things1OC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -102,7 +117,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>jm_02aSun_things2OC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>jm_03a_things2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jm_03a_things2OC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -112,12 +137,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>jm_03a_things3OC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>jm_work_03a</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Nervous_Colors</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Nervous_ColorsOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
