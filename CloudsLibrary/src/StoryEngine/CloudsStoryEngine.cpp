@@ -344,7 +344,7 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
             continue;
         }
         //two of the tunnels are also too big to distribute
-        if(currentSelection[i].systemName == "WormHole" && ofToLower(currentSelection[i].presetName).find("organic") != string::npos ){
+        if(currentSelection[i].systemName == "WormHole" && ofToLower(currentSelection[i].presetName).find("organic") == string::npos ){
             continue;
         }
 #endif
@@ -1179,7 +1179,7 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
         return 0;
     }
     //two of the tunnels are also too big to distribute
-    if(potentialNextPreset.systemName == "WormHole" && ofToLower(potentialNextPreset.presetName).find("organic") != string::npos ){
+    if(potentialNextPreset.systemName == "WormHole" && ofToLower(potentialNextPreset.presetName).find("organic") == string::npos ){
         state.log << state.duration << "\t\t\t\tREJECTED because big wormhome presets are not distributed with VHX" << endl;
         return 0;
     }

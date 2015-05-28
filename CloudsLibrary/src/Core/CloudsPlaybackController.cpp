@@ -115,7 +115,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
     resumingAct = false;
     runningLatestVerion = true; //assume yes
     
-
+    keyedToNext = false;
+    
 	resetInterludeVariables();
 	
 
@@ -779,7 +780,7 @@ void CloudsPlaybackController::playCurrentAct(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
-    
+#ifndef CLOUDS_RELEASE
 	if(args.key == '\\'){
 		if(showingIntro){
 			introSequence->autoSelectQuestion();
@@ -815,7 +816,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 
 
-#ifdef OCULUS_RIFT
+    #ifdef OCULUS_RIFT
     if(args.key == OF_KEY_RETURN){
         if(showingInterlude){
             interludeSystem->getTimeline()->stop();
@@ -829,20 +830,20 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
             currentAct->getTimeline().stop();
         }
     }
-#endif
+    #endif
 	
-#ifdef CLOUDS_SCREENING
+    #ifdef CLOUDS_SCREENING
 	if(args.key == 'Q'){
 		forceCredits = true;
 	}
-#endif
+    #endif
 	
-   #ifdef CLOUDS_INSTALLATION
+    #ifdef CLOUDS_INSTALLATION
 	if(args.key == 'R'){
         oscSender.reset();
     }
 	#endif
-
+    
 	if(args.key == 'B'){
 		GetCloudsAudioEvents()->respawn = true;
 	}
@@ -854,8 +855,13 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	if(args.key == 'J'){
 		SetLanguage("JAPANESE");
 	}
+#endif //release
     
-    if(args.key == ' ' && bShowingAct){
+    if( (args.key == OF_KEY_RIGHT || args.key == ' ') && bShowingAct){
+        hud.togglePause();
+    }
+
+    if(args.key == OF_KEY_RIGHT && bShowingAct){
         hud.togglePause();
     }
 
@@ -1231,7 +1237,8 @@ void CloudsPlaybackController::updateHUD(){
     /////////////////// END HUD UPDATE
     
     //////////// WAS NEXT HIT?
-    if(hud.isNextHit()){
+    if(hud.isNextHit() || keyedToNext){
+        keyedToNext = false;
         if(showingVisualLoop){
             sound.stopMusic();
             transitionController.transitionFromVisualLoop(1.0, 1.0);
@@ -1757,75 +1764,6 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeResetSelected = true;
 		return true;
 	}
-#else
-    /*
-	#ifdef CLOUDS_SCREENING
-    if( currentVisualSystem->getSystemName() == "Balloons" ){
-        hud.clearQuestion();
-        return false;
-    }
-	#endif
-	interludeTimedOut = ofGetElapsedTimef() - interludeStartTime > interludeForceOnTimer;
-	
-	if(GetCloudsInputX() > interludeSystem->getCanvasWidth() - interludeExitBarWidth)
-	{
-		if(!interludeHoveringContinue){
-			interludeHoveringContinue = true;
-			interludeBarHoverStartTime = ofGetElapsedTimef();
-			//TODO PLAY SOUND
-			CloudsVisualSystem::getClick()->setPosition(0);
-			CloudsVisualSystem::getClick()->play();
-		}
-	}
-	else{
-		interludeHoveringContinue = false;
-	}
-	
-	if(GetCloudsInputX() < interludeExitBarWidth){
-		if(!interludeHoveringReset){
-			interludeHoveringReset = true;
-			interludeBarHoverStartTime = ofGetElapsedTimef();
-			CloudsVisualSystem::getClick()->setPosition(0);
-			CloudsVisualSystem::getClick()->play();
-		}
-	}
-	else{
-		interludeHoveringReset = false;
-	}
-	
-	if(interludeHoveringContinue || interludeHoveringReset){
-		interludeBarHoverPercentComplete = ofMap(ofGetElapsedTimef(),
-												 interludeBarHoverStartTime,interludeBarHoverStartTime+interludeBarHoverHoldTime,
-												 0.0, 1.0, true);
-//		cout << " interludeBarHoverPercentComplete " << interludeBarHoverPercentComplete << endl;
-		bool selectionComplete = interludeBarHoverPercentComplete == 1.0; 
-		#ifdef MOUSE_INPUT
-		selectionComplete |= ofGetMousePressed();
-		#endif
-		if(selectionComplete){
-			
-			///one of these will be true
-			interludeContinueSelected = interludeHoveringContinue;
-			interludeResetSelected = interludeHoveringReset;
-			CloudsVisualSystem::getSelectMid()->setPosition(0);
-			CloudsVisualSystem::getSelectMid()->play();
-			return true;
-		}
-	}
-	else {
-		//slowly attenuate it back down
-		interludeBarHoverPercentComplete *= 0.995;
-		interludeBarHoverPercentComplete = MAX(0.0,interludeBarHoverPercentComplete-.001);
-//		interludeBarHoverPercentComplete = 0;
-	}
-	
-	if( interludeSystem->getSystemName() != "Balloons" && ofGetElapsedTimef() - interludeStartTime > 60){
-		interludeResetSelected = true;
-		return true;
-	}
-     */    
-	return false;
-
 #endif
 	return false;
 	
