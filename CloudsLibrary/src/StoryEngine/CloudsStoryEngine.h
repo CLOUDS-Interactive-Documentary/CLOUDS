@@ -58,6 +58,7 @@ typedef struct {
     bool forceTopic;
     bool forceSpeaker;
     bool allowVisuals;
+    bool allowAllDifficulties;
 } CloudsActSettings;
 
 class CloudsAct;

@@ -184,6 +184,8 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	
 	waitForThread(true);
 	
+    run.save();
+    
 	if(eventsRegistered){
 		
 		eventsRegistered = false;
@@ -1605,6 +1607,7 @@ void CloudsPlaybackController::updateTransition(){
                 clusterMap->clearTraversal();
                 introSequence->setStartQuestions(startingNodes);
                 introSequence->firstPlay = false;
+                introSequence->shouldArchiveAct = false;
                 introSequence->loadingFinished();
                 if(bVHXRentalExpired){
                     introSequence->vhxRentalExpired();

@@ -224,13 +224,14 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void drawCloudsType();
     void drawIntroNodes(); //rift only
 	void drawHelperType();
+    void drawHelperTypeAtPosition(ofVec3f position, float opacity, float scaleModifier, string lineOne, string lineTwo = "");
 	void drawTunnel();
 	void drawPortals();
     void drawCursors();
     void drawMenu();
     
 	void updateIntroNodePosition(CalibrationNode& node);
-	void updateIntroNodeInteraction(CalibrationNode& node);
+//	void updateIntroNodeInteraction(CalibrationNode& node);
 	
 	//intro sequence
 	float introNodeSize;
@@ -240,12 +241,19 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	ofVec3f introNodeOffset; //mirrored along the axis
 
+#if defined(KINECT_INPUT)
 	CalibrationNode introNodeOne;
 	CalibrationNode introNodeTwo;
 	CalibrationNode introNodeThree;
+#elif defined(OCULUS_RIFT)
+	CalibrationNode playNode;
+	CalibrationNode newNode;
+	CalibrationNode resumeNode;
+#endif
 	vector<CalibrationNode*> introNodes;
+    
 	float nodeAlphaAttenuate;
-	float nodeActivatedTime;
+	//float nodeActivatedTime;
 	ofVec2f hintCursorEndPoint;
 
 	float timeSinceLastPrompt;

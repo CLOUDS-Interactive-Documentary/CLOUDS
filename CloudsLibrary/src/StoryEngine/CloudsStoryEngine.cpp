@@ -34,7 +34,6 @@ CloudsStoryEngine::CloudsStoryEngine(){
     combinedClipsOnly = false;
     screeningQuestionsAdded = false;
 	
-	
     maxTimesOnTopic = 4;
     maxClipsPerAct = 10;
     voClipGapTime = 1.0;
@@ -483,7 +482,7 @@ CloudsAct* CloudsStoryEngine::buildActWithTopic(CloudsRun& run, string forceTopi
     settings.forceTopic = true;
     settings.forceSpeaker = false;
     settings.allowVisuals = true;
-
+    settings.allowAllDifficulties = true;
     return buildAct(settings);
 }
 
@@ -542,7 +541,7 @@ CloudsAct* CloudsStoryEngine::buildActWithPerson(CloudsRun& run, string speakerI
     settings.forceTopic = false;
     settings.forceSpeaker = true;
     settings.allowVisuals = false;
-    
+    settings.allowAllDifficulties = true;
     return buildAct(settings);
 }
 
@@ -556,6 +555,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip* seed, string 
     settings.forceTopic = false;
     settings.forceSpeaker = false;
     settings.allowVisuals = true;
+    settings.allowAllDifficulties = false;
     
     return buildAct(settings);
 }
@@ -576,7 +576,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
     hardIntros.push_back("videogames");
     hardIntros.push_back("clouds");
     int firstActNum = 0;
-    if(run.actCount == 0 && ofContains(hardIntros, settings.topic)){
+    if(run.actCount == 0 &&
+       (ofContains(hardIntros, settings.topic) || settings.allowAllDifficulties) ){
         run.actCount = 1; //force
 		firstActNum = 1;
     }

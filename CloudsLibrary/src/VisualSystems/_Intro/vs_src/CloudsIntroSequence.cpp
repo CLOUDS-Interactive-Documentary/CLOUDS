@@ -105,7 +105,7 @@ void CloudsIntroSequence::selfSetDefaults(){
     introNodeMinDistance = 0;
     introNodeHoldTime = 0;
     introNodeYAdjust = 0;
-    nodeActivatedTime = 0;
+    //nodeActivatedTime = 0;
     
     kinectHelperTargetAlpha = 0;
     stateChangedTime = 0;
@@ -143,15 +143,26 @@ void CloudsIntroSequence::selfSetDefaults(){
 	kinectHelperAlpha = 0.0;
 	nodeAlphaAttenuate = 1.0;
 	
+#if defined(KINECT_INPUT)
 	introNodeOne.introNode = introNodeTwo.introNode = introNodeThree.introNode = true;
 	introNodeOne.clickSound = introNodeTwo.clickSound = introNodeThree.clickSound = getClick();
 	introNodeOne.selectSound = introNodeTwo.selectSound = getSelectHigh();
 	introNodeThree.selectSound = getSelectMid();
 	
-	introNodeOne.multiplier   =  1;
-	introNodeTwo.multiplier   = -1;
-	introNodeThree.multiplier =  0;
-	
+	introNodeOne.multiplier     = ofVec2f(1,1);
+	introNodeTwo.multiplier     = ofVec2f(-1,-1);
+	introNodeThree.multiplier   = ofVec2f(0,0);
+#elif defined(OCULUS_RIFT)
+	playNode.introNode = newNode.introNode = resumeNode.introNode = true;
+	playNode.clickSound = newNode.clickSound = resumeNode.clickSound = getClick();
+	playNode.selectSound = newNode.selectSound = getSelectHigh();
+	resumeNode.selectSound = getSelectMid();
+    
+	playNode.multiplier     = ofVec2f(0, 0);
+	newNode.multiplier      = ofVec2f(1, 1);
+	resumeNode.multiplier   = ofVec2f(-1, 1);
+#endif
+    
 	hintCursorEndPoint = ofVec2f(320,240);
 
     menuFontSize = currentMenuFontSize = 1;
@@ -193,11 +204,17 @@ void CloudsIntroSequence::selfSetup(){
 	
 	currentFontExtrusion = -1;
 	currentFontSize = -1;
-	
+
+	introNodes.clear();
+    #if defined(KINECT_INPUT)
 	introNodes.push_back( &introNodeOne );
 	introNodes.push_back( &introNodeTwo );
 	introNodes.push_back( &introNodeThree );
-
+    #elif defined(OCULUS_RIFT)
+    introNodes.push_back( &playNode );
+	introNodes.push_back( &newNode );
+    introNodes.push_back( &resumeNode );
+    #endif
 	reloadShaders();
 }
 
@@ -429,7 +446,44 @@ void CloudsIntroSequence::updateCamera(){
 
 void CloudsIntroSequence::updateWaiting(){
 	
-    #ifndef MOUSE_INPUT
+
+	#if defined(OCULUS_RIFT)
+    CalibrationNode* selectedNode = NULL;
+    for(int i = 0; i < introNodes.size(); i++){
+		if(introNodes[i]->finished){
+			selectedNode = introNodes[i];
+		}
+    }
+    
+    for(int i = 0; i < introNodes.size(); i++){
+        if(selectedNode != NULL && introNodes[i] != selectedNode){
+            continue;
+        }
+        if(introNodes[i] == &playNode && !firstPlay){
+            continue;
+        }
+        else if(introNodes[i] != &playNode && firstPlay){
+            continue;
+        }
+        
+		updateIntroNodePosition(*introNodes[i]);
+        introNodes[i]->updateInteraction();
+	}
+    
+    if(currentState == CLOUDS_INTRO_MENU){
+        if(playNode.finished){
+            changeState(CLOUDS_INTRO_PLAYING);
+        }
+        else if(resumeNode.finished){
+            changeState(CLOUDS_INTRO_RESUMING);
+        }
+        else if(newNode.finished){
+            shouldArchiveAct = true; // forces to clear run
+            changeState(CLOUDS_INTRO_PLAYING);
+        }
+    }
+    
+	#elif defined(KINECT_INPUT)
 	for(int i = 0; i < introNodes.size(); i++){
 		updateIntroNodePosition(*introNodes[i]);
 	}
@@ -442,15 +496,10 @@ void CloudsIntroSequence::updateWaiting(){
 		}
 	}
 	
-	if(introNodeThree.finished){
-        //TODO: switch to state changes for Oculus Intro
-		//startedOnclick = true;
-		timeline->play();
+	if(introNodeThree.finished && !userHasBegun()){
+        changeState(CLOUDS_INTRO_PLAYING);
 	}
-    #endif
-	#ifdef OCULUS_RIFT
-	
-	#elif defined(KINECT_INPUT)
+    
 	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
 	if(startQuestions.size() > 0 && viewerState != k4w::ViewerState_None){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 8){
@@ -474,8 +523,8 @@ void CloudsIntroSequence::updateWaiting(){
 			kinectHelperTargetAlpha = 0.0;
 		}
 	}
-	 
-	#else
+    #endif
+
 	if(startQuestions.size() > 0){
 		if(!promptShown && ofGetElapsedTimef() - timeSinceLastPrompt > 10){
 			timeSinceLastPrompt = ofGetElapsedTimef();
@@ -489,7 +538,7 @@ void CloudsIntroSequence::updateWaiting(){
 			promptShown = false;
 		}
 	}
-	#endif
+
 	
 	#ifdef MOUSE_INPUT
     //THis code puts the mouse back to the middle
@@ -616,11 +665,6 @@ void CloudsIntroSequence::updateIntroNodePosition(CalibrationNode& node){
 	#endif
 	node.updateScreenPosition();
 	
-}
-
-void CloudsIntroSequence::updateIntroNodeInteraction(CalibrationNode& node){
-	
-	node.updateInteraction();
 }
 
 void CloudsIntroSequence::updateTitle(){
@@ -1129,6 +1173,7 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 
 void CloudsIntroSequence::selfDraw(){
   
+    
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -1144,6 +1189,9 @@ void CloudsIntroSequence::selfDraw(){
 	drawTunnel();
 	drawPortals();
 	drawHelperType();
+    
+	glDisable(GL_LINE_SMOOTH);
+
 }
 
 void CloudsIntroSequence::drawTunnel(){
@@ -1234,6 +1282,79 @@ void CloudsIntroSequence::drawCloudsType(){
 	ofPopMatrix();
 }
 
+void CloudsIntroSequence::drawIntroNodes(){
+    
+    
+#ifdef KINECT_INPUT
+	ofPushStyle();
+    float extraAttenuate = 1.0;
+	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
+    if(viewerState < k4w::ViewerState_PresentIdle && introNodesShown){
+        introNodesShown = false;
+        introNodeChangeTime = ofGetElapsedTimef();
+    }
+	if(viewerState >= k4w::ViewerState_PresentIdle && !introNodesShown){
+        introNodesShown = true;
+        introNodeChangeTime = ofGetElapsedTimef();
+    }
+    
+    extraAttenuate = ofMap(ofGetElapsedTimef(),
+                           introNodeChangeTime, introNodeChangeTime+.5,
+                           0.0, 1.0, true);
+    //if(!introNodesShown) 1.0 - extraAttenuate;
+    //cout << "show nodes " << introNodesShown << " attenuate " << endl;
+    if(!introNodesShown){
+        return;
+    }
+	for(int i = 0; i < introNodes.size(); i++){
+		introNodes[i]->nodeAlphaAttenuate = nodeAlphaAttenuate;
+		introNodes[i]->nodeBaseSize = introNodeSize;
+		introNodes[i]->tint = ofFloatColor::fromHsb(tint.r, tint.g, tint.b);
+		introNodes[i]->tint.a = 200*nodeAlphaAttenuate*extraAttenuate;
+		
+		introNodes[i]->draw();
+		
+		if(!introNodes[i]->finished){
+			break;
+		}
+	}
+    ofPopStyle();
+#elif defined(OCULUS_RIFT)
+    if(currentState < CLOUDS_INTRO_MENU){
+        return;
+    }
+
+    ofPushStyle();
+    CalibrationNode* selectedNode = NULL;
+    for(int i = 0; i < introNodes.size(); i++){
+		if(introNodes[i]->finished){
+			selectedNode = introNodes[i];
+		}
+    }
+    
+	for(int i = 0; i < introNodes.size(); i++){
+        if(selectedNode != NULL && introNodes[i] != selectedNode){
+            continue;
+        }
+        if(introNodes[i] == &playNode && !firstPlay){
+            continue;
+        }
+        else if(introNodes[i] != &playNode && firstPlay){
+            continue;
+        }
+        
+		introNodes[i]->nodeAlphaAttenuate = nodeAlphaAttenuate;
+		introNodes[i]->nodeBaseSize = introNodeSize;
+		introNodes[i]->tint = ofFloatColor::fromHsb(tint.r, tint.g, tint.b);
+		introNodes[i]->tint.a = 200*nodeAlphaAttenuate;
+		
+		introNodes[i]->draw();
+		
+	}
+    ofPopStyle();
+    #endif
+}
+
 void CloudsIntroSequence::drawHelperType(){
 
 	ofPushStyle();
@@ -1257,15 +1378,34 @@ void CloudsIntroSequence::drawHelperType(){
 
 	
 	#ifdef OCULUS_RIFT
-    //TODO: REDO NODES FOR INTRO
-//	if(!startedOnclick){
-//		if(introNodeThree.hover || introNodeTwo.finished){
-//			helpHoverText = "< " + GetTranslationForString("LOOK CENTER");
-//			basePosition = introNodeTwo.worldPosition;
-//			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
-//										   CalibrationNode::nodeActivatedTime,
-//										   CalibrationNode::nodeActivatedTime+.8,0.0,.8,true), 2.) * (1.0 - introNodeThree.percentComplete);
-//		}
+	if(currentState == CLOUDS_INTRO_MENU){
+
+        helperFont.setLetterSpacing(helperFontTracking);
+
+        if(firstPlay){
+            helpHoverText = "PLAY";
+            basePosition = playNode.worldPosition;
+			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
+										   playNode.nodeActivatedTime,
+										   playNode.nodeActivatedTime+.8,0.0,.8,true), 2.);
+            drawHelperTypeAtPosition(basePosition, helperTextOpacity, 1, helpHoverText);
+        }
+        else{
+            helpHoverText = "NEW";
+            basePosition = newNode.worldPosition;
+			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
+										   newNode.nodeActivatedTime,
+										   newNode.nodeActivatedTime+.8,0.0,.8,true), 2.);
+            drawHelperTypeAtPosition(basePosition, helperTextOpacity, 1, helpHoverText);
+            
+            helpHoverText = "RESUME";
+            basePosition = resumeNode.worldPosition;
+			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
+										   resumeNode.nodeActivatedTime,
+										   resumeNode.nodeActivatedTime+.8,0.0,.8,true), 2.);
+            drawHelperTypeAtPosition(basePosition, helperTextOpacity, 1, helpHoverText);
+        }
+        
 //		else if(introNodeTwo.hover || introNodeOne.finished){
 //			helpHoverText = GetTranslationForString("LOOK RIGHT") + " >";
 //			basePosition = introNodeOne.worldPosition;
@@ -1278,8 +1418,7 @@ void CloudsIntroSequence::drawHelperType(){
 //			basePosition = introNodeThree.worldPosition;
 //			helperTextOpacity = (currentTitleOpacity - titleTypeOpacity) * (1.0 - introNodeOne.percentComplete);
 //		}
-//		helperFont.setLetterSpacing(helperFontTracking);
-//	}
+	}
 
 	#endif
 
@@ -1291,16 +1430,15 @@ void CloudsIntroSequence::drawHelperType(){
                                         0.0, .2, true) * (1.0-helperTextOpacity);
         
         string hintText = GetTranslationForString("SELECT A QUESTION");
-        //string hintText = GetTranslationForString("CLICK TO SELECT");
         
         float hintTextWidth  = helperFont.stringWidth(hintText);
 		float hintTextHeight = helperFont.stringHeight(hintText);
 		basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
-#ifdef OCULUS_RIFT
+        #ifdef OCULUS_RIFT
 		getOculusRift().multBillboardMatrix( basePosition );
-#else
+        #else
 		ofTranslate(basePosition);
-#endif
+        #endif
 		ofRotate(180, 0, 0, 1); //flip around
 		ofScale(helperFontScale*.8,
 				helperFontScale*.8,
@@ -1337,22 +1475,19 @@ void CloudsIntroSequence::drawHelperType(){
 
     //draw the text
 	if(helpHoverText != ""){
-        ofPushMatrix();
 		helpHoverText = ofToUpper(helpHoverText);
 		
 		float hoverTextWidth = helperFont.stringWidth(helpHoverText);
 		float hoverTextWidth2,questionTextHeight2;
-		string secondLine;
+		string secondLine = "";
 		bool twoLines = hoverTextWidth > 500;
 		if(helpHoverText.find("\n") != string::npos){
 			twoLines = true;
 			vector<string> split = ofSplitString(helpHoverText, "\n", true,true);
 			helpHoverText = split[0];
 			secondLine = split[1];
-			hoverTextWidth = helperFont.stringWidth(helpHoverText);
-			hoverTextWidth2 = helperFont.stringWidth(secondLine);
-            
-//            cout << "QUESTION " << helpHoverText << " " << secondLine << endl;
+//			hoverTextWidth = helperFont.stringWidth(helpHoverText);
+//			hoverTextWidth2 = helperFont.stringWidth(secondLine);
 		}
 		else if(twoLines){
 			vector<string> pieces = ofSplitString(helpHoverText, " ", true,true);
@@ -1363,42 +1498,11 @@ void CloudsIntroSequence::drawHelperType(){
 			secondHalf.insert(secondHalf.begin(), pieces.begin() + halfsize, pieces.end());
 			helpHoverText = ofJoinString(firstHalf, " ");
 			secondLine = ofJoinString(secondHalf, " ");
-			hoverTextWidth  = helperFont.stringWidth(helpHoverText);
-			hoverTextWidth2 = helperFont.stringWidth(secondLine);
+//			hoverTextWidth  = helperFont.stringWidth(helpHoverText);
+//			hoverTextWidth2 = helperFont.stringWidth(secondLine);
 		}
-		float hoverTextHeight = helperFont.stringHeight(helpHoverText);
 		
-        //basePosition = ofVec3f(0,0,warpCamera.getPosition().z + questionZStopRange.max);
-
-		#ifdef OCULUS_RIFT
-		getOculusRift().multBillboardMatrix( basePosition );
-		#else
-		ofTranslate(basePosition);
-		#endif
-		ofRotate(180, 0, 0, 1); //flip around
-		ofScale(scaleModifier*helperFontScale,
-				scaleModifier*helperFontScale,
-				scaleModifier*helperFontScale);
-		
-		ofSetColor(255,255*helperTextOpacity);
-		
-        bool showAbove = !bUseOculusRift && caughtQuestion != NULL && caughtQuestion->tunnelQuadrantIndex == 2;
-		int yOffsetMult = (showAbove) ? -1 : 1;
-        
-		if(twoLines){
-            if(showAbove){
-                helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
-                helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
-            }
-            else{
-                helperFont.drawString(secondLine, -hoverTextWidth2*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
-                helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
-            }
-		}
-        else{
-            helperFont.drawString(helpHoverText, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
-        }
-		ofPopMatrix();
+        drawHelperTypeAtPosition(basePosition, helperTextOpacity, scaleModifier, helpHoverText, secondLine);
 	}
 
     ofEnableLighting();
@@ -1407,55 +1511,47 @@ void CloudsIntroSequence::drawHelperType(){
 
 }
 
-void CloudsIntroSequence::drawIntroNodes(){
+void CloudsIntroSequence::drawHelperTypeAtPosition(ofVec3f position, float opacity, float scaleModifier, string lineOne, string lineTwo){
 
-	ofPushStyle();
-    float extraAttenuate = 1.0;
-    
-#ifdef KINECT_INPUT
-	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
-    if(viewerState < k4w::ViewerState_PresentIdle && introNodesShown){
-        introNodesShown = false;
-        introNodeChangeTime = ofGetElapsedTimef();
-    }
-	if(viewerState >= k4w::ViewerState_PresentIdle && !introNodesShown){
-        introNodesShown = true;
-        introNodeChangeTime = ofGetElapsedTimef();
-    }
-    
-    extraAttenuate = ofMap(ofGetElapsedTimef(),
-                           introNodeChangeTime, introNodeChangeTime+.5,
-                           0.0, 1.0, true);
-    //if(!introNodesShown) 1.0 - extraAttenuate;
-    
-    //cout << "show nodes " << introNodesShown << " attenuate " << endl;
-    if(!introNodesShown){
-        return;
-    }
-    
+    float hoverTextHeight = helperFont.stringHeight(lineOne);
+    float hoverTextWidth = helperFont.stringWidth(lineOne);
+    float hoverTextWidth2 = helperFont.stringWidth(lineTwo);
+
+    ofPushMatrix();
+#ifdef OCULUS_RIFT
+    getOculusRift().multBillboardMatrix( position );
+#else
+    ofTranslate(position);
 #endif
+    ofRotate(180, 0, 0, 1); //flip around
+    ofScale(scaleModifier*helperFontScale,
+            scaleModifier*helperFontScale,
+            scaleModifier*helperFontScale);
     
-	for(int i = 0; i < introNodes.size(); i++){
-		introNodes[i]->nodeAlphaAttenuate = nodeAlphaAttenuate;
-		introNodes[i]->nodeBaseSize = introNodeSize;
-		introNodes[i]->tint = ofFloatColor::fromHsb(tint.r, tint.g, tint.b);
-		introNodes[i]->tint.a = 200*nodeAlphaAttenuate*extraAttenuate;
-		
-		introNodes[i]->draw();
-		
-		if(!introNodes[i]->finished){
-			break;
-		}
-	}
-	
-	ofPopStyle();	
+    ofSetColor(255,255*opacity);
+    
+    bool showAbove = !bUseOculusRift && caughtQuestion != NULL && caughtQuestion->tunnelQuadrantIndex == 2;
+    int yOffsetMult = (showAbove) ? -1 : 1;
+    
+    if(lineTwo != ""){
+        if(showAbove){
+            helperFont.drawString(lineOne, -hoverTextWidth*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
+            helperFont.drawString(lineTwo, -hoverTextWidth2*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
+        }
+        else{
+            helperFont.drawString(lineTwo, -hoverTextWidth2*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
+            helperFont.drawString(lineOne, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
+        }
+    }
+    else{
+        helperFont.drawString(lineOne, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
+    }
+    ofPopMatrix();
+    
 }
-
+    
 void CloudsIntroSequence::drawCursors(){
 	cursorAlpha = 1.0;
-//	if(!startedOnclick){
-//		cursorAlpha = ofMap(clickToBeginAlpha, 0, .3, 0.0, 1.0, true);
-//	}
     map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
     for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
         if (it->second.primary) {

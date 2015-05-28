@@ -7,16 +7,21 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>Oculus</Name>
-    <Value>1</Value>
+    <Name>Oculus_fast</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>OculusSD</Name>
-    <Value>1</Value>
+    <Name>Oculus_pretty</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>TunnelWarp</Name>
-    <Value>1</Value>
+    <Name>TunnelWarp_fast</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TunnelWarp_pretty</Name>
+    <Value>0</Value>
 </Widget>

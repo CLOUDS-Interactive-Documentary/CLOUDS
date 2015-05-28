@@ -2,7 +2,7 @@
 #include "CloudsCalibrationNode.h"
 #include "CloudsVisualSystem.h"
 
-float CalibrationNode::nodeActivatedTime = 0;
+//float CalibrationNode::nodeActivatedTime = 0;
 
 CalibrationNode::CalibrationNode(){
 	
@@ -13,7 +13,7 @@ CalibrationNode::CalibrationNode(){
 	percentComplete = 0.0;
 	hoverStartTime = 0.0;
 	gazePercent = 0.0;
-	multiplier = 0;
+;
 	clickSound = NULL;
 	selectSound = NULL;
 	nodeActivatedTime = 0;
@@ -31,8 +31,8 @@ void CalibrationNode::update(){
 
 void CalibrationNode::updateWorldPosition(){
 	worldPosition = ofVec3f( baseOffset.x, -baseOffset.y, baseOffset.z + titleTypeOffset);
-	worldPosition.x *= multiplier;
-	worldPosition.y *= multiplier;
+	worldPosition.x *= multiplier.x;
+	worldPosition.y *= multiplier.y;
 
 	if(cam != NULL){
 		worldPosition  = cam->getOrientationQuat() * worldPosition;
@@ -41,7 +41,7 @@ void CalibrationNode::updateWorldPosition(){
 	
 	//hack for intro node
 	if(introNode){
-		if(multiplier == 0){
+		if(multiplier.y == 0){
 			worldPosition.y -= centerYAdjust; //plus 20 just to move everything down a little bit
 		}
 		else {
