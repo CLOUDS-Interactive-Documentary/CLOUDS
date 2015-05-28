@@ -21,7 +21,7 @@ CloudsInputMouse::CloudsInputMouse()
 , cursorUpSize(12)
 {
 	//feedbackFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", 19);
-	feedbackFont.loadFont(GetFontBuffer(), 19);
+	feedbackFont.loadFont(GetFontBuffer(), 14);
 }
 
 void CloudsInputMouse::enable(){

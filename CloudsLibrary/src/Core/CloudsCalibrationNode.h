@@ -21,7 +21,7 @@ class CalibrationNode{
 	float percentComplete;
 	float hoverStartTime;
 	float gazePercent;
-	int multiplier;
+	ofVec2f multiplier;
 	
 	ofVideoPlayer* clickSound;
 	ofVideoPlayer* selectSound;
@@ -32,7 +32,7 @@ class CalibrationNode{
 	float centerYAdjust;
 	ofRange activationDistance;
 	float holdTime;
-	static float nodeActivatedTime;
+	float nodeActivatedTime;
 	
 	//SET ON EACH DRAW
 	float nodeAlphaAttenuate;

@@ -564,11 +564,11 @@ void CloudsVisualSystem::update(ofEventArgs & args)
     getSelectLow()->update();
     
 	selfUpdate();
-	
+#ifdef OCULUS_RIFT
 	if(isInterlude){
 		updateInterludeInterface();
 	}
-	
+#endif
 	if(bMatchBackgrounds) {
 		bgHue2 = bgHue;
 		bgSat2 = bgSat;
@@ -596,11 +596,15 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	updateCyclced = true;
 }
 
+#ifdef OCULUS_RIFT
 bool CloudsVisualSystem::updateInterludeInterface(){
+	resetNode.introNode = continueNode.introNode = false;
+	resetNode.clickSound = continueNode.clickSound = getClick();
+	resetNode.selectSound = continueNode.selectSound = getSelectHigh();
 
-//#ifdef CLOUDS_INTERLUDE_NAV
-	resetNode.multiplier	= -1;
-	continueNode.multiplier = 1;
+	resetNode.multiplier.x	  = -1;
+	continueNode.multiplier.x =  1;
+    
 	CalibrationNode* n[2] = { &resetNode, &continueNode };
 	for(int i = 0; i < 2; i++){
 		n[i]->nodeAlphaAttenuate = 1.0;
@@ -618,11 +622,10 @@ bool CloudsVisualSystem::updateInterludeInterface(){
 	resetNode.update();
 	continueNode.update();
 	
-//	cout << "Reset node position " << resetNode.worldPosition << " cam pos " << getCameraRef().getPosition() << endl;
-//#endif
 	return false;
 
 }
+#endif
 
 void CloudsVisualSystem::draw(ofEventArgs & args)
 {
@@ -876,15 +879,13 @@ void CloudsVisualSystem::drawScene(){
 	if(isInterlude){
 		drawInterludeInterface();
 	}
-	//drawSubtitles3D();
 	draw3DCursor();
 #endif
 	
 }
 
-void CloudsVisualSystem::drawInterludeInterface(){
-	
 #if defined(OCULUS_RIFT)
+void CloudsVisualSystem::drawInterludeInterface(){
 
 	ofPushStyle();
 	ofDisableDepthTest();
@@ -926,9 +927,9 @@ void CloudsVisualSystem::drawInterludeInterface(){
 	ofPopMatrix();
 	
 	ofPopStyle();
-#endif
-}
 
+}
+#endif
 void CloudsVisualSystem::drawSubtitles3D(){
 #ifdef OCULUS_RIFT
 

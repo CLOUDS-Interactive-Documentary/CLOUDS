@@ -1605,6 +1605,7 @@ void CloudsPlaybackController::updateTransition(){
                 clusterMap->clearTraversal();
                 introSequence->setStartQuestions(startingNodes);
                 introSequence->firstPlay = false;
+                introSequence->shouldArchiveAct = false;
                 introSequence->loadingFinished();
                 if(bVHXRentalExpired){
                     introSequence->vhxRentalExpired();

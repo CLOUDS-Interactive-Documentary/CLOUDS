@@ -333,8 +333,10 @@ class CloudsVisualSystem {
     CloudsCursorMode secondaryCursorMode;
     
 	bool isInterlude;
+#ifdef OCULUS_RIFT
 	bool updateInterludeInterface();
 	void drawInterludeInterface();
+#endif
 	
 //#ifdef CLOUDS_INTERLUDE_NAV
 	CalibrationNode resetNode;
