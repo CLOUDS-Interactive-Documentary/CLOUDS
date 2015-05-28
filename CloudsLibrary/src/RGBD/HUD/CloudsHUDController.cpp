@@ -58,12 +58,13 @@ CloudsHUDController::CloudsHUDController(){
     margin = 40;
     bPaused = false;
     waitingMedia = NULL;
-
+    bSetup = false;
 
 }
 
 void CloudsHUDController::setup(){
-	
+
+    bSetup = true;
 	buildLayerSets();
     calculateFontSizes();
 
@@ -92,7 +93,6 @@ void CloudsHUDController::showProjectExample(const string& videoPath, bool force
         videoPlayer.stop();
     }
     
-    //if( ofFile(videoPath).exists() ){
     isPlaying = videoPlayer.loadMovie(videoPath);
     videoPlayer.setLoopState(OF_LOOP_NORMAL);
     videoPlayer.play();
@@ -722,6 +722,9 @@ void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 }
 //////////TODO: these need to animate out
 void CloudsHUDController::clearQuestion(){
+    if(hudLabelMap["QuestionTextBox_1_"] == NULL){
+        return;
+    }
 	hudLabelMap["QuestionTextBox_1_"]->animateOut(true);
     animateOff(CLOUDS_HUD_QUESTION);
 
@@ -1894,11 +1897,15 @@ bool CloudsHUDController::didUnpause(){
 }
 
 void CloudsHUDController::draw(){
+
+	if(!bSetup){
+        return;
+    }
     
     if( !bDrawHud ){
         return;
 	}
-	
+    
 	ofPushStyle();
 	ofPushMatrix();
     ofDisableLighting();
@@ -2048,6 +2055,10 @@ void CloudsHUDController::animateOff(){
 }
 
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
+    
+    if(!bSetup){
+        return;
+    }
     
     if (isPlaying && (layer == CLOUDS_HUD_PROJECT_EXAMPLE  || layer == CLOUDS_HUD_ALL)) {
 		isPlaying = false;

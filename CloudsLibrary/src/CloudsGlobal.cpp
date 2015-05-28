@@ -14,10 +14,10 @@
 
 static CloudsVisualLevel visualLevel = PRETTY;
 static bool loadedVisualLevel = false;
-
-string dataRootPath = "";
-string dataRootPathIgnored = "";
-string mediaRootPath = "";
+static bool mediaPathFound = false;
+static string dataRootPath = "";
+static string dataRootPathIgnored = "";
+static string mediaRootPath = "";
 
 #ifdef TARGET_OSX
 #include <wordexp.h>
@@ -56,8 +56,17 @@ string GetCloudsDataPath(bool ignored)
 	return ignored ? dataRootPathIgnored : dataRootPath;
 }
 
+//--------------------------------------------------------------------
+bool MediaPathFound(){
+#ifdef VHX_MEDIA
+    return true;
+#else
+    GetCloudsMediaPath();
+    return mediaPathFound;
+#endif
+}
 
-
+//--------------------------------------------------------------------
 string GetCloudsMediaPath(){
 
 #ifdef VHX_MEDIA
@@ -78,18 +87,22 @@ string GetCloudsMediaPath(){
 #ifdef TARGET_OSX
 		if(thumbDrive == "" && ofFile("/Library/Application Support/CLOUDS/mediaRoot.txt").exists()){
 			mediaRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/mediaRoot.txt").getFirstLine() );
-		}else if(thumbDrive != ""){
+		}
+        else if(thumbDrive != ""){
 			mediaRootPath = thumbDrive;
 		}
 #else
 		if(thumbDrive == "" && ofFile("C:/Program Files (x86)/CLOUDS/mediaRoot.txt").exists()){
 			mediaRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("C:/Program Files (x86)/CLOUDS/mediaRoot.txt").getFirstLine() );
-		}else if(thumbDrive != ""){
+		}
+        else if(thumbDrive != ""){
 			mediaRootPath = thumbDrive;
 		}
 #endif
 	}
 
+    mediaPathFound = mediaRootPath != "";
+    
 	ofLogVerbose("GetCloudsMediaPath") << mediaRootPath <<endl;
 
 	return mediaRootPath;
@@ -162,7 +175,7 @@ void SetLanguage(string newLanguage){
 	languageSet = true;
 }
 
-
+//--------------------------------------------------------------------
 string FindCloudsThumbDrive(){
 
 #ifdef TARGET_OSX

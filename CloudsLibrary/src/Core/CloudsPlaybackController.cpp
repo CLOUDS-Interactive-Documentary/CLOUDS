@@ -276,7 +276,14 @@ void CloudsPlaybackController::setup(){
 	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
-
+    if(!MediaPathFound()){
+        showIntro();
+        loading = false;
+        introSequence->loadingFinished();
+        introSequence->alertNoMedia();
+        return;
+    }
+    
 	cout << "*****LOAD STEP*** STARTING RGBD" << endl;
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
@@ -940,7 +947,10 @@ void CloudsPlaybackController::mouseScrolled(ofMouseEventArgs & args){
 void CloudsPlaybackController::update(ofEventArgs & args){
 
 //    cout << "UPDATE " << ofGetElapsedTimef() << endl;
-
+    if(!MediaPathFound()){
+        return;
+    }
+    
     GetCloudsInput()->bUserBegan = !showingIntro || (showingIntro && introSequence->userHasBegun());
 
 	if(loading){
@@ -1948,7 +1958,7 @@ void CloudsPlaybackController::drawRenderTarget(){
 		ofDisableDepthTest();
         
 		//cout << "crosffade value is " << crossfadeValue << " showing intro? " << showingIntro << endl;
-		if(loading){
+		if(loading || !MediaPathFound()){
 			crossfadeValue = 1.0;
 		}
 		ofSetColor(255, crossfadeValue*255 );

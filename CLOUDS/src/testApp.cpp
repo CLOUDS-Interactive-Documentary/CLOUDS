@@ -48,7 +48,9 @@ void testApp::setup(){
 void testApp::update(){
 	if(ofGetFrameNum() == 10){
         #if !defined(VHX_MEDIA) && !defined(OCULUS_RIFT)
-		ofToggleFullscreen();
+        if(player.loading){
+            ofToggleFullscreen();
+        }
         #endif
 	}
     
