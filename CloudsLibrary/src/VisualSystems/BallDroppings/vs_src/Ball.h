@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 #include "LinkedList.h"
-#include "ofSoundPlayer.h"
+#include "ofOpenAlSoundPlayer.h"
 #include "V3.h"
 
 /*
@@ -19,10 +19,11 @@
 
 class Ball: public V3{
 	public:
-		ofSoundPlayer sound;
+		static ofOpenALSoundPlayer* sound;
 		char *netstr;//buffer for net printing.
 		V3 oldPos;
 		V3 force;
+    float gain;
 		int channel;
 		float jitter;
 		unsigned char volume;
@@ -40,6 +41,8 @@ class Ball: public V3{
     void initMem(std::string soundfile, float volume);
 		void bounce(float x1,float y1,float x2,float y2, float freqRange);
 		void amnesia();
+    
+    void update(ofEventArgs& args);
 };
 
 #endif
