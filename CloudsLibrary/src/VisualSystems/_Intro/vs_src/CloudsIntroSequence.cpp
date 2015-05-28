@@ -1030,7 +1030,10 @@ void CloudsIntroSequence::vhxAuthenticated(){
     else{
         changeState(CLOUDS_INTRO_LOADING);
     }
+#ifndef OCULUS_RIFT
     ofToggleFullscreen();
+#endif
+    
 }
 
 void CloudsIntroSequence::vhxError(){
@@ -1599,7 +1602,6 @@ void CloudsIntroSequence::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		reloadShaders();
 	}
-
 }
 
 void CloudsIntroSequence::selfKeyReleased(ofKeyEventArgs & args){

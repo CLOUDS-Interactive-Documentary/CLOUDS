@@ -2,7 +2,8 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	
+    
+	ofSetEscapeQuitsApp(false);
 	ofSetVerticalSync(true);
 	ofBackground(0);
     
@@ -17,10 +18,14 @@ void testApp::setup(){
 //    ofSetWindowShape(1920,1080);
 #endif
 
-
+    
+#ifdef OCULUS_RIFT
+    ofToggleFullscreen();
+#else
     ofSetWindowShape(1280, 720);
     ofSetWindowPosition(ofGetScreenWidth()/2 - 1280/2, ofGetScreenHeight()/2 - 720/2);
 
+#endif
     
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();
@@ -42,7 +47,7 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 	if(ofGetFrameNum() == 10){
-        #ifndef VHX_MEDIA
+        #if !defined(VHX_MEDIA) && !defined(OCULUS_RIFT)
 		ofToggleFullscreen();
         #endif
 	}
@@ -73,14 +78,17 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 	
-	if(key == 'L'){
-#ifdef OCULUS_RIFT
-		ofPixels p;
-		CloudsVisualSystem::getOculusRift().getRenderTarget().readToPixels(p);
-		ofSaveImage(p,"OCULUS_BG_HD.png");
-#endif
-	}
+//	if(key == 'L'){
+//#ifdef OCULUS_RIFT
+//		ofPixels p;
+//		CloudsVisualSystem::getOculusRift().getRenderTarget().readToPixels(p);
+//		ofSaveImage(p,"OCULUS_BG_HD.png");
+//#endif
+//	}
 
+    if(key == OF_KEY_ESC){
+        ofToggleFullscreen();
+    }
 	//if(key == '1'){
 	//	int* crashme = NULL;
 	//	*crashme = 0;
