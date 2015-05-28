@@ -144,6 +144,7 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
         ofCircle(pos, 1);
     }
     
+
     ofDisableAlphaBlending();
 	ofEnableLighting();
     ofPopStyle();

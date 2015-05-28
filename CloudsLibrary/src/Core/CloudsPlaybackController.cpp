@@ -1969,26 +1969,8 @@ void CloudsPlaybackController::preDraw(ofEventArgs& args){
 //    ofRect(0,0,1920,1080);
     
     ofPopStyle();
-    //TODO implement questions select fading on HUD
-    // CloudsVisualSystem:: ... questionSelectFade
     CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
     hud.draw();
-    
-//    if(CloudsVisualSystem::getRGBDVideoPlayer().isPlaying()){
-////        if(!subtitleNameFont.isLoaded()){
-////            subtitleNameFont.loadFont(CloudsCryptoGetFont("Blender-BOOK.ttf"), subtitleNameFontSize);
-////        }
-////        
-//        string speakerFullName = speakerFirstName + " " + speakerLastName;
-//        float speakerNameWidth = subtitleNameFont.stringWidth(speakerFullName);
-//        ofPushStyle();
-////        ofSetColor(0,255*questionSelectFade);
-////        subtitleNameFont.drawString(speakerFullName, 650+2, subtitleHeight - 54+2);
-////        ofSetColor(255,255*questionSelectFade);
-//        subtitleNameFont.drawString(speakerFullName, 650, subtitleHeight - 54);
-//        ofPopStyle();
-////    }
-    //checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
     
     CloudsVisualSystem::getOculusRift().endOverlay();
 #endif

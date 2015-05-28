@@ -734,9 +734,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             checkOpenGLError(getSystemName() + ":: POST DRAW");
 		}
 		
-#ifndef OCULUS_RIFT
-        drawCursors();
-#endif
 #ifdef KINECT_INPUT
         drawKinectDebug();
 #endif
@@ -4133,6 +4130,11 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
     if(bEnablePostFX){
         cloudsPostShader.end();
     }
+    
+    
+    drawCursors();
+    
+    
 #endif
     
 }
