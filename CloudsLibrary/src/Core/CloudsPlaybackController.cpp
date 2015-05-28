@@ -184,6 +184,8 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	
 	waitForThread(true);
 	
+    run.save();
+    
 	if(eventsRegistered){
 		
 		eventsRegistered = false;

@@ -59,29 +59,7 @@ CloudsHUDController::CloudsHUDController(){
     bPaused = false;
     waitingMedia = NULL;
 
-//#ifdef OCULUS_RIFT
-//    // set defaults
-//    // there might be a better way of doing this...
-//    layerDistance[CLOUDS_HUD_QUESTION]         = 300;
-//    layerDistance[CLOUDS_HUD_LOWER_THIRD]      = 300;
-//    layerDistance[CLOUDS_HUD_PROJECT_EXAMPLE]  = 300;
-//    layerDistance[CLOUDS_HUD_MAP]              = 300;
-//    
-//    layerRotationH[CLOUDS_HUD_QUESTION]        = 0;
-//    layerRotationH[CLOUDS_HUD_LOWER_THIRD]     = 0;
-//    layerRotationH[CLOUDS_HUD_PROJECT_EXAMPLE] = 0;
-//    layerRotationH[CLOUDS_HUD_MAP]             = 0;
-//    
-//    layerRotationV[CLOUDS_HUD_QUESTION]        = 0;
-//    layerRotationV[CLOUDS_HUD_LOWER_THIRD]     = 0;
-//    layerRotationV[CLOUDS_HUD_PROJECT_EXAMPLE] = 0;
-//    layerRotationV[CLOUDS_HUD_MAP]             = 0;
-//    
-//    layerBillboard[CLOUDS_HUD_QUESTION]        = CLOUDS_HUD_BILLBOARD_CAMERA;
-//    layerBillboard[CLOUDS_HUD_LOWER_THIRD]     = CLOUDS_HUD_BILLBOARD_CAMERA;
-//    layerBillboard[CLOUDS_HUD_PROJECT_EXAMPLE] = CLOUDS_HUD_BILLBOARD_CAMERA;
-//    layerBillboard[CLOUDS_HUD_MAP]             = CLOUDS_HUD_BILLBOARD_CAMERA;
-//#endif
+
 }
 
 void CloudsHUDController::setup(){
@@ -628,7 +606,7 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
     }
     //give it a boost!
 #ifdef OCULUS_RIFT
-    fontSize += 3;
+    fontSize += 10;
 #endif
     return fontSize;
 }

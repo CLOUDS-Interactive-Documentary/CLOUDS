@@ -153,7 +153,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>camera fwd force</Name>
-    <Value>0.710608184</Value>
+    <Value>0.004000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -166,7 +166,22 @@
     <Value>0.103448279</Value>
 </Widget>
 <Widget>
+    <Kind>4</Kind>
+    <Name>camera swing x</Name>
+    <Value>42.647056580</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camera swing y</Name>
+    <Value>18.137254715</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camera swing damp</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
     <Kind>2</Kind>
     <Name>hold camera</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>

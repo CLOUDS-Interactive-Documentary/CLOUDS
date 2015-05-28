@@ -159,8 +159,8 @@ void CloudsIntroSequence::selfSetDefaults(){
 	resumeNode.selectSound = getSelectMid();
     
 	playNode.multiplier     = ofVec2f(0, 0);
-	newNode.multiplier      = ofVec2f(-1, 1);
-	resumeNode.multiplier   = ofVec2f(1, 1);
+	newNode.multiplier      = ofVec2f(1, 1);
+	resumeNode.multiplier   = ofVec2f(-1, 1);
 #endif
     
 	hintCursorEndPoint = ofVec2f(320,240);
@@ -448,20 +448,39 @@ void CloudsIntroSequence::updateWaiting(){
 	
 
 	#if defined(OCULUS_RIFT)
+    CalibrationNode* selectedNode = NULL;
     for(int i = 0; i < introNodes.size(); i++){
+		if(introNodes[i]->finished){
+			selectedNode = introNodes[i];
+		}
+    }
+    
+    for(int i = 0; i < introNodes.size(); i++){
+        if(selectedNode != NULL && introNodes[i] != selectedNode){
+            continue;
+        }
+        if(introNodes[i] == &playNode && !firstPlay){
+            continue;
+        }
+        else if(introNodes[i] != &playNode && firstPlay){
+            continue;
+        }
+        
 		updateIntroNodePosition(*introNodes[i]);
-        updateIntroNodeInteraction(*introNodes[i]);
+        introNodes[i]->updateInteraction();
 	}
     
-    if(playNode.finished){
-        changeState(CLOUDS_INTRO_PLAYING);
-    }
-    else if(resumeNode.finished){
-        changeState(CLOUDS_INTRO_RESUMING);
-    }
-    else if(newNode.finished){
-        shouldArchiveAct = true; // forces to clear run
-        changeState(CLOUDS_INTRO_PLAYING);
+    if(currentState == CLOUDS_INTRO_MENU){
+        if(playNode.finished){
+            changeState(CLOUDS_INTRO_PLAYING);
+        }
+        else if(resumeNode.finished){
+            changeState(CLOUDS_INTRO_RESUMING);
+        }
+        else if(newNode.finished){
+            shouldArchiveAct = true; // forces to clear run
+            changeState(CLOUDS_INTRO_PLAYING);
+        }
     }
     
 	#elif defined(KINECT_INPUT)
@@ -646,11 +665,6 @@ void CloudsIntroSequence::updateIntroNodePosition(CalibrationNode& node){
 	#endif
 	node.updateScreenPosition();
 	
-}
-
-void CloudsIntroSequence::updateIntroNodeInteraction(CalibrationNode& node){
-	
-	node.updateInteraction();
 }
 
 void CloudsIntroSequence::updateTitle(){
@@ -1270,10 +1284,10 @@ void CloudsIntroSequence::drawCloudsType(){
 
 void CloudsIntroSequence::drawIntroNodes(){
     
-	ofPushStyle();
-    float extraAttenuate = 1.0;
     
 #ifdef KINECT_INPUT
+	ofPushStyle();
+    float extraAttenuate = 1.0;
 	k4w::ViewerState viewerState = ((CloudsInputKinectOSC*)GetCloudsInput().get())->viewerState;
     if(viewerState < k4w::ViewerState_PresentIdle && introNodesShown){
         introNodesShown = false;
@@ -1304,10 +1318,24 @@ void CloudsIntroSequence::drawIntroNodes(){
 			break;
 		}
 	}
-    
-#endif
+    ofPopStyle();
+#elif defined(OCULUS_RIFT)
+    if(currentState < CLOUDS_INTRO_MENU){
+        return;
+    }
 
+    ofPushStyle();
+    CalibrationNode* selectedNode = NULL;
+    for(int i = 0; i < introNodes.size(); i++){
+		if(introNodes[i]->finished){
+			selectedNode = introNodes[i];
+		}
+    }
+    
 	for(int i = 0; i < introNodes.size(); i++){
+        if(selectedNode != NULL && introNodes[i] != selectedNode){
+            continue;
+        }
         if(introNodes[i] == &playNode && !firstPlay){
             continue;
         }
@@ -1315,20 +1343,16 @@ void CloudsIntroSequence::drawIntroNodes(){
             continue;
         }
         
-		if(introNodes[i]->finished){
-			continue;
-		}
-        
 		introNodes[i]->nodeAlphaAttenuate = nodeAlphaAttenuate;
 		introNodes[i]->nodeBaseSize = introNodeSize;
 		introNodes[i]->tint = ofFloatColor::fromHsb(tint.r, tint.g, tint.b);
-		introNodes[i]->tint.a = 200*nodeAlphaAttenuate*extraAttenuate;
+		introNodes[i]->tint.a = 200*nodeAlphaAttenuate;
 		
 		introNodes[i]->draw();
 		
 	}
-	
-	ofPopStyle();
+    ofPopStyle();
+    #endif
 }
 
 void CloudsIntroSequence::drawHelperType(){

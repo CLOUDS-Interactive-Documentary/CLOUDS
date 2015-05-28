@@ -4,7 +4,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>hold camera</WidgetName>
-                <WidgetID>76</WidgetID>
+                <WidgetID>82</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

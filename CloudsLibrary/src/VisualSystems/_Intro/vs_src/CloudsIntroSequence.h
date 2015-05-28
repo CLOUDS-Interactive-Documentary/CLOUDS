@@ -231,7 +231,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     void drawMenu();
     
 	void updateIntroNodePosition(CalibrationNode& node);
-	void updateIntroNodeInteraction(CalibrationNode& node);
+//	void updateIntroNodeInteraction(CalibrationNode& node);
 	
 	//intro sequence
 	float introNodeSize;
