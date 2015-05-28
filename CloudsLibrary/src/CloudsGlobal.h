@@ -66,6 +66,8 @@ void SetGraphicsQualityLevel(CloudsVisualLevel level);
 void ParseVHXIds(const string& path, map<string, string>& idMap);
 //--------------------------------------------------------------------
 void TrimVHXId(string& str);
+//--------------------------------------------------------------------
+bool MediaPathFound();
 
 //--------------------------------------
 static inline std::string &ltrim(std::string &s) {

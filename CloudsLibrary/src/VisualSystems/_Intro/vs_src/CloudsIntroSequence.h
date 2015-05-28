@@ -129,7 +129,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     void vhxRentalExpired();
     void vhxAuthenticated();
     void vhxError();
-         
+    void alertNoMedia();
+    
   protected:
 		
 	ofxUISuperCanvas* questionGui;

@@ -127,9 +127,6 @@ class CloudsHUDController {
 	void setup();
 	void update();
 	void draw();
-//#ifdef OCULUS_RIFT
-//    void draw3D(ofCamera* cam, ofVec2f offset = ofVec2f::zero());
-//#endif
 
     void setHudEnabled(bool enable);
     bool isHudEnabled();
@@ -204,13 +201,7 @@ class CloudsHUDController {
 	bool isPlaying;
     float transitionFade;
     void researchTransitionFinished();
-    
-//#ifdef OCULUS_RIFT
-//    map<CloudsHUDLayerSet, float> layerDistance;
-//    map<CloudsHUDLayerSet, float> layerRotationH;
-//    map<CloudsHUDLayerSet, float> layerRotationV;
-//    map<CloudsHUDLayerSet, CloudsHUDBillboard> layerBillboard;
-//#endif
+
     
     void setTopics(const set<string>& topics);
     void populateSpeakers();
@@ -279,7 +270,7 @@ class CloudsHUDController {
     CloudsHUDScroller aboutScroller;
     void updateScroll();
     //////////////
-    
+    bool bSetup;
     bool bPaused;
 
     void updateResearchNavigation();

@@ -610,7 +610,7 @@ void CloudsVisualSystemManager::populateEnabledSystemIndeces(){
                 continue;
             }
             //two of the tunnels are also too big to distribute
-            if(presets[i].systemName == "WormHole" && ofToLower(presets[i].presetName).find("organic") != string::npos ){
+            if(presets[i].systemName == "WormHole" && ofToLower(presets[i].presetName).find("organic") == string::npos ){
                 continue;
             }
 #endif
@@ -858,6 +858,17 @@ vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabledScre
 		   (!gradeA          || (gradeA  && presets[i].grade == "A")) &&
            (systemName == "" || (systemName == presets[i].systemName)))
 		{
+            
+            //more checks
+#ifdef VHX_MEDIA
+            if(systemName == "WormHole" && ofToLower(presets[i].presetName).find("organic") == string::npos){
+//                cout << "SKIPPING PRESET " << presets[i].presetName << endl;
+                continue;
+            }
+//            else {
+//                cout << "ALLOWING PRESET " << presets[i].presetName << endl;
+//            }
+#endif
 			filtered.push_back( i );
 		}
 	}

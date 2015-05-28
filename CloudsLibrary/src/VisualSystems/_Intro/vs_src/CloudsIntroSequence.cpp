@@ -642,6 +642,8 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
             aboutMenuItem.attenuation = .03;
             break;
         case CLOUDS_INTRO_NO_MEDIA:
+            vhxPromptScreen = "USB Drive Not Found - Insert and restart.";
+            showVHXPrompt = true;
             break;
         default:
             break;
@@ -800,7 +802,6 @@ void CloudsIntroSequence::updateMenu(){
             changeState(CLOUDS_INTRO_PLAYING);
         }
         else if(resumeMenuItem.clicked){
-            //TODO: handle resume only portal
             changeState(CLOUDS_INTRO_RESUMING);
         }
     }
@@ -1084,6 +1085,10 @@ void CloudsIntroSequence::vhxError(){
     changeState(CLOUDS_INTRO_VHX_ERROR);
 }
 
+void CloudsIntroSequence::alertNoMedia(){
+    changeState(CLOUDS_INTRO_NO_MEDIA);
+}
+
 void CloudsIntroSequence::aboutClosed(){
     changeState(CLOUDS_INTRO_MENU);
 }
@@ -1362,7 +1367,7 @@ void CloudsIntroSequence::drawHelperType(){
 	ofDisableLighting();
     
 	if(!helperFont.isLoaded() || currentHelperFontSize != helperFontSize){
-		//helperFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", helperFontSize);
+
 #ifdef OCULUS_RIFT
 		helperFont.loadFont(GetFontBuffer(), helperFontSize-2	); //hack!
 #else
@@ -1664,11 +1669,13 @@ void CloudsIntroSequence::selfBegin(){
         changeState(CLOUDS_INTRO_VHX_WAITING_CODE);
     }
 #else
-    if(loadDidFinish){
-        changeState(CLOUDS_INTRO_MENU);
-    }
-    else{
-        changeState(CLOUDS_INTRO_LOADING);
+    if(currentState != CLOUDS_INTRO_NO_MEDIA){
+        if(loadDidFinish){
+            changeState(CLOUDS_INTRO_MENU);
+        }
+        else{
+            changeState(CLOUDS_INTRO_LOADING);
+        }
     }
 #endif
     
