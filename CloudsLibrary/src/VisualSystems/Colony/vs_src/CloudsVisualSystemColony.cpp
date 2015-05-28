@@ -37,7 +37,10 @@ void CloudsVisualSystemColony::selfSetup()
 	loadShaders();
     
     // sound
+#ifdef TONIC_SOUNDS
     synth.setOutputGen(buildSynth());
+#endif
+    
 }
 
 void CloudsVisualSystemColony::selfSetDefaults(){
@@ -497,6 +500,7 @@ void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
 
 Tonic::Generator CloudsVisualSystemColony::buildSynth()
 {
+
     string strDir = GetCloudsDataPath(true)+"sound/textures/";
 //    string strDir = GetCloudsDataPath(true) + "sound/textures/";
     ofDirectory sdir(strDir);

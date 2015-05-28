@@ -144,8 +144,11 @@ void CloudsVisualSystemRipples::selfSetup()
     
     bRestart = true;
 
+#ifdef TONIC_SOUNDS
     // sound
-	for (int i=0; i<2; i++) volume[i] = 0;
+	for (int i=0; i<2; i++){
+        volume[i] = 0;
+    }
     bEnableSounds = true;
     noteIndex = 0;
     baseNote = 0;
@@ -153,6 +156,7 @@ void CloudsVisualSystemRipples::selfSetup()
     fMainGain = 0;
     mainGain.value(0);
     mainSynth.setOutputGen(buildSynth() * mainGain);
+#endif
 }
 
 void CloudsVisualSystemRipples::restart()
