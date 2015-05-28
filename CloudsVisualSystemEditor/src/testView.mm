@@ -3,7 +3,7 @@
 #include "CloudsInputKinectOSC.h"
 #include "CloudsVisualSystemManager.h"
 
-#define SCREENSHOT_MODE 1
+//#define SCREENSHOT_MODE 1
 
 //struct sortObject {
 //	CloudsFCPParser* parser;
@@ -47,37 +47,12 @@ bool clipsort(CloudsClip* a, CloudsClip* b){
     }
     cout << ptr << endl;
     
-	//ofEnableDataPath();
-    //ofSetDataPathRoot("../../");
-	//ofDisableDataPath();
-    
     parser.loadFromFiles();
 
-	
-//	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-//		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-//        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
-//	}
-//	else{
-//        string defaultFilePath = GetCloudsDataPath(true) + "media/";
-//		if(ofFile::doesFileExist(defaultFilePath)){
-//			parser.setCombinedVideoDirectory(defaultFilePath);
-//		}
-//		else{
-//			ofSystemAlertDialog("Could not find movie file path. \
-//								Create a file called CloudsMovieDirectory.txt \
-//								that contains one line, the path to your movies folder");
-//		}
-//	}
-    
     parser.loadMediaAssets();
 	visualSystems.loadPresets();
     visualSystems.loadCachedDataForSystems();
 	
-//	for (NSTableColumn *tableColumn in allKeywordTable.tableColumns) {
-//        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
-//        [tableColumn setSortDescriptorPrototype:sortDescriptor];
-//    }
 	
 	for (NSTableColumn *tableColumn in allClipTable.tableColumns) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];

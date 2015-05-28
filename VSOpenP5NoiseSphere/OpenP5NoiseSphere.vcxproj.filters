@@ -124,6 +124,12 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.cpp">
+      <Filter>addons\ofxCrypto\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -194,6 +200,15 @@
     </Filter>
     <Filter Include="addons\ofxLocalization\src">
       <UniqueIdentifier>{04484547-00ca-4744-a271-d289e4297328}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Core">
+      <UniqueIdentifier>{eaf6d24d-1947-475e-88e3-df9667e9c566}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCrypto">
+      <UniqueIdentifier>{f9ffed5f-a616-4890-a973-e76f0172cbd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCrypto\src">
+      <UniqueIdentifier>{62ed98d8-9b02-4fd6-91ea-41ef67412715}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -391,6 +406,15 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
       <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsCrypto.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.h">
+      <Filter>addons\ofxCrypto\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -90,7 +90,7 @@ void CloudsInputMouse::mouseScrolled(ofMouseEventArgs& data){
 }
 
 void CloudsInputMouse::drawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, bool bDragged, float focus, float fadeOut){
-    if(mode == CURSOR_MODE_NONE){
+    if(mode == CURSOR_MODE_NONE || mode == CURSOR_MODE_INACTIVE){
         //always show cursor on mouse mode
         mode = CURSOR_MODE_DRAW;
     }

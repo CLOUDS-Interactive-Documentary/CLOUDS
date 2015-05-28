@@ -1056,6 +1056,20 @@ void CloudsVisualSystem::exit()
 void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 {
 	
+#ifdef OCULUS_RIFT
+    switch (args.key){
+        case OF_KEY_BACKSPACE:
+            ofExit();
+            break;
+            
+        case 320:
+        case '0':
+            oculusRift.reset();
+            break;
+    }
+#endif
+
+#ifndef CLOUDS_RELEASE
 	if(timeline->isModal()){
 		return;
 	}
@@ -1233,18 +1247,13 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 			timeline->setOutPointAtPlayhead();
 			break;
             
-#ifdef OCULUS_RIFT
-        case OF_KEY_BACKSPACE:
-			ofExit();
-		case 320:
-		case '0':
-			oculusRift.reset();
-			break;
-#endif
         default:
             selfKeyPressed(args);
             break;
     }
+    
+#endif
+    
 }
 
 void CloudsVisualSystem::stackGuiWindows(){

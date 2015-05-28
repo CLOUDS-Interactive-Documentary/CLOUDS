@@ -4,7 +4,8 @@
 
 #include "Ball.h"
 #include <math.h>
-//#include "testApp.h"
+
+ofOpenALSoundPlayer* Ball::sound = NULL;
 
 
 //----------------------------------------------------
@@ -18,14 +19,19 @@ void Ball::initMem(std::string soundfile, float gain){
   netstr = new char[16];
   channel = 0;
   volume = 0;
-  
-  sound.loadSound(soundfile);
-  sound.setVolume(gain);
+    this->gain = gain;
+    if(sound == NULL){
+        sound = new ofOpenALSoundPlayer();
+        sound->setVolume(gain);
+        sound->loadSound(ofToDataPath(soundfile,true));
+        sound->setMultiPlay(true);
+    }
   
   lastBounceTimes = new long[16];
   jitter = 0;
   bounceTimeDelta = 10000;
   tooMuchBouncingThreshold = 300;
+    ofAddListener(ofEvents().update, this, &Ball::update);
 }
 //----------------------------------------------------
 Ball::Ball(V3 v, int _channel, std::string soundfile, float gain):V3(v.x,v.y,0){
@@ -40,9 +46,16 @@ Ball::Ball(V3 v,float oldX_,float oldY_,float forceX_,float forceY_,float jitter
   oldPos.copyFrom(oldX_,oldY_,0);
   force.copyFrom(forceX_,forceY_);
 }
+
+void Ball::update(ofEventArgs& args){
+//    sound.setVolume(gain);
+//    sound.update();
+}
+
 //----------------------------------------------------
 Ball::~Ball(){
-	sound.stop();
+    ofRemoveListener(ofEvents().update, this, &Ball::update);
+	sound->stop();
 	delete [] lastBounceTimes;
 	delete [] netstr;
 }
@@ -102,8 +115,9 @@ void Ball::bounce(float x1,float y1,float x2,float y2, float freqRange){
     force.copyFrom(0,0);//make it still
   } else { 
       unsigned long freq = 60 + force.getLength() * freqRange;
-	sound.setSpeed(freq/44100.0);
-	sound.play();
+      //sound->stop();
+	sound->setSpeed(freq/44100.0);
+	sound->play();
     jitter = force.getLength()/2;
   }
   
