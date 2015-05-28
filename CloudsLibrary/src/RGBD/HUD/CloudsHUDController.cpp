@@ -606,7 +606,12 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
     }
     //give it a boost!
 #ifdef OCULUS_RIFT
-    fontSize += 10;
+    if(ofToLower(textMesh->id).find("name") == string::npos){
+        fontSize += 10;
+    }
+    else{
+        fontSize += 5;
+    }
 #endif
     return fontSize;
 }
