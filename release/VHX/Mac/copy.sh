@@ -14,6 +14,6 @@ fi
 
 #mv $DSTROOT/dataRoot.txt ~/Library/Application\ Support/CLOUDS;
 
-open /Applications/CLOUDS.app
+open -a /Applications/CLOUDS.app
 
 exit 0

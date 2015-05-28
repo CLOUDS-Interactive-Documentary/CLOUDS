@@ -542,7 +542,6 @@
 		E7D827EB18BEBDCF00C1EB93 /* ofxHotKeys_impl_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279118BEBDCF00C1EB93 /* ofxHotKeys_impl_win.cpp */; };
 		E7D827EC18BEBDCF00C1EB93 /* ofxRemoveCocoaMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279318BEBDCF00C1EB93 /* ofxRemoveCocoaMenu.mm */; };
 		E7D827ED18BEBDCF00C1EB93 /* ofxTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279418BEBDCF00C1EB93 /* ofxTimeline.cpp */; };
-		E7D827EE18BEBDCF00C1EB93 /* ofxTLAudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279618BEBDCF00C1EB93 /* ofxTLAudioTrack.cpp */; };
 		E7D827EF18BEBDCF00C1EB93 /* ofxTLBangs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279818BEBDCF00C1EB93 /* ofxTLBangs.cpp */; };
 		E7D827F018BEBDCF00C1EB93 /* ofxTLCameraTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279A18BEBDCF00C1EB93 /* ofxTLCameraTrack.cpp */; };
 		E7D827F118BEBDCF00C1EB93 /* ofxTLColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279C18BEBDCF00C1EB93 /* ofxTLColors.cpp */; };
@@ -1032,7 +1031,6 @@
 		E7DDC226194437EC00E61D75 /* ControlPulse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A5E18BF099000C1EB93 /* ControlPulse.cpp */; };
 		E7DDC227194437EC00E61D75 /* DSPUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D82A7418BF099000C1EB93 /* DSPUtils.cpp */; };
 		E7DDC228194437EC00E61D75 /* ofxUITextInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D5A91943F2AF00AA81C1 /* ofxUITextInput.cpp */; };
-		E7DDC229194437EC00E61D75 /* ofxTLAudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279618BEBDCF00C1EB93 /* ofxTLAudioTrack.cpp */; };
 		E7DDC22A194437EC00E61D75 /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D824ED18BEBD6F00C1EB93 /* wParticle.cpp */; };
 		E7DDC22B194437EC00E61D75 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA263189F1CD9006C9E4E /* b2Math.cpp */; };
 		E7DDC22C194437EC00E61D75 /* b2GearJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA289189F1CD9006C9E4E /* b2GearJoint.cpp */; };
@@ -2661,8 +2659,6 @@
 		E7D8279318BEBDCF00C1EB93 /* ofxRemoveCocoaMenu.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxRemoveCocoaMenu.mm; sourceTree = "<group>"; };
 		E7D8279418BEBDCF00C1EB93 /* ofxTimeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimeline.cpp; sourceTree = "<group>"; };
 		E7D8279518BEBDCF00C1EB93 /* ofxTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimeline.h; sourceTree = "<group>"; };
-		E7D8279618BEBDCF00C1EB93 /* ofxTLAudioTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLAudioTrack.cpp; sourceTree = "<group>"; };
-		E7D8279718BEBDCF00C1EB93 /* ofxTLAudioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLAudioTrack.h; sourceTree = "<group>"; };
 		E7D8279818BEBDCF00C1EB93 /* ofxTLBangs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLBangs.cpp; sourceTree = "<group>"; };
 		E7D8279918BEBDCF00C1EB93 /* ofxTLBangs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLBangs.h; sourceTree = "<group>"; };
 		E7D8279A18BEBDCF00C1EB93 /* ofxTLCameraTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLCameraTrack.cpp; sourceTree = "<group>"; };
@@ -7512,8 +7508,6 @@
 				E7D8279318BEBDCF00C1EB93 /* ofxRemoveCocoaMenu.mm */,
 				E7D8279418BEBDCF00C1EB93 /* ofxTimeline.cpp */,
 				E7D8279518BEBDCF00C1EB93 /* ofxTimeline.h */,
-				E7D8279618BEBDCF00C1EB93 /* ofxTLAudioTrack.cpp */,
-				E7D8279718BEBDCF00C1EB93 /* ofxTLAudioTrack.h */,
 				E7D8279818BEBDCF00C1EB93 /* ofxTLBangs.cpp */,
 				E7D8279918BEBDCF00C1EB93 /* ofxTLBangs.h */,
 				E7D8279A18BEBDCF00C1EB93 /* ofxTLCameraTrack.cpp */,
@@ -8361,7 +8355,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
 		};
 		E7DDC34E194437EC00E61D75 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -8374,7 +8368,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -8748,7 +8742,6 @@
 				E7D82AC318BF099000C1EB93 /* ControlPulse.cpp in Sources */,
 				E7D82ACE18BF099000C1EB93 /* DSPUtils.cpp in Sources */,
 				E755D6121943F2AF00AA81C1 /* ofxUITextInput.cpp in Sources */,
-				E7D827EE18BEBDCF00C1EB93 /* ofxTLAudioTrack.cpp in Sources */,
 				03E5EED51AB65B5E00781171 /* CloudsLocalization.cpp in Sources */,
 				E7D8262118BEBD7000C1EB93 /* wParticle.cpp in Sources */,
 				E73DA6F0189F1CEA006C9E4E /* b2Math.cpp in Sources */,
@@ -9335,7 +9328,6 @@
 				E7DDC226194437EC00E61D75 /* ControlPulse.cpp in Sources */,
 				E7DDC227194437EC00E61D75 /* DSPUtils.cpp in Sources */,
 				E7DDC228194437EC00E61D75 /* ofxUITextInput.cpp in Sources */,
-				E7DDC229194437EC00E61D75 /* ofxTLAudioTrack.cpp in Sources */,
 				E7DDC22A194437EC00E61D75 /* wParticle.cpp in Sources */,
 				E7DDC22B194437EC00E61D75 /* b2Math.cpp in Sources */,
 				E7DDC22C194437EC00E61D75 /* b2GearJoint.cpp in Sources */,

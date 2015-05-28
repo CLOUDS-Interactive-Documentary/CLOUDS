@@ -974,7 +974,7 @@ cp -r ../CloudsData/visualsystems/OpenP5NoiseSphere/Presets/jm_work_03a $copyLoc
 echo copying presets: OpenP5NoiseSphere
 cp -r ../CloudsData/visualsystems/OpenP5NoiseSphere/Presets/gx_work_01a $copyLocation/OpenP5NoiseSphere/Presets/
 cp -r ../CloudsData/visualsystems/OpenP5NoiseSphere/shaders $copyLocation/OpenP5NoiseSphere/shaders
-cp -r ../CloudsData/visualsystems/OpenP5NoiseSphere/sounds $copyLocation/OpenP5NoiseSphere/sounds
+cp -r ../CloudsDataIgnored/visualsystems/OpenP5NoiseSphere/sounds $copyLocation/OpenP5NoiseSphere/sounds
 echo creating: ../../CloudsData/visualsystems/OpenP5SeaOfLines
 mkdir ../../CloudsData/visualsystems/OpenP5SeaOfLines
 mkdir ../../CloudsData/visualsystems/OpenP5SeaOfLines/Presets
