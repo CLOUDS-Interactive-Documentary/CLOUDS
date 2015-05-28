@@ -57,7 +57,8 @@ CloudsHUDController::CloudsHUDController(){
     scaleAmt = 1.0;
     margin = 40;
     bPaused = false;
-    
+    waitingMedia = NULL;
+
 //#ifdef OCULUS_RIFT
 //    // set defaults
 //    // there might be a better way of doing this...
