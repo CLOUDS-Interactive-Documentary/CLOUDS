@@ -536,7 +536,6 @@
 		E7D8263918BEBD7000C1EB93 /* E5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8253318BEBD7000C1EB93 /* E5.cpp */; };
 		E7D827E118BEBDCF00C1EB93 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = E7D8276A18BEBDCE00C1EB93 /* kiss_fft.c */; };
 		E7D827E218BEBDCF00C1EB93 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = E7D8276B18BEBDCE00C1EB93 /* kiss_fftr.c */; };
-		E7D827E318BEBDCF00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8276E18BEBDCE00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
 		E7D827E718BEBDCF00C1EB93 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D8278618BEBDCE00C1EB93 /* libsndfile.a */; };
 		E7D827E918BEBDCF00C1EB93 /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8278F18BEBDCF00C1EB93 /* ofxHotKeys_impl_linux.cpp */; };
 		E7D827EA18BEBDCF00C1EB93 /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279018BEBDCF00C1EB93 /* ofxHotKeys_impl_mac.mm */; };
@@ -998,7 +997,6 @@
 		E7DDC201194437EC00E61D75 /* RunningBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DAB97189F3644006C9E4E /* RunningBackground.cpp */; };
 		E7DDC202194437EC00E61D75 /* ofxTLSwitches.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D827B918BEBDCF00C1EB93 /* ofxTLSwitches.cpp */; };
 		E7DDC204194437EC00E61D75 /* Maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D6E21943F56F00AA81C1 /* Maze.cpp */; };
-		E7DDC205194437EC00E61D75 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8276E18BEBDCE00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
 		E7DDC206194437EC00E61D75 /* CloudsVisualSystemSwim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8247E18BEBD6F00C1EB93 /* CloudsVisualSystemSwim.cpp */; };
 		E7DDC207194437EC00E61D75 /* MazeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D6E41943F56F00AA81C1 /* MazeCamera.cpp */; };
 		E7DDC208194437EC00E61D75 /* Vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA134189F1CD4006C9E4E /* Vec3.cpp */; };
@@ -2652,8 +2650,6 @@
 		E7D8276918BEBDCE00C1EB93 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
 		E7D8276A18BEBDCE00C1EB93 /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
 		E7D8276B18BEBDCE00C1EB93 /* kiss_fftr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
-		E7D8276E18BEBDCE00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofOpenALSoundPlayer_TimelineAdditions.cpp; sourceTree = "<group>"; };
-		E7D8276F18BEBDCE00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofOpenALSoundPlayer_TimelineAdditions.h; sourceTree = "<group>"; };
 		E7D8278218BEBDCE00C1EB93 /* sndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sndfile.h; sourceTree = "<group>"; };
 		E7D8278318BEBDCE00C1EB93 /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sndfile.hh; sourceTree = "<group>"; };
 		E7D8278618BEBDCE00C1EB93 /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsndfile.a; sourceTree = "<group>"; };
@@ -7438,7 +7434,6 @@
 			isa = PBXGroup;
 			children = (
 				E7D8276418BEBDCE00C1EB93 /* kiss */,
-				E7D8276C18BEBDCE00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions */,
 				E7D8278018BEBDCE00C1EB93 /* sndfile */,
 			);
 			path = libs;
@@ -7468,23 +7463,6 @@
 				E7D8276918BEBDCE00C1EB93 /* _kiss_fft_guts.h */,
 				E7D8276A18BEBDCE00C1EB93 /* kiss_fft.c */,
 				E7D8276B18BEBDCE00C1EB93 /* kiss_fftr.c */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		E7D8276C18BEBDCE00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions */ = {
-			isa = PBXGroup;
-			children = (
-				E7D8276D18BEBDCE00C1EB93 /* src */,
-			);
-			path = ofOpenALSoundPlayer_TimelineAdditions;
-			sourceTree = "<group>";
-		};
-		E7D8276D18BEBDCE00C1EB93 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E7D8276E18BEBDCE00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */,
-				E7D8276F18BEBDCE00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -8736,7 +8714,6 @@
 				E73DABFB189F3645006C9E4E /* RunningBackground.cpp in Sources */,
 				E7D827FF18BEBDCF00C1EB93 /* ofxTLSwitches.cpp in Sources */,
 				E755D6ED1943F56F00AA81C1 /* Maze.cpp in Sources */,
-				E7D827E318BEBDCF00C1EB93 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E7D825F818BEBD7000C1EB93 /* CloudsVisualSystemSwim.cpp in Sources */,
 				E755D6EE1943F56F00AA81C1 /* MazeCamera.cpp in Sources */,
 				E73DA6C2189F1CEA006C9E4E /* Vec3.cpp in Sources */,
@@ -9323,7 +9300,6 @@
 				E7DDC201194437EC00E61D75 /* RunningBackground.cpp in Sources */,
 				E7DDC202194437EC00E61D75 /* ofxTLSwitches.cpp in Sources */,
 				E7DDC204194437EC00E61D75 /* Maze.cpp in Sources */,
-				E7DDC205194437EC00E61D75 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E7DDC206194437EC00E61D75 /* CloudsVisualSystemSwim.cpp in Sources */,
 				E7DDC207194437EC00E61D75 /* MazeCamera.cpp in Sources */,
 				E7DDC208194437EC00E61D75 /* Vec3.cpp in Sources */,
