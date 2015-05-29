@@ -23,8 +23,13 @@
 <Widget>
     <Kind>6</Kind>
     <Name>Question Z Range</Name>
-    <HighValue>71.428558350</HighValue>
-    <LowValue>38.571426392</LowValue>
+    <HighValue>68.557693481</HighValue>
+    <LowValue>16.971153259</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Question Min Z Stop</Name>
+    <Value>33.701923370</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -59,6 +59,7 @@ CloudsIntroSequence::CloudsIntroSequence(){
     firstPlay = false;
     shouldArchiveAct = false;
     loadDidFinish = false;
+
     
 #ifdef VHX_MEDIA
     successfullyPurchased = false;
@@ -161,8 +162,15 @@ void CloudsIntroSequence::selfSetDefaults(){
 	playNode.multiplier     = ofVec2f(0, 0);
 	newNode.multiplier      = ofVec2f(1, 1);
 	resumeNode.multiplier   = ofVec2f(-1, 1);
-#endif
     
+    for(int i = 0; i < introNodes.size(); i++){
+		introNodes[i]->finished = false;
+        introNodes[i]->hover = false;
+        introNodes[i]->percentComplete = 0;
+    }
+
+#endif
+    questionMinZGrabDistance = 0;
 	hintCursorEndPoint = ofVec2f(320,240);
 
     menuFontSize = currentMenuFontSize = 1;
@@ -273,6 +281,8 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->addSlider("Scale", 0, 1, &questionScale);
 	questionGui->addSlider("Wrap Distance", 100, 4000, &questionWrapDistance);
 	questionGui->addRangeSlider("Question Z Range", 10, 300, &questionZStopRange.min, &questionZStopRange.max);
+	questionGui->addSlider("Question Min Z Stop", 10, 300, &questionMinZGrabDistance);
+    
 	questionGui->addSlider("Inner Radius", 2, 20, &questionTunnelInnerRadius);
 	questionGui->addRangeSlider("Tug Distance", 10, 300, &questionTugDistance.min, &questionTugDistance.max);
 	questionGui->addRangeSlider("Attenuate Distance", 10, 300,&questionAttenuateDistance.min,&questionAttenuateDistance.max);
@@ -409,6 +419,7 @@ void CloudsIntroSequence::reloadShaders(){
 void CloudsIntroSequence::selfUpdate(){
 
 	if(!userHasBegun() && timeline->getIsPlaying()){
+        cameraForwardSpeed = 0;
 		timeline->stop();
 	}
 	
@@ -454,21 +465,23 @@ void CloudsIntroSequence::updateWaiting(){
 			selectedNode = introNodes[i];
 		}
     }
-    
-    for(int i = 0; i < introNodes.size(); i++){
-        if(selectedNode != NULL && introNodes[i] != selectedNode){
-            continue;
+    if(currentState == CLOUDS_INTRO_MENU || userHasBegun()){
+
+        for(int i = 0; i < introNodes.size(); i++){
+            if(selectedNode != NULL && introNodes[i] != selectedNode){
+                continue;
+            }
+            if(introNodes[i] == &playNode && !firstPlay){
+                continue;
+            }
+            else if(introNodes[i] != &playNode && firstPlay){
+                continue;
+            }
+            
+            updateIntroNodePosition(*introNodes[i]);
+            introNodes[i]->updateInteraction();
         }
-        if(introNodes[i] == &playNode && !firstPlay){
-            continue;
-        }
-        else if(introNodes[i] != &playNode && firstPlay){
-            continue;
-        }
-        
-		updateIntroNodePosition(*introNodes[i]);
-        introNodes[i]->updateInteraction();
-	}
+    }
     
     if(currentState == CLOUDS_INTRO_MENU){
         if(playNode.finished){
@@ -858,12 +871,13 @@ void CloudsIntroSequence::updateQuestions(){
 		
 		curQuestion.hoverPosition.z += cameraForwardSpeed * slowDownFactor;
 
-		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.max || &curQuestion == caughtQuestion){
 #ifdef OCULUS_RIFT
+		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionMinZGrabDistance || &curQuestion == caughtQuestion){
             ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
 			ofRectangle viewport = getOculusRift().getOculusViewport();
             float distanceToQuestion = ofDist(screenPos.x, screenPos.y,viewport.getCenter().x, viewport.getCenter().y);
 #else
+        if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionTugDistance.max || &curQuestion == caughtQuestion){
             ofVec2f mouseNode = cursor;
 			float distanceToQuestion = startQuestions[i].screenPosition.distance(mouseNode);
 #endif
@@ -1393,7 +1407,7 @@ void CloudsIntroSequence::drawHelperType(){
 			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
 										   playNode.nodeActivatedTime,
 										   playNode.nodeActivatedTime+.8,0.0,.8,true), 2.);
-            drawHelperTypeAtPosition(basePosition, helperTextOpacity, 1, helpHoverText);
+            drawHelperTypeAtPosition(basePosition, helperTextOpacity, 1, helperFontY*.33, helpHoverText);
         }
         else{
             helpHoverText = "NEW";
@@ -1401,14 +1415,14 @@ void CloudsIntroSequence::drawHelperType(){
 			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
 										   newNode.nodeActivatedTime,
 										   newNode.nodeActivatedTime+.8,0.0,.8,true), 2.);
-            drawHelperTypeAtPosition(basePosition, helperTextOpacity, 1, helpHoverText);
+            drawHelperTypeAtPosition(basePosition, helperTextOpacity, 1, helperFontY*.33, helpHoverText);
             
             helpHoverText = "RESUME";
             basePosition = resumeNode.worldPosition;
 			helperTextOpacity = powf(ofMap(ofGetElapsedTimef(),
 										   resumeNode.nodeActivatedTime,
 										   resumeNode.nodeActivatedTime+.8,0.0,.8,true), 2.);
-            drawHelperTypeAtPosition(basePosition, helperTextOpacity, 1, helpHoverText);
+            drawHelperTypeAtPosition(basePosition, helperTextOpacity, 1, helperFontY*.33, helpHoverText);
         }
         
 //		else if(introNodeTwo.hover || introNodeOne.finished){
@@ -1485,14 +1499,16 @@ void CloudsIntroSequence::drawHelperType(){
 		float hoverTextWidth = helperFont.stringWidth(helpHoverText);
 		float hoverTextWidth2,questionTextHeight2;
 		string secondLine = "";
+#ifdef  OCULUS_RIFT
+		bool twoLines = hoverTextWidth > 250;
+#else
 		bool twoLines = hoverTextWidth > 500;
+#endif
 		if(helpHoverText.find("\n") != string::npos){
 			twoLines = true;
 			vector<string> split = ofSplitString(helpHoverText, "\n", true,true);
 			helpHoverText = split[0];
 			secondLine = split[1];
-//			hoverTextWidth = helperFont.stringWidth(helpHoverText);
-//			hoverTextWidth2 = helperFont.stringWidth(secondLine);
 		}
 		else if(twoLines){
 			vector<string> pieces = ofSplitString(helpHoverText, " ", true,true);
@@ -1503,11 +1519,9 @@ void CloudsIntroSequence::drawHelperType(){
 			secondHalf.insert(secondHalf.begin(), pieces.begin() + halfsize, pieces.end());
 			helpHoverText = ofJoinString(firstHalf, " ");
 			secondLine = ofJoinString(secondHalf, " ");
-//			hoverTextWidth  = helperFont.stringWidth(helpHoverText);
-//			hoverTextWidth2 = helperFont.stringWidth(secondLine);
 		}
 		
-        drawHelperTypeAtPosition(basePosition, helperTextOpacity, scaleModifier, helpHoverText, secondLine);
+        drawHelperTypeAtPosition(basePosition, helperTextOpacity, scaleModifier, helperFontY, helpHoverText, secondLine);
 	}
 
     ofEnableLighting();
@@ -1516,7 +1530,7 @@ void CloudsIntroSequence::drawHelperType(){
 
 }
 
-void CloudsIntroSequence::drawHelperTypeAtPosition(ofVec3f position, float opacity, float scaleModifier, string lineOne, string lineTwo){
+void CloudsIntroSequence::drawHelperTypeAtPosition(ofVec3f position, float opacity, float scaleModifier, float yOffset, string lineOne, string lineTwo){
 
     float hoverTextHeight = helperFont.stringHeight(lineOne);
     float hoverTextWidth = helperFont.stringWidth(lineOne);
@@ -1540,12 +1554,12 @@ void CloudsIntroSequence::drawHelperTypeAtPosition(ofVec3f position, float opaci
     
     if(lineTwo != ""){
         if(showAbove){
-            helperFont.drawString(lineOne, -hoverTextWidth*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
-            helperFont.drawString(lineTwo, -hoverTextWidth2*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
+            helperFont.drawString(lineOne, -hoverTextWidth*.5, yOffsetMult * (yOffset + hoverTextHeight*1.5) );
+            helperFont.drawString(lineTwo, -hoverTextWidth2*.5, yOffsetMult * (yOffset - hoverTextHeight*.5));
         }
         else{
-            helperFont.drawString(lineTwo, -hoverTextWidth2*.5, yOffsetMult * (helperFontY + hoverTextHeight*1.5) );
-            helperFont.drawString(lineOne, -hoverTextWidth*.5, yOffsetMult * (helperFontY - hoverTextHeight*.5));
+            helperFont.drawString(lineTwo, -hoverTextWidth2*.5, yOffsetMult * (yOffset + hoverTextHeight*1.5) );
+            helperFont.drawString(lineOne, -hoverTextWidth*.5, yOffsetMult * (yOffset - hoverTextHeight*.5));
         }
     }
     else{
@@ -1655,6 +1669,7 @@ void CloudsIntroSequence::selfPostDraw(){
 
 void CloudsIntroSequence::selfBegin(){
 	timeline->stop();
+    cameraForwardSpeed = 0;
     
 #ifdef VHX_MEDIA
     if(successfullyPurchased){

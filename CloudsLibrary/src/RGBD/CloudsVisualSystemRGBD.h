@@ -305,8 +305,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	CloudsPortal leftPortal;
 	CloudsPortal rightPortal;
-	CloudsPortal* portalToClear; //clears when started
+#ifdef OCULUS_RIFT
 	CloudsPortal resetPortal;
+#endif
+	CloudsPortal* portalToClear; //clears when started
 	string questionText;
 	
 	ofxFTGLFont questionFont;

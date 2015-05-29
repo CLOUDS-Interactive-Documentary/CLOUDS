@@ -1734,7 +1734,7 @@ bool CloudsHUDController::isResumeActHit(){
 
 void CloudsHUDController::setSeeMoreName(string name){
 #ifndef OCULUS_RIFT
-    hudLabelMap["SeeMoreTextBox"]->setText("SEE MORE OF " + ofToUpper(name), false);
+    hudLabelMap["SeeMoreTextBox"]->setText(name, false);
 #endif
 }
 

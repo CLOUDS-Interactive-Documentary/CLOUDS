@@ -8,12 +8,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>draw points</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>draw lines</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,33 +28,33 @@
 <Widget>
     <Kind>42</Kind>
     <Name>num voxels</Name>
-    <Value>18</Value>
+    <Value>22</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>voxel spacing</Name>
-    <Value>41.477832794</Value>
+    <Value>75.615760803</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>sphere radius</Name>
-    <Value>344.827575684</Value>
+    <Value>100.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>sphere percent</Name>
-    <Value>1.921182156</Value>
+    <Value>-0.305418730</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>distance range</Name>
-    <HighValue>0.896551669</HighValue>
-    <LowValue>0.374384224</LowValue>
+    <HighValue>0.246305421</HighValue>
+    <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>twist speed x</Name>
-    <Value>0.000098522</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -64,7 +64,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>twist speed y</Name>
-    <Value>0.000635468</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -84,26 +84,26 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noise distort z</Name>
-    <Value>0.093596056</Value>
+    <Value>0.369458139</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise distort radial</Name>
-    <Value>0.807881773</Value>
+    <Value>0.748768449</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise density</Name>
-    <Value>0.053201970</Value>
+    <Value>0.031527095</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>center decay</Name>
-    <HighValue>0.758620858</HighValue>
-    <LowValue>0.467980295</LowValue>
+    <HighValue>0.108374387</HighValue>
+    <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise speed</Name>
-    <Value>0.004926108</Value>
+    <Value>0.004433497</Value>
 </Widget>

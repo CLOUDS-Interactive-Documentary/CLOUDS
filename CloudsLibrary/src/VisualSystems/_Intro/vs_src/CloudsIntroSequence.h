@@ -180,6 +180,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     float questionLineSpacing;
 	float questionTunnelInnerRadius;
 	ofRange questionZStopRange;
+    float questionMinZGrabDistance;
 	float currentFontSize;
 	float currentFontExtrusion;
 
@@ -225,7 +226,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void drawCloudsType();
     void drawIntroNodes(); //rift only
 	void drawHelperType();
-    void drawHelperTypeAtPosition(ofVec3f position, float opacity, float scaleModifier, string lineOne, string lineTwo = "");
+    void drawHelperTypeAtPosition(ofVec3f position, float opacity, float scaleModifier, float yOffset, string lineOne, string lineTwo = "");
 	void drawTunnel();
 	void drawPortals();
     void drawCursors();
