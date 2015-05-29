@@ -443,6 +443,7 @@ void CloudsVisualSystem::setup(){
 	//pushes variables through internally so upDirection, etc is right
 	getCameraRef().setOrientation(getCameraRef().getOrientationQuat());
 
+    
     bIsSetup = true;
 }
 
@@ -480,7 +481,12 @@ void CloudsVisualSystem::playSystem(){
 		selfBegin();
 
 		cloudsCamera.setup();
-		
+        
+        #ifdef OCULUS_RIFT
+        getOculusRift().baseCamera = &getCameraRef();
+        #endif
+        
+        updateCyclced = false;
 		bDebug = false;
 	}
 }
@@ -577,8 +583,6 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 
     durationLabel->setLabel(ofxTimecode::timecodeForSeconds(timeline->getInOutRange().span() * timeline->getDurationInSeconds()));
 
-	
-    //James, james, JAMES
 	if(!bSetManualBackgroundColors)
 	{
 		bgColor  = ofColor::fromHsb(MIN(bgHue,254.),  bgSat,  bgBri,  255);

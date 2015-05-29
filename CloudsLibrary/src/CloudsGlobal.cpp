@@ -217,16 +217,6 @@ string FindCloudsThumbDrive(){
     
 }
 
-
-//bool CheckForUpdates(){
-//	ofHttpResponse resp = ofLoadURL("http://www.cloudsdocumentary.com/images/winmacvr.png");
-//	if(resp.status <= 200){
-//		return false;
-//	}else{
-//		return true;
-//	}
-//}
-
 //--------------------------------------------------------------------
 string relinkFilePath(string filePath){
 
@@ -253,11 +243,14 @@ string relinkFilePath(string filePath){
 }
 
 //--------------------------------------------------------------------
-
 CloudsVisualLevel GetGraphicsQualityLevel(){
 	if(!loadedVisualLevel){
+        ofDirectory dir(GetCloudsDataPath(true)+"quality/");
+        if(!dir.exists()){
+            dir.create();
+        }
         
-        string qualityFilePath = GetCloudsDataPath(true)+"visual_quality_config.txt";
+        string qualityFilePath = GetCloudsDataPath(true)+"quality/quality.txt";
         if(ofFile(qualityFilePath).exists()){
             string visualConfig = ofBufferFromFile(qualityFilePath).getText();
             trim(visualConfig);
@@ -287,8 +280,6 @@ CloudsVisualLevel GetGraphicsQualityLevel(){
                 //assume nvidia or amd
                 SetGraphicsQualityLevel(PRETTY);
             }
-            
-
         }
         loadedVisualLevel = true;
 	}
@@ -302,7 +293,7 @@ void SetGraphicsQualityLevel(CloudsVisualLevel level){
     
     //save
     ofBuffer savebuf = ofBuffer(level == PRETTY ? "PRETTY" : "FAST");
-    ofBufferToFile(GetCloudsDataPath(true)+"visual_quality_config.txt",  savebuf);
+    ofBufferToFile(GetCloudsDataPath(true)+"quality/quality.txt",  savebuf);
     
 }
 

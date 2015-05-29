@@ -13,7 +13,7 @@ CalibrationNode::CalibrationNode(){
 	percentComplete = 0.0;
 	hoverStartTime = 0.0;
 	gazePercent = 0.0;
-;
+
 	clickSound = NULL;
 	selectSound = NULL;
 	nodeActivatedTime = 0;
@@ -144,7 +144,8 @@ void CalibrationNode::draw(){
 		arc.setArcResolution(100);
 		arc.setStrokeWidth(3);
 		arc.setStrokeColor(arcColor);
-		float animationProgress = ofxTween::map(percentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+		//float animationProgress = ofxTween::map(percentComplete, 0.0, 1.0, 0.0, 1.0, true, ofxEasingQuad(), ofxTween::easeOut);
+        float animationProgress = percentComplete;
         arc.moveTo(0, nodeSize, 0);
 		arc.arc(ofVec3f(0,0,0), nodeSize, nodeSize, 90, 360*animationProgress + 90, true);
 		arc.draw();

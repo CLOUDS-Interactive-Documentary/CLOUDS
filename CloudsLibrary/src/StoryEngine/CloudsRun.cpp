@@ -13,6 +13,7 @@
 
 void CloudsRun::clear(){
     actCount = 0;
+    questionsAsked = 0;
     clipHistory.clear();
     presetHistory.clear();
     topicHistory.clear();
