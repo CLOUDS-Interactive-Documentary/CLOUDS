@@ -465,21 +465,23 @@ void CloudsIntroSequence::updateWaiting(){
 			selectedNode = introNodes[i];
 		}
     }
-    
-    for(int i = 0; i < introNodes.size(); i++){
-        if(selectedNode != NULL && introNodes[i] != selectedNode){
-            continue;
+    if(currentState == CLOUDS_INTRO_MENU || userHasBegun()){
+
+        for(int i = 0; i < introNodes.size(); i++){
+            if(selectedNode != NULL && introNodes[i] != selectedNode){
+                continue;
+            }
+            if(introNodes[i] == &playNode && !firstPlay){
+                continue;
+            }
+            else if(introNodes[i] != &playNode && firstPlay){
+                continue;
+            }
+            
+            updateIntroNodePosition(*introNodes[i]);
+            introNodes[i]->updateInteraction();
         }
-        if(introNodes[i] == &playNode && !firstPlay){
-            continue;
-        }
-        else if(introNodes[i] != &playNode && firstPlay){
-            continue;
-        }
-        
-		updateIntroNodePosition(*introNodes[i]);
-        introNodes[i]->updateInteraction();
-	}
+    }
     
     if(currentState == CLOUDS_INTRO_MENU){
         if(playNode.finished){

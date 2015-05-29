@@ -207,25 +207,27 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetup(){
 	
-    
+    portals.clear();
 	portals.push_back(&leftPortal);
 	portals.push_back(&rightPortal);
-	//portals.push_back(&resetPortal);
 
 	leftPortal.setup();
 	rightPortal.setup();
-	//resetPortal.setup();
 	
 	leftPortal.cam = &cloudsCamera;
 	rightPortal.cam = &cloudsCamera;
-	//resetPortal.cam = &cloudsCamera;
 	
 	leftPortal.bLookAtCamera = true;
 	rightPortal.bLookAtCamera = true;
-	//resetPortal.bLookAtCamera = true;
 	
-	//resetPortal.question = "RESET";
-
+#ifdef OCULUS_RIFT
+   	portals.push_back(&resetPortal);
+	resetPortal.setup();
+	resetPortal.cam = &cloudsCamera;
+	resetPortal.bLookAtCamera = true;
+	resetPortal.question = "QUIT";
+#endif
+    
 	loadShader();
 	
     pointLayer1.pointShader = &pointShader;
@@ -331,10 +333,10 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 		
 		transitionOutRight.setPosition(leftPortal.hoverPosition + rightExtraFlying);
 		transitionOutRight.setOrientation( q );
-
+        #ifdef OCULUS_RIFT
 		transitionOutReset.setPosition(resetPortal.hoverPosition);
 		transitionOutReset.setOrientation( q );
-
+        #endif
 	}
 	else if(transitionMap.find(type) != transitionMap.end()){	
 		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
@@ -1156,15 +1158,17 @@ void CloudsVisualSystemRGBD::updateQuestions(){
     
 	leftPortal.hoverPosition  = portalBaseHover + translatedHeadPosition;
 	rightPortal.hoverPosition = portalBaseHover*ofVec3f(-1,0,0) + translatedHeadPosition;
-	//resetPortal.hoverPosition = resetHoverPosition + translatedHeadPosition;
-
 	leftPortal.scale  = portalScale;
 	rightPortal.scale = portalScale;
-	//resetPortal.scale = portalScale;
 
 	leftPortal.lookTarget  = cloudsCamera.getPosition();
 	rightPortal.lookTarget = cloudsCamera.getPosition();
-	//resetPortal.lookTarget = cloudsCamera.getPosition();
+
+#ifdef OCULUS_RIFT
+    resetPortal.scale = portalScale;
+    resetPortal.lookTarget = cloudsCamera.getPosition();
+	resetPortal.hoverPosition = resetHoverPosition + translatedHeadPosition;
+#endif
     
     //default to far away
     minDistanceToQuestion = portalTugDistance.max;
@@ -1181,11 +1185,16 @@ void CloudsVisualSystemRGBD::updateQuestions(){
         ofRectangle viewport = getOculusRift().getOculusViewport();
 		float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
                                     viewport.getCenter().x, viewport.getCenter().y);
+        
 		#else
 		ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
 		float distanceToQuestion = portals[i]->screenPosition.distance(mouseNode);
 		#endif
 		
+        ////////////
+        //if(caughtPortal == &resetPortal) caughtPortal = NULL;
+        ////////////
+        
 		if(caughtPortal == NULL){
 			if( distanceToQuestion < portalTugDistance.max) {
 				if(distanceToQuestion < portalTugDistance.min) {
@@ -1245,7 +1254,9 @@ void CloudsVisualSystemRGBD::clearQuestions(){
     
     leftPortal.clearSelection();
     rightPortal.clearSelection();
-	
+#ifdef OCULUS_RIFT
+	resetPortal.clearSelection();
+#endif
     selectedPortal = NULL;
     caughtPortal = NULL;
 }
@@ -1257,11 +1268,13 @@ void CloudsVisualSystemRGBD::startCurrentTransitionOut()
 	{
 		transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
 		transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
-		transitionOutReset.setOrientation( getCameraRef().getOrientationQuat() );
 
 		transitionOutRight.setPosition(leftPortal.hoverPosition);
 		transitionOutLeft.setPosition(rightPortal.hoverPosition);
-		//transitionOutReset.setPosition(resetPortal.hoverPosition);
+#ifdef OCULUS_RIFT
+		transitionOutReset.setPosition(resetPortal.hoverPosition);
+		transitionOutReset.setOrientation( getCameraRef().getOrientationQuat() );
+#endif
 	}
 	
 	//transition to the left or right based on relative posiiton
@@ -1609,24 +1622,6 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 	if(timeline != NULL){
        timeline->hide();
 	}
-	
-    //only during screening
-    /*
-	if(portalToClear != NULL){
-		if(questions.size() != 0){
-			portalToClear->clip = questions[0].clip;
-			portalToClear->topic = questions[0].topic;
-			portalToClear->question = questions[0].question;
-			questions.erase( questions.begin() );
-			cout << "******ERASING QUESTIONS. SIZE IS NOW " << questions.size() << endl;
-		}
-        else{
-			portalToClear->topic = "";
-			portalToClear->question = "";
-        }
-		portalToClear = NULL;
-	}
-	*/
     
 	assignAvailableQuestion(leftPortal);
 	assignAvailableQuestion(rightPortal);
@@ -1935,12 +1930,17 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 	glDisable(GL_DEPTH_TEST);
 	CloudsPortal::shader.begin();
 	CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+    
 	if(leftPortal.question != "" || bPortalDebugOn){
 		leftPortal.draw();
 	}
 	if(rightPortal.question != "" || bPortalDebugOn){
 		rightPortal.draw();
 	}
+#ifdef OCULUS_RIFT
+    resetPortal.draw();
+#endif
+    
 	CloudsPortal::shader.end();
 	drawQuestionType();
 	glEnable(GL_DEPTH_TEST);
@@ -2083,7 +2083,10 @@ void CloudsVisualSystemRGBD::selfBegin(){
     //make sure any portals are clear
     leftPortal.clearSelection();
     rightPortal.clearSelection();
- 
+#ifdef OCULUS_RIFT
+    resetPortal.clearSelection();
+#endif
+    
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){
@@ -2151,7 +2154,11 @@ void CloudsVisualSystemRGBD::removeQuestionFromQueue(CloudsClip* clip){
 }
 
 bool CloudsVisualSystemRGBD::isQuestionSelected(){
+#ifdef OCULUS_RIFT
 	return selectedPortal != NULL && selectedPortal != &resetPortal;
+#else
+    return selectedPortal != NULL;
+#endif
 }
 
 CloudsPortal* CloudsVisualSystemRGBD::getSelectedQuestion(){
@@ -2159,7 +2166,11 @@ CloudsPortal* CloudsVisualSystemRGBD::getSelectedQuestion(){
 }
 
 bool CloudsVisualSystemRGBD::isResetSelected(){
+#ifdef OCULUS_RIFT
 	return selectedPortal == &resetPortal;
+#else
+    return false;
+#endif
 }
 
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){

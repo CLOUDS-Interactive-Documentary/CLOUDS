@@ -13,42 +13,42 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Face Min Radius</Name>
-    <Value>600.000000000</Value>
+    <Value>493.596038818</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Face Falloff</Name>
-    <Value>14.778324127</Value>
+    <Value>239.408859253</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Alpha</Name>
-    <Value>0.187192112</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Color Boost</Name>
-    <Value>0.315270931</Value>
+    <Value>0.522167504</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Skin Boost</Name>
-    <Value>0.310344815</Value>
+    <Value>0.458128065</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point X Simplify</Name>
-    <Value>1.586206913</Value>
+    <Value>3.206896544</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Y Simplify</Name>
-    <Value>2.275862217</Value>
+    <Value>3.137931108</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Point Size</Name>
-    <HighValue>0.931034446</HighValue>
+    <HighValue>1.699507356</HighValue>
     <LowValue>0.157635555</LowValue>
 </Widget>
 <Widget>
@@ -69,7 +69,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Speed</Name>
-    <Value>5.911330223</Value>
+    <Value>2.068965673</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -79,17 +79,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Angle</Name>
-    <Value>72.709358215</Value>
+    <Value>83.349754333</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Max Affect</Name>
-    <Value>1.000000000</Value>
+    <Value>0.147783250</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Normal Mix</Name>
-    <Value>0.719211817</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -46,6 +46,7 @@ static ofVideoPlayer* selectLow = NULL;
 static ofxFTGLFont subtitleNameFont;
 static int subtitleNameFontSize = 24;
 float CloudsVisualSystem::subtitleHudZ = -300;
+float CloudsVisualSystem::subtitleHudScale = 1.0;
 
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
@@ -267,7 +268,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	subtitle3DBasePosY = 0;
 	subtitle3DBasePosZ = 0;
 	subtitle3DScale = 1.0;
-	subtitleHudY = .5;
+	//subtitleHudY = .5;
 
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
@@ -652,37 +653,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			drawBackgroundGradient();
             getOculusRift().endBackground();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
-
-            /*
-			//JG removing this before Yebizo festival, no visual systems use overlay in the rift
-			getOculusRift().beginOverlay(subtitleHudZ, 1920,1080);
-			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
-
-			float renderTargetMidpoint = CloudsVisualSystem::getStaticRenderTarget().getWidth()*.5;
-			float subtitleHeight = CloudsVisualSystem::getStaticRenderTarget().getHeight() * subtitleHudY;
-			ofPushStyle();
-			
-			if(GetLanguage() != "ENGLISH" || speakerFirstName == "Higa" || speakerFirstName == "Patricio"){
-				getRGBDVideoPlayer().drawSubtitles(650,subtitleHeight, questionSelectFade);
-			}
-            
-			if(getRGBDVideoPlayer().isPlaying()){
-				if(!subtitleNameFont.isLoaded()){
-                    subtitleNameFont.loadFont(CloudsCryptoGetFont("Blender-BOOK.ttf"), subtitleNameFontSize);
-				}
-
-				string speakerFullName = speakerFirstName + " " + speakerLastName;
-				float speakerNameWidth = subtitleNameFont.stringWidth(speakerFullName);
-				ofPushStyle();
-				ofSetColor(0,255*questionSelectFade);
-				subtitleNameFont.drawString(speakerFullName, 650+2, subtitleHeight - 54+2); 
-				ofSetColor(255,255*questionSelectFade);
-				subtitleNameFont.drawString(speakerFullName, 650, subtitleHeight - 54); 
-				ofPopStyle();
-			}
-			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
-			getOculusRift().endOverlay();
-			*/
             
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();
@@ -3366,8 +3336,9 @@ void CloudsVisualSystem::setupOculusGui()
 	oculusGui->addSlider("SUBTITLE Z POS", 0, -100, &subtitle3DBasePosZ);
 	oculusGui->addSlider("SUBTITLE SCALE", 0,  1.0, &subtitle3DScale);
 	oculusGui->addSpacer();
-	oculusGui->addSlider("SUBTITLE HUD Z", -500, -1700, &subtitleHudZ);
-	oculusGui->addSlider("SUBTITLE HUD Y", 0,  1.0, &subtitleHudY);
+	oculusGui->addSlider("SUBTITLE HUD Z", -100, -700, &subtitleHudZ);
+	oculusGui->addSlider("SUBTITLE HUD SCALE", .0, 1.0, &subtitleHudScale);
+	//oculusGui->addSlider("SUBTITLE HUD Y", 0, 1.0, &subtitleHudY);
 
     oculusGui->autoSizeToFitWidgets();
     ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);

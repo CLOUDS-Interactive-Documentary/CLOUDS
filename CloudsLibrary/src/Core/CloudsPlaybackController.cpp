@@ -148,7 +148,8 @@ void CloudsPlaybackController::clearAct(){
 	}
     
 	CloudsVisualSystem::getRGBDVideoPlayer().stop();
-	
+    CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = 1.0;
+    
 	vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
     if( CloudsVisualSystemManager::HasSystemRegistered(currentVisualSystem) ){
         currentVisualSystem = NULL;
@@ -322,7 +323,6 @@ void CloudsPlaybackController::setup(){
 #endif
 	
 	cout << "*****LOAD STEP*** SHOWING INTRO" << endl;
-    //transitionController.transitionToIntro(1.0);
 	showIntro();
 
 	cout << "*****LOAD STEP*** STARTING THREAD" << endl;
@@ -824,17 +824,19 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 
 
     #ifdef OCULUS_RIFT
-    if(args.key == OF_KEY_RETURN){
-        if(showingInterlude){
-            interludeSystem->getTimeline()->stop();
-        }
-        else if(showingClusterMap){
-            clusterMap->getTimeline()->stop();
-        }
-        else if(!showingIntro){
-            returnToIntro = true;
-            CloudsVisualSystem::getRGBDVideoPlayer().stop();
-            currentAct->getTimeline().stop();
+    if(!transitionController.isTransitioning()){
+        if(args.key == OF_KEY_RETURN){
+            if(showingInterlude){
+                interludeSystem->getTimeline()->stop();
+            }
+            else if(showingClusterMap){
+                clusterMap->getTimeline()->stop();
+            }
+            else if(!showingIntro){
+                returnToIntro = true;
+                CloudsVisualSystem::getRGBDVideoPlayer().stop();
+                currentAct->getTimeline().stop();
+            }
         }
     }
     #endif
@@ -864,10 +866,10 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 #endif //release
     
+    
     if( (args.key == OF_KEY_RETURN || args.key == ' ') && bShowingAct && currentVisualSystem != clusterMap){
         hud.togglePause();
     }
-
     if(args.key == OF_KEY_RIGHT && bShowingAct && currentVisualSystem != clusterMap){
         keyedToNext = true;
     }
@@ -1078,7 +1080,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             currentAct->terminateAct();
             transitionController.transitionWithQuestion(2.0, 0.1);
         }
-        rgbdVisualSystem->paused = hud.isPaused() || (transitionController.isTransitioning() && !bQuestionAsked);
+        rgbdVisualSystem->paused = hud.isPaused() || (transitionController.isTransitioning() && !bQuestionAsked && !rgbdVisualSystem->isResetSelected());
     }
 
 	getSharedVideoPlayer().showingLowerThirds = currentVisualSystem == rgbdVisualSystem;
@@ -1120,7 +1122,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             currentAct->terminateAct();
         }
         returnToIntro = false;
-        transitionController.transitionToIntro(1.0);
+//        if(!rgbdVisualSystem->isResetSelected()){ //alrady transitioning
+            transitionController.transitionToIntro(1.0);
+//        }
     }
     
     /////////////// RESEARCH MODE
@@ -1309,7 +1313,7 @@ void CloudsPlaybackController::updateHUD(){
         userReset = true;
         returnToIntro = true;
 #ifdef OCULUS_RIFT
-        transitionController.transitionWithQuestion(2.0, 0.1);
+//        transitionController.transitionWithQuestion(2.0, 0.1);
 #else
         CloudsVisualSystem::getRGBDVideoPlayer().stop();
 #endif
@@ -1731,10 +1735,13 @@ void CloudsPlaybackController::updateTransition(){
     crossfadeValue = transitionController.getFadeValue();
     hud.transitionFade = crossfadeValue;
     
-	if(bQuestionAsked){	
+	if(bQuestionAsked || rgbdVisualSystem->isResetSelected()){
         CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = crossfadeValue;
         //don't start fading out right away
         crossfadeValue = ofMap(crossfadeValue, .2, 0.0, 1.0, 0.0, true);
+    }
+    else{
+        CloudsVisualSystem::getRGBDVideoPlayer().maxVolume = 1.0;
     }
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
     
@@ -1787,7 +1794,8 @@ void CloudsPlaybackController::preDraw(ofEventArgs& args){
 #ifdef OCULUS_RIFT
     
     float hudDistance = CloudsVisualSystem::subtitleHudZ;
-    CloudsVisualSystem::getOculusRift().beginOverlay(hudDistance, 1920, 1080);
+    float hudScale =CloudsVisualSystem::subtitleHudScale;
+    CloudsVisualSystem::getOculusRift().beginOverlay(hudDistance, hudScale, 1920, 1080);
     ofPushStyle();
     
     
