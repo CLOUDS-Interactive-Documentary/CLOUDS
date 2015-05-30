@@ -8,7 +8,7 @@
 <Widget>
     <Kind>12</Kind>
     <Name>Background File</Name>
-    <Value>pointy_square.png</Value>
+    <Value>pointy_square.jpg</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -17,7 +17,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>darkpointy_square.png</Name>
+    <Name>darkpointy_square.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -42,6 +42,6 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>pointy_square.png</Name>
+    <Name>pointy_square.jpg</Name>
     <Value>1</Value>
 </Widget>
