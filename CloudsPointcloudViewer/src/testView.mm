@@ -18,18 +18,27 @@
 	
 	ofBackground(22);
 
-	ofSetDataPathRoot("../../");
+
 	
 	parser.loadFromFiles();
-	sound.setup();
+    parser.loadMediaAssets();
+	//sound.setup();
 	
-	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
-	}
-	else{
-		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
-	}
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+    char path[PATH_MAX];
+    CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX);
+    CFRelease(resourcesURL);
+    chdir(path);
+    
+
+//	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
+//		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+//        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
+//	}
+//	else{
+//		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
+//	}
 
 	[clipTable setTarget:self];
 	[clipTable setDoubleAction:@selector(loadClipFromTable:)];
@@ -113,7 +122,7 @@
 - (IBAction)loadTrackFromTable:(id)sender
 {
 	if(trackTable.selectedRow >= 0){
-		sound.playImmediately(sound.renderedTracks[ trackTable.selectedRow ]);
+//		sound.playImmediately(sound.renderedTracks[ trackTable.selectedRow ]);
 	}
 }
 
@@ -304,9 +313,9 @@
 	if(aTableView == clipTable){
 		return parser.getAllClips().size();
 	}
-	else if(aTableView == trackTable){
-		return sound.renderedTracks.size();
-	}
+//	else if(aTableView == trackTable){
+//		return sound.renderedTracks.size();
+//	}
 }
 
 - (std::string)convertString:(NSString *)string
@@ -343,7 +352,7 @@
 - (IBAction)updateTrackVoume:(id)sender
 {
 	if(trackTable.selectedRow >= 0){
-		sound.setMixVolumeForTrack(sound.renderedTracks[ trackTable.selectedRow ], trackVolTextBox.floatValue);
+//		sound.setMixVolumeForTrack(sound.renderedTracks[ trackTable.selectedRow ], trackVolTextBox.floatValue);
 		sound.saveMixLevels();
 		[trackTable reloadData];
 	}
@@ -370,7 +379,7 @@
 - (void)updateTrackVolumeTextField:(id)sender
 {
 	if(trackTable.selectedRow >= 0){
-		trackVolTextBox.floatValue = sound.mixVolumeForTrack(sound.renderedTracks[ trackTable.selectedRow ] );
+//		trackVolTextBox.floatValue = sound.mixVolumeForTrack(sound.renderedTracks[ trackTable.selectedRow ] );
 	}
 
 }
@@ -391,10 +400,10 @@
 	}
 	else if(aTableView == trackTable){
 		if([@"track" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: sound.renderedTracks[rowIndex].c_str() ];
+//			return [NSString stringWithUTF8String: sound.renderedTracks[rowIndex].c_str() ];
 		}
 		else if([@"volume" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: ofToString( sound.mixVolumeForTrack(sound.renderedTracks[rowIndex]) ).c_str() ];
+//			return [NSString stringWithUTF8String: ofToString( sound.mixVolumeForTrack(sound.renderedTracks[rowIndex]) ).c_str() ];
 		}
 
 	}

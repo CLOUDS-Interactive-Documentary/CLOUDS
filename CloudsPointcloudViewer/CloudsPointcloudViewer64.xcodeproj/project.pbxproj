@@ -217,6 +217,18 @@
 		644982DF189F223800E6AB7D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644982DE189F223800E6AB7D /* AVFoundation.framework */; };
 		644982E1189F224200E6AB7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644982E0189F224200E6AB7D /* QuartzCore.framework */; };
 		644982E3189F225000E6AB7D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644982E2189F225000E6AB7D /* CoreMedia.framework */; };
+		A62615FD1B1A49C600E5F77B /* ofxCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62615E91B1A49C600E5F77B /* ofxCrypto.cpp */; };
+		A62615FE1B1A49C600E5F77B /* ofxCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62615E91B1A49C600E5F77B /* ofxCrypto.cpp */; };
+		A62616051B1A49F700E5F77B /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62616031B1A49F700E5F77B /* CloudsHUDScroller.cpp */; };
+		A62616061B1A49F700E5F77B /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62616031B1A49F700E5F77B /* CloudsHUDScroller.cpp */; };
+		A626162C1B1A4B3700E5F77B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A62616091B1A4B3700E5F77B /* .gitignore */; };
+		A626162D1B1A4B3700E5F77B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A62616091B1A4B3700E5F77B /* .gitignore */; };
+		A62616381B1A4B3700E5F77B /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62616251B1A4B3700E5F77B /* audiodecoderbase.cpp */; };
+		A62616391B1A4B3700E5F77B /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62616251B1A4B3700E5F77B /* audiodecoderbase.cpp */; };
+		A626163A1B1A4B3700E5F77B /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62616261B1A4B3700E5F77B /* audiodecodercoreaudio.cpp */; };
+		A626163B1B1A4B3700E5F77B /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62616261B1A4B3700E5F77B /* audiodecodercoreaudio.cpp */; };
+		A62616471B1A4CA000E5F77B /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62616451B1A4CA000E5F77B /* CloudsMedia.cpp */; };
+		A62616481B1A4CA000E5F77B /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62616451B1A4CA000E5F77B /* CloudsMedia.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -479,6 +491,23 @@
 		644982DE189F223800E6AB7D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		644982E0189F224200E6AB7D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		644982E2189F225000E6AB7D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		A62615E91B1A49C600E5F77B /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
+		A62615EA1B1A49C600E5F77B /* ofxCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCrypto.h; sourceTree = "<group>"; };
+		A62616021B1A49E000E5F77B /* CloudsCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsCrypto.h; path = ../CloudsLibrary/src/CloudsCrypto.h; sourceTree = "<group>"; };
+		A62616031B1A49F700E5F77B /* CloudsHUDScroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDScroller.cpp; sourceTree = "<group>"; };
+		A62616041B1A49F700E5F77B /* CloudsHUDScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDScroller.h; sourceTree = "<group>"; };
+		A62616091B1A4B3700E5F77B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		A626160B1B1A4B3700E5F77B /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
+		A626161E1B1A4B3700E5F77B /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		A626161F1B1A4B3700E5F77B /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		A62616201B1A4B3700E5F77B /* audiodecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
+		A62616211B1A4B3700E5F77B /* audiodecoderbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoderbase.h; sourceTree = "<group>"; };
+		A62616221B1A4B3700E5F77B /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodercoreaudio.h; sourceTree = "<group>"; };
+		A62616251B1A4B3700E5F77B /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
+		A62616261B1A4B3700E5F77B /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
+		A626162B1B1A4B3700E5F77B /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
+		A62616451B1A4CA000E5F77B /* CloudsMedia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMedia.cpp; sourceTree = "<group>"; };
+		A62616461B1A4CA000E5F77B /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1095,6 +1124,7 @@
 		03D58F29194612F200FCFF7B /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				A62616021B1A49E000E5F77B /* CloudsCrypto.h */,
 				03291DBB1AC9D971008DC9F0 /* CloudsEvents.h */,
 				03291DBC1AC9D971008DC9F0 /* CloudsGlobal.cpp */,
 				03291DBD1AC9D971008DC9F0 /* CloudsGlobal.h */,
@@ -1110,9 +1140,103 @@
 			name = CloudsLibrary;
 			sourceTree = "<group>";
 		};
+		A62615D51B1A49C600E5F77B /* ofxCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				A62615E81B1A49C600E5F77B /* src */,
+			);
+			name = ofxCrypto;
+			path = ../../../addons/ofxCrypto;
+			sourceTree = "<group>";
+		};
+		A62615E81B1A49C600E5F77B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A62615E91B1A49C600E5F77B /* ofxCrypto.cpp */,
+				A62615EA1B1A49C600E5F77B /* ofxCrypto.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		A62616081B1A4B3700E5F77B /* ofxAudioDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				A62616091B1A4B3700E5F77B /* .gitignore */,
+				A626160A1B1A4B3700E5F77B /* couples */,
+				A626161A1B1A4B3700E5F77B /* libs */,
+				A626162A1B1A4B3700E5F77B /* src */,
+			);
+			name = ofxAudioDecoder;
+			path = ../../../addons/ofxAudioDecoder;
+			sourceTree = "<group>";
+		};
+		A626160A1B1A4B3700E5F77B /* couples */ = {
+			isa = PBXGroup;
+			children = (
+				A626160B1B1A4B3700E5F77B /* ofxAudioDecoderTonic.h */,
+			);
+			path = couples;
+			sourceTree = "<group>";
+		};
+		A626161A1B1A4B3700E5F77B /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				A626161B1B1A4B3700E5F77B /* audiodecoder */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		A626161B1B1A4B3700E5F77B /* audiodecoder */ = {
+			isa = PBXGroup;
+			children = (
+				A626161C1B1A4B3700E5F77B /* include */,
+				A62616241B1A4B3700E5F77B /* src */,
+			);
+			path = audiodecoder;
+			sourceTree = "<group>";
+		};
+		A626161C1B1A4B3700E5F77B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A626161D1B1A4B3700E5F77B /* apple */,
+				A62616201B1A4B3700E5F77B /* audiodecoder.h */,
+				A62616211B1A4B3700E5F77B /* audiodecoderbase.h */,
+				A62616221B1A4B3700E5F77B /* audiodecodercoreaudio.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		A626161D1B1A4B3700E5F77B /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				A626161E1B1A4B3700E5F77B /* CADebugMacros.h */,
+				A626161F1B1A4B3700E5F77B /* CAStreamBasicDescription.h */,
+			);
+			path = apple;
+			sourceTree = "<group>";
+		};
+		A62616241B1A4B3700E5F77B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A62616251B1A4B3700E5F77B /* audiodecoderbase.cpp */,
+				A62616261B1A4B3700E5F77B /* audiodecodercoreaudio.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		A626162A1B1A4B3700E5F77B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A626162B1B1A4B3700E5F77B /* ofxAudioDecoder.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				A62616081B1A4B3700E5F77B /* ofxAudioDecoder */,
+				A62615D51B1A49C600E5F77B /* ofxCrypto */,
 				031AA4411AD6D25D00F5E30A /* ofxOculusDK2 */,
 				03291DAF1AC9D948008DC9F0 /* ofxLocalization */,
 				E7DDC4AE19458F5100E61D75 /* ofxCocoaGLView */,
@@ -1802,6 +1926,8 @@
 		E7DDC38819458DA500E61D75 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				A62616031B1A49F700E5F77B /* CloudsHUDScroller.cpp */,
+				A62616041B1A49F700E5F77B /* CloudsHUDScroller.h */,
 				E7DDC38919458DA600E61D75 /* CloudsHUDController.cpp */,
 				E7DDC38A19458DA600E61D75 /* CloudsHUDController.h */,
 				E7DDC38B19458DA600E61D75 /* CloudsHUDHomeButton.cpp */,
@@ -1960,6 +2086,8 @@
 		E7DDC46119458EF100E61D75 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				A62616451B1A4CA000E5F77B /* CloudsMedia.cpp */,
+				A62616461B1A4CA000E5F77B /* CloudsMedia.h */,
 				E7DDC5421945936600E61D75 /* CloudsAct.cpp */,
 				E7DDC5431945936600E61D75 /* CloudsAct.h */,
 				E7DDC46419458EF100E61D75 /* CloudsClip.cpp */,
@@ -2113,6 +2241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A626162D1B1A4B3700E5F77B /* .gitignore in Resources */,
 				03291DB61AC9D948008DC9F0 /* .gitignore in Resources */,
 				03291DB81AC9D948008DC9F0 /* README.md in Resources */,
 				03D595051946A82C00FCFF7B /* MainMenu.xib in Resources */,
@@ -2123,6 +2252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A626162C1B1A4B3700E5F77B /* .gitignore in Resources */,
 				03291DB51AC9D948008DC9F0 /* .gitignore in Resources */,
 				03291DB71AC9D948008DC9F0 /* README.md in Resources */,
 				E7DDC54A1945940B00E61D75 /* MainMenu.xib in Resources */,
@@ -2210,6 +2340,7 @@
 				03D594701946A82C00FCFF7B /* CloudsPortal.cpp in Sources */,
 				03D594711946A82C00FCFF7B /* ofxUITextArea.cpp in Sources */,
 				03D594721946A82C00FCFF7B /* ofxSubtitles.cpp in Sources */,
+				A62615FE1B1A49C600E5F77B /* ofxCrypto.cpp in Sources */,
 				03D594731946A82C00FCFF7B /* CloudsDichotomy.cpp in Sources */,
 				03D594741946A82C00FCFF7B /* ofxEasingBounce.cpp in Sources */,
 				03D594751946A82C00FCFF7B /* State.cpp in Sources */,
@@ -2224,6 +2355,7 @@
 				03D5947D1946A82C00FCFF7B /* ofxUIWaveform.cpp in Sources */,
 				03D5947E1946A82C00FCFF7B /* ofxEasing.cpp in Sources */,
 				03D5947F1946A82C00FCFF7B /* ofxTLTicker.cpp in Sources */,
+				A62616481B1A4CA000E5F77B /* CloudsMedia.cpp in Sources */,
 				03291DC11AC9D971008DC9F0 /* CloudsGlobal.cpp in Sources */,
 				03D594801946A82C00FCFF7B /* ofxMSATimer.cpp in Sources */,
 				03D594811946A82C00FCFF7B /* ofxUILabelButton.cpp in Sources */,
@@ -2309,6 +2441,8 @@
 				03D594CD1946A82C00FCFF7B /* ofxUIRangeSlider.cpp in Sources */,
 				03D594CE1946A82C00FCFF7B /* ofxFTGLSimpleLayout.cpp in Sources */,
 				03D594CF1946A82C00FCFF7B /* Force.cpp in Sources */,
+				A62616061B1A49F700E5F77B /* CloudsHUDScroller.cpp in Sources */,
+				A62616391B1A4B3700E5F77B /* audiodecoderbase.cpp in Sources */,
 				03D594D01946A82C00FCFF7B /* Gravity.cpp in Sources */,
 				03D594D11946A82C00FCFF7B /* ofxHotKeys_impl_win.cpp in Sources */,
 				03D594D21946A82C00FCFF7B /* ofxFTGLFont.cpp in Sources */,
@@ -2316,6 +2450,7 @@
 				03D594D41946A82C00FCFF7B /* ofxHotKeys_impl_mac.mm in Sources */,
 				03D594D51946A82C00FCFF7B /* ForceSet.cpp in Sources */,
 				03D594D61946A82C00FCFF7B /* ofxUIFPSSlider.cpp in Sources */,
+				A626163B1B1A4B3700E5F77B /* audiodecodercoreaudio.cpp in Sources */,
 				03D594D71946A82C00FCFF7B /* ofxUICircleSlider.cpp in Sources */,
 				03D594D81946A82C00FCFF7B /* ofxField2D.cpp in Sources */,
 				03D594D91946A82C00FCFF7B /* CloudsSVGMesh.cpp in Sources */,
@@ -2372,6 +2507,7 @@
 				E7DDC39919458DA600E61D75 /* VoxelMesh.cpp in Sources */,
 				E7DDC53B1945930C00E61D75 /* CloudsSoundFilesSamplesDatabases.cpp in Sources */,
 				E7211C0018A284400063EF97 /* ofxTLBangs.cpp in Sources */,
+				A62616051B1A49F700E5F77B /* CloudsHUDScroller.cpp in Sources */,
 				E7211C2118A284400063EF97 /* ofxEasingCubic.cpp in Sources */,
 				E7DDC37519458CFA00E61D75 /* testView.mm in Sources */,
 				E755D9941944230C00AA81C1 /* ofxUITextInput.cpp in Sources */,
@@ -2430,11 +2566,13 @@
 				E755D9911944230C00AA81C1 /* ofxUISuperCanvas.cpp in Sources */,
 				E7211C1218A284400063EF97 /* ofxTLTrack.cpp in Sources */,
 				E7211C2518A284400063EF97 /* ofxEasingQuad.cpp in Sources */,
+				A62616471B1A4CA000E5F77B /* CloudsMedia.cpp in Sources */,
 				E755D98B1944230C00AA81C1 /* ofxUIRotarySlider.cpp in Sources */,
 				E7211CD418A2858F0063EF97 /* ofxSystemTextbox.mm in Sources */,
 				E7211BC118A2843F0063EF97 /* ofxElectroStaticBehavior.cpp in Sources */,
 				E7211C0B18A284400063EF97 /* ofxTLInOut.cpp in Sources */,
 				E7211C1318A284400063EF97 /* ofxTLTrackHeader.cpp in Sources */,
+				A626163A1B1A4B3700E5F77B /* audiodecodercoreaudio.cpp in Sources */,
 				E7211C5B18A284400063EF97 /* ofxXmlSettings.cpp in Sources */,
 				E755D9761944230C00AA81C1 /* ofxUIDragableLabelButton.cpp in Sources */,
 				E7211C0618A284400063EF97 /* ofxTLEmptyTrack.cpp in Sources */,
@@ -2495,11 +2633,13 @@
 				E7DDC3A519458DA600E61D75 /* CloudsSVGMesh.cpp in Sources */,
 				E7211BD518A2843F0063EF97 /* ofxTextInputField.cpp in Sources */,
 				E755D9831944230C00AA81C1 /* ofxUIMinimalSlider.cpp in Sources */,
+				A62616381B1A4B3700E5F77B /* audiodecoderbase.cpp in Sources */,
 				E7211BCB18A2843F0063EF97 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7211C1018A284400063EF97 /* ofxTLSwitches.cpp in Sources */,
 				E7211BC818A2843F0063EF97 /* ofxRParticleRenderer.cpp in Sources */,
 				E7211C2718A284400063EF97 /* ofxEasingQuint.cpp in Sources */,
 				E7211C0218A284400063EF97 /* ofxTLColors.cpp in Sources */,
+				A62615FD1B1A49C600E5F77B /* ofxCrypto.cpp in Sources */,
 				E7211CD318A2858F0063EF97 /* CloudsVisualSystem.cpp in Sources */,
 				E7DDC5221945922D00E61D75 /* CloudsRGBDPointLayer.cpp in Sources */,
 				E755D9851944230C00AA81C1 /* ofxUIMultiImageButton.cpp in Sources */,
@@ -2753,7 +2893,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -2789,7 +2929,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
