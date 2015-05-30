@@ -181,6 +181,15 @@
     <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
       <Filter>CloudsLibrary\src\Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.cpp">
+      <Filter>addons\ofxCrypto\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsMedia.cpp">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDScroller.cpp">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -266,6 +275,12 @@
     </Filter>
     <Filter Include="addons\ofxLocalization\src">
       <UniqueIdentifier>{48fc443f-31ea-4067-84c2-fc22b57a0a78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCrypto">
+      <UniqueIdentifier>{5c55c2b0-1d89-4ee1-833c-0928f596e406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCrypto\src">
+      <UniqueIdentifier>{6cd90692-bfcd-4460-adb4-f206937a2c8e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -526,6 +541,18 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
       <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.h">
+      <Filter>addons\ofxCrypto\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsCrypto.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsMedia.h">
+      <Filter>CloudsLibrary\src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDScroller.h">
+      <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

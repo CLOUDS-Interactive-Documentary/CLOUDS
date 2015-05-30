@@ -263,18 +263,18 @@ void CloudsVisualSystemRGBD::playTestVideo(int videoIndex){
 
 	string sourceFile, filePathMov,filePathXml, subtitlesPathSrt;
 
-	if(videoIndex == 0){
-		filePathXml = GetCloudsDataPath(true) + "media/Aaron_collaboration.xml";
-		sourceFile  ="https://d2jijm80bx6z70.cloudfront.net/clouds/videos/20914/99835/Aaron_dreaming_together.mov?response-content-disposition=attachment;filename=%22Aaron-dreaming-together%20720p.mp4%22&Expires=1428346924&Signature=f6zxAfopdpwYe859FQ0kH80i46at6jphJntU8JM8Fr0Cfz~mzEzLErFROg9Vl-C1O0~~YvzAkElCl9Oifw8mbBVENy00~qW0CWX2TNclXXdRi-PPTdQYs7d3uQuhNslfyRD9qWAgpOYcsvZyyMVrAi0KtMuQrNnvSMglX80qFI2sG6XrWk9BWQJxG5iS-KWSBwjTGJuOX9giIIreKIjpRzBy2AyiajISiUtydmmP1D6MQH12ZjGexobIV4OPuxB34yEmUJMyxuqydAjgYp-aGAfQtN3mcbXiZGL9Yo88ktKFh5oDX-NDXiliIPtWLeaIJRJFh1kFDbEv1RzbH~SA~Q__&Key-Pair-Id=APKAIKJG7ZVXLCEDZ7RQ";
-		filePathMov = sourceFile;
-		setupSpeaker("Kyle", "McDonald","");
-	}
-	else{
-		filePathXml = GetCloudsDataPath(true) + "media/Aaron_collaboration.xml";
-		sourceFile  = GetCloudsDataPath(true) + "media/Maeda_do_not_resuscitate";
+	//if(videoIndex == 0){
+	//	filePathXml = GetCloudsDataPath(true) + "media/Aaron_collaboration.xml";
+	//	sourceFile  ="https://d2jijm80bx6z70.cloudfront.net/clouds/videos/20914/99835/Aaron_dreaming_together.mov?response-content-disposition=attachment;filename=%22Aaron-dreaming-together%20720p.mp4%22&Expires=1428346924&Signature=f6zxAfopdpwYe859FQ0kH80i46at6jphJntU8JM8Fr0Cfz~mzEzLErFROg9Vl-C1O0~~YvzAkElCl9Oifw8mbBVENy00~qW0CWX2TNclXXdRi-PPTdQYs7d3uQuhNslfyRD9qWAgpOYcsvZyyMVrAi0KtMuQrNnvSMglX80qFI2sG6XrWk9BWQJxG5iS-KWSBwjTGJuOX9giIIreKIjpRzBy2AyiajISiUtydmmP1D6MQH12ZjGexobIV4OPuxB34yEmUJMyxuqydAjgYp-aGAfQtN3mcbXiZGL9Yo88ktKFh5oDX-NDXiliIPtWLeaIJRJFh1kFDbEv1RzbH~SA~Q__&Key-Pair-Id=APKAIKJG7ZVXLCEDZ7RQ";
+	//	filePathMov = sourceFile;
+	//	setupSpeaker("Kyle", "McDonald","");
+	//}
+	//else{
+		filePathXml = GetCloudsDataPath() + "clipxml/Aaron_collaboration.xml";
+		sourceFile  = GetCloudsMediaPath() + "media/Aaron_collaboration";
 		filePathMov = sourceFile+".mov";
 		setupSpeaker("Kyle", "McDonald","");
-	}
+	//}
 	//if(ofFile::doesFileExist(filePathMov)){
         getRGBDVideoPlayer().setup(filePathMov, filePathXml, subtitlesPathSrt);
 		getRGBDVideoPlayer().swapAndPlay();

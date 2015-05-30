@@ -101,10 +101,14 @@ float depthValueFromSample( vec2 depthPos){
 
 	depthPos.x = clamp(depthPos.x,depthRect.x+1.,depthRect.x+depthRect.z-2.);
 	depthPos.y = clamp(depthPos.y,depthRect.y+1.,depthRect.y+depthRect.w-2.);
-	
+
 	vec2  halfvec = vec2(.5,.5);
 	
-    float depth = rgb2hsl( texture2DRect(rgbdTexture, floor(depthPos) + halfvec ).xyz ).r;
+	vec3 hsl = rgb2hsl( texture2DRect(rgbdTexture, floor(depthPos) + halfvec ).xyz );
+    float depth = hsl.r;
+	if(hsl.g < .5 || hsl.b < .02){
+		depth = 0;	
+	}
     return depth * ( maxDepth - minDepth ) + minDepth;
 }
 
