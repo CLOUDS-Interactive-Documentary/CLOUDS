@@ -1,0 +1,5 @@
+version 1.0.1
+mac.vhx http://www.cloudsdocumentary.com/uploads/CLOUDS_1_0_1_vhx.dmg
+mac.usb http://www.cloudsdocumentary.com/uploads/CLOUDS_1_0_1_usb.dmg
+win.vhx http://www.cloudsdocumentary.com/uploads/CLOUDS_1_0_1_vhx.msi
+win.usb http://www.cloudsdocumentary.com/uploads/CLOUDS_1_0_1_usb.msi
