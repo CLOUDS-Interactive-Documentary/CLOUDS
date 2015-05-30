@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>VideoSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>257.000000000</XPosition>
-    <YPosition>144.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>231.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,10 +28,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Offset Y</Name>
-    <Value>49.261108398</Value>
+    <Value>49.261093140</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Offset</Name>
-    <Value>-1064.040039062</Value>
+    <Value>-1064.039916992</Value>
 </Widget>
