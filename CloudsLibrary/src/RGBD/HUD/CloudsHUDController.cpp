@@ -199,6 +199,7 @@ void CloudsHUDController::buildLayerSets(){
     layers[CLOUDS_RESEARCH_TOPIC]->bForceHover = true;
     layers[CLOUDS_RESEARCH_PPL]->bForceHover = true;
     layers[CLOUDS_RESEARCH_VS]->bForceHover = true;
+    layers[CLOUDS_ABOUT_CONTACT]->bForceHover = true;
 
     layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->bForceHover = true;
 }
@@ -239,6 +240,8 @@ string CloudsHUDController::filenameForLayer(CloudsHUDLayerSet layer){
             return "CLOUDS_ABOUT_INFO.svg";
         case CLOUDS_ABOUT_MAIN:
             return "CLOUDS_ABOUT_MAIN.svg";
+        case CLOUDS_ABOUT_CONTACT:
+            return "CLOUDS_ABOUT_CONTACT.svg";
         case CLOUDS_ABOUT_SETTINGS:
             return "CLOUDS_ABOUT_SETTINGS.svg";
         case CLOUDS_ABOUT_SETTINGS_EXPANDED:
@@ -324,6 +327,9 @@ void CloudsHUDController::calculateFontSizes(){
     
     getLabelForLayer("ExitButtonTextBox", bookFontBuffer);
     
+    getLabelForLayer("SupportButtonTextBox", bookFontBuffer);
+    getLabelForLayer("GithubButtonTextBox", bookFontBuffer);
+    
     getLabelForLayer("AboutTextBox", bookFontBuffer, 35, false,true, 12);
     getLabelForLayer("AboutTitleTextBox", thinFontBuffer);
     
@@ -396,6 +402,8 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["NavBackersTextBox"]->setText(GetTranslationForString("SUPPORTERS"), false);
     
     hudLabelMap["ExitButtonTextBox"]->setText(GetTranslationForString("DONE"), false);
+    hudLabelMap["SupportButtonTextBox"]->setText(GetTranslationForString("CONTACT US"), false);
+    hudLabelMap["GithubButtonTextBox"]->setText(GetTranslationForString("VIEW SOURCE"), false);
 
     ///////////////////////////
     hudLabelMap["AboutTextBox"]->setText(ofBufferFromFile(GetCloudsDataPath() + "about/about.txt").getText(), false);
@@ -490,7 +498,9 @@ void CloudsHUDController::calculateFontSizes(){
     attachTriangleToLabel(hudLabelMap["BackersScrollDownSpace"],CLOUDS_ABOUT_BACKERS, "BackersScrollDownSpace", CLOUDS_HUD_TRIANGLE_DOWN);
 
     attachTriangleToLabel(hudLabelMap["ExitButtonTextBox"], CLOUDS_ABOUT_MAIN, "ExitButtonArrowSpace", CLOUDS_HUD_TRIANGLE_NONE);
-
+    attachTriangleToLabel(hudLabelMap["SupportButtonTextBox"], CLOUDS_ABOUT_CONTACT, "SupportButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    attachTriangleToLabel(hudLabelMap["GithubButtonTextBox"], CLOUDS_ABOUT_CONTACT, "GithubButtonArrowSpace", CLOUDS_HUD_TRIANGLE_RIGHT);
+    
     attachTriangleToLabel(hudLabelMap["SettingsTextBoxExpanded"], CLOUDS_ABOUT_SETTINGS, "SettingsArrowFrame", CLOUDS_HUD_TRIANGLE_DOWN);
     
     if(GetGraphicsQualityLevel() == PRETTY){
@@ -708,6 +718,9 @@ void CloudsHUDController::actBegan(CloudsActEventArgs& args){
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
 
+    clearClip();
+    //clearVisualSystem();
+    
     animateOff( CLOUDS_HUD_HOME );
 	animateOff( CLOUDS_HUD_LOWER_THIRD );
 	animateOff( CLOUDS_HUD_PROJECT_EXAMPLE );
@@ -1181,6 +1194,7 @@ void CloudsHUDController::showAbout(){
 
     animateOn(CLOUDS_ABOUT_MAIN);
     animateOn(CLOUDS_ABOUT_SETTINGS);
+    animateOn(CLOUDS_ABOUT_CONTACT);
     
     //TOOD: maybe save the last tab ...
     currentAboutTab = CLOUDS_HUD_ABOUT_TAB_INFO;
@@ -1193,6 +1207,7 @@ void CloudsHUDController::showAbout(){
 void CloudsHUDController::hideAbout(){
     animateOff(CLOUDS_ABOUT_MAIN);
     animateOff(CLOUDS_ABOUT_SETTINGS);
+    animateOff(CLOUDS_ABOUT_CONTACT);
     
     animateOff(CLOUDS_ABOUT_INFO);
     animateOff(CLOUDS_ABOUT_CAST);
@@ -1256,7 +1271,13 @@ void CloudsHUDController::updateAboutNavigation(){
         animateOn(CLOUDS_ABOUT_BACKERS);
         currentAboutTab = CLOUDS_HUD_ABOUT_TAB_BACKERS;
     }
-
+    else if(hudLabelMap["SupportButtonTextBox"]->isClicked()){
+        ofLaunchBrowser("mailto:support@cloudsdocumentary.com");
+    }
+    else if(hudLabelMap["GithubButtonTextBox"]->isClicked()){
+        ofLaunchBrowser("https://github.com/CLOUDS-Interactive-Documentary/CLOUDS");
+    }
+    
     if(hudLabelMap["SettingsTextBoxExpanded"]->isClicked()){
         if(hudOpenMap[CLOUDS_ABOUT_SETTINGS_EXPANDED]){
             animateOff(CLOUDS_ABOUT_SETTINGS_EXPANDED);
@@ -1310,6 +1331,15 @@ void CloudsHUDController::updateAboutNavigation(){
     hudLabelMap["SettingsTextBoxExpanded"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_SETTINGS]->svg.getMeshByID("SettingsBackingExpanded")->bounds;
     hudLabelMap["SettingsTextBoxExpanded"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["SettingsTextBoxExpanded"]->baseInteractiveBounds);
 
+    hudLabelMap["SettingsTextBoxExpanded"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_SETTINGS]->svg.getMeshByID("SettingsBackingExpanded")->bounds;
+    hudLabelMap["SettingsTextBoxExpanded"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["SettingsTextBoxExpanded"]->baseInteractiveBounds);
+
+    hudLabelMap["SupportButtonTextBox"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_CONTACT]->svg.getMeshByID("SupportButtonBacking")->bounds;
+    hudLabelMap["SupportButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["SupportButtonTextBox"]->baseInteractiveBounds);
+    
+    hudLabelMap["GithubButtonTextBox"]->baseInteractiveBounds   = layers[CLOUDS_ABOUT_CONTACT]->svg.getMeshByID("GithubButtonBacking")->bounds;
+    hudLabelMap["GithubButtonTextBox"]->scaledInteractiveBounds = getScaledRectangle(hudLabelMap["GithubButtonTextBox"]->baseInteractiveBounds);
+    
     if(hudOpenMap[CLOUDS_ABOUT_SETTINGS_EXPANDED]){
         hudLabelMap["SettingsFastTextBox"]->baseInteractiveBounds
                     = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsFastBacking")->bounds;
@@ -1325,12 +1355,10 @@ void CloudsHUDController::updateAboutNavigation(){
                     = layers[CLOUDS_ABOUT_SETTINGS_EXPANDED]->svg.getMeshByID("SettingsClearBacking")->bounds;
         hudLabelMap["SettingsClearHistoryTextBox"]->scaledInteractiveBounds
                     = getScaledRectangle(hudLabelMap["SettingsClearHistoryTextBox"]->baseInteractiveBounds);
-        
-        
     }
     
-    hudLabelMap["NavAboutTextBox"]->tabSelected = currentAboutTab   == CLOUDS_HUD_ABOUT_TAB_INFO;
-    hudLabelMap["NavCastTextBox"]->tabSelected = currentAboutTab    == CLOUDS_HUD_ABOUT_TAB_CAST;
+    hudLabelMap["NavAboutTextBox"]->tabSelected  = currentAboutTab  == CLOUDS_HUD_ABOUT_TAB_INFO;
+    hudLabelMap["NavCastTextBox"]->tabSelected   = currentAboutTab  == CLOUDS_HUD_ABOUT_TAB_CAST;
     hudLabelMap["NavCreditsTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_CREDITS;
     hudLabelMap["NavBackersTextBox"]->tabSelected = currentAboutTab == CLOUDS_HUD_ABOUT_TAB_BACKERS;
     
