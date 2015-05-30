@@ -32,16 +32,6 @@
     parser.loadMediaAssets();
 	//sound.setup();
 	
-    
-
-//	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-//		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-//        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
-//	}
-//	else{
-//		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
-//	}
-
 	[clipTable setTarget:self];
 	[clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[clipTable reloadData];
@@ -69,8 +59,6 @@
 	hud.setup();
 
 #ifdef OCULUS_RIFT
-    rgbdVisualSystem.hud = &hud;
-    rgbdVisualSystem.setupHUDGui();
     rgbdVisualSystem.loadPresetGUISFromName("RGBD_OC_BASE");
 #else
 //	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");

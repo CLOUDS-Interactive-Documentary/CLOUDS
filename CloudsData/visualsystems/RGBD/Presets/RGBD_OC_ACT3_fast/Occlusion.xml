@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Occlusion</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>416.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>330.000000000</XPosition>
+    <YPosition>103.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,12 +18,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Occl X Simplify</Name>
-    <Value>4.137930870</Value>
+    <Value>5.509615421</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Occl Y Simplify</Name>
-    <Value>4.344827652</Value>
+    <Value>5.475961685</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

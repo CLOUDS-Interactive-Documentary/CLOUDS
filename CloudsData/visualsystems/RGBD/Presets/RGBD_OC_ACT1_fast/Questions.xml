@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Questions</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>535.000000000</YPosition>
+    <YPosition>494.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -16,7 +16,7 @@
     <Value>0.292413801</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>QUESTION FONT SIZE</Name>
     <Value>15</Value>
 </Widget>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HOVER Y</Name>
-    <Value>32.019653320</Value>
+    <Value>32.019676208</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>HOVER Z</Name>
-    <Value>-22.660095215</Value>
+    <Value>-22.660100937</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -60,4 +60,14 @@
     <Kind>4</Kind>
     <Name>QUESTION FONT SPLIT WIDTH</Name>
     <Value>182.758621216</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RESET Y</Name>
+    <Value>23.076938629</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RESET Z</Name>
+    <Value>-375.000000000</Value>
 </Widget>

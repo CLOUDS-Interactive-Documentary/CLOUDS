@@ -1,57 +1,87 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Presets</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>195.000000000</YPosition>
+    <YPosition>189.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>g_FIN_Style_01</Name>
+    <Name>RGBD_ACT1_fast</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>g_FIN_Style_02</Name>
+    <Name>RGBD_ACT1_pretty</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RGBD_ACT1</Name>
+    <Name>RGBD_ACT2_fast</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RGBD_ACT2</Name>
+    <Name>RGBD_ACT2_pretty</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RGBD_ACT3</Name>
+    <Name>RGBD_ACT3_fast</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RGBD_BASE</Name>
+    <Name>RGBD_ACT3_pretty</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RGBD_OC_ACT1</Name>
+    <Name>RGBD_BASE_fast</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RGBD_OC_ACT2</Name>
+    <Name>RGBD_BASE_pretty</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RGBD_OC_ACT3</Name>
+    <Name>RGBD_OC_ACT1_fast</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RGBD_OC_ACT1_pretty</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RGBD_OC_ACT2_fast</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RGBD_OC_ACT2_pretty</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RGBD_OC_ACT3_fast</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RGBD_OC_BASE</Name>
+    <Name>RGBD_OC_ACT3_pretty</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RGBD_OC_BASE_fast</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RGBD_OC_BASE_pretty</Name>
     <Value>0</Value>
 </Widget>

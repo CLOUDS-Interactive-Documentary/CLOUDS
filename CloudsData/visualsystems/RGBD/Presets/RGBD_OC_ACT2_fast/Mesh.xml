@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Mesh</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>366.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1023.000000000</XPosition>
+    <YPosition>203.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>X Simplify</Name>
-    <Value>2.625615835</Value>
+    <Value>6.913461685</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Y Simplify</Name>
-    <Value>2.477832317</Value>
+    <Value>6.192307949</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
