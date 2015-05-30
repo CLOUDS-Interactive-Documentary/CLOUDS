@@ -2274,11 +2274,8 @@
 		E7D8230B18BEBD6E00C1EB93 /* PanelTenPrint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelTenPrint.cpp; sourceTree = "<group>"; };
 		E7D8230C18BEBD6E00C1EB93 /* PanelTenPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelTenPrint.h; sourceTree = "<group>"; };
 		E7D8230F18BEBD6E00C1EB93 /* CloudsVisualSystemColony.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemColony.cpp; sourceTree = "<group>"; };
-		E7D8231018BEBD6E00C1EB93 /* CloudsVisualSystemColony.cpp.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CloudsVisualSystemColony.cpp.orig; sourceTree = "<group>"; };
 		E7D8231118BEBD6E00C1EB93 /* CloudsVisualSystemColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemColony.h; sourceTree = "<group>"; };
-		E7D8231218BEBD6E00C1EB93 /* CloudsVisualSystemColony.h.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CloudsVisualSystemColony.h.orig; sourceTree = "<group>"; };
 		E7D8231318BEBD6E00C1EB93 /* gCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gCell.cpp; sourceTree = "<group>"; };
-		E7D8231418BEBD6E00C1EB93 /* gCell.cpp.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gCell.cpp.orig; sourceTree = "<group>"; };
 		E7D8231518BEBD6E00C1EB93 /* gCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gCell.h; sourceTree = "<group>"; };
 		E7D8231818BEBD6E00C1EB93 /* CloudsVisualSystemConnectors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemConnectors.cpp; sourceTree = "<group>"; };
 		E7D8231918BEBD6E00C1EB93 /* CloudsVisualSystemConnectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemConnectors.h; sourceTree = "<group>"; };
@@ -5896,11 +5893,8 @@
 			isa = PBXGroup;
 			children = (
 				E7D8230F18BEBD6E00C1EB93 /* CloudsVisualSystemColony.cpp */,
-				E7D8231018BEBD6E00C1EB93 /* CloudsVisualSystemColony.cpp.orig */,
 				E7D8231118BEBD6E00C1EB93 /* CloudsVisualSystemColony.h */,
-				E7D8231218BEBD6E00C1EB93 /* CloudsVisualSystemColony.h.orig */,
 				E7D8231318BEBD6E00C1EB93 /* gCell.cpp */,
-				E7D8231418BEBD6E00C1EB93 /* gCell.cpp.orig */,
 				E7D8231518BEBD6E00C1EB93 /* gCell.h */,
 			);
 			path = vs_src;
