@@ -337,10 +337,19 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
         if( GetGraphicsQualityLevel() == FAST && currentSelection[i].isHeavy() ){
             continue;
         }
-        
+
+#ifdef TARGET_WIN32
+        if(currentSelection[i].systemName == "Vision"){
+            continue;
+        }
+#endif
 #ifdef VHX_MEDIA
         //Laplacian tunnel is too big to distribute
         if(currentSelection[i].systemName == "LaplacianTunnel"){
+            continue;
+        }
+        //3DModelLoader tunnel is too big to distribute
+        if(currentSelection[i].systemName == "3DModelLoader"){
             continue;
         }
         //two of the tunnels are also too big to distribute
@@ -1171,11 +1180,22 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
         return 0;
     }
 #endif
+
+#ifdef TARGET_WIN32
+    if(potentialNextPreset.systemName == "Vision"){
+        state.log << state.duration << "\t\t\t\tREJECTED because Vision doesn't work on windows" << endl;
+        return 0;
+    }
+#endif
     
 #ifdef VHX_MEDIA
     //Laplacian tunnel is too big to distribute
     if(potentialNextPreset.systemName == "LaplacianTunnel"){
         state.log << state.duration << "\t\t\t\tREJECTED because Laplacian Tunnel is not distributed with VHX" << endl;
+        return 0;
+    }
+    if(potentialNextPreset.systemName == "3DModelLoader"){
+        state.log << state.duration << "\t\t\t\tREJECTED because 3DModelLoader is not distributed with VHX" << endl;
         return 0;
     }
     //two of the tunnels are also too big to distribute

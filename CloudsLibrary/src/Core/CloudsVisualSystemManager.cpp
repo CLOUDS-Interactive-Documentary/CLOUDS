@@ -20,7 +20,9 @@ static vector<CloudsVisualSystem*> systems;
 //#include "CloudsVisualSystemWebHistory.h"
 
 #include "CloudsVisualSystem2DVideo.h"
+#ifndef VHX_MEDIA
 #include "CloudsVisualSystem3DModelLoader.h"
+#endif
 #include "CloudsVisualSystemAstrolabe.h"
 #include "CloudsVisualSystemAutomata.h"
 #include "CloudsVisualSystemBallDroppings.h"
@@ -94,7 +96,9 @@ static vector<CloudsVisualSystem*> systems;
 #include "CloudsVisualSystemTwitter.h"
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemVerletForm.h"
+#ifdef TARGET_OSX
 #include "CloudsVisualSystemVision.h"
+#endif
 #include "CloudsVisualSystemVoro.h"
 #include "CloudsVisualSystemWorld.h"
 #include "CloudsVisualSystemWormHole.h"
@@ -122,7 +126,9 @@ struct Mapping {
 } mapping[] = {
 	
 	{ "2DVideo",				&fCreate<CloudsVisualSystem2DVideo> },
+#ifndef VHX_MEDIA
 	{ "3DModelLoader",			&fCreate<CloudsVisualSystem3DModelLoader> },
+#endif
 	{ "Astrolabe",				&fCreate<CloudsVisualSystemAstrolabe> },
 	{ "Automata",				&fCreate<CloudsVisualSystemAutomata> },
 	{ "BallDroppings",			&fCreate<CloudsVisualSystemBallDroppings> },
@@ -200,7 +206,9 @@ struct Mapping {
 //64	{ "Uextrude",				&fCreate<CloudsVisualSystemUextrude> },
 	{ "VectorFlow",				&fCreate<CloudsVisualSystemVectorFlow> },
 	{ "VerletForm",				&fCreate<CloudsVisualSystemVerletForm> },
+#ifdef TARGET_OSX
 	{ "Vision",					&fCreate<CloudsVisualSystemVision> },
+#endif
 	{ "Voro",					&fCreate<CloudsVisualSystemVoro> },
 //64	{ "WebHistory",				&fCreate<CloudsVisualSystemWebHistory> },
 	{ "World",					&fCreate<CloudsVisualSystemWorld> },
@@ -559,8 +567,15 @@ void CloudsVisualSystemManager::parseVisualSystemCredits(){
         if(systemId == "LaplacianTunnel"){
             continue;
         }
+        if(systemId == "3DModelLoader"){
+            continue;
+        }
 #endif
-        
+#ifdef TARGET_WIN32
+        if(systemId == "Vision"){
+            continue;
+        }
+#endif
         creditsXml.pushTag("system", i);
         visualSystemCredits[systemId].systemName = systemId;
         visualSystemCredits[systemId].title = creditsXml.getValue("title", "");
@@ -609,11 +624,20 @@ void CloudsVisualSystemManager::populateEnabledSystemIndeces(){
             if(presets[i].systemName == "LaplacianTunnel"){
                 continue;
             }
+            if(presets[i].systemName == "3DModelLoader"){
+                continue;
+            }
             //two of the tunnels are also too big to distribute
             if(presets[i].systemName == "WormHole" && ofToLower(presets[i].presetName).find("organic") == string::npos ){
                 continue;
             }
 #endif
+#ifdef TARGET_WIN32
+            if(presets[i].systemName == "Vision"){
+                continue;
+            }
+#endif
+            
             enabledPresetsIndex.push_back(i);
         }
 #endif
