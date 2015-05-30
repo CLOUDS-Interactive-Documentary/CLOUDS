@@ -632,8 +632,7 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
             showVHXPrompt = true;
             vhxPromptScreen = "Error contacting VHX - Check your internet connection and restart";
             break;
-        case CLOUDS_INTRO_MENU:
-            alertBoundsActivated = false;
+        case CLOUDS_INTRO_MENU:            
             researchMenuItem.visible = true;
             playMenuItem.visible = true;
             aboutMenuItem.visible = true;
@@ -643,6 +642,7 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
             newMenuItem.visible = true;
             break;
         case CLOUDS_INTRO_PLAYING:
+            alertBoundsActivated = false;
             timeline->play();
             playMenuItem.attenuation = .03;
             newMenuItem.attenuation = .03;
@@ -1067,9 +1067,9 @@ string CloudsIntroSequence::getQuestionText(){
 }
 
 void CloudsIntroSequence::alertNewVersion(string newVersionDownloadURL){
-//    newVersionURL = newVersionDownloadURL;
-//    alertPrompt = "There is an update avaiable! Click to download.";
-//    alertBoundsActivated = true;
+    newVersionURL = newVersionDownloadURL;
+    alertPrompt = "There is an update avaiable! Click to download.";
+    alertBoundsActivated = true;
 }
 
 //vhx stuff
@@ -1671,14 +1671,14 @@ void CloudsIntroSequence::drawMenu(){
                             menuItems[i]->bounds.y + wordHeight + menuButtonPad);
     }
     
-    if(alertBoundsActivated){
-//        if(currentState == CLOUDS_INTRO_MENU && newVersionURL != ""){
+    if(alertBoundsActivated && !userHasBegun()){
+
         ofPushStyle();
         //ofSetColor(255, ofMap(playMenuItem.baseAlpha, 0, .2, 0, 1.0, true) * 255);
         ofSetColor(255, ofMap(ofGetElapsedTimef() - stateChangedTime, 0, .5, 0, 1.0, true) * 255);
         menuFont.drawString(alertPrompt, alertBounds.x, alertBounds.y + alertBounds.height);
         ofPopStyle();
-  //      }
+
     }
 
     ofPopStyle();
@@ -1784,7 +1784,7 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 #ifdef MOUSE_INPUT
-    if(alertBoundsActivated && alertBounds.inside(data.x + bleed, data.y + bleed) ){
+    if(alertBoundsActivated && alertBounds.inside(data.x + bleed, data.y + bleed) && !userHasBegun() ){
         if(newVersionURL != ""){
             ofLaunchBrowser(newVersionURL);
         }

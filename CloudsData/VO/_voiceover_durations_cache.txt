@@ -59,7 +59,7 @@ Joel_InTheNow2|9.5083
 Joel_Interactivity|23.4233
 Joel_MicrosoftResearch|15.7150
 Joel_MythOfArtAndTech1|4.8033
-Joel_MythOfArtAndTech_long|28.1267
+Joel_MythOfArtAndTech-long|28.1267
 Joel_Watercolors|7.9400
 Joel_WrongToSell|34.1667
 Joel_scaleofUniverse|6.1717
