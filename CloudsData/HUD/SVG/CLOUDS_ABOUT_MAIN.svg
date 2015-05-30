@@ -1,313 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1440px"
-	 height="900px" viewBox="0 0 1440 900" enable-background="new 0 0 1440 900" xml:space="preserve">
-<g id="_x2F__x2F_Background" display="none">
-	<rect x="0" display="inline" opacity="0.8" fill="#090A0A" width="1440" height="900"/>
-</g>
-<g id="_x2F__x2F_ImagePlane" display="none">
-	<g display="inline">
-		<defs>
-			<rect id="SVGID_1_" x="0" y="-1.024" width="1440" height="900"/>
-		</defs>
-		<clipPath id="SVGID_2_">
-			<use xlink:href="#SVGID_1_"  overflow="visible"/>
-		</clipPath>
-		<g transform="matrix(1 0 0 1 -7.629395e-06 -1.907349e-06)" clip-path="url(#SVGID_2_)">
-			
-				<image overflow="visible" width="2034" height="1194" xlink:href="879EFE8AB7FFFA71.png"  transform="matrix(0.838 0 0 0.838 -104.6868 -30.0605)">
-			</image>
-		</g>
-	</g>
-	<rect x="351.813" y="249.25" display="inline" fill="#030610" width="741.25" height="352.5"/>
-	<rect x="648.063" y="885.5" display="inline" fill="#030610" width="51.25" height="14.409"/>
-</g>
-<g id="AboutHoverBacking">
-	<rect x="59.335" y="776.958" opacity="0.6" fill="#101010" width="330.728" height="33.032"/>
-</g>
-<g id="NavCastHoverBacking">
-	<rect x="390.071" y="776.958" opacity="0.6" fill="#101010" width="331.25" height="33.032"/>
-</g>
-<g id="NavCreditsHoverBacking">
-	<rect x="721.321" y="776.958" opacity="0.6" fill="#101010" width="331.25" height="33.032"/>
-</g>
-<g id="NavBackersHoverBacking">
-	<rect x="1052.563" y="776.958" opacity="0.6" fill="#101010" width="330.719" height="33.021"/>
-</g>
-<g id="NavTypography" display="none">
-	<g display="inline">
-		
-			<text transform="matrix(1 0 0 1 848.1013 799.3979)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CREDITS</text>
-	</g>
-	<g display="inline">
-		
-			<text transform="matrix(1 0 0 1 1175.658 799.3979)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">BACKERS</text>
-	</g>
-	<g display="inline">
-		
-			<text transform="matrix(1 0 0 1 531.8801 799.3979)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">CAST</text>
-	</g>
-	<g display="inline">
-		
-			<text transform="matrix(1 0 0 1 194.6033 799.3979)" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">ABOUT</text>
-	</g>
-</g>
-<g id="NavCastTextBox">
-	<rect x="533.829" y="787.991" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="43.734" height="11.494"/>
-</g>
-<g id="NavAboutTextBox">
-	<rect x="195.807" y="787.991" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="57.784" height="11.494"/>
-</g>
-<g id="NavCreditsTextBox">
-	<rect x="850.398" y="787.992" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="73.096" height="11.494"/>
-</g>
-<g id="NavBackersTextBox">
-	<rect x="1177.947" y="787.992" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="79.951" height="11.494"/>
-</g>
-<g id="NavDivisions">
-	<line opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="721.313" y1="775.957" x2="721.313" y2="810.957"/>
-	<line opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="390.063" y1="775.906" x2="390.063" y2="810.938"/>
-	
-		<line opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1052.563" y1="775.964" x2="1052.563" y2="810.972"/>
-	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.329" y1="776.457" x2="1384.313" y2="776.457"/>
-</g>
-<g id="AboutTypography" display="none">
-	<rect x="382.205" y="310.726" display="inline" fill="none" width="678.217" height="217.062"/>
-	<text transform="matrix(1 0 0 1 382.2051 320.9932)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Clouds is presented as an interactive installation where visitors select an </tspan><tspan x="0" y="24" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">initial question to seed the story engine with their topic interest. They are </tspan><tspan x="0" y="48" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">then presented with a stream of interviews and interactive visualizations </tspan><tspan x="0" y="72" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">illustrating a response to the topic. Interaction is done through gesture using </tspan><tspan x="0" y="96" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">a Kinect and a large screen, or through gaze when using an Oculus Rift virtual </tspan><tspan x="0" y="120" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">reality head-mounted display. The installation features original visualizations </tspan><tspan x="0" y="144" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">contributed through code commissions by Shantell Martin, Zach Lieberman, </tspan><tspan x="0" y="168" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Nervous System, Marius Watz, Karolina Sobecka, Casey Reas, Satoru Higa and </tspan><tspan x="0" y="192" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Josh Nimoy</tspan></text>
-	<rect x="674.12" y="213" display="inline" fill="none" width="94.386" height="31.278"/>
-	
-		<text transform="matrix(1 0 0 1 674.1206 231.1196)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="30" letter-spacing="3">ABOUT</text>
-</g>
-<g id="AboutTextBox" display="none">
-	
-		<rect x="382.205" y="310.493" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="678.217" height="302.041"/>
-</g>
-<g id="AboutTitleTextBox" display="none">
-	<rect x="675.801" y="213" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="91.025" height="18.306"/>
-</g>
-<g id="CastTypography" display="none">
-	<rect x="382.205" y="310.493" display="inline" fill="none" width="155.25" height="301.375"/>
-	<text transform="matrix(1 0 0 1 382.2048 320.7603)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Aaron Koblin</tspan><tspan x="0" y="20.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Andres Colubri</tspan><tspan x="0" y="40.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Bruce Sterling</tspan><tspan x="0" y="61.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Casey Reas</tspan><tspan x="0" y="81.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Chris Sugrue</tspan><tspan x="0" y="102" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Damian Stewart</tspan><tspan x="0" y="122.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Daniel Shiffman</tspan><tspan x="0" y="142.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Diederick Huijbers</tspan><tspan x="0" y="163.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Elliot Woods</tspan><tspan x="0" y="183.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Fernanda Viegas</tspan><tspan x="0" y="204" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Golan Levin</tspan><tspan x="0" y="224.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Greg Borenstein</tspan><tspan x="0" y="244.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Javier Fadul</tspan><tspan x="0" y="265.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jen Lowe</tspan><tspan x="0" y="285.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jer Thorp</tspan></text>
-	<rect x="603.66" y="310.493" display="inline" fill="none" width="198.083" height="302.041"/>
-	<text transform="matrix(1 0 0 1 603.6599 320.7603)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jesse Louis-Rosenberg</tspan><tspan x="0" y="20.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jessica Rosenkrantz</tspan><tspan x="0" y="40.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Joel Lewis</tspan><tspan x="0" y="61.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">John Maeda</tspan><tspan x="0" y="81.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Josh Nimoy</tspan><tspan x="0" y="102" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Julia Kaganskiy</tspan><tspan x="0" y="122.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Julian Oliver</tspan><tspan x="0" y="142.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Karolina Sobecka</tspan><tspan x="0" y="163.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Karsten Schmidt</tspan><tspan x="0" y="183.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Kevin Slavin</tspan><tspan x="0" y="204" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Kyle Chayka</tspan><tspan x="0" y="224.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Kyle McDonald</tspan><tspan x="0" y="244.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Lauren McCarthy</tspan><tspan x="0" y="265.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">LIA</tspan><tspan x="0" y="285.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Lindsay Howard</tspan></text>
-	<rect x="868.195" y="310.493" display="inline" fill="none" width="191.833" height="298.041"/>
-	<text transform="matrix(1 0 0 1 868.1951 320.7603)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Marcus Wendt</tspan><tspan x="0" y="20.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Marius Watz</tspan><tspan x="0" y="40.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Martin Wattenberg</tspan><tspan x="0" y="61.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Paola Antonelli</tspan><tspan x="0" y="81.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Patricio Gonzalez-Vivo</tspan><tspan x="0" y="102" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Philip Whitfield</tspan><tspan x="0" y="122.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Rachel Binx</tspan><tspan x="0" y="142.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Ramsey Nasser</tspan><tspan x="0" y="163.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Regine Debatty</tspan><tspan x="0" y="183.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Shantell Martin</tspan><tspan x="0" y="204" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Sofy Yuditskaya</tspan><tspan x="0" y="224.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Theo Watson</tspan><tspan x="0" y="244.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Vera Glahn</tspan><tspan x="0" y="265.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Zach Lieberman</tspan></text>
-	<rect x="687.784" y="213" display="inline" fill="none" width="77.025" height="31.278"/>
-	
-		<text transform="matrix(1 0 0 1 687.7842 231.1196)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="30" letter-spacing="3">CAST</text>
-</g>
-<g id="CastListTextBox" display="none">
-	
-		<rect x="382.205" y="310.493" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="221.455" height="302.041"/>
-	
-		<rect x="603.66" y="310.493" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.142" height="302.041"/>
-	
-		<rect x="867.802" y="310.493" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="192.62" height="302.041"/>
-</g>
-<g id="CastTitleTextBox" display="none">
-	<rect x="686.804" y="213" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="69.018" height="18.306"/>
-</g>
-<g id="CreditsTypography" display="none">
-	<rect x="292.84" y="222.395" display="inline" fill="none" width="262.629" height="498.158"/>
-	<text transform="matrix(1 0 0 1 292.8406 232.6621)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">DIRECTORS</tspan><tspan x="0" y="20.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jonathan Minard</tspan><tspan x="0" y="40.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">James George</tspan><tspan x="0" y="81.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">EXECUTIVE PRODUCER</tspan><tspan x="0" y="102" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Golan Levin</tspan><tspan x="0" y="142.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">PRODUCER</tspan><tspan x="0" y="163.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Winslow Porter</tspan><tspan x="0" y="204" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">DESIGN DIRECTOR</tspan><tspan x="0" y="224.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Bradley G Munkowitz</tspan><tspan x="0" y="265.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">MUSIC</tspan><tspan x="0" y="285.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">R. Luke DuBois</tspan><tspan x="0" y="326.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">LEAD INTERACTION DEVELOPER</tspan><tspan x="0" y="346.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Elie Zananiri</tspan><tspan x="0" y="387.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">LEAD VISUAL DEVELOPER</tspan><tspan x="0" y="408" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Lars Berg</tspan><tspan x="0" y="448.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">STORY ENGINE DEVELOPER</tspan><tspan x="0" y="469.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Surya Mattu</tspan></text>
-	<text transform="matrix(1 0 0 1 616.8386 237.2695)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">VISUAL SYSTEMS </tspan><tspan x="0" y="20.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Gal Sassoon</tspan><tspan x="0" y="40.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Patricio Gonzalez Vivo</tspan><tspan x="0" y="61.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Reza Ali</tspan><tspan x="0" y="81.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jeff Crouse</tspan><tspan x="0" y="102" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Omer Shapira</tspan><tspan x="0" y="122.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Michael Allison</tspan><tspan x="0" y="142.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Quin Kennedy</tspan><tspan x="0" y="183.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">EXPERIENCE DESIGN</tspan><tspan x="0" y="204" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Sarah Hallacher</tspan><tspan x="0" y="244.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">INTERFACE DESIGN</tspan><tspan x="0" y="265.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Erica Gorochow</tspan><tspan x="0" y="306" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">INTERFACE DEVELOPMENT</tspan><tspan x="0" y="326.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Luisa Pereira</tspan><tspan x="0" y="346.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jack Kalish</tspan><tspan x="0" y="367.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Charlie Whitney</tspan><tspan x="0" y="408" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">UX CONSULTING</tspan><tspan x="0" y="428.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jason Walters</tspan><tspan x="0" y="448.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Mike Ballard</tspan></text>
-	<text transform="matrix(1 0 0 1 897.5793 237.2695)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">SCREENINGS PRODUCER</tspan><tspan x="0" y="20.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Mei-Ling Wong </tspan><tspan x="0" y="40.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1"> </tspan><tspan x="0" y="61.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">ADDITIONAL DEPTHKIT FILMING</tspan><tspan x="0" y="81.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Alexander Porter</tspan><tspan x="0" y="122.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">ADDITIONAL FOOTAGE</tspan><tspan x="0" y="142.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Future of Storytelling</tspan><tspan x="0" y="183.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">ADDITIONAL MUSIC</tspan><tspan x="0" y="204" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Julian LaPlace</tspan><tspan x="0" y="224.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Tony Lim</tspan><tspan x="0" y="265.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">SOUND MIXING</tspan><tspan x="0" y="285.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Brett Murphy</tspan><tspan x="0" y="326.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">WEB</tspan><tspan x="0" y="346.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">4Real</tspan></text>
-	<rect x="663.61" y="124.902" display="inline" fill="none" width="138.339" height="31.278"/>
-	
-		<text transform="matrix(1 0 0 1 663.6108 143.0215)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="30" letter-spacing="3">CREDITS</text>
-</g>
-<g id="CreditsListTextBox" display="none">
-	<g display="inline">
-		<rect x="292.84" y="222.395" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="323.969" height="488.105"/>
-		<rect x="616.81" y="222.395" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="280.77" height="488.105"/>
-		<rect x="897.579" y="222.395" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="252.207" height="488.105"/>
-	</g>
-</g>
-<g id="CreditsTitleTextBox" display="none">
-	
-		<rect x="663.611" y="124.902" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="115.405" height="18.306"/>
-</g>
-<g id="CENTER" display="none">
-	
-		<rect x="29.813" y="286.75" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="1383" height="174.763"/>
-	<rect x="1057.253" y="97.803" display="inline" fill="#DD4B39" width="69.986" height="15.197"/>
-</g>
-<g id="BackersTypography" display="none">
-	<rect x="321.09" y="100.443" display="inline" fill="none" width="770.841" height="43.992"/>
-	<text transform="matrix(1.002 0 0 1 321.0896 111.9189)" display="inline"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="0.998">THANK YOU for your enthusiasm, support and trust! Your contribution reaffirms </tspan><tspan x="0" y="22.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="0.998">our belief in this community, founded on sharing, generosity and collaboration.</tspan></text>
-	<g display="inline">
-		<g>
-			<rect x="850.72" y="214.895" fill="none" width="264.815" height="530.853"/>
-			<text transform="matrix(1 0 0 1 850.7205 225.1621)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Nathanial Mojarro  </tspan><tspan x="0" y="20.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Kymberly Hernandez-Palacious  </tspan><tspan x="0" y="40.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Lasandra Defoor  </tspan><tspan x="0" y="61.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Enola Pifer  </tspan><tspan x="0" y="81.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Refugio Flax  </tspan><tspan x="0" y="102" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Rochell Lindbloom  </tspan><tspan x="0" y="122.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Luis Garling  </tspan><tspan x="0" y="142.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Sophie Maxfield  </tspan><tspan x="0" y="163.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Alanna Calabria  </tspan><tspan x="0" y="183.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Maegan Creasey  </tspan><tspan x="0" y="204" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Delisa Espy  </tspan><tspan x="0" y="224.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Scarlett Mota  </tspan><tspan x="0" y="244.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Sparkle Vento  </tspan><tspan x="0" y="265.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Angle Dunkley  </tspan><tspan x="0" y="285.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Winford Enderle  </tspan><tspan x="0" y="306" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Twanna Pulliam  </tspan><tspan x="0" y="326.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Albertha Dalzell  </tspan><tspan x="0" y="346.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Divina Escobedo  </tspan><tspan x="0" y="367.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Marcela Braaten  </tspan><tspan x="0" y="387.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Polly Bury  </tspan><tspan x="0" y="408" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Margeret Keely  </tspan><tspan x="0" y="428.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Luana Tenner  </tspan><tspan x="0" y="448.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Ivey Karas  </tspan><tspan x="0" y="469.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Adelaide Croskey  </tspan><tspan x="0" y="489.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jude Holtzclaw  </tspan><tspan x="0" y="510" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Anastasia Lathrop  </tspan></text>
-		</g>
-	</g>
-	<g display="inline">
-		<g>
-			<rect x="321.118" y="214.895" fill="none" width="174.743" height="530.853"/>
-			<text transform="matrix(1 0 0 1 321.1172 225.1621)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Nathanial Mojarro  </tspan><tspan x="0" y="20.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Kymberly Sedgwick  </tspan><tspan x="0" y="40.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Lasandra Defoor  </tspan><tspan x="0" y="61.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Enola Pifer  </tspan><tspan x="0" y="81.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Refugio Flax  </tspan><tspan x="0" y="102" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Rochell Lindbloom  </tspan><tspan x="0" y="122.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Luis Garling  </tspan><tspan x="0" y="142.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Sophie Maxfield  </tspan><tspan x="0" y="163.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Alanna Calabria  </tspan><tspan x="0" y="183.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Maegan Creasey  </tspan><tspan x="0" y="204" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Delisa Espy  </tspan><tspan x="0" y="224.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Scarlett Mota  </tspan><tspan x="0" y="244.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Sparkle Vento  </tspan><tspan x="0" y="265.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Angle Dunkley  </tspan><tspan x="0" y="285.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Winford Enderle  </tspan><tspan x="0" y="306" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Twanna Pulliam  </tspan><tspan x="0" y="326.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Albertha Dalzell  </tspan><tspan x="0" y="346.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Divina Escobedo  </tspan><tspan x="0" y="367.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Marcela Braaten  </tspan><tspan x="0" y="387.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Polly Bury  </tspan><tspan x="0" y="408" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Margeret Keely  </tspan><tspan x="0" y="428.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Luana Tenner  </tspan><tspan x="0" y="448.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Ivey Karas  </tspan><tspan x="0" y="469.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Adelaide Croskey  </tspan><tspan x="0" y="489.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jude Holtzclaw  </tspan><tspan x="0" y="510" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Anastasia Lathrop  </tspan></text>
-		</g>
-	</g>
-	<g display="inline">
-		<g>
-			<rect x="585.905" y="214.895" fill="none" width="174.743" height="530.853"/>
-			<text transform="matrix(1 0 0 1 585.9048 225.1621)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Nathanial Mojarro  </tspan><tspan x="0" y="20.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Kymberly Sedgwick  </tspan><tspan x="0" y="40.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Lasandra Defoor  </tspan><tspan x="0" y="61.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Enola Pifer  </tspan><tspan x="0" y="81.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Refugio Flax  </tspan><tspan x="0" y="102" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Rochell Lindbloom  </tspan><tspan x="0" y="122.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Luis Garling  </tspan><tspan x="0" y="142.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Sophie Maxfield  </tspan><tspan x="0" y="163.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Alanna Calabria  </tspan><tspan x="0" y="183.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Maegan Creasey  </tspan><tspan x="0" y="204" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Delisa Espy  </tspan><tspan x="0" y="224.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Scarlett Mota  </tspan><tspan x="0" y="244.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Sparkle Vento  </tspan><tspan x="0" y="265.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Angle Dunkley  </tspan><tspan x="0" y="285.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Winford Enderle  </tspan><tspan x="0" y="306" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Twanna Pulliam  </tspan><tspan x="0" y="326.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Albertha Dalzell  </tspan><tspan x="0" y="346.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Divina Escobedo  </tspan><tspan x="0" y="367.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Marcela Braaten  </tspan><tspan x="0" y="387.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Polly Bury  </tspan><tspan x="0" y="408" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Margeret Keely  </tspan><tspan x="0" y="428.4" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Luana Tenner  </tspan><tspan x="0" y="448.8" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Ivey Karas  </tspan><tspan x="0" y="469.2" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Adelaide Croskey  </tspan><tspan x="0" y="489.6" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Jude Holtzclaw  </tspan><tspan x="0" y="510" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="17" letter-spacing="1">Anastasia Lathrop  </tspan></text>
-		</g>
-	</g>
-</g>
-<g id="BackersListTextBox" display="none">
-	
-		<rect x="321.09" y="214.895" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.815" height="525.605"/>
-	
-		<rect x="585.905" y="214.895" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.815" height="525.605"/>
-	
-		<rect x="850.72" y="214.895" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="264.815" height="525.605"/>
-</g>
-<g id="BackersScrollDownBacking" display="none">
-	
-		<rect x="321.09" y="752.965" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="816.109" height="40.91"/>
-</g>
-<g id="BackersScrollDownSpace" display="none">
-	
-		<rect x="723.651" y="772.992" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.623" height="6.234"/>
-</g>
-<g id="BackersScrollDown" display="none">
-	<polyline display="inline" opacity="0.69" fill="#FFFFFF" points="723.679,772.968 729.962,779.25 736.245,772.968 	"/>
-</g>
-<g id="BackersScrollBar" display="none">
-	<g display="inline">
-		<line opacity="0.2" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1135.563" y1="214.95" x2="1135.563" y2="740.5"/>
-	</g>
-</g>
-<g id="BackersScrollUp" display="none">
-	<polyline display="inline" opacity="0.69" fill="#FFFFFF" points="736.245,183.064 729.963,176.782 723.679,183.064 	"/>
-</g>
-<g id="BackersScrollUpBacking" display="none">
-	
-		<rect x="321.117" y="162.609" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="816.082" height="40.91"/>
-</g>
-<g id="BackersScrollUpSpace" display="none">
-	
-		<rect x="723.651" y="176.806" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.623" height="6.234"/>
-</g>
-<g id="BackersCopyTextBox" display="none">
-	
-		<rect x="321.09" y="100.443" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="814.474" height="37.557"/>
-</g>
-<g id="ExitButtonBacking">
-	<rect x="29.689" y="828.5" opacity="0.36" fill="#101010" width="80.6" height="34"/>
-</g>
-<g id="ExitButtonArrow" display="none">
-	<rect x="91.329" y="841.1" display="inline" fill="#FFFFFF" width="9" height="9"/>
-</g>
-<g id="ExitButtonArrowSpace">
-	<rect x="91.329" y="841.1" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="9" height="9"/>
-</g>
-<g id="ExitButtonFrame">
-	<rect x="29.78" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="80.5" height="34"/>
-</g>
-<g id="ExitButtonTextBox">
-	<rect x="43.548" y="840" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="35.903" height="11.424"/>
-</g>
-<g id="ExitButtonTypography" display="none">
-	
-		<text transform="matrix(1 0 0 1 42.9451 851.4414)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">EXIT</text>
-</g>
-<g id="SettingsBacking" display="none">
-	<rect x="1252.926" y="36.524" display="inline" opacity="0.36" fill="#101010" width="130.891" height="35.721"/>
-</g>
-<g id="SettingsArrow" display="none">
-	<polygon display="inline" fill="#FFFFFF" points="1403.722,33.244 1391.157,33.244 1397.44,39.526 	"/>
-</g>
-<g id="SettingsArrowFrame" display="none">
-	
-		<rect x="1362.409" y="51.244" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="12.313" height="6.282"/>
-</g>
-<g id="SettingsFrame" display="none">
-	
-		<rect x="1252.926" y="36.524" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="130.918" height="35.721"/>
-</g>
-<g id="SettingsTypography" display="none">
-	
-		<text transform="matrix(1 0 0 1 1293.8044 41.4658)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">SETTINGS</text>
-</g>
-<g id="SettingsTextBox" display="none">
-	
-		<rect x="1264.804" y="48.058" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="85.727" height="11.424"/>
-</g>
-<g id="SettingsFastBox" display="none">
-	<rect x="1192.847" y="90.062" display="inline" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="9" height="9"/>
-</g>
-<g id="SettingsFastTextBox" display="none">
-	
-		<rect x="1211.147" y="89.759" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="42.167" height="11.424"/>
-</g>
-<g id="SettingsPrettyTextBox" display="none">
-	
-		<rect x="1308.447" y="89.759" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="65.175" height="11.424"/>
-</g>
-<g id="SettingsBackingExpanded" display="none">
-	<rect x="1180.313" y="36.524" display="inline" opacity="0.36" fill="#101010" width="203.504" height="35.721"/>
-</g>
-<g id="SettingsFrameExpanded" display="none">
-	
-		<rect x="1180.313" y="36.524" display="inline" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="203.531" height="131.475"/>
-</g>
-<g id="SettingsTypographyExpanded" display="none">
-	
-		<text transform="matrix(1 0 0 1 1210.5916 101.1836)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">FAST</text>
-	
-		<text transform="matrix(1 0 0 1 1307.95 101.1836)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">PRETTY</text>
-	
-		<text transform="matrix(1 0 0 1 1192.8464 59.4658)" display="inline" fill="#FFFFFF" font-family="'Blender-BOOK'" font-size="19" letter-spacing="1">SETTINGS</text>
-	<g display="inline" opacity="0.69">
-		<text transform="matrix(1 0 0 1 1192.8464 132.6665)"><tspan x="0" y="0" fill="#439CED" font-family="'Blender-BOOK'" font-size="14">This will increase the quality</tspan><tspan x="0" y="16.8" fill="#439CED" font-family="'Blender-BOOK'" font-size="14">of the graphics.</tspan></text>
-	</g>
-</g>
-<g id="SettingsTextBoxExpanded" display="none">
-	
-		<rect x="1192.847" y="48.058" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="85.727" height="11.424"/>
-</g>
-<g id="SettingsPrettyBox" display="none">
-	<rect x="1290.309" y="90.062" display="inline" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="9" height="9"/>
-</g>
-<g id="SettingsDivision" display="none">
-	
-		<line display="inline" opacity="0.69" fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" x1="1271.813" y1="79" x2="1271.813" y2="110"/>
-</g>
-<g id="SettingsHelperTextBox" display="none">
-	
-		<rect x="1192.846" y="124.463" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="180.775" height="27.962"/>
-</g>
-<g id="InsideFrame">
-	<g opacity="0.26">
-		<path fill="none" stroke="#FFFFFF" stroke-width="0.25" stroke-miterlimit="10" d="M641.126,37.054"/>
-	</g>
-	<path opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M58.873,37.016"/>
-	<path opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1383.813,36.5"/>
-	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1383.813" y1="811" x2="1383.813" y2="36"/>
-	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.866" y1="36.031" x2="58.813" y2="810.994"/>
-	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1384.313" y1="36.5" x2="58.313" y2="36.5"/>
-	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.313" y1="810.5" x2="1384.313" y2="810.5"/>
-</g>
-<g id="OutsideFrame">
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.813,685"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,18.5"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.813,19"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.813,883"/>
-	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1412.813" y1="829" x2="1412.813" y2="19"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,882.5"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.813,829"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,18.5"/>
-	<path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.313,18.5"/>
-	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1413.313" y1="18.5" x2="29.313" y2="18.5"/>
-	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.813" y1="19" x2="29.813" y2="829"/>
-	<line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.313" y1="828.5" x2="1412.313" y2="828.5"/>
-</g>
-<g id="OutsideFrameTicks">
-	<rect x="1411.804" y="17.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="28.804" y="17.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="28.804" y="827.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-	<rect x="1411.804" y="827.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019"/>
-</g>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1440px" height="900px" viewBox="0 0 1440 900" enable-background="new 0 0 1440 900" xml:space="preserve">
+    <g id="AboutHoverBacking">
+        <rect x="59.335" y="776.958" opacity="0.6" fill="#101010" width="330.728" height="33.032" />
+    </g>
+    <g id="NavCastHoverBacking">
+        <rect x="390.071" y="776.958" opacity="0.6" fill="#101010" width="331.25" height="33.032" />
+    </g>
+    <g id="NavCreditsHoverBacking">
+        <rect x="721.321" y="776.958" opacity="0.6" fill="#101010" width="331.25" height="33.032" />
+    </g>
+    <g id="NavBackersHoverBacking">
+        <rect x="1052.563" y="776.958" opacity="0.6" fill="#101010" width="330.719" height="33.021" />
+    </g>
+    <g id="NavCastTextBox">
+        <rect x="533.829" y="787.991" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="43.734" height="11.494" />
+    </g>
+    <g id="NavAboutTextBox">
+        <rect x="195.807" y="787.991" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="57.784" height="11.494" />
+    </g>
+    <g id="NavCreditsTextBox">
+        <rect x="850.398" y="787.992" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="73.096" height="11.494" />
+    </g>
+    <g id="NavBackersTextBox">
+        <rect x="1177.947" y="787.992" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="79.951" height="11.494" />
+    </g>
+    <g id="NavDivisions">
+        <line opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="721.313" y1="775.957" x2="721.313" y2="810.957" />
+        <line opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="390.063" y1="775.906" x2="390.063" y2="810.938" />
+        <line opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1052.563" y1="775.964" x2="1052.563" y2="810.972" />
+        <line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.329" y1="776.457" x2="1384.313" y2="776.457" />
+    </g>
+    <g id="ExitButtonBacking">
+        <rect x="29.689" y="828.5" opacity="0.36" fill="#101010" width="80.6" height="34" />
+    </g>
+    <g id="ExitButtonArrowSpace">
+        <rect x="91.329" y="841.1" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="9" height="9" />
+    </g>
+    <g id="ExitButtonFrame">
+        <rect x="29.78" y="828.5" opacity="0.69" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="80.5" height="34" />
+    </g>
+    <g id="ExitButtonTextBox">
+        <rect x="43.548" y="840" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="35.903" height="11.424" />
+    </g>
+    <g id="InsideFrame">
+        <g opacity="0.26">
+            <path fill="none" stroke="#FFFFFF" stroke-width="0.25" stroke-miterlimit="10" d="M641.126,37.054" />
+        </g>
+        <path opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M58.873,37.016" />
+        <path opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1383.813,36.5" />
+        <line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1383.813" y1="811" x2="1383.813" y2="36" />
+        <line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.866" y1="36.031" x2="58.813" y2="810.994" />
+        <line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1384.313" y1="36.5" x2="58.313" y2="36.5" />
+        <line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="58.313" y1="810.5" x2="1384.313" y2="810.5" />
+    </g>
+    <g id="OutsideFrame">
+        <path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.813,685" />
+        <path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,18.5" />
+        <path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.813,19" />
+        <path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.813,883" />
+        <line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1412.813" y1="829" x2="1412.813" y2="19" />
+        <path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,882.5" />
+        <path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.813,829" />
+        <path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M29.313,18.5" />
+        <path opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1412.313,18.5" />
+        <line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1413.313" y1="18.5" x2="29.313" y2="18.5" />
+        <line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.813" y1="19" x2="29.813" y2="829" />
+        <line opacity="0.16" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="29.313" y1="828.5" x2="1412.313" y2="828.5" />
+    </g>
+    <g id="OutsideFrameTicks">
+        <rect x="1411.804" y="17.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019" />
+        <rect x="28.804" y="17.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019" />
+        <rect x="28.804" y="827.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019" />
+        <rect x="1411.804" y="827.491" opacity="0.69" fill="#FFFFFF" width="2.019" height="2.019" />
+    </g>
 </svg>

@@ -72,6 +72,5 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 			
 			file.saveFile(dragInfo.files[i]);
 		}
-		
 	}
 }

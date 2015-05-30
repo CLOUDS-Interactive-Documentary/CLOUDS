@@ -93,7 +93,7 @@ void CloudsVisualSystemCities::selfSetup()
         }
 	}
 	
-	facadeTexture.loadImage( getVisualSystemDataPath() + "images/noise_wispy.png");
+	facadeTexture.loadImage( getVisualSystemDataPath() + "images/noise_wispy.jpg");
 	//	facadeTexture.getTextureReference().setTextureWrap( GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T );// this was breaking the shader!?!
 	
 	

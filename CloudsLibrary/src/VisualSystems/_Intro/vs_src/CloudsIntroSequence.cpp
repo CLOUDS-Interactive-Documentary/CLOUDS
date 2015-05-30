@@ -1671,7 +1671,7 @@ void CloudsIntroSequence::drawMenu(){
                             menuItems[i]->bounds.y + wordHeight + menuButtonPad);
     }
     
-    if(alertBoundsActivated && !userHasBegun()){
+    if(alertBoundsActivated && currentState <= CLOUDS_INTRO_MENU){
 
         ofPushStyle();
         //ofSetColor(255, ofMap(playMenuItem.baseAlpha, 0, .2, 0, 1.0, true) * 255);
@@ -1784,7 +1784,7 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 #ifdef MOUSE_INPUT
-    if(alertBoundsActivated && alertBounds.inside(data.x + bleed, data.y + bleed) && !userHasBegun() ){
+    if(alertBoundsActivated && alertBounds.inside(data.x + bleed, data.y + bleed) && currentState <= CLOUDS_INTRO_MENU ){
         if(newVersionURL != ""){
             ofLaunchBrowser(newVersionURL);
         }

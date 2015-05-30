@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0304E1411B1A3D7800DF33FE /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0304E1381B1A3D7800DF33FE /* audiodecoderbase.cpp */; };
+		0304E1421B1A3D7800DF33FE /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0304E1391B1A3D7800DF33FE /* audiodecodercoreaudio.cpp */; };
+		0304E15F1B1A3DBD00DF33FE /* ofxCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0304E15B1B1A3DBD00DF33FE /* ofxCrypto.cpp */; };
 		031E27A91AA164EB00424146 /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27951AA164EB00424146 /* ofxSubtitles.cpp */; };
 		031E27AA1AA164EB00424146 /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27971AA164EB00424146 /* ofxSubtitleUnit.cpp */; };
 		031E27B61AA164F200424146 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27B41AA164F200424146 /* ofxLocalization.cpp */; };
@@ -192,6 +195,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0304E11E1B1A3D7800DF33FE /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
+		0304E1311B1A3D7800DF33FE /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		0304E1321B1A3D7800DF33FE /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		0304E1331B1A3D7800DF33FE /* audiodecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
+		0304E1341B1A3D7800DF33FE /* audiodecoderbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoderbase.h; sourceTree = "<group>"; };
+		0304E1351B1A3D7800DF33FE /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodercoreaudio.h; sourceTree = "<group>"; };
+		0304E1381B1A3D7800DF33FE /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
+		0304E1391B1A3D7800DF33FE /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
+		0304E13E1B1A3D7800DF33FE /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
+		0304E15B1B1A3DBD00DF33FE /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
+		0304E15C1B1A3DBD00DF33FE /* ofxCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCrypto.h; sourceTree = "<group>"; };
 		031E27951AA164EB00424146 /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
 		031E27961AA164EB00424146 /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
 		031E27971AA164EB00424146 /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
@@ -577,6 +591,97 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0304E11B1B1A3D7800DF33FE /* ofxAudioDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				0304E11D1B1A3D7800DF33FE /* couples */,
+				0304E12D1B1A3D7800DF33FE /* libs */,
+				0304E13D1B1A3D7800DF33FE /* src */,
+			);
+			name = ofxAudioDecoder;
+			path = ../../../addons/ofxAudioDecoder;
+			sourceTree = "<group>";
+		};
+		0304E11D1B1A3D7800DF33FE /* couples */ = {
+			isa = PBXGroup;
+			children = (
+				0304E11E1B1A3D7800DF33FE /* ofxAudioDecoderTonic.h */,
+			);
+			path = couples;
+			sourceTree = "<group>";
+		};
+		0304E12D1B1A3D7800DF33FE /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				0304E12E1B1A3D7800DF33FE /* audiodecoder */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		0304E12E1B1A3D7800DF33FE /* audiodecoder */ = {
+			isa = PBXGroup;
+			children = (
+				0304E12F1B1A3D7800DF33FE /* include */,
+				0304E1371B1A3D7800DF33FE /* src */,
+			);
+			path = audiodecoder;
+			sourceTree = "<group>";
+		};
+		0304E12F1B1A3D7800DF33FE /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0304E1301B1A3D7800DF33FE /* apple */,
+				0304E1331B1A3D7800DF33FE /* audiodecoder.h */,
+				0304E1341B1A3D7800DF33FE /* audiodecoderbase.h */,
+				0304E1351B1A3D7800DF33FE /* audiodecodercoreaudio.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		0304E1301B1A3D7800DF33FE /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				0304E1311B1A3D7800DF33FE /* CADebugMacros.h */,
+				0304E1321B1A3D7800DF33FE /* CAStreamBasicDescription.h */,
+			);
+			path = apple;
+			sourceTree = "<group>";
+		};
+		0304E1371B1A3D7800DF33FE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0304E1381B1A3D7800DF33FE /* audiodecoderbase.cpp */,
+				0304E1391B1A3D7800DF33FE /* audiodecodercoreaudio.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		0304E13D1B1A3D7800DF33FE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0304E13E1B1A3D7800DF33FE /* ofxAudioDecoder.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		0304E1471B1A3DBC00DF33FE /* ofxCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				0304E15A1B1A3DBD00DF33FE /* src */,
+			);
+			name = ofxCrypto;
+			path = ../../../addons/ofxCrypto;
+			sourceTree = "<group>";
+		};
+		0304E15A1B1A3DBD00DF33FE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0304E15B1B1A3DBD00DF33FE /* ofxCrypto.cpp */,
+				0304E15C1B1A3DBD00DF33FE /* ofxCrypto.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		031E278E1AA164EB00424146 /* ofxSubtitles */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,6 +936,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				0304E1471B1A3DBC00DF33FE /* ofxCrypto */,
+				0304E11B1B1A3D7800DF33FE /* ofxAudioDecoder */,
 				0385CDDC1AFFE5B4000553F2 /* ofxSSL */,
 				031E27B01AA164F200424146 /* ofxLocalization */,
 				031E278E1AA164EB00424146 /* ofxSubtitles */,
@@ -1555,6 +1662,7 @@
 				E755D9881944230C00AA81C1 /* ofxUIRadio.cpp in Sources */,
 				E7211BBE18A2843F0063EF97 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7211C5918A284400063EF97 /* tinyxmlerror.cpp in Sources */,
+				0304E1421B1A3D7800DF33FE /* audiodecodercoreaudio.cpp in Sources */,
 				031E27B61AA164F200424146 /* ofxLocalization.cpp in Sources */,
 				E755D97D1944230C00AA81C1 /* ofxUIImageSampler.cpp in Sources */,
 				E7211C0E18A284400063EF97 /* ofxTLPage.cpp in Sources */,
@@ -1581,9 +1689,11 @@
 				E755D9981944230C00AA81C1 /* ofxUIWaveform.cpp in Sources */,
 				E7211C1D18A284400063EF97 /* ofxEasing.cpp in Sources */,
 				E7211C1118A284400063EF97 /* ofxTLTicker.cpp in Sources */,
+				0304E1411B1A3D7800DF33FE /* audiodecoderbase.cpp in Sources */,
 				E7211BD218A2843F0063EF97 /* ofxMSATimer.cpp in Sources */,
 				E755D9811944230C00AA81C1 /* ofxUILabelButton.cpp in Sources */,
 				E7211C0118A284400063EF97 /* ofxTLCameraTrack.cpp in Sources */,
+				0304E15F1B1A3DBD00DF33FE /* ofxCrypto.cpp in Sources */,
 				E7211C5A18A284400063EF97 /* tinyxmlparser.cpp in Sources */,
 				E755D9801944230C00AA81C1 /* ofxUILabel.cpp in Sources */,
 				E7211C1618A284400063EF97 /* ofxTLZoomer.cpp in Sources */,
