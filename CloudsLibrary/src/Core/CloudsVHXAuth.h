@@ -41,13 +41,14 @@ public:
     void exit();
     
     void update(ofEventArgs& args);
-    
+
+    void clearTokens();
     void requestToken();
     void refreshToken();
     void requestCode();
     void linkCode();
     void verifyPackage();
-    
+
     ofEvent<CloudsVHXEventArgs> requestTokenComplete;
     ofEvent<CloudsVHXEventArgs> refreshTokenComplete;
     ofEvent<CloudsVHXEventArgs> requestCodeComplete;

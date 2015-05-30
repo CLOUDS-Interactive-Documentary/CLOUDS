@@ -261,6 +261,7 @@ class CloudsPlaybackController : public ofThread {
     CloudsTransitionState resumeState;
     bool resumingAct;
     bool keyedToNext;
+    float lastTimeRecheckedPurchase;
     
     //INTERLUDE INTERFACE
 	void resetInterludeVariables();

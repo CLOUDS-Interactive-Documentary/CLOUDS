@@ -124,13 +124,17 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
     void alertNewVersion(string newVersionDownloadURL);
     //vhx stuff
+    void vhxWaitingForCode();
     void vhxSetAuthCode(string code);
     void vhxNotPurchase();
     void vhxRentalExpired();
     void vhxAuthenticated();
     void vhxError();
     void alertNoMedia();
-    
+    bool shouldClearVHXToken;
+    bool recheckVHXPurchase;
+    bool accountNotPurchased();
+    bool launchedPurchaseBrowser;
   protected:
 		
 	ofxUISuperCanvas* questionGui;
@@ -334,8 +338,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     string vhxPromptScreen;
     
     string newVersionURL;
-    ofRectangle newVersionAlertBounds;
-    string newVersionPrompt;
+    bool alertBoundsActivated;
+    ofRectangle alertBounds;
+    string alertPrompt;
 
 };
 

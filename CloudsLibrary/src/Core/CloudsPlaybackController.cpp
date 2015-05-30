@@ -118,7 +118,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     keyedToNext = false;
     
 	resetInterludeVariables();
-	
+	lastTimeRecheckedPurchase = 0;
 
 }
 
@@ -234,6 +234,9 @@ void CloudsPlaybackController::setup(){
     
 	loading = true;
 
+//    if(ofGetKeyPressed('f')){
+//        cout << "HOLDING DOWN ALT AT START UP" << endl;
+//    }
     if(!eventsRegistered){
 		
 		eventsRegistered = true;
@@ -955,6 +958,20 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     GetCloudsInput()->bUserBegan = !showingIntro || (showingIntro && introSequence->userHasBegun());
 
+    #ifdef VHX_MEDIA
+    if(introSequence->shouldClearVHXToken){
+        introSequence->shouldClearVHXToken = false;
+        vhxAuth.clearTokens();
+        vhxAuth.requestCode();
+        introSequence->vhxWaitingForCode();
+    }
+    
+    if(introSequence->accountNotPurchased() && ofGetElapsedTimef() - lastTimeRecheckedPurchase > 3 ){
+        lastTimeRecheckedPurchase = ofGetElapsedTimef();
+        vhxAuth.verifyPackage();
+    }
+    #endif
+    
 	if(loading){
         return;
 	}
@@ -1796,10 +1813,10 @@ void CloudsPlaybackController::preDraw(ofEventArgs& args){
     float hudDistance = CloudsVisualSystem::subtitleHudZ;
     float hudScale =CloudsVisualSystem::subtitleHudScale;
     CloudsVisualSystem::getOculusRift().beginOverlay(hudDistance, hudScale, 1920, 1080);
-    ofPushStyle();
-    
-    
-    ofPopStyle();
+
+    if(currentVisualSystem == introSequence){
+        introSequence->selfDrawOverlay();
+    }
     CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
     hud.draw();
     

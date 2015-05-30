@@ -337,7 +337,7 @@ void CloudsHUDController::calculateFontSizes(){
     getLabelForLayer("CreditsList2TextBox", bookFontBuffer, 35, false,true, 10);
     getLabelForLayer("CreditsList3TextBox", bookFontBuffer, 35, false,true, 10);
     
-    getLabelForLayer("BackersCopyTextBox", thinFontBuffer);
+    getLabelForLayer("BackersCopyTextBox", bookFontBuffer, 35, false,true, 10);
     getLabelForLayer("BackersList1TextBox", bookFontBuffer, 35, false,true, 10);
     getLabelForLayer("BackersList2TextBox", bookFontBuffer, 35, false,true, 10);
     getLabelForLayer("BackersList3TextBox", bookFontBuffer, 35, false,true, 10);
@@ -393,7 +393,7 @@ void CloudsHUDController::calculateFontSizes(){
     hudLabelMap["NavAboutTextBox"]->setText(GetTranslationForString("ABOUT"), false);
     hudLabelMap["NavCastTextBox"]->setText(GetTranslationForString("CAST"), false);
     hudLabelMap["NavCreditsTextBox"]->setText(GetTranslationForString("CREDITS"), false);
-    hudLabelMap["NavBackersTextBox"]->setText(GetTranslationForString("BACKERS"), false);
+    hudLabelMap["NavBackersTextBox"]->setText(GetTranslationForString("SUPPORTERS"), false);
     
     hudLabelMap["ExitButtonTextBox"]->setText(GetTranslationForString("DONE"), false);
 
@@ -448,9 +448,10 @@ void CloudsHUDController::calculateFontSizes(){
     }
     
     aboutScroller.totalScrollHeight = (backers.size() / 3) * aboutScroller.scrollIncrement + aboutScroller.scrollIncrement;
-    //TODO: what goes here?
-    //hudLabelMap["BackersCopyTextBox"]->setText(GetTranslationForString("BACKERS"), false);
-    
+
+    hudLabelMap["BackersCopyTextBox"]->setText("Supported by The Frank-Ratchye STUDIO for Creative Inquiry, Microsoft, Eyebeam, Yamaguchi Center for Arts and Media, NYU ITP, and our faithful Kickstarter backers:", false);
+    hudLabelMap["BackersCopyTextBox"]->layout->setLineLength(hudLabelMap["BackersCopyTextBox"]->bounds.width);
+ 
     hudLabelMap["MapTextBox"]->tab = true;
     hudLabelMap["PeopleTextBox"]->tab = true;
     hudLabelMap["VisualsTextBox"]->tab = true;

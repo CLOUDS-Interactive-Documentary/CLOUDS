@@ -59,7 +59,9 @@ CloudsIntroSequence::CloudsIntroSequence(){
     firstPlay = false;
     shouldArchiveAct = false;
     loadDidFinish = false;
-
+    shouldClearVHXToken = false;
+    recheckVHXPurchase = false;
+    launchedPurchaseBrowser = false;
     
 #ifdef VHX_MEDIA
     successfullyPurchased = false;
@@ -143,7 +145,8 @@ void CloudsIntroSequence::selfSetDefaults(){
     introNodesShown = true;
 	kinectHelperAlpha = 0.0;
 	nodeAlphaAttenuate = 1.0;
-	
+	alertBoundsActivated = false;
+    
 #if defined(KINECT_INPUT)
 	introNodeOne.introNode = introNodeTwo.introNode = introNodeThree.introNode = true;
 	introNodeOne.clickSound = introNodeTwo.clickSound = introNodeThree.clickSound = getClick();
@@ -581,6 +584,9 @@ void CloudsIntroSequence::loadingFinished(){
     if(currentState == CLOUDS_INTRO_LOADING && successfullyPurchased){
         changeState(CLOUDS_INTRO_MENU);
     }
+#ifdef OCULUS_RIFT
+    getOculusRift().reset();
+#endif
 }
 
 void CloudsIntroSequence::changeState(CloudsIntroState newState){
@@ -602,6 +608,7 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
         case CLOUDS_INTRO_LOADING:
             break;
         case CLOUDS_INTRO_VHX_WAITING_CODE:
+            alertBoundsActivated = false;
             showVHXPrompt = true;
             vhxPromptScreen = "Activating";
             break;
@@ -626,6 +633,7 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
             vhxPromptScreen = "Error contacting VHX - Check your internet connection and restart";
             break;
         case CLOUDS_INTRO_MENU:
+            alertBoundsActivated = false;
             researchMenuItem.visible = true;
             playMenuItem.visible = true;
             aboutMenuItem.visible = true;
@@ -799,15 +807,6 @@ void CloudsIntroSequence::updateMenu(){
         else if(aboutMenuItem.clicked){
             changeState(CLOUDS_INTRO_ABOUT);
         }
-        
-        if(newVersionURL != ""){
-            float newVersionWidth = menuFont.stringWidth(newVersionPrompt);
-            newVersionAlertBounds.x = getCanvasWidth() / 2 - newVersionWidth / 2;
-            newVersionAlertBounds.y = menuTop + menuHeight*5;
-            newVersionAlertBounds.width = newVersionWidth;
-            newVersionAlertBounds.height = menuHeight;
-        }
-        
     }
     else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
         if(newMenuItem.clicked){
@@ -819,6 +818,13 @@ void CloudsIntroSequence::updateMenu(){
         }
     }
     
+    if(alertBoundsActivated){
+        float newVersionWidth = menuFont.stringWidth(alertPrompt);
+        alertBounds.x = getCanvasWidth() / 2 - newVersionWidth / 2;
+        alertBounds.y = menuTop + menuHeight*5;
+        alertBounds.width = newVersionWidth;
+        alertBounds.height = menuHeight;
+    }
 }
 
 void CloudsIntroSequence::updateQuestions(){
@@ -877,7 +883,7 @@ void CloudsIntroSequence::updateQuestions(){
 			ofRectangle viewport = getOculusRift().getOculusViewport();
             float distanceToQuestion = ofDist(screenPos.x, screenPos.y,viewport.getCenter().x, viewport.getCenter().y);
 #else
-        if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionTugDistance.max || &curQuestion == caughtQuestion){
+        if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionZStopRange.max || &curQuestion == caughtQuestion){
             ofVec2f mouseNode = cursor;
 			float distanceToQuestion = startQuestions[i].screenPosition.distance(mouseNode);
 #endif
@@ -1061,11 +1067,16 @@ string CloudsIntroSequence::getQuestionText(){
 }
 
 void CloudsIntroSequence::alertNewVersion(string newVersionDownloadURL){
-    newVersionURL = newVersionDownloadURL;
-    newVersionPrompt = "There is an update avaiable! Click to download.";
+//    newVersionURL = newVersionDownloadURL;
+//    alertPrompt = "There is an update avaiable! Click to download.";
+//    alertBoundsActivated = true;
 }
 
 //vhx stuff
+void CloudsIntroSequence::vhxWaitingForCode(){
+    changeState(CLOUDS_INTRO_VHX_WAITING_CODE);
+}
+
 void CloudsIntroSequence::vhxSetAuthCode(string code){
     currentAuthCode = code;
     changeState(CLOUDS_INTRO_VHX_SHOWING_CODE);
@@ -1074,11 +1085,23 @@ void CloudsIntroSequence::vhxSetAuthCode(string code){
 void CloudsIntroSequence::vhxNotPurchase(){
     successfullyPurchased = false;
     changeState(CLOUDS_INTRO_VHX_NO_PURCHASE);
+    if(!launchedPurchaseBrowser){
+        launchedPurchaseBrowser = true;
+        ofLaunchBrowser("https://clouds.vhx.tv/buy/clouds");
+    }
+    alertPrompt = "CLICK HERE TO LOG IN WITH A DIFFERENT EMAIL";
+    alertBoundsActivated = true;
 }
 
 void CloudsIntroSequence::vhxRentalExpired(){
     successfullyPurchased = false;
     changeState(CLOUDS_INTRO_VHX_RENTAL_EXPIRED);
+    if(!launchedPurchaseBrowser){
+        launchedPurchaseBrowser = true;
+        ofLaunchBrowser("https://clouds.vhx.tv/buy/clouds");
+    }
+    alertPrompt = "CLICK HERE TO LOG IN WITH A DIFFERENT EMAIL";
+    alertBoundsActivated = true;
 }
 
 void CloudsIntroSequence::vhxAuthenticated(){
@@ -1097,6 +1120,8 @@ void CloudsIntroSequence::vhxAuthenticated(){
 
 void CloudsIntroSequence::vhxError(){
     changeState(CLOUDS_INTRO_VHX_ERROR);
+    alertBoundsActivated = true;
+    alertPrompt = "REACTIVATE";
 }
 
 void CloudsIntroSequence::alertNoMedia(){
@@ -1113,6 +1138,11 @@ bool CloudsIntroSequence::userHasBegun(){
            currentState == CLOUDS_INTRO_RESUMING;
 }
 
+bool CloudsIntroSequence::accountNotPurchased(){
+    return currentState == CLOUDS_INTRO_VHX_RENTAL_EXPIRED ||
+           currentState == CLOUDS_INTRO_VHX_NO_PURCHASE;
+}
+    
 bool CloudsIntroSequence::isResearchModeSelected(){
     bool selected = researchSelected;
     researchSelected = false;
@@ -1585,16 +1615,14 @@ void CloudsIntroSequence::drawCursors(){
 
 void CloudsIntroSequence::selfDrawOverlay(){
 
-#if defined(MOUSE_INPUT)
-	
-    drawMenu();
-#elif defined(OCULUS_RIFT)
-	//no overlay
-#else
-	//kinect mode
-	drawIntroNodes();
-#endif
-    
+    #ifdef KINECT_INPUT
+    drawIntroNodes();
+    #else
+    if(!bUseOculusRift || (bUseOculusRift && (currentState < CLOUDS_INTRO_MENU || showVHXPrompt) ) ){
+        drawMenu();
+    }
+    #endif
+       
 }
 
 void CloudsIntroSequence::drawMenu(){
@@ -1611,7 +1639,9 @@ void CloudsIntroSequence::drawMenu(){
     
     //draw loading bar
     if(currentState == CLOUDS_INTRO_LOADING){
-        
+#ifdef OCULUS_RIFT
+        ofSetLineWidth(5);
+#endif
         ofSetColor(255);
         ofSetRectMode(OF_RECTMODE_CENTER);
         ofVec2f leftSide(getCanvasWidth()/2 - menuWidth/2,
@@ -1641,12 +1671,16 @@ void CloudsIntroSequence::drawMenu(){
                             menuItems[i]->bounds.y + wordHeight + menuButtonPad);
     }
     
-    if(currentState == CLOUDS_INTRO_MENU && newVersionURL != ""){
+    if(alertBoundsActivated){
+//        if(currentState == CLOUDS_INTRO_MENU && newVersionURL != ""){
         ofPushStyle();
-        ofSetColor(255, ofMap(playMenuItem.baseAlpha, 0, .2, 0, 1.0, true) * 255);
-        menuFont.drawString(newVersionPrompt, newVersionAlertBounds.x, newVersionAlertBounds.y + newVersionAlertBounds.height);
+        //ofSetColor(255, ofMap(playMenuItem.baseAlpha, 0, .2, 0, 1.0, true) * 255);
+        ofSetColor(255, ofMap(ofGetElapsedTimef() - stateChangedTime, 0, .5, 0, 1.0, true) * 255);
+        menuFont.drawString(alertPrompt, alertBounds.x, alertBounds.y + alertBounds.height);
         ofPopStyle();
+  //      }
     }
+
     ofPopStyle();
     
 }
@@ -1750,18 +1784,27 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 #ifdef MOUSE_INPUT
+    if(alertBoundsActivated && alertBounds.inside(data.x + bleed, data.y + bleed) ){
+        if(newVersionURL != ""){
+            ofLaunchBrowser(newVersionURL);
+        }
+        if(currentState == CLOUDS_INTRO_VHX_ERROR){
+            shouldClearVHXToken = true;
+        }
+        if(currentState == CLOUDS_INTRO_VHX_NO_PURCHASE || currentState == CLOUDS_INTRO_VHX_RENTAL_EXPIRED){;
+            shouldClearVHXToken = true;
+        }
+    }
+//    else if(currentState == CLOUDS_INTRO_VHX_NO_PURCHASE || currentState == CLOUDS_INTRO_VHX_RENTAL_EXPIRED){
+//        ofLaunchBrowser("https://clouds.vhx.tv/buy/clouds");
+//    }
+    
 	if(currentState == CLOUDS_INTRO_MENU){
         researchMenuItem.pressed = researchMenuItem.bounds.inside(data.x, data.y);
         playMenuItem.pressed     = playMenuItem.bounds.inside(data.x, data.y);
         aboutMenuItem.pressed    = aboutMenuItem.bounds.inside(data.x, data.y);
         
-        if(newVersionURL != "" && newVersionAlertBounds.inside(data.x + bleed, data.y + bleed)){
-            ofLaunchBrowser(newVersionURL);
-        }
 	}
-    else if(currentState == CLOUDS_INTRO_VHX_NO_PURCHASE || currentState == CLOUDS_INTRO_VHX_RENTAL_EXPIRED){
-        ofLaunchBrowser("https://clouds.vhx.tv/buy/clouds");
-    }
     else if(currentState == CLOUDS_INTRO_MENU_NEW_RESUME){
         newMenuItem.pressed      = newMenuItem.bounds.inside(data.x, data.y);
         resumeMenuItem.pressed   = resumeMenuItem.bounds.inside(data.x, data.y);

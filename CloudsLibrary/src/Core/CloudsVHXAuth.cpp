@@ -181,6 +181,11 @@ void CloudsVHXAuth::requestToken()
 }
 
 //--------------------------------------------------------------
+void CloudsVHXAuth::clearTokens(){
+    ofFile(_tokensPath).remove();
+}
+
+//--------------------------------------------------------------
 void CloudsVHXAuth::refreshToken()
 {
     if (isThreadRunning()) {
@@ -439,7 +444,7 @@ void CloudsVHXAuth::threadedFunction()
                             const ofxJSONElement& element = packages[i];
                             if (element.isMember("id")) {
                                 string packageId = element["id"].asString();
-                                if (packageId == _packageId) {
+                                if (packageId == _packageId || packageId == "8102") { //hack for rental
                                     // Found matching package, check that purchase is valid.
                                     if (element.isMember("purchase_type")) {
                                         string purchaseType = element["purchase_type"].asString();
@@ -482,7 +487,7 @@ void CloudsVHXAuth::threadedFunction()
                                                             state = EXPIRED;
                                                             completeArgs.success = true;
                                                             completeArgs.result = "expired";
-                                                            break;
+                                                            continue; //check other packages
                                                         }
                                                     }
                                                     else {
@@ -490,7 +495,7 @@ void CloudsVHXAuth::threadedFunction()
                                                         state = EXPIRED;
                                                         completeArgs.success = true;
                                                         completeArgs.result = "expired";
-                                                        break;
+                                                        continue; //check the other packages
                                                     }
                                                 }
                                             }
@@ -507,7 +512,7 @@ void CloudsVHXAuth::threadedFunction()
                                             state = INACTIVE;
                                             completeArgs.success = true;
                                             completeArgs.result = "inactive";
-                                            break;
+                                            continue; //check the other packages
                                         }
                                     }
                                     else {
