@@ -395,3 +395,10 @@ CloudsCrypto.h
 CloudsData/visual_quality_config.txt
 
 *.mbtree
+_GOLD/Builds/CloudsDataMedia/*
+_GOLD/Builds/CloudsData/*
+_GOLD/Builds/USB_BINARIES/*
+_GOLD/Builds/VHX_BINARIES/*
+
+*.mpkg
+*.dmg
