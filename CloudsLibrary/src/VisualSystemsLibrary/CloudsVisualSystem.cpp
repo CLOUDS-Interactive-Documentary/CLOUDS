@@ -1041,7 +1041,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
     }
 #endif
 
-// #ifndef CLOUDS_RELEASE
+ #ifndef CLOUDS_RELEASE
 	if(timeline->isModal()){
 		return;
 	}
@@ -1224,7 +1224,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             break;
     }
     
-// #endif
+ #endif
     
 }
 
