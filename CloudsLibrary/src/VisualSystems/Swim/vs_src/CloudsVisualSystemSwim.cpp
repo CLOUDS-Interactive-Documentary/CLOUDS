@@ -162,6 +162,8 @@ void CloudsVisualSystemSwim::selfPostDraw()
     post.getProcessedTextureReference().draw(0, 0, getCanvasWidth(), getCanvasHeight());
     glPopAttrib();
 	ofPopStyle();
+    
+    
 #endif
 }
 

@@ -425,7 +425,7 @@ namespace itg
         tentacles.getDrawShaderRef().setUniform1f("fogStart", Creature::fogStart);
         tentacles.getDrawShaderRef().setUniform1f("fogEnd", Creature::fogEnd);
         tentacles.getDrawShaderRef().setUniform1f("camZ", cam.getZ());
-        tentacles.draw();
+        //tentacles.draw();
         tentacles.getDrawShaderRef().end();
         glDepthMask(GL_TRUE);
         ofDisableBlendMode();
