@@ -427,11 +427,15 @@ void CloudsVisualSystemWormHole::selfSetup()
 	tonicSamples.push_back(TonicSample("wormholeZoom2.mp3"));
 	tonicSamples.push_back(TonicSample("slowgrains_short.mp3"));
 	//meshes
+#ifdef VHX_MEDIA
 	modelPath = getVisualSystemDataPath(true) + "models_binary/";
+#else
+	modelPath = GetCloudsMediaPath() + "assets/WormHole/models_binary/";
+#endif
 	cameraPathPath = getVisualSystemDataPath() + "cameraPaths/";
 	
-	cout << modelPath << endl;
-	cout << cameraPathPath << endl;
+//	cout << modelPath << endl;
+//	cout << cameraPathPath << endl;
 	
 
 	ofDirectory dir;

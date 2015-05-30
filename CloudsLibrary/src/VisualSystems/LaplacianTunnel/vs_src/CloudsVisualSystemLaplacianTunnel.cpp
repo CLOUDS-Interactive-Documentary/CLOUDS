@@ -3,7 +3,7 @@
 //
 
 #include "CloudsVisualSystemLaplacianTunnel.h"
-
+#include "CloudsGlobal.h"
 
 bool meshsort(NamedVbo a, NamedVbo b){
 //	return ofToInt( ofSplitString(a.name,"Tunnel_")[1] ) < ofToInt( ofSplitString(b.name,"Tunnel_")[1] );
@@ -164,7 +164,8 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	growthFPS = 0;
 	currentGrowthIndex = 0;
 	
-	ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/");
+	ofDirectory objs(GetCloudsMediaPath() + "assets/LaplacianTunnel/Meshes/");
+	//ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/");
 	objs.allowExt("vbo");
 	objs.listDir();
 	

@@ -4,6 +4,7 @@
 
 #include "CloudsVisualSystem3DModelLoader.h"
 #include "ofxBinaryMesh.h"
+#include "CloudsGlobal.h"
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystem3DModelLoader::selfSetupGui()
@@ -281,7 +282,7 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 					{
 						cout << "loading camera path: " << name << endl;
 //						pathCamera.loadPathFromFile(getVisualSystemDataPath(false) + "cameraPaths/" + name );
-						pathCamera.loadPathFromFile(getVisualSystemDataPath(true) + "cameraPaths/" + name );
+						pathCamera.loadPathFromFile(getVisualSystemDataPath() + "cameraPaths/" + name );
 					}
 				}
 			}
@@ -381,8 +382,9 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 {
 	
 	//get list of models from the model directory
-	string path = getVisualSystemDataPath(true) + "models_binary/";
-//	string path = getVisualSystemDataPath(false) + "models/";
+//	string path = getVisualSystemDataPath(true) + "models_binary/";
+    string path = GetCloudsMediaPath() + "assets/3DModelLoader/models_binary/";
+
 	cout << "model path: " << path << endl;
 	
 	ofDirectory dir;
@@ -894,7 +896,10 @@ void CloudsVisualSystem3DModelLoader::loadModel( string fileName )
 {
 //	perspCam.reset();
 	cout << "*** LOADING MODEL " << fileName << endl;
-	string filePath = getVisualSystemDataPath(true) + "models_binary/" + fileName;
+    //xxx
+    string filePath = GetCloudsMediaPath() + "assets/3DModelLoader/models_binary/" + fileName;
+
+	//string filePath = getVisualSystemDataPath(true) + "models_binary/" + fileName;
 //	string filePath = getVisualSystemDataPath(false) + fileName;
 	
 	//ofStringReplace(filePath,"models/", "models_binary/");
