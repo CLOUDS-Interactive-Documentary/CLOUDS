@@ -158,7 +158,7 @@ void CloudsVisualSystemSwim::selfPostDraw()
 	ofDisableAlphaBlending();
 	ofDisableLighting();
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
-    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	ofEnableAlphaBlending();
     post.getProcessedTextureReference().draw(0, 0, getCanvasWidth(), getCanvasHeight());
     glPopAttrib();
 	ofPopStyle();
