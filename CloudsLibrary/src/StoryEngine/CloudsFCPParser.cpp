@@ -658,9 +658,7 @@ void CloudsFCPParser::populateKeywordCentroids(){
 	}
 	//create centroid cache
 	else{
-		//vector<string>& keywords = getContentKeywords();
-        
-		//for(int k = 0; k < keywords.size(); k++){
+        vector<ofVec3f> takenSpots;
         for(set<string>::iterator it = masterTopicSet.begin(); it != masterTopicSet.end(); it++){
 			vector<CloudsClip*> clips = getClipsWithKeyword(*it, true);
 			
@@ -674,15 +672,24 @@ void CloudsFCPParser::populateKeywordCentroids(){
 			}
 			
 			centroid /= numClips;
-			
+            for(int i = 0; i < takenSpots.size(); i++){
+                if(takenSpots[i].distance(centroid) < FLT_EPSILON){
+                    centroid.x += ofRandom(-.01,.01);
+                    centroid.y += ofRandom(-.01,.01);
+                    centroid.z += ofRandom(-.01,.01);
+                    break;
+                }
+            }
+            
+            takenSpots.push_back(centroid);
 			masterTopicCentroids[*it] = centroid;
-			//keywordCentroidIndex[keywords[k]] = k;
-			
+
 			keywordCentroidBuffer.append(*it + "|" +
 										 ofToString(centroid.x,10) + "," +
 										 ofToString(centroid.y,10) + "," +
 										 ofToString(centroid.z,10) + "\n");
 		}
+        
 		//cache it
 		ofBufferToFile(keywordCentroidPath, keywordCentroidBuffer);
 	}
