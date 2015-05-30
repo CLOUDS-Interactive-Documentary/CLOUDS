@@ -1232,6 +1232,7 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, const string& curren
         //validate
         if(comment != "" && cm->endFrame - cm->startFrame > 1 && cm->endFrame > 0){
             cm->name = fcpXML.getValue("name", "");
+            
             cm->person = currentName;
 			cm->fcpFileId = fileID;
 			cm->clip = clipFileName;
@@ -1413,10 +1414,15 @@ void CloudsFCPParser::refreshAllKeywords(){
         keywordVector.push_back(it->first);
     }
 }
+void santizeString(string& str){
+    ofStringReplace(str, "?", "");
+    ofStringReplace(str, "/_", "");
+    ofStringReplace(str, ":", "");
+    ofStringReplace(str, "<", "");
+}
 
 void CloudsFCPParser::loadMediaAssets(){
 
-//void CloudsFCPParser::setCombinedVideoDirectory(const string& directory){
 	hasMediaAssetIndeces.clear();
 	hasMediaAssetAndQuestionIndeces.clear();
     hasCombinedAndIsStartingClipIndeces.clear();
@@ -1435,12 +1441,26 @@ void CloudsFCPParser::loadMediaAssets(){
         
         // voiceOverAudio clips already have hasMediaAsset set from parseVOClips()
         if (!allClips[i]->voiceOverAudio) {
+
             allClips[i]->combinedCalibrationXMLPath = GetCloudsDataPath() + "clipxml/" + allClips[i]->getCombinedCalibrationXML();
+            santizeString(allClips[i]->combinedCalibrationXMLPath);
+            bool hasXML = ofFile(allClips[i]->combinedCalibrationXMLPath).exists();
 #ifdef VHX_MEDIA
-            allClips[i]->hasMediaAsset = (allClips[i]->vhxId.size() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
+            allClips[i]->hasMediaAsset = allClips[i]->vhxId.size() && hasXML;
 #else
             allClips[i]->combinedVideoPath = combinedVideoDirectory + "/" + allClips[i]->getCombinedMovieFile();
-            allClips[i]->hasMediaAsset = (ofFile(allClips[i]->combinedVideoPath).exists() && ofFile(allClips[i]->combinedCalibrationXMLPath).exists());
+            santizeString(allClips[i]->combinedVideoPath);
+            bool hasClip = ofFile(allClips[i]->combinedVideoPath).exists();
+            allClips[i]->hasMediaAsset = hasXML && hasClip;
+            if(!hasXML && !hasClip){
+                //ofLogError("CloudsFCPParser::loadMediaAssets") << "Has no XML or Clip:  " << allClips[i]->combinedCalibrationXMLPath << " " << allClips[i]->combinedVideoPath;
+            }
+            else if(!hasXML){
+                ofLogError("CloudsFCPParser::loadMediaAssets") << "Has no XML:  " << allClips[i]->combinedCalibrationXMLPath;
+            }
+            else if(!hasClip){
+                ofLogError("CloudsFCPParser::loadMediaAssets") << "Has no Clip: " << allClips[i]->combinedVideoPath;
+            }
         //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
 #endif
         }
@@ -1458,6 +1478,7 @@ void CloudsFCPParser::loadMediaAssets(){
 	
 	ofLogNotice("CloudsFCPParser::loadMediaAssets") << "there are " << hasMediaAssetAndQuestionIndeces.size() << " items with questions & combined " << endl;
 }
+
 
 CloudsClip* CloudsFCPParser::getRandomClip(bool hasMediaAsset,
 										   bool hasQuestion,
