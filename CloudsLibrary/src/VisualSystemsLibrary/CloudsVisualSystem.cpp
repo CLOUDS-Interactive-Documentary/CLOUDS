@@ -86,9 +86,9 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 }
 
 void CloudsVisualSystem::loadBackgroundShader(){
-	backgroundGradientBar.loadImage(GetCloudsDataPath() + "backgrounds/bar.png");
-	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
-    backgroundGradientWash.loadImage(GetCloudsDataPath() + "backgrounds/wash.png");
+	backgroundGradientBar.loadImage(GetCloudsDataPath() + "backgrounds/bar.jpg");
+	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.jpg");
+    backgroundGradientWash.loadImage(GetCloudsDataPath() + "backgrounds/wash.jpg");
 	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
 }
