@@ -11,6 +11,8 @@
 @synthesize speakerVolTextBox;
 @synthesize trackVolTextBox;
 
+//#define SCREENSHOTS 1
+
 - (void)setup
 {
 
@@ -18,18 +20,18 @@
 	
 	ofBackground(22);
 
-
-	
-	parser.loadFromFiles();
-    parser.loadMediaAssets();
-	//sound.setup();
-	
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
     char path[PATH_MAX];
     CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX);
     CFRelease(resourcesURL);
     chdir(path);
+
+	
+	parser.loadFromFiles();
+    parser.loadMediaAssets();
+	//sound.setup();
+	
     
 
 //	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
@@ -52,11 +54,12 @@
 	[speakerVolTextBox setTarget:self];
 	[trackVolTextBox setTarget:self];
     
-    //SCREENSHOT MODE
+#ifdef SCREENSHOTS
     rgbdVisualSystem.setNumSamples(4);
-//    rgbdVisualSystem.forceScreenResolution(1920*2, 1080*2);
+    rgbdVisualSystem.forceScreenResolution(1920*2, 1080*2);
     targetFbo.allocate(1920*2, 1080*2, GL_RGB);
     //SCREENSHOT MODE
+#endif
     
 	rgbdVisualSystem.setDrawToScreen(false);
 	rgbdVisualSystem.setup();
@@ -100,11 +103,14 @@
 {
     ofBackground(0);
 
+#ifdef SCREENSHOT
 	rgbdVisualSystem.selfPostDraw(1920,1080);
-
+#else
+    rgbdVisualSystem.selfPostDraw();
+#endif
+    
 #ifndef OCULUS_RIFT
 	hud.draw();
-	
 #endif
     
     CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(

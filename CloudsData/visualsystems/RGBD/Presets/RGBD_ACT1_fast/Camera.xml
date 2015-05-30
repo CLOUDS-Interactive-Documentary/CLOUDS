@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Camera</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>459.000000000</XPosition>
-    <YPosition>422.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>427.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SIDE PULLBACK</Name>
-    <Value>-42.364532471</Value>
+    <Value>-42.364536285</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

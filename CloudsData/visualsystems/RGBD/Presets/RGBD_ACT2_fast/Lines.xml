@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Lines</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>316.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>397.000000000</XPosition>
+    <YPosition>314.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Line Thickness</Name>
-    <Value>1.669950724</Value>
+    <Value>1.110576987</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line Spacing</Name>
-    <Value>1.847290635</Value>
+    <Value>3.326923132</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Line Granularity</Name>
-    <Value>5.566502571</Value>
+    <Value>6.105769157</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
