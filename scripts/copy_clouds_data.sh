@@ -19,8 +19,6 @@ echo copying: ../../CloudsData/copyscript.sh
 cp ../CloudsData/copyscript.sh ../../CloudsData/copyscript.sh
 echo copying: ../../CloudsData/credits.xml
 cp ../CloudsData/credits.xml ../../CloudsData/credits.xml
-echo copying: ../../CloudsData/credits_backup.xml
-cp ../CloudsData/credits_backup.xml ../../CloudsData/credits_backup.xml
 echo copying: ../../CloudsData/
 cp -r ../CloudsData/fcpxml ../../CloudsData/
 echo copying: ../../CloudsData/
@@ -64,11 +62,11 @@ cp -r ../CloudsData/VO ../../CloudsData/
 echo copying: ../../CloudsData/
 cp -r ../CloudsDataIgnored/flaunt ../../CloudsData/
 echo copying: ../../CloudsData/
+cp -r ../CloudsDataIgnored/quality ../../CloudsData/
+echo copying: ../../CloudsData/
 cp -r ../CloudsDataIgnored/sound ../../CloudsData/
 echo copying: ../../CloudsData/
 cp -r ../CloudsDataIgnored/vhx ../../CloudsData/
-echo copying: ../../CloudsData/visual_quality_config.txt
-cp ../CloudsDataIgnored/visual_quality_config.txt ../../CloudsData/visual_quality_config.txt
 echo creating: ../../CloudsData/visualsystems/2DVideo
 mkdir ../../CloudsData/visualsystems/2DVideo
 mkdir ../../CloudsData/visualsystems/2DVideo/Presets
@@ -157,7 +155,6 @@ echo copying presets: 3DModelLoader
 cp -r ../CloudsData/visualsystems/3DModelLoader/Presets/FallingCubes $copyLocation/3DModelLoader/Presets/
 echo copying presets: 3DModelLoader
 cp -r ../CloudsData/visualsystems/3DModelLoader/Presets/Vortex $copyLocation/3DModelLoader/Presets/
-cp -r ../CloudsDataIgnored/visualsystems/3DModelLoader/models_binary $copyLocation/3DModelLoader/models_binary
 echo creating: ../../CloudsData/visualsystems/_ClusterMap
 mkdir ../../CloudsData/visualsystems/_ClusterMap
 mkdir ../../CloudsData/visualsystems/_ClusterMap/Presets
@@ -223,6 +220,8 @@ mkdir ../../CloudsData/visualsystems/Balloons
 mkdir ../../CloudsData/visualsystems/Balloons/Presets
 cp -r ../CloudsData/visualsystems/Balloons/images $copyLocation/Balloons/images
 cp -r ../CloudsData/visualsystems/Balloons/models $copyLocation/Balloons/models
+echo copying presets: Balloons
+cp -r ../CloudsData/visualsystems/Balloons/Presets/CREDITS_FINAL $copyLocation/Balloons/Presets/
 cp -r ../CloudsData/visualsystems/Balloons/shaders $copyLocation/Balloons/shaders
 cp -r ../CloudsData/visualsystems/Balloons/sphericalMaps $copyLocation/Balloons/sphericalMaps
 echo creating: ../../CloudsData/visualsystems/CandyMountains
@@ -639,7 +638,6 @@ cp -r ../CloudsData/visualsystems/LaplacianTunnel/Presets/LaplacianWhite $copyLo
 echo copying presets: LaplacianTunnel
 cp -r ../CloudsData/visualsystems/LaplacianTunnel/Presets/White_5Reps_Slow $copyLocation/LaplacianTunnel/Presets/
 cp -r ../CloudsData/visualsystems/LaplacianTunnel/shaders $copyLocation/LaplacianTunnel/shaders
-cp -r ../CloudsDataIgnored/visualsystems/LaplacianTunnel/Meshes $copyLocation/LaplacianTunnel/Meshes
 echo creating: ../../CloudsData/visualsystems/LIA
 mkdir ../../CloudsData/visualsystems/LIA
 mkdir ../../CloudsData/visualsystems/LIA/Presets
@@ -1326,12 +1324,9 @@ mkdir ../../CloudsData/visualsystems/Twitter/Presets
 cp -r ../CloudsData/visualsystems/Twitter/avatars $copyLocation/Twitter/avatars
 cp -r ../CloudsData/visualsystems/Twitter/fonts $copyLocation/Twitter/fonts
 cp -r ../CloudsData/visualsystems/Twitter/graphs $copyLocation/Twitter/graphs
-cp -r ../CloudsData/visualsystems/Twitter/GraphsInsightInput $copyLocation/Twitter/GraphsInsightInput
 cp -r ../CloudsData/visualsystems/Twitter/images $copyLocation/Twitter/images
 echo copying presets: Twitter
 cp -r ../CloudsData/visualsystems/Twitter/Presets/CLOUDS $copyLocation/Twitter/Presets/
-echo copying presets: Twitter
-cp -r ../CloudsData/visualsystems/Twitter/Presets/CLOUDS_2 $copyLocation/Twitter/Presets/
 echo copying presets: Twitter
 cp -r ../CloudsData/visualsystems/Twitter/Presets/HeartOftheInternet $copyLocation/Twitter/Presets/
 echo copying presets: Twitter
@@ -1341,27 +1336,20 @@ cp -r ../CloudsData/visualsystems/Twitter/Presets/JM_TheCloud_b $copyLocation/Tw
 echo copying presets: Twitter
 cp -r ../CloudsData/visualsystems/Twitter/Presets/JM_TheCloud_c_Massive $copyLocation/Twitter/Presets/
 echo copying presets: Twitter
-cp -r ../CloudsData/visualsystems/Twitter/Presets/JM_basic $copyLocation/Twitter/Presets/
-echo copying presets: Twitter
 cp -r ../CloudsData/visualsystems/Twitter/Presets/TweetDeck_NameCloud_Lines $copyLocation/Twitter/Presets/
 echo copying presets: Twitter
 cp -r ../CloudsData/visualsystems/Twitter/Presets/jonathanAndSuryasBogusAdventure $copyLocation/Twitter/Presets/
 echo copying presets: Twitter
 cp -r ../CloudsData/visualsystems/Twitter/Presets/latestDeckWithIcons $copyLocation/Twitter/Presets/
 echo copying presets: Twitter
-cp -r ../CloudsData/visualsystems/Twitter/Presets/nameCloudWithLinesFlickering $copyLocation/Twitter/Presets/
-echo copying presets: Twitter
 cp -r ../CloudsData/visualsystems/Twitter/Presets/nameCloudsWithLinesFlickering $copyLocation/Twitter/Presets/
 echo copying presets: Twitter
 cp -r ../CloudsData/visualsystems/Twitter/Presets/nameSprites $copyLocation/Twitter/Presets/
-echo copying presets: Twitter
-cp -r ../CloudsData/visualsystems/Twitter/Presets/stars_handles $copyLocation/Twitter/Presets/
 echo copying presets: Twitter
 cp -r ../CloudsData/visualsystems/Twitter/Presets/tweetDeck $copyLocation/Twitter/Presets/
 cp -r ../CloudsData/visualsystems/Twitter/RockwellStd.otf $copyLocation/Twitter/RockwellStd.otf
 cp -r ../CloudsData/visualsystems/Twitter/shaders $copyLocation/Twitter/shaders
 cp -r ../CloudsData/visualsystems/Twitter/tweetDeckMenu.png $copyLocation/Twitter/tweetDeckMenu.png
-cp -r ../CloudsData/visualsystems/Twitter/twitterVSNewData $copyLocation/Twitter/twitterVSNewData
 cp -r ../CloudsDataIgnored/visualsystems/Twitter/twitter.csv $copyLocation/Twitter/twitter.csv
 echo creating: ../../CloudsData/visualsystems/Uextrude
 mkdir ../../CloudsData/visualsystems/Uextrude
