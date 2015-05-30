@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0304E0E51B193A7C00DF33FE /* ofxCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0304E0E11B193A7C00DF33FE /* ofxCrypto.cpp */; };
+		0304E10F1B193A9100DF33FE /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0304E1061B193A9100DF33FE /* audiodecoderbase.cpp */; };
+		0304E1101B193A9100DF33FE /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0304E1071B193A9100DF33FE /* audiodecodercoreaudio.cpp */; };
 		031E27A91AA164EB00424146 /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27951AA164EB00424146 /* ofxSubtitles.cpp */; };
 		031E27AA1AA164EB00424146 /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27971AA164EB00424146 /* ofxSubtitleUnit.cpp */; };
 		031E27B61AA164F200424146 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E27B41AA164F200424146 /* ofxLocalization.cpp */; };
@@ -199,6 +202,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0304E0CC1B193A5C00DF33FE /* CloudsCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsCrypto.h; path = ../CloudsLibrary/src/CloudsCrypto.h; sourceTree = "<group>"; };
+		0304E0E11B193A7C00DF33FE /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
+		0304E0E21B193A7C00DF33FE /* ofxCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCrypto.h; sourceTree = "<group>"; };
+		0304E0EA1B193A9100DF33FE /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		0304E0FF1B193A9100DF33FE /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		0304E1001B193A9100DF33FE /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		0304E1011B193A9100DF33FE /* audiodecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
+		0304E1021B193A9100DF33FE /* audiodecoderbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoderbase.h; sourceTree = "<group>"; };
+		0304E1031B193A9100DF33FE /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodercoreaudio.h; sourceTree = "<group>"; };
+		0304E1061B193A9100DF33FE /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
+		0304E1071B193A9100DF33FE /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
+		0304E1091B193A9100DF33FE /* license.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.md; sourceTree = "<group>"; };
+		0304E10A1B193A9100DF33FE /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
+		0304E10C1B193A9100DF33FE /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
 		031E27951AA164EB00424146 /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
 		031E27961AA164EB00424146 /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
 		031E27971AA164EB00424146 /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
@@ -586,6 +603,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0304E0CD1B193A7C00DF33FE /* ofxCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				0304E0E01B193A7C00DF33FE /* src */,
+			);
+			name = ofxCrypto;
+			path = ../../../addons/ofxCrypto;
+			sourceTree = "<group>";
+		};
+		0304E0E01B193A7C00DF33FE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0304E0E11B193A7C00DF33FE /* ofxCrypto.cpp */,
+				0304E0E21B193A7C00DF33FE /* ofxCrypto.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		0304E0E91B193A9100DF33FE /* ofxAudioDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				0304E0EA1B193A9100DF33FE /* .gitignore */,
+				0304E0FB1B193A9100DF33FE /* libs */,
+				0304E1091B193A9100DF33FE /* license.md */,
+				0304E10A1B193A9100DF33FE /* readme.md */,
+				0304E10B1B193A9100DF33FE /* src */,
+			);
+			name = ofxAudioDecoder;
+			path = ../../../addons/ofxAudioDecoder;
+			sourceTree = "<group>";
+		};
+		0304E0FB1B193A9100DF33FE /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				0304E0FC1B193A9100DF33FE /* audiodecoder */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		0304E0FC1B193A9100DF33FE /* audiodecoder */ = {
+			isa = PBXGroup;
+			children = (
+				0304E0FD1B193A9100DF33FE /* include */,
+				0304E1051B193A9100DF33FE /* src */,
+			);
+			path = audiodecoder;
+			sourceTree = "<group>";
+		};
+		0304E0FD1B193A9100DF33FE /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0304E0FE1B193A9100DF33FE /* apple */,
+				0304E1011B193A9100DF33FE /* audiodecoder.h */,
+				0304E1021B193A9100DF33FE /* audiodecoderbase.h */,
+				0304E1031B193A9100DF33FE /* audiodecodercoreaudio.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		0304E0FE1B193A9100DF33FE /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				0304E0FF1B193A9100DF33FE /* CADebugMacros.h */,
+				0304E1001B193A9100DF33FE /* CAStreamBasicDescription.h */,
+			);
+			path = apple;
+			sourceTree = "<group>";
+		};
+		0304E1051B193A9100DF33FE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0304E1061B193A9100DF33FE /* audiodecoderbase.cpp */,
+				0304E1071B193A9100DF33FE /* audiodecodercoreaudio.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		0304E10B1B193A9100DF33FE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0304E10C1B193A9100DF33FE /* ofxAudioDecoder.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		031E278E1AA164EB00424146 /* ofxSubtitles */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,6 +888,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				0304E0E91B193A9100DF33FE /* ofxAudioDecoder */,
+				0304E0CD1B193A7C00DF33FE /* ofxCrypto */,
 				031E27B01AA164F200424146 /* ofxLocalization */,
 				031E278E1AA164EB00424146 /* ofxSubtitles */,
 				03D5940719469DC400FCFF7B /* ofxObjLoader */,
@@ -860,6 +964,7 @@
 			children = (
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				0304E0CC1B193A5C00DF33FE /* CloudsCrypto.h */,
 				E7211CE318A285BB0063EF97 /* CloudsGlobal.h */,
 				031E27C41AA1653900424146 /* CloudsGlobal.cpp */,
 				031E27C51AA1653900424146 /* CloudsLocalization.cpp */,
@@ -1519,7 +1624,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1532,6 +1637,7 @@
 				E7211BC718A2843F0063EF97 /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E7211BCA18A2843F0063EF97 /* ofxSolver.cpp in Sources */,
 				E7211C0318A284400063EF97 /* ofxTLColorTrack.cpp in Sources */,
+				0304E10F1B193A9100DF33FE /* audiodecoderbase.cpp in Sources */,
 				03D5943619469DC500FCFF7B /* ofxObjLoader.cpp in Sources */,
 				E755D9951944230C00AA81C1 /* ofxUIToggle.cpp in Sources */,
 				E7211BBD18A2843F0063EF97 /* ofxBehavior.cpp in Sources */,
@@ -1646,6 +1752,8 @@
 				E755D9891944230C00AA81C1 /* ofxUIRangeSlider.cpp in Sources */,
 				E7211BFC18A284400063EF97 /* ofxHotKeys_impl_win.cpp in Sources */,
 				E755D97F1944230C00AA81C1 /* ofxUIImageToggle.cpp in Sources */,
+				0304E0E51B193A7C00DF33FE /* ofxCrypto.cpp in Sources */,
+				0304E1101B193A9100DF33FE /* audiodecodercoreaudio.cpp in Sources */,
 				E7211BFB18A284400063EF97 /* ofxHotKeys_impl_mac.mm in Sources */,
 				E755D97A1944230C00AA81C1 /* ofxUIFPSSlider.cpp in Sources */,
 				E755D9751944230C00AA81C1 /* ofxUICircleSlider.cpp in Sources */,
@@ -1707,7 +1815,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -1742,7 +1850,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
