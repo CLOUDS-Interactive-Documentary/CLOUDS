@@ -40,14 +40,12 @@ string GetCloudsDataPath(bool ignored)
         string expandedPath = exp_result.we_wordv[0];
         wordfree(&exp_result);
         if(ofFile(expandedPath).exists()){
-            //old way
-            //dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/dataRoot.txt").getFirstLine() );
             dataRootPath = expandedPath;
             dataRootPathIgnored = dataRootPath;
         }
         #else
-        if(ofFile("C:/Program Files (x86)/CLOUDS/dataRoot.txt").exists()){
-            dataRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("C:/Program Files (x86)/CLOUDS/dataRoot.txt").getFirstLine() );
+        if(ofFile("C:/Program Files (x86)/CLOUDS/CloudsData/").exists()){
+            dataRootPath = "C:/Program Files (x86)/CLOUDS/CloudsData/";
             dataRootPathIgnored = dataRootPath;
         }
         #endif
