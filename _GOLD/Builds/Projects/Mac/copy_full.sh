@@ -7,15 +7,11 @@ mkdir $homedir/Library/Application\ Support/CLOUDS;
 
 if [ -d $homedir/Library/Application\ Support/CLOUDS ]; then
 	mv $DSTROOT/CloudsData $homedir/Library/Application\ Support/CLOUDS;
-    mv $DSTROOT/mediaRoot.txt $homedir/Library/Application\ Support/CLOUDS;
-    #rm -rf $DSTROOT/CloudsData;
 fi
 
 if [ -d /Volumes/CLOUDS/.CloudsMedia.noindex ]; then
-    mkdir $homedir/Library/Application\ Support/CLOUDS/.CloudsMedia.noindex;
-    cp -r /Volumes/CLOUDS/.CloudsMedia.noindex $homedir/Library/Application\ Support/CLOUDS/.CloudsMedia.noindex;
+    sudo cp -rf /Volumes/CLOUDS/.CloudsMedia.noindex $homedir/Library/Application\ Support/CLOUDS/;
 fi
-
 
 open /Applications/
 

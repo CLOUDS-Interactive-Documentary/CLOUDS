@@ -78,32 +78,27 @@ string GetCloudsMediaPath(){
 		}
     }
     
-    //not development ...
-    if(mediaRootPath == ""){
-        mediaRootPath = FindCloudsThumbDrive();
-    }
-    
     if(mediaRootPath == ""){
         
 #ifdef TARGET_OSX
         wordexp_t exp_result;
-        wordexp("~/Library/Application\\ Support/CLOUDS/mediaRoot.txt", &exp_result, 0);
+        wordexp("~/Library/Application\\ Support/CLOUDS/CloudsData/.CloudsMedia.noindex/", &exp_result, 0);
         string expandedPath = exp_result.we_wordv[0];
-        
         if(ofFile(expandedPath).exists()) {
-            string pathFromFile = ofFilePath::addTrailingSlash( ofBufferFromFile(expandedPath).getFirstLine() );
-            wordexp_t exp_result2;
-            wordexp(pathFromFile.c_str(), &exp_result2, 0);
-            mediaRootPath = exp_result2.we_wordv[0];
+            mediaRootPath = expandedPath;
         }
 #else
-        if(ofFile("C:/Program Files (x86)/CLOUDS/mediaRoot.txt").exists()){
-			mediaRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("C:/Program Files (x86)/CLOUDS/mediaRoot.txt").getFirstLine() );
+        string expandedPath = "C:/Program Files (x86)/CLOUDS/.CloudsMedia/";
+        if(ofFile(expandedPath).exists()){
+			mediaRootPath = expandedPath;
 		}
 #endif
-        
     }
 
+    if(mediaRootPath == ""){
+        mediaRootPath = FindCloudsThumbDrive();
+    }
+    
     mediaPathFound = mediaRootPath != "";
     
 	ofLogVerbose("GetCloudsMediaPath") << mediaRootPath <<endl;
