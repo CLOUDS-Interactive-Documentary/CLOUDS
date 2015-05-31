@@ -44,8 +44,9 @@ string GetCloudsDataPath(bool ignored)
             dataRootPathIgnored = dataRootPath;
         }
         #else
-        if(ofFile("C:/Program Files (x86)/CLOUDS/CloudsData/").exists()){
-            dataRootPath = "C:/Program Files (x86)/CLOUDS/CloudsData/";
+		string expandedPath = "C:\\Program Files (x86)\\CLOUDS\\CloudsData\\"; 
+        if(ofFile(expandedPath).exists()){
+			dataRootPath = expandedPath;
             dataRootPathIgnored = dataRootPath;
         }
         #endif
@@ -89,7 +90,7 @@ string GetCloudsMediaPath(){
             mediaRootPath = expandedPath;
         }
 #else
-        string expandedPath = "C:/Program Files (x86)/CLOUDS/CloudsData/.CloudsMedia/";
+        string expandedPath = "C:/Program Files (x86)/CLOUDS/CloudsData/CloudsMedia/";
         if(ofFile(expandedPath).exists()){
 			mediaRootPath = expandedPath;
 		}
@@ -203,9 +204,9 @@ string FindCloudsThumbDrive(){
 		drive_name_ss >> drive_name;
 		i += strlen( &buffer[i] ) + 1 ;
 
-		if(ofDirectory::doesDirectoryExist(drive_name+"/.CloudsMedia.noindex/")){
-			ofLog()<<drive_name+"/.CloudsMedia.noindex/"<<endl;
-			return drive_name+"/.CloudsMedia.noindex/";
+		if(ofDirectory::doesDirectoryExist(drive_name+"CloudsMedia/")){
+			ofLog()<<drive_name+"CloudsMedia/"<<endl;
+			return drive_name+"CloudsMedia/";
 		}
 	}
 #endif

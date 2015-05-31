@@ -1424,7 +1424,9 @@ void CloudsFCPParser::refreshAllKeywords(){
 void santizeString(string& str){
     ofStringReplace(str, "?", "");
     ofStringReplace(str, "/_", "");
+#ifndef TARGET_WIN32
     ofStringReplace(str, ":", "");
+#endif
     ofStringReplace(str, "<", "");
 }
 
@@ -1436,11 +1438,7 @@ void CloudsFCPParser::loadMediaAssets(){
 
 #ifndef VHX_MEDIA
 	combinedVideoDirectory = GetCloudsMediaPath() + "media";
-    if(!ofDirectory(combinedVideoDirectory).exists()){
-        //TODO: TRIGGER USB KEY NOT PLUGGED IN MESSAGE!
-        cout << combinedVideoDirectory << endl;
-        
-    }
+
 #endif
     
     //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
@@ -1468,7 +1466,7 @@ void CloudsFCPParser::loadMediaAssets(){
             else if(!hasClip){
                 ofLogError("CloudsFCPParser::loadMediaAssets") << "Has no Clip: " << allClips[i]->combinedVideoPath;
             }
-        //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
+               // cout << " combined video path is " << allClips[i]->combinedVideoPath << " " << allClips[i]->combinedCalibrationXMLPath << endl;
 #endif
         }
         
