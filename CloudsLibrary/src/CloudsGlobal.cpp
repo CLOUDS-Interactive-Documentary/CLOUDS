@@ -82,24 +82,29 @@ string GetCloudsMediaPath(){
     
     //not development ...
     if(mediaRootPath == ""){
-        string thumbDrive = FindCloudsThumbDrive();
-
+        mediaRootPath = FindCloudsThumbDrive();
+    }
+    
+    if(mediaRootPath == ""){
+        
 #ifdef TARGET_OSX
-		if(thumbDrive == "" && ofFile("/Library/Application Support/CLOUDS/mediaRoot.txt").exists()){
-			mediaRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("/Library/Application Support/CLOUDS/mediaRoot.txt").getFirstLine() );
-		}
-        else if(thumbDrive != ""){
-			mediaRootPath = thumbDrive;
-		}
+        wordexp_t exp_result;
+        wordexp("~/Library/Application\\ Support/CLOUDS/mediaRoot.txt", &exp_result, 0);
+        string expandedPath = exp_result.we_wordv[0];
+        
+        if(ofFile(expandedPath).exists()) {
+            string pathFromFile = ofFilePath::addTrailingSlash( ofBufferFromFile(expandedPath).getFirstLine() );
+            wordexp_t exp_result2;
+            wordexp(pathFromFile.c_str(), &exp_result2, 0);
+            mediaRootPath = exp_result2.we_wordv[0];
+        }
 #else
-		if(thumbDrive == "" && ofFile("C:/Program Files (x86)/CLOUDS/mediaRoot.txt").exists()){
+        if(ofFile("C:/Program Files (x86)/CLOUDS/mediaRoot.txt").exists()){
 			mediaRootPath = ofFilePath::addTrailingSlash( ofBufferFromFile("C:/Program Files (x86)/CLOUDS/mediaRoot.txt").getFirstLine() );
 		}
-        else if(thumbDrive != ""){
-			mediaRootPath = thumbDrive;
-		}
 #endif
-	}
+        
+    }
 
     mediaPathFound = mediaRootPath != "";
     
@@ -183,8 +188,8 @@ string FindCloudsThumbDrive(){
     dir.listDir();
 	for(int i = 0; i < dir.size(); i++){
 		if(dir.getFile(i).isDirectory()){
-			if(ofDirectory::doesDirectoryExist(dir.getPath(i)+"/.cloudsmedia.noindex")){ //JG changed this for mac
-				return dir.getPath(i)+"/CloudsDataMedia";
+			if(ofDirectory::doesDirectoryExist(dir.getPath(i)+"/.CloudsDataMedia.noindex")){ //JG changed this for mac
+				return dir.getPath(i)+"/.CloudsDataMedia.noindex";
 			}
 		}
 	}
@@ -204,9 +209,9 @@ string FindCloudsThumbDrive(){
 		drive_name_ss >> drive_name;
 		i += strlen( &buffer[i] ) + 1 ;
 
-		if(ofDirectory::doesDirectoryExist(drive_name+"/CloudsDataMedia")){
-			ofLog()<<drive_name+"/CloudsDataMedia/"<<endl;
-			return drive_name+"/CloudsDataMedia/";
+		if(ofDirectory::doesDirectoryExist(drive_name+"/.CloudsDataMedia.noindex")){
+			ofLog()<<drive_name+"/.CloudsDataMedia.noindex/"<<endl;
+			return drive_name+"/.CloudsDataMedia.noindex/";
 		}
 	}
 #endif
