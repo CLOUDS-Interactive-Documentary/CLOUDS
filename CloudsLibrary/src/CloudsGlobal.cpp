@@ -84,11 +84,12 @@ string GetCloudsMediaPath(){
         wordexp_t exp_result;
         wordexp("~/Library/Application\\ Support/CLOUDS/CloudsData/.CloudsMedia.noindex/", &exp_result, 0);
         string expandedPath = exp_result.we_wordv[0];
+        wordfree(&exp_result);
         if(ofFile(expandedPath).exists()) {
             mediaRootPath = expandedPath;
         }
 #else
-        string expandedPath = "C:/Program Files (x86)/CLOUDS/.CloudsMedia/";
+        string expandedPath = "C:/Program Files (x86)/CLOUDS/CloudsData/.CloudsMedia/";
         if(ofFile(expandedPath).exists()){
 			mediaRootPath = expandedPath;
 		}

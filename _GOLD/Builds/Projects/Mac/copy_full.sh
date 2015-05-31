@@ -10,7 +10,7 @@ if [ -d $homedir/Library/Application\ Support/CLOUDS ]; then
 fi
 
 if [ -d /Volumes/CLOUDS/.CloudsMedia.noindex ]; then
-    sudo cp -rf /Volumes/CLOUDS/.CloudsMedia.noindex $homedir/Library/Application\ Support/CLOUDS/;
+    sudo cp -rf /Volumes/CLOUDS/.CloudsMedia.noindex $homedir/Library/Application\ Support/CLOUDS/CloudsData/;
 fi
 
 open /Applications/
