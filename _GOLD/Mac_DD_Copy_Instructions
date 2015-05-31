@@ -14,6 +14,10 @@ then run
 
 	dd if=/path/to/clouds/usb/image of=/dev/rdiskN bs=16m &
 
+*where N is the drive number*
+
+example on MacBook Air 
+
 	dd if=/Users/jamesgeorge/clouds.img of=/dev/rdisk4 bs=16m &
 
 *where N is the drive number*
