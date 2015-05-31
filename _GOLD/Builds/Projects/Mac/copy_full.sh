@@ -7,7 +7,8 @@ mkdir $homedir/Library/Application\ Support/CLOUDS;
 
 if [ -d $homedir/Library/Application\ Support/CLOUDS ]; then
 	mv $DSTROOT/CloudsData $homedir/Library/Application\ Support/CLOUDS;
-	rm -rf $DSTROOT/CloudsData;
+    mv $DSTROOT/mediaRoot.txt $homedir/Library/Application\ Support/CLOUDS;
+    #rm -rf $DSTROOT/CloudsData;
 fi
 
 if [ -d /Volumes/CLOUDS/.CloudsMedia.noindex ]; then
@@ -15,7 +16,6 @@ if [ -d /Volumes/CLOUDS/.CloudsMedia.noindex ]; then
     cp -r /Volumes/CLOUDS/.CloudsMedia.noindex $homedir/Library/Application\ Support/CLOUDS/.CloudsMedia.noindex;
 fi
 
-mv $DSTROOT/mediaRoot.txt $homedir/Library/Application\ Support/CLOUDS;
 
 open /Applications/
 
