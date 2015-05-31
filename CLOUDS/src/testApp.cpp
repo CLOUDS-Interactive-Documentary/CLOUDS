@@ -30,8 +30,6 @@ void testApp::setup(){
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();
 #endif
-		
-    //ofSetDataPathRoot(GetCloudsDataPath() + "AppData/");
 	firstFrame = true;
 	playerSetup = false;
 	shouldSetupPlayer = false;
