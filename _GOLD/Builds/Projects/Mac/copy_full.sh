@@ -10,9 +10,9 @@ if [ -d $homedir/Library/Application\ Support/CLOUDS ]; then
 	rm -rf $DSTROOT/CloudsData;
 fi
 
-if [ -d /Volume/CLOUDS/.CloudsMedia.noindex ]; then
-mkdir $homedir/Library/Application\ Support/CLOUDS/.CloudsMedia.noindex;
-cp -r /Volume/CLOUDS/.CloudsMedia.noindex $homedir/Library/Application\ Support/CLOUDS/.CloudsMedia.noindex;
+if [ -d /Volumes/CLOUDS/.CloudsMedia.noindex ]; then
+    mkdir $homedir/Library/Application\ Support/CLOUDS/.CloudsMedia.noindex;
+    cp -r /Volumes/CLOUDS/.CloudsMedia.noindex $homedir/Library/Application\ Support/CLOUDS/.CloudsMedia.noindex;
 fi
 
 mv $DSTROOT/mediaRoot.txt $homedir/Library/Application\ Support/CLOUDS;

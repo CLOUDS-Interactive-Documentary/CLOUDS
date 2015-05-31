@@ -1254,7 +1254,34 @@
 								<key>PACKAGE_UUID</key>
 								<string>3665D4A7-A39B-4B31-902F-16706A74A4C3</string>
 								<key>REQUIREMENTS</key>
-								<array/>
+								<array>
+									<dict>
+										<key>BEHAVIOR</key>
+										<integer>1</integer>
+										<key>DICTIONARY</key>
+										<dict>
+											<key>IC_REQUIREMENT_DISKSPACE_MINIMUM_SIZE_UNIT</key>
+											<integer>1</integer>
+											<key>IC_REQUIREMENT_DISKSPACE_MINIMUM_SIZE_VALUE</key>
+											<integer>12</integer>
+										</dict>
+										<key>IDENTIFIER</key>
+										<string>fr.whitebox.Packages.requirement.diskspace</string>
+										<key>MESSAGE</key>
+										<array>
+											<dict>
+												<key>LANGUAGE</key>
+												<string>English</string>
+												<key>VALUE</key>
+												<string>You do not have enough free diskspace to perform the full CLOUDS installation.</string>
+											</dict>
+										</array>
+										<key>NAME</key>
+										<string>Available Disk Space</string>
+										<key>STATE</key>
+										<true/>
+									</dict>
+								</array>
 								<key>TITLE</key>
 								<array>
 									<dict>
