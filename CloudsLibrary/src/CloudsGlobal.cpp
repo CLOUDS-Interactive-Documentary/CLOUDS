@@ -188,8 +188,8 @@ string FindCloudsThumbDrive(){
     dir.listDir();
 	for(int i = 0; i < dir.size(); i++){
 		if(dir.getFile(i).isDirectory()){
-			if(ofDirectory::doesDirectoryExist(dir.getPath(i)+"/.CloudsDataMedia.noindex")){ //JG changed this for mac
-				return dir.getPath(i)+"/.CloudsDataMedia.noindex";
+			if(ofDirectory::doesDirectoryExist(dir.getPath(i)+"/.CloudsMedia.noindex/")){ //JG changed this for mac
+				return dir.getPath(i)+"/.CloudsMedia.noindex/";
 			}
 		}
 	}
@@ -209,9 +209,9 @@ string FindCloudsThumbDrive(){
 		drive_name_ss >> drive_name;
 		i += strlen( &buffer[i] ) + 1 ;
 
-		if(ofDirectory::doesDirectoryExist(drive_name+"/.CloudsDataMedia.noindex")){
-			ofLog()<<drive_name+"/.CloudsDataMedia.noindex/"<<endl;
-			return drive_name+"/.CloudsDataMedia.noindex/";
+		if(ofDirectory::doesDirectoryExist(drive_name+"/.CloudsMedia.noindex/")){
+			ofLog()<<drive_name+"/.CloudsMedia.noindex/"<<endl;
+			return drive_name+"/.CloudsMedia.noindex/";
 		}
 	}
 #endif

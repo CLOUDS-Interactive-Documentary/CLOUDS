@@ -20,6 +20,54 @@
 									<key>CHILDREN</key>
 									<array/>
 									<key>GID</key>
+									<integer>0</integer>
+									<key>PATH</key>
+									<string>../../../USB_BINARIES/CLOUDS.app</string>
+									<key>PATH_TYPE</key>
+									<integer>1</integer>
+									<key>PERMISSIONS</key>
+									<integer>493</integer>
+									<key>TYPE</key>
+									<integer>3</integer>
+									<key>UID</key>
+									<integer>0</integer>
+								</dict>
+								<dict>
+									<key>CHILDREN</key>
+									<array/>
+									<key>GID</key>
+									<integer>0</integer>
+									<key>PATH</key>
+									<string>../../../USB_BINARIES/CLOUDS_OCULUS.app</string>
+									<key>PATH_TYPE</key>
+									<integer>1</integer>
+									<key>PERMISSIONS</key>
+									<integer>493</integer>
+									<key>TYPE</key>
+									<integer>3</integer>
+									<key>UID</key>
+									<integer>0</integer>
+								</dict>
+								<dict>
+									<key>CHILDREN</key>
+									<array/>
+									<key>GID</key>
+									<integer>0</integer>
+									<key>PATH</key>
+									<string>../../../CloudsData</string>
+									<key>PATH_TYPE</key>
+									<integer>1</integer>
+									<key>PERMISSIONS</key>
+									<integer>493</integer>
+									<key>TYPE</key>
+									<integer>3</integer>
+									<key>UID</key>
+									<integer>0</integer>
+								</dict>
+								<dict>
+									<key>CHILDREN</key>
+									<array/>
+									<key>GID</key>
 									<integer>80</integer>
 									<key>PATH</key>
 									<string>Utilities</string>
@@ -43,54 +91,6 @@
 							<integer>509</integer>
 							<key>TYPE</key>
 							<integer>1</integer>
-							<key>UID</key>
-							<integer>0</integer>
-						</dict>
-						<dict>
-							<key>CHILDREN</key>
-							<array/>
-							<key>GID</key>
-							<integer>0</integer>
-							<key>PATH</key>
-							<string>../../../USB_BINARIES/CLOUDS.app</string>
-							<key>PATH_TYPE</key>
-							<integer>1</integer>
-							<key>PERMISSIONS</key>
-							<integer>493</integer>
-							<key>TYPE</key>
-							<integer>3</integer>
-							<key>UID</key>
-							<integer>0</integer>
-						</dict>
-						<dict>
-							<key>CHILDREN</key>
-							<array/>
-							<key>GID</key>
-							<integer>0</integer>
-							<key>PATH</key>
-							<string>../../../USB_BINARIES/CLOUDS_OCULUS.app</string>
-							<key>PATH_TYPE</key>
-							<integer>1</integer>
-							<key>PERMISSIONS</key>
-							<integer>493</integer>
-							<key>TYPE</key>
-							<integer>3</integer>
-							<key>UID</key>
-							<integer>0</integer>
-						</dict>
-						<dict>
-							<key>CHILDREN</key>
-							<array/>
-							<key>GID</key>
-							<integer>0</integer>
-							<key>PATH</key>
-							<string>../../../CloudsData</string>
-							<key>PATH_TYPE</key>
-							<integer>1</integer>
-							<key>PERMISSIONS</key>
-							<integer>493</integer>
-							<key>TYPE</key>
-							<integer>3</integer>
 							<key>UID</key>
 							<integer>0</integer>
 						</dict>
@@ -1181,7 +1181,7 @@
 										<key>LANGUAGE</key>
 										<string>English</string>
 										<key>VALUE</key>
-										<string>The Lite install requires you to keep the USB Data Key inserted when you watch CLOUDS.</string>
+										<string>The default installation requires you to keep the USB Data Key inserted when you watch CLOUDS.</string>
 									</dict>
 								</array>
 								<key>OPTIONS</key>
@@ -1210,7 +1210,7 @@
 										</dict>
 									</dict>
 									<key>HIDDEN</key>
-									<true/>
+									<false/>
 									<key>STATE</key>
 									<integer>3</integer>
 								</dict>
@@ -1224,7 +1224,7 @@
 										<key>LANGUAGE</key>
 										<string>English</string>
 										<key>VALUE</key>
-										<string>Lite Install</string>
+										<string>CLOUDS</string>
 									</dict>
 								</array>
 								<key>TOOLTIP</key>

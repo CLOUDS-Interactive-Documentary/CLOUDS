@@ -1068,7 +1068,7 @@ string CloudsIntroSequence::getQuestionText(){
 
 void CloudsIntroSequence::alertNewVersion(string newVersionDownloadURL){
     newVersionURL = newVersionDownloadURL;
-    alertPrompt = "There is an update avaiable! Click to download.";
+    alertPrompt = "There is an update available! Click to download.";
     alertBoundsActivated = true;
 }
 
