@@ -524,16 +524,16 @@
 				<key>POSTINSTALL_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>../copy.sh</string>
+					<string>../copy_lite.sh</string>
 					<key>PATH_TYPE</key>
 					<integer>1</integer>
 				</dict>
 				<key>PREINSTALL_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>/Users/Winslow/Documents/of_64_clouds/of_Clouds_64_fresh/apps/CLOUDS/_GOLD/Builds/Projects/Mac/remove.sh</string>
+					<string>../remove.sh</string>
 					<key>PATH_TYPE</key>
-					<integer>0</integer>
+					<integer>1</integer>
 				</dict>
 				<key>RESOURCES</key>
 				<array/>
