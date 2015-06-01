@@ -1015,7 +1015,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 CloudsClip* CloudsStoryEngine::selectClip(CloudsStoryState& state, vector<CloudsClip*>& questionClips){
 	vector<CloudsClip*> nextOptions;
     if(state.forcingPerson){
-        nextOptions = parser->getClipsForPerson(state.clip->person);
+		if( state.clip != NULL){
+	        nextOptions = parser->getClipsForPerson(state.clip->person);
+		}
     }
     else if(state.clip == NULL || state.topicNum == maxTopicsPerAct || state.forcingTopic){
 		nextOptions = parser->getClipsWithKeyword(state.topic, true);

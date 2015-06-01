@@ -400,5 +400,7 @@ _GOLD/Builds/CloudsData/*
 _GOLD/Builds/USB_BINARIES/*
 _GOLD/Builds/VHX_BINARIES/*
 
+LogFiles
 *.mpkg
 *.dmg
+*.htm

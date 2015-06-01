@@ -58,7 +58,7 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 	string directory = GetCloudsVisualSystemDataPath(systemName) + "Presets/" + trim(presetName);
 
 	if(!ofDirectory(directory).exists()){
-		ofLogError() << "Preset " << systemName << " / " << presetName << " has no directory";
+		//ofLogError() << "Preset " << systemName << " / " << presetName << " has no directory";
 		return;
 	}
 	
