@@ -473,7 +473,7 @@ void CloudsVHXAuth::threadedFunction()
                                                         Poco::Timestamp nowTime;
                                                         
                                                         // Make sure the rental is valid.
-                                                        if (nowTime > expiryTime) {
+                                                        if (nowTime < expiryTime) {
                                                             // Expires in the future, we're good.
                                                             _packageExpiry = expiryTime.epochTime();
                                                             
