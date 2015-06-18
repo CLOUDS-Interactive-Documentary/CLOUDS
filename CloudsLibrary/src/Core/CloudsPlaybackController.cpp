@@ -1107,20 +1107,33 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             hud.clipEnded();
         }
         
-        if(getSharedVideoPlayer().isPlaying() && !bBufferingVideo && !getSharedVideoPlayer().isBufferLikelyToKeepUp()){
-            //pause
-            bBufferingVideo = true;
-            currentAct->pause();
-            getSharedVideoPlayer().pause();
-
-            //TODO:
-            //hud.showBuffering();
+        if(!bBufferingVideo){
+            if(getSharedVideoPlayer().isCurrentClipStillLoading()){
+                bBufferingVideo = true;
+                currentAct->pause();
+                getSharedVideoPlayer().pause();
+                videoBufferingStatus += "VIDEO BUFFERING: NOT LOADED\n";
+                //TODO:
+                //hud.showBuffering();
+            }
+            if(getSharedVideoPlayer().isPlaying() && !getSharedVideoPlayer().isBufferLikelyToKeepUp() ){
+                bBufferingVideo = true;
+                currentAct->pause();
+                getSharedVideoPlayer().pause();
+                videoBufferingStatus += "VIDEO BUFFERING: WONT KEEP UP\n";
+                //TODO:
+                //hud.showBuffering();
+            }
         }
-        else if(bBufferingVideo && getSharedVideoPlayer().isBufferLikelyToKeepUp()){
+        
+        if(bBufferingVideo && getSharedVideoPlayer().isBufferLikelyToKeepUp()){
             //resume
             currentAct->unpause();
             bBufferingVideo = false;
-            getSharedVideoPlayer().unpause();
+            if(getSharedVideoPlayer().isPaused()){
+                getSharedVideoPlayer().unpause();
+            }
+            videoBufferingStatus += "VIDEO BUFFERING: PLAYBACK RESUMED\n";
             
             //TODO:
             //hud.hideBuffering();
@@ -1911,12 +1924,16 @@ void CloudsPlaybackController::drawVideoStatus(){
     ofPushStyle();
     
     string statusString = "";
+    statusString += string("LOADING:  ") + (getSharedVideoPlayer().isCurrentClipStillLoading() ? "YES" : "NO") + "\n";
     statusString += string("LOADED:   ") + (getSharedVideoPlayer().getPlayer().isLoaded() ? "YES" : "NO") + "\n";
     statusString += string("PLAYING:  ") + (getSharedVideoPlayer().getPlayer().isPlaying() ? "YES" : "NO") + "\n";
-    statusString += string("PAUSED:   ") + (getSharedVideoPlayer().getPlayer().isPaused() ? "YES" : "NO") + "\n";
     statusString += string("WILLPLAY: ") + (getSharedVideoPlayer().getPlayer().isBufferLikelyToKeepUp() ? "YES" : "NO") + "\n";
     statusString += string("PERCENT:  ") + ofToString(getSharedVideoPlayer().getPlayer().getBufferProgress(), 5) + "\n";
-
+    statusString += string("VIDPAUSED:") + (getSharedVideoPlayer().isPaused() ? "YES" : "NO") + "\n";
+    statusString += string("PLYPAUSED:") + (getSharedVideoPlayer().getPlayer().isPaused() ? "YES" : "NO") + "\n";
+    statusString += string("RATE:     ") + (ofToString(getSharedVideoPlayer().getPlayer().getSpeed())) + "\n";
+    statusString += videoBufferingStatus;
+    
     ofSetColor(0);
     ofRectangle(20,20, 200, 200);
     ofSetColor(255);
@@ -1972,6 +1989,7 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 
     //not sure why acts shouldn't be cleared on return to intro
     shouldClearAct = true;
+    bBufferingVideo = false;
     
     if(!bQuestionAsked && !returnToIntro) {
         //if we entered this act through research mode, return to the research screen
@@ -2135,6 +2153,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 	}
     
 	prerolledClipID = clip->getID();
+    videoBufferingStatus += "PREROLLED CLIP " + clip->getID() + "\n";
 }
 
 //--------------------------------------------------------------------
@@ -2167,6 +2186,7 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
     
 	cout << "**** SWAPPING IN FROM CLIP BEGAN" << endl;
 	rgbdVisualSystem->getRGBDVideoPlayer().swapAndPlay();
+    videoBufferingStatus += "SWAPPED CLIP: " + currentClipName + "\n";
 }
 
 //--------------------------------------------------------------------

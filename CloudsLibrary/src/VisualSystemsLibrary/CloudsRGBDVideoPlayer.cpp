@@ -40,8 +40,9 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
     nextSubtitlesPath = "";
     nextOffsetTime = 0;
     nextClipVolume = 0;
-    //bLoadResult = false;
-	//bPlayWhenReady = false;
+    bCurrentClipLoading = false;
+    bNextClipLoading = false;
+    
 	showingLowerThirds = false;
 	
 	fontLoadWidth = 0;
@@ -74,6 +75,11 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	nextSubtitles->forceUpperCase = false;
 
 	currentClipHasSubtitles = nextClipHasSubtitles = false;
+}
+
+//---------------------------------------------------------------
+bool CloudsRGBDVideoPlayer::isCurrentClipStillLoading(){
+    return bCurrentClipLoading;
 }
 
 //---------------------------------------------------------------
@@ -127,6 +133,7 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
     nextClipVolumeAdjustment = nextClipVolume;
     nextClipIsVO = false;
     clipPrerolled = true;
+    bNextClipLoading = true;
     //bLoadResult = true;
     
     return true;
@@ -162,6 +169,7 @@ bool CloudsRGBDVideoPlayer::setupVO(string audioPath, string subtitlesPath){
 
 	clipPrerolled = true;
 	nextClipIsVO = true;
+    bNextClipLoading = true;
 	//bLoadResult = true;
     
 	return true;
@@ -307,8 +315,13 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
     
     playingVO = nextClipIsVO;
     playingVideo = !nextClipIsVO;
+    
     clipPrerolled = false;
     playerPaused = false;
+    //if our player has
+    bCurrentClipLoading = bNextClipLoading;
+    bNextClipLoading = false;
+    
 }
 
 //--------------------------------------------------------------- ACTIONS
@@ -412,7 +425,6 @@ float CloudsRGBDVideoPlayer::getFadeOut(){
 //--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::stop(){
     getPlayer().stop();
-    //currentVoiceoverPlayer->stop();
     playerPaused = false;
 }
 
@@ -422,13 +434,13 @@ void CloudsRGBDVideoPlayer::pause(){
         return;
     }
     
-    if(isPlaying()){
+//    if(isPlaying()){
         currentPlayer->setPaused(true);
         playerPaused = true;
-    }
-    else{
-        playerPaused = false;
-    }
+//    }
+//    else{
+//        playerPaused = false;
+//    }
 }
 
 //---------------------------------------------------------------
@@ -443,23 +455,25 @@ void CloudsRGBDVideoPlayer::unpause(){
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
     currentPlayer->update();
-	
+    if(currentPlayer->isLoaded()){
+        bCurrentClipLoading = false;
+    }
+    
 	if(clipPrerolled){
 		nextPlayer->update();
+        if(nextPlayer->isLoaded()){
+            bNextClipLoading = false;
+        }
 	}
-
-//	if(bPlayWhenReady && bLoadResult){
-//		startPlayer();
-//		bPlayWhenReady = false;
-//	}
-
+    
 //    float lastAudioVolume = currentAudioVolume;
     float currentAudioVolume =  maxVolume * currentClipVolumeAdjustment;
     
     float position = getPlayer().getPosition() * getPlayer().getDuration();
     
     //sometimes NAN comes back from position.
-    if(position != position){
+    
+    if(isnan(position)){
         return;
     }
     
@@ -521,7 +535,12 @@ bool CloudsRGBDVideoPlayer::isPlaying(){
 	return (getPlayer().isLoaded() && getPlayer().isPlaying());
 }
 
-//--------------------------------------------------------------- 
+//---------------------------------------------------------------
+bool CloudsRGBDVideoPlayer::isPaused(){ //RGBD player state, not reflect video player
+    return playerPaused;
+}
+
+//---------------------------------------------------------------
 bool CloudsRGBDVideoPlayer::isDone(){
 	return (getPlayer().isLoaded() && !getPlayer().isPlaying());
 }
