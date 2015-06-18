@@ -423,7 +423,8 @@ void CloudsAct::next(){
     getClipAtTime(timeline.getCurrentTime(), currentClipIndex);
     if(currentClipIndex >= 0 && currentClipIndex < clips.size()-1){
         ActTimeItem nextClip = getItemForClip(clips[currentClipIndex]);
-        timeline.setCurrentTimeSeconds( getItemForClip(clips[currentClipIndex+1]).startTime - .5 );
+//        timeline.setCurrentTimeSeconds( getItemForClip(clips[currentClipIndex+1]).startTime );
+        timeline.setCurrentTimeSeconds( getItemForClip(clips[currentClipIndex+1]).startTime - .5);
     }
     else{
         CloudsActEventArgs args(this);

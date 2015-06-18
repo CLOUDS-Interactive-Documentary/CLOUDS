@@ -101,7 +101,6 @@
 		03803533194845D000AFD40C /* ofxUIDropDownList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D8F01944230C00AA81C1 /* ofxUIDropDownList.cpp */; };
 		03803534194845D000AFD40C /* ofxTLFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72118B718A284330063EF97 /* ofxTLFlags.cpp */; };
 		03803535194845D000AFD40C /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72116DA18A2842C0063EF97 /* ofxDamperBehavior.cpp */; };
-		03803536194845D000AFD40C /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E721187E18A284330063EF97 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
 		03803537194845D000AFD40C /* ofxHomingBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72116E718A2842C0063EF97 /* ofxHomingBehavior.cpp */; };
 		03803538194845D000AFD40C /* ofxEasingCirc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E721190318A284350063EF97 /* ofxEasingCirc.cpp */; };
 		03803539194845D000AFD40C /* ofxUINumberDialer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D9101944230C00AA81C1 /* ofxUINumberDialer.cpp */; };
@@ -110,7 +109,6 @@
 		0380353C194845D000AFD40C /* CloudsIntroSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D590931946505D00FCFF7B /* CloudsIntroSequence.cpp */; };
 		0380353D194845D000AFD40C /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72116CC18A2842C0063EF97 /* ofxCameraSaveLoad.cpp */; };
 		0380353E194845D000AFD40C /* ofxDistorterBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72116DC18A2842C0063EF97 /* ofxDistorterBehavior.cpp */; };
-		0380353F194845D000AFD40C /* ofxTLAudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72118A618A284330063EF97 /* ofxTLAudioTrack.cpp */; };
 		03803540194845D000AFD40C /* ofxRParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72116F918A2842C0063EF97 /* ofxRParticleSystem.cpp */; };
 		03803541194845D000AFD40C /* ofxTLLFO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72118C318A284330063EF97 /* ofxTLLFO.cpp */; };
 		03803542194845D000AFD40C /* ofxTLImageSequenceFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72118BB18A284330063EF97 /* ofxTLImageSequenceFrame.cpp */; };
@@ -193,6 +191,10 @@
 		644982DF189F223800E6AB7D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644982DE189F223800E6AB7D /* AVFoundation.framework */; };
 		644982E1189F224200E6AB7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644982E0189F224200E6AB7D /* QuartzCore.framework */; };
 		644982E3189F225000E6AB7D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644982E2189F225000E6AB7D /* CoreMedia.framework */; };
+		A662D04A1B33621500EA46D4 /* ofxCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A662D0421B33621500EA46D4 /* ofxCrypto.cpp */; };
+		A662D04B1B33621500EA46D4 /* ofxCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A662D0421B33621500EA46D4 /* ofxCrypto.cpp */; };
+		A662D0521B33639100EA46D4 /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A662D0501B33639100EA46D4 /* CloudsMedia.cpp */; };
+		A662D0531B33639100EA46D4 /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A662D0501B33639100EA46D4 /* CloudsMedia.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -234,14 +236,12 @@
 		E7211BD818A2843F0063EF97 /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E721174818A2842D0063EF97 /* ofxTimecode.cpp */; };
 		E7211BF218A284400063EF97 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = E721187A18A284330063EF97 /* kiss_fft.c */; };
 		E7211BF318A284400063EF97 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = E721187B18A284330063EF97 /* kiss_fftr.c */; };
-		E7211BF418A284400063EF97 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E721187E18A284330063EF97 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
 		E7211BF818A284400063EF97 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E721189618A284330063EF97 /* libsndfile.a */; };
 		E7211BFA18A284400063EF97 /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E721189F18A284330063EF97 /* ofxHotKeys_impl_linux.cpp */; };
 		E7211BFB18A284400063EF97 /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = E72118A018A284330063EF97 /* ofxHotKeys_impl_mac.mm */; };
 		E7211BFC18A284400063EF97 /* ofxHotKeys_impl_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72118A118A284330063EF97 /* ofxHotKeys_impl_win.cpp */; };
 		E7211BFD18A284400063EF97 /* ofxRemoveCocoaMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = E72118A318A284330063EF97 /* ofxRemoveCocoaMenu.mm */; };
 		E7211BFE18A284400063EF97 /* ofxTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72118A418A284330063EF97 /* ofxTimeline.cpp */; };
-		E7211BFF18A284400063EF97 /* ofxTLAudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72118A618A284330063EF97 /* ofxTLAudioTrack.cpp */; };
 		E7211C0018A284400063EF97 /* ofxTLBangs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72118A818A284330063EF97 /* ofxTLBangs.cpp */; };
 		E7211C0118A284400063EF97 /* ofxTLCameraTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72118AA18A284330063EF97 /* ofxTLCameraTrack.cpp */; };
 		E7211C0218A284400063EF97 /* ofxTLColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72118AC18A284330063EF97 /* ofxTLColors.cpp */; };
@@ -456,6 +456,11 @@
 		644982DE189F223800E6AB7D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		644982E0189F224200E6AB7D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		644982E2189F225000E6AB7D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		A662D02D1B3361F200EA46D4 /* CloudsCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsCrypto.h; path = ../CloudsLibrary/src/CloudsCrypto.h; sourceTree = "<group>"; };
+		A662D0421B33621500EA46D4 /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
+		A662D0431B33621500EA46D4 /* ofxCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCrypto.h; sourceTree = "<group>"; };
+		A662D0501B33639100EA46D4 /* CloudsMedia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMedia.cpp; sourceTree = "<group>"; };
+		A662D0511B33639100EA46D4 /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -548,8 +553,6 @@
 		E721187918A284330063EF97 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
 		E721187A18A284330063EF97 /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
 		E721187B18A284330063EF97 /* kiss_fftr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
-		E721187E18A284330063EF97 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofOpenALSoundPlayer_TimelineAdditions.cpp; sourceTree = "<group>"; };
-		E721187F18A284330063EF97 /* ofOpenALSoundPlayer_TimelineAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofOpenALSoundPlayer_TimelineAdditions.h; sourceTree = "<group>"; };
 		E721189218A284330063EF97 /* sndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sndfile.h; sourceTree = "<group>"; };
 		E721189318A284330063EF97 /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sndfile.hh; sourceTree = "<group>"; };
 		E721189618A284330063EF97 /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsndfile.a; sourceTree = "<group>"; };
@@ -561,8 +564,6 @@
 		E72118A318A284330063EF97 /* ofxRemoveCocoaMenu.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxRemoveCocoaMenu.mm; sourceTree = "<group>"; };
 		E72118A418A284330063EF97 /* ofxTimeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimeline.cpp; sourceTree = "<group>"; };
 		E72118A518A284330063EF97 /* ofxTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimeline.h; sourceTree = "<group>"; };
-		E72118A618A284330063EF97 /* ofxTLAudioTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLAudioTrack.cpp; sourceTree = "<group>"; };
-		E72118A718A284330063EF97 /* ofxTLAudioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLAudioTrack.h; sourceTree = "<group>"; };
 		E72118A818A284330063EF97 /* ofxTLBangs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLBangs.cpp; sourceTree = "<group>"; };
 		E72118A918A284330063EF97 /* ofxTLBangs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLBangs.h; sourceTree = "<group>"; };
 		E72118AA18A284330063EF97 /* ofxTLCameraTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLCameraTrack.cpp; sourceTree = "<group>"; };
@@ -932,6 +933,7 @@
 		03D590901946503400FCFF7B /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				A662D02D1B3361F200EA46D4 /* CloudsCrypto.h */,
 				03F0DFE91AAF4A2D00204E00 /* CloudsEvents.h */,
 				03F0DFE11AAF4A2100204E00 /* CloudsGlobal.cpp */,
 				03F0DFE21AAF4A2100204E00 /* CloudsGlobal.h */,
@@ -968,6 +970,8 @@
 		03D590961946507600FCFF7B /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				A662D0501B33639100EA46D4 /* CloudsMedia.cpp */,
+				A662D0511B33639100EA46D4 /* CloudsMedia.h */,
 				03D5919D194652DA00FCFF7B /* CloudsSpeaker.cpp */,
 				03D5919E194652DA00FCFF7B /* CloudsSpeaker.h */,
 				03D5919A194652CA00FCFF7B /* CloudsLink.cpp */,
@@ -1132,9 +1136,28 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		A662D02E1B33621500EA46D4 /* ofxCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				A662D0411B33621500EA46D4 /* src */,
+			);
+			name = ofxCrypto;
+			path = ../../../addons/ofxCrypto;
+			sourceTree = "<group>";
+		};
+		A662D0411B33621500EA46D4 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A662D0421B33621500EA46D4 /* ofxCrypto.cpp */,
+				A662D0431B33621500EA46D4 /* ofxCrypto.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				A662D02E1B33621500EA46D4 /* ofxCrypto */,
 				03F0DFF21AAF4A9100204E00 /* ofxSubtitles */,
 				03F0DFEA1AAF4A8A00204E00 /* ofxLocalization */,
 				0380357E194846C900AFD40C /* ofxOculusRift */,
@@ -1414,7 +1437,6 @@
 			isa = PBXGroup;
 			children = (
 				E721187418A284330063EF97 /* kiss */,
-				E721187C18A284330063EF97 /* ofOpenALSoundPlayer_TimelineAdditions */,
 				E721189018A284330063EF97 /* sndfile */,
 			);
 			path = libs;
@@ -1444,23 +1466,6 @@
 				E721187918A284330063EF97 /* _kiss_fft_guts.h */,
 				E721187A18A284330063EF97 /* kiss_fft.c */,
 				E721187B18A284330063EF97 /* kiss_fftr.c */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		E721187C18A284330063EF97 /* ofOpenALSoundPlayer_TimelineAdditions */ = {
-			isa = PBXGroup;
-			children = (
-				E721187D18A284330063EF97 /* src */,
-			);
-			path = ofOpenALSoundPlayer_TimelineAdditions;
-			sourceTree = "<group>";
-		};
-		E721187D18A284330063EF97 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E721187E18A284330063EF97 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */,
-				E721187F18A284330063EF97 /* ofOpenALSoundPlayer_TimelineAdditions.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1510,8 +1515,6 @@
 				E72118A318A284330063EF97 /* ofxRemoveCocoaMenu.mm */,
 				E72118A418A284330063EF97 /* ofxTimeline.cpp */,
 				E72118A518A284330063EF97 /* ofxTimeline.h */,
-				E72118A618A284330063EF97 /* ofxTLAudioTrack.cpp */,
-				E72118A718A284330063EF97 /* ofxTLAudioTrack.h */,
 				E72118A818A284330063EF97 /* ofxTLBangs.cpp */,
 				E72118A918A284330063EF97 /* ofxTLBangs.h */,
 				E72118AA18A284330063EF97 /* ofxTLCameraTrack.cpp */,
@@ -1897,7 +1900,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1948,6 +1951,7 @@
 				038034FE194845D000AFD40C /* ofxUITabBar.cpp in Sources */,
 				038034FF194845D000AFD40C /* ofxSwarmBehavior.cpp in Sources */,
 				03803500194845D000AFD40C /* ofxUIWaveform.cpp in Sources */,
+				A662D0531B33639100EA46D4 /* CloudsMedia.cpp in Sources */,
 				03803501194845D000AFD40C /* ofxEasing.cpp in Sources */,
 				03803502194845D000AFD40C /* ofxTLTicker.cpp in Sources */,
 				03803503194845D000AFD40C /* ofxMSATimer.cpp in Sources */,
@@ -1957,6 +1961,7 @@
 				03803507194845D000AFD40C /* tinyxmlparser.cpp in Sources */,
 				03803508194845D000AFD40C /* ofxUILabel.cpp in Sources */,
 				03803509194845D000AFD40C /* ofxTLZoomer.cpp in Sources */,
+				A662D04B1B33621500EA46D4 /* ofxCrypto.cpp in Sources */,
 				0380350A194845D000AFD40C /* ofxPerlinBehavior.cpp in Sources */,
 				0380350B194845D000AFD40C /* ofxEasingLinear.cpp in Sources */,
 				0380350C194845D000AFD40C /* ofxUISlider.cpp in Sources */,
@@ -2005,7 +2010,6 @@
 				03803533194845D000AFD40C /* ofxUIDropDownList.cpp in Sources */,
 				03803534194845D000AFD40C /* ofxTLFlags.cpp in Sources */,
 				03803535194845D000AFD40C /* ofxDamperBehavior.cpp in Sources */,
-				03803536194845D000AFD40C /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				03803537194845D000AFD40C /* ofxHomingBehavior.cpp in Sources */,
 				03803538194845D000AFD40C /* ofxEasingCirc.cpp in Sources */,
 				03803539194845D000AFD40C /* ofxUINumberDialer.cpp in Sources */,
@@ -2014,7 +2018,6 @@
 				0380353C194845D000AFD40C /* CloudsIntroSequence.cpp in Sources */,
 				0380353D194845D000AFD40C /* ofxCameraSaveLoad.cpp in Sources */,
 				0380353E194845D000AFD40C /* ofxDistorterBehavior.cpp in Sources */,
-				0380353F194845D000AFD40C /* ofxTLAudioTrack.cpp in Sources */,
 				03803540194845D000AFD40C /* ofxRParticleSystem.cpp in Sources */,
 				03803541194845D000AFD40C /* ofxTLLFO.cpp in Sources */,
 				03803542194845D000AFD40C /* ofxTLImageSequenceFrame.cpp in Sources */,
@@ -2066,6 +2069,7 @@
 				E7211BCD18A2843F0063EF97 /* ofxVerletSolver.cpp in Sources */,
 				E7211BFA18A284400063EF97 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				E7211CE118A285970063EF97 /* CloudsInputMouse.cpp in Sources */,
+				A662D04A1B33621500EA46D4 /* ofxCrypto.cpp in Sources */,
 				03F0DFE71AAF4A2100204E00 /* CloudsLocalization.cpp in Sources */,
 				E7211C5818A284400063EF97 /* tinyxml.cpp in Sources */,
 				E755D9781944230C00AA81C1 /* ofxUIEventArgs.cpp in Sources */,
@@ -2150,7 +2154,6 @@
 				E755D9771944230C00AA81C1 /* ofxUIDropDownList.cpp in Sources */,
 				E7211C0718A284400063EF97 /* ofxTLFlags.cpp in Sources */,
 				E7211BBF18A2843F0063EF97 /* ofxDamperBehavior.cpp in Sources */,
-				E7211BF418A284400063EF97 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E7211BC318A2843F0063EF97 /* ofxHomingBehavior.cpp in Sources */,
 				E7211C2018A284400063EF97 /* ofxEasingCirc.cpp in Sources */,
 				E755D9871944230C00AA81C1 /* ofxUINumberDialer.cpp in Sources */,
@@ -2160,7 +2163,6 @@
 				03D590951946505D00FCFF7B /* CloudsIntroSequence.cpp in Sources */,
 				E7211BBC18A2843F0063EF97 /* ofxCameraSaveLoad.cpp in Sources */,
 				E7211BC018A2843F0063EF97 /* ofxDistorterBehavior.cpp in Sources */,
-				E7211BFF18A284400063EF97 /* ofxTLAudioTrack.cpp in Sources */,
 				E7211BC918A2843F0063EF97 /* ofxRParticleSystem.cpp in Sources */,
 				E7211C0D18A284400063EF97 /* ofxTLLFO.cpp in Sources */,
 				E7211C0918A284400063EF97 /* ofxTLImageSequenceFrame.cpp in Sources */,
@@ -2175,6 +2177,7 @@
 				E755D9891944230C00AA81C1 /* ofxUIRangeSlider.cpp in Sources */,
 				E7211BFC18A284400063EF97 /* ofxHotKeys_impl_win.cpp in Sources */,
 				E755D97F1944230C00AA81C1 /* ofxUIImageToggle.cpp in Sources */,
+				A662D0521B33639100EA46D4 /* CloudsMedia.cpp in Sources */,
 				E7211BFB18A284400063EF97 /* ofxHotKeys_impl_mac.mm in Sources */,
 				E755D97A1944230C00AA81C1 /* ofxUIFPSSlider.cpp in Sources */,
 				E755D9751944230C00AA81C1 /* ofxUICircleSlider.cpp in Sources */,
