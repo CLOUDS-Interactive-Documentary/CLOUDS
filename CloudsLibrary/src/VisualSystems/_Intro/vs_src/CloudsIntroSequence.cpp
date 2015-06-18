@@ -1087,7 +1087,7 @@ void CloudsIntroSequence::vhxNotPurchase(){
     changeState(CLOUDS_INTRO_VHX_NO_PURCHASE);
     if(!launchedPurchaseBrowser){
         launchedPurchaseBrowser = true;
-        ofLaunchBrowser("http://clouds-documentary.myshopify.com/products/download");
+        ofLaunchBrowser("https://clouds.vhx.tv/buy/clouds");
     }
     alertPrompt = "CLICK HERE TO LOG IN WITH A DIFFERENT EMAIL";
     alertBoundsActivated = true;
@@ -1098,7 +1098,7 @@ void CloudsIntroSequence::vhxRentalExpired(){
     changeState(CLOUDS_INTRO_VHX_RENTAL_EXPIRED);
     if(!launchedPurchaseBrowser){
         launchedPurchaseBrowser = true;
-        ofLaunchBrowser("http://clouds-documentary.myshopify.com/products/download");
+        ofLaunchBrowser("https://clouds.vhx.tv/buy/clouds");
     }
     alertPrompt = "CLICK HERE TO LOG IN WITH A DIFFERENT EMAIL";
     alertBoundsActivated = true;
