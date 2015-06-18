@@ -14,8 +14,6 @@
 #include "CloudsGlobal.h"
 #include "ofxSubtitles.h"
 
-// Secondary threads are only used to preload videos on Windows.
-// (This is done automatically on Mac with the AVFVideoPlayer)
 class CloudsRGBDVideoPlayer {
 public:
     
@@ -31,8 +29,8 @@ public:
     string nextSubtitlesPath;
     float nextOffsetTime;
     float nextClipVolume;
-    bool bLoadResult;
-	bool bPlayWhenReady;
+    //bool bLoadResult;
+	//bool bPlayWhenReady;
 
 	void begin(ofShader& shader);
 	void end();
@@ -103,7 +101,7 @@ public:
 	bool bEventRegistered;
     void update(ofEventArgs& args);
 	
-	void startPlayer();
+	//void startPlayer();
 
 	ofPtr<ofVideoPlayer> currentPlayer;
 	ofPtr<ofVideoPlayer> nextPlayer;

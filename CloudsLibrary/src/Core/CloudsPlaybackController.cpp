@@ -1112,6 +1112,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             bBufferingVideo = true;
             currentAct->pause();
             getSharedVideoPlayer().pause();
+
             //TODO:
             //hud.showBuffering();
         }
@@ -2157,7 +2158,6 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 	currentClip = clip;
 	currentClipName = clip->getID();
     
-    //TODO: disable for VO?
     if(currentClip->voiceOverAudio){
         hud.setSeeMoreName( "EXPLORE THE NETWORK" );
     }
