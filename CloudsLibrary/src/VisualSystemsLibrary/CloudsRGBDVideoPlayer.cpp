@@ -127,6 +127,7 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
     }
     
     
+    //OLD PALCE
     //TODO may be causing problems with async videos
     //nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
     
@@ -457,11 +458,15 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
     currentPlayer->update();
     if(currentPlayer->isLoaded()){
         bCurrentClipLoading = false;
+        //TODO may be causing problems with async videos
+//        nextPlayer->setPosition( nextOffsetTime / currentPlayer->getDuration() );
     }
     
 	if(clipPrerolled){
 		nextPlayer->update();
         if(nextPlayer->isLoaded()){
+            //TODO may be causing problems with async videos
+//            nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
             bNextClipLoading = false;
         }
 	}
