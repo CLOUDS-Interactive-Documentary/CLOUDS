@@ -473,11 +473,9 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
     
 //    float lastAudioVolume = currentAudioVolume;
     float currentAudioVolume =  maxVolume * currentClipVolumeAdjustment;
-    
     float position = getPlayer().getPosition() * getPlayer().getDuration();
     
     //sometimes NAN comes back from position.
-    
     if(isnan(position)){
         return;
     }
