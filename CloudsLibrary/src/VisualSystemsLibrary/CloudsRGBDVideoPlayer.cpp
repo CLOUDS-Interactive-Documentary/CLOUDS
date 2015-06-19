@@ -58,6 +58,8 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 
 	currentSubtitles = ofPtr<ofxSubtitles>( new ofxSubtitles() );
 	nextSubtitles    = ofPtr<ofxSubtitles>( new ofxSubtitles() );
+#ifndef NO_CRYPTO
+
 #ifdef OCULUS_RIFT
 	subtitleFontSize = 27;
 	currentSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);
@@ -70,6 +72,8 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
     nextSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);;
 	currentSubtitles->lineHeight = .8;
 	nextSubtitles->lineHeight = .8;
+#endif
+
 #endif
 	currentSubtitles->forceUpperCase = false;
 	nextSubtitles->forceUpperCase = false;
