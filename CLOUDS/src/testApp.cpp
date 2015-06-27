@@ -4,6 +4,9 @@
 void testApp::setup(){
     
 	ofSetEscapeQuitsApp(false);
+#if defined(TARGET_WIN32) && !defined(OCULUS_RIFT)
+	ofSetFrameRate(60);
+#endif
 	ofSetVerticalSync(true);
 	ofBackground(0);
     
@@ -45,11 +48,13 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 	if(ofGetFrameNum() == 10){
+		ofSetVerticalSync(true);
+
         #if !defined(VHX_MEDIA) && !defined(OCULUS_RIFT)
         if(player.loading){
             ofToggleFullscreen();
         }
-        #endif
+        #endif	
 	}
     
 	if(shouldSetupPlayer){
