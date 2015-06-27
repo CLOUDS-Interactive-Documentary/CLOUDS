@@ -7,9 +7,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp">
-      <Filter>addons\ofxOculusRift\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp">
       <Filter>addons\ofxFTGL\src</Filter>
     </ClCompile>
@@ -214,6 +211,27 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
       <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.cpp">
+      <Filter>addons\ofxCrypto\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
+      <Filter>addons\ofxLocalization\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.cpp">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -221,12 +239,6 @@
     </Filter>
     <Filter Include="addons">
       <UniqueIdentifier>{014ab87c-b1ee-4040-b3e5-4168bea9bf0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOculusRift">
-      <UniqueIdentifier>{599ff151-b55e-4f90-811c-ddc762158741}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxOculusRift\src">
-      <UniqueIdentifier>{63afbfed-3fa9-423b-a6a5-72803b5300b1}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxFTGL">
       <UniqueIdentifier>{f6f83f01-142d-486b-945e-d50972bd9aab}</UniqueIdentifier>
@@ -309,13 +321,31 @@
     <Filter Include="CloudsLibrary\src\Sound">
       <UniqueIdentifier>{1d0be2ab-e56b-4aac-9059-a6306d6820f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="addons\ofxCrypto">
+      <UniqueIdentifier>{c7f0858f-1ac3-4575-8875-72676e9a3519}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCrypto\src">
+      <UniqueIdentifier>{e8e91b4e-ac96-46f7-bf9d-c9dbd4a9d9ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\Core">
+      <UniqueIdentifier>{3062c958-81f3-46bd-ab4b-32c0b564ea68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSubtitles">
+      <UniqueIdentifier>{f31369cd-f3cd-4dab-bd59-19a1fb1dd744}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSubtitles\src">
+      <UniqueIdentifier>{161593bd-5724-4c71-9683-1a6003bc984a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization">
+      <UniqueIdentifier>{bf046948-251b-4ac7-84b3-a1a733113b35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization\src">
+      <UniqueIdentifier>{f8073736-b277-43bb-878e-e023a974d281}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testApp.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h">
-      <Filter>addons\ofxOculusRift\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h">
       <Filter>addons\ofxFTGL\src</Filter>
@@ -616,6 +646,30 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
       <Filter>CloudsLibrary\src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsCrypto.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.h">
+      <Filter>addons\ofxCrypto\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h">
+      <Filter>addons\ofxLocalization\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.h">
+      <Filter>addons\ofxSubtitles\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h">
+      <Filter>addons\ofxSubtitles\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
