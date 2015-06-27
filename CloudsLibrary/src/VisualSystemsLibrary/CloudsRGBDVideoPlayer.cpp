@@ -40,8 +40,9 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
     nextSubtitlesPath = "";
     nextOffsetTime = 0;
     nextClipVolume = 0;
-    bLoadResult = false;
-	bPlayWhenReady = false;
+    bCurrentClipLoading = false;
+    bNextClipLoading = false;
+    
 	showingLowerThirds = false;
 	
 	fontLoadWidth = 0;
@@ -57,6 +58,8 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 
 	currentSubtitles = ofPtr<ofxSubtitles>( new ofxSubtitles() );
 	nextSubtitles    = ofPtr<ofxSubtitles>( new ofxSubtitles() );
+#ifndef NO_CRYPTO
+
 #ifdef OCULUS_RIFT
 	subtitleFontSize = 27;
 	currentSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);
@@ -70,10 +73,17 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	currentSubtitles->lineHeight = .8;
 	nextSubtitles->lineHeight = .8;
 #endif
+
+#endif
 	currentSubtitles->forceUpperCase = false;
 	nextSubtitles->forceUpperCase = false;
 
 	currentClipHasSubtitles = nextClipHasSubtitles = false;
+}
+
+//---------------------------------------------------------------
+bool CloudsRGBDVideoPlayer::isCurrentClipStillLoading(){
+    return bCurrentClipLoading;
 }
 
 //---------------------------------------------------------------
@@ -88,17 +98,18 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
 #ifndef VHX_MEDIA
     if (!ofFile::doesFileExist(videoPath)){
     	ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
+        //bLoadResult = false;
+        clipPrerolled = false;
         return false;
     }
 #endif
     
 	if(!ofFile::doesFileExist(calibrationXMLPath)){
     	ofLogError("CloudsRGBDVideoPlayer::setup") << "XML path " << calibrationXMLPath << " failed to load";
-        bLoadResult = false;
-		return bLoadResult;
+        //bLoadResult = false;
+        clipPrerolled = false;
+		return false;
 	}
-
-	cout << "*** SETTING UP CLIP FILES ARE PRESENT " << endl;
 
     if(!bEventRegistered){
 		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
@@ -110,44 +121,45 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, s
     nextSubtitlesPath = subtitlesPath;
     nextOffsetTime = offsetTime;
     nextClipVolume = clipVolume;
-
-
     nextClipHasSubtitles = loadSubtitles(nextSubtitlesPath);
 
-    // EZ: The stuff below used to be threaded
     if(!nextPlayer->loadMovie(nextVideoPath)){
         ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << nextVideoPath << " failed to load";
-        bLoadResult = false;
+        //bLoadResult = false;
         clipPrerolled = false;
-        return bLoadResult;
+        return false;
     }
     
-    clipPrerolled = true;
     
+    //OLD PALCE
     //TODO may be causing problems with async videos
     //nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
     
-    cout << "prerolled clip " << nextVideoPath << " to time " << (nextOffsetTime / nextPlayer->getDuration()) << endl;
-    
-    nextClipIsVO = false;
     nextClipVolumeAdjustment = nextClipVolume;
-        
-    bLoadResult = true;
-    // EZ: End of old threaded stuff
+    nextClipIsVO = false;
+    clipPrerolled = true;
+    bNextClipLoading = true;
+    //bLoadResult = true;
     
-    return bLoadResult;
+    return true;
 }
 
 bool CloudsRGBDVideoPlayer::setupVO(string audioPath, string subtitlesPath){
 	
 	cout << "*** SETTING UP VO " << audioPath << endl;
-    if (audioPath.empty()) {
-        cout << "shit!" << endl;
-    }
     
+#ifndef VHX_MEDIA
+   if(!ofFile::doesFileExist(audioPath)){
+       ofLogError("CloudsRGBDVideoPlayer::setupVO") << "Audio path " << audioPath << " failed to load";
+       //bLoadResult = false;
+       clipPrerolled = false;
+       return false;
+   }
+#endif
+                   
     if(!nextPlayer->loadMovie(audioPath)){
 		ofLogError("CloudsRGBDVideoPlayer::setupVO") << "Audio path " << audioPath << " failed to load";
-		bLoadResult = false;
+		//bLoadResult = false;
 		clipPrerolled = false;
 		return false;
 	}
@@ -162,12 +174,19 @@ bool CloudsRGBDVideoPlayer::setupVO(string audioPath, string subtitlesPath){
 
 	clipPrerolled = true;
 	nextClipIsVO = true;
-	bLoadResult = true;
+    bNextClipLoading = true;
+	//bLoadResult = true;
+    
 	return true;
 }
 
 void CloudsRGBDVideoPlayer::swapAndPlay(){
-	
+
+    if(!clipPrerolled){
+        ofLogError("CloudsRGBDVideoPlayer::swapAndPlay") << "No clip prerolled for swap";
+        return;
+    }
+    
 	cout << "*** SWAPPING CLIP" << endl;
 
 	if(!nextClipIsVO){
@@ -282,41 +301,32 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
     
     bClipJustFinished = false;
     
-	if(clipPrerolled){
-		if(bLoadResult){
-			cout << "*** STARTING PLAYER FROM SWAP" << endl;
-			startPlayer();
-		}
-		else{
-			bPlayWhenReady = true;
-		}
-	}
-}
-
-//--------------------------------------------------------------- ACTIONS
-void CloudsRGBDVideoPlayer::startPlayer(){
-
-	//currentVoiceoverPlayer->stop();
-	currentPlayer->stop();
-	currentClipVolumeAdjustment = nextClipVolumeAdjustment;
-
-    if(!nextClipIsVO){
-        nextPlayer->setUseTexture(true);
-    }
+    cout << "*** STARTING PLAYER FROM SWAP" << endl;
     
-	swap(currentPlayer,nextPlayer);
+    currentPlayer->stop();
+    currentClipVolumeAdjustment = nextClipVolumeAdjustment;
+    
+    //JG dont' need this anymore without directshow player
+    //    if(!nextClipIsVO){
+    //        nextPlayer->setUseTexture(true);
+    //    }
+    
+    swap(currentPlayer,nextPlayer);
     swap(currentSubtitles, nextSubtitles);
-
-	currentClipHasSubtitles = nextClipHasSubtitles;
+    
+    currentClipHasSubtitles = nextClipHasSubtitles;
     currentPlayer->play();
     currentPlayer->setLoopState(OF_LOOP_NONE);
-	
-	playingVO = nextClipIsVO;
-	playingVideo = !nextClipIsVO;
-	clipPrerolled = false;
+    
+    playingVO = nextClipIsVO;
+    playingVideo = !nextClipIsVO;
+    
+    clipPrerolled = false;
     playerPaused = false;
-
-//	cout << "swapped and played clip " << endl;
+    //if our player has
+    bCurrentClipLoading = bNextClipLoading;
+    bNextClipLoading = false;
+    
 }
 
 //--------------------------------------------------------------- ACTIONS
@@ -420,7 +430,6 @@ float CloudsRGBDVideoPlayer::getFadeOut(){
 //--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::stop(){
     getPlayer().stop();
-    //currentVoiceoverPlayer->stop();
     playerPaused = false;
 }
 
@@ -430,13 +439,13 @@ void CloudsRGBDVideoPlayer::pause(){
         return;
     }
     
-    if(isPlaying()){
+//    if(isPlaying()){
         currentPlayer->setPaused(true);
         playerPaused = true;
-    }
-    else{
-        playerPaused = false;
-    }
+//    }
+//    else{
+//        playerPaused = false;
+//    }
 }
 
 //---------------------------------------------------------------
@@ -451,23 +460,27 @@ void CloudsRGBDVideoPlayer::unpause(){
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
     currentPlayer->update();
-	
-	if(bLoadResult && clipPrerolled && !nextClipIsVO){
+    if(currentPlayer->isLoaded()){
+        bCurrentClipLoading = false;
+        //TODO may be causing problems with async videos
+//        nextPlayer->setPosition( nextOffsetTime / currentPlayer->getDuration() );
+    }
+    
+	if(clipPrerolled){
 		nextPlayer->update();
+        if(nextPlayer->isLoaded()){
+            //TODO may be causing problems with async videos
+//            nextPlayer->setPosition( nextOffsetTime / nextPlayer->getDuration() );
+            bNextClipLoading = false;
+        }
 	}
-
-	if(bPlayWhenReady && bLoadResult){
-		startPlayer();
-		bPlayWhenReady = false;
-	}
-
+    
 //    float lastAudioVolume = currentAudioVolume;
     float currentAudioVolume =  maxVolume * currentClipVolumeAdjustment;
-    
     float position = getPlayer().getPosition() * getPlayer().getDuration();
     
     //sometimes NAN comes back from position.
-    if(position != position){
+    if(isnan(position)){
         return;
     }
     
@@ -477,7 +490,6 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	else{
 		float duration = getPlayer().getDuration();
 //		float handleLength = 1.1;
-		
 		//cout << "position is " << position << " " << duration << " duration " << endl;
         
 		fadeInValue = MIN(position, 1.5);
@@ -530,7 +542,12 @@ bool CloudsRGBDVideoPlayer::isPlaying(){
 	return (getPlayer().isLoaded() && getPlayer().isPlaying());
 }
 
-//--------------------------------------------------------------- 
+//---------------------------------------------------------------
+bool CloudsRGBDVideoPlayer::isPaused(){ //RGBD player state, not reflect video player
+    return playerPaused;
+}
+
+//---------------------------------------------------------------
 bool CloudsRGBDVideoPlayer::isDone(){
 	return (getPlayer().isLoaded() && !getPlayer().isPlaying());
 }

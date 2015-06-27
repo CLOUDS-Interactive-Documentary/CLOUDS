@@ -5,6 +5,7 @@
 #include "CloudsVisualSystemCode.h"
 #include "CloudsGlobal.h"
 #include "ofxMtlBoxFitting.h"
+#include "CloudsCrypto.h"
 
 bool rectareasort(ofRectangle a, ofRectangle b){
 	return a.getArea() > b.getArea();
@@ -330,8 +331,10 @@ void CloudsVisualSystemCode::updateColors(){
 void CloudsVisualSystemCode::selfUpdate(){
 	
 	if(!sharedFont.isLoaded() || currentFontSize != fontSize){
-		sharedFont.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
-		sharedLayout.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
+//		sharedFont.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
+//		sharedLayout.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
+		sharedFont.loadFont(CloudsCryptoGetFont("Consolas.ttf"), fontSize);
+		sharedLayout.loadFont(CloudsCryptoGetFont("Consolas.ttf"), fontSize);
 		currentFontSize = fontSize;
 	}
 	

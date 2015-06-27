@@ -153,7 +153,6 @@ protected:
     V3 hole;
     V3 holeLag;
     
-    ofTrueTypeFont font; ///< typeface for the info display
     float displayAlpha;///< opacity of the info display
     void lineGradient(float x1,float y1,float x2,float y2,float color1,float color2);//2 color line drawing
     void updateClosestPickingLine();///< recalculates the line closest to the mouse

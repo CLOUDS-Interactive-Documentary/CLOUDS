@@ -5,8 +5,7 @@
 
 
 #include "CloudsVisualSystemCirclePacking.h"
-
-//float CloudsVisualSystemCirclePacking::NCircles = 50;
+#include "CloudsCrypto.h"
 
 //These methods let us add custom GUI parameters and respond to their events
 
@@ -88,14 +87,6 @@ void CloudsVisualSystemCirclePacking::selfGuiEvent(ofxUIEventArgs &e){
         regenerate();
     }
     
-//    if(e.widget->getName() == "color H" || e.widget->getName() == "color S" || e.widget->getName() == "color V")
-//	{
-//		ofFloatColor col;
-//		col.setHsb(primaryColor.r, primaryColor.g, primaryColor.b);
-//		customGui->getWidget("color H")->setColorFill(col);
-//		customGui->getWidget("color S")->setColorFill(col);
-//		customGui->getWidget("color V")->setColorFill(col);
-//	}
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -142,7 +133,8 @@ void CloudsVisualSystemCirclePacking::regenerate(){
 void CloudsVisualSystemCirclePacking::selfSetup(){
 	
    // Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14, true, true, true);
-    Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14);
+    Circle::Font.loadFont(CloudsCryptoGetFont("Helvetica.ttf"), 14);
+
     
     //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
 	//cout << "SIZE = " << getCanvasWidth() << " " << getCanvasHeight() << endl;

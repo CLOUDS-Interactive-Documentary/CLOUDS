@@ -32,10 +32,19 @@ void testApp::setup(){
     
 #ifdef CLOUDS_RELEASE
 	ofHideCursor();
+    
+    // Log to file instead of console.
+    // Note that this only works with ofLog(...), not cout.
+    if (!ofDirectory::doesDirectoryExist(GetCloudsDataPath(true) + "fml")) {
+        ofDirectory::createDirectory(GetCloudsDataPath(true) + "fml");
+    }
+    ofLogToFile(GetCloudsDataPath(true) + "fml/log_" + ofGetTimestampString() + ".log");
 #endif
+    
 	firstFrame = true;
 	playerSetup = false;
 	shouldSetupPlayer = false;
+    
 #ifdef OCULUS_RIFT
 	loader.loadImage(GetCloudsDataPath() + "AppData/CLOUDS_HD_BG_DOUBLE.png");
 #else

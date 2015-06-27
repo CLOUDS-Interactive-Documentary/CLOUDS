@@ -151,6 +151,7 @@ class CloudsPlaybackController : public ofThread {
     bool shouldPlayClusterMap;
     bool resumingActFromIntro;
 
+    string videoBufferingStatus;
     void drawRenderTarget();
     //void drawInterludeInterface();
 	void drawInterludePanel(ofRectangle rect, string promptText, bool hovering, int tracking );
@@ -250,7 +251,6 @@ class CloudsPlaybackController : public ofThread {
     void showInterlude();
     void cleanupInterlude();
     void transitionBackToResearch();
-    //void resumeAct();
     
     void showExploreMap();
     void showExplorePeople();
