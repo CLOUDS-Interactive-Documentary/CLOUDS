@@ -7,8 +7,8 @@ void testApp::setup(){
 	swim.setup();
 	swim.playSystem();
     
-    mixer.setup();
-    mixer.setDiageticVolume(1);
+  //  mixer.setup();
+   // mixer.setDiageticVolume(1);
 }
 
 //--------------------------------------------------------------
