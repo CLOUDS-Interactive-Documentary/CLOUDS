@@ -8,7 +8,9 @@
 
 #include "ofMain.h"
 #include "ofxLocalization.h"
+#ifndef NO_CRYPTO
 #include "CloudsCrypto.h"
+#endif
 #include "CloudsLocalization.h"
 #include "CloudsGlobal.h"
 
@@ -34,22 +36,20 @@ string GetTranslationForString(string toTranslate){
 	}
 }
 
+#ifndef NO_CRYPTO
 ofBuffer& GetThinFontBuffer(){
     return CloudsCryptoGetFont("Blender-THIN.ttf");
 }
-//--------------------------------------
 ofBuffer& GetMediumFontBuffer(){
     return CloudsCryptoGetFont("Blender-MEDIUM.ttf");
 }
-
 ofBuffer& GetBoldFontBuffer(){
     return CloudsCryptoGetFont("Blender-BOLD.ttf");
 }
-
 ofBuffer& GetFontBuffer(){
     return CloudsCryptoGetFont("Blender-BOOK.ttf");
 }
-
+#endif
 
 string utf8_substr(string originalString, int maxLength)
 {

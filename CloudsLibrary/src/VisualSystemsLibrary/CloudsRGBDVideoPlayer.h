@@ -14,8 +14,6 @@
 #include "CloudsGlobal.h"
 #include "ofxSubtitles.h"
 
-// Secondary threads are only used to preload videos on Windows.
-// (This is done automatically on Mac with the AVFVideoPlayer)
 class CloudsRGBDVideoPlayer {
 public:
     
@@ -31,8 +29,8 @@ public:
     string nextSubtitlesPath;
     float nextOffsetTime;
     float nextClipVolume;
-    bool bLoadResult;
-	bool bPlayWhenReady;
+    //bool bLoadResult;
+	//bool bPlayWhenReady;
 
 	void begin(ofShader& shader);
 	void end();
@@ -43,6 +41,7 @@ public:
     
     bool isBufferLikelyToKeepUp();
 	bool isPlaying();
+    bool isPaused(); //RGBD player state, not reflect video player
 	bool isDone();
     bool clipJustFinished();
     
@@ -55,7 +54,9 @@ public:
     
 	ofVideoPlayer& getPlayer();
 	ofTexture& getTextureReference();
-
+    
+    bool isCurrentClipStillLoading();
+    
 	// Fix extrinsics
 	ofVec3f adjustTranslate;
 	ofVec3f adjustRotate;
@@ -91,6 +92,7 @@ public:
 	float subtitle2DOffsetVisualSystem;
 	bool showingLowerThirds;
 	int subtitleFontSize;
+    
 	//type
 	float englishSubtitleKerning;
 	float japaneseSubtitleKerning;
@@ -102,29 +104,29 @@ public:
     //
 	bool bEventRegistered;
     void update(ofEventArgs& args);
-	
-	void startPlayer();
 
 	ofPtr<ofVideoPlayer> currentPlayer;
 	ofPtr<ofVideoPlayer> nextPlayer;
+    ofPtr<ofxSubtitles> currentSubtitles;
+    ofPtr<ofxSubtitles> nextSubtitles;
     
+    /* Subtitles */
+    bool loadSubtitles(string path);
+    bool currentClipHasSubtitles;
+    bool nextClipHasSubtitles;
+
 	bool nextClipIsVO;
     bool clipPrerolled;
 	bool playerPaused;
     bool bClipJustFinished;
+    bool bCurrentClipLoading;
+    bool bNextClipLoading;
     
 	float fadeInValue;
 	float fadeOutValue;
     //float currentAudioVolume;
     bool wasPlayingLastFrame;
-    /* Subtitles */
-    bool loadSubtitles(string path);
-    bool currentClipHasSubtitles;
-    bool nextClipHasSubtitles;
     
-    ofPtr<ofxSubtitles> currentSubtitles;
-    ofPtr<ofxSubtitles> nextSubtitles;
-
     //  RGB
     //
 	ofRectangle colorRect;

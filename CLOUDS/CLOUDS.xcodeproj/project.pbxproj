@@ -15808,6 +15808,7 @@
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
@@ -15926,6 +15927,7 @@
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/LibOVR/Lib/MacOS/Release/libovr.a",
@@ -16210,13 +16212,13 @@
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/**",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -16255,13 +16257,13 @@
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src",
 					"$(OF_PATH)/addons/ofxOculusDK2/libs/**",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.8;
 			};
 			name = Release;
 		};

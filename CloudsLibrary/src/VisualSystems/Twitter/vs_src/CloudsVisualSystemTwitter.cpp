@@ -4,6 +4,7 @@
 
 #include "CloudsVisualSystemTwitter.h"
 #include "CloudsGlobal.h"
+#include "CloudsCrypto.h"
 
 map<string,int> CloudsVisualSystemTwitter::userNameIdMap;
 vector<Date> CloudsVisualSystemTwitter::dateIndex;
@@ -51,10 +52,15 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     avatarSize = 10;
     
     tweetFeedRect = ofRectangle (0, 0,  getCanvasWidth()/2, getCanvasHeight());
-    font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
-    tweetFont.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",20);
-    tweetFontSmall.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",8);
-    twitterHandleFont.loadFont(getVisualSystemDataPath() + "fonts/HelveticaNeue-Bold.ttf",8);
+//    font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
+//    tweetFont.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",20);
+//    tweetFontSmall.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",8);
+//    twitterHandleFont.loadFont(getVisualSystemDataPath() + "fonts/HelveticaNeue-Bold.ttf",8);
+    font.loadFont(CloudsCryptoGetFont("NewMedia Fett.ttf"),5);
+    tweetFont.loadFont(CloudsCryptoGetFont("Helvetica.ttf"),20);
+    tweetFontSmall.loadFont(CloudsCryptoGetFont("Helvetica.ttf"),8);
+    twitterHandleFont.loadFont(CloudsCryptoGetFont("Helvetica.ttf"),8);
+    
     ofxFTGLTextAlignment alignment;
     
     if( ! tweetDeckMenu.loadImage(getVisualSystemDataPath() + "tweetDeckMenu.png")){

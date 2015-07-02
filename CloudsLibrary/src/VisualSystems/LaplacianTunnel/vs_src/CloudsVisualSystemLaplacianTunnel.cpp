@@ -6,7 +6,6 @@
 #include "CloudsGlobal.h"
 
 bool meshsort(NamedVbo a, NamedVbo b){
-//	return ofToInt( ofSplitString(a.name,"Tunnel_")[1] ) < ofToInt( ofSplitString(b.name,"Tunnel_")[1] );
 	return ofToInt( a.name ) < ofToInt( b.name );
 }
 
@@ -128,12 +127,17 @@ void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
 void CloudsVisualSystemLaplacianTunnel::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_CAMERA;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
+
+	frameCount = 0;
+	bUseExternalCamera = false;
+	bPalindrome = false;
+	lastFrameTime = 0;
+	growthFPS = 0;
+	currentGrowthIndex = 0;
 }
 
 void CloudsVisualSystemLaplacianTunnel::selfGuiEvent(ofxUIEventArgs &e){
-	if(e.widget->getName() == "Custom Button"){
-//		cout << "Button pressed!" << endl;
-	}
+
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -165,7 +169,6 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	currentGrowthIndex = 0;
 	
 	ofDirectory objs(GetCloudsMediaPath() + "assets/LaplacianTunnel/Meshes/");
-	//ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/");
 	objs.allowExt("vbo");
 	objs.listDir();
 	
@@ -328,7 +331,7 @@ void CloudsVisualSystemLaplacianTunnel::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemLaplacianTunnel::selfEnd(){
-	clear();
+//	clear();
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup

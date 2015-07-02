@@ -780,6 +780,7 @@ void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
 }
 
 void CloudsHUDController::clipEnded(){
+    //TODO: make this more reliable
     //clearClip();
 }
 

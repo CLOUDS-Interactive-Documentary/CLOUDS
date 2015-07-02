@@ -6,9 +6,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxUILib", "..\..\..\addons
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTimelineLib", "..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj", "{A72C4F16-CB16-4143-BA5C-5E4FA802D636}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSSwim", "VSSwim.vcxproj", "{7FD42DF7-442E-479A-BA76-D0022F99702A}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ofxTonicLib", "..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonicLib.vcxproj", "{E93BD96C-A459-499F-840D-29B0166CBFF7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSLaplacianTunnel", "VSLaplacianTunnel.vcxproj", "{7FD42DF7-442E-479A-BA76-D0022F99702A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,14 +42,6 @@ Global
 		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release_Oculus|x64.Build.0 = Release|x64
 		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release|x64.ActiveCfg = Release|x64
 		{A72C4F16-CB16-4143-BA5C-5E4FA802D636}.Release|x64.Build.0 = Release|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug_Oculus|x64.ActiveCfg = Debug_Oculus|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug_Oculus|x64.Build.0 = Debug_Oculus|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|x64.ActiveCfg = Debug|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|x64.Build.0 = Debug|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release_Oculus|x64.ActiveCfg = Release_Oculus|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release_Oculus|x64.Build.0 = Release_Oculus|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|x64.ActiveCfg = Release|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|x64.Build.0 = Release|x64
 		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug_Oculus|x64.ActiveCfg = Debug|x64
 		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug_Oculus|x64.Build.0 = Debug|x64
 		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Debug|x64.ActiveCfg = Debug|x64
@@ -58,6 +50,14 @@ Global
 		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release_Oculus|x64.Build.0 = Release|x64
 		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|x64.ActiveCfg = Release|x64
 		{E93BD96C-A459-499F-840D-29B0166CBFF7}.Release|x64.Build.0 = Release|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug_Oculus|x64.ActiveCfg = Debug_Oculus|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug_Oculus|x64.Build.0 = Debug_Oculus|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|x64.ActiveCfg = Debug|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|x64.Build.0 = Debug|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release_Oculus|x64.ActiveCfg = Release_Oculus|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release_Oculus|x64.Build.0 = Release_Oculus|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|x64.ActiveCfg = Release|x64
+		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

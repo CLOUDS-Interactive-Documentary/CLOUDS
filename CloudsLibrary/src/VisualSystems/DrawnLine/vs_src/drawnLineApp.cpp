@@ -97,7 +97,7 @@ void drawnLineApp::setup(){
         ofPolyline temp = lineSets[lineSets.size()-1].normalized;
         
         
-        for (int i = 0; i < NROT; i++){
+        for (int k = 0; k < NROT; k++){
             for (int j = 0; j < temp.size(); j++){
                temp[j] = temp[j] * mat;
             }
@@ -199,16 +199,14 @@ void drawnLineApp::update(){
                 ofRectangle origRect = matchStructs[matchStructs.size()-1].bounds;
                 
                 if (origRect.width > 0){
-                ofRectangle screenRect = ofRectangle(0,0, SYS->getCanvasWidth(), SYS->getCanvasHeight());
-                ofRectangle tranRect = origRect;
-                tranRect.scaleTo(screenRect);
-                
-                
-                float scaleTarget =  tranRect.width / origRect.width;
+                    ofRectangle screenRect = ofRectangle(0,0, SYS->getCanvasWidth(), SYS->getCanvasHeight());
+                    ofRectangle tranRect = origRect;
+                    tranRect.scaleTo(screenRect);
+                    float scaleTarget =  tranRect.width / origRect.width;
                     
                     scaleTarget = 0.17 * scaleTarget + 0.83 * 1.0;
                 
-                scale = 0.99 * scale + 0.01 * scaleTarget;
+                    scale = 0.99 * scale + 0.01 * scaleTarget;
                 }
                 
                 ofPoint ptToCatch = val * (matchStructs[matchStructs.size()-1].matchA + matchStructs[matchStructs.size()-1].matchB)/2.0 + (1-val) * CL.nodeLine[CL.nodeLine.size()-1];
@@ -534,7 +532,8 @@ lineSet & drawnLineApp::linesetFromFile( string fileName ){
     
     set.lines.clear();
     
-    ifstream myFile (ofToDataPath(fileName).c_str(), ios::out | ios::binary);
+    //ifstream myFile (ofToDataPath(fileName).c_str(), ios::out | ios::binary);
+    ofFile myFile(fileName, ofFile::ReadOnly, true);
     
     int howMany;
     myFile.read((char *)&howMany, sizeof(int));

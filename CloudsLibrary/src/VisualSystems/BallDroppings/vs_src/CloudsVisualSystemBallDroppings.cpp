@@ -109,7 +109,6 @@ void CloudsVisualSystemBallDroppings::selfSetup()
 	Ball *b = new Ball(hole, balls->size(), getVisualSystemDataPath() + "sine.wav", mainGain);
 	balls->push((long)b);
 	
-	font.loadFont("Verdana.ttf",8);
 	displayAlpha = 0;
 
 }

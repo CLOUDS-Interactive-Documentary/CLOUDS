@@ -1950,7 +1950,6 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 //called either in draw for rift, or draw overlay for normal
 void CloudsVisualSystemRGBD::drawQuestionType(){
 	if(!questionFont.isLoaded() || currentQuestionFontSize != questionFontSize){
-//		questionFont.loadFont(GetCloudsDataPath() + "font/Blender-BOOK.ttf", questionFontSize);
 		questionFont.loadFont(GetFontBuffer(), questionFontSize);
 		currentQuestionFontSize = questionFontSize;
 	}

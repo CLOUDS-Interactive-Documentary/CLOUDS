@@ -91,42 +91,6 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\CloudsVisualSystemSwim.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creature.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creatures.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\JellyCreature.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\MarineSnow.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\ModelCreature.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\PointCreature.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\CircularFormula.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\MeshUtils.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\ofxCubeMap.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SphericalGenerator.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SuperFormula.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\BleachBypassPass.cpp">
       <Filter>addons\ofxPostProcessing\src</Filter>
     </ClCompile>
@@ -232,6 +196,12 @@
     <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp">
       <Filter>addons\ofxSubtitles\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\LaplacianTunnel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\ofVboByteColor.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\LaplacianTunnel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -281,15 +251,6 @@
     </Filter>
     <Filter Include="addons\ofxObjLoader\libs\glm">
       <UniqueIdentifier>{3c3a084f-1f94-410a-beea-5864fde43503}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Swim">
-      <UniqueIdentifier>{c6d6e5a1-f831-4f07-9442-226bbd386435}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Swim\vs_src">
-      <UniqueIdentifier>{a5bd867b-a290-4d82-b6a2-d558ce1ca61f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Swim\vs_src\utils">
-      <UniqueIdentifier>{e0d03b53-f772-496e-af27-afb62c2404e4}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxPostProcessing">
       <UniqueIdentifier>{062e9e50-2530-4ee7-bc70-b04dd467e130}</UniqueIdentifier>
@@ -341,6 +302,9 @@
     </Filter>
     <Filter Include="addons\ofxLocalization\src">
       <UniqueIdentifier>{f8073736-b277-43bb-878e-e023a974d281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\LaplacianTunnel">
+      <UniqueIdentifier>{c6d6e5a1-f831-4f07-9442-226bbd386435}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -506,45 +470,6 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\CloudsVisualSystemSwim.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creature.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\Creatures.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\JellyCreature.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\MarineSnow.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\ModelCreature.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\PointCreature.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\CircularFormula.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\MeshUtils.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\ofxCubeMap.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\Singleton.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SphericalGenerator.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Swim\vs_src\utils\SuperFormula.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Swim\vs_src\utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\BleachBypassPass.h">
       <Filter>addons\ofxPostProcessing\src</Filter>
     </ClInclude>
@@ -670,6 +595,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h">
       <Filter>addons\ofxSubtitles\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\ofVboByteColor.h">
+      <Filter>CloudsLibrary\src\VisualSystems\LaplacianTunnel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.h">
+      <Filter>CloudsLibrary\src\VisualSystems\LaplacianTunnel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

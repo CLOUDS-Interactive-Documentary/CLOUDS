@@ -1174,14 +1174,23 @@
     <ClCompile Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.cpp">
       <Filter>addons\ofxCrypto\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxAvailability\src\ofxAvailability.cpp">
-      <Filter>addons\ofxAvailability\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsMedia.cpp">
       <Filter>CloudsLibrary\src\StoryEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDScroller.cpp">
       <Filter>CloudsLibrary\src\RGBD\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxReachability\src\ofxReachability.cpp">
+      <Filter>addons\ofxReachability\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxReachability\src\ofxReachabilityImpl.cpp">
+      <Filter>addons\ofxReachability\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxReachability\src\ofxReachabilityImplPing.cpp">
+      <Filter>addons\ofxReachability\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxReachability\src\win32\ofxReachabilityImplWin.cpp">
+      <Filter>addons\ofxReachability\src\win32</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1446,23 +1455,26 @@
     <Filter Include="addons\ofxJSON\libs\jsoncpp\src">
       <UniqueIdentifier>{f03ed117-8256-4898-9b03-5a5d9bae09f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxAvailability">
-      <UniqueIdentifier>{7a096123-bb3a-4079-9650-80f4ce75023d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons\ofxCrypto">
       <UniqueIdentifier>{66c23771-ac84-4160-953d-06a7a972a3a2}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxCrypto\src">
       <UniqueIdentifier>{a6240303-d948-4338-928e-745eb362fc78}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxAvailability\src">
-      <UniqueIdentifier>{65cbf341-3c71-4ffc-8de6-aa80a9a8dd4c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons\ofxAudioDecoder">
       <UniqueIdentifier>{5040d026-8402-4bb0-829a-74666a5227cc}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAudioDecoder\couples">
       <UniqueIdentifier>{9190189d-e255-468f-a179-156c2aab447b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxReachability">
+      <UniqueIdentifier>{57823a60-4f03-4a38-a535-55dd84e3d37c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxReachability\src">
+      <UniqueIdentifier>{51460747-ac4e-4cf0-aa82-242abaf1c477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxReachability\src\win32">
+      <UniqueIdentifier>{87b01735-bcad-40ee-ac3b-1f13ff21aebe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3117,9 +3129,6 @@
     <ClInclude Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.h">
       <Filter>addons\ofxCrypto\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAvailability\src\ofxAvailability.h">
-      <Filter>addons\ofxAvailability\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\CloudsCrypto.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
@@ -3131,6 +3140,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxAudioDecoder\couples\ofxAudioDecoderTonic.h">
       <Filter>addons\ofxAudioDecoder\couples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxReachability\src\ofxReachability.h">
+      <Filter>addons\ofxReachability\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxReachability\src\ofxReachabilityImpl.h">
+      <Filter>addons\ofxReachability\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxReachability\src\ofxReachabilityImplPing.h">
+      <Filter>addons\ofxReachability\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxReachability\src\win32\ofxReachabilityImplWin.h">
+      <Filter>addons\ofxReachability\src\win32</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

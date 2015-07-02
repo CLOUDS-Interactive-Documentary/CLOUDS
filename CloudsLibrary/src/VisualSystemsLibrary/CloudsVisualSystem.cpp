@@ -4,7 +4,10 @@
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
 #include "CloudsLocalization.h"
+
+#ifndef NO_CRYPTO
 #include "CloudsCrypto.h"
+#endif
 
 #if defined(MOUSE_INPUT)
 #include "CloudsInputMouse.h"

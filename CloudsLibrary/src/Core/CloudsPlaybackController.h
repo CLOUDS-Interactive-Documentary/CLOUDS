@@ -25,7 +25,7 @@
 #include "CloudsPortal.h"
 
 #ifdef VHX_MEDIA
-#include "ofxAvailability.h"
+#include "ofxReachability.h"
 #include "CloudsVHXAuth.h"
 #endif
 
@@ -120,7 +120,7 @@ class CloudsPlaybackController : public ofThread {
     CloudsMixer mixer;
 
     #ifdef VHX_MEDIA
-    ofxAvailability availability;
+    ofxReachability reachability;
     CloudsVHXAuth vhxAuth;
     #endif
 
@@ -151,6 +151,7 @@ class CloudsPlaybackController : public ofThread {
     bool shouldPlayClusterMap;
     bool resumingActFromIntro;
 
+    string videoBufferingStatus;
     void drawRenderTarget();
     //void drawInterludeInterface();
 	void drawInterludePanel(ofRectangle rect, string promptText, bool hovering, int tracking );
@@ -250,7 +251,6 @@ class CloudsPlaybackController : public ofThread {
     void showInterlude();
     void cleanupInterlude();
     void transitionBackToResearch();
-    //void resumeAct();
     
     void showExploreMap();
     void showExplorePeople();

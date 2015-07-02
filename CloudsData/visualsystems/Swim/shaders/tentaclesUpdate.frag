@@ -30,14 +30,9 @@ void main()
     
     vec3 parentPos = texture2DRect(particles0, vec2(gl_TexCoord[0].s - 1.0, gl_TexCoord[0].t)).xyz;
     
-    vec3 forceDirection = parentPos - pos;
+    //vec3 oldVel = vel;
     
-    vec3 oldVel = vel;
-    
-    // for some reason nvidia 9600 osx driver is freaking
-    // out if I try and get the length of or normalize forceDirection
-    //vel += 120.0 * elapsed * forceDirection;
-    vel += tentacleSpringForce * elapsed * forceDirection;
+    vel += elapsed * springForce(pos, parentPos);
 
     vel *= clamp(1.0 - (9.0 * elapsed), 0.0, 1.0);
     

@@ -3,7 +3,7 @@
 //
 
 #include "CloudsVisualSystemOpenP5TextUniverse.h"
-
+#include "CloudsCrypto.h"
 
 //#include "CloudsRGBDVideoPlayer.h"
 //#ifdef AVF_PLAYER
@@ -285,19 +285,22 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
     
     else if (e.widget->getName() == "HELVETICA") {
         if (((ofxUIToggle *)e.widget)->getValue()) {
-            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
+//            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
+            TUOrbital::fontName = "Helvetica.ttf";
             rebuildFont();
         }
     }
     else if (e.widget->getName() == "MUSEO 300") {
         if (((ofxUIToggle *)e.widget)->getValue()) {
-            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Museo-300.otf";
+//            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Museo-300.otf";
+            TUOrbital::fontName = "Museo-300.otf";
             rebuildFont();
         }
     }
     else if (e.widget->getName() == "NEW MEDIA FETT") {
         if (((ofxUIToggle *)e.widget)->getValue()) {
-            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf";
+//            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf";
+            TUOrbital::fontName = "NewMedia Fett.ttf";
             rebuildFont();
         }
     }
@@ -357,8 +360,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     filesDir.sort();
     selectedFilesIdx = 0;
     rebuildText();
-    
-    TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
+    TUOrbital::fontName = "Helvetica.ttf";
+//    TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
     rebuildFont();
 }
 
@@ -514,7 +517,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfMouseReleased(ofMouseEventArgs& d
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::rebuildFont()
 {
-    TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
+    TUOrbital::font.loadFont( CloudsCryptoGetFont(TUOrbital::fontName), (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
     TUOrbital::font.setLineLength(TUOrbital::lineLength);
     TUOrbital::font.setAlignment(TUOrbital::textAlign);
 }
