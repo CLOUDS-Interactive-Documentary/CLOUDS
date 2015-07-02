@@ -210,8 +210,8 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
         ofRemoveListener(ofURLResponseEvent(), this, &CloudsPlaybackController::updateCheckCompleted);
         
 #ifdef VHX_MEDIA
-        ofRemoveListener(ofxAvailability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
-        ofRemoveListener(ofxAvailability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
+        ofRemoveListener(ofxReachability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
+        ofRemoveListener(ofxReachability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
         
         ofRemoveListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
         ofRemoveListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
@@ -225,7 +225,7 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	}
     
 #ifdef VHX_MEDIA
-    availability.exit();
+    reachability.exit();
 #endif
 }
 
@@ -259,8 +259,8 @@ void CloudsPlaybackController::setup(){
         
         ofAddListener(ofURLResponseEvent(), this, &CloudsPlaybackController::updateCheckCompleted);
         #ifdef VHX_MEDIA
-        ofAddListener(ofxAvailability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
-        ofAddListener(ofxAvailability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
+        ofAddListener(ofxReachability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
+        ofAddListener(ofxReachability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
         
         ofAddListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
         ofAddListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
@@ -321,8 +321,7 @@ void CloudsPlaybackController::setup(){
 //#endif
     
 #ifdef VHX_MEDIA
-    //availability.setPingAddress("www.vhx.tv");
-    availability.setup();
+    reachability.setup();
 #endif
 	
 	cout << "*****LOAD STEP*** SHOWING INTRO" << endl;

@@ -25,7 +25,7 @@
 #include "CloudsPortal.h"
 
 #ifdef VHX_MEDIA
-#include "ofxAvailability.h"
+#include "ofxReachability.h"
 #include "CloudsVHXAuth.h"
 #endif
 
@@ -120,7 +120,7 @@ class CloudsPlaybackController : public ofThread {
     CloudsMixer mixer;
 
     #ifdef VHX_MEDIA
-    ofxAvailability availability;
+    ofxReachability reachability;
     CloudsVHXAuth vhxAuth;
     #endif
 
