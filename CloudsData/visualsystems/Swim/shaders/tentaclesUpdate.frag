@@ -9,6 +9,7 @@ uniform float restLength;
 uniform float elapsed;
 uniform float numSections;
 uniform float tentacleSpringForce;
+const float EPSILON = 1e-6;
 
 float SPRING_CONSTANT = 100.0;
 
@@ -16,9 +17,10 @@ vec3 springForce(vec3 pos, vec3 otherPos)
 {
     vec3 forceDirection = otherPos - pos;
     
-    float forceMagnitude = SPRING_CONSTANT * (length(forceDirection) - restLength);
+    float forceLength = length(forceDirection);
+    float forceMagnitude = SPRING_CONSTANT * (forceLength - restLength);
     
-    vec3 force = normalize(forceDirection) * forceMagnitude;
+    vec3 force = abs(forceLength) < EPSILON ? vec3(0.0) : (forceDirection / forceLength) * forceMagnitude;
     
     return force;
 }
