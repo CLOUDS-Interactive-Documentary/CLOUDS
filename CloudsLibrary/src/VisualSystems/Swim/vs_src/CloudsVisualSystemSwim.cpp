@@ -1,8 +1,9 @@
 //
 //  CloudsVisualSystemSwim.cpp
 //
-
+#ifdef TONIC_SOUNDS
 #include "ofxAudioDecoderTonic.h"
+#endif
 
 #include "CloudsVisualSystemSwim.h"
 #include "CloudsRGBDVideoPlayer.h"
@@ -20,8 +21,10 @@ CloudsVisualSystemSwim::CloudsVisualSystemSwim() :
 // geometry should be loaded here
 void CloudsVisualSystemSwim::selfSetup()
 {
+	#ifdef TONIC_SOUNDS
     tonicSamples.push_back(TonicSample("underwater_stretch.mp3"));
     tonicSamples.push_back(TonicSample("Underwater.mp3"));
+	#endif
 
     snow.init(getVisualSystemDataPath());
     //bubbles.init(getVisualSystemDataPath());
@@ -53,6 +56,7 @@ void CloudsVisualSystemSwim::selfBegin()
     // adding this here as custom gui data is loaded after setup
 	generate();
     
+#ifdef TONIC_SOUNDS
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemSwim::audioRequested);
     
@@ -62,6 +66,8 @@ void CloudsVisualSystemSwim::selfBegin()
             tonicSamples[i].soundTrigger.trigger();
         }
     }
+#endif
+
 }
 
 void CloudsVisualSystemSwim::generate()
@@ -249,10 +255,11 @@ void CloudsVisualSystemSwim::selfSetupGui()
     
     soundGui = createCustomGui("Sound");
     // sound
+	#ifdef TONIC_SOUNDS
     soundGui->addToggle(tonicSamples[0].soundFile, &tonicSamples[0].playSample);
     soundGui->addToggle(tonicSamples[1].soundFile, &tonicSamples[1].playSample);
-    
     soundGui->addSlider("Gain", 0, 1, &gain);
+	#endif
     
     ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemSwim::selfGuiEvent);
 }
@@ -339,6 +346,8 @@ void CloudsVisualSystemSwim::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 		cout << "Button pressed!" << endl;
 	}
+	
+	#ifdef TONIC_SOUNDS
     for (int i=0; i<2; i++)
     {
         if (e.widget->getName() == tonicSamples[i].soundFile) {
@@ -349,6 +358,8 @@ void CloudsVisualSystemSwim::selfGuiEvent(ofxUIEventArgs &e){
             }
         }
     }
+	#endif
+
 }
 
 void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e) {
