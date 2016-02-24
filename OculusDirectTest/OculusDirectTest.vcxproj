@@ -107,6 +107,9 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2Lib.vcxproj">
+      <Project>{06df4a39-7102-462b-8f20-fc26e9a93826}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
       <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
     </ProjectReference>

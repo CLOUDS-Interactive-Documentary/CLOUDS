@@ -4,7 +4,14 @@
 void testApp::setup(){
     ofSetVerticalSync(true);
 	
+	showOverlay = false;
 
+	oculus.baseCamera = &cam;
+    oculus.setup();
+
+    //cam.setAutoDistance(false);
+    cam.begin();
+    cam.end();
 }
 
 //--------------------------------------------------------------
@@ -14,8 +21,54 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	ofSetColor(255);
-	ofRect(0,0,ofGetWidth(), ofGetHeight());
+  if (oculus.isSetup()) {
+        if (showOverlay) {
+
+            oculus.beginOverlay(-230, 320, 240);
+            ofRectangle overlayRect = oculus.getOverlayRectangle();
+
+            ofPushStyle();
+            ofEnableAlphaBlending();
+            ofFill();
+            ofSetColor(255, 40, 10, 200);
+
+            ofRect(overlayRect);
+
+            ofSetColor(255, 255);
+            ofFill();
+
+            ofSetColor(0, 255, 0);
+            ofNoFill();
+            ofCircle(overlayRect.getCenter(), 20);
+
+            ofPopStyle();
+            oculus.endOverlay();
+        }
+
+        oculus.beginLeftEye();
+        drawScene();
+        oculus.endLeftEye();
+
+        oculus.beginRightEye();
+        drawScene();
+        oculus.endRightEye();
+
+        oculus.draw();
+    } else {
+		cout << "NOT SETUP " << endl;
+        cam.begin();
+        //drawScene();
+        cam.end();
+    }
+}
+
+void testApp::drawScene() {
+
+    ofPushMatrix();
+    ofRotate(90, 0, 0, -1);
+    ofSetColor(30);
+    ofDrawGridPlane(12.0f, 8.0f, false);
+    ofPopMatrix();
 }
 
 //--------------------------------------------------------------

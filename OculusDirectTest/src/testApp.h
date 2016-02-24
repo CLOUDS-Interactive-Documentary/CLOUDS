@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxOculusDK2.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -18,5 +19,11 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	void exit();
-		
+
+	bool showOverlay;
+	ofCamera cam;
+	ofxOculusDK2 oculus;
+
+	void drawScene();
+	
 };
