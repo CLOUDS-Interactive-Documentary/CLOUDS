@@ -2,16 +2,15 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    ofSetVerticalSync(true);
 	
 	showOverlay = false;
+    ofSetVerticalSync(false);
+	ofSetBackgroundAuto(false);
 
 	oculus.baseCamera = &cam;
     oculus.setup();
+	ofDisableAlphaBlending();
 
-    //cam.setAutoDistance(false);
-    cam.begin();
-    cam.end();
 }
 
 //--------------------------------------------------------------
@@ -21,7 +20,11 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-  if (oculus.isSetup()) {
+	
+	if (oculus.isSetup()) {
+		//cam.begin(oculus.getOculusViewport());
+		//cam.end();
+
         if (showOverlay) {
 
             oculus.beginOverlay(-230, 320, 240);
@@ -52,23 +55,39 @@ void testApp::draw(){
         oculus.beginRightEye();
         drawScene();
         oculus.endRightEye();
+		
+	}
 
-        oculus.draw();
-    } else {
+	if (oculus.isSetup()) {
+		oculus.draw();
+	} else {
 		cout << "NOT SETUP " << endl;
-        cam.begin();
-        //drawScene();
-        cam.end();
-    }
+		cam.begin();
+		drawScene();
+		cam.end();
+	}
 }
 
 void testApp::drawScene() {
 
-    ofPushMatrix();
-    ofRotate(90, 0, 0, -1);
-    ofSetColor(30);
+	ofPushStyle();
+
+    ofPushMatrix();    
+	//ofRotate(90, 0, 0, -1);
+	ofTranslate(0, 0, 50);
+	ofRotate(90, 0, 1, 0);
+    ofSetColor(0,200,0);
     ofDrawGridPlane(12.0f, 8.0f, false);
     ofPopMatrix();
+
+    ofPushMatrix();    
+	ofTranslate(0, 0, -50);
+	ofRotate(90, 0, 1, 0);
+    ofSetColor(200,0,0);
+    ofDrawGridPlane(12.0f, 8.0f, false);
+    ofPopMatrix();
+
+	ofPopStyle();
 }
 
 //--------------------------------------------------------------
@@ -93,12 +112,11 @@ void testApp::mouseMoved(int x, int y){
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-
+	cout << "mouse pressed " << x << " " << y << endl;
 }
 
 //--------------------------------------------------------------
