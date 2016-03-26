@@ -22,8 +22,7 @@ void testApp::update(){
 void testApp::draw(){
 	
 	if (oculus.isSetup()) {
-		//cam.begin(oculus.getOculusViewport());
-		//cam.end();
+
 
         if (showOverlay) {
 
@@ -54,8 +53,7 @@ void testApp::draw(){
 
         oculus.beginRightEye();
         drawScene();
-        oculus.endRightEye();
-		
+        oculus.endRightEye();		
 	}
 
 	if (oculus.isSetup()) {
@@ -71,21 +69,30 @@ void testApp::draw(){
 void testApp::drawScene() {
 
 	ofPushStyle();
+	ofEnableDepthTest();
 
     ofPushMatrix();    
-	//ofRotate(90, 0, 0, -1);
-	ofTranslate(0, 0, 50);
+	ofTranslate(0, 0, 10);
 	ofRotate(90, 0, 1, 0);
     ofSetColor(0,200,0);
     ofDrawGridPlane(12.0f, 8.0f, false);
-    ofPopMatrix();
+	ofPopMatrix();
 
     ofPushMatrix();    
-	ofTranslate(0, 0, -50);
-	ofRotate(90, 0, 1, 0);
-    ofSetColor(200,0,0);
+	ofTranslate(0, 0, -3);
+	ofRotate(90, 0, 1, 0);    
+	ofSetColor(200,0,0);
     ofDrawGridPlane(12.0f, 8.0f, false);
-    ofPopMatrix();
+	ofPopMatrix();
+
+    ofPushMatrix();    
+	ofTranslate(0, 0, -6);
+	ofRotate(90, 0, 1, 0);    
+	ofSetColor(100,100,0);
+    ofDrawGridPlane(12.0f, 8.0f, false);
+	ofPopMatrix();
+
+	ofDisableDepthTest();
 
 	ofPopStyle();
 }
@@ -116,7 +123,6 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-	cout << "mouse pressed " << x << " " << y << endl;
 }
 
 //--------------------------------------------------------------
