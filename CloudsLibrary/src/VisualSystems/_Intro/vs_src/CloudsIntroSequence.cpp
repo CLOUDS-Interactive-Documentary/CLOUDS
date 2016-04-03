@@ -585,7 +585,7 @@ void CloudsIntroSequence::loadingFinished(){
         changeState(CLOUDS_INTRO_MENU);
     }
 #ifdef OCULUS_RIFT
-    getOculusRift().reset();
+    //getOculusRift().reset();
 #endif
 }
 

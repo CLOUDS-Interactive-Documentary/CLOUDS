@@ -6,13 +6,13 @@ void testApp::setup(){
 	ofSetEscapeQuitsApp(false);
 #if defined(TARGET_WIN32) && !defined(OCULUS_RIFT)
 	ofSetFrameRate(60);
-#endif
 	ofSetVerticalSync(true);
+#endif
 	ofBackground(0);
     
 #if defined(OCULUS_RIFT) && defined(TARGET_WIN32)
-//    ofSetWindowPosition(0,0);
-//    ofSetWindowShape(1920*2,1080);
+    ofSetVerticalSync(false);
+	ofSetBackgroundAuto(false);
 #else
 	#ifdef CLOUDS_RELEASE
 //    ofSetWindowPosition(1920 + 1920*.5,1080*.5);
@@ -23,7 +23,7 @@ void testApp::setup(){
 
     
 #ifdef OCULUS_RIFT
-    ofToggleFullscreen();
+    //ofToggleFullscreen();
 #else
     ofSetWindowShape(1280, 720);
     ofSetWindowPosition(ofGetScreenWidth()/2 - 1280/2, ofGetScreenHeight()/2 - 720/2);

@@ -218,21 +218,23 @@ CloudsMedia* CloudsVisualSystem::getVHXMedia(string movieKey){
 
 
 #ifdef OCULUS_RIFT
-#include "OVR.h"
 static ofxOculusDK2 oculusRift;
 static ofFbo oculusTarget;
 ofxOculusDK2& CloudsVisualSystem::getOculusRift(){
 	if(!oculusRift.isSetup()){
 
+		/*
 		ofFbo::Settings renderSettings;
 		renderSettings.useDepth = true;
 		//renderSettings.numSamples = 4;
 		renderSettings.numSamples = 0;
 		renderSettings.depthStencilInternalFormat = GL_DEPTH_COMPONENT32F;
 		renderSettings.internalformat = GL_RGB;
+		*/
 
         checkOpenGLError("PRE SETUP OCULUS");
-		oculusRift.setup(renderSettings);
+//		oculusRift.setup(renderSettings);
+		oculusRift.setup();
         checkOpenGLError("POST SETUP OCULUS");
 
 		//JG OCULUS TARGET HACK
@@ -598,9 +600,11 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
-	
+
+#ifndef OCULUS_RIFT
 	checkOpenGLError(getSystemName() + ":: UPDATE");
-	
+#endif
+
 	updateCyclced = true;
 }
 
@@ -647,7 +651,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 
     if(bRenderSystem)
     {
-	  
 		//bind our fbo, lights, debug
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
@@ -712,6 +715,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		if(bDrawToScreen){
 			selfPostDraw();
             checkOpenGLError(getSystemName() + ":: POST DRAW");
+
 		}
 		
 #ifdef KINECT_INPUT
@@ -1039,7 +1043,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             
         case 320:
         case '0':
-            oculusRift.reset();
+            //oculusRift.reset();
             break;
     }
 #endif
@@ -4052,10 +4056,7 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 
 #ifdef OCULUS_RIFT
 
-	//THIS WAY TO JUST DRAW
-	//oculusRift.draw();
-
-	
+#ifdef TARGET_OSX
 	//THIS WAY TO DRAW FOR FANCY DK2 MIRRORING
 	getSharedRenderTarget().begin();
 	oculusRift.draw();
@@ -4085,7 +4086,12 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	oculusTargetMesh1.draw();
 	oculusTargetMesh2.draw();
 	getSharedRenderTarget().getTextureReference().unbind();
-	
+	#else
+	oculusRift.draw();
+	//ofClear(0,0,0,0);
+	#endif
+
+
 #else
     int offset;
     if(bEnablePostFX){
@@ -4247,6 +4253,6 @@ void CloudsVisualSystem::checkOpenGLError(string function){
 	
     GLuint err = glGetError();
     if (err != GL_NO_ERROR){
-        ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
+        //ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
     }
 }

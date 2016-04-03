@@ -103,7 +103,7 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	
 	drawRGBD = true;
 	#ifdef OCULUS_RIFT
-		cullFace = GL_FRONT;
+		cullFace = GL_BACK;//GL_FRONT;
 	#else
 		cullFace = GL_BACK;
 	#endif

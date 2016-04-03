@@ -21,7 +21,7 @@ class testApp : public ofBaseApp{
 	void exit();
 
 	bool showOverlay;
-	ofCamera cam;
+	ofEasyCam cam;
 	ofxOculusDK2 oculus;
 
 	void drawScene();
