@@ -115,6 +115,9 @@
     <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
       <Filter>CloudsLibrary\src\Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.cpp">
+      <Filter>addons\ofxCrypto\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -182,6 +185,12 @@
     </Filter>
     <Filter Include="CloudsLibrary\src\Core">
       <UniqueIdentifier>{3a4e10b3-df01-4baa-bb6b-fa92f64e030d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCrypto">
+      <UniqueIdentifier>{38a0e791-d60e-45f1-86a1-e49b760ddbce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCrypto\src">
+      <UniqueIdentifier>{e5b43843-c498-4761-bce6-82fb80a6967f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -353,9 +362,6 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystems\TunnelDrawing\vs_src\CloudsVisualSystemTunnelDrawing.h">
       <Filter>CloudsLibrary\src\VisualSystems\TunnelDrawing</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h">
-      <Filter>CloudsLibrary\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
@@ -370,6 +376,12 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
       <Filter>CloudsLibrary\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.h">
+      <Filter>addons\ofxCrypto\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsCrypto.h">
+      <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
