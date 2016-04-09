@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
+#include "CloudsMedia.h"
 
 //#include "ofxAVFVideoPlayer.h"
 typedef struct{
