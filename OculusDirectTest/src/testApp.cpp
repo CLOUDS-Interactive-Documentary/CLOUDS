@@ -9,6 +9,7 @@ void testApp::setup(){
 
 	oculus.baseCamera = &cam;
     oculus.setup();
+
 	ofDisableAlphaBlending();
 
 }
@@ -60,7 +61,7 @@ void testApp::draw(){
 	if (oculus.isSetup()) {
 		oculus.draw();
 	} else {
-		cout << "NOT SETUP " << endl;
+		//cout << "NOT SETUP " << endl;
 		cam.begin();
 		drawScene();
 		cam.end();
