@@ -78,7 +78,6 @@ float depthValueFromSample( vec2 depthPos){
 void main(void){
 	
 	// Here we get the position, and account for the vertex position flowing
-//	vec2 samplePos = vec2(gl_Vertex.x + offset, gl_Vertex.y + 480. * scale);
     
     float depth = depthValueFromSample( gl_Vertex.xy );
     
@@ -124,5 +123,6 @@ void main(void){
 	pos.xyz += pointoffset;
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
+    
     gl_FrontColor = gl_Color;
 }
