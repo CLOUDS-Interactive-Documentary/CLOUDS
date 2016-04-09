@@ -209,7 +209,7 @@ void CloudsVisualSystemOcean::selfDraw(){
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 	glPointSize(pointSize);
 	glEnable(GL_CULL_FACE);
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(TARGET_OSX)
 	glCullFace(GL_BACK);
 #else
     glCullFace(GL_FRONT);

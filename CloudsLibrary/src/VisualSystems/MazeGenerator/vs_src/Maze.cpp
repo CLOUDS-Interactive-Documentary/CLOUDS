@@ -136,7 +136,7 @@ void Maze::draw(ofCamera *cam, ofVec3f &lightPos)
     // draw maze geometry
     ofSetColor(settings->getWallColor());
 	glEnable(GL_CULL_FACE);
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(TARGET_OSX)
 	glCullFace(GL_BACK);
 #else
 	glCullFace(GL_FRONT);
