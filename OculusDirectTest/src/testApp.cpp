@@ -11,7 +11,13 @@ void testApp::setup(){
     oculus.setup();
 
 	ofDisableAlphaBlending();
-	oculus.setFadeColor( ofFloatColor(1.,0.,0.,1.) );
+
+	oculus.setFadeColor( ofFloatColor(0.,0.,0.,1.) );
+
+	oculus.beginBackground();
+
+	oculus.endBackground();
+
 }
 
 //--------------------------------------------------------------
