@@ -198,25 +198,24 @@ void CloudsVisualSystemFlying::selfUpdate()
         regenerate = false;
     }
     
-    if (!bUseOculusRift && cameraControl)
+    if (cameraControl)
     {
-        ofVec2f targetLookAngle;
-        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-        targetLookAngle.x = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -20.f, -30.f, true);
-        targetLookAngle.y = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 20.f, -20.f, true);
-        currentLookAngle.interpolate(targetLookAngle, .05);
-        ofQuaternion rx, ry;
-        rx.makeRotate(currentLookAngle.x, 1, 0, 0);
-        ry.makeRotate(currentLookAngle.y, 0, 1, 0);
-        getCameraRef().setOrientation(rx * ry);
+		if(!bUseOculusRift){
+			ofVec2f targetLookAngle;
+			//MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+			targetLookAngle.x = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -20.f, -30.f, true);
+			targetLookAngle.y = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 20.f, -20.f, true);
+			currentLookAngle.interpolate(targetLookAngle, .05);
+			ofQuaternion rx, ry;
+			rx.makeRotate(currentLookAngle.x, 1, 0, 0);
+			ry.makeRotate(currentLookAngle.y, 0, 1, 0);
+			getCameraRef().setOrientation(rx * ry);
+		}
         getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
-        
-        /*xRot += CAM_DAMPING * (ofMap(abs(GetCloudsInputY() - ofGetHeight() * .5f), 0, ofGetHeight() * 0.5, 30.f, 20.f) - xRot);
-        yRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20) - yRot);
-        zSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -600.f, 600.f) - zSpeed);
-        getCameraRef().move(0, 0, zSpeed * ofGetLastFrameTime());
-        getCameraRef().setOrientation(ofVec3f(-xRot, yRot, 0.f));*/
+		//cout << "camera moved to " << camSpeed* ofGetLastFrameTime() << " cam pos " << getCameraRef().getPosition() << endl;
     }
+
+
     float distToFloor = getCameraRef().getPosition().y / cos(DEG_TO_RAD * (90 + getCameraRef().getRoll()));
     floorLookAt = getCameraRef().getPosition() + getCameraRef().getLookAtDir().normalized() * distToFloor;
     
@@ -328,8 +327,9 @@ void CloudsVisualSystemFlying::selfDraw()
 
 void CloudsVisualSystemFlying::selfPostDraw()
 {
-	//CloudsVisualSystem::selfPostDraw();
+	CloudsVisualSystem::selfPostDraw();
 
+	/*
     glPushAttrib(GL_ENABLE_BIT);
 	ofDisableLighting();
 	ofPushStyle();
@@ -342,6 +342,7 @@ void CloudsVisualSystemFlying::selfPostDraw()
     else CloudsVisualSystem::getSharedRenderTarget().draw(0, 0, getCanvasWidth(), getCanvasHeight());
 	ofPopStyle();
 	glPopAttrib();
+	*/
 }
 
 //use render gui for display settings, like changing colors
