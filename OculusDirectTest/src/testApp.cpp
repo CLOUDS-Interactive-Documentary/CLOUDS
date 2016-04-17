@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	showOverlay = false;
+	showOverlay = true;
     ofSetVerticalSync(false);
 	ofSetBackgroundAuto(false);
 
@@ -23,7 +23,7 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 	auto fade = (float)ofGetMouseX()/(float)ofGetWidth();
-	oculus.setFadeOut( fade );
+	oculus.setFade( fade );
 	cam.begin();
 	cam.end();
 	ofLogError() << "fade: " << fade;
@@ -34,7 +34,7 @@ void testApp::draw(){
 	
 	if (oculus.isSetup()) {
 
-		/*
+		
         if (showOverlay) {
 
             oculus.beginOverlay(-230, 320, 240);
@@ -57,8 +57,7 @@ void testApp::draw(){
             ofPopStyle();
             oculus.endOverlay();
         }
-		*/
-
+		
 	
         oculus.beginLeftEye();
         drawScene();
