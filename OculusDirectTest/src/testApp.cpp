@@ -9,14 +9,18 @@ void testApp::setup(){
 
 	oculus.baseCamera = &cam;
     oculus.setup();
-	ofDisableAlphaBlending();
 
+	ofDisableAlphaBlending();
+	oculus.setFadeColor( ofFloatColor(1.,0.,0.,1.) );
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+	auto fade = (float)ofGetMouseX()/(float)ofGetWidth();
+	oculus.setFadeOut( fade );
 	cam.begin();
 	cam.end();
+	ofLogError() << "fade: " << fade;
 }
 
 //--------------------------------------------------------------
@@ -24,7 +28,7 @@ void testApp::draw(){
 	
 	if (oculus.isSetup()) {
 
-
+		/*
         if (showOverlay) {
 
             oculus.beginOverlay(-230, 320, 240);
@@ -47,20 +51,23 @@ void testApp::draw(){
             ofPopStyle();
             oculus.endOverlay();
         }
+		*/
 
+	
         oculus.beginLeftEye();
         drawScene();
         oculus.endLeftEye();
 
-        oculus.beginRightEye();
+		oculus.beginRightEye();
         drawScene();
         oculus.endRightEye();		
+       
 	}
 
 	if (oculus.isSetup()) {
 		oculus.draw();
 	} else {
-		cout << "NOT SETUP " << endl;
+		//cout << "NOT SETUP " << endl;
 		cam.begin();
 		drawScene();
 		cam.end();
