@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
+#include "CloudsMedia.h"
 
 //#include "ofxAVFVideoPlayer.h"
 typedef struct{
@@ -49,11 +50,13 @@ public:
     
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
+
 	
 	ofCamera& getCameraRef(){
 		return cloudsCamera;
 	}
 	
+
   protected:
     bool bDrawVideoDebug;
 	ofVideoPlayer player;

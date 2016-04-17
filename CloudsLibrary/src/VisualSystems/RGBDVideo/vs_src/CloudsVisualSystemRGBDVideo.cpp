@@ -476,6 +476,9 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 }
 
 void CloudsVisualSystemRGBDVideo::setupGeneralUniforms(ofShader& shader){
+	
+	player.bind();
+
     shader.setUniformTexture("texture", player.getTextureReference(), 1);
     shader.setUniform2f("depthPP", videoIntrinsics.depthPP.x,videoIntrinsics.depthPP.y );
     shader.setUniform2f("depthFOV", videoIntrinsics.depthFOV.x,videoIntrinsics.depthFOV.y );
@@ -491,7 +494,7 @@ void CloudsVisualSystemRGBDVideo::setupGeneralUniforms(ofShader& shader){
 
 void CloudsVisualSystemRGBDVideo::drawOcclusionLayer(){
     
-    glPushMatrix();
+	ofPushMatrix();
 	
     if(!bEnableOcclusionDebug){
         ofTranslate(0, 0, 5.44);
@@ -509,6 +512,8 @@ void CloudsVisualSystemRGBDVideo::drawOcclusionLayer(){
     occlusionShader.setUniform2f("simplify", occlusionSimplifyX,occlusionSimplifyY);
     setupGeneralUniforms(occlusionShader);
     occlusionMesh.drawElements(GL_TRIANGLES, occlusionIndexCount);
+	player.unbind();
+
     occlusionShader.end();
     
     if(!bEnableOcclusionDebug){
@@ -518,23 +523,25 @@ void CloudsVisualSystemRGBDVideo::drawOcclusionLayer(){
         glDepthMask(GL_FALSE);
     }
     
-    glPopMatrix();
+	ofPopMatrix();
 }
 
 void CloudsVisualSystemRGBDVideo::drawMeshLayer(){
     
-	glPushMatrix();
+	ofPushMatrix();
 	
     setupRGBDTransforms();
     ofSetColor(255, meshAlpha*255);
+
     meshShader.begin();
     meshShader.setUniform1f("edgeClip", 200);
     meshShader.setUniform2f("simplify", meshSimplifyX,meshSimplifyY);
     setupGeneralUniforms(meshShader);
     meshVbo.drawElements(GL_TRIANGLES, meshIndexCount);
+	player.unbind();
     meshShader.end();
     
-    glPopMatrix();
+	ofPopMatrix();
 }
 
 void CloudsVisualSystemRGBDVideo::drawPointLayer(){
@@ -554,6 +561,7 @@ void CloudsVisualSystemRGBDVideo::drawPointLayer(){
 	pointsShader.setUniform1f("alpha", pointAlpha);
 	setupGeneralUniforms(pointsShader);
 	points.drawVertices();
+	player.unbind();
 	pointsShader.end();
 	
 	ofPopMatrix();

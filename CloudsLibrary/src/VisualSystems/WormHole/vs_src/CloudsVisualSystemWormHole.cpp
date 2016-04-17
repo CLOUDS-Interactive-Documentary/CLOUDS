@@ -552,7 +552,7 @@ void CloudsVisualSystemWormHole::selfDraw()
 	//cull
 	if (bCullBackface){
 		glEnable(GL_CULL_FACE);
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(TARGET_OSX) 
 		glCullFace(GL_BACK);
 #else
 		glCullFace(GL_FRONT);

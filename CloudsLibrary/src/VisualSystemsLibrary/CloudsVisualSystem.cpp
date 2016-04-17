@@ -306,7 +306,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
     
 	ofFbo& renderTarget = getStaticRenderTarget();  
 #ifdef OCULUS_RIFT
-	int targetWidth  = 1920;
+	int targetWidth  = 1920/2;
 	int targetHeight = 1080;
 #else
 	int targetWidth  = ofGetWidth();
