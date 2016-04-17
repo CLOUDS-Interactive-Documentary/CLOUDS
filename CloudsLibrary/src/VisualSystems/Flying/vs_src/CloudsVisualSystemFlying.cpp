@@ -1,8 +1,9 @@
 //
 //  CloudsVisualSystemFlying.cpp
 //
-
+#ifdef TONIC_SOUNDS
 #include "ofxAudioDecoderTonic.h"
+#endif
 
 #include "CloudsVisualSystemFlying.h"
 #include "CloudsRGBDVideoPlayer.h"
@@ -12,7 +13,9 @@
 //const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying2.xml" };
 const float CloudsVisualSystemFlying::CAM_DAMPING = .08f;
 
+#ifdef TONIC_SOUNDS
 using namespace Tonic;
+#endif
 
 CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     numPlantMeshes(100), floorW(2000), floorD(2000), floorHalfW(.5f * floorW), floorHalfD(.5f * floorD),
@@ -36,11 +39,12 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
 // geometry should be loaded here
 void CloudsVisualSystemFlying::selfSetup()
 {
-
+	#ifdef TONIC_SOUNDS
     tonicSamples.push_back(TonicSample("SriLankaForest.mp3"));
     tonicSamples.push_back(TonicSample("FOREST.mp3"));
     tonicSamples.push_back(TonicSample("organ_slower.mp3"));
-    
+	#endif
+
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     post.init(getCanvasWidth(), getCanvasHeight(), true);
     //post.createPass<EdgePass>();
@@ -166,22 +170,25 @@ void CloudsVisualSystemFlying::generate()
 void CloudsVisualSystemFlying::selfBegin()
 {
     getCameraRef().setPosition(0, 200, floorHalfD);
-    
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
 
+   	#ifdef TONIC_SOUNDS
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
     for (int i=0; i<tonicSamples.size(); i++)
     {
         if (tonicSamples[i].playSample) {
             tonicSamples[i].soundTrigger.trigger();
         }
     }
+	#endif
 }
 
 //normal update call
 void CloudsVisualSystemFlying::selfUpdate()
 {
     
+	#ifdef TONIC_SOUNDS
     volumeControl.value(gain);
+	#endif
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     if (post.getWidth() != getCanvasWidth() || post.getHeight() != getCanvasHeight()) post.init(getCanvasWidth(), getCanvasHeight(), true);
  
@@ -322,6 +329,7 @@ void CloudsVisualSystemFlying::selfDraw()
 void CloudsVisualSystemFlying::selfPostDraw()
 {
 	//CloudsVisualSystem::selfPostDraw();
+
     glPushAttrib(GL_ENABLE_BIT);
 	ofDisableLighting();
 	ofPushStyle();
@@ -365,10 +373,13 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     }
     
     rdrGui->addSpacer();
+
+	#ifdef TONIC_SOUNDS
     rdrGui->addToggle(tonicSamples[0].soundFile, &tonicSamples[0].playSample);
     rdrGui->addToggle(tonicSamples[1].soundFile, &tonicSamples[1].playSample);
     rdrGui->addToggle(tonicSamples[2].soundFile, &tonicSamples[2].playSample);
     rdrGui->addSlider("Gain", 0, 1, &gain);
+	#endif
 }
 
 //events are called when the system is active
@@ -388,6 +399,7 @@ void CloudsVisualSystemFlying::selfKeyPressed(ofKeyEventArgs & args)
 
 void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
 {
+	#ifdef TONIC_SOUNDS
     for (int i=0; i<3; i++)
     {
         if (e.widget->getName() == tonicSamples[i].soundFile) {
@@ -398,6 +410,7 @@ void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
             }
         }
     }
+	#endif
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -446,8 +459,10 @@ void CloudsVisualSystemFlying::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemFlying::selfEnd(){
+	#ifdef TONIC_SOUNDS
     volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
+	#endif
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemFlying::selfExit(){
@@ -495,12 +510,14 @@ Generator CloudsVisualSystemFlying::buildSynth()
 }
 #endif
 
+#ifdef TONIC_SOUNDS
 void CloudsVisualSystemFlying::audioRequested(ofAudioEventArgs& args)
 {
     #ifdef TONIC_SOUNDS
     synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
     #endif
 }
+#endif
 
 
 

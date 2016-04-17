@@ -16,7 +16,9 @@
 //#include "ofxTonic.h"
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
+#ifdef TONIC_SOUNDS
 #include "TonicSample.h"
+#endif
 
 //using namespace Tonic;
 
@@ -165,10 +167,12 @@ protected:
 	ofVboMesh simplePointcloud;*/
     
 	// Sound
+	#ifdef TONIC_SOUNDS
     vector<TonicSample> tonicSamples;
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
     Tonic::ControlParameter volumeControl;
     float gain;
+	#endif
 };
