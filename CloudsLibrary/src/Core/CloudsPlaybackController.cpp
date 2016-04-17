@@ -1775,6 +1775,9 @@ void CloudsPlaybackController::updateTransition(){
     }
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
     
+	#ifdef OCULUS_RIFT
+	CloudsVisualSystem::getOculusRift().setFade(crossfadeValue);
+	#endif
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
 	}   
@@ -1822,9 +1825,9 @@ void CloudsPlaybackController::drawKinectFeedback(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::preDraw(ofEventArgs& args){
 #ifdef OCULUS_RIFT
-    
+    /*
     float hudDistance = CloudsVisualSystem::subtitleHudZ;
-    float hudScale =CloudsVisualSystem::subtitleHudScale;
+    float hudScale = CloudsVisualSystem::subtitleHudScale;
     CloudsVisualSystem::getOculusRift().beginOverlay(hudDistance, hudScale, 1920, 1080);
 
     if(currentVisualSystem == introSequence){
@@ -1834,6 +1837,7 @@ void CloudsPlaybackController::preDraw(ofEventArgs& args){
     hud.draw();
     
     CloudsVisualSystem::getOculusRift().endOverlay();
+	*/
 #endif
 }
 
