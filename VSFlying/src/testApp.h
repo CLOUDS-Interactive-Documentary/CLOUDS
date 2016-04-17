@@ -25,5 +25,5 @@ class testApp : public ofBaseApp{
     void audioRequested(float *output, int bufferSize, int nChannels);
 
     CloudsVisualSystemFlying flying;
-    CloudsMixer mixer;
+    //CloudsMixer mixer;
 };

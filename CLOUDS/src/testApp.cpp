@@ -22,17 +22,15 @@ void testApp::setup(){
 #endif
 
     
-#ifdef OCULUS_RIFT
-    //ofToggleFullscreen();
-#else
     ofSetWindowShape(1280, 720);
     ofSetWindowPosition(ofGetScreenWidth()/2 - 1280/2, ofGetScreenHeight()/2 - 720/2);
-
-#endif
     
 #ifdef CLOUDS_RELEASE
+	
+	#ifndef OCULUS_RIFT
 	ofHideCursor();
-    
+	#endif
+
     // Log to file instead of console.
     // Note that this only works with ofLog(...), not cout.
     if (!ofDirectory::doesDirectoryExist(GetCloudsDataPath(true) + "fml")) {

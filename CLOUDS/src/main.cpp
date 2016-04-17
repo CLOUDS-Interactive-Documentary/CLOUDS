@@ -12,7 +12,7 @@ int main(){
 #endif
 #endif
 
-	ofSetupOpenGL(&window, 1920, 1080, OF_WINDOW);
+	ofSetupOpenGL(&window, 1280, 720, OF_WINDOW);
 	ofRunApp(new testApp()); // start the app
 
 }
