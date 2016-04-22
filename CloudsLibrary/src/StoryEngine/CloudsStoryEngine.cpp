@@ -775,14 +775,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 		
         ///////////////// QUESTIONS
         //adding all option clips with questions		
-#ifdef CLOUDS_SCREENING
-		if(shouldAddScreeningQuestionsToAct && state.act->getAllClips().size() > 2){
-			addQuestions(state, screeningQuestionClips);
-			shouldAddScreeningQuestionsToAct = false;
-		}
-#else
+//#ifdef CLOUDS_SCREENING
+//		if(shouldAddScreeningQuestionsToAct && state.act->getAllClips().size() > 2){
+//			addQuestions(state, screeningQuestionClips);
+//			shouldAddScreeningQuestionsToAct = false;
+//		}
+//#else
 		addQuestions(state, questionClips);
-#endif
+//#endif
         /////////////////
 		
 		///////////////// DIOCHOTOMIES

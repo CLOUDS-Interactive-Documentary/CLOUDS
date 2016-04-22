@@ -1293,6 +1293,8 @@
 		03A0F7361947A0850071CF4B /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
 		03A0F7391947A0850071CF4B /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		03C3983A1CCAC9CB00F66A80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
+		03C3983B1CCACC3F00F66A80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
+		03C3983C1CCACC4600F66A80 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15DCFE91AB79689007D1F44 /* OpenAL.framework */; };
 		03D58F411946321500FCFF7B /* ofxBinaryMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */; };
 		03E28DA91A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */; };
 		03E28DAA1A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */; };
@@ -5809,6 +5811,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03C3983C1CCACC4600F66A80 /* OpenAL.framework in Frameworks */,
+				03C3983B1CCACC3F00F66A80 /* SystemConfiguration.framework in Frameworks */,
 				E79BFA7919492CCE00A0A83E /* AudioUnit.framework in Frameworks */,
 				0380348B1948167700AFD40C /* QuartzCore.framework in Frameworks */,
 				0380348C1948167700AFD40C /* libz.dylib in Frameworks */,
@@ -11566,7 +11570,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+			shellScript = "\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
 		};
 		03A0F7371947A0850071CF4B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -15416,10 +15420,7 @@
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
 				);
-				OTHER_LDFLAGS = (
-					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
-				);
+				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PRODUCT_NAME = "$(TARGET_NAME)_Debug";
 				WRAPPER_EXTENSION = app;
 			};
