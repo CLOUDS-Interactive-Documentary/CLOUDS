@@ -1292,6 +1292,7 @@
 		03A0F7351947A0850071CF4B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		03A0F7361947A0850071CF4B /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
 		03A0F7391947A0850071CF4B /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		03C3983A1CCAC9CB00F66A80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
 		03D58F411946321500FCFF7B /* ofxBinaryMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */; };
 		03E28DA91A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */; };
 		03E28DAA1A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */; };
@@ -2707,7 +2708,6 @@
 		64E143481B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */; };
 		64E143491B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */; };
 		64E1434A1B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */; };
-		64E143551B45E073005F54BA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E143541B45E073005F54BA /* SystemConfiguration.framework */; };
 		A60F27061AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
 		A60F27071AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
 		A60F27081AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
@@ -4138,6 +4138,7 @@
 		0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVisuals.cpp; sourceTree = "<group>"; };
 		0385CDB71AF5B8D8000553F2 /* CloudsVisualSystemVisuals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVisuals.h; sourceTree = "<group>"; };
 		03A0F73D1947A0850071CF4B /* CLOUDS_KINECT_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_KINECT_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCalibrationNode.cpp; sourceTree = "<group>"; };
 		03E28DA21A9D767D005AA181 /* CloudsCalibrationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCalibrationNode.h; sourceTree = "<group>"; };
 		03E28DA31A9D767D005AA181 /* CloudsPlaybackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPlaybackController.cpp; sourceTree = "<group>"; };
@@ -4191,7 +4192,6 @@
 		64E142ED1B45DF0B005F54BA /* ofxReachabilityImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxReachabilityImpl.h; sourceTree = "<group>"; };
 		64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxReachabilityImplPing.cpp; sourceTree = "<group>"; };
 		64E142EF1B45DF0B005F54BA /* ofxReachabilityImplPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxReachabilityImplPing.h; sourceTree = "<group>"; };
-		64E143541B45E073005F54BA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		A60F26C91AF136B400A1C863 /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
 		A60F26DC1AF136B400A1C863 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
 		A60F26DD1AF136B400A1C863 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
@@ -5955,7 +5955,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64E143551B45E073005F54BA /* SystemConfiguration.framework in Frameworks */,
 				642723CA1AE81E5200A13289 /* libcurl.dylib in Frameworks */,
 				642723CB1AE81E5200A13289 /* OpenAL.framework in Frameworks */,
 				642723CC1AE81E5200A13289 /* QuartzCore.framework in Frameworks */,
@@ -6106,6 +6105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03C3983A1CCAC9CB00F66A80 /* SystemConfiguration.framework in Frameworks */,
 				64D0244D1AE6C7CB0008D018 /* libcurl.dylib in Frameworks */,
 				C15DCFEA1AB79689007D1F44 /* OpenAL.framework in Frameworks */,
 				E755D70619440E3000AA81C1 /* QuartzCore.framework in Frameworks */,
@@ -6612,7 +6612,7 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				64E143541B45E073005F54BA /* SystemConfiguration.framework */,
+				03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */,
 				64D0244C1AE6C7CB0008D018 /* libcurl.dylib */,
 				035F4F981A9DA6A0003726D9 /* libovr.a */,
 				E755D701194405C500AA81C1 /* libz.dylib */,
@@ -16024,7 +16024,6 @@
 		642726C11AE81EAF00A13289 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -16144,7 +16143,6 @@
 		642726C21AE81EAF00A13289 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -16302,7 +16300,8 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.11;
+				USER_HEADER_SEARCH_PATHS = "\"$(OF_PATH)/libs/openssl/include\" \"$(OF_PATH)/libs/glut/include\"";
 			};
 			name = Debug;
 		};
@@ -16347,7 +16346,8 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.11;
+				USER_HEADER_SEARCH_PATHS = "\"$(OF_PATH)/libs/openssl/include\" \"$(OF_PATH)/libs/glut/include\"";
 			};
 			name = Release;
 		};
@@ -16579,7 +16579,6 @@
 		E7DDC352194437EC00E61D75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -16698,7 +16697,6 @@
 		E7DDC353194437EC00E61D75 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
