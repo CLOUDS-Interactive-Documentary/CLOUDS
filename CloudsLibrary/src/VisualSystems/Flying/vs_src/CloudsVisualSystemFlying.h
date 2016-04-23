@@ -16,7 +16,9 @@
 //#include "ofxTonic.h"
 #include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
+#ifdef TONIC_SOUNDS
 #include "TonicSample.h"
+#endif
 
 //using namespace Tonic;
 
@@ -103,16 +105,6 @@ class CloudsVisualSystemFlying : public CloudsVisualSystem
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
-	//
-	ofCamera& getCameraRef(){
-		return CloudsVisualSystem::getCameraRef();
-	}
 
 protected:
     //  Your Stuff
@@ -165,10 +157,12 @@ protected:
 	ofVboMesh simplePointcloud;*/
     
 	// Sound
+	#ifdef TONIC_SOUNDS
     vector<TonicSample> tonicSamples;
     Tonic::ofxTonicSynth synth;
     Tonic::Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
     Tonic::ControlParameter volumeControl;
     float gain;
+	#endif
 };

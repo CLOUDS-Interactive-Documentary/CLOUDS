@@ -91,66 +91,6 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Flying\vs_src\CloudsVisualSystemFlying.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Flying\vs_src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Branch.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rule.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rules.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\RuleSet.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\Action.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\ConeAction.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\CubeAction.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\IcosphereAction.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\LineAction.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PlaneAction.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PointAction.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\SphereAction.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\StopAction.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TransformAction.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TubeAction.cpp">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\SSAOPass.cpp">
-      <Filter>addons\ofxPostProcessing\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.cpp">
-      <Filter>addons\ofxPostProcessing\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.cpp">
-      <Filter>addons\ofxPostProcessing\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.cpp">
-      <Filter>addons\ofxPostProcessing\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\BleachBypassPass.cpp">
       <Filter>addons\ofxPostProcessing\src</Filter>
     </ClCompile>
@@ -211,20 +151,41 @@
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\RimHighlightingPass.cpp">
       <Filter>addons\ofxPostProcessing\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\SSAOPass.cpp">
+      <Filter>addons\ofxPostProcessing\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.cpp">
+      <Filter>addons\ofxPostProcessing\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.cpp">
+      <Filter>addons\ofxPostProcessing\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.cpp">
+      <Filter>addons\ofxPostProcessing\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGpuParticles\src\GpuParticles.cpp">
+      <Filter>addons\ofxGpuParticles\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.cpp">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
-      <Filter>CloudsLibrary\src</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputOculus.cpp">
+      <Filter>CloudsLibrary\src\Input</Filter>
     </ClCompile>
     <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp">
       <Filter>CloudsLibrary\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.cpp">
       <Filter>addons\ofxCrypto\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
       <Filter>addons\ofxLocalization\src</Filter>
@@ -234,6 +195,54 @@
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp">
       <Filter>addons\ofxSubtitles\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Flying\vs_src\CloudsVisualSystemFlying.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\vs_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rule.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rules.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\RuleSet.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Branch.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\Action.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\ConeAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\CubeAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\IcosphereAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\LineAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PlaneAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PointAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\SphereAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\StopAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TransformAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TubeAction.cpp">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -285,56 +294,65 @@
     <Filter Include="addons\ofxObjLoader\libs\glm">
       <UniqueIdentifier>{3c3a084f-1f94-410a-beea-5864fde43503}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Flying">
-      <UniqueIdentifier>{c6d6e5a1-f831-4f07-9442-226bbd386435}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Flying\vs_src">
-      <UniqueIdentifier>{a5bd867b-a290-4d82-b6a2-d558ce1ca61f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Rulez">
-      <UniqueIdentifier>{87d48532-a8a1-43b6-b07d-db7471041b6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Rulez\vs_src">
-      <UniqueIdentifier>{2f4bd50b-4720-4d45-a4f2-ff6a9d109946}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules">
-      <UniqueIdentifier>{a9e71643-f7f3-41f7-bd05-395c6d3ae990}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src">
-      <UniqueIdentifier>{34187dc6-34ab-4e65-963a-e0c36fbffe40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions">
-      <UniqueIdentifier>{708577f8-673c-4f99-b7d4-abc5ca65de3b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons\ofxPostProcessing">
-      <UniqueIdentifier>{4e508b39-5dd0-4fdc-9fd4-49224c475ad0}</UniqueIdentifier>
+      <UniqueIdentifier>{062e9e50-2530-4ee7-bc70-b04dd467e130}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxPostProcessing\src">
-      <UniqueIdentifier>{9c7c9fd1-098b-4085-ab10-731fb50c3602}</UniqueIdentifier>
+      <UniqueIdentifier>{c48283b5-517c-43d7-a2c3-a5d3f0552d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNearestNeighbour">
+      <UniqueIdentifier>{3ffe532f-3183-4062-bb2a-025952d1bad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNearestNeighbour\src">
+      <UniqueIdentifier>{970f1f3b-838f-472e-adb9-00c0cb2e6b33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNearestNeighbour\libs">
+      <UniqueIdentifier>{832af2c4-816a-4368-a30c-0f4541b04673}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNearestNeighbour\libs\nanoflann">
+      <UniqueIdentifier>{9584983a-565b-40d3-b2ca-13921e582311}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNearestNeighbour\libs\nanoflann\include">
+      <UniqueIdentifier>{05df96c3-a49e-4f27-9c80-9d9f36c1dfad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGpuParticles">
+      <UniqueIdentifier>{a00369c7-9f17-4c29-b40c-61c58adc35b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGpuParticles\src">
+      <UniqueIdentifier>{a0b1354e-dc7c-4c43-834d-c15fd6fc9d71}</UniqueIdentifier>
     </Filter>
     <Filter Include="CloudsLibrary\src\Sound">
-      <UniqueIdentifier>{93ff702b-ffbd-4581-a60c-900d6b134616}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CloudsLibrary\src\VisualSystems\Flying\shaders">
-      <UniqueIdentifier>{d8844c37-70d2-49d2-8fbf-970c2d8d7e35}</UniqueIdentifier>
+      <UniqueIdentifier>{1d0be2ab-e56b-4aac-9059-a6306d6820f9}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxCrypto">
-      <UniqueIdentifier>{2d4167ab-ba4d-480c-bc39-fd63e178c765}</UniqueIdentifier>
+      <UniqueIdentifier>{c7f0858f-1ac3-4575-8875-72676e9a3519}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxCrypto\src">
-      <UniqueIdentifier>{31735c83-6878-4518-b899-a31738c08087}</UniqueIdentifier>
+      <UniqueIdentifier>{e8e91b4e-ac96-46f7-bf9d-c9dbd4a9d9ff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxLocalization">
-      <UniqueIdentifier>{fe2b1346-ddd5-4c3a-93d9-8ce098f01e45}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxLocalization\src">
-      <UniqueIdentifier>{de693c58-6e4d-402d-ba8e-4f4b5191f7c6}</UniqueIdentifier>
+    <Filter Include="CloudsLibrary\src\Core">
+      <UniqueIdentifier>{3062c958-81f3-46bd-ab4b-32c0b564ea68}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxSubtitles">
-      <UniqueIdentifier>{bb63c9d7-f50a-46a3-a7b0-1b9ad56473de}</UniqueIdentifier>
+      <UniqueIdentifier>{f31369cd-f3cd-4dab-bd59-19a1fb1dd744}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxSubtitles\src">
-      <UniqueIdentifier>{aa450c71-1d8a-4c71-99e8-75d38665aaa9}</UniqueIdentifier>
+      <UniqueIdentifier>{161593bd-5724-4c71-9683-1a6003bc984a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization">
+      <UniqueIdentifier>{bf046948-251b-4ac7-84b3-a1a733113b35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLocalization\src">
+      <UniqueIdentifier>{f8073736-b277-43bb-878e-e023a974d281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\Flying">
+      <UniqueIdentifier>{20ca4b41-2e31-4810-98e7-2e6d65d59b4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\Flying\vs_src">
+      <UniqueIdentifier>{71d77ff2-94d5-462f-828c-e28f30649031}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CloudsLibrary\src\VisualSystems\Flying\ofxRules">
+      <UniqueIdentifier>{02cba5b1-d3d5-4c71-9cc5-0ceada7ebb60}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -500,72 +518,6 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
       <Filter>CloudsLibrary\src\VisualSystemsLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Flying\vs_src\CloudsVisualSystemFlying.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Flying\vs_src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Branch.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\ofxRules.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rule.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rules.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\RuleSet.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\Action.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\ConeAction.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\CubeAction.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\IcosphereAction.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\LineAction.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PlaneAction.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PointAction.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\SphereAction.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\StopAction.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TransformAction.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TubeAction.h">
-      <Filter>CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\RimHighlightingPass.h">
-      <Filter>addons\ofxPostProcessing\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\SSAOPass.h">
-      <Filter>addons\ofxPostProcessing\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.h">
-      <Filter>addons\ofxPostProcessing\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.h">
-      <Filter>addons\ofxPostProcessing\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.h">
-      <Filter>addons\ofxPostProcessing\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\BleachBypassPass.h">
       <Filter>addons\ofxPostProcessing\src</Filter>
     </ClInclude>
@@ -626,14 +578,47 @@
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\RGBShiftPass.h">
       <Filter>addons\ofxPostProcessing\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\RimHighlightingPass.h">
+      <Filter>addons\ofxPostProcessing\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\SSAOPass.h">
+      <Filter>addons\ofxPostProcessing\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.h">
+      <Filter>addons\ofxPostProcessing\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.h">
+      <Filter>addons\ofxPostProcessing\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.h">
+      <Filter>addons\ofxPostProcessing\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\libs\nanoflann\include\nanoflann.hpp">
+      <Filter>addons\ofxNearestNeighbour\libs\nanoflann\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\NearestNeighbour.h">
+      <Filter>addons\ofxNearestNeighbour\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\ofxNearestNeighbour.h">
+      <Filter>addons\ofxNearestNeighbour\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\PointCloud.h">
+      <Filter>addons\ofxNearestNeighbour\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGpuParticles\src\GpuParticles.h">
+      <Filter>addons\ofxGpuParticles\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGpuParticles\src\ofxGpuParticles.h">
+      <Filter>addons\ofxGpuParticles\src</Filter>
+    </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsAudioEvents.h">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
-      <Filter>CloudsLibrary\src</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputOculus.h">
+      <Filter>CloudsLibrary\src\Input</Filter>
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\CloudsCrypto.h">
       <Filter>CloudsLibrary\src</Filter>
@@ -641,8 +626,14 @@
     <ClInclude Include="..\CloudsLibrary\src\CloudsEvents.h">
       <Filter>CloudsLibrary\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.h">
       <Filter>addons\ofxCrypto\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h">
       <Filter>addons\ofxLocalization\src</Filter>
@@ -653,22 +644,59 @@
     <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h">
       <Filter>addons\ofxSubtitles\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Flying\vs_src\CloudsVisualSystemFlying.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\vs_src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rule.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Rules.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\RuleSet.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\Branch.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\ofxRules.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\Action.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\ConeAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\CubeAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\IcosphereAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\LineAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PlaneAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\PointAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\SphereAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\StopAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TransformAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\Rulez\vs_src\ofxRules\src\actions\TubeAction.h">
+      <Filter>CloudsLibrary\src\VisualSystems\Flying\ofxRules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\CloudsData\visualsystems\Flying\shaders\plants.frag">
-      <Filter>CloudsLibrary\src\VisualSystems\Flying\shaders</Filter>
-    </None>
-    <None Include="..\CloudsData\visualsystems\Flying\shaders\plants.vert">
-      <Filter>CloudsLibrary\src\VisualSystems\Flying\shaders</Filter>
-    </None>
-    <None Include="..\CloudsData\visualsystems\Flying\shaders\floor.frag">
-      <Filter>CloudsLibrary\src\VisualSystems\Flying\shaders</Filter>
-    </None>
-    <None Include="..\CloudsData\visualsystems\Flying\shaders\floor.vert">
-      <Filter>CloudsLibrary\src\VisualSystems\Flying\shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>

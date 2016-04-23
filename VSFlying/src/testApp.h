@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "CloudsVisualSystemFlying.h"
-#include "CloudsMixer.h"
+//#include "CloudsMixer.h"
 
 class testApp : public ofBaseApp{
   public:
