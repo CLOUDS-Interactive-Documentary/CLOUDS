@@ -1181,7 +1181,7 @@ void CloudsVisualSystemRGBD::updateQuestions(){
         }
         
 		#ifdef OCULUS_RIFT
-		ofVec3f screenPos = getOculusRift().worldToScreen(portals[i]->hoverPosition, true);
+		ofVec3f screenPos = getOculusRift().worldToScreen(portals[i]->hoverPosition);
         ofRectangle viewport = getOculusRift().getOculusViewport();
 		float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
                                     viewport.getCenter().x, viewport.getCenter().y);

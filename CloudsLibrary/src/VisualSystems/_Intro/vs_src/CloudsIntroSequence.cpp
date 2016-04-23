@@ -879,7 +879,7 @@ void CloudsIntroSequence::updateQuestions(){
 
 #ifdef OCULUS_RIFT
 		if(curQuestion.hoverPosition.z - warpCamera.getPosition().z < questionMinZGrabDistance || &curQuestion == caughtQuestion){
-            ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
+            ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition);
 			ofRectangle viewport = getOculusRift().getOculusViewport();
             float distanceToQuestion = ofDist(screenPos.x, screenPos.y,viewport.getCenter().x, viewport.getCenter().y);
 #else

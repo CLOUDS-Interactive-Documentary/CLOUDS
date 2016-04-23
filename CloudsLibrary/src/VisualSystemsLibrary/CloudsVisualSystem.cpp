@@ -959,12 +959,12 @@ void CloudsVisualSystem::draw3DCursor(){
         ofTranslate(getCameraRef().getPosition());
         ofMatrix4x4 baseRotation;
         baseRotation.makeRotationMatrix(getCameraRef().getOrientationQuat());
-        if(getOculusRift().lockView){
-            ofMultMatrix(baseRotation);
-        }
-        else {
+//        if(getOculusRift().lockView){
+//            ofMultMatrix(baseRotation);
+//        }
+//        else {
             ofMultMatrix(getOculusRift().getOrientationMat() * baseRotation);
-        }
+//        }
         
         ofEnableAlphaBlending();
         
