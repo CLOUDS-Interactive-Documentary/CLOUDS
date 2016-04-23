@@ -3,9 +3,10 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	ofBackground(0);
-	
-	ofSetVerticalSync(true);
+	#ifdef OCULUS_RIFT
+    ofSetVerticalSync(false);
+	ofSetBackgroundAuto(false);
+	#endif
 
 	//////////////SHOW INTRO
     parser.loadFromFiles();
@@ -46,12 +47,12 @@ void testApp::setup(){
 	intro.loadPresetGUISFromName("TunnelWarp");
 #endif
 
-	intro.setDrawToScreen(false);
+	//intro.setDrawToScreen(false);
 	intro.playSystem();
 	//////////////SHOW INTRO
     
-    ofHideCursor();
-    ofToggleFullscreen();
+//    ofHideCursor();
+//    ofToggleFullscreen();
 }
 
 //--------------------------------------------------------------------
@@ -79,7 +80,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	intro.selfPostDraw();
+//	intro.selfPostDraw();
 //	hud.draw();
 }
 
