@@ -37,12 +37,7 @@ void testApp::setup(){
 
 	intro.setup();
 #ifdef OCULUS_RIFT
-	if(CloudsVisualSystem::getOculusRift().isHD()){
-		intro.loadPresetGUISFromName("Oculus");
-	}
-	else{
-		intro.loadPresetGUISFromName("OculusSD");
-	}
+	intro.loadPresetGUISFromName("Oculus_Pretty");
 #else
 	intro.loadPresetGUISFromName("TunnelWarp");
 #endif
