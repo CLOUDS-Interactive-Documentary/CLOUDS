@@ -306,8 +306,12 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
     
 	ofFbo& renderTarget = getStaticRenderTarget();  
 #ifdef OCULUS_RIFT
-	int targetWidth  = 1920/2;
-	int targetHeight = 1080;
+//	int targetWidth  = 1920/2;
+//	int targetHeight = 1080;
+	int targetWidth  = getOculusRift().getOculusViewport().getWidth();
+	int targetHeight = getOculusRift().getOculusViewport().getHeight();
+//	cout << "OCULUS VIEWPORT " << targetWidth << " " << targetHeight << endl;
+
 #else
 	int targetWidth  = ofGetWidth();
 	int targetHeight = ofGetHeight();
