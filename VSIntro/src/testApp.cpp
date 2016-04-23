@@ -3,9 +3,10 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	ofBackground(0);
-	
-	ofSetVerticalSync(true);
+	#ifdef OCULUS_RIFT
+    ofSetVerticalSync(false);
+	ofSetBackgroundAuto(false);
+	#endif
 
 	//////////////SHOW INTRO
     parser.loadFromFiles();
@@ -36,22 +37,17 @@ void testApp::setup(){
 
 	intro.setup();
 #ifdef OCULUS_RIFT
-	if(CloudsVisualSystem::getOculusRift().isHD()){
-		intro.loadPresetGUISFromName("Oculus");
-	}
-	else{
-		intro.loadPresetGUISFromName("OculusSD");
-	}
+	intro.loadPresetGUISFromName("Oculus_Pretty");
 #else
 	intro.loadPresetGUISFromName("TunnelWarp");
 #endif
 
-	intro.setDrawToScreen(false);
+	//intro.setDrawToScreen(false);
 	intro.playSystem();
 	//////////////SHOW INTRO
     
-    ofHideCursor();
-    ofToggleFullscreen();
+//    ofHideCursor();
+//    ofToggleFullscreen();
 }
 
 //--------------------------------------------------------------------
@@ -79,7 +75,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	intro.selfPostDraw();
+//	intro.selfPostDraw();
 //	hud.draw();
 }
 

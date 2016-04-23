@@ -210,8 +210,8 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
         ofRemoveListener(ofURLResponseEvent(), this, &CloudsPlaybackController::updateCheckCompleted);
         
 #ifdef VHX_MEDIA
-        ofRemoveListener(ofxAvailability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
-        ofRemoveListener(ofxAvailability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
+        ofRemoveListener(ofxReachability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
+        ofRemoveListener(ofxReachability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
         
         ofRemoveListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
         ofRemoveListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
@@ -225,7 +225,7 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	}
     
 #ifdef VHX_MEDIA
-    availability.exit();
+    reachability.exit();
 #endif
 }
 
@@ -259,8 +259,8 @@ void CloudsPlaybackController::setup(){
         
         ofAddListener(ofURLResponseEvent(), this, &CloudsPlaybackController::updateCheckCompleted);
         #ifdef VHX_MEDIA
-        ofAddListener(ofxAvailability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
-        ofAddListener(ofxAvailability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
+        ofAddListener(ofxReachability::connectedEvent, this, &CloudsPlaybackController::networkConnected);
+        ofAddListener(ofxReachability::disconnectedEvent, this, &CloudsPlaybackController::networkDisconnected);
         
         ofAddListener(vhxAuth.requestTokenComplete, this, &CloudsPlaybackController::requestTokenComplete);
         ofAddListener(vhxAuth.refreshTokenComplete, this, &CloudsPlaybackController::refreshTokenComplete);
@@ -321,8 +321,7 @@ void CloudsPlaybackController::setup(){
 //#endif
     
 #ifdef VHX_MEDIA
-    //availability.setPingAddress("www.vhx.tv");
-    availability.setup();
+    reachability.setup();
 #endif
 	
 	cout << "*****LOAD STEP*** SHOWING INTRO" << endl;
@@ -1510,21 +1509,21 @@ void CloudsPlaybackController::updateTransition(){
                 }
                 
                 //build the next clip based on the history
-#ifdef CLOUDS_SCREENING
-                if(run.questionsAsked > 2 && !showedClusterMapNavigation){
-                    createInterludeSoundQueue();
-                    shouldPlayClusterMap = true;
-                    showingClusterMapNavigation = true;
-                }
-                else{
-                    storyEngine.buildAct(run);
-                }
-#else
+//#ifdef CLOUDS_SCREENING
+//                if(run.questionsAsked > 2 && !showedClusterMapNavigation){
+//                    createInterludeSoundQueue();
+//                    shouldPlayClusterMap = true;
+//                    showingClusterMapNavigation = true;
+//                }
+//                else{
+//                    storyEngine.buildAct(run);
+//                }
+//#else
                 //if we are not going back to the intro
                 if(newState != TRANSITION_INTRO_IN){
                     storyEngine.buildAct(run);
                 }
-#endif
+//#endif
                 break;
                 
                 ///LEAVING
@@ -1776,6 +1775,9 @@ void CloudsPlaybackController::updateTransition(){
     }
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
     
+//	#ifdef OCULUS_RIFT
+//	CloudsVisualSystem::getOculusRift().setFade(crossfadeValue);
+//	#endif
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
 	}   
@@ -1825,7 +1827,7 @@ void CloudsPlaybackController::preDraw(ofEventArgs& args){
 #ifdef OCULUS_RIFT
     
     float hudDistance = CloudsVisualSystem::subtitleHudZ;
-    float hudScale =CloudsVisualSystem::subtitleHudScale;
+    float hudScale = CloudsVisualSystem::subtitleHudScale;
     CloudsVisualSystem::getOculusRift().beginOverlay(hudDistance, hudScale, 1920, 1080);
 
     if(currentVisualSystem == introSequence){
@@ -1835,6 +1837,7 @@ void CloudsPlaybackController::preDraw(ofEventArgs& args){
     hud.draw();
     
     CloudsVisualSystem::getOculusRift().endOverlay();
+	
 #endif
 }
 
@@ -1872,8 +1875,11 @@ void CloudsPlaybackController::drawRenderTarget(){
 		if(loading || !MediaPathFound()){
 			crossfadeValue = 1.0;
 		}
+		#ifdef OCULUS_RIFT
+		CloudsVisualSystem::getOculusRift().setFade(crossfadeValue);
+		#else
 		ofSetColor(255, crossfadeValue*255 );
-		
+		#endif
 		currentVisualSystem->selfPostDraw();
         
         ofEnableAlphaBlending();
@@ -2192,16 +2198,16 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showClusterMap(){
     if(showingClusterMapNavigation){
-        #ifdef CLOUDS_SCREENING
-		rgbdVisualSystem->clearQuestionQueue();
-		storyEngine.populateScreeningQuestionsPart2();
-		clusterMap->setQuestions(storyEngine.screeningQuestionClips);
-		showedClusterMapNavigation = true;
-		clusterMap->loadPresetGUISFromName("NavigationInterlude_Screen");
-        #else
+//        #ifdef CLOUDS_SCREENING
+//		rgbdVisualSystem->clearQuestionQueue();
+//		storyEngine.populateScreeningQuestionsPart2();
+//		clusterMap->setQuestions(storyEngine.screeningQuestionClips);
+//		showedClusterMapNavigation = true;
+//		clusterMap->loadPresetGUISFromName("NavigationInterlude_Screen");
+//        #else
         //SHOW QUESTIONS FROM CURRENT ACT
         showingClusterMapNavigation = false; //TEMP HACK UNTIL WE GET THIS WORKING ON NON SCREENING MODE
-        #endif
+//        #endif
     }
     
     if(!showingClusterMapNavigation){
@@ -2255,12 +2261,12 @@ void CloudsPlaybackController::showInterlude(){
 	
     CloudsVisualSystemPreset interludePreset;
     
-    #ifdef CLOUDS_SCREENING
-    cout << "HAS QUESTIONS REMAINING??? " << (rgbdVisualSystem->hasQuestionsRemaining() ? "YES" : "NO") << endl;
-	if(!rgbdVisualSystem->hasQuestionsRemaining() && showedClusterMapNavigation){
-		forceCredits = true;
-	}
-	#endif
+//    #ifdef CLOUDS_SCREENING
+//    cout << "HAS QUESTIONS REMAINING??? " << (rgbdVisualSystem->hasQuestionsRemaining() ? "YES" : "NO") << endl;
+//	if(!rgbdVisualSystem->hasQuestionsRemaining() && showedClusterMapNavigation){
+//		forceCredits = true;
+//	}
+//	#endif
     
     if(showingVisualLoop){
     

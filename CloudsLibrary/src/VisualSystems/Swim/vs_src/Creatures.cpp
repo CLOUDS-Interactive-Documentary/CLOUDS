@@ -441,6 +441,17 @@ namespace itg
             creatures[i]->draw();
         }*/
         glPopAttrib();
+        
+        /*
+        ofPushStyle();
+        ofPushMatrix();
+        ofSetupScreen();
+        ofDisableAlphaBlending();
+        ofSetColor(255);
+        tentacles.getReadFboRef().draw(0, 0, ofGetWidth(), ofGetHeight());
+        ofPopMatrix();
+        ofPopStyle();
+         */
     }
     
     void Creatures::loadSeed(const string& path)

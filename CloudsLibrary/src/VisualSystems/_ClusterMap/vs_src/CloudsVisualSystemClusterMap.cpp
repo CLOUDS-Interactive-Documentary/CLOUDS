@@ -1449,14 +1449,14 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	}
 	/////END OPTIONS
 	
-
-    
 	ofPopMatrix();
 	ofPopStyle();
 	glPopAttrib();
     
-    
     drawQuestions();
+	
+	//ofEnableLighting();
+	//glEnable(GL_DEPTH_TEST);
 
 	if(drawType3D){
         
@@ -1507,6 +1507,7 @@ void CloudsVisualSystemClusterMap::updateQuestions(){
     if(!displayQuestions){
         return;
     }
+
     
 	for(int i = 0; i < questions.size(); i++){
 		CloudsPortal& curQuestion = questions[i];
@@ -1519,7 +1520,7 @@ void CloudsVisualSystemClusterMap::updateQuestions(){
         }
 
 #ifdef OCULUS_RIFT
-        ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition, true);
+        ofVec3f screenPos = getOculusRift().worldToScreen(curQuestion.hoverPosition);
         ofRectangle viewport = getOculusRift().getOculusViewport();
         float distanceToQuestion = ofDist(screenPos.x, screenPos.y,viewport.getCenter().x, viewport.getCenter().y);
 #else
@@ -1677,7 +1678,8 @@ void CloudsVisualSystemClusterMap::drawQuestions(){
 	}
 	
 	ofEnableLighting();
-	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_DEPTH_TEST);
+	ofEnableDepthTest();
 	ofPopStyle();
 
 }

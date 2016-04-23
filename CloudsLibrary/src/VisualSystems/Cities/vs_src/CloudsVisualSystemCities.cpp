@@ -529,7 +529,7 @@ void CloudsVisualSystemCities::selfDraw()
 	ofDisableDepthTest();
 	
 	glEnable( GL_CULL_FACE );
-#ifdef OCULUS_RIFT
+#if defined(OCULUS_RIFT) && defined(TARGET_OSX)
 	glCullFace( GL_FRONT );
 #else
     glCullFace( GL_BACK );

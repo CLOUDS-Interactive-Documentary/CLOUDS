@@ -218,21 +218,23 @@ CloudsMedia* CloudsVisualSystem::getVHXMedia(string movieKey){
 
 
 #ifdef OCULUS_RIFT
-#include "OVR.h"
 static ofxOculusDK2 oculusRift;
 static ofFbo oculusTarget;
 ofxOculusDK2& CloudsVisualSystem::getOculusRift(){
 	if(!oculusRift.isSetup()){
 
+		/*
 		ofFbo::Settings renderSettings;
 		renderSettings.useDepth = true;
 		//renderSettings.numSamples = 4;
 		renderSettings.numSamples = 0;
 		renderSettings.depthStencilInternalFormat = GL_DEPTH_COMPONENT32F;
 		renderSettings.internalformat = GL_RGB;
+		*/
 
         checkOpenGLError("PRE SETUP OCULUS");
-		oculusRift.setup(renderSettings);
+//		oculusRift.setup(renderSettings);
+		oculusRift.setup();
         checkOpenGLError("POST SETUP OCULUS");
 
 		//JG OCULUS TARGET HACK
@@ -304,8 +306,12 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
     
 	ofFbo& renderTarget = getStaticRenderTarget();  
 #ifdef OCULUS_RIFT
-	int targetWidth  = 1920;
-	int targetHeight = 1080;
+//	int targetWidth  = 1920/2;
+//	int targetHeight = 1080;
+	int targetWidth  = getOculusRift().getOculusViewport().getWidth();
+	int targetHeight = getOculusRift().getOculusViewport().getHeight();
+//	cout << "OCULUS VIEWPORT " << targetWidth << " " << targetHeight << endl;
+
 #else
 	int targetWidth  = ofGetWidth();
 	int targetHeight = ofGetHeight();
@@ -598,9 +604,11 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
-	
+
+#ifndef OCULUS_RIFT
 	checkOpenGLError(getSystemName() + ":: UPDATE");
-	
+#endif
+
 	updateCyclced = true;
 }
 
@@ -647,7 +655,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 
     if(bRenderSystem)
     {
-	  
 		//bind our fbo, lights, debug
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
@@ -712,6 +719,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		if(bDrawToScreen){
 			selfPostDraw();
             checkOpenGLError(getSystemName() + ":: POST DRAW");
+
 		}
 		
 #ifdef KINECT_INPUT
@@ -951,12 +959,12 @@ void CloudsVisualSystem::draw3DCursor(){
         ofTranslate(getCameraRef().getPosition());
         ofMatrix4x4 baseRotation;
         baseRotation.makeRotationMatrix(getCameraRef().getOrientationQuat());
-        if(getOculusRift().lockView){
-            ofMultMatrix(baseRotation);
-        }
-        else {
+//        if(getOculusRift().lockView){
+//            ofMultMatrix(baseRotation);
+//        }
+//        else {
             ofMultMatrix(getOculusRift().getOrientationMat() * baseRotation);
-        }
+//        }
         
         ofEnableAlphaBlending();
         
@@ -1039,7 +1047,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             
         case 320:
         case '0':
-            oculusRift.reset();
+            //oculusRift.reset();
             break;
     }
 #endif
@@ -3339,7 +3347,7 @@ void CloudsVisualSystem::setupOculusGui()
 	oculusGui->addSlider("SUBTITLE Z POS", 0, -100, &subtitle3DBasePosZ);
 	oculusGui->addSlider("SUBTITLE SCALE", 0,  1.0, &subtitle3DScale);
 	oculusGui->addSpacer();
-	oculusGui->addSlider("SUBTITLE HUD Z", -100, -700, &subtitleHudZ);
+	oculusGui->addSlider("SUBTITLE HUD Z", -0, -5, &subtitleHudZ);
 	oculusGui->addSlider("SUBTITLE HUD SCALE", .0, 1.0, &subtitleHudScale);
 	//oculusGui->addSlider("SUBTITLE HUD Y", 0, 1.0, &subtitleHudY);
 
@@ -4052,10 +4060,7 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 
 #ifdef OCULUS_RIFT
 
-	//THIS WAY TO JUST DRAW
-	//oculusRift.draw();
-
-	
+#ifdef TARGET_OSX
 	//THIS WAY TO DRAW FOR FANCY DK2 MIRRORING
 	getSharedRenderTarget().begin();
 	oculusRift.draw();
@@ -4085,7 +4090,12 @@ void CloudsVisualSystem::selfPostDraw(int width, int height){
 	oculusTargetMesh1.draw();
 	oculusTargetMesh2.draw();
 	getSharedRenderTarget().getTextureReference().unbind();
-	
+	#else
+	oculusRift.draw();
+	//ofClear(0,0,0,0);
+	#endif
+
+
 #else
     int offset;
     if(bEnablePostFX){
@@ -4247,6 +4257,6 @@ void CloudsVisualSystem::checkOpenGLError(string function){
 	
     GLuint err = glGetError();
     if (err != GL_NO_ERROR){
-        ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
+        //ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
     }
 }

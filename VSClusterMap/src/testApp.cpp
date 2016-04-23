@@ -4,7 +4,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-    
+    /*
     long size;
     char *buf;
     char *ptr;
@@ -14,7 +14,8 @@ void testApp::setup(){
         ptr = getcwd(buf, (size_t)size);
     }
     cout << ptr << endl;
-    
+    */
+
 	ofSetVerticalSync(true);
 	ofEnableAlphaBlending();
 	

@@ -1,9 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxUI.h"
-#include "CloudsVisualSystemFlying.h"
-//#include "CloudsMixer.h"
+#include "ofxOculusDK2.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -21,9 +19,11 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	void exit();
-		
-    void audioRequested(float *output, int bufferSize, int nChannels);
 
-    CloudsVisualSystemFlying flying;
-    //CloudsMixer mixer;
+	bool showOverlay;
+	ofEasyCam cam;
+	ofxOculusDK2 oculus;
+
+	void drawScene();
+	
 };

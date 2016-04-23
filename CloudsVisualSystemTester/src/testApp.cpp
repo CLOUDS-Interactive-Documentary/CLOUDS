@@ -56,7 +56,6 @@ void testApp::setup(){
     
     blackList.clear();
     
-    
     blackList.push_back(make_pair("Memory", "ThinBlueRows_2")); //crash in loadingPresetGUI
     blackList.push_back(make_pair("Memory", "ThinBlueRows_wide")); //crash in loadingPresetGUI
     blackList.push_back(make_pair("Memory", "ThinTealRows")); //crash in loadingPresetGUI

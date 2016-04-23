@@ -20,7 +20,6 @@ ${NEWPREFIX}ofxAudioDecoder
 ${NEWPREFIX}ofxAudioFeatures
 ${NEWPREFIX}ofxAudioUnit
 ${NEWPREFIX}ofxAutoReloadedShader
-${NEWPREFIX}ofxAvailability
 ${NEWPREFIX}ofxAVFVideoPlayer
 ${NEWPREFIX}ofxBillboard
 ${NEWPREFIX}ofxBinaryMesh
@@ -65,6 +64,7 @@ cd ..
 
 ${NEWPREFIX}ofxPtf
 ${NEWPREFIX}ofxRange
+${NEWPREFIX}ofxReachability
 ${NEWPREFIX}ofxRegex
 
 ${NEWPREFIX}ofxRGBDepth

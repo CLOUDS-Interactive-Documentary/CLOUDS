@@ -1292,6 +1292,9 @@
 		03A0F7351947A0850071CF4B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		03A0F7361947A0850071CF4B /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
 		03A0F7391947A0850071CF4B /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		03C3983A1CCAC9CB00F66A80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
+		03C3983B1CCACC3F00F66A80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
+		03C3983C1CCACC4600F66A80 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15DCFE91AB79689007D1F44 /* OpenAL.framework */; };
 		03D58F411946321500FCFF7B /* ofxBinaryMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CDB669194500EC00C56A13 /* ofxBinaryMesh.cpp */; };
 		03E28DA91A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */; };
 		03E28DAA1A9D767D005AA181 /* CloudsCalibrationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */; };
@@ -2659,8 +2662,6 @@
 		64574CEC1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
 		64574CED1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
 		64574CEE1B012B6300C1BC77 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */; };
-		64A9AD481B0523AD002FD9FB /* ofxAvailability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */; };
-		64A9AD491B0523AD002FD9FB /* ofxAvailability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */; };
 		64BDD5A41AFAE679002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
 		64BDD5A51AFAE8BE002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
 		64BDD5A61AFAE8BF002AEAEB /* CloudsMedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */; };
@@ -2679,6 +2680,36 @@
 		64D024471AE6C7B40008D018 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */; };
 		64D024481AE6C7B40008D018 /* ofxSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */; };
 		64D0244D1AE6C7CB0008D018 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D0244C1AE6C7CB0008D018 /* libcurl.dylib */; };
+		64E1432D1B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E71B45DF0B005F54BA /* ofxReachabilityImplApple.mm */; };
+		64E1432E1B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E71B45DF0B005F54BA /* ofxReachabilityImplApple.mm */; };
+		64E1432F1B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E71B45DF0B005F54BA /* ofxReachabilityImplApple.mm */; };
+		64E143301B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E71B45DF0B005F54BA /* ofxReachabilityImplApple.mm */; };
+		64E143311B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E71B45DF0B005F54BA /* ofxReachabilityImplApple.mm */; };
+		64E143321B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E71B45DF0B005F54BA /* ofxReachabilityImplApple.mm */; };
+		64E143331B45DF0C005F54BA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E91B45DF0B005F54BA /* Reachability.m */; };
+		64E143341B45DF0C005F54BA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E91B45DF0B005F54BA /* Reachability.m */; };
+		64E143351B45DF0C005F54BA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E91B45DF0B005F54BA /* Reachability.m */; };
+		64E143361B45DF0C005F54BA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E91B45DF0B005F54BA /* Reachability.m */; };
+		64E143371B45DF0C005F54BA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E91B45DF0B005F54BA /* Reachability.m */; };
+		64E143381B45DF0C005F54BA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E142E91B45DF0B005F54BA /* Reachability.m */; };
+		64E143391B45DF0C005F54BA /* ofxReachability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EA1B45DF0B005F54BA /* ofxReachability.cpp */; };
+		64E1433A1B45DF0C005F54BA /* ofxReachability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EA1B45DF0B005F54BA /* ofxReachability.cpp */; };
+		64E1433B1B45DF0C005F54BA /* ofxReachability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EA1B45DF0B005F54BA /* ofxReachability.cpp */; };
+		64E1433C1B45DF0C005F54BA /* ofxReachability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EA1B45DF0B005F54BA /* ofxReachability.cpp */; };
+		64E1433D1B45DF0C005F54BA /* ofxReachability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EA1B45DF0B005F54BA /* ofxReachability.cpp */; };
+		64E1433E1B45DF0C005F54BA /* ofxReachability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EA1B45DF0B005F54BA /* ofxReachability.cpp */; };
+		64E1433F1B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EC1B45DF0B005F54BA /* ofxReachabilityImpl.cpp */; };
+		64E143401B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EC1B45DF0B005F54BA /* ofxReachabilityImpl.cpp */; };
+		64E143411B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EC1B45DF0B005F54BA /* ofxReachabilityImpl.cpp */; };
+		64E143421B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EC1B45DF0B005F54BA /* ofxReachabilityImpl.cpp */; };
+		64E143431B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EC1B45DF0B005F54BA /* ofxReachabilityImpl.cpp */; };
+		64E143441B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EC1B45DF0B005F54BA /* ofxReachabilityImpl.cpp */; };
+		64E143451B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */; };
+		64E143461B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */; };
+		64E143471B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */; };
+		64E143481B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */; };
+		64E143491B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */; };
+		64E1434A1B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */; };
 		A60F27061AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
 		A60F27071AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
 		A60F27081AF136B400A1C863 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A60F26E31AF136B400A1C863 /* audiodecoderbase.cpp */; };
@@ -4109,6 +4140,7 @@
 		0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVisuals.cpp; sourceTree = "<group>"; };
 		0385CDB71AF5B8D8000553F2 /* CloudsVisualSystemVisuals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVisuals.h; sourceTree = "<group>"; };
 		03A0F73D1947A0850071CF4B /* CLOUDS_KINECT_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_KINECT_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		03E28DA11A9D767D005AA181 /* CloudsCalibrationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCalibrationNode.cpp; sourceTree = "<group>"; };
 		03E28DA21A9D767D005AA181 /* CloudsCalibrationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCalibrationNode.h; sourceTree = "<group>"; };
 		03E28DA31A9D767D005AA181 /* CloudsPlaybackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPlaybackController.cpp; sourceTree = "<group>"; };
@@ -4142,8 +4174,6 @@
 		64574C431B012B6300C1BC77 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
 		64574C441B012B6300C1BC77 /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
 		64574CFB1B012FD500C1BC77 /* CloudsVHXEventArgs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsVHXEventArgs.h; sourceTree = "<group>"; };
-		64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAvailability.cpp; sourceTree = "<group>"; };
-		64A9AD391B0523AD002FD9FB /* ofxAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAvailability.h; sourceTree = "<group>"; };
 		64BDD5A21AFAE679002AEAEB /* CloudsMedia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMedia.cpp; sourceTree = "<group>"; };
 		64BDD5A31AFAE679002AEAEB /* CloudsMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMedia.h; sourceTree = "<group>"; };
 		64BDD5BE1AFAEB5B002AEAEB /* ofxCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCrypto.cpp; sourceTree = "<group>"; };
@@ -4154,6 +4184,16 @@
 		64D0241B1AE6C7B40008D018 /* ofxSSL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSSL.cpp; sourceTree = "<group>"; };
 		64D0241C1AE6C7B40008D018 /* ofxSSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSSL.h; sourceTree = "<group>"; };
 		64D0244C1AE6C7CB0008D018 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
+		64E142E61B45DF0B005F54BA /* ofxReachabilityImplApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxReachabilityImplApple.h; sourceTree = "<group>"; };
+		64E142E71B45DF0B005F54BA /* ofxReachabilityImplApple.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxReachabilityImplApple.mm; sourceTree = "<group>"; };
+		64E142E81B45DF0B005F54BA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		64E142E91B45DF0B005F54BA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		64E142EA1B45DF0B005F54BA /* ofxReachability.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxReachability.cpp; sourceTree = "<group>"; };
+		64E142EB1B45DF0B005F54BA /* ofxReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxReachability.h; sourceTree = "<group>"; };
+		64E142EC1B45DF0B005F54BA /* ofxReachabilityImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxReachabilityImpl.cpp; sourceTree = "<group>"; };
+		64E142ED1B45DF0B005F54BA /* ofxReachabilityImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxReachabilityImpl.h; sourceTree = "<group>"; };
+		64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxReachabilityImplPing.cpp; sourceTree = "<group>"; };
+		64E142EF1B45DF0B005F54BA /* ofxReachabilityImplPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxReachabilityImplPing.h; sourceTree = "<group>"; };
 		A60F26C91AF136B400A1C863 /* ofxAudioDecoderTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoderTonic.h; sourceTree = "<group>"; };
 		A60F26DC1AF136B400A1C863 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
 		A60F26DD1AF136B400A1C863 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
@@ -5771,6 +5811,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03C3983C1CCACC4600F66A80 /* OpenAL.framework in Frameworks */,
+				03C3983B1CCACC3F00F66A80 /* SystemConfiguration.framework in Frameworks */,
 				E79BFA7919492CCE00A0A83E /* AudioUnit.framework in Frameworks */,
 				0380348B1948167700AFD40C /* QuartzCore.framework in Frameworks */,
 				0380348C1948167700AFD40C /* libz.dylib in Frameworks */,
@@ -6067,6 +6109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03C3983A1CCAC9CB00F66A80 /* SystemConfiguration.framework in Frameworks */,
 				64D0244D1AE6C7CB0008D018 /* libcurl.dylib in Frameworks */,
 				C15DCFEA1AB79689007D1F44 /* OpenAL.framework in Frameworks */,
 				E755D70619440E3000AA81C1 /* QuartzCore.framework in Frameworks */,
@@ -6353,24 +6396,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		64A9AD271B0523AC002FD9FB /* ofxAvailability */ = {
-			isa = PBXGroup;
-			children = (
-				64A9AD371B0523AD002FD9FB /* src */,
-			);
-			name = ofxAvailability;
-			path = ../../../addons/ofxAvailability;
-			sourceTree = "<group>";
-		};
-		64A9AD371B0523AD002FD9FB /* src */ = {
-			isa = PBXGroup;
-			children = (
-				64A9AD381B0523AD002FD9FB /* ofxAvailability.cpp */,
-				64A9AD391B0523AD002FD9FB /* ofxAvailability.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		64BDD5AA1AFAEB5B002AEAEB /* ofxCrypto */ = {
 			isa = PBXGroup;
 			children = (
@@ -6423,6 +6448,40 @@
 				64D0241C1AE6C7B40008D018 /* ofxSSL.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		64E142CE1B45DF0B005F54BA /* ofxReachability */ = {
+			isa = PBXGroup;
+			children = (
+				64E142E41B45DF0B005F54BA /* src */,
+			);
+			name = ofxReachability;
+			path = ../../../addons/ofxReachability;
+			sourceTree = "<group>";
+		};
+		64E142E41B45DF0B005F54BA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64E142E51B45DF0B005F54BA /* apple */,
+				64E142EA1B45DF0B005F54BA /* ofxReachability.cpp */,
+				64E142EB1B45DF0B005F54BA /* ofxReachability.h */,
+				64E142EC1B45DF0B005F54BA /* ofxReachabilityImpl.cpp */,
+				64E142ED1B45DF0B005F54BA /* ofxReachabilityImpl.h */,
+				64E142EE1B45DF0B005F54BA /* ofxReachabilityImplPing.cpp */,
+				64E142EF1B45DF0B005F54BA /* ofxReachabilityImplPing.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		64E142E51B45DF0B005F54BA /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				64E142E61B45DF0B005F54BA /* ofxReachabilityImplApple.h */,
+				64E142E71B45DF0B005F54BA /* ofxReachabilityImplApple.mm */,
+				64E142E81B45DF0B005F54BA /* Reachability.h */,
+				64E142E91B45DF0B005F54BA /* Reachability.m */,
+			);
+			path = apple;
 			sourceTree = "<group>";
 		};
 		A60F26C61AF136B400A1C863 /* ofxAudioDecoder */ = {
@@ -6505,9 +6564,8 @@
 				C15DCF481AB7956B007D1F44 /* ofxAnimationPrimitives */,
 				E7D82BC918BF0CEC00C1EB93 /* ofxAssimpModelLoader */,
 				E73DA332189F1CDC006C9E4E /* ofxAutoReloadedShader */,
-				64A9AD271B0523AC002FD9FB /* ofxAvailability */,
-				E73DA2D4189F1CDA006C9E4E /* ofxBillboard */,
 				A60F26C61AF136B400A1C863 /* ofxAudioDecoder */,
+				E73DA2D4189F1CDA006C9E4E /* ofxBillboard */,
 				64CDB650194500EC00C56A13 /* ofxBinaryMesh */,
 				E73DA144189F1CD5006C9E4E /* ofxBox2d */,
 				E73DA38D189F1CDD006C9E4E /* ofxCameraSaveLoad */,
@@ -6536,6 +6594,7 @@
 				E73DA864189F3621006C9E4E /* ofxPostProcessing */,
 				E73DA8A9189F3622006C9E4E /* ofxPtf */,
 				E73DA8C4189F3622006C9E4E /* ofxRange */,
+				64E142CE1B45DF0B005F54BA /* ofxReachability */,
 				E73DA8C8189F3622006C9E4E /* ofxRegex */,
 				E73DA0B4189F1CD3006C9E4E /* ofxSimpleSurface */,
 				E73DA0CC189F1CD4006C9E4E /* ofxSimpleSpline */,
@@ -6557,6 +6616,7 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */,
 				64D0244C1AE6C7CB0008D018 /* libcurl.dylib */,
 				035F4F981A9DA6A0003726D9 /* libovr.a */,
 				E755D701194405C500AA81C1 /* libz.dylib */,
@@ -11510,7 +11570,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+			shellScript = "\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n#cp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
 		};
 		03A0F7371947A0850071CF4B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -11649,6 +11709,7 @@
 				0380327B1948167700AFD40C /* ofxBehavior.cpp in Sources */,
 				0380327C1948167700AFD40C /* ofxTween.cpp in Sources */,
 				0380327D1948167700AFD40C /* ofxTextInputField.cpp in Sources */,
+				64E143481B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */,
 				0380327E1948167700AFD40C /* RenderPass.cpp in Sources */,
 				0380327F1948167700AFD40C /* CloudsInputOculus.cpp in Sources */,
 				038032801948167700AFD40C /* b2RevoluteJoint.cpp in Sources */,
@@ -11681,6 +11742,7 @@
 				0380329A1948167700AFD40C /* b2World.cpp in Sources */,
 				0380329B1948167700AFD40C /* Tweeter.cpp in Sources */,
 				0380329C1948167700AFD40C /* CloudsVisualSystemSatoruhiga.cpp in Sources */,
+				64E143421B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */,
 				0380329D1948167700AFD40C /* ControlCounter.cpp in Sources */,
 				0380329E1948167700AFD40C /* Filters.cpp in Sources */,
 				0380329F1948167700AFD40C /* ofxTLEmptyKeyframes.cpp in Sources */,
@@ -11736,6 +11798,7 @@
 				038032D01948167700AFD40C /* BufferPlayer.cpp in Sources */,
 				038032D11948167700AFD40C /* ofxSQLiteInsert.cpp in Sources */,
 				038032D21948167700AFD40C /* ControlStepper.cpp in Sources */,
+				64E143301B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */,
 				038032D31948167700AFD40C /* LUTPass.cpp in Sources */,
 				038032D41948167700AFD40C /* ofxSQLiteAbstract.cpp in Sources */,
 				038032D51948167700AFD40C /* PixelatePass.cpp in Sources */,
@@ -11891,6 +11954,7 @@
 				0380336C1948167700AFD40C /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				0380336D1948167700AFD40C /* ofxPerlinBehavior.cpp in Sources */,
 				0380336E1948167700AFD40C /* BasicDelay.cpp in Sources */,
+				64E1433C1B45DF0C005F54BA /* ofxReachability.cpp in Sources */,
 				0380336F1948167700AFD40C /* GridFluid.cpp in Sources */,
 				038033701948167700AFD40C /* Tetra.cpp in Sources */,
 				038033711948167700AFD40C /* KaleidoscopePass.cpp in Sources */,
@@ -11920,6 +11984,7 @@
 				038033891948167700AFD40C /* MazeCamera.cpp in Sources */,
 				0380338A1948167700AFD40C /* Vec3.cpp in Sources */,
 				0380338B1948167700AFD40C /* ofxHotKeys_impl_linux.cpp in Sources */,
+				64E143361B45DF0C005F54BA /* Reachability.m in Sources */,
 				0380338C1948167700AFD40C /* Spring.cpp in Sources */,
 				0380338D1948167700AFD40C /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 				0380338E1948167700AFD40C /* ofxUILabelButton.cpp in Sources */,
@@ -12246,6 +12311,7 @@
 				03A0F4E51947A0850071CF4B /* ofxBehavior.cpp in Sources */,
 				03A0F4E61947A0850071CF4B /* ofxTween.cpp in Sources */,
 				03A0F4E71947A0850071CF4B /* ofxTextInputField.cpp in Sources */,
+				64E143471B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */,
 				03A0F4E81947A0850071CF4B /* RenderPass.cpp in Sources */,
 				03A0F4E91947A0850071CF4B /* CloudsInputOculus.cpp in Sources */,
 				03A0F4EA1947A0850071CF4B /* b2RevoluteJoint.cpp in Sources */,
@@ -12278,6 +12344,7 @@
 				03A0F5041947A0850071CF4B /* b2World.cpp in Sources */,
 				03A0F5051947A0850071CF4B /* Tweeter.cpp in Sources */,
 				03A0F5061947A0850071CF4B /* CloudsVisualSystemSatoruhiga.cpp in Sources */,
+				64E143411B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */,
 				03A0F5071947A0850071CF4B /* ControlCounter.cpp in Sources */,
 				03A0F5081947A0850071CF4B /* Filters.cpp in Sources */,
 				03A0F5091947A0850071CF4B /* ofxTLEmptyKeyframes.cpp in Sources */,
@@ -12333,6 +12400,7 @@
 				03A0F53A1947A0850071CF4B /* BufferPlayer.cpp in Sources */,
 				03A0F53B1947A0850071CF4B /* ofxSQLiteInsert.cpp in Sources */,
 				03A0F53C1947A0850071CF4B /* ControlStepper.cpp in Sources */,
+				64E1432F1B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */,
 				03A0F53D1947A0850071CF4B /* LUTPass.cpp in Sources */,
 				03A0F53E1947A0850071CF4B /* ofxSQLiteAbstract.cpp in Sources */,
 				03A0F53F1947A0850071CF4B /* PixelatePass.cpp in Sources */,
@@ -12488,6 +12556,7 @@
 				03A0F5D61947A0850071CF4B /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				03A0F5D71947A0850071CF4B /* ofxPerlinBehavior.cpp in Sources */,
 				03A0F5D81947A0850071CF4B /* BasicDelay.cpp in Sources */,
+				64E1433B1B45DF0C005F54BA /* ofxReachability.cpp in Sources */,
 				03A0F5D91947A0850071CF4B /* GridFluid.cpp in Sources */,
 				03A0F5DA1947A0850071CF4B /* Tetra.cpp in Sources */,
 				03A0F5DB1947A0850071CF4B /* KaleidoscopePass.cpp in Sources */,
@@ -12517,6 +12586,7 @@
 				03A0F5F31947A0850071CF4B /* MazeCamera.cpp in Sources */,
 				03A0F5F41947A0850071CF4B /* Vec3.cpp in Sources */,
 				03A0F5F51947A0850071CF4B /* ofxHotKeys_impl_linux.cpp in Sources */,
+				64E143351B45DF0C005F54BA /* Reachability.m in Sources */,
 				03A0F5F61947A0850071CF4B /* Spring.cpp in Sources */,
 				03A0F5F71947A0850071CF4B /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 				03A0F5F81947A0850071CF4B /* ofxUILabelButton.cpp in Sources */,
@@ -12974,7 +13044,6 @@
 				642722391AE81E5200A13289 /* CloudsSecondaryDisplayOSCSender.cpp in Sources */,
 				6427223A1AE81E5200A13289 /* CloudsLink.cpp in Sources */,
 				6427223B1AE81E5200A13289 /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */,
-				64A9AD481B0523AD002FD9FB /* ofxAvailability.cpp in Sources */,
 				6427223C1AE81E5200A13289 /* ControlParameter.cpp in Sources */,
 				6427223D1AE81E5200A13289 /* b2Body.cpp in Sources */,
 				6427223E1AE81E5200A13289 /* CloudsFCPParser.cpp in Sources */,
@@ -12986,6 +13055,7 @@
 				642722441AE81E5200A13289 /* Delaunay.cpp in Sources */,
 				642722451AE81E5200A13289 /* kiss_fft.c in Sources */,
 				642722461AE81E5200A13289 /* CloudsRGBDCamera.cpp in Sources */,
+				64E143491B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */,
 				642722471AE81E5200A13289 /* CloudsAct.cpp in Sources */,
 				642722481AE81E5200A13289 /* CloudsVisualSystemWorld.cpp in Sources */,
 				642722491AE81E5200A13289 /* ofxUIToggleMatrix.cpp in Sources */,
@@ -13087,6 +13157,7 @@
 				642722A81AE81E5200A13289 /* v_compute.cpp in Sources */,
 				642722A91AE81E5200A13289 /* Boid.cpp in Sources */,
 				642722AA1AE81E5200A13289 /* CloudsRGBDVideoPlayer.cpp in Sources */,
+				64E143431B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */,
 				642722AB1AE81E5200A13289 /* ofxPerlinBehavior.cpp in Sources */,
 				642722AC1AE81E5200A13289 /* BasicDelay.cpp in Sources */,
 				642722AD1AE81E5200A13289 /* GridFluid.cpp in Sources */,
@@ -13113,6 +13184,7 @@
 				642722C21AE81E5200A13289 /* RunningBackground.cpp in Sources */,
 				642722C31AE81E5200A13289 /* ofxTLSwitches.cpp in Sources */,
 				642722C41AE81E5200A13289 /* testApp.cpp in Sources */,
+				64E143311B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */,
 				642722C51AE81E5200A13289 /* Maze.cpp in Sources */,
 				642722C61AE81E5200A13289 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				642722C71AE81E5200A13289 /* CloudsVisualSystemSwim.cpp in Sources */,
@@ -13265,6 +13337,7 @@
 				642723581AE81E5200A13289 /* b2ContactSolver.cpp in Sources */,
 				642723591AE81E5200A13289 /* ofxElectroStaticBehavior.cpp in Sources */,
 				6427235A1AE81E5200A13289 /* ofxTLInOut.cpp in Sources */,
+				64E1433D1B45DF0C005F54BA /* ofxReachability.cpp in Sources */,
 				6427235B1AE81E5200A13289 /* b2BroadPhase.cpp in Sources */,
 				6427235C1AE81E5200A13289 /* EdgePass.cpp in Sources */,
 				6427235D1AE81E5200A13289 /* ofxUIImageSlider.cpp in Sources */,
@@ -13376,6 +13449,7 @@
 				642723C51AE81E5200A13289 /* Astrolabe.cpp in Sources */,
 				642723C61AE81E5200A13289 /* OscPrintReceivedElements.cpp in Sources */,
 				642723C71AE81E5200A13289 /* Clock.cpp in Sources */,
+				64E143371B45DF0C005F54BA /* Reachability.m in Sources */,
 				642723C81AE81E5200A13289 /* ofxMPMNode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -13465,6 +13539,7 @@
 				6427246D1AE81EAF00A13289 /* SampleTable.cpp in Sources */,
 				6427246E1AE81EAF00A13289 /* RandomMover.cpp in Sources */,
 				6427246F1AE81EAF00A13289 /* ControlTriggerFilter.cpp in Sources */,
+				64E143381B45DF0C005F54BA /* Reachability.m in Sources */,
 				642724701AE81EAF00A13289 /* NoiseWarpPass.cpp in Sources */,
 				642724711AE81EAF00A13289 /* b2LineJoint.cpp in Sources */,
 				642724721AE81EAF00A13289 /* ofxMtlBoxFitting.cpp in Sources */,
@@ -13487,6 +13562,7 @@
 				64574CE21B012B6300C1BC77 /* jsoncpp.cpp in Sources */,
 				642724831AE81EAF00A13289 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				642724841AE81EAF00A13289 /* TableLookupOsc.cpp in Sources */,
+				64E1434A1B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */,
 				642724851AE81EAF00A13289 /* CloudsSoundFuncs.cpp in Sources */,
 				642724861AE81EAF00A13289 /* Rand.cpp in Sources */,
 				642724871AE81EAF00A13289 /* GestureRendererInPlace.cpp in Sources */,
@@ -13693,6 +13769,7 @@
 				6427254E1AE81EAF00A13289 /* CompressorLimiter.cpp in Sources */,
 				6427254F1AE81EAF00A13289 /* v_compute.cpp in Sources */,
 				642725501AE81EAF00A13289 /* Boid.cpp in Sources */,
+				64E143441B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */,
 				642725511AE81EAF00A13289 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				642725521AE81EAF00A13289 /* ofxPerlinBehavior.cpp in Sources */,
 				642725531AE81EAF00A13289 /* BasicDelay.cpp in Sources */,
@@ -13804,7 +13881,6 @@
 				642725BD1AE81EAF00A13289 /* b2Collision.cpp in Sources */,
 				642725BE1AE81EAF00A13289 /* ofxSimpleSurface.cpp in Sources */,
 				64BDD5EF1AFAEB5B002AEAEB /* ofxCrypto.cpp in Sources */,
-				64A9AD491B0523AD002FD9FB /* ofxAvailability.cpp in Sources */,
 				642725BF1AE81EAF00A13289 /* CloudsHUDLabel.cpp in Sources */,
 				642725C01AE81EAF00A13289 /* OpenSteerDemo.cpp in Sources */,
 				642725C11AE81EAF00A13289 /* CloudsVisualSystemOpenP5Caustics.cpp in Sources */,
@@ -13840,6 +13916,7 @@
 				642725DE1AE81EAF00A13289 /* PointAction.cpp in Sources */,
 				642725DF1AE81EAF00A13289 /* linePoemApp.cpp in Sources */,
 				642725E01AE81EAF00A13289 /* ofxUIMinimalSlider.cpp in Sources */,
+				64E1433E1B45DF0C005F54BA /* ofxReachability.cpp in Sources */,
 				642725E11AE81EAF00A13289 /* ParamManager2.cpp in Sources */,
 				642725E21AE81EAF00A13289 /* ofxUIMultiImageToggle.cpp in Sources */,
 				642725E31AE81EAF00A13289 /* CubeAction.cpp in Sources */,
@@ -13898,6 +13975,7 @@
 				642726191AE81EAF00A13289 /* BalloonCredit.cpp in Sources */,
 				6427261A1AE81EAF00A13289 /* CloudsVisualSystemClusterMap.cpp in Sources */,
 				6427261B1AE81EAF00A13289 /* tinyxml.cpp in Sources */,
+				64E143321B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */,
 				6427261C1AE81EAF00A13289 /* CloudsVisualSystemOpenP5Machine.cpp in Sources */,
 				6427261D1AE81EAF00A13289 /* ofxTonicSynth.cpp in Sources */,
 				6427261E1AE81EAF00A13289 /* b2WorldCallbacks.cpp in Sources */,
@@ -14058,6 +14136,7 @@
 				E7D828F718BEBE6D00C1EB93 /* ofxBehavior.cpp in Sources */,
 				E7D8289C18BEBE3A00C1EB93 /* ofxTween.cpp in Sources */,
 				E7D828B618BEBE5500C1EB93 /* ofxTextInputField.cpp in Sources */,
+				64E143451B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */,
 				E73DA8DF189F3622006C9E4E /* RenderPass.cpp in Sources */,
 				E7D8253A18BEBD7000C1EB93 /* CloudsInputOculus.cpp in Sources */,
 				E73DA707189F1CEA006C9E4E /* b2RevoluteJoint.cpp in Sources */,
@@ -14090,6 +14169,7 @@
 				E73DA6F7189F1CEA006C9E4E /* b2World.cpp in Sources */,
 				E7D8260818BEBD7000C1EB93 /* Tweeter.cpp in Sources */,
 				E7D825F218BEBD7000C1EB93 /* CloudsVisualSystemSatoruhiga.cpp in Sources */,
+				64E1433F1B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */,
 				E7D82AB918BF099000C1EB93 /* ControlCounter.cpp in Sources */,
 				E7D82AD018BF099000C1EB93 /* Filters.cpp in Sources */,
 				E7D827F418BEBDCF00C1EB93 /* ofxTLEmptyKeyframes.cpp in Sources */,
@@ -14145,6 +14225,7 @@
 				E7D82AB118BF099000C1EB93 /* BufferPlayer.cpp in Sources */,
 				E73DA858189F3611006C9E4E /* ofxSQLiteInsert.cpp in Sources */,
 				E7D82AC718BF099000C1EB93 /* ControlStepper.cpp in Sources */,
+				64E1432D1B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */,
 				E73DA8DB189F3622006C9E4E /* LUTPass.cpp in Sources */,
 				E73DA855189F3611006C9E4E /* ofxSQLiteAbstract.cpp in Sources */,
 				E73DA8DD189F3622006C9E4E /* PixelatePass.cpp in Sources */,
@@ -14300,6 +14381,7 @@
 				E7D8262E18BEBD7000C1EB93 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E7D828FF18BEBE6D00C1EB93 /* ofxPerlinBehavior.cpp in Sources */,
 				E7D82AAE18BF099000C1EB93 /* BasicDelay.cpp in Sources */,
+				64E143391B45DF0C005F54BA /* ofxReachability.cpp in Sources */,
 				E7D825F418BEBD7000C1EB93 /* GridFluid.cpp in Sources */,
 				E7D825CC18BEBD7000C1EB93 /* Tetra.cpp in Sources */,
 				E73DA8D9189F3622006C9E4E /* KaleidoscopePass.cpp in Sources */,
@@ -14329,6 +14411,7 @@
 				E755D6EE1943F56F00AA81C1 /* MazeCamera.cpp in Sources */,
 				E73DA6C2189F1CEA006C9E4E /* Vec3.cpp in Sources */,
 				E7D827E918BEBDCF00C1EB93 /* ofxHotKeys_impl_linux.cpp in Sources */,
+				64E143331B45DF0C005F54BA /* Reachability.m in Sources */,
 				E7D825D818BEBD7000C1EB93 /* Spring.cpp in Sources */,
 				E7D825A018BEBD7000C1EB93 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 				E755D5FF1943F2AF00AA81C1 /* ofxUILabelButton.cpp in Sources */,
@@ -14646,6 +14729,7 @@
 				E7DDC0F3194437EC00E61D75 /* CloudsStoryEngine.cpp in Sources */,
 				E7DDC0F4194437EC00E61D75 /* ParallelTransportFrames.cpp in Sources */,
 				E7DDC0F5194437EC00E61D75 /* ofxOscReceiver.cpp in Sources */,
+				64E143401B45DF0C005F54BA /* ofxReachabilityImpl.cpp in Sources */,
 				E7DDC0F6194437EC00E61D75 /* CloudsVisualSystemVoro.cpp in Sources */,
 				E7DDC0F7194437EC00E61D75 /* CloudsVisualSystemOpenP5SeaOfLines.cpp in Sources */,
 				E7DDC0F8194437EC00E61D75 /* CloudsVisualSystemLinePoem.cpp in Sources */,
@@ -14832,6 +14916,7 @@
 				E7DDC1A8194437EC00E61D75 /* Voro.cpp in Sources */,
 				E7DDC1A9194437EC00E61D75 /* lukeMusicFuncs.cpp in Sources */,
 				03E28DCE1A9D9389005AA181 /* ofxLocalization.cpp in Sources */,
+				64E1432E1B45DF0C005F54BA /* ofxReachabilityImplApple.mm in Sources */,
 				E7DDC1AA194437EC00E61D75 /* tinyxmlparser.cpp in Sources */,
 				E7DDC1AB194437EC00E61D75 /* Caster.cpp in Sources */,
 				C15DCFDA1AB7956C007D1F44 /* Timer.cpp in Sources */,
@@ -14967,6 +15052,7 @@
 				E7DDC22B194437EC00E61D75 /* b2Math.cpp in Sources */,
 				E7DDC22C194437EC00E61D75 /* b2GearJoint.cpp in Sources */,
 				E7DDC22D194437EC00E61D75 /* CloudsVisualSystemOpenP5Sixteen.cpp in Sources */,
+				64E143461B45DF0C005F54BA /* ofxReachabilityImplPing.cpp in Sources */,
 				E7DDC22E194437EC00E61D75 /* RimHighlightingPass.cpp in Sources */,
 				E7DDC22F194437EC00E61D75 /* CloudsVisualSystemCode.cpp in Sources */,
 				E7DDC230194437EC00E61D75 /* ControlGenerator.cpp in Sources */,
@@ -15132,6 +15218,7 @@
 				E7DDC2D1194437EC00E61D75 /* ofxTLLFO.cpp in Sources */,
 				E7DDC2D2194437EC00E61D75 /* CloudsVisualSystemMetaballs.cpp in Sources */,
 				E7DDC2D3194437EC00E61D75 /* CloudsVisualSystemFlying.cpp in Sources */,
+				64E143341B45DF0C005F54BA /* Reachability.m in Sources */,
 				E7DDC2D4194437EC00E61D75 /* (null) in Sources */,
 				E7DDC2D5194437EC00E61D75 /* b2Contact.cpp in Sources */,
 				E7DDC2D6194437EC00E61D75 /* ModelCreature.cpp in Sources */,
@@ -15148,6 +15235,7 @@
 				E7DDC2E1194437EC00E61D75 /* OldPathway.cpp in Sources */,
 				E7DDC2E2194437EC00E61D75 /* ContrastPass.cpp in Sources */,
 				E7DDC2E3194437EC00E61D75 /* sqlite3.c in Sources */,
+				64E1433A1B45DF0C005F54BA /* ofxReachability.cpp in Sources */,
 				03E28F2B1A9D9AAD005AA181 /* ofxOculusDK2.cpp in Sources */,
 				E7DDC2E4194437EC00E61D75 /* ofxTLCameraTrack.cpp in Sources */,
 				E7DDC2E5194437EC00E61D75 /* Color.cpp in Sources */,
@@ -15332,10 +15420,7 @@
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
 				);
-				OTHER_LDFLAGS = (
-					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
-				);
+				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PRODUCT_NAME = "$(TARGET_NAME)_Debug";
 				WRAPPER_EXTENSION = app;
 			};
@@ -15940,7 +16025,6 @@
 		642726C11AE81EAF00A13289 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -16060,7 +16144,6 @@
 		642726C21AE81EAF00A13289 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -16218,7 +16301,8 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.11;
+				USER_HEADER_SEARCH_PATHS = "\"$(OF_PATH)/libs/openssl/include\" \"$(OF_PATH)/libs/glut/include\"";
 			};
 			name = Debug;
 		};
@@ -16263,7 +16347,8 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.11;
+				USER_HEADER_SEARCH_PATHS = "\"$(OF_PATH)/libs/openssl/include\" \"$(OF_PATH)/libs/glut/include\"";
 			};
 			name = Release;
 		};
@@ -16495,7 +16580,6 @@
 		E7DDC352194437EC00E61D75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -16614,7 +16698,6 @@
 		E7DDC353194437EC00E61D75 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (

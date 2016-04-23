@@ -7,8 +7,8 @@ void testApp::setup(){
 	flying.setup();
 	flying.playSystem();
     
-    mixer.setup();
-    mixer.setDiageticVolume(1);
+//    mixer.setup();
+//    mixer.setDiageticVolume(1);
 }
 
 //--------------------------------------------------------------
@@ -71,5 +71,5 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 void testApp::audioRequested(float *output, int bufferSize, int nChannels)
 {
-    mixer.fillBuffer(output, bufferSize, nChannels);
+//    mixer.fillBuffer(output, bufferSize, nChannels);
 }
