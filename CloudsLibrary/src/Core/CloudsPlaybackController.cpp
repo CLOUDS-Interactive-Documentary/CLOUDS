@@ -322,7 +322,7 @@ void CloudsPlaybackController::setup(){
     
 #ifdef VHX_MEDIA
     //availability.setPingAddress("www.vhx.tv");
-    //availability.setup();
+    availability.setup();
 #endif
 	
 	cout << "*****LOAD STEP*** SHOWING INTRO" << endl;
