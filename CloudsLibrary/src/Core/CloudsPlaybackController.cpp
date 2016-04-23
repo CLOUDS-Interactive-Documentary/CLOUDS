@@ -1775,9 +1775,9 @@ void CloudsPlaybackController::updateTransition(){
     }
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
     
-	#ifdef OCULUS_RIFT
-	CloudsVisualSystem::getOculusRift().setFade(crossfadeValue);
-	#endif
+//	#ifdef OCULUS_RIFT
+//	CloudsVisualSystem::getOculusRift().setFade(crossfadeValue);
+//	#endif
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
 	}   
@@ -1875,8 +1875,11 @@ void CloudsPlaybackController::drawRenderTarget(){
 		if(loading || !MediaPathFound()){
 			crossfadeValue = 1.0;
 		}
+		#ifdef OCULUS_RIFT
+		CloudsVisualSystem::getOculusRift().setFade(crossfadeValue);
+		#else
 		ofSetColor(255, crossfadeValue*255 );
-		
+		#endif
 		currentVisualSystem->selfPostDraw();
         
         ofEnableAlphaBlending();
