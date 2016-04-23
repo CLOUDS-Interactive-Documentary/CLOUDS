@@ -22,11 +22,8 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-	auto fade = (float)ofGetMouseX()/(float)ofGetWidth();
-	oculus.setFade( fade );
 	cam.begin();
 	cam.end();
-	ofLogError() << "fade: " << fade;
 }
 
 //--------------------------------------------------------------
@@ -37,22 +34,22 @@ void testApp::draw(){
 		
         if (showOverlay) {
 
-            oculus.beginOverlay(-230, 320, 240);
+			oculus.beginOverlay(-(float)ofGetMouseY() / (float)ofGetHeight(), 1., 1920, 1080);
             ofRectangle overlayRect = oculus.getOverlayRectangle();
 
             ofPushStyle();
             ofEnableAlphaBlending();
             ofFill();
-            ofSetColor(255, 40, 10, 200);
 
-            ofRect(overlayRect);
+            ofSetColor(255, 40, 10, 200);
+			ofRect( overlayRect );
 
             ofSetColor(255, 255);
             ofFill();
 
             ofSetColor(0, 255, 0);
             ofNoFill();
-            ofCircle(overlayRect.getCenter(), 20);
+			ofCircle(overlayRect.getCenter(), 20);
 
             ofPopStyle();
             oculus.endOverlay();
