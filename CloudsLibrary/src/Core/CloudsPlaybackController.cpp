@@ -1825,7 +1825,7 @@ void CloudsPlaybackController::drawKinectFeedback(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::preDraw(ofEventArgs& args){
 #ifdef OCULUS_RIFT
-    /*
+    
     float hudDistance = CloudsVisualSystem::subtitleHudZ;
     float hudScale = CloudsVisualSystem::subtitleHudScale;
     CloudsVisualSystem::getOculusRift().beginOverlay(hudDistance, hudScale, 1920, 1080);
@@ -1837,7 +1837,7 @@ void CloudsPlaybackController::preDraw(ofEventArgs& args){
     hud.draw();
     
     CloudsVisualSystem::getOculusRift().endOverlay();
-	*/
+	
 #endif
 }
 

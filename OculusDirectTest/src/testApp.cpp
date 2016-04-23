@@ -31,7 +31,7 @@ void testApp::draw(){
 	
 	if (oculus.isSetup()) {
 
-		
+		showOverlay = false;
         if (showOverlay) {
 
 			oculus.beginOverlay(-(float)ofGetMouseY() / (float)ofGetHeight(), 1., 1920, 1080);

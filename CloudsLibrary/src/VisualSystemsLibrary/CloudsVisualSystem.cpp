@@ -3347,7 +3347,7 @@ void CloudsVisualSystem::setupOculusGui()
 	oculusGui->addSlider("SUBTITLE Z POS", 0, -100, &subtitle3DBasePosZ);
 	oculusGui->addSlider("SUBTITLE SCALE", 0,  1.0, &subtitle3DScale);
 	oculusGui->addSpacer();
-	oculusGui->addSlider("SUBTITLE HUD Z", -100, -700, &subtitleHudZ);
+	oculusGui->addSlider("SUBTITLE HUD Z", -0, -5, &subtitleHudZ);
 	oculusGui->addSlider("SUBTITLE HUD SCALE", .0, 1.0, &subtitleHudScale);
 	//oculusGui->addSlider("SUBTITLE HUD Y", 0, 1.0, &subtitleHudY);
 

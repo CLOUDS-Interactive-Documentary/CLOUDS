@@ -100,7 +100,15 @@ void testApp::update(){
 void testApp::draw(){
 
 #ifdef OCULUS_RIFT
-	
+	float hudDistance = CloudsVisualSystem::subtitleHudZ;
+    float hudScale = CloudsVisualSystem::subtitleHudScale;
+    
+	CloudsVisualSystem::getOculusRift().beginOverlay(hudDistance, hudScale, 1920, 1080);
+    CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
+
+    hud.draw();
+    
+    CloudsVisualSystem::getOculusRift().endOverlay();	
 #else
 	ofBackground(0);
 	ofDisableDepthTest();
