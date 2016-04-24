@@ -594,7 +594,6 @@
 		038034961948167700AFD40C /* libopencv_stitching.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2361943EDC000AA81C1 /* libopencv_stitching.a */; };
 		038034971948167700AFD40C /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2451943EDC000AA81C1 /* libopencv_imgproc.a */; };
 		038034981948167700AFD40C /* libopencv_haartraining_engine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2431943EDC000AA81C1 /* libopencv_haartraining_engine.a */; };
-		038034991948167700AFD40C /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		0380349A1948167700AFD40C /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		0380349B1948167700AFD40C /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		0380349C1948167700AFD40C /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2491943EDC000AA81C1 /* libopencv_objdetect.a */; };
@@ -646,7 +645,6 @@
 		038034CA1948167700AFD40C /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2341943EDC000AA81C1 /* libopencv_ocl.a */; };
 		038034CB1948167700AFD40C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		038034CC1948167700AFD40C /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
-		038034CF1948167700AFD40C /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		0385CDB81AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */; };
 		0385CDB91AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */; };
 		0385CDBA1AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385CDB61AF5B8D8000553F2 /* CloudsVisualSystemVisuals.cpp */; };
@@ -1239,7 +1237,6 @@
 		03A0F7001947A0850071CF4B /* libopencv_stitching.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2361943EDC000AA81C1 /* libopencv_stitching.a */; };
 		03A0F7011947A0850071CF4B /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2451943EDC000AA81C1 /* libopencv_imgproc.a */; };
 		03A0F7021947A0850071CF4B /* libopencv_haartraining_engine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2431943EDC000AA81C1 /* libopencv_haartraining_engine.a */; };
-		03A0F7031947A0850071CF4B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		03A0F7041947A0850071CF4B /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		03A0F7051947A0850071CF4B /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		03A0F7061947A0850071CF4B /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2491943EDC000AA81C1 /* libopencv_objdetect.a */; };
@@ -1291,7 +1288,6 @@
 		03A0F7341947A0850071CF4B /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2341943EDC000AA81C1 /* libopencv_ocl.a */; };
 		03A0F7351947A0850071CF4B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		03A0F7361947A0850071CF4B /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
-		03A0F7391947A0850071CF4B /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		03C3983A1CCAC9CB00F66A80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
 		03C3983B1CCACC3F00F66A80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
 		03C3983C1CCACC4600F66A80 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15DCFE91AB79689007D1F44 /* OpenAL.framework */; };
@@ -1931,7 +1927,6 @@
 		642723D61AE81E5200A13289 /* libopencv_stitching.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2361943EDC000AA81C1 /* libopencv_stitching.a */; };
 		642723D71AE81E5200A13289 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2451943EDC000AA81C1 /* libopencv_imgproc.a */; };
 		642723D81AE81E5200A13289 /* libopencv_haartraining_engine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2431943EDC000AA81C1 /* libopencv_haartraining_engine.a */; };
-		642723D91AE81E5200A13289 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		642723DA1AE81E5200A13289 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		642723DB1AE81E5200A13289 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		642723DC1AE81E5200A13289 /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2491943EDC000AA81C1 /* libopencv_objdetect.a */; };
@@ -1983,7 +1978,6 @@
 		6427240A1AE81E5200A13289 /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2341943EDC000AA81C1 /* libopencv_ocl.a */; };
 		6427240B1AE81E5200A13289 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		6427240C1AE81E5200A13289 /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
-		6427240F1AE81E5200A13289 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		642724151AE81E5200A13289 /* CLOUDS.icns in Resources */ = {isa = PBXBuildFile; fileRef = 033BCA411AAA562900BC1FEC /* CLOUDS.icns */; };
 		6427241F1AE81EAF00A13289 /* Distance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DAB93189F3644006C9E4E /* Distance.cpp */; };
 		642724201AE81EAF00A13289 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8231A18BEBD6E00C1EB93 /* ParticleConnection.cpp */; };
@@ -2589,7 +2583,6 @@
 		6427267F1AE81EAF00A13289 /* libopencv_stitching.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2361943EDC000AA81C1 /* libopencv_stitching.a */; };
 		642726801AE81EAF00A13289 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2451943EDC000AA81C1 /* libopencv_imgproc.a */; };
 		642726811AE81EAF00A13289 /* libopencv_haartraining_engine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2431943EDC000AA81C1 /* libopencv_haartraining_engine.a */; };
-		642726821AE81EAF00A13289 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		642726831AE81EAF00A13289 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		642726841AE81EAF00A13289 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		642726851AE81EAF00A13289 /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2491943EDC000AA81C1 /* libopencv_objdetect.a */; };
@@ -2642,7 +2635,6 @@
 		642726B41AE81EAF00A13289 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		642726B51AE81EAF00A13289 /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
 		642726B61AE81EAF00A13289 /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 035F4F981A9DA6A0003726D9 /* libovr.a */; };
-		642726B91AE81EAF00A13289 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		642726BF1AE81EAF00A13289 /* CLOUDS.icns in Resources */ = {isa = PBXBuildFile; fileRef = 033BCA411AAA562900BC1FEC /* CLOUDS.icns */; };
 		64574BD11B00560700C1BC77 /* CloudsVHXAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574BCD1B00560700C1BC77 /* CloudsVHXAuth.cpp */; };
 		64574BD21B00560700C1BC77 /* CloudsVHXAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64574BCD1B00560700C1BC77 /* CloudsVHXAuth.cpp */; };
@@ -2732,7 +2724,6 @@
 		A658308C1B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */; };
 		A6B6A0031CCC5DDA0021A344 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
 		A6B6A0041CCC5DEF0021A344 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
-		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C15DCFD91AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
 		C15DCFDA1AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
 		C15DCFDB1AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
@@ -2753,7 +2744,6 @@
 		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
-		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E73DA6A8189F1CEA006C9E4E /* ofxSimpleSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA0CA189F1CD4006C9E4E /* ofxSimpleSurface.cpp */; };
 		E73DA6AC189F1CEA006C9E4E /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA0E1189F1CD4006C9E4E /* ofxSimpleSpline.cpp */; };
 		E73DA6B0189F1CEA006C9E4E /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA121189F1CD4006C9E4E /* Camera.cpp */; };
@@ -3960,7 +3950,6 @@
 		E7DDC315194437EC00E61D75 /* libopencv_stitching.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2361943EDC000AA81C1 /* libopencv_stitching.a */; };
 		E7DDC316194437EC00E61D75 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2451943EDC000AA81C1 /* libopencv_imgproc.a */; };
 		E7DDC317194437EC00E61D75 /* libopencv_haartraining_engine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2431943EDC000AA81C1 /* libopencv_haartraining_engine.a */; };
-		E7DDC318194437EC00E61D75 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E7DDC319194437EC00E61D75 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E7DDC31B194437EC00E61D75 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E7DDC31C194437EC00E61D75 /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2491943EDC000AA81C1 /* libopencv_objdetect.a */; };
@@ -4012,7 +4001,6 @@
 		E7DDC34B194437EC00E61D75 /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2341943EDC000AA81C1 /* libopencv_ocl.a */; };
 		E7DDC34C194437EC00E61D75 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		E7DDC34D194437EC00E61D75 /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
-		E7DDC350194437EC00E61D75 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
@@ -4077,7 +4065,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				038034CF1948167700AFD40C /* GLUT.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4087,7 +4074,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03A0F7391947A0850071CF4B /* GLUT.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4097,7 +4083,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6427240F1AE81E5200A13289 /* GLUT.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4107,7 +4092,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				642726B91AE81EAF00A13289 /* GLUT.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4117,7 +4101,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4127,7 +4110,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E7DDC350194437EC00E61D75 /* GLUT.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4204,7 +4186,6 @@
 		A60F26E91AF136B400A1C863 /* ofxAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioDecoder.h; sourceTree = "<group>"; };
 		A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDScroller.cpp; sourceTree = "<group>"; };
 		A65830861B07C91D00E425FF /* CloudsHUDScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDScroller.h; sourceTree = "<group>"; };
-		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C15DCF881AB7956C007D1F44 /* Composition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Composition.h; sourceTree = "<group>"; };
 		C15DCF891AB7956C007D1F44 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C15DCF8B1AB7956C007D1F44 /* Composition.inc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Composition.inc.h; sourceTree = "<group>"; };
@@ -5825,7 +5806,6 @@
 				038034961948167700AFD40C /* libopencv_stitching.a in Frameworks */,
 				038034971948167700AFD40C /* libopencv_imgproc.a in Frameworks */,
 				038034981948167700AFD40C /* libopencv_haartraining_engine.a in Frameworks */,
-				038034991948167700AFD40C /* GLUT.framework in Frameworks */,
 				0380349A1948167700AFD40C /* openFrameworksDebug.a in Frameworks */,
 				0380349B1948167700AFD40C /* AGL.framework in Frameworks */,
 				0380349C1948167700AFD40C /* libopencv_objdetect.a in Frameworks */,
@@ -5898,7 +5878,6 @@
 				03A0F7001947A0850071CF4B /* libopencv_stitching.a in Frameworks */,
 				03A0F7011947A0850071CF4B /* libopencv_imgproc.a in Frameworks */,
 				03A0F7021947A0850071CF4B /* libopencv_haartraining_engine.a in Frameworks */,
-				03A0F7031947A0850071CF4B /* GLUT.framework in Frameworks */,
 				03A0F7041947A0850071CF4B /* openFrameworksDebug.a in Frameworks */,
 				03A0F7051947A0850071CF4B /* AGL.framework in Frameworks */,
 				03A0F7061947A0850071CF4B /* libopencv_objdetect.a in Frameworks */,
@@ -5973,7 +5952,6 @@
 				642723D61AE81E5200A13289 /* libopencv_stitching.a in Frameworks */,
 				642723D71AE81E5200A13289 /* libopencv_imgproc.a in Frameworks */,
 				642723D81AE81E5200A13289 /* libopencv_haartraining_engine.a in Frameworks */,
-				642723D91AE81E5200A13289 /* GLUT.framework in Frameworks */,
 				642723DA1AE81E5200A13289 /* openFrameworksDebug.a in Frameworks */,
 				642723DB1AE81E5200A13289 /* AGL.framework in Frameworks */,
 				642723DC1AE81E5200A13289 /* libopencv_objdetect.a in Frameworks */,
@@ -6048,7 +6026,6 @@
 				6427267F1AE81EAF00A13289 /* libopencv_stitching.a in Frameworks */,
 				642726801AE81EAF00A13289 /* libopencv_imgproc.a in Frameworks */,
 				642726811AE81EAF00A13289 /* libopencv_haartraining_engine.a in Frameworks */,
-				642726821AE81EAF00A13289 /* GLUT.framework in Frameworks */,
 				642726831AE81EAF00A13289 /* openFrameworksDebug.a in Frameworks */,
 				642726841AE81EAF00A13289 /* AGL.framework in Frameworks */,
 				642726851AE81EAF00A13289 /* libopencv_objdetect.a in Frameworks */,
@@ -6124,7 +6101,6 @@
 				E755D3041943EDC300AA81C1 /* libopencv_stitching.a in Frameworks */,
 				E755D3121943EDC300AA81C1 /* libopencv_imgproc.a in Frameworks */,
 				E755D3101943EDC300AA81C1 /* libopencv_haartraining_engine.a in Frameworks */,
-				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
 				E755D3161943EDC300AA81C1 /* libopencv_objdetect.a in Frameworks */,
@@ -6200,7 +6176,6 @@
 				E7DDC315194437EC00E61D75 /* libopencv_stitching.a in Frameworks */,
 				E7DDC316194437EC00E61D75 /* libopencv_imgproc.a in Frameworks */,
 				E7DDC317194437EC00E61D75 /* libopencv_haartraining_engine.a in Frameworks */,
-				E7DDC318194437EC00E61D75 /* GLUT.framework in Frameworks */,
 				E7DDC319194437EC00E61D75 /* openFrameworksDebug.a in Frameworks */,
 				E7DDC31B194437EC00E61D75 /* AGL.framework in Frameworks */,
 				E7DDC31C194437EC00E61D75 /* libopencv_objdetect.a in Frameworks */,
@@ -6626,14 +6601,6 @@
 			name = "system frameworks";
 			sourceTree = "<group>";
 		};
-		BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BBAB23BE13894E4700AA2426 /* GLUT.framework */,
-			);
-			name = "3rd party frameworks";
-			sourceTree = "<group>";
-		};
 		C15DCF481AB7956B007D1F44 /* ofxAnimationPrimitives */ = {
 			isa = PBXGroup;
 			children = (
@@ -6691,7 +6658,6 @@
 		E45BE5980E8CC70C009D7055 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */,
 				BBAB23C913894ECA00AA2426 /* system frameworks */,
 			);
 			name = frameworks;
