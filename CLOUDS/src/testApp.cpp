@@ -43,11 +43,7 @@ void testApp::setup(){
 	playerSetup = false;
 	shouldSetupPlayer = false;
     
-#ifdef OCULUS_RIFT
-	loader.loadImage(GetCloudsDataPath() + "AppData/CLOUDS_HD_BG_DOUBLE.png");
-#else
 	loader.loadImage(GetCloudsDataPath() + "AppData/SCREEN_BG.png");
-#endif
 
 
 }
