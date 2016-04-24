@@ -1324,7 +1324,6 @@
 		03E28DCE1A9D9389005AA181 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */; };
 		03E28DCF1A9D9389005AA181 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */; };
 		03E28DD01A9D9389005AA181 /* ofxLocalization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */; };
-		03E28F2B1A9D9AAD005AA181 /* ofxOculusDK2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28ED91A9D9AAC005AA181 /* ofxOculusDK2.cpp */; };
 		03F0DFDD1AAA581E00204E00 /* CLOUDS.icns in Resources */ = {isa = PBXBuildFile; fileRef = 033BCA411AAA562900BC1FEC /* CLOUDS.icns */; };
 		03F0DFDF1AAA586900204E00 /* CLOUDS.icns in Resources */ = {isa = PBXBuildFile; fileRef = 033BCA411AAA562900BC1FEC /* CLOUDS.icns */; };
 		2E8074591820B7EC00A003A0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8074571820B7D500A003A0 /* AVFoundation.framework */; };
@@ -1984,7 +1983,7 @@
 		6427240A1AE81E5200A13289 /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D2341943EDC000AA81C1 /* libopencv_ocl.a */; };
 		6427240B1AE81E5200A13289 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80745D1820B8AB00A003A0 /* CoreMedia.framework */; };
 		6427240C1AE81E5200A13289 /* libopencv_ocl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E755D24A1943EDC000AA81C1 /* libopencv_ocl.a */; };
-		6427240F1AE81E5200A13289 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		6427240F1AE81E5200A13289 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		642724151AE81E5200A13289 /* CLOUDS.icns in Resources */ = {isa = PBXBuildFile; fileRef = 033BCA411AAA562900BC1FEC /* CLOUDS.icns */; };
 		6427241F1AE81EAF00A13289 /* Distance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DAB93189F3644006C9E4E /* Distance.cpp */; };
 		642724201AE81EAF00A13289 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8231A18BEBD6E00C1EB93 /* ParticleConnection.cpp */; };
@@ -2541,7 +2540,6 @@
 		6427264A1AE81EAF00A13289 /* OldPathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA127189F1CD4006C9E4E /* OldPathway.cpp */; };
 		6427264B1AE81EAF00A13289 /* ContrastPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA87C189F3622006C9E4E /* ContrastPass.cpp */; };
 		6427264C1AE81EAF00A13289 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = E73DA820189F3610006C9E4E /* sqlite3.c */; };
-		6427264D1AE81EAF00A13289 /* ofxOculusDK2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E28ED91A9D9AAC005AA181 /* ofxOculusDK2.cpp */; };
 		6427264E1AE81EAF00A13289 /* ofxTLCameraTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D8279A18BEBDCF00C1EB93 /* ofxTLCameraTrack.cpp */; };
 		6427264F1AE81EAF00A13289 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73DA123189F1CD4006C9E4E /* Color.cpp */; };
 		642726501AE81EAF00A13289 /* itgPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755D6FC1943FF5F00AA81C1 /* itgPath.cpp */; };
@@ -2732,7 +2730,9 @@
 		A658308A1B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */; };
 		A658308B1B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */; };
 		A658308C1B07C91D00E425FF /* CloudsHUDScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A65830851B07C91D00E425FF /* CloudsHUDScroller.cpp */; };
-		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		A6B6A0031CCC5DDA0021A344 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
+		A6B6A0041CCC5DEF0021A344 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C398391CCAC9CB00F66A80 /* SystemConfiguration.framework */; };
+		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C15DCFD91AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
 		C15DCFDA1AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
 		C15DCFDB1AB7956C007D1F44 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15DCF941AB7956C007D1F44 /* Timer.cpp */; };
@@ -4157,8 +4157,6 @@
 		03E28DC91A9D9389005AA181 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLocalization.cpp; sourceTree = "<group>"; };
 		03E28DCC1A9D9389005AA181 /* ofxLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLocalization.h; sourceTree = "<group>"; };
-		03E28ED91A9D9AAC005AA181 /* ofxOculusDK2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusDK2.cpp; sourceTree = "<group>"; };
-		03E28EDA1A9D9AAC005AA181 /* ofxOculusDK2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusDK2.h; sourceTree = "<group>"; };
 		2E8074571820B7D500A003A0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2E80745D1820B8AB00A003A0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		642724191AE81E5200A13289 /* CLOUDS_VHX_Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_VHX_Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -5959,6 +5957,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6B6A0041CCC5DEF0021A344 /* SystemConfiguration.framework in Frameworks */,
 				642723CA1AE81E5200A13289 /* libcurl.dylib in Frameworks */,
 				642723CB1AE81E5200A13289 /* OpenAL.framework in Frameworks */,
 				642723CC1AE81E5200A13289 /* QuartzCore.framework in Frameworks */,
@@ -6184,6 +6183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6B6A0031CCC5DDA0021A344 /* SystemConfiguration.framework in Frameworks */,
 				A60F272B1AF14C9500A1C863 /* OpenAL.framework in Frameworks */,
 				A60F272A1AF14C8700A1C863 /* libcurl.dylib in Frameworks */,
 				E79BFA7719492CB900A0A83E /* AudioUnit.framework in Frameworks */,
@@ -6312,24 +6312,6 @@
 			children = (
 				03E28DCB1A9D9389005AA181 /* ofxLocalization.cpp */,
 				03E28DCC1A9D9389005AA181 /* ofxLocalization.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		03E28DD11A9D9AAC005AA181 /* ofxOculusDK2 */ = {
-			isa = PBXGroup;
-			children = (
-				03E28ED81A9D9AAC005AA181 /* src */,
-			);
-			name = ofxOculusDK2;
-			path = ../../../addons/ofxOculusDK2;
-			sourceTree = "<group>";
-		};
-		03E28ED81A9D9AAC005AA181 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				03E28ED91A9D9AAC005AA181 /* ofxOculusDK2.cpp */,
-				03E28EDA1A9D9AAC005AA181 /* ofxOculusDK2.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -6588,7 +6570,6 @@
 				E7D82B5318BF0BC000C1EB93 /* ofxNearestNeighbour */,
 				E7D8290918BEBE8000C1EB93 /* ofxObjLoader */,
 				E7D82B8618BF0BEE00C1EB93 /* ofxOcean */,
-				03E28DD11A9D9AAC005AA181 /* ofxOculusDK2 */,
 				E73DA0E3189F1CD4006C9E4E /* ofxOpenSteer */,
 				E73DA8F1189F362A006C9E4E /* ofxOsc */,
 				E73DA864189F3621006C9E4E /* ofxPostProcessing */,
@@ -14031,7 +14012,6 @@
 				6427264A1AE81EAF00A13289 /* OldPathway.cpp in Sources */,
 				6427264B1AE81EAF00A13289 /* ContrastPass.cpp in Sources */,
 				6427264C1AE81EAF00A13289 /* sqlite3.c in Sources */,
-				6427264D1AE81EAF00A13289 /* ofxOculusDK2.cpp in Sources */,
 				6427264E1AE81EAF00A13289 /* ofxTLCameraTrack.cpp in Sources */,
 				6427264F1AE81EAF00A13289 /* Color.cpp in Sources */,
 				642726501AE81EAF00A13289 /* itgPath.cpp in Sources */,
@@ -15241,7 +15221,6 @@
 				E7DDC2E2194437EC00E61D75 /* ContrastPass.cpp in Sources */,
 				E7DDC2E3194437EC00E61D75 /* sqlite3.c in Sources */,
 				64E1433A1B45DF0C005F54BA /* ofxReachability.cpp in Sources */,
-				03E28F2B1A9D9AAD005AA181 /* ofxOculusDK2.cpp in Sources */,
 				E7DDC2E4194437EC00E61D75 /* ofxTLCameraTrack.cpp in Sources */,
 				E7DDC2E5194437EC00E61D75 /* Color.cpp in Sources */,
 				E7DDC2E6194437EC00E61D75 /* itgPath.cpp in Sources */,
@@ -15792,6 +15771,8 @@
 		642724171AE81E5200A13289 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -15911,6 +15892,8 @@
 		642724181AE81E5200A13289 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -16360,8 +16343,8 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -16476,8 +16459,8 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
