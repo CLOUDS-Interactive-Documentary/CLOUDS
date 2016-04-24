@@ -3,11 +3,11 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	ofBackground(0);
-	
-	ofSetVerticalSync(true);
-    ofSetEscapeQuitsApp(false);
-    
+	#ifdef OCULUS_RIFT
+    ofSetVerticalSync(false);
+	ofSetBackgroundAuto(false);
+	#endif
+
 	//////////////SHOW INTRO
     parser.loadFromFiles();
 	vector<CloudsClip*> startingNodes = parser.getClipsWithKeyword("#start");
@@ -37,22 +37,17 @@ void testApp::setup(){
 
 	intro.setup();
 #ifdef OCULUS_RIFT
-	if(CloudsVisualSystem::getOculusRift().isHD()){
-		intro.loadPresetGUISFromName("Oculus");
-	}
-	else{
-		intro.loadPresetGUISFromName("OculusSD");
-	}
+	intro.loadPresetGUISFromName("Oculus_Pretty");
 #else
 	intro.loadPresetGUISFromName("TunnelWarp");
 #endif
 
-	intro.setDrawToScreen(false);
+	//intro.setDrawToScreen(false);
 	intro.playSystem();
 	//////////////SHOW INTRO
     
-    ofHideCursor();
-    ofToggleFullscreen();
+//    ofHideCursor();
+//    ofToggleFullscreen();
 }
 
 //--------------------------------------------------------------------
@@ -80,7 +75,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	intro.selfPostDraw();
+//	intro.selfPostDraw();
 //	hud.draw();
 }
 
@@ -91,9 +86,6 @@ void testApp::keyPressed(int key){
     }
     else if(key == 'S'){
         ofShowCursor();
-    }
-    if(key == '.'){
-        ofSetWindowShape(800, 800);
     }
 }
 

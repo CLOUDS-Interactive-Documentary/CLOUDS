@@ -103,7 +103,7 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	
 	drawRGBD = true;
 	#ifdef OCULUS_RIFT
-		cullFace = GL_FRONT;
+		cullFace = GL_BACK;//GL_FRONT;
 	#else
 		cullFace = GL_BACK;
 	#endif
@@ -1181,7 +1181,7 @@ void CloudsVisualSystemRGBD::updateQuestions(){
         }
         
 		#ifdef OCULUS_RIFT
-		ofVec3f screenPos = getOculusRift().worldToScreen(portals[i]->hoverPosition, true);
+		ofVec3f screenPos = getOculusRift().worldToScreen(portals[i]->hoverPosition);
         ofRectangle viewport = getOculusRift().getOculusViewport();
 		float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
                                     viewport.getCenter().x, viewport.getCenter().y);
@@ -1217,9 +1217,9 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 					ofNotifyEvent(events.portalHoverBegan, args);
 					CloudsVisualSystem::getSelectLow()->setPosition(0);
 					CloudsVisualSystem::getSelectLow()->play();
-					#ifdef CLOUDS_SCREENING
-					portalToClear = selectedPortal;
-					#endif
+//					#ifdef CLOUDS_SCREENING
+//					portalToClear = selectedPortal;
+//					#endif
 				}
 			}
 			//let it go
@@ -2123,19 +2123,19 @@ string CloudsVisualSystemRGBD::getQuestionText(){
     }
     return "";
 }
-
-#ifdef CLOUDS_SCREENING
-bool CloudsVisualSystemRGBD::hasQuestionsRemaining(){
-	return !(questions.size() == 0 && leftPortal.question == "" && rightPortal.question == "");
-}
-
-void CloudsVisualSystemRGBD::clearQuestionQueue(){
-	questions.clear();
-	leftPortal.question  = "";
-	rightPortal.question = "";
-}
-
-#endif
+//
+//#ifdef CLOUDS_SCREENING
+//bool CloudsVisualSystemRGBD::hasQuestionsRemaining(){
+//	return !(questions.size() == 0 && leftPortal.question == "" && rightPortal.question == "");
+//}
+//
+//void CloudsVisualSystemRGBD::clearQuestionQueue(){
+//	questions.clear();
+//	leftPortal.question  = "";
+//	rightPortal.question = "";
+//}
+//
+//#endif
 
 vector<QuestionQueue>& CloudsVisualSystemRGBD::getQuestionQueue(){
     return questions;

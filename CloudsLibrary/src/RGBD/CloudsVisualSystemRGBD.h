@@ -99,10 +99,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     vector<QuestionQueue>& getQuestionQueue();
     //called from Playback controller during screening mode to remove selected question by clustermap
     void removeQuestionFromQueue(CloudsClip* clip);
-	#ifdef CLOUDS_SCREENING
-	bool hasQuestionsRemaining();
-	void clearQuestionQueue();
-	#endif
+//	#ifdef CLOUDS_SCREENING
+//	bool hasQuestionsRemaining();
+//	void clearQuestionQueue();
+//	#endif
     ////////QUESTIONS
 
 	float getRGBDTransitionValue();

@@ -17,11 +17,13 @@ void testApp::setup(){
 
 	//ofSetWindowPosition(0,0);
 #ifdef OCULUS_RIFT
-	ofSetWindowShape(1920*2,1080);
+//	ofSetWindowShape(1920*2,1080);
+    ofSetVerticalSync(false);
+	ofSetBackgroundAuto(false);
 #else
 	ofSetWindowShape(1920,1080);
-#endif
 	ofSetVerticalSync(true);
+#endif
 	shouldPlayTestVideo = false;
 	ofSetLogLevel(OF_LOG_NOTICE);
     
@@ -50,13 +52,15 @@ void testApp::setup(){
 	////////////////////////////////////////////////
 
 	testVideoIndex = 0;
-
 	rgbd.setup();
-	rgbd.setDrawToScreen(false);
+
 #ifdef OCULUS_RIFT
     // Link the HUD.
-    rgbd.hud = &hud;
-    rgbd.setupHUDGui();
+//    rgbd.hud = &hud;
+//    rgbd.setupHUDGui();
+#else
+	rgbd.setDrawToScreen(false);
+
 #endif
 	CloudsVisualSystem::getRGBDVideoPlayer().showingLowerThirds = true;
 
@@ -72,9 +76,6 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 
-	if(ofGetFrameNum() == 10){
-		ofToggleFullscreen();
-	}
 	//updateTransitions();
 	hud.update();
 	if(shouldPlayTestVideo){
@@ -97,19 +98,30 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+
+#ifdef OCULUS_RIFT
+	float hudDistance = CloudsVisualSystem::subtitleHudZ;
+    float hudScale = CloudsVisualSystem::subtitleHudScale;
+    
+	CloudsVisualSystem::getOculusRift().beginOverlay(hudDistance, hudScale, 1920, 1080);
+    CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
+
+    hud.draw();
+    
+    CloudsVisualSystem::getOculusRift().endOverlay();	
+#else
 	ofBackground(0);
 	ofDisableDepthTest();
 	ofEnableAlphaBlending();
 	rgbd.selfPostDraw();
 	ofSetColor(255);
-
-#ifndef OCULUS_RIFT
 	hud.draw();
 	CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles();
+	ofDisableDepthTest();
 #endif
 
-	ofDisableDepthTest();
-	//rgbd.getRGBDVideoPlayer().getPlayer().draw(0,0);
+
+
 }
 
 //--------------------------------------------------------------

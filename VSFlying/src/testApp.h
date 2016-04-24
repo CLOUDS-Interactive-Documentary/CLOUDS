@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "CloudsVisualSystemFlying.h"
-#include "CloudsMixer.h"
+//#include "CloudsMixer.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -25,5 +25,5 @@ class testApp : public ofBaseApp{
     void audioRequested(float *output, int bufferSize, int nChannels);
 
     CloudsVisualSystemFlying flying;
-    CloudsMixer mixer;
+    //CloudsMixer mixer;
 };

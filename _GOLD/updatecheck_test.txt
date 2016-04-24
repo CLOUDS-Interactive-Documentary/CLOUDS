@@ -1,0 +1,5 @@
+version 1.1.0
+mac.vhx http://clouds-documentary.s3-website-us-west-2.amazonaws.com/uploads/CLOUDS_1_1_0_vhx.dmg
+mac.usb http://clouds-documentary.s3-website-us-west-2.amazonaws.com/uploads/CLOUDS_1_1_0_usb.dmg
+win.vhx http://clouds-documentary.s3-website-us-west-2.amazonaws.com/uploads/CLOUDS_1_1_0_vhx.msi
+win.usb http://clouds-documentary.s3-website-us-west-2.amazonaws.com/uploads/CLOUDS_1_1_0_usb.msi
