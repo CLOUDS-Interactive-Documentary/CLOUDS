@@ -439,8 +439,8 @@ void CloudsPlaybackController::finishSetup(){
 
 //--------------------------------------------------------------
 void CloudsPlaybackController::checkForUpdates(){
-    //ofLoadURLAsync("http://clouds-documentary.s3-website-us-west-2.amazonaws.com/updatecheck.txt");
-    ofLoadURLAsync("https://s3-us-west-2.amazonaws.com/clouds-documentary/updatecheck_test.txt");
+    ofLoadURLAsync("http://clouds-documentary.s3-website-us-west-2.amazonaws.com/updatecheck.txt");
+    //ofLoadURLAsync("https://s3-us-west-2.amazonaws.com/clouds-documentary/updatecheck_test.txt");
 }
 
 //--------------------------------------------------------------

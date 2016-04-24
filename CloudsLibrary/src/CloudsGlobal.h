@@ -9,7 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
-#define CLOUDS_VERSION "1.0.0"
+#define CLOUDS_VERSION "1.1.0"
 
 #ifdef TARGET_OSX
     #ifdef VHX_MEDIA
