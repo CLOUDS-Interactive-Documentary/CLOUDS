@@ -1773,6 +1773,7 @@
 					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx64,
 				);
 				PRODUCT_NAME = CloudsLinkerDebug;
+				SDKROOT = macosx10.11;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1871,6 +1872,7 @@
 					/Users/focus/Documents/Xcode/of_64_clouds/openFrameworks/addons/ofxFTGL/libs/FTGL/lib/vs64,
 				);
 				PRODUCT_NAME = CloudsLinker;
+				SDKROOT = macosx10.11;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

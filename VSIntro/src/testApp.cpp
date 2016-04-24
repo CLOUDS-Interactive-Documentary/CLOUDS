@@ -6,7 +6,8 @@ void testApp::setup(){
 	ofBackground(0);
 	
 	ofSetVerticalSync(true);
-
+    ofSetEscapeQuitsApp(false);
+    
 	//////////////SHOW INTRO
     parser.loadFromFiles();
 	vector<CloudsClip*> startingNodes = parser.getClipsWithKeyword("#start");
@@ -90,6 +91,9 @@ void testApp::keyPressed(int key){
     }
     else if(key == 'S'){
         ofShowCursor();
+    }
+    if(key == '.'){
+        ofSetWindowShape(800, 800);
     }
 }
 

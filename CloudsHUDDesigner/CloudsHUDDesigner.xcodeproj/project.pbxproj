@@ -2177,7 +2177,6 @@
 				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsHUDDesignerDebug;
-				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2303,7 +2302,6 @@
 				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsHUDDesigner;
-				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
