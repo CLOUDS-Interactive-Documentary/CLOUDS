@@ -391,7 +391,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	menuGui->setName("Menu");
 	menuGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
-	menuGui->addIntSlider("FONT SIZE", 5, 20, &menuFontSize);
+	menuGui->addIntSlider("FONT SIZE", 5, 50, &menuFontSize);
 	menuGui->addIntSlider("TOOLTIP FONT SIZE", 5, 20, &menuToolTipFontSize);
 	menuGui->addSlider("Y OFFSET", 0, 300, &menuYOffset);
 	menuGui->addSlider("TOTAL WIDTH", 200, 1000, &menuWidth);
@@ -614,7 +614,7 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
             break;
         case CLOUDS_INTRO_VHX_SHOWING_CODE:
             showVHXPrompt = true;
-            vhxPromptScreen = "Enter "+currentAuthCode+" on vhx.tv/activate/clouds to activate";
+            vhxPromptScreen = "Enter "+currentAuthCode+" at http://vhx.tv/activate/clouds";
             break;
         case CLOUDS_INTRO_VHX_NO_PURCHASE:
             showVHXPrompt = true;
@@ -630,7 +630,7 @@ void CloudsIntroSequence::changeState(CloudsIntroState newState){
             break;
         case CLOUDS_INTRO_VHX_ERROR:
             showVHXPrompt = true;
-            vhxPromptScreen = "Error contacting VHX - Check your internet connection and restart";
+            vhxPromptScreen = "VHX Error. Check your connection and restart.";
             break;
         case CLOUDS_INTRO_MENU:            
             researchMenuItem.visible = true;
@@ -742,7 +742,11 @@ void CloudsIntroSequence::updateMenu(){
     float newWidth      = menuFont.stringWidth( newMenuItem.label );
     float resumeWidth   = menuFont.stringWidth( resumeMenuItem.label );
     
+#ifdef OCULUS_RIFT
+    float menuTop = 1080 / 2 + menuYOffset;
+#else
     float menuTop = getCanvasHeight() / 2 + menuYOffset;
+#endif
     researchMenuItem.bounds.x = getCanvasWidth() / 2 - menuWidth / 2;
     researchMenuItem.bounds.y = menuTop;
     researchMenuItem.bounds.width = researchWidth;
@@ -820,10 +824,16 @@ void CloudsIntroSequence::updateMenu(){
     
     if(alertBoundsActivated){
         float newVersionWidth = menuFont.stringWidth(alertPrompt);
+		#ifdef OCULUS_RIFT
+        alertBounds.x = 1920 / 2 - newVersionWidth / 2;
+        alertBounds.y = menuTop + menuHeight*3;
+		#else
         alertBounds.x = getCanvasWidth() / 2 - newVersionWidth / 2;
         alertBounds.y = menuTop + menuHeight*5;
+		#endif
         alertBounds.width = newVersionWidth;
         alertBounds.height = menuHeight;
+		//cout << "alert bounds are " << alertBounds << endl;
     }
 }
 
@@ -1068,7 +1078,11 @@ string CloudsIntroSequence::getQuestionText(){
 
 void CloudsIntroSequence::alertNewVersion(string newVersionDownloadURL){
     newVersionURL = newVersionDownloadURL;
-    alertPrompt = "There is an update available! Click to download.";
+#ifdef OCULUS_RIFT
+    alertPrompt = "Update available! Click the window to download.";
+#else
+    alertPrompt = "Update available! Click to download.";
+#endif
     alertBoundsActivated = true;
 }
 
@@ -1089,7 +1103,11 @@ void CloudsIntroSequence::vhxNotPurchase(){
         launchedPurchaseBrowser = true;
         ofLaunchBrowser("https://clouds.vhx.tv/buy/clouds");
     }
-    alertPrompt = "CLICK HERE TO LOG IN WITH A DIFFERENT EMAIL";
+#ifdef OCULUS_RIFT
+    alertPrompt = "Click the window to re-activate";
+#else
+    alertPrompt = "Click here to re-activate";
+#endif
     alertBoundsActivated = true;
 }
 
@@ -1100,7 +1118,11 @@ void CloudsIntroSequence::vhxRentalExpired(){
         launchedPurchaseBrowser = true;
         ofLaunchBrowser("https://clouds.vhx.tv/buy/clouds");
     }
-    alertPrompt = "CLICK HERE TO LOG IN WITH A DIFFERENT EMAIL";
+#ifdef OCULUS_RIFT
+    alertPrompt = "Click the window to re-activate";
+#else
+    alertPrompt = "Click here to re-activate";
+#endif
     alertBoundsActivated = true;
 }
 
@@ -1122,7 +1144,7 @@ void CloudsIntroSequence::vhxError(){
     if(currentState != CLOUDS_INTRO_VHX_ERROR){
         changeState(CLOUDS_INTRO_VHX_ERROR);
         alertBoundsActivated = true;
-        alertPrompt = "REACTIVATE";
+        alertPrompt = "Reactivate";
     }
 }
 
@@ -1620,7 +1642,13 @@ void CloudsIntroSequence::selfDrawOverlay(){
     #ifdef KINECT_INPUT
     drawIntroNodes();
     #else
-    if(!bUseOculusRift || (bUseOculusRift && (currentState < CLOUDS_INTRO_MENU || showVHXPrompt) ) ){
+	///////TEMP TEMP TEMP
+	//vhxPromptScreen = "This is a vhx prompt";
+	//showVHXPrompt = true;
+	//alertBoundsActivated = true;
+	//alertPrompt = "This is an alert prompt";
+	/////
+    if(!bUseOculusRift || (bUseOculusRift && (currentState < CLOUDS_INTRO_MENU || showVHXPrompt || alertBoundsActivated) ) ){
         drawMenu();
     }
     #endif
@@ -1630,12 +1658,20 @@ void CloudsIntroSequence::selfDrawOverlay(){
 void CloudsIntroSequence::drawMenu(){
 
     ofPushStyle();
+#ifdef OCULUS_RIFT
+	//HUD size
+	float menuScreenWidth  = 1920;
+	float menuScreenHeight = 1080;
+#else
+	float menuScreenWidth  = getCanvasWidth();
+	float menuScreenHeight = getCanvasHeight();
+#endif
 
     if(showVHXPrompt){
         float stringWidth = menuFont.stringWidth(vhxPromptScreen);
         
-        ofVec2f promptPos(getCanvasWidth()/2 - stringWidth/2,
-                          getCanvasHeight() / 2 + menuYOffset);
+        ofVec2f promptPos(menuScreenWidth/2 - stringWidth/2,
+                          menuScreenHeight / 2 + menuYOffset);
         menuFont.drawString(vhxPromptScreen, promptPos.x, promptPos.y);
     }
     
@@ -1646,10 +1682,10 @@ void CloudsIntroSequence::drawMenu(){
 #endif
         ofSetColor(255);
         ofSetRectMode(OF_RECTMODE_CENTER);
-        ofVec2f leftSide(getCanvasWidth()/2 - menuWidth/2,
-                         getCanvasHeight() / 2 + menuYOffset);
-        ofVec2f rightSide(getCanvasWidth()/2 + menuWidth/2,
-                          getCanvasHeight() / 2 + menuYOffset);
+        ofVec2f leftSide(menuScreenWidth/2 - menuWidth/2,
+                         menuScreenHeight / 2 + menuYOffset);
+        ofVec2f rightSide(menuScreenWidth/2 + menuWidth/2,
+                          menuScreenHeight / 2 + menuYOffset);
         ofRect(leftSide.x, leftSide.y,  4, 4);
         ofRect(rightSide.x,rightSide.y, 4, 4);
         ofVec2f percentDone = leftSide.getInterpolated(rightSide, percentLoaded);
@@ -1662,6 +1698,8 @@ void CloudsIntroSequence::drawMenu(){
         ofSetRectMode(OF_RECTMODE_CORNER);
     }
 
+	//draw main menu items, only on screen
+	#ifndef OCULUS_RIFT
     float wordHeight = menuFont.stringHeight("W");
     for(int i = 0; i < menuItems.size(); i++){
         
@@ -1672,19 +1710,18 @@ void CloudsIntroSequence::drawMenu(){
                             menuItems[i]->bounds.x + menuButtonPad,
                             menuItems[i]->bounds.y + wordHeight + menuButtonPad);
     }
-    
-    if(alertBoundsActivated && currentState <= CLOUDS_INTRO_MENU){
+	#endif
 
+    if(alertBoundsActivated && currentState <= CLOUDS_INTRO_MENU){
+		float alertAlpha = ofMap(ofGetElapsedTimef() - stateChangedTime, 0, .5, 0, 1.0, true) * 255; 
+		//cout << "drawing alert bounds" << alertAlpha << endl;
         ofPushStyle();
         //ofSetColor(255, ofMap(playMenuItem.baseAlpha, 0, .2, 0, 1.0, true) * 255);
-        ofSetColor(255, ofMap(ofGetElapsedTimef() - stateChangedTime, 0, .5, 0, 1.0, true) * 255);
+        ofSetColor(255, alertAlpha);
         menuFont.drawString(alertPrompt, alertBounds.x, alertBounds.y + alertBounds.height);
         ofPopStyle();
-
     }
-
-    ofPopStyle();
-    
+    ofPopStyle();   
 }
 
 
@@ -1785,6 +1822,22 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
+
+//	cout << "MOUSE PRESSED STATE " << currentState << " alert? " << alertBoundsActivated << endl;
+#ifdef OCULUS_RIFT
+	 if(alertBoundsActivated && currentState <= CLOUDS_INTRO_MENU ){
+        if(newVersionURL != ""){
+            ofLaunchBrowser(newVersionURL);
+        }
+        if(currentState == CLOUDS_INTRO_VHX_ERROR){
+            shouldClearVHXToken = true;
+        }
+        if(currentState == CLOUDS_INTRO_VHX_NO_PURCHASE || currentState == CLOUDS_INTRO_VHX_RENTAL_EXPIRED){;
+            shouldClearVHXToken = true;
+        }
+	 }
+#endif
+
 #ifdef MOUSE_INPUT
     if(alertBoundsActivated && alertBounds.inside(data.x + bleed, data.y + bleed) && currentState <= CLOUDS_INTRO_MENU ){
         if(newVersionURL != ""){

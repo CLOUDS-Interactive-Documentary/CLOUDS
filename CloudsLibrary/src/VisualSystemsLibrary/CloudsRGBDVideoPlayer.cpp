@@ -47,8 +47,6 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	
 	fontLoadWidth = 0;
 
-	subtitle2DOffsetLowerThirds = .72;
-	subtitle2DOffsetVisualSystem = .72;
 
 	englishSubtitleKerning = .5;
 	japaneseSubtitleKerning = .4;
@@ -61,12 +59,16 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 #ifndef NO_CRYPTO
 
 #ifdef OCULUS_RIFT
+	subtitle2DOffsetLowerThirds = .6;
+	subtitle2DOffsetVisualSystem = .6;
 	subtitleFontSize = 27;
-	currentSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);
-    nextSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_LEFT);;
-	currentSubtitles->lineHeight = .5;
-	nextSubtitles->lineHeight = .5;
+	currentSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);
+    nextSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);;
+	currentSubtitles->lineHeight = .8;
+	nextSubtitles->lineHeight = .8;
 #else
+	subtitle2DOffsetLowerThirds = .72;
+	subtitle2DOffsetVisualSystem = .72;
 	subtitleFontSize = 18;
 	currentSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);
     nextSubtitles->setup(GetFontBuffer(), subtitleFontSize,24,TEXT_JUSTIFICATION_CENTER);;
@@ -587,11 +589,12 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
 //--------------------------------------------------------------- 
 void CloudsRGBDVideoPlayer::drawSubtitles(){
 #ifdef OCULUS_RIFT
-	int x = 650;
+	int x = 1920 / 2.0;
+    int y = 1080;
 #else
 	int x = CloudsVisualSystem::getStaticRenderTarget().getWidth()/2.0;
-#endif
     int y = CloudsVisualSystem::getStaticRenderTarget().getHeight();
+#endif
 	y *= showingLowerThirds ? subtitle2DOffsetLowerThirds : subtitle2DOffsetVisualSystem;
 	drawSubtitles(x,y);
 }

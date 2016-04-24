@@ -75,7 +75,14 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-//	intro.selfPostDraw();
+    float hudDistance = CloudsVisualSystem::subtitleHudZ;
+    float hudScale = CloudsVisualSystem::subtitleHudScale;
+    CloudsVisualSystem::getOculusRift().beginOverlay(hudDistance, hudScale, 1920, 1080);
+
+	intro.selfDrawOverlay();
+
+    CloudsVisualSystem::getOculusRift().endOverlay();
+
 //	hud.draw();
 }
 

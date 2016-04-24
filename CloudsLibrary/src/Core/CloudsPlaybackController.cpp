@@ -790,6 +790,22 @@ void CloudsPlaybackController::playCurrentAct(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
+
+	/*
+	if( (args.key == OF_KEY_BACKSPACE || args.key == OF_KEY_DEL) && !transitionController.isTransitioning()){
+        if(showingInterlude){
+            interludeSystem->getTimeline()->stop();
+        }
+        else if(showingClusterMap){
+            clusterMap->getTimeline()->stop();
+        }
+        else if(!showingIntro){
+            returnToIntro = true;
+            CloudsVisualSystem::getRGBDVideoPlayer().stop();
+            currentAct->getTimeline().stop();
+        }
+    }
+	*/
 #ifndef CLOUDS_RELEASE
 	if(args.key == '\\'){
 		if(showingIntro){
@@ -827,6 +843,8 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 
 
     #ifdef OCULUS_RIFT
+	//moved up
+	/*
     if(!transitionController.isTransitioning()){
         if(args.key == OF_KEY_RETURN){
             if(showingInterlude){
@@ -842,6 +860,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
             }
         }
     }
+	*/
     #endif
 	
     #ifdef CLOUDS_SCREENING
@@ -940,6 +959,12 @@ void CloudsPlaybackController::mouseMoved(ofMouseEventArgs & args){
 }
 
 void CloudsPlaybackController::mousePressed(ofMouseEventArgs & args){
+#ifdef OCULUS_RIFT
+	//for VHX & new download link
+	if(currentVisualSystem == introSequence){
+		introSequence->selfMousePressed(args);
+	}
+#endif
 }
 
 void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
@@ -987,7 +1012,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     }
     ////////////////////
 	//OS CURSOR
-#ifdef CLOUDS_RELEASE
+#if defined(CLOUDS_RELEASE) && !defined(OCULUS_RIFT)
     ofHideCursor();
 #endif
     
