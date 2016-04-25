@@ -11429,6 +11429,9 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				TargetAttributes = {
+					642721741AE81E5200A13289 = {
+						DevelopmentTeam = Z658858QS8;
+					};
 					E4B69B5A0A3A1756003C02F2 = {
 						DevelopmentTeam = Z658858QS8;
 					};
@@ -15737,8 +15740,6 @@
 		642724171AE81E5200A13289 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -15858,8 +15859,6 @@
 		642724181AE81E5200A13289 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -16309,8 +16308,6 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -16425,8 +16422,6 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "3rd Party Mac Developer Application: Serious Computational Cinema LLC (Z658858QS8)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (

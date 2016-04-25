@@ -1,0 +1,21 @@
+THINGS TO REMEMBER WHEN BUILDING CLOUDS
+
+-- run Visual System Manager and generate a new copy_clouds_data src
+
+-- Run Permissions commands on data folder before building package
+
+--- Use this codesigning command:
+$ productsign --sign "Developer ID Installer: Serious Computational Cinema LLC (Z658858QS8)" CLOUDS.pkg _signed/INSTALL\ CLOUDS.pkg
+
+-- Use copy & paste to put the icon on the signing package
+
+-- Rename to hide the pkg file extension
+
+-- If an install is crashing due to data folder issues, comment out the development build search for data path so it defaults to the installation files.
+
+-- The writable directory permissiones need to set explicitly to chmod 777
+	- fml/
+	- runs/
+	- quality/
+	- vhx/
+

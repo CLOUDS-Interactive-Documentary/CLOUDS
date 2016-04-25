@@ -293,7 +293,7 @@ void CloudsVisualSystemTwitter::loadCSVData(){
         ofLogError()<<"[ VS Twitter ]"<<" Load file error, check to see if twitter.csv is in the vs ignored data folder"<<endl;
 	}
 	else{
-        //ofLog()<<"[ VS Twitter ]"<<" Load file : twitter.csv"<<endl;
+        ofLog()<<"[ VS Twitter ]"<<" Load file : twitter.csv"<<endl;
 	}
     ofBuffer buffer = ofBufferFromFile(filePath);
     cout<<buffer.size()<<endl;
@@ -492,6 +492,7 @@ void CloudsVisualSystemTwitter::setRealNames(map<string,string>& twitterHandlesT
 
 void CloudsVisualSystemTwitter::allocateActivityMap(){
  	int activityMapCoordWidth = 100;
+    cout << "Num Tweeters " << tweeters.size() << endl;
     activityMap.allocate(activityMapCoordWidth, tweeters[tweeters.size() - 1]->activityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
 	activityMap.getPixelsRef().set(0);
 	activityMap.update();
