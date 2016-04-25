@@ -1137,7 +1137,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
                 bBufferingVideo = true;
                 currentAct->pause();
                 getSharedVideoPlayer().pause();
-                videoBufferingStatus += "VIDEO BUFFERING: NOT LOADED\n";
+                //videoBufferingStatus += "VIDEO BUFFERING: NOT LOADED\n";
                 //TODO:
                 //hud.showBuffering();
             }
@@ -1145,7 +1145,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
                 bBufferingVideo = true;
                 currentAct->pause();
                 getSharedVideoPlayer().pause();
-                videoBufferingStatus += "VIDEO BUFFERING: WONT KEEP UP\n";
+                //videoBufferingStatus += "VIDEO BUFFERING: WONT KEEP UP\n";
                 //TODO:
                 //hud.showBuffering();
             }
@@ -1158,7 +1158,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             if(getSharedVideoPlayer().isPaused()){
                 getSharedVideoPlayer().unpause();
             }
-            videoBufferingStatus += "VIDEO BUFFERING: PLAYBACK RESUMED\n";
+            //videoBufferingStatus += "VIDEO BUFFERING: PLAYBACK RESUMED\n";
             
             //TODO:
             //hud.hideBuffering();
@@ -1964,7 +1964,7 @@ void CloudsPlaybackController::drawVideoStatus(){
     statusString += string("VIDPAUSED:") + (getSharedVideoPlayer().isPaused() ? "YES" : "NO") + "\n";
     statusString += string("PLYPAUSED:") + (getSharedVideoPlayer().getPlayer().isPaused() ? "YES" : "NO") + "\n";
     statusString += string("RATE:     ") + (ofToString(getSharedVideoPlayer().getPlayer().getSpeed())) + "\n";
-    statusString += videoBufferingStatus;
+    //statusString += videoBufferingStatus;
     
     ofSetColor(0);
     ofRectangle(20,20, 200, 200);
@@ -2185,7 +2185,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip* clip, float toTime){
 	}
     
 	prerolledClipID = clip->getID();
-    videoBufferingStatus += "PREROLLED CLIP " + clip->getID() + "\n";
+    //videoBufferingStatus += "PREROLLED CLIP " + clip->getID() + "\n";
 }
 
 //--------------------------------------------------------------------
@@ -2218,7 +2218,7 @@ void CloudsPlaybackController::playClip(CloudsClip* clip){
     
 	cout << "**** SWAPPING IN FROM CLIP BEGAN" << endl;
 	rgbdVisualSystem->getRGBDVideoPlayer().swapAndPlay();
-    videoBufferingStatus += "SWAPPED CLIP: " + currentClipName + "\n";
+    //videoBufferingStatus += "SWAPPED CLIP: " + currentClipName + "\n";
 }
 
 //--------------------------------------------------------------------
