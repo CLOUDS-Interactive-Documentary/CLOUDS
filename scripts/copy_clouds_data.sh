@@ -22,8 +22,6 @@ cp ../CloudsData/credits.xml ../../CloudsData/credits.xml
 echo copying: ../../CloudsData/
 cp -r ../CloudsData/fcpxml ../../CloudsData/
 echo copying: ../../CloudsData/
-cp -r ../CloudsData/font ../../CloudsData/
-echo copying: ../../CloudsData/
 cp -r ../CloudsData/HUD ../../CloudsData/
 echo copying: ../../CloudsData/HUD.xml
 cp ../CloudsData/HUD.xml ../../CloudsData/HUD.xml
@@ -61,6 +59,8 @@ echo copying: ../../CloudsData/
 cp -r ../CloudsData/VO ../../CloudsData/
 echo copying: ../../CloudsData/
 cp -r ../CloudsDataIgnored/flaunt ../../CloudsData/
+echo copying: ../../CloudsData/
+cp -r ../CloudsDataIgnored/fml ../../CloudsData/
 echo copying: ../../CloudsData/
 cp -r ../CloudsDataIgnored/quality ../../CloudsData/
 echo copying: ../../CloudsData/
@@ -118,6 +118,7 @@ echo copying presets: 2DVideo
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/TweakMode $copyLocation/2DVideo/Presets/
 echo copying presets: 2DVideo
 cp -r ../CloudsData/visualsystems/2DVideo/Presets/Zipcode $copyLocation/2DVideo/Presets/
+cp -r ../CloudsData/visualsystems/2DVideo/snapshots $copyLocation/2DVideo/snapshots
 echo creating: ../../CloudsData/visualsystems/3DModelLoader
 mkdir ../../CloudsData/visualsystems/3DModelLoader
 mkdir ../../CloudsData/visualsystems/3DModelLoader/Presets
@@ -165,6 +166,7 @@ mkdir ../../CloudsData/visualsystems/_Intro
 mkdir ../../CloudsData/visualsystems/_Intro/Presets
 cp -r ../CloudsData/visualsystems/_Intro/images $copyLocation/_Intro/images
 cp -r ../CloudsData/visualsystems/_Intro/shaders $copyLocation/_Intro/shaders
+cp -r ../CloudsData/visualsystems/_Intro/snapshots $copyLocation/_Intro/snapshots
 echo creating: ../../CloudsData/visualsystems/Astrolabe
 mkdir ../../CloudsData/visualsystems/Astrolabe
 mkdir ../../CloudsData/visualsystems/Astrolabe/Presets
@@ -228,7 +230,6 @@ echo creating: ../../CloudsData/visualsystems/CandyMountains
 mkdir ../../CloudsData/visualsystems/CandyMountains
 mkdir ../../CloudsData/visualsystems/CandyMountains/Presets
 cp -r ../CloudsData/visualsystems/CandyMountains/dataMinMax.xml $copyLocation/CandyMountains/dataMinMax.xml
-cp -r ../CloudsData/visualsystems/CandyMountains/faucet.ttf $copyLocation/CandyMountains/faucet.ttf
 cp -r ../CloudsData/visualsystems/CandyMountains/shaders $copyLocation/CandyMountains/shaders
 echo creating: ../../CloudsData/visualsystems/Chromogram
 mkdir ../../CloudsData/visualsystems/Chromogram
@@ -236,9 +237,6 @@ mkdir ../../CloudsData/visualsystems/Chromogram/Presets
 echo creating: ../../CloudsData/visualsystems/CirclePacking
 mkdir ../../CloudsData/visualsystems/CirclePacking
 mkdir ../../CloudsData/visualsystems/CirclePacking/Presets
-cp -r ../CloudsData/visualsystems/CirclePacking/Courier.ttf $copyLocation/CirclePacking/Courier.ttf
-cp -r ../CloudsData/visualsystems/CirclePacking/frabk.ttf $copyLocation/CirclePacking/frabk.ttf
-cp -r ../CloudsData/visualsystems/CirclePacking/NewMedia.ttf $copyLocation/CirclePacking/NewMedia.ttf
 echo copying presets: CirclePacking
 cp -r ../CloudsData/visualsystems/CirclePacking/Presets/Blank $copyLocation/CirclePacking/Presets/
 echo copying presets: CirclePacking
@@ -253,14 +251,6 @@ echo copying presets: CirclePacking
 cp -r ../CloudsData/visualsystems/CirclePacking/Presets/Circles_Watery $copyLocation/CirclePacking/Presets/
 echo copying presets: CirclePacking
 cp -r ../CloudsData/visualsystems/CirclePacking/Presets/NASDAQ $copyLocation/CirclePacking/Presets/
-cp -r ../CloudsData/visualsystems/CirclePacking/verdana14.ttf $copyLocation/CirclePacking/verdana14.ttf
-echo creating: ../../CloudsData/visualsystems/CirclePackingSystem
-mkdir ../../CloudsData/visualsystems/CirclePackingSystem
-mkdir ../../CloudsData/visualsystems/CirclePackingSystem/Presets
-echo copying presets: CirclePackingSystem
-cp -r ../CloudsData/visualsystems/CirclePackingSystem/Presets/Blank $copyLocation/CirclePackingSystem/Presets/
-echo copying presets: CirclePackingSystem
-cp -r ../CloudsData/visualsystems/CirclePackingSystem/Presets/NASDAQ $copyLocation/CirclePackingSystem/Presets/
 echo creating: ../../CloudsData/visualsystems/Circuit
 mkdir ../../CloudsData/visualsystems/Circuit
 mkdir ../../CloudsData/visualsystems/Circuit/Presets
@@ -442,9 +432,6 @@ cp -r ../CloudsData/visualsystems/DrawnLine/other $copyLocation/DrawnLine/other
 echo copying presets: DrawnLine
 cp -r ../CloudsData/visualsystems/DrawnLine/Presets/NarrativeLine $copyLocation/DrawnLine/Presets/
 cp -r ../CloudsData/visualsystems/DrawnLine/shaders $copyLocation/DrawnLine/shaders
-echo creating: ../../CloudsData/visualsystems/Empty
-mkdir ../../CloudsData/visualsystems/Empty
-mkdir ../../CloudsData/visualsystems/Empty/Presets
 echo creating: ../../CloudsData/visualsystems/ExampleBox2D
 mkdir ../../CloudsData/visualsystems/ExampleBox2D
 mkdir ../../CloudsData/visualsystems/ExampleBox2D/Presets
@@ -1025,7 +1012,6 @@ cp -r ../CloudsData/visualsystems/OpenP5SpaceJunk/Presets/gx_work_01a $copyLocat
 echo creating: ../../CloudsData/visualsystems/OpenP5Spaghetti
 mkdir ../../CloudsData/visualsystems/OpenP5Spaghetti
 mkdir ../../CloudsData/visualsystems/OpenP5Spaghetti/Presets
-cp -r ../CloudsData/visualsystems/OpenP5Spaghetti/GUI $copyLocation/OpenP5Spaghetti/GUI
 echo copying presets: OpenP5Spaghetti
 cp -r ../CloudsData/visualsystems/OpenP5Spaghetti/Presets/Expanding_galaxy $copyLocation/OpenP5Spaghetti/Presets/
 echo copying presets: OpenP5Spaghetti
@@ -1052,7 +1038,6 @@ mkdir ../../CloudsData/visualsystems/OpenP5SpinningSolids/Presets
 echo creating: ../../CloudsData/visualsystems/OpenP5TextUniverse
 mkdir ../../CloudsData/visualsystems/OpenP5TextUniverse
 mkdir ../../CloudsData/visualsystems/OpenP5TextUniverse/Presets
-cp -r ../CloudsData/visualsystems/OpenP5TextUniverse/fonts $copyLocation/OpenP5TextUniverse/fonts
 echo copying presets: OpenP5TextUniverse
 cp -r ../CloudsData/visualsystems/OpenP5TextUniverse/Presets/Borges_random $copyLocation/OpenP5TextUniverse/Presets/
 echo copying presets: OpenP5TextUniverse
@@ -1166,10 +1151,6 @@ cp -r ../CloudsDataIgnored/visualsystems/Process18/images $copyLocation/Process1
 echo creating: ../../CloudsData/visualsystems/RandomDigits
 mkdir ../../CloudsData/visualsystems/RandomDigits
 mkdir ../../CloudsData/visualsystems/RandomDigits/Presets
-cp -r ../CloudsData/visualsystems/RandomDigits/Courier.ttf $copyLocation/RandomDigits/Courier.ttf
-cp -r ../CloudsData/visualsystems/RandomDigits/frabk.ttf $copyLocation/RandomDigits/frabk.ttf
-cp -r ../CloudsData/visualsystems/RandomDigits/NewMedia.ttf $copyLocation/RandomDigits/NewMedia.ttf
-cp -r ../CloudsData/visualsystems/RandomDigits/verdana14.ttf $copyLocation/RandomDigits/verdana14.ttf
 echo creating: ../../CloudsData/visualsystems/RandomDigits2
 mkdir ../../CloudsData/visualsystems/RandomDigits2
 mkdir ../../CloudsData/visualsystems/RandomDigits2/Presets
@@ -1322,7 +1303,6 @@ echo creating: ../../CloudsData/visualsystems/Twitter
 mkdir ../../CloudsData/visualsystems/Twitter
 mkdir ../../CloudsData/visualsystems/Twitter/Presets
 cp -r ../CloudsData/visualsystems/Twitter/avatars $copyLocation/Twitter/avatars
-cp -r ../CloudsData/visualsystems/Twitter/fonts $copyLocation/Twitter/fonts
 cp -r ../CloudsData/visualsystems/Twitter/graphs $copyLocation/Twitter/graphs
 cp -r ../CloudsData/visualsystems/Twitter/images $copyLocation/Twitter/images
 echo copying presets: Twitter
@@ -1460,12 +1440,10 @@ cp -r ../CloudsData/visualsystems/Voro/shaders $copyLocation/Voro/shaders
 echo creating: ../../CloudsData/visualsystems/WebHistory
 mkdir ../../CloudsData/visualsystems/WebHistory
 mkdir ../../CloudsData/visualsystems/WebHistory/Presets
-cp -r ../CloudsData/visualsystems/WebHistory/Andale Mono.ttf $copyLocation/WebHistory/Andale Mono.ttf
 echo copying presets: WebHistory
 cp -r ../CloudsData/visualsystems/WebHistory/Presets/AutoSpiderShell $copyLocation/WebHistory/Presets/
 echo copying presets: WebHistory
 cp -r ../CloudsData/visualsystems/WebHistory/Presets/Hazy_wide $copyLocation/WebHistory/Presets/
-cp -r ../CloudsData/visualsystems/WebHistory/RockwellStd.otf $copyLocation/WebHistory/RockwellStd.otf
 echo creating: ../../CloudsData/visualsystems/World
 mkdir ../../CloudsData/visualsystems/World
 mkdir ../../CloudsData/visualsystems/World/Presets
