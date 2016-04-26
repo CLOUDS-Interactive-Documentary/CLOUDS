@@ -464,7 +464,13 @@ void CloudsPlaybackController::updateCheckCompleted(ofHttpResponse& response){
             continue;
         }
         if(line[0] == "version"){
-            latest = line[1] == CLOUDS_VERSION;
+            string latestVersionNum = line[1];
+            string currentVersionNum = CLOUDS_VERSION;
+            
+            ofStringReplace(latestVersionNum, ".", "");
+            ofStringReplace(currentVersionNum, ".", "");
+            
+            latest = ofToInt(latestVersionNum) <= ofToInt(currentVersionNum);
         }
         else{
             //store the url
@@ -2287,12 +2293,19 @@ void CloudsPlaybackController::showInterlude(){
 	
     CloudsVisualSystemPreset interludePreset;
     
-//    #ifdef CLOUDS_SCREENING
+    
+    #ifdef CLOUDS_SCREENING
+    string searchword = "old media";
+    string searchword2 = "archiving";
+    
+    if(ofContains(run.topicHistory, searchword) || ofContains(run.topicHistory, searchword2)){
+        forceCredits = true;
+    }
 //    cout << "HAS QUESTIONS REMAINING??? " << (rgbdVisualSystem->hasQuestionsRemaining() ? "YES" : "NO") << endl;
 //	if(!rgbdVisualSystem->hasQuestionsRemaining() && showedClusterMapNavigation){
 //		forceCredits = true;
 //	}
-//	#endif
+	#endif
     
     if(showingVisualLoop){
     

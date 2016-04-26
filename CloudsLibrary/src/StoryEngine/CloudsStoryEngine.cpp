@@ -775,14 +775,19 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsActSettings settings){
 		
         ///////////////// QUESTIONS
         //adding all option clips with questions		
-//#ifdef CLOUDS_SCREENING
-//		if(shouldAddScreeningQuestionsToAct && state.act->getAllClips().size() > 2){
-//			addQuestions(state, screeningQuestionClips);
-//			shouldAddScreeningQuestionsToAct = false;
-//		}
-//#else
+#ifdef CLOUDS_SCREENING
+		//no questions the first act, then add the explicit questions
+        if(shouldAddScreeningQuestionsToAct && state.run == 1){
+			addQuestions(state, screeningQuestionClips);
+			shouldAddScreeningQuestionsToAct = false;
+		}
+        //after that, do normal questions
+        if(!shouldAddScreeningQuestionsToAct && state.run > 3){
+            addQuestions(state, questionClips);            
+        }
+#else
 		addQuestions(state, questionClips);
-//#endif
+#endif
         /////////////////
 		
 		///////////////// DIOCHOTOMIES
@@ -1221,6 +1226,17 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
         state.log << state.duration << "\t\t\t\tREJECTED because we've seen it before"<<endl;
         return 0;
     }
+
+#ifdef CLOUDS_SCREENING
+    //reject all duplicate VS in screening mode
+    for(int i = 0; i < state.presetHistory.size(); i++){
+        if(state.presetHistory[i].find(potentialNextPreset.systemName) != string::npos){
+            state.log << state.duration << "\t\t\t\tREJECTED because we've seen this system before"<<endl;
+            return 0;
+        }
+    }
+    
+#endif
     
 	//for definite presets covering VO clips, make sure they are long enough
     if(!potentialNextPreset.indefinite && //we currently have a definite clip
@@ -1689,9 +1705,12 @@ void CloudsStoryEngine::populateScreeningQuestionsPart1(){
 //	linkName = "Kyle_CH - coding, magic";
 //	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 //	
-//	linkName = "Intro - Collaboration";
-//	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-//	
+    linkName = "Intro - CodingSketching";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+    
+    linkName = "Casey - emergence";
+    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//
 //	linkName = "Julia - make us more compassionate";
 //	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 //	
@@ -1707,22 +1726,23 @@ void CloudsStoryEngine::populateScreeningQuestionsPart1(){
 //	linkName = "Intro - VirtualReality";
 //	screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 
-    linkName = "Higa - sound and video";
-    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//    linkName = "Higa - sound and video";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 	
-    linkName = "Marius - Continuous process of exploration";
-    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-    
-    linkName = "Casey - emergence";
-    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-    
-    linkName = "JTNimoy - Cortex";
-    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//    linkName = "Marius - Continuous process of exploration";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//    
+//    linkName = "Casey - emergence";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//    
+//    linkName = "JTNimoy - Cortex";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
 	shouldAddScreeningQuestionsToAct = true;
 }
 
 
+//JG 4/24/2016 NO LONGER USED
 void CloudsStoryEngine::populateScreeningQuestionsPart2(){
 
 	screeningQuestionClips.clear();
@@ -1732,11 +1752,11 @@ void CloudsStoryEngine::populateScreeningQuestionsPart2(){
 //	linkName = "Kyle_MC - new aesthetic 1";
 //    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
-    linkName = "Ramsey - a hundred million";
+    linkName = "Intro - CodingSketching";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
     //virtual reality
-    linkName = "Intro - VirtualReality";
+    linkName = "Intro - Collaboration";
     screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
  
  
@@ -1746,13 +1766,12 @@ void CloudsStoryEngine::populateScreeningQuestionsPart2(){
 //    linkName = "Julia - Who owns the internet?";
 //    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
     
-    //OPEN SOURCE
-    linkName = "Intro - Collaboration";
-    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
-    
-    //WHERE DOES THE STORY END
-    linkName = "Karsten - infinite conversation";
-    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//    linkName = "Intro - Collaboration";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
+//    
+//    //WHERE DOES THE STORY END
+//    linkName = "Karsten - infinite conversation";
+//    screeningQuestionClips.push_back(parser->getClipWithLinkName(linkName));
 
 	shouldAddScreeningQuestionsToAct = true;
 	shouldGotoCredits = true;

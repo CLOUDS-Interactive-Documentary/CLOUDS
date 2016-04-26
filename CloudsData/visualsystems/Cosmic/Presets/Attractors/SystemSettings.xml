@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>SystemSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>596.000000000</XPosition>
-    <YPosition>37.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>22.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DAMPING</Name>
-    <Value>0.007000000</Value>
+    <Value>0.021767378</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

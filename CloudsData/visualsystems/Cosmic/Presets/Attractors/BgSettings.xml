@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>BgSettings</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>72.000000000</YPosition>
+    <YPosition>68.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -53,5 +53,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BRI2</Name>
-    <Value>176.580368042</Value>
+    <Value>178.596618652</Value>
 </Widget>

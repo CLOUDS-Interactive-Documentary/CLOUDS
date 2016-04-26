@@ -15277,6 +15277,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"MOUSE_INPUT=1",
 					"CLOUDS_APP=1",
 					"SHOW_SUBTITLES=1",
 					"CLOUDS_HUD=1",
@@ -15294,7 +15295,6 @@
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src/ip",
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -15365,7 +15365,6 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Debug",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
@@ -15392,12 +15391,13 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"MOUSE_INPUT=1",
 					"CLOUDS_APP=1",
 					"SHOW_SUBTITLES=1",
 					"CLOUDS_HUD=1",
 					"CLOUDS_SCREENING=1",
 					"CLOUDS_RELEASE=1",
-					"KINECT_INPUT=1",
+					"MOUSE_INPUT=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
@@ -15411,7 +15411,6 @@
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src/ip",
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -15482,7 +15481,6 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/lib/osx",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release",
 					"$(OF_PATH)/addons/ofxAssimpModelLoader/libs/assimp/lib/osx",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/Release",
 					"$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx",
@@ -15490,10 +15488,7 @@
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
 				);
-				OTHER_LDFLAGS = (
-					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
-				);
+				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -15609,10 +15604,7 @@
 					"$(OF_PATH)/addons/ofxAudioFeatures/libs/aubio/lib/osx",
 					/Users/elias/Workspace/CLOUDS/openFrameworks/addons/ofxSSL/libs/libcurl/lib/osx,
 				);
-				OTHER_LDFLAGS = (
-					"$(OF_CORE_LIBS)",
-					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
-				);
+				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PRODUCT_NAME = "$(TARGET_NAME)_Debug";
 				WRAPPER_EXTENSION = app;
 			};

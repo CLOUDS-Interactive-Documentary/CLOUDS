@@ -653,7 +653,7 @@ void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
         }
 
         samplePlayer[index].setVolume(vol * masterVolume);
-        samplePlayer[index].play();
+        //samplePlayer[index].play();
     }
 }
 

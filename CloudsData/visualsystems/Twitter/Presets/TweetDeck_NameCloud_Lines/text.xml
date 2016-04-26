@@ -2,13 +2,13 @@
     <Kind>40</Kind>
     <Name>text</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>291.000000000</XPosition>
-    <YPosition>235.000000000</YPosition>
+    <XPosition>323.000000000</XPosition>
+    <YPosition>-2.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>RENDER TEXT</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

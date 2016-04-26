@@ -1217,9 +1217,9 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 					ofNotifyEvent(events.portalHoverBegan, args);
 					CloudsVisualSystem::getSelectLow()->setPosition(0);
 					CloudsVisualSystem::getSelectLow()->play();
-//					#ifdef CLOUDS_SCREENING
-//					portalToClear = selectedPortal;
-//					#endif
+					#ifdef CLOUDS_SCREENING
+					portalToClear = selectedPortal;
+					#endif
 				}
 			}
 			//let it go
@@ -1246,10 +1246,18 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 
 void CloudsVisualSystemRGBD::clearQuestions(){
 	
-#ifndef CLOUDS_SCREENING
-	rightPortal.question = "";
-	leftPortal.question = "";
+#ifdef CLOUDS_SCREENING
+    //only clear when we have non-planted questions
+    if(questions.size() > 3){
+        rightPortal.question = "";
+        leftPortal.question = "";
+        questions.clear();
+    }
+#else
+    rightPortal.question = "";
+    leftPortal.question = "";
     questions.clear();
+    
 #endif
     
     leftPortal.clearSelection();
@@ -1628,24 +1636,19 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 }
 
 void CloudsVisualSystemRGBD::assignAvailableQuestion(CloudsPortal& portal){
-
-	/////NEW QUESTION WAY
 	if(questions.size() == 0){
 		return;
 	}
-	
-#ifndef CLOUDS_SCREENING
+
+//we always want to do this now
+//#ifndef CLOUDS_SCREENING
 	if(&portal != caughtPortal && &portal != selectedPortal){
 		portal.clip = questions.back().clip;
 		portal.topic = questions.back().topic;
 		portal.question = questions.back().question;
 	}
 	questions.pop_back();
-#endif
-	
-
-	
-	/////NEW QUESTION WAY
+//#endif
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){

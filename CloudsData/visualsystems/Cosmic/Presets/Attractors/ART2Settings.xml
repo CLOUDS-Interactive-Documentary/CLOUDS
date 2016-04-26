@@ -1,9 +1,9 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>ART2Settings</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>391.000000000</YPosition>
+    <YPosition>381.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ART2 POWER</Name>
-    <Value>-0.955496430</Value>
+    <Value>-0.820122600</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ART2 EXPFACTOR</Name>
-    <Value>0.022251785</Value>
+    <Value>0.089938700</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

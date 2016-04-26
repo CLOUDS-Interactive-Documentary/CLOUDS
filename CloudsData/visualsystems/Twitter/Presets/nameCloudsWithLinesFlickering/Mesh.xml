@@ -1,5 +1,5 @@
 <Canvas>
-    <Kind>42</Kind>
+    <Kind>40</Kind>
     <Name>Mesh</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
@@ -16,7 +16,7 @@
     <Value>1</Value>
 </Widget>
 <Widget>
-    <Kind>44</Kind>
+    <Kind>42</Kind>
     <Name>REFRESH RATE</Name>
     <Value>79</Value>
 </Widget>
@@ -155,6 +155,11 @@
     <Kind>4</Kind>
     <Name>EDGE COLOR EXPONENT</Name>
     <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>22</Kind>
+    <Name>MESH FILES</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
