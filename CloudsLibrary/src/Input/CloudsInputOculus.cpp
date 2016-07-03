@@ -32,6 +32,8 @@ void CloudsInputOculus::disable(){
 void CloudsInputOculus::update(ofEventArgs& data){
     lastPosition = currentPosition;
     currentPosition = (CloudsVisualSystem::getOculusRift().gazePosition2D());
+	//HACK to remove camera drift
+	//currentPosition = ofVec3f(0,0,0);
     if (currentPosition.distance(lastPosition) > 0) {
         interactionMoved(currentPosition, true, false, 0);
     }

@@ -138,10 +138,13 @@ void CloudsInput::selfDrawCursorDefault(CloudsCursorMode mode, ofVec3f& pos, boo
         ofLine(pos.x + size, pos.y, pos.x + size - lineLength, pos.y);
         ofLine(pos.x, pos.y - size, pos.x, pos.y - size + lineLength);
         ofLine(pos.x, pos.y + size, pos.x, pos.y + size - lineLength);
+		ofFill();
+        ofCircle(pos, 1);
+#else
+		ofFill();
+        ofCircle(pos, .22);
 #endif
 
-        ofFill();
-        ofCircle(pos, 1);
     }
     
 

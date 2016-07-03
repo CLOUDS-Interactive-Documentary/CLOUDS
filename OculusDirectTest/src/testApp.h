@@ -3,6 +3,13 @@
 #include "ofMain.h"
 #include "ofxOculusDK2.h"
 
+typedef struct {
+	ofVec3f pos;
+	ofVec3f screenPos;
+	bool lookedAt;
+	float distance;
+} LookTarget;
+
 class testApp : public ofBaseApp{
   public:
 	void setup();
@@ -23,7 +30,10 @@ class testApp : public ofBaseApp{
 	bool showOverlay;
 	ofEasyCam cam;
 	ofxOculusDK2 oculus;
+	ofTrueTypeFont font;
 
 	void drawScene();
-	
+
+	void createLookTargets();
+	vector<LookTarget> lookTargets;
 };

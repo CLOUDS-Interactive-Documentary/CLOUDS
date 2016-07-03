@@ -224,6 +224,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
    	portals.push_back(&resetPortal);
 	resetPortal.setup();
 	resetPortal.cam = &cloudsCamera;
+	//resetPortal.cam = &getOculusRift().getTransformedCamera();
 	resetPortal.bLookAtCamera = true;
 	resetPortal.question = "QUIT";
 #endif
@@ -1175,20 +1176,41 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 	for(int i = 0; i < portals.size(); i++){
 		
 		portals[i]->update();
-		      
-        if(!portals[i]->onScreen || portals[i]->question == ""){
+		#ifndef OCULUS_RIFT
+
+        if( !portals[i]->onScreen || portals[i]->question == ""){
+            continue;
+		}
+
+		ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+		float distanceToQuestion = portals[i]->screenPosition.distance(mouseNode);
+
+		#else
+		
+        if( portals[i]->question == ""){
             continue;
         }
-        
-		#ifdef OCULUS_RIFT
+	
+		ofNode n;
+		n.setOrientation(getOculusRift().getOrientationQuat());
+		n.setPosition(getOculusRift().getTranslation());
+		float dotproduct = n.getLookAtDir().dot(n.getPosition() - portals[i]->hoverPosition);
+		//not on screen
+		if(dotproduct < 0){
+			continue;
+		}
+		//if(portals[i]->question == "QUIT"){
+		//	cout << "dot " << dotproduct << endl;
+		//}
+
 		ofVec3f screenPos = getOculusRift().worldToScreen(portals[i]->hoverPosition);
-        ofRectangle viewport = getOculusRift().getOculusViewport();
+
+        ofRectangle viewport = getOculusRift().getViewport();
 		float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
                                     viewport.getCenter().x, viewport.getCenter().y);
         
-		#else
-		ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
-		float distanceToQuestion = portals[i]->screenPosition.distance(mouseNode);
+		//cout << "DISTANCE IS " << distanceToQuestion << endl;
+
 		#endif
 		
         ////////////

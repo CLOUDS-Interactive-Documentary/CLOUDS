@@ -48,6 +48,7 @@ static ofVideoPlayer* selectLow = NULL;
 
 static ofxFTGLFont subtitleNameFont;
 static int subtitleNameFontSize = 24;
+static float playerScale = 30.0;
 float CloudsVisualSystem::subtitleHudZ = -300;
 float CloudsVisualSystem::subtitleHudScale = 1.0;
 
@@ -308,8 +309,8 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 #ifdef OCULUS_RIFT
 //	int targetWidth  = 1920/2;
 //	int targetHeight = 1080;
-	int targetWidth  = getOculusRift().getOculusViewport().getWidth();
-	int targetHeight = getOculusRift().getOculusViewport().getHeight();
+	int targetWidth  = getOculusRift().getViewport().getWidth();
+	int targetHeight = getOculusRift().getViewport().getHeight();
 //	cout << "OCULUS VIEWPORT " << targetWidth << " " << targetHeight << endl;
 
 #else
@@ -563,6 +564,11 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 
 #ifdef OCULUS_RIFT
 	getOculusRift().baseCamera = &getCameraRef();
+	#ifdef OCULUS_RIFT
+	//TODO: Make dynamic
+	getOculusRift().setPlayerScale(playerScale);
+#endif
+
 #endif
 
 	for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it){
@@ -582,7 +588,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	selfUpdate();
 #ifdef OCULUS_RIFT
 	if(isInterlude){
-		updateInterludeInterface();
+		//updateInterludeInterface();
 	}
 #endif
 	if(bMatchBackgrounds) {
@@ -862,7 +868,7 @@ void CloudsVisualSystem::drawScene(){
 
 #ifdef OCULUS_RIFT
 	if(isInterlude){
-		drawInterludeInterface();
+		//drawInterludeInterface();
 	}
 	draw3DCursor();
 #endif
@@ -968,7 +974,7 @@ void CloudsVisualSystem::draw3DCursor(){
         
         ofEnableAlphaBlending();
         
-        ofVec3f cursorPt = ofVec3f(0, 0, -150);
+		ofVec3f cursorPt = ofVec3f(0, 0, subtitle3DBasePosZ);
         selfDrawCursor(cursorPt, false, primaryCursorMode);
         
         glPopAttrib();
@@ -1340,7 +1346,7 @@ void CloudsVisualSystem::mouseMoved(ofMouseEventArgs& data)
 {
 #ifdef OCULUS_RIFT
     // Remap the mouse coords.
-    ofRectangle viewport = getOculusRift().getOculusViewport();
+    ofRectangle viewport = getOculusRift().getViewport();
 //    cout << "MOUSE IN: " << data.x << ", " << data.y << " // VIEWPORT: " << viewport.x << ", " << viewport.y << ", " << viewport.width << ", " << viewport.height;
     data.x = ofMap(data.x, 0, ofGetWidth(), viewport.x, viewport.width);
     data.y = ofMap(data.y, 0, ofGetHeight(), viewport.y, viewport.height);
@@ -1918,6 +1924,7 @@ void CloudsVisualSystem::setupCameraGui()
     camGui->addToggle("Invert Spin Axis", &bInvertCameraSpinAxis);
     
     
+	camGui->addMinimalSlider("Oculus Player Scale", 1.0, 300, &playerScale);
 	camGui->addSpacer();
 	
 	vector<string> transitions;
@@ -1943,6 +1950,7 @@ void CloudsVisualSystem::setupCameraGui()
     ddl->setShowCurrentSelected(true);
     ddl->activateToggle("DISABLE");
 	
+
 	selfSetupCameraGui();
     
     camGui->autoSizeToFitWidgets();

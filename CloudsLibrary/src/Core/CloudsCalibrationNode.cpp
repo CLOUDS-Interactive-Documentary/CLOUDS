@@ -53,7 +53,7 @@ void CalibrationNode::updateWorldPosition(){
 void CalibrationNode::updateScreenPosition(){
 
 #ifdef OCULUS_RIFT
-	ofRectangle viewport = CloudsVisualSystem::getOculusRift().getOculusViewport();
+	ofRectangle viewport = CloudsVisualSystem::getOculusRift().getViewport();
 	ofVec3f screenPos = CloudsVisualSystem::getOculusRift().worldToScreen(worldPosition);
 	screenPosition = ofVec2f(screenPos.x,screenPos.y);
 	cursorDirection = screenPosition - viewport.getCenter();

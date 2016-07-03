@@ -1283,6 +1283,17 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	updateTransition();
     
+	//OCULUS CONTROLS
+	#ifdef OCULUS_RIFT
+	if(CloudsVisualSystem::getOculusRift().getButtonClicked(ovrButton_Enter) && bShowingAct && currentVisualSystem != clusterMap){
+        hud.togglePause();
+	}
+	if(CloudsVisualSystem::getOculusRift().getButtonClicked(ovrButton_Right) && currentVisualSystem != clusterMap){
+		keyedToNext = true;
+	}
+	//TODO: make more complete by adding back button & volume controls
+	#endif
+
 }
 
 //--------------------------------------------------------------------
@@ -1824,7 +1835,8 @@ void CloudsPlaybackController::clearRenderTarget(){
 
 //--------------------------------------------------------------------
 bool CloudsPlaybackController::updateInterludeInterface(){
-	
+
+	/*
 #ifdef OCULUS_RIFT
     interludeContinueSelected = interludeHoveringContinue;
 	interludeResetSelected = interludeHoveringReset;
@@ -1842,6 +1854,7 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		return true;
 	}
 #endif
+	*/
 	return false;
 	
 }

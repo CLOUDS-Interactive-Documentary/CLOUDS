@@ -113,7 +113,14 @@ void CloudsRGBDCamera::setCanvasWidthHeight(float width, float height ){
 
 void CloudsRGBDCamera::setPositionFromMouse(){
 	
+#ifdef OCULUS_RIFT
+	float percentOnCurve = .5;
+	float liftDrift = 0;
+#else
 	float percentOnCurve = ofMap(GetCloudsInputX(), canvasWidth*.2, canvasWidth*.8, 0, 1, true);
+	float liftDrift = ofMap(GetCloudsInputY(), canvasHeight*.2, canvasHeight*.8, -liftRange,liftRange, true);
+
+#endif
 	ofVec3f sidePositionLeft  = lookTarget + ofVec3f(-sideDistance,0,sidePullback);
 	ofVec3f sidePositionRight = lookTarget + ofVec3f( sideDistance,0,sidePullback);
 	ofVec3f frontPosition = lookTarget + ofVec3f(0,0,-frontDistance);
@@ -124,8 +131,7 @@ void CloudsRGBDCamera::setPositionFromMouse(){
 	else{
 		position = sidePositionLeft.getInterpolated(frontPosition, ofMap(percentOnCurve, 0, .5, 0, 1.0) );
 	}
-	
-	float liftDrift = ofMap(GetCloudsInputY(), canvasHeight*.2, canvasHeight*.8, -liftRange,liftRange, true);
+
 	position.y += ofMap(abs(.5 - percentOnCurve), 0, .5, (liftDrift + liftAmount), (liftDrift-liftAmount)*.5);
 	position.z -= MAX(liftDrift,0) * .5; // zoom in on mouse up
 
@@ -139,6 +145,7 @@ void CloudsRGBDCamera::setPositionFromMouse(){
 	ofVec3f driftPosition = currentPosition;
 	float channelA = 1000;
 	float channelB = 1500;
+	#ifndef OCULUS_RIFT
 	if(maxDriftAngle > 0){
 		ofVec3f toCamera = currentPosition - currentLookTarget;
 		ofQuaternion driftQuatX,driftQuatY;
@@ -154,7 +161,7 @@ void CloudsRGBDCamera::setPositionFromMouse(){
 //		driftQuatY.makeRotate(maxDriftAngle*driftY, 1, 0, 0);
 //		driftOffset = driftQuatX * driftQuatY * (ofVec3f(0,0,1) * toCamera.length());
 	}
-	
+	#endif
 	mouseBasedNode.setPosition(driftPosition);
 	mouseBasedNode.lookAt(currentLookTarget, ofVec3f(0,1,0));
 	

@@ -272,14 +272,7 @@ class CloudsVisualSystem {
 	
 #ifdef OCULUS_RIFT
     void setupOculusGui();
-	void guiOculusEvent(ofxUIEventArgs &e);
-    
-//#ifdef CLOUDS_HUD
-//    CloudsHUDController* hud;
-//    void setupHUDGui();
-//	void guiHUDEvent(ofxUIEventArgs &e);
-//#endif
-	
+	void guiOculusEvent(ofxUIEventArgs &e);	
 #endif
     
     //Lighting Helpers
