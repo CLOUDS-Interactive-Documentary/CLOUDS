@@ -867,7 +867,7 @@ void CloudsVisualSystem::drawScene(){
 	if(isInterlude){
 		//drawInterludeInterface();
 	}
-	draw3DCursor();
+//	draw3DCursor();
 #endif
 	
 }

@@ -134,10 +134,14 @@ void CloudsRGBDCamera::setPositionFromMouse(){
 
 	position.y += ofMap(abs(.5 - percentOnCurve), 0, .5, (liftDrift + liftAmount), (liftDrift-liftAmount)*.5);
 	position.z -= MAX(liftDrift,0) * .5; // zoom in on mouse up
+	#ifdef OCULUS_RIFT
+	//dropamount is making the camera not straight
+	position.y -= dropAmount;
+	#endif
 
 	targetPosition = position;
+
 	currentPosition += (targetPosition - currentPosition) * damp;
-	
 	currentLookTarget = lookTarget - ofVec3f(0,dropAmount,-sidePullback);
 	
 	//calculate drift;

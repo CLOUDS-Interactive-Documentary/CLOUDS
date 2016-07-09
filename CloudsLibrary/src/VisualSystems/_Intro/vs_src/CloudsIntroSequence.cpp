@@ -1651,6 +1651,13 @@ void CloudsIntroSequence::selfDrawOverlay(){
     if(!bUseOculusRift || (bUseOculusRift && (currentState < CLOUDS_INTRO_MENU || showVHXPrompt || alertBoundsActivated) ) ){
         drawMenu();
     }
+	if(bUseOculusRift && currentState >= CLOUDS_INTRO_MENU){
+		ofPushStyle();
+		ofSetRectMode(OF_RECTMODE_CENTER);
+		ofSetColor(255);
+		ofCircle(1920*.5, 1080*.5,5);
+		ofPopStyle();
+	}
     #endif
        
 }
