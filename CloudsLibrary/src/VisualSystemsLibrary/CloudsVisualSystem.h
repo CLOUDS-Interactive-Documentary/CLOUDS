@@ -521,6 +521,7 @@ class CloudsVisualSystem {
 	ofVec2f interactiveCameraRot, previousinteractiveCameraRot;
     
 	float questionSelectFade; //only used on Oculus in RGBD system
+	float playerScaleModifier; //attenuate player scale
 
     //POST FX
     bool bEnablePostFX;

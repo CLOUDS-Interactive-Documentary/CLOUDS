@@ -50,12 +50,12 @@ void testApp::setup(){
 //	clusterMap.forceScreenResolution(1920, 1080);
 	clusterMap.setup();
 #ifdef OCULUS_RIFT
-	if(CloudsVisualSystem::getOculusRift().isHD()){
-		clusterMap.loadPresetGUISFromName("FollowTraverse_OculusHD");
-	}
-	else{
+//	if(CloudsVisualSystem::getOculusRift().isHD()){
+//		clusterMap.loadPresetGUISFromName("FollowTraverse_OculusHD");
+//	}
+//	else{
 		clusterMap.loadPresetGUISFromName("FollowTraverse_OculusSD");
-	}
+//	}
 #else
 //	clusterMap.loadPresetGUISFromName("FollowTraverse_Screen");
     clusterMap.loadPresetGUISFromName("TopicResearch_pretty");

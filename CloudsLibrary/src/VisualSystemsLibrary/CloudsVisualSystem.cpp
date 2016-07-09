@@ -265,7 +265,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
     bDoBloom = false;
     bloomAmount = 0.;
 	isInterlude = false;
-	
+	playerScaleModifier = 1.0;
+ 
 	bSetManualBackgroundColors = false;
 	   
 	pointcloudOffsetZ = 0.0;
@@ -564,11 +565,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 
 #ifdef OCULUS_RIFT
 	getOculusRift().baseCamera = &getCameraRef();
-	#ifdef OCULUS_RIFT
-	//TODO: Make dynamic
-	getOculusRift().setPlayerScale(playerScale);
-#endif
-
+	getOculusRift().setPlayerScale(playerScale * playerScaleModifier);
 #endif
 
 	for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it){
@@ -955,7 +952,7 @@ void CloudsVisualSystem::draw3DCursor(){
 
 	// EZ: Only draw cursor on _Intro for now
 	// JG: Also draw during interlude
-    if(getSystemName() == "_Intro" || isInterlude){
+    if(getSystemName() == "_Intro"){
         ofPushStyle();
         ofPushMatrix();
         glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -3618,6 +3615,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	
     bWashGradient = false;
     bBarGradient = false;
+	playerScaleModifier = 1.0;
     backgroundGradientExponent = 1.0;
     
 	selfSetDefaults();

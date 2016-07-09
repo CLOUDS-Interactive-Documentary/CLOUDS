@@ -1836,8 +1836,8 @@ void CloudsPlaybackController::clearRenderTarget(){
 //--------------------------------------------------------------------
 bool CloudsPlaybackController::updateInterludeInterface(){
 
-	/*
 #ifdef OCULUS_RIFT
+	/*
     interludeContinueSelected = interludeHoveringContinue;
 	interludeResetSelected = interludeHoveringReset;
 
@@ -1849,12 +1849,14 @@ bool CloudsPlaybackController::updateInterludeInterface(){
 		interludeContinueSelected = true;
 		return true;
 	}
-	if(ofGetElapsedTimef() - interludeStartTime > 30 && !interludeHoveringContinue && !interludeHoveringReset){
-		interludeResetSelected = true;
+	*/
+
+//	if(ofGetElapsedTimef() - interludeStartTime > 15 && !interludeHoveringContinue && !interludeHoveringReset){
+	if(ofGetElapsedTimef() - interludeStartTime > 15){
+		interludeContinueSelected = true;
 		return true;
 	}
 #endif
-	*/
 	return false;
 	
 }

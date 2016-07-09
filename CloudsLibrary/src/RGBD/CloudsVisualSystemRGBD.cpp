@@ -657,6 +657,10 @@ void CloudsVisualSystemRGBD::selfUpdate(){
     questionSelectFade = 1.0;
 #endif
     
+//	if(!transitioning){
+//		playerScaleModifier = 1.0;
+//	}
+
 	float transitionValue = getRGBDTransitionValue();
 	//cout << "TRANSITION IS " << transitionValue << endl;
 
@@ -1333,8 +1337,16 @@ void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionTyp
 	setTransitionNodes( transitionType, option );
 	
 	//transition to the left or right based on relative posiiton
+#ifdef OCULUS_RIFT
+	if(selectedPortal != nullptr){
+		setOutOption(selectedPortal == &leftPortal ? OutRight : OutLeft);
+	}
+	else{
+		setOutOption( (cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
+	}
+#else
 	setOutOption( (cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
-	
+#endif
 	//transitionEase = ofxTween::easeOut;
 	transitionEase = ofxTween::easeIn;
 	transitioning = true;
@@ -1342,7 +1354,6 @@ void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionTyp
 	if(isResetSelected()){
 		cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
 		cloudsCamera.setTransitionTargetNode( &transitionOutReset );
-	
 	}
 	else{
 		cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
@@ -1369,8 +1380,13 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 	if(transitioning) {
 		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionPercent( easedPercent );
-		
-		
+		if(selectedPortal != nullptr){
+			playerScaleModifier = powf(ofMap(percentComplete,0,.8,1.0,0.0,true),2.0);
+		}
+		else{
+			playerScaleModifier = 1.0;
+		}
+
 		float easedRotPercent = easedPercent * easedPercent;//ofxTween::map(percentComplete, .6, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionRotationPercent( easedRotPercent );
 		
@@ -2103,7 +2119,8 @@ void CloudsVisualSystemRGBD::selfBegin(){
     //clear any previously selected portals
     caughtPortal = NULL;
     selectedPortal = NULL;
-    
+	playerScaleModifier = 1.0;
+
     //make sure any portals are clear
     leftPortal.clearSelection();
     rightPortal.clearSelection();

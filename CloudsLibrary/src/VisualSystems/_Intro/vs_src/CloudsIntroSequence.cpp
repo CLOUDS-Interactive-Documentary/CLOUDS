@@ -454,13 +454,13 @@ void CloudsIntroSequence::updateCamera(){
 	}
 	else {
 		float percentZoomed = powf(ofMap(ofGetElapsedTimef(), selectedQuestionTime, selectedQuestionTime + 2.0, 0.0, 1.0, true),2.);
+		playerScaleModifier = powf(ofMap(percentZoomed, 0, .4, 1.0, 0.0, true), 2.);
 		warpCamera.setPosition(selectQuestionStartPos.interpolate(selectedQuestion->hoverPosition, percentZoomed));
 	}
 }
 
 void CloudsIntroSequence::updateWaiting(){
 	
-
 	#if defined(OCULUS_RIFT)
     CalibrationNode* selectedNode = NULL;
     for(int i = 0; i < introNodes.size(); i++){
