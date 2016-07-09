@@ -7,6 +7,7 @@ THINGS TO REMEMBER WHEN BUILDING CLOUDS
 --- Use this codesigning command:
 $ productsign --sign "Developer ID Installer: Serious Computational Cinema LLC (Z658858QS8)" CLOUDS.pkg _signed/INSTALL\ CLOUDS.pkg
 
+
 -- Use copy & paste to put the icon on the signing package
 
 -- Rename to hide the pkg file extension
@@ -18,4 +19,14 @@ $ productsign --sign "Developer ID Installer: Serious Computational Cinema LLC (
 	- runs/
 	- quality/
 	- vhx/
+
+VHX:
+-- open the old disk image, delete the old installer, drag in the new installer, and empty the trash
+
+-- Unmount the installer and in Disk Utility select Convert... > to create a compressed DMG for distribution
+
+USB:
+-- Create the image using dd 
+
+
 
