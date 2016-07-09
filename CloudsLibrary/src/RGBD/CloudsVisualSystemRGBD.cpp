@@ -1380,7 +1380,7 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 	if(transitioning) {
 		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionPercent( easedPercent );
-		if(selectedPortal != nullptr){
+		if(selectedPortal != NULL){
 			playerScaleModifier = powf(ofMap(percentComplete,0,.8,1.0,0.0,true),2.0);
 		}
 		else{
