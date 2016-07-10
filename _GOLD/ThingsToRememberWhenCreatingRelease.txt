@@ -1,8 +1,25 @@
 THINGS TO REMEMBER WHEN BUILDING CLOUDS
 
--- run Visual System Manager and generate a new copy_clouds_data src
+-- run Visual System Manager and generate a new copy_clouds_data src (CLOUDS/scripts/copy_clouds_data.sh)
+	— run the script,
+	- CloudsData is created under apps/
+	- delete runs/
+	- delete vhx/tokens
+	- delete fml/
+	- delete link/ backups
 
 -- Run Permissions commands on data folder before building package
+
+
+TO BUILD BINARIES
+	— from Xcode, select CLOUDS target and select Product -> Archive. it will rebuild
+	- archive window will pop up
+	- Click Validate (validate for Developer ID-Signed)
+	- Click Export (Export a developer signed application)
+
+TO BUILD PACKAGES
+	- open the package scripts
+
 
 --- Use this codesigning command:
 $ productsign --sign "Developer ID Installer: Serious Computational Cinema LLC (Z658858QS8)" CLOUDS.pkg _signed/INSTALL\ CLOUDS.pkg
@@ -14,7 +31,7 @@ $ productsign --sign "Developer ID Installer: Serious Computational Cinema LLC (
 
 -- If an install is crashing due to data folder issues, comment out the development build search for data path so it defaults to the installation files.
 
--- The writable directory permissiones need to set explicitly to chmod 777
+-- The writable directory permissions need to set explicitly to chmod 777
 	- fml/
 	- runs/
 	- quality/
@@ -26,7 +43,7 @@ VHX:
 -- Unmount the installer and in Disk Utility select Convert... > to create a compressed DMG for distribution
 
 USB:
--- Create the image using dd 
+-- Create the image using dd 	
 
 
 

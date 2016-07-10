@@ -895,11 +895,7 @@ echo creating: ../../CloudsData/visualsystems/OpenP5Hackpact
 mkdir ../../CloudsData/visualsystems/OpenP5Hackpact
 mkdir ../../CloudsData/visualsystems/OpenP5Hackpact/Presets
 echo copying presets: OpenP5Hackpact
-cp -r ../CloudsData/visualsystems/OpenP5Hackpact/Presets/JM_1_blue $copyLocation/OpenP5Hackpact/Presets/
-echo copying presets: OpenP5Hackpact
 cp -r ../CloudsData/visualsystems/OpenP5Hackpact/Presets/JM_1_bluer $copyLocation/OpenP5Hackpact/Presets/
-echo copying presets: OpenP5Hackpact
-cp -r ../CloudsData/visualsystems/OpenP5Hackpact/Presets/JM_1_bw $copyLocation/OpenP5Hackpact/Presets/
 echo creating: ../../CloudsData/visualsystems/OpenP5Machine
 mkdir ../../CloudsData/visualsystems/OpenP5Machine
 mkdir ../../CloudsData/visualsystems/OpenP5Machine/Presets
@@ -1440,10 +1436,6 @@ cp -r ../CloudsData/visualsystems/Voro/shaders $copyLocation/Voro/shaders
 echo creating: ../../CloudsData/visualsystems/WebHistory
 mkdir ../../CloudsData/visualsystems/WebHistory
 mkdir ../../CloudsData/visualsystems/WebHistory/Presets
-echo copying presets: WebHistory
-cp -r ../CloudsData/visualsystems/WebHistory/Presets/AutoSpiderShell $copyLocation/WebHistory/Presets/
-echo copying presets: WebHistory
-cp -r ../CloudsData/visualsystems/WebHistory/Presets/Hazy_wide $copyLocation/WebHistory/Presets/
 echo creating: ../../CloudsData/visualsystems/World
 mkdir ../../CloudsData/visualsystems/World
 mkdir ../../CloudsData/visualsystems/World/Presets
