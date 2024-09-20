@@ -8,7 +8,7 @@ Note that several of these steps require private media and source code. These st
 
 Steps to get Windows 10 compiling
 1. Download [Visual Studio 2012 Ultimate from Internet Archive](https://archive.org/details/vs-2012-rc-ult-enu)
-2. Clone the `master` branch of openFrameworks from [here](https://github.com/CLOUDS-Interactive-Documentary/openframeworks/tree/CLOUDS). 
+2. Clone the `master` branch of openFrameworks from [here](https://github.com/CLOUDS-Interactive-Documentary/openframeworks/). 
 3. Clone this `master` branch of this repository into the `openFrameworks/apps` directory. 
 4. Run the `cloneaddons.sh` script to pull all required addons in the appropriate location. Run the following commands in your Command Line:
 
@@ -22,6 +22,13 @@ Steps to get Windows 10 compiling
     cd openFrameworks/addons/ofxAnimationPrimitives
     git checkout windows-old
     ```
+WINDOWS ONLY: Change the ofxOculusDK2 branch to `oculus-1.3.0`. Run the following commands in your Command Line:
+
+    ```
+    cd openFrameworks/addons/ofxOculusDK2
+    git checkout oculus-1.3.0
+    ```
+
 6. PRIVATE STEP: Clone Private Visual Systems https://github.com/obviousjim/VisualSystemsPrivate into `CloudsLibrary/src/VisualSystemsPrivate` - This private repository for Casey Reas and LIA's artowrk that is not authorized for public distribution
 7. Download `CloudsDataIgnored/` and place in `openFrameworks/apps/CLOUDS/`
 8. Download `CloudsDataMedia/` and place in `openFrameworks/apps/CLOUDS/`
