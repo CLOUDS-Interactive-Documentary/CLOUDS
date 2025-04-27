@@ -125,7 +125,8 @@ void CloudsVisualSystem2DVideo::selfSetup()
     //loadMovieAtIndex(movieIndex, true);
     inTime = 0;
     outTime = 0;
-    
+    shader.load(getVisualSystemDataPath() + "shaders/blit");
+
 #ifdef VHX_MEDIA
     waitingMedia = NULL;
 #endif
@@ -273,6 +274,7 @@ void CloudsVisualSystem2DVideo::selfDraw()
         
         //create a mesh
         ofMesh mesh;
+		ofVbo vbo;
         //TOP LEFT
         //texture coordinates are in the image space
         mesh.addTexCoord(ofVec3f(0,0,0));
@@ -291,8 +293,19 @@ void CloudsVisualSystem2DVideo::selfDraw()
         mesh.addTexCoord(ofVec3f(videoRect.width,videoRect.height,0));
         mesh.addVertex(bottomRight);
         
-        mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-    		
+		//top left triangle, counter-clockwise
+		mesh.addIndex(0);
+		mesh.addIndex(1);
+		mesh.addIndex(2);
+
+		//bottom right triangle, counter-clockwise
+		mesh.addIndex(1);
+		mesh.addIndex(3);
+		mesh.addIndex(2);
+
+        //mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+		vbo.setMesh(mesh, GL_STATIC_DRAW);	
+
         float xRotationPercent = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), -rotationRange.x, rotationRange.x,true);
 		currentRotation.x += (xRotationPercent - currentRotation.x) * .05;
 		
@@ -309,10 +322,15 @@ void CloudsVisualSystem2DVideo::selfDraw()
         float angle;
         curRot.getRotate(angle, axis);
 
-        player->getTextureReference().bind();
-        mesh.draw();
-        player->getTextureReference().unbind();
-        
+		shader.begin();
+		player->bind();
+		shader.setUniformTexture("tex", player->getTextureReference(), 1);
+
+		vbo.drawElements(GL_TRIANGLES, 6);
+
+		player->unbind();
+		shader.end();
+
         ofPopMatrix();
         
 	}
@@ -328,7 +346,10 @@ void CloudsVisualSystem2DVideo::selfDrawDebug(){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfDrawBackground()
 {
-
+//	if(player != NULL)
+//	{
+//		player->draw(0,0);
+//	}
 }
 
 //--------------------------------------------------------------

@@ -60,7 +60,9 @@ protected:
 	bool receivedFrame;
     ofPtr<ofVideoPlayer> player;
     vector<string> movieStrings;
-    void finishLoad();
+    ofShader shader;
+
+	void finishLoad();
     
     int movieIndex;
     string targetMovieName;
