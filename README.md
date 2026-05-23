@@ -10,7 +10,7 @@ Note that several of these steps require private media and source code. These st
 # Setup Build Environment
 ## Windows
 * Requires Windows 11 or earlier
-* Download [Visual Studio 2012 Ultimate from Internet Archive](https://archive.org/details/vs-2012-rc-ult-enu)
+* Download [Visual Studio 2012 Ultimate from Internet Archive](https://archive.org/details/vs-2012-rc-ult-enu) with `Microsoft Foundation C++ Classes` installed
 ## macOS
 * Requires a Mac Intel machine (does not work on MacARM / Apple Silicon)
 * Requires El Capitan (10.11)
