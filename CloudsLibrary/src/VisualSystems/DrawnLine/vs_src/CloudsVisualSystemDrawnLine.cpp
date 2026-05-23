@@ -33,11 +33,6 @@ void CloudsVisualSystemDrawnLine::selfGuiEvent(ofxUIEventArgs &e){
 	}
 }
 
-void CloudsVisualSystemDrawnLine::setupFbo(){
-    //ZACH: instantiate your FBO here
-    fbo.allocate(getCanvasWidth(), getCanvasHeight(), GL_RGB);
-}
-
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemDrawnLine::selfSetupSystemGui(){
 	
@@ -70,7 +65,6 @@ void CloudsVisualSystemDrawnLine::selfSetup(){
 	
     APP.SYS = this;
     APP.setup();
-    //setupFbo();
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -95,12 +89,6 @@ void CloudsVisualSystemDrawnLine::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemDrawnLine::selfUpdate(){
-//    if(fbo.getWidth() != getCanvasWidth() ||
-//       fbo.getHeight() != getCanvasHeight())
-//    {
-//        setupFbo();
-//    }
-    
     APP.bShowDebug = bShowDebug;
     
     if (APP.seeker.isThreadRunning() == false){

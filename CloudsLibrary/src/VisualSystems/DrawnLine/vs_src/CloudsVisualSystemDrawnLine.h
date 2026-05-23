@@ -90,8 +90,6 @@ class CloudsVisualSystemDrawnLine : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-    ofFbo fbo;
-    void setupFbo();
 protected:
     
     //  Your Stuff

@@ -146,13 +146,7 @@ void drawnLineApp::setup(){
     matchEnergy = 0;
     scale = 1;
     
-    ofFbo::Settings settings;
-    //settings.useStencil = true;
-    settings.height = 1080;
-    settings.width = 1920;
-    settings.internalformat = GL_RGBA;
-    settings.numSamples = 2;
-    fbo.allocate(settings);
+    resizeFboIfNeeded();
     
 //    
 //    _defaultRenderer = ofGetCurrentRenderer();
@@ -165,7 +159,29 @@ void drawnLineApp::setup(){
 }
 
 //--------------------------------------------------------------
+void drawnLineApp::resizeFboIfNeeded(){
+    if (!SYS) {
+        return;
+    }
+    int w = SYS->getCanvasWidth();
+    int h = SYS->getCanvasHeight();
+    if (w <= 0 || h <= 0) {
+        return;
+    }
+    if (fbo.isAllocated() && fbo.getWidth() == w && fbo.getHeight() == h) {
+        return;
+    }
+    ofFbo::Settings settings;
+    settings.width = w;
+    settings.height = h;
+    settings.internalformat = GL_RGBA;
+    settings.numSamples = 2;
+    fbo.allocate(settings);
+}
+
 void drawnLineApp::update(){
+    
+    resizeFboIfNeeded();
     
     //if (ofGetFrameNum() % 30 == 0)shader.load("shader/shader");
     
@@ -401,7 +417,7 @@ void drawnLineApp::draw(){
     
     
     ofSetColor(255,255,255);
-    fbo.draw(0,0);
+    fbo.draw(0, 0, SYS->getCanvasWidth(), SYS->getCanvasHeight());
     
     
 	//TIME_SAMPLE_DRAW( 10, 10); 	//finally draw our time measurements
@@ -444,11 +460,6 @@ void drawnLineApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void drawnLineApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void drawnLineApp::windowResized(int w, int h){
 
 }
 
