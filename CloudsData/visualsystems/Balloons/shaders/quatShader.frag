@@ -103,7 +103,8 @@ vec4 makeRotate( vec3 sourceVector, vec3 targetVector )
 
 void main()
 {
-	vec3 vel = texture2DRect( velTexture, uv).xyz;
+	vec2 texel = floor(gl_FragCoord.xy);
+	vec3 vel = texture2DRect( velTexture, texel).xyz;
 
 	vec4 q = makeRotate(vec3(0.,1.,0.), vel );
 	

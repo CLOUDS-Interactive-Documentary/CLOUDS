@@ -393,10 +393,9 @@ void CloudsVisualSystemBalloons::setBalloonColors()
 	
 	random_shuffle( col.begin(), col.end() );
 	
-	//colFbo.allocate(dimX, dimY, GL_RGB16F);
-    colFbo.allocate(dimX, dimY, GL_RGB16);
+	colFbo.allocate(dimX, dimY, GL_RGB32F);
 	colFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
-    colFbo.getTextureReference().loadData( &col[0][0], dimX, dimY, GL_RGB);
+	colFbo.getTextureReference().loadData( (float*)&col[0], dimX, dimY, GL_RGB);
 }
 
 void CloudsVisualSystemBalloons::setBalloonPositions()
@@ -485,27 +484,33 @@ void CloudsVisualSystemBalloons::setBalloonPositions()
 	//posiiton
 	posFbo0.allocate(dimX, dimY, GL_RGB32F);
 	posFbo0.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
-    posFbo0.getTextureReference().loadData( &pos[0][0], dimX, dimY, GL_RGB);
+	posFbo0.getTextureReference().loadData( (float*)&pos[0], dimX, dimY, GL_RGB);
 	
 	posFbo1.allocate(dimX, dimY, GL_RGB32F);
 	posFbo1.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
-    posFbo1.getTextureReference().loadData( &pos[0][0], dimX, dimY, GL_RGB);
+	posFbo1.getTextureReference().loadData( (float*)&pos[0], dimX, dimY, GL_RGB);
 	
 	//velocity
 	velFbo0.allocate(dimX, dimY, GL_RGB32F);
 	velFbo0.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
-    velFbo0.getTextureReference().loadData( &vel[0][0], dimX, dimY, GL_RGB);
+	velFbo0.getTextureReference().loadData( (float*)&vel[0], dimX, dimY, GL_RGB);
 	
 	velFbo1.allocate(dimX, dimY, GL_RGB32F);
 	velFbo1.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
-    velFbo1.getTextureReference().loadData( &vel[0][0], dimX, dimY, GL_RGB);
+	velFbo1.getTextureReference().loadData( (float*)&vel[0], dimX, dimY, GL_RGB);
 	
-	//rotations
+	vector<ofVec4f> quats(dimX * dimY);
+	for(int i = 0; i < (int)quats.size(); i++){
+		quats[i].set(0.f, 0.f, 0.f, 1.f);
+	}
 	quatFbo.allocate(dimX, dimY, GL_RGBA32F);
 	quatFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+	quatFbo.getTextureReference().loadData( (float*)&quats[0], dimX, dimY, GL_RGBA);
 	
 	//color
 	setBalloonColors();
+	
+	leadBalloonPos = pos[0];
 }
 
 void CloudsVisualSystemBalloons::selfSetup()
@@ -537,10 +542,16 @@ void CloudsVisualSystemBalloons::selfSetup()
 	vbo.setVertexData(&v[0], v.size(), GL_STATIC_DRAW);
 	vbo.setNormalData(&n[0], n.size(), GL_STATIC_DRAW);
 	
-	shader.load(getVisualSystemDataPath() + "shaders/normalShader");
-	posShader.load(getVisualSystemDataPath() + "shaders/posShader");
-	velShader.load(getVisualSystemDataPath() + "shaders/velShader");
-	quatShader.load(getVisualSystemDataPath() + "shaders/quatShader");
+	string shaderPath = getVisualSystemDataPath() + "shaders/";
+	shader.load(shaderPath + "normalShader");
+	posShader.load(shaderPath + "posShader");
+	velShader.load(shaderPath + "velShader");
+	quatShader.load(shaderPath + "quatShader");
+	leadCopyShader.load(shaderPath + "leadCopyShader");
+	
+	leadPosFbo.allocate(1, 1, GL_RGB32F);
+	leadPosFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+	leadPix.allocate(1, 1, OF_PIXELS_RGB);
 	
 	ofxXmlSettings creditsXml;
 	if(creditsXml.loadFile(GetCloudsDataPath() + "credits.xml")){
@@ -598,12 +609,12 @@ void CloudsVisualSystemBalloons::selfUpdate()
 {
     cloudsCamera.lookTarget = ofVec3f(0,0,0);
     
-	p0->getTextureReference().readToPixels(pospix);
-	ofFloatColor poscol = pospix.getColor(0,0);
-	balloon00Pos.set(poscol.r,poscol.g,poscol.b);
-	
-	//balloon00Pos = mix(balloon00Pos, ofVec3f(poscol.r, poscol.g, poscol.b), .1);
-	balloon00Pos = mix(balloon00Pos, ofVec3f(0,0,0), balloonFrameVal);
+	if(leadPosFbo.isAllocated() && leadPix.getWidth() == 1){
+		leadPosFbo.readToPixels(leadPix);
+		ofFloatColor leadCol = leadPix.getColor(0, 0);
+		leadBalloonPos.set(leadCol.r, leadCol.g, leadCol.b);
+	}
+	balloon00Pos = mix(leadBalloonPos, ofVec3f(0, 0, 0), balloonFrameVal);
 	
 	
 	float t = ofGetElapsedTimef();
@@ -640,12 +651,15 @@ void CloudsVisualSystemBalloons::selfDraw()
 {
 	ofPushStyle();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	ofEnableArbTex();
+	
+	glDisable(GL_BLEND);
 	
 	if(bReleased)
 	{
 		//update positions
 		p0->begin();
-		ofClear(0, 255);
+		ofClear(0, 0, 0, 0);
 		posShader.begin();
 		posShader.setUniformTexture("posTexture", p1->getTextureReference(), 0);
 		posShader.setUniformTexture("velTexture", v1->getTextureReference(), 1);
@@ -683,16 +697,16 @@ void CloudsVisualSystemBalloons::selfDraw()
 		creditPositionsR.push_back(c->right);
 	}
 	
-	//update velocities
 	ofVec3f camPos = getCameraPosition();
+	
 	v0->begin();
-    ofClear(0, 255);
+	ofClear(0, 0, 0, 0);
 	velShader.begin();
 	velShader.setUniformTexture("posTexture", p1->getTextureReference(), 0);
 	velShader.setUniformTexture("velTexture", v1->getTextureReference(), 1);
-	velShader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);;
-	velShader.setUniform3f("camOffset", balloon00Pos.x,balloon00Pos.y,balloon00Pos.z);
-	velShader.setUniform1f("netHeight", netHeight );
+	velShader.setUniform3f("camPos", camPos.x, camPos.y, camPos.z);
+	velShader.setUniform3f("camOffset", balloon00Pos.x, balloon00Pos.y, balloon00Pos.z);
+	velShader.setUniform1f("netHeight", netHeight);
 	velShader.setUniform1f("dimX", dimX);
 	velShader.setUniform1f("dimY", dimY);
 	velShader.setUniform1f("bound", dim);
@@ -705,7 +719,6 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1i("numCredits", creditPositionsL.size());
 	
 	velShader.setUniform1f("textRadius", textRadius);
-	
 	velShader.setUniform1f("time", ofGetElapsedTimef() * -1.);
 	velShader.setUniform1f("noiseScl", noiseScl);
 	velShader.setUniform1f("offset", offset);
@@ -716,39 +729,38 @@ void CloudsVisualSystemBalloons::selfDraw()
 	velShader.setUniform1f("gravity", gravity);
 	velShader.setUniform1f("attractionToCenter", attractionToCenter);
 	velShader.setUniform1f("cameraBounce", cameraBounce);
-	
-	velShader.setUniform1f("highSpeedScale", highSpeedScale );
-	velShader.setUniform1f("speedLow", speedLow );
-	velShader.setUniform1f("speedHi", speedHi );
-	velShader.setUniform1f("highSpeedPercent", highSpeedPercent );
+	velShader.setUniform1f("highSpeedScale", highSpeedScale);
+	velShader.setUniform1f("speedLow", speedLow);
+	velShader.setUniform1f("speedHi", speedHi);
+	velShader.setUniform1f("highSpeedPercent", highSpeedPercent);
 	velShader.setUniform1f("cameraBounceRadius", cameraBounceRadius);
 	
-	ofRect(-1,-1,2,2);
-	
+	ofRect(-1, -1, 2, 2);
 	velShader.end();
 	v0->end();
 	swap(v0, v1);
 	
-	//update the rotations
 	quatFbo.begin();
-    ofClear(0, 255);
+	ofClear(0, 0, 0, 0);
 	quatShader.begin();
 	quatShader.setUniformTexture("velTexture", v1->getTextureReference(), 0);
 	quatShader.setUniform1f("dimX", dimX);
 	quatShader.setUniform1f("dimY", dimY);
-	
-	ofRect(-1,-1,2,2);
-	
+	ofRect(-1, -1, 2, 2);
 	quatShader.end();
 	quatFbo.end();
 	
+	ofFbo* posForDraw = bReleased ? p1 : p0;
+	ofFbo* velForDraw = v0;
+	
 	//draw the balloons
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+	glDepthMask(GL_TRUE);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
-	
-	
-    ofDisableAlphaBlending();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	ofEnableAlphaBlending();
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
 	shader.begin();
 	shader.setUniform1f("shininess", shininess);
@@ -768,8 +780,8 @@ void CloudsVisualSystemBalloons::selfDraw()
 	shader.setUniform1f("dimX", dimX);
 	shader.setUniform1f("dimY", dimY);
 	shader.setUniform3f("l0", l0.x, l0.y, l0.z);
-	shader.setUniformTexture("posTexture", p0->getTextureReference(), 0);
-	shader.setUniformTexture("velTexture", v0->getTextureReference(), 1);
+	shader.setUniformTexture("posTexture", posForDraw->getTextureReference(), 0);
+	shader.setUniformTexture("velTexture", velForDraw->getTextureReference(), 1);
 	shader.setUniformTexture("colTexture", colFbo.getTextureReference(), 2);
 	shader.setUniformTexture("quatTexture", quatFbo.getTextureReference(), 3);
 	
@@ -779,12 +791,18 @@ void CloudsVisualSystemBalloons::selfDraw()
 	if(creditPositions.size())	shader.setUniform4fv("lights", &creditPositions[0][0], creditPositions.size());
 	shader.setUniform1f("numLights", MIN(creditPositions.size(), 4));
 	
-	//vbo instancing
-	vbo.bind();
-	glDrawArraysInstanced(GL_TRIANGLES, 0, total, dimX*dimY);
-	vbo.unbind();
+	vbo.drawInstanced(GL_TRIANGLES, 0, total, dimX * dimY);
 	
 	shader.end();
+	
+	glDisable(GL_BLEND);
+	leadPosFbo.begin();
+	ofClear(0, 0, 0, 0);
+	leadCopyShader.begin();
+	leadCopyShader.setUniformTexture("posTexture", posForDraw->getTextureReference(), 0);
+	ofRect(-1, -1, 2, 2);
+	leadCopyShader.end();
+	leadPosFbo.end();
 
 	//draw creditsh
 	glDisable(GL_CULL_FACE);
@@ -827,6 +845,7 @@ void CloudsVisualSystemBalloons::selfExit()
 	velFbo1.getTextureReference().clear();
 	colFbo.getTextureReference().clear();
 	quatFbo.getTextureReference().clear();
+	leadPosFbo.getTextureReference().clear();
 }
 
 void CloudsVisualSystemBalloons::selfKeyPressed(ofKeyEventArgs & args)
@@ -837,10 +856,12 @@ void CloudsVisualSystemBalloons::selfKeyReleased(ofKeyEventArgs & args)
 {
 	if(args.key == 'l')
 	{
-		shader.load(getVisualSystemDataPath() + "shaders/normalShader");
-		posShader.load(getVisualSystemDataPath() + "shaders/posShader");
-		velShader.load(getVisualSystemDataPath() + "shaders/velShader");
-		quatShader.load(getVisualSystemDataPath() + "shaders/quatShader");
+		string shaderPath = getVisualSystemDataPath() + "shaders/";
+		shader.load(shaderPath + "normalShader");
+		posShader.load(shaderPath + "posShader");
+		velShader.load(shaderPath + "velShader");
+		quatShader.load(shaderPath + "quatShader");
+		leadCopyShader.load(shaderPath + "leadCopyShader");
 	}
 	else if(args.key == 'R')
 	{

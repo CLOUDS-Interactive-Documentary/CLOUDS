@@ -1,5 +1,5 @@
 #extension GL_ARB_texture_rectangle : enable
-#extension GL_EXT_gpu_shader4 : require
+#extension GL_EXT_gpu_shader4 : enable
 //#version 150
 //#extension GL_ARB_texture_rectangle : enable
 
@@ -140,7 +140,7 @@ uniform float shininess;
 
 void main()
 {
-	vec2 st = vec2(mod(float(gl_InstanceID), dimY), floor(float(gl_InstanceID) / dimY));
+	vec2 st = vec2(mod(float(gl_InstanceID), dimX), floor(float(gl_InstanceID) / dimX));
 	vec4 v = gl_Vertex;
 	v.xyz *= .5;
 	

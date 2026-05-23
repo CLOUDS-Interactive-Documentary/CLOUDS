@@ -11,8 +11,9 @@ varying vec2 uv;
 
 void main()
 {
-	vec3 pos = texture2DRect( posTexture, uv).xyz;
-	vec3 vel = texture2DRect( velTexture, uv).xyz;
+	vec2 texel = floor(gl_FragCoord.xy);
+	vec3 pos = texture2DRect( posTexture, texel).xyz;
+	vec3 vel = texture2DRect( velTexture, texel).xyz;
 	
 ////	pos -= camOffset*.5;
 	pos.y -= camOffset.y*.5;

@@ -1,6 +1,8 @@
 #version 110
 #extension GL_ARB_texture_rectangle : enable
 
+const float PI = 3.14159265358979323846;
+
 uniform sampler2DRect posTexture;
 uniform sampler2DRect velTexture;
 
@@ -60,7 +62,7 @@ float _noise(vec3 p) //Thx to Las^Mercury
 {
 	vec3 i = floor(p);
 	vec4 a = dot(i, vec3(1., 57., 21.)) + vec4(0., 57., 21., 78.);
-	vec3 f = cos((p-i)*acos(-1.))*(-.5)+.5;
+	vec3 f = cos((p-i) * PI) * (-0.5) + 0.5;
 	a = mix(sin(cos(a)*a),sin(cos(1.+a)*(1.+a)), f.x);
 	a.xy = mix(a.xz, a.yw, f.y);
 	return mix(a.x, a.y, f.z);
@@ -104,9 +106,10 @@ vec3 IntersectionPointLine( vec3 p3, vec3 p1, vec3 p2 )
 
 void main()
 {
-	vec3 pos = texture2DRect( posTexture, uv).xyz;
+	vec2 texel = floor(gl_FragCoord.xy);
+	vec3 pos = texture2DRect( posTexture, texel).xyz;
 	
-	vec3 vel = texture2DRect( velTexture, uv).xyz;
+	vec3 vel = texture2DRect( velTexture, texel).xyz;
 	
 	vec3 p = pos * noiseSampleScale;
 	
@@ -128,7 +131,7 @@ void main()
 	{
 		for (int j=0; j<int(dimY); j++)
 		{
-			if(collisionCount<6 && j != i)
+			if(collisionCount < 6 && !(float(i) == texel.x && float(j) == texel.y))
 			{
 				bounce(acc, pos, texture2DRect( posTexture, vec2(float(i), float(j))).xyz, collisionCount, radius);
 			}
@@ -152,14 +155,17 @@ void main()
 	}
 	
 	//attract them to the center axis
-	acc.xz -= normalize(pos.xz) * attractionToCenter;
+	float lenXZ = length(pos.xz);
+	if(lenXZ > 0.0001){
+		acc.xz -= (pos.xz / lenXZ) * attractionToCenter;
+	}
 	
 	//scale acceleration and add gravity
 	acc *= accScl;
 	acc.y += gravity;
 	
 	//acceleration varience based on index...
-	float i = uv.x * dimY + uv.y;
+	float i = texel.x * dimY + texel.y;
 	float total = dimX * dimY;
 	if( i < total*highSpeedPercent)
 	{

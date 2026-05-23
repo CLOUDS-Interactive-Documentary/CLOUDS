@@ -93,5 +93,9 @@ void main(void)
 
 	gl_FragColor = mix( fogColor, diffuse, clamp(fogMix,0.,1.));
 	gl_FragColor.w = 1. - pow(fr,10.) * .1;
+	
+	if(gl_FragColor.a < 0.5){
+		discard;
+	}
 }
 

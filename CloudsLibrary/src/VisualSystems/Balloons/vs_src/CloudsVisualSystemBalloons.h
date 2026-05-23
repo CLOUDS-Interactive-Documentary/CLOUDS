@@ -165,6 +165,7 @@ protected:
 	ofShader posShader;
 	ofShader velShader;
 	ofShader quatShader;
+	ofShader leadCopyShader;
 	float noiseScl, offset, noiseSampleScale, velAtten, radius, accScl, gravity, attractionToCenter, cameraBounce,cameraAttractionToCenter, cameraOffset;
 	float spawnRad, cameraTargetDist, cameraBounceRadius;
 	float highSpeedScale, speedLow, speedHi, highSpeedPercent;
@@ -180,6 +181,7 @@ protected:
 	ofFbo velFbo1;
 	ofFbo colFbo;
 	ofFbo quatFbo;
+	ofFbo leadPosFbo;
 	
 	ofColor c0, c1, c2, c3;
 	float w0, w1, w2, w3;
@@ -199,7 +201,8 @@ protected:
 	ofVec3f camerVel;
 	
 	ofVec3f balloon00Pos;
-	ofFloatPixels pospix;
+	ofVec3f leadBalloonPos;
+	ofFloatPixels leadPix;
 	
 	ofImage sphericalMap;
 	
