@@ -153,6 +153,8 @@ void CloudsVisualSystemOrbit::selfPostDraw()
     else CloudsVisualSystem::getSharedRenderTarget().draw(0, getCanvasHeight(),
                                                           getCanvasWidth(),
                                                           -getCanvasHeight());
+
+    drawCursors();
 }
 
 //use render gui for display settings, like changing colors

@@ -124,6 +124,8 @@ void CloudsVisualSystemRulez::selfPostDraw()
     if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
     else CloudsVisualSystem::getSharedRenderTarget().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
     glPopAttrib();
+
+    drawCursors();
 }
 
 //use render gui for display settings, like changing colors
