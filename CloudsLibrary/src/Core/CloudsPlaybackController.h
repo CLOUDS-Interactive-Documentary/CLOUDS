@@ -226,6 +226,7 @@ class CloudsPlaybackController : public ofThread {
     bool showingExplorePeople;
     bool showingExploreVisuals;
     bool showingResearchMode;
+    bool returningToResearch;
     bool researchModeTopic;
     bool researchModePerson;
     bool researchModeVisual;

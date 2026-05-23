@@ -817,6 +817,10 @@ void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
 }
 
 void CloudsHUDController::respondToClip(CloudsClip* clip){
+
+    if(bResearchTransitioning || hudOpenMap[CLOUDS_RESEARCH]){
+        return;
+    }
 	
     if(!bVisualSystemDisplayed){
         bActJustStarted = false;
@@ -883,6 +887,10 @@ void CloudsHUDController::respondToClip(CloudsClip* clip){
 }
 
 void CloudsHUDController::respondToSystem(const CloudsVisualSystemPreset& preset){
+
+    if(bResearchTransitioning || hudOpenMap[CLOUDS_RESEARCH]){
+        return;
+    }
     
     populateVisualSystem(preset.credits.title, preset.credits.line1, preset.credits.line2 );
     
@@ -1871,11 +1879,26 @@ bool CloudsHUDController::selectedVisualsTab(){
     return selected;
 }
 
+void CloudsHUDController::beginReturnToResearch(CloudsHUDResearchTab tab){
+    bResearchTransitioning = true;
+    nextTab = tab;
+}
+
+bool CloudsHUDController::isReturningToResearch(){
+    return bResearchTransitioning;
+}
+
 void CloudsHUDController::researchTransitionFinished(){
     if(bResearchTransitioning){
         currentTab = nextTab;
         currentResearchList = &researchLists[currentTab];
         bResearchTransitioning = false;
+        animateOff(CLOUDS_HUD_LOWER_THIRD);
+        animateOff(CLOUDS_HUD_HOME);
+        animateOff(CLOUDS_HUD_NEXT);
+        animateOff(CLOUDS_HUD_PAUSE);
+        animateOff(CLOUDS_HUD_QUESTION);
+        animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
         researchScroller.scrollPosition = currentResearchList->scrollPosition;
         researchScroller.totalScrollHeight = currentResearchList->totalScrollHeight;
         if(!isItemSelected()){
@@ -2059,6 +2082,14 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
         return;
     }
 #endif
+
+    if(hudOpenMap[CLOUDS_RESEARCH] || bResearchTransitioning){
+        if(layer == CLOUDS_HUD_LOWER_THIRD || layer == CLOUDS_HUD_HOME ||
+           layer == CLOUDS_HUD_NEXT || layer == CLOUDS_HUD_PAUSE ||
+           layer == CLOUDS_HUD_QUESTION || layer == CLOUDS_HUD_PROJECT_EXAMPLE){
+            return;
+        }
+    }
     
     for (map<CloudsHUDLayerSet, CloudsHUDLayer* >::iterator it = layers.begin(); it != layers.end(); ++it) {
         if (layer == it->first || layer == CLOUDS_HUD_ALL) {

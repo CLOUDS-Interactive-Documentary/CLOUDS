@@ -104,6 +104,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     
 	loading = false;
 	showingResearchMode = false;
+    returningToResearch = false;
     
     bShowingAct = false;
     bBufferingVideo = false;
@@ -172,6 +173,8 @@ void CloudsPlaybackController::clearAct(){
     delete currentAct;
     currentAct = NULL;
 	clusterMap->setAct(NULL);
+    
+    returningToResearch = false;
     
     //This is in the case we selected to explore map from a story
     canReturnToAct = false;
@@ -1173,7 +1176,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     
     ////////// HUD UPDATE AND PAUSE
     hud.update();
-    if(!transitionController.isTransitioning()){
+    if(transitionController.isTransitioning()){
+        (void)hud.isNextHit();
+        keyedToNext = false;
+    }
+    else{
         updateHUD();
     }
     
@@ -1320,7 +1327,8 @@ void CloudsPlaybackController::updateHUD(){
     /////////////////// END HUD UPDATE
     
     //////////// WAS NEXT HIT?
-    if(hud.isNextHit() || keyedToNext){
+    bool nextClicked = hud.isNextHit();
+    if(nextClicked || keyedToNext){
         keyedToNext = false;
         if(showingVisualLoop){
             sound.stopMusic();
@@ -1330,7 +1338,7 @@ void CloudsPlaybackController::updateHUD(){
             sound.stopMusic();
             transitionController.transitionFromInterlude(1.0);
         }
-        else if(currentAct != NULL){
+        else if(bShowingAct && currentAct != NULL && !shouldClearAct && !returningToResearch){
             hud.clipEnded();
             CloudsVisualSystem::getRGBDVideoPlayer().stop();
             currentAct->next();
@@ -2056,6 +2064,15 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
     if(!bQuestionAsked && !returnToIntro) {
         //if we entered this act through research mode, return to the research screen
         if(showingResearchMode){
+            if(returningToResearch){
+                return;
+            }
+            returningToResearch = true;
+            bShowingAct = false;
+            if(currentAct != NULL){
+                currentAct->pause();
+                currentAct->unregisterEvents(&hud);
+            }
             transitionBackToResearch();
         }
         //otherwise we are in story mode and we should go to an interlude
@@ -2067,18 +2084,28 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 
 void CloudsPlaybackController::transitionBackToResearch(){
 
+    if(transitionController.isTransitioning()){
+        return;
+    }
+
     populateResearchWithLatest();
 
     hud.clearQuestion();
     hud.animateOff();
     
     if(researchModeTopic){
+        hud.beginReturnToResearch(CLOUDS_HUD_RESEARCH_TAB_TOPICS);
+        hud.animateOn(CLOUDS_RESEARCH);
         transitionController.transitionToExploreMap(1.0,1.0);
     }
     else if(researchModePerson){
+        hud.beginReturnToResearch(CLOUDS_HUD_RESEARCH_TAB_PEOPLE);
+        hud.animateOn(CLOUDS_RESEARCH);
         transitionController.transitionToExplorePeople(1.0,1.0);
     }
     else if(researchModeVisual){
+        hud.beginReturnToResearch(CLOUDS_HUD_RESEARCH_TAB_VISUALS);
+        hud.animateOn(CLOUDS_RESEARCH);
         transitionController.transitionToExploreVisuals(1.0,1.0);
     }
     else{

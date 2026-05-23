@@ -201,7 +201,9 @@ class CloudsHUDController {
 	int videoFrameCounter;
 	bool isPlaying;
     float transitionFade;
+    void beginReturnToResearch(CloudsHUDResearchTab tab);
     void researchTransitionFinished();
+    bool isReturningToResearch();
 
     
     void setTopics(const set<string>& topics);
