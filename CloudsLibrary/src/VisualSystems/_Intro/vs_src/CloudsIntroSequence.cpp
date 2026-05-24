@@ -1023,21 +1023,26 @@ void CloudsIntroSequence::generateTunnel(){
 	
 	// tight tunnel, dots only
 	tunnelMeshTight.clear();
+	tunnelMeshTight.setMode(OF_PRIMITIVE_POINTS);
 	for(float z = 0; z < tunnelMax.z; z += tightTunnelStepZ){
 		//draw the top
 		for(float x = -tunnelMax.x; x <= tunnelMax.x; x += tightTunnelStepX){
+			tunnelMeshTight.addColor(ofFloatColor::white);
 			tunnelMeshTight.addVertex(ofVec3f(x,-tunnelMax.y,z));
 		}
 		//draw right side
 		for(float y = -tunnelMax.y; y <= tunnelMax.y; y += tightTunnelStepY){
+			tunnelMeshTight.addColor(ofFloatColor::white);
 			tunnelMeshTight.addVertex(ofVec3f(tunnelMax.x,y,z));
 		}
 		//draw bottom
 		for(float x = tunnelMax.x; x >= -tunnelMax.x; x -= tightTunnelStepX){
+			tunnelMeshTight.addColor(ofFloatColor::white);
 			tunnelMeshTight.addVertex(ofVec3f(x,tunnelMax.y,z));
 		}
 		//draw the left side
 		for(float y = tunnelMax.y; y >= -tunnelMax.y; y -= tightTunnelStepY){
+			tunnelMeshTight.addColor(ofFloatColor::white);
 			tunnelMeshTight.addVertex(ofVec3f(-tunnelMax.x,y,z));
 		}
 	}	
