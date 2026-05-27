@@ -109,7 +109,7 @@ ofVideoPlayer* CloudsVisualSystem::getClick(){
 		click = new ofVideoPlayer();
 		click->loadMovie(GetCloudsDataPath() + "sound/interface/click.mp4");
 		click->setLoopState(OF_LOOP_NONE);
-		click->setVolume(.4);
+		click->setVolume(.2);
 	}
 	return click;
 }
