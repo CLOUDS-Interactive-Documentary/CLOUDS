@@ -8,12 +8,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Mesh Alpha</Name>
-    <Value>0.000000000</Value>
+    <Value>0.338235289</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
