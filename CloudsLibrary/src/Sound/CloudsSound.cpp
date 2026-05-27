@@ -9,6 +9,7 @@ CloudsSound::CloudsSound(){
 	eventsRegistered = false;
 	maxSpeakerVolume = 1;
 	storyEngine = NULL;
+	globalMusicAttenuate = 1.0f;
 	
 	frontMixLevel = 1.0;
 	backMixLevel = 1.0;
@@ -106,6 +107,7 @@ void CloudsSound::setup(){
 		eventsRegistered = true;
 		
 		//load sound volumes
+		globalMusicAttenuate = 1.0f;
 		ofBuffer perTrackMixBuf = ofBufferFromFile(GetCloudsDataPath() + "sound/mix.txt");
 		while(!perTrackMixBuf.isLastLine()){
 			string line = perTrackMixBuf.getNextLine();
@@ -114,7 +116,12 @@ void CloudsSound::setup(){
 				ofLogError("CloudsSound::setup") << "Mix level incorrectly formatted for line " << line;
 			}
 			else{
-				perTrackMix[ split[0] ] = ofToFloat( split[1] );
+				if(split[0] == "MASTER"){
+					globalMusicAttenuate = ofToFloat(split[1]);
+				}
+				else{
+					perTrackMix[ split[0] ] = ofToFloat( split[1] );
+				}
 			}
 		}
 
@@ -125,6 +132,7 @@ void CloudsSound::setup(){
 void CloudsSound::saveMixLevels(){
 	map<string, float>::iterator it;;
 	ofBuffer trackMix;
+	trackMix.append(string("MASTER ") + ofToString(globalMusicAttenuate) + "\n");
 	for(it = perTrackMix.begin(); it != perTrackMix.end(); it++){
 		trackMix.append(it->first + " " + ofToString(it->second) + "\n");
 	}
@@ -192,7 +200,7 @@ void CloudsSound::threadedFunction(){
 		
     frontPlayer->update();
     	if(frontPlayer->isLoaded()){
-			frontPlayer->setVolume(GetCloudsAudioEvents()->fadeValue*frontMixAttenuate*frontMixLevel);
+			frontPlayer->setVolume(GetCloudsAudioEvents()->fadeValue*globalMusicAttenuate*frontMixAttenuate*frontMixLevel);
 //			cout << "Front player volume is " << GetCloudsAudioEvents()->fadeValue << " Mix " << frontMixAttenuate << " at pos " << frontPlayer->getPosition() << endl;
 		}
     
@@ -201,7 +209,7 @@ void CloudsSound::threadedFunction(){
             
 			float newVolume = ofMap(ofGetElapsedTimef(),
 									playerSwapTime, playerSwapTime+playerFadeDuration,
-									backMixLevel*backMixAttenuate*GetCloudsAudioEvents()->fadeValue, 0.0, true);
+									backMixLevel*backMixAttenuate*GetCloudsAudioEvents()->fadeValue*globalMusicAttenuate, 0.0, true);
 
 			backPlayer->setVolume(newVolume);
 			if(newVolume == 0){

@@ -1,4 +1,4 @@
- 1
+MASTER 0.55
 1 0.4
 10 0.1
 100 0.25
@@ -135,4 +135,4 @@
 cloudsdream_mix1 0.15
 cloudsdream_mix2 0.15
 cloudsdream_mix3 15
-tunnel 0.7
+tunnel 0.6

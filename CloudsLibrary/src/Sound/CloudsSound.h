@@ -94,6 +94,10 @@ class CloudsSound {
 	CloudsStoryEngine* storyEngine;
 	CloudsAct* currentAct;
 
+	// Global multiplier applied on top of per-track levels from `sound/mix.txt`.
+	// Optional config: add a line like `MASTER 0.7` to `sound/mix.txt` to attenuate all music.
+	float globalMusicAttenuate;
+
 	//only used in non RTCMIX context
 	ofPtr<ofVideoPlayer> frontPlayer;
 	ofPtr<ofVideoPlayer> backPlayer;
