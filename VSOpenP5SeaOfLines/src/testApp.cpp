@@ -1,13 +1,12 @@
 #include "testApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup()
-{
-    ofSetVerticalSync(true);
-    ofSetFrameRate(60);
-    
-	vs.setup();
-	vs.playSystem();
+void testApp::setup(){
+    ofSetVerticalSync(false);
+	ofSetBackgroundAuto(false);
+
+	seaOfLines.setup();
+	seaOfLines.playSystem();
 }
 
 //--------------------------------------------------------------
@@ -25,9 +24,8 @@ void testApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::exit()
-{
-    vs.exit();
+void testApp::exit(){
+	seaOfLines.exit();
 }
 
 //--------------------------------------------------------------
