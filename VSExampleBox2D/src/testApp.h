@@ -4,7 +4,6 @@
 #include "ofEvents.h"
 #include "ofxUI.h"
 #include "CloudsVisualSystemExampleBox2D.h"
-#include "CloudsMixer.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -22,9 +21,6 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	void exit();
-		
-	void audioRequested(float * output, int bufferSize, int nChannels);
 	
 	CloudsVisualSystemExampleBox2D exampleBox2D;
-    CloudsMixer mixer;
 };
