@@ -2,11 +2,7 @@
 //  CloudsVisualSystemOpenP5Machine.cpp
 //
 
-#include "ofxAudioDecoderTonic.h"
-
 #include "CloudsVisualSystemOpenP5Machine.h"
-
-using namespace Tonic;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
@@ -30,10 +26,6 @@ void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
     customGui->addSlider("Shift X", 0.0, 5.0, &shiftX);
 	customGui->addSlider("Shift Y", 0.0, 5.0, &shiftY);
 	customGui->addSlider("Shift Z", 0.0, 5.0, &shiftZ);
-    
-    customGui->addWidgetDown(new ofxUILabel("AUDIO", OFX_UI_FONT_MEDIUM));
-    customGui->addSlider("Gain", 0, 1, &gain);
-
 
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Machine::selfGuiEvent);
 	guis.push_back(customGui);
@@ -76,13 +68,6 @@ void CloudsVisualSystemOpenP5Machine::selfSetup(){
     color1HSB.r = 200;
     color2HSB.g = 130;
     color2HSB.b = 90;
-
-    // sound
-    gain = 0;
-    
-    #ifdef TONIC_SOUNDS
-    synth.setOutputGen(buildSynth());
-    #endif
 }
 
 
@@ -97,7 +82,6 @@ void CloudsVisualSystemOpenP5Machine::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemOpenP5Machine::selfBegin(){
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOpenP5Machine::audioRequested);	
 }
 
 //do things like ofRotate/ofTranslate here
@@ -108,9 +92,6 @@ void CloudsVisualSystemOpenP5Machine::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemOpenP5Machine::selfUpdate(){
- 
-    volumeControl.value(gain);
-
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -201,8 +182,6 @@ void CloudsVisualSystemOpenP5Machine::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemOpenP5Machine::selfEnd(){
-    volumeControl.value(0);
-	ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOpenP5Machine::audioRequested);
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -232,26 +211,4 @@ void CloudsVisualSystemOpenP5Machine::selfMousePressed(int x, int y, int button)
 
 void CloudsVisualSystemOpenP5Machine::selfMouseReleased(int x, int y, int button){
 }
-
-#ifdef TONIC_SOUNDS
-Generator CloudsVisualSystemOpenP5Machine::buildSynth()
-{
-    string strDir = GetCloudsDataPath(true)+"sound/textures";
-    ofDirectory sdir(strDir);
-    string strAbsPath = ofToDataPath(strDir + "/Machine.mp3");
-    SampleTable sample = ofxAudioDecoderTonic(strAbsPath);
-    
-    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);
-    
-    return sampleGen * volumeControl;
-}
-#endif
-
-void CloudsVisualSystemOpenP5Machine::audioRequested(ofAudioEventArgs& args)
-{
-    #ifdef TONIC_SOUNDS    
-    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
-    #endif
-}
-
 

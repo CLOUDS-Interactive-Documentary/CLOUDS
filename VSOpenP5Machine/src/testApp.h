@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "ofxUI.h"
-#include "CloudsMixer.h"
 #include "CloudsVisualSystemOpenP5Machine.h"
 
 class testApp : public ofBaseApp{
@@ -21,9 +20,6 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	void exit();
-    
-    void audioRequested(float *output, int bufferSize, int nChannels);
-		
+    		
 	CloudsVisualSystemOpenP5Machine vs;
-    CloudsMixer mixer;
 };
