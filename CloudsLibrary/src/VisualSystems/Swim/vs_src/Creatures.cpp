@@ -182,6 +182,11 @@ namespace itg
     {
         unsigned numTentacles = 0;
         for (unsigned i = 0; i < jellies.size(); ++i) numTentacles += jellies[i]->getNumTentacles();
+        tentaclePosns.clear();
+        if (numTentacles == 0)
+        {
+            return;
+        }
         tentacles.init(TENTACLE_NUM_SECTIONS, numTentacles, OF_PRIMITIVE_LINES, false);
         if (numTentacles * TENTACLE_NUM_SECTIONS * 4 != tentacles.getNumFloats()) ofLogFatalError() << "tentacle texture size error";
         float* particlePosns = new float[tentacles.getNumFloats()];
@@ -379,25 +384,28 @@ namespace itg
             }
         }
         
-        unsigned tentacleIdx = 0;
-        for (unsigned i = 0; i < jellies.size(); ++i)
+        if (!tentaclePosns.empty())
         {
-            vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
-            for (unsigned j = 0; j < deformed.size(); ++j)
+            unsigned tentacleIdx = 0;
+            for (unsigned i = 0; i < jellies.size(); ++i)
             {
-                tentaclePosns[tentacleIdx] = deformed[j];
-                ++tentacleIdx;
+                vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
+                for (unsigned j = 0; j < deformed.size(); ++j)
+                {
+                    tentaclePosns[tentacleIdx] = deformed[j];
+                    ++tentacleIdx;
+                }
             }
+            
+            tentacles.loadDataTexture(ofxGpuParticles::POSITION, tentaclePosns[0].getPtr(), 0, 0, 1, tentacles.getHeight());
+            tentacles.getUpdateShaderRef().begin();
+            tentacles.getUpdateShaderRef().setUniform1f("restLength", TENTACLE_SECTION_LENGTH);
+            tentacles.getUpdateShaderRef().setUniform1f("numSections", (float)TENTACLE_NUM_SECTIONS);
+            tentacles.getUpdateShaderRef().setUniform1f("elapsed", Creature::getElapsed());
+            tentacles.getUpdateShaderRef().setUniform1f("tentacleSpringForce", Creatures::tentacleSpringForce);
+            tentacles.getUpdateShaderRef().end();
+            tentacles.update();
         }
-		
-        tentacles.loadDataTexture(ofxGpuParticles::POSITION, tentaclePosns[0].getPtr(), 0, 0, 1, tentacles.getHeight());
-        tentacles.getUpdateShaderRef().begin();
-        tentacles.getUpdateShaderRef().setUniform1f("restLength", TENTACLE_SECTION_LENGTH);
-        tentacles.getUpdateShaderRef().setUniform1f("numSections", (float)TENTACLE_NUM_SECTIONS);
-        tentacles.getUpdateShaderRef().setUniform1f("elapsed", Creature::getElapsed());
-		tentacles.getUpdateShaderRef().setUniform1f("tentacleSpringForce", Creatures::tentacleSpringForce);
-		tentacles.getUpdateShaderRef().end();
-        tentacles.update();
     }
     
     void Creatures::draw(const ofCamera& cam)
@@ -417,19 +425,22 @@ namespace itg
         }
         
         // tentacles
-        ofPushStyle();
-        ofEnableBlendMode(OF_BLENDMODE_ADD);
-        glDepthMask(GL_FALSE);
-        ofSetColor(255);
-        tentacles.getDrawShaderRef().begin();
-        tentacles.getDrawShaderRef().setUniform1f("fogStart", Creature::fogStart);
-        tentacles.getDrawShaderRef().setUniform1f("fogEnd", Creature::fogEnd);
-        tentacles.getDrawShaderRef().setUniform1f("camZ", cam.getZ());
-        tentacles.getDrawShaderRef().end();
-        tentacles.draw();
-        glDepthMask(GL_TRUE);
-        ofDisableBlendMode();
-        ofPopStyle();
+        if (!tentaclePosns.empty())
+        {
+            ofPushStyle();
+            ofEnableBlendMode(OF_BLENDMODE_ADD);
+            glDepthMask(GL_FALSE);
+            ofSetColor(255);
+            tentacles.getDrawShaderRef().begin();
+            tentacles.getDrawShaderRef().setUniform1f("fogStart", Creature::fogStart);
+            tentacles.getDrawShaderRef().setUniform1f("fogEnd", Creature::fogEnd);
+            tentacles.getDrawShaderRef().setUniform1f("camZ", cam.getZ());
+            tentacles.getDrawShaderRef().end();
+            tentacles.draw();
+            glDepthMask(GL_TRUE);
+            ofDisableBlendMode();
+            ofPopStyle();
+        }
         
         
         // point creatures
