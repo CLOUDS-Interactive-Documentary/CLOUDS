@@ -15,12 +15,7 @@
 //#include "Bubbles.h"
 #include "MarineSnow.h"
 #include "ofxPostProcessing.h"
-//#include "ofxTonic.h"
-#include "TonicSample.h"
-#include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
-
-//using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemSwim : public CloudsVisualSystem {
@@ -139,15 +134,5 @@ protected:
     bool regenerate;
 	itg::MarineSnow snow;
     ofxUISuperCanvas* snowGui;
-    
-	// Sound
-    ofxUISuperCanvas* soundGui;
-    vector<TonicSample> tonicSamples;
-
-    Tonic::ofxTonicSynth synth;
-    Tonic::Generator buildSynth();
-    Tonic::ControlParameter volumeControl;
-    float gain;
-	void audioRequested(ofAudioEventArgs& args);
     
 };

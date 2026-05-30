@@ -1,9 +1,6 @@
 //
 //  CloudsVisualSystemSwim.cpp
 //
-#ifdef TONIC_SOUNDS
-#include "ofxAudioDecoderTonic.h"
-#endif
 
 #include "CloudsVisualSystemSwim.h"
 #include "CloudsRGBDVideoPlayer.h"
@@ -21,11 +18,6 @@ CloudsVisualSystemSwim::CloudsVisualSystemSwim() :
 // geometry should be loaded here
 void CloudsVisualSystemSwim::selfSetup()
 {
-	#ifdef TONIC_SOUNDS
-    tonicSamples.push_back(TonicSample("underwater_stretch.mp3"));
-    tonicSamples.push_back(TonicSample("Underwater.mp3"));
-	#endif
-
     snow.init(getVisualSystemDataPath());
     //bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
@@ -34,12 +26,6 @@ void CloudsVisualSystemSwim::selfSetup()
     post.init(getCanvasWidth(), getCanvasHeight(), true);
     //post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
-    
-    // sound
-    volumeControl.value(0);
-    #ifdef TONIC_SOUNDS
-    synth.setOutputGen(buildSynth());
-    #endif
 }
 
 void CloudsVisualSystemSwim::selfSetDefaults(){
@@ -55,19 +41,6 @@ void CloudsVisualSystemSwim::selfBegin()
 {
     // adding this here as custom gui data is loaded after setup
 	generate();
-    
-#ifdef TONIC_SOUNDS
-    // sound
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemSwim::audioRequested);
-    
-    for (int i=0; i<2; i++)
-    {
-        if (tonicSamples[i].playSample) {
-            tonicSamples[i].soundTrigger.trigger();
-        }
-    }
-#endif
-
 }
 
 void CloudsVisualSystemSwim::generate()
@@ -94,7 +67,6 @@ void CloudsVisualSystemSwim::generate()
 //normal update call
 void CloudsVisualSystemSwim::selfUpdate()
 {
-    volumeControl.value(gain);
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     if (post.getWidth() != getCanvasWidth() || post.getHeight() != getCanvasHeight()) post.init(getCanvasWidth(), getCanvasHeight(), true);
     
@@ -253,16 +225,6 @@ void CloudsVisualSystemSwim::selfSetupGui()
         fileNames.push_back(dir.getName(i));
     }
     seedRadio = seedGui->addRadio("seed", fileNames);
-    
-    soundGui = createCustomGui("Sound");
-    // sound
-	#ifdef TONIC_SOUNDS
-    soundGui->addToggle(tonicSamples[0].soundFile, &tonicSamples[0].playSample);
-    soundGui->addToggle(tonicSamples[1].soundFile, &tonicSamples[1].playSample);
-    soundGui->addSlider("Gain", 0, 1, &gain);
-	#endif
-    
-    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemSwim::selfGuiEvent);
 }
 
 void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& params)
@@ -347,20 +309,6 @@ void CloudsVisualSystemSwim::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 		cout << "Button pressed!" << endl;
 	}
-	
-	#ifdef TONIC_SOUNDS
-    for (int i=0; i<2; i++)
-    {
-        if (e.widget->getName() == tonicSamples[i].soundFile) {
-            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            tonicSamples[i].playSample = toggle->getValue();
-            if (toggle->getValue() == true) {
-                tonicSamples[i].soundTrigger.trigger();
-            }
-        }
-    }
-	#endif
-
 }
 
 void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e) {
@@ -395,10 +343,6 @@ void CloudsVisualSystemSwim::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemSwim::selfEnd(){
-	
-    volumeControl.value(0); 
-    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemSwim::audioRequested);
-	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemSwim::selfExit(){
@@ -424,32 +368,4 @@ void CloudsVisualSystemSwim::selfMousePressed(ofMouseEventArgs& data){
 void CloudsVisualSystemSwim::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
-
-#ifdef TONIC_SOUNDS
-Tonic::Generator CloudsVisualSystemSwim::buildSynth()
-{
-    string strDir = GetCloudsDataPath(true)+"sound/textures/";
-    ofDirectory sdir(strDir);
-    
-    Tonic::SampleTable samples[3];
-    
-    for(int i=0; i<tonicSamples.size();i++){
-        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = ofxAudioDecoderTonic(strAbsPath);
-    }
-    
-    Tonic::Generator sampleGen1 = Tonic::BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
-    Tonic::Generator sampleGen2 = Tonic::BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[0].soundTrigger);
-    
-    return (sampleGen1 * 1.0f + sampleGen2 * 1.0f) * volumeControl;
-}
-#endif
-
-void CloudsVisualSystemSwim::audioRequested(ofAudioEventArgs& args)
-{
-    #ifdef TONIC_SOUNDS
-    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
-    #endif
-}
-
 
