@@ -14,10 +14,6 @@
 #include "RandomNumber.h"
 
 #include "CloudsGlobal.h"
-#include "CloudsAudioEvents.h"
-#include "ofxTonic.h"
-
-//using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemRandomDigits2 : public CloudsVisualSystem {
@@ -120,8 +116,4 @@ protected:
     float dark, light;
     
     float fogDensity;
-
-    // Sound
-    ofxUISuperCanvas* soundGui;
-	void audioRequested(ofAudioEventArgs& args);
 };
