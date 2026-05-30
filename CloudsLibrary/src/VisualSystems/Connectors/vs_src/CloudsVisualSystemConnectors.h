@@ -13,11 +13,6 @@
 #include "CloudsVisualSystem.h"
 #include "ParticleConnectionGenerator.h"
 #include "CloudsGlobal.h"
-#include "CloudsAudioEvents.h"
-//#include "ofxTonic.h"
-#include "TonicSample.h"
-
-//using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemConnectors : public CloudsVisualSystem {
@@ -106,13 +101,4 @@ protected:
 	
 	ParticleConnectionGenerator generator;
 	ofMesh connectionLines;
-	
-	// Sound
-    ofxUISuperCanvas* soundGui;
-    vector<TonicSample> tonicSamples;
-    Tonic::ofxTonicSynth synth;
-    Tonic::Generator buildSynth();
-	void audioRequested(ofAudioEventArgs& args);
-    Tonic::ControlParameter volumeControl;
-    float gain;
 };
