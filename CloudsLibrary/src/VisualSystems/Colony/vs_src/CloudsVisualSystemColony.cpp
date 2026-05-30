@@ -1,8 +1,4 @@
-#include "ofxAudioDecoderTonic.h"
-
-#include "CloudsVisualSystemColony.h"
-
-using namespace Tonic;
+﻿#include "CloudsVisualSystemColony.h"
 
 string CloudsVisualSystemColony::getSystemName()
 {
@@ -11,11 +7,7 @@ string CloudsVisualSystemColony::getSystemName()
 
 void CloudsVisualSystemColony::selfSetup()
 {
-    
-    tonicSamples.push_back(TonicSample("granular_water2.mp3"));
-    tonicSamples.push_back(TonicSample("granular_water2_slow.mp3"));
-    tonicSamples.push_back(TonicSample("Grains1_slow_low.mp3"));
-    
+       
     ofDirectory textureDir(getVisualSystemDataPath() + "textures");
     textureDir.listDir();
     //TODO: Maybe the reason you can't see anythign in texture2d is becasue you haven't disabled abrtexture?
@@ -35,12 +27,7 @@ void CloudsVisualSystemColony::selfSetup()
     
     
 	loadShaders();
-    
-    // sound
-#ifdef TONIC_SOUNDS
-    synth.setOutputGen(buildSynth());
-#endif
-    
+        
 }
 
 void CloudsVisualSystemColony::selfSetDefaults(){
@@ -174,31 +161,17 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     txt->setAutoClear(false);
     ofxUIDropDownList* list = guiBackground->addDropDownList("Background File Menu", backgroundFilenames);
     
-    // sound
-    soundGui = new ofxUISuperCanvas("COLONY Sound", gui);
-	soundGui->copyCanvasStyle(gui);
-	soundGui->copyCanvasProperties(gui);
-	soundGui->setName("COLONY Sound");
-	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    soundGui->addSlider("Gain", 0, 1, &gain);
-
-    soundGui->addToggle(    tonicSamples[0].soundFile, &tonicSamples[0].playSample);
-    soundGui->addToggle(    tonicSamples[1].soundFile, &tonicSamples[1].playSample);
-    soundGui->addToggle(    tonicSamples[2].soundFile, &tonicSamples[2].playSample);
     
     guis.push_back(guiDynamics);
     guis.push_back(guiLooks);
-    guis.push_back(soundGui);
     guis.push_back(guiBackground);
     
     guimap[guiDynamics->getName()] = guiDynamics;
     guimap[guiLooks->getName()] = guiLooks;
-	guimap[soundGui->getName()] = soundGui;
     guimap[guiBackground->getName()] = guiBackground;
     
     ofAddListener(guiDynamics->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
     ofAddListener(guiBackground->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
-    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
 }
 
 
@@ -209,9 +182,6 @@ void CloudsVisualSystemColony::selfSetupGuis(){
 
 void CloudsVisualSystemColony::selfUpdate()
 {
-    //sound
-    volumeControl.value(gain);
-    
     //Video
     if ( !areFbosAllocatedAndSized() ){ reallocateFramebuffers(); }
     
@@ -358,24 +328,11 @@ void CloudsVisualSystemColony::updateFoodTexture(){
 void CloudsVisualSystemColony::selfBegin()
 {
     populate();
-    
-    // sound
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemColony::audioRequested);
-    
-    for(int i = 0; i < tonicSamples.size(); i++){
-        if(tonicSamples[i].playSample){
-            tonicSamples[i].soundTrigger.trigger();
-        }
-    }
 }
 
 void CloudsVisualSystemColony::selfEnd()
 {
     clear();
-    
-    // sound
-    volumeControl.value(0);
-    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemColony::audioRequested);
 }
 
 void CloudsVisualSystemColony::selfExit(){
@@ -465,28 +422,6 @@ void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
     
     string parent = (e.widget->getParent())->getName();
     
-    if (parent == "COLONY Sound"){
-//        for (int i=0; i<3; i++)
-//        {
-//            if (e.widget->getName() == soundFiles[i]) {
-//                ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-//                playSample[i] = toggle->getValue();
-//                if (toggle->getValue() == true) {
-//                    soundTriggers[i].trigger();
-//                }
-//            }
-//        }
-        
-        for(int i=0; i<tonicSamples.size();i++){
-            if (e.widget->getName() == tonicSamples[i].soundFile) {
-                ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-                tonicSamples[i].playSample = toggle->getValue();
-                if (toggle->getValue() == true) {
-                    tonicSamples[i].soundTrigger.trigger();
-                }
-            }
-        }
-    }
     if (parent == "Background File Menu"){
         backgroundFilename = e.getName();
         loadTextureAndUpdateUI(backgroundFilename);
@@ -497,31 +432,3 @@ void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
     }
     
 }
-
-Tonic::Generator CloudsVisualSystemColony::buildSynth()
-{
-
-    string strDir = GetCloudsDataPath(true)+"sound/textures/";
-//    string strDir = GetCloudsDataPath(true) + "sound/textures/";
-    ofDirectory sdir(strDir);
-    
-    SampleTable samples[3];
-    
-    for(int i=0; i<tonicSamples.size();i++){
-        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = ofxAudioDecoderTonic(strAbsPath);
-    }
-    
-    
-    Tonic::Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
-    Tonic::Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[1].soundTrigger);
-    Tonic::Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).loop(1).trigger(tonicSamples[2].soundTrigger);
-    
-    return (sampleGen1 * 0.8f + sampleGen2 * 0.8f + sampleGen3 * 0.4f) * volumeControl;
-}
-
-void CloudsVisualSystemColony::audioRequested(ofAudioEventArgs& args)
-{
-    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
-}
-

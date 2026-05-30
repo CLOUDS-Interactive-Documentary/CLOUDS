@@ -7,8 +7,11 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.cpp">
-      <Filter>addons\ofxOculusRift\src</Filter>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsGlobal.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
+      <Filter>CloudsLibrary\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp">
       <Filter>addons\ofxFTGL\src</Filter>
@@ -106,6 +109,21 @@
     <ClCompile Include="..\CloudsLibrary\src\Sound\CloudsMixer.cpp">
       <Filter>CloudsLibrary\src\Sound</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.cpp">
+      <Filter>addons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.cpp">
+      <Filter>addons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.cpp">
+      <Filter>addons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.cpp">
+      <Filter>addons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -176,8 +194,14 @@
     <ClInclude Include="src\testApp.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxOculusRift\src\ofxOculusRift.h">
-      <Filter>addons\ofxOculusRift\src</Filter>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsCrypto.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Sound\TonicSample.h">
+      <Filter>CloudsLibrary\src\Sound</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h">
       <Filter>addons\ofxFTGL\src</Filter>
@@ -349,6 +373,27 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\Sound\CloudsMixer.h">
       <Filter>CloudsLibrary\src\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAudioDecoder\src\ofxAudioDecoder.h">
+      <Filter>addons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAudioDecoder\couples\ofxAudioDecoderTonic.h">
+      <Filter>addons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.h">
+      <Filter>addons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLocalization\src\ofxLocalization.h">
+      <Filter>addons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitles.h">
+      <Filter>addons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSubtitles\src\ofxSubtitleUnit.h">
+      <Filter>addons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

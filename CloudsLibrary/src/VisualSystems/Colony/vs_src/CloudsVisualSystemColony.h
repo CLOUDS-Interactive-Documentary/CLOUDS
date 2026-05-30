@@ -1,4 +1,4 @@
-/* 
+﻿/* 
  WOW SUCH VISUAL
  VERY SYSTEM
  MUCH COPYRIGHT
@@ -11,11 +11,6 @@
 
 #include "gCell.h"
 #include "CloudsGlobal.h"
-#include "CloudsAudioEvents.h"
-//#include "ofxTonic.h"
-#include "TonicSample.h"
-
-//using namespace Tonic;
 
 class CloudsVisualSystemColony : public CloudsVisualSystem {
 public:
@@ -109,14 +104,4 @@ private:
     
     /* VERY DEBUG */
     ofImage img_debug;
-    
-    /* SOUND LVL=100 */
-    ofxUISuperCanvas* soundGui;
-
-    vector<TonicSample> tonicSamples;
-    Tonic::ofxTonicSynth synth;
-    Tonic::Generator buildSynth();
-    Tonic::ControlParameter volumeControl;
-    float gain;
-	void audioRequested(ofAudioEventArgs& args);
 };
