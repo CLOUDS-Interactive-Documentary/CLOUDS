@@ -1,9 +1,5 @@
-#include "ofxAudioDecoderTonic.h"
-
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsGlobal.h"
-
-using namespace Tonic;
 
 //--------------------------------------------------------------
 CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
@@ -14,9 +10,6 @@ CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
 	sincPosition = ofVec2f(.5,.5);
 	sincRadius = 0;
     sincStrength = 1;
-    curMSpeed = 0;
-    prevInputX = GetCloudsInputX();
-    prevInputY = GetCloudsInputY();
 }
 
 //--------------------------------------------------------------
@@ -68,13 +61,6 @@ void CloudsVisualSystemVectorFlow::selfSetup(){
     shaderBlurY.load(getVisualSystemDataPath() + "shaders/simpleBlurVertical");
     
     initBlurFilter();
-    
-    // sound
-    fMainGain = 0;
-    mainGain.value(0);
-    #ifdef TONIC_SOUNDS
-    synth.setOutputGen(buildSynth() * mainGain);
-    #endif
 }
 
 void CloudsVisualSystemVectorFlow::selfSetupGuis(){
@@ -161,17 +147,6 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 		c.a = fieldAlpha;
 		lines.setColor(i+1, c);
 	}
-    
-    // UPDATE Sound parameters
-    mainGain.value(fMainGain);
-    float distX = abs(GetCloudsInputX() - prevInputX);
-    float distY = abs(GetCloudsInputY() - prevInputY);
-    float mSpeed = sqrt(distX*distX + distY*distY);
-    curMSpeed += (mSpeed - curMSpeed)*.05;
-    lpfCutoff.value(ofMap(curMSpeed, 0, 20, 100, 5500, true));
-    volume.value(ofMap(curMSpeed, 0, 20, 0, .7, true));
-    prevInputX = GetCloudsInputX();
-    prevInputY = GetCloudsInputY();
     
     // draw to first FBO
     fboInitial.begin();
@@ -337,11 +312,6 @@ void CloudsVisualSystemVectorFlow::selfExit(){
 
 void CloudsVisualSystemVectorFlow::selfBegin(){
 	regenerateFlow = true;
-    
-    
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVectorFlow::audioRequested);
-    soundTrigger1.trigger();
-    soundTrigger2.trigger();
 }
 
 void CloudsVisualSystemVectorFlow::selfPresetLoaded(string presetPath)
@@ -351,7 +321,6 @@ void CloudsVisualSystemVectorFlow::selfPresetLoaded(string presetPath)
 }
 
 void CloudsVisualSystemVectorFlow::selfEnd(){
-    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVectorFlow::audioRequested);
 }
 
 void CloudsVisualSystemVectorFlow::selfKeyPressed(ofKeyEventArgs & args){
@@ -427,8 +396,6 @@ void CloudsVisualSystemVectorFlow::selfSetupRenderGui(){
 	rdrGui->addToggle("Blend Add", &blendAdd);
     
     rdrGui->addSlider("Blur", 0, 10, &blurAmount);
-    
-    sysGui->addSlider("Main Gain", 0, 1, &fMainGain);
 
 }
 
@@ -464,38 +431,4 @@ void CloudsVisualSystemVectorFlow::initBlurFilter()
     ofClear(0, 0, 0);
     fboInitial.end();
 }
-
-#ifdef TONIC_SOUNDS
-Tonic::Generator CloudsVisualSystemVectorFlow::buildSynth()
-{
-    string strDir = GetCloudsDataPath(true)+"sound/textures/";
-    
-    ofDirectory sdir(strDir);
-    string strAbsPath = ofToDataPath(strDir + "/Wind 2.mp3", true);
-    
-    SampleTable sample = ofxAudioDecoderTonic(strAbsPath);
-    
-    string strAbsPath2 = ofToDataPath(strDir + "/" +"slowgrains_short.mp3", true);
-    SampleTable sample2 = ofxAudioDecoderTonic(strAbsPath2);
-    
-    lpfCutoff = synth.addParameter("cutoff_freq", 50).displayName("Cutoff Freq").min(50).max(8000);
-    volume = synth.addParameter("volume", 0.0).displayName("Cutoff Freq").min(0.0).max(1);
-    
-    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(soundTrigger1).loop(1) * volume;
-    
-    Generator sampleGen2 = BufferPlayer().setBuffer(sample2).trigger(soundTrigger2).loop(1);
-    
-    LPF12 filter = LPF12().cutoff(lpfCutoff.smoothed());
-    
-    return (sampleGen2 * .1) + (sampleGen >> filter);
-}
-#endif
-
-void CloudsVisualSystemVectorFlow::audioRequested(ofAudioEventArgs& args)
-{
-    #ifdef TONIC_SOUNDS
-    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
-    #endif
-}
-
 

@@ -3,9 +3,6 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "CloudsVisualSystem.h"
-#include "ofxTonic.h"
-#include "CloudsAudioEvents.h"
-
 
 class FlowParticle {
   public:
@@ -84,7 +81,6 @@ protected:
 	
 	float speed;
 	float oscFrequency;
-	float curMSpeed;
 	ofImage colorMap;
 	ofFloatColor startColor;
 	ofFloatColor endColor;
@@ -104,15 +100,4 @@ protected:
     float blurAmount;
     ofShader shaderBlurX, shaderBlurY;
     ofFbo fboInitial, fboBlurX, fboFinal;
-    
-    // Sound
-    float fMainGain;
-    Tonic::ControlParameter mainGain;
-    int prevInputX, prevInputY;
-    Tonic::ofxTonicSynth synth;
-    Tonic::ControlParameter lpfCutoff;
-    Tonic::ControlParameter volume;
-    Tonic::ControlTrigger soundTrigger1, soundTrigger2;
-    Tonic::Generator buildSynth();
-	void audioRequested(ofAudioEventArgs& args);
 };
