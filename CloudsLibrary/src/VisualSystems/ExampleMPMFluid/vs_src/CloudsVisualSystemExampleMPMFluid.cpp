@@ -1,5 +1,3 @@
-#include "ofxAudioDecoderTonic.h"
-
 #include "CloudsVisualSystemExampleMPMFluid.h"
 #include "CloudsRGBDVideoPlayer.h"
 
@@ -50,30 +48,9 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemExampleMPMFluid::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
-    
-
-    // sound gui
-    soundGui = new ofxUISuperCanvas("MPM FLUID Sound", gui);
-    soundGui->copyCanvasStyle(gui);
-    soundGui->copyCanvasProperties(gui);
-	soundGui->setName("MPM FLUID Sound");
-	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
-    soundGui->addSlider("Volume 0", 0, 3, &volume[0]);
-    soundGui->addSlider("Volume 1", 0, 3, &volume[1]);
-    soundGui->addSlider("Volume 2", 0, 3, &volume[2]);
-    soundGui->addSlider("Volume 3", 0, 3, &volume[3]);
-    
-    soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
-    
-	guis.push_back(soundGui);
-	guimap[customGui->getName()] = soundGui;
-
 }
 
 void CloudsVisualSystemExampleMPMFluid::selfSetDefaults(){
-    memset(volume,0, sizeof(float)*4);
-
     primaryCursorMode = CURSOR_MODE_DRAW;
     secondaryCursorMode  = CURSOR_MODE_DRAW;
 }
@@ -126,13 +103,6 @@ void CloudsVisualSystemExampleMPMFluid::selfSetup()
     // add obstacle
     obstacle = new ofxMPMObstacle(0, 0, obstacleSize);
     fluid.addObstacle(obstacle);
-    
-    // sound
-    fMainGain = 0;
-    mainGain.value(0);
-    #ifdef TONIC_SOUNDS
-    synth.setOutputGen(buildSynth() * mainGain);
-    #endif
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -148,7 +118,6 @@ void CloudsVisualSystemExampleMPMFluid::selfPresetLoaded(string presetPath)
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemExampleMPMFluid::selfBegin()
 {
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemExampleMPMFluid::audioRequested);
 }
 
 //do things like ofRotate/ofTranslate here
@@ -193,35 +162,6 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
     
 
     fluid.update(GetCloudsInputX(),GetCloudsInputY());
-    
-    // sound
-    // calc total speed
-    float parSpeed = 0;
-    vector<ofxMPMParticle*> particles = fluid.getParticles();
-    for (int i=0; i<particles.size(); i++)
-    {
-        parSpeed += (float)sqrt(pow(particles[i]->u, 2) + pow(particles[i]->v, 2));
-    }
-    parSpeed /= particles.size();
-    parSpeed = (float)pow(parSpeed, 2);
-//    cout<<parSpeed<<endl;
-    
-    totalSpeed.value(ofMap(parSpeed, 0, 0.5, 0, 0.8, true));
-    
-    float speed = (float)sqrt(pow(prevMouseX - GetCloudsInputX(), 2) + pow(prevMouseY - GetCloudsInputY(), 2));
-    mouseSpeed.value(mouseSpeed.getValue() + (speed - mouseSpeed.getValue()) * 0.05);
-    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-    mouseX.value(ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 0, 1));
-    mouseY.value(ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 0, 1));
-    prevMouseX = GetCloudsInputX();
-    prevMouseY = GetCloudsInputY();
-    for (int i=0; i<4; i++)
-    {
-        volumeControl[i].value(volume[i]);
-    }
-    
-    mainGain.value(fMainGain);
-
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -289,7 +229,6 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemExampleMPMFluid::selfEnd()
 {
-    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemExampleMPMFluid::audioRequested);
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemExampleMPMFluid::selfExit()
@@ -362,38 +301,4 @@ void CloudsVisualSystemExampleMPMFluid::selfMousePressed(ofMouseEventArgs& data)
 
 void CloudsVisualSystemExampleMPMFluid::selfMouseReleased(ofMouseEventArgs& data){
 	
-}
-
-#ifdef TONIC_SOUNDS
-Tonic::Generator CloudsVisualSystemExampleMPMFluid::buildSynth()
-{
-    string strDir = GetCloudsDataPath(true)+"sound/textures/";
-    ofDirectory sdir(strDir);
-    string strAbsPath = ofToDataPath( strDir + "/slowchimes.mp3", true);
-                                     
-    Tonic::SampleTable sample = ofxAudioDecoderTonic(strAbsPath);
-    
-    Tonic::Generator low = Tonic::SineWave().freq(70) * 0.2;
-    Tonic::Generator sampPlayer = Tonic::BufferPlayer().setBuffer(sample).loop(1).trigger(1);
-    Tonic::Generator highElec = Tonic::SawtoothWave().freq(mouseSpeed*200) * totalSpeed;
-    
-    Tonic::Generator highElec1 = Tonic::SineWave().freq(0.2+mouseSpeed*10) * Tonic::Noise() * totalSpeed / 2;
-    
-    Tonic::Generator highElec2 = Tonic::LFNoise().setFreq(800+mouseX*500) * totalSpeed;
-    
-    
-    Tonic::Generator highElec3 = Tonic::SineWave().freq(100) * Tonic::SineWave().freq(1) *totalSpeed;
-    
-    return (sampPlayer * highElec) * volumeControl[0] +
-            highElec2 * volumeControl[1] +
-            highElec3 * volumeControl[2] +
-            highElec1 * volumeControl[3];
-}
-#endif
-
-void CloudsVisualSystemExampleMPMFluid::audioRequested(ofAudioEventArgs& args)
-{
-    #ifdef TONIC_SOUNDS
-    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
-    #endif
 }
