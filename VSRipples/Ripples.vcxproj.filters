@@ -61,6 +61,12 @@
     <ClCompile Include="..\CloudsLibrary\src\CloudsLocalization.cpp">
       <Filter>CloudsLibrary\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.cpp">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.cpp">
+      <Filter>addons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -199,6 +205,12 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\CloudsLocalization.h">
       <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Core\CloudsCalibrationNode.h">
+      <Filter>CloudsLibrary\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCrypto\src\ofxCrypto.h">
+      <Filter>addons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
