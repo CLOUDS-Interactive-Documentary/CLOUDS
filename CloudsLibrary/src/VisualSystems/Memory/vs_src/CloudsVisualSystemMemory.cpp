@@ -6,8 +6,6 @@
 //
 //
 
-#include "ofxAudioDecoderTonic.h"
-
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsGlobal.h"
 
@@ -19,13 +17,6 @@ string CloudsVisualSystemMemory::getSystemName()
 void CloudsVisualSystemMemory::selfSetup()
 {
     generate();
-    
-    // sound
-    fMainGain = 0;
-    mainGain.value(0);
-    #ifdef TONIC_SOUNDS
-    synth.setOutputGen(buildSynth() * mainGain);
-    #endif
 }
 
 void CloudsVisualSystemMemory::selfSetDefaults(){
@@ -65,8 +56,6 @@ void CloudsVisualSystemMemory::selfSetupSystemGui()
     sysGui->addSlider("Random_Up", 0.0, 100, &randomUp);
     sysGui->addSlider("Random_Down", 0.0, 100, &randomDown);
     sysGui->addSlider("Noise_Lerp", 0.0, 1.0, &noiseLerp);
-    
-    sysGui->addSlider("Main Gain", 0, 1, &fMainGain);
 }
 
 void CloudsVisualSystemMemory::selfSetupRenderGui()
@@ -86,14 +75,11 @@ void CloudsVisualSystemMemory::selfSetupRenderGui()
 
 void CloudsVisualSystemMemory::selfBegin()
 {
-     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemMemory::audioRequested);
     generate();
 }
 
 void CloudsVisualSystemMemory::selfEnd()
 {
-    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemMemory::audioRequested);
-    
 }
 
 void CloudsVisualSystemMemory::guiSystemEvent(ofxUIEventArgs &e)
@@ -330,10 +316,6 @@ void CloudsVisualSystemMemory::selfUpdate()
     for (int i = 0; i < blocks.size(); i++) {
         blocks[i].update();
     }
-    
-    // sound
-    mainGain.value(fMainGain);
-
 }
 
 void CloudsVisualSystemMemory::applySort(){
@@ -468,28 +450,6 @@ void CloudsVisualSystemMemory::selfDrawBackground()
     ofSetLineWidth(0.01);
 	fillMesh.draw();
 	outlineMesh.draw();
-}
-
-#ifdef TONIC_SOUNDS
-Tonic::Generator CloudsVisualSystemMemory::buildSynth()
-{
-    string strDir = GetCloudsDataPath(true) + "sound/textures/";
-    ofDirectory sdir(strDir);
-    string strAbsPath = ofToDataPath(strDir + "/CPUBeepsFastDrone_.mp3", true);
-
-    Tonic::SampleTable sample = ofxAudioDecoderTonic(strAbsPath);
-    
-    Tonic::Generator sampleGen = Tonic::BufferPlayer().setBuffer(sample).trigger(1).loop(1);
-    
-    return sampleGen * 5;
-}
-#endif
-
-void CloudsVisualSystemMemory::audioRequested(ofAudioEventArgs& args)
-{
-    #ifdef TONIC_SOUNDS
-    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
-    #endif
 }
 
 void CloudsVisualSystemMemory::selfSetupGuis()
