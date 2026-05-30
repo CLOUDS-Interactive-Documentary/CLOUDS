@@ -90,7 +90,6 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxSSL\ofxSSLLib\ofxSSLRelease.x64.props" />
   </ImportGroup>
@@ -99,7 +98,6 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxSSL\ofxSSLLib\ofxSSLRelease.x64.props" />
   </ImportGroup>
@@ -108,7 +106,6 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2.props" />
     <Import Project="..\..\..\addons\ofxSSL\ofxSSLLib\ofxSSLRelease.x64.props" />
@@ -118,7 +115,6 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2.props" />
     <Import Project="..\..\..\addons\ofxSSL\ofxSSLLib\ofxSSLRelease.x64.props" />
@@ -128,7 +124,6 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxSSL\ofxSSLLib\ofxSSLDebug.x64.props" />
   </ImportGroup>
@@ -137,7 +132,6 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxSSL\ofxSSLLib\ofxSSLDebug.x64.props" />
   </ImportGroup>
@@ -146,7 +140,6 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2.props" />
     <Import Project="..\..\..\addons\ofxSSL\ofxSSLLib\ofxSSLDebug.x64.props" />
@@ -156,7 +149,6 @@
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
     <Import Project="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimeline64.props" />
     <Import Project="..\..\..\addons\ofxUI\ofxUILib\ofxUI.props" />
-    <Import Project="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonic.props" />
     <Import Project="..\..\..\addons\ofxCv\ofxCvLib\ofxCv.props" />
     <Import Project="..\..\..\addons\ofxOculusDK2\ofxOculusDK2Lib\ofxOculusDK2.props" />
     <Import Project="..\..\..\addons\ofxSSL\ofxSSLLib\ofxSSLDebug.x64.props" />
@@ -217,7 +209,6 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\openal\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
@@ -243,7 +234,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\openal\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
@@ -270,7 +260,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\openal\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
@@ -297,7 +286,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\openal\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
@@ -324,7 +312,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\openal\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
@@ -351,7 +338,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\openal\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
@@ -379,7 +365,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\openal\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
@@ -407,7 +392,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs64\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTonic\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\openal\export\vs64\*.dll" "$(ProjectDir)bin"
 xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs64\*.dll" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
@@ -1381,9 +1365,6 @@ xcopy /e /i /y "$(ProjectDir)..\..\..\addons\ofxTimeline\libs\sndfile\export\vs6
     </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxTimeline\ofxTimelineLib\ofxTimelineLib.vcxproj">
       <Project>{a72c4f16-cb16-4143-ba5c-5e4fa802d636}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\addons\ofxTonic\ofxTonicLib\ofxTonicLib.vcxproj">
-      <Project>{e93bd96c-a459-499f-840d-29b0166cbff7}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\addons\ofxUI\ofxUILib\ofxUILib.vcxproj">
       <Project>{641db976-e775-4d72-86eb-897e2c4a0eee}</Project>
