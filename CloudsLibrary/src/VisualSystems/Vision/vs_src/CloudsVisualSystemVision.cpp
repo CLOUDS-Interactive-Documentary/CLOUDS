@@ -77,8 +77,6 @@ void CloudsVisualSystemVision::selfSetDefaults(){
 	flowDensity = 3;
 	hueShift = .2;
     
-    fMainGain = 0;
-    mainGain.value(0);
     primaryCursorMode = CURSOR_MODE_INACTIVE;
     secondaryCursorMode = CURSOR_MODE_INACTIVE;
 }
@@ -90,8 +88,6 @@ void CloudsVisualSystemVision::selfSetup()
     waitingMedia = NULL;
 #endif
     
-    tonicSamples.push_back(TonicSample("distorted_drones.aif"));
-    tonicSamples.push_back(TonicSample("slowgrains_short.aif"));
     shader.load(getVisualSystemDataPath() + "heatMapShader");
 
     //	app
@@ -123,11 +119,6 @@ void CloudsVisualSystemVision::selfSetup()
     
     frameIsNew = false;
     //loadCurrentMovie();
-
-    // sound
-    #ifdef TONIC_SOUNDS
-    synth.setOutputGen(buildSynth() * mainGain);
-    #endif
 }
 
 void CloudsVisualSystemVision::selfSetupGui()
@@ -232,24 +223,6 @@ void CloudsVisualSystemVision::selfSetupGui()
     ofAddListener(contourTrackingGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     guis.push_back(thresholdGui);
     guimap[thresholdGui->getName()] = thresholdGui;
-    
-    // sound
-    soundGui = new ofxUISuperCanvas("VISION Sound", gui);
-	soundGui->copyCanvasStyle(gui);
-	soundGui->copyCanvasProperties(gui);
-	soundGui->setName("VISION Sound");
-	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
-    soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
-    
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-        soundGui->addToggle(tonicSamples[i].soundFile   , &tonicSamples[i].playSample);
-    }
-    
-	guis.push_back(soundGui);
-	guimap[soundGui->getName()] = soundGui;
-    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
 }
 
 
@@ -399,21 +372,10 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
 
 void CloudsVisualSystemVision::selfBegin()
 {
-    // sound
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVision::audioRequested);
-    
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-        if (tonicSamples[i].playSample) {
-            tonicSamples[i].soundTrigger.trigger();
-        }
-    }
 }
 
 void CloudsVisualSystemVision::selfEnd()
 {
-    // sound
-    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVision::audioRequested);
 }
 
 void CloudsVisualSystemVision::selfExit()
@@ -504,9 +466,6 @@ void CloudsVisualSystemVision::selfUpdate(){
 			}
 		}
 	}
-    
-    // sound
-    mainGain.value(fMainGain);
 }
 
 void CloudsVisualSystemVision::selfDrawBackground()
@@ -799,18 +758,6 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         ofxUIToggle* t = (ofxUIToggle*)e.widget;
         if(t->getValue())loadMovieWithName( t->getName() );
     }
-    
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-        if (e.widget->getName() == tonicSamples[i].soundFile) {
-            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            tonicSamples[i].playSample = toggle->getValue();
-            if (toggle->getValue() == true) {
-                 tonicSamples[i].soundTrigger.trigger();
-            }
-        }
-    }
-    
 }
 
 void CloudsVisualSystemVision::loadCurrentMovie(){
@@ -889,37 +836,4 @@ void CloudsVisualSystemVision::guiRenderEvent(ofxUIEventArgs &e)
 {
     
 }
-
-#ifdef TONIC_SOUNDS
-Tonic::Generator CloudsVisualSystemVision::buildSynth()
-{
-    string strDir = GetCloudsDataPath(true) + "sound/textures/";
-    ofDirectory sdir(strDir);
-    
-    Tonic::SampleTable samples[2];
-    
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-        string strAbsPath = ofToDataPath(strDir, true) + "/" + tonicSamples[i].soundFile;
-        samples[i] = Tonic::loadAudioFile(strAbsPath);
-    }
-    
-    Tonic::Generator sampleGen[2];
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-        sampleGen[i] = Tonic::BufferPlayer().setBuffer(samples[i]).loop(1).trigger(tonicSamples[i].soundTrigger);
-    }
-    
-    return sampleGen[0] * 1.0f +
-        sampleGen[1] * 1.0f;
-}
-#endif
-
-void CloudsVisualSystemVision::audioRequested(ofAudioEventArgs& args)
-{
-    #ifdef TONIC_SOUNDS
-    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
-    #endif
-}
-
 
