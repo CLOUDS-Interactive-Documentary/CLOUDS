@@ -7,12 +7,6 @@
 #include "ofxOceanRenderer.h"
 #include "ofxOceanCamera.h"
 #include "CloudsGlobal.h"
-#include "CloudsAudioEvents.h"
-//#include "ofxTonic.h"
-#include "TonicSample.h"
-
-//using namespace Tonic;
-
 
 class CloudsVisualSystemOcean : public CloudsVisualSystem {
   public:
@@ -100,18 +94,4 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
 	float currentSteerRot;
 	float maxLookUpRot;
 	float maxLookDownRot;
-	
-	// Sound
-    ofxUISuperCanvas* soundGui;
-    vector<TonicSample> tonicSamples;
-//    string soundFiles[2] = {
-//        "Vocal_harmonic_high_shorter.aif",
-//        "vocal_harmony_bass.aif"};
-//    bool playSample[2];
-//    ControlTrigger soundTriggers[2];
-    Tonic::ofxTonicSynth synth;
-    Tonic::Generator buildSynth();
-    Tonic::ControlParameter volumeControl;
-    float gain;
-	void audioRequested(ofAudioEventArgs& args);
 };
