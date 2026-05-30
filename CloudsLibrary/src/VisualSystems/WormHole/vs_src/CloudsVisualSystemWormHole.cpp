@@ -2,8 +2,6 @@
 //  CloudsVisualSystemWormHole.cpp
 //
 
-#include "ofxAudioDecoderTonic.h"
-
 #include "CloudsVisualSystemWormHole.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include <map>
@@ -182,25 +180,6 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	ofAddListener(displacementGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 	guis.push_back(displacementGui);
 	guimap[displacementGui->getName()] = displacementGui;
-    
-    
-    // sound
-    soundGui = new ofxUISuperCanvas("WORMHOLE Sound", gui);
-	soundGui->copyCanvasStyle(gui);
-	soundGui->copyCanvasProperties(gui);
-	soundGui->setName("WORMHOLE Sound");
-	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-        soundGui->addToggle(tonicSamples[i].soundFile, &tonicSamples[i].playSample);
-    }
-    
-    soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
-    
-	guis.push_back(soundGui);
-	guimap[soundGui->getName()] = soundGui;
-    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 }
 
 void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
@@ -314,17 +293,6 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		wormholeLightGui->getWidget("lightSaturation")->setColorFill(lightColor);
 		wormholeLightGui->getWidget("lightBrightness")->setColorFill(lightColor);
 	}
-
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-        if (e.widget->getName() == tonicSamples[i].soundFile) {
-            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            tonicSamples[i].playSample = toggle->getValue();
-            if (toggle->getValue() == true) {
-                tonicSamples[i].soundTrigger.trigger();
-            }
-        }
-    }
 }
 
 void CloudsVisualSystemWormHole::loadMesh(string name)
@@ -422,10 +390,6 @@ void CloudsVisualSystemWormHole::selfSetup()
 {
 	currentShader = NULL;
 
-	tonicSamples.push_back(TonicSample("EchoVortex.mp3"));
-	tonicSamples.push_back(TonicSample("wormholeZoom.mp3"));
-	tonicSamples.push_back(TonicSample("wormholeZoom2.mp3"));
-	tonicSamples.push_back(TonicSample("slowgrains_short.mp3"));
 	//meshes
 #ifdef VHX_MEDIA
 	modelPath = getVisualSystemDataPath(true) + "models_binary/";
@@ -467,25 +431,9 @@ void CloudsVisualSystemWormHole::selfSetup()
 	
 	//gui
 	colorSampleImage.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
-	
-    // sound
-    fMainGain = 0;
-    mainGain.value(0);
-    #ifdef TONIC_SOUNDS
-    synth.setOutputGen(buildSynth() * mainGain);
-    #endif
 }
 
 void CloudsVisualSystemWormHole::selfBegin(){
-    // sound
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
-    
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-        if (tonicSamples[i].playSample) {
-            tonicSamples[i].soundTrigger.trigger();
-        }
-    }
 }
 
 
@@ -523,9 +471,6 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	lastTime = t;
 	
 	noiseTime += timeDelta * noiseSpeed;
-    
-    // sound
-    mainGain.value(fMainGain);
 }
 
 void CloudsVisualSystemWormHole::selfDraw()
@@ -636,9 +581,6 @@ void CloudsVisualSystemWormHole::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemWormHole::selfEnd()
 {
-    // sound
-    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
-
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemWormHole::selfExit()
@@ -821,39 +763,4 @@ void CloudsVisualSystemWormHole::facetMesh( ofMesh& smoothedMesh, ofMesh& target
 	
 	cout << "faceted mesh in "<< ofToString((ofGetElapsedTimeMillis() - startTime)) << " milli seconds" << endl;
 }
-
-#ifdef TONIC_SOUNDS
-Tonic::Generator CloudsVisualSystemWormHole::buildSynth()
-{
-    string strDir = GetCloudsDataPath(true)+"sound/textures/";
-    ofDirectory sdir(strDir);
-    
-    Tonic::SampleTable samples[4];
-    
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-       string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = ofxAudioDecoderTonic(strAbsPath);
-    }
-    
-    Tonic::Generator sampleGen[4];
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-        sampleGen[i] = Tonic::BufferPlayer().setBuffer(samples[i]).loop(1).trigger(tonicSamples[i].soundTrigger);
-    }
-    
-    return sampleGen[0] * 1.0f +
-        sampleGen[1] * 1.0f +
-        sampleGen[2] * 1.0f +
-        sampleGen[3] * 1.0f;
-}
-#endif
-
-void CloudsVisualSystemWormHole::audioRequested(ofAudioEventArgs& args)
-{
-    #ifdef TONIC_SOUNDS
-    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
-    #endif
-}
-
 

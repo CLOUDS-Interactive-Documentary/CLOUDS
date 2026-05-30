@@ -17,10 +17,6 @@
 #include "ofxBinaryMesh.h"
 
 #include "CloudsGlobal.h"
-#include "CloudsAudioEvents.h"
-#include "ofxTonic.h"
-#include "TonicSample.h"
-
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemWormHole : public CloudsVisualSystem {
@@ -172,14 +168,5 @@ protected:
 	ofVec3f noiseOffset, noiseDir;
     
     float nearClipPlane;
-
-    // Sound
-    float fMainGain;
-    Tonic::ControlParameter mainGain;
-    ofxUISuperCanvas* soundGui;
-    vector<TonicSample> tonicSamples;
-    Tonic::ofxTonicSynth synth;
-    Tonic::Generator buildSynth();
-	void audioRequested(ofAudioEventArgs& args);
     
 };
