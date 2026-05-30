@@ -13,14 +13,7 @@
 #include "CloudsVisualSystem.h"
 #include "ofxRules.h"
 #include "ofxPostProcessing.h"
-//#include "ofxTonic.h"
-#include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
-#ifdef TONIC_SOUNDS
-#include "TonicSample.h"
-#endif
-
-//using namespace Tonic;
 
 struct Plant
 {
@@ -155,14 +148,4 @@ protected:
 	ofImage someImage;
 	ofShader pointcloudShader;
 	ofVboMesh simplePointcloud;*/
-    
-	// Sound
-	#ifdef TONIC_SOUNDS
-    vector<TonicSample> tonicSamples;
-    Tonic::ofxTonicSynth synth;
-    Tonic::Generator buildSynth();
-	void audioRequested(ofAudioEventArgs& args);
-    Tonic::ControlParameter volumeControl;
-    float gain;
-	#endif
 };
