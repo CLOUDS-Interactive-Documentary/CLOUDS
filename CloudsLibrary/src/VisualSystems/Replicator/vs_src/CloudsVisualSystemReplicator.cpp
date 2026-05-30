@@ -1,5 +1,3 @@
-#include "ofxAudioDecoderTonic.h"
-
 #include "CloudsVisualSystemReplicator.h"
 
 string CloudsVisualSystemReplicator::getSystemName(){
@@ -8,13 +6,6 @@ string CloudsVisualSystemReplicator::getSystemName(){
 
 void CloudsVisualSystemReplicator::selfSetup(){
 	local_time = ofGetElapsedTimef() + ofRandom(10000);
-
-    tonicSamples.push_back(TonicSample("organ_slower.mp3"));
-    tonicSamples.push_back(TonicSample("EchoVortex.mp3"));
-    gain = 0;
-    #ifdef TONIC_SOUNDS
-    synth.setOutputGen(buildSynth());
-    #endif
     
     vboRect.setUsage(GL_DYNAMIC_DRAW);
     vboRect.setMode(OF_PRIMITIVE_LINE_STRIP);
@@ -58,7 +49,6 @@ void CloudsVisualSystemReplicator::selfSetupGuis(){
 
 
 void CloudsVisualSystemReplicator::selfUpdate(){
-    volumeControl.value(gain);
     Replicator::Grid2D(100, 100, 2000, 2000).apply(repl);
 
 	// centering
@@ -217,22 +207,9 @@ void CloudsVisualSystemReplicator::selfExit(){
 }
 
 void CloudsVisualSystemReplicator::selfBegin(){
-    // sound
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemReplicator::audioRequested);
-    
-    for (int i=0; i<tonicSamples.size(); i++)
-    {
-        if (tonicSamples[i].playSample) {
-            tonicSamples[i].soundTrigger.trigger();
-        }
-    }
 }
 
 void CloudsVisualSystemReplicator::selfEnd(){
-    
-    volumeControl.value(0);
-    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemReplicator::audioRequested);
-    
 }
 
 
@@ -263,32 +240,9 @@ void CloudsVisualSystemReplicator::selfMouseReleased(ofMouseEventArgs& data){
 
 
 void CloudsVisualSystemReplicator::selfSetupGui(){
-    soundGui = new ofxUISuperCanvas("Sound", gui);
-	soundGui->copyCanvasStyle(gui);
-	soundGui->copyCanvasProperties(gui);
-	soundGui->setName("Sound");
-	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
-    soundGui->addToggle(tonicSamples[0].soundFile, &tonicSamples[0].playSample);
-    soundGui->addToggle(tonicSamples[1].soundFile, &tonicSamples[1].playSample);
-    soundGui->addSlider("Gain", 0, 1, &gain);
-    guis.push_back(soundGui);
-	guimap[soundGui->getName()] = soundGui;
-    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemReplicator::selfGuiEvent);
-    
 }
 
 void CloudsVisualSystemReplicator::selfGuiEvent(ofxUIEventArgs &e){
-    for (int i=0; i<2; i++)
-    {
-        if (e.widget->getName() == tonicSamples[i].soundFile) {
-            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            tonicSamples[i].playSample = toggle->getValue();
-            if (toggle->getValue() == true) {
-                tonicSamples[i].soundTrigger.trigger();
-            }
-        }
-    }
 }
 
 
@@ -308,32 +262,3 @@ void CloudsVisualSystemReplicator::selfSetupRenderGui(){
 void CloudsVisualSystemReplicator::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
-
-#ifdef TONIC_SOUNDS
-Tonic::Generator CloudsVisualSystemReplicator::buildSynth()
-{
-    string strDir = GetCloudsDataPath(true)+"sound/textures/";
-    ofDirectory sdir(strDir);
-    
-    Tonic::SampleTable samples[2];
-    
-    for(int i=0; i<tonicSamples.size();i++){
-        string strAbsPath = ofToDataPath(strDir + "/" + tonicSamples[i].soundFile, true);
-        samples[i] = ofxAudioDecoderTonic(strAbsPath);
-    }
-    
-    Tonic::Generator sampleGen1 = Tonic::BufferPlayer().setBuffer(samples[0]).loop(1).trigger(tonicSamples[0].soundTrigger);
-    Tonic::Generator sampleGen2 = Tonic::BufferPlayer().setBuffer(samples[1]).loop(1).trigger(tonicSamples[1].soundTrigger);
-    
-    return (sampleGen1 * 0.7f + sampleGen2 * 1.0f) * volumeControl;
-}
-#endif
-
-void CloudsVisualSystemReplicator::audioRequested(ofAudioEventArgs& args)
-{
-    #ifdef TONIC_SOUNDS
-    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
-    #endif
-}
-
-

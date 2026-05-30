@@ -5,13 +5,7 @@
 #include "CloudsVisualSystem.h"
 
 #include "ofxAnimationPrimitives.h"
-#include "ofxTonic.h"
-#include "CloudsAudioEvents.h"
 #include "CloudsGlobal.h"
-#include "TonicSample.h"
-
-//using namespace Tonic;
-
 
 class CloudsVisualSystemReplicator : public CloudsVisualSystem {
  public:
@@ -60,20 +54,11 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
 	void guiRenderEvent(ofxUIEventArgs &e);
     void selfSetDefaults();
 
-	// Sound
-    ofxUISuperCanvas* soundGui;
-    
     ofVboMesh vboRect, vboLines;
 //    ofShader instanceShader;
 //    int matsLoc;
 //    
 //    ofTexture dataTex;
 //    
-    vector<TonicSample> tonicSamples;
-    Tonic::ofxTonicSynth synth;
-    Tonic::Generator buildSynth();
-    Tonic::ControlParameter volumeControl;
-    float gain;
-	void audioRequested(ofAudioEventArgs& args);
 };
 
