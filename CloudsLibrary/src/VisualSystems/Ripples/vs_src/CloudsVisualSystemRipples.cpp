@@ -73,7 +73,7 @@ void CloudsVisualSystemRipples::selfSetupGui()
     
 	ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemRipples::selfGuiEvent);
 	guis.push_back(soundGui);
-	guimap[customGui->getName()] = soundGui;
+	guimap[soundGui->getName()] = soundGui;
 }
 void CloudsVisualSystemRipples::selfSetDefaults(){
     primaryCursorMode = CURSOR_MODE_DRAW;
@@ -283,9 +283,15 @@ void CloudsVisualSystemRipples::selfUpdate()
     {
         dontTriggerSoundCounter--;
     }
+#ifdef TONIC_SOUNDS
+    // These control parameters are read on the audio thread.
+    // Protect updates to avoid races while the synth graph is rendering.
+    mutex.lock();
     volumeControl[0].value(volume[0]);
     volumeControl[1].value(volume[1]);
     mainGain.value(fMainGain);
+    mutex.unlock();
+#endif
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -410,6 +416,8 @@ void CloudsVisualSystemRipples::setScaleByName(string name)
 
 void CloudsVisualSystemRipples::playNote(int note)
 {
+	#ifdef TONIC_SOUNDS
+
     ControlSnapToScale scaleSnapper = ControlSnapToScale().setScale(scale);
     scaleSnapper.input(note);
     mutex.lock();
@@ -419,11 +427,16 @@ void CloudsVisualSystemRipples::playNote(int note)
     notes[noteIndex++].setOutputGen(noteGen * SineWave().freq(4) + noiseGen);
     noteIndex = noteIndex%5;
     mutex.unlock();
+	#endif
 }
 
 void CloudsVisualSystemRipples::audioRequested(ofAudioEventArgs& args)
 {
+	#ifdef TONIC_SOUNDS
+
     mutex.lock();
     mainSynth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
     mutex.unlock();
+	#endif
+
 }

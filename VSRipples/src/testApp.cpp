@@ -9,7 +9,7 @@ void testApp::setup(){
 	vs.playSystem();
     
     mixer.setup();
-    mixer.setDiageticVolume(1);
+    //mixer.setDiageticVolume(1);
 }
 
 //--------------------------------------------------------------
