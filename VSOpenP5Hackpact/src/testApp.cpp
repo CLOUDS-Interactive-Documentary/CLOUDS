@@ -2,7 +2,10 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    ofSetVerticalSync(true);
+    ofSetFrameRate(60);
 	vs.setup();
+    vs.isInterlude = true;
 	vs.playSystem();
 }
 
@@ -22,6 +25,7 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+    vs.exit();
 }
 
 //--------------------------------------------------------------

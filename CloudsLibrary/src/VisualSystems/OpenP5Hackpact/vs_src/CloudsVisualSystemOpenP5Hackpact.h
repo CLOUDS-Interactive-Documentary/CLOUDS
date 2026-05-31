@@ -110,6 +110,8 @@ protected:
 	float ang;
 	float beta;
 	ofVboMesh mesh;
-	
+	ofShader pointsShader;
+	ofImage sprite;
+	float pointSize;
 
 };

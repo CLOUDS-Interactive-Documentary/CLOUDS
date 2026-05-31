@@ -20,6 +20,7 @@ void CloudsVisualSystemOpenP5Hackpact::selfSetupGui(){
 	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
 	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
 	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
+	customGui->addSlider("Point Size", 1, 12, &pointSize);
 
 //	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
 //	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
@@ -92,7 +93,18 @@ void CloudsVisualSystemOpenP5Hackpact::selfSetup(){
 	}
 	mesh.setMode(OF_PRIMITIVE_POINTS);
 	mesh.setUsage(GL_STREAM_DRAW);
-	glPointSize(1.0);
+	mesh.disableNormals();
+
+	pointSize = 8.0f;
+	simpleCam.setNearClip(0.01f);
+
+	ofDisableArbTex();
+	sprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
+	ofEnableArbTex();
+
+	if(!pointsShader.load(getVisualSystemDataPath() + "shaders/hackpact_points")){
+		ofLogError("OpenP5Hackpact") << "failed to load hackpact_points shader";
+	}
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -169,9 +181,29 @@ void CloudsVisualSystemOpenP5Hackpact::selfDraw(){
 	if( beta >= TWO_PI || beta <= -TWO_PI){
         beta += -1;
 	}
-	
-	mesh.drawVertices();
 
+	if(!pointsShader.isLoaded()){
+		return;
+	}
+
+	ofPushStyle();
+	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
+	glEnable(GL_POINT_SMOOTH);
+	ofDisableLighting();
+	glDisable(GL_DEPTH_TEST);
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
+
+	pointsShader.begin();
+	pointsShader.setUniform1f("maxPointSize", pointSize);
+	pointsShader.setUniformTexture("sprite", sprite, 0);
+	ofSetColor(255);
+	ofEnablePointSprites();
+	mesh.drawVertices();
+	ofDisablePointSprites();
+	pointsShader.end();
+
+	glDisable(GL_POINT_SMOOTH);
+	ofPopStyle();
 }
 
 // draw any debug stuff here
@@ -194,7 +226,7 @@ void CloudsVisualSystemOpenP5Hackpact::selfEnd(){
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemOpenP5Hackpact::selfExit(){
-	
+	pointsShader.unload();
 }
 
 //events are called when the system is active
