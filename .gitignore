@@ -406,3 +406,6 @@ LogFiles
 *.htm
 
 CloudsLibrary/src/CloudsCrypto_bkp.h
+_GOLD/Builds/LOCAL_BINARIES
+_GOLD/Builds/CloudsData_LOCAL
+_GOLD/Builds/output
