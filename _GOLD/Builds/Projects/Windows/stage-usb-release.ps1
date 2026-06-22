@@ -90,11 +90,14 @@ function Invoke-CopyCloudsDataScript([string]$ScriptPath, [string]$WorkingDirect
     }
 }
 
+. (Join-Path $PSScriptRoot "stage-release-binaries-common.ps1")
+
 $scriptDir = $PSScriptRoot
 $buildsRoot = (Resolve-Path (Join-Path $scriptDir "..\..")).Path
 $goldRoot = (Resolve-Path (Join-Path $scriptDir "..\..\..")).Path
 $appsClouds = (Resolve-Path (Join-Path $scriptDir "..\..\..\..")).Path
 $appsRoot = Split-Path $appsClouds -Parent
+$openFrameworksRoot = (Resolve-Path (Join-Path $appsRoot "..")).Path
 
 if (-not $BinDir) {
     $BinDir = Join-Path $appsClouds "CLOUDS\bin"
@@ -125,14 +128,13 @@ if ($missingExes) {
 Ensure-EmptyDir $usbBinariesDir
 
 foreach ($exe in $requiredExes) {
-    Copy-Item -LiteralPath (Join-Path $BinDir $exe) -Destination $usbBinariesDir
+    $exePath = Join-Path $BinDir $exe
+    Assert-ReleaseExeIs64 $exePath
+    Copy-Item -LiteralPath $exePath -Destination $usbBinariesDir
     Write-Host "  copied $exe"
 }
 
-Get-ChildItem -LiteralPath $BinDir -File -Filter "*.dll" | ForEach-Object {
-    Copy-Item -LiteralPath $_.FullName -Destination $usbBinariesDir
-    Write-Host "  copied $($_.Name)"
-}
+Copy-ReleaseDllsFromBin -BinDir $BinDir -DestinationDir $usbBinariesDir -OpenFrameworksRoot $openFrameworksRoot
 
 if (Copy-IfExists $oculusPdf (Join-Path $usbBinariesDir "CLOUDS_Windows_OculusSetup.pdf")) {
     Write-Host "  copied CLOUDS_Windows_OculusSetup.pdf"
@@ -181,6 +183,8 @@ else {
         throw "robocopy failed with exit code $LASTEXITCODE"
     }
 }
+
+Merge-CloudsDataIgnoredIntoRelease -CloudsDataDest $cloudsDataDest -AppsClouds $appsClouds
 
 Write-Step "Applying release exclusions"
 Remove-ReleaseArtifacts $cloudsDataDest
